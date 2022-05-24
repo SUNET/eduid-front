@@ -45,6 +45,9 @@ function EmailLinkSent(): JSX.Element {
 
   return (
     <>
+      <h1>
+        <FormattedMessage defaultMessage="Reset password " description="Reset Password heading" />
+      </h1>
       <div id="reset-pass-display">
         <p>
           <FormattedMessage
@@ -61,6 +64,7 @@ function EmailLinkSent(): JSX.Element {
               defaultMessage="If you didn’t receive the email? Check your junk email, or"
               description="Reset Password email link sent"
             />
+            &nbsp;
             <a id={"resend-email"} onClick={sendLink}>
               <FormattedMessage defaultMessage="resend link" description="Reset Password email link sent" />
             </a>

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import orcidIcon from "../../img/vector_iD_icon-w.svg";
 
 class Orcid extends Component {
@@ -16,11 +15,11 @@ class Orcid extends Component {
         <div className="table-responsive">
           <table className="table table-striped table-form">
             <tbody>
-              <tr className="emailrow">
+              <tr className="email-row">
                 <td>
                   <div className="flex-between">
                     {orcidAuthor}
-                    <EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
+                    <EduIDButton buttonstyle="link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
                       <svg
                         className="remove"
                         width="16"
@@ -49,13 +48,18 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <Fragment>
-          <PrimaryButton id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
-            <div className="orcid-logo-container">
+          <div className="buttons">
+            <EduIDButton
+              buttonstyle="primary"
+              id="connect-orcid-button"
+              className="btn-icon"
+              onClick={this.props.handleOrcidConnect}
+            >
               <img className="orcid-logo" src={orcidIcon} />
-            </div>
-            {this.props.translate("orc.button_connect")}
-          </PrimaryButton>
-          <p className="orcid-btn-help">{this.props.translate("orc.long_description")}</p>
+              {this.props.translate("orc.button_connect")}
+            </EduIDButton>
+          </div>
+          <p className="help-text">{this.props.translate("orc.long_description")}</p>
         </Fragment>
       );
     }

@@ -1,134 +1,128 @@
-import React, { Component, Fragment } from "react";
-import AddNin from "containers/AddNin";
-
-import "../login/styles/index.scss";
-import { NinInfo } from "reducers/Nins";
-import { translate } from "login/translation";
+import React, { Fragment } from "react";
+import LetterProofingButton from "components/LetterProofing";
+import Eidas from "components/Eidas";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import LetterProofingButton from "components/LetterProofing";
-import LookupMobileProofingContainer from "login/components/LookupMobileProofing/LookupMobileProofingContainer";
-import EidasContainer from "containers/Eidas";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
+import AddNin from "./AddNin";
+import { FormattedMessage } from "react-intl";
 
-interface VerifyIdentityProps {
-  nins: NinInfo[]; // all the user's nins
-  verifiedNin: NinInfo[]; // all _verified_ nins
-  hasVerifiedSwePhone: boolean; // true if the user has a verified Swedish phone
-  hasVerifiedNin: boolean; // true if at least one nin in 'nins' is verified
-  is_configured: boolean; // state.config.is_configured - app is configured I guess?
-  letter_verification: boolean; // state.letter_proofing.confirmingLetter
-  // TODO: proofing_methods seems unused? Used in some sub-component?
-  proofing_methods: string[]; // proofing_methods from jsconfig (['letter', 'lookup_mobile', 'oidc', 'eidas']))
-  message: string; // state.nins.message
-}
+function VerifyIdentity(): JSX.Element | null {
+  // page text depend on nin status (verified or not)
+  let vettingButtons;
+  const nin = useDashboardAppSelector((state) => state.nins.first_nin);
+  const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
+  const hasVerifiedNin = !!nin?.verified;
+  const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
 
-class VerifyIdentity extends Component<VerifyIdentityProps> {
-  render() {
-    // page text depend on nin status (verified or not)
-    let pageHeading, pageText, vettingButtons;
-    const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
+  if (!isConfigured) {
+    return null;
+  }
 
-    // nin is not verified (add nin)
-    const AddNumber = () => {
-      pageHeading = translate("verify-identity.unverified_main_title");
-      pageText = translate("verify-identity.unverified_page-description");
-      return (
-        <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
-          <p>{pageText}</p>
-          <h3>{translate("verify-identity.add-nin_heading")}</h3>
-        </div>
-      );
-    };
+  // this is where the buttons are generated
+  if (isConfigured && !hasVerifiedNin) {
+    // BUG: used to be 'vettingRegistry(!this.props.valid_nin);' but there is no such prop.
+    //      I guess the intent was to disable the buttons when the user is verified already?
+    const disabled = !undefined;
+    const addedNin = !!nin;
 
-    const NumberAdded = () => {
-      // nin is verified (nin added)
-      pageHeading = translate("verify-identity.verified_main_title");
-      pageText = translate("verify-identity.verified_page-description");
-      return (
-        <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
-          <p>{pageText}</p>
-        </div>
-      );
-    };
+    // proofing via letter requires the user to have added a NIN first
+    const letterProofingDisabled = !addedNin;
+    // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
+    const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
-    // top half of page: add nin/nin added
-    const VerifyIdentity_Step1 = () => {
-      if (this.props.hasVerifiedNin) {
-        return <NumberAdded />;
-      } else {
-        return <AddNumber />;
-      }
-    };
-
-    // this is where the buttons are generated
-    // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
-    if (this.props.is_configured && !this.props.hasVerifiedNin) {
-      // BUG: used to be 'vettingRegistry(!this.props.valid_nin);' but there is no such prop.
-      //      I guess the intent was to disable the buttons when the user is verified already?
-      const disabled = !undefined;
-
-      const addedNin = this.props.nins[0];
-
-      const buttonHelpText = (msg: string, disabled_if?: boolean) => {
-        return <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{translate(msg)}</p>;
-      };
-
-      // proofing via letter requires the user to have added a NIN first
-      const letterProofingDisabled = !addedNin;
-      // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
-      const lookupMobileDisabled = !addedNin || !this.props.hasVerifiedSwePhone;
-      // TODO: Maybe the help texts ought to move into the containers? Isn't that what containers are for - to group components?
-
-      vettingButtons = (
-        <div id="nins-btn-grid">
-          <div>
-            <LetterProofingButton disabled={letterProofingDisabled} />
-            {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
-          </div>
-          <div>
-            <LookupMobileProofingContainer disabled={lookupMobileDisabled} {...this.props} />
-            {buttonHelpText("lmp.initialize_proofing_help_text", lookupMobileDisabled)}
-          </div>
-          <div>
-            <EidasContainer disabled={disabled} />
-            {buttonHelpText("eidas.initialize_proofing_help_text")}
-          </div>
-          <div>
-            <OpenidConnectContainer disabled={disabled} />
-          </div>
-          <div>
-            <OpenidConnectFrejaContainer disabled={disabled} />
-          </div>
-        </div>
-      );
-    }
-
-    // bottom half of page: vetting on added nin
-    const VerifyIdentity_Step2 = () => {
-      if (this.props.is_configured && !this.props.hasVerifiedNin) {
-        return (
-          <div key="1" className="intro">
-            <h3>{translate("verify-identity.connect-nin_heading")}</h3>
-            <p>{translate("verify-identity.connect-nin_description")}</p>
-          </div>
-        );
-      } else {
-        return <div />;
-      }
-    };
-
-    return (
-      <Fragment>
-        <VerifyIdentity_Step1 />
-        <AddNin />
-        {this.props.hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
-        <VerifyIdentity_Step2 />
-        {vettingButtons}
-      </Fragment>
+    vettingButtons = (
+      <div id="nins-btn-grid" className="x-adjust">
+        <LetterProofingButton disabled={letterProofingDisabled} />
+        <LookupMobileProofing disabled={lookupMobileDisabled} />
+        <Eidas />
+        <OpenidConnectContainer disabled={disabled} />
+        <OpenidConnectFrejaContainer disabled={disabled} />
+      </div>
     );
   }
+
+  return (
+    <Fragment>
+      <div className="intro">
+        <h1>
+          <FormattedMessage
+            description="verify identity unverified main title"
+            defaultMessage={`Connect your identity to your eduID`}
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="verify identity unverified description"
+              defaultMessage={`To be able to use eduID you have to prove your identity. Add your national id number 
+              and verify it in real life.`}
+            />
+          </p>
+        </div>
+      </div>
+      <ol className="listed-steps">
+        {!hasVerifiedNin ? (
+          <Fragment>
+            <li>
+              <h4>
+                <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+              </h4>
+              <AddNin />
+            </li>
+            <li>
+              <h4>
+                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
+              </h4>
+              <p className="x-adjust">
+                <FormattedMessage
+                  description="verify-identity.connect-nin_description"
+                  defaultMessage={`Choose a method to verify that you have access to the added id number. 
+                      If you are unable to use a method you need to try another.`}
+                />
+              </p>
+            </li>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <li>
+              <h4>
+                <FormattedMessage
+                  description="verify identity verified title"
+                  defaultMessage="Your eduID is ready to use"
+                />
+              </h4>
+              <p className="x-adjust">
+                <FormattedMessage
+                  description="verify identity verified description"
+                  defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to 
+                  services related to higher education.`}
+                />
+              </p>
+            </li>
+            <li>
+              <h4>
+                <FormattedMessage
+                  description="verify identity improve security heading"
+                  defaultMessage={`Improve your identification`}
+                />
+              </h4>
+              <p className="x-adjust">
+                <FormattedMessage
+                  description="verify identity improve security description"
+                  defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at 
+                      password reset under Settings.`}
+                />
+              </p>
+            </li>
+          </Fragment>
+        )}
+        {vettingButtons}
+      </ol>
+    </Fragment>
+  );
 }
 
 export default VerifyIdentity;

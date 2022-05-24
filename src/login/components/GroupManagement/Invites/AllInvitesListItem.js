@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import { acceptInviteMember, acceptInviteOwner } from "../../../redux/actions/postAcceptInviteActions";
 import { declineInviteMember, declineInviteOwner } from "../../../redux/actions/postDeclineInviteActions";
+import EduIDButton from "components/EduIDButton";
 
 const RenderOpenInvite = ({ open, invite }) => {
   const { owner, member } = invite;
@@ -53,7 +53,7 @@ const RenderRemoveButton = ({ invite }) => {
   };
   return (
     <div className="list-cell">
-      <ButtonRemoveData className="icon-button" onClick={() => handleRejectInvite()} />
+      <EduIDButton buttonstyle="close" size="sm" onClick={() => handleRejectInvite()} />
     </div>
   );
 };

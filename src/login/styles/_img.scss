@@ -2,30 +2,28 @@ img {
   width: 100%;
 }
 
-/* styles for remove svg icon */
+/* TODO - reuse btn-close instead of these svg icons: remove (Orcid, TableList) and close (CreateGroup, Notifications) */
 svg {
-  transform-origin: center;
-  transform: rotate(45deg);
-  margin: 0;
-  padding: 0;
-}
+  &.remove,
+  &.close {
+    transform-origin: center;
+    transform: rotate(45deg);
+    margin: 0;
+    padding: 0;
 
-svg.remove {
-  fill: #ff500d;
-}
-
-svg.remove:hover {
-  fill: #ff500d;
-}
-
-svg.close {
-  fill: #808080;
+    &.remove,
+    &.remove:hover {
+      fill: #ff500d;
+    }
+    &.close {
+      fill: #808080;
+      &:hover {
+        fill: $gray;
+      }
+    }
+  }
 }
 
 .close {
   opacity: 1;
-}
-
-svg.close:hover {
-  fill: #7c7c7c;
 }

@@ -1,11 +1,10 @@
 import React, { Fragment, useState } from "react";
 import PersonalDataForm from "./PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
-import { CloseButton } from "../../components/GroupManagement/Groups/CreateGroup";
 import { translate } from "login/translation";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useIntl } from "react-intl";
+import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
@@ -20,9 +19,9 @@ interface RenderAddPersonalDataPromptProps {
 const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
   <div className="button-pair">
     <p>{translate("pd.no_data_added")}</p>
-    <ButtonPrimary id="add-personal-data" onClick={() => setEditMode(true)}>
+    <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
       {translate("button_add")}
-    </ButtonPrimary>
+    </EduIDButton>
   </div>
 );
 
@@ -59,11 +58,9 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
   return (
     <Fragment>
       <div className="edit-data">
-        <div className="title button-pair">
-          <p>{translate("pd.edit.title")}</p>
-          <button id="cancel-edit-data" type="button" onClick={() => props.setEditMode(false)}>
-            <CloseButton />
-          </button>
+        <div className="title">
+          <h4>{translate("pd.edit.title")}</h4>
+          <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
       </div>
@@ -81,9 +78,9 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
-        <button className="create-group" onClick={() => setEditMode(true)}>
+        <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
           {translate("pd.edit.button")}
-        </button>
+        </EduIDButton>
       ))}
   </Fragment>
 );
@@ -122,7 +119,7 @@ const PersonalDataParent = () => {
     <article className="personal-data">
       <div className="intro">
         <div className="heading">
-          <h4>{translate("pd.main_title")}</h4>
+          <h3>{translate("pd.main_title")}</h3>
           <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
         </div>
         <p>{translate("pd.long_description")}</p>

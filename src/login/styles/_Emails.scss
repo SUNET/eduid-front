@@ -1,18 +1,9 @@
-.help-text {
-  margin-top: 1rem;
-  margin-bottom: -5px;
-  line-height: 1.2;
-  color: #7c7c7c;
-  font-size: 14px;
-}
+// #uniqueId-container {
+//   margin-top: 1rem;
+// }
 
-#uniqueId-container {
-  margin-top: 1rem;
-}
-
-#emailsview-form,
-#phonesview-form,
-#nin-form {
+// single input form, single input and button in a form
+.single-input-form {
   flex-direction: row;
 
   & button {
@@ -20,11 +11,11 @@
   }
 }
 
-.phoneview-form-container,
-#delete-account-container,
-#change-password-container {
-  margin-top: 2rem;
-}
+// .phoneview-form-container,
+// #delete-account-container,
+// #change-password-container {
+//   margin-top: 2rem;
+// }
 
 #suggested-password {
   display: table;
@@ -33,14 +24,6 @@
   font-size: 1.5rem;
   border: none;
   color: $orange-highlight;
-}
-
-#add-more-button {
-  text-transform: lowercase;
-
-  &.hide {
-    display: none;
-  }
 }
 
 .form-content {
@@ -52,15 +35,12 @@
 }
 
 @media (max-width: $bp-sm) {
-  #emailsview-form,
-  #phonesview-form,
-  #nin-form {
+  .single-input-form {
     flex-direction: column;
     align-items: unset;
 
     & button {
-      margin-left: 0;
-      margin-bottom: 2rem;
+      margin: 0;
     }
   }
 }

@@ -6,9 +6,9 @@ class NameDisplay extends Component {
     let userData = "";
     if (this.props.firstName) {
       userData = [
-        <p key="0" className="display-data verified">
+        <div key="0" className="display-data verified">
           {this.props.firstName} {this.props.lastName}
-        </p>,
+        </div>,
       ];
     } else {
       userData = [

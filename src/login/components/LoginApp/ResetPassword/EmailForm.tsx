@@ -59,14 +59,16 @@ const EmailForm = (props: EmailFormProps): JSX.Element => {
         required={true}
         helpBlock={translate("emails.input_help_text")}
       />
-      <EduIDButton
-        type="submit"
-        className="settings-button"
-        id="reset-password-button"
-        disabled={props.invalid || props.request_in_progress}
-      >
-        {translate("resetpw.send-link")}
-      </EduIDButton>
+      <div className="buttons">
+        <EduIDButton
+          type="submit"
+          buttonstyle="primary"
+          id="reset-password-button"
+          disabled={props.invalid || props.request_in_progress}
+        >
+          {translate("resetpw.send-link")}
+        </EduIDButton>
+      </div>
     </Form>
   );
 };

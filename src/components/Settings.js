@@ -1,8 +1,8 @@
 import AccountId from "containers/AccountId";
 import AccountLinkingContainer from "containers/AccountLinking";
 import DeleteAccount from "containers/DeleteAccount";
-import EmailsContainer from "containers/Emails";
-import MobileContainer from "containers/Mobile";
+import Emails from "components/Emails";
+import Phones from "components/Phones";
 import SecurityContainer from "containers/Security";
 import React, { Component, Fragment } from "react";
 import { useSelector } from "react-redux";
@@ -27,8 +27,8 @@ class Settings extends Component {
       <div>
         <Route exact path="/profile/settings/" component={() => <Redirect to="/profile/settings/personaldata" />} />
         <Route path="/profile/settings/personaldata" render={(props) => <PersonalDataParent {...props} />} />
-        <Route path="/profile/settings/personaldata" component={EmailsContainer} />
-        <Route path="/profile/settings/personaldata" component={MobileContainer} />
+        <Route path="/profile/settings/personaldata" component={Emails} />
+        <Route path="/profile/settings/personaldata" component={Phones} />
         <RenderGroups />
         <Route path="/profile/settings/personaldata" component={ChangePasswordDisplay} />
         <Route path="/profile/settings/personaldata" component={DeleteAccount} />

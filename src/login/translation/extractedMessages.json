@@ -1,11 +1,43 @@
 {
+  "+YwDxB": {
+    "developer_comment": "button add",
+    "string": "Add"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
   },
+  "/Fi/nH": {
+    "developer_comment": "security webauthn credential type",
+    "string": "Security key"
+  },
+  "/XXYdv": {
+    "developer_comment": "Register Account created",
+    "string": "A link has been sent to your email address."
+  },
+  "/ZW9w8": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Retry"
+  },
+  "/h666/": {
+    "developer_comment": "select extra webauthn",
+    "string": "Choose extra identification method:"
+  },
+  "0Cwr7Z": {
+    "developer_comment": "SAML login finished",
+    "string": "Missing SAML parameters to proceed with login. Please try again."
+  },
+  "0fMD4p": {
+    "developer_comment": "SAML login finished",
+    "string": "Please wait, you are being logged in..."
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
+  },
+  "12hWj7": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
@@ -15,24 +47,52 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Start by adding your ID number above"
   },
+  "1XDKxO": {
+    "developer_comment": "accept button",
+    "string": "Accept"
+  },
+  "1oQ5gL": {
+    "developer_comment": "eidas freja instructions step3",
+    "string": "The app will generate a QR-code"
+  },
+  "2aFo9b": {
+    "developer_comment": "Help text for security key max length",
+    "string": "max 50 characters"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
-  },
-  "3R4Ypi": {
-    "developer_comment": "Default tagline",
-    "string": "eduID is easier and safer login."
   },
   "3ioK05": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here again when you have received the letter"
   },
+  "3iy3CU": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "The service you tried to access failed during the authentication stage."
+  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "New password"
   },
+  "40kUIs": {
+    "developer_comment": "ErrorURL unknown error",
+    "string": "An unknown error occurred when accessing the service."
+  },
+  "4J565T": {
+    "developer_comment": "NIN display link text",
+    "string": "add id number"
+  },
+  "4KkuhD": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "Not logged in"
+  },
   "4WguDO": {
     "string": "Developer info, not shown in production:"
+  },
+  "56cz7x": {
+    "developer_comment": "Phone display title",
+    "string": "Phone number"
   },
   "5l4hxp": {
     "string": "Log in on another device"
@@ -41,13 +101,33 @@
     "developer_comment": "Login front page",
     "string": "Register"
   },
+  "5zpZKp": {
+    "developer_comment": "Use other device 2",
+    "string": "You can now close this window and continue on the other device."
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "71fMkJ": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Continue"
+  },
+  "7rcGK1": {
+    "developer_comment": "column value label",
+    "string": "Value"
+  },
+  "85yuW9": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "You are not logged in, or the session expired."
+  },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
+  },
+  "8KywNU": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that user accounts, password, security keys and codes are individual and shall only be used by the intended individual,"
   },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
@@ -57,6 +137,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
   },
+  "99NK5u": {
+    "developer_comment": "Login remember user device",
+    "string": "Remember me on this device"
+  },
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
@@ -65,17 +149,25 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
-  "9UKtfS": {
-    "developer_comment": "Reset Password phone code sent(Resend code link button)",
-    "string": "Send a new confirmation code"
-  },
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "A2MTya": {
+    "developer_comment": "add webauthn token key",
+    "string": "security key"
+  },
   "ABLcOw": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The code expired"
+  },
+  "AOo5zL": {
+    "developer_comment": "ErrorURL other error",
+    "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
+  },
+  "ARpH/T": {
+    "developer_comment": "Phones input help text",
+    "string": "Phone number starting with 0 or +"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -108,8 +200,16 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
   },
+  "EW3NC1": {
+    "developer_comment": "Email label",
+    "string": "Email address"
+  },
   "Ek2FGc": {
     "string": "Log in on the other device"
+  },
+  "EqjCQt": {
+    "developer_comment": "Errors go to dashboard instruction",
+    "string": "You can review your settings at the"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -123,13 +223,41 @@
   "Error: Service Unavailable": {
     "string": "Service Unavailable. Check your internet connection."
   },
+  "FEMdsB": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Access Error"
+  },
   "FQZGJ7": {
     "developer_comment": "Terms of use (common header)",
     "string": "General rules for eduID users:"
   },
+  "FRVeZw": {
+    "developer_comment": "verify identity unverified main title",
+    "string": "Connect your identity to your eduID"
+  },
+  "FfxTGR": {
+    "developer_comment": "SAML login finished",
+    "string": "Logging you in"
+  },
+  "FnpebS": {
+    "developer_comment": "letter initialize proofing help text",
+    "string": "The letter will contain a code that for security reasons expires in two weeks."
+  },
+  "Fw5FJ3": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2022"
+  },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
+  },
+  "G1b2Mj": {
+    "developer_comment": "device info",
+    "string": "IP address"
+  },
+  "G86+D9": {
+    "developer_comment": "eidas freja instructions install link",
+    "string": "What is Freja eID?"
   },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
@@ -143,13 +271,13 @@
     "developer_comment": "password input field label",
     "string": "Password"
   },
-  "GX77Th": {
-    "developer_comment": "Header tagline",
-    "string": "eduID for"
+  "GOpzll": {
+    "developer_comment": "Login Mfa heading",
+    "string": "Log in: Extra level of security"
   },
-  "HCjfX4": {
-    "developer_comment": "Footer copyright",
-    "string": "SUNET 2013-2022"
+  "HgjRtU": {
+    "developer_comment": "button add more",
+    "string": "+ add more"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -159,15 +287,35 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
   },
+  "I+NQu2": {
+    "developer_comment": "Use another device #1",
+    "string": "The login attempt was aborted or exceeded the time limit. Please try again."
+  },
+  "Ifusv7": {
+    "developer_comment": "Emails main title",
+    "string": "Email addresses"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
   },
-  "Jn07OV": {
-    "string": "Ooops, how did you get here? Unknown state, please try again."
+  "Ipp+o7": {
+    "developer_comment": "confirm button",
+    "string": "confirm"
+  },
+  "JC05Ws": {
+    "developer_comment": "lmp initialize proofing help text",
+    "string": "The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
+  },
+  "KWAMem": {
+    "string": "Click \"continue\" once you have logged in on the other device"
+  },
+  "KeIhmQ": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "Authentication error"
   },
   "KjyITI": {
     "developer_comment": "Use another device, finished",
@@ -176,6 +324,10 @@
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
+  },
+  "LNBvhT": {
+    "developer_comment": "Errors button",
+    "string": "eduID Dashboard"
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -187,6 +339,10 @@
   "Missing error message": {
     "string": "Missing error message"
   },
+  "MnbIkV": {
+    "developer_comment": "no error information message",
+    "string": "There is no technical information available"
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Use upper- and lowercase characters, but not at the beginning or end"
@@ -195,35 +351,90 @@
     "developer_comment": "Reset Password email link sent",
     "string": "Please check your email {email} to continue. Link is valid for 2 hours."
   },
+  "NeWubz": {
+    "developer_comment": "errorURL",
+    "string": "Technical Information"
+  },
+  "NgScX1": {
+    "developer_comment": "Emails button add",
+    "string": "Add"
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
   "Not a valid email address.": {
     "string": "Not a valid email address."
   },
+  "NuVGSk": {
+    "developer_comment": "column eduID identifier label",
+    "string": "eduID identifier"
+  },
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
+  },
+  "O7HVVj": {
+    "developer_comment": "device info",
+    "string": "Description"
+  },
+  "O9PJiz": {
+    "developer_comment": "ErrorURL authorization failure",
+    "string": "Insufficient privileges"
+  },
+  "Ok/e72": {
+    "developer_comment": "Add emails description",
+    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
+  },
+  "OpSCLL": {
+    "developer_comment": "security webauthn describe title",
+    "string": "Add a name for your security key"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "PRzfUP": {
+    "developer_comment": "lmp.modal_confirm_title",
+    "string": "Check if your phone number is connected to your id number."
+  },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
   },
-  "R0rN2Z": {
-    "developer_comment": "Use another device, finished",
-    "string": "The code has expired, please close this browser window"
+  "Qqe6f9": {
+    "developer_comment": "delete.confirm_button",
+    "string": "Delete my eduID"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
     "string": "The request has been aborted"
   },
+  "RHOeL5": {
+    "string": "Use eduID to access {service_name}"
+  },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
+  },
+  "Rf84nl": {
+    "developer_comment": "ok button",
+    "string": "ok"
+  },
+  "RmZQLb": {
+    "developer_comment": "tou.header",
+    "string": "General rules for eduID users"
+  },
+  "RywJRW": {
+    "developer_comment": "Register email label",
+    "string": "Complete registration by clicking the link sent to:"
+  },
+  "SJUMOA": {
+    "developer_comment": "Reset Password heading",
+    "string": "Reset password"
+  },
+  "SL6O2c": {
+    "developer_comment": "Password label",
+    "string": "Password"
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -232,9 +443,28 @@
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
+  "SgvXTp": {
+    "string": "Enter the six digit response code shown on the other device in the form below"
+  },
+  "Skhd4q": {
+    "developer_comment": "Use other device 2",
+    "string": "Request completed."
+  },
+  "SlpRU3": {
+    "developer_comment": "verify-identity.connect-nin_description",
+    "string": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
+  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
+  },
+  "T0Y5mk": {
+    "developer_comment": "SAML login finished",
+    "string": "This login has already been processed."
+  },
+  "T80C1A": {
+    "developer_comment": "eidas vetting button freja",
+    "string": "with a digital ID-card"
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -250,6 +480,10 @@
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
   },
+  "UALuL9": {
+    "developer_comment": "Login username input",
+    "string": "Different user?"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Log in: Terms of use"
@@ -257,6 +491,14 @@
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
+  },
+  "UV+SMM": {
+    "developer_comment": "SAML login finished",
+    "string": "It seems you pressed 'back' in your browser."
+  },
+  "V690+Q": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Identification failed"
   },
   "V7OJ7r": {
     "developer_comment": "explanation text for letter proofing",
@@ -266,6 +508,10 @@
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
   },
+  "VdBjyo": {
+    "developer_comment": "SAML login finished",
+    "string": "You might be able to get back to where you came from by using the 'forward' button."
+  },
   "VlSXpR": {
     "developer_comment": "Header login",
     "string": "Log in"
@@ -274,6 +520,30 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "WYEquP": {
+    "developer_comment": "settings.modal_delete_title",
+    "string": "Are you sure you want to delete your eduID?"
+  },
+  "XrBwSu": {
+    "developer_comment": "eidas freja instruction tip1",
+    "string": "Tip: Use the app to find your nearest agent"
+  },
+  "YGVN20": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to my eduid"
+  },
+  "YbLEig": {
+    "developer_comment": "eidas proofing help text",
+    "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
+  },
+  "YdEGFD": {
+    "developer_comment": "Help text for email confirmation code",
+    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
+  },
+  "YqZO+p": {
+    "developer_comment": "Login button",
+    "string": "Cancel"
+  },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
@@ -281,6 +551,34 @@
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
+  },
+  "ZHgxHT": {
+    "developer_comment": "ErrorURL unknown error",
+    "string": "Access Error"
+  },
+  "ZQcORE": {
+    "developer_comment": "Phones long description",
+    "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
+  },
+  "Zc8y4k": {
+    "developer_comment": "Use another device, finished",
+    "string": "Use the response code below in the first device to continue logging in"
+  },
+  "ZeHd75": {
+    "developer_comment": "username input field label",
+    "string": "Username"
+  },
+  "ZkDePR": {
+    "developer_comment": "eidas freja instructions step4",
+    "string": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
+  },
+  "ZyrvXd": {
+    "developer_comment": "Registration complete",
+    "string": "You have completed the registration for eduID."
+  },
+  "a2qUxL": {
+    "developer_comment": "Title for phone code input",
+    "string": "Enter the code sent to {phone}"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -306,15 +604,24 @@
   "add_nin.main_title": {
     "string": "1. Add your id number"
   },
+  "am92D3": {
+    "developer_comment": "resend code",
+    "string": "Send a new confirmation code"
+  },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Close to your address now)"
   },
+  "bCqIxV": {
+    "developer_comment": "profile email display title",
+    "string": "Email address"
+  },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
   },
-  "beta-link.to-stable": {
-    "string": "The new eduID is under development, click here to go back to the stable version"
+  "bfWfFp": {
+    "developer_comment": "SAML login finished",
+    "string": "Already logged in"
   },
   "button_add": {
     "string": "Add"
@@ -325,6 +632,10 @@
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
+  },
+  "cM/njp": {
+    "developer_comment": "SAML login finished",
+    "string": "Forward"
   },
   "captcha.cancel": {
     "string": "Cancel"
@@ -416,10 +727,6 @@
   "cm.ok": {
     "string": "OK"
   },
-  "cm.resend_code": {
-    "developer_comment": "Lost code problem solution",
-    "string": "Send a new confirmation code"
-  },
   "coWKVJ": {
     "string": "Log in using another device"
   },
@@ -430,17 +737,11 @@
     "developer_comment": "error text for invalid confirmation code",
     "string": "Invalid confirmation code"
   },
-  "created.account-created": {
-    "string": "A link has been sent to your email address."
-  },
   "created.back_to_signup": {
     "string": "Back to signup"
   },
   "created.confirm-registration": {
     "string": "Confirm your email to log in to eduID."
-  },
-  "created.email-label": {
-    "string": "Complete registration by clicking the link sent to:"
   },
   "created.email-sent": {
     "string": "Click the confirmation link sent to {email} to be able log in to eduID"
@@ -450,6 +751,14 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
+  },
+  "dHoc4Y": {
+    "developer_comment": "eidas modal title",
+    "string": "Use Freja eID+ and pass a local authorised agent"
+  },
+  "dI6LjD": {
+    "developer_comment": "verify identity improve security heading",
+    "string": "Improve your identification"
   },
   "dashboard.tagline_unverified": {
     "string": "Don't forget to connect your identity to eduID"
@@ -474,12 +783,6 @@
   },
   "dashboard_nav.settings-confirm-phone": {
     "string": "<b>Confirm your number</b> to verify your id by phone"
-  },
-  "delete.confirm_button": {
-    "string": "Delete my eduID"
-  },
-  "delete.modal_info": {
-    "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
@@ -522,9 +825,6 @@
   "eidas.freja_instructions_tip_1": {
     "string": "Tip: Use the app to find your nearest agent"
   },
-  "eidas.initialize_proofing_help_text": {
-    "string": "To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app."
-  },
   "eidas.modal_title": {
     "string": "Use Freja eID+ and pass a local authorised agent"
   },
@@ -549,9 +849,6 @@
   "eidas.token_verify_success": {
     "string": "U2F token verified successfully"
   },
-  "eidas.vetting_button_freja": {
-    "string": "with a digital ID-card"
-  },
   "email.invalid_email": {
     "string": "The entered email is invalid"
   },
@@ -563,9 +860,6 @@
   },
   "emails.button_add": {
     "string": "Add"
-  },
-  "emails.button_add_more": {
-    "string": "+ add more"
   },
   "emails.cannot_remove_primary": {
     "string": "You can not delete the primary email"
@@ -592,15 +886,11 @@
     "developer_comment": "Placeholder for email code input",
     "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
-  "emails.confirm_help_text": {
-    "developer_comment": "Help text for email confirmation code",
-    "string": "Code is formatted as five groups of characters and numbers, separated by hyphens"
-  },
   "emails.confirm_title": {
     "string": "Click the link or enter the code sent to {email} here"
   },
   "emails.duplicated": {
-    "string": "That email address is already in use, please choose another"
+    "string": "The email is already in the list."
   },
   "emails.email": {
     "string": "Email"
@@ -613,12 +903,6 @@
   },
   "emails.invalid_email": {
     "string": "The entered value does not look like an email"
-  },
-  "emails.long_description": {
-    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
-  },
-  "emails.main_title": {
-    "string": "Email addresses"
   },
   "emails.missing": {
     "string": "You must provide an email address"
@@ -644,56 +928,25 @@
   "emails.verification-success": {
     "string": "Successfully verified email address"
   },
-  "error_access": {
-    "string": "Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
-  },
-  "error_access_an_error_occurred": {
-    "string": "Error unclear, something stuck somewhere"
-  },
-  "error_affiliation_student": {
-    "string": "Not student error"
-  },
-  "error_assurance_al1": {
-    "string": "Not AL1 error"
-  },
-  "error_authentication": {
-    "string": "Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
-  },
-  "error_edu_person_orcid": {
-    "string": "eduPersonOrcid error"
-  },
-  "error_edu_person_principal_name": {
-    "string": "eduPersonPrincipalName error"
-  },
-  "error_identification_failed": {
-    "string": "Identification failed <ul><li>The service that you tried to access did not get all required attributes for identification and/or personalization.</li><li>This may be because your institution is missing those attributes or that your institution is not configured to release those attributes to the service you tried to access.</li><li>Please contact support at your institution and include the name of the service you tried to access, any missing attributes if you know what they are (the service may have informed you) and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+  "enter confirmation code": {
+    "string": "Confirmation code"
   },
   "error_in_form": {
     "string": "Check the form below for errors."
   },
-  "error_insufficient_privileges": {
-    "string": "Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><div><li>A confirmed user account, or high identity assurance level (AL)</li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li>Affiliation</li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li>Some specific entitlements</li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li></div><li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
-  },
-  "error_login_failed": {
-    "string": "Login failed <ul><li>Login failed at the service you tried to access. Please see below for possible reasons and actions.</li></ul>"
-  },
   "error_lookup_mobile_task": {
     "string": "Your phone number could not be found in the registry. Please try another method."
-  },
-  "error_mfa": {
-    "string": "MFA error"
   },
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
-  "error_sp_example_nin": {
-    "string": "You need to verify your eduID account"
+  "ewgN8J": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
   },
-  "error_technical_info_heading": {
-    "string": "Technical Information"
-  },
-  "error_without_code": {
-    "string": "Insufficient error information received, please retry or contact support"
+  "exo9+K": {
+    "developer_comment": "eidas freja instructions step2",
+    "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
   },
   "faq_link": {
     "string": "For more information see the"
@@ -710,15 +963,6 @@
   "finish.finish": {
     "string": "FINISH"
   },
-  "finish.got-it": {
-    "string": "go to my eduid"
-  },
-  "finish.registration-complete": {
-    "string": "You have completed the registration for eduID."
-  },
-  "finish.registration-details": {
-    "string": "These are your login details for eduID."
-  },
   "finish.sites-accept": {
     "string": "Your account is now ready for use with sites that accept"
   },
@@ -731,20 +975,72 @@
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
   },
+  "fr8eQq": {
+    "developer_comment": "Emails button cancel",
+    "string": "Cancel"
+  },
+  "fuyJ7x": {
+    "developer_comment": "button cancel",
+    "string": "Cancel"
+  },
+  "g9BiU8": {
+    "developer_comment": "ErrorURL other error",
+    "string": "An error occurred when accessing the service."
+  },
+  "gGJgga": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it."
+  },
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
     "string": "Your account is linked with Ladok information from"
+  },
+  "gaVV7S": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
   },
+  "hCOaxe": {
+    "developer_comment": "SAML login finished",
+    "string": "Login failed"
+  },
+  "hEOTTF": {
+    "developer_comment": "Use another device, finished",
+    "string": "The code has expired, please close this browser window."
+  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
   },
+  "hcvQ9B": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "The service that you tried to access requires a \"confirmed\" Swedish National Identity Number (personnummer)."
+  },
   "header.signup": {
     "string": "SIGN UP"
+  },
+  "hg+a52": {
+    "developer_comment": "Use other device 2",
+    "string": "You should close this browser window."
+  },
+  "hk4i0h": {
+    "developer_comment": "Use other device 2",
+    "string": "Request cancelled."
+  },
+  "hq/xBV": {
+    "developer_comment": "Use other device 2",
+    "string": "Request denied."
+  },
+  "i65t9c": {
+    "developer_comment": "delete.modal_info",
+    "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
+  },
+  "iUnunt": {
+    "developer_comment": "verify identity verified title",
+    "string": "Your eduID is ready to use"
   },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
@@ -754,16 +1050,48 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
   },
+  "j0hRyW": {
+    "developer_comment": "Phones main title",
+    "string": "Mobile phone numbers"
+  },
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
   },
-  "j6UxLp": {
-    "string": "Enter the response code shown on the other device in the form below"
+  "j9OZka": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
+  },
+  "kN1GC+": {
+    "developer_comment": "Make primary button",
+    "string": "make primary"
+  },
+  "kWN+Jp": {
+    "developer_comment": "accept button",
+    "string": "accept"
+  },
+  "kXrfeE": {
+    "developer_comment": "Login remember user device",
+    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kffxhw": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID."
+  },
+  "kz8YmP": {
+    "string": "You are logging in as {display_name} ({username}) on the other device"
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "For you registered at your current address"
+  },
+  "lMUS8G": {
+    "developer_comment": "SAML login finished",
+    "string": "Retry"
+  },
+  "lR0uvy": {
+    "developer_comment": "Other Device, device 1",
+    "string": "Incorrect code, try again"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -786,9 +1114,6 @@
   },
   "letter.button_text_code": {
     "string": "Enter confirmation code here"
-  },
-  "letter.initialize_proofing_help_text": {
-    "string": "The letter will contain a code that for security reasons expires in two weeks."
   },
   "letter.letter_sent_msg": {
     "string": "You have been sent a verification letter"
@@ -829,17 +1154,8 @@
   "lmp.button_text_request": {
     "string": "by phone"
   },
-  "lmp.confirm_info": {
-    "string": "This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity."
-  },
-  "lmp.initialize_proofing_help_text": {
-    "string": "The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers."
-  },
   "lmp.initialize_proofing_help_text_tip_1": {
     "string": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
-  },
-  "lmp.modal_confirm_title": {
-    "string": "Check if your phone number is connected to your id number."
   },
   "lmp.verification_success": {
     "string": "Your national id number has been successfully verified"
@@ -851,7 +1167,7 @@
     "string": "The service requires something that eduID cannot provide. Contact the service owner for help."
   },
   "login.bad_ref": {
-    "string": "The was a problem a problem with the reference number in the URL, please reload the page."
+    "string": "Not found"
   },
   "login.credential_expired": {
     "string": "The credential has expired because it was not used in 18 months. Perform a password reset or log in using some other credential."
@@ -884,13 +1200,16 @@
     "string": "There was a problem with the authentication, please try again."
   },
   "login.no_sso_session": {
-    "string": "There was a problem, please reload the page."
+    "string": "Session not found. Please try again."
   },
   "login.not_available": {
     "string": "An error occurred. Please try again later."
   },
   "login.not_implemented": {
     "string": "There was a problem, please try again."
+  },
+  "login.state_not_found": {
+    "string": "Not found"
   },
   "login.swamid_mfa_required": {
     "string": "The service requires Person-Proofed multi-factor authentication (SWAMID MFA). Visit the eduID dashboard to add a verified Security Key."
@@ -908,11 +1227,23 @@
     "string": "The email address or password was incorrect."
   },
   "login.wrong_user": {
-    "string": "It was not possible to complete the login. Please try again."
+    "string": "Wrong user. You can't log in as this user in this context."
+  },
+  "lox37q": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again."
   },
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verify your identity to get the most ouf of your eduID"
+  },
+  "lyfTgy": {
+    "developer_comment": "Title for email code input",
+    "string": "Click the link or enter the code sent to {email} here"
+  },
+  "mXSAC0": {
+    "developer_comment": "eidas freja eid ready",
+    "string": "Use my Freja eID"
   },
   "mXkdvt": {
     "developer_comment": "Use another device IP proximity",
@@ -983,9 +1314,6 @@
   "nin_display.profile.main_title": {
     "string": "Id number"
   },
-  "nin_display.profile.no_nin": {
-    "string": "add id number"
-  },
   "nin_display.verify-identity_unverified_main_title": {
     "string": "1. Your added id number"
   },
@@ -1026,17 +1354,21 @@
   "nins.wrong_length": {
     "string": "A national id number must have 12 digits"
   },
-  "noNGvR": {
-    "developer_comment": "Use another device #1",
-    "string": "The code has expired"
+  "nj6a0v": {
+    "developer_comment": "eidas freja instructions step1",
+    "string": "Install the app"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
   },
-  "obrRPr": {
-    "developer_comment": "ToU first paragraph",
-    "string": "that user accounts, password and codes are individual and shall only be used by the intended individual,"
+  "oFfq/i": {
+    "developer_comment": "enter confirmation code",
+    "string": "Confirmation code"
+  },
+  "oVW3B/": {
+    "developer_comment": "verify identity verified description",
+    "string": "The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education."
   },
   "oc.error_missing_nin": {
     "string": "Please add a national identity number and try again"
@@ -1110,6 +1442,10 @@
   "ocf.open_app": {
     "string": "I have Freja eID installed"
   },
+  "oo7oza": {
+    "developer_comment": "lmp.confirm_info",
+    "string": "This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity."
+  },
   "orc.about_link": {
     "string": "Learn more about ORCID in eduID from our {faq_link}."
   },
@@ -1139,6 +1475,10 @@
   },
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "pRXT2e": {
+    "developer_comment": "verify identity add nin heading",
+    "string": "Add your id number"
   },
   "pd.all-data-success": {
     "string": "Successfully retrieved personal information"
@@ -1221,9 +1561,6 @@
   "phones.add_new": {
     "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers."
   },
-  "phones.button_add_more": {
-    "string": "+ add more"
-  },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
   },
@@ -1243,22 +1580,16 @@
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
   },
   "phones.duplicated": {
-    "string": "That phone number is already in use, please choose another"
+    "string": "The number is already in the list."
   },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
-  },
-  "phones.input_help_text": {
-    "string": "Phone number starting with 0 or +"
   },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
   },
   "phones.long_description": {
     "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
-  },
-  "phones.main_title": {
-    "string": "Mobile phone numbers"
   },
   "phones.primary-success": {
     "string": "The phone number was set as primary"
@@ -1347,17 +1678,13 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Confirmation code"
   },
-  "qHqnkz": {
-    "developer_comment": "Use another device, finished",
-    "string": "Use the response code below to continue logging in on the other device"
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back, {username}!"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
-  },
-  "r5p+mD": {
-    "developer_comment": "Login front page",
-    "string": "Logging in"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
@@ -1542,10 +1869,6 @@
     "developer_comment": "Error message for max length",
     "string": "The description is too long"
   },
-  "security.help_text": {
-    "developer_comment": "Help text for security key max length",
-    "string": "max 50 characters"
-  },
   "security.last-used.date": {
     "string": "Never used"
   },
@@ -1637,8 +1960,11 @@
   "security.verify": {
     "string": "Verify key"
   },
-  "security.webauthn-describe-title": {
-    "string": "Add a name for your security key"
+  "security.webauthn-attestation-fail": {
+    "string": "Failed to verify the attestation for the security key."
+  },
+  "security.webauthn-metadata-fail": {
+    "string": "Failed to validate the security key against metadata."
   },
   "security.webauthn-missing-pdata": {
     "string": "You should add your personal data before adding a security key"
@@ -1654,9 +1980,6 @@
   },
   "security.webauthn.max_allowed_tokens": {
     "string": "You are not allowed to register more security keys"
-  },
-  "security.webauthn_credential_type": {
-    "string": "Security key"
   },
   "security.webauthn_register_success": {
     "string": "Security key added"
@@ -1687,9 +2010,6 @@
     "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
-  "settings.modal_delete_title": {
-    "string": "Are you sure you want to delete your eduID?"
-  },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again"
   },
@@ -1710,6 +2030,10 @@
   },
   "still-valid-code": {
     "string": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+  },
+  "t0C4LH": {
+    "developer_comment": "verify identity connect nin",
+    "string": "Verify your id number"
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
@@ -1732,15 +2056,6 @@
   "tl.primary": {
     "string": "PRIMARY"
   },
-  "tou.accept": {
-    "string": "Accept"
-  },
-  "tou.cancel": {
-    "string": "Cancel"
-  },
-  "tou.header": {
-    "string": "General rules for eduID users"
-  },
   "tou.must-accept": {
     "string": "You must accept the new terms of use before continuing"
   },
@@ -1753,6 +2068,14 @@
   "u2f.push-the-button": {
     "string": "Please touch the button in your U2F key"
   },
+  "u6yPXz": {
+    "developer_comment": "verify identity unverified description",
+    "string": "To be able to use eduID you have to prove your identity. Add your national id number and verify it in real life."
+  },
+  "uWVxmX": {
+    "developer_comment": "ErrorURL authorization failure",
+    "string": "The service that you tried to access requires privileges that you do not have."
+  },
   "ugLZcg": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copy to clipboard"
@@ -1762,6 +2085,10 @@
   },
   "unexpected-success": {
     "string": "Success"
+  },
+  "uo1E1v": {
+    "developer_comment": "column name label",
+    "string": "Name"
   },
   "used.email-in-use": {
     "string": "An eduID is already using {email}"
@@ -1775,9 +2102,17 @@
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
+  "usrhfV": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "For you able to create a Freja eID+ by visiting one of the authorised agents"
+  },
   "uzoZmv": {
     "developer_comment": "Login front page",
     "string": "Log in"
+  },
+  "v/ccFv": {
+    "developer_comment": "primary label",
+    "string": "primary"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
@@ -1786,26 +2121,8 @@
   "value not changed": {
     "string": "The value is not changed"
   },
-  "verify-identity.add-nin_heading": {
-    "string": "1. Add your id number"
-  },
-  "verify-identity.connect-nin_description": {
-    "string": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
-  },
-  "verify-identity.connect-nin_heading": {
-    "string": "2. Verify your id number"
-  },
-  "verify-identity.unverified_main_title": {
-    "string": "Connect your identity to your eduID"
-  },
-  "verify-identity.unverified_page-description": {
-    "string": "To be able to use eduID you have to prove your identity. Add your national id number and verify it in real life."
-  },
   "verify-identity.verified_main_title": {
     "string": "Your eduID is ready to use"
-  },
-  "verify-identity.verified_page-description": {
-    "string": "The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Add a phone number or a security key to your eduID to keep your identity at password reset."
@@ -1839,9 +2156,25 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
   },
+  "x4rX5I": {
+    "developer_comment": "SAML login finished",
+    "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
+  },
+  "xBsfUj": {
+    "developer_comment": "Login Mfa paragraph",
+    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+  },
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
+  },
+  "xjLF/u": {
+    "developer_comment": "add webauthn token device",
+    "string": "this device"
+  },
+  "xsCSvh": {
+    "developer_comment": "verify identity improve security description",
+    "string": "Add a phone number or a security key to your eduID to keep your identity at password reset under Settings."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
@@ -1850,5 +2183,13 @@
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "that all usage of user accounts follow the laws and by-laws of Sweden,"
+  },
+  "zV24f+": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "This may be because eduID is missing those attributes or that eduID is not configured to release those attributes to the service you tried to access."
+  },
+  "zqUt+2": {
+    "developer_comment": "eidas freja instructions step5",
+    "string": "Freja eID is now ready to be used with your eduID"
   }
 }

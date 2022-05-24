@@ -10,13 +10,6 @@ export const leftoverMessages = {
     />
   ),
   "pd.choose-language": <FormattedMessage id="pd.choose-language" defaultMessage={`Choose language`} />,
-  "emails.confirm_help_text": (
-    <FormattedMessage
-      id="emails.confirm_help_text"
-      defaultMessage={"Code is formatted as five groups of characters and numbers, separated by hyphens"}
-      description="Help text for email confirmation code"
-    />
-  ),
   "confirmation.code_invalid_format": (
     <FormattedMessage
       id="confirmation.code_invalid_format"
@@ -31,23 +24,6 @@ export const leftoverMessages = {
       description="Error message for max length"
     />
   ),
-  "security.help_text": (
-    <FormattedMessage
-      id="security.help_text"
-      defaultMessage={`max 50 characters`}
-      description="Help text for security key max length"
-    />
-  ),
-  "register.toLogin": (
-    <FormattedMessage
-      id="register.toLogin"
-      defaultMessage={`If you already have eduID you can log in`}
-      description="Signup instructions"
-    />
-  ),
-  "text.link": (
-    <FormattedMessage id="text.link" defaultMessage={`here.`} description="Placeholder for phone text input" />
-  ),
   "chpass.help-text-newpass-label": (
     <FormattedMessage
       id="chpass.help-text-newpass-label"
@@ -60,13 +36,6 @@ export const leftoverMessages = {
       id="cm.lost_code"
       defaultMessage={`Is the code not working?`}
       description="Lost code problem description"
-    />
-  ),
-  "cm.resend_code": (
-    <FormattedMessage
-      id="cm.resend_code"
-      defaultMessage={`Send a new confirmation code`}
-      description="Lost code problem solution"
     />
   ),
   "letter.lost_code": (

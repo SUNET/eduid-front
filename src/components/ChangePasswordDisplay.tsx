@@ -20,16 +20,16 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
   //       before this is merged after the holidays.
   return (
-    <div>
+    <article>
       <div id="change-password-container">
         <div className="intro">
-          <h4>
+          <h3>
             <FormattedMessage
               id="settings.main_title"
               defaultMessage="Change password"
               description="Dashboard change password"
             />
-          </h4>
+          </h3>
           <p>
             <FormattedMessage
               id="settings.long_description"
@@ -41,7 +41,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
         <div id="change-password">
           <EduIDButton
             id="security-change-button"
-            className="btn-link"
+            buttonstyle="link"
             onClick={() => {
               setShowModal(true);
             }}
@@ -56,7 +56,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
       </div>
 
       <NotificationModal
-        modalId="securityConfirmDialog"
+        id="security-confirm-modal"
         title={
           <FormattedMessage
             id="settings.confirm_title_chpass"
@@ -76,8 +76,9 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           setShowModal(false);
         }}
         acceptModal={handleAcceptModal}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
-    </div>
+    </article>
   );
 }
 

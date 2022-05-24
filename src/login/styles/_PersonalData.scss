@@ -1,46 +1,15 @@
 .personal-data {
-  margin-top: 0;
-  margin-bottom: 1rem;
-
-  label {
-    font-size: 1rem;
-    padding: 0 0 0.1875rem 0.125rem;
-  }
-
-  button {
-    margin-bottom: 0;
-    width: fit-content;
-    align-self: center;
-
-    @media (max-width: $bp-sm) {
-      &.btn {
-        font-size: unset;
-        width: unset;
-      }
-    }
-
-    &.icon {
-      &:disabled,
-      &.disabled {
-        opacity: 0.5;
-        background: $light-gray;
-      }
-    }
-  }
-
   .title {
-    align-items: center;
     margin-bottom: 1rem;
+  }
 
-    p {
-      padding-bottom: 0;
+  @media (max-width: $bp-xs) {
+    .button-pair {
+      flex-direction: column;
     }
   }
 
   .name-inputs {
-    .help-text {
-      margin: 0.5rem 0 0;
-    }
     .icon-text {
       display: flex;
       align-items: baseline;
@@ -93,16 +62,10 @@
       }
     }
   }
-
-  #language-wrapper {
-    margin-top: 1rem;
-  }
 }
 
 // styles for input on white bg
 .edit-data {
-  margin-bottom: 2rem;
-
   .form-control,
   input {
     background-color: $light-gray;
@@ -144,13 +107,5 @@
     flex-basis: 13rem;
     justify-content: unset;
     margin: 0 1rem 1rem 0;
-
-    .display-data {
-      font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
-      margin-top: 0;
-      line-height: $line-height;
-      font-size: 1.5rem;
-      word-wrap: normal;
-    }
   }
 }

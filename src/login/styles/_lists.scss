@@ -1,0 +1,44 @@
+/* styles for ordered list with large number */
+@import "variables.scss";
+
+.listed-steps {
+  margin-left: $list-indent;
+  list-style-type: decimal;
+
+  li {
+    font-size: 1.125rem;
+    line-height: 1.25;
+    margin-bottom: 2em;
+
+    &::marker {
+      font-size: 1em;
+      font-family: $akkurat;
+      font-weight: bold;
+    }
+    fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  @media (max-width: $bp-sm) {
+    /* counteracts additional list left margin in mobile mode */
+    .x-adjust {
+      margin-left: #{-1 * $list-indent};
+    }
+  }
+}
+
+dl.terms {
+  dt {
+    @extend .heading-4;
+  }
+  dd {
+    margin-bottom: 0.5rem;
+    font-size: $txt-md;
+    display: list-item;
+    list-style-position: inside;
+
+    + dt {
+      margin-top: 1.5rem;
+    }
+  }
+}

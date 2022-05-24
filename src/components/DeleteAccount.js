@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import "../login/styles/index.scss";
+import { FormattedMessage } from "react-intl";
 
 class DeleteAccount extends Component {
   render() {
@@ -16,26 +17,36 @@ class DeleteAccount extends Component {
     }
 
     return (
-      <div>
-        <div id="delete-account-container">
-          <div className="intro">
-            <h4>{this.props.translate("settings.account_title")}</h4>
-            <p>{this.props.translate("settings.account_description")}</p>
-          </div>
-          <EduIDButton className="btn-link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
-            {this.props.translate("security.button_delete_account")}
-          </EduIDButton>
+      <article id="delete-account-container">
+        <div className="intro">
+          <h3>{this.props.translate("settings.account_title")}</h3>
+          <p>{this.props.translate("settings.account_description")}</p>
         </div>
+        <EduIDButton buttonstyle="link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
+          {this.props.translate("security.button_delete_account")}
+        </EduIDButton>
+
         <NotificationModal
-          title={this.props.translate("settings.modal_delete_title")}
+          id="delete-account-modal"
+          title={
+            <FormattedMessage
+              defaultMessage={`Are you sure you want to delete your eduID?`}
+              description="settings.modal_delete_title"
+            />
+          }
+          mainText={
+            <FormattedMessage
+              defaultMessage={`Deleting your eduID will permanently remove all your saved 
+              information. After clicking the button you need to use your log in details one final time.`}
+              description="delete.modal_info"
+            />
+          }
           showModal={this.props.confirming_deletion}
           closeModal={this.props.handleStopConfirmationDeletion}
           acceptModal={this.props.handleConfirmationDeletion}
-          mainText={this.props.translate("delete.modal_info")}
-          acceptButtonText={this.props.translate("delete.confirm_button")}
-          acceptButtonId={"delete-button"}
+          acceptButtonText={<FormattedMessage defaultMessage="Delete my eduID" description="delete.confirm_button" />}
         />
-      </div>
+      </article>
     );
   }
 }

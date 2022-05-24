@@ -1,53 +1,91 @@
 /* typography */
 
-@import "variables.scss";
+@import "variables";
 
-h1 {
-  font-size: 2.25rem;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+.heading-2,
+.heading-4 {
   margin-top: 0;
-  font-weight: 700;
-  font-family: "ProximaNova-Regular";
+  margin-bottom: 1em;
+  line-height: 1.2;
+  font-family: ProximaNova-Bold;
 
-  @media (max-width: $bp-xs) {
-    font-size: 2rem;
+  @media (max-width: $bp-md) {
     word-wrap: break-word;
     word-break: break-word;
   }
 }
 
-h2 {
-  font-size: 28px;
-  line-height: 42px;
-  font-weight: 700;
-  margin-top: 0;
+h1 {
+  font-size: 1.8rem;
+  font-family: ProximaNova-Regular;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.65rem;
+  }
+}
+
+h2,
+.heading-2 {
+  font-size: 1.65rem;
+  margin-bottom: 0.75em;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.5rem;
+  }
 }
 
 h3 {
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 1.5rem;
+  margin-bottom: 0.75em;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
+  }
 }
 
-h4 {
-  font-size: 18px;
-  padding: 0;
-  margin: 0;
+h4,
+.heading-4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5em;
 }
 
 h5 {
-  padding: 0;
-  margin: 0;
+  font-family: $proxima-light;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.5em;
 }
 
-h6 {
-  color: $black;
+.lead {
+  font-size: 1.375rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $dark-gray;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+  }
 }
 
 p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-top: 1rem 0;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  + p {
+    margin-top: -0.5rem;
+  }
+
+  @media (max-width: $bp-md) {
+    font-size: 1.125rem;
+  }
 }
 
 p.verified {
@@ -61,38 +99,19 @@ p.data {
 }
 
 p.no-data.data {
-  color: gray;
+  color: $gray;
 }
 
-p.steps {
-  padding-bottom: 0;
+.text-large {
+  font-size: $txt-lg;
 }
 
-.intro {
-  & h4 {
-    font-size: 1.5rem;
-    line-height: 2.125rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-
-  & h3 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
+.text-small {
+  font-size: $txt-sm;
 }
 
-span.heading,
-p.heading,
-h2.heading {
-  font-family: "ProximaNova-Bold";
-  letter-spacing: unset;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  padding-bottom: 0;
-  margin-bottom: 1rem;
-}
+strong {
+  font-weight: bold;
 
-.horizontal-content-margin {
-  margin-top: 1.5rem;
+  @extend b;
 }

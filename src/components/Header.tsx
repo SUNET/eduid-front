@@ -3,6 +3,7 @@ import "../login/styles/index.scss";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
+import EduIDButton from "components/EduIDButton";
 
 interface HeaderProps {
   email?: string;
@@ -16,7 +17,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  let tagline = <FormattedMessage defaultMessage="eduID is easier and safer login." description="Default tagline" />;
+  let userName;
   let button;
 
   function handleLogout() {
@@ -33,28 +34,22 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   if (props.showLogin) {
     button = (
-      <button className="header-button" id="login" onClick={handleLogin}>
+      <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
-      </button>
+      </EduIDButton>
     );
   } else if (props.showLogout) {
-    tagline = (
-      <Fragment>
-        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        &nbsp;
-        {props.email}
-      </Fragment>
-    );
+    userName = <div className="header-user">{props.email}</div>;
     button = (
-      <button className="header-button" id="logout" onClick={handleLogout}>
+      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
-      </button>
+      </EduIDButton>
     );
   } else if (props.showRegister) {
     button = (
-      <button className="header-button" id="register" onClick={handleRegister}>
+      <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
-      </button>
+      </EduIDButton>
     );
   } else {
     button = <div />;
@@ -64,13 +59,11 @@ const Header = (props: HeaderProps): JSX.Element => {
     <section className="banner">
       <header>
         <a href={dashboard_url ? dashboard_url : eduid_site_url}>
-          <div id="eduid-logo" />
+          <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
+        {userName}
       </header>
-      <div className="vertical-content-margin">
-        <h1 className="tagline">{tagline}</h1>
-      </div>
     </section>
   );
 };

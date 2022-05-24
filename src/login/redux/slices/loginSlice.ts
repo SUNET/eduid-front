@@ -1,23 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  fetchNewDevice,
+  fetchAbort,
   fetchNext,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
+  IdPAction,
   LoginAuthnOptions,
   LoginNextResponse,
   LoginUseOtherDevice1Response,
   LoginUseOtherDevice2Response,
   SAMLParameters,
+  ServiceInfo,
 } from "apis/eduidLogin";
-import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
+import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 
 // Define a type for the slice state
 interface LoginState {
   ref?: string;
+  this_device?: string;
+  previous_this_device?: string; // when disabling 'remember me', this_device is remembered here if the user regrets it
+  remember_me?: boolean;
   start_url?: string; // what to use as 'return URL' when sending the user off for external authentication (Freja)
-  next_page?: string; // should be called 'current page'
+  next_page?: IdPAction; // should be called 'current page'
+  fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
     webauthn_challenge?: string;
@@ -31,6 +39,7 @@ interface LoginState {
   authn_options: LoginAuthnOptions;
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
+  service_info?: ServiceInfo;
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -48,6 +57,21 @@ export const loginSlice = createSlice({
       // Add the login reference (currently an UUID extracted from the URL), to the store.
       state.ref = action.payload.ref;
       state.start_url = action.payload.start_url;
+    },
+    addThisDevice: (state, action: PayloadAction<string>) => {
+      // Add the identifier for this device from local storage.
+      state.this_device = action.payload;
+    },
+    clearThisDevice: (state) => {
+      if (state.this_device !== undefined) {
+        // Move contents from this_device to previous_this_device
+        state.previous_this_device = state.this_device;
+      }
+      state.this_device = undefined;
+    },
+    setRememberMe: (state, action: PayloadAction<boolean>) => {
+      // Set the 'remember me' user preference.
+      state.remember_me = action.payload;
     },
     startLoginWithAnotherDevice: (state, action: PayloadAction<{ username?: string }>) => {
       if (action.payload.username && !state.authn_options.forced_username) {
@@ -90,8 +114,10 @@ export const loginSlice = createSlice({
     // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     updatedTouAccept: (_state, _action) => {},
-    // Action connected to postRefLoginSaga.
-    callLoginNext: () => {},
+    callLoginNext: (state) => {
+      // Trigger the Login component fetching of next action to perform from the backend.
+      state.next_page = undefined;
+    },
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
     // TODO: Use the fetchNext thunk instead, and remove this
     postRefForWebauthnChallenge: () => {},
@@ -125,6 +151,15 @@ export const loginSlice = createSlice({
       .addCase(fetchUseOtherDevice2.rejected, (state) => {
         state.other_device2 = undefined;
       })
+      .addCase(fetchAbort.fulfilled, (state, action) => {
+        if (action.payload.finished) {
+          // Trigger fetching of /next on successful abort
+          state.next_page = undefined;
+        }
+      })
+      .addCase(fetchNext.pending, (state) => {
+        state.fetching_next = true;
+      })
       .addCase(fetchNext.fulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next
         const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
@@ -132,6 +167,14 @@ export const loginSlice = createSlice({
         state.post_to = action.payload.target;
         state.saml_parameters = samlParameters;
         if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
+        state.fetching_next = false;
+        state.service_info = action.payload.service_info;
+      })
+      .addCase(fetchNext.rejected, (state) => {
+        state.fetching_next = false;
+      })
+      .addCase(fetchNewDevice.fulfilled, (state, action) => {
+        state.this_device = action.payload.new_device;
       });
   },
 });

@@ -6,12 +6,14 @@ form {
   flex-direction: column;
   margin-top: 1.25rem;
 }
+
 .element-pair,
 .button-pair {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
+
 .element-pair {
   margin-top: 1rem;
   align-items: unset;
@@ -28,10 +30,38 @@ form {
   color: transparent;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  border-bottom: none;
+  color: $gray;
+}
+
+input.form-control,
+input.form-control.is-valid,
+input.form-control.is-invalid,
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  border-color: initial;
+}
+
+fieldset:not(:empty) {
+  margin-bottom: 1.25em;
+}
+
+/* smallish grayish additional info underneath corresponding form elements */
+.help-text {
+  margin: 0.5rem 0 0;
+  line-height: 1.2;
+  color: $gray;
+  font-size: 14px;
+}
+
 @media (max-width: $bp-sm) {
   #reset-password-email-form {
     flex-direction: column;
     align-items: unset;
+
     button {
       width: 100%;
       margin-top: 1rem;

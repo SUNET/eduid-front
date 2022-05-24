@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import EduIDButton from "components/EduIDButton";
 
 const RenderEmailAddress = ({ email }) => (
   <div className="hide-overflow list-cell">
@@ -18,8 +18,9 @@ const RenderRoleIndicators = ({ member, owner }) => (
 
 const RenderRemoveButton = () => (
   <div className="list-cell">
-    <ButtonRemoveData
-      className="icon-button"
+    <EduIDButton
+      buttonstyle="close"
+      size="sm"
       onClick={() => {
         console.log("you clicked the cross");
       }}

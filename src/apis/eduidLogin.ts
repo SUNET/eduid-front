@@ -2,9 +2,83 @@
  * Code and data structures for talking to the eduid-idp (login) backend microservice.
  */
 
-import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
-import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+
+/*********************************************************************************************************************/
+export interface LoginAbortRequest {
+  ref: string;
+}
+
+export interface LoginAbortResponse {
+  finished: boolean;
+}
+
+/**
+ * @public
+ * @function fetchAbort
+ * @desc     Request the backend to abort the current login request.
+ */
+export const fetchAbort = createAsyncThunk<
+  LoginAbortResponse, // return type
+  LoginAbortRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchAbort", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    ref: args.ref,
+  };
+
+  return makeLoginRequest<LoginAbortResponse>(thunkAPI, "abort", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginErrorInfoResponseLoggedIn {
+  logged_in: true;
+  eppn: string;
+  has_mfa: boolean;
+  has_verified_nin: boolean;
+  has_locked_nin: boolean;
+}
+
+export interface LoginErrorInfoResponseNotLoggedIn {
+  logged_in: false;
+}
+
+export type LoginErrorInfoResponse = LoginErrorInfoResponseLoggedIn | LoginErrorInfoResponseNotLoggedIn;
+
+/**
+ * @public
+ * @function fetchErrorInfo
+ * @desc     Get info about logged in user to make errors more precise.
+ */
+export const fetchErrorInfo = createAsyncThunk<
+  LoginErrorInfoResponse, // return type
+  undefined, // args type
+  { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
+>("login/api/fetchErrorInfo", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const base_url = state.config.base_url || state.config.error_info_url;
+
+  if (!base_url) {
+    return { logged_in: false };
+  }
+
+  let endpoint: string | undefined = "error_info";
+  if (state.config.error_info_url) {
+    /* For the errors app, we have the full URL in base_url from above */
+    endpoint = undefined;
+  }
+
+  const body: KeyValues = {};
+
+  return makeGenericRequest<LoginErrorInfoResponse>(thunkAPI, base_url, endpoint, body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 
@@ -12,28 +86,33 @@ export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1
 export type LoginUseOtherDevice1Response = UseOtherDevice1ResponseWithQR | UseOtherDevice1ResponseWithoutQR;
 
 /* Request types */
-interface UseOtherDevice1Fetch {
-  action: "FETCH";
+interface UseOtherDevice1CommonRequest {
   ref: string;
+  this_device?: string;
+  remember_me?: boolean;
+}
+
+interface UseOtherDevice1Fetch extends UseOtherDevice1CommonRequest {
+  action: "FETCH";
   username?: string;
 }
 
-interface UseOtherDevice1Abort {
+interface UseOtherDevice1Abort extends UseOtherDevice1CommonRequest {
   action: "ABORT";
-  ref: string;
 }
 
-interface UseOtherDevice1SubmitCode {
+interface UseOtherDevice1SubmitCode extends UseOtherDevice1CommonRequest {
   action: "SUBMIT_CODE";
-  ref: string;
   response_code: string;
 }
 
 /* Response types */
 interface UseOtherDevice1ResponseCommon {
+  bad_attempts: number;
+  display_id: string;
   expires_in: number;
   expires_max: number;
-  display_id: string;
+  response_code_required?: boolean;
   state_id: string;
 }
 
@@ -69,6 +148,17 @@ export const fetchUseOtherDevice1 = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+/* Request types */
+interface UseOtherDevice2WithRef {
+  ref: string;
+  action?: "ABORT";
+}
+
+interface UseOtherDevice2WithStateId {
+  state_id: string;
+  action?: "ABORT";
+}
+
 export type LoginUseOtherDevice2Request = UseOtherDevice2WithRef | UseOtherDevice2WithStateId;
 export type LoginUseOtherDevice2Response = UseOtherDevice2Response | UseOtherDevice2ResponseLoggedIn;
 
@@ -79,6 +169,9 @@ interface UseOtherDevice2ResponseCommon {
   expires_max: number;
   login_ref: string;
   short_code: string;
+  username?: string;
+  display_name?: string;
+  response_code_required?: boolean;
 }
 
 export type UseOtherDevice2Response = UseOtherDevice2ResponseCommon & {
@@ -90,19 +183,16 @@ export type UseOtherDevice2ResponseLoggedIn = UseOtherDevice2ResponseCommon & {
   response_code: string;
 };
 
+export interface ServiceInfo {
+  display_name: { [key: string]: string }; // SP display name in different locales
+}
+
 export interface DeviceInfo {
   addr: string;
   proximity: "SAME" | "NEAR" | "FAR";
   description?: string;
-}
-
-/* Request types */
-interface UseOtherDevice2WithRef {
-  ref: string;
-}
-
-interface UseOtherDevice2WithStateId {
-  state_id: string;
+  is_known_device: boolean;
+  service_info: ServiceInfo;
 }
 
 /**
@@ -125,18 +215,28 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+
+interface LoginNextRequest {
+  ref: string;
+  this_device?: string;
+  remember_me: boolean;
+}
+
+export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
+
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
   //   action: what action the backed requires next, or FINISHED
   //   target: the API endpoint for the next action
   //   parameters: SAML parameters for completing the FINISHED 'action'
-  action: string;
+  action: IdPAction;
   target: string;
   parameters?: SAMLParameters;
   authn_options?: LoginAuthnOptions;
+  service_info?: ServiceInfo;
 }
 
-export type SAMLParameters = { SAMLResponse: string; RelayState?: string };
+export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };
 
 export interface LoginAuthnOptions {
   freja_eidplus?: boolean;
@@ -145,6 +245,7 @@ export interface LoginAuthnOptions {
   forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
+  display_name?: string;
 }
 
 /**
@@ -154,15 +255,33 @@ export interface LoginAuthnOptions {
  */
 export const fetchNext = createAsyncThunk<
   LoginNextResponse, // return type
-  { ref: string }, // args type
+  LoginNextRequest, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/fetchNext", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    ref: args.ref,
-  };
-
   // TODO: We also have the full next_url in config, should we remove that?
-  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", body)
+  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+/*********************************************************************************************************************/
+
+export interface LoginNewDeviceResponse {
+  // The response from the /new_device API endpoint consists of (in the happy case):
+  //   new_device: a string to store in local storage, and pass on any subsequent requests to /next
+  new_device: string;
+}
+
+/**
+ * @public
+ * @function fetchNewDevice
+ * @desc     Request the backend to initialise a new "known device", to recognise this device in the future.
+ */
+export const fetchNewDevice = createAsyncThunk<
+  LoginNewDeviceResponse, // return type
+  { ref: string }, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchNewDevice", async (args, thunkAPI) => {
+  return makeLoginRequest<LoginNewDeviceResponse>(thunkAPI, "new_device", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -174,43 +293,11 @@ async function makeLoginRequest<T>(
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
-  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    try {
-      const state = thunkAPI.getState();
+  const state = thunkAPI.getState();
 
-      const response = await makeRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
+  if (!state.config.base_url) {
+    throw new Error("Missing configuration base_url");
+  }
 
-      if (response.error) {
-        // Dispatch fail responses so that notification middleware will show them to the user.
-        // The current implementation in notify-middleware.js _removes_ error and payload.message from
-        // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
-        thunkAPI.dispatch(response);
-        reject(saved);
-      }
-
-      resolve(response);
-    } catch (error) {
-      if (error instanceof Error) {
-        thunkAPI.dispatch(loginFail(error.toString()));
-        reject(error.toString());
-      } else {
-        reject(error);
-      }
-    }
-  });
+  return makeGenericRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
 }
-
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const loginFail = createAction("login_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});

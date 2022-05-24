@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useHistory } from "react-router";
 import { ButtonGroup } from "reactstrap";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
@@ -75,22 +74,23 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
             <div id="password-suggestion">
               <ButtonGroup>
-                <EduIDButton className="btn-link" id="pwmode-button" onClick={togglePasswordType}>
+                <EduIDButton buttonstyle="link" className="normal-case" id="pwmode-button" onClick={togglePasswordType}>
                   {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
                 </EduIDButton>
               </ButtonGroup>
             </div>
-            <div id="chpass-form" className="tabpane">
-              <PrimaryButton
+            <div id="chpass-form" className="tabpane buttons">
+              <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
+                {translate("cm.cancel")}
+              </EduIDButton>
+              <EduIDButton
+                type="submit"
                 id="chpass-button"
-                className="settings-button"
+                buttonstyle="primary"
                 disabled={formProps.submitting || formProps.invalid}
                 onClick={formProps.handleSubmit}
               >
                 {translate("chpass.button_save_password")}
-              </PrimaryButton>
-              <EduIDButton className="cancel-button" onClick={handleCancel}>
-                {translate("cm.cancel")}
               </EduIDButton>
             </div>
           </React.Fragment>

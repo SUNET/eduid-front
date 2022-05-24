@@ -1,0 +1,18 @@
+/* white plate to highlight content, use .figure if not semantically a "figure" */
+@import "variables.scss";
+
+figure,
+.figure {
+  background: $white;
+  text-align: center;
+  margin: 1em 0;
+  padding: 1em;
+
+  figcaption,
+  .figcaption {
+    font-size: $txt-sm;
+    font-weight: bold;
+    font-family: $akkurat;
+    color: $black;
+  }
+}

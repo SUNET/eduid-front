@@ -1,5 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
 import React, { Fragment, useState } from "react";
 import { FieldRenderProps } from "react-final-form";
@@ -16,26 +14,15 @@ interface CustomInputProps extends FieldRenderProps<string> {
 export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
   const { meta, input } = props;
 
-  let valid = false,
-    invalid = false;
-
-  if (meta.touched || meta.submitFailed) {
-    if (meta.error) {
-      invalid = true;
-    } else {
-      valid = true;
-    }
-  }
-
   return (
     <FormGroup id={`${input.name}-wrapper`}>
       <RenderLabelAndHelpText {...props} name={input.name} />
       {input.name === "current-password" ? (
-        <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
+        <PasswordInputElement {...props} name={input.name} id={input.name} valid={meta.valid} invalid={meta.invalid} />
       ) : (
-        <InputElement {...props} valid={valid} invalid={invalid} />
+        <InputElement {...props} valid={meta.valid} invalid={meta.invalid} />
       )}
-      <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
+      <RenderErrorMessage {...props} name={input.name} />
     </FormGroup>
   );
 }
@@ -43,29 +30,32 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
   const { label, name, helpBlock, required } = props;
   return (
-    <div className={"input-label-helptext-container"}>
+    <div className="input-label-help-text-container">
       {label && (
         <Label aria-required="true" htmlFor={name}>
           {label}
           {required && <span className="label-required">*</span>}
         </Label>
       )}
-      {helpBlock && <span className={"help-block"}>{helpBlock}</span>}
+      {helpBlock && <span className="help-block">{helpBlock}</span>}
     </div>
   );
 };
 
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
-  const { meta, invalid } = props;
-  const errmsg = (invalid && translate(meta.error)) || "";
+  const { meta } = props;
+
+  if (meta.pristine || !meta.error) {
+    return <Fragment />;
+  }
+
+  const errmsg = translate(meta.error) || "";
   return (
-    errmsg && (
-      <FormText>
-        <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-          {errmsg}
-        </span>
-      </FormText>
-    )
+    <FormText>
+      <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+        {errmsg}
+      </span>
+    </FormText>
   );
 };
 
@@ -102,6 +92,7 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
       aria-required={input.required}
       invalid={props.invalid}
       {...input}
+      autoFocus={props.autoFocus}
     />
   );
 };

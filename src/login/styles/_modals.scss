@@ -6,252 +6,138 @@
   justify-content: center;
   width: 60%;
   margin: 0 20%;
+  padding: 1rem 0;
 
-  & #modal-form {
-    & form {
-      margin-top: 0;
-    }
-  }
-}
-
-.modal-title {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  & .close-button-container {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  padding: 0 0 1.5rem 2.25rem;
-}
-
-h5.modal-title {
-  font-family: "ProximaNova-Bold";
-  line-height: 1.4;
-  font-size: 1.25rem;
-}
-
-.modal-content {
-  background-color: $white;
-  border-radius: 20px;
-
-  & .modal-header {
-    border-bottom: none;
-    padding: 0;
-  }
-
-  & .modal-body {
-    padding: 0 2.25rem;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.25rem;
-    line-height: 1.4;
-
-    & button.btn.settings-button {
-      margin: 0 0 1rem;
-    }
-
-    & input {
-      background-color: $light-gray;
-    }
-  }
-
-  & .modal-footer {
-    border-top: none;
-    padding: 0;
-
-    & a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
-.modal-dialog {
-  margin-top: 70px;
-  background-color: white;
-  border-radius: 20px;
-  width: 100%;
-  margin: auto;
-}
-
-.resend-code-container {
-  margin-top: 1rem;
-
-  & a {
-    font-size: 1rem;
-  }
-}
-
-// temporary styling for register tou
-.register-modal {
-  & .modal-body {
-    padding: 0 2rem 1rem;
-
-    & p {
-      font-size: 1rem;
-      padding-bottom: 0;
-    }
-
-    & ul {
-      margin-left: 2rem;
-      list-style-type: disc;
-
-      & li {
-        margin: 0.75rem 0;
-        line-height: 1;
-      }
-    }
-  }
-
-  & .modal-footer {
-    & button {
-      margin: 0;
-    }
-  }
-}
-
-ol {
-  list-style-type: decimal;
-}
-
-#freja-instructions {
-  & ol {
-    line-height: 1;
-    font-size: 1.25rem;
-    margin: 0 0 2rem 2rem;
-
-    & li {
-      margin-bottom: 1rem;
-
-      & span {
-        line-height: 1.4;
-      }
-    }
-
-    & label {
-      color: #7c7c7c;
-      margin: 1rem 0;
-    }
-  }
-
-  & a {
-    font-size: 1rem;
-    text-decoration: underline;
-
-    &:hover {
-      color: #ff4500;
-      text-decoration: none;
-    }
-  }
-}
-
-#delete-account-modal {
-  & .modal-footer {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  & label {
-    margin-bottom: 30px;
-    color: #7c7c7c;
-    font-size: 1rem;
-    text-transform: none;
-    line-height: 1.5;
-    font-weight: 700;
-  }
-}
-
-/* styles for confirm button in delete account modal */
-
-.modal-footer {
-  display: flex;
-  justify-content: center;
-}
-
-p.modal-text {
-  margin-top: 0;
-}
-
-@media (max-width: $bp-lg) {
-  // ---- modals ----- //
-  #register-modal,
-  #delete-account-modal,
-  #eidas-modal,
-  .modal-dialog {
-    width: calc(100% - 1.25rem);
-    margin: auto 1rem;
-  }
-
-  .modal {
+  &-dialog {
+    background-color: $white;
+    border-radius: 20px;
     width: 100%;
-    margin: 0;
-  }
+    margin: auto;
 
-  .modal-content {
-    // .modal-title {
-    // & span {
-    // font-size: 1rem;
-    // padding: 1rem 0 0 1rem;
-    // }
-    // }
-    & .modal-body {
-      // padding: 1rem;
-      // font-size: 1rem;
-      & button.btn.settings-button {
-        margin: 0 0 1rem;
-      }
+    .modal-content {
+      background-color: $white;
+      border-radius: 20px;
 
-      & .form-control,
-      & input {
-        font-size: 1.25rem;
+      .modal-header {
+        border-bottom: none;
+        padding: 1.25rem 2.25rem 0.25rem;
 
-        &::placeholder {
-          font-size: 1.25rem;
+        .modal-title {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          text-transform: none;
+          @extend .heading-2;
         }
       }
 
-      & p {
-        font-size: 1rem;
+      .modal-body {
+        padding: 0 2.25rem 1rem;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.25rem;
+        line-height: 1.4;
+
+        input {
+          background-color: $light-gray;
+        }
+
+        form {
+          margin-top: 0;
+        }
+
+        // move to lists?
+        ol {
+          list-style-position: inside;
+          list-style-type: decimal;
+
+          li {
+            margin-bottom: 1.125rem;
+
+            span {
+              margin-top: 0.5rem;
+              font-family: $proxima-bold;
+              display: block;
+              font-size: 1rem;
+            }
+          }
+        }
+
+        // .resend-code-container {
+        //   margin-top: 1rem;
+
+        //   a {
+        //     font-size: 1rem;
+        //   }
+        // }
+
+        @media (max-width: $bp-lg) {
+          font-size: 1.125rem;
+
+          .form-control,
+          input {
+            font-size: inherit;
+
+            &::placeholder {
+              font-size: inherit;
+            }
+          }
+
+          // .resend-code-container {
+          //   margin-top: 1rem;
+          //   font-size: 0.9rem;
+          // }
+        }
+      }
+
+      .modal-footer {
+        border-top: none;
+        margin: 1rem 1rem 2rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: center;
+
+        button {
+          margin: 0;
+        }
       }
     }
 
-    & .modal-footer {
-      padding: 0;
+    @media (min-width: 576px) {
+      max-width: 100%;
+    }
+
+    @media (max-width: $bp-lg) {
+      width: calc(100% - 1.25rem);
+      margin: auto 1rem;
+
+      .modal-body {
+        font-size: 1.125rem;
+
+        .form-control,
+        input {
+          font-size: inherit;
+
+          &::placeholder {
+            font-size: inherit;
+          }
+        }
+
+        // .resend-code-container {
+        //   margin-top: 1rem;
+        //   font-size: 0.9rem;
+        // }
+      }
+    }
+
+    @media (max-width: $bp-md) {
+      max-width: calc(100% - 40px);
     }
   }
 
-  // h5.modal-title {
-  //   font-size: 1rem;
-  // }
-
-  .resend-code-container {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-  }
-
-  p.modal-text {
-    font-size: 1rem;
-    line-height: 1.2;
-  }
-
-  #delete-account-modal label {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: $bp-md) {
-  .modal-dialog {
-    max-width: calc(100% - 40px);
-  }
-}
-
-@media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 100%;
+  @media (max-width: $bp-lg) {
+    width: 100%;
+    margin: 0;
   }
 }

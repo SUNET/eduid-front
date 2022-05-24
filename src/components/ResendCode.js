@@ -6,15 +6,17 @@ class ResendCode extends Component {
   render() {
     return (
       <div id="content" className="horizontal-content-margin content">
-        <h3 className="register-header">{this.props.translate("resend.link-sent")}</h3>
+        <h1 className="register-header">{this.props.translate("resend.link-sent")}</h1>
         <div id="email-display">
           <p>{this.props.translate("resend.email-label")}</p>
-          <h3 className="register-header registered-email">{this.props.email}</h3>
+          <h4 className="register-header registered-email">{this.props.email}</h4>
         </div>
 
-        <EduIDButton id="resend-button" className="settings-button" onClick={this.props.handleResend}>
-          {this.props.translate("resend.button")}
-        </EduIDButton>
+        <div className="buttons">
+          <EduIDButton id="resend-button" buttonstyle="primary" onClick={this.props.handleResend}>
+            {this.props.translate("resend.button")}
+          </EduIDButton>
+        </div>
       </div>
     );
   }

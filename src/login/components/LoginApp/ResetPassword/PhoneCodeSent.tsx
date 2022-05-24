@@ -15,7 +15,7 @@ import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
 import { clearNotifications } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { PhoneInterface } from "./ExtraSecurity";
 
 export interface PhoneCodeFormData {
@@ -48,6 +48,14 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "mobile.confirm_mobile_placeholder",
+    defaultMessage: "Phone confirmation code",
+    description: "placeholder text for phone code input",
+  });
+
   const handlePhoneCode = (values: { phone: string }) => {
     const phone = values.phone;
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
@@ -59,6 +67,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
   return (
     <Form id="phone-code-form" role="form" onSubmit={handleSubmit(handlePhoneCode)}>
       <Field
+        placeholder={placeholder}
         component={CustomInput}
         componentClass="input"
         type="text"
@@ -70,7 +79,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
         }
         name="phone"
       />
-      <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
+      <EduIDButton buttonstyle="primary" id="save-phone-button" disabled={props.invalid}>
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
       </EduIDButton>
     </Form>
@@ -135,10 +144,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
         <ConnectedPhoneForm {...props} emailCode={emailCode} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
-            <FormattedMessage
-              defaultMessage="Send a new confirmation code"
-              description="Reset Password phone code sent(Resend code link button)"
-            />
+            <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
           </a>
           <span id="timer-in" className="display-none">
             <FormattedMessage defaultMessage="in" description="Reset Password phone code sent" />

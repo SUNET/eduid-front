@@ -1,7 +1,7 @@
 builders:
   - script
 git:
-  branch: master
+  branch: main
   extensions:
     # Check out a local branch named as remote branch for use with "${GIT_LOCAL_BRANCH}"
     checkout_local_branch: true

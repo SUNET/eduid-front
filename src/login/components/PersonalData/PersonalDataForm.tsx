@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
@@ -14,6 +13,7 @@ import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
+import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
@@ -49,7 +49,9 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
         >
           <FontAwesomeIcon icon={faRedo} />
         </button>
-        <label htmlFor="name-check" className="hint">{translate("pd.update_locked_names")}</label>
+        <label htmlFor="name-check" className="hint">
+          {translate("pd.update_locked_names")}
+        </label>
       </div>
     </Fragment>
   );
@@ -58,26 +60,24 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
 const RenderEditableNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
-      <div className="input-pair">
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="given_name"
-          label={props.names.first}
-          placeholder={props.names.first}
-        />
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="surname"
-          label={props.names.last}
-          placeholder={props.names.last}
-        />
-      </div>
+      <Field
+        component={CustomInput}
+        required={true}
+        componentClass="input"
+        type="text"
+        name="given_name"
+        label={props.names.first}
+        placeholder={props.names.first}
+      />
+      <Field
+        component={CustomInput}
+        required={true}
+        componentClass="input"
+        type="text"
+        name="surname"
+        label={props.names.last}
+        placeholder={props.names.last}
+      />
       <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
@@ -92,13 +92,15 @@ interface RenderSavePersonalDataButtonProps {
 const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   return (
-    <ButtonPrimary
-      id="personal-data-button"
-      className="settings-button"
-      disabled={loading || pristine || invalid || submitting}
-    >
-      {translate("button_save")}
-    </ButtonPrimary>
+    <div className="buttons">
+      <EduIDButton
+        id="personal-data-button"
+        buttonstyle="primary"
+        disabled={loading || pristine || invalid || submitting}
+      >
+        {translate("button_save")}
+      </EduIDButton>
+    </div>
   );
 };
 
@@ -150,19 +152,21 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
       }}
       onSubmit={props.handleSubmit(formSubmit)}
     >
-      <div className="name-inputs">
+      <fieldset className="name-inputs">
         {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
-      </div>
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="display_name"
-        label={names.display}
-        placeholder={names.display}
-        helpBlock={translate("pd.display_name_input_help_text")}
-      />
+      </fieldset>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="display_name"
+          label={names.display}
+          placeholder={names.display}
+          helpBlock={translate("pd.display_name_input_help_text")}
+        />
+      </fieldset>
       <Field
         component={CustomInput}
         required={true}

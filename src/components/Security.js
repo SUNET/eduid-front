@@ -5,11 +5,10 @@ import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
 import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
-import NotificationModal from "../login/components/Modals/NotificationModal";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
-import CookieChecker from "./../components/CookieChecker";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
+import { FormattedMessage } from "react-intl";
 
 function Security(props) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -82,60 +81,63 @@ function Security(props) {
   });
 
   return (
-    <div id="security-container">
+    <article id="security-container">
       {!isPlatformAuthLoaded && <div ref={spinnerRef} id="eduid-splash-screen" />}
       <div id="register-securitykey-container">
         <div className="intro">
-          <h4>{translate("security.security-key_title")}</h4>
+          <h3>{translate("security.security-key_title")}</h3>
           <p>{translate("security.second-factor")}</p>
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable {...props} />
-          <div className="register-authn-buttons">
+          <label>
+            <FormattedMessage
+              description="select extra webauthn"
+              defaultMessage={`Choose extra identification method:`}
+            />
+          </label>
+          <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
-              // TODO: will remove CookieChecker when user can authenticate with other devices
-              <CookieChecker cookieName="show-platform-auth">
-                <EduIDButton
-                  id="security-webauthn-platform-button"
-                  onClick={props.handleStartAskingDeviceWebauthnDescription}
-                >
-                  {translate("security.add_webauthn_token_device")}
-                </EduIDButton>
-              </CookieChecker>
+              <EduIDButton
+                id="security-webauthn-platform-button"
+                buttonstyle="primary"
+                onClick={props.handleStartAskingDeviceWebauthnDescription}
+              >
+                <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+              </EduIDButton>
             ) : null}
-            <button
+            <EduIDButton
               id="security-webauthn-button"
-              className={isPlatformAuthenticatorAvailable ? "second-option" : "btn btn-primary"}
+              buttonstyle="primary"
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
-              {translate("security.add_webauthn_token_key")}
-            </button>
+              <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
+            </EduIDButton>
           </div>
         </div>
       </div>
-
-      <NotificationModal
-        modalId="securityConfirmDialog"
-        title={translate("security.confirm_title_chpass")}
-        mainText={translate("security.change_info")}
-        showModal={props.confirming_change}
-      />
-
       <ConfirmModal
-        modalId="describeWebauthnTokenDialog"
-        id="describeWebauthnTokenDialogControl"
-        title={translate("security.webauthn-describe-title")}
-        resendLabel={translate("security.webauthn_credential_type")}
+        id="describe-webauthn-token-modal"
+        title={
+          <FormattedMessage
+            description="security webauthn describe title"
+            defaultMessage={`Add a name for your security key`}
+          />
+        }
         placeholder={placeholder}
-        with_resend_link={false}
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
         handleConfirm={props.handleStartWebauthnRegistration}
-        helpBlock={translate("security.help_text")}
+        modalFormLabel={
+          <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
+        }
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
+        helpBlock={
+          <FormattedMessage defaultMessage={`max 50 characters`} description="Help text for security key max length" />
+        }
       />
-    </div>
+    </article>
   );
 }
 
@@ -170,7 +172,7 @@ function SecurityKeyTable(props) {
       );
     } else {
       btnVerify = (
-        <EduIDButton className="btn-link nobutton verify-status-label" onClick={props.handleVerifyWebauthnToken}>
+        <EduIDButton buttonstyle="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
           {translate("security.verify")}
         </EduIDButton>
       );
@@ -187,19 +189,12 @@ function SecurityKeyTable(props) {
         </td>
         <td>{btnVerify}</td>
         <td>
-          <EduIDButton className="btn-link btn-remove-webauthn" onClick={props.handleRemoveWebauthnToken}>
-            <svg
-              className="remove"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 0h2v16H7z" />
-              <path d="M0 9V7h16v2z" />
-            </svg>
-          </EduIDButton>
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={props.handleRemoveWebauthnToken}
+          ></EduIDButton>
         </td>
       </tr>
     );

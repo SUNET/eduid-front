@@ -14,6 +14,7 @@ export function validateEmailInForm(values: EmailData): EmailData {
   if (values !== undefined) {
     errors.email = validateEmailField(values.email);
   }
+
   return errors;
 }
 

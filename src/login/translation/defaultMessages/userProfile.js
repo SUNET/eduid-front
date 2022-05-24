@@ -54,40 +54,10 @@ export const userProfile = {
   ),
   "dashboard_nav.back": <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />,
 
-  "verify-identity.unverified_main_title": (
-    <FormattedMessage
-      id="verify-identity.unverified_main_title"
-      defaultMessage={`Connect your identity to your eduID`}
-    />
-  ),
-
-  "verify-identity.add-nin_heading": (
-    <FormattedMessage
-      id="verify-identity.add-nin_heading"
-      defaultMessage={`1. Add
-            your id number`}
-    />
-  ),
-
-  "verify-identity.unverified_page-description": (
-    <FormattedMessage
-      id="verify-identity.unverified_page-description"
-      defaultMessage={`To be able
-            to use eduID you have to prove your identity. Add your national id number and verify it in real life.`}
-    />
-  ),
-
   "verify-identity.verified_pw_reset_extra_security": (
     <FormattedMessage
       id="verify-identity.verified_pw_reset_extra_security"
       defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset.`}
-    />
-  ),
-
-  "verify-identity.verified_page-description": (
-    <FormattedMessage
-      id="verify-identity.verified_page-description"
-      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education.`}
     />
   ),
 
@@ -141,30 +111,12 @@ export const userProfile = {
       defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
     />
   ),
-
-  "verify-identity.connect-nin_heading": (
-    <FormattedMessage id="verify-identity.connect-nin_heading" defaultMessage={`2. Verify your id number`} />
-  ),
-
-  "verify-identity.connect-nin_description": (
-    <FormattedMessage
-      id="verify-identity.connect-nin_description"
-      defaultMessage={`  Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another.`}
-    />
-  ),
 };
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */
   "letter.button_text_code": (
     <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter confirmation code here`} />
-  ),
-
-  "letter.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="letter.initialize_proofing_help_text"
-      defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
-    />
   ),
 
   "letter.no_state_found": <FormattedMessage id="letter.no_state_found" defaultMessage={`No state found`} />,
@@ -210,13 +162,6 @@ export const userVetting = {
     <FormattedMessage id="lmp.button_text_code" defaultMessage={`Enter confirmation code here`} />
   ),
 
-  "lmp.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="lmp.initialize_proofing_help_text"
-      defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers.`}
-    />
-  ),
-
   "lmp.initialize_proofing_help_text_tip_1": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text_tip_1"
@@ -226,20 +171,6 @@ export const userVetting = {
 
   /* ----- confirmed number > ready for vetting------- */
 
-  "lmp.modal_confirm_title": (
-    <FormattedMessage
-      id="lmp.modal_confirm_title"
-      defaultMessage={`Check if your phone number is connected to your id number.`}
-    />
-  ),
-
-  "lmp.modal_confirm_info": (
-    <FormattedMessage
-      id="lmp.confirm_info"
-      defaultMessage={`This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity.`}
-    />
-  ),
-
   "lmp.verification_success": (
     <FormattedMessage
       id="lmp.verification_success"
@@ -248,23 +179,6 @@ export const userVetting = {
   ),
 
   /* ----- FREJA------- */
-  "eidas.vetting_button_freja": (
-    <FormattedMessage id="eidas.vetting_button_freja" defaultMessage={`with a digital ID-card`} />
-  ),
-
-  "eidas.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app.`}
-      values={{
-        skaffa_freja_eid_link: (
-          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-            Freja eID
-          </a>
-        ),
-      }}
-    />
-  ),
 
   "eidas.modal_title": (
     <FormattedMessage id="eidas.modal_title" defaultMessage={`Use Freja eID+ and pass a local authorised agent`} />
@@ -490,8 +404,6 @@ export const userData = {
     <FormattedMessage id="nin_display.profile.main_title" defaultMessage={`Id number`} />
   ),
 
-  "nin_display.profile.no_nin": <FormattedMessage id="nin_display.profile.no_nin" defaultMessage={`add id number`} />,
-
   "nins.input_help_text": (
     <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
   ),
@@ -567,23 +479,8 @@ export const userData = {
     />
   ),
 
-  "phones.input_help_text": (
-    <FormattedMessage id="phones.input_help_text" defaultMessage={"Phone number starting with 0 or +"} />
-  ),
-
-  "phones.main_title": <FormattedMessage id="phones.main_title" defaultMessage={`Mobile phone numbers`} />,
-
-  "phones.button_add_more": <FormattedMessage id="phones.button_add_more" defaultMessage={`+ add more`} />,
-
   "phones.get-success": (
     <FormattedMessage id="phones.get-success" defaultMessage={`Successfully retrieved phone numbers`} />
-  ),
-
-  "phones.duplicated": (
-    <FormattedMessage
-      id="phones.duplicated"
-      defaultMessage={`That phone number is already in use, please choose another`}
-    />
   ),
 
   "phones.save-success": <FormattedMessage id="phones.save-success" defaultMessage={`The phone number was saved`} />,
@@ -653,6 +550,10 @@ export const userData = {
       defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
                             using international notation, starting with '+' and followed by 10-20 digits.`}
     />
+  ),
+
+  "phones.duplicated": (
+    <FormattedMessage id="phones.duplicated" defaultMessage={`The number is already in the list.`} />
   ),
   /* -----  MOBILE ------- */
 
@@ -753,14 +654,6 @@ export const userData = {
     />
   ),
 
-  "emails.long_description": (
-    <FormattedMessage
-      id="emails.long_description"
-      defaultMessage={`You can connect one or more email addresses with your eduID
-          account and select one to be your primary email address.`}
-    />
-  ),
-
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
@@ -768,19 +661,8 @@ export const userData = {
     />
   ),
 
-  "emails.main_title": <FormattedMessage id="emails.main_title" defaultMessage={`Email addresses`} />,
-
-  "emails.button_add_more": <FormattedMessage id="emails.button_add_more" defaultMessage={`+ add more`} />,
-
   "emails.get-success": (
     <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />
-  ),
-
-  "emails.duplicated": (
-    <FormattedMessage
-      id="emails.duplicated"
-      defaultMessage={`That email address is already in use, please choose another`}
-    />
   ),
 
   "emails.save-success": <FormattedMessage id="emails.save-success" defaultMessage={`The email address was saved`} />,
@@ -837,6 +719,8 @@ export const userData = {
       defaultMessage={`We have no record of the email address you provided`}
     />
   ),
+
+  "emails.duplicated": <FormattedMessage id="emails.duplicated" defaultMessage={`The email is already in the list.`} />,
 
   /* -----  Advanced settings ------- */
 
@@ -944,10 +828,6 @@ export const userData = {
     />
   ),
 
-  "security.webauthn_credential_type": (
-    <FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />
-  ),
-
   "security.add_webauthn_token_key": (
     <FormattedMessage id="security.add_webauthn_token_key" defaultMessage={`Add security key`} />
   ),
@@ -966,10 +846,6 @@ export const userData = {
       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
     the owner of your eduID.`}
     />
-  ),
-
-  "security.webauthn-describe-title": (
-    <FormattedMessage id="security.webauthn-describe-title" defaultMessage={`Add a name for your security key`} />
   ),
 
   "security.webauthn.max_allowed_tokens": (
@@ -1105,17 +981,4 @@ export const userData = {
   "security.button_delete_account": (
     <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
-
-  "settings.modal_delete_title": (
-    <FormattedMessage id="settings.modal_delete_title" defaultMessage={`Are you sure you want to delete your eduID?`} />
-  ),
-
-  "delete.modal_info": (
-    <FormattedMessage
-      id="delete.modal_info"
-      defaultMessage={`Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time.`}
-    />
-  ),
-
-  "delete.confirm_button": <FormattedMessage id="delete.confirm_button" defaultMessage={`Delete my eduID`} />,
 };

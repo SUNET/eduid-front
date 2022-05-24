@@ -3,8 +3,10 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, dashboardStore } from "dashboard-init-app";
 import { mount, ReactWrapper } from "enzyme";
 import { ChangePasswordState } from "reducers/ChangePassword";
+import { initialState as emailsInitialState } from "reducers/Emails";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
+import { NinState } from "reducers/Nins";
 
 export const dashboardTestState: DashboardRootState = {
   config: {
@@ -15,12 +17,12 @@ export const dashboardTestState: DashboardRootState = {
   intl: { locale: "en", messages: {} },
 
   chpass: {} as ChangePasswordState,
-  emails: undefined as any,
+  emails: emailsInitialState,
   groups: undefined as any,
   invites: undefined as any,
   openid_data: undefined as any,
   lookup_mobile: undefined as any,
-  nins: undefined as any,
+  nins: undefined as any as NinState,
   openid_freja_data: undefined as any,
   personal_data: undefined as any,
   phones: undefined as any,
@@ -28,7 +30,6 @@ export const dashboardTestState: DashboardRootState = {
   notifications: undefined as any,
   account_linking: undefined as any,
   security: undefined as any,
-  eidas_data: undefined as any,
   ladok: undefined as any,
 };
 
@@ -43,7 +44,7 @@ export function fakeStore(state: DashboardRootState = dashboardTestState): MockS
 interface setupComponentArgs {
   component: JSX.Element;
   store?: DashboardStoreType;
-  overrides?: { [key: string]: unknown };
+  overrides?: Partial<DashboardRootState>;
 }
 
 export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {

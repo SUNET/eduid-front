@@ -2,22 +2,23 @@
 
 #dashboard-nav {
   & ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
     margin-left: -0.1875rem;
     margin-bottom: 0;
+    display: inline-block;
 
     & li {
-      margin: 0.5rem 2rem 0.5rem 0;
-      flex: 1;
+      margin: 0 1.25rem 0.75rem 0;
+      //flex: 1;
+      display: inline-block;
     }
 
     & a {
       color: $black;
       padding: 0 0.1875rem;
-
-      & span {
+      line-height: 1.25 & span {
         border-bottom: $black solid 1px;
       }
 
@@ -57,7 +58,7 @@
   grid-template-rows: repeat(2, auto);
 
   & label {
-    font-family: "ProximaNova-Bold";
+    font-family: ProximaNova-Bold;
     font-size: 1rem;
     width: 100%;
   }
@@ -69,26 +70,12 @@
 
   .display-nin-show-hide {
     display: flex;
+    //padding-bottom: 1.5rem;
 
+    // show and hide button
     button {
-      margin-top: 6px;
-    }
-  }
-
-  & .data-with-delete {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    & p {
-      font-size: 2.25rem;
-      font-family: "ProximaNova-Regular";
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    & .display-data {
-      margin-top: 0;
+      margin-left: 1rem;
+      height: auto;
     }
   }
 
@@ -99,27 +86,27 @@
       border-bottom: solid 1px transparent;
     }
   }
+}
 
-  & .display-data {
-    font-family: "ProximaNova-Light";
-    font-size: 2rem;
-    line-height: 1;
-    margin-left: 0.1875rem;
-    margin-top: 1rem;
-    padding-bottom: 0;
-    word-wrap: break-word;
+.display-data {
+  font-family: ProximaNova-Light;
+  font-size: 1.5rem;
+  word-wrap: break-word;
 
-    &.no-data {
-      color: gray;
-    }
+  &.no-data {
+    color: $gray;
+  }
 
-    &.unverified {
-      color: $orange-highlight;
-    }
+  &.unverified {
+    color: $orange-highlight;
+  }
 
-    &.verified {
-      color: $black;
-    }
+  &.verified {
+    color: $black;
+  }
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
   }
 }
 

@@ -1,42 +1,12 @@
-import React from "react";
+import LetterProofingButton from "components/LetterProofing";
 import { shallow } from "enzyme";
 import expect from "expect";
+import React from "react";
 import { IntlProvider } from "react-intl";
+import { ninStateFromNinList } from "reducers/Nins";
 import letterProofingSlice from "../reducers/LetterProofing";
-import LetterProofingButton from "components/LetterProofing";
-import { DashboardRootState } from "../dashboard-init-app";
 import { setupComponent } from "./helperFunctions/DashboardTestApp";
-
-const baseState: DashboardRootState = {
-  letter_proofing: {},
-  config: {
-    letter_proofing_url: "http://localhost/letter",
-    csrf_token: "csrf-token",
-  },
-  nins: {
-    message: "",
-    nin: "",
-    rmNin: "",
-    nins: [],
-  },
-  notifications: undefined as any,
-  router: undefined as any,
-  chpass: {},
-  emails: {},
-  groups: undefined as any,
-  invites: undefined as any,
-  openid_data: undefined as any,
-  lookup_mobile: {},
-  openid_freja_data: undefined as unknown as any,
-  personal_data: undefined as any,
-  phones: {},
-  account_linking: undefined as any,
-  security: undefined as any,
-  eidas_data: undefined as any,
-  ladok: undefined as any,
-  form: undefined as any,
-  intl: { locale: "en", messages: {} },
-};
+import { dashboardTestState } from "./helperFunctions/DashboardTestApp";
 
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -61,7 +31,7 @@ describe("Letter Proofing, with disabled props", () => {
         letter_proofing: {
           letter_expired: true,
         },
-        nins: { nins: ["20001010"] },
+        nins: ninStateFromNinList([{ number: "20001010", verified: false, primary: true }]),
       },
     });
   }
@@ -80,7 +50,7 @@ describe("LetterProofing component, without id number", () => {
           letter_sent: undefined,
           letter_expired: false,
         },
-        nins: { nins: [""] },
+        nins: ninStateFromNinList([]),
       },
     });
   }
@@ -101,7 +71,7 @@ describe("LetterProofing component, letter has been sent", () => {
           letter_sent: "2021-11-23T13:37:15.799000+00:00",
           letter_expires: "2021-12-07T19:59:59.799000+00:00",
         },
-        nins: { valid_nin: true, nins: ["19881212"] },
+        nins: ninStateFromNinList([{ number: "19881212", verified: false, primary: true }]),
       },
     });
   }
@@ -133,7 +103,7 @@ describe("LetterProofing component, letter has been sent", () => {
           letter_expires: "2021-12-07T19:59:59.799000+00:00",
           letter_expired: true,
         },
-        nins: { valid_nin: true, nins: ["19881212"] },
+        nins: ninStateFromNinList([{ number: "19881212", verified: false, primary: true }]),
       },
     });
   }
@@ -177,7 +147,7 @@ describe("LetterProofing Slice", () => {
         letter_expired: true,
       },
     };
-    const state = letterProofingSlice.reducer(baseState.letter_proofing, action);
+    const state = letterProofingSlice.reducer(dashboardTestState.letter_proofing, action);
     expect(state).toEqual(action.payload);
   });
   it("postRequestLetter is fulfilled", () => {
@@ -191,7 +161,7 @@ describe("LetterProofing Slice", () => {
         letter_sent_days_ago: 0,
       },
     };
-    const state = letterProofingSlice.reducer(baseState.letter_proofing, action);
+    const state = letterProofingSlice.reducer(dashboardTestState.letter_proofing, action);
     expect(state).toEqual(action.payload);
   });
   it("confirmLetterCode is fulfilled", () => {
@@ -201,7 +171,7 @@ describe("LetterProofing Slice", () => {
         message: "letter.verification_success",
       },
     };
-    const state = letterProofingSlice.reducer(baseState.letter_proofing, action);
+    const state = letterProofingSlice.reducer(dashboardTestState.letter_proofing, action);
     expect(state).toEqual({
       letter_sent: undefined,
       letter_expires: undefined,
