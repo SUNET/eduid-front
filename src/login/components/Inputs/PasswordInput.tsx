@@ -19,7 +19,7 @@ export default function PasswordInput(props: { name?: string }): JSX.Element {
       type="password"
       name={props.name || "current-password"}
       component={CustomInput}
-      // autoComplete="current-password"
+      autoComplete="current-password"
       required={true}
       label={<FormattedMessage defaultMessage="Password" description="password input field label" />}
       placeholder={placeholder}
