@@ -19,6 +19,7 @@ import {
   chooseAuthenticator,
 } from "actions/Security";
 import { clearNotifications } from "reducers/Notifications";
+import DataTable from "login/components/DataTable/DataTable";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -131,7 +132,7 @@ function Security(props: any) {
           <p>{translate("security.second-factor")}</p>
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">
-          <SecurityKeyTable {...props} />
+          <SecurityKeyTable credentials={credentials} />
           <label>
             <FormattedMessage
               description="select extra webauthn"
@@ -195,15 +196,15 @@ function SecurityKeyTable(props: any) {
   );
 
   function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    const token = dataset?.token;
-    dispatch(postVerifyWebauthnToken(token));
+    // const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
+    // const token = dataset?.token;
+    // dispatch(postVerifyWebauthnToken(token));
   }
 
   function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    const token = dataset?.token;
-    dispatch(postRemoveWebauthnToken(token));
+    // const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    // const token = dataset?.token;
+    // dispatch(postRemoveWebauthnToken(token));
   }
 
   // data that goes onto the table
