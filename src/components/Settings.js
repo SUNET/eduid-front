@@ -3,7 +3,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import DeleteAccount from "containers/DeleteAccount";
 import Emails from "components/Emails";
 import Phones from "components/Phones";
-import SecurityContainer from "containers/Security";
+import SecurityComponent from "components/Security";
 import React, { Component, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
@@ -32,7 +32,7 @@ class Settings extends Component {
         <RenderGroups />
         <Route path="/profile/settings/personaldata" component={ChangePasswordDisplay} />
         <Route path="/profile/settings/personaldata" component={DeleteAccount} />
-        <Route path="/profile/settings/advanced-settings" component={SecurityContainer} />
+        <Route path="/profile/settings/advanced-settings" component={SecurityComponent} />
         <Route path="/profile/settings/advanced-settings" component={AccountLinkingContainer} />
         <Route path="/profile/settings/advanced-settings" component={LadokContainer} />
         <Route path="/profile/settings/advanced-settings" component={AccountId} />
