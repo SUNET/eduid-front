@@ -92,7 +92,7 @@ const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX
       <p className="help-text">
         <FormattedMessage
           description="platform authn help text"
-          defaultMessage={`E.g. USB Security Key, Touch ID or FaceID`}
+          defaultMessage={`E.g. USB Security Key, Touch ID or Face ID`}
         />
       </p>
       <EduIDButton buttonstyle="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
@@ -111,9 +111,9 @@ const SecurityKey = (): JSX.Element => {
         {selected ? (
           <>
             <div className="button-pair selected">
-              <p className="heading">
+              <h4>
                 <FormattedMessage description="login mfa primary option.title" defaultMessage={`Security key`} />
-              </p>
+              </h4>
               <CloseButton setSelected={setSelected} />
             </div>
             <div className="button-pair bottom">

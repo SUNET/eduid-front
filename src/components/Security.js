@@ -117,7 +117,7 @@ function Security(props) {
           <p className="help-text">
             <FormattedMessage
               description="platform authn help text"
-              defaultMessage={`E.g. USB Security Key, Touch ID or FaceID`}
+              defaultMessage={`E.g. Touch/ Face ID on this device or a USB Security Key.`}
             />
           </p>
         </div>

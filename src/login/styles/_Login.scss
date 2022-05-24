@@ -8,9 +8,9 @@
   flex-direction: column;
   padding-bottom: 1.5rem;
 
-  .heading {
-    line-height: $line-height;
-  }
+  // .heading {
+  //   line-height: $line-height;
+  // }
 
   // button.btn {
   //   width: fit-content;
@@ -114,9 +114,9 @@ a .disabled {
         align-items: flex-end;
       }
 
-      .selected .heading {
-        margin-bottom: 0;
-      }
+      // .selected .heading {
+      //   margin-bottom: 0;
+      // }
 
       img {
         max-width: 178px;
@@ -157,13 +157,13 @@ a .disabled {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      h4,
+      .help-text {
+        margin: 0;
+      }
     }
   }
-}
-
-.border-line {
-  margin: 0.5rem 0 2rem;
-  border-bottom: 1px solid $dark-gray;
 }
 
 // styles to counteract bootstrap button styles (.mfa)
@@ -199,14 +199,14 @@ a .disabled {
 
 // iPhone 6/7/8+ and smaller
 @media (max-width: $bp-xs) {
-  .username-pw,
-  .tou,
-  .mfa {
-    button.btn {
-      width: 100%;
-      font-size: 1rem;
-    }
-  }
+  // .username-pw,
+  // .tou,
+  // .mfa {
+  //   button.btn {
+  //     width: 100%;
+  //     font-size: 1rem;
+  //   }
+  // }
 
   .tou .tou-text {
     margin-top: #{2 * $margin};

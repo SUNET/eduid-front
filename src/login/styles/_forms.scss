@@ -45,8 +45,12 @@ input.form-control.is-invalid:focus {
   border-color: initial;
 }
 
-fieldset:not(:empty) {
-  margin-bottom: 1.25em;
+fieldset {
+  width: 100%;
+
+  &:not(:empty) {
+    margin-bottom: 1.25em;
+  }
 }
 
 /* smallish grayish additional info underneath corresponding form elements */
