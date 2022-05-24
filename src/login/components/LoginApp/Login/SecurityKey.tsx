@@ -82,7 +82,9 @@ const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselected
 
   return (
     <Fragment>
-      <p className="heading">{translate("login.mfa.primary-option.title")}</p>
+      {/* <p className="heading">{translate("login.mfa.primary-option.title")}</p> */}
+      <h4>Säkerhetsnyckel/ Enhetsnyckel</h4>
+      <p className="help-text">T.ex. USB säkerhetsnyckel, Touch ID eller FaceID</p>
       <EduIDButton buttonstyle="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
         {translate("login.mfa.primary-option.button")}
       </EduIDButton>

@@ -18,7 +18,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   return (
     <div className="secondary" tabIndex={0}>
       <div className="option">
-        <p className="heading">{translate("login.mfa.secondary-option.title")}</p>
+        <h4>{translate("login.mfa.secondary-option.title")}</h4>
         <EduIDButton
           buttonstyle="secondary"
           type="submit"
