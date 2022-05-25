@@ -1,15 +1,31 @@
-// .orcid-logo-container {
-//   display: inline-flex;
-//   padding-right: 0.35em;
-//   fill: currentcolor;
+table.orcid {
+  tr {
+    height: auto;
+
+    td {
+      vertical-align: middle;
+      padding: 0.625rem 0;
+
+      &:first-of-type {
+        padding-left: 1.25rem;
+        padding-right: 0.5rem;
+      }
+      &:last-of-type {
+        padding-right: 1.25rem;
+        padding-left: 1rem;
+      }
+      &:first-of-type,
+      &:last-of-type {
+        vertical-align: top;
+        width: 3rem;
+      }
+    }
+  }
+}
 
 span.orcid-logo {
   background: url("../../../img/vector_iD_icon.svg");
   background-repeat: no-repeat;
-  margin-right: 0.3em;
-  align-self: start;
-  top: 0;
-  min-width: 22px;
 }
 
 //remove or merge with above?
@@ -21,12 +37,14 @@ span.orcid-logo {
 }
 
 .orcid-link {
-  font-size: 1.25rem;
-  padding-bottom: 0.5em;
+  font-size: 1rem;
+  line-height: 1.2;
   word-break: break-word;
-}
 
-// }
+  a {
+    margin: 0;
+  }
+}
 
 button .orcid-logo {
   height: 22px;
