@@ -1,31 +1,32 @@
-.orcid-logo-container {
-  display: inline-flex;
-  padding-right: 0.35em;
-  fill: currentcolor;
+// .orcid-logo-container {
+//   display: inline-flex;
+//   padding-right: 0.35em;
+//   fill: currentcolor;
 
-  span.orcid-logo {
-    background: url("../../../img/vector_iD_icon.svg");
-    background-repeat: no-repeat;
-    margin: 0.25em;
-    align-self: start;
-    top: 0;
-    min-width: 22px;
-  }
-
-  //remove or merge with above?
-  .orcid-logo {
-    display: inline-flex;
-    height: 22px;
-    width: 22px;
-    position: relative;
-  }
-
-  .orcid-link {
-    font-size: 1.25rem;
-    padding-bottom: 0.5em;
-    word-break: break-word;
-  }
+span.orcid-logo {
+  background: url("../../../img/vector_iD_icon.svg");
+  background-repeat: no-repeat;
+  margin-right: 0.3em;
+  align-self: start;
+  top: 0;
+  min-width: 22px;
 }
+
+//remove or merge with above?
+.orcid-logo {
+  display: inline-flex;
+  height: 22px;
+  width: 22px;
+  position: relative;
+}
+
+.orcid-link {
+  font-size: 1.25rem;
+  padding-bottom: 0.5em;
+  word-break: break-word;
+}
+
+// }
 
 button .orcid-logo {
   height: 22px;

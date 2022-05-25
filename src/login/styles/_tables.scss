@@ -143,6 +143,12 @@ caption {
   color: inherit;
 }
 
+table.table-form.orcid {
+  .orcid-link {
+    width: 85%;
+  }
+}
+
 @media (max-width: $bp-sm) {
   .security-creation-date,
   .security-last-used-date,
