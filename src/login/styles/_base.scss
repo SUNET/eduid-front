@@ -76,8 +76,9 @@ body {
   }
 }
 
-fieldset {
-  width: 100%;
+.border-line {
+  margin: 0.5rem 0 2rem;
+  border-bottom: 1px solid $dark-gray;
 }
 
 // TODO: Remove after checking scrollbar in tables
