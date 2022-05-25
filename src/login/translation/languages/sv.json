@@ -55,6 +55,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "2EeZgg": {
+    "developer_comment": "Signup button",
+    "string": "Skapa eduID"
+  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 tecken"
@@ -137,6 +141,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
   },
+  "95u9Rj": {
+    "developer_comment": "Signup",
+    "string": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer."
+  },
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Kom ihåg mig på den här enheten"
@@ -183,6 +191,10 @@
   },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
+  },
+  "D2FJI3": {
+    "developer_comment": "login this device, security key button",
+    "string": "Enhetsnyckel/säkerhetsnyckel"
   },
   "D7/IyL": {
     "developer_comment": "Set new password (accept button)",
@@ -231,9 +243,17 @@
     "developer_comment": "Terms of use (common header)",
     "string": "Allmänna regler för eduID-användare:"
   },
+  "FRVeZw": {
+    "developer_comment": "verify identity unverified main title",
+    "string": "Koppla din identitet till ditt eduID"
+  },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
     "string": "Du loggas nu in"
+  },
+  "FnpebS": {
+    "developer_comment": "letter initialize proofing help text",
+    "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
   },
   "Fw5FJ3": {
     "developer_comment": "Footer copyright",
@@ -267,6 +287,10 @@
     "developer_comment": "Login Mfa heading",
     "string": "Logga in: Extra nivå av säkerhet"
   },
+  "H1z9GE": {
+    "developer_comment": "platform authn device help text",
+    "string": "T.ex. Touch/ Face ID på den här enheten."
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ lägg till fler"
@@ -294,6 +318,10 @@
     "developer_comment": "confirm button",
     "string": "Bekräfta"
   },
+  "JC05Ws": {
+    "developer_comment": "lmp initialize proofing help text",
+    "string": "Registret med telefonnummer uppdateras av mobiloperatörerna och innehåller inte nödvändigtvis alla nummer."
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
@@ -316,6 +344,14 @@
   "LNBvhT": {
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
+  },
+  "LcUe9m": {
+    "developer_comment": "login mfa primary option hint",
+    "string": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den."
+  },
+  "LuSrd4": {
+    "developer_comment": "Signup",
+    "string": "Registrera din e-postadress för att skapa ditt eduID."
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -438,6 +474,10 @@
     "developer_comment": "Use other device 2",
     "string": "Färdigt."
   },
+  "SlpRU3": {
+    "developer_comment": "verify-identity.connect-nin_description",
+    "string": "Välj ett sätt att bekräfta att du har tillgång till det angivna personnumret. Om en av metoderna inte fungerar får du prova en annan."
+  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
@@ -449,6 +489,10 @@
   "T80C1A": {
     "developer_comment": "eidas vetting button freja",
     "string": "med digitalt ID-kort"
+  },
+  "TZU5ir": {
+    "developer_comment": "platform authn key help text",
+    "string": "T.ex. USB säkerhetsnyckel."
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
@@ -508,6 +552,14 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
   },
+  "Wy4YzS": {
+    "developer_comment": "Signup instructions",
+    "string": "Om du redan har ett eduID kan du logga in {login_here_link}."
+  },
+  "XEJBy2": {
+    "developer_comment": "login mfa primary option button",
+    "string": "Använd min säkerhetsnyckel"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
@@ -515,6 +567,10 @@
   "YGVN20": {
     "developer_comment": "go to eudID link text",
     "string": "Gå till eduID"
+  },
+  "YbLEig": {
+    "developer_comment": "eidas proofing help text",
+    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
   },
   "YdEGFD": {
     "developer_comment": "Help text for email confirmation code",
@@ -784,8 +840,29 @@
   "eidas.freja_eid_ready": {
     "string": "Använd mitt Freja eID"
   },
-  "eidas.initialize_proofing_help_text": {
-    "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i {skaffa_freja_eid_link} appen."
+  "eidas.freja_instructions_install_link": {
+    "string": "Vad är Freja eID?"
+  },
+  "eidas.freja_instructions_step1": {
+    "string": "Installera appen"
+  },
+  "eidas.freja_instructions_step2": {
+    "string": "Skapa ett Freja eID Plus konto (godkänd svensk e-legitimation)"
+  },
+  "eidas.freja_instructions_step3": {
+    "string": "Appen genererar en QR-kod"
+  },
+  "eidas.freja_instructions_step4": {
+    "string": "Gå till närmsta ombud, visa giltigt ID tillsammans med QR-koden i din telefon och låt dem bevisa din identitet"
+  },
+  "eidas.freja_instructions_step5": {
+    "string": "Freja eID är redo att användas med ditt eduID"
+  },
+  "eidas.freja_instructions_tip_1": {
+    "string": "Tips: Du kan hitta närmsta ombud i appen"
+  },
+  "eidas.modal_title": {
+    "string": "Med Freja eID appen kan du skapa ett digitalt ID-kort"
   },
   "eidas.nin_already_verified": {
     "string": "Du har redan bekräftat din identitet"
@@ -810,9 +887,6 @@
   },
   "email.invalid_email": {
     "string": "Ogiltig e-postadress"
-  },
-  "email.sign-up-email": {
-    "string": "Skapa eduID"
   },
   "emails.add_new": {
     "string": "A new email address will receieve a link to click or a confirmation code that can be used by clicking Confirm in the table."
@@ -970,6 +1044,9 @@
     "developer_comment": "Use another device, finished",
     "string": "Koden har gått ut och du bör stänga det här fönstret"
   },
+  "hJZwTS": {
+    "string": "E-postadress"
+  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Logga ut"
@@ -997,6 +1074,10 @@
     "developer_comment": "delete.modal_info",
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
   },
+  "iUnunt": {
+    "developer_comment": "verify identity verified title",
+    "string": "Ditt eduID är redo att användas"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Skriv in koden som skickats till {phone}"
@@ -1013,6 +1094,10 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
   },
+  "j8KKR3": {
+    "developer_comment": "platform authn help text",
+    "string": "T.ex. USB säkerhetsnyckel, Touch ID eller Face ID."
+  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
@@ -1020,10 +1105,6 @@
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "gör primär"
-  },
-  "kWN+Jp": {
-    "developer_comment": "accept button",
-    "string": "Godkänn"
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
@@ -1070,9 +1151,6 @@
   "letter.button_text_code": {
     "string": "Skriv bekräftelsekoden här"
   },
-  "letter.initialize_proofing_help_text": {
-    "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
-  },
   "letter.letter_sent_msg": {
     "string": "Ett brev med en kod har skickats till din folkbokföringsadress"
   },
@@ -1112,9 +1190,6 @@
   "lmp.button_text_request": {
     "string": "via telefon"
   },
-  "lmp.initialize_proofing_help_text": {
-    "string": "Registret med telefonnummer uppdateras av mobiloperatörerna och innehåller inte nödvändigtvis alla nummer."
-  },
   "lmp.initialize_proofing_help_text_tip_1": {
     "string": "Tips: Registret med telefonnummer uppdateras av mobiloperatörerna och innehåller inte nödvändigtvis alla nummer."
   },
@@ -1144,12 +1219,6 @@
   },
   "login.mfa.primary-option.button": {
     "string": "Använd min säkerhetsnyckel"
-  },
-  "login.mfa.primary-option.hint": {
-    "string": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den."
-  },
-  "login.mfa.primary-option.title": {
-    "string": "Säkerhetsnyckel"
   },
   "login.mfa.secondary-option.button": {
     "string": "Använd mitt {freja_eidplus_verbatim}"
@@ -1204,7 +1273,7 @@
   },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
-    "string": "Använd mitt Freja eID"
+    "string": "Använd mitt Freja eID+"
   },
   "mXkdvt": {
     "developer_comment": "Use another device IP proximity",
@@ -1226,7 +1295,7 @@
     "string": "Extra säkerhet påslaget för det här kontot"
   },
   "mfa.freja-eid": {
-    "string": "Använd Freja eID i stället"
+    "string": "Använd Freja eID+ i stället"
   },
   "mfa.login-tapit": {
     "string": "Extra säkerhet påslaget för det här kontot"
@@ -1327,6 +1396,10 @@
     "developer_comment": "enter confirmation code",
     "string": "Bekräftelsekod"
   },
+  "oVW3B/": {
+    "developer_comment": "verify identity verified description",
+    "string": "Personnumret nedan är nu kopplat till din eduID."
+  },
   "oc.error_missing_nin": {
     "string": "Skriv in ett personnummer och försök igen"
   },
@@ -1361,7 +1434,7 @@
     "string": "Temporärt tekniskt fel. Var god försök igen senare"
   },
   "ocf.freja_instructions_install_link": {
-    "string": "Jag har inte Freja eID-appen installerad"
+    "string": "Jag har inte Freja eID+-appen installerad"
   },
   "ocf.freja_instructions_step_1": {
     "string": "Installera Freja eID-appen på din mobil."
@@ -1432,6 +1505,10 @@
   },
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
+  },
+  "pRXT2e": {
+    "developer_comment": "verify identity add nin heading",
+    "string": "Lägg till ditt personnummer"
   },
   "pd.all-data-success": {
     "string": "Personlig information laddad"
@@ -1644,16 +1721,6 @@
   },
   "register.create-account": {
     "string": "Skapa ett eduID med din e-postadress för att börja."
-  },
-  "register.paragraph": {
-    "string": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer."
-  },
-  "register.sub-heading": {
-    "string": "Registrera din e-postadress för att skapa ditt eduID."
-  },
-  "register.toLogin": {
-    "developer_comment": "Signup instructions",
-    "string": "Om du redan har ett eduID kan du logga in"
   },
   "required": {
     "string": "*Fältet kan inte vara tomt"
@@ -1969,9 +2036,6 @@
   "signup.registering-address-used": {
     "string": "E-postadressen används redan"
   },
-  "signup.registering-input": {
-    "string": "E-postadress"
-  },
   "signup.registering-new": {
     "string": "E-postadressen har registrerats"
   },
@@ -1984,6 +2048,10 @@
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
+  "t0C4LH": {
+    "developer_comment": "verify identity connect nin",
+    "string": "Bekräfta ditt personnummer"
+  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
@@ -1991,10 +2059,6 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Gå till eduID"
-  },
-  "text.link": {
-    "developer_comment": "Placeholder for phone text input",
-    "string": "här."
   },
   "tl.make_primary": {
     "string": "GÖR PRIMÄR"
@@ -2016,6 +2080,10 @@
   },
   "u2f.push-the-button": {
     "string": "Tryck på knappen på din U2F-säkerhetsnyckel"
+  },
+  "u6yPXz": {
+    "developer_comment": "verify identity unverified description",
+    "string": "För att kunna använda eduID måste du bevisa din identitet. Lägg till ditt personnummer och bekräfta det i verkliga livet."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
@@ -2066,26 +2134,8 @@
   "value not changed": {
     "string": "Värdet är inte ändrat"
   },
-  "verify-identity.add-nin_heading": {
-    "string": "Lägg till ditt personnummer"
-  },
-  "verify-identity.connect-nin_description": {
-    "string": "Välj ett sätt att bekräfta att du har tillgång till det angivna personnumret. Om en av metoderna inte fungerar får du prova en annan."
-  },
-  "verify-identity.connect-nin_heading": {
-    "string": "Bekräfta ditt personnummer"
-  },
-  "verify-identity.unverified_main_title": {
-    "string": "Koppla din identitet till ditt eduID"
-  },
-  "verify-identity.unverified_page-description": {
-    "string": "För att kunna använda eduID måste du bevisa din identitet. Lägg till ditt personnummer och bekräfta det i verkliga livet."
-  },
   "verify-identity.verified_main_title": {
     "string": "Ditt eduID är redo att användas"
-  },
-  "verify-identity.verified_page-description": {
-    "string": "Personnumret nedan är nu kopplat till din eduID."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord."
@@ -2102,6 +2152,9 @@
   "verify-identity.vetting_explanation_only_available_swe_number": {
     "string": "Bara möjligt med svenskt telefonnummer"
   },
+  "verify-identity.vetting_freja_tagline": {
+    "string": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige"
+  },
   "verify-identity.vetting_link_settings": {
     "string": "Inställningar"
   },
@@ -2111,6 +2164,10 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
+  },
+  "wIDAmk": {
+    "developer_comment": "Signup login here link",
+    "string": "här"
   },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
