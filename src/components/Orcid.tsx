@@ -12,7 +12,7 @@ export interface OrcidProps {
 }
 
 function Orcid(props: OrcidProps): JSX.Element {
-  if (!props.orcid) {
+  if (!props.orcid || !Object.keys(props.orcid)?.length) {
     return (
       <Fragment>
         <div className="buttons">
@@ -37,26 +37,24 @@ function Orcid(props: OrcidProps): JSX.Element {
     );
   } else {
     return (
-      <div className="table-responsive">
-        <table className="table table-striped table-form">
-          <tbody>
-            <tr className="email-row">
-              <td>
-                <div className="orcid-logo-container">
-                  <span className="orcid-logo" />
-                  <a href={props.orcid.id}>{props.orcid.id}</a>
-                  <EduIDButton
-                    buttonstyle="close"
-                    size="sm"
-                    id="remove-orcid-button"
-                    onClick={props.handleOrcidDelete}
-                  ></EduIDButton>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table className="table-form orcid">
+        <tbody>
+          <td>
+            <span className="orcid-logo" />
+          </td>
+          <td className="orcid-link">
+            <a href={props.orcid.id}>{props.orcid.id}</a>
+          </td>
+          <td>
+            <EduIDButton
+              buttonstyle="close"
+              size="sm"
+              id="remove-orcid-button"
+              onClick={props.handleOrcidDelete}
+            ></EduIDButton>
+          </td>
+        </tbody>
+      </table>
     );
   }
 }
