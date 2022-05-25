@@ -3,21 +3,15 @@ table.orcid {
     height: auto;
 
     td {
-      vertical-align: middle;
-      padding: 0.625rem 0;
-
-      &:first-of-type {
-        padding-left: 1.25rem;
-        padding-right: 0.5rem;
-      }
-      &:last-of-type {
-        padding-right: 1.25rem;
-        padding-left: 1rem;
+      &.orcid-link {
+        vertical-align: middle;
+        padding: 0.75rem 0;
       }
       &:first-of-type,
       &:last-of-type {
         vertical-align: top;
         width: 3rem;
+        padding: 0.75rem 1rem;
       }
     }
   }

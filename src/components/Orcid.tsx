@@ -39,20 +39,22 @@ function Orcid(props: OrcidProps): JSX.Element {
     return (
       <table className="table-form orcid">
         <tbody>
-          <td>
-            <span className="orcid-logo" />
-          </td>
-          <td className="orcid-link">
-            <a href={props.orcid.id}>{props.orcid.id}</a>
-          </td>
-          <td>
-            <EduIDButton
-              buttonstyle="close"
-              size="sm"
-              id="remove-orcid-button"
-              onClick={props.handleOrcidDelete}
-            ></EduIDButton>
-          </td>
+          <tr>
+            <td>
+              <span className="orcid-logo" />
+            </td>
+            <td className="orcid-link">
+              <a href={props.orcid.id}>{props.orcid.id}</a>
+            </td>
+            <td>
+              <EduIDButton
+                buttonstyle="close"
+                size="sm"
+                id="remove-orcid-button"
+                onClick={props.handleOrcidDelete}
+              ></EduIDButton>
+            </td>
+          </tr>
         </tbody>
       </table>
     );
