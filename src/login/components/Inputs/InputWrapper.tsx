@@ -3,18 +3,17 @@ import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { FormGroup, FormText, Label } from "reactstrap";
 
-interface InputWrapperProps extends FieldRenderProps<string> {
+export interface InputWrapperProps extends FieldRenderProps<string> {
   label?: string; // label shown above input
   helpBlock?: React.ReactNode; // help text show above input
-  //   disabled?: boolean;
-  //   autocomplete?: string;
+  autoComplete?: "current-password" | "new-password" | "username";
   children?: React.ReactNode;
 }
 
 /**
  * Render an input with an optional label and help text, and an error message when validation fails.
  */
-export default function InputWrapper(props: InputWrapperProps): JSX.Element {
+export function InputWrapper(props: InputWrapperProps): JSX.Element {
   return (
     <FormGroup id={`${props.input.name}-wrapper`}>
       <RenderLabelAndHelpText {...props} />
@@ -44,11 +43,6 @@ function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
 
   if (!meta.error) {
     // no error, no message
-    return null;
-  }
-
-  if (meta.pristine) {
-    // not changed from initial value, don't show an error
     return null;
   }
 

@@ -56,7 +56,7 @@ export default function UsernamePw() {
             <form onSubmit={formProps.handleSubmit}>
               <UsernameInputPart />
               <fieldset>
-                <PasswordInput name="current-password" />
+                <PasswordInput name="current-password" autoComplete="current-password" />
               </fieldset>
 
               <div className="flex-between">
@@ -120,7 +120,7 @@ function UsernameInputPart(): JSX.Element {
       </React.Fragment>
     );
   }
-  return <EmailInput name="email" autoFocus={true} required={true} />;
+  return <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderRegisterLink(): JSX.Element {
@@ -165,6 +165,7 @@ function RenderResetPasswordLink(): JSX.Element {
 
 function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
+
   return (
     <EduIDButton
       buttonstyle="primary"

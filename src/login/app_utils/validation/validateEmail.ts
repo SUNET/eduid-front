@@ -29,7 +29,8 @@ export const validate = validateEmailInForm;
 export function validateEmailField(value?: string): string | undefined {
   if (!value) {
     return "required";
-  } else if (!emailPattern.test(value)) {
+  }
+  if (!emailPattern.test(value)) {
     return "email.invalid_email";
   }
 }

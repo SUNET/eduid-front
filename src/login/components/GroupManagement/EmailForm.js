@@ -16,7 +16,7 @@ const RenderSubmitButton = ({ invalid, translate }) => (
 let EmailForm = (props, { submitButton, onSubmit }) => {
   return (
     <Form id="emailsview-form" role="form" onSubmit={onSubmit}>
-      <EmailInput {...props} />
+      <EmailInput name="email" {...props} />
       {submitButton && <RenderSubmitButton {...props} />}
     </Form>
   );
