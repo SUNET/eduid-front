@@ -1,8 +1,8 @@
-import { translate } from "login/translation";
 import React, { Fragment, useState } from "react";
 import { FieldRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { FormGroup, FormText, Input, InputProps, Label } from "reactstrap";
+import { Input, InputProps } from "reactstrap";
+import InputWrapper from "./InputWrapper";
 
 interface CustomInputProps extends FieldRenderProps<string> {
   label?: string;
@@ -15,49 +15,15 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
   const { meta, input } = props;
 
   return (
-    <FormGroup id={`${input.name}-wrapper`}>
-      <RenderLabelAndHelpText {...props} name={input.name} />
+    <InputWrapper {...props}>
       {input.name === "current-password" ? (
         <PasswordInputElement {...props} name={input.name} id={input.name} valid={meta.valid} invalid={meta.invalid} />
       ) : (
         <InputElement {...props} valid={meta.valid} invalid={meta.invalid} />
       )}
-      <RenderErrorMessage {...props} name={input.name} />
-    </FormGroup>
+    </InputWrapper>
   );
 }
-
-const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
-  const { label, name, helpBlock, required } = props;
-  return (
-    <div className="input-label-help-text-container">
-      {label && (
-        <Label aria-required="true" htmlFor={name}>
-          {label}
-          {required && <span className="label-required">*</span>}
-        </Label>
-      )}
-      {helpBlock && <span className="help-block">{helpBlock}</span>}
-    </div>
-  );
-};
-
-const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
-  const { meta } = props;
-
-  if (meta.pristine || !meta.error) {
-    return <Fragment />;
-  }
-
-  const errmsg = translate(meta.error) || "";
-  return (
-    <FormText>
-      <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-        {errmsg}
-      </span>
-    </FormText>
-  );
-};
 
 const InputElement = (props: CustomInputProps): JSX.Element => {
   const { input, selectOptions, valid } = props;
@@ -103,7 +69,7 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
  * @param props
  * @returns
  */
-export function PasswordInputElement(props: InputProps): JSX.Element {
+function PasswordInputElement(props: InputProps): JSX.Element {
   const { input } = props;
   const [showPassword, setShowPassword] = useState(false);
 
