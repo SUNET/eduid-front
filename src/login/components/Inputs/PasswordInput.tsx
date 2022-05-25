@@ -58,7 +58,7 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
-      <PasswordInputElement {...props} name={input.name} id={input.name} valid={meta.valid} invalid={meta.invalid} />
+      <PasswordInputElement {...props} />
     </InputWrapper>
   );
 }
@@ -77,7 +77,13 @@ function PasswordInputElement(props: InputProps): JSX.Element {
 
   return (
     <div className="password-input">
-      <Input {...props.input} type={showPassword ? "text" : "password"} />
+      <Input
+        {...props.input}
+        id={props.input.name}
+        type={showPassword ? "text" : "password"}
+        valid={props.meta.valid}
+        invalid={props.meta.invalid}
+      />
 
       <button
         type="button"

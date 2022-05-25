@@ -14,6 +14,7 @@ import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
+import RadioInput from "../Inputs/RadioInput";
 
 interface NameStrings {
   first: string;
@@ -168,7 +169,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
         />
       </fieldset>
       <Field
-        component={CustomInput}
+        component={RadioInput}
         required={true}
         name="language"
         selectOptions={available_languages}
