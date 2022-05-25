@@ -919,13 +919,6 @@ export const userData = {
 
   "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
 
-  "orc.long_description": (
-    <FormattedMessage
-      id="orc.long_description"
-      defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
-    />
-  ),
-
   "orc.about_link": (
     <FormattedMessage
       id="orc.about_link"
@@ -939,8 +932,6 @@ export const userData = {
       }}
     />
   ),
-
-  "orc.button_connect": <FormattedMessage id="orc.button_connect" defaultMessage={`Add ORCID account`} />,
 
   // -------- account id ------- //
 

@@ -1,22 +1,47 @@
 import React, { Fragment } from "react";
 import EduIDButton from "components/EduIDButton";
+import { FormattedMessage } from "react-intl";
+import { PDOrcid } from "apis/eduidPersonalData";
 
-const orcidIcon = require("../../assets/logo.png");
+const orcidIcon = require("../../img/vector_iD_icon-w.svg");
 
-function Orcid(props: any): JSX.Element {
-  let orcidData;
-  if (props.orcid && Object.keys(props.orcid).length) {
-    let orcidAuthor = props.orcid.name;
-    if (orcidAuthor !== undefined) {
-      orcidAuthor = props.orcid.given_name + " " + props.orcid.family_name;
-    }
-    orcidData = (
+export interface OrcidProps {
+  orcid: PDOrcid;
+  handleOrcidConnect: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleOrcidDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+function Orcid(props: OrcidProps): JSX.Element {
+  if (!props.orcid) {
+    return (
+      <Fragment>
+        <div className="buttons">
+          <EduIDButton
+            buttonstyle="primary"
+            id="connect-orcid-button"
+            className="btn-icon"
+            onClick={props.handleOrcidConnect}
+          >
+            <img className="orcid-logo" src={orcidIcon} />
+            <FormattedMessage description="orcid connect button" defaultMessage={`Add ORCID account`} />
+          </EduIDButton>
+        </div>
+        <p className="help-text">
+          <FormattedMessage
+            description="orcid description"
+            defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research 
+            outputs and activities to your identity, regardless of the organisation you are working with.`}
+          />
+        </p>
+      </Fragment>
+    );
+  } else {
+    return (
       <div className="table-responsive">
         <table className="table table-striped table-form">
           <tbody>
             <tr className="email-row">
               <td>
-                {orcidAuthor}
                 <div className="orcid-logo-container">
                   <span className="orcid-logo" />
                   <a href={props.orcid.id}>{props.orcid.id}</a>
@@ -33,25 +58,7 @@ function Orcid(props: any): JSX.Element {
         </table>
       </div>
     );
-  } else {
-    orcidData = (
-      <Fragment>
-        <div className="buttons">
-          <EduIDButton
-            buttonstyle="primary"
-            id="connect-orcid-button"
-            className="btn-icon"
-            onClick={props.handleOrcidConnect}
-          >
-            <img className="orcid-logo" src={orcidIcon} />
-            {props.translate("orc.button_connect")}
-          </EduIDButton>
-        </div>
-        <p className="help-text">{props.translate("orc.long_description")}</p>
-      </Fragment>
-    );
   }
-  return <Fragment>{orcidData}</Fragment>;
 }
 
 export default Orcid;
