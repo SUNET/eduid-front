@@ -38,10 +38,10 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
             />
           </p>
         </div>
-        <div id="change-password">
+        <div className="buttons">
           <EduIDButton
             id="security-change-button"
-            buttonstyle="link"
+            buttonstyle="primary"
             onClick={() => {
               setShowModal(true);
             }}

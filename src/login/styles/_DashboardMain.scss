@@ -89,9 +89,13 @@
 }
 
 .display-data {
-  font-family: ProximaNova-Light;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   word-wrap: break-word;
+
+  &:not(a) {
+    font-family: ProximaNova-Light;
+    font-size: 1.5rem;
+  }
 
   &.no-data {
     color: $gray;
@@ -106,7 +110,12 @@
   }
 
   @media (max-width: $bp-md) {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+
+    &:not(a) {
+      font-family: ProximaNova-Light;
+      font-size: 1.25rem;
+    }
   }
 }
 
