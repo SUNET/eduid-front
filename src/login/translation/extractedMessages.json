@@ -39,6 +39,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
+  "17FW6Y": {
+    "developer_comment": "profile name display title",
+    "string": "Name"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -55,6 +59,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "2D7weB": {
+    "developer_comment": "orcid connect button",
+    "string": "Add ORCID account"
+  },
   "2EeZgg": {
     "developer_comment": "Signup button",
     "string": "Create eduID"
@@ -62,6 +70,14 @@
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
+  },
+  "2hnsRO": {
+    "developer_comment": "nins input help text",
+    "string": "National identity number with 12 digits"
+  },
+  "2hrJd2": {
+    "developer_comment": "Reset password link",
+    "string": "Forgot your password?"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -74,6 +90,10 @@
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
+  },
+  "3q1uE5": {
+    "developer_comment": "orcid description",
+    "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   "4+GwOq": {
     "developer_comment": "Set new password",
@@ -200,6 +220,10 @@
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
   },
+  "DdY0Ec": {
+    "developer_comment": "profile phone display title",
+    "string": "Phone number"
+  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
@@ -251,6 +275,10 @@
     "developer_comment": "SAML login finished",
     "string": "Logging you in"
   },
+  "Fjbcnk": {
+    "developer_comment": "profile email display no data",
+    "string": "no email added"
+  },
   "FnpebS": {
     "developer_comment": "letter initialize proofing help text",
     "string": "The letter will contain a code that for security reasons expires in two weeks."
@@ -298,6 +326,10 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
+  },
+  "HozsEs": {
+    "developer_comment": "profile phone display no data",
+    "string": "add phone number"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -348,6 +380,10 @@
   "LcUe9m": {
     "developer_comment": "login mfa primary option hint",
     "string": "If your security key has a button, don’t forget to tap it."
+  },
+  "LlYcJl": {
+    "developer_comment": "button_add",
+    "string": "Add"
   },
   "LuSrd4": {
     "developer_comment": "Signup",
@@ -404,6 +440,10 @@
   "O9PJiz": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Insufficient privileges"
+  },
+  "OPkp7U": {
+    "developer_comment": "nin label",
+    "string": "Id number"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -1250,9 +1290,6 @@
   "login.user_terminated": {
     "string": "This account has been terminated, but is still present. Perform a password reset to cancel termination."
   },
-  "login.usernamePw.reset-password-link": {
-    "string": "Forgot your password?"
-  },
   "login.wrong_credentials": {
     "string": "The email address or password was incorrect."
   },
@@ -1341,9 +1378,6 @@
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
   },
-  "nin_display.profile.main_title": {
-    "string": "Id number"
-  },
   "nin_display.verify-identity_unverified_main_title": {
     "string": "1. Your added id number"
   },
@@ -1352,9 +1386,6 @@
   },
   "nins.illegal_chars": {
     "string": "A national id number can only have digits"
-  },
-  "nins.input_help_text": {
-    "string": "National identity number with 12 digits"
   },
   "nins.input_placeholder": {
     "developer_comment": "Swedish NIN template",
@@ -1487,12 +1518,6 @@
   },
   "orc.authorization_success": {
     "string": "ORCID connected successfully"
-  },
-  "orc.button_connect": {
-    "string": "Add ORCID account"
-  },
-  "orc.long_description": {
-    "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   "orc.sub_mismatch": {
     "string": "Subject mismatch when trying to connect ORCID account"
@@ -1655,29 +1680,14 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here to order a new code"
   },
-  "profile.email_display_no_data": {
-    "string": "no email added"
-  },
   "profile.email_display_title": {
     "string": "Email address"
   },
   "profile.eppn_display_title": {
     "string": "eppn"
   },
-  "profile.name_display_no_data": {
-    "string": "add name"
-  },
-  "profile.name_display_title": {
-    "string": "Name"
-  },
-  "profile.phone_display_no_data": {
-    "string": "add phone number"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "make number primary"
-  },
-  "profile.phone_display_title": {
-    "string": "Phone number"
   },
   "profile.phone_display_unconfirmed_data": {
     "string": "confirm added number"
@@ -1859,6 +1869,10 @@
   },
   "runtime_error.generic.title": {
     "string": "There was a problem displaying the page."
+  },
+  "s0no/w": {
+    "developer_comment": "profile name display no data",
+    "string": "add name"
   },
   "s3zRsg": {
     "developer_comment": "Reset Password email link sent",
