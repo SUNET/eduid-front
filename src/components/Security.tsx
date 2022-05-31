@@ -141,21 +141,34 @@ function Security(props: any) {
           </label>
           <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
+              <div>
+                <EduIDButton
+                  id="security-webauthn-platform-button"
+                  buttonstyle="primary"
+                  onClick={props.handleStartAskingDeviceWebauthnDescription}
+                >
+                  <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                </EduIDButton>
+                <p className="help-text">
+                  <FormattedMessage
+                    description="platform authn device help text"
+                    defaultMessage={`Touch/ Face ID on this device.`}
+                  />
+                </p>
+              </div>
+            ) : null}
+            <div>
               <EduIDButton
-                id="security-webauthn-platform-button"
+                id="security-webauthn-button"
                 buttonstyle="primary"
                 onClick={handleStartAskingDeviceWebauthnDescription}
               >
-                <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
               </EduIDButton>
-            ) : null}
-            <EduIDButton
-              id="security-webauthn-button"
-              buttonstyle="primary"
-              onClick={handleStartAskingKeyWebauthnDescription}
-            >
-              <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
-            </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage description="platform authn key help text" defaultMessage={`USB Security Key.`} />
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -3,20 +3,20 @@
 
 table {
   width: 100%;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-family: $proxima-light;
   table-layout: fixed;
 
   @media (max-width: $bp-md) {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   & tbody {
     margin-bottom: 1rem;
 
     & th:first-child {
-      padding-left: 1.25rem;
-      padding-top: 0.625rem;
+      padding-left: 1rem;
+      padding-top: 0.75rem;
       line-height: 1;
     }
 
@@ -67,7 +67,7 @@ table {
       &.unverified,
       &.verified,
       &.primary {
-        padding: 0.625rem 1.25rem;
+        padding: 0.75rem 1rem;
       }
 
       .btn-remove-webauthn {
@@ -82,8 +82,8 @@ table {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        padding-left: 1.25rem;
-        padding-right: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
     }
 
@@ -101,8 +101,8 @@ table {
       }
 
       &td:first-child {
-        padding-left: 1.25rem;
-        padding-right: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
     }
   }

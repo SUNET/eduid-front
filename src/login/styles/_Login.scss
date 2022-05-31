@@ -2,19 +2,10 @@
 
 // for all login pages
 .username-pw,
-.tou,
-.mfa {
+.tou {
   display: flex;
   flex-direction: column;
   padding-bottom: 1.5rem;
-
-  .heading {
-    line-height: $line-height;
-  }
-
-  // button.btn {
-  //   width: fit-content;
-  // }
 }
 
 // username and password
@@ -104,130 +95,64 @@ a .disabled {
   .options {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: #{2 * $margin};
 
-    .primary {
-      margin: 0 #{3 * $margin} #{3.5 * $margin} 0;
+    .option-wrapper {
+      margin-bottom: 2rem;
+      width: 330px;
 
-      .bottom {
-        align-items: flex-end;
-      }
+      .option {
+        border-radius: 20px;
+        background: $white;
+        box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
+        padding: 1rem;
+        min-height: 175px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-      .selected .heading {
-        margin-bottom: 0;
-      }
+        h4,
+        .help-text {
+          margin: 0;
+        }
 
-      img {
-        max-width: 178px;
-      }
+        // duplicate in _buttons.scss
+        .icon {
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          height: auto;
+          border: none;
 
-      // duplicate in _buttons.scss
-      .icon {
-        background: transparent;
-        padding: 0;
-        margin: 0;
-        height: auto;
-        border: none;
+          svg {
+            color: $black;
+            height: 1rem;
+            width: 1rem;
+          }
+        }
 
-        svg {
-          color: $black;
-          height: 1rem;
-          width: 1rem;
-          transform: rotate(0);
+        .bottom {
+          align-items: flex-end;
+
+          img {
+            max-width: 178px;
+          }
         }
       }
 
-      .help-link {
-        max-width: 350px;
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        margin-left: 0.25rem;
-        padding-bottom: 0;
+      @media (max-width: $bp-xs) {
+        width: 100%;
       }
     }
-
-    .option {
-      border-radius: 20px;
-      background: $white;
-      box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
-      padding: 1rem;
-      width: 350px;
-      height: 168px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
   }
-}
-
-.border-line {
-  margin: 0.5rem 0 2rem;
-  border-bottom: 1px solid $dark-gray;
-}
-
-// styles to counteract bootstrap button styles (.mfa)
-// .option {
-//   button,
-//   button:active,
-//   button:focus,
-//   button:active:focus {
-//     margin-top: 2.75rem;
-//     margin-bottom: 0;
-//   }
-// }
-
-.mfa .secondary .option {
-  // button,
-  // button:active,
-  // button:focus,
-  // button:active:focus {
-  //   color: $orange-highlight;
-  //   border: none;
-  //   border: solid 2px $orange-highlight;
-  //   background-color: $white;
-  //   text-transform: uppercase;
-  //   margin-top: 2.75rem;
-  //   margin-bottom: 0;
-
-  .verbatim {
-    text-transform: none;
-  }
-
-  // }
 }
 
 // iPhone 6/7/8+ and smaller
 @media (max-width: $bp-xs) {
-  .username-pw,
-  .tou,
-  .mfa {
-    button.btn {
-      width: 100%;
-      font-size: 1rem;
-    }
-  }
-
   .tou .tou-text {
     margin-top: #{2 * $margin};
-  }
-}
-
-// breakpoint at .option width + 2 * margin (.mfa)
-@media (max-width: 382px) {
-  .mfa .options {
-    .primary {
-      margin-right: 0;
-    }
-
-    .primary,
-    .secondary {
-      flex: 1;
-
-      .option {
-        width: unset;
-      }
-    }
   }
 }
 
