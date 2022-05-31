@@ -1,10 +1,9 @@
 import EduIDButton from "components/EduIDButton";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
-import { useHistory } from "react-router";
 import ScriptLoader from "react-script-loader-hoc";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
+import { useSignupAppSelector } from "signup-hooks";
 import Splash from "./Splash";
 
 interface CaptchaProps {
@@ -18,42 +17,12 @@ interface LoadingCaptchaProps extends CaptchaProps {
 }
 
 function LoadingCaptcha(props: LoadingCaptchaProps) {
-  // const dispatch = useSignupAppDispatch();
-  // const history = useHistory();
   const recaptcha_key = useSignupAppSelector((state) => state.config.recaptcha_public_key);
-  // const email = useSignupAppSelector((state) => state.signup.email);
-  // const tou_accepted = useSignupAppSelector((state) => state.signup.tou_accepted);
-  // const [captchaResponse, setCaptchaResponse] = useState<string | undefined>();
-
-  // if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
-  //   this.props.setFetching(!this.props.scriptsLoadedSuccessfully);
-  // }
 
   function loadedCaptcha() {
     console.log("Loaded recaptcha");
     props.scriptLoadedCallback();
   }
-  // function handleCaptcha(response: string) {
-  //   // Callback invoked by the Recaptcha component when the user has completed the captcha.
-  //   // The 'response' is passed to the backend for verification when the user clicks Done.
-  //   console.log("HANDLE CAPTCHA: ", response);
-  //   //    dispatch(verifyCaptcha(response));
-  //   setCaptchaResponse(response);
-  // }
-
-  // function handleAccept() {
-  //   console.log("SEND CAPTCHA");
-  //   //    dispatch(postCaptcha());
-  //   if (captchaResponse && email && tou_accepted) {
-  //     dispatch(fetchTryCaptcha({ email, tou_accepted, recaptcha_response: captchaResponse }));
-  //   }
-  // }
-
-  // function cancelCaptcha() {
-  //   console.log("CANCEL CAPTCHA");
-  //   setCaptchaResponse(undefined);
-  //   history.push("email");
-  // }
 
   return (
     <React.Fragment>

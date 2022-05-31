@@ -7,7 +7,6 @@ import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import React, { Fragment } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useHistory } from "react-router";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
@@ -62,7 +61,6 @@ export function EmailFormAndToU(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email);
   const tou_accepted = useSignupAppSelector((state) => state.signup.tou_accepted);
   const dispatch = useSignupAppDispatch();
-  //const history = useHistory();
 
   function handleAccept(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
