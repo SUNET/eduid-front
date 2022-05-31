@@ -1,11 +1,11 @@
 import { addNin } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { useIntl } from "react-intl";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
+import { FormattedMessage } from "react-intl";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -75,14 +75,19 @@ function NinForm(): JSX.Element {
                 componentClass="input"
                 type="text"
                 name="nin"
-                label={translate("nin_display.profile.main_title")}
+                label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
                 placeholder={placeholder}
-                helpBlock={translate("nins.input_help_text")}
+                helpBlock={
+                  <FormattedMessage
+                    description="nins input help text"
+                    defaultMessage="National identity number with 12 digits"
+                  />
+                }
                 validate={validateNin}
               />
             </fieldset>
             <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-              {translate("emails.button_add")}
+              <FormattedMessage description="button_add" defaultMessage="Add" />
             </EduIDButton>
           </form>
         );

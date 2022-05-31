@@ -1,8 +1,7 @@
+import React, { useState } from "react";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import { translate } from "login/translation";
-import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { NinInfo } from "reducers/Nins";
@@ -13,7 +12,7 @@ interface NinDisplayProps {
 }
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
-  const [showFullNin, setShowFullNin] = useState(false); // show the last four digits of the NIN or not
+  const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const dispatch = useDashboardAppDispatch();
 
   if (!props.nin) {
@@ -40,10 +39,10 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
           setShowFullNin(!showFullNin);
         }}
       >
-        {showFullNin ? (
-          <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />
-        ) : (
+        {!showFullNin ? (
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
+        ) : (
+          <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />
         )}
       </EduIDButton>
       {props.allowDelete && !props.nin.verified && (
@@ -57,14 +56,16 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 export function NinDisplay(props: NinDisplayProps) {
   return (
     <div className="profile-grid-cell x-adjust">
-      <label key="0">{translate("nin_display.profile.main_title")}</label>
-      {props.nin ? (
-        <RenderShowHideNin {...props} />
-      ) : (
+      <label key="0">
+        <FormattedMessage description="nin label" defaultMessage="Id number" />
+      </label>
+      {!props.nin ? (
         // if there is no NIN, render a link to verify-identity
         <Link to={`/profile/verify-identity/`} className="display-data unverified">
           <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
         </Link>
+      ) : (
+        <RenderShowHideNin {...props} />
       )}
     </div>
   );

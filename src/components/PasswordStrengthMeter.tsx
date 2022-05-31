@@ -17,7 +17,7 @@ export interface PasswordStrengthData {
 
 function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   const minRequiredEntropy = useDashboardAppSelector((state) => state.config.password_entropy);
-  const pdata = useDashboardAppSelector((state) => state.personal_data.data);
+  const pdata = useDashboardAppSelector((state) => state.personal_data);
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const [pwScore, setPwScore] = useState(0);
 
