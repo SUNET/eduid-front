@@ -91,9 +91,9 @@
 .display-data {
   &:not(a) {
     font-family: ProximaNova-Light;
+    font-size: 1.5rem;
   }
 
-  font-size: 1.5rem;
   word-wrap: break-word;
 
   &.no-data {
