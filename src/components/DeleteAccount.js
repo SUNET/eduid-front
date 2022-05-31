@@ -22,7 +22,7 @@ class DeleteAccount extends Component {
           <h3>{this.props.translate("settings.account_title")}</h3>
           <p>{this.props.translate("settings.account_description")}</p>
         </div>
-        <EduIDButton buttonstyle="link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
+        <EduIDButton buttonstyle="primary" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
           {this.props.translate("security.button_delete_account")}
         </EduIDButton>
 
