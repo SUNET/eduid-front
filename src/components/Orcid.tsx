@@ -12,7 +12,7 @@ export interface OrcidProps {
 }
 
 function Orcid(props: OrcidProps): JSX.Element {
-  if (!props.orcid || !Object.keys(props.orcid)?.length) {
+  if (!props.orcid?.id) {
     return (
       <Fragment>
         <div className="buttons">
