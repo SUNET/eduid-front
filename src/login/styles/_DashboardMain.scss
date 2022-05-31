@@ -89,7 +89,10 @@
 }
 
 .display-data {
-  font-family: ProximaNova-Light;
+  &:not(a) {
+    font-family: ProximaNova-Light;
+  }
+
   font-size: 1.5rem;
   word-wrap: break-word;
 
