@@ -2205,7 +2205,7 @@
   },
   "xsCSvh": {
     "developer_comment": "verify identity improve security description",
-    "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord under Inställningar."
+    "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
