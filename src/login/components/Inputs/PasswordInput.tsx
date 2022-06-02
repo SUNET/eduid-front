@@ -20,22 +20,6 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
     description: "placeholder text for password input",
   });
 
-  function required(value: string, allValues: object, meta?: FieldState<string>) {
-    if (!value && props.autoComplete && !meta?.touched) {
-      /* Browsers handle auto-completed fields differently. Current Chrome for example seems to often (but not always)
-       * fill in the value on-screen, but not tell Javascript about it so the validator doesn't see that a value has
-       * been entered, and might show "required", which will confuse the user. As soon as the user clicks anywhere on
-       * the page (including on a seemingly disabled submit-button), the validator will run and the error will be
-       * cleared.
-       *
-       * We want to suppress this exact validation error before the user clicks anywhere.
-       */
-      return null;
-    }
-
-    if (!value) return "required";
-  }
-
   return (
     <FinalField
       type="password"
@@ -44,7 +28,6 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
       autoComplete={props.autoComplete}
       required={true}
       placeholder={placeholder}
-      validate={required}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
       label={<FormattedMessage defaultMessage="Password" description="password input field label" />}

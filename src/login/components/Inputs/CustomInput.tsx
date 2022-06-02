@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { Input } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";

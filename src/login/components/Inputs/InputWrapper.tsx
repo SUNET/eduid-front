@@ -41,16 +41,21 @@ function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
 function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
   const { meta } = props;
 
-  if (!meta.error) {
+  if (!meta.error && !meta.submitError) {
     // no error, no message
     return null;
   }
 
-  const errorMsg = translate(meta.error) || "";
+  const errorMsg = meta.error ? translate(meta.error) : null;
+  let submitErrorMsg = null;
+  if (meta.submitError && !meta.dirtySinceLastSubmit) {
+    submitErrorMsg = translate(meta.submitError) || null;
+  }
+
   return (
     <FormText>
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-        {errorMsg}
+        {errorMsg || submitErrorMsg}
       </span>
     </FormText>
   );
