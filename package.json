@@ -76,6 +76,7 @@
     "@types/zxcvbn": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "autoprefixer": "^10.4.7",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.5",
