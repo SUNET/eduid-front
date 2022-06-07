@@ -9,7 +9,7 @@
 
 // https://github.com/airbnb/enzyme/pull/1513#issuecomment-384577007
 var enzyme = require("enzyme");
-var Adapter = require("enzyme-adapter-react-16");
+var Adapter = require("@wojtekmaj/enzyme-adapter-react-17");
 
 enzyme.configure({ adapter: new Adapter() });
 
