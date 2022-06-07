@@ -18,9 +18,7 @@ describe("AccountId component renders", () => {
 
   const fakeState = {
     personal_data: {
-      data: {
-        eppn: "dummy-eppn",
-      },
+      eppn: "dummy-eppn",
     },
     intl: {
       locale: "en",

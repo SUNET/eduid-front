@@ -45,8 +45,12 @@ input.form-control.is-invalid:focus {
   border-color: initial;
 }
 
-fieldset:not(:empty) {
-  margin-bottom: 1.25em;
+fieldset {
+  width: 100%;
+
+  &:not(:empty) {
+    margin-bottom: 1.25em;
+  }
 }
 
 /* smallish grayish additional info underneath corresponding form elements */
@@ -55,6 +59,15 @@ fieldset:not(:empty) {
   line-height: 1.2;
   color: $gray;
   font-size: 14px;
+
+  .btn + & {
+    @media (max-width: $bp-md) {
+      text-align: center;
+    }
+    @media (max-width: $bp-xs) {
+      margin: 0 0 0.75rem;
+    }
+  }
 }
 
 @media (max-width: $bp-sm) {

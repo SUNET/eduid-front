@@ -3,7 +3,7 @@ import expect from "expect";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { IntlProvider } from "react-intl";
-import NameDisplay from "containers/NameDisplay";
+import NameDisplay from "components/NameDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 import { MemoryRouter } from "react-router-dom";
@@ -57,8 +57,8 @@ describe("NameDisplay component, when no names are saved", () => {
     };
   }
   const state = { ...fakeState };
-  state.personal_data.data.given_name = "";
-  state.personal_data.data.surname = "";
+  state.personal_data.given_name = "";
+  state.personal_data.surname = "";
   it("Renders a header", () => {
     const { wrapper } = setupComponent();
     const nameLabel = wrapper.find("label");
@@ -105,8 +105,8 @@ describe("NameDisplay component, when names are saved", () => {
     };
   }
   const state = { ...fakeState };
-  state.personal_data.data.given_name = "EduID";
-  state.personal_data.data.surname = "Account User";
+  state.personal_data.given_name = "EduID";
+  state.personal_data.surname = "Account User";
   it("Renders the first and last name when saved", () => {
     const { wrapper } = setupComponent();
     const names = wrapper.find("div");

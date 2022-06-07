@@ -69,7 +69,7 @@ describe("ChangePasswordForm renders", () => {
         .sort();
     }
     const test_state = {
-      personal_data: { data: {} },
+      personal_data: {},
       emails: emailsInitialState,
     };
     store = fakeStore({ ...dashboardTestState, ...test_state });

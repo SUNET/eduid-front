@@ -3,11 +3,6 @@ import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
   // profile page
-  "profile.name_display_title": <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />,
-  "profile.name_display_no_data": <FormattedMessage id="profile.name_display_no_data" defaultMessage={`add name`} />,
-
-  "profile.phone_display_title": <FormattedMessage id="profile.phone_display_title" defaultMessage={`Phone number`} />,
-
   "profile.phone_display_unconfirmed_data": (
     <FormattedMessage id="profile.phone_display_unconfirmed_data" defaultMessage={`confirm added number`} />
   ),
@@ -16,17 +11,9 @@ export const userProfile = {
     <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
   ),
 
-  "profile.phone_display_no_data": (
-    <FormattedMessage id="profile.phone_display_no_data" defaultMessage={`add phone number`} />
-  ),
-
-  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
-
   "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
 
-  "profile.email_display_no_data": (
-    <FormattedMessage id="profile.email_display_no_data" defaultMessage={`no email added`} />
-  ),
+  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
 
   "dashboard.tagline_unverified": (
     <FormattedMessage
@@ -398,14 +385,6 @@ export const userData = {
 
   "nin_display.verify-identity_verified_main_title": (
     <FormattedMessage id="nin_display.verify-identity_verified_main_title" defaultMessage={`id number`} />
-  ),
-
-  "nin_display.profile.main_title": (
-    <FormattedMessage id="nin_display.profile.main_title" defaultMessage={`Id number`} />
-  ),
-
-  "nins.input_help_text": (
-    <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
   ),
 
   "nins.invalid_nin": <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid national id number`} />,
@@ -919,13 +898,6 @@ export const userData = {
 
   "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
 
-  "orc.long_description": (
-    <FormattedMessage
-      id="orc.long_description"
-      defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
-    />
-  ),
-
   "orc.about_link": (
     <FormattedMessage
       id="orc.about_link"
@@ -939,8 +911,6 @@ export const userData = {
       }}
     />
   ),
-
-  "orc.button_connect": <FormattedMessage id="orc.button_connect" defaultMessage={`Add ORCID account`} />,
 
   // -------- account id ------- //
 

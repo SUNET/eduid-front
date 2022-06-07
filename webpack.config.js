@@ -1,7 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-const precss = require("precss");
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -112,7 +111,7 @@ module.exports = {
       // test: /\.xxx$/, // may apply this only for some modules
       options: {
         postcss: function () {
-          return [autoprefixer, precss];
+          return [autoprefixer];
         },
       },
     }),

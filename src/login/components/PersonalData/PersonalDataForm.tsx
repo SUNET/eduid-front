@@ -14,6 +14,7 @@ import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
+import RadioInput from "../Inputs/RadioInput";
 
 interface NameStrings {
   first: string;
@@ -29,8 +30,8 @@ interface NameStrings {
 const RenderLockedNames = (props: { names: NameStrings }) => {
   const dispatch = useDashboardAppDispatch();
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const given_name = useDashboardAppSelector((state) => state.personal_data.data.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.data.surname);
+  const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
+  const surname = useDashboardAppSelector((state) => state.personal_data.surname);
   return (
     <Fragment>
       <div className="external-names">
@@ -131,7 +132,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
   const { names } = props;
   const dispatch = useDashboardAppDispatch();
   const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
-  const personal_data = useDashboardAppSelector((state) => state.personal_data.data);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data);
   const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
   const formChange = (field: FormData) => {
@@ -168,7 +169,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
         />
       </fieldset>
       <Field
-        component={CustomInput}
+        component={RadioInput}
         required={true}
         name="language"
         selectOptions={available_languages}
@@ -190,7 +191,7 @@ const DecoratedPersonalDataForm = reduxForm({
 })(PersonalDataForm);
 
 const FinalPersonalDataForm = connect((state: DashboardRootState) => ({
-  initialValues: state.personal_data.data,
+  initialValues: state.personal_data,
 }))(DecoratedPersonalDataForm);
 
 export default FinalPersonalDataForm;

@@ -39,6 +39,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
+  "17FW6Y": {
+    "developer_comment": "profile name display title",
+    "string": "Name"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -55,9 +59,25 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "2D7weB": {
+    "developer_comment": "orcid connect button",
+    "string": "Add ORCID account"
+  },
+  "2EeZgg": {
+    "developer_comment": "Signup button",
+    "string": "Create eduID"
+  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
+  },
+  "2hnsRO": {
+    "developer_comment": "nins input help text",
+    "string": "National identity number with 12 digits"
+  },
+  "2hrJd2": {
+    "developer_comment": "Reset password link",
+    "string": "Forgot your password?"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -70,6 +90,10 @@
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
+  },
+  "3q1uE5": {
+    "developer_comment": "orcid description",
+    "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   "4+GwOq": {
     "developer_comment": "Set new password",
@@ -137,6 +161,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
   },
+  "95u9Rj": {
+    "developer_comment": "Signup",
+    "string": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
+  },
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Remember me on this device"
@@ -184,9 +212,17 @@
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
+  "D2FJI3": {
+    "developer_comment": "login this device, security key button",
+    "string": "This Device / Security key"
+  },
   "D7/IyL": {
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
+  },
+  "DdY0Ec": {
+    "developer_comment": "profile phone display title",
+    "string": "Phone number"
   },
   "DuBOC3": {
     "developer_comment": "Set new password",
@@ -239,6 +275,10 @@
     "developer_comment": "SAML login finished",
     "string": "Logging you in"
   },
+  "Fjbcnk": {
+    "developer_comment": "profile email display no data",
+    "string": "no email added"
+  },
   "FnpebS": {
     "developer_comment": "letter initialize proofing help text",
     "string": "The letter will contain a code that for security reasons expires in two weeks."
@@ -275,6 +315,10 @@
     "developer_comment": "Login Mfa heading",
     "string": "Log in: Extra level of security"
   },
+  "H1z9GE": {
+    "developer_comment": "platform authn device help text",
+    "string": "Touch/ Face ID on this device."
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -282,6 +326,10 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
+  },
+  "HozsEs": {
+    "developer_comment": "profile phone display no data",
+    "string": "add phone number"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -328,6 +376,18 @@
   "LNBvhT": {
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
+  },
+  "LcUe9m": {
+    "developer_comment": "login mfa primary option hint",
+    "string": "If your security key has a button, don’t forget to tap it."
+  },
+  "LlYcJl": {
+    "developer_comment": "button_add",
+    "string": "Add"
+  },
+  "LuSrd4": {
+    "developer_comment": "Signup",
+    "string": "Register your email address to create your eduID."
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -380,6 +440,10 @@
   "O9PJiz": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Insufficient privileges"
+  },
+  "OPkp7U": {
+    "developer_comment": "nin label",
+    "string": "Id number"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -466,6 +530,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "with a digital ID-card"
   },
+  "TZU5ir": {
+    "developer_comment": "platform authn key help text",
+    "string": "USB Security Key."
+  },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
   },
@@ -523,6 +591,14 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
+  },
+  "Wy4YzS": {
+    "developer_comment": "Signup instructions",
+    "string": "If you already have eduID you can log in {login_here_link}."
+  },
+  "XEJBy2": {
+    "developer_comment": "login mfa primary option button",
+    "string": "Use security key"
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -852,9 +928,6 @@
   "email.invalid_email": {
     "string": "The entered email is invalid"
   },
-  "email.sign-up-email": {
-    "string": "Create eduID"
-  },
   "emails.add_new": {
     "string": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
   },
@@ -1011,6 +1084,9 @@
     "developer_comment": "Use another device, finished",
     "string": "The code has expired, please close this browser window."
   },
+  "hJZwTS": {
+    "string": "Email address"
+  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
@@ -1058,6 +1134,10 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
   },
+  "j8KKR3": {
+    "developer_comment": "platform authn help text",
+    "string": "E.g. USB Security Key, Touch ID or Face ID"
+  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
@@ -1065,10 +1145,6 @@
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
-  },
-  "kWN+Jp": {
-    "developer_comment": "accept button",
-    "string": "accept"
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
@@ -1184,12 +1260,6 @@
   "login.mfa.primary-option.button": {
     "string": "Use security key"
   },
-  "login.mfa.primary-option.hint": {
-    "string": "If your security key has a button, don’t forget to tap it."
-  },
-  "login.mfa.primary-option.title": {
-    "string": "Security key"
-  },
   "login.mfa.secondary-option.button": {
     "string": "Use my {freja_eidplus_verbatim}"
   },
@@ -1219,9 +1289,6 @@
   },
   "login.user_terminated": {
     "string": "This account has been terminated, but is still present. Perform a password reset to cancel termination."
-  },
-  "login.usernamePw.reset-password-link": {
-    "string": "Forgot your password?"
   },
   "login.wrong_credentials": {
     "string": "The email address or password was incorrect."
@@ -1311,9 +1378,6 @@
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
   },
-  "nin_display.profile.main_title": {
-    "string": "Id number"
-  },
   "nin_display.verify-identity_unverified_main_title": {
     "string": "1. Your added id number"
   },
@@ -1322,9 +1386,6 @@
   },
   "nins.illegal_chars": {
     "string": "A national id number can only have digits"
-  },
-  "nins.input_help_text": {
-    "string": "National identity number with 12 digits"
   },
   "nins.input_placeholder": {
     "developer_comment": "Swedish NIN template",
@@ -1457,12 +1518,6 @@
   },
   "orc.authorization_success": {
     "string": "ORCID connected successfully"
-  },
-  "orc.button_connect": {
-    "string": "Add ORCID account"
-  },
-  "orc.long_description": {
-    "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   "orc.sub_mismatch": {
     "string": "Subject mismatch when trying to connect ORCID account"
@@ -1625,29 +1680,14 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here to order a new code"
   },
-  "profile.email_display_no_data": {
-    "string": "no email added"
-  },
   "profile.email_display_title": {
     "string": "Email address"
   },
   "profile.eppn_display_title": {
     "string": "eppn"
   },
-  "profile.name_display_no_data": {
-    "string": "add name"
-  },
-  "profile.name_display_title": {
-    "string": "Name"
-  },
-  "profile.phone_display_no_data": {
-    "string": "add phone number"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "make number primary"
-  },
-  "profile.phone_display_title": {
-    "string": "Phone number"
   },
   "profile.phone_display_unconfirmed_data": {
     "string": "confirm added number"
@@ -1691,16 +1731,6 @@
   },
   "register.create-account": {
     "string": "Sign up with your email address to start."
-  },
-  "register.paragraph": {
-    "string": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
-  },
-  "register.sub-heading": {
-    "string": "Register your email address to create your eduID."
-  },
-  "register.toLogin": {
-    "developer_comment": "Signup instructions",
-    "string": "If you already have eduID you can log in"
   },
   "required": {
     "string": "*Field cannot be empty"
@@ -1839,6 +1869,10 @@
   },
   "runtime_error.generic.title": {
     "string": "There was a problem displaying the page."
+  },
+  "s0no/w": {
+    "developer_comment": "profile name display no data",
+    "string": "add name"
   },
   "s3zRsg": {
     "developer_comment": "Reset Password email link sent",
@@ -2016,9 +2050,6 @@
   "signup.registering-address-used": {
     "string": "The email address you entered is already in use"
   },
-  "signup.registering-input": {
-    "string": "Email address"
-  },
   "signup.registering-new": {
     "string": "Email address successfully registered"
   },
@@ -2042,10 +2073,6 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
-  },
-  "text.link": {
-    "developer_comment": "Placeholder for phone text input",
-    "string": "here."
   },
   "tl.make_primary": {
     "string": "MAKE PRIMARY"
@@ -2151,6 +2178,10 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
+  },
+  "wIDAmk": {
+    "developer_comment": "Signup login here link",
+    "string": "here"
   },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",

@@ -7,36 +7,37 @@ import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 
 const TermsOfUseText = ({ version }: { version?: string }) => {
   return (
-    <div className="tou-text">
-      <p className="heading" tabIndex={0}>
-        <FormattedMessage defaultMessage="General rules for eduID users:" description="Terms of use (common header)" />
-      </p>
+    <>
       {version !== undefined ? ToUs[version] : undefined}
-      <p tabIndex={0} className="heading">
-        <FormattedMessage
-          defaultMessage={`Any person found violating or suspected of violating these rules can be disabled
+      <p tabIndex={0}>
+        <strong>
+          <FormattedMessage
+            defaultMessage={`Any person found violating or suspected of violating these rules can be disabled
           from eduID.se for investigation. Furthermore, legal action can be taken.`}
-          description="Terms of use (common footer)"
-        />
+            description="Terms of use (common footer)"
+          />
+        </strong>
       </p>
-    </div>
+    </>
   );
 };
 
 const AcceptButton = ({ version }: { version?: string }) => {
   const dispatch = useAppDispatch();
   return (
-    <EduIDButton
-      type="submit"
-      buttonstyle="primary"
-      onClick={() => dispatch(loginSlice.actions.updatedTouAccept(version))}
-      id="accept-button"
-      aria-label="accept button"
-      aria-disabled={!version}
-      disabled={!version}
-    >
-      <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
-    </EduIDButton>
+    <div className="buttons">
+      <EduIDButton
+        type="submit"
+        buttonstyle="primary"
+        onClick={() => dispatch(loginSlice.actions.updatedTouAccept(version))}
+        id="accept-button"
+        aria-label="accept button"
+        aria-disabled={!version}
+        disabled={!version}
+      >
+        <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
+      </EduIDButton>
+    </div>
   );
 };
 
@@ -52,19 +53,21 @@ const TermsOfUse = (): JSX.Element => {
     dispatch(loginSlice.actions.postTouVersions(availableTouVersions));
   }, []);
   return (
-    <div className="tou">
-      <h3 className="heading heading-4">
+    <>
+      <h1>
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
-      </h3>
-      <p tabIndex={0}>
-        <FormattedMessage
-          defaultMessage="We need an updated acceptance from you of the eduID terms of use."
-          description="Terms of use (banner text)"
-        />
-      </p>
+      </h1>
+      <div className="lead">
+        <p tabIndex={0}>
+          <FormattedMessage
+            defaultMessage="We need an updated acceptance from you of the eduID terms of use."
+            description="Terms of use (banner text)"
+          />
+        </p>
+      </div>
       <TermsOfUseText version={version} />
       <AcceptButton version={version} />
-    </div>
+    </>
   );
 };
 
