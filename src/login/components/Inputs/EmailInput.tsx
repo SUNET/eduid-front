@@ -23,7 +23,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
     description: "placeholder text for email input",
   });
 
-  function validate(value: string, allValues: object, meta?: FieldState<string>) {
+  function validate(value: string) {
     if (!value) {
       /* Browsers handle auto-completed fields differently. Current Chrome for example seems to often (but not always)
        * fill in the value on-screen, but not tell Javascript about it so the validator doesn't see that a value has
