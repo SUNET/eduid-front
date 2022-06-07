@@ -1,11 +1,18 @@
+import { PayloadAction } from "@reduxjs/toolkit";
+import { TryCaptchaResponse } from "apis/eduidSignup";
+import AccountCreated, { registeredEmailClass } from "components/AccountCreated";
+import EmailInUse, { registerHeaderClass } from "components/EmailInUse";
 import { shallow } from "enzyme";
 import expect from "expect";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
-import { signupSlice, initialState as signupInitialState } from "reducers/Signup";
-import { fakeStore, setupComponent } from "./helperFunctions/SignupTestApp";
+import { initialState as signupInitialState, signupSlice } from "reducers/Signup";
+import { setImmediate } from "timers";
+import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
+
+const runAllPromises = () => new Promise(setImmediate);
 
 describe("Email Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -50,7 +57,7 @@ describe("Email reducer", () => {
   });
 });
 
-describe("Test email Container", () => {
+describe("Test RegisterEmail", () => {
   it("Clicks the email button", () => {
     const test_email = "dummy-99@example.com";
     const store = fakeStore();
@@ -118,5 +125,73 @@ describe("Test email Container", () => {
     expect(actualActions).toEqual(["signup/setEmail", "signup/setToUAccepted"]);
 
     expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setToUAccepted(false));
+  });
+
+  it("Handles response 'new'", async () => {
+    const email = "test@example.org";
+    const fakeResponse: PayloadAction<TryCaptchaResponse> = {
+      type: "signup/fetchTryCaptcha/fulfilled",
+      payload: {
+        next: "new",
+      },
+    };
+    const store = realStore();
+
+    store.dispatch(signupSlice.actions.setEmail(email));
+    store.dispatch(fakeResponse);
+
+    // let all the async calls in the component finish, and then update the wrapper
+    await runAllPromises();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <RegisterEmail />
+        </MemoryRouter>
+      ),
+      store,
+    });
+
+    // check that the expected component was rendered
+    expect(wrapper.find(AccountCreated).exists()).toEqual(true);
+
+    // check that the e-mail address we set above was used
+    const userEmail = wrapper.find(`.${registeredEmailClass}`);
+    expect(userEmail.exists()).toEqual(true);
+    expect(userEmail.text()).toEqual(email);
+  });
+
+  it("Handles response 'already-used'", async () => {
+    const email = "test@example.org";
+    const fakeResponse: PayloadAction<TryCaptchaResponse> = {
+      type: "signup/fetchTryCaptcha/fulfilled",
+      payload: {
+        next: "address-used",
+      },
+    };
+    const store = realStore();
+
+    store.dispatch(signupSlice.actions.setEmail(email));
+    store.dispatch(fakeResponse);
+
+    // let all the async calls in the component finish, and then update the wrapper
+    await runAllPromises();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <RegisterEmail />
+        </MemoryRouter>
+      ),
+      store,
+    });
+
+    // check that the expected component was rendered
+    expect(wrapper.find(EmailInUse).exists()).toEqual(true);
+
+    // check that the e-mail address we set above was used
+    const header = wrapper.find(`.${registerHeaderClass}`);
+    expect(header.exists()).toEqual(true);
+    expect(header.text()).toContain(email);
   });
 });

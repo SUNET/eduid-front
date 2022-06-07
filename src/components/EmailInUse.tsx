@@ -3,6 +3,10 @@ import { FormattedMessage } from "react-intl";
 import { useSignupAppSelector } from "signup-hooks";
 import EduIDButton from "./EduIDButton";
 
+// identifiers used in tests
+export const registerHeaderClass = "register-header";
+export const resetPasswordLinkId = "reset-password";
+
 export default function EmailInUse(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email);
   const reset_password_link = useSignupAppSelector((state) => state.config.reset_password_link);
@@ -10,7 +14,7 @@ export default function EmailInUse(): JSX.Element {
   return (
     <React.Fragment>
       <div>
-        <h3 className="register-header">
+        <h3 className={registerHeaderClass}>
           <FormattedMessage
             defaultMessage="An eduID is already using {email}"
             description="Signup"
@@ -27,7 +31,7 @@ export default function EmailInUse(): JSX.Element {
         </div>
 
         <a href={reset_password_link}>
-          <EduIDButton buttonstyle="primary" id="reset-password">
+          <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
             <FormattedMessage defaultMessage="Reset your password" description="Signup" />
           </EduIDButton>
         </a>

@@ -23,13 +23,14 @@ describe("Account Component", () => {
     expect(p.exists()).toEqual(true);
   });
   it("Component renders user email (text includes '@')", () => {
+    const email = "dummy@example.com";
     const fullWrapper = setupComponent({
       component: <AccountCreated />,
-      overrides: { signup: { email: "dummy@example.com", tou_accepted: true, current_step: "register" } },
+      overrides: { signup: { email, tou_accepted: true, current_step: "register" } },
     });
 
     const userEmail = fullWrapper.find(".registered-email");
     expect(userEmail.exists()).toEqual(true);
-    expect(userEmail.text()).toContain("@");
+    expect(userEmail.text()).toEqual(email);
   });
 });
