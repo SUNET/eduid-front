@@ -1,8 +1,10 @@
 import SignupMain from "components/SignupMain";
-import expect from "expect";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
 import React from "react";
 import { initialState as configInitialState } from "reducers/SignupConfig";
 import { setupComponent } from "./helperFunctions/SignupTestApp";
+import { render, screen, signupTestHistory } from "./helperFunctions/SignupTestApp-rtl";
 
 describe("SignupMain Component", () => {
   it("Renders the splash screen before configuration", () => {
@@ -47,4 +49,10 @@ describe("SignupMain Component", () => {
   //   });
   //   expect(wrapper.find("EmailForm").exists()).toEqual(true);
   // });
+});
+
+test("renders e-mail form as expected", () => {
+  signupTestHistory.push("/register/email");
+  render(<SignupMain />, { state: { config: { ...configInitialState, is_configured: true } } });
+  expect(screen.getByRole("heading")).toHaveTextContent("foo");
 });

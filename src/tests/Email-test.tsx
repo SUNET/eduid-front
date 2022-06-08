@@ -11,6 +11,7 @@ import { MemoryRouter } from "react-router";
 import { initialState as signupInitialState, signupSlice } from "reducers/Signup";
 import { setImmediate } from "timers";
 import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
+import { render, screen } from "@testing-library/react";
 
 const runAllPromises = () => new Promise(setImmediate);
 

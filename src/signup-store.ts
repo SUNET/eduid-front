@@ -1,4 +1,4 @@
-import { routerReducer } from "react-router-redux";
+//import { routerReducer } from "react-router-redux";
 import { notificationsSlice } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { combineReducers } from "redux";
@@ -9,7 +9,7 @@ import configSlice from "./reducers/SignupConfig";
 const eduIDApp = combineReducers({
   config: configSlice.reducer,
   signup: signupSlice.reducer,
-  router: routerReducer,
+  //router: routerReducer,
   form: formReducer,
   intl: intlReducer,
   notifications: notificationsSlice.reducer,

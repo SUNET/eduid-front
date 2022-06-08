@@ -2,9 +2,11 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import SignupMain from "components/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
+import { createBrowserHistory } from "history";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
+import { Router } from "react-router";
 import { signupStore } from "signup-init-app";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
@@ -39,11 +41,15 @@ polyfillsInit();
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(signupStore.dispatch);
 
+export const history = createBrowserHistory();
+
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={signupStore}>
-    <SignupMain />
+    <Router history={history}>
+      <SignupMain />
+    </Router>
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig
