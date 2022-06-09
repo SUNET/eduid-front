@@ -4,7 +4,7 @@ import Splash from "components/Splash";
 import NotificationsContainer from "containers/Notifications";
 import Footer from "login/components/Footer/Footer";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
-import React, { Fragment } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import { SIGNUP_BASE_PATH } from "../globals";
