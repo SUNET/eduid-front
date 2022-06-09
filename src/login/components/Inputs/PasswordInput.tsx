@@ -66,6 +66,7 @@ function PasswordInputElement(props: InputProps): JSX.Element {
         type={showPassword ? "text" : "password"}
         valid={props.meta.valid}
         invalid={props.meta.invalid}
+        placeholder={props.placeholder}
       />
 
       <button
