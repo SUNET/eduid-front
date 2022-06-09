@@ -17,3 +17,12 @@ a,
     display: none;
   }
 }
+
+a .disabled {
+  color: $gray;
+  text-decoration: none;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}

@@ -63,7 +63,9 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <UsernameInputPart />
+              <fieldset>
+                <UsernameInputPart />
+              </fieldset>
               <fieldset>
                 <PasswordInput name="current-password" autoComplete="current-password" />
               </fieldset>
@@ -75,7 +77,7 @@ export default function UsernamePw() {
                   <UsernamePwAnotherDeviceButton />
                 </div>
 
-                <div>
+                <div className="links">
                   <RenderResetPasswordLink />
                   <RenderRegisterLink />
                 </div>
@@ -135,7 +137,7 @@ function UsernameInputPart(): JSX.Element {
 function RenderRegisterLink(): JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_url);
   return (
-    <div className="secondary-link text-small">
+    <div className="text-small">
       <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
       &nbsp;&nbsp;
       <a href={toSignup} id="register-link">

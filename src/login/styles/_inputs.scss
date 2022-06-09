@@ -136,6 +136,10 @@ input:focus {
 .input-validate-error {
   font-size: 1rem;
   color: $dark-orange;
+
+  fieldset & {
+    position: absolute;
+  }
 }
 
 // login username-pw / reset-password set-new-password
