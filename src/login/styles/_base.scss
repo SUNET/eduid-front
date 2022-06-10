@@ -31,11 +31,11 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 6rem;
+  padding: 3rem 0 6rem;
   background-color: $light-gray;
 
   @media (max-width: $bp-lg) {
-    padding-bottom: 4rem;
+    padding-bottom: 2rem 0 4rem;
   }
 }
 
@@ -66,14 +66,6 @@ body {
   // this is added to prevent margin collapse (look for other solution if causing problems)
   display: flex;
   flex-direction: column;
-}
-
-.content {
-  padding-top: 3rem;
-
-  @media (max-width: $bp-lg) {
-    padding-top: 2rem;
-  }
 }
 
 .border-line {
