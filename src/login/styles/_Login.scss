@@ -1,14 +1,9 @@
 @import "./variables.scss";
 
-// for all login pages
-.username-pw {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
-}
-
 // username and password
 .username-pw {
+  margin-bottom: 2rem;
+
   form {
     margin-top: 0;
 
@@ -31,32 +26,27 @@
         }
       }
     }
-  }
 
-  .secondary-link {
-    align-self: center;
+    .links {
+      a {
+        margin: 0.25rem 0;
+        display: inline-block;
+      }
 
-    a:hover {
-      text-decoration: underline;
+      @media (max-width: $bp-xl) {
+        margin-top: 1rem;
+      }
     }
-  }
-}
 
-a {
-  margin: 0.25rem 0;
-  display: inline-block;
+    .flex-between {
+      flex-direction: row;
+      text-align: right;
 
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-a .disabled {
-  color: $gray;
-  text-decoration: none;
-
-  &:hover {
-    cursor: not-allowed;
+      @media (max-width: $bp-xl) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -88,7 +78,7 @@ a .disabled {
           margin: 0;
         }
 
-        // duplicate in _buttons.scss
+        // duplicate in _buttons.scss?
         .icon {
           background: transparent;
           padding: 0;
@@ -119,18 +109,7 @@ a .disabled {
   }
 }
 
-.username-pw {
-  .flex-between {
-    flex-direction: row;
-    text-align: right;
-
-    @media (max-width: $bp-xl) {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-}
-
+// use another device
 .use-another-device {
   .response-code-inputs {
     input {
