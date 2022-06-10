@@ -101,6 +101,7 @@ function VerifyIdentity(): JSX.Element | null {
                   services related to higher education.`}
                 />
               </p>
+              <AddNin />
             </li>
             <li>
               <h4>
