@@ -1,9 +1,8 @@
-import AddNin from "components/AddNin";
+import Eidas from "components/Eidas";
 import LetterProofingButton from "components/LetterProofing";
 import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -11,10 +10,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
-import Eidas from "components/Eidas";
 
-// const mock = require("jest-mock");
-// const messages = require("../login/translation/messageIndex");
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
 

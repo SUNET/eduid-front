@@ -19,7 +19,6 @@ export const signupTestState: SignupRootState = {
     is_configured: true,
   },
   signup: signupInitialState,
-  //router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
   notifications: {},
