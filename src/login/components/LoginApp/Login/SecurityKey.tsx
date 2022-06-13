@@ -9,6 +9,7 @@ import { clearNotifications } from "../../../../reducers/Notifications";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FormattedMessage } from "react-intl";
 
 interface CloseButtonProps {
   setSelected(val: boolean): void;
@@ -51,11 +52,11 @@ const RetryButton = ({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Ele
   );
 };
 
-interface SecurityKeyUnselectedProps extends SecurityKeyProps {
+interface SecurityKeyUnselectedProps {
   setSelected(val: boolean): void;
 }
 
-const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselectedProps): JSX.Element => {
+const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX.Element => {
   const webauthn_challenge = useAppSelector((state) => state.login.mfa.webauthn_challenge);
   const webauthn_assertion = useAppSelector((state) => state.login.mfa.webauthn_assertion);
   const dispatch = useAppDispatch();
@@ -82,29 +83,40 @@ const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselected
 
   return (
     <Fragment>
-      <p className="heading">{translate("login.mfa.primary-option.title")}</p>
+      <h4>
+        <FormattedMessage
+          description="login this device, security key button"
+          defaultMessage={`This Device / Security key`}
+        />
+      </h4>
+      <p className="help-text">
+        <FormattedMessage
+          description="platform authn help text"
+          defaultMessage={`E.g. USB Security Key, Touch ID or Face ID`}
+        />
+      </p>
       <EduIDButton buttonstyle="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
-        {translate("login.mfa.primary-option.button")}
+        <FormattedMessage description="login mfa primary option button" defaultMessage={`Use security key`} />
       </EduIDButton>
     </Fragment>
   );
 };
 
-interface SecurityKeyProps {
-  translate(msg: string): string;
-}
-
-const SecurityKey = (props: SecurityKeyProps): JSX.Element => {
-  const { translate } = props;
+const SecurityKey = (): JSX.Element => {
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
   return (
-    <div className="primary" tabIndex={0}>
+    <div className="option-wrapper">
       <div className="option">
         {selected ? (
           <>
             <div className="button-pair selected">
-              <p className="heading">{translate("login.mfa.primary-option.title")}</p>
+              <h4>
+                <FormattedMessage
+                  description="login this device, security key button"
+                  defaultMessage={`This Device / Security key`}
+                />
+              </h4>
               <CloseButton setSelected={setSelected} />
             </div>
             <div className="button-pair bottom">
@@ -113,10 +125,17 @@ const SecurityKey = (props: SecurityKeyProps): JSX.Element => {
             </div>
           </>
         ) : (
-          <SecurityKeyUnselected setSelected={setSelected} {...props} />
+          <SecurityKeyUnselected setSelected={setSelected} />
         )}
       </div>
-      {selected && <p className="help-link">{translate("login.mfa.primary-option.hint")}</p>}
+      {selected && (
+        <p className="help-text">
+          <FormattedMessage
+            description="login mfa primary option hint"
+            defaultMessage={`If your security key has a button, don’t forget to tap it.`}
+          />
+        </p>
+      )}
     </div>
   );
 };

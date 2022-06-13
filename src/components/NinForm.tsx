@@ -1,11 +1,11 @@
 import { addNin } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { useIntl } from "react-intl";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
+import { FormattedMessage } from "react-intl";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -68,42 +68,28 @@ function NinForm(): JSX.Element {
       }}
       render={({ handleSubmit, pristine, invalid }) => {
         return (
-          <>
-            <div className="accordions">
-              <div className="accordion">
-                <input type="checkbox" id="chck1" className="accordion-handle" />
-                <label className="accordion-label" htmlFor="chck1">
-                  Svenskt personnummer
-                </label>
-                <div className="accordion-content">
-                  <form onSubmit={handleSubmit} className="single-input-form x-adjust">
-                    <fieldset id="nins-form" className="tabpane">
-                      <FinalField
-                        component={CustomInput}
-                        componentClass="input"
-                        type="text"
-                        name="nin"
-                        label={translate("nin_display.profile.main_title")}
-                        placeholder={placeholder}
-                        helpBlock={translate("nins.input_help_text")}
-                        validate={validateNin}
-                      />{" "}
-                    </fieldset>
-                    <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-                      {translate("emails.button_add")}
-                    </EduIDButton>
-                  </form>
-                </div>
-              </div>
-              <div className="accordion">
-                <input type="checkbox" id="chck2" className="accordion-handle" />
-                <label className="accordion-label" htmlFor="chck2">
-                  annat..
-                </label>
-                <div className="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
-              </div>
-            </div>
-          </>
+          <form onSubmit={handleSubmit} className="single-input-form x-adjust">
+            <fieldset id="nins-form" className="tabpane">
+              <FinalField
+                component={CustomInput}
+                componentClass="input"
+                type="text"
+                name="nin"
+                label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
+                placeholder={placeholder}
+                helpBlock={
+                  <FormattedMessage
+                    description="nins input help text"
+                    defaultMessage="National identity number with 12 digits"
+                  />
+                }
+                validate={validateNin}
+              />
+            </fieldset>
+            <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+              <FormattedMessage description="button_add" defaultMessage="Add" />
+            </EduIDButton>
+          </form>
         );
       }}
     />

@@ -2,22 +2,9 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const register = {
-  "register.sub-heading": (
-    <FormattedMessage id="register.sub-heading" defaultMessage={`Register your email address to create your eduID.`} />
-  ),
-
-  "register.paragraph": (
-    <FormattedMessage
-      id="register.paragraph"
-      defaultMessage={`Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number.`}
-    />
-  ),
-
   "register.create-account": (
     <FormattedMessage id="register.create-account" defaultMessage={`Sign up with your email address to start.`} />
   ),
-
-  "email.sign-up-email": <FormattedMessage id="email.sign-up-email" defaultMessage={`Create eduID`} />,
 
   // terms of use
 
@@ -34,14 +21,6 @@ export const register = {
 
   // captcha
   "captcha.one-step-left": <FormattedMessage id="captcha.one-step-left" defaultMessage={`Only one more step left!`} />,
-
-  "captcha.verify-human": (
-    <FormattedMessage id="captcha.verify-human" defaultMessage={`Confirm that you are a human.`} />
-  ),
-
-  "captcha.submit": <FormattedMessage id="captcha.submit" defaultMessage={`Done`} />,
-
-  "captcha.cancel": <FormattedMessage id="captcha.cancel" defaultMessage={`Cancel`} />,
 
   // eduID links sent to email
   "created.confirm-registration": (
@@ -63,25 +42,12 @@ export const register = {
     <FormattedMessage id="signup.registering-new" defaultMessage={`Email address successfully registered`} />
   ),
 
-  "signup.registering-input": <FormattedMessage id="signup.registering-input" defaultMessage={`Email address`} />,
-
   // eduID registration error: email already in use
   "signup.registering-address-used": (
     <FormattedMessage
       id="signup.registering-address-used"
       defaultMessage={`The email address you entered is already in use`}
     />
-  ),
-
-  "used.email-label": (
-    <FormattedMessage
-      id="used.email-label"
-      defaultMessage={`If this is your eduID, you can reset your password to log back in.`}
-    />
-  ),
-
-  "used.email-in-use": (values) => (
-    <FormattedMessage id="used.email-in-use" defaultMessage={`An eduID is already using {email}`} values={values} />
   ),
 
   "finish.can-now-login": <FormattedMessage id="finish.can-now-login" defaultMessage={`You can now log in`} />,

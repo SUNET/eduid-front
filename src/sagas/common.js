@@ -12,6 +12,11 @@ export const checkStatus = function (response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else if (response.status === 0) {
+    /* We made the request with `redirect: "manual"` which means the fetch() does not recurse on the
+     * redirect the backend gives us when not authenticated. Unfortunately, there doesn't seem to be
+     * a way to get the actual Location: header from the response then, so we have to reconstruct it
+     * ourselves using TOKEN_SERVICE_URL.
+     */
     const next = document.location.href;
     document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);
   } else {

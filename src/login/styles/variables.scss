@@ -13,9 +13,6 @@ $light-gray: #f4f4f4;
 $close: #c4c4c4;
 $dark-gray: #d8d8d8;
 $mid-gray: #ebebeb;
-$line-height: 1.4;
-$margin: 1rem;
-$list-indent: 2.25rem;
 
 /*
  * Typography
@@ -25,6 +22,14 @@ $proxima-bold: "ProximaNova-bold", "Arial", "Helvetica", "sans-serif";
 $proxima-light: "ProximaNova-light", "Arial", "Helvetica", "sans-serif";
 $proxima-regular: "ProximaNova-Regular", "Arial", "Helvetica", "sans-serif";
 $akkurat: "Akkurat", "Arial", "Helvetica", "sans-serif";
+
+$txt-sm: 0.9rem;
+$txt-md: 1rem;
+$txt-lg: 1.25rem;
+
+$line-height: 1.4;
+$margin: 1rem;
+$list-indent: 2.25rem;
 
 /*
  * Breakpoints

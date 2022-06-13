@@ -98,9 +98,6 @@ export const changePassword = {
   "security.password_credential_type": (
     <FormattedMessage id="security.password_credential_type" defaultMessage={`Password`} />
   ),
-
-  // links to reset password from sign up
-  "used.reset-password": <FormattedMessage id="used.reset-password" defaultMessage={`Reset your password`} />,
 };
 
 export const resetPassword = {

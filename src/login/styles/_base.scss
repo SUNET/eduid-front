@@ -31,11 +31,11 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 6rem;
+  padding: 3rem 0 6rem;
   background-color: $light-gray;
 
   @media (max-width: $bp-lg) {
-    padding-bottom: 4rem;
+    padding-bottom: 2rem 0 4rem;
   }
 }
 
@@ -68,16 +68,9 @@ body {
   flex-direction: column;
 }
 
-.content {
-  padding-top: 3rem;
-
-  @media (max-width: $bp-lg) {
-    padding-top: 2rem;
-  }
-}
-
-fieldset {
-  width: 100%;
+.border-line {
+  margin: 0.5rem 0 2rem;
+  border-bottom: 1px solid $dark-gray;
 }
 
 // TODO: Remove after checking scrollbar in tables

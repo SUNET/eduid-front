@@ -14,6 +14,7 @@ import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
+import RadioInput from "../Inputs/RadioInput";
 
 interface NameStrings {
   first: string;
@@ -29,8 +30,8 @@ interface NameStrings {
 const RenderLockedNames = (props: { names: NameStrings }) => {
   const dispatch = useDashboardAppDispatch();
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const given_name = useDashboardAppSelector((state) => state.personal_data.data.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.data.surname);
+  const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
+  const surname = useDashboardAppSelector((state) => state.personal_data.surname);
   return (
     <Fragment>
       <div className="external-names">
@@ -60,26 +61,24 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
 const RenderEditableNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
-      <div className="input-pair">
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="given_name"
-          label={props.names.first}
-          placeholder={props.names.first}
-        />
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="surname"
-          label={props.names.last}
-          placeholder={props.names.last}
-        />
-      </div>
+      <Field
+        component={CustomInput}
+        required={true}
+        componentClass="input"
+        type="text"
+        name="given_name"
+        label={props.names.first}
+        placeholder={props.names.first}
+      />
+      <Field
+        component={CustomInput}
+        required={true}
+        componentClass="input"
+        type="text"
+        name="surname"
+        label={props.names.last}
+        placeholder={props.names.last}
+      />
       <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
@@ -94,13 +93,15 @@ interface RenderSavePersonalDataButtonProps {
 const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   return (
-    <EduIDButton
-      id="personal-data-button"
-      buttonstyle="primary"
-      disabled={loading || pristine || invalid || submitting}
-    >
-      {translate("button_save")}
-    </EduIDButton>
+    <div className="buttons">
+      <EduIDButton
+        id="personal-data-button"
+        buttonstyle="primary"
+        disabled={loading || pristine || invalid || submitting}
+      >
+        {translate("button_save")}
+      </EduIDButton>
+    </div>
   );
 };
 
@@ -131,7 +132,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
   const { names } = props;
   const dispatch = useDashboardAppDispatch();
   const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
-  const personal_data = useDashboardAppSelector((state) => state.personal_data.data);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data);
   const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
   const formChange = (field: FormData) => {
@@ -152,21 +153,23 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
       }}
       onSubmit={props.handleSubmit(formSubmit)}
     >
-      <div className="name-inputs">
+      <fieldset className="name-inputs">
         {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
-      </div>
+      </fieldset>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="display_name"
+          label={names.display}
+          placeholder={names.display}
+          helpBlock={translate("pd.display_name_input_help_text")}
+        />
+      </fieldset>
       <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="display_name"
-        label={names.display}
-        placeholder={names.display}
-        helpBlock={translate("pd.display_name_input_help_text")}
-      />
-      <Field
-        component={CustomInput}
+        component={RadioInput}
         required={true}
         name="language"
         selectOptions={available_languages}
@@ -188,7 +191,7 @@ const DecoratedPersonalDataForm = reduxForm({
 })(PersonalDataForm);
 
 const FinalPersonalDataForm = connect((state: DashboardRootState) => ({
-  initialValues: state.personal_data.data,
+  initialValues: state.personal_data,
 }))(DecoratedPersonalDataForm);
 
 export default FinalPersonalDataForm;

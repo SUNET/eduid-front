@@ -1,57 +1,46 @@
-// #orcid {
-//   margin-bottom: 30px;
-// }
+table.orcid {
+  tr {
+    height: auto;
 
-// @import "../variables.scss";
+    td {
+      &.orcid-link {
+        vertical-align: middle;
+        padding: 0.75rem 0;
+      }
+      &:first-of-type,
+      &:last-of-type {
+        vertical-align: top;
+        width: 3rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+  }
+}
 
-.orcid-logo-container {
+span.orcid-logo {
+  background: url("../../../img/vector_iD_icon.svg");
+  background-repeat: no-repeat;
+}
+
+//remove or merge with above?
+.orcid-logo {
   display: inline-flex;
-
-  // align-items: center;
-  // padding-left: 0.25em;
-  padding-right: 0.35em;
-  fill: currentcolor;
-
-  span.orcid-logo {
-    background: url("../../../img/vector_iD_icon.svg");
-    background-repeat: no-repeat;
-    margin-right: 0.3em;
-    align-self: start;
-    top: 0;
-    min-width: 22px;
-  }
-
-  .orcid-logo {
-    display: inline-flex;
-    align-self: center;
-    height: 22px;
-    width: 22px;
-    top: 0.3em;
-    position: relative;
-  }
-
-  .orcid-link {
-    font-size: 1.25rem;
-    padding-bottom: 0.5em;
-    word-break: break-word;
-  }
+  height: 22px;
+  width: 22px;
+  position: relative;
 }
 
-.orcid-logo-container label {
-  margin: 0 0 0 10px;
-}
-
-// streamline this styling with the other help text across the website (.help-text)
-.orcid-btn-help {
-  margin: 0;
+.orcid-link {
+  font-size: 1rem;
   line-height: 1.2;
-  color: $gray;
-  font-size: 14px;
-  margin-top: 15px;
+  word-break: break-word;
+
+  a {
+    margin: 0;
+  }
 }
 
-// remove this when all button styles are refactored
-#connect-orcid-button {
-  line-height: 2;
-  margin-bottom: 0;
+button .orcid-logo {
+  height: 22px;
+  width: 22px;
 }

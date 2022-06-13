@@ -3,10 +3,11 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
-import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
-import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
+import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
+import { LoginAppDispatch } from "login/app_init/initStore";
+import { SignupAppDispatch } from "signup-init-app";
+import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
 /*********************************************************************************************************************/
 export interface JsConfigGetConfigResponse {
@@ -21,7 +22,10 @@ export interface JsConfigGetConfigResponse {
 export const fetchJsConfig = createAsyncThunk<
   JsConfigGetConfigResponse, // return type
   { url: string }, // args type
-  { dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch; state: StateWithCommonConfig }
+  {
+    dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+    state: StateWithCommonConfig;
+  }
 >("config/fetchJsConfig", async (args, thunkAPI) => {
   return makeJsConfigRequest<JsConfigGetConfigResponse>(thunkAPI, args.url)
     .then((response) => response.payload)

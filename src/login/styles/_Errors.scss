@@ -123,15 +123,10 @@
 // small reddish alert with exclamation symbol
 .warning-text {
   color: $dark-orange;
-
-  @extend .text-small;
+  font-size: $txt-sm;
 
   .warning-symbol {
     padding-right: 0.5rem;
-
-    svg {
-      transform: rotate(0);
-    }
   }
 }
 
@@ -147,6 +142,7 @@
 
 .error-info {
   text-align: left;
+  font-size: 1rem;
 
   tr {
     height: auto;
@@ -160,10 +156,6 @@
 
     &:last-child {
       color: $dark-orange;
-    }
-
-    @media (max-width: $bp-md) {
-      font-size: 1rem;
     }
   }
 

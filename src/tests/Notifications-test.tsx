@@ -65,7 +65,6 @@ describe("Notifications Component", () => {
 
 describe("Test Notifications Container", () => {
   let store: MockStoreEnhanced<DashboardRootState>;
-  let state;
   let wrapper: ReactWrapper;
 
   const test_state: Partial<DashboardRootState> = {
@@ -77,7 +76,6 @@ describe("Test Notifications Container", () => {
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({ ...dashboardTestState, ...test_state });
-    state = store.getState();
 
     wrapper = setupComponent({
       component: <NotificationsContainer />,

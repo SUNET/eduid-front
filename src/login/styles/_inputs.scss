@@ -122,19 +122,24 @@ input:focus {
     font-size: 1rem;
   }
 
-  & .label-required {
-    color: $orange-highlight;
-  }
-
   & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
   }
 }
 
+/* for orange asterisk after label */
+.label-required {
+  color: $orange-highlight;
+}
+
 .input-validate-error {
-  font-size: 1rem;
+  font-size: $txt-sm;
   color: $dark-orange;
+
+  fieldset & {
+    position: absolute;
+  }
 }
 
 // login username-pw / reset-password set-new-password

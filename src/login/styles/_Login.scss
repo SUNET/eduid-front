@@ -1,33 +1,14 @@
 @import "./variables.scss";
 
-// for all login pages
-.username-pw,
-.tou,
-.mfa {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
-
-  .heading {
-    line-height: $line-height;
-  }
-
-  // button.btn {
-  //   width: fit-content;
-  // }
-}
-
 // username and password
 .username-pw {
+  margin-bottom: 2rem;
+
   form {
     margin-top: 0;
 
     .form-group {
       margin-bottom: $margin;
-    }
-
-    button {
-      margin: 0.25rem 0 #{1 * $margin};
     }
 
     .welcome-back-container {
@@ -45,65 +26,27 @@
         }
       }
     }
-  }
 
-  .secondary-link {
-    align-self: center;
+    .links {
+      a {
+        margin: 0.25rem 0;
+        display: inline-block;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-a {
-  margin: 0.25rem 0;
-  display: inline-block;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  //  @media (max-width: $bp-sm) {
-  //    margin: 1rem 0;
-  //  }
-}
-
-a .disabled {
-  color: $gray;
-  text-decoration: none;
-
-  &:hover {
-    cursor: not-allowed;
-  }
-}
-
-// terms of use
-.tou {
-  .tou-text {
-    margin-top: $margin;
-    margin-bottom: $margin;
-
-    p {
-      line-height: $line-height;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    ul {
-      margin-bottom: #{1rem * $line-height};
-      list-style-type: disc;
-
-      li {
-        font-size: 1.25rem;
-        margin: 0;
-        margin-left: 1.5em;
+      @media (max-width: $bp-xl) {
+        margin-top: 1rem;
       }
     }
-  }
 
-  button {
-    align-self: center;
+    .flex-between {
+      flex-direction: row;
+      text-align: right;
+
+      @media (max-width: $bp-xl) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -112,174 +55,61 @@ a .disabled {
   .options {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: #{2 * $margin};
 
-    .primary {
-      margin: 0 #{3 * $margin} #{3.5 * $margin} 0;
-
-      .bottom {
-        align-items: flex-end;
-      }
-
-      .selected .heading {
-        margin-bottom: 0;
-      }
-
-      img {
-        max-width: 178px;
-      }
-
-      // duplicate in _buttons.scss
-      .icon {
-        background: transparent;
-        padding: 0;
-        margin: 0;
-        height: auto;
-        border: none;
-
-        svg {
-          color: $black;
-          height: 1rem;
-          width: 1rem;
-          transform: rotate(0);
-        }
-      }
-
-      .help-link {
-        max-width: 350px;
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        margin-left: 0.25rem;
-        padding-bottom: 0;
-      }
-    }
-
-    .option {
-      border-radius: 20px;
-      background: $white;
-      box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
-      padding: 1rem;
-      width: 350px;
-      height: 168px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  }
-}
-
-.border-line {
-  margin: 0.5rem 0 2rem;
-  border-bottom: 1px solid $dark-gray;
-}
-
-// styles to counteract bootstrap button styles (.mfa)
-// .option {
-//   button,
-//   button:active,
-//   button:focus,
-//   button:active:focus {
-//     margin-top: 2.75rem;
-//     margin-bottom: 0;
-//   }
-// }
-
-.mfa .secondary .option {
-  // button,
-  // button:active,
-  // button:focus,
-  // button:active:focus {
-  //   color: $orange-highlight;
-  //   border: none;
-  //   border: solid 2px $orange-highlight;
-  //   background-color: $white;
-  //   text-transform: uppercase;
-  //   margin-top: 2.75rem;
-  //   margin-bottom: 0;
-
-  .verbatim {
-    text-transform: none;
-  }
-
-  // }
-}
-
-// iPhone 6/7/8+ and smaller
-@media (max-width: $bp-xs) {
-  .username-pw,
-  .tou,
-  .mfa {
-    button.btn {
-      width: 100%;
-      font-size: 1rem;
-    }
-  }
-
-  .tou .tou-text {
-    margin-top: #{2 * $margin};
-  }
-}
-
-// breakpoint at .option width + 2 * margin (.mfa)
-@media (max-width: 382px) {
-  .mfa .options {
-    .primary {
-      margin-right: 0;
-    }
-
-    .primary,
-    .secondary {
-      flex: 1;
+    .option-wrapper {
+      margin-bottom: 2rem;
+      width: 330px;
 
       .option {
-        width: unset;
-      }
-    }
-  }
-}
+        border-radius: 20px;
+        background: $white;
+        box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
+        padding: 1rem;
+        min-height: 175px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-// TODO: make .button-pair and .buttons same
-.username-pw {
-  .button-pair {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0.5rem 0;
-    width: 100%;
+        h4,
+        .help-text {
+          margin: 0;
+        }
 
-    button {
-      svg {
-        transform: rotate(0);
-        margin-right: 8px;
-      }
-    }
+        // duplicate in _buttons.scss?
+        .icon {
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          height: auto;
+          border: none;
 
-    @media (min-width: $bp-xs) {
-      flex-direction: row;
-      width: auto;
+          svg {
+            color: $black;
+            height: 1rem;
+            width: 1rem;
+          }
+        }
 
-      button {
-        // min-width: 100px;
+        .bottom {
+          align-items: flex-end;
 
-        &:nth-child(n + 2) {
-          margin-left: 1rem;
+          img {
+            max-width: 178px;
+          }
         }
       }
-    }
-  }
 
-  .flex-between {
-    flex-direction: row;
-    text-align: right;
-
-    @media (max-width: $bp-xl) {
-      flex-direction: column;
-      text-align: center;
+      @media (max-width: $bp-xs) {
+        width: 100%;
+      }
     }
   }
 }
 
+// use another device
 .use-another-device {
   .response-code-inputs {
     input {

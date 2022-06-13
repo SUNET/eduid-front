@@ -38,21 +38,20 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
             />
           </p>
         </div>
-        <div id="change-password">
-          <EduIDButton
-            id="security-change-button"
-            buttonstyle="link"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            <FormattedMessage
-              id="settings.change_password"
-              defaultMessage="Change password"
-              description="Dashboard change password"
-            />
-          </EduIDButton>
-        </div>
+        <EduIDButton
+          id="security-change-button"
+          buttonstyle="link"
+          className="lowercase"
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
+          <FormattedMessage
+            id="settings.change_password"
+            defaultMessage="Change password"
+            description="Dashboard change password"
+          />
+        </EduIDButton>
       </div>
 
       <NotificationModal

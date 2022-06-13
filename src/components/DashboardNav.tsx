@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
+import NotificationTip from "./NotificationTip";
 
 function DashboardNav(): JSX.Element {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
   const nins = useDashboardAppSelector((state) => state.nins.nins);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
-  const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale) as string;
+  const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
 
   /*
    * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
@@ -47,7 +47,7 @@ function DashboardNav(): JSX.Element {
 
     return (
       <NotificationTip
-        state={{ active: [active, setActive] }}
+        setActive={setActive}
         position={`settings ${selectedLanguage}`}
         tipText={
           <FormattedMessage
