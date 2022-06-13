@@ -2,7 +2,6 @@ import * as actions from "actions/Security";
 import ChangePasswordDisplay from "components/ChangePasswordDisplay";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount, shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import securityReducer, { initialState as securityInitialState } from "reducers/Security";

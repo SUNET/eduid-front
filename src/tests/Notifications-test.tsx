@@ -1,7 +1,6 @@
 import NotificationsContainer from "containers/Notifications";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { notificationsSlice } from "reducers/Notifications";
 import { MockStoreEnhanced } from "redux-mock-store";

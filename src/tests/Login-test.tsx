@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import expect from "expect";
+import { IdPAction } from "apis/eduidLogin";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-const mock = require("jest-mock");
-
-import Login from "../login/components/LoginApp/Login/Login";
-import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
-import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
-import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
 import loginStore, { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
-import { IdPAction } from "apis/eduidLogin";
+import React from "react";
+import { Router } from "react-router-dom";
+import Login from "../login/components/LoginApp/Login/Login";
+import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
+import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
+import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
+
+const mock = require("jest-mock");
 
 const baseState: LoginRootState = {
   config: {

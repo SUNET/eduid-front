@@ -3,7 +3,7 @@ import LetterProofingButton from "components/LetterProofing";
 import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
+
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React from "react";
 import { IntlProvider } from "react-intl";

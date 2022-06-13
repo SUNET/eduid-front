@@ -1,10 +1,9 @@
-import expect from "expect";
-import React from "react";
-import { mount } from "enzyme";
-import { fakeStore } from "./helperFunctions/DashboardTestApp";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import Eidas from "components/Eidas";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { mount } from "enzyme";
 import NotificationModal from "login/components/Modals/NotificationModal";
+import React from "react";
+import { fakeStore } from "./helperFunctions/DashboardTestApp";
 
 describe("Eidas component", () => {
   function setupComponent() {

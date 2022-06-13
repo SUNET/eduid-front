@@ -1,9 +1,8 @@
+import { shallow } from "enzyme";
 import React from "react";
-import expect from "expect";
 import { IntlProvider } from "react-intl";
 import Footer from "../login/components/Footer/Footer";
 import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
-import { shallow } from "enzyme";
 
 const config = {
   ...signupTestState.config,
