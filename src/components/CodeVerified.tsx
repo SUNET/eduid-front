@@ -68,7 +68,7 @@ export default function CodeVerified(props: CodeVerifiedProps) {
 
 function SignupComplete(props: VerifyLinkResponseSuccess) {
   return (
-    <form method="GET" action={props.dashboard_url} className="vertical-content-margin content">
+    <form method="GET" action={props.dashboard_url}>
       <h1 className="register-header">
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."
