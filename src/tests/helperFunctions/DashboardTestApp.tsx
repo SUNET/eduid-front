@@ -7,12 +7,15 @@ import { initialState as emailsInitialState } from "reducers/Emails";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 import { NinState } from "reducers/Nins";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router";
+
+export const dashboardTestHistory = createMemoryHistory();
 
 export const dashboardTestState: DashboardRootState = {
   config: {
     csrf_token: "csrf-token",
   },
-  router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
 
@@ -35,10 +38,24 @@ export const dashboardTestState: DashboardRootState = {
 
 export type DashboardStoreType = typeof dashboardStore;
 
+/**
+ * Get a MockStore for testing Dashboard components.
+ * MockStores are good for testing that actions are dispatched, but actions aren't _really_ dispatched
+ * and the reducers states are never _really_ updated. Use realStore() for tests that want to exercise
+ * such things.
+ */
 export function fakeStore(state: DashboardRootState = dashboardTestState): MockStoreEnhanced<DashboardRootState> {
   const middlewares = [thunk];
   const store = createMockStore<DashboardRootState>(middlewares);
   return store(state);
+}
+
+/**
+ * Get a real Signup store that can be used with e.g. tests fetching data from backends using thunks,
+ * and updating component state or redux state.
+ */
+export function realStore(): DashboardStoreType {
+  return dashboardStore;
 }
 
 interface setupComponentArgs {
@@ -55,6 +72,10 @@ export function setupComponent({ component, store, overrides }: setupComponentAr
       store = fakeStore();
     }
   }
-  const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
+  const wrapper = mount(
+    <ReduxIntlProvider store={store}>
+      <Router history={dashboardTestHistory}>{component}</Router>
+    </ReduxIntlProvider>
+  );
   return wrapper;
 }

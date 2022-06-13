@@ -10,8 +10,6 @@ import Notifications from "containers/Notifications";
 import { MemoryRouter } from "react-router-dom";
 import { DashboardMain } from "components/DashboardMain";
 
-const messages = require("../login/translation/messageIndex");
-
 const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
@@ -47,7 +45,7 @@ function setupComponent() {
     },
     intl: {
       locale: "en",
-      messages: messages,
+      messages: {},
     },
   });
   const props = {

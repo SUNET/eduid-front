@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import { intlReducer } from "./reducers/Internationalisation";
-import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import personalDataSlice from "reducers/PersonalData";
 import emailsSlice from "reducers/Emails";
@@ -20,7 +19,6 @@ import invitesReducer from "./login/redux/reducers/invitesReducer";
 import ladokSlice from "reducers/Ladok";
 
 const eduIDApp = combineReducers({
-  router: routerReducer,
   chpass: chpassSlice.reducer,
   config: configReducer,
   emails: emailsSlice.reducer,
