@@ -47,6 +47,7 @@ input.form-control.is-invalid:focus {
 
 fieldset {
   width: 100%;
+  position: relative;
 
   &:not(:empty) {
     margin-bottom: 1.25em;
