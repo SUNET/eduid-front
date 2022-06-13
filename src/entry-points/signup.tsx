@@ -13,26 +13,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = function () {
-  //  signupStore.dispatch(getSignupConfig());
-
   signupStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
-
-  // const findCode = function (path: string) {
-  //   const re = new RegExp("/code/(.+)$"),
-  //     match = re.exec(path);
-  //   if (match !== null) {
-  //     return match[1];
-  //   }
-  //   return "";
-  // };
-
-  // const path = window.location.pathname;
-  // const code = findCode(path);
-  // if (code) {
-  //   signupStore.dispatch(getCodeStatus(code));
-  // } else {
-  //   signupStore.dispatch(getSignupConfig());
-  // }
 };
 
 /* Initialise common polyfills for missing browser functionality */
