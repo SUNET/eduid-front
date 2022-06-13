@@ -1,12 +1,18 @@
-import * as actions from "actions/Email";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { TryCaptchaResponse } from "apis/eduidSignup";
+import AccountCreated, { registeredEmailClass } from "components/AccountCreated";
+import EmailInUse, { registerHeaderClass } from "components/EmailInUse";
 import { shallow } from "enzyme";
 import expect from "expect";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
-import emailReducer from "reducers/Email";
-import { fakeStore, setupComponent } from "./helperFunctions/SignupTestApp";
+import { initialState as signupInitialState, signupSlice } from "reducers/Signup";
+import { setImmediate } from "timers";
+import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
+
+const runAllPromises = () => new Promise(setImmediate);
 
 describe("Email Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -35,80 +41,23 @@ describe("Email Component", () => {
   });
 });
 
-describe("Email Actions", () => {
-  it("Should add an email ", () => {
-    const expectedAction = {
-      type: actions.ADD_EMAIL,
-      payload: {
-        email: "dummy@example.com",
-      },
-    };
-    expect(actions.addEmail("dummy@example.com")).toEqual(expectedAction);
-  });
-
-  it("Should accept tou", () => {
-    const expectedAction = {
-      type: actions.ACCEPT_TOU,
-    };
-    expect(actions.acceptTOU()).toEqual(expectedAction);
-  });
-
-  it("Should reject tou", () => {
-    const expectedAction = {
-      type: actions.REJECT_TOU,
-    };
-    expect(actions.rejectTOU()).toEqual(expectedAction);
-  });
-});
-
 describe("Email reducer", () => {
-  const mockState = {
-    email: "",
-    acceptingTOU: false,
-    tou_accepted: false,
-  };
-
+  const mockState = signupInitialState;
   it("Receives add email action", () => {
-    expect(
-      emailReducer(mockState, {
-        type: actions.ADD_EMAIL,
-        payload: {
-          email: "dummy@example.com",
-        },
-      })
-    ).toEqual({
+    expect(signupSlice.reducer(mockState, signupSlice.actions.setEmail("dummy@example.com"))).toEqual({
+      ...mockState,
       email: "dummy@example.com",
-      acceptingTOU: true,
-      tou_accepted: false,
     });
   });
 
   it("Receives an accept tou action", () => {
     expect(
-      emailReducer(mockState, {
-        type: actions.ACCEPT_TOU,
-      })
-    ).toEqual({
-      email: "",
-      acceptingTOU: false,
-      tou_accepted: true,
-    });
-  });
-
-  it("Receives a reject tou action", () => {
-    expect(
-      emailReducer(mockState, {
-        type: actions.REJECT_TOU,
-      })
-    ).toEqual({
-      email: "",
-      acceptingTOU: false,
-      tou_accepted: false,
-    });
+      signupSlice.reducer({ ...mockState, tou_accepted: false }, signupSlice.actions.setToUAccepted(true))
+    ).toEqual({ ...mockState, tou_accepted: true });
   });
 });
 
-describe("Test email Container", () => {
+describe("Test RegisterEmail", () => {
   it("Clicks the email button", () => {
     const test_email = "dummy-99@example.com";
     const store = fakeStore();
@@ -134,13 +83,15 @@ describe("Test email Container", () => {
     const actualActions = _actions.map((action) => action.type);
 
     const last_action = actualActions[actualActions.length - 1];
-    expect(last_action).toEqual("ADD_EMAIL");
+    expect(last_action).toEqual("signup/setEmail");
 
-    expect(_actions[_actions.length - 1]).toEqual(actions.addEmail(test_email));
+    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setEmail(test_email));
   });
 
   it("Clicks the accept tou button", () => {
-    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const store = fakeStore({
+      overrides: { signup: { email: "dummy-98@example.com", tou_accepted: false, current_step: "register" } },
+    });
     const wrapper = setupComponent({
       component: (
         <MemoryRouter>
@@ -155,13 +106,15 @@ describe("Test email Container", () => {
 
     const _actions = store.getActions();
     const actualActions = _actions.map((action) => action.type);
-    expect(actualActions).toEqual(["ACCEPT_TOU", "notifications/clearNotifications", "IS_CAPTCHA_AVAILABLE"]);
+    expect(actualActions).toEqual(["signup/setToUAccepted", "notifications/clearNotifications"]);
 
-    expect(_actions[0]).toEqual(actions.acceptTOU());
+    expect(_actions[0]).toEqual(signupSlice.actions.setToUAccepted(true));
   });
 
   it("Clicks the reject tou button", () => {
-    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const store = fakeStore({
+      overrides: { signup: { email: "dummy-98@example.com", tou_accepted: false, current_step: "register" } },
+    });
     const wrapper = setupComponent({ component: <RegisterEmail />, store: store });
 
     const button = wrapper.find("EduIDButton#register-modal-close-button");
@@ -169,8 +122,76 @@ describe("Test email Container", () => {
 
     const _actions = store.getActions();
     const actualActions = _actions.map((action) => action.type);
-    expect(actualActions).toEqual(["REJECT_TOU"]);
+    expect(actualActions).toEqual(["signup/setEmail", "signup/setToUAccepted"]);
 
-    expect(_actions[_actions.length - 1]).toEqual(actions.rejectTOU());
+    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setToUAccepted(false));
+  });
+
+  it("Handles response 'new'", async () => {
+    const email = "test@example.org";
+    const fakeResponse: PayloadAction<TryCaptchaResponse> = {
+      type: "signup/fetchTryCaptcha/fulfilled",
+      payload: {
+        next: "new",
+      },
+    };
+    const store = realStore();
+
+    store.dispatch(signupSlice.actions.setEmail(email));
+    store.dispatch(fakeResponse);
+
+    // let all the async calls in the component finish, and then update the wrapper
+    await runAllPromises();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <RegisterEmail />
+        </MemoryRouter>
+      ),
+      store,
+    });
+
+    // check that the expected component was rendered
+    expect(wrapper.find(AccountCreated).exists()).toEqual(true);
+
+    // check that the e-mail address we set above was used
+    const userEmail = wrapper.find(`.${registeredEmailClass}`);
+    expect(userEmail.exists()).toEqual(true);
+    expect(userEmail.text()).toEqual(email);
+  });
+
+  it("Handles response 'already-used'", async () => {
+    const email = "test@example.org";
+    const fakeResponse: PayloadAction<TryCaptchaResponse> = {
+      type: "signup/fetchTryCaptcha/fulfilled",
+      payload: {
+        next: "address-used",
+      },
+    };
+    const store = realStore();
+
+    store.dispatch(signupSlice.actions.setEmail(email));
+    store.dispatch(fakeResponse);
+
+    // let all the async calls in the component finish, and then update the wrapper
+    await runAllPromises();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <RegisterEmail />
+        </MemoryRouter>
+      ),
+      store,
+    });
+
+    // check that the expected component was rendered
+    expect(wrapper.find(EmailInUse).exists()).toEqual(true);
+
+    // check that the e-mail address we set above was used
+    const header = wrapper.find(`.${registerHeaderClass}`);
+    expect(header.exists()).toEqual(true);
+    expect(header.text()).toContain(email);
   });
 });
