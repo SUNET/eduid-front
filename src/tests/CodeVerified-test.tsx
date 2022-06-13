@@ -1,69 +1,118 @@
-import CodeVerifiedContainer from "containers/CodeVerified";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { VerifyLinkResponseFail, VerifyLinkResponseSuccess } from "apis/eduidSignup";
+import CodeVerified, { idFinishedButton, idUserEmail, idUserPassword } from "components/CodeVerified";
 import { shallow } from "enzyme";
 import expect from "expect";
+import { createMemoryHistory } from "history";
+import fetchMock from "jest-fetch-mock";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { setupComponent } from "./helperFunctions/SignupTestApp";
+import { MemoryRouter, Route, Router, Switch } from "react-router";
+import { showNotification } from "reducers/Notifications";
+import { setImmediate } from "timers";
+import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
+import { SIGNUP_BASE_PATH } from "../globals";
+
+const runAllPromises = () => new Promise(setImmediate);
 
 describe("CodeVerified Component", () => {
-  const state = {
-    verified: {
-      dashboard_url: "http://dummy.example.com",
-      password: "dummy-passwd",
-      email: "dummy@example.com",
-      status: "verified",
-      gotten: false,
-    },
-  };
+  afterEach(() => {
+    fetchMock.resetMocks();
+  });
 
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <CodeVerifiedContainer />
+        <CodeVerified />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it("Component renders holder for user email and password", () => {
-    const fullWrapper = setupComponent({
-      component: <CodeVerifiedContainer />,
-      overrides: state,
+  it("Component verifies code with backend and renders successful response", async () => {
+    const fakeResponse: PayloadAction<VerifyLinkResponseSuccess> = {
+      type: "testing",
+      payload: {
+        status: "verified",
+        password: "very-secret",
+        dashboard_url: "https://dashboard.example.org/",
+        email: "test@example.org",
+      },
+    };
+    fetchMock.doMockOnce(JSON.stringify(fakeResponse));
+
+    const store = realStore();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter initialEntries={["/code/abc123"]}>
+          <Switch>
+            <Route path={`/code/:code`} component={CodeVerified} />
+          </Switch>
+        </MemoryRouter>
+      ),
+      store,
     });
 
-    const userDetailsDisplay = fullWrapper.find("#email-display");
-    expect(userDetailsDisplay.exists()).toEqual(true);
+    // let all the async calls in the component finish, and then update the wrapper
+    await runAllPromises();
+    wrapper.update();
+
+    const userEmail = wrapper.find(`#${idUserEmail}`);
+    expect(userEmail.exists()).toEqual(true);
+    expect(userEmail.text()).toEqual(fakeResponse.payload.email);
+
+    const userPassword = wrapper.find(`#${idUserPassword}`);
+    expect(userPassword.exists()).toEqual(true);
+    expect(userPassword.text()).toEqual(fakeResponse.payload.password);
+
+    const finishedButton = wrapper.find(`EduIDButton#${idFinishedButton}`);
+    expect(finishedButton.exists()).toEqual(true);
   });
-  it("Component renders user email (text includes '@')", () => {
-    const fullWrapper = setupComponent({
-      component: <CodeVerifiedContainer />,
-      overrides: state,
+
+  it("Component handles 'already-verified'", () => {
+    const fakeResponse: VerifyLinkResponseFail = {
+      status: "already-verified",
+    };
+
+    const store = fakeStore();
+
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter initialEntries={["/code/abc123"]}>
+          <Switch>
+            <Route path={`/code/:code`} component={() => <CodeVerified responseForTests={fakeResponse} />} />
+          </Switch>
+        </MemoryRouter>
+      ),
+      store,
     });
 
-    const userEmailDisplay = fullWrapper.find("#email-display");
-    expect(userEmailDisplay.exists()).toEqual(true);
-
-    const userEmail = fullWrapper.find("#user-email");
-    expect(userEmail.text()).toContain("@");
+    const actions = store.getActions();
+    expect(actions).toEqual([showNotification({ message: "code.already-verified", level: "info" })]);
   });
 
-  it("Component renders a user password", () => {
-    const fullWrapper = setupComponent({
-      component: <CodeVerifiedContainer />,
-      overrides: state,
-    });
-    const passwd = fullWrapper.find("#user-password");
+  it("Component handles 'unknown-code'", () => {
+    const fakeResponse: VerifyLinkResponseFail = {
+      status: "unknown-code",
+    };
 
-    expect(passwd.length).toEqual(1);
-    expect(passwd.text()).toContain("dummy-passwd");
-  });
+    const store = fakeStore();
 
-  it("Component renders 'go to my eduid' button", () => {
-    const fullWrapper = setupComponent({
-      component: <CodeVerifiedContainer />,
-      overrides: state,
+    const history = createMemoryHistory();
+
+    const wrapper = setupComponent({
+      component: (
+        <Router history={history}>
+          <CodeVerified responseForTests={fakeResponse} />
+        </Router>
+      ),
+      store,
     });
-    const buttons = fullWrapper.find("EduIDButton");
-    expect(buttons.length).toEqual(1);
+
+    const actions = store.getActions();
+    expect(actions).toEqual([showNotification({ message: "code.unknown-code", level: "info" })]);
+    // test that user is sent off to the signup start page
+    expect(history.location.pathname).toBe(`${SIGNUP_BASE_PATH}/email`);
   });
 });

@@ -1,4 +1,4 @@
-import AccountCreatedContainer from "containers/AccountCreated";
+import AccountCreated from "components/AccountCreated";
 import { shallow } from "enzyme";
 import expect from "expect";
 import React from "react";
@@ -9,7 +9,7 @@ describe("Account Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <AccountCreatedContainer />
+        <AccountCreated />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -17,19 +17,20 @@ describe("Account Component", () => {
 
   it("Component has text", () => {
     const fullWrapper = setupComponent({
-      component: <AccountCreatedContainer />,
+      component: <AccountCreated />,
     });
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
   });
   it("Component renders user email (text includes '@')", () => {
+    const email = "dummy@example.com";
     const fullWrapper = setupComponent({
-      component: <AccountCreatedContainer />,
-      overrides: { email: { email: "dummy@example.com" } },
+      component: <AccountCreated />,
+      overrides: { signup: { email, tou_accepted: true, current_step: "register" } },
     });
 
     const userEmail = fullWrapper.find(".registered-email");
     expect(userEmail.exists()).toEqual(true);
-    expect(userEmail.text()).toContain("@");
+    expect(userEmail.text()).toEqual(email);
   });
 });

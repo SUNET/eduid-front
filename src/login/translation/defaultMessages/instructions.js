@@ -21,8 +21,6 @@ export const generalInstructions = {
     <FormattedMessage id="resend.email-label" defaultMessage={`Complete registration by clicking the link sent to:`} />
   ),
 
-  "resend.button": <FormattedMessage id="resend.button" defaultMessage={`Send a new confirmation link`} />,
-
   "signup.verification-resent": (
     <FormattedMessage id="signup.verification-resent" defaultMessage={`Verification email resent`} />
   ),

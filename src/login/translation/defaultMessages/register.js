@@ -22,14 +22,6 @@ export const register = {
   // captcha
   "captcha.one-step-left": <FormattedMessage id="captcha.one-step-left" defaultMessage={`Only one more step left!`} />,
 
-  "captcha.verify-human": (
-    <FormattedMessage id="captcha.verify-human" defaultMessage={`Confirm that you are a human.`} />
-  ),
-
-  "captcha.submit": <FormattedMessage id="captcha.submit" defaultMessage={`Done`} />,
-
-  "captcha.cancel": <FormattedMessage id="captcha.cancel" defaultMessage={`Cancel`} />,
-
   // eduID links sent to email
   "created.confirm-registration": (
     <FormattedMessage id="created.confirm-registration" defaultMessage={`Confirm your email to log in to eduID.`} />
@@ -56,17 +48,6 @@ export const register = {
       id="signup.registering-address-used"
       defaultMessage={`The email address you entered is already in use`}
     />
-  ),
-
-  "used.email-label": (
-    <FormattedMessage
-      id="used.email-label"
-      defaultMessage={`If this is your eduID, you can reset your password to log back in.`}
-    />
-  ),
-
-  "used.email-in-use": (values) => (
-    <FormattedMessage id="used.email-in-use" defaultMessage={`An eduID is already using {email}`} values={values} />
   ),
 
   "finish.can-now-login": <FormattedMessage id="finish.can-now-login" defaultMessage={`You can now log in`} />,

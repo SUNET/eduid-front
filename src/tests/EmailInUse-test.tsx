@@ -1,15 +1,15 @@
-import EmailInUseContainer from "containers/EmailInUse";
+import EmailInUse from "components/EmailInUse";
 import { shallow } from "enzyme";
 import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { setupComponent } from "./helperFunctions/SignupTestApp";
+import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
 
 describe("EmailInUse Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <EmailInUseContainer />
+        <EmailInUse />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -17,15 +17,15 @@ describe("EmailInUse Component", () => {
 
   it("Component has text", () => {
     const fullWrapper = setupComponent({
-      component: <EmailInUseContainer />,
+      component: <EmailInUse />,
     });
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
   });
   it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
-      component: <EmailInUseContainer />,
-      overrides: { email: { email: "dummy@example.com" } },
+      component: <EmailInUse />,
+      overrides: { signup: { email: "dummy@example.com", tou_accepted: false, current_step: "address-used" } },
     });
 
     const userEmail = fullWrapper.find(".register-header");
@@ -35,7 +35,7 @@ describe("EmailInUse Component", () => {
 
   it("Component renders the RESET PASSWORD button", () => {
     const fullWrapper = setupComponent({
-      component: <EmailInUseContainer />,
+      component: <EmailInUse />,
     });
     const button = fullWrapper.find("EduIDButton#reset-password");
     expect(button.exists()).toEqual(true);
@@ -46,9 +46,10 @@ describe("EmailInUse Component", () => {
     const url = "http://login.example.com/reset-password-unique-link-for-this-test";
 
     const fullWrapper = setupComponent({
-      component: <EmailInUseContainer />,
+      component: <EmailInUse />,
       overrides: {
         config: {
+          ...signupTestState.config,
           reset_password_link: url,
         },
       },
