@@ -1,6 +1,5 @@
 import EmailsComponent from "components/Emails";
 import { shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import emailsSlice from "reducers/Emails";

@@ -1,12 +1,11 @@
-import NinDisplay from "components/NinDisplay";
-import Profile from "components/Profile";
-import VerifyIdentity from "components/VerifyIdentity";
 import EmailDisplay from "components/EmailDisplay";
 import NameDisplay from "components/NameDisplay";
+import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
+import Profile from "components/Profile";
+import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";

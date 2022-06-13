@@ -3,7 +3,6 @@ import { TryCaptchaResponse } from "apis/eduidSignup";
 import AccountCreated, { registeredEmailClass } from "components/AccountCreated";
 import EmailInUse, { registerHeaderClass } from "components/EmailInUse";
 import { shallow } from "enzyme";
-import expect from "expect";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { IntlProvider } from "react-intl";

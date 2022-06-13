@@ -3,6 +3,8 @@ clean:
 	rm -f build/*
 	rm -rf node_modules
 
+package-lock.json:
+	npm i --package-lock-only
 
 node_modules: package-lock.json
 	npm install

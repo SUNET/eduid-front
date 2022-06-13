@@ -1,12 +1,12 @@
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper } from "enzyme";
-import expect from "expect";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React from "react";
 import { MemoryRouter } from "react-router";
 import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+
 //const mock = require("jest-mock");
 
 describe("LookupMobile component", () => {

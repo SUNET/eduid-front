@@ -3,13 +3,13 @@ import { history } from "components/DashboardMain";
 import NinDisplay from "components/NinDisplay";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
 import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+
 const mock = require("jest-mock");
 
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {

@@ -1,12 +1,10 @@
 import LetterProofingButton from "components/LetterProofing";
 import { shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { ninStateFromNinList } from "reducers/Nins";
 import letterProofingSlice from "../reducers/LetterProofing";
-import { setupComponent } from "./helperFunctions/DashboardTestApp";
-import { dashboardTestState } from "./helperFunctions/DashboardTestApp";
+import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
