@@ -1,5 +1,6 @@
 import { DashboardMain } from "components/DashboardMain";
-import { activeClassName, dashboardHeading } from "components/DashboardNav";
+import { activeClassName, dashboardHeading, identityNavText, profileNavText } from "components/DashboardNav";
+import { logoutButtonText } from "components/Header";
 import React from "react";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { dashboardTestHistory, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
@@ -22,14 +23,14 @@ test("renders Profile page as expected", () => {
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
-  const button = screen.getByRole("button", { name: "Log out" });
+  const button = screen.getByRole("button", { name: logoutButtonText });
   expect(button).toBeEnabled();
 
   // check that Profile is the active nav link
-  const nav = screen.getByRole("link", { name: "Profile" });
+  const nav = screen.getByRole("link", { name: profileNavText });
   expect(nav).toHaveClass(activeClassName);
 
   // check that another nav link is _not_ active
-  const nav2 = screen.getByRole("link", { name: "Identity" });
+  const nav2 = screen.getByRole("link", { name: identityNavText });
   expect(nav2).not.toHaveClass(activeClassName);
 });

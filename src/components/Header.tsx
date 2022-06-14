@@ -1,9 +1,14 @@
-import React, { Fragment } from "react";
-import "../login/styles/index.scss";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
-import { FormattedMessage } from "react-intl";
 import EduIDButton from "components/EduIDButton";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import React from "react";
+import { FormattedMessage } from "react-intl";
+import "../login/styles/index.scss";
+
+// export for use in tests
+export const loginButtonText = "Log in";
+export const logoutButtonText = "Log out";
+export const registerButtonText = "Register";
 
 interface HeaderProps {
   email?: string;
@@ -39,20 +44,20 @@ const Header = (props: HeaderProps): JSX.Element => {
   if (props.showLogin) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
-        <FormattedMessage defaultMessage="Log in" description="Header login" />
+        <FormattedMessage defaultMessage={loginButtonText} description="Header login" />
       </EduIDButton>
     );
   } else if (props.showLogout) {
     userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
-        <FormattedMessage defaultMessage="Log out" description="Header logout" />
+        <FormattedMessage defaultMessage={logoutButtonText} description="Header logout" />
       </EduIDButton>
     );
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
-        <FormattedMessage defaultMessage="Register" description="Header register" />
+        <FormattedMessage defaultMessage={registerButtonText} description="Header register" />
       </EduIDButton>
     );
   } else {

@@ -26,21 +26,6 @@ export const userProfile = {
     <FormattedMessage id="dashboard.tagline_verified" defaultMessage={`Make eduID more secure`} />
   ),
 
-  /* ----- DASHBOARDNAV  ------- */
-  "dashboard_nav.profile": <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />,
-  "dashboard_nav.identity": <FormattedMessage id="dashboard_nav.identity" defaultMessage={`Identity`} />,
-  "dashboard_nav.settings": <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />,
-  "dashboard_nav.advanced-settings": (
-    <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
-  ),
-  "dashboard_nav.settings-confirm-phone": (
-    <FormattedMessage
-      id="dashboard_nav.settings-confirm-phone"
-      defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
-    />
-  ),
-  "dashboard_nav.back": <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />,
-
   "verify-identity.verified_pw_reset_extra_security": (
     <FormattedMessage
       id="verify-identity.verified_pw_reset_extra_security"

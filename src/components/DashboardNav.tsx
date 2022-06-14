@@ -1,13 +1,16 @@
+import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
-import { useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "../login/translation";
 import NotificationTip from "./NotificationTip";
 
 // export for use in tests
 export const activeClassName = "active";
 export const dashboardHeading = "eduID Dashboard:";
+export const profileNavText = "Profile";
+export const identityNavText = "Identity";
+export const settingsNavText = "Settings";
+export const advancedSettingsNavText = "Advanced settings";
 
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
@@ -74,12 +77,12 @@ function DashboardNav(): JSX.Element {
       <ul>
         <li>
           <NavLink exact activeClassName={activeClassName} to={`/profile/`}>
-            {translate("dashboard_nav.profile")}
+            <FormattedMessage defaultMessage={profileNavText} description="Dashboard navigation" />
           </NavLink>
         </li>
         <li>
           <NavLink exact activeClassName={activeClassName} to={`/profile/verify-identity/`}>
-            {translate("dashboard_nav.identity")}
+            <FormattedMessage defaultMessage={identityNavText} description="Dashboard navigation" />
             {getTipsAtIdentity()}
           </NavLink>
         </li>
@@ -90,7 +93,7 @@ function DashboardNav(): JSX.Element {
             activeClassName={activeClassName}
             to={`/profile/settings/personaldata`}
           >
-            {translate("dashboard_nav.settings")}
+            <FormattedMessage defaultMessage={settingsNavText} description="Dashboard navigation" />
             {tipsAtSettings}
           </NavLink>
         </li>
@@ -101,7 +104,7 @@ function DashboardNav(): JSX.Element {
             activeClassName={activeClassName}
             to={`/profile/settings/advanced-settings`}
           >
-            {translate("dashboard_nav.advanced-settings")}
+            <FormattedMessage defaultMessage={advancedSettingsNavText} description="Dashboard navigation" />
           </NavLink>
         </li>
       </ul>
