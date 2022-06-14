@@ -1,5 +1,5 @@
 import { DashboardMain } from "components/DashboardMain";
-import { activeClassName } from "components/DashboardNav";
+import { activeClassName, dashboardHeading } from "components/DashboardNav";
 import React from "react";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { dashboardTestHistory, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
@@ -8,7 +8,7 @@ test("shows splash screen when not configured", () => {
   dashboardTestHistory.push("/profile");
   render(<DashboardMain />, { state: { config: { ...configInitialState, is_app_loaded: false } } });
 
-  expect(screen.getByRole("heading")).toHaveTextContent("eduID Dashboard:");
+  expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
 
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
@@ -18,7 +18,7 @@ test("renders Profile page as expected", () => {
   dashboardTestHistory.push("/profile");
   render(<DashboardMain />, { state: { config: { ...configInitialState, is_app_loaded: true } } });
 
-  expect(screen.getByRole("heading")).toHaveTextContent("eduID Dashboard:");
+  expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 

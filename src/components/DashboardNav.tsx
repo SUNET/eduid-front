@@ -7,6 +7,7 @@ import NotificationTip from "./NotificationTip";
 
 // export for use in tests
 export const activeClassName = "active";
+export const dashboardHeading = "eduID Dashboard:";
 
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
@@ -69,7 +70,7 @@ function DashboardNav(): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
-      <h5>eduID Dashboard:</h5>
+      <h5>{dashboardHeading}</h5>
       <ul>
         <li>
           <NavLink exact activeClassName={activeClassName} to={`/profile/`}>
