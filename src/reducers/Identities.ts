@@ -8,28 +8,28 @@ export interface NinInfo {
   primary: boolean;
 }
 
-export interface NinState {
+export interface IdentitiesState {
   nins: NinInfo[];
   first_nin?: NinInfo; // the primary nin, or if there are no primary nins the first one from the list
   is_confirmed_identity: boolean; // True if the user has a confirmed identity, not necessarily a NIN
 }
 
 // export this for use in tests
-export const initialState: NinState = {
+export const initialState: IdentitiesState = {
   nins: [],
   is_confirmed_identity: false,
 };
 
 // export this for use in tests
-export function ninStateFromNinList(nins: NinInfo[]): NinState {
+export function ninStateFromNinList(nins: NinInfo[]): IdentitiesState {
   // Deduce some information about the nins given as input, and return a full state
   const _primary = nins.filter((nin) => nin.primary);
   const primary = _primary.length ? _primary[0] : nins[0];
   return { nins: nins, is_confirmed_identity: !!primary?.verified, first_nin: primary };
 }
 
-const ninsSlice = createSlice({
-  name: "nins",
+const identitiesSlice = createSlice({
+  name: "identities",
   initialState,
   reducers: {
     setNins: (state, action: PayloadAction<NinInfo[]>) => {
@@ -51,4 +51,4 @@ const ninsSlice = createSlice({
   },
 });
 
-export default ninsSlice;
+export default identitiesSlice;

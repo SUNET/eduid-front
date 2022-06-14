@@ -6,7 +6,7 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import React from "react";
 
 export default function Profile(): JSX.Element {
-  const first_nin = useDashboardAppSelector((state) => state.nins.first_nin);
+  const first_nin = useDashboardAppSelector((state) => state.identities.first_nin);
 
   return (
     <div id="profile-grid">

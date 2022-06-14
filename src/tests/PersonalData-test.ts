@@ -5,7 +5,7 @@ import expect from "expect";
 import { appLoaded } from "login/components/App/App_actions";
 import emailsSlice from "reducers/Emails";
 import ladokSlice from "reducers/Ladok";
-import ninsSlice from "reducers/Nins";
+import identitiesSlice from "reducers/Identities";
 import personalDataSlice from "reducers/PersonalData";
 import phonesSlice from "reducers/Phones";
 import { call, put } from "redux-saga/effects";
@@ -134,7 +134,7 @@ describe("Async component", () => {
     expect(value.PUT.action.type).toEqual(storeCsrfToken.type);
 
     // The saga sends the nins on to the nins reducer
-    const action2 = ninsSlice.actions.setNins([]);
+    const action2 = identitiesSlice.actions.setNins([]);
     next = generator.next(action2 as unknown as any);
     expect(next.value).toEqual(put(action2));
 

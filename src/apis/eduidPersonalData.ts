@@ -1,4 +1,4 @@
-import { NinInfo } from "reducers/Nins";
+import { NinInfo } from "reducers/Identities";
 import { LadokData } from "./eduidLadok";
 import { EmailInfo } from "apis/eduidEmail";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";

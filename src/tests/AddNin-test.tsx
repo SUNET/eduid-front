@@ -4,7 +4,7 @@ import { ReactWrapper, shallow } from "enzyme";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
+import { ninStateFromNinList } from "reducers/Identities";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -35,7 +35,7 @@ describe("AddNin component, when no nin is saved", () => {
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     // state = store.getState();
 
     wrapper = setupComponent({
@@ -71,7 +71,7 @@ describe("AddNin component, when a nin is saved", () => {
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({

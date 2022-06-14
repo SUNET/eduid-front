@@ -53,7 +53,7 @@ interface RenderEditBoxProps {
 
 const RenderEditBox = (props: RenderEditBoxProps) => {
   // check if verified nin
-  const nins = useDashboardAppSelector((state) => state.nins.nins);
+  const nins = useDashboardAppSelector((state) => state.identities.nins);
   const isVerifiedNin = nins.some((nin) => nin.verified);
   return (
     <Fragment>

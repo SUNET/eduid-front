@@ -28,7 +28,7 @@ describe("Nin Form renders important elements", () => {
   });
 
   const fakeState = {
-    nins: {
+    identities: {
       nins: [],
     },
     intl: {

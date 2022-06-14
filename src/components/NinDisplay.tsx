@@ -4,7 +4,7 @@ import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { NinInfo } from "reducers/Nins";
+import { NinInfo } from "reducers/Identities";
 
 interface NinDisplayProps {
   nin?: NinInfo; // the NIN to display - passed as a prop to make component more re-usable

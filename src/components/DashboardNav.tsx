@@ -10,7 +10,7 @@ export const activeClassName = "active";
 
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
-  const nins = useDashboardAppSelector((state) => state.nins.nins);
+  const nins = useDashboardAppSelector((state) => state.identities.nins);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);

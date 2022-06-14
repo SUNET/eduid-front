@@ -7,7 +7,7 @@ import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMo
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
+import { ninStateFromNinList } from "reducers/Identities";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -44,7 +44,7 @@ describe("VerifyIdentity component, no nin added ", () => {
         eidas_url: "http://localhost/eidas",
         token_verify_idp: "token-idp",
       },
-      nins: test_nins,
+      identities: test_nins,
       phones: {
         phones: [],
       },
@@ -113,7 +113,7 @@ describe("VerifyIdentity component, NIN already added ", () => {
         eidas_url: "http://localhost/eidas",
         token_verify_idp: "token-idp",
       },
-      nins: test_nins,
+      identities: test_nins,
       phones: {
         phones: [],
       },

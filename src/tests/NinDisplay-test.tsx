@@ -5,7 +5,7 @@ import { ReactWrapper, shallow } from "enzyme";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
-import { ninStateFromNinList } from "reducers/Nins";
+import { ninStateFromNinList } from "reducers/Identities";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -24,7 +24,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({
@@ -62,7 +62,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({
@@ -101,13 +101,13 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({
       component: (
         <MemoryRouter>
-          <NinDisplay nin={state.nins.first_nin} />
+          <NinDisplay nin={state.identities.first_nin} />
         </MemoryRouter>
       ),
       store: store,
@@ -138,7 +138,7 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({
@@ -176,7 +176,7 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({ ...dashboardTestState, identities: test_nins });
     state = store.getState();
 
     wrapper = setupComponent({

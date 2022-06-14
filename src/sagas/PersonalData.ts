@@ -7,7 +7,7 @@ import { LOCALIZED_MESSAGES } from "globals";
 import { appLoaded } from "login/components/App/App_actions";
 import emailsSlice from "reducers/Emails";
 import ladokSlice from "reducers/Ladok";
-import ninsSlice from "reducers/Nins";
+import identitiesSlice from "reducers/Identities";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
 import phonesSlice from "reducers/Phones";
 import { call, put, select } from "redux-saga/effects";
@@ -45,7 +45,7 @@ export function* requestAllPersonalData() {
 
     if (response.payload.nins !== undefined) {
       // update nins in the state
-      yield put(ninsSlice.actions.setNins(response.payload.nins));
+      yield put(identitiesSlice.actions.setNins(response.payload.nins));
     }
     if (response.payload.emails !== undefined) {
       yield put(emailsSlice.actions.setEmails(response.payload.emails));

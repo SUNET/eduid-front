@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { NinInfo } from "reducers/Nins";
+import { NinInfo } from "reducers/Identities";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 

@@ -5,12 +5,12 @@ import { mount, ReactWrapper } from "enzyme";
 import { initialState as initialEmailsState } from "reducers/Emails";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
-import { NinState } from "reducers/Nins";
+import { IdentitiesState } from "reducers/Identities";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router";
 import { initialState as initialConfigState } from "reducers/DashboardConfig";
 import { initialState as initialChangePasswordState } from "reducers/ChangePassword";
-import { initialState as initialNinsState } from "reducers/Nins";
+import { initialState as initialNinsState } from "reducers/Identities";
 import { initialState as initialPhonesState } from "reducers/Phones";
 import { initialState as initialLookupMobileProofingState } from "reducers/LookupMobileProofing";
 import { initialState as initialPersonalDataState } from "reducers/PersonalData";
@@ -34,7 +34,7 @@ export const dashboardTestState: DashboardRootState = {
   invites: undefined as any,
   openid_data: undefined as any,
   lookup_mobile: initialLookupMobileProofingState,
-  nins: initialNinsState,
+  identities: initialNinsState,
   openid_freja_data: undefined as any,
   personal_data: initialPersonalDataState,
   phones: initialPhonesState,

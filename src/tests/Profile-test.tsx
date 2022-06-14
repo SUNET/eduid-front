@@ -9,7 +9,7 @@ import { ReactWrapper, shallow } from "enzyme";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
+import { ninStateFromNinList } from "reducers/Identities";
 import { initialState as personalDataInitialState } from "reducers/PersonalData";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
@@ -45,7 +45,7 @@ describe("Profile component", () => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      nins: test_nins,
+      identities: test_nins,
       phones: {
         phones: [],
       },
