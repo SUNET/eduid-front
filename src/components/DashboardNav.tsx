@@ -5,6 +5,9 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import { translate } from "../login/translation";
 import NotificationTip from "./NotificationTip";
 
+// export for use in tests
+export const activeClassName = "active";
+
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
   const nins = useDashboardAppSelector((state) => state.nins.nins);
@@ -69,18 +72,23 @@ function DashboardNav(): JSX.Element {
       <h5>eduID Dashboard:</h5>
       <ul>
         <li>
-          <NavLink exact activeClassName="active" to={`/profile/`}>
+          <NavLink exact activeClassName={activeClassName} to={`/profile/`}>
             {translate("dashboard_nav.profile")}
           </NavLink>
         </li>
         <li>
-          <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
+          <NavLink exact activeClassName={activeClassName} to={`/profile/verify-identity/`}>
             {translate("dashboard_nav.identity")}
             {getTipsAtIdentity()}
           </NavLink>
         </li>
         <li>
-          <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
+          <NavLink
+            className={settingsClass}
+            exact
+            activeClassName={activeClassName}
+            to={`/profile/settings/personaldata`}
+          >
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}
           </NavLink>
@@ -89,7 +97,7 @@ function DashboardNav(): JSX.Element {
           <NavLink
             className={advancedSettingsClass}
             exact
-            activeClassName="active"
+            activeClassName={activeClassName}
             to={`/profile/settings/advanced-settings`}
           >
             {translate("dashboard_nav.advanced-settings")}
