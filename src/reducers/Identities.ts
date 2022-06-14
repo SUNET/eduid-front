@@ -1,15 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchIdentities, FetchIdentitiesResponse } from "apis/eduidPersonalData";
+import { fetchIdentities, UserIdentities } from "apis/eduidPersonalData";
 import { addNin, removeNin } from "apis/eduidSecurity";
 
-export interface NinInfo {
-  number: string;
-  verified: boolean;
-  primary: boolean;
-}
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IdentitiesState extends FetchIdentitiesResponse {}
+export interface IdentitiesState extends UserIdentities {}
 
 // export this for use in tests
 export const initialState: IdentitiesState = {
@@ -20,7 +14,7 @@ const identitiesSlice = createSlice({
   name: "identities",
   initialState,
   reducers: {
-    setIdentities: (state, action: PayloadAction<FetchIdentitiesResponse>) => {
+    setIdentities: (state, action: PayloadAction<UserIdentities>) => {
       // Update identities in state. Called after bulk-fetch of personal data.
       return action.payload;
     },
@@ -28,13 +22,13 @@ const identitiesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchIdentities.fulfilled, (state, action) => {
-        return action.payload;
+        return action.payload.identities;
       })
       .addCase(addNin.fulfilled, (state, action) => {
-        return action.payload;
+        return action.payload.identities;
       })
       .addCase(removeNin.fulfilled, (state, action) => {
-        return action.payload;
+        return action.payload.identities;
       });
   },
 });

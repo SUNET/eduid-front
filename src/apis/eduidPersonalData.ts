@@ -13,7 +13,7 @@ export interface AllUserData {
   eppn: string;
   given_name?: string;
   language?: string;
-  identities: FetchIdentitiesResponse;
+  identities: UserIdentities;
   phones: PDPhone[];
   surname?: string;
   orcid?: PDOrcid;
@@ -47,10 +47,14 @@ export interface EidasIdentity {
   verified: boolean;
 }
 
-export interface FetchIdentitiesResponse {
+export interface UserIdentities {
   nin?: NinIdentity;
   eidas?: EidasIdentity;
   is_verified: boolean;
+}
+
+export interface FetchIdentitiesResponse {
+  identities: UserIdentities;
 }
 
 /**
