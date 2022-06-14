@@ -3,7 +3,7 @@ import { intlReducer } from "./reducers/Internationalisation";
 import { reducer as formReducer } from "redux-form";
 import personalDataSlice from "reducers/PersonalData";
 import emailsSlice from "reducers/Emails";
-import configReducer from "reducers/DashboardConfig";
+import configSlice from "reducers/DashboardConfig";
 import openidConnectReducer from "reducers/OpenidConnect";
 import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
@@ -20,7 +20,7 @@ import ladokSlice from "reducers/Ladok";
 
 const eduIDApp = combineReducers({
   chpass: chpassSlice.reducer,
-  config: configReducer,
+  config: configSlice.reducer,
   emails: emailsSlice.reducer,
   groups: groupsReducer as unknown as any,
   invites: invitesReducer as unknown as any,
