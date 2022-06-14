@@ -134,7 +134,7 @@ input:focus {
 }
 
 .input-validate-error {
-  font-size: 1rem;
+  font-size: $txt-sm;
   color: $dark-orange;
 
   fieldset & {
