@@ -1,9 +1,9 @@
+import { loadingData, loadingDataComplete } from "login/redux/actions/loadingDataActions";
+import * as actions from "login/redux/actions/updateNamesFromSkatteverketActions";
+import postDataRequest from "login/redux/sagas/postDataRequest";
 import { call, put, select } from "redux-saga/effects";
-import postDataRequest from "../postDataRequest";
-import * as actions from "../../actions/updateNamesFromSkatteverketActions";
-import { putCsrfToken } from "../../../../sagas/common";
-import { getInitialUserdata } from "../../../../actions/DashboardConfig";
-import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
+import { putCsrfToken } from "sagas/common";
+import { getInitialUserData } from "sagas/PersonalData";
 
 export function* updateNamesFromSkatteverketSaga() {
   const state = yield select((state) => state);
@@ -17,7 +17,7 @@ export function* updateNamesFromSkatteverketSaga() {
     yield put(putCsrfToken(response));
     yield put(response);
     if (response.type.endsWith("_SUCCESS")) {
-      yield put(getInitialUserdata());
+      yield put(getInitialUserData());
     }
   } catch (error) {
     yield put(actions.updateNamesFromSkatteverketFail(error.toString()));
