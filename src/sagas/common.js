@@ -2,8 +2,7 @@ import { put, select, call } from "redux-saga/effects";
 import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 import { updateIntl } from "../reducers/Internationalisation";
-
-import { newCsrfToken } from "actions/DashboardConfig";
+import { storeCsrfToken } from "commonConfig";
 
 import * as CBOR from "sagas/cbor";
 import { LOCALIZED_MESSAGES, TOKEN_SERVICE_URL } from "../globals";
@@ -51,7 +50,7 @@ export const putCsrfToken = function (action) {
   const token = action.payload.csrf_token;
   if (token !== undefined) {
     delete action.payload.csrf_token;
-    return newCsrfToken(token);
+    return storeCsrfToken(token);
   } else {
     return { type: "NOOP_ACTION" };
   }
