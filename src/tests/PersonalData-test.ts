@@ -1,12 +1,13 @@
-import { appLoaded } from "actions/DashboardConfig";
-import emailsSlice from "reducers/Emails";
-import phonesSlice from "reducers/Phones";
 import * as actions from "actions/PersonalData";
 import { LadokData } from "apis/eduidLadok";
+import { storeCsrfToken } from "commonConfig";
 import expect from "expect";
+import { appLoaded } from "login/components/App/App_actions";
+import emailsSlice from "reducers/Emails";
 import ladokSlice from "reducers/Ladok";
 import ninsSlice from "reducers/Nins";
 import personalDataSlice from "reducers/PersonalData";
+import phonesSlice from "reducers/Phones";
 import { call, put } from "redux-saga/effects";
 import { fetchAllPersonalData, requestAllPersonalData } from "../sagas/PersonalData";
 
@@ -130,7 +131,7 @@ describe("Async component", () => {
 
     // The saga updates the CSRF in the state with the one from the response
     const value = next.value as unknown as any;
-    expect(value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(value.PUT.action.type).toEqual(storeCsrfToken.type);
 
     // The saga sends the nins on to the nins reducer
     const action2 = ninsSlice.actions.setNins([]);

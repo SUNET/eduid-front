@@ -1,13 +1,14 @@
 const mock = require("jest-mock");
-import React from "react";
-import { mount } from "enzyme";
-import { put, call } from "redux-saga/effects";
-import expect from "expect";
-import AccountLinkingContainer from "containers/AccountLinking";
 import * as actions from "actions/AccountLinking";
-import accountlinkingReducer from "reducers/AccountLinking";
+import { storeCsrfToken } from "commonConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import { requestOrcid, requestConnectOrcid, requestRemoveOrcid, fetchOrcid, removeOrcid } from "sagas/AccountLinking";
+import AccountLinkingContainer from "containers/AccountLinking";
+import { mount } from "enzyme";
+import expect from "expect";
+import React from "react";
+import accountlinkingReducer from "reducers/AccountLinking";
+import { call, put } from "redux-saga/effects";
+import { fetchOrcid, removeOrcid, requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -197,7 +198,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));
@@ -240,7 +241,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));

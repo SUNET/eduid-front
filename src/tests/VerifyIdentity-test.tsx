@@ -38,7 +38,12 @@ describe("VerifyIdentity component, no nin added ", () => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
+      config: {
+        ...dashboardTestState.config,
+        is_configured: true,
+        eidas_url: "http://localhost/eidas",
+        token_verify_idp: "token-idp",
+      },
       nins: test_nins,
       phones: {
         phones: [],
@@ -102,7 +107,12 @@ describe("VerifyIdentity component, NIN already added ", () => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
+      config: {
+        ...dashboardTestState.config,
+        is_configured: true,
+        eidas_url: "http://localhost/eidas",
+        token_verify_idp: "token-idp",
+      },
       nins: test_nins,
       phones: {
         phones: [],

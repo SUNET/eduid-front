@@ -25,11 +25,15 @@ const Header = (props: HeaderProps): JSX.Element => {
   }
 
   function handleRegister() {
-    document.location.href = signup_url;
+    if (signup_url) {
+      document.location.href = signup_url;
+    }
   }
 
   function handleLogin() {
-    document.location.href = dashboard_url;
+    if (dashboard_url) {
+      document.location.href = dashboard_url;
+    }
   }
 
   if (props.showLogin) {

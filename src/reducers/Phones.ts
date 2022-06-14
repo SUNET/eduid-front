@@ -1,14 +1,15 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   PhoneInfo,
-  postNewPhone,
   PhonesResponse,
-  requestRemovePhone,
-  requestVerifyPhone,
+  postNewPhone,
   requestMakePrimaryPhone,
+  requestRemovePhone,
   requestResendPhoneCode,
+  requestVerifyPhone,
 } from "apis/eduidPhone";
 
+// export for use in tests
 export const initialState: PhonesResponse = {
   phones: [],
 };

@@ -20,7 +20,7 @@ describe("LookupMobile component", () => {
       phones: {
         phones: [],
       },
-      config: { lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
+      config: { ...dashboardTestState.config, lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
     });
   });
 

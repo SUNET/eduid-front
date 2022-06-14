@@ -1,20 +1,22 @@
-import { put, select, call } from "redux-saga/effects";
-import { updateIntl } from "../reducers/Internationalisation";
-import { checkStatus, putCsrfToken, failRequest } from "sagas/common";
-import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
-
-import * as actions from "actions/DashboardConfig";
-import emailsSlice from "reducers/Emails";
-import phonesSlice from "reducers/Phones";
+import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import * as accountLinkingActions from "actions/AccountLinking";
-import { LOCALIZED_MESSAGES } from "globals";
-import ninsSlice from "reducers/Nins";
-import { DashboardRootState } from "dashboard-init-app";
+import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 import { AllUserData } from "apis/eduidPersonalData";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { getRequest } from "sagas/ts_common";
-import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
+import { DashboardRootState } from "dashboard-init-app";
+import { LOCALIZED_MESSAGES } from "globals";
+import { appLoaded } from "login/components/App/App_actions";
+import emailsSlice from "reducers/Emails";
 import ladokSlice from "reducers/Ladok";
+import ninsSlice from "reducers/Nins";
+import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
+import phonesSlice from "reducers/Phones";
+import { call, put, select } from "redux-saga/effects";
+import { checkStatus, failRequest, putCsrfToken } from "sagas/common";
+import { getRequest } from "sagas/ts_common";
+import { updateIntl } from "../reducers/Internationalisation";
+
+// action to trigger this saga
+export const getInitialUserData = createAction("dashboard/getInitialUserData");
 
 /*
  * Bulk-fetch a lot of user data at once from the all-user-data endpoint.
@@ -89,13 +91,17 @@ export function* requestAllPersonalData() {
     // TODO: these other sagas should maybe be triggered by something else? The appLoaded below perhaps?
     yield put(GET_USERDATA_SUCCESS());
 
-    yield put(actions.appLoaded());
+    yield put(appLoaded());
   } catch (error) {
     yield* failRequest(error, getAllUserdataFail);
   }
 }
 
-export function fetchAllPersonalData(config: { personal_data_url: string }) {
+export function fetchAllPersonalData(config: { personal_data_url?: string }) {
+  if (!config.personal_data_url) {
+    return;
+  }
+
   return window
     .fetch(config.personal_data_url + "all-user-data", {
       ...getRequest,
