@@ -9,7 +9,8 @@ export interface ChangePasswordState {
   //zxcvbn_module: undefined;
 }
 
-const initialState: ChangePasswordState = {};
+// export for use in tests
+export const initialState: ChangePasswordState = {};
 
 const chpassSlice = createSlice({
   name: "chpass",

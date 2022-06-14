@@ -9,6 +9,7 @@ import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions
 describe("Notifications Component", () => {
   const test_state: Partial<DashboardRootState> = {
     config: {
+      ...dashboardTestState.config,
       debug: true, // prevents unknown messages (such as "dummy message") from being generalised
     },
     notifications: {
@@ -30,7 +31,7 @@ describe("Notifications Component", () => {
   it("Renders the notifications component - prod", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: { ...test_state, config: { debug: false } },
+        overrides: { ...test_state, config: { ...dashboardTestState.config, debug: false } },
       }),
       alertElem = wrapper.find("Alert");
 

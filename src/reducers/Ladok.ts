@@ -9,7 +9,8 @@ interface LadokState {
   unisFetchFailed?: boolean;
 }
 
-const initialState: LadokState = { isLinked: false };
+// export for use in tests
+export const initialState: LadokState = { isLinked: false };
 
 const ladokSlice = createSlice({
   name: "ladok",

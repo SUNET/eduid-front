@@ -8,8 +8,6 @@ import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
-//const mock = require("jest-mock");
-
 // I am the component that: displays the nin input form or the added nin in the vetting process.
 // My job is to:
 // if no nin is saved: render <NinForm /> to take a nin

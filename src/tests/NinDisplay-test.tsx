@@ -1,5 +1,4 @@
 import AddNin from "components/AddNin";
-import { history } from "components/DashboardMain";
 import NinDisplay from "components/NinDisplay";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
@@ -82,7 +81,6 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   });
 });
 
-history.push("/profile");
 describe("NinDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(

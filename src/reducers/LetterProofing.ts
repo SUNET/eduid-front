@@ -10,7 +10,8 @@ export interface LetterProofingState {
   letter_sent_days_ago?: number;
 }
 
-const initialState: LetterProofingState = {};
+// export for use in tests
+export const initialState: LetterProofingState = {};
 
 const letterProofingSlice = createSlice({
   name: "letterProofing",
