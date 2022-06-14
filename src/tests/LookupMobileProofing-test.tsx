@@ -6,8 +6,6 @@ import { MemoryRouter } from "react-router";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
-//const mock = require("jest-mock");
-
 describe("LookupMobile component", () => {
   let store: MockStoreEnhanced<DashboardRootState>;
 
@@ -15,7 +13,6 @@ describe("LookupMobile component", () => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      identities: { is_verified: false },
       config: { ...dashboardTestState.config, lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
     });
   });

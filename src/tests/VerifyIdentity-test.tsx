@@ -41,8 +41,6 @@ describe("VerifyIdentity component, no nin added ", () => {
         eidas_url: "http://localhost/eidas",
         token_verify_idp: "token-idp",
       },
-      identities: { is_verified: false },
-      letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},
     });
@@ -106,10 +104,6 @@ describe("VerifyIdentity component, NIN already added ", () => {
         token_verify_idp: "token-idp",
       },
       identities: { nin: { number: "197801010000", verified: true }, is_verified: true },
-      phones: {
-        phones: [],
-      },
-      letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},
     });

@@ -1,23 +1,22 @@
-import React from "react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, dashboardStore } from "dashboard-init-app";
 import { mount, ReactWrapper } from "enzyme";
+import { createMemoryHistory } from "history";
+import React from "react";
+import { Router } from "react-router";
+import { initialState as initialChangePasswordState } from "reducers/ChangePassword";
+import { initialState as initialConfigState } from "reducers/DashboardConfig";
 import { initialState as initialEmailsState } from "reducers/Emails";
+import { initialState as initialNinsState } from "reducers/Identities";
+import { initialState as initialLadokState } from "reducers/Ladok";
+import { initialState as initialLetterProofingState } from "reducers/LetterProofing";
+import { initialState as initialLookupMobileProofingState } from "reducers/LookupMobileProofing";
+import { initialState as initialNotificationsState } from "reducers/Notifications";
+import { initialState as initialPersonalDataState } from "reducers/PersonalData";
+import { initialState as initialPhonesState } from "reducers/Phones";
+import { initialState as initialSecurityState } from "reducers/Security";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
-import { IdentitiesState } from "reducers/Identities";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router";
-import { initialState as initialConfigState } from "reducers/DashboardConfig";
-import { initialState as initialChangePasswordState } from "reducers/ChangePassword";
-import { initialState as initialNinsState } from "reducers/Identities";
-import { initialState as initialPhonesState } from "reducers/Phones";
-import { initialState as initialLookupMobileProofingState } from "reducers/LookupMobileProofing";
-import { initialState as initialPersonalDataState } from "reducers/PersonalData";
-import { initialState as initialLetterProogingState } from "reducers/LetterProofing";
-import { initialState as initialSecurityState } from "reducers/Security";
-import { initialState as initialNotificationsState } from "reducers/Notifications";
-import { initialState as initialLadokState } from "reducers/Ladok";
 
 export const dashboardTestHistory = createMemoryHistory();
 
@@ -38,7 +37,7 @@ export const dashboardTestState: DashboardRootState = {
   openid_freja_data: undefined as any,
   personal_data: initialPersonalDataState,
   phones: initialPhonesState,
-  letter_proofing: initialLetterProogingState,
+  letter_proofing: initialLetterProofingState,
   notifications: initialNotificationsState,
   account_linking: undefined as any,
   security: initialSecurityState,
