@@ -130,9 +130,9 @@ describe("Async component", () => {
     // Pretend we got this rather empty data in 'response' back from the backend
     next = generator.next(response as unknown as any);
 
-    // The saga updates the CSRF in the state with the one from the response
+    // The saga updates the CSRF in the state with the one from the response (none)
     const value = next.value as unknown as any;
-    expect(value.PUT.action.type).toEqual(storeCsrfToken.type);
+    expect(value.PUT.action.type).toEqual("NOOP_ACTION");
 
     // The saga sends the nins on to the nins reducer
     const action2 = identitiesSlice.actions.setIdentities(response.payload.identities);
