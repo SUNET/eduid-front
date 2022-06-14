@@ -43,7 +43,7 @@ export const postRequestLetter = createAsyncThunk<
 >("letterProofing/postRequestLetter", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const data: KeyValues = {
-    nin: state.nins.first_nin?.number,
+    nin: state.identities.nin?.number,
   };
 
   if (!data.nin) {

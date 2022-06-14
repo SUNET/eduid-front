@@ -11,9 +11,8 @@ export const dashboardHeading = "eduID Dashboard:";
 
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
-  const nins = useDashboardAppSelector((state) => state.nins.nins);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
   const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
@@ -22,7 +21,7 @@ function DashboardNav(): JSX.Element {
    * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
    */
   function getTipsAtIdentity(): JSX.Element | undefined {
-    if (verifiedNin.length) {
+    if (nin?.verified) {
       // user has a verified nin already, no tips necessary
       return undefined;
     }

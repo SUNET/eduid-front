@@ -3,11 +3,8 @@ import { ReactWrapper } from "enzyme";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React from "react";
 import { MemoryRouter } from "react-router";
-import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
-
-//const mock = require("jest-mock");
 
 describe("LookupMobile component", () => {
   let store: MockStoreEnhanced<DashboardRootState>;
@@ -16,10 +13,6 @@ describe("LookupMobile component", () => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      nins: ninStateFromNinList([]),
-      phones: {
-        phones: [],
-      },
       config: { ...dashboardTestState.config, lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
     });
   });
@@ -73,7 +66,7 @@ describe("LookupMobile component", () => {
 
   it("Renders button text, the phone number is added", () => {
     const wrapper = getWrapper({
-      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
       phones: { phones: [{ number: "+46700011555", verified: false, primary: true }] },
     });
 
@@ -90,7 +83,7 @@ describe("LookupMobile component", () => {
 
   it("Renders button text, if the phone number is non swedish", () => {
     const wrapper = getWrapper({
-      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
       phones: { phones: [{ number: "+36700011555", verified: true, primary: true }] },
     });
 
@@ -106,7 +99,7 @@ describe("LookupMobile component", () => {
 
   it("Renders button text, when verified swedish phone", () => {
     const wrapper = getWrapper({
-      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
       phones: { phones: [{ number: "+46700011555", verified: true, primary: true }] },
     });
 
