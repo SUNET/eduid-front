@@ -10,6 +10,8 @@ import personalDataSlice from "reducers/PersonalData";
 import phonesSlice from "reducers/Phones";
 import { call, put } from "redux-saga/effects";
 import { fetchAllPersonalData, requestAllPersonalData } from "../sagas/PersonalData";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { AllUserData } from "apis/eduidPersonalData";
 
 const personalDataReducer = personalDataSlice.reducer;
 
@@ -110,16 +112,15 @@ describe("Async component", () => {
       external_id: "foo",
       university: { ladok_name: "TEST", name: { en: "eng", sv: "sve" } },
     };
-    const response = {
+    const response: PayloadAction<AllUserData> = {
       type: actions.GET_ALL_USERDATA_SUCCESS,
       payload: {
-        csrf_token: "csrf-token",
         given_name: "",
         surname: "",
         display_name: "",
         language: "",
         eppn: "",
-        nins: [],
+        identities: { is_verified: false },
         emails: [],
         phones: [],
         ladok: pd_ladok,
@@ -134,17 +135,17 @@ describe("Async component", () => {
     expect(value.PUT.action.type).toEqual(storeCsrfToken.type);
 
     // The saga sends the nins on to the nins reducer
-    const action2 = identitiesSlice.actions.setNins([]);
+    const action2 = identitiesSlice.actions.setIdentities(response.payload.identities);
     next = generator.next(action2 as unknown as any);
     expect(next.value).toEqual(put(action2));
 
     // The saga sends the emails on to the nins reducer
-    const action3 = emailsSlice.actions.setEmails([]);
+    const action3 = emailsSlice.actions.setEmails(response.payload.emails);
     next = generator.next(action3 as unknown as any);
     expect(next.value).toEqual(put(action3));
 
     // The saga sends the mobiles on to the mobiles reducer
-    const action4 = phonesSlice.actions.setPhones([]);
+    const action4 = phonesSlice.actions.setPhones(response.payload.phones);
     next = generator.next(action4 as unknown as any);
     expect(next.value).toEqual(put(action4));
 

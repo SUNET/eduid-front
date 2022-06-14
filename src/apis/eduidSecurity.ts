@@ -3,9 +3,9 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { NinInfo } from "reducers/Identities";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
 export interface SuggestedPasswordResponse {
@@ -57,18 +57,13 @@ export interface NinPayload {
   nin: string;
 }
 
-export interface NinsResponse {
-  // TODO: Backend also includes success=True and a message, but let's try to not use those
-  nins: NinInfo[];
-}
-
 /**
  * @public
  * @function addNin
  * @desc Redux async thunk to add a NIN.
  */
 export const addNin = createAsyncThunk<
-  NinsResponse, // return type
+  FetchIdentitiesResponse, // return type
   string, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/addNin", async (nin, thunkAPI) => {
@@ -76,7 +71,7 @@ export const addNin = createAsyncThunk<
     nin: nin,
   };
 
-  return makeSecurityRequest<NinsResponse>(thunkAPI, "add-nin", body)
+  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "add-nin", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -91,7 +86,7 @@ export const addNin = createAsyncThunk<
  * @desc Redux async thunk to remove a NIN.
  */
 export const removeNin = createAsyncThunk<
-  NinsResponse, // return type
+  FetchIdentitiesResponse, // return type
   string, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/removeNin", async (nin, thunkAPI) => {
@@ -99,7 +94,7 @@ export const removeNin = createAsyncThunk<
     nin: nin,
   };
 
-  return makeSecurityRequest<NinsResponse>(thunkAPI, "remove-nin", body)
+  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "remove-nin", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

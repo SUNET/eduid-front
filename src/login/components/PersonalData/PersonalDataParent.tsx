@@ -53,8 +53,7 @@ interface RenderEditBoxProps {
 
 const RenderEditBox = (props: RenderEditBoxProps) => {
   // check if verified nin
-  const nins = useDashboardAppSelector((state) => state.identities.nins);
-  const isVerifiedNin = nins.some((nin) => nin.verified);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   return (
     <Fragment>
       <div className="edit-data">
@@ -62,7 +61,7 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
           <h4>{translate("pd.edit.title")}</h4>
           <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
-        <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
+        <PersonalDataForm isVerifiedNin={nin?.verified} {...props} />
       </div>
     </Fragment>
   );

@@ -11,7 +11,7 @@ import { FormattedMessage } from "react-intl";
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
   let vettingButtons;
-  const nin = useDashboardAppSelector((state) => state.identities.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedNin = !!nin?.verified;

@@ -41,7 +41,7 @@ export interface NinFormData {
 }
 
 function NinForm(): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here

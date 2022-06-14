@@ -43,9 +43,9 @@ export function* requestAllPersonalData() {
       return;
     }
 
-    if (response.payload.nins !== undefined) {
+    if (response.payload.identities !== undefined) {
       // update nins in the state
-      yield put(identitiesSlice.actions.setNins(response.payload.nins));
+      yield put(identitiesSlice.actions.setIdentities(response.payload.identities));
     }
     if (response.payload.emails !== undefined) {
       yield put(emailsSlice.actions.setEmails(response.payload.emails));

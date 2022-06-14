@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { NinInfo } from "reducers/Identities";
 
 interface NinDisplayProps {
-  nin?: NinInfo; // the NIN to display - passed as a prop to make component more re-usable
+  nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
   allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 

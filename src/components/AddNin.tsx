@@ -4,7 +4,7 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import React from "react";
 
 export default function AddNin(): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
 
   if (nin) {
     return <NinDisplay nin={nin} allowDelete={true} />;

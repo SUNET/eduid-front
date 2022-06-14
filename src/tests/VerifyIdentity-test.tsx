@@ -7,7 +7,6 @@ import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMo
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Identities";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -32,8 +31,6 @@ describe("VerifyIdentity component, no nin added ", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
@@ -44,10 +41,7 @@ describe("VerifyIdentity component, no nin added ", () => {
         eidas_url: "http://localhost/eidas",
         token_verify_idp: "token-idp",
       },
-      identities: test_nins,
-      phones: {
-        phones: [],
-      },
+      identities: { is_verified: false },
       letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},
@@ -101,8 +95,6 @@ describe("VerifyIdentity component, NIN already added ", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([{ number: "197801010000", verified: true, primary: true }]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
@@ -113,7 +105,7 @@ describe("VerifyIdentity component, NIN already added ", () => {
         eidas_url: "http://localhost/eidas",
         token_verify_idp: "token-idp",
       },
-      identities: test_nins,
+      identities: { nin: { number: "197801010000", verified: true }, is_verified: true },
       phones: {
         phones: [],
       },

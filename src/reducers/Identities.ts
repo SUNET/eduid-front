@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchNins } from "apis/eduidPersonalData";
+import { fetchIdentities, FetchIdentitiesResponse } from "apis/eduidPersonalData";
 import { addNin, removeNin } from "apis/eduidSecurity";
 
 export interface NinInfo {
@@ -8,45 +8,41 @@ export interface NinInfo {
   primary: boolean;
 }
 
-export interface IdentitiesState {
-  nins: NinInfo[];
-  first_nin?: NinInfo; // the primary nin, or if there are no primary nins the first one from the list
-  is_confirmed_identity: boolean; // True if the user has a confirmed identity, not necessarily a NIN
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface IdentitiesState extends FetchIdentitiesResponse {}
 
 // export this for use in tests
 export const initialState: IdentitiesState = {
-  nins: [],
-  is_confirmed_identity: false,
+  is_verified: false,
 };
 
 // export this for use in tests
-export function ninStateFromNinList(nins: NinInfo[]): IdentitiesState {
-  // Deduce some information about the nins given as input, and return a full state
-  const _primary = nins.filter((nin) => nin.primary);
-  const primary = _primary.length ? _primary[0] : nins[0];
-  return { nins: nins, is_confirmed_identity: !!primary?.verified, first_nin: primary };
-}
+// export function ninStateFromNinList(nins: NinInfo[]): IdentitiesState {
+//   // Deduce some information about the nins given as input, and return a full state
+//   const _primary = nins.filter((nin) => nin.primary);
+//   const primary = _primary.length ? _primary[0] : nins[0];
+//   return { nins: nins, is_confirmed_identity: !!primary?.verified, first_nin: primary };
+// }
 
 const identitiesSlice = createSlice({
   name: "identities",
   initialState,
   reducers: {
-    setNins: (state, action: PayloadAction<NinInfo[]>) => {
-      // Update nins in state. Called after bulk-fetch of personal data.
-      return ninStateFromNinList(action.payload);
+    setIdentities: (state, action: PayloadAction<FetchIdentitiesResponse>) => {
+      // Update identities in state. Called after bulk-fetch of personal data.
+      return action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchNins.fulfilled, (state, action) => {
-        return ninStateFromNinList(action.payload.nins);
+      .addCase(fetchIdentities.fulfilled, (state, action) => {
+        return action.payload;
       })
       .addCase(addNin.fulfilled, (state, action) => {
-        return ninStateFromNinList(action.payload.nins);
+        return action.payload;
       })
       .addCase(removeNin.fulfilled, (state, action) => {
-        return ninStateFromNinList(action.payload.nins);
+        return action.payload;
       });
   },
 });

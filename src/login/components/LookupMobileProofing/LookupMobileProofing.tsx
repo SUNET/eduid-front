@@ -12,7 +12,7 @@ interface LookupMobileProofingProps {
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const dispatch = useDashboardAppDispatch();
   const [showModal, setShowModal] = useState(false);
