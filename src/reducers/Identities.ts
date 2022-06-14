@@ -16,14 +16,6 @@ export const initialState: IdentitiesState = {
   is_verified: false,
 };
 
-// export this for use in tests
-// export function ninStateFromNinList(nins: NinInfo[]): IdentitiesState {
-//   // Deduce some information about the nins given as input, and return a full state
-//   const _primary = nins.filter((nin) => nin.primary);
-//   const primary = _primary.length ? _primary[0] : nins[0];
-//   return { nins: nins, is_confirmed_identity: !!primary?.verified, first_nin: primary };
-// }
-
 const identitiesSlice = createSlice({
   name: "identities",
   initialState,
