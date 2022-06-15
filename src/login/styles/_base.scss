@@ -31,11 +31,19 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 3rem 0 6rem;
+  padding-bottom: 6rem;
   background-color: $light-gray;
 
   @media (max-width: $bp-lg) {
-    padding-bottom: 2rem 0 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .content {
+    padding-top: 3rem;
+
+    @media (max-width: $bp-lg) {
+      padding-top: 2rem;
+    }
   }
 }
 
