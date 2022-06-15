@@ -6,6 +6,7 @@ import { useIntl } from "react-intl";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import { FormattedMessage } from "react-intl";
+import Accordion from "./Accordion";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -67,47 +68,95 @@ function NinForm(): JSX.Element {
         nin: nin?.number || "",
       }}
       render={({ handleSubmit, pristine, invalid }) => {
+        const accordionData = [
+          {
+            title: "Svenskt personnummer",
+            content: (
+              <form onSubmit={handleSubmit} className="single-input-form x-adjust">
+                <fieldset id="nins-form" className="tabpane">
+                  <FinalField
+                    component={CustomInput}
+                    componentClass="input"
+                    type="text"
+                    name="nin"
+                    label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
+                    placeholder={placeholder}
+                    helpBlock={
+                      <FormattedMessage
+                        description="nins input help text"
+                        defaultMessage="National identity number with 12 digits"
+                      />
+                    }
+                    validate={validateNin}
+                  />
+                </fieldset>
+                <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+                  <FormattedMessage description="button_add" defaultMessage="Add" />
+                </EduIDButton>
+              </form>
+            ),
+          },
+          {
+            title: " annat..",
+            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`,
+          },
+          {
+            title: "Section 3",
+            content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+            quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+            dolor ut sequi minus iste? Quas?`,
+          },
+        ];
+
         return (
-          <div className="accordions">
+          // <div className="accordions">
+          //   <div className="accordion">
+          //     <input type="checkbox" id="chck1" className="accordion-handle" />
+          //     <label className="accordion-label" htmlFor="chck1">
+          //       Svenskt personnummer
+          //     </label>
+
+          //     <div className="accordion-content">
+          //       <form onSubmit={handleSubmit} className="single-input-form x-adjust">
+          //         <fieldset id="nins-form" className="tabpane">
+          //           <FinalField
+          //             component={CustomInput}
+          //             componentClass="input"
+          //             type="text"
+          //             name="nin"
+          //             label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
+          //             placeholder={placeholder}
+          //             helpBlock={
+          //               <FormattedMessage
+          //                 description="nins input help text"
+          //                 defaultMessage="National identity number with 12 digits"
+          //               />
+          //             }
+          //             validate={validateNin}
+          //           />
+          //         </fieldset>
+          //         <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+          //           <FormattedMessage description="button_add" defaultMessage="Add" />
+          //         </EduIDButton>
+          //       </form>
+          //     </div>
+          //   </div>
+
+          //   <div className="accordion">
+          //     <input type="checkbox" id="chck2" className="accordion-handle" />
+          //     <label className="accordion-label" htmlFor="chck2">
+          //       annat..
+          //     </label>
+
+          //     <div className="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
+          //   </div>
+          // </div>
+
+          <div>
             <div className="accordion">
-              <input type="checkbox" id="chck1" className="accordion-handle" />
-              <label className="accordion-label" htmlFor="chck1">
-                Svenskt personnummer
-              </label>
-
-              <div className="accordion-content">
-                <form onSubmit={handleSubmit} className="single-input-form x-adjust">
-                  <fieldset id="nins-form" className="tabpane">
-                    <FinalField
-                      component={CustomInput}
-                      componentClass="input"
-                      type="text"
-                      name="nin"
-                      label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
-                      placeholder={placeholder}
-                      helpBlock={
-                        <FormattedMessage
-                          description="nins input help text"
-                          defaultMessage="National identity number with 12 digits"
-                        />
-                      }
-                      validate={validateNin}
-                    />
-                  </fieldset>
-                  <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-                    <FormattedMessage description="button_add" defaultMessage="Add" />
-                  </EduIDButton>
-                </form>
-              </div>
-            </div>
-
-            <div className="accordion">
-              <input type="checkbox" id="chck2" className="accordion-handle" />
-              <label className="accordion-label" htmlFor="chck2">
-                annat..
-              </label>
-
-              <div className="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
+              {accordionData.map(({ title, content }) => (
+                <Accordion title={title} content={content} />
+              ))}
             </div>
           </div>
         );
