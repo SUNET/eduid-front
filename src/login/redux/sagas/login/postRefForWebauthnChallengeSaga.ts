@@ -1,9 +1,9 @@
-import { call, select, put } from "redux-saga/effects";
-import postRequest from "../postDataRequest";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { LoginRootState } from "login-init-app";
+import { call, put, select } from "redux-saga/effects";
 import { putCsrfToken } from "../../../../sagas/common";
 import loginSlice from "../../slices/loginSlice";
-import { LoginRootState } from "../../../app_init/initStore";
-import { PayloadAction } from "@reduxjs/toolkit";
+import postRequest from "../postDataRequest";
 
 export type MfaAuthResponse = {
   // The response from the /mfa_auth API endpoint consists of (in the happy case):

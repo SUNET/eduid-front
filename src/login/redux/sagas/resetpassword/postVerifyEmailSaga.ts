@@ -2,10 +2,10 @@ import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import postRequest from "../postDataRequest";
-import { history } from "../../../components/App/App";
-import { LoginRootState } from "../../../app_init/initStore";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import { LoginRootState } from "login-init-app";
+import { useHistory } from "react-router";
 
 export type VerifyEmailResponse = {
   email_address: string;
@@ -15,6 +15,7 @@ export type VerifyEmailResponse = {
 };
 
 export function* requestLinkCode() {
+  const history = useHistory();
   const state: LoginRootState = yield select((state) => state);
   const url = state.config.reset_password_url + "verify-email/";
   const locationUrl = document.location.href;

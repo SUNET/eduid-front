@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { fetchNewDevice } from "apis/eduidLogin";
+import { LoginAppDispatch } from "login-init-app";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { LoginAppDispatch } from "login/app_init/initStore";
 
 /* Not exported - keep all use through functions in this module */
 const THIS_DEVICE_KEY = "login.device";

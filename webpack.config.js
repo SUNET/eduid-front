@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
+//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const transform = require("@formatjs/ts-transformer").transform;
@@ -20,7 +20,7 @@ module.exports = {
     // server: 'webpack-dev-server/client?http://localhost:8080',
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
-    login: "./src/login/app_init/index",
+    login: "./src/entry-points/login",
     errors: "./src/entry-points/errors",
   },
   output: {
@@ -105,7 +105,7 @@ module.exports = {
       });
     }),
     // Initial configuration
-    initialConfigPlugin,
+    //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       // test: /\.xxx$/, // may apply this only for some modules

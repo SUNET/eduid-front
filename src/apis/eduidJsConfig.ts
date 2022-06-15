@@ -5,7 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
-import { LoginAppDispatch } from "login/app_init/initStore";
+import { LoginAppDispatch } from "login-init-app";
 import { SignupAppDispatch } from "signup-init-app";
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
