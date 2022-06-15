@@ -1,10 +1,9 @@
-import { put, call, select } from "redux-saga/effects";
-import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import postRequest from "../postDataRequest";
-import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { LoginRootState } from "login-init-app";
-import { loginHistory } from "entry-points/login";
+import { call, put, select } from "redux-saga/effects";
+import { failRequest, putCsrfToken } from "../../../../sagas/common";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
+import postRequest from "../postDataRequest";
 
 interface PostSetNewPasswordResponse {
   message: string;
@@ -30,7 +29,7 @@ export function* postSetNewPassword() {
       yield put(response);
       return;
     }
-    loginHistory.push(`/reset-password/success`);
+    put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }

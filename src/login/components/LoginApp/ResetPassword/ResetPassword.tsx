@@ -1,13 +1,27 @@
-import React from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import ResetPasswordMain from "./ResetPasswordMain";
 import EmailLinkSent from "./EmailLinkSent";
 import ExtraSecurity from "./ExtraSecurity";
 import PhoneCodeSent from "./PhoneCodeSent";
 import SetNewPassword from "./SetNewPassword";
 import ResetPasswordSuccess from "./ResetPasswordSuccess";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 
 function ResetPassword(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (goto_url) {
+      // a saga is requesting us to send the user off to some URL
+      dispatch(resetPasswordSlice.actions.setGotoUrl(undefined));
+      history.push(goto_url);
+    }
+  }, [goto_url]);
+
   return (
     <Switch>
       <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />

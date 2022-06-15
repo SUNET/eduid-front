@@ -1,5 +1,4 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { loginHistory } from "entry-points/login";
 import { LoginRootState } from "login-init-app";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
@@ -12,6 +11,7 @@ import {
 import { requestCompleted, requestInProgress } from "../../actions/loadingDataActions";
 import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import postRequest from "../postDataRequest";
+
 interface PostEmailLinkResponse {
   email: string;
 }
@@ -35,7 +35,7 @@ export function* postEmailLink() {
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, new Date().getTime() + 60 * 5 * 1000);
     countFiveMin("email");
-    loginHistory.push(`/reset-password/email-link-sent`);
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email-link-sent"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   } finally {

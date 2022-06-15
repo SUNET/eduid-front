@@ -1,5 +1,4 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { loginHistory } from "entry-points/login";
 import { LoginRootState } from "login-init-app";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
@@ -29,10 +28,10 @@ export function* postSetNewPasswordExtraSecurityPhone() {
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
-      loginHistory.push(`/reset-password/email`);
+      yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
       return;
     }
-    loginHistory.push(`/reset-password/success`);
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }
