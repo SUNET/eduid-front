@@ -1,6 +1,5 @@
 import Captcha from "components/Captcha";
 import { shallow } from "enzyme";
-import expect from "expect";
 import fetchMock from "jest-fetch-mock";
 import React from "react";
 import { IntlProvider } from "react-intl";

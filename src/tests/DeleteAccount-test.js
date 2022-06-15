@@ -11,6 +11,7 @@ import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
 import { postDeleteAccount, deleteAccount } from "sagas/Security";
 import { notificationsSlice } from "reducers/Notifications";
+import { storeCsrfToken } from "commonConfig";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 
@@ -423,7 +424,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));

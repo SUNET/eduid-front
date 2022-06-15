@@ -6,6 +6,10 @@ import thunk from "redux-thunk";
 import { SignupRootState, signupStore } from "signup-init-app";
 import { initialState as signupInitialState } from "reducers/Signup";
 import { initialState as configInitialState } from "reducers/SignupConfig";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router";
+
+export const signupTestHistory = createMemoryHistory();
 
 export const signupTestState: SignupRootState = {
   config: {
@@ -15,7 +19,6 @@ export const signupTestState: SignupRootState = {
     is_configured: true,
   },
   signup: signupInitialState,
-  router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
   notifications: {},
@@ -58,6 +61,10 @@ export function setupComponent({ component, store, overrides }: setupComponentAr
   if (store === undefined) {
     store = fakeStore({ overrides });
   }
-  const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
+  const wrapper = mount(
+    <ReduxIntlProvider store={store}>
+      <Router history={signupTestHistory}>{component}</Router>
+    </ReduxIntlProvider>
+  );
   return wrapper;
 }

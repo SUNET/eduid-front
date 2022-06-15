@@ -1,6 +1,9 @@
-import expect from "expect";
 import * as actions from "actions/OpenidConnectFreja";
+import { storeCsrfToken } from "commonConfig";
+import expect from "expect";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
+import { call, put, select } from "redux-saga/effects";
+import { fetchFrejaData, initializeOpenidFrejaData } from "../sagas/OpenidConnectFreja";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -281,9 +284,6 @@ const state = {
   },
 };
 
-import { initializeOpenidFrejaData, fetchFrejaData } from "../sagas/OpenidConnectFreja";
-import { put, call, select } from "redux-saga/effects";
-
 describe("Async component", () => {
   it("Sagas initializeOpenidFrejaData", () => {
     const generator = initializeOpenidFrejaData();
@@ -309,7 +309,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));

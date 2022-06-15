@@ -5,7 +5,8 @@ interface LookupMobileProofingState {
   message?: string; // should be unused, whole reducer and this left more as a placeholder
 }
 
-const initialState: LookupMobileProofingState = {};
+// export for use in tests
+export const initialState: LookupMobileProofingState = {};
 
 const lookupMobileProofingSlice = createSlice({
   name: "lookupMobileProofing",

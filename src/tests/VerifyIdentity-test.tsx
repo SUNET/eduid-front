@@ -1,20 +1,15 @@
-import AddNin from "components/AddNin";
+import Eidas from "components/Eidas";
 import LetterProofingButton from "components/LetterProofing";
 import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
-import Eidas from "components/Eidas";
 
-// const mock = require("jest-mock");
-// const messages = require("../login/translation/messageIndex");
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
 
@@ -36,18 +31,16 @@ describe("VerifyIdentity component, no nin added ", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
-      nins: test_nins,
-      phones: {
-        phones: [],
+      config: {
+        ...dashboardTestState.config,
+        is_configured: true,
+        eidas_url: "http://localhost/eidas",
+        token_verify_idp: "token-idp",
       },
-      letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},
     });
@@ -100,18 +93,17 @@ describe("VerifyIdentity component, NIN already added ", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([{ number: "197801010000", verified: true, primary: true }]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
-      nins: test_nins,
-      phones: {
-        phones: [],
+      config: {
+        ...dashboardTestState.config,
+        is_configured: true,
+        eidas_url: "http://localhost/eidas",
+        token_verify_idp: "token-idp",
       },
-      letter_proofing: {},
+      identities: { nin: { number: "197801010000", verified: true }, is_verified: true },
       openid_data: {},
       openid_freja_data: {},
     });

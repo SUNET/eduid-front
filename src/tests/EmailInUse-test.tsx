@@ -1,6 +1,5 @@
 import EmailInUse from "components/EmailInUse";
 import { shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";

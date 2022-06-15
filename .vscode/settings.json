@@ -35,6 +35,7 @@
     "pdata",
     "personaldata",
     "personnummer",
+    "prid",
     "pwfield",
     "recaptcha",
     "reduxjs",

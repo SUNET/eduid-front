@@ -1,16 +1,14 @@
-import NinDisplay from "components/NinDisplay";
-import Profile from "components/Profile";
-import VerifyIdentity from "components/VerifyIdentity";
 import EmailDisplay from "components/EmailDisplay";
 import NameDisplay from "components/NameDisplay";
+import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
+import Profile from "components/Profile";
+import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
 import { initialState as personalDataInitialState } from "reducers/PersonalData";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
@@ -40,16 +38,11 @@ describe("Profile component", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([{ number: "197801010000", verified: true, primary: false }]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
     store = fakeStore({
       ...dashboardTestState,
-      nins: test_nins,
-      phones: {
-        phones: [],
-      },
+      identities: { nin: { number: "197801010000", verified: true }, is_verified: true },
       personal_data: personalDataInitialState,
     });
     state = store.getState();

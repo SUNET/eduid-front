@@ -1,6 +1,9 @@
-import expect from "expect";
 import * as actions from "actions/OpenidConnect";
+import { storeCsrfToken } from "commonConfig";
+import expect from "expect";
 import openidConnectReducer from "reducers/OpenidConnect";
+import { call, put, select } from "redux-saga/effects";
+import { checkNINAndShowSelegModal, fetchQRcode, requestOpenidQRcode } from "../sagas/OpenidConnect";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -207,9 +210,6 @@ const state = {
   },
 };
 
-import { checkNINAndShowSelegModal, requestOpenidQRcode, fetchQRcode } from "../sagas/OpenidConnect";
-import { put, call, select } from "redux-saga/effects";
-
 describe("Async component", () => {
   it("Sagas checkNINAndShowSelegModal", () => {
     const generator = checkNINAndShowSelegModal();
@@ -244,7 +244,7 @@ describe("Async component", () => {
     };
 
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));

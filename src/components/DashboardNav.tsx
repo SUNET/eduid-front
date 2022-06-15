@@ -5,11 +5,14 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import { translate } from "../login/translation";
 import NotificationTip from "./NotificationTip";
 
+// export for use in tests
+export const activeClassName = "active";
+export const dashboardHeading = "eduID Dashboard:";
+
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
-  const nins = useDashboardAppSelector((state) => state.nins.nins);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
   const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
@@ -18,7 +21,7 @@ function DashboardNav(): JSX.Element {
    * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
    */
   function getTipsAtIdentity(): JSX.Element | undefined {
-    if (verifiedNin.length) {
+    if (nin?.verified) {
       // user has a verified nin already, no tips necessary
       return undefined;
     }
@@ -66,21 +69,26 @@ function DashboardNav(): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
-      <h5>eduID Dashboard:</h5>
+      <h5>{dashboardHeading}</h5>
       <ul>
         <li>
-          <NavLink exact activeClassName="active" to={`/profile/`}>
+          <NavLink exact activeClassName={activeClassName} to={`/profile/`}>
             {translate("dashboard_nav.profile")}
           </NavLink>
         </li>
         <li>
-          <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
+          <NavLink exact activeClassName={activeClassName} to={`/profile/verify-identity/`}>
             {translate("dashboard_nav.identity")}
             {getTipsAtIdentity()}
           </NavLink>
         </li>
         <li>
-          <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
+          <NavLink
+            className={settingsClass}
+            exact
+            activeClassName={activeClassName}
+            to={`/profile/settings/personaldata`}
+          >
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}
           </NavLink>
@@ -89,7 +97,7 @@ function DashboardNav(): JSX.Element {
           <NavLink
             className={advancedSettingsClass}
             exact
-            activeClassName="active"
+            activeClassName={activeClassName}
             to={`/profile/settings/advanced-settings`}
           >
             {translate("dashboard_nav.advanced-settings")}

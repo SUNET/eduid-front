@@ -1,3 +1,4 @@
+import { storeCsrfToken } from "commonConfig";
 import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
@@ -42,7 +43,7 @@ describe(`API call to "new-password-extra-security-phone/" behaves as expected o
       },
     };
     next = generator.next(successResponse);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
   });
 });
 
@@ -69,7 +70,7 @@ describe(`first API call to "new-password-extra-security-phone/" behaves as expe
       },
     };
     next = generator.next(failResponse);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });

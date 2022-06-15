@@ -1,12 +1,11 @@
 const mock = require("jest-mock");
-import React from "react";
-import expect from "expect";
 import PhonesComponent from "components/Phones";
-import { IntlProvider } from "react-intl";
 import { shallow } from "enzyme";
-import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
-import DataTable from "../login/components/DataTable/DataTable";
+import React from "react";
+import { IntlProvider } from "react-intl";
 import phonesSlice from "reducers/Phones";
+import DataTable from "../login/components/DataTable/DataTable";
+import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("Phones Component", () => {
   it("The component does not render 'false' or 'null'", () => {

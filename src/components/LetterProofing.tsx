@@ -16,7 +16,7 @@ export interface LetterProofingProps {
 export default function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const nins = useDashboardAppSelector((state) => state.nins);
+  const nins = useDashboardAppSelector((state) => state.identities);
   const letter_expired = useDashboardAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useDashboardAppSelector((state) => state.letter_proofing.letter_sent);
   const letter_expires_date = useDashboardAppSelector((state) => state.letter_proofing.letter_expires);

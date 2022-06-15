@@ -1,7 +1,6 @@
 import NotificationsContainer from "containers/Notifications";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { notificationsSlice } from "reducers/Notifications";
 import { MockStoreEnhanced } from "redux-mock-store";
@@ -10,6 +9,7 @@ import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions
 describe("Notifications Component", () => {
   const test_state: Partial<DashboardRootState> = {
     config: {
+      ...dashboardTestState.config,
       debug: true, // prevents unknown messages (such as "dummy message") from being generalised
     },
     notifications: {
@@ -31,7 +31,7 @@ describe("Notifications Component", () => {
   it("Renders the notifications component - prod", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: { ...test_state, config: { debug: false } },
+        overrides: { ...test_state, config: { ...dashboardTestState.config, debug: false } },
       }),
       alertElem = wrapper.find("Alert");
 

@@ -1,12 +1,9 @@
 import LetterProofingButton from "components/LetterProofing";
 import { shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { ninStateFromNinList } from "reducers/Nins";
 import letterProofingSlice from "../reducers/LetterProofing";
-import { setupComponent } from "./helperFunctions/DashboardTestApp";
-import { dashboardTestState } from "./helperFunctions/DashboardTestApp";
+import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -31,7 +28,7 @@ describe("Letter Proofing, with disabled props", () => {
         letter_proofing: {
           letter_expired: true,
         },
-        nins: ninStateFromNinList([{ number: "20001010", verified: false, primary: true }]),
+        identities: { nin: { number: "20001010", verified: false }, is_verified: false },
       },
     });
   }
@@ -50,7 +47,6 @@ describe("LetterProofing component, without id number", () => {
           letter_sent: undefined,
           letter_expired: false,
         },
-        nins: ninStateFromNinList([]),
       },
     });
   }
@@ -71,7 +67,7 @@ describe("LetterProofing component, letter has been sent", () => {
           letter_sent: "2021-11-23T13:37:15.799000+00:00",
           letter_expires: "2021-12-07T19:59:59.799000+00:00",
         },
-        nins: ninStateFromNinList([{ number: "19881212", verified: false, primary: true }]),
+        identities: { nin: { number: "19881212", verified: false }, is_verified: false },
       },
     });
   }
@@ -103,7 +99,7 @@ describe("LetterProofing component, letter has been sent", () => {
           letter_expires: "2021-12-07T19:59:59.799000+00:00",
           letter_expired: true,
         },
-        nins: ninStateFromNinList([{ number: "19881212", verified: false, primary: true }]),
+        identities: { nin: { number: "19881212", verified: false }, is_verified: false },
       },
     });
   }
