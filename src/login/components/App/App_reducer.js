@@ -2,7 +2,8 @@ import * as actions from "./App_actions";
 import * as loadingDataActions from "../../redux/actions/loadingDataActions";
 import { createReducer } from "@reduxjs/toolkit";
 
-const initialState = {
+// export for use in tests
+export const initialState = {
   is_loaded: false,
   loading_data: false,
   request_in_progress: false,

@@ -17,7 +17,12 @@ function SubmitSamlResponse() {
      */
     if (document.forms[0] && SAMLParameters) {
       if (!SAMLParameters.used && !backDetected) {
-        document.forms[0].submit();
+        try {
+          // submit isn't available in the tests jsdom environment
+          document.forms[0].submit();
+        } catch (error) {
+          setError(true);
+        }
       }
     } else {
       setError(true);
