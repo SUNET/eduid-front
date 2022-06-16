@@ -14,7 +14,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { setupServer } from "msw/node";
 
-// Setup MSW to act as a mock backend in tests. In a test that accesses a backend,
+// Setup MSW to act as a mock backend in tests. In a test that accesses a backend endpoint,
 // do something like this:
 //
 // mswServer.use(
@@ -30,8 +30,14 @@ export const mswServer = setupServer();
 
 beforeAll(() =>
   mswServer.listen({
-    onUnhandledRequest: "warn",
+    onUnhandledRequest(req) {
+      // having this here instead of just onUnhandledRequest: 'warn' allows you to set a breakpoint here :)
+      console.error("%s: Found an unhandled %s request to %s", "color: red", req.method, req.url.href);
+    },
   })
 );
 afterEach(() => mswServer.resetHandlers());
 afterAll(() => mswServer.close());
+
+// re-export rest for convenience in imports to tests
+export { rest } from "msw";

@@ -96,7 +96,6 @@
     "history": "^4.10.1",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
-    "jest-fetch-mock": "^3.0.3",
     "jest-mock": "^27.5.1",
     "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",

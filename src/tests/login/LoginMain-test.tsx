@@ -2,10 +2,9 @@ import React from "react";
 import { LoginNextResponse } from "apis/eduidLogin";
 import { initialState as initialAppState } from "login/components/App/App_reducer";
 import { LoginMain } from "login/components/LoginMain";
-import { rest } from "msw";
 import { initialState as configInitialState } from "reducers/LoginConfig";
 import { loginTestHistory, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
-import { mswServer } from "setupTests";
+import { mswServer, rest } from "setupTests";
 
 test("show splash screen when not configured", () => {
   loginTestHistory.push("/login/abc123");
