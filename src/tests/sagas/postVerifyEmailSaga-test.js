@@ -40,6 +40,10 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
     expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(successResponse.type);
+    next = generator.next();
+    expect(next.value.PUT.action).toEqual(
+      resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/${fakeState.resetPassword.email_code}`)
+    );
   });
   it("done", () => {
     const done = generator.next().done;
@@ -72,6 +76,8 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
     expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(failResponse.type);
+    next = generator.next();
+    expect(next.value.PUT.action).toEqual(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
   });
   it("done", () => {
     const done = generator.next().done;

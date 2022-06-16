@@ -1,5 +1,6 @@
 import { storeCsrfToken } from "commonConfig";
 import expect from "expect";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postEmailLink } from "../../login/redux/sagas/resetpassword/postResetPasswordSaga";
@@ -39,6 +40,8 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
+    next = generator.next();
+    expect(next.value.PUT.action).toEqual(resetPasswordSlice.actions.setGotoUrl("/reset-password/email-link-sent"));
   });
   it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();

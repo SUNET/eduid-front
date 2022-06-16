@@ -15,7 +15,6 @@ export type VerifyEmailResponse = {
 };
 
 export function* requestLinkCode() {
-  const history = useHistory();
   const state: LoginRootState = yield select((state) => state);
   const url = state.config.reset_password_url + "verify-email/";
   const locationUrl = document.location.href;
@@ -30,16 +29,16 @@ export function* requestLinkCode() {
       if (response.error) {
         // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
         yield put(response);
-        history.push(`/reset-password/email`);
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
         return;
       }
       // if API call successfully post data save it to store
       yield put(resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(response.payload));
       // Completed with freja eid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
-        history.push(`/reset-password/set-new-password/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/set-new-password/${data.email_code}`));
       } else {
-        history.push(`/reset-password/extra-security/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/${data.email_code}`));
       }
     } catch (error) {
       yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
