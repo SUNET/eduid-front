@@ -1,12 +1,12 @@
 import { fetchVerifyLink, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
-import { SIGNUP_BASE_PATH } from "../globals";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router";
 import { showNotification } from "reducers/Notifications";
 import { useSignupAppDispatch } from "signup-hooks";
+import { SIGNUP_BASE_PATH } from "./SignupMain";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -25,11 +25,12 @@ interface CodeVerifiedProps {
 export default function CodeVerified(props: CodeVerifiedProps) {
   // TODO: get dashboard URL from config instead of from backend response?
   // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  const dispatch = useSignupAppDispatch();
   const history = useHistory();
   const params = useParams() as CodeParams;
   const [response, setResponse] = useState(props.responseForTests);
 
-  const dispatch = useSignupAppDispatch();
+  console.log("IN CODEVERIFIED");
 
   async function verifyCode(code: string) {
     const resp = await dispatch(fetchVerifyLink({ code }));

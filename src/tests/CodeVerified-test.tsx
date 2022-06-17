@@ -3,22 +3,18 @@ import { VerifyLinkResponseFail, VerifyLinkResponseSuccess } from "apis/eduidSig
 import CodeVerified, { idFinishedButton, idUserEmail, idUserPassword } from "components/CodeVerified";
 import { shallow } from "enzyme";
 import { createMemoryHistory } from "history";
-import fetchMock from "jest-fetch-mock";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter, Route, Router, Switch } from "react-router";
 import { showNotification } from "reducers/Notifications";
+import { mswServer, rest } from "setupTests";
 import { setImmediate } from "timers";
-import { SIGNUP_BASE_PATH } from "../globals";
+import { SIGNUP_BASE_PATH, SIGNUP_SERVICE_URL } from "../globals";
 import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
 
 const runAllPromises = () => new Promise(setImmediate);
 
 describe("CodeVerified Component", () => {
-  afterEach(() => {
-    fetchMock.resetMocks();
-  });
-
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
@@ -38,7 +34,12 @@ describe("CodeVerified Component", () => {
         email: "test@example.org",
       },
     };
-    fetchMock.doMockOnce(JSON.stringify(fakeResponse));
+
+    mswServer.use(
+      rest.get(`${SIGNUP_SERVICE_URL}verify-link/abc123`, (req, res, ctx) => {
+        return res(ctx.json(fakeResponse));
+      })
+    );
 
     const store = realStore();
 

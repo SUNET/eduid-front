@@ -7,13 +7,16 @@ import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
-import { SIGNUP_BASE_PATH } from "../globals";
 import "../login/styles/index.scss";
+
+// export for use in tests
+export const SIGNUP_BASE_PATH = "/register";
 
 export function SignupMain(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email); // TODO: is email really shown in signup header?
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
+  console.log("IN SIGNUP MAIN");
   return (
     <React.Fragment>
       <Header email={email} showLogin={true} />
