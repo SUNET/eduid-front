@@ -16,7 +16,6 @@ export function SignupMain(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email); // TODO: is email really shown in signup header?
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
-  console.log("IN SIGNUP MAIN");
   return (
     <React.Fragment>
       <Header email={email} showLogin={true} />

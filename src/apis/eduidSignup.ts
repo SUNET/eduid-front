@@ -3,9 +3,11 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { SIGNUP_SERVICE_URL } from "../globals";
 import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+
+// export for use in tests
+export const SIGNUP_SERVICE_URL = "/services/signup";
 
 /*********************************************************************************************************************/
 export interface TryCaptchaRequest {

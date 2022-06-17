@@ -1,6 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { VerifyLinkResponseFail, VerifyLinkResponseSuccess } from "apis/eduidSignup";
+import { SIGNUP_SERVICE_URL, VerifyLinkResponseFail, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import CodeVerified, { idFinishedButton, idUserEmail, idUserPassword } from "components/CodeVerified";
+import { SIGNUP_BASE_PATH } from "components/SignupMain";
 import { shallow } from "enzyme";
 import { createMemoryHistory } from "history";
 import React from "react";
@@ -9,7 +10,6 @@ import { MemoryRouter, Route, Router, Switch } from "react-router";
 import { showNotification } from "reducers/Notifications";
 import { mswServer, rest } from "setupTests";
 import { setImmediate } from "timers";
-import { SIGNUP_BASE_PATH, SIGNUP_SERVICE_URL } from "../globals";
 import { fakeStore, realStore, setupComponent } from "./helperFunctions/SignupTestApp";
 
 const runAllPromises = () => new Promise(setImmediate);

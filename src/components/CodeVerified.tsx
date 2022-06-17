@@ -30,8 +30,6 @@ export default function CodeVerified(props: CodeVerifiedProps) {
   const params = useParams() as CodeParams;
   const [response, setResponse] = useState(props.responseForTests);
 
-  console.log("IN CODEVERIFIED");
-
   async function verifyCode(code: string) {
     const resp = await dispatch(fetchVerifyLink({ code }));
 
@@ -51,12 +49,11 @@ export default function CodeVerified(props: CodeVerifiedProps) {
       dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
       history.push(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
+    if (response?.status === "already-verified") {
+      // TODO: Not sure this can reasonably actually happen in the backend?
+      dispatch(showNotification({ message: "code.already-verified", level: "info" }));
+    }
   }, [response]);
-
-  if (response?.status === "already-verified") {
-    // TODO: Not sure this can reasonably actually happen in the backend?
-    dispatch(showNotification({ message: "code.already-verified", level: "info" }));
-  }
 
   return (
     <React.Fragment>
@@ -84,20 +81,20 @@ function SignupComplete(props: VerifyLinkResponseSuccess) {
       </p>
       <div id="email-display">
         <fieldset>
-          <label>
+          <label htmlFor={idUserEmail}>
             <FormattedMessage defaultMessage="Email address" description="Email label" />
           </label>
-          <div id={idUserEmail} className="register-header display-data">
-            {props.email}
+          <div className="register-header display-data">
+            <output id={idUserEmail}>{props.email}</output>
           </div>
         </fieldset>
         <fieldset>
-          <label>
+          <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
           </label>
           <div className="register-header registered-email display-data">
-            <mark id={idUserPassword} className="force-select-all">
-              {props.password}
+            <mark className="force-select-all">
+              <output id={idUserPassword}>{props.password}</output>
             </mark>
           </div>
         </fieldset>

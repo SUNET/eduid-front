@@ -17,6 +17,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       // default to being in 'configured' state, since only the test of
       // the splash screen is ever interested in the opposite
       is_configured: true,
+      debug: true,
     },
   };
   const store = getTestSignupStore(args.state || defaultState);
