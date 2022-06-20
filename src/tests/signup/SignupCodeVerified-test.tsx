@@ -54,7 +54,9 @@ test("handles already-verified", async () => {
   signupTestHistory.push(`${SIGNUP_BASE_PATH}/code/123abc`);
   render(<SignupMain />);
 
-  await waitFor(() => screen.getByRole("alert"));
+  // we should be redirected to the main registration page on already used codes
+  await waitFor(() => screen.getByRole("heading"));
+  expect(screen.getByRole("heading")).toHaveTextContent(/^Register your/);
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -78,7 +80,7 @@ test("handles unknown-code", async () => {
   signupTestHistory.push(`${SIGNUP_BASE_PATH}/code/123abc`);
   render(<SignupMain />);
 
-  await waitFor(() => screen.getByRole("alert", { name: "info notification" }));
+  await waitFor(() => screen.getByRole("status", { name: "Information" }));
   expect(screen.getByRole("alert")).toHaveTextContent(/Unknown.*code/i);
 
   // we should be redirected to the main registration page on invalid codes
