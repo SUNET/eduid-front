@@ -43,6 +43,11 @@ export const fetchTryCaptcha = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
+// type predicate to help identify rejected payloads from backend
+export function isTryCaptchaResponse(data: any): data is TryCaptchaResponse {
+  return "next" in data;
+}
+
 /*********************************************************************************************************************/
 export interface VerifyLinkRequest {
   code: string;
