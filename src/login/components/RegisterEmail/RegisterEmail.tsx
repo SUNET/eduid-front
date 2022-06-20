@@ -5,13 +5,14 @@ import EduIDButton from "components/EduIDButton";
 import EmailInUse from "components/EmailInUse";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import React, { Fragment } from "react";
-import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { validateEmailField } from "../../app_utils/validation/validateEmail";
 import CustomInput from "../Inputs/CustomInput";
+import EmailInput from "../Inputs/EmailInput";
 import NotificationModal from "../Modals/NotificationModal";
 
 /* Handle user entering an e-mail address, and accepting the ToU which is shown in a modal, and then solving a captcha.
@@ -121,47 +122,39 @@ interface EmailFormData {
 function EmailForm() {
   const dispatch = useSignupAppDispatch();
 
-  const intl = useIntl();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "placeholder.email",
-    defaultMessage: "name@example.com",
-    description: "placeholder text for email input",
-  });
-
   function submitEmailForm(values: EmailFormData) {
+    const errors: EmailFormData = {};
+
     if (values.email) {
       //dispatch(actions.addEmail(values.email));
       dispatch(signupSlice.actions.setEmail(values.email));
+    } else {
+      errors.email = "required";
     }
-  }
 
+    return errors;
+  }
   return (
     <FinalForm<EmailFormData>
       onSubmit={submitEmailForm}
       initialValues={{
         email: "",
       }}
-      render={({ handleSubmit, pristine, invalid }) => {
+      render={(formProps: FormRenderProps<EmailFormData>) => {
+        const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
+        const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
+
         return (
-          <form id="register-form" onSubmit={handleSubmit}>
+          <form id="register-form" onSubmit={formProps.handleSubmit}>
             <fieldset>
-              <FinalField
-                label={<FormattedMessage defaultMessage="Email address" />}
-                component={CustomInput}
-                componentClass="input"
-                type="text"
-                name="email"
-                placeholder={placeholder}
-                validate={validateEmailField}
-                autoFocus
-              />
+              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+
               <div className="buttons">
                 <EduIDButton
                   buttonstyle="primary"
                   id="register-button"
-                  disabled={invalid || pristine}
-                  onClick={handleSubmit}
+                  disabled={_disabled}
+                  onClick={formProps.handleSubmit}
                 >
                   <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
                 </EduIDButton>
