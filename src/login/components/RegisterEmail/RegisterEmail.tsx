@@ -5,13 +5,11 @@ import EduIDButton from "components/EduIDButton";
 import EmailInUse from "components/EmailInUse";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import React, { Fragment } from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FormattedMessage, useIntl } from "react-intl";
+import { Form as FinalForm, FormRenderProps } from "react-final-form";
+import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import { validateEmailField } from "../../app_utils/validation/validateEmail";
-import CustomInput from "../Inputs/CustomInput";
 import EmailInput from "../Inputs/EmailInput";
 import NotificationModal from "../Modals/NotificationModal";
 

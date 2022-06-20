@@ -1,9 +1,9 @@
 import React from "react";
-import SignupMain from "components/SignupMain";
+import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
 import { fireEvent, render, screen, signupTestHistory, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
 
 test("show splash screen when not configured", () => {
-  signupTestHistory.push("/register/email");
+  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
   render(<SignupMain />, { state: { config: { ...signupTestState.config, is_configured: false } } });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
@@ -13,7 +13,7 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders e-mail form as expected", () => {
-  signupTestHistory.push("/register/email");
+  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
   render(<SignupMain />);
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
@@ -36,4 +36,11 @@ test("renders e-mail form as expected", () => {
 
   fireEvent.change(input, { target: { value: "test@example.org" } });
   expect(button).toBeEnabled();
+});
+
+test("redirects from slash", () => {
+  signupTestHistory.push(SIGNUP_BASE_PATH);
+  render(<SignupMain />);
+
+  expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 });

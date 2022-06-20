@@ -1,11 +1,5 @@
 import { isFSA } from "apis/common";
-import {
-  fetchVerifyLink,
-  isVerifyLinkResponse,
-  VerifyLinkResponse,
-  VerifyLinkResponseFail,
-  VerifyLinkResponseSuccess,
-} from "apis/eduidSignup";
+import { fetchVerifyLink, isVerifyLinkResponse, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import React, { useEffect, useState } from "react";
