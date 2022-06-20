@@ -24,4 +24,4 @@ export const TOKEN_SERVICE_URL = "/services/authn/login";
 export const EDUID_COOKIE_NAME = "sessid";
 export const LOGIN_CONFIG_URL = "/services/jsconfig/login/config";
 export const PASSWORD_SERVICE_URL = "/services/reset-password";
-//export const GROUP_MGMT_URL = "/services/group-management"
+export const GROUP_MGMT_URL = "/services/group-management";

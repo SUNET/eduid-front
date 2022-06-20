@@ -2,6 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import * as actions from "../../actions/createGroupActions";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
+import { GROUP_MGMT_URL } from "globals";
 
 export function* createGroupSaga(action) {
   const state = yield select((state) => state);
