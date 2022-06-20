@@ -1,4 +1,11 @@
-import { fetchVerifyLink, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
+import { isFSA } from "apis/common";
+import {
+  fetchVerifyLink,
+  isVerifyLinkResponse,
+  VerifyLinkResponse,
+  VerifyLinkResponseFail,
+  VerifyLinkResponseSuccess,
+} from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import React, { useEffect, useState } from "react";
@@ -18,23 +25,24 @@ interface CodeParams {
   code?: string;
 }
 
-interface CodeVerifiedProps {
-  responseForTests?: VerifyLinkResponse;
-}
-
-export default function CodeVerified(props: CodeVerifiedProps) {
+export default function CodeVerified() {
   // TODO: get dashboard URL from config instead of from backend response?
   // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
   const dispatch = useSignupAppDispatch();
   const history = useHistory();
   const params = useParams() as CodeParams;
-  const [response, setResponse] = useState(props.responseForTests);
+  const [response, setResponse] = useState<VerifyLinkResponse>();
 
   async function verifyCode(code: string) {
     const resp = await dispatch(fetchVerifyLink({ code }));
 
     if (fetchVerifyLink.fulfilled.match(resp)) {
       setResponse(resp.payload);
+    }
+    if (fetchVerifyLink.rejected.match(resp)) {
+      if (isFSA(resp.payload) && isVerifyLinkResponse(resp.payload.payload)) {
+        setResponse(resp.payload.payload);
+      }
     }
   }
 
@@ -52,6 +60,7 @@ export default function CodeVerified(props: CodeVerifiedProps) {
     if (response?.status === "already-verified") {
       // TODO: Not sure this can reasonably actually happen in the backend?
       dispatch(showNotification({ message: "code.already-verified", level: "info" }));
+      history.push(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
   }, [response]);
 

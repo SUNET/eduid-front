@@ -76,6 +76,11 @@ export const fetchVerifyLink = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
+// type predicate to help identify rejected payloads from backend
+export function isVerifyLinkResponse(data: any): data is VerifyLinkResponse {
+  return "status" in data;
+}
+
 /*********************************************************************************************************************/
 
 function makeSignupRequest<T>(

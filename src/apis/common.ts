@@ -139,3 +139,8 @@ export function makeBareRequest<T>(
     .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
     .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
 }
+
+// type predicate to help identify rejected payloads from backend.
+export function isFSA(action: any): action is PayloadAction {
+  return "type" in action && "payload" in action;
+}
