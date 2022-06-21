@@ -2,121 +2,72 @@
 
 /* Accordion */
 
-// .accordions {
-//   overflow: hidden;
-//   box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
-//   border-radius: 4px;
-// }
-
-// .accordion {
-//   width: 100%;
-//   color: white;
-//   overflow: hidden;
-
-//   checkbox
-//   &-handle {
-//     position: absolute;
-//     opacity: 0;
-//     z-index: -1;
-
-//     &:checked {
-//       + .accordion-label {
-//         background: $dark-orange;
-
-//         &::after {
-//           transform: rotate(90deg);
-//         }
-//       }
-
-//       ~ .accordion-content {
-//         max-height: 100vh;
-//         padding: 1em;
-//       }
-//     }
-//   }
-
-//   &-label {
-//     display: flex;
-//     justify-content: space-between;
-//     padding: 1em;
-//     background: $orange-highlight;
-//     color: $white;
-//     font-family: $akkurat;
-//     margin: 0;
-//     font-weight: bold;
-//     cursor: pointer;
-
-//     &:hover {
-//       background: $dark-orange;
-//     }
-
-//     icon
-//     &::after {
-//       content: "\276F";
-//       width: 1em;
-//       height: 1em;
-//       text-align: center;
-//       transition: all 0.35s;
-//     }
-//   }
-
-//   &-content {
-//     max-height: 0;
-//     padding: 0 1em;
-//     color: initial;
-//     background: white;
-//     transition: all 0.35s;
-
-//     form {
-//       margin-top: 0;
-//     }
-//   }
-
-//   &-close {
-//     display: flex;
-//     justify-content: flex-end;
-//     padding: 1em;
-//     font-size: 0.75em;
-//     background: $orange-highlight;
-//     cursor: pointer;
-
-//     &:hover {
-//       background: $dark-orange;
-//     }
-//   }
-
-//   & + & &-label {
-//     border-top: 2px solid $light-gray;
-//   }
-// }
-
-.accordion {
-  width: 100%;
-  margin: 1.5rem auto;
+.accordions {
   box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
   border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.accordion-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  cursor: pointer;
-  background: $orange-highlight;
-  color: $white;
-  font-family: $akkurat;
-  font-weight: bold;
-}
+.accordion {
+  &-handle {
+    display: flex;
+    cursor: pointer;
+    background: $orange-highlight;
+    color: $white;
+    font-weight: bold;
+    transition: all 0.1s ease;
+    position: relative;
+    padding: 1rem;
 
-.accordion-title:hover {
-  background: $dark-orange;
-}
+    &:hover {
+      background: $dark-orange;
+    }
+  }
 
-.accordion-title,
-.accordion-content {
-  padding: 1rem;
-}
+  &-content {
+    background-color: $white;
+    padding: 1.5rem 1rem;
+    //transition: all 0.2s ease;
+    animation: fadein 0.2s ease;
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+  & + & &-handle {
+    border-top: 2px solid $light-gray;
+  }
+  &-toggle {
+    transform: rotate(90deg);
+    position: absolute;
+    right: 1rem;
+  }
+  &-title {
+    font-family: $akkurat;
+    font-size: 1.125rem;
+    margin-bottom: 0;
+  }
+  &-icon {
+    img {
+      height: 1.5rem;
+      margin-right: 0.5rem;
+      width: inherit;
+      vertical-align: top;
+      box-shadow: 0 0 4px 2px rgb(0 0 0 / 10%);
+      border-radius: 50%;
+    }
+  }
+  &-description {
+    font-size: 12px;
+    display: block;
+  }
 
-.accordion-content {
-  background-color: $white;
+  form {
+    margin-top: 0;
+  }
 }

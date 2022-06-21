@@ -7,6 +7,9 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import { FormattedMessage } from "react-intl";
 import Accordion from "./Accordion";
+import SeFlagSvg from "../../img/se.svg";
+import EuFlagSvg from "../../img/eu.svg";
+import WorldFlagSvg from "../../img/world.svg";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -70,9 +73,11 @@ function NinForm(): JSX.Element {
       render={({ handleSubmit, pristine, invalid }) => {
         const accordionData = [
           {
+            icon: <img src={SeFlagSvg} alt="Swedish flag" />,
             title: "Svenskt personnummer",
+            additionalInfo: "",
             content: (
-              <form onSubmit={handleSubmit} className="single-input-form x-adjust">
+              <form onSubmit={handleSubmit} className="single-input-form">
                 <fieldset id="nins-form" className="tabpane">
                   <FinalField
                     component={CustomInput}
@@ -97,67 +102,38 @@ function NinForm(): JSX.Element {
             ),
           },
           {
-            title: " annat..",
+            icon: <img src={EuFlagSvg} alt="European Union flag" />,
+            title: "Europeisk medborgare",
+            additionalInfo: "eIDAS",
             content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`,
           },
           {
-            title: "Section 3",
+            icon: <img src={WorldFlagSvg} alt="European Union flag" />,
+            title: "Världsmedborgare",
+            additionalInfo: "Svipe ID",
             content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
             quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
             dolor ut sequi minus iste? Quas?`,
           },
+          {
+            icon: "",
+            title: "Övriga galaxen",
+            additionalInfo: "Vintergatan",
+            content: `Annat kul alternativ`,
+          },
+          {
+            icon: "",
+            title: "Övriga universum",
+            additionalInfo: "",
+            content: `Annat kul alternativ`,
+          },
         ];
 
         return (
-          // <div className="accordions">
-          //   <div className="accordion">
-          //     <input type="checkbox" id="chck1" className="accordion-handle" />
-          //     <label className="accordion-label" htmlFor="chck1">
-          //       Svenskt personnummer
-          //     </label>
-
-          //     <div className="accordion-content">
-          //       <form onSubmit={handleSubmit} className="single-input-form x-adjust">
-          //         <fieldset id="nins-form" className="tabpane">
-          //           <FinalField
-          //             component={CustomInput}
-          //             componentClass="input"
-          //             type="text"
-          //             name="nin"
-          //             label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
-          //             placeholder={placeholder}
-          //             helpBlock={
-          //               <FormattedMessage
-          //                 description="nins input help text"
-          //                 defaultMessage="National identity number with 12 digits"
-          //               />
-          //             }
-          //             validate={validateNin}
-          //           />
-          //         </fieldset>
-          //         <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-          //           <FormattedMessage description="button_add" defaultMessage="Add" />
-          //         </EduIDButton>
-          //       </form>
-          //     </div>
-          //   </div>
-
-          //   <div className="accordion">
-          //     <input type="checkbox" id="chck2" className="accordion-handle" />
-          //     <label className="accordion-label" htmlFor="chck2">
-          //       annat..
-          //     </label>
-
-          //     <div className="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
-          //   </div>
-          // </div>
-
-          <div>
-            <div className="accordion">
-              {accordionData.map(({ title, content }) => (
-                <Accordion title={title} content={content} />
-              ))}
-            </div>
+          <div className="accordions x-adjust">
+            {accordionData.map(({ icon, title, additionalInfo, content }) => (
+              <Accordion icon={icon} title={title} additionalInfo={additionalInfo} content={content} />
+            ))}
           </div>
         );
       }}
