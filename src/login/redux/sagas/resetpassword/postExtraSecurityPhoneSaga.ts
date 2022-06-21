@@ -37,9 +37,9 @@ export function* requestPhoneCodeForNewPassword() {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
       if (locationUrl.includes("extra-security")) {
-        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/${data.email_code}`));
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/extra-security"));
       } else if (locationUrl.includes("phone-code-sent")) {
-        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/phone-code-sent/${data.email_code}`));
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
       }
       return;
     }
@@ -48,7 +48,7 @@ export function* requestPhoneCodeForNewPassword() {
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
     countFiveMin("phone");
-    yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/phone-code-sent/${data.email_code}`));
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }

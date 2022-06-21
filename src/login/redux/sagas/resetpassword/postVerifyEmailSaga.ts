@@ -5,7 +5,6 @@ import postRequest from "../postDataRequest";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import { LoginRootState } from "login-init-app";
-import { useHistory } from "react-router";
 
 export type VerifyEmailResponse = {
   email_address: string;

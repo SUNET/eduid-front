@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import { Route, Redirect, Switch, useHistory, useParams } from "react-router-dom";
 import ResetPasswordMain from "./ResetPasswordMain";
 import EmailLinkSent from "./EmailLinkSent";
 import ExtraSecurity from "./ExtraSecurity";
@@ -26,13 +26,35 @@ function ResetPassword(): JSX.Element {
     <Switch>
       <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
       <Route path={`/reset-password/email`} component={ResetPasswordMain} />
+      <Route path={`/reset-password/email-code/:emailCode`} component={EmailCode} />
       <Route exact path="/reset-password/email-link-sent" component={EmailLinkSent} />
-      <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
+      <Route path="/reset-password/extra-security" component={ExtraSecurity} />
       <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
       <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
       <Route path="/reset-password/set-new-password" component={SetNewPassword} />
     </Switch>
   );
+}
+
+// URL parameters passed to this component
+interface CodeParams {
+  emailCode?: string;
+}
+
+function EmailCode(): JSX.Element | null {
+  const isLoaded = useAppSelector((state) => state.config.is_configured);
+  const params = useParams() as CodeParams;
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isLoaded && params.emailCode) {
+      // save and use the code once the app is configured
+      dispatch(resetPasswordSlice.actions.saveLinkCode(params.emailCode));
+      dispatch(resetPasswordSlice.actions.useLinkCode());
+    }
+  }, [isLoaded]);
+
+  return null;
 }
 
 export default ResetPassword;

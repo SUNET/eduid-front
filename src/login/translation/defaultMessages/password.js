@@ -145,9 +145,6 @@ export const resetPassword = {
       defaultMessage={`A password reset using an extra security option will keep your account confirmed.`}
     />
   ),
-  "resetpw.extra-phone_send_sms": (values) => (
-    <FormattedMessage id="resetpw.extra-phone_send_sms" defaultMessage={`Send sms to {phone}`} values={values} />
-  ),
   "resetpw.use_extra_security_key": (
     <FormattedMessage id="resetpw.use_extra_security_key" defaultMessage={`Use your security key`} />
   ),

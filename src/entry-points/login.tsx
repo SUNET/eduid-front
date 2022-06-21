@@ -5,7 +5,6 @@ import { createBrowserHistory } from "history";
 import { loginStore } from "login-init-app";
 import { appLoaded } from "login/components/App/App_actions";
 import { LoginMain } from "login/components/LoginMain";
-import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -19,14 +18,6 @@ const getConfig = async function () {
   const config = await loginStore.dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(config)) {
     loginStore.dispatch(appLoaded());
-  }
-
-  const url = document.location.href;
-
-  if (url.includes(`/email-code/`) || url.includes(`/extra-security/`)) {
-    // pass on code get config for app and
-    const urlCode = url.split("/").reverse()[0];
-    loginStore.dispatch(resetPasswordSlice.actions.saveLinkCode(urlCode));
   }
 };
 

@@ -11,7 +11,7 @@ function LoginApp(): JSX.Element {
         <Route exact path={`/login/other/:state_id`} component={UseOtherDevice2} />
         <Route exact path={`/login/password/:ref`} component={Login} />
         <Route exact path={`/login/:ref`} component={Login} />
-        <Route exact path="/reset-password/" component={ResetPassword} />
+        <Route path="/reset-password/" component={ResetPassword} />
       </Switch>
     </div>
   );

@@ -29,7 +29,7 @@ export function* postSetNewPassword() {
       yield put(response);
       return;
     }
-    put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }
