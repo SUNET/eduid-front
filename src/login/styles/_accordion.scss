@@ -38,6 +38,10 @@
         opacity: 1;
       }
     }
+
+    input[type="text"] {
+      background-color: $light-gray;
+    }
   }
   & + & &-handle {
     border-top: 2px solid $light-gray;
