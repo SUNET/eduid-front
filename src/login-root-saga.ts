@@ -13,8 +13,6 @@ import { postSetNewPasswordExternalMfa } from "login/redux/sagas/resetpassword/p
 
 function* rootSaga() {
   yield all([
-    // takeLatest(init_actions.GET_CONFIG, requestConfig),
-    // takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
     ...loginSagas,
     takeLatest(resetPasswordSlice.actions.requestEmailLink, postEmailLink),
     takeLatest(resetPasswordSlice.actions.requestPhoneCode, requestPhoneCodeForNewPassword),

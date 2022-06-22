@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { securityKeyPattern } from "login/app_utils/validation/regexPatterns";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 
@@ -24,7 +23,7 @@ interface ResetPasswordState {
 }
 
 // Define the initial state using that type
-const initialState: ResetPasswordState = {
+export const initialState: ResetPasswordState = {
   email_address: undefined,
   email_code: undefined,
   phone: { index: undefined, number: undefined, phone_code: undefined },

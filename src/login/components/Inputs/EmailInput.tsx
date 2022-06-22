@@ -5,6 +5,8 @@ import { Field as FinalField } from "react-final-form";
 import { useIntl } from "react-intl";
 import CustomInput from "./CustomInput";
 
+export const emailPlaceHolder = "name@example.com";
+
 interface EmailInputProps {
   required: boolean;
   autoFocus: boolean;
@@ -18,7 +20,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.email",
-    defaultMessage: "name@example.com",
+    defaultMessage: emailPlaceHolder,
     description: "placeholder text for email input",
   });
 
