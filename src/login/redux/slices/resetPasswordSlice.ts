@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { securityKeyPattern } from "login/app_utils/validation/regexPatterns";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 
@@ -19,6 +20,7 @@ interface ResetPasswordState {
   new_password?: string;
   suggested_password?: string;
   extra_security?: ExtraSecurityType;
+  goto_url?: string;
 }
 
 // Define the initial state using that type
@@ -86,6 +88,10 @@ export const resetPasswordSlice = createSlice({
     setNewPasswordExtraSecurityToken: () => {},
     // Action connected to postSetNewPasswordExternalMfaSaga. Will post stored phone_code, new_password to the /new-password-extra-security-external-mfa endpoint.
     setNewPasswordExtraSecurityExternalMfa: () => {},
+    setGotoUrl: (state, action: PayloadAction<string | undefined>) => {
+      // when sagas have completed and want to direct the user to a new route, they set goto_url.
+      state.goto_url = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(performAuthentication.fulfilled, (state, action) => {

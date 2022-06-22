@@ -2,12 +2,12 @@ import { render as rtlRender, RenderOptions, RenderResult } from "@testing-libra
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import React from "react";
 import { Router } from "react-router";
-import { getTestDashboardStore, DashboardRootState } from "dashboard-init-app";
-import { dashboardTestHistory, dashboardTestState } from "./DashboardTestApp";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { getTestLoginStore, LoginRootState } from "login-init-app";
+import { loginTestHistory, loginTestState } from "./LoginTestApp";
+import { initialState as configInitialState } from "reducers/LoginConfig";
 
 interface renderArgs {
-  state?: Partial<DashboardRootState>;
+  state?: Partial<LoginRootState>;
   options?: RenderOptions;
 }
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
@@ -21,11 +21,11 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
     },
   };
 
-  const store = getTestDashboardStore(args.state || defaultState);
+  const store = getTestLoginStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <Router history={dashboardTestHistory}>{children}</Router>
+        <Router history={loginTestHistory}>{children}</Router>
       </ReduxIntlProvider>
     );
   }
@@ -35,6 +35,6 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 // re-export everything
 export * from "@testing-library/react";
 // mirror some exports from old Enzyme testing helper
-export { dashboardTestState, dashboardTestHistory };
+export { loginTestState, loginTestHistory };
 // override render method
 export { render };

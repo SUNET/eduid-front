@@ -23,9 +23,7 @@ interface NewPasswordFormData {
 
 interface NewPasswordFormProps {
   clickSetNewPassword: (event: React.FormEvent<HTMLFormElement>) => void;
-  translate(msg: string): string;
   extra_security?: ExtraSecurityType;
-  emailCode: string;
   invalid: boolean;
   suggested_password: string | undefined;
   newPassword: string;
@@ -82,7 +80,7 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
             buttonstyle="secondary"
             id="go-back-button"
             className="btn-icon"
-            onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
+            onClick={() => history.push("/reset-password/extra-security")}
           >
             <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
@@ -112,8 +110,6 @@ const ConnectedNewPasswordForm = connect(() => ({
 
 function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   const history = useHistory();
-  const url = document.location.href;
-  const emailCode = url.split("/").reverse()[0];
   const dispatch = useAppDispatch();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -125,13 +121,12 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
 
   useEffect(() => {
     setPassword(suggested_password);
-    dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
-  }, [suggested_password, dispatch]);
+  }, [suggested_password]);
 
   // Change path to extra-security without selected option on reload
   useEffect(() => {
     if (selected_option === undefined) {
-      history.push(`/reset-password/extra-security/${emailCode}`);
+      history.push("/reset-password/extra-security");
     }
   }, [selected_option]);
 
@@ -205,7 +200,6 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
         {...props}
         suggested_password={suggested_password}
         clickSetNewPassword={clickSetNewPassword}
-        emailCode={emailCode}
         extra_security={extra_security}
       />
     </Splash>

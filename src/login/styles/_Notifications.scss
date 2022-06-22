@@ -21,7 +21,7 @@
 
   &.alert-danger,
   &.alert-success {
-    color: $orange-highlight;
+    color: $dark-orange;
     background-color: $orange-opaque;
     border: none;
   }
@@ -41,7 +41,7 @@
     text-shadow: unset;
 
     &:hover {
-      color: $orange-highlight;
+      color: $dark-orange;
     }
   }
 }

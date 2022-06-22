@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchTryCaptcha, TryCaptchaNextStep, TryCaptchaResponse } from "apis/eduidSignup";
+import { isFSA } from "apis/common";
+import { fetchTryCaptcha, isTryCaptchaResponse, TryCaptchaNextStep, TryCaptchaResponse } from "apis/eduidSignup";
+import { response } from "msw";
 
 interface SignupState {
   email?: string;
@@ -31,8 +33,7 @@ export const signupSlice = createSlice({
       })
       .addCase(fetchTryCaptcha.rejected, (state, action) => {
         // action.payload is the whole JSON response from the backend (or some other error)
-        const response = action.payload as unknown as { payload: TryCaptchaResponse };
-        if (response.payload?.next) {
+        if (isFSA(action.payload) && isTryCaptchaResponse(action.payload.payload)) {
           /* A TryCaptcha request can be declined with e.g. the following payload:
            *
            *   "payload": {
@@ -42,7 +43,7 @@ export const signupSlice = createSlice({
            *
            * In which case we want to set current_step to "address-used".
            */
-          state.current_step = response.payload.next;
+          state.current_step = action.payload.payload.next;
         }
       });
   },

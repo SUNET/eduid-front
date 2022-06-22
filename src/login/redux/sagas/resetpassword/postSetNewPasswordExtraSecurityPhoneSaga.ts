@@ -1,10 +1,9 @@
-import { put, call, select } from "redux-saga/effects";
-import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import postRequest from "../postDataRequest";
-import resetPasswordSlice from "../../slices/resetPasswordSlice";
-import { history } from "../../../components/App/App";
-import { LoginRootState } from "../../../app_init/initStore";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { LoginRootState } from "login-init-app";
+import { call, put, select } from "redux-saga/effects";
+import { failRequest, putCsrfToken } from "../../../../sagas/common";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
+import postRequest from "../postDataRequest";
 
 interface PostSetNewPasswordExtraPhoneResponse {
   message: string;
@@ -29,10 +28,10 @@ export function* postSetNewPasswordExtraSecurityPhone() {
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
-      history.push(`/reset-password/email`);
+      yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
       return;
     }
-    history.push(`/reset-password/success`);
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }

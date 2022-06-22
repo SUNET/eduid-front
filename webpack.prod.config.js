@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
-const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
+//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 var webpackProd = {
@@ -24,7 +24,7 @@ webpackProd.output = {
 };
 
 webpackProd.plugins = [
-  initialConfigPlugin,
+  //  initialConfigPlugin,
   new webpack.DefinePlugin({
     "process.env": {
       NODE_ENV: JSON.stringify("production"),

@@ -1,7 +1,7 @@
 const path = require("path");
 const webpackProd = require("./webpack.prod.config");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
+//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 
 var webpackStaging = {
   ...webpackProd,
@@ -15,7 +15,7 @@ webpackStaging.output = {
 };
 
 webpackStaging.plugins = [
-  initialConfigPlugin,
+  //  initialConfigPlugin,
   ...["errors", "login", "dashboard", "signup"].map((entryName) => {
     return new HtmlWebpackPlugin({
       hash: true,

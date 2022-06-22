@@ -17,6 +17,7 @@ export const signupTestState: SignupRootState = {
     recaptcha_public_key: "",
     reset_password_link: "http://dummy.example.com/reset-password",
     is_configured: true,
+    debug: true,
   },
   signup: signupInitialState,
   form: undefined as any,

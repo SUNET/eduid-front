@@ -9,7 +9,7 @@ import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePa
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps, useField, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
@@ -152,17 +152,21 @@ function RenderResetPasswordLink(): JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const history = useHistory();
+  const emailField = useField("email");
 
   const sendLink = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     const input = document.querySelector("input[name='email']") as any;
     if (input) {
-      const email = input.value;
-      if (emailPattern.test(email)) {
-        dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
-      } else history.push(`/reset-password/email/${loginRef}`);
-    } else history.push(`/reset-password/email/${loginRef}`);
+      if (emailField.input.value && emailField.meta.valid) {
+        dispatch(resetPasswordSlice.actions.requestEmailLink(emailField.input.value));
+        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, emailField.input.value);
+        history.push("/reset-password/");
+        return;
+      }
+    }
+    history.push(`/reset-password/email/${loginRef}`);
   };
 
   return (
