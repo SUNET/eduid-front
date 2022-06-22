@@ -121,12 +121,6 @@ function NinForm(): JSX.Element {
             additionalInfo: "Vintergatan",
             content: `Annat kul alternativ`,
           },
-          {
-            icon: "",
-            title: "Övriga universum",
-            additionalInfo: "",
-            content: `Annat kul alternativ`,
-          },
         ];
 
         return (
@@ -134,6 +128,7 @@ function NinForm(): JSX.Element {
             {accordionData.map(({ icon, title, additionalInfo, content }) => (
               <Accordion icon={icon} title={title} additionalInfo={additionalInfo} content={content} />
             ))}
+            <AccordionUniverse />
           </div>
         );
       }}
@@ -141,4 +136,7 @@ function NinForm(): JSX.Element {
   );
 }
 
+function AccordionUniverse(): JSX.Element | null {
+  return <Accordion icon="" title="Övriga universum" additionalInfo="" content="Annat superkul alternativ" />;
+}
 export default NinForm;
