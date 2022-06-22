@@ -1,85 +1,57 @@
 import React from "react";
-import { translate } from "../../../../login/translation";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-import { Form } from "reactstrap";
-import CustomInput from "../../Inputs/CustomInput";
+import EmailInput from "login/components/Inputs/EmailInput";
+import { Form as FinalForm } from "react-final-form";
+import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
-import { validate } from "../../../app_utils/validation/validateEmail";
-import { useAppDispatch } from "../../../app_init/hooks";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { setLocalStorage } from "./CountDownTimer";
-import { useIntl } from "react-intl";
+import { useAppSelector } from "../../../app_init/hooks";
+import { GoBackButton } from "./GoBackButton";
 
-export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
-
+export interface EmailFormProps {
+  passEmailUp: (email: string) => void;
+}
 export interface EmailFormData {
   email?: string;
 }
-export interface EmailFormProps {
-  request_in_progress: boolean;
-  invalid: boolean;
-  /* eslint-disable @typescript-eslint/no-explicit-any*/
-  handleSubmit: any;
-}
 
-interface ValuesProps {
-  [key: string]: string;
-}
+// *****************************************************************
+// * TODO: Can this be shared with a new username-only login form? *
+// *****************************************************************
+function EmailForm(props: EmailFormProps): JSX.Element {
+  const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
 
-const EmailForm = (props: EmailFormProps): JSX.Element => {
-  const { handleSubmit } = props;
-  const dispatch = useAppDispatch();
-  const intl = useIntl();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "placeholder.email",
-    defaultMessage: "name@example.com",
-    description: "placeholder text for email input",
-  });
-
-  const submitEmailForm = (values: ValuesProps) => {
+  const submitEmailForm = (values: EmailFormData) => {
     const email = values.email;
     if (email) {
-      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
+      props.passEmailUp(email);
     }
   };
 
   return (
-    <Form id="reset-password-form" role="form" onSubmit={handleSubmit(submitEmailForm)}>
-      <Field
-        type="email"
-        name="email"
-        label={translate("profile.email_display_title")}
-        componentClass="input"
-        id="email-input"
-        component={CustomInput}
-        placeholder={placeholder}
-        required={true}
-        helpBlock={translate("emails.input_help_text")}
-      />
-      <div className="buttons">
-        <EduIDButton
-          type="submit"
-          buttonstyle="primary"
-          id="reset-password-button"
-          disabled={props.invalid || props.request_in_progress}
-        >
-          {translate("resetpw.send-link")}
-        </EduIDButton>
-      </div>
-    </Form>
+    <FinalForm<EmailFormData>
+      id="reset-password-form"
+      role="form"
+      onSubmit={submitEmailForm}
+      render={(formProps) => {
+        return (
+          <fieldset>
+            <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+
+            <div className="button-pair">
+              <EduIDButton
+                buttonstyle="primary"
+                id="reset-password-button"
+                disabled={formProps.invalid || request_in_progress}
+                onClick={formProps.handleSubmit}
+              >
+                <FormattedMessage defaultMessage="send link to email" description="Reset Password button" />
+              </EduIDButton>
+              <GoBackButton />
+            </div>
+          </fieldset>
+        );
+      }}
+    />
   );
-};
+}
 
-const DecoratedEmailForm = reduxForm<EmailFormData, EmailFormProps>({
-  form: "reset-pass-email-form",
-  validate,
-})(EmailForm);
-
-const ConnectedForm = connect(() => ({ touchOnChange: true, enableReinitialize: true, destroyOnUnmount: false }))(
-  DecoratedEmailForm
-);
-
-export default ConnectedForm;
+export default EmailForm;

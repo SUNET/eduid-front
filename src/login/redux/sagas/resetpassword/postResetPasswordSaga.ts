@@ -1,4 +1,4 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { LoginRootState } from "login-init-app";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
@@ -32,10 +32,10 @@ export function* postEmailLink() {
       yield put(response);
       return;
     }
-    clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, new Date().getTime() + 60 * 5 * 1000);
-    countFiveMin("email");
-    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email-link-sent"));
+    // clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    // setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, new Date().getTime() + 60 * 5 * 1000);
+    // countFiveMin("email");
+    // yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email-link-sent"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   } finally {

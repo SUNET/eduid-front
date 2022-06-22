@@ -9,13 +9,11 @@ import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePa
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps, useField, useForm } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
-import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 import { Link } from "react-router-dom";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
-import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
@@ -161,7 +159,6 @@ function RenderResetPasswordLink(): JSX.Element {
     if (input) {
       if (emailField.input.value && emailField.meta.valid) {
         dispatch(resetPasswordSlice.actions.requestEmailLink(emailField.input.value));
-        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, emailField.input.value);
         history.push("/reset-password/");
         return;
       }

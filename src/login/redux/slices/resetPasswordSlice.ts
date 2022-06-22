@@ -20,6 +20,8 @@ interface ResetPasswordState {
   suggested_password?: string;
   extra_security?: ExtraSecurityType;
   goto_url?: string;
+  email_sent: boolean; // true if the user has requested an e-mail
+  email_throttle_seconds?: number; // used to transport remaining throttle time to local state in main component
 }
 
 // Define the initial state using that type
@@ -32,6 +34,7 @@ export const initialState: ResetPasswordState = {
   new_password: undefined,
   suggested_password: undefined,
   extra_security: undefined,
+  email_sent: false,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -43,11 +46,15 @@ export const resetPasswordSlice = createSlice({
       state.phone.phone_code = action.payload;
     },
     // Action connected to postResetPasswordSaga. Will post email_address to the state.config.reset_password_url/ endpoint.
-    requestEmailLink: (state, action) => {
+    requestEmailLink: (state, action: PayloadAction<string>) => {
+      state.email_sent = true;
       state.email_address = action.payload;
     },
-    saveLinkCode: (state, action) => {
+    saveLinkCode: (state, action: PayloadAction<string>) => {
       state.email_code = action.payload;
+    },
+    saveEmailThrottledSeconds: (state, action: PayloadAction<number | undefined>) => {
+      state.email_throttle_seconds = action.payload;
     },
     // Depending on selectedOption, this will call correct action of new password.
     selectExtraSecurity: (state, action: PayloadAction<string>) => {

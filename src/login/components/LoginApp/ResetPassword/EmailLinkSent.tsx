@@ -1,82 +1,86 @@
-import React, { useEffect, useState } from "react";
-import { useAppDispatch } from "../../../app_init/hooks";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import {
-  getLocalStorage,
-  countFiveMin,
-  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
-  clearCountdown,
-} from "./CountDownTimer";
-import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
-import { clearNotifications } from "../../../../reducers/Notifications";
+import EduIDButton from "components/EduIDButton";
+import { TimeRemainingWrapper } from "components/TimeRemaining";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
+import { ExpiresMeter } from "../Login/ExpiresMeter";
+import { GoBackButton } from "./GoBackButton";
 
-function EmailLinkSent(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const [email, setEmail] = useState("");
-
-  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    if (email) {
-      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-    }
-  };
-
-  useEffect(() => {
-    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    if (count && typeof count === "string") {
-      const parsedCount = JSON.parse(count);
-      if (parsedCount > -1) {
-        countFiveMin("email");
-      }
-    } else {
-      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    }
-  }, []);
-
-  useEffect(() => {
-    const emailFromLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL);
-    if (emailFromLocalStorage) setEmail(emailFromLocalStorage);
-  }, [email]);
-
-  useEffect(() => {
-    dispatch(clearNotifications());
-  }, [dispatch]);
-
-  return (
-    <>
-      <h1>
-        <FormattedMessage defaultMessage="Reset password " description="Reset Password heading" />
-      </h1>
-      <div id="reset-pass-display">
-        <p>
-          <FormattedMessage
-            defaultMessage="Please check your email {email} to continue. Link is valid for 2 hours."
-            description="Reset Password email link sent"
-            values={{
-              email: <strong>{email}</strong>,
-            }}
-          />
-        </p>
-        <div className="timer">
-          <p>
-            <FormattedMessage
-              defaultMessage="If you didn’t receive the email? Check your junk email, or"
-              description="Reset Password email link sent"
-            />
-            &nbsp;
-            <a id={"resend-email"} onClick={sendLink}>
-              <FormattedMessage defaultMessage="resend link" description="Reset Password email link sent" />
-            </a>
-            <span id="timer-in" className="display-none">
-              <FormattedMessage defaultMessage="in " description="Reset Password email link sent" />
-            </span>
-            <span id="count-down-time-email" />
-          </p>
-        </div>
-      </div>
-    </>
-  );
+interface EmailLinkSentProps {
+  expires_in: number;
+  expires_max: number;
 }
 
-export default EmailLinkSent;
+export function EmailLinkSent(props: EmailLinkSentProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const [resendDisabled, setResendDisabled] = useState(true);
+
+  /**
+   * The user has clicked the button to request that another e-mail should be sent.
+   */
+  const sendEmailOnClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    if (email_address) {
+      dispatch(resetPasswordSlice.actions.requestEmailLink(email_address));
+      // TODO: update backend to provide timeout in response
+      dispatch(resetPasswordSlice.actions.saveEmailThrottledSeconds(5 * 60));
+    }
+    setResendDisabled(true); // disabled button again on use
+  };
+
+  function handleTimerReachZero() {
+    setResendDisabled(false); // allow user to request a new e-mail when timer expires
+  }
+
+  return (
+    <React.Fragment>
+      <p>
+        <FormattedMessage
+          defaultMessage="An e-mail with instructions has been sent to {email}."
+          description="Reset Password email link sent"
+          values={{
+            email: (
+              <span id="email_address">
+                <output data-testid="email-address">
+                  <strong>{email_address}</strong>
+                </output>
+              </span>
+            ),
+          }}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          defaultMessage="The link in the e-mail is valid for two hours."
+          description="Reset Password email link sent"
+        />
+      </p>
+      <div className="timer">
+        <TimeRemainingWrapper
+          name="reset-password-email-expires"
+          unique_id={email_address}
+          value={props.expires_in}
+          onReachZero={handleTimerReachZero}
+        >
+          <ExpiresMeter showMeter={false} expires_max={props.expires_max} />
+
+          <div className="button-pair">
+            <EduIDButton
+              buttonstyle="primary"
+              type="submit"
+              className="settings-button"
+              id="send-email-button"
+              onClick={sendEmailOnClick}
+              disabled={resendDisabled}
+            >
+              <FormattedMessage defaultMessage="Resend e-mail" description="Resend e-mail button" />
+            </EduIDButton>
+            <GoBackButton primary={true} />
+          </div>
+        </TimeRemainingWrapper>
+      </div>
+    </React.Fragment>
+  );
+}
