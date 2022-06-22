@@ -13,7 +13,7 @@
   &-handle {
     display: flex;
     cursor: pointer;
-    background: $orange-highlight;
+    background: $dark-orange;
     color: $white;
     font-weight: bold;
     transition: all 0.1s ease;
@@ -21,7 +21,11 @@
     padding: 1rem;
 
     &:hover {
-      background: $dark-orange;
+      background: $orange-highlight;
+
+      .accordion-heading {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -53,8 +57,6 @@
   }
   &-title {
     font-family: $akkurat;
-    font-size: 1.125rem;
-    margin-bottom: 0;
   }
   &-icon {
     img {
@@ -64,6 +66,18 @@
       vertical-align: top;
       box-shadow: 0 0 4px 2px rgb(0 0 0 / 10%);
       border-radius: 50%;
+
+      @media (max-width: $bp-md) {
+        height: 1.25rem;
+      }
+    }
+  }
+  &-heading {
+    font-size: 1.125rem;
+    margin-bottom: 0;
+
+    @media (max-width: $bp-md) {
+      font-size: 1rem;
     }
   }
   &-description {

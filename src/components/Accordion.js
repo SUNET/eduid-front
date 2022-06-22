@@ -8,7 +8,7 @@ const Accordion = ({ icon, title, additionalInfo, content }) => {
       <div className="accordion-handle" onClick={() => setIsActive(!isActive)}>
         <span className="accordion-icon">{icon}</span>
         <div className="accordion-title">
-          {title}
+          <h6 className="accordion-heading">{title}</h6>
           <span className="accordion-description">{additionalInfo}</span>
         </div>
 
