@@ -1,6 +1,6 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { genericApiFail } from "apis/common";
-import { LoginRootState } from "login/app_init/initStore";
+import { LoginRootState } from "login-init-app";
 import { call, put, select } from "redux-saga/effects";
 import { putCsrfToken } from "../../../../sagas/common";
 import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";

@@ -1,4 +1,3 @@
-import { FieldState } from "final-form";
 import { validateEmailField } from "login/app_utils/validation/validateEmail";
 import { translate } from "login/translation";
 import React from "react";
@@ -47,8 +46,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
       type="email"
       name={props.name}
       autoFocus={props.autoFocus}
-      ariaLabel={"enter your email address to login"}
-      autoComplete="username"
+      autoComplete={props.autoComplete}
       placeholder={placeholder}
       validate={validate}
       // parameters for InputWrapper

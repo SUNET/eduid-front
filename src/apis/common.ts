@@ -2,7 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
-import { LoginAppDispatch } from "login/app_init/initStore";
+import { LoginAppDispatch } from "login-init-app";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
 import { SignupAppDispatch } from "signup-init-app";
 
@@ -138,4 +138,9 @@ export function makeBareRequest<T>(
     .then(checkStatus)
     .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
     .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
+}
+
+// type predicate to help identify rejected payloads from backend.
+export function isFSA(action: any): action is PayloadAction {
+  return "type" in action && "payload" in action;
 }

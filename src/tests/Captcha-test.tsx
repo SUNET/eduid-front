@@ -1,18 +1,22 @@
 import Captcha from "components/Captcha";
 import { shallow } from "enzyme";
-import fetchMock from "jest-fetch-mock";
+import { rest } from "msw";
 import React from "react";
 import { IntlProvider } from "react-intl";
+import { mswServer } from "setupTests";
 import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 function handleCaptchaCancel() {}
 function handleCaptchaCompleted(response: string) {}
 
 describe("Captcha Component", () => {
-  afterEach(() => {
-    fetchMock.resetMocks();
+  beforeEach(() => {
+    mswServer.use(
+      rest.get("https://www.google.com/recaptcha/api.js", (req, res, ctx) => {
+        return res(ctx.body("dummy-script"));
+      })
+    );
   });
-
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
@@ -23,7 +27,6 @@ describe("Captcha Component", () => {
   });
 
   it("The captcha <div> element renders", () => {
-    fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
       component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
     });
@@ -32,7 +35,6 @@ describe("Captcha Component", () => {
   });
 
   it("Renders the CANCEL button", () => {
-    fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
       component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
     });

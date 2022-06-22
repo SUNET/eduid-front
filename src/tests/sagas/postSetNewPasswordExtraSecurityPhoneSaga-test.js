@@ -1,5 +1,6 @@
 import { storeCsrfToken } from "commonConfig";
 import expect from "expect";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPasswordExtraSecurityPhone } from "../../login/redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
@@ -73,6 +74,8 @@ describe(`first API call to "new-password-extra-security-phone/" behaves as expe
     expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(failResponse.type);
+    next = generator.next();
+    expect(next.value.PUT.action).toEqual(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
   });
   it("done", () => {
     const done = generator.next().done;

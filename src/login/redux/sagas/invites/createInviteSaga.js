@@ -2,6 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import * as actions from "../../actions/createInviteActions";
 import { putCsrfToken } from "../../../../sagas/common";
+import { GROUP_MGMT_URL } from "globals";
 
 export function* createInviteSaga(action) {
   const state = yield select((state) => state);

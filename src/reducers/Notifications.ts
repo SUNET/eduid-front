@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export type notificationLevel = "error" | "info";
+
 export interface eduidNotification {
-  level: "error" | "info";
+  level: notificationLevel;
   message: string;
 }
 

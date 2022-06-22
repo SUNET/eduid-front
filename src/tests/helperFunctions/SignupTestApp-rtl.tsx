@@ -2,6 +2,7 @@ import { render as rtlRender, RenderOptions, RenderResult } from "@testing-libra
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import React from "react";
 import { Router } from "react-router";
+import { initialState as configInitialState } from "reducers/LoginConfig";
 import { getTestSignupStore, SignupRootState } from "signup-init-app";
 import { signupTestHistory, signupTestState } from "./SignupTestApp";
 
@@ -10,7 +11,16 @@ interface renderArgs {
   options?: RenderOptions;
 }
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const store = getTestSignupStore(args.state || {});
+  const defaultState = {
+    config: {
+      ...configInitialState,
+      // default to being in 'configured' state, since only the test of
+      // the splash screen is ever interested in the opposite
+      is_configured: true,
+      debug: true,
+    },
+  };
+  const store = getTestSignupStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
