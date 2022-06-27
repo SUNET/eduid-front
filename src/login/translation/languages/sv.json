@@ -779,7 +779,7 @@
     "string": "Rekommenderat lösenord"
   },
   "chpass.unable-to-verify-old-password": {
-    "string": "Ett fel har uppstått vid ändring av ditt lösenord. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
+    "string": "Det gick inte att verifiera ditt gamla lösenord. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
   },
   "cm.accept": {
     "string": "ACCEPTERA"
