@@ -4,6 +4,7 @@
 
 .accordions {
   box-shadow: 0 2px 4px 2px rgb(0 0 0 / 10%);
+  border: 2px solid $dark-gray;
   border-radius: 4px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -13,8 +14,9 @@
   &-handle {
     display: flex;
     cursor: pointer;
-    background: $dark-orange;
-    color: $white;
+    //background: darken($orange-opaque, 5%);
+    background: $mid-gray;
+    color: $orange-highlight;
     font-weight: bold;
     transition: all 0.1s ease;
     position: relative;
@@ -22,6 +24,7 @@
 
     &:hover {
       background: $orange-highlight;
+      color: $white;
 
       .accordion-heading {
         text-decoration: underline;
@@ -48,7 +51,7 @@
     }
   }
   & + & &-handle {
-    border-top: 2px solid $light-gray;
+    border-top: 2px solid $dark-gray;
   }
   &-toggle {
     transform: rotate(90deg);

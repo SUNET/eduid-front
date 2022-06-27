@@ -101,26 +101,6 @@ function NinForm(): JSX.Element {
               </form>
             ),
           },
-          {
-            icon: <img src={EuFlagSvg} alt="European Union flag" />,
-            title: "Europeisk medborgare",
-            additionalInfo: "eIDAS",
-            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`,
-          },
-          {
-            icon: <img src={WorldFlagSvg} alt="European Union flag" />,
-            title: "Världsmedborgare",
-            additionalInfo: "Svipe ID",
-            content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
-            quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
-            dolor ut sequi minus iste? Quas?`,
-          },
-          {
-            icon: "",
-            title: "Övriga galaxen",
-            additionalInfo: "Vintergatan",
-            content: `Annat kul alternativ`,
-          },
         ];
 
         return (
@@ -128,7 +108,11 @@ function NinForm(): JSX.Element {
             {accordionData.map(({ icon, title, additionalInfo, content }) => (
               <Accordion icon={icon} title={title} additionalInfo={additionalInfo} content={content} />
             ))}
-            <AccordionUniverse />
+
+            <AccordionEu />
+            <AccordionWorld />
+            <NoIconExample />
+            <OnlyTitleExample />
           </div>
         );
       }}
@@ -136,7 +120,33 @@ function NinForm(): JSX.Element {
   );
 }
 
-function AccordionUniverse(): JSX.Element | null {
-  return <Accordion icon="" title="Övriga universum" additionalInfo="" content="Annat superkul alternativ" />;
+function AccordionEu(): JSX.Element | null {
+  return (
+    <Accordion
+      icon="<img src={EuFlagSvg} alt='European Union flag' />"
+      title="EU citizen"
+      additionalInfo="eIDAS"
+      content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`}
+    />
+  );
 }
+function AccordionWorld(): JSX.Element | null {
+  return (
+    <Accordion
+      icon="<img src={WorldFlagSvg} alt='Globe' />"
+      title="All other countries"
+      additionalInfo="Svipe ID"
+      content={`Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+  quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+  dolor ut sequi minus iste? Quas?`}
+    />
+  );
+}
+function NoIconExample(): JSX.Element | null {
+  return <Accordion icon="" title="No icon Example" additionalInfo="Additional Info" content="Great content" />;
+}
+function OnlyTitleExample(): JSX.Element | null {
+  return <Accordion icon="" title="Only title example" additionalInfo="" content="Other great content" />;
+}
+
 export default NinForm;
