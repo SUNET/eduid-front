@@ -8,5 +8,5 @@ test("shows identity tab", () => {
   dashboardTestHistory.push("/profile/verify-identity");
   render(<DashboardMain />);
 
-  expect(screen.getByRole("heading", { name: "Svenskt personnummer" })).toBeEnabled();
+  expect(screen.getByRole("heading", { name: "Swedish personal ID number" })).toBeEnabled();
 });
