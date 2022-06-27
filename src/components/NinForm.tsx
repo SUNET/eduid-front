@@ -75,7 +75,7 @@ function NinForm(): JSX.Element {
         const accordionData = [
           {
             icon: <CircleFlag countryCode="se" height="35" />,
-            title: "Svenskt personnummer",
+            title: "Swedish personal ID number",
             additionalInfo: "",
             content: (
               <form onSubmit={handleSubmit} className="single-input-form">
@@ -110,6 +110,7 @@ function NinForm(): JSX.Element {
               <Accordion icon={icon} title={title} additionalInfo={additionalInfo} content={content} />
             ))}
 
+            {/* <AccordionSe /> */}
             <AccordionEu />
             <AccordionWorld />
             <NoIconExample />
@@ -121,6 +122,17 @@ function NinForm(): JSX.Element {
   );
 }
 
+// function AccordionSe(): JSX.Element | null {
+//   return (
+//     <Accordion
+//       icon={<CircleFlag countryCode="se" height="35" />}
+//       title="Swedish personal ID number"
+//       additionalInfo="Freja eID"
+//       content={`Form goes here`}
+//     />
+//   );
+// }
+
 function AccordionEu(): JSX.Element | null {
   return (
     <Accordion
@@ -131,6 +143,7 @@ function AccordionEu(): JSX.Element | null {
     />
   );
 }
+
 function AccordionWorld(): JSX.Element | null {
   return (
     <Accordion
@@ -143,9 +156,11 @@ function AccordionWorld(): JSX.Element | null {
     />
   );
 }
+
 function NoIconExample(): JSX.Element | null {
   return <Accordion icon="" title="No icon Example" additionalInfo="Additional Info" content="Great content" />;
 }
+
 function OnlyTitleExample(): JSX.Element | null {
   return <Accordion icon="" title="Only title example" additionalInfo="" content="Other great content" />;
 }
