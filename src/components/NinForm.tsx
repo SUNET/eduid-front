@@ -7,9 +7,10 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import { FormattedMessage } from "react-intl";
 import Accordion from "./Accordion";
-import SeFlagSvg from "../../img/se.svg";
-import EuFlagSvg from "../../img/eu.svg";
-import WorldFlagSvg from "../../img/world.svg";
+//import WorldFlagSvg from "../../img/world.svg";
+import { CircleFlag } from "react-circle-flags";
+
+//export const SwedishFlag = () => <CircleFlag countryCode="se" height="35" />;
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -73,7 +74,7 @@ function NinForm(): JSX.Element {
       render={({ handleSubmit, pristine, invalid }) => {
         const accordionData = [
           {
-            icon: <img src={SeFlagSvg} alt="Swedish flag" />,
+            icon: <CircleFlag countryCode="se" height="35" />,
             title: "Svenskt personnummer",
             additionalInfo: "",
             content: (
@@ -123,7 +124,7 @@ function NinForm(): JSX.Element {
 function AccordionEu(): JSX.Element | null {
   return (
     <Accordion
-      icon="<img src={EuFlagSvg} alt='European Union flag' />"
+      icon={<CircleFlag countryCode="european_union" height="35" />}
       title="EU citizen"
       additionalInfo="eIDAS"
       content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`}
@@ -133,7 +134,7 @@ function AccordionEu(): JSX.Element | null {
 function AccordionWorld(): JSX.Element | null {
   return (
     <Accordion
-      icon="<img src={WorldFlagSvg} alt='Globe' />"
+      icon={<CircleFlag countryCode="placeholder" height="35" />}
       title="All other countries"
       additionalInfo="Svipe ID"
       content={`Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
