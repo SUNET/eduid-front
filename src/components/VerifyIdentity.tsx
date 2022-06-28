@@ -7,6 +7,8 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import AddNin from "./AddNin";
 import { FormattedMessage } from "react-intl";
+import AccordionTemplate from "./Accordion";
+import { CircleFlag } from "react-circle-flags";
 
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
@@ -63,30 +65,21 @@ function VerifyIdentity(): JSX.Element | null {
           </p>
         </div>
       </div>
-      <ol className="listed-steps">
-        {!hasVerifiedNin ? (
-          <Fragment>
-            <li>
-              <h4>
-                <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
-              </h4>
-              <AddNin />
-            </li>
-            <li>
-              <h4>
-                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-              </h4>
-              <p className="x-adjust">
-                <FormattedMessage
-                  description="verify-identity.connect-nin_description"
-                  defaultMessage={`Choose a method to verify that you have access to the added id number.
-                      If you are unable to use a method you need to try another.`}
-                />
-              </p>
-            </li>
-          </Fragment>
-        ) : (
-          <Fragment>
+
+      {!hasVerifiedNin ? (
+        <Fragment>
+          <AccordionSe />
+          <AccordionEu />
+          <AccordionWorld />
+          <NoIconExample />
+          <OnlyTitleExample />
+
+          {/* Move vetting into individual accordion functions? */}
+          {vettingButtons}
+        </Fragment>
+      ) : (
+        <Fragment>
+          <ol className="listed-steps">
             <li>
               <h4>
                 <FormattedMessage
@@ -118,12 +111,75 @@ function VerifyIdentity(): JSX.Element | null {
                 />
               </p>
             </li>
-          </Fragment>
-        )}
-        {vettingButtons}
-      </ol>
+          </ol>
+        </Fragment>
+      )}
     </Fragment>
   );
+}
+
+function AccordionSe(): JSX.Element | null {
+  return (
+    <AccordionTemplate
+      icon={<CircleFlag countryCode="se" height="35" />}
+      title="Swedish personal ID number"
+      additionalInfo="Freja eID"
+      content={
+        <ol className="listed-steps">
+          <li>
+            <h4>
+              <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+            </h4>
+            <AddNin />
+          </li>
+          <li>
+            <h4>
+              <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
+            </h4>
+            <p className="x-adjust">
+              <FormattedMessage
+                description="verify-identity.connect-nin_description"
+                defaultMessage={`Choose a method to verify that you have access to the added id number.
+          If you are unable to use a method you need to try another.`}
+              />
+            </p>
+          </li>
+        </ol>
+      }
+    />
+  );
+}
+
+function AccordionEu(): JSX.Element | null {
+  return (
+    <AccordionTemplate
+      icon={<CircleFlag countryCode="european_union" height="35" />}
+      title="EU citizen"
+      additionalInfo="eIDAS"
+      content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!`}
+    />
+  );
+}
+
+function AccordionWorld(): JSX.Element | null {
+  return (
+    <AccordionTemplate
+      icon={<CircleFlag countryCode="placeholder" height="35" />}
+      title="All other countries"
+      additionalInfo="Svipe ID"
+      content={`Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+  quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+  dolor ut sequi minus iste? Quas?`}
+    />
+  );
+}
+
+function NoIconExample(): JSX.Element | null {
+  return <AccordionTemplate icon="" title="No icon Example" additionalInfo="Additional Info" content="Great content" />;
+}
+
+function OnlyTitleExample(): JSX.Element | null {
+  return <AccordionTemplate icon="" title="Only title example" additionalInfo="" content="Other great content" />;
 }
 
 export default VerifyIdentity;
