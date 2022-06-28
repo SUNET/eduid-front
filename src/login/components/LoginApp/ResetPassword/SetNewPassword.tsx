@@ -17,6 +17,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FormattedMessage } from "react-intl";
 import Splash from "components/Splash";
 
+const newPasswordFormId = "new-password-form";
+
 interface NewPasswordFormData {
   newPassword?: string;
 }
@@ -47,12 +49,12 @@ const validateNewPassword = (values: valueProps, props: NewPasswordFormProps) =>
 };
 
 const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
-  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues("new-password-form")(state));
+  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues(newPasswordFormId)(state));
   const history = useHistory();
   return (
     <Form
       autoComplete="on"
-      id="new-password-form"
+      id={newPasswordFormId}
       role="form"
       aria-label="new-password form"
       onSubmit={props.clickSetNewPassword}
@@ -72,6 +74,7 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
         required={true}
         label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
         placeholder="xxxx xxxx xxxx"
+        autoFocus={true}
       />
 
       <div className="new-password-button-container">
@@ -95,7 +98,7 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
 };
 
 const SetNewPasswordForm = reduxForm<NewPasswordFormData, NewPasswordFormProps>({
-  form: "new-password-form",
+  form: newPasswordFormId,
   validate: validateNewPassword,
 })(NewPasswordForm);
 
@@ -116,6 +119,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
+  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues(newPasswordFormId)(state));
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -147,8 +151,10 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
 
   const clickSetNewPassword = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    const target = e.target as HTMLFormElement;
-    const newPassword = target && target["new-password"].value;
+    const newPassword = formValues["new-password"];
+    if (!newPassword) {
+      return;
+    }
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
       dispatch(resetPasswordSlice.actions.setNewPassword());
@@ -174,7 +180,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
         />
       </p>
       <div className="reset-password-input">
-        <label>
+        <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
         </label>
         <input

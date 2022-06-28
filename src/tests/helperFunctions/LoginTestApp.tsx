@@ -18,7 +18,7 @@ export const loginTestState: LoginRootState = {
     next_url: "http://localhost/next",
     mfa_auth_idp: "https://swedenconnect.idp/",
     eidas_url: "http://eidas.docker",
-    reset_password_url: "/reset-password-url",
+    reset_password_url: "/reset-password-url/",
     csrf_token: "csrf-token",
     base_url: "/",
     // default to being in 'configured' state, since only the test of

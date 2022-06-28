@@ -17,6 +17,7 @@ import {
   requestMakePrimaryEmail,
 } from "apis/eduidEmail";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
+import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 
 interface EmailFormData {
   email?: string;
@@ -30,9 +31,9 @@ function Emails() {
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
-  const emailPlaceholder = intl.formatMessage({
+  const placeholder = intl.formatMessage({
     id: "placeholder.email",
-    defaultMessage: "name@example.com",
+    defaultMessage: emailPlaceHolder,
     description: "placeholder text for email input",
   });
 
@@ -118,7 +119,7 @@ function Emails() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be 
+            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be
             your primary email address.`}
             description="Add emails description"
           />
@@ -148,7 +149,7 @@ function Emails() {
                     componentClass="input"
                     type="text"
                     name="email"
-                    placeholder={emailPlaceholder}
+                    placeholder={placeholder}
                     validate={validateEmailsInForm}
                     autoFocus
                   />

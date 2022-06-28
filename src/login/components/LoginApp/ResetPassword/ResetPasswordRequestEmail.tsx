@@ -1,7 +1,7 @@
+import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
-import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
@@ -19,7 +19,6 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_sent = useAppSelector((state) => state.resetPassword.email_sent); // Has an e-mail been sent?
-  const email_throttle_seconds = useAppSelector((state) => state.resetPassword.email_throttle_seconds);
 
   const loginRef = useAppSelector((state) => state.login.ref);
 
@@ -38,8 +37,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     }
   }
 
-  const seconds = email_throttle_seconds || 0;
-  return <EmailLinkSent expires_in={seconds} expires_max={300} />;
+  return <EmailLinkSent />;
 }
 
 function ResetPasswordBeginEmail(): JSX.Element {
@@ -48,9 +46,7 @@ function ResetPasswordBeginEmail(): JSX.Element {
 
   function sendEmailOnClick() {
     if (email_address) {
-      dispatch(resetPasswordSlice.actions.requestEmailLink(email_address));
-      // TODO: update backend to provide timeout in response
-      dispatch(resetPasswordSlice.actions.saveEmailThrottledSeconds(5 * 60));
+      dispatch(requestEmailLink({ email: email_address }));
     }
   }
 

@@ -13,41 +13,51 @@ export interface EmailFormData {
   email?: string;
 }
 
-// *****************************************************************
-// * TODO: Can this be shared with a new username-only login form? *
-// *****************************************************************
+// **************************************************************************************
+// * TODO: Can this be shared with a new username-only login form, and the Signup form? *
+// **************************************************************************************
 function EmailForm(props: EmailFormProps): JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
 
   const submitEmailForm = (values: EmailFormData) => {
-    const email = values.email;
-    if (email) {
-      props.passEmailUp(email);
+    const errors: EmailFormData = {};
+
+    if (values.email) {
+      props.passEmailUp(values.email);
+    } else {
+      errors.email = "required";
     }
+
+    return errors;
   };
 
   return (
     <FinalForm<EmailFormData>
-      id="reset-password-form"
-      role="form"
       onSubmit={submitEmailForm}
       render={(formProps) => {
-        return (
-          <fieldset>
-            <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+        const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
+        const _disabled = Boolean(
+          formProps.hasValidationErrors || _submitError || formProps.pristine || request_in_progress
+        );
 
-            <div className="button-pair">
-              <EduIDButton
-                buttonstyle="primary"
-                id="reset-password-button"
-                disabled={formProps.invalid || request_in_progress}
-                onClick={formProps.handleSubmit}
-              >
-                <FormattedMessage defaultMessage="send link to email" description="Reset Password button" />
-              </EduIDButton>
-              <GoBackButton />
-            </div>
-          </fieldset>
+        return (
+          <form id="reset-password-form" onSubmit={formProps.handleSubmit}>
+            <fieldset>
+              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+
+              <div className="button-pair">
+                <EduIDButton
+                  buttonstyle="primary"
+                  id="reset-password-button"
+                  disabled={_disabled}
+                  onClick={formProps.handleSubmit}
+                >
+                  <FormattedMessage defaultMessage="send email" description="Reset Password button" />
+                </EduIDButton>
+                <GoBackButton />
+              </div>
+            </fieldset>
+          </form>
         );
       }}
     />
