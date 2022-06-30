@@ -1,14 +1,16 @@
 import React from "react";
-import { LoginNextResponse } from "apis/eduidLogin";
-import { initialState as initialAppState } from "login/components/App/App_reducer";
+import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { LoginMain } from "login/components/LoginMain";
-import { initialState as configInitialState } from "reducers/LoginConfig";
-import { loginTestHistory, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 import { mswServer, rest } from "setupTests";
+import { loginTestHistory, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("show splash screen when not configured", () => {
   loginTestHistory.push("/login/abc123");
-  render(<LoginMain />);
+  render(<LoginMain />, {
+    state: {
+      app: { ...loginTestState.app, is_loaded: false },
+    },
+  });
 
   const button = screen.getByRole("button", { name: "Register" });
   expect(button).toBeEnabled();
@@ -18,8 +20,15 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders FINISHED as expected", async () => {
+  const ref = "abc987";
+
   mswServer.use(
     rest.post("/next", (req, res, ctx) => {
+      const body = req.body as LoginNextRequest;
+      if (body.ref != ref) {
+        return res(ctx.status(400));
+      }
+
       const payload: LoginNextResponse = {
         action: "FINISHED",
         target: "/foo",
@@ -29,13 +38,8 @@ test("renders FINISHED as expected", async () => {
     })
   );
 
-  loginTestHistory.push("/login/abc123");
-  render(<LoginMain />, {
-    state: {
-      config: { ...configInitialState, base_url: "/" },
-      app: { ...initialAppState, is_loaded: true },
-    },
-  });
+  loginTestHistory.push(`/login/${ref}`);
+  render(<LoginMain />);
 
   await waitFor(() => screen.getByRole("heading"));
 

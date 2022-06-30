@@ -34,7 +34,7 @@ sagaMiddleware.run(rootSaga);
 
 // The same thing again, for use in tests
 export function getTestLoginStore(preloadedState: Partial<LoginRootState>) {
-  return configureStore({
+  const testStore = configureStore({
     reducer: {
       config: configSlice.reducer,
       app: appReducer,
@@ -49,6 +49,8 @@ export function getTestLoginStore(preloadedState: Partial<LoginRootState>) {
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,
   });
+  sagaMiddleware.run(rootSaga);
+  return testStore;
 }
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

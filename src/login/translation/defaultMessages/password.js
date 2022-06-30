@@ -101,13 +101,6 @@ export const changePassword = {
 };
 
 export const resetPassword = {
-  "resetpw.heading-add-email": (
-    <FormattedMessage
-      id="resetpw.heading-add-email"
-      defaultMessage={`Enter your email address registered to your account`}
-    />
-  ),
-  "resetpw.send-link": <FormattedMessage id="resetpw.send-link" defaultMessage={`send link to email`} />,
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"

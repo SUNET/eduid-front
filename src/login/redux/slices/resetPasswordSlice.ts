@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { securityKeyPattern } from "login/app_utils/validation/regexPatterns";
+import { requestEmailLink, RequestEmailLinkResponse } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 
@@ -21,18 +21,15 @@ interface ResetPasswordState {
   suggested_password?: string;
   extra_security?: ExtraSecurityType;
   goto_url?: string;
+  email_response?: RequestEmailLinkResponse;
+  email_sent: boolean; // true if the user has requested an e-mail
+  // email_throttle_seconds?: number; // used to transport remaining throttle time to local state in main component
 }
 
 // Define the initial state using that type
-const initialState: ResetPasswordState = {
-  email_address: undefined,
-  email_code: undefined,
+export const initialState: ResetPasswordState = {
   phone: { index: undefined, number: undefined, phone_code: undefined },
-  webauthn_assertion: undefined,
-  selected_option: undefined,
-  new_password: undefined,
-  suggested_password: undefined,
-  extra_security: undefined,
+  email_sent: false,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -43,11 +40,7 @@ export const resetPasswordSlice = createSlice({
     savePhoneCode: (state, action: PayloadAction<string>) => {
       state.phone.phone_code = action.payload;
     },
-    // Action connected to postResetPasswordSaga. Will post email_address to the state.config.reset_password_url/ endpoint.
-    requestEmailLink: (state, action) => {
-      state.email_address = action.payload;
-    },
-    saveLinkCode: (state, action) => {
+    saveLinkCode: (state, action: PayloadAction<string>) => {
       state.email_code = action.payload;
     },
     // Depending on selectedOption, this will call correct action of new password.
@@ -94,10 +87,25 @@ export const resetPasswordSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(performAuthentication.fulfilled, (state, action) => {
-      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
-      state.webauthn_assertion = action.payload;
-    });
+    builder
+      .addCase(performAuthentication.fulfilled, (state, action) => {
+        // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+        state.webauthn_assertion = action.payload;
+      })
+      .addCase(requestEmailLink.pending, (state) => {
+        state.email_sent = true;
+        // Make sure the ExpiresMeter props change when resending e-mails. Otherwise the timer doesn't
+        // start after the resend request arrives.
+        state.email_response = undefined;
+      })
+      .addCase(requestEmailLink.fulfilled, (state, action) => {
+        if (!action.payload.throttled_seconds || !action.payload.throttled_max) {
+          // remove once new backend that always sends this is deployed to production
+          state.email_response = { throttled_seconds: 300, throttled_max: 300, email: "", email_code_timeout: 7200 };
+          return;
+        }
+        state.email_response = action.payload;
+      });
   },
 });
 

@@ -216,7 +216,7 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
-interface LoginNextRequest {
+export interface LoginNextRequest {
   ref: string;
   this_device?: string;
   remember_me: boolean;
