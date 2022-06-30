@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import { Button } from "reactstrap";
 
 interface BackToLoginButtonProps {
+  secondary?: boolean; // use styling "primary" instead of the default, "secondary"
   primary?: boolean; // use styling "primary" instead of the default, "secondary"
   onClickHandler?(): void; // optional callback for when the button is clicked
 }
@@ -29,8 +30,8 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     }
   }
 
-  let color = "secondary";
-  let className = "secondary";
+  let color = "";
+  let className = "btn-link lowercase";
 
   if (props.primary) {
     color = "primary";
@@ -39,9 +40,9 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
 
   return (
     <Button className={className} id="go-back-button" onClick={onClick} color={color}>
-      <FontAwesomeIcon icon={faArrowLeft} />
-      &nbsp;
-      <FormattedMessage defaultMessage="Go back" description="Account recovery Go back button" />
+      {/* <FontAwesomeIcon icon={faArrowLeft} /> 
+      &nbsp;*/}
+      <FormattedMessage defaultMessage="Back to login" description="Account recovery Go back button" />
     </Button>
   );
 }

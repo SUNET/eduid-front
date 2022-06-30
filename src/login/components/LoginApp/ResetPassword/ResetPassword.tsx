@@ -27,7 +27,9 @@ function ResetPassword(): JSX.Element {
       <h1>
         <FormattedMessage defaultMessage="Reset password" description="Reset Password heading" />
       </h1>
-      <div className="lead"></div>
+      {/* <div className="lead">
+        <p>You have requested a new password.</p>
+      </div> */}
       <div id="reset-pass-display">
         <Switch>
           <Route path="/reset-password/extra-security" component={ExtraSecurity} />

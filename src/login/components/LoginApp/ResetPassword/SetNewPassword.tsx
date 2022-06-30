@@ -169,9 +169,9 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
 
   return (
     <Splash showChildren={!!password}>
-      <p className="heading">
+      <h1>
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
-      </p>
+      </h1>
       <p>
         <FormattedMessage
           defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the
