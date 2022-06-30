@@ -53,6 +53,11 @@ export function EmailLinkSent(): JSX.Element | null {
           defaultMessage="The link in the e-mail is valid for two hours."
           description="Reset Password email link sent"
         />
+        &nbsp;
+        <FormattedMessage
+          defaultMessage="If you didn’t receive the email, check your junk email, or resend the email."
+          description="Reset Password email link sent"
+        />
       </p>
 
       <div className="buttons">
