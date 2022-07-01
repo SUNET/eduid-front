@@ -1,5 +1,6 @@
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
@@ -7,15 +8,10 @@ import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import loginSlice from "login/redux/slices/loginSlice";
-import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps, useField, useForm } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
-import { emailPattern } from "../../../app_utils/validation/regexPatterns";
-import { Link } from "react-router-dom";
-import { setLocalStorage } from "../ResetPassword/CountDownTimer";
-import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
+import { Link, useHistory } from "react-router-dom";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
@@ -138,7 +134,7 @@ function RenderRegisterLink(): JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_url);
   return (
     <div className="text-small">
-      <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
+      <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
       &nbsp;&nbsp;
       <a href={toSignup} id="register-link">
         <FormattedMessage defaultMessage="Register" description="Login front page" />
@@ -148,7 +144,6 @@ function RenderRegisterLink(): JSX.Element {
 }
 
 function RenderResetPasswordLink(): JSX.Element {
-  const loginRef = useAppSelector((state) => state.login.ref);
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -157,16 +152,10 @@ function RenderResetPasswordLink(): JSX.Element {
   const sendLink = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const input = document.querySelector("input[name='email']") as any;
-    if (input) {
-      if (emailField.input.value && emailField.meta.valid) {
-        dispatch(resetPasswordSlice.actions.requestEmailLink(emailField.input.value));
-        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, emailField.input.value);
-        history.push("/reset-password/");
-        return;
-      }
+    if (emailField.input.value && emailField.meta.valid) {
+      dispatch(requestEmailLink({ email: emailField.input.value }));
     }
-    history.push(`/reset-password/email/${loginRef}`);
+    history.push("/reset-password/");
   };
 
   return (

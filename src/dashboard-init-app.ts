@@ -26,12 +26,14 @@ sagaMiddleware.run(rootSaga);
 
 // The same thing again, for use in tests
 export function getTestDashboardStore(preloadedState: Partial<DashboardRootState>) {
-  return configureStore({
+  const testStore = configureStore({
     reducer: eduIDApp,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,
   });
+  sagaMiddleware.run(rootSaga);
+  return testStore;
 }
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

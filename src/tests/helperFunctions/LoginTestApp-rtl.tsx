@@ -4,24 +4,13 @@ import React from "react";
 import { Router } from "react-router";
 import { getTestLoginStore, LoginRootState } from "login-init-app";
 import { loginTestHistory, loginTestState } from "./LoginTestApp";
-import { initialState as configInitialState } from "reducers/LoginConfig";
 
 interface renderArgs {
   state?: Partial<LoginRootState>;
   options?: RenderOptions;
 }
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const defaultState = {
-    config: {
-      ...configInitialState,
-      // default to being in 'configured' state, since only the test of
-      // the splash screen is ever interested in the opposite
-      is_configured: true,
-      debug: true,
-    },
-  };
-
-  const store = getTestLoginStore(args.state || defaultState);
+  const store = getTestLoginStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>

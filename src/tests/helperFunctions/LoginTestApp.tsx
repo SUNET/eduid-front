@@ -6,6 +6,7 @@ import { initialState as loginInitialState } from "login/redux/slices/loginSlice
 import React from "react";
 import { Router } from "react-router";
 import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 
@@ -15,30 +16,23 @@ export const loginTestState: LoginRootState = {
   config: {
     ...configInitialState,
     next_url: "http://localhost/next",
-    mfa_auth_idp: "https//swedenconnect.idp/",
+    mfa_auth_idp: "https://swedenconnect.idp/",
     eidas_url: "http://eidas.docker",
+    reset_password_url: "/reset-password-url/",
     csrf_token: "csrf-token",
+    base_url: "/",
+    // default to being in 'configured' state, since only the test of
+    // the splash screen is ever interested in the opposite
+    is_configured: true,
+    debug: true,
   },
-  login: {
-    ...loginInitialState,
-    ref: "e0367c25-3853-45a9-806",
-    tou: { available_versions: ["1999-v1"] },
-  },
+  login: loginInitialState,
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: undefined as any,
   router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
-  resetPassword: undefined as any,
-
-  // config: {
-  //   ...configInitialState,
-  //   is_configured: true,
-  // },
-  // login: loginInitialState,
-  // form: undefined as any,
-  // intl: { locale: "en", messages: {} },
-  // notifications: {},
+  resetPassword: resetPasswordInitialState,
 };
 
 export type LoginStoreType = typeof loginStore;

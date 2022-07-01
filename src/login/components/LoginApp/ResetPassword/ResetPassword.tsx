@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { Route, Redirect, Switch, useHistory, useParams } from "react-router-dom";
-import ResetPasswordMain from "./ResetPasswordMain";
-import EmailLinkSent from "./EmailLinkSent";
-import ExtraSecurity from "./ExtraSecurity";
-import PhoneCodeSent from "./PhoneCodeSent";
-import SetNewPassword from "./SetNewPassword";
-import ResetPasswordSuccess from "./ResetPasswordSuccess";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
+import React, { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
+import { Route, Switch, useHistory, useParams } from "react-router-dom";
+import ExtraSecurity from "./ExtraSecurity";
+import PhoneCodeSent from "./PhoneCodeSent";
+import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
+import ResetPasswordSuccess from "./ResetPasswordSuccess";
+import SetNewPassword from "./SetNewPassword";
 
 function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -23,16 +23,23 @@ function ResetPassword(): JSX.Element {
   }, [goto_url]);
 
   return (
-    <Switch>
-      <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
-      <Route path={`/reset-password/email`} component={ResetPasswordMain} />
-      <Route path={`/reset-password/email-code/:emailCode`} component={EmailCode} />
-      <Route exact path="/reset-password/email-link-sent" component={EmailLinkSent} />
-      <Route path="/reset-password/extra-security" component={ExtraSecurity} />
-      <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
-      <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
-      <Route path="/reset-password/set-new-password" component={SetNewPassword} />
-    </Switch>
+    <React.Fragment>
+      <h1>
+        <FormattedMessage defaultMessage="Reset password" description="Reset Password heading" />
+      </h1>
+      <div className="lead"></div>
+      <div id="reset-pass-display">
+        <Switch>
+          <Route path="/reset-password/extra-security" component={ExtraSecurity} />
+          <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
+          <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
+          <Route path="/reset-password/set-new-password" component={SetNewPassword} />
+          <Route path="/reset-password/email-code/:emailCode" component={EmailCode} />
+          <Route path="/reset-password/:ref" component={ResetPasswordRequestEmail} />
+          <Route path="/reset-password/" component={ResetPasswordRequestEmail} />
+        </Switch>
+      </div>
+    </React.Fragment>
   );
 }
 
