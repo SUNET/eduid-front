@@ -1,22 +1,29 @@
 import React from "react";
 import {
-  Accordion,
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
+  AccordionItemState,
   AccordionItemPanel,
 } from "react-accessible-accordion";
 
 const AccordionTemplate = ({ icon, title, additionalInfo, content }) => {
   return (
-    <Accordion>
-      <AccordionItem>
-        <AccordionItemHeading>
-          <AccordionItemButton>{title}</AccordionItemButton>
-        </AccordionItemHeading>
-        <AccordionItemPanel>{content}</AccordionItemPanel>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem>
+      <AccordionItemHeading>
+        <AccordionItemButton>
+          <span className="accordion-icon">{icon}</span>
+          <span>
+            <h6 className="accordion-title">{title}</h6>
+            <span className="accordion-description">{additionalInfo}</span>
+          </span>
+          <div className="accordion-toggle">
+            <AccordionItemState>{({ expanded }) => (expanded ? "❮" : "❯")}</AccordionItemState>
+          </div>
+        </AccordionItemButton>
+      </AccordionItemHeading>
+      <AccordionItemPanel>{content}</AccordionItemPanel>
+    </AccordionItem>
   );
 };
 // const Accordion = ({ icon, title, additionalInfo, content }) => {

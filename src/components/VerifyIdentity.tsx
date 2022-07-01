@@ -9,6 +9,7 @@ import AddNin from "./AddNin";
 import { FormattedMessage } from "react-intl";
 import AccordionTemplate from "./Accordion";
 import { CircleFlag } from "react-circle-flags";
+import { Accordion } from "react-accessible-accordion";
 
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
@@ -68,11 +69,13 @@ function VerifyIdentity(): JSX.Element | null {
 
       {!hasVerifiedNin ? (
         <Fragment>
-          <AccordionSe />
-          <AccordionEu />
-          <AccordionWorld />
-          <NoIconExample />
-          <OnlyTitleExample />
+          <Accordion allowMultipleExpanded allowZeroExpanded>
+            <AccordionSe />
+            <AccordionEu />
+            <AccordionWorld />
+            <NoIconExample />
+            <OnlyTitleExample />
+          </Accordion>
 
           {/* Move vetting into individual accordion functions? */}
           {vettingButtons}
@@ -123,7 +126,7 @@ function AccordionSe(): JSX.Element | null {
     <AccordionTemplate
       icon={<CircleFlag countryCode="se" height="35" />}
       title="Swedish personal ID number"
-      additionalInfo="Freja eID"
+      additionalInfo=""
       content={
         <ol className="listed-steps">
           <li>
