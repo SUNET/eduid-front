@@ -7,7 +7,7 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import AddNin from "./AddNin";
 import { FormattedMessage } from "react-intl";
-import AccordionTemplate from "./Accordion";
+import AccordionItemTemplate from "./AccordionItemTemplate";
 import { CircleFlag } from "react-circle-flags";
 import { Accordion } from "react-accessible-accordion";
 
@@ -70,11 +70,11 @@ function VerifyIdentity(): JSX.Element | null {
       {!hasVerifiedNin ? (
         <Fragment>
           <Accordion allowMultipleExpanded allowZeroExpanded>
-            <AccordionSe />
-            <AccordionEu />
-            <AccordionWorld />
-            <NoIconExample />
-            <OnlyTitleExample />
+            <AccordionItemSe />
+            <AccordionItemEu />
+            <AccordionItemWorld />
+            <AccordionItemNoIcon />
+            <AccordionItemOnlyTitle />
           </Accordion>
 
           {/* Move vetting into individual accordion functions? */}
@@ -121,9 +121,9 @@ function VerifyIdentity(): JSX.Element | null {
   );
 }
 
-function AccordionSe(): JSX.Element | null {
+function AccordionItemSe(): JSX.Element | null {
   return (
-    <AccordionTemplate
+    <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" />}
       title="Swedish personal ID number"
       additionalInfo=""
@@ -153,9 +153,9 @@ function AccordionSe(): JSX.Element | null {
   );
 }
 
-function AccordionEu(): JSX.Element | null {
+function AccordionItemEu(): JSX.Element | null {
   return (
-    <AccordionTemplate
+    <AccordionItemTemplate
       icon={<CircleFlag countryCode="european_union" height="35" />}
       title="EU citizen"
       additionalInfo="eIDAS"
@@ -164,9 +164,9 @@ function AccordionEu(): JSX.Element | null {
   );
 }
 
-function AccordionWorld(): JSX.Element | null {
+function AccordionItemWorld(): JSX.Element | null {
   return (
-    <AccordionTemplate
+    <AccordionItemTemplate
       icon={<CircleFlag countryCode="placeholder" height="35" />}
       title="All other countries"
       additionalInfo="Svipe ID"
@@ -177,12 +177,14 @@ function AccordionWorld(): JSX.Element | null {
   );
 }
 
-function NoIconExample(): JSX.Element | null {
-  return <AccordionTemplate icon="" title="No icon Example" additionalInfo="Additional Info" content="Great content" />;
+function AccordionItemNoIcon(): JSX.Element | null {
+  return (
+    <AccordionItemTemplate icon="" title="No icon Example" additionalInfo="Additional Info" content="Great content" />
+  );
 }
 
-function OnlyTitleExample(): JSX.Element | null {
-  return <AccordionTemplate icon="" title="Only title example" additionalInfo="" content="Other great content" />;
+function AccordionItemOnlyTitle(): JSX.Element | null {
+  return <AccordionItemTemplate icon="" title="Only title example" additionalInfo="" content="Other great content" />;
 }
 
 export default VerifyIdentity;

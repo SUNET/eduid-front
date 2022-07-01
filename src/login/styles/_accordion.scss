@@ -20,13 +20,31 @@
     font-family: $akkurat;
     transition: all 0.2s ease-in;
 
-    & &:not(.disabled):hover {
-      background: $orange-highlight;
-      color: $white;
-
+    &:hover {
+      &:not(.expanded) {
+        background: $orange-highlight;
+        color: $white;
+      }
       .accordion-title {
         text-decoration: underline;
       }
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      color: $gray;
+      background: $dark-gray;
+      cursor: not-allowed;
+
+      .accordion-title {
+        text-decoration: none;
+      }
+      .accordion-icon img {
+        filter: grayscale(1);
+      }
+    }
+    &.expanded {
+      background: $orange-opaque;
     }
   }
 
