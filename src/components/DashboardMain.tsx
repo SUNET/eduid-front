@@ -35,19 +35,15 @@ export function DashboardMain() {
               <Route exact path="/profile/" component={Profile} />
               <Route path="/profile/verify-identity/" component={VerifyIdentity} />
               <Route path="/profile/chpass/" component={ChangePasswordContainer} />
-              {/* Redirects for old paths */}
-              <Route exact path="/profile/security/" component={() => <Redirect to="/profile/settings/" />} />
+              {/* Redirects for old paths. TODO: redirect in backend server instead */}
+              <Route exact path="/profile/security/" render={() => <Redirect to="/profile/settings/" />} />
               <Route
                 exact
                 path="/profile/accountlinking/"
-                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
+                render={() => <Redirect to="/profile/settings/advanced-settings/" />}
               />
-              <Route exact path="/profile/nins/" component={() => <Redirect to="/profile/verify-identity/" />} />
-              <Route
-                exact
-                path="/profile/emails/"
-                component={() => <Redirect to="/profile/settings/personaldata/" />}
-              />
+              <Route exact path="/profile/nins/" render={() => <Redirect to="/profile/verify-identity/" />} />
+              <Route exact path="/profile/emails/" render={() => <Redirect to="/profile/settings/personaldata/" />} />
             </div>
           </div>
         </Splash>

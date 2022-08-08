@@ -23,7 +23,7 @@ export function SignupMain(): JSX.Element {
         <NotificationsContainer />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
-            <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={`${SIGNUP_BASE_PATH}/email`} />} />
+            <Route exact path={`${SIGNUP_BASE_PATH}`} render={() => <Redirect to={`${SIGNUP_BASE_PATH}/email`} />} />
             <Route path={`${SIGNUP_BASE_PATH}/email`} component={RegisterEmail} />
             <Route path={`${SIGNUP_BASE_PATH}/code/:code`} component={CodeVerified} />
           </div>
