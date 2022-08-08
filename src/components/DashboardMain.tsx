@@ -7,7 +7,7 @@ import Footer from "../login/components/Footer/Footer";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DashboardNav from "./DashboardNav";
 import Profile from "./Profile";
-import SettingsComponent from "./Settings";
+import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
 
@@ -31,7 +31,7 @@ export function DashboardMain() {
           <div id="content" className="horizontal-content-margin content">
             <DashboardNav />
             <div id="text-content">
-              <Route path="/profile/settings/" component={SettingsComponent} />
+              <Route path="/profile/settings/" component={Settings} />
               <Route exact path="/profile/" component={Profile} />
               <Route path="/profile/verify-identity/" component={VerifyIdentity} />
               <Route path="/profile/chpass/" component={ChangePasswordContainer} />
