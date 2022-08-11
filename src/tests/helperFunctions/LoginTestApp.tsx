@@ -29,7 +29,6 @@ export const loginTestState: LoginRootState = {
   login: loginInitialState,
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: undefined as any,
-  router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
   resetPassword: resetPasswordInitialState,
