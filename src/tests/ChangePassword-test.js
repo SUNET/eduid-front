@@ -3,12 +3,12 @@ import { ChangePasswordContainer } from "components/ChangePassword";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import expect from "expect";
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import chpassSlice from "reducers/ChangePassword";
-import { fakeStore } from "./helperFunctions/DashboardTestApp";
-import { mswServer } from "setupTests";
 import { rest } from "msw";
+import { MemoryRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
+import chpassSlice from "reducers/ChangePassword";
+import { mswServer } from "setupTests";
+import { fakeStore } from "./helperFunctions/DashboardTestApp";
 
 describe("Reducers", () => {
   const mockState = {
@@ -162,9 +162,11 @@ describe("ChangePassword Container", () => {
 
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
-          <Router>
-            <ChangePasswordContainer />
-          </Router>
+          <MemoryRouter>
+            <CompatRouter>
+              <ChangePasswordContainer />
+            </CompatRouter>
+          </MemoryRouter>
         </ReduxIntlProvider>
       );
       return wrapper;

@@ -1,12 +1,13 @@
 import { DashboardMain } from "components/DashboardMain";
 import { activeClassName, dashboardHeading } from "components/DashboardNav";
-import React from "react";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
-import { dashboardTestHistory, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("shows splash screen when not configured", () => {
-  dashboardTestHistory.push("/profile");
-  render(<DashboardMain />, { state: { config: { ...configInitialState, is_app_loaded: false } } });
+  render(<DashboardMain />, {
+    state: { config: { ...configInitialState, is_app_loaded: false } },
+    routes: ["/profile"],
+  });
 
   expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
 
@@ -15,8 +16,10 @@ test("shows splash screen when not configured", () => {
 });
 
 test("renders Profile page as expected", () => {
-  dashboardTestHistory.push("/profile");
-  render(<DashboardMain />, { state: { config: { ...configInitialState, is_app_loaded: true } } });
+  render(<DashboardMain />, {
+    state: { config: { ...configInitialState, is_app_loaded: true } },
+    routes: ["/profile"],
+  });
 
   expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
 

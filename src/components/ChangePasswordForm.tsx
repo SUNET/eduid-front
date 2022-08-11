@@ -4,7 +4,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom-v5-compat";
 import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
@@ -29,7 +29,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
   const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const dispatch = useDashboardAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function togglePasswordType() {
     // Toggle between rendering the suggested password form, or the custom password form
@@ -43,7 +43,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     if (values.old && newPassword) {
       const response = await dispatch(changePassword({ old_password: values.old, new_password: newPassword }));
       if (changePassword.fulfilled.match(response)) {
-        history.push(props.finish_url);
+        navigate(props.finish_url);
       }
     }
   }
@@ -52,7 +52,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     // Callback from sub-component when the user clicks on the button to abort changing password
     event.preventDefault();
     // TODO: should clear passwords from form to avoid browser password manager asking user to save the password
-    history.push(props.finish_url);
+    navigate(props.finish_url);
   }
 
   const initialValues = { suggested };

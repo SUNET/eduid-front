@@ -6,9 +6,9 @@ import { loginStore } from "login-init-app";
 import { appLoaded } from "login/components/App/App_actions";
 import { LoginMain } from "login/components/LoginMain";
 import { setupLanguage } from "login/translation";
-import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
@@ -33,9 +33,11 @@ export const loginHistory = createBrowserHistory();
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={loginStore}>
-    <Router history={loginHistory}>
-      <LoginMain />
-    </Router>
+    <BrowserRouter>
+      <CompatRouter>
+        <LoginMain />
+      </CompatRouter>
+    </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

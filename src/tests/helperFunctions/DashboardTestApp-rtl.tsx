@@ -1,15 +1,19 @@
 import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
+import type { InitialEntry } from "history";
 import React from "react";
-import { Router } from "react-router";
-import { getTestDashboardStore, DashboardRootState } from "dashboard-init-app";
-import { dashboardTestHistory, dashboardTestState } from "./DashboardTestApp";
+import { MemoryRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { dashboardTestState } from "./DashboardTestApp";
 
 interface renderArgs {
   state?: Partial<DashboardRootState>;
   options?: RenderOptions;
+  routes?: InitialEntry[];
 }
+
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const defaultState = {
     config: {
@@ -25,7 +29,9 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <Router history={dashboardTestHistory}>{children}</Router>
+        <MemoryRouter initialEntries={args.routes}>
+          <CompatRouter>{children}</CompatRouter>
+        </MemoryRouter>
       </ReduxIntlProvider>
     );
   }
@@ -35,6 +41,6 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 // re-export everything
 export * from "@testing-library/react";
 // mirror some exports from old Enzyme testing helper
-export { dashboardTestState, dashboardTestHistory };
+export { dashboardTestState };
 // override render method
 export { render };

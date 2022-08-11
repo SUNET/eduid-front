@@ -13,7 +13,7 @@ export function LoginMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.app.is_loaded);
 
   return (
-    <React.Fragment>
+    <React.StrictMode>
       <Header showRegister={true} />
       <section id="panel" className="panel">
         <Notifications />
@@ -24,6 +24,6 @@ export function LoginMain(): JSX.Element {
         </ErrorBoundaryContainer>
       </section>
       <Footer />
-    </React.Fragment>
+    </React.StrictMode>
   );
 }

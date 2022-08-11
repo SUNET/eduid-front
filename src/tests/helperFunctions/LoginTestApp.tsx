@@ -1,16 +1,13 @@
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount, ReactWrapper } from "enzyme";
-import { createMemoryHistory } from "history";
+import type { InitialEntry } from "history";
 import { LoginRootState, loginStore } from "login-init-app";
 import { initialState as loginInitialState } from "login/redux/slices/loginSlice";
-import React from "react";
-import { Router } from "react-router";
-import { initialState as configInitialState } from "reducers/LoginConfig";
 import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
+import { MemoryRouter } from "react-router-dom";
+import { initialState as configInitialState } from "reducers/LoginConfig";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
-
-export const loginTestHistory = createMemoryHistory();
 
 export const loginTestState: LoginRootState = {
   config: {
@@ -65,15 +62,16 @@ interface setupComponentArgs {
   component: JSX.Element;
   store?: LoginStoreType;
   overrides?: Partial<LoginRootState>;
+  routes?: InitialEntry[];
 }
 
-export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
+export function setupComponent({ component, store, overrides, routes }: setupComponentArgs): ReactWrapper {
   if (store === undefined) {
     store = fakeStore({ overrides });
   }
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
-      <Router history={loginTestHistory}>{component}</Router>
+      <MemoryRouter initialEntries={routes}>{component}</MemoryRouter>
     </ReduxIntlProvider>
   );
   return wrapper;

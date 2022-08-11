@@ -1,15 +1,19 @@
 import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import type { InitialEntry } from "history";
 import React from "react";
-import { Router } from "react-router";
+import { MemoryRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
 import { initialState as configInitialState } from "reducers/LoginConfig";
 import { getTestSignupStore, SignupRootState } from "signup-init-app";
-import { signupTestHistory, signupTestState } from "./SignupTestApp";
+import { signupTestState } from "./SignupTestApp";
 
 interface renderArgs {
   state?: Partial<SignupRootState>;
   options?: RenderOptions;
+  routes?: InitialEntry[];
 }
+
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const defaultState = {
     config: {
@@ -24,7 +28,9 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <Router history={signupTestHistory}>{children}</Router>
+        <MemoryRouter initialEntries={args.routes}>
+          <CompatRouter>{children}</CompatRouter>
+        </MemoryRouter>
       </ReduxIntlProvider>
     );
   }
@@ -34,6 +40,6 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 // re-export everything
 export * from "@testing-library/react";
 // mirror some exports from old Enzyme testing helper
-export { signupTestState, signupTestHistory };
+export { signupTestState };
 // override render method
 export { render };

@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import { CompatRoute as Route } from "react-router-dom-v5-compat";
 import Login from "./Login/Login";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import ResetPassword from "./ResetPassword/ResetPassword";

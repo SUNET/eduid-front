@@ -4,9 +4,9 @@ import SignupMain from "components/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
 import { createBrowserHistory } from "history";
 import { setupLanguage } from "login/translation";
-import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
 import { signupStore } from "signup-init-app";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
@@ -28,9 +28,11 @@ export const history = createBrowserHistory();
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={signupStore}>
-    <Router history={history}>
-      <SignupMain />
-    </Router>
+    <BrowserRouter>
+      <CompatRouter>
+        <SignupMain />
+      </CompatRouter>
+    </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

@@ -7,7 +7,7 @@ import {
 } from "apis/eduidResetPassword";
 import { LoginMain } from "login/components/LoginMain";
 import { mswServer, rest } from "setupTests";
-import { fireEvent, loginTestHistory, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("can follow the link sent in an email", async () => {
   const email = "test@example.org";
@@ -41,8 +41,7 @@ test("can follow the link sent in an email", async () => {
 
   mswServer.printHandlers();
 
-  loginTestHistory.push(`/reset-password/email-code/${code}`);
-  render(<LoginMain />);
+  render(<LoginMain />, { routes: [`/reset-password/email-code/${code}`] });
 
   // Wait for the new password screen to be displayed
   await waitFor(() => {

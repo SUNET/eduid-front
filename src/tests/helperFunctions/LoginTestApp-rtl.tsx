@@ -1,20 +1,26 @@
 import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import React from "react";
-import { Router } from "react-router";
+import type { InitialEntry } from "history";
 import { getTestLoginStore, LoginRootState } from "login-init-app";
-import { loginTestHistory, loginTestState } from "./LoginTestApp";
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
+import { CompatRouter } from "react-router-dom-v5-compat";
+import { loginTestState } from "./LoginTestApp";
 
 interface renderArgs {
   state?: Partial<LoginRootState>;
   options?: RenderOptions;
+  routes?: InitialEntry[];
 }
+
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const store = getTestLoginStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <Router history={loginTestHistory}>{children}</Router>
+        <MemoryRouter initialEntries={args.routes}>
+          <CompatRouter>{children}</CompatRouter>
+        </MemoryRouter>
       </ReduxIntlProvider>
     );
   }
@@ -24,6 +30,6 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 // re-export everything
 export * from "@testing-library/react";
 // mirror some exports from old Enzyme testing helper
-export { loginTestState, loginTestHistory };
+export { loginTestState };
 // override render method
 export { render };

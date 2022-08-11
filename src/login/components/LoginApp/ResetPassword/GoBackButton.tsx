@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "login/app_init/hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom-v5-compat";
 import { Button } from "reactstrap";
 
 interface BackToLoginButtonProps {
@@ -12,7 +12,7 @@ interface BackToLoginButtonProps {
 }
 
 export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null {
-  const history = useHistory();
+  const navigate = useNavigate();
   const loginRef = useAppSelector((state) => state.login.ref);
 
   if (!props.onClickHandler && !loginRef) {
@@ -25,7 +25,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     if (props.onClickHandler) {
       props.onClickHandler();
     } else {
-      history.push(`/login/${loginRef}`);
+      navigate(`/login/${loginRef}`);
     }
   }
 

@@ -1,8 +1,6 @@
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper } from "enzyme";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import React from "react";
-import { MemoryRouter } from "react-router";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -20,21 +18,13 @@ describe("LookupMobile component", () => {
   function getWrapper(overrides?: Partial<DashboardRootState>): ReactWrapper {
     if (!overrides) {
       return setupComponent({
-        component: (
-          <MemoryRouter>
-            <LookupMobileProofing disabled={false} />
-          </MemoryRouter>
-        ),
+        component: <LookupMobileProofing disabled={false} />,
         store,
         overrides,
       });
     }
     return setupComponent({
-      component: (
-        <MemoryRouter>
-          <LookupMobileProofing disabled={false} />
-        </MemoryRouter>
-      ),
+      component: <LookupMobileProofing disabled={false} />,
       overrides,
     });
   }

@@ -2,7 +2,8 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Route, Switch, useHistory, useParams } from "react-router-dom";
+import { Switch, useParams } from "react-router-dom";
+import { CompatRoute as Route, useNavigate } from "react-router-dom-v5-compat";
 import ExtraSecurity from "./ExtraSecurity";
 import PhoneCodeSent from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
@@ -12,13 +13,13 @@ import SetNewPassword from "./SetNewPassword";
 function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
   const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (goto_url) {
       // a saga is requesting us to send the user off to some URL
       dispatch(resetPasswordSlice.actions.setGotoUrl(undefined));
-      history.push(goto_url);
+      navigate(goto_url);
     }
   }, [goto_url]);
 

@@ -1,21 +1,20 @@
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount, ReactWrapper } from "enzyme";
-import React from "react";
+import type { InitialEntry } from "history";
+import { MemoryRouter } from "react-router-dom";
+import { initialState as signupInitialState } from "reducers/Signup";
+import { initialState as configInitialState } from "reducers/SignupConfig";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 import { SignupRootState, signupStore } from "signup-init-app";
-import { initialState as signupInitialState } from "reducers/Signup";
-import { initialState as configInitialState } from "reducers/SignupConfig";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router";
-
-export const signupTestHistory = createMemoryHistory();
 
 export const signupTestState: SignupRootState = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",
     reset_password_link: "http://dummy.example.com/reset-password",
+    // default to being in 'configured' state, since only the test of
+    // the splash screen is ever interested in the opposite
     is_configured: true,
     debug: true,
   },
@@ -56,15 +55,16 @@ interface setupComponentArgs {
   component: JSX.Element;
   store?: SignupStoreType;
   overrides?: Partial<SignupRootState>;
+  routes?: InitialEntry[];
 }
 
-export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
+export function setupComponent({ component, store, overrides, routes }: setupComponentArgs): ReactWrapper {
   if (store === undefined) {
     store = fakeStore({ overrides });
   }
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
-      <Router history={signupTestHistory}>{component}</Router>
+      <MemoryRouter initialEntries={routes}>{component}</MemoryRouter>
     </ReduxIntlProvider>
   );
   return wrapper;
