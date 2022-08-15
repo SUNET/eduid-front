@@ -93,11 +93,16 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   );
 }
 
-function PhoneCodeSent(): JSX.Element {
-  const phone = useAppSelector((state) => state.resetPassword.phone);
+function PhoneCodeSent(): JSX.Element | null {
   // After sending phone code it will be saved in state.resetPassword.phone
+  const phone = useAppSelector((state) => state.resetPassword.phone);
   const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const dispatch = useAppDispatch();
+
+  if (!phone?.number || !emailCode) {
+    // TODO: Show an error message? We should never get here, but it simplifies code below.
+    return null;
+  }
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
@@ -109,11 +114,6 @@ function PhoneCodeSent(): JSX.Element {
       } else clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     }
   }, []);
-
-  useEffect(() => {
-    dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
-    // Reload page will redirect user to extra security page
-  }, [dispatch]);
 
   const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -129,7 +129,7 @@ function PhoneCodeSent(): JSX.Element {
             description="Reset Password phone code sent"
             // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
             values={{
-              phone: <b>{phone.number && phone.number.replace(/^.{10}/g, "**********")}</b>,
+              phone: <b>{phone.number.replaceAll("X", "*")}</b>,
             }}
           />
         </p>
