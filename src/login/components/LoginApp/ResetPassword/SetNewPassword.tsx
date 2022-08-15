@@ -1,10 +1,9 @@
-import { Field as FinalField, Form as FinalForm } from "react-final-form";
-
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowLeft, faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Splash from "components/Splash";
 import { useEffect, useRef, useState } from "react";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -108,7 +107,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   );
 }
 
-function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
+function SetNewPassword(): JSX.Element {
   const history = useHistory();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
