@@ -1,30 +1,25 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useHistory } from "react-router-dom";
+import EduIDButton from "../../../../components/EduIDButton";
+import { clearNotifications } from "../../../../reducers/Notifications";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
+import CustomInput from "../../Inputs/CustomInput";
 import {
   clearCountdown,
   countFiveMin,
   getLocalStorage,
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
 } from "./CountDownTimer";
-import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
-import EduIDButton from "../../../../components/EduIDButton";
-import { Form } from "reactstrap";
-import CustomInput from "../../Inputs/CustomInput";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { useHistory } from "react-router-dom";
-import { clearNotifications } from "../../../../reducers/Notifications";
-import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
-import { FormattedMessage, useIntl } from "react-intl";
 import { PhoneInterface } from "./ExtraSecurity";
 
 export interface PhoneCodeFormData {
-  phone: string;
+  phone?: string;
 }
 export interface PhoneCodeProps {
-  /* eslint-disable @typescript-eslint/no-explicit-any*/
-  handleSubmit: any;
-  invalid: boolean;
   emailCode: string;
 }
 
@@ -43,8 +38,7 @@ const validate = (values: PhoneCodeFormData) => {
   return {};
 };
 
-const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
-  const { handleSubmit } = props;
+function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
@@ -56,56 +50,59 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
     description: "placeholder text for phone code input",
   });
 
-  const handlePhoneCode = (values: { phone: string }) => {
+  function submitPhoneForm(values: PhoneCodeFormData) {
     const phone = values.phone;
-    history.push(`/reset-password/set-new-password/${props.emailCode}`);
-    dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
-    dispatch(clearNotifications());
-  };
+    if (phone) {
+      history.push(`/reset-password/set-new-password/${props.emailCode}`);
+      dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
+      dispatch(clearNotifications());
+    }
+  }
 
   return (
-    <Form id="phone-code-form" role="form" onSubmit={handleSubmit(handlePhoneCode)}>
-      <Field
-        placeholder={placeholder}
-        component={CustomInput}
-        componentClass="input"
-        type="text"
-        label={
-          <FormattedMessage
-            defaultMessage="Confirmation code"
-            description="Reset Password phone code sent (Input label)"
-          />
-        }
-        name="phone"
-      />
-      <EduIDButton buttonstyle="primary" id="save-phone-button" disabled={props.invalid}>
-        <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
-      </EduIDButton>
-    </Form>
+    <FinalForm<PhoneCodeFormData>
+      onSubmit={submitPhoneForm}
+      validate={validate}
+      render={(formProps) => {
+        const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
+        const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
+
+        return (
+          <form id="phone-code-form" onSubmit={formProps.handleSubmit}>
+            <FinalField
+              placeholder={placeholder}
+              component={CustomInput}
+              componentClass="input"
+              type="text"
+              label={
+                <FormattedMessage
+                  defaultMessage="Confirmation code"
+                  description="Reset Password phone code sent (Input label)"
+                />
+              }
+              name="phone"
+            />
+            <EduIDButton buttonstyle="primary" id="save-phone-button" disabled={_disabled}>
+              <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
+            </EduIDButton>
+          </form>
+        );
+      }}
+    />
   );
-};
+}
 
-const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
-  form: "phone-code-form",
-  validate,
-})(PhoneCodeForm);
-
-const ConnectedPhoneForm = connect(() => ({
-  enableReinitialize: true,
-  initialValues: {
-    phone: "",
-  },
-  touchOnChange: true,
-  destroyOnUnmount: false,
-}))(DecoratedPhoneForm);
-
-function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
-  const phone = useAppSelector((state) => state.resetPassword.phone);
+function PhoneCodeSent(): JSX.Element | null {
   // After sending phone code it will be saved in state.resetPassword.phone
+  const phone = useAppSelector((state) => state.resetPassword.phone);
+  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const dispatch = useAppDispatch();
-  const url = document.location.href;
-  const emailCode = url.split("/").reverse()[0];
+
+  if (!phone?.number || !emailCode) {
+    // TODO: Show an error message? We should never get here, but it simplifies code below.
+    return null;
+  }
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
@@ -117,11 +114,6 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
       } else clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     }
   }, []);
-
-  useEffect(() => {
-    dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
-    // Reload page will redirect user to extra security page
-  }, [dispatch]);
 
   const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -137,11 +129,11 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
             description="Reset Password phone code sent"
             // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
             values={{
-              phone: <b>{phone.number && phone.number.replace(/^.{10}/g, "**********")}</b>,
+              phone: <b>{phone.number.replaceAll("X", "*")}</b>,
             }}
           />
         </p>
-        <ConnectedPhoneForm {...props} emailCode={emailCode} />
+        <PhoneCodeForm emailCode={emailCode} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
