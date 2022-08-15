@@ -96,9 +96,8 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
 function PhoneCodeSent(): JSX.Element {
   const phone = useAppSelector((state) => state.resetPassword.phone);
   // After sending phone code it will be saved in state.resetPassword.phone
+  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const dispatch = useAppDispatch();
-  const url = document.location.href;
-  const emailCode = url.split("/").reverse()[0];
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
