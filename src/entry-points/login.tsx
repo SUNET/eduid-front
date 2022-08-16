@@ -8,7 +8,6 @@ import { LoginMain } from "login/components/LoginMain";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
@@ -34,9 +33,7 @@ const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={loginStore}>
     <BrowserRouter>
-      <CompatRouter>
-        <LoginMain />
-      </CompatRouter>
+      <LoginMain />
     </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,

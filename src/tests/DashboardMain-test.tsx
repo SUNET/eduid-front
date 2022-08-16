@@ -6,7 +6,7 @@ import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 test("shows splash screen when not configured", () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile"],
+    routes: ["/profile/"],
   });
 
   expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
@@ -18,7 +18,7 @@ test("shows splash screen when not configured", () => {
 test("renders Profile page as expected", () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: true } },
-    routes: ["/profile"],
+    routes: ["/profile/"],
   });
 
   expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);

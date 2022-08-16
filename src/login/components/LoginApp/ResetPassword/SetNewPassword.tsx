@@ -5,7 +5,7 @@ import Splash from "components/Splash";
 import { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
@@ -24,7 +24,7 @@ interface NewPasswordFormProps {
 }
 
 function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
 
@@ -90,7 +90,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
                   buttonstyle="secondary"
                   id="go-back-button"
                   className="btn-icon"
-                  onClick={() => history.push("/reset-password/extra-security")}
+                  onClick={() => navigate("/reset-password/extra-security")}
                 >
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                   <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
@@ -108,7 +108,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 }
 
 function SetNewPassword(): JSX.Element {
-  const history = useHistory();
+  const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
@@ -124,7 +124,7 @@ function SetNewPassword(): JSX.Element {
   // Change path to extra-security without selected option on reload
   useEffect(() => {
     if (selected_option === undefined) {
-      history.push("/reset-password/extra-security");
+      navigate("/reset-password/extra-security");
     }
   }, [selected_option]);
 

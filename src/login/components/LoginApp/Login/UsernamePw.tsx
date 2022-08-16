@@ -11,7 +11,7 @@ import loginSlice from "login/redux/slices/loginSlice";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
@@ -146,7 +146,7 @@ function RenderRegisterLink(): JSX.Element {
 function RenderResetPasswordLink(): JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const emailField = useField("email");
 
   const sendLink = (e: React.SyntheticEvent) => {
@@ -155,7 +155,7 @@ function RenderResetPasswordLink(): JSX.Element {
     if (emailField.input.value && emailField.meta.valid) {
       dispatch(requestEmailLink({ email: emailField.input.value }));
     }
-    history.push("/reset-password/");
+    navigate("/reset-password/");
   };
 
   return (

@@ -5,8 +5,7 @@ import NotificationsContainer from "containers/Notifications";
 import Footer from "login/components/Footer/Footer";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
-import { Redirect, Switch } from "react-router-dom";
-import { CompatRoute as Route } from "react-router-dom-v5-compat";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import "../login/styles/index.scss";
 
@@ -24,11 +23,11 @@ export function SignupMain(): JSX.Element {
         <NotificationsContainer />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
-            <Switch>
-              <Route exact path={`${SIGNUP_BASE_PATH}`} render={() => <Redirect to={`${SIGNUP_BASE_PATH}/email`} />} />
-              <Route path={`${SIGNUP_BASE_PATH}/email`} component={RegisterEmail} />
-              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} component={CodeVerified} />
-            </Switch>
+            <Routes>
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
+              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+              <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
+            </Routes>
           </div>
         </Splash>
       </section>

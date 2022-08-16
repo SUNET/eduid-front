@@ -14,7 +14,7 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders e-mail form as expected", () => {
-  render(<SignupMain />), { routes: [`${SIGNUP_BASE_PATH}/email`] };
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 

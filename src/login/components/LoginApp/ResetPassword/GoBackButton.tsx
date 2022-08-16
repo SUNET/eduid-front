@@ -4,7 +4,7 @@ import EduIDButton from "components/EduIDButton";
 import { useAppSelector } from "login/app_init/hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom-v5-compat";
+import { useNavigate } from "react-router-dom";
 
 interface BackToLoginButtonProps {
   primary?: boolean; // use styling "primary" instead of the default, "secondary"

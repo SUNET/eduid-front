@@ -4,7 +4,6 @@ import { DashboardRootState } from "dashboard-init-app";
 import { mount, ReactWrapper, shallow } from "enzyme";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { initialState as emailsInitialState } from "reducers/Emails";
 import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
 
@@ -37,9 +36,7 @@ describe("ChangePasswordForm renders", () => {
     const wrapper = mount(
       <ReduxIntlProvider store={store}>
         <MemoryRouter>
-          <CompatRouter>
             <ChangePasswordForm {...test_props} />
-          </CompatRouter>
         </MemoryRouter>
       </ReduxIntlProvider>
     );

@@ -5,7 +5,7 @@ import Splash from "components/Splash";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom-v5-compat";
+import { useNavigate } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
 import { useSignupAppDispatch } from "signup-hooks";
 import { SIGNUP_BASE_PATH } from "./SignupMain";

@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Route, Routes, useNavigate, useParams } from "react-router-dom-v5-compat";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import ExtraSecurity from "./ExtraSecurity";
 import PhoneCodeSent from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";

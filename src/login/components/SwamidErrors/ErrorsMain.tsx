@@ -1,7 +1,6 @@
 import NotificationsContainer from "containers/Notifications";
 import React from "react";
-import { Switch } from "react-router-dom";
-import { CompatRoute as Route } from "react-router-dom-v5-compat";
+import { Route, Routes } from "react-router-dom";
 import Header from "../../../components/Header";
 import "../../styles/index.scss";
 import Footer from "../Footer/Footer";
@@ -13,9 +12,9 @@ export function ErrorsMain(): JSX.Element {
       <Header />
       <section id="panel" className="panel">
         <NotificationsContainer />
-        <Switch>
+        <Routes>
           <Route path="/errors" element={<Errors />} />
-        </Switch>
+        </Routes>
       </section>
       <Footer />
     </React.StrictMode>

@@ -4,7 +4,6 @@ import type { InitialEntry } from "history";
 import { getTestLoginStore, LoginRootState } from "login-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { loginTestState } from "./LoginTestApp";
 
 interface renderArgs {
@@ -18,9 +17,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <MemoryRouter initialEntries={args.routes}>
-          <CompatRouter>{children}</CompatRouter>
-        </MemoryRouter>
+        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
       </ReduxIntlProvider>
     );
   }

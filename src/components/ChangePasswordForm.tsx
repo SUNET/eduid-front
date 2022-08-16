@@ -4,7 +4,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
-import { useNavigate } from "react-router-dom-v5-compat";
+import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";

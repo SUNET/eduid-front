@@ -4,7 +4,7 @@ import { errorsStore } from "errors-init-app";
 import { ERRORS_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
-import { BrowserRouter, CompatRouter } from "react-router-dom-v5-compat";
+import { BrowserRouter } from "react-router-dom";
 import { ErrorsMain } from "../login/components/SwamidErrors/ErrorsMain";
 import { polyfillsInit } from "./polyfills-common";
 
@@ -26,9 +26,7 @@ const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={errorsStore}>
     <BrowserRouter>
-      <CompatRouter>
-        <ErrorsMain />
-      </CompatRouter>
+      <ErrorsMain />
     </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,

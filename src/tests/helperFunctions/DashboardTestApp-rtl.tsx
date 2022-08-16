@@ -4,7 +4,6 @@ import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { dashboardTestState } from "./DashboardTestApp";
 
@@ -29,9 +28,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <MemoryRouter initialEntries={args.routes}>
-          <CompatRouter>{children}</CompatRouter>
-        </MemoryRouter>
+        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
       </ReduxIntlProvider>
     );
   }

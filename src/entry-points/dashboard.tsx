@@ -6,7 +6,6 @@ import { DASHBOARD_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { showNotification } from "reducers/Notifications";
 import { getInitialUserData } from "sagas/PersonalData";
 import { polyfillsInit } from "./polyfills-common";
@@ -43,9 +42,7 @@ const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={dashboardStore}>
     <BrowserRouter>
-      <CompatRouter>
-        <DashboardMain />
-      </CompatRouter>
+      <DashboardMain />
     </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,

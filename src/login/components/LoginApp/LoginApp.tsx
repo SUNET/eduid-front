@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom-v5-compat";
+import { Route, Routes } from "react-router-dom";
 import Login from "./Login/Login";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import ResetPassword from "./ResetPassword/ResetPassword";

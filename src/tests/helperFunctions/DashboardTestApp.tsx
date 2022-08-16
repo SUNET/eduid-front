@@ -3,7 +3,6 @@ import { DashboardRootState, dashboardStore } from "dashboard-init-app";
 import { mount, ReactWrapper } from "enzyme";
 import type { InitialEntry } from "history";
 import { MemoryRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import { initialState as initialChangePasswordState } from "reducers/ChangePassword";
 import { initialState as initialConfigState } from "reducers/DashboardConfig";
 import { initialState as initialEmailsState } from "reducers/Emails";
@@ -81,9 +80,7 @@ export function setupComponent({ component, store, overrides, routes }: setupCom
   }
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
-      <MemoryRouter initialEntries={routes}>
-        <CompatRouter>{component}</CompatRouter>
-      </MemoryRouter>
+      <MemoryRouter initialEntries={routes}>{component}</MemoryRouter>
     </ReduxIntlProvider>
   );
   return wrapper;

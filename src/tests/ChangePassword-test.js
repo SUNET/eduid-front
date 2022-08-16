@@ -5,7 +5,6 @@ import { mount } from "enzyme";
 import expect from "expect";
 import { rest } from "msw";
 import { MemoryRouter } from "react-router-dom";
-import { CompatRouter } from "react-router-dom-v5-compat";
 import chpassSlice from "reducers/ChangePassword";
 import { mswServer } from "setupTests";
 import { fakeStore } from "./helperFunctions/DashboardTestApp";
@@ -163,9 +162,7 @@ describe("ChangePassword Container", () => {
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
           <MemoryRouter>
-            <CompatRouter>
-              <ChangePasswordContainer />
-            </CompatRouter>
+            <ChangePasswordContainer />
           </MemoryRouter>
         </ReduxIntlProvider>
       );
