@@ -1,16 +1,15 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import EduIDButton from "../../../../components/EduIDButton";
-import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
-import ResetPasswordLayout from "./ResetPasswordLayout";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import ExtraSecurityToken from "./ExtraSecurityToken";
-import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
-import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import Splash from "components/Splash";
 import { translate } from "login/translation";
+import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { useHistory } from "react-router-dom";
+import EduIDButton from "../../../../components/EduIDButton";
+import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import ExtraSecurityToken from "./ExtraSecurityToken";
+import ResetPasswordLayout from "./ResetPasswordLayout";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
