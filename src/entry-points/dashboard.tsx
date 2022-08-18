@@ -3,11 +3,9 @@ import { DashboardMain } from "components/DashboardMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { dashboardStore } from "dashboard-init-app";
 import { DASHBOARD_CONFIG_URL } from "globals";
-import { createBrowserHistory } from "history";
 import { setupLanguage } from "login/translation";
-import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
 import { getInitialUserData } from "sagas/PersonalData";
 import { polyfillsInit } from "./polyfills-common";
@@ -39,15 +37,13 @@ polyfillsInit();
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(dashboardStore.dispatch);
 
-export const dashboardHistory = createBrowserHistory();
-
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={dashboardStore}>
-    <Router history={dashboardHistory}>
+    <BrowserRouter>
       <DashboardMain />
-    </Router>
+    </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

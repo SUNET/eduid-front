@@ -1,125 +1,119 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Form } from "reactstrap";
-import CustomInput from "../../Inputs/CustomInput";
-import { Field } from "redux-form";
-import { reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import EduIDButton from "../../../../components/EduIDButton";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
-import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import { getFormValues } from "redux-form";
-import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
-import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FormattedMessage } from "react-intl";
+import { faArrowLeft, faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Splash from "components/Splash";
+import { useEffect, useRef, useState } from "react";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
+import EduIDButton from "../../../../components/EduIDButton";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
+import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import CustomInput from "../../Inputs/CustomInput";
 
 const newPasswordFormId = "new-password-form";
 
 interface NewPasswordFormData {
-  newPassword?: string;
+  "new-password"?: string;
 }
 
 interface NewPasswordFormProps {
-  clickSetNewPassword: (event: React.FormEvent<HTMLFormElement>) => void;
   extra_security?: ExtraSecurityType;
-  invalid: boolean;
   suggested_password: string | undefined;
-  newPassword: string;
-  errors: string;
 }
 
-interface valueProps {
-  [key: string]: string;
-}
-
-const validateNewPassword = (values: valueProps, props: NewPasswordFormProps) => {
-  const newPassword = "new-password";
-  const errors: { [key: string]: string } = {};
-
-  if (!values[newPassword] || emptyStringPattern.test(values[newPassword])) {
-    errors[newPassword] = "required";
-  } else if (values[newPassword] !== props.suggested_password) {
-    errors[newPassword] = "chpass.different-repeat";
-  }
-  return errors;
-};
-
-const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
-  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues(newPasswordFormId)(state));
-  const history = useHistory();
-  return (
-    <Form
-      autoComplete="on"
-      id={newPasswordFormId}
-      role="form"
-      aria-label="new-password form"
-      onSubmit={props.clickSetNewPassword}
-    >
-      <input
-        autoComplete="new-password"
-        type="password"
-        name="display-none-new-password"
-        id="display-none-new-password"
-        defaultValue={formValues["new-password"] && formValues["new-password"]}
-      />
-      <Field
-        id="new-password"
-        type="text"
-        name="new-password"
-        component={CustomInput}
-        required={true}
-        label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
-        placeholder="xxxx xxxx xxxx"
-        autoFocus={true}
-      />
-
-      <div className="new-password-button-container">
-        {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-          <EduIDButton
-            buttonstyle="secondary"
-            id="go-back-button"
-            className="btn-icon"
-            onClick={() => history.push("/reset-password/extra-security")}
-          >
-            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-            <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
-          </EduIDButton>
-        )}
-        <EduIDButton buttonstyle="primary" id="new-password-button" disabled={props.invalid}>
-          <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
-        </EduIDButton>
-      </div>
-    </Form>
-  );
-};
-
-const SetNewPasswordForm = reduxForm<NewPasswordFormData, NewPasswordFormProps>({
-  form: newPasswordFormId,
-  validate: validateNewPassword,
-})(NewPasswordForm);
-
-const ConnectedNewPasswordForm = connect(() => ({
-  enableReinitialize: true,
-  initialValues: {
-    newPassword: "",
-  },
-  destroyOnUnmount: false,
-  touchOnChange: true,
-}))(SetNewPasswordForm);
-
-function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
-  const history = useHistory();
+function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+
+  function validateNewPassword(values: NewPasswordFormData) {
+    const newPassword = values["new-password"];
+    const errors: NewPasswordFormData = {};
+
+    if (!newPassword || emptyStringPattern.test(newPassword)) {
+      errors["new-password"] = "required";
+    } else if (newPassword !== props.suggested_password) {
+      errors["new-password"] = "chpass.different-repeat";
+    }
+    return errors;
+  }
+
+  function submitNewPasswordForm(values: NewPasswordFormData) {
+    const newPassword = values["new-password"];
+
+    if (!newPassword) {
+      return;
+    }
+
+    dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
+    if (!selected_option || selected_option === "without") {
+      dispatch(resetPasswordSlice.actions.setNewPassword());
+    } else if (selected_option === "phoneCode") {
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
+    } else if (selected_option === "securityKey") {
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
+    } else if (selected_option === "freja") {
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa());
+    }
+  }
+
+  return (
+    <FinalForm<NewPasswordFormData>
+      onSubmit={submitNewPasswordForm}
+      validate={validateNewPassword}
+      render={(formProps) => {
+        return (
+          <form id={newPasswordFormId} onSubmit={formProps.handleSubmit}>
+            <input
+              autoComplete="new-password"
+              type="password"
+              name="display-none-new-password"
+              id="display-none-new-password"
+              defaultValue={formProps.values["new-password"] && formProps.values["new-password"]}
+            />
+            <FinalField
+              id="new-password"
+              type="text"
+              name="new-password"
+              component={CustomInput}
+              required={true}
+              label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
+              placeholder="xxxx xxxx xxxx"
+              autoFocus={true}
+            />
+
+            <div className="new-password-button-container">
+              {props.extra_security && Object.keys(props.extra_security).length > 0 && (
+                <EduIDButton
+                  buttonstyle="secondary"
+                  id="go-back-button"
+                  className="btn-icon"
+                  onClick={() => navigate("/reset-password/extra-security")}
+                >
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                  <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
+                </EduIDButton>
+              )}
+              <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
+                <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
+              </EduIDButton>
+            </div>
+          </form>
+        );
+      }}
+    />
+  );
+}
+
+function SetNewPassword(): JSX.Element {
+  const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
-  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues(newPasswordFormId)(state));
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -130,7 +124,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   // Change path to extra-security without selected option on reload
   useEffect(() => {
     if (selected_option === undefined) {
-      history.push("/reset-password/extra-security");
+      navigate("/reset-password/extra-security");
     }
   }, [selected_option]);
 
@@ -146,24 +140,6 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
         (document.getElementById("icon-check") as HTMLInputElement).style.display = "none";
         setTooltipCopied(false);
       }, 1000);
-    }
-  };
-
-  const clickSetNewPassword = (e: React.FormEvent<HTMLElement>) => {
-    e.preventDefault();
-    const newPassword = formValues["new-password"];
-    if (!newPassword) {
-      return;
-    }
-    dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
-    if (!selected_option || selected_option === "without") {
-      dispatch(resetPasswordSlice.actions.setNewPassword());
-    } else if (selected_option === "phoneCode") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
-    } else if (selected_option === "securityKey") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
-    } else if (selected_option === "freja") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa());
     }
   };
 
@@ -202,12 +178,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           </div>
         </button>
       </div>
-      <ConnectedNewPasswordForm
-        {...props}
-        suggested_password={suggested_password}
-        clickSetNewPassword={clickSetNewPassword}
-        extra_security={extra_security}
-      />
+      <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
     </Splash>
   );
 }

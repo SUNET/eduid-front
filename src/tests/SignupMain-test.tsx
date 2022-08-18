@@ -1,10 +1,11 @@
-import React from "react";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
-import { fireEvent, render, screen, signupTestHistory, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
+import { fireEvent, render, screen, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
 
 test("show splash screen when not configured", () => {
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
-  render(<SignupMain />, { state: { config: { ...signupTestState.config, is_configured: false } } });
+  render(<SignupMain />, {
+    state: { config: { ...signupTestState.config, is_configured: false } },
+    routes: [`${SIGNUP_BASE_PATH}/email`],
+  });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 
@@ -13,8 +14,7 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders e-mail form as expected", () => {
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 
@@ -39,8 +39,7 @@ test("renders e-mail form as expected", () => {
 });
 
 test("redirects from slash", () => {
-  signupTestHistory.push(SIGNUP_BASE_PATH);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [SIGNUP_BASE_PATH] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 });

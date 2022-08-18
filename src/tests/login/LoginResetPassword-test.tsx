@@ -1,10 +1,9 @@
-import React from "react";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { LoginMain } from "login/components/LoginMain";
 import { mswServer, rest } from "setupTests";
-import { fireEvent, loginTestHistory, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
@@ -38,8 +37,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  loginTestHistory.push(`/login/${ref}`);
-  render(<LoginMain />);
+  render(<LoginMain />, { routes: [`/login/${ref}`] });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {
@@ -99,8 +97,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  loginTestHistory.push(`/login/${ref}`);
-  render(<LoginMain />);
+  render(<LoginMain />, { routes: [`/login/${ref}`] });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {

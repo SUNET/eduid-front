@@ -1,9 +1,8 @@
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, dashboardStore } from "dashboard-init-app";
 import { mount, ReactWrapper } from "enzyme";
-import { createMemoryHistory } from "history";
-import React from "react";
-import { Router } from "react-router";
+import type { InitialEntry } from "history";
+import { MemoryRouter } from "react-router-dom";
 import { initialState as initialChangePasswordState } from "reducers/ChangePassword";
 import { initialState as initialConfigState } from "reducers/DashboardConfig";
 import { initialState as initialEmailsState } from "reducers/Emails";
@@ -17,8 +16,6 @@ import { initialState as initialPhonesState } from "reducers/Phones";
 import { initialState as initialSecurityState } from "reducers/Security";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
-
-export const dashboardTestHistory = createMemoryHistory();
 
 export const dashboardTestState: DashboardRootState = {
   config: {
@@ -70,9 +67,10 @@ interface setupComponentArgs {
   component: JSX.Element;
   store?: DashboardStoreType;
   overrides?: Partial<DashboardRootState>;
+  routes?: InitialEntry[];
 }
 
-export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
+export function setupComponent({ component, store, overrides, routes }: setupComponentArgs): ReactWrapper {
   if (store === undefined) {
     if (overrides) {
       store = fakeStore({ ...dashboardTestState, ...overrides });
@@ -82,7 +80,7 @@ export function setupComponent({ component, store, overrides }: setupComponentAr
   }
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
-      <Router history={dashboardTestHistory}>{component}</Router>
+      <MemoryRouter initialEntries={routes}>{component}</MemoryRouter>
     </ReduxIntlProvider>
   );
   return wrapper;

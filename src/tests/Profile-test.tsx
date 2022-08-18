@@ -6,9 +6,7 @@ import Profile from "components/Profile";
 import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
 import { initialState as personalDataInitialState } from "reducers/PersonalData";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
@@ -48,11 +46,7 @@ describe("Profile component", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <Profile />
-        </MemoryRouter>
-      ),
+      component: <Profile />,
       store: store,
     });
   });

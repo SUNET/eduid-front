@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ExpiresMeter } from "./ExpiresMeter";
 //import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { ResponseCodeForm } from "./ResponseCodeForm";
@@ -239,13 +239,13 @@ interface Device2ButtonsProps {
 function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleLoginOnClick() {
     if (data && data.login_ref) {
       dispatch(loginSlice.actions.callLoginNext);
       // Send the user off to the regular login flow when they click the button
-      history.push(`/login/${data.login_ref}`);
+      navigate(`/login/${data.login_ref}`);
     }
   }
 

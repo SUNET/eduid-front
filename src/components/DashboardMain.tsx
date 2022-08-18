@@ -1,13 +1,14 @@
 import NotificationsContainer from "containers/Notifications";
 import { useDashboardAppSelector } from "dashboard-hooks";
+import Footer from "login/components/Footer/Footer";
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../login/components/Footer/Footer";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DashboardNav from "./DashboardNav";
+import Header from "./Header";
 import Profile from "./Profile";
-import SettingsComponent from "./Settings";
+import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
 
@@ -23,7 +24,7 @@ export function DashboardMain() {
   }
 
   return (
-    <React.Fragment>
+    <React.StrictMode>
       <Header email={email} showLogout={true} />
       <section id="panel" className="panel">
         <NotificationsContainer />
@@ -31,28 +32,27 @@ export function DashboardMain() {
           <div id="content" className="horizontal-content-margin content">
             <DashboardNav />
             <div id="text-content">
-              <Route path="/profile/settings/" component={SettingsComponent} />
-              <Route exact path="/profile/" component={Profile} />
-              <Route path="/profile/verify-identity/" component={VerifyIdentity} />
-              <Route path="/profile/chpass/" component={ChangePasswordContainer} />
-              {/* Redirects for old paths */}
-              <Route exact path="/profile/security/" component={() => <Redirect to="/profile/settings/" />} />
-              <Route
-                exact
-                path="/profile/accountlinking/"
-                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
-              />
-              <Route exact path="/profile/nins/" component={() => <Redirect to="/profile/verify-identity/" />} />
-              <Route
-                exact
-                path="/profile/emails/"
-                component={() => <Redirect to="/profile/settings/personaldata/" />}
-              />
+              <Routes>
+                <Route path="/profile/settings/advanced-settings/" element={<AdvancedSettings />} />
+                <Route path="/profile/settings/personaldata/" element={<Settings />} />
+                <Route path="/profile/settings/" element={<Navigate to="/profile/settings/personaldata/" />} />
+                <Route path="/profile/verify-identity/" element={<VerifyIdentity />} />
+                <Route path="/profile/chpass/" element={<ChangePasswordContainer />} />
+                {/* Navigates for old paths. TODO: redirect in backend server instead */}
+                <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />
+                <Route
+                  path="/profile/accountlinking/"
+                  element={<Navigate to="/profile/settings/advanced-settings/" />}
+                />
+                <Route path="/profile/nins/" element={<Navigate to="/profile/verify-identity/" />} />
+                <Route path="/profile/emails/" element={<Navigate to="/profile/settings/personaldata/" />} />
+                <Route path="/profile/" element={<Profile />} />
+              </Routes>
             </div>
           </div>
         </Splash>
       </section>
       <Footer />
-    </React.Fragment>
+    </React.StrictMode>
   );
 }

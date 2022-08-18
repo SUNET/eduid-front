@@ -1,10 +1,10 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EduIDButton from "components/EduIDButton";
 import { useAppSelector } from "login/app_init/hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router";
-import { Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 interface BackToLoginButtonProps {
   primary?: boolean; // use styling "primary" instead of the default, "secondary"
@@ -12,7 +12,7 @@ interface BackToLoginButtonProps {
 }
 
 export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null {
-  const history = useHistory();
+  const navigate = useNavigate();
   const loginRef = useAppSelector((state) => state.login.ref);
 
   if (!props.onClickHandler && !loginRef) {
@@ -25,23 +25,17 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     if (props.onClickHandler) {
       props.onClickHandler();
     } else {
-      history.push(`/login/${loginRef}`);
+      navigate(`/login/${loginRef}`);
     }
   }
 
-  let color = "secondary";
-  let className = "secondary";
-
-  if (props.primary) {
-    color = "primary";
-    className = "primary";
-  }
+  const style = props.primary ? "primary" : "secondary";
 
   return (
-    <Button className={className} id="go-back-button" onClick={onClick} color={color}>
+    <EduIDButton buttonstyle={style} id="go-back-button" onClick={onClick}>
       <FontAwesomeIcon icon={faArrowLeft} />
       &nbsp;
       <FormattedMessage defaultMessage="Go back" description="Account recovery Go back button" />
-    </Button>
+    </EduIDButton>
   );
 }

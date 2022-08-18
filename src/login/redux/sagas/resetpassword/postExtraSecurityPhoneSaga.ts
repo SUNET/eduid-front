@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { LoginRootState } from "login-init-app";
-import { showNotification, clearNotifications } from "reducers/Notifications";
+import { clearNotifications, showNotification } from "reducers/Notifications";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import {

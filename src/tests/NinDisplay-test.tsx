@@ -2,9 +2,7 @@ import AddNin from "components/AddNin";
 import NinDisplay from "components/NinDisplay";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -24,11 +22,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -59,11 +53,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -96,11 +86,7 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <NinDisplay nin={state.identities.nin} />
-        </MemoryRouter>
-      ),
+      component: <NinDisplay nin={state.identities.nin} />,
       store: store,
     });
   });
@@ -131,11 +117,7 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -167,11 +149,7 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });

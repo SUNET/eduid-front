@@ -3,10 +3,11 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { errorsStore } from "errors-init-app";
 import { ERRORS_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
-import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ErrorsMain } from "../login/components/SwamidErrors/ErrorsMain";
 import { polyfillsInit } from "./polyfills-common";
+
 import "./public-path";
 
 /* Get configuration */
@@ -24,7 +25,9 @@ setupLanguage(errorsStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={errorsStore}>
-    <ErrorsMain />
+    <BrowserRouter>
+      <ErrorsMain />
+    </BrowserRouter>
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

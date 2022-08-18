@@ -5,7 +5,7 @@ import NotificationsContainer from "containers/Notifications";
 import Footer from "login/components/Footer/Footer";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import "../login/styles/index.scss";
 
@@ -17,20 +17,22 @@ export function SignupMain(): JSX.Element {
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
   return (
-    <React.Fragment>
+    <React.StrictMode>
       <Header email={email} showLogin={true} />
       <section id="panel" className="panel">
         <NotificationsContainer />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
-            <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={`${SIGNUP_BASE_PATH}/email`} />} />
-            <Route path={`${SIGNUP_BASE_PATH}/email`} component={RegisterEmail} />
-            <Route path={`${SIGNUP_BASE_PATH}/code/:code`} component={CodeVerified} />
+            <Routes>
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
+              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+              <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
+            </Routes>
           </div>
         </Splash>
       </section>
       <Footer />
-    </React.Fragment>
+    </React.StrictMode>
   );
 }
 

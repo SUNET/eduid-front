@@ -1,7 +1,7 @@
 import { resetPasswordSlice } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 
 interface ResetPasswordLayoutProps {
@@ -16,10 +16,10 @@ interface ResetPasswordLayoutProps {
 
 const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const continueSetPassword = () => {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-    history.push("/reset-password/set-new-password");
+    navigate("/reset-password/set-new-password");
     dispatch(clearNotifications());
   };
   return (
