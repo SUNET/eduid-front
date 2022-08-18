@@ -1,6 +1,6 @@
 import { fetchNext } from "apis/eduidLogin";
 import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
@@ -17,7 +17,7 @@ interface LoginParams {
 }
 
 function Login(): JSX.Element {
-  const history = useHistory();
+  const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
   const base_url = useAppSelector((state) => state.config.base_url);
@@ -48,9 +48,9 @@ function Login(): JSX.Element {
        * change to/from 'login/password' when that module is used.
        */
       if (next_page === "USERNAMEPASSWORD") {
-        history.push(`/login/password/${ref}`);
+        navigate(`/login/password/${ref}`);
       } else {
-        history.push(`/login/${ref}`);
+        navigate(`/login/${ref}`);
       }
     }
   }, [next_page, ref]);

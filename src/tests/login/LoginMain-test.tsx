@@ -1,15 +1,14 @@
-import React from "react";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { LoginMain } from "login/components/LoginMain";
 import { mswServer, rest } from "setupTests";
-import { loginTestHistory, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("show splash screen when not configured", () => {
-  loginTestHistory.push("/login/abc123");
   render(<LoginMain />, {
     state: {
       app: { ...loginTestState.app, is_loaded: false },
     },
+    routes: ["/login/abc123"],
   });
 
   const button = screen.getByRole("button", { name: "Register" });
@@ -38,8 +37,7 @@ test("renders FINISHED as expected", async () => {
     })
   );
 
-  loginTestHistory.push(`/login/${ref}`);
-  render(<LoginMain />);
+  render(<LoginMain />, { routes: [`/login/${ref}`] });
 
   await waitFor(() => screen.getByRole("heading"));
 

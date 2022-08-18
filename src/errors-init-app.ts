@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { routerMiddleware } from "react-router-redux";
 import eduIDApp from "./errors-store";
-import { history } from "./login/components/SwamidErrors/ErrorsMain";
 import notifyAndDispatch from "./notify-middleware";
 import logger from "redux-logger";
 
 /* setup to run the combined sagas */
-const middlewares = [routerMiddleware(history), notifyAndDispatch, logger];
+const middlewares = [notifyAndDispatch, logger];
 
 export const errorsStore = configureStore({
   reducer: eduIDApp,

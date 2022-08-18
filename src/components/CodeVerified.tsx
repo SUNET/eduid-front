@@ -4,7 +4,8 @@ import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
 import { useSignupAppDispatch } from "signup-hooks";
 import { SIGNUP_BASE_PATH } from "./SignupMain";
@@ -23,7 +24,7 @@ export default function CodeVerified() {
   // TODO: get dashboard URL from config instead of from backend response?
   // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
   const dispatch = useSignupAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const params = useParams() as CodeParams;
   const [response, setResponse] = useState<VerifyLinkResponse>();
 
@@ -49,12 +50,12 @@ export default function CodeVerified() {
   useEffect(() => {
     if (response?.status === "unknown-code") {
       dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
-      history.push(SIGNUP_BASE_PATH + "/email"); // GOTO start
+      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
     if (response?.status === "already-verified") {
       // TODO: Not sure this can reasonably actually happen in the backend?
       dispatch(showNotification({ message: "code.already-verified", level: "info" }));
-      history.push(SIGNUP_BASE_PATH + "/email"); // GOTO start
+      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
   }, [response]);
 

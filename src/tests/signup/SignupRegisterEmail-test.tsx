@@ -1,11 +1,9 @@
-import React from "react";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
-import { fireEvent, render, screen, signupTestHistory, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
+import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 test("e-mail form works as expected", () => {
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 
@@ -30,8 +28,7 @@ test("e-mail form works as expected", () => {
 });
 
 test("e-mail form accepts valid data (signup happy case)", async () => {
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 
@@ -65,8 +62,7 @@ test("e-mail form accepts valid data (signup happy case)", async () => {
 });
 
 test("e-mail form handles rejected ToU", async () => {
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/email`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 

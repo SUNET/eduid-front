@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
-import { useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "../login/translation";
 import NotificationTip from "./NotificationTip";
 
 // export for use in tests
@@ -72,35 +71,34 @@ function DashboardNav(): JSX.Element {
       <h5>{dashboardHeading}</h5>
       <ul>
         <li>
-          <NavLink exact activeClassName={activeClassName} to={`/profile/`}>
-            {translate("dashboard_nav.profile")}
+          <NavLink className={({ isActive }) => (isActive ? activeClassName : undefined)} to="/profile/" end>
+            <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
           </NavLink>
         </li>
         <li>
-          <NavLink exact activeClassName={activeClassName} to={`/profile/verify-identity/`}>
-            {translate("dashboard_nav.identity")}
+          <NavLink
+            className={({ isActive }) => (isActive ? activeClassName : undefined)}
+            to="/profile/verify-identity/"
+          >
+            <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
             {getTipsAtIdentity()}
           </NavLink>
         </li>
         <li>
           <NavLink
-            className={settingsClass}
-            exact
-            activeClassName={activeClassName}
-            to={`/profile/settings/personaldata`}
+            className={({ isActive }) => (isActive ? activeClassName : settingsClass)}
+            to="/profile/settings/personaldata"
           >
-            {translate("dashboard_nav.settings")}
+            <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
             {tipsAtSettings}
           </NavLink>
         </li>
         <li>
           <NavLink
-            className={advancedSettingsClass}
-            exact
-            activeClassName={activeClassName}
-            to={`/profile/settings/advanced-settings`}
+            className={({ isActive }) => (isActive ? activeClassName : advancedSettingsClass)}
+            to="/profile/settings/advanced-settings"
           >
-            {translate("dashboard_nav.advanced-settings")}
+            <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
           </NavLink>
         </li>
       </ul>

@@ -2,7 +2,7 @@ import Splash from "components/Splash";
 import { translate } from "login/translation";
 import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -91,7 +91,7 @@ const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProp
 };
 
 export default function ExtraSecurity(): JSX.Element {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [extraSecurity, setExtraSecurity] = useState<ExtraSecurityType | null>(null);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -115,7 +115,7 @@ export default function ExtraSecurity(): JSX.Element {
       }
       if (!Object.keys(extra_security).length) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-        history.push("/reset-password/set-new-password");
+        navigate("/reset-password/set-new-password");
       }
     }
   }, [suggested_password]);
@@ -125,11 +125,11 @@ export default function ExtraSecurity(): JSX.Element {
       const message = window.location.search.split("=")[1];
       if (message.includes("completed")) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-        history.push("/reset-password/set-new-password");
+        navigate("/reset-password/set-new-password");
       } else if (message.includes("%3A" + "ERROR%3A")) {
         const error = message.split("%3A" + "ERROR%3A")[1];
         dispatch(showNotification({ message: error, level: "error" }));
-        history.push("/reset-password/extra-security");
+        navigate("/reset-password/extra-security");
       }
     }
   }, [emailCode, suggested_password]);
@@ -155,7 +155,7 @@ export default function ExtraSecurity(): JSX.Element {
 
   const toPhoneCodeForm = () => {
     dispatch(clearNotifications());
-    history.push("/reset-password/phone-code-sent");
+    navigate("/reset-password/phone-code-sent");
   };
 
   return (

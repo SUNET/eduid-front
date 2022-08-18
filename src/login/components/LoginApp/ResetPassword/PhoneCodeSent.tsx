@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -39,7 +39,7 @@ const validate = (values: PhoneCodeFormData) => {
 };
 
 function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const intl = useIntl();
@@ -53,7 +53,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   function submitPhoneForm(values: PhoneCodeFormData) {
     const phone = values.phone;
     if (phone) {
-      history.push(`/reset-password/set-new-password/${props.emailCode}`);
+      navigate(`/reset-password/set-new-password/${props.emailCode}`);
       dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(clearNotifications());

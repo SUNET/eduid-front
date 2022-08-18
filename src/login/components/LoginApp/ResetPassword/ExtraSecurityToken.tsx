@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
-import { useHistory } from "react-router-dom";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 interface ExtraSecurityTokenProps {
   translate(msg: string): string;
@@ -12,7 +12,7 @@ interface ExtraSecurityTokenProps {
 
 const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const [assertion, setAssertion] = useState(webauthn_assertion);
@@ -32,7 +32,7 @@ const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
 
   useEffect(() => {
     if (webauthn_assertion) setAssertion(webauthn_assertion);
-    if (assertion) history.push(`/reset-password/set-new-password/${emailCode}`);
+    if (assertion) navigate(`/reset-password/set-new-password/${emailCode}`);
   }, [webauthn_assertion, assertion]);
 
   return (

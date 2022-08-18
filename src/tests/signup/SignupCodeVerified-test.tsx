@@ -1,9 +1,8 @@
-import React from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SIGNUP_SERVICE_URL, VerifyLinkResponse } from "apis/eduidSignup";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
 import { mswServer, rest } from "setupTests";
-import { render, screen, signupTestHistory, waitFor } from "../helperFunctions/SignupTestApp-rtl";
+import { render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 test("shows new user data", async () => {
   const email = "test@example.org";
@@ -24,8 +23,7 @@ test("shows new user data", async () => {
     })
   );
 
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/code/123abc`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/code/123abc`] });
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -51,8 +49,7 @@ test("handles already-verified", async () => {
     })
   );
 
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/code/123abc`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/code/123abc`] });
 
   // we should be redirected to the main registration page on already used codes
   await waitFor(() => screen.getByRole("heading"));
@@ -77,8 +74,7 @@ test("handles unknown-code", async () => {
     })
   );
 
-  signupTestHistory.push(`${SIGNUP_BASE_PATH}/code/123abc`);
-  render(<SignupMain />);
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/code/123abc`] });
 
   await waitFor(() => screen.getByRole("status", { name: "Information" }));
   expect(screen.getByRole("alert")).toHaveTextContent(/Unknown.*code/i);

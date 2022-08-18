@@ -4,18 +4,15 @@ import EduIDButton from "components/EduIDButton";
 import { useAppSelector } from "login/app_init/hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
-interface GoBackButtonProps {
+interface BackToLoginButtonProps {
   primary?: boolean; // use styling "primary" instead of the default, "secondary"
   onClickHandler?(): void; // optional callback for when the button is clicked
 }
 
-/**
- * A button with a small left-pointing arrow icon and the text "Go back"
- */
-export function GoBackButton(props: GoBackButtonProps): JSX.Element | null {
-  const history = useHistory();
+export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null {
+  const navigate = useNavigate();
   const loginRef = useAppSelector((state) => state.login.ref);
 
   if (!props.onClickHandler && !loginRef) {
@@ -28,7 +25,7 @@ export function GoBackButton(props: GoBackButtonProps): JSX.Element | null {
     if (props.onClickHandler) {
       props.onClickHandler();
     } else {
-      history.push(`/login/${loginRef}`);
+      navigate(`/login/${loginRef}`);
     }
   }
 

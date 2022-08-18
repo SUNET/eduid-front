@@ -1,9 +1,7 @@
 import AddNin from "components/AddNin";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -36,11 +34,7 @@ describe("AddNin component, when no nin is saved", () => {
     // state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -70,11 +64,7 @@ describe("AddNin component, when a nin is saved", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });

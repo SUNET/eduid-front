@@ -4,9 +4,7 @@ import VerifyIdentity from "components/VerifyIdentity";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -47,11 +45,7 @@ describe("VerifyIdentity component, no nin added ", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <VerifyIdentity />
-        </MemoryRouter>
-      ),
+      component: <VerifyIdentity />,
       store: store,
     });
   });
@@ -110,11 +104,7 @@ describe("VerifyIdentity component, NIN already added ", () => {
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <VerifyIdentity />
-        </MemoryRouter>
-      ),
+      component: <VerifyIdentity />,
       store: store,
     });
   });

@@ -41,9 +41,7 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(successResponse.type);
     next = generator.next();
-    expect(next.value.PUT.action).toEqual(
-      resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/${fakeState.resetPassword.email_code}`)
-    );
+    expect(next.value.PUT.action).toEqual(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/`));
   });
   it("done", () => {
     const done = generator.next().done;

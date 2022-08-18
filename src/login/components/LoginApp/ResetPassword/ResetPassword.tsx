@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Route, Switch, useHistory, useParams } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import ExtraSecurity from "./ExtraSecurity";
 import PhoneCodeSent from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
@@ -12,13 +12,13 @@ import SetNewPassword from "./SetNewPassword";
 function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
   const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (goto_url) {
       // a saga is requesting us to send the user off to some URL
       dispatch(resetPasswordSlice.actions.setGotoUrl(undefined));
-      history.push(goto_url);
+      navigate(goto_url);
     }
   }, [goto_url]);
 
@@ -29,15 +29,15 @@ function ResetPassword(): JSX.Element {
       </h1>
       <div className="lead"></div>
       <div id="reset-pass-display">
-        <Switch>
-          <Route path="/reset-password/extra-security" component={ExtraSecurity} />
-          <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
-          <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
-          <Route path="/reset-password/set-new-password" component={SetNewPassword} />
-          <Route path="/reset-password/email-code/:emailCode" component={EmailCode} />
-          <Route path="/reset-password/:ref" component={ResetPasswordRequestEmail} />
-          <Route path="/reset-password/" component={ResetPasswordRequestEmail} />
-        </Switch>
+        <Routes>
+          <Route path="extra-security" element={<ExtraSecurity />} />
+          <Route path="phone-code-sent" element={<PhoneCodeSent />} />
+          <Route path="success" element={<ResetPasswordSuccess />} />
+          <Route path="set-new-password" element={<SetNewPassword />} />
+          <Route path="email-code/:emailCode" element={<EmailCode />} />
+          <Route path=":ref" element={<ResetPasswordRequestEmail />} />
+          <Route path="" element={<ResetPasswordRequestEmail />} />
+        </Routes>
       </div>
     </React.Fragment>
   );
