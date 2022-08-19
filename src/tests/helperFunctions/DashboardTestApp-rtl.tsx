@@ -13,7 +13,7 @@ interface renderArgs {
   routes?: InitialEntry[];
 }
 
-function render(ui: React.ReactElement, args: renderArgs = { routes: ["/profile/"] }): RenderResult {
+function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const defaultState = {
     config: {
       ...configInitialState,
@@ -24,11 +24,13 @@ function render(ui: React.ReactElement, args: renderArgs = { routes: ["/profile/
     },
   };
 
+  const routes = args.routes || ["/profile/"];
   const store = getTestDashboardStore(args.state || defaultState);
+
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>
-        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
+        <MemoryRouter initialEntries={routes}>{children}</MemoryRouter>
       </ReduxIntlProvider>
     );
   }
