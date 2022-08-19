@@ -71,8 +71,8 @@ function VerifyIdentityIntro(): JSX.Element {
         <p>
           <FormattedMessage
             description="verify identity unverified description"
-            defaultMessage={`To be able to use eduID you have to prove your identity. Add your national id number
-              and verify it in real life.`}
+            defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+            to get the most out of it.`}
           />
         </p>
       </div>
