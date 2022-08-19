@@ -1,50 +1,25 @@
-import React from "react";
-import expect from "expect";
-import { mount } from "enzyme";
-import AccountIdContainer from "containers/AccountId";
-import { ReduxIntlProvider } from "../components/ReduxIntl";
-const messages = require("../login/translation/messageIndex");
-const mock = require("jest-mock");
+import { DashboardMain } from "components/DashboardMain";
+import { activeClassName } from "components/DashboardNav";
+import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { initialState } from "reducers/PersonalData";
+import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
-const fakeStore = (fakeState) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState }),
-});
+test("renders AccountId as expected", () => {
+  const test_eppn = "test-123";
 
-describe("AccountId component renders", () => {
-  let wrapper;
-
-  const fakeState = {
-    personal_data: {
-      eppn: "dummy-eppn",
+  render(<DashboardMain />, {
+    state: {
+      config: { ...configInitialState, is_app_loaded: true },
+      personal_data: { ...initialState, eppn: test_eppn },
     },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  beforeEach(() => {
-    const store = fakeStore(fakeState);
-
-    wrapper = mount(
-      <ReduxIntlProvider store={store}>
-        <AccountIdContainer />
-      </ReduxIntlProvider>
-    );
   });
 
-  it("Component renders h4 heading", () => {
-    const heading = wrapper.find("h3");
-    expect(heading.exists()).toBe(true);
-    expect(heading.text()).toContain("Unique ID");
-  });
+  // Navigate to Advanced settings
+  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  nav.click();
+  expect(nav).toHaveClass(activeClassName);
 
-  it("Component renders eppn", () => {
-    const eppn = wrapper.find(".display-data");
-    expect(eppn.exists()).toBe(true);
-    expect(eppn.text()).toContain("dummy-eppn");
-  });
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+
+  expect(screen.getByLabelText("eppn")).toHaveTextContent(test_eppn);
 });

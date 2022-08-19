@@ -1,4 +1,4 @@
-import AccountId from "containers/AccountId";
+import { AccountId } from "components/AccountId";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import { Fragment } from "react";
