@@ -8,7 +8,7 @@ import {
 } from "react-accessible-accordion";
 
 interface AccordionItemTemplateProps {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   additionalInfo: string;
   uuid?: string;
@@ -20,7 +20,7 @@ function AccordionItemTemplate(props: AccordionItemTemplateProps) {
     <AccordionItem uuid={props.uuid}>
       <AccordionItemHeading>
         <AccordionItemButton>
-          <span className="accordion-icon">{props.icon}</span>
+          {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <span>
             <h6 className="accordion-title">{props.title}</h6>
             <span className="accordion-description">{props.additionalInfo}</span>

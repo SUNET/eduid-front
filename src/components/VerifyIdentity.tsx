@@ -187,7 +187,7 @@ function AccordionItemWorld(): JSX.Element | null {
 
 function AccordionItemNoIcon(): JSX.Element | null {
   return (
-    <AccordionItemTemplate icon="" title="No icon Example" additionalInfo="Additional Info">
+    <AccordionItemTemplate title="No icon Example" additionalInfo="Additional Info">
       Great content
     </AccordionItemTemplate>
   );
@@ -195,7 +195,7 @@ function AccordionItemNoIcon(): JSX.Element | null {
 
 function AccordionItemOnlyTitle(): JSX.Element | null {
   return (
-    <AccordionItemTemplate icon="" title="Only title example" additionalInfo="">
+    <AccordionItemTemplate title="Only title example" additionalInfo="">
       Other great content
     </AccordionItemTemplate>
   );
