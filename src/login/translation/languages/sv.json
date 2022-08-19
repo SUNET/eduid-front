@@ -1246,7 +1246,7 @@
     "string": "Hittades ej"
   },
   "login.credential_expired": {
-    "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
+    "string": "Lösenordet är avaktiverat eftersom det inte har använts på över 18 månader. Gör en lösenordsåterställning för att göra det möjligt att logga in igen."
   },
   "login.general_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
