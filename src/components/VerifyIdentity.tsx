@@ -15,7 +15,7 @@ import AddNin from "./AddNin";
 type accordionUUID = "se" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
-  const isAppLoaded = useDashboardAppSelector((state) => state.config.is_configured);
+  const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
   const nin = useDashboardAppSelector((state) => state.identities.nin);
 
   if (!isAppLoaded) {
@@ -29,11 +29,11 @@ function VerifyIdentity(): JSX.Element | null {
     return null;
   }
 
-  let preExpanded: accordionUUID[] = [];
+  const preExpanded: accordionUUID[] = [];
 
   if (nin) {
     /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-    preExpanded = ["se"];
+    preExpanded.push("se");
   }
 
   return (
