@@ -13,7 +13,7 @@ interface renderArgs {
   routes?: InitialEntry[];
 }
 
-function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
+function render(ui: React.ReactElement, args: renderArgs = { routes: ["/profile/"] }): RenderResult {
   const defaultState = {
     config: {
       ...configInitialState,
