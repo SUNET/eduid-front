@@ -11,8 +11,6 @@ export const userProfile = {
     <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
   ),
 
-  "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
-
   "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
 
   "dashboard.tagline_unverified": (
@@ -896,27 +894,6 @@ export const userData = {
         ),
       }}
     />
-  ),
-
-  // -------- account id ------- //
-
-  "accountId.main_title": <FormattedMessage id="accountId.main_title" defaultMessage={`Unique ID`} />,
-  "accountId.long_description": (
-    <FormattedMessage
-      id="accountId.long_description"
-      defaultMessage={`This is an automatically generated unique identifier for your eduID.`}
-    />
-  ),
-
-  "accountId.short_description": (
-    <FormattedMessage
-      id="accountId.short_description"
-      defaultMessage={`You might be asked to share this information if you need technical support.`}
-    />
-  ),
-
-  "accountId.accountId_display_title": (
-    <FormattedMessage id="accountId.accountId_display_title" defaultMessage={`Unique ID`} />
   ),
 
   "orc.authorization_fail": (
