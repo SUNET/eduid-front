@@ -10,6 +10,7 @@ import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
+import EduIDButton from "./EduIDButton";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "se" | "eu" | "world";
@@ -151,9 +152,39 @@ function AccordionItemSe(): JSX.Element | null {
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
+            <Accordion allowZeroExpanded>
+              <LetterProofingAccordionItem />
+              <PhoneProofingAccordionItem />
+            </Accordion>
           </React.Fragment>
         )}
       </ol>
+    </AccordionItemTemplate>
+  );
+}
+
+function LetterProofingAccordionItem(): JSX.Element | null {
+  return (
+    <AccordionItemTemplate
+      title="Letter to your official address"
+      additionalInfo="Only available in Sweden, and takes 2-10 days"
+      uuid="se-letter"
+    >
+      <p>With this option, a code is sent to your official registered address from the Swedish tax authority.</p>
+      <EduIDButton buttonstyle={"primary"}>Request letter</EduIDButton>
+    </AccordionItemTemplate>
+  );
+}
+
+function PhoneProofingAccordionItem(): JSX.Element | null {
+  return (
+    <AccordionItemTemplate
+      title="Using phone subscription records"
+      additionalInfo="Requires a Swedish phone number registered in your name"
+      uuid="se-phone"
+    >
+      <p>Lookup your identity in a database maintained by Swedish phone operators.</p>
+      <EduIDButton buttonstyle={"primary"}>Proceed</EduIDButton>
     </AccordionItemTemplate>
   );
 }
