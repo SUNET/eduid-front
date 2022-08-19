@@ -11,12 +11,13 @@ interface AccordionItemTemplateProps {
   icon: React.ReactNode;
   title: string;
   additionalInfo: string;
+  uuid?: string;
   children?: React.ReactNode;
 }
 
 function AccordionItemTemplate(props: AccordionItemTemplateProps) {
   return (
-    <AccordionItem>
+    <AccordionItem uuid={props.uuid}>
       <AccordionItemHeading>
         <AccordionItemButton>
           <span className="accordion-icon">{props.icon}</span>

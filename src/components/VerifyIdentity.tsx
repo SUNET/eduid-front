@@ -11,11 +11,29 @@ import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 
-function VerifyIdentity(): JSX.Element | null {
-  const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
+/* UUIDs of accordion elements that we want to selectively pre-expand */
+type accordionUUID = "se" | "eu" | "world";
 
-  if (!isConfigured) {
+function VerifyIdentity(): JSX.Element | null {
+  const isAppLoaded = useDashboardAppSelector((state) => state.config.is_configured);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
+
+  if (!isAppLoaded) {
+    /* The accordions preExpanded option is only used at the first render of the component,
+     * not on re-renders. Therefore, we _must_ have all data that we're going to use to set
+     * preExpanded loaded before we render the accordion below.
+     *
+     * In reality, this "null" is only returned if the user reloads the page on the Identity tab.
+     * Normally, the data is always loaded already when the user navigates to the Identity tab.
+     */
     return null;
+  }
+
+  let preExpanded: accordionUUID[] = [];
+
+  if (nin) {
+    /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+    preExpanded = ["se"];
   }
 
   return (
@@ -30,7 +48,7 @@ function VerifyIdentity(): JSX.Element | null {
         <VerifyIdentityIntro />
       </div>
 
-      <Accordion allowMultipleExpanded allowZeroExpanded>
+      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
         <AccordionItemSe />
         <AccordionItemEu />
         <AccordionItemWorld />
@@ -103,6 +121,7 @@ function AccordionItemSe(): JSX.Element | null {
       icon={<CircleFlag countryCode="se" height="35" />}
       title="Swedish personal ID number"
       additionalInfo=""
+      uuid="se"
     >
       <ol className="listed-steps">
         <li>
@@ -145,6 +164,7 @@ function AccordionItemEu(): JSX.Element | null {
       icon={<CircleFlag countryCode="european_union" height="35" />}
       title="EU citizen"
       additionalInfo="eIDAS"
+      uuid="eu"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!
     </AccordionItemTemplate>
@@ -157,6 +177,7 @@ function AccordionItemWorld(): JSX.Element | null {
       icon={<CircleFlag countryCode="placeholder" height="35" />}
       title="All other countries"
       additionalInfo="Svipe ID"
+      uuid="world"
     >
       Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti quam
       sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos dolor ut sequi minus iste? Quas?
