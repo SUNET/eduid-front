@@ -24,5 +24,7 @@ test("renders AccountId as expected", () => {
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
+  expect(screen.getByRole("heading", { name: /unique id/i })).toBeInTheDocument();
+
   expect(screen.getByLabelText("eppn")).toHaveTextContent(test_eppn);
 });

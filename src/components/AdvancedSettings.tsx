@@ -1,15 +1,15 @@
 import { AccountId } from "components/AccountId";
-import AccountLinkingContainer from "containers/AccountLinking";
+import { AccountLinking } from "components/AccountLinking";
+import LadokContainer from "components/Ladok";
 import SecurityContainer from "containers/Security";
 import { Fragment } from "react";
-import LadokContainer from "./Ladok";
 
 /* The Dashboard "Advanced Settings" tab */
 export function AdvancedSettings(): JSX.Element {
   return (
     <Fragment>
       <SecurityContainer />
-      <AccountLinkingContainer />
+      <AccountLinking />
       <LadokContainer />
       <AccountId />
     </Fragment>

@@ -1,30 +1,25 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Orcid from "components/Orcid";
+import { Orcid } from "components/Orcid";
+import { FormattedMessage } from "react-intl";
 
 import "../login/styles/index.scss";
 
-class AccountLinking extends Component {
-  render() {
-    return (
-      <article id="orcid-connect-container">
-        <div className="intro">
-          <h3>{this.props.translate("account_linking.main_title")}</h3>
-          <p>{this.props.translate("account_linking.long_description")}</p>
-        </div>
-        <div>
-          <Orcid {...this.props} />
-        </div>
-      </article>
-    );
-  }
+export function AccountLinking() {
+  return (
+    <article id="orcid-connect-container">
+      <div className="intro">
+        <h3>
+          <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
+        </h3>
+        <p>
+          <FormattedMessage
+            defaultMessage="If you are a researcher with an ORCID iD you can share it with your eduID."
+            description="Dashboard AccountLinking"
+          />
+        </p>
+      </div>
+      <div>
+        <Orcid />
+      </div>
+    </article>
+  );
 }
-
-AccountLinking.propTypes = {
-  orcid: PropTypes.object,
-  handleOrcidConnect: PropTypes.func,
-  handleOrcidDelete: PropTypes.func,
-  langs: PropTypes.array,
-};
-
-export default AccountLinking;

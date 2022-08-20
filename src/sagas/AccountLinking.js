@@ -1,6 +1,6 @@
-import { put, select, call } from "redux-saga/effects";
-import { checkStatus, putCsrfToken, postRequest, getRequest, failRequest } from "sagas/common";
 import * as actions from "actions/AccountLinking";
+import { call, put, select } from "redux-saga/effects";
+import { checkStatus, failRequest, getRequest, postRequest, putCsrfToken } from "sagas/common";
 
 export function* requestOrcid() {
   try {
