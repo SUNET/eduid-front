@@ -152,7 +152,7 @@ function AccordionItemSe(): JSX.Element | null {
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
-            <Accordion allowZeroExpanded>
+            <Accordion allowZeroExpanded className="accordion accordion-nested">
               <LetterProofingAccordionItem />
               <PhoneProofingAccordionItem />
             </Accordion>
