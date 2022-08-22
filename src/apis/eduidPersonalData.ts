@@ -3,6 +3,7 @@ import { EmailInfo } from "apis/eduidEmail";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { LadokData } from "./eduidLadok";
+import { PhoneInfo } from "./eduidPhone";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
@@ -14,16 +15,10 @@ export interface AllUserData {
   given_name?: string;
   language?: string;
   identities: UserIdentities;
-  phones: PDPhone[];
+  phones: PhoneInfo[];
   surname?: string;
   orcid?: PDOrcid;
   ladok?: LadokData;
-}
-
-export interface PDPhone {
-  number: string;
-  primary: boolean;
-  verified: boolean;
 }
 
 export interface PDOrcid {
