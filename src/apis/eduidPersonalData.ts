@@ -3,6 +3,7 @@ import { EmailInfo } from "apis/eduidEmail";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { LadokData } from "./eduidLadok";
+import { OrcidInfo } from "./eduidOrcid";
 import { PhoneInfo } from "./eduidPhone";
 
 /*
@@ -17,15 +18,8 @@ export interface AllUserData {
   identities: UserIdentities;
   phones: PhoneInfo[];
   surname?: string;
-  orcid?: PDOrcid;
+  orcid?: OrcidInfo;
   ladok?: LadokData;
-}
-
-export interface PDOrcid {
-  id: string;
-  name: string;
-  given_name: string;
-  family_name: string;
 }
 
 /*********************************************************************************************************************/

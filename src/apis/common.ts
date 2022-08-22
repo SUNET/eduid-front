@@ -84,6 +84,20 @@ export const genericApiFail = createAction("genericApi_FAIL", function prepare(m
 
 /*********************************************************************************************************************/
 /*
+ * Make sure an URL has a trailing slash, optionally joining it with an endpoint.
+ */
+export function urlJoin(base_url: string, endpoint?: string) {
+  if (!base_url.endsWith("/")) {
+    base_url = base_url.concat("/");
+  }
+  if (endpoint) {
+    return base_url + endpoint;
+  }
+  return base_url;
+}
+
+/*********************************************************************************************************************/
+/*
  * Return a promise that will make an API call to an eduID backend, for use in async thunks.
  */
 export function makeRequest<T>(
@@ -95,15 +109,7 @@ export function makeRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  let url;
-  if (endpoint) {
-    if (!base_url.endsWith("/")) {
-      base_url = base_url.concat("/");
-    }
-    url = base_url + endpoint;
-  } else {
-    url = base_url;
-  }
+  const url = urlJoin(base_url, endpoint);
 
   // Add the current CSRF token
   if (body !== undefined && body.csrf_token === undefined) {

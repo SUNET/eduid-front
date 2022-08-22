@@ -1,40 +1,31 @@
-import * as actions from "actions/AccountLinking";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchOrcid, OrcidInfo, removeOrcid } from "apis/eduidOrcid";
 
-const accountLinkingState = {
-  message: "",
-  orcid: null,
-};
+export interface AccountLinkingState {
+  orcid?: OrcidInfo;
+}
 
-let accountLinkingReducer = (state = accountLinkingState, action) => {
-  switch (action.type) {
-    case actions.GET_ORCID:
-      return {
-        ...state,
-      };
-    case actions.GET_PERSONAL_DATA_ORCID_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case actions.GET_ORCID_FAIL:
-      return {
-        ...state,
-        message: action.payload.message,
-      };
-    case actions.POST_ORCID_REMOVE_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-        orcid: {},
-      };
-    case actions.POST_ORCID_REMOVE_FAIL:
-      return {
-        ...state,
-        message: action.payload.message,
-      };
-    default:
-      return state;
-  }
-};
+// export for use in tests
+export const initialState: AccountLinkingState = {};
 
-export default accountLinkingReducer;
+const accountLinkingSlice = createSlice({
+  name: "account_linking",
+  initialState,
+  reducers: {
+    setAccountLinking: (state, action: PayloadAction<AccountLinkingState>) => {
+      // Update account linking in state. Called after bulk-fetch of personal data.
+      return action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchOrcid.fulfilled, (state, action) => {
+        state.orcid = action.payload.orcid;
+      })
+      .addCase(removeOrcid.fulfilled, (state) => {
+        state.orcid = undefined;
+      });
+  },
+});
+
+export default accountLinkingSlice;

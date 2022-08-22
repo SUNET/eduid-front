@@ -1,5 +1,4 @@
-import { POST_ORCID_REMOVE_SUCCESS } from "actions/AccountLinking";
-import { PDOrcid } from "apis/eduidPersonalData";
+import { OrcidInfo } from "apis/eduidOrcid";
 import { DashboardMain } from "components/DashboardMain";
 import { activeClassName } from "components/DashboardNav";
 import { act } from "react-dom/test-utils";
@@ -53,12 +52,12 @@ test("can add an ORCID iD", () => {
 });
 
 test("can show an ORCID iD", () => {
-  const orcid: PDOrcid = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
+  const orcid: OrcidInfo = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
 
   render(<DashboardMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
-      account_linking: { message: "test", orcid },
+      account_linking: { orcid },
     },
   });
 
@@ -77,19 +76,19 @@ test("can show an ORCID iD", () => {
 });
 
 test("can remove an ORCID iD", async () => {
-  const orcid: PDOrcid = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
+  const orcid: OrcidInfo = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
   let removeCalled = false;
 
   mswServer.use(
     rest.post("/orcid/remove", (req, res, ctx) => {
       removeCalled = true;
-      return res(ctx.json({ type: POST_ORCID_REMOVE_SUCCESS, payload: {} }));
+      return res(ctx.json({ type: "test success", payload: {} }));
     }),
     rest.get("/orcid/", (req, res, ctx) => {
       if (!removeCalled) {
         return res(ctx.status(400));
       }
-      return res(ctx.json({ type: "GET_ORCID_SUCCESS", payload: {} }));
+      return res(ctx.json({ type: "test success", payload: {} }));
     })
   );
 
@@ -98,7 +97,7 @@ test("can remove an ORCID iD", async () => {
   render(<DashboardMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true, orcid_url: "/orcid/" },
-      account_linking: { message: "test", orcid },
+      account_linking: { orcid },
     },
   });
 
