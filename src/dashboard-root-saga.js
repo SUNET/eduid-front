@@ -1,4 +1,3 @@
-import * as accountLinkingActions from "actions/AccountLinking";
 import * as headerActions from "actions/Header";
 import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
@@ -6,7 +5,6 @@ import * as pdataActions from "actions/PersonalData";
 import * as securityActions from "actions/Security";
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { all, takeEvery, takeLatest } from "redux-saga/effects";
-import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
 import { requestLogout } from "sagas/Header";
 import { requestNins } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
@@ -62,9 +60,6 @@ function* rootSaga() {
     takeLatest(securityActions.POST_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
     takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
-    takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),
-    takeEvery(accountLinkingActions.POST_ORCID_REMOVE_SUCCESS, requestOrcid),
-    takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid),
   ]);
 }
 

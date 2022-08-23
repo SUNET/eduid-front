@@ -1,22 +1,22 @@
-import { combineReducers } from "redux";
-import { intlReducer } from "./reducers/Internationalisation";
-import { reducer as formReducer } from "redux-form";
-import personalDataSlice from "reducers/PersonalData";
-import emailsSlice from "reducers/Emails";
-import configSlice from "reducers/DashboardConfig";
-import openidConnectReducer from "reducers/OpenidConnect";
-import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
-import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
-import phonesSlice from "reducers/Phones";
-import accountLinkingReducer from "reducers/AccountLinking";
-import securityReducer from "reducers/Security";
+import accountLinkingSlice from "reducers/AccountLinking";
 import chpassSlice from "reducers/ChangePassword";
+import configSlice from "reducers/DashboardConfig";
+import emailsSlice from "reducers/Emails";
 import identitiesSlice from "reducers/Identities";
+import ladokSlice from "reducers/Ladok";
 import letterProofingSlice from "reducers/LetterProofing";
+import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
 import { notificationsSlice } from "reducers/Notifications";
+import openidConnectReducer from "reducers/OpenidConnect";
+import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
+import personalDataSlice from "reducers/PersonalData";
+import phonesSlice from "reducers/Phones";
+import securityReducer from "reducers/Security";
+import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 import groupsReducer from "./login/redux/reducers/groupsReducer";
 import invitesReducer from "./login/redux/reducers/invitesReducer";
-import ladokSlice from "reducers/Ladok";
+import { intlReducer } from "./reducers/Internationalisation";
 
 const eduIDApp = combineReducers({
   chpass: chpassSlice.reducer,
@@ -32,7 +32,7 @@ const eduIDApp = combineReducers({
   phones: phonesSlice.reducer,
   letter_proofing: letterProofingSlice.reducer,
   notifications: notificationsSlice.reducer,
-  account_linking: accountLinkingReducer,
+  account_linking: accountLinkingSlice.reducer,
   security: securityReducer,
   ladok: ladokSlice.reducer,
   form: formReducer,

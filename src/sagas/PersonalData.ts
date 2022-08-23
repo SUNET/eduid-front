@@ -1,13 +1,13 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
-import * as accountLinkingActions from "actions/AccountLinking";
 import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 import { AllUserData } from "apis/eduidPersonalData";
 import { DashboardRootState } from "dashboard-init-app";
 import { LOCALIZED_MESSAGES } from "globals";
 import { appLoaded } from "login/components/App/App_actions";
+import accountLinkingSlice from "reducers/AccountLinking";
 import emailsSlice from "reducers/Emails";
-import ladokSlice from "reducers/Ladok";
 import identitiesSlice from "reducers/Identities";
+import ladokSlice from "reducers/Ladok";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
 import phonesSlice from "reducers/Phones";
 import { call, put, select } from "redux-saga/effects";
@@ -54,13 +54,7 @@ export function* requestAllPersonalData() {
       yield put(phonesSlice.actions.setPhones(response.payload.phones));
     }
     if (response.payload.orcid !== undefined) {
-      const orcidAction = {
-        type: accountLinkingActions.GET_PERSONAL_DATA_ORCID_SUCCESS,
-        payload: {
-          orcid: response.payload.orcid,
-        },
-      };
-      yield put(orcidAction);
+      yield put(accountLinkingSlice.actions.setAccountLinking(response.payload));
     }
     const pdata: PersonalDataData = {
       given_name: response.payload.given_name,
