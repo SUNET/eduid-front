@@ -31,6 +31,7 @@ function VerifyIdentity(): JSX.Element | null {
   }
 
   const preExpanded: accordionUUID[] = [];
+  const expanded: accordionUUID[] = [];
 
   if (nin) {
     /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
@@ -152,6 +153,7 @@ function AccordionItemSe(): JSX.Element | null {
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
+            {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
             <Accordion allowZeroExpanded className="accordion accordion-nested">
               <LetterProofingAccordionItem />
               <PhoneProofingAccordionItem />
