@@ -16,7 +16,6 @@
 
     &.expanded > #{$a}__heading > #{$a}__button {
       background: $orange-opaque;
-      color: initial;
     }
 
     // Clickable
@@ -125,9 +124,13 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $black;
+      border: 2px solid $orange-highlight;
       border-radius: 6px;
       overflow: hidden;
+
+      &.expanded {
+        border-color: $black;
+      }
 
       &:hover {
         border-color: $orange-highlight;
@@ -148,6 +151,7 @@
 
           &:hover {
             color: $orange-highlight;
+            background: $mid-gray;
           }
 
           #{$a}-title {
@@ -160,16 +164,11 @@
 
       // Content
       #{$a}__panel {
-        padding: 0.5rem 1rem 1.25rem;
+        padding: 1rem 1rem 1.25rem;
 
         p {
           font-size: 1.125rem;
-        }
-        button {
-          padding: 0.75rem 1rem;
-          font-size: 13px;
-          height: auto;
-          letter-spacing: 1px;
+          line-height: 1.25;
         }
       }
     }

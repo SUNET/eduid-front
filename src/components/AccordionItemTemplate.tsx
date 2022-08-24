@@ -9,8 +9,8 @@ import {
 
 interface AccordionItemTemplateProps {
   icon?: React.ReactNode;
-  title: string;
-  additionalInfo: string;
+  title: React.ReactNode;
+  additionalInfo: React.ReactNode;
   uuid?: string;
   children?: React.ReactNode;
 }

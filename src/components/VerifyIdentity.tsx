@@ -147,7 +147,6 @@ function AccordionItemSe(): JSX.Element | null {
               </p>
             </li>
             <div id="nins-btn-grid" className="x-adjust">
-              <LetterProofingButton disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
               <Eidas />
               <OpenidConnectContainer disabled={disabled} />
@@ -155,7 +154,7 @@ function AccordionItemSe(): JSX.Element | null {
             </div>
             {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
             <Accordion allowZeroExpanded className="accordion accordion-nested">
-              <LetterProofingAccordionItem />
+              <LetterProofingButton disabled={letterProofingDisabled} />
               <PhoneProofingAccordionItem />
             </Accordion>
           </React.Fragment>
@@ -165,18 +164,18 @@ function AccordionItemSe(): JSX.Element | null {
   );
 }
 
-function LetterProofingAccordionItem(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate
-      title="Letter to your official address"
-      additionalInfo="Only available in Sweden, and takes 2-10 days"
-      uuid="se-letter"
-    >
-      <p>With this option, a code is sent to your official registered address from the Swedish tax authority.</p>
-      <EduIDButton buttonstyle={"primary"}>Request letter</EduIDButton>
-    </AccordionItemTemplate>
-  );
-}
+// function LetterProofingAccordionItem(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate
+//       title="Letter to your official address"
+//       additionalInfo="Only available in Sweden, and takes 2-10 days"
+//       uuid="se-letter"
+//     >
+//       <p>With this option, a code is sent to your official registered address from the Swedish tax authority.</p>
+//       <EduIDButton buttonstyle={"primary"}>Request letter</EduIDButton>
+//     </AccordionItemTemplate>
+//   );
+// }
 
 function PhoneProofingAccordionItem(): JSX.Element | null {
   return (
@@ -186,7 +185,9 @@ function PhoneProofingAccordionItem(): JSX.Element | null {
       uuid="se-phone"
     >
       <p>Lookup your identity in a database maintained by Swedish phone operators.</p>
-      <EduIDButton buttonstyle={"primary"}>Proceed</EduIDButton>
+      <EduIDButton buttonstyle={"primary"} size={"sm"}>
+        Proceed
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
