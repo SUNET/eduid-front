@@ -62,6 +62,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
 
       <div className="buttons">
+        <GoBackButton secondary={true} />
         <EduIDButton
           buttonstyle="primary"
           type="submit"
@@ -80,9 +81,6 @@ export function EmailLinkSent(): JSX.Element | null {
         >
           <ExpiresMeter showMeter={false} expires_max={response?.throttled_max} />
         </TimeRemainingWrapper>
-      </div>
-      <div className="buttons">
-        <GoBackButton link={true} />
       </div>
     </React.Fragment>
   );
