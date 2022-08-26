@@ -4,6 +4,7 @@ import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import ResetPassword from "./ResetPassword/ResetPassword";
 
 function LoginApp(): JSX.Element {
+  throw new Error("test");
   return (
     <div id="content" className="horizontal-content-margin content">
       <Routes>

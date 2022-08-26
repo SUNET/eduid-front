@@ -8,23 +8,25 @@ import { FormattedMessage } from "react-intl";
 export function GenericError(props: FallbackProps) {
   return (
     <Fragment>
-      <div className="error-boundary">
-        <h2 className="heading">
-          {" "}
-          <FormattedMessage
-            defaultMessage="There was a problem displaying the page."
-            description="generic error page"
-          />
-        </h2>
-        <p>
-          <FormattedMessage
-            defaultMessage="The issue has been reported to the team."
-            description="generic error page"
-          />
-        </p>
-        <div className="options">
-          <TryAgainOption {...props} />
-          <ToHomeOption />
+      <div className="horizontal-content-margin content">
+        <div className="error-boundary swamid-error">
+          <h1>
+            {" "}
+            <FormattedMessage
+              defaultMessage="There was a problem displaying the page."
+              description="generic error page"
+            />
+          </h1>
+          <p>
+            <FormattedMessage
+              defaultMessage="The issue has been reported to the team."
+              description="generic error page"
+            />
+          </p>
+          <div className="options">
+            <TryAgainOption {...props} />
+            <ToHomeOption />
+          </div>
         </div>
       </div>
     </Fragment>
