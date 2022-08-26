@@ -1,9 +1,8 @@
-import { faHome, faRedo } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "login/app_init/hooks";
 import { Fragment } from "react";
 import { FallbackProps } from "react-error-boundary";
 import { FormattedMessage } from "react-intl";
+import EduIDButton from "components/EduIDButton";
 
 export function GenericError(props: FallbackProps) {
   return (
@@ -23,10 +22,12 @@ export function GenericError(props: FallbackProps) {
               description="generic error page"
             />
           </p>
-          <div className="options">
+          <p className="buttons">
+            You can try to
             <TryAgainOption {...props} />
+            or
             <ToHomeOption />
-          </div>
+          </p>
         </div>
       </div>
     </Fragment>
@@ -35,51 +36,35 @@ export function GenericError(props: FallbackProps) {
 
 function TryAgainOption(props: FallbackProps) {
   return (
-    <div className="option">
-      <label>
-        <FormattedMessage defaultMessage="Try again:" description="generic error page" />
-      </label>
-      <div className="icon-text">
-        <button
-          className="icon"
-          onClick={() => {
-            if (props.resetErrorBoundary) {
-              props.resetErrorBoundary();
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faRedo} />
-        </button>
-        <p>
-          <FormattedMessage defaultMessage="Reload page" description="generic error page" />
-        </p>
-      </div>
-    </div>
+    <EduIDButton
+      id=""
+      buttonstyle="link"
+      className=" lowercase"
+      onClick={() => {
+        if (props.resetErrorBoundary) {
+          props.resetErrorBoundary();
+        }
+      }}
+    >
+      <FormattedMessage defaultMessage="Reload the page" description="generic error page" />
+    </EduIDButton>
   );
 }
 
 function ToHomeOption() {
   const toHome = useAppSelector((state) => state.config.eduid_site_url);
   return (
-    <div className="option">
-      <label>
-        <FormattedMessage defaultMessage="Start over" description="generic error page" />
-      </label>
-      <div className="icon-text">
-        <button
-          className="icon"
-          onClick={() => {
-            if (toHome) {
-              window.location.href = toHome;
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faHome} />
-        </button>
-        <p>
-          <FormattedMessage defaultMessage="Return to home" description="generic error page" />
-        </p>
-      </div>
-    </div>
+    <EduIDButton
+      id=""
+      buttonstyle="link"
+      className=" lowercase"
+      onClick={() => {
+        if (toHome) {
+          window.location.href = toHome;
+        }
+      }}
+    >
+      <FormattedMessage defaultMessage="Return to home" description="generic error page" />
+    </EduIDButton>
   );
 }

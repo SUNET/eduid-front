@@ -118,6 +118,11 @@
     font-size: 1rem;
     margin-bottom: 1rem;
   }
+
+  button.btn.btn-link {
+    height: auto;
+    min-width: unset !important;
+  }
 }
 
 // small reddish alert with exclamation symbol
