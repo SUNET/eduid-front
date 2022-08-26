@@ -13,7 +13,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p className="heading">
+      <p>
         <FormattedMessage
           defaultMessage="Enter the email address registered to your eduID account."
           description="Reset password add email heading"
