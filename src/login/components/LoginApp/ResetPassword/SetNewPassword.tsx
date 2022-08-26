@@ -84,7 +84,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
               autoFocus={true}
             />
 
-            <div className="new-password-button-container">
+            <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <EduIDButton
                   buttonstyle="secondary"
@@ -145,9 +145,9 @@ function SetNewPassword(): JSX.Element {
 
   return (
     <Splash showChildren={!!password}>
-      <p className="heading">
+      <h1>
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
-      </p>
+      </h1>
       <p>
         <FormattedMessage
           defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the

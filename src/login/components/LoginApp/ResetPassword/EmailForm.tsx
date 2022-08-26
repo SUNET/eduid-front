@@ -46,6 +46,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
               <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
 
               <div className="buttons">
+                <GoBackButton />
                 <EduIDButton
                   buttonstyle="primary"
                   id="reset-password-button"
@@ -54,7 +55,6 @@ function EmailForm(props: EmailFormProps): JSX.Element {
                 >
                   <FormattedMessage defaultMessage="send email" description="Reset Password button" />
                 </EduIDButton>
-                <GoBackButton />
               </div>
             </fieldset>
           </form>

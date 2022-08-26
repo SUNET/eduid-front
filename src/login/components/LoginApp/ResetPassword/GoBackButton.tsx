@@ -33,7 +33,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
 
   return (
     <EduIDButton buttonstyle={style} className="normal-case" id="go-back-button" onClick={onClick}>
-      <FormattedMessage defaultMessage="Go back to Login" description="Account recovery Go back button" />
+      <FormattedMessage defaultMessage="Go back" description="Account recovery Go back button" />
     </EduIDButton>
   );
 }
