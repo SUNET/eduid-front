@@ -21,7 +21,7 @@ export function GenericError(props: FallbackProps) {
             />
           </p>
           <p>
-            You can try to <TryAgainOption {...props} /> or <ToHomeOption />.
+            <ToHomeOption />
           </p>
         </div>
       </div>
@@ -29,34 +29,10 @@ export function GenericError(props: FallbackProps) {
   );
 }
 
-function TryAgainOption(props: FallbackProps) {
-  return (
-    <a
-      id=""
-      className="text-link"
-      onClick={() => {
-        if (props.resetErrorBoundary) {
-          props.resetErrorBoundary();
-        }
-      }}
-    >
-      <FormattedMessage defaultMessage="reload the page" description="generic error page" />
-    </a>
-  );
-}
-
 function ToHomeOption() {
   const toHome = useAppSelector((state) => state.config.eduid_site_url);
   return (
-    <a
-      id=""
-      className="text-link"
-      onClick={() => {
-        if (toHome) {
-          window.location.href = toHome;
-        }
-      }}
-    >
+    <a className="text-link" href={toHome}>
       <FormattedMessage defaultMessage="Return to home" description="generic error page" />
     </a>
   );
