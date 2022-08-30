@@ -147,15 +147,15 @@ function AccordionItemSe(): JSX.Element | null {
               </p>
             </li>
             <div id="nins-btn-grid" className="x-adjust">
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
-              <Eidas />
+              {/* <LookupMobileProofing disabled={lookupMobileDisabled} />
+              <Eidas /> */}
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
             {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
             <Accordion allowZeroExpanded className="accordion accordion-nested">
               <LetterProofingButton disabled={letterProofingDisabled} />
-              <PhoneProofingAccordionItem />
+              <LookupMobileProofing disabled={lookupMobileDisabled} />
             </Accordion>
           </React.Fragment>
         )}
@@ -177,20 +177,20 @@ function AccordionItemSe(): JSX.Element | null {
 //   );
 // }
 
-function PhoneProofingAccordionItem(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate
-      title="Using phone subscription records"
-      additionalInfo="Requires a Swedish phone number registered in your name"
-      uuid="se-phone"
-    >
-      <p>Lookup your identity in a database maintained by Swedish phone operators.</p>
-      <EduIDButton buttonstyle={"primary"} size={"sm"}>
-        Proceed
-      </EduIDButton>
-    </AccordionItemTemplate>
-  );
-}
+// function PhoneProofingAccordionItem(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate
+//       title="Using phone subscription records"
+//       additionalInfo="Requires a Swedish phone number registered in your name"
+//       uuid="se-phone"
+//     >
+//       <p>Lookup your identity in a database maintained by Swedish phone operators.</p>
+//       <EduIDButton buttonstyle={"primary"} size={"sm"}>
+//         Proceed
+//       </EduIDButton>
+//     </AccordionItemTemplate>
+//   );
+// }
 
 function AccordionItemEu(): JSX.Element | null {
   return (

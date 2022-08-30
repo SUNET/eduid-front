@@ -6,6 +6,10 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
+import EduIDButton from "components/EduIDButton";
+import AccordionItemTemplate from "components/AccordionItemTemplate";
+// import AccordionItemTemplate from "./AccordionItemTemplate";
+// import EduIDButton from "./EduIDButton";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
@@ -74,7 +78,28 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
 
   return (
     <div key="0">
-      <div key="0" className="vetting-button">
+      <AccordionItemTemplate
+        title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+        additionalInfo={
+          <FormattedMessage
+            defaultMessage="For you with phone number registered in your name"
+            description="explanation text for vetting phone"
+          />
+        }
+        uuid="se-phone"
+      >
+        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
+          <div key="1" className="text">
+            {translate("verify-identity.vetting_phone_tagline")}
+            {explanationText}
+          </div>
+        </p>
+        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+          Proceed
+        </EduIDButton>
+      </AccordionItemTemplate>
+
+      {/* <div key="0" className="vetting-button">
         <button disabled={props.disabled} onClick={handleShowModal}>
           <div key="1" className="text">
             {translate("verify-identity.vetting_phone_tagline")}
@@ -91,7 +116,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
             include all registered phone numbers.`}
           />
         </p>
-      </div>
+      </div> */}
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal
         id="mobile-confirm-modal"
