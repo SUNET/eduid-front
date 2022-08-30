@@ -9,7 +9,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { postUserdata } from "../../../actions/PersonalData";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
+import { FormattedMessage } from "react-intl";
 import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
@@ -51,7 +51,11 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
           <FontAwesomeIcon icon={faRedo} />
         </button>
         <label htmlFor="name-check" className="hint">
-          {translate("pd.update_locked_names")}
+          <FormattedMessage
+            defaultMessage="Update first and last names from the Swedish Population Register."
+            description="personal data update locked names"
+          />
+          {/* {translate("pd.update_locked_names")} */}
         </label>
       </div>
     </Fragment>
@@ -79,7 +83,13 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
         label={props.names.last}
         placeholder={props.names.last}
       />
-      <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
+      <p className="help-text">
+        <FormattedMessage
+          defaultMessage={`First and last name will be replaced with your legal name if you verify your eduID 
+                            with your personal id number.`}
+          description="personal hint names locked when verified"
+        />
+      </p>
     </Fragment>
   );
 };
@@ -99,7 +109,7 @@ const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderS
         buttonstyle="primary"
         disabled={loading || pristine || invalid || submitting}
       >
-        {translate("button_save")}
+        <FormattedMessage defaultMessage="save" description="button save" />
       </EduIDButton>
     </div>
   );
@@ -146,7 +156,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
 
   return (
     <Form
-      id="personaldataview-form"
+      id="personaldata-view-form"
       role="form"
       onChange={(e) => {
         formChange(e.target as unknown as FormData);
@@ -165,7 +175,12 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
           name="display_name"
           label={names.display}
           placeholder={names.display}
-          helpBlock={translate("pd.display_name_input_help_text")}
+          helpBlock={
+            <FormattedMessage
+              defaultMessage="Some services will show this instead of your first and last name."
+              description="personal data display name input help text"
+            />
+          }
         />
       </fieldset>
       <Field
@@ -173,7 +188,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
         required={true}
         name="language"
         selectOptions={available_languages}
-        label={translate("pd.language")}
+        label={<FormattedMessage defaultMessage="Language" description="personal data label language " />}
       />
       <RenderSavePersonalDataButton {...props} />
     </Form>
