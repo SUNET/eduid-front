@@ -7,13 +7,13 @@
     "developer_comment": "Header register",
     "string": "Registrera"
   },
+  "/DarP+": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "eppn"
+  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Säkerhetsnyckel"
-  },
-  "/XXYdv": {
-    "developer_comment": "Register Account created",
-    "string": "Kontot skapades"
   },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
@@ -22,6 +22,10 @@
   "/h666/": {
     "developer_comment": "select extra webauthn",
     "string": "Välj extra identifieringsmetod:"
+  },
+  "02Y+QE": {
+    "developer_comment": "Signup",
+    "string": "Återställ lösenord"
   },
   "0Cwr7Z": {
     "developer_comment": "SAML login finished",
@@ -79,6 +83,10 @@
     "developer_comment": "Reset password link",
     "string": "Glömt ditt lösenord?"
   },
+  "2n5qg/": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Inställningar"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
@@ -117,6 +125,10 @@
   "56cz7x": {
     "developer_comment": "Phone display title",
     "string": "Telefonnummer"
+  },
+  "5P95+P": {
+    "developer_comment": "Reset password add email heading",
+    "string": "Ange din e-postadress registrerad till ditt konto."
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
@@ -263,9 +275,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Åtkomstfel"
   },
-  "FQZGJ7": {
-    "developer_comment": "Terms of use (common header)",
-    "string": "Allmänna regler för eduID-användare:"
+  "FO7/rw": {
+    "developer_comment": "Signup",
+    "string": "Slutför skapandet av ditt eduID genom att följa länken som skickats till:"
   },
   "FRVeZw": {
     "developer_comment": "verify identity unverified main title",
@@ -318,6 +330,10 @@
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
     "string": "T.ex. Touch/ Face ID på den här enheten."
+  },
+  "HCDbw9": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Du kan bli tillfrågad om den här information om du ber om teknisk support."
   },
   "HgjRtU": {
     "developer_comment": "button add more",
@@ -389,6 +405,10 @@
     "developer_comment": "Signup",
     "string": "Registrera din e-postadress för att skapa ditt eduID."
   },
+  "LxAnnP": {
+    "developer_comment": "Reset password",
+    "string": "Skicka sms till {phone}"
+  },
   "MPTvRv": {
     "developer_comment": "Footer faq",
     "string": "Hjälp"
@@ -403,13 +423,13 @@
     "developer_comment": "no error information message",
     "string": "Det finns ingen detaljerad information tillgänglig"
   },
+  "MuypUP": {
+    "developer_comment": "generic error page",
+    "string": "Problemet har rapporterats till teamet."
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
-  },
-  "NXRtQx": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "En länk har skickats till din e-postadress  {email}. Länken är giltig i två timmar."
   },
   "NeWubz": {
     "developer_comment": "errorURL",
@@ -488,10 +508,6 @@
     "developer_comment": "tou.header",
     "string": "Användarvillkor för eduID.se"
   },
-  "RywJRW": {
-    "developer_comment": "Register email label",
-    "string": "Slutför skapandet av ditt eduID genom att följa länken som skickats till:"
-  },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
     "string": "Återställ lösenord"
@@ -556,10 +572,6 @@
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
   },
-  "UFBYoo": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "skicka länken igen"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
@@ -576,6 +588,10 @@
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
   },
+  "VSxZ2o": {
+    "developer_comment": "Send e-mail button",
+    "string": "Skicka"
+  },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
     "string": "Det är möjligt att du kan komma tillbaka dit du kom ifrån med 'Framåt'-knappen."
@@ -587,6 +603,10 @@
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
+  },
+  "VymaGb": {
+    "developer_comment": "Resend e-mail button",
+    "string": "Skicka igen"
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -656,23 +676,13 @@
     "developer_comment": "Title for phone code input",
     "string": "Skriv in koden som skickats till {phone}"
   },
-  "accountId.accountId_display_title": {
-    "string": "Unikt ID"
+  "aNbqJc": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Avancerade inställningar"
   },
-  "accountId.long_description": {
-    "string": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support."
-  },
-  "accountId.main_title": {
-    "string": "Unikt ID"
-  },
-  "accountId.short_description": {
-    "string": "Du kan bli tillfrågad om den här information om du ber om teknisk support."
-  },
-  "account_linking.long_description": {
-    "string": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID."
-  },
-  "account_linking.main_title": {
-    "string": "Länka till ditt ORCID konto"
+  "aTABco": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Profil"
   },
   "actions.action-completed": {
     "string": "Klart"
@@ -692,8 +702,16 @@
     "developer_comment": "profile email display title",
     "string": "E-postadress"
   },
+  "bO7IGW": {
+    "developer_comment": "generic error page",
+    "string": "Något gick fel när sidan laddades."
+  },
   "banner.tagline": {
     "string": "eduID är enklare och säkrare inloggning."
+  },
+  "bcHXR2": {
+    "developer_comment": "Account recovery front page",
+    "string": "För att komma igång med kontoåterställningen, klicka på knappen nedan för att skicka ett e-postmeddelande till {email}."
   },
   "bfWfFp": {
     "developer_comment": "SAML login finished",
@@ -713,17 +731,8 @@
     "developer_comment": "SAML login finished",
     "string": "Framåt"
   },
-  "captcha.cancel": {
-    "string": "Avbryt"
-  },
   "captcha.one-step-left": {
     "string": "Bara en sak till!"
-  },
-  "captcha.submit": {
-    "string": "Skicka"
-  },
-  "captcha.verify-human": {
-    "string": "eduID måste verifiera att du är en människa och inte en maskin."
   },
   "chpass.button_custom_password": {
     "string": "Jag vill inte använda det rekommenderade lösenordet"
@@ -842,31 +851,17 @@
   "dashboard.tagline_verified": {
     "string": "Gör ditt eduID säkrare"
   },
-  "dashboard_nav.advanced-settings": {
-    "string": "Avancerade inställningar"
-  },
-  "dashboard_nav.back": {
-    "string": "< Tillbaka"
-  },
-  "dashboard_nav.identity": {
-    "string": "Identitet"
-  },
-  "dashboard_nav.profile": {
-    "string": "Profil"
-  },
-  "dashboard_nav.settings": {
-    "string": "Inställningar"
-  },
-  "dashboard_nav.settings-confirm-phone": {
-    "string": "<b>Bekräfta ditt telefonnummer</b> för att kunna verifera ditt ID via telefon"
+  "eIAbQF": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in den här enheten"
   },
-  "eMHJVJ": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Har du inte fått e-postmeddelandet? Kontrollera din skräppost, eller"
+  "eLbkSr": {
+    "developer_comment": "Signup",
+    "string": "eduID måste verifiera att du är en människa och inte en maskin."
   },
   "eidas.authn_context_mismatch": {
     "string": "Mottog fel representation av tillitsnivå"
@@ -1013,6 +1008,10 @@
   "error_navet_task": {
     "string": "Problem att nå Navet"
   },
+  "etw/3v": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Ett e-postmeddelande med instruktioner har skickats till {email}."
+  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
@@ -1020,6 +1019,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja eID+ konto (godkänd svensk e-legitimation)"
+  },
+  "fEsIEZ": {
+    "developer_comment": "Signup",
+    "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
   },
   "faq_link": {
     "string": "För mer information, se "
@@ -1047,6 +1050,10 @@
   },
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
+  },
+  "fpAB2E": {
+    "developer_comment": "generic error page",
+    "string": "Återvänd till startsidan"
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
@@ -1084,9 +1091,6 @@
     "developer_comment": "Use another device, finished",
     "string": "Koden har gått ut och du bör stänga det här fönstret"
   },
-  "hJZwTS": {
-    "string": "E-postadress"
-  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Logga ut"
@@ -1101,6 +1105,10 @@
   "hg+a52": {
     "developer_comment": "Use other device 2",
     "string": "Du kan stänga det här fönstret."
+  },
+  "hhjCPa": {
+    "developer_comment": "Dashboard AccountLinking",
+    "string": "Länka till ditt ORCID konto"
   },
   "hk4i0h": {
     "developer_comment": "Use other device 2",
@@ -1304,9 +1312,17 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verifiera din identitet för att få ut mer av ditt eduID"
   },
+  "lsXO8d": {
+    "developer_comment": "Account recovery Go back button",
+    "string": "Tillbaka"
+  },
   "lyfTgy": {
     "developer_comment": "Title for email code input",
     "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
+  },
+  "mO/ijL": {
+    "developer_comment": "Signup",
+    "string": "Ett eduID konto använder redan {email}"
   },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
@@ -1321,6 +1337,10 @@
   },
   "main.welcome": {
     "string": "Välkommen till eduID"
+  },
+  "md5xqk": {
+    "developer_comment": "Dashboard AccountLinking",
+    "string": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID."
   },
   "mfa.edge-no-u2f": {
     "string": "Det är för närvarande ett problem med browsern Edge och U2F-säkerhetsnycklar. Vänligen försök igen med Firefox eller Chrome."
@@ -1371,6 +1391,10 @@
   "mobile.resend_success": {
     "string": "Ny bekräftelsekod skickad till {email}"
   },
+  "modal.close": {
+    "developer_comment": "Notification modal close label",
+    "string": "Stäng"
+  },
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du skriva in det igen."
@@ -1418,6 +1442,14 @@
   "nj6a0v": {
     "developer_comment": "eidas freja instructions step1",
     "string": "Installera appen"
+  },
+  "notifications.error-label": {
+    "developer_comment": "Notification type",
+    "string": "Fel"
+  },
+  "notifications.info-label": {
+    "developer_comment": "Notification type",
+    "string": "Information"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -1528,8 +1560,16 @@
   "orc.unknown_state": {
     "string": "\"State\" var okänt när ORCID-kontot skulle kopplas"
   },
+  "orcid.remove": {
+    "developer_comment": "Remove orcid aria label",
+    "string": "Ta bort"
+  },
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
+  },
+  "pC+Kit": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Identitet"
   },
   "pRXT2e": {
     "developer_comment": "verify identity add nin heading",
@@ -1665,8 +1705,7 @@
     "string": "Telefonnummer har bekräftats"
   },
   "placeholder.email": {
-    "developer_comment": "placeholder text for email input",
-    "string": "namn@example.com"
+    "developer_comment": "placeholder text for email input"
   },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
@@ -1682,9 +1721,6 @@
   },
   "profile.email_display_title": {
     "string": "E-postadress"
-  },
-  "profile.eppn_display_title": {
-    "string": "eppn"
   },
   "profile.phone_display_non-primary_data": {
     "string": "gör till primärt"
@@ -1722,6 +1758,10 @@
     "developer_comment": "Login username input",
     "string": "Välkommen tillbaka, {username}!"
   },
+  "qS5PLP": {
+    "developer_comment": "Reset Password button",
+    "string": "skicka e-post"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
@@ -1734,9 +1774,6 @@
   },
   "required": {
     "string": "*Fältet kan inte vara tomt"
-  },
-  "resend.button": {
-    "string": "Skicka ett nytt verifieringsmeddelande"
   },
   "resend.email-label": {
     "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:"
@@ -1768,9 +1805,6 @@
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
   },
-  "resetpw.extra-phone_send_sms": {
-    "string": "Skicka sms till {phone}"
-  },
   "resetpw.extra-security_description": {
     "string": "Genom att återställa lösenordet med ett extra säkerhetsalternativ så kommer kontot att förbli verifierat."
   },
@@ -1785,9 +1819,6 @@
   },
   "resetpw.go-to-eduid": {
     "string": "Gå till eduID"
-  },
-  "resetpw.heading-add-email": {
-    "string": "Ange din e-postadress registrerad till ditt konto"
   },
   "resetpw.invalid_session": {
     "string": "Ogiltig session, var god försök igen."
@@ -1815,9 +1846,6 @@
   },
   "resetpw.return-login": {
     "string": "återgå till inloggningen"
-  },
-  "resetpw.send-link": {
-    "string": "Skicka länk till e-postadress"
   },
   "resetpw.send-sms-failed": {
     "string": "Det gick inte att skicka telefonkoden"
@@ -1852,31 +1880,9 @@
   "resetpw.without_extra_security_heading": {
     "string": "Fortsätt utan extra säkerhetsalternativ"
   },
-  "runtime_error.generic.description": {
-    "string": "Problemet har rapporterats till teamet."
-  },
-  "runtime_error.generic.label.reload": {
-    "string": "Försök igen:"
-  },
-  "runtime_error.generic.label.toHome": {
-    "string": "Börja om:"
-  },
-  "runtime_error.generic.p.toHome": {
-    "string": "Återvänd till startsidan"
-  },
-  "runtime_error.generic.reload": {
-    "string": "Ladda om sidan"
-  },
-  "runtime_error.generic.title": {
-    "string": "Något gick fel när sidan laddades."
-  },
   "s0no/w": {
     "developer_comment": "profile name display no data",
     "string": "lägg till namn"
-  },
-  "s3zRsg": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "om"
   },
   "security.add_u2f_token": {
     "string": "Lägg till säkerhetsnyckel"
@@ -2070,6 +2076,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
   },
+  "t9CdwX": {
+    "developer_comment": "Signup cancel button",
+    "string": "Avbryt"
+  },
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Gå till eduID"
@@ -2099,6 +2109,10 @@
     "developer_comment": "verify identity unverified description",
     "string": "För att kunna använda eduID måste du bevisa din identitet. Lägg till ditt personnummer och bekräfta det i verkliga livet."
   },
+  "uKzmRZ": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Länken i e-postmeddelandet är giltig i två timmar."
+  },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Tjänsten som du försöker komma åt kräver ytterligare rättigheter."
@@ -2116,15 +2130,6 @@
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Namn"
-  },
-  "used.email-in-use": {
-    "string": "Ett eduID konto använder redan {email}"
-  },
-  "used.email-label": {
-    "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
-  },
-  "used.reset-password": {
-    "string": "Återställ lösenord"
   },
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
@@ -2211,9 +2216,17 @@
     "developer_comment": "Ladok account linking",
     "string": "Att länka ditt eduID-konto med Ladok är nödvändigt om du vill komma åt en tjänst som kräver en European Student Identifier."
   },
+  "yktrEi": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unikt ID"
+  },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "att all användning av användarkonton ska följa Sveriges lagar och förordningar, "
+  },
+  "z/Z3FL": {
+    "developer_comment": "Signup",
+    "string": "Kontot skapades"
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
