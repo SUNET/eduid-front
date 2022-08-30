@@ -209,15 +209,15 @@ function SecurityKeyTable(props: any) {
   );
 
   function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    // const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
-    // const token = dataset?.token;
-    // dispatch(postVerifyWebauthnToken(token));
+    const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
+    const token = dataset?.closest(".webauthn-token-holder");
+    dispatch(postVerifyWebauthnToken(token));
   }
 
   function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    // const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    // const token = dataset?.token;
-    // dispatch(postRemoveWebauthnToken(token));
+    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    const token = dataset?.closest(".webauthn-token-holder");
+    dispatch(postRemoveWebauthnToken(token));
   }
 
   // data that goes onto the table
