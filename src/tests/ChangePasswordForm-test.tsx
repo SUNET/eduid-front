@@ -2,11 +2,10 @@ import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePa
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState } from "dashboard-init-app";
 import { mount, ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
+import { MemoryRouter } from "react-router-dom";
 import { initialState as emailsInitialState } from "reducers/Emails";
+import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
 
 const test_props: ChangePasswordFormProps = {
   finish_url: "cancel_url",
@@ -36,7 +35,9 @@ describe("ChangePasswordForm renders", () => {
   function setupComponent(store: DashboardStoreType) {
     const wrapper = mount(
       <ReduxIntlProvider store={store}>
-        <ChangePasswordForm {...test_props} />
+        <MemoryRouter>
+            <ChangePasswordForm {...test_props} />
+        </MemoryRouter>
       </ReduxIntlProvider>
     );
     return {

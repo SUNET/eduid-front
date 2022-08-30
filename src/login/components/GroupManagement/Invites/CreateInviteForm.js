@@ -23,7 +23,7 @@ let CreateInviteForm = (props) => {
     <Fragment>
       <Form id={"create-invite-form"} role="form" onSubmit={handleSubmit}>
         <FormSection name={"inviteEmail"}>
-          <EmailInput {...props} submitButton={false} required={true} />
+          <EmailInput name="email" {...props} submitButton={false} required={true} />
         </FormSection>
         <FormSection name={"inviteRoles"}>
           <InviteRoleCheckboxes {...props} helpBlock={"select one or more"} />

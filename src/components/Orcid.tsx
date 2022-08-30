@@ -1,18 +1,37 @@
-import React, { Fragment } from "react";
+import { urlJoin } from "apis/common";
+import { removeOrcid } from "apis/eduidOrcid";
 import EduIDButton from "components/EduIDButton";
-import { FormattedMessage } from "react-intl";
-import { PDOrcid } from "apis/eduidPersonalData";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import React, { Fragment } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const orcidIcon = require("../../img/vector_iD_icon-w.svg");
 
-export interface OrcidProps {
-  orcid: PDOrcid;
-  handleOrcidConnect: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  handleOrcidDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
+export function Orcid(): JSX.Element {
+  const dispatch = useDashboardAppDispatch();
+  const orcid = useDashboardAppSelector((state) => state.account_linking.orcid);
+  const orcid_url = useDashboardAppSelector((state) => state.config.orcid_url);
+  const intl = useIntl();
 
-function Orcid(props: OrcidProps): JSX.Element {
-  if (!props.orcid?.id) {
+  async function handleOrcidDelete(event: React.MouseEvent<HTMLButtonElement>) {
+    await dispatch(removeOrcid());
+  }
+
+  function handleOrcidConnect(event: React.MouseEvent<HTMLButtonElement>) {
+    if (orcid_url) {
+      const auth_url = urlJoin(orcid_url, "authorize");
+      window.location.assign(auth_url);
+    }
+  }
+
+  // aria-label can't be an Element, we need to get the actual translated string here
+  const removeLabel = intl.formatMessage({
+    id: "orcid.remove",
+    defaultMessage: "Remove",
+    description: "Remove orcid aria label",
+  });
+
+  if (!orcid?.id) {
     return (
       <Fragment>
         <div className="buttons">
@@ -20,7 +39,7 @@ function Orcid(props: OrcidProps): JSX.Element {
             buttonstyle="primary"
             id="connect-orcid-button"
             className="btn-icon"
-            onClick={props.handleOrcidConnect}
+            onClick={handleOrcidConnect}
           >
             <img className="orcid-logo" src={orcidIcon} />
             <FormattedMessage description="orcid connect button" defaultMessage={`Add ORCID account`} />
@@ -29,7 +48,7 @@ function Orcid(props: OrcidProps): JSX.Element {
         <p className="help-text">
           <FormattedMessage
             description="orcid description"
-            defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research 
+            defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research
             outputs and activities to your identity, regardless of the organisation you are working with.`}
           />
         </p>
@@ -44,14 +63,15 @@ function Orcid(props: OrcidProps): JSX.Element {
               <span className="orcid-logo" />
             </td>
             <td className="orcid-link">
-              <a href={props.orcid.id}>{props.orcid.id}</a>
+              <a href={orcid.id}>{orcid.id}</a>
             </td>
             <td>
               <EduIDButton
                 buttonstyle="close"
                 size="sm"
                 id="remove-orcid-button"
-                onClick={props.handleOrcidDelete}
+                onClick={handleOrcidDelete}
+                aria-label={removeLabel}
               ></EduIDButton>
             </td>
           </tr>
@@ -60,5 +80,3 @@ function Orcid(props: OrcidProps): JSX.Element {
     );
   }
 }
-
-export default Orcid;

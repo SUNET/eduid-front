@@ -1,7 +1,8 @@
 import { translate, UNKNOWN_MESSAGE } from "login/translation";
 import React from "react";
+import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
-import { eduidNotification } from "reducers/Notifications";
+import { eduidNotification, notificationLevel } from "reducers/Notifications";
 
 interface NotificationsProps {
   info: eduidNotification;
@@ -10,11 +11,9 @@ interface NotificationsProps {
   handleRMNotification: () => void;
 }
 
-function isString(translated: JSX.Element | string): translated is string {
-  return (translated as string).indexOf !== undefined;
-}
+export default function Notifications(props: NotificationsProps): JSX.Element | null {
+  const intl = useIntl();
 
-function Notifications(props: NotificationsProps) {
   // show errors first, information second
   const show: eduidNotification = props.error || props.info;
 
@@ -32,17 +31,36 @@ function Notifications(props: NotificationsProps) {
     }
   }
 
+  const color = show.level === "error" ? "danger" : "success";
+  const label = getLabel(intl, show.level);
+
   return (
-    <div className="notifications-area">
-      <Alert
-        color={show.level === "error" ? "danger" : "success"}
-        toggle={props.handleRMNotification}
-        closeClassName="close"
-      >
-        <span>{msg}</span>
+    <div className="notifications-area" aria-live="polite">
+      <Alert color={color} toggle={props.handleRMNotification} closeClassName="close">
+        <span>
+          <output aria-label={label}>{msg}</output>
+        </span>
       </Alert>
     </div>
   );
 }
 
-export default Notifications;
+function isString(translated: JSX.Element | string): translated is string {
+  return (translated as string).indexOf !== undefined;
+}
+
+function getLabel(intl: IntlShape, level: notificationLevel): string {
+  // aria-label can't be an Element, we need to get the actual translated string here
+  if (level === "error") {
+    return intl.formatMessage({
+      id: "notifications.label",
+      defaultMessage: "Error",
+      description: "Notification type",
+    });
+  }
+  return intl.formatMessage({
+    id: "notifications.label",
+    defaultMessage: "Information",
+    description: "Notification type",
+  });
+}

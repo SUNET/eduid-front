@@ -3,10 +3,10 @@ import { ChangePasswordContainer } from "components/ChangePassword";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import expect from "expect";
-import fetchMock from "jest-fetch-mock";
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { rest } from "msw";
+import { MemoryRouter } from "react-router-dom";
 import chpassSlice from "reducers/ChangePassword";
+import { mswServer } from "setupTests";
 import { fakeStore } from "./helperFunctions/DashboardTestApp";
 
 describe("Reducers", () => {
@@ -56,9 +56,11 @@ describe("API calls", () => {
     const store = fakeStore(mockState);
     const suggested = "12345";
 
-    fetchMock.doMockIf(
-      `${mockState.config.security_url}/suggested-password`,
-      JSON.stringify({ payload: { suggested_password: suggested } })
+    mswServer.use(
+      rest.get(`${mockState.config.security_url}/suggested-password`, (req, res, ctx) => {
+        const payload = { suggested_password: suggested };
+        return res(ctx.json({ type: "test response", payload: payload }));
+      })
     );
 
     return store.dispatch(fetchSuggestedPassword()).then(() => {
@@ -83,7 +85,11 @@ describe("API calls", () => {
   it("fails fetching suggested password", () => {
     const store = fakeStore(mockState);
 
-    fetch.mockReject(new Error("testing"));
+    mswServer.use(
+      rest.get(`${mockState.config.security_url}/suggested-password`, (req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
 
     return store.dispatch(fetchSuggestedPassword()).then(() => {
       const actualActions = store.getActions().map((action) => action.type);
@@ -106,7 +112,7 @@ describe("API calls", () => {
 
       expect(store.getActions()[1]).toEqual({
         error: true,
-        payload: { message: "Error: testing" },
+        payload: { message: "Error: HTTP 500 Internal Server Error" },
         type: "genericApi_FAIL",
       });
     });
@@ -117,7 +123,17 @@ describe("API calls", () => {
     const oldPassword = "12345";
     const newPassword = "secret";
 
-    fetchMock.doMockIf(`${mockState.config.security_url}/change-password`, JSON.stringify({}));
+    mswServer.use(
+      rest.post(`${mockState.config.security_url}/change-password`, (req, res, ctx) => {
+        const payload = {};
+        if (req.body.old_password != oldPassword || req.body.new_password != newPassword) {
+          return res(ctx.status(400));
+        }
+        return res(ctx.json({ type: "test response", payload: payload }));
+      })
+    );
+
+    //fetchMock.doMockIf(`${mockState.config.security_url}/change-password`, JSON.stringify({}));
 
     return store.dispatch(changePassword({ old_password: oldPassword, new_password: newPassword })).then(() => {
       const actualActions = store.getActions().map((action) => action.type);
@@ -132,17 +148,7 @@ describe("API calls", () => {
 
       // we expect the suggested_password to be cleared on a successful password change
       expect(newState).toEqual({ ...stateBefore, suggested_password: undefined });
-
-      expect(JSON.parse(fetch.mock.calls[0][1].body)).toEqual({
-        csrf_token: "csrf-token",
-        new_password: "secret",
-        old_password: "12345",
-      });
     });
-  });
-
-  afterEach(() => {
-    fetchMock.resetMocks();
   });
 });
 
@@ -155,9 +161,9 @@ describe("ChangePassword Container", () => {
 
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
-          <Router>
+          <MemoryRouter>
             <ChangePasswordContainer />
-          </Router>
+          </MemoryRouter>
         </ReduxIntlProvider>
       );
       return wrapper;

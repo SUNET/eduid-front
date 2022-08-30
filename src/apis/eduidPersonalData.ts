@@ -1,9 +1,10 @@
-import { NinInfo } from "reducers/Nins";
-import { LadokData } from "./eduidLadok";
-import { EmailInfo } from "apis/eduidEmail";
-import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { EmailInfo } from "apis/eduidEmail";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { LadokData } from "./eduidLadok";
+import { OrcidInfo } from "./eduidOrcid";
+import { PhoneInfo } from "./eduidPhone";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
@@ -14,42 +15,48 @@ export interface AllUserData {
   eppn: string;
   given_name?: string;
   language?: string;
-  nins: NinInfo[];
-  phones: PDPhone[];
+  identities: UserIdentities;
+  phones: PhoneInfo[];
   surname?: string;
-  orcid?: PDOrcid;
+  orcid?: OrcidInfo;
   ladok?: LadokData;
 }
 
-export interface PDPhone {
+/*********************************************************************************************************************/
+export interface NinIdentity {
   number: string;
-  primary: boolean;
   verified: boolean;
 }
 
-export interface PDOrcid {
-  id: string;
-  name: string;
-  given_name: string;
-  family_name: string;
+export interface EidasIdentity {
+  prid: string;
+  prid_persistence: "A" | "B" | "C";
+  date_of_birth: string;
+  country_code: string;
+  verified: boolean;
 }
 
-/*********************************************************************************************************************/
-export interface FetchNinsResponse {
-  nins: NinInfo[];
+export interface UserIdentities {
+  nin?: NinIdentity;
+  eidas?: EidasIdentity;
+  is_verified: boolean;
+}
+
+export interface FetchIdentitiesResponse {
+  identities: UserIdentities;
 }
 
 /**
  * @public
- * @function fetchNins
+ * @function fetchIdentities
  * @desc Redux async thunk to fetch users' National Identity Numbers.
  */
-export const fetchNins = createAsyncThunk<
-  FetchNinsResponse, // return type
+export const fetchIdentities = createAsyncThunk<
+  FetchIdentitiesResponse, // return type
   undefined, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("personalData/fetchNins", async (args, thunkAPI) => {
-  return makePersonalDataRequest<FetchNinsResponse>(thunkAPI, "nins", args)
+>("personalData/fetchIdentities", async (args, thunkAPI) => {
+  return makePersonalDataRequest<FetchIdentitiesResponse>(thunkAPI, "identities", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

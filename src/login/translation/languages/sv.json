@@ -39,6 +39,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
   },
+  "17FW6Y": {
+    "developer_comment": "profile name display title",
+    "string": "Namn"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
@@ -55,6 +59,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "2D7weB": {
+    "developer_comment": "orcid connect button",
+    "string": "Länka ORCID konto"
+  },
   "2EeZgg": {
     "developer_comment": "Signup button",
     "string": "Skapa eduID"
@@ -62,6 +70,14 @@
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 tecken"
+  },
+  "2hnsRO": {
+    "developer_comment": "nins input help text",
+    "string": "Personnummer med 12 siffror"
+  },
+  "2hrJd2": {
+    "developer_comment": "Reset password link",
+    "string": "Glömt ditt lösenord?"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -74,6 +90,10 @@
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "Tjänsten du försökte använda misslyckades med autentiseringen."
+  },
+  "3q1uE5": {
+    "developer_comment": "orcid description",
+    "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
   "4+GwOq": {
     "developer_comment": "Set new password",
@@ -135,7 +155,7 @@
   },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
-    "string": "För eduID.se gäller generellt"
+    "string": "För eduID.se gäller generellt:"
   },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
@@ -200,6 +220,10 @@
     "developer_comment": "Set new password (accept button)",
     "string": "Acceptera lösenord"
   },
+  "DdY0Ec": {
+    "developer_comment": "profile phone display title",
+    "string": "Telefonnummer"
+  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Skapa ditt nya lösenord"
@@ -251,6 +275,10 @@
     "developer_comment": "SAML login finished",
     "string": "Du loggas nu in"
   },
+  "Fjbcnk": {
+    "developer_comment": "profile email display no data",
+    "string": "ingen e-postadress sparad"
+  },
   "FnpebS": {
     "developer_comment": "letter initialize proofing help text",
     "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
@@ -298,6 +326,10 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "VISA"
+  },
+  "HozsEs": {
+    "developer_comment": "profile phone display no data",
+    "string": "lägg till telefonnummer"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -348,6 +380,10 @@
   "LcUe9m": {
     "developer_comment": "login mfa primary option hint",
     "string": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den."
+  },
+  "LlYcJl": {
+    "developer_comment": "button_add",
+    "string": "Lägg till"
   },
   "LuSrd4": {
     "developer_comment": "Signup",
@@ -404,6 +440,10 @@
   "O9PJiz": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Otillräcklig behörighet"
+  },
+  "OPkp7U": {
+    "developer_comment": "nin label",
+    "string": "Personnummer"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -739,7 +779,7 @@
     "string": "Rekommenderat lösenord"
   },
   "chpass.unable-to-verify-old-password": {
-    "string": "Ett fel har uppstått vid ändring av ditt lösenord. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
+    "string": "Det gick inte att verifiera ditt gamla lösenord. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
   },
   "cm.accept": {
     "string": "ACCEPTERA"
@@ -1206,7 +1246,7 @@
     "string": "Hittades ej"
   },
   "login.credential_expired": {
-    "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
+    "string": "Lösenordet är avaktiverat eftersom det inte har använts på över 18 månader. Gör en lösenordsåterställning för att göra det möjligt att logga in igen."
   },
   "login.general_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
@@ -1249,9 +1289,6 @@
   },
   "login.user_terminated": {
     "string": "Detta konto har avslutats, men finns kvar några dagar. Gör en lösenordsåterställning för att ångra avslutet."
-  },
-  "login.usernamePw.reset-password-link": {
-    "string": "Glömt ditt lösenord?"
   },
   "login.wrong_credentials": {
     "string": "E-postadressen eller lösenordet är felaktigt."
@@ -1341,9 +1378,6 @@
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
   },
-  "nin_display.profile.main_title": {
-    "string": "Personnummer"
-  },
   "nin_display.verify-identity_unverified_main_title": {
     "string": "1. Ditt personnummer"
   },
@@ -1352,9 +1386,6 @@
   },
   "nins.illegal_chars": {
     "string": "Endast siffror är tillåtna"
-  },
-  "nins.input_help_text": {
-    "string": "Personnummer med 12 siffror"
   },
   "nins.input_placeholder": {
     "developer_comment": "Swedish NIN template",
@@ -1487,12 +1518,6 @@
   },
   "orc.authorization_success": {
     "string": "Ditt ORCID-konto har kopplats till det här kontot"
-  },
-  "orc.button_connect": {
-    "string": "Länka ORCID konto"
-  },
-  "orc.long_description": {
-    "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
   "orc.sub_mismatch": {
     "string": "\"Subject\" var fel när ORCID-kontot skulle kopplas"
@@ -1655,29 +1680,14 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Tryck här om du vill beställa en ny kod"
   },
-  "profile.email_display_no_data": {
-    "string": "ingen e-postadress sparad"
-  },
   "profile.email_display_title": {
     "string": "E-postadress"
   },
   "profile.eppn_display_title": {
     "string": "eppn"
   },
-  "profile.name_display_no_data": {
-    "string": "lägg till namn"
-  },
-  "profile.name_display_title": {
-    "string": "Namn"
-  },
-  "profile.phone_display_no_data": {
-    "string": "lägg till telefonnummer"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "gör till primärt"
-  },
-  "profile.phone_display_title": {
-    "string": "Telefonnummer"
   },
   "profile.phone_display_unconfirmed_data": {
     "string": "bekräfta telefonnummer"
@@ -1859,6 +1869,10 @@
   },
   "runtime_error.generic.title": {
     "string": "Något gick fel när sidan laddades."
+  },
+  "s0no/w": {
+    "developer_comment": "profile name display no data",
+    "string": "lägg till namn"
   },
   "s3zRsg": {
     "developer_comment": "Reset Password email link sent",
@@ -2191,7 +2205,7 @@
   },
   "xsCSvh": {
     "developer_comment": "verify identity improve security description",
-    "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord under Inställningar."
+    "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

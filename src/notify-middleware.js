@@ -15,12 +15,20 @@ const notifyAndDispatch = () => (next) => (action) => {
         next(showNotification({ message: msg, level: "error" }));
       }
       setTimeout(() => {
-        window.scroll(0, 0);
+        try {
+          window.scroll(0, 0);
+        } catch (error) {
+          // window.scroll isn't available in the tests jsdom environment
+        }
       }, 100);
     } else if (action.payload && action.payload.message) {
       next(showNotification({ message: action.payload.message, level: "info" }));
       setTimeout(() => {
-        window.scroll(0, 0);
+        try {
+          window.scroll(0, 0);
+        } catch (error) {
+          // window.scroll isn't available in the tests jsdom environment
+        }
       }, 100);
     }
     if (action.payload !== undefined) {

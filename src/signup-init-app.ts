@@ -7,8 +7,6 @@
  */
 
 import { configureStore } from "@reduxjs/toolkit";
-import { history } from "components/SignupMain";
-import { routerMiddleware } from "react-router-redux";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import notifyAndDispatch from "./notify-middleware";
@@ -17,7 +15,7 @@ import eduIDApp from "./signup-store";
 
 /* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, routerMiddleware(history), notifyAndDispatch, logger];
+const middlewares = [sagaMiddleware, notifyAndDispatch, logger];
 
 export const signupStore = configureStore({
   reducer: eduIDApp,
@@ -25,6 +23,18 @@ export const signupStore = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 sagaMiddleware.run(rootSaga);
+
+// The same thing again, for use in tests
+export function getTestSignupStore(preloadedState: Partial<SignupRootState>) {
+  const testStore = configureStore({
+    reducer: eduIDApp,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+    devTools: process.env.NODE_ENV !== "production",
+    preloadedState,
+  });
+  sagaMiddleware.run(rootSaga);
+  return testStore;
+}
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type SignupRootState = ReturnType<typeof signupStore.getState>;

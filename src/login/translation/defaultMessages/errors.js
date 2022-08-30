@@ -294,29 +294,6 @@ export const specificErrors = {
     />
   ),
 
-  // runtime error page
-  "runtime_error.generic.title": (
-    <FormattedMessage id="runtime_error.generic.title" defaultMessage={`There was a problem displaying the page.`} />
-  ),
-  "runtime_error.generic.description": (
-    <FormattedMessage
-      id="runtime_error.generic.description"
-      defaultMessage={`The issue has been reported to the team.`}
-    />
-  ),
-  "runtime_error.generic.label.reload": (
-    <FormattedMessage id="runtime_error.generic.label.reload" defaultMessage={`Try again:`} />
-  ),
-  "runtime_error.generic.p.reload": (
-    <FormattedMessage id="runtime_error.generic.reload" defaultMessage={`Reload page`} />
-  ),
-  "runtime_error.generic.label.toHome": (
-    <FormattedMessage id="runtime_error.generic.label.toHome" defaultMessage={`Start over:`} />
-  ),
-  "runtime_error.generic.p.toHome": (
-    <FormattedMessage id="runtime_error.generic.p.toHome" defaultMessage={`Return to home`} />
-  ),
-
   // captcha error
   "signup.recaptcha-not-verified": (
     <FormattedMessage

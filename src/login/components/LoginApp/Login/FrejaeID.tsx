@@ -1,17 +1,18 @@
 import React from "react";
 import EduIDButton from "components/EduIDButton";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppSelector } from "../../../app_init/hooks";
+import { translate } from "login/translation";
 
-interface FrejaeIDProps {
-  translate(msg: string): string;
-}
-
-const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
+function FrejaeID(): JSX.Element | null {
   // compose external link
   const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
   const idp = useAppSelector((state) => state.config.mfa_auth_idp);
   const startUrl = useAppSelector((state) => state.login.start_url);
+
+  if (!frejaUrlDomain) {
+    return null;
+  }
+
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
@@ -32,6 +33,6 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
       </div>
     </div>
   );
-};
+}
 
-export default InjectIntl(FrejaeID);
+export default FrejaeID;

@@ -1,15 +1,9 @@
 @import "./variables.scss";
 
-// for all login pages
-.username-pw,
-.tou {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
-}
-
 // username and password
 .username-pw {
+  margin-bottom: 2rem;
+
   form {
     margin-top: 0;
 
@@ -32,61 +26,27 @@
         }
       }
     }
-  }
 
-  .secondary-link {
-    align-self: center;
+    .links {
+      a {
+        margin: 0.25rem 0;
+        display: inline-block;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-a {
-  margin: 0.25rem 0;
-  display: inline-block;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-a .disabled {
-  color: $gray;
-  text-decoration: none;
-
-  &:hover {
-    cursor: not-allowed;
-  }
-}
-
-// TODO align with modal dl.terms
-.tou {
-  .tou-text {
-    margin-top: $margin;
-    margin-bottom: $margin;
-
-    p {
-      line-height: $line-height;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    ul {
-      margin-bottom: #{1rem * $line-height};
-      list-style-type: disc;
-
-      li {
-        font-size: 1.25rem;
-        margin: 0;
-        margin-left: 1.5em;
+      @media (max-width: $bp-xl) {
+        margin-top: 1rem;
       }
     }
-  }
 
-  button {
-    align-self: center;
+    .flex-between {
+      flex-direction: row;
+      text-align: right;
+
+      @media (max-width: $bp-xl) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -118,7 +78,7 @@ a .disabled {
           margin: 0;
         }
 
-        // duplicate in _buttons.scss
+        // duplicate in _buttons.scss?
         .icon {
           background: transparent;
           padding: 0;
@@ -149,25 +109,7 @@ a .disabled {
   }
 }
 
-// iPhone 6/7/8+ and smaller
-@media (max-width: $bp-xs) {
-  .tou .tou-text {
-    margin-top: #{2 * $margin};
-  }
-}
-
-.username-pw {
-  .flex-between {
-    flex-direction: row;
-    text-align: right;
-
-    @media (max-width: $bp-xl) {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-}
-
+// use another device
 .use-another-device {
   .response-code-inputs {
     input {

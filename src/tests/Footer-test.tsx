@@ -1,11 +1,11 @@
+import { shallow } from "enzyme";
 import React from "react";
-import expect from "expect";
 import { IntlProvider } from "react-intl";
 import Footer from "../login/components/Footer/Footer";
 import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
-import { shallow } from "enzyme";
 
 const config = {
+  ...signupTestState.config,
   is_app_loaded: true,
   is_configured: true,
   available_languages: [
@@ -41,7 +41,7 @@ describe("Footer Component", () => {
   it("Renders the language selector component", () => {
     const wrapper = setupComponent({
         component: <Footer />,
-        overrides: {config },
+        overrides: { config },
       }),
       p = wrapper.find("span.lang-selected"),
       link = wrapper.find("span.lang-selected").find("a");

@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import Header from "../components/Header";

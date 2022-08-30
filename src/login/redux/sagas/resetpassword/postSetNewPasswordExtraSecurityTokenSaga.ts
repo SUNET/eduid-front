@@ -1,10 +1,9 @@
-import { put, call, select } from "redux-saga/effects";
-import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import postRequest from "../postDataRequest";
-import resetPasswordSlice from "../../slices/resetPasswordSlice";
-import { history } from "../../../components/App/App";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { LoginRootState } from "../../../app_init/initStore";
+import { LoginRootState } from "login-init-app";
+import { call, put, select } from "redux-saga/effects";
+import { failRequest, putCsrfToken } from "../../../../sagas/common";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
+import postRequest from "../postDataRequest";
 
 interface PostSetNewPasswordSecurityTokenResponse {
   message: string;
@@ -31,7 +30,7 @@ export function* postSetNewPasswordExtraSecurityToken() {
       yield put(response);
       return;
     }
-    history.push(`/reset-password/success`);
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }

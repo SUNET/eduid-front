@@ -11,8 +11,10 @@ import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
 import { postDeleteAccount, deleteAccount } from "sagas/Security";
 import { notificationsSlice } from "reducers/Notifications";
+import { storeCsrfToken } from "commonConfig";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
+import { mswServer, rest } from "setupTests";
 
 // I am the component that: allows users to delete their account in settings.
 // My job is to: I render a "Delete account" button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
@@ -367,9 +369,11 @@ describe("DeleteAccount Container", () => {
   });
 
   it("Clicks confirm delete", () => {
-    fetch.mockResponseOnce("/dummy-sec-url", {
-      type: actions.POST_DELETE_ACCOUNT,
-    });
+    mswServer.use(
+      rest.get("/dummy-sec-url", (req, res, ctx) => {
+        return res(ctx.json({}));
+      })
+    );
 
     const newProps = {
       credentials: [],
@@ -423,7 +427,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));

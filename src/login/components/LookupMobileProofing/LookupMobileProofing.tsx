@@ -12,7 +12,7 @@ interface LookupMobileProofingProps {
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.nins.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const dispatch = useDashboardAppDispatch();
   const [showModal, setShowModal] = useState(false);
@@ -87,7 +87,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
           <FormattedMessage
             description="lmp initialize proofing help text"
-            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not 
+            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not
             include all registered phone numbers.`}
           />
         </p>
@@ -103,8 +103,8 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         }
         mainText={
           <FormattedMessage
-            defaultMessage={`This check will be done in a registry updated by the phone operators. 
-            If they have not added your details, we won't be able to find you and you need to choose another way 
+            defaultMessage={`This check will be done in a registry updated by the phone operators.
+            If they have not added your details, we won't be able to find you and you need to choose another way
             to verify your identity.`}
             description="lmp.confirm_info"
           />

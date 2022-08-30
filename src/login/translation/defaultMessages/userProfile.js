@@ -11,8 +11,6 @@ export const userProfile = {
     <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
   ),
 
-  "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
-
   "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
 
   "dashboard.tagline_unverified": (
@@ -26,20 +24,7 @@ export const userProfile = {
     <FormattedMessage id="dashboard.tagline_verified" defaultMessage={`Make eduID more secure`} />
   ),
 
-  /* ----- DASHBOARDNAV  ------- */
-  "dashboard_nav.profile": <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />,
-  "dashboard_nav.identity": <FormattedMessage id="dashboard_nav.identity" defaultMessage={`Identity`} />,
-  "dashboard_nav.settings": <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />,
-  "dashboard_nav.advanced-settings": (
-    <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
-  ),
-  "dashboard_nav.settings-confirm-phone": (
-    <FormattedMessage
-      id="dashboard_nav.settings-confirm-phone"
-      defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
-    />
-  ),
-  "dashboard_nav.back": <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />,
+  /* ----- verifyIdentity  ------- */
 
   "verify-identity.verified_pw_reset_extra_security": (
     <FormattedMessage
@@ -48,7 +33,6 @@ export const userProfile = {
     />
   ),
 
-  /* ----- verifyIdentity  ------- */
   "verify-identity.verified_main_title": (
     <FormattedMessage id="verify-identity.verified_main_title" defaultMessage={`Your eduID is ready to use`} />
   ),
@@ -864,17 +848,6 @@ export const userData = {
     <FormattedMessage id="SecurityMsg.rm_webauthn" defaultMessage={`Security key has been removed.`} />
   ),
 
-  /* ----- ACCOUNT LINKING ------- */
-
-  "account_linking.main_title": <FormattedMessage id="account_linking.main_title" defaultMessage={` ORCID account`} />,
-
-  "account_linking.long_description": (
-    <FormattedMessage
-      id="account_linking.long_description"
-      defaultMessage={`If you are a reseacher with an ORCID iD you can share it with your eduID.`}
-    />
-  ),
-
   /* ----- ORCID ------- */
 
   "orc.authorization_success": (
@@ -910,27 +883,6 @@ export const userData = {
         ),
       }}
     />
-  ),
-
-  // -------- account id ------- //
-
-  "accountId.main_title": <FormattedMessage id="accountId.main_title" defaultMessage={`Unique ID`} />,
-  "accountId.long_description": (
-    <FormattedMessage
-      id="accountId.long_description"
-      defaultMessage={`This is an automatically generated unique identifier for your eduID.`}
-    />
-  ),
-
-  "accountId.short_description": (
-    <FormattedMessage
-      id="accountId.short_description"
-      defaultMessage={`You might be asked to share this information if you need technical support.`}
-    />
-  ),
-
-  "accountId.accountId_display_title": (
-    <FormattedMessage id="accountId.accountId_display_title" defaultMessage={`Unique ID`} />
   ),
 
   "orc.authorization_fail": (

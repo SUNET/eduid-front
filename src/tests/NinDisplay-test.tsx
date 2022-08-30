@@ -1,15 +1,11 @@
 import AddNin from "components/AddNin";
-import { history } from "components/DashboardMain";
 import NinDisplay from "components/NinDisplay";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router";
-import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+
 const mock = require("jest-mock");
 
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {
@@ -17,23 +13,16 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([
-    { number: "199901100006", verified: false, primary: false },
-    { number: "199901110005", verified: false, primary: false },
-    { number: "199901110004", verified: false, primary: false },
-  ]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({
+      ...dashboardTestState,
+      identities: { nin: { number: "199901100006", verified: false }, is_verified: false },
+    });
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -55,23 +44,16 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([
-    { number: "199901100006", verified: false, primary: false },
-    { number: "199901100005", verified: false, primary: false },
-    { number: "199901100004", verified: true, primary: true },
-  ]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({
+      ...dashboardTestState,
+      identities: { nin: { number: "199901100004", verified: true }, is_verified: true },
+    });
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -82,7 +64,6 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   });
 });
 
-history.push("/profile");
 describe("NinDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -99,19 +80,13 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore();
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <NinDisplay nin={state.nins.first_nin} />
-        </MemoryRouter>
-      ),
+      component: <NinDisplay nin={state.identities.nin} />,
       store: store,
     });
   });
@@ -133,22 +108,16 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([
-    { number: "196701100006", verified: false, primary: false },
-    { number: "196701110005", verified: false, primary: false },
-  ]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({
+      ...dashboardTestState,
+      identities: { nin: { number: "196701100006", verified: false }, is_verified: false },
+    });
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -171,22 +140,16 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([
-    { number: "196701100006", verified: false, primary: false },
-    { number: "196701110005", verified: true, primary: true },
-  ]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({
+      ...dashboardTestState,
+      identities: { nin: { number: "196701110005", verified: true }, is_verified: true },
+    });
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });

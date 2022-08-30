@@ -1,25 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
+import { useSignupAppSelector } from "signup-hooks";
 
-function AccountCreated(props: { email: string }) {
+// identifiers used in tests
+export const registeredEmailClass = "registered-email";
+
+function AccountCreated() {
+  const email = useSignupAppSelector((state) => state.signup.email);
+
   return (
-    <div className="horizontal-content-margin content">
+    <React.Fragment>
       <h1 className="register-header">
-        <FormattedMessage
-          defaultMessage="A link has been sent to your email address."
-          description="Register Account created"
-        />
+        <FormattedMessage defaultMessage="A link has been sent to your email address." description="Signup" />
       </h1>
       <div id="email-display">
         <p>
-          <FormattedMessage
-            defaultMessage="Complete registration by clicking the link sent to:"
-            description="Register email label"
-          />
+          <FormattedMessage defaultMessage="Complete registration by clicking the link sent to:" description="Signup" />
         </p>
-        <h4 className="register-header registered-email">{props.email}</h4>
+        <h4 className={`register-header ${registeredEmailClass}`}>{email}</h4>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

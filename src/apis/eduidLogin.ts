@@ -4,7 +4,7 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
-import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
+import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -216,7 +216,7 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
-interface LoginNextRequest {
+export interface LoginNextRequest {
   ref: string;
   this_device?: string;
   remember_me: boolean;

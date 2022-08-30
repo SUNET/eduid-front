@@ -1,9 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { showNotification, clearNotifications } from "reducers/Notifications";
+import { LoginRootState } from "login-init-app";
+import { clearNotifications, showNotification } from "reducers/Notifications";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import { LoginRootState } from "../../../app_init/initStore";
-import { history } from "../../../components/App/App";
 import {
   clearCountdown,
   countFiveMin,
@@ -38,9 +37,9 @@ export function* requestPhoneCodeForNewPassword() {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
       if (locationUrl.includes("extra-security")) {
-        history.push(`/reset-password/extra-security/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/extra-security"));
       } else if (locationUrl.includes("phone-code-sent")) {
-        history.push(`/reset-password/phone-code-sent/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
       }
       return;
     }
@@ -49,7 +48,7 @@ export function* requestPhoneCodeForNewPassword() {
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
     countFiveMin("phone");
-    history.push(`/reset-password/phone-code-sent/${data.email_code}`);
+    yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
   } catch (error) {
     yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }

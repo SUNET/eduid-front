@@ -1,29 +1,17 @@
-import React from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./Login/Login";
-import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
-import EmailLinkSent from "./ResetPassword/EmailLinkSent";
-import ExtraSecurity from "./ResetPassword/ExtraSecurity";
-import PhoneCodeSent from "./ResetPassword/PhoneCodeSent";
-import SetNewPassword from "./ResetPassword/SetNewPassword";
-import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
+import ResetPassword from "./ResetPassword/ResetPassword";
 
 function LoginApp(): JSX.Element {
   return (
     <div id="content" className="horizontal-content-margin content">
-      <Switch>
-        <Route exact path={`/login/other/:state_id`} component={UseOtherDevice2} />
-        <Route exact path={`/login/password/:ref`} component={Login} />
-        <Route exact path={`/login/:ref`} component={Login} />
-        <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
-        <Route path={`/reset-password/email`} component={ResetPasswordMain} />
-        <Route exact path="/reset-password/email-link-sent" component={EmailLinkSent} />
-        <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
-        <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
-        <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
-        <Route path="/reset-password/set-new-password" component={SetNewPassword} />
-      </Switch>
+      <Routes>
+        <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
+        <Route path="/login/password/:ref" element={<Login />} />
+        <Route path="/login/:ref" element={<Login />} />
+        <Route path="/reset-password/*" element={<ResetPassword />} />
+      </Routes>
     </div>
   );
 }

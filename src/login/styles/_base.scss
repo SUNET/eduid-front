@@ -37,6 +37,14 @@ body {
   @media (max-width: $bp-lg) {
     padding-bottom: 4rem;
   }
+
+  .content {
+    padding-top: 3rem;
+
+    @media (max-width: $bp-lg) {
+      padding-top: 2rem;
+    }
+  }
 }
 
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
@@ -66,14 +74,6 @@ body {
   // this is added to prevent margin collapse (look for other solution if causing problems)
   display: flex;
   flex-direction: column;
-}
-
-.content {
-  padding-top: 3rem;
-
-  @media (max-width: $bp-lg) {
-    padding-top: 2rem;
-  }
 }
 
 .border-line {

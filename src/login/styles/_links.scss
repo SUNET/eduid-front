@@ -7,13 +7,25 @@ a,
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
+  border-bottom: none;
 
   &:hover {
     color: $orange-highlight;
+    border-bottom: none;
+    text-decoration: underline;
   }
 
   // hiding opt in beta link
   &#stable-link.hidden {
     display: none;
+  }
+}
+
+a .disabled {
+  color: $gray;
+  text-decoration: none;
+
+  &:hover {
+    cursor: not-allowed;
   }
 }

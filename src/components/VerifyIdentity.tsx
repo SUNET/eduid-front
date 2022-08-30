@@ -11,7 +11,7 @@ import { FormattedMessage } from "react-intl";
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
   let vettingButtons;
-  const nin = useDashboardAppSelector((state) => state.nins.first_nin);
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedNin = !!nin?.verified;
@@ -57,7 +57,7 @@ function VerifyIdentity(): JSX.Element | null {
           <p>
             <FormattedMessage
               description="verify identity unverified description"
-              defaultMessage={`To be able to use eduID you have to prove your identity. Add your national id number 
+              defaultMessage={`To be able to use eduID you have to prove your identity. Add your national id number
               and verify it in real life.`}
             />
           </p>
@@ -79,7 +79,7 @@ function VerifyIdentity(): JSX.Element | null {
               <p className="x-adjust">
                 <FormattedMessage
                   description="verify-identity.connect-nin_description"
-                  defaultMessage={`Choose a method to verify that you have access to the added id number. 
+                  defaultMessage={`Choose a method to verify that you have access to the added id number.
                       If you are unable to use a method you need to try another.`}
                 />
               </p>
@@ -97,10 +97,11 @@ function VerifyIdentity(): JSX.Element | null {
               <p className="x-adjust">
                 <FormattedMessage
                   description="verify identity verified description"
-                  defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to 
+                  defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to
                   services related to higher education.`}
                 />
               </p>
+              <AddNin />
             </li>
             <li>
               <h4>
@@ -112,7 +113,7 @@ function VerifyIdentity(): JSX.Element | null {
               <p className="x-adjust">
                 <FormattedMessage
                   description="verify identity improve security description"
-                  defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at 
+                  defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at
                       password reset under Settings.`}
                 />
               </p>

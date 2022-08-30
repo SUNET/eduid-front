@@ -1,11 +1,10 @@
-import { put, call, select } from "redux-saga/effects";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { LoginRootState } from "login-init-app";
+import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
+import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import postRequest from "../postDataRequest";
-import { history } from "../../../components/App/App";
-import { LoginRootState } from "../../../app_init/initStore";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 
 export type VerifyEmailResponse = {
   email_address: string;
@@ -29,16 +28,16 @@ export function* requestLinkCode() {
       if (response.error) {
         // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
         yield put(response);
-        history.push(`/reset-password/email`);
+        yield put(resetPasswordSlice.actions.setGotoUrl("/reset-password/email"));
         return;
       }
       // if API call successfully post data save it to store
       yield put(resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(response.payload));
       // Completed with freja eid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
-        history.push(`/reset-password/set-new-password/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/set-new-password/`));
       } else {
-        history.push(`/reset-password/extra-security/${data.email_code}`);
+        yield put(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/`));
       }
     } catch (error) {
       yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());

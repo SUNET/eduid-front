@@ -1,26 +1,25 @@
 import { resetPasswordSlice } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 
 interface ResetPasswordLayoutProps {
-  emailCode?: string;
-  heading: string;
+  heading: string | JSX.Element;
   // ReactNode allows multiple elements, strings, numbers, fragments, portals
   children?: React.ReactNode;
-  description: string;
-  linkInfoText: string;
-  linkInfoHeading: string;
-  linkText: string;
+  description: string | JSX.Element;
+  linkInfoText: string | JSX.Element;
+  linkInfoHeading: string | JSX.Element;
+  linkText: string | JSX.Element;
 }
 
 const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const continueSetPassword = () => {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-    history.push(`/reset-password/set-new-password/${props.emailCode}`);
+    navigate("/reset-password/set-new-password");
     dispatch(clearNotifications());
   };
   return (

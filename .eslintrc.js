@@ -6,7 +6,13 @@ module.exports = {
     mocha: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:react/jsx-runtime",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -15,7 +21,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "jest-dom"],
   root: true,
   rules: {
     "no-useless-escape": "off",
@@ -35,10 +41,6 @@ module.exports = {
   },
   globals: {
     // global variables from init-config and public-path, to prevent having "no-undef" errors
-    EDUID_COOKIE_NAME: true,
-    LOGIN_CONFIG_URL: true,
-    PASSWORD_SERVICE_URL: true,
-    GROUP_MGMT_URL: true,
     __webpack_public_path__: true,
   },
   settings: {

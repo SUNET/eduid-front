@@ -1,47 +1,50 @@
 @import "./variables.scss";
-
-header {
+.banner {
   background-color: $white;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  align-items: center;
 
-  .eduid-logo {
-    width: 117px;
-    height: 40px;
-    background-image: url(../../../img/ds-eduID-logo-black117x40px.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 0;
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
 
-    @media (max-width: $bp-xs) {
-      width: 99px;
-      height: 34px;
+    .eduid-logo {
+      width: 117px;
+      height: 40px;
+      background-image: url(../../../img/ds-eduID-logo-black117x40px.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin: 0;
+      display: inline-block;
+
+      @media (max-width: $bp-md) {
+        width: 99px;
+        height: 34px;
+      }
     }
-  }
 
-  .header-user {
-    font-size: 1rem;
-    text-align: right;
-    width: 100%;
-    font-family: $proxima-bold;
+    .header-user {
+      font-size: 1rem;
+      text-align: right;
+      width: 100%;
+      font-family: $proxima-bold;
 
-    @media (min-width: $bp-sm) {
-      padding-right: 1rem;
-      font-size: 1.125rem;
+      @media (min-width: $bp-sm) {
+        padding-right: 1rem;
+        font-size: 1.125rem;
+      }
     }
-  }
-
-  button {
-    order: 3;
-  }
-
-  @media (max-width: $bp-sm) {
-    display: block;
 
     button {
-      float: right;
+      order: 3;
+    }
+
+    @media (max-width: $bp-sm) {
+      display: block;
+
+      button {
+        float: right;
+      }
     }
   }
 }

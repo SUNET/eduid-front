@@ -41,7 +41,7 @@ export function Errors() {
 
   return (
     <div className="horizontal-content-margin content">
-      <div className="swamid-error">
+      <div className="error-page">
         {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}

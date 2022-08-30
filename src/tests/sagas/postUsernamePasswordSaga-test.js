@@ -1,10 +1,11 @@
+import { storeCsrfToken } from "commonConfig";
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import postRequest from "../../login/redux/sagas/postDataRequest";
 import {
   callUsernamePasswordSaga,
   postUsernamePasswordSaga,
 } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
+import postRequest from "../../login/redux/sagas/postDataRequest";
 import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
@@ -57,7 +58,7 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     next = generator.next(successResponse);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
@@ -89,7 +90,7 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
   });
   it("_FAIL response is followed by the expected action types", () => {
     next = generator.next(failResponse);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });

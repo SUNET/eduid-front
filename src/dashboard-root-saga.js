@@ -1,19 +1,15 @@
-import * as accountLinkingActions from "actions/AccountLinking";
-import * as configActions from "actions/DashboardConfig";
 import * as headerActions from "actions/Header";
 import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as pdataActions from "actions/PersonalData";
 import * as securityActions from "actions/Security";
-import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
-import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
-import { requestConfig } from "sagas/DashboardConfig";
-import { requestLogout } from "sagas/Header";
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
+import { all, takeEvery, takeLatest } from "redux-saga/effects";
+import { requestLogout } from "sagas/Header";
 import { requestNins } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
 import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
-import { requestAllPersonalData } from "sagas/PersonalData";
+import { getInitialUserData, requestAllPersonalData } from "sagas/PersonalData";
 import {
   beginRegisterWebauthn,
   postDeleteAccount,
@@ -23,33 +19,25 @@ import {
   requestPasswordChange,
   verifyWebauthnToken,
 } from "sagas/Security";
+import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
 import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
-import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
-import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
-import { all } from "redux-saga/effects";
 
-function* configSaga() {
-  yield put(configActions.getInitialUserdata());
-}
-
-// get cookie status out of store
-export const getCookieStatus = (state) => state.groups.hasCookie;
-// allow access based on status
-function* allowGroupsSagas() {
-  let hasCookie = yield select(getCookieStatus);
-  if (hasCookie) {
-    yield [...groupsSagas];
-  }
-}
+//import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
+// // get cookie status out of store
+// export const getCookieStatus = (state) => state.groups.hasCookie;
+// // allow access based on status
+// function* allowGroupsSagas() {
+//   let hasCookie = yield select(getCookieStatus);
+//   if (hasCookie) {
+//     yield [...groupsSagas];
+//   }
+// }
 
 function* rootSaga() {
   yield all([
-    takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
-    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
-    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
+    takeLatest(getInitialUserData.type, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
@@ -72,9 +60,6 @@ function* rootSaga() {
     takeLatest(securityActions.POST_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
     takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
-    takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),
-    takeEvery(accountLinkingActions.POST_ORCID_REMOVE_SUCCESS, requestOrcid),
-    takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid),
   ]);
 }
 

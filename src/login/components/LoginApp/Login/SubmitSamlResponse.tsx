@@ -3,7 +3,7 @@ import ShowAfterDelay from "components/ShowAfterDelay";
 import { useAppSelector } from "login/app_init/hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function SubmitSamlResponse() {
   const [error, setError] = useState(false);
@@ -17,7 +17,12 @@ function SubmitSamlResponse() {
      */
     if (document.forms[0] && SAMLParameters) {
       if (!SAMLParameters.used && !backDetected) {
-        document.forms[0].submit();
+        try {
+          // submit isn't available in the tests jsdom environment
+          document.forms[0].submit();
+        } catch (error) {
+          setError(true);
+        }
       }
     } else {
       setError(true);
@@ -124,11 +129,11 @@ interface SAMLResponseFormProps {
 function SAMLResponseForm(props: SAMLResponseFormProps) {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
   const targetUrl = useAppSelector((state) => state.login.post_to);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleGoForward(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    history.goForward();
+    navigate(+1);
   }
 
   return (

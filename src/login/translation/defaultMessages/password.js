@@ -98,19 +98,9 @@ export const changePassword = {
   "security.password_credential_type": (
     <FormattedMessage id="security.password_credential_type" defaultMessage={`Password`} />
   ),
-
-  // links to reset password from sign up
-  "used.reset-password": <FormattedMessage id="used.reset-password" defaultMessage={`Reset your password`} />,
 };
 
 export const resetPassword = {
-  "resetpw.heading-add-email": (
-    <FormattedMessage
-      id="resetpw.heading-add-email"
-      defaultMessage={`Enter your email address registered to your account`}
-    />
-  ),
-  "resetpw.send-link": <FormattedMessage id="resetpw.send-link" defaultMessage={`send link to email`} />,
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"
@@ -147,9 +137,6 @@ export const resetPassword = {
       id="resetpw.extra-security_description"
       defaultMessage={`A password reset using an extra security option will keep your account confirmed.`}
     />
-  ),
-  "resetpw.extra-phone_send_sms": (values) => (
-    <FormattedMessage id="resetpw.extra-phone_send_sms" defaultMessage={`Send sms to {phone}`} values={values} />
   ),
   "resetpw.use_extra_security_key": (
     <FormattedMessage id="resetpw.use_extra_security_key" defaultMessage={`Use your security key`} />

@@ -1,15 +1,9 @@
 import AddNin from "components/AddNin";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";
-import expect from "expect";
-import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
-import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
-
-//const mock = require("jest-mock");
 
 // I am the component that: displays the nin input form or the added nin in the vetting process.
 // My job is to:
@@ -34,19 +28,13 @@ describe("AddNin component, when no nin is saved", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore();
     // state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });
@@ -67,22 +55,16 @@ describe("AddNin component, when a nin is saved", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_nins = ninStateFromNinList([
-    { number: "196701100006", verified: false, primary: false },
-    { number: "196701110005", verified: false, primary: false },
-  ]);
-
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    store = fakeStore({
+      ...dashboardTestState,
+      identities: { nin: { number: "196701100006", verified: false }, is_verified: false },
+    });
     state = store.getState();
 
     wrapper = setupComponent({
-      component: (
-        <MemoryRouter>
-          <AddNin />
-        </MemoryRouter>
-      ),
+      component: <AddNin />,
       store: store,
     });
   });

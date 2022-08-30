@@ -1,31 +1,27 @@
-import React, { Fragment, useEffect, useState } from "react";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { useHistory } from "react-router-dom";
-import EduIDButton from "../../../../components/EduIDButton";
-import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
-import ResetPasswordLayout from "./ResetPasswordLayout";
-import PropTypes from "prop-types";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import ExtraSecurityToken from "./ExtraSecurityToken";
-import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
-import { Dispatch } from "redux";
-import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import Splash from "components/Splash";
+import { translate } from "login/translation";
+import React, { Fragment, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
+import EduIDButton from "../../../../components/EduIDButton";
+import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import ExtraSecurityToken from "./ExtraSecurityToken";
+import ResetPasswordLayout from "./ResetPasswordLayout";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
   extraSecurityKey: Array<string>;
-  translate(msg: string): string;
   ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const SecurityKeyButton = ({
+function SecurityKeyButton({
   selected_option,
   extraSecurityKey,
-  translate,
   ShowSecurityKey,
-}: SecurityKeyButtonProps): JSX.Element => {
+}: SecurityKeyButtonProps): JSX.Element {
   return (
     <>
       {!selected_option ? (
@@ -47,18 +43,10 @@ const SecurityKeyButton = ({
       ) : null}
     </>
   );
-};
+}
 
 interface SecurityWithSMSButtonProps {
   extraSecurityPhone: Array<PhoneInterface>;
-  //TODO: add specific type
-  /* eslint-disable @typescript-eslint/no-explicit-any*/
-  translate(msg: string): any;
-  dispatch: Dispatch;
-  history: {
-    push(url: string): void;
-  };
-  emailCode?: string;
 }
 
 export interface PhoneInterface {
@@ -67,11 +55,9 @@ export interface PhoneInterface {
   phone_code?: string;
 }
 
-const SecurityWithSMSButton = ({
-  extraSecurityPhone,
-  translate,
-  dispatch,
-}: SecurityWithSMSButtonProps): JSX.Element => {
+const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProps): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const sendConfirmCode = (phone: PhoneInterface) => {
     dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
@@ -79,6 +65,8 @@ const SecurityWithSMSButton = ({
   return (
     <>
       {extraSecurityPhone.map((phone: PhoneInterface) => {
+        const maskedPhone = phone.number.replaceAll("X", "*");
+
         return (
           <div key={phone.index}>
             {
@@ -88,9 +76,11 @@ const SecurityWithSMSButton = ({
                 key={phone.index}
                 onClick={() => sendConfirmCode(phone)}
               >
-                {translate("resetpw.extra-phone_send_sms")({
-                  phone: phone.number.replaceAll("X", "*"),
-                })}
+                <FormattedMessage
+                  defaultMessage="Send sms to {phone}"
+                  description="Reset password"
+                  values={{ phone: maskedPhone }}
+                />
               </EduIDButton>
             }
           </div>
@@ -100,18 +90,12 @@ const SecurityWithSMSButton = ({
   );
 };
 
-interface ExtraSecurityProps {
-  translate(msg: string): string;
-}
-
-function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
-  const history = useHistory();
+export default function ExtraSecurity(): JSX.Element {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [extraSecurity, setExtraSecurity] = useState<ExtraSecurityType | null>(null);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const url = document.location.href;
-  const urlCode = url.split("/").reverse()[0];
   const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   // compose external link
@@ -125,14 +109,13 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity(""));
-    // dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     if (extra_security !== undefined) {
       if (Object.keys(extra_security).length > 0) {
         setExtraSecurity(extra_security);
       }
       if (!Object.keys(extra_security).length) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-        history.push(`/reset-password/set-new-password/${emailCode}`);
+        navigate("/reset-password/set-new-password");
       }
     }
   }, [suggested_password]);
@@ -140,15 +123,13 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   useEffect(() => {
     if (window.location.search) {
       const message = window.location.search.split("=")[1];
-      const emailCode = urlCode.split("?");
       if (message.includes("completed")) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-        history.push(`/reset-password/set-new-password/${emailCode[0]}`);
+        navigate("/reset-password/set-new-password");
       } else if (message.includes("%3A" + "ERROR%3A")) {
         const error = message.split("%3A" + "ERROR%3A")[1];
         dispatch(showNotification({ message: error, level: "error" }));
-        history.push(`/reset-password/extra-security/${emailCode[0]}`);
-        dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode[0]));
+        navigate("/reset-password/extra-security");
       }
     }
   }, [emailCode, suggested_password]);
@@ -174,26 +155,24 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
 
   const toPhoneCodeForm = () => {
     dispatch(clearNotifications());
-    history.push(`/reset-password/phone-code-sent/${emailCode}`);
+    navigate("/reset-password/phone-code-sent");
   };
 
   return (
     <Splash showChildren={!!extraSecurity}>
       {
         <ResetPasswordLayout
-          heading={props.translate("resetpw.extra-security_heading")}
-          description={props.translate("resetpw.extra-security_description")}
-          linkInfoHeading={props.translate("resetpw.without_extra_security_heading")}
-          linkInfoText={props.translate("resetpw.without_extra_security")}
-          linkText={props.translate("resetpw.continue_reset_password")}
-          emailCode={emailCode}
+          heading={translate("resetpw.extra-security_heading")}
+          description={translate("resetpw.extra-security_description")}
+          linkInfoHeading={translate("resetpw.without_extra_security_heading")}
+          linkInfoText={translate("resetpw.without_extra_security")}
+          linkText={translate("resetpw.continue_reset_password")}
         >
           {extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? (
             <SecurityKeyButton
               selected_option={selected_option}
               ShowSecurityKey={ShowSecurityKey}
               extraSecurityKey={Object.keys(extraSecurity.tokens)}
-              translate={props.translate}
             />
           ) : null}
           {!selected_option && extraSecurity && extraSecurity.external_mfa && (
@@ -207,23 +186,17 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
                   dispatch(clearNotifications());
                 }}
               >
-                {props.translate("eidas.freja_eid_ready")}
+                {translate("eidas.freja_eid_ready")}
               </EduIDButton>
             </div>
           )}
           {!selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? (
             <>
-              <SecurityWithSMSButton
-                extraSecurityPhone={extraSecurity.phone_numbers}
-                translate={props.translate}
-                dispatch={dispatch}
-                history={history}
-                emailCode={emailCode}
-              />
+              <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} />
               <p className="enter-phone-code">
-                {props.translate("resetpw.received-sms")}&nbsp;
+                {translate("resetpw.received-sms")}&nbsp;
                 <a className="text-link" onClick={() => toPhoneCodeForm()}>
-                  {props.translate("resetpw.enter-code")}
+                  {translate("resetpw.enter-code")}
                 </a>
               </p>
             </>
@@ -233,11 +206,3 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
     </Splash>
   );
 }
-
-ExtraSecurity.propTypes = {
-  history: PropTypes.object,
-  location: PropTypes.shape({ pathname: PropTypes.string }),
-  translate: PropTypes.func.isRequired,
-};
-
-export default InjectIntl(ExtraSecurity);

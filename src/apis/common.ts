@@ -2,7 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
-import { LoginAppDispatch } from "login/app_init/initStore";
+import { LoginAppDispatch } from "login-init-app";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
 import { SignupAppDispatch } from "signup-init-app";
 
@@ -84,6 +84,20 @@ export const genericApiFail = createAction("genericApi_FAIL", function prepare(m
 
 /*********************************************************************************************************************/
 /*
+ * Make sure an URL has a trailing slash, optionally joining it with an endpoint.
+ */
+export function urlJoin(base_url: string, endpoint?: string) {
+  if (!base_url.endsWith("/")) {
+    base_url = base_url.concat("/");
+  }
+  if (endpoint) {
+    return base_url + endpoint;
+  }
+  return base_url;
+}
+
+/*********************************************************************************************************************/
+/*
  * Return a promise that will make an API call to an eduID backend, for use in async thunks.
  */
 export function makeRequest<T>(
@@ -95,15 +109,7 @@ export function makeRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  let url;
-  if (endpoint) {
-    if (!base_url.endsWith("/")) {
-      base_url = base_url.concat("/");
-    }
-    url = base_url + endpoint;
-  } else {
-    url = base_url;
-  }
+  const url = urlJoin(base_url, endpoint);
 
   // Add the current CSRF token
   if (body !== undefined && body.csrf_token === undefined) {
@@ -138,4 +144,9 @@ export function makeBareRequest<T>(
     .then(checkStatus)
     .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
     .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
+}
+
+// type predicate to help identify rejected payloads from backend.
+export function isFSA(action: any): action is PayloadAction {
+  return "type" in action && "payload" in action;
 }

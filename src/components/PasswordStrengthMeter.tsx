@@ -30,6 +30,10 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     if (pdata.display_name) userInput.push(pdata.display_name);
     userInput = userInput.concat(emails.map((x) => x.email));
 
+    if (!minRequiredEntropy) {
+      return;
+    }
+
     let score = 0,
       minEntropy = minRequiredEntropy / 5,
       entropy = 0;

@@ -163,7 +163,7 @@ export function* beginRegisterWebauthn() {
     }
     yield put(action);
   } catch (error) {
-    console.log("Problem begining webauthn registration", error);
+    console.log("Problem beginning webauthn registration", error);
     yield* failRequest(error, beginWebauthnFail);
   }
 }

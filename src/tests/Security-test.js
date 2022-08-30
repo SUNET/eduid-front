@@ -1,25 +1,26 @@
 const mock = require("jest-mock");
-import React from "react";
+import * as actions from "actions/Security";
+import { storeCsrfToken } from "commonConfig";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import SecurityContainer from "containers/Security";
 import { mount } from "enzyme";
-import { put, call } from "redux-saga/effects";
 import expect from "expect";
 import SecurityComponent from "components/Security";
 import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { call, put } from "redux-saga/effects";
 import {
-  requestCredentials,
-  fetchCredentials,
-  postDeleteAccount,
-  deleteAccount,
   beginRegisterWebauthn,
   beginWebauthnRegistration,
+  deleteAccount,
+  fetchCredentials,
+  postDeleteAccount,
   registerWebauthn,
-  webauthnRegistration,
-  removeWebauthnToken,
   removeToken,
+  removeWebauthnToken,
+  requestCredentials,
+  webauthnRegistration,
 } from "sagas/Security";
-import { notificationsSlice } from "reducers/Notifications";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -435,7 +436,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));
@@ -463,7 +464,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));
@@ -486,7 +487,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_BEGIN_SUCCESS);
   });
@@ -501,19 +502,19 @@ describe("Async component", () => {
       clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
       credentialId: attestation.id,
       description: mockState.security.webauthn_token_description,
-      csrf_token: mockState.config.csrf_token,
+      csrf_token: "csrf-token",
     };
     expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
     const action = {
       type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
       payload: {
-        csrf_token: mockState.config.csrf_token,
+        csrf_token: "csrf-token",
         credentials: ["dummy-credentials"],
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    expect(next.value.PUT.action.payload.csrf_token).toEqual("csrf-token");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
+    expect(next.value.PUT.action.payload).toEqual("csrf-token");
     delete action.payload.csrf_token;
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
@@ -541,7 +542,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     delete action.payload.csrf_token;
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
@@ -567,7 +568,7 @@ describe("Async component", () => {
       },
     };
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value.PUT.action.type).toEqual(storeCsrfToken.type);
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));
