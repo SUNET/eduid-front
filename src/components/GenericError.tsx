@@ -1,9 +1,8 @@
 import { useAppSelector } from "login/app_init/hooks";
 import { Fragment } from "react";
-import { FallbackProps } from "react-error-boundary";
 import { FormattedMessage } from "react-intl";
 
-export function GenericError(props: FallbackProps) {
+export function GenericError() {
   return (
     <Fragment>
       <div className="horizontal-content-margin content">
