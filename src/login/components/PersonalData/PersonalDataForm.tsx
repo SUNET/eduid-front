@@ -55,7 +55,6 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
             defaultMessage="Update first and last names from the Swedish Population Register."
             description="personal data update locked names"
           />
-          {/* {translate("pd.update_locked_names")} */}
         </label>
       </div>
     </Fragment>

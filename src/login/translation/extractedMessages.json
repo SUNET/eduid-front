@@ -1544,9 +1544,6 @@
   "pd.display_name": {
     "string": "Display name"
   },
-  "pd.display_name_input_help_text": {
-    "string": "Some services will show this instead of your first and last name."
-  },
   "pd.display_name_placeholder": {
     "developer_comment": "Display name label/template (edit personal data)",
     "string": "Optional alias"
@@ -1563,12 +1560,6 @@
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "First name"
-  },
-  "pd.hint.names_locked_when_verified": {
-    "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-  },
-  "pd.language": {
-    "string": "Language"
   },
   "pd.long_description": {
     "string": "This information may be used to personalise services that you access with your eduID."
@@ -1591,9 +1582,6 @@
   },
   "pd.sv_lang": {
     "string": "Svenska"
-  },
-  "pd.update_locked_names": {
-    "string": "Update first and last names from the Swedish Population Register."
   },
   "pdata.field_required": {
     "string": "This field is required"

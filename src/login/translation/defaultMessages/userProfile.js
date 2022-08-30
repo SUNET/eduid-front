@@ -563,12 +563,6 @@ export const userData = {
   "pd.no_data_added": <FormattedMessage id="pd.no_data_added" defaultMessage={`No information has been added.`} />,
   "pd.edit.button": <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />,
   "pd.edit.title": <FormattedMessage id="pd.edit.title" defaultMessage={`Edit name and language`} />,
-  "pd.update_locked_names": (
-    <FormattedMessage
-      id="pd.update_locked_names"
-      defaultMessage={`Update first and last names from the Swedish Population Register.`}
-    />
-  ),
   "pd.hint.names_locked_when_verified": (
     <FormattedMessage
       id="pd.hint.names_locked_when_verified"

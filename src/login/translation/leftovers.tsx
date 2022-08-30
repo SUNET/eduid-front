@@ -53,5 +53,4 @@ export const leftoverMessages = {
     />
   ),
   "pd.display_name": <FormattedMessage id="pd.display_name" defaultMessage={`Display name`} />,
-  "pd.language": <FormattedMessage id="pd.language" defaultMessage={`Language`} />,
 };
