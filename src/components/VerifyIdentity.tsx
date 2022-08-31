@@ -33,8 +33,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   const preExpanded: accordionUUID[] = [];
 
-  if (identities.is_verified) {
-  } else {
+  if (!identities.is_verified) {
     if (identities.nin) {
       /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
       preExpanded.push("swedish");
