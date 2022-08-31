@@ -160,8 +160,7 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
-  //const showStepTwo = Boolean(nin?.number) && !nin?.verified;
-  const showStepTwo = true;
+  const showStepTwo = Boolean(nin?.number) && !nin?.verified;
 
   return (
     <AccordionItemTemplate
