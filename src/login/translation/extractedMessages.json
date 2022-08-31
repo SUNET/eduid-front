@@ -1705,7 +1705,8 @@
     "string": "Successfully verified phone number"
   },
   "placeholder.email": {
-    "developer_comment": "placeholder text for email input"
+    "developer_comment": "placeholder text for email input",
+    "string": "name@example.com"
   },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
