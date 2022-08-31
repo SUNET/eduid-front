@@ -1,8 +1,9 @@
+import { eidasVerifyIdentity } from "apis/eduidEidas";
 import Eidas from "components/Eidas";
 import LetterProofingButton from "components/LetterProofing";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -13,11 +14,11 @@ import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
-type accordionUUID = "se" | "eu" | "world";
+type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
+  const identities = useDashboardAppSelector((state) => state.identities);
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
@@ -31,11 +32,13 @@ function VerifyIdentity(): JSX.Element | null {
   }
 
   const preExpanded: accordionUUID[] = [];
-  const expanded: accordionUUID[] = [];
 
-  if (nin) {
-    /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-    preExpanded.push("se");
+  if (identities.is_verified) {
+  } else {
+    if (identities.nin) {
+      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+      preExpanded.push("swedish");
+    }
   }
 
   return (
@@ -51,7 +54,7 @@ function VerifyIdentity(): JSX.Element | null {
       </div>
 
       <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-        <AccordionItemSe />
+        <AccordionItemSwedish />
         <AccordionItemEu />
         <AccordionItemWorld />
         <AccordionItemNoIcon />
@@ -76,11 +79,10 @@ function VerifyIdentityIntro(): JSX.Element {
         <p className="x-adjust">
           <FormattedMessage
             description="verify identity verified description"
-            defaultMessage={`The below id number is now connected to this eduID.
-            Use your eduID to log in to services related to higher education.`}
+            defaultMessage="The identities below are now connected to your eduID."
           />
         </p>
-        <AddNin />
+        <VerifiedIdentitiesTable />
       </React.Fragment>
     );
   }
@@ -100,7 +102,50 @@ function VerifyIdentityIntro(): JSX.Element {
   );
 }
 
-function AccordionItemSe(): JSX.Element | null {
+function VerifiedIdentitiesTable(): JSX.Element {
+  const identities = useDashboardAppSelector((state) => state.identities);
+  return (
+    <figure className="table-responsive">
+      <table className="table">
+        <tbody>
+          {identities.nin?.verified && (
+            <tr className="border-row">
+              <td>
+                <CircleFlag countryCode="se" height="35" />
+              </td>
+              <td>
+                <strong>
+                  <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
+                </strong>
+              </td>
+              <td>
+                <AddNin />
+              </td>
+            </tr>
+          )}
+
+          {identities.eidas?.verified && (
+            <tr className="border-row">
+              <td>
+                <CircleFlag countryCode="european_union" height="35" />
+              </td>
+              <td>
+                <strong>
+                  <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
+                </strong>
+              </td>
+              <td>
+                {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </figure>
+  );
+}
+
+function AccordionItemSwedish(): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
@@ -116,14 +161,15 @@ function AccordionItemSe(): JSX.Element | null {
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
-  const showStepTwo = Boolean(nin?.number) && !nin?.verified;
+  //const showStepTwo = Boolean(nin?.number) && !nin?.verified;
+  const showStepTwo = true;
 
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" />}
       title="Swedish personal ID number"
       additionalInfo=""
-      uuid="se"
+      uuid="swedish"
     >
       <ol className="listed-steps">
         <li>
@@ -193,6 +239,17 @@ function PhoneProofingAccordionItem(): JSX.Element | null {
 }
 
 function AccordionItemEu(): JSX.Element | null {
+  const dispatch = useDashboardAppDispatch();
+
+  async function handleOnClick() {
+    const response = await dispatch(eidasVerifyIdentity({ method: "eidas" }));
+    if (eidasVerifyIdentity.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    }
+  }
+
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="european_union" height="35" />}
@@ -200,7 +257,10 @@ function AccordionItemEu(): JSX.Element | null {
       additionalInfo="eIDAS"
       uuid="eu"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!
+      <p>If you have an electronic ID from a country connected to EIDAS, you can connect it to your eduID.</p>
+      <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
+        Proceed
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
