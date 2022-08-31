@@ -467,7 +467,7 @@
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
-    "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto och därefter välja vilken av dem som ska vara primär."
+    "string": "Du kan koppla en eller flera e-postadresser till ditt eduID."
   },
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
@@ -654,7 +654,7 @@
   },
   "ZQcORE": {
     "developer_comment": "Phones long description",
-    "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
+    "string": "Du kan koppla ett eller flera mobiltelefonnummer till ditt eduID."
   },
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
@@ -1684,7 +1684,7 @@
     "string": "Ogiltigt telefonnummer"
   },
   "phones.long_description": {
-    "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
+    "string": "Du kan koppla ett eller flera mobiltelefonnummer till ditt eduID."
   },
   "phones.primary-success": {
     "string": "Ditt primära telefonnummer har ändrats"
