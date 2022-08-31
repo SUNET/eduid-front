@@ -17,7 +17,6 @@ import {
   requestMakePrimaryEmail,
 } from "apis/eduidEmail";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 
 interface EmailFormData {
   email?: string;
@@ -33,7 +32,7 @@ function Emails() {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.email",
-    defaultMessage: emailPlaceHolder,
+    defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
 
