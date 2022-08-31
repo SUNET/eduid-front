@@ -30,7 +30,7 @@ function ChangePassword() {
         </h4>
       </div>
       <div id="changePasswordDialog">
-        <ChangePasswordForm finish_url="security" />
+        <ChangePasswordForm finish_url="/profile/security" />
       </div>
     </React.Fragment>
   );
