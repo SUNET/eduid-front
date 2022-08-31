@@ -255,7 +255,20 @@ function AccordionItemEu(): JSX.Element | null {
       additionalInfo="eIDAS"
       uuid="eu"
     >
-      <p>If you have an electronic ID from a country connected to EIDAS, you can connect it to your eduID.</p>
+      <p>
+        <FormattedMessage
+          description="verify identity"
+          defaultMessage={`If you have an electronic ID from a country connected to eIDAS,
+                           you can connect it to your eduID.`}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          description="verify identity"
+          defaultMessage={`The button below will take you to an external site where you log in with your
+                         electronic ID to connect your identity to eduID.`}
+        />
+      </p>
       <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
         Proceed
       </EduIDButton>
