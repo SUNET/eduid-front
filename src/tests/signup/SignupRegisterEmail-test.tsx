@@ -1,5 +1,4 @@
 import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 test("e-mail form works as expected", () => {
@@ -15,7 +14,7 @@ test("e-mail form works as expected", () => {
   const input = screen.getByRole("textbox");
   expect(input).toHaveFocus();
   expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", emailPlaceHolder);
+  expect(input).toHaveProperty("placeholder id", "placeholder.email");
 
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeDisabled();
@@ -37,7 +36,7 @@ test("e-mail form accepts valid data (signup happy case)", async () => {
   const input = screen.getByRole("textbox");
   expect(input).toHaveFocus();
   expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", emailPlaceHolder);
+  expect(input).toHaveProperty("placeholder id", "placeholder.email");
   fireEvent.change(input, { target: { value: "test@example.org" } });
 
   const button = screen.getByRole("button", { name: "Create eduID" });

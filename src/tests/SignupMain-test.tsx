@@ -1,6 +1,5 @@
 import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
 import { fireEvent, render, screen, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 
 test("show splash screen when not configured", () => {
   render(<SignupMain />, {
@@ -27,7 +26,7 @@ test("renders e-mail form as expected", () => {
   const input = screen.getByRole("textbox");
   expect(input).toHaveFocus();
   expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", emailPlaceHolder);
+  expect(input).toHaveProperty("placeholder id", "placeholder.email");
 
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeDisabled();

@@ -1,6 +1,5 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { LoginMain } from "login/components/LoginMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
@@ -47,7 +46,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
   const emailInput = screen.getByRole("textbox");
   expect(emailInput).toHaveFocus();
   expect(emailInput).toHaveAccessibleName(/^Email address/);
-  expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
+  expect(emailInput).toHaveProperty("placeholder id", "placeholder.email");
   fireEvent.change(emailInput, { target: { value: email } });
 
   const forgotButton = screen.getByRole("link", { name: /^forgot/i });
@@ -120,7 +119,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const emailInput = screen.getByRole("textbox");
   expect(emailInput).toHaveFocus();
   expect(emailInput).toHaveAccessibleName(/^Email address/);
-  expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
+  expect(emailInput).toHaveProperty("placeholder id", "placeholder.email");
   fireEvent.change(emailInput, { target: { value: email } });
 
   expect(sendButton).toBeEnabled();
