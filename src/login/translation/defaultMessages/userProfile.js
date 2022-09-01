@@ -560,28 +560,9 @@ export const userData = {
 
   "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
 
-  "pd.display_name_input_help_text": (
-    <FormattedMessage
-      id="pd.display_name_input_help_text"
-      defaultMessage={`Some services will show this instead of your first and last name.`}
-    />
-  ),
-
   "pd.no_data_added": <FormattedMessage id="pd.no_data_added" defaultMessage={`No information has been added.`} />,
   "pd.edit.button": <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />,
   "pd.edit.title": <FormattedMessage id="pd.edit.title" defaultMessage={`Edit name and language`} />,
-  "pd.update_locked_names": (
-    <FormattedMessage
-      id="pd.update_locked_names"
-      defaultMessage={`Update first and last names from the Swedish Population Register.`}
-    />
-  ),
-  "pd.hint.names_locked_when_verified": (
-    <FormattedMessage
-      id="pd.hint.names_locked_when_verified"
-      defaultMessage={`First and last name will be replaced with your legal name if you verify your eduID with your personal id number.`}
-    />
-  ),
 
   /* ----- EMAILS------- */
 

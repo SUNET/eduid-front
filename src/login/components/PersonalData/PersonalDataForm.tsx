@@ -55,7 +55,6 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
             defaultMessage="Update first and last names from the Swedish Population Register."
             description="Personal data update locked names"
           />
-          {/* {translate("pd.update_locked_names")} */}
         </label>
       </div>
     </Fragment>
@@ -93,7 +92,6 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
           description="Personal data hint names locked when verified"
         />
-        {/* {translate("pd.hint.names_locked_when_verified")} */}
       </p>
     </Fragment>
   );
@@ -115,7 +113,6 @@ const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderS
         disabled={loading || pristine || invalid || submitting}
       >
         <FormattedMessage defaultMessage="save" description="button save" />
-        {/* {translate("button_save")} */}
       </EduIDButton>
     </div>
   );
@@ -187,7 +184,6 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
               description="Personal data input help text"
             />
           }
-          // helpBlock={translate("pd.display_name_input_help_text")}
         />
       </fieldset>
       <Field
@@ -195,8 +191,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
         required={true}
         name="language"
         selectOptions={available_languages}
-        abel={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
-        // label={translate("pd.language")}
+        label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
       />
       <RenderSavePersonalDataButton {...props} />
     </Form>
