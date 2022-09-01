@@ -159,7 +159,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
 
   return (
     <Form
-      id="personaldataview-form"
+      id="personaldata-view-form"
       role="form"
       onChange={(e) => {
         formChange(e.target as unknown as FormData);
