@@ -61,24 +61,29 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
 const RenderEditableNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="given_name"
-        label={props.names.first}
-        placeholder={props.names.first}
-      />
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="surname"
-        label={props.names.last}
-        placeholder={props.names.last}
-      />
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="given_name"
+          label={props.names.first}
+          placeholder={props.names.first}
+        />
+      </fieldset>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="surname"
+          label={props.names.last}
+          placeholder={props.names.last}
+        />
+      </fieldset>
+
       <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
