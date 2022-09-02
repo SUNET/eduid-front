@@ -59,9 +59,7 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <fieldset>
-                <UsernameInputPart />
-              </fieldset>
+              <UsernameInputPart />
               <fieldset>
                 <PasswordInput name="current-password" autoComplete="current-password" />
               </fieldset>

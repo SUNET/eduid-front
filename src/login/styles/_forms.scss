@@ -36,6 +36,11 @@ form {
   color: $gray;
 }
 
+input[type="text"].form-control:disabled,
+input[type="text"].form-control[readonly] {
+  background-color: #e9ecef;
+}
+
 input.form-control,
 input.form-control.is-valid,
 input.form-control.is-invalid,
@@ -64,6 +69,7 @@ fieldset {
     @media (max-width: $bp-md) {
       text-align: center;
     }
+
     @media (max-width: $bp-xs) {
       margin: 0 0 0.75rem;
     }
