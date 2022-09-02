@@ -9,7 +9,6 @@ import EduIDButton from "../../../components/EduIDButton";
 interface NameStrings {
   first: string;
   last: string;
-  display: string;
 }
 
 interface RenderAddPersonalDataPromptProps {
@@ -28,7 +27,6 @@ const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromp
 const RenderPersonalData = (props: { names: NameStrings }) => {
   const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
   const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
   const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
@@ -40,7 +38,6 @@ const RenderPersonalData = (props: { names: NameStrings }) => {
     <div className="personal-data-info">
       <NameDisplay label={props.names.first} name={first_name} />
       <NameDisplay label={props.names.last} name={last_name} />
-      <NameDisplay label={props.names.display} name={display_name} />
       {hasPrefLanguage ? <NameDisplay label={translate("pd.language")} name={languageLabel} /> : null}
     </div>
   );
@@ -106,11 +103,6 @@ const PersonalDataParent = () => {
       id: "pd.surname",
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
-    }),
-    display: intl.formatMessage({
-      id: "pd.display_name_placeholder",
-      defaultMessage: "Optional alias",
-      description: "Display name label/template (edit personal data)",
     }),
   };
 

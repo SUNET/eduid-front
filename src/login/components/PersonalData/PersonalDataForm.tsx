@@ -19,7 +19,6 @@ import { FormattedMessage } from "react-intl";
 interface NameStrings {
   first: string;
   last: string;
-  display: string;
 }
 
 /*
