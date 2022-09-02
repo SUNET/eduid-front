@@ -23,7 +23,6 @@ const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
       valid={props.meta.valid}
       invalid={props.invalid}
       autoFocus={props.autoFocus}
-      disabled={props.disabled}
     />
   );
 };

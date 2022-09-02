@@ -85,7 +85,6 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
           placeholder={props.names.last}
         />
       </fieldset>
-
       <p className="help-text">
         <FormattedMessage
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
