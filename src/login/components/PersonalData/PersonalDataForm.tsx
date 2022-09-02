@@ -172,10 +172,11 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
       <fieldset>
         <Field
           component={CustomInput}
-          required={true}
+          required={false}
           componentClass="input"
           type="text"
           name="display_name"
+          disabled
           label={names.display}
           placeholder={names.display}
           helpBlock={
