@@ -38,7 +38,7 @@ form {
 
 input[type="text"].form-control:disabled,
 input[type="text"].form-control[readonly] {
-  background-color: #e9ecef;
+  background-color: $dark-gray;
 }
 
 input.form-control,
