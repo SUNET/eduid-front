@@ -535,19 +535,6 @@ export const userData = {
   /* ----- PERSONAL DATA------- */
   "pfilled.completion": <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />,
 
-  "pd.sv_lang": <FormattedMessage id="pd.sv_lang" defaultMessage={`Svenska`} />,
-
-  "pd.en_lang": <FormattedMessage id="pd.en_lang" defaultMessage={`English`} />,
-
-  "pd.long_description": (
-    <FormattedMessage
-      id="pd.long_description"
-      defaultMessage={`This information may be used to personalise services that you access with your eduID.`}
-    />
-  ),
-
-  "pd.main_title": <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />,
-
   "pd.all-data-success": (
     <FormattedMessage id="pd.all-data-success" defaultMessage={`Successfully retrieved personal information`} />
   ),
@@ -559,10 +546,6 @@ export const userData = {
   "pd.save-success": <FormattedMessage id="pd.save-success" defaultMessage={`Personal information updated`} />,
 
   "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
-
-  "pd.no_data_added": <FormattedMessage id="pd.no_data_added" defaultMessage={`No information has been added.`} />,
-  "pd.edit.button": <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />,
-  "pd.edit.title": <FormattedMessage id="pd.edit.title" defaultMessage={`Edit name and language`} />,
 
   /* ----- EMAILS------- */
 
