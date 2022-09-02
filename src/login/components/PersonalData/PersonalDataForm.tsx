@@ -169,24 +169,6 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
       <fieldset className="name-inputs">
         {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
       </fieldset>
-      <fieldset>
-        <Field
-          component={CustomInput}
-          required={!props.isVerifiedNin}
-          componentClass="input"
-          type="text"
-          name="display_name"
-          disabled={props.isVerifiedNin}
-          label={names.display}
-          placeholder={names.display}
-          helpBlock={
-            <FormattedMessage
-              defaultMessage="Some services will show this instead of your first and last name."
-              description="Personal data input help text"
-            />
-          }
-        />
-      </fieldset>
       <Field
         component={RadioInput}
         required={true}

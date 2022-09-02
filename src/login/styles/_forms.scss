@@ -36,11 +36,6 @@ form {
   color: $gray;
 }
 
-input[type="text"].form-control:disabled,
-input[type="text"].form-control[readonly] {
-  background-color: $mid-gray;
-}
-
 input.form-control,
 input.form-control.is-valid,
 input.form-control.is-invalid,
