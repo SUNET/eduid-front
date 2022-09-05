@@ -62,7 +62,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
 
       <div className="buttons">
-        <GoBackButton secondary={true} />
+        <GoBackButton />
         <EduIDButton
           buttonstyle="primary"
           type="submit"

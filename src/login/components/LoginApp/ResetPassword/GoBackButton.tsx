@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 interface BackToLoginButtonProps {
   primary?: boolean;
-  secondary?: boolean;
-  link?: boolean;
   onClickHandler?(): void; // optional callback for when the button is clicked
 }
 
@@ -29,7 +27,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     }
   }
 
-  const style = props.primary ? "primary" : props.secondary ? "secondary" : "link";
+  const style = props.primary ? "primary" : "secondary";
 
   return (
     <EduIDButton buttonstyle={style} className="normal-case" id="go-back-button" onClick={onClick}>
