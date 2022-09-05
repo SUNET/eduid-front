@@ -31,6 +31,10 @@
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
   },
+  "0RdYDw": {
+    "developer_comment": "pd no data added",
+    "string": "No information has been added."
+  },
   "0fMD4p": {
     "developer_comment": "SAML login finished",
     "string": "Please wait, you are being logged in..."
@@ -126,6 +130,10 @@
     "developer_comment": "Phone display title",
     "string": "Phone number"
   },
+  "5NuSNx": {
+    "developer_comment": "Personal data language",
+    "string": "Language"
+  },
   "5P95+P": {
     "developer_comment": "Reset password add email heading",
     "string": "Enter the email address registered to your eduID account."
@@ -152,6 +160,10 @@
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
+  },
+  "7yS+J6": {
+    "developer_comment": "edit button",
+    "string": "edit"
   },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
@@ -355,6 +367,10 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "IBEyFQ": {
+    "developer_comment": "pd main title",
+    "string": "Names & language"
+  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "Email addresses"
@@ -377,6 +393,10 @@
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
   },
+  "KaX8vx": {
+    "developer_comment": "pd label en",
+    "string": "English"
+  },
   "KeIhmQ": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "Authentication error"
@@ -384,6 +404,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
+  },
+  "KpcTvu": {
+    "developer_comment": "button add",
+    "string": "add"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -439,6 +463,10 @@
     "developer_comment": "Emails button add",
     "string": "Add"
   },
+  "Nk+I3K": {
+    "developer_comment": "personal data edit title",
+    "string": "Edit name and language"
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
@@ -476,6 +504,10 @@
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
+  },
+  "P7d2zq": {
+    "developer_comment": "button save",
+    "string": "save"
   },
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
@@ -620,6 +652,10 @@
     "developer_comment": "login mfa primary option button",
     "string": "Use security key"
   },
+  "XETOo6": {
+    "developer_comment": "pd long description",
+    "string": "This information may be used to personalise services that you access with your eduID."
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -716,12 +752,6 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
-  },
-  "button_add": {
-    "string": "Add"
-  },
-  "button_save": {
-    "string": "Save"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -1019,6 +1049,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
+  },
+  "fEKz/1": {
+    "developer_comment": "Personal data update locked names",
+    "string": "Update first and last names from the Swedish Population Register."
   },
   "fEsIEZ": {
     "developer_comment": "Signup",
@@ -1584,40 +1618,9 @@
   "pd.display_name": {
     "string": "Display name"
   },
-  "pd.display_name_input_help_text": {
-    "string": "Some services will show this instead of your first and last name."
-  },
-  "pd.display_name_placeholder": {
-    "developer_comment": "Display name label/template (edit personal data)",
-    "string": "Optional alias"
-  },
-  "pd.edit.button": {
-    "string": "edit"
-  },
-  "pd.edit.title": {
-    "string": "Edit name and language"
-  },
-  "pd.en_lang": {
-    "string": "English"
-  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "First name"
-  },
-  "pd.hint.names_locked_when_verified": {
-    "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-  },
-  "pd.language": {
-    "string": "Language"
-  },
-  "pd.long_description": {
-    "string": "This information may be used to personalise services that you access with your eduID."
-  },
-  "pd.main_title": {
-    "string": "Names & language"
-  },
-  "pd.no_data_added": {
-    "string": "No information has been added."
   },
   "pd.pdata-success": {
     "string": "Successfully retrieved personal information"
@@ -1628,12 +1631,6 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Last name"
-  },
-  "pd.sv_lang": {
-    "string": "Svenska"
-  },
-  "pd.update_locked_names": {
-    "string": "Update first and last names from the Swedish Population Register."
   },
   "pdata.field_required": {
     "string": "This field is required"
@@ -2189,9 +2186,17 @@
     "developer_comment": "Signup login here link",
     "string": "here"
   },
+  "wLDO8N": {
+    "developer_comment": "pd label language",
+    "string": "Language"
+  },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "wesR1u": {
+    "developer_comment": "pd label sw",
+    "string": "Svenska"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
@@ -2204,6 +2209,10 @@
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
+  },
+  "xaK37t": {
+    "developer_comment": "Personal data hint names locked when verified",
+    "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
   },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",

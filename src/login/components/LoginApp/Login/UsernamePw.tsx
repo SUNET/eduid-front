@@ -113,17 +113,15 @@ function UsernameInputPart(): JSX.Element {
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
         </div>
-        <fieldset>
-          <FinalField
-            required={true}
-            disabled={true}
-            component={TextInput}
-            componentClass="input"
-            name="email"
-            defaultValue={authn_options.forced_username}
-            label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
-          />
-        </fieldset>
+        <FinalField
+          required={true}
+          disabled={true}
+          component={TextInput}
+          componentClass="input"
+          name="email"
+          defaultValue={authn_options.forced_username}
+          label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
+        />
       </React.Fragment>
     );
   }
