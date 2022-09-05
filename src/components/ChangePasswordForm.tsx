@@ -1,13 +1,13 @@
 import { changePassword } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
+import { FormattedMessage } from "react-intl";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
@@ -75,13 +75,23 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
             <div id="password-suggestion">
               <ButtonGroup>
                 <EduIDButton buttonstyle="link" className="normal-case" id="pwmode-button" onClick={togglePasswordType}>
-                  {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
+                  {renderSuggested ? (
+                    <FormattedMessage
+                      description="chpass custom password"
+                      defaultMessage="I don't want a suggested password"
+                    />
+                  ) : (
+                    <FormattedMessage
+                      description="chpass suggest password"
+                      defaultMessage="Suggest a password for me"
+                    />
+                  )}
                 </EduIDButton>
               </ButtonGroup>
             </div>
             <div id="chpass-form" className="tabpane buttons">
               <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
-                {translate("cm.cancel")}
+                <FormattedMessage defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
               <EduIDButton
                 type="submit"
@@ -90,7 +100,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
                 disabled={formProps.submitting || formProps.invalid}
                 onClick={formProps.handleSubmit}
               >
-                {translate("chpass.button_save_password")}
+                <FormattedMessage defaultMessage="Save" description="button save" />
               </EduIDButton>
             </div>
           </React.Fragment>

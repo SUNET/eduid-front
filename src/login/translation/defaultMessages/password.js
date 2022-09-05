@@ -18,10 +18,6 @@ export const changePassword = {
     <FormattedMessage id="chpass.suggested_password" defaultMessage={`Suggested password`} />
   ),
 
-  "chpass.button_custom_password": (
-    <FormattedMessage id="chpass.button_custom_password" defaultMessage={`I don't want a suggested password`} />
-  ),
-
   "chpass.form_custom_password": (
     <FormattedMessage id="chpass.form_custom_password" defaultMessage={`Enter new password`} />
   ),
@@ -29,12 +25,6 @@ export const changePassword = {
   "chpass.form_custom_password_repeat": (
     <FormattedMessage id="chpass.form_custom_password_repeat" defaultMessage={`Repeat new password`} />
   ),
-
-  "chpass.button_suggest_password": (
-    <FormattedMessage id="chpass.button_suggest_password" defaultMessage={`Suggest a password for me`} />
-  ),
-
-  "chpass.button_save_password": <FormattedMessage id="chpass.button_save_password" defaultMessage={`Save`} />,
 
   "chpass.no_old_pw": <FormattedMessage id="chpass.no_old_pw" defaultMessage={`Please enter your old password`} />,
 
