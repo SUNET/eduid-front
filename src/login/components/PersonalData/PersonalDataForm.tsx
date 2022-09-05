@@ -9,17 +9,16 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { postUserdata } from "../../../actions/PersonalData";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
 import RadioInput from "../Inputs/RadioInput";
+import { FormattedMessage } from "react-intl";
 
 interface NameStrings {
   first: string;
   last: string;
-  display: string;
 }
 
 /*
@@ -51,7 +50,10 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
           <FontAwesomeIcon icon={faRedo} />
         </button>
         <label htmlFor="name-check" className="hint">
-          {translate("pd.update_locked_names")}
+          <FormattedMessage
+            defaultMessage="Update first and last names from the Swedish Population Register."
+            description="Personal data update locked names"
+          />
         </label>
       </div>
     </Fragment>
@@ -61,25 +63,34 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
 const RenderEditableNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="given_name"
-        label={props.names.first}
-        placeholder={props.names.first}
-      />
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="surname"
-        label={props.names.last}
-        placeholder={props.names.last}
-      />
-      <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="given_name"
+          label={props.names.first}
+          placeholder={props.names.first}
+        />
+      </fieldset>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="surname"
+          label={props.names.last}
+          placeholder={props.names.last}
+        />
+      </fieldset>
+      <p className="help-text">
+        <FormattedMessage
+          defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+          description="Personal data hint names locked when verified"
+        />
+      </p>
     </Fragment>
   );
 };
@@ -99,7 +110,7 @@ const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderS
         buttonstyle="primary"
         disabled={loading || pristine || invalid || submitting}
       >
-        {translate("button_save")}
+        <FormattedMessage defaultMessage="save" description="button save" />
       </EduIDButton>
     </div>
   );
@@ -146,7 +157,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
 
   return (
     <Form
-      id="personaldataview-form"
+      id="personaldata-view-form"
       role="form"
       onChange={(e) => {
         formChange(e.target as unknown as FormData);
@@ -156,24 +167,12 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
       <fieldset className="name-inputs">
         {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
       </fieldset>
-      <fieldset>
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="display_name"
-          label={names.display}
-          placeholder={names.display}
-          helpBlock={translate("pd.display_name_input_help_text")}
-        />
-      </fieldset>
       <Field
         component={RadioInput}
         required={true}
         name="language"
         selectOptions={available_languages}
-        label={translate("pd.language")}
+        label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
       />
       <RenderSavePersonalDataButton {...props} />
     </Form>
