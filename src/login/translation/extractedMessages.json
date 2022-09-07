@@ -1601,6 +1601,10 @@
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
+  "p8IPLU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email, check your junk email, or resend the email."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
@@ -1798,7 +1802,7 @@
     "string": "Password reset link has expired. Please send link again."
   },
   "resetpw.expired-phone-code": {
-    "string": "Phone code has expired. Please send phone code again."
+    "string": "The code is no longer valid. Request a new code using the button below."
   },
   "resetpw.external-mfa-fail": {
     "string": "External MFA failed."
