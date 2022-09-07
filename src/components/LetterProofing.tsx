@@ -15,7 +15,7 @@ export interface LetterProofingProps {
   disabled: boolean;
 }
 
-export default function LetterProofingButton(props: LetterProofingProps): JSX.Element {
+export default function LetterProofing(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const nins = useDashboardAppSelector((state) => state.identities);

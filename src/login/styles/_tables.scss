@@ -112,9 +112,8 @@ table {
     margin-bottom: 0;
 
     .border-row {
-      border-bottom: none;
-      & + & {
-        border-bottom: 1px solid $dark-gray;
+      &:last-of-type {
+        border-bottom: none;
       }
 
       img {

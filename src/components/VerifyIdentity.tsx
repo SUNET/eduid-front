@@ -1,6 +1,6 @@
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import Eidas from "components/Eidas";
-import LetterProofingButton from "components/LetterProofing";
+import LetterProofing from "components/LetterProofing";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
@@ -196,14 +196,14 @@ function AccordionItemSwedish(): JSX.Element | null {
               </p>
             </li>
             <div id="nins-btn-grid" className="x-adjust">
-              {/* <LookupMobileProofing disabled={lookupMobileDisabled} />*/}
               <Eidas />
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
             {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
             <Accordion allowZeroExpanded className="accordion accordion-nested">
-              <LetterProofingButton disabled={letterProofingDisabled} />
+              <Eidas />
+              <LetterProofing disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
             </Accordion>
           </React.Fragment>
