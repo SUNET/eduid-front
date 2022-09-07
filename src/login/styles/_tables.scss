@@ -106,6 +106,22 @@ table {
       }
     }
   }
+
+  &.identities-table {
+    table-layout: auto;
+    margin-bottom: 0;
+
+    .border-row {
+      border-bottom: none;
+      & + & {
+        border-bottom: 1px solid $dark-gray;
+      }
+
+      img {
+        width: auto;
+      }
+    }
+  }
 }
 
 table.table-form.passwords {

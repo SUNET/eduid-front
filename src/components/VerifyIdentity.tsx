@@ -72,15 +72,20 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="verify identity verified title"
+              defaultMessage="Your eduID is ready to use"
+            />
+          </p>
+        </div>
         <h4>
-          <FormattedMessage description="verify identity verified title" defaultMessage="Your eduID is ready to use" />
-        </h4>
-        <p className="x-adjust">
           <FormattedMessage
             description="verify identity verified description"
             defaultMessage="The identities below are now connected to your eduID."
           />
-        </p>
+        </h4>
         <VerifiedIdentitiesTable />
       </React.Fragment>
     );
@@ -105,7 +110,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
   return (
     <figure className="table-responsive">
-      <table className="table">
+      <table className="table identities-table">
         <tbody>
           {identities.nin?.verified && (
             <tr className="border-row">
