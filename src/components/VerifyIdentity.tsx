@@ -196,8 +196,8 @@ function AccordionItemSwedish(): JSX.Element | null {
               </p>
             </li>
             <div id="nins-btn-grid" className="x-adjust">
-              {/* <LookupMobileProofing disabled={lookupMobileDisabled} />
-              <Eidas /> */}
+              {/* <LookupMobileProofing disabled={lookupMobileDisabled} />*/}
+              <Eidas />
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div>
