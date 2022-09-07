@@ -1,20 +1,13 @@
-import PropTypes from "prop-types";
+import { translate } from "login/translation";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-interface ExtraSecurityTokenProps {
-  translate(msg: string): string;
-  webauthn_challenge: string;
-}
-
-const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
+export default function ExtraSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const [assertion, setAssertion] = useState(webauthn_assertion);
   const webauthn_challenge = useAppSelector(
     (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
@@ -37,7 +30,7 @@ const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
 
   return (
     <>
-      <p>{props.translate("mfa.reset-password-tapit")}</p>
+      <p>{translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation" />
       <div>
         <form method="POST" action="#" id="form" className="form-inline">
@@ -49,20 +42,14 @@ const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
       </div>
       <div className="text-center">
         <div className="card" id="mfa-try-another-way">
-          <div className="card-header">{props.translate("mfa.problems-heading")}</div>
+          <div className="card-header">{translate("mfa.problems-heading")}</div>
           <div className="card-body">
             <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
-              {props.translate("mfa.try-again")}
+              {translate("mfa.try-again")}
             </button>
           </div>
         </div>
       </div>
     </>
   );
-};
-
-ExtraSecurityToken.propTypes = {
-  translate: PropTypes.func.isRequired,
-};
-
-export default InjectIntl(ExtraSecurityToken);
+}
