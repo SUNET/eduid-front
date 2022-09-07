@@ -710,7 +710,7 @@
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
-    "string": "Skriv in koden som skickats till {phone}"
+    "string": "Skriv in verifieringskoden som skickats till {phone}"
   },
   "aNbqJc": {
     "developer_comment": "Dashboard nav tab name",
@@ -1601,6 +1601,10 @@
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "p8IPLU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost eller skicka e-postmeddelandet igen."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -1798,7 +1802,7 @@
     "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
   "resetpw.expired-phone-code": {
-    "string": "Telefonkoden har gått ut. Skicka telefonkoden igen."
+    "string": "Koden är inte längre giltig. Begär en ny kod med knappen nedan."
   },
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
@@ -1849,7 +1853,7 @@
     "string": "Det gick inte att skicka telefonkoden"
   },
   "resetpw.send-sms-success": {
-    "string": "En engångskod har skickats till din telefon."
+    "string": "En verifieringskod har skickats till din telefon."
   },
   "resetpw.set-new-password-description": {
     "string": "Ett säkert lösenord har genererats till dig. För att komma vidare behöver du kopiera det till Repetera ditt nya lösenord och klicka Acceptera lösenord."
