@@ -1601,6 +1601,10 @@
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "p8IPLU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost eller skicka e-postmeddelandet igen."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -1798,7 +1802,7 @@
     "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
   "resetpw.expired-phone-code": {
-    "string": "Telefonkoden har gått ut. Skicka telefonkoden igen."
+    "string": "Koden är inte längre giltig. Begär en ny kod med knappen nedan."
   },
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
