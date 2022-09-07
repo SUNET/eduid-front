@@ -53,10 +53,10 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   function submitPhoneForm(values: PhoneCodeFormData) {
     const phone = values.phone;
     if (phone) {
-      navigate(`/reset-password/set-new-password/${props.emailCode}`);
       dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(clearNotifications());
+      navigate("/reset-password/set-new-password");
     }
   }
 

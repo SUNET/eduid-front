@@ -32,7 +32,7 @@ const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
 
   useEffect(() => {
     if (webauthn_assertion) setAssertion(webauthn_assertion);
-    if (assertion) navigate(`/reset-password/set-new-password/${emailCode}`);
+    if (assertion) navigate("/reset-password/set-new-password");
   }, [webauthn_assertion, assertion]);
 
   return (
