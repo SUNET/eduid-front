@@ -1,101 +1,50 @@
 import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePasswordForm";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { DashboardRootState } from "dashboard-init-app";
-import { mount, ReactWrapper, shallow } from "enzyme";
-import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
-import { initialState as emailsInitialState } from "reducers/Emails";
-import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
+import { render, screen, fireEvent, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 const test_props: ChangePasswordFormProps = {
-  finish_url: "cancel_url",
+  finish_url: "/profile/security",
 };
 
-describe("ChangePasswordForm Component", () => {
-  it("The component does not render 'false' or 'null'", () => {
-    const wrapper = shallow(
-      <IntlProvider locale="en">
-        <ChangePasswordForm {...test_props} />
-      </IntlProvider>
-    );
-    expect(wrapper.isEmptyRender()).toEqual(false);
-  });
+test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
+  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
+
+  const oldPasswordInput = screen.getByTestId("old-password-field") as HTMLInputElement;
+  expect(oldPasswordInput.value).not.toBeDefined;
+
+  const suggestedPasswordInput = screen.getByTestId("suggested-password-field") as HTMLInputElement;
+  expect(suggestedPasswordInput.value).toBeDefined;
 });
 
-describe("ChangePasswordForm renders", () => {
-  let store: DashboardStoreType;
-  let state: DashboardRootState;
+test("save button will be enabled once current password field is filled", () => {
+  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
 
-  beforeEach(() => {
-    // re-init store and state before each test to get isolation
-    store = fakeStore();
-    state = store.getState();
+  const input = screen.getByTestId("old-password-field") as HTMLInputElement;
+  // change password save button is initially disabled
+  const savePasswordButton = screen.getByRole("button", { name: /save/i });
+  expect(savePasswordButton).toBeDisabled();
+
+  fireEvent.change(input, { target: { value: "current password" } });
+  expect(input.value).toBe("current password");
+
+  expect(savePasswordButton).toBeEnabled();
+});
+
+test("renders custom password form after clicking do not want a suggested password", async () => {
+  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
+  const customPasswordButton = screen.getByRole("button", { name: /I don't want a suggested password/i });
+  expect(customPasswordButton).toBeInTheDocument();
+
+  fireEvent.click(customPasswordButton);
+  expect(screen.getByText(/Suggest a password for me/i)).toBeInTheDocument();
+
+  const newPasswordInput = screen.getByTestId("custom-password-field") as HTMLInputElement;
+  const repeatNewPasswordInput = screen.getByTestId("repeat-password-field") as HTMLInputElement;
+
+  await waitFor(() => {
+    expect(newPasswordInput).toBeDefined;
   });
 
-  function setupComponent(store: DashboardStoreType) {
-    const wrapper = mount(
-      <ReduxIntlProvider store={store}>
-        <MemoryRouter>
-            <ChangePasswordForm {...test_props} />
-        </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
-
-  it("old and new password inputs render", () => {
-    const { wrapper } = setupComponent(store);
-    const oldPwInput = wrapper.find("input[name='old']");
-    const suggestedPwInput = wrapper.find("input[name='suggested']");
-    const customPwInput = wrapper.find("input[name='custom']");
-
-    expect(oldPwInput.exists()).toEqual(true);
-    expect(suggestedPwInput.exists()).toEqual(true);
-    expect(customPwInput.exists()).toEqual(false);
-  });
-
-  it("save password button renders", () => {
-    const { wrapper } = setupComponent(store);
-    const savePwButton = wrapper.find("#chpass-button");
-    expect(savePwButton.exists()).toEqual(true);
-  });
-
-  it("can toggle between custom and suggested", () => {
-    function inputNames(wrapper: ReactWrapper) {
-      return wrapper
-        .find("input")
-        .map((node) => node.props().name)
-        .sort();
-    }
-    const test_state = {
-      personal_data: {},
-      emails: emailsInitialState,
-    };
-    store = fakeStore({ ...dashboardTestState, ...test_state });
-    const { wrapper } = setupComponent(store);
-
-    let pwModeButton = wrapper.find("#pwmode-button");
-    expect(pwModeButton.exists()).toEqual(true);
-
-    // in "suggested" mode (the default), the shown inputs should be old and suggested
-    expect(inputNames(wrapper)).toEqual(["old", "suggested"]);
-
-    // now click the button switching to custom password mode
-    pwModeButton.first().simulate("click");
-
-    // the shown input fields should have changed to old, custom, repeat
-    expect(inputNames(wrapper)).toEqual(["custom", "old", "repeat"]);
-
-    // find the button again, should have the same id on the custom password page
-    pwModeButton = wrapper.find("#pwmode-button");
-    expect(pwModeButton.exists()).toEqual(true);
-
-    // click the button again, switching back to suggested password mode
-    pwModeButton.first().simulate("click");
-
-    // in "suggested" mode (the default), the shown inputs should be old and suggested
-    expect(inputNames(wrapper)).toEqual(["old", "suggested"]);
+  await waitFor(() => {
+    expect(repeatNewPasswordInput).toBeDefined;
   });
 });

@@ -33,6 +33,7 @@ export default function TextInput(props: TextInputProps) {
     <FormGroup id={props.input.name}>
       {label && <Label for={props.name}>{label}</Label>}
       <Input
+        data-testid={props.id}
         id={props.name}
         valid={valid}
         invalid={invalid}
