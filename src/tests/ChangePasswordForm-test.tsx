@@ -1,12 +1,9 @@
-import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePasswordForm";
+import ChangePasswordForm from "components/ChangePasswordForm";
+import { finish_url } from "components/ChangePassword";
 import { render, screen, fireEvent, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
-const test_props: ChangePasswordFormProps = {
-  finish_url: "/profile/security",
-};
-
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
-  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
+  render(<ChangePasswordForm finish_url={finish_url} />);
 
   const oldPasswordInput = screen.getByTestId("old-password-field") as HTMLInputElement;
   expect(oldPasswordInput.value).not.toBeDefined;
@@ -16,7 +13,7 @@ test("renders ChangePasswordForm, suggested password value is field in suggested
 });
 
 test("save button will be enabled once current password field is filled", () => {
-  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
+  render(<ChangePasswordForm finish_url={finish_url} />);
 
   const input = screen.getByTestId("old-password-field") as HTMLInputElement;
   // change password save button is initially disabled
@@ -30,7 +27,7 @@ test("save button will be enabled once current password field is filled", () => 
 });
 
 test("renders custom password form after clicking do not want a suggested password", async () => {
-  render(<ChangePasswordForm finish_url={test_props.finish_url} />);
+  render(<ChangePasswordForm finish_url={finish_url} />);
   const customPasswordButton = screen.getByRole("button", { name: /I don't want a suggested password/i });
   expect(customPasswordButton).toBeInTheDocument();
 
@@ -47,4 +44,15 @@ test("renders custom password form after clicking do not want a suggested passwo
   await waitFor(() => {
     expect(repeatNewPasswordInput).toBeDefined;
   });
+});
+
+test("url should match finish_url", async () => {
+  global.window = Object.create(window);
+  const url = finish_url;
+  Object.defineProperty(window, "location", {
+    value: {
+      href: url,
+    },
+  });
+  expect(window.location.href).toContain("/profile");
 });
