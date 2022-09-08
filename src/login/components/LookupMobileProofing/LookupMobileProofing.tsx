@@ -99,24 +99,6 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         </EduIDButton>
       </AccordionItemTemplate>
 
-      {/* <div key="0" className="vetting-button">
-        <button disabled={props.disabled} onClick={handleShowModal}>
-          <div key="1" className="text">
-            {translate("verify-identity.vetting_phone_tagline")}
-            {explanationText}
-          </div>
-          <div key="2" className="name">
-            {translate("lmp.button_text_request")}
-          </div>
-        </button>
-        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
-          <FormattedMessage
-            description="lmp initialize proofing help text"
-            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not
-            include all registered phone numbers.`}
-          />
-        </p>
-      </div> */}
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal
         id="mobile-confirm-modal"

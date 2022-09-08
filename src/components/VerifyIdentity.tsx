@@ -1,8 +1,6 @@
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import Eidas from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
-import OpenidConnectContainer from "containers/OpenidConnect";
-import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment } from "react";
@@ -56,8 +54,6 @@ function VerifyIdentity(): JSX.Element | null {
         <AccordionItemSwedish />
         <AccordionItemEu />
         <AccordionItemWorld />
-        {/* <AccordionItemNoIcon />
-        <AccordionItemOnlyTitle /> */}
       </Accordion>
     </Fragment>
   );
@@ -201,11 +197,7 @@ function AccordionItemSwedish(): JSX.Element | null {
                   />
                 </p>
               </li>
-              {/* <div id="nins-btn-grid" className="x-adjust">
-              <Eidas />
-              <OpenidConnectContainer disabled={disabled} />
-              <OpenidConnectFrejaContainer disabled={disabled} />
-            </div> */}
+
               {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
               <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
                 <Eidas />
@@ -219,34 +211,6 @@ function AccordionItemSwedish(): JSX.Element | null {
     </AccordionItemTemplate>
   );
 }
-
-// function LetterProofingAccordionItem(): JSX.Element | null {
-//   return (
-//     <AccordionItemTemplate
-//       title="Letter to your official address"
-//       additionalInfo="Only available in Sweden, and takes 2-10 days"
-//       uuid="se-letter"
-//     >
-//       <p>With this option, a code is sent to your official registered address from the Swedish tax authority.</p>
-//       <EduIDButton buttonstyle={"primary"}>Request letter</EduIDButton>
-//     </AccordionItemTemplate>
-//   );
-// }
-
-// function PhoneProofingAccordionItem(): JSX.Element | null {
-//   return (
-//     <AccordionItemTemplate
-//       title="Using phone subscription records"
-//       additionalInfo="Requires a Swedish phone number registered in your name"
-//       uuid="se-phone"
-//     >
-//       <p>Lookup your identity in a database maintained by Swedish phone operators.</p>
-//       <EduIDButton buttonstyle={"primary"} size={"sm"}>
-//         Proceed
-//       </EduIDButton>
-//     </AccordionItemTemplate>
-//   );
-// }
 
 function AccordionItemEu(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
@@ -301,21 +265,5 @@ function AccordionItemWorld(): JSX.Element | null {
     </AccordionItemTemplate>
   );
 }
-
-// function AccordionItemNoIcon(): JSX.Element | null {
-//   return (
-//     <AccordionItemTemplate title="No icon Example" additionalInfo="Additional Info">
-//       Great content
-//     </AccordionItemTemplate>
-//   );
-// }
-
-// function AccordionItemOnlyTitle(): JSX.Element | null {
-//   return (
-//     <AccordionItemTemplate title="Only title example" additionalInfo="">
-//       Other great content
-//     </AccordionItemTemplate>
-//   );
-// }
 
 export default VerifyIdentity;
