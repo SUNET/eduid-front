@@ -15,4 +15,11 @@ figure,
     font-family: $akkurat;
     color: $black;
   }
+
+  &.identity-summary {
+    padding: 1em 0.5em;
+    @media (max-width: $bp-md) {
+      padding: 0.5em;
+    }
+  }
 }

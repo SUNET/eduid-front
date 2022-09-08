@@ -56,8 +56,8 @@ function VerifyIdentity(): JSX.Element | null {
         <AccordionItemSwedish />
         <AccordionItemEu />
         <AccordionItemWorld />
-        <AccordionItemNoIcon />
-        <AccordionItemOnlyTitle />
+        {/* <AccordionItemNoIcon />
+        <AccordionItemOnlyTitle /> */}
       </Accordion>
     </Fragment>
   );
@@ -109,8 +109,8 @@ function VerifyIdentityIntro(): JSX.Element {
 function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
   return (
-    <figure className="table-responsive">
-      <table className="table identities-table">
+    <figure className="table-responsive identity-summary">
+      <table className="table">
         <tbody>
           {identities.nin?.verified && (
             <tr className="border-row">
@@ -131,7 +131,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {identities.eidas?.verified && (
             <tr className="border-row">
               <td>
-                <CircleFlag countryCode="european_union" height="35" />
+                <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
               </td>
               <td>
                 <strong>
@@ -169,7 +169,7 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<CircleFlag countryCode="se" height="35" />}
+      icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
       title="Swedish personal ID number"
       additionalInfo=""
       uuid="swedish"
@@ -255,7 +255,7 @@ function AccordionItemEu(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<CircleFlag countryCode="european_union" height="35" />}
+      icon={<CircleFlag countryCode="european_union" height="35" className="circle-icon" />}
       title="EU citizen"
       additionalInfo="eIDAS"
       uuid="eu"
@@ -284,7 +284,7 @@ function AccordionItemEu(): JSX.Element | null {
 function AccordionItemWorld(): JSX.Element | null {
   return (
     <AccordionItemTemplate
-      icon={<CircleFlag countryCode="placeholder" height="35" />}
+      icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
       title="All other countries"
       additionalInfo="Svipe ID"
       uuid="world"
@@ -295,20 +295,20 @@ function AccordionItemWorld(): JSX.Element | null {
   );
 }
 
-function AccordionItemNoIcon(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate title="No icon Example" additionalInfo="Additional Info">
-      Great content
-    </AccordionItemTemplate>
-  );
-}
+// function AccordionItemNoIcon(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate title="No icon Example" additionalInfo="Additional Info">
+//       Great content
+//     </AccordionItemTemplate>
+//   );
+// }
 
-function AccordionItemOnlyTitle(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate title="Only title example" additionalInfo="">
-      Other great content
-    </AccordionItemTemplate>
-  );
-}
+// function AccordionItemOnlyTitle(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate title="Only title example" additionalInfo="">
+//       Other great content
+//     </AccordionItemTemplate>
+//   );
+// }
 
 export default VerifyIdentity;
