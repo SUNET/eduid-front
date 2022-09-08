@@ -115,9 +115,11 @@ table {
       &:last-of-type {
         border-bottom: none;
       }
-
-      img {
-        width: auto;
+      .circle-icon {
+        height: 2rem;
+        @media (max-width: $bp-md) {
+          height: 1.5rem;
+        }
       }
     }
   }

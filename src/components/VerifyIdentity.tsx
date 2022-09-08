@@ -115,7 +115,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {identities.nin?.verified && (
             <tr className="border-row">
               <td>
-                <CircleFlag countryCode="se" height="35" />
+                <CircleFlag countryCode="se" height="35" className="circle-icon" />
               </td>
               <td>
                 <strong>
@@ -201,7 +201,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div> */}
             {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
-            <Accordion allowZeroExpanded className="accordion accordion-nested">
+            <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
               <Eidas />
               <LetterProofing disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
