@@ -76,12 +76,12 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </p>
         </div>
-        <h4>
+        <h3>
           <FormattedMessage
             description="verify identity verified description"
             defaultMessage="The identities below are now connected to your eduID"
           />
-        </h4>
+        </h3>
         <VerifiedIdentitiesTable />
       </React.Fragment>
     );
@@ -98,12 +98,12 @@ function VerifyIdentityIntro(): JSX.Element {
           />
         </p>
       </div>
-      <h4>
+      <h3>
         <FormattedMessage
           description="verify identity non verified description"
           defaultMessage="Choose your principal identification method"
         />
-      </h4>
+      </h3>
     </React.Fragment>
   );
 }
