@@ -174,12 +174,11 @@ function AccordionItemSwedish(): JSX.Element | null {
       additionalInfo=""
       uuid="swedish"
     >
-      {nin?.verified && (
+      {nin?.verified ? (
         <React.Fragment>
           <AddNin />
         </React.Fragment>
-      )}
-      {!nin?.verified && (
+      ) : (
         <ol className="listed-steps">
           <li>
             <h4>
