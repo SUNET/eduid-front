@@ -86,9 +86,11 @@ function NinForm(): JSX.Element {
                 validate={validateNin}
               />
             </fieldset>
-            <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-              <FormattedMessage description="button_add" defaultMessage="Add" />
-            </EduIDButton>
+            <div className="buttons">
+              <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+                <FormattedMessage description="button_add" defaultMessage="Add" />
+              </EduIDButton>
+            </div>
           </form>
         );
       }}
