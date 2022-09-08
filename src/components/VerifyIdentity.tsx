@@ -79,7 +79,7 @@ function VerifyIdentityIntro(): JSX.Element {
         <h4>
           <FormattedMessage
             description="verify identity verified description"
-            defaultMessage="The identities below are now connected to your eduID."
+            defaultMessage="The identities below are now connected to your eduID"
           />
         </h4>
         <VerifiedIdentitiesTable />
@@ -98,6 +98,12 @@ function VerifyIdentityIntro(): JSX.Element {
           />
         </p>
       </div>
+      <h4>
+        <FormattedMessage
+          description="verify identity non verified description"
+          defaultMessage="Choose your principal identification method"
+        />
+      </h4>
     </React.Fragment>
   );
 }
@@ -260,8 +266,10 @@ function AccordionItemWorld(): JSX.Element | null {
       additionalInfo="Svipe ID"
       uuid="world"
     >
-      Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti quam
-      sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos dolor ut sequi minus iste? Quas?
+      <p>
+        Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti quam
+        sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos dolor ut sequi minus iste? Quas?
+      </p>
     </AccordionItemTemplate>
   );
 }
