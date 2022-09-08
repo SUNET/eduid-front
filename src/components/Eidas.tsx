@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector } from "dashboard-hooks";
+import AccordionItemTemplate from "./AccordionItemTemplate";
+import EduIDButton from "./EduIDButton";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -66,8 +68,40 @@ function Eidas(): JSX.Element {
   }
 
   return (
-    <React.Fragment>
-      <div className="vetting-button">
+    <>
+      <AccordionItemTemplate
+        title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />}
+        additionalInfo={
+          <FormattedMessage
+            description="verify identity vetting freja tagline"
+            defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+          />
+        }
+        uuid="se-freja"
+      >
+        <p className="proofing-btn-help">
+          <FormattedMessage
+            description="eidas proofing help text"
+            defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+            {freja_eid_link} app.`}
+            values={{
+              freja_eid_link: (
+                <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+                  Freja eID+
+                </a>
+              ),
+            }}
+          />
+        </p>
+
+        {/* {description} */}
+
+        <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
+          Proceed
+        </EduIDButton>
+      </AccordionItemTemplate>
+
+      {/* <div className="vetting-button">
         <button
           id="eidas-show-modal"
           onClick={() => {
@@ -99,7 +133,7 @@ function Eidas(): JSX.Element {
             }}
           />
         </p>
-      </div>
+      </div> */}
       <NotificationModal
         id="eidas-info-modal"
         title={
@@ -116,7 +150,7 @@ function Eidas(): JSX.Element {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </React.Fragment>
+    </>
   );
 }
 

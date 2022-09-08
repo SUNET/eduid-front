@@ -195,11 +195,11 @@ function AccordionItemSwedish(): JSX.Element | null {
                 />
               </p>
             </li>
-            <div id="nins-btn-grid" className="x-adjust">
+            {/* <div id="nins-btn-grid" className="x-adjust">
               <Eidas />
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
-            </div>
+            </div> */}
             {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
             <Accordion allowZeroExpanded className="accordion accordion-nested">
               <Eidas />
