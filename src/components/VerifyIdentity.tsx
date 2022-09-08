@@ -174,41 +174,49 @@ function AccordionItemSwedish(): JSX.Element | null {
       additionalInfo=""
       uuid="swedish"
     >
-      <ol className="listed-steps">
-        <li>
-          <h4>
-            <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
-          </h4>
+      {nin?.verified && (
+        <React.Fragment>
           <AddNin />
-        </li>
-        {showStepTwo && (
-          <React.Fragment>
-            <li>
-              <h4>
-                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-              </h4>
-              <p className="x-adjust">
-                <FormattedMessage
-                  description="verify-identity.connect-nin_description"
-                  defaultMessage={`Choose a method to verify that you have access to the added id number.
+        </React.Fragment>
+      )}
+      {!nin?.verified && (
+        <ol className="listed-steps">
+          <li>
+            <h4>
+              <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+            </h4>
+            <AddNin />
+          </li>
+
+          {showStepTwo && (
+            <React.Fragment>
+              <li>
+                <h4>
+                  <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
+                </h4>
+                <p className="x-adjust">
+                  <FormattedMessage
+                    description="verify-identity.connect-nin_description"
+                    defaultMessage={`Choose a method to verify that you have access to the added id number.
           If you are unable to use a method you need to try another.`}
-                />
-              </p>
-            </li>
-            {/* <div id="nins-btn-grid" className="x-adjust">
+                  />
+                </p>
+              </li>
+              {/* <div id="nins-btn-grid" className="x-adjust">
               <Eidas />
               <OpenidConnectContainer disabled={disabled} />
               <OpenidConnectFrejaContainer disabled={disabled} />
             </div> */}
-            {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
-            <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
-              <Eidas />
-              <LetterProofing disabled={letterProofingDisabled} />
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
-            </Accordion>
-          </React.Fragment>
-        )}
-      </ol>
+              {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
+              <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
+                <Eidas />
+                <LetterProofing disabled={letterProofingDisabled} />
+                <LookupMobileProofing disabled={lookupMobileDisabled} />
+              </Accordion>
+            </React.Fragment>
+          )}
+        </ol>
+      )}
     </AccordionItemTemplate>
   );
 }
