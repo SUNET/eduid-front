@@ -70,7 +70,7 @@ article {
     }
 
     input {
-      background-color: $cultured;
+      background-color: $light-gray;
     }
   }
 
@@ -124,14 +124,14 @@ article {
 
       p {
         font-size: 1rem;
-        color: $chinese-black;
+        color: $light-black;
         padding: 0;
         line-height: 1;
-        border-bottom: $chinese-black solid 1px;
+        border-bottom: $light-black solid 1px;
         cursor: pointer;
 
         &.active {
-          color: $red-orange;
+          color: $bright-orange;
           border-bottom: transparent solid 1px;
         }
       }
@@ -226,7 +226,7 @@ article {
         height: 1rem;
 
         &.dropdown-closed {
-          color: $chinese-black;
+          color: $light-black;
           text-decoration: none;
           transform: rotate(180deg);
           transform-origin: center center;
@@ -234,7 +234,7 @@ article {
         }
 
         &.dropdown-open {
-          color: $chinese-black;
+          color: $light-black;
           transform: rotate(0deg);
           text-decoration: none;
           transform-origin: center center;
@@ -366,7 +366,7 @@ article {
 
   #emails-form {
     input {
-      background: $cultured;
+      background: $light-gray;
       margin-bottom: 0.25rem;
     }
   }
@@ -388,10 +388,10 @@ article {
         min-height: 1rem;
         min-width: 1rem;
         flex-direction: row;
-        border: solid 2px $red-orange;
+        border: solid 2px $bright-orange;
 
         &.checked {
-          background: $red-orange;
+          background: $bright-orange;
         }
       }
 
