@@ -1,0 +1,173 @@
+@import "./variables.scss";
+
+/* Accordion */
+
+.accordion {
+  $a: &;
+  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+  border: 2px solid $dark-gray;
+  border-radius: 6px;
+  overflow: hidden;
+
+  &__item {
+    + #{$a}__item {
+      border-top: 2px solid $dark-gray;
+    }
+
+    &.expanded > #{$a}__heading > #{$a}__button {
+      background: $orange-opaque;
+    }
+
+    // Clickable
+    #{$a}__heading {
+      #{$a}__button {
+        display: flex;
+        cursor: pointer;
+        background: $mid-gray;
+        color: $orange-highlight;
+        font-weight: bold;
+        position: relative;
+        padding: 1rem;
+        font-family: $akkurat;
+        transition: all 0.1s ease-in;
+
+        &:hover {
+          background: $orange-highlight;
+          color: $white;
+
+          #{$a}-title {
+            text-decoration: underline;
+          }
+        }
+
+        #{$a}-icon {
+          .circle-icon {
+            height: 1.25rem;
+            margin-right: 0.75rem;
+            vertical-align: text-top;
+
+            @media (max-width: $bp-md) {
+              height: 1.125rem;
+            }
+          }
+        }
+
+        #{$a}-title {
+          font-size: 1.125rem;
+          margin-bottom: 0;
+
+          @media (max-width: $bp-md) {
+            font-size: 1rem;
+          }
+        }
+
+        #{$a}-description {
+          font-size: 12px;
+          display: block;
+        }
+
+        #{$a}-toggle {
+          transform: rotate(90deg);
+          position: absolute;
+          right: 1rem;
+        }
+
+        // .disabled not yet implemented
+        /*&.disabled,
+        &.disabled:hover {
+          color: $gray;
+          background: $dark-gray;
+          cursor: not-allowed;
+    
+          #{$a}-title {
+            text-decoration: none;
+          }
+          #{$a}-icon img {
+            filter: grayscale(1);
+          }
+        }*/
+      }
+    }
+
+    // Content
+    #{$a}__panel {
+      background-color: $white;
+      padding: 1.5rem 1rem;
+      animation: fadein 0.2s ease-in;
+      @keyframes fadein {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      input[type="text"] {
+        background-color: $light-gray;
+      }
+    }
+  }
+
+  form {
+    margin-top: 0;
+  }
+
+  // Visual card-like variation for internal accordion displays
+  &-nested {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    #{$a}__item {
+      margin-bottom: 10px;
+      border: 2px solid $orange-highlight;
+      border-radius: 6px;
+      overflow: hidden;
+
+      &.expanded {
+        border-color: $black;
+      }
+
+      &:hover {
+        border-color: $orange-highlight;
+        &.expanded {
+          border-color: $black;
+        }
+      }
+
+      &.expanded > #{$a}__heading > #{$a}__button {
+        background: $mid-gray;
+      }
+
+      // Clickable
+      #{$a}__heading {
+        #{$a}__button {
+          color: $black;
+          background: transparent;
+
+          &:hover {
+            color: $orange-highlight;
+            background: $mid-gray;
+          }
+
+          #{$a}-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+        }
+      }
+
+      // Content
+      #{$a}__panel {
+        padding: 1rem 1rem 1.25rem;
+
+        p {
+          font-size: 1.125rem;
+          line-height: 1.25;
+        }
+      }
+    }
+  }
+}

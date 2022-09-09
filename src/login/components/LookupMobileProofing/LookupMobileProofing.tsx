@@ -6,6 +6,10 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
+import EduIDButton from "components/EduIDButton";
+import AccordionItemTemplate from "components/AccordionItemTemplate";
+// import AccordionItemTemplate from "./AccordionItemTemplate";
+// import EduIDButton from "./EduIDButton";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
@@ -74,24 +78,27 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
 
   return (
     <div key="0">
-      <div key="0" className="vetting-button">
-        <button disabled={props.disabled} onClick={handleShowModal}>
+      <AccordionItemTemplate
+        title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+        additionalInfo={
+          <FormattedMessage
+            defaultMessage="For you with phone number registered in your name"
+            description="explanation text for vetting phone"
+          />
+        }
+        uuid="se-phone"
+      >
+        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
           <div key="1" className="text">
             {translate("verify-identity.vetting_phone_tagline")}
             {explanationText}
           </div>
-          <div key="2" className="name">
-            {translate("lmp.button_text_request")}
-          </div>
-        </button>
-        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
-          <FormattedMessage
-            description="lmp initialize proofing help text"
-            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not
-            include all registered phone numbers.`}
-          />
         </p>
-      </div>
+        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+          Proceed
+        </EduIDButton>
+      </AccordionItemTemplate>
+
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal
         id="mobile-confirm-modal"

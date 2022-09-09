@@ -17,9 +17,9 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const defaultState = {
     config: {
       ...configInitialState,
-      // default to being in 'configured' state, since only the test of
+      // default to being in 'app_loaded' state, since only the test of
       // the splash screen is ever interested in the opposite
-      is_configured: true,
+      is_app_loaded: true,
       debug: true,
     },
   };

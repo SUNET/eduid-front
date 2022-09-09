@@ -118,12 +118,12 @@
   }
 }
 
-.proofing-btn-help {
-  margin: 0 0.5rem 2rem;
-  line-height: 1.2;
-  color: $black;
-  font-size: 0.875rem;
-}
+// .proofing-btn-help {
+//   margin: 0 0.5rem 2rem;
+//   line-height: 1.2;
+//   color: $black;
+//   font-size: 0.875rem;
+// }
 
 .proofing-btn-help.disabled {
   color: $gray;
@@ -153,10 +153,6 @@
         font-size: 1rem;
       }
     }
-  }
-
-  .single-input-form {
-    flex-direction: column;
   }
 
   #nin {

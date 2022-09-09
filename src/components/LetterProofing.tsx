@@ -8,12 +8,14 @@ import { isValid } from "redux-form";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
 import { useDashboardAppSelector } from "dashboard-hooks";
+import AccordionItemTemplate from "./AccordionItemTemplate";
+import EduIDButton from "./EduIDButton";
 
 export interface LetterProofingProps {
   disabled: boolean;
 }
 
-export default function LetterProofingButton(props: LetterProofingProps): JSX.Element {
+export default function LetterProofing(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const nins = useDashboardAppSelector((state) => state.identities);
@@ -74,12 +76,12 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
   let description = null;
   if (disabled) {
     description = (
-      <div className="description">
+      <p className="description">
         <FormattedMessage
           defaultMessage="Start by adding your ID number above"
           description="explanation text for letter proofing"
         />
-      </div>
+      </p>
     );
   } else {
     if (letter_sent_date === undefined) {
@@ -87,38 +89,38 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
     } else if (letter_expired) {
       description = (
         <>
-          <div className="description">
+          <p className="description">
             <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
-            <span id="letter_expires_date">{formatDateFromBackend(letter_expires_date as string)}</span>
-          </div>
-          <div className="description">
+            <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
+          </p>
+          <p className="description">
             <FormattedMessage
               defaultMessage="Click here to order a new code"
               description="explanation text for letter proofing"
             />
-          </div>
+          </p>
         </>
       );
     } else {
       description = (
         <>
-          <div className="description">
+          <p className="description">
             <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
-            <span id="letter_sent_date">{formatDateFromBackend(letter_sent_date)}</span>
-          </div>
-          <div className="description">
+            <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
+          </p>
+          <p className="description">
             <FormattedMessage
               defaultMessage="The letter is valid to"
               description="explanation text for letter proofing"
             />
-            <span id="letter_expires_date">{formatDateFromBackend(letter_expires_date as string)}</span>
-          </div>
-          <div className="description">
+            <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
+          </p>
+          <p className="description">
             <FormattedMessage
               defaultMessage="Click here again when you have received the letter"
               description="explanation text for letter proofing"
             />
-          </div>
+          </p>
         </>
       );
     }
@@ -133,27 +135,31 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
   });
 
   return (
-    <div>
-      <div className="vetting-button">
-        <button disabled={disabled} onClick={() => handleModal()}>
-          <div className="text">
-            <FormattedMessage
-              defaultMessage="For you registered at your current address"
-              description="explanation text for letter proofing"
-            />
-            {description}
-          </div>
-          <div className="name">
-            <FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />
-          </div>
-        </button>
-      </div>
-      <p className={"proofing-btn-help" + (disabled === true ? " disabled" : "")}>
-        <FormattedMessage
-          description="letter initialize proofing help text"
-          defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
-        />
-      </p>
+    <>
+      <AccordionItemTemplate
+        title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+        additionalInfo={
+          <FormattedMessage
+            defaultMessage="For you registered at your current address"
+            description="explanation text for letter proofing"
+          />
+        }
+        uuid="se-letter"
+      >
+        <p className={"proofing-btn-help" + (disabled === true ? " disabled" : "")}>
+          <FormattedMessage
+            description="letter initialize proofing help text"
+            defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
+          />
+        </p>
+
+        {description}
+
+        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleModal()}>
+          Proceed
+        </EduIDButton>
+      </AccordionItemTemplate>
+
       <NotificationModal
         id="letter-confirm-modal"
         title={
@@ -192,6 +198,6 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         validationError={"confirmation.code_invalid_format"}
         validationPattern={shortCodePattern}
       />
-    </div>
+    </>
   );
 }

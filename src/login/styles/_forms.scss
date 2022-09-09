@@ -19,6 +19,23 @@ form {
   align-items: unset;
 }
 
+// single input and button on a row
+.single-input-form {
+  flex-direction: row;
+
+  button {
+    margin: auto 0 0.5rem 1rem;
+  }
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+
+    button {
+      margin: 0;
+    }
+  }
+}
+
 #reset-password-email-form {
   flex-direction: row;
   align-items: center;
@@ -47,6 +64,7 @@ input.form-control.is-invalid:focus {
 
 fieldset {
   width: 100%;
+  position: relative;
 
   &:not(:empty) {
     margin-bottom: 1.25em;
