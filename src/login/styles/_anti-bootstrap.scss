@@ -15,11 +15,11 @@ input {
   font-family: ProximaNova-Regular;
   font-size: 1.5rem;
   font-weight: 500;
-  color: #161616;
+  color: $chinese-black;
   box-shadow: none;
   border-radius: 0;
   border: none;
-  border-bottom: solid 2px #161616;
+  border-bottom: solid 2px $chinese-black;
   width: 100%;
   padding: 1.25rem 0.5rem;
   height: 3rem;
@@ -31,7 +31,7 @@ small {
   font-size: 100% !important;
 
   &.text-muted {
-    color: #161616 !important;
+    color: $chinese-black !important;
   }
 
   &.form-text {

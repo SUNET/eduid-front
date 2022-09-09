@@ -3,16 +3,21 @@
  * ========================================================================== */
 
 $white: #fff;
-$black: #161616;
+$chinese-black: #161616; //$black
+
+$cultured: #f4f4f4; //$light-gray
+$light-silver: #d8d8d8; //$dark-gray
 $gray: #7c7c7c;
-$valid-green: #28a745;
-$dark-orange: #d3452e;
-$orange-highlight: #ff4500;
-$orange-opaque: #ffe7dd;
-$light-gray: #f4f4f4;
-$close: #c4c4c4;
-$dark-gray: #d8d8d8;
-$mid-gray: #ebebeb;
+
+$misty-rose: #ffe7dd; //$orange-opaque
+$red-orange: #ff4500; //$orange-highlight
+$cg-red: #d3452e; //$dark-orange
+$sinopia: #d13400; //links
+
+/* possibly remove/edit these */
+$american-green: #28a745; //$valid-green
+$bright-gray: #ebebeb; //$mid-gray
+$silver-sand: #c4c4c4; //$close
 
 /*
  * Typography

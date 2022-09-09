@@ -4,10 +4,10 @@
   display: flex;
 
   &:focus {
-    color: $black;
+    color: $chinese-black;
     background-color: $white;
     border-color: $gray;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
+    box-shadow: 0 0 0 0.2rem $bright-gray;
     outline: 0;
   }
 }
@@ -25,7 +25,7 @@ input[type="radio"] {
   /* background-color only for content */
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: 2px solid $orange-highlight;
+  border: 2px solid $red-orange;
   background-color: transparent;
   border-radius: 50%;
 
@@ -36,12 +36,12 @@ input[type="radio"] {
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
   // background-color: #28a745;
-  background-color: $orange-highlight;
+  background-color: $red-orange;
   border: none;
 }
 
 input[type="radio"]:checked.error {
-  background: $dark-orange;
+  background: $cg-red;
   color: $white;
   opacity: 0.8;
   border: none;
@@ -55,7 +55,7 @@ input[type="radio"]:checked.error {
   span {
     font-size: 1.5rem;
     align-self: center;
-    color: $black;
+    color: $chinese-black;
     font-family: $proxima-regular;
     font-weight: normal;
     text-transform: capitalize;
@@ -80,34 +80,34 @@ input::placeholder {
 .form-control:focus,
 input:focus {
   outline: 0;
-  border-bottom: solid 2px $black;
-  box-shadow: 0 0 0 0.2rem $mid-gray;
+  border-bottom: solid 2px $chinese-black;
+  box-shadow: 0 0 0 0.2rem $bright-gray;
 }
 
 .form-control.is-valid {
   background-image: none;
 
   &:focus {
-    border-color: $valid-green;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
+    border-color: $american-green;
+    box-shadow: 0 0 0 0.2rem $bright-gray;
   }
 }
 
 /* invalid form input */
 .form-control.is-invalid {
   border: none;
-  border-bottom: 2px solid $orange-highlight;
+  border-bottom: 2px solid $red-orange;
   background-image: none;
   padding-right: 8px;
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem $mid-gray;
+    box-shadow: 0 0 0 0.2rem $bright-gray;
   }
 }
 
 /* error message */
 .input-error {
-  color: $orange-highlight;
+  color: $red-orange;
   font-weight: 700;
   letter-spacing: 0.025rem;
 }
@@ -130,12 +130,12 @@ input:focus {
 
 /* for orange asterisk after label */
 .label-required {
-  color: $orange-highlight;
+  color: $red-orange;
 }
 
 .input-validate-error {
   font-size: $txt-sm;
-  color: $dark-orange;
+  color: $cg-red;
 
   fieldset & {
     position: absolute;
@@ -154,7 +154,7 @@ input:focus {
 
 #copy-new-password {
   border-bottom: none;
-  background-color: $orange-opaque;
+  background-color: $misty-rose;
 }
 
 // Switch toggle
@@ -197,7 +197,7 @@ input:focus {
   }
 
   .toggle-checkbox:checked + & {
-    background: $orange-highlight;
+    background: $red-orange;
 
     &::before {
       left: 29px;

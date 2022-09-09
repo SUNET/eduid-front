@@ -21,8 +21,8 @@
 
   &.alert-danger,
   &.alert-success {
-    color: $dark-orange;
-    background-color: $orange-opaque;
+    color: $cg-red;
+    background-color: $misty-rose;
     border: none;
   }
 
@@ -41,7 +41,7 @@
     text-shadow: unset;
 
     &:hover {
-      color: $dark-orange;
+      color: $cg-red;
     }
   }
 }
@@ -50,14 +50,14 @@
   width: 12px;
   height: 12px;
   position: relative;
-  background-color: $orange-highlight;
+  background-color: $red-orange;
   border-radius: 50%;
   margin-top: -1rem;
 }
 
 .notification-dot-inner {
-  background-color: $orange-highlight;
-  border: solid 1px $light-gray;
+  background-color: $red-orange;
+  border: solid 1px $cultured;
   top: 10%;
   left: 10%;
   width: 80%; /* of the notification-dot */
@@ -83,7 +83,7 @@
   transform: translateX(-50%);
   padding: 6px;
   color: $white;
-  background: $black;
+  background: $chinese-black;
   font-size: 0.875rem;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   line-height: 1;
@@ -105,7 +105,7 @@
   pointer-events: none;
   border-width: 6px;
   top: 100%;
-  border-top-color: $black;
+  border-top-color: $chinese-black;
 }
 
 /* Absolute positioning */

@@ -16,15 +16,15 @@
     }
 
     & a {
-      color: $black;
+      color: $chinese-black;
       padding: 0 0.1875rem;
       line-height: 1.25 & span {
-        border-bottom: $black solid 1px;
+        border-bottom: $chinese-black solid 1px;
       }
 
       // styling for when menu item is clicked
       &.active {
-        color: $orange-highlight;
+        color: $red-orange;
 
         & span {
           border-bottom: transparent solid 1px;
@@ -33,7 +33,7 @@
 
       // styling for when hovering the menu item
       &:hover {
-        color: $orange-highlight;
+        color: $red-orange;
         border-bottom: transparent solid 1px;
 
         & span {
@@ -80,7 +80,7 @@
   }
 
   & a span {
-    border-bottom: solid 1px $orange-highlight;
+    border-bottom: solid 1px $red-orange;
 
     &:hover {
       border-bottom: solid 1px transparent;
@@ -102,11 +102,11 @@
   }
 
   &.unverified {
-    color: $orange-highlight;
+    color: $red-orange;
   }
 
   &.verified {
-    color: $black;
+    color: $chinese-black;
   }
 
   @media (max-width: $bp-md) {

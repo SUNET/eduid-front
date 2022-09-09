@@ -1,6 +1,6 @@
 .error-page {
   h1 {
-    color: $dark-orange;
+    color: $cg-red;
   }
 
   & span {
@@ -61,7 +61,7 @@
       }
 
       p:last-child {
-        color: $orange-highlight;
+        color: $red-orange;
       }
     }
   }
@@ -77,7 +77,7 @@
 
 // small reddish alert with exclamation symbol
 .warning-text {
-  color: $dark-orange;
+  color: $cg-red;
   font-size: $txt-sm;
 
   .warning-symbol {
@@ -90,7 +90,7 @@
     flex-direction: column;
 
     p:last-child {
-      color: $orange-highlight;
+      color: $red-orange;
     }
   }
 }
@@ -110,7 +110,7 @@
     }
 
     &:last-child {
-      color: $dark-orange;
+      color: $cg-red;
     }
   }
 
