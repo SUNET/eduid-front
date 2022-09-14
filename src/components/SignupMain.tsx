@@ -8,8 +8,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector, useSignupAppDispatch } from "signup-hooks";
 import "../login/styles/index.scss";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { showNotification } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 
 // export for use in tests
@@ -20,21 +18,8 @@ export function SignupMain(): JSX.Element {
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
   const dispatch = useSignupAppDispatch();
-  const navigate = useNavigate();
   const [verifyLinkCode, setVerifyLinkCode] = useState<string>();
   const response = useSignupAppSelector((state) => state.signup);
-
-  useEffect(() => {
-    if (response.status === "unknown-code") {
-      dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
-      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
-    }
-    if (response.status === "already-verified") {
-      // TODO: Not sure this can reasonably actually happen in the backend?
-      dispatch(showNotification({ message: "code.already-verified", level: "info" }));
-      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
-    }
-  }, [response]);
 
   useEffect(() => {
     if (isLoaded && verifyLinkCode) {
@@ -55,7 +40,7 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
               <Route
                 path={`${SIGNUP_BASE_PATH}/code/:code`}
-                element={<CodeVerified {...response} stateChanger={setVerifyLinkCode} />}
+                element={<CodeVerified response={response} stateChanger={setVerifyLinkCode} />}
               />
               <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
             </Routes>
