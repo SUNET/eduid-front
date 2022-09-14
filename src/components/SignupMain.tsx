@@ -55,7 +55,7 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
               <Route
                 path={`${SIGNUP_BASE_PATH}/code/:code`}
-                element={<CodeVerified {...response} setVerifyLinkCode={setVerifyLinkCode} />}
+                element={<CodeVerified {...response} stateChanger={setVerifyLinkCode} />}
               />
               <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
             </Routes>

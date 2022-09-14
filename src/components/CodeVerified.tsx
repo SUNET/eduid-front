@@ -17,7 +17,7 @@ interface CodeParams {
 
 interface CodeVerifiedProps {
   response?: VerifyLinkResponseSuccess;
-  setVerifyLinkCode: (value: string | undefined) => void;
+  stateChanger: (value: string | undefined) => void;
 }
 
 export default function CodeVerified(props: CodeVerifiedProps) {
@@ -26,7 +26,7 @@ export default function CodeVerified(props: CodeVerifiedProps) {
   const params = useParams() as CodeParams;
 
   useEffect(() => {
-    props.setVerifyLinkCode(params.code);
+    props.stateChanger(params.code);
   }, [params.code]);
 
   return (
