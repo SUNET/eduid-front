@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
-import { fetchTryCaptcha, isTryCaptchaResponse, TryCaptchaNextStep, TryCaptchaResponse } from "apis/eduidSignup";
-import { response } from "msw";
-
+import { fetchTryCaptcha, fetchVerifyLink, isTryCaptchaResponse, TryCaptchaNextStep } from "apis/eduidSignup";
 interface SignupState {
   email?: string;
   tou_accepted: boolean;
   current_step: "register" | TryCaptchaNextStep;
+  code?: string;
+
+  status?: string;
+  dashboard_url?: string;
+  password?: string;
 }
 
 // export for use in tests
@@ -25,9 +28,23 @@ export const signupSlice = createSlice({
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;
     },
+    saveVerifyLinkCode: (state, action: PayloadAction<string>) => {
+      state.code = action.payload;
+    },
+    useVerifyLinkCode: () => {},
   },
   extraReducers: (builder) => {
     builder
+      //TODO: add action type, do not know why get error with action:VerifyLinkResponseSuccess
+      .addCase(fetchVerifyLink.fulfilled, (state, action: any) => {
+        state.status = action.payload.status;
+        state.dashboard_url = action.payload.dashboard_url;
+        state.password = action.payload.password;
+        state.email = action.payload.email;
+      })
+      .addCase(fetchVerifyLink.rejected, (state, action: any) => {
+        state.status = action.payload?.payload.status;
+      })
       .addCase(fetchTryCaptcha.fulfilled, (state, action) => {
         state.current_step = action.payload.next;
       })

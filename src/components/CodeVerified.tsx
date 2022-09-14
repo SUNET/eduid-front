@@ -1,14 +1,9 @@
-import { isFSA } from "apis/common";
-import { fetchVerifyLink, isVerifyLinkResponse, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
+import { VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
-import { showNotification } from "reducers/Notifications";
-import { useSignupAppDispatch } from "signup-hooks";
-import { SIGNUP_BASE_PATH } from "./SignupMain";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -20,49 +15,24 @@ interface CodeParams {
   code?: string;
 }
 
-export default function CodeVerified() {
+interface CodeVerifiedProps {
+  response?: VerifyLinkResponseSuccess;
+  setVerifyLinkCode: (value: string | undefined) => void;
+}
+
+export default function CodeVerified(props: CodeVerifiedProps) {
   // TODO: get dashboard URL from config instead of from backend response?
   // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
-  const dispatch = useSignupAppDispatch();
-  const navigate = useNavigate();
   const params = useParams() as CodeParams;
-  const [response, setResponse] = useState<VerifyLinkResponse>();
-
-  async function verifyCode(code: string) {
-    const resp = await dispatch(fetchVerifyLink({ code }));
-
-    if (fetchVerifyLink.fulfilled.match(resp)) {
-      setResponse(resp.payload);
-    }
-    if (fetchVerifyLink.rejected.match(resp)) {
-      if (isFSA(resp.payload) && isVerifyLinkResponse(resp.payload.payload)) {
-        setResponse(resp.payload.payload);
-      }
-    }
-  }
 
   useEffect(() => {
-    if (!response && params?.code) {
-      verifyCode(params.code);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (response?.status === "unknown-code") {
-      dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
-      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
-    }
-    if (response?.status === "already-verified") {
-      // TODO: Not sure this can reasonably actually happen in the backend?
-      dispatch(showNotification({ message: "code.already-verified", level: "info" }));
-      navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
-    }
-  }, [response]);
+    props.setVerifyLinkCode(params.code);
+  }, [params.code]);
 
   return (
     <React.Fragment>
-      <Splash showChildren={response !== undefined}>
-        {response?.status === "verified" && <SignupComplete {...response} />}
+      <Splash showChildren={props.response !== undefined}>
+        {props.response?.status === "verified" && <SignupComplete {...props.response} />}
       </Splash>
     </React.Fragment>
   );

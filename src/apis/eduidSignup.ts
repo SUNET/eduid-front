@@ -61,7 +61,7 @@ export interface VerifyLinkResponseSuccess {
   status: "verified";
   password: string;
   email?: string;
-  dashboard_url: string;
+  dashboard_url?: string;
 }
 
 export type VerifyLinkResponse = VerifyLinkResponseFail | VerifyLinkResponseSuccess;
@@ -73,10 +73,11 @@ export type VerifyLinkResponse = VerifyLinkResponseFail | VerifyLinkResponseSucc
  */
 export const fetchVerifyLink = createAsyncThunk<
   VerifyLinkResponse, // return type
-  VerifyLinkRequest, // args type
+  undefined, // args type
   { dispatch: SignupAppDispatch; state: SignupRootState }
 >("signup/fetchVerifyLink", async (args, thunkAPI) => {
-  return makeSignupRequest<VerifyLinkResponse>(thunkAPI, `verify-link/${args.code}`)
+  const state = thunkAPI.getState();
+  return makeSignupRequest<VerifyLinkResponse>(thunkAPI, `verify-link/${state.signup.code}`)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
