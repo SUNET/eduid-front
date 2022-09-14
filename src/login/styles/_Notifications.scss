@@ -55,17 +55,6 @@
   margin-top: -1rem;
 }
 
-.notification-dot-inner {
-  background-color: $mid-orange;
-  border: solid 1px $light-gray;
-  top: 10%;
-  left: 10%;
-  width: 80%; /* of the notification-dot */
-  height: 80%; /* of the notification-dot */
-  position: absolute;
-  border-radius: 50%;
-}
-
 /* Wrapping */
 .speech-bubbletip-wrapper {
   display: inline-block;
