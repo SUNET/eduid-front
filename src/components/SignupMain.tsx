@@ -19,7 +19,6 @@ export function SignupMain(): JSX.Element {
 
   const dispatch = useSignupAppDispatch();
   const [verifyLinkCode, setVerifyLinkCode] = useState<string>();
-  const response = useSignupAppSelector((state) => state.signup);
 
   useEffect(() => {
     if (isLoaded && verifyLinkCode) {
@@ -40,7 +39,7 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
               <Route
                 path={`${SIGNUP_BASE_PATH}/code/:code`}
-                element={<CodeVerified response={response} stateChanger={setVerifyLinkCode} />}
+                element={<CodeVerified stateChanger={setVerifyLinkCode} />}
               />
               <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
             </Routes>

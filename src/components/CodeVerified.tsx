@@ -1,4 +1,3 @@
-import { VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import React, { useEffect } from "react";
@@ -6,8 +5,9 @@ import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import { showNotification } from "reducers/Notifications";
 import { SIGNUP_BASE_PATH } from "./SignupMain";
-import { useSignupAppDispatch } from "signup-hooks";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { useNavigate } from "react-router-dom";
+import { SignupState } from "reducers/Signup";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -20,7 +20,6 @@ interface CodeParams {
 }
 
 interface CodeVerifiedProps {
-  response?: any;
   stateChanger: (value: string | undefined) => void;
 }
 
@@ -30,33 +29,34 @@ export default function CodeVerified(props: CodeVerifiedProps) {
   const params = useParams() as CodeParams;
   const dispatch = useSignupAppDispatch();
   const navigate = useNavigate();
+  const response = useSignupAppSelector((state) => state.signup);
 
   useEffect(() => {
     props.stateChanger(params.code);
   }, [params.code]);
 
   useEffect(() => {
-    if (props.response.status === "unknown-code") {
+    if (response?.status === "unknown-code") {
       dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
       navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
-    if (props.response.status === "already-verified") {
+    if (response?.status === "already-verified") {
       // TODO: Not sure this can reasonably actually happen in the backend?
       dispatch(showNotification({ message: "code.already-verified", level: "info" }));
       navigate(SIGNUP_BASE_PATH + "/email"); // GOTO start
     }
-  }, [props.response]);
+  }, [response]);
 
   return (
     <React.Fragment>
-      <Splash showChildren={props.response !== undefined}>
-        {props.response?.status === "verified" && <SignupComplete {...props.response} />}
+      <Splash showChildren={response !== undefined}>
+        {response?.status === "verified" && <SignupComplete {...response} />}
       </Splash>
     </React.Fragment>
   );
 }
 
-function SignupComplete(props: VerifyLinkResponseSuccess) {
+function SignupComplete(props: SignupState) {
   return (
     <form method="GET" action={props.dashboard_url}>
       <h1 className="register-header">

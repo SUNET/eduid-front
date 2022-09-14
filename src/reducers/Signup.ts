@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
 import { fetchTryCaptcha, fetchVerifyLink, isTryCaptchaResponse, TryCaptchaNextStep } from "apis/eduidSignup";
-interface SignupState {
+
+export interface SignupState {
   email?: string;
   tou_accepted: boolean;
   current_step: "register" | TryCaptchaNextStep;
