@@ -124,14 +124,14 @@ article {
 
       p {
         font-size: 1rem;
-        color: $light-black;
+        color: $mid-black;
         padding: 0;
         line-height: 1;
-        border-bottom: $light-black solid 1px;
+        border-bottom: $mid-black solid 1px;
         cursor: pointer;
 
         &.active {
-          color: $bright-orange;
+          color: $mid-orange;
           border-bottom: transparent solid 1px;
         }
       }
@@ -226,7 +226,7 @@ article {
         height: 1rem;
 
         &.dropdown-closed {
-          color: $light-black;
+          color: $mid-black;
           text-decoration: none;
           transform: rotate(180deg);
           transform-origin: center center;
@@ -234,7 +234,7 @@ article {
         }
 
         &.dropdown-open {
-          color: $light-black;
+          color: $mid-black;
           transform: rotate(0deg);
           text-decoration: none;
           transform-origin: center center;
@@ -388,10 +388,10 @@ article {
         min-height: 1rem;
         min-width: 1rem;
         flex-direction: row;
-        border: solid 2px $bright-orange;
+        border: solid 2px $mid-orange;
 
         &.checked {
-          background: $bright-orange;
+          background: $mid-orange;
         }
       }
 

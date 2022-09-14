@@ -87,7 +87,7 @@
           border: none;
 
           svg {
-            color: $light-black;
+            color: $mid-black;
             height: 1rem;
             width: 1rem;
           }
@@ -122,7 +122,7 @@
 
       &:focus {
         box-shadow: none;
-        border: 2px solid $light-black;
+        border: 2px solid $mid-black;
         position: relative;
       }
 

@@ -25,19 +25,20 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $bright-orange;
+    background-color: $dark-orange;
+    border-color: inherit;
     color: $white;
   }
 }
 
-.btn-primary,
-.btn-primary,
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled):focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled):hover {
+button.btn-primary,
+button.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):focus,
+button.btn-primary:not(:disabled):not(.disabled):active:focus,
+button.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
-  background-color: $bright-orange;
+  border: solid 2px $mid-orange;
+  background-color: $dark-orange;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
@@ -49,8 +50,8 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  color: $bright-orange;
-  border: solid 2px $bright-orange;
+  color: $dark-orange;
+  border: solid 2px $mid-orange;
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
@@ -104,7 +105,7 @@ button.btn-close {
 /* styles for links that are also buttons */
 button.btn-link {
   background-color: transparent;
-  color: $bright-orange;
+  color: $dark-orange;
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -116,7 +117,7 @@ button.btn-link {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $bright-orange;
+    color: $dark-orange;
     background-color: transparent;
     transform: scale(1);
     text-decoration: underline;
@@ -206,7 +207,7 @@ button.btn-icon {
   border: none;
   cursor: pointer;
   right: 1rem;
-  color: $light-black;
+  color: $mid-black;
   font-size: 0.75rem;
 }
 

@@ -16,15 +16,15 @@
     }
 
     & a {
-      color: $light-black;
+      color: $mid-black;
       padding: 0 0.1875rem;
       line-height: 1.25 & span {
-        border-bottom: $light-black solid 1px;
+        border-bottom: $mid-black solid 1px;
       }
 
       // styling for when menu item is clicked
       &.active {
-        color: $bright-orange;
+        color: $dark-orange;
 
         & span {
           border-bottom: transparent solid 1px;
@@ -33,7 +33,7 @@
 
       // styling for when hovering the menu item
       &:hover {
-        color: $bright-orange;
+        color: $dark-orange;
         border-bottom: transparent solid 1px;
 
         & span {
@@ -79,13 +79,13 @@
     }
   }
 
-  & a span {
-    border-bottom: solid 1px $bright-orange;
+  // & a span {
+  //   border-bottom: solid 1px $mid-orange;
 
-    &:hover {
-      border-bottom: solid 1px transparent;
-    }
-  }
+  //   &:hover {
+  //     border-bottom: solid 1px transparent;
+  //   }
+  // }
 }
 
 .display-data {
@@ -101,12 +101,12 @@
     color: $dark-gray;
   }
 
-  &.unverified {
-    color: $bright-orange;
-  }
+  // &.unverified {
+  //   color: $mid-orange;
+  // }
 
   &.verified {
-    color: $light-black;
+    color: $mid-black;
   }
 
   @media (max-width: $bp-md) {

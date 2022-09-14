@@ -38,12 +38,12 @@
       margin: 0.5rem 0;
 
       & a span {
-        color: $light-black;
-        border-bottom: $light-black solid 1px;
+        color: $mid-black;
+        border-bottom: $mid-black solid 1px;
       }
 
       & a span:hover {
-        color: $bright-orange;
+        color: $mid-orange;
         border-bottom: transparent solid 1px;
       }
     }
@@ -63,8 +63,8 @@
     margin-bottom: 0.5rem;
     font-family: ProximaNova-Bold;
     line-height: 1;
-    color: $light-black;
-    border: solid $light-black 2px;
+    color: $mid-black;
+    border: solid $mid-black 2px;
     background-color: $white;
     padding: 1rem 1.5rem;
     border-radius: 20px;
@@ -80,8 +80,8 @@
 
     &:hover {
       transform: scale(0.99);
-      border: solid $bright-orange 2px;
-      color: $bright-orange;
+      border: solid $mid-orange 2px;
+      color: $mid-orange;
       transition: all 0.3s ease;
     }
 
@@ -100,11 +100,11 @@
       color: $dark-gray;
 
       & .description {
-        color: $light-black;
+        color: $mid-black;
       }
 
       & .explanation-link {
-        color: $light-black;
+        color: $mid-black;
       }
     }
 
@@ -121,7 +121,7 @@
 .proofing-btn-help {
   margin: 0 0.5rem 2rem;
   line-height: 1.2;
-  color: $light-black;
+  color: $mid-black;
   font-size: 0.875rem;
 }
 

@@ -2,7 +2,7 @@
 
 a,
 .text-link {
-  color: $bright-orange;
+  color: $dark-orange;
   font-family: $akkurat;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -10,7 +10,7 @@ a,
   border-bottom: none;
 
   &:hover {
-    color: $bright-orange;
+    color: $dark-orange;
     border-bottom: none;
     text-decoration: underline;
   }

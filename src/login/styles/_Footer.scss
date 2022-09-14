@@ -3,7 +3,7 @@ footer {
   justify-content: space-between;
   align-items: baseline;
   padding: 1rem;
-  border-top: 6px solid $bright-orange;
+  border-top: 6px solid $mid-orange;
   background-color: $light-gray;
   font-size: 0.9rem;
 
@@ -44,10 +44,6 @@ footer nav ul {
 footer nav .help-link {
   padding: 0;
   margin-right: 1rem;
-}
-
-footer nav .help-link span {
-  color: $bright-orange;
 }
 
 footer nav .lang-selected {

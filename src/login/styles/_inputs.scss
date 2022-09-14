@@ -4,7 +4,7 @@
   display: flex;
 
   &:focus {
-    color: $light-black;
+    color: $mid-black;
     background-color: $white;
     border-color: $dark-gray;
     box-shadow: 0 0 0 0.2rem $bright-gray;
@@ -25,7 +25,7 @@ input[type="radio"] {
   /* background-color only for content */
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: 2px solid $bright-orange;
+  border: 2px solid $mid-orange;
   background-color: transparent;
   border-radius: 50%;
 
@@ -36,7 +36,7 @@ input[type="radio"] {
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
   // background-color: #28a745;
-  background-color: $bright-orange;
+  background-color: $mid-orange;
   border: none;
 }
 
@@ -55,7 +55,7 @@ input[type="radio"]:checked.error {
   span {
     font-size: 1.5rem;
     align-self: center;
-    color: $light-black;
+    color: $mid-black;
     font-family: $proxima-regular;
     font-weight: normal;
     text-transform: capitalize;
@@ -80,7 +80,7 @@ input::placeholder {
 .form-control:focus,
 input:focus {
   outline: 0;
-  border-bottom: solid 2px $light-black;
+  border-bottom: solid 2px $mid-black;
   box-shadow: 0 0 0 0.2rem $bright-gray;
 }
 
@@ -95,7 +95,7 @@ input:focus {
 /* invalid form input */
 .form-control.is-invalid {
   border: none;
-  border-bottom: 2px solid $bright-orange;
+  border-bottom: 2px solid $mid-orange;
   background-image: none;
   padding-right: 8px;
 
@@ -106,7 +106,7 @@ input:focus {
 
 /* error message */
 .input-error {
-  color: $bright-orange;
+  color: $mid-orange;
   font-weight: 700;
   letter-spacing: 0.025rem;
 }
@@ -129,12 +129,12 @@ input:focus {
 
 /* for orange asterisk after label */
 .label-required {
-  color: $bright-orange;
+  color: $mid-orange;
 }
 
 .input-validate-error {
   font-size: $txt-sm;
-  color: $dark-orange;
+  color: $mid-red;
 
   fieldset & {
     position: absolute;
@@ -196,7 +196,7 @@ input:focus {
   }
 
   .toggle-checkbox:checked + & {
-    background: $bright-orange;
+    background: $mid-orange;
 
     &::before {
       left: 29px;
