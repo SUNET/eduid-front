@@ -1414,7 +1414,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "mobile.confirm_title": {
     "string": "Skriv in verifieringskoden som skickats till {phone}"
