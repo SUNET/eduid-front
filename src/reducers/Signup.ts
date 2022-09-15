@@ -32,7 +32,6 @@ export const signupSlice = createSlice({
     saveVerifyLinkCode: (state, action: PayloadAction<string>) => {
       state.code = action.payload;
     },
-    useVerifyLinkCode: () => {},
   },
   extraReducers: (builder) => {
     builder

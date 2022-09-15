@@ -23,7 +23,6 @@ export function SignupMain(): JSX.Element {
   useEffect(() => {
     if (isLoaded && verifyLinkCode) {
       dispatch(signupSlice.actions.saveVerifyLinkCode(verifyLinkCode));
-      dispatch(signupSlice.actions.useVerifyLinkCode());
     }
   }, [isLoaded]);
 
