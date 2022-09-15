@@ -191,7 +191,12 @@ function Phones() {
             }}
           />
         ) : (
-          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handlePhoneForm}>
+          <EduIDButton
+            id="phone-number-add-more-button"
+            buttonstyle="link"
+            className=" lowercase"
+            onClick={handlePhoneForm}
+          >
             <FormattedMessage defaultMessage=" + add more" description="button add more" />
           </EduIDButton>
         )}
