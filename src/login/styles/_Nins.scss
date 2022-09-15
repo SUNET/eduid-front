@@ -43,7 +43,7 @@
       }
 
       & a span:hover {
-        color: $mid-orange;
+        color: $bright-orange;
         border-bottom: transparent solid 1px;
       }
     }
@@ -80,8 +80,8 @@
 
     &:hover {
       transform: scale(0.99);
-      border: solid $mid-orange 2px;
-      color: $mid-orange;
+      border: solid $bright-orange 2px;
+      color: $bright-orange;
       transition: all 0.3s ease;
     }
 
@@ -93,11 +93,11 @@
 
 .vetting-button {
   & button:disabled {
-    background-color: $light-gray;
-    border-color: $dark-gray;
+    background-color: $bg-gray;
+    border-color: $txt-gray;
 
     & .text {
-      color: $dark-gray;
+      color: $txt-gray;
 
       & .description {
         color: $mid-black;
@@ -109,7 +109,7 @@
     }
 
     & .name {
-      color: $dark-gray;
+      color: $txt-gray;
     }
 
     &:hover {
@@ -126,7 +126,7 @@
 }
 
 .proofing-btn-help.disabled {
-  color: $dark-gray;
+  color: $txt-gray;
 }
 
 @media (max-width: $bp-md) {

@@ -25,7 +25,7 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $dark-orange;
+    background-color: $bg-orange;
     border-color: inherit;
     color: $white;
   }
@@ -37,8 +37,8 @@ button.btn-primary:not(:disabled):not(.disabled):focus,
 button.btn-primary:not(:disabled):not(.disabled):active:focus,
 button.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
-  border: solid 2px $mid-orange;
-  background-color: $dark-orange;
+  border: solid 2px $bright-orange;
+  background-color: $bg-orange;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
@@ -50,8 +50,8 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  color: $dark-orange;
-  border: solid 2px $mid-orange;
+  color: $txt-orange;
+  border: solid 2px $bright-orange;
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
@@ -92,7 +92,7 @@ button.btn-close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $dark-gray;
+    color: $txt-gray;
     background-color: transparent;
     box-shadow: none;
   }
@@ -105,7 +105,7 @@ button.btn-close {
 /* styles for links that are also buttons */
 button.btn-link {
   background-color: transparent;
-  color: $dark-orange;
+  color: $txt-orange;
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -117,7 +117,7 @@ button.btn-link {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $dark-orange;
+    color: $txt-orange;
     background-color: transparent;
     transform: scale(1);
     text-decoration: underline;

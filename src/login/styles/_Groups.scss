@@ -70,7 +70,7 @@ article {
     }
 
     input {
-      background-color: $light-gray;
+      background-color: $bg-gray;
     }
   }
 
@@ -131,7 +131,7 @@ article {
         cursor: pointer;
 
         &.active {
-          color: $mid-orange;
+          color: $bright-orange;
           border-bottom: transparent solid 1px;
         }
       }
@@ -366,7 +366,7 @@ article {
 
   #emails-form {
     input {
-      background: $light-gray;
+      background: $bg-gray;
       margin-bottom: 0.25rem;
     }
   }
@@ -388,10 +388,10 @@ article {
         min-height: 1rem;
         min-width: 1rem;
         flex-direction: row;
-        border: solid 2px $mid-orange;
+        border: solid 2px $bright-orange;
 
         &.checked {
-          background: $mid-orange;
+          background: $bright-orange;
         }
       }
 

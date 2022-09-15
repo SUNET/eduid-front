@@ -5,15 +5,16 @@
 $white: #fff;
 $mid-black: #161616;
 
-$light-gray: #f4f4f4;
+$bg-gray: #f4f4f4;
 $mid-gray: #d8d8d8;
-$dark-gray: #707070;
+$txt-gray: #707070;
 
 $light-orange: #ffe7dd;
-$mid-orange: #ff4500; //eduID
-$dark-orange: #cc3600;
+$bright-orange: #ff4500; //eduID
+$txt-orange: #cc3600; //text on gray
+$bg-orange: #db3a00; //white on orange
 
-$mid-red: #d2143a;
+$error-red: #d2143a;
 
 /* possibly remove/edit these */
 $bright-gray: #ebebeb; //$mid-gray

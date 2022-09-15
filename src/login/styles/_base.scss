@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   flex: 1;
   padding-bottom: 6rem;
-  background-color: $light-gray;
+  background-color: $bg-gray;
 
   @media (max-width: $bp-lg) {
     padding-bottom: 4rem;

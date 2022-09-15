@@ -8,11 +8,11 @@ form .react-select {
     border: 2px solid $mid-gray;
 
     .react-select__indicator {
-      color: $dark-gray;
+      color: $txt-gray;
     }
   }
   &__control:hover {
-    border: 2px solid $dark-gray;
+    border: 2px solid $txt-gray;
     box-shadow: none;
   }
   &__control--is-focused {

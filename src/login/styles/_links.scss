@@ -2,7 +2,7 @@
 
 a,
 .text-link {
-  color: $dark-orange;
+  color: $txt-orange;
   font-family: $akkurat;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -10,7 +10,7 @@ a,
   border-bottom: none;
 
   &:hover {
-    color: $dark-orange;
+    color: $txt-orange;
     border-bottom: none;
     text-decoration: underline;
   }
@@ -22,7 +22,7 @@ a,
 }
 
 a .disabled {
-  color: $dark-gray;
+  color: $txt-gray;
   text-decoration: none;
 
   &:hover {
