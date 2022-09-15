@@ -16,9 +16,7 @@ interface NotificationTipProps {
 function NotificationTip(props: NotificationTipProps) {
   return (
     <SpeechBubbleTip {...props}>
-      <div className="notification-dot">
-        <div className="notification-dot-inner" />
-      </div>
+      <div className="notification-dot"></div>
     </SpeechBubbleTip>
   );
 }
