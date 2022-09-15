@@ -171,7 +171,7 @@ function Emails() {
             }}
           />
         ) : (
-          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handleEmailForm}>
+          <EduIDButton id="emails-add-more-button" buttonstyle="link" className=" lowercase" onClick={handleEmailForm}>
             <FormattedMessage defaultMessage="+ add more" description="button add more" />
           </EduIDButton>
         )}
