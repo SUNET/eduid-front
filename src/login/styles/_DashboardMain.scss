@@ -10,9 +10,13 @@
     display: inline-block;
 
     & li {
-      margin: 0 1.25rem 0.75rem 0;
+      margin: 0 1.25rem 0.5rem 0;
       //flex: 1;
       display: inline-block;
+
+      @media (max-width: $bp-md) {
+        margin-right: 1rem;
+      }
     }
 
     & a {
@@ -40,6 +44,10 @@
           border-bottom: transparent solid 1px;
         }
       }
+    }
+    @media (min-width: $bp-xl) {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
