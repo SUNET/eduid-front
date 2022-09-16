@@ -37,7 +37,7 @@ export default function Notifications(props: NotificationsProps): JSX.Element | 
   return (
     <div className="notifications-area" aria-live="polite">
       <Alert color={color} toggle={props.handleRMNotification} closeClassName="close">
-        <span>
+        <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
       </Alert>

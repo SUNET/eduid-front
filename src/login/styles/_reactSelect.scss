@@ -5,14 +5,14 @@ form .react-select {
   }
 
   &__control {
-    border: 2px solid $dark-gray;
+    border: 2px solid $border-gray;
 
     .react-select__indicator {
-      color: $gray;
+      color: $txt-gray;
     }
   }
   &__control:hover {
-    border: 2px solid $gray;
+    border: 2px solid $txt-gray;
     box-shadow: none;
   }
   &__control--is-focused {
@@ -25,14 +25,14 @@ form .react-select {
 
   &__placeholder {
     font-family: "ProximaNova-Regular";
-    color: $black;
+    color: $txt-black;
   }
 
   &__option--is-focused {
-    background-color: $orange-opaque;
+    background-color: $bg-orange;
   }
   &__option--is-selected {
     color: initial;
-    background-color: darken($orange-opaque, 5%);
+    background-color: darken($bg-orange, 5%);
   }
 }
