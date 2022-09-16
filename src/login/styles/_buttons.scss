@@ -26,7 +26,7 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $bg-orange;
+    background-color: $btn-orange;
     border-color: inherit;
     color: $white;
   }
@@ -39,7 +39,7 @@ button.btn-primary:not(:disabled):not(.disabled):active:focus,
 button.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
   border: solid 2px $bright-orange;
-  background-color: $bg-orange;
+  background-color: $btn-orange;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
@@ -208,7 +208,7 @@ button.btn-icon {
   border: none;
   cursor: pointer;
   right: 1rem;
-  color: $mid-black;
+  color: $txt-black;
   font-size: 0.75rem;
 }
 

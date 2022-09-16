@@ -50,7 +50,7 @@ article {
 
     button {
       background-color: transparent;
-      color: $silver-sand;
+      color: $border-gray;
       height: 1rem;
       box-shadow: 0 0 0;
       text-decoration: none;
@@ -124,10 +124,10 @@ article {
 
       p {
         font-size: 1rem;
-        color: $mid-black;
+        color: $txt-black;
         padding: 0;
         line-height: 1;
-        border-bottom: $mid-black solid 1px;
+        border-bottom: $txt-black solid 1px;
         cursor: pointer;
 
         &.active {
@@ -226,7 +226,7 @@ article {
         height: 1rem;
 
         &.dropdown-closed {
-          color: $mid-black;
+          color: $txt-black;
           text-decoration: none;
           transform: rotate(180deg);
           transform-origin: center center;
@@ -234,7 +234,7 @@ article {
         }
 
         &.dropdown-open {
-          color: $mid-black;
+          color: $txt-black;
           transform: rotate(0deg);
           text-decoration: none;
           transform-origin: center center;

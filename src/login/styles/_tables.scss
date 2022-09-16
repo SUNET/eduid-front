@@ -61,7 +61,7 @@ table {
       }
 
       &.primary {
-        color: $mid-black;
+        color: $txt-black;
       }
 
       &.unverified,
@@ -88,7 +88,7 @@ table {
     }
 
     & tr.webauthn-token-holder.verified {
-      color: $mid-black;
+      color: $txt-black;
     }
 
     & tr {
@@ -97,7 +97,7 @@ table {
 
       &.border-row {
         font-size: 0.8rem;
-        border-bottom: 1px solid $mid-gray;
+        border-bottom: 1px solid $border-gray;
       }
 
       &td:first-child {
@@ -112,7 +112,7 @@ table.table-form.passwords {
   tr:first-child {
     font-size: 1rem;
     letter-spacing: 0;
-    color: $mid-black;
+    color: $txt-black;
     font-family: $proxima-bold;
     height: auto;
   }

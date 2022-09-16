@@ -38,8 +38,8 @@
       margin: 0.5rem 0;
 
       & a span {
-        color: $mid-black;
-        border-bottom: $mid-black solid 1px;
+        color: $txt-black;
+        border-bottom: $txt-black solid 1px;
       }
 
       & a span:hover {
@@ -63,8 +63,8 @@
     margin-bottom: 0.5rem;
     font-family: ProximaNova-Bold;
     line-height: 1;
-    color: $mid-black;
-    border: solid $mid-black 2px;
+    color: $txt-black;
+    border: solid $txt-black 2px;
     background-color: $white;
     padding: 1rem 1.5rem;
     border-radius: 20px;
@@ -100,11 +100,11 @@
       color: $txt-gray;
 
       & .description {
-        color: $mid-black;
+        color: $txt-black;
       }
 
       & .explanation-link {
-        color: $mid-black;
+        color: $txt-black;
       }
     }
 
@@ -121,7 +121,7 @@
 .proofing-btn-help {
   margin: 0 0.5rem 2rem;
   line-height: 1.2;
-  color: $mid-black;
+  color: $txt-black;
   font-size: 0.875rem;
 }
 

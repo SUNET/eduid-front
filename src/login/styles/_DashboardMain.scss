@@ -20,10 +20,10 @@
     }
 
     & a {
-      color: $mid-black;
+      color: $txt-black;
       padding: 0 0.1875rem;
       line-height: 1.25 & span {
-        border-bottom: $mid-black solid 1px;
+        border-bottom: $txt-black solid 1px;
       }
 
       // styling for when menu item is clicked
@@ -114,7 +114,7 @@
   // }
 
   &.verified {
-    color: $mid-black;
+    color: $txt-black;
   }
 
   @media (max-width: $bp-md) {

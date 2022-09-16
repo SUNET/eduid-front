@@ -21,7 +21,7 @@
   &.alert-danger,
   &.alert-success {
     color: $error-red;
-    background-color: $light-orange;
+    background-color: $bg-orange;
     border: none;
   }
 
@@ -82,7 +82,7 @@
   transform: translateX(-50%);
   padding: 6px;
   color: $white;
-  background: $mid-black;
+  background: $txt-black;
   font-size: 0.875rem;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   line-height: 1;
@@ -104,7 +104,7 @@
   pointer-events: none;
   border-width: 6px;
   top: 100%;
-  border-top-color: $mid-black;
+  border-top-color: $txt-black;
 }
 
 /* Absolute positioning */

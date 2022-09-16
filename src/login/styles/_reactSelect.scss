@@ -5,7 +5,7 @@ form .react-select {
   }
 
   &__control {
-    border: 2px solid $mid-gray;
+    border: 2px solid $border-gray;
 
     .react-select__indicator {
       color: $txt-gray;
@@ -25,14 +25,14 @@ form .react-select {
 
   &__placeholder {
     font-family: "ProximaNova-Regular";
-    color: $mid-black;
+    color: $txt-black;
   }
 
   &__option--is-focused {
-    background-color: $light-orange;
+    background-color: $bg-orange;
   }
   &__option--is-selected {
     color: initial;
-    background-color: darken($light-orange, 5%);
+    background-color: darken($bg-orange, 5%);
   }
 }
