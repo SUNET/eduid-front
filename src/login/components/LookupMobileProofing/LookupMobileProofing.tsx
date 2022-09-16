@@ -49,7 +49,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   );
 
   const explanationText = (
-    <div className="explanation-link">
+    <>
       {
         /* if user not added id number, text will help the user to add id number */
         withoutNin ? (
@@ -58,14 +58,12 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
             the text "setting" is linked to the setting page phone number section */
         withoutPhoneNumber ? (
           <>
-            {" "}
             {translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSettings}
           </>
         ) : /* else if, unverified phone number, text will help the user to confirm phone number and
             the text "setting" is linked to the setting page phone number section */
         unverifiedNumber ? (
           <>
-            {" "}
             {translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSettings}
           </>
         ) : /* else if, the verified phone number is not a Swedish number, description text show "only available with Swedish number" */
@@ -73,7 +71,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
           translate("verify-identity.vetting_explanation_only_available_swe_number")
         ) : null
       }
-    </div>
+    </>
   );
 
   return (
@@ -89,10 +87,8 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         uuid="se-phone"
       >
         <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
-          <div key="1" className="text">
-            {translate("verify-identity.vetting_phone_tagline")}
-            {explanationText}
-          </div>
+          {translate("verify-identity.vetting_phone_tagline")}
+          {explanationText}
         </p>
         <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
           Proceed
