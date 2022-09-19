@@ -19,7 +19,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_sent = useAppSelector((state) => state.resetPassword.email_sent); // Has an e-mail been sent?
-
+  const response = useAppSelector((state) => state.resetPassword.email_response);
   const loginRef = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
@@ -35,9 +35,9 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     } else {
       return <ResetPasswordEnterEmail />;
     }
-  }
-
-  return <EmailLinkSent />;
+  } else if (!response) {
+    return <ResetPasswordEnterEmail />;
+  } else return <EmailLinkSent />;
 }
 
 function ResetPasswordBeginEmail(): JSX.Element {
