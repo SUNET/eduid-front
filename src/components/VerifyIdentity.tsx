@@ -15,7 +15,7 @@ import NinForm from "./NinForm";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
-type swedishAccordionUUID = "se-freja";
+type swedishAccordionUUID = "se-freja" | "se-letter" | "se-phone";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -167,9 +167,16 @@ function AccordionItemSwedish(): JSX.Element | null {
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
   const swedishOptions: swedishAccordionUUID[] = [];
+  console.log("nin", nin);
 
   if (nin) {
     /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+    swedishOptions.push("se-freja");
+    swedishOptions.push("se-letter");
+  } else if (!lookupMobileDisabled) {
+    swedishOptions.push("se-phone");
+  }
+  if (!nin) {
     swedishOptions.push("se-freja");
   }
 
