@@ -95,7 +95,7 @@ function Eidas(): JSX.Element {
         </p>
 
         <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
-          Proceed
+          <FormattedMessage defaultMessage="Proceed" description="button proceed" />
         </EduIDButton>
       </AccordionItemTemplate>
 

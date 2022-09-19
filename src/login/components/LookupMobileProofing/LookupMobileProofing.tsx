@@ -88,10 +88,10 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
       >
         <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
           {translate("verify-identity.vetting_phone_tagline")}
-          {explanationText}
         </p>
+        <p>{explanationText}</p>
         <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
-          Proceed
+          <FormattedMessage defaultMessage="Proceed" description="button proceed" />
         </EduIDButton>
       </AccordionItemTemplate>
 

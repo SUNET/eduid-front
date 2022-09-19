@@ -194,12 +194,12 @@ function AccordionItemSwedish(): JSX.Element | null {
                 <FormattedMessage
                   description="verify-identity.connect-nin_description"
                   defaultMessage={`Choose a method to verify that you have access to the added id number.
-          If you are unable to use a method you need to try another.`}
+                    If you are unable to use a method you need to try another.`}
                 />
               </p>
             </li>
 
-            <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
+            <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
               <FrejaeID />
               <LetterProofing disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
@@ -245,7 +245,7 @@ function AccordionItemEu(): JSX.Element | null {
         />
       </p>
       <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
-        Proceed
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
   );
