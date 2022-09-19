@@ -29,15 +29,6 @@ function VerifyIdentity(): JSX.Element | null {
     return null;
   }
 
-  const preExpanded: accordionUUID[] = [];
-
-  if (!identities.is_verified) {
-    if (identities.nin) {
-      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-      preExpanded.push("swedish");
-    }
-  }
-
   return (
     <Fragment>
       <div className="intro">
@@ -49,18 +40,21 @@ function VerifyIdentity(): JSX.Element | null {
         </h1>
         <VerifyIdentityIntro />
       </div>
-
-      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-        <AccordionItemSwedish />
-        <AccordionItemEu />
-        <AccordionItemWorld />
-      </Accordion>
     </Fragment>
   );
 }
 
 function VerifyIdentityIntro(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
+
+  const preExpanded: accordionUUID[] = [];
+
+  if (!identities.is_verified) {
+    if (identities.nin) {
+      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+      preExpanded.push("swedish");
+    }
+  }
 
   if (identities.is_verified) {
     /* User has a verified identity. Show which one (or ones) it is.
@@ -104,6 +98,11 @@ function VerifyIdentityIntro(): JSX.Element {
           defaultMessage="Choose your principal identification method"
         />
       </h3>
+      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+        <AccordionItemSwedish />
+        <AccordionItemEu />
+        <AccordionItemWorld />
+      </Accordion>
     </React.Fragment>
   );
 }
