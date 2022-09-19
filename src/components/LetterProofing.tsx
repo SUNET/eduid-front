@@ -155,7 +155,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
 
         {description}
 
-        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleModal()}>
+        <EduIDButton disabled={disabled} buttonstyle="primary" size="sm" onClick={() => handleModal()}>
           Proceed
         </EduIDButton>
       </AccordionItemTemplate>

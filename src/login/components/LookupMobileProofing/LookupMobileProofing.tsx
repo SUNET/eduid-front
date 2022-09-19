@@ -90,7 +90,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
           {translate("verify-identity.vetting_phone_tagline")}
           {explanationText}
         </p>
-        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+        <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
           Proceed
         </EduIDButton>
       </AccordionItemTemplate>

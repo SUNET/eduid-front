@@ -1,5 +1,5 @@
 import { eidasVerifyIdentity } from "apis/eduidEidas";
-import Eidas from "components/Eidas";
+import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
@@ -8,7 +8,6 @@ import { Accordion } from "react-accessible-accordion";
 import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
-import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
 import NinForm from "./NinForm";
@@ -18,7 +17,6 @@ type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const identities = useDashboardAppSelector((state) => state.identities);
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
@@ -168,7 +166,6 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
-  console.log("letterProofingDisabled", letterProofingDisabled);
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
@@ -203,7 +200,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             </li>
 
             <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
-              <Eidas />
+              <FrejaeID />
               <LetterProofing disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
             </Accordion>
