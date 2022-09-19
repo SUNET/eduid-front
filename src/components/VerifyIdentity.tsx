@@ -171,7 +171,7 @@ function AccordionItemSwedish(): JSX.Element | null {
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
       title="Swedish personal ID number"
-      additionalInfo=""
+      additionalInfo="With a digital ID-card / By post / By phone"
       uuid="swedish"
     >
       {nin?.verified ? (
