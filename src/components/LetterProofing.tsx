@@ -146,7 +146,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         }
         uuid="se-letter"
       >
-        <p className={"proofing-btn-help" + (disabled === true ? " disabled" : "")}>
+        <p className="proofing-btn-help">
           <FormattedMessage
             description="letter initialize proofing help text"
             defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}

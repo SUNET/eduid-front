@@ -8,6 +8,7 @@ import { Accordion } from "react-accessible-accordion";
 import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
 import NinForm from "./NinForm";
@@ -183,7 +184,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             <h4>
               <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
             </h4>
-            <NinForm />
+            <AddNin />
           </li>
           <React.Fragment>
             <li>
