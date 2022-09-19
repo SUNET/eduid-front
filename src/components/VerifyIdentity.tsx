@@ -10,6 +10,8 @@ import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
+import NinDisplay from "./NinDisplay";
+import NinForm from "./NinForm";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -124,7 +126,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
                 </strong>
               </td>
               <td>
-                <AddNin />
+                <NinDisplay nin={identities.nin} allowDelete={true} />
               </td>
             </tr>
           )}
@@ -166,8 +168,7 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
-  const showStepTwo = Boolean(nin?.number) && !nin?.verified;
-
+  console.log("letterProofingDisabled", letterProofingDisabled);
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
@@ -177,7 +178,7 @@ function AccordionItemSwedish(): JSX.Element | null {
     >
       {nin?.verified ? (
         <React.Fragment>
-          <AddNin />
+          <NinDisplay />
         </React.Fragment>
       ) : (
         <ol className="listed-steps">
@@ -185,32 +186,28 @@ function AccordionItemSwedish(): JSX.Element | null {
             <h4>
               <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
             </h4>
-            <AddNin />
+            <NinForm />
           </li>
-
-          {showStepTwo && (
-            <React.Fragment>
-              <li>
-                <h4>
-                  <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-                </h4>
-                <p className="x-adjust">
-                  <FormattedMessage
-                    description="verify-identity.connect-nin_description"
-                    defaultMessage={`Choose a method to verify that you have access to the added id number.
+          <React.Fragment>
+            <li>
+              <h4>
+                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
+              </h4>
+              <p className="x-adjust">
+                <FormattedMessage
+                  description="verify-identity.connect-nin_description"
+                  defaultMessage={`Choose a method to verify that you have access to the added id number.
           If you are unable to use a method you need to try another.`}
-                  />
-                </p>
-              </li>
+                />
+              </p>
+            </li>
 
-              {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
-              <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
-                <Eidas />
-                <LetterProofing disabled={letterProofingDisabled} />
-                <LookupMobileProofing disabled={lookupMobileDisabled} />
-              </Accordion>
-            </React.Fragment>
-          )}
+            <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
+              <Eidas />
+              <LetterProofing disabled={letterProofingDisabled} />
+              <LookupMobileProofing disabled={lookupMobileDisabled} />
+            </Accordion>
+          </React.Fragment>
         </ol>
       )}
     </AccordionItemTemplate>
