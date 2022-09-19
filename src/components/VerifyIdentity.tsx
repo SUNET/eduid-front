@@ -15,6 +15,7 @@ import NinForm from "./NinForm";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
+type swedishAccordionUUID = "se-freja";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -165,6 +166,13 @@ function AccordionItemSwedish(): JSX.Element | null {
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
+  const swedishOptions: swedishAccordionUUID[] = [];
+
+  if (nin) {
+    /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+    swedishOptions.push("se-freja");
+  }
+
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
   return (
@@ -200,7 +208,12 @@ function AccordionItemSwedish(): JSX.Element | null {
               </p>
             </li>
 
-            <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+            <Accordion
+              allowMultipleExpanded
+              allowZeroExpanded
+              className="accordion accordion-nested x-adjust"
+              preExpanded={swedishOptions}
+            >
               <FrejaeID />
               <LetterProofing disabled={letterProofingDisabled} />
               <LookupMobileProofing disabled={lookupMobileDisabled} />
