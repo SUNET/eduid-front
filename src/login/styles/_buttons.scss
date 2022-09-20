@@ -9,11 +9,12 @@ a.btn,
 button,
 button.btn {
   font-family: $akkurat;
+  letter-spacing: 1px;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  height: 3rem;
+  height: 2.8rem;
   border-radius: 1.5rem;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   transition: all 0.3s ease;
@@ -25,35 +26,24 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $orange-highlight;
+    background-color: $btn-orange;
+    border-color: inherit;
     color: $white;
   }
 }
 
-.btn-primary,
-.btn-primary,
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled):focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled):hover {
+button.btn-primary,
+button.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):focus,
+button.btn-primary:not(:disabled):not(.disabled):active:focus,
+button.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
-  background-color: $orange-highlight;
+  border: solid 2px $bright-orange;
+  background-color: $btn-orange;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
-  padding: 0 1.25rem;
-
-  /* Nested accordion content buttons */
-  &.btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 13px;
-    min-width: fit-content;
-    width: auto;
-    height: 33px;
-    margin-top: 0;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-  }
+  padding: 0 1.125rem;
 }
 
 button.btn-secondary,
@@ -61,13 +51,13 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  color: $orange-highlight;
-  border: solid 2px $orange-highlight;
+  color: $txt-orange;
+  border: solid 2px $bright-orange;
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
-  padding: 0 1.25rem;
+  padding: 0 1.125rem;
 
   /* Login, Logout, Register button in Header */
   &.btn-sm {
@@ -104,7 +94,7 @@ button.btn-close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $gray;
+    color: $txt-gray;
     background-color: transparent;
     box-shadow: none;
   }
@@ -117,7 +107,7 @@ button.btn-close {
 /* styles for links that are also buttons */
 button.btn-link {
   background-color: transparent;
-  color: $orange-highlight;
+  color: $txt-orange;
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -129,7 +119,7 @@ button.btn-link {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $orange-highlight;
+    color: $txt-orange;
     background-color: transparent;
     transform: scale(1);
     text-decoration: underline;
@@ -219,7 +209,7 @@ button.btn-icon {
   border: none;
   cursor: pointer;
   right: 1rem;
-  color: $black;
+  color: $txt-black;
   font-size: 0.75rem;
 }
 

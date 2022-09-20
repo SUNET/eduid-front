@@ -728,7 +728,7 @@
   },
   "am92D3": {
     "developer_comment": "resend code",
-    "string": "Skicka bekräftelsekoden igen"
+    "string": "Skicka verifieringskoden igen"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -1414,7 +1414,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "mobile.confirm_title": {
     "string": "Skriv in verifieringskoden som skickats till {phone}"

@@ -50,7 +50,7 @@ form {
 .form-control:disabled,
 .form-control[readonly] {
   border-bottom: none;
-  color: $gray;
+  color: $txt-gray;
 }
 
 input.form-control,
@@ -75,7 +75,7 @@ fieldset {
 .help-text {
   margin: 0.5rem 0 0;
   line-height: 1.2;
-  color: $gray;
+  color: $txt-gray;
   font-size: 14px;
 
   .btn + & {

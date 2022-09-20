@@ -5,17 +5,17 @@
 .accordion {
   $a: &;
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
-  border: 2px solid $dark-gray;
+  border: 2px solid $border-gray;
   border-radius: 6px;
   overflow: hidden;
 
   &__item {
     + #{$a}__item {
-      border-top: 2px solid $dark-gray;
+      border-top: 2px solid $border-gray;
     }
 
     &.expanded > #{$a}__heading > #{$a}__button {
-      background: $orange-opaque;
+      background: $bg-orange;
     }
 
     // Clickable
@@ -23,8 +23,8 @@
       #{$a}__button {
         display: flex;
         cursor: pointer;
-        background: $mid-gray;
-        color: $orange-highlight;
+        background: $bg-gray;
+        color: $txt-orange;
         font-weight: bold;
         position: relative;
         padding: 1rem;
@@ -32,7 +32,7 @@
         transition: all 0.1s ease-in;
 
         &:hover {
-          background: $orange-highlight;
+          background: $btn-orange;
           color: $white;
 
           #{$a}-title {
@@ -104,7 +104,7 @@
       }
 
       input[type="text"] {
-        background-color: $light-gray;
+        background-color: $body-gray;
       }
     }
   }
@@ -121,34 +121,34 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $orange-highlight;
+      border: 2px solid $bright-orange;
       border-radius: 6px;
       overflow: hidden;
 
       &.expanded {
-        border-color: $black;
+        border-color: $txt-black;
       }
 
       &:hover {
-        border-color: $orange-highlight;
+        border-color: $bright-orange;
         &.expanded {
-          border-color: $black;
+          border-color: $txt-black;
         }
       }
 
       &.expanded > #{$a}__heading > #{$a}__button {
-        background: $mid-gray;
+        background: $bg-gray;
       }
 
       // Clickable
       #{$a}__heading {
         #{$a}__button {
-          color: $black;
+          color: $txt-black;
           background: transparent;
 
           &:hover {
-            color: $orange-highlight;
-            background: $mid-gray;
+            color: $bright-orange;
+            background: $bg-gray;
           }
 
           #{$a}-title {
