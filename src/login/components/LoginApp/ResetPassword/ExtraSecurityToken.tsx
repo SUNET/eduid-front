@@ -31,25 +31,25 @@ export default function ExtraSecurityToken(): JSX.Element {
   return (
     <>
       <p>{translate("mfa.reset-password-tapit")}</p>
-      <div className="key-animation" />
-      <div>
-        <form method="POST" action="#" id="form" className="form-inline">
-          <div id="tou-form-buttons" className="form-group">
-            <div className="input-group" />
-          </div>
-          <input type="hidden" name="tokenResponse" id="tokenResponse" />
-        </form>
-      </div>
-      <div className="text-center">
-        <div className="card" id="mfa-try-another-way">
-          <div className="card-header">{translate("mfa.problems-heading")}</div>
-          <div className="card-body">
-            <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
-              {translate("mfa.try-again")}
-            </button>
-          </div>
+      <figure>
+        <div className="key-animation" />
+        <div>
+          <form method="POST" action="#" id="form" className="form-inline">
+            <div id="tou-form-buttons" className="form-group">
+              <div className="input-group" />
+            </div>
+            <input type="hidden" name="tokenResponse" id="tokenResponse" />
+          </form>
         </div>
-      </div>
+
+        <div id="mfa-try-another-way">
+          <figcaption>{translate("mfa.problems-heading")}</figcaption>
+
+          <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
+            {translate("mfa.try-again")}
+          </button>
+        </div>
+      </figure>
     </>
   );
 }
