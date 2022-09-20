@@ -43,7 +43,7 @@
       }
 
       & a span:hover {
-        color: $bright-orange;
+        color: $txt-orange;
         border-bottom: transparent solid 1px;
       }
     }
@@ -81,7 +81,7 @@
     &:hover {
       transform: scale(0.99);
       border: solid $bright-orange 2px;
-      color: $bright-orange;
+      color: $txt-orange;
       transition: all 0.3s ease;
     }
 

@@ -10,7 +10,7 @@
     display: inline-block;
 
     & li {
-      margin: 0 1.25rem 0.5rem 0;
+      margin: 0 1.25rem 0.75rem 0;
       //flex: 1;
       display: inline-block;
 
@@ -22,7 +22,9 @@
     & a {
       color: $txt-black;
       padding: 0 0.1875rem;
-      line-height: 1.25 & span {
+      line-height: 1;
+
+      & span {
         border-bottom: $txt-black solid 1px;
       }
 
