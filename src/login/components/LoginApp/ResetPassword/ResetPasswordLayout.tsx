@@ -25,17 +25,16 @@ const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   return (
     <>
       <h2>{props.heading}</h2>
-      <div id="reset-pass-display">
-        <p>{props.description}</p>
-        {props.children}
-        <h4 className="description-without-security">{props.linkInfoHeading}</h4>
-        <p>
-          {props.linkInfoText}&nbsp;
-          <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
-            {props.linkText}
-          </a>
-        </p>
-      </div>
+
+      <p>{props.description}</p>
+      {props.children}
+      <h4 className="description-without-security">{props.linkInfoHeading}</h4>
+      <p>
+        {props.linkInfoText}&nbsp;
+        <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
+          {props.linkText}
+        </a>
+      </p>
     </>
   );
 };

@@ -122,27 +122,25 @@ function PhoneCodeSent(): JSX.Element | null {
 
   return (
     <>
-      <div id="reset-pass-display">
-        <p>
-          <FormattedMessage
-            defaultMessage="Enter the code sent to {phone}"
-            description="Reset Password phone code sent"
-            // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
-            values={{
-              phone: <b>{phone.number.replaceAll("X", "*")}</b>,
-            }}
-          />
-        </p>
-        <PhoneCodeForm emailCode={emailCode} />
-        <div className="timer">
-          <a id={"resend-phone"} onClick={resendPhoneCode}>
-            <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
-          </a>
-          <span id="timer-in" className="display-none">
-            <FormattedMessage defaultMessage="in" description="Reset Password phone code sent" />
-          </span>
-          <span id="count-down-time-phone" />
-        </div>
+      <p>
+        <FormattedMessage
+          defaultMessage="Enter the code sent to {phone}"
+          description="Reset Password phone code sent"
+          // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
+          values={{
+            phone: <b>{phone.number.replaceAll("X", "*")}</b>,
+          }}
+        />
+      </p>
+      <PhoneCodeForm emailCode={emailCode} />
+      <div className="timer">
+        <a id={"resend-phone"} onClick={resendPhoneCode}>
+          <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
+        </a>
+        <span id="timer-in" className="display-none">
+          <FormattedMessage defaultMessage="in" description="Reset Password phone code sent" />
+        </span>
+        <span id="count-down-time-phone" />
       </div>
     </>
   );
