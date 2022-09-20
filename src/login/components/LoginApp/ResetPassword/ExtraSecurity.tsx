@@ -30,9 +30,11 @@ function SecurityKeyButton({
             return (
               <Fragment key={security}>
                 {
-                  <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
-                    {translate("login.mfa.primary-option.button")}
-                  </EduIDButton>
+                  <div className="buttons">
+                    <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
+                      {translate("login.mfa.primary-option.button")}
+                    </EduIDButton>
+                  </div>
                 }
               </Fragment>
             );
