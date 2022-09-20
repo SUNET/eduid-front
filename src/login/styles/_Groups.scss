@@ -50,7 +50,7 @@ article {
 
     button {
       background-color: transparent;
-      color: $close;
+      color: $border-gray;
       height: 1rem;
       box-shadow: 0 0 0;
       text-decoration: none;
@@ -70,7 +70,7 @@ article {
     }
 
     input {
-      background-color: $light-gray;
+      background-color: $body-gray;
     }
   }
 
@@ -124,14 +124,14 @@ article {
 
       p {
         font-size: 1rem;
-        color: $black;
+        color: $txt-black;
         padding: 0;
         line-height: 1;
-        border-bottom: $black solid 1px;
+        border-bottom: $txt-black solid 1px;
         cursor: pointer;
 
         &.active {
-          color: $orange-highlight;
+          color: $bright-orange;
           border-bottom: transparent solid 1px;
         }
       }
@@ -226,7 +226,7 @@ article {
         height: 1rem;
 
         &.dropdown-closed {
-          color: $black;
+          color: $txt-black;
           text-decoration: none;
           transform: rotate(180deg);
           transform-origin: center center;
@@ -234,7 +234,7 @@ article {
         }
 
         &.dropdown-open {
-          color: $black;
+          color: $txt-black;
           transform: rotate(0deg);
           text-decoration: none;
           transform-origin: center center;
@@ -366,7 +366,7 @@ article {
 
   #emails-form {
     input {
-      background: $light-gray;
+      background: $body-gray;
       margin-bottom: 0.25rem;
     }
   }
@@ -388,10 +388,10 @@ article {
         min-height: 1rem;
         min-width: 1rem;
         flex-direction: row;
-        border: solid 2px $orange-highlight;
+        border: solid 2px $bright-orange;
 
         &.checked {
-          background: $orange-highlight;
+          background: $bright-orange;
         }
       }
 

@@ -3,7 +3,7 @@ import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage } from "react-intl";
@@ -169,15 +169,17 @@ function AccordionItemSwedish(): JSX.Element | null {
   const swedishOptions: swedishAccordionUUID[] = [];
   console.log("nin", nin);
 
-  if (nin) {
+  if (nin === undefined) {
+    console.log("1nin", nin);
+    swedishOptions.push("se-freja");
+  } else {
     /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
     swedishOptions.push("se-freja");
     swedishOptions.push("se-letter");
-  } else if (!lookupMobileDisabled) {
-    swedishOptions.push("se-phone");
-  }
-  if (!nin) {
-    swedishOptions.push("se-freja");
+    console.log("2nin", nin);
+    if (!lookupMobileDisabled) {
+      swedishOptions.push("se-phone");
+    }
   }
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
