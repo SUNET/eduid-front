@@ -7,13 +7,13 @@
     "developer_comment": "Header register",
     "string": "Register"
   },
+  "/DarP+": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "eppn"
+  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
-  },
-  "/XXYdv": {
-    "developer_comment": "Register Account created",
-    "string": "A link has been sent to your email address."
   },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
@@ -23,9 +23,17 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
   },
+  "02Y+QE": {
+    "developer_comment": "Signup",
+    "string": "Reset your password"
+  },
   "0Cwr7Z": {
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
+  },
+  "0RdYDw": {
+    "developer_comment": "pd no data added",
+    "string": "No information has been added."
   },
   "0fMD4p": {
     "developer_comment": "SAML login finished",
@@ -79,6 +87,10 @@
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
   },
+  "2n5qg/": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Settings"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
@@ -118,6 +130,14 @@
     "developer_comment": "Phone display title",
     "string": "Phone number"
   },
+  "5NuSNx": {
+    "developer_comment": "Personal data language",
+    "string": "Language"
+  },
+  "5P95+P": {
+    "developer_comment": "Reset password add email heading",
+    "string": "Enter the email address registered to your eduID account."
+  },
   "5l4hxp": {
     "string": "Log in on another device"
   },
@@ -140,6 +160,10 @@
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
+  },
+  "7yS+J6": {
+    "developer_comment": "edit button",
+    "string": "edit"
   },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
@@ -263,9 +287,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
   },
-  "FQZGJ7": {
-    "developer_comment": "Terms of use (common header)",
-    "string": "General rules for eduID users:"
+  "FO7/rw": {
+    "developer_comment": "Signup",
+    "string": "Complete registration by clicking the link sent to:"
   },
   "FRVeZw": {
     "developer_comment": "verify identity unverified main title",
@@ -319,6 +343,10 @@
     "developer_comment": "platform authn device help text",
     "string": "Touch/ Face ID on this device."
   },
+  "HCDbw9": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "You might be asked to share this information if you need technical support."
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -338,6 +366,10 @@
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
+  },
+  "IBEyFQ": {
+    "developer_comment": "pd main title",
+    "string": "Names & language"
   },
   "Ifusv7": {
     "developer_comment": "Emails main title",
@@ -361,6 +393,10 @@
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
   },
+  "KaX8vx": {
+    "developer_comment": "pd label en",
+    "string": "English"
+  },
   "KeIhmQ": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "Authentication error"
@@ -368,6 +404,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
+  },
+  "KpcTvu": {
+    "developer_comment": "button add",
+    "string": "add"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -389,6 +429,10 @@
     "developer_comment": "Signup",
     "string": "Register your email address to create your eduID."
   },
+  "LxAnnP": {
+    "developer_comment": "Reset password",
+    "string": "Send sms to {phone}"
+  },
   "MPTvRv": {
     "developer_comment": "Footer faq",
     "string": "Help"
@@ -403,13 +447,13 @@
     "developer_comment": "no error information message",
     "string": "There is no technical information available"
   },
+  "MuypUP": {
+    "developer_comment": "generic error page",
+    "string": "The issue has been reported to the team."
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Use upper- and lowercase characters, but not at the beginning or end"
-  },
-  "NXRtQx": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Please check your email {email} to continue. Link is valid for 2 hours."
   },
   "NeWubz": {
     "developer_comment": "errorURL",
@@ -418,6 +462,10 @@
   "NgScX1": {
     "developer_comment": "Emails button add",
     "string": "Add"
+  },
+  "Nk+I3K": {
+    "developer_comment": "personal data edit title",
+    "string": "Edit name and language"
   },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
@@ -457,6 +505,10 @@
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "P7d2zq": {
+    "developer_comment": "button save",
+    "string": "save"
+  },
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
@@ -487,10 +539,6 @@
   "RmZQLb": {
     "developer_comment": "tou.header",
     "string": "General rules for eduID users"
-  },
-  "RywJRW": {
-    "developer_comment": "Register email label",
-    "string": "Complete registration by clicking the link sent to:"
   },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
@@ -556,10 +604,6 @@
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Log in: Terms of use"
   },
-  "UFBYoo": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "resend link"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
@@ -576,6 +620,10 @@
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
   },
+  "VSxZ2o": {
+    "developer_comment": "Send e-mail button",
+    "string": "Send e-mail"
+  },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
     "string": "You might be able to get back to where you came from by using the 'forward' button."
@@ -588,6 +636,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "VymaGb": {
+    "developer_comment": "Resend e-mail button",
+    "string": "Resend e-mail"
+  },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
@@ -599,6 +651,10 @@
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
     "string": "Use security key"
+  },
+  "XETOo6": {
+    "developer_comment": "pd long description",
+    "string": "This information may be used to personalise services that you access with your eduID."
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -656,23 +712,13 @@
     "developer_comment": "Title for phone code input",
     "string": "Enter the code sent to {phone}"
   },
-  "accountId.accountId_display_title": {
-    "string": "Unique ID"
+  "aNbqJc": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Advanced settings"
   },
-  "accountId.long_description": {
-    "string": "This is an automatically generated unique identifier for your eduID."
-  },
-  "accountId.main_title": {
-    "string": "Unique ID"
-  },
-  "accountId.short_description": {
-    "string": "You might be asked to share this information if you need technical support."
-  },
-  "account_linking.long_description": {
-    "string": "If you are a reseacher with an ORCID iD you can share it with your eduID."
-  },
-  "account_linking.main_title": {
-    "string": "ORCID account"
+  "aTABco": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Profile"
   },
   "actions.action-completed": {
     "string": "Success"
@@ -692,18 +738,20 @@
     "developer_comment": "profile email display title",
     "string": "Email address"
   },
+  "bO7IGW": {
+    "developer_comment": "generic error page",
+    "string": "There was a problem displaying the page."
+  },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
+  },
+  "bcHXR2": {
+    "developer_comment": "Account recovery front page",
+    "string": "To start the account recovery process, press the button below to send an e-mail to {email}."
   },
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
-  },
-  "button_add": {
-    "string": "Add"
-  },
-  "button_save": {
-    "string": "Save"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -713,17 +761,8 @@
     "developer_comment": "SAML login finished",
     "string": "Forward"
   },
-  "captcha.cancel": {
-    "string": "Cancel"
-  },
   "captcha.one-step-left": {
     "string": "Only one more step left!"
-  },
-  "captcha.submit": {
-    "string": "Done"
-  },
-  "captcha.verify-human": {
-    "string": "Confirm that you are a human."
   },
   "chpass.button_custom_password": {
     "string": "I don't want a suggested password"
@@ -842,31 +881,17 @@
   "dashboard.tagline_verified": {
     "string": "Make eduID more secure"
   },
-  "dashboard_nav.advanced-settings": {
-    "string": "Advanced settings"
-  },
-  "dashboard_nav.back": {
-    "string": "< Back"
-  },
-  "dashboard_nav.identity": {
-    "string": "Identity"
-  },
-  "dashboard_nav.profile": {
-    "string": "Profile"
-  },
-  "dashboard_nav.settings": {
-    "string": "Settings"
-  },
-  "dashboard_nav.settings-confirm-phone": {
-    "string": "<b>Confirm your number</b> to verify your id by phone"
+  "eIAbQF": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "This is an automatically generated unique identifier for your eduID."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in this device"
   },
-  "eMHJVJ": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you didn’t receive the email? Check your junk email, or"
+  "eLbkSr": {
+    "developer_comment": "Signup",
+    "string": "Confirm that you are a human."
   },
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
@@ -1013,6 +1038,10 @@
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
+  "etw/3v": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "An e-mail with instructions has been sent to {email}."
+  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
@@ -1020,6 +1049,14 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
+  },
+  "fEKz/1": {
+    "developer_comment": "Personal data update locked names",
+    "string": "Update first and last names from the Swedish Population Register."
+  },
+  "fEsIEZ": {
+    "developer_comment": "Signup",
+    "string": "If this is your eduID, you can reset your password to log back in."
   },
   "faq_link": {
     "string": "For more information see the"
@@ -1047,6 +1084,10 @@
   },
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
+  },
+  "fpAB2E": {
+    "developer_comment": "generic error page",
+    "string": "Return to home"
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
@@ -1084,9 +1125,6 @@
     "developer_comment": "Use another device, finished",
     "string": "The code has expired, please close this browser window."
   },
-  "hJZwTS": {
-    "string": "Email address"
-  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
@@ -1101,6 +1139,10 @@
   "hg+a52": {
     "developer_comment": "Use other device 2",
     "string": "You should close this browser window."
+  },
+  "hhjCPa": {
+    "developer_comment": "Dashboard AccountLinking",
+    "string": "ORCID account"
   },
   "hk4i0h": {
     "developer_comment": "Use other device 2",
@@ -1304,9 +1346,17 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verify your identity to get the most ouf of your eduID"
   },
+  "lsXO8d": {
+    "developer_comment": "Account recovery Go back button",
+    "string": "Go back"
+  },
   "lyfTgy": {
     "developer_comment": "Title for email code input",
     "string": "Click the link or enter the code sent to {email} here"
+  },
+  "mO/ijL": {
+    "developer_comment": "Signup",
+    "string": "An eduID is already using {email}"
   },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
@@ -1321,6 +1371,10 @@
   },
   "main.welcome": {
     "string": "Welcome to eduID"
+  },
+  "md5xqk": {
+    "developer_comment": "Dashboard AccountLinking",
+    "string": "If you are a researcher with an ORCID iD you can share it with your eduID."
   },
   "mfa.edge-no-u2f": {
     "string": "There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome."
@@ -1371,6 +1425,10 @@
   "mobile.resend_success": {
     "string": "New code sent to {email}"
   },
+  "modal.close": {
+    "developer_comment": "Notification modal close label",
+    "string": "Close"
+  },
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to repeat copy the password in to the Repeat new password field and click Accept Password."
@@ -1418,6 +1476,14 @@
   "nj6a0v": {
     "developer_comment": "eidas freja instructions step1",
     "string": "Install the app"
+  },
+  "notifications.error-label": {
+    "developer_comment": "Notification type",
+    "string": "Error"
+  },
+  "notifications.info-label": {
+    "developer_comment": "Notification type",
+    "string": "Information"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -1528,8 +1594,20 @@
   "orc.unknown_state": {
     "string": "State was unknown when trying to connect ORCID account"
   },
+  "orcid.remove": {
+    "developer_comment": "Remove orcid aria label",
+    "string": "Remove"
+  },
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "p8IPLU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email, check your junk email, or resend the email."
+  },
+  "pC+Kit": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Identity"
   },
   "pRXT2e": {
     "developer_comment": "verify identity add nin heading",
@@ -1544,40 +1622,9 @@
   "pd.display_name": {
     "string": "Display name"
   },
-  "pd.display_name_input_help_text": {
-    "string": "Some services will show this instead of your first and last name."
-  },
-  "pd.display_name_placeholder": {
-    "developer_comment": "Display name label/template (edit personal data)",
-    "string": "Optional alias"
-  },
-  "pd.edit.button": {
-    "string": "edit"
-  },
-  "pd.edit.title": {
-    "string": "Edit name and language"
-  },
-  "pd.en_lang": {
-    "string": "English"
-  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "First name"
-  },
-  "pd.hint.names_locked_when_verified": {
-    "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-  },
-  "pd.language": {
-    "string": "Language"
-  },
-  "pd.long_description": {
-    "string": "This information may be used to personalise services that you access with your eduID."
-  },
-  "pd.main_title": {
-    "string": "Names & language"
-  },
-  "pd.no_data_added": {
-    "string": "No information has been added."
   },
   "pd.pdata-success": {
     "string": "Successfully retrieved personal information"
@@ -1588,12 +1635,6 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Last name"
-  },
-  "pd.sv_lang": {
-    "string": "Svenska"
-  },
-  "pd.update_locked_names": {
-    "string": "Update first and last names from the Swedish Population Register."
   },
   "pdata.field_required": {
     "string": "This field is required"
@@ -1683,9 +1724,6 @@
   "profile.email_display_title": {
     "string": "Email address"
   },
-  "profile.eppn_display_title": {
-    "string": "eppn"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "make number primary"
   },
@@ -1722,6 +1760,10 @@
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
   },
+  "qS5PLP": {
+    "developer_comment": "Reset Password button",
+    "string": "send email"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
@@ -1734,9 +1776,6 @@
   },
   "required": {
     "string": "*Field cannot be empty"
-  },
-  "resend.button": {
-    "string": "Send a new confirmation link"
   },
   "resend.email-label": {
     "string": "Complete registration by clicking the link sent to:"
@@ -1763,13 +1802,10 @@
     "string": "Password reset link has expired. Please send link again."
   },
   "resetpw.expired-phone-code": {
-    "string": "Phone code has expired. Please send phone code again."
+    "string": "The code is no longer valid. Request a new code using the button below."
   },
   "resetpw.external-mfa-fail": {
     "string": "External MFA failed."
-  },
-  "resetpw.extra-phone_send_sms": {
-    "string": "Send sms to {phone}"
   },
   "resetpw.extra-security_description": {
     "string": "A password reset using an extra security option will keep your account confirmed."
@@ -1785,9 +1821,6 @@
   },
   "resetpw.go-to-eduid": {
     "string": "Go to eduID"
-  },
-  "resetpw.heading-add-email": {
-    "string": "Enter your email address registered to your account"
   },
   "resetpw.invalid_session": {
     "string": "Invalid session, please try again"
@@ -1815,9 +1848,6 @@
   },
   "resetpw.return-login": {
     "string": "return to Login"
-  },
-  "resetpw.send-link": {
-    "string": "send link to email"
   },
   "resetpw.send-sms-failed": {
     "string": "Failed to send phone code"
@@ -1852,31 +1882,9 @@
   "resetpw.without_extra_security_heading": {
     "string": "Continue without extra security option"
   },
-  "runtime_error.generic.description": {
-    "string": "The issue has been reported to the team."
-  },
-  "runtime_error.generic.label.reload": {
-    "string": "Try again:"
-  },
-  "runtime_error.generic.label.toHome": {
-    "string": "Start over:"
-  },
-  "runtime_error.generic.p.toHome": {
-    "string": "Return to home"
-  },
-  "runtime_error.generic.reload": {
-    "string": "Reload page"
-  },
-  "runtime_error.generic.title": {
-    "string": "There was a problem displaying the page."
-  },
   "s0no/w": {
     "developer_comment": "profile name display no data",
     "string": "add name"
-  },
-  "s3zRsg": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "in"
   },
   "security.add_u2f_token": {
     "string": "Add U2F token"
@@ -2070,6 +2078,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
   },
+  "t9CdwX": {
+    "developer_comment": "Signup cancel button",
+    "string": "Cancel"
+  },
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
@@ -2099,6 +2111,10 @@
     "developer_comment": "verify identity unverified description",
     "string": "To be able to use eduID you have to prove your identity. Add your national id number and verify it in real life."
   },
+  "uKzmRZ": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "The link in the e-mail is valid for two hours."
+  },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "The service that you tried to access requires privileges that you do not have."
@@ -2116,15 +2132,6 @@
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"
-  },
-  "used.email-in-use": {
-    "string": "An eduID is already using {email}"
-  },
-  "used.email-label": {
-    "string": "If this is your eduID, you can reset your password to log back in."
-  },
-  "used.reset-password": {
-    "string": "Reset your password"
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
@@ -2183,9 +2190,17 @@
     "developer_comment": "Signup login here link",
     "string": "here"
   },
+  "wLDO8N": {
+    "developer_comment": "pd label language",
+    "string": "Language"
+  },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "wesR1u": {
+    "developer_comment": "pd label sw",
+    "string": "Svenska"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
@@ -2199,6 +2214,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
   },
+  "xaK37t": {
+    "developer_comment": "Personal data hint names locked when verified",
+    "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+  },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
     "string": "this device"
@@ -2211,9 +2230,17 @@
     "developer_comment": "Ladok account linking",
     "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
   },
+  "yktrEi": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unique ID"
+  },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "that all usage of user accounts follow the laws and by-laws of Sweden,"
+  },
+  "z/Z3FL": {
+    "developer_comment": "Signup",
+    "string": "A link has been sent to your email address."
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",

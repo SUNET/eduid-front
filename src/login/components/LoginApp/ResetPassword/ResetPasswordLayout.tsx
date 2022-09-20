@@ -24,7 +24,7 @@ const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   };
   return (
     <>
-      <h1>{props.heading}</h1>
+      <h2>{props.heading}</h2>
       <div id="reset-pass-display">
         <p>{props.description}</p>
         {props.children}

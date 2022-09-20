@@ -1,15 +1,13 @@
 import React, { Fragment, useState } from "react";
 import PersonalDataForm from "./PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
-import { translate } from "login/translation";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
   last: string;
-  display: string;
 }
 
 interface RenderAddPersonalDataPromptProps {
@@ -18,9 +16,11 @@ interface RenderAddPersonalDataPromptProps {
 
 const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
   <div className="button-pair">
-    <p>{translate("pd.no_data_added")}</p>
+    <p>
+      <FormattedMessage defaultMessage="No information has been added." description="pd no data added" />
+    </p>
     <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
-      {translate("button_add")}
+      <FormattedMessage defaultMessage="add" description="button add" />
     </EduIDButton>
   </div>
 );
@@ -28,20 +28,28 @@ const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromp
 const RenderPersonalData = (props: { names: NameStrings }) => {
   const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
   const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
   const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
   if (hasPrefLanguage) {
-    languageLabel = pref_language === "sv" ? translate("pd.sv_lang") : translate("pd.en_lang");
+    languageLabel =
+      pref_language === "sv" ? (
+        <FormattedMessage defaultMessage="Svenska" description="pd label sw" />
+      ) : (
+        <FormattedMessage defaultMessage="English" description="pd label en" />
+      );
   }
   return (
     <div className="personal-data-info">
       <NameDisplay label={props.names.first} name={first_name} />
       <NameDisplay label={props.names.last} name={last_name} />
-      <NameDisplay label={props.names.display} name={display_name} />
-      {hasPrefLanguage ? <NameDisplay label={translate("pd.language")} name={languageLabel} /> : null}
+      {hasPrefLanguage ? (
+        <NameDisplay
+          label={<FormattedMessage defaultMessage="Language" description="pd label language" />}
+          name={languageLabel}
+        />
+      ) : null}
     </div>
   );
 };
@@ -58,7 +66,9 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
     <Fragment>
       <div className="edit-data">
         <div className="title">
-          <h4>{translate("pd.edit.title")}</h4>
+          <h4>
+            <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
+          </h4>
           <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={nin?.verified} {...props} />
@@ -78,7 +88,7 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
     {isEditMode ||
       (hasPersonalData && (
         <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
-          {translate("pd.edit.button")}
+          <FormattedMessage description="edit button" defaultMessage={`edit`} />
         </EduIDButton>
       ))}
   </Fragment>
@@ -107,21 +117,23 @@ const PersonalDataParent = () => {
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
     }),
-    display: intl.formatMessage({
-      id: "pd.display_name_placeholder",
-      defaultMessage: "Optional alias",
-      description: "Display name label/template (edit personal data)",
-    }),
   };
 
   return (
     <article className="personal-data">
       <div className="intro">
         <div className="heading">
-          <h3>{translate("pd.main_title")}</h3>
+          <h3>
+            <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
+          </h3>
           <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
         </div>
-        <p>{translate("pd.long_description")}</p>
+        <p>
+          <FormattedMessage
+            description="pd long description"
+            defaultMessage="This information may be used to personalise services that you access with your eduID."
+          />
+        </p>
         <Fragment>
           {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
           {hasPersonalData && !isEditMode ? <RenderPersonalData names={names} /> : null}

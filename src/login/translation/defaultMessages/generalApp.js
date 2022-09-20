@@ -16,11 +16,6 @@ export const generalApp = {
     />
   ),
 
-  // buttons
-  button_save: <FormattedMessage id="button_save" defaultMessage={`Save`} />,
-
-  button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
-
   // sucess
   "actions.action-completed": <FormattedMessage id="actions.action-completed" defaultMessage={`Success`} />,
 

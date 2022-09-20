@@ -3,6 +3,7 @@ import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
 import CustomInput from "./CustomInput";
+import { useIntl } from "react-intl";
 
 // exported for use in tests
 export const emailPlaceHolder = "name@example.com";
@@ -16,6 +17,14 @@ interface EmailInputProps {
 }
 
 export default function EmailInput(props: EmailInputProps): JSX.Element {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.email",
+    defaultMessage: "name@example.com",
+    description: "placeholder text for email input",
+  });
+
   function validate(value: string) {
     if (!value && props.autoComplete !== undefined) {
       /* Browsers handle auto-completed fields differently. Current Chrome for example seems to often (but not always)
@@ -41,7 +50,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
       name={props.name}
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
-      placeholder={emailPlaceHolder}
+      placeholder={placeholder}
       validate={validate}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
