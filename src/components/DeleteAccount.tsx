@@ -1,23 +1,24 @@
-import { confirmDeletion, startConfirmationDeletion, stopConfirmationDeletion } from "actions/Security";
+import { confirmDeletion } from "actions/Security";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 
 export default function DeleteAccount(): JSX.Element | null {
-  const confirming_deletion = useDashboardAppSelector((state) => state.security.confirming_deletion);
+  const [showModal, setShowModal] = useState(false);
   const deleted = useDashboardAppSelector((state) => state.security.deleted);
   const redirect_to = useDashboardAppSelector((state) => state.security.location);
   const dispatch = useDashboardAppDispatch();
 
   function handleStartConfirmationDeletion() {
     dispatch(clearNotifications());
-    dispatch(startConfirmationDeletion());
+    setShowModal(true);
   }
 
   function handleStopConfirmationDeletion() {
-    dispatch(stopConfirmationDeletion());
+    setShowModal(false);
   }
 
   function handleConfirmationDeletion() {
@@ -70,7 +71,7 @@ export default function DeleteAccount(): JSX.Element | null {
             description="delete.modal_info"
           />
         }
-        showModal={confirming_deletion}
+        showModal={showModal}
         closeModal={handleStopConfirmationDeletion}
         acceptModal={handleConfirmationDeletion}
         acceptButtonText={<FormattedMessage defaultMessage="Delete my eduID" description="delete.confirm_button" />}

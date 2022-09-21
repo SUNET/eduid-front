@@ -6,7 +6,6 @@ export interface SecurityState {
   credentials: unknown[];
   code?: string;
   confirming_change: boolean;
-  confirming_deletion: boolean;
   location: string;
   deleted: boolean;
   webauthn_asking_description: boolean;
@@ -24,7 +23,6 @@ export const initialState: SecurityState = {
   credentials: [],
   code: "",
   confirming_change: false, // Show a modal when the user clicks 'change password'
-  confirming_deletion: false,
   location: "",
   deleted: false,
   webauthn_asking_description: false,
@@ -68,16 +66,6 @@ const securityReducer = (state = initialState, action: PayloadAction<any>) => {
         ...state,
         message: action.payload.message,
       };
-    case actions.START_DELETE_ACCOUNT:
-      return {
-        ...state,
-        confirming_deletion: true,
-      };
-    case actions.STOP_DELETE_ACCOUNT:
-      return {
-        ...state,
-        confirming_deletion: false,
-      };
     case actions.POST_DELETE_ACCOUNT:
       return {
         ...state,
@@ -86,7 +74,6 @@ const securityReducer = (state = initialState, action: PayloadAction<any>) => {
     case actions.POST_DELETE_ACCOUNT_SUCCESS:
       return {
         ...state,
-        confirming_deletion: false,
         location: action.payload.location,
       };
     case actions.POST_DELETE_ACCOUNT_FAIL:
@@ -94,15 +81,9 @@ const securityReducer = (state = initialState, action: PayloadAction<any>) => {
         ...state,
         message: action.payload.message,
       };
-    case actions.GET_DELETE_ACCOUNT:
-      return {
-        ...state,
-        confirming_deletion: false,
-      };
     case actions.GET_DELETE_ACCOUNT_SUCCESS:
       return {
         ...state,
-        confirming_deletion: false,
         deleted: true,
       };
     case actions.GET_DELETE_ACCOUNT_FAIL:
