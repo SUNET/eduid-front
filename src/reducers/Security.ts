@@ -66,11 +66,6 @@ const securityReducer = (state = initialState, action: PayloadAction<any>) => {
         ...state,
         message: action.payload.message,
       };
-    case actions.POST_DELETE_ACCOUNT:
-      return {
-        ...state,
-        confirming_deletion: false,
-      };
     case actions.POST_DELETE_ACCOUNT_SUCCESS:
       return {
         ...state,

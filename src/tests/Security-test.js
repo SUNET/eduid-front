@@ -5,7 +5,6 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import SecurityContainer from "containers/Security";
 import { mount } from "enzyme";
 import expect from "expect";
-import React from "react";
 import { notificationsSlice } from "reducers/Notifications";
 import securityReducer from "reducers/Security";
 import { call, put } from "redux-saga/effects";
@@ -19,7 +18,7 @@ import {
   removeToken,
   removeWebauthnToken,
   requestCredentials,
-  webauthnRegistration,
+  webauthnRegistration
 } from "sagas/Security";
 
 const messages = require("../login/translation/messageIndex");
@@ -132,7 +131,6 @@ describe("Reducers", () => {
     credentials: [],
     code: "",
     confirming_change: false,
-    confirming_deletion: false,
     location: "",
     deleted: false,
     webauthn_asking_description: false,
@@ -153,7 +151,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_asking_description: false,
@@ -185,7 +182,6 @@ describe("Reducers", () => {
       credentials: credentials,
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_asking_description: false,
@@ -213,7 +209,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_asking_description: false,
@@ -235,7 +230,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_asking_description: true,
@@ -257,7 +251,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_asking_description: false,
@@ -282,7 +275,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_token_description: "description",
@@ -310,7 +302,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_token_description: "",
@@ -335,7 +326,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_token_description: "",
@@ -362,7 +352,6 @@ describe("Reducers", () => {
       credentials: [],
       code: "",
       confirming_change: false,
-      confirming_deletion: false,
       location: "",
       deleted: false,
       webauthn_token_description: "",
@@ -601,7 +590,6 @@ describe("Security Container", () => {
           ],
           code: "",
           confirming_change: false,
-          confirming_deletion: deleting,
           location: "",
           deleted: false,
           webauthn_asking_description: askingDescription,
@@ -630,7 +618,6 @@ describe("Security Container", () => {
     mockProps = {
       credentials: [],
       language: "en",
-      confirming_deletion: false,
       webauthn_asking_description: false,
     };
 
@@ -690,7 +677,6 @@ describe("Security Container", () => {
         },
       ],
       language: "en",
-      confirming_deletion: false,
     };
 
     expect(dispatch.mock.calls.length).toEqual(0);

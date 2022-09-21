@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
   return {
     credentials: state.security.credentials,
     confirming_change: state.security.confirming_change,
-    confirming_deletion: state.security.confirming_deletion,
     redirect_to: state.security.location,
     deleted: state.security.deleted,
     webauthn_asking_description: state.security.webauthn_asking_description,

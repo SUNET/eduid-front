@@ -23,6 +23,7 @@ export default function DeleteAccount(): JSX.Element | null {
 
   function handleConfirmationDeletion() {
     dispatch(confirmDeletion());
+    setShowModal(false);
   }
 
   if (redirect_to !== "") {

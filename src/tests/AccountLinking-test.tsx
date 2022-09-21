@@ -2,16 +2,11 @@ import { OrcidInfo } from "apis/eduidOrcid";
 import { DashboardMain } from "components/DashboardMain";
 import { activeClassName } from "components/DashboardNav";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { mswServer, rest } from "setupTests";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders AccountLinking as expected", () => {
-  render(<DashboardMain />, {
-    state: {
-      config: { ...configInitialState, is_app_loaded: true },
-    },
-  });
+  render(<DashboardMain />);
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -26,11 +21,7 @@ test("renders AccountLinking as expected", () => {
 });
 
 test("can add an ORCID iD", () => {
-  render(<DashboardMain />, {
-    state: {
-      config: { ...configInitialState, is_app_loaded: true },
-    },
-  });
+  render(<DashboardMain />);
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -56,7 +47,7 @@ test("can show an ORCID iD", () => {
 
   render(<DashboardMain />, {
     state: {
-      config: { ...configInitialState, is_app_loaded: true },
+      ...defaultDashboardTestState,
       account_linking: { orcid },
     },
   });
@@ -96,7 +87,7 @@ test("can remove an ORCID iD", async () => {
 
   render(<DashboardMain />, {
     state: {
-      config: { ...configInitialState, is_app_loaded: true, orcid_url: "/orcid/" },
+      config: { ...defaultDashboardTestState.config, orcid_url: "/orcid/" },
       account_linking: { orcid },
     },
   });
@@ -131,5 +122,5 @@ test("can remove an ORCID iD", async () => {
   expect(screen.queryByRole("button", { name: /add orcid/i })).toBeInTheDocument();
 
   // async tests need to await the last expect (to not get console warnings about logging after test finishes)
-  await expect(removeCalled).toBeTruthy();
+  await expect(removeCalled).toBe(true);
 });
