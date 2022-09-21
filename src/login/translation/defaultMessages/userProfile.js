@@ -852,19 +852,4 @@ export const userData = {
   "orc.authorization_fail": (
     <FormattedMessage id="orc.authorization_fail" defaultMessage={`ORCID authentication failed`} />
   ),
-
-  /* -----  DELETE ACCOUNT ------- */
-
-  "settings.account_title": <FormattedMessage id="settings.account_title" defaultMessage={`Delete eduID`} />,
-
-  "settings.account_description": (
-    <FormattedMessage
-      id="settings.account_description"
-      defaultMessage={`Click the link to permanently delete your eduID.`}
-    />
-  ),
-
-  "security.button_delete_account": (
-    <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
-  ),
 };
