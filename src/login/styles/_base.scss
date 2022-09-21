@@ -76,9 +76,12 @@ body {
   flex-direction: column;
 }
 
-.border-line {
+// Mimic lead paragraph border
+hr.border-line {
   margin: 0.5rem 0 2rem;
   border-bottom: 2px solid $border-gray;
+  border-top: none;
+  opacity: unset;
 }
 
 // TODO: Remove after checking scrollbar in tables

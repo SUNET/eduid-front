@@ -43,6 +43,12 @@ input.form-control:focus,
 input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
   border-color: initial;
+  background-image: none;
+}
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem $border-gray;
 }
 
 fieldset {

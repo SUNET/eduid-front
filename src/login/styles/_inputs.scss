@@ -11,7 +11,9 @@
     outline: 0;
   }
 }
-
+.radio-input-container label:hover {
+  cursor: pointer;
+}
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
@@ -31,6 +33,12 @@ input[type="radio"] {
 
   /* to prevent overwrite from input padding, this ensures that the radio button remains round */
   padding: 0;
+
+  &:hover {
+    background-color: $bright-orange;
+    cursor: pointer;
+    border: none;
+  }
 }
 
 /* appearance for checked radiobutton */
@@ -41,9 +49,8 @@ input[type="radio"]:checked {
 }
 
 input[type="radio"]:checked.error {
-  background: $bright-orange;
+  background: $error-red;
   color: $white;
-  opacity: 0.8;
   border: none;
 }
 
@@ -189,6 +196,10 @@ input:focus {
     top: 3px;
     left: 3px;
     transition: left 0.25s;
+  }
+
+  &:hover {
+    background: $bright-orange;
   }
 
   .toggle:hover &::before {

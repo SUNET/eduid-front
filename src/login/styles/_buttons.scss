@@ -99,7 +99,7 @@ button.btn-close {
   }
 
   &.btn-sm {
-    font-size: 0.7rem;
+    font-size: $txt-xs;
   }
 }
 
@@ -126,7 +126,7 @@ button.btn-link {
   }
 
   &.btn-sm {
-    font-size: 0.75rem;
+    font-size: $txt-xs;
   }
 
   &.normal-case {
@@ -199,17 +199,9 @@ button.btn-icon {
 
 // login username-pw / reset-password set-new-password
 .show-hide-button {
+  @extend #{".btn", ".btn-link", ".btn-sm"};
   position: absolute;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  margin: 0 !important;
-  box-shadow: 0 0 0;
-  border: none;
-  cursor: pointer;
   right: 1rem;
-  color: $txt-black;
-  font-size: 0.75rem;
 }
 
 /* Instance/icon unique styles to be set in targeted css */
@@ -224,8 +216,8 @@ button.icon-only {
 }
 
 @media (max-width: $bp-xs) {
-  button.btn {
-    font-size: 0.9rem;
+  button.btn:not(.btn-sm) {
+    font-size: $txt-sm;
   }
 
   button.btn-primary,
