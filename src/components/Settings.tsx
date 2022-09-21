@@ -1,6 +1,6 @@
+import DeleteAccount from "components/DeleteAccount";
 import Emails from "components/Emails";
 import Phones from "components/Phones";
-import DeleteAccount from "containers/DeleteAccount";
 import { Fragment } from "react";
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
