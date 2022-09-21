@@ -198,6 +198,10 @@ input:focus {
     transition: left 0.25s;
   }
 
+  &:hover {
+    background: $bright-orange;
+  }
+
   .toggle:hover &::before {
     transform: scale(0.9);
   }
