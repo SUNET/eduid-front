@@ -4,6 +4,7 @@ import {
   fetchTryCaptcha,
   fetchVerifyLink,
   isTryCaptchaResponse,
+  isVerifyLinkResponse,
   TryCaptchaNextStep,
   VerifyLinkResponse,
 } from "apis/eduidSignup";
@@ -57,6 +58,12 @@ export const signupSlice = createSlice({
       })
       .addCase(fetchVerifyLink.fulfilled, (state, action) => {
         state.verify_link_response = action.payload;
+      })
+      .addCase(fetchVerifyLink.rejected, (state, action) => {
+        // action.payload is the whole JSON response from the backend (or some other error)
+        if (isFSA(action.payload) && isVerifyLinkResponse(action.payload.payload)) {
+          state.verify_link_response = action.payload.payload;
+        }
       });
   },
 });
