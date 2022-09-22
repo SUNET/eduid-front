@@ -12,6 +12,9 @@ interface TextInputProps extends FieldRenderProps<string> {
 
 export default function TextInput(props: TextInputProps) {
   const { label, helpBlock } = props;
+  console.log("label", label);
+  console.log("props", props.name);
+  console.log("props input name", props.input.name);
   let valid = false,
     invalid = false;
   if (props.meta.touched || props.meta.submitFailed) {
@@ -31,9 +34,9 @@ export default function TextInput(props: TextInputProps) {
 
   return (
     <FormGroup id={props.input.name}>
-      {label && <Label for={props.name}>{label}</Label>}
+      {label && <Label for={props.input.name}>{label}</Label>}
+      {console.log("props.name", props.input.name)}
       <Input
-        data-testid={props.id}
         id={props.name}
         valid={valid}
         invalid={invalid}

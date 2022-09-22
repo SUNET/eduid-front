@@ -5,17 +5,17 @@ import { render, screen, fireEvent, waitFor } from "./helperFunctions/DashboardT
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
   render(<ChangePasswordForm finish_url={finish_url} />);
 
-  const oldPasswordInput = screen.getByTestId("old-password-field") as HTMLInputElement;
+  const oldPasswordInput = screen.getByLabelText(/old/i) as HTMLInputElement;
   expect(oldPasswordInput.value).not.toBeDefined;
 
-  const suggestedPasswordInput = screen.getByTestId("suggested-password-field") as HTMLInputElement;
+  const suggestedPasswordInput = screen.getByLabelText(/suggested/i) as HTMLInputElement;
   expect(suggestedPasswordInput.value).toBeDefined;
 });
 
 test("save button will be enabled once current password field is filled", () => {
   render(<ChangePasswordForm finish_url={finish_url} />);
 
-  const input = screen.getByTestId("old-password-field") as HTMLInputElement;
+  const input = screen.getByLabelText(/old/i) as HTMLInputElement;
   // change password save button is initially disabled
   const savePasswordButton = screen.getByRole("button", { name: /save/i });
   expect(savePasswordButton).toBeDisabled();
@@ -34,8 +34,8 @@ test("renders custom password form after clicking do not want a suggested passwo
   fireEvent.click(customPasswordButton);
   expect(screen.getByText(/Suggest a password for me/i)).toBeInTheDocument();
 
-  const newPasswordInput = screen.getByTestId("custom-password-field") as HTMLInputElement;
-  const repeatNewPasswordInput = screen.getByTestId("repeat-password-field") as HTMLInputElement;
+  const newPasswordInput = screen.getByLabelText(/custom/i) as HTMLInputElement;
+  const repeatNewPasswordInput = screen.getByLabelText(/repeat/i) as HTMLInputElement;
 
   await waitFor(() => {
     expect(newPasswordInput).toBeDefined;
