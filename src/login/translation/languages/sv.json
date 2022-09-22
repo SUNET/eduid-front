@@ -1429,6 +1429,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Stäng"
   },
+  "n0mqo6": {
+    "developer_comment": "DeleteAccount",
+    "string": "Radera eduID"
+  },
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du skriva in det igen."
@@ -1705,6 +1709,10 @@
   "phones.verification-success": {
     "string": "Telefonnummer har bekräftats"
   },
+  "pkC7dv": {
+    "developer_comment": "DeleteAccount",
+    "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
+  },
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
     "string": "namn@example.com"
@@ -1895,9 +1903,6 @@
   "security.add_webauthn_token_key": {
     "string": "Lägg till säkerhetsnyckel"
   },
-  "security.button_delete_account": {
-    "string": "Radera eduID"
-  },
   "security.creation_date": {
     "string": "Skapad den"
   },
@@ -2025,12 +2030,6 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
-  },
-  "settings.account_description": {
-    "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
-  },
-  "settings.account_title": {
-    "string": "Radera eduID"
   },
   "settings.change_info": {
     "developer_comment": "Dashboard change password",
