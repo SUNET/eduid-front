@@ -1,10 +1,12 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useAppDispatch } from "../../../app_init/hooks";
+import { clearNotifications } from "reducers/Notifications";
 import EmailForm from "./EmailForm";
 
 export function ResetPasswordEnterEmail(): JSX.Element {
+  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();
 
   function onEnteredEmailAddress(email: string) {
@@ -20,7 +22,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
           description="Reset password add email heading"
         />
       </p>
-      <EmailForm passEmailUp={onEnteredEmailAddress} />
+      <EmailForm passEmailUp={onEnteredEmailAddress} disabled={email_status === "requested"} />
     </React.Fragment>
   );
 }
