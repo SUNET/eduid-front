@@ -1882,7 +1882,7 @@
     "string": "Använd din säkerhetsnyckel"
   },
   "resetpw.user-not-found": {
-    "string": "Användaren finns inte, kontrollera e-postadressen"
+    "string": "Ingen användare hittades med den e-postadressen."
   },
   "resetpw.without_extra_security": {
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
