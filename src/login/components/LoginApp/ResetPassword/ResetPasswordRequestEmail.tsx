@@ -1,10 +1,12 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
+import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
+import { clearNotifications } from "reducers/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
@@ -18,8 +20,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
-  const email_sent = useAppSelector((state) => state.resetPassword.email_sent); // Has an e-mail been sent?
-  const response = useAppSelector((state) => state.resetPassword.email_response);
+  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const loginRef = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
@@ -29,22 +30,32 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     }
   }, [loginRef, params]);
 
-  if (!email_sent) {
+  if (!email_status) {
     if (email_address) {
       return <ResetPasswordBeginEmail />;
-    } else {
-      return <ResetPasswordEnterEmail />;
     }
-  } else if (!response) {
     return <ResetPasswordEnterEmail />;
-  } else return <EmailLinkSent />;
+  }
+
+  return (
+    <Splash showChildren={email_status !== "requested"}>
+      {email_status === "success" && <EmailLinkSent />}
+      {email_status === "failed" && <ResetPasswordEnterEmail />}
+    </Splash>
+  );
 }
 
+/**
+ *
+ * When we get an e-mail address from the login username page, this page asks the user for
+ * confirmation before requesting the backend to send an actual e-mail to the user.
+ */
 function ResetPasswordBeginEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
 
   function sendEmailOnClick() {
+    dispatch(clearNotifications());
     if (email_address) {
       dispatch(requestEmailLink({ email: email_address }));
     }
