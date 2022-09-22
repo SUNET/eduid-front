@@ -8,6 +8,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
   const dispatch = useAppDispatch();
 
   function onEnteredEmailAddress(email: string) {
+    dispatch(clearNotifications());
     dispatch(requestEmailLink({ email }));
   }
 

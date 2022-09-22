@@ -45,6 +45,7 @@ function ResetPasswordBeginEmail(): JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
 
   function sendEmailOnClick() {
+    dispatch(clearNotifications());
     if (email_address) {
       dispatch(requestEmailLink({ email: email_address }));
     }
