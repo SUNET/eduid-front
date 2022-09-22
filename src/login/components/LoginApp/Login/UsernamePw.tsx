@@ -1,6 +1,5 @@
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
@@ -8,6 +7,7 @@ import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import loginSlice from "login/redux/slices/loginSlice";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -151,7 +151,7 @@ function RenderResetPasswordLink(): JSX.Element {
     e.preventDefault();
 
     if (emailField.input.value && emailField.meta.valid) {
-      dispatch(requestEmailLink({ email: emailField.input.value }));
+      dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
     }
     navigate("/reset-password/");
   };

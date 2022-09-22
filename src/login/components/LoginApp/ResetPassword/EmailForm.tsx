@@ -7,6 +7,7 @@ import { GoBackButton } from "./GoBackButton";
 export interface EmailFormProps {
   passEmailUp: (email: string) => void;
   disabled?: boolean; // disable the submit button if true
+  defaultEmail?: string; // pre-fill the email field with this value
 }
 export interface EmailFormData {
   email?: string;
@@ -40,7 +41,13 @@ function EmailForm(props: EmailFormProps): JSX.Element {
         return (
           <form id="reset-password-form" onSubmit={formProps.handleSubmit}>
             <fieldset>
-              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+              <EmailInput
+                name="email"
+                autoFocus={true}
+                required={true}
+                autoComplete="username"
+                defaultValue={props.defaultEmail}
+              />
 
               <div className="buttons">
                 <GoBackButton />
