@@ -11,6 +11,8 @@ export type ExtraSecurityType = {
 };
 export type Phone = { index: string; number: string; phone_code: string };
 
+export type EmailStatus = "requested" | "success" | "failed";
+
 interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
@@ -22,14 +24,12 @@ interface ResetPasswordState {
   extra_security?: ExtraSecurityType;
   goto_url?: string;
   email_response?: RequestEmailLinkResponse;
-  email_sent: boolean; // true if the user has requested an e-mail
-  // email_throttle_seconds?: number; // used to transport remaining throttle time to local state in main component
+  email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
 }
 
 // Define the initial state using that type
 export const initialState: ResetPasswordState = {
   phone: { index: undefined, number: undefined, phone_code: undefined },
-  email_sent: false,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -85,6 +85,12 @@ export const resetPasswordSlice = createSlice({
       // when sagas have completed and want to direct the user to a new route, they set goto_url.
       state.goto_url = action.payload;
     },
+    setEmailAddress: (state, action: PayloadAction<string>) => {
+      state.email_address = action.payload;
+    },
+    resetEmailStatus: (state) => {
+      state.email_status = undefined;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -93,18 +99,22 @@ export const resetPasswordSlice = createSlice({
         state.webauthn_assertion = action.payload;
       })
       .addCase(requestEmailLink.pending, (state) => {
-        state.email_sent = true;
+        state.email_status = "requested";
         // Make sure the ExpiresMeter props change when resending e-mails. Otherwise the timer doesn't
         // start after the resend request arrives.
         state.email_response = undefined;
       })
       .addCase(requestEmailLink.fulfilled, (state, action) => {
+        state.email_status = "success";
         if (!action.payload.throttled_seconds || !action.payload.throttled_max) {
           // remove once new backend that always sends this is deployed to production
           state.email_response = { throttled_seconds: 300, throttled_max: 300, email: "", email_code_timeout: 7200 };
           return;
         }
         state.email_response = action.payload;
+      })
+      .addCase(requestEmailLink.rejected, (state, action) => {
+        state.email_status = "failed";
       });
   },
 });

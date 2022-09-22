@@ -1,13 +1,13 @@
-import React from "react";
 import EmailInput from "login/components/Inputs/EmailInput";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
-import { useAppSelector } from "../../../app_init/hooks";
 import { GoBackButton } from "./GoBackButton";
 
 export interface EmailFormProps {
   passEmailUp: (email: string) => void;
+  disabled?: boolean; // disable the submit button if true
+  defaultEmail?: string; // pre-fill the email field with this value
 }
 export interface EmailFormData {
   email?: string;
@@ -17,8 +17,6 @@ export interface EmailFormData {
 // * TODO: Can this be shared with a new username-only login form, and the Signup form? *
 // **************************************************************************************
 function EmailForm(props: EmailFormProps): JSX.Element {
-  const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
-
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 
@@ -37,13 +35,19 @@ function EmailForm(props: EmailFormProps): JSX.Element {
       render={(formProps) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(
-          formProps.hasValidationErrors || _submitError || formProps.pristine || request_in_progress
+          formProps.hasValidationErrors || _submitError || formProps.pristine || props.disabled
         );
 
         return (
           <form id="reset-password-form" onSubmit={formProps.handleSubmit}>
             <fieldset>
-              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+              <EmailInput
+                name="email"
+                autoFocus={true}
+                required={true}
+                autoComplete="username"
+                defaultValue={props.defaultEmail}
+              />
 
               <div className="buttons">
                 <GoBackButton />

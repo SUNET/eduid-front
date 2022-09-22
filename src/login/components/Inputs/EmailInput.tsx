@@ -2,8 +2,8 @@ import { validateEmailField } from "login/app_utils/validation/validateEmail";
 import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
-import CustomInput from "./CustomInput";
 import { useIntl } from "react-intl";
+import CustomInput from "./CustomInput";
 
 // exported for use in tests
 export const emailPlaceHolder = "name@example.com";
@@ -14,6 +14,7 @@ interface EmailInputProps {
   name: string;
   autoComplete?: "username";
   helpBlock?: React.ReactNode; // help text shown above input
+  defaultValue?: string;
 }
 
 export default function EmailInput(props: EmailInputProps): JSX.Element {
@@ -52,6 +53,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
       autoComplete={props.autoComplete}
       placeholder={placeholder}
       validate={validate}
+      defaultValue={props.defaultValue}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
       label={translate("profile.email_display_title")}
