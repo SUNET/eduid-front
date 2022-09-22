@@ -55,6 +55,20 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   fireEvent.click(forgotButton);
 
+  // We should get to a page asking if we want to start the account recovery process
+  await waitFor(() => {
+    expect(screen.getByRole("heading")).toHaveTextContent("Reset password");
+  });
+
+  expect(screen.getByText(/To start the account recovery/i)).toBeInTheDocument();
+
+  // Verify the e-mail address is shown
+  expect(screen.getByTestId("email-address")).toHaveTextContent(email);
+
+  const confirmButton = screen.getByRole("button", { name: /^send e-mail/i });
+  expect(confirmButton).toBeEnabled();
+  fireEvent.click(confirmButton);
+
   // verify e-mail address is shown after response is received from backend
   await waitFor(() => {
     expect(screen.getByTestId("email-address")).toHaveTextContent(email);
