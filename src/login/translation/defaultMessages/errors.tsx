@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const generalErrors = {
@@ -260,37 +259,6 @@ export const specificErrors = {
     <FormattedMessage
       id="mfa.edge-no-u2f"
       defaultMessage={`There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome.`}
-    />
-  ),
-
-  "security.u2f_registration_error_unknown": (
-    <FormattedMessage id="security.u2f_registration_error_unknown" defaultMessage={`U2F error: Unknown error`} />
-  ),
-
-  "security.u2f_registration_error_bad": (
-    <FormattedMessage id="security.u2f_registration_error_bad" defaultMessage={`U2F error: Bad request`} />
-  ),
-
-  "security.u2f_registration_error_unsupported": (
-    <FormattedMessage
-      id="security.u2f_registration_error_unsupported"
-      defaultMessage={`U2F error: Configuration unsupported`}
-    />
-  ),
-
-  "security.u2f_registration_error_device": (
-    <FormattedMessage id="security.u2f_registration_error_device" defaultMessage={`U2F error: Device ineligible`} />
-  ),
-
-  "security.u2f_registration_error_timeout": (
-    <FormattedMessage id="security.u2f_registration_error_timeout" defaultMessage={`U2F error: Timeout`} />
-  ),
-
-  "security.u2f_registration_error_code": (values) => (
-    <FormattedMessage
-      id="security.u2f_registration_error_code"
-      defaultMessage={`U2F failed with error code: {errorCode}`}
-      values={values}
     />
   ),
 

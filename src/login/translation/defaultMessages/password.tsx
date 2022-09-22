@@ -1,15 +1,6 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const changePassword = {
-  // help
-  "chpass.help-text-general": (
-    <FormattedMessage
-      id="chpass.help-text-general"
-      defaultMessage={`You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.`}
-    />
-  ),
-
   /* ----- /chpass ChangePasswordForm ------- */
 
   "chpass.old_password": <FormattedMessage id="chpass.old_password" defaultMessage={`Current password`} />,
