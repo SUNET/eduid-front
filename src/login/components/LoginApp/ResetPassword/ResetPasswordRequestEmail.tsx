@@ -3,6 +3,7 @@ import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
@@ -24,6 +25,10 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
+    dispatch(resetPasswordSlice.actions.resetEmailStatus());
+  }, []);
+
+  useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
@@ -32,7 +37,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
 
   if (!email_status) {
     if (email_address) {
-      return <ResetPasswordBeginEmail />;
+      return <ResetPasswordConfirmEmail />;
     }
     return <ResetPasswordEnterEmail />;
   }
@@ -50,7 +55,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-function ResetPasswordBeginEmail(): JSX.Element {
+function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
 
