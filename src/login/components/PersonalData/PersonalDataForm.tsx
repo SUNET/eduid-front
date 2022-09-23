@@ -25,8 +25,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
 
-  console.log("AVAILABLE LANGUAGES: ", available_languages);
-
   function formSubmit(values: PersonalDataData) {
     dispatch(postUserdata(values));
     props.setEditMode(false); // tell parent component we're done editing
