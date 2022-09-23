@@ -150,7 +150,8 @@ function RenderResetPasswordLink(): JSX.Element {
   const sendLink = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    if (emailField.input.value && emailField.meta.valid) {
+    /* Propagate the email address to the reset password slice if valid, or if empty. */
+    if ((emailField.input.value && emailField.meta.valid) || !emailField.input.value) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
     }
     navigate("/reset-password/");

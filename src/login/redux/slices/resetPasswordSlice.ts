@@ -85,7 +85,7 @@ export const resetPasswordSlice = createSlice({
       // when sagas have completed and want to direct the user to a new route, they set goto_url.
       state.goto_url = action.payload;
     },
-    setEmailAddress: (state, action: PayloadAction<string>) => {
+    setEmailAddress: (state, action: PayloadAction<string | undefined>) => {
       state.email_address = action.payload;
     },
     resetEmailStatus: (state) => {
