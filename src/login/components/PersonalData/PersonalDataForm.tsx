@@ -1,24 +1,71 @@
-import React, { useState, Fragment } from "react";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
+import { Fragment } from "react";
+import { Field, Form as FinalForm } from "react-final-form";
+import { FormattedMessage } from "react-intl";
+import { PersonalDataData } from "reducers/PersonalData";
+import { postUserdata } from "../../../actions/PersonalData";
+import EduIDButton from "../../../components/EduIDButton";
+import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
-import validatePersonalData from "../../app_utils/validation/validatePersonalData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRedo } from "@fortawesome/free-solid-svg-icons";
-import { postUserdata } from "../../../actions/PersonalData";
-import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { DashboardRootState } from "dashboard-init-app";
-import { PersonalDataData } from "reducers/PersonalData";
-import { Form } from "reactstrap";
-import EduIDButton from "../../../components/EduIDButton";
 import RadioInput from "../Inputs/RadioInput";
-import { FormattedMessage } from "react-intl";
 
-interface NameStrings {
-  first: string;
-  last: string;
+interface PersonalDataFormProps {
+  labels: NameLabels;
+  isVerifiedIdentity: boolean;
+  setEditMode(value: boolean): void;
+}
+
+export default function PersonalDataForm(props: PersonalDataFormProps) {
+  const { labels } = props;
+  const dispatch = useDashboardAppDispatch();
+  const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data);
+
+  console.log("AVAILABLE LANGUAGES: ", available_languages);
+
+  function formSubmit(values: PersonalDataData) {
+    dispatch(postUserdata(values));
+    props.setEditMode(false); // tell parent component we're done editing
+  }
+
+  return (
+    <FinalForm<PersonalDataData>
+      initialValues={personal_data}
+      onSubmit={formSubmit}
+      render={(formProps) => {
+        const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
+        const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
+
+        return (
+          <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
+            <fieldset className="name-inputs">
+              {props.isVerifiedIdentity ? (
+                <RenderLockedNames labels={labels} />
+              ) : (
+                <RenderEditableNames labels={labels} />
+              )}
+            </fieldset>
+            <Field
+              component={RadioInput}
+              required={true}
+              name="language"
+              selectOptions={available_languages}
+              label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
+            />
+            <div className="buttons">
+              <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
+                <FormattedMessage defaultMessage="save" description="button save" />
+              </EduIDButton>
+            </div>
+          </form>
+        );
+      }}
+    />
+  );
 }
 
 /*
@@ -26,7 +73,7 @@ interface NameStrings {
  * the legal names from Skatteverket. There is however a button to request renewal of the names
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
-const RenderLockedNames = (props: { names: NameStrings }) => {
+const RenderLockedNames = (props: { labels: NameLabels }) => {
   const dispatch = useDashboardAppDispatch();
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
@@ -34,8 +81,8 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay label={props.names.first} name={given_name} />
-        <NameDisplay label={props.names.last} name={surname} />
+        <NameDisplay label={props.labels.first} name={given_name} />
+        <NameDisplay label={props.labels.last} name={surname} />
       </div>
       <div className="icon-text">
         <button
@@ -60,7 +107,7 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
   );
 };
 
-const RenderEditableNames = (props: { names: NameStrings }) => {
+function RenderEditableNames(props: { labels: NameLabels }) {
   return (
     <Fragment>
       <fieldset>
@@ -70,8 +117,8 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
           componentClass="input"
           type="text"
           name="given_name"
-          label={props.names.first}
-          placeholder={props.names.first}
+          label={props.labels.first}
+          placeholder={props.labels.first}
         />
       </fieldset>
       <fieldset>
@@ -81,8 +128,8 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
           componentClass="input"
           type="text"
           name="surname"
-          label={props.names.last}
-          placeholder={props.names.last}
+          label={props.labels.last}
+          placeholder={props.labels.last}
         />
       </fieldset>
       <p className="help-text">
@@ -93,104 +140,4 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
       </p>
     </Fragment>
   );
-};
-
-interface RenderSavePersonalDataButtonProps {
-  invalid: boolean;
-  pristine: boolean;
-  submitting: boolean;
 }
-
-const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
-  const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  return (
-    <div className="buttons">
-      <EduIDButton
-        id="personal-data-button"
-        buttonstyle="primary"
-        disabled={loading || pristine || invalid || submitting}
-      >
-        <FormattedMessage defaultMessage="save" description="button save" />
-      </EduIDButton>
-    </div>
-  );
-};
-
-interface FormData {
-  name: string;
-  value: string;
-}
-
-interface PersonalDataFormProps {
-  isVerifiedNin: boolean;
-  setEditMode(value: boolean): void;
-  hasPersonalData: boolean; // is eppn present in PersonalDataData or not?
-  names: NameStrings;
-
-  initialValues: PersonalDataData;
-
-  invalid: boolean; // injected by redux-form
-  pristine: boolean; // injected by redux-form
-  submitting: boolean; // injected by redux-form
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleSubmit: any; // injected by redux-form, haven't figured out how to type it yet
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleChange: any; // injected by redux-form, haven't figured out how to type it yet
-}
-
-const PersonalDataForm = (props: PersonalDataFormProps) => {
-  const { names } = props;
-  const dispatch = useDashboardAppDispatch();
-  const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
-  const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  const [pdata, setPdata] = useState(personal_data);
-  // setPdata key and value.
-  const formChange = (field: FormData) => {
-    setPdata({ ...pdata, [field.name]: field.value.trim() });
-  };
-  // submit data
-  const formSubmit = () => {
-    dispatch(postUserdata(pdata));
-    props.setEditMode(false); // tell parent component we're done editing
-  };
-
-  return (
-    <Form
-      id="personaldata-view-form"
-      role="form"
-      onChange={(e) => {
-        formChange(e.target as unknown as FormData);
-      }}
-      onSubmit={props.handleSubmit(formSubmit)}
-    >
-      <fieldset className="name-inputs">
-        {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
-      </fieldset>
-      <Field
-        component={RadioInput}
-        required={true}
-        name="language"
-        selectOptions={available_languages}
-        label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
-      />
-      <RenderSavePersonalDataButton {...props} />
-    </Form>
-  );
-};
-
-const DecoratedPersonalDataForm = reduxForm({
-  form: "personal_data",
-  destroyOnUnmount: false,
-  enableReinitialize: true, // When set to true, the form will reinitialize every time the initialValues prop changes
-  keepDirtyOnReinitialize: true, // keep user edits to the value even if initialValues prop changes
-  updateUnregisteredFields: true,
-  validate: validatePersonalData, // TODO: move the validator into this file?
-  touchOnChange: true,
-})(PersonalDataForm);
-
-const FinalPersonalDataForm = connect((state: DashboardRootState) => ({
-  initialValues: state.personal_data,
-}))(DecoratedPersonalDataForm);
-
-export default FinalPersonalDataForm;
