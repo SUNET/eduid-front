@@ -104,11 +104,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  // TODO: I think this can be... simplified as "const hasPersonalData = (personal_data.eppn !== undefined);"
-  const hasPersonalData = Object.entries(personal_data)
-    .filter((entry) => entry[0] !== "eppn")
-    .some((entry) => entry[1] !== undefined);
-
+  const hasPersonalData = Boolean(personal_data?.eppn);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components
