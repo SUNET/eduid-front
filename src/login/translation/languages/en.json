@@ -1882,7 +1882,7 @@
     "string": "Use your security key"
   },
   "resetpw.user-not-found": {
-    "string": "User does not exist, check your email address"
+    "string": "No user was found with that email address."
   },
   "resetpw.without_extra_security": {
     "string": "Your account will require confirmation after the password has been reset."
