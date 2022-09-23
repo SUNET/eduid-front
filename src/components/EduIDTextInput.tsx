@@ -12,9 +12,6 @@ interface TextInputProps extends FieldRenderProps<string> {
 
 export default function TextInput(props: TextInputProps) {
   const { label, helpBlock } = props;
-  console.log("label", label);
-  console.log("props", props.name);
-  console.log("props input name", props.input.name);
   let valid = false,
     invalid = false;
   if (props.meta.touched || props.meta.submitFailed) {
