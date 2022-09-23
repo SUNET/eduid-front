@@ -107,6 +107,17 @@
         background-color: $body-gray;
       }
     }
+
+    // &.disabled {
+    //   border-color: $border-gray;
+    //   color: $txt-gray;
+
+    //   #{$a}__button,
+    //   #{$a}__button:hover,
+    //   #{$a}__panel {
+    //     color: $txt-gray;
+    //   }
+    // }
   }
 
   form {
@@ -166,6 +177,16 @@
         p {
           font-size: 1.125rem;
           line-height: 1.25;
+        }
+      }
+
+      &.disabled {
+        border-color: $border-gray;
+        color: $txt-gray;
+
+        #{$a}__button,
+        #{$a}__panel {
+          color: $txt-gray;
         }
       }
     }
