@@ -71,21 +71,6 @@
           position: absolute;
           right: 1rem;
         }
-
-        // .disabled not yet implemented
-        /*&.disabled,
-        &.disabled:hover {
-          color: $gray;
-          background: $dark-gray;
-          cursor: not-allowed;
-    
-          #{$a}-title {
-            text-decoration: none;
-          }
-          #{$a}-icon img {
-            filter: grayscale(1);
-          }
-        }*/
       }
     }
 
@@ -108,16 +93,25 @@
       }
     }
 
-    // &.disabled {
-    //   border-color: $border-gray;
-    //   color: $txt-gray;
+    // Visually disabled with minimal hover feedback, still clickable for information purposes
+    &.disabled,
+    &.disabled:hover,
+    &.expanded.disabled {
+      color: $txt-gray;
 
-    //   #{$a}__button,
-    //   #{$a}__button:hover,
-    //   #{$a}__panel {
-    //     color: $txt-gray;
-    //   }
-    // }
+      #{$a}__button,
+      #{$a}__button:hover {
+        color: $txt-gray;
+        background-color: $bg-gray;
+      }
+      #{$a}__panel {
+        color: $txt-gray;
+      }
+
+      #{$a}-icon img {
+        filter: grayscale(1);
+      }
+    }
   }
 
   form {
@@ -180,14 +174,10 @@
         }
       }
 
-      &.disabled {
+      &.disabled,
+      &.disabled:hover,
+      &.expanded.disabled {
         border-color: $border-gray;
-        color: $txt-gray;
-
-        #{$a}__button,
-        #{$a}__panel {
-          color: $txt-gray;
-        }
       }
     }
   }
