@@ -88,9 +88,6 @@ export const resetPasswordSlice = createSlice({
     setEmailAddress: (state, action: PayloadAction<string | undefined>) => {
       state.email_address = action.payload;
     },
-    resetEmailAddress: (state) => {
-      state.email_address = undefined;
-    },
     resetEmailStatus: (state) => {
       state.email_status = undefined;
     },
