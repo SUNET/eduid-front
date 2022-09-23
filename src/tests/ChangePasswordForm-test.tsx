@@ -6,10 +6,10 @@ test("renders ChangePasswordForm, suggested password value is field in suggested
   render(<ChangePasswordForm finish_url={finish_url} />);
 
   const oldPasswordInput = screen.getByLabelText(/Current password/i) as HTMLInputElement;
-  expect(oldPasswordInput.value).not.toBeDefined;
+  expect(oldPasswordInput.value).toBe("");
 
   const suggestedPasswordInput = screen.getByLabelText(/Suggested password/i) as HTMLInputElement;
-  expect(suggestedPasswordInput.value).toBeDefined;
+  expect(suggestedPasswordInput.value).toBeDefined();
 });
 
 test("save button will be enabled once current password field is filled", () => {
@@ -38,11 +38,11 @@ test("renders custom password form after clicking do not want a suggested passwo
   const repeatNewPasswordInput = screen.getByLabelText(/Repeat new password/i) as HTMLInputElement;
 
   await waitFor(() => {
-    expect(newPasswordInput).toBeDefined;
+    expect(newPasswordInput).toBeDefined();
   });
 
   await waitFor(() => {
-    expect(repeatNewPasswordInput).toBeDefined;
+    expect(repeatNewPasswordInput).toBeDefined();
   });
 });
 
