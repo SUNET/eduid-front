@@ -1,71 +1,63 @@
 @import "./variables.scss";
 
+// Top notification bar
 .notifications-area {
-  display: flex;
-  flex-direction: column;
-  color: transparent;
-  background-color: transparent;
-  margin-bottom: 0.75rem;
   width: 100%;
 }
 
 .alert.alert-dismissible {
-  position: inherit;
-  padding: 0.75rem 1rem;
+  position: relative;
   margin: 0;
+  padding: 1rem 0;
   border-radius: 0;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: baseline;
-  height: auto;
 
   &.alert-danger,
   &.alert-success {
-    color: $dark-orange;
-    background-color: $orange-opaque;
+    color: $error-red;
+    background-color: $bg-orange;
     border: none;
   }
 
   span {
-    font-size: 1rem;
-    width: 58%;
-    max-width: 870px;
-    margin: 0 auto;
+    padding-right: 0.5rem;
+
+    @media (max-width: $bp-sm) {
+      margin: 0;
+    }
   }
 
   .close {
-    position: relative;
-    font-size: inherit;
-    margin: 0;
-    height: auto;
-    text-shadow: unset;
+    position: absolute;
+    height: 1.5rem;
+    right: 1rem;
+    top: 1rem;
+    padding: 0;
 
     &:hover {
-      color: $dark-orange;
+      color: $bright-orange;
     }
+
+    @media (max-width: $bp-sm) {
+      font-size: $txt-xs;
+    }
+  }
+
+  @media (max-width: $bp-sm) {
+    padding: 1rem;
   }
 }
 
+// On Dashboard menu
 .notification-dot {
   width: 12px;
   height: 12px;
   position: relative;
-  background-color: $orange-highlight;
+  background-color: $bright-orange;
   border-radius: 50%;
   margin-top: -1rem;
 }
 
-.notification-dot-inner {
-  background-color: $orange-highlight;
-  border: solid 1px $light-gray;
-  top: 10%;
-  left: 10%;
-  width: 80%; /* of the notification-dot */
-  height: 80%; /* of the notification-dot */
-  position: absolute;
-  border-radius: 50%;
-}
-
+// Speach-bubbletip
 /* Wrapping */
 .speech-bubbletip-wrapper {
   display: inline-block;
@@ -83,7 +75,7 @@
   transform: translateX(-50%);
   padding: 6px;
   color: $white;
-  background: $black;
+  background: $txt-black;
   font-size: 0.875rem;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   line-height: 1;
@@ -105,7 +97,7 @@
   pointer-events: none;
   border-width: 6px;
   top: 100%;
-  border-top-color: $black;
+  border-top-color: $txt-black;
 }
 
 /* Absolute positioning */
@@ -120,41 +112,13 @@
   left: 52%;
 }
 
-@media (max-width: $bp-lg) {
-  .alert.alert-dismissible {
-    & span {
-      width: calc(80% - 2rem);
-    }
-  }
-}
-
 @media (max-width: $bp-md) {
-  .alert.alert-dismissible {
-    padding: 0.75rem 1rem 0.75rem 0.5rem;
-
-    & span {
-      width: calc(80% - 1.25rem);
-    }
-  }
-
   .speech-bubbletip.settings.sv {
     left: -100px;
   }
 
   .speech-bubbletip.settings.sv::before {
     left: 74%;
-  }
-}
-
-@media (max-width: $bp-sm) {
-  .notifications-area {
-    margin-bottom: 1.5rem;
-  }
-
-  .alert.alert-dismissible {
-    & span {
-      width: calc(100% - 1.25rem);
-    }
   }
 }
 
@@ -202,17 +166,5 @@
 
   .speech-bubbletip.settings.en::before {
     left: 30%;
-  }
-}
-
-@media (max-width: $bp-xs) {
-  .notifications-area {
-    margin-bottom: 0;
-  }
-
-  .alert.alert-dismissible {
-    & span {
-      width: calc(100% - #{2 * $margin});
-    }
   }
 }

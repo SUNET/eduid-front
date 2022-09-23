@@ -1,24 +1,15 @@
-import { connect } from "react-redux";
-import Security from "components/Security";
 import {
-  initiatePasswordChange,
-  confirmDeletion,
-  stopConfirmationDeletion,
-  startConfirmationDeletion,
-  postRemoveWebauthnToken,
-  postVerifyWebauthnToken,
-  startWebauthnRegistration,
-  startAskWebauthnDescription,
-  stopAskWebauthnDescription,
-  chooseAuthenticator,
+  chooseAuthenticator, initiatePasswordChange, postRemoveWebauthnToken,
+  postVerifyWebauthnToken, startAskWebauthnDescription, startWebauthnRegistration, stopAskWebauthnDescription
 } from "actions/Security";
+import Security from "components/Security";
+import { connect } from "react-redux";
 import { clearNotifications } from "reducers/Notifications";
 
 const mapStateToProps = (state) => {
   return {
     credentials: state.security.credentials,
     confirming_change: state.security.confirming_change,
-    confirming_deletion: state.security.confirming_deletion,
     redirect_to: state.security.location,
     deleted: state.security.deleted,
     webauthn_asking_description: state.security.webauthn_asking_description,
@@ -30,16 +21,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleConfirmationPassword: () => {
       dispatch(initiatePasswordChange());
-    },
-    handleStartConfirmationDeletion: function () {
-      dispatch(clearNotifications());
-      dispatch(startConfirmationDeletion());
-    },
-    handleStopConfirmationDeletion: function () {
-      dispatch(stopConfirmationDeletion());
-    },
-    handleConfirmationDeletion: function () {
-      dispatch(confirmDeletion());
     },
     handleStartAskingKeyWebauthnDescription: function () {
       dispatch(clearNotifications());

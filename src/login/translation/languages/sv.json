@@ -31,6 +31,10 @@
     "developer_comment": "SAML login finished",
     "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
   },
+  "0RdYDw": {
+    "developer_comment": "pd no data added",
+    "string": "Ingen information har lagts till."
+  },
   "0fMD4p": {
     "developer_comment": "SAML login finished",
     "string": "Var god vänta, du loggas nu in..."
@@ -126,6 +130,10 @@
     "developer_comment": "Phone display title",
     "string": "Telefonnummer"
   },
+  "5NuSNx": {
+    "developer_comment": "Personal data language",
+    "string": "Språk"
+  },
   "5P95+P": {
     "developer_comment": "Reset password add email heading",
     "string": "Ange din e-postadress registrerad till ditt konto."
@@ -152,6 +160,10 @@
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Värde"
+  },
+  "7yS+J6": {
+    "developer_comment": "edit button",
+    "string": "ändra"
   },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
@@ -355,6 +367,10 @@
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
   },
+  "IBEyFQ": {
+    "developer_comment": "pd main title",
+    "string": "Namn & språk"
+  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
@@ -377,6 +393,10 @@
   "KWAMem": {
     "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
   },
+  "KaX8vx": {
+    "developer_comment": "pd label en",
+    "string": "English"
+  },
   "KeIhmQ": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "Autentiseringsfel"
@@ -384,6 +404,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
+  },
+  "KpcTvu": {
+    "developer_comment": "button add",
+    "string": "lägg till"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -439,6 +463,10 @@
     "developer_comment": "Emails button add",
     "string": "Lägg till"
   },
+  "Nk+I3K": {
+    "developer_comment": "personal data edit title",
+    "string": "Ändra namn och språk"
+  },
   "No connection to authorization endpoint": {
     "string": "Anslutningen till auktoriseringsservern misslyckades. Var god försök senare"
   },
@@ -476,6 +504,10 @@
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
+  },
+  "P7d2zq": {
+    "developer_comment": "button save",
+    "string": "spara"
   },
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
@@ -620,6 +652,10 @@
     "developer_comment": "login mfa primary option button",
     "string": "Använd min säkerhetsnyckel"
   },
+  "XETOo6": {
+    "developer_comment": "pd long description",
+    "string": "Den här informationen kan komma att användas för att anpassa tjänster som du når med ditt eduID."
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
@@ -674,7 +710,7 @@
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
-    "string": "Skriv in koden som skickats till {phone}"
+    "string": "Skriv in verifieringskoden som skickats till {phone}"
   },
   "aNbqJc": {
     "developer_comment": "Dashboard nav tab name",
@@ -692,7 +728,7 @@
   },
   "am92D3": {
     "developer_comment": "resend code",
-    "string": "Skicka bekräftelsekoden igen"
+    "string": "Skicka verifieringskoden igen"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -716,12 +752,6 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
-  },
-  "button_add": {
-    "string": "Lägg till"
-  },
-  "button_save": {
-    "string": "Spara"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -1020,6 +1050,10 @@
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja eID+ konto (godkänd svensk e-legitimation)"
   },
+  "fEKz/1": {
+    "developer_comment": "Personal data update locked names",
+    "string": "Uppdatera för- och efternamn från folkbokföringen."
+  },
   "fEsIEZ": {
     "developer_comment": "Signup",
     "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
@@ -1128,7 +1162,7 @@
   },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
-    "string": "Skriv in koden som skickats till {phone}"
+    "string": "Skriv in verifieringskoden som skickats till {phone}"
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
@@ -1380,10 +1414,10 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "mobile.confirm_title": {
-    "string": "Skriv in koden som skickats till {phone}"
+    "string": "Skriv in verifieringskoden som skickats till {phone}"
   },
   "mobile.mobile": {
     "string": "Telefon"
@@ -1394,6 +1428,10 @@
   "modal.close": {
     "developer_comment": "Notification modal close label",
     "string": "Stäng"
+  },
+  "n0mqo6": {
+    "developer_comment": "DeleteAccount",
+    "string": "Radera eduID"
   },
   "n5fMlW": {
     "developer_comment": "Set new password",
@@ -1567,6 +1605,10 @@
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "p8IPLU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost eller skicka e-postmeddelandet igen."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -1584,40 +1626,9 @@
   "pd.display_name": {
     "string": "Visningsnamn"
   },
-  "pd.display_name_input_help_text": {
-    "string": "Vissa tjänster visar detta i stället för förnamn och efternamn."
-  },
-  "pd.display_name_placeholder": {
-    "developer_comment": "Display name label/template (edit personal data)",
-    "string": "Visningsnamn"
-  },
-  "pd.edit.button": {
-    "string": "ändra"
-  },
-  "pd.edit.title": {
-    "string": "Ändra namn och språk"
-  },
-  "pd.en_lang": {
-    "string": "English"
-  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "Förnamn"
-  },
-  "pd.hint.names_locked_when_verified": {
-    "string": "För- och efternamn kommer att ersättas med de från folkbokföringen om du verifierar ditt eduID med ditt personummer."
-  },
-  "pd.language": {
-    "string": "Språk"
-  },
-  "pd.long_description": {
-    "string": "Den här informationen kan komma att användas för att anpassa tjänster som du når med ditt eduID."
-  },
-  "pd.main_title": {
-    "string": "Namn & språk"
-  },
-  "pd.no_data_added": {
-    "string": "Ingen information har lagts till."
   },
   "pd.pdata-success": {
     "string": "Personlig information laddad"
@@ -1628,12 +1639,6 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Efternamn"
-  },
-  "pd.sv_lang": {
-    "string": "Svenska"
-  },
-  "pd.update_locked_names": {
-    "string": "Uppdatera för- och efternamn från folkbokföringen."
   },
   "pdata.field_required": {
     "string": "Obligatoriskt"
@@ -1703,6 +1708,10 @@
   },
   "phones.verification-success": {
     "string": "Telefonnummer har bekräftats"
+  },
+  "pkC7dv": {
+    "developer_comment": "DeleteAccount",
+    "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
   },
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
@@ -1801,7 +1810,7 @@
     "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
   "resetpw.expired-phone-code": {
-    "string": "Telefonkoden har gått ut. Skicka telefonkoden igen."
+    "string": "Koden är inte längre giltig. Begär en ny kod med knappen nedan."
   },
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
@@ -1852,7 +1861,7 @@
     "string": "Det gick inte att skicka telefonkoden"
   },
   "resetpw.send-sms-success": {
-    "string": "En engångskod har skickats till din telefon."
+    "string": "En verifieringskod har skickats till din telefon."
   },
   "resetpw.set-new-password-description": {
     "string": "Ett säkert lösenord har genererats till dig. För att komma vidare behöver du kopiera det till Repetera ditt nya lösenord och klicka Acceptera lösenord."
@@ -1873,7 +1882,7 @@
     "string": "Använd din säkerhetsnyckel"
   },
   "resetpw.user-not-found": {
-    "string": "Användaren finns inte, kontrollera e-postadressen"
+    "string": "Ingen användare hittades med den e-postadressen."
   },
   "resetpw.without_extra_security": {
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
@@ -1893,9 +1902,6 @@
   },
   "security.add_webauthn_token_key": {
     "string": "Lägg till säkerhetsnyckel"
-  },
-  "security.button_delete_account": {
-    "string": "Radera eduID"
   },
   "security.creation_date": {
     "string": "Skapad den"
@@ -2024,12 +2030,6 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
-  },
-  "settings.account_description": {
-    "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
-  },
-  "settings.account_title": {
-    "string": "Radera eduID"
   },
   "settings.change_info": {
     "developer_comment": "Dashboard change password",
@@ -2189,9 +2189,17 @@
     "developer_comment": "Signup login here link",
     "string": "här"
   },
+  "wLDO8N": {
+    "developer_comment": "pd label language",
+    "string": "Språk"
+  },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
+  },
+  "wesR1u": {
+    "developer_comment": "pd label sw",
+    "string": "Svenska"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
@@ -2204,6 +2212,10 @@
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Avbryt"
+  },
+  "xaK37t": {
+    "developer_comment": "Personal data hint names locked when verified",
+    "string": "För- och efternamn kommer att ersättas med de från folkbokföringen om du verifierar ditt eduID med ditt personummer."
   },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",

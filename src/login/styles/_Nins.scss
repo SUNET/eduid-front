@@ -38,12 +38,12 @@
       margin: 0.5rem 0;
 
       & a span {
-        color: $black;
-        border-bottom: $black solid 1px;
+        color: $txt-black;
+        border-bottom: $txt-black solid 1px;
       }
 
       & a span:hover {
-        color: $orange-highlight;
+        color: $txt-orange;
         border-bottom: transparent solid 1px;
       }
     }
@@ -63,8 +63,8 @@
     margin-bottom: 0.5rem;
     font-family: ProximaNova-Bold;
     line-height: 1;
-    color: $black;
-    border: solid $black 2px;
+    color: $txt-black;
+    border: solid $txt-black 2px;
     background-color: $white;
     padding: 1rem 1.5rem;
     border-radius: 20px;
@@ -80,8 +80,8 @@
 
     &:hover {
       transform: scale(0.99);
-      border: solid $orange-highlight 2px;
-      color: $orange-highlight;
+      border: solid $bright-orange 2px;
+      color: $txt-orange;
       transition: all 0.3s ease;
     }
 
@@ -93,23 +93,23 @@
 
 .vetting-button {
   & button:disabled {
-    background-color: $light-gray;
-    border-color: $gray;
+    background-color: $body-gray;
+    border-color: $txt-gray;
 
     & .text {
-      color: $gray;
+      color: $txt-gray;
 
       & .description {
-        color: $black;
+        color: $txt-black;
       }
 
       & .explanation-link {
-        color: $black;
+        color: $txt-black;
       }
     }
 
     & .name {
-      color: $gray;
+      color: $txt-gray;
     }
 
     &:hover {
@@ -121,12 +121,12 @@
 .proofing-btn-help {
   margin: 0 0.5rem 2rem;
   line-height: 1.2;
-  color: $black;
+  color: $txt-black;
   font-size: 0.875rem;
 }
 
 .proofing-btn-help.disabled {
-  color: $gray;
+  color: $txt-gray;
 }
 
 @media (max-width: $bp-md) {

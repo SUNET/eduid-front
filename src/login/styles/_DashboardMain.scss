@@ -1,45 +1,40 @@
 @import "./variables.scss";
 
 #dashboard-nav {
-  & ul {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
+  ul {
     margin-left: -0.1875rem;
     margin-bottom: 0;
     display: inline-block;
 
-    & li {
+    li {
       margin: 0 1.25rem 0.75rem 0;
-      //flex: 1;
+
       display: inline-block;
+
+      @media (max-width: $bp-md) {
+        margin-right: 1rem;
+      }
     }
 
-    & a {
-      color: $black;
+    a {
+      color: $txt-black;
       padding: 0 0.1875rem;
-      line-height: 1.25 & span {
-        border-bottom: $black solid 1px;
-      }
+      line-height: 1;
 
       // styling for when menu item is clicked
       &.active {
-        color: $orange-highlight;
-
-        & span {
-          border-bottom: transparent solid 1px;
-        }
+        color: $txt-orange;
       }
 
       // styling for when hovering the menu item
       &:hover {
-        color: $orange-highlight;
-        border-bottom: transparent solid 1px;
-
-        & span {
-          border-bottom: transparent solid 1px;
-        }
+        color: $txt-orange;
       }
+    }
+
+    @media (min-width: $bp-xl) {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
@@ -78,14 +73,6 @@
       height: auto;
     }
   }
-
-  & a span {
-    border-bottom: solid 1px $orange-highlight;
-
-    &:hover {
-      border-bottom: solid 1px transparent;
-    }
-  }
 }
 
 .display-data {
@@ -98,15 +85,15 @@
   }
 
   &.no-data {
-    color: $gray;
+    color: $txt-gray;
   }
 
-  &.unverified {
-    color: $orange-highlight;
-  }
+  // &.unverified {
+  //   color: $bright-orange;
+  // }
 
   &.verified {
-    color: $black;
+    color: $txt-black;
   }
 
   @media (max-width: $bp-md) {

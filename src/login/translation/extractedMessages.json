@@ -1425,6 +1425,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
+  "n0mqo6": {
+    "developer_comment": "DeleteAccount",
+    "string": "Delete eduID"
+  },
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to repeat copy the password in to the Repeat new password field and click Accept Password."
@@ -1705,6 +1709,10 @@
   "phones.verification-success": {
     "string": "Successfully verified phone number"
   },
+  "pkC7dv": {
+    "developer_comment": "DeleteAccount",
+    "string": "Click the link to permanently delete your eduID."
+  },
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
     "string": "name@example.com"
@@ -1802,7 +1810,7 @@
     "string": "Password reset link has expired. Please send link again."
   },
   "resetpw.expired-phone-code": {
-    "string": "Phone code has expired. Please send phone code again."
+    "string": "The code is no longer valid. Request a new code using the button below."
   },
   "resetpw.external-mfa-fail": {
     "string": "External MFA failed."
@@ -1894,9 +1902,6 @@
   },
   "security.add_webauthn_token_key": {
     "string": "Add security key"
-  },
-  "security.button_delete_account": {
-    "string": "Delete eduID"
   },
   "security.creation_date": {
     "string": "Created on"
@@ -2025,12 +2030,6 @@
   },
   "security.webauthn_register_success": {
     "string": "Security key added"
-  },
-  "settings.account_description": {
-    "string": "Click the link to permanently delete your eduID."
-  },
-  "settings.account_title": {
-    "string": "Delete eduID"
   },
   "settings.change_info": {
     "developer_comment": "Dashboard change password",

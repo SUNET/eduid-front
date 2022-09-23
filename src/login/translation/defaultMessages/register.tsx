@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const register = {
@@ -27,14 +26,6 @@ export const register = {
     <FormattedMessage id="created.confirm-registration" defaultMessage={`Confirm your email to log in to eduID.`} />
   ),
 
-  "created.email-sent": (values) => (
-    <FormattedMessage
-      id="created.email-sent"
-      defaultMessage={`Click the confirmation link sent to {email} to be able log in to eduID`}
-      values={values}
-    />
-  ),
-
   // eduID (email) verified
   "created.back_to_signup": <FormattedMessage id="created.back_to_signup" defaultMessage={`Back to signup`} />,
 
@@ -49,30 +40,4 @@ export const register = {
       defaultMessage={`The email address you entered is already in use`}
     />
   ),
-
-  "finish.can-now-login": <FormattedMessage id="finish.can-now-login" defaultMessage={`You can now log in`} />,
-
-  "finish.sites-accept": (
-    <FormattedMessage
-      id="finish.sites-accept"
-      defaultMessage={`Your account is now ready for use with sites that accept`}
-    />
-  ),
-
-  "finish.unconfirmed-identities": (
-    <FormattedMessage id="finish.unconfirmed-identities" defaultMessage={`unconfirmed identities`} />
-  ),
-
-  "finish.finish": <FormattedMessage id="finish.finish" defaultMessage={`FINISH`} />,
-
-  "finish.access-more": <FormattedMessage id="finish.access-more" defaultMessage={`Access more`} />,
-
-  "finish.to-dashboard": (
-    <FormattedMessage
-      id="finish.to-dashboard"
-      defaultMessage={`To get access to additional sites that require a confirmed identity, proceed to the dashboard.`}
-    />
-  ),
-
-  "finish.confirm-identity": <FormattedMessage id="finish.confirm-identity" defaultMessage={`CONFIRM IDENTITY`} />,
 };

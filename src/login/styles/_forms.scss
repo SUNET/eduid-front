@@ -33,7 +33,7 @@ form {
 .form-control:disabled,
 .form-control[readonly] {
   border-bottom: none;
-  color: $gray;
+  color: $txt-gray;
 }
 
 input.form-control,
@@ -43,6 +43,12 @@ input.form-control:focus,
 input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
   border-color: initial;
+  background-image: none;
+}
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem $border-gray;
 }
 
 fieldset {
@@ -57,7 +63,7 @@ fieldset {
 .help-text {
   margin: 0.5rem 0 0;
   line-height: 1.2;
-  color: $gray;
+  color: $txt-gray;
   font-size: 14px;
 
   .btn + & {

@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const generalApp = {
@@ -16,7 +15,7 @@ export const generalApp = {
     />
   ),
 
-  // sucess
+  // success
   "actions.action-completed": <FormattedMessage id="actions.action-completed" defaultMessage={`Success`} />,
 
   // modal

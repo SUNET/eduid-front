@@ -9,6 +9,7 @@ a.btn,
 button,
 button.btn {
   font-family: $akkurat;
+  letter-spacing: 1px;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
@@ -25,23 +26,24 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $orange-highlight;
+    background-color: $btn-orange;
+    border-color: inherit;
     color: $white;
   }
 }
 
-.btn-primary,
-.btn-primary,
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled):focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled):hover {
+button.btn-primary,
+button.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):focus,
+button.btn-primary:not(:disabled):not(.disabled):active:focus,
+button.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
-  background-color: $orange-highlight;
+  border: solid 2px $bright-orange;
+  background-color: $btn-orange;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
-  padding: 0 1.25rem;
+  padding: 0 1.125rem;
 }
 
 button.btn-secondary,
@@ -49,13 +51,13 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  color: $orange-highlight;
-  border: solid 2px $orange-highlight;
+  color: $txt-orange;
+  border: solid 2px $bright-orange;
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
   //min-width: min-content;
-  padding: 0 1.25rem;
+  padding: 0 1.125rem;
 
   /* Login, Logout, Register button in Header */
   &.btn-sm {
@@ -91,20 +93,20 @@ button.btn-close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $gray;
+    color: $txt-gray;
     background-color: transparent;
     box-shadow: none;
   }
 
   &.btn-sm {
-    font-size: 0.7rem;
+    font-size: $txt-xs;
   }
 }
 
 /* styles for links that are also buttons */
 button.btn-link {
   background-color: transparent;
-  color: $orange-highlight;
+  color: $txt-orange;
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -116,7 +118,7 @@ button.btn-link {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $orange-highlight;
+    color: $txt-orange;
     background-color: transparent;
     transform: scale(1);
     text-decoration: underline;
@@ -124,7 +126,7 @@ button.btn-link {
   }
 
   &.btn-sm {
-    font-size: 0.75rem;
+    font-size: $txt-xs;
   }
 
   &.normal-case {
@@ -197,17 +199,9 @@ button.btn-icon {
 
 // login username-pw / reset-password set-new-password
 .show-hide-button {
+  @extend #{".btn", ".btn-link", ".btn-sm"};
   position: absolute;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  margin: 0 !important;
-  box-shadow: 0 0 0;
-  border: none;
-  cursor: pointer;
   right: 1rem;
-  color: $black;
-  font-size: 0.75rem;
 }
 
 /* Instance/icon unique styles to be set in targeted css */
@@ -222,8 +216,8 @@ button.icon-only {
 }
 
 @media (max-width: $bp-xs) {
-  button.btn {
-    font-size: 0.9rem;
+  button.btn:not(.btn-sm) {
+    font-size: $txt-sm;
   }
 
   button.btn-primary,

@@ -3,16 +3,19 @@
  * ========================================================================== */
 
 $white: #fff;
-$black: #161616;
-$gray: #7c7c7c;
-$valid-green: #28a745;
-$dark-orange: #d3452e;
-$orange-highlight: #ff4500;
-$orange-opaque: #ffe7dd;
-$light-gray: #f4f4f4;
-$close: #c4c4c4;
-$dark-gray: #d8d8d8;
-$mid-gray: #ebebeb;
+$txt-black: #161616;
+
+$body-gray: #f4f4f4;
+$bg-gray: #ebebeb;
+$border-gray: #d8d8d8;
+$txt-gray: #707070;
+
+$bg-orange: #ffe7dd;
+$bright-orange: #ff4500; //eduID, higlights
+$txt-orange: #cc3600; //text on gray - to pass on gray and orange use #C23400
+$btn-orange: #db3a00; //white on orange
+
+$error-red: #d2143a;
 
 /*
  * Typography
@@ -23,6 +26,7 @@ $proxima-light: "ProximaNova-light", "Arial", "Helvetica", "sans-serif";
 $proxima-regular: "ProximaNova-Regular", "Arial", "Helvetica", "sans-serif";
 $akkurat: "Akkurat", "Arial", "Helvetica", "sans-serif";
 
+$txt-xs: 0.75rem;
 $txt-sm: 0.9rem;
 $txt-md: 1rem;
 $txt-lg: 1.25rem;

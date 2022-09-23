@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
@@ -518,19 +517,6 @@ export const userData = {
   "phones.duplicated": (
     <FormattedMessage id="phones.duplicated" defaultMessage={`The number is already in the list.`} />
   ),
-  /* -----  MOBILE ------- */
-
-  "mobile.resend_success": (values) => (
-    <FormattedMessage id="mobile.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
-  ),
-
-  "mobile.email_label": <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />,
-
-  "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
-
-  "mobile.confirm_title": (values) => (
-    <FormattedMessage id="mobile.confirm_title" defaultMessage={`Enter the code sent to {phone}`} values={values} />
-  ),
 
   /* ----- PERSONAL DATA------- */
   "pfilled.completion": <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />,
@@ -548,10 +534,6 @@ export const userData = {
   "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
 
   /* ----- EMAILS------- */
-
-  "emails.resend_success": (values) => (
-    <FormattedMessage id="emails.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
-  ),
 
   "emails.email_label": <FormattedMessage id="emails.email" defaultMessage={`Email`} />,
 
@@ -572,14 +554,6 @@ export const userData = {
   ),
 
   "emails.button_add": <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />,
-
-  "emails.confirm_title": (values) => (
-    <FormattedMessage
-      id="emails.confirm_title"
-      defaultMessage={`Click the link or enter the code sent to {email} here`}
-      values={values}
-    />
-  ),
 
   "emails.add_new": (
     <FormattedMessage
@@ -851,20 +825,5 @@ export const userData = {
 
   "orc.authorization_fail": (
     <FormattedMessage id="orc.authorization_fail" defaultMessage={`ORCID authentication failed`} />
-  ),
-
-  /* -----  DELETE ACCOUNT ------- */
-
-  "settings.account_title": <FormattedMessage id="settings.account_title" defaultMessage={`Delete eduID`} />,
-
-  "settings.account_description": (
-    <FormattedMessage
-      id="settings.account_description"
-      defaultMessage={`Click the link to permanently delete your eduID.`}
-    />
-  ),
-
-  "security.button_delete_account": (
-    <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
 };
