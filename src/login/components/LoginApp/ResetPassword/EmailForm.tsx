@@ -35,7 +35,11 @@ function EmailForm(props: EmailFormProps): JSX.Element {
       render={(formProps) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(
-          formProps.hasValidationErrors || _submitError || formProps.pristine || props.disabled
+          formProps.hasValidationErrors ||
+            _submitError ||
+            formProps.pristine ||
+            props.disabled ||
+            !formProps.values["email"]
         );
 
         return (

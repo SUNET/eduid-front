@@ -129,7 +129,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   });
 
   const sendButton = screen.getByRole("button", { name: /^send/i });
-  expect(sendButton).toBeEnabled();
+  expect(sendButton).toBeDisabled();
 
   const emailInput = screen.getByRole("textbox");
   expect(emailInput).toHaveFocus();
