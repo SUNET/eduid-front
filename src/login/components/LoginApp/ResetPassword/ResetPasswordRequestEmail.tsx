@@ -25,7 +25,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
-    dispatch(resetPasswordSlice.actions.resetEmailStatus());
+    if (email_status !== "success") dispatch(resetPasswordSlice.actions.resetEmailStatus());
   }, []);
 
   useEffect(() => {
