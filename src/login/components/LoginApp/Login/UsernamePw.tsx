@@ -153,6 +153,7 @@ function RenderResetPasswordLink(): JSX.Element {
     if (emailField.input.value && emailField.meta.valid) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
     }
+    dispatch(resetPasswordSlice.actions.resetEmailAddress());
     navigate("/reset-password/");
   };
 
