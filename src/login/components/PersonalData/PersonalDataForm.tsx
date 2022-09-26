@@ -51,6 +51,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               component={RadioInput}
               required={true}
               name="language"
+              type="radio"
               selectOptions={available_languages}
               label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
             />
