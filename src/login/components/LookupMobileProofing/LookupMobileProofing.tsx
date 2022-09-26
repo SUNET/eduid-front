@@ -85,6 +85,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
           />
         }
         uuid="se-phone"
+        disabled={props.disabled}
       >
         <p className="proofing-btn-help">{translate("verify-identity.vetting_phone_tagline")}</p>
         <p>{explanationText}</p>
