@@ -45,7 +45,3 @@ test("renders custom password form after clicking do not want a suggested passwo
     expect(repeatNewPasswordInput).toBeDefined();
   });
 });
-
-test("url should match finish_url", async () => {
-  expect(finish_url).toContain("/profile");
-});
