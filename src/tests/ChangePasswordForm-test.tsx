@@ -47,12 +47,5 @@ test("renders custom password form after clicking do not want a suggested passwo
 });
 
 test("url should match finish_url", async () => {
-  global.window = Object.create(window);
-  const url = finish_url;
-  Object.defineProperty(window, "location", {
-    value: {
-      href: url,
-    },
-  });
-  expect(window.location.href).toContain("/profile");
+  expect(finish_url).toContain("/profile");
 });
