@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from "react";
-import PersonalDataForm from "./PersonalDataForm";
-import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import { useIntl, FormattedMessage } from "react-intl";
+import { Fragment, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import EduIDButton from "../../../components/EduIDButton";
+import NameDisplay from "../DataDisplay/Name/NameDisplay";
+import PersonalDataForm from "./PersonalDataForm";
 
-interface NameStrings {
+export interface NameLabels {
+  // These are translated labels for "First" and "Last" name input- or text-fields
   first: string;
   last: string;
 }
@@ -14,18 +15,20 @@ interface RenderAddPersonalDataPromptProps {
   setEditMode(value: boolean): void;
 }
 
-const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
-  <div className="button-pair">
-    <p>
-      <FormattedMessage defaultMessage="No information has been added." description="pd no data added" />
-    </p>
-    <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
-      <FormattedMessage defaultMessage="add" description="button add" />
-    </EduIDButton>
-  </div>
-);
+function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromptProps) {
+  return (
+    <div className="button-pair">
+      <p>
+        <FormattedMessage defaultMessage="No information has been added." description="pd no data added" />
+      </p>
+      <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
+        <FormattedMessage defaultMessage="add" description="button add" />
+      </EduIDButton>
+    </div>
+  );
+}
 
-const RenderPersonalData = (props: { names: NameStrings }) => {
+function RenderPersonalData(props: { labels: NameLabels }) {
   const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
   const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
   const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
@@ -42,8 +45,8 @@ const RenderPersonalData = (props: { names: NameStrings }) => {
   }
   return (
     <div className="personal-data-info">
-      <NameDisplay label={props.names.first} name={first_name} />
-      <NameDisplay label={props.names.last} name={last_name} />
+      <NameDisplay label={props.labels.first} name={first_name} />
+      <NameDisplay label={props.labels.last} name={last_name} />
       {hasPrefLanguage ? (
         <NameDisplay
           label={<FormattedMessage defaultMessage="Language" description="pd label language" />}
@@ -52,16 +55,17 @@ const RenderPersonalData = (props: { names: NameStrings }) => {
       ) : null}
     </div>
   );
-};
+}
 
 interface RenderEditBoxProps {
   setEditMode(value: boolean): void;
-  names: NameStrings;
+  labels: NameLabels;
 }
 
-const RenderEditBox = (props: RenderEditBoxProps) => {
-  // check if verified nin
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
+function RenderEditBox(props: RenderEditBoxProps) {
+  const identities = useDashboardAppSelector((state) => state.identities);
+  const isVerifiedIdentity = Boolean(identities?.is_verified);
+
   return (
     <Fragment>
       <div className="edit-data">
@@ -71,11 +75,11 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
           </h4>
           <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
-        <PersonalDataForm isVerifiedNin={nin?.verified} {...props} />
+        <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
       </div>
     </Fragment>
   );
-};
+}
 
 interface RenderEditButtonProps {
   isEditMode: boolean;
@@ -83,30 +87,28 @@ interface RenderEditButtonProps {
   hasPersonalData: boolean;
 }
 
-const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) => (
-  <Fragment>
-    {isEditMode ||
-      (hasPersonalData && (
-        <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
-          <FormattedMessage description="edit button" defaultMessage={`edit`} />
-        </EduIDButton>
-      ))}
-  </Fragment>
-);
+function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) {
+  return (
+    <Fragment>
+      {isEditMode ||
+        (hasPersonalData && (
+          <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
+            <FormattedMessage description="edit button" defaultMessage={`edit`} />
+          </EduIDButton>
+        ))}
+    </Fragment>
+  );
+}
 
-const PersonalDataParent = () => {
+function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  // TODO: I think this can be... simplified as "const hasPersonalData = (personal_data.eppn !== undefined);"
-  const hasPersonalData = Object.entries(personal_data)
-    .filter((entry) => entry[0] !== "eppn")
-    .some((entry) => entry[1] !== undefined);
-
+  const hasPersonalData = Boolean(personal_data?.eppn);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components
-  const names: NameStrings = {
+  const names: NameLabels = {
     first: intl.formatMessage({
       id: "pd.given_name",
       defaultMessage: "First name",
@@ -136,12 +138,12 @@ const PersonalDataParent = () => {
         </p>
         <Fragment>
           {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
-          {hasPersonalData && !isEditMode ? <RenderPersonalData names={names} /> : null}
-          {isEditMode && <RenderEditBox setEditMode={setEditMode} names={names} />}
+          {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
+          {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
         </Fragment>
       </div>
     </article>
   );
-};
+}
 
 export default PersonalDataParent;
