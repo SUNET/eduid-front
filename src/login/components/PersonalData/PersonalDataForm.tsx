@@ -1,6 +1,7 @@
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { AVAILABLE_LANGUAGES } from "globals";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
 import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -11,7 +12,6 @@ import EduIDButton from "../../../components/EduIDButton";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
-import RadioInput from "../Inputs/RadioInput";
 
 interface PersonalDataFormProps {
   labels: NameLabels;
@@ -22,7 +22,6 @@ interface PersonalDataFormProps {
 export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useDashboardAppDispatch();
-  const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
 
   function formSubmit(values: PersonalDataData) {
@@ -47,14 +46,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
                 <RenderEditableNames labels={labels} />
               )}
             </fieldset>
-            <Field
-              component={RadioInput}
-              required={true}
-              name="language"
-              type="radio"
-              selectOptions={available_languages}
-              label={<FormattedMessage defaultMessage="Language" description="Personal data language" />}
-            />
+            <RenderLanguageSelect />
             <div className="buttons">
               <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
                 <FormattedMessage defaultMessage="save" description="button save" />
@@ -64,6 +56,30 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
         );
       }}
     />
+  );
+}
+
+function RenderLanguageSelect(): JSX.Element {
+  // Make an ordered list of languages to be presented as radio buttons
+  const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
+  const language_list = Object.keys(_languages)
+    .sort()
+    .map((key) => {
+      return [key, _languages[key]];
+    });
+
+  return (
+    <div className="radio-input-container">
+      {language_list.map((option: string[], index: number) => {
+        const [key, value] = option;
+        return (
+          <label key={key} htmlFor={value}>
+            <Field name="language" component="input" type="radio" value={key} />
+            {value}
+          </label>
+        );
+      })}
+    </div>
   );
 }
 
