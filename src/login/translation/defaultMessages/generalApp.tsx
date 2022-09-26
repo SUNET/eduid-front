@@ -25,8 +25,6 @@ export const generalApp = {
 
   "cm.finish": <FormattedMessage id="cm.finish" defaultMessage={`FINISH`} />,
 
-  "cm.cancel": <FormattedMessage id="cm.cancel" defaultMessage={`CANCEL`} />,
-
   "cm.accept": <FormattedMessage id="cm.accept" defaultMessage={`ACCEPT`} />,
 
   "cm.close": <FormattedMessage id="cm.close" defaultMessage={`CLOSE`} />,

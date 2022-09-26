@@ -236,6 +236,10 @@
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
+  "CTDOpR": {
+    "developer_comment": "chpass suggest password",
+    "string": "Suggest a password for me"
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
@@ -450,6 +454,10 @@
   "MuypUP": {
     "developer_comment": "generic error page",
     "string": "The issue has been reported to the team."
+  },
+  "NDdvRn": {
+    "developer_comment": "button save",
+    "string": "Save"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -764,15 +772,6 @@
   "captcha.one-step-left": {
     "string": "Only one more step left!"
   },
-  "chpass.button_custom_password": {
-    "string": "I don't want a suggested password"
-  },
-  "chpass.button_save_password": {
-    "string": "Save"
-  },
-  "chpass.button_suggest_password": {
-    "string": "Suggest a password for me"
-  },
   "chpass.different-repeat": {
     "string": "The two passwords are different"
   },
@@ -822,9 +821,6 @@
   },
   "cm.accept": {
     "string": "ACCEPT"
-  },
-  "cm.cancel": {
-    "string": "CANCEL"
   },
   "cm.close": {
     "string": "CLOSE"
@@ -1496,6 +1492,10 @@
   "oFfq/i": {
     "developer_comment": "enter confirmation code",
     "string": "Confirmation code"
+  },
+  "oR7sIx": {
+    "developer_comment": "button cancel",
+    "string": "cancel"
   },
   "oVW3B/": {
     "developer_comment": "verify identity verified description",
@@ -2180,6 +2180,10 @@
   },
   "verify-identity.vetting_phone_tagline": {
     "string": "For you with a Swedish phone number registered in your name"
+  },
+  "vf92mh": {
+    "developer_comment": "chpass custom password",
+    "string": "I don't want a suggested password"
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",

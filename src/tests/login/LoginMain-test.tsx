@@ -45,3 +45,32 @@ test("renders FINISHED as expected", async () => {
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 });
+
+test("renders UsernamePw as expected", async () => {
+  const ref = "abc987";
+
+  mswServer.use(
+    rest.post("/next", (req, res, ctx) => {
+      const body = req.body as LoginNextRequest;
+      if (body.ref != ref) {
+        return res(ctx.status(400));
+      }
+
+      const payload: LoginNextResponse = {
+        action: "USERNAMEPASSWORD",
+        target: "/foo",
+      };
+      return res(ctx.json({ type: "test response", payload: payload }));
+    })
+  );
+
+  render(<LoginMain />, { routes: [`/login/password/${ref}`] });
+
+  await waitFor(() => screen.getByRole("heading"));
+
+  expect(screen.getByRole("heading")).toHaveTextContent(/^Log in/);
+  const input = screen.getByRole("textbox");
+  expect(input).toHaveFocus();
+  expect(input).toHaveAccessibleName(/^Email address/);
+  expect(input).toHaveProperty("placeholder", "name@example.com");
+});

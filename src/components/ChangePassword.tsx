@@ -4,6 +4,9 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
 
+// exported for use in tests
+export const finish_url = "/profile/security";
+
 function ChangePassword() {
   const suggested_password = useDashboardAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -30,7 +33,7 @@ function ChangePassword() {
         </h4>
       </div>
       <div id="changePasswordDialog">
-        <ChangePasswordForm finish_url="/profile/security" />
+        <ChangePasswordForm finish_url={finish_url} />
       </div>
     </React.Fragment>
   );
