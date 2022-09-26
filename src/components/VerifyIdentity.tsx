@@ -3,7 +3,7 @@ import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage } from "react-intl";
@@ -11,7 +11,6 @@ import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
-import NinForm from "./NinForm";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -156,27 +155,18 @@ function AccordionItemSwedish(): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
-
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
-  const disabled = false;
 
   // proofing via letter requires the user to have added a NIN first
   const letterProofingDisabled = !addedNin;
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
-  const swedishOptions: swedishAccordionUUID[] = [];
-  console.log("nin", nin);
+  const swedishOptions: swedishAccordionUUID[] = ["se-freja"];
 
-  if (nin === undefined) {
-    console.log("1nin", nin);
-    swedishOptions.push("se-freja");
-  } else {
-    /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-    swedishOptions.push("se-freja");
+  if (nin) {
     swedishOptions.push("se-letter");
-    console.log("2nin", nin);
     if (!lookupMobileDisabled) {
       swedishOptions.push("se-phone");
     }

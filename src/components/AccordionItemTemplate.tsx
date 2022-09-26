@@ -17,7 +17,7 @@ interface AccordionItemTemplateProps {
 
 function AccordionItemTemplate(props: AccordionItemTemplateProps) {
   return (
-    <AccordionItem uuid={props.uuid} activeClassName="accordion__item expanded">
+    <AccordionItem uuid={props.uuid}>
       <AccordionItemHeading>
         <AccordionItemButton>
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
