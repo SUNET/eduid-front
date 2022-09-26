@@ -101,8 +101,8 @@
 
       #{$a}__button,
       #{$a}__button:hover {
-        color: $txt-gray;
-        background-color: $bg-gray;
+        color: $txt-gray !important;
+        background-color: $bg-gray !important;
       }
       #{$a}__panel {
         color: $txt-gray;
