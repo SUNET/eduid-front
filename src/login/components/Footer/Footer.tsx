@@ -41,7 +41,7 @@ const Footer = (): JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <a href="https://www.sunet.se/">
+        <a href="https://www.sunet.se/" area-label="Sunet.se" title="Sunet.se">
           <div className="sunet-logo" />
         </a>
         <span>
