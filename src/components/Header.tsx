@@ -62,7 +62,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <section className="banner">
       <header>
-        <a href={dashboard_url ? dashboard_url : eduid_site_url}>
+        <a href={dashboard_url ? dashboard_url : eduid_site_url} area-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}

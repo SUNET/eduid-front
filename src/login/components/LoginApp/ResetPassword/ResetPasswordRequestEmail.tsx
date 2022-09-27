@@ -86,7 +86,7 @@ function ResetPasswordConfirmEmail(): JSX.Element {
 
       <div className="buttons">
         <GoBackButton />
-        <EduIDButton buttonstyle="primary" type="submit" className="settings-button" onClick={sendEmailOnClick}>
+        <EduIDButton buttonstyle="primary" type="submit" onClick={sendEmailOnClick}>
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
