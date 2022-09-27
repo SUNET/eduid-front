@@ -129,24 +129,19 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $txt-black;
-
-      // border: 2px solid $bright-orange;
+      border: 2px solid $bright-orange;
       border-radius: 6px;
       overflow: hidden;
 
       &.expanded {
-        // border-color: $txt-black;
-        border-color: $bright-orange;
+        border-color: $txt-black;
       }
 
       &:hover {
         border-color: $bright-orange;
 
         &.expanded {
-          border-color: $bright-orange;
-
-          // border-color: $txt-black;
+          border-color: $txt-black;
         }
       }
 
