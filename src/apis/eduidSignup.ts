@@ -9,6 +9,93 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 // export for use in tests
 export const SIGNUP_SERVICE_URL = "/services/signup";
 
+export interface SignupStatusResponse {
+  email_verification: {
+    email?: string;
+    verified: boolean;
+    sent_at?: string;
+    throttle_time_left?: number;
+    throttle_time_max?: number;
+  };
+  invite: {
+    initiated_signup: boolean;
+    code?: string;
+    finish_url?: string;
+    completed: boolean;
+  };
+  tou_accepted: boolean;
+  captcha_completed: boolean;
+  credential_added: boolean;
+  user_created: boolean;
+}
+
+/*********************************************************************************************************************/
+
+/**
+ * @public
+ * @function fetchState
+ * @desc Redux async thunk to fetch the signup state from the backend.
+ */
+export const fetchState = createAsyncThunk<
+  SignupStatusResponse, // return type
+  undefined, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/fetchState", async (args, thunkAPI) => {
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "state")
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface CaptchaRequest {
+  recaptcha_response?: string;
+}
+
+/**
+ * @public
+ * @function sendCaptchaResponse
+ * @desc Redux async thunk to post the result of a CAPTCHA operation.
+ */
+export const sendCaptchaResponse = createAsyncThunk<
+  SignupStatusResponse, // return type
+  CaptchaRequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/sendCaptchaResponse", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    recaptcha_response: args.recaptcha_response,
+  };
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface RegisterEmailRequest {
+  email: string;
+}
+
+/**
+ * @public
+ * @function RegisterEmailRequest
+ * @desc Redux async thunk to add the users stated e-mail address to the signup state.
+ */
+export const registerEmailRequest = createAsyncThunk<
+  SignupStatusResponse, // return type
+  RegisterEmailRequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/registerEmailRequest", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    email: args.email,
+  };
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "register-email", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
 /*********************************************************************************************************************/
 export interface TryCaptchaRequest {
   email: string;

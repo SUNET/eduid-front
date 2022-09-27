@@ -1,8 +1,7 @@
-import EduIDButton from "../../../../components/EduIDButton";
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useAppSelector } from "login/app_init/hooks";
+import EduIDButton from "../../../../components/EduIDButton";
 
 interface ResponseCodeFormProps {
   codeRequired?: boolean;

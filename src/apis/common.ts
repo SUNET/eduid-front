@@ -148,5 +148,7 @@ export function makeBareRequest<T>(
 
 // type predicate to help identify rejected payloads from backend.
 export function isFSA(action: any): action is PayloadAction {
+  // TODO: Fix error on 404 response:
+  // common.ts:110 Uncaught (in promise) TypeError: Cannot use 'in' operator to search for 'type' in Error: HTTP 404
   return "type" in action && "payload" in action;
 }
