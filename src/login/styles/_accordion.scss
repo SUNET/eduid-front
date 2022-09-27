@@ -72,22 +72,6 @@
           position: absolute;
           right: 1rem;
         }
-
-        // .disabled not yet implemented
-
-        /* &.disabled,
-        &.disabled:hover {
-          color: $gray;
-          background: $dark-gray;
-          cursor: not-allowed;
-
-          #{$a}-title {
-            text-decoration: none;
-          }
-          #{$a}-icon img {
-            filter: grayscale(1);
-          }
-        } */
       }
     }
 
@@ -109,6 +93,26 @@
 
       input[type="text"] {
         background-color: $body-gray;
+      }
+    }
+
+    // Visually disabled with minimal hover feedback, still clickable for information purposes
+    &.disabled,
+    &.disabled:hover,
+    &.expanded.disabled {
+      color: $txt-gray;
+
+      #{$a}__button,
+      #{$a}__button:hover {
+        color: $txt-gray !important;
+        background-color: $bg-gray !important;
+      }
+      #{$a}__panel {
+        color: $txt-gray;
+      }
+
+      #{$a}-icon img {
+        filter: grayscale(1);
       }
     }
   }
@@ -177,6 +181,12 @@
           font-size: 1.125rem;
           line-height: 1.25;
         }
+      }
+
+      &.disabled,
+      &.disabled:hover,
+      &.expanded.disabled {
+        border-color: $border-gray;
       }
     }
   }
