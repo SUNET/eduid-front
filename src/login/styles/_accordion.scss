@@ -1,9 +1,10 @@
-@import "./variables.scss";
+@import "./variables";
 
 /* Accordion */
 
 .accordion {
   $a: &;
+
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
   border: 2px solid $border-gray;
   border-radius: 6px;
@@ -73,19 +74,20 @@
         }
 
         // .disabled not yet implemented
-        /*&.disabled,
+
+        /* &.disabled,
         &.disabled:hover {
           color: $gray;
           background: $dark-gray;
           cursor: not-allowed;
-    
+
           #{$a}-title {
             text-decoration: none;
           }
           #{$a}-icon img {
             filter: grayscale(1);
           }
-        }*/
+        } */
       }
     }
 
@@ -94,10 +96,12 @@
       background-color: $white;
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
+
       @keyframes fadein {
         0% {
           opacity: 0;
         }
+
         100% {
           opacity: 1;
         }
@@ -121,18 +125,24 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $bright-orange;
+      border: 2px solid $txt-black;
+
+      // border: 2px solid $bright-orange;
       border-radius: 6px;
       overflow: hidden;
 
       &.expanded {
-        border-color: $txt-black;
+        // border-color: $txt-black;
+        border-color: $bright-orange;
       }
 
       &:hover {
         border-color: $bright-orange;
+
         &.expanded {
-          border-color: $txt-black;
+          border-color: $bright-orange;
+
+          // border-color: $txt-black;
         }
       }
 
