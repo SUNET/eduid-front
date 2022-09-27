@@ -69,35 +69,24 @@ function Eidas(): JSX.Element {
 
   return (
     <>
-      <AccordionItemTemplate
-        title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />}
-        additionalInfo={
-          <FormattedMessage
-            description="verify identity vetting freja tagline"
-            defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
-          />
-        }
-        uuid="se-freja"
-      >
-        <p className="proofing-btn-help">
-          <FormattedMessage
-            description="eidas proofing help text"
-            defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+      <p className="proofing-btn-help">
+        <FormattedMessage
+          description="eidas proofing help text"
+          defaultMessage={`To use this option you will need to first create a digital ID-card in the 
             {freja_eid_link} app.`}
-            values={{
-              freja_eid_link: (
-                <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-                  Freja eID+
-                </a>
-              ),
-            }}
-          />
-        </p>
+          values={{
+            freja_eid_link: (
+              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+                Freja eID+
+              </a>
+            ),
+          }}
+        />
+      </p>
 
-        <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
-          <FormattedMessage defaultMessage="Proceed" description="button proceed" />
-        </EduIDButton>
-      </AccordionItemTemplate>
+      <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
 
       <NotificationModal
         id="eidas-info-modal"

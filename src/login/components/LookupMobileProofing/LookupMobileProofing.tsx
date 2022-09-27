@@ -76,23 +76,11 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
 
   return (
     <div key="0">
-      <AccordionItemTemplate
-        title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-        additionalInfo={
-          <FormattedMessage
-            defaultMessage="For you with phone number registered in your name"
-            description="explanation text for vetting phone"
-          />
-        }
-        uuid="se-phone"
-        disabled={props.disabled}
-      >
-        <p className="proofing-btn-help">{translate("verify-identity.vetting_phone_tagline")}</p>
-        <p>{explanationText}</p>
-        <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
-          <FormattedMessage defaultMessage="Proceed" description="button proceed" />
-        </EduIDButton>
-      </AccordionItemTemplate>
+      <p className="proofing-btn-help">{translate("verify-identity.vetting_phone_tagline")}</p>
+      <p>{explanationText}</p>
+      <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
 
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal

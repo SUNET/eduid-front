@@ -14,7 +14,6 @@ import NinDisplay from "./NinDisplay";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
-type swedishAccordionUUID = "se-freja" | "se-letter" | "se-phone";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -163,15 +162,6 @@ function AccordionItemSwedish(): JSX.Element | null {
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
-  const swedishOptions: swedishAccordionUUID[] = ["se-freja"];
-
-  if (nin) {
-    swedishOptions.push("se-letter");
-    if (!lookupMobileDisabled) {
-      swedishOptions.push("se-phone");
-    }
-  }
-
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
   return (
@@ -207,15 +197,50 @@ function AccordionItemSwedish(): JSX.Element | null {
               </p>
             </li>
 
-            <Accordion
-              allowMultipleExpanded
-              allowZeroExpanded
-              className="accordion accordion-nested x-adjust"
-              preExpanded={swedishOptions}
-            >
-              <FrejaeID />
-              <LetterProofing disabled={letterProofingDisabled} />
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
+            <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+              <AccordionItemTemplate
+                title={
+                  <FormattedMessage
+                    description="eidas vetting button freja"
+                    defaultMessage={`with a digital ID-card`}
+                  />
+                }
+                additionalInfo={
+                  <FormattedMessage
+                    description="verify identity vetting freja tagline"
+                    defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+                  />
+                }
+                uuid="se-freja"
+              >
+                <FrejaeID />
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+                additionalInfo={
+                  <FormattedMessage
+                    defaultMessage="For you registered at your current address"
+                    description="explanation text for letter proofing"
+                  />
+                }
+                uuid="se-letter"
+                disabled={letterProofingDisabled}
+              >
+                <LetterProofing disabled={letterProofingDisabled} />
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+                additionalInfo={
+                  <FormattedMessage
+                    defaultMessage="For you with phone number registered in your name"
+                    description="explanation text for vetting phone"
+                  />
+                }
+                uuid="se-phone"
+                disabled={lookupMobileDisabled}
+              >
+                <LookupMobileProofing disabled={lookupMobileDisabled} />
+              </AccordionItemTemplate>
             </Accordion>
           </React.Fragment>
         </ol>
