@@ -110,43 +110,66 @@ function VerifyIdentityIntro(): JSX.Element {
 function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
   return (
-    <figure className="table-responsive identity-summary">
-      <table className="table">
-        <tbody>
-          {identities.nin?.verified && (
-            <tr className="border-row">
-              <td>
-                <CircleFlag countryCode="se" height="35" className="circle-icon" />
-              </td>
-              <td>
-                <strong>
-                  <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
-                </strong>
-              </td>
-              <td>
-                <NinDisplay nin={identities.nin} allowDelete={true} />
-              </td>
-            </tr>
-          )}
+    <React.Fragment>
+      {identities.nin?.verified && (
+        <figure className="table-responsive identity-summary">
+          <table className="table">
+            <tbody>
+              <tr className="border-row">
+                <td>
+                  <CircleFlag countryCode="se" height="35" className="circle-icon" />
+                </td>
+                <td>
+                  <strong>
+                    <FormattedMessage
+                      defaultMessage="Swedish national identity number"
+                      description="Verified identity"
+                    />
+                  </strong>
+                </td>
+                <td>
+                  <NinDisplay nin={identities.nin} allowDelete={true} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      )}
 
-          {identities.eidas?.verified && (
-            <tr className="border-row">
-              <td>
-                <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
-              </td>
-              <td>
-                <strong>
-                  <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
-                </strong>
-              </td>
-              <td>
-                {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </figure>
+      {identities.eidas?.verified && (
+        <React.Fragment>
+          <figure className="table-responsive identity-summary">
+            <table className="table">
+              <tbody>
+                <tr className="border-row">
+                  <td>
+                    <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
+                  </td>
+                  <td>
+                    <strong>
+                      <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
+                    </strong>
+                  </td>
+                  <td>
+                    {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <h3>
+            <FormattedMessage
+              description="verify identity non verified description"
+              defaultMessage="Choose your principal identification method"
+            />
+          </h3>
+          <Accordion>
+            <AccordionItemSwedish />
+          </Accordion>
+        </React.Fragment>
+      )}
+    </React.Fragment>
   );
 }
 
@@ -171,80 +194,71 @@ function AccordionItemSwedish(): JSX.Element | null {
       additionalInfo="With a digital ID-card / By post / By phone"
       uuid="swedish"
     >
-      {nin?.verified ? (
+      <ol className="listed-steps">
+        <li>
+          <h4>
+            <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+          </h4>
+          <AddNin />
+        </li>
         <React.Fragment>
-          <NinDisplay />
-        </React.Fragment>
-      ) : (
-        <ol className="listed-steps">
           <li>
             <h4>
-              <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+              <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
             </h4>
-            <AddNin />
-          </li>
-          <React.Fragment>
-            <li>
-              <h4>
-                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-              </h4>
-              <p className="x-adjust">
-                <FormattedMessage
-                  description="verify-identity.connect-nin_description"
-                  defaultMessage={`Choose a method to verify that you have access to the added id number.
+            <p className="x-adjust">
+              <FormattedMessage
+                description="verify-identity.connect-nin_description"
+                defaultMessage={`Choose a method to verify that you have access to the added id number.
                     If you are unable to use a method you need to try another.`}
-                />
-              </p>
-            </li>
+              />
+            </p>
+          </li>
 
-            <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
-              <AccordionItemTemplate
-                title={
-                  <FormattedMessage
-                    description="eidas vetting button freja"
-                    defaultMessage={`with a digital ID-card`}
-                  />
-                }
-                additionalInfo={
-                  <FormattedMessage
-                    description="verify identity vetting freja tagline"
-                    defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
-                  />
-                }
-                uuid="se-freja"
-              >
-                <FrejaeID />
-              </AccordionItemTemplate>
-              <AccordionItemTemplate
-                title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
-                additionalInfo={
-                  <FormattedMessage
-                    defaultMessage="For you registered at your current address"
-                    description="explanation text for letter proofing"
-                  />
-                }
-                uuid="se-letter"
-                disabled={letterProofingDisabled}
-              >
-                <LetterProofing disabled={letterProofingDisabled} />
-              </AccordionItemTemplate>
-              <AccordionItemTemplate
-                title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-                additionalInfo={
-                  <FormattedMessage
-                    defaultMessage="For you with phone number registered in your name"
-                    description="explanation text for vetting phone"
-                  />
-                }
-                uuid="se-phone"
-                disabled={lookupMobileDisabled}
-              >
-                <LookupMobileProofing disabled={lookupMobileDisabled} />
-              </AccordionItemTemplate>
-            </Accordion>
-          </React.Fragment>
-        </ol>
-      )}
+          <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+            <AccordionItemTemplate
+              title={
+                <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
+              }
+              additionalInfo={
+                <FormattedMessage
+                  description="verify identity vetting freja tagline"
+                  defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+                />
+              }
+              uuid="se-freja"
+            >
+              <FrejaeID />
+            </AccordionItemTemplate>
+            <AccordionItemTemplate
+              title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+              additionalInfo={
+                <FormattedMessage
+                  defaultMessage="For you registered at your current address"
+                  description="explanation text for letter proofing"
+                />
+              }
+              uuid="se-letter"
+              disabled={letterProofingDisabled}
+            >
+              <LetterProofing disabled={letterProofingDisabled} />
+            </AccordionItemTemplate>
+            <AccordionItemTemplate
+              title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+              additionalInfo={
+                <FormattedMessage
+                  defaultMessage="For you with phone number registered in your name"
+                  description="explanation text for vetting phone"
+                />
+              }
+              uuid="se-phone"
+              disabled={lookupMobileDisabled}
+            >
+              <LookupMobileProofing disabled={lookupMobileDisabled} />
+            </AccordionItemTemplate>
+          </Accordion>
+        </React.Fragment>
+      </ol>
     </AccordionItemTemplate>
   );
 }
