@@ -66,7 +66,6 @@ export function EmailLinkSent(): JSX.Element | null {
         <EduIDButton
           buttonstyle="primary"
           type="submit"
-          className="settings-button"
           id="send-email-button"
           onClick={sendEmailOnClick}
           disabled={resendDisabled}
