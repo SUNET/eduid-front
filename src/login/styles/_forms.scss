@@ -57,6 +57,10 @@ fieldset {
   &:not(:empty) {
     margin-bottom: 1.25em;
   }
+
+  legend {
+    @extend label;
+  }
 }
 
 /* smallish grayish additional info underneath corresponding form elements */
