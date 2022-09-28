@@ -3,7 +3,6 @@ import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
-import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
@@ -23,10 +22,6 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const loginRef = useAppSelector((state) => state.login.ref);
-
-  useEffect(() => {
-    dispatch(resetPasswordSlice.actions.resetEmailStatus());
-  }, []);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
