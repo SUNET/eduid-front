@@ -69,17 +69,22 @@ function RenderLanguageSelect(): JSX.Element {
     });
 
   return (
-    <div className="radio-input-container">
-      {language_list.map((option: string[], index: number) => {
-        const [key, value] = option;
-        return (
-          <label key={key} htmlFor={value}>
-            <Field name="language" component="input" type="radio" value={key} />
-            <span>{value}</span>
-          </label>
-        );
-      })}
-    </div>
+    <fieldset>
+      <legend>
+        <FormattedMessage defaultMessage="Language" description="pd label language" />
+      </legend>
+      <div className="radio-input-container">
+        {language_list.map((option: string[], index: number) => {
+          const [key, value] = option;
+          return (
+            <label key={key} htmlFor={value}>
+              <Field name="language" component="input" type="radio" value={key} />
+              <span>{value}</span>
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
 
