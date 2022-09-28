@@ -2142,6 +2142,10 @@
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
   },
+  "x6V8oh": {
+    "developer_comment": "Language radio group legend",
+    "string": "Language"
+  },
   "xBsfUj": {
     "developer_comment": "Login Mfa paragraph",
     "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
