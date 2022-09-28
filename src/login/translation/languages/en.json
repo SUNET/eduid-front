@@ -1944,7 +1944,7 @@
     "string": "Failed to verify the attestation for the security key."
   },
   "security.webauthn-metadata-fail": {
-    "string": "Failed to validate the security key against metadata."
+    "string": "Failed to validate the manufacturer of the security key. Unfortunately you cannot use this security key with eduID at this time."
   },
   "security.webauthn-missing-pdata": {
     "string": "You should add your personal data before adding a security key"
