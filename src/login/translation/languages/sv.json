@@ -2142,6 +2142,10 @@
     "developer_comment": "SAML login finished",
     "string": "Du kan försöka logga in igen med knappen nedan, men det är troligt att tjänsten du försöker logga in på inte kommer godta det. I så fall behöver du börja om inloggningen från början."
   },
+  "x6V8oh": {
+    "developer_comment": "Language radio group legend",
+    "string": "Språk"
+  },
   "xBsfUj": {
     "developer_comment": "Login Mfa paragraph",
     "string": "Du måste välja en andra metod att autentisera dig själv. Detta hjälper att garantera att bara du kan komma åt ditt eduID."
