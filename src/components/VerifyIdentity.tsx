@@ -101,7 +101,7 @@ function VerifyIdentityIntro(): JSX.Element {
       <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
         <AccordionItemSwedish />
         <AccordionItemEu />
-        <AccordionItemWorld />
+        {/* <AccordionItemWorld /> */}
       </Accordion>
     </React.Fragment>
   );
@@ -303,20 +303,19 @@ function AccordionItemEu(): JSX.Element | null {
   );
 }
 
-function AccordionItemWorld(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate
-      icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
-      title="All other countries"
-      additionalInfo="Svipe ID"
-      uuid="world"
-    >
-      <p>
-        Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti quam
-        sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos dolor ut sequi minus iste? Quas?
-      </p>
-    </AccordionItemTemplate>
-  );
-}
+// TODO: Svipe
+// function AccordionItemWorld(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate
+//       icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
+//       title="All other countries"
+//       additionalInfo="Svipe ID"
+//       uuid="world"
+//     >
+//       <p>
+//       </p>
+//     </AccordionItemTemplate>
+//   );
+// }
 
 export default VerifyIdentity;

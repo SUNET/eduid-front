@@ -22,10 +22,6 @@ test("renders LookupMobileProofing without phone number", () => {
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeDisabled();
   expect(screen.getByText(/start by adding your phone number/i)).toBeInTheDocument();
-  // TODO: Unable to find role="link"
-  // const link = screen.getByRole("link");
-  // expect(link).toBeInTheDocument();
-  // expect(link).toHaveAttribute("href", "/profile/settings/#phone");
 });
 
 test("renders Confirmation Modal, enabled to click modal button", async () => {
