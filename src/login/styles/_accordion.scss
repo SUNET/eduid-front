@@ -117,6 +117,10 @@
     }
   }
 
+  &:not(#{$a}-nested) > .expanded + #{$a}__item {
+    border-top: 2px solid $txt-gray;
+  }
+
   form {
     margin-top: 0;
   }
@@ -141,23 +145,23 @@
         border-color: $bright-orange;
 
         &.expanded {
-          border-color: $txt-black;
+          border-color: $txt-gray;
         }
       }
 
       &.expanded > #{$a}__heading > #{$a}__button {
-        background: $bg-gray;
+        background: $bg-orange;
       }
 
       // Clickable
       #{$a}__heading {
         #{$a}__button {
-          color: $txt-black;
-          background: transparent;
+          //color: $txt-black;
+          //background: transparent;
 
           &:hover {
-            color: $bright-orange;
-            background: $bg-gray;
+            color: $white;
+            background: $btn-orange;
           }
 
           #{$a}-title {
