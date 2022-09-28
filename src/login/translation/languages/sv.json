@@ -1944,7 +1944,7 @@
     "string": "Det gick inte att verifiera säkerhetsnyckeln."
   },
   "security.webauthn-metadata-fail": {
-    "string": "Det gick inte att validera säkerhetsnyckelns metadata."
+    "string": "Det gick inte att validera tillverkaren av säkerhetsnyckeln. Tyvärr kan du inte använda den här säkerhetsnyckeln med eduID för närvarande."
   },
   "security.webauthn-missing-pdata": {
     "string": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel"
