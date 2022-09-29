@@ -16,7 +16,6 @@ interface RenderAddPersonalDataPromptProps {
 }
 
 function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromptProps) {
-  console.log("RenderAddPersonalDataPrompt");
   return (
     <div className="button-pair">
       <p>
