@@ -186,6 +186,7 @@ button.btn-icon {
 
   @media (max-width: $bp-md) {
     justify-content: center;
+    align-self: normal;
   }
 
   @media (max-width: $bp-xs) {
