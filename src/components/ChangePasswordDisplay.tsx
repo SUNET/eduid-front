@@ -17,6 +17,10 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
     dispatch(initiatePasswordChange());
   }
 
+  function openModal() {
+    setShowModal(true);
+  }
+
   // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
   //       before this is merged after the holidays.
   return (
@@ -38,14 +42,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
             />
           </p>
         </div>
-        <EduIDButton
-          id="security-change-button"
-          buttonstyle="link"
-          className="lowercase"
-          onClick={() => {
-            setShowModal(true);
-          }}
-        >
+        <EduIDButton id="security-change-button" buttonstyle="link" className="lowercase" onClick={openModal}>
           <FormattedMessage
             id="settings.change_password"
             defaultMessage="Change password"
