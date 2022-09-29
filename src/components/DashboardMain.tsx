@@ -1,7 +1,7 @@
 import NotificationsContainer from "containers/Notifications";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
+import { useLocation } from "react-router-dom";
 
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
@@ -22,6 +23,17 @@ export function DashboardMain() {
   } else {
     email = "";
   }
+
+  const titles: any = {
+    "/profile/": "Profile - eduID",
+    "/profile/settings/advanced-settings": "Advanced Settings - eduID",
+    "/profile/settings/personaldata": "Settings - eduID",
+    "/profile/verify-identity/": "Identity - eduID",
+    "/profile/chpass": "Change Password - eduID",
+  };
+
+  const location = useLocation();
+  useEffect(() => (document.title = titles[location.pathname] ?? "eduID"), [location]);
 
   return (
     <React.StrictMode>
