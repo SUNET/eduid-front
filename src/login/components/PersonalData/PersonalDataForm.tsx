@@ -12,6 +12,7 @@ import EduIDButton from "../../../components/EduIDButton";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
+import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 
 interface PersonalDataFormProps {
   labels: NameLabels;
@@ -32,6 +33,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   return (
     <FinalForm<PersonalDataData>
       initialValues={personal_data}
+      validate={validatePersonalData}
       onSubmit={formSubmit}
       render={(formProps) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
@@ -72,6 +74,7 @@ function RenderLanguageSelect(): JSX.Element {
     <fieldset>
       <legend>
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
+        <span className="label-required">*</span>
       </legend>
       <div className="radio-input-container">
         {language_list.map((option: string[], index: number) => {
