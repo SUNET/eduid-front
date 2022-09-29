@@ -16,6 +16,7 @@ interface RenderAddPersonalDataPromptProps {
 }
 
 function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromptProps) {
+  console.log("RenderAddPersonalDataPrompt");
   return (
     <div className="button-pair">
       <p>
@@ -104,7 +105,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  const hasPersonalData = Boolean(personal_data?.eppn);
+  const hasPersonalData = Boolean(personal_data?.given_name);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components
@@ -137,6 +138,8 @@ function PersonalDataParent() {
           />
         </p>
         <Fragment>
+          {console.log("hasPersonalData", hasPersonalData)}
+          {console.log("isEditMode", isEditMode)}
           {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
           {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
           {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
