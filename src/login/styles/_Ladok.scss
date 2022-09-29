@@ -1,13 +1,23 @@
 .ladok {
+  &-university {
+    @media (max-width: $bp-md) {
+      flex-direction: column;
+
+      &.flex-between {
+        align-items: flex-start;
+      }
+    }
+    @media (min-width: $bp-md) {
+      label {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   &-university-name {
     flex-grow: 1;
     text-align: right;
     white-space: nowrap;
-
-    label {
-      padding: 0;
-      margin: 0;
-    }
   }
 
   &-universities-status {
@@ -23,13 +33,9 @@
     height: initial;
   }
 
-  @media (max-width: $bp-md) {
-    &-university {
-      flex-direction: column;
-
-      &.flex-between {
-        align-items: flex-start;
-      }
+  label {
+    &.flex-between {
+      margin-right: 0;
     }
   }
 }
