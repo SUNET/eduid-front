@@ -128,3 +128,10 @@ hr.border-line {
     width: calc(100% - #{2 * $margin});
   }
 }
+
+/* Utility classes - possibly move to separate file */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

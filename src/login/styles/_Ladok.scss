@@ -3,6 +3,11 @@
     flex-grow: 1;
     text-align: right;
     white-space: nowrap;
+
+    label {
+      padding: 0;
+      margin: 0;
+    }
   }
 
   &-universities-status {
@@ -26,26 +31,5 @@
         align-items: flex-start;
       }
     }
-  }
-}
-
-/** Possible utility/generic classes below **/
-select {
-  padding: 5px;
-  border-radius: 3px;
-  width: 100%;
-  height: 3rem;
-  background-color: $white;
-  height: 40px;
-  margin-top: 3px;
-}
-
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  label {
-    padding: 0;
-    margin: 0;
   }
 }
