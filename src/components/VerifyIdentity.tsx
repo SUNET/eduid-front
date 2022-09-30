@@ -164,6 +164,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
               defaultMessage="Choose your principal identification method"
             />
           </h3>
+          <p>
+            <FormattedMessage
+              description="verify identity with swedish ID description"
+              defaultMessage="Due to your eduID is verified with a foreign id, it is possible to reverify your eduID with a Swedish national ID number."
+            />
+          </p>
           <Accordion>
             <AccordionItemSwedish />
           </Accordion>
