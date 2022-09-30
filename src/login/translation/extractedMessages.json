@@ -818,9 +818,6 @@
   "cm.close": {
     "string": "CLOSE"
   },
-  "cm.enter_code": {
-    "string": "Confirmation code"
-  },
   "cm.finish": {
     "string": "FINISH"
   },
