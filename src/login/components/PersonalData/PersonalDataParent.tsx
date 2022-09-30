@@ -104,7 +104,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  const hasPersonalData = Boolean(personal_data?.eppn);
+  const hasPersonalData = Boolean(personal_data?.given_name) || Boolean(personal_data?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components

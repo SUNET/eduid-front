@@ -31,18 +31,18 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
   background-color: $body-gray;
 
   @media (max-width: $bp-lg) {
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 
   .content {
-    padding-top: 3rem;
+    padding-top: 2rem;
 
     @media (max-width: $bp-lg) {
-      padding-top: 2rem;
+      padding-top: 1.5rem;
     }
   }
 }
@@ -50,16 +50,16 @@ body {
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
 // in Email.js = replaced these with with <article>
 #text-content article {
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
   border-bottom: 1px solid $border-gray;
   &:last-of-type {
     border-bottom: none;
   }
 
   @media (max-width: $bp-md) {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
   }
 }
 
@@ -127,4 +127,11 @@ hr.border-line {
   .vertical-content-margin {
     width: calc(100% - #{2 * $margin});
   }
+}
+
+/* Utility classes - possibly move to separate file */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
