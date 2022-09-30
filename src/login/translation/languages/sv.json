@@ -819,7 +819,7 @@
     "string": "STÄNG"
   },
   "cm.enter_code": {
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "cm.finish": {
     "string": "SLUTFÖR"
@@ -1442,7 +1442,7 @@
   },
   "oFfq/i": {
     "developer_comment": "enter confirmation code",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
