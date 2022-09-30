@@ -819,7 +819,7 @@
     "string": "STÄNG"
   },
   "cm.enter_code": {
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "cm.finish": {
     "string": "SLUTFÖR"
@@ -1713,7 +1713,7 @@
   },
   "q4ENsq": {
     "developer_comment": "explanation text for letter proofing",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
