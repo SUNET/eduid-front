@@ -29,8 +29,6 @@ export const generalApp = {
 
   "cm.close": <FormattedMessage id="cm.close" defaultMessage={`CLOSE`} />,
 
-  "cm.enter_code": <FormattedMessage id="cm.enter_code" defaultMessage={`Confirmation code`} />,
-
   // code still valid
   "still-valid-code": (
     <FormattedMessage
