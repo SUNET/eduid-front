@@ -136,29 +136,18 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
 
   return (
     <>
-      <AccordionItemTemplate
-        title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
-        additionalInfo={
-          <FormattedMessage
-            defaultMessage="For you registered at your current address"
-            description="explanation text for letter proofing"
-          />
-        }
-        uuid="se-letter"
-      >
-        <p className={"proofing-btn-help" + (disabled === true ? " disabled" : "")}>
-          <FormattedMessage
-            description="letter initialize proofing help text"
-            defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
-          />
-        </p>
+      <p className="proofing-btn-help">
+        <FormattedMessage
+          description="letter initialize proofing help text"
+          defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
+        />
+      </p>
 
-        {description}
+      {description}
 
-        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleModal()}>
-          Proceed
-        </EduIDButton>
-      </AccordionItemTemplate>
+      <EduIDButton disabled={disabled} buttonstyle="primary" size="sm" onClick={() => handleModal()}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
 
       <NotificationModal
         id="letter-confirm-modal"
