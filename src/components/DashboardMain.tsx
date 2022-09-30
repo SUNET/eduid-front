@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom";
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const location = useLocation();
 
   let email;
   if (emails.length >= 1) {
@@ -26,13 +27,12 @@ export function DashboardMain() {
 
   const titles: any = {
     "/profile/": "Profile - eduID",
-    "/profile/settings/advanced-settings": "Advanced Settings - eduID",
-    "/profile/settings/personaldata": "Settings - eduID",
     "/profile/verify-identity/": "Identity - eduID",
+    "/profile/settings/personaldata": "Settings - eduID",
+    "/profile/settings/advanced-settings": "Advanced Settings - eduID",
     "/profile/chpass": "Change Password - eduID",
   };
 
-  const location = useLocation();
   useEffect(() => (document.title = titles[location.pathname] ?? "eduID"), [location]);
 
   return (
