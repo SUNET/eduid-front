@@ -26,11 +26,11 @@ export function DashboardMain() {
   }
 
   const titles: any = {
-    "/profile/": "Profile - eduID",
-    "/profile/verify-identity/": "Identity - eduID",
-    "/profile/settings/personaldata": "Settings - eduID",
-    "/profile/settings/advanced-settings": "Advanced Settings - eduID",
-    "/profile/chpass": "Change Password - eduID",
+    "/profile/": "Profile | eduID",
+    "/profile/verify-identity/": "Identity | eduID",
+    "/profile/settings/personaldata": "Settings | eduID",
+    "/profile/settings/advanced-settings": "Advanced Settings | eduID",
+    "/profile/chpass": "Change Password | eduID",
   };
 
   useEffect(() => (document.title = titles[location.pathname] ?? "eduID"), [location]);
