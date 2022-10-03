@@ -49,7 +49,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   );
 
   const explanationText = (
-    <>
+    <React.Fragment>
       {
         /* if user not added id number, text will help the user to add id number */
         withoutNin ? (
@@ -57,43 +57,30 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         ) : /* else if, without phone number text will help the user to add phone number and
             the text "setting" is linked to the setting page phone number section */
         withoutPhoneNumber ? (
-          <>
+          <React.Fragment>
             {translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSettings}
-          </>
+          </React.Fragment>
         ) : /* else if, unverified phone number, text will help the user to confirm phone number and
             the text "setting" is linked to the setting page phone number section */
         unverifiedNumber ? (
-          <>
+          <React.Fragment>
             {translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSettings}
-          </>
+          </React.Fragment>
         ) : /* else if, the verified phone number is not a Swedish number, description text show "only available with Swedish number" */
         nonSweNumber ? (
           translate("verify-identity.vetting_explanation_only_available_swe_number")
         ) : null
       }
-    </>
+    </React.Fragment>
   );
 
   return (
     <div key="0">
-      <AccordionItemTemplate
-        title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-        additionalInfo={
-          <FormattedMessage
-            defaultMessage="For you with phone number registered in your name"
-            description="explanation text for vetting phone"
-          />
-        }
-        uuid="se-phone"
-      >
-        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
-          {translate("verify-identity.vetting_phone_tagline")}
-          {explanationText}
-        </p>
-        <EduIDButton buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
-          Proceed
-        </EduIDButton>
-      </AccordionItemTemplate>
+      <p className="proofing-btn-help">{translate("verify-identity.vetting_phone_tagline")}</p>
+      <p>{explanationText}</p>
+      <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
 
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal

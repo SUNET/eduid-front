@@ -1,5 +1,5 @@
 import { eidasVerifyIdentity } from "apis/eduidEidas";
-import Eidas from "components/Eidas";
+import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
@@ -10,13 +10,13 @@ import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
+import NinDisplay from "./NinDisplay";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const identities = useDashboardAppSelector((state) => state.identities);
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
@@ -27,15 +27,6 @@ function VerifyIdentity(): JSX.Element | null {
      * Normally, the data is always loaded already when the user navigates to the Identity tab.
      */
     return null;
-  }
-
-  const preExpanded: accordionUUID[] = [];
-
-  if (!identities.is_verified) {
-    if (identities.nin) {
-      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-      preExpanded.push("swedish");
-    }
   }
 
   return (
@@ -49,18 +40,21 @@ function VerifyIdentity(): JSX.Element | null {
         </h1>
         <VerifyIdentityIntro />
       </div>
-
-      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-        <AccordionItemSwedish />
-        <AccordionItemEu />
-        <AccordionItemWorld />
-      </Accordion>
     </Fragment>
   );
 }
 
 function VerifyIdentityIntro(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
+
+  const preExpanded: accordionUUID[] = [];
+
+  if (!identities.is_verified) {
+    if (identities.nin) {
+      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+      preExpanded.push("swedish");
+    }
+  }
 
   if (identities.is_verified) {
     /* User has a verified identity. Show which one (or ones) it is.
@@ -104,6 +98,11 @@ function VerifyIdentityIntro(): JSX.Element {
           defaultMessage="Choose your principal identification method"
         />
       </h3>
+      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+        <AccordionItemSwedish />
+        <AccordionItemEu />
+        {/* <AccordionItemWorld /> */}
+      </Accordion>
     </React.Fragment>
   );
 }
@@ -111,43 +110,72 @@ function VerifyIdentityIntro(): JSX.Element {
 function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
   return (
-    <figure className="table-responsive identity-summary">
-      <table className="table">
-        <tbody>
-          {identities.nin?.verified && (
-            <tr className="border-row">
-              <td>
-                <CircleFlag countryCode="se" height="35" className="circle-icon" />
-              </td>
-              <td>
-                <strong>
-                  <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
-                </strong>
-              </td>
-              <td>
-                <AddNin />
-              </td>
-            </tr>
-          )}
+    <React.Fragment>
+      {identities.nin?.verified && (
+        <figure className="table-responsive identity-summary">
+          <table className="table">
+            <tbody>
+              <tr className="border-row">
+                <td>
+                  <CircleFlag countryCode="se" height="35" className="circle-icon" />
+                </td>
+                <td>
+                  <strong>
+                    <FormattedMessage
+                      defaultMessage="Swedish national identity number"
+                      description="Verified identity"
+                    />
+                  </strong>
+                </td>
+                <td>
+                  <NinDisplay nin={identities.nin} allowDelete={true} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      )}
 
-          {identities.eidas?.verified && (
-            <tr className="border-row">
-              <td>
-                <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
-              </td>
-              <td>
-                <strong>
-                  <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
-                </strong>
-              </td>
-              <td>
-                {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </figure>
+      {identities.eidas?.verified && (
+        <React.Fragment>
+          <figure className="table-responsive identity-summary">
+            <table className="table">
+              <tbody>
+                <tr className="border-row">
+                  <td>
+                    <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
+                  </td>
+                  <td>
+                    <strong>
+                      <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
+                    </strong>
+                  </td>
+                  <td>
+                    {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <h3>
+            <FormattedMessage
+              description="verify identity non verified description"
+              defaultMessage="Choose your principal identification method"
+            />
+          </h3>
+          <p>
+            <FormattedMessage
+              description="verify identity with swedish ID description"
+              defaultMessage="Due to your eduID is verified with a foreign id, it is possible to reverify your eduID with a Swedish national ID number."
+            />
+          </p>
+          <Accordion>
+            <AccordionItemSwedish />
+          </Accordion>
+        </React.Fragment>
+      )}
+    </React.Fragment>
   );
 }
 
@@ -155,10 +183,8 @@ function AccordionItemSwedish(): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
-
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
-  const disabled = false;
 
   // proofing via letter requires the user to have added a NIN first
   const letterProofingDisabled = !addedNin;
@@ -167,53 +193,78 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
-  const showStepTwo = Boolean(nin?.number) && !nin?.verified;
-
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
       title="Swedish personal ID number"
-      additionalInfo=""
+      additionalInfo="With a digital ID-card / By post / By phone"
       uuid="swedish"
     >
-      {nin?.verified ? (
-        <React.Fragment>
+      <ol className="listed-steps">
+        <li>
+          <h4>
+            <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+          </h4>
           <AddNin />
-        </React.Fragment>
-      ) : (
-        <ol className="listed-steps">
+        </li>
+        <React.Fragment>
           <li>
             <h4>
-              <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+              <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
             </h4>
-            <AddNin />
+            <p className="x-adjust">
+              <FormattedMessage
+                description="verify-identity.connect-nin_description"
+                defaultMessage={`Choose a method to verify that you have access to the added id number.
+                    If you are unable to use a method you need to try another.`}
+              />
+            </p>
           </li>
 
-          {showStepTwo && (
-            <React.Fragment>
-              <li>
-                <h4>
-                  <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-                </h4>
-                <p className="x-adjust">
-                  <FormattedMessage
-                    description="verify-identity.connect-nin_description"
-                    defaultMessage={`Choose a method to verify that you have access to the added id number.
-          If you are unable to use a method you need to try another.`}
-                  />
-                </p>
-              </li>
-
-              {/* Fixa bättre sätt att lägga till modifierande accordion klass.. samt aktiv item klass! */}
-              <Accordion allowZeroExpanded className="accordion accordion-nested x-adjust">
-                <Eidas />
-                <LetterProofing disabled={letterProofingDisabled} />
-                <LookupMobileProofing disabled={lookupMobileDisabled} />
-              </Accordion>
-            </React.Fragment>
-          )}
-        </ol>
-      )}
+          <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+            <AccordionItemTemplate
+              title={
+                <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
+              }
+              additionalInfo={
+                <FormattedMessage
+                  description="verify identity vetting freja tagline"
+                  defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+                />
+              }
+              uuid="se-freja"
+            >
+              <FrejaeID />
+            </AccordionItemTemplate>
+            <AccordionItemTemplate
+              title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+              additionalInfo={
+                <FormattedMessage
+                  defaultMessage="For you registered at your current address"
+                  description="explanation text for letter proofing"
+                />
+              }
+              uuid="se-letter"
+              disabled={letterProofingDisabled}
+            >
+              <LetterProofing disabled={letterProofingDisabled} />
+            </AccordionItemTemplate>
+            <AccordionItemTemplate
+              title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+              additionalInfo={
+                <FormattedMessage
+                  defaultMessage="For you with phone number registered in your name"
+                  description="explanation text for vetting phone"
+                />
+              }
+              uuid="se-phone"
+              disabled={lookupMobileDisabled}
+            >
+              <LookupMobileProofing disabled={lookupMobileDisabled} />
+            </AccordionItemTemplate>
+          </Accordion>
+        </React.Fragment>
+      </ol>
     </AccordionItemTemplate>
   );
 }
@@ -252,26 +303,25 @@ function AccordionItemEu(): JSX.Element | null {
         />
       </p>
       <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
-        Proceed
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
   );
 }
 
-function AccordionItemWorld(): JSX.Element | null {
-  return (
-    <AccordionItemTemplate
-      icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
-      title="All other countries"
-      additionalInfo="Svipe ID"
-      uuid="world"
-    >
-      <p>
-        Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti quam
-        sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos dolor ut sequi minus iste? Quas?
-      </p>
-    </AccordionItemTemplate>
-  );
-}
+// TODO: Svipe
+// function AccordionItemWorld(): JSX.Element | null {
+//   return (
+//     <AccordionItemTemplate
+//       icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
+//       title="All other countries"
+//       additionalInfo="Svipe ID"
+//       uuid="world"
+//     >
+//       <p>
+//       </p>
+//     </AccordionItemTemplate>
+//   );
+// }
 
 export default VerifyIdentity;

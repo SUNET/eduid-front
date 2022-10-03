@@ -1,103 +1,55 @@
-import { DashboardRootState } from "dashboard-init-app";
-import { ReactWrapper } from "enzyme";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import { MockStoreEnhanced } from "redux-mock-store";
-import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { act } from "react-dom/test-utils";
 
-describe("LookupMobile component", () => {
-  let store: MockStoreEnhanced<DashboardRootState>;
-
-  beforeEach(() => {
-    // re-init store and state before each test to get isolation
-    store = fakeStore({
-      ...dashboardTestState,
-      config: { ...dashboardTestState.config, lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
-    });
+test("renders LookupMobileProofing without ID number", () => {
+  render(<LookupMobileProofing disabled={true} />, {
+    state: {
+      identities: { is_verified: false },
+    },
   });
+  const button = screen.getByRole("button", { name: /proceed/i });
+  expect(button).toBeDisabled();
+  expect(screen.getByText(/start by adding your ID number/i)).toBeInTheDocument();
+});
 
-  function getWrapper(overrides?: Partial<DashboardRootState>): ReactWrapper {
-    if (!overrides) {
-      return setupComponent({
-        component: <LookupMobileProofing disabled={false} />,
-        store,
-        overrides,
-      });
-    }
-    return setupComponent({
-      component: <LookupMobileProofing disabled={false} />,
-      overrides,
-    });
-  }
-
-  it("Renders button text", () => {
-    const wrapper = getWrapper();
-    const button = wrapper.find("button");
-    expect(button.exists()).toEqual(true);
-    expect(button.text()).toContain("by phone");
-  });
-
-  it("Renders a vetting button", () => {
-    const wrapper = getWrapper();
-    const button = wrapper.find("button");
-    expect(button.exists()).toEqual(true);
-  });
-
-  it("Renders button text, add ID number to verify phone", () => {
-    const wrapper = getWrapper();
-    const explanation = wrapper.find("div.explanation-link");
-    expect(explanation.exists()).toEqual(true);
-    expect(explanation.text()).toContain("ID number");
-
-    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
-     * button gives an error message it should not be disabled here */
-    const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeFalsy();
-  });
-
-  it("Renders button text, the phone number is added", () => {
-    const wrapper = getWrapper({
+test("renders LookupMobileProofing without phone number", () => {
+  render(<LookupMobileProofing disabled={true} />, {
+    state: {
       identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
-      phones: { phones: [{ number: "+46700011555", verified: false, primary: true }] },
-    });
-
-    const explanation = wrapper.find("div.explanation-link");
-    const confirmPhone = explanation.at(0);
-    expect(confirmPhone.exists()).toEqual(true);
-    expect(confirmPhone.text()).toContain("Confirm");
-
-    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
-     * button gives an error message it should not be disabled here */
-    const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeFalsy();
+    },
   });
+  const button = screen.getByRole("button", { name: /proceed/i });
+  expect(button).toBeDisabled();
+  expect(screen.getByText(/start by adding your phone number/i)).toBeInTheDocument();
+});
 
-  it("Renders button text, if the phone number is non swedish", () => {
-    const wrapper = getWrapper({
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
-      phones: { phones: [{ number: "+36700011555", verified: true, primary: true }] },
-    });
-
-    const explanation = wrapper.find("div.explanation-link");
-    expect(explanation.exists()).toEqual(true);
-    expect(explanation.text()).toContain("Swedish");
-
-    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
-     * button gives an error message it should not be disabled here */
-    const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeFalsy();
-  });
-
-  it("Renders button text, when verified swedish phone", () => {
-    const wrapper = getWrapper({
+test("renders Confirmation Modal, enabled to click modal button", async () => {
+  render(<LookupMobileProofing disabled={false} />, {
+    state: {
       identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
       phones: { phones: [{ number: "+46700011555", verified: true, primary: true }] },
-    });
-
-    const explanation = wrapper.find("div.explanation-link");
-    expect(explanation.exists()).toEqual(true);
-    expect(explanation.text()).toContain("");
-
-    const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeFalsy();
+    },
   });
+  const button = screen.getByRole("button", { name: /proceed/i });
+  expect(button).toBeEnabled();
+  act(() => {
+    button.click();
+  });
+  await waitFor(() => {
+    expect(screen.getByText(/phone number is connected to your id number/i)).toBeInTheDocument();
+  });
+
+  const modalConfirmButton = screen.getByRole("button", { name: /Accept/i });
+  expect(modalConfirmButton).toBeEnabled();
+});
+
+test("renders button text, confirm phone number to verify phone", async () => {
+  render(<LookupMobileProofing disabled={false} />, {
+    state: {
+      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      phones: { phones: [{ number: "+46700011555", verified: false, primary: false }] },
+    },
+  });
+  expect(screen.getByText(/Confirm your phone number/i)).toBeInTheDocument();
 });
