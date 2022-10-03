@@ -22,7 +22,7 @@ export interface ResponseCodeValues {
 export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
   const valueChars = (props.code || "").split("");
   const initialValues: ResponseCodeValues = {
-    v: ["S", "K", valueChars[0], valueChars[1], valueChars[2], "-", valueChars[3], valueChars[4], valueChars[5]],
+    v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
   };
 
   return (
@@ -75,12 +75,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form" id="response-code-form">
       <div className="response-code-inputs">
-        <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={0} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={1} disabled={props.inputsDisabled} />
+        <CodeField num={2} disabled={props.inputsDisabled} />
         <CodeField num={3} disabled={props.inputsDisabled} />
         <CodeField num={4} disabled={props.inputsDisabled} />
-        <CodeField num={6} disabled={props.inputsDisabled} />
-        <CodeField num={7} disabled={props.inputsDisabled} />
-        <CodeField num={8} disabled={props.inputsDisabled} />
+        <CodeField num={5} disabled={props.inputsDisabled} />
       </div>
 
       {showBadAttempts && (

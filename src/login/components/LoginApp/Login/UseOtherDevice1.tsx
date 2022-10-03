@@ -135,10 +135,10 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
-    const match = code.match(/^SK(\d\d\d)-(\d\d\d)$/);
-    if (match?.length == 3) {
-      // match[0] is whole matched string, [1] and [2] are the groups of digits
-      const digits = match[1] + match[2];
+    const match = code.match(/^(\d\d\d\d\d\d)$/);
+    if (match?.length == 1) {
+      // match[0] is whole matched string, [1], [2], ... are the groups
+      const digits = match[0];
       if (login_ref) {
         dispatch(
           fetchUseOtherDevice1({
