@@ -8,7 +8,6 @@ import { isValid } from "redux-form";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import AccordionItemTemplate from "./AccordionItemTemplate";
 import EduIDButton from "./EduIDButton";
 
 export interface LetterProofingProps {
