@@ -24,7 +24,7 @@ test("renders LookupMobileProofing without phone number", () => {
   expect(screen.getByText(/start by adding your phone number/i)).toBeInTheDocument();
 });
 
-test("renders Confirmation Modal, enabled to click modal button", async () => {
+test("renders Confirmation Modal, enabled to click proceed button", async () => {
   render(<LookupMobileProofing disabled={false} />, {
     state: {
       identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
@@ -44,7 +44,7 @@ test("renders Confirmation Modal, enabled to click modal button", async () => {
   expect(modalConfirmButton).toBeEnabled();
 });
 
-test("renders button text, confirm phone number to verify phone", async () => {
+test("renders button text, confirm phone number to verify by phone", async () => {
   render(<LookupMobileProofing disabled={false} />, {
     state: {
       identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
