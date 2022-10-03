@@ -29,13 +29,21 @@ export function SignupApp(): JSX.Element {
     }
   }
 
+  useEffect(() => {
+    if (email && signupState?.captcha_completed && !signupState?.email_verification.email) {
+      // CAPTCHA was completed earlier, but the previous email address was rejected. Try again with this email.
+      dispatch(registerEmailRequest({ email }));
+    }
+  }, [email]);
+
   //else if (email && signupState?.captcha_completed && !signupState?.email_verification.sent_at) {
 
   useEffect(() => {
     dispatch(fetchState());
   }, []);
 
-  if (!email && !signupState?.email_verification.email) {
+  //if (!email && !signupState?.email_verification.email) {
+  if (!signupState?.email_verification.email) {
     currentStep = "email";
   } else if (!signupState?.captcha_completed) {
     currentStep = "captcha";

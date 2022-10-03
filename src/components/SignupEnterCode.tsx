@@ -25,16 +25,15 @@ export default function SignupEnterCode(): JSX.Element {
 
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
-    const match = code.match(/^SK(\d\d\d)-(\d\d\d)$/);
-    if (match?.length == 3) {
-      // match[0] is whole matched string, [1] and [2] are the groups of digits
-      const digits = match[1] + match[2];
+
+    const match = code.match(/^(\d\d\d\d\d\d)$/);
+    if (match?.length == 1) {
+      // match[0] is whole matched string, [1], [2], ... are the groups
+      const digits = match[0];
     }
 
-    return undefined;
-  }
+    console.log("handleSubmitCode", code);
 
-  function handleContinueWithoutCode() {
     return undefined;
   }
 
@@ -54,16 +53,12 @@ export default function SignupEnterCode(): JSX.Element {
           ),
         }}
       />
-      <div className="expiration-info">
+      <div className="enter-code">
         <ResponseCodeForm
-          codeRequired={true}
-          extra_className="enter-code"
-          submitDisabled={false}
           inputsDisabled={false}
-          handleLogin={handleLoginButtonOnClick}
-          handleAbort={handleAbortButtonOnClick}
+          //   handleLogin={handleLoginButtonOnClick}
+          //   handleAbort={handleAbortButtonOnClick}
           handleSubmitCode={handleSubmitCode}
-          handleContinueWithoutCode={handleContinueWithoutCode}
         />
 
         <TimeRemainingWrapper
