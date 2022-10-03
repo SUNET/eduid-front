@@ -84,3 +84,37 @@ h3 {
     font-size: 0.8rem;
   }
 }
+
+.enter-code {
+  // TODO: This is a duplicate of the same things from Other Device
+  .response-code-inputs {
+    input {
+      display: inline-block;
+      border: 1px solid $txt-gray;
+      font-size: 1.75rem;
+      margin: 5px;
+      width: 2.5rem;
+      text-align: center;
+
+      &:focus {
+        box-shadow: none;
+        border: 2px solid $txt-black;
+        position: relative;
+      }
+
+      &:nth-child(3) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media (max-width: $bp-md) {
+      input {
+        margin: 5px -1px 5px 0;
+
+        &:nth-child(3) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
