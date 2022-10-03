@@ -1,18 +1,13 @@
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "../../../../components/EduIDButton";
 
 interface ResponseCodeFormProps {
-  codeRequired?: boolean;
-  extra_className: string;
-  submitDisabled: boolean;
-  inputsDisabled: boolean;
+  bad_attempts?: number;
+  children?: React.ReactNode;
   code?: string;
+  inputsDisabled: boolean;
   handleSubmitCode: (values: ResponseCodeValues) => undefined;
-  handleAbort?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  handleLogin?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  handleContinueWithoutCode?: () => void;
 }
 
 export interface ResponseCodeValues {
@@ -26,51 +21,32 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
   };
 
   return (
-    <React.Fragment>
-      <div className={props.extra_className}>
-        {props.codeRequired ? (
-          <FinalForm<ResponseCodeValues>
-            onSubmit={props.handleSubmitCode}
-            initialValues={initialValues}
-            render={(formProps) => {
-              return (
-                <ShortCodeForm
-                  {...formProps}
-                  {...props}
-                  handleAbort={props.handleAbort}
-                  handleLogin={props.handleLogin}
-                />
-              );
-            }}
-          />
-        ) : (
-          <div className="buttons">
-            <EduIDButton
-              buttonstyle="secondary"
-              type="submit"
-              onClick={props.handleAbort}
-              id="response-code-cancel-button"
-            >
-              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </EduIDButton>
-            <EduIDButton
-              type="submit"
-              buttonstyle="primary"
-              onClick={props.handleContinueWithoutCode}
-              id="response-code-continue-button"
-            >
-              <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
-            </EduIDButton>
-          </div>
-        )}
-      </div>
-    </React.Fragment>
+    <FinalForm<ResponseCodeValues>
+      onSubmit={props.handleSubmitCode}
+      initialValues={initialValues}
+      render={(formProps) => {
+        // Add the formProps to all the children of this component. The children are typically buttons,
+        // and they need to know some of the formProps to know if they should be disabled or not.
+        const childrenWithProps = React.Children.map(props.children, (child) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, { formProps });
+          }
+          return child;
+        });
+
+        return (
+          <React.Fragment>
+            <ShortCodeForm {...formProps} {...props} />
+            {childrenWithProps}
+          </React.Fragment>
+        );
+      }}
+    />
   );
 }
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  const bad_attempts = useAppSelector((state) => state.login.other_device1?.bad_attempts);
-  const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
+  const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
 
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form" id="response-code-form">
@@ -86,39 +62,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       {showBadAttempts && (
         <div>
           <span className="input-validate-error" id="wrong-code-error">
-            <FormattedMessage defaultMessage="Incorrect code, try again" description="Other Device, device 1" />
+            <FormattedMessage defaultMessage="Incorrect code, try again" description="Short code form" />
           </span>
         </div>
       )}
 
       {props.error && <p>{props.error}</p>}
-
-      {props.handleAbort || props.handleLogin ? (
-        <div className={`buttons ${props.extra_className}`}>
-          {props.handleAbort && (
-            <EduIDButton
-              type="submit"
-              buttonstyle="secondary"
-              onClick={props.handleAbort}
-              id="response-code-abort-button"
-              disabled={props.submitting}
-            >
-              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </EduIDButton>
-          )}
-          {props.handleLogin && (
-            <EduIDButton
-              type="submit"
-              onClick={props.handleLogin}
-              id="response-code-submit-button"
-              buttonstyle="primary"
-              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
-            >
-              <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </EduIDButton>
-          )}
-        </div>
-      ) : null}
     </form>
   );
 }
@@ -134,6 +83,7 @@ interface CodeFieldProps {
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
   const form = useForm();
 
+  /* Advance to the next input field on (valid) key press, and handle back/forward/delete keys */
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
     const ResponseCodeForm = event.currentTarget.form;
