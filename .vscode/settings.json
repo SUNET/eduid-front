@@ -55,11 +55,13 @@
     "tapit",
     "testid",
     "trycaptcha",
+    "Typegen",
     "urldecode",
     "urlencode",
     "Userdata",
     "USERNAMEPASSWORD",
     "webauthn",
+    "xstate",
     "zxcvbn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
