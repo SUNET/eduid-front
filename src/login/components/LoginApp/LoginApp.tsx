@@ -4,14 +4,23 @@ import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import ResetPassword from "./ResetPassword/ResetPassword";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useIntl } from "react-intl";
 
 function LoginApp(): JSX.Element {
   const location = useLocation();
+  const intl = useIntl();
 
   useEffect(() => {
-    if (location.pathname.includes("/login/")) document.title = "Log in | eduID";
+    if (location.pathname.includes("/login/"))
+      document.title = intl.formatMessage({
+        id: "document title Log in",
+        defaultMessage: "Log in | eduID",
+      });
     else if (location.pathname.includes("/reset-password/")) {
-      document.title = "Reset Password | eduID";
+      document.title = intl.formatMessage({
+        id: "document title Reset Password",
+        defaultMessage: "Reset Password | eduID",
+      });
     } else document.title = "eduID";
   }, [location]);
 

@@ -12,6 +12,7 @@ import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
 import { useLocation } from "react-router-dom";
+import { useIntl } from "react-intl";
 
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
@@ -25,15 +26,35 @@ export function DashboardMain() {
     email = "";
   }
 
-  const titles: any = {
-    "/profile/": "Profile | eduID",
-    "/profile/verify-identity/": "Identity | eduID",
-    "/profile/settings/personaldata": "Settings | eduID",
-    "/profile/settings/advanced-settings": "Advanced Settings | eduID",
-    "/profile/chpass": "Change Password | eduID",
-  };
+  const intl = useIntl();
 
-  useEffect(() => (document.title = titles[location.pathname] ?? "eduID"), [location]);
+  useEffect(() => {
+    if (location.pathname.includes("/profile/verify-identity/"))
+      document.title = intl.formatMessage({
+        id: "document title Identity",
+        defaultMessage: "Identity | eduID",
+      });
+    else if (location.pathname.includes("profile/settings/personaldata")) {
+      document.title = intl.formatMessage({
+        id: "document title Settings",
+        defaultMessage: "Settings | eduID",
+      });
+    } else if (location.pathname.includes("/profile/settings/advanced-settings")) {
+      document.title = intl.formatMessage({
+        id: "document title Advanced Settings",
+        defaultMessage: "Advanced Settings | eduID",
+      });
+    } else if (location.pathname.includes("profile/chpass")) {
+      document.title = intl.formatMessage({
+        id: "document title Change Password",
+        defaultMessage: "Change Password | eduID",
+      });
+    } else
+      document.title = intl.formatMessage({
+        id: "document title Profile",
+        defaultMessage: "Profile | eduID",
+      });
+  }, [location]);
 
   return (
     <React.StrictMode>
