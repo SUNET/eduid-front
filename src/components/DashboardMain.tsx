@@ -29,31 +29,38 @@ export function DashboardMain() {
   const intl = useIntl();
 
   useEffect(() => {
-    if (location.pathname.includes("/profile/verify-identity/"))
-      document.title = intl.formatMessage({
-        id: "document title Identity",
-        defaultMessage: "Identity | eduID",
-      });
-    else if (location.pathname.includes("profile/settings/personaldata")) {
-      document.title = intl.formatMessage({
-        id: "document title Settings",
-        defaultMessage: "Settings | eduID",
-      });
-    } else if (location.pathname.includes("/profile/settings/advanced-settings")) {
-      document.title = intl.formatMessage({
-        id: "document title Advanced Settings",
-        defaultMessage: "Advanced Settings | eduID",
-      });
-    } else if (location.pathname.includes("profile/chpass")) {
-      document.title = intl.formatMessage({
-        id: "document title Change Password",
-        defaultMessage: "Change Password | eduID",
-      });
-    } else
-      document.title = intl.formatMessage({
-        id: "document title Profile",
-        defaultMessage: "Profile | eduID",
-      });
+    switch (location.pathname) {
+      case "/profile/verify-identity/":
+        document.title = intl.formatMessage({
+          id: "document title Identity",
+          defaultMessage: "Identity | eduID",
+        });
+        break;
+      case "profile/settings/personaldata":
+        document.title = intl.formatMessage({
+          id: "document title Settings",
+          defaultMessage: "Settings | eduID",
+        });
+        break;
+      case "/profile/settings/advanced-settings":
+        document.title = intl.formatMessage({
+          id: "document title Advanced Settings",
+          defaultMessage: "Advanced Settings | eduID",
+        });
+        break;
+      case "/profile/chpass":
+        document.title = intl.formatMessage({
+          id: "document title Change Password",
+          defaultMessage: "Change Password | eduID",
+        });
+        break;
+      default:
+        document.title = intl.formatMessage({
+          id: "document title Profile",
+          defaultMessage: "Profile | eduID",
+        });
+        break;
+    }
   }, [location]);
 
   return (
