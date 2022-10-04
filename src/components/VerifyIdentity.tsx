@@ -196,8 +196,15 @@ function AccordionItemSwedish(): JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
-      title="Swedish personal ID number"
-      additionalInfo="With a digital ID-card / By post / By phone"
+      title={
+        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
+      }
+      additionalInfo={
+        <FormattedMessage
+          description="accordion item swedish additional info"
+          defaultMessage="With a digital ID-card / By post / By phone"
+        />
+      }
       uuid="swedish"
     >
       <ol className="listed-steps">
@@ -284,8 +291,8 @@ function AccordionItemEu(): JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="european_union" height="35" className="circle-icon" />}
-      title="EU citizen"
-      additionalInfo="eIDAS"
+      title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
+      additionalInfo={<FormattedMessage description="accordion item eidas additional info" defaultMessage="eIDAS" />}
       uuid="eu"
     >
       <p>
