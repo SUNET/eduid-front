@@ -117,9 +117,9 @@
     }
   }
 
-  &:not(#{$a}-nested) > .expanded + #{$a}__item {
-    border-top: 2px solid $txt-gray;
-  }
+  // &:not(#{$a}-nested) > .expanded + #{$a}__item {
+  //   border-top: 2px solid #c4c4c4;
+  // }
 
   form {
     margin-top: 0;
@@ -133,19 +133,19 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $bright-orange;
+      border: 2px solid $border-gray;
       border-radius: 6px;
       overflow: hidden;
 
-      &.expanded {
-        border-color: $txt-black;
-      }
+      // &.expanded {
+      //   border-color: #c4c4c4;
+      // }
 
       &:hover {
         border-color: $bright-orange;
 
         &.expanded {
-          border-color: $txt-gray;
+          border-color: $border-gray;
         }
       }
 
@@ -156,9 +156,6 @@
       // Clickable
       #{$a}__heading {
         #{$a}__button {
-          //color: $txt-black;
-          //background: transparent;
-
           &:hover {
             color: $white;
             background: $btn-orange;
@@ -186,6 +183,19 @@
       &.disabled:hover,
       &.expanded.disabled {
         border-color: $border-gray;
+      }
+      &.disabled,
+      &.disabled:hover {
+        #{$a}__button,
+        #{$a}__button:hover {
+          background-color: $white !important;
+        }
+      }
+      &.expanded.disabled {
+        #{$a}__button,
+        #{$a}__button:hover {
+          background-color: $bg-gray !important;
+        }
       }
     }
   }

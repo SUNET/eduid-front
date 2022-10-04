@@ -44,6 +44,17 @@ button.btn-primary:not(:disabled):not(.disabled):hover {
   min-width: 100px;
   //min-width: min-content;
   padding: 0 1.125rem;
+
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+    min-width: fit-content;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
 }
 
 button.btn-secondary,
