@@ -1,66 +1,28 @@
-import { fetchState, registerEmailRequest, sendCaptchaResponse } from "apis/eduidSignup";
+import { useActor } from "@xstate/react";
+import { fetchState } from "apis/eduidSignup";
+import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import SignupEmailForm from "login/components/RegisterEmail/SignupEmailForm";
-import { useEffect } from "react";
-import { signupSlice } from "reducers/Signup";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import Captcha from "./Captcha";
+import { useContext, useEffect } from "react";
+import { useSignupAppDispatch } from "signup-hooks";
+import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import SignupEnterCode from "./SignupEnterCode";
 
-type currentSteps = "captcha" | "email" | "enter-code" | "tou" | "credentials" | "create";
-
 export function SignupApp(): JSX.Element {
-  const email = useSignupAppSelector((state) => state.signup.email);
-  const signupState = useSignupAppSelector((state) => state.signup.state);
   const dispatch = useSignupAppDispatch();
-  let currentStep: currentSteps | undefined = undefined;
-
-  function handleCaptchaCancel() {
-    dispatch(signupSlice.actions.setEmail(undefined));
-  }
-
-  async function handleCaptchaCompleted(recaptcha_response: string) {
-    if (recaptcha_response) {
-      const res = await dispatch(sendCaptchaResponse({ recaptcha_response }));
-      if (sendCaptchaResponse.fulfilled.match(res)) {
-        if (email) {
-          dispatch(registerEmailRequest({ email }));
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (email && signupState?.captcha_completed && !signupState?.email_verification.email) {
-      // CAPTCHA was completed earlier, but the previous email address was rejected. Try again with this email.
-      dispatch(registerEmailRequest({ email }));
-    }
-  }, [email]);
-
-  //else if (email && signupState?.captcha_completed && !signupState?.email_verification.sent_at) {
+  const signupContext = useContext(SignupGlobalStateContext);
+  const [state] = useActor(signupContext.signupService);
 
   useEffect(() => {
     dispatch(fetchState());
   }, []);
 
-  //if (!email && !signupState?.email_verification.email) {
-  if (!signupState?.email_verification.email) {
-    currentStep = "email";
-  } else if (!signupState?.captcha_completed) {
-    currentStep = "captcha";
-  } else if (signupState?.email_verification.sent_at && !signupState?.email_verification.verified) {
-    currentStep = "enter-code";
-  } else if (!signupState?.tou_accepted) {
-    // show tou
-  }
-
   return (
     <div id="content" className="horizontal-content-margin content">
-      <h1>{currentStep}</h1>
-      {currentStep === "email" && <SignupEmailForm />}
-      {currentStep === "captcha" && (
-        <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />
-      )}
-      {currentStep === "enter-code" && <SignupEnterCode />}
+      <h1>DEBUGGING: Machine state: {state.value}</h1>
+      {state.matches("SignupEmailForm") && <SignupEmailForm />}
+      {state.matches("SignupCaptcha") && <SignupCaptcha />}
+      {state.matches("ProcessCaptcha") && <ProcessCaptcha />}
+      {state.matches("SignupEnterCode") && <SignupEnterCode />}
     </div>
   );
 }

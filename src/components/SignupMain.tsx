@@ -7,6 +7,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import "../login/styles/index.scss";
 import CodeVerified from "./CodeVerified";
+import { SignupGlobalStateProvider } from "./Signup/SignupGlobalState";
 import { SignupApp } from "./SignupApp";
 
 // export for use in tests
@@ -23,11 +24,13 @@ export function SignupMain(): JSX.Element {
       <section id="panel" className="panel">
         <NotificationsContainer />
         <Splash showChildren={isLoaded}>
-          <Routes>
-            <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-            <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
-            <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-          </Routes>
+          <SignupGlobalStateProvider>
+            <Routes>
+              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+            </Routes>
+          </SignupGlobalStateProvider>
         </Splash>
       </section>
       <Footer />

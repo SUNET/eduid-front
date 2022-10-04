@@ -1,5 +1,6 @@
 import EduIDButton from "components/EduIDButton";
-import { Fragment } from "react";
+import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { Fragment, useContext } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "reducers/Signup";
@@ -46,12 +47,14 @@ interface EmailFormData {
 /* FORM */
 function EmailForm() {
   const dispatch = useSignupAppDispatch();
+  const signupContext = useContext(SignupGlobalStateContext);
 
   function submitEmailForm(values: EmailFormData) {
     const errors: EmailFormData = {};
 
     if (values.email) {
       dispatch(signupSlice.actions.setEmail(values.email));
+      signupContext.signupService.send({ type: "EMAIL_COMPLETE" });
     } else {
       errors.email = "required";
     }
