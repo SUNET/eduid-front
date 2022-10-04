@@ -17,7 +17,6 @@ test("shows splash screen when not configured", () => {
 
 test("renders Profile page as expected", () => {
   render(<DashboardMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: true } },
     routes: ["/profile/"],
   });
 

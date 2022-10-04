@@ -6,6 +6,10 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
+import EduIDButton from "components/EduIDButton";
+import AccordionItemTemplate from "components/AccordionItemTemplate";
+// import AccordionItemTemplate from "./AccordionItemTemplate";
+// import EduIDButton from "./EduIDButton";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
@@ -45,7 +49,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   );
 
   const explanationText = (
-    <div className="explanation-link">
+    <React.Fragment>
       {
         /* if user not added id number, text will help the user to add id number */
         withoutNin ? (
@@ -53,45 +57,31 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         ) : /* else if, without phone number text will help the user to add phone number and
             the text "setting" is linked to the setting page phone number section */
         withoutPhoneNumber ? (
-          <>
-            {" "}
+          <React.Fragment>
             {translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSettings}
-          </>
+          </React.Fragment>
         ) : /* else if, unverified phone number, text will help the user to confirm phone number and
             the text "setting" is linked to the setting page phone number section */
         unverifiedNumber ? (
-          <>
-            {" "}
+          <React.Fragment>
             {translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSettings}
-          </>
+          </React.Fragment>
         ) : /* else if, the verified phone number is not a Swedish number, description text show "only available with Swedish number" */
         nonSweNumber ? (
           translate("verify-identity.vetting_explanation_only_available_swe_number")
         ) : null
       }
-    </div>
+    </React.Fragment>
   );
 
   return (
     <div key="0">
-      <div key="0" className="vetting-button">
-        <button disabled={props.disabled} onClick={handleShowModal}>
-          <div key="1" className="text">
-            {translate("verify-identity.vetting_phone_tagline")}
-            {explanationText}
-          </div>
-          <div key="2" className="name">
-            {translate("lmp.button_text_request")}
-          </div>
-        </button>
-        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
-          <FormattedMessage
-            description="lmp initialize proofing help text"
-            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not
-            include all registered phone numbers.`}
-          />
-        </p>
-      </div>
+      <p className="proofing-btn-help">{translate("verify-identity.vetting_phone_tagline")}</p>
+      <p>{explanationText}</p>
+      <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
+
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal
         id="mobile-confirm-modal"

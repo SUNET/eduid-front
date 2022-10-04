@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector } from "dashboard-hooks";
+import AccordionItemTemplate from "./AccordionItemTemplate";
+import EduIDButton from "./EduIDButton";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -66,40 +68,26 @@ function Eidas(): JSX.Element {
   }
 
   return (
-    <React.Fragment>
-      <div className="vetting-button">
-        <button
-          id="eidas-show-modal"
-          onClick={() => {
-            setShowModal(true);
-          }}
-        >
-          <div className="text">
-            <FormattedMessage
-              description="verify identity vetting freja tagline"
-              defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
-            />
-          </div>
-
-          <div className="name">
-            <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
-          </div>
-        </button>
-        <p className="proofing-btn-help">
-          <FormattedMessage
-            description="eidas proofing help text"
-            defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+    <>
+      <p className="proofing-btn-help">
+        <FormattedMessage
+          description="eidas proofing help text"
+          defaultMessage={`To use this option you will need to first create a digital ID-card in the 
             {freja_eid_link} app.`}
-            values={{
-              freja_eid_link: (
-                <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-                  Freja eID+
-                </a>
-              ),
-            }}
-          />
-        </p>
-      </div>
+          values={{
+            freja_eid_link: (
+              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+                Freja eID+
+              </a>
+            ),
+          }}
+        />
+      </p>
+
+      <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
+
       <NotificationModal
         id="eidas-info-modal"
         title={
@@ -116,7 +104,7 @@ function Eidas(): JSX.Element {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </React.Fragment>
+    </>
   );
 }
 
