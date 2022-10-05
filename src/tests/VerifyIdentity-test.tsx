@@ -54,5 +54,7 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   ).toBeInTheDocument();
   expect(screen.getByText(/19850101/i)).toBeInTheDocument();
   // after eidas verification, still showing swedish identification options
-  expect(screen.getByText("Freja eID+").closest("a")).toHaveAttribute("href", "https://frejaeid.com/skaffa-freja-eid/");
+  expect(
+    screen.getByRole("button", { name: "se Swedish personal ID number With a digital ID-card / By post / By phone ❯" })
+  ).toBeInTheDocument();
 });
