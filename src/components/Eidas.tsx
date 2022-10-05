@@ -52,7 +52,7 @@ function Eidas(): JSX.Element {
         <li>
           <FormattedMessage
             description="eidas freja instructions step5"
-            defaultMessage={`Freja eID is now ready to be used with your eduID`}
+            defaultMessage={`Freja eID is now ready to be used with your eduID, proceed by clicking the button below `}
           />
         </li>
       </ol>

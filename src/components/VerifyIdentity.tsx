@@ -88,7 +88,7 @@ function VerifyIdentityIntro(): JSX.Element {
           <FormattedMessage
             description="verify identity unverified description"
             defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most out of it.`}
+            to get the most benefit from `}
           />
         </p>
       </div>
@@ -222,8 +222,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             <p className="x-adjust">
               <FormattedMessage
                 description="verify-identity.connect-nin_description"
-                defaultMessage={`Choose a method to verify that you have access to the added id number.
-                    If you are unable to use a method you need to try another.`}
+                defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
               />
             </p>
           </li>
@@ -260,7 +259,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
               additionalInfo={
                 <FormattedMessage
-                  defaultMessage="For you with phone number registered in your name"
+                  defaultMessage="For you with a phone number registered in your name"
                   description="explanation text for vetting phone"
                 />
               }
@@ -292,7 +291,12 @@ function AccordionItemEu(): JSX.Element | null {
     <AccordionItemTemplate
       icon={<CircleFlag countryCode="european_union" height="35" className="circle-icon" />}
       title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
-      additionalInfo={<FormattedMessage description="accordion item eidas additional info" defaultMessage="eIDAS" />}
+      additionalInfo={
+        <FormattedMessage
+          description="accordion item eidas additional info"
+          defaultMessage="With eIDAS electronic identification"
+        />
+      }
       uuid="eu"
     >
       <p>

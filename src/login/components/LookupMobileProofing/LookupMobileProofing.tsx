@@ -94,8 +94,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         mainText={
           <FormattedMessage
             defaultMessage={`This check will be done in a registry updated by the phone operators.
-            If they have not added your details, we won't be able to find you and you need to choose another way
-            to verify your identity.`}
+            If it doesn't find your details you need to choose another way to verify your identity.`}
             description="lmp.confirm_info"
           />
         }

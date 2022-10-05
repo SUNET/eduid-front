@@ -77,7 +77,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     description = (
       <p className="description">
         <FormattedMessage
-          defaultMessage="Start by adding your ID number above"
+          defaultMessage="Start by adding your ID number above."
           description="explanation text for letter proofing"
         />
       </p>
@@ -116,7 +116,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
           </p>
           <p className="description">
             <FormattedMessage
-              defaultMessage="Click here again when you have received the letter"
+              defaultMessage="When you have received the letter, proceed by clicking the button below."
               description="explanation text for letter proofing"
             />
           </p>
@@ -138,7 +138,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
       <p className="proofing-btn-help">
         <FormattedMessage
           description="letter initialize proofing help text"
-          defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
+          defaultMessage={`You will receive a letter which contains a code that for security reasons expires in two weeks.`}
         />
       </p>
 
@@ -152,7 +152,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         id="letter-confirm-modal"
         title={
           <FormattedMessage
-            defaultMessage="Use a confirmation code sent by post to your house"
+            defaultMessage="Use a confirmation code sent by post to your address"
             description="explanation text for letter proofing"
           />
         }
