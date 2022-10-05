@@ -28,7 +28,9 @@ test("renders LetterProofing, after sent letter enabled proceed button to enter 
   });
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeEnabled();
-  expect(screen.getByText(/Click here again when you have received the letter/i)).toBeInTheDocument();
+  expect(
+    screen.getByText(/When you have received the letter, proceed by clicking the button below./i)
+  ).toBeInTheDocument();
 });
 
 test("renders LetterProofing, expired letter enabled to resend letter", async () => {
@@ -51,7 +53,7 @@ test("renders LetterProofing, expired letter enabled to resend letter", async ()
     button.click();
   });
   await waitFor(() => {
-    expect(screen.getByText(/use a confirmation code sent by post to your house/i)).toBeInTheDocument();
+    expect(screen.getByText(/Use a confirmation code sent by post to your address/i)).toBeInTheDocument();
   });
 
   const modalConfirmButton = screen.getByRole("button", { name: /Accept/i });

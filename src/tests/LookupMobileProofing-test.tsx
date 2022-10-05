@@ -21,7 +21,7 @@ test("renders LookupMobileProofing without phone number", () => {
   });
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeDisabled();
-  expect(screen.getByText(/start by adding your phone number/i)).toBeInTheDocument();
+  expect(screen.getByText(/Start by adding your Swedish phone number/i)).toBeInTheDocument();
 });
 
 test("renders Confirmation Modal, enabled to click proceed button", async () => {
