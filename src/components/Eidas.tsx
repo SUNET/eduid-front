@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import AccordionItemTemplate from "./AccordionItemTemplate";
 import EduIDButton from "./EduIDButton";
 
 function Eidas(): JSX.Element {
