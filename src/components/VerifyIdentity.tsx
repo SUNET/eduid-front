@@ -167,7 +167,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           <p>
             <FormattedMessage
               description="verify identity with swedish ID description"
-              defaultMessage="Due to your eduID is verified with a foreign id, it is possible to reverify your eduID with a Swedish national ID number."
+              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
             />
           </p>
           <Accordion>
