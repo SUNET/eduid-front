@@ -1947,7 +1947,7 @@
     "string": "Failed to validate the security key against metadata."
   },
   "security.webauthn-missing-pdata": {
-    "string": "You should add your personal data before adding a security key"
+    "string": "You should add your name in Settings before adding a security key"
   },
   "security.webauthn-noremove-last": {
     "string": "You are not allowed to remove your only security key"

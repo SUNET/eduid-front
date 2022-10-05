@@ -767,7 +767,7 @@ export const userData = {
   "security.webauthn-missing-pdata": (
     <FormattedMessage
       id="security.webauthn-missing-pdata"
-      defaultMessage={`You should add your personal data before adding a security key`}
+      defaultMessage={`You should add your name in Settings before adding a security key`}
     />
   ),
 
