@@ -81,7 +81,7 @@ function RenderLanguageSelect(): JSX.Element {
           const [key, value] = option;
           return (
             <label key={key} htmlFor={value}>
-              <Field name="language" component="input" type="radio" value={key} />
+              <Field name="language" component="input" type="radio" id={value} value={key} />
               <span>{value}</span>
             </label>
           );
