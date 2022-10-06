@@ -5,7 +5,6 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
-import DashboardNav from "./DashboardNav";
 import Header from "./Header";
 import Profile from "./Profile";
 import { Settings } from "./Settings";
@@ -30,7 +29,6 @@ export function DashboardMain() {
         <NotificationsContainer />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
-            <DashboardNav />
             <div id="text-content">
               <Routes>
                 <Route path="/profile/settings/advanced-settings/" element={<AdvancedSettings />} />

@@ -4,6 +4,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "components/EduIDButton";
+import DashboardNav from "./DashboardNav";
 
 interface HeaderProps {
   email?: string;
@@ -19,6 +20,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dispatch = useDashboardAppDispatch();
   let userName;
   let button;
+  let dashboardNav;
 
   function handleLogout() {
     dispatch(startLogout());
@@ -49,6 +51,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
+    dashboardNav = <DashboardNav />;
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
@@ -65,6 +68,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         <a href={dashboard_url ? dashboard_url : eduid_site_url} area-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
+        {dashboardNav}
         {button}
         {userName}
       </header>

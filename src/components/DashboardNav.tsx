@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import NotificationTip from "./NotificationTip";
+import Splash from "./Splash";
 
 // export for use in tests
 export const activeClassName = "active";
@@ -15,6 +16,7 @@ function DashboardNav(): JSX.Element {
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
   const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
+  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   /*
    * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
@@ -68,40 +70,42 @@ function DashboardNav(): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
-      <h5>{dashboardHeading}</h5>
-      <ul>
-        <li>
-          <NavLink className={({ isActive }) => (isActive ? activeClassName : undefined)} to="/profile/" end>
-            <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : undefined)}
-            to="/profile/verify-identity/"
-          >
-            <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
-            {getTipsAtIdentity()}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : settingsClass)}
-            to="/profile/settings/personaldata"
-          >
-            <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
-            {tipsAtSettings}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : advancedSettingsClass)}
-            to="/profile/settings/advanced-settings"
-          >
-            <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
-          </NavLink>
-        </li>
-      </ul>
+      <Splash showChildren={isLoaded} className="nav-splash-spinner">
+        <h5>{dashboardHeading}</h5>
+        <ul>
+          <li>
+            <NavLink className={({ isActive }) => (isActive ? activeClassName : undefined)} to="/profile/" end>
+              <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeClassName : undefined)}
+              to="/profile/verify-identity/"
+            >
+              <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
+              {getTipsAtIdentity()}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeClassName : settingsClass)}
+              to="/profile/settings/personaldata"
+            >
+              <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
+              {tipsAtSettings}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeClassName : advancedSettingsClass)}
+              to="/profile/settings/advanced-settings"
+            >
+              <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
+            </NavLink>
+          </li>
+        </ul>
+      </Splash>
     </nav>
   );
 }
