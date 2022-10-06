@@ -11,7 +11,7 @@ function DashboardNav(): JSX.Element {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   return (
-    <nav id="dashboard-nav">
+    <nav id="dashboard-nav" className="horizontal-content-margin">
       <Splash showChildren={isLoaded} className="nav-splash-spinner">
         <ul>
           <li>
