@@ -160,3 +160,12 @@
     transition: transform 0.5s;
   }
 }
+
+.security-zone {
+  background: $white;
+  padding: 1.5rem 1rem;
+
+  .security-text {
+    color: $error-red;
+  }
+}

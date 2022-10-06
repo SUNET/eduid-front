@@ -32,9 +32,14 @@ export function Settings(): JSX.Element {
       <AccountLinking />
       <RenderGroups />
       <LadokContainer />
-      <SecurityContainer />
-      <ChangePasswordDisplay />
-      <DeleteAccount />
+      <section className="security-zone">
+        <h2 className="security-text">Extra authentication features</h2>
+        <p className="security-text">You need to login again to edit the features below... </p>
+        <hr className="border-line" />
+        <SecurityContainer />
+        <ChangePasswordDisplay />
+        <DeleteAccount />
+      </section>
     </Fragment>
   );
 }
