@@ -1,10 +1,10 @@
 import DeleteAccount from "components/DeleteAccount";
-import Emails from "components/Emails";
-import Phones from "components/Phones";
+import SecurityContainer from "containers/Security";
 import { Fragment } from "react";
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
-import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
+import { AccountLinking } from "./AccountLinking";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
+import LadokContainer from "./Ladok";
 
 function RenderGroups(): JSX.Element | null {
   // functionality to be removed when groups feature is released
@@ -18,10 +18,10 @@ function RenderGroups(): JSX.Element | null {
 export function Settings(): JSX.Element {
   return (
     <Fragment>
-      <PersonalDataParent />
-      <Emails />
-      <Phones />
+      <AccountLinking />
       <RenderGroups />
+      <LadokContainer />
+      <SecurityContainer />
       <ChangePasswordDisplay />
       <DeleteAccount />
     </Fragment>

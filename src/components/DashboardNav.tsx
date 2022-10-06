@@ -66,7 +66,6 @@ function DashboardNav(): JSX.Element {
   const tipsAtSettings = getTipsAtSettings();
   /* Styling needs to be different for the two languages we have because of different lengths */
   const settingsClass = tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : undefined;
-  const advancedSettingsClass = tipsAtSettings && active ? `nav-advanced-settings ${selectedLanguage}` : undefined;
 
   return (
     <nav id="dashboard-nav">
@@ -94,14 +93,6 @@ function DashboardNav(): JSX.Element {
             >
               <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
               {tipsAtSettings}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? activeClassName : advancedSettingsClass)}
-              to="/profile/settings/advanced-settings"
-            >
-              <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
             </NavLink>
           </li>
         </ul>

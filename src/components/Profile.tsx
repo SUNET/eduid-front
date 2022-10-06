@@ -1,19 +1,16 @@
-import NinDisplay from "components/NinDisplay";
-import EmailDisplay from "components/EmailDisplay";
-import NameDisplay from "components/NameDisplay";
-import PhoneDisplay from "components/PhoneDisplay";
-import { useDashboardAppSelector } from "dashboard-hooks";
-import React from "react";
+import React, { Fragment } from "react";
+import PersonalDataParent from "login/components/PersonalData/PersonalDataParent";
+import Emails from "./Emails";
+import Phones from "./Phones";
+import { AccountId } from "./AccountId";
 
 export default function Profile(): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
-
   return (
-    <div id="profile-grid">
-      <NameDisplay />
-      <NinDisplay nin={nin} allowDelete={false} />
-      <PhoneDisplay />
-      <EmailDisplay />
-    </div>
+    <Fragment>
+      <PersonalDataParent />
+      <Emails />
+      <Phones />
+      <AccountId />
+    </Fragment>
   );
 }

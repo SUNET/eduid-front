@@ -3,7 +3,6 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
 import Header from "./Header";
 import Profile from "./Profile";
@@ -31,7 +30,6 @@ export function DashboardMain() {
           <div id="content" className="horizontal-content-margin content">
             <div id="text-content">
               <Routes>
-                <Route path="/profile/settings/advanced-settings/" element={<AdvancedSettings />} />
                 <Route path="/profile/settings/personaldata/" element={<Settings />} />
                 <Route path="/profile/settings/" element={<Navigate to="/profile/settings/personaldata/" />} />
                 <Route path="/profile/verify-identity/" element={<VerifyIdentity />} />
