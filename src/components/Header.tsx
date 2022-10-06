@@ -18,7 +18,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  let userName;
   let button;
   let dashboardNav;
 
@@ -45,7 +44,6 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -70,7 +68,6 @@ const Header = (props: HeaderProps): JSX.Element => {
         </a>
         {dashboardNav}
         {button}
-        {userName}
       </header>
     </section>
   );
