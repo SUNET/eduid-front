@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import LetterProofingButton from "components/LetterProofing";
 import Eidas from "components/Eidas";
 import OpenidConnectContainer from "containers/OpenidConnect";
@@ -18,10 +18,12 @@ function VerifyIdentity(): JSX.Element | null {
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
   const intl = useIntl();
 
-  document.title = intl.formatMessage({
-    id: "document title Identity",
-    defaultMessage: "Identity | eduID",
-  });
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Identity",
+      defaultMessage: "Identity | eduID",
+    });
+  }, []);
 
   if (!isConfigured) {
     return null;
