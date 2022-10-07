@@ -1,7 +1,7 @@
 import NotificationsContainer from "containers/Notifications";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
-import React, { useEffect } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
@@ -11,13 +11,10 @@ import Profile from "./Profile";
 import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
-import { useLocation } from "react-router-dom";
-import { useIntl } from "react-intl";
 
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const location = useLocation();
 
   let email;
   if (emails.length >= 1) {
@@ -25,43 +22,6 @@ export function DashboardMain() {
   } else {
     email = "";
   }
-
-  const intl = useIntl();
-
-  useEffect(() => {
-    switch (location.pathname) {
-      case "/profile/verify-identity/":
-        document.title = intl.formatMessage({
-          id: "document title Identity",
-          defaultMessage: "Identity | eduID",
-        });
-        break;
-      case "profile/settings/personaldata":
-        document.title = intl.formatMessage({
-          id: "document title Settings",
-          defaultMessage: "Settings | eduID",
-        });
-        break;
-      case "/profile/settings/advanced-settings":
-        document.title = intl.formatMessage({
-          id: "document title Advanced Settings",
-          defaultMessage: "Advanced Settings | eduID",
-        });
-        break;
-      case "/profile/chpass":
-        document.title = intl.formatMessage({
-          id: "document title Change Password",
-          defaultMessage: "Change Password | eduID",
-        });
-        break;
-      default:
-        document.title = intl.formatMessage({
-          id: "document title Profile",
-          defaultMessage: "Profile | eduID",
-        });
-        break;
-    }
-  }, [location]);
 
   return (
     <React.StrictMode>

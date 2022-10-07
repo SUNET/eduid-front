@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import LetterProofingButton from "components/LetterProofing";
 import Eidas from "components/Eidas";
 import OpenidConnectContainer from "containers/OpenidConnect";
@@ -6,7 +6,7 @@ import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import AddNin from "./AddNin";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
@@ -16,6 +16,12 @@ function VerifyIdentity(): JSX.Element | null {
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const hasVerifiedNin = !!nin?.verified;
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
+  const intl = useIntl();
+
+  document.title = intl.formatMessage({
+    id: "document title Identity",
+    defaultMessage: "Identity | eduID",
+  });
 
   if (!isConfigured) {
     return null;

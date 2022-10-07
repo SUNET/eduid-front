@@ -3,6 +3,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
+import { useIntl } from "react-intl";
 
 // exported for use in tests
 export const finish_url = "/profile/security";
@@ -11,6 +12,14 @@ function ChangePassword() {
   const suggested_password = useDashboardAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useDashboardAppDispatch();
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Change Password ",
+      defaultMessage: "Change Password | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {

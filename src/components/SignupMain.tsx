@@ -24,7 +24,7 @@ export function SignupMain(): JSX.Element {
       id: "document title Register",
       defaultMessage: "Register | eduID",
     });
-  }, [intl]);
+  }, []);
 
   // React.StrictMode not used here since it breaks the reCAPTCHA script loader :/
   return (
