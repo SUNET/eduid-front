@@ -1,9 +1,8 @@
 import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
-import { useIntl } from "react-intl";
 
 // exported for use in tests
 export const finish_url = "/profile/security";
