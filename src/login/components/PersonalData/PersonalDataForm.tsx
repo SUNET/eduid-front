@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
@@ -9,10 +10,10 @@ import { FormattedMessage } from "react-intl";
 import { PersonalDataData } from "reducers/PersonalData";
 import { postUserdata } from "../../../actions/PersonalData";
 import EduIDButton from "../../../components/EduIDButton";
+import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
-import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 
 interface PersonalDataFormProps {
   labels: NameLabels;
@@ -81,7 +82,7 @@ function RenderLanguageSelect(): JSX.Element {
           const [key, value] = option;
           return (
             <label key={key} htmlFor={value}>
-              <Field name="language" component="input" type="radio" value={key} />
+              <Field name="language" component="input" type="radio" id={value} value={key} />
               <span>{value}</span>
             </label>
           );
@@ -117,7 +118,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
             dispatch(updateNamesFromSkatteverket());
           }}
         >
-          <FontAwesomeIcon icon={faRedo} />
+          <FontAwesomeIcon icon={faRedo as IconProp} />
         </button>
         <label htmlFor="name-check" className="hint">
           <FormattedMessage
