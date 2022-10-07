@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/EduIDButton";
@@ -211,7 +212,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
 
   return (
     <EduIDButton buttonstyle="primary" onClick={handleOnClick} className="btn-icon" id="login-other-device-button">
-      <FontAwesomeIcon icon={faQrcode} />
+      <FontAwesomeIcon icon={faQrcode as IconProp} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>
   );
