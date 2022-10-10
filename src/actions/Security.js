@@ -27,8 +27,6 @@ export const POST_WEBAUTHN_REMOVE_SUCCESS = "POST_WEBAUTHN_WEBAUTHN_REMOVE_SUCCE
 export const POST_WEBAUTHN_REMOVE_FAIL = "POST_WEBAUTHN_WEBAUTHN_REMOVE_FAIL";
 export const POST_WEBAUTHN_VERIFY = "POST_WEBAUTHN_VERIFY";
 export const POST_WEBAUTHN_VERIFY_FAIL = "POST_WEBAUTHN_VERIFY_FAIL";
-export const START_ASK_WEBAUTHN_DESCRIPTION = "START_ASK_WEBAUTHN_DESCRIPTION";
-export const STOP_ASK_WEBAUTHN_DESCRIPTION = "STOP_ASK_WEBAUTHN_DESCRIPTION";
 export const AUTHENTICATOR = "AUTHENTICATOR";
 
 export function getCredentials() {
@@ -89,18 +87,6 @@ export function accountRemovedFail(err) {
     payload: {
       message: err,
     },
-  };
-}
-
-export function startAskWebauthnDescription() {
-  return {
-    type: START_ASK_WEBAUTHN_DESCRIPTION,
-  };
-}
-
-export function stopAskWebauthnDescription() {
-  return {
-    type: STOP_ASK_WEBAUTHN_DESCRIPTION,
   };
 }
 

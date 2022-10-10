@@ -12,8 +12,8 @@ import {
   postRemoveWebauthnToken,
   postVerifyWebauthnToken,
   startWebauthnRegistration,
-  startAskWebauthnDescription,
-  stopAskWebauthnDescription,
+  // startAskWebauthnDescription,
+  // stopAskWebauthnDescription,
   chooseAuthenticator,
 } from "actions/Security";
 import { clearNotifications } from "reducers/Notifications";
@@ -23,13 +23,14 @@ function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const confirming_change = useDashboardAppSelector((state) => state.security.confirming_change);
-  const confirming_deletion = useDashboardAppSelector((state) => state.security.confirming_deletion);
+  // const confirming_deletion = useDashboardAppSelector((state) => state.security.confirming_deletion);
   const redirect_to = useDashboardAppSelector((state) => state.security.location);
   const deleted = useDashboardAppSelector((state) => state.security.deleted);
-  const webauthn_asking_description = useDashboardAppSelector((state) => state.security.webauthn_asking_description);
+  // const webauthn_asking_description = useDashboardAppSelector((state) => state.security.webauthn_asking_description);
   const authenticator = useDashboardAppSelector((state) => state.security.webauthn_authenticator);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(
     () => {
@@ -80,23 +81,26 @@ function Security(props: any) {
   function handleStartAskingDeviceWebauthnDescription() {
     dispatch(clearNotifications());
     dispatch(chooseAuthenticator("platform"));
-    dispatch(startAskWebauthnDescription());
+    setShowModal(true);
+    // dispatch(startAskWebauthnDescription());
   }
 
   function handleStartAskingKeyWebauthnDescription() {
     dispatch(clearNotifications());
     dispatch(chooseAuthenticator("cross-platform"));
-    dispatch(startAskWebauthnDescription());
+    setShowModal(true);
+    // dispatch(startAskWebauthnDescription());
   }
 
   function handleStopAskingWebauthnDescription() {
-    dispatch(stopAskWebauthnDescription());
+    setShowModal(false);
+    // dispatch(stopAskWebauthnDescription());
   }
 
   function handleStartWebauthnRegistration() {
     const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
     const descriptionValue = description?.value.trim();
-    dispatch(stopAskWebauthnDescription());
+    setShowModal(false);
     dispatch(startWebauthnRegistration(descriptionValue));
   }
 
@@ -158,7 +162,7 @@ function Security(props: any) {
             />
           }
           placeholder={placeholder}
-          showModal={Boolean(webauthn_asking_description)}
+          showModal={showModal}
           closeModal={handleStopAskingWebauthnDescription}
           handleConfirm={handleStartWebauthnRegistration}
           modalFormLabel={
