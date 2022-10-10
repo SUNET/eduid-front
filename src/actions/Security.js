@@ -17,7 +17,7 @@ export const POST_DELETE_ACCOUNT_FAIL = "POST_SECURITY_TERMINATE_ACCOUNT_FAIL";
 export const GET_DELETE_ACCOUNT = "GET_SECURITY_ACCOUNT_TERMINATED";
 export const GET_DELETE_ACCOUNT_SUCCESS = "GET_SECURITY_ACCOUNT_TERMINATED_SUCCESS";
 export const GET_DELETE_ACCOUNT_FAIL = "GET_SECURITY_ACCOUNT_TERMINATED_FAIL";
-export const START_WEBAUTHN_REGISTRATION = "START_WEBAUTHN_REGISTRATION";
+// export const START_WEBAUTHN_REGISTRATION = "START_WEBAUTHN_REGISTRATION";
 export const POST_WEBAUTHN_BEGIN_FAIL = "POST_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_FAIL";
 export const POST_WEBAUTHN_BEGIN_SUCCESS = "POST_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_SUCCESS";
 export const POST_WEBAUTHN_REGISTER_FAIL = "POST_WEBAUTHN_WEBAUTHN_REGISTER_COMPLETE_FAIL";
@@ -90,14 +90,14 @@ export function accountRemovedFail(err) {
   };
 }
 
-export function startWebauthnRegistration(description) {
-  return {
-    type: START_WEBAUTHN_REGISTRATION,
-    payload: {
-      description: description,
-    },
-  };
-}
+// export function startWebauthnRegistration(description) {
+//   return {
+//     type: START_WEBAUTHN_REGISTRATION,
+//     payload: {
+//       description: description,
+//     },
+//   };
+// }
 
 export function beginWebauthnFail(err) {
   return {
@@ -157,11 +157,11 @@ export function tokenVerifyFail(err) {
   };
 }
 
-export function chooseAuthenticator(choice) {
-  return {
-    type: AUTHENTICATOR,
-    payload: {
-      choice: choice,
-    },
-  };
-}
+// export function chooseAuthenticator(choice) {
+//   return {
+//     type: AUTHENTICATOR,
+//     payload: {
+//       choice: choice,
+//     },
+//   };
+// }
