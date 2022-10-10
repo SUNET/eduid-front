@@ -39,7 +39,7 @@ export const userProfile = {
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For you with a Swedish phone number registered in your name`}
+      defaultMessage={`For Swedish phone numbers entered and confirmed in eduID.`}
     />
   ),
 
@@ -53,7 +53,7 @@ export const userProfile = {
   "verify-identity.vetting_explanation_add_phone_number": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_phone_number"
-      defaultMessage={`Start by adding your phone number in\n`}
+      defaultMessage={`Start by adding your Swedish phone number in\n`}
     />
   ),
 
@@ -767,7 +767,7 @@ export const userData = {
   "security.webauthn-missing-pdata": (
     <FormattedMessage
       id="security.webauthn-missing-pdata"
-      defaultMessage={`You should add your personal data before adding a security key`}
+      defaultMessage={`You should add your name in Settings before adding a security key`}
     />
   ),
 

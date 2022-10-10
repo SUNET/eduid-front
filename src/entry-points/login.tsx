@@ -1,7 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { LOGIN_CONFIG_URL } from "globals";
-import { createBrowserHistory } from "history";
 import { loginStore } from "login-init-app";
 import { appLoaded } from "login/components/App/App_actions";
 import { LoginMain } from "login/components/LoginMain";
@@ -25,8 +24,6 @@ polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(loginStore.dispatch);
-
-export const loginHistory = createBrowserHistory();
 
 /* render app */
 const initDomTarget = document.getElementById("root");

@@ -1,31 +1,25 @@
 import Eidas from "components/Eidas";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { mount } from "enzyme";
-import NotificationModal from "login/components/Modals/NotificationModal";
-import React from "react";
-import { fakeStore } from "./helperFunctions/DashboardTestApp";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { act } from "react-dom/test-utils";
 
-describe("Eidas component", () => {
-  function setupComponent() {
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore()}>
-        <Eidas />
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
-  it("has a button", () => {
-    const { wrapper } = setupComponent();
-    const button = wrapper.find("button");
-    expect(button.exists()).toEqual(true);
-    expect(button.length).toEqual(1);
+test("renders frejaeID", () => {
+  render(<Eidas />);
+  const button = screen.getByRole("button", { name: /proceed/i });
+  expect(button).toBeEnabled();
+  expect(screen.getByText(/To use this option you will need to first create a digital ID-card /i)).toBeInTheDocument();
+});
+
+test("renders Confirmation Modal, enabled to click proceed button", async () => {
+  render(<Eidas />);
+  const button = screen.getByRole("button", { name: /proceed/i });
+  expect(button).toBeEnabled();
+  act(() => {
+    button.click();
+  });
+  await waitFor(() => {
+    expect(screen.getByText(/Create a Freja eID Plus account/i)).toBeInTheDocument();
   });
 
-  it("has a modal", () => {
-    const { wrapper } = setupComponent();
-    const modal = wrapper.find(NotificationModal);
-    expect(modal.exists()).toEqual(true);
-  });
+  const modalConfirmButton = screen.getByRole("button", { name: /Use my freja eID+/i });
+  expect(modalConfirmButton).toBeEnabled();
 });

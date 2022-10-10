@@ -130,10 +130,6 @@
     "developer_comment": "Phone display title",
     "string": "Telefonnummer"
   },
-  "5NuSNx": {
-    "developer_comment": "Personal data language",
-    "string": "Språk"
-  },
   "5P95+P": {
     "developer_comment": "Reset password add email heading",
     "string": "Ange din e-postadress registrerad till ditt konto."
@@ -235,6 +231,10 @@
   },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
+  },
+  "CTDOpR": {
+    "developer_comment": "chpass suggest password",
+    "string": "Rekommendera ett lösenord"
   },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
@@ -451,6 +451,10 @@
     "developer_comment": "generic error page",
     "string": "Problemet har rapporterats till teamet."
   },
+  "NDdvRn": {
+    "developer_comment": "button save",
+    "string": "Spara"
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
@@ -622,7 +626,7 @@
   },
   "VSxZ2o": {
     "developer_comment": "Send e-mail button",
-    "string": "Skicka"
+    "string": "Skicka e-post"
   },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
@@ -638,7 +642,7 @@
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
-    "string": "Skicka igen"
+    "string": "Skicka e-post igen"
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -764,15 +768,6 @@
   "captcha.one-step-left": {
     "string": "Bara en sak till!"
   },
-  "chpass.button_custom_password": {
-    "string": "Jag vill inte använda det rekommenderade lösenordet"
-  },
-  "chpass.button_save_password": {
-    "string": "Spara"
-  },
-  "chpass.button_suggest_password": {
-    "string": "Rekommendera ett lösenord"
-  },
   "chpass.different-repeat": {
     "string": "Det nya och repeterade lösenordet är olika"
   },
@@ -781,9 +776,6 @@
   },
   "chpass.form_custom_password_repeat": {
     "string": "Repetera ditt nya lösenord"
-  },
-  "chpass.help-text-general": {
-    "string": "Här kan du byta ditt lösenord. Ett säkert lösenord har genererats till dig. Du väljer att använda det genererade lösenordet genom att klicka \"Byt lösenord\". Vill du använda ett eget lösenord så gör du det genom att klicka i rutan för eget lösenord."
   },
   "chpass.help-text-newpass-label": {
     "developer_comment": "help text for custom password label",
@@ -823,9 +815,6 @@
   "cm.accept": {
     "string": "ACCEPTERA"
   },
-  "cm.cancel": {
-    "string": "AVBRYT"
-  },
   "cm.close": {
     "string": "STÄNG"
   },
@@ -857,9 +846,6 @@
   },
   "created.confirm-registration": {
     "string": "Bekräfta registrering"
-  },
-  "created.email-sent": {
-    "string": "Ett e-postmeddelande med instruktioner för hur du kommer vidare har skickats till {email}"
   },
   "cred.credential_type": {
     "string": "Inloggningsuppgiftstyp"
@@ -984,9 +970,6 @@
     "developer_comment": "Placeholder for email code input",
     "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
-  "emails.confirm_title": {
-    "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
-  },
   "emails.duplicated": {
     "string": "E-postadressen finns redan i listan."
   },
@@ -1010,9 +993,6 @@
   },
   "emails.removal-success": {
     "string": "E-postadress borttagen"
-  },
-  "emails.resend_success": {
-    "string": "Ny bekräftelsekod skickad till {email}"
   },
   "emails.save-success": {
     "string": "E-postadressen sparad"
@@ -1060,27 +1040,6 @@
   },
   "faq_link": {
     "string": "För mer information, se "
-  },
-  "finish.access-more": {
-    "string": "Kom åt mer"
-  },
-  "finish.can-now-login": {
-    "string": "Du kan nu logga in"
-  },
-  "finish.confirm-identity": {
-    "string": "BEKRÄFTA IDENTITET"
-  },
-  "finish.finish": {
-    "string": "SLUTFÖR"
-  },
-  "finish.sites-accept": {
-    "string": "Ditt konto är nu klart att användas med webbplatser som accepterar"
-  },
-  "finish.to-dashboard": {
-    "string": "Fortsätt till din profilsida för att få åtkomst till webbplatser som kräver en bekräftad identitet."
-  },
-  "finish.unconfirmed-identities": {
-    "string": "Obekräftade identiteter"
   },
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
@@ -1409,21 +1368,9 @@
   "mfa.two-factor-authn": {
     "string": "Extra säkerhet påslaget för det här kontot"
   },
-  "mobile.button_add": {
-    "string": "Lägg till"
-  },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
     "string": "Verifieringskod"
-  },
-  "mobile.confirm_title": {
-    "string": "Skriv in verifieringskoden som skickats till {phone}"
-  },
-  "mobile.mobile": {
-    "string": "Telefon"
-  },
-  "mobile.resend_success": {
-    "string": "Ny bekräftelsekod skickad till {email}"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -1496,6 +1443,10 @@
   "oFfq/i": {
     "developer_comment": "enter confirmation code",
     "string": "Bekräftelsekod"
+  },
+  "oR7sIx": {
+    "developer_comment": "button cancel",
+    "string": "Avbryt"
   },
   "oVW3B/": {
     "developer_comment": "verify identity verified description",
@@ -1977,24 +1928,6 @@
   "security.u2f_register_success": {
     "string": "Säkerhetsnyckel registrerad"
   },
-  "security.u2f_registration_error_bad": {
-    "string": "U2F-fel: Ogiltig förfrågan"
-  },
-  "security.u2f_registration_error_code": {
-    "string": "U2F-fel. Felkod: {errorCode}"
-  },
-  "security.u2f_registration_error_device": {
-    "string": "U2F-fel: Oläsbar säkerhetsnyckel"
-  },
-  "security.u2f_registration_error_timeout": {
-    "string": "U2F-fel: Begäran tog för lång tid"
-  },
-  "security.u2f_registration_error_unknown": {
-    "string": "U2F-fel: Okänt fel"
-  },
-  "security.u2f_registration_error_unsupported": {
-    "string": "U2F-fel: Felaktig konfiguration"
-  },
   "security.user-update-throttled": {
     "string": "För många försök att uppdatera namnen har gjorts. Var vänlig försök igen senare."
   },
@@ -2011,7 +1944,7 @@
     "string": "Det gick inte att verifiera säkerhetsnyckeln."
   },
   "security.webauthn-metadata-fail": {
-    "string": "Det gick inte att validera säkerhetsnyckelns metadata."
+    "string": "Det gick inte att validera tillverkaren av säkerhetsnyckeln. Tyvärr kan du inte använda den här säkerhetsnyckeln med eduID för närvarande."
   },
   "security.webauthn-missing-pdata": {
     "string": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel"
@@ -2181,6 +2114,10 @@
   "verify-identity.vetting_phone_tagline": {
     "string": "För dig som har ett svenskt telefonabonnemang i ditt eget namn"
   },
+  "vf92mh": {
+    "developer_comment": "chpass custom password",
+    "string": "Jag vill inte använda det rekommenderade lösenordet"
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
@@ -2204,6 +2141,10 @@
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "Du kan försöka logga in igen med knappen nedan, men det är troligt att tjänsten du försöker logga in på inte kommer godta det. I så fall behöver du börja om inloggningen från början."
+  },
+  "x6V8oh": {
+    "developer_comment": "Language radio group legend",
+    "string": "Språk"
   },
   "xBsfUj": {
     "developer_comment": "Login Mfa paragraph",

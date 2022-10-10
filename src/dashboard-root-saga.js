@@ -17,23 +17,12 @@ import {
   removeWebauthnToken,
   requestCredentials,
   requestPasswordChange,
-  verifyWebauthnToken,
+  verifyWebauthnToken
 } from "sagas/Security";
 import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
 import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
-
-//import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
-// // get cookie status out of store
-// export const getCookieStatus = (state) => state.groups.hasCookie;
-// // allow access based on status
-// function* allowGroupsSagas() {
-//   let hasCookie = yield select(getCookieStatus);
-//   if (hasCookie) {
-//     yield [...groupsSagas];
-//   }
-// }
 
 function* rootSaga() {
   yield all([
