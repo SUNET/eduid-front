@@ -74,3 +74,8 @@ test("renders UsernamePw as expected", async () => {
   expect(input).toHaveAccessibleName(/^Email address/);
   expect(input).toHaveProperty("placeholder", "name@example.com");
 });
+
+test("renders the login page title", () => {
+  render(<LoginMain />);
+  expect(document.title).toBe("Log in | eduID");
+});
