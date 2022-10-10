@@ -1,15 +1,6 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const generalInstructions = {
-  // "main.unconfirmed": (
-  //   <FormattedMessage id="main.unconfirmed" defaultMessage={`Unconfirmed`} />
-  // ),
-
-  // "main.confirmed": (
-  //   <FormattedMessage id="main.confirmed" defaultMessage={`Confirmed`} />
-  // ),
-
   faq_link: <FormattedMessage id="faq_link" defaultMessage={`For more information see the `} />,
 
   // link sent to email (resend link)

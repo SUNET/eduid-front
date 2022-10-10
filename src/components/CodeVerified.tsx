@@ -1,13 +1,12 @@
-import { isFSA } from "apis/common";
-import { fetchVerifyLink, isVerifyLinkResponse, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
+import { fetchVerifyLink, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import Splash from "components/Splash";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
-import { useSignupAppDispatch } from "signup-hooks";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SIGNUP_BASE_PATH } from "./SignupMain";
 
 // element ids used in tests
@@ -26,24 +25,11 @@ export default function CodeVerified() {
   const dispatch = useSignupAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as CodeParams;
-  const [response, setResponse] = useState<VerifyLinkResponse>();
-
-  async function verifyCode(code: string) {
-    const resp = await dispatch(fetchVerifyLink({ code }));
-
-    if (fetchVerifyLink.fulfilled.match(resp)) {
-      setResponse(resp.payload);
-    }
-    if (fetchVerifyLink.rejected.match(resp)) {
-      if (isFSA(resp.payload) && isVerifyLinkResponse(resp.payload.payload)) {
-        setResponse(resp.payload.payload);
-      }
-    }
-  }
+  const response = useSignupAppSelector((state) => state.signup.verify_link_response);
 
   useEffect(() => {
     if (!response && params?.code) {
-      verifyCode(params.code);
+      dispatch(fetchVerifyLink({ code: params.code }));
     }
   }, []);
 

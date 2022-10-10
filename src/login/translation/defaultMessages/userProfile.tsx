@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
@@ -518,35 +517,9 @@ export const userData = {
   "phones.duplicated": (
     <FormattedMessage id="phones.duplicated" defaultMessage={`The number is already in the list.`} />
   ),
-  /* -----  MOBILE ------- */
-
-  "mobile.resend_success": (values) => (
-    <FormattedMessage id="mobile.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
-  ),
-
-  "mobile.email_label": <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />,
-
-  "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
-
-  "mobile.confirm_title": (values) => (
-    <FormattedMessage id="mobile.confirm_title" defaultMessage={`Enter the code sent to {phone}`} values={values} />
-  ),
 
   /* ----- PERSONAL DATA------- */
   "pfilled.completion": <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />,
-
-  "pd.sv_lang": <FormattedMessage id="pd.sv_lang" defaultMessage={`Svenska`} />,
-
-  "pd.en_lang": <FormattedMessage id="pd.en_lang" defaultMessage={`English`} />,
-
-  "pd.long_description": (
-    <FormattedMessage
-      id="pd.long_description"
-      defaultMessage={`This information may be used to personalise services that you access with your eduID.`}
-    />
-  ),
-
-  "pd.main_title": <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />,
 
   "pd.all-data-success": (
     <FormattedMessage id="pd.all-data-success" defaultMessage={`Successfully retrieved personal information`} />
@@ -560,34 +533,7 @@ export const userData = {
 
   "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
 
-  "pd.display_name_input_help_text": (
-    <FormattedMessage
-      id="pd.display_name_input_help_text"
-      defaultMessage={`Some services will show this instead of your first and last name.`}
-    />
-  ),
-
-  "pd.no_data_added": <FormattedMessage id="pd.no_data_added" defaultMessage={`No information has been added.`} />,
-  "pd.edit.button": <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />,
-  "pd.edit.title": <FormattedMessage id="pd.edit.title" defaultMessage={`Edit name and language`} />,
-  "pd.update_locked_names": (
-    <FormattedMessage
-      id="pd.update_locked_names"
-      defaultMessage={`Update first and last names from the Swedish Population Register.`}
-    />
-  ),
-  "pd.hint.names_locked_when_verified": (
-    <FormattedMessage
-      id="pd.hint.names_locked_when_verified"
-      defaultMessage={`First and last name will be replaced with your legal name if you verify your eduID with your personal id number.`}
-    />
-  ),
-
   /* ----- EMAILS------- */
-
-  "emails.resend_success": (values) => (
-    <FormattedMessage id="emails.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
-  ),
 
   "emails.email_label": <FormattedMessage id="emails.email" defaultMessage={`Email`} />,
 
@@ -608,14 +554,6 @@ export const userData = {
   ),
 
   "emails.button_add": <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />,
-
-  "emails.confirm_title": (values) => (
-    <FormattedMessage
-      id="emails.confirm_title"
-      defaultMessage={`Click the link or enter the code sent to {email} here`}
-      values={values}
-    />
-  ),
 
   "emails.add_new": (
     <FormattedMessage
@@ -829,7 +767,7 @@ export const userData = {
   "security.webauthn-missing-pdata": (
     <FormattedMessage
       id="security.webauthn-missing-pdata"
-      defaultMessage={`You should add your personal data before adding a security key`}
+      defaultMessage={`You should add your name in Settings before adding a security key`}
     />
   ),
 
@@ -887,20 +825,5 @@ export const userData = {
 
   "orc.authorization_fail": (
     <FormattedMessage id="orc.authorization_fail" defaultMessage={`ORCID authentication failed`} />
-  ),
-
-  /* -----  DELETE ACCOUNT ------- */
-
-  "settings.account_title": <FormattedMessage id="settings.account_title" defaultMessage={`Delete eduID`} />,
-
-  "settings.account_description": (
-    <FormattedMessage
-      id="settings.account_description"
-      defaultMessage={`Click the link to permanently delete your eduID.`}
-    />
-  ),
-
-  "security.button_delete_account": (
-    <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
 };

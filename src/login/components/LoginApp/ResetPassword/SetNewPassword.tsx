@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowLeft, faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Splash from "components/Splash";
 import { useEffect, useRef, useState } from "react";
@@ -84,15 +84,13 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
               autoFocus={true}
             />
 
-            <div className="new-password-button-container">
+            <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <EduIDButton
                   buttonstyle="secondary"
                   id="go-back-button"
-                  className="btn-icon"
                   onClick={() => navigate("/reset-password/extra-security")}
                 >
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                   <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
                 </EduIDButton>
               )}
@@ -145,9 +143,9 @@ function SetNewPassword(): JSX.Element {
 
   return (
     <Splash showChildren={!!password}>
-      <p className="heading">
+      <h2>
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
-      </p>
+      </h2>
       <p>
         <FormattedMessage
           defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the
@@ -155,6 +153,7 @@ function SetNewPassword(): JSX.Element {
           description="Set new password"
         />
       </p>
+
       <div className="reset-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
@@ -178,6 +177,7 @@ function SetNewPassword(): JSX.Element {
           </div>
         </button>
       </div>
+
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
     </Splash>
   );

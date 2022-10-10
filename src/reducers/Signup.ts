@@ -1,12 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
-import { fetchTryCaptcha, isTryCaptchaResponse, TryCaptchaNextStep, TryCaptchaResponse } from "apis/eduidSignup";
-import { response } from "msw";
+import {
+  fetchTryCaptcha,
+  fetchVerifyLink,
+  isTryCaptchaResponse,
+  isVerifyLinkResponse,
+  TryCaptchaNextStep,
+  VerifyLinkResponse,
+} from "apis/eduidSignup";
 
 interface SignupState {
   email?: string;
   tou_accepted: boolean;
   current_step: "register" | TryCaptchaNextStep;
+  // Fetching verify-link is a one-shot operation, so we have to store the response in
+  // redux state (rather than in component state) in case switching language causes us
+  // to re-render the component
+  verify_link_response?: VerifyLinkResponse;
 }
 
 // export for use in tests
@@ -44,6 +54,15 @@ export const signupSlice = createSlice({
            * In which case we want to set current_step to "address-used".
            */
           state.current_step = action.payload.payload.next;
+        }
+      })
+      .addCase(fetchVerifyLink.fulfilled, (state, action) => {
+        state.verify_link_response = action.payload;
+      })
+      .addCase(fetchVerifyLink.rejected, (state, action) => {
+        // action.payload is the whole JSON response from the backend (or some other error)
+        if (isFSA(action.payload) && isVerifyLinkResponse(action.payload.payload)) {
+          state.verify_link_response = action.payload.payload;
         }
       });
   },

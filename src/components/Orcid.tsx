@@ -41,7 +41,7 @@ export function Orcid(): JSX.Element {
             className="btn-icon"
             onClick={handleOrcidConnect}
           >
-            <img className="orcid-logo" src={orcidIcon} />
+            <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
             <FormattedMessage description="orcid connect button" defaultMessage={`Add ORCID account`} />
           </EduIDButton>
         </div>

@@ -39,10 +39,34 @@ function LoadingCaptcha(props: LoadingCaptchaProps) {
           <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
             <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
           </EduIDButton>
+          <DevSubmitCaptchaButton {...props} />
         </div>
       </div>
     </React.Fragment>
   );
+}
+
+function DevSubmitCaptchaButton(props: CaptchaProps): JSX.Element | null {
+  const environment = useSignupAppSelector((state) => state.config.environment);
+
+  // Only show this button in the staging environment. This button is bad user experience
+  // for real users, but required for the Selenium tests to be able to bypass the captcha with the use
+  // of a magic cookie.
+  if (environment === "staging") {
+    return (
+      <EduIDButton
+        buttonstyle="primary"
+        id="send-captcha-button"
+        onClick={() => {
+          props.handleCaptchaCompleted("testing");
+        }}
+      >
+        Dev submit captcha
+      </EduIDButton>
+    );
+  }
+
+  return null;
 }
 
 function Captcha(props: CaptchaProps) {

@@ -33,7 +33,7 @@ form {
 .form-control:disabled,
 .form-control[readonly] {
   border-bottom: none;
-  color: $gray;
+  color: $txt-gray;
 }
 
 input.form-control,
@@ -43,6 +43,23 @@ input.form-control:focus,
 input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
   border-color: initial;
+  background-image: none;
+}
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem $border-gray;
+}
+
+// Possible not used due to react-select
+select {
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  height: 3rem;
+  background-color: $white;
+  height: 40px;
+  margin-top: 3px;
 }
 
 fieldset {
@@ -51,19 +68,24 @@ fieldset {
   &:not(:empty) {
     margin-bottom: 1.25em;
   }
+
+  legend {
+    @extend label;
+  }
 }
 
 /* smallish grayish additional info underneath corresponding form elements */
 .help-text {
   margin: 0.5rem 0 0;
   line-height: 1.2;
-  color: $gray;
+  color: $txt-gray;
   font-size: 14px;
 
   .btn + & {
     @media (max-width: $bp-md) {
       text-align: center;
     }
+
     @media (max-width: $bp-xs) {
       margin: 0 0 0.75rem;
     }

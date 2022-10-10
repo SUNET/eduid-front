@@ -16,8 +16,9 @@ export function SignupMain(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email); // TODO: is email really shown in signup header?
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
+  // React.StrictMode not used here since it breaks the reCAPTCHA script loader :/
   return (
-    <React.StrictMode>
+    <React.Fragment>
       <Header email={email} showLogin={true} />
       <section id="panel" className="panel">
         <NotificationsContainer />
@@ -32,7 +33,7 @@ export function SignupMain(): JSX.Element {
         </Splash>
       </section>
       <Footer />
-    </React.StrictMode>
+    </React.Fragment>
   );
 }
 

@@ -7,17 +7,15 @@ function ResetPasswordSuccess(): JSX.Element {
 
   return (
     <>
-      <div id="reset-pass-display">
-        <p>
-          <FormattedMessage
-            defaultMessage="Password has been updated."
-            description="Reset Password set new password success"
-          />
-        </p>
-        <a id="return-login" href={toHome}>
-          <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
-        </a>
-      </div>
+      <p>
+        <FormattedMessage
+          defaultMessage="Password has been updated."
+          description="Reset Password set new password success"
+        />
+      </p>
+      <a id="return-login" href={toHome}>
+        <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
+      </a>
     </>
   );
 }

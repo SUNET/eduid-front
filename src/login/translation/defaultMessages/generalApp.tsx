@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const generalApp = {
@@ -16,12 +15,7 @@ export const generalApp = {
     />
   ),
 
-  // buttons
-  button_save: <FormattedMessage id="button_save" defaultMessage={`Save`} />,
-
-  button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
-
-  // sucess
+  // success
   "actions.action-completed": <FormattedMessage id="actions.action-completed" defaultMessage={`Success`} />,
 
   // modal
@@ -30,8 +24,6 @@ export const generalApp = {
   "cm.ok": <FormattedMessage id="cm.ok" defaultMessage={`OK`} />,
 
   "cm.finish": <FormattedMessage id="cm.finish" defaultMessage={`FINISH`} />,
-
-  "cm.cancel": <FormattedMessage id="cm.cancel" defaultMessage={`CANCEL`} />,
 
   "cm.accept": <FormattedMessage id="cm.accept" defaultMessage={`ACCEPT`} />,
 

@@ -4,14 +4,16 @@
   display: flex;
 
   &:focus {
-    color: $black;
+    color: $txt-black;
     background-color: $white;
-    border-color: $gray;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
+    border-color: $txt-gray;
+    box-shadow: 0 0 0 0.2rem $border-gray;
     outline: 0;
   }
 }
-
+.radio-input-container label:hover {
+  cursor: pointer;
+}
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
@@ -25,25 +27,30 @@ input[type="radio"] {
   /* background-color only for content */
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: 2px solid $orange-highlight;
+  border: 2px solid $bright-orange;
   background-color: transparent;
   border-radius: 50%;
 
   /* to prevent overwrite from input padding, this ensures that the radio button remains round */
   padding: 0;
+
+  &:hover {
+    background-color: $bright-orange;
+    cursor: pointer;
+    border: none;
+  }
 }
 
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
   // background-color: #28a745;
-  background-color: $orange-highlight;
+  background-color: $bright-orange;
   border: none;
 }
 
 input[type="radio"]:checked.error {
-  background: $dark-orange;
+  background: $error-red;
   color: $white;
-  opacity: 0.8;
   border: none;
 }
 
@@ -55,7 +62,7 @@ input[type="radio"]:checked.error {
   span {
     font-size: 1.5rem;
     align-self: center;
-    color: $black;
+    color: $txt-black;
     font-family: $proxima-regular;
     font-weight: normal;
     text-transform: capitalize;
@@ -80,34 +87,33 @@ input::placeholder {
 .form-control:focus,
 input:focus {
   outline: 0;
-  border-bottom: solid 2px $black;
-  box-shadow: 0 0 0 0.2rem $mid-gray;
+  border-bottom: solid 2px $txt-black;
+  box-shadow: 0 0 0 0.2rem $border-gray;
 }
 
 .form-control.is-valid {
   background-image: none;
 
   &:focus {
-    border-color: $valid-green;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
+    box-shadow: 0 0 0 0.2rem $border-gray;
   }
 }
 
 /* invalid form input */
-.form-control.is-invalid {
-  border: none;
-  border-bottom: 2px solid $orange-highlight;
-  background-image: none;
-  padding-right: 8px;
+// .form-control.is-invalid {
+//   border: none;
+//   border-bottom: 2px solid $bright-orange;
+//   background-image: none;
+//   padding-right: 8px;
 
-  &:focus {
-    box-shadow: 0 0 0 0.2rem $mid-gray;
-  }
-}
+//   &:focus {
+//     box-shadow: 0 0 0 0.2rem $border-gray;
+//   }
+// }
 
 /* error message */
 .input-error {
-  color: $orange-highlight;
+  color: $bright-orange;
   font-weight: 700;
   letter-spacing: 0.025rem;
 }
@@ -130,12 +136,12 @@ input:focus {
 
 /* for orange asterisk after label */
 .label-required {
-  color: $orange-highlight;
+  color: $bright-orange;
 }
 
 .input-validate-error {
   font-size: $txt-sm;
-  color: $dark-orange;
+  color: $error-red;
 
   fieldset & {
     position: absolute;
@@ -154,7 +160,7 @@ input:focus {
 
 #copy-new-password {
   border-bottom: none;
-  background-color: $orange-opaque;
+  background-color: $border-gray;
 }
 
 // Switch toggle
@@ -167,7 +173,7 @@ input:focus {
 
 .toggle-switch {
   display: inline-block;
-  background: #ccc;
+  background: $border-gray;
   border-radius: 16px;
   width: 54px;
   height: 28px;
@@ -192,12 +198,16 @@ input:focus {
     transition: left 0.25s;
   }
 
+  &:hover {
+    background: $bright-orange;
+  }
+
   .toggle:hover &::before {
     transform: scale(0.9);
   }
 
   .toggle-checkbox:checked + & {
-    background: $orange-highlight;
+    background: $bright-orange;
 
     &::before {
       left: 29px;

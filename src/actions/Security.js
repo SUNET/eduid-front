@@ -10,8 +10,6 @@ export const GET_CHANGE_PASSWORD_FAIL = "GET_CHANGE_PASSWORD_FAIL";
 export const START_CHANGE_PASSWORD = "START_CHANGE_PASSWORD";
 export const STOP_CHANGE_PASSWORD = "STOP_CHANGE_PASSWORD";
 
-export const START_DELETE_ACCOUNT = "START_DELETE_ACCOUNT";
-export const STOP_DELETE_ACCOUNT = "STOP_DELETE_ACCOUNT";
 export const POST_DELETE_ACCOUNT = "POST_DELETE_ACCOUNT";
 export const SEND_POST_DELETE_ACCOUNT = "SEND_POST_DELETE_ACCOUNT";
 export const POST_DELETE_ACCOUNT_SUCCESS = "POST_SECURITY_TERMINATE_ACCOUNT_SUCCESS";
@@ -59,18 +57,6 @@ export function getPasswordChangeFail(err) {
     payload: {
       message: err,
     },
-  };
-}
-
-export function startConfirmationDeletion() {
-  return {
-    type: START_DELETE_ACCOUNT,
-  };
-}
-
-export function stopConfirmationDeletion() {
-  return {
-    type: STOP_DELETE_ACCOUNT,
   };
 }
 

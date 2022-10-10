@@ -1,7 +1,7 @@
-import { formattedMessages } from "./messageIndex";
-import { Dispatch } from "redux";
-import { updateIntl } from "reducers/Internationalisation";
 import { messages as untypedMessages } from "login/translation/messages";
+import { updateIntl } from "reducers/Internationalisation";
+import { Dispatch } from "redux";
+import { formattedMessages } from "./messageIndex";
 
 const messages = untypedMessages as unknown as { [key: string]: { [key: string]: string } };
 

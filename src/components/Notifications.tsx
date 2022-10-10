@@ -37,7 +37,7 @@ export default function Notifications(props: NotificationsProps): JSX.Element | 
   return (
     <div className="notifications-area" aria-live="polite">
       <Alert color={color} toggle={props.handleRMNotification} closeClassName="close">
-        <span>
+        <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
       </Alert>
@@ -53,13 +53,13 @@ function getLabel(intl: IntlShape, level: notificationLevel): string {
   // aria-label can't be an Element, we need to get the actual translated string here
   if (level === "error") {
     return intl.formatMessage({
-      id: "notifications.label",
+      id: "notifications.error-label",
       defaultMessage: "Error",
       description: "Notification type",
     });
   }
   return intl.formatMessage({
-    id: "notifications.label",
+    id: "notifications.info-label",
     defaultMessage: "Information",
     description: "Notification type",
   });

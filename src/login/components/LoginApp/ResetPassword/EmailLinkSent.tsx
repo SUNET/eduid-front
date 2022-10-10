@@ -54,7 +54,24 @@ export function EmailLinkSent(): JSX.Element | null {
           description="Reset Password email link sent"
         />
       </p>
-      <div className="resend-timer">
+      <p>
+        <FormattedMessage
+          defaultMessage="If you didn’t receive the email, check your junk email, or resend the email."
+          description="Reset Password email link sent"
+        />
+      </p>
+
+      <div className="buttons">
+        <GoBackButton />
+        <EduIDButton
+          buttonstyle="primary"
+          type="submit"
+          id="send-email-button"
+          onClick={sendEmailOnClick}
+          disabled={resendDisabled}
+        >
+          <FormattedMessage defaultMessage="Resend e-mail" description="Resend e-mail button" />
+        </EduIDButton>
         <TimeRemainingWrapper
           name="reset-password-email-expires"
           unique_id={response?.email}
@@ -63,20 +80,6 @@ export function EmailLinkSent(): JSX.Element | null {
         >
           <ExpiresMeter showMeter={false} expires_max={response?.throttled_max} />
         </TimeRemainingWrapper>
-
-        <div className="button-pair">
-          <EduIDButton
-            buttonstyle="primary"
-            type="submit"
-            className="settings-button"
-            id="send-email-button"
-            onClick={sendEmailOnClick}
-            disabled={resendDisabled}
-          >
-            <FormattedMessage defaultMessage="Resend e-mail" description="Resend e-mail button" />
-          </EduIDButton>
-          <GoBackButton primary={true} />
-        </div>
       </div>
     </React.Fragment>
   );

@@ -30,9 +30,11 @@ function SecurityKeyButton({
             return (
               <Fragment key={security}>
                 {
-                  <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
-                    {translate("login.mfa.primary-option.button")}
-                  </EduIDButton>
+                  <div className="buttons">
+                    <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
+                      {translate("login.mfa.primary-option.button")}
+                    </EduIDButton>
+                  </div>
                 }
               </Fragment>
             );
@@ -176,7 +178,7 @@ export default function ExtraSecurity(): JSX.Element {
             />
           ) : null}
           {!selected_option && extraSecurity && extraSecurity.external_mfa && (
-            <div>
+            <div className="buttons">
               <EduIDButton
                 type="submit"
                 buttonstyle="primary"
@@ -192,7 +194,9 @@ export default function ExtraSecurity(): JSX.Element {
           )}
           {!selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? (
             <>
-              <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} />
+              <div className="buttons">
+                <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} />
+              </div>
               <p className="enter-phone-code">
                 {translate("resetpw.received-sms")}&nbsp;
                 <a className="text-link" onClick={() => toPhoneCodeForm()}>
