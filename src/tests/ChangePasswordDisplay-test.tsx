@@ -4,7 +4,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount, shallow } from "enzyme";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import securityReducer, { initialState as securityInitialState } from "reducers/Security";
+import securitySlice, { initialState as securityInitialState } from "reducers/Security";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { fakeStore } from "./helperFunctions/DashboardTestApp";
 
@@ -122,7 +122,7 @@ describe("Logout modal redux functionality", () => {
       showModal: false,
     };
     expect(
-      securityReducer(mockState, {
+      securitySlice.reducer(mockState, {
         type: actions.GET_CHANGE_PASSWORD,
         payload: {},
       })
@@ -139,7 +139,7 @@ describe("Logout modal redux functionality", () => {
     };
     const err = "Error";
     expect(
-      securityReducer(mockState, {
+      securitySlice.reducer(mockState, {
         type: actions.GET_CHANGE_PASSWORD_FAIL,
         payload: {
           message: err,
