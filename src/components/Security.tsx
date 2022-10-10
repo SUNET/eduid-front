@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EduIDButton from "components/EduIDButton";
 import { translate } from "login/translation";
-import PropTypes from "prop-types";
-import { Spinner } from "spin.js";
-import { spinnerOpts } from "./Splash";
+import Splash from "./Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
@@ -19,7 +17,7 @@ import {
   chooseAuthenticator,
 } from "actions/Security";
 import { clearNotifications } from "reducers/Notifications";
-import DataTable from "login/components/DataTable/DataTable";
+import securitySlice from "reducers/Security";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -32,17 +30,6 @@ function Security(props: any) {
   const authenticator = useDashboardAppSelector((state) => state.security.webauthn_authenticator);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
-  const spinnerRef = React.createRef();
-  // let spinner;
-
-  // useEffect(() => {
-  //   if (isPlatformAuthLoaded) {
-  //     // Spinner will be running until isPlatformAuthLoaded is updated to true
-  //     if (spinner !== undefined) {
-  //       spinner.stop();
-  //     }
-  //   }
-  // }, [isPlatformAuthLoaded]);
 
   useEffect(
     () => {
@@ -82,15 +69,6 @@ function Security(props: any) {
     [] // run this only once
   );
 
-  // useEffect(() => {
-  //   if (!isPlatformAuthLoaded && !spinner) {
-  //     // The spinner needs to be set up _after_ the spinnerRef is attached to it's <div>
-  //     if (spinnerRef.current) {
-  //       spinner = new Spinner(spinnerOpts).spin(spinnerRef.current);
-  //     }
-  //   }
-  // });
-
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -124,75 +102,78 @@ function Security(props: any) {
 
   return (
     <article id="security-container">
-      {/* {!isPlatformAuthLoaded && 
-      <div ref={spinnerRef} id="eduid-splash-screen" />} */}
-      <div id="register-securitykey-container">
-        <div className="intro">
-          <h3>{translate("security.security-key_title")}</h3>
-          <p>{translate("security.second-factor")}</p>
-        </div>
-        <div id="register-webauthn-tokens-area" className="table-responsive">
-          <SecurityKeyTable credentials={credentials} />
-          <label>
-            <FormattedMessage
-              description="select extra webauthn"
-              defaultMessage={`Choose extra identification method:`}
-            />
-          </label>
-          <div className="buttons">
-            {isPlatformAuthenticatorAvailable ? (
+      <Splash showChildren={isPlatformAuthLoaded}>
+        <div id="register-security-key-container">
+          <div className="intro">
+            <h3>{translate("security.security-key_title")}</h3>
+            <p>{translate("security.second-factor")}</p>
+          </div>
+          <div id="register-webauthn-tokens-area" className="table-responsive">
+            <SecurityKeyTable credentials={credentials} />
+            <label>
+              <FormattedMessage
+                description="select extra webauthn"
+                defaultMessage={`Choose extra identification method:`}
+              />
+            </label>
+            <div className="buttons">
+              <Splash showChildren={isPlatformAuthenticatorAvailable}>
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-platform-button"
+                    buttonstyle="primary"
+                    onClick={handleStartAskingDeviceWebauthnDescription}
+                  >
+                    <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn device help text"
+                      defaultMessage={`Touch/ Face ID on this device.`}
+                    />
+                  </p>
+                </div>
+              </Splash>
               <div>
                 <EduIDButton
-                  id="security-webauthn-platform-button"
+                  id="security-webauthn-button"
                   buttonstyle="primary"
-                  onClick={props.handleStartAskingDeviceWebauthnDescription}
+                  onClick={handleStartAskingKeyWebauthnDescription}
                 >
-                  <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                  <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
                 </EduIDButton>
                 <p className="help-text">
-                  <FormattedMessage
-                    description="platform authn device help text"
-                    defaultMessage={`Touch/ Face ID on this device.`}
-                  />
+                  <FormattedMessage description="platform authn key help text" defaultMessage={`USB Security Key.`} />
                 </p>
               </div>
-            ) : null}
-            <div>
-              <EduIDButton
-                id="security-webauthn-button"
-                buttonstyle="primary"
-                onClick={handleStartAskingDeviceWebauthnDescription}
-              >
-                <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
-              </EduIDButton>
-              <p className="help-text">
-                <FormattedMessage description="platform authn key help text" defaultMessage={`USB Security Key.`} />
-              </p>
             </div>
           </div>
         </div>
-      </div>
-      <ConfirmModal
-        id="describe-webauthn-token-modal"
-        title={
-          <FormattedMessage
-            description="security webauthn describe title"
-            defaultMessage={`Add a name for your security key`}
-          />
-        }
-        placeholder={placeholder}
-        showModal={Boolean(webauthn_asking_description)}
-        closeModal={handleStopAskingWebauthnDescription}
-        handleConfirm={handleStartWebauthnRegistration}
-        modalFormLabel={
-          <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
-        }
-        validationPattern={securityKeyPattern}
-        validationError={"security.description_invalid_format"}
-        helpBlock={
-          <FormattedMessage defaultMessage={`max 50 characters`} description="Help text for security key max length" />
-        }
-      />
+        <ConfirmModal
+          id="describe-webauthn-token-modal"
+          title={
+            <FormattedMessage
+              description="security webauthn describe title"
+              defaultMessage={`Add a name for your security key`}
+            />
+          }
+          placeholder={placeholder}
+          showModal={Boolean(webauthn_asking_description)}
+          closeModal={handleStopAskingWebauthnDescription}
+          handleConfirm={handleStartWebauthnRegistration}
+          modalFormLabel={
+            <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
+          }
+          validationPattern={securityKeyPattern}
+          validationError={"security.description_invalid_format"}
+          helpBlock={
+            <FormattedMessage
+              defaultMessage={`max 50 characters`}
+              description="Help text for security key max length"
+            />
+          }
+        />
+      </Splash>
     </article>
   );
 }
@@ -221,7 +202,7 @@ function SecurityKeyTable(props: any) {
   }
 
   // data that goes onto the table
-  const securitykey_table_data = tokens.map((cred: any, index: number) => {
+  const security_key_table_data = tokens.map((cred: any, index: number) => {
     // date created
     const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
     // date last used
@@ -235,7 +216,7 @@ function SecurityKeyTable(props: any) {
     if (cred.verified) {
       btnVerify = (
         <label
-          className="nobutton verified"
+          className="no button verified"
           // disabled
         >
           {translate("security.verified")}
@@ -286,7 +267,7 @@ function SecurityKeyTable(props: any) {
           <th className="security-verify-link" />
           <th className="security-remove-data" />
         </tr>
-        {securitykey_table_data}
+        {security_key_table_data}
       </tbody>
     </table>
   );
