@@ -11,11 +11,12 @@ import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hook
 import {
   postRemoveWebauthnToken,
   postVerifyWebauthnToken,
-  startWebauthnRegistration,
+  // startWebauthnRegistration,
   // startAskWebauthnDescription,
   // stopAskWebauthnDescription,
-  chooseAuthenticator,
+  // chooseAuthenticator,
 } from "actions/Security";
+import { beginRegisterWebauthn, createRegisterWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 
@@ -80,14 +81,14 @@ function Security(props: any) {
 
   function handleStartAskingDeviceWebauthnDescription() {
     dispatch(clearNotifications());
-    dispatch(chooseAuthenticator("platform"));
+    dispatch(securitySlice.actions.chooseAuthenticator("platform"));
     setShowModal(true);
     // dispatch(startAskWebauthnDescription());
   }
 
   function handleStartAskingKeyWebauthnDescription() {
     dispatch(clearNotifications());
-    dispatch(chooseAuthenticator("cross-platform"));
+    dispatch(securitySlice.actions.chooseAuthenticator("cross-platform"));
     setShowModal(true);
     // dispatch(startAskWebauthnDescription());
   }
@@ -97,11 +98,14 @@ function Security(props: any) {
     // dispatch(stopAskWebauthnDescription());
   }
 
-  function handleStartWebauthnRegistration() {
+  async function handleStartWebauthnRegistration() {
     const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
     const descriptionValue = description?.value.trim();
     setShowModal(false);
-    dispatch(startWebauthnRegistration(descriptionValue));
+    const resp = await dispatch(beginRegisterWebauthn());
+    if (beginRegisterWebauthn.fulfilled.match(resp)) {
+      dispatch(createRegisterWebauthn());
+    }
   }
 
   return (
