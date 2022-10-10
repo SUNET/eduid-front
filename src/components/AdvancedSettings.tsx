@@ -11,7 +11,7 @@ export function AdvancedSettings(): JSX.Element {
 
   useEffect(() => {
     document.title = intl.formatMessage({
-      id: "document title Settings",
+      id: "document title Advanced Settings",
       defaultMessage: "Advanced Settings | eduID",
     });
   }, []);
