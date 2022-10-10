@@ -5,7 +5,7 @@
   header {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1.5rem;
     align-items: center;
 
     .eduid-logo {
@@ -16,6 +16,8 @@
       background-repeat: no-repeat;
       margin: 0;
       display: inline-block;
+      position: absolute;
+      left: 1rem;
 
       @media (max-width: $bp-md) {
         width: 99px;
@@ -37,6 +39,8 @@
 
     button {
       order: 3;
+      position: absolute;
+      right: 1rem;
     }
 
     @media (max-width: $bp-sm) {
