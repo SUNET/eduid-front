@@ -7,9 +7,6 @@ import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
 import EduIDButton from "components/EduIDButton";
-import AccordionItemTemplate from "components/AccordionItemTemplate";
-// import AccordionItemTemplate from "./AccordionItemTemplate";
-// import EduIDButton from "./EduIDButton";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
