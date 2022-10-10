@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUseOtherDevice2, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
@@ -324,7 +325,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
 
           <div className="warning-text">
             <span className="warning-symbol">
-              <FontAwesomeIcon icon={faExclamationCircle} />
+              <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
             </span>
             <span>
               <FormattedMessage
