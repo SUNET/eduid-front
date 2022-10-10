@@ -15,7 +15,7 @@ function ChangePassword() {
 
   useEffect(() => {
     document.title = intl.formatMessage({
-      id: "document title Change Password ",
+      id: "document title Change Password",
       defaultMessage: "Change Password | eduID",
     });
   }, []);
