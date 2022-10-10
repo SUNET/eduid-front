@@ -11,9 +11,9 @@ function DashboardNav(): JSX.Element {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   return (
-    <nav id="dashboard-nav" className="horizontal-content-margin">
+    <nav id="dashboard-nav">
       <Splash showChildren={isLoaded} className="nav-splash-spinner">
-        <ul>
+        <ul className="horizontal-content-margin">
           <li>
             <NavLink className={({ isActive }) => (isActive ? activeClassName : undefined)} to="/profile/" end>
               <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
