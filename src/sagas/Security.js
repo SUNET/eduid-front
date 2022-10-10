@@ -142,48 +142,49 @@ export function* verifyWebauthnToken(win) {
   }
 }
 
-export function* beginRegisterWebauthn() {
-  try {
-    const state = yield select((state) => state);
-    //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
-    const data = {
-      csrf_token: state.config.csrf_token,
-      authenticator: state.security.webauthn_authenticator,
-    };
-    const action = yield call(beginWebauthnRegistration, state.config, data);
-    if (action.type === POST_WEBAUTHN_BEGIN_SUCCESS) {
-      yield put(putCsrfToken(action));
-      if (action.payload.registration_data !== undefined) {
-        const attestation = yield call(
-          navigator.credentials.create.bind(navigator.credentials),
-          action.payload.registration_data
-        );
-        action.payload.attestation = attestation;
-      }
-    }
-    yield put(action);
-  } catch (error) {
-    console.log("Problem beginning webauthn registration", error);
-    yield* failRequest(error, beginWebauthnFail);
-  }
-}
+//TODO: remove after convert to thunk
+// export function* beginRegisterWebauthn() {
+//   try {
+//     const state = yield select((state) => state);
+//     //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
+//     const data = {
+//       csrf_token: state.config.csrf_token,
+//       authenticator: state.security.webauthn_authenticator,
+//     };
+//     const action = yield call(beginWebauthnRegistration, state.config, data);
+//     if (action.type === POST_WEBAUTHN_BEGIN_SUCCESS) {
+//       yield put(putCsrfToken(action));
+//       if (action.payload.registration_data !== undefined) {
+//         const attestation = yield call(
+//           navigator.credentials.create.bind(navigator.credentials),
+//           action.payload.registration_data
+//         );
+//         action.payload.attestation = attestation;
+//       }
+//     }
+//     yield put(action);
+//   } catch (error) {
+//     console.log("Problem beginning webauthn registration", error);
+//     yield* failRequest(error, beginWebauthnFail);
+//   }
+// }
 
-export function beginWebauthnRegistration(config, data) {
-  return window
-    .fetch(config.security_url + "webauthn/register/begin", {
-      ...postRequest,
-      body: JSON.stringify(data),
-    })
-    .then(checkStatus)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.payload.registration_data !== undefined) {
-        response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data);
-      }
-      console.log("Action config: ", response);
-      return response;
-    });
-}
+// export function beginWebauthnRegistration(config, data) {
+//   return window
+//     .fetch(config.security_url + "webauthn/register/begin", {
+//       ...postRequest,
+//       body: JSON.stringify(data),
+//     })
+//     .then(checkStatus)
+//     .then((response) => response.json())
+//     .then((response) => {
+//       if (response.payload.registration_data !== undefined) {
+//         response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data);
+//       }
+//       console.log("Action config: ", response);
+//       return response;
+//     });
+// }
 
 export function* registerWebauthn() {
   try {

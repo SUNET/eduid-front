@@ -3,9 +3,58 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { safeDecodeCBOR } from "sagas/common";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
+
+/*********************************************************************************************************************/
+export interface CreateWebauthnResponse {
+  registration_data: any;
+}
+
+/**
+ * @public
+ * @function createRegisterWebauthn
+ * @desc Redux async thunk to get a suggested new password from the backend.
+ */
+export const createRegisterWebauthn = createAsyncThunk<
+  string,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/createRegisterWebauthn", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const body: KeyValues = {
+    authenticator: state.security.webauthn_authenticator,
+  };
+  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
+    .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface RegisterWebauthnResponse {
+  registration_data: any;
+}
+
+/**
+ * @public
+ * @function beginRegisterWebauthn
+ * @desc Redux async thunk to get a suggested new password from the backend.
+ */
+export const beginRegisterWebauthn = createAsyncThunk<
+  string,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/beginRegisterWebauthn", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const body: KeyValues = {
+    authenticator: state.security.webauthn_authenticator,
+  };
+  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
+    .then((response) => response.payload.registration_data)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 export interface SuggestedPasswordResponse {
