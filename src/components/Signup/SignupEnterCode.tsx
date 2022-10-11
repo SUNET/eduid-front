@@ -5,9 +5,9 @@ import { useContext, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import EduIDButton from "./EduIDButton";
-import { SignupGlobalStateContext } from "./Signup/SignupGlobalState";
-import { TimeRemainingWrapper } from "./TimeRemaining";
+import EduIDButton from "components/EduIDButton";
+import { SignupGlobalStateContext } from "./SignupGlobalState";
+import { TimeRemainingWrapper } from "components/TimeRemaining";
 
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;

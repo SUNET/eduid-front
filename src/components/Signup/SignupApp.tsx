@@ -4,8 +4,8 @@ import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { SignupEmailForm, RegisterEmail } from "login/components/RegisterEmail/SignupEmailForm";
 import { useContext, useEffect } from "react";
 import { useSignupAppDispatch } from "signup-hooks";
-import { SignupCredentials } from "./Signup/SignupCredentials";
-import { SignupToU } from "./Signup/SignupToU";
+import { SignupCredentials } from "./SignupCredentials";
+import { SignupToU } from "./SignupToU";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupEnterCode } from "./SignupEnterCode";
 

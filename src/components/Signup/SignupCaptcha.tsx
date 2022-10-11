@@ -2,8 +2,8 @@ import { sendCaptchaResponse } from "apis/eduidSignup";
 import { useContext } from "react";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch } from "signup-hooks";
-import Captcha from "./Captcha";
-import { SignupGlobalStateContext } from "./Signup/SignupGlobalState";
+import Captcha from "components/Captcha";
+import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCaptcha() {
   const dispatch = useSignupAppDispatch();

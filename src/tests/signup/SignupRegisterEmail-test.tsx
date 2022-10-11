@@ -1,4 +1,4 @@
-import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
+import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

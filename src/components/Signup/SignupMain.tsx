@@ -5,9 +5,9 @@ import Footer from "login/components/Footer/Footer";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
-import "../login/styles/index.scss";
-import CodeVerified from "./CodeVerified";
-import { SignupGlobalStateProvider } from "./Signup/SignupGlobalState";
+import "login/styles/index.scss";
+import CodeVerified from "components/CodeVerified";
+import { SignupGlobalStateProvider } from "./SignupGlobalState";
 import { SignupApp } from "./SignupApp";
 
 // export for use in tests
