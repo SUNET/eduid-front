@@ -12,6 +12,8 @@ export const SIGNUP_SERVICE_URL = "/services/signup";
 export interface SignupStatusResponse {
   email_verification: {
     email?: string;
+    expires_time_left?: number;
+    expires_time_max?: number;
     verified: boolean;
     sent_at?: string;
     throttle_time_left?: number;
@@ -23,6 +25,7 @@ export interface SignupStatusResponse {
     finish_url?: string;
     completed: boolean;
   };
+  tou_version?: string;
   tou_accepted: boolean;
   captcha_completed: boolean;
   credential_added: boolean;
@@ -92,6 +95,31 @@ export const registerEmailRequest = createAsyncThunk<
   };
 
   return makeSignupRequest<SignupStatusResponse>(thunkAPI, "register-email", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface VerifyEmailRequest {
+  verification_code: string;
+}
+
+/**
+ * @public
+ * @function VerifyEmailRequest
+ * @desc Redux async thunk to send the verification code for an email address to the backend.
+ */
+export const verifyEmailRequest = createAsyncThunk<
+  SignupStatusResponse, // return type
+  VerifyEmailRequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/verifyEmailRequest", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    verification_code: args.verification_code,
+  };
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "verify-email", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

@@ -6,8 +6,8 @@ interface ResponseCodeFormProps {
   bad_attempts?: number;
   children?: React.ReactNode;
   code?: string;
+  handleSubmitCode(values: ResponseCodeValues): void;
   inputsDisabled: boolean;
-  handleSubmitCode: (values: ResponseCodeValues) => undefined;
 }
 
 export interface ResponseCodeValues {

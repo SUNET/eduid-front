@@ -81,6 +81,9 @@ export function createSignupMachine() {
           CODE_COMPLETE: {
             target: "ProcessEmailCode",
           },
+          CODE_FAIL: {
+            target: "SignupEmailForm",
+          },
         },
       },
       ProcessEmailCode: {

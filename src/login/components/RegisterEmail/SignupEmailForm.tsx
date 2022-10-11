@@ -1,13 +1,14 @@
+import { registerEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import EmailInput from "../Inputs/EmailInput";
 
-export default function SignupEmailForm(): JSX.Element {
+export function SignupEmailForm(): JSX.Element {
   const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
 
   const login_here_link = (
@@ -92,4 +93,32 @@ function EmailForm() {
       }}
     />
   );
+}
+
+export function RegisterEmail() {
+  const dispatch = useSignupAppDispatch();
+  const signupContext = useContext(SignupGlobalStateContext);
+  const email = useSignupAppSelector((state) => state.signup.email);
+
+  if (!email) {
+    signupContext.signupService.send({ type: "EMAIL_FAIL" });
+    return null;
+  }
+
+  async function registerEmail(email: string) {
+    const res = await dispatch(registerEmailRequest({ email }));
+
+    if (registerEmailRequest.fulfilled.match(res)) {
+      signupContext.signupService.send({ type: "EMAIL_SUCCESS" });
+    } else {
+      signupContext.signupService.send({ type: "EMAIL_FAIL" });
+    }
+  }
+
+  useEffect(() => {
+    registerEmail(email);
+  }, []);
+
+  // Show a blank screen while we wait for the response from the backend
+  return null;
 }
