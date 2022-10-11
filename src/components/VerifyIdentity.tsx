@@ -3,10 +3,10 @@ import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { CircleFlag } from "react-circle-flags";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
@@ -17,6 +17,7 @@ type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const intl = useIntl();
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
@@ -28,6 +29,13 @@ function VerifyIdentity(): JSX.Element | null {
      */
     return null;
   }
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Identity",
+      defaultMessage: "Identity | eduID",
+    });
+  }, []);
 
   return (
     <Fragment>

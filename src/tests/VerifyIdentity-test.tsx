@@ -58,3 +58,8 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
     screen.getByRole("button", { name: "se Swedish personal ID number With a digital ID-card / By post / By phone ❯" })
   ).toBeInTheDocument();
 });
+
+test("renders the identity page title", () => {
+  render(<VerifyIdentity />);
+  expect(document.title).toContain("Identity");
+});

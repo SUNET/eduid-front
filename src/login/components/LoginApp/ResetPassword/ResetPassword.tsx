@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import ExtraSecurity from "./ExtraSecurity";
 import PhoneCodeSent from "./PhoneCodeSent";
@@ -13,6 +13,14 @@ function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
   const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
   const navigate = useNavigate();
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Reset Password",
+      defaultMessage: "Reset Password | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     if (goto_url) {
