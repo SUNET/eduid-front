@@ -22,6 +22,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("SignupEmailForm") && <SignupEmailForm />}
       {state.matches("SignupCaptcha") && <SignupCaptcha />}
       {state.matches("ProcessCaptcha") && <ProcessCaptcha />}
+      {state.matches("SignupToU") && <SignupToU />}
       {state.matches("SignupEnterCode") && <SignupEnterCode />}
     </div>
   );
