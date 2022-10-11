@@ -1,117 +1,65 @@
-import Eidas from "components/Eidas";
-import LetterProofingButton from "components/LetterProofing";
 import VerifyIdentity from "components/VerifyIdentity";
-import { DashboardRootState } from "dashboard-init-app";
-import { ReactWrapper, shallow } from "enzyme";
-import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import { IntlProvider } from "react-intl";
-import { MockStoreEnhanced } from "redux-mock-store";
-import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+import { act } from "react-dom/test-utils";
+import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
-// I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
-// My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
-
-// Comment N: This component just renders <AddNin /> and displays the vetting buttons, so I think these rendering test might be enough
-
-describe("VerifyIdentity component", () => {
-  it("Does not render 'false' or 'null'", () => {
-    const wrapper = shallow(
-      <IntlProvider locale="en">
-        <VerifyIdentity />
-      </IntlProvider>
-    );
-    expect(wrapper.isEmptyRender()).toEqual(false);
+test("renders verifyIdentity, non verified user", async () => {
+  render(<VerifyIdentity />);
+  expect(screen.getByRole("heading", { name: /Connect your identity to your eduID/i })).toBeInTheDocument();
+  // show two options for verification, swedish id and eu id
+  const swedishAccordion = screen.getByRole("button", { name: /swedish personal ID number With a digital ID-card/i });
+  expect(swedishAccordion).toBeEnabled();
+  const eidasAccordion = screen.getByRole("button", { name: /EU citizen/i });
+  expect(eidasAccordion).toBeEnabled();
+  // click swedish id option, expanded accordion
+  act(() => {
+    swedishAccordion.click();
+  });
+  await waitFor(() => {
+    expect(screen.getByRole("heading", { name: /Add your id number/i })).toBeInTheDocument();
+  });
+  act(() => {
+    eidasAccordion.click();
+  });
+  await waitFor(() => {
+    expect(screen.getByText(/If you have an electronic ID from a country connected to eIDAS/i)).toBeInTheDocument();
   });
 });
 
-describe("VerifyIdentity component, no nin added ", () => {
-  let store: MockStoreEnhanced<DashboardRootState>;
-  let state;
-  let wrapper: ReactWrapper;
-
-  beforeEach(() => {
-    // re-init store and state before each test to get isolation
-    store = fakeStore({
-      ...dashboardTestState,
-      config: {
-        ...dashboardTestState.config,
-        is_configured: true,
-        eidas_url: "http://localhost/eidas",
-        token_verify_idp: "token-idp",
-      },
-      openid_data: {},
-      openid_freja_data: {},
-    });
-    state = store.getState();
-
-    wrapper = setupComponent({
-      component: <VerifyIdentity />,
-      store: store,
-    });
+test("renders verifyIdentity as expected, verified user with swedish person number", async () => {
+  render(<VerifyIdentity />, {
+    state: {
+      config: { ...configInitialState, is_app_loaded: true },
+      identities: { is_verified: true, nin: { number: "190102031234", verified: true } },
+    },
   });
-
-  it("Renders a header", () => {
-    const header = wrapper.find("h4");
-    expect(header.exists()).toEqual(true);
-    // Two steps displayed: 1. add NIN 2. choose option below
-    expect(header.length).toEqual(2);
-  });
-
-  it("Renders Letter Proofing ", () => {
-    const component = wrapper.find(LetterProofingButton);
-    expect(component.exists()).toEqual(true);
-
-    // vetting option should be disabled when there is no NIN
-    expect(component.find("button").prop("disabled")).toEqual(true);
-  });
-
-  it("Renders Mobile Proofing ", () => {
-    const component = wrapper.find(LookupMobileProofing);
-    expect(component.exists()).toEqual(true);
-
-    // vetting option should be disabled when there is no NIN
-    expect(component.find("button").prop("disabled")).toEqual(true);
-  });
-
-  it("Renders Freja Proofing ", () => {
-    const component = wrapper.find(Eidas);
-    expect(component.exists()).toEqual(true);
-
-    // vetting option should be enabled, even when there is no NIN
-    expect(component.find("button").prop("disabled")).toBeFalsy();
-  });
+  expect(
+    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i })
+  ).toBeInTheDocument();
+  expect(screen.getByText(/19010203/i)).toBeInTheDocument();
 });
 
-describe("VerifyIdentity component, NIN already added ", () => {
-  let store: MockStoreEnhanced<DashboardRootState>;
-  let state;
-  let wrapper: ReactWrapper;
-
-  beforeEach(() => {
-    // re-init store and state before each test to get isolation
-    store = fakeStore({
-      ...dashboardTestState,
-      config: {
-        ...dashboardTestState.config,
-        is_configured: true,
-        eidas_url: "http://localhost/eidas",
-        token_verify_idp: "token-idp",
+test("renders verifyIdentity as expected, verified with eidas", async () => {
+  render(<VerifyIdentity />, {
+    state: {
+      config: { ...configInitialState, is_app_loaded: true },
+      identities: {
+        is_verified: true,
+        eidas: { country_code: "1234", verified: true, date_of_birth: "19850101", prid: "prid", prid_persistence: "A" },
       },
-      identities: { nin: { number: "197801010000", verified: true }, is_verified: true },
-      openid_data: {},
-      openid_freja_data: {},
-    });
-    state = store.getState();
-
-    wrapper = setupComponent({
-      component: <VerifyIdentity />,
-      store: store,
-    });
+    },
   });
+  expect(
+    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i })
+  ).toBeInTheDocument();
+  expect(screen.getByText(/19850101/i)).toBeInTheDocument();
+  // after eidas verification, still showing swedish identification options
+  expect(
+    screen.getByRole("button", { name: "se Swedish personal ID number With a digital ID-card / By post / By phone ❯" })
+  ).toBeInTheDocument();
+});
 
-  it("Renders a header", () => {
-    const header = wrapper.find("h4").first();
-    expect(header.exists()).toEqual(true);
-    expect(header.text()).toContain("ready to use");
-  });
+test("renders the identity page title", () => {
+  render(<VerifyIdentity />);
+  expect(document.title).toContain("Identity");
 });

@@ -17,7 +17,7 @@ import {
   removeWebauthnToken,
   requestCredentials,
   requestPasswordChange,
-  verifyWebauthnToken
+  verifyWebauthnToken,
 } from "sagas/Security";
 import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
 import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
@@ -45,8 +45,8 @@ function* rootSaga() {
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
     takeEvery(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS, requestNins),
     takeEvery(headerActions.POST_LOGOUT, requestLogout),
-    takeLatest(securityActions.START_WEBAUTHN_REGISTRATION, beginRegisterWebauthn),
-    takeLatest(securityActions.POST_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
+    // takeLatest(securityActions.START_WEBAUTHN_REGISTRATION, beginRegisterWebauthn),
+    // takeLatest(securityActions.POST_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
     takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
   ]);

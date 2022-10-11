@@ -16,7 +16,7 @@ import {
   // stopAskWebauthnDescription,
   // chooseAuthenticator,
 } from "actions/Security";
-import { beginRegisterWebauthn, createRegisterWebauthn } from "apis/eduidSecurity";
+import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 
@@ -103,10 +103,12 @@ function Security(props: any) {
     const descriptionValue = description?.value.trim();
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
+    console.log("resp", resp);
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      dispatch(createRegisterWebauthn());
+      dispatch(registerWebauthn({ descriptionValue }));
     }
   }
+  console.log("is");
 
   return (
     <article id="security-container">

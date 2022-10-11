@@ -3,37 +3,40 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { safeDecodeCBOR } from "sagas/common";
+import { safeDecodeCBOR, safeEncode } from "sagas/common";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
-export interface CreateWebauthnResponse {
-  registration_data: any;
-}
+// export interface RegisterWebauthnResponse {
+//   webauthn_attestation: any;
+// }
 
-/**
- * @public
- * @function createRegisterWebauthn
- * @desc Redux async thunk to get a suggested new password from the backend.
- */
-export const createRegisterWebauthn = createAsyncThunk<
-  string,
-  undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("security/createRegisterWebauthn", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const body: KeyValues = {
-    authenticator: state.security.webauthn_authenticator,
-  };
-  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
-    .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
+// /**
+//  * @public
+//  * @function registerWebauthn
+//  * @desc Redux async thunk to get a suggested new password from the backend.
+//  */
+// export const registerWebauthn = createAsyncThunk<
+//   string,
+//   { descriptionValue: string },
+//   { dispatch: DashboardAppDispatch; state: DashboardRootState }
+// >("security/registerWebauthn", async (args, thunkAPI) => {
+//   const state = thunkAPI.getState();
+//   const body: KeyValues = {
+//     attestationObject: safeEncode(state.security.webauthn_attestation?.response.attestationObject),
+//     clientDataJSON: safeEncode(state.security.webauthn_attestation?.response?.clientDataJSON),
+//     credentialId: state.security.webauthn_attestation?.id,
+//     description: args.descriptionValue,
+//   };
+//   return makeSecurityRequest<any>(thunkAPI, "webauthn/register/complete", body)
+//     .then((response) => response.payload.webauthn_attestation)
+//     .catch((err) => thunkAPI.rejectWithValue(err));
+// });
 
 /*********************************************************************************************************************/
-export interface RegisterWebauthnResponse {
+export interface beginRegisterWebauthn {
   registration_data: any;
 }
 
@@ -51,9 +54,12 @@ export const beginRegisterWebauthn = createAsyncThunk<
   const body: KeyValues = {
     authenticator: state.security.webauthn_authenticator,
   };
-  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
-    .then((response) => response.payload.registration_data)
-    .catch((err) => thunkAPI.rejectWithValue(err));
+  return (
+    makeSecurityRequest<beginRegisterWebauthn>(thunkAPI, "webauthn/register/begin", body)
+      // .then((response) => response.payload.registration_data)
+      .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
+      .catch((err) => thunkAPI.rejectWithValue(err))
+  );
 });
 
 /*********************************************************************************************************************/
