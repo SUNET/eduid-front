@@ -60,10 +60,9 @@ export const performAuthentication = createAsyncThunk(
 
 export const createAuthentication = createAsyncThunk(
   "eduid/credentials/createAuthentication",
-  async (webauthn_challenge: string, thunkAPI): Promise<webauthnAssertion | undefined> => {
-    const decoded_challenge = decodeChallenge(webauthn_challenge);
+  async (webauthn_challenge: any, thunkAPI): Promise<webauthnAssertion | undefined> => {
     const assertion = await navigator.credentials
-      .create(decoded_challenge)
+      .create(webauthn_challenge)
       .then()
       .catch(() => {
         // assertion failed / cancelled

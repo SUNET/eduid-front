@@ -20,6 +20,7 @@ import { beginRegisterWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
+import { storeCsrfToken } from "commonConfig";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -107,8 +108,7 @@ function Security(props: any) {
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      const assertion = await navigator.credentials.create();
-      // dispatch(createAuthentication(resp.payload));
+      dispatch(createAuthentication(resp.payload));
       // dispatch(registerWebauthn({ descriptionValue }));
     }
   }

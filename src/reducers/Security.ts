@@ -84,10 +84,9 @@ const securitySlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
-    builder.addCase(beginRegisterWebauthn.fulfilled, (state, action: PayloadAction<any>) => {
-      state.webauthn_attestation = action.payload;
-    });
-
+    // builder.addCase(beginRegisterWebauthn.fulfilled, (state, action: PayloadAction<any>) => {
+    //   state.webauthn_attestation = action.payload;
+    // });
     // builder.addCase(getCredentials.fulfilled, (state, action: PayloadAction<any>) => {});
     // builder.addCase(postDeleteAccount.fulfilled, (state, action: PayloadAction<any>) => {
     //   state.location = action.payload.location;

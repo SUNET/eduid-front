@@ -54,12 +54,9 @@ export const beginRegisterWebauthn = createAsyncThunk<
   const body: KeyValues = {
     authenticator: state.security.webauthn_authenticator,
   };
-  return (
-    makeSecurityRequest<beginRegisterWebauthn>(thunkAPI, "webauthn/register/begin", body)
-      // .then((response) => response.payload.registration_data)
-      .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
-      .catch((err) => thunkAPI.rejectWithValue(err))
-  );
+  return makeSecurityRequest<beginRegisterWebauthn>(thunkAPI, "webauthn/register/begin", body)
+    .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
+    .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
