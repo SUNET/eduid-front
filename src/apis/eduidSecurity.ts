@@ -25,7 +25,7 @@ import { FetchIdentitiesResponse } from "./eduidPersonalData";
 // >("security/registerWebauthn", async (args, thunkAPI) => {
 //   const state = thunkAPI.getState();
 //   const body: KeyValues = {
-//     attestationObject: safeEncode(state.security.webauthn_attestation?.response.attestationObject),
+//     attestationObject: safeEncode(state.security.webauthn_attestation?.attestationObject),
 //     clientDataJSON: safeEncode(state.security.webauthn_attestation?.response?.clientDataJSON),
 //     credentialId: state.security.webauthn_attestation?.id,
 //     description: args.descriptionValue,

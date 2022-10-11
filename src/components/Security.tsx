@@ -16,9 +16,10 @@ import {
   // stopAskWebauthnDescription,
   // chooseAuthenticator,
 } from "actions/Security";
-import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
+import { beginRegisterWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
+import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -32,7 +33,9 @@ function Security(props: any) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  // remove after check state
+  const security = useDashboardAppSelector((state) => state.security);
+  console.log("securityr", security);
   useEffect(
     () => {
       // Check if platform authentication is available through the navigator.credentials API.
@@ -103,12 +106,12 @@ function Security(props: any) {
     const descriptionValue = description?.value.trim();
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
-    console.log("resp", resp);
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      dispatch(registerWebauthn({ descriptionValue }));
+      const assertion = await navigator.credentials.create();
+      // dispatch(createAuthentication(resp.payload));
+      // dispatch(registerWebauthn({ descriptionValue }));
     }
   }
-  console.log("is");
 
   return (
     <article id="security-container">
