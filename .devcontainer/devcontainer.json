@@ -24,7 +24,8 @@
 	"orta.vscode-jest",
 	"streetsidesoftware.code-spell-checker",
 	"idered.npm",
-	"statelyai.stately-vscode"
+	"statelyai.stately-vscode",
+	"GitHub.copilot"
 ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
