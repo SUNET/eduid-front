@@ -28,5 +28,5 @@ test("renders AccountId as expected", () => {
 
   expect(screen.getByLabelText("eppn")).toHaveTextContent(test_eppn);
   // renders the advanced settings page title
-  expect(document.title).toBe("Advanced Settings | eduID");
+  expect(document.title).toContain("Advanced Settings");
 });

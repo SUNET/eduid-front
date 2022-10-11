@@ -46,5 +46,5 @@ test("redirects from slash", () => {
 
 test("renders the register page title", () => {
   render(<SignupMain />);
-  expect(document.title).toBe("Register | eduID");
+  expect(document.title).toContain("Register");
 });

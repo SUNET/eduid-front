@@ -61,5 +61,5 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
 
 test("renders the identity page title", () => {
   render(<VerifyIdentity />);
-  expect(document.title).toBe("Identity | eduID");
+  expect(document.title).toContain("Identity");
 });

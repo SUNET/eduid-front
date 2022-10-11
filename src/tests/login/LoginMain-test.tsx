@@ -77,5 +77,5 @@ test("renders UsernamePw as expected", async () => {
 
 test("renders the login page title", () => {
   render(<LoginMain />);
-  expect(document.title).toBe("Log in | eduID");
+  expect(document.title).toContain("Log in");
 });
