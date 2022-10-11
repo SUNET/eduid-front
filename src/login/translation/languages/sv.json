@@ -1177,7 +1177,7 @@
   },
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Bekräftelsekod"
+    "string": "Verifieringskod"
   },
   "j8KKR3": {
     "developer_comment": "platform authn help text",
