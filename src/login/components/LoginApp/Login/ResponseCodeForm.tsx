@@ -28,7 +28,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
         // Add the formProps to all the children of this component. The children are typically buttons,
         // and they need to know some of the formProps to know if they should be disabled or not.
         const childrenWithProps = React.Children.map(props.children, (child) => {
-          if (React.isValidElement(child)) {
+          if (React.isValidElement<{ formProps: any }>(child)) {
             return React.cloneElement(child, { formProps });
           }
           return child;
