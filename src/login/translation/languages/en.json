@@ -903,6 +903,33 @@
   "dashboard.tagline_verified": {
     "string": "Make eduID more secure"
   },
+  "document title Advanced Settings": {
+    "string": "Advanced Settings | eduID"
+  },
+  "document title Change Password": {
+    "string": "Change Password | eduID"
+  },
+  "document title Identity": {
+    "string": "Identity | eduID"
+  },
+  "document title Log in": {
+    "string": "Log in | eduID"
+  },
+  "document title Log in using another device": {
+    "string": "Log in using another device | eduID"
+  },
+  "document title Profile": {
+    "string": "Profile | eduID"
+  },
+  "document title Register": {
+    "string": "Register | eduID"
+  },
+  "document title Reset Password": {
+    "string": "Reset Password | eduID"
+  },
+  "document title Settings": {
+    "string": "Settings | eduID"
+  },
   "eIAbQF": {
     "developer_comment": "Dashboard AccountId",
     "string": "This is an automatically generated unique identifier for your eduID."
