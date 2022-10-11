@@ -903,6 +903,33 @@
   "dashboard.tagline_verified": {
     "string": "Gör ditt eduID säkrare"
   },
+  "document title Advanced Settings": {
+    "string": "Avancerade Inställningar | eduID"
+  },
+  "document title Change Password": {
+    "string": "Byt Lösenord | eduID"
+  },
+  "document title Identity": {
+    "string": "Identitet | eduID"
+  },
+  "document title Log in": {
+    "string": "Logga in | eduID"
+  },
+  "document title Log in using another device": {
+    "string": "Logga in med hjälp av en annan enhet | eduID"
+  },
+  "document title Profile": {
+    "string": "Profil | eduID"
+  },
+  "document title Register": {
+    "string": "Registrera | eduID"
+  },
+  "document title Reset Password": {
+    "string": "Återställ Lösenord | eduID"
+  },
+  "document title Settings": {
+    "string": "Inställningar | eduID"
+  },
   "eIAbQF": {
     "developer_comment": "Dashboard AccountId",
     "string": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support."
