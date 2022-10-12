@@ -1,8 +1,8 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const GET_CREDENTIALS = "GET_CREDENTIALS";
-export const GET_CREDENTIALS_SUCCESS = "GET_SECURITY_CREDENTIALS_SUCCESS";
-export const GET_CREDENTIALS_FAIL = "GET_SECURITY_CREDENTIALS_FAIL";
+// export const GET_CREDENTIALS = "GET_CREDENTIALS";
+// export const GET_CREDENTIALS_SUCCESS = "GET_SECURITY_CREDENTIALS_SUCCESS";
+// export const GET_CREDENTIALS_FAIL = "GET_SECURITY_CREDENTIALS_FAIL";
 
 export const GET_CHANGE_PASSWORD = "GET_CHANGE_PASSWORD";
 export const GET_CHANGE_PASSWORD_SUCCESS = "GET_CHANGE_PASSWORD_SUCCESS";
@@ -29,21 +29,21 @@ export const POST_WEBAUTHN_VERIFY = "POST_WEBAUTHN_VERIFY";
 export const POST_WEBAUTHN_VERIFY_FAIL = "POST_WEBAUTHN_VERIFY_FAIL";
 export const AUTHENTICATOR = "AUTHENTICATOR";
 
-export function getCredentials() {
-  return {
-    type: GET_CREDENTIALS,
-  };
-}
+// export function getCredentials() {
+//   return {
+//     type: GET_CREDENTIALS,
+//   };
+// }
 
-export function getCredentialsFail(err) {
-  return {
-    type: GET_CREDENTIALS_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+// export function getCredentialsFail(err) {
+//   return {
+//     type: GET_CREDENTIALS_FAIL,
+//     error: true,
+//     payload: {
+//       message: err,
+//     },
+//   };
+// }
 
 // this action doesn't GET anything, it starts SHOWING the change password components
 export const initiatePasswordChange = createAction(GET_CHANGE_PASSWORD);
@@ -99,25 +99,25 @@ export function accountRemovedFail(err) {
 //   };
 // }
 
-export function beginWebauthnFail(err) {
-  return {
-    type: POST_WEBAUTHN_BEGIN_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+// export function beginWebauthnFail(err) {
+//   return {
+//     type: POST_WEBAUTHN_BEGIN_FAIL,
+//     error: true,
+//     payload: {
+//       message: err,
+//     },
+//   };
+// }
 
-export function registerWebauthnFail(err) {
-  return {
-    type: POST_WEBAUTHN_REGISTER_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+// export function registerWebauthnFail(err) {
+//   return {
+//     type: POST_WEBAUTHN_REGISTER_FAIL,
+//     error: true,
+//     payload: {
+//       message: err,
+//     },
+//   };
+// }
 
 // export function postRemoveWebauthnToken(token) {
 //   return {
@@ -128,15 +128,15 @@ export function registerWebauthnFail(err) {
 //   };
 // }
 
-export function tokenRemovedFail(err) {
-  return {
-    type: POST_WEBAUTHN_REMOVE_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+// export function tokenRemovedFail(err) {
+//   return {
+//     type: POST_WEBAUTHN_REMOVE_FAIL,
+//     error: true,
+//     payload: {
+//       message: err,
+//     },
+//   };
+// }
 
 export function postVerifyWebauthnToken(token) {
   return {
@@ -147,15 +147,15 @@ export function postVerifyWebauthnToken(token) {
   };
 }
 
-export function tokenVerifyFail(err) {
-  return {
-    type: POST_WEBAUTHN_VERIFY_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+// export function tokenVerifyFail(err) {
+//   return {
+//     type: POST_WEBAUTHN_VERIFY_FAIL,
+//     error: true,
+//     payload: {
+//       message: err,
+//     },
+//   };
+// }
 
 // export function chooseAuthenticator(choice) {
 //   return {
