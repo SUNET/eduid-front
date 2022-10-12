@@ -60,7 +60,7 @@ export const performAuthentication = createAsyncThunk(
 
 export const createAuthentication = createAsyncThunk(
   "eduid/credentials/createAuthentication",
-  async (webauthn_challenge: any, thunkAPI): Promise<webauthnAssertion | undefined> => {
+  async (webauthn_challenge: any, thunkAPI): Promise<any | undefined> => {
     const assertion = await navigator.credentials
       .create(webauthn_challenge)
       .then()
@@ -68,15 +68,16 @@ export const createAuthentication = createAsyncThunk(
         // assertion failed / cancelled
         return thunkAPI.rejectWithValue("Authentication failed, or was cancelled");
       });
-    if (assertion instanceof PublicKeyCredential && assertion.response instanceof AuthenticatorAssertionResponse) {
-      // encode the assertion into strings that can be stored in the state
-      const encoded_assertion: webauthnAssertion = {
-        credentialId: safeEncode(assertion.rawId),
-        authenticatorData: safeEncode(assertion.response.authenticatorData),
-        clientDataJSON: safeEncode(assertion.response.clientDataJSON),
-        signature: safeEncode(assertion.response.signature),
-      };
-      return encoded_assertion;
-    }
+    return assertion;
+    // if (assertion instanceof PublicKeyCredential && assertion.response instanceof AuthenticatorAssertionResponse) {
+    //   // encode the assertion into strings that can be stored in the state
+    //   const encoded_assertion: webauthnAssertion = {
+    //     credentialId: safeEncode(assertion.rawId),
+    //     authenticatorData: safeEncode(assertion.response.authenticatorData),
+    //     clientDataJSON: safeEncode(assertion.response.clientDataJSON),
+    //     signature: safeEncode(assertion.response.signature),
+    //   };
+    //   return encoded_assertion;
+    // }
   }
 );

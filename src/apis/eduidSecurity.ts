@@ -9,31 +9,31 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
-// export interface RegisterWebauthnResponse {
-//   webauthn_attestation: any;
-// }
+export interface RegisterWebauthnResponse {
+  webauthn_attestation: any;
+}
 
-// /**
-//  * @public
-//  * @function registerWebauthn
-//  * @desc Redux async thunk to get a suggested new password from the backend.
-//  */
-// export const registerWebauthn = createAsyncThunk<
-//   string,
-//   { descriptionValue: string },
-//   { dispatch: DashboardAppDispatch; state: DashboardRootState }
-// >("security/registerWebauthn", async (args, thunkAPI) => {
-//   const state = thunkAPI.getState();
-//   const body: KeyValues = {
-//     attestationObject: safeEncode(state.security.webauthn_attestation?.attestationObject),
-//     clientDataJSON: safeEncode(state.security.webauthn_attestation?.response?.clientDataJSON),
-//     credentialId: state.security.webauthn_attestation?.id,
-//     description: args.descriptionValue,
-//   };
-//   return makeSecurityRequest<any>(thunkAPI, "webauthn/register/complete", body)
-//     .then((response) => response.payload.webauthn_attestation)
-//     .catch((err) => thunkAPI.rejectWithValue(err));
-// });
+/**
+ * @public
+ * @function registerWebauthn
+ * @desc Redux async thunk to get a suggested new password from the backend.
+ */
+export const registerWebauthn = createAsyncThunk<
+  string,
+  { descriptionValue: string },
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/registerWebauthn", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const body: KeyValues = {
+    attestationObject: safeEncode(state.security.webauthn_attestation?.response.attestationObject),
+    clientDataJSON: safeEncode(state.security.webauthn_attestation?.response.clientDataJSON),
+    credentialId: state.security.webauthn_attestation?.id,
+    description: args.descriptionValue,
+  };
+  return makeSecurityRequest<any>(thunkAPI, "webauthn/register/complete", body)
+    .then((response) => response.payload.webauthn_attestation)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 export interface beginRegisterWebauthn {

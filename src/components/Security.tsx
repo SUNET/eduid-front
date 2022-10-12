@@ -16,11 +16,12 @@ import {
   // stopAskWebauthnDescription,
   // chooseAuthenticator,
 } from "actions/Security";
-import { beginRegisterWebauthn } from "apis/eduidSecurity";
+import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
 import { storeCsrfToken } from "commonConfig";
+// import { registerWebauthn } from "sagas/Security";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -108,7 +109,9 @@ function Security(props: any) {
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      dispatch(createAuthentication(resp.payload));
+      const response = await dispatch(createAuthentication(resp.payload));
+      console.log("authenticator", authenticator);
+      if (createAuthentication.fulfilled.match(response)) dispatch(registerWebauthn({ descriptionValue }));
       // dispatch(registerWebauthn({ descriptionValue }));
     }
   }
