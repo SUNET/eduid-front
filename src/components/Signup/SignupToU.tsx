@@ -10,11 +10,11 @@ export function SignupToU(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
 
   function handleAccept() {
-    signupContext.signupService.send({ type: "TOU_SUCCESS" });
+    signupContext.signupService.send({ type: "COMPLETE" });
   }
 
   function handleCancel() {
-    signupContext.signupService.send({ type: "TOU_FAIL" });
+    signupContext.signupService.send({ type: "ABORT" });
   }
 
   return (

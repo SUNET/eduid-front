@@ -15,15 +15,14 @@ export function SignupCaptcha() {
 
   async function handleCaptchaCompleted(recaptcha_response: string) {
     if (recaptcha_response) {
-      const res = await dispatch(sendCaptchaResponse({ recaptcha_response }));
-      signupContext.signupService.send({ type: "CAPTCHA_COMPLETE" });
+      signupContext.signupService.send({ type: "COMPLETE" });
 
-      if (sendCaptchaResponse.fulfilled.match(res)) {
-        if (res.payload.captcha.completed === true) {
-          signupContext.signupService.send({ type: "CAPTCHA_SUCCESS" });
-        } else {
-          signupContext.signupService.send({ type: "CAPTCHA_FAIL" });
-        }
+      const res = await dispatch(sendCaptchaResponse({ recaptcha_response }));
+
+      if (sendCaptchaResponse.fulfilled.match(res) && res.payload.captcha.completed === true) {
+        signupContext.signupService.send({ type: "API_SUCCESS" });
+      } else {
+        signupContext.signupService.send({ type: "API_FAIL" });
       }
     }
   }

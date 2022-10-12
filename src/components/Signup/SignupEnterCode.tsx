@@ -25,7 +25,7 @@ export function SignupEnterCode(): JSX.Element {
 
   function handleAbortButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    signupContext.signupService.send({ type: "CODE_FAIL" });
+    signupContext.signupService.send({ type: "ABORT" });
   }
 
   async function handleSubmitCode(values: ResponseCodeValues) {
@@ -37,17 +37,13 @@ export function SignupEnterCode(): JSX.Element {
       const digits = match[0];
 
       if (digits) {
-        signupContext.signupService.send({ type: "CODE_COMPLETE" });
+        signupContext.signupService.send({ type: "COMPLETE" });
         const res = await dispatch(verifyEmailRequest({ verification_code: digits }));
 
-        if (verifyEmailRequest.fulfilled.match(res)) {
-          if (res.payload.email.completed === true) {
-            signupContext.signupService.send({ type: "CODE_SUCCESS" });
-          } else {
-            signupContext.signupService.send({ type: "CODE_FAIL" });
-          }
+        if (verifyEmailRequest.fulfilled.match(res) && res.payload.email.completed === true) {
+          signupContext.signupService.send({ type: "API_SUCCESS" });
         } else {
-          signupContext.signupService.send({ type: "CODE_FAIL" });
+          signupContext.signupService.send({ type: "API_FAIL" });
         }
       }
     }

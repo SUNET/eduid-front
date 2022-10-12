@@ -13,23 +13,14 @@ export function createSignupMachine() {
     schema: {
       context: {} as SignupContext,
       events: {} as
-        | { type: "CAPTCHA_COMPLETE" }
-        | { type: "CAPTCHA_FAIL" }
-        | { type: "CAPTCHA_SUCCESS" }
+        | { type: "API_FAIL" }
+        | { type: "API_SUCCESS" }
+        | { type: "COMPLETE" }
+        | { type: "ABORT" }
+        | { type: "FAIL" }
+        | { type: "SUCCESS" }
         | { type: "CHOOSE_FIDO" }
-        | { type: "CHOOSE_PASSWORD" }
-        | { type: "CODE_COMPLETE" }
-        | { type: "CODE_FAIL" }
-        | { type: "CODE_SUCCESS" }
-        | { type: "CREATE_FAIL" }
-        | { type: "CREATE_SUCCESS" }
-        | { type: "CREDENTIAL_FAIL" }
-        | { type: "CREDENTIAL_SUCCESS" }
-        | { type: "EMAIL_COMPLETE" }
-        | { type: "EMAIL_FAIL" }
-        | { type: "EMAIL_SUCCESS" }
-        | { type: "TOU_FAIL" }
-        | { type: "TOU_SUCCESS" },
+        | { type: "CHOOSE_PASSWORD" },
     },
     predictableActionArguments: true,
     id: "signup",
@@ -37,64 +28,64 @@ export function createSignupMachine() {
     states: {
       SignupEmailForm: {
         on: {
-          EMAIL_COMPLETE: {
+          COMPLETE: {
             target: "SignupCaptcha",
           },
         },
       },
       SignupCaptcha: {
         on: {
-          CAPTCHA_COMPLETE: {
+          COMPLETE: {
             target: "ProcessCaptcha",
           },
         },
       },
       ProcessCaptcha: {
         on: {
-          CAPTCHA_SUCCESS: {
+          API_SUCCESS: {
             target: "SignupToU",
           },
-          CAPTCHA_FAIL: {
+          API_FAIL: {
             target: "SignupCaptcha",
           },
         },
       },
       SignupToU: {
         on: {
-          TOU_SUCCESS: {
+          COMPLETE: {
             target: "RegisterEmail",
           },
-          TOU_FAIL: {
+          ABORT: {
             target: "SignupEmailForm",
           },
         },
       },
       RegisterEmail: {
         on: {
-          EMAIL_SUCCESS: {
+          API_SUCCESS: {
             target: "SignupEnterCode",
           },
-          EMAIL_FAIL: {
+          API_FAIL: {
             target: "SignupEmailForm",
           },
         },
       },
       SignupEnterCode: {
         on: {
-          CODE_COMPLETE: {
+          COMPLETE: {
             target: "ProcessEmailCode",
           },
-          CODE_FAIL: {
+          ABORT: {
             target: "SignupEmailForm",
           },
         },
       },
       ProcessEmailCode: {
         on: {
-          CODE_SUCCESS: {
+          API_SUCCESS: {
             target: "SignupCredentials",
           },
-          CODE_FAIL: {
+          API_FAIL: {
             target: "SignupEnterCode",
           },
         },
@@ -111,30 +102,30 @@ export function createSignupMachine() {
       },
       SignupCredentialPassword: {
         on: {
-          CREDENTIAL_SUCCESS: {
+          API_SUCCESS: {
             target: "CreateUser",
           },
-          CREDENTIAL_FAIL: {
+          API_FAIL: {
             target: "SignupCredentials",
           },
         },
       },
       SignupCredentialFIDO: {
         on: {
-          CREDENTIAL_SUCCESS: {
+          API_SUCCESS: {
             target: "CreateUser",
           },
-          CREDENTIAL_FAIL: {
+          API_FAIL: {
             target: "SignupCredentials",
           },
         },
       },
       CreateUser: {
         on: {
-          CREATE_SUCCESS: {
+          API_SUCCESS: {
             target: "SignupFinished",
           },
-          CREATE_FAIL: {
+          API_FAIL: {
             target: "SignupCredentials",
           },
         },
