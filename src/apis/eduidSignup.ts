@@ -25,9 +25,9 @@ export interface SignupStatusResponse {
     finish_url?: string;
     initiated_signup: boolean;
   };
-  tou: { version?: string; completed: boolean };
+  tou: { completed: boolean; version?: string };
   captcha: { completed: boolean };
-  credentials: { password?: string };
+  credentials: { completed: boolean; password?: string };
   user_created: boolean;
 }
 
