@@ -73,20 +73,20 @@ export function deleteAccount(config, data) {
 //     .then((response) => response.json());
 // }
 
-export function* verifyWebauthnToken(win) {
-  try {
-    const state = yield select((state) => state);
-    const keyHandle = state.security.webauthn_token_verify;
+// export function* verifyWebauthnToken(win) {
+//   try {
+//     const state = yield select((state) => state);
+//     const keyHandle = state.security.webauthn_token_verify;
 
-    let idpParam = "?idp=" + state.config.token_verify_idp;
-    let url = state.config.eidas_url + "verify-token/" + keyHandle + idpParam;
+//     let idpParam = "?idp=" + state.config.token_verify_idp;
+//     let url = state.config.eidas_url + "verify-token/" + keyHandle + idpParam;
 
-    if (win !== undefined && win.location !== undefined) {
-      win.location.href = url;
-    } else {
-      window.location.href = url;
-    }
-  } catch (error) {
-    yield* failRequest(error, tokenVerifyFail);
-  }
-}
+//     if (win !== undefined && win.location !== undefined) {
+//       win.location.href = url;
+//     } else {
+//       window.location.href = url;
+//     }
+//   } catch (error) {
+//     yield* failRequest(error, tokenVerifyFail);
+//   }
+// }

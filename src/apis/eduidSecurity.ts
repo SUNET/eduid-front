@@ -22,7 +22,7 @@ export const removeWebauthnToken = createAsyncThunk<
   string,
   { token: any },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("security/requestCredentials", async (args, thunkAPI) => {
+>("security/removeWebauthnToken", async (args, thunkAPI) => {
   const body: KeyValues = {
     credential_key: args.token,
   };

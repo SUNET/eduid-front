@@ -138,14 +138,14 @@ export function accountRemovedFail(err) {
 //   };
 // }
 
-export function postVerifyWebauthnToken(token) {
-  return {
-    type: POST_WEBAUTHN_VERIFY,
-    payload: {
-      token: token,
-    },
-  };
-}
+// export function postVerifyWebauthnToken(token) {
+//   return {
+//     type: POST_WEBAUTHN_VERIFY,
+//     payload: {
+//       token: token,
+//     },
+//   };
+// }
 
 // export function tokenVerifyFail(err) {
 //   return {

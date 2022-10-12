@@ -8,11 +8,12 @@ import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
-import { postVerifyWebauthnToken } from "actions/Security";
+// import { postVerifyWebauthnToken } from "actions/Security";
 import { beginRegisterWebauthn, registerWebauthn, removeWebauthnToken } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
+import { ConsoleView } from "react-device-detect";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -23,6 +24,8 @@ function Security(props: any) {
   const deleted = useDashboardAppSelector((state) => state.security.deleted);
   // const webauthn_asking_description = useDashboardAppSelector((state) => state.security.webauthn_asking_description);
   const authenticator = useDashboardAppSelector((state) => state.security.webauthn_authenticator);
+  const config = useDashboardAppSelector((state) => state.config);
+
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -73,15 +76,9 @@ function Security(props: any) {
     description: "placeholder text for security key description input",
   });
 
-  function handleStartAskingDeviceWebauthnDescription() {
+  function handleStartAskingWebauthnDescription(authType: string) {
     dispatch(clearNotifications());
-    dispatch(securitySlice.actions.chooseAuthenticator("platform"));
-    setShowModal(true);
-  }
-
-  function handleStartAskingKeyWebauthnDescription() {
-    dispatch(clearNotifications());
-    dispatch(securitySlice.actions.chooseAuthenticator("cross-platform"));
+    dispatch(securitySlice.actions.chooseAuthenticator(authType));
     setShowModal(true);
   }
 
@@ -109,7 +106,7 @@ function Security(props: any) {
             <p>{translate("security.second-factor")}</p>
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
-            <SecurityKeyTable credentials={credentials} />
+            <SecurityKeyTable credentials={credentials} SecurityKeyTable config={config} />
             <label>
               <FormattedMessage
                 description="select extra webauthn"
@@ -122,7 +119,7 @@ function Security(props: any) {
                   <EduIDButton
                     id="security-webauthn-platform-button"
                     buttonstyle="primary"
-                    onClick={handleStartAskingDeviceWebauthnDescription}
+                    onClick={() => handleStartAskingWebauthnDescription("platform")}
                   >
                     <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
                   </EduIDButton>
@@ -138,7 +135,7 @@ function Security(props: any) {
                 <EduIDButton
                   id="security-webauthn-button"
                   buttonstyle="primary"
-                  onClick={handleStartAskingKeyWebauthnDescription}
+                  onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
                 >
                   <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
                 </EduIDButton>
@@ -189,10 +186,20 @@ function SecurityKeyTable(props: any) {
       cred.credential_type == "security.webauthn_credential_type"
   );
 
-  function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
-    const token = dataset?.closest(".webauthn-token-holder");
-    dispatch(postVerifyWebauthnToken(token));
+  function handleVerifyWebauthnToken(token: string) {
+    // const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
+    // const token = dataset?.closest(".webauthn-token-holder");
+    // dispatch(postVerifyWebauthnToken(token));
+    // dispatch(verifyWebauthnToken({ token }));
+
+    const idpParam = "?idp=" + props.config.token_verify_idp;
+    const url = props.config.eidas_url + "verify-token/" + token + idpParam;
+
+    if (window !== undefined && window.location !== undefined) {
+      window.location.href = url;
+    } else {
+      window.location.href = url;
+    }
   }
 
   function handleRemoveWebauthnToken(token: string) {
@@ -225,7 +232,7 @@ function SecurityKeyTable(props: any) {
       );
     } else {
       btnVerify = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={handleVerifyWebauthnToken}>
+        <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
           {translate("security.verify")}
         </EduIDButton>
       );
