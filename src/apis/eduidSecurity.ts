@@ -9,6 +9,26 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
+export interface RequestCredentialsResponse {
+  credentials: [];
+}
+
+/**
+ * @public
+ * @function requestCredentials
+ * @desc Redux async thunk to requestCredentials.
+ */
+export const requestCredentials = createAsyncThunk<
+  string,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/requestCredentials", async (args, thunkAPI) => {
+  return makeSecurityRequest<any>(thunkAPI, "credentials")
+    .then((response) => response.payload.credentials)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface RegisterWebauthnResponse {
   webauthn_attestation: any;
 }

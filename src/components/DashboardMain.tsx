@@ -1,7 +1,8 @@
+import { requestCredentials } from "apis/eduidSecurity";
 import NotificationsContainer from "containers/Notifications";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { ChangePasswordContainer } from "./ChangePassword";
@@ -16,6 +17,14 @@ import VerifyIdentity from "./VerifyIdentity";
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const dispatch = useDashboardAppDispatch();
+
+  useEffect(() => {
+    if (isLoaded) {
+      // call requestCredentials once app is loaded
+      dispatch(requestCredentials());
+    }
+  }, [isLoaded]);
 
   let email;
   if (emails.length >= 1) {

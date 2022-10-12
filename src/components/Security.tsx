@@ -35,9 +35,7 @@ function Security(props: any) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // remove after check state
-  const security = useDashboardAppSelector((state) => state.security);
-  console.log("securityr", security);
+
   useEffect(
     () => {
       // Check if platform authentication is available through the navigator.credentials API.
@@ -110,7 +108,6 @@ function Security(props: any) {
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
       const response = await dispatch(createAuthentication(resp.payload));
-      console.log("authenticator", authenticator);
       if (createAuthentication.fulfilled.match(response)) dispatch(registerWebauthn({ descriptionValue }));
       // dispatch(registerWebauthn({ descriptionValue }));
     }

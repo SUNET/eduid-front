@@ -14,27 +14,28 @@ import {
 import { tokenVerifyFail } from "../actions/Security";
 
 import { safeEncode, safeDecodeCBOR } from "sagas/common";
+import { getCredentialsSuccess } from "reducers/Security";
 
-export function* requestCredentials() {
-  try {
-    yield put(getCredentials());
-    const config = yield select((state) => state.config);
-    const credentials = yield call(fetchCredentials, config);
-    yield put(putCsrfToken(credentials));
-    yield put(credentials);
-  } catch (error) {
-    yield* failRequest(error, getCredentialsFail);
-  }
-}
+// export function* requestCredentials() {
+//   try {
+//     yield put(getCredentials());
+//     const config = yield select((state) => state.config);
+//     const credentials = yield call(fetchCredentials, config);
+//     yield put(putCsrfToken(credentials));
+//     yield put(credentials);
+//   } catch (error) {
+//     yield* failRequest(error, getCredentialsFail);
+//   }
+// }
 
-export function fetchCredentials(config) {
-  return window
-    .fetch(config.security_url + "credentials", {
-      ...getRequest,
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
-}
+// export function fetchCredentials(config) {
+//   return window
+//     .fetch(config.security_url + "credentials", {
+//       ...getRequest,
+//     })
+//     .then(checkStatus)
+//     .then((response) => response.json());
+// }
 
 // perform re-authentication when entering "change password" mode
 export function* requestPasswordChange(win) {

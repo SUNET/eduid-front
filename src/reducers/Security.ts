@@ -1,12 +1,15 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
+import { createSlice, PayloadAction, createAction } from "@reduxjs/toolkit";
+import { beginRegisterWebauthn, registerWebauthn, requestCredentials } from "apis/eduidSecurity";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
 import { safeDecodeCBOR, safeEncode } from "sagas/common";
 // import * as actions from "actions/Security";
 
+export const GET_CREDENTIALS_SUCCESS = createAction("GET_SECURITY_CREDENTIALS_SUCCESS");
+export const getCredentials = createAction("GET_CREDENTIALS");
+
 export interface SecurityState {
   message?: string;
-  credentials: unknown[];
+  credentials: any;
   code?: string;
   confirming_change: boolean;
   location: string;
@@ -59,6 +62,7 @@ const securitySlice = createSlice({
         confirming_change: false,
       };
     },
+
     // startWebAuthnRegistration: (state, action: any) => {
     //   return {
     //     webauthn_failed: false,
@@ -92,6 +96,9 @@ const securitySlice = createSlice({
     builder.addCase(registerWebauthn.fulfilled, (state, action) => {
       // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
       state.webauthn_attestation = action.payload;
+    });
+    builder.addCase(requestCredentials.fulfilled, (state, action) => {
+      state.credentials = action.payload;
     });
     // builder.addCase(beginRegisterWebauthn.fulfilled, (state, action: PayloadAction<any>) => {
     //   state.webauthn_attestation = action.payload;

@@ -4,6 +4,7 @@ import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as pdataActions from "actions/PersonalData";
 import * as securityActions from "actions/Security";
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
+import { requestCredentials } from "apis/eduidSecurity";
 import { all, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestLogout } from "sagas/Header";
 import { requestNins } from "sagas/Nins";
@@ -15,7 +16,7 @@ import {
   postDeleteAccount,
   registerWebauthn,
   removeWebauthnToken,
-  requestCredentials,
+  // requestCredentials,
   requestPasswordChange,
   verifyWebauthnToken,
 } from "sagas/Security";
@@ -27,7 +28,7 @@ import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalDat
 function* rootSaga() {
   yield all([
     takeLatest(getInitialUserData.type, requestAllPersonalData),
-    takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
+    // takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
