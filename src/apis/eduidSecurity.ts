@@ -9,6 +9,29 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
+export interface RemoveWebauthnTokensResponse {
+  credentials: [];
+}
+
+/**
+ * @public
+ * @function removeWebauthnTokens
+ * @desc Redux async thunk to removeWebauthnToken.
+ */
+export const removeWebauthnToken = createAsyncThunk<
+  string,
+  { token: any },
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/requestCredentials", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    credential_key: args.token,
+  };
+  return makeSecurityRequest<any>(thunkAPI, "webauthn/remove", body)
+    .then((response) => response.payload.credentials)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface RequestCredentialsResponse {
   credentials: [];
 }

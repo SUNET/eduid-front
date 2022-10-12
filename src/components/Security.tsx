@@ -8,8 +8,8 @@ import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
-import { postRemoveWebauthnToken, postVerifyWebauthnToken } from "actions/Security";
-import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
+import { postVerifyWebauthnToken } from "actions/Security";
+import { beginRegisterWebauthn, registerWebauthn, removeWebauthnToken } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
@@ -195,10 +195,11 @@ function SecurityKeyTable(props: any) {
     dispatch(postVerifyWebauthnToken(token));
   }
 
-  function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    const token = dataset?.closest(".webauthn-token-holder");
-    dispatch(postRemoveWebauthnToken(token));
+  function handleRemoveWebauthnToken(token: string) {
+    // const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    // const token = dataset?.closest(".webauthn-token-holder");
+    // dispatch(postRemoveWebauthnToken(token));
+    dispatch(removeWebauthnToken({ token }));
   }
 
   // data that goes onto the table
@@ -245,7 +246,7 @@ function SecurityKeyTable(props: any) {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={handleRemoveWebauthnToken}
+            onClick={() => handleRemoveWebauthnToken(cred.key)}
           ></EduIDButton>
         </td>
       </tr>

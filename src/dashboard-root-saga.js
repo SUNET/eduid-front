@@ -36,7 +36,7 @@ function* rootSaga() {
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
     takeEvery(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS, requestNins),
     takeEvery(headerActions.POST_LOGOUT, requestLogout),
-    takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
+    // takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
   ]);
 }

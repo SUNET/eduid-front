@@ -48,30 +48,30 @@ export function deleteAccount(config, data) {
     .then((response) => response.json());
 }
 
-export function* removeWebauthnToken() {
-  try {
-    const state = yield select((state) => state);
-    const data = {
-      csrf_token: state.config.csrf_token,
-      credential_key: state.security.webauthn_token_remove,
-    };
-    const resp = yield call(removeToken, state.config, data);
-    yield put(putCsrfToken(resp));
-    yield put(resp);
-  } catch (error) {
-    yield* failRequest(error, tokenRemovedFail);
-  }
-}
+// export function* removeWebauthnToken() {
+//   try {
+//     const state = yield select((state) => state);
+//     const data = {
+//       csrf_token: state.config.csrf_token,
+//       credential_key: state.security.webauthn_token_remove,
+//     };
+//     const resp = yield call(removeToken, state.config, data);
+//     yield put(putCsrfToken(resp));
+//     yield put(resp);
+//   } catch (error) {
+//     yield* failRequest(error, tokenRemovedFail);
+//   }
+// }
 
-export function removeToken(config, data) {
-  return window
-    .fetch(config.security_url + "webauthn/remove", {
-      ...postRequest,
-      body: JSON.stringify(data),
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
-}
+// export function removeToken(config, data) {
+//   return window
+//     .fetch(config.security_url + "webauthn/remove", {
+//       ...postRequest,
+//       body: JSON.stringify(data),
+//     })
+//     .then(checkStatus)
+//     .then((response) => response.json());
+// }
 
 export function* verifyWebauthnToken(win) {
   try {

@@ -22,7 +22,7 @@ export const POST_WEBAUTHN_BEGIN_FAIL = "POST_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_F
 export const POST_WEBAUTHN_BEGIN_SUCCESS = "POST_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_SUCCESS";
 export const POST_WEBAUTHN_REGISTER_FAIL = "POST_WEBAUTHN_WEBAUTHN_REGISTER_COMPLETE_FAIL";
 export const POST_WEBAUTHN_REGISTER_SUCCESS = "POST_WEBAUTHN_WEBAUTHN_REGISTER_COMPLETE_SUCCESS";
-export const POST_WEBAUTHN_REMOVE = "POST_WEBAUTHN_WEBAUTHN_REMOVE";
+// export const POST_WEBAUTHN_REMOVE = "POST_WEBAUTHN_WEBAUTHN_REMOVE";
 export const POST_WEBAUTHN_REMOVE_SUCCESS = "POST_WEBAUTHN_WEBAUTHN_REMOVE_SUCCESS";
 export const POST_WEBAUTHN_REMOVE_FAIL = "POST_WEBAUTHN_WEBAUTHN_REMOVE_FAIL";
 export const POST_WEBAUTHN_VERIFY = "POST_WEBAUTHN_VERIFY";
@@ -119,14 +119,14 @@ export function registerWebauthnFail(err) {
   };
 }
 
-export function postRemoveWebauthnToken(token) {
-  return {
-    type: POST_WEBAUTHN_REMOVE,
-    payload: {
-      token: token,
-    },
-  };
-}
+// export function postRemoveWebauthnToken(token) {
+//   return {
+//     type: POST_WEBAUTHN_REMOVE,
+//     payload: {
+//       token: token,
+//     },
+//   };
+// }
 
 export function tokenRemovedFail(err) {
   return {
