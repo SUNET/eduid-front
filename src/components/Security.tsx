@@ -8,20 +8,11 @@ import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
-import {
-  postRemoveWebauthnToken,
-  postVerifyWebauthnToken,
-  // startWebauthnRegistration,
-  // startAskWebauthnDescription,
-  // stopAskWebauthnDescription,
-  // chooseAuthenticator,
-} from "actions/Security";
+import { postRemoveWebauthnToken, postVerifyWebauthnToken } from "actions/Security";
 import { beginRegisterWebauthn, registerWebauthn } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
-import { storeCsrfToken } from "commonConfig";
-// import { registerWebauthn } from "sagas/Security";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -86,19 +77,16 @@ function Security(props: any) {
     dispatch(clearNotifications());
     dispatch(securitySlice.actions.chooseAuthenticator("platform"));
     setShowModal(true);
-    // dispatch(startAskWebauthnDescription());
   }
 
   function handleStartAskingKeyWebauthnDescription() {
     dispatch(clearNotifications());
     dispatch(securitySlice.actions.chooseAuthenticator("cross-platform"));
     setShowModal(true);
-    // dispatch(startAskWebauthnDescription());
   }
 
   function handleStopAskingWebauthnDescription() {
     setShowModal(false);
-    // dispatch(stopAskWebauthnDescription());
   }
 
   async function handleStartWebauthnRegistration() {
@@ -109,7 +97,6 @@ function Security(props: any) {
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
       const response = await dispatch(createAuthentication(resp.payload));
       if (createAuthentication.fulfilled.match(response)) dispatch(registerWebauthn({ descriptionValue }));
-      // dispatch(registerWebauthn({ descriptionValue }));
     }
   }
 
