@@ -6,7 +6,7 @@ import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): JSX.Element {
   const signupState = useSignupAppSelector((state) => state.signup.state);
-  const version = signupState?.tou_version;
+  const version = signupState?.tou.version;
   const signupContext = useContext(SignupGlobalStateContext);
 
   function handleAccept() {

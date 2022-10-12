@@ -19,9 +19,9 @@ export function SignupCaptcha() {
       signupContext.signupService.send({ type: "CAPTCHA_COMPLETE" });
 
       if (sendCaptchaResponse.fulfilled.match(res)) {
-        if (res.payload.captcha_completed === true) {
+        if (res.payload.captcha.completed === true) {
           signupContext.signupService.send({ type: "CAPTCHA_SUCCESS" });
-        } else if (res.payload.captcha_completed === false) {
+        } else {
           signupContext.signupService.send({ type: "CAPTCHA_FAIL" });
         }
       }

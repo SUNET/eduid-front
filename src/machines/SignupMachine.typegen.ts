@@ -17,6 +17,7 @@ export interface Typegen0 {
   eventsCausingGuards: {};
   eventsCausingDelays: {};
   matchesStates:
+    | "CreateUser"
     | "ProcessCaptcha"
     | "ProcessEmailCode"
     | "RegisterEmail"

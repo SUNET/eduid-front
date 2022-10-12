@@ -13,20 +13,23 @@ export function createSignupMachine() {
     schema: {
       context: {} as SignupContext,
       events: {} as
-        | { type: "EMAIL_COMPLETE" }
         | { type: "CAPTCHA_COMPLETE" }
-        | { type: "CAPTCHA_SUCCESS" }
         | { type: "CAPTCHA_FAIL" }
-        | { type: "CHOOSE_PASSWORD" }
+        | { type: "CAPTCHA_SUCCESS" }
         | { type: "CHOOSE_FIDO" }
+        | { type: "CHOOSE_PASSWORD" }
         | { type: "CODE_COMPLETE" }
-        | { type: "CODE_SUCCESS" }
         | { type: "CODE_FAIL" }
-        | { type: "CREATE_USER" }
-        | { type: "TOU_SUCCESS" }
-        | { type: "TOU_FAIL" }
+        | { type: "CODE_SUCCESS" }
+        | { type: "CREATE_FAIL" }
+        | { type: "CREATE_SUCCESS" }
+        | { type: "CREDENTIAL_FAIL" }
+        | { type: "CREDENTIAL_SUCCESS" }
+        | { type: "EMAIL_COMPLETE" }
+        | { type: "EMAIL_FAIL" }
         | { type: "EMAIL_SUCCESS" }
-        | { type: "EMAIL_FAIL" },
+        | { type: "TOU_FAIL" }
+        | { type: "TOU_SUCCESS" },
     },
     predictableActionArguments: true,
     id: "signup",
@@ -108,15 +111,31 @@ export function createSignupMachine() {
       },
       SignupCredentialPassword: {
         on: {
-          CREATE_USER: {
-            target: "SignupFinished",
+          CREDENTIAL_SUCCESS: {
+            target: "CreateUser",
+          },
+          CREDENTIAL_FAIL: {
+            target: "SignupCredentials",
           },
         },
       },
       SignupCredentialFIDO: {
         on: {
-          CREATE_USER: {
+          CREDENTIAL_SUCCESS: {
+            target: "CreateUser",
+          },
+          CREDENTIAL_FAIL: {
+            target: "SignupCredentials",
+          },
+        },
+      },
+      CreateUser: {
+        on: {
+          CREATE_SUCCESS: {
             target: "SignupFinished",
+          },
+          CREATE_FAIL: {
+            target: "SignupCredentials",
           },
         },
       },

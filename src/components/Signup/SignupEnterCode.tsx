@@ -41,7 +41,7 @@ export function SignupEnterCode(): JSX.Element {
         const res = await dispatch(verifyEmailRequest({ verification_code: digits }));
 
         if (verifyEmailRequest.fulfilled.match(res)) {
-          if (res.payload.email_verification.verified === true) {
+          if (res.payload.email.completed === true) {
             signupContext.signupService.send({ type: "CODE_SUCCESS" });
           } else {
             signupContext.signupService.send({ type: "CODE_FAIL" });
@@ -88,7 +88,7 @@ export function SignupEnterCode(): JSX.Element {
             email: (
               <span id="email_address">
                 <output data-testid="email-address">
-                  <strong>{signupState?.email_verification.email}</strong>
+                  <strong>{signupState?.email.address}</strong>
                 </output>
               </span>
             ),
@@ -110,7 +110,7 @@ export function SignupEnterCode(): JSX.Element {
             email: (
               <span id="email_address">
                 <output data-testid="email-address">
-                  <strong>{signupState?.email_verification.email}</strong>
+                  <strong>{signupState?.email.address}</strong>
                 </output>
               </span>
             ),
@@ -125,10 +125,10 @@ export function SignupEnterCode(): JSX.Element {
         <TimeRemainingWrapper
           name="signup-email-expires"
           unique_id="signup.email"
-          value={signupState?.email_verification.expires_time_left || 0}
+          value={signupState?.email.expires_time_left || 0}
           onReachZero={handleTimerReachZero}
         >
-          <ExpiresMeter showMeter={false} expires_max={signupState?.email_verification.expires_time_max || 0} />
+          <ExpiresMeter showMeter={false} expires_max={signupState?.email.expires_time_max || 0} />
         </TimeRemainingWrapper>
       </div>
     </div>

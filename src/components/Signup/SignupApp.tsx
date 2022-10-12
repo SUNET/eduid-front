@@ -4,10 +4,11 @@ import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { SignupEmailForm, RegisterEmail } from "login/components/RegisterEmail/SignupEmailForm";
 import { useContext, useEffect } from "react";
 import { useSignupAppDispatch } from "signup-hooks";
-import { SignupCredentials } from "./SignupCredentials";
+import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { SignupToU } from "./SignupToU";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupEnterCode } from "./SignupEnterCode";
+import { SignupFinished } from "./SignupFinished";
 
 export function SignupApp(): JSX.Element {
   const dispatch = useSignupAppDispatch();
@@ -27,6 +28,8 @@ export function SignupApp(): JSX.Element {
       {state.matches("RegisterEmail") && <RegisterEmail />}
       {state.matches("SignupEnterCode") && <SignupEnterCode />}
       {state.matches("SignupCredentials") && <SignupCredentials />}
+      {state.matches("SignupCredentialPassword") && <SignupCredentialPassword />}
+      {state.matches("SignupFinished") && <SignupFinished />}
 
       <p> </p>
 

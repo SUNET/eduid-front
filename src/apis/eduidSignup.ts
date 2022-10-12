@@ -10,25 +10,24 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 export const SIGNUP_SERVICE_URL = "/services/signup";
 
 export interface SignupStatusResponse {
-  email_verification: {
-    email?: string;
+  email: {
+    completed: boolean;
+    address?: string;
     expires_time_left?: number;
     expires_time_max?: number;
-    verified: boolean;
     sent_at?: string;
     throttle_time_left?: number;
     throttle_time_max?: number;
   };
   invite: {
-    initiated_signup: boolean;
     code?: string;
-    finish_url?: string;
     completed: boolean;
+    finish_url?: string;
+    initiated_signup: boolean;
   };
-  tou_version?: string;
-  tou_accepted: boolean;
-  captcha_completed: boolean;
-  credential_added: boolean;
+  tou: { version?: string; completed: boolean };
+  captcha: { completed: boolean };
+  credentials: { password?: string };
   user_created: boolean;
 }
 
@@ -123,6 +122,29 @@ export const verifyEmailRequest = createAsyncThunk<
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
+
+/*********************************************************************************************************************/
+
+/**
+ * @public
+ * @function getPasswordRequest
+ * @desc Redux async thunk to ask the backend to generate a password for this user.
+ */
+export const getPasswordRequest = createAsyncThunk<
+  SignupStatusResponse, // return type
+  undefined, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/getPasswordRequest", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "get-password", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+// OLD INTERFACES BELOW
+/*********************************************************************************************************************/
 
 /*********************************************************************************************************************/
 export interface TryCaptchaRequest {
