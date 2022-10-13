@@ -17,9 +17,10 @@
       margin-left: 1rem;
       display: inline-block;
 
-      @media (max-width: $bp-md) {
+      @media (max-width: $bp-sm) {
         width: 99px;
         height: 34px;
+        position: absolute;
       }
     }
 
@@ -45,6 +46,7 @@
 
       button {
         float: right;
+        margin-bottom: 1rem !important;
       }
     }
   }

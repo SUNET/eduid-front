@@ -9,10 +9,13 @@
 
     li {
       margin: 0 4rem 0 0;
-
       display: inline-block;
 
-      @media (max-width: $bp-md) {
+      @media (max-width: $bp-lg) {
+        margin: 0;
+      }
+
+      @media (max-width: $bp-sm) {
         margin-right: 1rem;
         margin: 0 0 0.75rem;
         display: block;
@@ -33,6 +36,26 @@
         color: $txt-orange;
       }
     }
+    @media (max-width: $bp-lg) {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    @media (max-width: $bp-sm) {
+      display: block;
+      margin-right: 1rem;
+      width: auto;
+    }
+  }
+
+  @media (max-width: $bp-lg) {
+    position: relative;
+  }
+
+  @media (max-width: $bp-sm) {
+    text-align: right;
   }
 }
 
