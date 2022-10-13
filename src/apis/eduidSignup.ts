@@ -81,7 +81,7 @@ export interface RegisterEmailRequest {
 
 /**
  * @public
- * @function RegisterEmailRequest
+ * @function registerEmailRequest
  * @desc Redux async thunk to add the users stated e-mail address to the signup state.
  */
 export const registerEmailRequest = createAsyncThunk<
@@ -106,7 +106,7 @@ export interface VerifyEmailRequest {
 
 /**
  * @public
- * @function VerifyEmailRequest
+ * @function verifyEmailRequest
  * @desc Redux async thunk to send the verification code for an email address to the backend.
  */
 export const verifyEmailRequest = createAsyncThunk<
@@ -138,6 +138,33 @@ export const getPasswordRequest = createAsyncThunk<
   const body: KeyValues = {};
 
   return makeSignupRequest<SignupStatusResponse>(thunkAPI, "get-password", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface CreateUserRequest {
+  use_password?: boolean;
+  use_webauthn?: boolean;
+}
+
+/**
+ * @public
+ * @function createUserRequest
+ * @desc Redux async thunk to ask the backend to complete the signup by actually creating the user.
+ */
+export const createUserRequest = createAsyncThunk<
+  SignupStatusResponse, // return type
+  CreateUserRequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/createUserRequest", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    use_password: Boolean(args.use_password),
+    use_webauthn: Boolean(args.use_webauthn),
+  };
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "create-user", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

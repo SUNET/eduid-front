@@ -1,19 +1,39 @@
+import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
-import React from "react";
+import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppSelector } from "signup-hooks";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
+import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
 
-export function SignupFinished(): JSX.Element {
+export function CreateUser() {
+  const dispatch = useSignupAppDispatch();
+  const signupContext = useContext(SignupGlobalStateContext);
+
+  async function createUser() {
+    const res = await dispatch(createUserRequest({ use_password: true }));
+
+    if (createUserRequest.fulfilled.match(res)) {
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else {
+      signupContext.signupService.send({ type: "API_FAIL" });
+    }
+  }
+
+  useEffect(() => {
+    createUser();
+  }, []);
+
+  return null;
+}
+
+export function SignupUserCreated(): JSX.Element {
   const signupState = useSignupAppSelector((state) => state.signup.state);
   const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
-
-  // TODO: Ask user if they want to create a password or use a password-less login method
-  //signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
 
   return (
     <form method="GET" action={dashboard_url}>
@@ -44,7 +64,7 @@ export function SignupFinished(): JSX.Element {
           </label>
           <div className="register-header registered-email display-data">
             <mark className="force-select-all">
-              <output id={idUserPassword}>{signupState?.credentials.password}</output>
+              <output id={idUserPassword}>{format_password(signupState?.credentials.password)}</output>
             </mark>
           </div>
         </fieldset>
@@ -56,5 +76,15 @@ export function SignupFinished(): JSX.Element {
       </div>
     </form>
   );
-  return <React.Fragment></React.Fragment>;
+}
+
+function format_password(data?: string): string {
+  if (!data) {
+    return "";
+  }
+  const res = data.match(/.{1,4}/g);
+  if (res) {
+    return res.join(" ");
+  }
+  return "";
 }
