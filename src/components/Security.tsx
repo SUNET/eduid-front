@@ -9,11 +9,11 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
 // import { postVerifyWebauthnToken } from "actions/Security";
-import { beginRegisterWebauthn, registerWebauthn, removeWebauthnToken } from "apis/eduidSecurity";
+import { beginRegisterWebauthn, registerWebauthn, removeWebauthnToken, requestCredentials } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
-import { ConsoleView } from "react-device-detect";
+import { eidasVerifyCredential } from "apis/eduidEidas";
 
 function Security(props: any) {
   const dispatch = useDashboardAppDispatch();
@@ -186,19 +186,12 @@ function SecurityKeyTable(props: any) {
       cred.credential_type == "security.webauthn_credential_type"
   );
 
-  function handleVerifyWebauthnToken(token: string) {
-    // const dataset = (e.target as HTMLTextAreaElement).closest(".webauthn-token-holder");
-    // const token = dataset?.closest(".webauthn-token-holder");
-    // dispatch(postVerifyWebauthnToken(token));
-    // dispatch(verifyWebauthnToken({ token }));
-
-    const idpParam = "?idp=" + props.config.token_verify_idp;
-    const url = props.config.eidas_url + "verify-token/" + token + idpParam;
-
-    if (window !== undefined && window.location !== undefined) {
-      window.location.href = url;
-    } else {
-      window.location.href = url;
+  async function handleVerifyWebauthnToken(token: string) {
+    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+    if (eidasVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
     }
   }
 

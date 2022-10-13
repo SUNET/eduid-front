@@ -20,7 +20,7 @@ export interface RemoveWebauthnTokensResponse {
  */
 export const removeWebauthnToken = createAsyncThunk<
   string,
-  { token: any },
+  { token: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/removeWebauthnToken", async (args, thunkAPI) => {
   const body: KeyValues = {
@@ -33,7 +33,17 @@ export const removeWebauthnToken = createAsyncThunk<
 
 /*********************************************************************************************************************/
 export interface RequestCredentialsResponse {
-  credentials: [];
+  credentials: [
+    {
+      created_ts: string;
+      credential_type: string;
+      description: string;
+      key: string;
+      success_ts: string;
+      used_for_login: boolean;
+      verified: boolean;
+    }
+  ];
 }
 
 /**
@@ -53,7 +63,7 @@ export const requestCredentials = createAsyncThunk<
 
 /*********************************************************************************************************************/
 export interface RegisterWebauthnResponse {
-  webauthn_attestation: any;
+  webauthn_attestation: string;
 }
 
 /**
@@ -73,14 +83,14 @@ export const registerWebauthn = createAsyncThunk<
     credentialId: state.security.webauthn_attestation?.id,
     description: args.descriptionValue,
   };
-  return makeSecurityRequest<any>(thunkAPI, "webauthn/register/complete", body)
+  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/complete", body)
     .then((response) => response.payload.webauthn_attestation)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-export interface beginRegisterWebauthn {
-  registration_data: any;
+export interface BeginRegisterWebauthnResponse {
+  registration_data: string;
 }
 
 /**
@@ -97,7 +107,7 @@ export const beginRegisterWebauthn = createAsyncThunk<
   const body: KeyValues = {
     authenticator: state.security.webauthn_authenticator,
   };
-  return makeSecurityRequest<beginRegisterWebauthn>(thunkAPI, "webauthn/register/begin", body)
+  return makeSecurityRequest<BeginRegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
     .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
