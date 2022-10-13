@@ -128,13 +128,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             <tbody>
               <tr className="border-row">
                 <td>
-                  <img
-                    data-testid="circle-country-flag"
-                    height="35"
-                    className="circle-icon"
-                    title="Sweden"
-                    src={SeFlag}
-                  />
+                  <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
                 </td>
                 <td>
                   <strong>
@@ -160,13 +154,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
               <tbody>
                 <tr className="border-row">
                   <td>
-                    <img
-                      data-testid="circle-country-flag"
-                      height="35"
-                      className="circle-icon"
-                      title="European Union"
-                      src={EuFlag}
-                    />
+                    <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
                   </td>
                   <td>
                     <strong>
@@ -218,7 +206,7 @@ function AccordionItemSwedish(): JSX.Element | null {
      and not in case the NIN is already verified. */
   return (
     <AccordionItemTemplate
-      icon={<img data-testid="circle-country-flag" height="35" className="circle-icon" title="Sweden" src={SeFlag} />}
+      icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
       title={
         <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
       }
@@ -312,15 +300,7 @@ function AccordionItemEu(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={
-        <img
-          data-testid="circle-country-flag"
-          height="35"
-          className="circle-icon"
-          title="European Union"
-          src={EuFlag}
-        />
-      }
+      icon={<img height="35" className="circle-icon" alt="European Union" src={EuFlag} />}
       title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
       additionalInfo={
         <FormattedMessage
@@ -355,7 +335,7 @@ function AccordionItemEu(): JSX.Element | null {
 // function AccordionItemWorld(): JSX.Element | null {
 //   return (
 //     <AccordionItemTemplate
-//       icon={<img data-testid="circle-country-flag" height="35" className="circle-icon" title="World" src={WorldFlag} />}
+//       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
 //       title="All other countries"
 //       additionalInfo="Svipe ID"
 //       uuid="world"
