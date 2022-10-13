@@ -6,7 +6,7 @@ import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import EmailInput from "../Inputs/EmailInput";
+import EmailInput from "../../login/components/Inputs/EmailInput";
 
 export function SignupEmailForm(): JSX.Element {
   const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);

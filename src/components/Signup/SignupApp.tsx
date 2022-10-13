@@ -1,7 +1,7 @@
 import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
+import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { SignupEmailForm, RegisterEmail } from "login/components/RegisterEmail/SignupEmailForm";
 import { useContext, useEffect } from "react";
 import { useSignupAppDispatch } from "signup-hooks";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
