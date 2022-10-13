@@ -5,7 +5,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
-import { CircleFlag } from "react-circle-flags";
+//import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
@@ -13,7 +13,7 @@ import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
 import SeFlag from "../../img/flags/se.svg";
 import EuFlag from "../../img/flags/eu.svg";
-import WorldFlag from "../../img/flags/world.svg";
+//import WorldFlag from "../../img/flags/world.svg";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
