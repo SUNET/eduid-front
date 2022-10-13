@@ -97,6 +97,9 @@ function EmailForm() {
   );
 }
 
+/**
+ * Send the user-provided email address to the backend.
+ */
 export function RegisterEmail() {
   const dispatch = useSignupAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);

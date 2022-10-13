@@ -47,11 +47,11 @@ export function SignupEnterCode(): JSX.Element {
   }
 
   function ResponseCodeButtons(props: ResponseCodeButtonsProps) {
-    // 'convert' from FormRenderProps to a simple "disabled" boolean
     if (!props.formProps) {
       return null;
     }
 
+    // 'convert' from FormRenderProps to a simple "disabled" boolean
     return <ResponseCodeAbortButton disabled={props.formProps.submitting} />;
   }
 

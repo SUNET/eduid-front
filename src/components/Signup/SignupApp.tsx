@@ -36,6 +36,9 @@ export function SignupApp(): JSX.Element {
   );
 }
 
+/**
+ * Startup state to determine what kind of signup this is, and what to do next.
+ */
 function SignupStart() {
   const dispatch = useSignupAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
