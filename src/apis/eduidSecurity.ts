@@ -32,18 +32,18 @@ export const removeWebauthnToken = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+
+export interface CredentialType {
+  created_ts: string;
+  credential_type: string;
+  description: string;
+  key: string;
+  success_ts: string;
+  used_for_login: boolean;
+  verified: boolean;
+}
 export interface RequestCredentialsResponse {
-  credentials: [
-    {
-      created_ts: string;
-      credential_type: string;
-      description: string;
-      key: string;
-      success_ts: string;
-      used_for_login: boolean;
-      verified: boolean;
-    }
-  ];
+  credentials: [CredentialType];
 }
 
 /**

@@ -8,24 +8,21 @@ import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
-// import { postVerifyWebauthnToken } from "actions/Security";
-import { beginRegisterWebauthn, registerWebauthn, removeWebauthnToken, requestCredentials } from "apis/eduidSecurity";
+import {
+  beginRegisterWebauthn,
+  CredentialType,
+  registerWebauthn,
+  removeWebauthnToken,
+  RequestCredentialsResponse,
+} from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 
-function Security(props: any) {
+function Security() {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
-  const confirming_change = useDashboardAppSelector((state) => state.security.confirming_change);
-  // const confirming_deletion = useDashboardAppSelector((state) => state.security.confirming_deletion);
-  const redirect_to = useDashboardAppSelector((state) => state.security.location);
-  const deleted = useDashboardAppSelector((state) => state.security.deleted);
-  // const webauthn_asking_description = useDashboardAppSelector((state) => state.security.webauthn_asking_description);
-  const authenticator = useDashboardAppSelector((state) => state.security.webauthn_authenticator);
-  const config = useDashboardAppSelector((state) => state.config);
-
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -106,7 +103,7 @@ function Security(props: any) {
             <p>{translate("security.second-factor")}</p>
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
-            <SecurityKeyTable credentials={credentials} SecurityKeyTable config={config} />
+            <SecurityKeyTable credentials={credentials} />
             <label>
               <FormattedMessage
                 description="select extra webauthn"
@@ -175,13 +172,13 @@ function Security(props: any) {
   );
 }
 
-function SecurityKeyTable(props: any) {
+function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
   const dispatch = useDashboardAppDispatch();
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
-    (cred: any) =>
+    (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
