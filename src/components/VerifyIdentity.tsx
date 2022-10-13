@@ -5,12 +5,14 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
-import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
+import SeFlag from "../../img/flags/se.svg";
+import EuFlag from "../../img/flags/eu.svg";
+//import WorldFlag from "../../img/flags/world.svg";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -125,7 +127,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             <tbody>
               <tr className="border-row">
                 <td>
-                  <CircleFlag countryCode="se" height="35" className="circle-icon" />
+                  <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
                 </td>
                 <td>
                   <strong>
@@ -151,7 +153,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
               <tbody>
                 <tr className="border-row">
                   <td>
-                    <CircleFlag countryCode="european_union" height="35" className="circle-icon" />
+                    <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
                   </td>
                   <td>
                     <strong>
@@ -203,7 +205,7 @@ function AccordionItemSwedish(): JSX.Element | null {
      and not in case the NIN is already verified. */
   return (
     <AccordionItemTemplate
-      icon={<CircleFlag countryCode="se" height="35" className="circle-icon" />}
+      icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
       title={
         <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
       }
@@ -297,7 +299,7 @@ function AccordionItemEu(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<CircleFlag countryCode="european_union" height="35" className="circle-icon" />}
+      icon={<img height="35" className="circle-icon" alt="European Union" src={EuFlag} />}
       title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
       additionalInfo={
         <FormattedMessage
@@ -332,7 +334,7 @@ function AccordionItemEu(): JSX.Element | null {
 // function AccordionItemWorld(): JSX.Element | null {
 //   return (
 //     <AccordionItemTemplate
-//       icon={<CircleFlag countryCode="placeholder" height="35" className="circle-icon" />}
+//       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
 //       title="All other countries"
 //       additionalInfo="Svipe ID"
 //       uuid="world"
