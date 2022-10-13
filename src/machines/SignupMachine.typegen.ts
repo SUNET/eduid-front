@@ -12,9 +12,7 @@ export interface Typegen0 {
     guards: never;
     delays: never;
   };
-  eventsCausingActions: {
-    assignEmailCode: "TRY_CODE";
-  };
+  eventsCausingActions: {};
   eventsCausingServices: {};
   eventsCausingGuards: {};
   eventsCausingDelays: {};

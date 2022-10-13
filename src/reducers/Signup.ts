@@ -15,7 +15,8 @@ import {
 
 interface SignupState {
   state?: SignupStatusResponse;
-  email?: string;
+  email?: string; // pass email address from one state to another
+  email_code?: string; // pass email code from one state to another
   tou_accepted: boolean;
   current_step: "register" | TryCaptchaNextStep;
   // Fetching verify-link is a one-shot operation, so we have to store the response in
@@ -36,6 +37,9 @@ export const signupSlice = createSlice({
   reducers: {
     setEmail: (state, action: PayloadAction<string | undefined>) => {
       state.email = action.payload;
+    },
+    setEmailCode: (state, action: PayloadAction<string | undefined>) => {
+      state.email_code = action.payload;
     },
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;

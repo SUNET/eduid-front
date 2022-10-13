@@ -6,6 +6,7 @@ import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/
 import { useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
@@ -16,6 +17,7 @@ interface ResponseCodeButtonsProps {
 export function SignupEnterCode(): JSX.Element {
   const signupState = useSignupAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
+  const dispatch = useSignupAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
 
   function handleTimerReachZero() {
@@ -36,7 +38,10 @@ export function SignupEnterCode(): JSX.Element {
       const digits = match[0];
 
       if (digits) {
-        signupContext.signupService.send({ type: "TRY_CODE", email_code: digits });
+        // remember the code in redux store between states
+        dispatch(signupSlice.actions.setEmailCode(digits));
+
+        signupContext.signupService.send({ type: "COMPLETE" });
       }
     }
   }
@@ -124,6 +129,7 @@ export function SignupEnterCode(): JSX.Element {
 }
 
 export function ProcessEmailCode() {
+  const code = useSignupAppSelector((state) => state.signup.email_code);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useSignupAppDispatch();
 
@@ -138,7 +144,9 @@ export function ProcessEmailCode() {
   }
 
   useEffect(() => {
-    verifyCode(signupContext.signupService.machine.context.email_code);
+    if (code) {
+      verifyCode(code);
+    }
   }, []);
 
   return null;
