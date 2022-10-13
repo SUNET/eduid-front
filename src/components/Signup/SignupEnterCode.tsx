@@ -1,13 +1,13 @@
 import { verifyEmailRequest } from "apis/eduidSignup";
+import EduIDButton from "components/EduIDButton";
+import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/Login/ResponseCodeForm";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import EduIDButton from "components/EduIDButton";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
 
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;
@@ -16,7 +16,6 @@ interface ResponseCodeButtonsProps {
 export function SignupEnterCode(): JSX.Element {
   const signupState = useSignupAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
 
   function handleTimerReachZero() {
@@ -37,14 +36,7 @@ export function SignupEnterCode(): JSX.Element {
       const digits = match[0];
 
       if (digits) {
-        signupContext.signupService.send({ type: "COMPLETE" });
-        const res = await dispatch(verifyEmailRequest({ verification_code: digits }));
-
-        if (verifyEmailRequest.fulfilled.match(res) && res.payload.email.completed === true) {
-          signupContext.signupService.send({ type: "API_SUCCESS" });
-        } else {
-          signupContext.signupService.send({ type: "API_FAIL" });
-        }
+        signupContext.signupService.send({ type: "TRY_CODE", email_code: digits });
       }
     }
   }
@@ -129,4 +121,25 @@ export function SignupEnterCode(): JSX.Element {
       </div>
     </div>
   );
+}
+
+export function ProcessEmailCode() {
+  const signupContext = useContext(SignupGlobalStateContext);
+  const dispatch = useSignupAppDispatch();
+
+  async function verifyCode(verification_code: string) {
+    const res = await dispatch(verifyEmailRequest({ verification_code }));
+
+    if (verifyEmailRequest.fulfilled.match(res) && res.payload.email.completed === true) {
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else {
+      signupContext.signupService.send({ type: "API_FAIL" });
+    }
+  }
+
+  useEffect(() => {
+    verifyCode(signupContext.signupService.machine.context.email_code);
+  }, []);
+
+  return null;
 }

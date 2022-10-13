@@ -12,7 +12,9 @@ export interface Typegen0 {
     guards: never;
     delays: never;
   };
-  eventsCausingActions: {};
+  eventsCausingActions: {
+    assignEmailCode: "TRY_CODE";
+  };
   eventsCausingServices: {};
   eventsCausingGuards: {};
   eventsCausingDelays: {};
@@ -22,12 +24,13 @@ export interface Typegen0 {
     | "ProcessEmailCode"
     | "RegisterEmail"
     | "SignupCaptcha"
-    | "SignupCredentialFIDO"
     | "SignupCredentialPassword"
+    | "SignupCredentialWebauthn"
     | "SignupCredentials"
     | "SignupEmailForm"
     | "SignupEnterCode"
-    | "SignupFinished"
-    | "SignupToU";
+    | "SignupStart"
+    | "SignupToU"
+    | "SignupUserCreated";
   tags: never;
 }
