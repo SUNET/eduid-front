@@ -5,7 +5,6 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
-//import { CircleFlag } from "react-circle-flags";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
