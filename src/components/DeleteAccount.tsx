@@ -1,7 +1,6 @@
-// import { confirmDeletion } from "actions/Security";
 import { postDeleteAccount } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -9,8 +8,6 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
-  const deleted = useDashboardAppSelector((state) => state.security.deleted);
-  const redirect_to = useDashboardAppSelector((state) => state.security.location);
   const dispatch = useDashboardAppDispatch();
 
   function handleStartConfirmationDeletion() {
@@ -29,15 +26,6 @@ export default function DeleteAccount(): JSX.Element | null {
       window.location.assign(response.payload.location);
     }
   }
-
-  // if (redirect_to !== "") {
-  //   window.location.href = redirect_to;
-  //   return null;
-  // }
-  // if (deleted) {
-  //   window.location.href = "https://eduid.se";
-  //   return null;
-  // }
 
   return (
     <article id="delete-account-container">
