@@ -18,17 +18,40 @@ export interface Typegen0 {
   eventsCausingDelays: {};
   matchesStates:
     | "CreateUser"
-    | "ProcessCaptcha"
-    | "ProcessEmailCode"
-    | "RegisterEmail"
-    | "SignupCaptcha"
-    | "SignupCredentialPassword"
-    | "SignupCredentialWebauthn"
-    | "SignupCredentials"
+    | "HandleCaptchaAndToU"
+    | "HandleCaptchaAndToU.Finished"
+    | "HandleCaptchaAndToU.ProcessCaptcha"
+    | "HandleCaptchaAndToU.SignupCaptcha"
+    | "HandleCaptchaAndToU.SignupToU"
+    | "HandleCredentials"
+    | "HandleCredentials.CredentialsFinished"
+    | "HandleCredentials.SignupCredentialPassword"
+    | "HandleCredentials.SignupCredentialWebauthn"
+    | "HandleCredentials.SignupCredentials"
+    | "HandleEmail"
+    | "HandleEmail.EmailFinished"
+    | "HandleEmail.ProcessEmailCode"
+    | "HandleEmail.RegisterEmail"
+    | "HandleEmail.SignupEnterCode"
     | "SignupEmailForm"
-    | "SignupEnterCode"
     | "SignupStart"
-    | "SignupToU"
-    | "SignupUserCreated";
+    | "SignupUserCreated"
+    | {
+        HandleCaptchaAndToU?:
+          | "Finished"
+          | "ProcessCaptcha"
+          | "SignupCaptcha"
+          | "SignupToU";
+        HandleCredentials?:
+          | "CredentialsFinished"
+          | "SignupCredentialPassword"
+          | "SignupCredentialWebauthn"
+          | "SignupCredentials";
+        HandleEmail?:
+          | "EmailFinished"
+          | "ProcessEmailCode"
+          | "RegisterEmail"
+          | "SignupEnterCode";
+      };
   tags: never;
 }
