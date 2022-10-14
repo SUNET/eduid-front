@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "../login/styles/index.scss";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
@@ -19,6 +19,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
+  const [isOpen, setOpen] = useState(false);
   let button;
   let dashboardNav;
 
@@ -68,18 +69,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
 
-        <Hamburger
-          rounded
-          label="Menu"
-          size={28}
-          onToggle={(toggled) => {
-            if (toggled) {
-              // open a menu
-            } else {
-              // close a menu
-            }
-          }}
-        />
+        <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
 
         {dashboardNav}
         {button}
