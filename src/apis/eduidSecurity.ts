@@ -23,7 +23,7 @@ export const postDeleteAccount = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/postDeleteAccount", async (args, thunkAPI) => {
   return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account")
-    .then((response) => response.payload)
+    .then((response) => console.log("response", response))
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 

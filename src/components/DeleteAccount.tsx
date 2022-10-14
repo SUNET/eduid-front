@@ -22,19 +22,22 @@ export default function DeleteAccount(): JSX.Element | null {
     setShowModal(false);
   }
 
-  function handleConfirmationDeletion() {
-    dispatch(postDeleteAccount());
+  async function handleConfirmationDeletion() {
     setShowModal(false);
+    const response = await dispatch(postDeleteAccount());
+    if (postDeleteAccount.fulfilled.match(response)) {
+      window.location.assign(response.payload.location);
+    }
   }
 
-  if (redirect_to !== "") {
-    window.location.href = redirect_to;
-    return null;
-  }
-  if (deleted) {
-    window.location.href = "https://eduid.se";
-    return null;
-  }
+  // if (redirect_to !== "") {
+  //   window.location.href = redirect_to;
+  //   return null;
+  // }
+  // if (deleted) {
+  //   window.location.href = "https://eduid.se";
+  //   return null;
+  // }
 
   return (
     <article id="delete-account-container">
