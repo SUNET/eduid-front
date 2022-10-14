@@ -17,10 +17,16 @@ export interface Typegen0 {
   eventsCausingGuards: {};
   eventsCausingDelays: {};
   matchesStates:
-    | "CreateUser"
+    | "AskForEmailAddress"
+    | "AskForEmailAddress.SignupEmailForm"
+    | "FinaliseUser"
+    | "FinaliseUser.CreateUser"
+    | "FinaliseUser.SignupUserCreated"
     | "HandleCaptchaAndToU"
+    | "HandleCaptchaAndToU.Fail"
     | "HandleCaptchaAndToU.Finished"
     | "HandleCaptchaAndToU.ProcessCaptcha"
+    | "HandleCaptchaAndToU.ProcessToU"
     | "HandleCaptchaAndToU.SignupCaptcha"
     | "HandleCaptchaAndToU.SignupToU"
     | "HandleCredentials"
@@ -33,13 +39,15 @@ export interface Typegen0 {
     | "HandleEmail.ProcessEmailCode"
     | "HandleEmail.RegisterEmail"
     | "HandleEmail.SignupEnterCode"
-    | "SignupEmailForm"
     | "SignupStart"
-    | "SignupUserCreated"
     | {
+        AskForEmailAddress?: "SignupEmailForm";
+        FinaliseUser?: "CreateUser" | "SignupUserCreated";
         HandleCaptchaAndToU?:
+          | "Fail"
           | "Finished"
           | "ProcessCaptcha"
+          | "ProcessToU"
           | "SignupCaptcha"
           | "SignupToU";
         HandleCredentials?:

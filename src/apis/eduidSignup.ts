@@ -20,10 +20,12 @@ export interface SignupStatusResponse {
     throttle_time_max?: number;
   };
   invite: {
+    user?: { given_name?: string; surname?: string; email?: string };
     code?: string;
     completed: boolean;
     finish_url?: string;
     initiated_signup: boolean;
+    is_logged_in: boolean;
   };
   tou: { completed: boolean; version?: string };
   captcha: { completed: boolean };
