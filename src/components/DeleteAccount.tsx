@@ -1,4 +1,5 @@
-import { confirmDeletion } from "actions/Security";
+// import { confirmDeletion } from "actions/Security";
+import { postDeleteAccount } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { useState } from "react";
@@ -22,7 +23,7 @@ export default function DeleteAccount(): JSX.Element | null {
   }
 
   function handleConfirmationDeletion() {
-    dispatch(confirmDeletion());
+    dispatch(postDeleteAccount());
     setShowModal(false);
   }
 

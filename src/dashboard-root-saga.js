@@ -28,7 +28,7 @@ function* rootSaga() {
     takeLatest(openidFrejaActions.SHOW_OIDC_FREJA_MODAL, sagasOpenidFreja.checkNINAndShowFrejaModal),
     takeLatest(openidFrejaActions.HIDE_OIDC_FREJA_MODAL, sagasOpenidFreja.closeFrejaModal),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
-    takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
+    // takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),
     takeEvery(confirmLetterCode.fulfilled, requestAllPersonalData),
     takeEvery(lookupMobileProofing.fulfilled, requestAllPersonalData),

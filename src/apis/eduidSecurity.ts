@@ -3,10 +3,29 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { safeDecodeCBOR, safeEncode } from "sagas/common";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
+
+/*********************************************************************************************************************/
+export interface PostDeleteAccountResponse {
+  location: string;
+}
+
+/**
+ * @public
+ * @function postDeleteAccount
+ * @desc Redux async thunk to postDeleteAccount.
+ */
+export const postDeleteAccount = createAsyncThunk<
+  PostDeleteAccountResponse,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/postDeleteAccount", async (args, thunkAPI) => {
+  return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account")
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 export interface RemoveWebauthnTokensResponse {
@@ -19,20 +38,19 @@ export interface RemoveWebauthnTokensResponse {
  * @desc Redux async thunk to removeWebauthnToken.
  */
 export const removeWebauthnToken = createAsyncThunk<
-  string,
+  RemoveWebauthnTokensResponse,
   { token: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/removeWebauthnToken", async (args, thunkAPI) => {
   const body: KeyValues = {
     credential_key: args.token,
   };
-  return makeSecurityRequest<any>(thunkAPI, "webauthn/remove", body)
-    .then((response) => response.payload.credentials)
+  return makeSecurityRequest<RemoveWebauthnTokensResponse>(thunkAPI, "webauthn/remove", body)
+    .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-
 export interface CredentialType {
   created_ts: string;
   credential_type: string;
@@ -42,8 +60,9 @@ export interface CredentialType {
   used_for_login: boolean;
   verified: boolean;
 }
+
 export interface RequestCredentialsResponse {
-  credentials: [CredentialType];
+  credentials: CredentialType[];
 }
 
 /**
@@ -52,12 +71,12 @@ export interface RequestCredentialsResponse {
  * @desc Redux async thunk to requestCredentials.
  */
 export const requestCredentials = createAsyncThunk<
-  string,
+  RequestCredentialsResponse,
   undefined,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/requestCredentials", async (args, thunkAPI) => {
-  return makeSecurityRequest<any>(thunkAPI, "credentials")
-    .then((response) => response.payload.credentials)
+  return makeSecurityRequest<RequestCredentialsResponse>(thunkAPI, "credentials")
+    .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
@@ -69,7 +88,7 @@ export interface RegisterWebauthnResponse {
 /**
  * @public
  * @function registerWebauthn
- * @desc Redux async thunk to get a suggested new password from the backend.
+ * @desc Redux async thunk to register web auth to the backend.
  */
 export const registerWebauthn = createAsyncThunk<
   string,
@@ -78,9 +97,9 @@ export const registerWebauthn = createAsyncThunk<
 >("security/registerWebauthn", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const body: KeyValues = {
-    attestationObject: safeEncode(state.security.webauthn_attestation?.response.attestationObject),
-    clientDataJSON: safeEncode(state.security.webauthn_attestation?.response.clientDataJSON),
-    credentialId: state.security.webauthn_attestation?.id,
+    attestationObject: state.security.webauthn_attestation?.attestationObject,
+    clientDataJSON: state.security.webauthn_attestation?.clientDataJSON,
+    credentialId: state.security.webauthn_attestation?.credentialId,
     description: args.descriptionValue,
   };
   return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/complete", body)
@@ -96,7 +115,7 @@ export interface BeginRegisterWebauthnResponse {
 /**
  * @public
  * @function beginRegisterWebauthn
- * @desc Redux async thunk to get a suggested new password from the backend.
+ * @desc Redux async thunk to prepare registering web auth.
  */
 export const beginRegisterWebauthn = createAsyncThunk<
   string,
@@ -108,7 +127,7 @@ export const beginRegisterWebauthn = createAsyncThunk<
     authenticator: state.security.webauthn_authenticator,
   };
   return makeSecurityRequest<BeginRegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
-    .then((response) => (response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data)))
+    .then((response) => response.payload.registration_data)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 

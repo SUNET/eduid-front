@@ -13,14 +13,15 @@ import {
   CredentialType,
   registerWebauthn,
   removeWebauthnToken,
+  requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
-import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
+import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 
-function Security() {
+export default function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -89,8 +90,13 @@ function Security() {
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      const response = await dispatch(createAuthentication(resp.payload));
-      if (createAuthentication.fulfilled.match(response)) dispatch(registerWebauthn({ descriptionValue }));
+      const response = await dispatch(createCredential(resp.payload));
+      if (createCredential.fulfilled.match(response)) {
+        const result = await dispatch(registerWebauthn({ descriptionValue }));
+        if (registerWebauthn.fulfilled.match(result)) {
+          dispatch(requestCredentials());
+        }
+      }
     }
   }
 
@@ -193,14 +199,11 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   function handleRemoveWebauthnToken(token: string) {
-    // const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    // const token = dataset?.closest(".webauthn-token-holder");
-    // dispatch(postRemoveWebauthnToken(token));
     dispatch(removeWebauthnToken({ token }));
   }
 
   // data that goes onto the table
-  const security_key_table_data = tokens.map((cred: any, index: number) => {
+  const security_key_table_data = tokens.map((cred: CredentialType, index: number) => {
     // date created
     const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
     // date last used
@@ -270,5 +273,3 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     </table>
   );
 }
-
-export default Security;

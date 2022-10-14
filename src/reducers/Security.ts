@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction, createAction } from "@reduxjs/toolkit";
-import { beginRegisterWebauthn, registerWebauthn, requestCredentials } from "apis/eduidSecurity";
-import { createAuthentication } from "login/app_utils/helperFunctions/navigatorCredential";
-import { safeDecodeCBOR, safeEncode } from "sagas/common";
-// import * as actions from "actions/Security";
+import { registerWebauthn, removeWebauthnToken, requestCredentials, postDeleteAccount } from "apis/eduidSecurity";
+import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
 
 export const GET_CREDENTIALS_SUCCESS = createAction("GET_SECURITY_CREDENTIALS_SUCCESS");
 export const getCredentials = createAction("GET_CREDENTIALS");
@@ -89,17 +87,27 @@ const securitySlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
-    builder.addCase(createAuthentication.fulfilled, (state, action) => {
-      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+    builder.addCase(createCredential.fulfilled, (state, action) => {
       state.webauthn_attestation = action.payload;
     });
     builder.addCase(registerWebauthn.fulfilled, (state, action) => {
-      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
       state.webauthn_attestation = action.payload;
     });
     builder.addCase(requestCredentials.fulfilled, (state, action) => {
-      state.credentials = action.payload;
+      state.credentials = action.payload.credentials;
     });
+    builder.addCase(removeWebauthnToken.fulfilled, (state, action) => {
+      state.credentials = action.payload.credentials;
+    });
+    builder.addCase(postDeleteAccount.fulfilled, (state, action) => {
+      state.location = action.payload.location;
+    });
+
+    //     case actions.POST_DELETE_ACCOUNT_SUCCESS:
+    //       return {
+    //         ...state,
+    //         location: action.payload.location,
+    //       };
     // builder.addCase(beginRegisterWebauthn.fulfilled, (state, action: PayloadAction<any>) => {
     //   state.webauthn_attestation = action.payload;
     // });
