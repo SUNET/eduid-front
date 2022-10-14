@@ -3,6 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { webauthnAttestation } from "login/app_utils/helperFunctions/navigatorCredential";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
@@ -22,8 +23,12 @@ export const postDeleteAccount = createAsyncThunk<
   undefined,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/postDeleteAccount", async (args, thunkAPI) => {
-  return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account")
-    .then((response) => console.log("response", response))
+  const state = thunkAPI.getState();
+  const body: KeyValues = {
+    csrf_token: state.config.csrf_token,
+  };
+  return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account", body)
+    .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
@@ -82,7 +87,7 @@ export const requestCredentials = createAsyncThunk<
 
 /*********************************************************************************************************************/
 export interface RegisterWebauthnResponse {
-  webauthn_attestation: string;
+  webauthn_attestation: webauthnAttestation;
 }
 
 /**
@@ -91,7 +96,7 @@ export interface RegisterWebauthnResponse {
  * @desc Redux async thunk to register web auth to the backend.
  */
 export const registerWebauthn = createAsyncThunk<
-  string,
+  RegisterWebauthnResponse,
   { descriptionValue: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/registerWebauthn", async (args, thunkAPI) => {
@@ -103,7 +108,7 @@ export const registerWebauthn = createAsyncThunk<
     description: args.descriptionValue,
   };
   return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/complete", body)
-    .then((response) => response.payload.webauthn_attestation)
+    .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
