@@ -21,22 +21,15 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
     window.location.assign(url);
   }
 
-  // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
-  //       before this is merged after the holidays.
   return (
     <article>
       <div id="change-password-container">
         <div className="intro">
           <h3>
-            <FormattedMessage
-              id="settings.main_title"
-              defaultMessage="Change password"
-              description="Dashboard change password"
-            />
+            <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
           </h3>
           <p>
             <FormattedMessage
-              id="settings.long_description"
               defaultMessage="Click the link to change your eduID password."
               description="Dashboard change password"
             />
@@ -60,16 +53,9 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
 
       <NotificationModal
         id="security-confirm-modal"
-        title={
-          <FormattedMessage
-            id="settings.confirm_title_chpass"
-            defaultMessage="For security reasons..."
-            description="Dashboard change password"
-          />
-        }
+        title={<FormattedMessage defaultMessage="For security reasons..." description="Dashboard change password" />}
         mainText={
           <FormattedMessage
-            id="settings.change_info"
             defaultMessage="You will need to log in again to change your password."
             description="Dashboard change password"
           />
