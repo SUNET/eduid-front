@@ -1,7 +1,46 @@
-nav li {
-  list-style: none;
-}
+#dashboard-nav {
+  position: absolute;
+  width: 100%;
 
-// ul.nav.navbar-nav li a {
-//   color: #3f5c57;
-// }
+  ul {
+    //extends .horizontal-content-margin
+    flex-direction: row;
+
+    li {
+      margin: 0 4rem 0 0;
+
+      @media (max-width: $bp-lg) {
+        margin: 0 0.5rem;
+        font-size: $txt-sm;
+      }
+      @media (max-width: $bp-sm) {
+        margin: 0 0 0.75rem;
+      }
+    }
+
+    a {
+      color: $txt-black;
+
+      &.active {
+        color: $txt-orange;
+      }
+      &:hover {
+        color: $txt-orange;
+      }
+    }
+
+    @media (max-width: $bp-lg) {
+      justify-content: space-evenly;
+    }
+    @media (max-width: $bp-sm) {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: $bp-lg) {
+    position: relative;
+  }
+  @media (max-width: $bp-sm) {
+    text-align: right;
+  }
+}

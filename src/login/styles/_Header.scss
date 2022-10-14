@@ -15,7 +15,6 @@
       background-size: contain;
       background-repeat: no-repeat;
       margin-left: 1rem;
-      display: inline-block;
 
       @media (max-width: $bp-sm) {
         width: 99px;
@@ -24,20 +23,19 @@
       }
     }
 
-    .header-user {
-      font-size: 1rem;
-      text-align: right;
-      width: 100%;
-      font-family: $proxima-bold;
+    // .header-user {
+    //   font-size: 1rem;
+    //   text-align: right;
+    //   width: 100%;
+    //   font-family: $proxima-bold;
 
-      @media (min-width: $bp-sm) {
-        padding-right: 1rem;
-        font-size: 1.125rem;
-      }
-    }
+    //   @media (min-width: $bp-sm) {
+    //     padding-right: 1rem;
+    //     font-size: 1.125rem;
+    //   }
+    // }
 
     button {
-      order: 3;
       margin-right: 1rem;
     }
 
