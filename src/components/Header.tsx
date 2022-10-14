@@ -5,6 +5,7 @@ import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "components/EduIDButton";
 import DashboardNav from "./DashboardNav";
+import { Squash as Hamburger } from "hamburger-react";
 
 interface HeaderProps {
   email?: string;
@@ -66,6 +67,20 @@ const Header = (props: HeaderProps): JSX.Element => {
         <a href={dashboard_url ? dashboard_url : eduid_site_url} area-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
+
+        <Hamburger
+          rounded
+          label="Menu"
+          size={28}
+          onToggle={(toggled) => {
+            if (toggled) {
+              // open a menu
+            } else {
+              // close a menu
+            }
+          }}
+        />
+
         {dashboardNav}
         {button}
       </header>

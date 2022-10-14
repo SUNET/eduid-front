@@ -20,6 +20,8 @@
         width: 99px;
         height: 34px;
         position: absolute;
+        left: 0;
+        top: 1rem;
       }
     }
 
@@ -35,16 +37,22 @@
     //   }
     // }
 
+    .hamburger-react {
+      display: none;
+    }
+
     button {
       margin-right: 1rem;
     }
 
     @media (max-width: $bp-sm) {
-      display: block;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 0 0 1.5rem;
 
-      button {
-        float: right;
-        margin-bottom: 1rem !important;
+      .hamburger-react {
+        display: block;
+        width: 54px !important;
       }
     }
   }
