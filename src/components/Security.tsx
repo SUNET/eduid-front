@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import EduIDButton from "components/EduIDButton";
-import { translate } from "login/translation";
 import Splash from "./Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
@@ -105,15 +104,23 @@ export default function Security(): JSX.Element | null {
       <Splash showChildren={isPlatformAuthLoaded}>
         <div id="register-security-key-container">
           <div className="intro">
-            <h3>{translate("security.security-key_title")}</h3>
-            <p>{translate("security.second-factor")}</p>
+            <h3>
+              <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
+            </h3>
+            <p>
+              <FormattedMessage
+                description="security second factor"
+                defaultMessage={`Add a security key as a second layer of identification, beyond email and password, 
+                  to prove you are the owner of your eduID.`}
+              />
+            </p>
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
             <SecurityKeyTable credentials={credentials} />
             <label>
               <FormattedMessage
                 description="select extra webauthn"
-                defaultMessage={`Choose extra identification method:`}
+                defaultMessage="Choose extra identification method:"
               />
             </label>
             <div className="buttons">
@@ -124,12 +131,12 @@ export default function Security(): JSX.Element | null {
                     buttonstyle="primary"
                     onClick={() => handleStartAskingWebauthnDescription("platform")}
                   >
-                    <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
                   </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage
                       description="platform authn device help text"
-                      defaultMessage={`Touch/ Face ID on this device.`}
+                      defaultMessage="Touch/ Face ID on this device."
                     />
                   </p>
                 </div>
@@ -140,10 +147,10 @@ export default function Security(): JSX.Element | null {
                   buttonstyle="primary"
                   onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
                 >
-                  <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
+                  <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
                 </EduIDButton>
                 <p className="help-text">
-                  <FormattedMessage description="platform authn key help text" defaultMessage={`USB Security Key.`} />
+                  <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
                 </p>
               </div>
             </div>
@@ -154,7 +161,7 @@ export default function Security(): JSX.Element | null {
           title={
             <FormattedMessage
               description="security webauthn describe title"
-              defaultMessage={`Add a name for your security key`}
+              defaultMessage="Add a name for your security key"
             />
           }
           placeholder={placeholder}
@@ -162,15 +169,12 @@ export default function Security(): JSX.Element | null {
           closeModal={handleStopAskingWebauthnDescription}
           handleConfirm={handleStartWebauthnRegistration}
           modalFormLabel={
-            <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
+            <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
           }
           validationPattern={securityKeyPattern}
-          validationError={"security.description_invalid_format"}
+          validationError="security.description_invalid_format"
           helpBlock={
-            <FormattedMessage
-              defaultMessage={`max 50 characters`}
-              description="Help text for security key max length"
-            />
+            <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
           }
         />
       </Splash>
@@ -210,7 +214,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     if (cred.success_ts) {
       date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
     } else {
-      date_success = translate("security.last-used.date");
+      date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
     }
 
     // verify button/ verified badge
@@ -220,13 +224,13 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           className="no button verified"
           // disabled
         >
-          {translate("security.verified")}
+          <FormattedMessage description="security verified" defaultMessage="Verified" />
         </label>
       );
     } else {
       btnVerify = (
         <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
-          {translate("security.verify")}
+          <FormattedMessage description="security verify" defaultMessage="Verify key" />
         </EduIDButton>
       );
     }
@@ -262,9 +266,15 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     <table className="table-form passwords">
       <tbody>
         <tr>
-          <th className="security-name">{translate("security.description")}</th>
-          <th className="security-creation-date">{translate("security.creation_date")}</th>
-          <th className="security-last-used-date">{translate("security.last_used")}</th>
+          <th className="security-name">
+            <FormattedMessage description="security description name" defaultMessage="Name" />
+          </th>
+          <th className="security-creation-date">
+            <FormattedMessage description="security creation date" defaultMessage="Created on" />
+          </th>
+          <th className="security-last-used-date">
+            <FormattedMessage id="security last used" defaultMessage="Used on" />
+          </th>
           <th className="security-verify-link" />
           <th className="security-remove-data" />
         </tr>
