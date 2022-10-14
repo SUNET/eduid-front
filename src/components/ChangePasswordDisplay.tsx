@@ -1,6 +1,5 @@
-import { initiatePasswordChange } from "actions/Security";
 import EduIDButton from "components/EduIDButton";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
@@ -11,10 +10,15 @@ interface ChangePasswordDisplayProps {
 
 function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   const [showModal, setShowModal] = useState<boolean>(props.showModal === true);
-  const dispatch = useDashboardAppDispatch();
+  const config = useDashboardAppSelector((state) => state.config);
 
   function handleAcceptModal() {
-    dispatch(initiatePasswordChange());
+    const chpassURL = config.token_service_url + "chpass";
+    // the "chpass" path will route to the ChangePasswordContainer when we get back
+    const nextURL = config.dashboard_url + "chpass";
+    const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
+
+    window.location.assign(url);
   }
 
   // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
