@@ -1,6 +1,30 @@
+import { SignupStatusResponse } from "apis/eduidSignup";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
+import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
+
+const emptyState: SignupStatusResponse = {
+  captcha: {
+    completed: false,
+    internal: true, // always use the internal captcha since we can get past it when testing
+  },
+  credentials: {
+    completed: false,
+  },
+  email: {
+    completed: false,
+  },
+  invite: {
+    completed: false,
+    initiated_signup: false,
+    is_logged_in: false,
+  },
+  tou: {
+    completed: false,
+  },
+  user_created: false,
+};
 
 test("e-mail form works as expected", () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
@@ -28,6 +52,13 @@ test("e-mail form works as expected", () => {
 });
 
 test("e-mail form accepts valid data (signup happy case)", async () => {
+  mswServer.use(
+    rest.get("/services/signup/state", (req, res, ctx) => {
+      return res(ctx.json({ type: "test response", payload: emptyState }));
+    })
+  );
+
+  mswServer.printHandlers();
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
@@ -43,6 +74,9 @@ test("e-mail form accepts valid data (signup happy case)", async () => {
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeEnabled();
   fireEvent.click(button);
+
+  // Wait for the (internal) Captcha to be displayed
+  await screen.findByText(/^Enter the text from the image/);
 
   // Wait for the ToU to be displayed
   await screen.findByText(/^General rules/);

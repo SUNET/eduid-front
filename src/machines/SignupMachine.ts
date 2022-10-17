@@ -58,6 +58,9 @@ function createSignupMachine() {
                 COMPLETE: {
                   target: "ProcessCaptcha",
                 },
+                ABORT: {
+                  target: "Fail",
+                },
               },
             },
             ProcessCaptcha: {

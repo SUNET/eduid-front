@@ -29,7 +29,7 @@ export interface SignupStatusResponse {
     is_logged_in: boolean;
   };
   tou: { completed: boolean; version?: string };
-  captcha: { completed: boolean };
+  captcha: { completed: boolean; internal?: boolean };
   credentials: { completed: boolean; password?: string };
   user_created: boolean;
 }
@@ -54,6 +54,7 @@ export const fetchState = createAsyncThunk<
 /*********************************************************************************************************************/
 
 export interface CaptchaRequest {
+  internal_response?: string;
   recaptcha_response?: string;
 }
 
@@ -68,6 +69,7 @@ export const sendCaptchaResponse = createAsyncThunk<
   { dispatch: SignupAppDispatch; state: SignupRootState }
 >("signup/sendCaptchaResponse", async (args, thunkAPI) => {
   const body: KeyValues = {
+    internal_response: args.internal_response,
     recaptcha_response: args.recaptcha_response,
   };
 

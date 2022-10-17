@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
 import {
+  CaptchaRequest,
   fetchTryCaptcha,
   fetchVerifyLink,
   isTryCaptchaResponse,
@@ -14,6 +15,7 @@ interface SignupState {
   state?: SignupStatusResponse;
   email?: string; // pass email address from one state to another
   email_code?: string; // pass email code from one state to another
+  captcha?: CaptchaRequest; // pass captcha response from one state to another
   tou_accepted: boolean;
   current_step: "register" | TryCaptchaNextStep;
   // Fetching verify-link is a one-shot operation, so we have to store the response in
@@ -37,6 +39,9 @@ export const signupSlice = createSlice({
     },
     setEmailCode: (state, action: PayloadAction<string | undefined>) => {
       state.email_code = action.payload;
+    },
+    setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
+      state.captcha = action.payload;
     },
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;
