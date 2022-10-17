@@ -155,6 +155,9 @@ function createSignupMachine() {
                 CHOOSE_FIDO: {
                   target: "SignupCredentialWebauthn",
                 },
+                ABORT: {
+                  target: "#signup.AskForEmailAddress",
+                },
               },
             },
             SignupCredentialPassword: {
