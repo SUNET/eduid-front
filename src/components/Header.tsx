@@ -46,12 +46,15 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
-        <FormattedMessage defaultMessage="Log out" description="Header logout" />
-      </EduIDButton>
-    );
-    dashboardNav = <DashboardNav />;
+    if (isOpen) {
+      button = (
+        <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
+          <FormattedMessage defaultMessage="Log out" description="Header logout" />
+        </EduIDButton>
+      );
+
+      dashboardNav = <DashboardNav />;
+    }
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>

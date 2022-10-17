@@ -41,18 +41,21 @@
       display: none;
     }
 
-    button {
+    button.btn {
       margin-right: 1rem;
     }
 
     @media (max-width: $bp-sm) {
       flex-direction: column;
       align-items: flex-end;
-      padding: 0 0 1.5rem;
+      padding: 0.5rem 0;
 
       .hamburger-react {
         display: block;
         width: 54px !important;
+      }
+      button.btn {
+        margin-bottom: 1rem;
       }
     }
   }
