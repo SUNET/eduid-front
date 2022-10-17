@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import EduIDButton from "components/EduIDButton";
-import Splash from "./Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
@@ -107,85 +106,85 @@ export default function Security(): JSX.Element | null {
     }
   }
 
+  if (!isPlatformAuthLoaded) return null;
+
   return (
     <article id="security-container">
-      <Splash showChildren={isPlatformAuthLoaded}>
-        <div id="register-security-key-container">
-          <div className="intro">
-            <h3>
-              <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
-            </h3>
-            <p>
-              <FormattedMessage
-                description="security second factor"
-                defaultMessage={`Add a security key as a second layer of identification, beyond email and password, 
+      <div id="register-security-key-container">
+        <div className="intro">
+          <h3>
+            <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
+          </h3>
+          <p>
+            <FormattedMessage
+              description="security second factor"
+              defaultMessage={`Add a security key as a second layer of identification, beyond email and password, 
                   to prove you are the owner of your eduID.`}
-              />
-            </p>
-          </div>
-          <div id="register-webauthn-tokens-area" className="table-responsive">
-            <SecurityKeyTable credentials={credentials} />
-            <label>
-              <FormattedMessage
-                description="select extra webauthn"
-                defaultMessage="Choose extra identification method:"
-              />
-            </label>
-            <div className="buttons">
-              <Splash showChildren={isPlatformAuthenticatorAvailable}>
-                <div>
-                  <EduIDButton
-                    id="security-webauthn-platform-button"
-                    buttonstyle="primary"
-                    onClick={() => handleStartAskingWebauthnDescription("platform")}
-                  >
-                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-                  </EduIDButton>
-                  <p className="help-text">
-                    <FormattedMessage
-                      description="platform authn device help text"
-                      defaultMessage="Touch/ Face ID on this device."
-                    />
-                  </p>
-                </div>
-              </Splash>
+            />
+          </p>
+        </div>
+        <div id="register-webauthn-tokens-area" className="table-responsive">
+          <SecurityKeyTable credentials={credentials} />
+          <label>
+            <FormattedMessage
+              description="select extra webauthn"
+              defaultMessage="Choose extra identification method:"
+            />
+          </label>
+          <div className="buttons">
+            {isPlatformAuthenticatorAvailable ? (
               <div>
                 <EduIDButton
-                  id="security-webauthn-button"
+                  id="security-webauthn-platform-button"
                   buttonstyle="primary"
-                  onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
+                  onClick={() => handleStartAskingWebauthnDescription("platform")}
                 >
-                  <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                  <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
                 </EduIDButton>
                 <p className="help-text">
-                  <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
+                  <FormattedMessage
+                    description="platform authn device help text"
+                    defaultMessage="Touch/ Face ID on this device."
+                  />
                 </p>
               </div>
+            ) : null}
+            <div>
+              <EduIDButton
+                id="security-webauthn-button"
+                buttonstyle="primary"
+                onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
+              >
+                <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+              </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
+              </p>
             </div>
           </div>
         </div>
-        <ConfirmModal
-          id="describe-webauthn-token-modal"
-          title={
-            <FormattedMessage
-              description="security webauthn describe title"
-              defaultMessage="Add a name for your security key"
-            />
-          }
-          placeholder={placeholder}
-          showModal={showModal}
-          closeModal={handleStopAskingWebauthnDescription}
-          handleConfirm={handleStartWebauthnRegistration}
-          modalFormLabel={
-            <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
-          }
-          validationPattern={securityKeyPattern}
-          validationError="security.description_invalid_format"
-          helpBlock={
-            <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
-          }
-        />
-      </Splash>
+      </div>
+      <ConfirmModal
+        id="describe-webauthn-token-modal"
+        title={
+          <FormattedMessage
+            description="security webauthn describe title"
+            defaultMessage="Add a name for your security key"
+          />
+        }
+        placeholder={placeholder}
+        showModal={showModal}
+        closeModal={handleStopAskingWebauthnDescription}
+        handleConfirm={handleStartWebauthnRegistration}
+        modalFormLabel={
+          <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
+        }
+        validationPattern={securityKeyPattern}
+        validationError="security.description_invalid_format"
+        helpBlock={
+          <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
+        }
+      />
     </article>
   );
 }
