@@ -7,7 +7,7 @@ import { useSignupAppDispatch } from "signup-hooks";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
-import { SignupToU } from "./SignupToU";
+import { ProcessToU, SignupToU } from "./SignupToU";
 import { CreateUser, SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): JSX.Element {
@@ -21,6 +21,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleCaptchaAndToU.SignupCaptcha") && <SignupCaptcha />}
       {state.matches("HandleCaptchaAndToU.ProcessCaptcha") && <ProcessCaptcha />}
       {state.matches("HandleCaptchaAndToU.SignupToU") && <SignupToU />}
+      {state.matches("HandleCaptchaAndToU.ProcessToU") && <ProcessToU />}
       {state.matches("HandleEmail.RegisterEmail") && <RegisterEmail />}
       {state.matches("HandleEmail.SignupEnterCode") && <SignupEnterCode />}
       {state.matches("HandleEmail.ProcessEmailCode") && <ProcessEmailCode />}
@@ -28,10 +29,6 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
       {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
       {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
-
-      <p> </p>
-
-      <span>DEBUGGING: Machine state: {JSON.stringify(state.value)}</span>
     </div>
   );
 }

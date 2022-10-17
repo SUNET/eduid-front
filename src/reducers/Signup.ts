@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
 import {
-  fetchState,
   fetchTryCaptcha,
   fetchVerifyLink,
   isTryCaptchaResponse,
   isVerifyLinkResponse,
-  registerEmailRequest,
-  sendCaptchaResponse,
   SignupStatusResponse,
   TryCaptchaNextStep,
   VerifyLinkResponse,
@@ -44,6 +41,9 @@ export const signupSlice = createSlice({
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;
     },
+    setSignupState: (state, action: PayloadAction<SignupStatusResponse>) => {
+      state.state = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -73,15 +73,6 @@ export const signupSlice = createSlice({
         if (isFSA(action.payload) && isVerifyLinkResponse(action.payload.payload)) {
           state.verify_link_response = action.payload.payload;
         }
-      })
-      .addCase(fetchState.fulfilled, (state, action) => {
-        state.state = action.payload;
-      })
-      .addCase(sendCaptchaResponse.fulfilled, (state, action) => {
-        state.state = action.payload;
-      })
-      .addCase(registerEmailRequest.fulfilled, (state, action) => {
-        state.state = action.payload;
       });
   },
 });

@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
-import { useSignupAppSelector } from "signup-hooks";
+import { acceptToURequest } from "apis/eduidSignup";
 import { CommonToU } from "components/CommonToU";
+import React, { useContext, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): JSX.Element {
@@ -34,4 +35,29 @@ export function SignupToU(): JSX.Element {
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
     </React.Fragment>
   );
+}
+
+export function ProcessToU(): JSX.Element {
+  const signupState = useSignupAppSelector((state) => state.signup.state);
+  const version = signupState?.tou.version;
+  const signupContext = useContext(SignupGlobalStateContext);
+  const dispatch = useSignupAppDispatch();
+
+  async function sendToUAcceptance(version: string) {
+    const res = await dispatch(acceptToURequest({ version }));
+
+    if (acceptToURequest.fulfilled.match(res)) {
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else {
+      signupContext.signupService.send({ type: "API_FAIL" });
+    }
+  }
+
+  useEffect(() => {
+    if (version) {
+      sendToUAcceptance(version);
+    }
+  }, []);
+
+  return <React.Fragment></React.Fragment>;
 }

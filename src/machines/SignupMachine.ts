@@ -73,7 +73,7 @@ function createSignupMachine() {
             SignupToU: {
               on: {
                 COMPLETE: {
-                  target: "Finished",
+                  target: "ProcessToU",
                 },
                 ABORT: {
                   target: "Fail",

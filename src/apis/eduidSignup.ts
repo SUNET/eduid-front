@@ -3,8 +3,9 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { signupSlice } from "reducers/Signup";
 import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
-import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 // export for use in tests
 export const SIGNUP_SERVICE_URL = "/services/signup";
@@ -71,6 +72,31 @@ export const sendCaptchaResponse = createAsyncThunk<
   };
 
   return makeSignupRequest<SignupStatusResponse>(thunkAPI, "captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+/*********************************************************************************************************************/
+
+export interface AcceptToURequest {
+  version: string;
+}
+
+/**
+ * @public
+ * @function acceptToURequest
+ * @desc Redux async thunk to record acceptance of a ToU version.
+ */
+export const acceptToURequest = createAsyncThunk<
+  SignupStatusResponse, // return type
+  AcceptToURequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/acceptToURequest", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    tou_accepted: true,
+    tou_version: args.version,
+  };
+
+  return makeSignupRequest<SignupStatusResponse>(thunkAPI, "accept-tou", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -267,7 +293,34 @@ function makeSignupRequest<T>(
     throw new Error("Missing global SIGNUP_SERVICE_URL");
   }
 
-  return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data);
-}
+  // type predicate to help identify payloads with the signup state.
+  function isSignupStateResponse(action: any): action is PayloadAction<SignupStatusResponse> {
+    try {
+      if (!isFSA(action)) {
+        return false;
+      }
+      const payload = action.payload as unknown as SignupStatusResponse;
+      if (!payload.email || !payload.captcha || !payload.tou || !payload.credentials) {
+        return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  }
 
+  /* Spot the generic signup state being returned from the backend, and update our copy in
+   * redux-store accordingly.
+   */
+  function updateState(action: PayloadAction<T, string, never, boolean>, thunkAPI: RequestThunkAPI) {
+    if (isSignupStateResponse(action)) {
+      thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload));
+    }
+    return action;
+  }
+
+  return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data).then((response) =>
+    updateState(response, thunkAPI)
+  );
+}
 /*********************************************************************************************************************/
