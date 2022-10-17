@@ -7,16 +7,11 @@ import Splash from "./Splash";
 export const activeClassName = "active";
 export const dashboardHeading = "eduID Dashboard:";
 
-interface DashboardNavProps {
-  className?: string;
-  isOpen: boolean;
-}
-
-function DashboardNav(props: DashboardNavProps): JSX.Element {
+function DashboardNav(): JSX.Element {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   return (
-    <nav id="dashboard-nav" className={props.isOpen ? "show" : "hidden"}>
+    <nav id="dashboard-nav">
       <Splash showChildren={isLoaded} className="nav-splash-spinner">
         <ul className="horizontal-content-margin">
           <li>

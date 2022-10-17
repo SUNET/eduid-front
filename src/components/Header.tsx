@@ -46,14 +46,12 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    if (isOpen) {
-      button = (
-        <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
-          <FormattedMessage defaultMessage="Log out" description="Header logout" />
-        </EduIDButton>
-      );
-      dashboardNav = <DashboardNav isOpen />;
-    }
+    button = (
+      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
+        <FormattedMessage defaultMessage="Log out" description="Header logout" />
+      </EduIDButton>
+    );
+    dashboardNav = <DashboardNav />;
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
@@ -72,9 +70,10 @@ const Header = (props: HeaderProps): JSX.Element => {
         </a>
 
         <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
-
-        {dashboardNav}
-        {button}
+        <div className={"nav-wrapper " + (isOpen ? "show" : "")}>
+          {dashboardNav}
+          {button}
+        </div>
       </header>
     </section>
   );

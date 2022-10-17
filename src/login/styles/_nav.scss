@@ -45,3 +45,22 @@
     margin: 0.75rem 0 0.25rem;
   }
 }
+
+.nav-wrapper {
+  @media (min-width: $bp-sm) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: $bp-sm) {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.show {
+      height: auto;
+      max-height: 1000px;
+    }
+  }
+}
