@@ -12,8 +12,8 @@ interface HeaderProps {
   showLogin?: boolean;
   showLogout?: boolean;
   showRegister?: boolean;
+  isOpen?: boolean;
 }
-
 const Header = (props: HeaderProps): JSX.Element => {
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
@@ -52,8 +52,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <FormattedMessage defaultMessage="Log out" description="Header logout" />
         </EduIDButton>
       );
-
-      dashboardNav = <DashboardNav />;
+      dashboardNav = <DashboardNav isOpen />;
     }
   } else if (props.showRegister) {
     button = (
