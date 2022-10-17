@@ -16,7 +16,6 @@ const signupModel = createModel(
       CHOOSE_PASSWORD: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
       FAIL: () => ({}), // no payload
-      HAS_INVITE:
       SUCCESS: () => ({}), // no payload
     },
   }

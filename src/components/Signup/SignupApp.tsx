@@ -17,21 +17,21 @@ export function SignupApp(): JSX.Element {
   return (
     <div id="content" className="horizontal-content-margin content">
       {state.matches("SignupStart") && <SignupStart />}
-      {state.matches("SignupEmailForm") && <SignupEmailForm />}
-      {state.matches("SignupCaptcha") && <SignupCaptcha />}
-      {state.matches("ProcessCaptcha") && <ProcessCaptcha />}
-      {state.matches("SignupToU") && <SignupToU />}
-      {state.matches("RegisterEmail") && <RegisterEmail />}
-      {state.matches("SignupEnterCode") && <SignupEnterCode />}
-      {state.matches("ProcessEmailCode") && <ProcessEmailCode />}
-      {state.matches("SignupCredentials") && <SignupCredentials />}
-      {state.matches("SignupCredentialPassword") && <SignupCredentialPassword />}
-      {state.matches("CreateUser") && <CreateUser />}
-      {state.matches("SignupUserCreated") && <SignupUserCreated />}
+      {state.matches("AskForEmailAddress.SignupEmailForm") && <SignupEmailForm />}
+      {state.matches("HandleCaptchaAndToU.SignupCaptcha") && <SignupCaptcha />}
+      {state.matches("HandleCaptchaAndToU.ProcessCaptcha") && <ProcessCaptcha />}
+      {state.matches("HandleCaptchaAndToU.SignupToU") && <SignupToU />}
+      {state.matches("HandleEmail.RegisterEmail") && <RegisterEmail />}
+      {state.matches("HandleEmail.SignupEnterCode") && <SignupEnterCode />}
+      {state.matches("HandleEmail.ProcessEmailCode") && <ProcessEmailCode />}
+      {state.matches("HandleCredentials.SignupCredentials") && <SignupCredentials />}
+      {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
+      {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
+      {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
 
       <p> </p>
 
-      <span>DEBUGGING: Machine state: {state.value}</span>
+      <span>DEBUGGING: Machine state: {JSON.stringify(state.value)}</span>
     </div>
   );
 }
