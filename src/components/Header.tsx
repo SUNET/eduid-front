@@ -12,7 +12,6 @@ interface HeaderProps {
   showLogin?: boolean;
   showLogout?: boolean;
   showRegister?: boolean;
-  isOpen?: boolean;
 }
 const Header = (props: HeaderProps): JSX.Element => {
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
@@ -64,13 +63,13 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   return (
     <section className="banner">
-      <header>
+      <header className={props.showRegister ? "show-register" : ""}>
         <a href={dashboard_url ? dashboard_url : eduid_site_url} area-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
 
         <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
-        <div className={"nav-wrapper " + (isOpen ? "show" : "")}>
+        <div className={"nav-wrapper " + (isOpen ? "show-menu" : "")}>
           {dashboardNav}
           {button}
         </div>

@@ -49,13 +49,15 @@
     }
 
     @media (max-width: $bp-sm) {
-      flex-direction: column;
-      align-items: flex-end;
-      padding: 0.5rem 0;
+      &:not(.show-menu) {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0.5rem 0;
 
-      .hamburger-react {
-        display: block;
-        width: 54px !important;
+        .hamburger-react {
+          display: block;
+          width: 54px !important;
+        }
       }
     }
   }

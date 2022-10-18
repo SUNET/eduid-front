@@ -55,14 +55,16 @@
   }
 
   @media (max-width: $bp-sm) {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    &:not(.show-register &) {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
 
-    &.show {
-      height: auto;
-      max-height: 1000px;
-      margin-bottom: 1rem;
+      &.show-menu {
+        height: auto;
+        max-height: 1000px;
+        margin-bottom: 1rem;
+      }
     }
   }
 }
