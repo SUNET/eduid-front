@@ -33,6 +33,10 @@ export const postDeleteAccount = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+export interface RemoveWebauthnTokensRequest {
+  credential_key: string;
+}
+
 export interface RemoveWebauthnTokensResponse {
   credentials: [];
 }
@@ -44,11 +48,11 @@ export interface RemoveWebauthnTokensResponse {
  */
 export const removeWebauthnToken = createAsyncThunk<
   RemoveWebauthnTokensResponse,
-  { token: string },
+  RemoveWebauthnTokensRequest,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("security/removeWebauthnToken", async (args, thunkAPI) => {
   const body: KeyValues = {
-    credential_key: args.token,
+    credential_key: args.credential_key,
   };
   return makeSecurityRequest<RemoveWebauthnTokensResponse>(thunkAPI, "webauthn/remove", body)
     .then((response) => response.payload)
@@ -59,7 +63,7 @@ export const removeWebauthnToken = createAsyncThunk<
 export interface CredentialType {
   created_ts: string;
   credential_type: string;
-  description: string;
+  description: string | null;
   key: string;
   success_ts: string;
   used_for_login: boolean;
