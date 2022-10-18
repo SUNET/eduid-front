@@ -38,7 +38,7 @@ export interface RemoveWebauthnTokensRequest {
 }
 
 export interface RemoveWebauthnTokensResponse {
-  credentials: [];
+  credentials: CredentialType[];
 }
 
 /**

@@ -209,8 +209,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     }
   }
 
-  function handleRemoveWebauthnToken(token: string) {
-    dispatch(removeWebauthnToken({ token }));
+  function handleRemoveWebauthnToken(credential_key: string) {
+    dispatch(removeWebauthnToken({ credential_key }));
   }
 
   // data that goes onto the table
