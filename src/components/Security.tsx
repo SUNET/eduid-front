@@ -98,10 +98,7 @@ export default function Security(): JSX.Element | null {
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
       const response = await dispatch(createCredential(resp.payload));
       if (createCredential.fulfilled.match(response)) {
-        const result = await dispatch(registerWebauthn({ descriptionValue }));
-        if (registerWebauthn.fulfilled.match(result)) {
-          dispatch(requestCredentials());
-        }
+        await dispatch(registerWebauthn({ descriptionValue }));
       }
     }
   }
