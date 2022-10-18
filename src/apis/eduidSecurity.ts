@@ -92,6 +92,7 @@ export const requestCredentials = createAsyncThunk<
 /*********************************************************************************************************************/
 export interface RegisterWebauthnResponse {
   webauthn_attestation: webauthnAttestation;
+  credentials: CredentialType[];
 }
 
 /**
