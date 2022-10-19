@@ -38,8 +38,8 @@ const securitySlice = createSlice({
       state.webauthn_attestation = action.payload;
     });
     builder.addCase(registerWebauthn.fulfilled, (state, action) => {
-      (state.webauthn_attestation = action.payload.webauthn_attestation),
-        (state.credentials = action.payload.credentials);
+      state.webauthn_attestation = action.payload.webauthn_attestation;
+      state.credentials = action.payload.credentials;
     });
     builder.addCase(requestCredentials.fulfilled, (state, action) => {
       state.credentials = action.payload.credentials;
