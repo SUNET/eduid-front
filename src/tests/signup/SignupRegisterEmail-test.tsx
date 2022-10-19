@@ -1,4 +1,4 @@
-import { SignupStatusResponse } from "apis/eduidSignup";
+import { GetCaptchaResponse, SignupStatusResponse } from "apis/eduidSignup";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { mswServer, rest } from "setupTests";
@@ -51,9 +51,16 @@ test("e-mail form works as expected", () => {
 });
 
 test("e-mail form accepts valid data (signup happy case)", async () => {
+  let getCaptchaCalled = false;
+
   mswServer.use(
     rest.get("/services/signup/state", (req, res, ctx) => {
       return res(ctx.json({ type: "test response", payload: emptyState }));
+    }),
+    rest.post("/services/signup/get-captcha", (req, res, ctx) => {
+      getCaptchaCalled = true;
+      const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
+      return res(ctx.json({ type: "test success", payload }));
     })
   );
 
@@ -76,6 +83,16 @@ test("e-mail form accepts valid data (signup happy case)", async () => {
 
   // Wait for the (internal) Captcha to be displayed
   await screen.findByText(/^Enter the text from the image/);
+
+  expect(getCaptchaCalled).toBe(true);
+
+  const captchaInput = screen.getByRole("textbox", { name: "Enter the text from the image" });
+  expect(captchaInput).toHaveFocus();
+  fireEvent.change(captchaInput, { target: { value: "captcha-test-value" } });
+
+  const captchaButton = screen.getByRole("button", { name: "Continue" });
+  expect(captchaButton).toBeEnabled();
+  fireEvent.click(captchaButton);
 
   // Wait for the ToU to be displayed
   await screen.findByText(/^General rules/);

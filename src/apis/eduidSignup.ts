@@ -345,8 +345,11 @@ function makeSignupRequest<T>(
     return action;
   }
 
-  return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data).then((response) =>
-    updateState(response, thunkAPI)
-  );
+  return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data)
+    .then((response) => updateState(response, thunkAPI))
+    .catch((err) => {
+      updateState(err, thunkAPI);
+      throw err;
+    });
 }
 /*********************************************************************************************************************/

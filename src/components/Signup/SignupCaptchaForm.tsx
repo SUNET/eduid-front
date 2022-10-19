@@ -45,10 +45,11 @@ export function SignupCaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
               <FinalField
                 component={CustomInput}
                 componentClass="input"
+                autoFocus={true}
                 type="text"
                 name="value"
-                helpBlock={
-                  <FormattedMessage description="captcha help text" defaultMessage="Enter the text from the image" />
+                label={
+                  <FormattedMessage description="captcha input label" defaultMessage="Enter the text from the image" />
                 }
               />
 
