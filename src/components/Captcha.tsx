@@ -83,9 +83,6 @@ function Captcha(props: CaptchaProps) {
 
   return (
     <React.Fragment>
-      <h1 className="register-header">
-        <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
-      </h1>
       <Splash showChildren={scriptLoaded}>
         <WrappedCaptcha {...props} scriptLoadedCallback={scriptLoadedCallback} />
       </Splash>

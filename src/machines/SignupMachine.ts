@@ -12,6 +12,7 @@ const signupModel = createModel(
       ABORT: () => ({}), // no payload
       API_FAIL: () => ({}), // no payload
       API_SUCCESS: () => ({}), // no payload
+      BYPASS: () => ({}), // no payload
       CHOOSE_FIDO: () => ({}), // no payload
       CHOOSE_PASSWORD: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
@@ -60,6 +61,9 @@ function createSignupMachine() {
                 },
                 ABORT: {
                   target: "Fail",
+                },
+                BYPASS: {
+                  target: "SignupToU",
                 },
               },
             },

@@ -29,7 +29,7 @@ export interface SignupStatusResponse {
     is_logged_in: boolean;
   };
   tou: { completed: boolean; version?: string };
-  captcha: { completed: boolean; internal?: boolean };
+  captcha: { completed: boolean };
   credentials: { completed: boolean; password?: string };
   user_created: boolean;
 }
@@ -53,6 +53,29 @@ export const fetchState = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+export interface GetCaptchaResponse {
+  captcha_img?: string;
+  captcha_audio?: string;
+}
+
+/**
+ * @public
+ * @function getCaptchaResponse
+ * @desc Redux async thunk to fetch a captcha image from the backend.
+ */
+export const getCaptchaRequest = createAsyncThunk<
+  GetCaptchaResponse, // return type
+  undefined, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/sendCaptchaResponse", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+
+  return makeSignupRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface CaptchaRequest {
   internal_response?: string;
   recaptcha_response?: string;
@@ -77,6 +100,7 @@ export const sendCaptchaResponse = createAsyncThunk<
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
+
 /*********************************************************************************************************************/
 
 export interface AcceptToURequest {

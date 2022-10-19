@@ -3,7 +3,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as configInitialState } from "reducers/SignupConfig";
 import { getTestSignupStore, SignupRootState } from "signup-init-app";
 import { signupTestState } from "./SignupTestApp";
 
@@ -31,7 +31,6 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       </ReduxIntlProvider>
     );
   }
-  console.log("RTL RENDER WITH ARGS ", args);
   return rtlRender(ui, { wrapper: Wrapper, ...args.options });
 }
 

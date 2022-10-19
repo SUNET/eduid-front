@@ -4,6 +4,7 @@ import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import EmailInput from "../../login/components/Inputs/EmailInput";
@@ -57,6 +58,7 @@ function EmailForm() {
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
       dispatch(signupSlice.actions.setEmail(values.email));
+      dispatch(clearNotifications());
       signupContext.signupService.send({ type: "COMPLETE" });
     } else {
       errors.email = "required";

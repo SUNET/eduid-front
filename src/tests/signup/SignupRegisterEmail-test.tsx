@@ -7,7 +7,6 @@ import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTes
 const emptyState: SignupStatusResponse = {
   captcha: {
     completed: false,
-    internal: true, // always use the internal captcha since we can get past it when testing
   },
   credentials: {
     completed: false,

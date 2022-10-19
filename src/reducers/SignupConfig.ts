@@ -5,6 +5,7 @@ import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 export interface SignupConfig extends EduidJSAppCommonConfig {
   recaptcha_public_key?: string;
   reset_password_link?: string;
+  preferred_captcha: "internal" | "recaptcha";
 }
 
 // export for use in tests
@@ -13,6 +14,7 @@ export const initialState: SignupConfig = {
   debug: false,
   error: false,
   is_configured: false,
+  preferred_captcha: "internal",
 };
 
 const configSlice = createSlice({
