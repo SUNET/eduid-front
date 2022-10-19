@@ -37,6 +37,25 @@
       }
     }
   }
+
+  .heading,
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .btn-link {
+      height: 100%;
+    }
+    .btn-close {
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+  .edit-data {
+    background-color: #fff;
+    padding: 1rem;
+  }
 }
 
 #add-personal-data {

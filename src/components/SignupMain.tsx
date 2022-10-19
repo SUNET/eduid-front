@@ -4,10 +4,11 @@ import Splash from "components/Splash";
 import NotificationsContainer from "containers/Notifications";
 import Footer from "login/components/Footer/Footer";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import "../login/styles/index.scss";
+import { useIntl } from "react-intl";
 
 // export for use in tests
 export const SIGNUP_BASE_PATH = "/register";
@@ -15,6 +16,15 @@ export const SIGNUP_BASE_PATH = "/register";
 export function SignupMain(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email); // TODO: is email really shown in signup header?
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
+
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Register",
+      defaultMessage: "Register | eduID",
+    });
+  }, []);
 
   // React.StrictMode not used here since it breaks the reCAPTCHA script loader :/
   return (

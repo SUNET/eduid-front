@@ -14,16 +14,12 @@ import phonesSlice from "reducers/Phones";
 import securityReducer from "reducers/Security";
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import groupsReducer from "./login/redux/reducers/groupsReducer";
-import invitesReducer from "./login/redux/reducers/invitesReducer";
 import { intlReducer } from "./reducers/Internationalisation";
 
 const eduIDApp = combineReducers({
   chpass: chpassSlice.reducer,
   config: configSlice.reducer,
   emails: emailsSlice.reducer,
-  groups: groupsReducer as unknown as any,
-  invites: invitesReducer as unknown as any,
   openid_data: openidConnectReducer as unknown as any,
   lookup_mobile: lookupMobileProofingSlice.reducer,
   identities: identitiesSlice.reducer,

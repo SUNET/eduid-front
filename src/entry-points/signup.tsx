@@ -2,7 +2,6 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import SignupMain from "components/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
-import { createBrowserHistory } from "history";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -20,8 +19,6 @@ polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(signupStore.dispatch);
-
-export const navigate = createBrowserHistory();
 
 /* render app */
 const initDomTarget = document.getElementById("root");

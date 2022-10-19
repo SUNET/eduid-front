@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUseOtherDevice2, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
@@ -6,7 +7,7 @@ import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 import { ExpiresMeter } from "./ExpiresMeter";
 //import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
@@ -25,6 +26,14 @@ function UseOtherDevice2() {
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
   const [fetching, setFetching] = useState(false);
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Log in using another device",
+      defaultMessage: "Log in using another device | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     async function initialFetch() {
@@ -324,7 +333,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
 
           <div className="warning-text">
             <span className="warning-symbol">
-              <FontAwesomeIcon icon={faExclamationCircle} />
+              <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
             </span>
             <span>
               <FormattedMessage

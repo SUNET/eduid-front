@@ -2,15 +2,6 @@
 //   margin-top: 1rem;
 // }
 
-// single input form, single input and button in a form
-.single-input-form {
-  flex-direction: row;
-
-  & button {
-    margin: 1.6rem 0 0 1rem;
-  }
-}
-
 // .phoneview-form-container,
 // #delete-account-container,
 // #change-password-container {
@@ -32,15 +23,4 @@
 
 .hide {
   display: none;
-}
-
-@media (max-width: $bp-sm) {
-  .single-input-form {
-    flex-direction: column;
-    align-items: unset;
-
-    & button {
-      margin: 0;
-    }
-  }
 }

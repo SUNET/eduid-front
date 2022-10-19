@@ -1,7 +1,7 @@
 import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
 
 // exported for use in tests
@@ -11,6 +11,14 @@ function ChangePassword() {
   const suggested_password = useDashboardAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useDashboardAppDispatch();
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Change Password",
+      defaultMessage: "Change Password | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {

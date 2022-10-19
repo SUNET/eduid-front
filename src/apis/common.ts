@@ -25,7 +25,10 @@ export interface KeyValues {
  * Any response received from the backend might contain an updated CSRF token, which needs to be
  * passed to the backend on any subsequent requests. Update the value in the store if it changes.
  */
-function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: RequestThunkAPI) {
+interface ResponseWithCsrf {
+  payload: { csrf_token?: string };
+}
+function updateCsrf(action: ResponseWithCsrf, thunkAPI: RequestThunkAPI) {
   if (action.payload === undefined || action.payload.csrf_token === undefined) return action;
   const state = thunkAPI.getState();
   if (action.payload.csrf_token != state.config.csrf_token) {
@@ -142,7 +145,7 @@ export function makeBareRequest<T>(
 
   return fetch(url, request)
     .then(checkStatus)
-    .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
+    .then(async (response) => (await response.json()) as ResponseWithCsrf)
     .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
 }
 

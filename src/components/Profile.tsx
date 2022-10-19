@@ -4,8 +4,19 @@ import Emails from "./Emails";
 import Phones from "./Phones";
 import { AccountId } from "./AccountId";
 import { FormattedMessage } from "react-intl";
+import { useEffect } from "react";
+import { useIntl } from "react-intl";
 
 export default function Profile(): JSX.Element {
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Profile",
+      defaultMessage: "Profile | eduID",
+    });
+  }, []);
+
   return (
     <Fragment>
       <div className="intro">

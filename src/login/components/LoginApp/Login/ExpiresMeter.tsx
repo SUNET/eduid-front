@@ -1,6 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { TimeRemaining } from "components/TimeRemaining";
 
 interface ExpiresMeterProps {
@@ -17,7 +17,7 @@ export function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
   return (
     <div className="expires-meter">
       <span className="expires-symbol">
-        <FontAwesomeIcon icon={faClock} />
+        <FontAwesomeIcon icon={faClock as IconProp} />
       </span>
       {props.showMeter ? (
         <meter

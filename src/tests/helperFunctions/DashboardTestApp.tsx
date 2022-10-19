@@ -26,8 +26,6 @@ export const dashboardTestState: DashboardRootState = {
   intl: { locale: "en", messages: {} },
   chpass: initialChangePasswordState,
   emails: initialEmailsState,
-  groups: undefined as any,
-  invites: undefined as any,
   openid_data: undefined as any,
   lookup_mobile: initialLookupMobileProofingState,
   identities: initialNinsState,

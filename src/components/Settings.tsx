@@ -1,22 +1,23 @@
 import DeleteAccount from "components/DeleteAccount";
 import SecurityContainer from "containers/Security";
-import { Fragment } from "react";
-import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import { AccountLinking } from "./AccountLinking";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import LadokContainer from "./Ladok";
 import { FormattedMessage } from "react-intl";
-
-function RenderGroups(): JSX.Element | null {
-  // functionality to be removed when groups feature is released
-  const showComponent = false;
-  if (!showComponent) return null;
-
-  return <GroupManagement />;
-}
+import { Fragment, useEffect } from "react";
+import { useIntl } from "react-intl";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Settings",
+      defaultMessage: "Settings | eduID",
+    });
+  }, []);
+
   return (
     <Fragment>
       <div className="intro">
@@ -30,7 +31,6 @@ export function Settings(): JSX.Element {
         </div>
       </div>
       <AccountLinking />
-      <RenderGroups />
       <LadokContainer />
       <section className="security-zone">
         <h2 className="security-text">Extra authentication features</h2>

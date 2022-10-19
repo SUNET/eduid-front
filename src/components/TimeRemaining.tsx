@@ -125,7 +125,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement(child)) {
+    if (React.isValidElement<{ time_remaining: any }>(child)) {
       return React.cloneElement(child, { time_remaining: timeRemaining });
     }
     return child;
