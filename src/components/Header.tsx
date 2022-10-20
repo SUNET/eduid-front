@@ -19,20 +19,17 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   function handleLogout() {
     const url = token_service_url + "logout";
-    if (navigator.userAgent.indexOf("Trident/7") > -1) {
-      window.location.assign(url);
-    } else {
-      window
-        .fetch(url, {
-          method: "get",
-          credentials: "same-origin",
-          mode: "cors",
-          redirect: "manual",
-        })
-        .then((resp) => {
-          window.location.assign(resp.url);
-        });
-    }
+
+    window
+      .fetch(url, {
+        method: "get",
+        credentials: "same-origin",
+        mode: "cors",
+        redirect: "manual",
+      })
+      .then((resp) => {
+        window.location.assign(resp.url);
+      });
   }
 
   function handleRegister() {
