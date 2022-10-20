@@ -1,7 +1,4 @@
-import React, { Fragment } from "react";
-import "../login/styles/index.scss";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { startLogout } from "actions/Header";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "components/EduIDButton";
 
@@ -16,12 +13,23 @@ const Header = (props: HeaderProps): JSX.Element => {
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const dispatch = useDashboardAppDispatch();
+  const token_service_url = useDashboardAppSelector((state) => state.config.token_service_url);
   let userName;
   let button;
 
   function handleLogout() {
-    dispatch(startLogout());
+    const url = token_service_url + "logout";
+
+    window
+      .fetch(url, {
+        method: "get",
+        credentials: "same-origin",
+        mode: "cors",
+        redirect: "manual",
+      })
+      .then((resp) => {
+        window.location.assign(resp.url);
+      });
   }
 
   function handleRegister() {
