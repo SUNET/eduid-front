@@ -19,7 +19,7 @@ import securitySlice from "reducers/Security";
 import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 
-export default function Security(): JSX.Element | null {
+export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);

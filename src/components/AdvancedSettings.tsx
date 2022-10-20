@@ -1,7 +1,7 @@
 import { AccountId } from "components/AccountId";
 import { AccountLinking } from "components/AccountLinking";
 import LadokContainer from "components/Ladok";
-import SecurityContainer from "components/Security";
+import { Security } from "components/Security";
 import { Fragment, useEffect } from "react";
 import { useIntl } from "react-intl";
 
@@ -18,7 +18,7 @@ export function AdvancedSettings(): JSX.Element {
 
   return (
     <Fragment>
-      <SecurityContainer />
+      <Security />
       <AccountLinking />
       <LadokContainer />
       <AccountId />
