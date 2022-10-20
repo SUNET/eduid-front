@@ -53,7 +53,7 @@ export function Security(): JSX.Element | null {
           .finally(() => {
             if (!aborted) {
               setIsPlatformAuthenticatorAvailable(platform);
-              // Spinner will be stop when isPlatformAuthLoaded is updated to true
+              // don´t show content until isPlatformAuthLoaded updates to true
               setIsPlatformAuthLoaded(true);
             }
           });
