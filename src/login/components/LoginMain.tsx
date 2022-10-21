@@ -1,7 +1,7 @@
 import { GenericError } from "components/GenericError";
 import Header from "components/Header";
 import Splash from "components/Splash";
-import Notifications from "containers/Notifications";
+import { Notifications } from "components/Notifications";
 import { useAppSelector } from "login/app_init/hooks";
 import "login/styles/index.scss";
 import React from "react";

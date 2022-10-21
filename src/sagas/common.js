@@ -3,8 +3,6 @@ import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "re
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 import { updateIntl } from "../reducers/Internationalisation";
 import { storeCsrfToken } from "commonConfig";
-
-import * as CBOR from "sagas/cbor";
 import { LOCALIZED_MESSAGES, TOKEN_SERVICE_URL } from "../globals";
 
 export const checkStatus = function (response) {
@@ -102,16 +100,4 @@ export function saveData(getData, formName, startAction, fetcher, failAction) {
       yield* failRequest(error, failAction);
     }
   };
-}
-
-export function safeDecodeCBOR(str) {
-  const bytes = atob(str.replace(/_/g, "/").replace(/-/g, "+"));
-  const buff = Uint8Array.from(bytes, (c) => c.charCodeAt(0));
-  return CBOR.decode(buff.buffer);
-}
-
-export function safeEncode(obj) {
-  const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
-  const unsafeObj = btoa(bytesObj);
-  return unsafeObj.replace(/\//g, "_").replace(/\+/g, "-").replace(/=*$/, "");
 }

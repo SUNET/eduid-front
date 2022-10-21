@@ -43,3 +43,8 @@ test("redirects from slash", () => {
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 });
+
+test("renders the register page title", () => {
+  render(<SignupMain />);
+  expect(document.title).toContain("Register");
+});

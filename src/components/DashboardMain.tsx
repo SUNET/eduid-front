@@ -1,4 +1,4 @@
-import NotificationsContainer from "containers/Notifications";
+import { Notifications } from "components/Notifications";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
 import React from "react";
@@ -28,7 +28,7 @@ export function DashboardMain() {
     <React.StrictMode>
       <Header email={email} showLogout={true} />
       <section id="panel" className="panel">
-        <NotificationsContainer />
+        <Notifications />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
             <DashboardNav />

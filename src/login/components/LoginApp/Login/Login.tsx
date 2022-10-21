@@ -10,6 +10,7 @@ import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
 import UseOtherDevice2 from "./UseOtherDevice2";
 import UsernamePw from "./UsernamePw";
+import { useIntl } from "react-intl";
 
 // URL parameters passed to this component
 interface LoginParams {
@@ -26,6 +27,14 @@ function Login(): JSX.Element {
   let this_device = useAppSelector((state) => state.login.this_device);
   let remember_me = useAppSelector((state) => state.login.remember_me);
   let ref = useAppSelector((state) => state.login.ref);
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Log in",
+      defaultMessage: "Log in | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     // if this_device and remember_me haven't been set in redux state yet, initialise them from local storage

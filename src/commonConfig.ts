@@ -31,6 +31,7 @@ interface APIEndpoints {
   personal_data_url?: string;
   phone_url?: string;
   security_url?: string;
+  token_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this

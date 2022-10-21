@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as CBOR from "../../../sagas/cbor";
+import { decode as cborDecode } from "login/app_utils/helperFunctions/cbor";
 import { safeDecode, safeEncode } from "./base64Utils";
+
+export interface webauthnAttestation {
+  attestationObject: string;
+  clientDataJSON: string;
+  credentialId: string;
+}
 
 // serialised version of a PublicKeyCredential
 export interface webauthnAssertion {
@@ -26,7 +32,7 @@ export interface webauthnAssertion {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const decodeChallenge = (webauthn_options: string): { [key: string]: any } | undefined => {
   if (typeof webauthn_options === "string") {
-    return CBOR.decode(safeDecode(webauthn_options).buffer);
+    return cborDecode(safeDecode(webauthn_options).buffer);
   }
 };
 
@@ -54,6 +60,30 @@ export const performAuthentication = createAsyncThunk(
         signature: safeEncode(assertion.response.signature),
       };
       return encoded_assertion;
+    }
+  }
+);
+
+export const createCredential = createAsyncThunk(
+  "eduid/credentials/createCredential",
+  async (webauthn_challenge: string, thunkAPI): Promise<webauthnAttestation | undefined> => {
+    const decoded_challenge = decodeChallenge(webauthn_challenge);
+    const credential = await navigator.credentials
+      .create(decoded_challenge)
+      .then()
+      .catch(() => {
+        // create credential failed / cancelled
+        return thunkAPI.rejectWithValue("Create credential failed, or was cancelled");
+      });
+
+    if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAttestationResponse) {
+      // encode the credential into strings that can be stored in the state
+      const encoded_credential: webauthnAttestation = {
+        attestationObject: safeEncode(credential.response.attestationObject),
+        clientDataJSON: safeEncode(credential.response.clientDataJSON),
+        credentialId: safeEncode(credential.rawId),
+      };
+      return encoded_credential;
     }
   }
 );

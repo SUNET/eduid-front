@@ -55,6 +55,11 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   expect(screen.getByText(/19850101/i)).toBeInTheDocument();
   // after eidas verification, still showing swedish identification options
   expect(
-    screen.getByRole("button", { name: "se Swedish personal ID number With a digital ID-card / By post / By phone ❯" })
+    screen.getByRole("button", { name: /swedish personal ID number With a digital ID-card/i })
   ).toBeInTheDocument();
+});
+
+test("renders the identity page title", () => {
+  render(<VerifyIdentity />);
+  expect(document.title).toContain("Identity");
 });
