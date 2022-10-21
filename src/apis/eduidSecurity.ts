@@ -8,22 +8,22 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
-export interface UpdateNamesFromSkatteverketResponse {
+export interface UpdateOfficialUserDataResponse {
   message: string;
 }
 
 /**
  * @public
- * @function updateNamesFromSkatteverket
- * @desc Redux async thunk to update names.
+ * @function updateOfficialUserData
+ * @desc Redux async thunk to request updated name from the Swedish Tax Agency.
  */
-export const updateNamesFromSkatteverket = createAsyncThunk<
+export const updateOfficialUserData = createAsyncThunk<
   string,
   undefined,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("personalData/updateNamesFromSkatteverket", async (args, thunkAPI) => {
+>("personalData/updateOfficialUserData", async (args, thunkAPI) => {
   const body: KeyValues = {};
-  return makeSecurityRequest<UpdateNamesFromSkatteverketResponse>(thunkAPI, "refresh-official-user-data", body)
+  return makeSecurityRequest<UpdateOfficialUserDataResponse>(thunkAPI, "refresh-official-user-data", body)
     .then((response) => response.payload.message)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

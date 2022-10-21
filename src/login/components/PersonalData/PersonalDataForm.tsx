@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { updateNamesFromSkatteverket } from "apis/eduidSecurity";
+import { updateOfficialUserData } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES } from "globals";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
@@ -13,7 +13,6 @@ import { getInitialUserData } from "sagas/PersonalData";
 import { postUserdata } from "../../../actions/PersonalData";
 import EduIDButton from "../../../components/EduIDButton";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
-// import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
 
@@ -107,8 +106,8 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
 
   async function handleUpdateName() {
     console.log("handleUpdateName");
-    const response = await dispatch(updateNamesFromSkatteverket());
-    if (updateNamesFromSkatteverket.fulfilled.match(response)) {
+    const response = await dispatch(updateOfficialUserData());
+    if (updateOfficialUserData.fulfilled.match(response)) {
       dispatch(getInitialUserData());
     }
   }
