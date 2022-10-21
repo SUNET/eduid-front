@@ -51,6 +51,10 @@
     "developer_comment": "profile name display title",
     "string": "Name"
   },
+  "19fREK": {
+    "developer_comment": "security verified",
+    "string": "Verified"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -240,6 +244,10 @@
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
   },
+  "CuK+Jx": {
+    "developer_comment": "Dashboard change password",
+    "string": "For security reasons..."
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
@@ -290,6 +298,10 @@
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
+  },
+  "FNihFR": {
+    "developer_comment": "Dashboard change password",
+    "string": "Click the link to change your eduID password."
   },
   "FO7/rw": {
     "developer_comment": "Signup",
@@ -385,6 +397,10 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
+  },
+  "JjB0Cs": {
+    "developer_comment": "security verify",
+    "string": "Verify key"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -528,6 +544,10 @@
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
+  },
+  "QLJcC4": {
+    "developer_comment": "security last used date",
+    "string": "Never used"
   },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
@@ -684,6 +704,10 @@
     "developer_comment": "go to eudID link text",
     "string": "Go to my eduid"
   },
+  "YJQhMp": {
+    "developer_comment": "security second factor",
+    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
+  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
@@ -711,6 +735,10 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
+  },
+  "ZN7bfi": {
+    "developer_comment": "security creation date",
+    "string": "Created on"
   },
   "ZQcORE": {
     "developer_comment": "Phones long description",
@@ -761,6 +789,10 @@
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verify your eduID with a Swedish national ID number."
+  },
+  "bCIMPQ": {
+    "developer_comment": "security key title",
+    "string": "Make your eduID more secure"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -1511,6 +1543,10 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
+  "nw6cAK": {
+    "developer_comment": "security description name",
+    "string": "Name"
+  },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
@@ -1794,6 +1830,10 @@
     "developer_comment": "Reset Password button",
     "string": "send email"
   },
+  "qlQT0W": {
+    "developer_comment": "Dashboard change password",
+    "string": "Change password"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
@@ -1916,6 +1956,9 @@
     "developer_comment": "profile name display no data",
     "string": "add name"
   },
+  "security last used": {
+    "string": "Used on"
+  },
   "security.add_u2f_token": {
     "string": "Add U2F token"
   },
@@ -1925,24 +1968,12 @@
   "security.add_webauthn_token_key": {
     "string": "Add security key"
   },
-  "security.creation_date": {
-    "string": "Created on"
-  },
   "security.credential": {
     "string": "Credential"
-  },
-  "security.description": {
-    "string": "Name"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
     "string": "The description is too long"
-  },
-  "security.last-used.date": {
-    "string": "Never used"
-  },
-  "security.last_used": {
-    "string": "Used on"
   },
   "security.main_title": {
     "string": "Security"
@@ -1959,12 +1990,6 @@
   },
   "security.remove": {
     "string": "Remove"
-  },
-  "security.second-factor": {
-    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
-  },
-  "security.security-key_title": {
-    "string": "Make your eduID more secure"
   },
   "security.stale_authn_info": {
     "string": "The authentication expired. Please try again."
@@ -2005,12 +2030,6 @@
   "security.user-updated": {
     "string": "First and last names are up-to-date with those registered in the Swedish Population Register."
   },
-  "security.verified": {
-    "string": "Verified"
-  },
-  "security.verify": {
-    "string": "Verify key"
-  },
   "security.webauthn-attestation-fail": {
     "string": "Failed to verify the attestation for the security key."
   },
@@ -2035,23 +2054,7 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
-  "settings.change_info": {
-    "developer_comment": "Dashboard change password",
-    "string": "You will need to log in again to change your password."
-  },
   "settings.change_password": {
-    "developer_comment": "Dashboard change password",
-    "string": "Change password"
-  },
-  "settings.confirm_title_chpass": {
-    "developer_comment": "Dashboard change password",
-    "string": "For security reasons..."
-  },
-  "settings.long_description": {
-    "developer_comment": "Dashboard change password",
-    "string": "Click the link to change your eduID password."
-  },
-  "settings.main_title": {
     "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
@@ -2212,6 +2215,10 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "x/tMbb": {
+    "developer_comment": "Dashboard change password",
+    "string": "You will need to log in again to change your password."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
