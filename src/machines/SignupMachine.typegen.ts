@@ -27,6 +27,7 @@ export interface Typegen0 {
     | "HandleCaptchaAndToU.Finished"
     | "HandleCaptchaAndToU.ProcessCaptcha"
     | "HandleCaptchaAndToU.ProcessToU"
+    | "HandleCaptchaAndToU.RegisterEmail"
     | "HandleCaptchaAndToU.SignupCaptcha"
     | "HandleCaptchaAndToU.SignupToU"
     | "HandleCredentials"
@@ -37,7 +38,6 @@ export interface Typegen0 {
     | "HandleEmail"
     | "HandleEmail.EmailFinished"
     | "HandleEmail.ProcessEmailCode"
-    | "HandleEmail.RegisterEmail"
     | "HandleEmail.SignupEnterCode"
     | "SignupStart"
     | {
@@ -48,6 +48,7 @@ export interface Typegen0 {
           | "Finished"
           | "ProcessCaptcha"
           | "ProcessToU"
+          | "RegisterEmail"
           | "SignupCaptcha"
           | "SignupToU";
         HandleCredentials?:
@@ -55,11 +56,7 @@ export interface Typegen0 {
           | "SignupCredentialPassword"
           | "SignupCredentialWebauthn"
           | "SignupCredentials";
-        HandleEmail?:
-          | "EmailFinished"
-          | "ProcessEmailCode"
-          | "RegisterEmail"
-          | "SignupEnterCode";
+        HandleEmail?: "EmailFinished" | "ProcessEmailCode" | "SignupEnterCode";
       };
   tags: never;
 }

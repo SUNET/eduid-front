@@ -75,6 +75,7 @@ export function SignupEnterCode(): JSX.Element {
   if (isExpired) {
     return (
       <div>
+        {JSON.stringify(signupState?.email)}
         <FormattedMessage
           defaultMessage="The code sent to {email} has expired. Please try again."
           values={{

@@ -2,6 +2,9 @@ import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
+// export for use in tests
+export const codeFormTestId = "response-code-form";
+
 interface ResponseCodeFormProps {
   bad_attempts?: number;
   children?: React.ReactNode;
@@ -49,7 +52,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
   const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
 
   return (
-    <form onSubmit={props.handleSubmit} className="response-code-form" id="response-code-form">
+    <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
       <div className="response-code-inputs">
         <CodeField num={0} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
         <CodeField num={1} disabled={props.inputsDisabled} />

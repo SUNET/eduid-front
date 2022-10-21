@@ -36,14 +36,24 @@ function InternalCaptcha() {
     const res = await dispatch(getCaptchaRequest());
 
     if (getCaptchaRequest.fulfilled.match(res)) {
-      setImg(res.payload.captcha_img);
+      return res.payload.captcha_img;
     }
   }
 
   useEffect(() => {
+    let aborted = false; // flag to avoid updating unmounted components after this async promise resolves
+
     if (!img) {
-      getCaptcha();
+      getCaptcha().then((img) => {
+        if (!aborted && img) setImg(img);
+      });
     }
+
+    // create a cleanup function that will allow the async code above to realise it shouldn't
+    // try to update state on an unmounted react component
+    return () => {
+      aborted = true;
+    };
   }, [img]);
 
   function handleCaptchaCancel() {

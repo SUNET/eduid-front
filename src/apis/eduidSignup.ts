@@ -104,6 +104,11 @@ export const sendCaptchaResponse = createAsyncThunk<
 /*********************************************************************************************************************/
 
 export interface AcceptToURequest {
+  tou_accepted: boolean;
+  tou_version: string;
+}
+
+export interface AcceptToUArgs {
   version: string;
 }
 
@@ -114,10 +119,10 @@ export interface AcceptToURequest {
  */
 export const acceptToURequest = createAsyncThunk<
   SignupStatusResponse, // return type
-  AcceptToURequest, // args type
+  AcceptToUArgs, // args type
   { dispatch: SignupAppDispatch; state: SignupRootState }
 >("signup/acceptToURequest", async (args, thunkAPI) => {
-  const body: KeyValues = {
+  const body: AcceptToURequest = {
     tou_accepted: true,
     tou_version: args.version,
   };
@@ -341,6 +346,8 @@ function makeSignupRequest<T>(
   function updateState(action: PayloadAction<T, string, never, boolean>, thunkAPI: RequestThunkAPI) {
     if (isSignupStateResponse(action)) {
       thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload));
+    } else {
+      console.warn("Not a SignupStateResponse", action);
     }
     return action;
   }
@@ -348,6 +355,7 @@ function makeSignupRequest<T>(
   return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data)
     .then((response) => updateState(response, thunkAPI))
     .catch((err) => {
+      console.error("Error in makeSignupRequest", err);
       updateState(err, thunkAPI);
       throw err;
     });

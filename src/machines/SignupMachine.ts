@@ -90,6 +90,16 @@ function createSignupMachine() {
             ProcessToU: {
               on: {
                 API_SUCCESS: {
+                  target: "RegisterEmail",
+                },
+                API_FAIL: {
+                  target: "Fail",
+                },
+              },
+            },
+            RegisterEmail: {
+              on: {
+                API_SUCCESS: {
                   target: "Finished",
                 },
                 API_FAIL: {
@@ -97,6 +107,7 @@ function createSignupMachine() {
                 },
               },
             },
+
             Fail: {
               always: {
                 target: "#signup.AskForEmailAddress",
@@ -111,18 +122,8 @@ function createSignupMachine() {
           },
         },
         HandleEmail: {
-          initial: "RegisterEmail",
+          initial: "SignupEnterCode",
           states: {
-            RegisterEmail: {
-              on: {
-                API_SUCCESS: {
-                  target: "SignupEnterCode",
-                },
-                API_FAIL: {
-                  target: "#signup.AskForEmailAddress",
-                },
-              },
-            },
             SignupEnterCode: {
               on: {
                 COMPLETE: {
