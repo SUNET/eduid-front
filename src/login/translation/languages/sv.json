@@ -51,6 +51,10 @@
     "developer_comment": "profile name display title",
     "string": "Namn"
   },
+  "19fREK": {
+    "developer_comment": "security verified",
+    "string": "Verifierad"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
@@ -200,6 +204,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
+  },
+  "9w+urv": {
+    "developer_comment": "Dashboard change password button text",
+    "string": "Byt lösenord"
   },
   "A2MTya": {
     "developer_comment": "add webauthn token key",
@@ -386,6 +394,10 @@
     "developer_comment": "confirm button",
     "string": "Bekräfta"
   },
+  "JjB0Cs": {
+    "developer_comment": "security verify",
+    "string": "Verifiera"
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
@@ -529,6 +541,10 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Lösenordet har uppdaterats"
   },
+  "QLJcC4": {
+    "developer_comment": "security last used date",
+    "string": "Aldrig använd"
+  },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Radera mitt eduID"
@@ -551,6 +567,10 @@
   "RmZQLb": {
     "developer_comment": "tou.header",
     "string": "Användarvillkor för eduID.se"
+  },
+  "Rv0ENK": {
+    "developer_comment": "Dashboard change password modal main text",
+    "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
   },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
@@ -600,6 +620,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TpraxF": {
+    "developer_comment": "Dashboard change password modal title",
+    "string": "Av säkerhetsskäl..."
   },
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
@@ -656,6 +680,10 @@
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
   },
+  "WOHMLr": {
+    "developer_comment": "Dashboard change password link description text",
+    "string": "Du kan antingen använda ett rekommenderat lösenord som vi skapar åt dig eller ett du väljer helt själv."
+  },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
@@ -684,6 +712,10 @@
     "developer_comment": "go to eudID link text",
     "string": "Gå till eduID"
   },
+  "YJQhMp": {
+    "developer_comment": "security second factor",
+    "string": "Lägg till ett extra sätt, utöver email och lösenord, för att kunna identifiera dig så du är säker på att bara du har tillgång till ditt eduID."
+  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
@@ -711,6 +743,10 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
+  },
+  "ZN7bfi": {
+    "developer_comment": "security creation date",
+    "string": "Skapad den"
   },
   "ZQcORE": {
     "developer_comment": "Phones long description",
@@ -761,6 +797,10 @@
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verifiera ditt eduID med ett svenskt personnummer."
+  },
+  "bCIMPQ": {
+    "developer_comment": "security key title",
+    "string": "Gör ditt eduID säkrare"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -1511,6 +1551,10 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
+  "nw6cAK": {
+    "developer_comment": "security description name",
+    "string": "Namn"
+  },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
@@ -1794,6 +1838,10 @@
     "developer_comment": "Reset Password button",
     "string": "skicka e-post"
   },
+  "qlQT0W": {
+    "developer_comment": "Dashboard change password",
+    "string": "Byt lösenord"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
@@ -1916,6 +1964,9 @@
     "developer_comment": "profile name display no data",
     "string": "lägg till namn"
   },
+  "security last used": {
+    "string": "Senast använd"
+  },
   "security.add_u2f_token": {
     "string": "Lägg till säkerhetsnyckel"
   },
@@ -1925,24 +1976,12 @@
   "security.add_webauthn_token_key": {
     "string": "Lägg till säkerhetsnyckel"
   },
-  "security.creation_date": {
-    "string": "Skapad den"
-  },
   "security.credential": {
     "string": "Lösenord"
-  },
-  "security.description": {
-    "string": "Namn"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
     "string": "Beskrivningen är för lång"
-  },
-  "security.last-used.date": {
-    "string": "Aldrig använd"
-  },
-  "security.last_used": {
-    "string": "Senast använd"
   },
   "security.main_title": {
     "string": "Säkerhet"
@@ -1959,12 +1998,6 @@
   },
   "security.remove": {
     "string": "Ta bort"
-  },
-  "security.second-factor": {
-    "string": "Lägg till ett extra sätt, utöver email och lösenord, för att kunna identifiera dig så du är säker på att bara du har tillgång till ditt eduID."
-  },
-  "security.security-key_title": {
-    "string": "Gör ditt eduID säkrare"
   },
   "security.stale_authn_info": {
     "string": "Inloggningen har gått ut. Var vänlig försök igen."
@@ -2005,12 +2038,6 @@
   "security.user-updated": {
     "string": "För- och efternamn har hämtats från folkbokföringen."
   },
-  "security.verified": {
-    "string": "Verifierad"
-  },
-  "security.verify": {
-    "string": "Verifiera"
-  },
   "security.webauthn-attestation-fail": {
     "string": "Det gick inte att verifiera säkerhetsnyckeln."
   },
@@ -2034,26 +2061,6 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
-  },
-  "settings.change_info": {
-    "developer_comment": "Dashboard change password",
-    "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
-  },
-  "settings.change_password": {
-    "developer_comment": "Dashboard change password",
-    "string": "Byt lösenord"
-  },
-  "settings.confirm_title_chpass": {
-    "developer_comment": "Dashboard change password",
-    "string": "Av säkerhetsskäl..."
-  },
-  "settings.long_description": {
-    "developer_comment": "Dashboard change password",
-    "string": "Du kan antingen använda ett rekommenderat lösenord som vi skapar åt dig eller ett du väljer helt själv."
-  },
-  "settings.main_title": {
-    "developer_comment": "Dashboard change password",
-    "string": "Byt lösenord"
   },
   "signup.recaptcha-not-verified": {
     "string": "Vi kunde inte verifiera att du är människa. Var vänlig försök igen."
