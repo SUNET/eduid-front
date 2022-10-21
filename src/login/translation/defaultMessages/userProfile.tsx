@@ -635,13 +635,7 @@ export const userData = {
 
   "cred.credential_type": <FormattedMessage id="cred.credential_type" defaultMessage={`Credential type.`} />,
 
-  "security.description": <FormattedMessage id="security.description" defaultMessage={`Name`} />,
-
   "security.remove": <FormattedMessage id="security.remove" defaultMessage={`Remove`} />,
-
-  "security.verify": <FormattedMessage id="security.verify" defaultMessage={`Verify key`} />,
-
-  "security.verified": <FormattedMessage id="security.verified" defaultMessage={`Verified`} />,
 
   "security.main_title": <FormattedMessage id="security.main_title" defaultMessage={`Security`} />,
 
@@ -659,12 +653,6 @@ export const userData = {
       defaultMessage={`First and last names are up-to-date with those registered in the Swedish Population Register.`}
     />
   ),
-
-  "security.last-used.date": <FormattedMessage id="security.last-used.date" defaultMessage={`Never used`} />,
-
-  "security.creation_date": <FormattedMessage id="security.creation_date" defaultMessage={`Created on`} />,
-
-  "security.last_used": <FormattedMessage id="security.last_used" defaultMessage={`Used on`} />,
 
   "security.u2f.max_allowed_tokens": (
     <FormattedMessage
@@ -735,18 +723,6 @@ export const userData = {
 
   "security.add_webauthn_token_device": (
     <FormattedMessage id="security.add_webauthn_token_device" defaultMessage={`Register this device as security key`} />
-  ),
-
-  "security.security-key_title": (
-    <FormattedMessage id="security.security-key_title" defaultMessage={`Make your eduID more secure`} />
-  ),
-
-  "security.second-factor": (
-    <FormattedMessage
-      id="security.second-factor"
-      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
-    the owner of your eduID.`}
-    />
   ),
 
   "security.webauthn.max_allowed_tokens": (
