@@ -105,7 +105,6 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const surname = useDashboardAppSelector((state) => state.personal_data.surname);
 
   async function handleUpdateName() {
-    console.log("handleUpdateName");
     const response = await dispatch(updateOfficialUserData());
     if (updateOfficialUserData.fulfilled.match(response)) {
       dispatch(getInitialUserData());
