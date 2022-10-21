@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as CBOR from "../../../sagas/cbor";
+import { decode as cborDecode } from "login/app_utils/helperFunctions/cbor";
 import { safeDecode, safeEncode } from "./base64Utils";
 
 export interface webauthnAttestation {
@@ -32,7 +32,7 @@ export interface webauthnAssertion {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const decodeChallenge = (webauthn_options: string): { [key: string]: any } | undefined => {
   if (typeof webauthn_options === "string") {
-    return CBOR.decode(safeDecode(webauthn_options).buffer);
+    return cborDecode(safeDecode(webauthn_options).buffer);
   }
 };
 
