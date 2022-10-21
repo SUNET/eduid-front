@@ -9,7 +9,7 @@ import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
 import { notificationsSlice } from "reducers/Notifications";
 import personalDataSlice from "reducers/PersonalData";
 import phonesSlice from "reducers/Phones";
-import securityReducer from "reducers/Security";
+import securitySlice from "reducers/Security";
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "./reducers/Internationalisation";
@@ -25,7 +25,7 @@ const eduIDApp = combineReducers({
   letter_proofing: letterProofingSlice.reducer,
   notifications: notificationsSlice.reducer,
   account_linking: accountLinkingSlice.reducer,
-  security: securityReducer,
+  security: securitySlice.reducer,
   ladok: ladokSlice.reducer,
   form: formReducer,
   intl: intlReducer,
