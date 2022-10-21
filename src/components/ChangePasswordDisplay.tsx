@@ -31,7 +31,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           <p>
             <FormattedMessage
               defaultMessage="Click the link to change your eduID password."
-              description="Dashboard change password"
+              description="Dashboard change password link description text"
             />
           </p>
         </div>
@@ -43,21 +43,22 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
             setShowModal(true);
           }}
         >
-          <FormattedMessage
-            id="settings.change_password"
-            defaultMessage="Change password"
-            description="Dashboard change password"
-          />
+          <FormattedMessage defaultMessage="Change password" description="Dashboard change password button text" />
         </EduIDButton>
       </div>
 
       <NotificationModal
         id="security-confirm-modal"
-        title={<FormattedMessage defaultMessage="For security reasons..." description="Dashboard change password" />}
+        title={
+          <FormattedMessage
+            defaultMessage="For security reasons..."
+            description="Dashboard change password modal title"
+          />
+        }
         mainText={
           <FormattedMessage
             defaultMessage="You will need to log in again to change your password."
-            description="Dashboard change password"
+            description="Dashboard change password modal main text"
           />
         }
         showModal={showModal}
