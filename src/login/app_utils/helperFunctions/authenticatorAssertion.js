@@ -1,4 +1,4 @@
-import * as CBOR from "../../../sagas/cbor";
+import * as CBOR from "login/app_utils/helperFunctions/cbor";
 import resetPasswordSlice from "../../redux/slices/resetPasswordSlice";
 
 // 1. Ask backend for a challenge
