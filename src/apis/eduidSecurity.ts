@@ -9,6 +9,27 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
+export interface UpdateOfficialUserDataResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function updateOfficialUserData
+ * @desc Redux async thunk to request updated name from the Swedish Tax Agency.
+ */
+export const updateOfficialUserData = createAsyncThunk<
+  string,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("personalData/updateOfficialUserData", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+  return makeSecurityRequest<UpdateOfficialUserDataResponse>(thunkAPI, "refresh-official-user-data", body)
+    .then((response) => response.payload.message)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface PostDeleteAccountResponse {
   location: string;
 }

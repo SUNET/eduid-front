@@ -3,19 +3,24 @@ import React from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
 import { eduidNotification, notificationLevel } from "reducers/Notifications";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import * as actions from "reducers/Notifications";
 
-interface NotificationsProps {
-  info: eduidNotification;
-  error: eduidNotification;
-  debug: boolean;
-  handleRMNotification: () => void;
-}
+export function Notifications(): JSX.Element | null {
+  const debug = useDashboardAppSelector((state) => state.config.debug);
+  const info = useDashboardAppSelector((state) => state.notifications.info);
+  const error = useDashboardAppSelector((state) => state.notifications.error);
+  const dispatch = useDashboardAppDispatch();
 
-export default function Notifications(props: NotificationsProps): JSX.Element | null {
   const intl = useIntl();
 
+  function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault();
+    dispatch(actions.clearNotifications());
+  }
+
   // show errors first, information second
-  const show: eduidNotification = props.error || props.info;
+  const show: eduidNotification | undefined = error || info;
 
   if (!show) {
     // no messages to show
@@ -23,7 +28,7 @@ export default function Notifications(props: NotificationsProps): JSX.Element | 
   }
 
   let msg = translate(show.message);
-  if (!props.debug && isString(msg) && msg.startsWith(UNKNOWN_MESSAGE)) {
+  if (!debug && isString(msg) && msg.startsWith(UNKNOWN_MESSAGE)) {
     if (show.level == "error") {
       msg = translate("unexpected-problem");
     } else {
@@ -36,7 +41,7 @@ export default function Notifications(props: NotificationsProps): JSX.Element | 
 
   return (
     <div className="notifications-area" aria-live="polite">
-      <Alert color={color} toggle={props.handleRMNotification} closeClassName="close">
+      <Alert color={color} toggle={handleRMNotification} closeClassName="close">
         <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
