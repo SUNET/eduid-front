@@ -1,7 +1,7 @@
 import CodeVerified from "components/CodeVerified";
 import Header from "components/Header";
 import Splash from "components/Splash";
-import NotificationsContainer from "containers/Notifications";
+import { Notifications } from "components/Notifications";
 import Footer from "login/components/Footer/Footer";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React, { useEffect } from "react";
@@ -31,7 +31,7 @@ export function SignupMain(): JSX.Element {
     <React.Fragment>
       <Header email={email} showLogin={true} />
       <section id="panel" className="panel">
-        <NotificationsContainer />
+        <Notifications />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
             <Routes>

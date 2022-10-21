@@ -1,4 +1,4 @@
-import NotificationsContainer from "containers/Notifications";
+import { Notifications } from "components/Notifications";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "../../../components/Header";
@@ -11,7 +11,7 @@ export function ErrorsMain(): JSX.Element {
     <React.StrictMode>
       <Header />
       <section id="panel" className="panel">
-        <NotificationsContainer />
+        <Notifications />
         <Routes>
           <Route path="/errors" element={<Errors />} />
         </Routes>
