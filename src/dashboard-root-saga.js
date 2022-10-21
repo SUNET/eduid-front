@@ -14,16 +14,13 @@ import {
   verifyWebauthnToken,
 } from "sagas/Security";
 import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
-import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
-import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 
 function* rootSaga() {
   yield all([
     takeLatest(getInitialUserData.type, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
-    takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),

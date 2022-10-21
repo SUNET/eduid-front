@@ -8,6 +8,27 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
+export interface UpdateNamesFromSkatteverketResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function updateNamesFromSkatteverket
+ * @desc Redux async thunk to update names.
+ */
+export const updateNamesFromSkatteverket = createAsyncThunk<
+  string,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("personalData/updateNamesFromSkatteverket", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+  return makeSecurityRequest<UpdateNamesFromSkatteverketResponse>(thunkAPI, "refresh-official-user-data", body)
+    .then((response) => response.payload.message)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface SuggestedPasswordResponse {
   suggested_password: string;
 }

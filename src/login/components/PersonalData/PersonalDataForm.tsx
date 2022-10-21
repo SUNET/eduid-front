@@ -1,6 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { updateNamesFromSkatteverket } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES } from "globals";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
@@ -8,10 +9,11 @@ import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { PersonalDataData } from "reducers/PersonalData";
+import { getInitialUserData } from "sagas/PersonalData";
 import { postUserdata } from "../../../actions/PersonalData";
 import EduIDButton from "../../../components/EduIDButton";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
-import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
+// import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
 
@@ -102,6 +104,15 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
   const surname = useDashboardAppSelector((state) => state.personal_data.surname);
+
+  async function handleUpdateName() {
+    console.log("handleUpdateName");
+    const response = await dispatch(updateNamesFromSkatteverket());
+    if (updateNamesFromSkatteverket.fulfilled.match(response)) {
+      dispatch(getInitialUserData());
+    }
+  }
+
   return (
     <Fragment>
       <div className="external-names">
@@ -114,9 +125,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
           className="icon-only"
           disabled={loading}
           aria-label="name-check"
-          onClick={() => {
-            dispatch(updateNamesFromSkatteverket());
-          }}
+          onClick={() => handleUpdateName()}
         >
           <FontAwesomeIcon icon={faRedo as IconProp} />
         </button>
