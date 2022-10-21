@@ -3,6 +3,7 @@ import {
   CaptchaRequest,
   GetCaptchaResponse,
   RegisterEmailRequest,
+  SignupState,
   SignupStatusResponse,
   VerifyEmailRequest,
 } from "apis/eduidSignup";
@@ -12,7 +13,7 @@ import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
-const emptyState: SignupStatusResponse = {
+const emptyState: SignupState = {
   captcha: {
     completed: false,
   },
@@ -144,8 +145,7 @@ async function testInternalCaptcha() {
         return res(ctx.status(400));
       }
 
-      const newState = { ...emptyState, captcha: { completed: true } };
-      const payload: SignupStatusResponse = newState;
+      const payload: SignupStatusResponse = { state: { ...emptyState, captcha: { completed: true } } };
       return res(ctx.json({ type: "test success", payload }));
     })
   );
@@ -166,7 +166,7 @@ async function testInternalCaptcha() {
   fireEvent.click(captchaButton);
 }
 
-async function testTermsOfUse(state: SignupStatusResponse, testEmailAddress: string) {
+async function testTermsOfUse(state: SignupState, testEmailAddress: string) {
   let acceptToUCalled = false;
   let registerEmailCalled = false;
 
@@ -188,11 +188,13 @@ async function testTermsOfUse(state: SignupStatusResponse, testEmailAddress: str
       }
 
       registerEmailCalled = true;
-      const newState: SignupStatusResponse = {
-        ...emptyState,
-        email: { completed: true, address: testEmailAddress, expires_time_left: 60, expires_time_max: 60 },
+      const payload: SignupStatusResponse = {
+        state: {
+          ...emptyState,
+          email: { completed: true, address: testEmailAddress, expires_time_left: 60, expires_time_max: 60 },
+        },
       };
-      return res(ctx.json({ type: "test success", payload: newState }));
+      return res(ctx.json({ type: "test success", payload }));
     })
   );
 
@@ -227,7 +229,7 @@ async function testEnterEmailCode(testEmailAddress: string, tryCodes: string[] =
       }
 
       const newState = { ...emptyState, captcha: { completed: true } };
-      const payload: SignupStatusResponse = newState;
+      const payload: SignupStatusResponse = { state: newState };
       return res(ctx.json({ type: "test success", payload }));
     })
   );

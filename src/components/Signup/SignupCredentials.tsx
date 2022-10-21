@@ -60,7 +60,7 @@ export function SignupCredentialPassword(): JSX.Element {
   async function getPassword() {
     const res = await dispatch(getPasswordRequest());
 
-    if (getPasswordRequest.fulfilled.match(res) && res.payload.email.completed === true) {
+    if (getPasswordRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });

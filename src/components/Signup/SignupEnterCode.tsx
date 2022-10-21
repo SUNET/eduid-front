@@ -137,7 +137,7 @@ export function ProcessEmailCode() {
   async function verifyCode(verification_code: string) {
     const res = await dispatch(verifyEmailRequest({ verification_code }));
 
-    if (verifyEmailRequest.fulfilled.match(res) && res.payload.email.completed === true) {
+    if (verifyEmailRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });

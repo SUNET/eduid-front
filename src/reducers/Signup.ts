@@ -6,13 +6,13 @@ import {
   fetchVerifyLink,
   isTryCaptchaResponse,
   isVerifyLinkResponse,
-  SignupStatusResponse,
+  SignupState as SignupBackendState,
   TryCaptchaNextStep,
   VerifyLinkResponse,
 } from "apis/eduidSignup";
 
 interface SignupState {
-  state?: SignupStatusResponse;
+  state?: SignupBackendState;
   email?: string; // pass email address from one state to another
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
@@ -46,7 +46,7 @@ export const signupSlice = createSlice({
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;
     },
-    setSignupState: (state, action: PayloadAction<SignupStatusResponse>) => {
+    setSignupState: (state, action: PayloadAction<SignupBackendState>) => {
       state.state = action.payload;
     },
   },

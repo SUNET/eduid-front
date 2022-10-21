@@ -10,7 +10,7 @@ import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common"
 // export for use in tests
 export const SIGNUP_SERVICE_URL = "/services/signup";
 
-export interface SignupStatusResponse {
+export interface SignupState {
   email: {
     completed: boolean;
     address?: string;
@@ -32,6 +32,10 @@ export interface SignupStatusResponse {
   captcha: { completed: boolean };
   credentials: { completed: boolean; password?: string };
   user_created: boolean;
+}
+
+export interface SignupStatusResponse {
+  state: SignupState;
 }
 
 /*********************************************************************************************************************/
@@ -326,15 +330,13 @@ function makeSignupRequest<T>(
 
   // type predicate to help identify payloads with the signup state.
   function isSignupStateResponse(action: any): action is PayloadAction<SignupStatusResponse> {
+    if (!isFSA(action)) {
+      return false;
+    }
     try {
-      if (!isFSA(action)) {
-        return false;
-      }
       const payload = action.payload as unknown as SignupStatusResponse;
-      if (!payload.email || !payload.captcha || !payload.tou || !payload.credentials) {
-        return false;
-      }
-      return true;
+      // if the payload has 'state', we consider it a SignupStatusResponse
+      return Boolean(payload.state !== undefined);
     } catch {
       return false;
     }
@@ -345,7 +347,7 @@ function makeSignupRequest<T>(
    */
   function updateState(action: PayloadAction<T, string, never, boolean>, thunkAPI: RequestThunkAPI) {
     if (isSignupStateResponse(action)) {
-      thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload));
+      thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload.state));
     } else {
       console.warn("Not a SignupStateResponse", action);
     }
@@ -355,7 +357,6 @@ function makeSignupRequest<T>(
   return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data)
     .then((response) => updateState(response, thunkAPI))
     .catch((err) => {
-      console.error("Error in makeSignupRequest", err);
       updateState(err, thunkAPI);
       throw err;
     });

@@ -1,8 +1,8 @@
 // This ensures you can use `window.fetch()` in your Jest tests.
 require("whatwg-fetch");
 
-import { configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { configure } from "enzyme";
 
 configure({ adapter: new Adapter() });
 
