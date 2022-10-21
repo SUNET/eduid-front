@@ -205,6 +205,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9w+urv": {
+    "developer_comment": "Dashboard change password button text",
+    "string": "Change password"
+  },
   "A2MTya": {
     "developer_comment": "add webauthn token key",
     "string": "security key"
@@ -243,10 +247,6 @@
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
-  },
-  "CuK+Jx": {
-    "developer_comment": "Dashboard change password",
-    "string": "For security reasons..."
   },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
@@ -298,10 +298,6 @@
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
-  },
-  "FNihFR": {
-    "developer_comment": "Dashboard change password",
-    "string": "Click the link to change your eduID password."
   },
   "FO7/rw": {
     "developer_comment": "Signup",
@@ -572,6 +568,10 @@
     "developer_comment": "tou.header",
     "string": "General rules for eduID users"
   },
+  "Rv0ENK": {
+    "developer_comment": "Dashboard change password modal main text",
+    "string": "You will need to log in again to change your password."
+  },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
     "string": "Reset password"
@@ -620,6 +620,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TpraxF": {
+    "developer_comment": "Dashboard change password modal title",
+    "string": "For security reasons..."
   },
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
@@ -675,6 +679,10 @@
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
+  },
+  "WOHMLr": {
+    "developer_comment": "Dashboard change password link description text",
+    "string": "Click the link to change your eduID password."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -2054,10 +2062,6 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
-  "settings.change_password": {
-    "developer_comment": "Dashboard change password",
-    "string": "Change password"
-  },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again"
   },
@@ -2215,10 +2219,6 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
-  },
-  "x/tMbb": {
-    "developer_comment": "Dashboard change password",
-    "string": "You will need to log in again to change your password."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
