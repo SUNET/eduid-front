@@ -167,22 +167,26 @@ function VerifiedIdentitiesTable(): JSX.Element {
               </tbody>
             </table>
           </figure>
-
-          <h3>
-            <FormattedMessage
-              description="verify identity non verified description"
-              defaultMessage="Choose your principal identification method"
-            />
-          </h3>
-          <p>
-            <FormattedMessage
-              description="verify identity with swedish ID description"
-              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
-            />
-          </p>
-          <Accordion>
-            <AccordionItemSwedish />
-          </Accordion>
+          {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas */}
+          {!identities.nin?.verified && (
+            <React.Fragment>
+              <h3>
+                <FormattedMessage
+                  description="verify identity non verified description"
+                  defaultMessage="Choose your principal identification method"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="verify identity with swedish ID description"
+                  defaultMessage={`Verify your eduID with a Swedish national ID number.`}
+                />
+              </p>
+              <Accordion>
+                <AccordionItemSwedish />
+              </Accordion>
+            </React.Fragment>
+          )}
         </React.Fragment>
       )}
     </React.Fragment>
