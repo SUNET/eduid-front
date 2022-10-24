@@ -69,6 +69,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         </a>
 
         <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
+
         <div className={"nav-wrapper " + (isOpen ? "show-menu" : "")}>
           {dashboardNav}
           {button}
