@@ -19,6 +19,8 @@ export interface SignupState {
     sent_at?: string;
     throttle_time_left?: number;
     throttle_time_max?: number;
+    bad_attempts?: number;
+    bad_attempts_max?: number;
   };
   invite: {
     user?: { given_name?: string; surname?: string; email?: string };

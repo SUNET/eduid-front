@@ -20,6 +20,13 @@ export function SignupEnterCode(): JSX.Element {
   const dispatch = useSignupAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
 
+  useEffect(() => {
+    if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
+      // user has used up all allowed attempts to enter the code
+      signupContext.signupService.send({ type: "ABORT" });
+    }
+  }, [signupState]);
+
   function handleTimerReachZero() {
     setIsExpired(true);
   }
@@ -75,7 +82,6 @@ export function SignupEnterCode(): JSX.Element {
   if (isExpired) {
     return (
       <div>
-        {JSON.stringify(signupState?.email)}
         <FormattedMessage
           defaultMessage="The code sent to {email} has expired. Please try again."
           values={{
