@@ -18,7 +18,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState<boolean>(false);
   let button;
   let dashboardNav;
 
@@ -50,7 +50,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
-    dashboardNav = <DashboardNav />;
+    dashboardNav = <DashboardNav toggle={setOpen} />;
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
@@ -63,14 +63,14 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   return (
     <section className="banner">
-      <header className={props.showRegister ? "show-register" : ""}>
-        <a href={dashboard_url ? dashboard_url : eduid_site_url} area-label="eduID start" title="eduID start">
+      <header className={props.showRegister ? "show-register" : undefined}>
+        <a href={dashboard_url ? dashboard_url : eduid_site_url} aria-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
 
         <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
 
-        <div className={"nav-wrapper " + (isOpen ? "show-menu" : "")}>
+        <div className={"nav-wrapper " + (isOpen ? "show-menu" : undefined)}>
           {dashboardNav}
           {button}
         </div>

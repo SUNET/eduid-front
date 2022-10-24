@@ -1,18 +1,23 @@
+import React from "react";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import Splash from "./Splash";
-import { Squash as Hamburger } from "hamburger-react";
-import React, { Fragment, useState } from "react";
 
 // export for use in tests
 export const activeClassName = "active";
 export const dashboardHeading = "eduID Dashboard:";
 
-const [isOpen, setOpen] = useState(false);
+interface DashboardNavProps {
+  toggle(value: boolean): void;
+}
 
-function DashboardNav(): JSX.Element {
+function DashboardNav(props: DashboardNavProps): JSX.Element {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+
+  function closeMenu() {
+    props.toggle(false);
+  }
 
   return (
     <nav id="dashboard-nav">
@@ -22,7 +27,7 @@ function DashboardNav(): JSX.Element {
             <NavLink
               className={({ isActive }) => (isActive ? activeClassName : undefined)}
               to="/profile/"
-              onClick={() => (toggle = { setOpen })}
+              onClick={closeMenu}
               end
             >
               <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
@@ -32,6 +37,7 @@ function DashboardNav(): JSX.Element {
             <NavLink
               className={({ isActive }) => (isActive ? activeClassName : undefined)}
               to="/profile/verify-identity/"
+              onClick={closeMenu}
             >
               <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
             </NavLink>
@@ -40,6 +46,7 @@ function DashboardNav(): JSX.Element {
             <NavLink
               className={({ isActive }) => (isActive ? activeClassName : undefined)}
               to="/profile/settings/personaldata"
+              onClick={closeMenu}
             >
               <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
             </NavLink>
