@@ -12,8 +12,8 @@ export const leftoverMessages = {
   "confirmation.code_invalid_format": (
     <FormattedMessage
       id="confirmation.code_invalid_format"
-      defaultMessage={`Invalid confirmation code`}
-      description="error text for invalid confirmation code"
+      defaultMessage={`Invalid code`}
+      description="error text for invalid code"
     />
   ),
   "security.description_invalid_format": (
