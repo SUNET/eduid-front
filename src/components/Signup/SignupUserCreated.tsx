@@ -78,7 +78,9 @@ export function SignupUserCreated(): JSX.Element {
   );
 }
 
-function format_password(data?: string): string {
+// Show passwords in groups of four characters.
+// Export this for use in tests.
+export function format_password(data?: string): string {
   if (!data) {
     return "";
   }

@@ -18,8 +18,6 @@ export function SignupCredentials(): JSX.Element {
     }
   }, []);
 
-  console.log("EVENT ", state.event);
-
   if (state.event.type == "API_FAIL") {
     return (
       <React.Fragment>
@@ -61,7 +59,7 @@ export function SignupCredentialPassword(): JSX.Element {
   async function getPassword() {
     const res = await dispatch(getPasswordRequest());
 
-    if (getPasswordRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
+    if (getPasswordRequest.fulfilled.match(res) && res.payload.state.credentials.completed === true) {
       dispatch(clearNotifications());
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {

@@ -1,6 +1,7 @@
 import {
   AcceptToURequest,
   CaptchaRequest,
+  CreateUserRequest,
   GetCaptchaResponse,
   RegisterEmailRequest,
   SignupState,
@@ -8,12 +9,14 @@ import {
   VerifyEmailRequest,
 } from "apis/eduidSignup";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
+import { format_password } from "components/Signup/SignupUserCreated";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 const emptyState: SignupState = {
+  already_signed_up: false,
   captcha: {
     completed: false,
   },
@@ -37,10 +40,16 @@ const emptyState: SignupState = {
 
 const testEmailAddress = "test@example.org";
 const captchaTestValue = "captcha-test-value";
+const testPassword = "abcdefghij";
+const correctEmailCode = "123456";
 
+let currentState = JSON.parse(JSON.stringify(emptyState)); // make a copy of the state
 let getCaptchaCalled = false;
 let acceptToUCalled = false;
 let registerEmailCalled = false;
+let verifyEmailCalled = false;
+let getPasswordCalled = false;
+let createUserCalled = false;
 
 /* Set up fake backend endpoints to get us through a complete signup.
  * These all need to be registered before the testing begins since we want to have
@@ -49,10 +58,12 @@ let registerEmailCalled = false;
  * next function.
  */
 function happyCaseBackend(state: SignupState) {
+  currentState = JSON.parse(JSON.stringify(state)); // make a fresh copy of the state
+
   mswServer.use(
     // this request happens at render of SignupMain
     rest.get("/services/signup/state", (req, res, ctx) => {
-      return res(ctx.json({ type: "test response", payload: emptyState }));
+      return res(ctx.json({ type: "test response", payload: currentState }));
     })
   );
 
@@ -68,7 +79,8 @@ function happyCaseBackend(state: SignupState) {
         return res(ctx.status(400));
       }
 
-      const payload: SignupStatusResponse = { state: { ...emptyState, captcha: { completed: true } } };
+      currentState.captcha.completed = true;
+      const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
     })
   );
@@ -91,12 +103,11 @@ function happyCaseBackend(state: SignupState) {
       }
 
       registerEmailCalled = true;
-      const payload: SignupStatusResponse = {
-        state: {
-          ...emptyState,
-          email: { completed: true, address: testEmailAddress, expires_time_left: 60, expires_time_max: 60 },
-        },
-      };
+      currentState.email.address = testEmailAddress;
+      currentState.email.expires_time_left = 60;
+      currentState.email.expires_time_total = 60;
+
+      const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
     })
   );
@@ -108,8 +119,36 @@ function happyCaseBackend(state: SignupState) {
         return res(ctx.status(400));
       }
 
-      const newState = { ...emptyState, captcha: { completed: true } };
-      const payload: SignupStatusResponse = { state: newState };
+      verifyEmailCalled = true;
+      currentState.email.completed = true;
+
+      const payload: SignupStatusResponse = { state: currentState };
+      return res(ctx.json({ type: "test success", payload }));
+    })
+  );
+
+  mswServer.use(
+    rest.post("/services/signup/get-password", (req, res, ctx) => {
+      getPasswordCalled = true;
+      currentState.credentials.password = testPassword;
+      currentState.credentials.completed = true;
+      const payload: SignupStatusResponse = { state: currentState };
+      return res(ctx.json({ type: "test success", payload }));
+    })
+  );
+
+  mswServer.use(
+    rest.post("/services/signup/create-user", (req, res, ctx) => {
+      const body = req.body as CreateUserRequest;
+      if (body.use_webauthn && !body.use_password) {
+        console.error("Missing password, or webauthn is not supported");
+        return res(ctx.status(400));
+      }
+
+      createUserCalled = true;
+      currentState.user_created = true;
+
+      const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
     })
   );
@@ -137,8 +176,20 @@ test("Complete signup happy case", async () => {
   await testEnterEmailCode(testEmailAddress);
 
   await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent(/^Confirm.*human/);
+    expect(getPasswordCalled).toBe(true);
   });
+
+  await waitFor(() => {
+    expect(createUserCalled).toBe(true);
+  });
+
+  await waitFor(() => {
+    expect(screen.getByRole("heading")).toHaveTextContent(/^You have completed/);
+  });
+
+  // verify e-mail and password are shown
+  expect(screen.getByRole("status", { name: /mail/i })).toHaveTextContent(testEmailAddress);
+  expect(screen.getByRole("status", { name: /password/i })).toHaveTextContent(format_password(testPassword));
 
   // async tests need to await the last expect (to not get console warnings about logging after test finishes)
   await waitFor(() => {
@@ -247,8 +298,9 @@ async function testTermsOfUse(state: SignupState) {
   });
 }
 
-const correctEmailCode = "123456";
 async function testEnterEmailCode(testEmailAddress: string, tryCodes: string[] = [correctEmailCode]) {
+  verifyEmailCalled = false;
+
   // Wait for the code inputs to be displayed
   await screen.findByText(/^Enter the .*code/);
 
@@ -273,4 +325,8 @@ async function testEnterEmailCode(testEmailAddress: string, tryCodes: string[] =
       await screen.findByText(/^Enter the .*code/);
     }
   }
+
+  await waitFor(() => {
+    expect(verifyEmailCalled).toBe(true);
+  });
 }

@@ -350,8 +350,6 @@ function makeSignupRequest<T>(
   function updateState(action: PayloadAction<T, string, never, boolean>, thunkAPI: RequestThunkAPI) {
     if (isSignupStateResponse(action)) {
       thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload.state));
-    } else {
-      console.warn("Not a SignupStateResponse", action);
     }
     return action;
   }
