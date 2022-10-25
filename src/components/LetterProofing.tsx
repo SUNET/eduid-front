@@ -129,7 +129,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "letter.placeholder",
-    defaultMessage: "Letter confirmation code",
+    defaultMessage: "Code",
     description: "Placeholder for letter proofing text input",
   });
 
@@ -152,7 +152,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         id="letter-confirm-modal"
         title={
           <FormattedMessage
-            defaultMessage="Use a confirmation code sent by post to your address"
+            defaultMessage="Use a code sent by post to your address"
             description="explanation text for letter proofing"
           />
         }
@@ -180,9 +180,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
-        modalFormLabel={
-          <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
-        }
+        modalFormLabel={<FormattedMessage defaultMessage="Code" description="letter proofing modal form label" />}
         validationError={"confirmation.code_invalid_format"}
         validationPattern={shortCodePattern}
       />
