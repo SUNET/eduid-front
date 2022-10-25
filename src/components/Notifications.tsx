@@ -1,5 +1,5 @@
 import { translate, UNKNOWN_MESSAGE } from "login/translation";
-import React from "react";
+import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
 import { eduidNotification, notificationLevel } from "reducers/Notifications";
@@ -13,6 +13,12 @@ export function Notifications(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
 
   const intl = useIntl();
+
+  useEffect(() => {
+    if (info && info?.message.endsWith("_success")) {
+      dispatch(actions.clearNotifications());
+    }
+  }, [info]);
 
   function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
