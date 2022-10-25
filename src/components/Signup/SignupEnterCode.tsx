@@ -6,6 +6,7 @@ import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/
 import { useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
@@ -144,6 +145,7 @@ export function ProcessEmailCode() {
     const res = await dispatch(verifyEmailRequest({ verification_code }));
 
     if (verifyEmailRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
+      dispatch(clearNotifications());
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });

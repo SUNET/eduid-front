@@ -2,6 +2,7 @@ import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/edu
 import { Captcha as GoogleCaptcha } from "components/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupCaptchaForm } from "./SignupCaptchaForm";
@@ -101,6 +102,7 @@ export function ProcessCaptcha(): null {
     const res = await dispatch(sendCaptchaResponse(captcha));
 
     if (sendCaptchaResponse.fulfilled.match(res)) {
+      dispatch(clearNotifications());
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });

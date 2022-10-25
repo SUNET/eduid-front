@@ -3,6 +3,7 @@ import { getPasswordRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { useSignupAppDispatch } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
@@ -61,6 +62,7 @@ export function SignupCredentialPassword(): JSX.Element {
     const res = await dispatch(getPasswordRequest());
 
     if (getPasswordRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
+      dispatch(clearNotifications());
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });
