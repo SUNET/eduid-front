@@ -225,6 +225,10 @@
     "developer_comment": "Phones input help text",
     "string": "Phone number starting with 0 or +"
   },
+  "AZ7oSU": {
+    "developer_comment": "Reset Password phone code sent (Input label)",
+    "string": "Code"
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -359,6 +363,10 @@
     "developer_comment": "Dashboard AccountId",
     "string": "You might be asked to share this information if you need technical support."
   },
+  "HNUqHD": {
+    "developer_comment": "Help text for email  code",
+    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -394,6 +402,10 @@
     "developer_comment": "confirm button",
     "string": "confirm"
   },
+  "J3IlyU": {
+    "developer_comment": "resend code",
+    "string": "Send a new code"
+  },
   "JjB0Cs": {
     "developer_comment": "security verify",
     "string": "Verify key"
@@ -416,6 +428,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
+  },
+  "KlKDP2": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Use a code sent by post to your address"
   },
   "KpcTvu": {
     "developer_comment": "button add",
@@ -541,6 +557,10 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
   },
+  "Q3aPtX": {
+    "developer_comment": "phones modal form label",
+    "string": "Code"
+  },
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Never used"
@@ -664,10 +684,6 @@
     "developer_comment": "Header login",
     "string": "Log in"
   },
-  "Vlh8Dn": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Use a confirmation code sent by post to your address"
-  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
@@ -719,10 +735,6 @@
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
-  },
-  "YdEGFD": {
-    "developer_comment": "Help text for email confirmation code",
-    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   "YqZO+p": {
     "developer_comment": "Login button",
@@ -789,10 +801,6 @@
   },
   "add_nin.main_title": {
     "string": "1. Add your id number"
-  },
-  "am92D3": {
-    "developer_comment": "resend code",
-    "string": "Send a new confirmation code"
   },
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
@@ -887,7 +895,7 @@
     "string": "CLOSE"
   },
   "cm.enter_code": {
-    "string": "Confirmation code"
+    "string": "Code"
   },
   "cm.finish": {
     "string": "FINISH"
@@ -906,8 +914,8 @@
     "string": "Unknown verification code"
   },
   "confirmation.code_invalid_format": {
-    "developer_comment": "error text for invalid confirmation code",
-    "string": "Invalid confirmation code"
+    "developer_comment": "error text for invalid code",
+    "string": "Invalid code"
   },
   "created.back_to_signup": {
     "string": "Back to signup"
@@ -1043,7 +1051,7 @@
     "string": "The entered email is invalid"
   },
   "emails.add_new": {
-    "string": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
+    "string": "A new email address will receive a link to click or a code that can be used by clicking Confirm in the list of email addresses."
   },
   "emails.button_add": {
     "string": "Add"
@@ -1064,10 +1072,10 @@
     "string": "Expired verification code, sending another"
   },
   "emails.code_invalid": {
-    "string": "The confirmation code is invalid, please try again or request a new code"
+    "string": "The code is invalid, please try again or request a new code"
   },
   "emails.code_invalid_or_expired": {
-    "string": "The confirmation code is invalid or has expired, please try again or request a new code"
+    "string": "The code is invalid or has expired, please try again or request a new code"
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
@@ -1108,9 +1116,6 @@
   },
   "emails.verification-success": {
     "string": "Successfully verified email address"
-  },
-  "enter confirmation code": {
-    "string": "Confirmation code"
   },
   "error_in_form": {
     "string": "Check the form below for errors."
@@ -1242,10 +1247,6 @@
     "developer_comment": "Phones main title",
     "string": "Mobile phone numbers"
   },
-  "j0jEk2": {
-    "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Confirmation code"
-  },
   "j8KKR3": {
     "developer_comment": "platform authn help text",
     "string": "E.g. USB Security Key, Touch ID or Face ID"
@@ -1305,7 +1306,7 @@
     "string": "The registered postal address is not a valid address"
   },
   "letter.button_text_code": {
-    "string": "Enter confirmation code here"
+    "string": "Enter code here"
   },
   "letter.letter_sent_msg": {
     "string": "You have been sent a verification letter"
@@ -1325,14 +1326,14 @@
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
-    "string": "Letter confirmation code"
+    "string": "Code"
   },
   "letter.resend_code": {
     "developer_comment": "Text for letter code resend button",
     "string": "Send code"
   },
   "letter.saved-unconfirmed": {
-    "string": "A letter with confirmation code has been sent."
+    "string": "A letter with code has been sent."
   },
   "letter.verification_success": {
     "string": "Successfully verified national id number"
@@ -1341,7 +1342,7 @@
     "string": "Incorrect verification code"
   },
   "lmp.button_text_code": {
-    "string": "Enter confirmation code here"
+    "string": "Enter code here"
   },
   "lmp.button_text_request": {
     "string": "by phone"
@@ -1485,7 +1486,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Phone confirmation code"
+    "string": "Code"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -1558,10 +1559,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
-  },
-  "oFfq/i": {
-    "developer_comment": "enter confirmation code",
-    "string": "Confirmation code"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -1721,7 +1718,7 @@
     "string": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 6-20 digits."
   },
   "phones.add_new": {
-    "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers."
+    "string": "A new phone number will receive a code for you to use by clicking Confirm in the list of numbers."
   },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
@@ -1739,7 +1736,7 @@
     "string": "Invalid verification code"
   },
   "phones.code_invalid_or_expired": {
-    "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
+    "string": "The code is invalid or it has expired, please try again or request a new code"
   },
   "phones.duplicated": {
     "string": "The number is already in the list."
@@ -1822,10 +1819,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
   },
-  "q4ENsq": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Confirmation code"
-  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
@@ -1845,6 +1838,10 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
+  },
+  "r2ed/q": {
+    "developer_comment": "letter proofing modal form label",
+    "string": "code"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
@@ -2095,6 +2092,10 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
+  },
+  "tVcCe6": {
+    "developer_comment": "emails enter code",
+    "string": "Code"
   },
   "tl.make_primary": {
     "string": "MAKE PRIMARY"
