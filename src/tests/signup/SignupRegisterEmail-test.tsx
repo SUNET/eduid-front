@@ -35,6 +35,88 @@ const emptyState: SignupState = {
   user_created: false,
 };
 
+const testEmailAddress = "test@example.org";
+const captchaTestValue = "captcha-test-value";
+
+let getCaptchaCalled = false;
+let acceptToUCalled = false;
+let registerEmailCalled = false;
+
+/* Set up fake backend endpoints to get us through a complete signup.
+ * These all need to be registered before the testing begins since we want to have
+ * generic functions to test parts of the flow. Otherwise, a request can be missed
+ * when returning from one of the functions before the handler is registered in the
+ * next function.
+ */
+function happyCaseBackend(state: SignupState) {
+  mswServer.use(
+    // this request happens at render of SignupMain
+    rest.get("/services/signup/state", (req, res, ctx) => {
+      return res(ctx.json({ type: "test response", payload: emptyState }));
+    })
+  );
+
+  mswServer.use(
+    rest.post("/services/signup/get-captcha", (req, res, ctx) => {
+      getCaptchaCalled = true;
+      const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
+      return res(ctx.json({ type: "test success", payload }));
+    }),
+    rest.post("/services/signup/captcha", (req, res, ctx) => {
+      const body = req.body as CaptchaRequest;
+      if (body.internal_response != captchaTestValue) {
+        return res(ctx.status(400));
+      }
+
+      const payload: SignupStatusResponse = { state: { ...emptyState, captcha: { completed: true } } };
+      return res(ctx.json({ type: "test success", payload }));
+    })
+  );
+
+  mswServer.use(
+    rest.post("/services/signup/accept-tou", (req, res, ctx) => {
+      const body = req.body as AcceptToURequest;
+      if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
+        return res(ctx.status(400));
+      }
+
+      acceptToUCalled = true;
+      const newState = { ...state, tou: { accepted: true } };
+      return res(ctx.json({ type: "test success", payload: { state: newState } }));
+    }),
+    rest.post("/services/signup/register-email", (req, res, ctx) => {
+      const body = req.body as RegisterEmailRequest;
+      if (body.email !== testEmailAddress) {
+        return res(ctx.status(400));
+      }
+
+      registerEmailCalled = true;
+      const payload: SignupStatusResponse = {
+        state: {
+          ...emptyState,
+          email: { completed: true, address: testEmailAddress, expires_time_left: 60, expires_time_max: 60 },
+        },
+      };
+      return res(ctx.json({ type: "test success", payload }));
+    })
+  );
+
+  mswServer.use(
+    rest.post("/services/signup/verify-email", (req, res, ctx) => {
+      const body = req.body as VerifyEmailRequest;
+      if (body.verification_code !== correctEmailCode) {
+        return res(ctx.status(400));
+      }
+
+      const newState = { ...emptyState, captcha: { completed: true } };
+      const payload: SignupStatusResponse = { state: newState };
+      return res(ctx.json({ type: "test success", payload }));
+    })
+  );
+
+  mswServer.printHandlers();
+}
+
 test("e-mail form works as expected", () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
@@ -42,23 +124,15 @@ test("e-mail form works as expected", () => {
 });
 
 test("Complete signup happy case", async () => {
-  const testEmailAddress = "test@example.org";
+  happyCaseBackend(emptyState);
 
-  mswServer.use(
-    // this request happens at render()
-    rest.get("/services/signup/state", (req, res, ctx) => {
-      return res(ctx.json({ type: "test response", payload: emptyState }));
-    })
-  );
-
-  mswServer.printHandlers();
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   await testEnterEmail(testEmailAddress);
 
   await testInternalCaptcha();
 
-  await testTermsOfUse(emptyState, testEmailAddress);
+  await testTermsOfUse(emptyState);
 
   await testEnterEmailCode(testEmailAddress);
 
@@ -122,7 +196,7 @@ async function testEnterEmail(emailAddress?: string) {
   expect(button).toBeDisabled();
 
   if (emailAddress) {
-    fireEvent.change(input, { target: { value: "test@example.org" } });
+    fireEvent.change(input, { target: { value: emailAddress } });
     expect(button).toBeEnabled();
 
     fireEvent.click(button);
@@ -130,25 +204,7 @@ async function testEnterEmail(emailAddress?: string) {
 }
 
 async function testInternalCaptcha() {
-  const captchaTestValue = "captcha-test-value";
-  let getCaptchaCalled = false;
-
-  mswServer.use(
-    rest.post("/services/signup/get-captcha", (req, res, ctx) => {
-      getCaptchaCalled = true;
-      const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
-      return res(ctx.json({ type: "test success", payload }));
-    }),
-    rest.post("/services/signup/captcha", (req, res, ctx) => {
-      const body = req.body as CaptchaRequest;
-      if (body.internal_response != captchaTestValue) {
-        return res(ctx.status(400));
-      }
-
-      const payload: SignupStatusResponse = { state: { ...emptyState, captcha: { completed: true } } };
-      return res(ctx.json({ type: "test success", payload }));
-    })
-  );
+  getCaptchaCalled = false;
 
   // Wait for the (internal) Captcha to be displayed
   await screen.findByText(/^Enter the text from the image/);
@@ -166,37 +222,9 @@ async function testInternalCaptcha() {
   fireEvent.click(captchaButton);
 }
 
-async function testTermsOfUse(state: SignupState, testEmailAddress: string) {
-  let acceptToUCalled = false;
-  let registerEmailCalled = false;
-
-  mswServer.use(
-    rest.post("/services/signup/accept-tou", (req, res, ctx) => {
-      const body = req.body as AcceptToURequest;
-      if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
-        return res(ctx.status(400));
-      }
-
-      acceptToUCalled = true;
-      const newState = { ...state, tou: { accepted: true } };
-      return res(ctx.json({ type: "test success", payload: { state: newState } }));
-    }),
-    rest.post("/services/signup/register-email", (req, res, ctx) => {
-      const body = req.body as RegisterEmailRequest;
-      if (body.email !== testEmailAddress) {
-        return res(ctx.status(400));
-      }
-
-      registerEmailCalled = true;
-      const payload: SignupStatusResponse = {
-        state: {
-          ...emptyState,
-          email: { completed: true, address: testEmailAddress, expires_time_left: 60, expires_time_max: 60 },
-        },
-      };
-      return res(ctx.json({ type: "test success", payload }));
-    })
-  );
+async function testTermsOfUse(state: SignupState) {
+  acceptToUCalled = false;
+  registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
   await screen.findByText(/^Terms of use/);
@@ -221,18 +249,6 @@ async function testTermsOfUse(state: SignupState, testEmailAddress: string) {
 
 const correctEmailCode = "123456";
 async function testEnterEmailCode(testEmailAddress: string, tryCodes: string[] = [correctEmailCode]) {
-  mswServer.use(
-    rest.post("/services/signup/verify-email", (req, res, ctx) => {
-      const body = req.body as VerifyEmailRequest;
-      if (body.verification_code !== correctEmailCode) {
-        return res(ctx.status(400));
-      }
-
-      const newState = { ...emptyState, captcha: { completed: true } };
-      const payload: SignupStatusResponse = { state: newState };
-      return res(ctx.json({ type: "test success", payload }));
-    })
-  );
   // Wait for the code inputs to be displayed
   await screen.findByText(/^Enter the .*code/);
 
