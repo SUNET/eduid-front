@@ -4,7 +4,7 @@ import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
 import { eduidNotification, notificationLevel } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import * as actions from "reducers/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 
 export function Notifications(): JSX.Element | null {
   const debug = useDashboardAppSelector((state) => state.config.debug);
@@ -16,13 +16,13 @@ export function Notifications(): JSX.Element | null {
 
   useEffect(() => {
     if (info && info?.message.endsWith("_success")) {
-      dispatch(actions.clearNotifications());
+      dispatch(clearNotifications());
     }
   }, [info]);
 
   function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    dispatch(actions.clearNotifications());
+    dispatch(clearNotifications());
   }
 
   // show errors first, information second
