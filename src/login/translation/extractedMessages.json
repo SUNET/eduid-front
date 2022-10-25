@@ -15,6 +15,10 @@
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
   },
+  "/O9rcw": {
+    "developer_comment": "letter proofing modal form label",
+    "string": "Code"
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -363,10 +367,6 @@
     "developer_comment": "Dashboard AccountId",
     "string": "You might be asked to share this information if you need technical support."
   },
-  "HNUqHD": {
-    "developer_comment": "Help text for email  code",
-    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
-  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -413,6 +413,10 @@
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
+  },
+  "KV3/EM": {
+    "developer_comment": "Help text for email code",
+    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
@@ -1333,7 +1337,7 @@
     "string": "Send code"
   },
   "letter.saved-unconfirmed": {
-    "string": "A letter with code has been sent."
+    "string": "A letter with a code has been sent."
   },
   "letter.verification_success": {
     "string": "Successfully verified national id number"
@@ -1838,10 +1842,6 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
-  },
-  "r2ed/q": {
-    "developer_comment": "letter proofing modal form label",
-    "string": "code"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
