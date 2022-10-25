@@ -194,7 +194,7 @@ function Emails() {
         validationPattern={longCodePattern}
         helpBlock={
           <FormattedMessage
-            description="Help text for email  code"
+            description="Help text for email code"
             defaultMessage={`The code is formatted as five groups of characters and numbers, separated by hyphens`}
           />
         }

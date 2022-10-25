@@ -109,7 +109,7 @@ export const userVetting = {
   ),
 
   "letter.saved-unconfirmed": (
-    <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with code has been sent.`} />
+    <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with a code has been sent.`} />
   ),
 
   "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect verification code`} />,

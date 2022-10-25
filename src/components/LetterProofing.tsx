@@ -180,7 +180,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
-        modalFormLabel={<FormattedMessage defaultMessage="code" description="letter proofing modal form label" />}
+        modalFormLabel={<FormattedMessage defaultMessage="Code" description="letter proofing modal form label" />}
         validationError={"confirmation.code_invalid_format"}
         validationPattern={shortCodePattern}
       />
