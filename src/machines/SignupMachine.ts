@@ -71,7 +71,7 @@ function createSignupMachine() {
                 target: "SignupToU",
               },
               API_FAIL: {
-                target: "Fail",
+                target: "SignupCaptcha",
               },
             },
           },
