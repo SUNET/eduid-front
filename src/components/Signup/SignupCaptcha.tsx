@@ -1,5 +1,5 @@
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
-import Captcha from "components/Captcha";
+import { Captcha as GoogleCaptcha } from "components/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "reducers/Signup";
@@ -7,29 +7,55 @@ import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupCaptchaForm } from "./SignupCaptchaForm";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
+export interface CaptchaProps {
+  handleCaptchaCancel: () => void;
+  handleCaptchaCompleted: (response: string) => void;
+  toggleCaptcha: () => void;
+}
+
 export function SignupCaptcha(): JSX.Element | null {
   const preferredCaptcha = useSignupAppSelector((state) => state.config.preferred_captcha);
   const state = useSignupAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
+  const [useInternalCaptcha, setUseInternalCaptcha] = useState(preferredCaptcha === "internal");
+  const dispatch = useSignupAppDispatch();
 
   if (state?.captcha.completed) {
     signupContext.signupService.send({ type: "BYPASS" });
     return null;
   }
 
+  function handleCaptchaCancel() {
+    signupContext.signupService.send({ type: "ABORT" });
+  }
+
+  async function handleCaptchaCompleted(response: string) {
+    if (useInternalCaptcha) {
+      dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
+    } else {
+      dispatch(signupSlice.actions.setCaptchaResponse({ recaptcha_response: response }));
+    }
+    signupContext.signupService.send({ type: "COMPLETE" });
+  }
+
+  function toggleCaptcha() {
+    setUseInternalCaptcha(!useInternalCaptcha);
+  }
+
+  const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
+
   return (
     <Fragment>
       <h1 className="register-header">
         <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
       </h1>
-      <div>{preferredCaptcha === "internal" ? <InternalCaptcha /> : <GoogleCaptcha />}</div>
+      <div>{useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}</div>
     </Fragment>
   );
 }
 
-function InternalCaptcha() {
+function InternalCaptcha(props: CaptchaProps) {
   const dispatch = useSignupAppDispatch();
-  const signupContext = useContext(SignupGlobalStateContext);
   const [img, setImg] = useState<string | undefined>(undefined);
 
   async function getCaptcha() {
@@ -56,46 +82,16 @@ function InternalCaptcha() {
     };
   }, [img]);
 
-  function handleCaptchaCancel() {
-    signupContext.signupService.send({ type: "ABORT" });
-  }
-
-  async function handleCaptchaCompleted(internal_response: string) {
-    if (internal_response) {
-      dispatch(signupSlice.actions.setCaptchaResponse({ internal_response }));
-      signupContext.signupService.send({ type: "COMPLETE" });
-    }
-  }
-
   return (
     <React.Fragment>
       <figure className="x-adjust">
         <img className="captcha-image" src={img} />
       </figure>
 
-      <SignupCaptchaForm handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />
+      <SignupCaptchaForm {...props} />
     </React.Fragment>
   );
 }
-
-function GoogleCaptcha() {
-  const dispatch = useSignupAppDispatch();
-  const signupContext = useContext(SignupGlobalStateContext);
-
-  function handleCaptchaCancel() {
-    signupContext.signupService.send({ type: "ABORT" });
-  }
-
-  async function handleCaptchaCompleted(recaptcha_response: string) {
-    if (recaptcha_response) {
-      dispatch(signupSlice.actions.setCaptchaResponse({ recaptcha_response }));
-      signupContext.signupService.send({ type: "COMPLETE" });
-    }
-  }
-
-  return <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />;
-}
-
 export function ProcessCaptcha(): null {
   const captcha = useSignupAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);

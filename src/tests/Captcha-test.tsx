@@ -1,13 +1,15 @@
-import Captcha from "components/Captcha";
+import { Captcha } from "components/Captcha";
 import { shallow } from "enzyme";
 import { rest } from "msw";
-import React from "react";
 import { IntlProvider } from "react-intl";
 import { mswServer } from "setupTests";
 import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 function handleCaptchaCancel() {}
 function handleCaptchaCompleted(response: string) {}
+function toggleCaptcha() {}
+
+const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
 
 describe("Captcha Component", () => {
   beforeEach(() => {
@@ -20,7 +22,7 @@ describe("Captcha Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />
+        <Captcha {...args} />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -28,7 +30,7 @@ describe("Captcha Component", () => {
 
   it("The captcha <div> element renders", () => {
     const fullWrapper = setupComponent({
-      component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
+      component: <Captcha {...args} />,
     });
     const captcha = fullWrapper.find("#captcha");
     expect(captcha.exists()).toEqual(true);
@@ -36,7 +38,7 @@ describe("Captcha Component", () => {
 
   it("Renders the CANCEL button", () => {
     const fullWrapper = setupComponent({
-      component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
+      component: <Captcha {...args} />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);

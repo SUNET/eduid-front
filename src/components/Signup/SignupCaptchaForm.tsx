@@ -2,10 +2,9 @@ import EduIDButton from "components/EduIDButton";
 import CustomInput from "login/components/Inputs/CustomInput";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { CaptchaProps } from "./SignupCaptcha";
 
-export interface SignupCaptchaFormProps {
-  handleCaptchaCancel(): void;
-  handleCaptchaCompleted(response: string): void;
+export interface SignupCaptchaFormProps extends CaptchaProps {
   disabled?: boolean; // disable the submit button if true
 }
 
@@ -56,6 +55,10 @@ export function SignupCaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
               <div className="buttons">
                 <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
                   <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
+                </EduIDButton>
+
+                <EduIDButton buttonstyle="primary" id="captcha-switch-button" onClick={props.toggleCaptcha}>
+                  <FormattedMessage defaultMessage="Switch variant" description="Captcha button" />
                 </EduIDButton>
 
                 <EduIDButton
