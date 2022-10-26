@@ -97,7 +97,7 @@
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
-    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
+    "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
@@ -612,7 +612,7 @@
     "string": "Säkerhetsnyckel har tagits bort."
   },
   "SgvXTp": {
-    "string": "Skriv in den sexsiffriga svarskoden som visas i den andra enheten i fältet nedan"
+    "string": "Skriv in den sexsiffriga koden som visas i den andra enheten i fältet nedan"
   },
   "Skhd4q": {
     "developer_comment": "Use other device 2",
@@ -786,7 +786,7 @@
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
-    "string": "Skriv in verifieringskoden som skickats till {phone}"
+    "string": "Skriv in koden som skickats till {phone}"
   },
   "a4X4wS": {
     "developer_comment": "accordion item swedish additional info",
@@ -906,7 +906,7 @@
   },
   "cm.lost_code": {
     "developer_comment": "Lost code problem description",
-    "string": "Tappat bort din bekräftelsekod?"
+    "string": "Tappat bort din kod?"
   },
   "cm.ok": {
     "string": "OK"
@@ -915,7 +915,7 @@
     "string": "Logga in med hjälp av en annan enhet"
   },
   "code.unknown-code": {
-    "string": "Okänd bekräftelsekod"
+    "string": "Okänd kod"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1070,10 +1070,10 @@
     "string": "Du måste ha minst en verifierad e-postadress knuten till ditt konto"
   },
   "emails.code-sent": {
-    "string": "En ny bekräftelsekod har skickats"
+    "string": "En ny kod har skickats"
   },
   "emails.code_expired_send_new": {
-    "string": "Bekräftelsekoden har gått ut. En ny har skickats."
+    "string": "Koden har gått ut. En ny har skickats."
   },
   "emails.code_invalid": {
     "string": "Ogiltig kod. Var god prova igen eller begär en ny kod"
@@ -1241,7 +1241,7 @@
   },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
-    "string": "Skriv in verifieringskoden som skickats till {phone}"
+    "string": "Skriv in koden som skickats till {phone}"
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
@@ -1334,7 +1334,7 @@
   },
   "letter.resend_code": {
     "developer_comment": "Text for letter code resend button",
-    "string": "Skicka bekräftelsekoden igen"
+    "string": "Skicka koden igen"
   },
   "letter.saved-unconfirmed": {
     "string": "Ett brev med en kod har skickats."
@@ -1343,7 +1343,7 @@
     "string": "Personnumret är bekräftat"
   },
   "letter.wrong-code": {
-    "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+    "string": "Den kod du angett stämmer inte. Var god försök igen"
   },
   "lmp.button_text_code": {
     "string": "Skriv koden här"
@@ -1731,7 +1731,7 @@
     "string": "Du kan inte ta bort ditt enda telefonnummer"
   },
   "phones.code-sent": {
-    "string": "En ny bekräftelsekod har skickats"
+    "string": "En ny kod har skickats"
   },
   "phones.code_expired_send_new": {
     "string": "Bekräftelsekoden har gått ut. En ny har skickats."
