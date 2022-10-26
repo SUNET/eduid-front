@@ -97,7 +97,7 @@
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
-    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
+    "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
