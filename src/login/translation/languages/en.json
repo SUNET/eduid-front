@@ -915,7 +915,7 @@
     "string": "Log in using another device"
   },
   "code.unknown-code": {
-    "string": "Unknown verification code"
+    "string": "Unknown code"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1070,10 +1070,10 @@
     "string": "You must have at least one verified email address"
   },
   "emails.code-sent": {
-    "string": "Successfully sent verification code"
+    "string": "Successfully sent code"
   },
   "emails.code_expired_send_new": {
-    "string": "Expired verification code, sending another"
+    "string": "Expired code, sending another"
   },
   "emails.code_invalid": {
     "string": "The code is invalid, please try again or request a new code"
@@ -1317,7 +1317,7 @@
   },
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
-    "string": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
+    "string": "When you click on the \"Send code\" link a letter with a code will be sent to your official post address."
   },
   "letter.no-address-found": {
     "string": "No postal address found"
