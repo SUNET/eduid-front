@@ -112,7 +112,7 @@ export const userVetting = {
     <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with a code has been sent.`} />
   ),
 
-  "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect verification code`} />,
+  "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect code`} />,
 
   "letter.verification_success": (
     <FormattedMessage id="letter.verification_success" defaultMessage={`Successfully verified national id number`} />
@@ -418,7 +418,7 @@ export const userData = {
   "still-valid-code": (
     <FormattedMessage
       id="still-valid-code"
-      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+      defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 
@@ -455,10 +455,10 @@ export const userData = {
   ),
 
   "phones.code_expired_send_new": (
-    <FormattedMessage id="phones.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
+    <FormattedMessage id="phones.code_expired_send_new" defaultMessage={`Expired code, sending another`} />
   ),
 
-  "phones.code_invalid": <FormattedMessage id="phones.code_invalid" defaultMessage={`Invalid verification code`} />,
+  "phones.code_invalid": <FormattedMessage id="phones.code_invalid" defaultMessage={`Invalid code`} />,
 
   "phones.invalid_phone": <FormattedMessage id="phones.invalid_phone" defaultMessage={`Invalid phone number`} />,
 
@@ -492,7 +492,7 @@ export const userData = {
     <FormattedMessage id="phones.removal-success" defaultMessage={`Successfully removed phone number`} />
   ),
 
-  "phones.code-sent": <FormattedMessage id="phones.code-sent" defaultMessage={`Successfully sent verification code`} />,
+  "phones.code-sent": <FormattedMessage id="phones.code-sent" defaultMessage={`Successfully sent a code`} />,
 
   "phone.e164_format": (
     <FormattedMessage
@@ -576,7 +576,7 @@ export const userData = {
   ),
 
   "emails.code_expired_send_new": (
-    <FormattedMessage id="emails.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
+    <FormattedMessage id="emails.code_expired_send_new" defaultMessage={`Expired code, sending another`} />
   ),
 
   "emails.verification-success": (
@@ -598,7 +598,7 @@ export const userData = {
     <FormattedMessage id="emails.removal-success" defaultMessage={`Successfully removed email address`} />
   ),
 
-  "emails.code-sent": <FormattedMessage id="emails.code-sent" defaultMessage={`Successfully sent verification code`} />,
+  "emails.code-sent": <FormattedMessage id="emails.code-sent" defaultMessage={`Successfully sent a code`} />,
 
   "emails.cannot_remove_primary": (
     <FormattedMessage id="emails.cannot_remove_primary" defaultMessage={`You can not delete the primary email`} />

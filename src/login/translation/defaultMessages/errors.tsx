@@ -33,7 +33,7 @@ export const generalErrors = {
     />
   ),
 
-  "code.unknown-code": <FormattedMessage id="code.unknown-code" defaultMessage={`Unknown verification code`} />,
+  "code.unknown-code": <FormattedMessage id="code.unknown-code" defaultMessage={`Unknown code`} />,
 
   // system errors
   error_navet_task: <FormattedMessage id="error_navet_task" defaultMessage={`Communication problem with Navet`} />,
