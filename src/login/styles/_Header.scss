@@ -5,45 +5,59 @@
   header {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 0;
     align-items: center;
 
     .eduid-logo {
       width: 117px;
       height: 40px;
-      background-image: url(../../../img/eduid-logo-black.svg);
+      background-image: url(../../../img/eduID-logo.svg);
       background-size: contain;
       background-repeat: no-repeat;
-      margin: 0;
-      display: inline-block;
+      margin-left: 1rem;
+      position: relative;
+      z-index: 2;
 
-      @media (max-width: $bp-md) {
+      @media (max-width: $bp-sm) {
         width: 99px;
         height: 34px;
+        position: absolute;
+        left: 0;
+        top: 1rem;
       }
     }
 
-    .header-user {
-      font-size: 1rem;
-      text-align: right;
-      width: 100%;
-      font-family: $proxima-bold;
+    // .header-user {
+    //   font-size: 1rem;
+    //   text-align: right;
+    //   width: 100%;
+    //   font-family: $proxima-bold;
 
-      @media (min-width: $bp-sm) {
-        padding-right: 1rem;
-        font-size: 1.125rem;
-      }
+    //   @media (min-width: $bp-sm) {
+    //     padding-right: 1rem;
+    //     font-size: 1.125rem;
+    //   }
+    // }
+
+    .hamburger-react {
+      display: none;
     }
 
-    button {
-      order: 3;
+    button.btn {
+      margin-right: 1rem;
+      z-index: 3;
     }
 
     @media (max-width: $bp-sm) {
-      display: block;
+      &:not(.show-menu) {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0.5rem 0;
 
-      button {
-        float: right;
+        .hamburger-react {
+          display: block;
+          width: 54px !important;
+        }
       }
     }
   }
