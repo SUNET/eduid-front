@@ -915,7 +915,7 @@
     "string": "Log in using another device"
   },
   "code.unknown-code": {
-    "string": "Unknown verification code"
+    "string": "Unknown code"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1070,10 +1070,10 @@
     "string": "You must have at least one verified email address"
   },
   "emails.code-sent": {
-    "string": "Successfully sent verification code"
+    "string": "Successfully sent code"
   },
   "emails.code_expired_send_new": {
-    "string": "Expired verification code, sending another"
+    "string": "Expired code, sending another"
   },
   "emails.code_invalid": {
     "string": "The code is invalid, please try again or request a new code"
@@ -1317,7 +1317,7 @@
   },
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
-    "string": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
+    "string": "When you click on the \"Send code\" link a letter with a code will be sent to your official post address."
   },
   "letter.no-address-found": {
     "string": "No postal address found"
@@ -1343,7 +1343,7 @@
     "string": "Successfully verified national id number"
   },
   "letter.wrong-code": {
-    "string": "Incorrect verification code"
+    "string": "Incorrect code"
   },
   "lmp.button_text_code": {
     "string": "Enter code here"
@@ -1731,13 +1731,13 @@
     "string": "You must have at least one phone number"
   },
   "phones.code-sent": {
-    "string": "Successfully sent verification code"
+    "string": "Successfully sent code"
   },
   "phones.code_expired_send_new": {
-    "string": "Expired verification code, sending another"
+    "string": "Expired code, sending another"
   },
   "phones.code_invalid": {
-    "string": "Invalid verification code"
+    "string": "Invalid code"
   },
   "phones.code_invalid_or_expired": {
     "string": "The code is invalid or it has expired, please try again or request a new code"
@@ -1928,7 +1928,7 @@
     "string": "Failed to send phone code."
   },
   "resetpw.send-sms-success": {
-    "string": "A verification code has been sent to your phone."
+    "string": "A code has been sent to your phone."
   },
   "resetpw.set-new-password-description": {
     "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
@@ -1940,7 +1940,7 @@
     "string": "Password has been updated."
   },
   "resetpw.sms-throttled": {
-    "string": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+    "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
   "resetpw.state-not-found": {
     "string": "Could not continue the reset password process. Please try again."
