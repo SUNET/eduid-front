@@ -97,7 +97,7 @@
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
-    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
+    "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
@@ -612,7 +612,7 @@
     "string": "Säkerhetsnyckel har tagits bort."
   },
   "SgvXTp": {
-    "string": "Skriv in den sexsiffriga svarskoden som visas i den andra enheten i fältet nedan"
+    "string": "Skriv in den sexsiffriga koden som visas i den andra enheten i fältet nedan"
   },
   "Skhd4q": {
     "developer_comment": "Use other device 2",
@@ -786,7 +786,7 @@
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
-    "string": "Skriv in verifieringskoden som skickats till {phone}"
+    "string": "Skriv in koden som skickats till {phone}"
   },
   "a4X4wS": {
     "developer_comment": "accordion item swedish additional info",
@@ -906,7 +906,7 @@
   },
   "cm.lost_code": {
     "developer_comment": "Lost code problem description",
-    "string": "Tappat bort din bekräftelsekod?"
+    "string": "Tappat bort din kod?"
   },
   "cm.ok": {
     "string": "OK"
@@ -915,7 +915,7 @@
     "string": "Logga in med hjälp av en annan enhet"
   },
   "code.unknown-code": {
-    "string": "Okänd bekräftelsekod"
+    "string": "Okänd kod"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
