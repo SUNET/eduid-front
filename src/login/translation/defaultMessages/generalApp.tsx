@@ -35,7 +35,7 @@ export const generalApp = {
   "still-valid-code": (
     <FormattedMessage
       id="still-valid-code"
-      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+      defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 
