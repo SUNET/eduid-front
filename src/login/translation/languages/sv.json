@@ -15,6 +15,10 @@
     "developer_comment": "security webauthn credential type",
     "string": "Säkerhetsnyckel"
   },
+  "/O9rcw": {
+    "developer_comment": "letter proofing modal form label",
+    "string": "Kod"
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Försök igen"
@@ -225,6 +229,10 @@
     "developer_comment": "Phones input help text",
     "string": "Telefonnummer som börjar med 0 eller +"
   },
+  "AZ7oSU": {
+    "developer_comment": "Reset Password phone code sent (Input label)",
+    "string": "Kod"
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Skriv in koden du fått hemskickad"
@@ -394,6 +402,10 @@
     "developer_comment": "confirm button",
     "string": "Bekräfta"
   },
+  "J3IlyU": {
+    "developer_comment": "resend code",
+    "string": "Skicka ny kod igen"
+  },
   "JjB0Cs": {
     "developer_comment": "security verify",
     "string": "Verifiera"
@@ -401,6 +413,10 @@
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
+  },
+  "KV3/EM": {
+    "developer_comment": "Help text for email code",
+    "string": "Koden är formaterad som fem grupper med tecken och nummer, åtskilda av bindestreck"
   },
   "KWAMem": {
     "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
@@ -416,6 +432,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
+  },
+  "KlKDP2": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Skriv in koden du fått hemskickad"
   },
   "KpcTvu": {
     "developer_comment": "button add",
@@ -541,6 +561,10 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Lösenordet har uppdaterats"
   },
+  "Q3aPtX": {
+    "developer_comment": "phones modal form label",
+    "string": "Kod"
+  },
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Aldrig använd"
@@ -664,10 +688,6 @@
     "developer_comment": "Header login",
     "string": "Logga in"
   },
-  "Vlh8Dn": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Använd bekräftelsekod som skickas via post till din adress"
-  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
@@ -719,10 +739,6 @@
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
-  },
-  "YdEGFD": {
-    "developer_comment": "Help text for email confirmation code",
-    "string": "Koden är formaterad som fem grupper med tecken och nummer, åtskilda av bindestreck"
   },
   "YqZO+p": {
     "developer_comment": "Login button",
@@ -789,10 +805,6 @@
   },
   "add_nin.main_title": {
     "string": "Lägg till ditt personnummer"
-  },
-  "am92D3": {
-    "developer_comment": "resend code",
-    "string": "Skicka verifieringskoden igen"
   },
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
@@ -887,7 +899,7 @@
     "string": "STÄNG"
   },
   "cm.enter_code": {
-    "string": "Verifieringskod"
+    "string": "Kod"
   },
   "cm.finish": {
     "string": "SLUTFÖR"
@@ -906,8 +918,8 @@
     "string": "Okänd bekräftelsekod"
   },
   "confirmation.code_invalid_format": {
-    "developer_comment": "error text for invalid confirmation code",
-    "string": "Ogiltig bekräftelsekod"
+    "developer_comment": "error text for invalid code",
+    "string": "Ogiltig kod"
   },
   "created.back_to_signup": {
     "string": "Tillbaka till registreringen"
@@ -927,7 +939,7 @@
   },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
-    "string": "Ett brev skickas till dig med en säkerhetskod. Av säkerhetsskäl är koden giltig i två veckor."
+    "string": "Ett brev skickas till dig med en kod. Av säkerhetsskäl är koden giltig i två veckor."
   },
   "dHoc4Y": {
     "developer_comment": "eidas modal title",
@@ -1043,7 +1055,7 @@
     "string": "Ogiltig e-postadress"
   },
   "emails.add_new": {
-    "string": "A new email address will receieve a link to click or a confirmation code that can be used by clicking Confirm in the table."
+    "string": "Ett ny e-postadress kommer att ta emot en kod som kan användas genom att klicka Bekräfta i listan med e-postadresser."
   },
   "emails.button_add": {
     "string": "Lägg till"
@@ -1064,10 +1076,10 @@
     "string": "Bekräftelsekoden har gått ut. En ny har skickats."
   },
   "emails.code_invalid": {
-    "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod"
+    "string": "Ogiltig kod. Var god prova igen eller begär en ny kod"
   },
   "emails.code_invalid_or_expired": {
-    "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod"
+    "string": "Ogiltig kod eller koden har gått ut. Var god prova igen eller begär en ny kod"
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
@@ -1108,9 +1120,6 @@
   },
   "emails.verification-success": {
     "string": "E-postadressen bekräftad"
-  },
-  "enter confirmation code": {
-    "string": "Verifieringskod"
   },
   "error_in_form": {
     "string": "Formulärfel. Se nedan för specifikt felmeddelande"
@@ -1242,10 +1251,6 @@
     "developer_comment": "Phones main title",
     "string": "Telefonnummer"
   },
-  "j0jEk2": {
-    "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Verifieringskod"
-  },
   "j8KKR3": {
     "developer_comment": "platform authn help text",
     "string": "T.ex. USB säkerhetsnyckel, Touch ID eller Face ID."
@@ -1305,7 +1310,7 @@
     "string": "Ofullständig postadress"
   },
   "letter.button_text_code": {
-    "string": "Skriv bekräftelsekoden här"
+    "string": "Skriv kod här"
   },
   "letter.letter_sent_msg": {
     "string": "Ett brev med en kod har skickats till din folkbokföringsadress"
@@ -1325,14 +1330,14 @@
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
-    "string": "Bekräftelsekod"
+    "string": "Kod"
   },
   "letter.resend_code": {
     "developer_comment": "Text for letter code resend button",
     "string": "Skicka bekräftelsekoden igen"
   },
   "letter.saved-unconfirmed": {
-    "string": "Ett brev med bekräftelsekod har skickats."
+    "string": "Ett brev med kod har skickats."
   },
   "letter.verification_success": {
     "string": "Personnumret är bekräftat"
@@ -1341,7 +1346,7 @@
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
   },
   "lmp.button_text_code": {
-    "string": "Skriv bekräftelsekoden här"
+    "string": "Skriv kod här"
   },
   "lmp.button_text_request": {
     "string": "via telefon"
@@ -1485,7 +1490,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Verifieringskod"
+    "string": "Kod"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -1558,10 +1563,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
-  },
-  "oFfq/i": {
-    "developer_comment": "enter confirmation code",
-    "string": "Verifieringskod"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -1721,7 +1722,7 @@
     "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror."
   },
   "phones.add_new": {
-    "string": "Ett nytt telefonnummer kommer att ta emot en verifieringskod som kan användas genom att klicka Bekräfta i listan med nummer."
+    "string": "Ett nytt telefonnummer kommer att ta emot en kod som kan användas genom att klicka Bekräfta i listan med nummer."
   },
   "phones.cannot_remove_primary": {
     "string": "Du kan inte ta bort ditt primära telefonnummer"
@@ -1739,7 +1740,7 @@
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
   },
   "phones.code_invalid_or_expired": {
-    "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+    "string": "Ogiltig kod eller koden har gått ut. Var god prova igen eller begär en ny kod"
   },
   "phones.duplicated": {
     "string": "Numret finns redan i listan."
@@ -1821,10 +1822,6 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
-  },
-  "q4ENsq": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Bekräftelsekod"
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2095,6 +2092,10 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Gå till eduID"
+  },
+  "tVcCe6": {
+    "developer_comment": "emails enter code",
+    "string": "Kod"
   },
   "tl.make_primary": {
     "string": "GÖR PRIMÄR"
