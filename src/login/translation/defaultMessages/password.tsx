@@ -179,7 +179,7 @@ export const resetPassword = {
   ),
 
   "resetpw.send-sms-success": (
-    <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`Code has been sent to your phone.`} />
+    <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`A code has been sent to your phone.`} />
   ),
 
   "resetpw.send-sms-failed": <FormattedMessage id="resetpw.send-sms-failed" defaultMessage={`Failed to send code`} />,
@@ -198,7 +198,7 @@ export const resetPassword = {
   "resetpw.phone-code-unknown": (
     <FormattedMessage id="resetpw.phone-code-unknown" defaultMessage={`Incorrect code. `} />
   ),
-  "resetpw.phone-invalid": <FormattedMessage id="resetpw.phone-invalid" defaultMessage={`Invalid number.`} />,
+  "resetpw.phone-invalid": <FormattedMessage id="resetpw.phone-invalid" defaultMessage={`Invalid phone number.`} />,
   "resetpw.pw-reset-fail": (
     <FormattedMessage id="resetpw.pw-reset-fail" defaultMessage={`Reset password failed, please try again `} />
   ),
