@@ -915,7 +915,7 @@
     "string": "Log in using another device"
   },
   "code.unknown-code": {
-    "string": "Unknown verification code"
+    "string": "Unknown code"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
