@@ -12,6 +12,7 @@ import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { format_password } from "components/Signup/SignupUserCreated";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm";
+import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
@@ -63,7 +64,8 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     // this request happens at render of SignupMain
     rest.get("/services/signup/state", (req, res, ctx) => {
-      return res(ctx.json({ type: "test response", payload: currentState }));
+      const payload: SignupStatusResponse = { state: currentState };
+      return res(ctx.json({ type: "test response", payload }));
     })
   );
 
@@ -80,6 +82,7 @@ function happyCaseBackend(state: SignupState) {
       }
 
       currentState.captcha.completed = true;
+
       const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
     })
@@ -93,8 +96,10 @@ function happyCaseBackend(state: SignupState) {
       }
 
       acceptToUCalled = true;
-      const newState = { ...state, tou: { accepted: true } };
-      return res(ctx.json({ type: "test success", payload: { state: newState } }));
+      currentState.tou.completed = true;
+
+      const payload: SignupStatusResponse = { state: currentState };
+      return res(ctx.json({ type: "test success", payload }));
     }),
     rest.post("/services/signup/register-email", (req, res, ctx) => {
       const body = req.body as RegisterEmailRequest;
@@ -116,7 +121,11 @@ function happyCaseBackend(state: SignupState) {
     rest.post("/services/signup/verify-email", (req, res, ctx) => {
       const body = req.body as VerifyEmailRequest;
       if (body.verification_code !== correctEmailCode) {
-        return res(ctx.status(400));
+        const bad_attempts = currentState.email.bad_attempts || 0;
+        currentState.email.bad_attempts = bad_attempts + 1;
+        currentState.email.bad_attempts_max = 3;
+        const payload: SignupStatusResponse = { state: currentState };
+        return res(ctx.json({ type: "test_FAIL", error: true, payload }));
       }
 
       verifyEmailCalled = true;
@@ -152,9 +161,16 @@ function happyCaseBackend(state: SignupState) {
       return res(ctx.json({ type: "test success", payload }));
     })
   );
-
   mswServer.printHandlers();
 }
+
+beforeEach(() => {
+  happyCaseBackend(emptyState);
+});
+
+afterEach(() => {
+  mswServer.resetHandlers();
+});
 
 test("e-mail form works as expected", () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
@@ -163,17 +179,15 @@ test("e-mail form works as expected", () => {
 });
 
 test("Complete signup happy case", async () => {
-  happyCaseBackend(emptyState);
-
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   await testEnterEmail(testEmailAddress);
 
   await testInternalCaptcha();
 
-  await testTermsOfUse(emptyState);
+  await testTermsOfUse({ state: emptyState });
 
-  await testEnterEmailCode(testEmailAddress);
+  await testEnterEmailCode({ email: testEmailAddress });
 
   await waitFor(() => {
     expect(getPasswordCalled).toBe(true);
@@ -197,38 +211,51 @@ test("Complete signup happy case", async () => {
   });
 });
 
-test("e-mail form handles rejected ToU", async () => {
+test("handles rejected ToU", async () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
-  expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
+  await testEnterEmail(testEmailAddress);
 
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  await testInternalCaptcha();
 
-  const input = screen.getByRole("textbox");
-  expect(input).toHaveFocus();
-  expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", "name@example.com");
-  fireEvent.change(input, { target: { value: "test@example.org" } });
+  await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: true });
 
-  const button = screen.getByRole("button", { name: "Create eduID" });
-  expect(button).toBeEnabled();
-  fireEvent.click(button);
+  await testEnterEmail(testEmailAddress);
 
-  // Wait for the ToU to be displayed
-  await screen.findByText(/^General rules/);
+  // no captcha should be required this time around
 
-  const rejectToUButton = screen.getByRole("button", { name: "Close" });
-  expect(rejectToUButton).toBeEnabled();
-  fireEvent.click(rejectToUButton);
+  // don't click anything, just verify the ToU is shown again
+  await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: false });
+});
 
-  // Wait for the ToU to be removed
+test("wrong email code", async () => {
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+
+  await testEnterEmail(testEmailAddress);
+
+  await testInternalCaptcha();
+
+  await testTermsOfUse({ state: emptyState });
+
+  await testEnterEmailCode({
+    email: testEmailAddress,
+    tryCodes: ["111111", "222222", "333333"],
+    expectSuccess: false,
+  });
+
+  // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
+  await testEnterEmail(testEmailAddress);
+
+  // async tests need to await the last expect (to not get console warnings about logging after test finishes)
   await waitFor(() => {
-    expect(screen.queryByText(/^General rules/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Never here, just testing/)).not.toBeInTheDocument();
   });
 });
 
 async function testEnterEmail(emailAddress?: string) {
-  expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
+  await waitFor(() => {
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
+  });
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -273,7 +300,15 @@ async function testInternalCaptcha() {
   fireEvent.click(captchaButton);
 }
 
-async function testTermsOfUse(state: SignupState) {
+async function testTermsOfUse({
+  state,
+  clickAccept = true,
+  clickCancel = false,
+}: {
+  state: SignupState;
+  clickAccept?: boolean;
+  clickCancel?: boolean;
+}) {
   acceptToUCalled = false;
   registerEmailCalled = false;
 
@@ -285,48 +320,76 @@ async function testTermsOfUse(state: SignupState) {
     await screen.findByText(/This a test version of terms of use version/);
   }
 
-  const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
-  expect(acceptToUButton).toBeEnabled();
-  fireEvent.click(acceptToUButton);
+  if (clickAccept) {
+    const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
+    expect(acceptToUButton).toBeEnabled();
+    fireEvent.click(acceptToUButton);
 
-  await waitFor(() => {
-    expect(acceptToUCalled).toBe(true);
-  });
+    await waitFor(() => {
+      expect(acceptToUCalled).toBe(true);
+    });
 
-  await waitFor(() => {
-    expect(registerEmailCalled).toBe(true);
-  });
+    await waitFor(() => {
+      expect(registerEmailCalled).toBe(true);
+    });
+  } else if (clickCancel) {
+    const cancelButton = screen.getByRole("button", { name: /Cancel/i });
+    expect(cancelButton).toBeEnabled();
+    fireEvent.click(cancelButton);
+  }
 }
 
-async function testEnterEmailCode(testEmailAddress: string, tryCodes: string[] = [correctEmailCode]) {
+async function testEnterEmailCode({
+  email,
+  tryCodes = [correctEmailCode],
+  expectSuccess = true,
+}: {
+  email: string;
+  tryCodes?: string[];
+  expectSuccess?: boolean;
+}) {
+  let bad_attempts = 0;
+
   verifyEmailCalled = false;
 
   // Wait for the code inputs to be displayed
   await screen.findByText(/^Enter the .*code/);
 
   // Verify the e-mail address is shown
-  expect(screen.getByTestId("email-address")).toHaveTextContent(testEmailAddress);
+  expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
-  // Verify the code inputs are shown
-  // TODO: 'spinbutton' is perhaps not the ideal aria role for the code inputs?
-  const inputs = screen.getAllByRole("spinbutton");
-  expect(inputs).toHaveLength(6);
+  tryCodes.forEach(async (code, idx) => {
+    console.log(`Trying code ${code} (${idx + 1} of ${tryCodes.length})`);
 
-  for (const code of tryCodes) {
-    for (let i = 0; i < code.length; i++) {
-      fireEvent.change(inputs[i], { target: { value: code[i] } });
-    }
+    await screen.findByText(/^Enter the .*code/);
 
-    // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
-    fireEvent.submit(screen.getByTestId(codeFormTestId));
+    await screen.findAllByRole("spinbutton");
 
-    if (code !== correctEmailCode && code !== tryCodes[tryCodes.length - 1]) {
-      // Incorrect code. Wait for the code inputs to be displayed again.
-      await screen.findByText(/^Enter the .*code/);
-    }
-  }
+    // Verify the code inputs are shown
+    // TODO: 'spinbutton' is perhaps not the ideal aria role for the code inputs?
+    const inputs = screen.getAllByRole("spinbutton");
+    expect(inputs).toHaveLength(6);
+
+    act(() => {
+      for (let i = 0; i < code.length; i++) {
+        fireEvent.change(inputs[i], { target: { value: code[i] } });
+      }
+
+      // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
+      const form = screen.getByTestId(codeFormTestId);
+      fireEvent.submit(form);
+    });
+    screen.debug();
+
+    // if (code !== correctEmailCode) {
+    //   bad_attempts += 1;
+    //   waitFor(() => {
+    //     expect(currentState.email.bad_attempts).toBe(bad_attempts);
+    //   });
+    // }
+  });
 
   await waitFor(() => {
-    expect(verifyEmailCalled).toBe(true);
+    expect(verifyEmailCalled).toBe(expectSuccess);
   });
 }

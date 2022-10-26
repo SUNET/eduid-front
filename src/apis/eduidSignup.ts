@@ -11,6 +11,7 @@ import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common"
 export const SIGNUP_SERVICE_URL = "/services/signup";
 
 export interface SignupState {
+  already_signed_up: boolean;
   email: {
     completed: boolean;
     address?: string;
