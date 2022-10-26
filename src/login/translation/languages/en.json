@@ -1070,7 +1070,7 @@
     "string": "You must have at least one verified email address"
   },
   "emails.code-sent": {
-    "string": "Successfully sent code"
+    "string": "Successfully sent a code"
   },
   "emails.code_expired_send_new": {
     "string": "Expired code, sending another"
@@ -1731,7 +1731,7 @@
     "string": "You must have at least one phone number"
   },
   "phones.code-sent": {
-    "string": "Successfully sent code"
+    "string": "Successfully sent a code"
   },
   "phones.code_expired_send_new": {
     "string": "Expired code, sending another"
@@ -1907,7 +1907,7 @@
     "string": "New password"
   },
   "resetpw.phone-code-unknown": {
-    "string": "Incorrect phone code."
+    "string": "Incorrect code."
   },
   "resetpw.phone-invalid": {
     "string": "Invalid phone number."
@@ -1925,7 +1925,7 @@
     "string": "return to Login"
   },
   "resetpw.send-sms-failed": {
-    "string": "Failed to send phone code."
+    "string": "Failed to send code"
   },
   "resetpw.send-sms-success": {
     "string": "A code has been sent to your phone."
