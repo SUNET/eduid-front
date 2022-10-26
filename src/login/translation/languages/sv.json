@@ -1737,7 +1737,7 @@
     "string": "Koden har gått ut. En ny har skickats."
   },
   "phones.code_invalid": {
-    "string": "Den kod du angett stämmer inte. Var god försök igen"
+    "string": "Ogiltig kod"
   },
   "phones.code_invalid_or_expired": {
     "string": "Ogiltig kod eller en kod som har gått ut. Var god prova igen eller begär en ny kod"
