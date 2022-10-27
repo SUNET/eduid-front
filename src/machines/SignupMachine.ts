@@ -22,7 +22,7 @@ const signupModel = createModel(
   }
 );
 
-function createSignupMachine() {
+export function createSignupMachine() {
   const machine = signupModel.createMachine({
     context: signupModel.initialContext,
     tsTypes: {} as import("./SignupMachine.typegen").Typegen0,
@@ -217,5 +217,4 @@ function createSignupMachine() {
   return machine;
 }
 
-export const signupMachine = createSignupMachine();
 export type SignupMachineType = ReturnType<typeof createSignupMachine>;
