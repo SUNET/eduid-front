@@ -48,18 +48,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
 
   return (
     <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
-      <fieldset>
-        <FinalField
-          name="old"
-          component={TextInput}
-          componentClass="input"
-          type="password"
-          id="old-password-field"
-          label={translate("chpass.old_password")}
-          validate={required}
-          autocomplete="current-password"
-        />
-      </fieldset>
       <div className="password-format">
         <label>{translate("chpass.help-text-newpass-label")}</label>
         <ul id="password-custom-help">

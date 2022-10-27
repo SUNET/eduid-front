@@ -12,18 +12,6 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
     <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <fieldset>
         <FinalField<string>
-          name="old"
-          component={TextInput}
-          componentClass="input"
-          type="password"
-          id="old-password-field"
-          label={translate("chpass.old_password")}
-          validate={required}
-          autocomplete="current-password"
-        />
-      </fieldset>
-      <fieldset>
-        <FinalField<string>
           name="suggested"
           component={TextInput}
           componentClass="input"

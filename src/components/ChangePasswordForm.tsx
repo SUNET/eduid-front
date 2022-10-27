@@ -89,20 +89,15 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
                 </EduIDButton>
               </ButtonGroup>
             </div>
-            <div id="chpass-form" className="tabpane buttons">
-              <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
-                <FormattedMessage defaultMessage="cancel" description="button cancel" />
-              </EduIDButton>
-              <EduIDButton
-                type="submit"
-                id="chpass-button"
-                buttonstyle="primary"
-                disabled={formProps.submitting || formProps.invalid}
-                onClick={formProps.handleSubmit}
-              >
-                <FormattedMessage defaultMessage="Save" description="button save" />
-              </EduIDButton>
-            </div>
+            <EduIDButton
+              type="submit"
+              id="chpass-button"
+              buttonstyle="primary"
+              disabled={formProps.submitting || formProps.invalid}
+              onClick={formProps.handleSubmit}
+            >
+              <FormattedMessage defaultMessage="Save" description="button save" />
+            </EduIDButton>
           </React.Fragment>
         );
       }}
