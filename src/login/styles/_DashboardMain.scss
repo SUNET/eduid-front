@@ -39,15 +39,21 @@
   }
 }
 
-.security-zone-nav .active {
-  background-color: $white;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  padding: 1rem;
+.security-zone-nav {
+  ul {
+    margin-left: 0;
 
-  // @media (min-width: $bp-xl) {
-  //   padding: 1rem 2.5rem;
-  // }
+    li {
+      margin-bottom: 0;
+    }
+
+    .active {
+      background-color: $white;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      padding: 1rem;
+    }
+  }
 }
 
 #text-content {
