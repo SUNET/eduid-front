@@ -4,7 +4,6 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useNavigate } from "react-router-dom";
-import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 import { FormattedMessage } from "react-intl";
@@ -27,18 +26,13 @@ interface ChangePasswordFormData {
 
 function ChangePasswordForm(props: ChangePasswordFormProps) {
   const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
-  const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
+  const [switchRenderCustom, setSwitchRenderCustom] = useState<boolean>(false); // toggle display of custom or suggested password forms
   const dispatch = useDashboardAppDispatch();
   const navigate = useNavigate();
 
-  function togglePasswordType() {
-    // Toggle between rendering the suggested password form, or the custom password form
-    setRenderSuggested(!renderSuggested);
-  }
-
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
     // Use the right form field for the currently displayed password mode
-    const newPassword = renderSuggested ? values.suggested : values.custom;
+    const newPassword = !switchRenderCustom ? values.suggested : values.custom;
     // Callback from sub-component when the user clicks on the button to change password
     if (values.old && newPassword) {
       const response = await dispatch(changePassword({ old_password: values.old, new_password: newPassword }));
@@ -48,60 +42,49 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     }
   }
 
-  function handleCancel(event: React.MouseEvent<HTMLElement>) {
-    // Callback from sub-component when the user clicks on the button to abort changing password
-    event.preventDefault();
-    // TODO: should clear passwords from form to avoid browser password manager asking user to save the password
-    navigate(props.finish_url);
-  }
-
   const initialValues = { suggested };
 
+  function handleSwitchChange(): void {
+    setSwitchRenderCustom(!switchRenderCustom);
+  }
+
   return (
-    <FinalForm<ChangePasswordFormData>
-      onSubmit={handleSubmitPasswords}
-      initialValues={initialValues}
-      render={(formProps) => {
-        const child_props: ChangePasswordChildFormProps = { formProps };
+    <React.Fragment>
+      <fieldset>
+        <label className="toggle flex-between" htmlFor="password-mode">
+          <FormattedMessage defaultMessage="I don't want to suggested password" description="Change password toggle" />
+          <input onChange={handleSwitchChange} className="toggle-checkbox" type="checkbox" id="password-mode" />
+          <div className="toggle-switch"></div>
+        </label>
+      </fieldset>
 
-        return (
-          <React.Fragment>
-            {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} />
-            ) : (
-              <ChangePasswordCustomForm {...child_props} />
-            )}
+      <FinalForm<ChangePasswordFormData>
+        onSubmit={handleSubmitPasswords}
+        initialValues={initialValues}
+        render={(formProps) => {
+          const child_props: ChangePasswordChildFormProps = { formProps };
 
-            <div id="password-suggestion">
-              <ButtonGroup>
-                <EduIDButton buttonstyle="link" className="normal-case" id="pwmode-button" onClick={togglePasswordType}>
-                  {renderSuggested ? (
-                    <FormattedMessage
-                      description="chpass custom password"
-                      defaultMessage="I don't want a suggested password"
-                    />
-                  ) : (
-                    <FormattedMessage
-                      description="chpass suggest password"
-                      defaultMessage="Suggest a password for me"
-                    />
-                  )}
-                </EduIDButton>
-              </ButtonGroup>
-            </div>
-            <EduIDButton
-              type="submit"
-              id="chpass-button"
-              buttonstyle="primary"
-              disabled={formProps.submitting || formProps.invalid}
-              onClick={formProps.handleSubmit}
-            >
-              <FormattedMessage defaultMessage="Save" description="button save" />
-            </EduIDButton>
-          </React.Fragment>
-        );
-      }}
-    />
+          return (
+            <React.Fragment>
+              {switchRenderCustom ? (
+                <ChangePasswordCustomForm {...child_props} />
+              ) : (
+                <ChangePasswordSuggestedForm {...child_props} />
+              )}
+              <EduIDButton
+                type="submit"
+                id="chpass-button"
+                buttonstyle="primary"
+                disabled={formProps.submitting || formProps.invalid}
+                onClick={formProps.handleSubmit}
+              >
+                <FormattedMessage defaultMessage="Save" description="button save" />
+              </EduIDButton>
+            </React.Fragment>
+          );
+        }}
+      />
+    </React.Fragment>
   );
 }
 
