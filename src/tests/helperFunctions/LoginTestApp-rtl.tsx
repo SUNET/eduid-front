@@ -8,7 +8,7 @@ import { loginTestState } from "./LoginTestApp";
 
 interface renderArgs {
   state?: Partial<LoginRootState>;
-  options?: RenderOptions;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 

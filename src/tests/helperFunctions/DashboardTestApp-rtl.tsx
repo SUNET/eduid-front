@@ -20,7 +20,7 @@ export const defaultDashboardTestState = {
 
 interface renderArgs {
   state?: Partial<DashboardRootState>;
-  options?: RenderOptions;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 

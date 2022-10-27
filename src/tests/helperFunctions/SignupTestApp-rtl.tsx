@@ -9,7 +9,7 @@ import { signupTestState } from "./SignupTestApp";
 
 interface renderArgs {
   state?: Partial<SignupRootState>;
-  options?: RenderOptions;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
