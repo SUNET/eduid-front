@@ -22,13 +22,13 @@ export function SignupToU(): JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Terms of use" description="Terms of use (h2 heading)" />
+        <FormattedMessage defaultMessage="Terms of use" description="Terms of use (heading)" />
       </h1>
       <div className="lead">
         <p tabIndex={0}>
           <FormattedMessage
             defaultMessage="To create your eduID you need to accept the eduID terms of use."
-            description="Terms of use (banner text)"
+            description="Terms of use (lead text)"
           />
         </p>
       </div>

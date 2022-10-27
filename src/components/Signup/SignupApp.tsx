@@ -3,7 +3,7 @@ import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useContext, useEffect } from "react";
-import { useSignupAppDispatch } from "signup-hooks";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
@@ -13,6 +13,7 @@ import { CreateUser, SignupUserCreated } from "./SignupUserCreated";
 export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const [state] = useActor(signupContext.signupService);
+  const signupState = useSignupAppSelector((state) => state.signup);
 
   return (
     <div id="content" className="horizontal-content-margin content">
@@ -29,6 +30,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
       {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
       {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
+      {JSON.stringify(signupState)}
     </div>
   );
 }

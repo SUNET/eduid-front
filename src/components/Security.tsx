@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from "react";
-import EduIDButton from "components/EduIDButton";
-import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModal";
-import { useIntl } from "react-intl";
-import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
-import { FormattedMessage } from "react-intl";
-import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
+import { eidasVerifyCredential } from "apis/eduidEidas";
 import {
   beginRegisterWebauthn,
   CredentialType,
@@ -14,10 +7,16 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
+import EduIDButton from "components/EduIDButton";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
+import { useEffect, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
-import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
-import { eidasVerifyCredential } from "apis/eduidEidas";
+import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
+import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
@@ -39,7 +38,7 @@ export function Security(): JSX.Element | null {
       // Check if platform authentication is available through the navigator.credentials API.
       // Disable the spinner when we know the answer.
 
-      let aborted = false; // flag to avoid updating unmounted components after this async promise resolves
+      let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
       let platform = false;
       if (window.PublicKeyCredential) {
@@ -115,7 +114,7 @@ export function Security(): JSX.Element | null {
           <p>
             <FormattedMessage
               description="security second factor"
-              defaultMessage={`Add a security key as a second layer of identification, beyond email and password, 
+              defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
                   to prove you are the owner of your eduID.`}
             />
           </p>

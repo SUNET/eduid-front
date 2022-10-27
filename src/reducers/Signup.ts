@@ -16,12 +16,12 @@ interface SignupState {
   email?: string; // pass email address from one state to another
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
-  tou_accepted: boolean;
-  current_step: "register" | TryCaptchaNextStep;
+  tou_accepted: boolean; // OLD: remove after one release
+  current_step: "register" | TryCaptchaNextStep; // OLD: remove after one release
   // Fetching verify-link is a one-shot operation, so we have to store the response in
   // redux state (rather than in component state) in case switching language causes us
   // to re-render the component
-  verify_link_response?: VerifyLinkResponse;
+  verify_link_response?: VerifyLinkResponse; // OLD: remove after one release
 }
 
 // export for use in tests

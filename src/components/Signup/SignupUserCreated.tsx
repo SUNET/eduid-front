@@ -2,6 +2,7 @@ import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
@@ -18,6 +19,7 @@ export function CreateUser() {
     const res = await dispatch(createUserRequest({ use_password: true }));
 
     if (createUserRequest.fulfilled.match(res)) {
+      dispatch(clearNotifications());
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
       signupContext.signupService.send({ type: "API_FAIL" });
@@ -64,7 +66,7 @@ export function SignupUserCreated(): JSX.Element {
           </label>
           <div className="register-header registered-email display-data">
             <mark className="force-select-all">
-              <output id={idUserPassword}>{format_password(signupState?.credentials.password)}</output>
+              <output id={idUserPassword}>{formatPassword(signupState?.credentials.password)}</output>
             </mark>
           </div>
         </fieldset>
@@ -80,7 +82,7 @@ export function SignupUserCreated(): JSX.Element {
 
 // Show passwords in groups of four characters.
 // Export this for use in tests.
-export function format_password(data?: string): string {
+export function formatPassword(data?: string): string {
   if (!data) {
     return "";
   }

@@ -37,7 +37,7 @@ export function SignupEnterCode(): JSX.Element {
     signupContext.signupService.send({ type: "ABORT" });
   }
 
-  async function handleSubmitCode(values: ResponseCodeValues) {
+  function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
 
     const match = code.match(/^\d\d\d\d\d\d$/);

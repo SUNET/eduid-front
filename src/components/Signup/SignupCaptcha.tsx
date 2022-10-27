@@ -30,7 +30,7 @@ export function SignupCaptcha(): JSX.Element | null {
     signupContext.signupService.send({ type: "ABORT" });
   }
 
-  async function handleCaptchaCompleted(response: string) {
+  function handleCaptchaCompleted(response: string) {
     if (useInternalCaptcha) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
     } else {
@@ -68,7 +68,7 @@ function InternalCaptcha(props: CaptchaProps) {
   }
 
   useEffect(() => {
-    let aborted = false; // flag to avoid updating unmounted components after this async promise resolves
+    let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
     if (!img) {
       getCaptcha().then((img) => {

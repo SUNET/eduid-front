@@ -9,7 +9,7 @@ import {
   VerifyEmailRequest,
 } from "apis/eduidSignup";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
-import { format_password } from "components/Signup/SignupUserCreated";
+import { formatPassword } from "components/Signup/SignupUserCreated";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm";
 import { mswServer, rest } from "setupTests";
@@ -213,7 +213,7 @@ test("complete signup happy case", async () => {
 
   // verify e-mail and password are shown
   expect(screen.getByRole("status", { name: /mail/i })).toHaveTextContent(testEmailAddress);
-  expect(screen.getByRole("status", { name: /password/i })).toHaveTextContent(format_password(testPassword));
+  expect(screen.getByRole("status", { name: /password/i })).toHaveTextContent(formatPassword(testPassword));
 });
 
 test("handles rejected ToU", async () => {
