@@ -125,7 +125,13 @@ function happyCaseBackend(state: SignupState) {
         currentState.email.bad_attempts = bad_attempts + 1;
         currentState.email.bad_attempts_max = 3;
         const payload: SignupStatusResponse = { state: currentState };
-        return res(ctx.json({ type: "test_FAIL", error: true, payload }));
+        return res(
+          ctx.json({
+            type: "test_FAIL",
+            error: true,
+            payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
+          })
+        );
       }
 
       verifyEmailCalled = true;
@@ -165,6 +171,8 @@ function happyCaseBackend(state: SignupState) {
 }
 
 beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
   happyCaseBackend(emptyState);
 });
 
@@ -173,15 +181,17 @@ afterEach(() => {
 });
 
 test("e-mail form works as expected", () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/`] });
 
-  testEnterEmail("test@example.org");
+  testEnterEmail({ email: "test@foo.example.org" });
 });
 
 test("Complete signup happy case", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
-  await testEnterEmail(testEmailAddress);
+  screen.debug();
+
+  await testEnterEmail({ email: testEmailAddress });
 
   await testInternalCaptcha();
 
@@ -212,15 +222,15 @@ test("Complete signup happy case", async () => {
 });
 
 test("handles rejected ToU", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
-  await testEnterEmail(testEmailAddress);
+  await testEnterEmail({ email: testEmailAddress });
 
   await testInternalCaptcha();
 
   await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: true });
 
-  await testEnterEmail(testEmailAddress);
+  await testEnterEmail({ email: testEmailAddress });
 
   // no captcha should be required this time around
 
@@ -228,10 +238,10 @@ test("handles rejected ToU", async () => {
   await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: false });
 });
 
-test("wrong email code", async () => {
+test("handles wrong email code", async () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
-  await testEnterEmail(testEmailAddress);
+  await testEnterEmail({ email: testEmailAddress });
 
   await testInternalCaptcha();
 
@@ -244,7 +254,7 @@ test("wrong email code", async () => {
   });
 
   // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
-  await testEnterEmail(testEmailAddress);
+  await testEnterEmail({ email: testEmailAddress, expectErrorShown: true });
 
   // async tests need to await the last expect (to not get console warnings about logging after test finishes)
   await waitFor(() => {
@@ -252,15 +262,17 @@ test("wrong email code", async () => {
   });
 });
 
-async function testEnterEmail(emailAddress?: string) {
-  await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
-  });
+async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
-  // there should be no visible form error for example when the page has just loaded
-  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  if (expectErrorShown) {
+    expect(screen.queryByRole("alert")).toBeInTheDocument();
+  } else {
+    // there should be no visible form error for example when the page has just loaded
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  }
 
   const input = screen.getByRole("textbox");
   expect(input).toHaveFocus();
@@ -273,8 +285,8 @@ async function testEnterEmail(emailAddress?: string) {
   fireEvent.change(input, { target: { value: "not-an-email" } });
   expect(button).toBeDisabled();
 
-  if (emailAddress) {
-    fireEvent.change(input, { target: { value: emailAddress } });
+  if (email) {
+    fireEvent.change(input, { target: { value: email } });
     expect(button).toBeEnabled();
 
     fireEvent.click(button);
@@ -320,11 +332,19 @@ async function testTermsOfUse({
     await screen.findByText(/This a test version of terms of use version/);
   }
 
-  if (clickAccept) {
-    const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
-    expect(acceptToUButton).toBeEnabled();
-    fireEvent.click(acceptToUButton);
+  act(() => {
+    if (clickAccept) {
+      const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
+      expect(acceptToUButton).toBeEnabled();
+      fireEvent.click(acceptToUButton);
+    } else if (clickCancel) {
+      const cancelButton = screen.getByRole("button", { name: /Cancel/i });
+      expect(cancelButton).toBeEnabled();
+      fireEvent.click(cancelButton);
+    }
+  });
 
+  if (clickAccept) {
     await waitFor(() => {
       expect(acceptToUCalled).toBe(true);
     });
@@ -332,10 +352,6 @@ async function testTermsOfUse({
     await waitFor(() => {
       expect(registerEmailCalled).toBe(true);
     });
-  } else if (clickCancel) {
-    const cancelButton = screen.getByRole("button", { name: /Cancel/i });
-    expect(cancelButton).toBeEnabled();
-    fireEvent.click(cancelButton);
   }
 }
 
@@ -348,8 +364,6 @@ async function testEnterEmailCode({
   tryCodes?: string[];
   expectSuccess?: boolean;
 }) {
-  let bad_attempts = 0;
-
   verifyEmailCalled = false;
 
   // Wait for the code inputs to be displayed
@@ -358,38 +372,36 @@ async function testEnterEmailCode({
   // Verify the e-mail address is shown
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
-  tryCodes.forEach(async (code, idx) => {
-    console.log(`Trying code ${code} (${idx + 1} of ${tryCodes.length})`);
-
-    await screen.findByText(/^Enter the .*code/);
-
-    await screen.findAllByRole("spinbutton");
-
-    // Verify the code inputs are shown
-    // TODO: 'spinbutton' is perhaps not the ideal aria role for the code inputs?
-    const inputs = screen.getAllByRole("spinbutton");
-    expect(inputs).toHaveLength(6);
-
-    act(() => {
-      for (let i = 0; i < code.length; i++) {
-        fireEvent.change(inputs[i], { target: { value: code[i] } });
-      }
-
-      // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
-      const form = screen.getByTestId(codeFormTestId);
-      fireEvent.submit(form);
-    });
-    screen.debug();
-
-    // if (code !== correctEmailCode) {
-    //   bad_attempts += 1;
-    //   waitFor(() => {
-    //     expect(currentState.email.bad_attempts).toBe(bad_attempts);
-    //   });
-    // }
-  });
+  for (const code of tryCodes) {
+    console.log(`Trying code ${code}`);
+    await enterEmailCode(code);
+  }
 
   await waitFor(() => {
     expect(verifyEmailCalled).toBe(expectSuccess);
+  });
+}
+
+async function enterEmailCode(code: string) {
+  await screen.findByText(/^Enter the .*code/);
+
+  // Verify the code inputs are shown
+  // TODO: 'spinbutton' is perhaps not the ideal aria role for the code inputs?
+  const form = await screen.findByTestId(codeFormTestId);
+  const inputs = await screen.findAllByRole("spinbutton");
+  expect(inputs).toHaveLength(code.length);
+
+  act(() => {
+    for (let i = 0; i < code.length; i++) {
+      fireEvent.change(inputs[i], { target: { value: code[i] } });
+    }
+
+    // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
+    fireEvent.submit(form);
+  });
+
+  // wait until the form disappears
+  waitFor(() => {
+    expect(screen.queryByTestId(codeFormTestId)).not.toBeInTheDocument();
   });
 }
