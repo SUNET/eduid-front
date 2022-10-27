@@ -39,6 +39,17 @@
   }
 }
 
+.security-zone-nav .active {
+  background-color: $white;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 1rem;
+
+  // @media (min-width: $bp-xl) {
+  //   padding: 1rem 2.5rem;
+  // }
+}
+
 #text-content {
   // the height here is set to total the same as the notifications above the dashboard nav
   margin-top: 2.25rem;

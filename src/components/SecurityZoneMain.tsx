@@ -1,9 +1,10 @@
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 
 export function SecurityZoneIntro(): JSX.Element {
   return (
-    <div>
+    <React.Fragment>
       <h1>
         <FormattedMessage defaultMessage="Security Zone" description="Security Zone heading" />
       </h1>
@@ -16,7 +17,7 @@ export function SecurityZoneIntro(): JSX.Element {
           />
         </p>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
