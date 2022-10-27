@@ -53,6 +53,7 @@ body {
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid $border-gray;
+
   &:last-of-type {
     border-bottom: none;
   }
@@ -61,6 +62,11 @@ body {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
   }
+}
+
+.security-zone-container {
+  background-color: $white;
+  padding: 1rem 1.5rem;
 }
 
 // this is a horizontal-margin and should be renamed
