@@ -12,7 +12,6 @@ import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { format_password } from "components/Signup/SignupUserCreated";
 import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
 import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm";
-import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
@@ -176,17 +175,18 @@ beforeEach(() => {
   happyCaseBackend(emptyState);
 });
 
-afterEach(() => {
-  mswServer.resetHandlers();
+afterEach(async () => {
+  // async tests need to await the last expect (to not get console warnings about logging after test finishes)
+  await waitFor(() => expect(screen.queryByTestId("test-cleanup")).not.toBeInTheDocument());
 });
 
-test("e-mail form works as expected", () => {
+test("e-mail form works as expected", async () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/`] });
 
-  testEnterEmail({ email: "test@foo.example.org" });
+  await testEnterEmail({ email: testEmailAddress });
 });
 
-test("Complete signup happy case", async () => {
+test("complete signup happy case", async () => {
   render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   screen.debug();
@@ -214,11 +214,6 @@ test("Complete signup happy case", async () => {
   // verify e-mail and password are shown
   expect(screen.getByRole("status", { name: /mail/i })).toHaveTextContent(testEmailAddress);
   expect(screen.getByRole("status", { name: /password/i })).toHaveTextContent(format_password(testPassword));
-
-  // async tests need to await the last expect (to not get console warnings about logging after test finishes)
-  await waitFor(() => {
-    expect(screen.queryByText(/Never here, just testing/)).not.toBeInTheDocument();
-  });
 });
 
 test("handles rejected ToU", async () => {
@@ -232,7 +227,7 @@ test("handles rejected ToU", async () => {
 
   await testEnterEmail({ email: testEmailAddress });
 
-  // no captcha should be required this time around
+  // no captcha should be required this time around, since we already completed it
 
   // don't click anything, just verify the ToU is shown again
   await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: false });
@@ -255,11 +250,6 @@ test("handles wrong email code", async () => {
 
   // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
   await testEnterEmail({ email: testEmailAddress, expectErrorShown: true });
-
-  // async tests need to await the last expect (to not get console warnings about logging after test finishes)
-  await waitFor(() => {
-    expect(screen.queryByText(/Never here, just testing/)).not.toBeInTheDocument();
-  });
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
@@ -332,19 +322,11 @@ async function testTermsOfUse({
     await screen.findByText(/This a test version of terms of use version/);
   }
 
-  act(() => {
-    if (clickAccept) {
-      const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
-      expect(acceptToUButton).toBeEnabled();
-      fireEvent.click(acceptToUButton);
-    } else if (clickCancel) {
-      const cancelButton = screen.getByRole("button", { name: /Cancel/i });
-      expect(cancelButton).toBeEnabled();
-      fireEvent.click(cancelButton);
-    }
-  });
-
   if (clickAccept) {
+    const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
+    expect(acceptToUButton).toBeEnabled();
+    fireEvent.click(acceptToUButton);
+
     await waitFor(() => {
       expect(acceptToUCalled).toBe(true);
     });
@@ -352,6 +334,10 @@ async function testTermsOfUse({
     await waitFor(() => {
       expect(registerEmailCalled).toBe(true);
     });
+  } else if (clickCancel) {
+    const cancelButton = screen.getByRole("button", { name: /Cancel/i });
+    expect(cancelButton).toBeEnabled();
+    fireEvent.click(cancelButton);
   }
 }
 
@@ -391,14 +377,12 @@ async function enterEmailCode(code: string) {
   const inputs = await screen.findAllByRole("spinbutton");
   expect(inputs).toHaveLength(code.length);
 
-  act(() => {
-    for (let i = 0; i < code.length; i++) {
-      fireEvent.change(inputs[i], { target: { value: code[i] } });
-    }
+  for (let i = 0; i < code.length; i++) {
+    fireEvent.change(inputs[i], { target: { value: code[i] } });
+  }
 
-    // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
-    fireEvent.submit(form);
-  });
+  // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
+  fireEvent.submit(form);
 
   // wait until the form disappears
   waitFor(() => {
