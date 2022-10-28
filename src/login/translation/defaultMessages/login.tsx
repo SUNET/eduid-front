@@ -15,15 +15,4 @@ export const login = {
   "login.mfa.primary-option.button": (
     <FormattedMessage id="login.mfa.primary-option.button" defaultMessage={`Use security key`} />
   ),
-  // freja eid+
-  "login.mfa.secondary-option.title": (
-    <FormattedMessage id="login.mfa.secondary-option.title" defaultMessage={`Freja eID+`} />
-  ),
-  "login.mfa.secondary-option.button": (
-    <FormattedMessage
-      id="login.mfa.secondary-option.button"
-      defaultMessage={`Use my {freja_eidplus_verbatim}`}
-      values={{ freja_eidplus_verbatim: <span className="verbatim">Freja&nbsp;eID+</span> }}
-    />
-  ),
 };

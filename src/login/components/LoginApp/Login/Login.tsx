@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
-import MultiFactorAuth from "./MultiFactorAuth";
+import { MultiFactorAuth } from "./MultiFactorAuth";
 import { initKnownDevice, NewDevice, RememberMeCheckbox } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";

@@ -1,7 +1,5 @@
 import React, { Fragment, useState } from "react";
 import EduIDButton from "../../../../components/EduIDButton";
-import PropTypes from "prop-types";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
@@ -15,7 +13,7 @@ interface CloseButtonProps {
   setSelected(val: boolean): void;
 }
 
-const CloseButton = ({ setSelected }: CloseButtonProps): JSX.Element => {
+function CloseButton({ setSelected }: CloseButtonProps): JSX.Element {
   const faTimesCasted = faTimes as IconProp;
   const dispatch = useAppDispatch();
   return (
@@ -29,14 +27,14 @@ const CloseButton = ({ setSelected }: CloseButtonProps): JSX.Element => {
       <FontAwesomeIcon icon={faTimesCasted} />
     </button>
   );
-};
+}
 
 interface RetryButtonProps {
   retryToggle: boolean;
   setRetryToggle(val: boolean): void;
 }
 
-const RetryButton = ({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Element => {
+function RetryButton({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Element {
   const faRedoCasted = faRedo as IconProp;
   const dispatch = useAppDispatch();
   return (
@@ -50,13 +48,13 @@ const RetryButton = ({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Ele
       <FontAwesomeIcon icon={faRedoCasted} />
     </button>
   );
-};
+}
 
 interface SecurityKeyUnselectedProps {
   setSelected(val: boolean): void;
 }
 
-const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX.Element => {
+function SecurityKeyUnselected({ setSelected }: SecurityKeyUnselectedProps): JSX.Element {
   const webauthn_challenge = useAppSelector((state) => state.login.mfa.webauthn_challenge);
   const webauthn_assertion = useAppSelector((state) => state.login.mfa.webauthn_assertion);
   const dispatch = useAppDispatch();
@@ -65,7 +63,7 @@ const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX
     startTokenAssertion(setSelected);
   };
 
-  const startTokenAssertion = (setSelected: (val: boolean) => void) => {
+  function startTokenAssertion(setSelected: (val: boolean) => void) {
     setSelected(true);
     if (webauthn_challenge === undefined) {
       // HACK: skip func if no webauthn_challenge
@@ -79,7 +77,7 @@ const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX
         });
       }
     }
-  };
+  }
 
   return (
     <Fragment>
@@ -100,9 +98,9 @@ const SecurityKeyUnselected = ({ setSelected }: SecurityKeyUnselectedProps): JSX
       </EduIDButton>
     </Fragment>
   );
-};
+}
 
-const SecurityKey = (): JSX.Element => {
+export function SecurityKey(): JSX.Element {
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
   return (
@@ -138,11 +136,4 @@ const SecurityKey = (): JSX.Element => {
       )}
     </div>
   );
-};
-
-// run-time type checking in development mode
-SecurityKey.propTypes = {
-  translate: PropTypes.func,
-};
-
-export default InjectIntl(SecurityKey);
+}
