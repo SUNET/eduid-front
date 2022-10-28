@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import SecurityKey from "./SecurityKey";
+import { SecurityKey } from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { FormattedMessage } from "react-intl";
 
-const MultiFactorAuth = (): JSX.Element => {
+export function MultiFactorAuth(): JSX.Element {
   const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
 
@@ -24,7 +24,8 @@ const MultiFactorAuth = (): JSX.Element => {
       </div>
       <p>
         <FormattedMessage
-          defaultMessage="You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+          defaultMessage={`You need to choose a second method to authenticate yourself.
+                           This helps guarantee that only you can access your eduID.`}
           description="Login Mfa paragraph"
         />
       </p>
@@ -34,6 +35,4 @@ const MultiFactorAuth = (): JSX.Element => {
       </div>
     </div>
   );
-};
-
-export default MultiFactorAuth;
+}

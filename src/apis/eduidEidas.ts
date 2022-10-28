@@ -3,20 +3,24 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 type EidasMethods = "eidas" | "freja";
 
 interface EidasCommonRequest {
-  frontend_state?: string;
-  frontend_action?: string;
+  frontend_state?: string; // frontend can pass something here (like a ref) and get it back after the authn flow
+  frontend_action?: string; // this maps to config in the backend telling it where to return to after completion
   method: EidasMethods;
 }
 
 interface EidasCommonResponse {
-  location: string;
+  location: string; // where to redirect the user for the authn flow
 }
+
+type DispatchWithEidas = LoginAppDispatch | DashboardAppDispatch;
+type StateWithEidas = LoginRootState | DashboardRootState;
 
 /*********************************************************************************************************************/
 
@@ -34,7 +38,7 @@ export interface VerifyIdentityResponse extends EidasCommonResponse {}
 export const eidasVerifyIdentity = createAsyncThunk<
   VerifyIdentityResponse, // return type
   VerifyIdentityRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/verifyIdentity", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
@@ -62,7 +66,7 @@ export interface VerifyCredentialResponse extends EidasCommonResponse {}
 export const eidasVerifyCredential = createAsyncThunk<
   VerifyCredentialResponse, // return type
   VerifyCredentialRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/verifyCredential", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
@@ -89,7 +93,7 @@ export interface MfaAuthenticateResponse extends EidasCommonResponse {}
 export const eidasMfaAuthenticate = createAsyncThunk<
   MfaAuthenticateResponse, // return type
   MfaAuthenticateRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/mfaAuthenticate", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
@@ -123,7 +127,7 @@ export interface GetStatusResponse {
 export const eidasGetStatus = createAsyncThunk<
   GetStatusResponse, // return type
   GetStatusRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
   return makeEidasRequest<GetStatusResponse>(thunkAPI, "get_status", body)
