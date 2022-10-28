@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import EduIDButton from "components/EduIDButton";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
-import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
 import {
   beginRegisterWebauthn,
@@ -19,6 +18,12 @@ import securitySlice from "reducers/Security";
 import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 import { SecurityZoneIntro, SecurityZoneNav } from "./SecurityZoneMain";
+import { RenderEditableNames } from "login/components/PersonalData/PersonalDataForm";
+import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
+import { Form as FinalForm } from "react-final-form";
+import validatePersonalData from "login/app_utils/validation/validatePersonalData";
+import { PersonalDataData } from "reducers/PersonalData";
+import { postUserdata } from "actions/PersonalData";
 
 export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
@@ -192,6 +197,7 @@ export function Security(): JSX.Element | null {
 }
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
+  const intl = useIntl();
   let btnVerify;
   let date_success;
   const dispatch = useDashboardAppDispatch();
@@ -266,9 +272,47 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     );
   });
 
+  const names: NameLabels = {
+    first: intl.formatMessage({
+      id: "pd.given_name",
+      defaultMessage: "First name",
+      description: "First name label/template (edit personal data)",
+    }),
+    last: intl.formatMessage({
+      id: "pd.surname",
+      defaultMessage: "Last name",
+      description: "Last name label/template (edit personal data)",
+    }),
+  };
+
+  function formSubmit(values: PersonalDataData) {
+    dispatch(postUserdata(values));
+  }
+
   // show no table if no security keys
   if (!tokens.length) {
-    return null;
+    return (
+      <FinalForm<PersonalDataData>
+        onSubmit={formSubmit}
+        validate={validatePersonalData}
+        render={(formProps) => {
+          const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
+          const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
+          return (
+            <form id="save-name-form">
+              <fieldset className="name-inputs">
+                <RenderEditableNames labels={names} />
+              </fieldset>
+              <div className="buttons">
+                <EduIDButton id="save-name-button" buttonstyle="primary" disabled={_disabled}>
+                  <FormattedMessage defaultMessage="save" description="button save" />
+                </EduIDButton>
+              </div>
+            </form>
+          );
+        }}
+      />
+    );
   }
 
   return (
