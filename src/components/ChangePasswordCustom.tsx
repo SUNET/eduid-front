@@ -47,7 +47,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   }
 
   return (
-    <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
+    <form id="passwordsview-form" className="security-zone-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <div className="password-format">
         <label>{translate("chpass.help-text-newpass-label")}</label>
         <ul id="password-custom-help">
@@ -87,6 +87,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             autocomplete="new-password"
           />
           <FinalField
+            autoComplete="new-password"
             name="repeat"
             component={TextInput}
             componentClass="input"

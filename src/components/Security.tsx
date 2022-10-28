@@ -299,7 +299,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
           const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
           return (
-            <form id="save-name-form">
+            <form id="save-name-form" className="security-zone-form">
               <fieldset className="name-inputs">
                 <RenderEditableNames labels={names} />
               </fieldset>
