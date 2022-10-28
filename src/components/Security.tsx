@@ -28,6 +28,7 @@ import { postUserdata } from "actions/PersonalData";
 export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const isNameAdded = useDashboardAppSelector((state) => state.personal_data.given_name !== "");
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -130,7 +131,7 @@ export function Security(): JSX.Element | null {
             </p>
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
-            <SecurityKeyTable credentials={credentials} />
+            <SecurityKeyTable credentials={credentials} isNameAdded={isNameAdded} />
             <label>
               <FormattedMessage
                 description="select extra webauthn"
@@ -143,6 +144,7 @@ export function Security(): JSX.Element | null {
                   <EduIDButton
                     id="security-webauthn-platform-button"
                     buttonstyle="primary"
+                    disabled={!isNameAdded}
                     onClick={() => handleStartAskingWebauthnDescription("platform")}
                   >
                     <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
@@ -159,6 +161,7 @@ export function Security(): JSX.Element | null {
                 <EduIDButton
                   id="security-webauthn-button"
                   buttonstyle="primary"
+                  disabled={!isNameAdded}
                   onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
                 >
                   <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
@@ -196,7 +199,7 @@ export function Security(): JSX.Element | null {
   );
 }
 
-function SecurityKeyTable(props: RequestCredentialsResponse) {
+function SecurityKeyTable(props: RequestCredentialsResponse & { isNameAdded: boolean }) {
   const intl = useIntl();
   let btnVerify;
   let date_success;
@@ -289,8 +292,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     dispatch(postUserdata(values));
   }
 
-  // show no table if no security keys
-  if (!tokens.length) {
+  if (!props.isNameAdded) {
     return (
       <FinalForm<PersonalDataData>
         onSubmit={formSubmit}
@@ -306,7 +308,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
                   helpText={
                     <FormattedMessage
                       defaultMessage="No name added to account, please add name before its possible to add a security key"
-                      description="help text added name before add security key"
+                      description="help text added name before add security"
                     />
                   }
                 />
@@ -321,6 +323,11 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         }}
       />
     );
+  }
+
+  // show no table if no security keys
+  if (!tokens.length) {
+    return null;
   }
 
   return (
