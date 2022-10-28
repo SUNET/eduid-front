@@ -47,7 +47,15 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               {props.isVerifiedIdentity ? (
                 <RenderLockedNames labels={labels} />
               ) : (
-                <RenderEditableNames labels={labels} />
+                <RenderEditableNames
+                  labels={labels}
+                  helpText={
+                    <FormattedMessage
+                      defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+                      description="Personal data hint names locked when verified"
+                    />
+                  }
+                />
               )}
             </fieldset>
             <RenderLanguageSelect />
@@ -138,7 +146,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   );
 };
 
-export function RenderEditableNames(props: { labels: NameLabels }) {
+export function RenderEditableNames(props: { labels: NameLabels; helpText?: JSX.Element }) {
   return (
     <Fragment>
       <fieldset>
@@ -163,12 +171,7 @@ export function RenderEditableNames(props: { labels: NameLabels }) {
           placeholder={props.labels.last}
         />
       </fieldset>
-      <p className="help-text">
-        <FormattedMessage
-          defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-          description="Personal data hint names locked when verified"
-        />
-      </p>
+      <p className="help-text">{props.helpText}</p>
     </Fragment>
   );
 }

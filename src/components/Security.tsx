@@ -301,7 +301,15 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           return (
             <form id="save-name-form" className="security-zone-form">
               <fieldset className="name-inputs">
-                <RenderEditableNames labels={names} />
+                <RenderEditableNames
+                  labels={names}
+                  helpText={
+                    <FormattedMessage
+                      defaultMessage="No name added to account, please add name before its possible to add a security key"
+                      description="help text added name before add security key"
+                    />
+                  }
+                />
               </fieldset>
               <div className="buttons">
                 <EduIDButton id="save-name-button" buttonstyle="primary" disabled={_disabled}>
