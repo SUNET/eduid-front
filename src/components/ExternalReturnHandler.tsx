@@ -10,7 +10,7 @@ interface LoginParams {
   authn_id?: string;
 }
 
-export function ExternalReturnHandler(): JSX.Element {
+export function ExternalReturnHandler() {
   const dispatch = useDashboardAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
@@ -51,10 +51,5 @@ export function ExternalReturnHandler(): JSX.Element {
     }
   }, [params]);
 
-  return (
-    <div>
-      <p>app_name: {params.app_name}</p>
-      <p>authn_id: {params.authn_id}</p>
-    </div>
-  );
+  return null;
 }
