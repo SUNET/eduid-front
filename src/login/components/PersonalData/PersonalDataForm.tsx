@@ -138,7 +138,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   );
 };
 
-function RenderEditableNames(props: { labels: NameLabels }) {
+export function RenderEditableNames(props: { labels: NameLabels }) {
   return (
     <Fragment>
       <fieldset>
