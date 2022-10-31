@@ -11,9 +11,7 @@ import Profile from "./Profile";
 import { Settings } from "./Settings";
 import Splash from "./Splash";
 import VerifyIdentity from "./VerifyIdentity";
-import { Security } from "./Security";
-import { ChangePasswordContainer } from "./ChangePassword";
-import DeleteAccount from "./DeleteAccount";
+import { SecurityZoneMain } from "./SecurityZoneMain";
 
 export function DashboardMain() {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
@@ -52,9 +50,7 @@ export function DashboardMain() {
 
                 <Route path="/profile/" element={<Profile />} />
                 {/* Navigates for security zone */}
-                <Route path="/profile/security-zone/security" element={<Security />} />
-                <Route path="/profile/security-zone/change-password/" element={<ChangePasswordContainer />} />
-                <Route path="/profile/security-zone/delete-account/" element={<DeleteAccount />} />
+                <Route path="/profile/security-zone/" element={<SecurityZoneMain />} />
               </Routes>
             </div>
           </div>
