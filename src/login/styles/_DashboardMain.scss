@@ -1,7 +1,6 @@
 @import "./variables";
 
-#dashboard-nav,
-.security-zone-nav {
+#dashboard-nav {
   ul {
     margin-left: -0.1875rem;
     margin-bottom: 0;
@@ -41,18 +40,40 @@
 
 .security-zone-nav {
   ul {
-    margin-left: 0;
+    display: flex;
 
     li {
-      margin-bottom: 0;
-    }
+      a {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        color: $txt-black;
+        margin: 0;
 
-    .active {
-      background-color: $white;
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-      padding: 1rem;
+        &.active {
+          color: $txt-orange;
+          background-color: $white;
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
+        }
+
+        // styling for when hovering the menu item
+        &:hover {
+          color: $txt-orange;
+        }
+      }
     }
+  }
+}
+
+@media (max-width: $bp-md) {
+  .security-zone-nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li.security-zone-nav-active {
+    order: 3;
   }
 }
 
