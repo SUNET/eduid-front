@@ -3,7 +3,6 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
-import { SecurityZoneIntro, SecurityZoneNav } from "./SecurityZoneMain";
 
 // exported for use in tests
 export const finish_url = "/profile/security";
@@ -30,9 +29,7 @@ function ChangePassword() {
 
   return (
     <React.Fragment>
-      <SecurityZoneIntro />
-      <SecurityZoneNav />
-      <article id="change-password-container" className="security-zone-container">
+      <article id="security-container" className="security-zone">
         <div className="intro">
           <h4>
             <FormattedMessage defaultMessage="Change your current password" description="Dashboard change password" />

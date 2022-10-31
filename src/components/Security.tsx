@@ -17,7 +17,6 @@ import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
 import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
 import { eidasVerifyCredential } from "apis/eduidEidas";
-import { SecurityZoneIntro, SecurityZoneNav } from "./SecurityZoneMain";
 import { RenderEditableNames } from "login/components/PersonalData/PersonalDataForm";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
 import { Form as FinalForm } from "react-final-form";
@@ -114,8 +113,6 @@ export function Security(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <SecurityZoneIntro />
-      <SecurityZoneNav />
       <article id="security-container" className="security-zone-container">
         <div id="register-security-key-container">
           <div className="intro">

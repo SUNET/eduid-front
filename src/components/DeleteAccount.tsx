@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import { SecurityZoneIntro, SecurityZoneNav } from "./SecurityZoneMain";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
@@ -30,8 +29,6 @@ export default function DeleteAccount(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <SecurityZoneIntro />
-      <SecurityZoneNav />
       <article id="delete-account-container" className="security-zone-container">
         <div className="intro">
           <h3>
