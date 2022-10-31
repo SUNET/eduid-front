@@ -29,7 +29,7 @@ function ChangePassword() {
 
   return (
     <React.Fragment>
-      <article id="security-container" className="security-zone">
+      <article id="security-container" className="security-zone-container">
         <div className="intro">
           <h4>
             <FormattedMessage defaultMessage="Change your current password" description="Dashboard change password" />
