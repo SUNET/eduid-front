@@ -1,6 +1,7 @@
+import { urlJoin } from "apis/common";
+import EduIDButton from "components/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "components/EduIDButton";
 
 interface HeaderProps {
   email?: string;
@@ -18,7 +19,10 @@ const Header = (props: HeaderProps): JSX.Element => {
   let button;
 
   function handleLogout() {
-    const url = token_service_url + "logout";
+    if (!token_service_url) {
+      return;
+    }
+    const url = urlJoin(token_service_url, "logout");
 
     window
       .fetch(url, {
@@ -53,7 +57,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   } else if (props.showLogout) {
     userName = <div className="header-user">{props.email}</div>;
     button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
+      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!token_service_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );

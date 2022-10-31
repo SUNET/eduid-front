@@ -240,13 +240,14 @@ export interface LoginNextResponse {
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };
 
 export interface LoginAuthnOptions {
+  display_name?: string;
+  forced_username?: string;
   freja_eidplus?: boolean;
+  has_session?: boolean;
   other_device?: boolean;
   password?: boolean;
-  forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
-  display_name?: string;
 }
 
 /**
