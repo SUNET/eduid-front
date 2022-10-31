@@ -15,7 +15,7 @@ function SecurityCenterDisplay(props: SecurityCenterDisplayProps) {
   function handleAcceptModal() {
     const chpassURL = config.token_service_url + "chpass";
     // the "chpass" path will route to the ChangePasswordContainer when we get back
-    const nextURL = config.dashboard_url + "security-zone/security";
+    const nextURL = config.dashboard_url + "security-zone";
     const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
 
     window.location.assign(url);
