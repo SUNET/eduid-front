@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  fetchNewDevice,
   fetchAbort,
+  fetchMfaAuth,
+  fetchNewDevice,
   fetchNext,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
@@ -15,7 +16,6 @@ import {
 } from "apis/eduidLogin";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
-import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 
 // Define a type for the slice state
 interface LoginState {
@@ -30,6 +30,7 @@ interface LoginState {
   mfa: {
     webauthn_challenge?: string;
     webauthn_assertion?: webauthnAssertion;
+    state?: "loading" | "loaded";
   };
   saml_parameters?: SAMLParameters;
   tou: {
@@ -99,11 +100,6 @@ export const loginSlice = createSlice({
       // the TermsOfUse component will render it.
       state.tou.version = action.payload.version;
     },
-    addMfaAuthWebauthnChallenge: (state, action: PayloadAction<MfaAuthResponse>) => {
-      // Process a successful response from the /mfa_auth endpoint. The response will include a webauthn
-      // challenge that we store in the state.
-      state.mfa.webauthn_challenge = action.payload.webauthn_options;
-    },
     /*
      * TODO: These actions that are not related to updating the state shouldn't really be here,
      *       even though it is nice to have them here to simplify imports elsewhere.
@@ -118,9 +114,6 @@ export const loginSlice = createSlice({
       // Trigger the Login component fetching of next action to perform from the backend.
       state.next_page = undefined;
     },
-    // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
-    // TODO: Use the fetchNext thunk instead, and remove this
-    postRefForWebauthnChallenge: () => {},
     // Common action to signal a caught exception in one of the login app sagas. Because it ends in _FAIL,
     // the notifyAndDispatch() middleware will inform the user that the operation failed.
     loginSagaFail: () => {},
@@ -130,6 +123,10 @@ export const loginSlice = createSlice({
       .addCase(performAuthentication.fulfilled, (state, action) => {
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.mfa.webauthn_assertion = action.payload;
+      })
+      .addCase(performAuthentication.rejected, (state, action) => {
+        state.mfa.webauthn_challenge = undefined;
+        state.mfa.webauthn_assertion = undefined;
       })
       .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
@@ -175,6 +172,17 @@ export const loginSlice = createSlice({
       })
       .addCase(fetchNewDevice.fulfilled, (state, action) => {
         state.this_device = action.payload.new_device;
+      })
+      .addCase(fetchMfaAuth.pending, (state, action) => {
+        state.mfa = { state: "loading" };
+      })
+      .addCase(fetchMfaAuth.fulfilled, (state, action) => {
+        state.mfa.webauthn_challenge = action.payload.webauthn_options; // not always present
+        if (action.payload.finished) {
+          // Trigger fetching of /next on successful MFA authentication
+          state.next_page = undefined;
+        }
+        state.mfa.state = "loaded";
       });
   },
 });
