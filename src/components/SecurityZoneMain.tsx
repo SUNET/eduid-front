@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { ReactChild, ReactFragment, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DeleteAccount from "./DeleteAccount";
 import { Security } from "./Security";
+import { Link } from "react-router-dom";
+import { Breadcrumb } from "./BreadCrumb";
 
 export function SecurityZoneMain(): JSX.Element {
   const intl = useIntl();
@@ -22,8 +24,40 @@ export function SecurityZoneMain(): JSX.Element {
   ];
   const [active, setActive] = useState(links[0]);
 
+  const items = [
+    {
+      to: "/profile/",
+      label: intl.formatMessage({
+        id: "Breadcrumb label, Home",
+        defaultMessage: "Home",
+      }),
+    },
+    {
+      to: "/profile/settings/",
+      label: intl.formatMessage({
+        id: "Breadcrumb label, Settings",
+        defaultMessage: "Settings",
+      }),
+    },
+    {
+      to: "/profile/security-zone/",
+      label: intl.formatMessage({
+        id: "Breadcrumb label, Security Zone",
+        defaultMessage: "Security Zone",
+      }),
+    },
+  ];
+
   return (
     <React.Fragment>
+      <Breadcrumb separator="/" activeLink={active}>
+        {items.map(({ to, label }) => (
+          <Link key={to} to={to}>
+            {label}
+          </Link>
+        ))}
+      </Breadcrumb>
+
       <h1>
         <FormattedMessage defaultMessage="Security Zone" description="Security Zone heading" />
       </h1>
@@ -60,7 +94,7 @@ export function SecurityZoneNav(props: SecurityZoneNavProps): JSX.Element {
     <nav id="security-zone-nav" className="security-zone-nav">
       <ul>
         {props.links.map((link: string, index: number) => (
-          <li className="nav-item" key={index}>
+          <li className={props.active == link ? "security-zone-nav-active" : "security-zone-nav-item"} key={index}>
             <a
               // href="blank"
               key={index}
