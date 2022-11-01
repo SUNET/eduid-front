@@ -2,6 +2,22 @@ nav li {
   list-style: none;
 }
 
+ol {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-flow: wrap;
+
+  li {
+    font-family: $akkurat;
+  }
+
+  .breadcrumb-separator {
+    padding: 0 0.5rem;
+  }
+}
+
 // ul.nav.navbar-nav li a {
 //   color: #3f5c57;
 // }
