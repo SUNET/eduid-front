@@ -19,7 +19,6 @@ export const signupTestState: SignupRootState = {
     debug: true,
   },
   signup: signupInitialState,
-  form: undefined as any,
   intl: { locale: "en", messages: {} },
   notifications: {},
 };

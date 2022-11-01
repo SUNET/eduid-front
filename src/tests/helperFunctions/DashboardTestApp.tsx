@@ -22,7 +22,6 @@ export const dashboardTestState: DashboardRootState = {
     ...initialConfigState,
     csrf_token: "csrf-token",
   },
-  form: undefined as any,
   intl: { locale: "en", messages: {} },
   chpass: initialChangePasswordState,
   emails: initialEmailsState,
