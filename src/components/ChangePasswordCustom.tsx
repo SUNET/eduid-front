@@ -54,8 +54,9 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   return (
     <form id="passwordsview-form" className="security-zone-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <div className="password-format">
-        <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
-        <FormattedMessage defaultMessage="Tip: Choose a strong password" description="Password format tips" />
+        <span>
+          <FormattedMessage defaultMessage="Tip: Choose a strong password" description="Password format tips" />
+        </span>
         <ul id="password-custom-help">
           {[
             <FormattedMessage
@@ -72,7 +73,11 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             />,
             <FormattedMessage defaultMessage={`Spaces are ignored`} description="help text for custom password tips" />,
           ].map((list, index) => {
-            return <li key={index}>{list}</li>;
+            return (
+              <li key={index} className="help-text">
+                {list}
+              </li>
+            );
           })}
         </ul>
       </div>
@@ -88,7 +93,11 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           validate={strongEnough}
           autocomplete="new-password"
         />
-        <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
+        <div className="form-field-error-area" key="1">
+          {props.formProps.values.custom && (
+            <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
+          )}
+        </div>
         <FinalField
           autoComplete="new-password"
           name="repeat"

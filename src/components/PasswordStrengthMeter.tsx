@@ -52,10 +52,8 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
   return (
     <React.Fragment>
+      <FormText>{translate(pwStrengthMessages[pwScore])}</FormText>
       <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
-      <div className="form-field-error-area" key="1">
-        <FormText>{translate(pwStrengthMessages[pwScore])}</FormText>
-      </div>
     </React.Fragment>
   );
 }
