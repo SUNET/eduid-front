@@ -41,8 +41,18 @@
 .security-zone-nav {
   ul {
     display: flex;
+    height: 2rem;
 
     li {
+      padding-top: 0.5rem;
+
+      &.security-zone-nav-active {
+        background-color: $white;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        width: fit-content;
+      }
+
       a {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -52,9 +62,6 @@
 
         &.active {
           color: $txt-orange;
-          background-color: $white;
-          border-top-left-radius: 0.5rem;
-          border-top-right-radius: 0.5rem;
         }
 
         // styling for when hovering the menu item
@@ -70,6 +77,8 @@
   .security-zone-nav ul {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
   }
 
   li.security-zone-nav-active {
