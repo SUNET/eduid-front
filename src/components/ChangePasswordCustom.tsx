@@ -6,6 +6,11 @@ import { FormattedMessage } from "react-intl";
 import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import CustomInput from "login/components/Inputs/CustomInput";
+import PasswordInput, { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
@@ -49,7 +54,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   return (
     <form id="passwordsview-form" className="security-zone-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <div className="password-format">
-        <label>{translate("chpass.help-text-newpass-label")}</label>
+        <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
+        <FormattedMessage defaultMessage="Tip: Choose a strong password" description="Password format tips" />
         <ul id="password-custom-help">
           {[
             <FormattedMessage
@@ -72,31 +78,27 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       </div>
 
       <fieldset>
-        <div>
-          <FinalField
-            name="custom"
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            label={translate("chpass.form_custom_password")}
-            helpBlock={
-              <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
-            }
-            id="custom-password-field"
-            validate={strongEnough}
-            autocomplete="new-password"
-          />
-          <FinalField
-            autoComplete="new-password"
-            name="repeat"
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            id="repeat-password-field"
-            label={translate("chpass.form_custom_password_repeat")}
-            validate={mustMatch}
-          />
-        </div>
+        <FinalField
+          name="custom"
+          component={WrappedPasswordInput}
+          componentClass="input"
+          type="password"
+          label={translate("chpass.form_custom_password")}
+          id="custom-password-field"
+          validate={strongEnough}
+          autocomplete="new-password"
+        />
+        <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
+        <FinalField
+          autoComplete="new-password"
+          name="repeat"
+          component={WrappedPasswordInput}
+          componentClass="input"
+          type="password"
+          id="repeat-password-field"
+          label={translate("chpass.form_custom_password_repeat")}
+          validate={mustMatch}
+        />
       </fieldset>
     </form>
   );
