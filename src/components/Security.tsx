@@ -27,7 +27,7 @@ import { postUserdata } from "actions/PersonalData";
 export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
-  const isNameAdded = useDashboardAppSelector((state) => state.personal_data.given_name !== "");
+  const isNameAdded = useDashboardAppSelector((state) => state.personal_data.given_name !== undefined);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
