@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactFragment, useState } from "react";
+import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DeleteAccount from "./DeleteAccount";
@@ -7,8 +7,46 @@ import { Link } from "react-router-dom";
 import { Breadcrumb } from "./BreadCrumb";
 import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { TimeRemainingWrapper } from "./TimeRemaining";
+import EduIDButton from "./EduIDButton";
+
+function Reauthenticate() {
+  return (
+    <article id="security-container" className="security-zone-container">
+      <div className="intro">
+        <h3>
+          <FormattedMessage defaultMessage="Session expired" description="Dashboard security zone session expired" />
+        </h3>
+        <p>
+          <FormattedMessage
+            defaultMessage={`To continue with security settings you should log  in again or click cancel to return to 
+              settings.`}
+            description="Dashboard security zone session expired description"
+          />
+        </p>
+      </div>
+      <div className="buttons">
+        <EduIDButton
+          id="security-zone-cancel-button"
+          buttonstyle="secondary"
+          onClick={() => console.log("click cancel")}
+        >
+          <FormattedMessage defaultMessage="cancel" description="cancel" />
+        </EduIDButton>
+        <EduIDButton
+          id="security-zone-reauthenticate-button"
+          buttonstyle="primary"
+          onClick={() => console.log("click login")}
+        >
+          <FormattedMessage defaultMessage="log in" description="login" />
+        </EduIDButton>
+      </div>
+    </article>
+  );
+}
 
 export function SecurityZoneMain(): JSX.Element {
+  const [isSessionExpired, setIsSessionExpired] = useState(false);
+
   const intl = useIntl();
   const links = [
     intl.formatMessage({
@@ -50,6 +88,16 @@ export function SecurityZoneMain(): JSX.Element {
     },
   ];
 
+  function handleTimerReachZero() {
+    setIsSessionExpired(true);
+    setActive(
+      intl.formatMessage({
+        id: "Security zone tab, Reauthenticate",
+        defaultMessage: "Reauthenticate",
+      })
+    );
+  }
+
   return (
     <React.Fragment>
       <Breadcrumb separator="/" activeLink={active}>
@@ -79,18 +127,23 @@ export function SecurityZoneMain(): JSX.Element {
           <TimeRemainingWrapper
             name="security-zone-expires"
             unique_id="security-zone-expires"
-            value={120}
-            // onReachZero={handleTimerReachZero}
+            value={10}
+            onReachZero={handleTimerReachZero}
           >
-            <ExpiresMeter showMeter={false} expires_max={120} />
+            <ExpiresMeter showMeter={false} expires_max={10} />
           </TimeRemainingWrapper>
         </div>
       </div>
-      <SecurityZoneNav setActive={setActive} links={links} active={active} />
-      {active === links[0] && <Security />}
-      {active === links[1] && <ChangePasswordContainer />}
-      {active === links[2] && <DeleteAccount />}
-      {/* {sessionExpired && <Reauthenticate />} */}
+      {isSessionExpired ? (
+        <Reauthenticate />
+      ) : (
+        <React.Fragment>
+          <SecurityZoneNav setActive={setActive} links={links} active={active} />
+          {active === links[0] && <Security />}
+          {active === links[1] && <ChangePasswordContainer />}
+          {active === links[2] && <DeleteAccount />}
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }
