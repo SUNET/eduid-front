@@ -85,7 +85,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 
         <div className={"nav-wrapper " + (isOpen ? "show-menu" : undefined)}>
           {dashboardNav}
-          {button}
+          <div>{button}</div>
         </div>
       </header>
     </section>

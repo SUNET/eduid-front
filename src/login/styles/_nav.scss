@@ -66,6 +66,10 @@
       overflow: hidden;
       text-align: right;
 
+      > div:last-child {
+        margin-bottom: 1rem;
+      }
+
       &.show-menu {
         height: auto;
         max-height: 1000px;
