@@ -1,16 +1,10 @@
-import TextInput from "components/EduIDTextInput";
 import { translate } from "login/translation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import CustomInput from "login/components/Inputs/CustomInput";
-import PasswordInput, { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
+import { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
