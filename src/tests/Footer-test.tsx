@@ -1,5 +1,4 @@
 import { shallow } from "enzyme";
-import React from "react";
 import { IntlProvider } from "react-intl";
 import Footer from "../login/components/Footer/Footer";
 import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
@@ -8,10 +7,6 @@ const config = {
   ...signupTestState.config,
   is_app_loaded: true,
   is_configured: true,
-  available_languages: [
-    ["en", "English"],
-    ["sv", "Svenska"],
-  ],
   dashboard_url: "http://example.com",
   static_students_url: "http://example.com/student",
   static_technicians_url: "http://example.com",

@@ -9,7 +9,6 @@ export interface SignupConfig extends EduidJSAppCommonConfig {
 
 // export for use in tests
 export const initialState: SignupConfig = {
-  available_languages: [],
   debug: false,
   error: false,
   is_configured: false,

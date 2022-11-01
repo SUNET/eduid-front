@@ -7,7 +7,6 @@ interface CommonConfig {
 }
 
 interface CommonJsConfig {
-  available_languages: string[][];
   csrf_token?: string;
   dashboard_url?: string;
   debug: boolean;
