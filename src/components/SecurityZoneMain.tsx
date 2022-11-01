@@ -5,6 +5,8 @@ import DeleteAccount from "./DeleteAccount";
 import { Security } from "./Security";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "./BreadCrumb";
+import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
+import { TimeRemainingWrapper } from "./TimeRemaining";
 
 export function SecurityZoneMain(): JSX.Element {
   const intl = useIntl();
@@ -69,6 +71,20 @@ export function SecurityZoneMain(): JSX.Element {
             description="Security zone description"
           />
         </p>
+        <div className="time-remaining">
+          <span>
+            <FormattedMessage defaultMessage="Session expires in " description="Security zone time remaining:" />
+          </span>
+
+          <TimeRemainingWrapper
+            name="security-zone-expires"
+            unique_id="security-zone-expires"
+            value={120}
+            // onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter showMeter={false} expires_max={120} />
+          </TimeRemainingWrapper>
+        </div>
       </div>
       <SecurityZoneNav setActive={setActive} links={links} active={active} />
       {active === links[0] && <Security />}
