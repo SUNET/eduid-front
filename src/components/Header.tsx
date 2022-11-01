@@ -80,6 +80,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {/* {userName} */}
+
         <Hamburger rounded label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
 
         <div className={"nav-wrapper " + (isOpen ? "show-menu" : undefined)}>

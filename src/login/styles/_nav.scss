@@ -1,5 +1,4 @@
 #dashboard-nav {
-  position: absolute;
   width: 100%;
 
   ul {
@@ -7,14 +6,11 @@
     flex-direction: row;
 
     li {
-      margin: 0 4rem 0 0;
+      //margin: 0 2rem 0 0;
 
       @media (max-width: $bp-lg) {
-        margin: 0 0.5rem;
+        margin: 0.5 1rem;
         font-size: $txt-sm;
-      }
-      @media (max-width: $bp-sm) {
-        margin: 0 0 0.75rem;
       }
     }
 
@@ -29,36 +25,46 @@
       }
     }
 
-    @media (max-width: $bp-lg) {
+    @media (max-width: $bp-xl) {
       justify-content: space-evenly;
+      width: 100%;
     }
-    @media (max-width: $bp-sm) {
+    @media (max-width: $bp-lg) {
       flex-direction: column;
     }
   }
-
-  @media (max-width: $bp-lg) {
-    position: relative;
+  @media (min-width: $bp-xl) {
+    position: absolute;
+    ul {
+      justify-content: space-between;
+    }
   }
-  @media (max-width: $bp-sm) {
-    text-align: right;
-    margin: 0.75rem 0 0.25rem;
+  @media (max-width: $bp-xl) {
+    //width: auto;
+  }
+  @media (max-width: $bp-lg) {
+    //position: relative;
+  }
+  @media (max-width: $bp-lg) {
+    //margin: 0.75rem 0 0.25rem 0;
   }
 }
 
 .nav-wrapper {
-  @media (min-width: $bp-sm) {
+  transition: max-height 0.3s ease;
+
+  @media (min-width: $bp-lg) {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
 
-  @media (max-width: $bp-sm) {
-    &:not(.show-register &) {
+  &:not(.show-register &) {
+    @media (max-width: $bp-lg) {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      text-align: right;
 
       &.show-menu {
         height: auto;
