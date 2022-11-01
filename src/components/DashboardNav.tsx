@@ -55,6 +55,7 @@ function DashboardNav(props: DashboardNavProps): JSX.Element {
             <NavLink
               className={({ isActive }) => (isActive ? activeClassName : undefined)}
               to="/profile/settings/advanced-settings"
+              onClick={closeMenu}
             >
               <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
             </NavLink>
