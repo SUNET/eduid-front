@@ -2,6 +2,7 @@
 .banner {
   background-color: $white;
 
+  /* Contains logo + nav-wrapper */
   header {
     display: flex;
     justify-content: space-between;
@@ -18,12 +19,11 @@
       position: relative;
       z-index: 2;
 
+      // Mobile logo
       @media (max-width: $bp-lg) {
         position: absolute;
         left: 0;
         top: 1rem;
-      }
-      @media (max-width: $bp-lg) {
         width: 99px;
         height: 34px;
       }
@@ -50,6 +50,7 @@
       z-index: 3;
     }
 
+    // Mobile header logged in
     &:not(.show-register) {
       @media (max-width: $bp-lg) {
         flex-direction: column;

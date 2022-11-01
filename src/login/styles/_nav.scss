@@ -1,58 +1,57 @@
-#dashboard-nav {
-  width: 100%;
-
-  ul {
-    //extends .horizontal-content-margin
-    flex-direction: row;
-
-    li {
-      //margin: 0 2rem 0 0;
-
-      @media (max-width: $bp-lg) {
-        margin: 0.5 1rem;
-        font-size: $txt-sm;
-      }
-    }
-
-    a {
-      color: $txt-black;
-
-      &.active {
-        color: $txt-orange;
-      }
-      &:hover {
-        color: $txt-orange;
-      }
-    }
-
-    @media (max-width: $bp-xl) {
-      justify-content: space-evenly;
-      width: 100%;
-    }
-    @media (max-width: $bp-lg) {
-      flex-direction: column;
-    }
-  }
-  @media (min-width: $bp-xl) {
-    position: absolute;
-    ul {
-      justify-content: space-between;
-    }
-  }
-  @media (max-width: $bp-xl) {
-    //width: auto;
-  }
-  @media (max-width: $bp-lg) {
-    //position: relative;
-  }
-  @media (max-width: $bp-lg) {
-    //margin: 0.75rem 0 0.25rem 0;
-  }
-}
-
+/* Contains nav + button */
 .nav-wrapper {
   transition: max-height 0.3s ease;
 
+  #dashboard-nav {
+    width: 100%;
+
+    ul {
+      // (extends .horizontal-content-margin)
+      flex-direction: row;
+
+      a {
+        color: $txt-black;
+
+        &.active {
+          color: $txt-orange;
+        }
+        &:hover {
+          color: $txt-orange;
+        }
+      }
+
+      // Tablet ul
+      @media (max-width: $bp-xl) {
+        justify-content: space-evenly;
+        width: 100%;
+      }
+
+      // Mobile ul
+      @media (max-width: $bp-lg) {
+        flex-direction: column;
+
+        li {
+          margin: 0.375rem 1rem;
+          font-size: $txt-sm;
+
+          &:last-child {
+            margin-bottom: 0.75rem;
+          }
+        }
+      }
+    }
+
+    // Desktop nav
+    @media (min-width: $bp-xl) {
+      position: absolute;
+
+      ul {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  // Tablet wrapper
   @media (min-width: $bp-lg) {
     width: 100%;
     display: flex;
@@ -60,6 +59,7 @@
     justify-content: flex-end;
   }
 
+  // Mobile wrapper logged in
   &:not(.show-register &) {
     @media (max-width: $bp-lg) {
       max-height: 0;
