@@ -4,8 +4,23 @@ import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as signupInitialState } from "reducers/Signup";
 import { getTestSignupStore, SignupRootState } from "signup-init-app";
-import { signupTestState } from "./SignupTestApp";
+
+export const signupTestState: SignupRootState = {
+  config: {
+    ...configInitialState,
+    recaptcha_public_key: "",
+    reset_password_link: "http://dummy.example.com/reset-password",
+    // default to being in 'configured' state, since only the test of
+    // the splash screen is ever interested in the opposite
+    is_configured: true,
+    debug: true,
+  },
+  signup: signupInitialState,
+  intl: { locale: "en", messages: {} },
+  notifications: {},
+};
 
 interface renderArgs {
   state?: Partial<SignupRootState>;
@@ -37,7 +52,5 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 
 // re-export everything
 export * from "@testing-library/react";
-// mirror some exports from old Enzyme testing helper
-export { signupTestState };
 // override render method
 export { render };
