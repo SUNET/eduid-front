@@ -17,7 +17,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const token_service_url = useDashboardAppSelector((state) => state.config.token_service_url);
-  //let userName;
+  let userName;
   const [isOpen, setOpen] = useState<boolean>(false);
   let button;
   let dashboardNav;
@@ -56,7 +56,7 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    //userName = <div className="header-user">{props.email}</div>;
+    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -79,7 +79,6 @@ const Header = (props: HeaderProps): JSX.Element => {
         <a href={dashboard_url ? dashboard_url : eduid_site_url} aria-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
-        {/* {userName} */}
 
         <Hamburger rounded duration={0.2} label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
 
@@ -88,6 +87,8 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div>{button}</div>
         </div>
       </header>
+
+      {userName}
     </section>
   );
 };
