@@ -42,7 +42,7 @@ export default function DeleteAccount(): JSX.Element | null {
           </p>
         </div>
         <EduIDButton
-          buttonstyle="link"
+          buttonstyle="primary"
           className="lowercase"
           id="delete-button"
           onClick={handleStartConfirmationDeletion}
