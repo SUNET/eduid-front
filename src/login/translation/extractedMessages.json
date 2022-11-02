@@ -27,6 +27,10 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
   },
+  "0+VxNA": {
+    "developer_comment": "profile main title",
+    "string": "Your eduID profile"
+  },
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Reset your password"
@@ -98,6 +102,10 @@
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
+  },
+  "3GakgN": {
+    "developer_comment": "advanced settings main title",
+    "string": "Enhance your eduID"
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
@@ -410,6 +418,10 @@
     "developer_comment": "security verify",
     "string": "Verify key"
   },
+  "JwGeXX": {
+    "developer_comment": "settings description",
+    "string": "Update your eduID account settings, change password or delete your eduID."
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
@@ -521,10 +533,6 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
-  "O0z0/P": {
-    "developer_comment": "Dashboard navigation tooltip",
-    "string": "Add and verify your phone number for better security"
-  },
   "O7HVVj": {
     "developer_comment": "device info",
     "string": "Description"
@@ -552,6 +560,10 @@
   "P7d2zq": {
     "developer_comment": "button save",
     "string": "save"
+  },
+  "PLjl7A": {
+    "developer_comment": "settings main title",
+    "string": "Manage your eduID settings"
   },
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
@@ -1176,6 +1188,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it."
   },
+  "gJ52c+": {
+    "developer_comment": "profile description",
+    "string": "Add or edit your personal user information."
+  },
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
     "string": "Your account is linked with Ladok information from"
@@ -1420,10 +1436,6 @@
   "lox37q": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again."
-  },
-  "lpvPcL": {
-    "developer_comment": "Dashboard navigation tooltip",
-    "string": "Verify your identity to get the most ouf of your eduID"
   },
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
@@ -2224,6 +2236,10 @@
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
+  },
+  "x5aCsQ": {
+    "developer_comment": "advanced settings description",
+    "string": "Increase the security of your eduID or connect it to other services."
   },
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
