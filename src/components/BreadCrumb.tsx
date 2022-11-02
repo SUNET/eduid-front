@@ -12,19 +12,21 @@ export function Breadcrumb({ ...props }) {
   children = children.map((child, index: number) => (
     <BreadcrumbItem key={`breadcrumb_item${index}`}>{child}</BreadcrumbItem>
   ));
-
+  console.log("activeLink", props.activeLink);
   children = children.reduce((row: any, child, index: number) => {
     row.push(
       child,
-      <li key={index} className="breadcrumb-separator">
-        /
-      </li>
+      props.activeLink !== null && (
+        <li key={index} className="breadcrumb-separator">
+          /
+        </li>
+      )
     );
     return row;
   }, []);
 
   return (
-    <ol>
+    <ol className="breadcrumb">
       {children}
       <li className="breadcrumb-item">{props.activeLink}</li>
     </ol>

@@ -21,10 +21,11 @@ export default function TextInput(props: TextInputProps) {
   const errorMsg = (invalid && translate(props.meta.error)) || "";
   let help = <FormText>{helpBlock}</FormText>;
   if (errorMsg !== "") {
+    // TODO: reuse className .input-validate-error
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
     help = (
       <FormText>
-        {feedback} {helpBlock && "|"} {helpBlock}
+        {feedback} {helpBlock}
       </FormText>
     );
   }

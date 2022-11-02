@@ -236,8 +236,30 @@ input[type="number"] {
 }
 
 .security-zone-form {
+  margin-bottom: 2rem;
+
   .form-control {
-    background-color: #e9ecef;
+    background-color: $bg-gray;
+  }
+
+  svg {
+    color: $bright-orange;
+    margin-right: 0.3rem;
+  }
+}
+
+// Password strength meter
+.form-field-error-area {
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  meter {
+    width: 60%;
+    height: 1rem;
   }
 }
 

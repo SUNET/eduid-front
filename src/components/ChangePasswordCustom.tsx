@@ -5,12 +5,21 @@ import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
 import { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
+import { useDashboardAppSelector } from "dashboard-hooks";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
   const [passwordData, setPasswordData] = useState<PasswordStrengthData>({});
+  const emails = useDashboardAppSelector((state) => state.emails.emails);
+
+  let email: string | undefined;
+  if (emails.length >= 1) {
+    email = emails.filter((mail) => mail.primary)[0].email;
+  } else {
+    email = undefined;
+  }
 
   function updatePasswordData(value: PasswordStrengthData) {
     // This function is called when the password strength meter has calculated password strength
@@ -77,6 +86,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       </div>
 
       <fieldset>
+        <input hidden readOnly autoComplete="username" name="username" type="text" defaultValue={email} />
         <FinalField
           name="custom"
           component={WrappedPasswordInput}
@@ -84,8 +94,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           type="password"
           label={translate("chpass.form_custom_password")}
           id="custom-password-field"
-          validate={strongEnough}
-          autocomplete="new-password"
+          validate={required}
+          autoComplete="new-password"
         />
         <div className="form-field-error-area" key="1">
           {props.formProps.values.custom && (

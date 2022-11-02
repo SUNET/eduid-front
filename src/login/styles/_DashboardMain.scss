@@ -38,6 +38,17 @@
   }
 }
 
+// security zone
+.time-remaining {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+
+  .expires-meter {
+    margin-left: 0.5rem;
+  }
+}
+
 .security-zone-nav {
   ul {
     display: flex;

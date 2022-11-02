@@ -31,9 +31,9 @@ function ChangePassword() {
     <React.Fragment>
       <article id="security-container" className="security-zone-container">
         <div className="intro">
-          <h4>
+          <h3>
             <FormattedMessage defaultMessage="Change your current password" description="Dashboard change password" />
-          </h4>
+          </h3>
         </div>
         <div id="changePasswordDialog">
           <ChangePasswordForm finish_url={finish_url} />

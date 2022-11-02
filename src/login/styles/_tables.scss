@@ -105,6 +105,10 @@ table {
         padding-right: 1rem;
       }
     }
+
+    table.passwords & tr.webauthn-token-holder {
+      background-color: #e9ecef;
+    }
   }
 
   .identity-summary & {
@@ -115,8 +119,10 @@ table {
       &:last-of-type {
         border-bottom: none;
       }
+
       .circle-icon {
         height: 2rem;
+
         @media (max-width: $bp-md) {
           height: 1.5rem;
         }
@@ -126,6 +132,10 @@ table {
 }
 
 table.table-form.passwords {
+  tr {
+    background-color: $bg-gray;
+  }
+
   tr:first-child {
     font-size: 1rem;
     letter-spacing: 0;

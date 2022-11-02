@@ -9,7 +9,7 @@ import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { TimeRemainingWrapper } from "./TimeRemaining";
 import EduIDButton from "./EduIDButton";
 
-function Reauthenticate() {
+function SessionExpired(): JSX.Element {
   return (
     <article id="security-container" className="security-zone-container">
       <div className="intro">
@@ -62,7 +62,7 @@ export function SecurityZoneMain(): JSX.Element {
       defaultMessage: "Delete Account",
     }),
   ];
-  const [active, setActive] = useState(links[0]);
+  const [active, setActive] = useState<string | null>(links[0]);
 
   const items = [
     {
@@ -90,12 +90,7 @@ export function SecurityZoneMain(): JSX.Element {
 
   function handleTimerReachZero() {
     setIsSessionExpired(true);
-    setActive(
-      intl.formatMessage({
-        id: "Security zone tab, Reauthenticate",
-        defaultMessage: "Reauthenticate",
-      })
-    );
+    setActive(null);
   }
 
   return (
@@ -121,21 +116,21 @@ export function SecurityZoneMain(): JSX.Element {
         </p>
         <div className="time-remaining">
           <span>
-            <FormattedMessage defaultMessage="Session expires in " description="Security zone time remaining:" />
+            <FormattedMessage defaultMessage="Session expires in" description="Security zone time remaining" />
           </span>
 
           <TimeRemainingWrapper
             name="security-zone-expires"
             unique_id="security-zone-expires"
-            value={10}
+            value={50}
             onReachZero={handleTimerReachZero}
           >
-            <ExpiresMeter showMeter={false} expires_max={10} />
+            <ExpiresMeter showMeter={false} expires_max={50} />
           </TimeRemainingWrapper>
         </div>
       </div>
       {isSessionExpired ? (
-        <Reauthenticate />
+        <SessionExpired />
       ) : (
         <React.Fragment>
           <SecurityZoneNav setActive={setActive} links={links} active={active} />
@@ -150,8 +145,8 @@ export function SecurityZoneMain(): JSX.Element {
 
 interface SecurityZoneNavProps {
   links: string[];
-  active: string;
-  setActive: (active: string) => void;
+  active: string | null;
+  setActive: (active: string | null) => void;
 }
 
 export function SecurityZoneNav(props: SecurityZoneNavProps): JSX.Element {

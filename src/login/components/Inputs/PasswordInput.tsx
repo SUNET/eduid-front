@@ -67,6 +67,7 @@ function PasswordInputElement(props: InputProps): JSX.Element {
         valid={props.meta.valid}
         invalid={props.meta.invalid}
         placeholder={props.placeholder}
+        autoComplete={props.autoComplete}
       />
 
       <button
