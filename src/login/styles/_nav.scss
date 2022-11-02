@@ -1,7 +1,79 @@
-nav li {
-  list-style: none;
-}
+/* Contains nav + button */
+.nav-wrapper {
+  transition: max-height 0.3s ease;
 
-// ul.nav.navbar-nav li a {
-//   color: #3f5c57;
-// }
+  #dashboard-nav {
+    width: 100%;
+
+    ul {
+      // (extends .horizontal-content-margin)
+      flex-direction: row;
+
+      a {
+        color: $txt-black;
+
+        &.active {
+          color: $txt-orange;
+        }
+        &:hover {
+          color: $txt-orange;
+        }
+      }
+
+      // Tablet ul
+      @media (max-width: $bp-xl) {
+        justify-content: space-evenly;
+        width: 100%;
+      }
+
+      // Mobile ul
+      @media (max-width: $bp-lg) {
+        flex-direction: column;
+
+        li {
+          margin: 0.375rem 1rem;
+          font-size: $txt-sm;
+
+          &:last-child {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+
+    // Desktop nav
+    @media (min-width: $bp-xl) {
+      position: absolute;
+
+      ul {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  // Tablet wrapper
+  @media (min-width: $bp-lg) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  // Mobile wrapper logged in
+  &:not(.show-register &) {
+    @media (max-width: $bp-lg) {
+      max-height: 0;
+      overflow: hidden;
+      text-align: right;
+
+      > div:last-child {
+        margin-bottom: 1rem;
+      }
+
+      &.show-menu {
+        height: auto;
+        max-height: 1000px;
+      }
+    }
+  }
+}

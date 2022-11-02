@@ -55,6 +55,7 @@ body {
   border-bottom: 1px solid $border-gray;
   &:last-of-type {
     border-bottom: none;
+    margin-bottom: 0;
   }
 
   @media (max-width: $bp-md) {

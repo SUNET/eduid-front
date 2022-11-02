@@ -1,44 +1,5 @@
 @import "./variables.scss";
 
-#dashboard-nav {
-  ul {
-    margin-left: -0.1875rem;
-    margin-bottom: 0;
-    display: inline-block;
-
-    li {
-      margin: 0 1.25rem 0.75rem 0;
-
-      display: inline-block;
-
-      @media (max-width: $bp-md) {
-        margin-right: 1rem;
-      }
-    }
-
-    a {
-      color: $txt-black;
-      padding: 0 0.1875rem;
-      line-height: 1;
-
-      // styling for when menu item is clicked
-      &.active {
-        color: $txt-orange;
-      }
-
-      // styling for when hovering the menu item
-      &:hover {
-        color: $txt-orange;
-      }
-    }
-
-    @media (min-width: $bp-xl) {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-}
-
 #text-content {
   // the height here is set to total the same as the notifications above the dashboard nav
   margin-top: 2.25rem;
@@ -162,5 +123,14 @@
     margin-top: 0;
     display: block;
     transition: transform 0.5s;
+  }
+}
+
+.security-zone {
+  background: $white;
+  padding: 1.5rem 1rem;
+
+  .security-text {
+    color: $error-red;
   }
 }

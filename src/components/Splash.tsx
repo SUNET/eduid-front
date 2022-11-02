@@ -12,6 +12,7 @@ export const spinnerOpts = {
 interface SplashProps {
   showChildren: boolean;
   children?: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -48,8 +49,10 @@ export default function Splash(props: SplashProps): JSX.Element {
    * and is rendered as long as showChildren is false.
    */
   return (
-    <div id="eduid-splash-and-children">
-      {!showChildren && <span ref={eduidSplash} id="eduid-splash-spinner"></span>}
+    <div className="eduid-splash-and-children" id="splash">
+      {!showChildren && (
+        <span ref={eduidSplash} className={`${props.className ? props.className : "eduid-splash-spinner"}`}></span>
+      )}
       {children}
     </div>
   );
