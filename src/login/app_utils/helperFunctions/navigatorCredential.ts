@@ -68,22 +68,22 @@ export const createCredential = createAsyncThunk(
   "eduid/credentials/createCredential",
   async (webauthn_challenge: string, thunkAPI): Promise<webauthnAttestation | undefined> => {
     const decoded_challenge = decodeChallenge(webauthn_challenge);
-    const credential = await navigator.credentials
-      .create(decoded_challenge)
-      .then()
-      .catch(() => {
-        // create credential failed / cancelled
-        return thunkAPI.rejectWithValue("Create credential failed, or was cancelled");
-      });
-
-    if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAttestationResponse) {
-      // encode the credential into strings that can be stored in the state
-      const encoded_credential: webauthnAttestation = {
-        attestationObject: safeEncode(credential.response.attestationObject),
-        clientDataJSON: safeEncode(credential.response.clientDataJSON),
-        credentialId: safeEncode(credential.rawId),
-      };
-      return encoded_credential;
+    const credential = await navigator.credentials.create(decoded_challenge);
+    try {
+      if (
+        credential instanceof PublicKeyCredential &&
+        credential.response instanceof AuthenticatorAttestationResponse
+      ) {
+        // encode the credential into strings that can be stored in the state
+        const encoded_credential: webauthnAttestation = {
+          attestationObject: safeEncode(credential.response.attestationObject),
+          clientDataJSON: safeEncode(credential.response.clientDataJSON),
+          credentialId: safeEncode(credential.rawId),
+        };
+        return encoded_credential;
+      }
+    } catch (e) {
+      thunkAPI.rejectWithValue("Credential creation failed, or was cancelled");
     }
   }
 );
