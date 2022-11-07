@@ -85,9 +85,7 @@ export const userProfile = {
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */
-  "letter.button_text_code": (
-    <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter confirmation code here`} />
-  ),
+  "letter.button_text_code": <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter code here`} />,
 
   "letter.no_state_found": <FormattedMessage id="letter.no_state_found" defaultMessage={`No state found`} />,
 
@@ -111,10 +109,10 @@ export const userVetting = {
   ),
 
   "letter.saved-unconfirmed": (
-    <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with confirmation code has been sent.`} />
+    <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with a code has been sent.`} />
   ),
 
-  "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect verification code`} />,
+  "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect code`} />,
 
   "letter.verification_success": (
     <FormattedMessage id="letter.verification_success" defaultMessage={`Successfully verified national id number`} />
@@ -128,9 +126,7 @@ export const userVetting = {
 
   "lmp.button_text_request": <FormattedMessage id="lmp.button_text_request" defaultMessage={`by phone`} />,
 
-  "lmp.button_text_code": (
-    <FormattedMessage id="lmp.button_text_code" defaultMessage={`Enter confirmation code here`} />
-  ),
+  "lmp.button_text_code": <FormattedMessage id="lmp.button_text_code" defaultMessage={`Enter code here`} />,
 
   "lmp.initialize_proofing_help_text_tip_1": (
     <FormattedMessage
@@ -422,7 +418,7 @@ export const userData = {
   "still-valid-code": (
     <FormattedMessage
       id="still-valid-code"
-      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+      defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 
@@ -437,7 +433,7 @@ export const userData = {
   "phones.add_new": (
     <FormattedMessage
       id="phones.add_new"
-      defaultMessage={`A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers.`}
+      defaultMessage={`A new phone number will receive a code for you to use by clicking Confirm in the list of numbers.`}
     />
   ),
 
@@ -459,10 +455,10 @@ export const userData = {
   ),
 
   "phones.code_expired_send_new": (
-    <FormattedMessage id="phones.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
+    <FormattedMessage id="phones.code_expired_send_new" defaultMessage={`Expired code, sending another`} />
   ),
 
-  "phones.code_invalid": <FormattedMessage id="phones.code_invalid" defaultMessage={`Invalid verification code`} />,
+  "phones.code_invalid": <FormattedMessage id="phones.code_invalid" defaultMessage={`Invalid code`} />,
 
   "phones.invalid_phone": <FormattedMessage id="phones.invalid_phone" defaultMessage={`Invalid phone number`} />,
 
@@ -473,7 +469,7 @@ export const userData = {
   "phones.code_invalid_or_expired": (
     <FormattedMessage
       id="phones.code_invalid_or_expired"
-      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
+      defaultMessage={`The code is invalid or it has expired, please try again or request a new code`}
     />
   ),
 
@@ -496,7 +492,7 @@ export const userData = {
     <FormattedMessage id="phones.removal-success" defaultMessage={`Successfully removed phone number`} />
   ),
 
-  "phones.code-sent": <FormattedMessage id="phones.code-sent" defaultMessage={`Successfully sent verification code`} />,
+  "phones.code-sent": <FormattedMessage id="phones.code-sent" defaultMessage={`Successfully sent a code`} />,
 
   "phone.e164_format": (
     <FormattedMessage
@@ -542,14 +538,14 @@ export const userData = {
   "emails.code_invalid": (
     <FormattedMessage
       id="emails.code_invalid"
-      defaultMessage={`The confirmation code is invalid, please try again or request a new code`}
+      defaultMessage={`The code is invalid, please try again or request a new code`}
     />
   ),
 
   "emails.code_invalid_or_expired": (
     <FormattedMessage
       id="emails.code_invalid_or_expired"
-      defaultMessage={`The confirmation code is invalid or has expired, please try again or request a new code`}
+      defaultMessage={`The code is invalid or has expired, please try again or request a new code`}
     />
   ),
 
@@ -558,7 +554,7 @@ export const userData = {
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
-      defaultMessage={`A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
+      defaultMessage={`A new email address will receive a link to click or a code that can be used by clicking Confirm in the list of email addresses.`}
     />
   ),
 
@@ -580,7 +576,7 @@ export const userData = {
   ),
 
   "emails.code_expired_send_new": (
-    <FormattedMessage id="emails.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
+    <FormattedMessage id="emails.code_expired_send_new" defaultMessage={`Expired code, sending another`} />
   ),
 
   "emails.verification-success": (
@@ -602,7 +598,7 @@ export const userData = {
     <FormattedMessage id="emails.removal-success" defaultMessage={`Successfully removed email address`} />
   ),
 
-  "emails.code-sent": <FormattedMessage id="emails.code-sent" defaultMessage={`Successfully sent verification code`} />,
+  "emails.code-sent": <FormattedMessage id="emails.code-sent" defaultMessage={`Successfully sent a code`} />,
 
   "emails.cannot_remove_primary": (
     <FormattedMessage id="emails.cannot_remove_primary" defaultMessage={`You can not delete the primary email`} />

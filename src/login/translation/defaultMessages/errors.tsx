@@ -33,7 +33,7 @@ export const generalErrors = {
     />
   ),
 
-  "code.unknown-code": <FormattedMessage id="code.unknown-code" defaultMessage={`Unknown verification code`} />,
+  "code.unknown-code": <FormattedMessage id="code.unknown-code" defaultMessage={`Unknown code`} />,
 
   // system errors
   error_navet_task: <FormattedMessage id="error_navet_task" defaultMessage={`Communication problem with Navet`} />,
@@ -184,9 +184,17 @@ export const specificErrors = {
   "eidas.authn_context_mismatch": (
     <FormattedMessage id="eidas.authn_context_mismatch" defaultMessage={`Wrong authentication context received`} />
   ),
+  // OLD
   "eidas.nin_not_matching": (
     <FormattedMessage
       id="eidas.nin_not_matching"
+      defaultMessage={`The identity does not match the one verified for this eduID`}
+    />
+  ),
+  // NEW
+  "eidas.identity_not_matching": (
+    <FormattedMessage
+      id="eidas.identity_not_matching"
       defaultMessage={`The identity does not match the one verified for this eduID`}
     />
   ),

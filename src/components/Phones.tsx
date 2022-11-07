@@ -105,7 +105,7 @@ function Phones() {
 
   const modalPlaceholder = intl.formatMessage({
     id: "mobile.confirm_mobile_placeholder",
-    defaultMessage: "Phone confirmation code",
+    defaultMessage: "Code",
     description: "placeholder text for phone code input",
   });
 
@@ -214,11 +214,11 @@ function Phones() {
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}
-        modalFormLabel={<FormattedMessage description="enter confirmation code" defaultMessage={`Confirmation code`} />}
+        modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>
-              <FormattedMessage description="resend code" defaultMessage={`Send a new confirmation code`} />
+              <FormattedMessage description="resend code" defaultMessage={`Send a new code`} />
             </a>
           </div>
         }

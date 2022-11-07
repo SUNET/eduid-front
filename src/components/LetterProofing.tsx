@@ -1,13 +1,10 @@
-import { FormattedMessage } from "react-intl";
+import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import { isValid } from "redux-form";
-import { useDashboardAppDispatch } from "dashboard-hooks";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
-import { useDashboardAppSelector } from "dashboard-hooks";
 import EduIDButton from "./EduIDButton";
 
 export interface LetterProofingProps {
@@ -17,13 +14,12 @@ export interface LetterProofingProps {
 export default function LetterProofing(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const nins = useDashboardAppSelector((state) => state.identities);
+  const identities = useDashboardAppSelector((state) => state.identities);
   const letter_expired = useDashboardAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useDashboardAppSelector((state) => state.letter_proofing.letter_sent);
   const letter_expires_date = useDashboardAppSelector((state) => state.letter_proofing.letter_expires);
   const disabled: boolean = props.disabled;
-  const swedishNin = isValid("nins")(nins);
-  const requestLetterAllowed = swedishNin || letter_expired;
+  const requestLetterAllowed = identities.nin?.number || letter_expired;
   const dispatch = useDashboardAppDispatch();
 
   useEffect(() => {
@@ -129,7 +125,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "letter.placeholder",
-    defaultMessage: "Letter confirmation code",
+    defaultMessage: "Code",
     description: "Placeholder for letter proofing text input",
   });
 
@@ -152,7 +148,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         id="letter-confirm-modal"
         title={
           <FormattedMessage
-            defaultMessage="Use a confirmation code sent by post to your address"
+            defaultMessage="Use a code sent by post to your address"
             description="explanation text for letter proofing"
           />
         }
@@ -180,9 +176,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
-        modalFormLabel={
-          <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
-        }
+        modalFormLabel={<FormattedMessage defaultMessage="Code" description="letter proofing modal form label" />}
         validationError={"confirmation.code_invalid_format"}
         validationPattern={shortCodePattern}
       />

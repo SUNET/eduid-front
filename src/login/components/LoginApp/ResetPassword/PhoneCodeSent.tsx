@@ -46,7 +46,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "mobile.confirm_mobile_placeholder",
-    defaultMessage: "Phone confirmation code",
+    defaultMessage: "Code",
     description: "placeholder text for phone code input",
   });
 
@@ -76,10 +76,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
               componentClass="input"
               type="text"
               label={
-                <FormattedMessage
-                  defaultMessage="Confirmation code"
-                  description="Reset Password phone code sent (Input label)"
-                />
+                <FormattedMessage defaultMessage="Code" description="Reset Password phone code sent (Input label)" />
               }
               name="phone"
             />
@@ -135,7 +132,7 @@ function PhoneCodeSent(): JSX.Element | null {
       <PhoneCodeForm emailCode={emailCode} />
       <div className="timer">
         <a id={"resend-phone"} onClick={resendPhoneCode}>
-          <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
+          <FormattedMessage defaultMessage="Send a new code" description="resend code" />
         </a>
         <span id="timer-in" className="display-none">
           <FormattedMessage defaultMessage="in" description="Reset Password phone code sent" />

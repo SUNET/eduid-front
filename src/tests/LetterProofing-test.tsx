@@ -53,7 +53,7 @@ test("renders LetterProofing, expired letter enabled to resend letter", async ()
     button.click();
   });
   await waitFor(() => {
-    expect(screen.getByText(/Use a confirmation code sent by post to your address/i)).toBeInTheDocument();
+    expect(screen.getByText(/Use a code sent by post to your address/i)).toBeInTheDocument();
   });
 
   const modalConfirmButton = screen.getByRole("button", { name: /Accept/i });

@@ -12,8 +12,8 @@ export const leftoverMessages = {
   "confirmation.code_invalid_format": (
     <FormattedMessage
       id="confirmation.code_invalid_format"
-      defaultMessage={`Invalid confirmation code`}
-      description="error text for invalid confirmation code"
+      defaultMessage={`Invalid code`}
+      description="error text for invalid code"
     />
   ),
   "security.description_invalid_format": (
@@ -40,7 +40,7 @@ export const leftoverMessages = {
   "letter.lost_code": (
     <FormattedMessage
       id="letter.lost_code"
-      defaultMessage={`When you click on the "Send code" link a letter with a verification code will be sent to your official post address.`}
+      defaultMessage={`When you click on the "Send code" link a letter with a code will be sent to your official post address.`}
       description="Text for letter proofing confirm dialog"
     />
   ),

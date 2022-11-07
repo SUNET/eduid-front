@@ -1,10 +1,10 @@
 import { translate, UNKNOWN_MESSAGE } from "login/translation";
-import React from "react";
+import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
 import { eduidNotification, notificationLevel } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import * as actions from "reducers/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 
 export function Notifications(): JSX.Element | null {
   const debug = useDashboardAppSelector((state) => state.config.debug);
@@ -14,9 +14,15 @@ export function Notifications(): JSX.Element | null {
 
   const intl = useIntl();
 
+  useEffect(() => {
+    if (info && info?.message.endsWith("_success")) {
+      dispatch(clearNotifications());
+    }
+  }, [info]);
+
   function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    dispatch(actions.clearNotifications());
+    dispatch(clearNotifications());
   }
 
   // show errors first, information second

@@ -29,13 +29,13 @@ export const generalApp = {
 
   "cm.close": <FormattedMessage id="cm.close" defaultMessage={`CLOSE`} />,
 
-  "cm.enter_code": <FormattedMessage id="cm.enter_code" defaultMessage={`Confirmation code`} />,
+  "cm.enter_code": <FormattedMessage id="cm.enter_code" defaultMessage={`Code`} />,
 
   // code still valid
   "still-valid-code": (
     <FormattedMessage
       id="still-valid-code"
-      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+      defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 

@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
+import { clearNotifications } from "reducers/Notifications";
 
 interface UsernamePwFormData {
   email?: string;
@@ -155,6 +156,7 @@ function RenderResetPasswordLink(): JSX.Element {
     if ((emailField.input.value && emailField.meta.valid) || !emailField.input.value) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
     }
+    dispatch(clearNotifications());
     navigate("/reset-password/");
   };
 

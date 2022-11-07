@@ -1,11 +1,6 @@
 // This ensures you can use `window.fetch()` in your Jest tests.
 require("whatwg-fetch");
 
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import { configure } from "enzyme";
-
-configure({ adapter: new Adapter() });
-
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)

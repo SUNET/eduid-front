@@ -15,6 +15,10 @@
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
   },
+  "/O9rcw": {
+    "developer_comment": "letter proofing modal form label",
+    "string": "Code"
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -50,6 +54,10 @@
   "17FW6Y": {
     "developer_comment": "profile name display title",
     "string": "Name"
+  },
+  "19fREK": {
+    "developer_comment": "security verified",
+    "string": "Verified"
   },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
@@ -201,6 +209,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9w+urv": {
+    "developer_comment": "Dashboard change password button text",
+    "string": "Change password"
+  },
   "A2MTya": {
     "developer_comment": "add webauthn token key",
     "string": "security key"
@@ -216,6 +228,10 @@
   "ARpH/T": {
     "developer_comment": "Phones input help text",
     "string": "Phone number starting with 0 or +"
+  },
+  "AZ7oSU": {
+    "developer_comment": "Reset Password phone code sent (Input label)",
+    "string": "Code"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -386,9 +402,21 @@
     "developer_comment": "confirm button",
     "string": "confirm"
   },
+  "J3IlyU": {
+    "developer_comment": "resend code",
+    "string": "Send a new code"
+  },
+  "JjB0Cs": {
+    "developer_comment": "security verify",
+    "string": "Verify key"
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
+  },
+  "KV3/EM": {
+    "developer_comment": "Help text for email code",
+    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
@@ -404,6 +432,10 @@
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
+  },
+  "KlKDP2": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Use a code sent by post to your address"
   },
   "KpcTvu": {
     "developer_comment": "button add",
@@ -529,6 +561,14 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
   },
+  "Q3aPtX": {
+    "developer_comment": "phones modal form label",
+    "string": "Code"
+  },
+  "QLJcC4": {
+    "developer_comment": "security last used date",
+    "string": "Never used"
+  },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Delete my eduID"
@@ -551,6 +591,10 @@
   "RmZQLb": {
     "developer_comment": "tou.header",
     "string": "General rules for eduID users"
+  },
+  "Rv0ENK": {
+    "developer_comment": "Dashboard change password modal main text",
+    "string": "You will need to log in again to change your password."
   },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
@@ -601,6 +645,10 @@
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
   },
+  "TpraxF": {
+    "developer_comment": "Dashboard change password modal title",
+    "string": "For security reasons..."
+  },
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ + _ %"
@@ -640,10 +688,6 @@
     "developer_comment": "Header login",
     "string": "Log in"
   },
-  "Vlh8Dn": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Use a confirmation code sent by post to your address"
-  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
@@ -655,6 +699,10 @@
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
+  },
+  "WOHMLr": {
+    "developer_comment": "Dashboard change password link description text",
+    "string": "Click the link to change your eduID password."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -684,13 +732,13 @@
     "developer_comment": "go to eudID link text",
     "string": "Go to my eduID"
   },
+  "YJQhMp": {
+    "developer_comment": "security second factor",
+    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
+  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you first need to create a digital ID-card in the {freja_eid_link} app."
-  },
-  "YdEGFD": {
-    "developer_comment": "Help text for email confirmation code",
-    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   "YqZO+p": {
     "developer_comment": "Login button",
@@ -711,6 +759,10 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
+  },
+  "ZN7bfi": {
+    "developer_comment": "security creation date",
+    "string": "Created on"
   },
   "ZQcORE": {
     "developer_comment": "Phones long description",
@@ -754,13 +806,13 @@
   "add_nin.main_title": {
     "string": "Add your id number"
   },
-  "am92D3": {
-    "developer_comment": "resend code",
-    "string": "Send a new confirmation code"
-  },
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verify your eduID with a Swedish national ID number."
+  },
+  "bCIMPQ": {
+    "developer_comment": "security key title",
+    "string": "Make your eduID more secure"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -847,7 +899,7 @@
     "string": "CLOSE"
   },
   "cm.enter_code": {
-    "string": "Confirmation code"
+    "string": "Code"
   },
   "cm.finish": {
     "string": "FINISH"
@@ -863,11 +915,11 @@
     "string": "Log in using another device"
   },
   "code.unknown-code": {
-    "string": "Unknown verification code"
+    "string": "Unknown code"
   },
   "confirmation.code_invalid_format": {
-    "developer_comment": "error text for invalid confirmation code",
-    "string": "Invalid confirmation code"
+    "developer_comment": "error text for invalid code",
+    "string": "Invalid code"
   },
   "created.back_to_signup": {
     "string": "Back to signup"
@@ -1003,7 +1055,7 @@
     "string": "The entered email is invalid"
   },
   "emails.add_new": {
-    "string": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
+    "string": "A new email address will receive a link to click or a code that can be used by clicking Confirm in the list of email addresses."
   },
   "emails.button_add": {
     "string": "Add"
@@ -1018,16 +1070,16 @@
     "string": "You must have at least one verified email address"
   },
   "emails.code-sent": {
-    "string": "Successfully sent verification code"
+    "string": "Successfully sent a code"
   },
   "emails.code_expired_send_new": {
-    "string": "Expired verification code, sending another"
+    "string": "Expired code, sending another"
   },
   "emails.code_invalid": {
-    "string": "The confirmation code is invalid, please try again or request a new code"
+    "string": "The code is invalid, please try again or request a new code"
   },
   "emails.code_invalid_or_expired": {
-    "string": "The confirmation code is invalid or has expired, please try again or request a new code"
+    "string": "The code is invalid or has expired, please try again or request a new code"
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
@@ -1068,9 +1120,6 @@
   },
   "emails.verification-success": {
     "string": "Successfully verified email address"
-  },
-  "enter confirmation code": {
-    "string": "Confirmation code"
   },
   "error_in_form": {
     "string": "Check the form below for errors."
@@ -1202,10 +1251,6 @@
     "developer_comment": "Phones main title",
     "string": "Mobile phone numbers"
   },
-  "j0jEk2": {
-    "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Confirmation code"
-  },
   "j8KKR3": {
     "developer_comment": "platform authn help text",
     "string": "E.g. USB Security Key, Touch ID or Face ID."
@@ -1265,14 +1310,14 @@
     "string": "The registered postal address is not a valid address"
   },
   "letter.button_text_code": {
-    "string": "Enter confirmation code here"
+    "string": "Enter code here"
   },
   "letter.letter_sent_msg": {
     "string": "You have been sent a verification letter"
   },
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
-    "string": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
+    "string": "When you click on the \"Send code\" link a letter with a code will be sent to your official post address."
   },
   "letter.no-address-found": {
     "string": "No postal address found"
@@ -1285,23 +1330,23 @@
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
-    "string": "Letter confirmation code"
+    "string": "Code"
   },
   "letter.resend_code": {
     "developer_comment": "Text for letter code resend button",
     "string": "Send code"
   },
   "letter.saved-unconfirmed": {
-    "string": "A letter with confirmation code has been sent."
+    "string": "A letter with a code has been sent."
   },
   "letter.verification_success": {
     "string": "Successfully verified national id number"
   },
   "letter.wrong-code": {
-    "string": "Incorrect verification code"
+    "string": "Incorrect code"
   },
   "lmp.button_text_code": {
-    "string": "Enter confirmation code here"
+    "string": "Enter code here"
   },
   "lmp.button_text_request": {
     "string": "by phone"
@@ -1445,7 +1490,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Phone confirmation code"
+    "string": "Code"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -1511,13 +1556,13 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
+  "nw6cAK": {
+    "developer_comment": "security description name",
+    "string": "Name"
+  },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action may be taken."
-  },
-  "oFfq/i": {
-    "developer_comment": "enter confirmation code",
-    "string": "Confirmation code"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -1677,7 +1722,7 @@
     "string": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 6-20 digits."
   },
   "phones.add_new": {
-    "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of phone numbers."
+    "string": "A new phone number will receive a code for you to use by clicking Confirm in the list of numbers."
   },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
@@ -1686,16 +1731,16 @@
     "string": "You must have at least one phone number"
   },
   "phones.code-sent": {
-    "string": "Successfully sent verification code"
+    "string": "Successfully sent a code"
   },
   "phones.code_expired_send_new": {
-    "string": "Expired verification code, sending another"
+    "string": "Expired code, sending another"
   },
   "phones.code_invalid": {
-    "string": "Invalid verification code"
+    "string": "Invalid code"
   },
   "phones.code_invalid_or_expired": {
-    "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
+    "string": "The code is invalid or it has expired, please try again or request a new code"
   },
   "phones.duplicated": {
     "string": "The number is already in the list."
@@ -1778,10 +1823,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
   },
-  "q4ENsq": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Confirmation code"
-  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
@@ -1793,6 +1834,10 @@
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
+  },
+  "qlQT0W": {
+    "developer_comment": "Dashboard change password",
+    "string": "Change password"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
@@ -1862,7 +1907,7 @@
     "string": "New password"
   },
   "resetpw.phone-code-unknown": {
-    "string": "Incorrect phone code."
+    "string": "Incorrect code."
   },
   "resetpw.phone-invalid": {
     "string": "Invalid phone number."
@@ -1880,10 +1925,10 @@
     "string": "return to Login"
   },
   "resetpw.send-sms-failed": {
-    "string": "Failed to send phone code."
+    "string": "Failed to send a code"
   },
   "resetpw.send-sms-success": {
-    "string": "A verification code has been sent to your phone."
+    "string": "A code has been sent to your phone."
   },
   "resetpw.set-new-password-description": {
     "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
@@ -1895,7 +1940,7 @@
     "string": "Password has been updated."
   },
   "resetpw.sms-throttled": {
-    "string": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+    "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
   "resetpw.state-not-found": {
     "string": "Could not continue the reset password process. Please try again."
@@ -1916,6 +1961,9 @@
     "developer_comment": "profile name display no data",
     "string": "add name"
   },
+  "security last used": {
+    "string": "Used on"
+  },
   "security.add_u2f_token": {
     "string": "Add U2F token"
   },
@@ -1925,24 +1973,12 @@
   "security.add_webauthn_token_key": {
     "string": "Add security key"
   },
-  "security.creation_date": {
-    "string": "Created on"
-  },
   "security.credential": {
     "string": "Credential"
-  },
-  "security.description": {
-    "string": "Name"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
     "string": "The description is too long"
-  },
-  "security.last-used.date": {
-    "string": "Never used"
-  },
-  "security.last_used": {
-    "string": "Used on"
   },
   "security.main_title": {
     "string": "Security"
@@ -1959,12 +1995,6 @@
   },
   "security.remove": {
     "string": "Remove"
-  },
-  "security.second-factor": {
-    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
-  },
-  "security.security-key_title": {
-    "string": "Make your eduID more secure"
   },
   "security.stale_authn_info": {
     "string": "The authentication expired. Please try again."
@@ -2005,12 +2035,6 @@
   "security.user-updated": {
     "string": "First and last names are up-to-date with those registered in the Swedish Population Register."
   },
-  "security.verified": {
-    "string": "Verified"
-  },
-  "security.verify": {
-    "string": "Verify key"
-  },
   "security.webauthn-attestation-fail": {
     "string": "Failed to verify the attestation for the security key."
   },
@@ -2035,26 +2059,6 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
-  "settings.change_info": {
-    "developer_comment": "Dashboard change password",
-    "string": "You will need to log in again to change your password."
-  },
-  "settings.change_password": {
-    "developer_comment": "Dashboard change password",
-    "string": "Change password"
-  },
-  "settings.confirm_title_chpass": {
-    "developer_comment": "Dashboard change password",
-    "string": "For security reasons..."
-  },
-  "settings.long_description": {
-    "developer_comment": "Dashboard change password",
-    "string": "Click the link to change your eduID password."
-  },
-  "settings.main_title": {
-    "developer_comment": "Dashboard change password",
-    "string": "Change password"
-  },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again."
   },
@@ -2071,7 +2075,7 @@
     "string": "Verification email resent"
   },
   "still-valid-code": {
-    "string": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+    "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
   "t0C4LH": {
     "developer_comment": "verify identity connect nin",
@@ -2088,6 +2092,10 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
+  },
+  "tVcCe6": {
+    "developer_comment": "emails enter code",
+    "string": "Code"
   },
   "tl.make_primary": {
     "string": "MAKE PRIMARY"

@@ -174,20 +174,15 @@ export const resetPassword = {
   "resetpw.sms-throttled": (
     <FormattedMessage
       id="resetpw.sms-throttled"
-      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+      defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 
   "resetpw.send-sms-success": (
-    <FormattedMessage
-      id="resetpw.send-sms-success"
-      defaultMessage={`One time verification code has been sent to your phone.`}
-    />
+    <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`A code has been sent to your phone.`} />
   ),
 
-  "resetpw.send-sms-failed": (
-    <FormattedMessage id="resetpw.send-sms-failed" defaultMessage={`Failed to send phone code`} />
-  ),
+  "resetpw.send-sms-failed": <FormattedMessage id="resetpw.send-sms-failed" defaultMessage={`Failed to send code`} />,
 
   "resetpw.expired-phone-code": (
     <FormattedMessage
@@ -201,7 +196,7 @@ export const resetPassword = {
   "resetpw.go-to-eduid": <FormattedMessage id="resetpw.go-to-eduid" defaultMessage={`Go to eduID`} />,
   "resetpw.new-password": <FormattedMessage id="resetpw.new-password" defaultMessage={`New password`} />,
   "resetpw.phone-code-unknown": (
-    <FormattedMessage id="resetpw.phone-code-unknown" defaultMessage={`Incorrect phone code. `} />
+    <FormattedMessage id="resetpw.phone-code-unknown" defaultMessage={`Incorrect code. `} />
   ),
   "resetpw.phone-invalid": <FormattedMessage id="resetpw.phone-invalid" defaultMessage={`Invalid phone number.`} />,
   "resetpw.pw-reset-fail": (
