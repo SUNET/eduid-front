@@ -31,7 +31,7 @@ export const loginTestState: LoginRootState = {
 
 interface renderArgs {
   state?: Partial<LoginRootState>;
-  options?: RenderOptions;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 

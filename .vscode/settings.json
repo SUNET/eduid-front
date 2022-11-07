@@ -56,11 +56,13 @@
     "tapit",
     "testid",
     "trycaptcha",
+    "Typegen",
     "urldecode",
     "urlencode",
     "Userdata",
     "USERNAMEPASSWORD",
     "webauthn",
+    "xstate",
     "zxcvbn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
@@ -72,11 +74,17 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -85,5 +93,6 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
-  }
+  },
+  "javascript.preferences.importModuleSpecifier": "non-relative"
 }

@@ -1,14 +1,15 @@
 import CodeVerified from "components/CodeVerified";
 import Header from "components/Header";
-import Splash from "components/Splash";
 import { Notifications } from "components/Notifications";
+import Splash from "components/Splash";
 import Footer from "login/components/Footer/Footer";
-import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
+import "login/styles/index.scss";
 import React, { useEffect } from "react";
+import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
-import "../login/styles/index.scss";
-import { useIntl } from "react-intl";
+import { SignupApp } from "./SignupApp";
+import { SignupGlobalStateProvider } from "./SignupGlobalState";
 
 // export for use in tests
 export const SIGNUP_BASE_PATH = "/register";
@@ -33,13 +34,13 @@ export function SignupMain(): JSX.Element {
       <section id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <div id="content" className="horizontal-content-margin content">
+          <SignupGlobalStateProvider>
             <Routes>
-              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<RegisterEmail />} />
               <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-              <Route path={SIGNUP_BASE_PATH} element={<Navigate to={`${SIGNUP_BASE_PATH}/email`} />} />
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
             </Routes>
-          </div>
+          </SignupGlobalStateProvider>
         </Splash>
       </section>
       <Footer />
