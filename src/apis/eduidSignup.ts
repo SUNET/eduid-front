@@ -74,7 +74,7 @@ export const getCaptchaRequest = createAsyncThunk<
   GetCaptchaResponse, // return type
   undefined, // args type
   { dispatch: SignupAppDispatch; state: SignupRootState }
->("signup/sendCaptchaResponse", async (args, thunkAPI) => {
+>("signup/getCaptchaRequest", async (args, thunkAPI) => {
   const body: KeyValues = {};
 
   return makeSignupRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
@@ -351,8 +351,6 @@ function makeSignupRequest<T>(
   function updateState(action: PayloadAction<T, string, never, boolean>, thunkAPI: RequestThunkAPI) {
     if (isSignupStateResponse(action)) {
       thunkAPI.dispatch(signupSlice.actions.setSignupState(action.payload.state));
-    } else {
-      console.error("Not an SignupStatusResponse", action);
     }
     return action;
   }
