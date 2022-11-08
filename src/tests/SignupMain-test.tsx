@@ -1,4 +1,4 @@
-import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
+import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { fireEvent, render, screen, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
 
 test("show splash screen when not configured", () => {

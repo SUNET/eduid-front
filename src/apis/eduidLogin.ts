@@ -5,6 +5,7 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
+import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -239,13 +240,14 @@ export interface LoginNextResponse {
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };
 
 export interface LoginAuthnOptions {
+  display_name?: string;
+  forced_username?: string;
   freja_eidplus?: boolean;
+  has_session?: boolean;
   other_device?: boolean;
   password?: boolean;
-  forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
-  display_name?: string;
 }
 
 /**
@@ -282,6 +284,35 @@ export const fetchNewDevice = createAsyncThunk<
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/fetchNewDevice", async (args, thunkAPI) => {
   return makeLoginRequest<LoginNewDeviceResponse>(thunkAPI, "new_device", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginMfaAuthRequest {
+  ref: string;
+  webauthn_response?: webauthnAssertion;
+}
+
+export interface LoginMfaAuthResponse {
+  // The response from the /mfa_auth API endpoint consists of (in the happy case):
+  //   finished: true if backend thinks mfa_auth requirement is satisfied
+  //   webauthn_options: base64-encoded webauthn challenge to pass to navigator.credentials.get()
+  finished: boolean;
+  webauthn_options?: string;
+}
+
+/**
+ * @public
+ * @function fetchMfaAuth
+ * @desc     Access the mfa_auth backend endpoint.
+ */
+export const fetchMfaAuth = createAsyncThunk<
+  LoginMfaAuthResponse, // return type
+  LoginMfaAuthRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchMfaAuth", async (args, thunkAPI) => {
+  return makeLoginRequest<LoginMfaAuthResponse>(thunkAPI, "mfa_auth", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

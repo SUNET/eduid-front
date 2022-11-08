@@ -1,38 +1,54 @@
-import React from "react";
+import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import EduIDButton from "components/EduIDButton";
-import { useAppSelector } from "../../../app_init/hooks";
-import { translate } from "login/translation";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
+import { FormattedMessage } from "react-intl";
 
-function FrejaeID(): JSX.Element | null {
-  // compose external link
-  const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
-  const idp = useAppSelector((state) => state.config.mfa_auth_idp);
-  const startUrl = useAppSelector((state) => state.login.start_url);
+export function FrejaeID(): JSX.Element {
+  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const ref = useAppSelector((state) => state.login.ref);
+  const dispatch = useAppDispatch();
+  const notAvailable = !authn_options.freja_eidplus;
 
-  if (!frejaUrlDomain) {
-    return null;
+  async function handleOnClick() {
+    const response = await dispatch(
+      eidasMfaAuthenticate({ method: "freja", frontend_action: "loginMfaAuthn", frontend_state: ref })
+    );
+    if (eidasMfaAuthenticate.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    }
   }
-
-  // ensure url has one slash at the end to be functional in the link
-  const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
   return (
     <div className="option-wrapper">
       <div className="option">
-        <h4>{translate("login.mfa.secondary-option.title")}</h4>
+        <h4>
+          <FormattedMessage defaultMessage={`Freja eID+`} />
+        </h4>
+
+        {notAvailable && (
+          <p className="help-text">
+            <FormattedMessage
+              description="MFA Freja help text"
+              defaultMessage="Requires a confirmed Swedish national identity number."
+            />
+          </p>
+        )}
+
         <EduIDButton
           buttonstyle="secondary"
           type="submit"
-          onClick={() => {
-            window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;
-          }}
+          onClick={handleOnClick}
           id="mfa-freja"
+          disabled={notAvailable}
         >
-          {translate("login.mfa.secondary-option.button")}
+          <FormattedMessage
+            defaultMessage={`Use my {freja_eidplus_verbatim}`}
+            values={{ freja_eidplus_verbatim: <span className="verbatim">Freja&nbsp;eID+</span> }}
+          />
         </EduIDButton>
       </div>
     </div>
   );
 }
-
-export default FrejaeID;

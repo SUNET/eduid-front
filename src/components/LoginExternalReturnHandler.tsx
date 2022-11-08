@@ -1,5 +1,5 @@
 import { eidasGetStatus } from "apis/eduidEidas";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
@@ -10,10 +10,15 @@ interface LoginParams {
   authn_id?: string;
 }
 
-export function ExternalReturnHandler() {
-  const dispatch = useDashboardAppDispatch();
+// These match config (frontend_action_finish_url in eduid-eidas) in the backend and are used to
+// get back to where the user was before starting the external authentication process.
+//export type LoginEidasFrontendAction = "loginMfaAuthn";
+
+export function LoginExternalReturnHandler() {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
+  const app_loaded = useAppSelector((state) => state.app.is_loaded);
 
   async function fetchStatus(authn_id: string) {
     const response = await dispatch(eidasGetStatus({ authn_id: authn_id }));
@@ -27,11 +32,10 @@ export function ExternalReturnHandler() {
         }
 
         if (status.frontend_action) {
-          // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
+          // actionToRoute is a mapping from frontend_action values to where in the Login application
           // the user should be returned to
           const actionToRoute: { [key: string]: string } = {
-            eidasVerifyIdentity: "/profile/verify-identity/",
-            eidasVerifyCredential: "/profile/settings/advanced-settings/",
+            loginMfaAuthn: `/login/${status.frontend_state}`,
           };
           const _path = actionToRoute[status.frontend_action];
           if (_path) {
@@ -40,16 +44,18 @@ export function ExternalReturnHandler() {
           }
         }
 
-        navigate("/profile/"); // GOTO start
+        // TODO: Navigate to errors page here
+        navigate("/login/"); // GOTO start
       }
     }
   }
 
   useEffect(() => {
-    if (params.authn_id) {
+    // have to wait for the app to be loaded (jsconfig completed) before we can fetch the status
+    if (params.authn_id && app_loaded) {
       fetchStatus(params.authn_id);
     }
-  }, [params]);
+  }, [params, app_loaded]);
 
   return null;
 }

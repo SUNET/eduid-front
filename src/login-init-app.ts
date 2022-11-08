@@ -6,7 +6,6 @@ import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import notifyAndDispatch from "notify-middleware";
 import intlSlice from "reducers/Internationalisation";
 import { notificationsSlice } from "reducers/Notifications";
-import { reducer as formReducer } from "redux-form";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import configSlice from "./reducers/LoginConfig";
@@ -21,7 +20,6 @@ export const loginStore = configureStore({
     app: appReducer,
     login: loginSlice.reducer,
     notifications: notificationsSlice.reducer,
-    form: formReducer,
     intl: intlSlice.reducer,
     resetPassword: resetPasswordSlice.reducer,
   },
@@ -38,7 +36,6 @@ export function getTestLoginStore(preloadedState: Partial<LoginRootState>) {
       app: appReducer,
       login: loginSlice.reducer,
       notifications: notificationsSlice.reducer,
-      form: formReducer,
       intl: intlSlice.reducer,
       resetPassword: resetPasswordSlice.reducer,
     },

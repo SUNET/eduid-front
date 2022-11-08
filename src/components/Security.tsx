@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
-import EduIDButton from "components/EduIDButton";
-import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModal";
-import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
-import { FormattedMessage, useIntl } from "react-intl";
-import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
+import { postUserdata } from "actions/PersonalData";
+import { eidasVerifyCredential } from "apis/eduidEidas";
 import {
   beginRegisterWebauthn,
   CredentialType,
@@ -13,16 +8,20 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
-import { clearNotifications } from "reducers/Notifications";
-import securitySlice from "reducers/Security";
+import EduIDButton from "components/EduIDButton";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
-import { eidasVerifyCredential } from "apis/eduidEidas";
+import validatePersonalData from "login/app_utils/validation/validatePersonalData";
 import { RenderEditableNames } from "login/components/PersonalData/PersonalDataForm";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
+import React, { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
-import validatePersonalData from "login/app_utils/validation/validatePersonalData";
+import { FormattedMessage, useIntl } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { PersonalDataData } from "reducers/PersonalData";
-import { postUserdata } from "actions/PersonalData";
+import securitySlice from "reducers/Security";
+import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 
 export function Security(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
@@ -45,7 +44,7 @@ export function Security(): JSX.Element | null {
       // Check if platform authentication is available through the navigator.credentials API.
       // Disable the spinner when we know the answer.
 
-      let aborted = false; // flag to avoid updating unmounted components after this async promise resolves
+      let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
       let platform = false;
       if (window.PublicKeyCredential) {

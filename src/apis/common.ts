@@ -151,5 +151,9 @@ export function makeBareRequest<T>(
 
 // type predicate to help identify rejected payloads from backend.
 export function isFSA(action: any): action is PayloadAction {
-  return "type" in action && "payload" in action;
+  try {
+    return "type" in action && "payload" in action;
+  } catch {
+    return false;
+  }
 }

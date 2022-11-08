@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "jest-dom"],
   root: true,
+  ignorePatterns: ["*.typegen.ts"],
   rules: {
     "no-useless-escape": "off",
     "react/jsx-key": "off",

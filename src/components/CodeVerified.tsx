@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
-import { SIGNUP_BASE_PATH } from "./SignupMain";
+import { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
