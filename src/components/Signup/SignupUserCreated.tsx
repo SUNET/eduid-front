@@ -39,7 +39,7 @@ export function SignupUserCreated(): JSX.Element {
 
   return (
     <form method="GET" action={dashboard_url}>
-      <h1 className="register-header">
+      <h1>
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."
           description="Registration complete"

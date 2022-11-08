@@ -50,9 +50,18 @@ export function SignupCaptcha(): JSX.Element | null {
 
   return (
     <Fragment>
-      <h1 className="register-header">
+      <h1>
         <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
       </h1>
+
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage="This question is for testing whether you are a human visiter and to prevent automated span submissions."
+            description="Signup captcha lead text"
+          />
+        </p>
+      </div>
 
       <fieldset>
         <label className="toggle flex-between" htmlFor="captcha-switch">
