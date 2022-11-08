@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
 import { Captcha as GoogleCaptcha } from "components/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
@@ -78,10 +81,15 @@ function InternalCaptcha(props: CaptchaProps) {
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
-
     if (getCaptchaRequest.fulfilled.match(res)) {
       return res.payload.captcha_img;
     }
+  }
+
+  function getNewCaptcha() {
+    getCaptcha().then((img) => {
+      setImg(img);
+    });
   }
 
   useEffect(() => {
@@ -104,8 +112,15 @@ function InternalCaptcha(props: CaptchaProps) {
     <React.Fragment>
       <figure className="x-adjust">
         <img className="captcha-image" src={img} />
+        <div className="icon-text">
+          <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+            <FontAwesomeIcon icon={faRedo as IconProp} />
+          </button>
+          <label htmlFor="name-check" className="hint">
+            <FormattedMessage defaultMessage="Generate a new captcha" description="captcha img change" />
+          </label>
+        </div>
       </figure>
-
       <SignupCaptchaForm {...props} />
     </React.Fragment>
   );
