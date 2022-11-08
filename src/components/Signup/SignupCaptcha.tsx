@@ -50,6 +50,23 @@ export function SignupCaptcha(): JSX.Element | null {
       <h1 className="register-header">
         <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
       </h1>
+
+      <fieldset>
+        <label className="toggle flex-between" htmlFor="captcha-switch">
+          <span>
+            <FormattedMessage defaultMessage="Switch captcha variant" description="captcha option" />
+          </span>
+          <input
+            onChange={toggleCaptcha}
+            className="toggle-checkbox"
+            type="checkbox"
+            checked={useInternalCaptcha ? false : true}
+            id="captcha-switch"
+          />
+          <div className="toggle-switch"></div>
+        </label>
+      </fieldset>
+
       <div>{useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}</div>
     </Fragment>
   );

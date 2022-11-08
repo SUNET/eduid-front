@@ -57,10 +57,6 @@ export function SignupCaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
                   <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
                 </EduIDButton>
 
-                <EduIDButton buttonstyle="primary" id="captcha-switch-button" onClick={props.toggleCaptcha}>
-                  <FormattedMessage defaultMessage="Switch variant" description="Captcha button" />
-                </EduIDButton>
-
                 <EduIDButton
                   buttonstyle="primary"
                   id="captcha-continue-button"
