@@ -80,7 +80,10 @@ export function SignupCaptcha(): JSX.Element | null {
         </label>
       </fieldset>
 
-      <div>{useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}</div>
+      <div>
+        {!state?.captcha.completed && useInternalCaptcha && <InternalCaptcha {...args} />}
+        {!state?.captcha.completed && !useInternalCaptcha && <GoogleCaptcha {...args} />}
+      </div>
     </Fragment>
   );
 }
