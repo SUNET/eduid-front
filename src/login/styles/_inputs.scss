@@ -11,9 +11,11 @@
     outline: 0;
   }
 }
+
 .radio-input-container label:hover {
   cursor: pointer;
 }
+
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
@@ -231,6 +233,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   appearance: textfield;
+}
+
+input.display-none {
+  display: none;
 }
 
 @media (max-width: $bp-sm) {
