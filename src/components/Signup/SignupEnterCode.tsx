@@ -3,7 +3,7 @@ import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/Login/ResponseCodeForm";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -80,9 +80,25 @@ export function SignupEnterCode(): JSX.Element {
     );
   }
 
+  function SignupEnterCodeHeading() {
+    return (
+      <Fragment>
+        <h1 className="heading">
+          <FormattedMessage defaultMessage="Enter your Code" description="Signup" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage defaultMessage={`Description of what to do`} description="Signup" />
+          </p>
+        </div>
+      </Fragment>
+    );
+  }
+
   if (isExpired) {
     return (
       <div>
+        <SignupEnterCodeHeading />
         <FormattedMessage
           defaultMessage="The code sent to {email} has expired. Please try again."
           values={{
@@ -104,6 +120,7 @@ export function SignupEnterCode(): JSX.Element {
 
   return (
     <div>
+      <SignupEnterCodeHeading />
       <p>
         <FormattedMessage
           defaultMessage="Enter the six digit code from the email sent to {email}"
