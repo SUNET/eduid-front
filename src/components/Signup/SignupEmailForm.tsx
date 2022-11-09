@@ -21,13 +21,15 @@ export function SignupEmailForm(): JSX.Element {
       <h1 className="heading">
         <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
       </h1>
-      <p>
-        <FormattedMessage
-          defaultMessage={`Once you have created an eduID you will be able to log in and
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage={`Once you have created an eduID you will be able to log in and
                              connect it to your Swedish national identity number.`}
-          description="Signup"
-        />
-      </p>
+            description="Signup"
+          />
+        </p>
+      </div>
 
       <EmailForm />
 
