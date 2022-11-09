@@ -21,13 +21,14 @@ export function SignupCaptcha(): JSX.Element | null {
   const preferredCaptcha = useSignupAppSelector((state) => state.config.preferred_captcha);
   const state = useSignupAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const [useInternalCaptcha, setUseInternalCaptcha] = useState(preferredCaptcha === "internal");
+  const [useInternalCaptcha, setUseInternalCaptcha] = useState<boolean>(preferredCaptcha === "internal");
   const dispatch = useSignupAppDispatch();
 
-  if (state?.captcha.completed) {
-    signupContext.signupService.send({ type: "BYPASS" });
-    return null;
-  }
+  useEffect(() => {
+    if (state?.captcha.completed) {
+      signupContext.signupService.send({ type: "BYPASS" });
+    }
+  }, [state]);
 
   function handleCaptchaCancel() {
     signupContext.signupService.send({ type: "ABORT" });
