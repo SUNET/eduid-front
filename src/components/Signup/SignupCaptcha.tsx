@@ -79,11 +79,8 @@ export function SignupCaptcha(): JSX.Element | null {
           <div className="toggle-switch"></div>
         </label>
       </fieldset>
-
-      <div>
-        {!state?.captcha.completed && useInternalCaptcha && <InternalCaptcha {...args} />}
-        {!state?.captcha.completed && !useInternalCaptcha && <GoogleCaptcha {...args} />}
-      </div>
+      {!state?.captcha.completed && useInternalCaptcha && <InternalCaptcha {...args} />}
+      {!state?.captcha.completed && !useInternalCaptcha && <GoogleCaptcha {...args} />}
     </Fragment>
   );
 }
