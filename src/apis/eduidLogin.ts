@@ -59,7 +59,37 @@ export const fetchUsernamePassword = createAsyncThunk<
 >("login/api/fetchUsernamePassword", async (args, thunkAPI) => {
   const body: KeyValues = args;
 
-  return makeLoginRequest<LoginAbortResponse>(thunkAPI, "pw_auth", body)
+  return makeLoginRequest<LoginUsernamePasswordResponse>(thunkAPI, "pw_auth", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginToURequest {
+  ref: string;
+  user_accepts?: string; // version the user accepts
+  versions?: string[]; // versions in this bundle
+}
+
+export interface LoginToUResponse {
+  finished: boolean;
+  version?: string; // the version the backend wants the user to accept
+}
+
+/**
+ * @public
+ * @function fetchToU
+ * @desc     Interact with the backend ToU endpoint. Either to let the backend know what versions the frontend bundle
+ *           contains, or to let the backend know what version the user has accepted.
+ */
+export const fetchToU = createAsyncThunk<
+  LoginToUResponse, // return type
+  LoginToURequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchToU", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+
+  return makeLoginRequest<LoginToUResponse>(thunkAPI, "tou", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
