@@ -42,15 +42,9 @@ export const decodeChallenge = (webauthn_options: string): { [key: string]: any 
  */
 export const performAuthentication = createAsyncThunk(
   "eduid/credentials/performAuthentication",
-  async (webauthn_challenge: string, thunkAPI): Promise<webauthnAssertion | undefined> => {
+  async (webauthn_challenge: string, thunkAPI) => {
     const decoded_challenge = decodeChallenge(webauthn_challenge);
-    const assertion = await navigator.credentials
-      .get(decoded_challenge)
-      .then()
-      .catch(() => {
-        // assertion failed / cancelled
-        return thunkAPI.rejectWithValue("Authentication failed, or was cancelled");
-      });
+    const assertion = await navigator.credentials.get(decoded_challenge).then().catch();
     if (assertion instanceof PublicKeyCredential && assertion.response instanceof AuthenticatorAssertionResponse) {
       // encode the assertion into strings that can be stored in the state
       const encoded_assertion: webauthnAssertion = {
@@ -61,6 +55,8 @@ export const performAuthentication = createAsyncThunk(
       };
       return encoded_assertion;
     }
+    // assertion failed / cancelled
+    return thunkAPI.rejectWithValue("Authentication failed, or was cancelled");
   }
 );
 
@@ -79,6 +75,7 @@ export const createCredential = createAsyncThunk(
       };
       return encoded_credential;
     }
+    // create credential failed / cancelled
     return thunkAPI.rejectWithValue("Credential creation failed, or was cancelled");
   }
 );
