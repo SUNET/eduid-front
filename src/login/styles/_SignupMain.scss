@@ -93,8 +93,10 @@ h3 {
       border: 1px solid $txt-gray;
       font-size: 1.75rem;
       margin: 5px;
-      width: 2.5rem;
+      height: 4rem;
+      width: 3.5rem;
       text-align: center;
+      border-radius: 5px;
 
       &:focus {
         box-shadow: none;
@@ -106,15 +108,26 @@ h3 {
         margin-right: 1.5rem;
       }
     }
+  }
 
-    @media (max-width: $bp-md) {
+  @media (max-width: $bp-md) {
+    .response-code-inputs {
       input {
         margin: 5px -1px 5px 0;
+        height: 3rem;
+        width: 2.5rem;
 
         &:nth-child(3) {
           margin-right: 1rem;
         }
       }
+    }
+  }
+
+  @media (max-width: $bp-xs) {
+    .response-code-inputs {
+      display: flex;
+      justify-content: space-around;
     }
   }
 }
