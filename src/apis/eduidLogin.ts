@@ -37,6 +37,34 @@ export const fetchAbort = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+export interface LoginUsernamePasswordRequest {
+  ref: string;
+  username: string;
+  password: string;
+}
+
+export interface LoginUsernamePasswordResponse {
+  finished: boolean;
+}
+
+/**
+ * @public
+ * @function fetchUsernamePassword
+ * @desc     Send a username and password to the backend for authentication.
+ */
+export const fetchUsernamePassword = createAsyncThunk<
+  LoginUsernamePasswordResponse, // return type
+  LoginUsernamePasswordRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchUsernamePassword", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+
+  return makeLoginRequest<LoginAbortResponse>(thunkAPI, "pw_auth", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface LoginErrorInfoResponseLoggedIn {
   logged_in: true;
   eppn: string;
