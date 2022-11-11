@@ -49,6 +49,11 @@ export function SignupCaptcha(): JSX.Element | null {
 
   const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
 
+  // If the user has already completed the captcha, don't show it again
+  if (state?.captcha.completed) {
+    return null;
+  }
+
   return (
     <Fragment>
       <h1>
@@ -58,7 +63,7 @@ export function SignupCaptcha(): JSX.Element | null {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="This question is for testing whether you are a human visiter and to prevent automated span submissions."
+            defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
             description="Signup captcha lead text"
           />
         </p>
@@ -67,7 +72,7 @@ export function SignupCaptcha(): JSX.Element | null {
       <fieldset>
         <label className="toggle flex-between" htmlFor="captcha-switch">
           <span>
-            <FormattedMessage defaultMessage="Switch captcha variant" description="captcha option" />
+            <FormattedMessage defaultMessage="Switch between captcha and recaptcha" description="captcha option" />
           </span>
           <input
             onChange={toggleCaptcha}
@@ -79,8 +84,7 @@ export function SignupCaptcha(): JSX.Element | null {
           <div className="toggle-switch"></div>
         </label>
       </fieldset>
-      {!state?.captcha.completed && useInternalCaptcha && <InternalCaptcha {...args} />}
-      {!state?.captcha.completed && !useInternalCaptcha && <GoogleCaptcha {...args} />}
+      {useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}
     </Fragment>
   );
 }
@@ -122,15 +126,15 @@ function InternalCaptcha(props: CaptchaProps) {
     <React.Fragment>
       <figure className="x-adjust">
         <img className="captcha-image" src={img} />
-        <div className="icon-text">
-          <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
-            <FontAwesomeIcon icon={faRedo as IconProp} />
-          </button>
-          <label htmlFor="name-check" className="hint">
-            <FormattedMessage defaultMessage="Generate a new captcha" description="captcha img change" />
-          </label>
-        </div>
       </figure>
+      <div className="icon-text">
+        <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+          <FontAwesomeIcon icon={faRedo as IconProp} />
+        </button>
+        <label htmlFor="name-check" className="hint">
+          <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+        </label>
+      </div>
       <SignupCaptchaForm {...props} />
     </React.Fragment>
   );
