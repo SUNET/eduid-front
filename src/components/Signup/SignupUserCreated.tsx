@@ -45,12 +45,14 @@ export function SignupUserCreated(): JSX.Element {
           description="Registration complete"
         />
       </h1>
-      <p>
-        <FormattedMessage
-          defaultMessage="These are your login details for eduID."
-          description="Registration finished"
-        />
-      </p>
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage="These are your login details for eduID."
+            description="Registration finished"
+          />
+        </p>
+      </div>
       <div id="email-display">
         <fieldset>
           <label htmlFor={idUserEmail}>
