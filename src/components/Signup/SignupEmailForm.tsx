@@ -10,12 +10,6 @@ import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import EmailInput from "../../login/components/Inputs/EmailInput";
 
 export function SignupEmailForm(): JSX.Element {
-  const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
-
-  const login_here_link = (
-    <a href={dashboard_url}>{<FormattedMessage defaultMessage="here" description="Signup login here link" />}</a>
-  );
-
   return (
     <Fragment>
       <h1 className="heading">
@@ -32,14 +26,6 @@ export function SignupEmailForm(): JSX.Element {
       </div>
 
       <EmailForm />
-
-      <p>
-        <FormattedMessage
-          defaultMessage="If you already have eduID you can log in {login_here_link}."
-          description="Signup instructions"
-          values={{ login_here_link }}
-        />
-      </p>
     </Fragment>
   );
 }
