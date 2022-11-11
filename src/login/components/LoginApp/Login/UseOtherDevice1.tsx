@@ -87,7 +87,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           <EduIDButton
             buttonstyle="primary"
             type="submit"
-            id="reload-get-new-code"
+            id="refresh-get-new-code"
             onClick={props.handleNewQRCodeOnClick}
           >
             <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
