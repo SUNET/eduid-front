@@ -3,6 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
@@ -95,6 +96,32 @@ export const fetchToU = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+export interface LoginLogoutRequest {
+  ref?: string;
+}
+
+export interface LoginLogoutResponse {
+  finished: boolean;
+}
+
+/**
+ * @public
+ * @function fetchLogout
+ * @desc     Ask the backend to log the user out.
+ */
+export const fetchLogout = createAsyncThunk<
+  LoginLogoutResponse, // return type
+  LoginLogoutRequest, // args type
+  { dispatch: LoginAppDispatch | DashboardAppDispatch; state: LoginRootState | DashboardRootState }
+>("login/api/logout", async (args, thunkAPI) => {
+  const body: KeyValues = { ref: args.ref };
+
+  return makeLoginRequest<LoginLogoutResponse>(thunkAPI, "logout", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface LoginErrorInfoResponseLoggedIn {
   logged_in: true;
   eppn: string;
@@ -120,7 +147,7 @@ export const fetchErrorInfo = createAsyncThunk<
   { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
 >("login/api/fetchErrorInfo", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
-  const base_url = state.config.base_url || state.config.error_info_url;
+  const base_url = state.config.login_base_url || state.config.error_info_url;
 
   if (!base_url) {
     return { logged_in: false };
@@ -384,9 +411,9 @@ async function makeLoginRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.base_url) {
+  if (!state.config.login_base_url) {
     throw new Error("Missing configuration base_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.login_base_url, endpoint, body, data);
 }
