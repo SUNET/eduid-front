@@ -4,7 +4,39 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
+import { ExtraSecurityType } from "login/redux/slices/resetPasswordSlice";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+
+/*********************************************************************************************************************/
+
+export interface VerifyEmailLinkRequest {
+  email_code: string;
+}
+
+export interface VerifyEmailLinkResponse {
+  email_address: string;
+  email_code: string;
+  extra_security: ExtraSecurityType;
+  suggested_password: string;
+}
+
+/**
+ * @public
+ * @function verifyEmailLink
+ * @desc Redux async thunk to request a reset password link to be sent to an email address.
+ */
+export const verifyEmailLink = createAsyncThunk<
+  VerifyEmailLinkResponse, // return type
+  VerifyEmailLinkRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/verifyEmailLink", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+  };
+  return makeResetPasswordRequest<VerifyEmailLinkResponse>(thunkAPI, "verify-email", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 
