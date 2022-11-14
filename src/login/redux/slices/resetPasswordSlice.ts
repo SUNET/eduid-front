@@ -73,8 +73,6 @@ export const resetPasswordSlice = createSlice({
     resetPasswordSagaFail: () => {},
     // Action connected to postVerifySaga.
     useLinkCode: () => {},
-    // Action connected to postSetNewPasswordSaga. Will post stored new_password to the /new-password endpoint.
-    setNewPassword: () => {},
     // Action connected to postSetNewPasswordExtraSecurityPhoneSaga. Will post stored phone_code, new_password to the /new-password-extra-security-phone endpoint.
     setNewPasswordExtraSecurityPhone: () => {},
     // Action connected to postSetNewPasswordExtraSecurityPhoneSaga. Will post stored phone_code, new_password to the /new-password-extra-security-phone endpoint.
@@ -120,6 +118,7 @@ export const resetPasswordSlice = createSlice({
         state.email_address = action.payload.email_address;
         state.extra_security = action.payload.extra_security;
         state.suggested_password = action.payload.suggested_password;
+        state.email_code = action.payload.email_code;
       });
   },
 });

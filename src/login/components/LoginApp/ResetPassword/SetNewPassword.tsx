@@ -1,6 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { postSetNewPassword } from "apis/eduidResetPassword";
 import Splash from "components/Splash";
 import { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -27,6 +28,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
 
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
@@ -40,16 +42,19 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     return errors;
   }
 
-  function submitNewPasswordForm(values: NewPasswordFormData) {
+  async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
 
-    if (!newPassword) {
+    if (!newPassword || !email_code) {
       return;
     }
 
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
-      dispatch(resetPasswordSlice.actions.setNewPassword());
+      const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
+      if (postSetNewPassword.fulfilled.match(response)) {
+        navigate("/reset-password/success");
+      }
     } else if (selected_option === "phoneCode") {
       dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
     } else if (selected_option === "securityKey") {

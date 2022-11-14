@@ -4,8 +4,175 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
+import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
 import { ExtraSecurityType } from "login/redux/slices/resetPasswordSlice";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+
+/*********************************************************************************************************************/
+
+export interface NewPasswordExternalMfaRequest {
+  email_code: string;
+  password: string;
+}
+
+export interface NewPasswordExternalMfaResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function postSetNewPasswordExternalMfa
+ * @desc Redux async thunk to set new password with external MFA.
+ */
+export const postSetNewPasswordExternalMfa = createAsyncThunk<
+  NewPasswordExternalMfaResponse, // return type
+  NewPasswordExternalMfaRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/postSetNewPasswordExternalMfa", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+    password: args.password,
+  };
+  return makeResetPasswordRequest<NewPasswordExternalMfaResponse>(
+    thunkAPI,
+    "new-password-extra-security-external-mfa",
+    data
+  )
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface NewPasswordExtraSecurityKeyRequest {
+  email_code: string;
+  password: string;
+  webauthn_assertion: webauthnAssertion;
+}
+
+export interface NewPasswordExtraSecurityKeyResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function postSetNewPasswordExtraSecurityToken
+ * @desc Redux async thunk to set new password with extra security key token.
+ */
+export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
+  NewPasswordExtraSecurityKeyResponse, // return type
+  NewPasswordExtraSecurityKeyRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/postSetNewPasswordExtraSecurityToken", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+    password: args.password,
+    ...args.webauthn_assertion,
+  };
+  return makeResetPasswordRequest<NewPasswordExtraSecurityKeyResponse>(
+    thunkAPI,
+    "new-password-extra-security-token",
+    data
+  )
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface NewPasswordExtraSecurityPhoneRequest {
+  email_code: string;
+  password: string;
+  phone_code: string;
+}
+
+export interface NewPasswordExtraSecurityPhoneResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function postSetNewPasswordExtraSecurityPhone
+ * @desc Redux async thunk to set new password with extra security phone.
+ */
+export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
+  NewPasswordExtraSecurityPhoneResponse, // return type
+  NewPasswordExtraSecurityPhoneRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/postSetNewPasswordExtraSecurityPhone", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+    phone_code: args.phone_code,
+    password: args.password,
+  };
+  return makeResetPasswordRequest<NewPasswordExtraSecurityPhoneResponse>(
+    thunkAPI,
+    "new-password-extra-security-phone",
+    data
+  )
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface RequestPhoneCodeRequest {
+  email_code: string;
+  phone_index: number;
+}
+
+export interface RequestPhoneCodeResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function requestPhoneCodeForNewPassword
+ * @desc Redux async thunk to request phone code for new password.
+ */
+export const requestPhoneCodeForNewPassword = createAsyncThunk<
+  RequestPhoneCodeResponse, // return type
+  RequestPhoneCodeRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/requestPhoneCodeForNewPassword", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+    phone_index: args.phone_index,
+  };
+  return makeResetPasswordRequest<RequestPhoneCodeResponse>(thunkAPI, "extra-security-phone", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface PostSetNewPasswordRequest {
+  email_code: string;
+  password: string;
+}
+
+export interface PostSetNewPasswordResponse {
+  message: string;
+}
+
+/**
+ * @public
+ * @function postSetNewPassword
+ * @desc Redux async thunk to set new password.
+ */
+export const postSetNewPassword = createAsyncThunk<
+  PostSetNewPasswordResponse, // return type
+  PostSetNewPasswordRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("resetPassword/postSetNewPassword", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    email_code: args.email_code,
+    password: args.password,
+  };
+  return makeResetPasswordRequest<PostSetNewPasswordResponse>(thunkAPI, "new-password", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 
@@ -23,7 +190,7 @@ export interface VerifyEmailLinkResponse {
 /**
  * @public
  * @function verifyEmailLink
- * @desc Redux async thunk to request a reset password link to be sent to an email address.
+ * @desc Redux async thunk to verify a reset password link.
  */
 export const verifyEmailLink = createAsyncThunk<
   VerifyEmailLinkResponse, // return type
