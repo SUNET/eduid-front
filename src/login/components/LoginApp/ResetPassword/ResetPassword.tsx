@@ -1,3 +1,4 @@
+import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
@@ -59,16 +60,22 @@ interface CodeParams {
 function EmailCode(): JSX.Element | null {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const params = useParams() as CodeParams;
+  const email_code = params.emailCode;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoaded && params.emailCode) {
-      // save and use the code once the app is configured
-      dispatch(resetPasswordSlice.actions.saveLinkCode(params.emailCode));
-      dispatch(resetPasswordSlice.actions.useLinkCode());
+    if (isLoaded && email_code) {
+      verifyResetPasswordEmailLink(email_code);
     }
   }, [isLoaded]);
 
+  async function verifyResetPasswordEmailLink(email_code: string) {
+    const response = await dispatch(verifyEmailLink({ email_code: email_code }));
+    if (verifyEmailLink.fulfilled.match(response)) {
+      navigate("/reset-password/extra-security");
+    }
+  }
   return null;
 }
 

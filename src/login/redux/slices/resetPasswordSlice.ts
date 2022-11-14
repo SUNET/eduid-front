@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { requestEmailLink, RequestEmailLinkResponse } from "apis/eduidResetPassword";
+import { requestEmailLink, RequestEmailLinkResponse, verifyEmailLink } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 
@@ -115,6 +115,11 @@ export const resetPasswordSlice = createSlice({
       })
       .addCase(requestEmailLink.rejected, (state, action) => {
         state.email_status = "failed";
+      })
+      .addCase(verifyEmailLink.fulfilled, (state, action) => {
+        state.email_address = action.payload.email_address;
+        state.extra_security = action.payload.extra_security;
+        state.suggested_password = action.payload.suggested_password;
       });
   },
 });
