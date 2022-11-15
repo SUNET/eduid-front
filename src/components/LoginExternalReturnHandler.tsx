@@ -38,7 +38,6 @@ export function LoginExternalReturnHandler() {
             loginMfaAuthn: `/login/${status.frontend_state}`,
             resetpwMfaAuthn: `/reset-password/extra-security/${status.frontend_state}`,
           };
-
           const _path = actionToRoute[status.frontend_action];
           if (_path) {
             navigate(_path);
