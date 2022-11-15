@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
+import React, { useEffect } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
-import { clearNotifications } from "../../../../reducers/Notifications";
+import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
@@ -13,8 +13,8 @@ import {
   countFiveMin,
   getLocalStorage,
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
+  setLocalStorage,
 } from "./CountDownTimer";
-import { PhoneInterface } from "./ExtraSecurity";
 
 export interface PhoneCodeFormData {
   phone?: string;
@@ -39,7 +39,6 @@ const validate = (values: PhoneCodeFormData) => {
 };
 
 function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const intl = useIntl();
@@ -56,7 +55,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
       dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(clearNotifications());
-      navigate("/reset-password/set-new-password");
+      dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
     }
   }
 
@@ -93,13 +92,8 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
 function PhoneCodeSent(): JSX.Element | null {
   // After sending phone code it will be saved in state.resetPassword.phone
   const phone = useAppSelector((state) => state.resetPassword.phone);
-  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const dispatch = useAppDispatch();
-
-  if (!phone?.number || !emailCode) {
-    // TODO: Show an error message? We should never get here, but it simplifies code below.
-    return null;
-  }
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
@@ -112,13 +106,28 @@ function PhoneCodeSent(): JSX.Element | null {
     }
   }, []);
 
-  const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
+  async function resendPhoneCode(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    dispatch(resetPasswordSlice.actions.requestPhoneCode(phone as PhoneInterface));
-  };
+    if (phone.index && email_code) {
+      const response = await dispatch(
+        requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code })
+      );
+      if (requestPhoneCodeForNewPassword.fulfilled.match(response)) {
+        dispatch(showNotification({ message: response.payload.message, level: "info" }));
+        clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+        setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
+        countFiveMin("phone");
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
+      }
+    }
+  }
+  if (!phone?.number || !email_code) {
+    // TODO: Show an error message? We should never get here, but it simplifies code below.
+    return null;
+  }
 
   return (
-    <>
+    <React.Fragment>
       <p>
         <FormattedMessage
           defaultMessage="Enter the code sent to {phone}"
@@ -129,7 +138,7 @@ function PhoneCodeSent(): JSX.Element | null {
           }}
         />
       </p>
-      <PhoneCodeForm emailCode={emailCode} />
+      <PhoneCodeForm emailCode={email_code} />
       <div className="timer">
         <a id={"resend-phone"} onClick={resendPhoneCode}>
           <FormattedMessage defaultMessage="Send a new code" description="resend code" />
@@ -139,7 +148,7 @@ function PhoneCodeSent(): JSX.Element | null {
         </span>
         <span id="count-down-time-phone" />
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

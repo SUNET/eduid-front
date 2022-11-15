@@ -1,7 +1,12 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { postSetNewPassword } from "apis/eduidResetPassword";
+import {
+  postSetNewPassword,
+  postSetNewPasswordExternalMfa,
+  postSetNewPasswordExtraSecurityPhone,
+  postSetNewPasswordExtraSecurityToken,
+} from "apis/eduidResetPassword";
 import Splash from "components/Splash";
 import { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -29,6 +34,8 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
+  const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
+  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
 
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
@@ -53,15 +60,37 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     if (!selected_option || selected_option === "without") {
       const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
       if (postSetNewPassword.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
       }
-    } else if (selected_option === "phoneCode") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
-    } else if (selected_option === "securityKey") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
+    } else if (selected_option === "phoneCode" && phone_code) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
+      );
+      if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+      }
+    } else if (selected_option === "securityKey" && webauthn_assertion) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityToken({
+          webauthn_assertion: webauthn_assertion,
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+      }
     } else if (selected_option === "freja") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa());
-    }
+      const response = await dispatch(
+        postSetNewPasswordExternalMfa({
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+      }
+    } else dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password"));
   }
 
   return (
