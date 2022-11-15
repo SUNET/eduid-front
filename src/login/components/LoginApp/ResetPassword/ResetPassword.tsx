@@ -40,6 +40,7 @@ function ResetPassword(): JSX.Element {
       <div id="reset-pass-display">
         <Routes>
           <Route path="extra-security" element={<ExtraSecurity />} />
+          <Route path="extra-security/:emailCode" element={<ExtraSecurity />} />
           <Route path="phone-code-sent" element={<PhoneCodeSent />} />
           <Route path="success" element={<ResetPasswordSuccess />} />
           <Route path="set-new-password" element={<SetNewPassword />} />
@@ -62,7 +63,6 @@ function EmailCode(): JSX.Element | null {
   const params = useParams() as CodeParams;
   const email_code = params.emailCode;
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoaded && email_code) {
@@ -72,8 +72,14 @@ function EmailCode(): JSX.Element | null {
 
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
+    if (verifyEmailLink.rejected.match(response)) {
+      dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password"));
+    }
     if (verifyEmailLink.fulfilled.match(response)) {
-      navigate("/reset-password/extra-security");
+      if (!response.payload.extra_security) {
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
+      } else dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/extra-security"));
     }
   }
   return null;
