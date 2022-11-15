@@ -1,13 +1,20 @@
-import Splash from "components/Splash";
+import { eidasMfaAuthenticate } from "apis/eduidEidas";
+import { requestPhoneCodeForNewPassword, verifyEmailLink } from "apis/eduidResetPassword";
 import { translate } from "login/translation";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import {
+  clearCountdown,
+  countFiveMin,
+  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
+  setLocalStorage,
+} from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 
@@ -23,9 +30,9 @@ function SecurityKeyButton({
   ShowSecurityKey,
 }: SecurityKeyButtonProps): JSX.Element {
   return (
-    <>
+    <React.Fragment>
       {!selected_option ? (
-        <>
+        <React.Fragment>
           {Object.values(extraSecurityKey).map((security) => {
             return (
               <Fragment key={security}>
@@ -39,11 +46,11 @@ function SecurityKeyButton({
               </Fragment>
             );
           })}
-        </>
+        </React.Fragment>
       ) : selected_option === "securityKey" ? (
         <ExtraSecurityToken />
       ) : null}
-    </>
+    </React.Fragment>
   );
 }
 
@@ -59,13 +66,26 @@ export interface PhoneInterface {
 
 const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProps): JSX.Element => {
   const dispatch = useAppDispatch();
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
 
-  const sendConfirmCode = (phone: PhoneInterface) => {
-    dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
-  };
+  async function sendConfirmCode(phone: PhoneInterface) {
+    dispatch(resetPasswordSlice.actions.setPhone(phone));
+    if (phone && email_code) {
+      const response = await dispatch(
+        requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code })
+      );
+      if (requestPhoneCodeForNewPassword.fulfilled.match(response)) {
+        dispatch(showNotification({ message: response.payload.message, level: "info" }));
+        clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+        setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
+        countFiveMin("phone");
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
+      }
+    }
+  }
 
   return (
-    <>
+    <React.Fragment>
       {extraSecurityPhone.map((phone: PhoneInterface) => {
         const maskedPhone = phone.number.replaceAll("X", "*");
 
@@ -88,53 +108,44 @@ const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProp
           </div>
         );
       })}
-    </>
+    </React.Fragment>
   );
 };
 
-export default function ExtraSecurity(): JSX.Element {
-  const navigate = useNavigate();
+interface CodeParams {
+  emailCode?: string;
+}
+
+export default function ExtraSecurity(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const [extraSecurity, setExtraSecurity] = useState<ExtraSecurityType | null>(null);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const emailCode = useAppSelector((state) => state.resetPassword.email_code);
-  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
-  // compose external link
-  const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
-  const idp = useAppSelector((state) => state.config.mfa_auth_idp);
+  const phone = useAppSelector((state) => state.resetPassword.phone);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const currentPage = window.location.href; // return to current page on completion
-  // ensure url has one slash at the end to be functional in the link
-  const frejaUrlDomainSlash =
-    frejaUrlDomain && frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain && frejaUrlDomain.concat("/");
+  const error = useAppSelector((state) => state.notifications.error);
+  const params = useParams() as CodeParams;
 
   useEffect(() => {
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity(""));
-    if (extra_security !== undefined) {
-      if (Object.keys(extra_security).length > 0) {
-        setExtraSecurity(extra_security);
-      }
-      if (!Object.keys(extra_security).length) {
-        dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-        navigate("/reset-password/set-new-password");
-      }
-    }
-  }, [suggested_password]);
-
-  useEffect(() => {
-    if (window.location.search) {
-      const message = window.location.search.split("=")[1];
-      if (message.includes("completed")) {
+    if (params?.emailCode) {
+      dispatch(verifyEmailLink({ email_code: params?.emailCode }));
+      if (!error) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-        navigate("/reset-password/set-new-password");
-      } else if (message.includes("%3A" + "ERROR%3A")) {
-        const error = message.split("%3A" + "ERROR%3A")[1];
-        dispatch(showNotification({ message: error, level: "error" }));
-        navigate("/reset-password/extra-security");
+        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
       }
     }
-  }, [emailCode, suggested_password]);
+  }, [params?.emailCode, error]);
+
+  async function handleOnClickFreja() {
+    const response = await dispatch(
+      eidasMfaAuthenticate({ method: "freja", frontend_action: "resetpwMfaAuthn", frontend_state: emailCode })
+    );
+    if (eidasMfaAuthenticate.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    }
+  }
 
   const ShowSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -157,11 +168,15 @@ export default function ExtraSecurity(): JSX.Element {
 
   const toPhoneCodeForm = () => {
     dispatch(clearNotifications());
-    navigate("/reset-password/phone-code-sent");
+    dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
   };
 
+  if (!extra_security) {
+    return null;
+  }
+
   return (
-    <Splash showChildren={!!extraSecurity}>
+    <React.Fragment>
       {
         <ResetPasswordLayout
           heading={translate("resetpw.extra-security_heading")}
@@ -170,43 +185,37 @@ export default function ExtraSecurity(): JSX.Element {
           linkInfoText={translate("resetpw.without_extra_security")}
           linkText={translate("resetpw.continue_reset_password")}
         >
-          {extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? (
+          {extra_security && extra_security.tokens && Object.keys(extra_security.tokens).length > 0 ? (
             <SecurityKeyButton
               selected_option={selected_option}
               ShowSecurityKey={ShowSecurityKey}
-              extraSecurityKey={Object.keys(extraSecurity.tokens)}
+              extraSecurityKey={Object.keys(extra_security.tokens)}
             />
           ) : null}
-          {!selected_option && extraSecurity && extraSecurity.external_mfa && (
+          {!selected_option && extra_security && extra_security.external_mfa && (
             <div className="buttons">
-              <EduIDButton
-                type="submit"
-                buttonstyle="primary"
-                id="extra-security-freja"
-                onClick={() => {
-                  window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${currentPage}`;
-                  dispatch(clearNotifications());
-                }}
-              >
+              <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
                 {translate("eidas.freja_eid_ready")}
               </EduIDButton>
             </div>
           )}
-          {!selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? (
+          {!selected_option && extra_security && extra_security.phone_numbers.length > 0 ? (
             <>
               <div className="buttons">
-                <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} />
+                <SecurityWithSMSButton extraSecurityPhone={extra_security.phone_numbers} />
               </div>
-              <p className="enter-phone-code">
-                {translate("resetpw.received-sms")}&nbsp;
-                <a className="text-link" onClick={() => toPhoneCodeForm()}>
-                  {translate("resetpw.enter-code")}
-                </a>
-              </p>
+              {phone.index !== undefined && (
+                <p className="enter-phone-code">
+                  {translate("resetpw.received-sms")}&nbsp;
+                  <a className="text-link" onClick={() => toPhoneCodeForm()}>
+                    {translate("resetpw.enter-code")}
+                  </a>
+                </p>
+              )}
             </>
           ) : null}
         </ResetPasswordLayout>
       }
-    </Splash>
+    </React.Fragment>
   );
 }
