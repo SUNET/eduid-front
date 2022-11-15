@@ -73,7 +73,7 @@ export function SignupCaptcha(): JSX.Element | null {
         <label className="toggle flex-between" htmlFor="captcha-switch">
           <span>
             <FormattedMessage
-              defaultMessage="Switch to an image service provided by a third party"
+              defaultMessage="Use a validation service provided by a third party"
               description="captcha option"
             />
           </span>
