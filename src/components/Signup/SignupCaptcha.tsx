@@ -72,7 +72,10 @@ export function SignupCaptcha(): JSX.Element | null {
       <fieldset>
         <label className="toggle flex-between" htmlFor="captcha-switch">
           <span>
-            <FormattedMessage defaultMessage="Switch between captcha and recaptcha" description="captcha option" />
+            <FormattedMessage
+              defaultMessage="Switch to an image service provided by a third party"
+              description="captcha option"
+            />
           </span>
           <input
             onChange={toggleCaptcha}
@@ -124,7 +127,7 @@ function InternalCaptcha(props: CaptchaProps) {
 
   return (
     <React.Fragment>
-      <figure className="x-adjust">
+      <figure className="captcha-responsive">
         <img className="captcha-image" src={img} />
       </figure>
       <div className="icon-text">
