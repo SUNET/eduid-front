@@ -1,4 +1,3 @@
-import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { Input } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";
@@ -23,6 +22,7 @@ const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
       valid={props.meta.valid}
       invalid={props.invalid}
       autoFocus={props.autoFocus}
+      autoComplete={props.autoComplete}
     />
   );
 };
