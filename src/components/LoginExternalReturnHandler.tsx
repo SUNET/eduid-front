@@ -32,7 +32,7 @@ export function LoginExternalReturnHandler() {
         }
 
         if (status.frontend_action) {
-          // actionToRoute is a mapping from frontend_action values to where in the Login application
+          // actionToRoute is a mapping from frontend_action values to where in the Login/ResetPW application
           // the user should be returned to
           const actionToRoute: { [key: string]: string } = {
             loginMfaAuthn: `/login/${status.frontend_state}`,
