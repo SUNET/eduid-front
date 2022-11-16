@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
-export default function ExtraSecurityToken(): JSX.Element {
+export function ExtraSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);

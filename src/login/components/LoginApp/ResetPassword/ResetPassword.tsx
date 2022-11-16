@@ -4,13 +4,13 @@ import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import ExtraSecurity from "./ExtraSecurity";
-import PhoneCodeSent from "./PhoneCodeSent";
+import { ExtraSecurity } from "./ExtraSecurity";
+import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
 import ResetPasswordSuccess from "./ResetPasswordSuccess";
 import SetNewPassword from "./SetNewPassword";
 
-function ResetPassword(): JSX.Element {
+export function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
   const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
   const navigate = useNavigate();
@@ -82,5 +82,3 @@ function EmailCode(): JSX.Element | null {
   }
   return null;
 }
-
-export default ResetPassword;

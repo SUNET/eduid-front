@@ -89,7 +89,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
   );
 }
 
-function PhoneCodeSent(): JSX.Element | null {
+export function PhoneCodeSent(): JSX.Element | null {
   // After sending phone code it will be saved in state.resetPassword.phone
   const phone = useAppSelector((state) => state.resetPassword.phone);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
@@ -151,5 +151,3 @@ function PhoneCodeSent(): JSX.Element | null {
     </React.Fragment>
   );
 }
-
-export default PhoneCodeSent;

@@ -14,7 +14,7 @@ import {
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import ExtraSecurityToken from "./ExtraSecurityToken";
+import { ExtraSecurityToken } from "./ExtraSecurityToken";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
@@ -110,7 +110,7 @@ const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProp
   );
 };
 
-export default function ExtraSecurity(): JSX.Element | null {
+export function ExtraSecurity(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
