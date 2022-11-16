@@ -15,7 +15,6 @@ import {
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
-import ResetPasswordLayout from "./ResetPasswordLayout";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
@@ -162,51 +161,57 @@ export default function ExtraSecurity(): JSX.Element | null {
     dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
   };
 
+  const continueSetPassword = () => {
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
+    dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
+    dispatch(clearNotifications());
+  };
+
   if (!extra_security) {
     return null;
   }
 
   return (
     <React.Fragment>
-      {
-        <ResetPasswordLayout
-          heading={translate("resetpw.extra-security_heading")}
-          description={translate("resetpw.extra-security_description")}
-          linkInfoHeading={translate("resetpw.without_extra_security_heading")}
-          linkInfoText={translate("resetpw.without_extra_security")}
-          linkText={translate("resetpw.continue_reset_password")}
-        >
-          {extra_security && extra_security.tokens && Object.keys(extra_security.tokens).length > 0 ? (
-            <SecurityKeyButton
-              selected_option={selected_option}
-              ShowSecurityKey={ShowSecurityKey}
-              extraSecurityKey={Object.keys(extra_security.tokens)}
-            />
-          ) : null}
-          {!selected_option && extra_security && extra_security.external_mfa && (
-            <div className="buttons">
-              <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
-                {translate("eidas.freja_eid_ready")}
-              </EduIDButton>
-            </div>
+      <h2>{translate("resetpw.extra-security_heading")}</h2>
+      <p>{translate("resetpw.extra-security_description")}</p>
+      {extra_security && extra_security.tokens && Object.keys(extra_security.tokens).length > 0 ? (
+        <SecurityKeyButton
+          selected_option={selected_option}
+          ShowSecurityKey={ShowSecurityKey}
+          extraSecurityKey={Object.keys(extra_security.tokens)}
+        />
+      ) : null}
+      {!selected_option && extra_security && extra_security.external_mfa && (
+        <div className="buttons">
+          <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
+            {translate("eidas.freja_eid_ready")}
+          </EduIDButton>
+        </div>
+      )}
+      {!selected_option && extra_security && extra_security.phone_numbers.length > 0 ? (
+        <React.Fragment>
+          <div className="buttons">
+            <SecurityWithSMSButton extraSecurityPhone={extra_security.phone_numbers} />
+          </div>
+          {phone.index !== undefined && (
+            <p className="enter-phone-code">
+              {translate("resetpw.received-sms")}&nbsp;
+              <a className="text-link" onClick={() => toPhoneCodeForm()}>
+                {translate("resetpw.enter-code")}
+              </a>
+            </p>
           )}
-          {!selected_option && extra_security && extra_security.phone_numbers.length > 0 ? (
-            <>
-              <div className="buttons">
-                <SecurityWithSMSButton extraSecurityPhone={extra_security.phone_numbers} />
-              </div>
-              {phone.index !== undefined && (
-                <p className="enter-phone-code">
-                  {translate("resetpw.received-sms")}&nbsp;
-                  <a className="text-link" onClick={() => toPhoneCodeForm()}>
-                    {translate("resetpw.enter-code")}
-                  </a>
-                </p>
-              )}
-            </>
-          ) : null}
-        </ResetPasswordLayout>
-      }
+        </React.Fragment>
+      ) : null}
+
+      <h4 className="description-without-security">{translate("resetpw.without_extra_security_heading")}</h4>
+      <p>
+        {translate("resetpw.without_extra_security")}&nbsp;
+        <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
+          {translate("resetpw.continue_reset_password")}
+        </a>
+      </p>
     </React.Fragment>
   );
 }
