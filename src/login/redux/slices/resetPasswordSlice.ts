@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { eidasGetStatus } from "apis/eduidEidas";
-import { requestEmailLink, RequestEmailLinkResponse, verifyEmailLink } from "apis/eduidResetPassword";
+import {
+  ExtraSecurityAlternatives,
+  requestEmailLink,
+  RequestEmailLinkResponse,
+  verifyEmailLink,
+} from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 
-// Define a type for the slice state
-export type ExtraSecurityType = {
-  external_mfa: boolean;
-  phone_numbers: [];
-  tokens: { webauthn_options: string };
-};
 export type Phone = { index: string; number: string; phone_code: string };
 
 export type EmailStatus = "requested" | "success" | "failed";
@@ -22,7 +21,7 @@ interface ResetPasswordState {
   selected_option?: string;
   new_password?: string;
   suggested_password?: string;
-  extra_security?: ExtraSecurityType;
+  extra_security?: ExtraSecurityAlternatives;
   goto_url?: string;
   email_response?: RequestEmailLinkResponse;
   email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
