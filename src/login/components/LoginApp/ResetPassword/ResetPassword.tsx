@@ -39,8 +39,7 @@ function ResetPassword(): JSX.Element {
       <hr className="border-line" />
       <div id="reset-pass-display">
         <Routes>
-          {/* <Route path="extra-security" element={<ExtraSecurity />} /> */}
-          <Route path="extra-security/:emailCode" element={<ExtraSecurity />} />
+          <Route path="extra-security" element={<ExtraSecurity />} />
           <Route path="phone-code-sent" element={<PhoneCodeSent />} />
           <Route path="success" element={<ResetPasswordSuccess />} />
           <Route path="set-new-password" element={<SetNewPassword />} />
@@ -73,11 +72,11 @@ function EmailCode(): JSX.Element | null {
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
-      if (!Object.values(response.payload.extra_security).length) {
+      if (Object.values(response.payload.extra_security).length > 0) {
+        dispatch(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/`));
+      } else {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
         dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
-      } else {
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/extra-security"));
       }
     } else dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password"));
   }
