@@ -1,6 +1,5 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
-import { translate } from "login/translation";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -37,7 +36,7 @@ function SecurityKeyButton({
                 {
                   <div className="buttons">
                     <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
-                      {translate("login.mfa.primary-option.button")}
+                      <FormattedMessage description="mfa primary option" defaultMessage="Use security key" />
                     </EduIDButton>
                   </div>
                 }
@@ -173,8 +172,15 @@ export function ExtraSecurity(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <h2>{translate("resetpw.extra-security_heading")}</h2>
-      <p>{translate("resetpw.extra-security_description")}</p>
+      <h2>
+        <FormattedMessage description="extra security heading" defaultMessage="Select an extra security option" />
+      </h2>
+      <p>
+        <FormattedMessage
+          description="extra security description"
+          defaultMessage="A password reset using an extra security option will keep your account confirmed."
+        />
+      </p>
       {extra_security && extra_security.tokens && Object.keys(extra_security.tokens).length > 0 ? (
         <SecurityKeyButton
           selected_option={selected_option}
@@ -185,7 +191,7 @@ export function ExtraSecurity(): JSX.Element | null {
       {!selected_option && extra_security && extra_security.external_mfa && (
         <div className="buttons">
           <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
-            {translate("eidas.freja_eid_ready")}
+            <FormattedMessage description="eidas freja eid ready" defaultMessage="Use my Freja eID" />,
           </EduIDButton>
         </div>
       )}
@@ -196,20 +202,30 @@ export function ExtraSecurity(): JSX.Element | null {
           </div>
           {phone.index !== undefined && (
             <p className="enter-phone-code">
-              {translate("resetpw.received-sms")}&nbsp;
+              <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
+              &nbsp;
               <a className="text-link" onClick={() => toPhoneCodeForm()}>
-                {translate("resetpw.enter-code")}
+                <FormattedMessage description="enter code" defaultMessage="enter code" />,
               </a>
             </p>
           )}
         </React.Fragment>
       ) : null}
 
-      <h4 className="description-without-security">{translate("resetpw.without_extra_security_heading")}</h4>
+      <h4 className="description-without-security">
+        <FormattedMessage
+          description="without extra security heading"
+          defaultMessage="Continue without extra security option"
+        />
+      </h4>
       <p>
-        {translate("resetpw.without_extra_security")}&nbsp;
+        <FormattedMessage
+          description="without extra security description"
+          defaultMessage="Your account will require confirmation after the password has been reset."
+        />
+        &nbsp;
         <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
-          {translate("resetpw.continue_reset_password")}
+          <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </a>
       </p>
     </React.Fragment>
