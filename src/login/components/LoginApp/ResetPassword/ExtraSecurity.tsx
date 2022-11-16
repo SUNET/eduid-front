@@ -1,9 +1,8 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
-import { requestPhoneCodeForNewPassword, verifyEmailLink } from "apis/eduidResetPassword";
+import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
 import { translate } from "login/translation";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useParams } from "react-router";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -112,10 +111,6 @@ const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProp
   );
 };
 
-interface CodeParams {
-  emailCode?: string;
-}
-
 export default function ExtraSecurity(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -123,18 +118,14 @@ export default function ExtraSecurity(): JSX.Element | null {
   const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const phone = useAppSelector((state) => state.resetPassword.phone);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const error = useAppSelector((state) => state.notifications.error);
-  const params = useParams() as CodeParams;
+  const eidas_status = useAppSelector((state) => state.resetPassword.eidas_status);
 
   useEffect(() => {
-    if (params?.emailCode) {
-      dispatch(verifyEmailLink({ email_code: params?.emailCode }));
-      if (!error) {
-        dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
-      }
+    if (eidas_status === "eidas.mfa_authn_success") {
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
+      dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
     }
-  }, [params?.emailCode, error]);
+  }, [eidas_status]);
 
   async function handleOnClickFreja() {
     const response = await dispatch(

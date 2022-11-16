@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { eidasGetStatus } from "apis/eduidEidas";
 import { requestEmailLink, RequestEmailLinkResponse, verifyEmailLink } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
@@ -25,6 +26,7 @@ interface ResetPasswordState {
   goto_url?: string;
   email_response?: RequestEmailLinkResponse;
   email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
+  eidas_status?: string;
 }
 
 // Define the initial state using that type
@@ -91,6 +93,9 @@ export const resetPasswordSlice = createSlice({
         state.extra_security = action.payload.extra_security;
         state.suggested_password = action.payload.suggested_password;
         state.email_code = action.payload.email_code;
+      })
+      .addCase(eidasGetStatus.fulfilled, (state, action) => {
+        state.eidas_status = action.payload.status;
       });
   },
 });
