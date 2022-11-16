@@ -8,7 +8,7 @@ import { ExtraSecurity } from "./ExtraSecurity";
 import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
 import ResetPasswordSuccess from "./ResetPasswordSuccess";
-import SetNewPassword from "./SetNewPassword";
+import { SetNewPassword } from "./SetNewPassword";
 
 export function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();

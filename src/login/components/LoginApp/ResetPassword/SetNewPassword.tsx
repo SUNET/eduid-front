@@ -2,20 +2,20 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  ExtraSecurityAlternatives,
   postSetNewPassword,
   postSetNewPasswordExternalMfa,
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
-import Splash from "components/Splash";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import CustomInput from "../../Inputs/CustomInput";
 
 const newPasswordFormId = "new-password-form";
@@ -25,7 +25,7 @@ interface NewPasswordFormData {
 }
 
 interface NewPasswordFormProps {
-  extra_security?: ExtraSecurityType;
+  extra_security?: ExtraSecurityAlternatives;
   suggested_password: string | undefined;
 }
 
@@ -139,7 +139,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   );
 }
 
-function SetNewPassword(): JSX.Element {
+export function SetNewPassword(): JSX.Element | null {
   const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -175,8 +175,12 @@ function SetNewPassword(): JSX.Element {
     }
   };
 
+  if (suggested_password === undefined) {
+    return null;
+  }
+
   return (
-    <Splash showChildren={!!password}>
+    <React.Fragment>
       <h2>
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
       </h2>
@@ -213,8 +217,6 @@ function SetNewPassword(): JSX.Element {
       </div>
 
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
-    </Splash>
+    </React.Fragment>
   );
 }
-
-export default SetNewPassword;

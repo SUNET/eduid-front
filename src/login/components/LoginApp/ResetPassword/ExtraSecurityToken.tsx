@@ -1,5 +1,5 @@
 import { translate } from "login/translation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
@@ -9,9 +9,7 @@ export function ExtraSecurityToken(): JSX.Element {
   const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const [assertion, setAssertion] = useState(webauthn_assertion);
-  const webauthn_challenge = useAppSelector(
-    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
-  );
+  const webauthn_challenge = useAppSelector((state) => state.resetPassword?.extra_security?.tokens?.webauthn_options);
 
   const retryTokenAssertion = () => {
     if (webauthn_challenge === undefined) {
@@ -29,7 +27,7 @@ export function ExtraSecurityToken(): JSX.Element {
   }, [webauthn_assertion, assertion]);
 
   return (
-    <>
+    <React.Fragment>
       <p>{translate("mfa.reset-password-tapit")}</p>
       <figure>
         <div className="key-animation" />
@@ -50,6 +48,6 @@ export function ExtraSecurityToken(): JSX.Element {
           </button>
         </div>
       </figure>
-    </>
+    </React.Fragment>
   );
 }
