@@ -188,8 +188,6 @@ export const userVetting = {
     <FormattedMessage id="eidas.freja_instructions_install_link" defaultMessage={`What is Freja eID?`} />
   ),
 
-  "eidas.freja_eid_ready": <FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />,
-
   "eidas.token_not_found": <FormattedMessage id="eidas.token_not_found" defaultMessage={`U2F token not found`} />,
 
   "eidas.token_not_in_credentials_used": (

@@ -11,8 +11,4 @@ export const login = {
       defaultMessage={`You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID.`}
     />
   ),
-  // security key
-  "login.mfa.primary-option.button": (
-    <FormattedMessage id="login.mfa.primary-option.button" defaultMessage={`Use security key`} />
-  ),
 };
