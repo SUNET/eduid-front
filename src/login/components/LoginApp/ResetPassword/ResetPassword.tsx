@@ -10,7 +10,7 @@ import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
 import ResetPasswordSuccess from "./ResetPasswordSuccess";
 import { SetNewPassword } from "./SetNewPassword";
 
-export function ResetPassword(): JSX.Element {
+export default function ResetPassword(): JSX.Element {
   const dispatch = useAppDispatch();
   const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
   const navigate = useNavigate();
