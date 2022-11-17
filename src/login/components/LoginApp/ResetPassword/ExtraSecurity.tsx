@@ -106,10 +106,6 @@ const SecurityWithSMSButton = ({
     }
   }
 
-  if (!extraSecurityPhone) {
-    return null;
-  }
-
   return (
     <React.Fragment>
       <div className="buttons">
