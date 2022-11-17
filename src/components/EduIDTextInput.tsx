@@ -7,7 +7,7 @@ interface TextInputProps extends FieldRenderProps<string> {
   label?: string;
   helpBlock?: React.ReactNode;
   disabled?: boolean;
-  autocomplete?: string;
+  autoComplete?: string;
 }
 
 export default function TextInput(props: TextInputProps) {
@@ -39,7 +39,7 @@ export default function TextInput(props: TextInputProps) {
         type={props.type}
         {...props.input}
         disabled={props.disabled}
-        autoComplete={props.autocomplete}
+        autoComplete={props.autoComplete}
         aria-labelledby={props.input.name}
       />
       {help}

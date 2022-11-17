@@ -13,10 +13,10 @@ import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router-dom";
+import { clearNotifications } from "reducers/Notifications";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
-import { clearNotifications } from "reducers/Notifications";
 
 interface UsernamePwFormData {
   email?: string;
@@ -121,6 +121,7 @@ function UsernameInputPart(): JSX.Element {
           component={TextInput}
           componentClass="input"
           name="email"
+          autoComplete="username"
           defaultValue={authn_options.forced_username}
           label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
         />
