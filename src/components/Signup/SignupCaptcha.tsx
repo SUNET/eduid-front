@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
 import { Captcha as GoogleCaptcha } from "components/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
@@ -18,13 +21,14 @@ export function SignupCaptcha(): JSX.Element | null {
   const preferredCaptcha = useSignupAppSelector((state) => state.config.preferred_captcha);
   const state = useSignupAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const [useInternalCaptcha, setUseInternalCaptcha] = useState(preferredCaptcha === "internal");
+  const [useInternalCaptcha, setUseInternalCaptcha] = useState<boolean>(preferredCaptcha === "internal");
   const dispatch = useSignupAppDispatch();
 
-  if (state?.captcha.completed) {
-    signupContext.signupService.send({ type: "BYPASS" });
-    return null;
-  }
+  useEffect(() => {
+    if (state?.captcha.completed) {
+      signupContext.signupService.send({ type: "BYPASS" });
+    }
+  }, [state]);
 
   function handleCaptchaCancel() {
     signupContext.signupService.send({ type: "ABORT" });
@@ -45,12 +49,45 @@ export function SignupCaptcha(): JSX.Element | null {
 
   const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
 
+  // If the user has already completed the captcha, don't show it again
+  if (state?.captcha.completed) {
+    return null;
+  }
+
   return (
     <Fragment>
-      <h1 className="register-header">
+      <h1>
         <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
       </h1>
-      <div>{useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}</div>
+
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
+            description="Signup captcha lead text"
+          />
+        </p>
+      </div>
+
+      <fieldset>
+        <label className="toggle flex-between" htmlFor="captcha-switch">
+          <span>
+            <FormattedMessage
+              defaultMessage="Use a validation service provided by a third party"
+              description="captcha option"
+            />
+          </span>
+          <input
+            onChange={toggleCaptcha}
+            className="toggle-checkbox"
+            type="checkbox"
+            checked={useInternalCaptcha ? false : true}
+            id="captcha-switch"
+          />
+          <div className="toggle-switch"></div>
+        </label>
+      </fieldset>
+      {useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}
     </Fragment>
   );
 }
@@ -61,10 +98,15 @@ function InternalCaptcha(props: CaptchaProps) {
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
-
     if (getCaptchaRequest.fulfilled.match(res)) {
       return res.payload.captcha_img;
     }
+  }
+
+  function getNewCaptcha() {
+    getCaptcha().then((img) => {
+      setImg(img);
+    });
   }
 
   useEffect(() => {
@@ -85,10 +127,17 @@ function InternalCaptcha(props: CaptchaProps) {
 
   return (
     <React.Fragment>
-      <figure className="x-adjust">
+      <figure className="captcha-responsive">
         <img className="captcha-image" src={img} />
       </figure>
-
+      <div className="icon-text">
+        <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+          <FontAwesomeIcon icon={faRedo as IconProp} />
+        </button>
+        <label htmlFor="name-check" className="hint">
+          <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+        </label>
+      </div>
       <SignupCaptchaForm {...props} />
     </React.Fragment>
   );

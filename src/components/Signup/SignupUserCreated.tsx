@@ -39,24 +39,26 @@ export function SignupUserCreated(): JSX.Element {
 
   return (
     <form method="GET" action={dashboard_url}>
-      <h1 className="register-header">
+      <h1>
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."
           description="Registration complete"
         />
       </h1>
-      <p>
-        <FormattedMessage
-          defaultMessage="These are your login details for eduID."
-          description="Registration finished"
-        />
-      </p>
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage="These are your login details for eduID."
+            description="Registration finished"
+          />
+        </p>
+      </div>
       <div id="email-display">
         <fieldset>
           <label htmlFor={idUserEmail}>
             <FormattedMessage defaultMessage="Email address" description="Email label" />
           </label>
-          <div className="register-header display-data">
+          <div className="display-data">
             <output id={idUserEmail}>{signupState?.email.address}</output>
           </div>
         </fieldset>
@@ -64,12 +66,20 @@ export function SignupUserCreated(): JSX.Element {
           <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
           </label>
-          <div className="register-header registered-email display-data">
+          <div className="display-data">
             <mark className="force-select-all">
               <output id={idUserPassword}>{formatPassword(signupState?.credentials.password)}</output>
             </mark>
           </div>
         </fieldset>
+        {/* Hidden elements for password managers */}
+        <input className="display-none" type="text" autoComplete="username" defaultValue={signupState?.email.address} />
+        <input
+          className="display-none"
+          type="password"
+          autoComplete="new-password"
+          defaultValue={formatPassword(signupState?.credentials.password)}
+        />
       </div>
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
