@@ -81,11 +81,11 @@ export interface PhoneInterface {
   phone_code?: string;
 }
 
-const SecurityWithSMSButton = ({
+function SecurityWithSMSButton({
   extraSecurityPhone,
   toPhoneCodeForm,
   requestedPhoneCode,
-}: SecurityWithSMSButtonProps): JSX.Element | null => {
+}: SecurityWithSMSButtonProps): JSX.Element | null {
   const dispatch = useAppDispatch();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const navigate = useNavigate();
@@ -143,7 +143,7 @@ const SecurityWithSMSButton = ({
       )}
     </React.Fragment>
   );
-};
+}
 
 export function ExtraSecurity(): JSX.Element | null {
   const dispatch = useAppDispatch();
