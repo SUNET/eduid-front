@@ -191,7 +191,7 @@ export function ExtraSecurity(): JSX.Element | null {
       {!selected_option && extra_security.external_mfa && (
         <div className="buttons">
           <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
-            <FormattedMessage description="eidas freja eid ready" defaultMessage="Use my Freja eID" />,
+            <FormattedMessage description="eidas freja eid ready" defaultMessage="Use my Freja eID" />
           </EduIDButton>
         </div>
       )}
@@ -205,7 +205,7 @@ export function ExtraSecurity(): JSX.Element | null {
               <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
               &nbsp;
               <a className="text-link" onClick={() => toPhoneCodeForm()}>
-                <FormattedMessage description="enter code" defaultMessage="enter code" />,
+                <FormattedMessage description="enter code" defaultMessage="enter code" />
               </a>
             </p>
           )}

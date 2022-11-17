@@ -73,7 +73,7 @@ function EmailCode(): JSX.Element | null {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       if (Object.values(response.payload.extra_security).length > 0) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security/`));
+        dispatch(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security`));
       } else {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
         dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
