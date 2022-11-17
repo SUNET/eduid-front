@@ -270,14 +270,6 @@ export const specificErrors = {
     />
   ),
 
-  // captcha error
-  "signup.recaptcha-not-verified": (
-    <FormattedMessage
-      id="signup.recaptcha-not-verified"
-      defaultMessage={`There was a problem verifying that you are a human. Please try again`}
-    />
-  ),
-
   // email errors
   mail_duplicated: <FormattedMessage id="mail_duplicated" defaultMessage={`Added email is duplicated`} />,
 };
