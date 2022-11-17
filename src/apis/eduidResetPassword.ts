@@ -9,34 +9,21 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
 
-export interface NewPasswordExternalMfaRequest {
-  email_code: string;
-  password: string;
-}
-
-export interface NewPasswordExternalMfaResponse {
-  message: string;
-}
-
 /**
  * @public
  * @function postSetNewPasswordExternalMfa
  * @desc Redux async thunk to set new password with external MFA.
  */
 export const postSetNewPasswordExternalMfa = createAsyncThunk<
-  NewPasswordExternalMfaResponse, // return type
-  NewPasswordExternalMfaRequest, // args type
+  NewPasswordResponse, // return type
+  NewPasswordRequest, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("resetPassword/postSetNewPasswordExternalMfa", async (args, thunkAPI) => {
   const body: KeyValues = {
     email_code: args.email_code,
     password: args.password,
   };
-  return makeResetPasswordRequest<NewPasswordExternalMfaResponse>(
-    thunkAPI,
-    "new-password-extra-security-external-mfa",
-    body
-  )
+  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-external-mfa", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
