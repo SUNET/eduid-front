@@ -110,33 +110,10 @@ export const resetPassword = {
       defaultMessage={`Reset password link already sent please try again later`}
     />
   ),
-  "resetpw.extra-security_heading": (
-    <FormattedMessage id="resetpw.extra-security_heading" defaultMessage={`Select an extra security option`} />
-  ),
-  "resetpw.extra-security_description": (
-    <FormattedMessage
-      id="resetpw.extra-security_description"
-      defaultMessage={`A password reset using an extra security option will keep your account confirmed.`}
-    />
-  ),
   "resetpw.use_extra_security_key": (
     <FormattedMessage id="resetpw.use_extra_security_key" defaultMessage={`Use your security key`} />
   ),
-  "resetpw.without_extra_security_heading": (
-    <FormattedMessage
-      id="resetpw.without_extra_security_heading"
-      defaultMessage={`Continue without extra security option`}
-    />
-  ),
-  "resetpw.without_extra_security": (
-    <FormattedMessage
-      id="resetpw.without_extra_security"
-      defaultMessage={`Your account will require confirmation after the password has been reset.`}
-    />
-  ),
-  "resetpw.continue_reset_password": (
-    <FormattedMessage id="resetpw.continue_reset_password" defaultMessage={`Continue reset password`} />
-  ),
+
   "resetpw.state-not-found": (
     <FormattedMessage
       id="resetpw.state-not-found"
@@ -190,8 +167,6 @@ export const resetPassword = {
       defaultMessage={`The code is no longer valid. Request a new code using the button below.`}
     />
   ),
-  "resetpw.received-sms": <FormattedMessage id="resetpw.received-sms" defaultMessage={`Already received sms? `} />,
-  "resetpw.enter-code": <FormattedMessage id="resetpw.enter-code" defaultMessage={`enter code`} />,
   "resetpw.accept-password": <FormattedMessage id="resetpw.accept-password" defaultMessage={`accept password`} />,
   "resetpw.go-to-eduid": <FormattedMessage id="resetpw.go-to-eduid" defaultMessage={`Go to eduID`} />,
   "resetpw.new-password": <FormattedMessage id="resetpw.new-password" defaultMessage={`New password`} />,

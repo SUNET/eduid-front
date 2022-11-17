@@ -4,7 +4,7 @@ import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
-import EmailForm from "./EmailForm";
+import { EmailForm } from "./EmailForm";
 
 export function ResetPasswordEnterEmail(): JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
