@@ -181,13 +181,13 @@ export function ExtraSecurity(): JSX.Element | null {
           defaultMessage="A password reset using an extra security option will keep your account confirmed."
         />
       </p>
-      {extra_security.tokens && Object.keys(extra_security.tokens).length > 0 ? (
+      {extra_security.tokens && Object.keys(extra_security.tokens).length > 0 && (
         <SecurityKeyButton
           selected_option={selected_option}
           ShowSecurityKey={ShowSecurityKey}
           extraSecurityKey={Object.keys(extra_security.tokens)}
         />
-      ) : null}
+      )}
       {!selected_option && extra_security.external_mfa && (
         <div className="buttons">
           <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
@@ -195,7 +195,7 @@ export function ExtraSecurity(): JSX.Element | null {
           </EduIDButton>
         </div>
       )}
-      {!selected_option && extra_security.phone_numbers && extra_security.phone_numbers.length > 0 ? (
+      {!selected_option && extra_security.phone_numbers && extra_security.phone_numbers.length > 0 && (
         <React.Fragment>
           <div className="buttons">
             <SecurityWithSMSButton extraSecurityPhone={extra_security.phone_numbers} />
@@ -210,7 +210,7 @@ export function ExtraSecurity(): JSX.Element | null {
             </p>
           )}
         </React.Fragment>
-      ) : null}
+      )}
 
       <h4 className="description-without-security">
         <FormattedMessage
