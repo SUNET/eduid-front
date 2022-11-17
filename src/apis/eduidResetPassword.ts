@@ -36,17 +36,13 @@ export interface NewPasswordExtraSecurityKeyRequest {
   webauthn_assertion: webauthnAssertion;
 }
 
-export interface NewPasswordExtraSecurityKeyResponse {
-  message: string;
-}
-
 /**
  * @public
  * @function postSetNewPasswordExtraSecurityToken
  * @desc Redux async thunk to set new password with extra security key token.
  */
 export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
-  NewPasswordExtraSecurityKeyResponse, // return type
+  NewPasswordResponse, // return type
   NewPasswordExtraSecurityKeyRequest, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("resetPassword/postSetNewPasswordExtraSecurityToken", async (args, thunkAPI) => {
@@ -55,11 +51,7 @@ export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
     password: args.password,
     ...args.webauthn_assertion,
   };
-  return makeResetPasswordRequest<NewPasswordExtraSecurityKeyResponse>(
-    thunkAPI,
-    "new-password-extra-security-token",
-    body
-  )
+  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-token", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -72,17 +64,13 @@ export interface NewPasswordExtraSecurityPhoneRequest {
   phone_code: string;
 }
 
-export interface NewPasswordExtraSecurityPhoneResponse {
-  message: string;
-}
-
 /**
  * @public
  * @function postSetNewPasswordExtraSecurityPhone
  * @desc Redux async thunk to set new password with extra security phone.
  */
 export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
-  NewPasswordExtraSecurityPhoneResponse, // return type
+  NewPasswordResponse, // return type
   NewPasswordExtraSecurityPhoneRequest, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("resetPassword/postSetNewPasswordExtraSecurityPhone", async (args, thunkAPI) => {
@@ -91,11 +79,7 @@ export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
     phone_code: args.phone_code,
     password: args.password,
   };
-  return makeResetPasswordRequest<NewPasswordExtraSecurityPhoneResponse>(
-    thunkAPI,
-    "new-password-extra-security-phone",
-    body
-  )
+  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-phone", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
