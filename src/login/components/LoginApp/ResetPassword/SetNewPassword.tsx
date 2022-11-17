@@ -60,14 +60,14 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     if (!selected_option || selected_option === "without") {
       const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
       if (postSetNewPassword.fulfilled.match(response)) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+        navigate("/reset-password/success");
       }
     } else if (selected_option === "phoneCode" && phone_code) {
       const response = await dispatch(
         postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
       );
       if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+        navigate("/reset-password/success");
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await dispatch(
@@ -78,7 +78,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+        navigate("/reset-password/success");
       }
     } else if (selected_option === "freja") {
       const response = await dispatch(
@@ -88,9 +88,9 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/success"));
+        navigate("/reset-password/success");
       }
-    } else dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password"));
+    } else navigate("/reset-password");
   }
 
   return (

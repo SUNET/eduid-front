@@ -2,6 +2,7 @@ import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -64,6 +65,7 @@ export interface PhoneInterface {
 const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
+  const navigate = useNavigate();
 
   async function sendConfirmCode(phone: PhoneInterface) {
     dispatch(resetPasswordSlice.actions.setPhone(phone));
@@ -76,7 +78,7 @@ const SecurityWithSMSButton = ({ extraSecurityPhone }: SecurityWithSMSButtonProp
         clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
         setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
         countFiveMin("phone");
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
+        navigate("/reset-password/phone-code-sent");
       }
     }
   }
@@ -117,11 +119,12 @@ export function ExtraSecurity(): JSX.Element | null {
   const phone = useAppSelector((state) => state.resetPassword.phone);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const eidas_status = useAppSelector((state) => state.resetPassword.eidas_status);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (eidas_status === "eidas.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-      dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
+      navigate("/reset-password/set-new-password");
     }
   }, [eidas_status]);
 
@@ -157,12 +160,12 @@ export function ExtraSecurity(): JSX.Element | null {
 
   const toPhoneCodeForm = () => {
     dispatch(clearNotifications());
-    dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/phone-code-sent"));
+    navigate("/reset-password/phone-code");
   };
 
   const continueSetPassword = () => {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-    dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
+    navigate("/reset-password/set-new-password");
     dispatch(clearNotifications());
   };
 

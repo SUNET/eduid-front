@@ -48,11 +48,6 @@ export const resetPasswordSlice = createSlice({
     storeNewPassword: (state, action: PayloadAction<string>) => {
       state.new_password = action.payload;
     },
-    // Action connected to postSetNewPasswordExternalMfaSaga. Will post stored phone_code, new_password to the /new-password-extra-security-external-mfa endpoint.
-    setGotoUrl: (state, action: PayloadAction<string | undefined>) => {
-      // when sagas have completed and want to direct the user to a new route, they set goto_url.
-      state.goto_url = action.payload;
-    },
     setEmailAddress: (state, action: PayloadAction<string | undefined>) => {
       state.email_address = action.payload;
     },

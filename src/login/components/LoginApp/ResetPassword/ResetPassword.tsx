@@ -11,9 +11,6 @@ import ResetPasswordSuccess from "./ResetPasswordSuccess";
 import { SetNewPassword } from "./SetNewPassword";
 
 export default function ResetPassword(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
-  const navigate = useNavigate();
   const intl = useIntl();
 
   useEffect(() => {
@@ -22,14 +19,6 @@ export default function ResetPassword(): JSX.Element {
       defaultMessage: "Reset Password | eduID",
     });
   }, []);
-
-  useEffect(() => {
-    if (goto_url) {
-      // a saga is requesting us to send the user off to some URL
-      dispatch(resetPasswordSlice.actions.setGotoUrl(undefined));
-      navigate(goto_url);
-    }
-  }, [goto_url]);
 
   return (
     <React.Fragment>
@@ -62,6 +51,7 @@ function EmailCode(): JSX.Element | null {
   const params = useParams() as CodeParams;
   const email_code = params.emailCode;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoaded && email_code) {
@@ -73,12 +63,12 @@ function EmailCode(): JSX.Element | null {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       if (Object.values(response.payload.extra_security).length > 0) {
-        dispatch(resetPasswordSlice.actions.setGotoUrl(`/reset-password/extra-security`));
+        navigate("/reset-password/extra-security");
       } else {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-        dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password/set-new-password"));
+        navigate("/reset-password/set-new-password");
       }
-    } else dispatch(resetPasswordSlice.actions.setGotoUrl("/reset-password"));
+    } else navigate("/reset-password");
   }
   return null;
 }
