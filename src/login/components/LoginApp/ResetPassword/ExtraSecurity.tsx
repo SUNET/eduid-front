@@ -173,35 +173,30 @@ export function ExtraSecurity(): JSX.Element | null {
     }
   }
 
-  const ShowSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
+  function ShowSecurityKey(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
     startTokenAssertion();
     dispatch(clearNotifications());
-  };
+  }
 
-  const startTokenAssertion = () => {
+  function startTokenAssertion() {
     const webauthn_challenge = extra_security?.tokens?.webauthn_options;
-    if (webauthn_challenge === undefined) {
-      // HACK: skip func if no webauthn_challenge
-      return undefined;
-    } else {
-      if (webauthn_assertion === undefined) {
-        dispatch(performAuthentication(webauthn_challenge));
-      }
+    if (webauthn_challenge && !webauthn_assertion) {
+      dispatch(performAuthentication(webauthn_challenge));
     }
-  };
+  }
 
-  const toPhoneCodeForm = () => {
+  function toPhoneCodeForm() {
     dispatch(clearNotifications());
     navigate("/reset-password/phone-code");
-  };
+  }
 
-  const continueSetPassword = () => {
+  function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     navigate("/reset-password/set-new-password");
     dispatch(clearNotifications());
-  };
+  }
 
   if (!extra_security) {
     return null;
