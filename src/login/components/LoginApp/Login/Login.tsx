@@ -1,5 +1,6 @@
 import { fetchNext } from "apis/eduidLogin";
 import React, { useEffect } from "react";
+import { useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
@@ -10,7 +11,6 @@ import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
 import UseOtherDevice2 from "./UseOtherDevice2";
 import UsernamePw from "./UsernamePw";
-import { useIntl } from "react-intl";
 
 // URL parameters passed to this component
 interface LoginParams {
@@ -21,7 +21,7 @@ function Login(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
-  const base_url = useAppSelector((state) => state.config.base_url);
+  const base_url = useAppSelector((state) => state.config.login_base_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const fetching_next = useAppSelector((state) => state.login.fetching_next);
   let this_device = useAppSelector((state) => state.login.this_device);

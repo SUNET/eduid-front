@@ -1,12 +1,12 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
-import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React from "react";
@@ -25,13 +25,24 @@ interface UsernamePwFormData {
 
 export default function UsernamePw() {
   const dispatch = useAppDispatch();
+  const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
 
-  function handleSubmitUsernamePw(values: UsernamePwFormData) {
+  async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
 
-    if (values.email && values["current-password"]) {
-      dispatch(callUsernamePasswordSaga({ email: values.email, currentPassword: values["current-password"] }));
+    if (ref && values.email && values["current-password"]) {
+      /* Send username and password to backend for authentication. If the response is successful,
+       * trigger a call to the /next endpoint to get the next step in the login process.
+       */
+      const res = await dispatch(
+        fetchUsernamePassword({ ref, username: values.email, password: values["current-password"] })
+      );
+      if (fetchUsernamePassword.fulfilled.match(res)) {
+        if (res.payload.finished) {
+          dispatch(loginSlice.actions.callLoginNext());
+        }
+      }
       return;
     }
 
