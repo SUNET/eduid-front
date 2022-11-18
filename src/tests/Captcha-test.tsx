@@ -10,6 +10,5 @@ const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
 test("Google ReCaptcha loads", () => {
   render(<Captcha {...args} />);
 
-  expect(screen.getByRole("button", { name: /Switch/i })).toBeEnabled();
   expect(screen.getByRole("button", { name: /Cancel/i })).toBeEnabled();
 });

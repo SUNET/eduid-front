@@ -1,5 +1,5 @@
 /* white plate to highlight content, use .figure if not semantically a "figure" */
-@import "variables.scss";
+@import "variables";
 
 figure,
 .figure {
@@ -18,8 +18,17 @@ figure,
 
   &.identity-summary {
     padding: 1em 0.5em;
+
     @media (max-width: $bp-md) {
       padding: 0.5em;
     }
+  }
+}
+
+.captcha-responsive {
+  width: 70%;
+
+  @media (max-width: $bp-md) {
+    width: 100%;
   }
 }
