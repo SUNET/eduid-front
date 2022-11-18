@@ -102,6 +102,7 @@ export interface LoginLogoutRequest {
 
 export interface LoginLogoutResponse {
   finished: boolean;
+  location?: string;
 }
 
 /**
