@@ -1,4 +1,16 @@
 {
+  "+3ABAe": {
+    "developer_comment": "MFA Freja help text",
+    "string": "Requires a confirmed Swedish national identity number."
+  },
+  "+B59c5": {
+    "developer_comment": "Return to register",
+    "string": "Return to Register"
+  },
+  "+EKyAl": {
+    "developer_comment": "continue reset password",
+    "string": "Continue resetting password"
+  },
   "+YwDxB": {
     "developer_comment": "button add",
     "string": "Add"
@@ -14,6 +26,10 @@
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
+  },
+  "/Nnkxj": {
+    "developer_comment": "captcha img change",
+    "string": "Generate a new image"
   },
   "/O9rcw": {
     "developer_comment": "letter proofing modal form label",
@@ -38,6 +54,10 @@
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
+  },
+  "0aGYAe": {
+    "developer_comment": "without extra security description",
+    "string": "Your identity will require confirmation after the password has been reset."
   },
   "0fMD4p": {
     "developer_comment": "SAML login finished",
@@ -94,6 +114,10 @@
   "2n5qg/": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Settings"
+  },
+  "2nIzjL": {
+    "developer_comment": "Signup",
+    "string": "Code expired"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -152,6 +176,14 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
+  },
+  "6ZbDjw": {
+    "developer_comment": "Signup, code expired",
+    "string": "To get a new code, click the link below. You will be redirected to the registration page again."
+  },
+  "6k2J31": {
+    "developer_comment": "Login MFA",
+    "string": "Options available in the eduID Dashboard:"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
@@ -280,6 +312,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right to"
   },
+  "ECT4Ho": {
+    "developer_comment": "Signup credentials button",
+    "string": "Cancel"
+  },
   "EW3NC1": {
     "developer_comment": "Email label",
     "string": "Email address"
@@ -323,6 +359,9 @@
     "developer_comment": "profile email display no data",
     "string": "no email added"
   },
+  "FutYRQ": {
+    "string": "Use my {freja_eidplus_verbatim}"
+  },
   "Fw5FJ3": {
     "developer_comment": "Footer copyright",
     "string": "2013-2022"
@@ -331,9 +370,16 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
+  "G0xkV6": {
+    "developer_comment": "Short code form",
+    "string": "Continue"
+  },
   "G1b2Mj": {
     "developer_comment": "device info",
     "string": "IP address"
+  },
+  "G5uigS": {
+    "string": "Freja eID+"
   },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
@@ -355,9 +401,9 @@
     "developer_comment": "password input field label",
     "string": "Password"
   },
-  "GOpzll": {
-    "developer_comment": "Login Mfa heading",
-    "string": "Log in: Extra level of security"
+  "GnCq3b": {
+    "developer_comment": "Signup",
+    "string": "Email verification"
   },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
@@ -366,6 +412,14 @@
   "HCDbw9": {
     "developer_comment": "Dashboard AccountId",
     "string": "You might be asked to share this information if you need technical support."
+  },
+  "HDyZDY": {
+    "developer_comment": "received sms",
+    "string": "Already received the code? "
+  },
+  "HM/Z3D": {
+    "developer_comment": "Terms of use (lead text)",
+    "string": "To create your eduID you need to accept the eduID terms of use."
   },
   "HgjRtU": {
     "developer_comment": "button add more",
@@ -390,6 +444,10 @@
   "IBEyFQ": {
     "developer_comment": "pd main title",
     "string": "Name & language"
+  },
+  "IR238P": {
+    "developer_comment": "Short code form",
+    "string": "Cancel"
   },
   "Ifusv7": {
     "developer_comment": "Emails main title",
@@ -448,10 +506,6 @@
   "LNBvhT": {
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
-  },
-  "LcUe9m": {
-    "developer_comment": "login mfa primary option hint",
-    "string": "If your security key has a button, don’t forget to tap it."
   },
   "LiU6wZ": {
     "developer_comment": "verify identity",
@@ -553,6 +607,10 @@
     "developer_comment": "button save",
     "string": "save"
   },
+  "PQoWSY": {
+    "developer_comment": "Short code form",
+    "string": "Incorrect code, please try again"
+  },
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
@@ -568,6 +626,10 @@
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Never used"
+  },
+  "Qgc9l0": {
+    "developer_comment": "Login MFA heading",
+    "string": "Log in: Extra security"
   },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
@@ -587,10 +649,6 @@
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "ok"
-  },
-  "RmZQLb": {
-    "developer_comment": "tou.header",
-    "string": "General rules for eduID users"
   },
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
@@ -621,6 +679,10 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
+  },
+  "SvKyxR": {
+    "developer_comment": "Login MFA paragraph",
+    "string": "You need to choose a second method to authenticate yourself. This ensures that only you can access your eduID."
   },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
@@ -668,9 +730,17 @@
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
   },
+  "UftCaO": {
+    "developer_comment": "without extra security heading",
+    "string": "Continue without extra security option"
+  },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
+  },
+  "VL/TNV": {
+    "developer_comment": "ToU button cancel",
+    "string": "Cancel"
   },
   "VLu1fI": {
     "developer_comment": "Use other device",
@@ -707,10 +777,6 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
-  },
-  "Wy4YzS": {
-    "developer_comment": "Signup instructions",
-    "string": "If you already have eduID you can log in {login_here_link}."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
@@ -780,6 +846,10 @@
     "developer_comment": "eidas freja instructions step4",
     "string": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
   },
+  "ZsPPwh": {
+    "developer_comment": "Signup credentials button",
+    "string": "Retry"
+  },
   "ZyrvXd": {
     "developer_comment": "Registration complete",
     "string": "You have completed the registration for eduID."
@@ -833,9 +903,17 @@
     "developer_comment": "Account recovery front page",
     "string": "To start the account recovery process, press the button below to send an e-mail to {email}."
   },
+  "beRQGp": {
+    "developer_comment": "Short code form",
+    "string": "The code expires in"
+  },
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
+  },
+  "c26Ksk": {
+    "developer_comment": "captcha option",
+    "string": "Use a validation service provided by a third party"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -949,6 +1027,9 @@
     "developer_comment": "eidas freja instructions step5",
     "string": "Freja eID is now ready to be used with your eduID, proceed by clicking the button below"
   },
+  "dKcigP": {
+    "string": "The code sent to {email} has expired."
+  },
   "dashboard.tagline_unverified": {
     "string": "Don't forget to connect your identity to eduID"
   },
@@ -1003,9 +1084,6 @@
   "eidas.error_unknown_error": {
     "string": "Temporary technical difficulties, please try again later"
   },
-  "eidas.freja_eid_ready": {
-    "string": "Use my Freja eID+"
-  },
   "eidas.freja_instructions_install_link": {
     "string": "What is Freja eID+?"
   },
@@ -1026,6 +1104,9 @@
   },
   "eidas.freja_instructions_tip_1": {
     "string": "Tip: Use the app to find your nearest agent"
+  },
+  "eidas.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
   },
   "eidas.modal_title": {
     "string": "Use Freja eID+ and visit a local authorised agent"
@@ -1231,9 +1312,21 @@
     "developer_comment": "Use other device 2",
     "string": "Request denied."
   },
+  "hs3tJz": {
+    "developer_comment": "Login MFA",
+    "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
+  },
   "i65t9c": {
     "developer_comment": "delete.modal_info",
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time"
+  },
+  "iHIkuG": {
+    "developer_comment": "login mfa primary option hint",
+    "string": "If your Security Key has a button, don't forget to tap it."
+  },
+  "iPFl3G": {
+    "developer_comment": "Signup credentials",
+    "string": "There was a problem creating your account."
   },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
@@ -1258,6 +1351,10 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
+  },
+  "jYWXMn": {
+    "developer_comment": "enter code",
+    "string": "enter code"
   },
   "kN1GC+": {
     "developer_comment": "Make primary button",
@@ -1285,10 +1382,6 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
-  },
-  "lR0uvy": {
-    "developer_comment": "Other Device, device 1",
-    "string": "Incorrect code, try again"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1373,19 +1466,10 @@
     "string": "An error occurred. Please try again later."
   },
   "login.mfa.h2-heading": {
-    "string": "Log in: Extra level of security"
+    "string": "Log in: Extra security"
   },
   "login.mfa.paragraph": {
-    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
-  },
-  "login.mfa.primary-option.button": {
-    "string": "Use my security key"
-  },
-  "login.mfa.secondary-option.button": {
-    "string": "Use my {freja_eidplus_verbatim}"
-  },
-  "login.mfa.secondary-option.title": {
-    "string": "Freja eID+"
+    "string": "You need to choose a second method to authenticate yourself. This ensures that only you can access your eduID."
   },
   "login.mfa_auth_failure": {
     "string": "There was a problem with the authentication, please try again."
@@ -1424,6 +1508,10 @@
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verify your identity to get the most ouf of your eduID"
+  },
+  "lqzyzd": {
+    "developer_comment": "Signup captcha lead text",
+    "string": "As a protection against automated spam, you'll need to confirm that you are a human."
   },
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
@@ -1483,7 +1571,7 @@
     "string": "Use your security key to reset password. If it has a button, tap it."
   },
   "mfa.try-again": {
-    "string": "Try again"
+    "string": "Please try again"
   },
   "mfa.two-factor-authn": {
     "string": "Two-factor authentication"
@@ -1503,6 +1591,10 @@
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to repeat the password below ."
+  },
+  "ncGA4y": {
+    "developer_comment": "Login MFA link",
+    "string": "go to eduID Dashboard"
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
@@ -1555,6 +1647,10 @@
   "notifications.info-label": {
     "developer_comment": "Notification type",
     "string": "Information"
+  },
+  "nuB/SD": {
+    "developer_comment": "captcha input label",
+    "string": "Enter the code from the image"
   },
   "nw6cAK": {
     "developer_comment": "security description name",
@@ -1639,6 +1735,10 @@
   },
   "ocf.open_app": {
     "string": "I have Freja eID+ installed"
+  },
+  "oiMtbK": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Terms of use"
   },
   "orc.about_link": {
     "string": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>."
@@ -1835,6 +1935,10 @@
     "developer_comment": "Reset Password button",
     "string": "send email"
   },
+  "qkwsql": {
+    "developer_comment": "Login MFA",
+    "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
+  },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Change password"
@@ -1842,6 +1946,10 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
+  },
+  "r05joI": {
+    "developer_comment": "Login MFA",
+    "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
@@ -1861,17 +1969,11 @@
   "resetpw.accept-password": {
     "string": "accept password"
   },
-  "resetpw.continue_reset_password": {
-    "string": "Continue reset password"
-  },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
   },
   "resetpw.email-throttled": {
     "string": "Reset password link already sent. Please try again later."
-  },
-  "resetpw.enter-code": {
-    "string": "enter code"
   },
   "resetpw.expired-email-code": {
     "string": "Password reset link has expired. Please request a new link."
@@ -1881,12 +1983,6 @@
   },
   "resetpw.external-mfa-fail": {
     "string": "External MFA failed"
-  },
-  "resetpw.extra-security_description": {
-    "string": "A password reset using an extra security option will keep your identity confirmed."
-  },
-  "resetpw.extra-security_heading": {
-    "string": "Select an extra security option"
   },
   "resetpw.fido-token-fail": {
     "string": "There was a problem using your security key for resetting password"
@@ -1914,9 +2010,6 @@
   },
   "resetpw.pw-reset-fail": {
     "string": "Reset password failed, please try again"
-  },
-  "resetpw.received-sms": {
-    "string": "Already received sms? "
   },
   "resetpw.reset-pw-initialized": {
     "string": "Reset password link has been sent to your email."
@@ -1951,15 +2044,13 @@
   "resetpw.user-not-found": {
     "string": "No user was found with that email address."
   },
-  "resetpw.without_extra_security": {
-    "string": "Your account will require confirmation after the password has been reset."
-  },
-  "resetpw.without_extra_security_heading": {
-    "string": "Continue without extra security option"
-  },
   "s0no/w": {
     "developer_comment": "profile name display no data",
     "string": "add name"
+  },
+  "sIENAc": {
+    "developer_comment": "extra security description",
+    "string": "A password reset using an extra security option will keep your identity confirmed."
   },
   "security last used": {
     "string": "Used on"
@@ -2030,7 +2121,7 @@
     "string": "U2F token successfully registered"
   },
   "security.user-update-throttled": {
-    "string": "Too many attempts to update names have been made. Try again later."
+    "string": "Too many attempts to update names have been made. Please try again later."
   },
   "security.user-updated": {
     "string": "First and last names are up-to-date with those registered in the Swedish Population Register."
@@ -2059,11 +2150,56 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
+  "signup.already-verified": {
+    "string": "You have already verified your account."
+  },
+  "signup.captcha-already-completed": {
+    "string": "The captcha has already been completed."
+  },
+  "signup.captcha-failed": {
+    "string": "There was a problem verifying that you are a human. Please try again."
+  },
+  "signup.captcha-not-completed": {
+    "string": "The captcha has not been completed."
+  },
+  "signup.captcha-not-requested": {
+    "string": "The captcha has not been requested."
+  },
+  "signup.credential-not-added": {
+    "string": "No credential added."
+  },
+  "signup.email-address-used": {
+    "string": "The email address is already in use."
+  },
+  "signup.email-throttled": {
+    "string": "Too many attempts to create account have been made. Pleas try again later."
+  },
+  "signup.email-verification-expired": {
+    "string": "Code expired. Please try again."
+  },
+  "signup.email-verification-failed": {
+    "string": "The email verification failed. Please try again."
+  },
+  "signup.email-verification-not-complete": {
+    "string": "The email verification has not been completed."
+  },
+  "signup.email-verification-to-many-tries": {
+    "string": "Too many invalid verification attempts. Please try again."
+  },
+  "signup.invite-already-completed": {
+    "string": "Invitation already completed."
+  },
+  "signup.invite-not-found": {
+    "string": "Invitation not found."
+  },
+  "signup.password-not-generated": {
+    "string": "Password not generated. Please try again."
+  },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again."
   },
   "signup.registering-address-used": {
-    "string": "The email address you entered is already in use"
+    "string": "The email address you entered is already in use."
   },
   "signup.registering-new": {
     "string": "Email address successfully registered"
@@ -2071,8 +2207,26 @@
   "signup.registering-resend-code": {
     "string": "Verification email resent"
   },
+  "signup.tou-not-accepted": {
+    "string": "The Terms of use has not been accepted."
+  },
+  "signup.tou-not-completed": {
+    "string": "Terms of use has not been completed."
+  },
+  "signup.tou-wrong-version": {
+    "string": "Incorrect Terms of use version."
+  },
+  "signup.unknown-code": {
+    "string": "Unknown code."
+  },
+  "signup.user-already-exists": {
+    "string": "User already exists."
+  },
   "signup.verification-resent": {
     "string": "Verification email resent"
+  },
+  "signup.webauthn-not-registered": {
+    "string": "Webauthn not registered."
   },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
@@ -2096,6 +2250,10 @@
   "tVcCe6": {
     "developer_comment": "emails enter code",
     "string": "Code"
+  },
+  "tcDcv5": {
+    "developer_comment": "mfa primary option",
+    "string": "Use my security key"
   },
   "tl.make_primary": {
     "string": "MAKE PRIMARY"
@@ -2163,6 +2321,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
+  "vKFmEL": {
+    "developer_comment": "extra security heading",
+    "string": "Select an extra security option"
+  },
   "value not changed": {
     "string": "The value is not changed"
   },
@@ -2205,10 +2367,6 @@
     "developer_comment": "explanation text for vetting phone",
     "string": "by phone"
   },
-  "wIDAmk": {
-    "developer_comment": "Signup login here link",
-    "string": "here"
-  },
   "wLDO8N": {
     "developer_comment": "pd label language",
     "string": "Language"
@@ -2229,10 +2387,6 @@
     "developer_comment": "Language radio group legend",
     "string": "Language"
   },
-  "xBsfUj": {
-    "developer_comment": "Login Mfa paragraph",
-    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
-  },
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
@@ -2240,6 +2394,10 @@
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
     "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+  },
+  "xbRi/k": {
+    "developer_comment": "Captcha button",
+    "string": "Continue"
   },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
@@ -2260,6 +2418,9 @@
   "z/Z3FL": {
     "developer_comment": "Signup",
     "string": "A link has been sent to your email address."
+  },
+  "zKuIuE": {
+    "string": "Enter the six digit code from the email sent to {email}"
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
