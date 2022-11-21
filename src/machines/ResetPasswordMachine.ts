@@ -24,104 +24,49 @@ const resetPasswordModel = createModel(
 );
 
 export function createResetPasswordMachine() {
-  const machine = resetPasswordModel.createMachine({
-    context: resetPasswordModel.initialContext,
-    tsTypes: {} as import("./ResetPasswordMachine.typegen").Typegen0,
-    predictableActionArguments: true,
-    id: "resetPassword",
-    initial: "ResetPasswordStart",
-    states: {
-      ResetPasswordStart: {
-        on: {
-          COMPLETE: {
-            target: "AskForEmailAddress",
+  const machine =
+    /** @xstate-layout N4IgpgJg5mDOIC5QCc5gC4AUCGtYHcB7ZCAOgCU0tcDiIBldbZdAYgGEB5AWUwBkAogBUBAbQAMAXUSgADoVgBLdIsIA7GSAAeiAKwAmADQgAnogBs4gMyld4++IDsARgAsr8QA5vAXx-HUWAwcPCISUgBBWABrADFiAQBbbEUAGwiICEDYCioQ2hIBNXQwZCSU1I4efmExKU15JRV1TR0EfStHUnFzfVdPcT7Pc0cPV2MzBEddV1sHJ2ddXSsATmdHPwC8mjCyKLiE5LSMrLgc8rS+RTVo+jBi0gvUq5u74qreQREJaSQQRuUqg0fzarn0um6Vk8KxWVn0gys-RmE0Qoy683EBnEMOcVmcfn8IDUhAgcE0gWCOzouSC1FCdEYzHQDQUgJaIMQYJRCE8NgxHXBix6mxAFLpBT2MXiZSO6Uy2RplPphWKpSeLKaQNaiH0+nRvX6g36IzG3Nci268w6rkc03M7hFYvyu0iUsOFROCqeL1u93Qj1lPrezL+AOawNAoPWpGcfRWllcK0ciIGjm5A1m-JWTis5k8rkd22VkoOMo98rOAYqQb9GrZEe0iFzKxjcYTSZTTm55l0nktDn03htvV0hdpzup+2lT09Zzr4e1CHWLZ6QyNw1G4nGpib+nM-ate8xvLHSol861HIQAFpzNzrxCYU-n8-HCsCT4gA */
+    resetPasswordModel.createMachine({
+      context: resetPasswordModel.initialContext,
+      tsTypes: {} as import("./ResetPasswordMachine.typegen").Typegen0,
+      predictableActionArguments: true,
+      id: "resetPassword",
+      initial: "ResetPasswordStart",
+      states: {
+        ResetPasswordStart: {
+          on: {
+            COMPLETE: {
+              target: "AskForEmailAddress",
+            },
           },
         },
-      },
-      AskForEmailAddress: {
-        initial: "ResetPasswordEmailForm",
-        states: {
-          ResetPasswordEmailForm: {
-            on: {
-              COMPLETE: {
-                target: "HandleEmailCode",
+        AskForEmailAddress: {
+          initial: "ResetPasswordEnterEmail",
+          states: {
+            ResetPasswordEnterEmail: {
+              on: {
+                COMPLETE: {
+                  target: "EmailLinkSent",
+                },
               },
-              ABORT: {
-                target: "AskForEmailAddress",
-              },
-            }
-          },
-          HandleEmailCode: {
-            on: {
-              API_SUCCESS: {
-                target: "HandleExtraSecurityKey",
-              },
-              API_FAIL: {
-                target: "ResetPasswordEmailForm",
-              }
-            }
-          },
-          HandleExtraSecurityKey: {
-            initial: "ExtraSecurityKey",
-            on:{
-              CHOOSE_EXTRA_SECURITY: {
-                target:"ResetPasswordSecurityToken"
-              },
-              CHOOSE_PHONE_VERIFICATION: {
-                target:"ResetPasswordPhoneVerification"
-              },
-              CHOOSE_FREJA_EID: {
-                target:"ResetPasswordFrejaEid"
-              },
-              CHOOSE_NO_EXTRA_SECURITY: {
-                target:"SetNewPassword"
+            },
+            EmailLinkSent: {
+              initial: "EmailLinkSent",
+              states: {
+                EmailLinkSent: {
+                  on: {
+                    COMPLETE: {
+                      target: "EmailLinkSent",
+                      internal: false,
+                    },
+                  },
+                },
               },
             },
           },
-          ResetPasswordSecurityToken: {
-            on: {
-              API_SUCCESS: {
-                target: "SetNewPassword",
-              },
-              API_FAIL: {
-                target: "HandleExtraSecurityKey"
-              }
-            }
-          },
-          ResetPasswordPhoneVerification: {
-            on: {
-              API_SUCCESS: {
-                target: "SetNewPassword",
-              },
-              API_FAIL: {
-                target: "HandleExtraSecurityKey"
-              }
-            }
-          },
-          ResetPasswordFrejaEid: {
-            on: {
-              API_SUCCESS: {
-                target: "SetNewPassword",
-              },
-              API_FAIL: {
-                target: "HandleExtraSecurityKey"
-              }
-            }
-          },
-          SetNewPassword: {
-            on: {
-              API_SUCCESS: {
-                target: "ResetPasswordSuccess",
-              },
-              API_FAIL: {
-                target: "ResetPasswordEmailForm"
-              }
-            }
-          },
-          ResetPasswordSuccess: {
-            
-          }
-  });
+        },
+      },
+    });
   return machine;
 }
 

@@ -1,17 +1,18 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { ExpiresMeter } from "../Login/ExpiresMeter";
 import { GoBackButton } from "./GoBackButton";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function EmailLinkSent(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const [resendDisabled, setResendDisabled] = useState(true);
   const response = useAppSelector((state) => state.resetPassword.email_response);
-
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   /**
    * The user has clicked the button to request that another e-mail should be sent.
    */
@@ -19,6 +20,7 @@ export function EmailLinkSent(): JSX.Element | null {
     e.preventDefault();
     if (response?.email) {
       dispatch(requestEmailLink({ email: response.email }));
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
     setResendDisabled(true); // disabled button again on use
   };

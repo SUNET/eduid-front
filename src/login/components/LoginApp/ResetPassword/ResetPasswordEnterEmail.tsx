@@ -17,9 +17,8 @@ export function ResetPasswordEnterEmail(): JSX.Element {
     dispatch(clearNotifications());
     dispatch(resetPasswordSlice.actions.setEmailAddress(email));
     dispatch(requestEmailLink({ email }));
+    resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
   }
-
-  resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
 
   return (
     <React.Fragment>
