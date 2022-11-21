@@ -171,6 +171,10 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > span {
+    flex: 1;
+  }
 }
 
 .toggle-switch {
