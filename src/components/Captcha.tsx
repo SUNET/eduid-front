@@ -32,11 +32,6 @@ function LoadingCaptcha(props: LoadingCaptchaProps) {
           />
         </div>
         <div id="captcha-buttons" className="buttons">
-          {props.toggleCaptcha && (
-            <EduIDButton buttonstyle="primary" id="captcha-switch-button" onClick={props.toggleCaptcha}>
-              <FormattedMessage defaultMessage="Switch variant" description="Captcha button" />
-            </EduIDButton>
-          )}
           <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
             <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
           </EduIDButton>

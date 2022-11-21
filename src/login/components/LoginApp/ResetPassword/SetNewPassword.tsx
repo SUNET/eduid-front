@@ -1,15 +1,21 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Splash from "components/Splash";
-import { useEffect, useRef, useState } from "react";
+import {
+  ExtraSecurityAlternatives,
+  postSetNewPassword,
+  postSetNewPasswordExternalMfa,
+  postSetNewPasswordExtraSecurityPhone,
+  postSetNewPasswordExtraSecurityToken,
+} from "apis/eduidResetPassword";
+import React, { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import resetPasswordSlice, { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import CustomInput from "../../Inputs/CustomInput";
 
 const newPasswordFormId = "new-password-form";
@@ -19,7 +25,7 @@ interface NewPasswordFormData {
 }
 
 interface NewPasswordFormProps {
-  extra_security?: ExtraSecurityType;
+  extra_security?: ExtraSecurityAlternatives;
   suggested_password: string | undefined;
 }
 
@@ -27,6 +33,9 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
+  const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
+  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
 
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
@@ -40,23 +49,48 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     return errors;
   }
 
-  function submitNewPasswordForm(values: NewPasswordFormData) {
+  async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
 
-    if (!newPassword) {
+    if (!newPassword || !email_code) {
       return;
     }
 
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
-      dispatch(resetPasswordSlice.actions.setNewPassword());
-    } else if (selected_option === "phoneCode") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
-    } else if (selected_option === "securityKey") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
+      const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
+      if (postSetNewPassword.fulfilled.match(response)) {
+        navigate("/reset-password/success");
+      }
+    } else if (selected_option === "phoneCode" && phone_code) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
+      );
+      if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
+        navigate("/reset-password/success");
+      }
+    } else if (selected_option === "securityKey" && webauthn_assertion) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityToken({
+          webauthn_assertion: webauthn_assertion,
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
+        navigate("/reset-password/success");
+      }
     } else if (selected_option === "freja") {
-      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa());
-    }
+      const response = await dispatch(
+        postSetNewPasswordExternalMfa({
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
+        navigate("/reset-password/success");
+      }
+    } else navigate("/reset-password");
   }
 
   return (
@@ -105,7 +139,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   );
 }
 
-function SetNewPassword(): JSX.Element {
+export function SetNewPassword(): JSX.Element | null {
   const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -141,8 +175,12 @@ function SetNewPassword(): JSX.Element {
     }
   };
 
+  if (suggested_password === undefined) {
+    return null;
+  }
+
   return (
-    <Splash showChildren={!!password}>
+    <React.Fragment>
       <h2>
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
       </h2>
@@ -179,8 +217,6 @@ function SetNewPassword(): JSX.Element {
       </div>
 
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
-    </Splash>
+    </React.Fragment>
   );
 }
-
-export default SetNewPassword;

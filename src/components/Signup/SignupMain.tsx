@@ -1,5 +1,5 @@
 import CodeVerified from "components/CodeVerified";
-import Header from "components/Header";
+import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import Splash from "components/Splash";
 import Footer from "login/components/Footer/Footer";

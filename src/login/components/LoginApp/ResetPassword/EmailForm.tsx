@@ -16,7 +16,7 @@ export interface EmailFormData {
 // **************************************************************************************
 // * TODO: Can this be shared with a new username-only login form, and the Signup form? *
 // **************************************************************************************
-function EmailForm(props: EmailFormProps): JSX.Element {
+export function EmailForm(props: EmailFormProps): JSX.Element {
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 
@@ -71,5 +71,3 @@ function EmailForm(props: EmailFormProps): JSX.Element {
     />
   );
 }
-
-export default EmailForm;

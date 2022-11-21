@@ -16,7 +16,7 @@ export const loginTestState: LoginRootState = {
     eidas_url: "http://eidas.docker",
     reset_password_url: "/reset-password-url/",
     csrf_token: "csrf-token",
-    base_url: "/",
+    login_base_url: "/",
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,

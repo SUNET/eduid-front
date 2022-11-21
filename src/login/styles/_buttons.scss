@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "./variables";
 
 .btn.disabled,
 .btn:disabled {
@@ -42,6 +42,7 @@ button.btn-primary:not(:disabled):not(.disabled):hover {
   background-color: $btn-orange;
   box-shadow: none;
   min-width: 100px;
+
   //min-width: min-content;
   padding: 0 1.125rem;
 
@@ -67,6 +68,7 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
+
   //min-width: min-content;
   padding: 0 1.125rem;
 
@@ -210,9 +212,37 @@ button.btn-icon {
   }
 }
 
+// TODO: remove this when we move icon-text to a more generic place
+.icon-text {
+  display: flex;
+  align-items: baseline;
+
+  button.icon-only {
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+      transform: rotate(180deg);
+      padding: initial;
+    }
+
+    svg {
+      color: $bright-orange;
+    }
+  }
+
+  label.hint {
+    font-family: inherit;
+    line-height: 1.2;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+  }
+}
+
 // login username-pw / reset-password set-new-password
 .show-hide-button {
   @extend #{".btn", ".btn-link", ".btn-sm"};
+
   position: absolute;
   right: 1rem;
 }

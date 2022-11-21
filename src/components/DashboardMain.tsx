@@ -1,16 +1,16 @@
+import { AdvancedSettings } from "components/AdvancedSettings";
+import DashboardNav from "components/DashboardNav";
+import { ExternalReturnHandler } from "components/ExternalReturnHandler";
+import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
+import Profile from "components/Profile";
+import { Settings } from "components/Settings";
+import Splash from "components/Splash";
+import VerifyIdentity from "components/VerifyIdentity";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AdvancedSettings } from "./AdvancedSettings";
-import DashboardNav from "./DashboardNav";
-import { ExternalReturnHandler } from "./ExternalReturnHandler";
-import Header from "./Header";
-import Profile from "./Profile";
-import { Settings } from "./Settings";
-import Splash from "./Splash";
-import VerifyIdentity from "./VerifyIdentity";
 import { SecurityZoneMain } from "./SecurityZoneMain";
 
 export function DashboardMain() {

@@ -261,6 +261,10 @@ input[type="number"] {
     width: 60%;
     height: 1rem;
   }
+
+  input.display-none {
+    display: none;
+  }
 }
 
 @media (max-width: $bp-sm) {

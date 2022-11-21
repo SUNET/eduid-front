@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import loginSlice from "login/redux/slices/loginSlice";
-import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import { FormattedMessage } from "react-intl";
+import { fetchAbort, fetchToU } from "apis/eduidLogin";
 import { CommonToU } from "components/CommonToU";
-import { fetchAbort } from "apis/eduidLogin";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
+import loginSlice from "login/redux/slices/loginSlice";
+import { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 
 export default function TermsOfUse(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -13,13 +13,23 @@ export default function TermsOfUse(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
-    // TODO: So we render the ToU page, and *then* we fire off the request to ask the backend what version to show?
-    //       We ought to send that request as soon as the backend /next call says that ToU is next.
-    dispatch(loginSlice.actions.postTouVersions(availableTouVersions));
+    if (!version && loginRef) {
+      // Tell the backend what ToU versions are available in this bundle
+      dispatch(fetchToU({ ref: loginRef, versions: availableTouVersions }));
+    }
   }, []);
 
-  function handleAccept() {
-    dispatch(loginSlice.actions.updatedTouAccept(version));
+  async function handleAccept() {
+    if (version && loginRef) {
+      // Tell the backend which ToU version the user accepted
+      const res = await dispatch(fetchToU({ ref: loginRef, user_accepts: version }));
+
+      if (fetchToU.fulfilled.match(res)) {
+        if (res.payload.finished) {
+          dispatch(loginSlice.actions.callLoginNext());
+        }
+      }
+    }
   }
 
   function handleCancel() {

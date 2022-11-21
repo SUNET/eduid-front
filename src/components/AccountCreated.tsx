@@ -10,7 +10,7 @@ function AccountCreated() {
 
   return (
     <React.Fragment>
-      <h1 className="register-header">
+      <h1>
         <FormattedMessage defaultMessage="A link has been sent to your email address." description="Signup" />
       </h1>
       <div id="email-display">

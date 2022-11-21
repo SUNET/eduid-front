@@ -287,13 +287,13 @@ async function testInternalCaptcha() {
   getCaptchaCalled = false;
 
   // Wait for the (internal) Captcha to be displayed
-  await screen.findByText(/^Enter the text from the image/);
+  await screen.findByText(/^Enter the code from the image/);
 
   await waitFor(() => {
     expect(getCaptchaCalled).toBe(true);
   });
 
-  const captchaInput = screen.getByRole("textbox", { name: "Enter the text from the image" });
+  const captchaInput = screen.getByRole("textbox", { name: "Enter the code from the image" });
   expect(captchaInput).toHaveFocus();
   fireEvent.change(captchaInput, { target: { value: captchaTestValue } });
 

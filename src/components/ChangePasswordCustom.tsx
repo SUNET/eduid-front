@@ -1,11 +1,11 @@
+import { useDashboardAppSelector } from "dashboard-hooks";
+import { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
 import { translate } from "login/translation";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
-import { WrappedPasswordInput } from "login/components/Inputs/PasswordInput";
-import { useDashboardAppSelector } from "dashboard-hooks";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}

@@ -8,7 +8,7 @@ import { LoginMain } from "login/components/LoginMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
-test("can follow the link sent in an email", async () => {
+test("renders extra security screen as expected", async () => {
   const email = "test@example.org";
   const code = "0c860943-540f-4ce6-aebf-e874f4efd7c1";
   const password = "very-secret";
@@ -22,13 +22,17 @@ test("can follow the link sent in an email", async () => {
         suggested_password: password,
         email_code: code,
         email_address: email,
-        extra_security: {},
+        extra_security: {
+          external_mfa: true,
+          phone_numbers: [{ number: "07012312344", index: 0 }],
+          tokens: { webauthn_options: "dummy-webauthn-options" },
+        },
         success: true,
         zxcvbn_terms: [],
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url/new-password", (req, res, ctx) => {
+    rest.post("/reset-password-url/new-password-extra-security-token", (req, res, ctx) => {
       const body = req.body as NewPasswordRequest;
       if (body.email_code != code || body.password != password) {
         return res(ctx.status(400));
@@ -42,33 +46,26 @@ test("can follow the link sent in an email", async () => {
 
   render(<LoginMain />, { routes: [`/reset-password/email-code/${code}`] });
 
-  // Wait for the new password screen to be displayed
+  // Wait for the extra security screen to be displayed
   await waitFor(() => {
-    expect(screen.getByRole("textbox", { name: "New password" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^select an extra security option/i })).toBeInTheDocument();
   });
 
-  // verify accept button is initially disabled
-  const acceptButton = screen.getByRole("button", { name: /^accept/i });
-  expect(acceptButton).toBeDisabled();
+  const securityKeyButton = screen.getByRole("button", { name: /^use security key/i });
+  expect(securityKeyButton).toBeEnabled();
 
-  const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
-  expect(repeatInput).toHaveFocus();
-  expect(repeatInput).toHaveProperty("placeholder", "xxxx xxxx xxxx");
-  fireEvent.change(repeatInput, { target: { value: "not the right password" } });
+  const phoneCodeButton = screen.getByRole("button", { name: /Send sms to .*/i });
+  expect(phoneCodeButton).toBeEnabled();
 
-  // verify accept button is still disabled (because of non-matching passwords)
-  expect(acceptButton).toBeDisabled();
+  const frejaeIDButton = screen.getByRole("button", { name: /^use my Freja eID/i });
+  expect(frejaeIDButton).toBeEnabled();
 
-  // enter the right password
-  fireEvent.change(repeatInput, { target: { value: password } });
+  fireEvent.click(securityKeyButton);
 
-  // verify accept button is now enabled
-  expect(acceptButton).toBeEnabled();
-
-  fireEvent.click(acceptButton);
-
-  // Verify the request to change password was accepted by the msw endpoint in this test
+  // Wait for the selected security key screen to be displayed
   await waitFor(() => {
-    expect(screen.getByText(/Password .*updated/i)).toBeInTheDocument();
+    expect(screen.getByText(/Use your security key .*has a button, tap it./i)).toBeInTheDocument();
+    expect(phoneCodeButton).not.toBeInTheDocument();
+    expect(frejaeIDButton).not.toBeInTheDocument();
   });
 });

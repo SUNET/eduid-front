@@ -4,6 +4,7 @@ import {
   fetchMfaAuth,
   fetchNewDevice,
   fetchNext,
+  fetchToU,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
   IdPAction,
@@ -94,29 +95,10 @@ export const loginSlice = createSlice({
       state.saml_parameters = samlParameters;
       if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
     },
-    postIdpTouSuccess: (state, action: PayloadAction<{ version: string }>) => {
-      // Process a successful response from the /tou endpoint. We posted our available TOU versions to the
-      // backend, and it returns which one it wants us to show to the user. Record that in the state, so that
-      // the TermsOfUse component will render it.
-      state.tou.version = action.payload.version;
-    },
-    /*
-     * TODO: These actions that are not related to updating the state shouldn't really be here,
-     *       even though it is nice to have them here to simplify imports elsewhere.
-     */
-    // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    postTouVersions: (_state, _action) => {},
-    // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    updatedTouAccept: (_state, _action) => {},
     callLoginNext: (state) => {
       // Trigger the Login component fetching of next action to perform from the backend.
       state.next_page = undefined;
     },
-    // Common action to signal a caught exception in one of the login app sagas. Because it ends in _FAIL,
-    // the notifyAndDispatch() middleware will inform the user that the operation failed.
-    loginSagaFail: () => {},
   },
   extraReducers: (builder) => {
     builder
@@ -183,6 +165,11 @@ export const loginSlice = createSlice({
           state.next_page = undefined;
         }
         state.mfa.state = "loaded";
+      })
+      .addCase(fetchToU.fulfilled, (state, action) => {
+        if (action.payload.version) {
+          state.tou.version = action.payload.version;
+        }
       });
   },
 });
