@@ -3,7 +3,7 @@ import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/Login/ResponseCodeForm";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -83,19 +83,40 @@ export function SignupEnterCode(): JSX.Element {
   if (isExpired) {
     return (
       <div>
-        <FormattedMessage
-          defaultMessage="The code sent to {email} has expired. Please try again."
-          values={{
-            email: (
-              <span id="email_address">
-                <output data-testid="email-address">
-                  <strong>{signupState?.email.address}</strong>
-                </output>
-              </span>
-            ),
-          }}
-        />
-        <ResponseCodeAbortButton disabled={false} />
+        <h1>
+          <FormattedMessage defaultMessage="Code expired" description="Signup" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="The code sent to {email} has expired."
+              values={{
+                email: (
+                  <span id="email_address">
+                    <output data-testid="email-address">
+                      <strong>{signupState?.email.address}</strong>
+                    </output>
+                  </span>
+                ),
+              }}
+            />
+          </p>
+        </div>
+        <p>
+          <FormattedMessage
+            defaultMessage="To get a new code, click the link below. You will be redirected to the register page."
+            description="Signup, code expired"
+          />
+        </p>
+
+        <EduIDButton
+          buttonstyle="link"
+          className="lowercase"
+          onClick={handleAbortButtonOnClick}
+          id="return-to-register-button"
+        >
+          <FormattedMessage defaultMessage="Return to Register" description="Return to register" />
+        </EduIDButton>
       </div>
     );
   }
@@ -103,26 +124,31 @@ export function SignupEnterCode(): JSX.Element {
   // Not expired, show six input fields, a count down timer and an abort button
 
   return (
-    <div>
-      <p>
-        <FormattedMessage
-          defaultMessage="Enter the six digit code from the email sent to {email}"
-          values={{
-            email: (
-              <span id="email_address">
-                <output data-testid="email-address">
-                  <strong>{signupState?.email.address}</strong>
-                </output>
-              </span>
-            ),
-          }}
-        />
-      </p>
-      <div className="enter-code">
-        <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
-          <ResponseCodeButtons />
-        </ResponseCodeForm>
+    <Fragment>
+      <h1>
+        <FormattedMessage defaultMessage="Email verification" description="Signup" />
+      </h1>
+      <div className="lead">
+        <p>
+          <FormattedMessage
+            defaultMessage="Enter the six digit code from the email sent to {email}"
+            values={{
+              email: (
+                <span id="email_address">
+                  <output data-testid="email-address">
+                    <strong>{signupState?.email.address}</strong>
+                  </output>
+                </span>
+              ),
+            }}
+          />
+        </p>
+      </div>
 
+      <div className="signup-timer-wrapper">
+        <p>
+          <FormattedMessage defaultMessage="Code expires in" description="Short code form" />
+        </p>
         <TimeRemainingWrapper
           name="signup-email-expires"
           unique_id="signup.email"
@@ -132,7 +158,13 @@ export function SignupEnterCode(): JSX.Element {
           <ExpiresMeter showMeter={false} expires_max={signupState?.email.expires_time_max || 0} />
         </TimeRemainingWrapper>
       </div>
-    </div>
+
+      <div className="enter-code">
+        <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
+          <ResponseCodeButtons />
+        </ResponseCodeForm>
+      </div>
+    </Fragment>
   );
 }
 

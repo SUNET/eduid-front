@@ -20,7 +20,7 @@ test("renders Profile page as expected", () => {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, token_service_url: "https://example.com" },
+      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
     },
   });
 

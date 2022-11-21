@@ -131,7 +131,10 @@ export const register = {
   ),
 
   "signup.recaptcha-not-verified": (
-    <FormattedMessage id="signup.recaptcha-not-verified" defaultMessage={`Recaptcha not verified.`} />
+    <FormattedMessage
+      id="signup.recaptcha-not-verified"
+      defaultMessage={`There was a problem verifying that you are a human. Please try again`}
+    />
   ),
 
   "signup.unknown-code": <FormattedMessage id="signup.unknown-code" defaultMessage={`Unknown code.`} />,

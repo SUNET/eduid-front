@@ -48,17 +48,13 @@ export function SignupCaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
                 type="text"
                 name="value"
                 label={
-                  <FormattedMessage description="captcha input label" defaultMessage="Enter the text from the image" />
+                  <FormattedMessage description="captcha input label" defaultMessage="Enter the code from the image" />
                 }
               />
 
               <div className="buttons">
                 <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
                   <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
-                </EduIDButton>
-
-                <EduIDButton buttonstyle="primary" id="captcha-switch-button" onClick={props.toggleCaptcha}>
-                  <FormattedMessage defaultMessage="Switch variant" description="Captcha button" />
                 </EduIDButton>
 
                 <EduIDButton
