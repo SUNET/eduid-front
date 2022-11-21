@@ -221,7 +221,7 @@ export function ExtraSecurity(): JSX.Element | null {
         />
       )}
       {extra_security.external_mfa && !selected_option && <ExternalMFA handleOnClickFreja={handleOnClickFreja} />}
-      {extra_security.phone_numbers && (
+      {extra_security.phone_numbers && !selected_option && (
         <SecurityWithSMSButton
           requestedPhoneCode={requestedPhoneCode}
           extraSecurityPhone={extra_security.phone_numbers}
