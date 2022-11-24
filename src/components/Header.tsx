@@ -19,12 +19,9 @@ export function Header(props: HeaderProps): JSX.Element {
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const token_service_url = useDashboardAppSelector((state) => state.config.token_service_url);
-  let userName;
   const [isOpen, setOpen] = useState<boolean>(false);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
   const start_url = dashboard_url || eduid_site_url;
-  let userName;
   let button;
   let dashboardNav;
 
@@ -60,7 +57,6 @@ export function Header(props: HeaderProps): JSX.Element {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -91,8 +87,6 @@ export function Header(props: HeaderProps): JSX.Element {
           <div>{button}</div>
         </div>
       </header>
-
-      {userName}
     </section>
   );
 }
