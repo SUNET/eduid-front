@@ -48,6 +48,36 @@ export const svipeVerifyIdentity = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface GetStatusRequest {
+  authn_id: string;
+}
+
+export interface GetStatusResponse {
+  frontend_action: string;
+  method: string;
+  error?: boolean;
+  status?: string;
+}
+
+/**
+ * @public
+ * @function svipeGetStatus
+ * @desc Redux async thunk to fetch status for an earlier operation.
+ */
+export const svipeGetStatus = createAsyncThunk<
+  GetStatusResponse, // return type
+  GetStatusRequest, // args type
+  { dispatch: DispatchWithSvipe; state: StateWithSvipe }
+>("svipe/getStatus", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+  return makeSvipeRequest<GetStatusResponse>(thunkAPI, "get_status", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 async function makeSvipeRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
