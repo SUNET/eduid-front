@@ -2,6 +2,7 @@
 .nav-wrapper {
   transition: max-height 0.3s ease;
   width: 100%;
+  text-align: right;
 
   #dashboard-nav {
     width: 100%;
@@ -16,6 +17,7 @@
         &.active {
           color: $txt-orange;
         }
+
         &:hover {
           color: $txt-orange;
         }
@@ -65,7 +67,6 @@
     @media (max-width: $bp-lg) {
       max-height: 0;
       overflow: hidden;
-      text-align: right;
 
       > div:last-child {
         margin-bottom: 1rem;
