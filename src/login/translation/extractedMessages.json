@@ -1517,17 +1517,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again."
   },
-<<<<<<< HEAD
-  "lpvPcL": {
-    "developer_comment": "Dashboard navigation tooltip",
-    "string": "Verify your identity to get the most ouf of your eduID"
-  },
   "lqzyzd": {
     "developer_comment": "Signup captcha lead text",
     "string": "As a protection against automated spam, you'll need to confirm that you are a human."
   },
-=======
->>>>>>> 527172a5e22d1f93ca683688b2919a7acd2435ee
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
