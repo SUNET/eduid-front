@@ -1,4 +1,3 @@
-import React from "react";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
@@ -6,7 +5,6 @@ import Splash from "./Splash";
 
 // export for use in tests
 export const activeClassName = "active";
-export const dashboardHeading = "eduID Dashboard:";
 
 interface DashboardNavProps {
   toggle(value: boolean): void;
