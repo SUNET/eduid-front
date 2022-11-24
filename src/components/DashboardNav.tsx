@@ -19,7 +19,7 @@ function DashboardNav(props: DashboardNavProps): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
-      <Splash showChildren={isLoaded} className="nav-splash-spinner">
+      <Splash showChildren={isLoaded}>
         <ul className="horizontal-content-margin">
           <li>
             <NavLink
