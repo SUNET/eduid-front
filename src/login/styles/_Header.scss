@@ -29,18 +29,6 @@
       }
     }
 
-    // .header-user {
-    //   font-size: 1rem;
-    //   text-align: right;
-    //   width: 100%;
-    //   font-family: $proxima-bold;
-
-    //   @media (min-width: $bp-sm) {
-    //     padding-right: 1rem;
-    //     font-size: 1.125rem;
-    //   }
-    // }
-
     .hamburger-react {
       display: none;
     }
@@ -63,6 +51,19 @@
           width: 54px !important;
         }
       }
+    }
+  }
+
+  .header-user {
+    position: absolute;
+    right: 1rem;
+    padding-top: 0.75rem;
+    font-size: 1.125rem;
+    font-family: $proxima-light;
+
+    @media (max-width: $bp-lg) {
+      font-size: $txt-sm;
+      padding-top: 0.5rem;
     }
   }
 }

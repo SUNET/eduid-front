@@ -17,17 +17,13 @@
 
     // top: 40vh !important;
   }
-}
 
-.nav-splash-spinner {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  position: absolute;
-  z-index: 100;
+  header & {
+    background-color: $white;
 
-  .spinner {
-    opacity: 1;
-    top: 10vh !important;
+    .spinner {
+      top: 50% !important;
+      transform: scale(0.75) !important;
+    }
   }
 }
