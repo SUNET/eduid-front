@@ -1,18 +1,16 @@
+import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import ExtraSecurity from "./ExtraSecurity";
-import PhoneCodeSent from "./PhoneCodeSent";
+import { ExtraSecurity } from "./ExtraSecurity";
+import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
 import ResetPasswordSuccess from "./ResetPasswordSuccess";
-import SetNewPassword from "./SetNewPassword";
+import { SetNewPassword } from "./SetNewPassword";
 
-function ResetPassword(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const goto_url = useAppSelector((state) => state.resetPassword.goto_url);
-  const navigate = useNavigate();
+export default function ResetPassword(): JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {
@@ -21,14 +19,6 @@ function ResetPassword(): JSX.Element {
       defaultMessage: "Reset Password | eduID",
     });
   }, []);
-
-  useEffect(() => {
-    if (goto_url) {
-      // a saga is requesting us to send the user off to some URL
-      dispatch(resetPasswordSlice.actions.setGotoUrl(undefined));
-      navigate(goto_url);
-    }
-  }, [goto_url]);
 
   return (
     <React.Fragment>
@@ -59,17 +49,26 @@ interface CodeParams {
 function EmailCode(): JSX.Element | null {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const params = useParams() as CodeParams;
+  const email_code = params.emailCode;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoaded && params.emailCode) {
-      // save and use the code once the app is configured
-      dispatch(resetPasswordSlice.actions.saveLinkCode(params.emailCode));
-      dispatch(resetPasswordSlice.actions.useLinkCode());
+    if (isLoaded && email_code) {
+      verifyResetPasswordEmailLink(email_code);
     }
   }, [isLoaded]);
 
+  async function verifyResetPasswordEmailLink(email_code: string) {
+    const response = await dispatch(verifyEmailLink({ email_code: email_code }));
+    if (verifyEmailLink.fulfilled.match(response)) {
+      if (Object.values(response.payload.extra_security).length > 0) {
+        navigate("/reset-password/extra-security");
+      } else {
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
+        navigate("/reset-password/set-new-password");
+      }
+    } else navigate("/reset-password");
+  }
   return null;
 }
-
-export default ResetPassword;

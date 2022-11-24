@@ -11,9 +11,11 @@
     outline: 0;
   }
 }
+
 .radio-input-container label:hover {
   cursor: pointer;
 }
+
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
@@ -169,6 +171,10 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > span {
+    flex: 1;
+  }
 }
 
 .toggle-switch {
@@ -231,6 +237,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   appearance: textfield;
+}
+
+input.display-none {
+  display: none;
 }
 
 @media (max-width: $bp-sm) {

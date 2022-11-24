@@ -7,7 +7,6 @@ interface CommonConfig {
 }
 
 interface CommonJsConfig {
-  available_languages: string[][];
   csrf_token?: string;
   dashboard_url?: string;
   debug: boolean;
@@ -21,11 +20,11 @@ interface CommonJsConfig {
 // but the API:s should throw an error if used without an actual value present so they
 // can all be optional
 interface APIEndpoints {
-  base_url?: string; // TODO: This is the login app base URL, rename to login_base_url?
   eidas_url?: string;
   emails_url?: string;
   ladok_url?: string;
   letter_proofing_url?: string;
+  login_base_url?: string;
   lookup_mobile_proofing_url?: string;
   orcid_url?: string;
   personal_data_url?: string;

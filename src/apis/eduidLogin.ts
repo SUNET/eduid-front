@@ -3,8 +3,10 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
+import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -36,6 +38,91 @@ export const fetchAbort = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+export interface LoginUsernamePasswordRequest {
+  ref: string;
+  username: string;
+  password: string;
+}
+
+export interface LoginUsernamePasswordResponse {
+  finished: boolean;
+}
+
+/**
+ * @public
+ * @function fetchUsernamePassword
+ * @desc     Send a username and password to the backend for authentication.
+ */
+export const fetchUsernamePassword = createAsyncThunk<
+  LoginUsernamePasswordResponse, // return type
+  LoginUsernamePasswordRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchUsernamePassword", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+
+  return makeLoginRequest<LoginUsernamePasswordResponse>(thunkAPI, "pw_auth", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginToURequest {
+  ref: string;
+  user_accepts?: string; // version the user accepts
+  versions?: string[]; // versions in this bundle
+}
+
+export interface LoginToUResponse {
+  finished: boolean;
+  version?: string; // the version the backend wants the user to accept
+}
+
+/**
+ * @public
+ * @function fetchToU
+ * @desc     Interact with the backend ToU endpoint. Either to let the backend know what versions the frontend bundle
+ *           contains, or to let the backend know what version the user has accepted.
+ */
+export const fetchToU = createAsyncThunk<
+  LoginToUResponse, // return type
+  LoginToURequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchToU", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+
+  return makeLoginRequest<LoginToUResponse>(thunkAPI, "tou", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginLogoutRequest {
+  ref?: string;
+}
+
+export interface LoginLogoutResponse {
+  finished: boolean;
+  location?: string;
+}
+
+/**
+ * @public
+ * @function fetchLogout
+ * @desc     Ask the backend to log the user out.
+ */
+export const fetchLogout = createAsyncThunk<
+  LoginLogoutResponse, // return type
+  LoginLogoutRequest, // args type
+  { dispatch: LoginAppDispatch | DashboardAppDispatch; state: LoginRootState | DashboardRootState }
+>("login/api/logout", async (args, thunkAPI) => {
+  const body: KeyValues = { ref: args.ref };
+
+  return makeLoginRequest<LoginLogoutResponse>(thunkAPI, "logout", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface LoginErrorInfoResponseLoggedIn {
   logged_in: true;
   eppn: string;
@@ -61,7 +148,7 @@ export const fetchErrorInfo = createAsyncThunk<
   { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
 >("login/api/fetchErrorInfo", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
-  const base_url = state.config.base_url || state.config.error_info_url;
+  const base_url = state.config.login_base_url || state.config.error_info_url;
 
   if (!base_url) {
     return { logged_in: false };
@@ -239,13 +326,14 @@ export interface LoginNextResponse {
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };
 
 export interface LoginAuthnOptions {
+  display_name?: string;
+  forced_username?: string;
   freja_eidplus?: boolean;
+  has_session?: boolean;
   other_device?: boolean;
   password?: boolean;
-  forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
-  display_name?: string;
 }
 
 /**
@@ -287,6 +375,35 @@ export const fetchNewDevice = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+export interface LoginMfaAuthRequest {
+  ref: string;
+  webauthn_response?: webauthnAssertion;
+}
+
+export interface LoginMfaAuthResponse {
+  // The response from the /mfa_auth API endpoint consists of (in the happy case):
+  //   finished: true if backend thinks mfa_auth requirement is satisfied
+  //   webauthn_options: base64-encoded webauthn challenge to pass to navigator.credentials.get()
+  finished: boolean;
+  webauthn_options?: string;
+}
+
+/**
+ * @public
+ * @function fetchMfaAuth
+ * @desc     Access the mfa_auth backend endpoint.
+ */
+export const fetchMfaAuth = createAsyncThunk<
+  LoginMfaAuthResponse, // return type
+  LoginMfaAuthRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchMfaAuth", async (args, thunkAPI) => {
+  return makeLoginRequest<LoginMfaAuthResponse>(thunkAPI, "mfa_auth", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 async function makeLoginRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
@@ -295,9 +412,9 @@ async function makeLoginRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.base_url) {
+  if (!state.config.login_base_url) {
     throw new Error("Missing configuration base_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.login_base_url, endpoint, body, data);
 }

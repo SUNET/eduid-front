@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SIGNUP_SERVICE_URL, VerifyLinkResponse } from "apis/eduidSignup";
-import SignupMain, { SIGNUP_BASE_PATH } from "components/SignupMain";
+import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { mswServer, rest } from "setupTests";
 import { render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

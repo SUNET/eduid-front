@@ -1,40 +1,44 @@
-import React, { Fragment, useState } from "react";
-import { useDashboardAppSelector } from "dashboard-hooks";
-import { FormattedMessage } from "react-intl";
+import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/EduIDButton";
-import DashboardNav from "./DashboardNav";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { Squash as Hamburger } from "hamburger-react";
+import { useState } from "react";
+import { FormattedMessage } from "react-intl";
+import DashboardNav from "./DashboardNav";
 
 interface HeaderProps {
   email?: string;
   showLogin?: boolean;
   showLogout?: boolean;
   showRegister?: boolean;
+  loginRef?: string;
 }
 
-const Header = (props: HeaderProps): JSX.Element => {
+export function Header(props: HeaderProps): JSX.Element {
+  const dispatch = useDashboardAppDispatch();
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const token_service_url = useDashboardAppSelector((state) => state.config.token_service_url);
   //let userName;
   const [isOpen, setOpen] = useState<boolean>(false);
+  const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
+  const start_url = dashboard_url || eduid_site_url;
+  let userName;
   let button;
   let dashboardNav;
 
-  function handleLogout() {
-    const url = token_service_url + "logout";
-
-    window
-      .fetch(url, {
-        method: "get",
-        credentials: "same-origin",
-        mode: "cors",
-        redirect: "manual",
-      })
-      .then((resp) => {
-        window.location.assign(resp.url);
-      });
+  async function handleLogout() {
+    const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
+    if (fetchLogout.fulfilled.match(resp)) {
+      if (resp.payload.location) {
+        window.location.assign(resp.payload.location);
+      } else {
+        if (start_url) {
+          window.location.assign(start_url);
+        }
+      }
+    }
   }
 
   function handleRegister() {
@@ -58,7 +62,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   } else if (props.showLogout) {
     //userName = <div className="header-user">{props.email}</div>;
     button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
+      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
@@ -76,7 +80,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <section className="banner">
       <header className={props.showRegister ? "show-register" : undefined}>
-        <a href={dashboard_url ? dashboard_url : eduid_site_url} aria-label="eduID start" title="eduID start">
+        <a href={start_url} aria-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {/* {userName} */}
@@ -90,6 +94,4 @@ const Header = (props: HeaderProps): JSX.Element => {
       </header>
     </section>
   );
-};
-
-export default Header;
+}

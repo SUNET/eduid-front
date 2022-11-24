@@ -1,7 +1,7 @@
 import { DashboardMain } from "components/DashboardMain";
 import { activeClassName, dashboardHeading } from "components/DashboardNav";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
-import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("shows splash screen when not configured", () => {
   render(<DashboardMain />, {
@@ -18,6 +18,10 @@ test("shows splash screen when not configured", () => {
 test("renders Profile page as expected", () => {
   render(<DashboardMain />, {
     routes: ["/profile/"],
+    state: {
+      ...defaultDashboardTestState,
+      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+    },
   });
 
   expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);

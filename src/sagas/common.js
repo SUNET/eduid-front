@@ -1,9 +1,6 @@
-import { put, select, call } from "redux-saga/effects";
-import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
-import { startAsyncValidation, stopAsyncValidation } from "redux-form";
-import { updateIntl } from "../reducers/Internationalisation";
+import { put } from "redux-saga/effects";
 import { storeCsrfToken } from "commonConfig";
-import { LOCALIZED_MESSAGES, TOKEN_SERVICE_URL } from "../globals";
+import { TOKEN_SERVICE_URL } from "../globals";
 
 export const checkStatus = function (response) {
   if (response.status >= 200 && response.status < 300) {
@@ -66,38 +63,3 @@ export const failRequest = function* (error, failAction) {
     yield put(failAction(error.toString()));
   }
 };
-
-export function saveData(getData, formName, startAction, fetcher, failAction) {
-  return function* () {
-    try {
-      const state = yield select((state) => state);
-      const data = getData(state);
-      yield put(startAction({ ...data }));
-      yield put(startSubmit(formName));
-      yield put(startAsyncValidation(formName));
-      const resp = yield call(fetcher, state.config, data);
-      yield put(putCsrfToken(resp));
-      if (resp.type.endsWith("FAIL")) {
-        if (resp.payload.error) {
-          yield put(setSubmitFailed(formName, resp.payload.error));
-          yield put(stopSubmit(formName, resp.payload.error));
-        }
-      } else {
-        yield put(setSubmitSucceeded(formName));
-        yield put(stopAsyncValidation(formName));
-      }
-      const lang = resp.payload.language;
-      if (lang) {
-        yield put(
-          updateIntl({
-            locale: lang,
-            messages: LOCALIZED_MESSAGES[lang],
-          })
-        );
-      }
-      yield put(resp);
-    } catch (error) {
-      yield* failRequest(error, failAction);
-    }
-  };
-}

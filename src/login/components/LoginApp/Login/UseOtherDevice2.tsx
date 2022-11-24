@@ -22,7 +22,7 @@ interface UseOtherParams {
 function UseOtherDevice2() {
   const data = useAppSelector((state) => state.login.other_device2);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const base_url = useAppSelector((state) => state.config.base_url);
+  const base_url = useAppSelector((state) => state.config.login_base_url);
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
   const [fetching, setFetching] = useState(false);
@@ -322,25 +322,20 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
           />
         </span>
         <div className="x-adjust figure">
-          <ResponseCodeForm
-            extra_className="device2"
-            submitDisabled={true}
-            inputsDisabled={true}
-            code={props.data.response_code}
-            codeRequired={true}
-            handleSubmitCode={handleSubmit}
-          />
+          <div className="device2">
+            <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={handleSubmit} />
 
-          <div className="warning-text">
-            <span className="warning-symbol">
-              <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
-            </span>
-            <span>
-              <FormattedMessage
-                defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
-                description="Use another device, finished"
-              />
-            </span>
+            <div className="warning-text">
+              <span className="warning-symbol">
+                <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
+              </span>
+              <span>
+                <FormattedMessage
+                  defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
+                  description="Use another device, finished"
+                />
+              </span>
+            </div>
           </div>
         </div>
       </div>

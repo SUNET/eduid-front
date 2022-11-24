@@ -1,22 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isFSA } from "apis/common";
 import {
+  CaptchaRequest,
   fetchTryCaptcha,
   fetchVerifyLink,
   isTryCaptchaResponse,
   isVerifyLinkResponse,
+  SignupState as SignupBackendState,
   TryCaptchaNextStep,
   VerifyLinkResponse,
 } from "apis/eduidSignup";
 
 interface SignupState {
-  email?: string;
-  tou_accepted: boolean;
-  current_step: "register" | TryCaptchaNextStep;
+  state?: SignupBackendState;
+  email?: string; // pass email address from one state to another
+  email_code?: string; // pass email code from one state to another
+  captcha?: CaptchaRequest; // pass captcha response from one state to another
+  tou_accepted: boolean; // OLD: remove after one release
+  current_step: "register" | TryCaptchaNextStep; // OLD: remove after one release
   // Fetching verify-link is a one-shot operation, so we have to store the response in
   // redux state (rather than in component state) in case switching language causes us
   // to re-render the component
-  verify_link_response?: VerifyLinkResponse;
+  verify_link_response?: VerifyLinkResponse; // OLD: remove after one release
 }
 
 // export for use in tests
@@ -32,8 +37,17 @@ export const signupSlice = createSlice({
     setEmail: (state, action: PayloadAction<string | undefined>) => {
       state.email = action.payload;
     },
+    setEmailCode: (state, action: PayloadAction<string | undefined>) => {
+      state.email_code = action.payload;
+    },
+    setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
+      state.captcha = action.payload;
+    },
     setToUAccepted: (state, action: PayloadAction<boolean>) => {
       state.tou_accepted = action.payload;
+    },
+    setSignupState: (state, action: PayloadAction<SignupBackendState>) => {
+      state.state = action.payload;
     },
   },
   extraReducers: (builder) => {

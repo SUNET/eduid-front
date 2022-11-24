@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import SignupMain from "components/SignupMain";
+import SignupMain from "components/Signup/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";

@@ -5,7 +5,6 @@ import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
-import { dashboardTestState } from "./DashboardTestApp";
 
 export const defaultDashboardTestState = {
   config: {
@@ -20,7 +19,7 @@ export const defaultDashboardTestState = {
 
 interface renderArgs {
   state?: Partial<DashboardRootState>;
-  options?: RenderOptions;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
@@ -40,7 +39,5 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 
 // re-export everything
 export * from "@testing-library/react";
-// mirror some exports from old Enzyme testing helper
-export { dashboardTestState };
 // override render method
 export { render };

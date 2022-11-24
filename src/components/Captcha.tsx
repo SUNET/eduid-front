@@ -4,12 +4,8 @@ import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
 import ScriptLoader from "react-script-loader-hoc";
 import { useSignupAppSelector } from "signup-hooks";
+import { CaptchaProps } from "./Signup/SignupCaptcha";
 import Splash from "./Splash";
-
-interface CaptchaProps {
-  handleCaptchaCancel(): void;
-  handleCaptchaCompleted(response: string): void;
-}
 
 interface LoadingCaptchaProps extends CaptchaProps {
   scriptsLoadedSuccessfully: boolean; // inserted by ScriptLoader
@@ -69,7 +65,7 @@ function DevSubmitCaptchaButton(props: CaptchaProps): JSX.Element | null {
   return null;
 }
 
-function Captcha(props: CaptchaProps) {
+export function Captcha(props: CaptchaProps) {
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const WrappedCaptcha = useMemo(
@@ -83,14 +79,9 @@ function Captcha(props: CaptchaProps) {
 
   return (
     <React.Fragment>
-      <h1 className="register-header">
-        <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
-      </h1>
       <Splash showChildren={scriptLoaded}>
         <WrappedCaptcha {...props} scriptLoadedCallback={scriptLoadedCallback} />
       </Splash>
     </React.Fragment>
   );
 }
-
-export default Captcha;

@@ -1,9 +1,8 @@
 import TextInput from "components/EduIDTextInput";
 import { translate } from "login/translation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
 
@@ -57,7 +56,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           id="old-password-field"
           label={translate("chpass.old_password")}
           validate={required}
-          autocomplete="current-password"
+          autoComplete="current-password"
         />
       </fieldset>
       <div className="password-format">
@@ -96,7 +95,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             }
             id="custom-password-field"
             validate={strongEnough}
-            autocomplete="new-password"
+            autoComplete="new-password"
           />
           <FinalField
             name="repeat"

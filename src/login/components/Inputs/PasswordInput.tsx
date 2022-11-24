@@ -1,4 +1,3 @@
-import { FieldState } from "final-form";
 import { InputWrapper } from "login/components/Inputs/InputWrapper";
 import React, { useState } from "react";
 import { Field as FinalField, FieldRenderProps } from "react-final-form";
@@ -67,6 +66,7 @@ function PasswordInputElement(props: InputProps): JSX.Element {
         valid={props.meta.valid}
         invalid={props.meta.invalid}
         placeholder={props.placeholder}
+        autoComplete={props.autoComplete}
       />
 
       <button

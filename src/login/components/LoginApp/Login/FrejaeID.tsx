@@ -1,19 +1,13 @@
-import React from "react";
+import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import EduIDButton from "components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import { translate } from "login/translation";
-import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { FormattedMessage } from "react-intl";
 
-function FrejaeID(): JSX.Element | null {
-  // compose external link
-  const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
+export function FrejaeID(): JSX.Element {
+  const authn_options = useAppSelector((state) => state.login.authn_options);
   const ref = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
-
-  if (!frejaUrlDomain) {
-    return null;
-  }
+  const notAvailable = !authn_options.freja_eidplus;
 
   async function handleOnClick() {
     const response = await dispatch(
@@ -32,7 +26,23 @@ function FrejaeID(): JSX.Element | null {
         <h4>
           <FormattedMessage defaultMessage={`Freja eID+`} />
         </h4>
-        <EduIDButton buttonstyle="secondary" type="submit" onClick={handleOnClick} id="mfa-freja">
+
+        {notAvailable && (
+          <p className="help-text">
+            <FormattedMessage
+              description="MFA Freja help text"
+              defaultMessage="Requires a confirmed Swedish national identity number."
+            />
+          </p>
+        )}
+
+        <EduIDButton
+          buttonstyle="secondary"
+          type="submit"
+          onClick={handleOnClick}
+          id="mfa-freja"
+          disabled={notAvailable}
+        >
           <FormattedMessage
             defaultMessage={`Use my {freja_eidplus_verbatim}`}
             values={{ freja_eidplus_verbatim: <span className="verbatim">Freja&nbsp;eID+</span> }}
@@ -42,5 +52,3 @@ function FrejaeID(): JSX.Element | null {
     </div>
   );
 }
-
-export default FrejaeID;

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   NewPasswordRequest,
   NewPasswordResponse,
@@ -29,7 +28,7 @@ test("can follow the link sent in an email", async () => {
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url/new-password/", (req, res, ctx) => {
+    rest.post("/reset-password-url/new-password", (req, res, ctx) => {
       const body = req.body as NewPasswordRequest;
       if (body.email_code != code || body.password != password) {
         return res(ctx.status(400));

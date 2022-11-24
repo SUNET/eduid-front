@@ -1,13 +1,14 @@
 import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
+import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import EduIDButton from "components/EduIDButton";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
+import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { ExpiresMeter } from "./ExpiresMeter";
-import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
 
 /*
  * Start the "Login using another device" login flow.
@@ -104,6 +105,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const this_device = useAppSelector((state) => state.login.this_device);
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const response_code_required = useAppSelector((state) => state.login.other_device1?.response_code_required);
+  const bad_attempts = useAppSelector((state) => state.login.other_device1?.bad_attempts);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -135,10 +137,10 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
-    const match = code.match(/^SK(\d\d\d)-(\d\d\d)$/);
-    if (match?.length == 3) {
-      // match[0] is whole matched string, [1] and [2] are the groups of digits
-      const digits = match[1] + match[2];
+    const match = code.match(/^\d\d\d\d\d\d$/);
+    if (match?.length == 1) {
+      // match[0] is whole matched string
+      const digits = match[0];
       if (login_ref) {
         dispatch(
           fetchUseOtherDevice1({
@@ -172,6 +174,40 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     return undefined;
   }
 
+  interface ResponseCodeButtonsProps {
+    formProps?: FormRenderProps<ResponseCodeValues>;
+  }
+
+  function ResponseCodeButtons(props: ResponseCodeButtonsProps) {
+    if (!props.formProps) {
+      return null;
+    }
+
+    return (
+      <div className={`buttons device1`}>
+        <EduIDButton
+          type="submit"
+          buttonstyle="secondary"
+          onClick={handleAbortButtonOnClick}
+          id="response-code-abort-button"
+          disabled={props.formProps.submitting}
+        >
+          <FormattedMessage defaultMessage="Cancel" description="Short code form" />
+        </EduIDButton>
+
+        <EduIDButton
+          type="submit"
+          onClick={handleLoginButtonOnClick}
+          id="response-code-submit-button"
+          buttonstyle="primary"
+          disabled={props.formProps.submitting || props.formProps.invalid || props.formProps.pristine}
+        >
+          <FormattedMessage defaultMessage="Continue" description="Short code form" />
+        </EduIDButton>
+      </div>
+    );
+  }
+
   const expiredMessage = (
     <>
       <FormattedMessage
@@ -200,31 +236,50 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
           <li>
             {response_code_required === false ? (
-              <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+              <React.Fragment>
+                <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="secondary"
+                    type="submit"
+                    onClick={handleAbortButtonOnClick}
+                    id="response-code-cancel-button"
+                  >
+                    <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+                  </EduIDButton>
+                  <EduIDButton
+                    type="submit"
+                    buttonstyle="primary"
+                    onClick={handleContinueWithoutCode}
+                    id="response-code-continue-button"
+                  >
+                    <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
+                  </EduIDButton>
+                </div>
+              </React.Fragment>
             ) : (
-              <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
-            )}
-            <div className="expiration-info">
-              <ResponseCodeForm
-                codeRequired={response_code_required}
-                extra_className="device1"
-                submitDisabled={false}
-                inputsDisabled={false}
-                handleLogin={handleLoginButtonOnClick}
-                handleAbort={handleAbortButtonOnClick}
-                handleSubmitCode={handleSubmitCode}
-                handleContinueWithoutCode={handleContinueWithoutCode}
-              />
+              <React.Fragment>
+                <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+                <div className="expiration-info">
+                  <ResponseCodeForm
+                    bad_attempts={bad_attempts}
+                    inputsDisabled={false}
+                    handleSubmitCode={handleSubmitCode}
+                  >
+                    <ResponseCodeButtons />
+                  </ResponseCodeForm>
 
-              <TimeRemainingWrapper
-                name="other-device-expires"
-                unique_id={data.display_id}
-                value={data.expires_in}
-                onReachZero={handleTimerReachZero}
-              >
-                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
-              </TimeRemainingWrapper>
-            </div>
+                  <TimeRemainingWrapper
+                    name="other-device-expires"
+                    unique_id={data.display_id}
+                    value={data.expires_in}
+                    onReachZero={handleTimerReachZero}
+                  >
+                    <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
+                  </TimeRemainingWrapper>
+                </div>
+              </React.Fragment>
+            )}
           </li>
         </ol>
       ) : (
