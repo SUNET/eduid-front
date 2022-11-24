@@ -14,7 +14,7 @@ interface HeaderProps {
   loginRef?: string;
 }
 
-export function Header(props: HeaderProps): JSX.Element {
+export function Header(props: HeaderProps): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
@@ -23,7 +23,6 @@ export function Header(props: HeaderProps): JSX.Element {
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
   const start_url = dashboard_url || eduid_site_url;
   let button;
-  let dashboardNav;
 
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
@@ -62,7 +61,6 @@ export function Header(props: HeaderProps): JSX.Element {
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
-    dashboardNav = <DashboardNav toggle={setOpen} />;
   } else if (props.showRegister) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
@@ -70,7 +68,7 @@ export function Header(props: HeaderProps): JSX.Element {
       </EduIDButton>
     );
   } else {
-    button = <div />;
+    button = null;
   }
 
   return (
@@ -83,7 +81,7 @@ export function Header(props: HeaderProps): JSX.Element {
         <Hamburger rounded duration={0.2} label="Menu" size={28} toggled={isOpen} toggle={setOpen} />
 
         <div className={"nav-wrapper " + (isOpen ? "show-menu" : undefined)}>
-          {dashboardNav}
+          <DashboardNav toggle={setOpen} />
           <div>{button}</div>
         </div>
       </header>
