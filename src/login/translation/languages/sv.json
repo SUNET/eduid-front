@@ -57,7 +57,7 @@
   },
   "0aGYAe": {
     "developer_comment": "without extra security description",
-    "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
+    "string": "Din identitet kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "0fMD4p": {
     "developer_comment": "SAML login finished",
