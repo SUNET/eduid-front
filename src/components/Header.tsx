@@ -24,12 +24,9 @@ export function Header(props: HeaderProps): JSX.Element {
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
     if (fetchLogout.fulfilled.match(resp)) {
-      if (resp.payload.location) {
-        window.location.assign(resp.payload.location);
-      } else {
-        if (start_url) {
-          window.location.assign(start_url);
-        }
+      const goto_url = resp.payload.location || eduid_site_url || start_url;
+      if (goto_url) {
+        window.location.assign(goto_url);
       }
     }
   }
