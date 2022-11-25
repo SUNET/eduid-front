@@ -6,7 +6,16 @@ import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders AccountLinking as expected", () => {
-  render(<DashboardMain />);
+  render(<DashboardMain />, {
+    state: {
+      personal_data: { eppn: "dummy" },
+    },
+  });
+
+  const menu = screen.getByRole("button", { name: "Menu" });
+  act(() => {
+    menu.click();
+  });
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -15,13 +24,17 @@ test("renders AccountLinking as expected", () => {
   });
   expect(nav).toHaveClass(activeClassName);
 
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  expect(screen.queryByRole("progressbar")).toBeInTheDocument();
 
   expect(screen.getByRole("heading", { name: /orcid account/i })).toBeInTheDocument();
 });
 
 test("can add an ORCID iD", () => {
-  render(<DashboardMain />);
+  render(<DashboardMain />, {
+    state: {
+      personal_data: { eppn: "dummy" },
+    },
+  });
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -30,7 +43,7 @@ test("can add an ORCID iD", () => {
   });
   expect(nav).toHaveClass(activeClassName);
 
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  expect(screen.queryByRole("progressbar")).toBeInTheDocument();
 
   const button = screen.getByRole("button", { name: /add orcid/i });
   expect(button).toBeEnabled();
@@ -49,6 +62,7 @@ test("can show an ORCID iD", () => {
     state: {
       ...defaultDashboardTestState,
       account_linking: { orcid },
+      personal_data: { eppn: "dummy" },
     },
   });
 
@@ -89,6 +103,7 @@ test("can remove an ORCID iD", async () => {
     state: {
       config: { ...defaultDashboardTestState.config, orcid_url: "/orcid/" },
       account_linking: { orcid },
+      personal_data: { eppn: "dummy" },
     },
   });
 

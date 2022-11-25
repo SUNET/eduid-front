@@ -5,7 +5,11 @@ import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders DeleteAccount as expected", () => {
-  render(<DashboardMain />);
+  render(<DashboardMain />, {
+    state: {
+      personal_data: { eppn: "dummy" },
+    },
+  });
 
   // Navigate to Settings
   const nav = screen.getByRole("link", { name: "Settings" });
@@ -14,7 +18,7 @@ test("renders DeleteAccount as expected", () => {
   });
   expect(nav).toHaveClass(activeClassName);
 
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  expect(screen.queryByRole("progressbar")).toBeInTheDocument();
 
   expect(screen.getByRole("heading", { name: /delete eduid/i })).toBeInTheDocument();
 });
@@ -33,6 +37,7 @@ test("can click the button", async () => {
   render(<DashboardMain />, {
     state: {
       config: { ...defaultDashboardTestState.config, security_url: "/security/" },
+      personal_data: { eppn: "dummy" },
     },
   });
 
