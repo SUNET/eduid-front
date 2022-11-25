@@ -19,6 +19,7 @@ test("renders Profile page as expected", () => {
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      personal_data: { eppn: "test-eppn" },
     },
   });
 
