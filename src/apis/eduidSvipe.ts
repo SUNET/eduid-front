@@ -6,6 +6,7 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
 interface SvipeCommonRequest {
   frontend_action?: string;
@@ -48,18 +49,6 @@ export const svipeVerifyIdentity = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface GetStatusRequest {
-  authn_id: string;
-}
-
-export interface GetStatusResponse {
-  frontend_action: string;
-  method: string;
-  error?: boolean;
-  status?: string;
-}
 
 /**
  * @public
