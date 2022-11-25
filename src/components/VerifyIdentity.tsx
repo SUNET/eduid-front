@@ -348,9 +348,9 @@ function AccordionItemWorld(): JSX.Element | null {
     }
   }
 
-  // if (!svipe_url) {
-  //   return null;
-  // }
+  if (!svipe_url) {
+    return null;
+  }
 
   return (
     <AccordionItemTemplate
