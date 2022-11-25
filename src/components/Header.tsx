@@ -85,8 +85,6 @@ export function Header(props: HeaderProps): JSX.Element | null {
           <div>{button}</div>
         </div>
       </header>
-
-      {userName}
     </section>
   );
 }
