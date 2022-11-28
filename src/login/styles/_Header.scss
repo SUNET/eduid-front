@@ -40,16 +40,15 @@
     }
 
     // Mobile header logged in
-    &:not(.show-register) {
-      @media (max-width: $bp-lg) {
-        flex-direction: column;
-        align-items: flex-end;
-        padding: 0.5rem 0;
 
-        .hamburger-react {
-          display: block;
-          width: 54px !important;
-        }
+    @media (max-width: $bp-lg) {
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 0.5rem 0;
+
+      .hamburger-react {
+        display: block;
+        width: 54px !important;
       }
     }
   }

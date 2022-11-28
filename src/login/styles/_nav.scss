@@ -63,19 +63,18 @@
   }
 
   // Mobile wrapper logged in
-  &:not(.show-register &) {
-    @media (max-width: $bp-lg) {
-      max-height: 0;
-      overflow: hidden;
 
-      > div:last-child {
-        margin-bottom: 1rem;
-      }
+  @media (max-width: $bp-lg) {
+    // max-height: 0;
+    // overflow: hidden;
 
-      &.show-menu {
-        height: auto;
-        max-height: 1000px;
-      }
+    > div:last-child {
+      margin-bottom: 1rem;
+    }
+
+    &.show-menu {
+      //height: auto;
+      max-height: 1000px;
     }
   }
 }

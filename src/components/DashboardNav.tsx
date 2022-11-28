@@ -1,4 +1,4 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
+//import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 
@@ -10,15 +10,15 @@ interface DashboardNavProps {
 }
 
 function DashboardNav(props: DashboardNavProps): JSX.Element | null {
-  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  //const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
 
   function closeMenu() {
     props.toggle(false);
   }
 
-  if (!eppn) {
-    return null;
-  }
+  // if (!eppn) {
+  //   return null;
+  // }
 
   return (
     <nav id="dashboard-nav">

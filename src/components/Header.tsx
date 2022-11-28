@@ -12,6 +12,7 @@ interface HeaderProps {
   showLogout?: boolean;
   showRegister?: boolean;
   loginRef?: string;
+  eppn?: string;
 }
 
 export function Header(props: HeaderProps): JSX.Element | null {
@@ -22,7 +23,8 @@ export function Header(props: HeaderProps): JSX.Element | null {
   const [isOpen, setOpen] = useState<boolean>(false);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
   const start_url = dashboard_url || eduid_site_url;
-  let button;
+  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  let header;
 
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
@@ -50,30 +52,41 @@ export function Header(props: HeaderProps): JSX.Element | null {
   }
 
   if (props.showLogin) {
-    button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
-        <FormattedMessage defaultMessage="Log in" description="Header login" />
-      </EduIDButton>
-    );
-  } else if (props.showLogout) {
-    button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
-        <FormattedMessage defaultMessage="Log out" description="Header logout" />
-      </EduIDButton>
-    );
-  } else if (props.showRegister) {
-    button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
-        <FormattedMessage defaultMessage="Register" description="Header register" />
-      </EduIDButton>
-    );
-  } else {
-    button = null;
-  }
+    header = (
+      <header>
+        <a href={start_url} aria-label="eduID start" title="eduID start">
+          <div id="eduid-logo" className="eduid-logo" />
+        </a>
 
-  return (
-    <section className="banner">
-      <header className={props.showRegister ? "show-register" : undefined}>
+        <div className="nav-wrapper">
+          <div>
+            <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
+              <FormattedMessage defaultMessage="Log in" description="Header login" />
+            </EduIDButton>
+          </div>
+        </div>
+      </header>
+    );
+    // } else if (props.showLogout && !eppn) {
+  } else if (props.showLogout) {
+    header = (
+      <header>
+        <a href={start_url} aria-label="eduID start" title="eduID start">
+          <div id="eduid-logo" className="eduid-logo" />
+        </a>
+
+        <div className="nav-wrapper">
+          <div>
+            <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+              <FormattedMessage defaultMessage="Log out" description="Header logout" />
+            </EduIDButton>
+          </div>
+        </div>
+      </header>
+    );
+  } else if (props.eppn) {
+    header = (
+      <header>
         <a href={start_url} aria-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
@@ -82,9 +95,33 @@ export function Header(props: HeaderProps): JSX.Element | null {
 
         <div className={"nav-wrapper " + (isOpen ? "show-menu" : undefined)}>
           <DashboardNav toggle={setOpen} />
-          <div>{button}</div>
+          <div>
+            <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+              <FormattedMessage defaultMessage="Log out" description="Header logout" />
+            </EduIDButton>
+          </div>
         </div>
       </header>
-    </section>
-  );
+    );
+  } else if (props.showRegister) {
+    header = (
+      <header>
+        <a href={start_url} aria-label="eduID start" title="eduID start">
+          <div id="eduid-logo" className="eduid-logo" />
+        </a>
+
+        <div className="nav-wrapper">
+          <div>
+            <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
+              <FormattedMessage defaultMessage="Register" description="Header register" />
+            </EduIDButton>
+          </div>
+        </div>
+      </header>
+    );
+  } else {
+    header = null;
+  }
+
+  return <section className="banner">{header}</section>;
 }
