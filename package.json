@@ -29,6 +29,7 @@
     "@xstate/react": "^3.0.1",
     "bootstrap": "^5.2.2",
     "final-form": "^4.20.7",
+    "hamburger-react": "^2.5.0",
     "invariant": "^2.2.4",
     "mini-create-react-context": "^0.4.1",
     "react": "^17.0.2",

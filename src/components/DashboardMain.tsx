@@ -1,6 +1,5 @@
 import { AdvancedSettings } from "components/AdvancedSettings";
 import { ChangePasswordContainer } from "components/ChangePassword";
-import DashboardNav from "components/DashboardNav";
 import { ExternalReturnHandler } from "components/ExternalReturnHandler";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
@@ -31,7 +30,6 @@ export function DashboardMain() {
         <Notifications />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
-            <DashboardNav />
             <div id="text-content">
               <Routes>
                 <Route path="/profile/settings/advanced-settings/" element={<AdvancedSettings />} />

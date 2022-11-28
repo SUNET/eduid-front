@@ -10,10 +10,14 @@ import { DashboardMain } from "components/DashboardMain";
 import { act } from "react-dom/test-utils";
 import securitySlice, { initialState } from "reducers/Security";
 import { mswServer, rest } from "setupTests";
-import { render, screen, waitFor, fireEvent } from "./helperFunctions/DashboardTestApp-rtl";
+import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders security key as expected, not security key added", async () => {
-  render(<DashboardMain />);
+  render(<DashboardMain />, {
+    state: {
+      personal_data: { eppn: "dummy" },
+    },
+  });
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -50,6 +54,7 @@ test("renders security key as expected, with added security key", async () => {
           },
         ],
       },
+      personal_data: { eppn: "dummy" },
     },
   });
 
@@ -65,7 +70,11 @@ test("renders security key as expected, with added security key", async () => {
 });
 
 test("renders modals onclick security key button", async () => {
-  render(<DashboardMain />);
+  render(<DashboardMain />, {
+    state: {
+      personal_data: { eppn: "dummy" },
+    },
+  });
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
   act(() => {
@@ -88,6 +97,9 @@ test("renders modals onclick security key button", async () => {
 test("can remove a security key", async () => {
   render(<DashboardMain />, {
     state: {
+      personal_data: {
+        eppn: "dummy",
+      },
       security: {
         credentials: [
           {
@@ -159,7 +171,7 @@ test("api call webauthn/remove", async () => {
   );
 
   render(<DashboardMain />, {
-    state: { security: { credentials: response.credentials } },
+    state: { personal_data: { eppn: "dummy" }, security: { credentials: response.credentials } },
   });
   const nav = screen.getByRole("link", { name: "Advanced settings" });
   act(() => {
