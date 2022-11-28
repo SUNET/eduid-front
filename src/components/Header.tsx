@@ -12,7 +12,6 @@ interface HeaderProps {
   showLogout?: boolean;
   showRegister?: boolean;
   loginRef?: string;
-  eppn?: string;
 }
 
 export function Header(props: HeaderProps): JSX.Element | null {
@@ -24,6 +23,7 @@ export function Header(props: HeaderProps): JSX.Element | null {
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
   const start_url = dashboard_url || eduid_site_url;
   const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+
   let header;
 
   async function handleLogout() {
@@ -64,8 +64,8 @@ export function Header(props: HeaderProps): JSX.Element | null {
         </div>
       </header>
     );
-    // } else if (props.showLogout && !eppn) {
-  } else if (props.showLogout) {
+  } else if (props.showLogout && !eppn) {
+    // } else if (props.showLogout) {
     header = (
       <header>
         <a href={start_url} aria-label="eduID start" title="eduID start">
@@ -81,7 +81,7 @@ export function Header(props: HeaderProps): JSX.Element | null {
         </div>
       </header>
     );
-  } else if (props.eppn) {
+  } else if (eppn) {
     header = (
       <header>
         <a href={start_url} aria-label="eduID start" title="eduID start">
