@@ -21,9 +21,11 @@ a,
   }
 }
 
-a .disabled {
+a .disabled,
+.text-link.disabled {
   color: $txt-gray;
   text-decoration: none;
+  pointer-events: none;
 
   &:hover {
     cursor: not-allowed;
