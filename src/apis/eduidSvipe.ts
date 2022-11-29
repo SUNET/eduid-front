@@ -1,9 +1,8 @@
 /*
- * Code and data structures for talking to the eidas backend microservice.
+ * Code and data structures for talking to the Svipe backend microservice.
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
@@ -17,8 +16,8 @@ interface SvipeCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithSvipe = LoginAppDispatch | DashboardAppDispatch;
-type StateWithSvipe = LoginRootState | DashboardRootState;
+type DispatchWithSvipe = DashboardAppDispatch;
+type StateWithSvipe = DashboardRootState;
 
 /*********************************************************************************************************************/
 
