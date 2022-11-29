@@ -115,8 +115,14 @@ table {
       &:last-of-type {
         border-bottom: none;
       }
+
+      .flag-icon {
+        font-size: 2em !important;
+      }
+
       .circle-icon {
         height: 2rem;
+
         @media (max-width: $bp-md) {
           height: 1.5rem;
         }
