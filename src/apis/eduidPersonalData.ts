@@ -36,9 +36,13 @@ export interface EidasIdentity {
   verified: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SvipeIdentity extends EidasIdentity {}
+
 export interface UserIdentities {
   nin?: NinIdentity;
   eidas?: EidasIdentity;
+  svipe?: SvipeIdentity;
   is_verified: boolean;
 }
 
