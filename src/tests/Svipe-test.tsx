@@ -33,7 +33,7 @@ test("renders svipeID as expected", () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const svipeAccordion = screen.getByRole("button", { name: /All other countries Svipe ID/i });
+  const svipeAccordion = screen.getByRole("button", { name: /All other countries With Svipe ID/i });
   act(() => {
     svipeAccordion.click();
   });
