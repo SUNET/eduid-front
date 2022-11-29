@@ -136,7 +136,11 @@ function SecurityWithSMSButton({
       <p className="enter-phone-code">
         <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
         &nbsp;
-        <a className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`} onClick={toPhoneCodeForm}>
+        <a
+          className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`}
+          role="link"
+          onClick={toPhoneCodeForm}
+        >
           <FormattedMessage description="enter code" defaultMessage="enter code" />
         </a>
       </p>
