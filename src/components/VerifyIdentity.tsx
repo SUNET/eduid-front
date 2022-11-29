@@ -6,6 +6,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
+import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import EuFlag from "../../img/flags/eu.svg";
 import SeFlag from "../../img/flags/se.svg";
@@ -120,6 +121,9 @@ function VerifyIdentityIntro(): JSX.Element {
 
 function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
+  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+
   return (
     <React.Fragment>
       {identities.nin?.verified && (
@@ -168,26 +172,54 @@ function VerifiedIdentitiesTable(): JSX.Element {
               </tbody>
             </table>
           </figure>
-          {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas */}
-          {!identities.nin?.verified && (
-            <React.Fragment>
-              <h3>
-                <FormattedMessage
-                  description="verify identity non verified description"
-                  defaultMessage="Choose your principal identification method"
-                />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="verify identity with swedish ID description"
-                  defaultMessage={`Verify your eduID with a Swedish national ID number.`}
-                />
-              </p>
-              <Accordion>
-                <AccordionItemSwedish />
-              </Accordion>
-            </React.Fragment>
-          )}
+        </React.Fragment>
+      )}
+
+      {identities.svipe?.verified && (
+        <React.Fragment>
+          <figure className="table-responsive identity-summary">
+            <table className="table">
+              <tbody>
+                <tr className="border-row">
+                  <td>
+                    <ReactCountryFlag
+                      className="flag-icon"
+                      aria-label={regionNames.of(identities.svipe.country_code)}
+                      countryCode={identities.svipe.country_code}
+                    />
+                  </td>
+                  <td>
+                    <strong>
+                      <FormattedMessage defaultMessage="Svipe ID" description="Verified identity" />
+                    </strong>
+                  </td>
+                  <td>
+                    {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </React.Fragment>
+      )}
+      {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
+      {!identities.nin?.verified && (
+        <React.Fragment>
+          <h3>
+            <FormattedMessage
+              description="verify identity non verified description"
+              defaultMessage="Choose your principal identification method"
+            />
+          </h3>
+          <p>
+            <FormattedMessage
+              description="verify identity with swedish ID description"
+              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
+            />
+          </p>
+          <Accordion>
+            <AccordionItemSwedish />
+          </Accordion>
         </React.Fragment>
       )}
     </React.Fragment>
@@ -357,14 +389,24 @@ function AccordionItemWorld(): JSX.Element | null {
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
       title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
       additionalInfo={
-        <FormattedMessage description="accordion item Svipe ID additional info" defaultMessage="Svipe ID" />
+        <FormattedMessage
+          description="accordion item Svipe ID additional info"
+          defaultMessage="With Svipe ID cryptographic identity verification "
+        />
       }
       uuid="world"
     >
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage="If you have an Svipe ID, you can connect it to your eduID."
+          defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
+          values={{
+            Svipe_ID: (
+              <a href=" https://www.svipe.com/get-started" target="_blank">
+                Svipe ID
+              </a>
+            ),
+          }}
         />
       </p>
       <p>
