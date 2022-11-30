@@ -288,6 +288,10 @@
     "developer_comment": "chpass suggest password",
     "string": "Rekommendera ett lösenord"
   },
+  "CoT2UX": {
+    "developer_comment": "accordion item Svipe ID additional info",
+    "string": "Med Svipe ID kryptografisk identitetsverifiering"
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "Enhetsnyckel/säkerhetsnyckel"
@@ -762,6 +766,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
   },
+  "VwFaJg": {
+    "developer_comment": "verify identity",
+    "string": "Om du har ett {Svipe_ID} kan du koppla det till ditt eduID."
+  },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
     "string": "Skicka e-post igen"
@@ -785,6 +793,10 @@
   "XETOo6": {
     "developer_comment": "pd long description",
     "string": "Den här informationen kan komma att användas för att anpassa tjänster som du når med ditt eduID."
+  },
+  "XRiftZ": {
+    "developer_comment": "accordion item svipe title",
+    "string": "Alla andra länder"
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1222,6 +1234,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja eID+ konto (godkänd svensk e-legitimation)"
+  },
+  "f6zYSE": {
+    "developer_comment": "Verified identity",
+    "string": "Svipe ID"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
@@ -2052,6 +2068,10 @@
     "developer_comment": "extra security description",
     "string": "Genom att återställa lösenordet med ett extra säkerhetsalternativ kommer kontot att förbli verifierat."
   },
+  "sVb591": {
+    "developer_comment": "verify identity",
+    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Svipe ID verifierar din identitet mot eduID."
+  },
   "security last used": {
     "string": "Senast använd"
   },
@@ -2230,6 +2250,21 @@
   },
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
+  },
+  "svipe_id.authn_request_failed": {
+    "string": "Svipe ID autentiserings begäran misslyckades. Försök igen"
+  },
+  "svipe_id.authorization_fail": {
+    "string": "Svipe ID auktorisering misslyckades."
+  },
+  "svipe_id.identity_verify_success": {
+    "string": "Svipes ID verifiering lyckades"
+  },
+  "svipe_id.method_not_available": {
+    "string": "Svipe ID är inte tillgängligt för detta konto. Försök med en annan verifieringsmetod."
+  },
+  "svipe_id.not_found": {
+    "string": "Svipe ID hittades inte."
   },
   "t0C4LH": {
     "developer_comment": "verify identity connect nin",
