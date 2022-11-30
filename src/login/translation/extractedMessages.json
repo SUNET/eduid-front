@@ -288,6 +288,10 @@
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
   },
+  "CoT2UX": {
+    "developer_comment": "accordion item Svipe ID additional info",
+    "string": "With Svipe ID cryptographic identity verification"
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
@@ -762,6 +766,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "VwFaJg": {
+    "developer_comment": "verify identity",
+    "string": "If you have a {Svipe_ID} you can connect it to your eduID."
+  },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
     "string": "Resend e-mail"
@@ -785,6 +793,10 @@
   "XETOo6": {
     "developer_comment": "pd long description",
     "string": "This information may be used to personalise services that you access with your eduID."
+  },
+  "XRiftZ": {
+    "developer_comment": "accordion item svipe title",
+    "string": "All other countries"
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1222,6 +1234,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
+  },
+  "f6zYSE": {
+    "developer_comment": "Verified identity",
+    "string": "Svipe ID"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
@@ -2052,6 +2068,10 @@
     "developer_comment": "extra security description",
     "string": "A password reset using an extra security option will keep your account confirmed."
   },
+  "sVb591": {
+    "developer_comment": "verify identity",
+    "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
+  },
   "security last used": {
     "string": "Used on"
   },
@@ -2230,6 +2250,21 @@
   },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
+  },
+  "svipe_id.authn_request_failed": {
+    "string": "Svipe authentication request failed.Please try again"
+  },
+  "svipe_id.authorization_fail": {
+    "string": "Svipe authorization failed."
+  },
+  "svipe_id.identity_verify_success": {
+    "string": "Svipe identity verification success"
+  },
+  "svipe_id.method_not_available": {
+    "string": "Svipe is not available for this account. Please try another verification method."
+  },
+  "svipe_id.not_found": {
+    "string": "Svipe id not found."
   },
   "t0C4LH": {
     "developer_comment": "verify identity connect nin",
