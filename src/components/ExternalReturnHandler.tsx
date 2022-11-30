@@ -16,7 +16,7 @@ export function ExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
 
-  function fetchStatus(response: GetStatusResponse) {
+  function processStatus(response: GetStatusResponse) {
     const status = response;
     if (status?.method) {
       // Status has been fetched
@@ -47,14 +47,14 @@ export function ExternalReturnHandler() {
   async function fetchEidasStatus(authn_id: string) {
     const response = await dispatch(eidasGetStatus({ authn_id: authn_id }));
     if (eidasGetStatus.fulfilled.match(response)) {
-      fetchStatus(response.payload);
+      processStatus(response.payload);
     }
   }
 
   async function fetchSvipeStatus(authn_id: string) {
     const response = await dispatch(svipeGetStatus({ authn_id: authn_id }));
     if (svipeGetStatus.fulfilled.match(response)) {
-      fetchStatus(response.payload);
+      processStatus(response.payload);
     }
   }
 
