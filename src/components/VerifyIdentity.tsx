@@ -217,7 +217,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
               defaultMessage={`Verify your eduID with a Swedish national ID number.`}
             />
           </p>
-          <Accordion>
+          <Accordion allowZeroExpanded>
             <AccordionItemSwedish />
           </Accordion>
         </React.Fragment>
