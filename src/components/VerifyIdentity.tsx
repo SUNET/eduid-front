@@ -190,7 +190,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
                   </td>
                   <td>
                     <strong>
-                      <FormattedMessage defaultMessage="Svipe ID" description="Verified identity" />
+                      <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
                     </strong>
                   </td>
                   <td>
