@@ -405,10 +405,6 @@
     "developer_comment": "password input field label",
     "string": "Lösenord"
   },
-  "GnCq3b": {
-    "developer_comment": "Signup",
-    "string": "Epost adress verifierad"
-  },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
     "string": "T.ex. Touch/ Face ID på den här enheten."
@@ -482,6 +478,10 @@
   },
   "KWAMem": {
     "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
+  },
+  "KZrck9": {
+    "developer_comment": "Signup",
+    "string": "Verifiering av epost-adress"
   },
   "KaX8vx": {
     "developer_comment": "pd label en",
@@ -1676,6 +1676,9 @@
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
   },
+  "o3LM/J": {
+    "string": "Ange den sexsiffriga koden som skickades till {email}  för att verifiera din e-postadress"
+  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Avbryt"
@@ -2453,9 +2456,6 @@
   "z/Z3FL": {
     "developer_comment": "Signup",
     "string": "Kontot skapades"
-  },
-  "zKuIuE": {
-    "string": "Ange den sexsiffriga koden från e-postmeddelandet som skickades till {email}"
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
