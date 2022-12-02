@@ -126,12 +126,12 @@ export function SignupEnterCode(): JSX.Element {
   return (
     <Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Email verification" description="Signup" />
+        <FormattedMessage defaultMessage="Verification of email address" description="Signup" />
       </h1>
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="Enter the six digit code from the email sent to {email}"
+            defaultMessage="Enter the six digit code sent to {email} to verify your email address"
             values={{
               email: (
                 <span id="email_address">
