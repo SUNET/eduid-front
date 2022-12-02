@@ -67,6 +67,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
   },
+  "0xT3Pl": {
+    "developer_comment": "Verified identity",
+    "string": "Utländsk Svipe-identitet"
+  },
   "12hWj7": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
@@ -1234,10 +1238,6 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja eID+ konto (godkänd svensk e-legitimation)"
-  },
-  "f6zYSE": {
-    "developer_comment": "Verified identity",
-    "string": "Svipe ID"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
