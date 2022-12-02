@@ -405,10 +405,6 @@
     "developer_comment": "password input field label",
     "string": "Password"
   },
-  "GnCq3b": {
-    "developer_comment": "Signup",
-    "string": "Email verification"
-  },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
     "string": "Touch/ Face ID on this device."
@@ -482,6 +478,10 @@
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
+  },
+  "KZrck9": {
+    "developer_comment": "Signup",
+    "string": "Verification of email address"
   },
   "KaX8vx": {
     "developer_comment": "pd label en",
@@ -1676,6 +1676,9 @@
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
   },
+  "o3LM/J": {
+    "string": "Enter the six digit code sent to {email} to verify your email address"
+  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "cancel"
@@ -2453,9 +2456,6 @@
   "z/Z3FL": {
     "developer_comment": "Signup",
     "string": "A link has been sent to your email address."
-  },
-  "zKuIuE": {
-    "string": "Enter the six digit code from the email sent to {email}"
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
