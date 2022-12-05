@@ -19,6 +19,7 @@ const resetPasswordModel = createModel(
       COMPLETE: () => ({}), // no payload
       FAIL: () => ({}), // no payload
       SUCCESS: () => ({}), // no payload
+      BYPASS: () => ({}),
     },
   }
 );
@@ -36,32 +37,45 @@ export function createResetPasswordMachine() {
         ResetPasswordStart: {
           on: {
             COMPLETE: {
-              target: "AskForEmailAddress",
+              target: "AskForEmailOrConfirmEmail",
             },
           },
         },
-        AskForEmailAddress: {
-          initial: "ResetPasswordEnterEmail",
+        AskForEmailOrConfirmEmail: {
+          initial: "ResetPasswordRequestEmail",
           states: {
-            ResetPasswordEnterEmail: {
+            ResetPasswordRequestEmail: {
               on: {
                 COMPLETE: {
+                  target: "ResetPasswordConfirmEmail",
+                },
+                BYPASS: {
+                  target: "ResetPasswordEnterEmail",
+                },
+              },
+            },
+            ResetPasswordConfirmEmail: {
+              on: {
+                API_SUCCESS: {
                   target: "EmailLinkSent",
+                },
+                API_FAIL: {
+                  target: "ResetPasswordEnterEmail",
+                },
+              },
+            },
+            ResetPasswordEnterEmail: {
+              on: {
+                API_SUCCESS: {
+                  target: "EmailLinkSent",
+                },
+                API_FAIL: {
+                  target: "ResetPasswordEnterEmail",
                 },
               },
             },
             EmailLinkSent: {
-              initial: "EmailLinkSent",
-              states: {
-                EmailLinkSent: {
-                  on: {
-                    COMPLETE: {
-                      target: "EmailLinkSent",
-                      internal: false,
-                    },
-                  },
-                },
-              },
+              type: "final",
             },
           },
         },

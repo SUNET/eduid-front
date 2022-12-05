@@ -4,12 +4,8 @@ import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import { ExtraSecurity } from "./ExtraSecurity";
-import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordGlobalStateProvider } from "./ResetPasswordGlobalState";
 import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
-import ResetPasswordSuccess from "./ResetPasswordSuccess";
-import { SetNewPassword } from "./SetNewPassword";
 
 export default function ResetPassword(): JSX.Element {
   const intl = useIntl();
@@ -30,11 +26,11 @@ export default function ResetPassword(): JSX.Element {
       <div id="reset-pass-display">
         <ResetPasswordGlobalStateProvider>
           <Routes>
-            <Route path="extra-security" element={<ExtraSecurity />} />
+            {/* <Route path="extra-security" element={<ExtraSecurity />} />
             <Route path="phone-code-sent" element={<PhoneCodeSent />} />
             <Route path="success" element={<ResetPasswordSuccess />} />
             <Route path="set-new-password" element={<SetNewPassword />} />
-            <Route path="email-code/:emailCode" element={<EmailCode />} />
+            <Route path="email-code/:emailCode" element={<EmailCode />} /> */}
             <Route path=":ref" element={<ResetPasswordRequestEmail />} />
             <Route path="" element={<ResetPasswordRequestEmail />} />
           </Routes>

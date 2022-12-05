@@ -8,14 +8,14 @@ export interface Typegen0 {
   invokeSrcNameMap: {};
   missingImplementations: {
     actions: never;
-    services: never;
-    guards: never;
     delays: never;
+    guards: never;
+    services: never;
   };
   eventsCausingActions: {};
-  eventsCausingServices: {};
-  eventsCausingGuards: {};
   eventsCausingDelays: {};
+  eventsCausingGuards: {};
+  eventsCausingServices: {};
   matchesStates:
     | "AskForEmailAddress"
     | "AskForEmailAddress.SignupEmailForm"
@@ -41,9 +41,9 @@ export interface Typegen0 {
     | "HandleEmail.SignupEnterCode"
     | "SignupStart"
     | {
-        AskForEmailAddress?: "SignupEmailForm";
-        FinaliseUser?: "CreateUser" | "SignupUserCreated";
-        HandleCaptchaAndToU?:
+        "AskForEmailAddress"?: "SignupEmailForm";
+        "FinaliseUser"?: "CreateUser" | "SignupUserCreated";
+        "HandleCaptchaAndToU"?:
           | "Fail"
           | "Finished"
           | "ProcessCaptcha"
@@ -51,12 +51,12 @@ export interface Typegen0 {
           | "RegisterEmail"
           | "SignupCaptcha"
           | "SignupToU";
-        HandleCredentials?:
+        "HandleCredentials"?:
           | "CredentialsFinished"
           | "SignupCredentialPassword"
           | "SignupCredentialWebauthn"
           | "SignupCredentials";
-        HandleEmail?: "EmailFinished" | "ProcessEmailCode" | "SignupEnterCode";
+        "HandleEmail"?: "EmailFinished" | "ProcessEmailCode" | "SignupEnterCode";
       };
   tags: never;
 }

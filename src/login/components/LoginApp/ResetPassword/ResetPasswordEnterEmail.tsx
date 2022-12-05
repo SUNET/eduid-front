@@ -13,6 +13,8 @@ export function ResetPasswordEnterEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
+  console.log("ResetPasswordEnterEmail");
+
   function onEnteredEmailAddress(email: string) {
     dispatch(clearNotifications());
     dispatch(resetPasswordSlice.actions.setEmailAddress(email));

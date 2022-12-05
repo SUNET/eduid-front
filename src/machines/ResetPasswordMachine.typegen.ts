@@ -8,25 +8,27 @@ export interface Typegen0 {
   invokeSrcNameMap: {};
   missingImplementations: {
     actions: never;
-    services: never;
-    guards: never;
     delays: never;
+    guards: never;
+    services: never;
   };
   eventsCausingActions: {};
-  eventsCausingServices: {};
-  eventsCausingGuards: {};
   eventsCausingDelays: {};
+  eventsCausingGuards: {};
+  eventsCausingServices: {};
   matchesStates:
-    | "AskForEmailAddress"
-    | "AskForEmailAddress.EmailLinkSent"
-    | "AskForEmailAddress.EmailLinkSent.EmailLinkSent"
-    | "AskForEmailAddress.ResetPasswordEnterEmail"
+    | "AskForEmailOrConfirmEmail"
+    | "AskForEmailOrConfirmEmail.EmailLinkSent"
+    | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
+    | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
+    | "AskForEmailOrConfirmEmail.ResetPasswordRequestEmail"
     | "ResetPasswordStart"
     | {
-        AskForEmailAddress?:
+        "AskForEmailOrConfirmEmail"?:
           | "EmailLinkSent"
+          | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail"
-          | { EmailLinkSent?: "EmailLinkSent" };
+          | "ResetPasswordRequestEmail";
       };
   tags: never;
 }

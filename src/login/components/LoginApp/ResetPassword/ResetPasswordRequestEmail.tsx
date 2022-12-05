@@ -7,6 +7,7 @@ import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
+import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
@@ -33,20 +34,38 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     }
   }, [loginRef, params]);
 
-  if (!email_status) {
-    if (email_address) {
-      return <ResetPasswordConfirmEmail />;
-    }
-    return <ResetPasswordEnterEmail />;
-  }
+  useEffect(() => {
+    if (!email_status && email_address) {
+      console.log("COMPLETE");
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      // return <ResetPasswordConfirmEmail />;
+    } else resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+  }, [email_status, email_address]);
 
   return (
     // <Splash showChildren={email_status !== "requested"}>
     //   {email_status === "success" && <EmailLinkSent />}
     //   {email_status === "failed" && <ResetPasswordEnterEmail />}
     // </Splash>
-    <React.Fragment>{state.matches("ResetPasswordStart") && <ResetPasswordEnterEmail />}</React.Fragment>
+    <React.Fragment>
+      {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
+    </React.Fragment>
   );
+}
+
+/**
+ * ResetPassword state to determine what kind of signup this is, and what to do next.
+ */
+function ResetPasswordStart(): null {
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+
+  resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+
+  return null;
 }
 
 /**
@@ -54,14 +73,22 @@ export function ResetPasswordRequestEmail(): JSX.Element {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-function ResetPasswordConfirmEmail(): JSX.Element {
+export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
-  function sendEmailOnClick() {
+  console.log("ResetPasswordConfirmEmail", ResetPasswordConfirmEmail);
+
+  async function sendEmailOnClick() {
     dispatch(clearNotifications());
     if (email_address) {
-      dispatch(requestEmailLink({ email: email_address }));
+      const response = await dispatch(requestEmailLink({ email: email_address }));
+      if (requestEmailLink.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
     }
   }
 
