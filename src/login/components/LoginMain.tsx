@@ -16,12 +16,7 @@ export function LoginMain(): JSX.Element {
 
   return (
     <React.StrictMode>
-      <Header
-        showRegister={!authn_options.has_session}
-        showLogout={authn_options.has_session}
-        email={authn_options.forced_username}
-        loginRef={loginRef}
-      />
+      <Header showRegister={!authn_options.has_session} showLogout={authn_options.has_session} loginRef={loginRef} />
       <section id="panel" className="panel">
         <Notifications />
         <ErrorBoundary FallbackComponent={GenericError}>
