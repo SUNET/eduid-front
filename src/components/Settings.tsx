@@ -1,10 +1,10 @@
 import DeleteAccount from "components/DeleteAccount";
 import Emails from "components/Emails";
 import Phones from "components/Phones";
-import { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
-import { useIntl } from "react-intl";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
@@ -18,12 +18,25 @@ export function Settings(): JSX.Element {
   }, []);
 
   return (
-    <Fragment>
+    <React.Fragment>
+      <div className="intro">
+        <h1>
+          <FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="settings lead title"
+              defaultMessage="Update your eduID account settings, change password or delete your eduID."
+            />
+          </p>
+        </div>
+      </div>
       <PersonalDataParent />
       <Emails />
       <Phones />
       <ChangePasswordDisplay />
       <DeleteAccount />
-    </Fragment>
+    </React.Fragment>
   );
 }
