@@ -1,109 +1,101 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EduIDButton from "components/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
-import NotificationTip from "./NotificationTip";
 
 // export for use in tests
 export const activeClassName = "active";
 export const dashboardHeading = "eduID Dashboard:";
 
-function DashboardNav(): JSX.Element {
-  const [active, setActive] = useState(false); // true if *any* NotificationTip is active and shows it's speech bubble
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
-  const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const verifiedPhones = phones.filter((phone) => phone.verified);
-  // depending on languages show different styles
-  const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
+export interface DashboardNavProps {
+  handleLogout: () => void;
+  login_url?: string;
+}
 
-  /*
-   * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
-   */
-  function getTipsAtIdentity(): JSX.Element | undefined {
-    if (nin?.verified) {
-      // user has a verified nin already, no tips necessary
-      return undefined;
-    }
+export interface RenderUserNameProps {
+  setOpenMenu(value: boolean): void;
+  openMenu: boolean;
+}
 
-    return (
-      <NotificationTip
-        position={`settings ${selectedLanguage}`}
-        tipText={
-          <FormattedMessage
-            defaultMessage="Verify your identity to get the most ouf of your eduID"
-            description="Dashboard navigation tooltip"
-          />
-        }
-      />
-    );
+function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
+  const emails = useDashboardAppSelector((state) => state.emails.emails);
+
+  if (!emails.length) {
+    return null;
   }
-
-  /*
-   * Render on-mouse-over tip at the "Settings" tab telling the user to confirm any unconfirmed phone numbers
-   */
-  function getTipsAtSettings(): JSX.Element | undefined {
-    if (verifiedPhones.length) {
-      // one or more registered phones, don't need to tell the user anything
-      return undefined;
-    }
-
-    return (
-      <NotificationTip
-        setActive={setActive}
-        position={`settings ${selectedLanguage}`}
-        tipText={
-          <FormattedMessage
-            defaultMessage="Add and verify your phone number for better security"
-            description="Dashboard navigation tooltip"
-          />
-        }
-      />
-    );
-  }
-
-  const tipsAtSettings = getTipsAtSettings();
-  /* Styling needs to be different for the two languages we have because of different lengths */
-  const settingsClass = tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : undefined;
-  const advancedSettingsClass = tipsAtSettings && active ? `nav-advanced-settings ${selectedLanguage}` : undefined;
 
   return (
-    <nav id="dashboard-nav">
-      <h5>{dashboardHeading}</h5>
-      <ul>
-        <li>
-          <NavLink className={({ isActive }) => (isActive ? activeClassName : undefined)} to="/profile/" end>
+    <React.Fragment>
+      <button className="header-user" onClick={() => props.setOpenMenu(!props.openMenu)}>
+        <span>{emails.filter((mail) => mail.primary)[0].email}</span>
+        {props.openMenu ? (
+          <FontAwesomeIcon icon={faChevronUp as IconProp} />
+        ) : (
+          <FontAwesomeIcon icon={faChevronDown as IconProp} />
+        )}
+      </button>
+    </React.Fragment>
+  );
+}
+
+export function DashboardNav(props: DashboardNavProps): JSX.Element {
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+  return (
+    <nav id="dashboard-nav" className="header-nav">
+      <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
+      <div className={openMenu ? "nav-menu active" : "nav-menu"}>
+        <EduIDButton buttonstyle="close" size="sm" onClick={() => setOpenMenu(false)}></EduIDButton>
+        <ul>
+          <NavLink
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+            to="/profile/"
+            end
+          >
             <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
           </NavLink>
-        </li>
-        <li>
+
           <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : undefined)}
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to="/profile/verify-identity/"
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
-            {getTipsAtIdentity()}
           </NavLink>
-        </li>
-        <li>
+
           <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : settingsClass)}
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to="/profile/settings/personaldata"
           >
             <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
-            {tipsAtSettings}
           </NavLink>
-        </li>
-        <li>
+
           <NavLink
-            className={({ isActive }) => (isActive ? activeClassName : advancedSettingsClass)}
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to="/profile/settings/advanced-settings"
           >
             <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
           </NavLink>
-        </li>
-      </ul>
+
+          <EduIDButton
+            buttonstyle="link"
+            size="sm"
+            id="logout"
+            onClick={props.handleLogout}
+            disabled={!props.login_url}
+          >
+            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+            <FormattedMessage defaultMessage="Log out" description="Header logout" />
+          </EduIDButton>
+        </ul>
+      </div>
     </nav>
   );
 }
-
-export default DashboardNav;
