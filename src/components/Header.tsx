@@ -65,7 +65,7 @@ export function Header(props: HeaderProps): JSX.Element {
   } else if (props.showMenu) {
     button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
   } else {
-    button = <div />;
+    button = null;
   }
 
   return (
@@ -74,7 +74,7 @@ export function Header(props: HeaderProps): JSX.Element {
         <a href={start_url} aria-label="eduID start" title="eduID start">
           <div id="eduid-logo" className="eduid-logo" />
         </a>
-        <div className="header-inner">{button}</div>
+        {button}
       </header>
     </section>
   );
