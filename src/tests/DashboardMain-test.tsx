@@ -1,5 +1,5 @@
 import { DashboardMain } from "components/DashboardMain";
-import { activeClassName, dashboardHeading } from "components/DashboardNav";
+import { activeClassName, dashboardHeading } from "components/HeaderNav";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 

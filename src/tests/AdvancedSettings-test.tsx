@@ -1,5 +1,5 @@
 import { DashboardMain } from "components/DashboardMain";
-import { activeClassName } from "components/DashboardNav";
+import { activeClassName } from "components/HeaderNav";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { initialState } from "reducers/PersonalData";

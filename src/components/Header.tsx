@@ -2,7 +2,7 @@ import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-import { DashboardNav } from "./DashboardNav";
+import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
   email?: string;
@@ -63,7 +63,7 @@ export function Header(props: HeaderProps): JSX.Element {
       </EduIDButton>
     );
   } else if (props.showMenu) {
-    button = <DashboardNav handleLogout={handleLogout} login_url={login_url} />;
+    button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
   } else {
     button = <div />;
   }

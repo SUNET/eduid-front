@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 export const activeClassName = "active";
 export const dashboardHeading = "eduID Dashboard:";
 
-export interface DashboardNavProps {
+export interface HeaderNavProps {
   handleLogout: () => void;
   login_url?: string;
 }
@@ -42,11 +42,11 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
   );
 }
 
-export function DashboardNav(props: DashboardNavProps): JSX.Element {
+export function HeaderNav(props: HeaderNavProps): JSX.Element {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   return (
-    <nav id="dashboard-nav" className="header-nav">
+    <nav id="header-nav" className="header-nav">
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <EduIDButton buttonstyle="close" size="sm" onClick={() => setOpenMenu(false)}></EduIDButton>
