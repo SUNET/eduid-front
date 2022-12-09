@@ -1,10 +1,5 @@
 @import "./variables";
 
-#content {
-  // the height here is set to total the same as the notifications above the dashboard nav
-  margin-top: 2.25rem;
-}
-
 // --- PROFILE STYLES --- //
 #profile-grid {
   display: grid;
@@ -122,5 +117,23 @@
     margin-top: 0;
     display: block;
     transition: transform 0.5s;
+  }
+}
+
+//Breadcrumb
+
+.breadcrumb {
+  align-items: center;
+  color: #57606a;
+  font-family: $akkurat;
+  font-size: 14px;
+
+  a {
+    padding-right: 5px;
+  }
+
+  svg {
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
