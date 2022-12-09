@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Eidas";
@@ -8,6 +11,7 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import { Link } from "react-router-dom";
 import EuFlag from "../../img/flags/eu.svg";
 import SeFlag from "../../img/flags/se.svg";
 import WorldFlag from "../../img/flags/world.svg";
@@ -21,6 +25,7 @@ type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+
   const intl = useIntl();
 
   useEffect(() => {
@@ -43,6 +48,14 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
+      <div className="breadcrumb">
+        <Link key="/profile/" to="/profile/">
+          <FormattedMessage description="Start" defaultMessage="Start" />
+        </Link>
+        /
+        <FontAwesomeIcon icon={faIdCard as IconProp} />
+        <FormattedMessage description="identity" defaultMessage="Identity" />
+      </div>
       <div className="intro">
         <h1>
           <FormattedMessage
