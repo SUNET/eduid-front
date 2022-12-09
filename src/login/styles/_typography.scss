@@ -23,6 +23,8 @@ h5,
 h1 {
   font-size: 1.8rem;
   font-family: ProximaNova-Regular;
+  margin-top: 0.5;
+  margin-bottom: 0.5em;
 
   @media (max-width: $bp-md) {
     font-size: 1.65rem;
