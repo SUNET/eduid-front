@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 
 // export for use in tests
 export const activeClassName = "active";
-export const dashboardHeading = "eduID Dashboard:";
 
 export interface HeaderNavProps {
   handleLogout: () => void;
