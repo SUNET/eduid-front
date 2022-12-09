@@ -1,5 +1,5 @@
 import { DashboardMain } from "components/DashboardMain";
-import { activeClassName, dashboardHeading } from "components/HeaderNav";
+import { activeClassName } from "components/HeaderNav";
 import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -9,7 +9,7 @@ test("shows splash screen when not configured", () => {
     routes: ["/profile/"],
   });
 
-  expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
+  expect(screen.getByRole("heading")).toHaveTextContent("Your eduID profile");
 
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
@@ -24,7 +24,7 @@ test("renders Profile page as expected", () => {
     },
   });
 
-  expect(screen.getByRole("heading")).toHaveTextContent(dashboardHeading);
+  expect(screen.getByRole("heading")).toHaveTextContent("Your eduID profile");
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
