@@ -25,9 +25,13 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
   }
 
   if (props.letter_proofing.letter_expired) {
-    letterStatus = <FormattedMessage description="Verified identity" defaultMessage="Verification letter expired" />;
+    letterStatus = (
+      <FormattedMessage description="Verification letter expired" defaultMessage="Verification letter expired" />
+    );
   } else
-    letterStatus = <FormattedMessage description="Verified identity" defaultMessage="Verification letter requested" />;
+    letterStatus = (
+      <FormattedMessage description="Verification letter requested" defaultMessage="Verification letter requested" />
+    );
 
   return (
     <figure>
@@ -93,7 +97,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
     >
       <p>
         <FormattedMessage
-          description="accordion item Phone additional info"
+          description="accordion item security key additional info"
           defaultMessage="Add your security key to enable safe reset of password"
         />
       </p>
@@ -165,7 +169,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
     >
       <p>
         <FormattedMessage
-          description="accordion item name description"
+          description="accordion item name additionalInfo"
           defaultMessage="Name can be used to personalise services that you access with your eduID."
         />
       </p>
@@ -186,13 +190,13 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
   if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
     title = (
       <FormattedMessage
-        description="accordion item Verification"
+        description="accordion item Verification with Swedish national ID number"
         defaultMessage="Verify your identity with Swedish national ID number"
       />
     );
     description = (
       <FormattedMessage
-        description="accordion item Verification additional info"
+        description="accordion item additional info Verification with Swedish national ID number"
         defaultMessage={`If you have obtained a Swedish national ID number you are able to verify your identity 
           with the Swedish national ID number.`}
       />
@@ -201,7 +205,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
     title = <FormattedMessage description="accordion item Verification" defaultMessage="Verify your identity" />;
     description = (
       <FormattedMessage
-        description="accordion item Verification additional info"
+        description="accordion item additional info Verification additional info"
         defaultMessage="Your identity is not verified. Please verify your identity to get access to more services."
       />
     );
@@ -317,7 +321,7 @@ export default function Profile(): JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              description="advanced settings lead title"
+              description="start page lead title"
               defaultMessage="Make the most out of eduID by reviewing your information."
             />
           </p>
