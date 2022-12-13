@@ -9,7 +9,7 @@ test("shows splash screen when not configured", () => {
     routes: ["/profile/"],
   });
 
-  expect(screen.getByRole("heading")).toHaveTextContent("Your eduID profile");
+  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
 
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
@@ -24,7 +24,7 @@ test("renders Profile page as expected", () => {
     },
   });
 
-  expect(screen.getByRole("heading")).toHaveTextContent("Your eduID profile");
+  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
