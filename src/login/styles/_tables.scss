@@ -105,6 +105,18 @@ table {
         padding-right: 1rem;
       }
     }
+
+    & tr.status {
+      height: auto;
+
+      td:last-child {
+        text-align: center;
+
+        a {
+          font-size: 0.75em;
+        }
+      }
+    }
   }
 
   .identity-summary & {
