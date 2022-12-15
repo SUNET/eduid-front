@@ -83,7 +83,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
  * Recommendation for adding name, security key and phone number and verification of identity
  */
 function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX.Element | null {
-  if (props.credentials) {
+  if (props.credentials.length) {
     return null;
   }
 
