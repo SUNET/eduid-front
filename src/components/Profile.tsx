@@ -34,10 +34,10 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
     );
 
   return (
-    <figure>
+    <figure className="table-responsive progress-summary">
       <table>
         <tbody>
-          <tr className="link">
+          <tr className="border-row">
             <td>
               <strong>{letterStatus}</strong>
             </td>
@@ -58,10 +58,10 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     return null;
   }
   return (
-    <figure>
+    <figure className="table-responsive progress-summary">
       <table>
         <tbody>
-          <tr className="status">
+          <tr className="border-row">
             <td>
               <strong>
                 <FormattedMessage description="Verified identity" defaultMessage="Your identity has been verified" />
