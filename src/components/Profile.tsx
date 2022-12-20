@@ -11,7 +11,6 @@ import {
   faUnlockKeyhole,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
