@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DeleteAccount from "components/DeleteAccount";
 import Emails from "components/Emails";
@@ -25,6 +25,7 @@ export function Settings(): JSX.Element {
     <React.Fragment>
       <div className="breadcrumb">
         <Link key="/profile/" to="/profile/">
+          <FontAwesomeIcon icon={faHome as IconProp} />
           <FormattedMessage description="Start" defaultMessage="Start" />
         </Link>
         /

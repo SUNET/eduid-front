@@ -56,7 +56,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             to="/profile/"
             end
           >
-            <FormattedMessage defaultMessage="Profile" description="Dashboard nav tab name" />
+            <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
           </NavLink>
 
           <NavLink
