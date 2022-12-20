@@ -27,26 +27,20 @@ import { LetterProofingState } from "reducers/LetterProofing";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 
 interface IdentificationStepTypes {
-  [key: number]: {
-    [key: number]: boolean;
-  };
+  [key: number]: boolean;
 }
 
 function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Element {
   // fist step is user created account
   // second step is verified identity with eidas or svipe
-  // third step is verified with nin
-  const [isFinishedStep, setIsFinishedStep] = useState<IdentificationStepTypes>([
-    { 1: true },
-    { 2: false },
-    { 3: false },
-  ]);
+  // the last step is to verify with a nin
+  const [isFinishedStep, setIsFinishedStep] = useState<IdentificationStepTypes>([true, false, false]);
 
   useEffect(() => {
     if (props.identities.nin?.verified) {
-      setIsFinishedStep([{ 1: true }, { 2: true }, { 3: true }]);
+      setIsFinishedStep([true, true, true]);
     } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
-      setIsFinishedStep([{ 1: true }, { 2: true }, { 3: false }]);
+      setIsFinishedStep([true, true, false]);
     }
   }, [props.identities]);
 
@@ -63,14 +57,14 @@ function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Ele
           <FontAwesomeIcon className="icon-lock" icon={faCheck as IconProp} />
         </div>
         <div className="border-line" />
-        <div className={isFinishedStep[2] ? "step finished" : "step"}>
+        <div className={isFinishedStep[1] ? "step finished" : "step"}>
           <FontAwesomeIcon className="icon-unlock" icon={faIdCard as IconProp} />
-          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[2] ? faCheck : (faExclamation as IconProp)} />
+          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[1] ? faCheck : (faExclamation as IconProp)} />
         </div>
         <div className="border-line" />
-        <div className={isFinishedStep[3] ? "step finished" : "step"}>
+        <div className={isFinishedStep[2] ? "step finished" : "step"}>
           <FontAwesomeIcon className="icon-unlock" icon={faUnlockKeyhole as IconProp} />
-          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[3] ? faCheck : (faExclamation as IconProp)} />
+          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[2] ? faCheck : (faExclamation as IconProp)} />
         </div>
       </div>
       <div className="indicator-description">
@@ -79,17 +73,20 @@ function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Ele
           <FormattedMessage description="first step" defaultMessage="Create eduID" />
         </span>
         <span>
-          <FontAwesomeIcon icon={isFinishedStep[2] ? faCircleCheck : (faCircleExclamation as IconProp)} />
+          <FontAwesomeIcon icon={isFinishedStep[1] ? faCircleCheck : (faCircleExclamation as IconProp)} />
           <FormattedMessage description="second step" defaultMessage="Verify your identity" />
         </span>
         <span>
-          <FontAwesomeIcon icon={isFinishedStep[3] ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          {isFinishedStep[3] ? (
-            <FormattedMessage description="last step" defaultMessage="Congratulations!" />
-          ) : (
+          <FontAwesomeIcon icon={isFinishedStep[2] ? faCircleCheck : (faCircleExclamation as IconProp)} />
+          {isFinishedStep[2] ? (
             <FormattedMessage
               description="last step"
-              defaultMessage="To complete last step you need to verify a Swedish national ID number"
+              defaultMessage="Congratulations to completing your identity verification"
+            />
+          ) : (
+            <FormattedMessage
+              description="finished last step"
+              defaultMessage="To complete the last step, you need to verify a Swedish national ID number"
             />
           )}
         </span>
