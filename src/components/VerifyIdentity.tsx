@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
@@ -50,6 +50,7 @@ function VerifyIdentity(): JSX.Element | null {
     <Fragment>
       <div className="breadcrumb">
         <Link key="/profile/" to="/profile/">
+          <FontAwesomeIcon icon={faHome as IconProp} />
           <FormattedMessage description="Start" defaultMessage="Start" />
         </Link>
         /

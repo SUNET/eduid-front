@@ -32,7 +32,7 @@ test("renders Profile page as expected", () => {
   expect(button).toBeEnabled();
 
   // check that Profile is the active nav link
-  const nav = screen.getByRole("link", { name: "Profile" });
+  const nav = screen.getAllByRole("link", { name: "Start" })[0];
   expect(nav).toHaveClass(activeClassName);
 
   // check that another nav link is _not_ active
