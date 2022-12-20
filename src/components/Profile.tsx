@@ -1,18 +1,153 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faHome, faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faCheck,
+  faCircleCheck,
+  faCircleExclamation,
+  faExclamation,
+  faHome,
+  faIdCard,
+  faKey,
+  faMobileScreen,
+  faUnlockKeyhole,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { PhonesResponse } from "apis/eduidPhone";
 import { CredentialType, requestCredentials, RequestCredentialsResponse } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { LetterProofingState } from "reducers/LetterProofing";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+
+// function IdentificationProgressBar(props: { identities: UserIdentities }): JSX.Element {
+//   const [score, setScore] = useState<number>(1);
+
+//   useEffect(() => {
+//     if (props.identities.nin?.verified) {
+//       setScore(3);
+//     } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
+//       setScore(2);
+//     }
+//   }, [props.identities]);
+
+//   return (
+//     <article className="identification-progress">
+//       <div className="intro">
+//         <h3>
+//           <FormattedMessage description="progress title" defaultMessage="Your identification progress" />
+//         </h3>
+//         <p>
+//           {Math.round(score * 33.3) < 100 ? (
+//             <React.Fragment>
+//               <strong>{100 - Math.round(score * 33.3)}% </strong>
+//               <FormattedMessage description="progress title" defaultMessage="to complete." />
+//             </React.Fragment>
+//           ) : (
+//             <React.Fragment>
+//               <strong>{Math.round(score * 33.3)}% </strong>
+//               <FormattedMessage description="progress title" defaultMessage="completed!" />
+//             </React.Fragment>
+//           )}
+//         </p>
+//       </div>
+//       <progress
+//         data-label={`${Math.round(score * 33.3)}%`}
+//         max="3"
+//         value={score}
+//         id="identity-strength-meter"
+//         className="identity-progress-bar"
+//       ></progress>
+//       {Math.round(score * 33.3) < 100 && (
+//         <p className="help-text">
+//           <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
+//           <FormattedMessage
+//             description="progress title"
+//             defaultMessage="To complete to 100% you need to verify a Swedish national ID number"
+//           />
+//         </p>
+//       )}
+//     </article>
+//   );
+// }
+
+interface IdentificationStepTypes {
+  [key: number]: {
+    [key: number]: boolean;
+  };
+}
+
+function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Element {
+  // fist step is user created account
+  // second step is verified identity with eidas or svipe
+  // third step is verified with nin
+  const [isFinishedStep, setIsFinishedStep] = useState<IdentificationStepTypes>([
+    { 1: true },
+    { 2: false },
+    { 3: false },
+  ]);
+
+  useEffect(() => {
+    if (props.identities.nin?.verified) {
+      setIsFinishedStep([{ 1: true }, { 2: true }, { 3: true }]);
+    } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
+      setIsFinishedStep([{ 1: true }, { 2: true }, { 3: false }]);
+    }
+  }, [props.identities]);
+
+  return (
+    <article>
+      <div className="intro">
+        <h3>
+          <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
+        </h3>
+      </div>
+      <div className="indicator">
+        <div className="step finished">
+          <FontAwesomeIcon className="icon-unlock" icon={faUser as IconProp} />
+          <FontAwesomeIcon className="icon-lock" icon={faCheck as IconProp} />
+        </div>
+        <div className="border-line" />
+        <div className={isFinishedStep[2] ? "step finished" : "step"}>
+          <FontAwesomeIcon className="icon-unlock" icon={faIdCard as IconProp} />
+          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[2] ? faCheck : (faExclamation as IconProp)} />
+        </div>
+        <div className="border-line" />
+        <div className={isFinishedStep[3] ? "step finished" : "step"}>
+          <FontAwesomeIcon className="icon-unlock" icon={faUnlockKeyhole as IconProp} />
+          <FontAwesomeIcon className="icon-lock" icon={isFinishedStep[3] ? faCheck : (faExclamation as IconProp)} />
+        </div>
+      </div>
+      <div className="indicator-description">
+        <span>
+          <FontAwesomeIcon icon={faCircleCheck as IconProp} />
+          <FormattedMessage description="first step" defaultMessage="Create eduID" />
+        </span>
+        <span>
+          <FontAwesomeIcon icon={isFinishedStep[2] ? faCircleCheck : (faCircleExclamation as IconProp)} />
+          <FormattedMessage description="second step" defaultMessage="Verify your identity" />
+        </span>
+        <span>
+          <FontAwesomeIcon icon={isFinishedStep[3] ? faCircleCheck : (faCircleExclamation as IconProp)} />
+          {isFinishedStep[3] ? (
+            <FormattedMessage description="last step" defaultMessage="Congratulations!" />
+          ) : (
+            <FormattedMessage
+              description="last step"
+              defaultMessage="To complete last step you need to verify a Swedish national ID number"
+            />
+          )}
+        </span>
+      </div>
+    </article>
+  );
+}
 
 /**
  * Currently process of letter proofing and/or verification of identity
@@ -44,32 +179,6 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
             <td>
               <Link to="verify-identity/#letter-proofing">
                 <FormattedMessage description="link to detail page" defaultMessage="continue verification" />
-              </Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
-  );
-}
-
-function VerificationProgress(props: { identities: UserIdentities }): JSX.Element | null {
-  if (!props.identities.is_verified) {
-    return null;
-  }
-  return (
-    <figure className="table-responsive progress-summary">
-      <table>
-        <tbody>
-          <tr className="border-row">
-            <td>
-              <strong>
-                <FormattedMessage description="Verified identity" defaultMessage="Your identity has been verified" />
-              </strong>
-            </td>
-            <td>
-              <Link to="verify-identity/">
-                <FormattedMessage description="link to detail page" defaultMessage="see details" />
               </Link>
             </td>
           </tr>
@@ -288,7 +397,7 @@ export default function Profile(): JSX.Element {
     );
   }
 
-  if (identities.is_verified || letter_proofing.letter_sent !== undefined) {
+  if (letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
         <div className="intro">
@@ -296,7 +405,6 @@ export default function Profile(): JSX.Element {
             <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
           </h3>
         </div>
-        <VerificationProgress identities={identities} />
         <LetterProofingProgress letter_proofing={letter_proofing} />
       </article>
     );
@@ -327,6 +435,8 @@ export default function Profile(): JSX.Element {
           </p>
         </div>
       </div>
+      {/* <IdentificationProgressBar identities={identities} /> */}
+      <IdentificationIndicator identities={identities} />
       {recommendation}
       {progress}
     </React.Fragment>
