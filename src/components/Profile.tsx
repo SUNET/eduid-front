@@ -69,25 +69,31 @@ function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Ele
       <div className="indicator-description">
         <span>
           <FontAwesomeIcon icon={faCircleCheck as IconProp} />
-          <FormattedMessage description="first step" defaultMessage="Create eduID" />
+          <strong>
+            <FormattedMessage description="first step" defaultMessage="Create eduID" />
+          </strong>
         </span>
         <span>
           <FontAwesomeIcon icon={isFinishedStep[1] ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          <FormattedMessage description="second step" defaultMessage="Verify your identity" />
+          <strong>
+            <FormattedMessage description="second step" defaultMessage="Verify your identity" />
+          </strong>
         </span>
         <span>
           <FontAwesomeIcon icon={isFinishedStep[2] ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          {isFinishedStep[2] ? (
-            <FormattedMessage
-              description="last step"
-              defaultMessage="Congratulations to completing your identity verification"
-            />
-          ) : (
-            <FormattedMessage
-              description="finished last step"
-              defaultMessage="To complete the last step, you need to verify a Swedish national ID number"
-            />
-          )}
+          <strong>
+            {isFinishedStep[2] ? (
+              <FormattedMessage
+                description="last step"
+                defaultMessage="Congratulations to completing your identity verification"
+              />
+            ) : (
+              <FormattedMessage
+                description="finished last step"
+                defaultMessage="To complete the last step, you need to verify a Swedish national ID number"
+              />
+            )}
+          </strong>
         </span>
       </div>
     </article>
