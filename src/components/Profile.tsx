@@ -380,7 +380,6 @@ export default function Profile(): JSX.Element {
           </p>
         </div>
       </div>
-      {/* <IdentificationProgressBar identities={identities} /> */}
       <IdentificationIndicator identities={identities} />
       {recommendation}
       {progress}
