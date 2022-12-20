@@ -3,7 +3,7 @@ import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesom
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 
@@ -41,11 +41,32 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
   );
 }
 
+function closeMenuClickOutside(ref: React.RefObject<HTMLElement>, handler: () => void) {
+  useEffect(() => {
+    const listener = (event: TouchEvent | MouseEvent) => {
+      // Do nothing if clicking ref's element or descendent elements
+      if (!ref.current || ref.current.contains(event.target as Node)) {
+        return;
+      }
+      handler();
+    };
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+}
+
 export function HeaderNav(props: HeaderNavProps): JSX.Element {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const wrapperRef = useRef(null);
+
+  closeMenuClickOutside(wrapperRef, () => setOpenMenu(false));
 
   return (
-    <nav id="header-nav" className="header-nav">
+    <nav id="header-nav" className="header-nav" ref={wrapperRef}>
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <EduIDButton buttonstyle="close" size="sm" onClick={() => setOpenMenu(false)}></EduIDButton>
