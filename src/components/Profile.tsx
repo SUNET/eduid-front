@@ -26,57 +26,6 @@ import { HashLink } from "react-router-hash-link";
 import { LetterProofingState } from "reducers/LetterProofing";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 
-// function IdentificationProgressBar(props: { identities: UserIdentities }): JSX.Element {
-//   const [score, setScore] = useState<number>(1);
-
-//   useEffect(() => {
-//     if (props.identities.nin?.verified) {
-//       setScore(3);
-//     } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
-//       setScore(2);
-//     }
-//   }, [props.identities]);
-
-//   return (
-//     <article className="identification-progress">
-//       <div className="intro">
-//         <h3>
-//           <FormattedMessage description="progress title" defaultMessage="Your identification progress" />
-//         </h3>
-//         <p>
-//           {Math.round(score * 33.3) < 100 ? (
-//             <React.Fragment>
-//               <strong>{100 - Math.round(score * 33.3)}% </strong>
-//               <FormattedMessage description="progress title" defaultMessage="to complete." />
-//             </React.Fragment>
-//           ) : (
-//             <React.Fragment>
-//               <strong>{Math.round(score * 33.3)}% </strong>
-//               <FormattedMessage description="progress title" defaultMessage="completed!" />
-//             </React.Fragment>
-//           )}
-//         </p>
-//       </div>
-//       <progress
-//         data-label={`${Math.round(score * 33.3)}%`}
-//         max="3"
-//         value={score}
-//         id="identity-strength-meter"
-//         className="identity-progress-bar"
-//       ></progress>
-//       {Math.round(score * 33.3) < 100 && (
-//         <p className="help-text">
-//           <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
-//           <FormattedMessage
-//             description="progress title"
-//             defaultMessage="To complete to 100% you need to verify a Swedish national ID number"
-//           />
-//         </p>
-//       )}
-//     </article>
-//   );
-// }
-
 interface IdentificationStepTypes {
   [key: number]: {
     [key: number]: boolean;
