@@ -164,6 +164,7 @@ export function Recommendations(): JSX.Element | null {
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const identities = useDashboardAppSelector((state) => state.identities);
   const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
+  const verifiedNumber = phones.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
@@ -177,7 +178,7 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities.nin?.verified && phones.length && tokens.length && display_name) {
+  if (identities.nin?.verified && verifiedNumber && tokens.length && display_name) {
     return null;
   }
 
