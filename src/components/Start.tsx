@@ -304,7 +304,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
 /**
  * Renders the start page
  */
-export default function Profile(): JSX.Element {
+export default function Start(): JSX.Element {
   const intl = useIntl();
   const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
   const emails = useDashboardAppSelector((state) => state.emails.emails);
