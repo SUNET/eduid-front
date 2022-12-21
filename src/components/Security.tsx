@@ -4,7 +4,6 @@ import {
   CredentialType,
   registerWebauthn,
   removeWebauthnToken,
-  requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
@@ -24,14 +23,6 @@ export function Security(): JSX.Element | null {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-
-  useEffect(() => {
-    if (isLoaded) {
-      // call requestCredentials once app is loaded
-      dispatch(requestCredentials());
-    }
-  }, [isLoaded]);
 
   useEffect(
     () => {

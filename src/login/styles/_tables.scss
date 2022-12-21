@@ -105,9 +105,22 @@ table {
         padding-right: 1rem;
       }
     }
+
+    & tr.status {
+      height: auto;
+
+      td:last-child {
+        text-align: center;
+
+        a {
+          font-size: 0.75em;
+        }
+      }
+    }
   }
 
-  .identity-summary & {
+  .identity-summary &,
+  .progress-summary & {
     table-layout: auto;
     margin-bottom: 0;
 
@@ -128,6 +141,10 @@ table {
         }
       }
     }
+  }
+
+  .progress-summary & td:first-child {
+    width: 60%;
   }
 }
 

@@ -51,6 +51,12 @@
               height: 1.125rem;
             }
           }
+
+          svg {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-right: 5px;
+          }
         }
 
         #{$a}-title {
@@ -184,6 +190,7 @@
       &.expanded.disabled {
         border-color: $border-gray;
       }
+
       &.disabled,
       &.disabled:hover {
         #{$a}__button,
@@ -191,6 +198,7 @@
           background-color: $white !important;
         }
       }
+
       &.expanded.disabled {
         #{$a}__button,
         #{$a}__button:hover {
