@@ -1,11 +1,11 @@
 import { AdvancedSettings } from "components/AdvancedSettings";
 import { ChangePasswordContainer } from "components/ChangePassword";
+import DashboardStart from "components/DashboardStart";
 import { ExternalReturnHandler } from "components/ExternalReturnHandler";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import { Settings } from "components/Settings";
 import Splash from "components/Splash";
-import Start from "components/Start";
 import VerifyIdentity from "components/VerifyIdentity";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import Footer from "login/components/Footer/Footer";
@@ -34,7 +34,7 @@ export function DashboardMain() {
               <Route path="/profile/accountlinking/" element={<Navigate to="/profile/settings/advanced-settings/" />} />
               <Route path="/profile/nins/" element={<Navigate to="/profile/verify-identity/" />} />
               <Route path="/profile/emails/" element={<Navigate to="/profile/settings/personaldata/" />} />
-              <Route path="/profile/" element={<Start />} />
+              <Route path="/profile/" element={<DashboardStart />} />
             </Routes>
           </div>
         </Splash>
