@@ -21,11 +21,13 @@ test("renders Profile page as expected", () => {
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      personal_data: {
+        display_name: "test user",
+      },
     },
   });
 
-  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
-
+  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, test user!/);
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
   const button = screen.getByRole("button", { name: "Log out" });
