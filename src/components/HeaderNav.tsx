@@ -6,6 +6,7 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
+import { advancedSettingsPath, identityPath, settingsPath, startPath } from "./DashboardMain";
 
 // export for use in tests
 export const activeClassName = "active";
@@ -74,7 +75,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to="/profile/"
+            to={startPath}
             end
           >
             <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
@@ -83,7 +84,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to="/profile/verify-identity/"
+            to={identityPath}
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
           </NavLink>
@@ -91,7 +92,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to="/profile/settings/personaldata"
+            to={settingsPath}
           >
             <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
           </NavLink>
@@ -99,7 +100,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to="/profile/settings/advanced-settings"
+            to={advancedSettingsPath}
           >
             <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
           </NavLink>
