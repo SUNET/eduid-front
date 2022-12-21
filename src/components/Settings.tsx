@@ -1,14 +1,12 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGear, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 import DeleteAccount from "components/DeleteAccount";
 import Emails from "components/Emails";
 import Phones from "components/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
@@ -23,15 +21,7 @@ export function Settings(): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className="breadcrumb">
-        <Link key="/profile/" to="/profile/">
-          <FontAwesomeIcon icon={faHome as IconProp} />
-          <FormattedMessage description="Start" defaultMessage="Start" />
-        </Link>
-        /
-        <FontAwesomeIcon icon={faGear as IconProp} />
-        <FormattedMessage description="settings" defaultMessage="Settings" />
-      </div>
+      <DashboardBreadcrumbs pageIcon={faGear} currentPage="Settings" />
       <div className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />

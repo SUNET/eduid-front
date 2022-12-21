@@ -1,6 +1,4 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faHome, faIdCard } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Eidas";
@@ -11,12 +9,12 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 import EuFlag from "../../img/flags/eu.svg";
 import SeFlag from "../../img/flags/se.svg";
 import WorldFlag from "../../img/flags/world.svg";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
 
@@ -48,15 +46,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
-      <div className="breadcrumb">
-        <Link key="/profile/" to="/profile/">
-          <FontAwesomeIcon icon={faHome as IconProp} />
-          <FormattedMessage description="Start" defaultMessage="Start" />
-        </Link>
-        /
-        <FontAwesomeIcon icon={faIdCard as IconProp} />
-        <FormattedMessage description="identity" defaultMessage="Identity" />
-      </div>
+      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage="Identity" />
       <div className="intro">
         <h1>
           <FormattedMessage

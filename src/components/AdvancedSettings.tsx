@@ -1,13 +1,11 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGears, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGears } from "@fortawesome/free-solid-svg-icons";
 import { AccountId } from "components/AccountId";
 import { AccountLinking } from "components/AccountLinking";
 import LadokContainer from "components/Ladok";
 import { Security } from "components/Security";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
 export function AdvancedSettings(): JSX.Element {
@@ -20,17 +18,15 @@ export function AdvancedSettings(): JSX.Element {
     });
   }, []);
 
+  const currentPage = intl.formatMessage({
+    id: "Advanced settings",
+    defaultMessage: "Advanced settings",
+    description: "Advanced settings",
+  });
+
   return (
     <React.Fragment>
-      <div className="breadcrumb">
-        <Link key="/profile/" to="/profile/">
-          <FontAwesomeIcon icon={faHome as IconProp} />
-          <FormattedMessage description="Start" defaultMessage="Start" />
-        </Link>
-        /
-        <FontAwesomeIcon icon={faGears as IconProp} />
-        <FormattedMessage description="advanced settings" defaultMessage="Advanced settings" />
-      </div>
+      <DashboardBreadcrumbs pageIcon={faGears} currentPage={currentPage} />
       <div className="intro">
         <h1>
           <FormattedMessage description="advanced settings main title" defaultMessage="Enhance your eduID" />
