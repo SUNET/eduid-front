@@ -17,6 +17,7 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
 
 interface IdentificationStepTypes {
@@ -201,10 +202,7 @@ export default function Start(): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className="breadcrumb">
-        <FontAwesomeIcon icon={faHome as IconProp} />
-        <FormattedMessage description="Start" defaultMessage="Start" />
-      </div>
+      <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
       <div className="intro">
         <h1>
           <FormattedMessage

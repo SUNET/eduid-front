@@ -10,6 +10,14 @@ interface DashboardBreadcrumbsTypes {
 }
 
 export function DashboardBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcrumbsTypes): JSX.Element {
+  if (currentPage === "Start") {
+    return (
+      <div className="breadcrumb">
+        <FontAwesomeIcon icon={faHome as IconProp} />
+        <FormattedMessage description="Start" defaultMessage="Start" />
+      </div>
+    );
+  }
   return (
     <div className="breadcrumb">
       <Link key="/profile/" to="/profile/">
