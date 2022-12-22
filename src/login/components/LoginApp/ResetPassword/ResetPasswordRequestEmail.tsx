@@ -34,19 +34,14 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     }
   }, [loginRef, params]);
 
+  //FIX: resetPasswordContext.resetPasswordService.send({ type: "BYPASS" }); not working!
   useEffect(() => {
     if (!email_status && email_address) {
-      console.log("COMPLETE");
       resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-      // return <ResetPasswordConfirmEmail />;
     } else resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
   }, [email_status, email_address]);
 
   return (
-    // <Splash showChildren={email_status !== "requested"}>
-    //   {email_status === "success" && <EmailLinkSent />}
-    //   {email_status === "failed" && <ResetPasswordEnterEmail />}
-    // </Splash>
     <React.Fragment>
       {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />}
@@ -77,8 +72,6 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-
-  console.log("ResetPasswordConfirmEmail", ResetPasswordConfirmEmail);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());
