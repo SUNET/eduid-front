@@ -1,3 +1,4 @@
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Eidas";
@@ -13,6 +14,7 @@ import SeFlag from "../../img/flags/se.svg";
 import WorldFlag from "../../img/flags/world.svg";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
 
@@ -21,6 +23,7 @@ type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+
   const intl = useIntl();
 
   useEffect(() => {
@@ -43,6 +46,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
+      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage="Identity" />
       <div className="intro">
         <h1>
           <FormattedMessage

@@ -1,4 +1,5 @@
-@import "./variables.scss";
+@import "./variables";
+
 .banner {
   background-color: $white;
 
@@ -23,27 +24,87 @@
       }
     }
 
-    .header-user {
-      font-size: 1rem;
-      text-align: right;
-      width: 100%;
-      font-family: $proxima-bold;
-
-      @media (min-width: $bp-sm) {
-        padding-right: 1rem;
-        font-size: 1.125rem;
-      }
-    }
-
-    button {
-      order: 3;
-    }
-
-    @media (max-width: $bp-sm) {
-      display: block;
-
+    .header-nav {
       button {
-        float: right;
+        span {
+          width: 40vw;
+          overflow: hidden;
+          white-space: nowrap;
+          display: inline-block;
+          text-overflow: ellipsis;
+          text-align: right;
+        }
+      }
+
+      ul {
+        a {
+          color: $txt-black;
+
+          // styling for when menu item is clicked
+          &.active {
+            color: $txt-orange;
+          }
+
+          // styling for when hovering the menu item
+          &:hover {
+            color: $txt-orange;
+          }
+        }
+      }
+
+      .header-user {
+        text-transform: lowercase;
+        font-family: $proxima-light;
+        background: none;
+        box-shadow: none;
+
+        svg {
+          padding-left: 5px;
+          font-size: 1.25rem;
+          color: $txt-gray;
+        }
+      }
+
+      .nav-menu {
+        display: none;
+
+        ul {
+          text-align: left;
+        }
+
+        .btn-close {
+          align-self: flex-end;
+        }
+
+        &.active {
+          opacity: 1;
+          display: flex;
+          flex-direction: column;
+          transition: all 0.5s ease;
+          z-index: 10;
+          position: absolute;
+          top: 70px;
+          background-color: $white;
+          box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
+          border-radius: 10px;
+          padding: 20px;
+          right: 20px;
+
+          .btn-link svg {
+            padding-right: 5px;
+          }
+        }
+
+        .menu {
+          display: flex;
+          align-items: center;
+          height: 2.5rem;
+          justify-content: left;
+
+          &:nth-child(4) {
+            border-bottom: 1px solid $border-gray;
+          }
+        }
       }
     }
   }

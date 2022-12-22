@@ -10,7 +10,7 @@ import { DashboardMain } from "components/DashboardMain";
 import { act } from "react-dom/test-utils";
 import securitySlice, { initialState } from "reducers/Security";
 import { mswServer, rest } from "setupTests";
-import { render, screen, waitFor, fireEvent } from "./helperFunctions/DashboardTestApp-rtl";
+import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders security key as expected, not security key added", async () => {
   render(<DashboardMain />);
@@ -118,7 +118,7 @@ test("can remove a security key", async () => {
     nav.click();
   });
 
-  const CloseButton = screen.getByLabelText("Close");
+  const CloseButton = screen.getAllByLabelText("Close")[1];
   expect(CloseButton).toBeEnabled();
 });
 

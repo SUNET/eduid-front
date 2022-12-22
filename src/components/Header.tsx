@@ -2,11 +2,13 @@ import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
+import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
   email?: string;
   showLogin?: boolean;
   showLogout?: boolean;
+  showMenu?: boolean;
   showRegister?: boolean;
   loginRef?: string;
 }
@@ -18,8 +20,7 @@ export function Header(props: HeaderProps): JSX.Element {
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
   const start_url = dashboard_url || eduid_site_url;
-  let userName;
-  let button;
+  let button = null;
 
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
@@ -50,7 +51,6 @@ export function Header(props: HeaderProps): JSX.Element {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -62,8 +62,10 @@ export function Header(props: HeaderProps): JSX.Element {
         <FormattedMessage defaultMessage="Register" description="Header register" />
       </EduIDButton>
     );
+  } else if (props.showMenu) {
+    button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
   } else {
-    button = <div />;
+    button = null;
   }
 
   return (
@@ -73,7 +75,6 @@ export function Header(props: HeaderProps): JSX.Element {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
-        {userName}
       </header>
     </section>
   );
