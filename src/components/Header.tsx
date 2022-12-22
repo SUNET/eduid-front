@@ -64,8 +64,6 @@ export function Header(props: HeaderProps): JSX.Element {
     );
   } else if (props.showMenu) {
     button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
-  } else {
-    button = null;
   }
 
   return (
