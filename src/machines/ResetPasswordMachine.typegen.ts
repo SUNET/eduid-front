@@ -22,6 +22,20 @@ export interface Typegen0 {
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordRequestEmail"
+    | "FinaliseResetPassword"
+    | "FinaliseResetPassword.ResetPasswordSuccess"
+    | "FinaliseResetPassword.SetNewPassword"
+    | "HandleEmailCode"
+    | "HandleEmailCode.EmailCode"
+    | "HandleEmailCode.EmailCodeFinished"
+    | "HandleExtraSecurity"
+    | "HandleExtraSecurity.ExtraSecurity"
+    | "HandleExtraSecurity.ExtraSecurityFinished"
+    | "HandleExtraSecurity.ExtraSecurityKey"
+    | "HandleExtraSecurity.FrejaEID"
+    | "HandleExtraSecurity.HandleExtraSecurity"
+    | "HandleExtraSecurity.PhoneVerification"
+    | "HandleExtraSecurity.WithoutExtraSecurity"
     | "ResetPasswordStart"
     | {
         "AskForEmailOrConfirmEmail"?:
@@ -29,6 +43,16 @@ export interface Typegen0 {
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail"
           | "ResetPasswordRequestEmail";
+        "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
+        "HandleEmailCode"?: "EmailCode" | "EmailCodeFinished";
+        "HandleExtraSecurity"?:
+          | "ExtraSecurity"
+          | "ExtraSecurityFinished"
+          | "ExtraSecurityKey"
+          | "FrejaEID"
+          | "HandleExtraSecurity"
+          | "PhoneVerification"
+          | "WithoutExtraSecurity";
       };
   tags: never;
 }

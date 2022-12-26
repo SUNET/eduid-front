@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
+import { EmailCode } from "./ResetPassword";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
@@ -48,6 +49,7 @@ export function ResetPasswordRequestEmail(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
+      {state.matches("HandleEmailCode") && <EmailCode />}
     </React.Fragment>
   );
 }

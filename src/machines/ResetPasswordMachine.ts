@@ -20,6 +20,8 @@ const resetPasswordModel = createModel(
       FAIL: () => ({}), // no payload
       SUCCESS: () => ({}), // no payload
       BYPASS: () => ({}),
+      AVAILABLE_EXTRA_SECURITY: () => ({}),
+      UNAVAILABLE_EXTRA_SECURITY: () => ({}),
     },
   }
 );
@@ -60,7 +62,7 @@ export function createResetPasswordMachine() {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordEnterEmail",
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
                 },
               },
             },
@@ -70,11 +72,133 @@ export function createResetPasswordMachine() {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordEnterEmail",
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
                 },
               },
             },
             EmailLinkSent: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "HandleEmailCode",
+          },
+        },
+        HandleEmailCode: {
+          initial: "EmailCode",
+          states: {
+            EmailCode: {
+              on: {
+                API_SUCCESS: {
+                  target: "EmailCodeFinished",
+                },
+                API_FAIL: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                },
+              },
+            },
+            EmailCodeFinished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "HandleExtraSecurity",
+          },
+        },
+        HandleExtraSecurity: {
+          initial: "ExtraSecurity",
+          states: {
+            ExtraSecurity: {
+              on: {
+                AVAILABLE_EXTRA_SECURITY: {
+                  target: "HandleExtraSecurity",
+                },
+                UNAVAILABLE_EXTRA_SECURITY: {
+                  target: "WithoutExtraSecurity",
+                },
+              },
+            },
+            HandleExtraSecurity: {
+              on: {
+                CHOOSE_EXTRA_SECURITY: {
+                  target: "ExtraSecurityKey",
+                },
+                CHOOSE_PHONE_VERIFICATION: {
+                  target: "PhoneVerification",
+                },
+                CHOOSE_FREJA_EID: {
+                  target: "FrejaEID",
+                },
+                CHOOSE_NO_EXTRA_SECURITY: {
+                  target: "WithoutExtraSecurity",
+                },
+                ABORT: {
+                  target: "",
+                },
+              },
+            },
+            ExtraSecurityKey: {
+              on: {
+                API_SUCCESS: {
+                  target: "ExtraSecurityFinished",
+                },
+                API_FAIL: {
+                  target: "ExtraSecurity",
+                },
+              },
+            },
+            PhoneVerification: {
+              on: {
+                API_SUCCESS: {
+                  target: "ExtraSecurityFinished",
+                },
+                API_FAIL: {
+                  target: "ExtraSecurity",
+                },
+              },
+            },
+            FrejaEID: {
+              on: {
+                API_SUCCESS: {
+                  target: "ExtraSecurityFinished",
+                },
+                API_FAIL: {
+                  target: "ExtraSecurity",
+                },
+              },
+            },
+            WithoutExtraSecurity: {
+              on: {
+                API_SUCCESS: {
+                  target: "ExtraSecurityFinished",
+                },
+                API_FAIL: {
+                  target: "ExtraSecurity",
+                },
+              },
+            },
+            ExtraSecurityFinished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "FinaliseResetPassword",
+          },
+        },
+        FinaliseResetPassword: {
+          initial: "SetNewPassword",
+          states: {
+            SetNewPassword: {
+              on: {
+                API_SUCCESS: {
+                  target: "ResetPasswordSuccess",
+                },
+                API_FAIL: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                },
+              },
+            },
+            ResetPasswordSuccess: {
               type: "final",
             },
           },
