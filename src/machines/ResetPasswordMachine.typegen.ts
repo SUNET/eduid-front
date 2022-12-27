@@ -18,41 +18,45 @@ export interface Typegen0 {
   eventsCausingServices: {};
   matchesStates:
     | "AskForEmailOrConfirmEmail"
-    | "AskForEmailOrConfirmEmail.EmailLinkSent"
+    | "AskForEmailOrConfirmEmail.Finished"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordRequestEmail"
+    | "EmailLinkSent"
+    | "EmailLinkSent.EmailLinkSent"
+    | "EmailLinkSent.EmailLinkSentFinished"
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
     | "HandleEmailCode"
     | "HandleEmailCode.EmailCode"
     | "HandleEmailCode.EmailCodeFinished"
-    | "HandleExtraSecurity"
-    | "HandleExtraSecurity.ExtraSecurity"
-    | "HandleExtraSecurity.ExtraSecurityFinished"
-    | "HandleExtraSecurity.ExtraSecurityKey"
-    | "HandleExtraSecurity.FrejaEID"
-    | "HandleExtraSecurity.HandleExtraSecurity"
-    | "HandleExtraSecurity.PhoneVerification"
-    | "HandleExtraSecurity.WithoutExtraSecurity"
+    | "HandleExtraSecurities"
+    | "HandleExtraSecurities.ExtraSecurityFinished"
+    | "HandleExtraSecurities.ProcessExtraSecurities"
+    | "HandleExtraSecurities.ResetPasswordExtraSecurities"
+    | "HandleExtraSecurities.ResetPasswordFrejaEID"
+    | "HandleExtraSecurities.ResetPasswordPhoneVerification"
+    | "HandleExtraSecurities.ResetPasswordSecurityKey"
+    | "HandleExtraSecurities.ResetPasswordWithoutSecurity"
     | "ResetPasswordStart"
     | {
         "AskForEmailOrConfirmEmail"?:
-          | "EmailLinkSent"
+          | "Finished"
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail"
           | "ResetPasswordRequestEmail";
+        "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
         "HandleEmailCode"?: "EmailCode" | "EmailCodeFinished";
-        "HandleExtraSecurity"?:
-          | "ExtraSecurity"
+        "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
-          | "ExtraSecurityKey"
-          | "FrejaEID"
-          | "HandleExtraSecurity"
-          | "PhoneVerification"
-          | "WithoutExtraSecurity";
+          | "ProcessExtraSecurities"
+          | "ResetPasswordExtraSecurities"
+          | "ResetPasswordFrejaEID"
+          | "ResetPasswordPhoneVerification"
+          | "ResetPasswordSecurityKey"
+          | "ResetPasswordWithoutSecurity";
       };
   tags: never;
 }

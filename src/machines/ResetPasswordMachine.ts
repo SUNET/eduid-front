@@ -12,7 +12,7 @@ const resetPasswordModel = createModel(
       ABORT: () => ({}), // no payload
       API_FAIL: () => ({}), // no payload
       API_SUCCESS: () => ({}), // no payload
-      CHOOSE_EXTRA_SECURITY: () => ({}), // no payload
+      CHOOSE_SECURITY_KEY: () => ({}), // no payload
       CHOOSE_PHONE_VERIFICATION: () => ({}), // no payload
       CHOOSE_FREJA_EID: () => ({}), // no payload
       CHOOSE_NO_EXTRA_SECURITY: () => ({}), // no payload
@@ -59,7 +59,7 @@ export function createResetPasswordMachine() {
             ResetPasswordConfirmEmail: {
               on: {
                 API_SUCCESS: {
-                  target: "EmailLinkSent",
+                  target: "Finished",
                 },
                 API_FAIL: {
                   target: "#resetPassword.AskForEmailOrConfirmEmail",
@@ -69,14 +69,32 @@ export function createResetPasswordMachine() {
             ResetPasswordEnterEmail: {
               on: {
                 API_SUCCESS: {
-                  target: "EmailLinkSent",
+                  target: "Finished",
                 },
                 API_FAIL: {
                   target: "#resetPassword.AskForEmailOrConfirmEmail",
                 },
               },
             },
+            Finished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "EmailLinkSent",
+          },
+        },
+        EmailLinkSent: {
+          initial: "EmailLinkSent",
+          states: {
             EmailLinkSent: {
+              on: {
+                API_SUCCESS: {
+                  target: "EmailLinkSentFinished",
+                },
+              },
+            },
+            EmailLinkSentFinished: {
               type: "final",
             },
           },
@@ -102,78 +120,78 @@ export function createResetPasswordMachine() {
             },
           },
           onDone: {
-            target: "HandleExtraSecurity",
+            target: "HandleExtraSecurities",
           },
         },
-        HandleExtraSecurity: {
-          initial: "ExtraSecurity",
+        HandleExtraSecurities: {
+          initial: "ProcessExtraSecurities",
           states: {
-            ExtraSecurity: {
+            ProcessExtraSecurities: {
               on: {
                 AVAILABLE_EXTRA_SECURITY: {
-                  target: "HandleExtraSecurity",
+                  target: "ResetPasswordExtraSecurities",
                 },
                 UNAVAILABLE_EXTRA_SECURITY: {
-                  target: "WithoutExtraSecurity",
+                  target: "ResetPasswordWithoutSecurity",
                 },
               },
             },
-            HandleExtraSecurity: {
+            ResetPasswordExtraSecurities: {
               on: {
-                CHOOSE_EXTRA_SECURITY: {
-                  target: "ExtraSecurityKey",
+                CHOOSE_SECURITY_KEY: {
+                  target: "ResetPasswordSecurityKey",
                 },
                 CHOOSE_PHONE_VERIFICATION: {
-                  target: "PhoneVerification",
+                  target: "ResetPasswordPhoneVerification",
                 },
                 CHOOSE_FREJA_EID: {
-                  target: "FrejaEID",
+                  target: "ResetPasswordFrejaEID",
                 },
                 CHOOSE_NO_EXTRA_SECURITY: {
-                  target: "WithoutExtraSecurity",
+                  target: "ResetPasswordWithoutSecurity",
                 },
                 ABORT: {
                   target: "",
                 },
               },
             },
-            ExtraSecurityKey: {
+            ResetPasswordSecurityKey: {
               on: {
                 API_SUCCESS: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ExtraSecurity",
+                  target: "ResetPasswordExtraSecurities",
                 },
               },
             },
-            PhoneVerification: {
+            ResetPasswordPhoneVerification: {
               on: {
                 API_SUCCESS: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ExtraSecurity",
+                  target: "ResetPasswordExtraSecurities",
                 },
               },
             },
-            FrejaEID: {
+            ResetPasswordFrejaEID: {
               on: {
                 API_SUCCESS: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ExtraSecurity",
+                  target: "ResetPasswordExtraSecurities",
                 },
               },
             },
-            WithoutExtraSecurity: {
+            ResetPasswordWithoutSecurity: {
               on: {
                 API_SUCCESS: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ExtraSecurity",
+                  target: "ResetPasswordExtraSecurities",
                 },
               },
             },

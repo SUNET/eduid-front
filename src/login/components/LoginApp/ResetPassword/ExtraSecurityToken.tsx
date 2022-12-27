@@ -1,8 +1,49 @@
 import { translate } from "login/translation";
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+
+interface SecurityKeyProps {
+  selected_option?: string;
+  extraSecurityKey?: any;
+  ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export function SecurityKey({
+  selected_option,
+  extraSecurityKey,
+  ShowSecurityKey,
+}: SecurityKeyProps): JSX.Element | null {
+  if (!Object.keys(extraSecurityKey)) {
+    return null;
+  }
+  return (
+    <React.Fragment>
+      {!selected_option ? (
+        <React.Fragment>
+          {Object.values(extraSecurityKey).map((security, index) => {
+            return (
+              <React.Fragment key={index}>
+                {
+                  <div className="buttons">
+                    <EduIDButton buttonstyle="primary" id="extra-security-key" key={index} onClick={ShowSecurityKey}>
+                      <FormattedMessage description="mfa primary option" defaultMessage="Use security key" />
+                    </EduIDButton>
+                  </div>
+                }
+              </React.Fragment>
+            );
+          })}
+        </React.Fragment>
+      ) : selected_option === "securityKey" ? (
+        <ExtraSecurityToken />
+      ) : null}
+    </React.Fragment>
+  );
+}
 
 export function ExtraSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();

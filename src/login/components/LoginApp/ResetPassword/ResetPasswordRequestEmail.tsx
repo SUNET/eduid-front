@@ -8,10 +8,14 @@ import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
+import { ProcessExtraSecurities, ResetPasswordExtraSecurities } from "./ExtraSecurity";
+import { ExtraSecurityToken } from "./ExtraSecurityToken";
 import { GoBackButton } from "./GoBackButton";
+import { PhoneCodeSent } from "./PhoneCodeSent";
 import { EmailCode } from "./ResetPassword";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+import { SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail
 export interface UrlParams {
@@ -35,7 +39,6 @@ export function ResetPasswordRequestEmail(): JSX.Element {
     }
   }, [loginRef, params]);
 
-  //FIX: resetPasswordContext.resetPasswordService.send({ type: "BYPASS" }); not working!
   useEffect(() => {
     if (!email_status && email_address) {
       resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
@@ -48,8 +51,15 @@ export function ResetPasswordRequestEmail(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
-      {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
+      {state.matches("EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleEmailCode") && <EmailCode />}
+      {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
+      {state.matches("HandleExtraSecurities.ResetPasswordExtraSecurities") && <ResetPasswordExtraSecurities />}
+      {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
+      {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
+      {/* TODO:make a new component for this */}
+      {state.matches("HandleExtraSecurities.ResetPasswordFrejaEID") && null}
+      {state.matches("FinaliseResetPassword") && <SetNewPassword />}
     </React.Fragment>
   );
 }
