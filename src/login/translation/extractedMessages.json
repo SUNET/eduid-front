@@ -414,10 +414,6 @@
   "FutYRQ": {
     "string": "Use my {freja_eidplus_verbatim}"
   },
-  "Fw5FJ3": {
-    "developer_comment": "Footer copyright",
-    "string": "2013-2022"
-  },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
@@ -674,6 +670,10 @@
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
+  },
+  "PLps10": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2023"
   },
   "PQoWSY": {
     "developer_comment": "Short code form",
