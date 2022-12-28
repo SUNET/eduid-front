@@ -1,6 +1,5 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { updateIntl } from "../../../reducers/Internationalisation";
 
@@ -46,7 +45,7 @@ const Footer = (): JSX.Element => {
         </a>
         <span>
           &copy;
-          <FormattedMessage defaultMessage="2013-2022" description="Footer copyright" />
+          <FormattedMessage defaultMessage="2013-2023" description="Footer copyright" />
         </span>
       </div>
 
