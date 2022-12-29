@@ -124,19 +124,19 @@ export function createResetPasswordMachine() {
           },
         },
         HandleExtraSecurities: {
-          initial: "ProcessExtraSecurities",
+          initial: "HandleExtraSecurities",
           states: {
-            ProcessExtraSecurities: {
+            HandleExtraSecurities: {
               on: {
                 AVAILABLE_EXTRA_SECURITY: {
-                  target: "ResetPasswordExtraSecurities",
+                  target: "ProcessExtraSecurities",
                 },
                 UNAVAILABLE_EXTRA_SECURITY: {
                   target: "ResetPasswordWithoutSecurity",
                 },
               },
             },
-            ResetPasswordExtraSecurities: {
+            ProcessExtraSecurities: {
               on: {
                 CHOOSE_SECURITY_KEY: {
                   target: "ResetPasswordSecurityKey",
@@ -150,9 +150,6 @@ export function createResetPasswordMachine() {
                 CHOOSE_NO_EXTRA_SECURITY: {
                   target: "ResetPasswordWithoutSecurity",
                 },
-                ABORT: {
-                  target: "",
-                },
               },
             },
             ResetPasswordSecurityKey: {
@@ -161,7 +158,7 @@ export function createResetPasswordMachine() {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordExtraSecurities",
+                  target: "Fail",
                 },
               },
             },
@@ -171,7 +168,7 @@ export function createResetPasswordMachine() {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordExtraSecurities",
+                  target: "Fail",
                 },
               },
             },
@@ -181,7 +178,7 @@ export function createResetPasswordMachine() {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordExtraSecurities",
+                  target: "Fail",
                 },
               },
             },
@@ -191,12 +188,17 @@ export function createResetPasswordMachine() {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordExtraSecurities",
+                  target: "Fail",
                 },
               },
             },
             ExtraSecurityFinished: {
               type: "final",
+            },
+            Fail: {
+              always: {
+                target: "ProcessExtraSecurities",
+              },
             },
           },
           onDone: {

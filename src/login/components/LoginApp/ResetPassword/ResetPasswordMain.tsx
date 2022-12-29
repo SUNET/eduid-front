@@ -3,10 +3,10 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
+import { ResetPasswordApp } from "./ResetPasswordApp";
 import { ResetPasswordGlobalStateContext, ResetPasswordGlobalStateProvider } from "./ResetPasswordGlobalState";
-import { ResetPasswordRequestEmail } from "./ResetPasswordRequestEmail";
 
-export default function ResetPassword(): JSX.Element {
+export default function ResetPasswordMain(): JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {
@@ -30,8 +30,8 @@ export default function ResetPassword(): JSX.Element {
             <Route path="success" element={<ResetPasswordSuccess />} />
             <Route path="set-new-password" element={<SetNewPassword />} />*/}
             <Route path="email-code/:emailCode" element={<EmailCode />} />
-            <Route path=":ref" element={<ResetPasswordRequestEmail />} />
-            <Route path="" element={<ResetPasswordRequestEmail />} />
+            {/* <Route path=":ref" element={<ResetPasswordRequestEmail />} /> */}
+            <Route path="" element={<ResetPasswordApp />} />
           </Routes>
         </ResetPasswordGlobalStateProvider>
       </div>
@@ -59,7 +59,7 @@ export function EmailCode(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+  // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
 
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));

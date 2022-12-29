@@ -8,13 +8,14 @@ import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
-import { ProcessExtraSecurities, ResetPasswordExtraSecurities } from "./ExtraSecurity";
 import { ExtraSecurityToken } from "./ExtraSecurityToken";
 import { GoBackButton } from "./GoBackButton";
+import { HandleExtraSecurities, ProcessExtraSecurities } from "./HandleExtraSecurities";
 import { PhoneCodeSent } from "./PhoneCodeSent";
-import { EmailCode } from "./ResetPassword";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+import { EmailCode } from "./ResetPasswordMain";
+import ResetPasswordSuccess from "./ResetPasswordSuccess";
 import { SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail
@@ -22,7 +23,7 @@ export interface UrlParams {
   ref?: string;
 }
 
-export function ResetPasswordRequestEmail(): JSX.Element {
+export function ResetPasswordApp(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
@@ -48,18 +49,19 @@ export function ResetPasswordRequestEmail(): JSX.Element {
   return (
     <React.Fragment>
       {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
-      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />}
+      {/* {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />} */}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleEmailCode") && <EmailCode />}
+      {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ResetPasswordExtraSecurities") && <ResetPasswordExtraSecurities />}
       {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
       {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
       {/* TODO:make a new component for this */}
       {state.matches("HandleExtraSecurities.ResetPasswordFrejaEID") && null}
-      {state.matches("FinaliseResetPassword") && <SetNewPassword />}
+      {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
+      {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }

@@ -33,8 +33,9 @@ export interface Typegen0 {
     | "HandleEmailCode.EmailCodeFinished"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
+    | "HandleExtraSecurities.Fail"
+    | "HandleExtraSecurities.HandleExtraSecurities"
     | "HandleExtraSecurities.ProcessExtraSecurities"
-    | "HandleExtraSecurities.ResetPasswordExtraSecurities"
     | "HandleExtraSecurities.ResetPasswordFrejaEID"
     | "HandleExtraSecurities.ResetPasswordPhoneVerification"
     | "HandleExtraSecurities.ResetPasswordSecurityKey"
@@ -51,8 +52,9 @@ export interface Typegen0 {
         "HandleEmailCode"?: "EmailCode" | "EmailCodeFinished";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
+          | "Fail"
+          | "HandleExtraSecurities"
           | "ProcessExtraSecurities"
-          | "ResetPasswordExtraSecurities"
           | "ResetPasswordFrejaEID"
           | "ResetPasswordPhoneVerification"
           | "ResetPasswordSecurityKey"

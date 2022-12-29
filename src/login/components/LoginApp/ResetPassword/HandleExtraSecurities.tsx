@@ -7,13 +7,13 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
   clearCountdown,
   countFiveMin,
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   setLocalStorage,
-} from "../../../components/LoginApp/ResetPassword/CountDownTimer";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
+} from "./CountDownTimer";
 import { SecurityKey } from "./ExtraSecurityToken";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
