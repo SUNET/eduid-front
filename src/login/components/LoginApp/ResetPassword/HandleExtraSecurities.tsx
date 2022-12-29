@@ -236,8 +236,10 @@ export function HandleExtraSecurities(): null {
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   useEffect(() => {
     if (!extra_security) {
+      console.log("no extra security");
       resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
+    } else console.log("extra security");
+    resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
   }, [extra_security]);
 
   return null;

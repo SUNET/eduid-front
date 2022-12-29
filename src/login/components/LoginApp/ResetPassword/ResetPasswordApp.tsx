@@ -41,25 +41,25 @@ export function ResetPasswordApp(): JSX.Element {
   }, [loginRef, params]);
 
   useEffect(() => {
-    if (!email_status && email_address) {
-      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+    if (!email_status) {
+      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      else resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+    }
   }, [email_status, email_address]);
 
   return (
     <React.Fragment>
       {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
-      {/* {state.matches("AskForEmailOrConfirmEmail.ResetPasswordRequestEmail") && <ResetPasswordRequestEmail />} */}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleEmailCode") && <EmailCode />}
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
-      {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
+      {state.matches("ProcessExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
+      {state.matches("ProcessExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
+      {state.matches("ProcessExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
       {/* TODO:make a new component for this */}
-      {state.matches("HandleExtraSecurities.ResetPasswordFrejaEID") && null}
+      {state.matches("ProcessExtraSecurities.ResetPasswordFrejaEID") && null}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
       {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}
     </React.Fragment>

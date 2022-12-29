@@ -19,9 +19,9 @@ export interface Typegen0 {
   matchesStates:
     | "AskForEmailOrConfirmEmail"
     | "AskForEmailOrConfirmEmail.Finished"
+    | "AskForEmailOrConfirmEmail.ResetPasswordApp"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
-    | "AskForEmailOrConfirmEmail.ResetPasswordRequestEmail"
     | "EmailLinkSent"
     | "EmailLinkSent.EmailLinkSent"
     | "EmailLinkSent.EmailLinkSentFinished"
@@ -32,28 +32,29 @@ export interface Typegen0 {
     | "HandleEmailCode.EmailCode"
     | "HandleEmailCode.EmailCodeFinished"
     | "HandleExtraSecurities"
-    | "HandleExtraSecurities.ExtraSecurityFinished"
-    | "HandleExtraSecurities.Fail"
     | "HandleExtraSecurities.HandleExtraSecurities"
-    | "HandleExtraSecurities.ProcessExtraSecurities"
-    | "HandleExtraSecurities.ResetPasswordFrejaEID"
-    | "HandleExtraSecurities.ResetPasswordPhoneVerification"
-    | "HandleExtraSecurities.ResetPasswordSecurityKey"
-    | "HandleExtraSecurities.ResetPasswordWithoutSecurity"
+    | "ProcessExtraSecurities"
+    | "ProcessExtraSecurities.ExtraSecurityFinished"
+    | "ProcessExtraSecurities.Fail"
+    | "ProcessExtraSecurities.ProcessExtraSecurities"
+    | "ProcessExtraSecurities.ResetPasswordFrejaEID"
+    | "ProcessExtraSecurities.ResetPasswordPhoneVerification"
+    | "ProcessExtraSecurities.ResetPasswordSecurityKey"
+    | "ProcessExtraSecurities.ResetPasswordWithoutSecurity"
     | "ResetPasswordStart"
     | {
         "AskForEmailOrConfirmEmail"?:
           | "Finished"
+          | "ResetPasswordApp"
           | "ResetPasswordConfirmEmail"
-          | "ResetPasswordEnterEmail"
-          | "ResetPasswordRequestEmail";
+          | "ResetPasswordEnterEmail";
         "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
         "HandleEmailCode"?: "EmailCode" | "EmailCodeFinished";
-        "HandleExtraSecurities"?:
+        "HandleExtraSecurities"?: "HandleExtraSecurities";
+        "ProcessExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"
-          | "HandleExtraSecurities"
           | "ProcessExtraSecurities"
           | "ResetPasswordFrejaEID"
           | "ResetPasswordPhoneVerification"

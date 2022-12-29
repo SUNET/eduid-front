@@ -44,9 +44,9 @@ export function createResetPasswordMachine() {
           },
         },
         AskForEmailOrConfirmEmail: {
-          initial: "ResetPasswordRequestEmail",
+          initial: "ResetPasswordApp",
           states: {
-            ResetPasswordRequestEmail: {
+            ResetPasswordApp: {
               on: {
                 COMPLETE: {
                   target: "ResetPasswordConfirmEmail",
@@ -129,13 +129,18 @@ export function createResetPasswordMachine() {
             HandleExtraSecurities: {
               on: {
                 AVAILABLE_EXTRA_SECURITY: {
-                  target: "ProcessExtraSecurities",
+                  target: "#resetPassword.ProcessExtraSecurities",
                 },
                 UNAVAILABLE_EXTRA_SECURITY: {
-                  target: "ResetPasswordWithoutSecurity",
+                  target: "#resetPassword.FinaliseResetPassword",
                 },
               },
             },
+          },
+        },
+        ProcessExtraSecurities: {
+          initial: "ProcessExtraSecurities",
+          states: {
             ProcessExtraSecurities: {
               on: {
                 CHOOSE_SECURITY_KEY: {
@@ -205,6 +210,7 @@ export function createResetPasswordMachine() {
             target: "FinaliseResetPassword",
           },
         },
+
         FinaliseResetPassword: {
           initial: "SetNewPassword",
           states: {
