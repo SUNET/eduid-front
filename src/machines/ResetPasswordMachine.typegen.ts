@@ -28,19 +28,17 @@ export interface Typegen0 {
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
-    | "HandleEmailCode"
-    | "HandleEmailCode.EmailCode"
-    | "HandleEmailCode.EmailCodeFinished"
+    | "HandleEmailCodeStart"
+    | "HandleEmailCodeStart.EmailCode"
+    | "HandleEmailCodeStart.EmailCodeFinished"
+    | "HandleEmailCodeStart.Fail"
     | "HandleExtraSecurities"
+    | "HandleExtraSecurities.ExtraSecurityFinished"
+    | "HandleExtraSecurities.Fail"
     | "HandleExtraSecurities.HandleExtraSecurities"
-    | "ProcessExtraSecurities"
-    | "ProcessExtraSecurities.ExtraSecurityFinished"
-    | "ProcessExtraSecurities.Fail"
-    | "ProcessExtraSecurities.ProcessExtraSecurities"
-    | "ProcessExtraSecurities.ResetPasswordFrejaEID"
-    | "ProcessExtraSecurities.ResetPasswordPhoneVerification"
-    | "ProcessExtraSecurities.ResetPasswordSecurityKey"
-    | "ProcessExtraSecurities.ResetPasswordWithoutSecurity"
+    | "HandleExtraSecurities.ProcessExtraSecurities"
+    | "HandleExtraSecurities.ResetPasswordPhoneVerification"
+    | "HandleExtraSecurities.ResetPasswordSecurityKey"
     | "ResetPasswordStart"
     | {
         "AskForEmailOrConfirmEmail"?:
@@ -50,16 +48,14 @@ export interface Typegen0 {
           | "ResetPasswordEnterEmail";
         "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
-        "HandleEmailCode"?: "EmailCode" | "EmailCodeFinished";
-        "HandleExtraSecurities"?: "HandleExtraSecurities";
-        "ProcessExtraSecurities"?:
+        "HandleEmailCodeStart"?: "EmailCode" | "EmailCodeFinished" | "Fail";
+        "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"
+          | "HandleExtraSecurities"
           | "ProcessExtraSecurities"
-          | "ResetPasswordFrejaEID"
           | "ResetPasswordPhoneVerification"
-          | "ResetPasswordSecurityKey"
-          | "ResetPasswordWithoutSecurity";
+          | "ResetPasswordSecurityKey";
       };
   tags: never;
 }

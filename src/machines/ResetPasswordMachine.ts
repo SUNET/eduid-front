@@ -41,6 +41,9 @@ export function createResetPasswordMachine() {
             COMPLETE: {
               target: "AskForEmailOrConfirmEmail",
             },
+            BYPASS: {
+              target: "HandleExtraSecurities",
+            },
           },
         },
         AskForEmailOrConfirmEmail: {
@@ -98,11 +101,8 @@ export function createResetPasswordMachine() {
               type: "final",
             },
           },
-          onDone: {
-            target: "HandleEmailCode",
-          },
         },
-        HandleEmailCode: {
+        HandleEmailCodeStart: {
           initial: "EmailCode",
           states: {
             EmailCode: {
@@ -111,12 +111,18 @@ export function createResetPasswordMachine() {
                   target: "EmailCodeFinished",
                 },
                 API_FAIL: {
-                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                  target: "Fail",
                 },
               },
             },
             EmailCodeFinished: {
               type: "final",
+            },
+
+            Fail: {
+              always: {
+                target: "#resetPassword.AskForEmailOrConfirmEmail",
+              },
             },
           },
           onDone: {
@@ -129,18 +135,13 @@ export function createResetPasswordMachine() {
             HandleExtraSecurities: {
               on: {
                 AVAILABLE_EXTRA_SECURITY: {
-                  target: "#resetPassword.ProcessExtraSecurities",
+                  target: "ProcessExtraSecurities",
                 },
                 UNAVAILABLE_EXTRA_SECURITY: {
                   target: "#resetPassword.FinaliseResetPassword",
                 },
               },
             },
-          },
-        },
-        ProcessExtraSecurities: {
-          initial: "ProcessExtraSecurities",
-          states: {
             ProcessExtraSecurities: {
               on: {
                 CHOOSE_SECURITY_KEY: {
@@ -150,10 +151,10 @@ export function createResetPasswordMachine() {
                   target: "ResetPasswordPhoneVerification",
                 },
                 CHOOSE_FREJA_EID: {
-                  target: "ResetPasswordFrejaEID",
+                  target: "",
                 },
                 CHOOSE_NO_EXTRA_SECURITY: {
-                  target: "ResetPasswordWithoutSecurity",
+                  target: "",
                 },
               },
             },
@@ -177,26 +178,6 @@ export function createResetPasswordMachine() {
                 },
               },
             },
-            ResetPasswordFrejaEID: {
-              on: {
-                API_SUCCESS: {
-                  target: "ExtraSecurityFinished",
-                },
-                API_FAIL: {
-                  target: "Fail",
-                },
-              },
-            },
-            ResetPasswordWithoutSecurity: {
-              on: {
-                API_SUCCESS: {
-                  target: "ExtraSecurityFinished",
-                },
-                API_FAIL: {
-                  target: "Fail",
-                },
-              },
-            },
             ExtraSecurityFinished: {
               type: "final",
             },
@@ -210,6 +191,78 @@ export function createResetPasswordMachine() {
             target: "FinaliseResetPassword",
           },
         },
+        // ProcessExtraSecurities: {
+        //   initial: "ProcessExtraSecurities",
+        //   states: {
+        //     ProcessExtraSecurities: {
+        //       on: {
+        //         CHOOSE_SECURITY_KEY: {
+        //           target: "ResetPasswordSecurityKey",
+        //         },
+        //         CHOOSE_PHONE_VERIFICATION: {
+        //           target: "ResetPasswordPhoneVerification",
+        //         },
+        //         CHOOSE_FREJA_EID: {
+        //           target: "ResetPasswordFrejaEID",
+        //         },
+        //         CHOOSE_NO_EXTRA_SECURITY: {
+        //           target: "ResetPasswordWithoutSecurity",
+        //         },
+        //       },
+        //     },
+        //     ResetPasswordSecurityKey: {
+        //       on: {
+        //         API_SUCCESS: {
+        //           target: "ExtraSecurityFinished",
+        //         },
+        //         API_FAIL: {
+        //           target: "Fail",
+        //         },
+        //       },
+        //     },
+        //     ResetPasswordPhoneVerification: {
+        //       on: {
+        //         API_SUCCESS: {
+        //           target: "ExtraSecurityFinished",
+        //         },
+        //         API_FAIL: {
+        //           target: "Fail",
+        //         },
+        //       },
+        //     },
+        //     ResetPasswordFrejaEID: {
+        //       on: {
+        //         API_SUCCESS: {
+        //           target: "ExtraSecurityFinished",
+        //         },
+        //         API_FAIL: {
+        //           target: "Fail",
+        //         },
+        //       },
+        //     },
+        //     ResetPasswordWithoutSecurity: {
+        //       on: {
+        //         API_SUCCESS: {
+        //           target: "ExtraSecurityFinished",
+        //         },
+        //         API_FAIL: {
+        //           target: "Fail",
+        //         },
+        //       },
+        //     },
+        //     ExtraSecurityFinished: {
+        //       type: "final",
+        //     },
+        //     Fail: {
+        //       always: {
+        //         target: "ProcessExtraSecurities",
+        //       },
+        //     },
+        //   },
+        //   onDone: {
+        //     target: "FinaliseResetPassword",
+        //   },
+        // },
 
         FinaliseResetPassword: {
           initial: "SetNewPassword",

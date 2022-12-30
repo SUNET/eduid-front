@@ -234,6 +234,7 @@ export function ProcessExtraSecurities(): JSX.Element | null {
 export function HandleExtraSecurities(): null {
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  console.log("#HandleExtraSecurities");
   useEffect(() => {
     if (!extra_security) {
       console.log("no extra security");
