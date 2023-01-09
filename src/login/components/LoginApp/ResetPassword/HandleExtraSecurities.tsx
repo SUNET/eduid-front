@@ -116,6 +116,38 @@ function SecurityWithSMS({
   );
 }
 
+export function ContinueResetPassword(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+
+  function continueSetPassword() {
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
+    dispatch(clearNotifications());
+    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_NO_EXTRA_SECURITY" });
+  }
+
+  return (
+    <React.Fragment>
+      <h4 className="description-without-security">
+        <FormattedMessage
+          description="without extra security heading"
+          defaultMessage="Continue without extra security option"
+        />
+      </h4>
+      <p>
+        <FormattedMessage
+          description="without extra security description"
+          defaultMessage="Your account will require confirmation after the password has been reset."
+        />
+        &nbsp;
+        <a className="text-link" id="continue-without-security" onClick={continueSetPassword}>
+          <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
+        </a>
+      </p>
+    </React.Fragment>
+  );
+}
+
 /**
  * Render the extra security options, security key, Freja eID and phone verification
  */
@@ -167,12 +199,6 @@ export function ProcessExtraSecurities(): JSX.Element | null {
     resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_PHONE_VERIFICATION" });
   }
 
-  function continueSetPassword() {
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
-    dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_NO_EXTRA_SECURITY" });
-  }
-
   if (!extra_security) {
     return null;
   }
@@ -199,7 +225,8 @@ export function ProcessExtraSecurities(): JSX.Element | null {
         extraSecurityPhone={extra_security.phone_numbers}
         toPhoneCodeForm={toPhoneCodeForm}
       />
-      <h4 className="description-without-security">
+      <ContinueResetPassword />
+      {/* <h4 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
           defaultMessage="Continue without extra security option"
@@ -214,7 +241,7 @@ export function ProcessExtraSecurities(): JSX.Element | null {
         <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </a>
-      </p>
+      </p> */}
     </React.Fragment>
   );
 }

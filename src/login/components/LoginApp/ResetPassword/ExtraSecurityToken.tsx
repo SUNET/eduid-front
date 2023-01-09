@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import { ContinueResetPassword } from "./HandleExtraSecurities";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
@@ -83,12 +84,12 @@ export function ExtraSecurityToken(): JSX.Element {
 
         <div id="mfa-try-another-way">
           <figcaption>{translate("mfa.problems-heading")}</figcaption>
-
           <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
             {translate("mfa.try-again")}
           </button>
         </div>
       </figure>
+      <ContinueResetPassword />
     </React.Fragment>
   );
 }
