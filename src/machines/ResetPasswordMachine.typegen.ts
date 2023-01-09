@@ -37,6 +37,7 @@ export interface Typegen0 {
     | "HandleExtraSecurities.Fail"
     | "HandleExtraSecurities.HandleExtraSecurities"
     | "HandleExtraSecurities.ProcessExtraSecurities"
+    | "HandleExtraSecurities.ResetPasswordExternalMFA"
     | "HandleExtraSecurities.ResetPasswordPhoneVerification"
     | "HandleExtraSecurities.ResetPasswordSecurityKey"
     | "ResetPasswordStart"
@@ -54,6 +55,7 @@ export interface Typegen0 {
           | "Fail"
           | "HandleExtraSecurities"
           | "ProcessExtraSecurities"
+          | "ResetPasswordExternalMFA"
           | "ResetPasswordPhoneVerification"
           | "ResetPasswordSecurityKey";
       };

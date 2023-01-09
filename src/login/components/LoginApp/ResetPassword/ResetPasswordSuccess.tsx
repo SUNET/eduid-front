@@ -1,8 +1,7 @@
-import React from "react";
-import { useAppSelector } from "../../../app_init/hooks";
 import { FormattedMessage } from "react-intl";
+import { useAppSelector } from "../../../app_init/hooks";
 
-function ResetPasswordSuccess(): JSX.Element {
+export function ResetPasswordSuccess(): JSX.Element {
   const toHome = useAppSelector((state) => state.config.eduid_site_url);
 
   return (
@@ -19,5 +18,3 @@ function ResetPasswordSuccess(): JSX.Element {
     </>
   );
 }
-
-export default ResetPasswordSuccess;

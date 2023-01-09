@@ -8,15 +8,15 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import CustomInput from "../../Inputs/CustomInput";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 const newPasswordFormId = "new-password-form";
 
@@ -30,12 +30,12 @@ interface NewPasswordFormProps {
 }
 
 function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
@@ -60,15 +60,15 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     if (!selected_option || selected_option === "without") {
       const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
       if (postSetNewPassword.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "phoneCode" && phone_code) {
       const response = await dispatch(
         postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
       );
       if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
-        navigate("/reset-password/success");
-      }
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await dispatch(
         postSetNewPasswordExtraSecurityToken({
@@ -78,7 +78,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "freja") {
       const response = await dispatch(
@@ -88,9 +88,9 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
-    } else navigate("/reset-password");
+    } else resetPasswordContext.resetPasswordService.send({ type: "FAIL" });
   }
 
   return (
@@ -123,7 +123,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
                 <EduIDButton
                   buttonstyle="secondary"
                   id="go-back-button"
-                  onClick={() => navigate("/reset-password/extra-security")}
+                  onClick={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })}
                 >
                   <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
                 </EduIDButton>
@@ -140,12 +140,12 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 }
 
 export function SetNewPassword(): JSX.Element | null {
-  const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -156,7 +156,7 @@ export function SetNewPassword(): JSX.Element | null {
   // Change path to extra-security without selected option on reload
   useEffect(() => {
     if (selected_option === undefined) {
-      navigate("/reset-password/extra-security");
+      resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
     }
   }, [selected_option]);
 

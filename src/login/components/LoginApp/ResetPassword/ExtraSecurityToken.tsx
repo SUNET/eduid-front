@@ -1,10 +1,10 @@
 import { translate } from "login/translation";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
   selected_option?: string;
@@ -47,10 +47,10 @@ export function SecurityKey({
 
 export function ExtraSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const [assertion, setAssertion] = useState(webauthn_assertion);
   const webauthn_challenge = useAppSelector((state) => state.resetPassword?.extra_security?.tokens?.webauthn_options);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   const retryTokenAssertion = () => {
     if (webauthn_challenge === undefined) {
@@ -64,7 +64,7 @@ export function ExtraSecurityToken(): JSX.Element {
 
   useEffect(() => {
     if (webauthn_assertion) setAssertion(webauthn_assertion);
-    if (assertion) navigate("/reset-password/set-new-password");
+    if (assertion) resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
   }, [webauthn_assertion, assertion]);
 
   return (

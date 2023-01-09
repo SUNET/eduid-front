@@ -24,7 +24,6 @@ export function ResetPasswordApp(): JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const loginRef = useAppSelector((state) => state.login.ref);
-
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
   console.log("[ResetPasswordApp] state", state);
@@ -45,20 +44,11 @@ export function ResetPasswordApp(): JSX.Element {
 
   return (
     <React.Fragment>
-      {console.log("[ResetPasswordApp] state", state)}
       {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleEmailCodeStart") && <EmailCode />}
-      {/* {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />} */}
-      {/* {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
-      {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />} */}
-      {/* TODO:make a new component for this */}
-      {/* {state.matches("HandleExtraSecurities.ResetPasswordFrejaEID") && null} */}
-      {/* {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
-      {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />} */}
     </React.Fragment>
   );
 }
@@ -70,7 +60,6 @@ function ResetPasswordStart(): null {
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-  console.log("[[ResetPasswordStart");
 
   return null;
 }
@@ -84,8 +73,6 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const [state] = useActor(resetPasswordContext.resetPasswordService);
-  console.log("ResetPasswordConfirmEmail", state.value);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());

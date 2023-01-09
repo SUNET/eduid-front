@@ -118,7 +118,6 @@ export function createResetPasswordMachine() {
             EmailCodeFinished: {
               type: "final",
             },
-
             Fail: {
               always: {
                 target: "#resetPassword.AskForEmailOrConfirmEmail",
@@ -151,10 +150,13 @@ export function createResetPasswordMachine() {
                   target: "ResetPasswordPhoneVerification",
                 },
                 CHOOSE_FREJA_EID: {
-                  target: "",
+                  target: "ResetPasswordExternalMFA",
                 },
                 CHOOSE_NO_EXTRA_SECURITY: {
-                  target: "",
+                  target: "ExtraSecurityFinished",
+                },
+                API_SUCCESS: {
+                  target: "ExtraSecurityFinished",
                 },
               },
             },
@@ -170,11 +172,18 @@ export function createResetPasswordMachine() {
             },
             ResetPasswordPhoneVerification: {
               on: {
-                API_SUCCESS: {
+                COMPLETE: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {
                   target: "Fail",
+                },
+              },
+            },
+            ResetPasswordExternalMFA: {
+              on: {
+                COMPLETE: {
+                  target: "ExtraSecurityFinished",
                 },
               },
             },
@@ -273,6 +282,9 @@ export function createResetPasswordMachine() {
                   target: "ResetPasswordSuccess",
                 },
                 API_FAIL: {
+                  target: "#resetPassword.HandleExtraSecurities",
+                },
+                FAIL: {
                   target: "#resetPassword.AskForEmailOrConfirmEmail",
                 },
               },
