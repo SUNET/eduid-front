@@ -62,7 +62,7 @@ export function createResetPasswordMachine() {
             ResetPasswordConfirmEmail: {
               on: {
                 API_SUCCESS: {
-                  target: "Finished",
+                  target: "EmailLinkSent",
                 },
                 API_FAIL: {
                   target: "#resetPassword.AskForEmailOrConfirmEmail",
@@ -70,6 +70,16 @@ export function createResetPasswordMachine() {
               },
             },
             ResetPasswordEnterEmail: {
+              on: {
+                API_SUCCESS: {
+                  target: "EmailLinkSent",
+                },
+                API_FAIL: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                },
+              },
+            },
+            EmailLinkSent: {
               on: {
                 API_SUCCESS: {
                   target: "Finished",
@@ -80,24 +90,6 @@ export function createResetPasswordMachine() {
               },
             },
             Finished: {
-              type: "final",
-            },
-          },
-          onDone: {
-            target: "EmailLinkSent",
-          },
-        },
-        EmailLinkSent: {
-          initial: "EmailLinkSent",
-          states: {
-            EmailLinkSent: {
-              on: {
-                API_SUCCESS: {
-                  target: "EmailLinkSentFinished",
-                },
-              },
-            },
-            EmailLinkSentFinished: {
               type: "final",
             },
           },
@@ -171,79 +163,6 @@ export function createResetPasswordMachine() {
             target: "FinaliseResetPassword",
           },
         },
-        // ProcessExtraSecurities: {
-        //   initial: "ProcessExtraSecurities",
-        //   states: {
-        //     ProcessExtraSecurities: {
-        //       on: {
-        //         CHOOSE_SECURITY_KEY: {
-        //           target: "ResetPasswordSecurityKey",
-        //         },
-        //         CHOOSE_PHONE_VERIFICATION: {
-        //           target: "ResetPasswordPhoneVerification",
-        //         },
-        //         CHOOSE_FREJA_EID: {
-        //           target: "ResetPasswordFrejaEID",
-        //         },
-        //         CHOOSE_NO_EXTRA_SECURITY: {
-        //           target: "ResetPasswordWithoutSecurity",
-        //         },
-        //       },
-        //     },
-        //     ResetPasswordSecurityKey: {
-        //       on: {
-        //         API_SUCCESS: {
-        //           target: "ExtraSecurityFinished",
-        //         },
-        //         API_FAIL: {
-        //           target: "Fail",
-        //         },
-        //       },
-        //     },
-        //     ResetPasswordPhoneVerification: {
-        //       on: {
-        //         API_SUCCESS: {
-        //           target: "ExtraSecurityFinished",
-        //         },
-        //         API_FAIL: {
-        //           target: "Fail",
-        //         },
-        //       },
-        //     },
-        //     ResetPasswordFrejaEID: {
-        //       on: {
-        //         API_SUCCESS: {
-        //           target: "ExtraSecurityFinished",
-        //         },
-        //         API_FAIL: {
-        //           target: "Fail",
-        //         },
-        //       },
-        //     },
-        //     ResetPasswordWithoutSecurity: {
-        //       on: {
-        //         API_SUCCESS: {
-        //           target: "ExtraSecurityFinished",
-        //         },
-        //         API_FAIL: {
-        //           target: "Fail",
-        //         },
-        //       },
-        //     },
-        //     ExtraSecurityFinished: {
-        //       type: "final",
-        //     },
-        //     Fail: {
-        //       always: {
-        //         target: "ProcessExtraSecurities",
-        //       },
-        //     },
-        //   },
-        //   onDone: {
-        //     target: "FinaliseResetPassword",
-        //   },
-        // },
-
         FinaliseResetPassword: {
           initial: "SetNewPassword",
           states: {

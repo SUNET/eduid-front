@@ -19,12 +19,10 @@ export interface Typegen0 {
   matchesStates:
     | "AskForEmailOrConfirmEmail"
     | "AskForEmailOrConfirmEmail.AskForEmailOrConfirmEmail"
+    | "AskForEmailOrConfirmEmail.EmailLinkSent"
     | "AskForEmailOrConfirmEmail.Finished"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
-    | "EmailLinkSent"
-    | "EmailLinkSent.EmailLinkSent"
-    | "EmailLinkSent.EmailLinkSentFinished"
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
@@ -40,10 +38,10 @@ export interface Typegen0 {
     | {
         "AskForEmailOrConfirmEmail"?:
           | "AskForEmailOrConfirmEmail"
+          | "EmailLinkSent"
           | "Finished"
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
-        "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"

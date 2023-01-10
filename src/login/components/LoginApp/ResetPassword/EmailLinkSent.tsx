@@ -1,4 +1,3 @@
-import { useActor } from "@xstate/react";
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
@@ -14,8 +13,6 @@ export function EmailLinkSent(): JSX.Element | null {
   const [resendDisabled, setResendDisabled] = useState(true);
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const [state] = useActor(resetPasswordContext.resetPasswordService);
-  console.log("EmailLinkSent", state.value);
 
   /**
    * The user has clicked the button to request that another e-mail should be sent.
