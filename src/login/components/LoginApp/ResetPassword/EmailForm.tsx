@@ -1,10 +1,8 @@
 import EmailInput from "login/components/Inputs/EmailInput";
-import { useContext } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
 import { GoBackButton } from "./GoBackButton";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export interface EmailFormProps {
   passEmailUp: (email: string) => void;
@@ -19,8 +17,6 @@ export interface EmailFormData {
 // * TODO: Can this be shared with a new username-only login form, and the Signup form? *
 // **************************************************************************************
 export function EmailForm(props: EmailFormProps): JSX.Element {
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 
@@ -58,9 +54,7 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
               />
 
               <div className="buttons">
-                <GoBackButton
-                  onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })}
-                />
+                <GoBackButton />
                 <EduIDButton
                   buttonstyle="primary"
                   id="reset-password-button"
