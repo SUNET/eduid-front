@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import CustomInput from "../../Inputs/CustomInput";
+import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 const newPasswordFormId = "new-password-form";
@@ -120,13 +121,9 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-                <EduIDButton
-                  buttonstyle="secondary"
-                  id="go-back-button"
-                  onClick={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })}
-                >
-                  <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
-                </EduIDButton>
+                <GoBackButton
+                  onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" })}
+                />
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
