@@ -166,6 +166,7 @@ export function ProcessExtraSecurities(): JSX.Element | null {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
       resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity(""));
   }, [eidas_status]);
 
   async function handleOnClickFreja() {
