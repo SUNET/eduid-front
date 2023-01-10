@@ -21,30 +21,21 @@ export interface UrlParams {
 export function ResetPasswordApp(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
-  const email_address = useAppSelector((state) => state.resetPassword.email_address);
-  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const loginRef = useAppSelector((state) => state.login.ref);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
-  console.log("[ResetPasswordApp] state", state);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
+    resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
   }, [loginRef, params]);
-
-  useEffect(() => {
-    if (!email_status) {
-      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-      else resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
-    }
-  }, [email_status, email_address]);
 
   return (
     <React.Fragment>
-      {state.matches("ResetPasswordStart") && <ResetPasswordStart />}
+      {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("EmailLinkSent") && <EmailLinkSent />}
@@ -53,13 +44,17 @@ export function ResetPasswordApp(): JSX.Element {
   );
 }
 
-/**
- * ResetPassword state to determine what kind of signup this is, and what to do next.
- */
-function ResetPasswordStart(): null {
+function AskForEmailOrConfirmEmail(): null {
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
 
-  resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+  useEffect(() => {
+    if (!email_status) {
+      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+      else resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+    }
+  }, [email_status, email_address]);
 
   return null;
 }

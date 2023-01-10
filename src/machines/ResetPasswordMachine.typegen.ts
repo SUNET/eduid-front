@@ -18,8 +18,8 @@ export interface Typegen0 {
   eventsCausingServices: {};
   matchesStates:
     | "AskForEmailOrConfirmEmail"
+    | "AskForEmailOrConfirmEmail.AskForEmailOrConfirmEmail"
     | "AskForEmailOrConfirmEmail.Finished"
-    | "AskForEmailOrConfirmEmail.ResetPasswordApp"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
     | "EmailLinkSent"
@@ -40,11 +40,11 @@ export interface Typegen0 {
     | "HandleExtraSecurities.ResetPasswordExternalMFA"
     | "HandleExtraSecurities.ResetPasswordPhoneVerification"
     | "HandleExtraSecurities.ResetPasswordSecurityKey"
-    | "ResetPasswordStart"
+    | "ResetPasswordApp"
     | {
         "AskForEmailOrConfirmEmail"?:
+          | "AskForEmailOrConfirmEmail"
           | "Finished"
-          | "ResetPasswordApp"
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
         "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
