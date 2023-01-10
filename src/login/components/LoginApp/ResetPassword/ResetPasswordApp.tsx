@@ -11,7 +11,6 @@ import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
-import { EmailCode } from "./ResetPasswordMain";
 
 // URL parameters passed to ResetPasswordRequestEmail
 export interface UrlParams {
@@ -39,7 +38,6 @@ export function ResetPasswordApp(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("EmailLinkSent") && <EmailLinkSent />}
-      {state.matches("HandleEmailCodeStart") && <EmailCode />}
     </React.Fragment>
   );
 }

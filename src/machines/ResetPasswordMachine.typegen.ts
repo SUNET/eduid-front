@@ -28,10 +28,6 @@ export interface Typegen0 {
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
-    | "HandleEmailCodeStart"
-    | "HandleEmailCodeStart.EmailCode"
-    | "HandleEmailCodeStart.EmailCodeFinished"
-    | "HandleEmailCodeStart.Fail"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
     | "HandleExtraSecurities.Fail"
@@ -49,7 +45,6 @@ export interface Typegen0 {
           | "ResetPasswordEnterEmail";
         "EmailLinkSent"?: "EmailLinkSent" | "EmailLinkSentFinished";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
-        "HandleEmailCodeStart"?: "EmailCode" | "EmailCodeFinished" | "Fail";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"

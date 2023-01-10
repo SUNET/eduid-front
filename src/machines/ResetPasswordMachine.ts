@@ -102,33 +102,6 @@ export function createResetPasswordMachine() {
             },
           },
         },
-        HandleEmailCodeStart: {
-          initial: "EmailCode",
-          states: {
-            EmailCode: {
-              on: {
-                API_SUCCESS: {
-                  target: "EmailCodeFinished",
-                },
-                API_FAIL: {
-                  target: "Fail",
-                },
-              },
-            },
-            EmailCodeFinished: {
-              type: "final",
-            },
-
-            Fail: {
-              always: {
-                target: "#resetPassword.AskForEmailOrConfirmEmail",
-              },
-            },
-          },
-          onDone: {
-            target: "HandleExtraSecurities",
-          },
-        },
         HandleExtraSecurities: {
           initial: "HandleExtraSecurities",
           states: {
