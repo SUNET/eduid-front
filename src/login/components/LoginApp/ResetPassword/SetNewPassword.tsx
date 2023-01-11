@@ -69,7 +69,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
       );
       if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-      } else resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await dispatch(
         postSetNewPasswordExtraSecurityToken({
@@ -122,7 +122,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <GoBackButton
-                  onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" })}
+                  onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })}
                 />
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
