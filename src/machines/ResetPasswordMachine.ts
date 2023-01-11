@@ -65,7 +65,7 @@ export function createResetPasswordMachine() {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
-                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                  target: "ResetPasswordEnterEmail",
                 },
               },
             },
@@ -75,7 +75,7 @@ export function createResetPasswordMachine() {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
-                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                  target: "ResetPasswordEnterEmail",
                 },
               },
             },
@@ -85,7 +85,7 @@ export function createResetPasswordMachine() {
                   target: "Finished",
                 },
                 API_FAIL: {
-                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                  target: "ResetPasswordEnterEmail",
                 },
               },
             },
