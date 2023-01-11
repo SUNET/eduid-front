@@ -200,6 +200,12 @@ export function ProcessExtraSecurities(): JSX.Element | null {
     resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_PHONE_VERIFICATION" });
   }
 
+  function continueSetPassword() {
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
+    dispatch(clearNotifications());
+    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_NO_EXTRA_SECURITY" });
+  }
+
   if (!extra_security) {
     return null;
   }
@@ -226,8 +232,7 @@ export function ProcessExtraSecurities(): JSX.Element | null {
         extraSecurityPhone={extra_security.phone_numbers}
         toPhoneCodeForm={toPhoneCodeForm}
       />
-      <ContinueResetPassword />
-      {/* <h4 className="description-without-security">
+      <h4 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
           defaultMessage="Continue without extra security option"
@@ -239,10 +244,10 @@ export function ProcessExtraSecurities(): JSX.Element | null {
           defaultMessage="Your account will require confirmation after the password has been reset."
         />
         &nbsp;
-        <a className="text-link" id="continue-without-security" onClick={() => continueSetPassword()}>
+        <a className="text-link" id="continue-without-security" onClick={continueSetPassword}>
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </a>
-      </p> */}
+      </p>
     </React.Fragment>
   );
 }
