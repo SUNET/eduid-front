@@ -3,7 +3,7 @@ import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { ExtraSecurityToken } from "./ExtraSecurityToken";
 import { HandleExtraSecurities, ProcessExtraSecurities } from "./HandleExtraSecurities";
 import { PhoneCodeSent } from "./PhoneCodeSent";
@@ -52,6 +52,7 @@ export function EmailCode(): JSX.Element {
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoaded && email_code) {
@@ -64,7 +65,7 @@ export function EmailCode(): JSX.Element {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+    } else navigate("/reset-password");
   }
   return (
     <React.Fragment>
