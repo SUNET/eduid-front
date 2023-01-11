@@ -157,7 +157,7 @@ export function SetNewPassword(): JSX.Element | null {
     }
   }, [selected_option]);
 
-  const copyToClipboard = () => {
+  function copyToClipboard() {
     if (ref && ref.current) {
       ref.current.select();
       document.execCommand("copy");
@@ -170,7 +170,7 @@ export function SetNewPassword(): JSX.Element | null {
         setTooltipCopied(false);
       }, 1000);
     }
-  };
+  }
 
   if (suggested_password === undefined) {
     return null;
