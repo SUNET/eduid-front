@@ -17,14 +17,18 @@ export function EmailLinkSent(): JSX.Element | null {
   /**
    * The user has clicked the button to request that another e-mail should be sent.
    */
-  const sendEmailOnClick = (e: React.MouseEvent<HTMLElement>) => {
+  async function sendEmailOnClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     if (response?.email) {
-      dispatch(requestEmailLink({ email: response.email }));
-      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      const resp = await dispatch(requestEmailLink({ email: response.email }));
+      if (requestEmailLink.fulfilled.match(resp)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
     }
     setResendDisabled(true); // disabled button again on use
-  };
+  }
 
   function handleTimerReachZero() {
     setResendDisabled(false); // allow user to request a new e-mail when timer expires
@@ -65,7 +69,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
 
       <div className="buttons">
-        <GoBackButton />
+        <GoBackButton onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })} />
         <EduIDButton
           buttonstyle="primary"
           type="submit"
