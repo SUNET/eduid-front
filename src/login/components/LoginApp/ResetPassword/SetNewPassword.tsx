@@ -91,7 +91,13 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
       if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
-    } else resetPasswordContext.resetPasswordService.send({ type: "FAIL" });
+    } else resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+  }
+
+  function goBack() {
+    resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
+    // initialization of state
+    dispatch(resetPasswordSlice.actions.initialState());
   }
 
   return (
@@ -121,9 +127,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-                <GoBackButton
-                  onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })}
-                />
+                <GoBackButton onClickHandler={goBack} />
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
@@ -215,5 +219,23 @@ export function SetNewPassword(): JSX.Element | null {
 
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
     </React.Fragment>
+  );
+}
+
+export function ResetPasswordSuccess(): JSX.Element {
+  const toHome = useAppSelector((state) => state.config.eduid_site_url);
+
+  return (
+    <>
+      <p>
+        <FormattedMessage
+          defaultMessage="Password has been updated."
+          description="Reset Password set new password success"
+        />
+      </p>
+      <a id="return-login" href={toHome}>
+        <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
+      </a>
+    </>
   );
 }
