@@ -88,7 +88,7 @@ export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
 
 export interface RequestPhoneCodeRequest {
   email_code: string;
-  phone_index: number;
+  phone_index?: number;
 }
 
 export interface RequestPhoneCodeResponse {

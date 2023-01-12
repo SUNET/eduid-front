@@ -110,7 +110,8 @@ export function PhoneCodeSent(): JSX.Element | null {
 
   async function resendPhoneCode(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    if (phone.index && email_code) {
+    if (email_code && Object.values(phone).length) {
+      dispatch(requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code }));
       const response = await dispatch(
         requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code })
       );
@@ -119,7 +120,6 @@ export function PhoneCodeSent(): JSX.Element | null {
         clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
         setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
         countFiveMin("phone");
-        // navigate("/reset-password/phone-code-sent");
       }
     }
   }
