@@ -63,6 +63,8 @@ export function HandleEmailCode(): JSX.Element {
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
+      // send bypass event to resetPasswordService to handle extra security options
+      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
     } else navigate("/reset-password");
   }
   return (
