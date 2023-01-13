@@ -33,6 +33,12 @@ function VerifyIdentity(): JSX.Element | null {
     });
   }, []);
 
+  const currentPage = intl.formatMessage({
+    id: "Identity",
+    defaultMessage: "Identity",
+    description: "Identity",
+  });
+
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
      * not on re-renders. Therefore, we _must_ have all data that we're going to use to set
@@ -46,7 +52,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
-      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage="Identity" />
+      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <div className="intro">
         <h1>
           <FormattedMessage
