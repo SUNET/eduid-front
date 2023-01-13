@@ -13,8 +13,8 @@ import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   setLocalStorage,
 } from "./CountDownTimer";
-import { SecurityKey } from "./ExtraSecurityToken";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+import { SecurityKey } from "./SelectedSecurityToken";
 
 interface ExternalMFAProps {
   handleOnClickFreja: () => void;
@@ -132,9 +132,8 @@ export function ProcessExtraSecurities(): JSX.Element | null {
   useEffect(() => {
     if (eidas_status === "eidas.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
     }
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity(""));
   }, [eidas_status]);
 
   async function handleOnClickFreja() {
@@ -225,9 +224,9 @@ export function HandleExtraSecurities(): null {
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   useEffect(() => {
-    if (extra_security && !Object.values(extra_security).length) {
-      resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
+    if (extra_security && Object.values(extra_security).length) {
+      resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
+    } else resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
   }, [extra_security]);
 
   return null;

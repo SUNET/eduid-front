@@ -42,13 +42,13 @@ export function SecurityKey({
           })}
         </React.Fragment>
       ) : selected_option === "securityKey" ? (
-        <ExtraSecurityToken />
+        <SelectedSecurityToken />
       ) : null}
     </React.Fragment>
   );
 }
 
-export function ExtraSecurityToken(): JSX.Element {
+export function SelectedSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const [assertion, setAssertion] = useState(webauthn_assertion);

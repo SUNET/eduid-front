@@ -39,7 +39,7 @@ const validate = (values: PhoneCodeFormData) => {
   return {};
 };
 
-function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
+function PhoneCodeForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
@@ -110,7 +110,7 @@ export function PhoneCodeSent(): JSX.Element | null {
 
   async function resendPhoneCode(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    if (email_code && Object.values(phone).length) {
+    if (email_code && phone) {
       dispatch(requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code }));
       const response = await dispatch(
         requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code })
@@ -140,7 +140,7 @@ export function PhoneCodeSent(): JSX.Element | null {
           }}
         />
       </p>
-      <PhoneCodeForm emailCode={email_code} />
+      <PhoneCodeForm />
       <div className="timer">
         <a id={"resend-phone"} onClick={resendPhoneCode}>
           <FormattedMessage defaultMessage="Send a new code" description="resend code" />

@@ -4,13 +4,12 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import { ExtraSecurityToken } from "./ExtraSecurityToken";
 import { HandleExtraSecurities, ProcessExtraSecurities } from "./HandleExtraSecurities";
 import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordApp } from "./ResetPasswordApp";
 import { ResetPasswordGlobalStateContext, ResetPasswordGlobalStateProvider } from "./ResetPasswordGlobalState";
-import { ResetPasswordSuccess } from "./ResetPasswordSuccess";
-import { SetNewPassword } from "./SetNewPassword";
+import { SelectedSecurityToken } from "./SelectedSecurityToken";
+import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
 export default function ResetPasswordMain(): JSX.Element {
   const intl = useIntl();
@@ -31,7 +30,7 @@ export default function ResetPasswordMain(): JSX.Element {
       <div id="reset-pass-display">
         <ResetPasswordGlobalStateProvider>
           <Routes>
-            <Route path="email-code/:emailCode" element={<EmailCode />} />
+            <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
             <Route path="" element={<ResetPasswordApp />} />
           </Routes>
         </ResetPasswordGlobalStateProvider>
@@ -45,7 +44,7 @@ interface CodeParams {
   emailCode?: string;
 }
 
-export function EmailCode(): JSX.Element {
+export function HandleEmailCode(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const params = useParams() as CodeParams;
   const email_code = params.emailCode;
@@ -64,14 +63,13 @@ export function EmailCode(): JSX.Element {
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
-      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
     } else navigate("/reset-password");
   }
   return (
     <React.Fragment>
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <ExtraSecurityToken />}
+      {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <SelectedSecurityToken />}
       {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
       {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}

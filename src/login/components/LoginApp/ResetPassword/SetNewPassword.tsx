@@ -142,24 +142,15 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
 export function SetNewPassword(): JSX.Element | null {
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
-  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setPassword(suggested_password);
-  }, [suggested_password]);
-
-  // Change path to extra-security without selected option on reload
-  useEffect(() => {
-    if (selected_option === undefined) {
-      resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-    }
-  }, [selected_option]);
+  }, [password]);
 
   function copyToClipboard() {
     if (ref && ref.current) {
@@ -226,7 +217,7 @@ export function ResetPasswordSuccess(): JSX.Element {
   const toHome = useAppSelector((state) => state.config.eduid_site_url);
 
   return (
-    <>
+    <React.Fragment>
       <p>
         <FormattedMessage
           defaultMessage="Password has been updated."
@@ -236,6 +227,6 @@ export function ResetPasswordSuccess(): JSX.Element {
       <a id="return-login" href={toHome}>
         <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
       </a>
-    </>
+    </React.Fragment>
   );
 }
