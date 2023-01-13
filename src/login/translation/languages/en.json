@@ -497,6 +497,10 @@
     "developer_comment": "Short code form",
     "string": "Cancel"
   },
+  "Identity": {
+    "developer_comment": "Identity",
+    "string": "Identity"
+  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "Email addresses"
@@ -744,6 +748,10 @@
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
+  },
+  "Settings": {
+    "developer_comment": "Settings",
+    "string": "Settings"
   },
   "SgvXTp": {
     "string": "Enter the six-digit response code shown on the other device in the form below"
