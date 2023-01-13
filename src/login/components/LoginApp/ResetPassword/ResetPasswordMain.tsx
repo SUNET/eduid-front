@@ -58,7 +58,6 @@ export function HandleEmailCode(): JSX.Element {
       verifyResetPasswordEmailLink(email_code);
     }
   }, [isLoaded]);
-  console.log(state.value);
 
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
