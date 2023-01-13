@@ -1,24 +1,29 @@
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
+import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Eidas";
 import LetterProofing from "components/LetterProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
+import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import EuFlag from "../../img/flags/eu.svg";
+import SeFlag from "../../img/flags/se.svg";
+import WorldFlag from "../../img/flags/world.svg";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import AddNin from "./AddNin";
+import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
-import SeFlag from "../../img/flags/se.svg";
-import EuFlag from "../../img/flags/eu.svg";
-//import WorldFlag from "../../img/flags/world.svg";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+
   const intl = useIntl();
 
   useEffect(() => {
@@ -41,6 +46,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
+      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage="Identity" />
       <div className="intro">
         <h1>
           <FormattedMessage
@@ -111,7 +117,7 @@ function VerifyIdentityIntro(): JSX.Element {
       <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
         <AccordionItemSwedish />
         <AccordionItemEu />
-        {/* <AccordionItemWorld /> */}
+        <AccordionItemWorld />
       </Accordion>
     </React.Fragment>
   );
@@ -119,6 +125,9 @@ function VerifyIdentityIntro(): JSX.Element {
 
 function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
+  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+
   return (
     <React.Fragment>
       {identities.nin?.verified && (
@@ -167,26 +176,54 @@ function VerifiedIdentitiesTable(): JSX.Element {
               </tbody>
             </table>
           </figure>
-          {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas */}
-          {!identities.nin?.verified && (
-            <React.Fragment>
-              <h3>
-                <FormattedMessage
-                  description="verify identity non verified description"
-                  defaultMessage="Choose your principal identification method"
-                />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="verify identity with swedish ID description"
-                  defaultMessage={`Verify your eduID with a Swedish national ID number.`}
-                />
-              </p>
-              <Accordion>
-                <AccordionItemSwedish />
-              </Accordion>
-            </React.Fragment>
-          )}
+        </React.Fragment>
+      )}
+
+      {identities.svipe?.verified && (
+        <React.Fragment>
+          <figure className="table-responsive identity-summary">
+            <table className="table">
+              <tbody>
+                <tr className="border-row">
+                  <td>
+                    <ReactCountryFlag
+                      className="flag-icon"
+                      aria-label={regionNames.of(identities.svipe.country_code)}
+                      countryCode={identities.svipe.country_code}
+                    />
+                  </td>
+                  <td>
+                    <strong>
+                      <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
+                    </strong>
+                  </td>
+                  <td>
+                    {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </React.Fragment>
+      )}
+      {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
+      {!identities.nin?.verified && (
+        <React.Fragment>
+          <h3>
+            <FormattedMessage
+              description="verify identity non verified description"
+              defaultMessage="Choose your principal identification method"
+            />
+          </h3>
+          <p>
+            <FormattedMessage
+              description="verify identity with swedish ID description"
+              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
+            />
+          </p>
+          <Accordion allowZeroExpanded>
+            <AccordionItemSwedish />
+          </Accordion>
         </React.Fragment>
       )}
     </React.Fragment>
@@ -334,19 +371,60 @@ function AccordionItemEu(): JSX.Element | null {
   );
 }
 
-// TODO: Svipe
-// function AccordionItemWorld(): JSX.Element | null {
-//   return (
-//     <AccordionItemTemplate
-//       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
-//       title="All other countries"
-//       additionalInfo="Svipe ID"
-//       uuid="world"
-//     >
-//       <p>
-//       </p>
-//     </AccordionItemTemplate>
-//   );
-// }
+function AccordionItemWorld(): JSX.Element | null {
+  const dispatch = useDashboardAppDispatch();
+  const svipe_url = useDashboardAppSelector((state) => state.config.svipe_url);
+
+  async function handleOnClick() {
+    const response = await dispatch(svipeVerifyIdentity({ method: "svipe_id" }));
+    if (svipeVerifyIdentity.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    }
+  }
+
+  if (!svipe_url) {
+    return null;
+  }
+
+  return (
+    <AccordionItemTemplate
+      icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
+      title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
+      additionalInfo={
+        <FormattedMessage
+          description="accordion item Svipe ID additional info"
+          defaultMessage="With Svipe ID cryptographic identity verification "
+        />
+      }
+      uuid="world"
+    >
+      <p>
+        <FormattedMessage
+          description="verify identity"
+          defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
+          values={{
+            Svipe_ID: (
+              <a href=" https://www.svipe.com/get-started" target="_blank">
+                Svipe ID
+              </a>
+            ),
+          }}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          description="verify identity"
+          defaultMessage={`The button below will take you to an external identification site, where you by
+          identifying yourself with Svipe ID will verify your identity towards eduID.`}
+        />
+      </p>
+      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
+        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+      </EduIDButton>
+    </AccordionItemTemplate>
+  );
+}
 
 export default VerifyIdentity;

@@ -15,6 +15,14 @@
     "developer_comment": "button add",
     "string": "Add"
   },
+  "/+3WQI": {
+    "developer_comment": "recommendation title",
+    "string": "Recommended actions for you"
+  },
+  "/+Pdlw": {
+    "developer_comment": "recommendation title",
+    "string": "To get the most out of eduID we recommend that you follow the below recommendations."
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
@@ -26,6 +34,10 @@
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
+  },
+  "/JEhOK": {
+    "developer_comment": "progress title",
+    "string": "Your identity verification progress"
   },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
@@ -66,6 +78,10 @@
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
+  },
+  "0xT3Pl": {
+    "developer_comment": "Verified identity",
+    "string": "Foreign Svipe identity"
   },
   "12hWj7": {
     "developer_comment": "ErrorURL authentication failure",
@@ -123,9 +139,21 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
   },
+  "3GakgN": {
+    "developer_comment": "advanced settings main title",
+    "string": "Enhance your eduID"
+  },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
+  },
+  "3lgcSo": {
+    "developer_comment": "accordion item security key additional info",
+    "string": "Add your security key to enable safe reset of password"
+  },
+  "3pVzlc": {
+    "developer_comment": "last step",
+    "string": "Congratulations to completing your identity verification"
   },
   "3q1uE5": {
     "developer_comment": "orcid description",
@@ -153,6 +181,10 @@
   },
   "4WguDO": {
     "string": "Developer info, not shown in production:"
+  },
+  "4wt0d3": {
+    "developer_comment": "advanced settings lead title",
+    "string": "Increase the security of your eduID or connect it to other services."
   },
   "56cz7x": {
     "developer_comment": "Phone display title",
@@ -241,6 +273,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9phM5a": {
+    "developer_comment": "second step",
+    "string": "Verify your identity"
+  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -265,6 +301,10 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Code"
   },
+  "Advanced settings": {
+    "developer_comment": "Advanced settings",
+    "string": "Advanced settings"
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -287,6 +327,10 @@
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
+  },
+  "CoT2UX": {
+    "developer_comment": "accordion item Svipe ID additional info",
+    "string": "With Svipe ID cryptographic identity verification"
   },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
@@ -316,6 +360,10 @@
     "developer_comment": "Signup credentials button",
     "string": "Cancel"
   },
+  "EJjqFG": {
+    "developer_comment": "first step",
+    "string": "Create eduID"
+  },
   "EW3NC1": {
     "developer_comment": "Email label",
     "string": "Email address"
@@ -339,6 +387,10 @@
   "Error: Service Unavailable": {
     "string": "Service Unavailable. Check your internet connection."
   },
+  "FDb++j": {
+    "developer_comment": "Verification letter expired",
+    "string": "Verification letter expired"
+  },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
@@ -361,10 +413,6 @@
   },
   "FutYRQ": {
     "string": "Use my {freja_eidplus_verbatim}"
-  },
-  "Fw5FJ3": {
-    "developer_comment": "Footer copyright",
-    "string": "2013-2022"
   },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
@@ -393,6 +441,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Don't share this code with anyone, as it might compromise your credentials."
   },
+  "GAKntd": {
+    "developer_comment": "accordion item Verification with Swedish national ID number",
+    "string": "Verify your identity with Swedish national ID number"
+  },
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance of the eduID terms of use from you."
@@ -400,10 +452,6 @@
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Password"
-  },
-  "GnCq3b": {
-    "developer_comment": "Signup",
-    "string": "Email verification"
   },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
@@ -468,6 +516,10 @@
     "developer_comment": "security verify",
     "string": "Verify key"
   },
+  "KGKbB9": {
+    "developer_comment": "accordion item Add phone number",
+    "string": "Add your phone number"
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
@@ -478,6 +530,10 @@
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
+  },
+  "KZrck9": {
+    "developer_comment": "Signup",
+    "string": "Verification of email address"
   },
   "KaX8vx": {
     "developer_comment": "pd label en",
@@ -575,9 +631,13 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
-  "O0z0/P": {
-    "developer_comment": "Dashboard navigation tooltip",
-    "string": "Add and verify your phone number for better security"
+  "O2laus": {
+    "developer_comment": "accordion item Phone additional info",
+    "string": "Add your phone number to enable safe reset of password and verification of identity."
+  },
+  "O4hsHb": {
+    "developer_comment": "go to settings",
+    "string": "Go to Settings"
   },
   "O7HVVj": {
     "developer_comment": "device info",
@@ -607,6 +667,14 @@
     "developer_comment": "button save",
     "string": "save"
   },
+  "PLjl7A": {
+    "developer_comment": "settings main title",
+    "string": "Manage your eduID settings"
+  },
+  "PLps10": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2023"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, please try again"
@@ -614,6 +682,10 @@
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
+  },
+  "PkCbR7": {
+    "developer_comment": "Verification letter requested",
+    "string": "Verification letter requested"
   },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
@@ -653,6 +725,10 @@
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
     "string": "You will need to log in again to change your password."
+  },
+  "S1ESg7": {
+    "developer_comment": "Currently in progress title",
+    "string": "Currently in progress"
   },
   "SJUMOA": {
     "developer_comment": "Reset Password heading",
@@ -762,6 +838,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "VwFaJg": {
+    "developer_comment": "verify identity",
+    "string": "If you have a {Svipe_ID} you can connect it to your eduID."
+  },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
     "string": "Resend e-mail"
@@ -786,9 +866,17 @@
     "developer_comment": "pd long description",
     "string": "This information may be used to personalise services that you access with your eduID."
   },
+  "XRiftZ": {
+    "developer_comment": "accordion item svipe title",
+    "string": "All other countries"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
+  },
+  "XuhAU7": {
+    "developer_comment": "accordion item Confirm phone number",
+    "string": "Confirm your phone number"
   },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
@@ -862,19 +950,23 @@
     "developer_comment": "accordion item swedish additional info",
     "string": "With a digital ID-card / By post / By phone"
   },
+  "aLDxnQ": {
+    "developer_comment": "go to Advanced settings",
+    "string": "Go to Advanced settings"
+  },
   "aNbqJc": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Advanced settings"
-  },
-  "aTABco": {
-    "developer_comment": "Dashboard nav tab name",
-    "string": "Profile"
   },
   "actions.action-completed": {
     "string": "Success"
   },
   "add_nin.main_title": {
     "string": "Add your id number"
+  },
+  "al9vbk": {
+    "developer_comment": "accordion item Verification",
+    "string": "Verify your identity"
   },
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
@@ -1051,9 +1143,6 @@
   "document title Log in using another device": {
     "string": "Log in using another device | eduID"
   },
-  "document title Profile": {
-    "string": "Profile | eduID"
-  },
   "document title Register": {
     "string": "Register | eduID"
   },
@@ -1063,9 +1152,16 @@
   "document title Settings": {
     "string": "Settings | eduID"
   },
+  "document title Start": {
+    "string": "Start | eduID"
+  },
   "eIAbQF": {
     "developer_comment": "Dashboard AccountId",
     "string": "This is an automatically generated unique identifier for your eduID."
+  },
+  "eIAskC": {
+    "developer_comment": "Start",
+    "string": "Start"
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
@@ -1328,6 +1424,10 @@
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
   },
+  "iSo6Bf": {
+    "developer_comment": "accordion item additional info Verification with Swedish national ID number",
+    "string": "If you have obtained a Swedish national ID number you are able to verify your identity with the Swedish national ID number."
+  },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
@@ -1335,6 +1435,10 @@
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
+  },
+  "ivDdG3": {
+    "developer_comment": "link to detail page",
+    "string": "continue verification"
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
@@ -1363,6 +1467,10 @@
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kbKgSK": {
+    "developer_comment": "go to identity",
+    "string": "Go to Identity"
   },
   "kffxhw": {
     "developer_comment": "Registration finished",
@@ -1504,10 +1612,6 @@
   "lox37q": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again."
-  },
-  "lpvPcL": {
-    "developer_comment": "Dashboard navigation tooltip",
-    "string": "Verify your identity to get the most ouf of your eduID"
   },
   "lqzyzd": {
     "developer_comment": "Signup captcha lead text",
@@ -1659,6 +1763,9 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action may be taken."
+  },
+  "o3LM/J": {
+    "string": "Enter the six digit code sent to {email} to verify your email address"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -1923,9 +2030,17 @@
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
   },
+  "q3DlxO": {
+    "developer_comment": "settings lead title",
+    "string": "Update your eduID account settings, change password or delete your eduID."
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
+  },
+  "qIDWvd": {
+    "developer_comment": "accordion item Adding security key",
+    "string": "Add your security key"
   },
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
@@ -2051,6 +2166,10 @@
   "sIENAc": {
     "developer_comment": "extra security description",
     "string": "A password reset using an extra security option will keep your identity confirmed."
+  },
+  "sVb591": {
+    "developer_comment": "verify identity",
+    "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
   },
   "security last used": {
     "string": "Used on"
@@ -2228,8 +2347,27 @@
   "signup.webauthn-not-registered": {
     "string": "Webauthn not registered."
   },
+  "slewFg": {
+    "developer_comment": "start page lead title",
+    "string": "Make the most out of eduID by reviewing your information."
+  },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
+  },
+  "svipe_id.authn_request_failed": {
+    "string": "Svipe ID authentication request failed. Please try again"
+  },
+  "svipe_id.authorization_fail": {
+    "string": "Svipe ID authorization failed."
+  },
+  "svipe_id.identity_verify_success": {
+    "string": "Svipe ID verification success"
+  },
+  "svipe_id.method_not_available": {
+    "string": "Svipe ID is not available for this account. Please try another verification method."
+  },
+  "svipe_id.not_found": {
+    "string": "Svipe ID not found."
   },
   "t0C4LH": {
     "developer_comment": "verify identity connect nin",
@@ -2238,6 +2376,10 @@
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
+  },
+  "t5c+1i": {
+    "developer_comment": "accordion item additional info Verification additional info",
+    "string": "Your identity is not verified. Please verify your identity to get access to more services."
   },
   "t9CdwX": {
     "developer_comment": "Signup cancel button",
@@ -2321,6 +2463,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
+  "vEIe+d": {
+    "developer_comment": "finished last step",
+    "string": "To complete the last step, you need to verify a Swedish national ID number"
+  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
@@ -2359,9 +2505,17 @@
     "developer_comment": "chpass custom password",
     "string": "I don't want a suggested password"
   },
+  "vmreyb": {
+    "developer_comment": "accordion item Adding name",
+    "string": "Add your name"
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
+  },
+  "wDq7ww": {
+    "developer_comment": "accordion item name additionalInfo",
+    "string": "Name can be used to personalise services that you access with your eduID."
   },
   "wHO+q8": {
     "developer_comment": "explanation text for vetting phone",
@@ -2370,6 +2524,10 @@
   "wLDO8N": {
     "developer_comment": "pd label language",
     "string": "Language"
+  },
+  "wRVDl5": {
+    "developer_comment": "Dashboard nav tab name",
+    "string": "Start"
   },
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
@@ -2403,6 +2561,10 @@
     "developer_comment": "add webauthn token device",
     "string": "this device"
   },
+  "yHgn4B": {
+    "developer_comment": "accordion item Phone additional info",
+    "string": "Confirm your phone number to enable safe reset of password and verification of identity."
+  },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
@@ -2419,11 +2581,12 @@
     "developer_comment": "Signup",
     "string": "A link has been sent to your email address."
   },
-  "zKuIuE": {
-    "string": "Enter the six digit code from the email sent to {email}"
-  },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
     "string": "This may be because eduID is missing those attributes or that eduID won't release those attributes to the service you tried to access."
+  },
+  "zeCbht": {
+    "developer_comment": "start main title",
+    "string": "Welcome, {username}!"
   }
 }

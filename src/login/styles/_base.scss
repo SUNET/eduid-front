@@ -49,10 +49,11 @@ body {
 
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
 // in Email.js = replaced these with with <article>
-#text-content article {
+#content article {
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid $border-gray;
+
   &:last-of-type {
     border-bottom: none;
   }

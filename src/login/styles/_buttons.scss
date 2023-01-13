@@ -218,12 +218,10 @@ button.btn-icon {
   align-items: baseline;
 
   button.icon-only {
-    &:hover,
-    &:active,
-    &:focus,
-    &:active:focus {
+    &:hover:active {
       transform: rotate(180deg);
       padding: initial;
+      cursor: pointer;
     }
 
     svg {

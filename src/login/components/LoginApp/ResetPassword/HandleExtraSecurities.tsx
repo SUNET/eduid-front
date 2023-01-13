@@ -103,15 +103,18 @@ function SecurityWithSMS({
           );
         })}
       </div>
-      {requestedPhoneCode.index !== undefined && (
-        <p className="enter-phone-code">
-          <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
-          &nbsp;
-          <a className="text-link" onClick={toPhoneCodeForm}>
-            <FormattedMessage description="enter code" defaultMessage="enter code" />
-          </a>
-        </p>
-      )}
+
+      <p className="enter-phone-code">
+        <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
+        &nbsp;
+        <a
+          className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`}
+          role="link"
+          onClick={toPhoneCodeForm}
+        >
+          <FormattedMessage description="enter code" defaultMessage="enter code" />
+        </a>
+      </p>
     </React.Fragment>
   );
 }

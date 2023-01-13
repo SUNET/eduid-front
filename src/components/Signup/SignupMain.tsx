@@ -15,7 +15,6 @@ import { SignupGlobalStateProvider } from "./SignupGlobalState";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function SignupMain(): JSX.Element {
-  const email = useSignupAppSelector((state) => state.signup.email); // TODO: is email really shown in signup header?
   const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
 
   const intl = useIntl();
@@ -30,7 +29,7 @@ export function SignupMain(): JSX.Element {
   // React.StrictMode not used here since it breaks the reCAPTCHA script loader :/
   return (
     <React.Fragment>
-      <Header email={email} showLogin={true} />
+      <Header showLogin={true} />
       <section id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>

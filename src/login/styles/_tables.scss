@@ -105,9 +105,22 @@ table {
         padding-right: 1rem;
       }
     }
+
+    & tr.status {
+      height: auto;
+
+      td:last-child {
+        text-align: center;
+
+        a {
+          font-size: 0.75em;
+        }
+      }
+    }
   }
 
-  .identity-summary & {
+  .identity-summary &,
+  .progress-summary & {
     table-layout: auto;
     margin-bottom: 0;
 
@@ -115,13 +128,23 @@ table {
       &:last-of-type {
         border-bottom: none;
       }
+
+      .flag-icon {
+        font-size: 2em !important;
+      }
+
       .circle-icon {
         height: 2rem;
+
         @media (max-width: $bp-md) {
           height: 1.5rem;
         }
       }
     }
+  }
+
+  .progress-summary & td:first-child {
+    width: 60%;
   }
 }
 
