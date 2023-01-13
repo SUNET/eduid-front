@@ -497,6 +497,10 @@
     "developer_comment": "Short code form",
     "string": "Avbryt"
   },
+  "Identity": {
+    "developer_comment": "Identity",
+    "string": "Identitet"
+  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
@@ -744,6 +748,10 @@
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Säkerhetsnyckel har tagits bort."
+  },
+  "Settings": {
+    "developer_comment": "Settings",
+    "string": "Inställningar"
   },
   "SgvXTp": {
     "string": "Skriv in den sexsiffriga koden som visas i den andra enheten i fältet nedan"
