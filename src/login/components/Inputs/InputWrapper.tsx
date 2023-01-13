@@ -30,7 +30,11 @@ function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
       {label && (
         <Label aria-required="true" htmlFor={input.name}>
           {label}
-          {required && <span className="label-required">*</span>}
+          {required && (
+            <span className="label-required" aria-label="required">
+              *
+            </span>
+          )}
         </Label>
       )}
       {helpBlock && <span className="help-block">{helpBlock}</span>}
