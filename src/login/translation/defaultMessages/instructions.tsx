@@ -21,7 +21,6 @@ export const generalInstructions = {
   ),
 
   // mfa instructions
-  "mfa.try-again": <FormattedMessage id="mfa.try-again" defaultMessage={`Try again`} />,
   "mfa.login-tapit": (
     <FormattedMessage
       id="mfa.login-tapit"

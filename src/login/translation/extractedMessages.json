@@ -55,6 +55,10 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
   },
+  "/hAEZl": {
+    "developer_comment": "mfa reset-password tapit",
+    "string": "Use your security key to reset password. If it has a button, tap it."
+  },
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Reset your password"
@@ -571,6 +575,10 @@
     "developer_comment": "button_add",
     "string": "Add"
   },
+  "LolQ90": {
+    "developer_comment": "mfa problems heading",
+    "string": "Problems?"
+  },
   "LuSrd4": {
     "developer_comment": "Signup",
     "string": "Register your email address to create your eduID."
@@ -694,6 +702,10 @@
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Code"
+  },
+  "Q8CeJV": {
+    "developer_comment": "mfa try again",
+    "string": "Try again"
   },
   "QLJcC4": {
     "developer_comment": "security last used date",
@@ -1361,10 +1373,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gbZoh/": {
-    "developer_comment": "Set new password (go back to eduID button)",
-    "string": "go back"
-  },
   "gn2lIO": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Choose a suitable method to verify that you have access to the added id number."
@@ -1667,15 +1675,6 @@
   },
   "mfa.no-webauthn-support-text": {
     "string": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
-  },
-  "mfa.problems-heading": {
-    "string": "Problems?"
-  },
-  "mfa.reset-password-tapit": {
-    "string": "Use your security key to reset password. If it has a button, tap it."
-  },
-  "mfa.try-again": {
-    "string": "Try again"
   },
   "mfa.two-factor-authn": {
     "string": "Use your security key to log in. If it has a button, tap it."

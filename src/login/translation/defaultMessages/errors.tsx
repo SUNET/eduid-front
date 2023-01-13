@@ -257,8 +257,6 @@ export const specificErrors = {
 
   "mfa.freja-eid": <FormattedMessage id="mfa.freja-eid" defaultMessage={`Use Freja eID instead`} />,
 
-  "mfa.problems-heading": <FormattedMessage id="mfa.problems-heading" defaultMessage={`Problems?`} />,
-
   "mfa.error-getting-token": (
     <FormattedMessage id="mfa.error-getting-token" defaultMessage={`There was a problem using your security key`} />
   ),

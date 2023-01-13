@@ -1,5 +1,4 @@
 import { ExtraSecurityTokens } from "apis/eduidResetPassword";
-import { translate } from "login/translation";
 import React, { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -78,7 +77,12 @@ export function SelectedSecurityToken(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p>{translate("mfa.reset-password-tapit")}</p>
+      <p>
+        <FormattedMessage
+          description="mfa reset-password tapit"
+          defaultMessage="Use your security key to reset password. If it has a button, tap it."
+        />
+      </p>
       <figure>
         <div className="key-animation" />
         <div>
@@ -91,9 +95,11 @@ export function SelectedSecurityToken(): JSX.Element {
         </div>
 
         <div id="mfa-try-another-way">
-          <figcaption>{translate("mfa.problems-heading")}</figcaption>
+          <figcaption>
+            <FormattedMessage description="mfa problems heading" defaultMessage="Problems?" />
+          </figcaption>
           <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
-            {translate("mfa.try-again")}
+            <FormattedMessage description="mfa try again" defaultMessage="Try again" />
           </button>
         </div>
       </figure>
