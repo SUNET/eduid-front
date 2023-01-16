@@ -28,7 +28,7 @@ export function Security(): JSX.Element | null {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
-    if (isLoaded && !credentials) {
+    if (isLoaded && !credentials.length) {
       // call requestCredentials once app is loaded
       dispatch(requestCredentials());
     }
