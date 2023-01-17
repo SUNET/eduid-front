@@ -1,117 +1,40 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faCheck,
-  faCircleCheck,
-  faCircleExclamation,
-  faExclamation,
-  faHome,
-  faIdCard,
-  faUnlockKeyhole,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCircleInfo, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
 
-interface IdentificationStepTypes {
-  account_created: boolean;
-  verified_identity: boolean;
-  nin_verified: boolean;
-}
-
-function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Element {
-  // fist step is user created account
-  // second step is verified identity with eidas or svipe
-  // the last step is to verify with a nin
-  const [isFinishedStep, setIsFinishedStep] = useState<IdentificationStepTypes>({
-    account_created: true,
-    verified_identity: false,
-    nin_verified: false,
-  });
-
-  useEffect(() => {
-    if (props.identities.nin?.verified) {
-      setIsFinishedStep({
-        account_created: true,
-        verified_identity: true,
-        nin_verified: true,
-      });
-    } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
-      setIsFinishedStep({
-        account_created: true,
-        verified_identity: true,
-        nin_verified: false,
-      });
-    }
-  }, [props.identities]);
-
+function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
+  if (!props.identities.is_verified) {
+    return (
+      <div className="verification-status unverified">
+        <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+        <p>
+          <FormattedMessage description="Your identity" defaultMessage="Your identity" />
+        </p>
+        <span className="badge unverified">
+          <FormattedMessage description="progress title" defaultMessage="unverified" />
+        </span>
+      </div>
+    );
+  }
   return (
-    <article>
-      <div className="intro">
-        <h3>
-          <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
-        </h3>
-      </div>
-      <div className="indicator">
-        <div className="step finished">
-          <FontAwesomeIcon className="icon-unlock" icon={faUser as IconProp} />
-          <FontAwesomeIcon className="icon-lock" icon={faCheck as IconProp} />
-        </div>
-        <div className="border-line" />
-        <div className={isFinishedStep.verified_identity ? "step finished" : "step"}>
-          <FontAwesomeIcon className="icon-unlock" icon={faIdCard as IconProp} />
-          <FontAwesomeIcon
-            className="icon-lock"
-            icon={isFinishedStep.verified_identity ? faCheck : (faExclamation as IconProp)}
-          />
-        </div>
-        <div className="border-line" />
-        <div className={isFinishedStep.verified_identity ? "step finished" : "step"}>
-          <FontAwesomeIcon className="icon-unlock" icon={faUnlockKeyhole as IconProp} />
-          <FontAwesomeIcon
-            className="icon-lock"
-            icon={isFinishedStep.verified_identity ? faCheck : (faExclamation as IconProp)}
-          />
-        </div>
-      </div>
-      <div className="indicator-description">
-        <span>
-          <FontAwesomeIcon icon={faCircleCheck as IconProp} />
-          <strong>
-            <FormattedMessage description="first step" defaultMessage="Create eduID" />
-          </strong>
-        </span>
-        <span>
-          <FontAwesomeIcon icon={isFinishedStep.nin_verified ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          <strong>
-            <FormattedMessage description="second step" defaultMessage="Verify your identity" />
-          </strong>
-        </span>
-        <span>
-          <FontAwesomeIcon icon={isFinishedStep.nin_verified ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          <strong>
-            {isFinishedStep.nin_verified ? (
-              <FormattedMessage
-                description="last step"
-                defaultMessage="Congratulations to completing your identity verification"
-              />
-            ) : (
-              <FormattedMessage
-                description="finished last step"
-                defaultMessage="To complete the last step, you need to verify a Swedish national ID number"
-              />
-            )}
-          </strong>
-        </span>
-      </div>
-    </article>
+    <div className="verification-status verified">
+      <FontAwesomeIcon icon={faCheck as IconProp} />
+      <p>
+        <FormattedMessage description="Your identity" defaultMessage="Your identity" />
+      </p>
+      <span className="badge verified">
+        <FormattedMessage description="progress title" defaultMessage="verified" />
+      </span>
+    </div>
   );
 }
 
@@ -222,7 +145,14 @@ export default function Start(): JSX.Element {
           </p>
         </div>
       </div>
-      <IdentificationIndicator identities={identities} />
+      <article>
+        <div className="intro">
+          <h3>
+            <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
+          </h3>
+        </div>
+        <VerificationProgress identities={identities} />
+      </article>
       <Recommendations />
       {progress}
     </React.Fragment>
