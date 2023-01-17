@@ -19,6 +19,7 @@ interface AccordionItemTemplateProps {
 function AccordionItemTemplate(props: AccordionItemTemplateProps) {
   return (
     <AccordionItem
+      id={props.uuid}
       uuid={props.uuid}
       activeClassName={props.disabled ? "accordion__item expanded disabled" : "accordion__item expanded"}
       className={props.disabled ? "accordion__item disabled" : "accordion__item"}
