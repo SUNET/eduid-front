@@ -22,6 +22,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
 
   return (
     <AccordionItemTemplate
+      uuid="recommendation-security-key"
       icon={<FontAwesomeIcon icon={faKey as IconProp} />}
       title={
         <FormattedMessage description="accordion item Adding security key" defaultMessage="Add your security key" />
@@ -80,6 +81,7 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} />}
       title={title}
       additionalInfo={null}
+      uuid="recommendation-phone"
     >
       <p> {description}</p>
       <HashLink to="/profile/settings/#phone">
@@ -99,6 +101,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
       icon={<FontAwesomeIcon icon={faUser as IconProp} />}
       title={<FormattedMessage description="accordion item Adding name" defaultMessage="Add your name" />}
       additionalInfo={null}
+      uuid="recommendation-add-name"
     >
       <p>
         <FormattedMessage
@@ -145,7 +148,12 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
   }
 
   return (
-    <AccordionItemTemplate icon={<FontAwesomeIcon icon={faIdCard as IconProp} />} title={title} additionalInfo={null}>
+    <AccordionItemTemplate
+      icon={<FontAwesomeIcon icon={faIdCard as IconProp} />}
+      title={title}
+      additionalInfo={null}
+      uuid="recommendation-verify-identity"
+    >
       <p>{description}</p>
       <Link key="verify-identity" to="verify-identity/">
         <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
