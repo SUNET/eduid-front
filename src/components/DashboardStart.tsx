@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faCircleInfo, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleExclamation, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
@@ -14,27 +14,47 @@ import { Recommendations } from "./Recommendations";
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
     return (
-      <div className="verification-status unverified">
-        <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-        <p>
-          <FormattedMessage description="Your identity" defaultMessage="Your identity" />
-        </p>
-        <span className="badge unverified">
-          <FormattedMessage description="progress title" defaultMessage="unverified" />
-        </span>
-      </div>
+      <figure className="verification-status unverified">
+        <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
+        <div>
+          <p>
+            {props.identities.nin || props.identities.svipe || props.identities.eidas ? (
+              <FormattedMessage
+                description="verification status heading after password reset"
+                defaultMessage="Your identity is no longer verified after password reset."
+              />
+            ) : (
+              <FormattedMessage
+                description="verification status heading unverified"
+                defaultMessage="Your identity is not verified."
+              />
+            )}
+          </p>
+          <p className="help-text">
+            <FormattedMessage
+              description="verification status sub text"
+              defaultMessage="Follow recommendation below."
+            />
+          </p>
+        </div>
+      </figure>
     );
   }
   return (
-    <div className="verification-status verified">
-      <FontAwesomeIcon icon={faCheck as IconProp} />
-      <p>
-        <FormattedMessage description="Your identity" defaultMessage="Your identity" />
-      </p>
-      <span className="badge verified">
-        <FormattedMessage description="progress title" defaultMessage="verified" />
-      </span>
-    </div>
+    <figure className="verification-status verified">
+      <FontAwesomeIcon icon={faCircleCheck as IconProp} />
+      <div>
+        <p>
+          <FormattedMessage
+            description="verification status heading verified"
+            defaultMessage="Your identity is verified."
+          />
+        </p>
+        <p className="help-text">
+          <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
+        </p>
+      </div>
+    </figure>
   );
 }
 
@@ -61,13 +81,13 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
     <figure className="table-responsive progress-summary">
       <table>
         <tbody>
-          <tr className="border-row">
+          <tr>
             <td>
               <strong>{letterStatus}</strong>
             </td>
             <td>
               <Link to="verify-identity/#letter-proofing">
-                <FormattedMessage description="link to detail page" defaultMessage="continue verification" />
+                <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
               </Link>
             </td>
           </tr>
