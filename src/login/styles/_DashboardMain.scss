@@ -1,20 +1,6 @@
 @import "./variables";
 
-// // --- PROFILE STYLES --- //
-#profile-grid {
-  display: grid;
-  grid-row-gap: 2rem;
-  grid-column-gap: 2rem;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(2, auto);
-
-  & label {
-    font-family: $proxima-bold;
-    font-size: 1rem;
-    width: 100%;
-  }
-}
-
+// --- PROFILE STYLES --- //
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
