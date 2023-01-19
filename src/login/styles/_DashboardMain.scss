@@ -86,13 +86,14 @@
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
   border-radius: 6px;
 
-  p {
+  h6 {
     margin: 0;
     text-align: left;
+  }
 
-    &.help-text {
-      margin-top: 8px;
-    }
+  p.help-text {
+    margin-top: 8px;
+    text-align: left;
   }
 
   svg {

@@ -17,19 +17,19 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
       <figure className="verification-status unverified">
         <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
         <div>
-          <p>
-            {props.identities.nin || props.identities.svipe || props.identities.eidas ? (
-              <FormattedMessage
-                description="verification status heading after password reset"
-                defaultMessage="Your identity is no longer verified after password reset."
-              />
-            ) : (
+          <h6>
+            {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
               <FormattedMessage
                 description="verification status heading unverified"
                 defaultMessage="Your identity is not verified."
               />
+            ) : (
+              <FormattedMessage
+                description="verification status heading after password reset"
+                defaultMessage="Your identity is no longer verified after password reset."
+              />
             )}
-          </p>
+          </h6>
           <p className="help-text">
             <FormattedMessage
               description="verification status sub text"
@@ -44,12 +44,12 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     <figure className="verification-status verified">
       <FontAwesomeIcon icon={faCircleCheck as IconProp} />
       <div>
-        <p>
+        <h6>
           <FormattedMessage
             description="verification status heading verified"
             defaultMessage="Your identity is verified."
           />
-        </p>
+        </h6>
         <p className="help-text">
           <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
         </p>
