@@ -57,7 +57,7 @@ export const resetPasswordSlice = createSlice({
     setPhone: (state, action) => {
       state.phone = action.payload;
     },
-    initialState: (state) => {
+    resetState: (state) => {
       state.webauthn_assertion = undefined;
       state.selected_option = undefined;
     },

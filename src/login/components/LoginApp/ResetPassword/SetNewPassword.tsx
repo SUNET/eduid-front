@@ -97,7 +97,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   function goBack() {
     resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
     // initialization of state
-    dispatch(resetPasswordSlice.actions.initialState());
+    dispatch(resetPasswordSlice.actions.resetState());
   }
 
   return (
