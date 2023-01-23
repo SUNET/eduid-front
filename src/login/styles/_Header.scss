@@ -26,13 +26,15 @@
 
     .header-nav {
       button {
-        span {
-          width: 40vw;
-          overflow: hidden;
-          white-space: nowrap;
-          display: inline-block;
-          text-overflow: ellipsis;
-          text-align: right;
+        @media (max-width: $bp-sm) {
+          span {
+            width: 40vw;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-overflow: ellipsis;
+            text-align: right;
+          }
         }
       }
 
