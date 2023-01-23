@@ -30,7 +30,7 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <button className="header-user" onClick={() => props.setOpenMenu(!props.openMenu)}>
+      <button className="header-user" type="button" onClick={() => props.setOpenMenu(!props.openMenu)}>
         <span>{emails.filter((mail) => mail.primary)[0].email}</span>
         {props.openMenu ? (
           <FontAwesomeIcon icon={faChevronUp as IconProp} />
