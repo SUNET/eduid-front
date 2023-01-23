@@ -73,8 +73,7 @@
           display: block;
         }
 
-        #{$a}-toggle {
-          transform: rotate(90deg);
+        :nth-child(3) {
           position: absolute;
           right: 1rem;
         }
