@@ -45,10 +45,11 @@ function RenderPersonalData(props: { labels: NameLabels }) {
   }
   return (
     <div className="personal-data-info">
-      <NameDisplay label={props.labels.first} name={first_name} />
-      <NameDisplay label={props.labels.last} name={last_name} />
+      <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
+      <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
       {hasPrefLanguage ? (
         <NameDisplay
+          htmlFor="language"
           label={<FormattedMessage defaultMessage="Language" description="pd label language" />}
           name={languageLabel}
         />

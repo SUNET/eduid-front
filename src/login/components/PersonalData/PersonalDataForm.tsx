@@ -116,8 +116,8 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay label={props.labels.first} name={given_name} />
-        <NameDisplay label={props.labels.last} name={surname} />
+        <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
+        <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
       </div>
       <div className="icon-text">
         <button
