@@ -35,6 +35,7 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
         aria-expanded={props.openMenu}
         type="button"
         onClick={() => props.setOpenMenu(!props.openMenu)}
+        data-name={emails.filter((mail) => mail.primary)[0].email}
       >
         <span>{emails.filter((mail) => mail.primary)[0].email}</span>
         {props.openMenu ? (
