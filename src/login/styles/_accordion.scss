@@ -71,9 +71,11 @@
         #{$a}-description {
           font-size: 12px;
           display: block;
+          margin-bottom: 0;
         }
 
-        :nth-child(3) {
+        svg.svg-inline--fa.fa-chevron-up,
+        svg.svg-inline--fa.fa-chevron-down {
           position: absolute;
           right: 1rem;
         }
