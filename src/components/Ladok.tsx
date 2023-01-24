@@ -43,22 +43,24 @@ const LadokContainer = (): JSX.Element => {
       </p>
 
       <fieldset>
-        <label className="toggle flex-between" htmlFor="ladok-connection">
-          <span>
-            <FormattedMessage defaultMessage={`Link your account to Ladok`} description="Ladok account linking" />
-          </span>
-          <input
-            onChange={handleSwitchChange}
-            className="toggle-checkbox"
-            type="checkbox"
-            checked={switchChecked}
-            id="ladok-connection"
-          />
-          <div className="toggle-switch"></div>
-        </label>
+        <form>
+          <label className="toggle flex-between" htmlFor="ladok-connection">
+            <legend>
+              <FormattedMessage defaultMessage={`Link your account to Ladok`} description="Ladok account linking" />
+            </legend>
+            <input
+              onChange={handleSwitchChange}
+              className="toggle-checkbox"
+              type="checkbox"
+              checked={switchChecked}
+              id="ladok-connection"
+            />
+            <div className="toggle-switch"></div>
+          </label>
+        </form>
       </fieldset>
-      <fieldset>{switchChecked ? <LadokLinkStatus /> : undefined}</fieldset>
-      <fieldset>{switchChecked ? <LadokUniversitiesDropdown /> : undefined}</fieldset>
+      {switchChecked ? <LadokLinkStatus /> : undefined}
+      {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
@@ -126,7 +128,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   }, [ladokUnis]);
 
   const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
-    <>
+    <fieldset>
       <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
@@ -139,7 +141,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         className="react-select-container"
         classNamePrefix="react-select"
       />
-    </>
+    </fieldset>
   );
 
   return (
@@ -191,15 +193,17 @@ const LadokLinkStatus = (): JSX.Element => {
   return (
     <React.Fragment>
       {isLinked === true ? (
-        <div className="ladok-university flex-between">
-          <label>
-            <FormattedMessage
-              defaultMessage="Your account is linked with Ladok information from"
-              description="Ladok account linking"
-            />
-          </label>
-          <div className="text-large ladok-university-name">{university_name}</div>
-        </div>
+        <fieldset>
+          <div className="ladok-university flex-between">
+            <label>
+              <FormattedMessage
+                defaultMessage="Your account is linked with Ladok information from"
+                description="Ladok account linking"
+              />
+            </label>
+            <div className="text-large ladok-university-name">{university_name}</div>
+          </div>
+        </fieldset>
       ) : (
         <React.Fragment />
       )}
