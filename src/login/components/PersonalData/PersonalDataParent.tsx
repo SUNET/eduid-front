@@ -126,9 +126,9 @@ function PersonalDataParent() {
     <article className="personal-data">
       <div className="intro">
         <div className="heading">
-          <h3>
+          <h2>
             <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
-          </h3>
+          </h2>
           <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
         </div>
         <p>
