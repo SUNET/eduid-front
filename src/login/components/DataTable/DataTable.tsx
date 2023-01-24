@@ -83,7 +83,7 @@ function DataTableRows(props: DataTableProps) {
 function DataTable(props: DataTableProps) {
   return (
     <div className="table-responsive">
-      <table className="table-form">
+      <table className="table-form" role="presentation">
         <tbody>
           <DataTableRows {...props} />
         </tbody>
