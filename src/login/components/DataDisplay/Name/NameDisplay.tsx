@@ -7,12 +7,12 @@ interface NameDisplayProps {
 export default function NameDisplay({ label, name, htmlFor }: NameDisplayProps) {
   return (
     <div className="profile-grid-cell">
-      <label id={htmlFor} htmlFor={htmlFor}>
-        {label}
-      </label>
-      <span id={htmlFor} className="display-data verified">
-        {name}
+      <span aria-label={htmlFor}>
+        <strong>{label}</strong>
       </span>
+      <output id={htmlFor} className="display-data verified">
+        {name}
+      </output>
     </div>
   );
 }

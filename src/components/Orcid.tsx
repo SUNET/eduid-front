@@ -56,7 +56,7 @@ export function Orcid(): JSX.Element {
     );
   } else {
     return (
-      <table className="table-form orcid">
+      <figure className="table-form orcid" role="presentation">
         <tbody>
           <tr>
             <td>
@@ -76,7 +76,7 @@ export function Orcid(): JSX.Element {
             </td>
           </tr>
         </tbody>
-      </table>
+      </figure>
     );
   }
 }
