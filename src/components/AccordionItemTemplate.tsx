@@ -30,7 +30,7 @@ function AccordionItemTemplate(props: AccordionItemTemplateProps) {
         <AccordionItemButton>
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
-            <h6 className="accordion-title">{props.title}</h6>
+            <h3 className="accordion-title">{props.title}</h3>
             <p className="accordion-description">{props.additionalInfo}</p>
           </div>
           <AccordionItemState>
