@@ -92,12 +92,12 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </p>
         </div>
-        <h3>
+        <h2>
           <FormattedMessage
             description="verify identity verified description"
             defaultMessage="The identities below are now connected to your eduID"
           />
-        </h3>
+        </h2>
         <VerifiedIdentitiesTable />
       </React.Fragment>
     );
@@ -114,12 +114,12 @@ function VerifyIdentityIntro(): JSX.Element {
           />
         </p>
       </div>
-      <h3>
+      <h2>
         <FormattedMessage
           description="verify identity non verified description"
           defaultMessage="Choose your principal identification method"
         />
-      </h3>
+      </h2>
       <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
         <AccordionItemSwedish />
         <AccordionItemEu />
@@ -215,12 +215,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities.nin?.verified && (
         <React.Fragment>
-          <h3>
+          <h2>
             <FormattedMessage
               description="verify identity non verified description"
               defaultMessage="Choose your principal identification method"
             />
-          </h3>
+          </h2>
           <p>
             <FormattedMessage
               description="verify identity with swedish ID description"

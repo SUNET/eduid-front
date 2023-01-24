@@ -1,9 +1,9 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useMemo, useState } from "react";
+import { Field as FinalField, FieldRenderProps, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
-import { Form as FinalForm, Field as FinalField, FieldRenderProps } from "react-final-form";
 import Select, { SingleValue } from "react-select";
+import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
 
 interface SelectedUniProps {
   label: string;
@@ -30,9 +30,9 @@ const LadokContainer = (): JSX.Element => {
 
   return (
     <article id="ladok-container" className="ladok">
-      <h3>
+      <h2>
         <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
-      </h3>
+      </h2>
 
       <p>
         <FormattedMessage

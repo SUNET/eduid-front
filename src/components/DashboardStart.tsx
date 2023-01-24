@@ -55,9 +55,9 @@ function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Ele
   return (
     <article>
       <div className="intro">
-        <h3>
+        <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
-        </h3>
+        </h2>
       </div>
       <div className="indicator">
         <div className="step finished">
@@ -191,9 +191,9 @@ export default function Start(): JSX.Element {
     progress = (
       <article>
         <div className="intro">
-          <h3>
+          <h2>
             <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
-          </h3>
+          </h2>
         </div>
         <LetterProofingProgress letter_proofing={letter_proofing} />
       </article>

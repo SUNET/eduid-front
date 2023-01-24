@@ -113,7 +113,7 @@ function UsernameInputPart(): JSX.Element {
     return (
       <React.Fragment>
         <div className="welcome-back-container">
-          <h3>
+          <h2>
             <FormattedMessage
               defaultMessage="Welcome back, {username}!"
               description="Login username input"
@@ -121,7 +121,7 @@ function UsernameInputPart(): JSX.Element {
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-          </h3>
+          </h2>
           <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>

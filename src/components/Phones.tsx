@@ -1,22 +1,21 @@
+import {
+  postNewPhone,
+  requestMakePrimaryPhone,
+  requestRemovePhone,
+  requestResendPhoneCode,
+  requestVerifyPhone,
+} from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
-import { translate } from "login/translation";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
-import { useIntl, FormattedMessage } from "react-intl";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { FormattedMessage, useIntl } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
-import { clearNotifications } from "reducers/Notifications";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import {
-  postNewPhone,
-  requestMakePrimaryPhone,
-  requestVerifyPhone,
-  requestResendPhoneCode,
-  requestRemovePhone,
-} from "apis/eduidPhone";
-import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface PhoneFormData {
   number?: string;
@@ -130,9 +129,9 @@ function Phones() {
   return (
     <article className="phone-view-form-container" id="phone">
       <div className="intro">
-        <h3>
+        <h2>
           <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
-        </h3>
+        </h2>
         <p>
           <FormattedMessage
             defaultMessage={`You can connect one or more mobile phone numbers to your eduID,

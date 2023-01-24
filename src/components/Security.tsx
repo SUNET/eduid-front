@@ -109,9 +109,9 @@ export function Security(): JSX.Element | null {
     <article id="security-container">
       <div id="register-security-key-container">
         <div className="intro">
-          <h3>
+          <h2>
             <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
-          </h3>
+          </h2>
           <p>
             <FormattedMessage
               description="security second factor"

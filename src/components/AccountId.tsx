@@ -9,9 +9,9 @@ export function AccountId(): JSX.Element {
   return (
     <article id="uniqueId-container">
       <div className="intro">
-        <h3>
+        <h2>
           <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
-        </h3>
+        </h2>
         <p>
           <FormattedMessage
             defaultMessage="This is an automatically generated unique identifier for your eduID."

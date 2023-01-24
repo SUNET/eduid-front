@@ -193,9 +193,9 @@ export function Recommendations(): JSX.Element | null {
   return (
     <article>
       <div className="intro">
-        <h3>
+        <h2>
           <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
-        </h3>
+        </h2>
         <p>
           <FormattedMessage
             description="recommendation title"
