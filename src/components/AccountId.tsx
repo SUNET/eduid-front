@@ -20,11 +20,15 @@ export function AccountId(): JSX.Element {
         </p>
       </div>
       <div className="profile-grid-cell">
-        <label htmlFor={idUserEppn}>
-          <FormattedMessage defaultMessage="eppn" description="Dashboard AccountId" />
-        </label>
+        <span aria-label={idUserEppn}>
+          <strong>
+            <FormattedMessage defaultMessage="eppn" description="Dashboard AccountId" />
+          </strong>
+        </span>
         <div className="display-data verified">
-          <output id={idUserEppn}>{eppn}</output>
+          <output name={eppn} id={idUserEppn}>
+            {eppn}
+          </output>
         </div>
         <p className="help-text">
           <FormattedMessage
