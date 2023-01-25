@@ -56,8 +56,7 @@ export default function UsernamePw() {
   }
 
   return (
-    <>
-      {/* <div className="username-pw"> */}
+    <div className="username-pw">
       <div className="intro">
         <h1>
           <FormattedMessage defaultMessage="Log in" description="Login front page" />
@@ -98,8 +97,7 @@ export default function UsernamePw() {
           );
         }}
       ></FinalForm>
-      {/* </div> */}
-    </>
+    </div>
   );
 }
 
