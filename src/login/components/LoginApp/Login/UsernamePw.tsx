@@ -56,13 +56,16 @@ export default function UsernamePw() {
   }
 
   return (
-    <div className="username-pw">
-      <h1>
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h1>
+    <>
+      {/* <div className="username-pw"> */}
+      <div className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+        </h1>
 
-      <div className="lead">
-        <LoginAtServiceInfo service_info={service_info} />
+        <div className="lead">
+          <LoginAtServiceInfo service_info={service_info} />
+        </div>
       </div>
 
       <FinalForm<UsernamePwFormData>
@@ -95,7 +98,8 @@ export default function UsernamePw() {
           );
         }}
       ></FinalForm>
-    </div>
+      {/* </div> */}
+    </>
   );
 }
 
