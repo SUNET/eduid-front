@@ -122,12 +122,14 @@ export function Security(): JSX.Element | null {
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable credentials={credentials} />
-          <label>
-            <FormattedMessage
-              description="select extra webauthn"
-              defaultMessage="Choose extra identification method:"
-            />
-          </label>
+          <span aria-label="select extra webauthn">
+            <strong>
+              <FormattedMessage
+                description="select extra webauthn"
+                defaultMessage="Choose extra identification method:"
+              />
+            </strong>
+          </span>
           <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
               <div>

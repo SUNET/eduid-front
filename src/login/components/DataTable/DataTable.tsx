@@ -28,9 +28,11 @@ function DataStatus(props: DataStatusProps) {
   }
   if (props.primary) {
     return (
-      <label>
-        <FormattedMessage defaultMessage="primary" description="primary label" />
-      </label>
+      <span>
+        <strong>
+          <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
+        </strong>
+      </span>
     );
   }
   return (
