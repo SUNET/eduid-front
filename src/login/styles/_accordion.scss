@@ -62,6 +62,7 @@
         #{$a}-title {
           font-size: 1.125rem;
           margin-bottom: 0;
+          font-family: $akkurat;
 
           @media (max-width: $bp-md) {
             font-size: 1rem;
