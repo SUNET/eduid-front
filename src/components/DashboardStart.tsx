@@ -33,7 +33,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
           <p className="help-text">
             <FormattedMessage
               description="verification status sub text"
-              defaultMessage="Follow recommendation below."
+              defaultMessage="Please see the recommended actions below."
             />
           </p>
         </div>
