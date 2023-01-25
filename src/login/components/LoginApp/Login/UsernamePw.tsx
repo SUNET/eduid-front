@@ -112,7 +112,7 @@ function UsernameInputPart(): JSX.Element {
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
-        <div className="welcome-back-container">
+        <legend className="welcome-back-container">
           <h2>
             <FormattedMessage
               defaultMessage="Welcome back, {username}!"
@@ -125,7 +125,7 @@ function UsernameInputPart(): JSX.Element {
           <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
-        </div>
+        </legend>
         <FinalField
           required={true}
           disabled={true}
