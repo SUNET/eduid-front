@@ -30,10 +30,10 @@ export default function TextInput(props: TextInputProps) {
   }
 
   return (
-    <FormGroup id={props.input.name}>
+    <FormGroup id={`${props.input.name}-wrapper`}>
       {label && <Label for={props.input.name}>{label}</Label>}
       <Input
-        id={props.name}
+        id={props.input.name}
         valid={valid}
         invalid={invalid}
         type={props.type}
