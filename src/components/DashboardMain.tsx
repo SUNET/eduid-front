@@ -23,7 +23,7 @@ export function DashboardMain() {
   return (
     <React.StrictMode>
       <Header showMenu={true} />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
           <div id="content" className="horizontal-content-margin content">
@@ -43,7 +43,7 @@ export function DashboardMain() {
             </Routes>
           </div>
         </Splash>
-      </section>
+      </main>
       <Footer />
     </React.StrictMode>
   );
