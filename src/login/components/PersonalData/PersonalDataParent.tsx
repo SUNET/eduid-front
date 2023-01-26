@@ -124,7 +124,7 @@ function PersonalDataParent() {
 
   return (
     <article className="personal-data">
-      <div className="intro">
+      <section className="intro">
         <div className="heading">
           <h2>
             <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
@@ -142,7 +142,7 @@ function PersonalDataParent() {
           {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
           {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
         </Fragment>
-      </div>
+      </section>
     </article>
   );
 }

@@ -108,7 +108,7 @@ export function Security(): JSX.Element | null {
   return (
     <article id="security-container">
       <div id="register-security-key-container">
-        <div className="intro">
+        <section className="intro">
           <h2>
             <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
           </h2>
@@ -119,7 +119,7 @@ export function Security(): JSX.Element | null {
                   to prove you are the owner of your eduID.`}
             />
           </p>
-        </div>
+        </section>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable credentials={credentials} />
           <span aria-label="select extra webauthn">

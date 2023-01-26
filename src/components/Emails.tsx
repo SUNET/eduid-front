@@ -112,7 +112,7 @@ function Emails() {
 
   return (
     <article className="emails-view-form-container">
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
         </h2>
@@ -123,7 +123,7 @@ function Emails() {
             description="Add emails description"
           />
         </p>
-      </div>
+      </section>
       <div id="email-display">
         <DataTable
           data={emails.emails}

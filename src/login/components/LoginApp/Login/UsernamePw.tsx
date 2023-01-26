@@ -57,7 +57,7 @@ export default function UsernamePw() {
 
   return (
     <div className="username-pw">
-      <div className="intro">
+      <section className="intro">
         <h1>
           <FormattedMessage defaultMessage="Log in" description="Login front page" />
         </h1>
@@ -65,7 +65,7 @@ export default function UsernamePw() {
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
-      </div>
+      </section>
 
       <FinalForm<UsernamePwFormData>
         id="login-form"

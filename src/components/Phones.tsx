@@ -128,7 +128,7 @@ function Phones() {
 
   return (
     <article className="phone-view-form-container" id="phone">
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
         </h2>
@@ -139,7 +139,7 @@ function Phones() {
             description="Phones long description"
           />
         </p>
-      </div>
+      </section>
       <div id="phone-display">
         <DataTable
           data={phones.phones}

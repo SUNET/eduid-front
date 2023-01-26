@@ -54,11 +54,11 @@ function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Ele
 
   return (
     <article>
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
         </h2>
-      </div>
+      </section>
       <div className="indicator">
         <div className="step finished">
           <FontAwesomeIcon className="icon-unlock" icon={faUser as IconProp} />
@@ -181,11 +181,11 @@ export default function Start(): JSX.Element {
   if (letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
-        <div className="intro">
+        <section className="intro">
           <h2>
             <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
           </h2>
-        </div>
+        </section>
         <LetterProofingProgress letter_proofing={letter_proofing} />
       </article>
     );
@@ -194,7 +194,7 @@ export default function Start(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
-      <div className="intro">
+      <section className="intro">
         <h1>
           <FormattedMessage
             defaultMessage="Welcome, {username}!"
@@ -212,7 +212,7 @@ export default function Start(): JSX.Element {
             />
           </p>
         </div>
-      </div>
+      </section>
       <IdentificationIndicator identities={identities} />
       <Recommendations />
       {progress}

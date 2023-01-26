@@ -192,7 +192,7 @@ export function Recommendations(): JSX.Element | null {
 
   return (
     <article>
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
         </h2>
@@ -202,7 +202,7 @@ export function Recommendations(): JSX.Element | null {
             defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
           />
         </p>
-      </div>
+      </section>
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />
         <RecommendationPhone phones={phones} />

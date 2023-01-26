@@ -6,7 +6,7 @@ import "../login/styles/index.scss";
 export function AccountLinking() {
   return (
     <article id="orcid-connect-container">
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
         </h2>
@@ -16,7 +16,7 @@ export function AccountLinking() {
             description="Dashboard AccountLinking"
           />
         </p>
-      </div>
+      </section>
       <div>
         <Orcid />
       </div>

@@ -15,7 +15,7 @@ export function SignupApp(): JSX.Element {
   const [state] = useActor(signupContext.signupService);
 
   return (
-    <div id="content" className="horizontal-content-margin content">
+    <section id="content" className="horizontal-content-margin content">
       {state.matches("SignupStart") && <SignupStart />}
       {state.matches("AskForEmailAddress.SignupEmailForm") && <SignupEmailForm />}
       {state.matches("HandleCaptchaAndToU.SignupCaptcha") && <SignupCaptcha />}
@@ -29,7 +29,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
       {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
       {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
-    </div>
+    </section>
   );
 }
 

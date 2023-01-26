@@ -8,7 +8,7 @@ export function AccountId(): JSX.Element {
 
   return (
     <article id="uniqueId-container">
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
         </h2>
@@ -18,7 +18,7 @@ export function AccountId(): JSX.Element {
             description="Dashboard AccountId"
           />
         </p>
-      </div>
+      </section>
       <div className="profile-grid-cell">
         <span aria-label={idUserEppn}>
           <strong>

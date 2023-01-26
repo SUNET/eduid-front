@@ -29,7 +29,7 @@ export default function DeleteAccount(): JSX.Element | null {
 
   return (
     <article id="delete-account-container">
-      <div className="intro">
+      <section className="intro">
         <h2>
           <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
         </h2>
@@ -39,7 +39,7 @@ export default function DeleteAccount(): JSX.Element | null {
             description="DeleteAccount"
           />
         </p>
-      </div>
+      </section>
       <EduIDButton
         buttonstyle="link"
         className="lowercase"
