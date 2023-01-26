@@ -136,18 +136,11 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
 
   return (
     <figure className="table-responsive progress-summary">
-      <tbody role="rowgroup">
-        <tr className="border-row" role="row">
-          <td role="cell">
-            <strong>{letterStatus}</strong>
-          </td>
-          <td role="cell">
-            <Link to="verify-identity/#letter-proofing">
-              <FormattedMessage description="link to detail page" defaultMessage="continue verification" />
-            </Link>
-          </td>
-        </tr>
-      </tbody>
+      <strong>{letterStatus}</strong>
+
+      <Link to="verify-identity/#letter-proofing">
+        <FormattedMessage description="link to detail page" defaultMessage="continue verification" />
+      </Link>
     </figure>
   );
 }
