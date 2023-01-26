@@ -130,15 +130,16 @@ input:focus {
     font-size: 1rem;
   }
 
+  /* for orange asterisk after label */
+  & label.required::after {
+    content: " *";
+    color: $txt-orange;
+  }
+
   & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
   }
-}
-
-/* for orange asterisk after label */
-.label-required {
-  color: $txt-orange;
 }
 
 .input-validate-error {

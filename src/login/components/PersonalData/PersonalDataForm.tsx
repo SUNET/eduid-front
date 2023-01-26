@@ -74,11 +74,8 @@ function RenderLanguageSelect(): JSX.Element {
 
   return (
     <fieldset>
-      <legend>
+      <legend className="require">
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
-        <span className="label-required" aria-label="required">
-          *
-        </span>
       </legend>
       <div className="radio-input-container">
         {language_list.map((option: string[], index: number) => {

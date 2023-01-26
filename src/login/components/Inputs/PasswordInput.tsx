@@ -58,7 +58,7 @@ function PasswordInputElement(props: InputProps): JSX.Element {
   }
 
   return (
-    <div className="password-input">
+    <React.Fragment>
       <Input
         {...props.input}
         id={props.input.name}
@@ -81,6 +81,6 @@ function PasswordInputElement(props: InputProps): JSX.Element {
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
       </button>
-    </div>
+    </React.Fragmen>
   );
 }

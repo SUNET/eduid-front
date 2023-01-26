@@ -62,6 +62,7 @@ input.form-control.is-invalid:focus {
   border-color: initial;
   background-image: none;
 }
+
 input.form-control:focus,
 input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
@@ -73,7 +74,6 @@ select {
   padding: 5px;
   border-radius: 3px;
   width: 100%;
-  height: 3rem;
   background-color: $white;
   height: 40px;
   margin-top: 3px;
@@ -89,6 +89,11 @@ fieldset {
 
   legend {
     @extend label;
+  }
+
+  legend.required::after {
+    content: " *";
+    color: $txt-orange;
   }
 }
 
