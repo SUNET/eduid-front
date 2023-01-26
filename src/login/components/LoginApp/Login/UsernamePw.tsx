@@ -76,8 +76,6 @@ export default function UsernamePw() {
             <form onSubmit={formProps.handleSubmit}>
               <fieldset>
                 <UsernameInputPart />
-              </fieldset>
-              <fieldset>
                 <PasswordInput name="current-password" autoComplete="current-password" />
               </fieldset>
 
