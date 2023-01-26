@@ -48,7 +48,7 @@ export default function Splash(props: SplashProps): JSX.Element {
    * and is rendered as long as showChildren is false.
    */
   return (
-    <div id="eduid-splash-and-children" role="progressbar">
+    <div id="eduid-splash-and-children">
       {!showChildren && <span ref={eduidSplash} id="eduid-splash-spinner" role="presentation"></span>}
       {children}
     </div>
