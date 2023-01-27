@@ -27,6 +27,10 @@
     "developer_comment": "Header register",
     "string": "Register"
   },
+  "/Aj3eQ": {
+    "developer_comment": "verification status heading after password reset",
+    "string": "Your identity is no longer verified after password reset."
+  },
   "/DarP+": {
     "developer_comment": "Dashboard AccountId",
     "string": "eppn"
@@ -151,10 +155,6 @@
     "developer_comment": "accordion item security key additional info",
     "string": "Add your security key to enable safe reset of password"
   },
-  "3pVzlc": {
-    "developer_comment": "last step",
-    "string": "Congratulations to completing your identity verification"
-  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
@@ -273,10 +273,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
-  "9phM5a": {
-    "developer_comment": "second step",
-    "string": "Verify your identity"
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -359,10 +355,6 @@
   "ECT4Ho": {
     "developer_comment": "Signup credentials button",
     "string": "Cancel"
-  },
-  "EJjqFG": {
-    "developer_comment": "first step",
-    "string": "Create eduID"
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -634,6 +626,10 @@
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
+  },
+  "O234Pp": {
+    "developer_comment": "verification status heading verified",
+    "string": "Your identity is verified."
   },
   "O2laus": {
     "developer_comment": "accordion item Phone additional info",
@@ -1236,6 +1232,10 @@
   "eidas.token_verify_success": {
     "string": "U2F token verified successfully"
   },
+  "elUO4D": {
+    "developer_comment": "link to detail page",
+    "string": "order a new code"
+  },
   "email.invalid_email": {
     "string": "The entered email is invalid"
   },
@@ -1337,6 +1337,10 @@
   },
   "faq_link": {
     "string": "For more information see the"
+  },
+  "foTEGF": {
+    "developer_comment": "verification status heading unverified",
+    "string": "Your identity is not verified."
   },
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
@@ -1444,10 +1448,6 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
   },
-  "ivDdG3": {
-    "developer_comment": "link to detail page",
-    "string": "continue verification"
-  },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
@@ -1498,6 +1498,10 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
+  },
+  "lZy8ZA": {
+    "developer_comment": "verification status sub text",
+    "string": "Please see the recommended actions below."
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2471,13 +2475,13 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
-  "vEIe+d": {
-    "developer_comment": "finished last step",
-    "string": "To complete the last step, you need to verify a Swedish national ID number"
-  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
+  },
+  "vQpAQz": {
+    "developer_comment": "verification status sub text",
+    "string": "Your eduID is ready to use."
   },
   "value not changed": {
     "string": "The value is not changed"

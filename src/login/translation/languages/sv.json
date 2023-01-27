@@ -27,6 +27,10 @@
     "developer_comment": "Header register",
     "string": "Registrera"
   },
+  "/Aj3eQ": {
+    "developer_comment": "verification status heading after password reset",
+    "string": "Din identitet är inte längre verifierad efter lösenords återställningen."
+  },
   "/DarP+": {
     "developer_comment": "Dashboard AccountId",
     "string": "eppn"
@@ -151,10 +155,6 @@
     "developer_comment": "accordion item security key additional info",
     "string": "Lägg till en säkerhetsnyckel för att aktivera säker återställning av lösenord"
   },
-  "3pVzlc": {
-    "developer_comment": "last step",
-    "string": "Grattis, du har slutfört din identitetsverifiering"
-  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
@@ -273,10 +273,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
   },
-  "9phM5a": {
-    "developer_comment": "second step",
-    "string": "Verifiera din identitet"
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Byt lösenord"
@@ -359,10 +355,6 @@
   "ECT4Ho": {
     "developer_comment": "Signup credentials button",
     "string": "Avbryt"
-  },
-  "EJjqFG": {
-    "developer_comment": "first step",
-    "string": "Skapa eduID"
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -634,6 +626,10 @@
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID-identifierare"
+  },
+  "O234Pp": {
+    "developer_comment": "verification status heading verified",
+    "string": "Din identitet är verifierad."
   },
   "O2laus": {
     "developer_comment": "accordion item Phone additional info",
@@ -1236,6 +1232,10 @@
   "eidas.token_verify_success": {
     "string": "Säkerhetsnyckeln verifierad"
   },
+  "elUO4D": {
+    "developer_comment": "link to detail page",
+    "string": "beställ en ny kod"
+  },
   "email.invalid_email": {
     "string": "Ogiltig e-postadress"
   },
@@ -1337,6 +1337,10 @@
   },
   "faq_link": {
     "string": "För mer information, se "
+  },
+  "foTEGF": {
+    "developer_comment": "verification status heading unverified",
+    "string": "Din identitet är inte verifierad."
   },
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
@@ -1444,10 +1448,6 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "Skriv in koden som skickats till {phone}"
   },
-  "ivDdG3": {
-    "developer_comment": "link to detail page",
-    "string": "fortsätta verifieringen"
-  },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "Jag accepterar"
@@ -1498,6 +1498,10 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Försök igen"
+  },
+  "lZy8ZA": {
+    "developer_comment": "verification status sub text",
+    "string": "Vänligen se rekommenderade åtgärder nedan."
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2471,13 +2475,13 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
   },
-  "vEIe+d": {
-    "developer_comment": "finished last step",
-    "string": "För att slutföra det sista steget behöver du verifiera ett svenskt personnummer"
-  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Välj ett extra säkerhetsalternativ"
+  },
+  "vQpAQz": {
+    "developer_comment": "verification status sub text",
+    "string": "Ditt eduID är redo att användas."
   },
   "value not changed": {
     "string": "Värdet är inte ändrat"
