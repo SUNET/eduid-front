@@ -7,9 +7,9 @@ interface NameDisplayProps {
 export default function NameDisplay({ label, name, htmlFor }: NameDisplayProps) {
   return (
     <div className="profile-grid-cell">
-      <span aria-label={htmlFor}>
+      <label aria-label={htmlFor}>
         <strong>{label}</strong>
-      </span>
+      </label>
       <output id={htmlFor} className="display-data verified">
         {name}
       </output>
