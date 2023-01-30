@@ -121,12 +121,16 @@
 
   display: flex;
 
+  a {
+    font-size: 0.9rem;
+  }
+
   @media (max-width: $bp-sm) {
     flex-direction: column;
     text-align: left;
   }
 }
 
-.data-container :first-child {
-  margin-right: 1.5rem;
+.data-container :last-child {
+  margin-left: 2rem;
 }
