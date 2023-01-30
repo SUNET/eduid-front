@@ -33,9 +33,8 @@ test("renders label text when emails primary state is true", () => {
       },
     },
   });
-  const cell = screen.getAllByRole("cell");
-  expect(cell)[0].toBeEnabled();
-  expect(screen.getByText("primary")).toBeInTheDocument();
+  const cellPrimary = screen.getByRole("cell", { name: /primary/i });
+  expect(cellPrimary).toBeEnabled();
 });
 
 test("renders make primary button when emails state verified is true", () => {
