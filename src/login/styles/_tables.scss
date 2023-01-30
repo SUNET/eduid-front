@@ -90,6 +90,10 @@ table {
         padding-left: 1rem;
         padding-right: 1rem;
       }
+
+      & td:last-child {
+        text-align: center;
+      }
     }
 
     & tr.webauthn-token-holder.verified {
