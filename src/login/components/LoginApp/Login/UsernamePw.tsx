@@ -122,7 +122,7 @@ function UsernameInputPart(): JSX.Element {
               }}
             />
           </h2>
-          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+          <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
         </legend>
