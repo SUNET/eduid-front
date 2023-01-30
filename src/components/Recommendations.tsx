@@ -192,17 +192,15 @@ export function Recommendations(): JSX.Element | null {
 
   return (
     <article>
-      <section className="intro">
-        <h2>
-          <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
-        </h2>
-        <p>
-          <FormattedMessage
-            description="recommendation title"
-            defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
-          />
-        </p>
-      </section>
+      <h2>
+        <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
+      </h2>
+      <p>
+        <FormattedMessage
+          description="recommendation title"
+          defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
+        />
+      </p>
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />
         <RecommendationPhone phones={phones} />
