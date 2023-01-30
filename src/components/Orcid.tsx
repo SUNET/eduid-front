@@ -56,8 +56,19 @@ export function Orcid(): JSX.Element {
     );
   } else {
     return (
-      <figure className="table-form orcid" role="presentation">
+      <table className="table-form orcid" role="presentation">
         <tbody>
+          <tr className="display-none">
+            <th>
+              <FormattedMessage description="orcid logo" defaultMessage="orcid logo" />
+            </th>
+            <th>
+              <FormattedMessage description="orcid id" defaultMessage="orcid id" />
+            </th>
+            <th>
+              <FormattedMessage description="orcid remove" defaultMessage="remove" />
+            </th>
+          </tr>
           <tr>
             <td>
               <span className="orcid-logo" />
@@ -76,7 +87,7 @@ export function Orcid(): JSX.Element {
             </td>
           </tr>
         </tbody>
-      </figure>
+      </table>
     );
   }
 }
