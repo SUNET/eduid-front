@@ -17,7 +17,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
       <figure className="verification-status unverified">
         <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
         <div>
-          <h6>
+          <h3>
             {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
               <FormattedMessage
                 description="verification status heading unverified"
@@ -29,7 +29,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
                 defaultMessage="Your identity is no longer verified after password reset."
               />
             )}
-          </h6>
+          </h3>
           <p className="help-text">
             <FormattedMessage
               description="verification status sub text"
@@ -41,7 +41,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     );
   }
   return (
-    <figure className="verification-status verified">
+    <div className="verification-status verified">
       <FontAwesomeIcon icon={faCircleCheck as IconProp} />
       <div>
         <h6>
@@ -54,7 +54,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
           <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
         </p>
       </div>
-    </figure>
+    </div>
   );
 }
 
@@ -78,22 +78,12 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
     );
 
   return (
-    <figure className="table-responsive progress-summary">
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <strong>{letterStatus}</strong>
-            </td>
-            <td>
-              <Link to="verify-identity/#letter-proofing">
-                <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
-              </Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
+    <div className="data-container">
+      <strong>{letterStatus}</strong>
+      <Link to="verify-identity/#letter-proofing">
+        <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
+      </Link>
+    </div>
   );
 }
 
@@ -165,12 +155,13 @@ export default function Start(): JSX.Element {
           </p>
         </div>
       </section>
-      <div className="intro">
-        <h3>
+      <article className="intro">
+        <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
-        </h3>
-      </div>
-      <VerificationProgress identities={identities} />
+        </h2>
+
+        <VerificationProgress identities={identities} />
+      </article>
       <Recommendations />
       {progress}
     </React.Fragment>
