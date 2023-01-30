@@ -121,6 +121,10 @@ table {
         }
       }
     }
+
+    & tr.display-none {
+      display: none;
+    }
   }
 
   .identity-summary &,
