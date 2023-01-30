@@ -31,7 +31,11 @@ export default function TextInput(props: TextInputProps) {
 
   return (
     <FormGroup id={`${props.input.name}-wrapper`}>
-      {label && <Label for={props.input.name}>{label}</Label>}
+      {label && (
+        <Label for={props.input.name} aria-label={props.input.name}>
+          {label}
+        </Label>
+      )}
       <Input
         id={props.input.name}
         valid={valid}
@@ -40,7 +44,6 @@ export default function TextInput(props: TextInputProps) {
         {...props.input}
         disabled={props.disabled}
         autoComplete={props.autoComplete}
-        aria-labelledby={props.input.name}
       />
       {help}
     </FormGroup>
