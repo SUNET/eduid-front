@@ -66,20 +66,17 @@ function EmailForm() {
 
         return (
           <form id="register-form" onSubmit={formProps.handleSubmit}>
-            <fieldset>
-              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
-
-              <div className="buttons">
-                <EduIDButton
-                  buttonstyle="primary"
-                  id="register-button"
-                  disabled={_disabled}
-                  onClick={formProps.handleSubmit}
-                >
-                  <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
-                </EduIDButton>
-              </div>
-            </fieldset>
+            <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+            <div className="buttons">
+              <EduIDButton
+                buttonstyle="primary"
+                id="register-button"
+                disabled={_disabled}
+                onClick={formProps.handleSubmit}
+              >
+                <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
+              </EduIDButton>
+            </div>
           </form>
         );
       }}
