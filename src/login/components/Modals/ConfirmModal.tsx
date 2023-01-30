@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import EduIDButton from "../../../components/EduIDButton";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import EduIDButton from "../../../components/EduIDButton";
 import CustomInput from "../Inputs/CustomInput";
-import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface ConfirmModalProps {
   id: string;
@@ -30,7 +30,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
   }
 
   return (
-    <div tabIndex={-1} role="dialog" aria-labelledby="askDialogPrompt" aria-hidden="true" data-backdrop="true">
+    <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
       <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
         <ModalHeader>
           {props.title}
