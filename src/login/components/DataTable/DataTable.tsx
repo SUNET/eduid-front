@@ -85,11 +85,22 @@ function DataTableRows(props: DataTableProps) {
 function DataTable(props: DataTableProps) {
   return (
     <div className="table-responsive">
-      <figure className="table-form" role="presentation">
+      <table className="table-form" role="presentation">
         <tbody>
+          <tr className="display-none">
+            <th>
+              <FormattedMessage description="name" defaultMessage="name" />
+            </th>
+            <th>
+              <FormattedMessage description="status" defaultMessage="status" />
+            </th>
+            <th>
+              <FormattedMessage description="remove" defaultMessage="remove" />
+            </th>
+          </tr>
           <DataTableRows {...props} />
         </tbody>
-      </figure>
+      </table>
     </div>
   );
 }
