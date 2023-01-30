@@ -108,18 +108,16 @@ export function Security(): JSX.Element | null {
   return (
     <article id="security-container">
       <div id="register-security-key-container">
-        <section className="intro">
-          <h2>
-            <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
-          </h2>
-          <p>
-            <FormattedMessage
-              description="security second factor"
-              defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
+        <h2>
+          <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
+        </h2>
+        <p>
+          <FormattedMessage
+            description="security second factor"
+            defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
                   to prove you are the owner of your eduID.`}
-            />
-          </p>
-        </section>
+          />
+        </p>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable credentials={credentials} />
           <span aria-label="select extra webauthn">

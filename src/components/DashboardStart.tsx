@@ -123,11 +123,9 @@ export default function Start(): JSX.Element {
   if (letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
-        <section className="intro">
-          <h2>
-            <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
-          </h2>
-        </section>
+        <h2>
+          <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
+        </h2>
         <LetterProofingProgress letter_proofing={letter_proofing} />
       </article>
     );

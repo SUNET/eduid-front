@@ -128,18 +128,16 @@ function Phones() {
 
   return (
     <article className="phone-view-form-container" id="phone">
-      <section className="intro">
-        <h2>
-          <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
-        </h2>
-        <p>
-          <FormattedMessage
-            defaultMessage={`You can connect one or more mobile phone numbers to your eduID,
+      <h2>
+        <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
+      </h2>
+      <p>
+        <FormattedMessage
+          defaultMessage={`You can connect one or more mobile phone numbers to your eduID,
             but one has to be set as primary.`}
-            description="Phones long description"
-          />
-        </p>
-      </section>
+          description="Phones long description"
+        />
+      </p>
       <div id="phone-display">
         <DataTable
           data={phones.phones}

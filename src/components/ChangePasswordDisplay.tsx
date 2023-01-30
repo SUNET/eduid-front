@@ -24,17 +24,15 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   return (
     <article>
       <div id="change-password-container">
-        <section className="intro">
-          <h2>
-            <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
-          </h2>
-          <p>
-            <FormattedMessage
-              defaultMessage="Click the link to change your eduID password."
-              description="Dashboard change password link description text"
-            />
-          </p>
-        </section>
+        <h2>
+          <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
+        </h2>
+        <p>
+          <FormattedMessage
+            defaultMessage="Click the link to change your eduID password."
+            description="Dashboard change password link description text"
+          />
+        </p>
         <EduIDButton
           id="security-change-button"
           buttonstyle="link"

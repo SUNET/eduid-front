@@ -92,7 +92,7 @@ function VerifyIdentityIntro(): JSX.Element {
             </p>
           </div>
         </section>
-        <section>
+        <article>
           <h2>
             <FormattedMessage
               description="verify identity verified description"
@@ -100,7 +100,7 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </h2>
           <VerifiedIdentitiesTable />
-        </section>
+        </article>
       </React.Fragment>
     );
   }
@@ -124,7 +124,7 @@ function VerifyIdentityIntro(): JSX.Element {
           </p>
         </div>
       </section>
-      <section>
+      <article>
         <h2>
           <FormattedMessage
             description="verify identity non verified description"
@@ -136,7 +136,7 @@ function VerifyIdentityIntro(): JSX.Element {
           <AccordionItemEu />
           <AccordionItemWorld />
         </Accordion>
-      </section>
+      </article>
     </React.Fragment>
   );
 }

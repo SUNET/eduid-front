@@ -124,25 +124,23 @@ function PersonalDataParent() {
 
   return (
     <article className="personal-data">
-      <section className="intro">
-        <div className="heading">
-          <h2>
-            <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
-          </h2>
-          <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
-        </div>
-        <p>
-          <FormattedMessage
-            description="pd long description"
-            defaultMessage="This information may be used to personalise services that you access with your eduID."
-          />
-        </p>
-        <Fragment>
-          {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
-          {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
-          {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
-        </Fragment>
-      </section>
+      <div className="heading">
+        <h2>
+          <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
+        </h2>
+        <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
+      </div>
+      <p>
+        <FormattedMessage
+          description="pd long description"
+          defaultMessage="This information may be used to personalise services that you access with your eduID."
+        />
+      </p>
+      <Fragment>
+        {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
+        {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
+        {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
+      </Fragment>
     </article>
   );
 }

@@ -112,18 +112,16 @@ function Emails() {
 
   return (
     <article className="emails-view-form-container">
-      <section className="intro">
-        <h2>
-          <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
-        </h2>
-        <p>
-          <FormattedMessage
-            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be
+      <h2>
+        <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
+      </h2>
+      <p>
+        <FormattedMessage
+          defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be
             your primary email address.`}
-            description="Add emails description"
-          />
-        </p>
-      </section>
+          description="Add emails description"
+        />
+      </p>
       <div id="email-display">
         <DataTable
           data={emails.emails}

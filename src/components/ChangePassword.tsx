@@ -31,15 +31,13 @@ function ChangePassword() {
   //       before this is merged after the holidays.
   return (
     <React.Fragment>
-      <section className="intro">
-        <h4>
-          <FormattedMessage
-            id="chpass.main_title"
-            defaultMessage="Change your current password"
-            description="Dashboard change password"
-          />
-        </h4>
-      </section>
+      <h4>
+        <FormattedMessage
+          id="chpass.main_title"
+          defaultMessage="Change your current password"
+          description="Dashboard change password"
+        />
+      </h4>
       <div id="changePasswordDialog">
         <ChangePasswordForm finish_url={finish_url} />
       </div>
