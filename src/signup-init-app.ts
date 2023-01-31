@@ -8,21 +8,19 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import createSagaMiddleware from "redux-saga";
 import notifyAndDispatch from "./notify-middleware";
-import rootSaga from "./signup-root-saga";
+// import rootSaga from "./signup-root-saga";
 import eduIDApp from "./signup-store";
 
 /* setup to run the combined sagas */
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, notifyAndDispatch, logger];
+// const sagaMiddleware = createSagaMiddleware();
+const middlewares = [notifyAndDispatch, logger];
 
 export const signupStore = configureStore({
   reducer: eduIDApp,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
   devTools: process.env.NODE_ENV !== "production",
 });
-sagaMiddleware.run(rootSaga);
 
 // The same thing again, for use in tests
 export function getTestSignupStore(preloadedState: Partial<SignupRootState>) {
@@ -32,7 +30,6 @@ export function getTestSignupStore(preloadedState: Partial<SignupRootState>) {
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,
   });
-  sagaMiddleware.run(rootSaga);
   return testStore;
 }
 
