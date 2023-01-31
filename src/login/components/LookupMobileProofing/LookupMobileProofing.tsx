@@ -1,12 +1,13 @@
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
+import { fetchIdentities } from "apis/eduidPersonalData";
+import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { HashLink } from "react-router-hash-link";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
-import { HashLink } from "react-router-hash-link";
-import EduIDButton from "components/EduIDButton";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
@@ -31,11 +32,13 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
     dispatch(clearNotifications());
     setShowModal(false);
   }
-  function handleLookupMobile() {
+  async function handleLookupMobile() {
     setShowModal(false);
-
     if (nin && !nin.verified) {
-      dispatch(lookupMobileProofing(nin.number));
+      const response = await dispatch(lookupMobileProofing(nin.number));
+      if (lookupMobileProofing.rejected.match(response)) {
+        dispatch(fetchIdentities());
+      }
     }
   }
 
