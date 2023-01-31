@@ -11,10 +11,12 @@ form .react-select {
       color: $txt-gray;
     }
   }
+
   &__control:hover {
     border: 2px solid $txt-gray;
     box-shadow: none;
   }
+
   &__control--is-focused {
     box-shadow: none;
   }
@@ -24,13 +26,14 @@ form .react-select {
   }
 
   &__placeholder {
-    font-family: "ProximaNova-Regular";
+    font-family: $proxima-regular;
     color: $txt-black;
   }
 
   &__option--is-focused {
     background-color: $bg-orange;
   }
+
   &__option--is-selected {
     color: initial;
     background-color: darken($bg-orange, 5%);

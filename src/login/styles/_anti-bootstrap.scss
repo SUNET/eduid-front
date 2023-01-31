@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "./variables";
 
 .single-input-form .form-group {
   margin-bottom: 0;
@@ -12,7 +12,7 @@
 .form-control,
 input {
   background-color: white;
-  font-family: ProximaNova-Regular;
+  font-family: $proxima-regular;
   font-size: 1.5rem;
   font-weight: 500;
   color: $txt-black;

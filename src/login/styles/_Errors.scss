@@ -5,7 +5,7 @@
 
   & span {
     line-height: 1.5;
-    font-family: ProximaNova-bold;
+    font-family: $proxima-bold;
     font-size: 1.5rem;
   }
 
@@ -21,7 +21,7 @@
       li:nth-child(5) {
         list-style-type: disc;
         margin-top: 1rem;
-        font-family: ProximaNova-bold;
+        font-family: $proxima-bold;
       }
 
       li:nth-child(even) {
@@ -32,11 +32,11 @@
 
   & li {
     line-height: 1.5;
-    font-family: ProximaNova-Regular;
+    font-family: $proxima-regular;
   }
 
   & .technical-info-heading span {
-    font-family: ProximaNova-Bold;
+    font-family: $proxima-bold;
     font-size: 1.25rem;
   }
 
@@ -55,7 +55,7 @@
 
       p:first-child {
         text-transform: uppercase;
-        font-family: ProximaNova-Bold;
+        font-family: $proxima-bold;
         width: 8.125rem;
         padding-right: 1rem;
       }

@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "./variables";
 
 // Top notification bar
 .notifications-area {
@@ -58,6 +58,7 @@
 }
 
 // Speach-bubbletip
+
 /* Wrapping */
 .speech-bubbletip-wrapper {
   display: inline-block;
@@ -72,12 +73,11 @@
   left: calc(50%);
   transform: translateX(-50%);
   transform: translateX(-50%);
-  transform: translateX(-50%);
   padding: 6px;
   color: $white;
   background: $txt-black;
   font-size: 0.875rem;
-  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  font-family: $proxima-regular;
   line-height: 1;
   z-index: 10;
   white-space: nowrap;
