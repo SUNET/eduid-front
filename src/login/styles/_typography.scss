@@ -12,7 +12,7 @@ h5,
   margin-top: 0;
   margin-bottom: 1em;
   line-height: 1.2;
-  font-family: ProximaNova-Bold;
+  font-family: $proxima-bold;
 
   @media (max-width: $bp-md) {
     word-wrap: break-word;
@@ -22,7 +22,7 @@ h5,
 
 h1 {
   font-size: 1.8rem;
-  font-family: ProximaNova-Regular;
+  font-family: $proxima-regular;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 
