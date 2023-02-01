@@ -8,21 +8,18 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./dashboard-root-saga";
 import eduIDApp from "./dashboard-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, notifyAndDispatch, logger];
+// const sagaMiddleware = createSagaMiddleware();
+const middlewares = [notifyAndDispatch, logger];
 
 export const dashboardStore = configureStore({
   reducer: eduIDApp,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
   devTools: process.env.NODE_ENV !== "production",
 });
-sagaMiddleware.run(rootSaga);
 
 // The same thing again, for use in tests
 export function getTestDashboardStore(preloadedState: Partial<DashboardRootState>) {
@@ -32,7 +29,6 @@ export function getTestDashboardStore(preloadedState: Partial<DashboardRootState
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,
   });
-  sagaMiddleware.run(rootSaga);
   return testStore;
 }
 
