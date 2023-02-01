@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchAllPersonalData, PersonalDataRequest, postPersonalData } from "apis/eduidPersonalData";
+import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
 
 // export for use in tests
 export const initialState: PersonalDataRequest = {};
@@ -10,7 +10,7 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataRequest>) => {
+      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataRequest>) => {
         state.eppn = action.payload.eppn;
         state.given_name = action.payload.given_name;
         state.surname = action.payload.surname;

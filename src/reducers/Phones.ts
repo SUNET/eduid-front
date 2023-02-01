@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchAllPersonalData } from "apis/eduidPersonalData";
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 import {
   PhoneInfo,
   PhonesResponse,
@@ -40,7 +40,7 @@ const phonesSlice = createSlice({
       .addCase(requestMakePrimaryPhone.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
       })
-      .addCase(fetchAllPersonalData.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
+      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
       });
   },

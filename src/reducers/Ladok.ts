@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllPersonalData } from "apis/eduidPersonalData";
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { fetchLadokUniversities, LadokData, LadokUniversityData, linkUser, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
@@ -37,7 +37,7 @@ const ladokSlice = createSlice({
         state.ladokName = undefined;
         state.isLinked = false;
       })
-      .addCase(fetchAllPersonalData.fulfilled, (state, action) => {
+      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
         if (action.payload.ladok !== undefined) {
           state.data = action.payload.ladok;
           state.ladokName = state.data.university.ladok_name;
