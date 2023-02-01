@@ -1,6 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES } from "globals";
@@ -8,9 +9,6 @@ import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
 import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { PersonalDataData } from "reducers/PersonalData";
-import { getInitialUserData } from "sagas/PersonalData";
-import { postUserdata } from "../../../actions/PersonalData";
 import EduIDButton from "../../../components/EduIDButton";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
@@ -27,13 +25,13 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const dispatch = useDashboardAppDispatch();
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
 
-  function formSubmit(values: PersonalDataData) {
-    dispatch(postUserdata(values));
+  function formSubmit(values: PersonalDataRequest) {
+    dispatch(postPersonalData(values));
     props.setEditMode(false); // tell parent component we're done editing
   }
 
   return (
-    <FinalForm<PersonalDataData>
+    <FinalForm<PersonalDataRequest>
       initialValues={personal_data}
       validate={validatePersonalData}
       onSubmit={formSubmit}
@@ -109,7 +107,8 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
     if (updateOfficialUserData.fulfilled.match(response)) {
-      dispatch(getInitialUserData());
+      // dispatch(getInitialUserData());
+      dispatch(requestAllPersonalData());
     }
   }
 
