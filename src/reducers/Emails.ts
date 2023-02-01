@@ -1,31 +1,22 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  requestRemoveEmail,
+  EmailsResponse,
   postNewEmail,
+  requestMakePrimaryEmail,
+  requestRemoveEmail,
   requestResendEmailCode,
   requestVerifyEmail,
-  requestMakePrimaryEmail,
-  EmailsResponse,
-  EmailInfo,
 } from "apis/eduidEmail";
+import { fetchAllPersonalData } from "apis/eduidPersonalData";
 
 export const initialState: EmailsResponse = {
   emails: [],
 };
 
-export function emailsStateFromEmailList(emails: EmailInfo[]): EmailsResponse {
-  return { emails: emails };
-}
-
 const emailsSlice = createSlice({
   name: "emails",
   initialState,
-  reducers: {
-    setEmails: (state, action: PayloadAction<EmailInfo[]>) => {
-      // Update emails in state. Called after bulk-fetch of personal data.
-      return emailsStateFromEmailList(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
@@ -41,6 +32,9 @@ const emailsSlice = createSlice({
         state.emails = action.payload.emails;
       })
       .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
+        state.emails = action.payload.emails;
+      })
+      .addCase(fetchAllPersonalData.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       });
   },

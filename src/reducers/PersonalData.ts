@@ -1,36 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import * as actions from "actions/PersonalData";
-
-export interface PersonalDataData {
-  eppn?: string;
-  given_name?: string;
-  surname?: string;
-  display_name?: string;
-  language?: string;
-  message?: string;
-}
+import { fetchAllPersonalData, PersonalDataRequest, postPersonalData } from "apis/eduidPersonalData";
 
 // export for use in tests
-export const initialState: PersonalDataData = {};
+export const initialState: PersonalDataRequest = {};
 
 const personalDataSlice = createSlice({
   name: "pdata",
   initialState,
-  reducers: {
-    updatePersonalData: (state, action: PayloadAction<PersonalDataData>) => {
-      return {
-        eppn: state.eppn,
-        ...action.payload,
-      };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(actions.GET_ALL_USERDATA_FAIL, (state, action) => {
-        state.message = action.payload.message;
+      .addCase(fetchAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataRequest>) => {
+        state.eppn = action.payload.eppn;
+        state.given_name = action.payload.given_name;
+        state.surname = action.payload.surname;
+        state.display_name = action.payload.display_name;
+        state.language = action.payload.language;
       })
-      .addCase(actions.postUserdataFail, (state, action) => {
-        state.message = action.payload.message;
+      .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataRequest>) => {
+        state.eppn = action.payload.eppn;
+        state.given_name = action.payload.given_name;
+        state.surname = action.payload.surname;
+        state.display_name = action.payload.display_name;
+        state.language = action.payload.language;
       });
   },
 });
