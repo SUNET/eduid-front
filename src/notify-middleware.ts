@@ -1,7 +1,7 @@
 import { showNotification } from "reducers/Notifications";
 
 showNotification;
-const notifyAndDispatch = () => (next) => (action) => {
+const notifyAndDispatch = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
     if (action.error && action.payload) {
       if (action.payload.error && action.payload.error.csrf_token !== undefined) {

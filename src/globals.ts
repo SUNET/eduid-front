@@ -5,7 +5,7 @@ import { messages } from "login/translation/messages";
  *
  * TypeScript this as const _available_languages = AVAILABLE_LANGUAGES as { [key: string]: string }
  * */
-export const AVAILABLE_LANGUAGES = {
+export const AVAILABLE_LANGUAGES: { [key: string]: string } = {
   en: "English",
   sv: "Svenska",
 };
