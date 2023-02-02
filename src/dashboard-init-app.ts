@@ -12,7 +12,6 @@ import eduIDApp from "./dashboard-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
-// const sagaMiddleware = createSagaMiddleware();
 const middlewares = [notifyAndDispatch, logger];
 
 export const dashboardStore = configureStore({

@@ -9,11 +9,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import notifyAndDispatch from "./notify-middleware";
-// import rootSaga from "./signup-root-saga";
 import eduIDApp from "./signup-store";
 
 /* setup to run the combined sagas */
-// const sagaMiddleware = createSagaMiddleware();
 const middlewares = [notifyAndDispatch, logger];
 
 export const signupStore = configureStore({
