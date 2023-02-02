@@ -687,6 +687,10 @@
     "developer_comment": "Verification letter requested",
     "string": "Verifieringsbrev har begärts"
   },
+  "Pnu06c": {
+    "developer_comment": "status",
+    "string": "status"
+  },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Lösenordet har uppdaterats"
@@ -698,6 +702,10 @@
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Aldrig använd"
+  },
+  "Qa3Xhm": {
+    "developer_comment": "orcid id",
+    "string": "orcid id"
   },
   "Qgc9l0": {
     "developer_comment": "Login MFA heading",
@@ -779,6 +787,10 @@
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
     "string": "T.ex. USB säkerhetsnyckel."
+  },
+  "TdlNku": {
+    "developer_comment": "name",
+    "string": "namn"
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
@@ -934,6 +946,10 @@
     "developer_comment": "username input field label",
     "string": "Användarnamn"
   },
+  "ZiRNyI": {
+    "developer_comment": "remove",
+    "string": "ta bort"
+  },
   "ZkDePR": {
     "developer_comment": "eidas freja instructions step4",
     "string": "Gå till närmsta ombud, visa giltigt ID tillsammans med QR-koden i din telefon och låt dem bevisa din identitet"
@@ -967,6 +983,10 @@
   },
   "add_nin.main_title": {
     "string": "Lägg till ditt personnummer"
+  },
+  "aisFdT": {
+    "developer_comment": "orcid logo",
+    "string": "orcid logo"
   },
   "al9vbk": {
     "developer_comment": "accordion item Verification",
@@ -1018,6 +1038,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Framåt"
+  },
+  "cRNzAJ": {
+    "developer_comment": "orcid remove",
+    "string": "ta bort"
   },
   "captcha.one-step-left": {
     "string": "Bara en sak till!"
@@ -1174,6 +1198,10 @@
   "eLbkSr": {
     "developer_comment": "Signup",
     "string": "eduID måste verifiera att du är en människa och inte en maskin."
+  },
+  "ebsFfU": {
+    "developer_comment": "primary label",
+    "string": "PRIMÄR"
   },
   "eidas.authn_context_mismatch": {
     "string": "Mottog fel representation av tillitsnivå"
@@ -2183,6 +2211,12 @@
     "developer_comment": "verify identity",
     "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Svipe ID verifierar din identitet mot eduID."
   },
+  "security key remove": {
+    "string": "Ta bort"
+  },
+  "security key status": {
+    "string": "Status"
+  },
   "security last used": {
     "string": "Senast använd"
   },
@@ -2466,10 +2500,6 @@
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "Följande identiteter är nu kopplade till ditt eduID"
-  },
-  "v/ccFv": {
-    "developer_comment": "primary label",
-    "string": "Primär"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
