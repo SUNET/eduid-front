@@ -27,7 +27,7 @@ export function AdvancedSettings(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faGears} currentPage={currentPage} />
-      <div className="intro">
+      <section className="intro">
         <h1>
           <FormattedMessage description="advanced settings main title" defaultMessage="Enhance your eduID" />
         </h1>
@@ -39,7 +39,7 @@ export function AdvancedSettings(): JSX.Element {
             />
           </p>
         </div>
-      </div>
+      </section>
       <Security />
       <AccountLinking />
       <LadokContainer />

@@ -271,3 +271,13 @@ button.icon-only {
     padding: 0;
   }
 }
+
+// a link focus
+// a:focus {
+//   box-shadow: 0 0 0 1px #f9f9d1, 0 0 0 2px #396196, 0 0 2px 4px #f9f9d1 !important;
+// }
+
+.btn-close.btn-sm:focus,
+.header-user:focus {
+  background-color: $body-gray !important;
+}

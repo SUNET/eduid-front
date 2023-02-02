@@ -28,7 +28,7 @@ export function Settings(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
-      <div className="intro">
+      <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />
         </h1>
@@ -40,7 +40,7 @@ export function Settings(): JSX.Element {
             />
           </p>
         </div>
-      </div>
+      </section>
       <PersonalDataParent />
       <Emails />
       <Phones />

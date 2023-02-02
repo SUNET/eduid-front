@@ -2,7 +2,7 @@ import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
@@ -56,9 +56,11 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 export function NinDisplay(props: NinDisplayProps) {
   return (
     <div className="profile-grid-cell x-adjust">
-      <label htmlFor="id number">
-        <FormattedMessage description="nin label" defaultMessage="Id number" />
-      </label>
+      <span aria-label="id number">
+        <strong>
+          <FormattedMessage description="nin label" defaultMessage="Id number" />
+        </strong>
+      </span>
       {!props.nin ? (
         // if there is no NIN, render a link to verify-identity
         <Link to={`/profile/verify-identity/`} className="display-data unverified">

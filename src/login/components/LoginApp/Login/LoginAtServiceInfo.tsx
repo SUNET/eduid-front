@@ -1,6 +1,5 @@
 import { ServiceInfo } from "apis/eduidLogin";
 import { useAppSelector } from "login/app_init/hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 interface LoginAtServiceInfoProps {
@@ -29,15 +28,13 @@ export function LoginAtServiceInfo(props: LoginAtServiceInfoProps): JSX.Element 
   }
 
   return (
-    <>
-      <p>
-        <FormattedMessage
-          defaultMessage="Use eduID to access {service_name}"
-          values={{
-            service_name: <strong>{service_name}</strong>,
-          }}
-        />
-      </p>
-    </>
+    <h2>
+      <FormattedMessage
+        defaultMessage="Use eduID to access {service_name}"
+        values={{
+          service_name: <strong>{service_name}</strong>,
+        }}
+      />
+    </h2>
   );
 }
