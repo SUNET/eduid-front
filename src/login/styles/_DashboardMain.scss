@@ -116,6 +116,10 @@
   }
 }
 
+.data-container :last-child {
+  margin-left: 2rem;
+}
+
 .data-container {
   @extend figure;
 
@@ -128,9 +132,9 @@
   @media (max-width: $bp-sm) {
     flex-direction: column;
     text-align: left;
-  }
-}
 
-.data-container :last-child {
-  margin-left: 2rem;
+    & :last-child {
+      margin-left: 0;
+    }
+  }
 }
