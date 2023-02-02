@@ -4,10 +4,10 @@ import { DashboardMain } from "components/DashboardMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { dashboardStore } from "dashboard-init-app";
 import { DASHBOARD_CONFIG_URL } from "globals";
-import { appLoaded } from "login/components/App/App_actions";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { appLoadingSlice } from "reducers/AppLoading";
 import { showNotification } from "reducers/Notifications";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
@@ -18,7 +18,7 @@ const getConfig = async function () {
   if (fetchJsConfig.fulfilled.match(result)) {
     const response = await dashboardStore.dispatch(requestAllPersonalData());
     if (requestAllPersonalData.fulfilled.match(response)) {
-      dashboardStore.dispatch(appLoaded());
+      dashboardStore.dispatch(appLoadingSlice.actions.appLoaded());
     }
   }
 
