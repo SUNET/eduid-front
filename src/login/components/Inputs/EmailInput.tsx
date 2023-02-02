@@ -1,8 +1,7 @@
 import { validateEmailField } from "login/app_utils/validation/validateEmail";
-import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import CustomInput from "./CustomInput";
 
 // exported for use in tests
@@ -56,7 +55,7 @@ export default function EmailInput(props: EmailInputProps): JSX.Element {
       defaultValue={props.defaultValue}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={translate("profile.email_display_title")}
+      label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}
     />
   );
 }

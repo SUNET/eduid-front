@@ -1,7 +1,6 @@
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-// import { translate } from "login/translation";
 import EduIDButton from "components/EduIDButton";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";
