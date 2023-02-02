@@ -221,6 +221,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "6zx8wo": {
+    "developer_comment": "mfa reset password tapit",
+    "string": "Use your security key to reset password. If it has a button, tap it."
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
@@ -236,6 +240,10 @@
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "You are not logged in, or the session expired."
+  },
+  "86/PBW": {
+    "developer_comment": "chpass suggested password",
+    "string": "Suggested password"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -256,6 +264,10 @@
   "95u9Rj": {
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
+  },
+  "96x/52": {
+    "developer_comment": "verify identity vetting explanation only available swe number",
+    "string": "Only possible with Swedish phone number"
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
@@ -477,6 +489,10 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
   },
+  "HxoxjV": {
+    "developer_comment": "verify identity vetting explanation confirm phone number",
+    "string": "Confirm your phone number in"
+  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
@@ -566,6 +582,10 @@
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Add"
+  },
+  "LolQ90": {
+    "developer_comment": "mfa problems heading",
+    "string": "Problems?"
   },
   "LuSrd4": {
     "developer_comment": "Signup",
@@ -695,9 +715,17 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
   },
+  "PxROOc": {
+    "developer_comment": "help text for custom password label",
+    "string": "Tip: Choose a strong password"
+  },
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Code"
+  },
+  "Q8CeJV": {
+    "developer_comment": "mfa try again",
+    "string": "Try again"
   },
   "QLJcC4": {
     "developer_comment": "security last used date",
@@ -780,6 +808,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "with a digital ID-card"
   },
+  "T9+zD2": {
+    "developer_comment": "chpass form custom password repeat",
+    "string": "Repeat new password"
+  },
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
@@ -830,6 +862,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
   },
+  "VFhU1F": {
+    "developer_comment": "verify identity vetting phone tagline",
+    "string": "For Swedish phone numbers entered and confirmed in eduID."
+  },
   "VL/TNV": {
     "developer_comment": "ToU button cancel",
     "string": "Cancel"
@@ -857,6 +893,10 @@
   "VwFaJg": {
     "developer_comment": "verify identity",
     "string": "If you have a {Svipe_ID} you can connect it to your eduID."
+  },
+  "VxlVeE": {
+    "developer_comment": "verify identity vetting explanation add phone number",
+    "string": "Start by adding your Swedish phone number in"
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -1049,6 +1089,16 @@
   "chpass.different-repeat": {
     "string": "The two passwords are different"
   },
+  "chpass.form_custom_password": {
+    "string": "Enter new password"
+  },
+  "chpass.form_custom_password_repeat": {
+    "string": "Repeat new password"
+  },
+  "chpass.help-text-newpass-label": {
+    "developer_comment": "help text for custom password label",
+    "string": "Tip: Choose a strong password"
+  },
   "chpass.low-password-entropy": {
     "string": "Please provide a stronger password"
   },
@@ -1062,6 +1112,9 @@
   "chpass.no_reauthn": {
     "string": "You must re-authenticate to change your password"
   },
+  "chpass.old_password": {
+    "string": "Current password"
+  },
   "chpass.password-changed": {
     "string": "Your password has been changed"
   },
@@ -1070,6 +1123,9 @@
   },
   "chpass.stale_reauthn": {
     "string": "Stale re-authentication. Please re-initiate the process."
+  },
+  "chpass.suggested_password": {
+    "string": "Suggested password"
   },
   "chpass.unable-to-verify-old-password": {
     "string": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
@@ -1456,6 +1512,10 @@
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
   },
+  "iYsuen": {
+    "developer_comment": "chpass old password label",
+    "string": "Current password"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
@@ -1691,6 +1751,15 @@
   },
   "mfa.no-webauthn-support-text": {
     "string": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
+  },
+  "mfa.problems-heading": {
+    "string": "Problems?"
+  },
+  "mfa.reset-password-tapit": {
+    "string": "Use your security key to reset password. If it has a button, tap it."
+  },
+  "mfa.try-again": {
+    "string": "Try again"
   },
   "mfa.two-factor-authn": {
     "string": "Use your security key to log in. If it has a button, tap it."
@@ -2014,9 +2083,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here to order a new code"
   },
-  "profile.email_display_title": {
-    "string": "Email address"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "make number primary"
   },
@@ -2060,6 +2126,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
+  },
+  "qJxWkn": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Start by adding your ID number above"
   },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
@@ -2177,6 +2247,10 @@
   "s0no/w": {
     "developer_comment": "profile name display no data",
     "string": "add name"
+  },
+  "s5EpgK": {
+    "developer_comment": "verify identity vetting link settings",
+    "string": "Settings"
   },
   "sIENAc": {
     "developer_comment": "extra security description",
@@ -2451,12 +2525,7 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copy to clipboard"
   },
-  "unexpected-problem": {
-    "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
-  },
-  "unexpected-success": {
-    "string": "Success"
-  },
+
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"
@@ -2497,11 +2566,26 @@
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Add a phone number or a security key to your eduID to keep your identity at password reset."
   },
+  "verify-identity.vetting_explanation_add_nin": {
+    "string": "Start by adding your ID number above"
+  },
+  "verify-identity.vetting_explanation_add_phone_number": {
+    "string": "Start by adding your Swedish phone number in"
+  },
+  "verify-identity.vetting_explanation_confirm_phone_number": {
+    "string": "Confirm your phone number in"
+  },
   "verify-identity.vetting_explanation_only_available_swe_number": {
     "string": "Only possible with Swedish phone number"
   },
   "verify-identity.vetting_freja_tagline": {
     "string": "For you able to create a Freja eID by visiting one of the authorised agents"
+  },
+  "verify-identity.vetting_link_settings": {
+    "string": "Settings"
+  },
+  "verify-identity.vetting_phone_tagline": {
+    "string": "For Swedish phone numbers entered and confirmed in eduID."
   },
   "vf92mh": {
     "developer_comment": "chpass custom password",
@@ -2514,6 +2598,10 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
+  },
+  "w+8Rkj": {
+    "developer_comment": "chpass form custom password label",
+    "string": "Enter new password"
   },
   "wDq7ww": {
     "developer_comment": "accordion item name additionalInfo",
