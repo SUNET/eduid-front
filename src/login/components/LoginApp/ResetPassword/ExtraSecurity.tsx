@@ -231,12 +231,12 @@ export function ExtraSecurity(): JSX.Element | null {
           toPhoneCodeForm={toPhoneCodeForm}
         />
       )}
-      <h4 className="description-without-security">
+      <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
           defaultMessage="Continue without extra security option"
         />
-      </h4>
+      </h3>
       <p>
         <FormattedMessage
           description="without extra security description"

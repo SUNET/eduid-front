@@ -23,10 +23,10 @@ export function DashboardMain() {
   return (
     <React.StrictMode>
       <Header showMenu={true} />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <div id="content" className="horizontal-content-margin content">
+          <section id="content" className="horizontal-content-margin content">
             <Routes>
               <Route path={advancedSettingsPath} element={<AdvancedSettings />} />
               <Route path={settingsPath} element={<Settings />} />
@@ -41,9 +41,9 @@ export function DashboardMain() {
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
               <Route path={startPath} element={<DashboardStart />} />
             </Routes>
-          </div>
+          </section>
         </Splash>
-      </section>
+      </main>
       <Footer />
     </React.StrictMode>
   );

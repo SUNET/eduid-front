@@ -26,7 +26,7 @@ test("renders AccountId as expected", () => {
 
   expect(screen.getByRole("heading", { name: /unique id/i })).toBeInTheDocument();
 
-  expect(screen.getByLabelText("eppn")).toHaveTextContent(test_eppn);
+  expect(screen.getByRole("status")).toHaveTextContent(test_eppn);
   // renders the advanced settings page title
   expect(document.title).toContain("Advanced Settings");
 });

@@ -74,11 +74,8 @@ function RenderLanguageSelect(): JSX.Element {
 
   return (
     <fieldset>
-      <legend>
+      <legend className="require">
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
-        <span className="label-required" aria-label="required">
-          *
-        </span>
       </legend>
       <div className="radio-input-container">
         {language_list.map((option: string[], index: number) => {
@@ -116,8 +113,8 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay label={props.labels.first} name={given_name} />
-        <NameDisplay label={props.labels.last} name={surname} />
+        <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
+        <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
       </div>
       <div className="icon-text">
         <button

@@ -8,23 +8,25 @@ export function AccountId(): JSX.Element {
 
   return (
     <article id="uniqueId-container">
-      <div className="intro">
-        <h3>
-          <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
-        </h3>
-        <p>
-          <FormattedMessage
-            defaultMessage="This is an automatically generated unique identifier for your eduID."
-            description="Dashboard AccountId"
-          />
-        </p>
-      </div>
+      <h2>
+        <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
+      </h2>
+      <p>
+        <FormattedMessage
+          defaultMessage="This is an automatically generated unique identifier for your eduID."
+          description="Dashboard AccountId"
+        />
+      </p>
       <div className="profile-grid-cell">
-        <label htmlFor={idUserEppn}>
-          <FormattedMessage defaultMessage="eppn" description="Dashboard AccountId" />
-        </label>
+        <span aria-label={idUserEppn}>
+          <strong>
+            <FormattedMessage defaultMessage="eppn" description="Dashboard AccountId" />
+          </strong>
+        </span>
         <div className="display-data verified">
-          <output id={idUserEppn}>{eppn}</output>
+          <output name={eppn} id={idUserEppn}>
+            {eppn}
+          </output>
         </div>
         <p className="help-text">
           <FormattedMessage
