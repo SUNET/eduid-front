@@ -57,13 +57,15 @@ export default function UsernamePw() {
 
   return (
     <div className="username-pw">
-      <h1>
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h1>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+        </h1>
 
-      <div className="lead">
-        <LoginAtServiceInfo service_info={service_info} />
-      </div>
+        <div className="lead">
+          <LoginAtServiceInfo service_info={service_info} />
+        </div>
+      </section>
 
       <FinalForm<UsernamePwFormData>
         id="login-form"
@@ -74,8 +76,6 @@ export default function UsernamePw() {
             <form onSubmit={formProps.handleSubmit}>
               <fieldset>
                 <UsernameInputPart />
-              </fieldset>
-              <fieldset>
                 <PasswordInput name="current-password" autoComplete="current-password" />
               </fieldset>
 
@@ -113,7 +113,7 @@ function UsernameInputPart(): JSX.Element {
     return (
       <React.Fragment>
         <div className="welcome-back-container">
-          <h3>
+          <legend>
             <FormattedMessage
               defaultMessage="Welcome back, {username}!"
               description="Login username input"
@@ -121,8 +121,8 @@ function UsernameInputPart(): JSX.Element {
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-          </h3>
-          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+          </legend>
+          <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
         </div>

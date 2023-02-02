@@ -26,13 +26,15 @@
 
     .header-nav {
       button {
-        span {
-          width: 40vw;
-          overflow: hidden;
-          white-space: nowrap;
-          display: inline-block;
-          text-overflow: ellipsis;
-          text-align: right;
+        @media (max-width: $bp-sm) {
+          span {
+            width: 40vw;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-overflow: ellipsis;
+            text-align: right;
+          }
         }
       }
 
@@ -98,8 +100,10 @@
         .menu {
           display: flex;
           align-items: center;
-          height: 2.5rem;
+          height: 2.7rem;
           justify-content: left;
+          width: fit-content;
+          line-height: 1.2;
 
           &:nth-child(4) {
             border-bottom: 1px solid $border-gray;

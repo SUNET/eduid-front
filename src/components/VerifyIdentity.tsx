@@ -53,15 +53,7 @@ function VerifyIdentity(): JSX.Element | null {
   return (
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
-      <div className="intro">
-        <h1>
-          <FormattedMessage
-            description="verify identity unverified main title"
-            defaultMessage={`Connect your identity to your eduID`}
-          />
-        </h1>
-        <VerifyIdentityIntro />
-      </div>
+      <VerifyIdentityIntro />
     </Fragment>
   );
 }
@@ -84,47 +76,67 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
-        <div className="lead">
-          <p>
+        <section className="intro">
+          <h1>
             <FormattedMessage
-              description="verify identity verified title"
-              defaultMessage="Your eduID is ready to use"
+              description="verify identity unverified main title"
+              defaultMessage={`Connect your identity to your eduID`}
             />
-          </p>
-        </div>
-        <h3>
-          <FormattedMessage
-            description="verify identity verified description"
-            defaultMessage="The identities below are now connected to your eduID"
-          />
-        </h3>
-        <VerifiedIdentitiesTable />
+          </h1>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                description="verify identity verified title"
+                defaultMessage="Your eduID is ready to use"
+              />
+            </p>
+          </div>
+        </section>
+        <article>
+          <h2>
+            <FormattedMessage
+              description="verify identity verified description"
+              defaultMessage="The identities below are now connected to your eduID"
+            />
+          </h2>
+          <VerifiedIdentitiesTable />
+        </article>
       </React.Fragment>
     );
   }
 
   return (
     <React.Fragment>
-      <div className="lead">
-        <p>
+      <section className="intro">
+        <h1>
           <FormattedMessage
-            description="verify identity unverified description"
-            defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from `}
+            description="verify identity unverified main title"
+            defaultMessage={`Connect your identity to your eduID`}
           />
-        </p>
-      </div>
-      <h3>
-        <FormattedMessage
-          description="verify identity non verified description"
-          defaultMessage="Choose your principal identification method"
-        />
-      </h3>
-      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-        <AccordionItemSwedish />
-        <AccordionItemEu />
-        <AccordionItemWorld />
-      </Accordion>
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="verify identity unverified description"
+              defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+            to get the most benefit from `}
+            />
+          </p>
+        </div>
+      </section>
+      <article>
+        <h2>
+          <FormattedMessage
+            description="verify identity non verified description"
+            defaultMessage="Choose your principal identification method"
+          />
+        </h2>
+        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+          <AccordionItemSwedish />
+          <AccordionItemEu />
+          <AccordionItemWorld />
+        </Accordion>
+      </article>
     </React.Fragment>
   );
 }
@@ -215,12 +227,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities.nin?.verified && (
         <React.Fragment>
-          <h3>
+          <h2>
             <FormattedMessage
               description="verify identity non verified description"
               defaultMessage="Choose your principal identification method"
             />
-          </h3>
+          </h2>
           <p>
             <FormattedMessage
               description="verify identity with swedish ID description"

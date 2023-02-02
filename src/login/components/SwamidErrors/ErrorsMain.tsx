@@ -10,12 +10,12 @@ export function ErrorsMain(): JSX.Element {
   return (
     <React.StrictMode>
       <Header />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <Routes>
           <Route path="/errors" element={<Errors />} />
         </Routes>
-      </section>
+      </main>
       <Footer />
     </React.StrictMode>
   );

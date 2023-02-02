@@ -225,7 +225,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
             <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
 
             <figure className="x-adjust">
-              <img className="qr-code" src={data.qr_img} />
+              <img alt="qr-code" className="qr-code" src={data.qr_img} />
               <figcaption className="short-code">ID# {data.short_code}</figcaption>
             </figure>
           </li>

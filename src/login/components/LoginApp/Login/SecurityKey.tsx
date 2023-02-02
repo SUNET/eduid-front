@@ -39,12 +39,12 @@ function SecurityKeyInactive({ setActive }: SecurityKeyProps): JSX.Element {
 
   return (
     <Fragment>
-      <h4>
+      <h3>
         <FormattedMessage
           description="login this device, security key button"
           defaultMessage="This Device / Security key"
         />
-      </h4>
+      </h3>
       <p className="help-text">
         <FormattedMessage
           description="platform authn help text"
@@ -91,12 +91,12 @@ function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
   return (
     <>
       <div className="button-pair selected">
-        <h4>
+        <h3>
           <FormattedMessage
             description="login this device, security key button"
             defaultMessage="This Device / Security key"
           />
-        </h4>
+        </h3>
       </div>
       <div className="button-pair bottom">
         <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />

@@ -30,7 +30,7 @@ export function SignupMain(): JSX.Element {
   return (
     <React.Fragment>
       <Header showLogin={true} />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
           <SignupGlobalStateProvider>
@@ -41,7 +41,7 @@ export function SignupMain(): JSX.Element {
             </Routes>
           </SignupGlobalStateProvider>
         </Splash>
-      </section>
+      </main>
       <Footer />
     </React.Fragment>
   );

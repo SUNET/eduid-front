@@ -1,5 +1,15 @@
+import {
+  postNewEmail,
+  requestMakePrimaryEmail,
+  requestRemoveEmail,
+  requestResendEmailCode,
+  requestVerifyEmail,
+} from "apis/eduidEmail";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import { clearNotifications } from "reducers/Notifications";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
 import { validateEmailField } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
@@ -7,16 +17,6 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
-import { clearNotifications } from "reducers/Notifications";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import {
-  requestRemoveEmail,
-  postNewEmail,
-  requestResendEmailCode,
-  requestVerifyEmail,
-  requestMakePrimaryEmail,
-} from "apis/eduidEmail";
-import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface EmailFormData {
   email?: string;
@@ -112,18 +112,16 @@ function Emails() {
 
   return (
     <article className="emails-view-form-container">
-      <div className="intro">
-        <h3>
-          <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
-        </h3>
-        <p>
-          <FormattedMessage
-            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be
+      <h2>
+        <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
+      </h2>
+      <p>
+        <FormattedMessage
+          defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be
             your primary email address.`}
-            description="Add emails description"
-          />
-        </p>
-      </div>
+          description="Add emails description"
+        />
+      </p>
       <div id="email-display">
         <DataTable
           data={emails.emails}

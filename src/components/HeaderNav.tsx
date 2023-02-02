@@ -30,7 +30,13 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <button className="header-user" onClick={() => props.setOpenMenu(!props.openMenu)}>
+      <button
+        className="header-user"
+        aria-expanded={props.openMenu}
+        type="button"
+        onClick={() => props.setOpenMenu(!props.openMenu)}
+        data-name={emails.filter((mail) => mail.primary)[0].email}
+      >
         <span>{emails.filter((mail) => mail.primary)[0].email}</span>
         {props.openMenu ? (
           <FontAwesomeIcon icon={faChevronUp as IconProp} />
@@ -65,7 +71,6 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
   const wrapperRef = useRef(null);
 
   closeMenuClickOutside(wrapperRef, () => setOpenMenu(false));
-
   return (
     <nav id="header-nav" className="header-nav" ref={wrapperRef}>
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />

@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -21,7 +20,7 @@ function NameDisplay(): JSX.Element {
   }
   return (
     <div key="0" className="profile-grid-cell">
-      <label key="0">
+      <label key="0" htmlFor="id number">
         <FormattedMessage description="profile name display title" defaultMessage={`Name`} />
       </label>
       {userData}

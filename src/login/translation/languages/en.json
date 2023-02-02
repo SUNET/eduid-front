@@ -687,6 +687,10 @@
     "developer_comment": "Verification letter requested",
     "string": "Verification letter requested"
   },
+  "Pnu06c": {
+    "developer_comment": "status",
+    "string": "status"
+  },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
@@ -698,6 +702,10 @@
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Never used"
+  },
+  "Qa3Xhm": {
+    "developer_comment": "orcid id",
+    "string": "orcid id"
   },
   "Qgc9l0": {
     "developer_comment": "Login MFA heading",
@@ -779,6 +787,10 @@
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
     "string": "E.g USB Security Key."
+  },
+  "TdlNku": {
+    "developer_comment": "name",
+    "string": "name"
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -934,6 +946,10 @@
     "developer_comment": "username input field label",
     "string": "Username"
   },
+  "ZiRNyI": {
+    "developer_comment": "remove",
+    "string": "remove"
+  },
   "ZkDePR": {
     "developer_comment": "eidas freja instructions step4",
     "string": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
@@ -967,6 +983,10 @@
   },
   "add_nin.main_title": {
     "string": "Add your id number"
+  },
+  "aisFdT": {
+    "developer_comment": "orcid logo",
+    "string": "orcid logo"
   },
   "al9vbk": {
     "developer_comment": "accordion item Verification",
@@ -1018,6 +1038,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
+  },
+  "cRNzAJ": {
+    "developer_comment": "orcid remove",
+    "string": "remove"
   },
   "captcha.one-step-left": {
     "string": "Only one more step left!"
@@ -1174,6 +1198,10 @@
   "eLbkSr": {
     "developer_comment": "Signup",
     "string": "Confirm that you are a human."
+  },
+  "ebsFfU": {
+    "developer_comment": "primary label",
+    "string": "PRIMARY"
   },
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
@@ -2183,6 +2211,12 @@
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
   },
+  "security key remove": {
+    "string": "Remove"
+  },
+  "security key status": {
+    "string": "Status"
+  },
   "security last used": {
     "string": "Used on"
   },
@@ -2466,10 +2500,6 @@
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "The identities below are now connected to your eduID"
-  },
-  "v/ccFv": {
-    "developer_comment": "primary label",
-    "string": "primary"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",

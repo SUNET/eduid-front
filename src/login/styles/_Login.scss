@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "./variables";
 
 // username and password
 .username-pw {
@@ -24,6 +24,12 @@
         h3 {
           margin-bottom: 0.5em;
         }
+      }
+
+      legend {
+        @extend h3;
+
+        width: fit-content !important;
       }
     }
 
@@ -145,6 +151,7 @@
   &.device1 {
     .response-code-inputs {
       @extend .figure;
+
       margin-bottom: 0;
     }
 
