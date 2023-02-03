@@ -67,13 +67,11 @@ export function Header(props: HeaderProps): JSX.Element {
   }
 
   return (
-    <section className="banner">
-      <header>
-        <a href={start_url} aria-label="eduID start" title="eduID start">
-          <div id="eduid-logo" className="eduid-logo" />
-        </a>
-        {button}
-      </header>
-    </section>
+    <header>
+      <a href={start_url} aria-label="eduID start" title="eduID start">
+        <div id="eduid-logo" className="eduid-logo" />
+      </a>
+      {button}
+    </header>
   );
 }
