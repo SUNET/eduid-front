@@ -14,7 +14,7 @@ test("renders AccountId as expected", () => {
       personal_data: {
         ...initialState,
         response: {
-          eppn: "hubba-bubba",
+          eppn: test_eppn,
           display_name: "test user",
         },
       },
