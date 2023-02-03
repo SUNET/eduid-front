@@ -221,6 +221,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
   },
+  "6zx8wo": {
+    "developer_comment": "mfa reset password tapit",
+    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
@@ -236,6 +240,10 @@
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Du är ej inloggad, eller så avslutades sessionen."
+  },
+  "86/PBW": {
+    "developer_comment": "chpass suggested password",
+    "string": "Rekommenderat lösenord"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -256,6 +264,10 @@
   "95u9Rj": {
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer."
+  },
+  "96x/52": {
+    "developer_comment": "verify identity vetting explanation only available swe number",
+    "string": "Bara möjligt med svenskt telefonnummer"
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
@@ -477,6 +489,10 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Kopierat!"
   },
+  "HxoxjV": {
+    "developer_comment": "verify identity vetting explanation confirm phone number",
+    "string": "Bekräfta ditt telefonnummer under"
+  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
@@ -566,6 +582,10 @@
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Lägg till"
+  },
+  "LolQ90": {
+    "developer_comment": "mfa problems heading",
+    "string": "Problem?"
   },
   "LuSrd4": {
     "developer_comment": "Signup",
@@ -695,9 +715,17 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Lösenordet har uppdaterats"
   },
+  "PxROOc": {
+    "developer_comment": "help text for custom password label",
+    "string": "Tänk på att välja ett säkert lösenord"
+  },
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Kod"
+  },
+  "Q8CeJV": {
+    "developer_comment": "mfa try again",
+    "string": "Försök igen"
   },
   "QLJcC4": {
     "developer_comment": "security last used date",
@@ -780,6 +808,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "med digitalt ID-kort"
   },
+  "T9+zD2": {
+    "developer_comment": "chpass form custom password repeat",
+    "string": "Repetera ditt nya lösenord"
+  },
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Fortsätt"
@@ -830,6 +862,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
   },
+  "VFhU1F": {
+    "developer_comment": "verify identity vetting phone tagline",
+    "string": "För svenska telefonnummer angivna och bekräftade i eduID."
+  },
   "VL/TNV": {
     "developer_comment": "ToU button cancel",
     "string": "Avbryt"
@@ -857,6 +893,10 @@
   "VwFaJg": {
     "developer_comment": "verify identity",
     "string": "Om du har ett {Svipe_ID} kan du koppla det till ditt eduID."
+  },
+  "VxlVeE": {
+    "developer_comment": "verify identity vetting explanation add phone number",
+    "string": "Börja med att lägga till ditt telefonnummer i"
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -1472,6 +1512,10 @@
     "developer_comment": "verify identity verified title",
     "string": "Ditt eduID är redo att användas"
   },
+  "iYsuen": {
+    "developer_comment": "chpass old password label",
+    "string": "Skriv ditt nuvarande lösenord"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Skriv in koden som skickats till {phone}"
@@ -2039,9 +2083,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Tryck här om du vill beställa en ny kod"
   },
-  "profile.email_display_title": {
-    "string": "E-postadress"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "gör till primärt"
   },
@@ -2085,6 +2126,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "När du har mottagit brevet, fortsätt genom att klicka på knappen nedan."
+  },
+  "qJxWkn": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Börja med att lägga till ditt personnummer här ovan"
   },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
@@ -2202,6 +2247,10 @@
   "s0no/w": {
     "developer_comment": "profile name display no data",
     "string": "lägg till namn"
+  },
+  "s5EpgK": {
+    "developer_comment": "verify identity vetting link settings",
+    "string": "Inställningar"
   },
   "sIENAc": {
     "developer_comment": "extra security description",
@@ -2476,12 +2525,7 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Kopiera till urklipp"
   },
-  "unexpected-problem": {
-    "string": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår."
-  },
-  "unexpected-success": {
-    "string": "Klart"
-  },
+
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Namn"
@@ -2554,6 +2598,10 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
+  },
+  "w+8Rkj": {
+    "developer_comment": "chpass form custom password label",
+    "string": "Skriv ditt nya lösenord"
   },
   "wDq7ww": {
     "developer_comment": "accordion item name additionalInfo",
