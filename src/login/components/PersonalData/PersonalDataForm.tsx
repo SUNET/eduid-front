@@ -26,7 +26,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const personal_data = useDashboardAppSelector((state) => state.personal_data.response);
 
   function formSubmit(values: PersonalDataRequest) {
-    console.log("[[[formSubmit]", values);
     dispatch(postPersonalData(values));
     props.setEditMode(false); // tell parent component we're done editing
   }
