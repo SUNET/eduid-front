@@ -104,7 +104,6 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
     if (updateOfficialUserData.fulfilled.match(response)) {
-      // dispatch(getInitialUserData());
       dispatch(requestAllPersonalData());
     }
   }
