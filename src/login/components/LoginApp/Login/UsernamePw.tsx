@@ -56,7 +56,7 @@ export default function UsernamePw() {
   }
 
   return (
-    <div className="username-pw">
+    <React.Fragment>
       <section className="intro">
         <h1>
           <FormattedMessage defaultMessage="Log in" description="Login front page" />
@@ -66,36 +66,36 @@ export default function UsernamePw() {
           <LoginAtServiceInfo service_info={service_info} />
         </div>
       </section>
+      <section className="username-pw">
+        <FinalForm<UsernamePwFormData>
+          id="login-form"
+          aria-label="login form"
+          onSubmit={handleSubmitUsernamePw}
+          render={(formProps: FormRenderProps<UsernamePwFormData>) => {
+            return (
+              <form onSubmit={formProps.handleSubmit}>
+                <fieldset>
+                  <UsernameInputPart />
+                  <PasswordInput name="current-password" autoComplete="current-password" />
+                </fieldset>
+                <div className="flex-between">
+                  <div className="buttons">
+                    <LoginAbortButton />
+                    <UsernamePwSubmitButton {...formProps} />
+                    <UsernamePwAnotherDeviceButton />
+                  </div>
 
-      <FinalForm<UsernamePwFormData>
-        id="login-form"
-        aria-label="login form"
-        onSubmit={handleSubmitUsernamePw}
-        render={(formProps: FormRenderProps<UsernamePwFormData>) => {
-          return (
-            <form onSubmit={formProps.handleSubmit}>
-              <fieldset>
-                <UsernameInputPart />
-                <PasswordInput name="current-password" autoComplete="current-password" />
-              </fieldset>
-
-              <div className="flex-between">
-                <div className="buttons">
-                  <LoginAbortButton />
-                  <UsernamePwSubmitButton {...formProps} />
-                  <UsernamePwAnotherDeviceButton />
+                  <div className="links">
+                    <RenderResetPasswordLink />
+                    <RenderRegisterLink />
+                  </div>
                 </div>
-
-                <div className="links">
-                  <RenderResetPasswordLink />
-                  <RenderRegisterLink />
-                </div>
-              </div>
-            </form>
-          );
-        }}
-      ></FinalForm>
-    </div>
+              </form>
+            );
+          }}
+        ></FinalForm>
+      </section>
+    </React.Fragment>
   );
 }
 
