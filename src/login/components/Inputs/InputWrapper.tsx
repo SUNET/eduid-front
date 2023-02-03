@@ -1,6 +1,6 @@
-import { translate } from "login/translation";
 import React from "react";
 import { FieldRenderProps } from "react-final-form";
+import { useIntl } from "react-intl";
 import { FormGroup, FormText, Label } from "reactstrap";
 
 export interface InputWrapperProps extends FieldRenderProps<string> {
@@ -38,6 +38,7 @@ function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
 }
 
 function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
+  const intl = useIntl();
   const { meta } = props;
 
   if (!meta.error && !meta.submitError) {
@@ -45,10 +46,10 @@ function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
     return null;
   }
 
-  const errorMsg = meta.error ? translate(meta.error) : null;
+  const errorMsg = meta.error ? intl.formatMessage({ id: meta.error }) : null;
   let submitErrorMsg = null;
   if (meta.submitError && !meta.dirtySinceLastSubmit) {
-    submitErrorMsg = translate(meta.submitError) || null;
+    submitErrorMsg = intl.formatMessage({ id: meta.submitError }) || null;
   }
 
   return (

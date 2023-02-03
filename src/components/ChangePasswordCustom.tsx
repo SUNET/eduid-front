@@ -1,5 +1,4 @@
 import TextInput from "components/EduIDTextInput";
-import { translate } from "login/translation";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -54,13 +53,18 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           componentClass="input"
           type="password"
           id="old-password-field"
-          label={translate("chpass.old_password")}
+          label={<FormattedMessage defaultMessage="Current password" description="chpass old password label" />}
           validate={required}
           autoComplete="current-password"
         />
       </fieldset>
       <div className="password-format">
-        <label>{translate("chpass.help-text-newpass-label")}</label>
+        <label>
+          <FormattedMessage
+            defaultMessage="Tip: Choose a strong password"
+            description="help text for custom password label"
+          />
+        </label>
         <ul id="password-custom-help">
           {[
             <FormattedMessage
@@ -89,7 +93,9 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             component={TextInput}
             componentClass="input"
             type="password"
-            label={translate("chpass.form_custom_password")}
+            label={
+              <FormattedMessage defaultMessage="Enter new password" description="chpass form custom password label" />
+            }
             helpBlock={
               <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
             }
@@ -103,7 +109,9 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             componentClass="input"
             type="password"
             id="repeat-password-field"
-            label={translate("chpass.form_custom_password_repeat")}
+            label={
+              <FormattedMessage defaultMessage="Repeat new password" description="chpass form custom password repeat" />
+            }
             validate={mustMatch}
           />
         </div>

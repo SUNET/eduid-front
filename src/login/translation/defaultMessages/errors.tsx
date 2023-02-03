@@ -1,9 +1,6 @@
 import { FormattedMessage } from "react-intl";
 
 export const generalErrors = {
-  // non-error errors?
-  "unexpected-success": <FormattedMessage id="unexpected-success" defaultMessage={`Success`} />,
-
   // general errors
   out_of_sync: (
     <FormattedMessage id="out_of_sync" defaultMessage={`User data is out of sync. Reload page to re-sync.`} />
@@ -23,13 +20,6 @@ export const generalErrors = {
     <FormattedMessage
       id="Temporary technical problems"
       defaultMessage={`Temporary technical problems, please try again later`}
-    />
-  ),
-
-  "unexpected-problem": (
-    <FormattedMessage
-      id="unexpected-problem"
-      defaultMessage={`There was an unexpected problem servicing your request, please try again or contact the site administrators`}
     />
   ),
 

@@ -1,5 +1,5 @@
-import { translate } from "login/translation";
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
@@ -28,7 +28,12 @@ export function ExtraSecurityToken(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p>{translate("mfa.reset-password-tapit")}</p>
+      <p>
+        <FormattedMessage
+          defaultMessage="Use your security key to reset password. If it has a button, tap it."
+          description="mfa reset password tapit"
+        />
+      </p>
       <figure>
         <div className="key-animation" />
         <div>
@@ -41,10 +46,12 @@ export function ExtraSecurityToken(): JSX.Element {
         </div>
 
         <div id="mfa-try-another-way">
-          <figcaption>{translate("mfa.problems-heading")}</figcaption>
+          <figcaption>
+            <FormattedMessage defaultMessage="Problems?" description="mfa problems heading" />
+          </figcaption>
 
           <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
-            {translate("mfa.try-again")}
+            <FormattedMessage defaultMessage="Try again" description="mfa try again" />
           </button>
         </div>
       </figure>

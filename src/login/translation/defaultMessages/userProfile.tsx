@@ -10,8 +10,6 @@ export const userProfile = {
     <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
   ),
 
-  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
-
   "dashboard.tagline_unverified": (
     <FormattedMessage
       id="dashboard.tagline_unverified"
