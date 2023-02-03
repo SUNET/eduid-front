@@ -1,7 +1,7 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
 import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FrejaeID } from "./FrejaeID";
 import { LoginAbortButton } from "./LoginAbortButton";
@@ -32,13 +32,15 @@ export function MultiFactorAuth(): JSX.Element {
   }, [authn_options, mfa]);
 
   return (
-    <div className="mfa">
-      <h1>
-        <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login MFA heading" />
-      </h1>
-      <div className="lead">
-        <LoginAtServiceInfo service_info={service_info} />
-      </div>
+    <Fragment>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login MFA heading" />
+        </h1>
+        <div className="lead">
+          <LoginAtServiceInfo service_info={service_info} />
+        </div>
+      </section>
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
           <React.Fragment>
@@ -58,7 +60,7 @@ export function MultiFactorAuth(): JSX.Element {
           <ExtraSecurityNotAvailable />
         )}
       </Splash>
-    </div>
+    </Fragment>
   );
 }
 

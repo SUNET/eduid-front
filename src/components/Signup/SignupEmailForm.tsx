@@ -12,19 +12,20 @@ import EmailInput from "../../login/components/Inputs/EmailInput";
 export function SignupEmailForm(): JSX.Element {
   return (
     <Fragment>
-      <h1 className="heading">
-        <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
-      </h1>
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`Once you have created an eduID you will be able to log in and
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage={`Once you have created an eduID you will be able to log in and
                              connect it to your Swedish national identity number.`}
-            description="Signup"
-          />
-        </p>
-      </div>
-
+              description="Signup"
+            />
+          </p>
+        </div>
+      </section>
       <EmailForm />
     </Fragment>
   );

@@ -1,10 +1,9 @@
-import { translate, UNKNOWN_MESSAGE } from "login/translation";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { UNKNOWN_MESSAGE } from "login/translation";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
-import { eduidNotification, notificationLevel } from "reducers/Notifications";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { clearNotifications } from "reducers/Notifications";
+import { clearNotifications, eduidNotification, notificationLevel } from "reducers/Notifications";
 
 export function Notifications(): JSX.Element | null {
   const debug = useDashboardAppSelector((state) => state.config.debug);
@@ -33,12 +32,21 @@ export function Notifications(): JSX.Element | null {
     return null;
   }
 
-  let msg = translate(show.message);
+  let msg: string = intl.formatMessage({ id: show.message });
   if (!debug && isString(msg) && msg.startsWith(UNKNOWN_MESSAGE)) {
     if (show.level == "error") {
-      msg = translate("unexpected-problem");
+      msg = intl.formatMessage({
+        id: "unexpected-problem",
+        defaultMessage: `There was an unexpected problem servicing your request, please try again or contact 
+        the site administrators`,
+        description: "unexpected problem error",
+      });
     } else {
-      msg = translate("unexpected-success");
+      msg = intl.formatMessage({
+        id: "unexpected-success",
+        defaultMessage: "Success",
+        description: "unexpected success message",
+      });
     }
   }
 
