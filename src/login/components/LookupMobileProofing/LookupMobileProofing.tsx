@@ -37,8 +37,9 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
       const response = await dispatch(lookupMobileProofing(nin.number));
       if (lookupMobileProofing.fulfilled.match(response)) {
         dispatch(requestAllPersonalData());
-      } else lookupMobileProofing.rejected.match(response);
-      dispatch(fetchIdentities());
+      } else if (lookupMobileProofing.rejected.match(response)) {
+        dispatch(fetchIdentities());
+      }
     }
   }
 

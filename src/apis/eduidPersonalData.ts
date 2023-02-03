@@ -11,12 +11,10 @@ import { PhoneInfo } from "./eduidPhone";
  */
 
 export interface PersonalDataRequest {
-  eppn?: string;
   given_name?: string;
   surname?: string;
   display_name?: string;
   language?: string;
-  message?: string;
 }
 
 export interface AllUserData {
@@ -71,13 +69,7 @@ export const postPersonalData = createAsyncThunk<
   PersonalDataRequest, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("personalData/postPersonalData", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    display_name: args.display_name,
-    given_name: args.given_name,
-    surname: args.surname,
-    language: args.language,
-  };
-  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", data)
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
