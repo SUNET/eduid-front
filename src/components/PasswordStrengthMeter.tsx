@@ -26,9 +26,9 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
   useEffect(() => {
     let userInput: string[] = [];
-    if (pdata.given_name) userInput.push(pdata.given_name);
-    if (pdata.surname) userInput.push(pdata.surname);
-    if (pdata.display_name) userInput.push(pdata.display_name);
+    if (pdata.response?.given_name) userInput.push(pdata.response?.given_name);
+    if (pdata.response?.surname) userInput.push(pdata.response?.surname);
+    if (pdata.response?.display_name) userInput.push(pdata.response?.display_name);
     userInput = userInput.concat(emails.map((x) => x.email));
 
     if (!minRequiredEntropy) {

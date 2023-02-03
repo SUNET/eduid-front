@@ -171,7 +171,7 @@ export function Recommendations(): JSX.Element | null {
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const identities = useDashboardAppSelector((state) => state.identities);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
   const verifiedNumber = phones.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>

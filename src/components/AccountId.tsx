@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 const idUserEppn = "user-eppn";
 
 export function AccountId(): JSX.Element {
-  const eppn = useDashboardAppSelector((state) => state.personal_data.eppn);
+  const eppn = useDashboardAppSelector((state) => state.personal_data.response?.eppn);
 
   return (
     <article id="uniqueId-container">

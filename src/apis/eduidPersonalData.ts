@@ -69,7 +69,13 @@ export const postPersonalData = createAsyncThunk<
   PersonalDataRequest, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("personalData/postPersonalData", async (args, thunkAPI) => {
-  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", args)
+  const data: KeyValues = {
+    display_name: args.display_name,
+    given_name: args.given_name,
+    surname: args.surname,
+    language: args.language,
+  };
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

@@ -22,7 +22,10 @@ test("renders Profile page as expected", () => {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
       personal_data: {
-        display_name: "test user",
+        response: {
+          eppn: "hubba-bubba",
+          display_name: "test user",
+        },
       },
     },
   });
@@ -49,7 +52,10 @@ test("renders identity verification progress, unverified after password reset", 
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
       personal_data: {
-        display_name: "test user",
+        response: {
+          eppn: "hubba-bubba",
+          display_name: "test user",
+        },
       },
       identities: {
         is_verified: false,
@@ -68,7 +74,10 @@ test("renders identity verification progress, new user", () => {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
       personal_data: {
-        display_name: "test user",
+        response: {
+          eppn: "hubba-bubba",
+          display_name: "test user",
+        },
       },
       identities: {
         is_verified: false,
@@ -86,7 +95,10 @@ test("renders identity verification progress, verified user", () => {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
       personal_data: {
-        display_name: "test user",
+        response: {
+          eppn: "hubba-bubba",
+          display_name: "test user",
+        },
       },
       identities: {
         is_verified: true,

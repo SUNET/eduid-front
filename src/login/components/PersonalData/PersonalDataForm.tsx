@@ -23,9 +23,10 @@ interface PersonalDataFormProps {
 export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useDashboardAppDispatch();
-  const personal_data = useDashboardAppSelector((state) => state.personal_data);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data.response);
 
   function formSubmit(values: PersonalDataRequest) {
+    console.log("[[[formSubmit]", values);
     dispatch(postPersonalData(values));
     props.setEditMode(false); // tell parent component we're done editing
   }
@@ -98,8 +99,8 @@ function RenderLanguageSelect(): JSX.Element {
 const RenderLockedNames = (props: { labels: NameLabels }) => {
   const dispatch = useDashboardAppDispatch();
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.surname);
+  const given_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
+  const surname = useDashboardAppSelector((state) => state.personal_data.response?.surname);
 
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
