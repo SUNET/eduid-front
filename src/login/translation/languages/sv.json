@@ -896,7 +896,7 @@
   },
   "VxlVeE": {
     "developer_comment": "verify identity vetting explanation add phone number",
-    "string": "Börja med att lägga till ditt telefonnummer i"
+    "string": "Börja med att lägga till ditt telefonnummer i "
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -2570,7 +2570,7 @@
     "string": "Börja med att lägga till ditt personnummer här ovan"
   },
   "verify-identity.vetting_explanation_add_phone_number": {
-    "string": "Börja med att lägga till ditt telefonnummer i"
+    "string": "Börja med att lägga till ditt telefonnummer i "
   },
   "verify-identity.vetting_explanation_confirm_phone_number": {
     "string": "Bekräfta ditt telefonnummer under"
