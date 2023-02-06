@@ -896,7 +896,7 @@
   },
   "VxlVeE": {
     "developer_comment": "verify identity vetting explanation add phone number",
-    "string": "Start by adding your Swedish phone number in"
+    "string": "Start by adding your Swedish phone number in "
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -2570,7 +2570,7 @@
     "string": "Start by adding your ID number above"
   },
   "verify-identity.vetting_explanation_add_phone_number": {
-    "string": "Start by adding your Swedish phone number in"
+    "string": "Start by adding your Swedish phone number in "
   },
   "verify-identity.vetting_explanation_confirm_phone_number": {
     "string": "Confirm your phone number in"
