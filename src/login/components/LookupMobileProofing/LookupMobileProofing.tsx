@@ -63,7 +63,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         withoutPhoneNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Start by adding your Swedish phone number in"
+              defaultMessage="Start by adding your Swedish phone number in\n"
               description="verify identity vetting explanation add phone number"
             />
             {linkToSettings}
@@ -73,7 +73,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         unverifiedNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Confirm your phone number in"
+              defaultMessage="Confirm your phone number in\n"
               description="verify identity vetting explanation confirm phone number"
             />
 
