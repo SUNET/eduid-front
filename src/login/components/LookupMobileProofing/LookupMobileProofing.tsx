@@ -19,9 +19,9 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
 
   const withoutNin = !nin;
-  const withoutPhoneNumber = !phones;
-  const unverifiedNumber = phones?.some((num) => num.verified === true);
-  const nonSweNumber = phones?.some((num) => num.number.startsWith("+46"));
+  const withoutPhoneNumber = phones === undefined || phones.length === 0;
+  const unverifiedNumber = phones?.some((num) => num.verified === false);
+  const nonSweNumber = !phones?.some((num) => num.number.startsWith("+46"));
 
   function handleShowModal() {
     dispatch(clearNotifications());

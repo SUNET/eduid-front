@@ -51,7 +51,7 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
     return null;
   }
   // if user has no phone number or not confirmed, show accordion item with description and title
-  if (!props.phones) {
+  if (props.phones === undefined || props.phones.length === 0) {
     description = (
       <FormattedMessage
         description="accordion item Phone additional info"
