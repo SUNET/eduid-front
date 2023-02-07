@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appReducer from "login/components/App/App_reducer";
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import notifyAndDispatch from "notify-middleware";
+import { appLoadingSlice } from "reducers/AppLoading";
 import intlSlice from "reducers/Internationalisation";
 import { notificationsSlice } from "reducers/Notifications";
 import logger from "redux-logger";
@@ -14,7 +14,7 @@ const middlewares = [logger, notifyAndDispatch];
 export const loginStore = configureStore({
   reducer: {
     config: configSlice.reducer,
-    app: appReducer,
+    app: appLoadingSlice.reducer,
     login: loginSlice.reducer,
     notifications: notificationsSlice.reducer,
     intl: intlSlice.reducer,
@@ -29,7 +29,7 @@ export function getTestLoginStore(preloadedState: Partial<LoginRootState>) {
   const testStore = configureStore({
     reducer: {
       config: configSlice.reducer,
-      app: appReducer,
+      app: appLoadingSlice.reducer,
       login: loginSlice.reducer,
       notifications: notificationsSlice.reducer,
       intl: intlSlice.reducer,

@@ -1,4 +1,5 @@
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
+import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
@@ -30,11 +31,15 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
     dispatch(clearNotifications());
     setShowModal(false);
   }
-  function handleLookupMobile() {
+  async function handleLookupMobile() {
     setShowModal(false);
-
     if (nin && !nin.verified) {
-      dispatch(lookupMobileProofing(nin.number));
+      const response = await dispatch(lookupMobileProofing(nin.number));
+      if (lookupMobileProofing.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      } else if (lookupMobileProofing.rejected.match(response)) {
+        dispatch(fetchIdentities());
+      }
     }
   }
 

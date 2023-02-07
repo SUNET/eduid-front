@@ -9,6 +9,14 @@ import { PhoneInfo } from "./eduidPhone";
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
  */
+
+export interface PersonalDataRequest {
+  given_name?: string;
+  surname?: string;
+  display_name?: string;
+  language?: string;
+}
+
 export interface AllUserData {
   display_name?: string;
   emails: EmailInfo[];
@@ -50,6 +58,45 @@ export interface FetchIdentitiesResponse {
   identities: UserIdentities;
 }
 
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function postPersonalData
+ * @desc Redux async thunk to post personal data.
+ */
+export const postPersonalData = createAsyncThunk<
+  AllUserData, // return type
+  PersonalDataRequest, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("personalData/postPersonalData", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    display_name: args.display_name,
+    given_name: args.given_name,
+    surname: args.surname,
+    language: args.language,
+  };
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function requestAllPersonalData
+ * @desc Redux async thunk to fetch all personal data.
+ */
+export const requestAllPersonalData = createAsyncThunk<
+  AllUserData, // return type
+  undefined, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("personalData/requestAllPersonalData", async (args, thunkAPI) => {
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "all-user-data", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 /**
  * @public
  * @function fetchIdentities

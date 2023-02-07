@@ -11,7 +11,13 @@ test("renders AccountId as expected", () => {
   render(<DashboardMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
-      personal_data: { ...initialState, eppn: test_eppn },
+      personal_data: {
+        ...initialState,
+        response: {
+          eppn: test_eppn,
+          display_name: "test user",
+        },
+      },
     },
   });
 

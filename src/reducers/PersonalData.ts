@@ -1,36 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import * as actions from "actions/PersonalData";
+import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
 
-export interface PersonalDataData {
-  eppn?: string;
-  given_name?: string;
-  surname?: string;
-  display_name?: string;
-  language?: string;
-  message?: string;
+interface PersonalDataState {
+  response?: PersonalDataResponse;
 }
-
 // export for use in tests
-export const initialState: PersonalDataData = {};
+export const initialState: PersonalDataState = {};
+
+interface PersonalDataResponse extends PersonalDataRequest {
+  eppn: string;
+}
 
 const personalDataSlice = createSlice({
   name: "pdata",
   initialState,
-  reducers: {
-    updatePersonalData: (state, action: PayloadAction<PersonalDataData>) => {
-      return {
-        eppn: state.eppn,
-        ...action.payload,
-      };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(actions.GET_ALL_USERDATA_FAIL, (state, action) => {
-        state.message = action.payload.message;
+      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        state.response = action.payload;
       })
-      .addCase(actions.postUserdataFail, (state, action) => {
-        state.message = action.payload.message;
+      .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        state.response = action.payload;
       });
   },
 });

@@ -29,9 +29,9 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 }
 
 function RenderPersonalData(props: { labels: NameLabels }) {
-  const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
-  const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
-  const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
+  const first_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
+  const last_name = useDashboardAppSelector((state) => state.personal_data.response?.surname);
+  const pref_language = useDashboardAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
@@ -105,7 +105,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  const hasPersonalData = Boolean(personal_data?.given_name) || Boolean(personal_data?.surname);
+  const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components

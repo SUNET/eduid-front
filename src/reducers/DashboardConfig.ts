@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
-import { appLoaded } from "login/components/App/App_actions";
+import { appLoadingSlice } from "reducers/AppLoading";
 
 export interface DashboardConfig extends EduidJSAppCommonConfig {
   is_app_loaded: boolean;
@@ -33,7 +33,7 @@ const configSlice = createSlice({
       .addCase(storeCsrfToken, (state, action) => {
         state.csrf_token = action.payload;
       })
-      .addCase(appLoaded, (state) => {
+      .addCase(appLoadingSlice.actions.appLoaded, (state) => {
         state.is_app_loaded = true;
       });
   },

@@ -92,7 +92,7 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
  */
 export default function Start(): JSX.Element {
   const intl = useIntl();
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useDashboardAppDispatch();
