@@ -108,7 +108,6 @@ function UsernameInputPart(): JSX.Element {
     // re-fetch '/next' now that the conditions for logging in has changed
     dispatch(loginSlice.actions.callLoginNext());
   }
-
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
@@ -118,7 +117,7 @@ function UsernameInputPart(): JSX.Element {
               defaultMessage="Welcome back,{username}!"
               description="Login username input"
               values={{
-                username: <strong>{authn_options.display_name}</strong>,
+                username: <strong>&nbsp;{authn_options.display_name}</strong>,
               }}
             />
           </legend>

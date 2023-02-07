@@ -19,9 +19,9 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
 
   const withoutNin = !nin;
-  const withoutPhoneNumber = phones === undefined || phones.length === 0;
+  const withoutPhoneNumber = Boolean(!phones);
   const unverifiedNumber = phones?.some((num) => num.verified === false);
-  const nonSweNumber = !phones?.some((num) => num.number.startsWith("+46"));
+  const nonSweNumber = !phones.some((num) => num.number.startsWith("+46"));
 
   function handleShowModal() {
     dispatch(clearNotifications());
@@ -63,21 +63,20 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         withoutPhoneNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Start by adding your Swedish phone number in "
+              defaultMessage="Start by adding your Swedish phone number in"
               description="verify identity vetting explanation add phone number"
             />
-            {linkToSettings}
+            &nbsp;{linkToSettings}
           </React.Fragment>
         ) : /* else if, unverified phone number, text will help the user to confirm phone number and
             the text "setting" is linked to the setting page phone number section */
         unverifiedNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Confirm your phone number in "
+              defaultMessage="Confirm your phone number in"
               description="verify identity vetting explanation confirm phone number"
             />
-
-            {linkToSettings}
+            &nbsp;{linkToSettings}
           </React.Fragment>
         ) : /* else if, the verified phone number is not a Swedish number, description text show "only available with Swedish number" */
         nonSweNumber ? (
