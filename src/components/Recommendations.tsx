@@ -172,7 +172,7 @@ export function Recommendations(): JSX.Element | null {
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const identities = useDashboardAppSelector((state) => state.identities);
   const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
-  const verifiedNumber = phones && phones.some((num) => num.verified === true);
+  const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
