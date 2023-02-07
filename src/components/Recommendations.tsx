@@ -44,14 +44,14 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
 
 function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
   let description, title;
-  const verifiedNumber = props.phones.some((num) => num.verified === true);
+  const verifiedNumber = props.phones?.some((num) => num.verified === true);
 
   // if user has phone number and it is verified, do not show accordion item
-  if (props.phones.length && verifiedNumber) {
+  if (verifiedNumber) {
     return null;
   }
   // if user has no phone number or not confirmed, show accordion item with description and title
-  if (!props.phones.length) {
+  if (!props.phones) {
     description = (
       <FormattedMessage
         description="accordion item Phone additional info"
@@ -172,7 +172,7 @@ export function Recommendations(): JSX.Element | null {
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const identities = useDashboardAppSelector((state) => state.identities);
   const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
-  const verifiedNumber = phones.some((num) => num.verified === true);
+  const verifiedNumber = phones && phones.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||

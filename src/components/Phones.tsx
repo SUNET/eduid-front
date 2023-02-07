@@ -116,7 +116,7 @@ function Phones() {
       return number;
     }
 
-    const is_duplicate = phones.phones.find((x) => toE164Number(x.number, default_country_code) == number);
+    const is_duplicate = phones.phones?.find((x) => toE164Number(x.number, default_country_code) == number);
 
     if (is_duplicate) {
       return "phones.duplicated";
