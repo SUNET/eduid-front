@@ -19,9 +19,9 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
 
   const withoutNin = !nin;
-  const withoutPhoneNumber = !phones.length;
-  const unverifiedNumber = !phones.some((num) => num.verified === true);
-  const nonSweNumber = !phones.some((num) => num.number.startsWith("+46"));
+  const withoutPhoneNumber = !phones;
+  const unverifiedNumber = phones?.some((num) => num.verified === true);
+  const nonSweNumber = phones?.some((num) => num.number.startsWith("+46"));
 
   function handleShowModal() {
     dispatch(clearNotifications());
@@ -63,7 +63,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         withoutPhoneNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Start by adding your Swedish phone number in\n"
+              defaultMessage="Start by adding your Swedish phone number in "
               description="verify identity vetting explanation add phone number"
             />
             {linkToSettings}
@@ -73,7 +73,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         unverifiedNumber ? (
           <React.Fragment>
             <FormattedMessage
-              defaultMessage="Confirm your phone number in\n"
+              defaultMessage="Confirm your phone number in "
               description="verify identity vetting explanation confirm phone number"
             />
 
