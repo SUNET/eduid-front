@@ -115,7 +115,7 @@ function UsernameInputPart(): JSX.Element {
         <div className="welcome-back-container">
           <legend>
             <FormattedMessage
-              defaultMessage="Welcome back, {username}!"
+              defaultMessage="Welcome back,{username}!"
               description="Login username input"
               values={{
                 username: <strong>{authn_options.display_name}</strong>,
