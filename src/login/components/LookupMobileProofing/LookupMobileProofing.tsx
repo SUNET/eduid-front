@@ -2,7 +2,7 @@ import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";
 import { clearNotifications } from "reducers/Notifications";
@@ -12,16 +12,59 @@ interface LookupMobileProofingProps {
   disabled: boolean;
 }
 
-function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
+function ExplanationText(): JSX.Element {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
+
+  const linkToSettings = (
+    <HashLink key="1" to={"/profile/settings/#phone"}>
+      <FormattedMessage defaultMessage="Settings" description="verify identity vetting link settings" />
+    </HashLink>
+  );
+
+  if (nin) {
+    if (phones === undefined || phones.length === 0) {
+      return (
+        <FormattedMessage
+          defaultMessage="Start by adding your Swedish phone number in {linkToSettings}"
+          description="verify identity vetting explanation add phone number"
+          values={{ linkToSettings: linkToSettings }}
+        />
+      );
+    } else {
+      if (phones.some((num) => num.verified === false)) {
+        return (
+          <FormattedMessage
+            defaultMessage="Confirm your phone number in {linkToSettings}"
+            description="verify identity vetting explanation verify phone"
+            values={{ linkToSettings: linkToSettings }}
+          />
+        );
+      } else {
+        if (!phones.some((num) => num.number.startsWith("+46"))) {
+          return (
+            <FormattedMessage
+              defaultMessage="Only possible with Swedish phone number {linkToSettings}"
+              description="verify identity vetting explanation add swedish phone"
+              values={{ linkToSettings: linkToSettings }}
+            />
+          );
+        }
+      }
+    }
+  }
+  return (
+    <FormattedMessage
+      defaultMessage="Start by adding your ID number above"
+      description="verify identity vetting explanation add nin"
+    />
+  );
+}
+
+function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
+  const nin = useDashboardAppSelector((state) => state.identities.nin);
   const dispatch = useDashboardAppDispatch();
   const [showModal, setShowModal] = useState(false);
-
-  const withoutNin = !nin;
-  const withoutPhoneNumber = Boolean(!phones);
-  const unverifiedNumber = phones?.some((num) => num.verified === false);
-  const nonSweNumber = !phones.some((num) => num.number.startsWith("+46"));
 
   function handleShowModal() {
     dispatch(clearNotifications());
@@ -43,52 +86,6 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
     }
   }
 
-  const linkToSettings = (
-    <HashLink key="1" to={"/profile/settings/#phone"}>
-      <FormattedMessage defaultMessage="Settings" description="verify identity vetting link settings" />
-    </HashLink>
-  );
-
-  const explanationText = (
-    <React.Fragment>
-      {
-        /* if user not added id number, text will help the user to add id number */
-        withoutNin ? (
-          <FormattedMessage
-            defaultMessage="Start by adding your ID number above"
-            description="verify identity vetting explanation add nin"
-          />
-        ) : /* else if, without phone number text will help the user to add phone number and
-            the text "setting" is linked to the setting page phone number section */
-        withoutPhoneNumber ? (
-          <React.Fragment>
-            <FormattedMessage
-              defaultMessage="Start by adding your Swedish phone number in"
-              description="verify identity vetting explanation add phone number"
-            />
-            &nbsp;{linkToSettings}
-          </React.Fragment>
-        ) : /* else if, unverified phone number, text will help the user to confirm phone number and
-            the text "setting" is linked to the setting page phone number section */
-        unverifiedNumber ? (
-          <React.Fragment>
-            <FormattedMessage
-              defaultMessage="Confirm your phone number in"
-              description="verify identity vetting explanation confirm phone number"
-            />
-            &nbsp;{linkToSettings}
-          </React.Fragment>
-        ) : /* else if, the verified phone number is not a Swedish number, description text show "only available with Swedish number" */
-        nonSweNumber ? (
-          <FormattedMessage
-            defaultMessage="Only possible with Swedish phone number"
-            description="verify identity vetting explanation only available swe number"
-          />
-        ) : null
-      }
-    </React.Fragment>
-  );
-
   return (
     <div key="0">
       <p className="proofing-btn-help">
@@ -99,7 +96,9 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
           />
         }
       </p>
-      <p>{explanationText}</p>
+      <p>
+        <ExplanationText />
+      </p>
       <EduIDButton disabled={props.disabled} buttonstyle="primary" size="sm" onClick={() => handleShowModal()}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
