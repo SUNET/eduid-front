@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { AVAILABLE_LANGUAGES } from "globals";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { NameLabels } from "login/components/PersonalData/PersonalDataParent";
 import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { updateIntl } from "reducers/Internationalisation";
 import EduIDButton from "../../../components/EduIDButton";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
@@ -24,10 +25,21 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useDashboardAppDispatch();
   const personal_data = useDashboardAppSelector((state) => state.personal_data.response);
+  const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
 
-  function formSubmit(values: PersonalDataRequest) {
-    dispatch(postPersonalData(values));
-    props.setEditMode(false); // tell parent component we're done editing
+  async function formSubmit(values: PersonalDataRequest) {
+    const response = await dispatch(postPersonalData(values));
+    if (postPersonalData.fulfilled.match(response)) {
+      props.setEditMode(false); // tell parent component we're done editing
+      if (response.payload.language) {
+        dispatch(
+          updateIntl({
+            locale: response.payload.language,
+            messages: messages[response.payload.language],
+          })
+        );
+      }
+    }
   }
 
   return (
