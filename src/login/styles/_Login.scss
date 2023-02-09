@@ -29,11 +29,8 @@
       legend {
         @extend h3;
 
+        display: block;
         width: fit-content !important;
-
-        strong {
-          margin-left: 8px;
-        }
       }
     }
 

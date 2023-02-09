@@ -1540,6 +1540,10 @@
     "developer_comment": "enter code",
     "string": "enter code"
   },
+  "k0/mzB": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back,{username}!"
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
@@ -2115,10 +2119,6 @@
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
   },
-  "qHomsQ": {
-    "developer_comment": "Login username input",
-    "string": "Welcome back, {username}!"
-  },
   "qIDWvd": {
     "developer_comment": "accordion item Adding security key",
     "string": "Add your security key"
@@ -2525,7 +2525,14 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copy to clipboard"
   },
-
+  "unexpected-problem": {
+    "developer_comment": "unexpected problem error",
+    "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
+  },
+  "unexpected-success": {
+    "developer_comment": "unexpected success message",
+    "string": "Success"
+  },
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"

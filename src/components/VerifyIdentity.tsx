@@ -251,7 +251,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
 function AccordionItemSwedish(): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
+  const hasVerifiedSwePhone = phones?.some((phone) => phone.verified && phone.number.startsWith("+46"));
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
 
