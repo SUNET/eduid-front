@@ -21,7 +21,12 @@ const personalDataSlice = createSlice({
         state.response = action.payload;
       })
       .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.response = action.payload;
+        return {
+          response: {
+            ...state.response,
+            ...action.payload,
+          },
+        };
       });
   },
 });
