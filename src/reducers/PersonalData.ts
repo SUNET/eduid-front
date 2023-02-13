@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
 
 interface PersonalDataState {
+  eppn?: string;
   response?: PersonalDataResponse;
 }
 // export for use in tests
