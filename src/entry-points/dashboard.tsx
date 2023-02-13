@@ -19,12 +19,11 @@ const getConfig = async function () {
   if (fetchJsConfig.fulfilled.match(result)) {
     const response = await dashboardStore.dispatch(requestAllPersonalData());
     if (requestAllPersonalData.fulfilled.match(response)) {
-      const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
       if (response.payload.language) {
         dashboardStore.dispatch(
           updateIntl({
             locale: response.payload.language,
-            messages: messages[response.payload.language],
+            messages: LOCALIZED_MESSAGES[response.payload.language],
           })
         );
       }

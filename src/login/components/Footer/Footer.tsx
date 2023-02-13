@@ -8,7 +8,7 @@ const Footer = (): JSX.Element => {
   const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
   const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
-  const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
+  const messages = LOCALIZED_MESSAGES;
 
   let translateTo: string[][] = [];
   let locale = "";

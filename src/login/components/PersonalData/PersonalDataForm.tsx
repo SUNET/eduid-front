@@ -25,7 +25,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useDashboardAppDispatch();
   const personal_data = useDashboardAppSelector((state) => state.personal_data.response);
-  const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
+  const messages = LOCALIZED_MESSAGES;
 
   async function formSubmit(values: PersonalDataRequest) {
     const response = await dispatch(postPersonalData(values));
