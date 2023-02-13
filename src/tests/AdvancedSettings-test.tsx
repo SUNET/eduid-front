@@ -13,6 +13,7 @@ test("renders AccountId as expected", () => {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {
         ...initialState,
+        eppn: test_eppn,
         response: {
           eppn: test_eppn,
           display_name: "test user",
