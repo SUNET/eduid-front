@@ -3,11 +3,12 @@ import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { DashboardMain } from "components/DashboardMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { dashboardStore } from "dashboard-init-app";
-import { DASHBOARD_CONFIG_URL } from "globals";
+import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { appLoadingSlice } from "reducers/AppLoading";
+import { updateIntl } from "reducers/Internationalisation";
 import { showNotification } from "reducers/Notifications";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
@@ -18,6 +19,14 @@ const getConfig = async function () {
   if (fetchJsConfig.fulfilled.match(result)) {
     const response = await dashboardStore.dispatch(requestAllPersonalData());
     if (requestAllPersonalData.fulfilled.match(response)) {
+      if (response.payload.language) {
+        dashboardStore.dispatch(
+          updateIntl({
+            locale: response.payload.language,
+            messages: LOCALIZED_MESSAGES[response.payload.language],
+          })
+        );
+      }
       dashboardStore.dispatch(appLoadingSlice.actions.appLoaded());
     }
   }

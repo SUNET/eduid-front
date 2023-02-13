@@ -10,7 +10,7 @@ export const AVAILABLE_LANGUAGES: { [key: string]: string } = {
   sv: "Svenska",
 };
 
-export const LOCALIZED_MESSAGES = messages;
+export const LOCALIZED_MESSAGES = messages as unknown as { [key: string]: { [key: string]: string } };
 
 export const SIGNUP_CONFIG_URL = "/services/jsconfig/signup/config";
 
