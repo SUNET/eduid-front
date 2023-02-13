@@ -19,15 +19,11 @@ const personalDataSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        state.eppn = action.payload.eppn;
         state.response = action.payload;
       })
       .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        return {
-          response: {
-            ...state.response,
-            ...action.payload,
-          },
-        };
+        state.response = action.payload;
       });
   },
 });
