@@ -962,10 +962,6 @@
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
   },
-  "Z76Njt": {
-    "developer_comment": "verify identity vetting explanation add swedish phone",
-    "string": "Only possible with Swedish phone number {linkToSettings}"
-  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
@@ -2486,6 +2482,10 @@
   "tQpfHe": {
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
+  },
+  "tUkPGr": {
+    "developer_comment": "verify identity vetting explanation add swedish phone",
+    "string": "Only possible with Swedish phone number"
   },
   "tVcCe6": {
     "developer_comment": "emails enter code",
