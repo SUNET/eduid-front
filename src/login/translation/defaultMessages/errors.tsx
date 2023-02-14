@@ -262,4 +262,11 @@ export const specificErrors = {
 
   // email errors
   mail_duplicated: <FormattedMessage id="mail_duplicated" defaultMessage={`Added email is duplicated`} />,
+
+  "proofing.malformed_identity": (
+    <FormattedMessage
+      id="proofing.malformed_identity"
+      defaultMessage={`Incorrect format of the identity number. Please try again.`}
+    />
+  ),
 };
