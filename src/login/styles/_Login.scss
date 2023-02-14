@@ -79,7 +79,11 @@
       flex-direction: column;
       justify-content: space-between;
 
-      h4,
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      h3,
       .help-text {
         margin: 0;
       }
