@@ -79,6 +79,10 @@
     "developer_comment": "SAML login finished",
     "string": "Please wait, you are being logged in..."
   },
+  "0jJrec": {
+    "developer_comment": "verify identity vetting explanation verify phone",
+    "string": "Confirm your phone number in {linkToSettings}"
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
@@ -265,10 +269,6 @@
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
   },
-  "96x/52": {
-    "developer_comment": "verify identity vetting explanation only available swe number",
-    "string": "Only possible with Swedish phone number"
-  },
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Remember me on this device"
@@ -395,6 +395,10 @@
     "developer_comment": "Verification letter expired",
     "string": "Verification letter expired"
   },
+  "FDlOke": {
+    "developer_comment": "verify identity vetting explanation add phone number",
+    "string": "Start by adding your Swedish phone number in {linkToSettings}"
+  },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
@@ -488,10 +492,6 @@
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
-  },
-  "HxoxjV": {
-    "developer_comment": "verify identity vetting explanation confirm phone number",
-    "string": "Confirm your phone number in"
   },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
@@ -893,10 +893,6 @@
   "VwFaJg": {
     "developer_comment": "verify identity",
     "string": "If you have a {Svipe_ID} you can connect it to your eduID."
-  },
-  "VxlVeE": {
-    "developer_comment": "verify identity vetting explanation add phone number",
-    "string": "Start by adding your Swedish phone number in "
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -1540,6 +1536,10 @@
     "developer_comment": "enter code",
     "string": "enter code"
   },
+  "k0/mzB": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back, {username}!"
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
@@ -2089,6 +2089,9 @@
   "profile.phone_display_unconfirmed_data": {
     "string": "confirm added number"
   },
+  "proofing.malformed_identity": {
+    "string": "Incorrect format of the identity number. Please try again."
+  },
   "pwfield.bad": {
     "string": "Very weak password"
   },
@@ -2114,10 +2117,6 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
-  },
-  "qHomsQ": {
-    "developer_comment": "Login username input",
-    "string": "Welcome back, {username}!"
   },
   "qIDWvd": {
     "developer_comment": "accordion item Adding security key",
@@ -2484,6 +2483,10 @@
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
   },
+  "tUkPGr": {
+    "developer_comment": "verify identity vetting explanation add swedish phone",
+    "string": "Only possible with Swedish phone number"
+  },
   "tVcCe6": {
     "developer_comment": "emails enter code",
     "string": "Code"
@@ -2525,7 +2528,14 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copy to clipboard"
   },
-
+  "unexpected-problem": {
+    "developer_comment": "unexpected problem error",
+    "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
+  },
+  "unexpected-success": {
+    "developer_comment": "unexpected success message",
+    "string": "Success"
+  },
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"
