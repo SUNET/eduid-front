@@ -2093,6 +2093,9 @@
   "profile.phone_display_unconfirmed_data": {
     "string": "confirm added number"
   },
+  "proofing.malformed_identity": {
+    "string": "Incorrect format of the identity number. Please try again."
+  },
   "pwfield.bad": {
     "string": "Very weak password"
   },
