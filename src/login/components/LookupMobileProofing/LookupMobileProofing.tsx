@@ -44,7 +44,7 @@ function ExplanationText(): JSX.Element {
         if (!phones.some((num) => num.number.startsWith("+46"))) {
           return (
             <FormattedMessage
-              defaultMessage="Only possible with Swedish phone number {linkToSettings}"
+              defaultMessage="Only possible with Swedish phone number"
               description="verify identity vetting explanation add swedish phone"
               values={{ linkToSettings: linkToSettings }}
             />
