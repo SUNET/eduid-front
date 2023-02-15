@@ -1536,10 +1536,6 @@
     "developer_comment": "enter code",
     "string": "enter code"
   },
-  "k0/mzB": {
-    "developer_comment": "Login username input",
-    "string": "Welcome back, {username}!"
-  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
@@ -2117,6 +2113,10 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
+  },
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back, {username}!"
   },
   "qIDWvd": {
     "developer_comment": "accordion item Adding security key",
