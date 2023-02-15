@@ -1536,10 +1536,6 @@
     "developer_comment": "enter code",
     "string": "skriv in koden"
   },
-  "k0/mzB": {
-    "developer_comment": "Login username input",
-    "string": "Välkommen tillbaka, {username}!"
-  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "gör primär"
@@ -2117,6 +2113,10 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
+  },
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Välkommen tillbaka, {username}!"
   },
   "qIDWvd": {
     "developer_comment": "accordion item Adding security key",
