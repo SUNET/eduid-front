@@ -114,10 +114,10 @@ function UsernameInputPart(): JSX.Element {
         <div className="welcome-back-container">
           <legend>
             <FormattedMessage
-              defaultMessage="Welcome back,{username}!"
+              defaultMessage="Welcome back, {username}!"
               description="Login username input"
               values={{
-                username: <strong>&nbsp;{authn_options.display_name}</strong>,
+                username: <strong>{authn_options.display_name}</strong>,
               }}
             />
           </legend>
