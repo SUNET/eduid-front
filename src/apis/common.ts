@@ -3,7 +3,7 @@ import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
 import { LoginAppDispatch } from "login-init-app";
-import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
+import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "sagas/ts_common";
 import { SignupAppDispatch } from "signup-init-app";
 
 export interface StateWithCommonConfig {
@@ -63,7 +63,10 @@ export async function makeGenericRequest<T>(
 
       resolve(response);
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof NeedsAuthenticationError) {
+        // silently ignore errors about missing authentication
+        reject();
+      } else if (error instanceof Error) {
         thunkAPI.dispatch(genericApiFail(error.toString()));
         reject(error.toString());
       } else {
