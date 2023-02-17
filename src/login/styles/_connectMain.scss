@@ -1,0 +1,12 @@
+.search-user-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-user-form-wrapper > input {
+  flex-grow: 2.5;
+}
+
+.search-user-form-wrapper > button {
+  flex-grow: 0.5;
+}
