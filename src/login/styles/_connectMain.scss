@@ -1,12 +1,17 @@
 .search-user-form-wrapper {
   display: flex;
   justify-content: space-between;
+
+  div#query-wrapper {
+    width: 100%;
+    margin-right: 10px;
+  }
 }
 
-.search-user-form-wrapper > input {
-  flex-grow: 2.5;
-}
+// .search-user-form-wrapper > input {
+//   flex-grow: 3.5;
+// }
 
-.search-user-form-wrapper > button {
-  flex-grow: 0.5;
-}
+// .search-user-form-wrapper > button {
+//   flex-grow: 0.5;
+// }

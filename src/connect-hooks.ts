@@ -3,5 +3,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { ConnectAppDispatch, ConnectRootState } from "./connect-init-app";
 
-export const useErrorsAppDispatch = () => useDispatch<ConnectAppDispatch>();
-export const useErrorsAppSelector: TypedUseSelectorHook<ConnectRootState> = useSelector;
+export const useConnectAppDispatch = () => useDispatch<ConnectAppDispatch>();
+export const useConnectAppSelector: TypedUseSelectorHook<ConnectRootState> = useSelector;
