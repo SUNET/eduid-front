@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { searchUsers } from "apis/eduidConnect";
 
 // export for use in tests
-export const initialState = {};
+export const initialState = {
+  response: {},
+};
 
 export const connectSlice = createSlice({
   name: "connectReducer",
@@ -10,7 +12,7 @@ export const connectSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchUsers.fulfilled, (state, action) => {
-      return (state = action.payload);
+      state.response = action.payload;
     });
   },
 });

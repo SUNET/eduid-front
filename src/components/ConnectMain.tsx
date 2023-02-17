@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
-import { useConnectAppDispatch } from "connect-hooks";
+import { useConnectAppDispatch, useConnectAppSelector } from "connect-hooks";
 import Footer from "login/components/Footer/Footer";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -13,8 +13,22 @@ import { Route, Routes } from "react-router-dom";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 
-function SearchResults(): JSX.Element {
-  return <div>SearchResults</div>;
+function SearchResults(): JSX.Element | null {
+  const response = useConnectAppSelector((state) => state.connect.response);
+
+  if (response && Object.keys(response).length > 0) {
+    return (
+      <div>
+        <h2>Search results</h2>
+        <ul>
+          {Object.values(response).map((user: any) => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  return null;
 }
 
 function SearchUsersForm(): JSX.Element {
@@ -27,8 +41,7 @@ function SearchUsersForm(): JSX.Element {
   });
   const dispatch = useConnectAppDispatch();
 
-  function submitSearchForm(values: any) {
-    console.log("submitSearchForm", values);
+  function submitSearchForm(values: { query: string }): void {
     dispatch(searchUsers(values.query));
   }
 

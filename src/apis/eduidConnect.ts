@@ -6,41 +6,9 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ConnectAppDispatch, ConnectRootState } from "../connect-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
-interface UserQuery {
-  query: any;
-}
-
-interface User {
-  users: [
-    {
-      id: number;
-      name: string;
-      username: string;
-      email: string;
-      address: {
-        street: string;
-        suite: string;
-        city: string;
-        zipcode: string;
-        geo: {
-          lat: string;
-          lng: string;
-        };
-      };
-      phone: string;
-      website: string;
-      company: {
-        name: string;
-        catchPhrase: string;
-        bs: string;
-      };
-    }
-  ];
-}
-
-export interface AllUsersResponse {
-  users: User[];
-}
+// export interface AllUsersResponse {
+//   users: User[];
+// }
 
 /*********************************************************************************************************************/
 /**
@@ -50,7 +18,7 @@ export interface AllUsersResponse {
  */
 export const searchUsers = createAsyncThunk<
   any, // return type
-  UserQuery, // args type
+  string, // args type
   { dispatch: ConnectAppDispatch; state: ConnectRootState }
 >("connect/searchUsers", async (args, thunkAPI) => {
   return makeConnectRequest<any>(thunkAPI, `users?q=${args}`)
