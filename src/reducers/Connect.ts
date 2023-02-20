@@ -3,7 +3,7 @@ import { searchUsers } from "apis/eduidConnect";
 
 // export for use in tests
 export const initialState = {
-  response: {},
+  response: [],
 };
 
 export const connectSlice = createSlice({
