@@ -1,0 +1,14 @@
+ul.pagination {
+  justify-content: center;
+  margin-top: 20px;
+
+  a.page-link {
+    color: $txt-orange;
+  }
+
+  a.active.page-link {
+    background-color: $btn-orange;
+    border-color: $txt-orange;
+    color: $white !important;
+  }
+}

@@ -12,9 +12,11 @@ import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes } from "react-router-dom";
 import EduIDButton from "./EduIDButton";
+import Pagination from "./Pagination";
 
 function getHighlightedText({ value, highlight }: any) {
   console.log("value", value);
+  console.log("highlight", highlight);
   // Split text on highlight term, include term itself into parts, ignore case
   const parts = value && value.split(new RegExp(`(${highlight})`, "gi"));
   return parts.map((part: any, index: any) => (
@@ -32,7 +34,7 @@ const SearchedLists = ({ highlight, value }: any) => {
   return <td>{getHighlightedText({ value, highlight })}</td>;
 };
 
-function SearchResults(props: { query: string; response: any }): JSX.Element | null {
+function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
   const searchText = props.query;
   if (!props.response.length) {
     return (
@@ -77,8 +79,8 @@ function SearchResults(props: { query: string; response: any }): JSX.Element | n
           </tr>
         </thead>
         <tbody>
-          {props.response.map((user: any) => (
-            <tr>
+          {props.currentPosts.map((user: any, index: number) => (
+            <tr key={index}>
               <SearchedLists key={user.name} value={user.name} highlight={props.query} />
               <SearchedLists key={user.phone} value={user.phone} highlight={props.query} />
               <SearchedLists key={user.email} value={user.email} highlight={props.query} />
@@ -98,6 +100,8 @@ function SearchResults(props: { query: string; response: any }): JSX.Element | n
 function Connect(): JSX.Element {
   const [query, setQuery] = useState<string>("");
   const response = useConnectAppSelector((state) => state.connect.response);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(1);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -114,6 +118,13 @@ function Connect(): JSX.Element {
       setQuery(values.query);
     }
   }
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = response.slice(indexOfFirstPost, indexOfLastPost);
+
+  //Change page
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <section id="content" className="horizontal-content-margin content">
@@ -162,7 +173,14 @@ function Connect(): JSX.Element {
       </article>
       {query ? (
         <article className="intro">
-          <SearchResults query={query} response={response} />
+          <SearchResults query={query} currentPosts={currentPosts} response={response} />
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={response.length}
+            paginate={paginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </article>
       ) : null}
     </section>

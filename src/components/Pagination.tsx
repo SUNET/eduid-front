@@ -1,0 +1,96 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+
+interface PaginationProps {
+  postsPerPage: number;
+  totalPosts: number;
+  paginate: (value: number) => void;
+  currentPage: any;
+  setCurrentPage: any;
+}
+
+const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurrentPage }: PaginationProps) => {
+  const pageNumbers: any = [];
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const [arrOfCurrentButtons, setArrOfCurrentButtons] = useState<any>([]);
+
+  useEffect(() => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: 0,
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
+    let numberOfPages = [...pageNumbers];
+    const dotsInitial = "...";
+    const dotsLeft = "...  ";
+    const dotsRight = "  ...";
+
+    if (currentPage >= 1 && currentPage <= 3) {
+      numberOfPages = [1, 2, 3, 4, dotsInitial, pageNumbers.length];
+    } else if (currentPage === 4) {
+      const sliced = pageNumbers.slice(0, 5);
+      numberOfPages = [...sliced, dotsInitial, pageNumbers.length];
+    } else if (currentPage > 4 && currentPage < pageNumbers.length - 2) {
+      const sliced1 = pageNumbers.slice(currentPage - 2, currentPage);
+      const sliced2 = pageNumbers.slice(currentPage, currentPage + 1);
+      numberOfPages = [1, dotsLeft, ...sliced1, ...sliced2, dotsRight, pageNumbers.length];
+    } else if (currentPage > pageNumbers.length - 3) {
+      const sliced = pageNumbers.slice(pageNumbers.length - 4);
+      numberOfPages = [1, dotsLeft, ...sliced];
+    } else if (currentPage === dotsInitial) {
+      setCurrentPage(arrOfCurrentButtons[arrOfCurrentButtons.length - 3] + 1);
+    } else if (currentPage === dotsRight) {
+      setCurrentPage(arrOfCurrentButtons[3] + 2);
+    } else if (currentPage === dotsLeft) {
+      setCurrentPage(arrOfCurrentButtons[3] - 2);
+    }
+    setArrOfCurrentButtons(numberOfPages);
+  }, [currentPage]);
+
+  return (
+    <nav>
+      <ul className="pagination">
+        <li className={currentPage === 1 ? `disabled page-item` : `page-item`}>
+          <a
+            className="page-link"
+            href="#"
+            onClick={() => setCurrentPage((prev: number) => (prev === 1 ? prev : prev - 1))}
+          >
+            <FontAwesomeIcon icon={faChevronLeft as IconProp} />
+            &nbsp;
+            <FormattedMessage defaultMessage="Prev" description="pagination previous button" />
+          </a>
+        </li>
+        {arrOfCurrentButtons.map((number: number, index: number) => (
+          <li key={index} className="page-item">
+            <a onClick={() => paginate(number)} className={currentPage === number ? `active page-link` : `page-link`}>
+              {number}
+            </a>
+          </li>
+        ))}
+        <li className={currentPage === pageNumbers.length ? `disabled page-item` : `page-item`}>
+          <a
+            className="page-link"
+            href="#"
+            onClick={() => setCurrentPage((prev: number) => (prev === pageNumbers.length ? prev : prev + 1))}
+          >
+            <FormattedMessage defaultMessage="Next" description="pagination next button" />
+            &nbsp;
+            <FontAwesomeIcon icon={faChevronRight as IconProp} />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Pagination;
