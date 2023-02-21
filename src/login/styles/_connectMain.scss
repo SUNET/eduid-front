@@ -6,12 +6,96 @@
     width: 100%;
     margin-right: 10px;
   }
+
+  button#search-users {
+    margin-top: 20px;
+  }
 }
 
-// .search-user-form-wrapper > input {
-//   flex-grow: 3.5;
-// }
+table.connect {
+  thead {
+    background-color: $bg-orange;
+    font-family: $proxima-regular;
 
-// .search-user-form-wrapper > button {
-//   flex-grow: 0.5;
-// }
+    th {
+      padding: 10px;
+    }
+
+    th.connect-invite {
+      width: 15%;
+    }
+  }
+
+  tbody {
+    margin-bottom: 0;
+
+    tr {
+      height: 5.5rem;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    tr:nth-child(even) {
+      background-color: $bg-gray;
+    }
+
+    td {
+      line-height: 1.4;
+      padding: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+  }
+
+  td button#add-users {
+    /* Now like a table header */
+    position: absolute;
+
+    /* Top/left values mimic padding */
+    bottom: 15px;
+    left: 30px;
+  }
+
+  table.connect tbody td {
+    padding: 0;
+    padding-left: 20%;
+  }
+
+  /*
+	Label the data
+	*/
+  // td:nth-of-type(1)::before {
+  //   content: "Name";
+  // }
+
+  // td:nth-of-type(2)::before {
+  //   content: "Phone Number";
+  // }
+
+  // td:nth-of-type(3)::before {
+  //   content: "Email Address";
+  // }
+}

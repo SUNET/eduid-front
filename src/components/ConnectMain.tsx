@@ -1,19 +1,20 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import { useConnectAppDispatch, useConnectAppSelector } from "connect-hooks";
 import Footer from "login/components/Footer/Footer";
+import CustomInput from "login/components/Inputs/CustomInput";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes } from "react-router-dom";
 import EduIDButton from "./EduIDButton";
-import TextInput from "./EduIDTextInput";
 
 function getHighlightedText({ value, highlight }: any) {
+  console.log("value", value);
   // Split text on highlight term, include term itself into parts, ignore case
   const parts = value && value.split(new RegExp(`(${highlight})`, "gi"));
   return parts.map((part: any, index: any) => (
@@ -28,11 +29,10 @@ function getHighlightedText({ value, highlight }: any) {
 }
 
 const SearchedLists = ({ highlight, value }: any) => {
-  return <li>{getHighlightedText({ value, highlight })}</li>;
+  return <td>{getHighlightedText({ value, highlight })}</td>;
 };
 
 function SearchResults(props: { query: string; response: any }): JSX.Element | null {
-  console.log("props.response", props.response);
   const searchText = props.query;
   if (!props.response.length) {
     return (
@@ -48,14 +48,50 @@ function SearchResults(props: { query: string; response: any }): JSX.Element | n
     );
   }
   return (
-    <div>
-      <h2>Search results</h2>
-      <ul>
-        {props.response.map((user: any) => (
-          <SearchedLists key={user.id} value={user.name} highlight={props.query} />
-        ))}
-      </ul>
-    </div>
+    <React.Fragment>
+      <p>
+        <FormattedMessage
+          defaultMessage="{length} user was found using query {searchText} "
+          description="searching text"
+          values={{
+            length: <strong> {props.response.length}</strong>,
+            searchText: <strong>{searchText}</strong>,
+          }}
+        />
+      </p>
+      <table className="table-form responsive-table connect">
+        <thead>
+          <tr>
+            <th className="connect-name">
+              <FormattedMessage description="connect name" defaultMessage="Name" />
+            </th>
+            <th className="connect-phone-number">
+              <FormattedMessage description="connect phone number" defaultMessage="Phone number" />
+            </th>
+            <th className="connect-email-address">
+              <FormattedMessage description="connect email address" defaultMessage="Email" />
+            </th>
+            <th className="connect-invite">
+              <FormattedMessage description="connect-invitee" defaultMessage="Invite" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.response.map((user: any) => (
+            <tr>
+              <SearchedLists key={user.name} value={user.name} highlight={props.query} />
+              <SearchedLists key={user.phone} value={user.phone} highlight={props.query} />
+              <SearchedLists key={user.email} value={user.email} highlight={props.query} />
+              <td>
+                <EduIDButton type="button" id="add-users" buttonstyle="link">
+                  <FontAwesomeIcon icon={faUserPlus as IconProp} />
+                </EduIDButton>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </React.Fragment>
   );
 }
 
@@ -67,7 +103,7 @@ function Connect(): JSX.Element {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder search",
-    defaultMessage: "Search here",
+    defaultMessage: "username, phone number or email",
     description: "search placeholder",
   });
   const dispatch = useConnectAppDispatch();
@@ -88,42 +124,47 @@ function Connect(): JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="You can search and invite other users"
+              defaultMessage="Here you can search for people and invite them to join your group."
               description="Connect admin description"
             />
           </p>
         </div>
       </section>
 
-      <FinalForm
-        onSubmit={submitSearchForm}
-        render={({ handleSubmit, invalid, pristine }) => (
-          <form id="search-user-form" className="search-user-form" onSubmit={handleSubmit}>
-            <div className="search-user-form-wrapper">
-              <FinalField
-                // label={<FormattedMessage defaultMessage="User name" description="search user name label" />}
-                component={TextInput}
-                componentClass="input"
-                type="text"
-                name="query"
-                autoFocus
-                placeholder={placeholder}
-                onChange={(val: any, prevVal: any) => console.log("onChange", val, prevVal)}
-              />
-              <EduIDButton
-                type="submit"
-                id="search-users"
-                buttonstyle="primary"
-                disabled={invalid || pristine}
-                onClick={handleSubmit}
-              >
-                <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
-              </EduIDButton>
-            </div>
-          </form>
-        )}
-      />
-      {query ? <SearchResults query={query} response={response} /> : null}
+      <article className="intro">
+        <FinalForm
+          onSubmit={submitSearchForm}
+          render={({ handleSubmit, invalid, pristine }) => (
+            <form id="search-user-form" className="search-user-form" onSubmit={handleSubmit}>
+              <div className="search-user-form-wrapper">
+                <FinalField
+                  label={<FormattedMessage defaultMessage="Search" description="search user name label" />}
+                  component={CustomInput}
+                  componentClass="input"
+                  type="text"
+                  name="query"
+                  autoFocus
+                  placeholder={placeholder}
+                />
+                <EduIDButton
+                  type="submit"
+                  id="search-users"
+                  buttonstyle="primary"
+                  disabled={invalid || pristine}
+                  onClick={handleSubmit}
+                >
+                  <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
+                </EduIDButton>
+              </div>
+            </form>
+          )}
+        />
+      </article>
+      {query ? (
+        <article className="intro">
+          <SearchResults query={query} response={response} />
+        </article>
+      ) : null}
     </section>
   );
 }
