@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
+// TODO: Add correct types and remove any
 interface PaginationProps {
   postsPerPage: number;
   totalPosts: number;
@@ -13,7 +14,7 @@ interface PaginationProps {
 }
 
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurrentPage }: PaginationProps) => {
-  const pageNumbers: any = [];
+  const pageNumbers: any[] = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);

@@ -11,4 +11,11 @@ ul.pagination {
     border-color: $txt-orange;
     color: $white !important;
   }
+
+  a.disabled.page-link {
+    background-color: $txt-orange;
+    opacity: 0.4;
+    color: white;
+    border-color: $txt-orange;
+  }
 }

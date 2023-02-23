@@ -14,12 +14,11 @@ import { Route, Routes } from "react-router-dom";
 import EduIDButton from "./EduIDButton";
 import Pagination from "./Pagination";
 
+// TODO: Add correct types and remove any
 function getHighlightedText({ value, highlight }: any) {
-  console.log("value", value);
-  console.log("highlight", highlight);
   // Split text on highlight term, include term itself into parts, ignore case
   const parts = value && value.split(new RegExp(`(${highlight})`, "gi"));
-  return parts.map((part: any, index: any) => (
+  return parts.map((part: any, index: number) => (
     <React.Fragment key={index}>
       {part.toLowerCase() === highlight.toLowerCase() ? (
         <strong style={{ backgroundColor: "#ffe7dd" }}>{part}</strong>
