@@ -10,6 +10,12 @@
   button#search-users {
     margin-top: 20px;
   }
+
+  button.clear-input {
+    margin-left: -65px;
+    height: 80px;
+    width: 52px;
+  }
 }
 
 table.connect {
@@ -23,6 +29,10 @@ table.connect {
 
     th.connect-invite {
       width: 12%;
+    }
+
+    th.connect-see-more {
+      width: 11%;
     }
   }
 

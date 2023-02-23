@@ -7,13 +7,23 @@ import { useEffect, useState } from "react";
 interface PaginationProps {
   postsPerPage: number;
   totalPosts: number;
-  paginate: (value: number) => void;
+  // paginate: (value: number) => void;
   currentPage: any;
   setCurrentPage: any;
 }
 
-const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurrentPage }: PaginationProps) => {
+function Pagination({
+  postsPerPage,
+  totalPosts,
+  // paginate,
+  currentPage,
+  setCurrentPage,
+}: PaginationProps) {
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   const pageNumbers: any[] = [];
+
+  console.log("currentPage", currentPage);
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -54,8 +64,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurren
         setCurrentPage(arrOfCurrentButtons[3] - 2);
       }
     }
+    // how many pages will be shown
     setArrOfCurrentButtons(numberOfPages);
-  }, [currentPage, totalPosts]);
+  }, [totalPosts, currentPage]);
 
   if (!pageNumbers.length) return null;
 
@@ -90,6 +101,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurren
       </ul>
     </nav>
   );
-};
+}
 
 export default Pagination;

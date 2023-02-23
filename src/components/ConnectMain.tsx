@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
@@ -7,12 +7,48 @@ import { Notifications } from "components/Notifications";
 import { useConnectAppDispatch, useConnectAppSelector } from "connect-hooks";
 import Footer from "login/components/Footer/Footer";
 import CustomInput from "login/components/Inputs/CustomInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes } from "react-router-dom";
 import EduIDButton from "./EduIDButton";
 import Pagination from "./Pagination";
+
+function UserLists({ user, query }: any) {
+  const [expanded, setExpanded] = useState(false);
+
+  function handleMoreUserInfo(event: React.MouseEvent<HTMLElement>) {
+    console.log("hihihi");
+    setExpanded(true);
+  }
+  return (
+    <>
+      <tr key={user.id}>
+        <SearchedLists key={user.name} value={user.name} highlight={query} />
+        <SearchedLists key={user.email} value={user.email} highlight={query} />
+        <td>
+          <EduIDButton type="button" id="add-users" buttonstyle="link">
+            <FontAwesomeIcon icon={faUserPlus as IconProp} />
+          </EduIDButton>
+        </td>
+        <td>
+          <EduIDButton type="button" id="see-more" buttonstyle="link" onClick={handleMoreUserInfo}>
+            <FontAwesomeIcon icon={faChevronUp as IconProp} />
+          </EduIDButton>
+        </td>
+      </tr>
+
+      {expanded && (
+        <tr>
+          <td>
+            {user.phone}
+            {user.company.name}
+          </td>
+        </tr>
+      )}
+    </>
+  );
+}
 
 // TODO: Add correct types and remove any
 function getHighlightedText({ value, highlight }: any) {
@@ -36,6 +72,7 @@ function SearchedLists({ highlight, value }: any) {
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
   console.log("props.currentPosts", props.currentPosts);
   const searchText = props.query;
+
   if (!props.response.length) {
     return (
       <p>
@@ -67,36 +104,27 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             <th className="connect-name">
               <FormattedMessage description="connect name" defaultMessage="Name" />
             </th>
-            <th className="connect-phone-number">
-              <FormattedMessage description="connect phone number" defaultMessage="Phone number" />
-            </th>
             <th className="connect-email-address">
               <FormattedMessage description="connect email address" defaultMessage="Email" />
             </th>
             <th className="connect-invite">
-              <FormattedMessage description="connect-invitee" defaultMessage="Invite" />
+              <FormattedMessage description="connect-invite" defaultMessage="Invite" />
+            </th>
+            <th className="connect-see-more">
+              <FormattedMessage description="connect-see-more" defaultMessage="More" />
             </th>
           </tr>
         </thead>
         <tbody>
-          {props.currentPosts.map((user: any, index: number) => (
-            <tr key={index}>
-              <SearchedLists key={user.name} value={user.name} highlight={props.query} />
-              <SearchedLists key={user.phone} value={user.phone} highlight={props.query} />
-              <SearchedLists key={user.email} value={user.email} highlight={props.query} />
-              <td>
-                <EduIDButton type="button" id="add-users" buttonstyle="link">
-                  <FontAwesomeIcon icon={faUserPlus as IconProp} />
-                </EduIDButton>
-              </td>
-            </tr>
+          {props.currentPosts.map((user: any) => (
+            <UserLists key={user.id} user={user} query={props.query} />
           ))}
         </tbody>
       </table>
     </React.Fragment>
   );
 }
-
+//
 const required = (value?: string) => {
   if (value === undefined || !value.trim()) return "required";
 };
@@ -105,7 +133,7 @@ function Connect(): JSX.Element {
   const [query, setQuery] = useState<string>("");
   const response = useConnectAppSelector((state) => state.connect.response);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(1);
+  const [postsPerPage] = useState(3);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -122,13 +150,20 @@ function Connect(): JSX.Element {
       setQuery(values.query);
     }
   }
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [response]);
+
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
+  console.log("indexOfLastPost", indexOfLastPost);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  console.log("indexOfFirstPost", indexOfFirstPost);
   const currentPosts = response.slice(indexOfFirstPost, indexOfLastPost);
-
+  console.log("currentPosts", currentPosts);
   //Change page
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <section id="content" className="horizontal-content-margin content">
@@ -192,7 +227,7 @@ function Connect(): JSX.Element {
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={response.length}
-            paginate={paginate}
+            // paginate={paginate}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
