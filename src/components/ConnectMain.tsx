@@ -29,11 +29,12 @@ function getHighlightedText({ value, highlight }: any) {
   ));
 }
 
-const SearchedLists = ({ highlight, value }: any) => {
+function SearchedLists({ highlight, value }: any) {
   return <td>{getHighlightedText({ value, highlight })}</td>;
-};
+}
 
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
+  console.log("props.currentPosts", props.currentPosts);
   const searchText = props.query;
   if (!props.response.length) {
     return (
@@ -96,6 +97,10 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
   );
 }
 
+const required = (value?: string) => {
+  if (value === undefined || !value.trim()) return "required";
+};
+
 function Connect(): JSX.Element {
   const [query, setQuery] = useState<string>("");
   const response = useConnectAppSelector((state) => state.connect.response);
@@ -143,8 +148,9 @@ function Connect(): JSX.Element {
 
       <article className="intro">
         <FinalForm
+          initialValues={{ query: "" }}
           onSubmit={submitSearchForm}
-          render={({ handleSubmit, invalid, pristine }) => (
+          render={({ handleSubmit, invalid, pristine, form }) => (
             <form id="search-user-form" className="search-user-form" onSubmit={handleSubmit}>
               <div className="search-user-form-wrapper">
                 <FinalField
@@ -155,7 +161,17 @@ function Connect(): JSX.Element {
                   name="query"
                   autoFocus
                   placeholder={placeholder}
+                  validate={required}
                 />
+                <EduIDButton
+                  id="clear-search"
+                  buttonstyle="close"
+                  type="button"
+                  className="clear-input"
+                  onClick={() => form.reset()}
+                />
+              </div>
+              <div className="buttons">
                 <EduIDButton
                   type="submit"
                   id="search-users"
