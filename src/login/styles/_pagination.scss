@@ -19,3 +19,10 @@ ul.pagination {
     border-color: $txt-orange;
   }
 }
+
+@media (max-width: $bp-xs) {
+  a.page-link {
+    padding: 6px;
+    font-size: 1rem;
+  }
+}

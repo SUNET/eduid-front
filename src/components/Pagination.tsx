@@ -2,7 +2,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
 
 // TODO: Add correct types and remove any
 interface PaginationProps {
@@ -70,8 +69,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurren
             onClick={() => setCurrentPage((prev: number) => (prev === 1 ? prev : prev - 1))}
           >
             <FontAwesomeIcon icon={faChevronLeft as IconProp} />
-            &nbsp;
-            <FormattedMessage defaultMessage="Prev" description="pagination previous button" />
           </a>
         </li>
         {arrOfCurrentButtons.map((number: number, index: number) => (
@@ -87,8 +84,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, setCurren
             href="#"
             onClick={() => setCurrentPage((prev: number) => (prev === pageNumbers.length ? prev : prev + 1))}
           >
-            <FormattedMessage defaultMessage="Next" description="pagination next button" />
-            &nbsp;
             <FontAwesomeIcon icon={faChevronRight as IconProp} />
           </a>
         </li>
