@@ -43,15 +43,25 @@ table.connect {
       height: 5.5rem;
       padding-top: 10px;
       padding-bottom: 10px;
+      border-bottom: solid 1px $bg-gray;
     }
 
-    tr:nth-child(even) {
+    tr:hover:not(.expanded) {
       background-color: $bg-gray;
+      cursor: pointer;
     }
+
+    // tr:nth-child(even) {
+    //   background-color: $bg-gray;
+    // }
 
     td {
       line-height: 1.4;
       padding: 10px;
+
+      svg {
+        color: $txt-orange;
+      }
     }
   }
 }

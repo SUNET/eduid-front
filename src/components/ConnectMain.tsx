@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faChevronUp, faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
@@ -16,14 +16,9 @@ import Pagination from "./Pagination";
 
 function UserLists({ user, query }: any) {
   const [expanded, setExpanded] = useState(false);
-
-  function handleMoreUserInfo(event: React.MouseEvent<HTMLElement>) {
-    console.log("hihihi");
-    setExpanded(true);
-  }
   return (
     <>
-      <tr key={user.id}>
+      <tr key={user.id} onClick={() => setExpanded(!expanded)}>
         <SearchedLists key={user.name} value={user.name} highlight={query} />
         <SearchedLists key={user.email} value={user.email} highlight={query} />
         <td>
@@ -32,17 +27,14 @@ function UserLists({ user, query }: any) {
           </EduIDButton>
         </td>
         <td>
-          <EduIDButton type="button" id="see-more" buttonstyle="link" onClick={handleMoreUserInfo}>
-            <FontAwesomeIcon icon={faChevronUp as IconProp} />
-          </EduIDButton>
+          <FontAwesomeIcon icon={expanded ? (faChevronUp as IconProp) : (faChevronDown as IconProp)} />
         </td>
       </tr>
-
       {expanded && (
-        <tr>
-          <td>
-            {user.phone}
-            {user.company.name}
+        <tr className="expanded">
+          <td colSpan={4}>
+            {user.phone} <br />
+            {user.company.name} <br />
           </td>
         </tr>
       )}
@@ -157,11 +149,8 @@ function Connect(): JSX.Element {
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
-  console.log("indexOfLastPost", indexOfLastPost);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  console.log("indexOfFirstPost", indexOfFirstPost);
   const currentPosts = response.slice(indexOfFirstPost, indexOfLastPost);
-  console.log("currentPosts", currentPosts);
   //Change page
   // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -185,7 +174,7 @@ function Connect(): JSX.Element {
         <FinalForm
           initialValues={{ query: "" }}
           onSubmit={submitSearchForm}
-          render={({ handleSubmit, invalid, pristine, form }) => (
+          render={({ handleSubmit, invalid, pristine, form, values }) => (
             <form id="search-user-form" className="search-user-form" onSubmit={handleSubmit}>
               <div className="search-user-form-wrapper">
                 <FinalField
@@ -198,13 +187,16 @@ function Connect(): JSX.Element {
                   placeholder={placeholder}
                   validate={required}
                 />
-                <EduIDButton
-                  id="clear-search"
-                  buttonstyle="close"
-                  type="button"
-                  className="clear-input"
-                  onClick={() => form.reset()}
-                />
+                {/* Only visible clear button when there is a value in the input */}
+                {values.query && (
+                  <EduIDButton
+                    id="clear-search"
+                    buttonstyle="close"
+                    type="button"
+                    className="clear-input"
+                    onClick={() => form.reset()}
+                  />
+                )}
               </div>
               <div className="buttons">
                 <EduIDButton
