@@ -39,7 +39,7 @@ table.connect {
   tbody {
     margin-bottom: 0;
 
-    tr {
+    tr:not(.selected) {
       height: 5.5rem;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -62,6 +62,21 @@ table.connect {
       svg {
         color: $txt-orange;
       }
+    }
+
+    td svg {
+      border: 3px solid transparent;
+    }
+
+    td.expanded svg {
+      background-color: $bg-orange;
+      border: 3px solid $bg-orange;
+      border-radius: 20px;
+    }
+
+    td.selected {
+      font-size: 1rem;
+      padding-left: 20px !important;
     }
   }
 }

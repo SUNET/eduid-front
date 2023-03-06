@@ -18,7 +18,7 @@ function UserLists({ user, query }: any) {
   const [expanded, setExpanded] = useState(false);
   return (
     <>
-      <tr key={user.id} onClick={() => setExpanded(!expanded)}>
+      <tr key={user.id} onClick={() => setExpanded(!expanded)} className={expanded ? "selected" : "collapsed"}>
         <SearchedLists key={user.name} value={user.name} highlight={query} />
         <SearchedLists key={user.email} value={user.email} highlight={query} />
         <td>
@@ -26,13 +26,15 @@ function UserLists({ user, query }: any) {
             <FontAwesomeIcon icon={faUserPlus as IconProp} />
           </EduIDButton>
         </td>
-        <td>
+        <td className={expanded ? "expanded" : "collapsed"}>
           <FontAwesomeIcon icon={expanded ? (faChevronUp as IconProp) : (faChevronDown as IconProp)} />
         </td>
       </tr>
       {expanded && (
         <tr className="expanded">
-          <td colSpan={4}>
+          <td className="selected" colSpan={4}>
+            <FormattedMessage defaultMessage="History" description="History" />
+            <br />
             {user.phone} <br />
             {user.company.name} <br />
           </td>
