@@ -66,6 +66,9 @@ function SearchedLists({ highlight, value }: any) {
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
   console.log("props.currentPosts", props.currentPosts);
   const searchText = props.query;
+  console.log("props", searchText);
+
+  if (!props.query) return null;
 
   if (!props.response.length) {
     return (
@@ -196,7 +199,9 @@ function Connect(): JSX.Element {
                     buttonstyle="close"
                     type="button"
                     className="clear-input"
-                    onClick={() => form.reset()}
+                    onClick={() => {
+                      form.reset(), setQuery("");
+                    }}
                   />
                 )}
               </div>
