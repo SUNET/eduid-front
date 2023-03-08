@@ -19,9 +19,20 @@
   }
 }
 
+.search-results {
+  display: flex;
+  align-items: baseline;
+
+  span {
+    color: $txt-gray;
+  }
+}
+
 table.connect {
   thead {
-    background-color: $bg-orange;
+    background-color: $border-gray;
+    text-transform: uppercase;
+    border-bottom: 1px $txt-gray solid;
     font-family: $proxima-regular;
 
     th {

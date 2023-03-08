@@ -131,7 +131,7 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
 
   if (!props.response.length) {
     return (
-      <p>
+      <h3>
         <FormattedMessage
           defaultMessage="Oops, Your search {searchText} did not match any results. please try again."
           description="searching text"
@@ -139,28 +139,50 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             searchText: <strong>{searchText}</strong>,
           }}
         />
-      </p>
+      </h3>
     );
   }
   return (
     <React.Fragment>
-      <p>
-        <FormattedMessage
+      <div className="search-results">
+        <h2>
+          <FormattedMessage
+            defaultMessage="Search: {searchText} "
+            description="searching text"
+            values={{
+              searchText: <>{searchText}</>,
+              length: <> {props.response.length}</>,
+            }}
+          />
+
+          {/* <FormattedMessage
           defaultMessage="{length} user was found using query {searchText} "
           description="searching text"
           values={{
             length: <strong> {props.response.length}</strong>,
             searchText: <strong>{searchText}</strong>,
           }}
-        />
-      </p>
+        /> */}
+        </h2>
+        &nbsp;
+        <span>
+          <FormattedMessage
+            defaultMessage=" {length} user was found."
+            description="searching text"
+            values={{
+              length: <> {props.response.length}</>,
+            }}
+          />
+        </span>
+      </div>
+
       <table className="table-form responsive-table connect">
         <thead>
           <tr>
             <th className="connect-see-more" />
             {/* <FormattedMessage description="connect-see-more" defaultMessage="More" /> */}
             <th className="connect-name">
-              <FormattedMessage description="connect name" defaultMessage="Name / Email address" />
+              <FormattedMessage description="connect name" defaultMessage="Name & Email" />
             </th>
             {/* <th className="connect-invite-status">
               <FormattedMessage description="connect-invite" defaultMessage="Status" />
