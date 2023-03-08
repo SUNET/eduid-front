@@ -1,5 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faChevronDown, faChevronUp, faMagnifyingGlass, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faChevronUp,
+  faCircleCheck,
+  faMagnifyingGlass,
+  faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
@@ -16,25 +22,80 @@ import Pagination from "./Pagination";
 
 function UserLists({ user, query }: any) {
   const [expanded, setExpanded] = useState(false);
+  const [mouseEnter, setMouseEnter] = useState(false);
+
+  // when user invited, invite button is disabled but possibly to send a reminder. icon === check circle mark gray color.
+  // when user not invited, invite button is enabled. icon === circle plus mark.
+  // when user linked, invite button is disabled. icon === check circle mark background red color.
+
+  const userInvited = false;
+  const userLinked = true;
   return (
     <>
-      <tr key={user.id} onClick={() => setExpanded(!expanded)} className={expanded ? "selected" : "collapsed"}>
-        <SearchedLists key={user.name} value={user.name} highlight={query} />
-        <SearchedLists key={user.email} value={user.email} highlight={query} />
-        <td>
-          <EduIDButton type="button" id="add-users" buttonstyle="link">
-            <FontAwesomeIcon icon={faUserPlus as IconProp} />
-          </EduIDButton>
-        </td>
-        <td className={expanded ? "expanded" : "collapsed"}>
+      <tr
+        key={user.id}
+        onMouseEnter={() => setMouseEnter(true)}
+        onMouseLeave={() => setMouseEnter(false)}
+        className={mouseEnter ? "hover" : expanded ? "selected" : "collapsed"}
+      >
+        <td
+          className={mouseEnter ? "hover" : expanded ? "expanded" : "collapsed"}
+          onClick={() => setExpanded(!expanded)}
+          onMouseEnter={() => setMouseEnter(true)}
+          onMouseLeave={() => setMouseEnter(false)}
+        >
           <FontAwesomeIcon icon={expanded ? (faChevronUp as IconProp) : (faChevronDown as IconProp)} />
+        </td>
+        <td>
+          <p>
+            <SearchedLists key={user.name} value={user.name} highlight={query} />
+          </p>
+          <p>
+            <SearchedLists key={user.email} value={user.email} highlight={query} />
+          </p>
+
+          {userLinked ? (
+            <span className="linked">linked</span>
+          ) : userInvited ? (
+            <>
+              <span className="unlinked">Invited</span>
+              &nbsp;
+              <span>not yet responded.</span>
+              {/* <br />
+              <a href="#">Send a reminder?</a> */}
+            </>
+          ) : (
+            <>
+              <span className="unlinked">Not Invited</span>
+              {/* <br />
+              <a href="#">Send an invitation?</a> */}
+            </>
+          )}
+        </td>
+        <td>
+          {userLinked ? (
+            <FontAwesomeIcon icon={faCircleCheck as IconProp} />
+          ) : userInvited ? (
+            <EduIDButton type="button" id="add-users" size="sm" buttonstyle={"secondary"} className={"abled"}>
+              <FontAwesomeIcon icon={faPaperPlane as IconProp} />
+
+              <p className="text">
+                <FormattedMessage defaultMessage="Resend" description="Resend invitation button text" />
+              </p>
+            </EduIDButton>
+          ) : (
+            <EduIDButton type="button" id="add-users" size="sm" buttonstyle={"primary"} className={"abled"}>
+              <FontAwesomeIcon icon={faPaperPlane as IconProp} />
+              <p className="text">
+                <FormattedMessage defaultMessage="Invite" description="Invite button text" />
+              </p>
+            </EduIDButton>
+          )}
         </td>
       </tr>
       {expanded && (
         <tr className="expanded">
-          <td className="selected" colSpan={4}>
-            <FormattedMessage defaultMessage="History" description="History" />
-            <br />
+          <td className="selected" colSpan={3}>
             {user.phone} <br />
             {user.company.name} <br />
           </td>
@@ -60,13 +121,11 @@ function getHighlightedText({ value, highlight }: any) {
 }
 
 function SearchedLists({ highlight, value }: any) {
-  return <td>{getHighlightedText({ value, highlight })}</td>;
+  return <>{getHighlightedText({ value, highlight })}</>;
 }
 
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
-  console.log("props.currentPosts", props.currentPosts);
   const searchText = props.query;
-  console.log("props", searchText);
 
   if (!props.query) return null;
 
@@ -98,17 +157,16 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
       <table className="table-form responsive-table connect">
         <thead>
           <tr>
+            <th className="connect-see-more" />
+            {/* <FormattedMessage description="connect-see-more" defaultMessage="More" /> */}
             <th className="connect-name">
-              <FormattedMessage description="connect name" defaultMessage="Name" />
+              <FormattedMessage description="connect name" defaultMessage="Name / Email address" />
             </th>
-            <th className="connect-email-address">
-              <FormattedMessage description="connect email address" defaultMessage="Email" />
-            </th>
+            {/* <th className="connect-invite-status">
+              <FormattedMessage description="connect-invite" defaultMessage="Status" />
+            </th> */}
             <th className="connect-invite">
-              <FormattedMessage description="connect-invite" defaultMessage="Invite" />
-            </th>
-            <th className="connect-see-more">
-              <FormattedMessage description="connect-see-more" defaultMessage="More" />
+              <FormattedMessage description="connect email address" defaultMessage="Invite" />
             </th>
           </tr>
         </thead>
@@ -191,6 +249,7 @@ function Connect(): JSX.Element {
                   autoFocus
                   placeholder={placeholder}
                   validate={required}
+                  onChange={() => setQuery(values.query)}
                 />
                 {/* Only visible clear button when there is a value in the input */}
                 {values.query && (
@@ -200,6 +259,7 @@ function Connect(): JSX.Element {
                     type="button"
                     className="clear-input"
                     onClick={() => {
+                      console.log("values.query", values.query);
                       form.reset(), setQuery("");
                     }}
                   />
@@ -214,6 +274,8 @@ function Connect(): JSX.Element {
                   onClick={handleSubmit}
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
+                  &nbsp;
+                  <FormattedMessage defaultMessage=" Search" description="button text" />
                 </EduIDButton>
               </div>
             </form>

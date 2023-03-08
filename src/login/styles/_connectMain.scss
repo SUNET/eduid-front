@@ -1,7 +1,7 @@
 .search-user-form-wrapper {
   display: flex;
   justify-content: space-between;
-  height: 7rem;
+  height: 6rem;
 
   div#query-wrapper {
     width: 100%;
@@ -26,14 +26,19 @@ table.connect {
 
     th {
       padding: 10px;
+      font-size: 1rem;
     }
 
     th.connect-invite {
-      width: 12%;
+      width: 25%;
+    }
+
+    th.connect-invite-status {
+      width: 20%;
     }
 
     th.connect-see-more {
-      width: 11%;
+      width: 13%;
     }
   }
 
@@ -41,16 +46,40 @@ table.connect {
     margin-bottom: 0;
 
     tr:not(.selected) {
-      height: 5.5rem;
       padding-top: 10px;
       padding-bottom: 10px;
       border-bottom: solid 1px $bg-gray;
     }
 
+    tr.hover {
+      background-color: $bg-gray;
+    }
+
     tr:hover:not(.expanded) {
       background-color: $bg-gray;
-      cursor: pointer;
+      z-index: 1000;
+
+      // .abled:hover {
+      //   color: red;
+      //   background-color: white;
+      // }
     }
+
+    button.linked svg {
+      color: $border-gray !important;
+      font-size: 1.6rem;
+      background-color: $txt-gray;
+      border-radius: 100px;
+      border: 0;
+    }
+
+    // button.abled svg {
+    // font-size: 1.5rem;
+    // color: white;
+
+    // background-color: gray;
+    // border-radius: 26px;
+    // }
 
     // tr:nth-child(even) {
     //   background-color: $bg-gray;
@@ -60,13 +89,65 @@ table.connect {
       line-height: 1.4;
       padding: 10px;
 
-      svg {
+      svg.fa-chevron-down,
+      svg.fa-chevron-up {
         color: $txt-orange;
+      }
+
+      p {
+        margin-bottom: 0;
+        line-height: 2;
+      }
+
+      p.text {
+        font-size: 13px;
+      }
+
+      // p:nth-child(2) {
+      //   font-size: 1rem;
+      //   color: $txt-gray;
+      // }
+
+      span {
+        font-size: 0.9rem;
+        color: $txt-gray;
+      }
+
+      span.linked {
+        background-color: $bg-orange;
+        color: $txt-orange;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-family: $proxima-bold;
+      }
+
+      span.unlinked {
+        background-color: $border-gray;
+        color: $txt-gray;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-family: $proxima-bold;
+      }
+
+      a {
+        font-size: 0.9rem;
       }
     }
 
     td svg {
       border: 3px solid transparent;
+    }
+
+    td button#add-users {
+      align-items: center;
+      display: flex;
+    }
+
+    td button:not(.btn)svg:hover,
+    td.hover svg {
+      box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+      border-radius: 20px;
+      background-color: $white;
     }
 
     td.expanded svg {
@@ -79,59 +160,21 @@ table.connect {
       font-size: 1rem;
       padding-left: 20px !important;
     }
+
+    svg.fa-circle-check {
+      font-size: 2rem;
+      color: $success-green;
+    }
   }
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* Force table to not be like tables anymore */
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-
-  /* Hide table headers (but not display: none;, for accessibility) */
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  td {
-    /* Behave  like a "row" */
-    border: none;
-    position: relative;
-  }
-
-  td button#add-users {
-    /* Now like a table header */
-    position: absolute;
-
-    /* Top/left values mimic padding */
-    bottom: 15px;
-    left: 15px;
-  }
-
+@media (max-width: $bp-sm) {
   table.connect tbody td {
-    padding: 0;
-    padding-left: 20%;
+    line-height: 1;
+    padding: 10px 0;
+
+    p.text {
+      display: none;
+    }
   }
-
-  /*
-	Label the data
-	*/
-  // td:nth-of-type(1)::before {
-  //   content: "Name";
-  // }
-
-  // td:nth-of-type(2)::before {
-  //   content: "Phone Number";
-  // }
-
-  // td:nth-of-type(3)::before {
-  //   content: "Email Address";
-  // }
 }
