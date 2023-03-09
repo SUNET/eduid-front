@@ -46,8 +46,6 @@ table.connect {
     }
 
     th.connect-invite {
-      width: 25%;
-
       p {
         display: none;
       }
@@ -168,7 +166,6 @@ table.connect {
 @media (max-width: $bp-sm) {
   table.connect tbody td {
     line-height: 1;
-    padding: 10px 0;
 
     button :nth-child(2) {
       visibility: hidden;
