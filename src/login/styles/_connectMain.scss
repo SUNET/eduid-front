@@ -97,8 +97,12 @@ table.connect {
       }
 
       p {
-        margin-bottom: 0;
-        line-height: 2;
+        line-height: 1;
+      }
+
+      p.text-small {
+        line-height: 1;
+        margin-bottom: 5px;
       }
 
       span {
