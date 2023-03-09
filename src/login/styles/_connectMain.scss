@@ -73,10 +73,6 @@ table.connect {
       border-bottom: solid 1px $bg-gray;
     }
 
-    tr.hover {
-      background-color: $bg-gray;
-    }
-
     tr:hover:not(.expanded) {
       background-color: $bg-gray;
     }
@@ -133,13 +129,14 @@ table.connect {
       border: 3px solid transparent;
     }
 
-    td button#add-users {
+    td button.btn-primary,
+    td button.btn-secondary {
       align-items: center;
       display: flex;
     }
 
     td button:not(.btn)svg:hover,
-    td.hover svg {
+    td.collapsed:hover svg {
       box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
       border-radius: 20px;
       background-color: $white;
@@ -164,19 +161,27 @@ table.connect {
 }
 
 @media (max-width: $bp-sm) {
-  table.connect tbody td {
-    line-height: 1;
-
-    button :nth-child(2) {
-      visibility: hidden;
+  table.connect {
+    th.connect-name {
+      width: 58%;
     }
 
-    span.invite-status {
-      display: none;
-    }
+    tbody {
+      td {
+        line-height: 1;
 
-    button div {
-      display: none;
+        button :nth-child(2) {
+          visibility: hidden;
+        }
+
+        span.invite-status {
+          display: none;
+        }
+
+        button div {
+          display: none;
+        }
+      }
     }
   }
 }

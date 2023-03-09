@@ -16,28 +16,13 @@ import Pagination from "./Pagination";
 
 function UserLists({ user, query }: any) {
   const [expanded, setExpanded] = useState(false);
-  const [mouseEnter, setMouseEnter] = useState(false);
-
-  // when user invited, invite button is disabled but possibly to send a reminder. icon === check circle mark gray color.
-  // when user not invited, invite button is enabled. icon === circle plus mark.
-  // when user linked, invite button is disabled. icon === check circle mark background red color.
-
   const userInvited = false;
   const userLinked = false;
+
   return (
-    <>
-      <tr
-        key={user.id}
-        onMouseEnter={() => setMouseEnter(true)}
-        onMouseLeave={() => setMouseEnter(false)}
-        className={mouseEnter ? "hover" : expanded ? "selected" : "collapsed"}
-      >
-        <td
-          className={mouseEnter ? "hover" : expanded ? "expanded" : "collapsed"}
-          onClick={() => setExpanded(!expanded)}
-          onMouseEnter={() => setMouseEnter(true)}
-          onMouseLeave={() => setMouseEnter(false)}
-        >
+    <React.Fragment>
+      <tr key={user.id} className={expanded ? "selected" : "collapsed"}>
+        <td className={expanded ? "expanded" : "collapsed"} onClick={() => setExpanded(!expanded)}>
           <FontAwesomeIcon icon={expanded ? (faChevronUp as IconProp) : (faChevronDown as IconProp)} />
         </td>
         <td>
@@ -51,27 +36,26 @@ function UserLists({ user, query }: any) {
           {userLinked ? (
             <span className="linked">linked</span>
           ) : userInvited ? (
-            <>
+            <React.Fragment>
               <span className="unlinked">Invited</span>
               &nbsp;
               <span className="invite-status">not yet responded.</span>
-            </>
+            </React.Fragment>
           ) : (
-            <>
-              <span className="unlinked">Not Invited</span>
-            </>
+            <span className="unlinked">Not Invited</span>
           )}
         </td>
         <td>
+          {/* if user is linked not show invite button */}
           {userLinked ? null : userInvited ? (
-            <EduIDButton type="button" id="add-users" size="sm" buttonstyle="secondary">
+            <EduIDButton type="button" id="resend-button" size="sm" buttonstyle="secondary">
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
               <div>
                 <FormattedMessage defaultMessage="resend" description="Resend invitation button text" />
               </div>
             </EduIDButton>
           ) : (
-            <EduIDButton type="button" id="add-users" size="sm" buttonstyle="primary">
+            <EduIDButton type="button" id="invite-button" size="sm" buttonstyle="primary">
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
               <div>
                 <FormattedMessage defaultMessage="Invite" description="Invite button text" />
@@ -88,7 +72,7 @@ function UserLists({ user, query }: any) {
           </td>
         </tr>
       )}
-    </>
+    </React.Fragment>
   );
 }
 
@@ -108,7 +92,7 @@ function getHighlightedText({ value, highlight }: any) {
 }
 
 function SearchedLists({ highlight, value }: any) {
-  return <>{getHighlightedText({ value, highlight })}</>;
+  return <React.Fragment>{getHighlightedText({ value, highlight })}</React.Fragment>;
 }
 
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
@@ -137,8 +121,8 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             defaultMessage="Search: {searchText} "
             description="searching text"
             values={{
-              searchText: <>{searchText}</>,
-              length: <> {props.response.length}</>,
+              searchText: searchText,
+              length: props.response.length,
             }}
           />
         </h2>
@@ -148,7 +132,7 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             defaultMessage=" {length} user was found."
             description="searching text"
             values={{
-              length: <> {props.response.length}</>,
+              length: props.response.length,
             }}
           />
         </span>
@@ -165,9 +149,6 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             <th className="connect-name">
               <FormattedMessage description="connect name" defaultMessage="Name & Email" />
             </th>
-            {/* <th className="connect-invite-status">
-              <FormattedMessage description="connect-invite" defaultMessage="Status" />
-            </th> */}
             <th className="connect-invite">
               <p>
                 <FormattedMessage description="connect email address" defaultMessage="Invite" />
@@ -264,7 +245,6 @@ function Connect(): JSX.Element {
                     type="button"
                     className="clear-input"
                     onClick={() => {
-                      console.log("values.query", values.query);
                       form.reset(), setQuery("");
                     }}
                   />
