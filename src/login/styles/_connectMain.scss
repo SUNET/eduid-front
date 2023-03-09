@@ -43,6 +43,8 @@ table.connect {
     th {
       padding: 10px;
       font-size: 1rem;
+      color: $txt-gray;
+      font-family: $proxima-bold;
     }
 
     th.connect-invite {
