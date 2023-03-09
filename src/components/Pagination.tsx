@@ -75,8 +75,8 @@ function Pagination({
       <ul className="pagination">
         <li className="page-item">
           <a
+            aria-label="link previous"
             className={currentPage === 1 ? `disabled page-link` : `page-link`}
-            href="#"
             onClick={() => setCurrentPage((prev: number) => (prev === 1 ? prev : prev - 1))}
           >
             <FontAwesomeIcon icon={faChevronLeft as IconProp} />
@@ -91,8 +91,8 @@ function Pagination({
         ))}
         <li className="page-item">
           <a
+            aria-label="link next"
             className={currentPage === pageNumbers.length ? `disabled page-link` : `page-link`}
-            href="#"
             onClick={() => setCurrentPage((prev: number) => (prev === pageNumbers.length ? prev : prev + 1))}
           >
             <FontAwesomeIcon icon={faChevronRight as IconProp} />
