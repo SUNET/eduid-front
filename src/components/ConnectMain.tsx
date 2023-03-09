@@ -1,11 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faChevronDown,
-  faChevronUp,
-  faCircleCheck,
-  faMagnifyingGlass,
-  faPaperPlane,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faMagnifyingGlass, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { searchUsers } from "apis/eduidConnect";
 import { Header } from "components/Header";
@@ -50,7 +44,7 @@ function UserLists({ user, query }: any) {
           <p>
             <SearchedLists key={user.name} value={user.name} highlight={query} />
           </p>
-          <p>
+          <p className="text-small">
             <SearchedLists key={user.email} value={user.email} highlight={query} />
           </p>
 
@@ -61,34 +55,27 @@ function UserLists({ user, query }: any) {
               <span className="unlinked">Invited</span>
               &nbsp;
               <span className="invite-status">not yet responded.</span>
-              {/* <br />
-              <a href="#">Send a reminder?</a> */}
             </>
           ) : (
             <>
               <span className="unlinked">Not Invited</span>
-              {/* <br />
-              <a href="#">Send an invitation?</a> */}
             </>
           )}
         </td>
         <td>
-          {userLinked ? (
-            <FontAwesomeIcon icon={faCircleCheck as IconProp} />
-          ) : userInvited ? (
-            <EduIDButton type="button" id="add-users" size="sm" buttonstyle={"secondary"} className={"abled"}>
+          {userLinked ? null : userInvited ? (
+            <EduIDButton type="button" id="add-users" size="sm" buttonstyle="secondary">
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
-
-              <p className="text">
-                <FormattedMessage defaultMessage="Resend" description="Resend invitation button text" />
-              </p>
+              <div>
+                <FormattedMessage defaultMessage="resend" description="Resend invitation button text" />
+              </div>
             </EduIDButton>
           ) : (
-            <EduIDButton type="button" id="add-users" size="sm" buttonstyle={"primary"} className={"abled"}>
+            <EduIDButton type="button" id="add-users" size="sm" buttonstyle="primary">
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
-              <p className="text">
+              <div>
                 <FormattedMessage defaultMessage="Invite" description="Invite button text" />
-              </p>
+              </div>
             </EduIDButton>
           )}
         </td>
@@ -154,15 +141,6 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
               length: <> {props.response.length}</>,
             }}
           />
-
-          {/* <FormattedMessage
-          defaultMessage="{length} user was found using query {searchText} "
-          description="searching text"
-          values={{
-            length: <strong> {props.response.length}</strong>,
-            searchText: <strong>{searchText}</strong>,
-          }}
-        /> */}
         </h2>
         &nbsp;
         <span>
@@ -179,8 +157,11 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
       <table className="table-form responsive-table connect">
         <thead>
           <tr>
-            <th className="connect-see-more" />
-            {/* <FormattedMessage description="connect-see-more" defaultMessage="More" /> */}
+            <th className="connect-see-more">
+              <p>
+                <FormattedMessage description="connect-see-more" defaultMessage="More" />
+              </p>
+            </th>
             <th className="connect-name">
               <FormattedMessage description="connect name" defaultMessage="Name & Email" />
             </th>
@@ -188,7 +169,9 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
               <FormattedMessage description="connect-invite" defaultMessage="Status" />
             </th> */}
             <th className="connect-invite">
-              <FormattedMessage description="connect email address" defaultMessage="Invite" />
+              <p>
+                <FormattedMessage description="connect email address" defaultMessage="Invite" />
+              </p>
             </th>
           </tr>
         </thead>
