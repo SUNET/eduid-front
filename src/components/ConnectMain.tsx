@@ -165,7 +165,7 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
     </React.Fragment>
   );
 }
-//
+
 const required = (value?: string) => {
   if (value === undefined || !value.trim()) return "required";
 };
@@ -235,7 +235,6 @@ function Connect(): JSX.Element {
                   autoFocus
                   placeholder={placeholder}
                   validate={required}
-                  onChange={() => setQuery(values.query)}
                 />
                 {/* Only visible clear button when there is a value in the input */}
                 {values.query && (
