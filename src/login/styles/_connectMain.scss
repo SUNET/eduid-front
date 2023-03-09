@@ -140,6 +140,7 @@ table.connect {
       box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
       border-radius: 20px;
       background-color: $white;
+      cursor: pointer;
     }
 
     td.expanded svg {
@@ -148,9 +149,14 @@ table.connect {
       border-radius: 20px;
     }
 
+    td.expanded svg:hover {
+      cursor: pointer;
+    }
+
     td.selected {
       font-size: 1rem;
       padding-left: 20px !important;
+      height: 10rem;
     }
 
     svg.fa-circle-check {
