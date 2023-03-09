@@ -28,8 +28,8 @@ function UserLists({ user, query }: any) {
   // when user not invited, invite button is enabled. icon === circle plus mark.
   // when user linked, invite button is disabled. icon === check circle mark background red color.
 
-  const userInvited = false;
-  const userLinked = true;
+  const userInvited = true;
+  const userLinked = false;
   return (
     <>
       <tr
@@ -60,7 +60,7 @@ function UserLists({ user, query }: any) {
             <>
               <span className="unlinked">Invited</span>
               &nbsp;
-              <span>not yet responded.</span>
+              <span className="invite-status">not yet responded.</span>
               {/* <br />
               <a href="#">Send a reminder?</a> */}
             </>
