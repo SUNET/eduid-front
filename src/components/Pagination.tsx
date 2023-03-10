@@ -23,8 +23,6 @@ function Pagination({
 
   const pageNumbers: any[] = [];
 
-  console.log("currentPage", currentPage);
-
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
