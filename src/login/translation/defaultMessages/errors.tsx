@@ -269,4 +269,12 @@ export const specificErrors = {
       defaultMessage={`Incorrect format of the identity number. Please try again.`}
     />
   ),
+
+  // svipe attribute missing error
+  "proofing.attribute_missing": (
+    <FormattedMessage
+      id="proofing.attribute_missing"
+      defaultMessage={`Necessary information for identification is missing. Please try again.`}
+    />
+  ),
 };
