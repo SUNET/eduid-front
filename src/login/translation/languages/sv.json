@@ -2085,6 +2085,9 @@
   "profile.phone_display_unconfirmed_data": {
     "string": "bekräfta telefonnummer"
   },
+  "proofing.attribute_missing": {
+    "string": "Nödvändig information för identifiering saknas. Vänligen försök igen."
+  },
   "proofing.malformed_identity": {
     "string": "Felaktigt format av identitetsnumret. Var god försök igen."
   },
