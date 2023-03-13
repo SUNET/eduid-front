@@ -13,9 +13,11 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes } from "react-router-dom";
 import EduIDButton from "./EduIDButton";
 import Pagination from "./Pagination";
+import Splash from "./Splash";
 
 function UserLists({ user, query }: any) {
   const [expanded, setExpanded] = useState(false);
+
   const userInvited = false;
   const userLinked = false;
 
@@ -137,7 +139,6 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
           />
         </span>
       </div>
-
       <table className="table-form responsive-table connect">
         <thead>
           <tr>
@@ -173,6 +174,7 @@ const required = (value?: string) => {
 function Connect(): JSX.Element {
   const [query, setQuery] = useState<string>("");
   const response = useConnectAppSelector((state) => state.connect.response);
+  const loading = useConnectAppSelector((state) => state.connect.loading);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(3);
 
@@ -194,7 +196,7 @@ function Connect(): JSX.Element {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [response]);
+  }, [response, loading]);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -254,7 +256,7 @@ function Connect(): JSX.Element {
                   type="submit"
                   id="search-users"
                   buttonstyle="primary"
-                  disabled={invalid || pristine}
+                  disabled={invalid || pristine || loading}
                   onClick={handleSubmit}
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
@@ -266,18 +268,20 @@ function Connect(): JSX.Element {
           )}
         />
       </article>
-      {query ? (
-        <article className="intro">
-          <SearchResults query={query} currentPosts={currentPosts} response={response} />
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={response.length}
-            // paginate={paginate}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </article>
-      ) : null}
+      <Splash showChildren={!loading}>
+        {query ? (
+          <article className="intro">
+            <SearchResults query={query} currentPosts={currentPosts} response={response} />
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={response.length}
+              // paginate={paginate}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </article>
+        ) : null}
+      </Splash>
     </section>
   );
 }

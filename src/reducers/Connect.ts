@@ -12,12 +12,16 @@ export const connectSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(searchUsers.pending, (state, action) => {
-      state.loading = true;
-    });
-    builder.addCase(searchUsers.fulfilled, (state, action) => {
-      state.response = action.payload;
-      state.loading = false;
-    });
+    builder
+      .addCase(searchUsers.fulfilled, (state, action) => {
+        state.response = action.payload;
+        state.loading = false;
+      })
+      .addCase(searchUsers.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(searchUsers.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
