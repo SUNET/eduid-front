@@ -7,6 +7,7 @@ import { Notifications } from "components/Notifications";
 import { useConnectAppDispatch, useConnectAppSelector } from "connect-hooks";
 import Footer from "login/components/Footer/Footer";
 import CustomInput from "login/components/Inputs/CustomInput";
+import NotificationModal from "login/components/Modals/NotificationModal";
 import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -15,14 +16,14 @@ import EduIDButton from "./EduIDButton";
 import Pagination from "./Pagination";
 import Splash from "./Splash";
 
-function UserLists({ user, query }: any) {
+function UserLists({ user, query, handleShowModal }: any) {
   const [expanded, setExpanded] = useState(false);
 
   const userInvited = false;
   const userLinked = false;
 
   return (
-    <React.Fragment>
+    <tbody>
       <tr key={user.id} className={expanded ? "selected" : "collapsed"}>
         <td className={expanded ? "expanded" : "collapsed"} onClick={() => setExpanded(!expanded)}>
           <FontAwesomeIcon icon={expanded ? (faChevronUp as IconProp) : (faChevronDown as IconProp)} />
@@ -50,14 +51,20 @@ function UserLists({ user, query }: any) {
         <td>
           {/* if user is linked not show invite button */}
           {userLinked ? null : userInvited ? (
-            <EduIDButton type="button" id="resend-button" size="sm" buttonstyle="secondary">
+            <EduIDButton
+              type="button"
+              id="resend-button"
+              size="sm"
+              buttonstyle="secondary"
+              onClick={() => console.log("resend")}
+            >
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
               <div>
                 <FormattedMessage defaultMessage="resend" description="Resend invitation button text" />
               </div>
             </EduIDButton>
           ) : (
-            <EduIDButton type="button" id="invite-button" size="sm" buttonstyle="primary">
+            <EduIDButton type="button" id="invite-button" size="sm" buttonstyle="primary" onClick={handleShowModal}>
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
               <div>
                 <FormattedMessage defaultMessage="Invite" description="Invite button text" />
@@ -74,7 +81,7 @@ function UserLists({ user, query }: any) {
           </td>
         </tr>
       )}
-    </React.Fragment>
+    </tbody>
   );
 }
 
@@ -99,6 +106,18 @@ function SearchedLists({ highlight, value }: any) {
 
 function SearchResults(props: { query: string; response: any; currentPosts: any }): JSX.Element | null {
   const searchText = props.query;
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({ name: "", email: "", id: "" });
+
+  function handleShowModal(user: any) {
+    setShowModal(true);
+
+    setSelectedUser(() => ({
+      name: user.name,
+      email: user.email,
+      id: user.id,
+    }));
+  }
 
   if (!props.query) return null;
 
@@ -157,12 +176,38 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
             </th>
           </tr>
         </thead>
-        <tbody>
-          {props.currentPosts.map((user: any) => (
-            <UserLists key={user.id} user={user} query={props.query} />
-          ))}
-        </tbody>
+        {props.currentPosts.map((user: any) => (
+          <UserLists key={user.id} user={user} query={props.query} handleShowModal={() => handleShowModal(user)} />
+        ))}
       </table>
+      <NotificationModal
+        id="invite-notification-modal"
+        title={
+          <FormattedMessage
+            defaultMessage="Invite {user} to join your group"
+            description="invite user to join your group modal title"
+            values={{
+              user: selectedUser.name,
+            }}
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage={`Send an invitation to {email} to join your group. 
+   The user will receive an email with a link to accept the invitation.`}
+            description="invitation notification modal main text"
+            values={{
+              email: <strong>{selectedUser.email}</strong>,
+            }}
+          />
+        }
+        showModal={showModal}
+        closeModal={() => {
+          setShowModal(false);
+        }}
+        acceptModal={() => console.log("accept modal")}
+        acceptButtonText={<FormattedMessage defaultMessage="Send an invitation" description="send button" />}
+      />
     </React.Fragment>
   );
 }
