@@ -11,6 +11,7 @@ interface HeaderProps {
   showMenu?: boolean;
   showRegister?: boolean;
   loginRef?: string;
+  mode?: string;
 }
 
 export function Header(props: HeaderProps): JSX.Element {
@@ -68,9 +69,16 @@ export function Header(props: HeaderProps): JSX.Element {
 
   return (
     <header id="header">
-      <a href={start_url} aria-label="eduID start" title="eduID start">
-        <div id="eduid-logo" className="eduid-logo" />
-      </a>
+      {props.mode === "connect" ? (
+        <a href={start_url} aria-label="eduID connect start" title="eduID connect start">
+          <div id="eduid-connect-logo" className="eduid-logo connect" />
+        </a>
+      ) : (
+        <a href={start_url} aria-label="eduID start" title="eduID start">
+          <div id="eduid-logo" className="eduid-logo" />
+        </a>
+      )}
+
       {button}
     </header>
   );

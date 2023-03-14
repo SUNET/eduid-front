@@ -22,6 +22,11 @@ header {
     }
   }
 
+  .eduid-logo.connect {
+    background-image: url(../../../img/eduid-logo-connect-bold.svg);
+    width: 250px;
+  }
+
   .header-nav {
     button {
       @media (max-width: $bp-sm) {
