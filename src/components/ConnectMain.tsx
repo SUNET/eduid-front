@@ -8,7 +8,7 @@ import { Connect } from "./ConnectSearchUser";
 export function ConnectMain(): JSX.Element {
   return (
     <React.StrictMode>
-      <Header />
+      <Header mode="connect" />
       <main id="panel" className="panel">
         <Notifications />
         <Routes>
