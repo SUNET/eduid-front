@@ -70,7 +70,12 @@ export function Header(props: HeaderProps): JSX.Element {
   return (
     <header id="header">
       {props.mode === "connect" ? (
-        <a href={start_url} aria-label="eduID connect start" title="eduID connect start">
+        // TODO: This is a temporary solution to navigate to the connect page
+        <a
+          href="https://html.eduid.docker/static/front-build/connect.dev.html"
+          aria-label="eduID connect start"
+          title="eduID connect start"
+        >
           <div id="eduid-connect-logo" className="eduid-logo connect" />
         </a>
       ) : (
@@ -78,7 +83,6 @@ export function Header(props: HeaderProps): JSX.Element {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
       )}
-
       {button}
     </header>
   );
