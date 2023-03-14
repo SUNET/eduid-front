@@ -75,8 +75,8 @@ table.connect {
       border-bottom: solid 1px $bg-gray;
     }
 
-    tr:hover:not(.expanded) {
-      background-color: $bg-gray;
+    tr.collapsed:hover {
+      background-color: $bg-orange;
     }
 
     button.linked svg {
@@ -88,8 +88,8 @@ table.connect {
     }
 
     td {
-      line-height: 1.4;
-      padding: 10px;
+      line-height: 1.6;
+      padding: 20px 10px;
 
       svg.fa-chevron-down,
       svg.fa-chevron-up {
@@ -98,11 +98,6 @@ table.connect {
 
       p {
         line-height: 1;
-      }
-
-      p.text-small {
-        line-height: 1;
-        margin-bottom: 5px;
       }
 
       span {
@@ -161,8 +156,9 @@ table.connect {
 
     td.selected {
       font-size: 1rem;
-      padding-left: 20px !important;
-      height: 10rem;
+      padding-left: 15% !important;
+      background-color: $bg-gray;
+      line-height: 2;
     }
 
     svg.fa-circle-check {

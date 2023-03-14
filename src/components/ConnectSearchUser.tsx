@@ -72,6 +72,10 @@ function UserLists({ user, query, handleShowModal }: any) {
       {expanded && (
         <tr className="expanded">
           <td className="selected" colSpan={3}>
+            <strong>
+              <FormattedMessage defaultMessage="Details" description="Details" />
+            </strong>
+            <br />
             {user.phone} <br />
             {user.company.name} <br />
           </td>
