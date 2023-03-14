@@ -310,9 +310,9 @@ export function Connect(): JSX.Element {
           )}
         />
       </article>
-      <Splash showChildren={!loading}>
-        {query ? (
-          <article className="intro">
+      {query ? (
+        <article className="intro">
+          <Splash showChildren={!loading}>
             <SearchResults query={query} currentPosts={currentPosts} response={response} />
             <Pagination
               postsPerPage={postsPerPage}
@@ -321,9 +321,9 @@ export function Connect(): JSX.Element {
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
-          </article>
-        ) : null}
-      </Splash>
+          </Splash>
+        </article>
+      ) : null}
     </section>
   );
 }
