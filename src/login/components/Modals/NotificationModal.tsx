@@ -1,4 +1,5 @@
 import React from "react";
+import { Form as FinalForm } from "react-final-form";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
 
@@ -27,9 +28,25 @@ function NotificationModal(props: NotificationModalProps) {
         </ModalHeader>
         <ModalBody>{props.mainText}</ModalBody>
         <ModalFooter>
-          <EduIDButton id={`${props.id}-accept-button`} buttonstyle="primary" onClick={props.acceptModal}>
-            {props.acceptButtonText}
-          </EduIDButton>
+          <FinalForm
+            onSubmit={props.acceptModal}
+            {...props}
+            render={({ handleSubmit }) => {
+              return (
+                <form id={props.id + "-form"} role="form" onSubmit={handleSubmit} method="post">
+                  <EduIDButton
+                    id={`${props.id}-accept-button`}
+                    type="submit"
+                    buttonstyle="primary"
+                    onClick={handleSubmit}
+                    form={props.id + "-form"}
+                  >
+                    {props.acceptButtonText}
+                  </EduIDButton>
+                </form>
+              );
+            }}
+          ></FinalForm>
         </ModalFooter>
       </Modal>
     </div>
