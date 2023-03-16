@@ -52,7 +52,7 @@ function UserLists({ user, query, handleShowModal }: any) {
               id="resend-button"
               size="sm"
               buttonstyle="secondary"
-              onClick={() => console.log("resend")}
+              onClick={() => alert("success! invitation resent!")}
             >
               <FontAwesomeIcon icon={faPaperPlane as IconProp} />
               <div>
@@ -206,7 +206,7 @@ function SearchResults(props: { query: string; response: any; currentPosts: any 
         closeModal={() => {
           setShowModal(false);
         }}
-        acceptModal={() => setShowModal(false)}
+        acceptModal={() => console.log("submit")}
         acceptButtonText={<FormattedMessage defaultMessage="Send an invitation" description="send button" />}
       />
     </React.Fragment>
