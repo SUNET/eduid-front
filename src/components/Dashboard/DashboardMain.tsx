@@ -16,10 +16,10 @@ export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
+export const faqPath = "/profile/faq";
 
 export function DashboardMain() {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-
   return (
     <React.StrictMode>
       <Header showMenu={true} />
@@ -39,12 +39,17 @@ export function DashboardMain() {
               <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
               <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
+<<<<<<< HEAD:src/components/Dashboard/DashboardMain.tsx
               <Route path={startPath} element={<Start />} />
+=======
+              <Route path={startPath} element={<DashboardStart />} />
+              <Route path={faqPath} element={<Faq />} />
+>>>>>>> 0c595a5e6 (Add faq component):src/components/DashboardMain.tsx
             </Routes>
           </section>
         </Splash>
       </main>
-      <Footer />
+      <Footer faqPath={faqPath} />
     </React.StrictMode>
   );
 }
