@@ -9,7 +9,6 @@ import { updateIntl } from "slices/Internationalisation";
 const Footer = ({ faqPath }: any): JSX.Element => {
 
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-
   const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
   const dispatch = useDashboardAppDispatch();
