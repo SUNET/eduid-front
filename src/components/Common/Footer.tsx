@@ -39,11 +39,9 @@ const Footer = ({ faqPath }: any): JSX.Element => {
     }
   };
 
-  const goToHelp = (e: React.SyntheticEvent) => {
+  const goToFaq = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (eppn) {
-      navigate("/faq");
-    } else window.location.href = `${eduidHomeUrl}/faq`;
+    navigate(faqPath);
   };
 
   return (
@@ -61,7 +59,7 @@ const Footer = ({ faqPath }: any): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <a className="help-link" href={faqPath}>
+            <a className="help-link" onClick={goToFaq} href="#">
               <FormattedMessage defaultMessage="Help" description="Footer faq" />
             </a>
           </li>
