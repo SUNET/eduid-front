@@ -1,4 +1,5 @@
 import CodeVerified from "components/CodeVerified";
+import { Faq } from "components/Faq";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import Splash from "components/Splash";
@@ -38,11 +39,12 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+              <Route path={`${SIGNUP_BASE_PATH}/faq`} element={<Faq />} />
             </Routes>
           </SignupGlobalStateProvider>
         </Splash>
       </main>
-      <Footer />
+      <Footer faqPath={`${SIGNUP_BASE_PATH}/faq`} />
     </React.Fragment>
   );
 }

@@ -25,7 +25,7 @@ export function LoginMain(): JSX.Element {
           </Splash>
         </ErrorBoundary>
       </main>
-      <Footer />
+      <Footer faqPath={"/login/faq"} />
     </React.StrictMode>
   );
 }

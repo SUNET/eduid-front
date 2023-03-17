@@ -1,3 +1,4 @@
+import { Faq } from "components/Faq";
 import { LoginExternalReturnHandler } from "components/LoginExternalReturnHandler";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Login/Login";
@@ -13,6 +14,7 @@ function LoginApp(): JSX.Element {
         <Route path="/login/password/:ref" element={<Login />} />
         <Route path="/login/:ref" element={<Login />} />
         <Route path="/reset-password/*" element={<ResetPassword />} />
+        <Route path="/login/faq" element={<Faq />} />
       </Routes>
     </section>
   );
