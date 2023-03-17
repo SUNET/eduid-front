@@ -34,14 +34,16 @@ export function SignupMain(): JSX.Element {
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <SignupGlobalStateProvider>
-            <Routes>
-              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
-              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-              <Route path={`${SIGNUP_BASE_PATH}/faq`} element={<Faq />} />
-            </Routes>
-          </SignupGlobalStateProvider>
+          <section id="content" className="horizontal-content-margin content">
+            <SignupGlobalStateProvider>
+              <Routes>
+                <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+                <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+                <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+                <Route path={`${SIGNUP_BASE_PATH}/faq`} element={<Faq />} />
+              </Routes>
+            </SignupGlobalStateProvider>
+          </section>
         </Splash>
       </main>
       <Footer faqPath={`${SIGNUP_BASE_PATH}/faq`} />
