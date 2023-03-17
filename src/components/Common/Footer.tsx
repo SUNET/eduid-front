@@ -4,12 +4,11 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
-const Footer = (): JSX.Element => {
+const Footer = ({ faqPath }: any): JSX.Element => {
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  // const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-
+  // const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
   const messages = LOCALIZED_MESSAGES;
   const navigate = useNavigate();
 
@@ -62,8 +61,8 @@ const Footer = (): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <a className="help-link" href="#" onClick={goToHelp}>
-              <FormattedMessage defaultMessage="Help" description="Footer help" />
+            <a className="help-link" href={faqPath}>
+              <FormattedMessage defaultMessage="Help" description="Footer faq" />
             </a>
           </li>
           <li id="language-selector">
