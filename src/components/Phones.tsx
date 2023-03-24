@@ -37,7 +37,7 @@ function Phones() {
 
   useEffect(() => {
     // scroll to phone section when user is redirected from start phone recommendation
-    if (location.state) {
+    if (location.state === "phone") {
       const element = document.getElementById("phone");
       element?.scrollIntoView({ behavior: "smooth" });
     }
