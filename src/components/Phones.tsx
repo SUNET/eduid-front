@@ -7,9 +7,10 @@ import {
 } from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useLocation } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import DataTable from "../login/components/DataTable/DataTable";
@@ -32,6 +33,15 @@ function Phones() {
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
+  const location = useLocation();
+
+  useEffect(() => {
+    // scroll to phone section when user is redirected from start phone recommendation
+    if (location.state) {
+      const element = document.getElementById("phone");
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location.state]);
 
   function handlePhoneForm() {
     setShowPhoneForm(true);
