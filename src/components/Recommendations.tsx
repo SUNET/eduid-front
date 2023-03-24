@@ -8,14 +8,16 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { useNavigate } from "react-router-dom";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+import { advancedSettingsPath, identityPath, settingsPath } from "./DashboardMain";
+import EduIDButton from "./EduIDButton";
 
 /**
  * Recommendation for adding name, security key and phone number and verification of identity
  */
 function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX.Element | null {
+  const navigate = useNavigate();
   if (props.credentials.length) {
     return null;
   }
@@ -35,14 +37,15 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
           defaultMessage="Add your security key to enable safe reset of password"
         />
       </p>
-      <Link to="settings/advanced-settings/">
+      <EduIDButton buttonstyle="link" className="normal-case" onClick={() => navigate(advancedSettingsPath)}>
         <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
-      </Link>
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
 
 function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
+  const navigate = useNavigate();
   let description, title;
   const verifiedNumber = props.phones?.some((num) => num.verified === true);
 
@@ -84,14 +87,19 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       uuid="recommendation-phone"
     >
       <p> {description}</p>
-      <HashLink to="/profile/settings/#phone">
+      <EduIDButton
+        buttonstyle="link"
+        className="normal-case"
+        onClick={() => navigate(settingsPath, { state: "phone" })}
+      >
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </HashLink>
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
 
 function RecommendationAddingName(props: { display_name?: string }): JSX.Element | null {
+  const navigate = useNavigate();
   if (props.display_name) {
     return null;
   }
@@ -109,14 +117,15 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
           defaultMessage="Name can be used to personalise services that you access with your eduID."
         />
       </p>
-      <Link key="settings" to="settings/">
+      <EduIDButton buttonstyle="link" className="normal-case" onClick={() => navigate(settingsPath)}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </Link>
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
 
 function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JSX.Element | null {
+  const navigate = useNavigate();
   let title, description;
   // if user has swedish nin and it is verified, do not show accordion item
   if (props.identities.nin?.verified) {
@@ -155,9 +164,9 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
       uuid="recommendation-verify-identity"
     >
       <p>{description}</p>
-      <Link key="verify-identity" to="verify-identity/">
+      <EduIDButton buttonstyle="link" className="normal-case" onClick={() => navigate(identityPath)}>
         <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
-      </Link>
+      </EduIDButton>
     </AccordionItemTemplate>
   );
 }
