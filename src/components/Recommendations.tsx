@@ -87,11 +87,7 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       uuid="recommendation-phone"
     >
       <p> {description}</p>
-      <EduIDButton
-        buttonstyle="link"
-        className="normal-case"
-        onClick={() => navigate(settingsPath, { state: "phone" })}
-      >
+      <EduIDButton buttonstyle="link" className="normal-case" onClick={() => navigate(settingsPath)}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </EduIDButton>
     </AccordionItemTemplate>
