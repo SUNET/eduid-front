@@ -233,6 +233,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7h5tj9": {
+    "developer_comment": "go to eudID link text",
+    "string": "Gå till eduID"
+  },
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Värde"
@@ -909,6 +913,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
+  },
+  "WlcZVg": {
+    "developer_comment": "Registration finished",
+    "string": "Detta är dina inloggningsuppgifter. Ett lösenord har genererats. Spara lösenordet. Du kan efter du loggat in välja att byta lösenord."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
