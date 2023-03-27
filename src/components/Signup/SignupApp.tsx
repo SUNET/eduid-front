@@ -2,7 +2,7 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useSignupAppDispatch } from "signup-hooks";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
@@ -15,7 +15,7 @@ export function SignupApp(): JSX.Element {
   const [state] = useActor(signupContext.signupService);
 
   return (
-    <section id="content" className="horizontal-content-margin content">
+    <React.Fragment>
       {state.matches("SignupStart") && <SignupStart />}
       {state.matches("AskForEmailAddress.SignupEmailForm") && <SignupEmailForm />}
       {state.matches("HandleCaptchaAndToU.SignupCaptcha") && <SignupCaptcha />}
@@ -29,7 +29,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
       {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
       {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
-    </section>
+    </React.Fragment>
   );
 }
 
