@@ -48,7 +48,8 @@ export function SignupUserCreated(): JSX.Element {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="These are your login details for eduID."
+            defaultMessage={`These are your login details for eduID. A password has been generated for you. 
+              Save the password. Once you've logged in you can change your password.`}
             description="Registration finished"
           />
         </p>
@@ -83,7 +84,7 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
-          <FormattedMessage defaultMessage="Go to my eduid" description="go to eudID link text" />
+          <FormattedMessage defaultMessage="Go to eduid" description="go to eudID link text" />
         </EduIDButton>
       </div>
     </form>
