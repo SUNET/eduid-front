@@ -233,6 +233,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "7h5tj9": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to eduid"
+  },
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
@@ -909,6 +913,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
+  },
+  "WlcZVg": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. A password has been generated for you. Save the password. Once you've logged in you can change your password."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
