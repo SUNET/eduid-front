@@ -2086,7 +2086,7 @@
     "string": "confirm added number"
   },
   "proofing.attribute_missing": {
-    "string": "Necessary information for identification is missing. Please try again."
+    "string": "Information necessary for identification is missing. Please try again."
   },
   "proofing.malformed_identity": {
     "string": "Incorrect format of the identity number. Please try again."
