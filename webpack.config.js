@@ -93,7 +93,11 @@ module.exports = {
     ],
   },
   plugins: [
+<<<<<<< HEAD
     ...["index"].map((entryName) => {
+=======
+    ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
+>>>>>>> db36b358b (Add new faq react app)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
