@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import { EduidJSAppCommonConfig } from "commonConfig";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -15,7 +16,11 @@ const configSlice = createSlice({
   name: "config",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchJsConfig.fulfilled, (state, action) => {
+      return { ...state, ...action.payload, is_configured: true };
+    });
+  },
 });
 
 export default configSlice;
