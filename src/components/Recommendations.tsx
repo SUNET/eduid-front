@@ -11,6 +11,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+import { advancedSettingsPath, identityPath, settingsPath } from "./DashboardMain";
 
 /**
  * Recommendation for adding name, security key and phone number and verification of identity
@@ -35,7 +36,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
           defaultMessage="Add your security key to enable safe reset of password"
         />
       </p>
-      <Link to="settings/advanced-settings/">
+      <Link key="advanced-settings" to={advancedSettingsPath}>
         <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
       </Link>
     </AccordionItemTemplate>
@@ -84,7 +85,8 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       uuid="recommendation-phone"
     >
       <p> {description}</p>
-      <HashLink to="/profile/settings/#phone">
+
+      <HashLink to={`${settingsPath}/#phone`}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </HashLink>
     </AccordionItemTemplate>
@@ -109,7 +111,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
           defaultMessage="Name can be used to personalise services that you access with your eduID."
         />
       </p>
-      <Link key="settings" to="settings/">
+      <Link key="settings" to={settingsPath}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </Link>
     </AccordionItemTemplate>
@@ -155,7 +157,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
       uuid="recommendation-verify-identity"
     >
       <p>{description}</p>
-      <Link key="verify-identity" to="verify-identity/">
+      <Link key="verify-identity" to={identityPath}>
         <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
       </Link>
     </AccordionItemTemplate>
