@@ -2,6 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
+import { FaqAppDispatch } from "faq-init-app";
 import { LoginAppDispatch } from "login-init-app";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "sagas/ts_common";
 import { SignupAppDispatch } from "signup-init-app";
@@ -12,7 +13,7 @@ export interface StateWithCommonConfig {
 
 export interface RequestThunkAPI {
   getState: () => StateWithCommonConfig;
-  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch | FaqAppDispatch;
   signal: AbortSignal;
 }
 
