@@ -8,7 +8,7 @@ import { Faq } from "./Faq";
 export function FaqMain(): JSX.Element {
   return (
     <React.StrictMode>
-      <Header />
+      <Header showLogin={true} />
       <main id="panel" className="panel">
         <Notifications />
         <section id="content" className="horizontal-content-margin content">
