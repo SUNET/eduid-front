@@ -1,12 +1,16 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+
 import { HelpMain } from "components/HelpMain";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import { ERRORS_CONFIG_URL } from "globals";
 import { helpStore } from "help-init-app";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { polyfillsInit } from "./polyfills-common";
+
+import { faqStore } from "faq-init-app";
 
 import "./public-path";
 
@@ -19,9 +23,9 @@ const getConfig = function () {
 polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
-setupLanguage(helpStore.dispatch);
 
-/* render app */
+setupLanguage(helpStore.dispatch);
+setupLanguage(faqStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={helpStore}>
