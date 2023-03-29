@@ -352,10 +352,6 @@
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
   },
-  "DdY0Ec": {
-    "developer_comment": "profile phone display title",
-    "string": "Phone number"
-  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
@@ -385,6 +381,9 @@
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
+  },
+  "Error: HTTP 500 ": {
+    "string": "Unexpected error occurred. Please try again or contact support if the problem persists."
   },
   "Error: Internal Server Error": {
     "string": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
@@ -488,10 +487,6 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
-  },
-  "HozsEs": {
-    "developer_comment": "profile phone display no data",
-    "string": "add phone number"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
