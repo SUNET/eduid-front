@@ -81,6 +81,13 @@ export const generalErrors = {
     />
   ),
 
+  "Error: HTTP 500 ": (
+    <FormattedMessage
+      id="Error: HTTP 500 "
+      defaultMessage={`Unexpected error occurred. Please try again or contact support if the problem persists.`}
+    />
+  ),
+
   // user errors
   error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
 
