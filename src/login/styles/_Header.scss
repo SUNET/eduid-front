@@ -6,6 +6,10 @@ header {
   justify-content: space-between;
   padding: 1rem;
   align-items: center;
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+  border-bottom: 1px solid $border-gray;
 
   .eduid-logo {
     width: 117px;
