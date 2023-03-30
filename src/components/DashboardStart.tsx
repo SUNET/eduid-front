@@ -120,7 +120,8 @@ export default function Start(): JSX.Element {
     }
   }, [isLoaded]);
 
-  if (letter_proofing.letter_sent !== undefined) {
+  // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
+  if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
         <h2>
