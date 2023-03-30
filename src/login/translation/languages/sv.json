@@ -352,10 +352,6 @@
     "developer_comment": "Set new password (accept button)",
     "string": "Acceptera lösenord"
   },
-  "DdY0Ec": {
-    "developer_comment": "profile phone display title",
-    "string": "Telefonnummer"
-  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Skapa ditt nya lösenord"
@@ -385,6 +381,9 @@
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
+  },
+  "Error: HTTP 500 ": {
+    "string": "Oväntat fel uppstod. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
   },
   "Error: Internal Server Error": {
     "string": "Ett problem (500) uppstod. De ansvariga är underrättade. Var god försök senare."
@@ -488,10 +487,6 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "VISA"
-  },
-  "HozsEs": {
-    "developer_comment": "profile phone display no data",
-    "string": "lägg till telefonnummer"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
