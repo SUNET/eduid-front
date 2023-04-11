@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 .help-content > li {
-=======
 .contact-container {
   font-size: 1rem;
   margin-top: 2rem;
@@ -33,15 +32,13 @@
   }
 }
 
-<<<<<<< HEAD
 .help-content {
 <<<<<<< HEAD:src/styles/_Help.scss
   article {
     padding-bottom: 1em !important;
   }
 
-=======
->>>>>>> 519000497 (Clean up):src/login/styles/_Help.scss
+.faq-content {
   h3 {
     line-height: 1.2;
     font-size: 1.5rem;
@@ -82,25 +79,21 @@
   .accordion:not(:last-child) {
     margin-bottom: 1rem;
   }
-=======
-.faq-content h3 {
-  line-height: 1.2;
-  font-family: $proxima-light;
-  font-size: 1.5rem;
-  margin-bottom: 0.75em;
-}
 
-.faq-content p {
-  font-size: inherit;
-}
+  ul .bullets {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-bottom: 1.5rem;
+  }
 
-ul .bullets {
-  list-style-position: inside;
-  list-style-type: disc;
-  margin-bottom: 1.5rem;
-}
+  ul .bullets li {
+    margin-bottom: 0.75rem;
+  }
 
 ul .bullets li {
   margin-bottom: 0.75rem;
->>>>>>> a8f56e395 (Introduce new help page with accordion)
+
+  .accordion:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
