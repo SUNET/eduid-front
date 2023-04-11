@@ -18,7 +18,15 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
+<<<<<<< HEAD
     index: "./src/entry-points/index",
+=======
+    signup: "./src/entry-points/signup",
+    dashboard: "./src/entry-points/dashboard",
+    login: "./src/entry-points/login",
+    errors: "./src/entry-points/errors",
+    help: "./src/entry-points/help",
+>>>>>>> c94ba896e (Introduce new help page with accordion)
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -94,10 +102,14 @@ module.exports = {
   },
   plugins: [
 <<<<<<< HEAD
+<<<<<<< HEAD
     ...["index"].map((entryName) => {
 =======
     ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
 >>>>>>> db36b358b (Add new faq react app)
+=======
+    ...["help", "errors", "login", "dashboard", "signup"].map((entryName) => {
+>>>>>>> c94ba896e (Introduce new help page with accordion)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,

@@ -7,8 +7,8 @@ import CodeVerified from "components/Signup/CodeVerified";
 import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 =======
 import CodeVerified from "components/CodeVerified";
-import { Faq } from "components/Faq";
 import { Header } from "components/Header";
+import { Help } from "components/Help";
 import { Notifications } from "components/Notifications";
 import Splash from "components/Splash";
 import Footer from "login/components/Footer/Footer";
@@ -48,7 +48,7 @@ export function SignupMain(): JSX.Element {
           </Routes>
         </Splash>
       </main>
-      <Footer faqPath={`${SIGNUP_BASE_PATH}/faq`} />
+      <Footer helpPath={`${SIGNUP_BASE_PATH}/faq`} />
     </React.Fragment>
   );
 }
