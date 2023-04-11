@@ -92,6 +92,17 @@ module.exports = {
     ],
   },
   plugins: [
+<<<<<<< HEAD
+=======
+    ...["help", "errors", "login", "dashboard", "signup"].map((entryName) => {
+      return new HtmlWebpackPlugin({
+        hash: true,
+        template: `./public/${entryName}.html`,
+        filename: `${entryName}.dev.html`,
+        chunks: [`${entryName}`],
+      });
+    }),
+>>>>>>> c94ba896e (Introduce new help page with accordion)
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
