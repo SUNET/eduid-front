@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
+<<<<<<< HEAD
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
+=======
+import { FormattedMessage } from "react-intl";
+import AccordionItemTemplate from "./AccordionItemTemplate";
+>>>>>>> ff7bcbed7 (Add scroll to top button)
 import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
