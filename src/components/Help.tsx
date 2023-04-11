@@ -2,6 +2,7 @@ import React from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
   const preExpanded: string[] = ["help-contact-us"];
@@ -641,8 +642,7 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
         </Accordion>
       </div>
-      {/* </div> */}
-      {/* </div> */}
+      <ScrollToTopButton />
     </React.Fragment>
   );
 }
