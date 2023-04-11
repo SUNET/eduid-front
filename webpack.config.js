@@ -92,17 +92,6 @@ module.exports = {
     ],
   },
   plugins: [
-<<<<<<< HEAD
-=======
-    ...["index"].map((entryName) => {
-      return new HtmlWebpackPlugin({
-        hash: true,
-        template: `./public/${entryName}.html`,
-        filename: `${entryName}.dev.html`,
-        chunks: [`${entryName}`],
-      });
-    }),
->>>>>>> e5531af38 (Add new faq react app)
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),

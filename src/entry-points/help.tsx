@@ -1,5 +1,4 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 
 import { HelpMain } from "components/HelpMain";

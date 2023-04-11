@@ -1,4 +1,30 @@
+<<<<<<< HEAD
 .help-content > li {
+=======
+.contact-container {
+  font-size: 1rem;
+  margin-top: 2rem;
+  dt {
+    font-family: $proxima-bold;
+  }
+  dl.support-phone-info,
+  dl.support-email-info {
+    display: flex;
+    dt {
+      margin-right: 5px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+  dl.support-phone-info {
+    margin-top: 1rem;
+  }
+}
+
+.faq-content > li {
+>>>>>>> a8f56e395 (Introduce new help page with accordion)
   border-bottom: 1px solid #d8d8d8;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -7,6 +33,7 @@
   }
 }
 
+<<<<<<< HEAD
 .help-content {
 <<<<<<< HEAD:src/styles/_Help.scss
   article {
@@ -55,4 +82,25 @@
   .accordion:not(:last-child) {
     margin-bottom: 1rem;
   }
+=======
+.faq-content h3 {
+  line-height: 1.2;
+  font-family: $proxima-light;
+  font-size: 1.5rem;
+  margin-bottom: 0.75em;
+}
+
+.faq-content p {
+  font-size: inherit;
+}
+
+ul .bullets {
+  list-style-position: inside;
+  list-style-type: disc;
+  margin-bottom: 1.5rem;
+}
+
+ul .bullets li {
+  margin-bottom: 0.75rem;
+>>>>>>> a8f56e395 (Introduce new help page with accordion)
 }

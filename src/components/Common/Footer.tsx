@@ -3,11 +3,15 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
+<<<<<<< HEAD
 
 
 
 const Footer = ({ faqPath }: any): JSX.Element => {
 
+=======
+const Footer = ({ helpPath }: any): JSX.Element => {
+>>>>>>> 2bcaf1592 (Introduce new help page with accordion)
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
   const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
@@ -46,6 +50,20 @@ const Footer = ({ faqPath }: any): JSX.Element => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const goToHelp = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+<<<<<<< HEAD
+    if (eppn) {
+      navigate("/faq");
+    } else window.location.href = `${eduidHomeUrl}/faq`;
+=======
+    navigate(helpPath);
+>>>>>>> a8f56e395 (Introduce new help page with accordion)
+  };
+
+>>>>>>> 2bcaf1592 (Introduce new help page with accordion)
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
