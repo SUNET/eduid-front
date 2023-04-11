@@ -311,3 +311,9 @@ button.scroll-to-top {
 .display-none {
   display: none;
 }
+
+@media (max-width: $bp-xs) {
+  button.scroll-to-top {
+    width: fit-content;
+  }
+}
