@@ -91,7 +91,8 @@ export const unlinkUser = createAsyncThunk<
   undefined,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/unlinkUser", async (args, thunkAPI) => {
-  return makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user")
+  const body: KeyValues = {};
+  return makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
