@@ -17,7 +17,7 @@ module.exports = {
     // To activate the web server, uncomment below 2 lines and
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
-    // server: 'webpack-dev-server/client?http://localhost:8080',
+    // server: 'webpack-dev-server/client?http://localhost:8080'
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
     faq: "./src/entry-points/faq",
@@ -95,11 +95,7 @@ module.exports = {
     ],
   },
   plugins: [
-<<<<<<< HEAD
     ...["index"].map((entryName) => {
-=======
-    ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
->>>>>>> db36b358b (Add new faq react app)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,

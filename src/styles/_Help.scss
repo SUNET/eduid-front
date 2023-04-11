@@ -1,4 +1,26 @@
-.help-content > li {
+.contact-container {
+  font-size: 1rem;
+  margin-top: 2rem;
+  dt {
+    font-family: $proxima-bold;
+  }
+  dl.support-phone-info,
+  dl.support-email-info {
+    display: flex;
+    dt {
+      margin-right: 5px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+  dl.support-phone-info {
+    margin-top: 1rem;
+  }
+}
+
+.faq-content > li {
   border-bottom: 1px solid #d8d8d8;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -7,50 +29,23 @@
   }
 }
 
-.help-content {
-  article {
-    padding-bottom: 1em !important;
-  }
+.faq-content h3 {
+  line-height: 1.2;
+  font-family: $proxima-light;
+  font-size: 1.5rem;
+  margin-bottom: 0.75em;
+}
 
-  h3 {
-    line-height: 1.2;
-    font-size: 1.5rem;
-    margin-bottom: 0.75em;
-  }
-  h4:not(:first-of-type) {
-    margin-top: 1.25em;
-  }
-  p {
-    font-size: inherit;
-    margin-bottom: 1.25em;
-  }
+.faq-content p {
+  font-size: inherit;
+}
 
-  section {
-    padding: 1.25rem 1rem 0.5rem;
-    margin: 1rem 0;
-    border: 1px solid $bright-orange;
-    border-radius: 10px;
-    font-size: $txt-sm;
-  }
+ul .bullets {
+  list-style-position: inside;
+  list-style-type: disc;
+  margin-bottom: 1.5rem;
+}
 
-  ul.bullets {
-    list-style-position: inside;
-    list-style-type: disc;
-    margin-bottom: 1.5rem;
-  }
-
-  ul.bullets li {
-    margin-bottom: 0.75rem;
-  }
-  ul.bullets ol {
-    list-style: numeric;
-    list-style-position: inside;
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-  }
-
-  .accordion:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+ul .bullets li {
+  margin-bottom: 0.75rem;
 }

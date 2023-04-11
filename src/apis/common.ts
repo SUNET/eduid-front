@@ -11,7 +11,7 @@ export interface StateWithCommonConfig {
 
 export interface RequestThunkAPI {
   getState: () => StateWithCommonConfig;
-  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch | FaqAppDispatch;
+  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch | helpAppDispatch;
   signal: AbortSignal;
 }
 
