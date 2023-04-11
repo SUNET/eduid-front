@@ -2,8 +2,8 @@ import { AdvancedSettings } from "components/AdvancedSettings";
 import { ChangePasswordContainer } from "components/ChangePassword";
 import DashboardStart from "components/DashboardStart";
 import { ExternalReturnHandler } from "components/ExternalReturnHandler";
-import { Faq } from "components/Faq";
 import { Header } from "components/Header";
+import { Help } from "components/Help";
 import { Notifications } from "components/Notifications";
 import { Settings } from "components/Settings";
 import Splash from "components/Splash";
@@ -17,7 +17,7 @@ export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
-export const faqPath = "/profile/faq";
+export const helpPath = "/profile/help";
 
 export function DashboardMain() {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -41,12 +41,12 @@ export function DashboardMain() {
               <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
               <Route path={startPath} element={<DashboardStart />} />
-              <Route path={faqPath} element={<Faq />} />
+              <Route path={helpPath} element={<Help />} />
             </Routes>
           </section>
         </Splash>
       </main>
-      <Footer faqPath={faqPath} />
+      <Footer helpPath={helpPath} />
     </React.StrictMode>
   );
 }
