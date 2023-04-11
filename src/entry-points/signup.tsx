@@ -1,5 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import SignupMain from "components/Signup/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
@@ -23,11 +24,13 @@ setupLanguage(signupStore.dispatch);
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <ReduxIntlProvider store={signupStore}>
-    <BrowserRouter>
-      <SignupMain />
-    </BrowserRouter>
-  </ReduxIntlProvider>,
+  <SignupGlobalStateProvider>
+    <ReduxIntlProvider store={signupStore}>
+      <BrowserRouter>
+        <SignupMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
+  </SignupGlobalStateProvider>,
   initDomTarget,
   getConfig
 );
