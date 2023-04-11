@@ -3,10 +3,10 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { EduidJSAppCommonConfig } from "commonConfig";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FaqConfig extends EduidJSAppCommonConfig {}
+export interface HelpConfig extends EduidJSAppCommonConfig {}
 
 // export for use in tests
-export const initialState: FaqConfig = {
+export const initialState: HelpConfig = {
   debug: false,
   error: false,
   is_configured: false,

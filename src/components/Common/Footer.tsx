@@ -4,9 +4,17 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
+<<<<<<< HEAD:src/components/Common/Footer.tsx
 const Footer = (): JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const dispatch = useAppDispatch();
+=======
+const Footer = ({ helpPath }: any): JSX.Element => {
+  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
+  // const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
+  const dispatch = useDashboardAppDispatch();
+  // const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
+>>>>>>> c94ba896e (Introduce new help page with accordion):src/login/components/Footer/Footer.tsx
   const messages = LOCALIZED_MESSAGES;
 
   let translateTo: string[][] = [];
