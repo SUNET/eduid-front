@@ -470,12 +470,21 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="eIDAS list item"
-                    defaultMessage="     If you initially verify your identity with eIDAS and later receive a Swedish personal identity number you
+                    defaultMessage="If you initially verify your identity with eIDAS and later receive a Swedish personal identity number you
                 can add it and verify yourself again using it under the 'Identity' tab."
                   />
                 </li>
               </ul>
             </article>
+          </AccordionItemTemplate>
+        </Accordion>
+
+        <Accordion allowMultipleExpanded allowZeroExpanded id="About Orcid">
+          <AccordionItemTemplate
+            uuid="help-About-orcid"
+            title={<FormattedMessage description="About orcid" defaultMessage="About orcid" />}
+            additionalInfo={null}
+          >
             <article>
               <h3>
                 <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is ORCID?" />
@@ -542,7 +551,7 @@ export function Help(): JSX.Element {
             <article>
               <h3>
                 <FormattedMessage
-                  description="  How do I remove a linked ORCID from eduID? heading"
+                  description=" How do I remove a linked ORCID from eduID? heading"
                   defaultMessage="  How do I remove a linked ORCID from eduID?"
                 />
               </h3>
