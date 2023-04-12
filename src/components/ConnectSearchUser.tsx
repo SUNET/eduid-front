@@ -15,8 +15,8 @@ import Splash from "./Splash";
 function UserLists({ user, query, handleShowModal }: any) {
   const [expanded, setExpanded] = useState(false);
 
-  const userInvited = false;
-  const userLinked = false;
+  const userInvited = true;
+  const userLinked = true;
 
   return (
     <tbody>
@@ -33,7 +33,7 @@ function UserLists({ user, query, handleShowModal }: any) {
           </p>
 
           {userLinked ? (
-            <span className="linked">linked</span>
+            <span className="linked">connected</span>
           ) : userInvited ? (
             <React.Fragment>
               <span className="unlinked">Invited</span>
