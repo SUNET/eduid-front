@@ -129,29 +129,6 @@ export function Help(): JSX.Element {
               <h3>
                 <FormattedMessage description="Why have eduID? heading" defaultMessage="Why have eduID?" />
               </h3>
-              <p>
-                <FormattedMessage
-                  description="Why have eduID? description1"
-                  defaultMessage="From the student's perspective, in the long-term eduID means fewer accounts to keep track of during
-                studies. For many organisations, identity management is a complex issue and it is necessary to work with
-                confirmed users."
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="Why have eduID? description2"
-                  defaultMessage="There are many services that require identification of users. This is often done by the user entering an
-                  email address to which the service provider sends a password - and for many services is this a
-                  sufficient level. Such a user is normally called unconfirmed, because the service provider does not
-                  really know who the user with that email address is. Through the use of eduID, identification of users
-                  is taken up a level to that of confirmed users."
-                />
-              </p>
-            </article>
-            <article>
-              <h3>
-                <FormattedMessage description="Why have eduID? heading" defaultMessage="Why have eduID?" />
-              </h3>
 
               <p>
                 <FormattedMessage
