@@ -1,5 +1,6 @@
 import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -41,9 +42,11 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const store = getTestSignupStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-      <ReduxIntlProvider store={store}>
-        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
-      </ReduxIntlProvider>
+      <SignupGlobalStateProvider>
+        <ReduxIntlProvider store={store}>
+          <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
+        </ReduxIntlProvider>
+      </SignupGlobalStateProvider>
     );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...args.options });

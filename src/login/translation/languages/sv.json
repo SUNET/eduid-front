@@ -233,6 +233,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7h5tj9": {
+    "developer_comment": "go to eudID link text",
+    "string": "Gå till eduID"
+  },
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Värde"
@@ -348,10 +352,6 @@
     "developer_comment": "Set new password (accept button)",
     "string": "Acceptera lösenord"
   },
-  "DdY0Ec": {
-    "developer_comment": "profile phone display title",
-    "string": "Telefonnummer"
-  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Skapa ditt nya lösenord"
@@ -381,6 +381,9 @@
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
+  },
+  "Error: HTTP 500 ": {
+    "string": "Oväntat fel uppstod. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
   },
   "Error: Internal Server Error": {
     "string": "Ett problem (500) uppstod. De ansvariga är underrättade. Var god försök senare."
@@ -484,10 +487,6 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "VISA"
-  },
-  "HozsEs": {
-    "developer_comment": "profile phone display no data",
-    "string": "lägg till telefonnummer"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -909,6 +908,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
+  },
+  "WlcZVg": {
+    "developer_comment": "Registration finished",
+    "string": "Detta är dina inloggningsuppgifter. Ett lösenord har genererats. Spara lösenordet. Du kan efter du loggat in välja att byta lösenord."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",

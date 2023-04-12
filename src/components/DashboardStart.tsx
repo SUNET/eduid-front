@@ -44,12 +44,12 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     <div className="verification-status verified">
       <FontAwesomeIcon icon={faCircleCheck as IconProp} />
       <div>
-        <h6>
+        <h3>
           <FormattedMessage
             description="verification status heading verified"
             defaultMessage="Your identity is verified."
           />
-        </h6>
+        </h3>
         <p className="help-text">
           <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
         </p>
@@ -120,7 +120,8 @@ export default function Start(): JSX.Element {
     }
   }, [isLoaded]);
 
-  if (letter_proofing.letter_sent !== undefined) {
+  // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
+  if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
         <h2>

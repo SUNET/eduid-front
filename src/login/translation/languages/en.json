@@ -233,6 +233,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "7h5tj9": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to eduID"
+  },
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
@@ -348,10 +352,6 @@
     "developer_comment": "Set new password (accept button)",
     "string": "Accept password"
   },
-  "DdY0Ec": {
-    "developer_comment": "profile phone display title",
-    "string": "Phone number"
-  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
@@ -381,6 +381,9 @@
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
+  },
+  "Error: HTTP 500 ": {
+    "string": "Unexpected error occurred. Please try again or contact support if the problem persists."
   },
   "Error: Internal Server Error": {
     "string": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
@@ -484,10 +487,6 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
-  },
-  "HozsEs": {
-    "developer_comment": "profile phone display no data",
-    "string": "add phone number"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -909,6 +908,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
+  },
+  "WlcZVg": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. A password has been generated for you. Save the password. Once you've logged in you can change your password."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
@@ -2086,7 +2089,7 @@
     "string": "confirm added number"
   },
   "proofing.attribute_missing": {
-    "string": "Necessary information for identification is missing. Please try again."
+    "string": "Information necessary for identification is missing. Please try again."
   },
   "proofing.malformed_identity": {
     "string": "Incorrect format of the identity number. Please try again."

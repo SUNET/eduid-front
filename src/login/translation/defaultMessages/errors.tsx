@@ -81,6 +81,13 @@ export const generalErrors = {
     />
   ),
 
+  "Error: HTTP 500 ": (
+    <FormattedMessage
+      id="Error: HTTP 500 "
+      defaultMessage={`Unexpected error occurred. Please try again or contact support if the problem persists.`}
+    />
+  ),
+
   // user errors
   error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
 
@@ -274,7 +281,7 @@ export const specificErrors = {
   "proofing.attribute_missing": (
     <FormattedMessage
       id="proofing.attribute_missing"
-      defaultMessage={`Necessary information for identification is missing. Please try again.`}
+      defaultMessage={`Information necessary for identification is missing. Please try again.`}
     />
   ),
 };
