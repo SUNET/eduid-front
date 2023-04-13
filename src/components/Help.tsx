@@ -1434,6 +1434,156 @@ export function Help(): JSX.Element {
             </ul>
           </AccordionItemTemplate>
         </Accordion>
+<<<<<<< HEAD
+=======
+
+        <Accordion allowMultipleExpanded allowZeroExpanded id="About Orcid">
+          <AccordionItemTemplate
+            uuid="help-About-orcid"
+            title={
+              <FormattedMessage description="Connect to Orcid / Ladok" defaultMessage="Connect to Orcid / Ladok" />
+            }
+            additionalInfo={null}
+          >
+            <article>
+              <h3>
+                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is ORCID?" />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="What is ORCID? description"
+                  defaultMessage="ORCID is integrated into many research-related services, such as systems used by publishers, funders and
+              institutions. ORCID is an independent non-profit organisation that provides a persistent identifier – an
+              ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs
+              and activities to your ORCID iD."
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Read more at"
+                  defaultMessage="Read more at {orcid}."
+                  values={{
+                    orcid: (
+                      <a className="text-link" href="https://orcid.org">
+                        orcid.org
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage
+                  description="How does linking ORCID to eduID work? heading"
+                  defaultMessage="How does linking ORCID to eduID work?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="connect orcid   account description"
+                  defaultMessage=" Click the 'Connect ORCID account' button, sign in to your ORCID account and grant eduID permission to
+              receive your ORCID iD. This process ensures that the correct ORCID iD is connected to the correct eduID."
+                />
+              </p>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage
+                  description="What do I do if I don't have an ORCID? heading"
+                  defaultMessage=" What do I do if I don't have an ORCID?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="orcid description"
+                  defaultMessage="You can register for an ORCID at {orcid}."
+                  values={{
+                    orcid: (
+                      <a className="text-link" href="https://orcid.org">
+                        orcid.org
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage
+                  description=" How do I remove a linked ORCID from eduID? heading"
+                  defaultMessage="  How do I remove a linked ORCID from eduID?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="orcid description"
+                  defaultMessage="If you do not longer want eduID to know your ORCID iD you can easily remove it by clicking the remove button
+              in your eduID."
+                />
+              </p>
+            </article>
+          </AccordionItemTemplate>
+        </Accordion>
+
+        <Accordion allowMultipleExpanded allowZeroExpanded id="Privacy Policy">
+          <AccordionItemTemplate
+            uuid="help-privacy-policy"
+            title={
+              <FormattedMessage
+                description="privacy policy / Web accessibility"
+                defaultMessage="eduID Privacy policy and Web accessibility"
+              />
+            }
+            additionalInfo={null}
+          >
+            <p>
+              <FormattedMessage
+                description="Read more at sunet"
+                defaultMessage="Read more at {sunet}."
+                values={{
+                  sunet: (
+                    <a className="text-link" href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
+                      www.sunet.se
+                    </a>
+                  ),
+                }}
+              />
+            </p>
+          </AccordionItemTemplate>
+        </Accordion>
+
+        <Accordion allowMultipleExpanded allowZeroExpanded id="About Sunet">
+          <AccordionItemTemplate
+            uuid="help-about-sunet"
+            title={<FormattedMessage description="SUNET" defaultMessage="What is SUNET?" />}
+            additionalInfo={null}
+          >
+            <p>
+              <FormattedMessage
+                description="What is SUNET? description"
+                defaultMessage="SUNET is the organisation responsible for Swedish universities and data networks, as well as many services
+              that are used by universities in Sweden."
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                description="What is SUNET? description"
+                defaultMessage="SUNET has been working with the issue of identity management for a long time and developed eduID to make
+              things easier for all parties in the higher education community. More information about SUNET is available
+              at {sunet}."
+                values={{
+                  sunet: (
+                    <a className="text-link" href="http://www.sunet.se">
+                      www.sunet.se
+                    </a>
+                  ),
+                }}
+              />
+            </p>
+          </AccordionItemTemplate>
+        </Accordion>
+>>>>>>> 6a3e80fdf (save temp)
       </div>
       <ScrollToTopButton />
     </React.Fragment>
