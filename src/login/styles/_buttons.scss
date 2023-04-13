@@ -289,10 +289,16 @@ button.icon-only {
   position: fixed;
   bottom: 2.3rem;
   right: 10px;
+  // round button
+  width: 60px;
+  height: 60px !important;
+  opacity: 70%;
+  border-radius: 50% !important;
+  min-width: fit-content !important;
 
-  svg {
-    margin-right: 6px;
-  }
+  // svg {
+  //   margin-right: 6px;
+  // }
 }
 
 .none {

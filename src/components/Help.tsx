@@ -459,7 +459,9 @@ export function Help(): JSX.Element {
         <Accordion allowMultipleExpanded allowZeroExpanded id="About Orcid">
           <AccordionItemTemplate
             uuid="help-About-orcid"
-            title={<FormattedMessage description="About orcid" defaultMessage="About orcid" />}
+            title={
+              <FormattedMessage description="Connect to Orcid / Ladok" defaultMessage="Connect to Orcid / Ladok" />
+            }
             additionalInfo={null}
           >
             <article>
@@ -548,35 +550,8 @@ export function Help(): JSX.Element {
             uuid="help-privacy-policy"
             title={
               <FormattedMessage
-                description="What is the eduID privacy policy?"
-                defaultMessage="What is the eduID privacy policy?"
-              />
-            }
-            additionalInfo={null}
-          >
-            <p>
-              <FormattedMessage
-                description="Read more at sunet"
-                defaultMessage="Read more at {sunet}."
-                values={{
-                  sunet: (
-                    <a className="text-link" href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
-                      www.sunet.se
-                    </a>
-                  ),
-                }}
-              />
-            </p>
-          </AccordionItemTemplate>
-        </Accordion>
-
-        <Accordion allowMultipleExpanded allowZeroExpanded id="Web Accessibility">
-          <AccordionItemTemplate
-            uuid="help-web-accessibility"
-            title={
-              <FormattedMessage
-                description="Web Accessibility heading"
-                defaultMessage="What is the eduID Web Accessibility?"
+                description="privacy policy / Web accessibility"
+                defaultMessage="eduID Privacy policy and Web accessibility"
               />
             }
             additionalInfo={null}

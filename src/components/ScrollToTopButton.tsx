@@ -2,7 +2,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { FormattedMessage } from "react-intl";
 import { Button } from "reactstrap";
 
 export default function ScrollToTopButton(): JSX.Element {
@@ -30,7 +29,7 @@ export default function ScrollToTopButton(): JSX.Element {
   return (
     <Button onClick={topFunction} id="scroll-top-button" color="primary" className={showBtn} title="Go to top">
       <FontAwesomeIcon icon={faArrowUp as IconProp} />
-      <FormattedMessage defaultMessage="To Top" description="scroll to top" />
+      {/* <FormattedMessage defaultMessage="To Top" description="scroll to top" /> */}
     </Button>
   );
 }
