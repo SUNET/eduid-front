@@ -23,73 +23,6 @@ export function Help(): JSX.Element {
         </div>
       </section>
       <div className="faq-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="Contact us" preExpanded={preExpanded}>
-          <AccordionItemTemplate
-            uuid="help-contact-us"
-            title={
-              <FormattedMessage
-                description="How to contact eduID support"
-                defaultMessage="How to contact eduID support"
-              />
-            }
-            additionalInfo={null}
-          >
-            <p>
-              <FormattedMessage
-                description="Create a Freja eID+ account list item"
-                defaultMessage=" If you can't find the answers to your questions about eduID on our help page, you can contact the eduID
-              support by mailing {support}."
-                values={{
-                  support: (
-                    <a className="text-link" href="mailto:support@eduid.se">
-                      support@eduid.se
-                    </a>
-                  ),
-                }}
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                description="support description"
-                defaultMessage="Always let us know the e-mail address you used when you logged into eduID. If something went wrong, it is
-              always a good idea to include screenshots with error messages to ease troubleshooting."
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                description="Create a Freja eID+ account list item"
-                defaultMessage="{strong}, but for simple
-              matters you can also reach us on phone number {phone}."
-                values={{
-                  strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
-                  phone: (
-                    <a className="text-link" href="tel:+46455-385200">
-                      0455-385200
-                    </a>
-                  ),
-                }}
-              />
-            </p>
-            <p>
-              <FormattedMessage description="Opening hours:" defaultMessage="Opening hours" />
-            </p>
-            <ul className="bullets">
-              <li>
-                <FormattedMessage
-                  description="Opening hours: list item"
-                  defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
-                />
-              </li>
-              <li>
-                <FormattedMessage
-                  description="Opening hours: list item"
-                  defaultMessage="Friday 9:00-12:00, 13:00-14:30"
-                />
-              </li>
-            </ul>
-          </AccordionItemTemplate>
-        </Accordion>
-
         <Accordion allowMultipleExpanded allowZeroExpanded id="About eduID">
           <AccordionItemTemplate
             uuid="help-about-eduID"
@@ -600,6 +533,73 @@ export function Help(): JSX.Element {
                 }}
               />
             </p>
+          </AccordionItemTemplate>
+        </Accordion>
+
+        <Accordion allowMultipleExpanded allowZeroExpanded id="Contact us" preExpanded={preExpanded}>
+          <AccordionItemTemplate
+            uuid="help-contact-us"
+            title={
+              <FormattedMessage
+                description="How to contact eduID support"
+                defaultMessage="How to contact eduID support"
+              />
+            }
+            additionalInfo={null}
+          >
+            <p>
+              <FormattedMessage
+                description="Create a Freja eID+ account list item"
+                defaultMessage=" If you can't find the answers to your questions about eduID on our help page, you can contact the eduID
+              support by mailing {support}."
+                values={{
+                  support: (
+                    <a className="text-link" href="mailto:support@eduid.se">
+                      support@eduid.se
+                    </a>
+                  ),
+                }}
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                description="support description"
+                defaultMessage="Always let us know the e-mail address you used when you logged into eduID. If something went wrong, it is
+              always a good idea to include screenshots with error messages to ease troubleshooting."
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                description="Create a Freja eID+ account list item"
+                defaultMessage="{strong}, but for simple
+              matters you can also reach us on phone number {phone}."
+                values={{
+                  strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
+                  phone: (
+                    <a className="text-link" href="tel:+46455-385200">
+                      0455-385200
+                    </a>
+                  ),
+                }}
+              />
+            </p>
+            <p>
+              <FormattedMessage description="Opening hours:" defaultMessage="Opening hours" />
+            </p>
+            <ul className="bullets">
+              <li>
+                <FormattedMessage
+                  description="Opening hours: list item"
+                  defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
+                />
+              </li>
+              <li>
+                <FormattedMessage
+                  description="Opening hours: list item"
+                  defaultMessage="Friday 9:00-12:00, 13:00-14:30"
+                />
+              </li>
+            </ul>
           </AccordionItemTemplate>
         </Accordion>
       </div>
