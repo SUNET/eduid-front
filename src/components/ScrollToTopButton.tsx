@@ -56,6 +56,7 @@ export default function ScrollToTopButton(): JSX.Element {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <FormattedMessage defaultMessage="To Top" description="scroll to top" />
 >>>>>>> ff7bcbed7 (Add scroll to top button)
@@ -69,6 +70,13 @@ export default function ScrollToTopButton(): JSX.Element {
       {/* <FormattedMessage defaultMessage="To Top" description="scroll to top" /> */}
 >>>>>>> 6a3e80fdf (save temp)
 >>>>>>> b2fb16149 (save temp)
+=======
+=======
+      {/* <FormattedMessage defaultMessage="To Top" description="scroll to top" /> */}
+>>>>>>> 6a3e80fdf (save temp)
+=======
+>>>>>>> efc6ebc6b (Clean up)
+>>>>>>> 6285d679d (Clean up)
     </Button>
   );
 }
