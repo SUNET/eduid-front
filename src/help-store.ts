@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import configSlice from "./login/redux/reducers/faqMainReducer";
+import configSlice from "./login/redux/reducers/helpMainReducer";
 import { intlReducer } from "./reducers/Internationalisation";
 import { notificationsSlice } from "./reducers/Notifications";
 
