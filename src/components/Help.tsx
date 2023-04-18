@@ -22,7 +22,7 @@ export function Help(): JSX.Element {
           </p>
         </div>
       </section>
-      <div className="faq-content">
+      <div className="help-content">
         <Accordion allowMultipleExpanded allowZeroExpanded id="About eduID">
           <AccordionItemTemplate
             uuid="help-about-eduID"

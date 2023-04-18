@@ -60,7 +60,7 @@ const Footer = ({ helpPath }: any): JSX.Element => {
         <ul>
           <li>
             <a className="help-link" onClick={goToHelp} href="#">
-              <FormattedMessage defaultMessage="Help" description="Footer faq" />
+              <FormattedMessage defaultMessage="Help" description="Footer help" />
             </a>
           </li>
           <li id="language-selector">
