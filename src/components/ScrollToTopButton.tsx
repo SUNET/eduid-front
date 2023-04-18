@@ -15,8 +15,12 @@ import { FormattedMessage } from "react-intl";
 import { Button } from "reactstrap";
 
 export default function ScrollToTopButton(): JSX.Element {
+<<<<<<< HEAD
   const [showBtn, setShowBtn] = useState("none");
 >>>>>>> ff7bcbed7 (Add scroll to top button)
+=======
+  const [showBtn, setShowBtn] = useState("display-none");
+>>>>>>> 519000497 (Clean up)
 
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function () {
@@ -28,10 +32,14 @@ export default function ScrollToTopButton(): JSX.Element {
       setShowBtn("scroll-to-top");
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       setShowBtn("display-none");
 =======
       setShowBtn("none");
 >>>>>>> ff7bcbed7 (Add scroll to top button)
+=======
+      setShowBtn("display-none");
+>>>>>>> 519000497 (Clean up)
     }
   }
 
@@ -46,12 +54,15 @@ export default function ScrollToTopButton(): JSX.Element {
       <FontAwesomeIcon icon={faArrowUp as IconProp} />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <FormattedMessage defaultMessage="To Top" description="scroll to top" />
 >>>>>>> ff7bcbed7 (Add scroll to top button)
 =======
       {/* <FormattedMessage defaultMessage="To Top" description="scroll to top" /> */}
 >>>>>>> a8c6b5249 (save temp)
+=======
+>>>>>>> 519000497 (Clean up)
     </Button>
   );
 }
