@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CodeVerified from "components/CodeVerified";
 import { Header } from "components/Header";
 import { Help } from "components/Help";
@@ -7,25 +8,6 @@ import Splash from "components/Splash";
 import { useAppSelector } from "eduid-hooks";
 import Footer from "login/components/Footer/Footer";
 import "login/styles/index.scss";
-=======
-<<<<<<< HEAD
-import Footer from "components/Common/Footer";
-import { Header } from "components/Common/Header";
-import { Notifications } from "components/Common/Notifications";
-import Splash from "components/Common/Splash";
-import { Help } from "components/Help";
-import CodeVerified from "components/Signup/CodeVerified";
-import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
-=======
-import CodeVerified from "components/CodeVerified";
-import { Header } from "components/Header";
-import { Help } from "components/Help";
-import { Notifications } from "components/Notifications";
-import Splash from "components/Splash";
-import Footer from "login/components/Footer/Footer";
-import "login/styles/index.scss";
->>>>>>> 0c595a5e6 (Add faq component)
->>>>>>> 249249112 (Add faq component)
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -66,7 +48,7 @@ export function SignupMain(): JSX.Element {
           </section>
         </Splash>
       </main>
-      <Footer helpPath={`${SIGNUP_BASE_PATH}/faq`} />
+      <Footer helpPath={`${SIGNUP_BASE_PATH}/help`} />
     </React.Fragment>
   );
 }
