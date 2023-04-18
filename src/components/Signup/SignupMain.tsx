@@ -41,14 +41,17 @@ export function SignupMain(): JSX.Element {
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <Routes>
-            <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-            <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
-            <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-          </Routes>
+          <section id="content" className="horizontal-content-margin content">
+            <Routes>
+              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+              <Route path={`${SIGNUP_BASE_PATH}/help`} element={<Help />} />
+            </Routes>
+          </section>
         </Splash>
       </main>
-      <Footer helpPath={`${SIGNUP_BASE_PATH}/faq`} />
+      <Footer helpPath={`${SIGNUP_BASE_PATH}/help`} />
     </React.Fragment>
   );
 }
