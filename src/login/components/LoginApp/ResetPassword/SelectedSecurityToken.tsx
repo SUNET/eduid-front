@@ -27,7 +27,6 @@ export function SecurityKey({
       {!selected_option ? (
         <React.Fragment>
           {Object.values(extraSecurityKey).map((security, index) => {
-            console.log("security", security);
             return (
               <React.Fragment key={index}>
                 {
@@ -41,9 +40,9 @@ export function SecurityKey({
             );
           })}
         </React.Fragment>
-      ) : selected_option === "securityKey" ? (
-        <SelectedSecurityToken />
-      ) : null}
+      ) : (
+        selected_option === "securityKey" && <SelectedSecurityToken />
+      )}
     </React.Fragment>
   );
 }
