@@ -150,7 +150,7 @@ export function SetNewPassword(): JSX.Element | null {
 
   useEffect(() => {
     setPassword(suggested_password);
-  }, [password]);
+  }, [suggested_password]);
 
   function copyToClipboard() {
     if (ref && ref.current) {
