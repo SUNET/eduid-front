@@ -11,6 +11,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AccordionItemTemplate from "./AccordionItemTemplate";
+import { advancedSettingsPath, identityPath, settingsPath } from "./DashboardMain";
 
 /**
  * Recommendation for adding name, security key and phone number and verification of identity
@@ -22,6 +23,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
 
   return (
     <AccordionItemTemplate
+      uuid="recommendation-security-key"
       icon={<FontAwesomeIcon icon={faKey as IconProp} />}
       title={
         <FormattedMessage description="accordion item Adding security key" defaultMessage="Add your security key" />
@@ -34,7 +36,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
           defaultMessage="Add your security key to enable safe reset of password"
         />
       </p>
-      <Link to="settings/advanced-settings/">
+      <Link key="advanced-settings" to={advancedSettingsPath}>
         <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
       </Link>
     </AccordionItemTemplate>
@@ -43,14 +45,14 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
 
 function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
   let description, title;
-  const verifiedNumber = props.phones.some((num) => num.verified === true);
+  const verifiedNumber = props.phones?.some((num) => num.verified === true);
 
   // if user has phone number and it is verified, do not show accordion item
-  if (props.phones.length && verifiedNumber) {
+  if (verifiedNumber) {
     return null;
   }
   // if user has no phone number or not confirmed, show accordion item with description and title
-  if (!props.phones.length) {
+  if (props.phones === undefined || props.phones.length === 0) {
     description = (
       <FormattedMessage
         description="accordion item Phone additional info"
@@ -80,9 +82,11 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} />}
       title={title}
       additionalInfo={null}
+      uuid="recommendation-phone"
     >
       <p> {description}</p>
-      <HashLink to="/profile/settings/#phone">
+
+      <HashLink to={`${settingsPath}/#phone`}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </HashLink>
     </AccordionItemTemplate>
@@ -99,6 +103,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
       icon={<FontAwesomeIcon icon={faUser as IconProp} />}
       title={<FormattedMessage description="accordion item Adding name" defaultMessage="Add your name" />}
       additionalInfo={null}
+      uuid="recommendation-add-name"
     >
       <p>
         <FormattedMessage
@@ -106,7 +111,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
           defaultMessage="Name can be used to personalise services that you access with your eduID."
         />
       </p>
-      <Link key="settings" to="settings/">
+      <Link key="settings" to={settingsPath}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </Link>
     </AccordionItemTemplate>
@@ -145,9 +150,14 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
   }
 
   return (
-    <AccordionItemTemplate icon={<FontAwesomeIcon icon={faIdCard as IconProp} />} title={title} additionalInfo={null}>
+    <AccordionItemTemplate
+      icon={<FontAwesomeIcon icon={faIdCard as IconProp} />}
+      title={title}
+      additionalInfo={null}
+      uuid="recommendation-verify-identity"
+    >
       <p>{description}</p>
-      <Link key="verify-identity" to="verify-identity/">
+      <Link key="verify-identity" to={identityPath}>
         <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
       </Link>
     </AccordionItemTemplate>
@@ -163,8 +173,8 @@ export function Recommendations(): JSX.Element | null {
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const identities = useDashboardAppSelector((state) => state.identities);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
-  const verifiedNumber = phones.some((num) => num.verified === true);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
+  const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
@@ -184,17 +194,15 @@ export function Recommendations(): JSX.Element | null {
 
   return (
     <article>
-      <div className="intro">
-        <h3>
-          <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
-        </h3>
-        <p>
-          <FormattedMessage
-            description="recommendation title"
-            defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
-          />
-        </p>
-      </div>
+      <h2>
+        <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
+      </h2>
+      <p>
+        <FormattedMessage
+          description="recommendation title"
+          defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
+        />
+      </p>
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />
         <RecommendationPhone phones={phones} />

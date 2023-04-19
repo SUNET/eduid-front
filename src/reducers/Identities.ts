@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchIdentities, UserIdentities } from "apis/eduidPersonalData";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchIdentities, requestAllPersonalData, UserIdentities } from "apis/eduidPersonalData";
 import { addNin, removeNin } from "apis/eduidSecurity";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -13,12 +13,7 @@ export const initialState: IdentitiesState = {
 const identitiesSlice = createSlice({
   name: "identities",
   initialState,
-  reducers: {
-    setIdentities: (state, action: PayloadAction<UserIdentities>) => {
-      // Update identities in state. Called after bulk-fetch of personal data.
-      return action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchIdentities.fulfilled, (state, action) => {
@@ -28,6 +23,9 @@ const identitiesSlice = createSlice({
         return action.payload.identities;
       })
       .addCase(removeNin.fulfilled, (state, action) => {
+        return action.payload.identities;
+      })
+      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
         return action.payload.identities;
       });
   },

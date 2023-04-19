@@ -12,19 +12,20 @@ import EmailInput from "../../login/components/Inputs/EmailInput";
 export function SignupEmailForm(): JSX.Element {
   return (
     <Fragment>
-      <h1 className="heading">
-        <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
-      </h1>
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`Once you have created an eduID you will be able to log in and
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage={`Once you have created an eduID you will be able to log in and
                              connect it to your Swedish national identity number.`}
-            description="Signup"
-          />
-        </p>
-      </div>
-
+              description="Signup"
+            />
+          </p>
+        </div>
+      </section>
       <EmailForm />
     </Fragment>
   );
@@ -66,20 +67,17 @@ function EmailForm() {
 
         return (
           <form id="register-form" onSubmit={formProps.handleSubmit}>
-            <fieldset>
-              <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
-
-              <div className="buttons">
-                <EduIDButton
-                  buttonstyle="primary"
-                  id="register-button"
-                  disabled={_disabled}
-                  onClick={formProps.handleSubmit}
-                >
-                  <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
-                </EduIDButton>
-              </div>
-            </fieldset>
+            <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+            <div className="buttons">
+              <EduIDButton
+                buttonstyle="primary"
+                id="register-button"
+                disabled={_disabled}
+                onClick={formProps.handleSubmit}
+              >
+                <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
+              </EduIDButton>
+            </div>
           </form>
         );
       }}

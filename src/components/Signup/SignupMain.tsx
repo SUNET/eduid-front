@@ -9,7 +9,6 @@ import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
 import { SignupApp } from "./SignupApp";
-import { SignupGlobalStateProvider } from "./SignupGlobalState";
 
 // export for use in tests
 export const SIGNUP_BASE_PATH = "/register";
@@ -30,18 +29,16 @@ export function SignupMain(): JSX.Element {
   return (
     <React.Fragment>
       <Header showLogin={true} />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <SignupGlobalStateProvider>
-            <Routes>
-              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
-              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-            </Routes>
-          </SignupGlobalStateProvider>
+          <Routes>
+            <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+            <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+            <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+          </Routes>
         </Splash>
-      </section>
+      </main>
       <Footer />
     </React.Fragment>
   );

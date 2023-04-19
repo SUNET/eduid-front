@@ -2,11 +2,11 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { LOGIN_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";
-import { appLoaded } from "login/components/App/App_actions";
 import { LoginMain } from "login/components/LoginMain";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { appLoadingSlice } from "reducers/AppLoading";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
@@ -15,7 +15,7 @@ const getConfig = async function () {
   console.log("Initializing state for the login app...");
   const config = await loginStore.dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(config)) {
-    loginStore.dispatch(appLoaded());
+    loginStore.dispatch(appLoadingSlice.actions.appLoaded());
   }
 };
 

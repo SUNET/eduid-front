@@ -29,9 +29,9 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 }
 
 function RenderPersonalData(props: { labels: NameLabels }) {
-  const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
-  const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
-  const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
+  const first_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
+  const last_name = useDashboardAppSelector((state) => state.personal_data.response?.surname);
+  const pref_language = useDashboardAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
@@ -45,10 +45,11 @@ function RenderPersonalData(props: { labels: NameLabels }) {
   }
   return (
     <div className="personal-data-info">
-      <NameDisplay label={props.labels.first} name={first_name} />
-      <NameDisplay label={props.labels.last} name={last_name} />
+      <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
+      <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
       {hasPrefLanguage ? (
         <NameDisplay
+          htmlFor="language"
           label={<FormattedMessage defaultMessage="Language" description="pd label language" />}
           name={languageLabel}
         />
@@ -104,7 +105,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
-  const hasPersonalData = Boolean(personal_data?.given_name) || Boolean(personal_data?.surname);
+  const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
   //  to use as placeholder/label throughout these components
@@ -123,25 +124,23 @@ function PersonalDataParent() {
 
   return (
     <article className="personal-data">
-      <div className="intro">
-        <div className="heading">
-          <h3>
-            <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
-          </h3>
-          <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
-        </div>
-        <p>
-          <FormattedMessage
-            description="pd long description"
-            defaultMessage="This information may be used to personalise services that you access with your eduID."
-          />
-        </p>
-        <Fragment>
-          {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
-          {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
-          {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
-        </Fragment>
+      <div className="heading">
+        <h2>
+          <FormattedMessage description="pd main title" defaultMessage={`Names & language`} />
+        </h2>
+        <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
       </div>
+      <p>
+        <FormattedMessage
+          description="pd long description"
+          defaultMessage="This information may be used to personalise services that you access with your eduID."
+        />
+      </p>
+      <Fragment>
+        {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
+        {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
+        {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
+      </Fragment>
     </article>
   );
 }

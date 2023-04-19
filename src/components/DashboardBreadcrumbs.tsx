@@ -12,20 +12,25 @@ interface DashboardBreadcrumbsTypes {
 export function DashboardBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcrumbsTypes): JSX.Element {
   if (currentPage === "Start") {
     return (
-      <div className="breadcrumb">
-        <FontAwesomeIcon icon={faHome as IconProp} />
-        <FormattedMessage description="Start" defaultMessage="Start" />
-      </div>
+      <nav className="breadcrumb" aria-label="breadcrumb">
+        <Link to="#" className="disabled" aria-label="disabled link to start page">
+          <FontAwesomeIcon icon={faHome as IconProp} />
+          <FormattedMessage description="Start" defaultMessage="Start" />
+        </Link>
+      </nav>
     );
   }
   return (
-    <div className="breadcrumb">
-      <Link key="/profile/" to="/profile/">
+    <nav className="breadcrumb" aria-label="breadcrumb">
+      <Link key="/profile/" to="/profile/" aria-label="go to start page">
         <FontAwesomeIcon icon={faHome as IconProp} />
         <FormattedMessage description="Start" defaultMessage="Start" />
       </Link>
-      / <FontAwesomeIcon icon={pageIcon} />
-      {currentPage}
-    </div>
+      <span aria-hidden="true">/</span>
+      <Link to="#" className="disabled" aria-label={`disabled link to ${currentPage}`}>
+        <FontAwesomeIcon icon={pageIcon} />
+        {currentPage}
+      </Link>
+    </nav>
   );
 }

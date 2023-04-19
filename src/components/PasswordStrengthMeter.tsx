@@ -1,6 +1,6 @@
 import { useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React, { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 import { FormText } from "reactstrap";
 import zxcvbn from "zxcvbn";
 
@@ -20,14 +20,15 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   const pdata = useDashboardAppSelector((state) => state.personal_data);
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const [pwScore, setPwScore] = useState(0);
+  const intl = useIntl();
 
   const pwStrengthMessages = ["pwfield.terrible", "pwfield.bad", "pwfield.weak", "pwfield.good", "pwfield.strong"];
 
   useEffect(() => {
     let userInput: string[] = [];
-    if (pdata.given_name) userInput.push(pdata.given_name);
-    if (pdata.surname) userInput.push(pdata.surname);
-    if (pdata.display_name) userInput.push(pdata.display_name);
+    if (pdata.response?.given_name) userInput.push(pdata.response?.given_name);
+    if (pdata.response?.surname) userInput.push(pdata.response?.surname);
+    if (pdata.response?.display_name) userInput.push(pdata.response?.display_name);
     userInput = userInput.concat(emails.map((x) => x.email));
 
     if (!minRequiredEntropy) {
@@ -54,7 +55,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     <React.Fragment>
       <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       <div className="form-field-error-area" key="1">
-        <FormText>{translate(pwStrengthMessages[pwScore])}</FormText>
+        <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>
       </div>
     </React.Fragment>
   );

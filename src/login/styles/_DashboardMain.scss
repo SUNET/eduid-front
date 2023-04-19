@@ -1,28 +1,12 @@
 @import "./variables";
 
 // --- PROFILE STYLES --- //
-#profile-grid {
-  display: grid;
-  grid-row-gap: 2rem;
-  grid-column-gap: 2rem;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(2, auto);
-
-  & label {
-    font-family: ProximaNova-Bold;
-    font-size: 1rem;
-    width: 100%;
-  }
-}
-
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
 
   .display-nin-show-hide {
     display: flex;
-
-    //padding-bottom: 1.5rem;
 
     // show and hide button
     button {
@@ -37,17 +21,13 @@
   word-wrap: break-word;
 
   &:not(a) {
-    font-family: ProximaNova-Light;
+    font-family: $proxima-light;
     font-size: 1.5rem;
   }
 
   &.no-data {
     color: $txt-gray;
   }
-
-  // &.unverified {
-  //   color: $bright-orange;
-  // }
 
   &.verified {
     color: $txt-black;
@@ -57,7 +37,7 @@
     font-size: 1.125rem;
 
     &:not(a) {
-      font-family: ProximaNova-Light;
+      font-family: $proxima-light;
       font-size: 1.25rem;
     }
   }
@@ -72,9 +52,6 @@
 @media (max-width: $bp-md) {
   #profile-grid {
     width: calc(100% - 1.25rem);
-  }
-
-  #profile-grid {
     grid-row-gap: 2rem;
   }
 }
@@ -85,43 +62,7 @@
   }
 }
 
-@media (max-width: 432px) {
-  a.nav-settings.sv {
-    margin-top: 2.5rem;
-    display: block;
-    transition: -webkit-transform 0.5s;
-    transition: transform 0.5s;
-    transition: transform 0.5s;
-    transition: transform 0.5s, -webkit-transform 0.5s;
-  }
-}
-
-@media (max-width: 383px) {
-  a.nav-settings.en,
-  a.nav-advanced-settings.en {
-    margin-top: 2.5rem;
-    display: block;
-    transition: -webkit-transform 0.5s;
-    transition: transform 0.5s;
-    transition: transform 0.5s;
-    transition: transform 0.5s, -webkit-transform 0.5s;
-  }
-}
-
-@media (max-width: 353px) {
-  a.nav-settings.en {
-    margin-top: 2.5rem;
-  }
-
-  a.nav-advanced-settings.en {
-    margin-top: 0;
-    display: block;
-    transition: transform 0.5s;
-  }
-}
-
-//Breadcrumb
-
+// --- BREADCRUMB STYLES--- //
 .breadcrumb {
   align-items: center;
   color: #57606a;
@@ -135,5 +76,64 @@
   svg {
     padding-right: 5px;
     padding-left: 5px;
+  }
+}
+
+// --- VERIFICATION PROGRESS STYLES--- //
+.verification-status {
+  @extend figure;
+
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+  border-radius: 6px;
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: left;
+  }
+
+  p.help-text {
+    margin-top: 8px;
+    text-align: left;
+  }
+
+  svg {
+    font-size: 2.5em;
+    border-radius: 25px;
+    margin-right: 16px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 25%);
+    background-color: $white;
+  }
+
+  &.unverified svg {
+    color: $txt-orange;
+  }
+
+  &.verified svg {
+    color: $success-green;
+  }
+}
+
+.data-container :last-child {
+  margin-left: 2rem;
+}
+
+.data-container {
+  @extend figure;
+
+  display: flex;
+
+  a {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+
+    & :last-child {
+      margin-left: 0;
+    }
   }
 }

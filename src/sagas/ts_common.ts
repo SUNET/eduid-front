@@ -4,13 +4,15 @@
 
 import { TOKEN_SERVICE_URL } from "globals";
 
+export class NeedsAuthenticationError extends Error {}
+
 export const checkStatus = function (response: Response): Response {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else if (response.status === 0) {
     const next = document.location.href;
     document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);
-    throw new Error("Request needs authentication");
+    throw new NeedsAuthenticationError("Request needs authentication");
   } else {
     throw new Error(`HTTP ${response.status} ${response.statusText}`);
   }

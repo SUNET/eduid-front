@@ -23,9 +23,9 @@ export function FrejaeID(): JSX.Element {
   return (
     <div className="option-wrapper">
       <div className="option">
-        <h4>
+        <h3>
           <FormattedMessage defaultMessage={`Freja eID+`} />
-        </h4>
+        </h3>
 
         {notAvailable && (
           <p className="help-text">

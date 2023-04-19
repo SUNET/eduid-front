@@ -33,6 +33,12 @@ function VerifyIdentity(): JSX.Element | null {
     });
   }, []);
 
+  const currentPage = intl.formatMessage({
+    id: "Identity",
+    defaultMessage: "Identity",
+    description: "Identity",
+  });
+
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
      * not on re-renders. Therefore, we _must_ have all data that we're going to use to set
@@ -46,16 +52,8 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
-      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage="Identity" />
-      <div className="intro">
-        <h1>
-          <FormattedMessage
-            description="verify identity unverified main title"
-            defaultMessage={`Connect your identity to your eduID`}
-          />
-        </h1>
-        <VerifyIdentityIntro />
-      </div>
+      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
+      <VerifyIdentityIntro />
     </Fragment>
   );
 }
@@ -78,47 +76,67 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
-        <div className="lead">
-          <p>
+        <section className="intro">
+          <h1>
             <FormattedMessage
-              description="verify identity verified title"
-              defaultMessage="Your eduID is ready to use"
+              description="verify identity unverified main title"
+              defaultMessage={`Connect your identity to your eduID`}
             />
-          </p>
-        </div>
-        <h3>
-          <FormattedMessage
-            description="verify identity verified description"
-            defaultMessage="The identities below are now connected to your eduID"
-          />
-        </h3>
-        <VerifiedIdentitiesTable />
+          </h1>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                description="verify identity verified title"
+                defaultMessage="Your eduID is ready to use"
+              />
+            </p>
+          </div>
+        </section>
+        <article>
+          <h2>
+            <FormattedMessage
+              description="verify identity verified description"
+              defaultMessage="The identities below are now connected to your eduID"
+            />
+          </h2>
+          <VerifiedIdentitiesTable />
+        </article>
       </React.Fragment>
     );
   }
 
   return (
     <React.Fragment>
-      <div className="lead">
-        <p>
+      <section className="intro">
+        <h1>
           <FormattedMessage
-            description="verify identity unverified description"
-            defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from `}
+            description="verify identity unverified main title"
+            defaultMessage={`Connect your identity to your eduID`}
           />
-        </p>
-      </div>
-      <h3>
-        <FormattedMessage
-          description="verify identity non verified description"
-          defaultMessage="Choose your principal identification method"
-        />
-      </h3>
-      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-        <AccordionItemSwedish />
-        <AccordionItemEu />
-        <AccordionItemWorld />
-      </Accordion>
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="verify identity unverified description"
+              defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+            to get the most benefit from `}
+            />
+          </p>
+        </div>
+      </section>
+      <article>
+        <h2>
+          <FormattedMessage
+            description="verify identity non verified description"
+            defaultMessage="Choose your principal identification method"
+          />
+        </h2>
+        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+          <AccordionItemSwedish />
+          <AccordionItemEu />
+          <AccordionItemWorld />
+        </Accordion>
+      </article>
     </React.Fragment>
   );
 }
@@ -209,12 +227,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities.nin?.verified && (
         <React.Fragment>
-          <h3>
+          <h2>
             <FormattedMessage
               description="verify identity non verified description"
               defaultMessage="Choose your principal identification method"
             />
-          </h3>
+          </h2>
           <p>
             <FormattedMessage
               description="verify identity with swedish ID description"
@@ -233,7 +251,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
 function AccordionItemSwedish(): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
+  const hasVerifiedSwePhone = phones?.some((phone) => phone.verified && phone.number.startsWith("+46"));
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
 
@@ -265,19 +283,16 @@ function AccordionItemSwedish(): JSX.Element | null {
           </h4>
           <AddNin />
         </li>
-        <React.Fragment>
-          <li>
-            <h4>
-              <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-            </h4>
-            <p className="x-adjust">
-              <FormattedMessage
-                description="verify-identity.connect-nin_description"
-                defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
-              />
-            </p>
-          </li>
-
+        <li>
+          <h4>
+            <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
+          </h4>
+          <p className="x-adjust">
+            <FormattedMessage
+              description="verify-identity.connect-nin_description"
+              defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
+            />
+          </p>
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
               title={
@@ -320,7 +335,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <LookupMobileProofing disabled={lookupMobileDisabled} />
             </AccordionItemTemplate>
           </Accordion>
-        </React.Fragment>
+        </li>
       </ol>
     </AccordionItemTemplate>
   );

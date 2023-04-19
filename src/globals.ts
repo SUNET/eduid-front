@@ -5,12 +5,12 @@ import { messages } from "login/translation/messages";
  *
  * TypeScript this as const _available_languages = AVAILABLE_LANGUAGES as { [key: string]: string }
  * */
-export const AVAILABLE_LANGUAGES = {
+export const AVAILABLE_LANGUAGES: { [key: string]: string } = {
   en: "English",
   sv: "Svenska",
 };
 
-export const LOCALIZED_MESSAGES = messages;
+export const LOCALIZED_MESSAGES = messages as unknown as { [key: string]: { [key: string]: string } };
 
 export const SIGNUP_CONFIG_URL = "/services/jsconfig/signup/config";
 

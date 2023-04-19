@@ -6,7 +6,7 @@ import ResetPassword from "./ResetPassword/ResetPasswordMain";
 
 function LoginApp(): JSX.Element {
   return (
-    <div id="content" className="horizontal-content-margin content">
+    <section id="content" className="horizontal-content-margin content">
       <Routes>
         <Route path="/login/ext-return/:app_name/:authn_id" element={<LoginExternalReturnHandler />} />
         <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
@@ -14,7 +14,7 @@ function LoginApp(): JSX.Element {
         <Route path="/login/:ref" element={<Login />} />
         <Route path="/reset-password/*" element={<ResetPassword />} />
       </Routes>
-    </div>
+    </section>
   );
 }
 

@@ -11,7 +11,14 @@ test("renders AccountId as expected", () => {
   render(<DashboardMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
-      personal_data: { ...initialState, eppn: test_eppn },
+      personal_data: {
+        ...initialState,
+        eppn: test_eppn,
+        response: {
+          eppn: test_eppn,
+          display_name: "test user",
+        },
+      },
     },
   });
 
@@ -26,7 +33,7 @@ test("renders AccountId as expected", () => {
 
   expect(screen.getByRole("heading", { name: /unique id/i })).toBeInTheDocument();
 
-  expect(screen.getByLabelText("eppn")).toHaveTextContent(test_eppn);
+  expect(screen.getByRole("status")).toHaveTextContent(test_eppn);
   // renders the advanced settings page title
   expect(document.title).toContain("Advanced Settings");
 });

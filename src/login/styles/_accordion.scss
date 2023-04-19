@@ -55,13 +55,14 @@
           svg {
             text-align: center;
             font-size: 0.9rem;
-            margin-right: 5px;
+            margin-right: 10px;
           }
         }
 
         #{$a}-title {
           font-size: 1.125rem;
           margin-bottom: 0;
+          font-family: $akkurat;
 
           @media (max-width: $bp-md) {
             font-size: 1rem;
@@ -71,10 +72,11 @@
         #{$a}-description {
           font-size: 12px;
           display: block;
+          margin-bottom: 0;
         }
 
-        #{$a}-toggle {
-          transform: rotate(90deg);
+        svg.svg-inline--fa.fa-chevron-up,
+        svg.svg-inline--fa.fa-chevron-down {
           position: absolute;
           right: 1rem;
         }

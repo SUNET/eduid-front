@@ -19,10 +19,16 @@ export function Settings(): JSX.Element {
     });
   }, []);
 
+  const currentPage = intl.formatMessage({
+    id: "Settings",
+    defaultMessage: "Settings",
+    description: "Settings",
+  });
+
   return (
     <React.Fragment>
-      <DashboardBreadcrumbs pageIcon={faGear} currentPage="Settings" />
-      <div className="intro">
+      <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
+      <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />
         </h1>
@@ -34,7 +40,7 @@ export function Settings(): JSX.Element {
             />
           </p>
         </div>
-      </div>
+      </section>
       <PersonalDataParent />
       <Emails />
       <Phones />

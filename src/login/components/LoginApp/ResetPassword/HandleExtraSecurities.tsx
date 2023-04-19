@@ -8,9 +8,9 @@ import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
+  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   clearCountdown,
   countFiveMin,
-  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   setLocalStorage,
 } from "./CountDownTimer";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
@@ -202,12 +202,12 @@ export function ProcessExtraSecurities(): JSX.Element | null {
         extraSecurityPhone={extra_security.phone_numbers}
         toPhoneCodeForm={toPhoneCodeForm}
       />
-      <h4 className="description-without-security">
+      <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
           defaultMessage="Continue without extra security option"
         />
-      </h4>
+      </h3>
       <p>
         <FormattedMessage
           description="without extra security description"

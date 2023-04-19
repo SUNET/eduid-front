@@ -27,6 +27,10 @@
     "developer_comment": "Header register",
     "string": "Register"
   },
+  "/Aj3eQ": {
+    "developer_comment": "verification status heading after password reset",
+    "string": "Your identity is no longer verified after password reset."
+  },
   "/DarP+": {
     "developer_comment": "Dashboard AccountId",
     "string": "eppn"
@@ -74,6 +78,10 @@
   "0fMD4p": {
     "developer_comment": "SAML login finished",
     "string": "Please wait, you are being logged in..."
+  },
+  "0jJrec": {
+    "developer_comment": "verify identity vetting explanation verify phone",
+    "string": "Confirm your phone number in {linkToSettings}"
   },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
@@ -151,10 +159,6 @@
     "developer_comment": "accordion item security key additional info",
     "string": "Add your security key to enable safe reset of password"
   },
-  "3pVzlc": {
-    "developer_comment": "last step",
-    "string": "Congratulations to completing your identity verification"
-  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
@@ -221,9 +225,17 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "6zx8wo": {
+    "developer_comment": "mfa reset password tapit",
+    "string": "Use your security key to reset password. If it has a button, tap it."
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
+  },
+  "7h5tj9": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to eduID"
   },
   "7rcGK1": {
     "developer_comment": "column value label",
@@ -236,6 +248,10 @@
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "You are not logged in, or the session expired."
+  },
+  "86/PBW": {
+    "developer_comment": "chpass suggested password",
+    "string": "Suggested password"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -272,10 +288,6 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
-  },
-  "9phM5a": {
-    "developer_comment": "second step",
-    "string": "Verify your identity"
   },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
@@ -340,10 +352,6 @@
     "developer_comment": "Set new password (accept button)",
     "string": "Accept password"
   },
-  "DdY0Ec": {
-    "developer_comment": "profile phone display title",
-    "string": "Phone number"
-  },
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
@@ -360,10 +368,6 @@
     "developer_comment": "Signup credentials button",
     "string": "Cancel"
   },
-  "EJjqFG": {
-    "developer_comment": "first step",
-    "string": "Create eduID"
-  },
   "EW3NC1": {
     "developer_comment": "Email label",
     "string": "Email address"
@@ -378,6 +382,9 @@
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
   },
+  "Error: HTTP 500 ": {
+    "string": "Unexpected error occurred. Please try again or contact support if the problem persists."
+  },
   "Error: Internal Server Error": {
     "string": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
   },
@@ -390,6 +397,10 @@
   "FDb++j": {
     "developer_comment": "Verification letter expired",
     "string": "Verification letter expired"
+  },
+  "FDlOke": {
+    "developer_comment": "verify identity vetting explanation add phone number",
+    "string": "Start by adding your Swedish phone number in {linkToSettings}"
   },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
@@ -477,10 +488,6 @@
     "developer_comment": "nin/password button label",
     "string": "SHOW"
   },
-  "HozsEs": {
-    "developer_comment": "profile phone display no data",
-    "string": "add phone number"
-  },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
@@ -496,6 +503,10 @@
   "IR238P": {
     "developer_comment": "Short code form",
     "string": "Cancel"
+  },
+  "Identity": {
+    "developer_comment": "Identity",
+    "string": "Identity"
   },
   "Ifusv7": {
     "developer_comment": "Emails main title",
@@ -571,6 +582,10 @@
     "developer_comment": "button_add",
     "string": "Add"
   },
+  "LolQ90": {
+    "developer_comment": "mfa problems heading",
+    "string": "Problems?"
+  },
   "LuSrd4": {
     "developer_comment": "Signup",
     "string": "Register your email address to create your eduID."
@@ -631,6 +646,10 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
+  "O234Pp": {
+    "developer_comment": "verification status heading verified",
+    "string": "Your identity is verified."
+  },
   "O2laus": {
     "developer_comment": "accordion item Phone additional info",
     "string": "Add your phone number to enable safe reset of password and verification of identity."
@@ -687,17 +706,33 @@
     "developer_comment": "Verification letter requested",
     "string": "Verification letter requested"
   },
+  "Pnu06c": {
+    "developer_comment": "status",
+    "string": "status"
+  },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
+  },
+  "PxROOc": {
+    "developer_comment": "help text for custom password label",
+    "string": "Tip: Choose a strong password"
   },
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Code"
   },
+  "Q8CeJV": {
+    "developer_comment": "mfa try again",
+    "string": "Please try again"
+  },
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Never used"
+  },
+  "Qa3Xhm": {
+    "developer_comment": "orcid id",
+    "string": "orcid id"
   },
   "Qgc9l0": {
     "developer_comment": "Login MFA heading",
@@ -745,6 +780,10 @@
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
+  "Settings": {
+    "developer_comment": "Settings",
+    "string": "Settings"
+  },
   "SgvXTp": {
     "string": "Enter the six-digit response code shown on the other device in the form below"
   },
@@ -768,6 +807,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "with a digital ID-card"
   },
+  "T9+zD2": {
+    "developer_comment": "chpass form custom password repeat",
+    "string": "Repeat new password"
+  },
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
@@ -775,6 +818,10 @@
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
     "string": "E.g USB Security Key."
+  },
+  "TdlNku": {
+    "developer_comment": "name",
+    "string": "name"
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -813,6 +860,10 @@
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
+  },
+  "VFhU1F": {
+    "developer_comment": "verify identity vetting phone tagline",
+    "string": "For Swedish phone numbers entered and confirmed in eduID."
   },
   "VL/TNV": {
     "developer_comment": "ToU button cancel",
@@ -857,6 +908,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
+  },
+  "WlcZVg": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. A password has been generated for you. Save the password. Once you've logged in you can change your password."
   },
   "XEJBy2": {
     "developer_comment": "login mfa primary option button",
@@ -930,6 +985,10 @@
     "developer_comment": "username input field label",
     "string": "Username"
   },
+  "ZiRNyI": {
+    "developer_comment": "remove",
+    "string": "remove"
+  },
   "ZkDePR": {
     "developer_comment": "eidas freja instructions step4",
     "string": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
@@ -963,6 +1022,10 @@
   },
   "add_nin.main_title": {
     "string": "Add your id number"
+  },
+  "aisFdT": {
+    "developer_comment": "orcid logo",
+    "string": "orcid logo"
   },
   "al9vbk": {
     "developer_comment": "accordion item Verification",
@@ -1014,6 +1077,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
+  },
+  "cRNzAJ": {
+    "developer_comment": "orcid remove",
+    "string": "remove"
   },
   "captcha.one-step-left": {
     "string": "Only one more step left!"
@@ -1171,6 +1238,10 @@
     "developer_comment": "Signup",
     "string": "Confirm that you are a human."
   },
+  "ebsFfU": {
+    "developer_comment": "primary label",
+    "string": "PRIMARY"
+  },
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
@@ -1227,6 +1298,10 @@
   },
   "eidas.token_verify_success": {
     "string": "U2F token verified successfully"
+  },
+  "elUO4D": {
+    "developer_comment": "link to detail page",
+    "string": "order a new code"
   },
   "email.invalid_email": {
     "string": "The entered email is invalid"
@@ -1330,6 +1405,10 @@
   "faq_link": {
     "string": "For more information see the"
   },
+  "foTEGF": {
+    "developer_comment": "verification status heading unverified",
+    "string": "Your identity is not verified."
+  },
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
   },
@@ -1432,13 +1511,13 @@
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
   },
+  "iYsuen": {
+    "developer_comment": "chpass old password label",
+    "string": "Current password"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
-  },
-  "ivDdG3": {
-    "developer_comment": "link to detail page",
-    "string": "continue verification"
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
@@ -1490,6 +1569,10 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
+  },
+  "lZy8ZA": {
+    "developer_comment": "verification status sub text",
+    "string": "Please see the recommended actions below."
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1999,14 +2082,17 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here to order a new code"
   },
-  "profile.email_display_title": {
-    "string": "Email address"
-  },
   "profile.phone_display_non-primary_data": {
     "string": "make number primary"
   },
   "profile.phone_display_unconfirmed_data": {
     "string": "confirm added number"
+  },
+  "proofing.attribute_missing": {
+    "string": "Information necessary for identification is missing. Please try again."
+  },
+  "proofing.malformed_identity": {
+    "string": "Incorrect format of the identity number. Please try again."
   },
   "pwfield.bad": {
     "string": "Very weak password"
@@ -2045,6 +2131,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
+  },
+  "qJxWkn": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Start by adding your ID number above"
   },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
@@ -2163,6 +2253,10 @@
     "developer_comment": "profile name display no data",
     "string": "add name"
   },
+  "s5EpgK": {
+    "developer_comment": "verify identity vetting link settings",
+    "string": "Settings"
+  },
   "sIENAc": {
     "developer_comment": "extra security description",
     "string": "A password reset using an extra security option will keep your identity confirmed."
@@ -2170,6 +2264,12 @@
   "sVb591": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
+  },
+  "security key remove": {
+    "string": "Remove"
+  },
+  "security key status": {
+    "string": "Status"
   },
   "security last used": {
     "string": "Used on"
@@ -2389,6 +2489,10 @@
     "developer_comment": "Reset Password go to eduID",
     "string": "Go to eduID"
   },
+  "tUkPGr": {
+    "developer_comment": "verify identity vetting explanation add swedish phone",
+    "string": "Only possible with Swedish phone number"
+  },
   "tVcCe6": {
     "developer_comment": "emails enter code",
     "string": "Code"
@@ -2431,9 +2535,11 @@
     "string": "Copy to clipboard"
   },
   "unexpected-problem": {
+    "developer_comment": "unexpected problem error",
     "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
   },
   "unexpected-success": {
+    "developer_comment": "unexpected success message",
     "string": "Success"
   },
   "uo1E1v": {
@@ -2455,21 +2561,17 @@
     "developer_comment": "verify identity verified description",
     "string": "The identities below are now connected to your eduID"
   },
-  "v/ccFv": {
-    "developer_comment": "primary label",
-    "string": "primary"
-  },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
-  "vEIe+d": {
-    "developer_comment": "finished last step",
-    "string": "To complete the last step, you need to verify a Swedish national ID number"
-  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
+  },
+  "vQpAQz": {
+    "developer_comment": "verification status sub text",
+    "string": "Your eduID is ready to use."
   },
   "value not changed": {
     "string": "The value is not changed"
@@ -2484,7 +2586,7 @@
     "string": "Start by adding your ID number above"
   },
   "verify-identity.vetting_explanation_add_phone_number": {
-    "string": "Start by adding your Swedish phone number in"
+    "string": "Start by adding your Swedish phone number in "
   },
   "verify-identity.vetting_explanation_confirm_phone_number": {
     "string": "Confirm your phone number in"
@@ -2512,6 +2614,10 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
+  },
+  "w+8Rkj": {
+    "developer_comment": "chpass form custom password label",
+    "string": "Enter new password"
   },
   "wDq7ww": {
     "developer_comment": "accordion item name additionalInfo",

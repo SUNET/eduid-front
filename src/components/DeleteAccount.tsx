@@ -29,17 +29,15 @@ export default function DeleteAccount(): JSX.Element | null {
 
   return (
     <article id="delete-account-container">
-      <div className="intro">
-        <h3>
-          <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
-        </h3>
-        <p>
-          <FormattedMessage
-            defaultMessage="Click the link to permanently delete your eduID."
-            description="DeleteAccount"
-          />
-        </p>
-      </div>
+      <h2>
+        <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
+      </h2>
+      <p>
+        <FormattedMessage
+          defaultMessage="Click the link to permanently delete your eduID."
+          description="DeleteAccount"
+        />
+      </p>
       <EduIDButton
         buttonstyle="link"
         className="lowercase"

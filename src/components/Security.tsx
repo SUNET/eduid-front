@@ -28,7 +28,7 @@ export function Security(): JSX.Element | null {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
-    if (isLoaded && !credentials) {
+    if (isLoaded && !credentials.length) {
       // call requestCredentials once app is loaded
       dispatch(requestCredentials());
     }
@@ -108,26 +108,26 @@ export function Security(): JSX.Element | null {
   return (
     <article id="security-container">
       <div id="register-security-key-container">
-        <div className="intro">
-          <h3>
-            <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
-          </h3>
-          <p>
-            <FormattedMessage
-              description="security second factor"
-              defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
+        <h2>
+          <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
+        </h2>
+        <p>
+          <FormattedMessage
+            description="security second factor"
+            defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
                   to prove you are the owner of your eduID.`}
-            />
-          </p>
-        </div>
+          />
+        </p>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable credentials={credentials} />
-          <label>
-            <FormattedMessage
-              description="select extra webauthn"
-              defaultMessage="Choose extra identification method:"
-            />
-          </label>
+          <span aria-label="select extra webauthn">
+            <strong>
+              <FormattedMessage
+                description="select extra webauthn"
+                defaultMessage="Choose extra identification method:"
+              />
+            </strong>
+          </span>
           <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
               <div>
@@ -279,8 +279,12 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           <th className="security-last-used-date">
             <FormattedMessage id="security last used" defaultMessage="Used on" />
           </th>
-          <th className="security-verify-link" />
-          <th className="security-remove-data" />
+          <th className="display-none">
+            <FormattedMessage id="security key status" defaultMessage="Status" />
+          </th>
+          <th className="display-none">
+            <FormattedMessage id="security key remove" defaultMessage="Remove" />
+          </th>
         </tr>
         {security_key_table_data}
       </tbody>

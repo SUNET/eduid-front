@@ -56,46 +56,46 @@ export default function UsernamePw() {
   }
 
   return (
-    <div className="username-pw">
-      <h1>
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h1>
+    <React.Fragment>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+        </h1>
 
-      <div className="lead">
-        <LoginAtServiceInfo service_info={service_info} />
-      </div>
+        <div className="lead">
+          <LoginAtServiceInfo service_info={service_info} />
+        </div>
+      </section>
+      <section className="username-pw">
+        <FinalForm<UsernamePwFormData>
+          id="login-form"
+          aria-label="login form"
+          onSubmit={handleSubmitUsernamePw}
+          render={(formProps: FormRenderProps<UsernamePwFormData>) => {
+            return (
+              <form onSubmit={formProps.handleSubmit}>
+                <fieldset>
+                  <UsernameInputPart />
+                  <PasswordInput name="current-password" autoComplete="current-password" />
+                </fieldset>
+                <div className="flex-between">
+                  <div className="buttons">
+                    <LoginAbortButton />
+                    <UsernamePwSubmitButton {...formProps} />
+                    <UsernamePwAnotherDeviceButton />
+                  </div>
 
-      <FinalForm<UsernamePwFormData>
-        id="login-form"
-        aria-label="login form"
-        onSubmit={handleSubmitUsernamePw}
-        render={(formProps: FormRenderProps<UsernamePwFormData>) => {
-          return (
-            <form onSubmit={formProps.handleSubmit}>
-              <fieldset>
-                <UsernameInputPart />
-              </fieldset>
-              <fieldset>
-                <PasswordInput name="current-password" autoComplete="current-password" />
-              </fieldset>
-
-              <div className="flex-between">
-                <div className="buttons">
-                  <LoginAbortButton />
-                  <UsernamePwSubmitButton {...formProps} />
-                  <UsernamePwAnotherDeviceButton />
+                  <div className="links">
+                    <RenderResetPasswordLink />
+                    <RenderRegisterLink />
+                  </div>
                 </div>
-
-                <div className="links">
-                  <RenderResetPasswordLink />
-                  <RenderRegisterLink />
-                </div>
-              </div>
-            </form>
-          );
-        }}
-      ></FinalForm>
-    </div>
+              </form>
+            );
+          }}
+        ></FinalForm>
+      </section>
+    </React.Fragment>
   );
 }
 
@@ -108,12 +108,11 @@ function UsernameInputPart(): JSX.Element {
     // re-fetch '/next' now that the conditions for logging in has changed
     dispatch(loginSlice.actions.callLoginNext());
   }
-
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
         <div className="welcome-back-container">
-          <h3>
+          <legend>
             <FormattedMessage
               defaultMessage="Welcome back, {username}!"
               description="Login username input"
@@ -121,8 +120,8 @@ function UsernameInputPart(): JSX.Element {
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-          </h3>
-          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+          </legend>
+          <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
         </div>

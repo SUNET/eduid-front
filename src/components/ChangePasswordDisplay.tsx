@@ -1,6 +1,6 @@
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 
@@ -24,17 +24,15 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   return (
     <article>
       <div id="change-password-container">
-        <div className="intro">
-          <h3>
-            <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
-          </h3>
-          <p>
-            <FormattedMessage
-              defaultMessage="Click the link to change your eduID password."
-              description="Dashboard change password link description text"
-            />
-          </p>
-        </div>
+        <h2>
+          <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
+        </h2>
+        <p>
+          <FormattedMessage
+            defaultMessage="Click the link to change your eduID password."
+            description="Dashboard change password link description text"
+          />
+        </p>
         <EduIDButton
           id="security-change-button"
           buttonstyle="link"

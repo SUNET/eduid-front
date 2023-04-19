@@ -28,9 +28,11 @@ function DataStatus(props: DataStatusProps) {
   }
   if (props.primary) {
     return (
-      <label>
-        <FormattedMessage defaultMessage="primary" description="primary label" />
-      </label>
+      <span>
+        <strong>
+          <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
+        </strong>
+      </span>
     );
   }
   return (
@@ -83,8 +85,19 @@ function DataTableRows(props: DataTableProps) {
 function DataTable(props: DataTableProps) {
   return (
     <div className="table-responsive">
-      <table className="table-form">
+      <table className="table-form" role="presentation">
         <tbody>
+          <tr className="display-none">
+            <th>
+              <FormattedMessage description="name" defaultMessage="name" />
+            </th>
+            <th>
+              <FormattedMessage description="status" defaultMessage="status" />
+            </th>
+            <th>
+              <FormattedMessage description="remove" defaultMessage="remove" />
+            </th>
+          </tr>
           <DataTableRows {...props} />
         </tbody>
       </table>

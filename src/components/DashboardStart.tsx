@@ -1,117 +1,60 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faCheck,
-  faCircleCheck,
-  faCircleExclamation,
-  faExclamation,
-  faHome,
-  faIdCard,
-  faUnlockKeyhole,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleExclamation, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
 
-interface IdentificationStepTypes {
-  account_created: boolean;
-  verified_identity: boolean;
-  nin_verified: boolean;
-}
-
-function IdentificationIndicator(props: { identities: UserIdentities }): JSX.Element {
-  // fist step is user created account
-  // second step is verified identity with eidas or svipe
-  // the last step is to verify with a nin
-  const [isFinishedStep, setIsFinishedStep] = useState<IdentificationStepTypes>({
-    account_created: true,
-    verified_identity: false,
-    nin_verified: false,
-  });
-
-  useEffect(() => {
-    if (props.identities.nin?.verified) {
-      setIsFinishedStep({
-        account_created: true,
-        verified_identity: true,
-        nin_verified: true,
-      });
-    } else if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
-      setIsFinishedStep({
-        account_created: true,
-        verified_identity: true,
-        nin_verified: false,
-      });
-    }
-  }, [props.identities]);
-
-  return (
-    <article>
-      <div className="intro">
-        <h3>
-          <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
-        </h3>
-      </div>
-      <div className="indicator">
-        <div className="step finished">
-          <FontAwesomeIcon className="icon-unlock" icon={faUser as IconProp} />
-          <FontAwesomeIcon className="icon-lock" icon={faCheck as IconProp} />
-        </div>
-        <div className="border-line" />
-        <div className={isFinishedStep.verified_identity ? "step finished" : "step"}>
-          <FontAwesomeIcon className="icon-unlock" icon={faIdCard as IconProp} />
-          <FontAwesomeIcon
-            className="icon-lock"
-            icon={isFinishedStep.verified_identity ? faCheck : (faExclamation as IconProp)}
-          />
-        </div>
-        <div className="border-line" />
-        <div className={isFinishedStep.verified_identity ? "step finished" : "step"}>
-          <FontAwesomeIcon className="icon-unlock" icon={faUnlockKeyhole as IconProp} />
-          <FontAwesomeIcon
-            className="icon-lock"
-            icon={isFinishedStep.verified_identity ? faCheck : (faExclamation as IconProp)}
-          />
-        </div>
-      </div>
-      <div className="indicator-description">
-        <span>
-          <FontAwesomeIcon icon={faCircleCheck as IconProp} />
-          <strong>
-            <FormattedMessage description="first step" defaultMessage="Create eduID" />
-          </strong>
-        </span>
-        <span>
-          <FontAwesomeIcon icon={isFinishedStep.nin_verified ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          <strong>
-            <FormattedMessage description="second step" defaultMessage="Verify your identity" />
-          </strong>
-        </span>
-        <span>
-          <FontAwesomeIcon icon={isFinishedStep.nin_verified ? faCircleCheck : (faCircleExclamation as IconProp)} />
-          <strong>
-            {isFinishedStep.nin_verified ? (
+function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
+  if (!props.identities.is_verified) {
+    return (
+      <figure className="verification-status unverified">
+        <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
+        <div>
+          <h3>
+            {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
               <FormattedMessage
-                description="last step"
-                defaultMessage="Congratulations to completing your identity verification"
+                description="verification status heading unverified"
+                defaultMessage="Your identity is not verified."
               />
             ) : (
               <FormattedMessage
-                description="finished last step"
-                defaultMessage="To complete the last step, you need to verify a Swedish national ID number"
+                description="verification status heading after password reset"
+                defaultMessage="Your identity is no longer verified after password reset."
               />
             )}
-          </strong>
-        </span>
+          </h3>
+          <p className="help-text">
+            <FormattedMessage
+              description="verification status sub text"
+              defaultMessage="Please see the recommended actions below."
+            />
+          </p>
+        </div>
+      </figure>
+    );
+  }
+  return (
+    <div className="verification-status verified">
+      <FontAwesomeIcon icon={faCircleCheck as IconProp} />
+      <div>
+        <h3>
+          <FormattedMessage
+            description="verification status heading verified"
+            defaultMessage="Your identity is verified."
+          />
+        </h3>
+        <p className="help-text">
+          <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
+        </p>
       </div>
-    </article>
+    </div>
   );
 }
 
@@ -135,22 +78,12 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
     );
 
   return (
-    <figure className="table-responsive progress-summary">
-      <table>
-        <tbody>
-          <tr className="border-row">
-            <td>
-              <strong>{letterStatus}</strong>
-            </td>
-            <td>
-              <Link to="verify-identity/#letter-proofing">
-                <FormattedMessage description="link to detail page" defaultMessage="continue verification" />
-              </Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
+    <div className="data-container">
+      <strong>{letterStatus}</strong>
+      <Link to="verify-identity/#letter-proofing">
+        <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
+      </Link>
+    </div>
   );
 }
 
@@ -159,7 +92,7 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
  */
 export default function Start(): JSX.Element {
   const intl = useIntl();
-  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useDashboardAppDispatch();
@@ -187,14 +120,13 @@ export default function Start(): JSX.Element {
     }
   }, [isLoaded]);
 
-  if (letter_proofing.letter_sent !== undefined) {
+  // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
+  if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
-        <div className="intro">
-          <h3>
-            <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
-          </h3>
-        </div>
+        <h2>
+          <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
+        </h2>
         <LetterProofingProgress letter_proofing={letter_proofing} />
       </article>
     );
@@ -203,7 +135,7 @@ export default function Start(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
-      <div className="intro">
+      <section className="intro">
         <h1>
           <FormattedMessage
             defaultMessage="Welcome, {username}!"
@@ -221,8 +153,14 @@ export default function Start(): JSX.Element {
             />
           </p>
         </div>
-      </div>
-      <IdentificationIndicator identities={identities} />
+      </section>
+      <article className="intro">
+        <h2>
+          <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
+        </h2>
+
+        <VerificationProgress identities={identities} />
+      </article>
       <Recommendations />
       {progress}
     </React.Fragment>

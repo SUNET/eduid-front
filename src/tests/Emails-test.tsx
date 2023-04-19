@@ -1,6 +1,6 @@
 import Emails from "components/Emails";
-import { render, screen, fireEvent } from "./helperFunctions/DashboardTestApp-rtl";
 import { act } from "react-dom/test-utils";
+import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders Emails component as expected", () => {
   render(<Emails />);
@@ -33,9 +33,8 @@ test("renders label text when emails primary state is true", () => {
       },
     },
   });
-  const table = screen.getByRole("table");
-  expect(table).toBeEnabled();
-  expect(screen.getByText("primary")).toBeInTheDocument();
+  const cellPrimary = screen.getByRole("cell", { name: /primary/i });
+  expect(cellPrimary).toBeEnabled();
 });
 
 test("renders make primary button when emails state verified is true", () => {

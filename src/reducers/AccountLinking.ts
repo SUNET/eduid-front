@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchOrcid, OrcidInfo, removeOrcid } from "apis/eduidOrcid";
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 
 export interface AccountLinkingState {
   orcid?: OrcidInfo;
@@ -11,12 +12,7 @@ export const initialState: AccountLinkingState = {};
 const accountLinkingSlice = createSlice({
   name: "account_linking",
   initialState,
-  reducers: {
-    setAccountLinking: (state, action: PayloadAction<AccountLinkingState>) => {
-      // Update account linking in state. Called after bulk-fetch of personal data.
-      return action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchOrcid.fulfilled, (state, action) => {
@@ -24,6 +20,9 @@ const accountLinkingSlice = createSlice({
       })
       .addCase(removeOrcid.fulfilled, (state) => {
         state.orcid = undefined;
+      })
+      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
+        state.orcid = action.payload.orcid;
       });
   },
 });

@@ -1,9 +1,6 @@
 import { FormattedMessage } from "react-intl";
 
 export const generalErrors = {
-  // non-error errors?
-  "unexpected-success": <FormattedMessage id="unexpected-success" defaultMessage={`Success`} />,
-
   // general errors
   out_of_sync: (
     <FormattedMessage id="out_of_sync" defaultMessage={`User data is out of sync. Reload page to re-sync.`} />
@@ -23,13 +20,6 @@ export const generalErrors = {
     <FormattedMessage
       id="Temporary technical problems"
       defaultMessage={`Temporary technical problems, please try again later`}
-    />
-  ),
-
-  "unexpected-problem": (
-    <FormattedMessage
-      id="unexpected-problem"
-      defaultMessage={`There was an unexpected problem servicing your request, please try again or contact the site administrators`}
     />
   ),
 
@@ -88,6 +78,13 @@ export const generalErrors = {
     <FormattedMessage
       id="Error: Service Unavailable"
       defaultMessage={`Service Unavailable. Check your internet connection.`}
+    />
+  ),
+
+  "Error: HTTP 500 ": (
+    <FormattedMessage
+      id="Error: HTTP 500 "
+      defaultMessage={`Unexpected error occurred. Please try again or contact support if the problem persists.`}
     />
   ),
 
@@ -270,4 +267,19 @@ export const specificErrors = {
 
   // email errors
   mail_duplicated: <FormattedMessage id="mail_duplicated" defaultMessage={`Added email is duplicated`} />,
+
+  "proofing.malformed_identity": (
+    <FormattedMessage
+      id="proofing.malformed_identity"
+      defaultMessage={`Incorrect format of the identity number. Please try again.`}
+    />
+  ),
+
+  // svipe attribute missing error
+  "proofing.attribute_missing": (
+    <FormattedMessage
+      id="proofing.attribute_missing"
+      defaultMessage={`Information necessary for identification is missing. Please try again.`}
+    />
+  ),
 };

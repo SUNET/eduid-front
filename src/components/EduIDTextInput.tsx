@@ -1,6 +1,6 @@
-import { translate } from "login/translation";
 import React from "react";
 import { FieldRenderProps } from "react-final-form";
+import { useIntl } from "react-intl";
 import { FormGroup, FormText, Input, Label } from "reactstrap";
 
 interface TextInputProps extends FieldRenderProps<string> {
@@ -11,6 +11,7 @@ interface TextInputProps extends FieldRenderProps<string> {
 }
 
 export default function TextInput(props: TextInputProps) {
+  const intl = useIntl();
   const { label, helpBlock } = props;
   let valid = false,
     invalid = false;
@@ -18,7 +19,8 @@ export default function TextInput(props: TextInputProps) {
     invalid = Boolean(props.meta.error);
     valid = !invalid;
   }
-  const errorMsg = (invalid && translate(props.meta.error)) || "";
+
+  const errorMsg = (invalid && intl.formatMessage({ id: props.meta.error })) || "";
   let help = <FormText>{helpBlock}</FormText>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
@@ -30,17 +32,20 @@ export default function TextInput(props: TextInputProps) {
   }
 
   return (
-    <FormGroup id={props.input.name}>
-      {label && <Label for={props.input.name}>{label}</Label>}
+    <FormGroup id={`${props.input.name}-wrapper`}>
+      {label && (
+        <Label for={props.input.name} aria-label={props.input.name}>
+          {label}
+        </Label>
+      )}
       <Input
-        id={props.name}
+        id={props.input.name}
         valid={valid}
         invalid={invalid}
         type={props.type}
         {...props.input}
         disabled={props.disabled}
         autoComplete={props.autoComplete}
-        aria-labelledby={props.input.name}
       />
       {help}
     </FormGroup>

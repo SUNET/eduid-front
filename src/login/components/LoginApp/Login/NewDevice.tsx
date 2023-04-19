@@ -91,9 +91,9 @@ export function RememberMeCheckbox(): JSX.Element | null {
     <React.Fragment>
       <fieldset>
         <label className="toggle flex-between" htmlFor="remember-me">
-          <span>
+          <legend>
             <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-          </span>
+          </legend>
           <input
             onChange={handleSwitchChange}
             className="toggle-checkbox"

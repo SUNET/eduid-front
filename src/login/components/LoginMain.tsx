@@ -17,14 +17,14 @@ export function LoginMain(): JSX.Element {
   return (
     <React.StrictMode>
       <Header showRegister={!authn_options.has_session} showLogout={authn_options.has_session} loginRef={loginRef} />
-      <section id="panel" className="panel">
+      <main id="panel" className="panel">
         <Notifications />
         <ErrorBoundary FallbackComponent={GenericError}>
           <Splash showChildren={isLoaded}>
             <LoginApp />
           </Splash>
         </ErrorBoundary>
-      </section>
+      </main>
       <Footer />
     </React.StrictMode>
   );

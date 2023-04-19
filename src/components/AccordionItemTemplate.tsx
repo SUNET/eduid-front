@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import {
   AccordionItem,
@@ -26,13 +29,19 @@ function AccordionItemTemplate(props: AccordionItemTemplateProps) {
       <AccordionItemHeading>
         <AccordionItemButton>
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
-          <span>
-            <h6 className="accordion-title">{props.title}</h6>
-            <span className="accordion-description">{props.additionalInfo}</span>
-          </span>
-          <div className="accordion-toggle">
-            <AccordionItemState>{({ expanded }) => (expanded ? "❮" : "❯")}</AccordionItemState>
+          <div>
+            <h3 className="accordion-title">{props.title}</h3>
+            <p className="accordion-description">{props.additionalInfo}</p>
           </div>
+          <AccordionItemState>
+            {({ expanded }) =>
+              expanded ? (
+                <FontAwesomeIcon icon={faChevronUp as IconProp} />
+              ) : (
+                <FontAwesomeIcon icon={faChevronDown as IconProp} />
+              )
+            }
+          </AccordionItemState>
         </AccordionItemButton>
       </AccordionItemHeading>
       <AccordionItemPanel>{props.children}</AccordionItemPanel>
