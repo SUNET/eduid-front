@@ -7,7 +7,7 @@ import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { HandleExtraSecurities, ProcessExtraSecurities } from "./HandleExtraSecurities";
 import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordApp } from "./ResetPasswordApp";
-import { ResetPasswordGlobalStateContext, ResetPasswordGlobalStateProvider } from "./ResetPasswordGlobalState";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 import { SelectedSecurityToken } from "./SelectedSecurityToken";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
@@ -28,12 +28,10 @@ export default function ResetPasswordMain(): JSX.Element {
       </h1>
       <hr className="border-line" />
       <div id="reset-pass-display">
-        <ResetPasswordGlobalStateProvider>
-          <Routes>
-            <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
-            <Route path="" element={<ResetPasswordApp />} />
-          </Routes>
-        </ResetPasswordGlobalStateProvider>
+        <Routes>
+          <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
+          <Route path="" element={<ResetPasswordApp />} />
+        </Routes>
       </div>
     </React.Fragment>
   );
