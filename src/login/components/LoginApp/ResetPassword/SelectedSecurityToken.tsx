@@ -28,11 +28,15 @@ export function SecurityKey({
         <React.Fragment>
           {Object.values(extraSecurityKey).map((security, index) => {
             return (
-              <div className="buttons">
-                <EduIDButton buttonstyle="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
-                  <FormattedMessage description="mfa primary option" defaultMessage="Use security key" />
-                </EduIDButton>
-              </div>
+              <React.Fragment key={security}>
+                {
+                  <div className="buttons">
+                    <EduIDButton buttonstyle="primary" id="extra-security-key" onClick={ShowSecurityKey}>
+                      <FormattedMessage description="mfa primary option" defaultMessage="Use security key" />
+                    </EduIDButton>
+                  </div>
+                }
+              </React.Fragment>
             );
           })}
         </React.Fragment>
