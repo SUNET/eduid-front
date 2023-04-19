@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./AccordionItemTemplate";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
+  const intl = useIntl();
   const preExpanded: string[] = ["help-contact-us"];
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Help",
+      defaultMessage: "Help | eduID",
+    });
+  }, []);
 
   return (
     <React.Fragment>
