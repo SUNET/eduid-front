@@ -73,7 +73,8 @@ function SecurityWithSMS({
       }
     }
   }
-  if (!extraSecurityPhone) {
+
+  if (!extraSecurityPhone?.length) {
     return null;
   }
 
@@ -103,7 +104,6 @@ function SecurityWithSMS({
           );
         })}
       </div>
-
       <p className="enter-phone-code">
         <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
         &nbsp;
