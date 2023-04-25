@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
 export function ExtraSecurityToken(): JSX.Element {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const [assertion, setAssertion] = useState(webauthn_assertion);
   const webauthn_challenge = useAppSelector((state) => state.resetPassword?.extra_security?.tokens?.webauthn_options);
 
   const retryTokenAssertion = () => {
@@ -20,11 +17,6 @@ export function ExtraSecurityToken(): JSX.Element {
       }
     }
   };
-
-  useEffect(() => {
-    if (webauthn_assertion) setAssertion(webauthn_assertion);
-    if (assertion) navigate("/reset-password/set-new-password");
-  }, [webauthn_assertion, assertion]);
 
   return (
     <React.Fragment>
