@@ -1777,7 +1777,7 @@
   },
   "n5fMlW": {
     "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to repeat the password below ."
+    "string": "A strong password has been generated for you. To proceed you will need to repeat the password below."
   },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
