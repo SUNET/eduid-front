@@ -29,6 +29,7 @@ export default function ResetPasswordMain(): JSX.Element {
       <hr className="border-line" />
       <div id="reset-pass-display">
         <Routes>
+          <Route path="/progress" element={<HandleEmailCode />} />
           <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
           <Route path="" element={<ResetPasswordApp />} />
         </Routes>
@@ -52,8 +53,13 @@ export function HandleEmailCode(): JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoaded && email_code) {
-      verifyResetPasswordEmailLink(email_code);
+    if (isLoaded) {
+      if (email_code) {
+        verifyResetPasswordEmailLink(email_code);
+      } // if user reload the page, user will be redirected to the reset password first page
+      else if (state.value === "ResetPasswordApp") {
+        navigate("/reset-password");
+      }
     }
   }, [isLoaded]);
 
@@ -61,9 +67,12 @@ export function HandleEmailCode(): JSX.Element {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       // send bypass event to resetPasswordService to handle extra security options
-      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+      resetPasswordContext.resetPasswordService.send({ type: "START_EXTRA_SECURITY" });
+      // will change path to /reset-password/progress to handle extra security options or without
+      navigate("/reset-password/progress");
     } else navigate("/reset-password");
   }
+
   return (
     <React.Fragment>
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
