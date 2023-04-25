@@ -135,7 +135,7 @@ export function ProcessExtraSecurities(): JSX.Element | null {
   useEffect(() => {
     if (eidas_status === "eidas.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
-      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
   }, [eidas_status]);
 
@@ -229,7 +229,9 @@ export function HandleExtraSecurities(): null {
   useEffect(() => {
     if (extra_security && Object.values(extra_security).length) {
       resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
+    } else if (extra_security === null) {
+      resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
+    }
   }, [extra_security]);
 
   return null;
