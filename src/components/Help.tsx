@@ -25,8 +25,8 @@ export function Help(): JSX.Element {
           <p>
             <FormattedMessage
               description="help main description"
-              defaultMessage={`Here you will find the answers to the most common questions, 
-                our contact information and much more.`}
+              defaultMessage={`Here you will find answers to the most common questions, 
+                our contact information and general information about the service.`}
             />
           </p>
         </div>
@@ -56,15 +56,7 @@ export function Help(): JSX.Element {
                   description="What is eduID? description"
                   defaultMessage={`Federated identities are one of the cornerstones of trust between organisations. 
                     Trust is based on all the organisations relying on all the others to carry out their authentication 
-                    - identification and verification - properly and in a controlled and reliable IT environment. 
-                    This is why eduID is certified by {link}.`}
-                  values={{
-                    link: (
-                      <a className="text-link" href="https://kantarainitiative.org/">
-                        Kantara
-                      </a>
-                    ),
-                  }}
+                    - identification and verification - properly and in a controlled and reliable IT environment.`}
                 />
               </p>
             </article>
@@ -76,8 +68,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Why have eduID? description1"
-                  defaultMessage={`From the student's perspective, in the long-term eduID means fewer accounts to keep 
-                    track of during studies. For many organisations, identity management is a complex issue and it is
+                  defaultMessage={`From the user's perspective, in the long-term eduID means fewer accounts to keep 
+                    track of. For many organisations, identity management is a complex issue and it is
                     necessary to work with confirmed users.`}
                 />
               </p>
@@ -85,21 +77,24 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="Why have eduID? description2"
                   defaultMessage={`There are many services that require identification of users. This is often done by 
-                    the user entering an email address to which the service provider sends a password - and for many 
-                    services is this a sufficient level. Such a user is normally called unconfirmed, because the service 
-                    provider does not really know who the user with that email address is. Through the use of eduID, 
-                    identification of users is taken up a level to that of confirmed users.`}
+                    the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service 
+                    provider does not really know who the user with that email address is - and for many 
+                    services this is at a sufficient level. Through the use of eduID, 
+                    identification of users is elevated to that of confirmed users.`}
                 />
               </p>
             </article>
             <article>
               <h3>
-                <FormattedMessage description="How do I use eduID? heading" defaultMessage="How do I use eduID?" />
+                <FormattedMessage
+                  description="When will I use eduID? heading"
+                  defaultMessage="When will I use eduID?"
+                />
               </h3>
               <p>
                 <FormattedMessage
                   description="What is eduID? description"
-                  defaultMessage={`Once you have created your account, you will hardly ever need to log in to eduID. 
+                  defaultMessage={`Once you have successfully created your account, you will rarely need to log in to eduID. 
                     You will only be using your account to create and access other accounts, such as {link} or your 
                     student account.`}
                   values={{
@@ -139,10 +134,21 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Log in at eduid.se when you: list item"
-                    defaultMessage="Lose a password"
+                    defaultMessage="Loose a password"
                   />
                 </li>
               </ul>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage description="How do I use eduID? heading" defaultMessage="How do I use eduID?" />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="How do I use eduID? description"
+                  defaultMessage={`To be continued on how to create account...`}
+                />
+              </p>
             </article>
             <article>
               <h3>
@@ -154,7 +160,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How do I change the default language in eduID? description"
-                  defaultMessage={`How do I change the default language in eduID?
+                  defaultMessage={`
                     To change the default language you can log into eduID and select the language you want under the
                     personal information tab. The default language in eduID is based on the language setting that your
                     browser uses.`}
@@ -189,14 +195,28 @@ export function Help(): JSX.Element {
             <article>
               <h3>
                 <FormattedMessage
-                  description="What are the selected methods of verifying an id number for eduID? heading"
-                  defaultMessage="What are the selected methods of verifying an id number for eduID?"
+                  description="What are the selected methods of verification for eduID? heading"
+                  defaultMessage="What are the methods of verification for eduID?"
                 />
               </h3>
               <p>
                 <FormattedMessage
+                  description="Verifying methods initial paragraph"
+                  defaultMessage="The service is constantly being developed to better support the needs of our various users. At present
+                  these methods are available, depending on your circumstances below."
+                />
+              </p>
+              <p>
+                <FormattedMessage
                   description="At this moment, verifying an id number can be done via: description"
-                  defaultMessage="At this moment, verifying an id number can be done via:"
+                  defaultMessage="{emphasis}, verifying an id number can be done via:"
+                  values={{
+                    emphasis: (
+                      <em>
+                        If you <strong>have a Swedish personal identity number</strong>
+                      </em>
+                    ),
+                  }}
                 />
               </p>
               <ul className="bullets">
@@ -225,9 +245,14 @@ export function Help(): JSX.Element {
                     description="identity verification methods: Mobile"
                     defaultMessage={`{Freja} The user will be directed to the Freja eID website to
                       use their service. If you don't have Freja eID+ you have to create it separately before you can
-                      complete verification of your eduID`}
+                      complete verification of your eduID. Read more about {FrejaLink}`}
                     values={{
-                      Freja: <strong>Freja eID+ (digital ID-card)</strong>,
+                      Freja: <strong>Freja eID+ (digital ID-card):</strong>,
+                      FrejaLink: (
+                        <a className="text-link" href="#frejaeid">
+                          Freja eID+
+                        </a>
+                      ),
                     }}
                   />
                 </li>
@@ -235,10 +260,15 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="eidas heading"
-                  defaultMessage={`If you are a EU citizen without a Swedish personal identity number you could use 
-                    {eIDAS} to verify your identity.`}
+                  defaultMessage={`{emphasis}, you could use 
+                    eIDAS to verify your identity. Read more about {eIDASLink}`}
                   values={{
-                    eIDAS: (
+                    emphasis: (
+                      <em>
+                        If you <strong>are an EU citizen</strong> without a Swedish personal identity number
+                      </em>
+                    ),
+                    eIDASLink: (
                       <a className="text-link" href="#eidas">
                         eIDAS
                       </a>
@@ -246,8 +276,26 @@ export function Help(): JSX.Element {
                   }}
                 />
               </p>
+              <p>
+                <FormattedMessage
+                  description="Svipe heading"
+                  defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}`}
+                  values={{
+                    emphasis: (
+                      <em>
+                        If you <strong>are not an EU citizen</strong> without a Swedish personal identity number
+                      </em>
+                    ),
+                    SvipeLink: (
+                      <a className="text-link" href="#svipe">
+                        Svipe iD
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
             </article>
-            <article>
+            <article id="frejaeid">
               <h3>
                 <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+?" />
               </h3>
@@ -353,9 +401,9 @@ export function Help(): JSX.Element {
                 />
               </p>
             </article>
-            <article>
+            <article id="eidas">
               <h3>
-                <FormattedMessage description="What is eIDAS?" defaultMessage="What is eIDAS?" />
+                <FormattedMessage description="eIDAS heading" defaultMessage="eIDAS" />
               </h3>
               <p>
                 <FormattedMessage
@@ -398,6 +446,20 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
+            </article>
+            <article id="svipe">
+              <h3>
+                <FormattedMessage description="Svipe heading" defaultMessage="Svipe iD" />
+              </h3>
+              <p>
+                <FormattedMessage description="What is Svipe? description" defaultMessage={`What is Svipe iD`} />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="How do I use Svipe? description"
+                  defaultMessage={`How do I use Svipe iD`}
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
         </Accordion>
@@ -599,7 +661,7 @@ export function Help(): JSX.Element {
               />
             </p>
             <p>
-              <FormattedMessage description="Opening hours:" defaultMessage="Opening hours" />
+              <FormattedMessage description="Opening hours:" defaultMessage="Opening hours:" />
             </p>
             <ul className="bullets">
               <li>
