@@ -229,7 +229,7 @@ export function HandleExtraSecurities(): null {
   useEffect(() => {
     if (extra_security && Object.values(extra_security).length) {
       resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
-    } else if (extra_security === null) {
+    } else {
       resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
     }
   }, [extra_security]);
