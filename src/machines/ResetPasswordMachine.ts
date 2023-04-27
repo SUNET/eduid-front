@@ -66,6 +66,9 @@ export function createResetPasswordMachine() {
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
                 },
+                ABORT: {
+                  target: "#resetPassword.ResetPasswordApp",
+                },
               },
             },
             ResetPasswordEnterEmail: {
@@ -75,6 +78,9 @@ export function createResetPasswordMachine() {
                 },
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
+                },
+                ABORT: {
+                  target: "#resetPassword.ResetPasswordApp",
                 },
               },
             },
