@@ -35,15 +35,10 @@ export function Help(): JSX.Element {
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-faq">
           <AccordionItemTemplate
             uuid="help-about-eduid"
-<<<<<<< HEAD
             title={<FormattedMessage description="about eduid - handle" defaultMessage="About eduID" />}
             additionalInfo={
               <FormattedMessage description="about eduid - info" defaultMessage="What it is and may be used for" />
             }
-=======
-            title={<FormattedMessage description="about eduid handle" defaultMessage="About eduID" />}
-            additionalInfo="What it is and may be used for"
->>>>>>> b2bc89fbf (Add line breaks)
           >
             <article>
               <h4>
@@ -425,14 +420,8 @@ export function Help(): JSX.Element {
               </ul>
               <p>
                 <FormattedMessage
-<<<<<<< HEAD
                   description="enhance eduid verification - paragraph"
                   defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
-=======
-                  description="enhancing eduID verification description"
-                  defaultMessage={`For more detailed information on how to verify your created account based on your 
-                  situation, see the 'Verification of Identity' help section.`}
->>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
             </article>
@@ -457,19 +446,11 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-<<<<<<< HEAD
                   description="how change language - paragraph"
                   defaultMessage={`
                     To change the default language you can log into eduID and select your language preference in the
                     Personal information area in eduID. The default language is based on the language setting that your
                     browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
-=======
-                  description="changing language description"
-                  defaultMessage={`To change the default language you can log into eduID and select your language 
-                  preference in the Personal information area in eduID. The default language is based on the language 
-                  setting that your browser uses. You can also change the displayed language in the footer of the 
-                  webpage. Available options are Swedish and English.`}
->>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
               <h4>
@@ -480,14 +461,8 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-<<<<<<< HEAD
                   description="use other devices - list definition"
                   defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
-=======
-                  description="other devices description"
-                  defaultMessage={`Passwordless login can also be supported by using another device to login to eduID 
-                  on the device you are currently using:`}
->>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
               <ul className="bullets">
@@ -499,26 +474,14 @@ export function Help(): JSX.Element {
                 </li>
                 <li>
                   <FormattedMessage
-<<<<<<< HEAD
                     description="use other devices - list item 2"
                     defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
-=======
-                    description="other devices list item 2"
-                    defaultMessage={`scan the QR-code with the device where you have your login credentials, 
-                    e.g. security key or saved password,`}
->>>>>>> b2bc89fbf (Add line breaks)
                   />
                 </li>
                 <li>
                   <FormattedMessage
-<<<<<<< HEAD
                     description="use other devices - list item 3"
                     defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
-=======
-                    description="other devices list item 3"
-                    defaultMessage={`on that second device, review the device requesting to be logged in and use the 
-                    presented code to login by entering it within the time shown, in the first device.`}
->>>>>>> b2bc89fbf (Add line breaks)
                   />
                 </li>
               </ul>
