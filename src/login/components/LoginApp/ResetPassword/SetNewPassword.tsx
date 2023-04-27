@@ -44,7 +44,8 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
     if (!newPassword || emptyStringPattern.test(newPassword)) {
       errors["new-password"] = "required";
-    } else if (newPassword !== props.suggested_password) {
+    } else if (newPassword?.replace(/\s/g, "") !== props.suggested_password?.replace(/\s/g, "")) {
+      // Remove whitespace from both passwords before comparing
       errors["new-password"] = "chpass.different-repeat";
     }
     return errors;
@@ -178,12 +179,12 @@ export function SetNewPassword(): JSX.Element | null {
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the
-                          password in to the Repeat new password field and click Accept Password.`}
+          defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the
+                          password in to the Repeat new password field and click Accept Password and save it for future 
+                          use.`}
           description="Set new password"
         />
       </p>
-
       <div className="reset-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
@@ -196,8 +197,8 @@ export function SetNewPassword(): JSX.Element | null {
           readOnly={true}
         />
         <button id="clipboard" className="icon-only copybutton" onClick={copyToClipboard}>
-          <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
-          <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
+          <FontAwesomeIcon id="icon-copy" icon={faCopy as IconProp} />
+          <FontAwesomeIcon id="icon-check" icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
             {tooltipCopied ? (
               <FormattedMessage defaultMessage="Copied!" description="Reset password copy password tooltip" />
@@ -207,7 +208,6 @@ export function SetNewPassword(): JSX.Element | null {
           </div>
         </button>
       </div>
-
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
     </React.Fragment>
   );
