@@ -69,7 +69,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
 
       <div className="buttons">
-        <GoBackButton onClickHandler={() => resetPasswordContext.resetPasswordService.send({ type: "ABORT" })} />
+        <GoBackButton />
         <EduIDButton
           buttonstyle="primary"
           type="submit"
