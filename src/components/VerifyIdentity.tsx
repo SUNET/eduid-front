@@ -17,6 +17,7 @@ import AddNin from "./AddNin";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import EduIDButton from "./EduIDButton";
 import NinDisplay from "./NinDisplay";
+import { SectionIntro } from "./SectionIntro";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -76,22 +77,20 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
-        <section className="intro">
-          <h1>
+        <SectionIntro
+          heading={
             <FormattedMessage
               description="verify identity unverified main title"
               defaultMessage={`Connect your identity to your eduID`}
             />
-          </h1>
-          <div className="lead">
-            <p>
-              <FormattedMessage
-                description="verify identity verified title"
-                defaultMessage="Your eduID is ready to use"
-              />
-            </p>
-          </div>
-        </section>
+          }
+          description={
+            <FormattedMessage
+              description="verify identity verified title"
+              defaultMessage="Your eduID is ready to use"
+            />
+          }
+        />
         <article>
           <h2>
             <FormattedMessage
@@ -107,23 +106,21 @@ function VerifyIdentityIntro(): JSX.Element {
 
   return (
     <React.Fragment>
-      <section className="intro">
-        <h1>
+      <SectionIntro
+        heading={
           <FormattedMessage
             description="verify identity unverified main title"
             defaultMessage={`Connect your identity to your eduID`}
           />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              description="verify identity unverified description"
-              defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from `}
-            />
-          </p>
-        </div>
-      </section>
+        }
+        description={
+          <FormattedMessage
+            description="verify identity unverified description"
+            defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+          to get the most benefit from `}
+          />
+        }
+      />
       <article>
         <h2>
           <FormattedMessage

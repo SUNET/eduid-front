@@ -1,4 +1,5 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
+import { SectionIntro } from "components/SectionIntro";
 import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React, { Fragment, useEffect } from "react";
@@ -33,14 +34,10 @@ export function MultiFactorAuth(): JSX.Element {
 
   return (
     <Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login MFA heading" />
-        </h1>
-        <div className="lead">
-          <LoginAtServiceInfo service_info={service_info} />
-        </div>
-      </section>
+      <SectionIntro
+        heading={<FormattedMessage defaultMessage="Log in: Extra level of security" description="Login MFA heading" />}
+        description={<LoginAtServiceInfo service_info={service_info} />}
+      />
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
           <React.Fragment>

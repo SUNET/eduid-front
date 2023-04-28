@@ -7,6 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+import { SectionIntro } from "./SectionIntro";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
@@ -28,19 +29,15 @@ export function Settings(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
-      <section className="intro">
-        <h1>
-          <FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              description="settings lead title"
-              defaultMessage="Update your eduID account settings, change password or delete your eduID."
-            />
-          </p>
-        </div>
-      </section>
+      <SectionIntro
+        heading={<FormattedMessage description="settings main title" defaultMessage="Manage your eduID settings" />}
+        description={
+          <FormattedMessage
+            description="settings lead title"
+            defaultMessage="Update your eduID account settings, change password or delete your eduID."
+          />
+        }
+      />
       <PersonalDataParent />
       <Emails />
       <Phones />

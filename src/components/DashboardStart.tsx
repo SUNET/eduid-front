@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
+import { SectionIntro } from "./SectionIntro";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
@@ -135,8 +136,8 @@ export default function Start(): JSX.Element {
   return (
     <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
-      <section className="intro">
-        <h1>
+      <SectionIntro
+        heading={
           <FormattedMessage
             defaultMessage="Welcome, {username}!"
             description="start main title"
@@ -144,16 +145,14 @@ export default function Start(): JSX.Element {
               username: <strong>{username}</strong>,
             }}
           />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              description="start page lead title"
-              defaultMessage="Make the most out of eduID by reviewing your information."
-            />
-          </p>
-        </div>
-      </section>
+        }
+        description={
+          <FormattedMessage
+            description="start page lead title"
+            defaultMessage="Make the most out of eduID by reviewing your information."
+          />
+        }
+      />
       <article className="intro">
         <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />

@@ -1,5 +1,6 @@
 import { registerEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
+import { SectionIntro } from "components/SectionIntro";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -12,20 +13,18 @@ import EmailInput from "../../login/components/Inputs/EmailInput";
 export function SignupEmailForm(): JSX.Element {
   return (
     <Fragment>
-      <section className="intro">
-        <h1>
+      <SectionIntro
+        heading={
           <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage={`Once you have created an eduID you will be able to log in and
+        }
+        description={
+          <FormattedMessage
+            defaultMessage={`Once you have created an eduID you will be able to log in and
                              connect it to your Swedish national identity number.`}
-              description="Signup"
-            />
-          </p>
-        </div>
-      </section>
+            description="Signup"
+          />
+        }
+      />
       <EmailForm />
     </Fragment>
   );

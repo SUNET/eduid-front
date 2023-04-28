@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
+import { SectionIntro } from "components/SectionIntro";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
@@ -57,15 +58,10 @@ export default function UsernamePw() {
 
   return (
     <React.Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage defaultMessage="Log in" description="Login front page" />
-        </h1>
-
-        <div className="lead">
-          <LoginAtServiceInfo service_info={service_info} />
-        </div>
-      </section>
+      <SectionIntro
+        heading={<FormattedMessage defaultMessage="Log in" description="Login front page" />}
+        description={<LoginAtServiceInfo service_info={service_info} />}
+      />
       <section className="username-pw">
         <FinalForm<UsernamePwFormData>
           id="login-form"
