@@ -122,7 +122,7 @@ function SecurityWithSMS({
 /**
  * Render the extra security options, security key, Freja eID and phone verification
  */
-export function ProcessExtraSecurities(): JSX.Element | null {
+export function HandleExtraSecurities(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
@@ -220,19 +220,4 @@ export function ProcessExtraSecurities(): JSX.Element | null {
       </p>
     </React.Fragment>
   );
-}
-
-export function HandleExtraSecurities(): null {
-  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-
-  useEffect(() => {
-    if (extra_security && Object.values(extra_security).length) {
-      resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
-    } else {
-      resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
-    }
-  }, [extra_security]);
-
-  return null;
 }
