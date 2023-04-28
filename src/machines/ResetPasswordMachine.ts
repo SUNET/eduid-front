@@ -40,8 +40,11 @@ export function createResetPasswordMachine() {
             COMPLETE: {
               target: "AskForEmailOrConfirmEmail",
             },
-            START_EXTRA_SECURITY: {
+            AVAILABLE_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
+            },
+            UNAVAILABLE_EXTRA_SECURITY: {
+              target: "FinaliseResetPassword",
             },
           },
         },
@@ -107,16 +110,6 @@ export function createResetPasswordMachine() {
           states: {
             HandleExtraSecurities: {
               on: {
-                AVAILABLE_EXTRA_SECURITY: {
-                  target: "ProcessExtraSecurities",
-                },
-                UNAVAILABLE_EXTRA_SECURITY: {
-                  target: "#resetPassword.FinaliseResetPassword",
-                },
-              },
-            },
-            ProcessExtraSecurities: {
-              on: {
                 CHOOSE_SECURITY_KEY: {
                   target: "ResetPasswordSecurityKey",
                 },
@@ -166,7 +159,7 @@ export function createResetPasswordMachine() {
             },
             Fail: {
               always: {
-                target: "ProcessExtraSecurities",
+                target: "HandleExtraSecurities",
               },
             },
           },
