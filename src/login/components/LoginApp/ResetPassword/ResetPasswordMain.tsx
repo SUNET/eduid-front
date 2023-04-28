@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import { HandleExtraSecurities, ProcessExtraSecurities } from "./HandleExtraSecurities";
+import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordApp } from "./ResetPasswordApp";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
@@ -29,7 +29,6 @@ export default function ResetPasswordMain(): JSX.Element {
       <hr className="border-line" />
       <div id="reset-pass-display">
         <Routes>
-          <Route path="/progress" element={<HandleEmailCode />} />
           <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
           <Route path="" element={<ResetPasswordApp />} />
         </Routes>
@@ -45,8 +44,9 @@ interface CodeParams {
 
 export function HandleEmailCode(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const params = useParams() as CodeParams;
-  const email_code = params.emailCode;
+  const codeParams = params.emailCode;
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
@@ -55,28 +55,30 @@ export function HandleEmailCode(): JSX.Element {
   useEffect(() => {
     if (isLoaded) {
       if (email_code) {
-        verifyResetPasswordEmailLink(email_code);
+        return;
+      } else if (codeParams) {
+        verifyResetPasswordEmailLink(codeParams);
       } // if user reload the page, user will be redirected to the reset password first page
       else if (state.value === "ResetPasswordApp") {
         navigate("/reset-password");
       }
     }
-  }, [isLoaded]);
+  }, [isLoaded, email_code]);
 
   async function verifyResetPasswordEmailLink(email_code: string) {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
-      // send bypass event to resetPasswordService to handle extra security options
-      resetPasswordContext.resetPasswordService.send({ type: "START_EXTRA_SECURITY" });
-      // will change path to /reset-password/progress to handle extra security options or without
-      navigate("/reset-password/progress");
+      if (response.payload.extra_security && Object.values(response.payload.extra_security).length) {
+        resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
+      }
     } else navigate("/reset-password");
   }
 
   return (
     <React.Fragment>
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
-      {state.matches("HandleExtraSecurities.ProcessExtraSecurities") && <ProcessExtraSecurities />}
       {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <SelectedSecurityToken />}
       {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
