@@ -69,9 +69,9 @@ export function HandleEmailCode(): JSX.Element {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       if (response.payload.extra_security && Object.values(response.payload.extra_security).length) {
-        resetPasswordContext.resetPasswordService.send({ type: "AVAILABLE_EXTRA_SECURITY" });
+        resetPasswordContext.resetPasswordService.send({ type: "CAN_DO_EXTRA_SECURITY" });
       } else {
-        resetPasswordContext.resetPasswordService.send({ type: "UNAVAILABLE_EXTRA_SECURITY" });
+        resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
       }
     } else navigate("/reset-password");
   }

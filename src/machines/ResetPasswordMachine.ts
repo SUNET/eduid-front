@@ -18,8 +18,8 @@ const resetPasswordModel = createModel(
       CHOOSE_NO_EXTRA_SECURITY: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
       BYPASS: () => ({}), // no payload
-      AVAILABLE_EXTRA_SECURITY: () => ({}), // no payload
-      UNAVAILABLE_EXTRA_SECURITY: () => ({}), // no payload
+      CAN_DO_EXTRA_SECURITY: () => ({}), // no payload
+      WITHOUT_EXTRA_SECURITY: () => ({}), // no payload
       START_EXTRA_SECURITY: () => ({}), // no payload
     },
   }
@@ -40,13 +40,16 @@ export function createResetPasswordMachine() {
             COMPLETE: {
               target: "AskForEmailOrConfirmEmail",
             },
-            AVAILABLE_EXTRA_SECURITY: {
+            CAN_DO_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
             },
-            UNAVAILABLE_EXTRA_SECURITY: {
+            WITHOUT_EXTRA_SECURITY: {
               target: "FinaliseResetPassword",
             },
           },
+        },
+        HandleAbort: {
+          type: "final",
         },
         AskForEmailOrConfirmEmail: {
           initial: "AskForEmailOrConfirmEmail",
