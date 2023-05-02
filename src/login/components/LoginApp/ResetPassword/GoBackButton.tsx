@@ -2,7 +2,7 @@ import EduIDButton from "components/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
@@ -27,6 +27,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     if (props.onClickHandler) {
       props.onClickHandler();
     } else if (dashboard_url) {
+      document.location.href = dashboard_url;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
       resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
     }
@@ -39,16 +40,4 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
       <FormattedMessage defaultMessage="Go back" description="Account recovery Go back button" />
     </EduIDButton>
   );
-}
-
-export function ReturnToLogin(): null {
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
-
-  useEffect(() => {
-    if (dashboard_url) {
-      document.location.href = dashboard_url;
-    }
-  }, [dashboard_url]);
-
-  return null;
 }

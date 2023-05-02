@@ -194,7 +194,6 @@ export function createResetPasswordMachine() {
           },
         },
         HandleAbort: {
-          initial: "ReturnToLogin",
           states: {
             ReturnToLogin: {
               type: "final",
