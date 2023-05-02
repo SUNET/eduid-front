@@ -23,6 +23,7 @@ export function ResetPasswordApp(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
+  console.log("state", state);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {

@@ -1,9 +1,9 @@
 import EduIDButton from "components/EduIDButton";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface BackToLoginButtonProps {
@@ -12,10 +12,10 @@ interface BackToLoginButtonProps {
 }
 
 export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null {
-  const navigate = useNavigate();
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
 
   if (!props.onClickHandler && !loginRef) {
     // for the default click handler, loginRef is mandatory
@@ -26,8 +26,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     e.preventDefault();
     if (props.onClickHandler) {
       props.onClickHandler();
-    } else {
-      navigate(`/login/${loginRef}`);
+    } else if (dashboard_url) {
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
       resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
     }
@@ -40,4 +39,16 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
       <FormattedMessage defaultMessage="Go back" description="Account recovery Go back button" />
     </EduIDButton>
   );
+}
+
+export function ReturnToLogin(): null {
+  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+
+  useEffect(() => {
+    if (dashboard_url) {
+      document.location.href = dashboard_url;
+    }
+  }, [dashboard_url]);
+
+  return null;
 }
