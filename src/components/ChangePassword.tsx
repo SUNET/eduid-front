@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
 
 // exported for use in tests
-export const finish_url = "/profile/security";
+export const finish_url = "/start/security";
 
 function ChangePassword() {
   const suggested_password = useDashboardAppSelector((state) => state.chpass.suggested_password);
