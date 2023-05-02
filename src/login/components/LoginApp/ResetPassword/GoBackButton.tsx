@@ -29,7 +29,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     } else if (dashboard_url) {
       document.location.href = dashboard_url;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
+      resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }
   }
 

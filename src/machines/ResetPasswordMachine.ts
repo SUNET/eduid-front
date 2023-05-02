@@ -10,6 +10,7 @@ const resetPasswordModel = createModel(
     // Event creators
     events: {
       ABORT: () => ({}), // no payload
+      GO_BACK: () => ({}),
       API_FAIL: () => ({}), // no payload
       API_SUCCESS: () => ({}), // no payload
       CHOOSE_SECURITY_KEY: () => ({}), // no payload
@@ -69,8 +70,8 @@ export function createResetPasswordMachine() {
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
                 },
-                ABORT: {
-                  target: "#resetPassword.HandleAbort",
+                GO_BACK: {
+                  target: "#resetPassword.ReturnToPrevious",
                 },
               },
             },
@@ -82,8 +83,8 @@ export function createResetPasswordMachine() {
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
                 },
-                ABORT: {
-                  target: "#resetPassword.HandleAbort",
+                GO_BACK: {
+                  target: "#resetPassword.ReturnToPrevious",
                 },
               },
             },
@@ -95,18 +96,13 @@ export function createResetPasswordMachine() {
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
                 },
-                ABORT: {
-                  target: "#resetPassword.HandleAbort",
+                GO_BACK: {
+                  target: "#resetPassword.ReturnToPrevious",
                 },
               },
             },
             Finished: {
               type: "final",
-            },
-            handleAbort: {
-              always: {
-                target: "#resetPassword.ResetPasswordApp",
-              },
             },
           },
         },
@@ -180,8 +176,8 @@ export function createResetPasswordMachine() {
                 API_SUCCESS: {
                   target: "ResetPasswordSuccess",
                 },
-                ABORT: {
-                  target: "#resetPassword.HandleAbort",
+                GO_BACK: {
+                  target: "#resetPassword.HandleExtraSecurities",
                 },
               },
             },
@@ -190,7 +186,7 @@ export function createResetPasswordMachine() {
             },
           },
         },
-        HandleAbort: {
+        ReturnToPrevious: {
           states: {
             ReturnToLogin: {
               type: "final",

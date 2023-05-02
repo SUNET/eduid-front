@@ -23,12 +23,9 @@ export interface Typegen0 {
     | "AskForEmailOrConfirmEmail.Finished"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
-    | "AskForEmailOrConfirmEmail.handleAbort"
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
-    | "HandleAbort"
-    | "HandleAbort.ReturnToLogin"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
     | "HandleExtraSecurities.Fail"
@@ -37,16 +34,16 @@ export interface Typegen0 {
     | "HandleExtraSecurities.ResetPasswordPhoneVerification"
     | "HandleExtraSecurities.ResetPasswordSecurityKey"
     | "ResetPasswordApp"
+    | "ReturnToPrevious"
+    | "ReturnToPrevious.ReturnToLogin"
     | {
         "AskForEmailOrConfirmEmail"?:
           | "AskForEmailOrConfirmEmail"
           | "EmailLinkSent"
           | "Finished"
           | "ResetPasswordConfirmEmail"
-          | "ResetPasswordEnterEmail"
-          | "handleAbort";
+          | "ResetPasswordEnterEmail";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
-        "HandleAbort"?: "ReturnToLogin";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"
@@ -54,6 +51,7 @@ export interface Typegen0 {
           | "ResetPasswordExternalMFA"
           | "ResetPasswordPhoneVerification"
           | "ResetPasswordSecurityKey";
+        "ReturnToPrevious"?: "ReturnToLogin";
       };
   tags: never;
 }
