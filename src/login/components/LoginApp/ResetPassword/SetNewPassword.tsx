@@ -92,7 +92,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
       if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
-    } else resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+    }
   }
 
   function goBack() {

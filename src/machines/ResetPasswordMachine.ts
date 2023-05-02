@@ -180,9 +180,6 @@ export function createResetPasswordMachine() {
                 API_SUCCESS: {
                   target: "ResetPasswordSuccess",
                 },
-                API_FAIL: {
-                  target: "#resetPassword.HandleExtraSecurities",
-                },
                 ABORT: {
                   target: "#resetPassword.HandleAbort",
                 },
