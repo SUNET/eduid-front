@@ -22,7 +22,7 @@ export function DashboardBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcr
   }
   return (
     <nav className="breadcrumb" aria-label="breadcrumb">
-      <Link key="/profile/" to="/profile/" aria-label="go to start page">
+      <Link key="/start/" to="/start/" aria-label="go to start page">
         <FontAwesomeIcon icon={faHome as IconProp} />
         <FormattedMessage description="Start" defaultMessage="Start" />
       </Link>

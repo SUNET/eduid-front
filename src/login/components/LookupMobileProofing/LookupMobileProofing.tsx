@@ -17,7 +17,7 @@ function ExplanationText(): JSX.Element {
   const phones = useDashboardAppSelector((state) => state.phones.phones);
 
   const linkToSettings = (
-    <HashLink key="1" to={"/profile/settings/#phone"}>
+    <HashLink key="1" to={"/start/settings/#phone"}>
       <FormattedMessage defaultMessage="Settings" description="verify identity vetting link settings" />
     </HashLink>
   );
