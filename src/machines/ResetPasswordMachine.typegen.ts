@@ -35,7 +35,7 @@ export interface Typegen0 {
     | "HandleExtraSecurities.ResetPasswordSecurityKey"
     | "ResetPasswordApp"
     | "ReturnToPrevious"
-    | "ReturnToPrevious.ReturnToLogin"
+    | "ReturnToPrevious.ReturnToPrevious"
     | {
         "AskForEmailOrConfirmEmail"?:
           | "AskForEmailOrConfirmEmail"
@@ -51,7 +51,7 @@ export interface Typegen0 {
           | "ResetPasswordExternalMFA"
           | "ResetPasswordPhoneVerification"
           | "ResetPasswordSecurityKey";
-        "ReturnToPrevious"?: "ReturnToLogin";
+        "ReturnToPrevious"?: "ReturnToPrevious";
       };
   tags: never;
 }

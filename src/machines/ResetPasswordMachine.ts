@@ -9,8 +9,7 @@ const resetPasswordModel = createModel(
   {
     // Event creators
     events: {
-      ABORT: () => ({}), // no payload
-      GO_BACK: () => ({}),
+      GO_BACK: () => ({}), // no payload
       API_FAIL: () => ({}), // no payload
       API_SUCCESS: () => ({}), // no payload
       CHOOSE_SECURITY_KEY: () => ({}), // no payload
@@ -18,10 +17,11 @@ const resetPasswordModel = createModel(
       CHOOSE_FREJA_EID: () => ({}), // no payload
       CHOOSE_NO_EXTRA_SECURITY: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
-      BYPASS: () => ({}), // no payload
       CAN_DO_EXTRA_SECURITY: () => ({}), // no payload
       WITHOUT_EXTRA_SECURITY: () => ({}), // no payload
       START_EXTRA_SECURITY: () => ({}), // no payload
+      KNOWN_USER: () => ({}), // no payload
+      UNKNOWN_USER: () => ({}), // no payload
     },
   }
 );
@@ -38,7 +38,7 @@ export function createResetPasswordMachine() {
       states: {
         ResetPasswordApp: {
           on: {
-            COMPLETE: {
+            UNKNOWN_USER: {
               target: "AskForEmailOrConfirmEmail",
             },
             CAN_DO_EXTRA_SECURITY: {
@@ -54,10 +54,10 @@ export function createResetPasswordMachine() {
           states: {
             AskForEmailOrConfirmEmail: {
               on: {
-                COMPLETE: {
+                KNOWN_USER: {
                   target: "ResetPasswordConfirmEmail",
                 },
-                BYPASS: {
+                UNKNOWN_USER: {
                   target: "ResetPasswordEnterEmail",
                 },
               },
@@ -188,7 +188,7 @@ export function createResetPasswordMachine() {
         },
         ReturnToPrevious: {
           states: {
-            ReturnToLogin: {
+            ReturnToPrevious: {
               type: "final",
             },
           },

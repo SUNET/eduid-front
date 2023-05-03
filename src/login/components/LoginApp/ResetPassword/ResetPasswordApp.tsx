@@ -29,7 +29,7 @@ export function ResetPasswordApp(): JSX.Element {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
-    resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+    resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
   }, [loginRef, params]);
 
   return (
@@ -49,8 +49,8 @@ function AskForEmailOrConfirmEmail(): null {
 
   useEffect(() => {
     if (!email_status) {
-      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
-      else resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
+      else resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
     }
   }, [email_status, email_address]);
 
