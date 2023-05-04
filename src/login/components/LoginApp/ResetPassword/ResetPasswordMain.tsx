@@ -1,7 +1,7 @@
 import { useActor } from "@xstate/react";
 import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
@@ -57,7 +57,7 @@ export function HandleEmailCode(): JSX.Element {
       if (email_code) {
         return;
       } else if (codeParams) {
-        verifyResetPasswordEmailLink(codeParams);
+        verifyResetPasswordEmailLink(codeParams).catch(console.error);
       } // if user reload the page, user will be redirected to the reset password first page
       else if (state.value === "ResetPasswordApp") {
         navigate("/reset-password");
@@ -65,7 +65,7 @@ export function HandleEmailCode(): JSX.Element {
     }
   }, [isLoaded, email_code]);
 
-  async function verifyResetPasswordEmailLink(email_code: string) {
+  const verifyResetPasswordEmailLink = useCallback(async (email_code: string) => {
     const response = await dispatch(verifyEmailLink({ email_code: email_code }));
     if (verifyEmailLink.fulfilled.match(response)) {
       if (response.payload.extra_security && Object.values(response.payload.extra_security).length) {
@@ -74,7 +74,7 @@ export function HandleEmailCode(): JSX.Element {
         resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
       }
     } else navigate("/reset-password");
-  }
+  }, []);
 
   return (
     <React.Fragment>
