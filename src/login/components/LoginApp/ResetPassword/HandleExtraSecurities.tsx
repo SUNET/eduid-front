@@ -139,15 +139,17 @@ export function HandleExtraSecurities(): JSX.Element | null {
     }
   }, [eidas_status]);
 
-  async function handleOnClickFreja() {
-    const response = await dispatch(
-      eidasMfaAuthenticate({ method: "freja", frontend_action: "resetpwMfaAuthn", frontend_state: emailCode })
-    );
-    if (eidasMfaAuthenticate.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+  function handleOnClickFreja() {
+    (async () => {
+      const response = await dispatch(
+        eidasMfaAuthenticate({ method: "freja", frontend_action: "resetpwMfaAuthn", frontend_state: emailCode })
+      );
+      if (eidasMfaAuthenticate.fulfilled.match(response)) {
+        if (response.payload.location) {
+          window.location.assign(response.payload.location);
+        }
       }
-    }
+    })();
   }
 
   function ShowSecurityKey(e: React.MouseEvent<HTMLElement>) {
