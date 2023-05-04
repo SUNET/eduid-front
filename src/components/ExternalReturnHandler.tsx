@@ -60,10 +60,10 @@ export function ExternalReturnHandler() {
 
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas") {
-      fetchEidasStatus(params.authn_id);
+      fetchEidasStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "svipe_id") {
-      fetchSvipeStatus(params.authn_id);
+      fetchSvipeStatus(params.authn_id).catch(console.error);
     }
   }, [params]);
 
