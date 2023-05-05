@@ -7,7 +7,7 @@ function NameDisplay(): JSX.Element {
   const personal_data = useDashboardAppSelector((state) => state.personal_data);
   if (!personal_data.response?.given_name) {
     userData = (
-      <Link to={`/start/settings/`} className="display-data unverified">
+      <Link to={`/profile/settings/`} className="display-data unverified">
         <FormattedMessage description="profile name display no data" defaultMessage={`add name`} />
       </Link>
     );

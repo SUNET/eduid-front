@@ -1,4 +1,4 @@
-import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
+import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
 import type { InitialEntry } from "history";
@@ -24,7 +24,7 @@ interface renderArgs {
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const routes = args.routes || ["/start/"];
+  const routes = args.routes || ["/profile/"];
   const store = getTestDashboardStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: { children: React.ReactNode }) {
