@@ -22,7 +22,11 @@ module.exports = {
     dashboard: "./src/entry-points/dashboard",
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
+<<<<<<< HEAD
     faq: "./src/entry-points/faq",
+=======
+    index: "./src/entry-points/index",
+>>>>>>> 3f3dc5ee7 (Create index for all apps)
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -97,7 +101,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
+    ...["index", "errors", "login", "dashboard", "signup"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
