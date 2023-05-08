@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOGIN_CONFIG_URL } from "globals";
@@ -20,6 +21,14 @@ export function Index() {
       }
     }
   }
+=======
+import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
+import EduIDButton from "./EduIDButton";
+
+export function Index() {
+  const navigate = useNavigate();
+>>>>>>> 19eeec119 (Create index for eduID main)
   return (
     <>
       <h1 className="tagline">
@@ -60,7 +69,11 @@ export function Index() {
         <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
           <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
         </EduIDButton>
+<<<<<<< HEAD
         <EduIDButton onClick={getLoginConfig} buttonstyle="secondary" id="login-button">
+=======
+        <EduIDButton onClick={() => navigate("/login")} buttonstyle="secondary" id="login-button">
+>>>>>>> 19eeec119 (Create index for eduID main)
           <FormattedMessage defaultMessage="log in" description="login button" />
         </EduIDButton>
       </div>

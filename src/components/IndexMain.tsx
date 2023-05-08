@@ -89,13 +89,21 @@ import { Index } from "./Index";
 export function IndexMain(): JSX.Element {
   return (
     <React.StrictMode>
-      <Header />
+      <Header showLogin={true} />
       <main id="panel" className="panel">
         <Notifications />
+<<<<<<< HEAD
         <Routes>
           <Route path="static/front-build/index.dev.html" element={<Index />} />
         </Routes>
 >>>>>>> 5cc10eec7 (Create index for all apps)
+=======
+        <section id="content" className="horizontal-content-margin content">
+          <Routes>
+            <Route path="static/front-build/index.dev.html" element={<Index />} />
+          </Routes>
+        </section>
+>>>>>>> 19eeec119 (Create index for eduID main)
       </main>
       <Footer />
     </React.StrictMode>
