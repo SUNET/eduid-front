@@ -5,11 +5,11 @@ import { useLocation } from "react-router-dom";
 import "../../styles/index.scss";
 import { AuthenticationFailure } from "./AuthenticationFailure";
 import { AuthorizationFailure } from "./AuthorizationFailure";
-import { errorURLData, parseErrorURL } from "./errorURLParser";
+import { EduidError } from "./EduidError";
 import { IdentificationFailure } from "./IdentificationFailure";
 import { OtherError } from "./OtherError";
-import { EduidError } from "./EduidError";
 import { UnknownError } from "./UnknownError";
+import { errorURLData, parseErrorURL } from "./errorURLParser";
 
 export interface FailureComponentProps {
   errorURL: errorURLData;

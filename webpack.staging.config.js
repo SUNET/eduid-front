@@ -16,7 +16,7 @@ webpackStaging.output = {
 
 webpackStaging.plugins = [
   //  initialConfigPlugin,
-  ...["errors", "login", "dashboard", "signup"].map((entryName) => {
+  ...["index", "errors", "login", "dashboard", "signup"].map((entryName) => {
     return new HtmlWebpackPlugin({
       hash: true,
       template: `./public/${entryName}.html`,
