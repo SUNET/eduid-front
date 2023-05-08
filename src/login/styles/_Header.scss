@@ -110,3 +110,16 @@ header {
     }
   }
 }
+
+h1.tagline {
+  font-size: 2.75rem;
+  line-height: 1.2;
+  font-family: $proxima-light;
+  margin-bottom: 3rem;
+  @media (max-width: $bp-lg) {
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: $bp-md) {
+    font-size: 2rem;
+  }
+}

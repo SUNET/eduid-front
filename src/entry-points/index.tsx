@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import { ERRORS_CONFIG_URL } from "globals";
+import { SIGNUP_CONFIG_URL } from "globals";
 import { indexStore } from "index-init-app";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
@@ -12,7 +12,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = function () {
-  indexStore.dispatch(fetchJsConfig({ url: ERRORS_CONFIG_URL }));
+  indexStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
 };
 
 /* Initialise common polyfills for missing browser functionality */
