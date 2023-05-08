@@ -92,17 +92,7 @@ module.exports = {
     ],
   },
   plugins: [
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     ...["help", "errors", "login", "dashboard", "signup"].map((entryName) => {
-=======
-    ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
->>>>>>> 2c7099890 (Help -> faq)
-=======
-    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
->>>>>>> 46b4f6c02 (login.html -> index.html)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
@@ -110,7 +100,6 @@ module.exports = {
         chunks: [`${entryName}`],
       });
     }),
->>>>>>> c94ba896e (Introduce new help page with accordion)
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
