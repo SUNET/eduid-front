@@ -70,6 +70,7 @@ export function Header(props: HeaderProps): JSX.Element {
       <a href={start_url} aria-label="eduID start" title="eduID start">
         <div id="eduid-logo" className="eduid-logo" />
       </a>
+
       {button}
     </header>
   );
