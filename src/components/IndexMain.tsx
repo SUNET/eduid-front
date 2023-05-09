@@ -2,7 +2,11 @@
 import { useAppSelector } from "eduid-hooks";
 =======
 import { useIndexAppSelector } from "index-hooks";
+<<<<<<< HEAD
 >>>>>>> 9e6cdfb36 (Fix conflict)
+=======
+
+>>>>>>> 2a77fc3a0 (Fix conflict)
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
