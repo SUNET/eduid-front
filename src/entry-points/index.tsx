@@ -4,7 +4,11 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
+<<<<<<< HEAD
 import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES, SIGNUP_CONFIG_URL } from "globals";
+=======
+import { SIGNUP_CONFIG_URL } from "globals";
+>>>>>>> 35f0615a3 (Fix conflict)
 import { indexStore } from "index-init-app";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
