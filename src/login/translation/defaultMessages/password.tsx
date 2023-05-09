@@ -141,13 +141,6 @@ export const resetPassword = {
     <FormattedMessage id="resetpw.set-new-password-success" defaultMessage={`Password has been updated.`} />
   ),
 
-  "mfa.reset-password-tapit": (
-    <FormattedMessage
-      id="mfa.reset-password-tapit"
-      defaultMessage={`Use your security key to reset password. If it has a button, tap it.`}
-    />
-  ),
-
   "resetpw.sms-throttled": (
     <FormattedMessage
       id="resetpw.sms-throttled"

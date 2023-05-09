@@ -2,6 +2,7 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { LOGIN_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";
+import { ResetPasswordGlobalStateProvider } from "login/components/LoginApp/ResetPassword/ResetPasswordGlobalState";
 import { LoginMain } from "login/components/LoginMain";
 import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
@@ -28,11 +29,13 @@ setupLanguage(loginStore.dispatch);
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <ReduxIntlProvider store={loginStore}>
-    <BrowserRouter>
-      <LoginMain />
-    </BrowserRouter>
-  </ReduxIntlProvider>,
+  <ResetPasswordGlobalStateProvider>
+    <ReduxIntlProvider store={loginStore}>
+      <BrowserRouter>
+        <LoginMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
+  </ResetPasswordGlobalStateProvider>,
   initDomTarget,
   getConfig
 );

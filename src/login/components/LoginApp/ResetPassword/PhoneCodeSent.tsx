@@ -1,8 +1,7 @@
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -16,6 +15,7 @@ import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   setLocalStorage,
 } from "./CountDownTimer";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export interface PhoneCodeFormData {
   phone?: string;
@@ -39,9 +39,9 @@ const validate = (values: PhoneCodeFormData) => {
   return {};
 };
 
-function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
+function PhoneCodeForm(): JSX.Element {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -57,7 +57,7 @@ function PhoneCodeForm(props: PhoneCodeProps): JSX.Element {
       dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(clearNotifications());
-      navigate("/reset-password/set-new-password");
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
 
@@ -96,7 +96,6 @@ export function PhoneCodeSent(): JSX.Element | null {
   const phone = useAppSelector((state) => state.resetPassword.phone);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
@@ -111,7 +110,8 @@ export function PhoneCodeSent(): JSX.Element | null {
 
   async function resendPhoneCode(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    if (phone.index && email_code) {
+    if (email_code && phone) {
+      dispatch(requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code }));
       const response = await dispatch(
         requestPhoneCodeForNewPassword({ phone_index: phone.index, email_code: email_code })
       );
@@ -120,7 +120,6 @@ export function PhoneCodeSent(): JSX.Element | null {
         clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
         setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
         countFiveMin("phone");
-        navigate("/reset-password/phone-code-sent");
       }
     }
   }
@@ -141,7 +140,7 @@ export function PhoneCodeSent(): JSX.Element | null {
           }}
         />
       </p>
-      <PhoneCodeForm emailCode={email_code} />
+      <PhoneCodeForm />
       <div className="timer">
         <a id={"resend-phone"} onClick={resendPhoneCode}>
           <FormattedMessage defaultMessage="Send a new code" description="resend code" />

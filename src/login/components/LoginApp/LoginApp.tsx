@@ -2,7 +2,7 @@ import { LoginExternalReturnHandler } from "components/LoginExternalReturnHandle
 import { Route, Routes } from "react-router-dom";
 import Login from "./Login/Login";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
-import ResetPassword from "./ResetPassword/ResetPassword";
+import ResetPassword from "./ResetPassword/ResetPasswordMain";
 
 function LoginApp(): JSX.Element {
   return (

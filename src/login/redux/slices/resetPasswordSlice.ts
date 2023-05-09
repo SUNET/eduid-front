@@ -13,7 +13,7 @@ export type Phone = { index: string; number: string; phone_code: string };
 
 export type EmailStatus = "requested" | "success" | "failed";
 
-interface ResetPasswordState {
+export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
   phone: { index?: number; number?: string; phone_code?: string };
@@ -56,6 +56,10 @@ export const resetPasswordSlice = createSlice({
     },
     setPhone: (state, action) => {
       state.phone = action.payload;
+    },
+    resetState: (state) => {
+      state.webauthn_assertion = undefined;
+      state.selected_option = undefined;
     },
   },
   extraReducers: (builder) => {

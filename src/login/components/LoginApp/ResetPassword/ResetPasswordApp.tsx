@@ -1,48 +1,60 @@
+import { useActor } from "@xstate/react";
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
-import Splash from "components/Splash";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";
 import { clearNotifications } from "reducers/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 // URL parameters passed to ResetPasswordRequestEmail
 export interface UrlParams {
   ref?: string;
 }
 
-export function ResetPasswordRequestEmail(): JSX.Element {
+export function ResetPasswordApp(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
-  const email_address = useAppSelector((state) => state.resetPassword.email_address);
-  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const loginRef = useAppSelector((state) => state.login.ref);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const [state] = useActor(resetPasswordContext.resetPasswordService);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
+    resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
   }, [loginRef, params]);
 
-  if (!email_status) {
-    if (email_address) {
-      return <ResetPasswordConfirmEmail />;
-    }
-    return <ResetPasswordEnterEmail />;
-  }
-
   return (
-    <Splash showChildren={email_status !== "requested"}>
-      {email_status === "success" && <EmailLinkSent />}
-      {email_status === "failed" && <ResetPasswordEnterEmail />}
-    </Splash>
+    <React.Fragment>
+      {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
+    </React.Fragment>
   );
+}
+
+function AskForEmailOrConfirmEmail(): null {
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
+
+  useEffect(() => {
+    if (!email_status) {
+      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
+      else resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
+    }
+  }, [email_status, email_address]);
+
+  return null;
 }
 
 /**
@@ -50,14 +62,20 @@ export function ResetPasswordRequestEmail(): JSX.Element {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-function ResetPasswordConfirmEmail(): JSX.Element {
+export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
-  function sendEmailOnClick() {
+  async function sendEmailOnClick() {
     dispatch(clearNotifications());
     if (email_address) {
-      dispatch(requestEmailLink({ email: email_address }));
+      const response = await dispatch(requestEmailLink({ email: email_address }));
+      if (requestEmailLink.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
     }
   }
 

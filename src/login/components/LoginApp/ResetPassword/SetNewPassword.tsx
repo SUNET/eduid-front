@@ -8,15 +8,16 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import CustomInput from "../../Inputs/CustomInput";
+import { GoBackButton } from "./GoBackButton";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 const newPasswordFormId = "new-password-form";
 
@@ -30,12 +31,12 @@ interface NewPasswordFormProps {
 }
 
 function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values["new-password"];
@@ -43,7 +44,8 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
     if (!newPassword || emptyStringPattern.test(newPassword)) {
       errors["new-password"] = "required";
-    } else if (newPassword !== props.suggested_password) {
+    } else if (newPassword?.replace(/\s/g, "") !== props.suggested_password?.replace(/\s/g, "")) {
+      // Remove whitespace from both passwords before comparing
       errors["new-password"] = "chpass.different-repeat";
     }
     return errors;
@@ -60,14 +62,14 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     if (!selected_option || selected_option === "without") {
       const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
       if (postSetNewPassword.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "phoneCode" && phone_code) {
       const response = await dispatch(
         postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
       );
       if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await dispatch(
@@ -78,7 +80,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "freja") {
       const response = await dispatch(
@@ -88,9 +90,15 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
         })
       );
       if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
-        navigate("/reset-password/success");
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
-    } else navigate("/reset-password");
+    }
+  }
+
+  function goBack() {
+    resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
+    // initialization of state
+    dispatch(resetPasswordSlice.actions.resetState());
   }
 
   return (
@@ -120,13 +128,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-                <EduIDButton
-                  buttonstyle="secondary"
-                  id="go-back-button"
-                  onClick={() => navigate("/reset-password/extra-security")}
-                >
-                  <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
-                </EduIDButton>
+                <GoBackButton onClickHandler={goBack} />
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
@@ -140,9 +142,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
 }
 
 export function SetNewPassword(): JSX.Element | null {
-  const navigate = useNavigate();
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
-  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
@@ -153,14 +153,7 @@ export function SetNewPassword(): JSX.Element | null {
     setPassword(suggested_password);
   }, [suggested_password]);
 
-  // Change path to extra-security without selected option on reload
-  useEffect(() => {
-    if (selected_option === undefined) {
-      navigate("/reset-password/extra-security");
-    }
-  }, [selected_option]);
-
-  const copyToClipboard = () => {
+  function copyToClipboard() {
     if (ref && ref.current) {
       ref.current.select();
       document.execCommand("copy");
@@ -173,7 +166,7 @@ export function SetNewPassword(): JSX.Element | null {
         setTooltipCopied(false);
       }, 1000);
     }
-  };
+  }
 
   if (suggested_password === undefined) {
     return null;
@@ -186,12 +179,12 @@ export function SetNewPassword(): JSX.Element | null {
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the
-                          password in to the Repeat new password field and click Accept Password.`}
+          defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the
+                          password in to the Repeat new password field and click Accept Password and save it for future 
+                          use.`}
           description="Set new password"
         />
       </p>
-
       <div className="reset-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
@@ -204,8 +197,8 @@ export function SetNewPassword(): JSX.Element | null {
           readOnly={true}
         />
         <button id="clipboard" className="icon-only copybutton" onClick={copyToClipboard}>
-          <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
-          <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
+          <FontAwesomeIcon id="icon-copy" icon={faCopy as IconProp} />
+          <FontAwesomeIcon id="icon-check" icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
             {tooltipCopied ? (
               <FormattedMessage defaultMessage="Copied!" description="Reset password copy password tooltip" />
@@ -215,8 +208,25 @@ export function SetNewPassword(): JSX.Element | null {
           </div>
         </button>
       </div>
-
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
+    </React.Fragment>
+  );
+}
+
+export function ResetPasswordSuccess(): JSX.Element {
+  const toHome = useAppSelector((state) => state.config.eduid_site_url);
+
+  return (
+    <React.Fragment>
+      <p>
+        <FormattedMessage
+          defaultMessage="Password has been updated."
+          description="Reset Password set new password success"
+        />
+      </p>
+      <a id="return-login" href={toHome}>
+        <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
+      </a>
     </React.Fragment>
   );
 }

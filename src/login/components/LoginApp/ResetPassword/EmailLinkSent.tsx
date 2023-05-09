@@ -1,27 +1,34 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { ExpiresMeter } from "../Login/ExpiresMeter";
 import { GoBackButton } from "./GoBackButton";
+import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function EmailLinkSent(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const [resendDisabled, setResendDisabled] = useState(true);
   const response = useAppSelector((state) => state.resetPassword.email_response);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   /**
    * The user has clicked the button to request that another e-mail should be sent.
    */
-  const sendEmailOnClick = (e: React.MouseEvent<HTMLElement>) => {
+  async function sendEmailOnClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     if (response?.email) {
-      dispatch(requestEmailLink({ email: response.email }));
+      const resp = await dispatch(requestEmailLink({ email: response.email }));
+      if (requestEmailLink.fulfilled.match(resp)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
     }
     setResendDisabled(true); // disabled button again on use
-  };
+  }
 
   function handleTimerReachZero() {
     setResendDisabled(false); // allow user to request a new e-mail when timer expires

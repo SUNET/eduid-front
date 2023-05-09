@@ -27,6 +27,7 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@ungap/url-search-params": "^0.2.2",
     "@xstate/react": "^3.0.1",
+    "audit-ci": "^6.6.1",
     "bootstrap": "^5.2.2",
     "final-form": "^4.20.7",
     "invariant": "^2.2.4",

@@ -29,9 +29,9 @@ export function ExternalReturnHandler() {
         // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
         // the user should be returned to
         const actionToRoute: { [key: string]: string } = {
-          eidasVerifyIdentity: "/profile/verify-identity/",
-          eidasVerifyCredential: "/profile/settings/advanced-settings/",
-          svipeidVerifyIdentity: "/profile/verify-identity/",
+          eidasVerifyIdentity: "/start/verify-identity/",
+          eidasVerifyCredential: "/start/settings/advanced-settings/",
+          svipeidVerifyIdentity: "/start/verify-identity/",
         };
         const _path = actionToRoute[status.frontend_action];
         if (_path) {
@@ -40,7 +40,7 @@ export function ExternalReturnHandler() {
         }
       }
 
-      navigate("/profile/"); // GOTO start
+      navigate("/start/"); // GOTO start
     }
   }
 
@@ -60,10 +60,10 @@ export function ExternalReturnHandler() {
 
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas") {
-      fetchEidasStatus(params.authn_id);
+      fetchEidasStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "svipe_id") {
-      fetchSvipeStatus(params.authn_id);
+      fetchSvipeStatus(params.authn_id).catch(console.error);
     }
   }, [params]);
 
