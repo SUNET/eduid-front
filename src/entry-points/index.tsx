@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { polyfillsInit } from "./polyfills-common";
 
 import { IndexMain } from "components/IndexMain";
+import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import "./public-path";
 
 /* Get configuration */
@@ -24,11 +25,13 @@ setupLanguage(indexStore.dispatch);
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <ReduxIntlProvider store={indexStore}>
-    <BrowserRouter>
-      <IndexMain />
-    </BrowserRouter>
-  </ReduxIntlProvider>,
+  <SignupGlobalStateProvider>
+    <ReduxIntlProvider store={indexStore}>
+      <BrowserRouter>
+        <IndexMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
+  </SignupGlobalStateProvider>,
   initDomTarget,
   getConfig
 );
