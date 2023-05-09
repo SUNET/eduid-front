@@ -59,6 +59,10 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
   },
+  "/hAEZl": {
+    "developer_comment": "mfa reset-password tapit",
+    "string": "Use your security key to reset password. If it has a button, tap it."
+  },
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Reset your password"
@@ -1440,10 +1444,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gbZoh/": {
-    "developer_comment": "Set new password (go back to eduID button)",
-    "string": "Go back"
-  },
   "gn2lIO": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Choose a suitable method to verify that you have access to the added id number."
@@ -1751,15 +1751,6 @@
   "mfa.no-webauthn-support-text": {
     "string": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
   },
-  "mfa.problems-heading": {
-    "string": "Problems?"
-  },
-  "mfa.reset-password-tapit": {
-    "string": "Use your security key to reset password. If it has a button, tap it."
-  },
-  "mfa.try-again": {
-    "string": "Please try again"
-  },
   "mfa.two-factor-authn": {
     "string": "Two-factor authentication"
   },
@@ -1777,7 +1768,7 @@
   },
   "n5fMlW": {
     "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to repeat the password below ."
+    "string": "A strong password has been generated for you. To proceed you will need to repeat the password below."
   },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
