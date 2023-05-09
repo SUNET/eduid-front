@@ -94,9 +94,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="What is eduID? description"
-                  defaultMessage={`Once you have successfully created your account, you will rarely need to log in to eduID. 
-                    You will only be using your account to create and access other accounts, such as {link} or your 
-                    student account.`}
+                  defaultMessage={`Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account.`}
                   values={{
                     link: (
                       <a className="text-link" href="https://www.universityadmissions.se">
@@ -116,7 +114,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Log in at eduid.se when you: list item"
-                    defaultMessage="Accept your place at university"
+                    defaultMessage="Apply to and accept your place at a university"
                   />
                 </li>
                 <li>
@@ -134,7 +132,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Log in at eduid.se when you: list item"
-                    defaultMessage="Loose a password"
+                    defaultMessage="Lose a student account password and need to regain access."
                   />
                 </li>
               </ul>
@@ -146,7 +144,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage={`To be continued on how to create account...`}
+                  defaultMessage={`To be continued on how to create account... For detailed information on how to verify your account see the 'Verification of Identity' section.`}
                 />
               </p>
             </article>
@@ -178,6 +176,34 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="Which email account should I use to log in? description"
                   defaultMessage="You can log in with all the email addresses you have entered and confirmed in eduID."
+                />
+              </p>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage
+                  description="How can I login with other devices? heading"
+                  defaultMessage="How can I login with other devices?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="How can I login with other devices? description"
+                  defaultMessage="Description on QR etc."
+                />
+              </p>
+            </article>
+            <article>
+              <h3>
+                <FormattedMessage
+                  description="How can I make my eduID more secure? heading"
+                  defaultMessage="How do I make me eduID more secure?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="How can I login with other devices? description"
+                  defaultMessage="Description on MFA etc."
                 />
               </p>
             </article>
@@ -626,7 +652,7 @@ export function Help(): JSX.Element {
             <p>
               <FormattedMessage
                 description="Create a Freja eID+ account list item"
-                defaultMessage={`If you can't find the answers to your questions about eduID on our help page, 
+                defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
                 values={{
                   support: (
@@ -640,7 +666,7 @@ export function Help(): JSX.Element {
             <p>
               <FormattedMessage
                 description="support description"
-                defaultMessage={`Always let us know the e-mail address you used when you logged into eduID. 
+                defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ under the advanced settings tab.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
               />
