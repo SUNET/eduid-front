@@ -59,6 +59,10 @@
     "developer_comment": "select extra webauthn",
     "string": "Välj extra identifieringsmetod:"
   },
+  "/hAEZl": {
+    "developer_comment": "mfa reset-password tapit",
+    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
+  },
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Återställ lösenord"
@@ -1440,10 +1444,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
-  "gbZoh/": {
-    "developer_comment": "Set new password (go back to eduID button)",
-    "string": "gå tillbaka"
-  },
   "gn2lIO": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Välj en lämplig metod att verifiera ditt personnummer."
@@ -1750,15 +1750,6 @@
   },
   "mfa.no-webauthn-support-text": {
     "string": "Du har registrerat en säkerhetsnyckel för tvåfaktorsautentisering men din webbläsare har inget stöd för dom. Försök med en annan browser för att använda din säkerhetsnyckel."
-  },
-  "mfa.problems-heading": {
-    "string": "Problem?"
-  },
-  "mfa.reset-password-tapit": {
-    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
-  },
-  "mfa.try-again": {
-    "string": "Försök igen"
   },
   "mfa.two-factor-authn": {
     "string": "Extra säkerhet påslaget för det här kontot"
