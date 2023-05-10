@@ -229,10 +229,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
-  "6zx8wo": {
-    "developer_comment": "mfa reset password tapit",
-    "string": "Use your security key to reset password. If it has a button, tap it."
-  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
@@ -1766,10 +1762,6 @@
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
   },
-  "n5fMlW": {
-    "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to repeat copy the password in to the Repeat new password field and click Accept Password."
-  },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
     "string": "go to eduID Dashboard"
@@ -2110,6 +2102,10 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
+  },
+  "qGDW86": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
