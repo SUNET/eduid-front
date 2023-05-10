@@ -59,6 +59,10 @@
     "developer_comment": "select extra webauthn",
     "string": "Välj extra identifieringsmetod:"
   },
+  "/hAEZl": {
+    "developer_comment": "mfa reset-password tapit",
+    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
+  },
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Återställ lösenord"
@@ -224,10 +228,6 @@
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
-  },
-  "6zx8wo": {
-    "developer_comment": "mfa reset password tapit",
-    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
   },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
@@ -1440,10 +1440,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
-  "gbZoh/": {
-    "developer_comment": "Set new password (go back to eduID button)",
-    "string": "gå tillbaka"
-  },
   "gn2lIO": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Välj en lämplig metod att verifiera ditt personnummer."
@@ -1751,15 +1747,6 @@
   "mfa.no-webauthn-support-text": {
     "string": "Du har registrerat en säkerhetsnyckel för tvåfaktorsautentisering men din webbläsare har inget stöd för dom. Försök med en annan browser för att använda din säkerhetsnyckel."
   },
-  "mfa.problems-heading": {
-    "string": "Problem?"
-  },
-  "mfa.reset-password-tapit": {
-    "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
-  },
-  "mfa.try-again": {
-    "string": "Försök igen"
-  },
   "mfa.two-factor-authn": {
     "string": "Extra säkerhet påslaget för det här kontot"
   },
@@ -1774,10 +1761,6 @@
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Radera eduID"
-  },
-  "n5fMlW": {
-    "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du skriva in det igen."
   },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
@@ -2119,6 +2102,10 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
+  },
+  "qGDW86": {
+    "developer_comment": "Set new password",
+    "string": "Ett starkt lösenord har skapats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Upprepa nytt lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
