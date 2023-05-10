@@ -42,10 +42,15 @@ function SignupStart() {
 
   useEffect(() => {
     // bootstrap signup state in redux store by asking the backend for it
-    dispatch(fetchState());
-  }, []);
+    async function fetchSignupState(): Promise<void> {
+      const response = await dispatch(fetchState());
+      if (fetchState.fulfilled.match(response)) {
+        signupContext.signupService.send({ type: "COMPLETE" });
+      }
+    }
 
-  signupContext.signupService.send({ type: "COMPLETE" });
+    fetchSignupState();
+  }, []);
 
   return null;
 }
