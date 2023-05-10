@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import eduIDApp from "./errors-store";
+import eduIDApp from "./index-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
