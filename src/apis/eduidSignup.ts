@@ -8,7 +8,8 @@ import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 // export for use in tests
-export const SIGNUP_SERVICE_URL = "/services/signup";
+// TODO: use base url from js config
+export const SIGNUP_SERVICE_URL = "https://signup.eduid.docker/services/signup";
 
 export interface SignupState {
   already_signed_up: boolean;
