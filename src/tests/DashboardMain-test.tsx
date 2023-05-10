@@ -6,7 +6,7 @@ import { defaultDashboardTestState, render, screen } from "./helperFunctions/Das
 test("shows splash screen when not configured", () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
 
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
@@ -17,7 +17,7 @@ test("shows splash screen when not configured", () => {
 
 test("renders Profile page as expected", () => {
   render(<DashboardMain />, {
-    routes: ["/start/"],
+    routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
@@ -47,7 +47,7 @@ test("renders Profile page as expected", () => {
 
 test("renders identity verification progress, unverified after password reset", () => {
   render(<DashboardMain />, {
-    routes: ["/start/"],
+    routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
@@ -69,7 +69,7 @@ test("renders identity verification progress, unverified after password reset", 
 
 test("renders identity verification progress, new user", () => {
   render(<DashboardMain />, {
-    routes: ["/start/"],
+    routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
@@ -90,7 +90,7 @@ test("renders identity verification progress, new user", () => {
 
 test("renders identity verification progress, verified user", () => {
   render(<DashboardMain />, {
-    routes: ["/start/"],
+    routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },

@@ -24,7 +24,7 @@ interface renderArgs {
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const routes = args.routes || ["/start/"];
+  const routes = args.routes || ["/profile/"];
   const store = getTestDashboardStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: { children: React.ReactNode }) {

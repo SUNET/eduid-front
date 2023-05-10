@@ -6,7 +6,7 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 test("start page heading text for new user", async () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
@@ -17,7 +17,7 @@ test("start page heading text for new user", async () => {
 test("recommendations for new users, adding name", async () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   const addingNameButton = screen.getByRole("button", { name: /Add your name/i });
   expect(addingNameButton).toBeEnabled();
@@ -32,7 +32,7 @@ test("recommendations for new users, adding name", async () => {
 test("recommendations for new users, adding phone", async () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
 
   const addingPhoneButton = screen.getByRole("button", { name: /Add your phone number/i });
@@ -48,7 +48,7 @@ test("recommendations for new users, adding phone", async () => {
 test("recommendations for new user, verify identity", async () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
 
   const verifyIdentityButton = screen.getByRole("button", { name: /Verify your identity/i });
@@ -64,7 +64,7 @@ test("recommendations for new user, verify identity", async () => {
 test("recommendations for new user, adding security key", async () => {
   render(<DashboardMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   const addingSecurityButton = screen.getByRole("button", { name: /Add your security key/i });
   expect(addingSecurityButton).toBeEnabled();
@@ -95,7 +95,7 @@ test("not renders letter proofing progress, verified user with swedish id number
         letter_sent_days_ago: 2,
       },
     },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is verified./);
   const progressHeading = screen.queryByText("Currently in progress");
@@ -111,7 +111,7 @@ test("heading text after password reset", () => {
         nin: { number: "190102031234", verified: false },
       },
     },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   expect(screen.getAllByRole("heading")[2]).toHaveTextContent(
     /Your identity is no longer verified after password reset./
@@ -129,7 +129,7 @@ test("renders swedish verification options when user verified with eidas", () =>
         eidas: { prid: "abcd", prid_persistence: "A", date_of_birth: "1990-08-19", country_code: "XE", verified: true },
       },
     },
-    routes: ["/start/"],
+    routes: ["/profile/"],
   });
   expect(screen.getByRole("button", { name: /Verify your identity with Swedish/i })).toBeEnabled();
 });
