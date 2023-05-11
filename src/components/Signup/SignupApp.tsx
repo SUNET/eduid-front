@@ -3,7 +3,7 @@ import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useIndexAppDispatch as useSignupAppDispatch } from "index-hooks";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
