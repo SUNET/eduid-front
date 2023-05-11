@@ -2,13 +2,8 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-<<<<<<< HEAD
-import React, { useContext, useEffect } from "react";
-import { useSignupAppDispatch } from "signup-hooks";
-=======
 import { useIndexAppDispatch as useSignupAppDispatch } from "index-hooks";
-import { useContext, useEffect } from "react";
->>>>>>> ce6a9795b (Fix conflicts)
+import React, { useContext, useEffect } from "react";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
