@@ -16,7 +16,11 @@ export interface StateWithCommonConfig {
 
 export interface RequestThunkAPI {
   getState: () => StateWithCommonConfig;
+<<<<<<< HEAD
   dispatch: EduIDAppDispatch;
+=======
+  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+>>>>>>> 6200b8f10 (Fix conflict)
   signal: AbortSignal;
 }
 
