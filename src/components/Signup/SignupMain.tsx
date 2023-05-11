@@ -2,12 +2,12 @@ import CodeVerified from "components/CodeVerified";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import Splash from "components/Splash";
+import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import Footer from "login/components/Footer/Footer";
 import "login/styles/index.scss";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useSignupAppSelector } from "signup-hooks";
 import { SignupApp } from "./SignupApp";
 
 // export for use in tests

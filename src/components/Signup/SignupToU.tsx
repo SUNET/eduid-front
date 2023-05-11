@@ -1,9 +1,9 @@
 import { acceptToURequest } from "apis/eduidSignup";
 import { CommonToU } from "components/CommonToU";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): JSX.Element {

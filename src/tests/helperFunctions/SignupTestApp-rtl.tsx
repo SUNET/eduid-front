@@ -1,12 +1,12 @@
-import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
+import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
+import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as signupInitialState } from "reducers/Signup";
 import { initialState as configInitialState } from "reducers/SignupConfig";
-import { getTestSignupStore, SignupRootState } from "signup-init-app";
 
 export const signupTestState: SignupRootState = {
   config: {

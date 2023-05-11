@@ -2,9 +2,9 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
+import { IndexAppDispatch as SignupAppDispatch } from "index-init-app";
 import { LoginAppDispatch } from "login-init-app";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "sagas/ts_common";
-import { SignupAppDispatch } from "signup-init-app";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;

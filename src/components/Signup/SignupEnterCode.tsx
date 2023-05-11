@@ -1,6 +1,7 @@
 import { verifyEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/Login/ResponseCodeForm";
 import { Fragment, useContext, useEffect, useState } from "react";
@@ -8,7 +9,6 @@ import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 interface ResponseCodeButtonsProps {

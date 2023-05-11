@@ -1,9 +1,9 @@
 import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 // element ids used in tests

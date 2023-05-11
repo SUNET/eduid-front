@@ -1,12 +1,12 @@
 import { registerEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import EmailInput from "../../login/components/Inputs/EmailInput";
 
 export function SignupEmailForm(): JSX.Element {

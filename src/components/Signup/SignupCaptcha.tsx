@@ -3,11 +3,11 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
 import { Captcha as GoogleCaptcha } from "components/Captcha";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { SignupCaptchaForm } from "./SignupCaptchaForm";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 

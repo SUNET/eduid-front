@@ -2,12 +2,12 @@ import { fetchVerifyLink, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
 import { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import Splash from "components/Splash";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { showNotification } from "reducers/Notifications";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
