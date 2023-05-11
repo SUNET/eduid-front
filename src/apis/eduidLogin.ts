@@ -4,8 +4,12 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+<<<<<<< HEAD
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
+=======
+import { IndexAppDispatch as ErrorsAppDispatch, IndexRootState as ErrorsRootState } from "index-init-app";
+>>>>>>> dd3465f38 (Bye, errors)
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
