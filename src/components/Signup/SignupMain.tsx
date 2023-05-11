@@ -6,6 +6,7 @@ import Splash from "components/Common/Splash";
 import { Help } from "components/Help";
 import CodeVerified from "components/Signup/CodeVerified";
 import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
+import "login/styles/index.scss";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
