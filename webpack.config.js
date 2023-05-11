@@ -20,7 +20,6 @@ module.exports = {
     // server: 'webpack-dev-server/client?http://localhost:8080',
     dashboard: "./src/entry-points/dashboard",
     login: "./src/entry-points/login",
-    errors: "./src/entry-points/errors",
     index: "./src/entry-points/index",
   },
   output: {
@@ -96,7 +95,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["index", "errors", "login", "dashboard"].map((entryName) => {
+    ...["index", "login", "dashboard"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,

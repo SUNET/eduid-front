@@ -1,6 +1,7 @@
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import { useIndexAppSelector } from "index-hooks";
+import { Errors } from "login/components/SwamidErrors/Errors";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "../../src/login/styles/index.scss";
@@ -24,8 +25,10 @@ export function IndexMain(): JSX.Element {
               {/* Signup */}
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
               {/* Login */}
+
               {/* Dashboard */}
               {/* Errors*/}
+              <Route path="/errors" element={<Errors />} />
             </Routes>
           </section>
         </Splash>
