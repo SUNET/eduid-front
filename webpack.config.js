@@ -18,21 +18,12 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
-<<<<<<< HEAD
-    signup: "./src/entry-points/signup",
-    dashboard: "./src/entry-points/dashboard",
-=======
     // dashboard: "./src/entry-points/dashboard",
     // login: "./src/entry-points/login",
     // errors: "./src/entry-points/errors",
->>>>>>> ce6a9795b (Fix conflicts)
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
-<<<<<<< HEAD
     faq: "./src/entry-points/faq",
-=======
-    index: "./src/entry-points/index",
->>>>>>> 3f3dc5ee7 (Create index for all apps)
   },
   output: {
     path: path.join(__dirname, "build"),

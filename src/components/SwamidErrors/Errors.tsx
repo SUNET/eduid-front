@@ -1,4 +1,6 @@
-import { useErrorsAppSelector } from "errors-hooks";
+import { fetchJsConfig } from "apis/eduidJsConfig";
+import { ERRORS_CONFIG_URL } from "globals";
+import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "index-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
@@ -18,11 +20,21 @@ export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
   const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
-  const dashboard_link = useErrorsAppSelector((state) => state.config.dashboard_link);
+  const dashboard_url = useErrorsAppSelector((state) => state.config.dashboard_url);
+  const dispatch = useErrorsAppDispatch();
 
   const [errorURL, setErrorURL] = useState<errorURLData>({});
+
   useEffect(() => {
-    setErrorURL(parseErrorURL(query));
+    // bootstrap signup state in redux store by asking the backend for it
+    async function fetchJsErrorsConfig(): Promise<void> {
+      const response = await dispatch(fetchJsConfig({ url: ERRORS_CONFIG_URL }));
+      if (fetchJsConfig.fulfilled.match(response)) {
+        setErrorURL(parseErrorURL(query));
+      }
+    }
+
+    fetchJsErrorsConfig();
   }, []);
 
   function handleDashboardOnClick() {
