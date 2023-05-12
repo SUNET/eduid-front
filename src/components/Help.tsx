@@ -59,11 +59,9 @@ export function Help(): JSX.Element {
                     - identification and verification - properly and in a controlled and reliable IT environment.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+              <h4>
                 <FormattedMessage description="Why have eduID? heading" defaultMessage="Why have eduID?" />
-              </h3>
+              </h4>
 
               <p>
                 <FormattedMessage
@@ -83,14 +81,12 @@ export function Help(): JSX.Element {
                     identification of users is elevated to that of confirmed users.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="When will I use eduID? heading"
                   defaultMessage="When will I use eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="What is eduID? description"
@@ -147,14 +143,24 @@ export function Help(): JSX.Element {
                   defaultMessage={`To be continued on how to create account... For detailed information on how to verify your account see the 'Verification of Identity' section.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+              <h4>
+                <FormattedMessage
+                  description="Which email account should I use to log in? heading"
+                  defaultMessage="Which email account should I use to log in?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="Which email account should I use to log in? description"
+                  defaultMessage="You can log in with all the email addresses you have entered and confirmed in eduID."
+                />
+              </p>
+              <h4>
                 <FormattedMessage
                   description="How do I change the default language in eduID? heading"
                   defaultMessage="How do I change the default language in eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="How do I change the default language in eduID? description"
@@ -164,42 +170,26 @@ export function Help(): JSX.Element {
                     browser uses.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
-                <FormattedMessage
-                  description="Which email account should I use to log in? heading"
-                  defaultMessage="Which email account should I use to log in?"
-                />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="Which email account should I use to log in? description"
-                  defaultMessage="You can log in with all the email addresses you have entered and confirmed in eduID."
-                />
-              </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="How can I login with other devices? heading"
                   defaultMessage="How can I login with other devices?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
                   defaultMessage="Description on QR etc."
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="How can I make my eduID more secure? heading"
-                  defaultMessage="How do I make me eduID more secure?"
+                  defaultMessage="How do I make my eduID more secure?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
@@ -250,9 +240,14 @@ export function Help(): JSX.Element {
                   <FormattedMessage
                     description="identity verification methods: post"
                     defaultMessage={`{post} The user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency)`}
+                      registered at Skatteverket (the Swedish Tax Agency) {detailedList} `}
                     values={{
                       post: <strong>Post:</strong>,
+                      detailedList: (
+                        <ol>
+                          <li>kolla brevlådan</li>
+                        </ol>
+                      ),
                     }}
                   />
                 </li>
@@ -323,18 +318,18 @@ export function Help(): JSX.Element {
             </article>
             <article id="frejaeid">
               <h3>
-                <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+?" />
+                <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+" />
               </h3>
               <p>
                 <FormattedMessage
                   description="Freja eID+ is a digital ID-card free of charge. description"
-                  defaultMessage="Freja eID+ is a digital ID-card free of charge."
+                  defaultMessage="Freja eID+ is a digital ID-card free of charge, available to holders of a Swedish personal identification number."
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="Freja eID+ description"
-                  defaultMessage="This is how you create Freja eID+:"
+                  defaultMessage="This is how to create Freja eID+:"
                 />
               </p>
 
@@ -365,14 +360,13 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="visit an authorised ATG agent to create Freja eID+ heading"
                   defaultMessage="Why do I need to visit an authorised ATG agent to create Freja eID+?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="visit an authorised ATG agent to create Freja eID+ description"
@@ -381,14 +375,13 @@ export function Help(): JSX.Element {
                     ID verification and will be able use your Freja eID+ with your eduID.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="What should I do if my identity verification for Freja eID+ fails?"
                   defaultMessage="What should I do if my identity verification for Freja eID+ fails?"
                 />
-              </h3>
+              </h4>
 
               <p>
                 <FormattedMessage
@@ -398,28 +391,26 @@ export function Help(): JSX.Element {
                     ID and personal identity number (personnummer).`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="How do I use my Freja eID+ with my eduID?"
                   defaultMessage="How do I use my Freja eID+ with my eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="Log in to eduID and click 'Use my Freja eID+' button."
                   defaultMessage="Log in to eduID and click 'Use my Freja eID+' button."
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="How long does it take for a Freja eID+ to be processed?"
                   defaultMessage="How long does it take for a Freja eID+ to be processed?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="It can take up to three hours for your Freja eID+ to be fully activated."
@@ -429,7 +420,7 @@ export function Help(): JSX.Element {
             </article>
             <article id="eidas">
               <h3>
-                <FormattedMessage description="eIDAS heading" defaultMessage="eIDAS" />
+                <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
               </h3>
               <p>
                 <FormattedMessage
@@ -439,7 +430,7 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
-                <FormattedMessage description="How to use eIDAS:" defaultMessage="How to use eIDAS:" />
+                <FormattedMessage description="How to use eIDAS:" defaultMessage="This is how to use eIDAS:" />
               </p>
               <ul className="bullets">
                 <li>
@@ -475,15 +466,18 @@ export function Help(): JSX.Element {
             </article>
             <article id="svipe">
               <h3>
-                <FormattedMessage description="Svipe heading" defaultMessage="Svipe iD" />
+                <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
               </h3>
               <p>
-                <FormattedMessage description="What is Svipe? description" defaultMessage={`What is Svipe iD`} />
+                <FormattedMessage description="What is Svipe? description" defaultMessage={`Description of Svipe iD`} />
               </p>
+              <h4>
+                <FormattedMessage description="How do I use Svipe? heading" defaultMessage={`How do I use Svipe iD?`} />
+              </h4>
               <p>
                 <FormattedMessage
                   description="How do I use Svipe? description"
-                  defaultMessage={`How do I use Svipe iD`}
+                  defaultMessage={`How to use Svipe iD`}
                 />
               </p>
             </article>
