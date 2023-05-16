@@ -72,15 +72,20 @@ function Phones() {
   }
 
   async function startCaptcha(event: React.MouseEvent<HTMLElement>) {
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+    console.log("phones.captcha", phones.captcha);
+
+    // if (phones.captcha && Object.keys(phones?.captcha).length === 0) {
+    console.log("no captcha");
     getCaptcha().then((img) => {
       if (img) {
         setImg(img);
         setCompleteCaptcha(true);
-        const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-        const phoneNumber = dataNode?.getAttribute("data-object");
-        if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
       }
     });
+    // }
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
@@ -100,13 +105,12 @@ function Phones() {
 
   function handleStopCaptcha() {
     setCompleteCaptcha(false);
+    setSelectedPhoneNumber("");
   }
 
   async function sendCaptcha(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    console.log("222dataNode", dataNode);
     const phoneNumber = dataNode?.getAttribute("data-object");
-    console.log("phoneNumber", phoneNumber);
     if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
 
     const captcha = document.getElementById("confirmation-code-area");
@@ -114,14 +118,10 @@ function Phones() {
     const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
     if (sendCaptchaResponse.fulfilled.match(res)) {
       setCompleteCaptcha(false);
+      // if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
+    } else {
+      setCompleteCaptcha(false), setSelectedPhoneNumber(undefined);
     }
-
-    // }
-
-    // if (captcha !== null) {
-    //   const res = await dispatch(sendCaptchaResponse(captcha));
-    //   console.log("res ", res);
-    // }
   }
 
   function handleConfirm() {
