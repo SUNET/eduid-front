@@ -71,19 +71,26 @@ function Phones() {
     if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
   }
 
-  async function startCaptcha() {
+  async function startCaptcha(event: React.MouseEvent<HTMLElement>) {
     getCaptcha().then((img) => {
       if (img) {
         setImg(img);
         setCompleteCaptcha(true);
+        const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+        const phoneNumber = dataNode?.getAttribute("data-object");
+        if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
       }
     });
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
+    console.log("hoihi");
+    console.log("event", event);
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    console.log("dataNode", dataNode);
     const phoneNumber = dataNode?.getAttribute("data-object");
+    console.log("phoneNumber", phoneNumber);
     if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
   }
 
@@ -95,10 +102,15 @@ function Phones() {
     setCompleteCaptcha(false);
   }
 
-  async function sendCaptcha() {
+  async function sendCaptcha(event: React.MouseEvent<HTMLElement>) {
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    console.log("222dataNode", dataNode);
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    console.log("phoneNumber", phoneNumber);
+    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+
     const captcha = document.getElementById("confirmation-code-area");
     const code = captcha?.querySelector("input");
-    // if (code) {
     const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
     if (sendCaptchaResponse.fulfilled.match(res)) {
       setCompleteCaptcha(false);
@@ -276,9 +288,9 @@ function Phones() {
           />
         }
         placeholder={modalPlaceholder}
-        showModal={Boolean(selectedPhoneNumber)}
+        showModal={Boolean(selectedPhoneNumber) && !completeCaptcha}
         closeModal={handleStopConfirmation}
-        handleConfirm={sendCaptcha}
+        handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
         resendMarkup={
           <div className="resend-code-container">
