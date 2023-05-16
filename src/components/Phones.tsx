@@ -1,4 +1,5 @@
 import {
+  getCaptchaRequest,
   postNewPhone,
   requestMakePrimaryPhone,
   requestRemovePhone,
@@ -7,7 +8,7 @@ import {
 } from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -32,6 +33,20 @@ function Phones() {
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
+  const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+
+  async function getCaptcha() {
+    const res = await dispatch(getCaptchaRequest());
+    if (getCaptchaRequest.fulfilled.match(res)) {
+      return res.payload.captcha_img;
+    }
+  }
+
+  useEffect(() => {
+    if (is_app_loaded) {
+      getCaptcha();
+    }
+  }, [is_app_loaded]);
 
   function handlePhoneForm() {
     setShowPhoneForm(true);

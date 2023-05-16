@@ -6,6 +6,7 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { showNotification } from "reducers/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { GetCaptchaResponse } from "./eduidSignup";
 
 export interface PhoneInfo {
   number: string;
@@ -117,6 +118,23 @@ export const requestRemovePhone = createAsyncThunk<
     number: args.number,
   };
   return makePhoneRequest<PhonesResponse>(thunkAPI, "remove", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function getCaptchaRequest
+ * @desc Redux async thunk to get Captcha.
+ */
+export const getCaptchaRequest = createAsyncThunk<
+  GetCaptchaResponse, // return type
+  undefined, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("phones/getCaptcha", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+  return makePhoneRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
