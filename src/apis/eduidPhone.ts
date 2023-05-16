@@ -16,6 +16,7 @@ export interface PhoneInfo {
 
 export interface PhonesResponse {
   phones: PhoneInfo[];
+  captcha?: { number?: any; captcha_img?: string; captcha_audio?: string };
 }
 
 /*********************************************************************************************************************/
@@ -135,6 +136,30 @@ export const getCaptchaRequest = createAsyncThunk<
 >("phones/getCaptcha", async (args, thunkAPI) => {
   const body: KeyValues = {};
   return makePhoneRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface CaptchaRequest {
+  internal_response: string;
+}
+
+/**
+ * @public
+ * @function sendCaptchaResponse
+ * @desc Redux async thunk to post the result of a CAPTCHA operation.
+ */
+export const sendCaptchaResponse = createAsyncThunk<
+  any, // return type
+  any, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("phone/sendCaptchaResponse", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    internal_response: args.internal_response,
+  };
+
+  return makePhoneRequest<any>(thunkAPI, "captcha", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

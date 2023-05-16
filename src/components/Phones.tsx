@@ -5,10 +5,11 @@ import {
   requestRemovePhone,
   requestResendPhoneCode,
   requestVerifyPhone,
+  sendCaptchaResponse,
 } from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -29,11 +30,18 @@ function Phones() {
    * next to a number and that number gets set in this state variable. Whenever this state
    * variable has a value, the ConfirmModal is shown to allow the user to enter the <code className="
    */
+  const [completeCaptcha, setCompleteCaptcha] = useState(false);
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
-  const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const [img, setImg] = useState<string | undefined>(undefined);
+
+  function getNewCaptcha() {
+    getCaptcha().then((img) => {
+      setImg(img);
+    });
+  }
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
@@ -41,13 +49,6 @@ function Phones() {
       return res.payload.captcha_img;
     }
   }
-
-  useEffect(() => {
-    if (is_app_loaded) {
-      getCaptcha();
-    }
-  }, [is_app_loaded]);
-
   function handlePhoneForm() {
     setShowPhoneForm(true);
   }
@@ -70,6 +71,15 @@ function Phones() {
     if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
   }
 
+  async function startCaptcha() {
+    getCaptcha().then((img) => {
+      if (img) {
+        setImg(img);
+        setCompleteCaptcha(true);
+      }
+    });
+  }
+
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
@@ -79,6 +89,27 @@ function Phones() {
 
   function handleStopConfirmation() {
     setSelectedPhoneNumber(undefined);
+  }
+
+  function handleStopCaptcha() {
+    setCompleteCaptcha(false);
+  }
+
+  async function sendCaptcha() {
+    const captcha = document.getElementById("confirmation-code-area");
+    const code = captcha?.querySelector("input");
+    // if (code) {
+    const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
+    if (sendCaptchaResponse.fulfilled.match(res)) {
+      setCompleteCaptcha(false);
+    }
+
+    // }
+
+    // if (captcha !== null) {
+    //   const res = await dispatch(sendCaptchaResponse(captcha));
+    //   console.log("res ", res);
+    // }
   }
 
   function handleConfirm() {
@@ -156,7 +187,8 @@ function Phones() {
       <div id="phone-display">
         <DataTable
           data={phones.phones}
-          handleStartConfirmation={handleStartConfirmation}
+          handleStartConfirmation={startCaptcha}
+          // handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
@@ -213,6 +245,27 @@ function Phones() {
           </EduIDButton>
         )}
       </div>
+      {/* Captcha modal */}
+      <ConfirmModal
+        id="phone-captcha-modal"
+        captchaImage={img}
+        title={<FormattedMessage defaultMessage={`Confirm that you are a human.`} description="captcha modal title" />}
+        placeholder={""}
+        showModal={Boolean(completeCaptcha)}
+        closeModal={handleStopCaptcha}
+        handleConfirm={sendCaptcha}
+        modalFormLabel={
+          <FormattedMessage description="phones modal form label" defaultMessage={`Enter the code from the image`} />
+        }
+        resendMarkup={
+          <div className="resend-code-container">
+            <a href="#" onClick={getNewCaptcha}>
+              <FormattedMessage description="Generate a new image" defaultMessage={`Generate a new image`} />
+            </a>
+          </div>
+        }
+      />
+
       <ConfirmModal
         id="phone-confirm-modal"
         title={
@@ -225,7 +278,7 @@ function Phones() {
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
-        handleConfirm={handleConfirm}
+        handleConfirm={sendCaptcha}
         modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
         resendMarkup={
           <div className="resend-code-container">
