@@ -18,6 +18,7 @@ interface ConfirmModalProps {
   helpBlock?: React.ReactNode;
   resendMarkup?: React.ReactNode;
   captchaImage?: string;
+  submitButtonText?: React.ReactNode;
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
@@ -66,7 +67,11 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
               </ModalBody>
               <ModalFooter>
                 <EduIDButton buttonstyle="primary" disabled={submitting || invalid} onClick={props.handleConfirm}>
-                  <FormattedMessage defaultMessage="ok" description="ok button" />
+                  {props.submitButtonText ? (
+                    props.submitButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="ok" description="ok button" />
+                  )}
                 </EduIDButton>
               </ModalFooter>
             </React.Fragment>

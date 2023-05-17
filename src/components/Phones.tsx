@@ -275,6 +275,7 @@ function Phones() {
             </label>
           </div>
         }
+        submitButtonText={<FormattedMessage defaultMessage="Continue" description="Captcha button" />}
       />
 
       <ConfirmModal
