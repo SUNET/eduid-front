@@ -190,6 +190,10 @@
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
   },
+  "4a79Tk": {
+    "developer_comment": "captcha modal title",
+    "string": "För att begära kod, fyll i nedan captcha."
+  },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
     "string": "Öka säkerheten för ditt eduID eller anslut det till andra tjänster."
@@ -1389,6 +1393,10 @@
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
+  },
+  "exeSPB": {
+    "developer_comment": "phones modal form label",
+    "string": "Ange koden från bilden"
   },
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
