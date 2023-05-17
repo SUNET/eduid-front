@@ -190,6 +190,10 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
+  "4a79Tk": {
+    "developer_comment": "captcha modal title",
+    "string": "To receive code, complete below captcha."
+  },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
     "string": "Increase the security of your eduID or connect it to other services."
@@ -1389,6 +1393,10 @@
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
+  },
+  "exeSPB": {
+    "developer_comment": "phones modal form label",
+    "string": "Enter the code from the image"
   },
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
