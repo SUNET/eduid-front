@@ -401,6 +401,21 @@ export const userData = {
   ),
 
   //phone numbers
+  "phone.captcha-not-completed": (
+    <FormattedMessage id="phone.captcha-not-completed" defaultMessage={`Captcha not completed. Please try again.`} />
+  ),
+
+  "phone.captcha-failed": (
+    <FormattedMessage id="phone.captcha-failed" defaultMessage={`Captcha failed. Please try again.`} />
+  ),
+
+  "phone.captcha-not-requested": (
+    <FormattedMessage
+      id="phone.captcha-not-requested"
+      defaultMessage={`Captcha failed to initiate. Please try again. `}
+    />
+  ),
+
   "phone.phone_duplicated": <FormattedMessage id="phone_duplicated" defaultMessage={`Added number is duplicated`} />,
 
   "phone.phone_format": (
