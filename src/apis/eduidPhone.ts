@@ -6,7 +6,6 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { showNotification } from "reducers/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetCaptchaResponse } from "./eduidSignup";
 
 export interface PhoneInfo {
   number: string;
@@ -14,9 +13,13 @@ export interface PhoneInfo {
   primary: boolean;
 }
 
+export interface PhoneCaptchaResponse {
+  captcha_img?: string;
+  captcha_audio?: string;
+}
 export interface PhonesResponse {
   phones: PhoneInfo[];
-  captcha?: { captcha_img?: string; captcha_audio?: string };
+  captcha?: PhoneCaptchaResponse;
 }
 
 /*********************************************************************************************************************/
@@ -130,20 +133,17 @@ export const requestRemovePhone = createAsyncThunk<
  * @desc Redux async thunk to get Captcha.
  */
 export const getCaptchaRequest = createAsyncThunk<
-  GetCaptchaResponse, // return type
+  PhoneCaptchaResponse, // return type
   undefined, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("phones/getCaptcha", async (args, thunkAPI) => {
   const body: KeyValues = {};
-  return makePhoneRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
+  return makePhoneRequest<PhoneCaptchaResponse>(thunkAPI, "get-captcha", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-export interface CaptchaRequest {
-  internal_response: string;
-}
 
 /**
  * @public
@@ -151,15 +151,15 @@ export interface CaptchaRequest {
  * @desc Redux async thunk to post the result of a CAPTCHA operation.
  */
 export const sendCaptchaResponse = createAsyncThunk<
-  any, // return type
-  any, // args type
+  PhoneCaptchaResponse, // return type
+  { internal_response?: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("phone/sendCaptchaResponse", async (args, thunkAPI) => {
   const body: KeyValues = {
     internal_response: args.internal_response,
   };
 
-  return makePhoneRequest<any>(thunkAPI, "captcha", body)
+  return makePhoneRequest<PhoneCaptchaResponse>(thunkAPI, "captcha", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

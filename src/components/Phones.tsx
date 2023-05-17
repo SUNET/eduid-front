@@ -101,7 +101,7 @@ function Phones() {
 
   function handleStopCaptcha() {
     setCompleteCaptcha(false);
-    setSelectedPhoneNumber("");
+    setSelectedPhoneNumber(undefined);
   }
 
   async function sendCaptcha(event: React.MouseEvent<HTMLElement>) {
@@ -114,7 +114,6 @@ function Phones() {
     const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
     if (sendCaptchaResponse.fulfilled.match(res)) {
       setCompleteCaptcha(false);
-      // if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
     } else {
       setCompleteCaptcha(false), setSelectedPhoneNumber(undefined);
     }
