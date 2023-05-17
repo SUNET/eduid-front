@@ -37,7 +37,6 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
           {props.title}
           <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
         </ModalHeader>
-        <img src={props.captchaImage} />
         <FinalForm
           onSubmit={props.handleConfirm}
           initialValues={{
@@ -48,6 +47,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
             <React.Fragment>
               <ModalBody>
                 <form id={props.id + "-form"} role="form">
+                  <img src={props.captchaImage} />
                   <div id="confirmation-code-area">
                     <FinalField<string>
                       component={CustomInput}
