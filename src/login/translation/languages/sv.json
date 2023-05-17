@@ -1982,6 +1982,15 @@
   "pfilled.completion": {
     "string": "Profilstatus"
   },
+  "phone.captcha-failed": {
+    "string": "Captcha inte slutförd. Vänligen försök igen"
+  },
+  "phone.captcha-not-completed": {
+    "string": "Captcha misslyckades. Vänligen försök igen"
+  },
+  "phone.captcha-not-requested": {
+    "string": "Captcha kunde inte initieras. Vänligen försök igen."
+  },
   "phone.e164_format": {
     "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror."
   },
@@ -2105,7 +2114,7 @@
   },
   "qGDW86": {
     "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har skapats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Upprepa nytt lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
+    "string": "Ett starkt lösenord har generat åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
