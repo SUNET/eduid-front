@@ -259,7 +259,12 @@ function Phones() {
       <ConfirmModal
         id="phone-captcha-modal"
         captchaImage={img}
-        title={<FormattedMessage defaultMessage={`Confirm that you are a human.`} description="captcha modal title" />}
+        title={
+          <FormattedMessage
+            defaultMessage={`To receive code, complete below captcha.`}
+            description="captcha modal title"
+          />
+        }
         placeholder={""}
         showModal={Boolean(completeCaptcha)}
         closeModal={handleStopCaptcha}
