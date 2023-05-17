@@ -1982,6 +1982,15 @@
   "pfilled.completion": {
     "string": "Completion"
   },
+  "phone.captcha-failed": {
+    "string": "Captcha failed. Please try again."
+  },
+  "phone.captcha-not-completed": {
+    "string": "Captcha not completed. Please try again."
+  },
+  "phone.captcha-not-requested": {
+    "string": "Captcha failed to initiate. Please try again."
+  },
   "phone.e164_format": {
     "string": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 10-20 digits."
   },
