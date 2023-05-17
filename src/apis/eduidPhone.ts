@@ -16,7 +16,7 @@ export interface PhoneInfo {
 
 export interface PhonesResponse {
   phones: PhoneInfo[];
-  captcha?: { number?: any; captcha_img?: string; captcha_audio?: string };
+  captcha?: { captcha_img?: string; captcha_audio?: string };
 }
 
 /*********************************************************************************************************************/

@@ -148,7 +148,6 @@ export function ProcessCaptcha(): null {
   const dispatch = useSignupAppDispatch();
 
   async function sendCaptcha(captcha: CaptchaRequest) {
-    console.log("2captcha", captcha);
     const res = await dispatch(sendCaptchaResponse(captcha));
 
     if (sendCaptchaResponse.fulfilled.match(res)) {
