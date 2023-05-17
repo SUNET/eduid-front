@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   getCaptchaRequest,
   postNewPhone,
@@ -9,7 +12,7 @@ import {
 } from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -35,7 +38,14 @@ function Phones() {
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
+  const error = useDashboardAppSelector((state) => state.notifications.error);
   const [img, setImg] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (error?.message === "phone.captcha-already-completed") {
+      dispatch(clearNotifications());
+    }
+  }, [error]);
 
   function getNewCaptcha() {
     getCaptcha().then((img) => {
@@ -49,6 +59,7 @@ function Phones() {
       return res.payload.captcha_img;
     }
   }
+
   function handlePhoneForm() {
     setShowPhoneForm(true);
   }
@@ -71,32 +82,17 @@ function Phones() {
     if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
   }
 
-  async function startCaptcha(event: React.MouseEvent<HTMLElement>) {
+  async function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
     const phoneNumber = dataNode?.getAttribute("data-object");
     if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
-    console.log("phones.captcha", phones.captcha);
 
-    // if (phones.captcha && Object.keys(phones?.captcha).length === 0) {
-    console.log("no captcha");
     getCaptcha().then((img) => {
       if (img) {
         setImg(img);
         setCompleteCaptcha(true);
       }
     });
-    // }
-  }
-
-  function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
-    console.log("hoihi");
-    console.log("event", event);
-    dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    console.log("dataNode", dataNode);
-    const phoneNumber = dataNode?.getAttribute("data-object");
-    console.log("phoneNumber", phoneNumber);
-    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
   }
 
   function handleStopConfirmation() {
@@ -199,8 +195,7 @@ function Phones() {
       <div id="phone-display">
         <DataTable
           data={phones.phones}
-          handleStartConfirmation={startCaptcha}
-          // handleStartConfirmation={handleStartConfirmation}
+          handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
@@ -257,6 +252,7 @@ function Phones() {
           </EduIDButton>
         )}
       </div>
+
       {/* Captcha modal */}
       <ConfirmModal
         id="phone-captcha-modal"
@@ -270,10 +266,13 @@ function Phones() {
           <FormattedMessage description="phones modal form label" defaultMessage={`Enter the code from the image`} />
         }
         resendMarkup={
-          <div className="resend-code-container">
-            <a href="#" onClick={getNewCaptcha}>
-              <FormattedMessage description="Generate a new image" defaultMessage={`Generate a new image`} />
-            </a>
+          <div className="icon-text">
+            <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+              <FontAwesomeIcon icon={faRedo as IconProp} />
+            </button>
+            <label htmlFor="name-check" className="hint">
+              <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+            </label>
           </div>
         }
       />
