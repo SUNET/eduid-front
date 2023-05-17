@@ -167,9 +167,9 @@ function Phones() {
   function validatePhonesInForm(value: string): string | undefined {
     const number = toE164Number(value, default_country_code);
 
-    if (!number.startsWith("+")) {
+    if (!number.startsWith("+46")) {
       // value was not valid, and 'number' is a validation error string
-      return number;
+      return "phones.invalid_phone";
     }
 
     const is_duplicate = phones.phones?.find((x) => toE164Number(x.number, default_country_code) == number);
@@ -220,7 +220,7 @@ function Phones() {
                     placeholder={phonePlaceholder}
                     helpBlock={
                       <FormattedMessage
-                        defaultMessage="Phone number starting with 0 or +"
+                        defaultMessage="Phone number starting with 0 or +46"
                         description="Phones input help text"
                       />
                     }
@@ -329,11 +329,6 @@ function toE164Number(number: string | undefined, default_country_code: string):
   if (patternWithCountryCode.test(number)) {
     // Already a valid E.164 number.
     return number;
-  }
-
-  if (number.startsWith("+")) {
-    // This must be either the string "+" or a string starting with "+0". No country code begins with "0".
-    return "phones.invalid_phone";
   }
 
   const oneLeadingZero = /^0[1-9]\d{6,20}$/;
