@@ -47,10 +47,9 @@ function Phones() {
     }
   }, [error]);
 
-  function getNewCaptcha() {
-    getCaptcha().then((img) => {
-      setImg(img);
-    });
+  async function getNewCaptcha() {
+    const promise = await getCaptcha().then((img) => setImg(img));
+    return promise;
   }
 
   async function getCaptcha() {
@@ -82,17 +81,20 @@ function Phones() {
     if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
   }
 
-  async function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    const phoneNumber = dataNode?.getAttribute("data-object");
-    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
-
-    getCaptcha().then((img) => {
-      if (img) {
-        setImg(img);
-        setCompleteCaptcha(true);
-      }
-    });
+  function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
+    (async () => {
+      const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+      const phoneNumber = dataNode?.getAttribute("data-object");
+      if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+      try {
+        await getCaptcha().then((img) => {
+          if (img) {
+            setImg(img);
+            setCompleteCaptcha(true);
+          }
+        });
+      } catch (err) {}
+    })();
   }
 
   function handleStopConfirmation() {
@@ -115,7 +117,8 @@ function Phones() {
     if (sendCaptchaResponse.fulfilled.match(res)) {
       setCompleteCaptcha(false);
     } else {
-      setCompleteCaptcha(false), setSelectedPhoneNumber(undefined);
+      setCompleteCaptcha(false);
+      setSelectedPhoneNumber(undefined);
     }
   }
 
