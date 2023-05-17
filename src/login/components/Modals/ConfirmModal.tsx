@@ -13,10 +13,12 @@ interface ConfirmModalProps {
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
   handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
   modalFormLabel: React.ReactNode;
-  validationError: string;
-  validationPattern: RegExp;
+  validationError?: string;
+  validationPattern?: RegExp;
   helpBlock?: React.ReactNode;
   resendMarkup?: React.ReactNode;
+  captchaImage?: string;
+  submitButtonText?: React.ReactNode;
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
@@ -24,7 +26,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
     if (!value || !value.trim()) {
       return "required";
     }
-    if (!props.validationPattern.test(value.trim())) {
+    if (!props.validationPattern?.test(value.trim())) {
       return props.validationError;
     }
   }
@@ -46,6 +48,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
             <React.Fragment>
               <ModalBody>
                 <form id={props.id + "-form"} role="form">
+                  <img src={props.captchaImage} />
                   <div id="confirmation-code-area">
                     <FinalField<string>
                       component={CustomInput}
@@ -64,7 +67,11 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
               </ModalBody>
               <ModalFooter>
                 <EduIDButton buttonstyle="primary" disabled={submitting || invalid} onClick={props.handleConfirm}>
-                  <FormattedMessage defaultMessage="ok" description="ok button" />
+                  {props.submitButtonText ? (
+                    props.submitButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="ok" description="ok button" />
+                  )}
                 </EduIDButton>
               </ModalFooter>
             </React.Fragment>

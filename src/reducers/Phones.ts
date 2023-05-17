@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
 import {
+  getCaptchaRequest,
   PhoneInfo,
   PhonesResponse,
   postNewPhone,
@@ -9,10 +10,12 @@ import {
   requestResendPhoneCode,
   requestVerifyPhone,
 } from "apis/eduidPhone";
+import { GetCaptchaResponse } from "apis/eduidSignup";
 
 // export for use in tests
 export const initialState: PhonesResponse = {
   phones: [],
+  captcha: {},
 };
 
 export function phonesStateFromPhoneList(phones: PhoneInfo[]): PhonesResponse {
@@ -42,6 +45,9 @@ const phonesSlice = createSlice({
       })
       .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
+      })
+      .addCase(getCaptchaRequest.fulfilled, (state, action: PayloadAction<GetCaptchaResponse>) => {
+        state.captcha = action.payload;
       });
   },
 });

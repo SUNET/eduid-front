@@ -218,7 +218,7 @@ button.btn-icon {
   align-items: baseline;
 
   button.icon-only {
-    &:hover:active {
+    &:hover {
       transform: rotate(180deg);
       padding: initial;
       cursor: pointer;

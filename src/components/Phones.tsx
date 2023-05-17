@@ -1,13 +1,18 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  getCaptchaRequest,
   postNewPhone,
   requestMakePrimaryPhone,
   requestRemovePhone,
   requestResendPhoneCode,
   requestVerifyPhone,
+  sendCaptchaResponse,
 } from "apis/eduidPhone";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
@@ -28,10 +33,31 @@ function Phones() {
    * next to a number and that number gets set in this state variable. Whenever this state
    * variable has a value, the ConfirmModal is shown to allow the user to enter the <code className="
    */
+  const [completeCaptcha, setCompleteCaptcha] = useState(false);
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
+  const error = useDashboardAppSelector((state) => state.notifications.error);
+  const [img, setImg] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (error?.message === "phone.captcha-already-completed") {
+      dispatch(clearNotifications());
+    }
+  }, [error]);
+
+  async function getNewCaptcha() {
+    const promise = await getCaptcha().then((img) => setImg(img));
+    return promise;
+  }
+
+  async function getCaptcha() {
+    const res = await dispatch(getCaptchaRequest());
+    if (getCaptchaRequest.fulfilled.match(res)) {
+      return res.payload.captcha_img;
+    }
+  }
 
   function handlePhoneForm() {
     setShowPhoneForm(true);
@@ -56,14 +82,44 @@ function Phones() {
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
-    dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    const phoneNumber = dataNode?.getAttribute("data-object");
-    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+    (async () => {
+      const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+      const phoneNumber = dataNode?.getAttribute("data-object");
+      if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+      try {
+        await getCaptcha().then((img) => {
+          if (img) {
+            setImg(img);
+            setCompleteCaptcha(true);
+          }
+        });
+      } catch (err) {}
+    })();
   }
 
   function handleStopConfirmation() {
     setSelectedPhoneNumber(undefined);
+  }
+
+  function handleStopCaptcha() {
+    setCompleteCaptcha(false);
+    setSelectedPhoneNumber(undefined);
+  }
+
+  async function sendCaptcha(event: React.MouseEvent<HTMLElement>) {
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
+
+    const captcha = document.getElementById("confirmation-code-area");
+    const code = captcha?.querySelector("input");
+    const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
+    if (sendCaptchaResponse.fulfilled.match(res)) {
+      setCompleteCaptcha(false);
+    } else {
+      setCompleteCaptcha(false);
+      setSelectedPhoneNumber(undefined);
+    }
   }
 
   function handleConfirm() {
@@ -198,6 +254,37 @@ function Phones() {
           </EduIDButton>
         )}
       </div>
+
+      {/* Captcha modal */}
+      <ConfirmModal
+        id="phone-captcha-modal"
+        captchaImage={img}
+        title={
+          <FormattedMessage
+            defaultMessage={`To receive code, complete below captcha.`}
+            description="captcha modal title"
+          />
+        }
+        placeholder={""}
+        showModal={Boolean(completeCaptcha)}
+        closeModal={handleStopCaptcha}
+        handleConfirm={sendCaptcha}
+        modalFormLabel={
+          <FormattedMessage description="phones modal form label" defaultMessage={`Enter the code from the image`} />
+        }
+        resendMarkup={
+          <div className="icon-text">
+            <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+              <FontAwesomeIcon icon={faRedo as IconProp} />
+            </button>
+            <label htmlFor="name-check" className="hint">
+              <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+            </label>
+          </div>
+        }
+        submitButtonText={<FormattedMessage defaultMessage="Continue" description="Captcha button" />}
+      />
+
       <ConfirmModal
         id="phone-confirm-modal"
         title={
@@ -208,7 +295,7 @@ function Phones() {
           />
         }
         placeholder={modalPlaceholder}
-        showModal={Boolean(selectedPhoneNumber)}
+        showModal={Boolean(selectedPhoneNumber) && !completeCaptcha}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
