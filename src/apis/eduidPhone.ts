@@ -64,6 +64,25 @@ export const requestVerifyPhone = createAsyncThunk<
 /*********************************************************************************************************************/
 /**
  * @public
+ * @function requestSendPhoneCode
+ * @desc Redux async thunk to request a code for verifying possession of a phone number.
+ */
+export const requestSendPhoneCode = createAsyncThunk<
+  PhonesResponse, // return type
+  { number: string }, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("phones/requestSendPhoneCode", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    number: args.number,
+  };
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "send-code", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
  * @function requestResendPhoneCode
  * @desc Redux async thunk to request new code for verification by phone.
  */
@@ -93,8 +112,6 @@ export const postNewPhone = createAsyncThunk<
 >("phones/postNewPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
-    verified: false,
-    primary: false,
   };
   return makePhoneRequest<PhonesResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
