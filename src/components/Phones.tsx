@@ -7,6 +7,7 @@ import {
   requestMakePrimaryPhone,
   requestRemovePhone,
   requestResendPhoneCode,
+  requestSendPhoneCode,
   requestVerifyPhone,
   sendCaptchaResponse,
 } from "apis/eduidPhone";
@@ -116,6 +117,9 @@ function Phones() {
     const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
     if (sendCaptchaResponse.fulfilled.match(res)) {
       setCompleteCaptcha(false);
+      if (selectedPhoneNumber) {
+        dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
+      }
     } else {
       setCompleteCaptcha(false);
       setSelectedPhoneNumber(undefined);
