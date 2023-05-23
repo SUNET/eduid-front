@@ -38,7 +38,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
         [props.id]: "",
       }}
       {...props}
-      render={({ submitting, invalid, handleSubmit }) => (
+      render={({ submitting, invalid, handleSubmit, form }) => (
         <React.Fragment>
           <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
             <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
@@ -46,7 +46,15 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                 {props.title}
                 <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
               </ModalHeader>
-              <form id={props.id + "-form"} role="form" onSubmit={handleSubmit}>
+              <form
+                id={props.id + "-form"}
+                role="form"
+                onSubmit={(event) =>
+                  handleSubmit(event)?.then(() => {
+                    form.reset();
+                  })
+                }
+              >
                 <ModalBody>
                   <img src={props.captchaImage} />
                   <div id="confirmation-code-area">
