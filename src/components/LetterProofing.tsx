@@ -1,7 +1,7 @@
 import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
@@ -41,14 +41,10 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     }
   }
 
-  async function sendConfirmationCode(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    const codeValue = document.getElementById("confirmation-code-area");
-    const data = {
-      code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
-    };
-    if (data.code) {
-      const response = await dispatch(confirmLetterCode({ code: data.code }));
+  async function sendConfirmationCode(values: { [key: string]: string }) {
+    const confirmationCode = values["letter-confirm-modal"];
+    if (confirmationCode) {
+      const response = await dispatch(confirmLetterCode({ code: confirmationCode.trim() }));
       if (confirmLetterCode.fulfilled.match(response)) {
         dispatch(requestAllPersonalData());
       }

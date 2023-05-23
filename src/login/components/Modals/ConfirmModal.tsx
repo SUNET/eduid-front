@@ -11,7 +11,7 @@ interface ConfirmModalProps {
   placeholder: string;
   showModal: boolean;
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
+  handleConfirm: any;
   modalFormLabel: React.ReactNode;
   validationError?: string;
   validationPattern?: RegExp;
@@ -32,22 +32,22 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
   }
 
   return (
-    <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
-      <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
-        <ModalHeader>
-          {props.title}
-          <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
-        </ModalHeader>
-        <FinalForm
-          onSubmit={props.handleConfirm}
-          initialValues={{
-            [props.id]: "",
-          }}
-          {...props}
-          render={({ submitting, invalid }) => (
-            <React.Fragment>
-              <ModalBody>
-                <form id={props.id + "-form"} role="form">
+    <FinalForm
+      onSubmit={props.handleConfirm}
+      initialValues={{
+        [props.id]: "",
+      }}
+      {...props}
+      render={({ submitting, invalid, handleSubmit }) => (
+        <React.Fragment>
+          <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
+            <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
+              <ModalHeader>
+                {props.title}
+                <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
+              </ModalHeader>
+              <form id={props.id + "-form"} role="form" onSubmit={handleSubmit}>
+                <ModalBody>
                   <img src={props.captchaImage} />
                   <div id="confirmation-code-area">
                     <FinalField<string>
@@ -62,23 +62,28 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                       validate={validate}
                     />
                   </div>
-                </form>
-                {props.resendMarkup && props.resendMarkup}
-              </ModalBody>
-              <ModalFooter>
-                <EduIDButton buttonstyle="primary" disabled={submitting || invalid} onClick={props.handleConfirm}>
-                  {props.submitButtonText ? (
-                    props.submitButtonText
-                  ) : (
-                    <FormattedMessage defaultMessage="ok" description="ok button" />
-                  )}
-                </EduIDButton>
-              </ModalFooter>
-            </React.Fragment>
-          )}
-        />
-      </Modal>
-    </div>
+                  {props.resendMarkup && props.resendMarkup}
+                </ModalBody>
+                <ModalFooter>
+                  <EduIDButton
+                    type="submit"
+                    buttonstyle="primary"
+                    disabled={submitting || invalid}
+                    onClick={props.handleConfirm}
+                  >
+                    {props.submitButtonText ? (
+                      props.submitButtonText
+                    ) : (
+                      <FormattedMessage defaultMessage="ok" description="ok button" />
+                    )}
+                  </EduIDButton>
+                </ModalFooter>
+              </form>
+            </Modal>
+          </div>
+        </React.Fragment>
+      )}
+    />
   );
 }
 
