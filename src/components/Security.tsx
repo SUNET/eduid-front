@@ -90,9 +90,9 @@ export function Security(): JSX.Element | null {
     setShowModal(false);
   }
 
-  async function handleStartWebauthnRegistration() {
-    const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
-    const descriptionValue = description?.value.trim();
+  async function handleStartWebauthnRegistration(values: { [key: string]: string }) {
+    const description = values["describe-webauthn-token-modal"];
+    const descriptionValue = description?.trim();
     setShowModal(false);
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.fulfilled.match(resp)) {

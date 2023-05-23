@@ -11,7 +11,7 @@ interface ConfirmModalProps {
   placeholder: string;
   showModal: boolean;
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  handleConfirm: any;
+  handleConfirm: (values: { [key: string]: string }) => void;
   modalFormLabel: React.ReactNode;
   validationError?: string;
   validationPattern?: RegExp;
@@ -77,7 +77,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                     type="submit"
                     buttonstyle="primary"
                     disabled={submitting || invalid}
-                    onClick={props.handleConfirm}
+                    onClick={() => props.handleConfirm}
                   >
                     {props.submitButtonText ? (
                       props.submitButtonText
