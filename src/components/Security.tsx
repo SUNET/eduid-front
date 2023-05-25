@@ -90,17 +90,21 @@ export function Security(): JSX.Element | null {
     setShowModal(false);
   }
 
-  async function handleStartWebauthnRegistration(values: { [key: string]: string }) {
-    const description = values["describe-webauthn-token-modal"];
-    const descriptionValue = description?.trim();
-    setShowModal(false);
-    const resp = await dispatch(beginRegisterWebauthn());
-    if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      const response = await dispatch(createCredential(resp.payload));
-      if (createCredential.fulfilled.match(response)) {
-        await dispatch(registerWebauthn({ descriptionValue }));
-      }
-    }
+  function handleStartWebauthnRegistration(values: { [key: string]: string }) {
+    (async () => {
+      try {
+        const description = values["describe-webauthn-token-modal"];
+        const descriptionValue = description?.trim();
+        setShowModal(false);
+        const resp = await dispatch(beginRegisterWebauthn());
+        if (beginRegisterWebauthn.fulfilled.match(resp)) {
+          const response = await dispatch(createCredential(resp.payload));
+          if (createCredential.fulfilled.match(response)) {
+            await dispatch(registerWebauthn({ descriptionValue }));
+          }
+        }
+      } catch (err) {}
+    })();
   }
 
   if (!isPlatformAuthLoaded) return null;

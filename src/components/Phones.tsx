@@ -107,18 +107,22 @@ function Phones() {
     setSelectedPhoneNumber(undefined);
   }
 
-  async function sendCaptcha(values: { [key: string]: string }) {
-    const captchaValue = values["phone-captcha-modal"];
-    const res = await dispatch(sendCaptchaResponse({ internal_response: captchaValue }));
-    if (sendCaptchaResponse.fulfilled.match(res)) {
-      setCompleteCaptcha(false);
-      if (selectedPhoneNumber) {
-        dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
-      }
-    } else {
-      setCompleteCaptcha(false);
-      setSelectedPhoneNumber(undefined);
-    }
+  function sendCaptcha(values: { [key: string]: string }) {
+    (async () => {
+      try {
+        const captchaValue = values["phone-captcha-modal"];
+        const res = await dispatch(sendCaptchaResponse({ internal_response: captchaValue }));
+        if (sendCaptchaResponse.fulfilled.match(res)) {
+          setCompleteCaptcha(false);
+          if (selectedPhoneNumber) {
+            dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
+          }
+        } else {
+          setCompleteCaptcha(false);
+          setSelectedPhoneNumber(undefined);
+        }
+      } catch (err) {}
+    })();
   }
 
   function handleConfirm() {

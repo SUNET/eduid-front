@@ -41,15 +41,19 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     }
   }
 
-  async function sendConfirmationCode(values: { [key: string]: string }) {
-    const confirmationCode = values["letter-confirm-modal"];
-    if (confirmationCode) {
-      const response = await dispatch(confirmLetterCode({ code: confirmationCode.trim() }));
-      if (confirmLetterCode.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
-      }
-    }
-    setShowConfirmationModal(false);
+  function sendConfirmationCode(values: { [key: string]: string }) {
+    (async () => {
+      try {
+        const confirmationCode = values["letter-confirm-modal"];
+        if (confirmationCode) {
+          const response = await dispatch(confirmLetterCode({ code: confirmationCode.trim() }));
+          if (confirmLetterCode.fulfilled.match(response)) {
+            dispatch(requestAllPersonalData());
+          }
+        }
+        setShowConfirmationModal(false);
+      } catch (err) {}
+    })();
   }
 
   async function confirmLetterProofing() {
