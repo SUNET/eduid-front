@@ -4,15 +4,18 @@ import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
-test("renders Phones component as expected", () => {
-  render(<DashboardMain />);
+const testPhoneNumber = "+46701233333";
+
+async function linkToSettings() {
   // Navigate to Settings
   const nav = screen.getByRole("link", { name: "Settings" });
   act(() => {
     nav.click();
   });
-
   expect(screen.getByRole("heading", { name: /Mobile phone numbers/i })).toBeInTheDocument();
+}
+
+async function addPhoneNumber(phone: string) {
   const addMorePhoneButton = screen.getAllByText("+ add more", { selector: "button" })[1];
   // Click the 'add more' button
   act(() => {
@@ -21,14 +24,22 @@ test("renders Phones component as expected", () => {
   expect(addMorePhoneButton).not.toBeInTheDocument();
 
   const input = screen.getByLabelText("Phone number");
-  fireEvent.change(input, { target: { value: "+46701233333" } });
-  expect(input).toHaveValue("+46701233333");
+  fireEvent.change(input, { target: { value: phone } });
+  expect(input).toHaveValue(phone);
+}
 
+test("renders Phones component as expected", async () => {
+  render(<DashboardMain />);
+  await linkToSettings();
+  await addPhoneNumber(testPhoneNumber);
   const addPhoneButton = screen.getByRole("button", { name: "Add" });
   expect(addPhoneButton).toBeEnabled();
+  act(() => {
+    addPhoneButton.click();
+  });
 });
 
-test("enable to add number already in the list", async () => {
+test("disable to add number already in the list", async () => {
   render(<DashboardMain />, {
     state: {
       phones: {
@@ -36,26 +47,27 @@ test("enable to add number already in the list", async () => {
       },
     },
   });
-  // Navigate to Settings
-  const nav = screen.getByRole("link", { name: "Settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToSettings();
+  await addPhoneNumber(testPhoneNumber);
 
-  expect(screen.getByRole("heading", { name: /Mobile phone numbers/i })).toBeInTheDocument();
-  const addMorePhoneButton = screen.getAllByText("+ add more", { selector: "button" })[1];
-  // Click the 'add more' button
-  act(() => {
-    addMorePhoneButton.click();
-  });
-  expect(addMorePhoneButton).not.toBeInTheDocument();
-
-  const input = screen.getByLabelText("Phone number");
-  fireEvent.change(input, { target: { value: "+46701233333" } });
-  expect(input).toHaveValue("+46701233333");
   expect(await screen.findByRole("alert")).toHaveTextContent("phones.duplicated");
   const addPhoneButton = screen.getByRole("button", { name: "Add" });
   expect(addPhoneButton).toBeDisabled();
+});
+
+test("enable to add number", async () => {
+  render(<DashboardMain />, {
+    state: {
+      phones: {
+        phones: [{ number: "+46701233333", primary: false, verified: false }],
+      },
+    },
+  });
+  await linkToSettings();
+  await addPhoneNumber("+46701233334");
+
+  const addPhoneButton = screen.getByRole("button", { name: "Add" });
+  expect(addPhoneButton).toBeEnabled();
 });
 
 test("renders confirmation code modal", async () => {
@@ -81,17 +93,13 @@ test("renders confirmation code modal", async () => {
     state: {
       phones: {
         captcha: {
-          captcha_img: "data:image/png;base64",
+          captcha_img: "data:image/png;base64,iVBORw0KGgoAAAANSUhE",
         },
         phones: [{ number: "+46701233333", primary: false, verified: false }],
       },
     },
   });
-  // Navigate to Settings
-  const nav = screen.getByRole("link", { name: "Settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToSettings();
 
   const confirmButton = screen.getByText("confirm", { selector: "button" });
   expect(confirmButton).toBeEnabled();
@@ -137,11 +145,7 @@ test("renders primary as expected", async () => {
     },
   });
 
-  // Navigate to Settings
-  const nav = screen.getByRole("link", { name: "Settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToSettings();
 
   const row = screen.getByRole("row", { name: "+46701233333 PRIMARY" });
   expect(row).toBeInTheDocument();
