@@ -1,4 +1,6 @@
 import loginSlice from "login/redux/slices/loginSlice";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
+import { appLoadingSlice } from "reducers/AppLoading";
 import { signupSlice } from "reducers/Signup";
 import { combineReducers } from "redux";
 import { intlReducer } from "./reducers/Internationalisation";
@@ -11,6 +13,8 @@ const eduIDApp = combineReducers({
   notifications: notificationsSlice.reducer,
   signup: signupSlice.reducer,
   login: loginSlice.reducer,
+  app: appLoadingSlice.reducer,
+  resetPassword: resetPasswordSlice.reducer,
 });
 
 export default eduIDApp;

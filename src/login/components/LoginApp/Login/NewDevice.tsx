@@ -1,5 +1,5 @@
 import { fetchNewDevice } from "apis/eduidLogin";
-import { LoginAppDispatch } from "login-init-app";
+import { IndexAppDispatch as LoginAppDispatch } from "index-init-app";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";

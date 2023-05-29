@@ -1,4 +1,3 @@
-import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import { useIndexAppSelector } from "index-hooks";
 import Login from "login/components/LoginApp/Login/Login";
@@ -9,11 +8,17 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "../../src/login/styles/index.scss";
 import Footer from "../login/components/Footer/Footer";
+import { Header } from "./Header";
 import { Index } from "./Index";
 import { LoginExternalReturnHandler } from "./LoginExternalReturnHandler";
 import { SignupApp } from "./Signup/SignupApp";
 import { SIGNUP_BASE_PATH } from "./Signup/SignupMain";
 import Splash from "./Splash";
+
+export const startPath = "/profile/";
+export const identityPath = "/profile/verify-identity/";
+export const settingsPath = "/profile/settings/personaldata";
+export const advancedSettingsPath = "/profile/settings/advanced-settings";
 
 export function IndexMain(): JSX.Element {
   const isLoaded = useIndexAppSelector((state) => state.config.is_configured);

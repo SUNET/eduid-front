@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { MultiFactorAuth } from "./MultiFactorAuth";
-import { initKnownDevice, NewDevice, RememberMeCheckbox } from "./NewDevice";
+import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
@@ -18,6 +18,7 @@ interface LoginParams {
 }
 
 function Login(): JSX.Element {
+  console.log("hihi");
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();

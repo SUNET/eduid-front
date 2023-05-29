@@ -1,8 +1,7 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
-import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
-import { LoginAppDispatch } from "login-init-app";
+import { IndexAppDispatch } from "index-init-app";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "sagas/ts_common";
 
 export interface StateWithCommonConfig {
@@ -11,7 +10,7 @@ export interface StateWithCommonConfig {
 
 export interface RequestThunkAPI {
   getState: () => StateWithCommonConfig;
-  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+  dispatch: DashboardAppDispatch | IndexAppDispatch;
   signal: AbortSignal;
 }
 

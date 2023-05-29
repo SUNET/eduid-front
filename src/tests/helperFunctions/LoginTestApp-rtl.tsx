@@ -1,12 +1,13 @@
-import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
+import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import type { InitialEntry } from "history";
-import { getTestLoginStore, LoginRootState } from "login-init-app";
+import { IndexRootState as LoginRootState, getTestStore } from "index-init-app";
 import { initialState as loginInitialState } from "login/redux/slices/loginSlice";
 import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as signupInitialState } from "reducers/Signup";
+import { initialState as configInitialState } from "reducers/SignupConfig";
 
 export const loginTestState: LoginRootState = {
   config: {
@@ -27,6 +28,7 @@ export const loginTestState: LoginRootState = {
   notifications: undefined as any,
   intl: { locale: "en", messages: {} },
   resetPassword: resetPasswordInitialState,
+  signup: signupInitialState,
 };
 
 interface renderArgs {
@@ -36,7 +38,7 @@ interface renderArgs {
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const store = getTestLoginStore(args.state || loginTestState);
+  const store = getTestStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ReduxIntlProvider store={store}>

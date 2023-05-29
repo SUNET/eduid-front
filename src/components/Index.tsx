@@ -13,6 +13,7 @@ export function Index() {
 
   async function getLoginConfig() {
     const config = await dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
+
     if (fetchJsConfig.fulfilled.match(config)) {
       dispatch(appLoadingSlice.actions.appLoaded());
       if (dashboard_url) {

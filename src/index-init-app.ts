@@ -1,4 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import loginSlice from "login/redux/slices/loginSlice";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
+import { appLoadingSlice } from "reducers/AppLoading";
+import intlSlice from "reducers/Internationalisation";
+import { notificationsSlice } from "reducers/Notifications";
+import { signupSlice } from "reducers/Signup";
+import configSlice from "reducers/SignupConfig";
 import logger from "redux-logger";
 import eduIDApp from "./index-store";
 import notifyAndDispatch from "./notify-middleware";
@@ -13,9 +20,17 @@ export const indexStore = configureStore({
 });
 
 // The same thing again, for use in tests
-export function getTestSignupStore(preloadedState: Partial<IndexRootState>) {
+export function getTestStore(preloadedState: Partial<IndexRootState>) {
   const testStore = configureStore({
-    reducer: eduIDApp,
+    reducer: {
+      config: configSlice.reducer,
+      app: appLoadingSlice.reducer,
+      login: loginSlice.reducer,
+      notifications: notificationsSlice.reducer,
+      intl: intlSlice.reducer,
+      resetPassword: resetPasswordSlice.reducer,
+      signup: signupSlice.reducer,
+    },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
     devTools: process.env.NODE_ENV !== "production",
     preloadedState,

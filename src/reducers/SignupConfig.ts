@@ -4,10 +4,16 @@ import { LoginErrorInfoResponse, fetchErrorInfo } from "apis/eduidLogin";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 
 export interface SignupConfig extends EduidJSAppCommonConfig {
+  //Signup
   recaptcha_public_key?: string;
   reset_password_link?: string;
   preferred_captcha: "internal" | "recaptcha";
   error_info?: LoginErrorInfoResponse;
+  //login
+  next_url?: string;
+  mfa_auth_idp?: string;
+
+  //common
   error_info_url?: string;
 }
 

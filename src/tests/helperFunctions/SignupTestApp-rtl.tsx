@@ -2,7 +2,8 @@ import { RenderOptions, RenderResult, render as rtlRender } from "@testing-libra
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
-import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
+import { IndexRootState as SignupRootState, getTestStore } from "index-init-app";
+import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as signupInitialState } from "reducers/Signup";
@@ -21,7 +22,9 @@ export const signupTestState: SignupRootState = {
   },
   signup: signupInitialState,
   intl: { locale: "en", messages: {} },
+  app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: {},
+  resetPassword: resetPasswordInitialState,
   login: loginInitialState,
 };
 
@@ -41,7 +44,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       debug: true,
     },
   };
-  const store = getTestSignupStore(args.state || defaultState);
+  const store = getTestStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <SignupGlobalStateProvider>
