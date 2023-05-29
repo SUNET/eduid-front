@@ -1,9 +1,29 @@
+import { fetchJsConfig } from "apis/eduidJsConfig";
+import { LOGIN_CONFIG_URL } from "globals";
+import { useIndexAppDispatch, useIndexAppSelector as useLoginAppSelector } from "index-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import EduIDButton from "./Common/EduIDButton";
+=======
+import { appLoadingSlice } from "reducers/AppLoading";
+import EduIDButton from "./EduIDButton";
+>>>>>>> e8d0f065b (Add getLoginConfig)
 
 export function Index() {
   const navigate = useNavigate();
+  const dispatch = useIndexAppDispatch();
+  const dashboard_url = useLoginAppSelector((state) => state.config.dashboard_url);
+
+  async function getLoginConfig() {
+    const config = await dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
+    if (fetchJsConfig.fulfilled.match(config)) {
+      dispatch(appLoadingSlice.actions.appLoaded());
+      if (dashboard_url) {
+        document.location.href = dashboard_url;
+      }
+    }
+  }
   return (
     <>
       <h1 className="tagline">
@@ -44,7 +64,7 @@ export function Index() {
         <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
           <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
         </EduIDButton>
-        <EduIDButton onClick={() => navigate("/login")} buttonstyle="secondary" id="login-button">
+        <EduIDButton onClick={getLoginConfig} buttonstyle="secondary" id="login-button">
           <FormattedMessage defaultMessage="log in" description="login button" />
         </EduIDButton>
       </div>

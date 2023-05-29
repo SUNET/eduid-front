@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import loginSlice from "login/redux/slices/loginSlice";
+import { signupSlice } from "reducers/Signup";
+>>>>>>> e8d0f065b (Add getLoginConfig)
 import { combineReducers } from "redux";
 import { intlReducer } from "slices/Internationalisation";
 import { notificationsSlice } from "slices/Notifications";
@@ -9,6 +14,7 @@ const eduIDApp = combineReducers({
   intl: intlReducer,
   notifications: notificationsSlice.reducer,
   signup: signupSlice.reducer,
+  login: loginSlice.reducer,
 });
 
 export default eduIDApp;
