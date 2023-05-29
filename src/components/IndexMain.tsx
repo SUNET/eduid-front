@@ -1,12 +1,16 @@
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
 import { useIndexAppSelector } from "index-hooks";
+import Login from "login/components/LoginApp/Login/Login";
+import UseOtherDevice2 from "login/components/LoginApp/Login/UseOtherDevice2";
+import ResetPassword from "login/components/LoginApp/ResetPassword/ResetPassword";
 import { Errors } from "login/components/SwamidErrors/Errors";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "../../src/login/styles/index.scss";
 import Footer from "../login/components/Footer/Footer";
 import { Index } from "./Index";
+import { LoginExternalReturnHandler } from "./LoginExternalReturnHandler";
 import { SignupApp } from "./Signup/SignupApp";
 import { SIGNUP_BASE_PATH } from "./Signup/SignupMain";
 import Splash from "./Splash";
@@ -25,7 +29,11 @@ export function IndexMain(): JSX.Element {
               {/* Signup */}
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
               {/* Login */}
-
+              <Route path="/login/ext-return/:app_name/:authn_id" element={<LoginExternalReturnHandler />} />
+              <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
+              <Route path="/login/password/:ref" element={<Login />} />
+              <Route path="/login/:ref" element={<Login />} />
+              <Route path="/reset-password/*" element={<ResetPassword />} />
               {/* Dashboard */}
               {/* Errors*/}
               <Route path="/errors" element={<Errors />} />

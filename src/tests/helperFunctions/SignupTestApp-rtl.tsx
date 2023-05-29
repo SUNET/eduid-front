@@ -7,6 +7,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as signupInitialState } from "reducers/Signup";
 import { initialState as configInitialState } from "reducers/SignupConfig";
+import { initialState as loginInitialState } from "../../login/redux/slices/loginSlice";
 
 export const signupTestState: SignupRootState = {
   config: {
@@ -21,6 +22,7 @@ export const signupTestState: SignupRootState = {
   signup: signupInitialState,
   intl: { locale: "en", messages: {} },
   notifications: {},
+  login: loginInitialState,
 };
 
 interface renderArgs {
