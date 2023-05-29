@@ -8,13 +8,20 @@ interface NotificationModalProps {
   mainText: React.ReactNode;
   showModal: boolean;
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  acceptModal: React.MouseEventHandler<HTMLButtonElement>;
+  acceptModal: (event?: React.MouseEvent<HTMLElement>) => void;
   acceptButtonText: React.ReactNode;
 }
 
 function NotificationModal(props: NotificationModalProps) {
+  function handlePress(event: React.KeyboardEvent<HTMLDivElement>) {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      props.acceptModal();
+    }
+  }
+
   return (
-    <div id={props.id} tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
+    <div id={props.id} tabIndex={-1} onKeyDown={handlePress} role="dialog" aria-hidden="true" data-backdrop="true">
       <Modal isOpen={props.showModal} className={props.id}>
         <ModalHeader>
           {props.title}

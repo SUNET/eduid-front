@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import NotificationModal from "../login/components/Modals/NotificationModal";
-import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector } from "dashboard-hooks";
+import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
+import NotificationModal from "../login/components/Modals/NotificationModal";
 import EduIDButton from "./EduIDButton";
 
 function Eidas(): JSX.Element {
@@ -100,7 +100,7 @@ function Eidas(): JSX.Element {
         closeModal={() => {
           setShowModal(false);
         }}
-        acceptModal={useFrejaeID}
+        acceptModal={() => useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
     </>
