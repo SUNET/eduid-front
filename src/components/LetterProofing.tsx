@@ -56,12 +56,14 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     })();
   }
 
-  async function confirmLetterProofing() {
-    const response = await dispatch(postRequestLetter());
-    if (postRequestLetter.fulfilled.match(response)) {
-      dispatch(requestAllPersonalData());
-    }
-    setShowNotificationModal(false);
+  function confirmLetterProofing() {
+    (async () => {
+      const response = await dispatch(postRequestLetter());
+      if (postRequestLetter.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      }
+      setShowNotificationModal(false);
+    })();
   }
 
   function formatDateFromBackend(dateFromBackend: string) {
