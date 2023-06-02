@@ -21,10 +21,12 @@ export function EmailLinkSent(): JSX.Element | null {
     (async () => {
       e.preventDefault();
       if (response?.email) {
-        const resp = await dispatch(requestEmailLink({ email: response.email }));
-        if (requestEmailLink.rejected.match(resp)) {
-          resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-        }
+        try {
+          const resp = await dispatch(requestEmailLink({ email: response.email }));
+          if (requestEmailLink.rejected.match(resp)) {
+            resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+          }
+        } catch (error) {}
       }
       setResendDisabled(true); // disabled button again on use
     })();

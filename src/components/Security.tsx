@@ -10,7 +10,7 @@ import {
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import securitySlice from "reducers/Security";
@@ -18,7 +18,7 @@ import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns"
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
-export function Security(): JSX.Element | null {
+export function Security(): React.ReactElement | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -28,10 +28,12 @@ export function Security(): JSX.Element | null {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
-    if (isLoaded && !credentials.length) {
-      // call requestCredentials once app is loaded
-      dispatch(requestCredentials());
-    }
+    (async () => {
+      if (isLoaded && !credentials.length) {
+        // call requestCredentials once app is loaded
+        await dispatch(requestCredentials());
+      }
+    })();
   }, [isLoaded]);
 
   useEffect(
@@ -90,17 +92,21 @@ export function Security(): JSX.Element | null {
     setShowModal(false);
   }
 
-  async function handleStartWebauthnRegistration() {
-    const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
-    const descriptionValue = description?.value.trim();
-    setShowModal(false);
-    const resp = await dispatch(beginRegisterWebauthn());
-    if (beginRegisterWebauthn.fulfilled.match(resp)) {
-      const response = await dispatch(createCredential(resp.payload));
-      if (createCredential.fulfilled.match(response)) {
-        await dispatch(registerWebauthn({ descriptionValue }));
-      }
-    }
+  function handleStartWebauthnRegistration(values: { [key: string]: string }) {
+    (async () => {
+      try {
+        const description = values["describe-webauthn-token-modal"];
+        const descriptionValue = description?.trim();
+        setShowModal(false);
+        const resp = await dispatch(beginRegisterWebauthn());
+        if (beginRegisterWebauthn.fulfilled.match(resp)) {
+          const response = await dispatch(createCredential(resp.payload));
+          if (createCredential.fulfilled.match(response)) {
+            await dispatch(registerWebauthn({ descriptionValue }));
+          }
+        }
+      } catch (err) {}
+    })();
   }
 
   if (!isPlatformAuthLoaded) return null;
@@ -197,21 +203,25 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       cred.credential_type == "security.webauthn_credential_type"
   );
 
-  async function handleVerifyWebauthnToken(token: string) {
-    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-    if (eidasVerifyCredential.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+  function handleVerifyWebauthnToken(token: string) {
+    (async () => {
+      const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      if (eidasVerifyCredential.fulfilled.match(response)) {
+        if (response.payload.location) {
+          window.location.assign(response.payload.location);
+        }
       }
-    }
+    })();
   }
 
   function handleRemoveWebauthnToken(credential_key: string) {
-    dispatch(removeWebauthnToken({ credential_key }));
+    (async () => {
+      await dispatch(removeWebauthnToken({ credential_key }));
+    })();
   }
 
   // data that goes onto the table
-  const security_key_table_data = tokens.map((cred: CredentialType, index: number) => {
+  const security_key_table_data = tokens.map((cred: CredentialType) => {
     // date created
     const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
     // date last used
@@ -240,7 +250,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     }
 
     return (
-      <tr key={index} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
+      <tr key={cred.key} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
         <td>{cred.description}</td>
         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.created_ts).toString()}>
           {date_created}

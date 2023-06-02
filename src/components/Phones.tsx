@@ -107,23 +107,22 @@ function Phones() {
     setSelectedPhoneNumber(undefined);
   }
 
-  async function sendCaptcha(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    const phoneNumber = dataNode?.getAttribute("data-object");
-    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
-
-    const captcha = document.getElementById("confirmation-code-area");
-    const code = captcha?.querySelector("input");
-    const res = await dispatch(sendCaptchaResponse({ internal_response: code?.value }));
-    if (sendCaptchaResponse.fulfilled.match(res)) {
-      setCompleteCaptcha(false);
-      if (selectedPhoneNumber) {
-        dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
-      }
-    } else {
-      setCompleteCaptcha(false);
-      setSelectedPhoneNumber(undefined);
-    }
+  function sendCaptcha(values: { [key: string]: string }) {
+    (async () => {
+      try {
+        const captchaValue = values["phone-captcha-modal"];
+        const res = await dispatch(sendCaptchaResponse({ internal_response: captchaValue }));
+        if (sendCaptchaResponse.fulfilled.match(res)) {
+          setCompleteCaptcha(false);
+          if (selectedPhoneNumber) {
+            dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
+          }
+        } else {
+          setCompleteCaptcha(false);
+          setSelectedPhoneNumber(undefined);
+        }
+      } catch (err) {}
+    })();
   }
 
   function handleConfirm() {

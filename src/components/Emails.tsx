@@ -84,11 +84,10 @@ function Emails() {
     setSelectedEmail(undefined);
   }
 
-  function handleConfirm() {
-    const confirmationCode = document.getElementById("confirmation-code-area");
-    const code = confirmationCode?.querySelector("input") as HTMLInputElement;
-    const codeValue = code.value.trim();
-    if (codeValue && selectedEmail) dispatch(requestVerifyEmail({ code: codeValue, email: selectedEmail }));
+  function handleConfirm(values: { [key: string]: string }) {
+    const confirmationCode = values["email-confirm-modal"];
+    if (confirmationCode && selectedEmail)
+      dispatch(requestVerifyEmail({ code: confirmationCode.trim(), email: selectedEmail }));
     setSelectedEmail(undefined);
   }
 
