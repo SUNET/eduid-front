@@ -92,18 +92,20 @@ export function Security(): React.ReactElement | null {
     setShowModal(false);
   }
 
-  function handleStartWebauthnRegistration() {
+  function handleStartWebauthnRegistration(values: { [key: string]: string }) {
     (async () => {
-      const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
-      const descriptionValue = description?.value.trim();
-      setShowModal(false);
-      const resp = await dispatch(beginRegisterWebauthn());
-      if (beginRegisterWebauthn.fulfilled.match(resp)) {
-        const response = await dispatch(createCredential(resp.payload));
-        if (createCredential.fulfilled.match(response)) {
-          await dispatch(registerWebauthn({ descriptionValue }));
+      try {
+        const description = values["describe-webauthn-token-modal"];
+        const descriptionValue = description?.trim();
+        setShowModal(false);
+        const resp = await dispatch(beginRegisterWebauthn());
+        if (beginRegisterWebauthn.fulfilled.match(resp)) {
+          const response = await dispatch(createCredential(resp.payload));
+          if (createCredential.fulfilled.match(response)) {
+            await dispatch(registerWebauthn({ descriptionValue }));
+          }
         }
-      }
+      } catch (err) {}
     })();
   }
 
