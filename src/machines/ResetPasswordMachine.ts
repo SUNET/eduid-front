@@ -90,9 +90,6 @@ export function createResetPasswordMachine() {
             },
             EmailLinkSent: {
               on: {
-                API_SUCCESS: {
-                  target: "Finished",
-                },
                 API_FAIL: {
                   target: "ResetPasswordEnterEmail",
                 },
@@ -100,9 +97,6 @@ export function createResetPasswordMachine() {
                   target: "#resetPassword.ReturnToPrevious",
                 },
               },
-            },
-            Finished: {
-              type: "final",
             },
           },
         },
