@@ -17,7 +17,6 @@ export function EmailLinkSent(): JSX.Element | null {
   /**
    * The user has clicked the button to request that another e-mail should be sent.
    */
-
   function sendEmailOnClick(e: React.MouseEvent<HTMLElement>) {
     (async () => {
       e.preventDefault();
