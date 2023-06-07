@@ -61,8 +61,11 @@ function Eidas(): JSX.Element {
     </div>
   );
 
-  function useFrejaeID(event: React.MouseEvent<HTMLElement>) {
-    event.preventDefault();
+  function useFrejaeID(event?: React.MouseEvent<HTMLElement>) {
+    if (event) {
+      event.preventDefault();
+    }
+
     window.location.href = frejafullURL;
   }
 
@@ -100,7 +103,7 @@ function Eidas(): JSX.Element {
         closeModal={() => {
           setShowModal(false);
         }}
-        acceptModal={() => useFrejaeID}
+        acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
     </>
