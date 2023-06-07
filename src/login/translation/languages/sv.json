@@ -2122,7 +2122,7 @@
   },
   "qGDW86": {
     "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har generat åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
