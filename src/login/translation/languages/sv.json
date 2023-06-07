@@ -2057,7 +2057,7 @@
     "string": "Du kan inte sätta ett obekräftat telefonnummer som primärt nummer"
   },
   "phones.unknown_phone": {
-    "string": "Telefonumret du angav kan inte hittas"
+    "string": "Telefonnumret du angav kan inte hittas"
   },
   "phones.verification-success": {
     "string": "Telefonnummer har bekräftats"
