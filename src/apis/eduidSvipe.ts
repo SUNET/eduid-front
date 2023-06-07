@@ -5,7 +5,7 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
+import { GetStatusRequest, GetStatusResponse } from "./GetStatusResponse";
 
 interface SvipeCommonRequest {
   frontend_action?: string;

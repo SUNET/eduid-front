@@ -1,13 +1,14 @@
-import { changePassword } from "apis/eduidSecurity";
+import { setPassword } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "reactstrap";
+import chpassSlice from "reducers/ChangePassword";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
-import { FormattedMessage } from "react-intl";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
@@ -19,7 +20,6 @@ export interface ChangePasswordChildFormProps {
 }
 
 interface ChangePasswordFormData {
-  old?: string; // used by both modes
   custom?: string; // used with custom password
   score?: number; // used with custom password
   suggested?: string; // used with suggested password
@@ -27,6 +27,7 @@ interface ChangePasswordFormData {
 
 function ChangePasswordForm(props: ChangePasswordFormProps) {
   const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
+  const authn_id = useDashboardAppSelector((state) => state.chpass.authn_id);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const dispatch = useDashboardAppDispatch();
   const navigate = useNavigate();
@@ -40,9 +41,9 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     // Use the right form field for the currently displayed password mode
     const newPassword = renderSuggested ? values.suggested : values.custom;
     // Callback from sub-component when the user clicks on the button to change password
-    if (values.old && newPassword) {
-      const response = await dispatch(changePassword({ old_password: values.old, new_password: newPassword }));
-      if (changePassword.fulfilled.match(response)) {
+    if (newPassword && authn_id) {
+      const response = await dispatch(setPassword({ new_password: newPassword, authn_id: authn_id }));
+      if (setPassword.fulfilled.match(response)) {
         navigate(props.finish_url);
       }
     }
@@ -51,6 +52,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     // Callback from sub-component when the user clicks on the button to abort changing password
     event.preventDefault();
+    dispatch(chpassSlice.actions.clearAuthentication());
     // TODO: should clear passwords from form to avoid browser password manager asking user to save the password
     navigate(props.finish_url);
   }

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { authnGetStatus } from "apis/eduidAuthn";
 import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
 
 export interface ChangePasswordState {
-  message?: string;
+  authn_id?: string;
   suggested_password?: string;
 }
 
@@ -12,9 +13,18 @@ export const initialState: ChangePasswordState = {};
 const chpassSlice = createSlice({
   name: "chpass",
   initialState,
-  reducers: {},
+  reducers: {
+    clearAuthentication: (state) => {
+      state.authn_id = undefined;
+    },
+  },
   extraReducers: (builder) => {
     builder
+      .addCase(authnGetStatus.fulfilled, (state, action) => {
+        if (action.payload.method === "authenticate") {
+          state.authn_id = action.payload.authn_id;
+        }
+      })
       .addCase(fetchSuggestedPassword.fulfilled, (state, action) => {
         state.suggested_password = action.payload;
       })

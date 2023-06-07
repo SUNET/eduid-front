@@ -1,5 +1,6 @@
+import { authnAuthenticate } from "apis/eduidAuthn";
 import EduIDButton from "components/EduIDButton";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
@@ -10,15 +11,23 @@ interface ChangePasswordDisplayProps {
 
 function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   const [showModal, setShowModal] = useState<boolean>(props.showModal === true);
-  const config = useDashboardAppSelector((state) => state.config);
+  const dispatch = useDashboardAppDispatch();
 
-  function handleAcceptModal() {
-    const chpassURL = config.token_service_url + "chpass";
-    // the "chpass" path will route to the ChangePasswordContainer when we get back
-    const nextURL = config.dashboard_url + "chpass";
-    const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
-
-    window.location.assign(url);
+  async function handleAcceptModal() {
+    const authn = await dispatch(
+      authnAuthenticate({
+        method: "authenticate",
+        frontend_action: "changePassword",
+        frontend_state: window.location.pathname,
+        same_user: true,
+        force_authn: true,
+      })
+    );
+    if (authnAuthenticate.fulfilled.match(authn)) {
+      if (authn.payload.location) {
+        window.location.assign(authn.payload.location);
+      }
+    }
   }
 
   return (

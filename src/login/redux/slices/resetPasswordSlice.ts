@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { eidasGetStatus } from "apis/eduidEidas";
 import {
   ExtraSecurityAlternatives,
-  requestEmailLink,
   RequestEmailLinkResponse,
+  requestEmailLink,
   verifyEmailLink,
 } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer

@@ -20,9 +20,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     props.formProps.form.change("custom", props.formProps.values.custom);
   }
 
-  // Form field validators
-  const required = (value?: string) => (value ? undefined : "required");
-
   function strongEnough(value?: string): string | undefined {
     // check that the custom password is strong enough, using a score computed in the
     // PasswordStrengthMeter component.
@@ -46,18 +43,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
 
   return (
     <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
-      <fieldset>
-        <FinalField
-          name="old"
-          component={TextInput}
-          componentClass="input"
-          type="password"
-          id="old-password-field"
-          label={<FormattedMessage defaultMessage="Current password" description="chpass old password label" />}
-          validate={required}
-          autoComplete="current-password"
-        />
-      </fieldset>
       <div className="password-format">
         <label>
           <FormattedMessage

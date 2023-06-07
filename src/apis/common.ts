@@ -147,7 +147,7 @@ export function makeBareRequest<T>(
   };
 
   return fetch(url, request)
-    .then(checkStatus)
+    .then(async (response) => await checkStatus(response, thunkAPI))
     .then(async (response) => (await response.json()) as ResponseWithCsrf)
     .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
 }

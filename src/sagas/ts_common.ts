@@ -2,20 +2,45 @@
  * Typed variants of things defined in common.js. Converting common.js to TypeScript was too big of a bite right now.
  */
 
+import { RequestThunkAPI } from "apis/common";
+import { DispatchWithAuthn, authnAuthenticate } from "apis/eduidAuthn";
 import { TOKEN_SERVICE_URL } from "globals";
 
 export class NeedsAuthenticationError extends Error {}
 
-export const checkStatus = function (response: Response): Response {
+export const checkStatus = async function (response: Response, thunkAPI: RequestThunkAPI): Promise<Response> {
   if (response.status >= 200 && response.status < 300) {
     return response;
-  } else if (response.status === 0) {
+  }
+
+  if (response.status === 401) {
+    const authn_type = response.headers.get("WWW-Authenticate");
+    if (authn_type === "eduID") {
+      const authnDispatch = thunkAPI.dispatch as DispatchWithAuthn;
+      const authn = await authnDispatch(
+        authnAuthenticate({
+          method: "authenticate",
+          frontend_action: "authnLogin",
+          frontend_state: window.location.pathname,
+        })
+      );
+      if (authnAuthenticate.fulfilled.match(authn)) {
+        if (authn.payload.location) {
+          window.location.assign(authn.payload.location);
+        }
+      }
+    }
+
+    throw new NeedsAuthenticationError("Request needs authentication");
+  }
+
+  if (response.status === 0) {
     const next = document.location.href;
     document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);
     throw new NeedsAuthenticationError("Request needs authentication");
-  } else {
-    throw new Error(`HTTP ${response.status} ${response.statusText}`);
   }
+
+  throw new Error(`HTTP ${response.status} ${response.statusText}`);
 };
 
 export const ajaxHeaders = {

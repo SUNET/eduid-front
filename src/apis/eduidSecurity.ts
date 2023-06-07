@@ -183,6 +183,7 @@ export const fetchSuggestedPassword = createAsyncThunk<
 export interface ChangePasswordPayload {
   old_password: string;
   new_password: string;
+  //authn_id?: string;
 }
 
 export interface ChangePasswordResponse {
@@ -193,6 +194,7 @@ export interface ChangePasswordResponse {
  * @public
  * @function changePassword
  * @desc Redux async thunk to attempt a password change.
+ *       TODO: This is the OLD endpoint, use setPassword instead.
  */
 export const changePassword = createAsyncThunk<
   ChangePasswordResponse,
@@ -200,6 +202,31 @@ export const changePassword = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("chpass/changePassword", async (args, thunkAPI) => {
   return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface SetPasswordPayload {
+  new_password: string;
+  authn_id: string;
+}
+
+export interface SetPasswordResponse {
+  message?: string;
+}
+
+/**
+ * @public
+ * @function setPassword
+ * @desc Redux async thunk to attempt a password change.
+ */
+export const setPassword = createAsyncThunk<
+  SetPasswordResponse,
+  SetPasswordPayload,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("chpass/setPassword", async (args, thunkAPI) => {
+  return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password/set-password", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

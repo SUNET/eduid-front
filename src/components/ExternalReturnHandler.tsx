@@ -1,4 +1,6 @@
-import { eidasGetStatus, GetStatusResponse } from "apis/eduidEidas";
+import { GetStatusResponse } from "apis/GetStatusResponse";
+import { authnGetStatus } from "apis/eduidAuthn";
+import { eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useEffect } from "react";
@@ -18,6 +20,7 @@ export function ExternalReturnHandler() {
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
+    console.log("Status", status);
     if (status?.method) {
       // Status has been fetched
 
@@ -32,15 +35,27 @@ export function ExternalReturnHandler() {
           eidasVerifyIdentity: "/profile/verify-identity/",
           eidasVerifyCredential: "/profile/settings/advanced-settings/",
           svipeidVerifyIdentity: "/profile/verify-identity/",
+          changePassword: "/profile/chpass/",
         };
         const _path = actionToRoute[status.frontend_action];
         if (_path) {
           navigate(_path);
           return;
         }
+        if (status.frontend_action === "authnLogin" && status.frontend_state) {
+          navigate(status.frontend_state);
+          return;
+        }
       }
 
       navigate("/profile/"); // GOTO start
+    }
+  }
+
+  async function fetchAuthnStatus(authn_id: string) {
+    const response = await dispatch(authnGetStatus({ authn_id: authn_id }));
+    if (authnGetStatus.fulfilled.match(response)) {
+      processStatus(response.payload);
     }
   }
 
@@ -59,6 +74,9 @@ export function ExternalReturnHandler() {
   }
 
   useEffect(() => {
+    if (params.authn_id && params.app_name === "authn") {
+      fetchAuthnStatus(params.authn_id).catch(console.error);
+    }
     if (params.authn_id && params.app_name === "eidas") {
       fetchEidasStatus(params.authn_id).catch(console.error);
     }

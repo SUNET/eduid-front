@@ -6,8 +6,9 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { GetStatusRequest, GetStatusResponse } from "./GetStatusResponse";
 
-type EidasMethods = "eidas" | "freja";
+export type EidasMethods = "eidas" | "freja";
 
 interface EidasCommonRequest {
   frontend_state?: string; // frontend can pass something here (like a ref) and get it back after the authn flow
@@ -106,17 +107,8 @@ export const eidasMfaAuthenticate = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface GetStatusRequest {
-  authn_id: string;
-}
-
-export interface GetStatusResponse {
-  frontend_action: string;
-  frontend_state?: string;
+export interface EidasGetStatusResponse extends GetStatusResponse {
   method: EidasMethods;
-  error?: boolean;
-  status?: string;
 }
 
 /**
@@ -125,12 +117,12 @@ export interface GetStatusResponse {
  * @desc Redux async thunk to fetch status for an earlier operation.
  */
 export const eidasGetStatus = createAsyncThunk<
-  GetStatusResponse, // return type
+  EidasGetStatusResponse, // return type
   GetStatusRequest, // args type
   { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
-  return makeEidasRequest<GetStatusResponse>(thunkAPI, "get_status", body)
+  return makeEidasRequest<EidasGetStatusResponse>(thunkAPI, "get_status", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
