@@ -49,8 +49,9 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
               <form
                 id={props.id + "-form"}
                 role="form"
-                onSubmit={(event) => {
-                  handleSubmit(event), form.reset();
+                onSubmit={async (event) => {
+                  await handleSubmit(event);
+                  form.reset();
                 }}
               >
                 <ModalBody>
