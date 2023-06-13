@@ -32,7 +32,8 @@ table {
       line-height: 1;
 
       &.value-status,
-      &.verify {
+      &.verify,
+      &.verified {
         width: 25%;
 
         & button {
@@ -41,7 +42,8 @@ table {
         }
 
         & span {
-          font-family: $proxima-regular;
+          font-family: $akkurat;
+          letter-spacing: 1px;
           font-weight: 700;
           padding: 0;
           font-size: 0.75rem;
@@ -70,7 +72,6 @@ table {
       }
 
       &.unverified,
-      &.verified,
       &.primary {
         padding: 0.75rem 1rem;
       }
