@@ -234,18 +234,19 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     // verify button/ verified badge
     if (cred.verified) {
       btnVerify = (
-        <label
-          className="no button verified"
-          // disabled
-        >
-          <FormattedMessage description="security verified" defaultMessage="Verified" />
-        </label>
+        <td className="no button verified">
+          <span>
+            <FormattedMessage description="security verified" defaultMessage="Verified" />
+          </span>
+        </td>
       );
     } else {
       btnVerify = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
-          <FormattedMessage description="security verify" defaultMessage="Verify key" />
-        </EduIDButton>
+        <td>
+          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
+            <FormattedMessage description="security verify" defaultMessage="Verify key" />
+          </EduIDButton>
+        </td>
       );
     }
 
@@ -258,7 +259,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.success_ts).toString()}>
           {date_success}
         </td>
-        <td>{btnVerify}</td>
+        {btnVerify}
         <td>
           <EduIDButton
             id="remove-webauthn"
