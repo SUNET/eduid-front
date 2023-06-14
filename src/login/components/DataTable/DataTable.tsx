@@ -12,6 +12,8 @@ interface DataTableProps {
 }
 
 interface DataStatusProps {
+  email?: string;
+  phone?: string;
   verified: boolean;
   primary: boolean;
   handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
@@ -48,7 +50,7 @@ function DataTableRows(props: DataTableProps) {
   }
   return (
     <Fragment>
-      {props.data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
+      {props.data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
         const keysArray = Object.keys(datum);
         const valueArray = Object.values(datum);
         const valueName = keysArray[0];
@@ -72,9 +74,12 @@ function DataTableRows(props: DataTableProps) {
                 handleMakePrimary={props.handleMakePrimary}
               />
             </td>
-            <td className="remove-data">
-              <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
-            </td>
+            {/* not render the close button when there is only one email */}
+            {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
+              <td className="remove-data">
+                <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
+              </td>
+            ) : null}
           </tr>
         );
       })}
