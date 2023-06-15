@@ -49,11 +49,10 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
               <form
                 id={props.id + "-form"}
                 role="form"
-                onSubmit={(event) =>
-                  handleSubmit(event)?.then(() => {
-                    form.reset();
-                  })
-                }
+                onSubmit={async (event) => {
+                  await handleSubmit(event);
+                  form.reset();
+                }}
               >
                 <ModalBody>
                   <img src={props.captchaImage} />
