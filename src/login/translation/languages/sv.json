@@ -527,10 +527,6 @@
     "developer_comment": "resend code",
     "string": "Skicka ny kod igen"
   },
-  "JjB0Cs": {
-    "developer_comment": "security verify",
-    "string": "Verifiera"
-  },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
     "string": "Lägg till ditt telefonnummer"
@@ -2670,6 +2666,10 @@
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
     "string": "Den här enheten"
+  },
+  "xvMcTx": {
+    "developer_comment": "security verify",
+    "string": "Verifiera"
   },
   "yHgn4B": {
     "developer_comment": "accordion item Phone additional info",
