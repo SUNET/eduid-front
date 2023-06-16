@@ -256,14 +256,16 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           {date_success}
         </td>
         <td className="value-status">{btnVerify}</td>
-        <td>
-          <EduIDButton
-            id="remove-webauthn"
-            buttonstyle="close"
-            size="sm"
-            onClick={() => handleRemoveWebauthnToken(cred.key)}
-          ></EduIDButton>
-        </td>
+        {tokens.length > 1 ? (
+          <td>
+            <EduIDButton
+              id="remove-webauthn"
+              buttonstyle="close"
+              size="sm"
+              onClick={() => handleRemoveWebauthnToken(cred.key)}
+            ></EduIDButton>
+          </td>
+        ) : null}
       </tr>
     );
   });
