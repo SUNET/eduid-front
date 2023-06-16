@@ -60,7 +60,7 @@ test("renders security key as expected, with added security key", async () => {
 
   expect(screen.getByRole("table")).toBeInTheDocument();
   expect(screen.getByRole("cell", { name: "touchID" })).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Verify key" })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "Verify" })).toBeEnabled();
 });
 
 test("renders modals onclick security key button", async () => {
