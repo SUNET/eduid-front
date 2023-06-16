@@ -26,13 +26,11 @@ table {
     }
 
     & td {
-      word-wrap: break-word;
       text-align: left;
       vertical-align: middle;
       line-height: 1;
 
-      &.value-status,
-      &.verify {
+      &.value-status {
         width: 25%;
 
         & button {
@@ -41,7 +39,8 @@ table {
         }
 
         & span {
-          font-family: $proxima-regular;
+          font-family: $akkurat;
+          letter-spacing: 1px;
           font-weight: 700;
           padding: 0;
           font-size: 0.75rem;
@@ -70,7 +69,6 @@ table {
       }
 
       &.unverified,
-      &.verified,
       &.primary {
         padding: 0.75rem 1rem;
       }
@@ -81,8 +79,6 @@ table {
     }
 
     & tr.webauthn-token-holder {
-      color: $txt-gray;
-
       & td:first-child {
         white-space: nowrap;
         text-overflow: ellipsis;
