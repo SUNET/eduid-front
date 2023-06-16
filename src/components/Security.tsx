@@ -241,7 +241,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     } else {
       btnVerify = (
         <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
-          <FormattedMessage description="security verify" defaultMessage="Verify key" />
+          <FormattedMessage description="security verify" defaultMessage="Verify" />
         </EduIDButton>
       );
     }

@@ -79,8 +79,6 @@ table {
     }
 
     & tr.webauthn-token-holder {
-      color: $txt-gray;
-
       & td:first-child {
         white-space: nowrap;
         text-overflow: ellipsis;
