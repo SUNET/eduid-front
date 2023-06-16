@@ -26,14 +26,11 @@ table {
     }
 
     & td {
-      word-wrap: break-word;
       text-align: left;
       vertical-align: middle;
       line-height: 1;
 
-      &.value-status,
-      &.verify,
-      &.verified {
+      &.value-status {
         width: 25%;
 
         & button {
