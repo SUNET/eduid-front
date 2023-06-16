@@ -527,10 +527,6 @@
     "developer_comment": "resend code",
     "string": "Send a new code"
   },
-  "JjB0Cs": {
-    "developer_comment": "security verify",
-    "string": "Verify key"
-  },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
     "string": "Add your phone number"
@@ -2670,6 +2666,10 @@
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
     "string": "this device"
+  },
+  "xvMcTx": {
+    "developer_comment": "security verify",
+    "string": "Verify"
   },
   "yHgn4B": {
     "developer_comment": "accordion item Phone additional info",
