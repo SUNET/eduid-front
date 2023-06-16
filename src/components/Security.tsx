@@ -255,7 +255,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.success_ts).toString()}>
           {date_success}
         </td>
-        <td className={cred.verified ? `verified` : undefined}>{btnVerify}</td>
+        <td className="value-status">{btnVerify}</td>
         <td>
           <EduIDButton
             id="remove-webauthn"
