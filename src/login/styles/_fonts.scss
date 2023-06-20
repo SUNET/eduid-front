@@ -6,26 +6,41 @@
 }
 
 @font-face {
-  font-family: "ProximaNova-Light";
-  src: url("../../fonts/ProximaNova-Light.ttf") format("truetype"),
-    url("../../fonts/ProximaNova-Light.woff") format("woff"), url("../../fonts/ProximaNova-Light.woff2") format("woff2");
+  font-family: "Inter-Bold";
+  src: url("../../fonts/Inter-Bold.ttf") format("truetype"), url("../../fonts/Inter-Bold.woff") format("woff"),
+    url("../../fonts/Inter-Bold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "ProximaNova-Regular";
-  src: url("../../fonts/ProximaNova-Regular.ttf") format("truetype"),
-    url("../../fonts/ProximaNova-Regular.woff") format("woff"),
-    url("../../fonts/ProximaNova-Regular.woff2") format("woff2");
+  font-family: "Inter-SemiBold";
+  src: url("../../fonts/Inter-SemiBold.ttf") format("truetype"), url("../../fonts/Inter-SemiBold.woff") format("woff"),
+    url("../../fonts/Inter-SemiBold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "ProximaNova-Bold";
-  src: url("../../fonts/ProximaNova-Bold.ttf") format("truetype"),
-    url("../../fonts/ProximaNova-Bold.woff") format("woff"), url("../../fonts/ProximaNova-Bold.woff2") format("woff2");
+  font-family: "Inter-Medium";
+  src: url("../../fonts/Inter-Medium.ttf") format("truetype"), url("../../fonts/Inter-Medium.woff") format("woff"),
+    url("../../fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter-Regular";
+  src: url("../../fonts/Inter-Regular.ttf") format("truetype"), url("../../fonts/Inter-Regular.woff") format("woff"),
+    url("../../fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter-Light";
+  src: url("../../fonts/Inter-Light.ttf") format("truetype"), url("../../fonts/Inter-Light.woff") format("woff"),
+    url("../../fonts/Inter-Light.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
