@@ -268,7 +268,7 @@ function Phones() {
             description="captcha modal title"
           />
         }
-        placeholder={""}
+        placeholder="xxxxxx"
         showModal={Boolean(completeCaptcha)}
         closeModal={handleStopCaptcha}
         handleConfirm={sendCaptcha}

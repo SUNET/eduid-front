@@ -47,6 +47,7 @@ export function SignupCaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
                 autoFocus={true}
                 type="text"
                 name="value"
+                placeholder="xxxxxx"
                 label={
                   <FormattedMessage description="captcha input label" defaultMessage="Enter the code from the image" />
                 }
