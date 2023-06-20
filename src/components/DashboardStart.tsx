@@ -79,7 +79,7 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
 
   return (
     <div className="data-container">
-      <strong>{letterStatus}</strong>
+      {letterStatus}
       <Link to="verify-identity/#letter-proofing">
         <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
       </Link>
