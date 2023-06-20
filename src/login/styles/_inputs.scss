@@ -65,7 +65,7 @@ input[type="radio"]:checked.error {
     font-size: 1.5rem;
     align-self: center;
     color: $txt-black;
-    font-family: $proxima-regular;
+    font-family: $inter-regular;
     font-weight: normal;
     text-transform: capitalize;
     margin: 0 2rem 0 0;
@@ -82,7 +82,7 @@ input[type="radio"]:checked.error {
 
 .form-control::placeholder,
 input::placeholder {
-  font-family: $proxima-regular;
+  font-family: $inter-regular;
   font-size: 1.5rem;
 }
 

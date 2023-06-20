@@ -4,7 +4,7 @@
 table {
   width: 100%;
   font-size: 1.125rem;
-  font-family: $proxima-light;
+  font-family: $inter-light;
   table-layout: fixed;
   background-color: $white;
 
@@ -50,7 +50,7 @@ table {
 
       .verified {
         text-transform: uppercase;
-        font-family: $proxima-regular;
+        font-family: $inter-regular;
         font-weight: 700;
         font-size: 0.75rem;
       }
@@ -165,7 +165,7 @@ table.table-form.passwords {
     font-size: 1rem;
     letter-spacing: 0;
     color: $txt-black;
-    font-family: $proxima-bold;
+    font-family: $inter-bold;
     height: auto;
   }
 
