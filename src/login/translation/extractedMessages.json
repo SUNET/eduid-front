@@ -2247,7 +2247,7 @@
     "string": "Use your security key"
   },
   "resetpw.user-not-found": {
-    "string": "User does not exist, please check your email address"
+    "string": "If the address is registered, a message with instructions to reset the password has been sent."
   },
   "s0no/w": {
     "developer_comment": "profile name display no data",
