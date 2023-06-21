@@ -85,7 +85,7 @@ export const resetPassword = {
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"
-      defaultMessage={"User does not exist, please check your email address"}
+      defaultMessage="If the address is registered, a message with instructions to reset the password has been sent."
     />
   ),
   "resetpw.invalid_user": (

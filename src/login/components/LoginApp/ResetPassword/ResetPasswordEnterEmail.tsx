@@ -13,11 +13,17 @@ export function ResetPasswordEnterEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
-  function onEnteredEmailAddress(email: string) {
+  async function onEnteredEmailAddress(email: string) {
     dispatch(clearNotifications());
-    dispatch(resetPasswordSlice.actions.setEmailAddress(email));
-    dispatch(requestEmailLink({ email }));
-    resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+    if (email) {
+      dispatch(resetPasswordSlice.actions.setEmailAddress(email));
+      const response = await dispatch(requestEmailLink({ email }));
+      if (requestEmailLink.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+      }
+    }
   }
 
   return (
