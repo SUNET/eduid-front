@@ -268,7 +268,8 @@ function Phones() {
             description="captcha modal title"
           />
         }
-        placeholder="xxxxxx"
+        // We have decided not to use a placeholder in the Captcha
+        placeholder=""
         showModal={Boolean(completeCaptcha)}
         closeModal={handleStopCaptcha}
         handleConfirm={sendCaptcha}
