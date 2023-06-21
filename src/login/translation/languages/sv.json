@@ -2247,7 +2247,7 @@
     "string": "Använd din säkerhetsnyckel"
   },
   "resetpw.user-not-found": {
-    "string": "If the address is registered, a message with instructions to reset the password has been sent."
+    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
   },
   "s0no/w": {
     "developer_comment": "profile name display no data",
