@@ -64,7 +64,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
  * Currently process of letter proofing and/or verification of identity
  */
 function LetterProofingProgress(props: { letter_proofing: LetterProofingState }): JSX.Element | null {
-  let letterStatus;
+  let letterStatus, helpText;
 
   if (!props.letter_proofing.letter_sent) {
     return null;
@@ -75,6 +75,12 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
       <FormattedMessage
         description="Verification letter expired, status"
         defaultMessage="A verification letter has been expired"
+      />
+    );
+    helpText = (
+      <FormattedMessage
+        description="Verification letter expired, help text"
+        defaultMessage="To request a new letter, please follow the steps below"
       />
     );
   } else {
