@@ -10,7 +10,7 @@ interface ConfirmModalProps {
   title: React.ReactNode;
   placeholder: string;
   showModal: boolean;
-  closeModal: React.MouseEventHandler<HTMLButtonElement>;
+  closeModal: () => void;
   handleConfirm: (values: { [key: string]: string }) => void;
   modalFormLabel: React.ReactNode;
   validationError?: string;
@@ -23,7 +23,7 @@ interface ConfirmModalProps {
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
   function validate(value: string) {
-    if (!value || !value.trim()) {
+    if (!value?.trim()) {
       return "required";
     }
     if (!props.validationPattern?.test(value.trim())) {
@@ -44,7 +44,13 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
             <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
               <ModalHeader>
                 {props.title}
-                <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
+                <EduIDButton
+                  buttonstyle="close"
+                  onClick={() => {
+                    props.closeModal();
+                    form.reset();
+                  }}
+                ></EduIDButton>
               </ModalHeader>
               <form
                 id={props.id + "-form"}
@@ -55,7 +61,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                 }}
               >
                 <ModalBody>
-                  <img src={props.captchaImage} />
+                  {props.captchaImage && <img src={props.captchaImage} />}
                   <div id="confirmation-code-area">
                     <FinalField<string>
                       component={CustomInput}
@@ -69,7 +75,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                       validate={validate}
                     />
                   </div>
-                  {props.resendMarkup && props.resendMarkup}
+                  {props.resendMarkup ? props.resendMarkup : null}
                 </ModalBody>
                 <ModalFooter>
                   <EduIDButton
