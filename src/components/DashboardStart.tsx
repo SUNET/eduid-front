@@ -62,7 +62,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
  * Currently process of letter proofing and/or verification of identity
  */
 function LetterProofingProgress(props: { letter_proofing: LetterProofingState }): JSX.Element | null {
-  let letterStatus;
+  let letterStatus, helpText;
 
   if (!props.letter_proofing.letter_sent) {
     return null;
@@ -70,20 +70,90 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
 
   if (props.letter_proofing.letter_expired) {
     letterStatus = (
-      <FormattedMessage description="Verification letter expired" defaultMessage="Verification letter expired" />
+      <FormattedMessage
+        description="Verification letter expired, status"
+        defaultMessage="A verification letter has been expired"
+      />
     );
-  } else
+    helpText = (
+      <FormattedMessage
+        description="Verification letter expired, help text"
+        defaultMessage="To request a new letter, please follow the steps below"
+      />
+    );
+  } else {
     letterStatus = (
-      <FormattedMessage description="Verification letter requested" defaultMessage="Verification letter requested" />
+      <FormattedMessage
+        description="Verification letter requested, status"
+        defaultMessage="A verification letter has been requested."
+      />
     );
+    helpText = (
+      <FormattedMessage
+        description="Verification letter requested, help text"
+        defaultMessage="Once you receive the letter, please follow steps to enter the code."
+      />
+    );
+  }
 
   return (
-    <div className="data-container">
-      {letterStatus}
-      <Link to="verify-identity/#letter-proofing">
-        <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
-      </Link>
-    </div>
+    <>
+      <figure className="status letter-proofing">
+        <h3>{letterStatus}</h3>
+        <p className="help-text">{helpText}</p>
+      </figure>
+      <div className="steps">
+        <h4>
+          <FormattedMessage description="help text" defaultMessage="Steps:" />
+        </h4>
+        <ol className="listed-steps">
+          <li>
+            <FormattedMessage
+              description="help text"
+              defaultMessage={`{Identity} `}
+              values={{
+                Identity: (
+                  <Link to="verify-identity/#letter-proofing">
+                    <FormattedMessage description="link to detail page" defaultMessage="Go to the Identity" />
+                  </Link>
+                ),
+              }}
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              description="help text"
+              defaultMessage={`Select the {Swedish_personal_ID_number}. `}
+              values={{ Swedish_personal_ID_number: <strong>Swedish personal ID number</strong> }}
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              description="help text"
+              defaultMessage={`Select the {BY_POST} option below the {verify_id_number}. `}
+              values={{ BY_POST: <strong>BY POST</strong>, verify_id_number: <strong>Verify your ID number</strong> }}
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              description="help text"
+              defaultMessage={`Press the {Proceed} button. `}
+              values={{ Proceed: <strong>PROCEED</strong> }}
+            />
+          </li>
+          {/* display this only when the letter has not expired. */}
+          {!props.letter_proofing.letter_expired && (
+            <li>
+              <FormattedMessage
+                description="help text"
+                defaultMessage={`Enter the {code} in the modal. `}
+                values={{ code: <strong>Code</strong> }}
+              />
+            </li>
+          )}
+        </ol>
+      </div>
+    </>
   );
 }
 
