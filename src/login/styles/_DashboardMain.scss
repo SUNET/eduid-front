@@ -80,7 +80,7 @@
 }
 
 // --- VERIFICATION PROGRESS STYLES--- //
-.verification-status {
+.status {
   @extend figure;
 
   display: flex;
@@ -114,27 +114,46 @@
   &.verified svg {
     color: $success-green;
   }
-}
 
-.data-container :last-child {
-  margin-left: 2rem;
-}
-
-.data-container {
-  @extend figure;
-
-  display: flex;
-  align-items: center;
-
-  a {
-    font-size: 0.9rem;
+  &.letter-proofing {
+    display: block;
   }
+}
 
-  @media (max-width: $bp-sm) {
-    flex-direction: column;
+.steps {
+  text-align: left;
+  background: $white;
+  border-left: 4px solid $txt-orange;
+  border-left-color: $txt-orange;
+  padding: 1rem;
+  .listed-steps li {
+    margin-bottom: 0.5em;
+  }
+  h4 {
+    font-family: $inter-bold;
+    margin-bottom: 2.5rem;
+    margin-top: 0.5rem;
+  }
+}
 
-    & :last-child {
-      margin-left: 0;
+.progress-container {
+  @extend figure;
+  text-align: left;
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1rem;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+    }
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+
+      & :last-child {
+        margin-left: 0;
+      }
     }
   }
 }
