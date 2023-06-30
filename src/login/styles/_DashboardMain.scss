@@ -114,46 +114,4 @@
   &.verified svg {
     color: $success-green;
   }
-
-  &.letter-proofing {
-    display: block;
-  }
-}
-
-.steps {
-  text-align: left;
-  background: $white;
-  border-left: 4px solid $txt-orange;
-  border-left-color: $txt-orange;
-  padding: 1rem;
-  .listed-steps li {
-    margin-bottom: 0.5em;
-  }
-  h4 {
-    font-family: $inter-bold;
-    margin-bottom: 2.5rem;
-    margin-top: 0.5rem;
-  }
-}
-
-.progress-container {
-  @extend figure;
-  text-align: left;
-
-  div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 1rem;
-    align-items: center;
-    p {
-      margin-bottom: 0;
-    }
-    @media (max-width: $bp-sm) {
-      grid-template-columns: 1fr;
-
-      & :last-child {
-        margin-left: 0;
-      }
-    }
-  }
 }
