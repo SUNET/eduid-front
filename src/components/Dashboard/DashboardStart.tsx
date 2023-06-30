@@ -90,11 +90,18 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
         defaultMessage="A verification letter has been requested."
       />
     );
+
+    helpText = (
+      <FormattedMessage
+        defaultMessage="Add the code you have received by post"
+        description="explanation text for letter proofing"
+      />
+    );
   }
 
   return (
     <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["se-letter"]}>
-      <AccordionItemTemplate title={letterStatus} additionalInfo="" uuid="se-letter" disabled={false}>
+      <AccordionItemTemplate title={letterStatus} additionalInfo={helpText} uuid="se-letter">
         <LetterProofing disabled={false} />
       </AccordionItemTemplate>
     </Accordion>
