@@ -5,16 +5,18 @@ import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
+import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
+import AccordionItemTemplate from "./AccordionItemTemplate";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
     return (
-      <figure className="verification-status unverified">
+      <figure className="status unverified">
         <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
         <div>
           <h3>
@@ -41,7 +43,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     );
   }
   return (
-    <div className="verification-status verified">
+    <div className="status verified">
       <FontAwesomeIcon icon={faCircleCheck as IconProp} />
       <div>
         <h3>
@@ -90,70 +92,18 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
     );
     helpText = (
       <FormattedMessage
-        description="Verification letter requested, help text"
-        defaultMessage="Once you receive the letter, please follow steps to enter the code."
+        defaultMessage="Add the code you have received by post"
+        description="explanation text for letter proofing"
       />
     );
   }
 
   return (
-    <>
-      <figure className="status letter-proofing">
-        <h3>{letterStatus}</h3>
-        <p className="help-text">{helpText}</p>
-      </figure>
-      <div className="steps">
-        <h4>
-          <FormattedMessage description="help text" defaultMessage="Steps:" />
-        </h4>
-        <ol className="listed-steps">
-          <li>
-            <FormattedMessage
-              description="help text"
-              defaultMessage={`{Identity} `}
-              values={{
-                Identity: (
-                  <Link to="verify-identity/#letter-proofing">
-                    <FormattedMessage description="link to detail page" defaultMessage="Go to the Identity" />
-                  </Link>
-                ),
-              }}
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              description="help text"
-              defaultMessage={`Select the {Swedish_personal_ID_number}. `}
-              values={{ Swedish_personal_ID_number: <strong>Swedish personal ID number</strong> }}
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              description="help text"
-              defaultMessage={`Select the {BY_POST} option below the {verify_id_number}. `}
-              values={{ BY_POST: <strong>BY POST</strong>, verify_id_number: <strong>Verify your ID number</strong> }}
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              description="help text"
-              defaultMessage={`Press the {Proceed} button. `}
-              values={{ Proceed: <strong>PROCEED</strong> }}
-            />
-          </li>
-          {/* display this only when the letter has not expired. */}
-          {!props.letter_proofing.letter_expired && (
-            <li>
-              <FormattedMessage
-                description="help text"
-                defaultMessage={`Enter the {code} in the modal. `}
-                values={{ code: <strong>Code</strong> }}
-              />
-            </li>
-          )}
-        </ol>
-      </div>
-    </>
+    <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["se-letter"]}>
+      <AccordionItemTemplate title={letterStatus} additionalInfo={helpText} uuid="se-letter" disabled={false}>
+        <LetterProofing disabled={false} />
+      </AccordionItemTemplate>
+    </Accordion>
   );
 }
 
@@ -231,8 +181,8 @@ export default function Start(): JSX.Element {
 
         <VerificationProgress identities={identities} />
       </article>
-      <Recommendations />
       {progress}
+      <Recommendations />
     </React.Fragment>
   );
 }
