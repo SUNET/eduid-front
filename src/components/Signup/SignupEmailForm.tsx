@@ -20,7 +20,7 @@ export function SignupEmailForm(): JSX.Element {
           <p>
             <FormattedMessage
               defaultMessage={`Once you have created an eduID you will be able to log in and
-                             connect it to your Swedish national identity number.`}
+                             connect it to your identity.`}
               description="Signup"
             />
           </p>
