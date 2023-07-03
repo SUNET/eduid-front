@@ -64,7 +64,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
  * Currently process of letter proofing and/or verification of identity
  */
 function LetterProofingProgress(props: { letter_proofing: LetterProofingState }): JSX.Element | null {
-  let letterStatus, helpText;
+  let letterStatus;
 
   if (!props.letter_proofing.letter_sent) {
     return null;
@@ -77,12 +77,6 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
         defaultMessage="A verification letter has been expired"
       />
     );
-    helpText = (
-      <FormattedMessage
-        description="Verification letter expired, help text"
-        defaultMessage="To request a new letter, please follow the steps below"
-      />
-    );
   } else {
     letterStatus = (
       <FormattedMessage
@@ -90,17 +84,11 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
         defaultMessage="A verification letter has been requested."
       />
     );
-    helpText = (
-      <FormattedMessage
-        defaultMessage="Add the code you have received by post"
-        description="explanation text for letter proofing"
-      />
-    );
   }
 
   return (
     <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["se-letter"]}>
-      <AccordionItemTemplate title={letterStatus} additionalInfo={helpText} uuid="se-letter" disabled={false}>
+      <AccordionItemTemplate title={letterStatus} additionalInfo="" uuid="se-letter" disabled={false}>
         <LetterProofing disabled={false} />
       </AccordionItemTemplate>
     </Accordion>
