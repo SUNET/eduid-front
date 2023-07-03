@@ -23,6 +23,10 @@
     "developer_comment": "recommendation title",
     "string": "För att få ut det mesta av eduID rekommenderar vi att du följer nedanstående rekommendationer."
   },
+  "/2jUvY": {
+    "developer_comment": "Signup",
+    "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Registrera"
@@ -272,10 +276,6 @@
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
-  },
-  "95u9Rj": {
-    "developer_comment": "Signup",
-    "string": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer."
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
