@@ -286,13 +286,13 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             <FormattedMessage description="security creation date" defaultMessage="Created on" />
           </th>
           <th className="security-last-used-date">
-            <FormattedMessage id="security last used" defaultMessage="Used on" />
+            <FormattedMessage description="security last used" defaultMessage="Used on" />
           </th>
           <th className="display-none">
-            <FormattedMessage id="security key status" defaultMessage="Status" />
+            <FormattedMessage description="security key status" defaultMessage="Status" />
           </th>
           <th className="display-none">
-            <FormattedMessage id="security key remove" defaultMessage="Remove" />
+            <FormattedMessage description="security key remove" defaultMessage="Remove" />
           </th>
         </tr>
         {security_key_table_data}
