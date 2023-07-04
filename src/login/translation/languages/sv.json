@@ -233,6 +233,10 @@
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID Dashboard:"
   },
+  "6l0g1Y": {
+    "developer_comment": "security last used",
+    "string": "Senast använd"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -410,10 +414,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Åtkomstfel"
   },
-  "FO7/rw": {
-    "developer_comment": "Signup",
-    "string": "Slutför skapandet av ditt eduID genom att följa länken som skickats till:"
-  },
   "FRVeZw": {
     "developer_comment": "verify identity unverified main title",
     "string": "Koppla din identitet till ditt eduID"
@@ -432,6 +432,10 @@
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
+  },
+  "G/4orj": {
+    "developer_comment": "security key remove",
+    "string": "Ta bort"
   },
   "G0xkV6": {
     "developer_comment": "Short code form",
@@ -849,6 +853,10 @@
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
   },
+  "UUuKzu": {
+    "developer_comment": "security key status",
+    "string": "Status"
+  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
@@ -1066,6 +1074,10 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
+  "bhw+hL": {
+    "developer_comment": "Dashboard change password",
+    "string": "Byt ditt lösenord"
+  },
   "c26Ksk": {
     "developer_comment": "captcha option",
     "string": "Använd en valideringstjänst som tillhandahålls av en tredje part"
@@ -1100,10 +1112,6 @@
   },
   "chpass.low-password-entropy": {
     "string": "Var god välj ett starkare lösenord"
-  },
-  "chpass.main_title": {
-    "developer_comment": "Dashboard change password",
-    "string": "Byt ditt lösenord"
   },
   "chpass.no_old_pw": {
     "string": "Skriv in ditt nuvarande lösenord"
@@ -2265,15 +2273,6 @@
     "developer_comment": "verify identity",
     "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Svipe ID verifierar din identitet mot eduID."
   },
-  "security key remove": {
-    "string": "Ta bort"
-  },
-  "security key status": {
-    "string": "Status"
-  },
-  "security last used": {
-    "string": "Senast använd"
-  },
   "security.add_u2f_token": {
     "string": "Lägg till säkerhetsnyckel"
   },
@@ -2686,10 +2685,6 @@
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "att all användning av användarkonton ska följa Sveriges lagar och förordningar, "
-  },
-  "z/Z3FL": {
-    "developer_comment": "Signup",
-    "string": "Kontot skapades"
   },
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
