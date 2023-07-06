@@ -341,9 +341,6 @@
     "developer_comment": "Ladok account linking",
     "string": "Link your account to Ladok"
   },
-  "CSRF failed to validate": {
-    "string": "CSRF failed to validate, please reload the page"
-  },
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
@@ -386,21 +383,6 @@
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
     "string": "You can review your settings at the"
-  },
-  "Error: Gateway Time-out": {
-    "string": "The remote service is taking too long to respond, please try again"
-  },
-  "Error: HTTP 500 ": {
-    "string": "Unexpected error occurred. Please try again or contact support if the problem persists."
-  },
-  "Error: Internal Server Error": {
-    "string": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
-  },
-  "Error: NOT FOUND": {
-    "string": "There was an error (404) servicing your request. The administrator has been alerted. Please try again later."
-  },
-  "Error: Service Unavailable": {
-    "string": "Service Unavailable. Check your internet connection."
   },
   "FDb++j": {
     "developer_comment": "Verification letter expired",
@@ -520,9 +502,6 @@
     "developer_comment": "Emails main title",
     "string": "Email addresses"
   },
-  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
-    "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
-  },
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
@@ -602,12 +581,6 @@
     "developer_comment": "Footer faq",
     "string": "Help"
   },
-  "Missing data for required field.": {
-    "string": "Missing data for required field"
-  },
-  "Missing error message": {
-    "string": "Missing error message"
-  },
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "There is no technical information available"
@@ -639,12 +612,6 @@
   "Nk+I3K": {
     "developer_comment": "personal data edit title",
     "string": "Edit name and language"
-  },
-  "No connection to authorization endpoint": {
-    "string": "No connection to authorization endpoint, please try again later"
-  },
-  "Not a valid email address.": {
-    "string": "Not a valid email address."
   },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
@@ -1028,9 +995,6 @@
   "actions.action-completed": {
     "string": "Success"
   },
-  "add_nin.main_title": {
-    "string": "1. Add your id number"
-  },
   "aisFdT": {
     "developer_comment": "orcid logo",
     "string": "orcid logo"
@@ -1058,9 +1022,6 @@
   "bO7IGW": {
     "developer_comment": "generic error page",
     "string": "There was a problem displaying the page."
-  },
-  "banner.tagline": {
-    "string": "eduID is easier and safer login."
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
@@ -1094,67 +1055,14 @@
     "developer_comment": "orcid remove",
     "string": "remove"
   },
-  "captcha.one-step-left": {
-    "string": "Only one more step left!"
-  },
-  "chpass.different-repeat": {
-    "string": "The two passwords are different"
-  },
-  "chpass.form_custom_password": {
-    "string": "Enter new password"
-  },
-  "chpass.form_custom_password_repeat": {
-    "string": "Repeat new password"
-  },
-  "chpass.help-text-newpass-label": {
-    "developer_comment": "help text for custom password label",
-    "string": "Tip: Choose a strong password"
-  },
   "chpass.low-password-entropy": {
     "string": "Please provide a stronger password"
-  },
-  "chpass.no_old_pw": {
-    "string": "Please enter your old password"
-  },
-  "chpass.no_reauthn": {
-    "string": "You must re-authenticate to change your password"
-  },
-  "chpass.old_password": {
-    "string": "Current password"
   },
   "chpass.password-changed": {
     "string": "Your password has been changed"
   },
-  "chpass.stale_authn_info": {
-    "string": "Stale re-authentication. Please re-initiate the process."
-  },
-  "chpass.stale_reauthn": {
-    "string": "Stale re-authentication. Please re-initiate the process."
-  },
-  "chpass.suggested_password": {
-    "string": "Suggested password"
-  },
   "chpass.unable-to-verify-old-password": {
     "string": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
-  },
-  "cm.accept": {
-    "string": "ACCEPT"
-  },
-  "cm.close": {
-    "string": "CLOSE"
-  },
-  "cm.enter_code": {
-    "string": "Code"
-  },
-  "cm.finish": {
-    "string": "FINISH"
-  },
-  "cm.lost_code": {
-    "developer_comment": "Lost code problem description",
-    "string": "Is the code not working?"
-  },
-  "cm.ok": {
-    "string": "OK"
   },
   "coWKVJ": {
     "string": "Log in using another device"
@@ -1165,12 +1073,6 @@
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
     "string": "Invalid code"
-  },
-  "created.back_to_signup": {
-    "string": "Back to signup"
-  },
-  "created.confirm-registration": {
-    "string": "Confirm your email to log in to eduID."
   },
   "cred.credential_type": {
     "string": "Credential type."
@@ -1196,12 +1098,6 @@
   },
   "dKcigP": {
     "string": "The code sent to {email} has expired."
-  },
-  "dashboard.tagline_unverified": {
-    "string": "Don't forget to connect your identity to eduID"
-  },
-  "dashboard.tagline_verified": {
-    "string": "Make eduID more secure"
   },
   "document title Advanced Settings": {
     "string": "Advanced Settings | eduID"
@@ -1253,38 +1149,8 @@
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
-  "eidas.error_missing_nin": {
-    "string": "Please add a national identity number and try again"
-  },
-  "eidas.error_unknown_error": {
-    "string": "Temporary technical difficulties, please try again later"
-  },
-  "eidas.freja_instructions_install_link": {
-    "string": "What is Freja eID?"
-  },
-  "eidas.freja_instructions_step1": {
-    "string": "Install the app"
-  },
-  "eidas.freja_instructions_step2": {
-    "string": "Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)"
-  },
-  "eidas.freja_instructions_step3": {
-    "string": "The app will generate a QR-code"
-  },
-  "eidas.freja_instructions_step4": {
-    "string": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
-  },
-  "eidas.freja_instructions_step5": {
-    "string": "Freja eID is now ready to be used with your eduID"
-  },
-  "eidas.freja_instructions_tip_1": {
-    "string": "Tip: Use the app to find your nearest agent"
-  },
   "eidas.identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
-  },
-  "eidas.modal_title": {
-    "string": "Use Freja eID+ and pass a local authorised agent"
   },
   "eidas.nin_already_verified": {
     "string": "You have already verified your identity"
@@ -1314,15 +1180,6 @@
   "email.invalid_email": {
     "string": "The entered email is invalid"
   },
-  "emails.add_new": {
-    "string": "A new email address will receive a link to click or a code that can be used by clicking Confirm in the list of email addresses."
-  },
-  "emails.button_add": {
-    "string": "Add"
-  },
-  "emails.cannot_remove_primary": {
-    "string": "You can not delete the primary email"
-  },
   "emails.cannot_remove_unique": {
     "string": "You must have at least one email address"
   },
@@ -1331,9 +1188,6 @@
   },
   "emails.code-sent": {
     "string": "Successfully sent a code"
-  },
-  "emails.code_expired_send_new": {
-    "string": "Expired code, sending another"
   },
   "emails.code_invalid": {
     "string": "The code is invalid, please try again or request a new code"
@@ -1348,17 +1202,8 @@
   "emails.duplicated": {
     "string": "The email is already in the list."
   },
-  "emails.email": {
-    "string": "Email"
-  },
   "emails.get-success": {
     "string": "Successfully retrieved Email addresses"
-  },
-  "emails.input_help_text": {
-    "string": "A valid email address"
-  },
-  "emails.invalid_email": {
-    "string": "The entered value does not look like an email"
   },
   "emails.missing": {
     "string": "You must provide an email address"
@@ -1373,7 +1218,7 @@
     "string": "The email address was saved"
   },
   "emails.unconfirmed_address_not_primary": {
-    "string": "You need to confim and email address before it can be made primary"
+    "string": "You need to confirm and email address before it can be made primary"
   },
   "emails.unknown_email": {
     "string": "We have no record of the email address you provided"
@@ -1414,15 +1259,9 @@
     "developer_comment": "Signup",
     "string": "If this is your eduID, you can reset your password to log back in."
   },
-  "faq_link": {
-    "string": "For more information see the"
-  },
   "foTEGF": {
     "developer_comment": "verification status heading unverified",
     "string": "Your identity is not verified."
-  },
-  "foot.change-version-tip": {
-    "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -1475,9 +1314,6 @@
   "hcvQ9B": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access requires a \"confirmed\" Swedish National Identity Number (personnummer)."
-  },
-  "header.signup": {
-    "string": "SIGN UP"
   },
   "hg+a52": {
     "developer_comment": "Use other device 2",
@@ -1601,16 +1437,6 @@
   "letter.bad-postal-address": {
     "string": "The registered postal address is not a valid address"
   },
-  "letter.button_text_code": {
-    "string": "Enter code here"
-  },
-  "letter.letter_sent_msg": {
-    "string": "You have been sent a verification letter"
-  },
-  "letter.lost_code": {
-    "developer_comment": "Text for letter proofing confirm dialog",
-    "string": "When you click on the \"Send code\" link a letter with a code will be sent to your official post address."
-  },
   "letter.no-address-found": {
     "string": "No postal address found"
   },
@@ -1624,10 +1450,6 @@
     "developer_comment": "Placeholder for letter proofing text input",
     "string": "Code"
   },
-  "letter.resend_code": {
-    "developer_comment": "Text for letter code resend button",
-    "string": "Send code"
-  },
   "letter.saved-unconfirmed": {
     "string": "A letter with a code has been sent."
   },
@@ -1636,18 +1458,6 @@
   },
   "letter.wrong-code": {
     "string": "Incorrect code"
-  },
-  "lmp.button_text_code": {
-    "string": "Enter code here"
-  },
-  "lmp.button_text_request": {
-    "string": "by phone"
-  },
-  "lmp.initialize_proofing_help_text_tip_1": {
-    "string": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
-  },
-  "lmp.verification_success": {
-    "string": "Your national id number has been successfully verified"
   },
   "login.assurance_failure": {
     "string": "An error occurred. Please try again later."
@@ -1669,9 +1479,6 @@
   },
   "login.mfa.paragraph": {
     "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
-  },
-  "login.mfa_auth_failure": {
-    "string": "There was a problem with the authentication, please try again."
   },
   "login.no_sso_session": {
     "string": "Session not found. Please try again."
@@ -1728,39 +1535,9 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Far from your address now)"
   },
-  "mail_duplicated": {
-    "string": "Added email is duplicated"
-  },
-  "main.welcome": {
-    "string": "Welcome to eduID"
-  },
   "md5xqk": {
     "developer_comment": "Dashboard AccountLinking",
     "string": "If you are a researcher with an ORCID iD you can share it with your eduID."
-  },
-  "mfa.edge-no-u2f": {
-    "string": "There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome."
-  },
-  "mfa.error-getting-token": {
-    "string": "There was a problem using your security key"
-  },
-  "mfa.extra-security-enabled": {
-    "string": "Use your security key to log in. If it has a button, tap it."
-  },
-  "mfa.freja-eid": {
-    "string": "Use Freja eID instead"
-  },
-  "mfa.login-tapit": {
-    "string": "Use your security key to log in. If it has a button, tap it."
-  },
-  "mfa.no-webauthn-support": {
-    "string": "No support for security keys"
-  },
-  "mfa.no-webauthn-support-text": {
-    "string": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
-  },
-  "mfa.two-factor-authn": {
-    "string": "Use your security key to log in. If it has a button, tap it."
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
@@ -1781,12 +1558,6 @@
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
   },
-  "nin_display.verify-identity_unverified_main_title": {
-    "string": "1. Your added id number"
-  },
-  "nin_display.verify-identity_verified_main_title": {
-    "string": "id number"
-  },
   "nins.illegal_chars": {
     "string": "A national id number can only have digits"
   },
@@ -1800,17 +1571,11 @@
   "nins.no-mobile-match": {
     "string": "No phone number matching the given national id number"
   },
-  "nins.only_one_to_verify": {
-    "string": "You can only have one unverified national id number to verify it. Please remove the unwanted ones."
-  },
   "nins.success_removal": {
     "string": "Successfully removed national id number"
   },
   "nins.successfully_added": {
     "string": "Your id number was added."
-  },
-  "nins.valid_nin": {
-    "string": "Valid national id number"
   },
   "nins.verified_no_rm": {
     "string": "You cannot remove your verified national id number"
@@ -1849,84 +1614,9 @@
     "developer_comment": "button cancel",
     "string": "cancel"
   },
-  "oc.error_missing_nin": {
-    "string": "Please add a national identity number and try again"
-  },
-  "oc.error_unknown_error": {
-    "string": "Temporary technical difficulties, please try again later"
-  },
-  "oc.initialize_proofing": {
-    "string": "SE-LEG"
-  },
-  "oc.initialize_proofing_help_text": {
-    "string": "To use this option you need to visit a {seleg_info_link} and show identification."
-  },
-  "oc.instructions_step_1": {
-    "string": "Visit the nearest library on this list:"
-  },
-  "oc.instructions_step_2": {
-    "string": "Bring your chosen form of ID and the QR code below and ask the librarian for a verification of your eduID account."
-  },
-  "oc.instructions_step_3": {
-    "string": "Within a couple of hours you account should be verified."
-  },
-  "oc.instructions_title": {
-    "string": "How to confirm your account using SE-LEG"
-  },
-  "oc.modal_title": {
-    "string": "Confirm using SE-LEG"
-  },
-  "ocf.error_missing_nin": {
-    "string": "Please add a national identity number and try again"
-  },
-  "ocf.error_unknown_error": {
-    "string": "Temporary technical difficulties, please try again later"
-  },
-  "ocf.freja_instructions_install_link": {
-    "string": "I need to install Freja eID"
-  },
-  "ocf.freja_instructions_step_1": {
-    "string": "Install the Freja eID app on your mobile device."
-  },
-  "ocf.freja_instructions_step_2": {
-    "string": "Open the app and follow the instructions to reach Freja eID+ (Plus) status."
-  },
-  "ocf.freja_instructions_step_3": {
-    "string": "Bring your chosen form of ID to an authorized agent and ask them to scan the QR-code in the Freja eID app. There is a map function in the Freja eID app to help you locate your nearest agent."
-  },
-  "ocf.freja_instructions_step_4": {
-    "string": "Return here using your mobile phone and click the link at the bottom of the page. The app will open."
-  },
-  "ocf.freja_instructions_step_5": {
-    "string": "Approve that Freja eID sends your personal identity number to eduID. Done!"
-  },
-  "ocf.freja_instructions_title": {
-    "string": "How to confirm your account using Freja eID"
-  },
-  "ocf.initialize_proofing": {
-    "string": "with Freja eID"
-  },
-  "ocf.initialize_proofing_help_text": {
-    "string": "To use this option you need to have the {skaffa_freja_eid_link} app installed on your device."
-  },
-  "ocf.modal_title": {
-    "string": "Confirm using Freja eID"
-  },
-  "ocf.not_on_mobile_message": {
-    "string": "You need to switch to a mobile device (iOS or Android) with {skaffa_freja_eid_link} installed before you will be able to confirm your account using Freja eID."
-  },
-  "ocf.not_on_mobile_title": {
-    "string": "Not using your phone?"
-  },
-  "ocf.open_app": {
-    "string": "I have Freja eID installed"
-  },
   "oiMtbK": {
     "developer_comment": "Terms of use (heading)",
     "string": "Terms of use"
-  },
-  "orc.about_link": {
-    "string": "Learn more about ORCID in eduID from our {faq_link}."
   },
   "orc.already_connected": {
     "string": "ORCID already connected to this account"
@@ -1939,9 +1629,6 @@
   },
   "orc.sub_mismatch": {
     "string": "Subject mismatch when trying to connect ORCID account"
-  },
-  "orc.title": {
-    "string": "ORCID"
   },
   "orc.unknown_state": {
     "string": "State was unknown when trying to connect ORCID account"
@@ -1965,21 +1652,9 @@
     "developer_comment": "verify identity add nin heading",
     "string": "Add your id number"
   },
-  "pd.all-data-success": {
-    "string": "Successfully retrieved personal information"
-  },
-  "pd.choose-language": {
-    "string": "Choose language"
-  },
-  "pd.display_name": {
-    "string": "Display name"
-  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "First name"
-  },
-  "pd.pdata-success": {
-    "string": "Successfully retrieved personal information"
   },
   "pd.save-success": {
     "string": "Personal information updated"
@@ -1990,9 +1665,6 @@
   },
   "pdata.field_required": {
     "string": "This field is required"
-  },
-  "pfilled.completion": {
-    "string": "Completion"
   },
   "phone.captcha-failed": {
     "string": "Captcha failed. Please try again."
@@ -2015,20 +1687,8 @@
   "phone_format": {
     "string": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 6-20 digits."
   },
-  "phones.add_new": {
-    "string": "A new phone number will receive a code for you to use by clicking Confirm in the list of numbers."
-  },
-  "phones.cannot_remove_primary": {
-    "string": "You cannot remove your primary phone number"
-  },
-  "phones.cannot_remove_unique": {
-    "string": "You must have at least one phone number"
-  },
   "phones.code-sent": {
     "string": "Successfully sent a code"
-  },
-  "phones.code_expired_send_new": {
-    "string": "Expired code, sending another"
   },
   "phones.code_invalid": {
     "string": "Invalid code"
@@ -2039,14 +1699,8 @@
   "phones.duplicated": {
     "string": "The number is already in the list."
   },
-  "phones.get-success": {
-    "string": "Successfully retrieved phone numbers"
-  },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
-  },
-  "phones.long_description": {
-    "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
   },
   "phones.primary-success": {
     "string": "The phone number was set as primary"
@@ -2085,12 +1739,6 @@
   "ppCiRH": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Click here to order a new code"
-  },
-  "profile.phone_display_non-primary_data": {
-    "string": "make number primary"
-  },
-  "profile.phone_display_unconfirmed_data": {
-    "string": "confirm added number"
   },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
@@ -2167,20 +1815,8 @@
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
   },
-  "register.create-account": {
-    "string": "Sign up with your email address to start."
-  },
   "required": {
     "string": "*Field cannot be empty"
-  },
-  "resend.email-label": {
-    "string": "Complete registration by clicking the link sent to:"
-  },
-  "resend.link-sent": {
-    "string": "A link has been sent to your email address."
-  },
-  "resetpw.accept-password": {
-    "string": "accept password"
   },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
@@ -2200,20 +1836,11 @@
   "resetpw.fido-token-fail": {
     "string": "There was a problem using your security key for resetting password"
   },
-  "resetpw.go-back": {
-    "string": "go back"
-  },
-  "resetpw.go-to-eduid": {
-    "string": "Go to eduID"
-  },
   "resetpw.invalid_session": {
     "string": "Invalid session, please try again"
   },
   "resetpw.invalid_user": {
     "string": "User has not completed signup"
-  },
-  "resetpw.new-password": {
-    "string": "New password"
   },
   "resetpw.phone-code-unknown": {
     "string": "Incorrect code."
@@ -2227,32 +1854,14 @@
   "resetpw.reset-pw-initialized": {
     "string": "Reset password link has been sent to your email."
   },
-  "resetpw.return-login": {
-    "string": "return to Login"
-  },
   "resetpw.send-sms-failed": {
     "string": "Failed to send code"
-  },
-  "resetpw.send-sms-success": {
-    "string": "A code has been sent to your phone."
-  },
-  "resetpw.set-new-password-description": {
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
-  },
-  "resetpw.set-new-password-heading": {
-    "string": "Set your new password"
-  },
-  "resetpw.set-new-password-success": {
-    "string": "Password has been updated."
   },
   "resetpw.sms-throttled": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
   "resetpw.state-not-found": {
     "string": "Could not continue the reset password process. Please try again"
-  },
-  "resetpw.use_extra_security_key": {
-    "string": "Use your security key"
   },
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
@@ -2273,70 +1882,22 @@
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
   },
-  "security.add_u2f_token": {
-    "string": "Add U2F token"
-  },
-  "security.add_webauthn_token_device": {
-    "string": "Register this device as security key"
-  },
-  "security.add_webauthn_token_key": {
-    "string": "Add security key"
-  },
-  "security.credential": {
-    "string": "Credential"
-  },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
     "string": "The description is too long"
   },
-  "security.main_title": {
-    "string": "Security"
-  },
   "security.no_reauthn": {
     "string": "Missing authentication"
-  },
-  "security.password_credential_type": {
-    "string": "Password"
   },
   "security.placeholder": {
     "developer_comment": "placeholder text for security key description input",
     "string": "Describe your security key"
   },
-  "security.remove": {
-    "string": "Remove"
-  },
   "security.stale_authn_info": {
     "string": "The authentication expired. Please try again."
   },
-  "security.u2f-describe-title": {
-    "string": "Enter a description for the U2F token you are about to register"
-  },
-  "security.u2f-token-removed": {
-    "string": "U2F token successfully removed"
-  },
-  "security.u2f.description_to_long": {
-    "string": "You tried to set a U2F token description long"
-  },
-  "security.u2f.max_allowed_tokens": {
-    "string": "You already have the maximum allowed number of tokens"
-  },
-  "security.u2f.missing_challenge_data": {
-    "string": "Found no U2F challenge data in your session"
-  },
-  "security.u2f.missing_enrollment_data": {
-    "string": "Found no U2F enrollment data in your session"
-  },
-  "security.u2f.missing_token": {
-    "string": "No U2F token found in your session"
-  },
-  "security.u2f.no_token_found": {
-    "string": "No U2F token found in your session"
-  },
   "security.u2f_credential_type": {
     "string": "U2F token"
-  },
-  "security.u2f_register_success": {
-    "string": "U2F token successfully registered"
   },
   "security.user-update-throttled": {
     "string": "Too many attempts to update names have been made. Try again later."
@@ -2371,35 +1932,14 @@
   "signup.already-verified": {
     "string": "You have already verified your account."
   },
-  "signup.captcha-already-completed": {
-    "string": "The captcha has already been completed."
-  },
-  "signup.captcha-failed": {
-    "string": "There was a problem verifying that you are a human. Please try again."
-  },
-  "signup.captcha-not-completed": {
-    "string": "The captcha has not been completed."
-  },
-  "signup.captcha-not-requested": {
-    "string": "The captcha has not been requested."
-  },
   "signup.credential-not-added": {
     "string": "No credential added."
-  },
-  "signup.email-address-used": {
-    "string": "The email address is already in use."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Try again later."
   },
   "signup.email-verification-expired": {
     "string": "Code expired. Please try again."
-  },
-  "signup.email-verification-failed": {
-    "string": "The email verification failed. Please try again."
-  },
-  "signup.email-verification-not-complete": {
-    "string": "The email verification has not been completed."
   },
   "signup.email-verification-to-many-tries": {
     "string": "Too many invalid verification attempts. Please try again."
@@ -2422,26 +1962,14 @@
   "signup.registering-new": {
     "string": "Email address successfully registered"
   },
-  "signup.registering-resend-code": {
-    "string": "Verification email resent"
-  },
   "signup.tou-not-accepted": {
     "string": "Terms of use is not accepted."
-  },
-  "signup.tou-not-completed": {
-    "string": "Terms of use has not been completed."
-  },
-  "signup.tou-wrong-version": {
-    "string": "Incorrect Terms of use version."
   },
   "signup.unknown-code": {
     "string": "Unknown code."
   },
   "signup.user-already-exists": {
     "string": "User already exists."
-  },
-  "signup.verification-resent": {
-    "string": "Verification email resent"
   },
   "signup.webauthn-not-registered": {
     "string": "Webauthn not registered."
@@ -2500,27 +2028,6 @@
     "developer_comment": "mfa primary option",
     "string": "Use security key"
   },
-  "tl.make_primary": {
-    "string": "MAKE PRIMARY"
-  },
-  "tl.pending": {
-    "string": "confirm"
-  },
-  "tl.primary": {
-    "string": "PRIMARY"
-  },
-  "tou.must-accept": {
-    "string": "You must accept the new terms of use before continuing"
-  },
-  "tou.not-tou": {
-    "string": "There were problems retrieving the current ToU, please contact the site administrators."
-  },
-  "u2f.action-required": {
-    "string": "Action required for multi factor authentication"
-  },
-  "u2f.push-the-button": {
-    "string": "Please touch the button in your U2F key"
-  },
   "uKzmRZ": {
     "developer_comment": "Reset Password email link sent",
     "string": "The link in the e-mail is valid for two hours."
@@ -2571,36 +2078,6 @@
   "vQpAQz": {
     "developer_comment": "verification status sub text",
     "string": "Your eduID is ready to use."
-  },
-  "value not changed": {
-    "string": "The value is not changed"
-  },
-  "verify-identity.verified_main_title": {
-    "string": "Your eduID is ready to use"
-  },
-  "verify-identity.verified_pw_reset_extra_security": {
-    "string": "Add a phone number or a security key to your eduID to keep your identity at password reset."
-  },
-  "verify-identity.vetting_explanation_add_nin": {
-    "string": "Start by adding your ID number above"
-  },
-  "verify-identity.vetting_explanation_add_phone_number": {
-    "string": "Start by adding your Swedish phone number in"
-  },
-  "verify-identity.vetting_explanation_confirm_phone_number": {
-    "string": "Confirm your phone number in"
-  },
-  "verify-identity.vetting_explanation_only_available_swe_number": {
-    "string": "Only possible with Swedish phone number"
-  },
-  "verify-identity.vetting_freja_tagline": {
-    "string": "For you able to create a Freja eID by visiting one of the authorised agents"
-  },
-  "verify-identity.vetting_link_settings": {
-    "string": "Settings"
-  },
-  "verify-identity.vetting_phone_tagline": {
-    "string": "For Swedish phone numbers entered and confirmed in eduID."
   },
   "vf92mh": {
     "developer_comment": "chpass custom password",
