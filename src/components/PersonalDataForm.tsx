@@ -76,11 +76,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
 function RenderLanguageSelect(): JSX.Element {
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
-  const language_list = Object.keys(_languages)
-    .sort()
-    .map((key) => {
-      return [key, _languages[key]];
-    });
+  const language_list = Object.entries(_languages);
 
   return (
     <fieldset>
