@@ -68,20 +68,27 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
         <ul id="password-custom-help">
           {[
             <FormattedMessage
+              key={1}
               defaultMessage={`Use upper- and lowercase characters, but not at the beginning or end`}
               description="help text for custom password tips"
             />,
             <FormattedMessage
+              key={2}
               defaultMessage={`Add digits somewhere, but not at the beginning or end`}
               description="help text for custom password tips"
             />,
             <FormattedMessage
-              defaultMessage={`Add special characters, such as  @ $ \ + _ %`}
+              key={3}
+              defaultMessage={`Add special characters, such as  @ $ \\ + _ %`}
               description="help text for custom password tips"
             />,
-            <FormattedMessage defaultMessage={`Spaces are ignored`} description="help text for custom password tips" />,
-          ].map((list, index) => {
-            return <li key={index}>{list}</li>;
+            <FormattedMessage
+              key={4}
+              defaultMessage={`Spaces are ignored`}
+              description="help text for custom password tips"
+            />,
+          ].map((list, key) => {
+            return <li key={key}>{list}</li>;
           })}
         </ul>
       </div>
