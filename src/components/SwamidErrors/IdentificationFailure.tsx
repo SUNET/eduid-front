@@ -28,14 +28,17 @@ export function IdentificationFailure(props: FailureComponentProps): JSX.Element
 function MissingNin(): JSX.Element {
   const error_info = useErrorsAppSelector((state) => state.config.error_info);
 
-  function SpecificMessage(): JSX.Element {
-    if (error_info?.logged_in && error_info.has_locked_nin && !error_info.has_verified_nin) {
+  let SpecificMessage;
+
+  if (error_info?.logged_in && error_info.has_locked_nin && !error_info.has_verified_nin) {
+    SpecificMessage = (
       <FormattedMessage
         defaultMessage="You need to re-confirm your identity in the eduID Dashboard to access this service."
         description="ErrorURL identification failure"
-      />;
-    }
-    return (
+      />
+    );
+  } else {
+    SpecificMessage = (
       <FormattedMessage
         defaultMessage="If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it."
         description="ErrorURL identification failure"
@@ -52,9 +55,7 @@ function MissingNin(): JSX.Element {
           description="ErrorURL identification failure"
         />
       </p>
-      <p>
-        <SpecificMessage />
-      </p>
+      <p>{SpecificMessage}</p>
     </React.Fragment>
   );
 }
