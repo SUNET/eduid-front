@@ -87,8 +87,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
               defaultMessage={`Spaces are ignored`}
               description="help text for custom password tips"
             />,
-          ].map((list, key) => {
-            return <li key={key}>{list}</li>;
+          ].map((list) => {
+            return <li key={list.key}>{list}</li>;
           })}
         </ul>
       </div>

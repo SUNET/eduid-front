@@ -35,9 +35,11 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
 
     // Open Modal to request letter or verify code
     if (letterPending || letterNotRequested || letterCodeExpired) {
-      return setShowNotificationModal(true), setShowConfirmationModal(false);
+      setShowNotificationModal(true);
+      setShowConfirmationModal(false);
     } else {
-      return setShowNotificationModal(false), setShowConfirmationModal(true);
+      setShowNotificationModal(false);
+      setShowConfirmationModal(true);
     }
   }
 
