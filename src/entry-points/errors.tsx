@@ -5,6 +5,7 @@ import { ERRORS_CONFIG_URL } from "globals";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { setupLanguage } from "translation";
+import "../../src/styles/index.scss";
 import { ErrorsMain } from "../components/SwamidErrors/ErrorsMain";
 import { polyfillsInit } from "./polyfills-common";
 
