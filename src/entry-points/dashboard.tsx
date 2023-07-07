@@ -10,6 +10,7 @@ import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
+import "../../src/styles/index.scss";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
