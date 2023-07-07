@@ -113,7 +113,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
               type="password"
               name="display-none-new-password"
               id="display-none-new-password"
-              defaultValue={formProps.values["new-password"] && formProps.values["new-password"]}
+              defaultValue={formProps.values["new-password"] ? formProps.values["new-password"] : ""}
             />
             <FinalField
               id="new-password"
@@ -193,7 +193,7 @@ export function SetNewPassword(): JSX.Element | null {
           name="copy-new-password"
           id="copy-new-password"
           ref={ref}
-          defaultValue={password && password}
+          defaultValue={password ? password : ""}
           readOnly={true}
         />
         <button id="clipboard" className="icon-only copybutton" onClick={copyToClipboard}>
