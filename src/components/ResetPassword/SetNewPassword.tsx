@@ -22,7 +22,7 @@ import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 const newPasswordFormId = "new-password-form";
 
 interface NewPasswordFormData {
-  "new-password"?: string;
+  newPassword?: string;
 }
 
 interface NewPasswordFormProps {
@@ -39,20 +39,20 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   function validateNewPassword(values: NewPasswordFormData) {
-    const newPassword = values["new-password"];
+    const newPassword = values.newPassword;
     const errors: NewPasswordFormData = {};
 
     if (!newPassword || emptyStringPattern.test(newPassword)) {
-      errors["new-password"] = "required";
+      errors.newPassword = "required";
     } else if (newPassword?.replace(/\s/g, "") !== props.suggested_password?.replace(/\s/g, "")) {
       // Remove whitespace from both passwords before comparing
-      errors["new-password"] = "chpass.different-repeat";
+      errors.newPassword = "chpass.different-repeat";
     }
     return errors;
   }
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values["new-password"];
+    const newPassword = values.newPassword;
 
     if (!newPassword || !email_code) {
       return;
@@ -113,12 +113,12 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
               type="password"
               name="display-none-new-password"
               id="display-none-new-password"
-              defaultValue={formProps.values["new-password"] ? formProps.values["new-password"] : ""}
+              defaultValue={formProps.values.newPassword ? formProps.values.newPassword : ""}
             />
             <FinalField
               id="new-password"
               type="text"
-              name="new-password"
+              name="newPassword"
               component={CustomInput}
               required={true}
               label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
