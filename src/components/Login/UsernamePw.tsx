@@ -21,7 +21,7 @@ import { forgetThisDevice } from "./NewDevice";
 
 interface UsernamePwFormData {
   email?: string;
-  "current-password"?: string;
+  currentPassword?: string;
 }
 
 export default function UsernamePw() {
@@ -32,12 +32,12 @@ export default function UsernamePw() {
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
 
-    if (ref && values.email && values["current-password"]) {
+    if (ref && values.email && values.currentPassword) {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
       const res = await dispatch(
-        fetchUsernamePassword({ ref, username: values.email, password: values["current-password"] })
+        fetchUsernamePassword({ ref, username: values.email, password: values.currentPassword })
       );
       if (fetchUsernamePassword.fulfilled.match(res)) {
         if (res.payload.finished) {
@@ -50,8 +50,8 @@ export default function UsernamePw() {
     if (!values.email) {
       errors.email = "required";
     }
-    if (!values["current-password"]) {
-      errors["current-password"] = "required";
+    if (!values.currentPassword) {
+      errors.currentPassword = "required";
     }
     return errors;
   }
@@ -77,7 +77,7 @@ export default function UsernamePw() {
               <form onSubmit={formProps.handleSubmit}>
                 <fieldset>
                   <UsernameInputPart />
-                  <PasswordInput name="current-password" autoComplete="current-password" />
+                  <PasswordInput name="currentPassword" autoComplete="current-password" />
                 </fieldset>
                 <div className="flex-between">
                   <div className="buttons">
