@@ -6,7 +6,20 @@ export const safeEncode = (data: ArrayBuffer): string => {
   const ascii = String.fromCharCode.apply(null, buf as unknown as number[]); // cast to unknown to number[] to avoid ts(2352)
   const b64str = window.btoa(ascii);
   // "urlencode", replacing slashes with underscore, plus with hyphen and stripping any padding from the end
-  return b64str.replace(/\//g, "_").replace(/\+/g, "-").replace(/=*$/, "");
+  // Safe replacement function to avoid backtracking
+  const safeReplace = (match: string) => {
+    switch (match) {
+      case "/":
+        return "_";
+      case "+":
+        return "-";
+      default:
+        return "";
+    }
+  };
+
+  // Use a single regex with the safeReplace function as a callback
+  return b64str.replace(/[\/+]=*$/g, safeReplace);
 };
 
 /**
