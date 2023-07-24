@@ -15,7 +15,7 @@ module.exports = function (api) {
     [
       "formatjs",
       {
-        messagesDir: "./src/login/translation",
+        messagesDir: "./src/translation",
         enforceDescriptions: false,
         idInterpolationPattern: "[sha512:contenthash:base64:6]",
         ast: true,

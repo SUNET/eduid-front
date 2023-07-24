@@ -103,10 +103,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
-  "17FW6Y": {
-    "developer_comment": "profile name display title",
-    "string": "Name"
-  },
   "19fREK": {
     "developer_comment": "security verified",
     "string": "Verified"
@@ -320,6 +316,10 @@
   "AZ7oSU": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Code"
+  },
+  "AaQdgT": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Add special characters, such as @ $ \\ + _ %"
   },
   "Advanced settings": {
     "developer_comment": "Advanced settings",
@@ -804,10 +804,6 @@
   "TpraxF": {
     "developer_comment": "Dashboard change password modal title",
     "string": "For security reasons..."
-  },
-  "TvZvvF": {
-    "developer_comment": "help text for custom password tips",
-    "string": "Add special characters, such as @ $ + _ %"
   },
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
@@ -1865,10 +1861,6 @@
   },
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
-  },
-  "s0no/w": {
-    "developer_comment": "profile name display no data",
-    "string": "add name"
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
