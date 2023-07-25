@@ -8,6 +8,10 @@
   .display-nin-show-hide {
     display: flex;
 
+    .display-data {
+      width: 200px;
+    }
+
     // show and hide button
     button {
       margin-left: 1rem;
