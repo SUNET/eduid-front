@@ -134,7 +134,6 @@ button.btn-link {
   &:not(:disabled):not(.disabled):active:focus {
     color: $txt-orange;
     background-color: transparent;
-    transform: scale(1);
     text-decoration: underline;
     box-shadow: none;
   }
