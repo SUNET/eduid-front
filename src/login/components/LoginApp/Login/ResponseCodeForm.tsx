@@ -99,12 +99,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
 
     switch (pressedKey.toLowerCase()) {
       case "backspace":
-      case "delete": {
-        if (inputs[index - 1] !== undefined) {
-          inputs[index - 1].focus();
-        }
-        break;
-      }
+      case "delete":
       case "arrowleft": {
         if (inputs[index - 1] !== undefined) {
           inputs[index - 1].focus();
