@@ -139,6 +139,51 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     }
   }
 
+  function handlePaste(event: React.ClipboardEvent<HTMLInputElement>) {
+    event.preventDefault();
+
+    const pastedText = event.clipboardData.getData("text");
+    const numbersOnly = pastedText.replace(/[^\d]/g, "");
+    const digits = numbersOnly.split("");
+
+    // Get all the input elements
+    const inputs = document.querySelectorAll('input[name^="v["]');
+
+    // Save the current input values
+    const currentValues = Array.from(inputs).map((input) => (input as HTMLInputElement).value);
+
+    // Distribute the digits to each input
+    for (let i = 0; i < Math.min(digits.length, inputs.length); i++) {
+      const input = inputs[i] as HTMLInputElement;
+      const digit = digits[i];
+
+      // Update the input value only if it's empty
+      if (!input.value) {
+        input.value = digit;
+      }
+
+      const fieldName = `v[${i}]`;
+      form.change(fieldName, input.value);
+    }
+
+    // Restore the previous input values for any remaining empty inputs
+    for (let i = digits.length; i < inputs.length; i++) {
+      const input = inputs[i] as HTMLInputElement;
+      const fieldName = `v[${i}]`;
+
+      if (!input.value) {
+        input.value = currentValues[i] || "";
+        form.change(fieldName, input.value);
+      }
+    }
+
+    // Trigger form submission if all inputs are filled
+    const allInputsFilled = Array.from(inputs).every((input) => (input as HTMLInputElement).value !== "");
+    if (allInputsFilled && form.getState().valid) {
+      form.submit();
+    }
+  }
+
   return (
     <FinalField<number>
       name={`v[${num}]`}
@@ -155,6 +200,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       onInput={handleInput}
       onKeyUp={handleBackspace}
       onKeyDown={handleArrows}
+      onPaste={handlePaste}
     />
   );
 }
