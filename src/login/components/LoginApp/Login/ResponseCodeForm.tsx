@@ -1,4 +1,4 @@
-import React, { FocusEvent } from "react";
+import React, { useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -84,63 +84,58 @@ interface CodeFieldProps {
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
+  const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
-
-  /* Advance to the next input field on (valid) key press, and handle back/forward/delete keys */
-  function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    const pressedKey = event.key;
-    const ResponseCodeForm = event.currentTarget.form;
-    const inputs = [...ResponseCodeForm].filter((input: HTMLInputElement) => input.tagName.toLowerCase() === "input");
-    const index = inputs.indexOf(event.currentTarget);
-
-    if (form.getState().valid) {
-      form.submit();
-    }
-
-    switch (pressedKey.toLowerCase()) {
-      case "backspace":
-      case "delete": {
-        if (inputs[index - 1] !== undefined) {
-          inputs[index - 1].focus();
-        }
-        break;
-      }
-      case "arrowleft": {
-        if (inputs[index - 1] !== undefined) {
-          inputs[index - 1].focus();
-        }
-        break;
-      }
-      case "arrowright": {
-        if (inputs[index + 1] !== undefined) {
-          inputs[index + 1].focus();
-        }
-        break;
-      }
-      default: {
-        if (isDigit(pressedKey)) {
-          // In case more than one digit is pressed rapidly, the second one is blocked in the keyPress
-          // event handler, but both generate keyUp event. We only want to advance the focus if a value
-          // was registered for this input.
-          const thisInputHasValue = Boolean((event.target as HTMLTextAreaElement).value);
-          if (inputs[index + 1] !== undefined && thisInputHasValue) {
-            inputs[index + 1].focus();
-          }
-        }
-        break;
-      }
-    }
-  }
-
-  function handleCodeFieldKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
-    if (!isDigit(e.key)) e.preventDefault();
-    // Prevent more than 1 digit per input field
-    if ((e.target as HTMLTextAreaElement).value) e.preventDefault();
-  }
 
   function validateCodeForm(value: number): string | undefined {
     if (!value) {
       return "required";
+    }
+  }
+
+  function selectIfNotEmpty(event: React.FocusEvent<HTMLInputElement>) {
+    if (event.target.value) {
+      event.target.select();
+    }
+  }
+
+  function handleInput(event: React.FormEvent<HTMLInputElement>) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    const onlyNumbers = value.replace(/\D/g, ""); // Remove all non-numeric characters
+
+    // Update the input field's value with only numeric characters
+    target.value = onlyNumbers;
+
+    if (onlyNumbers && target.nextElementSibling instanceof HTMLInputElement) {
+      target.nextElementSibling.focus();
+    }
+  }
+
+  function handleBackspace(event: React.KeyboardEvent<HTMLFormElement>) {
+    const target = event.target as HTMLInputElement;
+    if (
+      event.key === "Backspace" &&
+      target?.value === "" &&
+      target.previousElementSibling instanceof HTMLInputElement
+    ) {
+      target?.previousElementSibling?.focus();
+    }
+    if (form.getState().valid) {
+      form.submit();
+    }
+  }
+
+  function handleArrows(event: React.KeyboardEvent<HTMLInputElement>) {
+    const target = event.target as HTMLInputElement;
+    if (event.key === "ArrowLeft" && target.previousElementSibling instanceof HTMLInputElement) {
+      event.preventDefault();
+      target.previousElementSibling.focus();
+    }
+
+    if (event.key === "ArrowRight" && target.nextElementSibling instanceof HTMLInputElement) {
+      event.preventDefault();
+      target.nextElementSibling.focus();
     }
   }
 
@@ -149,21 +144,17 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       name={`v[${num}]`}
       component="input"
       type="number"
+      pattern="[0-9]*"
       maxLength="1"
-      pattern="[0-9]"
-      min="0"
-      max="9"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
       autoFocus={autoFocus}
-      onKeyUp={handleKeyUp}
-      onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
-      onKeyPress={handleCodeFieldKeyPress}
       validate={validateCodeForm}
+      ref={(input: HTMLInputElement) => input && inputsRef.current.push(input)}
+      onFocus={selectIfNotEmpty}
+      onInput={handleInput}
+      onKeyUp={handleBackspace}
+      onKeyDown={handleArrows}
     />
   );
-}
-
-function isDigit(c: string) {
-  return c >= "0" && c <= "9";
 }
