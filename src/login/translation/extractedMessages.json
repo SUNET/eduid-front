@@ -1547,6 +1547,9 @@
     "developer_comment": "enter code",
     "string": "enter code"
   },
+  "kHCeni": {
+    "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
@@ -1841,9 +1844,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
-  },
-  "o3LM/J": {
-    "string": "Enter the six digit code sent to {email} to verify your email address"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
