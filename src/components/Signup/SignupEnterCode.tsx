@@ -131,7 +131,8 @@ export function SignupEnterCode(): JSX.Element {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="Enter the six digit code sent to {email} to verify your email address"
+            defaultMessage={`Enter the six digit code sent to {email} to verify your email address. You can also copy 
+              and paste the code from the email into the input field.`}
             values={{
               email: (
                 <span id="email_address">
