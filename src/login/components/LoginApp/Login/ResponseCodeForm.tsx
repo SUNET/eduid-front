@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -86,6 +86,7 @@ interface CodeFieldProps {
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
+  const [isPasted, setIsPasted] = useState(false);
 
   function validateCodeForm(value: number): string | undefined {
     if (!value) {
@@ -121,7 +122,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     ) {
       target?.previousElementSibling?.focus();
     }
-    if (form.getState().valid) {
+    if (form.getState().valid && !isPasted) {
       form.submit();
     }
   }
@@ -180,7 +181,12 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     // Trigger form submission if all inputs are filled
     const allInputsFilled = Array.from(inputs).every((input) => (input as HTMLInputElement).value !== "");
     if (allInputsFilled && form.getState().valid) {
-      form.submit();
+      setIsPasted(true);
+
+      setTimeout(() => {
+        form.submit();
+        setIsPasted(false);
+      }, 1000); // 1 seconds delay
     }
   }
 
