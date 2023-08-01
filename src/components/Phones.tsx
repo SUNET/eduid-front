@@ -111,7 +111,7 @@ function Phones() {
     (async () => {
       try {
         const captchaValue = values["phone-captcha-modal"];
-        const res = await dispatch(sendCaptchaResponse({ internal_response: captchaValue }));
+        const res = await dispatch(sendCaptchaResponse({ internal_response: captchaValue.trim() }));
         if (sendCaptchaResponse.fulfilled.match(res)) {
           setCompleteCaptcha(false);
           if (selectedPhoneNumber) {
