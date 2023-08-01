@@ -71,12 +71,12 @@ export function SignupCaptcha(): JSX.Element | null {
 
       <fieldset>
         <label className="toggle flex-between" htmlFor="captcha-switch">
-          <span>
+          <legend>
             <FormattedMessage
               defaultMessage="Use a validation service provided by a third party"
               description="captcha option"
             />
-          </span>
+          </legend>
           <input
             onChange={toggleCaptcha}
             className="toggle-checkbox"
