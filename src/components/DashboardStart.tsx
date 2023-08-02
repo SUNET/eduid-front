@@ -5,16 +5,18 @@ import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
+import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
 import { LetterProofingState } from "reducers/LetterProofing";
+import AccordionItemTemplate from "./AccordionItemTemplate";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
     return (
-      <figure className="verification-status unverified">
+      <figure className="status unverified">
         <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
         <div>
           <h3>
@@ -41,7 +43,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
     );
   }
   return (
-    <div className="verification-status verified">
+    <div className="status verified">
       <FontAwesomeIcon icon={faCircleCheck as IconProp} />
       <div>
         <h3>
@@ -70,20 +72,26 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
 
   if (props.letter_proofing.letter_expired) {
     letterStatus = (
-      <FormattedMessage description="Verification letter expired" defaultMessage="Verification letter expired" />
+      <FormattedMessage
+        description="Verification letter expired, status"
+        defaultMessage="A verification letter has been expired"
+      />
     );
-  } else
+  } else {
     letterStatus = (
-      <FormattedMessage description="Verification letter requested" defaultMessage="Verification letter requested" />
+      <FormattedMessage
+        description="Verification letter requested, status"
+        defaultMessage="A verification letter has been requested."
+      />
     );
+  }
 
   return (
-    <div className="data-container">
-      {letterStatus}
-      <Link to="verify-identity/#letter-proofing">
-        <FormattedMessage description="link to detail page" defaultMessage="order a new code" />
-      </Link>
-    </div>
+    <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["se-letter"]}>
+      <AccordionItemTemplate title={letterStatus} additionalInfo="" uuid="se-letter" disabled={false}>
+        <LetterProofing disabled={false} />
+      </AccordionItemTemplate>
+    </Accordion>
   );
 }
 
@@ -161,8 +169,8 @@ export default function Start(): JSX.Element {
 
         <VerificationProgress identities={identities} />
       </article>
-      <Recommendations />
       {progress}
+      <Recommendations />
     </React.Fragment>
   );
 }

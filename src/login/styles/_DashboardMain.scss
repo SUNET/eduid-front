@@ -80,7 +80,7 @@
 }
 
 // --- VERIFICATION PROGRESS STYLES--- //
-.verification-status {
+.status {
   @extend figure;
 
   display: flex;
@@ -113,28 +113,5 @@
 
   &.verified svg {
     color: $success-green;
-  }
-}
-
-.data-container :last-child {
-  margin-left: 2rem;
-}
-
-.data-container {
-  @extend figure;
-
-  display: flex;
-  align-items: center;
-
-  a {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: $bp-sm) {
-    flex-direction: column;
-
-    & :last-child {
-      margin-left: 0;
-    }
   }
 }
