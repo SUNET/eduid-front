@@ -1,9 +1,9 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { UNKNOWN_MESSAGE } from "login/translation";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
-import { clearNotifications, eduidNotification, notificationLevel } from "reducers/Notifications";
+import { clearNotifications, eduidNotification, notificationLevel } from "slices/Notifications";
+import { UNKNOWN_MESSAGE } from "translation";
 
 export function Notifications(): JSX.Element | null {
   const debug = useDashboardAppSelector((state) => state.config.debug);

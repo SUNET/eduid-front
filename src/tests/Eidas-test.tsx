@@ -1,6 +1,6 @@
-import Eidas from "components/Eidas";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import Eidas from "components/Dashboard/Eidas";
 import { act } from "react-dom/test-utils";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders frejaeID", () => {
   render(<Eidas />);

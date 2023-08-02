@@ -1,5 +1,5 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { LoginMain } from "login/components/LoginMain";
+import { LoginMain } from "components/Login/LoginMain";
 import { mswServer, rest } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 

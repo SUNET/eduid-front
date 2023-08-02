@@ -1,6 +1,6 @@
-import VerifyIdentity from "components/VerifyIdentity";
+import VerifyIdentity from "components/Dashboard/VerifyIdentity";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders verifyIdentity, non verified user", async () => {

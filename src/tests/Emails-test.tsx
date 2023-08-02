@@ -1,4 +1,4 @@
-import Emails from "components/Emails";
+import Emails from "components/Dashboard/Emails";
 import { act } from "react-dom/test-utils";
 import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 

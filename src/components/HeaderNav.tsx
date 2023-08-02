@@ -6,7 +6,7 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
-import { advancedSettingsPath, identityPath, settingsPath, startPath } from "./DashboardMain";
+import { advancedSettingsPath, identityPath, settingsPath, startPath } from "./Dashboard/DashboardMain";
 
 // export for use in tests
 export const activeClassName = "active";

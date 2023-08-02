@@ -3,10 +3,10 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import SignupMain from "components/Signup/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { signupStore } from "signup-init-app";
+import { setupLanguage } from "translation";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 

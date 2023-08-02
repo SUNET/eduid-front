@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { signupSlice } from "reducers/Signup";
+import { signupSlice } from "slices/Signup";
 import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 

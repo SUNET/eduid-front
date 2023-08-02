@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loginSlice from "login/redux/slices/loginSlice";
-import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import notifyAndDispatch from "notify-middleware";
-import { appLoadingSlice } from "reducers/AppLoading";
-import intlSlice from "reducers/Internationalisation";
-import { notificationsSlice } from "reducers/Notifications";
 import logger from "redux-logger";
-import configSlice from "./reducers/LoginConfig";
+import { appLoadingSlice } from "slices/AppLoading";
+import intlSlice from "slices/Internationalisation";
+import loginSlice from "slices/Login";
+import configSlice from "slices/LoginConfig";
+import { notificationsSlice } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 
 /* setup to run the combined sagas */
 const middlewares = [logger, notifyAndDispatch];

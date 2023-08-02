@@ -1,6 +1,6 @@
-import LetterProofing from "components/LetterProofing";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import LetterProofing from "components/Dashboard/LetterProofing";
 import { act } from "react-dom/test-utils";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders LetterProofing without ID number", () => {
   render(<LetterProofing disabled={true} />, {

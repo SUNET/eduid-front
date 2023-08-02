@@ -1,13 +1,13 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import type { InitialEntry } from "history";
 import { LoginRootState, getTestLoginStore } from "login-init-app";
-import { ResetPasswordGlobalStateProvider } from "login/components/LoginApp/ResetPassword/ResetPasswordGlobalState";
-import { initialState as loginInitialState } from "login/redux/slices/loginSlice";
-import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as loginInitialState } from "slices/Login";
+import { initialState as configInitialState } from "slices/LoginConfig";
+import { initialState as resetPasswordInitialState } from "slices/ResetPassword";
 
 export const loginTestState: LoginRootState = {
   config: {

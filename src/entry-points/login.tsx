@@ -1,13 +1,13 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { LoginMain } from "components/Login/LoginMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { LOGIN_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";
-import { ResetPasswordGlobalStateProvider } from "login/components/LoginApp/ResetPassword/ResetPasswordGlobalState";
-import { LoginMain } from "login/components/LoginMain";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { appLoadingSlice } from "reducers/AppLoading";
+import { appLoadingSlice } from "slices/AppLoading";
+import { setupLanguage } from "translation";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 

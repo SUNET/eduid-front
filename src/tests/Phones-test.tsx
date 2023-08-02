@@ -1,5 +1,5 @@
 import { PhoneCaptchaResponse, PhonesResponse } from "apis/eduidPhone";
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
