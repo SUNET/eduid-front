@@ -4,7 +4,7 @@ import {
   VerifyCodeRequest,
   VerifyCodeResponse,
 } from "apis/eduidResetPassword";
-import { LoginMain } from "login/components/LoginMain";
+import { LoginMain } from "components/Login/LoginMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 

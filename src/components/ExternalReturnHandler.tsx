@@ -3,7 +3,7 @@ import { svipeGetStatus } from "apis/eduidSvipe";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { showNotification } from "reducers/Notifications";
+import { showNotification } from "slices/Notifications";
 
 // URL parameters passed to this component
 interface LoginParams {

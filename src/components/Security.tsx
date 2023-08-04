@@ -9,13 +9,13 @@ import {
 } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { createCredential } from "login/app_utils/helperFunctions/navigatorCredential";
+import { createCredential } from "helperFunctions/navigatorCredential";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { clearNotifications } from "reducers/Notifications";
-import securitySlice from "reducers/Security";
-import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModal";
+import { clearNotifications } from "slices/Notifications";
+import securitySlice from "slices/Security";
+import { securityKeyPattern } from "../helperFunctions/validation/regexPatterns";
+import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 export function Security(): React.ReactElement | null {

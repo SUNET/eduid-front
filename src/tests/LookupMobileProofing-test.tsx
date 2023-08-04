@@ -1,6 +1,6 @@
-import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { act } from "react-dom/test-utils";
+import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders LookupMobileProofing without ID number", () => {
   render(<LookupMobileProofing disabled={true} />, {

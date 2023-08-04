@@ -5,9 +5,9 @@ import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/edu
 import { Captcha as GoogleCaptcha } from "components/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "reducers/Notifications";
-import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
+import { clearNotifications } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 import { SignupCaptchaForm } from "./SignupCaptchaForm";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 

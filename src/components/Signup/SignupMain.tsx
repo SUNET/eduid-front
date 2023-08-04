@@ -1,9 +1,8 @@
-import CodeVerified from "components/CodeVerified";
+import Footer from "components/Footer";
 import { Header } from "components/Header";
 import { Notifications } from "components/Notifications";
+import CodeVerified from "components/Signup/CodeVerified";
 import Splash from "components/Splash";
-import Footer from "login/components/Footer/Footer";
-import "login/styles/index.scss";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";

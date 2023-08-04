@@ -1,5 +1,5 @@
 import { OrcidInfo } from "apis/eduidOrcid";
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { activeClassName } from "components/HeaderNav";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";

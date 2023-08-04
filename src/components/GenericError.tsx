@@ -1,4 +1,4 @@
-import { useAppSelector } from "login/app_init/hooks";
+import { useAppSelector } from "hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 

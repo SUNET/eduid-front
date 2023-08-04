@@ -1,4 +1,4 @@
-import { showNotification } from "reducers/Notifications";
+import { showNotification } from "slices/Notifications";
 
 showNotification;
 const notifyAndDispatch = () => (next: any) => (action: any) => {

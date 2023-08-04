@@ -1,8 +1,8 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidSvipe";
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
 import { mswServer, rest } from "setupTests";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders svipeID as expected", () => {

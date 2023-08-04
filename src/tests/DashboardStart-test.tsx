@@ -1,6 +1,6 @@
-import { advancedSettingsPath, DashboardMain, identityPath, settingsPath } from "components/DashboardMain";
+import { advancedSettingsPath, DashboardMain, identityPath, settingsPath } from "components/Dashboard/DashboardMain";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("start page heading text for new user", async () => {

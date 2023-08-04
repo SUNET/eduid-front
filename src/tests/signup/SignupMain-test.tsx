@@ -8,10 +8,11 @@ import {
   SignupStatusResponse,
   VerifyEmailRequest,
 } from "apis/eduidSignup";
+import { codeFormTestId } from "components/Login/ResponseCodeForm";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { formatPassword } from "components/Signup/SignupUserCreated";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
-import { codeFormTestId } from "login/components/LoginApp/Login/ResponseCodeForm";
+
+import { emailPlaceHolder } from "components/EmailInput";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

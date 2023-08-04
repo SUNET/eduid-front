@@ -1,8 +1,8 @@
-import { notificationsSlice } from "reducers/Notifications";
-import { signupSlice } from "reducers/Signup";
 import { combineReducers } from "redux";
-import { intlReducer } from "./reducers/Internationalisation";
-import configSlice from "./reducers/SignupConfig";
+import { notificationsSlice } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
+import { intlReducer } from "./slices/Internationalisation";
+import configSlice from "./slices/SignupConfig";
 
 const eduIDApp = combineReducers({
   config: configSlice.reducer,

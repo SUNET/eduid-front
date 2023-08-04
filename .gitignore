@@ -11,7 +11,7 @@ dist/
 .idea/
 *~
 *#
-src/login/translation/src/
+src/translation/
 i18n/
 sshfs_mount/
 .vscode/*.log

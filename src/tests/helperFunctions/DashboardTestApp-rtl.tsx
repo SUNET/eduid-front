@@ -4,7 +4,7 @@ import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 
 export const defaultDashboardTestState = {
   config: {

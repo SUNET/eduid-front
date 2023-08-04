@@ -1,8 +1,8 @@
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { activeClassName } from "components/HeaderNav";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
-import { initialState } from "reducers/PersonalData";
+import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState } from "slices/PersonalData";
 import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders AccountId as expected", () => {

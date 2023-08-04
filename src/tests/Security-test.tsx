@@ -6,10 +6,10 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { act } from "react-dom/test-utils";
-import securitySlice, { initialState } from "reducers/Security";
 import { mswServer, rest } from "setupTests";
+import securitySlice, { initialState } from "slices/Security";
 import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {

@@ -9,7 +9,7 @@
     "build-development": "rm -rf node_modules/.cache && webpack --progress",
     "build-staging": "webpack --config webpack.staging.config.js --mode development",
     "build-production": "webpack --config webpack.prod.config.js --mode production",
-    "translations:extract": "formatjs extract 'src/**/*.{js,ts,tsx}' --ignore 'src/**/*.d.ts' --out-file src/login/translation/extractedMessages.json --format transifex --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "translations:extract": "formatjs extract 'src/**/*.{js,ts,tsx}' --ignore 'src/**/*.d.ts' --out-file src/translation/extractedMessages.json --format transifex --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "serve": "webpack-dev-server --open",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"

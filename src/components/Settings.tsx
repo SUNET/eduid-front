@@ -1,12 +1,13 @@
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import DeleteAccount from "components/DeleteAccount";
-import Emails from "components/Emails";
-import Phones from "components/Phones";
+import DeleteAccount from "components/Dashboard/DeleteAccount";
+import Emails from "components/Dashboard/Emails";
+import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
-import ChangePasswordDisplay from "./ChangePasswordDisplay";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+
+import ChangePasswordDisplay from "./Dashboard/ChangePasswordDisplay";
+import { DashboardBreadcrumbs } from "./Dashboard/DashboardBreadcrumbs";
+import PersonalDataParent from "./Dashboard/PersonalDataParent";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
