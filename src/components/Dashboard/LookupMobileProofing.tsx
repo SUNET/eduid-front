@@ -3,7 +3,7 @@ import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData"
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "components/NotificationModal";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";
 import { clearNotifications } from "slices/Notifications";
@@ -22,43 +22,40 @@ function ExplanationText(): JSX.Element {
     </HashLink>
   );
 
-  if (nin) {
-    if (phones === undefined || phones.length === 0) {
-      return (
-        <FormattedMessage
-          defaultMessage="Start by adding your Swedish phone number in {linkToSettings}"
-          description="verify identity vetting explanation add phone number"
-          values={{ linkToSettings: linkToSettings }}
-        />
-      );
-    } else {
-      if (phones.some((num) => num.verified === false)) {
-        return (
-          <FormattedMessage
-            defaultMessage="Confirm your phone number in {linkToSettings}"
-            description="verify identity vetting explanation verify phone"
-            values={{ linkToSettings: linkToSettings }}
-          />
-        );
-      } else {
-        if (!phones.some((num) => num.number.startsWith("+46"))) {
-          return (
-            <FormattedMessage
-              defaultMessage="Only possible with Swedish phone number"
-              description="verify identity vetting explanation add swedish phone"
-              values={{ linkToSettings: linkToSettings }}
-            />
-          );
-        }
-      }
-    }
+  if (!nin) {
+    return (
+      <FormattedMessage
+        defaultMessage="Start by adding your ID number above"
+        description="verify identity vetting explanation add nin"
+      />
+    );
+  } else if (phones === undefined || phones.length === 0) {
+    return (
+      <FormattedMessage
+        defaultMessage="Start by adding your Swedish phone number in {linkToSettings}"
+        description="verify identity vetting explanation add phone number"
+        values={{ linkToSettings: linkToSettings }}
+      />
+    );
+  } else if (phones.some((num) => num.verified === false)) {
+    return (
+      <FormattedMessage
+        defaultMessage="Confirm your phone number in {linkToSettings}"
+        description="verify identity vetting explanation verify phone"
+        values={{ linkToSettings: linkToSettings }}
+      />
+    );
+  } else if (!phones.some((num) => num.number.startsWith("+46"))) {
+    return (
+      <FormattedMessage
+        defaultMessage="Only possible with Swedish phone number"
+        description="verify identity vetting explanation add swedish phone"
+        values={{ linkToSettings: linkToSettings }}
+      />
+    );
+  } else {
+    return <Fragment />;
   }
-  return (
-    <FormattedMessage
-      defaultMessage="Start by adding your ID number above"
-      description="verify identity vetting explanation add nin"
-    />
-  );
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
