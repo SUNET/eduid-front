@@ -333,6 +333,10 @@
     "developer_comment": "Set new password",
     "string": "Repeat new password"
   },
+  "B8ldRb": {
+    "developer_comment": "Verification letter requested, status",
+    "string": "A verification letter has been requested."
+  },
   "CDTmBD": {
     "developer_comment": "accordion item eidas title",
     "string": "EU citizen"
@@ -383,10 +387,6 @@
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
     "string": "You can review your settings at the"
-  },
-  "FDb++j": {
-    "developer_comment": "Verification letter expired",
-    "string": "Verification letter expired"
   },
   "FDlOke": {
     "developer_comment": "verify identity vetting explanation add phone number",
@@ -673,10 +673,6 @@
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
   },
-  "PkCbR7": {
-    "developer_comment": "Verification letter requested",
-    "string": "Verification letter requested"
-  },
   "Pnu06c": {
     "developer_comment": "status",
     "string": "status"
@@ -903,6 +899,10 @@
   "XuhAU7": {
     "developer_comment": "accordion item Confirm phone number",
     "string": "Confirm your phone number"
+  },
+  "XyA1T0": {
+    "developer_comment": "Verification letter expired, status",
+    "string": "A verification letter has been expired"
   },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
@@ -1168,10 +1168,6 @@
   },
   "eidas.token_verify_success": {
     "string": "U2F token verified successfully"
-  },
-  "elUO4D": {
-    "developer_comment": "link to detail page",
-    "string": "order a new code"
   },
   "email.invalid_email": {
     "string": "The entered email is invalid"
