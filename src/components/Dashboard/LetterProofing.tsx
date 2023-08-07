@@ -1,7 +1,7 @@
 import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import ConfirmModal from "../ConfirmModal";
@@ -94,7 +94,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
       description = <div />;
     } else if (letter_expired) {
       description = (
-        <>
+        <Fragment>
           <p className="description">
             <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
             <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
@@ -105,11 +105,11 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
               description="explanation text for letter proofing"
             />
           </p>
-        </>
+        </Fragment>
       );
     } else {
       description = (
-        <>
+        <Fragment>
           <p className="description">
             <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
             <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
@@ -127,7 +127,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
               description="explanation text for letter proofing"
             />
           </p>
-        </>
+        </Fragment>
       );
     }
   }
@@ -141,7 +141,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   });
 
   return (
-    <>
+    <Fragment>
       <p className="proofing-btn-help">
         <FormattedMessage
           description="letter initialize proofing help text"
@@ -191,6 +191,6 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         validationError={"confirmation.code_invalid_format"}
         validationPattern={shortCodePattern}
       />
-    </>
+    </Fragment>
   );
 }

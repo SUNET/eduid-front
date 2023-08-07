@@ -1,5 +1,5 @@
 import { useDashboardAppSelector } from "dashboard-hooks";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "../EduIDButton";
 import NotificationModal from "../NotificationModal";
@@ -70,7 +70,7 @@ function Eidas(): JSX.Element {
   }
 
   return (
-    <>
+    <Fragment>
       <p className="proofing-btn-help">
         <FormattedMessage
           description="eidas proofing help text"
@@ -106,7 +106,7 @@ function Eidas(): JSX.Element {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </>
+    </Fragment>
   );
 }
 

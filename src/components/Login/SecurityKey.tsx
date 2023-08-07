@@ -89,7 +89,7 @@ function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
   }, []);
 
   return (
-    <>
+    <Fragment>
       <div className="button-pair selected">
         <h3>
           <FormattedMessage
@@ -101,6 +101,6 @@ function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
       <div className="button-pair bottom">
         <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
       </div>
-    </>
+    </Fragment>
   );
 }
