@@ -178,6 +178,19 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       }
     }
 
+    const cursorPosition = event.currentTarget.selectionStart || 0;
+    if (cursorPosition < inputs.length) {
+      const remainingDigits = digits.slice(cursorPosition);
+      for (let i = cursorPosition; i < inputs.length; i++) {
+        const input = inputs[i] as HTMLInputElement;
+        const digit = remainingDigits.shift() || "";
+
+        input.value = digit;
+        const fieldName = `v[${i}]`;
+        form.change(fieldName, input.value);
+      }
+    }
+
     // Trigger form submission if all inputs are filled
     const allInputsFilled = Array.from(inputs).every((input) => (input as HTMLInputElement).value !== "");
     if (allInputsFilled && form.getState().valid) {
