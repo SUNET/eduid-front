@@ -153,42 +153,43 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     // Save the current input values
     const currentValues = Array.from(inputs).map((input) => (input as HTMLInputElement).value);
 
+    // Function to update input and form data
+    const updateInputAndForm = (input: HTMLInputElement, index: number, value: string) => {
+      input.value = value;
+      const fieldName = `v[${index}]`;
+      form.change(fieldName, value);
+    };
+
     // Distribute the digits to each input
-    for (let i = 0; i < Math.min(digits.length, inputs.length); i++) {
-      const input = inputs[i] as HTMLInputElement;
+    Array.from(inputs).forEach((input, i) => {
       const digit = digits[i];
 
-      // Update the input value only if it's empty
-      if (!input.value) {
-        input.value = digit;
+      if (!(input as HTMLInputElement).value) {
+        updateInputAndForm(input as HTMLInputElement, i, digit);
       }
-
-      const fieldName = `v[${i}]`;
-      form.change(fieldName, input.value);
-    }
+    });
 
     // Restore the previous input values for any remaining empty inputs
-    for (let i = digits.length; i < inputs.length; i++) {
-      const input = inputs[i] as HTMLInputElement;
-      const fieldName = `v[${i}]`;
-
-      if (!input.value) {
-        input.value = currentValues[i] || "";
-        form.change(fieldName, input.value);
-      }
-    }
+    Array.from(inputs)
+      .slice(digits.length)
+      .forEach((input, i) => {
+        const newValue = currentValues[digits.length + i] || "";
+        if (!(input as HTMLInputElement).value) {
+          updateInputAndForm(input as HTMLInputElement, digits.length + i, newValue);
+        }
+      });
 
     const cursorPosition = event.currentTarget.selectionStart || 0;
     if (cursorPosition < inputs.length) {
       const remainingDigits = digits.slice(cursorPosition);
-      for (let i = cursorPosition; i < inputs.length; i++) {
-        const input = inputs[i] as HTMLInputElement;
-        const digit = remainingDigits.shift() || "";
 
-        input.value = digit;
-        const fieldName = `v[${i}]`;
-        form.change(fieldName, input.value);
-      }
+      Array.from(inputs)
+        .slice(cursorPosition)
+        .forEach((input, i) => {
+          const digit = remainingDigits[i] || "";
+
+          updateInputAndForm(input as HTMLInputElement, cursorPosition + i, digit);
+        });
     }
 
     // Trigger form submission if all inputs are filled
@@ -199,7 +200,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       setTimeout(() => {
         form.submit();
         setIsPasted(false);
-      }, 1000); // 1 seconds delay
+      }, 1000); // 1 second delay
     }
   }
 
