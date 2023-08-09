@@ -1375,6 +1375,9 @@
     "developer_comment": "enter code",
     "string": "skriv in koden"
   },
+  "kHCeni": {
+    "string": "Ange den sexsiffriga koden som skickats till {email} för att verifiera din e-postadress. Du kan också kopiera och klistra in koden från e-posten i inmatningsfältet."
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "gör primär"
@@ -1598,9 +1601,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
-  },
-  "o3LM/J": {
-    "string": "Ange den sexsiffriga koden som skickades till {email}  för att verifiera din e-postadress"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -1920,14 +1920,35 @@
   "signup.already-verified": {
     "string": "Du har redan verifierat ditt konto."
   },
+  "signup.captcha-already-completed": {
+    "string": "Captcha processen har redan slutförts."
+  },
+  "signup.captcha-failed": {
+    "string": "Det uppstod ett problem med verifieringen av att du är en människa. Var god försök igen."
+  },
+  "signup.captcha-not-completed": {
+    "string": "Captcha har inte slutförts."
+  },
+  "signup.captcha-not-requested": {
+    "string": "Captcha har inte begärts."
+  },
   "signup.credential-not-added": {
     "string": "Inga inloggningsuppgifter har lagts till."
+  },
+  "signup.email-address-used": {
+    "string": "E-postadressen används redan."
   },
   "signup.email-throttled": {
     "string": "För många försök att skapa ett konto har gjorts. Försök igen senare."
   },
   "signup.email-verification-expired": {
     "string": "Koden har gått ut. Var god försök igen."
+  },
+  "signup.email-verification-failed": {
+    "string": "E-post verifieringen misslyckades. Var god försök igen."
+  },
+  "signup.email-verification-not-complete": {
+    "string": "E-post verifieringen har inte slutförts."
   },
   "signup.email-verification-to-many-tries": {
     "string": "För många ogiltiga verifieringsförsök. Var god försök igen."
@@ -1952,6 +1973,12 @@
   },
   "signup.tou-not-accepted": {
     "string": "Användarvillkoren har inte accepterats."
+  },
+  "signup.tou-not-completed": {
+    "string": "Användarvillkoren har inte godkänts."
+  },
+  "signup.tou-wrong-version": {
+    "string": "Felaktig version av användarvillkoren."
   },
   "signup.unknown-code": {
     "string": "Okänd kod."
