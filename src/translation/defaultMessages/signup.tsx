@@ -69,4 +69,54 @@ export const apiResponses = {
   "signup.invite-already-completed": (
     <FormattedMessage id="signup.invite-already-completed" defaultMessage={`Invitation already completed.`} />
   ),
+
+  //New messages for the new signup flow version 2022
+  "signup.tou-not-completed": (
+    <FormattedMessage id="signup.tou-not-completed" defaultMessage={`Terms of use has not been completed.`} />
+  ),
+
+  "signup.tou-wrong-version": (
+    <FormattedMessage id="signup.tou-wrong-version" defaultMessage={`Incorrect Terms of use version.`} />
+  ),
+
+  "signup.email-address-used": (
+    <FormattedMessage id="signup.email-address-used" defaultMessage={`The email address is already in use.`} />
+  ),
+
+  "signup.captcha-not-completed": (
+    <FormattedMessage id="signup.captcha-not-completed" defaultMessage={`The captcha has not been completed.`} />
+  ),
+
+  "signup.captcha-failed": (
+    <FormattedMessage
+      id="signup.captcha-failed"
+      defaultMessage={`There was a problem verifying that you are a human. 
+        Please try again.`}
+    />
+  ),
+
+  "signup.captcha-already-completed": (
+    <FormattedMessage
+      id="signup.captcha-already-completed"
+      defaultMessage={`The captcha has already been completed.`}
+    />
+  ),
+
+  "signup.captcha-not-requested": (
+    <FormattedMessage id="signup.captcha-not-requested" defaultMessage={`The captcha has not been requested.`} />
+  ),
+
+  "signup.email-verification-not-complete": (
+    <FormattedMessage
+      id="signup.email-verification-not-complete"
+      defaultMessage={`The email verification has not been completed.`}
+    />
+  ),
+
+  "signup.email-verification-failed": (
+    <FormattedMessage
+      id="signup.email-verification-failed"
+      defaultMessage={`The email verification failed. Please try again.`}
+    />
+  ),
 };
