@@ -46,7 +46,7 @@ test("renders LetterProofing, expired letter enabled to resend letter", async ()
       },
     },
   });
-  expect(screen.getByText(/Click here to order a new code/i)).toBeInTheDocument();
+  expect(screen.getByText(/To request a new code, proceed by clicking the button below./i)).toBeInTheDocument();
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeEnabled();
   act(() => {
