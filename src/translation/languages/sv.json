@@ -1849,6 +1849,9 @@
   "resetpw.send-sms-failed": {
     "string": "Det gick inte att skicka koden"
   },
+  "resetpw.send-sms-success": {
+    "string": "En kod har skickats till din telefon."
+  },
   "resetpw.sms-throttled": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
