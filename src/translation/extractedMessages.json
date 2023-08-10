@@ -1849,6 +1849,9 @@
   "resetpw.send-sms-failed": {
     "string": "Failed to send code"
   },
+  "resetpw.send-sms-success": {
+    "string": "A code has been sent to your phone."
+  },
   "resetpw.sms-throttled": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },

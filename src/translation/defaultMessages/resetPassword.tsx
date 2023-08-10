@@ -84,4 +84,8 @@ export const apiResponses = {
   "resetpw.external-mfa-fail": (
     <FormattedMessage id="resetpw.external-mfa-fail" defaultMessage={`External MFA failed.`} />
   ),
+
+  "resetpw.send-sms-success": (
+    <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`A code has been sent to your phone.`} />
+  ),
 };
