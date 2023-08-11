@@ -1,12 +1,12 @@
 import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
+import ConfirmModal from "components/Common/ConfirmModal";
+import EduIDButton from "components/Common/EduIDButton";
+import NotificationModal from "components/Common/NotificationModal";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
-import ConfirmModal from "../ConfirmModal";
-import EduIDButton from "../EduIDButton";
-import NotificationModal from "../NotificationModal";
 
 export interface LetterProofingProps {
   disabled: boolean;

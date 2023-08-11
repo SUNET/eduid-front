@@ -5,6 +5,9 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
 } from "apis/eduidEmail";
+import ConfirmModal from "components/Common/ConfirmModal";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -12,9 +15,6 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { longCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
-import ConfirmModal from "../ConfirmModal";
-import CustomInput from "../CustomInput";
-import EduIDButton from "../EduIDButton";
 import DataTable from "./DataTable";
 
 interface EmailFormData {

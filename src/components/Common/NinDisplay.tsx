@@ -1,6 +1,6 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";

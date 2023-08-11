@@ -1,4 +1,4 @@
-import NinDisplay from "components/NinDisplay";
+import NinDisplay from "components/Common/NinDisplay";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import NinForm from "./NinForm";
 

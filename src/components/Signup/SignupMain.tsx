@@ -1,8 +1,8 @@
-import Footer from "components/Footer";
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
+import Footer from "components/Common/Footer";
+import { Header } from "components/Common/Header";
+import { Notifications } from "components/Common/Notifications";
+import Splash from "components/Common/Splash";
 import CodeVerified from "components/Signup/CodeVerified";
-import Splash from "components/Splash";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";

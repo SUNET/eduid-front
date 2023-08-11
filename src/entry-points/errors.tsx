@@ -1,5 +1,5 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { errorsStore } from "errors-init-app";
 import { ERRORS_CONFIG_URL } from "globals";
 import ReactDOM from "react-dom";

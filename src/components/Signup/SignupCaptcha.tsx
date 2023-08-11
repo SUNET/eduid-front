@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
-import { Captcha as GoogleCaptcha } from "components/Captcha";
+import { Captcha as GoogleCaptcha } from "components/Common/Captcha";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";

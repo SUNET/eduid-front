@@ -1,7 +1,7 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { updateIntl } from "../slices/Internationalisation";
+import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);

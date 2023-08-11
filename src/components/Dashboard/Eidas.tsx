@@ -1,8 +1,8 @@
+import EduIDButton from "components/Common/EduIDButton";
+import NotificationModal from "components/Common/NotificationModal";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "../EduIDButton";
-import NotificationModal from "../NotificationModal";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);

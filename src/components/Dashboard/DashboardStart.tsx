@@ -3,7 +3,7 @@ import { faCircleCheck, faCircleExclamation, faHome } from "@fortawesome/free-so
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
-import AccordionItemTemplate from "components/AccordionItemTemplate";
+import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";

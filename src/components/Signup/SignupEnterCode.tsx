@@ -1,8 +1,8 @@
 import { verifyEmailRequest } from "apis/eduidSignup";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
+import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";

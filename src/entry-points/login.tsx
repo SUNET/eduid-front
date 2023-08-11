@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { LoginMain } from "components/Login/LoginMain";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { LOGIN_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";

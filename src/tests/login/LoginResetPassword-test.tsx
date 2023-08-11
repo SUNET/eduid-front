@@ -1,8 +1,7 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
+import { emailPlaceHolder } from "components/Common/EmailInput";
 import { LoginMain } from "components/Login/LoginMain";
-
-import { emailPlaceHolder } from "components/EmailInput";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 

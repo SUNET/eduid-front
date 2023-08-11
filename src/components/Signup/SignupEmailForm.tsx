@@ -1,6 +1,6 @@
 import { registerEmailRequest } from "apis/eduidSignup";
-import EduIDButton from "components/EduIDButton";
-import EmailInput from "components/EmailInput";
+import EduIDButton from "components/Common/EduIDButton";
+import EmailInput from "components/Common/EmailInput";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";

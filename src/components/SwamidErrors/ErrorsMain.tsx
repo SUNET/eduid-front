@@ -1,6 +1,6 @@
-import Footer from "components/Footer";
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
+import Footer from "components/Common/Footer";
+import { Header } from "components/Common/Header";
+import { Notifications } from "components/Common/Notifications";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Errors } from "./Errors";

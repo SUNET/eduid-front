@@ -1,5 +1,5 @@
 import { acceptToURequest } from "apis/eduidSignup";
-import { CommonToU } from "components/CommonToU";
+import { CommonToU } from "components/Common/CommonToU";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";

@@ -1,4 +1,4 @@
-import TextInput from "components/EduIDTextInput";
+import TextInput from "components/Common/EduIDTextInput";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";

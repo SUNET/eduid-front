@@ -1,5 +1,5 @@
-import EduIDButton from "components/EduIDButton";
-import ShowAfterDelay from "components/ShowAfterDelay";
+import EduIDButton from "components/Common/EduIDButton";
+import ShowAfterDelay from "components/Common/ShowAfterDelay";
 import { useAppSelector } from "hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";

@@ -10,7 +10,7 @@ import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import AccordionItemTemplate from "../AccordionItemTemplate";
+import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import { advancedSettingsPath, identityPath, settingsPath } from "./DashboardMain";
 
 /**

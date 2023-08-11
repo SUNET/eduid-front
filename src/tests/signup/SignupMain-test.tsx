@@ -12,7 +12,7 @@ import { codeFormTestId } from "components/Login/ResponseCodeForm";
 import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
 import { formatPassword } from "components/Signup/SignupUserCreated";
 
-import { emailPlaceHolder } from "components/EmailInput";
+import { emailPlaceHolder } from "components/Common/EmailInput";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

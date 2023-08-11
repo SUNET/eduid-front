@@ -1,5 +1,5 @@
-import EduIDButton from "components/EduIDButton";
-import NotificationModal from "components/NotificationModal";
+import EduIDButton from "components/Common/EduIDButton";
+import NotificationModal from "components/Common/NotificationModal";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";

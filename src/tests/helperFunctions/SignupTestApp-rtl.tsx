@@ -1,5 +1,5 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
 import React from "react";

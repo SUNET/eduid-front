@@ -1,5 +1,5 @@
 import { ExtraSecurityTokens } from "apis/eduidResetPassword";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useContext, useEffect, useState } from "react";

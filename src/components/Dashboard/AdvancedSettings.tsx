@@ -1,8 +1,8 @@
 import { faGears } from "@fortawesome/free-solid-svg-icons";
+import { Security } from "components/Common/Security";
 import { AccountId } from "components/Dashboard/AccountId";
 import { AccountLinking } from "components/Dashboard/AccountLinking";
 import LadokContainer from "components/Dashboard/Ladok";
-import { Security } from "components/Security";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";

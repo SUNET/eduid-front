@@ -1,5 +1,5 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import SignupMain from "components/Signup/SignupMain";
 import { SIGNUP_CONFIG_URL } from "globals";

@@ -1,8 +1,8 @@
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
-import EduIDButton from "components/EduIDButton";
-import EmailInput from "components/EmailInput";
+import EduIDButton from "components/Common/EduIDButton";
+import EmailInput from "components/Common/EmailInput";
 import { GoBackButton } from "./GoBackButton";
 
 export interface EmailFormProps {

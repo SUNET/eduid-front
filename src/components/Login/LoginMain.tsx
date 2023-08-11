@@ -1,11 +1,11 @@
-import { GenericError } from "components/GenericError";
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
-import Splash from "components/Splash";
+import Footer from "components/Common/Footer";
+import { GenericError } from "components/Common/GenericError";
+import { Header } from "components/Common/Header";
+import { Notifications } from "components/Common/Notifications";
+import Splash from "components/Common/Splash";
 import { useAppSelector } from "hooks";
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Footer from "../Footer";
 import LoginApp from "./LoginApp";
 
 export function LoginMain(): JSX.Element {

@@ -1,12 +1,12 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
+import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/Dashboard/DashboardMain";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
-import { advancedSettingsPath, identityPath, settingsPath, startPath } from "./Dashboard/DashboardMain";
 
 // export for use in tests
 export const activeClassName = "active";
