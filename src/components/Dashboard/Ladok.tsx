@@ -1,6 +1,6 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useMemo, useState } from "react";
-import { FieldRenderProps, Field as FinalField, Form as FinalForm } from "react-final-form";
+import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../../apis/eduidLadok";
@@ -97,7 +97,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   }, [ladokUnis]);
 
   function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
-    if (newValue && newValue.value) {
+    if (newValue?.value) {
       setSelected(newValue);
       dispatch(linkUser({ ladok_name: newValue.value }));
     }
@@ -127,35 +127,29 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     return res;
   }, [ladokUnis]);
 
-  const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
-    <fieldset>
-      <label htmlFor="ladok-universities">
-        <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
-      </label>
-      <Select
-        {...input}
-        {...rest}
-        onChange={handleOnChange}
-        value={selected}
-        isSearchable={false}
-        className="react-select-container"
-        classNamePrefix="react-select"
-      />
-    </fieldset>
-  );
-
   return (
     <React.Fragment>
       <FinalForm
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <FinalField
-              name="ladok-universities"
-              component={SelectAdapter}
-              disabled={fetchFailed}
-              options={selectOptions}
-            />
+            <fieldset>
+              <label htmlFor="ladok-universities">
+                <FormattedMessage
+                  defaultMessage="Select higher education institution"
+                  description="Ladok account linking"
+                />
+              </label>
+              <Select
+                isDisabled={fetchFailed}
+                options={selectOptions}
+                onChange={handleOnChange}
+                value={selected}
+                isSearchable={false}
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
+            </fieldset>
           </form>
         )}
       />
