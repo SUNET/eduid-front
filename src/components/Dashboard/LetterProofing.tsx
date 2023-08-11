@@ -101,7 +101,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
           </p>
           <p className="description">
             <FormattedMessage
-              defaultMessage="Click here to order a new code"
+              defaultMessage="To request a new code, proceed by clicking the button below."
               description="explanation text for letter proofing"
             />
           </p>
