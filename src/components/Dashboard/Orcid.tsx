@@ -1,6 +1,6 @@
 import { urlJoin } from "apis/common";
 import { removeOrcid } from "apis/eduidOrcid";
-import EduIDButton from "components//Common/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";

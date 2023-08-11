@@ -1,5 +1,5 @@
 import { PhoneInfo } from "apis/eduidPhone";
-import EduIDButton from "components//Common/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import React, { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { EmailInfo } from "../../apis/eduidEmail";

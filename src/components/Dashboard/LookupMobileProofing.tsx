@@ -1,6 +1,6 @@
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
-import EduIDButton from "components//Common/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { useState } from "react";

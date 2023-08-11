@@ -1,4 +1,4 @@
-import EduIDButton from "components//Common/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { Fragment, useState } from "react";

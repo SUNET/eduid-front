@@ -11,9 +11,9 @@ import {
   requestVerifyPhone,
   sendCaptchaResponse,
 } from "apis/eduidPhone";
-import EduIDButton from "components//Common/EduIDButton";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";

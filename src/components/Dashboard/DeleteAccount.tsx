@@ -1,5 +1,5 @@
 import { postDeleteAccount } from "apis/eduidSecurity";
-import EduIDButton from "components//Common/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useState } from "react";
