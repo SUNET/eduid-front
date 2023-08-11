@@ -1,11 +1,10 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
-import React, { useContext, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
-
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "hooks";
+import React, { useContext, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import {

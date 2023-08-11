@@ -1,6 +1,6 @@
 import { IntlProvider } from "react-intl";
 import { connect } from "react-redux";
-import { intlState } from "../slices/Internationalisation";
+import { intlState } from "slices/Internationalisation";
 
 /*
  * As I (ft@) understand things, this module takes parameters from our state.intl,

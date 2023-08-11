@@ -1,5 +1,5 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
-import Splash from "components/Splash";
+import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";

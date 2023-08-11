@@ -1,4 +1,4 @@
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useContext } from "react";

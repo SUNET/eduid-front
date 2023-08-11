@@ -1,7 +1,7 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { DashboardMain } from "components/Dashboard/DashboardMain";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import { dashboardStore } from "dashboard-init-app";
 import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import ReactDOM from "react-dom";

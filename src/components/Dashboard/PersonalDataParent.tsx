@@ -1,9 +1,8 @@
+import EduIDButton from "components/Common/EduIDButton";
+import PersonalDataForm from "components/Common/PersonalDataForm";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { Fragment, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-
-import EduIDButton from "components/EduIDButton";
-import PersonalDataForm from "../PersonalDataForm";
 import NameDisplay from "./NameDisplay";
 
 export interface NameLabels {

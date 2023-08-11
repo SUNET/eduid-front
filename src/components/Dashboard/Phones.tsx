@@ -11,15 +11,15 @@ import {
   requestVerifyPhone,
   sendCaptchaResponse,
 } from "apis/eduidPhone";
-import EduIDButton from "components/EduIDButton";
+import ConfirmModal from "components/Common/ConfirmModal";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
-import ConfirmModal from "../ConfirmModal";
-import CustomInput from "../CustomInput";
 import DataTable from "./DataTable";
 
 interface PhoneFormData {

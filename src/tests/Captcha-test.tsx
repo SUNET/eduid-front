@@ -1,4 +1,4 @@
-import { Captcha } from "components/Captcha";
+import { Captcha } from "components/Common/Captcha";
 import { render, screen } from "./helperFunctions/SignupTestApp-rtl";
 
 function handleCaptchaCancel() {}

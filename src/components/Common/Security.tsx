@@ -7,14 +7,14 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
+import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import securitySlice from "slices/Security";
-import { securityKeyPattern } from "../helperFunctions/validation/regexPatterns";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 

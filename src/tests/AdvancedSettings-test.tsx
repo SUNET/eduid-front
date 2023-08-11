@@ -1,5 +1,5 @@
+import { activeClassName } from "components/Common/HeaderNav";
 import { DashboardMain } from "components/Dashboard/DashboardMain";
-import { activeClassName } from "components/HeaderNav";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/DashboardConfig";
 import { initialState } from "slices/PersonalData";

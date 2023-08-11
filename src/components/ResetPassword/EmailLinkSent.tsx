@@ -1,6 +1,6 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
-import EduIDButton from "components/EduIDButton";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
+import EduIDButton from "components/Common/EduIDButton";
+import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useContext, useState } from "react";
 import { FormattedMessage } from "react-intl";

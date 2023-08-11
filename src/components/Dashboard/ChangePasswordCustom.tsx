@@ -1,5 +1,5 @@
-import TextInput from "components/EduIDTextInput";
-import PasswordStrengthMeter, { PasswordStrengthData } from "components/PasswordStrengthMeter";
+import TextInput from "components/Common/EduIDTextInput";
+import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";

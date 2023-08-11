@@ -1,5 +1,5 @@
 import { fetchAbort, fetchToU } from "apis/eduidLogin";
-import { CommonToU } from "components/CommonToU";
+import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";

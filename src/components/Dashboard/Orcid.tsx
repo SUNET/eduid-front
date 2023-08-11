@@ -1,8 +1,8 @@
 import { urlJoin } from "apis/common";
 import { removeOrcid } from "apis/eduidOrcid";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
@@ -13,11 +13,11 @@ export function Orcid(): JSX.Element {
   const orcid_url = useDashboardAppSelector((state) => state.config.orcid_url);
   const intl = useIntl();
 
-  async function handleOrcidDelete(event: React.MouseEvent<HTMLButtonElement>) {
+  async function handleOrcidDelete() {
     await dispatch(removeOrcid());
   }
 
-  function handleOrcidConnect(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleOrcidConnect() {
     if (orcid_url) {
       const auth_url = urlJoin(orcid_url, "authorize");
       window.location.assign(auth_url);

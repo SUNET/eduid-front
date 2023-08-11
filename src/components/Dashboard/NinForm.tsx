@@ -1,9 +1,9 @@
 import { addNin } from "apis/eduidSecurity";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import CustomInput from "../CustomInput";
-import EduIDButton from "../EduIDButton";
 
 function validateNin(value: string): string | undefined {
   if (!value) {

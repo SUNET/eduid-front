@@ -1,6 +1,6 @@
 import { OrcidInfo } from "apis/eduidOrcid";
+import { activeClassName } from "components/Common/HeaderNav";
 import { DashboardMain } from "components/Dashboard/DashboardMain";
-import { activeClassName } from "components/HeaderNav";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";

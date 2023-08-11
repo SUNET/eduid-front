@@ -8,8 +8,8 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
-import CustomInput from "components/CustomInput";
-import EduIDButton from "components/EduIDButton";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";

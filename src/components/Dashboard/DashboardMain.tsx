@@ -1,12 +1,12 @@
+import { ExternalReturnHandler } from "components/Common/ExternalReturnHandler";
+import Footer from "components/Common/Footer";
+import { Header } from "components/Common/Header";
+import { Notifications } from "components/Common/Notifications";
+import { Settings } from "components/Common/Settings";
+import Splash from "components/Common/Splash";
 import { AdvancedSettings } from "components/Dashboard/AdvancedSettings";
 import { ChangePasswordContainer } from "components/Dashboard/ChangePassword";
 import VerifyIdentity from "components/Dashboard/VerifyIdentity";
-import { ExternalReturnHandler } from "components/ExternalReturnHandler";
-import Footer from "components/Footer";
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
-import { Settings } from "components/Settings";
-import Splash from "components/Splash";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";

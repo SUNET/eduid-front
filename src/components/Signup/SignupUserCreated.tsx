@@ -1,5 +1,5 @@
 import { createUserRequest } from "apis/eduidSignup";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";

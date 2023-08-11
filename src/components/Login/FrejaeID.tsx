@@ -1,5 +1,5 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { FormattedMessage } from "react-intl";
 

@@ -2,12 +2,11 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUsernamePassword } from "apis/eduidLogin";
-import EduIDButton from "components/EduIDButton";
-import TextInput from "components/EduIDTextInput";
+import EduIDButton from "components/Common/EduIDButton";
+import TextInput from "components/Common/EduIDTextInput";
+import EmailInput from "components/Common/EmailInput";
+import PasswordInput from "components/Common/PasswordInput";
 import { useAppDispatch, useAppSelector } from "hooks";
-
-import EmailInput from "components/EmailInput";
-import PasswordInput from "components/PasswordInput";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";

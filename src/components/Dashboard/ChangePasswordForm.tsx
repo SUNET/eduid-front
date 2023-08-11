@@ -1,13 +1,13 @@
 import { changePassword } from "apis/eduidSecurity";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
-import { FormattedMessage } from "react-intl";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it

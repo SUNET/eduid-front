@@ -1,5 +1,5 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { Fragment, useEffect, useState } from "react";

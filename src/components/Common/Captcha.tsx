@@ -1,10 +1,10 @@
-import EduIDButton from "components/EduIDButton";
+import { CaptchaProps } from "components/Signup/SignupCaptcha";
 import React, { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
 import ScriptLoader from "react-script-loader-hoc";
 import { useSignupAppSelector } from "signup-hooks";
-import { CaptchaProps } from "./Signup/SignupCaptcha";
+import EduIDButton from "./EduIDButton";
 import Splash from "./Splash";
 
 interface LoadingCaptchaProps extends CaptchaProps {

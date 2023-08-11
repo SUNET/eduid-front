@@ -1,6 +1,6 @@
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
-import CustomInput from "components/CustomInput";
-import EduIDButton from "components/EduIDButton";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { shortCodePattern } from "helperFunctions/validation/regexPatterns";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useContext, useEffect } from "react";

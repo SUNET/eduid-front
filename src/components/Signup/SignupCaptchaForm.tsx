@@ -1,5 +1,5 @@
-import CustomInput from "components/CustomInput";
-import EduIDButton from "components/EduIDButton";
+import CustomInput from "components/Common/CustomInput";
+import EduIDButton from "components/Common/EduIDButton";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { CaptchaProps } from "./SignupCaptcha";

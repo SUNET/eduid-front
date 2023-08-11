@@ -1,5 +1,5 @@
+import { activeClassName } from "components/Common/HeaderNav";
 import { DashboardMain } from "components/Dashboard/DashboardMain";
-import { activeClassName } from "components/HeaderNav";
 import { initialState as configInitialState } from "slices/DashboardConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 

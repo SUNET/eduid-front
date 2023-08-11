@@ -12,9 +12,10 @@ import { FormattedMessage, useIntl } from "react-intl";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
-import AccordionItemTemplate from "../AccordionItemTemplate";
-import EduIDButton from "../EduIDButton";
-import NinDisplay from "../NinDisplay";
+import AccordionItemTemplate from "../Common/AccordionItemTemplate";
+
+import EduIDButton from "components/Common/EduIDButton";
+import NinDisplay from "components/Common/NinDisplay";
 import AddNin from "./AddNin";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
