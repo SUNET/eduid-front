@@ -61,7 +61,7 @@
   },
   "/h666/": {
     "developer_comment": "select extra webauthn",
-    "string": "Choose extra identification method:"
+    "string": "Choose additional identification method:"
   },
   "/hAEZl": {
     "developer_comment": "mfa reset-password tapit",
