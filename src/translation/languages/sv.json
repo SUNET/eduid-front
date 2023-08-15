@@ -784,7 +784,7 @@
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
-    "string": "T.ex. USB säkerhetsnyckel."
+    "string": "T.ex. USB säkerhetsnyckel som du använder."
   },
   "TdlNku": {
     "developer_comment": "name",
