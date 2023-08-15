@@ -914,7 +914,7 @@
   },
   "YJQhMp": {
     "developer_comment": "security second factor",
-    "string": "Lägg till ett extra sätt, utöver email och lösenord, för att kunna identifiera dig så du är säker på att bara du har tillgång till ditt eduID."
+    "string": "Om möjligt lägg till ett ytterligare sätt, utöver email och lösenord, för att kunna identifiera dig så att du är säker på att bara du har tillgång till ditt eduID."
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
