@@ -456,7 +456,7 @@
   },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
-    "string": "T.ex. Touch/ Face ID på den här enheten."
+    "string": "T.ex. Touch/ Face ID som stöds på den här enheten."
   },
   "HCDbw9": {
     "developer_comment": "Dashboard AccountId",
