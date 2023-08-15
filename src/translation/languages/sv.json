@@ -61,7 +61,7 @@
   },
   "/h666/": {
     "developer_comment": "select extra webauthn",
-    "string": "Välj extra identifieringsmetod:"
+    "string": "Välj ytterligare identifieringsmetod:"
   },
   "/hAEZl": {
     "developer_comment": "mfa reset-password tapit",
