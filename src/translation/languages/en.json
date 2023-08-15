@@ -914,7 +914,7 @@
   },
   "YJQhMp": {
     "developer_comment": "security second factor",
-    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
+    "string": "If possible, it is advisable to add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
