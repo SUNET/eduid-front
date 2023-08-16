@@ -488,7 +488,10 @@ export function Help(): JSX.Element {
           <AccordionItemTemplate
             uuid="help-About-orcid"
             title={
-              <FormattedMessage description="Connect to Orcid / Ladok" defaultMessage="Connect to Orcid / Ladok" />
+              <FormattedMessage
+                description="Connecting with Orcid / Ladok"
+                defaultMessage="Connecting with Orcid / Ladok"
+              />
             }
             additionalInfo={null}
           >
@@ -604,12 +607,12 @@ export function Help(): JSX.Element {
         <Accordion allowMultipleExpanded allowZeroExpanded id="About Sunet">
           <AccordionItemTemplate
             uuid="help-about-sunet"
-            title={<FormattedMessage description="SUNET" defaultMessage="What is SUNET?" />}
+            title={<FormattedMessage description="SUNET" defaultMessage="About SUNET" />}
             additionalInfo={null}
           >
             <p>
               <FormattedMessage
-                description="What is SUNET? description"
+                description="About SUNET description"
                 defaultMessage={`SUNET is the organisation responsible for Swedish universities and data networks, 
                   as well as many services that are used by universities in Sweden.`}
               />
@@ -636,10 +639,7 @@ export function Help(): JSX.Element {
           <AccordionItemTemplate
             uuid="help-contact-us"
             title={
-              <FormattedMessage
-                description="How to contact eduID support"
-                defaultMessage="How to contact eduID support"
-              />
+              <FormattedMessage description="How to contact eduID support" defaultMessage="Contacting eduID support" />
             }
             additionalInfo={null}
           >
