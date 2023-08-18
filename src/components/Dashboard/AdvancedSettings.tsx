@@ -1,6 +1,5 @@
 import { faGears } from "@fortawesome/free-solid-svg-icons";
 import { Security } from "components/Common/Security";
-import { AccountId } from "components/Dashboard/AccountId";
 import { AccountLinking } from "components/Dashboard/AccountLinking";
 import LadokContainer from "components/Dashboard/Ladok";
 import React, { useEffect } from "react";
@@ -43,7 +42,6 @@ export function AdvancedSettings(): JSX.Element {
       <Security />
       <AccountLinking />
       <LadokContainer />
-      <AccountId />
     </React.Fragment>
   );
 }
