@@ -61,7 +61,7 @@
   },
   "/h666/": {
     "developer_comment": "select extra webauthn",
-    "string": "Välj extra identifieringsmetod:"
+    "string": "Välj ytterligare identifieringsmetod:"
   },
   "/hAEZl": {
     "developer_comment": "mfa reset-password tapit",
@@ -456,7 +456,7 @@
   },
   "H1z9GE": {
     "developer_comment": "platform authn device help text",
-    "string": "T.ex. Touch/ Face ID på den här enheten."
+    "string": "T.ex. Touch/ Face ID som stöds på den här enheten."
   },
   "HCDbw9": {
     "developer_comment": "Dashboard AccountId",
@@ -784,7 +784,7 @@
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
-    "string": "T.ex. USB säkerhetsnyckel."
+    "string": "T.ex. USB säkerhetsnyckel som du använder."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -914,7 +914,7 @@
   },
   "YJQhMp": {
     "developer_comment": "security second factor",
-    "string": "Lägg till ett extra sätt, utöver email och lösenord, för att kunna identifiera dig så du är säker på att bara du har tillgång till ditt eduID."
+    "string": "Om möjligt lägg till ett ytterligare sätt, utöver email och lösenord, för att kunna identifiera dig så att du är säker på att bara du har tillgång till ditt eduID."
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
