@@ -1,11 +1,9 @@
 import { faIdCard } from "@fortawesome/free-solid-svg-icons";
-import { eidasVerifyIdentity } from "apis/eduidEidas";
-import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -14,8 +12,12 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
+import { eidasVerifyIdentity } from "apis/eduidEidas";
+import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
+import { Security } from "components/Common/Security";
+import { ToggleSwitchButton } from "components/Common/ToggleSwitchButton";
 import AddNin from "./AddNin";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -64,6 +66,11 @@ function VerifyIdentityIntro(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
 
   const preExpanded: accordionUUID[] = [];
+  const [toggle, setToggle] = useState(false);
+
+  const toggleState = () => {
+    setToggle(!toggle);
+  };
 
   if (!identities.is_verified) {
     if (identities.nin) {
@@ -133,11 +140,30 @@ function VerifyIdentityIntro(): JSX.Element {
             defaultMessage="Choose your principal identification method"
           />
         </h2>
-        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-          <AccordionItemSwedish />
-          <AccordionItemEu />
-          <AccordionItemWorld />
-        </Accordion>
+
+        <ToggleSwitchButton
+          toggleState={toggleState}
+          toggle={toggle}
+          leftLabel="SEE ALL"
+          rightLabel="FOR DIGITAL NATIONAL EXAM"
+        />
+        {toggle ? (
+          <React.Fragment>
+            <h3></h3>
+            <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+              <AccordionItemSwedish forDigitalNationalExam={true} />
+            </Accordion>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h3></h3>
+            <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+              <AccordionItemSwedish forDigitalNationalExam={false} />
+              <AccordionItemEu />
+              <AccordionItemWorld />
+            </Accordion>
+          </React.Fragment>
+        )}
       </article>
     </React.Fragment>
   );
@@ -242,7 +268,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             />
           </p>
           <Accordion allowZeroExpanded>
-            <AccordionItemSwedish />
+            <AccordionItemSwedish forDigitalNationalExam={false} />
           </Accordion>
         </React.Fragment>
       )}
@@ -250,7 +276,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   );
 }
 
-function AccordionItemSwedish(): JSX.Element | null {
+function AccordionItemSwedish(props: { forDigitalNationalExam: boolean }): JSX.Element | null {
   const nin = useDashboardAppSelector((state) => state.identities.nin);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
   const letter_sent = useDashboardAppSelector((state) => state.letter_proofing.letter_sent);
@@ -265,6 +291,28 @@ function AccordionItemSwedish(): JSX.Element | null {
 
   const preExpanded: accordionSwedishUUID[] = ["se-freja"];
 
+  let icon = <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />;
+  let title = (
+    <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
+  );
+  let additionalInfo = (
+    <FormattedMessage
+      description="accordion item swedish additional info"
+      defaultMessage="With a digital ID-card / By post / By phone"
+    />
+  );
+
+  if (props.forDigitalNationalExam) {
+    icon = <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />;
+    title = <FormattedMessage description="accordion item swedish title" defaultMessage="For digital national exam" />;
+    additionalInfo = (
+      <FormattedMessage
+        description="accordion item swedish additional info"
+        defaultMessage="With a digital ID-card / By post. Register a security key for enhanced authentication."
+      />
+    );
+  }
+
   if (letter_sent !== undefined) {
     preExpanded.push("se-letter");
   }
@@ -275,19 +323,7 @@ function AccordionItemSwedish(): JSX.Element | null {
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
   return (
-    <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
-      title={
-        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
-      }
-      additionalInfo={
-        <FormattedMessage
-          description="accordion item swedish additional info"
-          defaultMessage="With a digital ID-card / By post / By phone"
-        />
-      }
-      uuid="swedish"
-    >
+    <AccordionItemTemplate icon={icon} title={title} additionalInfo={additionalInfo} uuid="swedish">
       <ol className="listed-steps">
         <li>
           <h4>
@@ -338,21 +374,28 @@ function AccordionItemSwedish(): JSX.Element | null {
             >
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
-            <AccordionItemTemplate
-              title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-              additionalInfo={
-                <FormattedMessage
-                  defaultMessage="For you with a phone number registered in your name"
-                  description="explanation text for vetting phone"
-                />
-              }
-              uuid="se-phone"
-              disabled={lookupMobileDisabled}
-            >
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
-            </AccordionItemTemplate>
+            {props.forDigitalNationalExam ? null : (
+              <AccordionItemTemplate
+                title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+                additionalInfo={
+                  <FormattedMessage
+                    defaultMessage="For you with a phone number registered in your name"
+                    description="explanation text for vetting phone"
+                  />
+                }
+                uuid="se-phone"
+                disabled={lookupMobileDisabled}
+              >
+                <LookupMobileProofing disabled={lookupMobileDisabled} />
+              </AccordionItemTemplate>
+            )}
           </Accordion>
         </li>
+        {props.forDigitalNationalExam ? (
+          <li>
+            <Security />
+          </li>
+        ) : null}
       </ol>
     </AccordionItemTemplate>
   );

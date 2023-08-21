@@ -265,3 +265,69 @@ input:-webkit-autofill {
   background-color: transparent !important;
   box-shadow: 0 0 0 50px $white inset;
 }
+
+//switch
+.switch-field {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin-bottom: 4rem;
+}
+
+.switch-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.switch-field input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switch-field label {
+  flex: 1;
+  display: inline-block;
+  background-color: $white;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  margin: 0;
+  font-family: $akkurat;
+  min-width: fit-content;
+  width: auto;
+  height: auto;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.switch-field label:hover {
+  cursor: pointer;
+}
+
+.switch-field input:checked + label {
+  background-color: $btn-orange;
+  color: $white;
+  box-shadow: none;
+
+  border: solid 2px $bright-orange;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 16px 0 0 16px;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 16px 16px 0;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+}
