@@ -263,15 +263,6 @@ function AccordionItemSwedish(): JSX.Element | null {
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
-  const preExpanded: accordionSwedishUUID[] = ["se-freja"];
-
-  if (letter_sent !== undefined) {
-    preExpanded.push("se-letter");
-  }
-  if (hasVerifiedSwePhone) {
-    preExpanded.push("se-phone");
-  }
-
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
   return (
@@ -305,12 +296,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
             />
           </p>
-          <Accordion
-            allowMultipleExpanded
-            allowZeroExpanded
-            className="accordion accordion-nested x-adjust"
-            preExpanded={preExpanded}
-          >
+          <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
               title={
                 <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
