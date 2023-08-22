@@ -165,9 +165,9 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="How do I change the default language in eduID? description"
                   defaultMessage={`
-                    To change the default language you can log into eduID and select the language you want under the
-                    personal information tab. The default language in eduID is based on the language setting that your
-                    browser uses.`}
+                    To change the default language you can log into eduID and select your language preference under the
+                    personal information tab. Available options are Swedish and English. The default language in eduID is based on the language setting that your
+                    browser uses. You can also change the displayed language in the footer of the webpage.`}
                 />
               </p>
 
