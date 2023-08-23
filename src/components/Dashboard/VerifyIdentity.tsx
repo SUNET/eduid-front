@@ -268,7 +268,10 @@ function AccordionItemSwedish(): JSX.Element | null {
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
       title={
-        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
+        <FormattedMessage
+          description="accordion item swedish title"
+          defaultMessage="Swedish personal ID number / Digital National Exam"
+        />
       }
       additionalInfo={
         <FormattedMessage
@@ -278,11 +281,21 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
+      <div className="intro">
+        <p>
+          <FormattedMessage
+            description="verify identity additional info"
+            defaultMessage="Verification for the Digital National Exam is necessary either through a digital ID card or via postal verification. Furthermore, it is crucial to register a security key."
+          />
+        </p>
+      </div>
+
       <ol className="listed-steps">
         <li>
           <h4>
             <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
           </h4>
+
           <AddNin />
         </li>
         <li>
