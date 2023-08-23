@@ -27,11 +27,12 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
   return (
     <FinalForm<ResponseCodeValues>
-      onSubmit={async (values) => {
+      onSubmit={(values) => {
         setShowSpinner(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        await props.handleSubmitCode(values);
-        setShowSpinner(false);
+        setTimeout(() => {
+          props.handleSubmitCode(values);
+          setShowSpinner(false);
+        }, 1000);
       }}
       initialValues={initialValues}
       render={(formProps) => {
