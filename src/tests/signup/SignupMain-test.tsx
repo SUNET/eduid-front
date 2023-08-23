@@ -386,7 +386,7 @@ async function enterEmailCode(code: string) {
   fireEvent.submit(form);
 
   // wait until the form disappears
-  waitFor(() => {
+  await waitFor(() => {
     expect(screen.queryByTestId(codeFormTestId)).not.toBeInTheDocument();
   });
 }
