@@ -1,3 +1,4 @@
+import Splash from "components/Common/Splash";
 import React, { useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -22,10 +23,16 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
   };
+  const [showSpinner, setShowSpinner] = useState(false);
 
   return (
     <FinalForm<ResponseCodeValues>
-      onSubmit={props.handleSubmitCode}
+      onSubmit={async (values) => {
+        setShowSpinner(true);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await props.handleSubmitCode(values);
+        setShowSpinner(false);
+      }}
       initialValues={initialValues}
       render={(formProps) => {
         // Add the formProps to all the children of this component. The children are typically buttons,
@@ -38,10 +45,10 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
         });
 
         return (
-          <React.Fragment>
+          <Splash showChildren={!showSpinner}>
             <ShortCodeForm {...formProps} {...props} />
             {childrenWithProps}
-          </React.Fragment>
+          </Splash>
         );
       }}
     />
