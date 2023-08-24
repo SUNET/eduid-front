@@ -1,0 +1,46 @@
+/*
+ * Colors
+ * ========================================================================== */
+
+$white: #fff;
+$txt-black: #161616;
+$body-gray: #f4f4f4;
+$bg-gray: #ebebeb;
+$border-gray: #d8d8d8;
+$txt-gray: #5e5e5e; //text on bg gray
+
+$bg-orange: #ffe7dd;
+$bright-orange: #ff4500; //eduID, higlights
+$txt-orange: #c23400; //text on gray or orange
+$btn-orange: #db3a00; //white on orange
+
+$error-red: #d2143a;
+$success-green: #198754;
+
+/*
+ * Typography
+ * ========================================================================== */
+
+$inter-bold: "Inter-SemiBold", "Arial", "Helvetica", "sans-serif";
+$inter-light: "Inter-light", "Arial", "Helvetica", "sans-serif";
+$inter-regular: "Inter-Regular", "Arial", "Helvetica", "sans-serif";
+$akkurat: "Akkurat", "Arial", "Helvetica", "sans-serif";
+$txt-xs: 0.75rem;
+$txt-sm: 0.9rem;
+$txt-md: 1rem;
+$txt-lg: 1.25rem;
+$line-height: 1.4;
+$margin: 1rem;
+$list-indent: 2.25rem;
+
+/*
+ * Breakpoints
+ * ========================================================================== */
+
+$bp-xs: 414px;
+$bp-sm: 568px;
+$bp-md: 768px;
+$bp-lg: 823px;
+$bp-xl: 1200px;
+
+// $bp-xxl: 1400px;

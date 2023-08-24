@@ -3,8 +3,8 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
-import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -88,7 +88,7 @@ export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
 
 export interface RequestPhoneCodeRequest {
   email_code: string;
-  phone_index: number;
+  phone_index?: number;
 }
 
 export interface RequestPhoneCodeResponse {

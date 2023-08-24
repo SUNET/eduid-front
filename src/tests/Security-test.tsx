@@ -6,15 +6,13 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
-import { DashboardMain } from "components/DashboardMain";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { act } from "react-dom/test-utils";
-import securitySlice, { initialState } from "reducers/Security";
 import { mswServer, rest } from "setupTests";
+import securitySlice, { initialState } from "slices/Security";
 import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
-test("renders security key as expected, not security key added", async () => {
-  render(<DashboardMain />);
-
+async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
   act(() => {
@@ -23,6 +21,11 @@ test("renders security key as expected, not security key added", async () => {
 
   expect(screen.getByRole("heading", { name: /Make your eduID more secure/i })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "security key" })).toBeEnabled();
+}
+
+test("renders security key as expected, not security key added", async () => {
+  render(<DashboardMain />);
+  await linkToAdvancedSettings();
 });
 
 test("renders security key as expected, with added security key", async () => {
@@ -53,24 +56,16 @@ test("renders security key as expected, with added security key", async () => {
     },
   });
 
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToAdvancedSettings();
 
   expect(screen.getByRole("table")).toBeInTheDocument();
   expect(screen.getByRole("cell", { name: "touchID" })).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Verify key" })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "Verify" })).toBeEnabled();
 });
 
 test("renders modals onclick security key button", async () => {
   render(<DashboardMain />);
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToAdvancedSettings();
   const securityKeyButton = screen.getByRole("button", { name: "security key" });
   // Click the 'security key' button
   act(() => {
@@ -85,6 +80,30 @@ test("renders modals onclick security key button", async () => {
   expect(addSecurityKeyButton).toBeEnabled();
 });
 
+test("should not display close button when only one security key is added", async () => {
+  render(<DashboardMain />, {
+    state: {
+      security: {
+        credentials: [
+          {
+            created_ts: "2021-12-02",
+            credential_type: "security.webauthn_credential_type",
+            description: "touchID",
+            key: "dummy dummy",
+            success_ts: "2022-10-17",
+            used_for_login: false,
+            verified: false,
+          },
+        ],
+      },
+    },
+  });
+  await linkToAdvancedSettings();
+
+  const CloseButton = screen.getAllByLabelText("Close")[1];
+  expect(CloseButton).toBeUndefined();
+});
+
 test("can remove a security key", async () => {
   render(<DashboardMain />, {
     state: {
@@ -94,6 +113,15 @@ test("can remove a security key", async () => {
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "touchID",
+            key: "dummy dummy",
+            success_ts: "2022-10-17",
+            used_for_login: false,
+            verified: false,
+          },
+          {
+            created_ts: "2021-12-02",
+            credential_type: "security.webauthn_credential_type",
+            description: "extra touchID",
             key: "dummy dummy",
             success_ts: "2022-10-17",
             used_for_login: false,
@@ -112,11 +140,7 @@ test("can remove a security key", async () => {
       },
     },
   });
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToAdvancedSettings();
 
   const CloseButton = screen.getAllByLabelText("Close")[1];
   expect(CloseButton).toBeEnabled();
@@ -161,10 +185,7 @@ test("api call webauthn/remove", async () => {
   render(<DashboardMain />, {
     state: { security: { credentials: response.credentials } },
   });
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
-  act(() => {
-    nav.click();
-  });
+  await linkToAdvancedSettings();
   await waitFor(() => {
     expect(screen.getByRole("table")).toBeInTheDocument();
   });

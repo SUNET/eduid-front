@@ -1,0 +1,94 @@
+@import "./variables";
+
+.single-input-form .form-group {
+  margin-bottom: 0;
+
+  & .text-muted {
+    margin-top: 0;
+  }
+}
+
+// // all inputs have a .form-control class which is hijacked by bootstrap
+.form-control,
+input {
+  background-color: white;
+  font-family: $inter-regular;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $txt-black;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 2px $txt-black;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  height: 3rem;
+}
+
+// text under inputs
+.small,
+small {
+  font-size: 100% !important;
+
+  &.text-muted {
+    color: $txt-black !important;
+  }
+
+  &.form-text {
+    margin-top: 0 !important;
+  }
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+#root {
+  // this is here ONLY to counteract bootstrap
+  &.container {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+// // this is here ONLY to counteract bootstrap
+@media (min-width: $bp-xl) {
+  #root.container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  #root.container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $bp-lg) {
+  #root.vertical-content-margin {
+    width: 75%;
+  }
+}
+
+@media (min-width: $bp-md) {
+  body {
+    background-color: inherit;
+  }
+
+  #root.container {
+    max-width: 100%;
+  }
+
+  .vertical-content-margin {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (min-width: 576px) {
+  #root.container {
+    max-width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
-import ChangePasswordForm from "components/ChangePasswordForm";
-import { finish_url } from "components/ChangePassword";
-import { render, screen, fireEvent, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { finish_url } from "components/Dashboard/ChangePassword";
+import ChangePasswordForm from "components/Dashboard/ChangePasswordForm";
+import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
   render(<ChangePasswordForm finish_url={finish_url} />);

@@ -5,6 +5,6 @@ git:
       # all supported i18n types: https://docs.transifex.com/formats
       file_format: STRUCTURED_JSON
       source_language: en
-      source_file: src/login/translation/extractedMessages.json
+      source_file: src/translation/extractedMessages.json
       # path expression to translation files, must contain <lang> placeholder
-      translation_files_expression: 'src/login/translation/languages/<lang>.json'
+      translation_files_expression: "src/translation/languages/<lang>.json"

@@ -5,8 +5,8 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
+import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { LoginAppDispatch, LoginRootState } from "login-init-app";
-import { webauthnAssertion } from "login/app_utils/helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/

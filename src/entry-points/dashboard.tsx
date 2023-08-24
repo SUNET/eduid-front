@@ -1,15 +1,16 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { requestAllPersonalData } from "apis/eduidPersonalData";
-import { DashboardMain } from "components/DashboardMain";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
 import { dashboardStore } from "dashboard-init-app";
 import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { appLoadingSlice } from "reducers/AppLoading";
-import { updateIntl } from "reducers/Internationalisation";
-import { showNotification } from "reducers/Notifications";
+import { appLoadingSlice } from "slices/AppLoading";
+import { updateIntl } from "slices/Internationalisation";
+import { showNotification } from "slices/Notifications";
+import { setupLanguage } from "translation";
+import "../../src/styles/index.scss";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 

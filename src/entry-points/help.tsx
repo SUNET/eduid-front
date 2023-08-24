@@ -1,13 +1,12 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { HelpMain } from "components/HelpMain";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import { ERRORS_CONFIG_URL } from "globals";
 import { helpStore } from "help-init-app";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { setupLanguage } from "translation";
 import { polyfillsInit } from "./polyfills-common";
-
 import "./public-path";
 
 /* Get configuration */

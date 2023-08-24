@@ -1,0 +1,205 @@
+/* styles for tables displaying user info on settings page */
+@import "variables";
+
+table {
+  width: 100%;
+  font-size: 1.125rem;
+  font-family: $inter-light;
+  table-layout: fixed;
+  background-color: $white;
+
+  @media (max-width: $bp-md) {
+    font-size: 1rem;
+  }
+
+  & tbody {
+    margin-bottom: 1rem;
+
+    & th:first-child {
+      padding-left: 1rem;
+      padding-top: 0.75rem;
+      line-height: 1;
+    }
+
+    & th.display-none {
+      display: none;
+    }
+
+    & td {
+      text-align: left;
+      vertical-align: middle;
+      line-height: 1;
+
+      &.value-status {
+        width: 25%;
+
+        & button {
+          margin: 0;
+          padding: 0;
+        }
+
+        & span {
+          font-family: $akkurat;
+          letter-spacing: 1px;
+          font-weight: 700;
+          padding: 0;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+        }
+      }
+
+      .verified {
+        text-transform: uppercase;
+        font-family: $inter-regular;
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+
+      &.remove-data {
+        width: 8%;
+
+        & .icon-button {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      &.primary {
+        color: $txt-black;
+      }
+      &.verified,
+      &.unverified,
+      &.primary {
+        padding: 0.75rem 1rem;
+      }
+
+      .btn-remove-webauthn {
+        padding: 0;
+      }
+    }
+
+    & tr.webauthn-token-holder {
+      & td:first-child {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      & td:last-child {
+        text-align: center;
+      }
+    }
+
+    & tr.webauthn-token-holder.verified {
+      color: $txt-black;
+    }
+
+    & tr {
+      height: 3rem;
+
+      &.border-row {
+        font-size: 0.8rem;
+        border-bottom: 1px solid $border-gray;
+      }
+
+      &td:first-child {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    & tr.status {
+      height: auto;
+
+      td:last-child {
+        text-align: center;
+
+        a {
+          font-size: 0.75em;
+        }
+      }
+    }
+
+    & tr.display-none {
+      display: none;
+    }
+  }
+
+  .identity-summary &,
+  .progress-summary & {
+    table-layout: auto;
+    margin-bottom: 0;
+
+    .border-row {
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      .flag-icon {
+        font-size: 2em !important;
+      }
+
+      .circle-icon {
+        height: 2rem;
+
+        @media (max-width: $bp-md) {
+          height: 1.5rem;
+        }
+      }
+    }
+
+    a {
+      font-size: 1rem;
+    }
+  }
+
+  .progress-summary & td:first-child {
+    width: 60%;
+  }
+}
+
+table.table-form.passwords {
+  tr:first-child {
+    font-size: 1rem;
+    letter-spacing: 0;
+    color: $txt-black;
+    font-family: $inter-bold;
+    height: auto;
+  }
+
+  .security-name {
+    width: 36%;
+  }
+
+  .security-creation-date {
+    width: 21%;
+  }
+
+  .security-last-used-date {
+    width: 21%;
+  }
+
+  .security-verify-link {
+    width: 17%;
+  }
+
+  .security-remove-data {
+    width: 5%;
+  }
+}
+
+caption {
+  caption-side: top;
+  color: inherit;
+}
+
+@media (max-width: $bp-sm) {
+  .security-creation-date,
+  .security-last-used-date,
+  .webauthn-token-holder td:nth-child(2),
+  .webauthn-token-holder td:nth-child(3) {
+    display: none;
+  }
+}

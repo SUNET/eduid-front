@@ -1,17 +1,17 @@
-import accountLinkingSlice from "reducers/AccountLinking";
-import chpassSlice from "reducers/ChangePassword";
-import configSlice from "reducers/DashboardConfig";
-import emailsSlice from "reducers/Emails";
-import identitiesSlice from "reducers/Identities";
-import ladokSlice from "reducers/Ladok";
-import letterProofingSlice from "reducers/LetterProofing";
-import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
-import { notificationsSlice } from "reducers/Notifications";
-import personalDataSlice from "reducers/PersonalData";
-import phonesSlice from "reducers/Phones";
-import securitySlice from "reducers/Security";
 import { combineReducers } from "redux";
-import { intlReducer } from "./reducers/Internationalisation";
+import accountLinkingSlice from "slices/AccountLinking";
+import chpassSlice from "slices/ChangePassword";
+import configSlice from "slices/DashboardConfig";
+import emailsSlice from "slices/Emails";
+import identitiesSlice from "slices/Identities";
+import ladokSlice from "slices/Ladok";
+import letterProofingSlice from "slices/LetterProofing";
+import lookupMobileProofingSlice from "slices/LookupMobileProofing";
+import { notificationsSlice } from "slices/Notifications";
+import personalDataSlice from "slices/PersonalData";
+import phonesSlice from "slices/Phones";
+import securitySlice from "slices/Security";
+import { intlReducer } from "./slices/Internationalisation";
 
 const eduIDApp = combineReducers({
   chpass: chpassSlice.reducer,

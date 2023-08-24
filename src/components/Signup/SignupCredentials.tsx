@@ -1,10 +1,10 @@
 import { useActor } from "@xstate/react";
 import { getPasswordRequest } from "apis/eduidSignup";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "components/Common/EduIDButton";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "reducers/Notifications";
 import { useSignupAppDispatch } from "signup-hooks";
+import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCredentials(): JSX.Element {

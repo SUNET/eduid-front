@@ -1,12 +1,14 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+import { LoginMain } from "components/Login/LoginMain";
+import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { LOGIN_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";
-import { LoginMain } from "login/components/LoginMain";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { appLoadingSlice } from "reducers/AppLoading";
+import { appLoadingSlice } from "slices/AppLoading";
+import { setupLanguage } from "translation";
+import "../../src/styles/index.scss";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
@@ -28,11 +30,13 @@ setupLanguage(loginStore.dispatch);
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <ReduxIntlProvider store={loginStore}>
-    <BrowserRouter>
-      <LoginMain />
-    </BrowserRouter>
-  </ReduxIntlProvider>,
+  <ResetPasswordGlobalStateProvider>
+    <ReduxIntlProvider store={loginStore}>
+      <BrowserRouter>
+        <LoginMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
+  </ResetPasswordGlobalStateProvider>,
   initDomTarget,
   getConfig
 );

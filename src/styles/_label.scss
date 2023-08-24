@@ -1,0 +1,10 @@
+label,
+.form-label {
+  display: flex;
+  font-size: 1rem;
+  font-family: $inter-bold;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: $txt-black;
+  margin: 0 5px 5px 0;
+}

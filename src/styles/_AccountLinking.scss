@@ -1,0 +1,46 @@
+table.orcid {
+  tr {
+    height: auto;
+
+    td {
+      &.orcid-link {
+        vertical-align: middle;
+        padding: 0.75rem 0;
+      }
+      &:first-of-type,
+      &:last-of-type {
+        vertical-align: top;
+        width: 3rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+  }
+}
+
+span.orcid-logo {
+  background: url("../../img/vector_iD_icon.svg");
+  background-repeat: no-repeat;
+}
+
+//remove or merge with above?
+.orcid-logo {
+  display: inline-flex;
+  height: 22px;
+  width: 22px;
+  position: relative;
+}
+
+.orcid-link {
+  font-size: 1rem;
+  line-height: 1.2;
+  word-break: break-word;
+
+  a {
+    margin: 0;
+  }
+}
+
+button .orcid-logo {
+  height: 22px;
+  width: 22px;
+}

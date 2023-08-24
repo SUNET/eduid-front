@@ -1,0 +1,139 @@
+@import "variables";
+
+/* overall structure of page */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  font-family: $inter-regular;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $txt-black;
+  scroll-behavior: smooth;
+  display: flex;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+
+  // height: 100vh;
+  flex-direction: column;
+
+  // this is commented out to accommodate DashboardMain, should be introduced again for login app
+  // background-color: #f4f4f4;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 4rem;
+  background-color: $body-gray;
+
+  @media (max-width: $bp-lg) {
+    padding-bottom: 3rem;
+  }
+
+  .content {
+    padding-top: 2rem;
+
+    @media (max-width: $bp-lg) {
+      padding-top: 1.5rem;
+    }
+  }
+}
+
+// same styling as .phoneview-form-container, #delete-account-container,#change-password-container
+// in Email.js = replaced these with with <article>
+#content article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid $border-gray;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $bp-md) {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+// this is a horizontal-margin and should be renamed
+.horizontal-content-margin,
+.vertical-content-margin {
+  padding: 0;
+  width: 58%;
+  max-width: 870px;
+  margin: 0 auto;
+
+  // this is added to prevent margin collapse (look for other solution if causing problems)
+  display: flex;
+  flex-direction: column;
+}
+
+// Mimic lead paragraph border
+hr.border-line {
+  margin: 0.5rem 0 2rem;
+  border-bottom: 2px solid $border-gray;
+  border-top: none;
+  opacity: unset;
+}
+
+// TODO: Remove after checking scrollbar in tables
+// ::-webkit-scrollbar {
+//   margin-top: -1rem;
+//   width: 0.125rem;
+//   height: 0.125rem;
+//   width: 0;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: #7c7c7c;
+//   border-radius: 1rem;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background-color: #ececec;
+// }
+
+@media (max-width: $bp-lg) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(80% - 2rem);
+  }
+}
+
+@media (max-width: $bp-md) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(80% - 1.25rem);
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(100% - #{2 * $margin});
+  }
+}
+
+/* Utility classes - possibly move to separate file */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

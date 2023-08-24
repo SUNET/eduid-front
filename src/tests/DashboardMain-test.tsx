@@ -1,6 +1,6 @@
-import { DashboardMain } from "components/DashboardMain";
-import { activeClassName } from "components/HeaderNav";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { activeClassName } from "components/Common/HeaderNav";
+import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("shows splash screen when not configured", () => {
@@ -64,7 +64,7 @@ test("renders identity verification progress, unverified after password reset", 
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/no longer verified after password reset./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/no longer verified after password reset./);
 });
 
 test("renders identity verification progress, new user", () => {
@@ -85,7 +85,7 @@ test("renders identity verification progress, new user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is not verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
 });
 
 test("renders identity verification progress, verified user", () => {
@@ -106,5 +106,5 @@ test("renders identity verification progress, verified user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
 });

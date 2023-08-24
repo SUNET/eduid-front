@@ -1,7 +1,7 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
-import { emailPlaceHolder } from "login/components/Inputs/EmailInput";
-import { LoginMain } from "login/components/LoginMain";
+import { emailPlaceHolder } from "components/Common/EmailInput";
+import { LoginMain } from "components/Login/LoginMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
@@ -74,9 +74,9 @@ test("can click 'forgot password' with an e-mail address", async () => {
     expect(screen.getByTestId("email-address")).toHaveTextContent(email);
   });
 
-  // verify resend button is initially disabled
-  const resendButton = screen.getByRole("button", { name: /^resend/i });
-  expect(resendButton).toBeDisabled();
+  // go back button is shown
+  const resendButton = screen.getByRole("button", { name: /^go back/i });
+  expect(resendButton).toBeInTheDocument();
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {

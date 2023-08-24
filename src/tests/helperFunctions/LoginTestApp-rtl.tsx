@@ -1,12 +1,13 @@
-import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import type { InitialEntry } from "history";
-import { getTestLoginStore, LoginRootState } from "login-init-app";
-import { initialState as loginInitialState } from "login/redux/slices/loginSlice";
-import { initialState as resetPasswordInitialState } from "login/redux/slices/resetPasswordSlice";
+import { LoginRootState, getTestLoginStore } from "login-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/LoginConfig";
+import { initialState as loginInitialState } from "slices/Login";
+import { initialState as configInitialState } from "slices/LoginConfig";
+import { initialState as resetPasswordInitialState } from "slices/ResetPassword";
 
 export const loginTestState: LoginRootState = {
   config: {
@@ -39,9 +40,11 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const store = getTestLoginStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-      <ReduxIntlProvider store={store}>
-        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
-      </ReduxIntlProvider>
+      <ResetPasswordGlobalStateProvider>
+        <ReduxIntlProvider store={store}>
+          <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
+        </ReduxIntlProvider>
+      </ResetPasswordGlobalStateProvider>
     );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...args.options });

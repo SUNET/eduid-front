@@ -4,8 +4,8 @@ import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
 import { helpAppDispatch } from "help-init-app";
 import { LoginAppDispatch } from "login-init-app";
-import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "sagas/ts_common";
 import { SignupAppDispatch } from "signup-init-app";
+import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "../ts_common";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;

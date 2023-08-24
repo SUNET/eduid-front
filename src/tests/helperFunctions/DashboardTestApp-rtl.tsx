@@ -1,10 +1,10 @@
-import { render as rtlRender, RenderOptions, RenderResult } from "@testing-library/react";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "reducers/DashboardConfig";
+import { initialState as configInitialState } from "slices/DashboardConfig";
 
 export const defaultDashboardTestState = {
   config: {

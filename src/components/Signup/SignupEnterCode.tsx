@@ -1,14 +1,14 @@
 import { verifyEmailRequest } from "apis/eduidSignup";
-import EduIDButton from "components/EduIDButton";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
-import { ExpiresMeter } from "login/components/LoginApp/Login/ExpiresMeter";
-import { ResponseCodeForm, ResponseCodeValues } from "login/components/LoginApp/Login/ResponseCodeForm";
+import EduIDButton from "components/Common/EduIDButton";
+import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
+import { ExpiresMeter } from "components/Login/ExpiresMeter";
+import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "reducers/Notifications";
-import { signupSlice } from "reducers/Signup";
 import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
+import { clearNotifications } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 interface ResponseCodeButtonsProps {
@@ -131,7 +131,8 @@ export function SignupEnterCode(): JSX.Element {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="Enter the six digit code sent to {email} to verify your email address"
+            defaultMessage={`Enter the six digit code sent to {email} to verify your email address. You can also copy 
+            and paste the code from the email into the input field.`}
             values={{
               email: (
                 <span id="email_address">

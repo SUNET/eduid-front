@@ -1,4 +1,4 @@
-import { messages } from "login/translation/messages";
+import { messages } from "translation/messages";
 
 /* This hard-coded list of languages is needed to offer the user the choice of switching to any
  * of these languages.

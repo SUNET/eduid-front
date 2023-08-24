@@ -1,11 +1,12 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { ReduxIntlProvider } from "components/ReduxIntl";
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { errorsStore } from "errors-init-app";
 import { ERRORS_CONFIG_URL } from "globals";
-import { ErrorsMain } from "login/components/SwamidErrors/ErrorsMain";
-import { setupLanguage } from "login/translation";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { setupLanguage } from "translation";
+import "../../src/styles/index.scss";
+import { ErrorsMain } from "../components/SwamidErrors/ErrorsMain";
 import { polyfillsInit } from "./polyfills-common";
 
 import "./public-path";

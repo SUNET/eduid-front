@@ -1,8 +1,8 @@
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
-import Footer from "login/components/Footer/Footer";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./Common/Footer";
+import { Header } from "./Common/Header";
+import { Notifications } from "./Common/Notifications";
 import { Help } from "./Help";
 
 export function HelpMain(): JSX.Element {
