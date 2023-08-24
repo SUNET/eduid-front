@@ -88,7 +88,7 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
   }
 
   return (
-    <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["se-letter"]}>
+    <Accordion allowMultipleExpanded allowZeroExpanded>
       <AccordionItemTemplate title={letterStatus} additionalInfo="" uuid="se-letter" disabled={false}>
         <LetterProofing disabled={false} />
       </AccordionItemTemplate>
