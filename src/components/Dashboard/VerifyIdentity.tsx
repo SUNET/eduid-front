@@ -1,4 +1,4 @@
-import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
@@ -14,6 +14,8 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import AddNin from "./AddNin";
@@ -281,13 +283,42 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
-      <div className="intro">
-        <p>
-          <FormattedMessage
-            description="verify identity additional info"
-            defaultMessage="Verification for the Digital National Exam is necessary either through a digital ID card or via postal verification. Furthermore, it is crucial to register a security key."
-          />
-        </p>
+      <div className="information__container">
+        <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+
+        <div className="information__content">
+          <div className="information__title">
+            <h4>
+              <FormattedMessage
+                description="For Digital National Exam heading"
+                defaultMessage="For Digital National Exam"
+              />
+            </h4>
+          </div>
+          <div className="information__content">
+            <p>
+              <FormattedMessage
+                description="verify identity additional info"
+                defaultMessage="Verification for the Digital National Exam is necessary either through a digital ID card or via postal verification. Furthermore, it is crucial to register a security key."
+              />
+            </p>
+
+            <fieldset>
+              <form>
+                <label className="toggle flex-between" htmlFor="digital-national-exam">
+                  <legend>
+                    <FormattedMessage
+                      defaultMessage="options for digital national exam"
+                      description="options for digital national exam"
+                    />
+                  </legend>
+                  <input className="toggle-checkbox" type="checkbox" id="digital-national-exam" />
+                  <div className="toggle-switch"></div>
+                </label>
+              </form>
+            </fieldset>
+          </div>
+        </div>
       </div>
 
       <ol className="listed-steps">
