@@ -18,6 +18,10 @@
     fieldset:last-of-type {
       margin-bottom: 0;
     }
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5em;
+    }
   }
   @media (max-width: $bp-sm) {
     /* counteracts additional list left margin in mobile mode */

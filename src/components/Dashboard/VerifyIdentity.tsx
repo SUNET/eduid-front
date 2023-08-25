@@ -5,7 +5,7 @@ import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -18,6 +18,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
+import { Security } from "components/Common/Security";
 import AddNin from "./AddNin";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -264,6 +265,12 @@ function AccordionItemSwedish(): JSX.Element | null {
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
   const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
+  const [isForDNP, setIsForDNP] = useState(false);
+
+  const handleSwitchChange = (): void => {
+    setIsForDNP(!isForDNP);
+  };
+
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
   return (
@@ -312,7 +319,13 @@ function AccordionItemSwedish(): JSX.Element | null {
                       description="options for digital national exam"
                     />
                   </legend>
-                  <input className="toggle-checkbox" type="checkbox" id="digital-national-exam" />
+                  <input
+                    checked={isForDNP}
+                    onChange={handleSwitchChange}
+                    className="toggle-checkbox"
+                    type="checkbox"
+                    id="digital-national-exam"
+                  />
                   <div className="toggle-switch"></div>
                 </label>
               </form>
@@ -367,21 +380,28 @@ function AccordionItemSwedish(): JSX.Element | null {
             >
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
-            <AccordionItemTemplate
-              title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-              additionalInfo={
-                <FormattedMessage
-                  defaultMessage="For you with a phone number registered in your name"
-                  description="explanation text for vetting phone"
-                />
-              }
-              uuid="se-phone"
-              disabled={lookupMobileDisabled}
-            >
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
-            </AccordionItemTemplate>
+            {!isForDNP ? (
+              <AccordionItemTemplate
+                title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+                additionalInfo={
+                  <FormattedMessage
+                    defaultMessage="For you with a phone number registered in your name"
+                    description="explanation text for vetting phone"
+                  />
+                }
+                uuid="se-phone"
+                disabled={lookupMobileDisabled}
+              >
+                <LookupMobileProofing disabled={lookupMobileDisabled} />
+              </AccordionItemTemplate>
+            ) : null}
           </Accordion>
         </li>
+        {!isForDNP ? null : (
+          <li>
+            <Security />
+          </li>
+        )}
       </ol>
     </AccordionItemTemplate>
   );
