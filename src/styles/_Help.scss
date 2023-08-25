@@ -17,6 +17,12 @@
     font-size: inherit;
   }
 
+  section {
+    background: $body-gray;
+    padding: 1.25rem 1rem 0.5rem;
+    margin: 1rem 0;
+  }
+
   ul.bullets {
     list-style-position: inside;
     list-style-type: disc;

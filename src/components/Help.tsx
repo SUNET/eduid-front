@@ -25,18 +25,18 @@ export function Help(): JSX.Element {
           <p>
             <FormattedMessage
               description="help main description"
-              defaultMessage={`Here you will find answers to the most common questions, 
-                our contact information and general information about the service.`}
+              defaultMessage={`Here you will find general information about the service, answers to the most common questions about using eduID, 
+               as well as support contact information.`}
             />
           </p>
         </div>
       </section>
       <div className="help-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="About eduID">
+        <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-FAQ">
           <AccordionItemTemplate
             uuid="help-about-eduID"
             title={<FormattedMessage description="About eduID" defaultMessage="About eduID" />}
-            additionalInfo={null}
+            additionalInfo={"What it is and may be used for"}
           >
             <article>
               <h3>
@@ -133,14 +133,23 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
             </article>
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
+            uuid="help-using-eduID"
+            title={<FormattedMessage description="About eduID" defaultMessage="Using eduID" />}
+            additionalInfo={"How to create, use and strengthen your eduID"}
+          >
             <article>
               <h3>
-                <FormattedMessage description="How do I use eduID? heading" defaultMessage="How do I use eduID?" />
+                <FormattedMessage
+                  description="How do I use eduID? heading"
+                  defaultMessage="How do I create an eduID?"
+                />
               </h3>
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage={`To be continued on how to create account... For detailed information on how to verify your account see the 'Verification of Identity' section.`}
+                  defaultMessage={`To be continued on how to create account... For detailed information on how to verify your created account see the 'Verification of Identity' section.`}
                 />
               </p>
               <h4>
@@ -198,16 +207,28 @@ export function Help(): JSX.Element {
               </p>
             </article>
           </AccordionItemTemplate>
-        </Accordion>
 
-        <Accordion allowMultipleExpanded allowZeroExpanded id="Verification of Identity">
           <AccordionItemTemplate
             uuid="help-verification-of-identity"
             title={
               <FormattedMessage description="Verification of Identity" defaultMessage="Verification of Identity" />
             }
-            additionalInfo={null}
+            additionalInfo={"Levels and methods of verifying eduID for different user groups"}
           >
+            <article>
+              <h3>
+                <FormattedMessage
+                  description="Verification levels heading"
+                  defaultMessage="What are the levels of verification?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="Freja eID+ is a digital ID-card free of charge. description"
+                  defaultMessage="Describing levels of verification and what they may be used for."
+                />
+              </p>
+            </article>
             <article>
               <h3>
                 <FormattedMessage
@@ -222,99 +243,97 @@ export function Help(): JSX.Element {
                   these methods are available, depending on your circumstances below."
                 />
               </p>
-              <p>
-                <FormattedMessage
-                  description="At this moment, verifying an id number can be done via: description"
-                  defaultMessage="{emphasis}, verifying an id number can be done via:"
-                  values={{
-                    emphasis: (
-                      <em>
-                        If you <strong>have a Swedish personal identity number</strong>
-                      </em>
-                    ),
-                  }}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
+              <section>
+                <p>
                   <FormattedMessage
-                    description="identity verification methods: post"
-                    defaultMessage={`{post} The user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency) {detailedList} `}
+                    description="At this moment, verifying an id number can be done via: description"
+                    defaultMessage="{emphasis}, verifying an id number can be done via:"
                     values={{
-                      post: <strong>Post:</strong>,
-                      detailedList: (
-                        <ol>
-                          <li>kolla brevlådan</li>
-                        </ol>
-                      ),
+                      emphasis: <strong>If you have a Swedish personal identity number</strong>,
                     }}
                   />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="identity verification methods: Mobile"
-                    defaultMessage={`{Mobile} The user receives a message sent to the phone number that is registered in
+                </p>
+                <ul className="bullets">
+                  <li>
+                    <FormattedMessage
+                      description="identity verification methods: Post"
+                      defaultMessage={`{post} The user receives a letter with a code sent to their home address as 
+                      registered at Skatteverket (the Swedish Tax Agency) `}
+                      values={{
+                        post: <em>Post:</em>,
+                        // detailedList: (
+                        //   <ol>
+                        //     <li>kolla brevlådan</li>
+                        //   </ol>
+                        // ),
+                      }}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="identity verification methods: Mobile"
+                      defaultMessage={`{mobile} The user receives a message sent to the phone number that is registered in
                     the Swedish telephone register`}
-                    values={{
-                      Mobile: <strong>Mobile:</strong>,
-                    }}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="identity verification methods: Mobile"
-                    defaultMessage={`{Freja} The user will be directed to the Freja eID website to
+                      values={{
+                        mobile: <em>Mobile:</em>,
+                      }}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="identity verification methods: Mobile"
+                      defaultMessage={`{freja} The user will be directed to the Freja eID website to
                       use their service. If you don't have Freja eID+ you have to create it separately before you can
-                      complete verification of your eduID. Read more about {FrejaLink}`}
+                      complete verification of your eduID. Read more about {frejaLink}`}
+                      values={{
+                        freja: <em>Freja eID+ (digital ID-card):</em>,
+                        frejaLink: (
+                          <a className="text-link" href="#frejaeid">
+                            Freja eID+
+                          </a>
+                        ),
+                      }}
+                    />
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <p>
+                  <FormattedMessage
+                    description="eidas heading"
+                    defaultMessage={`{emphasis}, you could use 
+                    eIDAS to verify your identity. Read more about {eIDASLink}`}
                     values={{
-                      Freja: <strong>Freja eID+ (digital ID-card):</strong>,
-                      FrejaLink: (
-                        <a className="text-link" href="#frejaeid">
-                          Freja eID+
+                      emphasis: (
+                        <strong>If you are an EU citizen and without a Swedish personal identity number</strong>
+                      ),
+                      eIDASLink: (
+                        <a className="text-link" href="#eidas">
+                          eIDAS
                         </a>
                       ),
                     }}
                   />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="eidas heading"
-                  defaultMessage={`{emphasis}, you could use 
-                    eIDAS to verify your identity. Read more about {eIDASLink}`}
-                  values={{
-                    emphasis: (
-                      <em>
-                        If you <strong>are an EU citizen</strong> without a Swedish personal identity number
-                      </em>
-                    ),
-                    eIDASLink: (
-                      <a className="text-link" href="#eidas">
-                        eIDAS
-                      </a>
-                    ),
-                  }}
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="Svipe heading"
-                  defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}`}
-                  values={{
-                    emphasis: (
-                      <em>
-                        If you <strong>are not an EU citizen</strong> without a Swedish personal identity number
-                      </em>
-                    ),
-                    SvipeLink: (
-                      <a className="text-link" href="#svipe">
-                        Svipe iD
-                      </a>
-                    ),
-                  }}
-                />
-              </p>
+                </p>
+              </section>
+              <section>
+                <p>
+                  <FormattedMessage
+                    description="Svipe heading"
+                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}`}
+                    values={{
+                      emphasis: (
+                        <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
+                      ),
+                      SvipeLink: (
+                        <a className="text-link" href="#svipe">
+                          Svipe iD
+                        </a>
+                      ),
+                    }}
+                  />
+                </p>
+              </section>
             </article>
             <article id="frejaeid">
               <h3>
@@ -482,9 +501,7 @@ export function Help(): JSX.Element {
               </p>
             </article>
           </AccordionItemTemplate>
-        </Accordion>
 
-        <Accordion allowMultipleExpanded allowZeroExpanded id="About Orcid">
           <AccordionItemTemplate
             uuid="help-About-orcid"
             title={
@@ -521,14 +538,13 @@ export function Help(): JSX.Element {
                   }}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+
+              <h4>
                 <FormattedMessage
                   description="How does linking ORCID to eduID work? heading"
                   defaultMessage="How does linking ORCID to eduID work?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="connect orcid   account description"
@@ -537,14 +553,12 @@ export function Help(): JSX.Element {
                     connected to the correct eduID.`}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="What do I do if I don't have an ORCID? heading"
                   defaultMessage=" What do I do if I don't have an ORCID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="orcid description"
@@ -558,14 +572,12 @@ export function Help(): JSX.Element {
                   }}
                 />
               </p>
-            </article>
-            <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description=" How do I remove a linked ORCID from eduID? heading"
                   defaultMessage="  How do I remove a linked ORCID from eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="orcid description"
@@ -575,9 +587,6 @@ export function Help(): JSX.Element {
               </p>
             </article>
           </AccordionItemTemplate>
-        </Accordion>
-
-        <Accordion allowMultipleExpanded allowZeroExpanded id="Privacy Policy">
           <AccordionItemTemplate
             uuid="help-privacy-policy"
             title={
@@ -588,54 +597,53 @@ export function Help(): JSX.Element {
             }
             additionalInfo={null}
           >
-            <p>
-              <FormattedMessage
-                description="Read more at sunet"
-                defaultMessage="Read more at {sunet}."
-                values={{
-                  sunet: (
-                    <a className="text-link" href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
-                      www.sunet.se
-                    </a>
-                  ),
-                }}
-              />
-            </p>
+            <article>
+              <p>
+                <FormattedMessage
+                  description="Read more at sunet"
+                  defaultMessage="Read more at {sunet}."
+                  values={{
+                    sunet: (
+                      <a className="text-link" href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
+                        www.sunet.se
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
+            </article>
           </AccordionItemTemplate>
-        </Accordion>
-
-        <Accordion allowMultipleExpanded allowZeroExpanded id="About Sunet">
           <AccordionItemTemplate
             uuid="help-about-sunet"
             title={<FormattedMessage description="SUNET" defaultMessage="About SUNET" />}
             additionalInfo={null}
           >
-            <p>
-              <FormattedMessage
-                description="About SUNET description"
-                defaultMessage={`SUNET is the organisation responsible for Swedish universities and data networks, 
+            {" "}
+            <article>
+              <p>
+                <FormattedMessage
+                  description="About SUNET description"
+                  defaultMessage={`SUNET is the organisation responsible for Swedish universities and data networks, 
                   as well as many services that are used by universities in Sweden.`}
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                description="What is SUNET? description"
-                defaultMessage={`SUNET has been working with the issue of identity management for a long time and 
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="What is SUNET? description"
+                  defaultMessage={`SUNET has been working with the issue of identity management for a long time and 
                   developed eduID to make things easier for all parties in the higher education community. 
                   More information about SUNET is available at {sunet}.`}
-                values={{
-                  sunet: (
-                    <a className="text-link" href="http://www.sunet.se">
-                      www.sunet.se
-                    </a>
-                  ),
-                }}
-              />
-            </p>
+                  values={{
+                    sunet: (
+                      <a className="text-link" href="http://www.sunet.se">
+                        www.sunet.se
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
+            </article>
           </AccordionItemTemplate>
-        </Accordion>
-
-        <Accordion allowMultipleExpanded allowZeroExpanded id="Contact us" preExpanded={preExpanded}>
           <AccordionItemTemplate
             uuid="help-contact-us"
             title={
@@ -643,60 +651,62 @@ export function Help(): JSX.Element {
             }
             additionalInfo={null}
           >
-            <p>
-              <FormattedMessage
-                description="Create a Freja eID+ account list item"
-                defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
+            <article>
+              <p>
+                <FormattedMessage
+                  description="Create a Freja eID+ account list item"
+                  defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
-                values={{
-                  support: (
-                    <a className="text-link" href="mailto:support@eduid.se">
-                      support@eduid.se
-                    </a>
-                  ),
-                }}
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                description="support description"
-                defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ under the advanced settings tab.  
+                  values={{
+                    support: (
+                      <a className="text-link" href="mailto:support@eduid.se">
+                        support@eduid.se
+                      </a>
+                    ),
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="support description"
+                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ under the advanced settings tab.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                description="Create a Freja eID+ account list item"
-                defaultMessage="{strong}, but for simple
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Create a Freja eID+ account list item"
+                  defaultMessage="{strong}, but for simple
               matters you can also reach us on phone number {phone}."
-                values={{
-                  strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
-                  phone: (
-                    <a className="text-link" href="tel:+46455-385200">
-                      0455-385200
-                    </a>
-                  ),
-                }}
-              />
-            </p>
-            <p>
-              <FormattedMessage description="Opening hours:" defaultMessage="Opening hours:" />
-            </p>
-            <ul className="bullets">
-              <li>
-                <FormattedMessage
-                  description="Opening hours: list item"
-                  defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
+                  values={{
+                    strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
+                    phone: (
+                      <a className="text-link" href="tel:+46455-385200">
+                        0455-385200
+                      </a>
+                    ),
+                  }}
                 />
-              </li>
-              <li>
-                <FormattedMessage
-                  description="Opening hours: list item"
-                  defaultMessage="Friday 9:00-12:00, 13:00-14:30"
-                />
-              </li>
-            </ul>
+              </p>
+              <p>
+                <FormattedMessage description="Opening hours:" defaultMessage="Opening hours:" />
+              </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Opening hours: list item"
+                    defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Opening hours: list item"
+                    defaultMessage="Friday 9:00-12:00, 13:00-14:30"
+                  />
+                </li>
+              </ul>
+            </article>
           </AccordionItemTemplate>
         </Accordion>
       </div>
