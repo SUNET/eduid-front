@@ -1,4 +1,4 @@
-import { faCircleInfo, faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
@@ -21,7 +21,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import { Security } from "components/Common/Security";
 import AddNin from "./AddNin";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -58,7 +57,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   return (
     <Fragment>
-      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
+      {/* <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} /> */}
       <VerifyIdentityIntro />
     </Fragment>
   );
@@ -77,7 +76,7 @@ function VerifyIdentityIntro(): JSX.Element {
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
-
+  console.log("hi000");
   const handleSwitchChange = (): void => {
     setIsShowSecurityKey(!isShowSecurityKey);
   };
@@ -95,7 +94,7 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
-        <section className="intro">
+        {/* <section className="intro">
           <h1>
             <FormattedMessage
               description="verify identity unverified main title"
@@ -110,7 +109,7 @@ function VerifyIdentityIntro(): JSX.Element {
               />
             </p>
           </div>
-        </section>
+        </section> */}
         <article>
           <h2>
             <FormattedMessage
@@ -119,8 +118,8 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </h2>
           <VerifiedIdentitiesTable />
-
-          {tokens.length ? null : (
+          {console.log("identities.nin?.verified && !tokens.length", !identities.nin?.verified && !tokens.length)}
+          {identities.nin?.verified && !tokens.length ? (
             <div className="information__container">
               <div className="information__inner">
                 <FontAwesomeIcon icon={faCircleInfo as IconProp} />
@@ -165,7 +164,7 @@ function VerifyIdentityIntro(): JSX.Element {
               </div>
               {isShowSecurityKey ? <Security /> : null}
             </div>
-          )}
+          ) : null}
         </article>
       </React.Fragment>
     );
@@ -173,7 +172,7 @@ function VerifyIdentityIntro(): JSX.Element {
 
   return (
     <React.Fragment>
-      <section className="intro">
+      {/* <section className="intro">
         <h1>
           <FormattedMessage
             description="verify identity unverified main title"
@@ -189,7 +188,7 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </p>
         </div>
-      </section>
+      </section> */}
       <article>
         <h2>
           <FormattedMessage
@@ -197,6 +196,13 @@ function VerifyIdentityIntro(): JSX.Element {
             defaultMessage="Choose your principal identification method"
           />
         </h2>
+        <p>
+          <FormattedMessage
+            description="verify identity unverified description"
+            defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+            to get the most benefit from `}
+          />
+        </p>
         <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
           <AccordionItemSwedish />
           <AccordionItemEu />

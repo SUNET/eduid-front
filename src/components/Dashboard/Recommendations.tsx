@@ -203,7 +203,7 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
         />
       </p>
-      {!identities.nin?.verified && (
+      {!identities.is_verified && (
         <div className="information__container">
           <div className="information__inner">
             <FontAwesomeIcon icon={faCircleInfo as IconProp} />

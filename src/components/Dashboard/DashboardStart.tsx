@@ -11,7 +11,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { LetterProofingState } from "slices/LetterProofing";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import LetterProofing from "./LetterProofing";
-import { Recommendations } from "./Recommendations";
+import VerifyIdentity from "./VerifyIdentity";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
@@ -35,7 +35,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
           <p className="help-text">
             <FormattedMessage
               description="verification status sub text"
-              defaultMessage="Please see the recommended actions below."
+              defaultMessage="Please see the identification method below."
             />
           </p>
         </div>
@@ -107,7 +107,7 @@ export default function Start(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
   const letter_proofing = useDashboardAppSelector((state) => state.letter_proofing);
   let username;
-  let progress;
+  // let progress;
 
   if (!display_name && emails.length > 0) {
     username = emails.filter((mail) => mail.primary)[0].email;
@@ -129,16 +129,16 @@ export default function Start(): JSX.Element {
   }, [isLoaded]);
 
   // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
-  if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
-    progress = (
-      <article>
-        <h2>
-          <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
-        </h2>
-        <LetterProofingProgress letter_proofing={letter_proofing} />
-      </article>
-    );
-  }
+  // if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
+  //   progress = (
+  //     <article>
+  //       <h2>
+  //         <FormattedMessage description="Currently in progress title" defaultMessage="Currently in progress" />
+  //       </h2>
+  //       <LetterProofingProgress letter_proofing={letter_proofing} />
+  //     </article>
+  //   );
+  // }
 
   return (
     <React.Fragment>
@@ -168,8 +168,9 @@ export default function Start(): JSX.Element {
         </h2>
         <VerificationProgress identities={identities} />
       </article>
-      {progress}
-      <Recommendations />
+      {/* {progress} */}
+      <VerifyIdentity />
+      {/* <Recommendations /> */}
     </React.Fragment>
   );
 }
