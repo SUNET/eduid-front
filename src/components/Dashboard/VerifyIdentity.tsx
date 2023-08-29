@@ -16,6 +16,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CredentialType } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import { Security } from "components/Common/Security";
@@ -70,6 +71,13 @@ function VerifyIdentityIntro(): JSX.Element {
 
   const [isShowSecurityKey, setIsShowSecurityKey] = useState(false);
 
+  const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const tokens = credentials.filter(
+    (cred: CredentialType) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
+
   const handleSwitchChange = (): void => {
     setIsShowSecurityKey(!isShowSecurityKey);
   };
@@ -111,50 +119,53 @@ function VerifyIdentityIntro(): JSX.Element {
             />
           </h2>
           <VerifiedIdentitiesTable />
-          <div className="information__container">
-            <div className="information__inner">
-              <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-              <div className="information__content">
-                <div className="information__title">
-                  <h4>
-                    <FormattedMessage
-                      description="For Digital National Exam heading"
-                      defaultMessage="For Digital National Exam"
-                    />
-                  </h4>
-                </div>
+
+          {tokens.length ? null : (
+            <div className="information__container">
+              <div className="information__inner">
+                <FontAwesomeIcon icon={faCircleInfo as IconProp} />
                 <div className="information__content">
-                  <p>
-                    <FormattedMessage
-                      description="verify identity additional info"
-                      defaultMessage="Since you've already completed the verification process, the final step is to register a security key."
-                    />
-                  </p>
-                  <fieldset>
-                    <form>
-                      <label className="toggle flex-between" htmlFor="digital-national-exam">
-                        <legend>
-                          <FormattedMessage
-                            defaultMessage="Register security key"
-                            description="Register security key"
+                  <div className="information__title">
+                    <h4>
+                      <FormattedMessage
+                        description="For Digital National Exam heading"
+                        defaultMessage="For Digital National Exam"
+                      />
+                    </h4>
+                  </div>
+                  <div className="information__content">
+                    <p>
+                      <FormattedMessage
+                        description="verify identity additional info"
+                        defaultMessage="Since you've already completed the verification process, the final step is to register a security key."
+                      />
+                    </p>
+                    <fieldset>
+                      <form>
+                        <label className="toggle flex-between" htmlFor="digital-national-exam">
+                          <legend>
+                            <FormattedMessage
+                              defaultMessage="Register security key"
+                              description="Register security key"
+                            />
+                          </legend>
+                          <input
+                            checked={isShowSecurityKey}
+                            onChange={handleSwitchChange}
+                            className="toggle-checkbox"
+                            type="checkbox"
+                            id="digital-national-exam"
                           />
-                        </legend>
-                        <input
-                          checked={isShowSecurityKey}
-                          onChange={handleSwitchChange}
-                          className="toggle-checkbox"
-                          type="checkbox"
-                          id="digital-national-exam"
-                        />
-                        <div className="toggle-switch"></div>
-                      </label>
-                    </form>
-                  </fieldset>
+                          <div className="toggle-switch"></div>
+                        </label>
+                      </form>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
+              {isShowSecurityKey ? <Security /> : null}
             </div>
-            {isShowSecurityKey ? <Security /> : null}
-          </div>
+          )}
         </article>
       </React.Fragment>
     );
