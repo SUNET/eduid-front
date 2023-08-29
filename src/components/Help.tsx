@@ -146,10 +146,69 @@ export function Help(): JSX.Element {
                   defaultMessage="How do I create an eduID?"
                 />
               </h3>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="Create an account by registering your email address."
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading2"
+                    defaultMessage="Confirm that you are human by using captcha."
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading3"
+                    defaultMessage="Accept the eduID terms of use."
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading4"
+                    defaultMessage="Verify your email address by entering the code emailed to you."
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading5"
+                    defaultMessage="Take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
+                  />
+                </li>
+              </ul>
+
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage={`To be continued on how to create account... For detailed information on how to verify your created account see the 'Verification of Identity' section.`}
+                  defaultMessage={`On the start page you will be encouraged to add further details such as:`}
+                />
+              </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="Your phone number for easier retrieval of your account should it be needed, "
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="a security key of you are able to for added security"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="and also to verify your identity to strengthen your eduID sufficiently for many external services.."
+                  />
+                </li>
+              </ul>
+              <p>
+                <FormattedMessage
+                  description="How do I use eduID? description"
+                  defaultMessage={`For detailed information on how to verify your created account based on your circumstances see the 'Verification of Identity' section.`}
                 />
               </p>
               <h4>
@@ -175,8 +234,8 @@ export function Help(): JSX.Element {
                   description="How do I change the default language in eduID? description"
                   defaultMessage={`
                     To change the default language you can log into eduID and select your language preference under the
-                    personal information tab. Available options are Swedish and English. The default language in eduID is based on the language setting that your
-                    browser uses. You can also change the displayed language in the footer of the webpage.`}
+                    personal information tab. The default language in eduID is based on the language setting that your
+                    browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
                 />
               </p>
 
@@ -488,15 +547,23 @@ export function Help(): JSX.Element {
                 <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
               </h3>
               <p>
-                <FormattedMessage description="What is Svipe? description" defaultMessage={`Description of Svipe iD`} />
+                <FormattedMessage
+                  description="What is Svipe? description"
+                  defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, combined with the users mobile device face-recognition ability, to create a verified digital identity.`}
+                />
               </p>
               <h4>
-                <FormattedMessage description="How do I use Svipe? heading" defaultMessage={`How do I use Svipe iD?`} />
+                <FormattedMessage
+                  description="How do I use Svipe? heading"
+                  defaultMessage={`How do I use Svipe iD with eduID?`}
+                />
               </h4>
               <p>
                 <FormattedMessage
                   description="How do I use Svipe? description"
-                  defaultMessage={`How to use Svipe iD`}
+                  defaultMessage={`To verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app, available at App Store and Google play. 
+                  You can then scan the QR code produced by Svipe iD from the "All other countries" section in the Identity area of eduID. 
+                  Note: Holders of Swedish personal ID numbers are advised to use that method instead.`}
                 />
               </p>
             </article>
