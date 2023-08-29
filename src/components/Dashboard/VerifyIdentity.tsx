@@ -129,7 +129,7 @@ function VerifyIdentityIntro(): JSX.Element {
                     <h4>
                       <FormattedMessage
                         description="For Digital National Exam heading"
-                        defaultMessage="For Digital National Exam"
+                        defaultMessage="Verification for the Digital National Exam"
                       />
                     </h4>
                   </div>
@@ -359,7 +359,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <h4>
                 <FormattedMessage
                   description="For Digital National Exam heading"
-                  defaultMessage="For Digital National Exam"
+                  defaultMessage="Verification for the Digital National Exam"
                 />
               </h4>
             </div>

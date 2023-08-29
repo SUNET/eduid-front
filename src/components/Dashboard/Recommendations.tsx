@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { PhonesResponse } from "apis/eduidPhone";
@@ -203,6 +203,32 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
         />
       </p>
+      {!identities.nin?.verified && (
+        <div className="information__container">
+          <div className="information__inner">
+            <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+            <div className="information__content">
+              <div className="information__title">
+                <h4>
+                  <FormattedMessage
+                    description="For Digital National Exam heading"
+                    defaultMessage="Verification for the Digital National Exam"
+                  />
+                </h4>
+              </div>
+              <div className="information__content">
+                <p>
+                  <FormattedMessage
+                    description="verify identity additional info"
+                    defaultMessage="It is imperative that you complete the verification process. To initiate the verification process, click on Verify your identity below."
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />
         <RecommendationPhone phones={phones} />
