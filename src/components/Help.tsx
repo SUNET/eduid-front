@@ -149,7 +149,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Log in at eduid.se when you: heading"
-                  defaultMessage={"Create your eduID account at {eduidLink}."}
+                  defaultMessage={"Create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
                       <a className="text-link" href="https://signup.eduid.se/register/">
@@ -163,34 +163,31 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
-                    defaultMessage="Register your email address."
+                    defaultMessage="register your email address,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading2"
-                    defaultMessage="Confirm that you are human by using captcha."
+                    defaultMessage="confirm that you are human by using captcha,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading3"
-                    defaultMessage="Accept the eduID terms of use."
+                    defaultMessage="accept the eduID terms of use,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading4"
-                    defaultMessage="Verify your email address by entering the code emailed to you."
+                    defaultMessage="verify your email address by entering the code emailed to you,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading5"
-                    defaultMessage="{emphasis} when your login details are presented to you. Your eduID is now ready to use."
-                    values={{
-                      emphasis: <em>Take note of the email address and password in use</em>,
-                    }}
+                    defaultMessage="take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
                   />
                 </li>
               </ul>
@@ -224,10 +221,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage="For detailed information on how to verify your created account based on your circumstances, see the {emphasis} help section."
-                  values={{
-                    emphasis: <em>Verification of Identity</em>,
-                  }}
+                  defaultMessage="For detailed information on how to verify your created account based on your circumstances, see the 'Verification of Identity' help section."
                 />
               </p>
               <h4>
@@ -252,8 +246,8 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="How do I change the default language in eduID? description"
                   defaultMessage={`
-                    To change the default language you can log into eduID and select your language preference under
-                    Personal information in eduID. The default language in eduID is based on the language setting that your
+                    To change the default language you can log into eduID and select your language preference in the
+                    Personal information area in eduID. The default language is based on the language setting that your
                     browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
                 />
               </p>
@@ -325,7 +319,7 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="At this moment, verifying an id number can be done via: description"
-                    defaultMessage="{emphasis}, verifying an id number can be done via:"
+                    defaultMessage="{emphasis}, verifying it can be done via:"
                     values={{
                       emphasis: <strong>If you have a Swedish personal identity number</strong>,
                     }}
@@ -380,7 +374,7 @@ export function Help(): JSX.Element {
                   <FormattedMessage
                     description="eidas heading"
                     defaultMessage={`{emphasis}, you could use 
-                    eIDAS to verify your identity. Read more about {eIDASLink}`}
+                    eIDAS to verify your identity. Read more about {eIDASLink}.`}
                     values={{
                       emphasis: (
                         <strong>If you are an EU citizen and without a Swedish personal identity number</strong>
@@ -398,7 +392,7 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="Svipe heading"
-                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}`}
+                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}.`}
                     values={{
                       emphasis: (
                         <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
@@ -434,7 +428,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a Freja eID+ account heading"
-                    defaultMessage="install the {Freja}  on your mobile device (iOS or Android),"
+                    defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja eID+ account,"
                     values={{
                       Freja: (
                         <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
@@ -447,19 +441,13 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a Freja eID+ account list item"
-                    defaultMessage="create a Freja eID+ account,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="Create a Freja eID+ account list item"
                     defaultMessage="bring a valid ID to the nearest ATG agent authorised to verify your identity,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a Freja eID+ account list item"
-                    defaultMessage="log in to eduID and choose the Digital ID-card option in the Identity section."
+                    defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
                   />
                 </li>
               </ul>
@@ -513,33 +501,27 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="eIDAS list item"
-                    defaultMessage={`If you have an electronic ID from a connected country you have the possibility to 
-                      authenticate yourself via eIDAS.`}
+                    defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
+                      authenticate yourself via eIDAS,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="eIDAS list item"
-                    defaultMessage={`To verify your identity in eduID, log in and choose the verification method for 
-                      'EU-citizens' under the 'Identity' tab.`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="eIDAS list item"
-                    defaultMessage={`If you have a Swedish personal identity number use that method instead e.g. to 
-                      simplify communication with Swedish authorities.`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="eIDAS list item"
-                    defaultMessage={`If you initially verify your identity with eIDAS and later receive a Swedish 
-                      personal identity number you can add it and verify yourself again using it under the 
-                      'Identity' tab.`}
+                    defaultMessage={`to verify your identity in eduID, log in and choose the verification method for 
+                      'EU-citizens' in the Identity area and follow the instructions.`}
                   />
                 </li>
               </ul>
+              <p>
+                <FormattedMessage
+                  description="eIDAS item"
+                  defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
+                      simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
+                      personal identity number you can add it in eduID and verify yourself again using it in the 
+                      Identity area.`}
+                />
+              </p>
             </article>
             <article id="svipe">
               <h3>
@@ -561,20 +543,20 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="How do I use Svipe? description"
-                    defaultMessage="To verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app, available at App Store and Google play."
+                    defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app available at App Store and Google play,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="How do I use Svipe? description"
-                    defaultMessage='You can then scan the QR code produced by Svipe iD from the "All other countries" section in the Identity area of eduID."'
+                    defaultMessage="login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
                   />
                 </li>
               </ul>
               <p>
                 <FormattedMessage
                   description="How do I use Svipe? description"
-                  defaultMessage={`Note: Holders of Swedish personal ID numbers are advised to use that method instead.`}
+                  defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
                 />
               </p>
             </article>
