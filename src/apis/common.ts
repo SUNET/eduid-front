@@ -4,6 +4,7 @@ import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
 import { LoginAppDispatch } from "login-init-app";
 import { SignupAppDispatch } from "signup-init-app";
+import { clearNotifications } from "slices/Notifications";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "../ts_common";
 
 export interface StateWithCommonConfig {
@@ -59,9 +60,10 @@ export async function makeGenericRequest<T>(
         const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
         reject(saved);
+      } else {
+        thunkAPI.dispatch(clearNotifications());
+        resolve(response);
       }
-
-      resolve(response);
     } catch (error) {
       if (error instanceof NeedsAuthenticationError) {
         // silently ignore errors about missing authentication
