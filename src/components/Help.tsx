@@ -25,8 +25,8 @@ export function Help(): JSX.Element {
           <p>
             <FormattedMessage
               description="help main description"
-              defaultMessage={`Here you will find general information about the service, answers to the most common questions about using eduID, 
-               as well as support contact information.`}
+              defaultMessage={`Here you find general information about the service, answers to common questions about using eduID, 
+               and support contact information.`}
             />
           </p>
         </div>
