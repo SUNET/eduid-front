@@ -8,13 +8,21 @@
 }
 
 .help-content {
+  // article:last-of-type {
+  //   padding-bottom: 1em !important;
+  // }
+
   h3 {
     line-height: 1.2;
     font-size: 1.5rem;
     margin-bottom: 0.75em;
   }
+  h4 {
+    margin-top: 1.25em;
+  }
   p {
     font-size: inherit;
+    margin-bottom: 1.25em;
   }
 
   section {
