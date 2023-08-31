@@ -33,7 +33,8 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
       <p>
         <FormattedMessage
           description="accordion item security key additional info"
-          defaultMessage="Add your security key to enable safe reset of password"
+          defaultMessage={`Add your security key to enable a safe password reset or for the purpose of 
+          the Digital National Exam.`}
         />
       </p>
       <Link key="advanced-settings" to={advancedSettingsPath}>
@@ -204,30 +205,64 @@ export function Recommendations(): JSX.Element | null {
         />
       </p>
       {!identities.nin?.verified && (
-        <div className="information__container">
-          <div className="information__inner">
-            <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-            <div className="information__content">
-              <div className="information__title">
-                <h4>
-                  <FormattedMessage
-                    description="For Digital National Exam heading"
-                    defaultMessage="Verification for the Digital National Exam"
-                  />
-                </h4>
-              </div>
-              <div className="information__content">
-                <p>
-                  <FormattedMessage
-                    description="verify identity additional info"
-                    defaultMessage="It is imperative that you complete the verification process. To initiate the verification process, click on Verify your identity below."
-                  />
-                </p>
-              </div>
-            </div>
+        <figure className="status information">
+          {/* <div className="information__inner"> */}
+          <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+          {/* <div className="information__content"> */}
+          <div>
+            <h3>
+              <FormattedMessage
+                description="For Digital National Exam heading"
+                defaultMessage="Verification for the Digital National Exam"
+              />
+            </h3>
+            {/* </div>
+          <div className="information__content"> */}
+            <p className="information__content">
+              <FormattedMessage
+                description="verify identity additional info"
+                defaultMessage={`It is imperative that you complete the verification process. To initiate 
+                the verification process, click on {link} below.`}
+                values={{
+                  link: <strong>Verify your identity </strong>,
+                }}
+              />
+            </p>
           </div>
-        </div>
+          {/* </div> */}
+          {/* </div> */}
+        </figure>
       )}
+
+      {identities.nin?.verified && !tokens.length ? (
+        <figure className="status information">
+          {/* <div className="information__inner"> */}
+          <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+          {/* <div className="information__content"> */}
+          <div>
+            <h3>
+              <FormattedMessage
+                description="For Digital National Exam heading"
+                defaultMessage="Verification for the Digital National Exam"
+              />
+            </h3>
+            {/* </div>
+              <div className="information__content"> */}
+            <p className="information__content">
+              <FormattedMessage
+                description="verify identity additional info"
+                defaultMessage={`Since you've already completed the verification process, the final step is to register 
+                a security key. click on {link} below.`}
+                values={{
+                  link: <strong>Add your security key</strong>,
+                }}
+              />
+            </p>
+          </div>
+          {/* </div> */}
+          {/* </div> */}
+        </figure>
+      ) : null}
 
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />

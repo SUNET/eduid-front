@@ -121,50 +121,49 @@ function VerifyIdentityIntro(): JSX.Element {
           <VerifiedIdentitiesTable />
 
           {tokens.length ? null : (
-            <div className="information__container">
-              <div className="information__inner">
-                <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-                <div className="information__content">
-                  <div className="information__title">
-                    <h4>
-                      <FormattedMessage
-                        description="For Digital National Exam heading"
-                        defaultMessage="Verification for the Digital National Exam"
+            <figure className="status information">
+              {/* <div className="information__inner"> */}
+              <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+              {/* <div className="information__content"> */}
+              <div>
+                <h3>
+                  <FormattedMessage
+                    description="For Digital National Exam heading"
+                    defaultMessage="Verification for the Digital National Exam"
+                  />
+                </h3>
+
+                {/* <div className="information__content"> */}
+                <p className="information__content">
+                  <FormattedMessage
+                    description="verify identity additional info"
+                    defaultMessage={`Since you've already completed the verification process, the final step is 
+                    to register a security key.`}
+                  />
+                </p>
+                {/* <fieldset>
+                  <form>
+                    <label className="toggle flex-between" htmlFor="digital-national-exam">
+                      <legend>
+                        <FormattedMessage defaultMessage="Register security key" description="Register security key" />
+                      </legend>
+                      <input
+                        checked={isShowSecurityKey}
+                        onChange={handleSwitchChange}
+                        className="toggle-checkbox"
+                        type="checkbox"
+                        id="digital-national-exam"
                       />
-                    </h4>
-                  </div>
-                  <div className="information__content">
-                    <p>
-                      <FormattedMessage
-                        description="verify identity additional info"
-                        defaultMessage="Since you've already completed the verification process, the final step is to register a security key."
-                      />
-                    </p>
-                    <fieldset>
-                      <form>
-                        <label className="toggle flex-between" htmlFor="digital-national-exam">
-                          <legend>
-                            <FormattedMessage
-                              defaultMessage="Register security key"
-                              description="Register security key"
-                            />
-                          </legend>
-                          <input
-                            checked={isShowSecurityKey}
-                            onChange={handleSwitchChange}
-                            className="toggle-checkbox"
-                            type="checkbox"
-                            id="digital-national-exam"
-                          />
-                          <div className="toggle-switch"></div>
-                        </label>
-                      </form>
-                    </fieldset>
-                  </div>
-                </div>
+                      <div className="toggle-switch"></div>
+                    </label>
+                  </form>
+                </fieldset> */}
+                {/* </div> */}
+                {/* </div> */}
+                {/* </div> */}
+                <Security />
               </div>
-              {isShowSecurityKey ? <Security /> : null}
-            </div>
+            </figure>
           )}
         </article>
       </React.Fragment>
@@ -351,49 +350,50 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
-      <div className="information__container">
-        <div className="information__inner">
-          <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-          <div className="information__content">
-            <div className="information__title">
-              <h4>
-                <FormattedMessage
-                  description="For Digital National Exam heading"
-                  defaultMessage="Verification for the Digital National Exam"
+      <figure className="status information">
+        {/* <div className="information__inner"> */}
+        <FontAwesomeIcon icon={faCircleInfo as IconProp} />
+        {/* <div className="information__content"> */}
+        <div>
+          <h3>
+            <FormattedMessage
+              description="For Digital National Exam heading"
+              defaultMessage="Verification for the Digital National Exam"
+            />
+          </h3>
+          {/* </div> */}
+          {/* <div className="information__content"> */}
+          <p className="information__content">
+            <FormattedMessage
+              description="verify identity additional info"
+              defaultMessage={`Verification for the Digital National Exam is necessary either through a digital ID card 
+              or via postal verification. Furthermore, it is crucial to register a security key.`}
+            />
+          </p>
+          <fieldset>
+            <form>
+              <label className="toggle flex-between" htmlFor="digital-national-exam">
+                <legend>
+                  <FormattedMessage
+                    defaultMessage="options for digital national exam"
+                    description="options for digital national exam"
+                  />
+                </legend>
+                <input
+                  checked={isForDNP}
+                  onChange={handleSwitchChange}
+                  className="toggle-checkbox"
+                  type="checkbox"
+                  id="digital-national-exam"
                 />
-              </h4>
-            </div>
-            <div className="information__content">
-              <p>
-                <FormattedMessage
-                  description="verify identity additional info"
-                  defaultMessage="Verification for the Digital National Exam is necessary either through a digital ID card or via postal verification. Furthermore, it is crucial to register a security key."
-                />
-              </p>
-              <fieldset>
-                <form>
-                  <label className="toggle flex-between" htmlFor="digital-national-exam">
-                    <legend>
-                      <FormattedMessage
-                        defaultMessage="options for digital national exam"
-                        description="options for digital national exam"
-                      />
-                    </legend>
-                    <input
-                      checked={isForDNP}
-                      onChange={handleSwitchChange}
-                      className="toggle-checkbox"
-                      type="checkbox"
-                      id="digital-national-exam"
-                    />
-                    <div className="toggle-switch"></div>
-                  </label>
-                </form>
-              </fieldset>
-            </div>
-          </div>
+                <div className="toggle-switch"></div>
+              </label>
+            </form>
+          </fieldset>
         </div>
-      </div>
+        {/* </div> */}
+        {/* </div> */}
+      </figure>
 
       <ol className="listed-steps">
         <li>
