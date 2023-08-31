@@ -323,8 +323,12 @@ function AccordionItemSwedish(): JSX.Element | null {
         paragraph={
           <FormattedMessage
             description="verify identity additional info"
-            defaultMessage={`Verification for the Digital National Exam is necessary either through a digital ID card 
-            or via postal verification. Furthermore, it is crucial to register a security key.`}
+            defaultMessage={`VVerification for the Digital National Exam is necessary either {digitalID} or 
+            {byPost}. Furthermore, it is crucial to register a security key.`}
+            values={{
+              digitalID: <strong>with a digital ID-CARD </strong>,
+              byPost: <strong>by post</strong>,
+            }}
           />
         }
       />
