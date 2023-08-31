@@ -122,9 +122,7 @@ function VerifyIdentityIntro(): JSX.Element {
 
           {tokens.length ? null : (
             <figure className="status information">
-              {/* <div className="information__inner"> */}
               <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-              {/* <div className="information__content"> */}
               <div>
                 <h3>
                   <FormattedMessage
@@ -132,8 +130,6 @@ function VerifyIdentityIntro(): JSX.Element {
                     defaultMessage="Verification for the Digital National Exam"
                   />
                 </h3>
-
-                {/* <div className="information__content"> */}
                 <p className="information__content">
                   <FormattedMessage
                     description="verify identity additional info"
@@ -141,26 +137,6 @@ function VerifyIdentityIntro(): JSX.Element {
                     to register a security key.`}
                   />
                 </p>
-                {/* <fieldset>
-                  <form>
-                    <label className="toggle flex-between" htmlFor="digital-national-exam">
-                      <legend>
-                        <FormattedMessage defaultMessage="Register security key" description="Register security key" />
-                      </legend>
-                      <input
-                        checked={isShowSecurityKey}
-                        onChange={handleSwitchChange}
-                        className="toggle-checkbox"
-                        type="checkbox"
-                        id="digital-national-exam"
-                      />
-                      <div className="toggle-switch"></div>
-                    </label>
-                  </form>
-                </fieldset> */}
-                {/* </div> */}
-                {/* </div> */}
-                {/* </div> */}
                 <Security />
               </div>
             </figure>
@@ -351,9 +327,7 @@ function AccordionItemSwedish(): JSX.Element | null {
       uuid="swedish"
     >
       <figure className="status information">
-        {/* <div className="information__inner"> */}
         <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-        {/* <div className="information__content"> */}
         <div>
           <h3>
             <FormattedMessage
@@ -361,8 +335,6 @@ function AccordionItemSwedish(): JSX.Element | null {
               defaultMessage="Verification for the Digital National Exam"
             />
           </h3>
-          {/* </div> */}
-          {/* <div className="information__content"> */}
           <p className="information__content">
             <FormattedMessage
               description="verify identity additional info"
@@ -391,8 +363,6 @@ function AccordionItemSwedish(): JSX.Element | null {
             </form>
           </fieldset>
         </div>
-        {/* </div> */}
-        {/* </div> */}
       </figure>
 
       <ol className="listed-steps">

@@ -206,9 +206,7 @@ export function Recommendations(): JSX.Element | null {
       </p>
       {!identities.nin?.verified && (
         <figure className="status information">
-          {/* <div className="information__inner"> */}
           <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-          {/* <div className="information__content"> */}
           <div>
             <h3>
               <FormattedMessage
@@ -216,8 +214,6 @@ export function Recommendations(): JSX.Element | null {
                 defaultMessage="Verification for the Digital National Exam"
               />
             </h3>
-            {/* </div>
-          <div className="information__content"> */}
             <p className="information__content">
               <FormattedMessage
                 description="verify identity additional info"
@@ -229,16 +225,12 @@ export function Recommendations(): JSX.Element | null {
               />
             </p>
           </div>
-          {/* </div> */}
-          {/* </div> */}
         </figure>
       )}
 
       {identities.nin?.verified && !tokens.length ? (
         <figure className="status information">
-          {/* <div className="information__inner"> */}
           <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-          {/* <div className="information__content"> */}
           <div>
             <h3>
               <FormattedMessage
@@ -246,8 +238,6 @@ export function Recommendations(): JSX.Element | null {
                 defaultMessage="Verification for the Digital National Exam"
               />
             </h3>
-            {/* </div>
-              <div className="information__content"> */}
             <p className="information__content">
               <FormattedMessage
                 description="verify identity additional info"
@@ -259,8 +249,6 @@ export function Recommendations(): JSX.Element | null {
               />
             </p>
           </div>
-          {/* </div> */}
-          {/* </div> */}
         </figure>
       ) : null}
 
