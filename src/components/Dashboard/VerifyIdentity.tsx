@@ -323,13 +323,35 @@ function AccordionItemSwedish(): JSX.Element | null {
         paragraph={
           <FormattedMessage
             description="verify identity additional info"
-            defaultMessage={`VVerification for the Digital National Exam is necessary either {digitalID} or 
+            defaultMessage={`Verification for the Digital National Exam is necessary either {digitalID} or 
             {byPost}. Furthermore, it is crucial to register a security key.`}
             values={{
               digitalID: <strong>with a digital ID-CARD </strong>,
               byPost: <strong>by post</strong>,
             }}
           />
+        }
+        toggleOption={
+          <fieldset>
+            <form>
+              <label className="toggle flex-between" htmlFor="digital-national-exam">
+                <legend>
+                  <FormattedMessage
+                    defaultMessage="options for digital national exam"
+                    description="options for digital national exam"
+                  />
+                </legend>
+                <input
+                  checked={isForDNP}
+                  onChange={handleSwitchChange}
+                  className="toggle-checkbox"
+                  type="checkbox"
+                  id="digital-national-exam"
+                />
+                <div className="toggle-switch"></div>
+              </label>
+            </form>
+          </fieldset>
         }
       />
       <ol className="listed-steps">
