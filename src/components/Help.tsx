@@ -137,7 +137,7 @@ export function Help(): JSX.Element {
           <AccordionItemTemplate
             uuid="help-using-eduID"
             title={<FormattedMessage description="About eduID" defaultMessage="Using eduID" />}
-            additionalInfo={"How to create, use and strengthen your eduID"}
+            additionalInfo={"How to create and use your eduID"}
           >
             <article>
               <h3>
@@ -251,35 +251,69 @@ export function Help(): JSX.Element {
                     browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
                 />
               </p>
-
-              <h4>
+            </article>
+            <article>
+              <h3>
                 <FormattedMessage
                   description="How can I login with other devices? heading"
                   defaultMessage="How can I login with other devices?"
                 />
-              </h4>
+              </h3>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
                   defaultMessage="Description on QR etc."
                 />
               </p>
-
-              <h4>
+            </article>
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
+            uuid="help-mfa-sunet"
+            title={<FormattedMessage description="SUNET" defaultMessage="Improving the security level of eduID" />}
+            additionalInfo={"Adding a MFA/2FA Security Key"}
+          >
+            {" "}
+            <article>
+              <h3>
                 <FormattedMessage
                   description="How can I make my eduID more secure? heading"
                   defaultMessage="How do I make my eduID more secure?"
+                />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="How can I login with other devices? description"
+                  defaultMessage="Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, 
+                  you can use another layer of authentication to login. This is called multi-Factor authentication (MFA); and in eduIDs case two-factor authentication (2FA)."
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="How can I login with other devices? description"
+                  defaultMessage="Examples can be a physical device in your possession such as a USB token, 
+                  or biometric information such as fingerprint or face-recognition supported on the device that you are using, and we refer to any of these techniques as a 'Security key'."
+                />
+              </p>
+              <h4>
+                <FormattedMessage
+                  description="How can I make my eduID more secure? heading"
+                  defaultMessage="How do I implement 2FA with eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
-                  defaultMessage="Description on MFA etc."
+                  defaultMessage="When logged in you can add and confirm security keys of your choice (provided you have access to these methods) in the settings area of eduID and follow the instructions."
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="How can I login with other devices? description"
+                  defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
                 />
               </p>
             </article>
           </AccordionItemTemplate>
-
           <AccordionItemTemplate
             uuid="help-verification-of-identity"
             title={
