@@ -1,9 +1,10 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCircleInfo, faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { PhonesResponse } from "apis/eduidPhone";
 import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
+import { InformationContainer } from "components/Common/InformationContainer";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -205,51 +206,45 @@ export function Recommendations(): JSX.Element | null {
         />
       </p>
       {!identities.nin?.verified && (
-        <figure className="status information">
-          <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-          <div>
-            <h3>
-              <FormattedMessage
-                description="For Digital National Exam heading"
-                defaultMessage="Verification for the Digital National Exam"
-              />
-            </h3>
-            <p className="information__content">
-              <FormattedMessage
-                description="verify identity additional info"
-                defaultMessage={`It is imperative that you complete the verification process. To initiate 
-                the verification process, click on {link} below.`}
-                values={{
-                  link: <strong>Verify your identity </strong>,
-                }}
-              />
-            </p>
-          </div>
-        </figure>
+        <InformationContainer
+          heading={
+            <FormattedMessage
+              description="For Digital National Exam heading"
+              defaultMessage="Verification for the Digital National Exam"
+            />
+          }
+          paragraph={
+            <FormattedMessage
+              description="verify identity additional info"
+              defaultMessage={`It is imperative that you complete the verification process. To initiate 
+          the verification process, click on {link} below.`}
+              values={{
+                link: <strong>Verify your identity </strong>,
+              }}
+            />
+          }
+        />
       )}
 
       {identities.nin?.verified && !tokens.length ? (
-        <figure className="status information">
-          <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-          <div>
-            <h3>
-              <FormattedMessage
-                description="For Digital National Exam heading"
-                defaultMessage="Verification for the Digital National Exam"
-              />
-            </h3>
-            <p className="information__content">
-              <FormattedMessage
-                description="verify identity additional info"
-                defaultMessage={`Since you've already completed the verification process, the final step is to register 
-                a security key. click on {link} below.`}
-                values={{
-                  link: <strong>Add your security key</strong>,
-                }}
-              />
-            </p>
-          </div>
-        </figure>
+        <InformationContainer
+          heading={
+            <FormattedMessage
+              description="For Digital National Exam heading"
+              defaultMessage="Verification for the Digital National Exam"
+            />
+          }
+          paragraph={
+            <FormattedMessage
+              description="verify identity additional info"
+              defaultMessage={`Since you've already completed the verification process, the final step is to register 
+               a security key. click on {link} below.`}
+              values={{
+                link: <strong>Add your security key</strong>,
+              }}
+            />
+          }
+        />
       ) : null}
 
       <Accordion allowMultipleExpanded allowZeroExpanded>
