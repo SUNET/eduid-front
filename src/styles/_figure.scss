@@ -33,3 +33,45 @@ figure,
     width: 100%;
   }
 }
+
+.accordion .information {
+  margin-bottom: 3rem;
+}
+
+.information-icon-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+figure.information {
+  background-color: $white;
+  border: 2px solid $txt-orange;
+  text-align: unset;
+  div.information-icon-container {
+    svg {
+      color: $txt-orange;
+    }
+
+    h3 {
+      color: $txt-orange;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    text-align: left;
+    padding-top: 10px;
+  }
+
+  article {
+    padding-top: 30px;
+    margin-bottom: 0 !important;
+    border-top: 1px solid $border-gray;
+    padding-bottom: 0.5rem !important;
+    h2,
+    p:not(.help-text) {
+      display: none;
+    }
+  }
+}
