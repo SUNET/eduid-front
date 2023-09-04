@@ -137,7 +137,7 @@ export function Help(): JSX.Element {
           <AccordionItemTemplate
             uuid="help-using-eduID"
             title={<FormattedMessage description="About eduID" defaultMessage="Using eduID" />}
-            additionalInfo={"How to create and use your eduID"}
+            additionalInfo={"How to create, use and strengthen your eduID"}
           >
             <article>
               <h3>
@@ -149,7 +149,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Log in at eduid.se when you: heading"
-                  defaultMessage={"Create your eduID account at {eduidLink}:"}
+                  defaultMessage={"How to create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
                       <a className="text-link" href="https://signup.eduid.se/register/">
@@ -191,7 +191,12 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
-
+              <h4>
+                <FormattedMessage
+                  description="How do I use eduID? heading"
+                  defaultMessage="How can I enhance my eduID?"
+                />
+              </h4>
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
@@ -214,7 +219,13 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
-                    defaultMessage="to verify your identity to strengthen your eduID sufficiently for many external services."
+                    defaultMessage="connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="verifying your identity to strengthen your eduID sufficiently for many external services."
                   />
                 </li>
               </ul>
@@ -269,7 +280,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
-                    defaultMessage="Select 'Other device' button under the login form,"
+                    defaultMessage="Select 'Other device' button in the login form,"
                   />
                 </li>
                 <li>
@@ -317,7 +328,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
-                  defaultMessage="When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the settings area of eduID and follow the instructions."
+                  defaultMessage="When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Settings area of eduID and follow the instructions."
                 />
               </p>
               <p>
