@@ -232,7 +232,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage="For detailed information on how to verify your created account based on your circumstances, see the 'Verification of Identity' help section."
+                  defaultMessage="For detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
                 />
               </p>
               <h4>
@@ -273,20 +273,26 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
-                  defaultMessage="Passwordless login is supported  by another device you can use that to login to eduID (e.g. saved password or security key)."
+                  defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
-                    defaultMessage="Select 'Other device' button in the login form,"
+                    defaultMessage="select 'Other device' button in the login form,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
-                    defaultMessage="Scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+                    defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
                   />
                 </li>
               </ul>
