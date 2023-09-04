@@ -1,9 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCircleCheck, faCircleExclamation, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
+import { CredentialType } from "apis/eduidSecurity";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
+import { InformationContainer } from "components/Common/InformationContainer";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -14,48 +16,80 @@ import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
+  const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const tokens = credentials.filter(
+    (cred: CredentialType) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
+
   if (!props.identities.is_verified) {
     return (
-      <figure className="status unverified">
-        <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
-        <div>
-          <h3>
-            {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
+      <>
+        <figure className="status unverified">
+          <div>
+            <h3>
+              {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
+                <FormattedMessage
+                  description="verification status heading unverified"
+                  defaultMessage="Your identity is not verified."
+                />
+              ) : (
+                <FormattedMessage
+                  description="verification status heading after password reset"
+                  defaultMessage="Your identity is no longer verified after password reset."
+                />
+              )}
+            </h3>
+            <p className="help-text">
               <FormattedMessage
-                description="verification status heading unverified"
-                defaultMessage="Your identity is not verified."
+                description="verification status sub text"
+                defaultMessage="Please see the recommended actions below."
               />
-            ) : (
+            </p>
+          </div>
+        </figure>
+        {!props.identities.nin?.verified && (
+          <InformationContainer
+            heading={
               <FormattedMessage
-                description="verification status heading after password reset"
-                defaultMessage="Your identity is no longer verified after password reset."
+                description="For Digital National Exam heading"
+                defaultMessage="Verification for the Digital National Exam"
               />
-            )}
-          </h3>
-          <p className="help-text">
-            <FormattedMessage
-              description="verification status sub text"
-              defaultMessage="Please see the recommended actions below."
-            />
-          </p>
-        </div>
-      </figure>
+            }
+            paragraph={
+              <FormattedMessage
+                description="verify identity additional info"
+                defaultMessage={`It is imperative that you complete the verification process. 
+                You should complete the verification {frejaeID} or {post}, and also {securityKey}. 
+                To initiate the verification process,click on {link} below.`}
+                values={{
+                  frejaeID: <strong>with a digital ID-CARD</strong>,
+                  post: <strong>by post</strong>,
+                  securityKey: <strong>register a security key</strong>,
+                  link: <strong>Verify your identity</strong>,
+                }}
+              />
+            }
+          />
+        )}
+      </>
     );
   }
   return (
     <div className="status verified">
-      <FontAwesomeIcon icon={faCircleCheck as IconProp} />
-      <div>
+      <div className="information-icon-container">
+        <FontAwesomeIcon icon={faCircleCheck as IconProp} />
         <h3>
           <FormattedMessage
             description="verification status heading verified"
             defaultMessage="Your identity is verified."
           />
         </h3>
-        <p className="help-text">
-          <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
-        </p>
       </div>
+      <p className="help-text">
+        <FormattedMessage description="verification status sub text" defaultMessage="Your eduID is ready to use." />
+      </p>
     </div>
   );
 }

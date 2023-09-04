@@ -1,4 +1,4 @@
-import { faCircleInfo, faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
@@ -14,17 +14,15 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CredentialType } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+import { InformationContainer } from "components/Common/InformationContainer";
 import NinDisplay from "components/Common/NinDisplay";
-import { Security } from "components/Common/Security";
 import AddNin from "./AddNin";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
-type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
@@ -67,6 +65,13 @@ function VerifyIdentityIntro(): JSX.Element {
   const identities = useDashboardAppSelector((state) => state.identities);
 
   const preExpanded: accordionUUID[] = [];
+
+  const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const tokens = credentials.filter(
+    (cred: CredentialType) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
 
   if (!identities.is_verified) {
     if (identities.nin) {
@@ -290,50 +295,48 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
-      <div className="information__container">
-        <FontAwesomeIcon icon={faCircleInfo as IconProp} />
-
-        <div className="information__content">
-          <div className="information__title">
-            <h4>
-              <FormattedMessage
-                description="For Digital National Exam heading"
-                defaultMessage="For Digital National Exam"
-              />
-            </h4>
-          </div>
-          <div className="information__content">
-            <p>
-              <FormattedMessage
-                description="verify identity additional info"
-                defaultMessage="Verification for the Digital National Exam is necessary either through a digital ID card or via postal verification. Furthermore, it is crucial to register a security key."
-              />
-            </p>
-
-            <fieldset>
-              <form>
-                <label className="toggle flex-between" htmlFor="digital-national-exam">
-                  <legend>
-                    <FormattedMessage
-                      defaultMessage="options for digital national exam"
-                      description="options for digital national exam"
-                    />
-                  </legend>
-                  <input
-                    checked={isForDNP}
-                    onChange={handleSwitchChange}
-                    className="toggle-checkbox"
-                    type="checkbox"
-                    id="digital-national-exam"
+      <InformationContainer
+        heading={
+          <FormattedMessage
+            description="For Digital National Exam heading"
+            defaultMessage="Verification for the Digital National Exam"
+          />
+        }
+        paragraph={
+          <FormattedMessage
+            description="verify identity additional info"
+            defaultMessage={`Verification for the Digital National Exam is necessary either {digitalID} or 
+            {byPost}. Furthermore, it is crucial to {securityKey}.`}
+            values={{
+              digitalID: <strong>with a digital ID-CARD</strong>,
+              byPost: <strong>by post</strong>,
+              securityKey: <strong>register a security key</strong>,
+            }}
+          />
+        }
+        buttons={
+          <fieldset>
+            <form>
+              <label className="toggle flex-between" htmlFor="digital-national-exam">
+                <legend>
+                  <FormattedMessage
+                    defaultMessage="options for digital national exam"
+                    description="options for digital national exam"
                   />
-                  <div className="toggle-switch"></div>
-                </label>
-              </form>
-            </fieldset>
-          </div>
-        </div>
-      </div>
-
+                </legend>
+                <input
+                  checked={isForDNP}
+                  onChange={handleSwitchChange}
+                  className="toggle-checkbox"
+                  type="checkbox"
+                  id="digital-national-exam"
+                />
+                <div className="toggle-switch"></div>
+              </label>
+            </form>
+          </fieldset>
+        }
+      />
       <ol className="listed-steps">
         <li>
           <h4>
@@ -397,11 +400,6 @@ function AccordionItemSwedish(): JSX.Element | null {
             ) : null}
           </Accordion>
         </li>
-        {!isForDNP ? null : (
-          <li>
-            <Security />
-          </li>
-        )}
       </ol>
     </AccordionItemTemplate>
   );

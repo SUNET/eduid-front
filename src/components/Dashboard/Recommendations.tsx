@@ -33,7 +33,8 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
       <p>
         <FormattedMessage
           description="accordion item security key additional info"
-          defaultMessage="Add your security key to enable safe reset of password"
+          defaultMessage={`Please add your security key to enable a secure password reset or for 
+          access to the Digital National Exam.`}
         />
       </p>
       <Link key="advanced-settings" to={advancedSettingsPath}>
@@ -203,6 +204,7 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
         />
       </p>
+
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName display_name={display_name} />
         <RecommendationPhone phones={phones} />
