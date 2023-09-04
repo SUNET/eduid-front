@@ -262,9 +262,23 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
-                  defaultMessage="Description on QR etc."
+                  defaultMessage="Passwordless login is supported  by another device you can use that to login to eduID (e.g. saved password or security key)."
                 />
               </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="Select 'Other device' button under the login form,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="Scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+                  />
+                </li>
+              </ul>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
