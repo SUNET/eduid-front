@@ -834,7 +834,7 @@
   },
   "VFc3fZ": {
     "developer_comment": "Dashboard AccountId",
-    "string": "Detta är en automatiskt genererad unik ID för ditt eduID som du kan behöva ange när du ber om teknisk support eller för att identifiera ditt konto."
+    "string": "Detta är ett automatiskt genererad unik ID för ditt eduID som du kan behöva ange när du ber om teknisk support eller för att identifiera ditt konto."
   },
   "VFhU1F": {
     "developer_comment": "verify identity vetting phone tagline",
