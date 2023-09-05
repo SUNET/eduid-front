@@ -362,7 +362,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Freja eID+ is a digital ID-card free of charge. description"
-                  defaultMessage="Describing levels of verification and what they may be used for."
+                  defaultMessage="Service providers need to rely on organisations to manage their users credentials according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in to the system."
                 />
               </p>
             </article>
@@ -377,7 +377,7 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="Verifying methods initial paragraph"
                   defaultMessage="The service is constantly being developed to better support the needs of our various users. At present
-                  the methods below are available, depending on your circumstances."
+                  the methods below are available, depending on your situation such as assurance level requirements, nationality and residence."
                 />
               </p>
               <section>
