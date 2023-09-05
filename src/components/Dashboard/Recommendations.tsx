@@ -61,21 +61,16 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
       />
     );
     title = <FormattedMessage description="accordion item Add phone number" defaultMessage="Add your phone number" />;
-  } else {
-    if (!verifiedNumber) {
-      description = (
-        <FormattedMessage
-          description="accordion item Phone additional info"
-          defaultMessage="Confirm your phone number to enable safe reset of password and verification of identity."
-        />
-      );
-      title = (
-        <FormattedMessage
-          description="accordion item Confirm phone number"
-          defaultMessage="Confirm your phone number"
-        />
-      );
-    }
+  } else if (!verifiedNumber) {
+    description = (
+      <FormattedMessage
+        description="accordion item Phone additional info"
+        defaultMessage="Confirm your phone number to enable safe reset of password and verification of identity."
+      />
+    );
+    title = (
+      <FormattedMessage description="accordion item Confirm phone number" defaultMessage="Confirm your phone number" />
+    );
   }
 
   return (
