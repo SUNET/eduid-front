@@ -32,7 +32,7 @@ export function Help(): JSX.Element {
         </div>
       </section>
       <div className="help-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-FAQ">
+        <Accordion allowZeroExpanded id="eduID-FAQ">
           <AccordionItemTemplate
             uuid="help-about-eduID"
             title={<FormattedMessage description="About eduID" defaultMessage="About eduID" />}
@@ -207,6 +207,12 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Create a eduID account heading"
+                    defaultMessage="your full name to be able to add a security key or access some services from an unverified account,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
                     defaultMessage="your phone number for easier retrieval of your account should it be needed,"
                   />
                 </li>
@@ -232,7 +238,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="How do I use eduID? description"
-                  defaultMessage="For detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+                  defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
                 />
               </p>
               <h4>
@@ -356,7 +362,7 @@ export function Help(): JSX.Element {
               <h3>
                 <FormattedMessage
                   description="Verification levels heading"
-                  defaultMessage="What are the levels of verification?"
+                  defaultMessage="What are the verification levels?"
                 />
               </h3>
               <p>
@@ -395,14 +401,9 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="identity verification methods: Post"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency), `}
+                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,`}
                       values={{
                         post: <em>post:</em>,
-                        // detailedList: (
-                        //   <ol>
-                        //     <li>kolla brevlådan</li>
-                        //   </ol>
-                        // ),
                       }}
                     />
                   </li>
@@ -410,7 +411,7 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="identity verification methods: Mobile"
                       defaultMessage={`{mobile} the user receives a message sent to the phone number that is registered in
-                    the Swedish telephone register,`}
+                    the Swedish telephone register, and instructions on how to complete the verification on eduid.se,`}
                       values={{
                         mobile: <em>mobile:</em>,
                       }}
@@ -421,14 +422,9 @@ export function Help(): JSX.Element {
                       description="identity verification methods: Mobile"
                       defaultMessage={`{freja} the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja eID+ you have to create it separately before you can
-                      complete verification of your eduID. Read more about {frejaLink}.`}
+                      complete verification of your eduID. Read more about Freja eID+ below.`}
                       values={{
                         freja: <em>Freja eID+ (digital ID-card):</em>,
-                        frejaLink: (
-                          <a className="text-link" href="#frejaeid">
-                            Freja eID+
-                          </a>
-                        ),
                       }}
                     />
                   </li>
@@ -439,15 +435,10 @@ export function Help(): JSX.Element {
                   <FormattedMessage
                     description="eidas heading"
                     defaultMessage={`{emphasis}, you could use 
-                    eIDAS to verify your identity. Read more about {eIDASLink}.`}
+                    eIDAS to verify your identity. Read more about eIDAS below.`}
                     values={{
                       emphasis: (
                         <strong>If you are an EU citizen and without a Swedish personal identity number</strong>
-                      ),
-                      eIDASLink: (
-                        <a className="text-link" href="#eidas">
-                          eIDAS
-                        </a>
                       ),
                     }}
                   />
@@ -457,174 +448,190 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="Svipe heading"
-                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about {SvipeLink}.`}
+                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about Svipe iD below.`}
                     values={{
                       emphasis: (
                         <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
-                      ),
-                      SvipeLink: (
-                        <a className="text-link" href="#svipe">
-                          Svipe iD
-                        </a>
                       ),
                     }}
                   />
                 </p>
               </section>
             </article>
-            <article id="frejaeid">
-              <h3>
-                <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+" />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="Freja eID+ is a digital ID-card free of charge. description"
-                  defaultMessage="Freja eID+ is a digital ID-card free of charge, available to holders of a Swedish personal identification number."
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="Freja eID+ description"
-                  defaultMessage="How to use Freja eID+ with eduID:"
-                />
-              </p>
 
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="Create a Freja eID+ account heading"
-                    defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja eID+ account,"
-                    values={{
-                      Freja: (
-                        <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
-                          Freja eID app
-                        </a>
-                      ),
-                    }}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="Create a Freja eID+ account list item"
-                    defaultMessage="bring a valid ID to the nearest ATG agent authorised to verify your identity,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="Create a Freja eID+ account list item"
-                    defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
-                  />
-                </li>
-              </ul>
+            <Accordion allowZeroExpanded id="eduID-verification">
+              <AccordionItemTemplate
+                uuid="help-freja"
+                title={<FormattedMessage description="About eduID" defaultMessage="About Freja eID+" />}
+                additionalInfo={null}
+              >
+                <article>
+                  <h3>
+                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+" />
+                  </h3>
+                  <p>
+                    <FormattedMessage
+                      description="Freja eID+ is a digital ID-card free of charge. description"
+                      defaultMessage="Freja eID+ is a digital ID-card free of charge, available to holders of a Swedish personal identification number."
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage
+                      description="Freja eID+ description"
+                      defaultMessage="How to use Freja eID+ with eduID:"
+                    />
+                  </p>
 
-              <h4>
-                <FormattedMessage
-                  description="visit an authorised ATG agent to create Freja eID+ heading"
-                  defaultMessage="Why do I need to visit an authorised ATG agent to create Freja eID+?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="visit an authorised ATG agent to create Freja eID+ description"
-                  defaultMessage={`On site, the agent can start the verification process by scanning a QR code in your 
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="Create a Freja eID+ account heading"
+                        defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja eID+ account,"
+                        values={{
+                          Freja: (
+                            <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
+                              Freja eID app
+                            </a>
+                          ),
+                        }}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="Create a Freja eID+ account list item"
+                        defaultMessage="bring a valid ID to the nearest ATG agent authorised to verify your identity,"
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="Create a Freja eID+ account list item"
+                        defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
+                      />
+                    </li>
+                  </ul>
+
+                  <h4>
+                    <FormattedMessage
+                      description="visit an authorised ATG agent to create Freja eID+ heading"
+                      defaultMessage="Why do I need to visit an authorised ATG agent to create Freja eID+?"
+                    />
+                  </h4>
+                  <p>
+                    <FormattedMessage
+                      description="visit an authorised ATG agent to create Freja eID+ description"
+                      defaultMessage={`On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja eID+ with your eduID. It can take up to three hours for your Freja eID+ to be fully activated.`}
-                />
-              </p>
+                    />
+                  </p>
 
-              <h4>
-                <FormattedMessage
-                  description="What should I do if my identity verification for Freja eID+ fails?"
-                  defaultMessage="What should I do if my identity verification for Freja eID+ fails?"
-                />
-              </h4>
+                  <h4>
+                    <FormattedMessage
+                      description="What should I do if my identity verification for Freja eID+ fails?"
+                      defaultMessage="What should I do if my identity verification for Freja eID+ fails?"
+                    />
+                  </h4>
 
-              <p>
-                <FormattedMessage
-                  description="Create a Freja eID+ account description"
-                  defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
+                  <p>
+                    <FormattedMessage
+                      description="Create a Freja eID+ account description"
+                      defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
                     correct expiration date as well as written down the correct reference number of the chosen form of 
                     ID and personal identity number (personnummer).`}
-                />
-              </p>
-            </article>
-            <article id="eidas">
-              <h3>
-                <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="What is eIDAS? description"
-                  defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
+                    />
+                  </p>
+                </article>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-eidas"
+                title={<FormattedMessage description="About eduID" defaultMessage="About eIDAS" />}
+                additionalInfo={null}
+              >
+                <article>
+                  <h3>
+                    <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
+                  </h3>
+                  <p>
+                    <FormattedMessage
+                      description="What is eIDAS? description"
+                      defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
                     access to public authority systems for EU citizens, using their country's electronic ID.`}
-                />
-              </p>
-              <p>
-                <FormattedMessage description="How to use eIDAS:" defaultMessage="How to use eIDAS with eduID:" />
-              </p>
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="eIDAS list item"
-                    defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage description="How to use eIDAS:" defaultMessage="How to use eIDAS with eduID:" />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="eIDAS list item"
+                        defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
                       authenticate yourself via eIDAS,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="eIDAS list item"
-                    defaultMessage={`to verify your identity in eduID, log in and choose the verification method for 
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="eIDAS list item"
+                        defaultMessage={`to verify your identity in eduID, log in and choose the verification method for 
                       'EU-citizens' in the Identity area and follow the instructions.`}
-                  />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="eIDAS item"
-                  defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
+                      />
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="eIDAS item"
+                      defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
                       simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
                       personal identity number you can add it in eduID and verify yourself again using it in the 
                       Identity area.`}
-                />
-              </p>
-            </article>
-            <article id="svipe">
-              <h3>
-                <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="What is Svipe? description"
-                  defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, combined with the users mobile device face-recognition ability, to create a verified digital identity.`}
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="How do I use Svipe? description"
-                  defaultMessage={`How to use Svipe iD with eduID:`}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="How do I use Svipe? description"
-                    defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app available at App Store and Google play,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="How do I use Svipe? description"
-                    defaultMessage="login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
-                  />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="How do I use Svipe? description"
-                  defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
-                />
-              </p>
-            </article>
+                    />
+                  </p>
+                </article>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-svipe"
+                title={<FormattedMessage description="About eduID" defaultMessage="About Svipe iD" />}
+                additionalInfo={null}
+              >
+                <article id="svipe">
+                  <h3>
+                    <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
+                  </h3>
+                  <p>
+                    <FormattedMessage
+                      description="What is Svipe? description"
+                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, combined with the users mobile device face-recognition ability, to create a verified digital identity.`}
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage
+                      description="How do I use Svipe? description"
+                      defaultMessage={`How to use Svipe iD with eduID:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="How do I use Svipe? description"
+                        defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app available at App Store and Google play,"
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="How do I use Svipe? description"
+                        defaultMessage="login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
+                      />
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="How do I use Svipe? description"
+                      defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
+                    />
+                  </p>
+                </article>
+              </AccordionItemTemplate>
+            </Accordion>
           </AccordionItemTemplate>
 
           <AccordionItemTemplate
