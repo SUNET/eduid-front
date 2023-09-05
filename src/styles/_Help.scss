@@ -26,9 +26,10 @@
   }
 
   section {
-    background: $body-gray;
     padding: 1.25rem 1rem 0.5rem;
     margin: 1rem 0;
+    border: 1px solid $bright-orange;
+    border-radius: 10px;
   }
 
   ul.bullets {
