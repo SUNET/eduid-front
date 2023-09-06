@@ -156,7 +156,7 @@ input:focus {
   display: flex;
   position: relative;
 
-  input[name="current-password"].is-valid {
+  input[name="currentPassword"].is-valid {
     background-image: none;
   }
 }
