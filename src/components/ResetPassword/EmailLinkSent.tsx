@@ -44,7 +44,7 @@ export function EmailLinkSent(): JSX.Element | null {
     <React.Fragment>
       <p>
         <FormattedMessage
-          defaultMessage="An e-mail with instructions has been sent to {email}."
+          defaultMessage="If you have an eduID account, an email with instructions has been sent to {email}."
           description="Reset Password email link sent"
           values={{
             email: (
