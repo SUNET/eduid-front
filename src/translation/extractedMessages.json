@@ -1231,10 +1231,6 @@
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
-  "etw/3v": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "An e-mail with instructions has been sent to {email}."
-  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
@@ -1262,6 +1258,10 @@
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
+  },
+  "fqZXes": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account, an email with instructions has been sent to {email}."
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
