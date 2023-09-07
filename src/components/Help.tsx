@@ -32,7 +32,7 @@ export function Help(): JSX.Element {
         </div>
       </section>
       <div className="help-content">
-        <Accordion allowZeroExpanded id="eduID-FAQ">
+        <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-FAQ">
           <AccordionItemTemplate
             uuid="help-about-eduID"
             title={<FormattedMessage description="About eduID" defaultMessage="About eduID" />}
@@ -421,10 +421,10 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="identity verification methods: Mobile"
                       defaultMessage={`{freja} the user will be directed to the Freja eID website to
-                      use their service. If you don't have Freja eID+ you have to create it separately before you can
-                      complete verification of your eduID. Read more about Freja eID+ below.`}
+                      use their service. If you don't have Freja+ you have to create it separately before you can
+                      complete verification of your eduID. Read more about Freja+ below.`}
                       values={{
-                        freja: <em>Freja eID+ (digital ID-card):</em>,
+                        freja: <em>Freja+ (digital ID-card):</em>,
                       }}
                     />
                   </li>
@@ -462,35 +462,32 @@ export function Help(): JSX.Element {
             <Accordion allowZeroExpanded id="eduID-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
-                title={<FormattedMessage description="About eduID" defaultMessage="About Freja eID+" />}
+                title={<FormattedMessage description="About eduID" defaultMessage="About Freja+" />}
                 additionalInfo={null}
               >
                 <article>
                   <h3>
-                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja eID+" />
+                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja+" />
                   </h3>
                   <p>
                     <FormattedMessage
-                      description="Freja eID+ is a digital ID-card free of charge. description"
-                      defaultMessage="Freja eID+ is a digital ID-card free of charge, available to holders of a Swedish personal identification number."
+                      description="Freja+ is a digital ID-card free of charge. description"
+                      defaultMessage="Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number."
                     />
                   </p>
                   <p>
-                    <FormattedMessage
-                      description="Freja eID+ description"
-                      defaultMessage="How to use Freja eID+ with eduID:"
-                    />
+                    <FormattedMessage description="Freja+ description" defaultMessage="How to use Freja+ with eduID:" />
                   </p>
 
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
-                        description="Create a Freja eID+ account heading"
-                        defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja eID+ account,"
+                        description="Create a Freja+ account heading"
+                        defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
                         values={{
                           Freja: (
                             <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
-                              Freja eID app
+                              Freja app
                             </a>
                           ),
                         }}
@@ -499,12 +496,12 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="Create a Freja eID+ account list item"
-                        defaultMessage="bring a valid ID to the nearest ATG agent authorised to verify your identity,"
+                        defaultMessage="if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
                       />
                     </li>
                     <li>
                       <FormattedMessage
-                        description="Create a Freja eID+ account list item"
+                        description="Create a Freja+ account list item"
                         defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
                       />
                     </li>
@@ -513,22 +510,22 @@ export function Help(): JSX.Element {
                   <h4>
                     <FormattedMessage
                       description="visit an authorised ATG agent to create Freja eID+ heading"
-                      defaultMessage="Why do I need to visit an authorised ATG agent to create Freja eID+?"
+                      defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
                     />
                   </h4>
                   <p>
                     <FormattedMessage
                       description="visit an authorised ATG agent to create Freja eID+ description"
-                      defaultMessage={`On site, the agent can start the verification process by scanning a QR code in your 
+                      defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
-                    ID verification and will be able use your Freja eID+ with your eduID. It can take up to three hours for your Freja eID+ to be fully activated.`}
+                    ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated.`}
                     />
                   </p>
 
                   <h4>
                     <FormattedMessage
                       description="What should I do if my identity verification for Freja eID+ fails?"
-                      defaultMessage="What should I do if my identity verification for Freja eID+ fails?"
+                      defaultMessage="What should I do if my identity verification for Freja+ fails?"
                     />
                   </h4>
 
