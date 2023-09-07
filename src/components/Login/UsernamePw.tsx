@@ -41,6 +41,7 @@ export default function UsernamePw() {
       if (fetchUsernamePassword.fulfilled.match(res)) {
         if (res.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
+          dispatch(clearNotifications());
         }
       }
       return;
