@@ -752,15 +752,13 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="About SUNET description"
-                  defaultMessage={`SUNET is the organisation responsible for Swedish universities and data networks, 
-                  as well as many services that are used by universities in Sweden.`}
+                  defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="What is SUNET? description"
-                  defaultMessage={`SUNET has been working with the issue of identity management for a long time and 
-                  developed eduID to make things easier for all parties in the higher education community. 
+                  defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. 
                   More information about SUNET is available at {sunet}.`}
                   values={{
                     sunet: (
