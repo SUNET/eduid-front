@@ -7,7 +7,7 @@ import {
   postNewPhone,
   requestMakePrimaryPhone,
   requestRemovePhone,
-  requestResendPhoneCode,
+  requestSendPhoneCode,
   requestVerifyPhone,
 } from "apis/eduidPhone";
 import { GetCaptchaResponse } from "apis/eduidSignup";
@@ -34,7 +34,7 @@ const phonesSlice = createSlice({
       .addCase(postNewPhone.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
       })
-      .addCase(requestResendPhoneCode.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
+      .addCase(requestSendPhoneCode.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
       })
       .addCase(requestVerifyPhone.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {

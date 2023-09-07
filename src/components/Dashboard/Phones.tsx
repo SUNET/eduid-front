@@ -6,7 +6,6 @@ import {
   postNewPhone,
   requestMakePrimaryPhone,
   requestRemovePhone,
-  requestResendPhoneCode,
   requestSendPhoneCode,
   requestVerifyPhone,
   sendCaptchaResponse,
@@ -78,7 +77,7 @@ function Phones() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
+    if (selectedPhoneNumber) dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
