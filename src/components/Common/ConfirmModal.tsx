@@ -41,7 +41,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
       render={({ submitting, invalid, handleSubmit, form }) => (
         <React.Fragment>
           <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
-            <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
+            <Modal id="confirm-user-data-modal" isOpen={props.showModal} autoFocus={false}>
               <ModalHeader>
                 {props.title}
                 <EduIDButton
@@ -73,6 +73,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                       name={props.id}
                       helpBlock={props.helpBlock}
                       validate={validate}
+                      autoFocus={true}
                     />
                   </div>
                   {props.resendMarkup ? props.resendMarkup : null}
