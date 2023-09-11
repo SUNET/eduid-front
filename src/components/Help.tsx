@@ -39,9 +39,9 @@ export function Help(): JSX.Element {
             additionalInfo={"What it is and may be used for"}
           >
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage description="What is eduID?" defaultMessage="What is eduID?" />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="What is eduID? explanation"
@@ -93,7 +93,7 @@ export function Help(): JSX.Element {
                   defaultMessage={`Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account.`}
                   values={{
                     link: (
-                      <a className="text-link" href="https://www.universityadmissions.se">
+                      <a className="text-link" href="https://www.universityadmissions.se" target="_blank">
                         universityadmissions.se
                       </a>
                     ),
@@ -140,12 +140,12 @@ export function Help(): JSX.Element {
             additionalInfo={"How to create, use and strengthen your eduID"}
           >
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="How do I use eduID? heading"
                   defaultMessage="How do I create an eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="Log in at eduid.se when you: heading"
@@ -270,12 +270,12 @@ export function Help(): JSX.Element {
               </p>
             </article>
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="How can I login with other devices? heading"
                   defaultMessage="How can I login with other devices?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
@@ -311,12 +311,12 @@ export function Help(): JSX.Element {
           >
             {" "}
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="How can I make my eduID more secure? heading"
                   defaultMessage="How do I make my eduID more secure?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="How can I login with other devices? description"
@@ -359,12 +359,12 @@ export function Help(): JSX.Element {
             additionalInfo={"Levels and methods of verifying eduID for different user groups"}
           >
             <article id="identity">
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="Verification levels heading"
-                  defaultMessage="What are the verification levels?"
+                  defaultMessage="What are verification levels?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="Freja eID+ is a digital ID-card free of charge. description"
@@ -373,12 +373,12 @@ export function Help(): JSX.Element {
               </p>
             </article>
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage
                   description="What are the selected methods of verification for eduID? heading"
                   defaultMessage="What are the methods of verification for eduID?"
                 />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="Verifying methods initial paragraph"
@@ -459,16 +459,16 @@ export function Help(): JSX.Element {
               </section>
             </article>
 
-            <Accordion allowZeroExpanded id="eduID-verification">
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
                 title={<FormattedMessage description="About eduID" defaultMessage="About Freja+" />}
                 additionalInfo={null}
               >
                 <article>
-                  <h3>
-                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja+" />
-                  </h3>
+                  <h4>
+                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja+?" />
+                  </h4>
                   <p>
                     <FormattedMessage
                       description="Freja+ is a digital ID-card free of charge. description"
@@ -545,9 +545,9 @@ export function Help(): JSX.Element {
                 additionalInfo={null}
               >
                 <article>
-                  <h3>
+                  <h4>
                     <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
-                  </h3>
+                  </h4>
                   <p>
                     <FormattedMessage
                       description="What is eIDAS? description"
@@ -591,9 +591,9 @@ export function Help(): JSX.Element {
                 additionalInfo={null}
               >
                 <article id="svipe">
-                  <h3>
+                  <h4>
                     <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
-                  </h3>
+                  </h4>
                   <p>
                     <FormattedMessage
                       description="What is Svipe? description"
@@ -642,9 +642,9 @@ export function Help(): JSX.Element {
             additionalInfo={null}
           >
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is ORCID?" />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="What is ORCID? description"
@@ -660,7 +660,7 @@ export function Help(): JSX.Element {
                   defaultMessage="Read more at {orcid}."
                   values={{
                     orcid: (
-                      <a className="text-link" href="https://orcid.org">
+                      <a className="text-link" href="https://orcid.org" target="_blank">
                         orcid.org
                       </a>
                     ),
@@ -694,7 +694,7 @@ export function Help(): JSX.Element {
                   defaultMessage="You can register for an ORCID at {orcid}."
                   values={{
                     orcid: (
-                      <a className="text-link" href="https://orcid.org">
+                      <a className="text-link" href="https://orcid.org" target="_blank">
                         orcid.org
                       </a>
                     ),
@@ -716,27 +716,34 @@ export function Help(): JSX.Element {
               </p>
             </article>
             <article>
-              <h3>
+              <h4>
                 <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is Ladok?" />
-              </h3>
+              </h4>
               <p>
                 <FormattedMessage
                   description="What is ladok? description"
                   defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading.`}
                 />
               </p>
-              <h4>
-                <FormattedMessage
-                  description=" What is ORCID? heading"
-                  defaultMessage="How do I link my eduID to Ladok?"
-                />
-              </h4>
+
               <p>
-                <FormattedMessage
-                  description="What is ladok? description"
-                  defaultMessage={`In the Settings area of eduID, toggle the Ladok control and choose your institution from the drop down list - if it is available.`}
-                />
+                <FormattedMessage description="Freja+ description" defaultMessage="How to connect my eduID to Ladok:" />
               </p>
+
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja+ account heading"
+                    defaultMessage="in the Settings area of eduID, toggle the Ladok control,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="choose your institution from the drop down list - if it is available."
+                  />
+                </li>
+              </ul>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
@@ -753,10 +760,23 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Read more at sunet"
-                  defaultMessage="Read more at {sunet}."
+                  defaultMessage="Read more at {privacy} and {accessability}."
                   values={{
-                    sunet: (
-                      <a className="text-link" href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
+                    privacy: (
+                      <a
+                        className="text-link"
+                        href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid"
+                        target="_blank"
+                      >
+                        www.sunet.se
+                      </a>
+                    ),
+                    accessability: (
+                      <a
+                        className="text-link"
+                        href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se"
+                        target="_blank"
+                      >
                         www.sunet.se
                       </a>
                     ),
@@ -772,6 +792,9 @@ export function Help(): JSX.Element {
           >
             {" "}
             <article>
+              <h4>
+                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is SUNET?" />
+              </h4>
               <p>
                 <FormattedMessage
                   description="About SUNET description"
@@ -785,7 +808,7 @@ export function Help(): JSX.Element {
                   More information about SUNET is available at {sunet}.`}
                   values={{
                     sunet: (
-                      <a className="text-link" href="http://www.sunet.se">
+                      <a className="text-link" href="http://www.sunet.se" target="_blank">
                         www.sunet.se
                       </a>
                     ),
@@ -802,6 +825,12 @@ export function Help(): JSX.Element {
             additionalInfo={null}
           >
             <article>
+              <h4>
+                <FormattedMessage
+                  description=" What is ORCID? heading"
+                  defaultMessage="How to contact eduID support?"
+                />
+              </h4>
               <p>
                 <FormattedMessage
                   description="Create a Freja eID+ account list item"
