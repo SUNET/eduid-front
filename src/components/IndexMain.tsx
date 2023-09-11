@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
-import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import Splash from "./Common/Splash";
@@ -77,35 +75,7 @@ export function IndexMain(): JSX.Element {
             </Routes>
           </section>
         </Splash>
-=======
-import { Header } from "components/Header";
-import { Notifications } from "components/Notifications";
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import "../../src/login/styles/index.scss";
-import Footer from "../login/components/Footer/Footer";
-import { Index } from "./Index";
-
-export function IndexMain(): JSX.Element {
-  return (
-    <React.StrictMode>
-      <Header showLogin={true} />
-      <main id="panel" className="panel">
-        <Notifications />
-<<<<<<< HEAD
-        <Routes>
-          <Route path="static/front-build/index.dev.html" element={<Index />} />
-        </Routes>
->>>>>>> 5cc10eec7 (Create index for all apps)
-=======
-        <section id="content" className="horizontal-content-margin content">
-          <Routes>
-            <Route path="static/front-build/index.dev.html" element={<Index />} />
-          </Routes>
-        </section>
->>>>>>> 19eeec119 (Create index for eduID main)
       </main>
-      <Footer />
     </React.StrictMode>
   );
 }

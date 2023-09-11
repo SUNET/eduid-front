@@ -26,17 +26,6 @@ webpackProd.plugins = [
   //  initialConfigPlugin,
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-<<<<<<< HEAD
-=======
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.html`,
-      chunks: [`${entryName}`],
-    });
-  }),
->>>>>>> 46b4f6c02 (login.html -> index.html)
 ];
 
 webpackProd.mode = "production";
