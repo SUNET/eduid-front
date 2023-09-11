@@ -5,15 +5,10 @@ import type { InitialEntry } from "history";
 import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-<<<<<<< HEAD
+
+import { initialState as loginInitialState } from "slices/Login";
 import { initialState as signupInitialState } from "slices/Signup";
 import { initialState as configInitialState } from "slices/SignupConfig";
-=======
-import { initialState as signupInitialState } from "reducers/Signup";
-import { initialState as configInitialState } from "reducers/SignupConfig";
-import { initialState as loginInitialState } from "../../login/redux/slices/loginSlice";
->>>>>>> e8d0f065b (Add getLoginConfig)
-
 export const signupTestState: SignupRootState = {
   config: {
     ...configInitialState,
