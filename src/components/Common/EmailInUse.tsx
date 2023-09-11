@@ -1,6 +1,6 @@
+import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppSelector } from "signup-hooks";
 import EduIDButton from "./EduIDButton";
 
 // identifiers used in tests

@@ -1,9 +1,9 @@
 import { CaptchaProps } from "components/Signup/SignupCaptcha";
+import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
 import ScriptLoader from "react-script-loader-hoc";
-import { useSignupAppSelector } from "signup-hooks";
 import EduIDButton from "./EduIDButton";
 import Splash from "./Splash";
 

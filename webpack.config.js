@@ -18,8 +18,14 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
+<<<<<<< HEAD
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
+=======
+    // dashboard: "./src/entry-points/dashboard",
+    // login: "./src/entry-points/login",
+    // errors: "./src/entry-points/errors",
+>>>>>>> ce6a9795b (Fix conflicts)
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
 <<<<<<< HEAD
@@ -101,7 +107,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["index", "errors", "login", "dashboard", "signup"].map((entryName) => {
+    ...["index", "errors", "login", "dashboard"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,

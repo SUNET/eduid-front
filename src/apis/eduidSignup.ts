@@ -3,8 +3,8 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { IndexAppDispatch as SignupAppDispatch, IndexRootState as SignupRootState } from "index-init-app";
 import { signupSlice } from "slices/Signup";
-import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 // export for use in tests

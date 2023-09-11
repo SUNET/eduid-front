@@ -1,14 +1,13 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { SIGNUP_CONFIG_URL } from "globals";
-import { indexStore } from "index-init-app";
-import { setupLanguage } from "login/translation";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { polyfillsInit } from "./polyfills-common";
-
+import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
+import { SIGNUP_CONFIG_URL } from "globals";
+import { indexStore } from "index-init-app";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { setupLanguage } from "translation";
+import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
 /* Get configuration */
