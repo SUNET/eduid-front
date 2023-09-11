@@ -3,10 +3,10 @@ import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
 import Splash from "components/Common/Splash";
 import CodeVerified from "components/Signup/CodeVerified";
+import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useSignupAppSelector } from "signup-hooks";
 import { SignupApp } from "./SignupApp";
 
 // export for use in tests

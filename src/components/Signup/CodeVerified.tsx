@@ -2,15 +2,14 @@ import { fetchVerifyLink, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
+import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { showNotification } from "slices/Notifications";
-
+import { idUserEmail } from "./SignupUserCreated";
 // element ids used in tests
-export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
 

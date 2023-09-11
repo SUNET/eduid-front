@@ -2,9 +2,9 @@ import { RenderOptions, RenderResult, render as rtlRender } from "@testing-libra
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
+import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { SignupRootState, getTestSignupStore } from "signup-init-app";
 import { initialState as signupInitialState } from "slices/Signup";
 import { initialState as configInitialState } from "slices/SignupConfig";
 
