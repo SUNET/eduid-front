@@ -715,6 +715,29 @@ export function Help(): JSX.Element {
                 />
               </p>
             </article>
+            <article>
+              <h3>
+                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is Ladok?" />
+              </h3>
+              <p>
+                <FormattedMessage
+                  description="What is ladok? description"
+                  defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading.`}
+                />
+              </p>
+              <h4>
+                <FormattedMessage
+                  description=" What is ORCID? heading"
+                  defaultMessage="How do I link my eduID to Ladok?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="What is ladok? description"
+                  defaultMessage={`In the Settings area of eduID, toggle the Ladok control and choose your institution from the drop down list - if it is available.`}
+                />
+              </p>
+            </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-privacy-policy"
@@ -796,7 +819,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="support description"
-                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ under the advanced settings tab.  
+                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ in the Settings area.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
                 />
