@@ -152,7 +152,7 @@ export function Help(): JSX.Element {
                   defaultMessage={"How to create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
-                      <a className="text-link" href="https://signup.eduid.se/register/">
+                      <a className="text-link" href="https://signup.eduid.se/register/" target="_blank">
                         eduid.se
                       </a>
                     ),
@@ -655,52 +655,38 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
-                <FormattedMessage
-                  description="Read more at"
-                  defaultMessage="Read more at {orcid}."
-                  values={{
-                    orcid: (
-                      <a className="text-link" href="https://orcid.org" target="_blank">
-                        orcid.org
-                      </a>
-                    ),
-                  }}
-                />
+                <FormattedMessage description="orcid description" defaultMessage="How to link ORCID with eduID:" />
               </p>
-
-              <h4>
-                <FormattedMessage
-                  description="How does linking ORCID to eduID work? heading"
-                  defaultMessage="How does linking ORCID to eduID work?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="connect orcid   account description"
-                  defaultMessage={`Click the 'Connect ORCID account' button, sign in to your ORCID account and grant 
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="orcid description"
+                    defaultMessage="read more and register for an ORCID at {orcid},"
+                    values={{
+                      orcid: (
+                        <a className="text-link" href="https://orcid.org" target="_blank">
+                          orcid.org
+                        </a>
+                      ),
+                    }}
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="click the 'Connect ORCID account' button in the Settings area of eduID,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a eduID account heading"
+                    defaultMessage="sign in to your ORCID account and grant 
                     eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is 
-                    connected to the correct eduID.`}
-                />
-              </p>
-              <h4>
-                <FormattedMessage
-                  description="What do I do if I don't have an ORCID? heading"
-                  defaultMessage=" What do I do if I don't have an ORCID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="orcid description"
-                  defaultMessage="You can register for an ORCID at {orcid}."
-                  values={{
-                    orcid: (
-                      <a className="text-link" href="https://orcid.org" target="_blank">
-                        orcid.org
-                      </a>
-                    ),
-                  }}
-                />
-              </p>
+                    connected to the correct eduID."
+                  />
+                </li>
+              </ul>
+
               <h4>
                 <FormattedMessage
                   description=" How do I remove a linked ORCID from eduID? heading"
@@ -710,8 +696,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="orcid description"
-                  defaultMessage={`If you do not longer want eduID to know your ORCID iD you can easily remove it by 
-                    clicking the remove button in your eduID.`}
+                  defaultMessage={`If you do not longer want eduID to know your ORCID iD you can remove it by 
+                    clicking the Remove button in your eduID.`}
                 />
               </p>
             </article>
@@ -727,7 +713,7 @@ export function Help(): JSX.Element {
               </p>
 
               <p>
-                <FormattedMessage description="Freja+ description" defaultMessage="How to connect my eduID to Ladok:" />
+                <FormattedMessage description="Freja+ description" defaultMessage="How to link Ladok with eduID:" />
               </p>
 
               <ul className="bullets">
