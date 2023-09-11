@@ -3,12 +3,8 @@ import { LOGIN_CONFIG_URL } from "globals";
 import { useIndexAppDispatch, useIndexAppSelector as useLoginAppSelector } from "index-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
+import { appLoadingSlice } from "slices/AppLoading";
 import EduIDButton from "./Common/EduIDButton";
-=======
-import { appLoadingSlice } from "reducers/AppLoading";
-import EduIDButton from "./EduIDButton";
->>>>>>> e8d0f065b (Add getLoginConfig)
 
 export function Index() {
   const navigate = useNavigate();
