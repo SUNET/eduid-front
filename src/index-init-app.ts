@@ -12,6 +12,17 @@ export const indexStore = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
+// The same thing again, for use in tests
+export function getTestSignupStore(preloadedState: Partial<IndexRootState>) {
+  const testStore = configureStore({
+    reducer: eduIDApp,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+    devTools: process.env.NODE_ENV !== "production",
+    preloadedState,
+  });
+  return testStore;
+}
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type IndexRootState = ReturnType<typeof indexStore.getState>;
 export type IndexAppDispatch = typeof indexStore.dispatch;

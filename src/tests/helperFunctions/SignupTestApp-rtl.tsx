@@ -3,8 +3,10 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
+import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
+<<<<<<< HEAD
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState } from "slices/AppLoading";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
@@ -19,6 +21,8 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
+=======
+>>>>>>> 104de5a2f (Fix conflicts)
 import { initialState as signupInitialState } from "slices/Signup";
 
 export const signupTestState: EduIDAppRootState = {

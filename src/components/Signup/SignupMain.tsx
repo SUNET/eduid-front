@@ -3,12 +3,12 @@ import { Header } from "components/Header";
 import { Help } from "components/Help";
 import { Notifications } from "components/Notifications";
 import Splash from "components/Splash";
+import { useAppSelector } from "eduid-hooks";
 import Footer from "login/components/Footer/Footer";
 import "login/styles/index.scss";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useSignupAppSelector } from "signup-hooks";
 import { SignupApp } from "./SignupApp";
 import { SignupGlobalStateProvider } from "./SignupGlobalState";
 
@@ -16,7 +16,7 @@ import { SignupGlobalStateProvider } from "./SignupGlobalState";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function SignupMain(): JSX.Element {
-  const isLoaded = useSignupAppSelector((state) => state.config.is_configured);
+  const isLoaded = useAppSelector((state) => state.config.is_configured);
 
   const intl = useIntl();
 

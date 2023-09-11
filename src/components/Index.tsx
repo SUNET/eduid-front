@@ -24,7 +24,7 @@ export function Index() {
 =======
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
-import EduIDButton from "./EduIDButton";
+import EduIDButton from "./Common/EduIDButton";
 
 export function Index() {
   const navigate = useNavigate();
