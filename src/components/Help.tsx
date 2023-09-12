@@ -26,7 +26,7 @@ export function Help(): JSX.Element {
             <FormattedMessage
               description="help main description"
               defaultMessage={`Listed below is general information about the service, answers to common questions about using eduID 
-               and support contact information.`}
+               and Support contact information.`}
             />
           </p>
         </div>
@@ -743,10 +743,16 @@ export function Help(): JSX.Element {
             additionalInfo={null}
           >
             <article>
+              <h4>
+                <FormattedMessage
+                  description=" How do I remove a linked ORCID from eduID? heading"
+                  defaultMessage="What is eduIDs Privacy policy?"
+                />
+              </h4>
               <p>
                 <FormattedMessage
                   description="Read more at sunet"
-                  defaultMessage="Read more at {privacy} and {accessability}."
+                  defaultMessage="Read the full {privacy} regarding use of eduID at the Sunet website, where you will also find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish)."
                   values={{
                     privacy: (
                       <a
@@ -754,9 +760,79 @@ export function Help(): JSX.Element {
                         href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid"
                         target="_blank"
                       >
-                        www.sunet.se
+                        Privacy policy
                       </a>
                     ),
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Read more at sunet"
+                  defaultMessage="Summary of how eduID treat your information according to the policy:"
+                />
+              </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja+ account heading"
+                    defaultMessage="store information that you have provided as well as updates from trusted registers,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="transfer information according to the data minimisation principle - never more than required,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja+ account heading"
+                    defaultMessage="use the information to identify the individual for services you have chosen to use,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="protect and store the information securely,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja+ account heading"
+                    defaultMessage="develop using open source code accessible at GitHub,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="enable removal of eduID and connections directly in the service,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja+ account heading"
+                    defaultMessage="store log files recording use for 6 months,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="retain inactive accounts for a maximum of 2 years,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="Create a Freja eID+ account list item"
+                    defaultMessage="does not use cookies."
+                  />
+                </li>
+              </ul>
+              <p>
+                <FormattedMessage
+                  description="Read more at sunet"
+                  defaultMessage="Read more at {privacy} and {accessability}."
+                  values={{
                     accessability: (
                       <a
                         className="text-link"
