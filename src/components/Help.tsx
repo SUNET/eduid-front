@@ -19,12 +19,12 @@ export function Help(): JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage description="help main title" defaultMessage="Help and contact" />
+          <FormattedMessage description="Help headline" defaultMessage="Help and contact" />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
-              description="help main description"
+              description="Help lead text"
               defaultMessage={`Listed below is general information about the service, answers to common questions about using eduID 
                and Support contact information.`}
             />
@@ -32,19 +32,19 @@ export function Help(): JSX.Element {
         </div>
       </section>
       <div className="help-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-FAQ">
+        <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-faq">
           <AccordionItemTemplate
-            uuid="help-about-eduID"
-            title={<FormattedMessage description="About eduID" defaultMessage="About eduID" />}
+            uuid="help-about-eduid"
+            title={<FormattedMessage description="About eduid handle" defaultMessage="About eduID" />}
             additionalInfo={"What it is and may be used for"}
           >
             <article>
               <h4>
-                <FormattedMessage description="What is eduID?" defaultMessage="What is eduID?" />
+                <FormattedMessage description="What is eduID heading" defaultMessage="What is eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="What is eduID? explanation"
+                  description="What is eduID description 1"
                   defaultMessage={`eduID is a federated identity - a user identity that can be used in several different 
                   organisations that have agreed on how identities will be managed. The basic idea is that a given user, 
                   who is authenticated with an organisation, is automatically authenticated with other organisations
@@ -53,19 +53,19 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="What is eduID? description"
+                  description="What is eduID description 2"
                   defaultMessage={`Federated identities are one of the cornerstones of trust between organisations. 
                     Trust is based on all the organisations relying on all the others to carry out their authentication 
                     - identification and verification - properly and in a controlled and reliable IT environment.`}
                 />
               </p>
               <h4>
-                <FormattedMessage description="Why have eduID? heading" defaultMessage="Why have eduID?" />
+                <FormattedMessage description="Why have eduID heading" defaultMessage="Why have eduID?" />
               </h4>
 
               <p>
                 <FormattedMessage
-                  description="Why have eduID? description1"
+                  description="Why have eduID description 1"
                   defaultMessage={`From the user's perspective, in the long-term eduID means fewer accounts to keep 
                     track of. For many organisations, identity management is a complex issue and it is
                     necessary to work with confirmed users.`}
@@ -73,7 +73,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Why have eduID? description2"
+                  description="Why have eduID description 2"
                   defaultMessage={`There are many services that require identification of users. This is often done by 
                     the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service 
                     provider does not really know who the user with that email address is - and for many 
@@ -82,14 +82,11 @@ export function Help(): JSX.Element {
                 />
               </p>
               <h4>
-                <FormattedMessage
-                  description="When will I use eduID? heading"
-                  defaultMessage="When will I use eduID?"
-                />
+                <FormattedMessage description="When use eduID heading" defaultMessage="When will I use eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="What is eduID? description"
+                  description="When use eduID description"
                   defaultMessage={`Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account.`}
                   values={{
                     link: (
@@ -102,32 +99,29 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Log in at eduid.se when you: heading"
+                  description="When use eduID eduID list definition"
                   defaultMessage="Log in at eduid.se when you:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Log in at eduid.se when you: list item"
+                    description="When use eduID list item 1"
                     defaultMessage="apply to and accept your place at a university,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Log in at eduid.se when you: list item"
+                    description="When use eduID list item 2"
                     defaultMessage="organise your student account for email and intranet,"
                   />
                 </li>
                 <li>
-                  <FormattedMessage
-                    description="Log in at eduid.se when you: list item"
-                    defaultMessage="change university,"
-                  />
+                  <FormattedMessage description="When use eduID list item 3" defaultMessage="change university," />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Log in at eduid.se when you: list item"
+                    description="When use eduID list item 4"
                     defaultMessage="lose a student account password and need to regain access."
                   />
                 </li>
@@ -135,20 +129,17 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-using-eduID"
-            title={<FormattedMessage description="About eduID" defaultMessage="Using eduID" />}
+            uuid="help-using-eduid"
+            title={<FormattedMessage description="Using eduid handle" defaultMessage="Using eduID" />}
             additionalInfo={"How to create, use and strengthen your eduID"}
           >
             <article>
               <h4>
-                <FormattedMessage
-                  description="How do I use eduID? heading"
-                  defaultMessage="How do I create an eduID?"
-                />
+                <FormattedMessage description="Creating eduID heading" defaultMessage="How do I create an eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Log in at eduid.se when you: heading"
+                  description="Creating eduID list definition"
                   defaultMessage={"How to create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
@@ -162,82 +153,79 @@ export function Help(): JSX.Element {
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Creating eduID list item 1"
                     defaultMessage="register your email address,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading2"
+                    description="Creating eduID list item 2"
                     defaultMessage="confirm that you are human by using captcha,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading3"
+                    description="Creating eduID list item 3"
                     defaultMessage="accept the eduID terms of use,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading4"
+                    description="Creating eduID list item 4"
                     defaultMessage="verify your email address by entering the code emailed to you,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading5"
+                    description="Creating eduID list item 5"
                     defaultMessage="take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
                   />
                 </li>
               </ul>
               <h4>
-                <FormattedMessage
-                  description="How do I use eduID? heading"
-                  defaultMessage="How can I enhance my eduID?"
-                />
+                <FormattedMessage description="Enhancing eduID heading" defaultMessage="How can I enhance my eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="How do I use eduID? description"
+                  description="Enhancing eduID list definition"
                   defaultMessage={`In eduID you are encouraged to add further details such as:`}
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Enhancing eduID list item 1"
                     defaultMessage="your full name to be able to add a security key or access some services from an unverified account,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Enhancing eduID list item 2"
                     defaultMessage="your phone number for easier retrieval of your account should it be needed,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Enhancing eduID list item 3"
                     defaultMessage="a security key of you are able to for added security,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Enhancing eduID list item 4"
                     defaultMessage="connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Enhancing eduID list item 5"
                     defaultMessage="verifying your identity to strengthen your eduID sufficiently for many external services."
                   />
                 </li>
               </ul>
               <p>
                 <FormattedMessage
-                  description="How do I use eduID? description"
+                  description="Enhancing eduID verification description"
                   defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
                 />
               </p>
@@ -245,60 +233,59 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="Which email account should I use to log in? heading"
+                  description="Which email heading"
                   defaultMessage="Which email account should I use to log in?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Which email account should I use to log in? description"
+                  description="Which email description"
                   defaultMessage="You can log in with all the email addresses you have entered and confirmed in eduID."
                 />
               </p>
               <h4>
                 <FormattedMessage
-                  description="How do I change the default language in eduID? heading"
+                  description="Changing language heading"
                   defaultMessage="How do I change the default language in eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="How do I change the default language in eduID? description"
+                  description="Changing language description"
                   defaultMessage={`
                     To change the default language you can log into eduID and select your language preference in the
                     Personal information area in eduID. The default language is based on the language setting that your
                     browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
                 />
               </p>
-
               <h4>
                 <FormattedMessage
-                  description="How can I login with other devices? heading"
+                  description="Other devices heading"
                   defaultMessage="How can I login with other devices?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="How can I login with other devices? description"
+                  description="Other devices description"
                   defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Other devices list item 1"
                     defaultMessage="select 'Other device' button in the login form,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Other devices list item 2"
                     defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="Other devices list item 3"
                     defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
                   />
                 </li>
@@ -306,8 +293,13 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-mfa-sunet"
-            title={<FormattedMessage description="SUNET" defaultMessage="Improving the security level of eduID" />}
+            uuid="help-security-key"
+            title={
+              <FormattedMessage
+                description="Security key handle"
+                defaultMessage="Improving the security level of eduID"
+              />
+            }
             additionalInfo={"Adding an MFA/2FA Security Key"}
           >
             {" "}
@@ -353,9 +345,12 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-verification-of-identity"
+            uuid="help-verification"
             title={
-              <FormattedMessage description="Verification of Identity" defaultMessage="Verification of Identity" />
+              <FormattedMessage
+                description="Verification of identity handle"
+                defaultMessage="Verification of Identity"
+              />
             }
             additionalInfo={"Levels and methods of verifying eduID for different user groups"}
           >
@@ -460,10 +455,10 @@ export function Help(): JSX.Element {
               </section>
             </article>
 
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduID-verification">
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
-                title={<FormattedMessage description="About eduID" defaultMessage="About Freja+" />}
+                title={<FormattedMessage description="About freja handle" defaultMessage="About Freja+" />}
                 additionalInfo={null}
               >
                 <article>
@@ -542,7 +537,7 @@ export function Help(): JSX.Element {
               </AccordionItemTemplate>
               <AccordionItemTemplate
                 uuid="help-eidas"
-                title={<FormattedMessage description="About eduID" defaultMessage="About eIDAS" />}
+                title={<FormattedMessage description="About eidas handle" defaultMessage="About eIDAS" />}
                 additionalInfo={null}
               >
                 <article>
@@ -588,7 +583,7 @@ export function Help(): JSX.Element {
               </AccordionItemTemplate>
               <AccordionItemTemplate
                 uuid="help-svipe"
-                title={<FormattedMessage description="About eduID" defaultMessage="About Svipe iD" />}
+                title={<FormattedMessage description="About svipe handle" defaultMessage="About Svipe iD" />}
                 additionalInfo={null}
               >
                 <article id="svipe">
@@ -639,10 +634,10 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
 
           <AccordionItemTemplate
-            uuid="help-About-orcid"
+            uuid="help-orcid-ladok"
             title={
               <FormattedMessage
-                description="Connecting with Orcid / Ladok"
+                description="Connecting orcid ladok handle"
                 defaultMessage="Connecting account with Orcid / Ladok"
               />
             }
@@ -741,10 +736,10 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-privacy-policy"
+            uuid="help-privacy-accessibility"
             title={
               <FormattedMessage
-                description="privacy policy / Web accessibility"
+                description="privacy policy web accessibility handle"
                 defaultMessage="Privacy policy and Web accessibility"
               />
             }
@@ -871,23 +866,23 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-about-sunet"
-            title={<FormattedMessage description="SUNET" defaultMessage="About SUNET" />}
+            title={<FormattedMessage description="About sunet handle" defaultMessage="About SUNET" />}
             additionalInfo={null}
           >
             {" "}
             <article>
               <h4>
-                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is SUNET?" />
+                <FormattedMessage description="About Sunet heading" defaultMessage="What is SUNET?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="About SUNET description"
+                  description="About SUNET description 1"
                   defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="What is SUNET? description"
+                  description="About SUNET description 2"
                   defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. 
                   More information about SUNET is available at {sunet}.`}
                   values={{
@@ -902,22 +897,20 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-contact-us"
-            title={
-              <FormattedMessage description="How to contact eduID support" defaultMessage="Contacting eduID support" />
-            }
+            uuid="help-contact"
+            title={<FormattedMessage description="Contact support handle" defaultMessage="Contacting eduID support" />}
             additionalInfo={null}
           >
             <article>
               <h4>
                 <FormattedMessage
-                  description=" What is ORCID? heading"
+                  description="Contact support heading"
                   defaultMessage="How to contact eduID support?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Create a Freja eID+ account list item"
+                  description="Contact support description 1"
                   defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
                   values={{
@@ -931,7 +924,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="support description"
+                  description="Contact support description 2"
                   defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ in the Settings area.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
@@ -939,7 +932,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Create a Freja eID+ account list item"
+                  description="Contact support description 3"
                   defaultMessage="{strong}, but for simple
               matters you can also reach us on phone number {phone}."
                   values={{
@@ -953,18 +946,18 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
-                <FormattedMessage description="Opening hours:" defaultMessage="Opening hours:" />
+                <FormattedMessage description="Opening hours list definition" defaultMessage="Opening hours:" />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Opening hours: list item"
+                    description="Opening hours list item 1"
                     defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Opening hours: list item"
+                    description="Opening hours list item 2"
                     defaultMessage="Friday 9:00-12:00, 13:00-14:30"
                   />
                 </li>
