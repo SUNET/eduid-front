@@ -598,7 +598,13 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="What is Svipe? description"
-                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, combined with the users mobile device face-recognition ability, to create a verified digital identity.`}
+                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely.`}
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage
+                      description="What is Svipe? description"
+                      defaultMessage={`You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short, the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it.`}
                     />
                   </p>
                   <p>
@@ -611,7 +617,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="How do I use Svipe? description"
-                        defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by e.g. your passport, in the Svipe app available at App Store and Google play,"
+                        defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by your ID-document, in the Svipe app available at App store for IOS, or Google Play for Android,"
                       />
                     </li>
                     <li>
