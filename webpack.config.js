@@ -18,9 +18,7 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
-    // dashboard: "./src/entry-points/dashboard",
-    // login: "./src/entry-points/login",
-    // errors: "./src/entry-points/errors",
+    dashboard: "./src/entry-points/dashboard",
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
     faq: "./src/entry-points/faq",
