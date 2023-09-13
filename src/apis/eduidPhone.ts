@@ -83,25 +83,6 @@ export const requestSendPhoneCode = createAsyncThunk<
 /*********************************************************************************************************************/
 /**
  * @public
- * @function requestResendPhoneCode
- * @desc Redux async thunk to request new code for verification by phone.
- */
-export const requestResendPhoneCode = createAsyncThunk<
-  PhonesResponse, // return type
-  { number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("phones/requestResendPhoneCode", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    number: args.number,
-  };
-  return makePhoneRequest<PhonesResponse>(thunkAPI, "resend-code", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-/**
- * @public
  * @function postNewPhone
  * @desc Redux async thunk to add a new phone number.
  */

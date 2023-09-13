@@ -6,7 +6,6 @@ import {
   postNewPhone,
   requestMakePrimaryPhone,
   requestRemovePhone,
-  requestResendPhoneCode,
   requestSendPhoneCode,
   requestVerifyPhone,
   sendCaptchaResponse,
@@ -78,7 +77,7 @@ function Phones() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
+    if (selectedPhoneNumber) dispatch(requestSendPhoneCode({ number: selectedPhoneNumber }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
@@ -256,62 +255,68 @@ function Phones() {
           </EduIDButton>
         )}
       </div>
-
-      {/* Captcha modal */}
-      <ConfirmModal
-        id="phone-captcha-modal"
-        captchaImage={img}
-        title={
-          <FormattedMessage
-            defaultMessage={`To receive code, complete below captcha.`}
-            description="captcha modal title"
-          />
-        }
-        // We have decided not to use a placeholder in the Captcha
-        placeholder=""
-        showModal={Boolean(completeCaptcha)}
-        closeModal={handleStopCaptcha}
-        handleConfirm={sendCaptcha}
-        modalFormLabel={
-          <FormattedMessage description="phones modal form label" defaultMessage={`Enter the code from the image`} />
-        }
-        resendMarkup={
-          <div className="icon-text">
-            <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
-              <FontAwesomeIcon icon={faRedo as IconProp} />
-            </button>
-            <label htmlFor="name-check" className="hint">
-              <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
-            </label>
-          </div>
-        }
-        submitButtonText={<FormattedMessage defaultMessage="Continue" description="Captcha button" />}
-      />
-
-      <ConfirmModal
-        id="phone-confirm-modal"
-        title={
-          <FormattedMessage
-            defaultMessage={`Enter the code sent to {phone}`}
-            description="Title for phone code input"
-            values={{ phone: selectedPhoneNumber }}
-          />
-        }
-        placeholder={modalPlaceholder}
-        showModal={Boolean(selectedPhoneNumber) && !completeCaptcha}
-        closeModal={handleStopConfirmation}
-        handleConfirm={handleConfirm}
-        modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
-        resendMarkup={
-          <div className="resend-code-container">
-            <a href="#" onClick={handleResend}>
-              <FormattedMessage description="resend code" defaultMessage={`Send a new code`} />
-            </a>
-          </div>
-        }
-        validationError={"confirmation.code_invalid_format"}
-        validationPattern={shortCodePattern}
-      />
+      {completeCaptcha ? (
+        <ConfirmModal
+          id="phone-captcha-modal"
+          captchaImage={img}
+          title={
+            <FormattedMessage
+              defaultMessage={`To receive code, complete below captcha.`}
+              description="captcha modal title"
+            />
+          }
+          // We have decided not to use a placeholder in the Captcha
+          placeholder=""
+          showModal={Boolean(completeCaptcha)}
+          closeModal={handleStopCaptcha}
+          handleConfirm={sendCaptcha}
+          modalFormLabel={
+            <FormattedMessage description="phones modal form label" defaultMessage={`Enter the code from the image`} />
+          }
+          resendMarkup={
+            <div className="icon-text">
+              <button
+                type="button"
+                className="icon-only"
+                aria-label="name-check"
+                disabled={!img}
+                onClick={getNewCaptcha}
+              >
+                <FontAwesomeIcon icon={faRedo as IconProp} />
+              </button>
+              <label htmlFor="name-check" className="hint">
+                <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+              </label>
+            </div>
+          }
+          submitButtonText={<FormattedMessage defaultMessage="Continue" description="Captcha button" />}
+        />
+      ) : (
+        <ConfirmModal
+          id="phone-confirm-modal"
+          title={
+            <FormattedMessage
+              defaultMessage={`Enter the code sent to {phone}`}
+              description="Title for phone code input"
+              values={{ phone: selectedPhoneNumber }}
+            />
+          }
+          placeholder={modalPlaceholder}
+          showModal={Boolean(selectedPhoneNumber) && !completeCaptcha}
+          closeModal={handleStopConfirmation}
+          handleConfirm={handleConfirm}
+          modalFormLabel={<FormattedMessage description="phones modal form label" defaultMessage={`Code`} />}
+          resendMarkup={
+            <div className="resend-code-container">
+              <a href="#" onClick={handleResend}>
+                <FormattedMessage description="resend code" defaultMessage={`Send a new code`} />
+              </a>
+            </div>
+          }
+          validationError={"confirmation.code_invalid_format"}
+          validationPattern={shortCodePattern}
+        />
+      )}
     </article>
   );
 }

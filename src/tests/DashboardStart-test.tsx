@@ -11,8 +11,7 @@ test("start page heading text for new user", async () => {
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
-  expect(screen.getAllByRole("heading")[1]).toHaveTextContent(/EPPN - Unique ID/i);
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
+  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is not verified./);
 });
 
 test("recommendations for new users, adding name", async () => {
@@ -98,7 +97,7 @@ test("not renders letter proofing progress, verified user with swedish id number
     },
     routes: ["/profile/"],
   });
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
+  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is verified./);
   const progressHeading = screen.queryByText("Currently in progress");
   expect(progressHeading).not.toBeInTheDocument();
 });
@@ -114,7 +113,7 @@ test("heading text after password reset", () => {
     },
     routes: ["/profile/"],
   });
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(
+  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(
     /Your identity is no longer verified after password reset./
   );
   expect(screen.getByRole("button", { name: /Verify your identity/i })).toBeEnabled();

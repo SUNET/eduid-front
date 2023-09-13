@@ -35,10 +35,6 @@
     "developer_comment": "verification status heading after password reset",
     "string": "Your identity is no longer verified after password reset."
   },
-  "/DarP+": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "eppn"
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
@@ -131,6 +127,10 @@
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
   },
+  "2c6ARj": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Eppn is a unique ID for your eduID that you may need to provide when requesting technical support or to identify your account."
+  },
   "2hnsRO": {
     "developer_comment": "nins input help text",
     "string": "National identity number with 12 digits"
@@ -220,6 +220,10 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
+  },
+  "6P7rNZ": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN - Unique ID"
   },
   "6ZbDjw": {
     "developer_comment": "Signup, code expired",
@@ -336,6 +340,10 @@
   "B8ldRb": {
     "developer_comment": "Verification letter requested, status",
     "string": "A verification letter has been requested"
+  },
+  "CBJ51T": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "To request a new code, proceed by clicking the button below."
   },
   "CDTmBD": {
     "developer_comment": "accordion item eidas title",
@@ -458,10 +466,6 @@
     "developer_comment": "platform authn device help text",
     "string": "E.g. Touch/ Face ID supported on this device."
   },
-  "HCDbw9": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "You might be asked to share this information if you need technical support."
-  },
   "HDyZDY": {
     "developer_comment": "received sms",
     "string": "Already received the code? "
@@ -572,6 +576,10 @@
   "LuSrd4": {
     "developer_comment": "Signup",
     "string": "Register your email address to create your eduID."
+  },
+  "LwTCni": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN:"
   },
   "LxAnnP": {
     "developer_comment": "Reset password",
@@ -1122,10 +1130,6 @@
   "document title Start": {
     "string": "Start | eduID"
   },
-  "eIAbQF": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "This is an automatically generated unique identifier for your eduID."
-  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -1227,10 +1231,6 @@
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
-  "etw/3v": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "An e-mail with instructions has been sent to {email}."
-  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
@@ -1258,6 +1258,10 @@
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
+  },
+  "fqZXes": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account, an email with instructions has been sent to {email}."
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
@@ -1728,10 +1732,6 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Phone number"
   },
-  "ppCiRH": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Click here to order a new code"
-  },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
   },
@@ -2172,10 +2172,6 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
-  },
-  "yktrEi": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Unique ID"
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",

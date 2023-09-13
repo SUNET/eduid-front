@@ -60,9 +60,9 @@ export async function makeGenericRequest<T>(
         const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
         reject(saved);
+      } else {
+        resolve(response);
       }
-
-      resolve(response);
     } catch (error) {
       if (error instanceof NeedsAuthenticationError) {
         // silently ignore errors about missing authentication

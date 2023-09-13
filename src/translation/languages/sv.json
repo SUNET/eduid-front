@@ -35,10 +35,6 @@
     "developer_comment": "verification status heading after password reset",
     "string": "Din identitet är inte längre verifierad efter lösenords återställningen."
   },
-  "/DarP+": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "eppn"
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Säkerhetsnyckel"
@@ -131,6 +127,10 @@
     "developer_comment": "Help text for security key max length",
     "string": "max 50 tecken"
   },
+  "2c6ARj": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange när du ber om teknisk support eller för att identifiera ditt konto."
+  },
   "2hnsRO": {
     "developer_comment": "nins input help text",
     "string": "Personnummer med 12 siffror"
@@ -220,6 +220,10 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
+  },
+  "6P7rNZ": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN - Unikt ID"
   },
   "6ZbDjw": {
     "developer_comment": "Signup, code expired",
@@ -336,6 +340,10 @@
   "B8ldRb": {
     "developer_comment": "Verification letter requested, status",
     "string": "Verifieringsbrev har begärts"
+  },
+  "CBJ51T": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "För att begära en ny kod, fortsätt genom att klicka på knappen nedan."
   },
   "CDTmBD": {
     "developer_comment": "accordion item eidas title",
@@ -458,10 +466,6 @@
     "developer_comment": "platform authn device help text",
     "string": "T.ex. Touch/ Face ID som stöds på den här enheten."
   },
-  "HCDbw9": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Du kan bli tillfrågad om den här information om du ber om teknisk support."
-  },
   "HDyZDY": {
     "developer_comment": "received sms",
     "string": "Redan fått en kod? "
@@ -572,6 +576,10 @@
   "LuSrd4": {
     "developer_comment": "Signup",
     "string": "Registrera din e-postadress för att skapa ditt eduID."
+  },
+  "LwTCni": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN:"
   },
   "LxAnnP": {
     "developer_comment": "Reset password",
@@ -1122,10 +1130,6 @@
   "document title Start": {
     "string": "Start | eduID"
   },
-  "eIAbQF": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support."
-  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -1227,10 +1231,6 @@
   "error_navet_task": {
     "string": "Problem att nå Navet"
   },
-  "etw/3v": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Ett e-postmeddelande med instruktioner har skickats till {email}."
-  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
@@ -1258,6 +1258,10 @@
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Återvänd till startsidan"
+  },
+  "fqZXes": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto, har ett meddelande med instruktioner skickats till {email}."
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
@@ -1728,10 +1732,6 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Telefonnummer"
   },
-  "ppCiRH": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "Tryck här om du vill beställa en ny kod"
-  },
   "proofing.attribute_missing": {
     "string": "Nödvändig information för identifiering saknas. Vänligen försök igen."
   },
@@ -2172,10 +2172,6 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Att länka ditt eduID-konto med Ladok är nödvändigt om du vill komma åt en tjänst som kräver en European Student Identifier."
-  },
-  "yktrEi": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Unikt ID"
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
