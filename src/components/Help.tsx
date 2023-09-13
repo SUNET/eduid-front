@@ -637,7 +637,7 @@ export function Help(): JSX.Element {
             title={
               <FormattedMessage
                 description="Connecting with Orcid / Ladok"
-                defaultMessage="Connecting with Orcid / Ladok"
+                defaultMessage="Connecting account with Orcid / Ladok"
               />
             }
             additionalInfo={null}
@@ -655,6 +655,7 @@ export function Help(): JSX.Element {
                     mechanism for linking your research outputs and activities to your ORCID iD.`}
                 />
               </p>
+
               <p>
                 <FormattedMessage description="orcid description" defaultMessage="How to link ORCID with eduID:" />
               </p>
@@ -709,7 +710,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="What is ladok? description"
-                  defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading.`}
+                  defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to a Erasmus exchange student program.`}
                 />
               </p>
 
@@ -738,7 +739,7 @@ export function Help(): JSX.Element {
             title={
               <FormattedMessage
                 description="privacy policy / Web accessibility"
-                defaultMessage="eduID Privacy policy and Web accessibility"
+                defaultMessage="Privacy policy and Web accessibility"
               />
             }
             additionalInfo={null}
