@@ -13,21 +13,6 @@ webpackStaging.output = {
   path: path.join(__dirname, "build"),
 };
 
-<<<<<<< HEAD
-=======
-webpackStaging.plugins = [
-  //  initialConfigPlugin,
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.staging.html`,
-      chunks: [`${entryName}`],
-    });
-  }),
-];
-
->>>>>>> d44d1b9e4 (Bye, errors)
 webpackStaging.devtool = "source-map";
 
 module.exports = webpackStaging;
