@@ -5,7 +5,6 @@ import type { InitialEntry } from "history";
 import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-<<<<<<< HEAD
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState } from "slices/AppLoading";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
@@ -19,8 +18,6 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
-=======
->>>>>>> f5959dcad (Fix conflict)
 import { initialState as signupInitialState } from "slices/Signup";
 import { initialState as configInitialState } from "slices/SignupConfig";
 
