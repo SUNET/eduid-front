@@ -186,7 +186,6 @@ function RenderResetPasswordLink(): JSX.Element {
 
 function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
-
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error
