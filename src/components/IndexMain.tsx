@@ -19,9 +19,17 @@ import { Errors } from "./SwamidErrors/Errors";
 
 export function IndexMain(): JSX.Element {
   const isLoaded = useIndexAppSelector((state) => state.config.is_configured);
+  const authn_options = useIndexAppSelector((state) => state.login.authn_options);
+  const loginRef = useIndexAppSelector((state) => state.login.ref);
+
   return (
     <React.StrictMode>
-      <Header showLogin={true} />
+      <Header
+        showLogin={!authn_options}
+        showRegister={!authn_options.has_session}
+        showLogout={authn_options.has_session}
+        loginRef={loginRef}
+      />
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
