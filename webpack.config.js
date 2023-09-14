@@ -94,7 +94,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["index", "login", "dashboard"].map((entryName) => {
+    ...["index", "dashboard"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
