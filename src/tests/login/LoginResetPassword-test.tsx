@@ -1,8 +1,7 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
-import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
-import { LoginMain } from "components/Login/LoginMain";
+import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
@@ -38,7 +37,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  render(<LoginMain />, { routes: [`/login/${ref}`] });
+  render(<IndexMain />, { routes: [`/login/${ref}`] });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {
@@ -112,7 +111,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  render(<LoginMain />, { routes: [`/login/${ref}`] });
+  render(<IndexMain />, { routes: [`/login/${ref}`] });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {

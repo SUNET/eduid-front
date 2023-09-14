@@ -4,7 +4,7 @@ import {
   VerifyCodeRequest,
   VerifyCodeResponse,
 } from "apis/eduidResetPassword";
-import { LoginMain } from "components/Login/LoginMain";
+import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
@@ -40,7 +40,7 @@ test("can follow the link sent in an email", async () => {
 
   mswServer.printHandlers();
 
-  render(<LoginMain />, { routes: [`/reset-password/email-code/${code}`] });
+  render(<IndexMain />, { routes: [`/reset-password/email-code/${code}`] });
 
   // Wait for the new password screen to be displayed
   await waitFor(() => {
