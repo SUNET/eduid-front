@@ -5,6 +5,7 @@ import type { InitialEntry } from "history";
 import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
+import { initialState } from "slices/AppLoading";
 
 import { initialState as loginInitialState } from "slices/Login";
 import { initialState as signupInitialState } from "slices/Signup";
@@ -23,6 +24,7 @@ export const signupTestState: SignupRootState = {
   intl: { locale: "en", messages: {} },
   notifications: {},
   login: loginInitialState,
+  app: initialState,
 };
 
 interface renderArgs {
