@@ -2,13 +2,13 @@ import { ExternalReturnHandler } from "components/Common/ExternalReturnHandler";
 import Footer from "components/Common/Footer";
 import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
-import { PageNotFound } from "components/Common/PageNotFound";
 import { Settings } from "components/Common/Settings";
 import Splash from "components/Common/Splash";
 import { AdvancedSettings } from "components/Dashboard/AdvancedSettings";
 import { ChangePasswordContainer } from "components/Dashboard/ChangePassword";
 import VerifyIdentity from "components/Dashboard/VerifyIdentity";
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
+import { Help } from "components/Help";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Start from "./DashboardStart";
@@ -40,13 +40,13 @@ export function DashboardMain() {
               <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
               <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
+              <Route path={helpPath} element={<Help />} />
               <Route path={startPath} element={<Start />} />
-              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </section>
         </Splash>
       </main>
-      <Footer />
+      <Footer helpPath={helpPath} />
     </React.StrictMode>
   );
 }
