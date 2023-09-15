@@ -12,7 +12,7 @@ import { Index } from "./Index";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
-import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
+import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import { SignupApp } from "./Signup/SignupApp";
 import { SIGNUP_BASE_PATH } from "./Signup/SignupMain";
 import { Errors } from "./SwamidErrors/Errors";
@@ -43,7 +43,7 @@ export function IndexMain(): JSX.Element {
               <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
               <Route path="/login/password/:ref" element={<Login />} />
               <Route path="/login/:ref" element={<Login />} />
-              <Route path="/reset-password/*" element={<ResetPasswordApp />} />
+              <Route path="/reset-password/*" element={<ResetPasswordMain />} />
               {/* Dashboard */}
               {/* Errors*/}
               <Route path="/errors" element={<Errors />} />
