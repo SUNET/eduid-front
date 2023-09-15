@@ -430,12 +430,11 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="eidas heading"
-                    defaultMessage={`{emphasis}, you could use 
-                    eIDAS to verify your identity. Read more about eIDAS below.`}
+                    defaultMessage={`{strong}, you could use 
+                    {emphasis} to verify your identity. Read more about eIDAS below.`}
                     values={{
-                      emphasis: (
-                        <strong>If you are an EU citizen and without a Swedish personal identity number</strong>
-                      ),
+                      strong: <strong>If you are an EU citizen and without a Swedish personal identity number</strong>,
+                      emphasis: <em>eIDAS</em>,
                     }}
                   />
                 </p>
@@ -444,11 +443,12 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="Svipe heading"
-                    defaultMessage={`{emphasis}, you could use Svipe eID to verify your identity using your passport. Read more about Svipe iD below.`}
+                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below.`}
                     values={{
-                      emphasis: (
+                      strong: (
                         <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
                       ),
+                      emphasis: <em>Svipe eID</em>,
                     }}
                   />
                 </p>
