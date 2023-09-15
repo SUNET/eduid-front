@@ -1,6 +1,7 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
+import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { SIGNUP_CONFIG_URL } from "globals";
 import { indexStore } from "index-init-app";
@@ -25,11 +26,13 @@ setupLanguage(indexStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <SignupGlobalStateProvider>
-    <ReduxIntlProvider store={indexStore}>
-      <BrowserRouter>
-        <IndexMain />
-      </BrowserRouter>
-    </ReduxIntlProvider>
+    <ResetPasswordGlobalStateProvider>
+      <ReduxIntlProvider store={indexStore}>
+        <BrowserRouter>
+          <IndexMain />
+        </BrowserRouter>
+      </ReduxIntlProvider>
+    </ResetPasswordGlobalStateProvider>
   </SignupGlobalStateProvider>,
   initDomTarget,
   getConfig
