@@ -6,8 +6,8 @@ import { IndexRootState as SignupRootState, getTestSignupStore } from "index-ini
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState } from "slices/AppLoading";
-
 import { initialState as loginInitialState } from "slices/Login";
+import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as signupInitialState } from "slices/Signup";
 import { initialState as configInitialState } from "slices/SignupConfig";
 export const signupTestState: SignupRootState = {
@@ -25,6 +25,7 @@ export const signupTestState: SignupRootState = {
   notifications: {},
   login: loginInitialState,
   app: initialState,
+  resetPassword: resetPasswordState,
 };
 
 interface renderArgs {
