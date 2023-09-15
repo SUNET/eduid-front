@@ -46,12 +46,12 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-              <Route path={`${SIGNUP_BASE_PATH}/help`} element={<Help />} />
+              <Route path="faq" element={<Help />} />
             </Routes>
           </section>
         </Splash>
       </main>
-      <Footer helpPath={`${SIGNUP_BASE_PATH}/help`} />
+      <Footer helpPath="faq" />
     </React.Fragment>
   );
 }

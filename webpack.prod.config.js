@@ -32,18 +32,6 @@ webpackProd.plugins = [
   }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-<<<<<<< HEAD
-  ...["index"].map((entryName) => {
-=======
-  ...["help", "errors", "login", "dashboard", "signup"].map((entryName) => {
->>>>>>> c94ba896e (Introduce new help page with accordion)
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.html`,
-      chunks: [`${entryName}`],
-    });
-  }),
 ];
 
 webpackProd.mode = "production";

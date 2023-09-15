@@ -16,7 +16,7 @@ export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
-export const helpPath = "/profile/help";
+export const helpPath = "/faq";
 
 export function DashboardMain() {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
