@@ -46,7 +46,7 @@ export function SignupMain(): JSX.Element {
           </section>
         </Splash>
       </main>
-      <Footer helpPath={`${SIGNUP_BASE_PATH}/help`} />
+      <Footer helpPath="faq" />
     </React.Fragment>
   );
 }

@@ -93,8 +93,12 @@ module.exports = {
   },
   plugins: [
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     ...["help", "errors", "login", "dashboard", "signup"].map((entryName) => {
+=======
+    ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
+>>>>>>> 2c7099890 (Help -> faq)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
