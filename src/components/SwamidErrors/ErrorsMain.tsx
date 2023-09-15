@@ -17,7 +17,7 @@ export function ErrorsMain(): JSX.Element {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer helpPath="faq" />
     </React.StrictMode>
   );
 }
