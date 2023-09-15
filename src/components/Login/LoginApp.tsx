@@ -14,7 +14,7 @@ function LoginApp(): JSX.Element {
         <Route path="/login/password/:ref" element={<Login />} />
         <Route path="/login/:ref" element={<Login />} />
         <Route path="/reset-password/*" element={<ResetPassword />} />
-        <Route path="/login/help" element={<Help />} />
+        <Route path="/login/faq" element={<Help />} />
       </Routes>
     </section>
   );

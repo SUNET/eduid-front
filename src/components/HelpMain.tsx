@@ -13,11 +13,11 @@ export function HelpMain(): JSX.Element {
         <Notifications />
         <section id="content" className="horizontal-content-margin content">
           <Routes>
-            <Route path="/help" element={<Help />} />
+            <Route path="/faq" element={<Help />} />
           </Routes>
         </section>
       </main>
-      <Footer helpPath="/help" />
+      <Footer helpPath="/faq" />
     </React.StrictMode>
   );
 }
