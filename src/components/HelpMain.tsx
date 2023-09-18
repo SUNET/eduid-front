@@ -17,7 +17,7 @@ export function HelpMain(): JSX.Element {
           </Routes>
         </section>
       </main>
-      <Footer helpPath="/faq" />
+      <Footer />
     </React.StrictMode>
   );
 }

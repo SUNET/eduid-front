@@ -42,7 +42,7 @@ export function SignupMain(): JSX.Element {
           </section>
         </Splash>
       </main>
-      <Footer helpPath="faq" />
+      <Footer />
     </React.Fragment>
   );
 }
