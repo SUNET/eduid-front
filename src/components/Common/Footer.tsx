@@ -5,8 +5,16 @@ import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
+<<<<<<< HEAD
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const dispatch = useAppDispatch();
+=======
+  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
+  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  const dispatch = useDashboardAppDispatch();
+
+>>>>>>> e73ff4c2d (Remove helpPath props, The root/faq URL is sufficient except for the dashboard app)
   const messages = LOCALIZED_MESSAGES;
 
   let translateTo: string[][] = [];
@@ -36,6 +44,16 @@ const Footer = (): JSX.Element => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const goToHelp = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (eppn) {
+      navigate("/faq");
+    } else window.location.href = `${eduidHomeUrl}/faq`;
+  };
+
+>>>>>>> e73ff4c2d (Remove helpPath props, The root/faq URL is sufficient except for the dashboard app)
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
@@ -51,7 +69,11 @@ const Footer = (): JSX.Element => {
       <nav>
         <ul>
           <li>
+<<<<<<< HEAD
             <Link className="help-link" to="/faq">
+=======
+            <a className="help-link" href="#" onClick={goToHelp}>
+>>>>>>> e73ff4c2d (Remove helpPath props, The root/faq URL is sufficient except for the dashboard app)
               <FormattedMessage defaultMessage="Help" description="Footer help" />
             </Link>
           </li>
