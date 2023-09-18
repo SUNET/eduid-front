@@ -4,11 +4,12 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
-const Footer = ({ helpPath }: any): JSX.Element => {
+const Footer = (): JSX.Element => {
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-  // const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
+  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
+  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
   const dispatch = useDashboardAppDispatch();
-  // const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
+
   const messages = LOCALIZED_MESSAGES;
   const navigate = useNavigate();
 
@@ -41,7 +42,9 @@ const Footer = ({ helpPath }: any): JSX.Element => {
 
   const goToHelp = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    navigate(helpPath);
+    if (eppn) {
+      navigate("/faq");
+    } else window.location.href = `${eduidHomeUrl}/faq`;
   };
 
   return (
@@ -59,7 +62,7 @@ const Footer = ({ helpPath }: any): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <a className="help-link" onClick={goToHelp} href="#">
+            <a className="help-link" href="#" onClick={goToHelp}>
               <FormattedMessage defaultMessage="Help" description="Footer help" />
             </a>
           </li>
