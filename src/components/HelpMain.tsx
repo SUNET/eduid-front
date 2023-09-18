@@ -18,7 +18,11 @@ export function HelpMain(): JSX.Element {
           </Routes>
         </section>
       </main>
+<<<<<<< HEAD
       <Footer faqPath={"/static/front-build/help.dev.html"} />
+=======
+      <Footer />
+>>>>>>> e73ff4c2d (Remove helpPath props, The root/faq URL is sufficient except for the dashboard app)
     </React.StrictMode>
   );
 }
