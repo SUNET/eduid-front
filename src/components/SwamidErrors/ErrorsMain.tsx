@@ -15,7 +15,7 @@ export function ErrorsMain(): JSX.Element {
           <Route path="/errors" element={<Errors />} />
         </Routes>
       </main>
-      <Footer helpPath="faq" />
+      <Footer />
     </React.StrictMode>
   );
 }

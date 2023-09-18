@@ -44,7 +44,7 @@ export function DashboardMain() {
           </section>
         </Splash>
       </main>
-      <Footer helpPath={helpPath} />
+      <Footer />
     </React.StrictMode>
   );
 }
