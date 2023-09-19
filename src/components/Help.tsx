@@ -363,7 +363,7 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-                  description="Freja eID+ is a digital ID-card free of charge. description"
+                  description="Verification levels description"
                   defaultMessage="Service providers need to rely on organisations to manage their users credentials according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in to the system."
                 />
               </p>
@@ -463,7 +463,7 @@ export function Help(): JSX.Element {
               >
                 <article>
                   <h4>
-                    <FormattedMessage description="What is Freja eID+? heading" defaultMessage="What is Freja+?" />
+                    <FormattedMessage description="What is Freja+ heading" defaultMessage="What is Freja+?" />
                   </h4>
                   <p>
                     <FormattedMessage
@@ -491,7 +491,7 @@ export function Help(): JSX.Element {
                     </li>
                     <li>
                       <FormattedMessage
-                        description="Create a Freja eID+ account list item"
+                        description="Create a Freja+ account list item"
                         defaultMessage="if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
                       />
                     </li>
@@ -505,13 +505,13 @@ export function Help(): JSX.Element {
 
                   <h4>
                     <FormattedMessage
-                      description="visit an authorised ATG agent to create Freja eID+ heading"
+                      description="visit an ATG agent to create Freja+ heading"
                       defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
                     />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="visit an authorised ATG agent to create Freja eID+ description"
+                      description="visit an ATG agent to create Freja+ description"
                       defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated.`}
@@ -520,14 +520,14 @@ export function Help(): JSX.Element {
 
                   <h4>
                     <FormattedMessage
-                      description="What should I do if my identity verification for Freja eID+ fails?"
+                      description="if verification for Freja+ fails heading"
                       defaultMessage="What should I do if my identity verification for Freja+ fails?"
                     />
                   </h4>
 
                   <p>
                     <FormattedMessage
-                      description="Create a Freja eID+ account description"
+                      description="if verification for Freja+ fails description"
                       defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
                     correct expiration date as well as written down the correct reference number of the chosen form of 
                     ID and personal identity number (personnummer).`}
@@ -716,19 +716,22 @@ export function Help(): JSX.Element {
               </p>
 
               <p>
-                <FormattedMessage description="Freja+ description" defaultMessage="How to link Ladok with eduID:" />
+                <FormattedMessage
+                  description="link to ladok description"
+                  defaultMessage="How to link Ladok with eduID:"
+                />
               </p>
 
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Create a Freja+ account heading"
+                    description="link to ladok list item 1"
                     defaultMessage="in the Settings area of eduID, toggle the Ladok control,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja eID+ account list item"
+                    description="link to ladok list item 2"
                     defaultMessage="choose your institution from the drop down list - if it is available."
                   />
                 </li>
@@ -748,13 +751,13 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description=" How do I remove a linked ORCID from eduID? heading"
+                  description="privacy policy heading"
                   defaultMessage="What is eduIDs Privacy policy?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Read more at sunet"
+                  description="privacy policy description"
                   defaultMessage="Read the full {privacy} regarding use of eduID at the Sunet website, where you also find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish)."
                   values={{
                     privacy: (
@@ -771,77 +774,74 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Read more at sunet"
+                  description="privacy policy list definition"
                   defaultMessage="Summary of how eduID treats your information according to the policy:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Create a Freja+ account heading"
+                    description="privacy policy list-item 1"
                     defaultMessage="stores information that you have provided as well as updates from trusted registers,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja eID+ account list item"
+                    description="privacy policy list-item 2"
                     defaultMessage="transfers information according to the data minimisation principle - never more than required,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja+ account heading"
+                    description="privacy policy list-item 3"
                     defaultMessage="uses the information to identify the individual for services you have chosen to use,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja eID+ account list item"
+                    description="privacy policy list-item 4"
                     defaultMessage="protects and stores the information securely,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja+ account heading"
+                    description="privacy policy list-item 5"
                     defaultMessage="develops using open source code accessible at GitHub,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja eID+ account list item"
+                    description="privacy policy list-item 6"
                     defaultMessage="enables removal of eduID and connections directly in the service,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja+ account heading"
+                    description="privacy policy list-item 7"
                     defaultMessage="stores log files recording use for 6 months,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a Freja eID+ account list item"
+                    description="privacy policy list-item 8"
                     defaultMessage="retains inactive accounts for a maximum of 2 years,"
                   />
                 </li>
                 <li>
-                  <FormattedMessage
-                    description="Create a Freja eID+ account list item"
-                    defaultMessage="does not use cookies."
-                  />
+                  <FormattedMessage description="privacy policy list-item 9" defaultMessage="does not use cookies." />
                 </li>
               </ul>
             </article>
             <article>
               <h4>
                 <FormattedMessage
-                  description=" How do I remove a linked ORCID from eduID? heading"
+                  description="accessibility report heading"
                   defaultMessage="What is eduIDs Accessibility report?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Read more at sunet"
+                  description="accessibility report description 1"
                   defaultMessage="Read the full {accessability} regarding the eduID site at Sunets website, where you also find instructions on how to report accessibility issues. The report addresses how eduID adheres to the Swedish law governing accessibility to digital public services as well as currently known issues of the site (in Swedish)."
                   values={{
                     accessability: (
@@ -858,7 +858,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Read more at sunet"
+                  description="accessibility report description 2"
                   defaultMessage="It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and is one of the many ways eduID is always striving to improve."
                 />
               </p>
