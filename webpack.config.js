@@ -20,7 +20,7 @@ module.exports = {
     // server: 'webpack-dev-server/client?http://localhost:8080',
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
-    login: "./src/entry-points/login",
+    index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
     faq: "./src/entry-points/faq",
   },
@@ -97,7 +97,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
+    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
