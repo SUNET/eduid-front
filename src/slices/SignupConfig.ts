@@ -9,6 +9,11 @@ export interface SignupConfig extends EduidJSAppCommonConfig {
   preferred_captcha: "internal" | "recaptcha";
   error_info?: LoginErrorInfoResponse;
   error_info_url?: string;
+  is_app_loaded: boolean;
+  password_entropy?: number;
+  default_country_code: string;
+  token_verify_idp?: string;
+  loading_data: boolean;
 }
 
 // export for use in tests
@@ -17,6 +22,9 @@ export const initialState: SignupConfig = {
   error: false,
   is_configured: false,
   preferred_captcha: "internal",
+  is_app_loaded: false,
+  default_country_code: "46",
+  loading_data: false,
 };
 
 const configSlice = createSlice({
