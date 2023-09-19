@@ -19,12 +19,12 @@ export function Help(): JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage description="Help headline" defaultMessage="Help and contact" />
+          <FormattedMessage description="help headline" defaultMessage="Help and contact" />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
-              description="Help lead text"
+              description="help lead text"
               defaultMessage={`Listed below is general information about the service, answers to common questions about using eduID 
                and Support contact information.`}
             />
@@ -35,16 +35,16 @@ export function Help(): JSX.Element {
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-faq">
           <AccordionItemTemplate
             uuid="help-about-eduid"
-            title={<FormattedMessage description="About eduid handle" defaultMessage="About eduID" />}
+            title={<FormattedMessage description="about eduid handle" defaultMessage="About eduID" />}
             additionalInfo={"What it is and may be used for"}
           >
             <article>
               <h4>
-                <FormattedMessage description="What is eduID heading" defaultMessage="What is eduID?" />
+                <FormattedMessage description="what is eduID heading" defaultMessage="What is eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="What is eduID description 1"
+                  description="what is eduID description 1"
                   defaultMessage={`eduID is a federated identity - a user identity that can be used in several different 
                   organisations that have agreed on how identities will be managed. The basic idea is that a given user, 
                   who is authenticated with an organisation, is automatically authenticated with other organisations
@@ -53,19 +53,19 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="What is eduID description 2"
+                  description="what is eduID description 2"
                   defaultMessage={`Federated identities are one of the cornerstones of trust between organisations. 
                     Trust is based on all the organisations relying on all the others to carry out their authentication 
                     - identification and verification - properly and in a controlled and reliable IT environment.`}
                 />
               </p>
               <h4>
-                <FormattedMessage description="Why have eduID heading" defaultMessage="Why have eduID?" />
+                <FormattedMessage description="why have eduID heading" defaultMessage="Why have eduID?" />
               </h4>
 
               <p>
                 <FormattedMessage
-                  description="Why have eduID description 1"
+                  description="why have eduID description 1"
                   defaultMessage={`From the user's perspective, in the long-term eduID means fewer accounts to keep 
                     track of. For many organisations, identity management is a complex issue and it is
                     necessary to work with confirmed users.`}
@@ -73,7 +73,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Why have eduID description 2"
+                  description="why have eduID description 2"
                   defaultMessage={`There are many services that require identification of users. This is often done by 
                     the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service 
                     provider does not really know who the user with that email address is - and for many 
@@ -82,11 +82,11 @@ export function Help(): JSX.Element {
                 />
               </p>
               <h4>
-                <FormattedMessage description="When use eduID heading" defaultMessage="When will I use eduID?" />
+                <FormattedMessage description="when use eduID heading" defaultMessage="When will I use eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="When use eduID description"
+                  description="when use eduID description"
                   defaultMessage={`Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account.`}
                   values={{
                     link: (
@@ -99,29 +99,29 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="When use eduID eduID list definition"
+                  description="when use eduID eduID list definition"
                   defaultMessage="Log in at eduid.se when you:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="When use eduID list item 1"
+                    description="when use eduID list item 1"
                     defaultMessage="apply to and accept your place at a university,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="When use eduID list item 2"
+                    description="when use eduID list item 2"
                     defaultMessage="organise your student account for email and intranet,"
                   />
                 </li>
                 <li>
-                  <FormattedMessage description="When use eduID list item 3" defaultMessage="change university," />
+                  <FormattedMessage description="when use eduID list item 3" defaultMessage="change university," />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="When use eduID list item 4"
+                    description="when use eduID list item 4"
                     defaultMessage="lose a student account password and need to regain access."
                   />
                 </li>
@@ -130,16 +130,16 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-using-eduid"
-            title={<FormattedMessage description="Using eduid handle" defaultMessage="Using eduID" />}
+            title={<FormattedMessage description="using eduid handle" defaultMessage="Using eduID" />}
             additionalInfo={"How to create, use and strengthen your eduID"}
           >
             <article>
               <h4>
-                <FormattedMessage description="Creating eduID heading" defaultMessage="How do I create an eduID?" />
+                <FormattedMessage description="creating eduID heading" defaultMessage="How do I create an eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Creating eduID list definition"
+                  description="creating eduID list definition"
                   defaultMessage={"How to create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
@@ -153,79 +153,79 @@ export function Help(): JSX.Element {
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Creating eduID list item 1"
+                    description="creating eduID list item 1"
                     defaultMessage="register your email address,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Creating eduID list item 2"
+                    description="creating eduID list item 2"
                     defaultMessage="confirm that you are human by using captcha,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Creating eduID list item 3"
+                    description="creating eduID list item 3"
                     defaultMessage="accept the eduID terms of use,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Creating eduID list item 4"
+                    description="creating eduID list item 4"
                     defaultMessage="verify your email address by entering the code emailed to you,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Creating eduID list item 5"
+                    description="creating eduID list item 5"
                     defaultMessage="take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
                   />
                 </li>
               </ul>
               <h4>
-                <FormattedMessage description="Enhancing eduID heading" defaultMessage="How can I enhance my eduID?" />
+                <FormattedMessage description="enhancing eduID heading" defaultMessage="How can I enhance my eduID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Enhancing eduID list definition"
+                  description="enhancing eduID list definition"
                   defaultMessage={`In eduID you are encouraged to add further details such as:`}
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Enhancing eduID list item 1"
+                    description="enhancing eduID list item 1"
                     defaultMessage="your full name to be able to add a security key or access some services from an unverified account,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Enhancing eduID list item 2"
+                    description="enhancing eduID list item 2"
                     defaultMessage="your phone number for easier retrieval of your account should it be needed,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Enhancing eduID list item 3"
+                    description="enhancing eduID list item 3"
                     defaultMessage="a security key of you are able to for added security,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Enhancing eduID list item 4"
+                    description="enhancing eduID list item 4"
                     defaultMessage="connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Enhancing eduID list item 5"
+                    description="enhancing eduID list item 5"
                     defaultMessage="verifying your identity to strengthen your eduID sufficiently for many external services."
                   />
                 </li>
               </ul>
               <p>
                 <FormattedMessage
-                  description="Enhancing eduID verification description"
+                  description="enhancing eduID verification description"
                   defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
                 />
               </p>
@@ -233,25 +233,25 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="Which email heading"
+                  description="login email heading"
                   defaultMessage="Which email account should I use to log in?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Which email description"
+                  description="login email description"
                   defaultMessage="You can log in with all the email addresses you have entered and confirmed in eduID."
                 />
               </p>
               <h4>
                 <FormattedMessage
-                  description="Changing language heading"
+                  description="changing language heading"
                   defaultMessage="How do I change the default language in eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Changing language description"
+                  description="changing language description"
                   defaultMessage={`
                     To change the default language you can log into eduID and select your language preference in the
                     Personal information area in eduID. The default language is based on the language setting that your
@@ -260,32 +260,32 @@ export function Help(): JSX.Element {
               </p>
               <h4>
                 <FormattedMessage
-                  description="Other devices heading"
+                  description="other devices heading"
                   defaultMessage="How can I login with other devices?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Other devices description"
+                  description="other devices description"
                   defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
                 />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Other devices list item 1"
+                    description="other devices list item 1"
                     defaultMessage="select 'Other device' button in the login form,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Other devices list item 2"
+                    description="other devices list item 2"
                     defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Other devices list item 3"
+                    description="other devices list item 3"
                     defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
                   />
                 </li>
@@ -296,7 +296,7 @@ export function Help(): JSX.Element {
             uuid="help-security-key"
             title={
               <FormattedMessage
-                description="Security key handle"
+                description="security key handle"
                 defaultMessage="Improving the security level of eduID"
               />
             }
@@ -306,39 +306,39 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="How can I make my eduID more secure? heading"
+                  description="more secure heading"
                   defaultMessage="How do I make my eduID more secure?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="How can I login with other devices? description"
+                  description="more secure description 1"
                   defaultMessage="Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, 
                   you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="How can I login with other devices? description"
+                  description="more secure description 2"
                   defaultMessage="Examples can be a physical device in your possession such as a USB token, 
                   or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to these techniques as a 'Security key'."
                 />
               </p>
               <h4>
                 <FormattedMessage
-                  description="How can I make my eduID more secure? heading"
+                  description="add security key heading"
                   defaultMessage="How do I implement 2FA with eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="How can I login with other devices? description"
+                  description="add security key description 1"
                   defaultMessage="When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Settings area of eduID and follow the instructions."
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="How can I login with other devices? description"
+                  description="add security key description 2"
                   defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
                 />
               </p>
@@ -348,7 +348,7 @@ export function Help(): JSX.Element {
             uuid="help-verification"
             title={
               <FormattedMessage
-                description="Verification of identity handle"
+                description="verification of identity handle"
                 defaultMessage="Verification of Identity"
               />
             }
@@ -357,13 +357,13 @@ export function Help(): JSX.Element {
             <article id="identity">
               <h4>
                 <FormattedMessage
-                  description="Verification levels heading"
+                  description="verification levels heading"
                   defaultMessage="What are verification levels?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Verification levels description"
+                  description="verification levels description"
                   defaultMessage="Service providers need to rely on organisations to manage their users credentials according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in to the system."
                 />
               </p>
@@ -371,13 +371,13 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="What are the selected methods of verification for eduID? heading"
+                  description="verification methods heading"
                   defaultMessage="What are the methods of verification for eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Verifying methods initial paragraph"
+                  description="verification methods description"
                   defaultMessage="The service is constantly being developed to better support the needs of our various users. At present
                   the methods below are available, depending on your situation such as assurance level requirements, nationality and residence."
                 />
@@ -385,7 +385,7 @@ export function Help(): JSX.Element {
               <section>
                 <p>
                   <FormattedMessage
-                    description="At this moment, verifying an id number can be done via: description"
+                    description="verification methods list definition"
                     defaultMessage="{emphasis}, verifying it can be done via:"
                     values={{
                       emphasis: <strong>If you have a Swedish personal identity number</strong>,
@@ -395,7 +395,7 @@ export function Help(): JSX.Element {
                 <ul className="bullets">
                   <li>
                     <FormattedMessage
-                      description="identity verification methods: Post"
+                      description="verification methods list item 1"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
                       registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,`}
                       values={{
@@ -405,7 +405,7 @@ export function Help(): JSX.Element {
                   </li>
                   <li>
                     <FormattedMessage
-                      description="identity verification methods: Mobile"
+                      description="verification methods list item 2"
                       defaultMessage={`{mobile} the user receives a message sent to the phone number that is registered in
                     the Swedish telephone register, and instructions on how to complete the verification on eduid.se,`}
                       values={{
@@ -415,7 +415,7 @@ export function Help(): JSX.Element {
                   </li>
                   <li>
                     <FormattedMessage
-                      description="identity verification methods: Mobile"
+                      description="verification methods list item 3"
                       defaultMessage={`{freja} the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
                       complete verification of your eduID. Read more about Freja+ below.`}
@@ -429,7 +429,7 @@ export function Help(): JSX.Element {
               <section>
                 <p>
                   <FormattedMessage
-                    description="eidas heading"
+                    description="eidas description"
                     defaultMessage={`{strong}, you could use 
                     {emphasis} to verify your identity. Read more about eIDAS below.`}
                     values={{
@@ -442,7 +442,7 @@ export function Help(): JSX.Element {
               <section>
                 <p>
                   <FormattedMessage
-                    description="Svipe heading"
+                    description="svipe description"
                     defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below.`}
                     values={{
                       strong: (
@@ -458,27 +458,30 @@ export function Help(): JSX.Element {
             <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
-                title={<FormattedMessage description="About freja handle" defaultMessage="About Freja+" />}
+                title={<FormattedMessage description="about freja handle" defaultMessage="About Freja+" />}
                 additionalInfo={null}
               >
                 <article>
                   <h4>
-                    <FormattedMessage description="What is Freja+ heading" defaultMessage="What is Freja+?" />
+                    <FormattedMessage description="about freja heading" defaultMessage="What is Freja+?" />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="Freja+ is a digital ID-card free of charge. description"
+                      description="about freja description"
                       defaultMessage="Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number."
                     />
                   </p>
                   <p>
-                    <FormattedMessage description="Freja+ description" defaultMessage="How to use Freja+ with eduID:" />
+                    <FormattedMessage
+                      description="create freja+ list definition"
+                      defaultMessage="How to use Freja+ with eduID:"
+                    />
                   </p>
 
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
-                        description="Create a Freja+ account heading"
+                        description="create freja+ list item 1"
                         defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
                         values={{
                           Freja: (
@@ -491,13 +494,13 @@ export function Help(): JSX.Element {
                     </li>
                     <li>
                       <FormattedMessage
-                        description="Create a Freja+ account list item"
+                        description="create freja+ list item 2"
                         defaultMessage="if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
                       />
                     </li>
                     <li>
                       <FormattedMessage
-                        description="Create a Freja+ account list item"
+                        description="create freja+ list item 3"
                         defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
                       />
                     </li>
@@ -505,13 +508,13 @@ export function Help(): JSX.Element {
 
                   <h4>
                     <FormattedMessage
-                      description="visit an ATG agent to create Freja+ heading"
+                      description="visit ATG agent to create freja+ heading"
                       defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
                     />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="visit an ATG agent to create Freja+ description"
+                      description="visit ATG agent to create Freja+ description"
                       defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated.`}
@@ -520,14 +523,14 @@ export function Help(): JSX.Element {
 
                   <h4>
                     <FormattedMessage
-                      description="if verification for Freja+ fails heading"
+                      description="if verification for freja+ fails heading"
                       defaultMessage="What should I do if my identity verification for Freja+ fails?"
                     />
                   </h4>
 
                   <p>
                     <FormattedMessage
-                      description="if verification for Freja+ fails description"
+                      description="if verification for freja+ fails description"
                       defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
                     correct expiration date as well as written down the correct reference number of the chosen form of 
                     ID and personal identity number (personnummer).`}
@@ -537,34 +540,37 @@ export function Help(): JSX.Element {
               </AccordionItemTemplate>
               <AccordionItemTemplate
                 uuid="help-eidas"
-                title={<FormattedMessage description="About eidas handle" defaultMessage="About eIDAS" />}
+                title={<FormattedMessage description="about eidas handle" defaultMessage="About eIDAS" />}
                 additionalInfo={null}
               >
                 <article>
                   <h4>
-                    <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
+                    <FormattedMessage description="about eidas heading" defaultMessage="What is eIDAS?" />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="What is eIDAS? description"
+                      description="about eidas description"
                       defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
                     access to public authority systems for EU citizens, using their country's electronic ID.`}
                     />
                   </p>
                   <p>
-                    <FormattedMessage description="How to use eIDAS:" defaultMessage="How to use eIDAS with eduID:" />
+                    <FormattedMessage
+                      description="use eidas list definition"
+                      defaultMessage="How to use eIDAS with eduID:"
+                    />
                   </p>
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
-                        description="eIDAS list item"
+                        description="use eidas list item 1"
                         defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
                       authenticate yourself via eIDAS,`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
-                        description="eIDAS list item"
+                        description="use eIDAS list item 2"
                         defaultMessage={`to verify your identity in eduID, log in and choose the verification method for 
                       'EU-citizens' in the Identity area and follow the instructions.`}
                       />
@@ -572,7 +578,7 @@ export function Help(): JSX.Element {
                   </ul>
                   <p>
                     <FormattedMessage
-                      description="eIDAS item"
+                      description="eidas personal number description"
                       defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
                       simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
                       personal identity number you can add it in eduID and verify yourself again using it in the 
@@ -583,48 +589,48 @@ export function Help(): JSX.Element {
               </AccordionItemTemplate>
               <AccordionItemTemplate
                 uuid="help-svipe"
-                title={<FormattedMessage description="About svipe handle" defaultMessage="About Svipe iD" />}
+                title={<FormattedMessage description="about svipe handle" defaultMessage="About Svipe iD" />}
                 additionalInfo={null}
               >
                 <article id="svipe">
                   <h4>
-                    <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
+                    <FormattedMessage description="about svipe heading" defaultMessage="What is Svipe iD?" />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="What is Svipe? description"
+                      description="about svipe description 1"
                       defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely.`}
                     />
                   </p>
                   <p>
                     <FormattedMessage
-                      description="What is Svipe? description"
+                      description="about svipe description 2"
                       defaultMessage={`You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short, the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it.`}
                     />
                   </p>
                   <p>
                     <FormattedMessage
-                      description="How do I use Svipe? description"
+                      description="about svipe list definition"
                       defaultMessage={`How to use Svipe iD with eduID:`}
                     />
                   </p>
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
-                        description="How do I use Svipe? description"
+                        description="about svipe list item 1"
                         defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by your ID-document, in the Svipe app available at App store for IOS, or Google Play for Android,"
                       />
                     </li>
                     <li>
                       <FormattedMessage
-                        description="How do I use Svipe? description"
+                        description="about svipe list item 2"
                         defaultMessage="login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
                       />
                     </li>
                   </ul>
                   <p>
                     <FormattedMessage
-                      description="How do I use Svipe? description"
+                      description="svipe personal number description"
                       defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
                     />
                   </p>
