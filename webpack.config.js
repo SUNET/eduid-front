@@ -17,7 +17,7 @@ module.exports = {
     // To activate the web server, uncomment below 2 lines and
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
-    // server: 'webpack-dev-server/client?http://localhost:8080'
+    // server: 'webpack-dev-server/client?http://localhost:8080',
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
     faq: "./src/entry-points/faq",
