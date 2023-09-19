@@ -37,7 +37,6 @@ export const signupTestState: EduIDAppRootState = {
   login: loginInitialState,
   app: initialState,
   resetPassword: resetPasswordState,
-
   chpass: changePasswordInitialState,
   emails: emailsInitialState,
   lookup_mobile: lookupMobileInitialState,
