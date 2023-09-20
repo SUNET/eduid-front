@@ -25,7 +25,8 @@ export function Help(): JSX.Element {
           <p>
             <FormattedMessage
               description="help lead text"
-              defaultMessage={`Listed below is general information about the service, answers to common questions about using eduID 
+              defaultMessage={`Listed below is general information about the service, answers to common questions about 
+              using eduID 
                and Support contact information.`}
             />
           </p>
@@ -75,7 +76,8 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="why have eduID description 2"
                   defaultMessage={`There are many services that require identification of users. This is often done by 
-                    the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service 
+                    the user entering an email address to which the service provider sends a password. Such a user is 
+                    normally called unconfirmed, because the service 
                     provider does not really know who the user with that email address is - and for many 
                     services this is at a sufficient level. Through the use of eduID, 
                     identification of users is elevated to that of confirmed users.`}
@@ -87,7 +89,11 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="when use eduID description"
-                  defaultMessage={`Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account.`}
+                  defaultMessage={`Depending on where you work or study you might only use your eduID account a few 
+                  times, or you might use it every day. Some schools, institutions and services use eduID as their 
+                  identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may 
+                  mainly use your eduID account to create and access other accounts, such as {link} or your student 
+                  account.`}
                   values={{
                     link: (
                       <a className="text-link" href="https://www.universityadmissions.se" target="_blank">
@@ -178,7 +184,8 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="creating eduID list item 5"
-                    defaultMessage="take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
+                    defaultMessage={`take note of the email address and password in use when your login details are 
+                    presented to you. Your eduID is now ready to use.`}
                   />
                 </li>
               </ul>
@@ -195,7 +202,8 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="enhancing eduID list item 1"
-                    defaultMessage="your full name to be able to add a security key or access some services from an unverified account,"
+                    defaultMessage={`your full name to be able to add a security key or access some services from an 
+                    unverified account,`}
                   />
                 </li>
                 <li>
@@ -213,7 +221,8 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="enhancing eduID list item 4"
-                    defaultMessage="connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
+                    defaultMessage={`connecting your eduID to Ladok if enabled by your institution, or sharing it with 
+                    your existing ORCID iD,`}
                   />
                 </li>
                 <li>
@@ -717,7 +726,10 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what is ladok description"
-                  defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to a Erasmus exchange student program.`}
+                  defaultMessage={`Ladok is a student administration system used in all Swedish higher education 
+                  institutions for registration and grading. A couple of schools have chosen to let eduID release the
+                  
+                  ESI attribute, used for instance when applying to a Erasmus exchange student program.`}
                 />
               </p>
 
