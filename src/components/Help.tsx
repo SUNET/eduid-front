@@ -35,10 +35,15 @@ export function Help(): JSX.Element {
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-faq">
           <AccordionItemTemplate
             uuid="help-about-eduid"
+<<<<<<< HEAD
             title={<FormattedMessage description="about eduid - handle" defaultMessage="About eduID" />}
             additionalInfo={
               <FormattedMessage description="about eduid - info" defaultMessage="What it is and may be used for" />
             }
+=======
+            title={<FormattedMessage description="about eduid handle" defaultMessage="About eduID" />}
+            additionalInfo="What it is and may be used for"
+>>>>>>> b2bc89fbf (Add line breaks)
           >
             <article>
               <h4>
@@ -420,8 +425,14 @@ export function Help(): JSX.Element {
               </ul>
               <p>
                 <FormattedMessage
+<<<<<<< HEAD
                   description="enhance eduid verification - paragraph"
                   defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+=======
+                  description="enhancing eduID verification description"
+                  defaultMessage={`For more detailed information on how to verify your created account based on your 
+                  situation, see the 'Verification of Identity' help section.`}
+>>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
             </article>
@@ -446,11 +457,19 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
+<<<<<<< HEAD
                   description="how change language - paragraph"
                   defaultMessage={`
                     To change the default language you can log into eduID and select your language preference in the
                     Personal information area in eduID. The default language is based on the language setting that your
                     browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
+=======
+                  description="changing language description"
+                  defaultMessage={`To change the default language you can log into eduID and select your language 
+                  preference in the Personal information area in eduID. The default language is based on the language 
+                  setting that your browser uses. You can also change the displayed language in the footer of the 
+                  webpage. Available options are Swedish and English.`}
+>>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
               <h4>
@@ -461,8 +480,14 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
+<<<<<<< HEAD
                   description="use other devices - list definition"
                   defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
+=======
+                  description="other devices description"
+                  defaultMessage={`Passwordless login can also be supported by using another device to login to eduID 
+                  on the device you are currently using:`}
+>>>>>>> b2bc89fbf (Add line breaks)
                 />
               </p>
               <ul className="bullets">
@@ -474,14 +499,26 @@ export function Help(): JSX.Element {
                 </li>
                 <li>
                   <FormattedMessage
+<<<<<<< HEAD
                     description="use other devices - list item 2"
                     defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+=======
+                    description="other devices list item 2"
+                    defaultMessage={`scan the QR-code with the device where you have your login credentials, 
+                    e.g. security key or saved password,`}
+>>>>>>> b2bc89fbf (Add line breaks)
                   />
                 </li>
                 <li>
                   <FormattedMessage
+<<<<<<< HEAD
                     description="use other devices - list item 3"
                     defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
+=======
+                    description="other devices list item 3"
+                    defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                    presented code to login by entering it within the time shown, in the first device.`}
+>>>>>>> b2bc89fbf (Add line breaks)
                   />
                 </li>
               </ul>
@@ -719,11 +756,7 @@ export function Help(): JSX.Element {
                         description="use freja - list item 3"
                         defaultMessage={`log in to eduID and choose the 'Digital ID-card' option in the Identity area 
                         and follow the instructions.`}
-                      />
                     </li>
-                  </ul>
-
-                  <h4>
                     <FormattedMessage
                       description="need visit atg agent for freja - heading"
                       defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
@@ -734,57 +767,8 @@ export function Help(): JSX.Element {
                       description="need visit atg agent for freja - paragraph"
                       defaultMessage={`Only if you use another means of identification than a Swedish passport. 
                       On site, the agent can start the verification process by scanning a QR code in your 
-                    app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for 
                     your Freja+ to be fully activated.`}
-                    />
-                  </p>
-
-                  <h4>
-                    <FormattedMessage
-                      description="what if verification for freja fails - heading"
-                      defaultMessage="What should I do if my identity verification for Freja+ fails?"
-                    />
-                  </h4>
-
-                  <p>
-                    <FormattedMessage
-                      description="what if verification for freja fails - paragraph"
-                      defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
-                    correct expiration date as well as written down the correct reference number of the chosen form of 
-                    ID and personal identity number (personnummer).`}
-                    />
-                  </p>
-                </article>
-              </AccordionItemTemplate>
-              <AccordionItemTemplate
-                uuid="help-eidas"
-                title={<FormattedMessage description="about eidas - handle" defaultMessage="About eIDAS" />}
-                additionalInfo={null}
-              >
-                <article>
-                  <h4>
-                    <FormattedMessage description="what is eidas - heading" defaultMessage="What is eIDAS?" />
-                  </h4>
-                  <p>
-                    <FormattedMessage
-                      description="what is eidas - paragraph"
-                      defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
-                    access to public authority systems for EU citizens, using their country's electronic ID.`}
-                    />
-                  </p>
-                  <p>
-                    <FormattedMessage
-                      description="use eidas - list definition"
-                      defaultMessage="How to use eIDAS with eduID:"
-                    />
-                  </p>
-                  <ul className="bullets">
-                    <li>
-                      <FormattedMessage
-                        description="use eidas - list item 1"
-                        defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
-                      authenticate yourself via eIDAS,`}
                       />
                     </li>
                     <li>
@@ -856,12 +840,12 @@ export function Help(): JSX.Element {
                   </ul>
                   <p>
                     <FormattedMessage
+
                       description="svipe if personal number - paragraph"
                       defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
-                    />
-                  </p>
-                </article>
-              </AccordionItemTemplate>
+
+                      defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method 
+                      instead.`}
             </Accordion>
           </AccordionItemTemplate>
 
@@ -974,7 +958,6 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
-<<<<<<< HEAD
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
@@ -988,9 +971,6 @@ export function Help(): JSX.Element {
             additionalInfo={null}
           >
             <article>
-=======
-
->>>>>>> f0b052cf3 (Using subheadings in articles)
               <h4>
                 <FormattedMessage
                   description="what is privacy policy - heading"
@@ -999,8 +979,9 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-<<<<<<< HEAD
-                  description="what is privacy policy - paragraph"
+
+                  description="privacy policy description"
+
                   defaultMessage={`Read the full {privacy} regarding use of eduID at the Sunet website, where you also 
                   find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish).`}
                   values={{
@@ -1014,77 +995,13 @@ export function Help(): JSX.Element {
                       </a>
                     ),
                   }}
-=======
-                  description="visit an authorised ATG agent to create Freja eID+ description"
-                  defaultMessage={`On site, the agent can start the verification process by scanning a QR code in your 
-                    app and follow the instructions in their terminal. You will be informed when you have passed the 
-                    ID verification and will be able use your Freja eID+ with your eduID.`}
-                />
-              </p>
-
-              <h4>
-                <FormattedMessage
-                  description="What should I do if my identity verification for Freja eID+ fails?"
-                  defaultMessage="What should I do if my identity verification for Freja eID+ fails?"
-                />
-              </h4>
-
-              <p>
-                <FormattedMessage
-                  description="Create a Freja eID+ account description"
-                  defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
-                    correct expiration date as well as written down the correct reference number of the chosen form of 
-                    ID and personal identity number (personnummer).`}
-                />
-              </p>
-
-              <h4>
-                <FormattedMessage
-                  description="How do I use my Freja eID+ with my eduID?"
-                  defaultMessage="How do I use my Freja eID+ with my eduID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="Log in to eduID and click 'Use my Freja eID+' button."
-                  defaultMessage="Log in to eduID and click 'Use my Freja eID+' button."
-                />
-              </p>
-
-              <h4>
-                <FormattedMessage
-                  description="How long does it take for a Freja eID+ to be processed?"
-                  defaultMessage="How long does it take for a Freja eID+ to be processed?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="It can take up to three hours for your Freja eID+ to be fully activated."
-                  defaultMessage="It can take up to three hours for your Freja eID+ to be fully activated."
-                />
-              </p>
-            </article>
-            <article id="eidas">
-              <h3>
-                <FormattedMessage description="eIDAS heading" defaultMessage="What is eIDAS?" />
-              </h3>
-              <p>
-                <FormattedMessage
-                  description="What is eIDAS? description"
-                  defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
-                    access to public authority systems for EU citizens, using their country's electronic ID.`}
->>>>>>> 8e943b352 (Help - grammatical edits and new sections, eg svipe)
                 />
               </p>
               <p>
-<<<<<<< HEAD
                 <FormattedMessage
                   description="privacy policy - list definition"
                   defaultMessage="Summary of how eduID treats your information according to the policy:"
                 />
-=======
-                <FormattedMessage description="How to use eIDAS:" defaultMessage="This is how to use eIDAS:" />
->>>>>>> f0b052cf3 (Using subheadings in articles)
               </p>
               <ul className="bullets">
                 <li>
@@ -1302,8 +1219,6 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
         </Accordion>
-<<<<<<< HEAD
-=======
 
         <Accordion allowMultipleExpanded allowZeroExpanded id="About Orcid">
           <AccordionItemTemplate
@@ -1451,9 +1366,6 @@ export function Help(): JSX.Element {
             </p>
           </AccordionItemTemplate>
         </Accordion>
-<<<<<<< HEAD
->>>>>>> a8c6b5249 (save temp)
-=======
 
         <Accordion allowMultipleExpanded allowZeroExpanded id="Contact us" preExpanded={preExpanded}>
           <AccordionItemTemplate
@@ -1522,7 +1434,6 @@ export function Help(): JSX.Element {
             </ul>
           </AccordionItemTemplate>
         </Accordion>
->>>>>>> 8e943b352 (Help - grammatical edits and new sections, eg svipe)
       </div>
       <ScrollToTopButton />
     </React.Fragment>
