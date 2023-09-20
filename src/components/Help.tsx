@@ -6,7 +6,6 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
   const intl = useIntl();
-  const preExpanded: string[] = ["help-contact-us"];
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -37,7 +36,7 @@ export function Help(): JSX.Element {
           <AccordionItemTemplate
             uuid="help-about-eduid"
             title={<FormattedMessage description="about eduid handle" defaultMessage="About eduID" />}
-            additionalInfo={"What it is and may be used for"}
+            additionalInfo="What it is and may be used for"
           >
             <article>
               <h4>
@@ -235,7 +234,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="enhancing eduID verification description"
-                  defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+                  defaultMessage={`For more detailed information on how to verify your created account based on your 
+                  situation, see the 'Verification of Identity' help section.`}
                 />
               </p>
             </article>
@@ -261,10 +261,10 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="changing language description"
-                  defaultMessage={`
-                    To change the default language you can log into eduID and select your language preference in the
-                    Personal information area in eduID. The default language is based on the language setting that your
-                    browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
+                  defaultMessage={`To change the default language you can log into eduID and select your language 
+                  preference in the Personal information area in eduID. The default language is based on the language 
+                  setting that your browser uses. You can also change the displayed language in the footer of the 
+                  webpage. Available options are Swedish and English.`}
                 />
               </p>
               <h4>
@@ -276,7 +276,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="other devices description"
-                  defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
+                  defaultMessage={`Passwordless login can also be supported by using another device to login to eduID 
+                  on the device you are currently using:`}
                 />
               </p>
               <ul className="bullets">
@@ -289,13 +290,15 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="other devices list item 2"
-                    defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+                    defaultMessage={`scan the QR-code with the device where you have your login credentials, 
+                    e.g. security key or saved password,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="other devices list item 3"
-                    defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
+                    defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                    presented code to login by entering it within the time shown, in the first device.`}
                   />
                 </li>
               </ul>
@@ -309,9 +312,8 @@ export function Help(): JSX.Element {
                 defaultMessage="Improving the security level of eduID"
               />
             }
-            additionalInfo={"Adding an MFA/2FA Security Key"}
+            additionalInfo="Adding an MFA/2FA Security Key"
           >
-            {" "}
             <article>
               <h4>
                 <FormattedMessage
@@ -322,15 +324,18 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="more secure description 1"
-                  defaultMessage="Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, 
-                  you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
+                  defaultMessage={`Some services will require a higher security level and to improve the security of 
+                  your eduID, in addition to knowledge of your username (confirmed email address) and password 
+                  combination, you can use another layer of authentication to log in. This is called multi-Factor 
+                  authentication (MFA); and in eduID's case two-factor authentication (2FA).`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="more secure description 2"
-                  defaultMessage="Examples can be a physical device in your possession such as a USB token, 
-                  or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to these techniques as a 'Security key'."
+                  defaultMessage={`Examples can be a physical device in your possession such as a USB token, 
+                  or biometric information such as fingerprint or face-recognition supported on the device you are 
+                  using, and we refer to these techniques as a 'Security key'.`}
                 />
               </p>
               <h4>
@@ -342,13 +347,14 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="add security key description 1"
-                  defaultMessage="When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Settings area of eduID and follow the instructions."
+                  defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
+                    have access to any of these methods) in the Settings area of eduID and follow the instructions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="add security key description 2"
-                  defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
+                  defaultMessage={`Note: once you have added a security key to your eduID it must be used to log in.`}
                 />
               </p>
             </article>
@@ -361,7 +367,7 @@ export function Help(): JSX.Element {
                 defaultMessage="Verification of Identity"
               />
             }
-            additionalInfo={"Levels and methods of verifying eduID for different user groups"}
+            additionalInfo="Levels and methods of verifying eduID for different user groups"
           >
             <article id="identity">
               <h4>
@@ -373,7 +379,10 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="verification levels description"
-                  defaultMessage="Service providers need to rely on organisations to manage their users credentials according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in to the system."
+                  defaultMessage={`Service providers need to rely on organisations to manage their users credentials 
+                  according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. 
+                  The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in 
+                  to the system.`}
                 />
               </p>
             </article>
@@ -387,8 +396,9 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="verification methods description"
-                  defaultMessage="The service is constantly being developed to better support the needs of our various users. At present
-                  the methods below are available, depending on your situation such as assurance level requirements, nationality and residence."
+                  defaultMessage={`The service is constantly being developed to better support the needs of our various 
+                  users. At present the methods below are available, depending on your situation such as assurance level 
+                  requirements, nationality and residence.`}
                 />
               </p>
               <section>
@@ -406,7 +416,8 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="verification methods list item 1"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,`}
+                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
+                      verification on eduid.se,`}
                       values={{
                         post: <em>post:</em>,
                       }}
@@ -439,8 +450,8 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="eidas description"
-                    defaultMessage={`{strong}, you could use 
-                    {emphasis} to verify your identity. Read more about eIDAS below.`}
+                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS 
+                    below.`}
                     values={{
                       strong: <strong>If you are an EU citizen and without a Swedish personal identity number</strong>,
                       emphasis: <em>eIDAS</em>,
@@ -452,7 +463,8 @@ export function Help(): JSX.Element {
                 <p>
                   <FormattedMessage
                     description="svipe description"
-                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below.`}
+                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. 
+                    Read more about Svipe iD below.`}
                     values={{
                       strong: (
                         <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
@@ -477,7 +489,8 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="about freja description"
-                      defaultMessage="Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number."
+                      defaultMessage={`Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to 
+                      holders of a Swedish personal identification number.`}
                     />
                   </p>
                   <p>
@@ -491,7 +504,8 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="create freja+ list item 1"
-                        defaultMessage="install the {Freja}  on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
+                        defaultMessage={`install the {Freja}  on your mobile device (iOS or Android) and create a Freja+ 
+                        account according to the instructions,`}
                         values={{
                           Freja: (
                             <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
@@ -504,13 +518,16 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="create freja+ list item 2"
-                        defaultMessage="if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
+                        defaultMessage={`if you have a valid Swedish passport you can complete the verification of your 
+                        account in the app using your device camera, or bring a valid ID (including drivers license or 
+                        ID card) to the nearest ATG agent authorised to verify your identity,`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="create freja+ list item 3"
-                        defaultMessage="log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
+                        defaultMessage={`log in to eduID and choose the 'Digital ID-card' option in the Identity area 
+                        and follow the instructions.`}
                       />
                     </li>
                   </ul>
@@ -524,9 +541,11 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="visit atg agent to create freja+ description"
-                      defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your 
-                    app and follow the instructions in their terminal. You will be informed when you have passed the 
-                    ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated.`}
+                      defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, 
+                      the agent can start the verification process by scanning a QR code in your app and follow the 
+                      instructions in their terminal. You will be informed when you have passed the ID verification and 
+                      will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be 
+                      fully activated.`}
                     />
                   </p>
 
@@ -559,8 +578,8 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="about eidas description"
-                      defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
-                    access to public authority systems for EU citizens, using their country's electronic ID.`}
+                      defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to 
+                      allow access to public authority systems for EU citizens, using their country's electronic ID.`}
                     />
                   </p>
                   <p>
@@ -573,8 +592,8 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use eidas list item 1"
-                        defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
-                      authenticate yourself via eIDAS,`}
+                        defaultMessage={`make sure you have an electronic ID from a connected country to have the 
+                        possibility to authenticate yourself via eIDAS,`}
                       />
                     </li>
                     <li>
@@ -589,9 +608,9 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="eidas personal number description"
                       defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
-                      simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
-                      personal identity number you can add it in eduID and verify yourself again using it in the 
-                      Identity area.`}
+                      simplify communication with Swedish authorities. Note: If you initially verify your identity with 
+                      eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify 
+                      yourself again using it in the Identity area.`}
                     />
                   </p>
                 </article>
@@ -608,39 +627,48 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="about svipe description 1"
-                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely.`}
+                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents 
+                      from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device 
+                      face-recognition ability, to create a verified digital identity than can be used remotely.`}
                     />
                   </p>
                   <p>
                     <FormattedMessage
                       description="about svipe description 2"
-                      defaultMessage={`You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short, the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it.`}
+                      defaultMessage={`You can stay informed about the information that Svipe saves about you and your 
+                      ID-document by reading their data privacy policy. In short, the information uploaded to the app 
+                      from your ID-document is saved locally on your device, and the company Svipe does not have access 
+                      to it.`}
                     />
                   </p>
                   <p>
                     <FormattedMessage
                       description="about svipe list definition"
-                      defaultMessage={`How to use Svipe iD with eduID:`}
+                      defaultMessage="How to use Svipe iD with eduID:"
                     />
                   </p>
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
                         description="about svipe list item 1"
-                        defaultMessage="to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by your ID-document, in the Svipe app available at App store for IOS, or Google Play for Android,"
+                        defaultMessage={`to verify your eduID using Svipe you first need a Svipe account with a verified 
+                        profile supported by your ID-document, in the Svipe app available at App store for IOS, or 
+                        Google Play for Android,`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="about svipe list item 2"
-                        defaultMessage="login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
+                        defaultMessage={`login to eduID and scan the QR code produced by Svipe iD from the 'All other 
+                        countries' section in the Identity area of eduID by following the instructions.`}
                       />
                     </li>
                   </ul>
                   <p>
                     <FormattedMessage
                       description="svipe personal number description"
-                      defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
+                      defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method 
+                      instead.`}
                     />
                   </p>
                 </article>
@@ -773,7 +801,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="privacy policy description"
-                  defaultMessage="Read the full {privacy} regarding use of eduID at the Sunet website, where you also find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish)."
+                  defaultMessage={`Read the full {privacy} regarding use of eduID at the Sunet website, where you also 
+                  find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish).`}
                   values={{
                     privacy: (
                       <a
@@ -803,7 +832,8 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="privacy policy list item 2"
-                    defaultMessage="transfers information according to the data minimisation principle - never more than required,"
+                    defaultMessage={`transfers information according to the data minimisation principle - never more 
+                    than required,`}
                   />
                 </li>
                 <li>
@@ -857,7 +887,10 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="accessibility report description 1"
-                  defaultMessage="Read the full {accessability} regarding the eduID site at Sunets website, where you also find instructions on how to report accessibility issues. The report addresses how eduID adheres to the Swedish law governing accessibility to digital public services as well as currently known issues of the site (in Swedish)."
+                  defaultMessage={`Read the full {accessability} regarding the eduID site at Sunets website, where you 
+                  also find instructions on how to report accessibility issues. The report addresses how eduID adheres 
+                  to the Swedish law governing accessibility to digital public services as well as currently known 
+                  issues of the site (in Swedish).`}
                   values={{
                     accessability: (
                       <a
@@ -874,7 +907,9 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="accessibility report description 2"
-                  defaultMessage="It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and is one of the many ways eduID is always striving to improve."
+                  defaultMessage={`It is of outmost importance to us that as many as possible are able to use the 
+                  service in a convenient and safe manner and is one of the many ways eduID is always striving to 
+                  improve.`}
                 />
               </p>
             </article>
@@ -892,13 +927,17 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="about sunet description 1"
-                  defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions.`}
+                  defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, which 
+                  is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication 
+                  networks and many other related services to public organisations and higher education and research 
+                  institutions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="about sunet description 2"
-                  defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. 
+                  defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the 
+                  higher education community, with adequate authorization levels of confirmed accounts. 
                   More information about SUNET is available at {sunet}.`}
                   values={{
                     sunet: (
@@ -940,7 +979,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="contact support description 2"
-                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ in the Settings area.  
+                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if 
+                  you are logged in include your unique id ‘eppn’ in the Settings area.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
                 />
@@ -948,8 +988,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="contact support description 3"
-                  defaultMessage="{strong}, but for simple
-              matters you can also reach us on phone number {phone}."
+                  defaultMessage="{strong}, but for simple matters you can also reach us on phone number {phone}."
                   values={{
                     strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
                     phone: (
