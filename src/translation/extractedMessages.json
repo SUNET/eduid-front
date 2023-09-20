@@ -159,6 +159,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "1vF6Ky": {
+    "developer_comment": "how use other devices - paragraph",
+    "string": "Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
@@ -289,6 +293,10 @@
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
+  },
+  "4aLbZQ": {
+    "developer_comment": "privacy policy list - item 9",
+    "string": "does not use cookies."
   },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
@@ -591,6 +599,10 @@
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
+  },
+  "Eli5rn": {
+    "developer_comment": "verification methods - list definition",
+    "string": "{emphasis}, verifying it can be done via:"
   },
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
@@ -914,6 +926,10 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
+  "O0L1gB": {
+    "developer_comment": "method eidas - paragraph",
+    "string": "{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS below."
+  },
   "O234Pp": {
     "developer_comment": "verification status heading verified",
     "string": "Your identity is verified."
@@ -1014,6 +1030,10 @@
     "developer_comment": "security last used date",
     "string": "Never used"
   },
+  "QOxuYY": {
+    "developer_comment": "use freja - list item 3",
+    "string": "log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
+  },
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
@@ -1045,6 +1065,10 @@
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
   },
+  "Rd1GNL": {
+    "developer_comment": "how to contact support - paragraph 3",
+    "string": "{strong}, but for simple matters you can also reach us on phone number {phone}."
+  },
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "ok"
@@ -1056,6 +1080,10 @@
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
     "string": "You will need to log in again to change your password."
+  },
+  "S+T+bv": {
+    "developer_comment": "method svipe - paragraph",
+    "string": "{strong}, you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below."
   },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
@@ -2429,6 +2457,10 @@
   "pwfield.weak": {
     "string": "Weak password"
   },
+  "pyGKbH": {
+    "developer_comment": "what is accessibility report - paragraph 1",
+    "string": "Read the full {accessability} regarding the eduID site at Sunets website, where you also find instructions on how to report accessibility issues. The report addresses how eduID adheres to the Swedish law governing accessibility to digital public services as well as currently known issues of the site (in Swedish)."
+  },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
@@ -2885,6 +2917,22 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
+  },
+  "xw6F28": {
+    "developer_comment": "which verification methods - heading",
+    "string": "What are the methods of verification for eduID?"
+  },
+  "y1sPSs": {
+    "developer_comment": "what is orcid - heading",
+    "string": "What is ORCID?"
+  },
+  "y3eqwF": {
+    "developer_comment": "create eduid - list definition",
+    "string": "How to create your eduID account at {eduidLink}:"
+  },
+  "y4SB0a": {
+    "developer_comment": "use orcid - list item 1",
+    "string": "read more and register for an ORCID at {orcid},"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
