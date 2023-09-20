@@ -2,6 +2,7 @@ import Footer from "components/Common/Footer";
 import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
 import Splash from "components/Common/Splash";
+import { Help } from "components/Help";
 import CodeVerified from "components/Signup/CodeVerified";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
@@ -31,11 +32,14 @@ export function SignupMain(): JSX.Element {
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
-          <Routes>
-            <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
-            <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
-            <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
-          </Routes>
+          <section id="content" className="horizontal-content-margin content">
+            <Routes>
+              <Route path={`${SIGNUP_BASE_PATH}/code/:code`} element={<CodeVerified />} />
+              <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
+              <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+              <Route path="faq" element={<Help />} />
+            </Routes>
+          </section>
         </Splash>
       </main>
       <Footer />

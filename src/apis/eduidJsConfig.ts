@@ -5,6 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { ErrorsAppDispatch } from "errors-init-app";
+import { helpAppDispatch } from "help-init-app";
 import { LoginAppDispatch } from "login-init-app";
 import { SignupAppDispatch } from "signup-init-app";
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
@@ -23,7 +24,7 @@ export const fetchJsConfig = createAsyncThunk<
   JsConfigGetConfigResponse, // return type
   { url: string }, // args type
   {
-    dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+    dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch | helpAppDispatch;
     state: StateWithCommonConfig;
   }
 >("config/fetchJsConfig", async (args, thunkAPI) => {

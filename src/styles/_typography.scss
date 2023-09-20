@@ -124,6 +124,12 @@ strong {
   @extend b;
 }
 
+em {
+  font-style: italic;
+
+  @extend i;
+}
+
 .verbatim {
   text-transform: none;
 }

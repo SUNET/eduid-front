@@ -280,3 +280,28 @@ button.icon-only {
 .header-user:focus {
   background-color: $body-gray !important;
 }
+
+//Scroll To top button
+button.scroll-to-top {
+  display: block;
+  position: fixed;
+  bottom: 7rem;
+  right: 1rem;
+  // round button
+  border-radius: 50% !important;
+  min-width: fit-content !important;
+  width: 50px;
+  height: 50px;
+  padding: 0 !important;
+
+  @media (max-width: $bp-sm) {
+    width: 40px;
+    height: 40px;
+    right: 0.5rem;
+    bottom: 6.5rem;
+  }
+}
+
+.display-none {
+  display: none;
+}

@@ -7,6 +7,7 @@ import Splash from "components/Common/Splash";
 import { AdvancedSettings } from "components/Dashboard/AdvancedSettings";
 import { ChangePasswordContainer } from "components/Dashboard/ChangePassword";
 import VerifyIdentity from "components/Dashboard/VerifyIdentity";
+import { Help } from "components/Help";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -16,10 +17,10 @@ export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
+export const helpPath = "/faq";
 
 export function DashboardMain() {
   const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-
   return (
     <React.StrictMode>
       <Header showMenu={true} />
@@ -39,6 +40,7 @@ export function DashboardMain() {
               <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
               <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
+              <Route path={helpPath} element={<Help />} />
               <Route path={startPath} element={<Start />} />
             </Routes>
           </section>
