@@ -963,7 +963,7 @@ export function Help(): JSX.Element {
                   More information about SUNET is available at {sunet}.`}
                   values={{
                     sunet: (
-                      <a className="text-link" href="http://www.sunet.se" target="_blank">
+                      <a className="text-link" href="https://www.sunet.se" target="_blank">
                         www.sunet.se
                       </a>
                     ),
