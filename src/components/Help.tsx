@@ -508,13 +508,13 @@ export function Help(): JSX.Element {
 
                   <h4>
                     <FormattedMessage
-                      description="visit ATG agent to create freja+ heading"
+                      description="visit atg agent to create freja+ heading"
                       defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
                     />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="visit ATG agent to create Freja+ description"
+                      description="visit atg agent to create freja+ description"
                       defaultMessage={`Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated.`}
@@ -643,7 +643,7 @@ export function Help(): JSX.Element {
             uuid="help-orcid-ladok"
             title={
               <FormattedMessage
-                description="Connecting orcid ladok handle"
+                description="connecting orcid ladok handle"
                 defaultMessage="Connecting account with Orcid / Ladok"
               />
             }
@@ -651,11 +651,11 @@ export function Help(): JSX.Element {
           >
             <article>
               <h4>
-                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is ORCID?" />
+                <FormattedMessage description="what is orcid heading" defaultMessage="What is ORCID?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="What is ORCID? description"
+                  description="what is orcid description"
                   defaultMessage={`ORCID is integrated into many research-related services, such as systems used by 
                     publishers, funders and institutions. ORCID is an independent non-profit organisation that provides 
                     a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a 
@@ -664,12 +664,12 @@ export function Help(): JSX.Element {
               </p>
 
               <p>
-                <FormattedMessage description="orcid description" defaultMessage="How to link ORCID with eduID:" />
+                <FormattedMessage description="orcid list definition" defaultMessage="How to link ORCID with eduID:" />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="orcid description"
+                    description="orcid list item 1"
                     defaultMessage="read more and register for an ORCID at {orcid},"
                     values={{
                       orcid: (
@@ -682,13 +682,13 @@ export function Help(): JSX.Element {
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="orcid list item 2"
                     defaultMessage="click the 'Connect ORCID account' button in the Settings area of eduID,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Create a eduID account heading"
+                    description="orcid list item 3"
                     defaultMessage="sign in to your ORCID account and grant 
                     eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is 
                     connected to the correct eduID."
@@ -698,13 +698,13 @@ export function Help(): JSX.Element {
 
               <h4>
                 <FormattedMessage
-                  description=" How do I remove a linked ORCID from eduID? heading"
-                  defaultMessage="  How do I remove a linked ORCID from eduID?"
+                  description="remove linked orcid heading"
+                  defaultMessage="How do I remove a linked ORCID from eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="orcid description"
+                  description="remove linked orcid description"
                   defaultMessage={`If you do not longer want eduID to know your ORCID iD you can remove it by 
                     clicking the Remove button in your eduID.`}
                 />
@@ -712,32 +712,29 @@ export function Help(): JSX.Element {
             </article>
             <article>
               <h4>
-                <FormattedMessage description=" What is ORCID? heading" defaultMessage=" What is Ladok?" />
+                <FormattedMessage description="what is ladok heading" defaultMessage="What is Ladok?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="What is ladok? description"
+                  description="what is ladok description"
                   defaultMessage={`Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to a Erasmus exchange student program.`}
                 />
               </p>
 
               <p>
-                <FormattedMessage
-                  description="link to ladok description"
-                  defaultMessage="How to link Ladok with eduID:"
-                />
+                <FormattedMessage description="ladok list definition" defaultMessage="How to link Ladok with eduID:" />
               </p>
 
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="link to ladok list item 1"
+                    description="ladok list item 1"
                     defaultMessage="in the Settings area of eduID, toggle the Ladok control,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="link to ladok list item 2"
+                    description="ladok list item 2"
                     defaultMessage="choose your institution from the drop down list - if it is available."
                   />
                 </li>
@@ -748,7 +745,7 @@ export function Help(): JSX.Element {
             uuid="help-privacy-accessibility"
             title={
               <FormattedMessage
-                description="privacy policy web accessibility handle"
+                description="privacy accessibility handle"
                 defaultMessage="Privacy policy and Web accessibility"
               />
             }
@@ -787,54 +784,54 @@ export function Help(): JSX.Element {
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 1"
+                    description="privacy policy list item 1"
                     defaultMessage="stores information that you have provided as well as updates from trusted registers,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 2"
+                    description="privacy policy list item 2"
                     defaultMessage="transfers information according to the data minimisation principle - never more than required,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 3"
+                    description="privacy policy list item 3"
                     defaultMessage="uses the information to identify the individual for services you have chosen to use,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 4"
+                    description="privacy policy list item 4"
                     defaultMessage="protects and stores the information securely,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 5"
+                    description="privacy policy list item 5"
                     defaultMessage="develops using open source code accessible at GitHub,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 6"
+                    description="privacy policy list item 6"
                     defaultMessage="enables removal of eduID and connections directly in the service,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 7"
+                    description="privacy policy list item 7"
                     defaultMessage="stores log files recording use for 6 months,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="privacy policy list-item 8"
+                    description="privacy policy list item 8"
                     defaultMessage="retains inactive accounts for a maximum of 2 years,"
                   />
                 </li>
                 <li>
-                  <FormattedMessage description="privacy policy list-item 9" defaultMessage="does not use cookies." />
+                  <FormattedMessage description="privacy policy list item 9" defaultMessage="does not use cookies." />
                 </li>
               </ul>
             </article>
@@ -872,23 +869,23 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-about-sunet"
-            title={<FormattedMessage description="About sunet handle" defaultMessage="About SUNET" />}
+            title={<FormattedMessage description="about sunet handle" defaultMessage="About SUNET" />}
             additionalInfo={null}
           >
             {" "}
             <article>
               <h4>
-                <FormattedMessage description="About Sunet heading" defaultMessage="What is SUNET?" />
+                <FormattedMessage description="about sunet heading" defaultMessage="What is SUNET?" />
               </h4>
               <p>
                 <FormattedMessage
-                  description="About SUNET description 1"
+                  description="about sunet description 1"
                   defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="About SUNET description 2"
+                  description="about sunet description 2"
                   defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. 
                   More information about SUNET is available at {sunet}.`}
                   values={{
@@ -904,19 +901,19 @@ export function Help(): JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-contact"
-            title={<FormattedMessage description="Contact support handle" defaultMessage="Contacting eduID support" />}
+            title={<FormattedMessage description="contact support handle" defaultMessage="Contacting eduID support" />}
             additionalInfo={null}
           >
             <article>
               <h4>
                 <FormattedMessage
-                  description="Contact support heading"
+                  description="contact support heading"
                   defaultMessage="How to contact eduID support?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="Contact support description 1"
+                  description="contact support description 1"
                   defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
                   values={{
@@ -930,7 +927,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Contact support description 2"
+                  description="contact support description 2"
                   defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ in the Settings area.  
                   If something went wrong, it is always a good idea to include screenshots with error messages to 
                   ease troubleshooting.`}
@@ -938,7 +935,7 @@ export function Help(): JSX.Element {
               </p>
               <p>
                 <FormattedMessage
-                  description="Contact support description 3"
+                  description="contact support description 3"
                   defaultMessage="{strong}, but for simple
               matters you can also reach us on phone number {phone}."
                   values={{
@@ -952,18 +949,18 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
-                <FormattedMessage description="Opening hours list definition" defaultMessage="Opening hours:" />
+                <FormattedMessage description="opening hours list definition" defaultMessage="Opening hours:" />
               </p>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="Opening hours list item 1"
+                    description="opening hours list item 1"
                     defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="Opening hours list item 2"
+                    description="opening hours list item 2"
                     defaultMessage="Friday 9:00-12:00, 13:00-14:30"
                   />
                 </li>
