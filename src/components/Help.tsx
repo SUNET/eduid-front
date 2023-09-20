@@ -6,7 +6,6 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
   const intl = useIntl();
-  const preExpanded: string[] = ["help-contact-us"];
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -425,7 +424,8 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="verification methods - list item 1"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,`}
+                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
+                      verification on eduid.se,`}
                       values={{
                         post: <em>post:</em>,
                       }}
@@ -608,9 +608,9 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="eidas if personal number - paragraph"
                       defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
-                      simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
-                      personal identity number you can add it in eduID and verify yourself again using it in the 
-                      Identity area.`}
+                      simplify communication with Swedish authorities. Note: If you initially verify your identity with 
+                      eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify 
+                      yourself again using it in the Identity area.`}
                     />
                   </p>
                 </article>
