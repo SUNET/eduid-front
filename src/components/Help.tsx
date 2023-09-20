@@ -6,7 +6,6 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
   const intl = useIntl();
-  const preExpanded: string[] = ["help-contact-us"];
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -244,8 +243,9 @@ export function Help(): JSX.Element {
               </ul>
               <p>
                 <FormattedMessage
-                  description="enhance eduid verification - paragraph"
-                  defaultMessage="For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+                  description="enhance eduID verification - paragraph"
+                  defaultMessage={`For more detailed information on how to verify your created account based on your 
+                  situation, see the 'Verification of Identity' help section.`}
                 />
               </p>
             </article>
@@ -271,10 +271,10 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how change language - paragraph"
-                  defaultMessage={`
-                    To change the default language you can log into eduID and select your language preference in the
-                    Personal information area in eduID. The default language is based on the language setting that your
-                    browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English.`}
+                  defaultMessage={`To change the default language you can log into eduID and select your language 
+                  preference in the Personal information area in eduID. The default language is based on the language 
+                  setting that your browser uses. You can also change the displayed language in the footer of the 
+                  webpage. Available options are Swedish and English.`}
                 />
               </p>
               <h4>
@@ -285,8 +285,9 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-                  description="use other devices - list definition"
-                  defaultMessage="Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
+                  description="how use other devices - paragraph"
+                  defaultMessage={`Passwordless login can also be supported by using another device to login to eduID 
+                  on the device you are currently using:`}
                 />
               </p>
               <ul className="bullets">
@@ -299,13 +300,15 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="use other devices - list item 2"
-                    defaultMessage="scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
+                    defaultMessage={`scan the QR-code with the device where you have your login credentials, 
+                    e.g. security key or saved password,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="use other devices - list item 3"
-                    defaultMessage="on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
+                    defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                    presented code to login by entering it within the time shown, in the first device.`}
                   />
                 </li>
               </ul>
@@ -335,16 +338,19 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-                  description="how more secure - paragraph 1"
-                  defaultMessage="Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, 
-                  you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
+                  description="how more secure description 1"
+                  defaultMessage={`Some services will require a higher security level and to improve the security of 
+                  your eduID, in addition to knowledge of your username (confirmed email address) and password 
+                  combination, you can use another layer of authentication to log in. This is called multi-Factor 
+                  authentication (MFA); and in eduID's case two-factor authentication (2FA).`}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="how more secure - paragraph 2"
-                  defaultMessage="Examples can be a physical device in your possession such as a USB token, 
-                  or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to these techniques as a 'Security key'."
+                  description="how more secure description 2"
+                  defaultMessage={`Examples can be a physical device in your possession such as a USB token, 
+                  or biometric information such as fingerprint or face-recognition supported on the device you are 
+                  using, and we refer to these techniques as a 'Security key'.`}
                 />
               </p>
               <h4>
@@ -425,7 +431,8 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="verification methods - list item 1"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
-                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,`}
+                      registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
+                      verification on eduid.se,`}
                       values={{
                         post: <em>post:</em>,
                       }}
@@ -608,9 +615,9 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="eidas if personal number - paragraph"
                       defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
-                      simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish 
-                      personal identity number you can add it in eduID and verify yourself again using it in the 
-                      Identity area.`}
+                      simplify communication with Swedish authorities. Note: If you initially verify your identity with 
+                      eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify 
+                      yourself again using it in the Identity area.`}
                     />
                   </p>
                 </article>
