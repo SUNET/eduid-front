@@ -14,6 +14,38 @@ import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
 /* Get configuration */
+<<<<<<< HEAD
+=======
+const getConfig = async function () {
+  indexStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
+  const result = await indexStore.dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
+  if (fetchJsConfig.fulfilled.match(result)) {
+    const response = await indexStore.dispatch(requestAllPersonalData());
+    if (requestAllPersonalData.fulfilled.match(response)) {
+      if (response.payload.language) {
+        indexStore.dispatch(
+          updateIntl({
+            locale: response.payload.language,
+            messages: LOCALIZED_MESSAGES[response.payload.language],
+          })
+        );
+      }
+      indexStore.dispatch(appLoadingSlice.actions.appLoaded());
+    }
+  }
+
+  const params = new URLSearchParams(document.location.search);
+  if (params) {
+    const msg = params.get("msg");
+    if (msg !== null) {
+      if (msg.indexOf(":ERROR:") === 0) {
+        indexStore.dispatch(showNotification({ message: msg.substr(7), level: "error" }));
+      } else {
+        indexStore.dispatch(showNotification({ message: msg, level: "info" }));
+      }
+    }
+  }
+>>>>>>> 5faf489b7 (Changed  onClick to Link to avoid fetching JS script for help page)
 
 const getConfig = async function () {
 

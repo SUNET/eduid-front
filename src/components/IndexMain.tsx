@@ -1,30 +1,17 @@
-<<<<<<< HEAD
 import { useAppSelector } from "eduid-hooks";
-=======
-import { useIndexAppSelector } from "index-hooks";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 9e6cdfb36 (Fix conflict)
-=======
-
->>>>>>> 2a77fc3a0 (Fix conflict)
-=======
->>>>>>> 6200b8f10 (Fix conflict)
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
+import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
-import Splash from "./Common/Splash";
-import { Index } from "./Index";
-
-import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import { Settings } from "./Common/Settings";
+import Splash from "./Common/Splash";
 import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
 import { ChangePasswordContainer } from "./Dashboard/ChangePassword";
 import Start from "./Dashboard/DashboardStart";
 import VerifyIdentity from "./Dashboard/VerifyIdentity";
 import { Help } from "./Help";
+import { Index } from "./Index";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";

@@ -12,7 +12,6 @@ webpackStaging.output = {
   publicPath: "https://www.dev.eduid.se/static/front-build/",
   path: path.join(__dirname, "build"),
 };
-
 webpackStaging.devtool = "source-map";
 
 module.exports = webpackStaging;
