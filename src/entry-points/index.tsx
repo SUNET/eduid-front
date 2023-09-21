@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
-
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
