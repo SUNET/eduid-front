@@ -97,6 +97,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ...["index"].map((entryName) => {
 =======
     ...["faq", "errors", "login", "dashboard", "signup"].map((entryName) => {
@@ -110,6 +111,12 @@ module.exports = {
 =======
     ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
 >>>>>>> 46b4f6c02 (login.html -> index.html)
+=======
+    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
+=======
+    ...["index", "errors", "login", "dashboard", "signup"].map((entryName) => {
+>>>>>>> 3f3dc5ee7 (Create index for all apps)
+>>>>>>> befc32532 (Fix conflict)
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,
