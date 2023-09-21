@@ -1,4 +1,7 @@
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";

@@ -1,4 +1,4 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { FormText } from "reactstrap";

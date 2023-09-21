@@ -1,7 +1,7 @@
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useIndexAppDispatch as useDashboardAppDispatch } from "index-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";

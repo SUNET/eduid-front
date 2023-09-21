@@ -8,7 +8,7 @@ import Splash from "components/Common/Splash";
 import { AdvancedSettings } from "components/Dashboard/AdvancedSettings";
 import { ChangePasswordContainer } from "components/Dashboard/ChangePassword";
 import VerifyIdentity from "components/Dashboard/VerifyIdentity";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Start from "./DashboardStart";

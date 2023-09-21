@@ -1,5 +1,8 @@
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
