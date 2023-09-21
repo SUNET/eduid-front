@@ -19,7 +19,8 @@ export function Header(props: HeaderProps): JSX.Element {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
-  const start_url = dashboard_url || eduid_site_url;
+  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  const start_url = eppn ? dashboard_url : eduid_site_url;
   let button = null;
 
   async function handleLogout() {
