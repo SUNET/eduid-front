@@ -4,17 +4,13 @@ import {
   useIndexAppSelector as useDashboardAppSelector,
 } from "index-hooks";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
   const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
   const dispatch = useDashboardAppDispatch();
-
   const messages = LOCALIZED_MESSAGES;
-  const navigate = useNavigate();
 
   let translateTo: string[][] = [];
   let locale = "";
