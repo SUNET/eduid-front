@@ -3,7 +3,6 @@ const path = require("path");
 const autoprefixer = require("autoprefixer");
 //const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const transform = require("@formatjs/ts-transformer").transform;
 
 module.exports = {

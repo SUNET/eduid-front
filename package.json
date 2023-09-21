@@ -89,7 +89,6 @@
     "eslint-plugin-jest-dom": "^4.0.3",
     "eslint-plugin-react": "^7.32.2",
     "expect": "^29.5.0",
-    "html-webpack-plugin": "^5.5.3",
     "jest": "^27.5.1",
     "jest-mock": "^27.5.1",
     "jquery": "^3.7.0",
