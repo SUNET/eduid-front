@@ -14,8 +14,6 @@ import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
 /* Get configuration */
-<<<<<<< HEAD
-=======
 const getConfig = async function () {
   indexStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
   const result = await indexStore.dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
@@ -45,10 +43,7 @@ const getConfig = async function () {
       }
     }
   }
->>>>>>> 5faf489b7 (Changed  onClick to Link to avoid fetching JS script for help page)
-
-const getConfig = async function () {
-
+const getConfig = function () {
   indexStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
   const result = await indexStore.dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(result)) {
