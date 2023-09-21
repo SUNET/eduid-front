@@ -3,7 +3,6 @@ import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 <<<<<<< HEAD
 =======
 import { DashboardAppDispatch } from "dashboard-init-app";
-import { helpAppDispatch } from "help-init-app";
 import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
 import { LoginAppDispatch } from "login-init-app";
 >>>>>>> d44d1b9e4 (Bye, errors)
