@@ -31,7 +31,7 @@ prettier:
 
 sync_dev_files:
 	test -n '$(DEV)' || exit 1
-	fswatch -o build/ | while read n; do rsync -av --delete build/ eduid@eduid-developer-${DEV}-1.sunet.se:/opt/eduid/src/eduid-front/build/; done
+	fswatch -o build/ | while read n; do rsync -a --delete build/ eduid@eduid-developer-${DEV}-1.sunet.se:/opt/eduid/src/eduid-front/build/; done
 
 translation:
 	npm run translations:extract
