@@ -1,6 +1,6 @@
 import { useIndexAppSelector } from "index-hooks";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
 import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";
@@ -8,6 +8,12 @@ import { Notifications } from "./Common/Notifications";
 import Splash from "./Common/Splash";
 import { Index } from "./Index";
 
+import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
+import { Settings } from "./Common/Settings";
+import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
+import { ChangePasswordContainer } from "./Dashboard/ChangePassword";
+import Start from "./Dashboard/DashboardStart";
+import VerifyIdentity from "./Dashboard/VerifyIdentity";
 import { Help } from "./Help";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
@@ -16,6 +22,11 @@ import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import { SignupApp } from "./Signup/SignupApp";
 import { SIGNUP_BASE_PATH } from "./Signup/SignupMain";
 import { Errors } from "./SwamidErrors/Errors";
+
+export const startPath = "/profile/";
+export const identityPath = "/profile/verify-identity/";
+export const settingsPath = "/profile/settings/personaldata";
+export const advancedSettingsPath = "/profile/settings/advanced-settings";
 
 export function IndexMain(): JSX.Element {
   const isLoaded = useIndexAppSelector((state) => state.config.is_configured);
@@ -45,6 +56,18 @@ export function IndexMain(): JSX.Element {
               <Route path="/login/:ref" element={<Login />} />
               <Route path="/reset-password/*" element={<ResetPasswordMain />} />
               {/* Dashboard */}
+              <Route path={advancedSettingsPath} element={<AdvancedSettings />} />
+              <Route path={settingsPath} element={<Settings />} />
+              <Route path="/profile/settings/" element={<Navigate to={settingsPath} />} />
+              <Route path={identityPath} element={<VerifyIdentity />} />
+              <Route path="/profile/chpass/" element={<ChangePasswordContainer />} />
+              <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
+              {/* Navigates for old paths. TODO: redirect in backend server instead */}
+              <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />
+              <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
+              <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
+              <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
+              <Route path={startPath} element={<Start />} />
               {/* Errors*/}
               <Route path="/errors" element={<Errors />} />
               <Route path="/faq" element={<Help />} />

@@ -1,14 +1,19 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCircleCheck, faCircleExclamation, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
-import { UserIdentities } from "apis/eduidPersonalData";
+import { UserIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
+import { appLoadingSlice } from "slices/AppLoading";
+import { updateIntl } from "slices/Internationalisation";
 import { LetterProofingState } from "slices/LetterProofing";
+import { showNotification } from "slices/Notifications";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
@@ -126,6 +131,43 @@ export default function Start(): JSX.Element {
     if (isLoaded) {
       dispatch(fetchLetterProofingState());
     }
+  }, [isLoaded]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
+      if (!fetchJsConfig.fulfilled.match(result)) return;
+
+      const response = await dispatch(requestAllPersonalData());
+      if (!requestAllPersonalData.fulfilled.match(response)) return;
+
+      if (response.payload.language) {
+        dispatch(
+          updateIntl({
+            locale: response.payload.language,
+            messages: LOCALIZED_MESSAGES[response.payload.language],
+          })
+        );
+      }
+      dispatch(appLoadingSlice.actions.appLoaded());
+    };
+
+    const handleNotifications = () => {
+      const params = new URLSearchParams(document.location.search);
+      if (!params) return;
+
+      const msg = params.get("msg");
+      if (msg === null) return;
+
+      if (msg.indexOf(":ERROR:") === 0) {
+        dispatch(showNotification({ message: msg.substr(7), level: "error" }));
+      } else {
+        dispatch(showNotification({ message: msg, level: "info" }));
+      }
+    };
+
+    fetchData();
+    handleNotifications();
   }, [isLoaded]);
 
   // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
