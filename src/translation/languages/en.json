@@ -1130,7 +1130,7 @@
   },
   "VSxZ2o": {
     "developer_comment": "Send e-mail button",
-    "string": "Send e-mail"
+    "string": "Send email"
   },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
@@ -1150,7 +1150,7 @@
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
-    "string": "Resend e-mail"
+    "string": "Resend email"
   },
   "WI2cKY": {
     "developer_comment": "verify identity",
