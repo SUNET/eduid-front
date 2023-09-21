@@ -26,14 +26,6 @@ webpackProd.plugins = [
   //  initialConfigPlugin,
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-  ...["index"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.html`,
-      chunks: [`${entryName}`],
-    });
-  }),
 ];
 
 webpackProd.mode = "production";
