@@ -26,7 +26,6 @@ const getConfig = async function () {
   const result = await indexStore.dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(result)) {
     const response = await indexStore.dispatch(requestAllPersonalData());
-    console.log("response", response);
     if (requestAllPersonalData.fulfilled.match(response)) {
       if (response.payload.language) {
         indexStore.dispatch(
