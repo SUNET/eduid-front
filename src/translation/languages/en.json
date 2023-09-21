@@ -1337,7 +1337,7 @@
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
-    "string": "To start the account recovery process, press the button below to send an e-mail to {email}."
+    "string": "To start the account recovery process, press the button below to send an email to {email}."
   },
   "beRQGp": {
     "developer_comment": "Short code form",
