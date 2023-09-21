@@ -17,14 +17,7 @@ import securitySlice from "slices/Security";
 import { signupSlice } from "slices/Signup";
 import configSlice from "slices/SignupConfig";
 
-const eduIDApp = combineReducers({
-  config: configSlice.reducer,
-  intl: intlReducer,
-  notifications: notificationsSlice.reducer,
-  signup: signupSlice.reducer,
-  login: loginSlice.reducer,
-  app: appLoadingSlice.reducer,
-  resetPassword: resetPasswordSlice.reducer,
+const dashboardReducer = combineReducers({
   chpass: chpassSlice.reducer,
   emails: emailsSlice.reducer,
   lookup_mobile: lookupMobileProofingSlice.reducer,
@@ -35,6 +28,29 @@ const eduIDApp = combineReducers({
   account_linking: accountLinkingSlice.reducer,
   security: securitySlice.reducer,
   ladok: ladokSlice.reducer,
+});
+
+const loginReducer = combineReducers({
+  login: loginSlice.reducer,
+});
+
+const resetPasswordReducer = combineReducers({
+  resetPassword: resetPasswordSlice.reducer,
+});
+
+const signupReducer = combineReducers({
+  signup: signupSlice.reducer,
+});
+
+const eduIDApp = combineReducers({
+  config: configSlice.reducer,
+  intl: intlReducer,
+  notifications: notificationsSlice.reducer,
+  login: loginReducer,
+  resetPassword: resetPasswordReducer,
+  app: appLoadingSlice.reducer,
+  signup: signupReducer,
+  dashboard: dashboardReducer,
 });
 
 export default eduIDApp;
