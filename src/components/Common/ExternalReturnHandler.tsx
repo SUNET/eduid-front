@@ -1,6 +1,6 @@
 import { eidasGetStatus, GetStatusResponse } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useIndexAppDispatch as useDashboardAppDispatch } from "index-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";

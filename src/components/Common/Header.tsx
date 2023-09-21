@@ -1,6 +1,9 @@
 import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
 import { FormattedMessage } from "react-intl";
 import { HeaderNav } from "./HeaderNav";
 

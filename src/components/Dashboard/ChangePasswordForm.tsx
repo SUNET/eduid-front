@@ -1,6 +1,9 @@
 import { changePassword } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";

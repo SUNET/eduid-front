@@ -1,5 +1,5 @@
 import NinDisplay from "components/Common/NinDisplay";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import NinForm from "./NinForm";
 
 export default function AddNin(): JSX.Element {

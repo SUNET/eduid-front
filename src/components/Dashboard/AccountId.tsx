@@ -1,4 +1,4 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import { FormattedMessage } from "react-intl";
 
 const idUserEppn = "user-eppn";

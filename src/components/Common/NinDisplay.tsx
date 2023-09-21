@@ -1,7 +1,7 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useIndexAppDispatch as useDashboardAppDispatch } from "index-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";

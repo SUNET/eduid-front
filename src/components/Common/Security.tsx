@@ -8,9 +8,12 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
