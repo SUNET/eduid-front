@@ -1,7 +1,11 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+<<<<<<< HEAD
 import { useAppDispatch } from "eduid-hooks";
+=======
+import { useIndexAppDispatch as useDashboardAppDispatch } from "index-hooks";
+>>>>>>> a84b08339 (correct path)
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";

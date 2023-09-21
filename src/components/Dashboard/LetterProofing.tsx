@@ -3,7 +3,14 @@ import { requestAllPersonalData } from "apis/eduidPersonalData";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
+<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+=======
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
+>>>>>>> a84b08339 (correct path)
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";

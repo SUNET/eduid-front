@@ -8,7 +8,14 @@ import {
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+=======
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "index-hooks";
+>>>>>>> a84b08339 (correct path)
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
