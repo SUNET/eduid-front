@@ -1,7 +1,7 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
@@ -40,13 +40,6 @@ const Footer = (): JSX.Element => {
     }
   };
 
-  const goToHelp = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    if (eppn) {
-      navigate("/faq");
-    } else window.location.href = `${eduidHomeUrl}/faq`;
-  };
-
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
@@ -62,9 +55,9 @@ const Footer = (): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <a className="help-link" href="#" onClick={goToHelp}>
+            <Link className="help-link" to="/faq">
               <FormattedMessage defaultMessage="Help" description="Footer help" />
-            </a>
+            </Link>
           </li>
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>

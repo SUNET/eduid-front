@@ -8,6 +8,7 @@ import { Notifications } from "./Common/Notifications";
 import Splash from "./Common/Splash";
 import { Index } from "./Index";
 
+import { Help } from "./Help";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
@@ -46,6 +47,7 @@ export function IndexMain(): JSX.Element {
               {/* Dashboard */}
               {/* Errors*/}
               <Route path="/errors" element={<Errors />} />
+              <Route path="/faq" element={<Help />} />
             </Routes>
           </section>
         </Splash>

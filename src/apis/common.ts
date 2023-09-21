@@ -2,9 +2,12 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { helpAppDispatch } from "help-init-app";
 >>>>>>> 3c4457ef9 (Fix conflict)
+=======
+>>>>>>> ed05e39d2 (Changed  onClick to Link to avoid fetching JS script for help page)
 import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
 import { LoginAppDispatch } from "login-init-app";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
