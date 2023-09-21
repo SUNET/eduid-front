@@ -17,14 +17,6 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-    faq: "./src/entry-points/faq",
->>>>>>> e1420200b (Remove dashboard bundle)
-=======
->>>>>>> ed05e39d2 (Changed  onClick to Link to avoid fetching JS script for help page)
     index: "./src/entry-points/index",
   },
   output: {
