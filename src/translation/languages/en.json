@@ -2531,7 +2531,7 @@
   },
   "uKzmRZ": {
     "developer_comment": "Reset Password email link sent",
-    "string": "The link in the e-mail is valid for two hours."
+    "string": "The link in the email is valid for two hours."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
