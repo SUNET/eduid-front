@@ -1,11 +1,17 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { DashboardAppDispatch } from "dashboard-init-app";
 import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
 import { LoginAppDispatch } from "login-init-app";
 >>>>>>> d44d1b9e4 (Bye, errors)
+=======
+import { IndexAppDispatch as DashboardAppDispatch } from "dashboard-init-app";
+import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
+import { IndexAppDispatch as LoginAppDispatch } from "login-init-app";
+>>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
 
