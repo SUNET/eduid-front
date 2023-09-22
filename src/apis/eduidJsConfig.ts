@@ -3,9 +3,12 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { DashboardAppDispatch } from "dashboard-init-app";
-import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
-import { LoginAppDispatch } from "login-init-app";
+import {
+  IndexAppDispatch as DashboardAppDispatch,
+  IndexAppDispatch as ErrorsAppDispatch,
+  IndexAppDispatch as LoginAppDispatch,
+  IndexAppDispatch as SignupAppDispatch,
+} from "index-init-app";
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
 /*********************************************************************************************************************/

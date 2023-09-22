@@ -20,13 +20,13 @@ import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import { SignupApp } from "./Signup/SignupApp";
-import { SIGNUP_BASE_PATH } from "./Signup/SignupMain";
 import { Errors } from "./SwamidErrors/Errors";
 
 export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
+export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): JSX.Element {
   const isLoaded = useIndexAppSelector((state) => state.config.is_configured);

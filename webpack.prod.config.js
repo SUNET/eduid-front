@@ -24,11 +24,6 @@ webpackProd.output = {
 
 webpackProd.plugins = [
   //  initialConfigPlugin,
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production"),
-    },
-  }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
 ];

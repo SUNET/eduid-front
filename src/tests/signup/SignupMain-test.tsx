@@ -8,11 +8,10 @@ import {
   SignupStatusResponse,
   VerifyEmailRequest,
 } from "apis/eduidSignup";
-import { codeFormTestId } from "components/Login/ResponseCodeForm";
-import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
-import { formatPassword } from "components/Signup/SignupUserCreated";
-
 import { emailPlaceHolder } from "components/Common/EmailInput";
+import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { codeFormTestId } from "components/Login/ResponseCodeForm";
+import { formatPassword } from "components/Signup/SignupUserCreated";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
@@ -182,13 +181,13 @@ afterEach(async () => {
 });
 
 test("e-mail form works as expected", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}/`] });
 
   await testEnterEmail({ email: testEmailAddress });
 });
 
 test("complete signup happy case", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   screen.debug();
 
@@ -218,7 +217,7 @@ test("complete signup happy case", async () => {
 });
 
 test("handles rejected ToU", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   await testEnterEmail({ email: testEmailAddress });
 
@@ -235,7 +234,7 @@ test("handles rejected ToU", async () => {
 });
 
 test("handles wrong email code", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   await testEnterEmail({ email: testEmailAddress });
 
