@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
-import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/Dashboard/DashboardMain";
+import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/IndexMain";
 import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";

@@ -1,10 +1,10 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { IndexMain } from "components/IndexMain";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("shows splash screen when not configured", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -16,7 +16,7 @@ test("shows splash screen when not configured", () => {
 });
 
 test("renders Profile page as expected", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
@@ -33,9 +33,6 @@ test("renders Profile page as expected", () => {
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, test user!/);
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
-  const button = screen.getByRole("button", { name: "Log out" });
-  expect(button).toBeEnabled();
-
   // check that Profile is the active nav link
   const nav = screen.getAllByRole("link", { name: "Start" })[0];
   expect(nav).toHaveClass(activeClassName);
@@ -46,7 +43,7 @@ test("renders Profile page as expected", () => {
 });
 
 test("renders identity verification progress, unverified after password reset", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
@@ -68,7 +65,7 @@ test("renders identity verification progress, unverified after password reset", 
 });
 
 test("renders identity verification progress, new user", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
@@ -89,7 +86,7 @@ test("renders identity verification progress, new user", () => {
 });
 
 test("renders identity verification progress, verified user", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,

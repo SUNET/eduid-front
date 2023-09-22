@@ -1,6 +1,6 @@
 import { fetchNewDevice } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { LoginAppDispatch } from "login-init-app";
+import { IndexAppDispatch as LoginAppDispatch } from "index-init-app";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";

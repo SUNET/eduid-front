@@ -3,7 +3,7 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../index-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 export interface LadokUniversityData {

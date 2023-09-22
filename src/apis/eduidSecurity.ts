@@ -4,7 +4,7 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../index-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 

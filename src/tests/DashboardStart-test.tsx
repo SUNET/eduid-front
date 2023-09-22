@@ -1,10 +1,10 @@
-import { advancedSettingsPath, DashboardMain, identityPath, settingsPath } from "components/Dashboard/DashboardMain";
+import { IndexMain, advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("start page heading text for new user", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -15,7 +15,7 @@ test("start page heading text for new user", async () => {
 });
 
 test("recommendations for new users, adding name", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -30,7 +30,7 @@ test("recommendations for new users, adding name", async () => {
 });
 
 test("recommendations for new users, adding phone", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -46,7 +46,7 @@ test("recommendations for new users, adding phone", async () => {
 });
 
 test("recommendations for new user, verify identity", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -62,7 +62,7 @@ test("recommendations for new user, verify identity", async () => {
 });
 
 test("recommendations for new user, adding security key", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
@@ -80,7 +80,7 @@ test("recommendations for new user, adding security key", async () => {
 });
 
 test("not renders letter proofing progress, verified user with swedish id number", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
       identities: {
@@ -103,7 +103,7 @@ test("not renders letter proofing progress, verified user with swedish id number
 });
 
 test("heading text after password reset", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
       identities: {
@@ -120,7 +120,7 @@ test("heading text after password reset", () => {
 });
 
 test("renders swedish verification options when user verified with eidas", () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
       identities: {

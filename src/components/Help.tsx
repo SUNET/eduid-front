@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
-import AccordionItemTemplate from "./AccordionItemTemplate";
+import AccordionItemTemplate from "./Common/AccordionItemTemplate";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {

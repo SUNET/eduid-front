@@ -3,8 +3,12 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { LoginAppDispatch, LoginRootState } from "login-init-app";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import {
+  IndexAppDispatch as DashboardAppDispatch,
+  IndexRootState as DashboardRootState,
+  IndexAppDispatch as LoginAppDispatch,
+  IndexRootState as LoginRootState,
+} from "index-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 type EidasMethods = "eidas" | "freja";

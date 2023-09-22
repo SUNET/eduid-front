@@ -1,7 +1,7 @@
 import { fetchVerifyLink, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
-import { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
+import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "index-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";

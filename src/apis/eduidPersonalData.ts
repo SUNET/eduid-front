@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EmailInfo } from "apis/eduidEmail";
-import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "index-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { LadokData } from "./eduidLadok";
 import { OrcidInfo } from "./eduidOrcid";

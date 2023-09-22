@@ -2,7 +2,7 @@ import { RenderOptions, RenderResult, render as rtlRender } from "@testing-libra
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import type { InitialEntry } from "history";
-import { IndexRootState as SignupRootState, getTestSignupStore } from "index-init-app";
+import { IndexRootState as SignupRootState, getTestIndexStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
@@ -10,6 +10,7 @@ import { initialState } from "slices/AppLoading";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
 import { initialState as emailsInitialState } from "slices/Emails";
 import { initialState as identityInitialState } from "slices/Identities";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { initialState as ladokInitialState } from "slices/Ladok";
 import { initialState as letterProofingInitialState } from "slices/LetterProofing";
 import { initialState as loginInitialState } from "slices/Login";
@@ -19,7 +20,6 @@ import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
-import { initialState as configInitialState } from "slices/SignupConfig";
 
 export const signupTestState: SignupRootState = {
   config: {
@@ -65,7 +65,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       debug: true,
     },
   };
-  const store = getTestSignupStore(args.state || defaultState);
+  const store = getTestIndexStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <SignupGlobalStateProvider>

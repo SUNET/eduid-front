@@ -1,15 +1,17 @@
 import { OrcidInfo } from "apis/eduidOrcid";
 import { activeClassName } from "components/Common/HeaderNav";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
-test("renders AccountLinking as expected", () => {
-  render(<DashboardMain />);
+test("renders AccountLinking as expected", async () => {
+  render(<IndexMain />, {
+    routes: ["/profile/"],
+  });
 
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  const nav = await screen.getByRole("link", { name: "Advanced settings" });
   act(() => {
     nav.click();
   });
@@ -21,7 +23,7 @@ test("renders AccountLinking as expected", () => {
 });
 
 test("can add an ORCID iD", () => {
-  render(<DashboardMain />);
+  render(<IndexMain />);
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -45,7 +47,7 @@ test("can add an ORCID iD", () => {
 test("can show an ORCID iD", () => {
   const orcid: OrcidInfo = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       ...defaultDashboardTestState,
       account_linking: { orcid },
@@ -85,13 +87,12 @@ test("can remove an ORCID iD", async () => {
 
   mswServer.printHandlers();
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...defaultDashboardTestState.config, orcid_url: "/orcid/" },
       account_linking: { orcid },
     },
   });
-
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
   act(() => {

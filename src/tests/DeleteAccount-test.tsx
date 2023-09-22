@@ -1,11 +1,11 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders DeleteAccount as expected", () => {
-  render(<DashboardMain />);
+  render(<IndexMain />);
 
   // Navigate to Settings
   const nav = screen.getByRole("link", { name: "Settings" });
@@ -30,7 +30,7 @@ test("can click the button", async () => {
   );
 
   mswServer.printHandlers();
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...defaultDashboardTestState.config, security_url: "/security/" },
     },
