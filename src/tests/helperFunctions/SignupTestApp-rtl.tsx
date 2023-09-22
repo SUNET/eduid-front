@@ -3,6 +3,10 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
+<<<<<<< HEAD
+=======
+import { IndexRootState as SignupRootState, getTestIndexStore } from "index-init-app";
+>>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 <<<<<<< HEAD
@@ -68,7 +72,11 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       debug: true,
     },
   };
+<<<<<<< HEAD
   const store = getTestEduIDStore(args.state || defaultState);
+=======
+  const store = getTestIndexStore(args.state || defaultState);
+>>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <SignupGlobalStateProvider>

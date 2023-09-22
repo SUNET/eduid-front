@@ -3,7 +3,11 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+<<<<<<< HEAD
 import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
+=======
+import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../index-init-app";
+>>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
