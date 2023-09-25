@@ -4,7 +4,7 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
@@ -21,7 +21,7 @@ export interface UpdateOfficialUserDataResponse {
 export const updateOfficialUserData = createAsyncThunk<
   string,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/updateOfficialUserData", async (args, thunkAPI) => {
   const body: KeyValues = {};
   return makeSecurityRequest<UpdateOfficialUserDataResponse>(thunkAPI, "refresh-official-user-data", body)
@@ -42,7 +42,7 @@ export interface PostDeleteAccountResponse {
 export const postDeleteAccount = createAsyncThunk<
   PostDeleteAccountResponse,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/postDeleteAccount", async (args, thunkAPI) => {
   const body: KeyValues = {};
   return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account", body)
@@ -67,7 +67,7 @@ export interface RemoveWebauthnTokensResponse {
 export const removeWebauthnToken = createAsyncThunk<
   RemoveWebauthnTokensResponse,
   RemoveWebauthnTokensRequest,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/removeWebauthnToken", async (args, thunkAPI) => {
   const body: KeyValues = {
     credential_key: args.credential_key,
@@ -100,7 +100,7 @@ export interface RequestCredentialsResponse {
 export const requestCredentials = createAsyncThunk<
   RequestCredentialsResponse,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/requestCredentials", async (args, thunkAPI) => {
   return makeSecurityRequest<RequestCredentialsResponse>(thunkAPI, "credentials")
     .then((response) => response.payload)
@@ -121,7 +121,7 @@ export interface RegisterWebauthnResponse {
 export const registerWebauthn = createAsyncThunk<
   RegisterWebauthnResponse,
   { descriptionValue: string },
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/registerWebauthn", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const body: KeyValues = {
@@ -148,7 +148,7 @@ export interface BeginRegisterWebauthnResponse {
 export const beginRegisterWebauthn = createAsyncThunk<
   string,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/beginRegisterWebauthn", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const body: KeyValues = {
@@ -172,7 +172,7 @@ export interface SuggestedPasswordResponse {
 export const fetchSuggestedPassword = createAsyncThunk<
   string,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("chpass/fetchSuggestedPassword", async (args, thunkAPI) => {
   return makeSecurityRequest<SuggestedPasswordResponse>(thunkAPI, "suggested-password")
     .then((response) => response.payload.suggested_password)
@@ -197,7 +197,7 @@ export interface ChangePasswordResponse {
 export const changePassword = createAsyncThunk<
   ChangePasswordResponse,
   ChangePasswordPayload,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("chpass/changePassword", async (args, thunkAPI) => {
   return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password", args)
     .then((response) => response.payload)
@@ -217,7 +217,7 @@ export interface NinPayload {
 export const addNin = createAsyncThunk<
   FetchIdentitiesResponse, // return type
   string, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/addNin", async (nin, thunkAPI) => {
   const body: KeyValues = {
     nin: nin,
@@ -240,7 +240,7 @@ export const addNin = createAsyncThunk<
 export const removeNin = createAsyncThunk<
   FetchIdentitiesResponse, // return type
   string, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/removeNin", async (nin, thunkAPI) => {
   const body: KeyValues = {
     nin: nin,

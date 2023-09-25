@@ -4,7 +4,7 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { showNotification } from "slices/Notifications";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 export interface PhoneInfo {
@@ -31,7 +31,7 @@ export interface PhonesResponse {
 export const requestMakePrimaryPhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/requestMakePrimaryPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
@@ -50,7 +50,7 @@ export const requestMakePrimaryPhone = createAsyncThunk<
 export const requestVerifyPhone = createAsyncThunk<
   PhonesResponse, // return type
   { code: string; number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/requestVerifyPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
@@ -70,7 +70,7 @@ export const requestVerifyPhone = createAsyncThunk<
 export const requestSendPhoneCode = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/requestSendPhoneCode", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
@@ -89,7 +89,7 @@ export const requestSendPhoneCode = createAsyncThunk<
 export const postNewPhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/postNewPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
@@ -114,7 +114,7 @@ export const postNewPhone = createAsyncThunk<
 export const requestRemovePhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/requestRemovePhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
@@ -133,7 +133,7 @@ export const requestRemovePhone = createAsyncThunk<
 export const getCaptchaRequest = createAsyncThunk<
   PhoneCaptchaResponse, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phones/getCaptcha", async (args, thunkAPI) => {
   const body: KeyValues = {};
   return makePhoneRequest<PhoneCaptchaResponse>(thunkAPI, "get-captcha", body)
@@ -151,7 +151,7 @@ export const getCaptchaRequest = createAsyncThunk<
 export const sendCaptchaResponse = createAsyncThunk<
   PhoneCaptchaResponse, // return type
   { internal_response?: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("phone/sendCaptchaResponse", async (args, thunkAPI) => {
   const body: KeyValues = {
     internal_response: args.internal_response,
