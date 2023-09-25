@@ -1,8 +1,8 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
+import { IndexRootState as SignupRootState, getTestIndexStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
-import { IndexRootState as SignupRootState, getTestIndexStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";

@@ -1,8 +1,8 @@
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";

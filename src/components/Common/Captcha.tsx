@@ -1,5 +1,5 @@
 import { CaptchaProps } from "components/Signup/SignupCaptcha";
-import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
+import { useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
 import React, { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";

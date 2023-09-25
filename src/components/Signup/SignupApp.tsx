@@ -2,7 +2,7 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { useIndexAppDispatch as useSignupAppDispatch } from "index-hooks";
+import { useIndexAppDispatch as useSignupAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";

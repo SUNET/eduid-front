@@ -2,7 +2,7 @@ import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";

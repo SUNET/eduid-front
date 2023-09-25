@@ -1,4 +1,4 @@
-import { useIndexAppSelector } from "index-hooks";
+import { useIndexAppSelector } from "eduid-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
@@ -32,14 +32,16 @@ export function IndexMain(): JSX.Element {
   const isLoaded = useIndexAppSelector((state) => state.config.is_configured);
   const authn_options = useIndexAppSelector((state) => state.login.authn_options);
   const loginRef = useIndexAppSelector((state) => state.login.ref);
+  const eppn = useIndexAppSelector((state) => state.personal_data.eppn);
 
   return (
     <React.StrictMode>
       <Header
-        showLogin={!authn_options}
-        showRegister={!authn_options.has_session}
+        showLogin={!authn_options && !eppn}
+        showRegister={!authn_options.has_session && !eppn}
         showLogout={authn_options.has_session}
         loginRef={loginRef}
+        showMenu={Boolean(eppn)}
       />
       <main id="panel" className="panel">
         <Notifications />

@@ -8,7 +8,7 @@ import {
   IndexAppDispatch as ErrorsAppDispatch,
   IndexAppDispatch as LoginAppDispatch,
   IndexAppDispatch as SignupAppDispatch,
-} from "index-init-app";
+} from "eduid-init-app";
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
 /*********************************************************************************************************************/

@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
+import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";

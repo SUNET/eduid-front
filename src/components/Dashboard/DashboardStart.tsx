@@ -5,11 +5,11 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
-import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
+import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";

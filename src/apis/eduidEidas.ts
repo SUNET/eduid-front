@@ -3,12 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import {
-  IndexAppDispatch as DashboardAppDispatch,
-  IndexRootState as DashboardRootState,
-  IndexAppDispatch as LoginAppDispatch,
-  IndexRootState as LoginRootState,
-} from "index-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 type EidasMethods = "eidas" | "freja";
@@ -23,8 +18,8 @@ interface EidasCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithEidas = LoginAppDispatch | DashboardAppDispatch;
-type StateWithEidas = LoginRootState | DashboardRootState;
+type DispatchWithEidas = EduIDAppDispatch;
+type StateWithEidas = EduIDAppRootState;
 
 /*********************************************************************************************************************/
 
