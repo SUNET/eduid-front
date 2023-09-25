@@ -3,7 +3,7 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 export interface LadokUniversityData {
@@ -40,7 +40,7 @@ export interface LadokUnlinkUserResponse {}
 export const fetchLadokUniversities = createAsyncThunk<
   LadokUniversityData,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("ladok/fetchUniversities", async (args, thunkAPI) => {
   try {
     const response = await makeLadokRequest<LadokUniversitiesResponse>(thunkAPI, "universities");
@@ -70,7 +70,7 @@ export const fetchLadokUniversities = createAsyncThunk<
 export const linkUser = createAsyncThunk<
   LadokLinkUserResponse,
   { ladok_name: string },
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("ladok/linkUser", async (args, thunkAPI) => {
   const body: KeyValues = {
     ladok_name: args.ladok_name,
@@ -89,7 +89,7 @@ export const linkUser = createAsyncThunk<
 export const unlinkUser = createAsyncThunk<
   LadokUnlinkUserResponse,
   undefined,
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("ladok/unlinkUser", async (args, thunkAPI) => {
   const body: KeyValues = {};
   return makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user", body)

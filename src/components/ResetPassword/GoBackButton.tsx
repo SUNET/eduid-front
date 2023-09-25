@@ -1,6 +1,5 @@
 import EduIDButton from "components/Common/EduIDButton";
-import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -15,7 +14,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
 
   if (!props.onClickHandler && !loginRef) {
     // for the default click handler, loginRef is mandatory

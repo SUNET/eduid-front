@@ -4,10 +4,7 @@ import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
@@ -27,7 +24,7 @@ type accordionUUID = "swedish" | "eu" | "world";
 type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function VerifyIdentity(): JSX.Element | null {
-  const isAppLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   const intl = useIntl();
 
@@ -64,7 +61,7 @@ function VerifyIdentity(): JSX.Element | null {
 }
 
 function VerifyIdentityIntro(): JSX.Element {
-  const identities = useDashboardAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.identities);
 
   const preExpanded: accordionUUID[] = [];
 
@@ -147,8 +144,8 @@ function VerifyIdentityIntro(): JSX.Element {
 }
 
 function VerifiedIdentitiesTable(): JSX.Element {
-  const identities = useDashboardAppSelector((state) => state.identities);
-  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const identities = useAppSelector((state) => state.identities);
+  const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
 
   return (
@@ -254,8 +251,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
 }
 
 function AccordionItemSwedish(): JSX.Element | null {
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
-  const phones = useDashboardAppSelector((state) => state.phones.phones);
+  const nin = useAppSelector((state) => state.identities.nin);
+  const phones = useAppSelector((state) => state.phones.phones);
   const hasVerifiedSwePhone = phones?.some((phone) => phone.verified && phone.number.startsWith("+46"));
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -347,7 +344,7 @@ function AccordionItemSwedish(): JSX.Element | null {
 }
 
 function AccordionItemEu(): JSX.Element | null {
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function handleOnClick() {
     const response = await dispatch(eidasVerifyIdentity({ method: "eidas" }));
@@ -392,8 +389,8 @@ function AccordionItemEu(): JSX.Element | null {
 }
 
 function AccordionItemWorld(): JSX.Element | null {
-  const dispatch = useDashboardAppDispatch();
-  const svipe_url = useDashboardAppSelector((state) => state.config.svipe_url);
+  const dispatch = useAppDispatch();
+  const svipe_url = useAppSelector((state) => state.config.svipe_url);
 
   async function handleOnClick() {
     const response = await dispatch(svipeVerifyIdentity({ method: "svipe_id" }));

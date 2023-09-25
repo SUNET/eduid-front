@@ -1,6 +1,6 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { IndexRootState as DashboardRootState, getTestIndexStore } from "eduid-init-app";
+import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -18,14 +18,14 @@ export const defaultDashboardTestState = {
 };
 
 interface renderArgs {
-  state?: Partial<DashboardRootState>;
+  state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const routes = args.routes || ["/profile/"];
-  const store = getTestIndexStore(args.state || defaultDashboardTestState);
+  const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (

@@ -1,9 +1,6 @@
 import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { HeaderNav } from "./HeaderNav";
 
@@ -17,12 +14,12 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps): JSX.Element {
-  const dispatch = useDashboardAppDispatch();
-  const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
-  const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
-  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
+  const dispatch = useAppDispatch();
+  const signup_url = useAppSelector((state) => state.config.signup_url);
+  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
+  const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
+  const login_url = useAppSelector((state) => state.config.login_base_url);
+  const eppn = useAppSelector((state) => state.personal_data?.eppn);
   const start_url = eppn ? dashboard_url : eduid_site_url;
   let button = null;
 

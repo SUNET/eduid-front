@@ -1,7 +1,7 @@
 import { useActor } from "@xstate/react";
 import { getPasswordRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
-import { useIndexAppDispatch as useSignupAppDispatch } from "eduid-hooks";
+import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -54,7 +54,7 @@ export function SignupCredentials(): JSX.Element {
 
 export function SignupCredentialPassword(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function getPassword() {
     const res = await dispatch(getPasswordRequest());

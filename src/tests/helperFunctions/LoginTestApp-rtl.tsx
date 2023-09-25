@@ -1,7 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
-import { IndexRootState as LoginRootState, getTestIndexStore } from "eduid-init-app";
+import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
 
-export const loginTestState: LoginRootState = {
+export const loginTestState: EduIDAppRootState = {
   config: {
     ...configInitialState,
     next_url: "http://localhost/next",
@@ -53,13 +53,13 @@ export const loginTestState: LoginRootState = {
 };
 
 interface renderArgs {
-  state?: Partial<LoginRootState>;
+  state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-  const store = getTestIndexStore(args.state || loginTestState);
+  const store = getTestEduIDStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ResetPasswordGlobalStateProvider>

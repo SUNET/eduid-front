@@ -1,15 +1,12 @@
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
-  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-  const dispatch = useDashboardAppDispatch();
+  const currentLocale = useAppSelector((state) => state.intl.locale);
+  const dispatch = useAppDispatch();
   const messages = LOCALIZED_MESSAGES;
 
   let translateTo: string[][] = [];

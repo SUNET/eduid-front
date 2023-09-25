@@ -1,7 +1,7 @@
 import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";

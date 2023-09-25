@@ -3,8 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-
-import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
@@ -17,8 +16,8 @@ interface SvipeCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithSvipe = DashboardAppDispatch;
-type StateWithSvipe = DashboardRootState;
+type DispatchWithSvipe = EduIDAppDispatch;
+type StateWithSvipe = EduIDAppRootState;
 
 /*********************************************************************************************************************/
 

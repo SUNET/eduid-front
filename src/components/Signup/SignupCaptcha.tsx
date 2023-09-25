@@ -3,7 +3,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
 import { Captcha as GoogleCaptcha } from "components/Common/Captcha";
-import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -18,11 +18,11 @@ export interface CaptchaProps {
 }
 
 export function SignupCaptcha(): JSX.Element | null {
-  const preferredCaptcha = useSignupAppSelector((state) => state.config.preferred_captcha);
-  const state = useSignupAppSelector((state) => state.signup.state);
+  const preferredCaptcha = useAppSelector((state) => state.config.preferred_captcha);
+  const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const [useInternalCaptcha, setUseInternalCaptcha] = useState<boolean>(preferredCaptcha === "internal");
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (state?.captcha.completed) {
@@ -93,7 +93,7 @@ export function SignupCaptcha(): JSX.Element | null {
 }
 
 function InternalCaptcha(props: CaptchaProps) {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const [img, setImg] = useState<string | undefined>(undefined);
 
   async function getCaptcha() {
@@ -143,9 +143,9 @@ function InternalCaptcha(props: CaptchaProps) {
   );
 }
 export function ProcessCaptcha(): null {
-  const captcha = useSignupAppSelector((state) => state.signup.captcha);
+  const captcha = useAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function sendCaptcha(captcha: CaptchaRequest) {
     const res = await dispatch(sendCaptchaResponse(captcha));

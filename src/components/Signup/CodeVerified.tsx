@@ -2,7 +2,7 @@ import { fetchVerifyLink, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
-import { useIndexAppDispatch as useSignupAppDispatch, useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
@@ -21,10 +21,10 @@ interface CodeParams {
 export default function CodeVerified() {
   // TODO: get dashboard URL from config instead of from backend response?
   // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as CodeParams;
-  const response = useSignupAppSelector((state) => state.signup.verify_link_response);
+  const response = useAppSelector((state) => state.signup.verify_link_response);
 
   useEffect(() => {
     if (!response && params?.code) {

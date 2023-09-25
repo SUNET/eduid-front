@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUseOtherDevice2, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
-import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
 //import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { ResponseCodeForm } from "./ResponseCodeForm";
 
 // optional URL parameters passed to this component

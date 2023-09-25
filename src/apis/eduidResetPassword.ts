@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IndexAppDispatch as LoginAppDispatch, IndexRootState as LoginRootState } from "eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
@@ -17,7 +17,7 @@ import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 export const postSetNewPasswordExternalMfa = createAsyncThunk<
   NewPasswordResponse, // return type
   NewPasswordRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/postSetNewPasswordExternalMfa", async (args, thunkAPI) => {
   const body: KeyValues = {
     email_code: args.email_code,
@@ -44,7 +44,7 @@ export interface NewPasswordExtraSecurityKeyRequest {
 export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
   NewPasswordResponse, // return type
   NewPasswordExtraSecurityKeyRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/postSetNewPasswordExtraSecurityToken", async (args, thunkAPI) => {
   const body: KeyValues = {
     email_code: args.email_code,
@@ -72,7 +72,7 @@ export interface NewPasswordExtraSecurityPhoneRequest {
 export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
   NewPasswordResponse, // return type
   NewPasswordExtraSecurityPhoneRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/postSetNewPasswordExtraSecurityPhone", async (args, thunkAPI) => {
   const body: KeyValues = {
     email_code: args.email_code,
@@ -103,7 +103,7 @@ export interface RequestPhoneCodeResponse {
 export const requestPhoneCodeForNewPassword = createAsyncThunk<
   RequestPhoneCodeResponse, // return type
   RequestPhoneCodeRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/requestPhoneCodeForNewPassword", async (args, thunkAPI) => {
   const data: KeyValues = {
     email_code: args.email_code,
@@ -124,7 +124,7 @@ export const requestPhoneCodeForNewPassword = createAsyncThunk<
 export const postSetNewPassword = createAsyncThunk<
   NewPasswordResponse, // return type
   NewPasswordRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/postSetNewPassword", async (args, thunkAPI) => {
   const data: KeyValues = {
     email_code: args.email_code,
@@ -145,7 +145,7 @@ export const postSetNewPassword = createAsyncThunk<
 export const verifyEmailLink = createAsyncThunk<
   VerifyCodeResponse, // return type
   VerifyCodeRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/verifyEmailLink", async (args, thunkAPI) => {
   const data: KeyValues = {
     email_code: args.email_code,
@@ -176,7 +176,7 @@ export interface RequestEmailLinkResponse {
 export const requestEmailLink = createAsyncThunk<
   RequestEmailLinkResponse, // return type
   RequestEmailLinkRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("resetPassword/requestEmailLink", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,

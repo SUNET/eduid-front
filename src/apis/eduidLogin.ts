@@ -3,14 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import {
-  IndexAppDispatch as DashboardAppDispatch,
-  IndexRootState as DashboardRootState,
-  IndexAppDispatch as ErrorsAppDispatch,
-  IndexRootState as ErrorsRootState,
-  IndexAppDispatch as LoginAppDispatch,
-  IndexRootState as LoginRootState,
-} from "eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
@@ -31,7 +24,7 @@ export interface LoginAbortResponse {
 export const fetchAbort = createAsyncThunk<
   LoginAbortResponse, // return type
   LoginAbortRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchAbort", async (args, thunkAPI) => {
   const body: KeyValues = {
     ref: args.ref,
@@ -61,7 +54,7 @@ export interface LoginUsernamePasswordResponse {
 export const fetchUsernamePassword = createAsyncThunk<
   LoginUsernamePasswordResponse, // return type
   LoginUsernamePasswordRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchUsernamePassword", async (args, thunkAPI) => {
   const body: KeyValues = args;
 
@@ -91,7 +84,7 @@ export interface LoginToUResponse {
 export const fetchToU = createAsyncThunk<
   LoginToUResponse, // return type
   LoginToURequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchToU", async (args, thunkAPI) => {
   const body: KeyValues = args;
 
@@ -118,7 +111,7 @@ export interface LoginLogoutResponse {
 export const fetchLogout = createAsyncThunk<
   LoginLogoutResponse, // return type
   LoginLogoutRequest, // args type
-  { dispatch: LoginAppDispatch | DashboardAppDispatch; state: LoginRootState | DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/logout", async (args, thunkAPI) => {
   const body: KeyValues = { ref: args.ref };
 
@@ -150,7 +143,7 @@ export type LoginErrorInfoResponse = LoginErrorInfoResponseLoggedIn | LoginError
 export const fetchErrorInfo = createAsyncThunk<
   LoginErrorInfoResponse, // return type
   undefined, // args type
-  { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchErrorInfo", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const base_url = state.config.login_base_url || state.config.error_info_url;
@@ -227,7 +220,7 @@ export type UseOtherDevice1ResponseWithoutQR = UseOtherDevice1ResponseCommon & {
 export const fetchUseOtherDevice1 = createAsyncThunk<
   LoginUseOtherDevice1Response, // return type
   LoginUseOtherDevice1Request, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/useOtherDevice1", async (args, thunkAPI) => {
   const body: KeyValues = args;
 
@@ -295,7 +288,7 @@ export interface DeviceInfo {
 export const fetchUseOtherDevice2 = createAsyncThunk<
   LoginUseOtherDevice2Response, // return type
   LoginUseOtherDevice2Request, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/useOtherDevice2", async (args, thunkAPI) => {
   // The backend endpoint will use 'ref' if it is provided, but when the user follows the QR code
   // there is no pending request (with a 'ref') at first, only a state_id parameter from the QR URL.
@@ -349,7 +342,7 @@ export interface LoginAuthnOptions {
 export const fetchNext = createAsyncThunk<
   LoginNextResponse, // return type
   LoginNextRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchNext", async (args, thunkAPI) => {
   // TODO: We also have the full next_url in config, should we remove that?
   return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", args)
@@ -372,7 +365,7 @@ export interface LoginNewDeviceResponse {
 export const fetchNewDevice = createAsyncThunk<
   LoginNewDeviceResponse, // return type
   { ref: string }, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchNewDevice", async (args, thunkAPI) => {
   return makeLoginRequest<LoginNewDeviceResponse>(thunkAPI, "new_device", args)
     .then((response) => response.payload)
@@ -401,7 +394,7 @@ export interface LoginMfaAuthResponse {
 export const fetchMfaAuth = createAsyncThunk<
   LoginMfaAuthResponse, // return type
   LoginMfaAuthRequest, // args type
-  { dispatch: LoginAppDispatch; state: LoginRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("login/api/fetchMfaAuth", async (args, thunkAPI) => {
   return makeLoginRequest<LoginMfaAuthResponse>(thunkAPI, "mfa_auth", args)
     .then((response) => response.payload)

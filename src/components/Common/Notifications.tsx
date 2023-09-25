@@ -1,7 +1,4 @@
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";
@@ -9,10 +6,10 @@ import { clearNotifications, eduidNotification, notificationLevel } from "slices
 import { UNKNOWN_MESSAGE } from "translation";
 
 export function Notifications(): JSX.Element | null {
-  const debug = useDashboardAppSelector((state) => state.config.debug);
-  const info = useDashboardAppSelector((state) => state.notifications.info);
-  const error = useDashboardAppSelector((state) => state.notifications.error);
-  const dispatch = useDashboardAppDispatch();
+  const debug = useAppSelector((state) => state.config.debug);
+  const info = useAppSelector((state) => state.notifications.info);
+  const error = useAppSelector((state) => state.notifications.error);
+  const dispatch = useAppDispatch();
 
   const intl = useIntl();
 

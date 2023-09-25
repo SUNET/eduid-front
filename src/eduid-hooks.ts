@@ -3,5 +3,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { EduIDAppDispatch, EduIDAppRootState } from "./eduid-init-app";
 
-export const useEduIDAppDispatch = () => useDispatch<EduIDAppDispatch>();
-export const useEduIDAppSelector: TypedUseSelectorHook<EduIDAppRootState> = useSelector;
+export const useAppDispatch = () => useDispatch<EduIDAppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<EduIDAppRootState> = useSelector;

@@ -1,9 +1,6 @@
 import { changePassword } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -29,9 +26,9 @@ interface ChangePasswordFormData {
 }
 
 function ChangePasswordForm(props: ChangePasswordFormProps) {
-  const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
+  const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   function togglePasswordType() {

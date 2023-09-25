@@ -5,10 +5,7 @@ import { fetchJsConfig } from "apis/eduidJsConfig";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { DASHBOARD_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -108,12 +105,12 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
  */
 export default function Start(): JSX.Element {
   const intl = useIntl();
-  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
-  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useDashboardAppDispatch();
-  const identities = useDashboardAppSelector((state) => state.identities);
-  const letter_proofing = useDashboardAppSelector((state) => state.letter_proofing);
+  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
+  const emails = useAppSelector((state) => state.emails.emails);
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const dispatch = useAppDispatch();
+  const identities = useAppSelector((state) => state.identities);
+  const letter_proofing = useAppSelector((state) => state.letter_proofing);
   let username;
   let progress;
 

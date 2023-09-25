@@ -6,7 +6,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import EmailInput from "components/Common/EmailInput";
 import PasswordInput from "components/Common/PasswordInput";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";

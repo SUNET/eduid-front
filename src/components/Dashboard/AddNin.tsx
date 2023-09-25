@@ -1,9 +1,9 @@
 import NinDisplay from "components/Common/NinDisplay";
-import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import NinForm from "./NinForm";
 
 export default function AddNin(): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
+  const nin = useAppSelector((state) => state.identities.nin);
 
   if (nin) {
     return <NinDisplay nin={nin} allowDelete={true} />;

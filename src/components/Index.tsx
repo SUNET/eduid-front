@@ -1,5 +1,5 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { useIndexAppDispatch, useIndexAppSelector as useLoginAppSelector } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOGIN_CONFIG_URL } from "globals";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,8 @@ import EduIDButton from "./Common/EduIDButton";
 
 export function Index() {
   const navigate = useNavigate();
-  const dispatch = useIndexAppDispatch();
-  const dashboard_url = useLoginAppSelector((state) => state.config.dashboard_url);
+  const dispatch = useAppDispatch();
+  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
 
   async function getLoginConfig() {
     const config = await dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));

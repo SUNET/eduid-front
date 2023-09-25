@@ -3,12 +3,7 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import {
-  IndexAppDispatch as DashboardAppDispatch,
-  IndexAppDispatch as ErrorsAppDispatch,
-  IndexAppDispatch as LoginAppDispatch,
-  IndexAppDispatch as SignupAppDispatch,
-} from "eduid-init-app";
+import { EduIDAppDispatch } from "eduid-init-app";
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
 /*********************************************************************************************************************/
@@ -25,7 +20,7 @@ export const fetchJsConfig = createAsyncThunk<
   JsConfigGetConfigResponse, // return type
   { url: string }, // args type
   {
-    dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
+    dispatch: EduIDAppDispatch;
     state: StateWithCommonConfig;
   }
 >("config/fetchJsConfig", async (args, thunkAPI) => {

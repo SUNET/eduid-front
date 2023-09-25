@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EmailInfo } from "apis/eduidEmail";
-import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { LadokData } from "./eduidLadok";
 import { OrcidInfo } from "./eduidOrcid";
@@ -67,7 +67,7 @@ export interface FetchIdentitiesResponse {
 export const postPersonalData = createAsyncThunk<
   AllUserData, // return type
   PersonalDataRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/postPersonalData", async (args, thunkAPI) => {
   const data: KeyValues = {
     display_name: args.display_name,
@@ -89,7 +89,7 @@ export const postPersonalData = createAsyncThunk<
 export const requestAllPersonalData = createAsyncThunk<
   AllUserData, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/requestAllPersonalData", async (args, thunkAPI) => {
   return makePersonalDataRequest<AllUserData>(thunkAPI, "all-user-data", args)
     .then((response) => response.payload)
@@ -105,7 +105,7 @@ export const requestAllPersonalData = createAsyncThunk<
 export const fetchIdentities = createAsyncThunk<
   FetchIdentitiesResponse, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/fetchIdentities", async (args, thunkAPI) => {
   return makePersonalDataRequest<FetchIdentitiesResponse>(thunkAPI, "identities", args)
     .then((response) => response.payload)
