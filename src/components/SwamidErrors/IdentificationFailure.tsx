@@ -1,12 +1,12 @@
 import { fetchErrorInfo } from "apis/eduidLogin";
-import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
 export function IdentificationFailure(props: FailureComponentProps): JSX.Element {
-  const dispatch = useErrorsAppDispatch();
-  const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
+  const dispatch = useAppDispatch();
+  const is_configured = useAppSelector((state) => state.config.is_configured);
 
   useEffect(() => {
     if (is_configured) {
@@ -26,7 +26,7 @@ export function IdentificationFailure(props: FailureComponentProps): JSX.Element
 }
 
 function MissingNin(): JSX.Element {
-  const error_info = useErrorsAppSelector((state) => state.config.error_info);
+  const error_info = useAppSelector((state) => state.config.error_info);
 
   let SpecificMessage;
 

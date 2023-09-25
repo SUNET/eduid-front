@@ -13,10 +13,7 @@ import {
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -37,10 +34,10 @@ function Phones() {
    */
   const [completeCaptcha, setCompleteCaptcha] = useState(false);
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
-  const dispatch = useDashboardAppDispatch();
-  const phones = useDashboardAppSelector((state) => state.phones);
-  const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
-  const error = useDashboardAppSelector((state) => state.notifications.error);
+  const dispatch = useAppDispatch();
+  const phones = useAppSelector((state) => state.phones);
+  const default_country_code = useAppSelector((state) => state.config.default_country_code);
+  const error = useAppSelector((state) => state.notifications.error);
   const [img, setImg] = useState<string | undefined>(undefined);
 
   useEffect(() => {

@@ -1,8 +1,5 @@
 import { fetchSuggestedPassword } from "apis/eduidSecurity";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
@@ -11,9 +8,9 @@ import ChangePasswordForm from "./ChangePasswordForm";
 export const finish_url = "/profile/security";
 
 function ChangePassword() {
-  const suggested_password = useDashboardAppSelector((state) => state.chpass.suggested_password);
-  const is_app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useDashboardAppDispatch();
+  const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
+  const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
+  const dispatch = useAppDispatch();
   const intl = useIntl();
 
   useEffect(() => {

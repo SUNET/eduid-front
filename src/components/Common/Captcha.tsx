@@ -1,5 +1,5 @@
 import { CaptchaProps } from "components/Signup/SignupCaptcha";
-import { useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
@@ -13,7 +13,7 @@ interface LoadingCaptchaProps extends CaptchaProps {
 }
 
 function LoadingCaptcha(props: LoadingCaptchaProps) {
-  const recaptcha_key = useSignupAppSelector((state) => state.config.recaptcha_public_key);
+  const recaptcha_key = useAppSelector((state) => state.config.recaptcha_public_key);
 
   function loadedCaptcha() {
     console.log("Loaded recaptcha");
@@ -43,7 +43,7 @@ function LoadingCaptcha(props: LoadingCaptchaProps) {
 }
 
 function DevSubmitCaptchaButton(props: CaptchaProps): JSX.Element | null {
-  const environment = useSignupAppSelector((state) => state.config.environment);
+  const environment = useAppSelector((state) => state.config.environment);
 
   // Only show this button in the staging environment. This button is bad user experience
   // for real users, but required for the Selenium tests to be able to bypass the captcha with the use

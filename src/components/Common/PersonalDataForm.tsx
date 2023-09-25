@@ -5,10 +5,7 @@ import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "a
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import { Fragment } from "react";
@@ -26,8 +23,8 @@ interface PersonalDataFormProps {
 
 export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
-  const dispatch = useDashboardAppDispatch();
-  const personal_data = useDashboardAppSelector((state) => state.personal_data.response);
+  const dispatch = useAppDispatch();
+  const personal_data = useAppSelector((state) => state.personal_data.response);
   const messages = LOCALIZED_MESSAGES;
 
   async function formSubmit(values: PersonalDataRequest) {
@@ -107,10 +104,10 @@ function RenderLanguageSelect(): JSX.Element {
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
 const RenderLockedNames = (props: { labels: NameLabels }) => {
-  const dispatch = useDashboardAppDispatch();
-  const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const given_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.response?.surname);
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.config.loading_data);
+  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const surname = useAppSelector((state) => state.personal_data.response?.surname);
 
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());

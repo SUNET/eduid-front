@@ -1,7 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
-import { IndexRootState as SignupRootState, getTestIndexStore } from "eduid-init-app";
+import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -21,7 +21,7 @@ import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
 
-export const signupTestState: SignupRootState = {
+export const signupTestState: EduIDAppRootState = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",
@@ -50,7 +50,7 @@ export const signupTestState: SignupRootState = {
 };
 
 interface renderArgs {
-  state?: Partial<SignupRootState>;
+  state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
@@ -65,7 +65,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       debug: true,
     },
   };
-  const store = getTestIndexStore(args.state || defaultState);
+  const store = getTestEduIDStore(args.state || defaultState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <SignupGlobalStateProvider>

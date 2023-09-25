@@ -1,4 +1,4 @@
-import { useIndexAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
@@ -29,10 +29,10 @@ export const advancedSettingsPath = "/profile/settings/advanced-settings";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): JSX.Element {
-  const isLoaded = useIndexAppSelector((state) => state.config.is_configured);
-  const authn_options = useIndexAppSelector((state) => state.login.authn_options);
-  const loginRef = useIndexAppSelector((state) => state.login.ref);
-  const eppn = useIndexAppSelector((state) => state.personal_data.eppn);
+  const isLoaded = useAppSelector((state) => state.config.is_configured);
+  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const loginRef = useAppSelector((state) => state.login.ref);
+  const eppn = useAppSelector((state) => state.personal_data.eppn);
 
   return (
     <React.StrictMode>

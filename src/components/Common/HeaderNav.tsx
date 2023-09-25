@@ -3,7 +3,7 @@ import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesom
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/IndexMain";
-import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
@@ -22,7 +22,7 @@ export interface RenderUserNameProps {
 }
 
 function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
+  const emails = useAppSelector((state) => state.emails.emails);
 
   if (!emails.length) {
     return null;

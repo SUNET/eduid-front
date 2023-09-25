@@ -1,4 +1,4 @@
-import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { FormText } from "reactstrap";
@@ -16,9 +16,9 @@ export interface PasswordStrengthData {
 }
 
 function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
-  const minRequiredEntropy = useDashboardAppSelector((state) => state.config.password_entropy);
-  const pdata = useDashboardAppSelector((state) => state.personal_data);
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
+  const minRequiredEntropy = useAppSelector((state) => state.config.password_entropy);
+  const pdata = useAppSelector((state) => state.personal_data);
+  const emails = useAppSelector((state) => state.emails.emails);
   const [pwScore, setPwScore] = useState(0);
   const intl = useIntl();
 

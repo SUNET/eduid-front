@@ -5,10 +5,7 @@ import { UserIdentities } from "apis/eduidPersonalData";
 import { PhonesResponse } from "apis/eduidPhone";
 import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
 import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
@@ -171,12 +168,12 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
  * This component is responsible for rendering the recommendations accordion.
  */
 export function Recommendations(): JSX.Element | null {
-  const dispatch = useDashboardAppDispatch();
-  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const credentials = useDashboardAppSelector((state) => state.security.credentials);
-  const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const identities = useDashboardAppSelector((state) => state.identities);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
+  const dispatch = useAppDispatch();
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const credentials = useAppSelector((state) => state.security.credentials);
+  const phones = useAppSelector((state) => state.phones.phones);
+  const identities = useAppSelector((state) => state.identities);
+  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
   const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>

@@ -1,7 +1,8 @@
 import { bankIDMfaAuthenticate } from "apis/eduidBankid";
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";

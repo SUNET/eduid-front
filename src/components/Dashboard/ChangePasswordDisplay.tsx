@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -10,7 +10,7 @@ interface ChangePasswordDisplayProps {
 
 function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   const [showModal, setShowModal] = useState<boolean>(props.showModal === true);
-  const config = useDashboardAppSelector((state) => state.config);
+  const config = useAppSelector((state) => state.config);
 
   function handleAcceptModal() {
     const chpassURL = config.authn_url + "chpass";

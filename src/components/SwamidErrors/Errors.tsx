@@ -1,5 +1,5 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
-import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { ERRORS_CONFIG_URL } from "globals";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -19,9 +19,9 @@ export interface FailureComponentProps {
 export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
-  const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
-  const dashboard_url = useErrorsAppSelector((state) => state.config.dashboard_url);
-  const dispatch = useErrorsAppDispatch();
+  const is_configured = useAppSelector((state) => state.config.is_configured);
+  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
+  const dispatch = useAppDispatch();
 
   const [errorURL, setErrorURL] = useState<errorURLData>({});
 
@@ -76,7 +76,7 @@ export function Errors() {
 }
 
 export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Element {
-  const error_info = useErrorsAppSelector((state) => state.config.error_info);
+  const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
     <React.Fragment>

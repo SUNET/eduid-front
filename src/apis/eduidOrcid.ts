@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../eduid-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 export interface OrcidInfo {
@@ -29,7 +29,7 @@ export interface FetchOrcidResponse {
 export const fetchOrcid = createAsyncThunk<
   FetchOrcidResponse, // return type
   FetchOrcidRequest, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/fetchOrcid", async (args, thunkAPI) => {
   return makeOrcidRequest<FetchOrcidResponse>(thunkAPI, "")
     .then((response) => response.payload)
@@ -48,7 +48,7 @@ export interface RemoveOrcidResponse {}
 export const removeOrcid = createAsyncThunk<
   RemoveOrcidResponse, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/removeOrcid", async (args, thunkAPI) => {
   const body: KeyValues = {}; // Need a body to make this a POST, not a GET
   return makeOrcidRequest<RemoveOrcidResponse>(thunkAPI, "remove", body)

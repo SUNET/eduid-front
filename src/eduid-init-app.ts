@@ -13,7 +13,7 @@ export const eduidStore = configureStore({
 });
 
 // The same thing again, for use in tests
-export function getTestIndexStore(preloadedState: Partial<EduIDAppRootState>) {
+export function getTestEduIDStore(preloadedState: Partial<EduIDAppRootState>) {
   const testStore = configureStore({
     reducer: eduIDApp,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),

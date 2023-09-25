@@ -1,4 +1,4 @@
-import { useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "./EduIDButton";
@@ -8,8 +8,8 @@ export const registerHeaderClass = "register-header";
 export const resetPasswordLinkId = "reset-password";
 
 export default function EmailInUse(): JSX.Element {
-  const email = useSignupAppSelector((state) => state.signup.email);
-  const reset_password_service_url = useSignupAppSelector((state) => state.config.reset_password_service_url);
+  const email = useAppSelector((state) => state.signup.email);
+  const reset_password_link = useAppSelector((state) => state.config.reset_password_link);
 
   return (
     <React.Fragment>
