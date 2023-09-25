@@ -1163,23 +1163,6 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
             </article>
-            <article id="svipe">
-              <h3>
-                <FormattedMessage description="Svipe heading" defaultMessage="What is Svipe iD?" />
-              </h3>
-              <p>
-                <FormattedMessage description="What is Svipe? description" defaultMessage={`Description of Svipe iD`} />
-              </p>
-              <h4>
-                <FormattedMessage description="How do I use Svipe? heading" defaultMessage={`How do I use Svipe iD?`} />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="How do I use Svipe? description"
-                  defaultMessage={`How to use Svipe iD`}
-                />
-              </p>
-            </article>
           </AccordionItemTemplate>
         </Accordion>
 

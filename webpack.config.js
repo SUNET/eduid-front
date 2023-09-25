@@ -92,17 +92,6 @@ module.exports = {
     ],
   },
   plugins: [
-<<<<<<< HEAD
-=======
-    ...["index"].map((entryName) => {
-      return new HtmlWebpackPlugin({
-        hash: true,
-        template: `./public/${entryName}.html`,
-        filename: `${entryName}.dev.html`,
-        chunks: [`${entryName}`],
-      });
-    }),
->>>>>>> 546fec87e (login.html -> index.html)
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
