@@ -1,10 +1,14 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAppSelector } from "eduid-hooks";
 =======
 import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
 >>>>>>> a84b08339 (correct path)
+=======
+import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
+>>>>>>> 75081a95d (Fix conflicts)
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 

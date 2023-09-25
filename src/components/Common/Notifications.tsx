@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-=======
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
->>>>>>> a84b08339 (correct path)
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";

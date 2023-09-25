@@ -1,11 +1,7 @@
 import { postDeleteAccount } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-<<<<<<< HEAD
 import { useAppDispatch } from "eduid-hooks";
-=======
-import { useIndexAppDispatch as useDashboardAppDispatch } from "index-hooks";
->>>>>>> a84b08339 (correct path)
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";

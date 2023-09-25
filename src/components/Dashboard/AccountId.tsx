@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useAppSelector } from "eduid-hooks";
-=======
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
->>>>>>> a84b08339 (correct path)
 import { FormattedMessage } from "react-intl";
 
 const idUserEppn = "user-eppn";

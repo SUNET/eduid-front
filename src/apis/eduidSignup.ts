@@ -3,7 +3,11 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+<<<<<<< HEAD
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
+=======
+import { IndexAppDispatch as SignupAppDispatch, IndexRootState as SignupRootState } from "eduid-init-app";
+>>>>>>> 75081a95d (Fix conflicts)
 import { signupSlice } from "slices/Signup";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
