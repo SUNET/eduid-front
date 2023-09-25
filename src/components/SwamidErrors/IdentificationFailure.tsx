@@ -1,9 +1,5 @@
 import { fetchErrorInfo } from "apis/eduidLogin";
-<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-=======
-import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "eduid-hooks";
->>>>>>> 75081a95d (Fix conflicts)
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
