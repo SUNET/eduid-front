@@ -1,12 +1,7 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
-<<<<<<< HEAD
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
-=======
-import { EduIDAppDispatch } from "eduid-init-app";
-import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
->>>>>>> d20e1f2b3 (Fix conflict)
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
