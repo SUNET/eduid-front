@@ -451,7 +451,7 @@
   },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
-    "string": "Det språk som användas som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
+    "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
