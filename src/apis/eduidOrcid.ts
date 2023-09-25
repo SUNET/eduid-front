@@ -3,11 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-<<<<<<< HEAD
 import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
-=======
-import { IndexAppDispatch as DashboardAppDispatch, IndexRootState as DashboardRootState } from "../eduid-init-app";
->>>>>>> 75081a95d (Fix conflicts)
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 export interface OrcidInfo {

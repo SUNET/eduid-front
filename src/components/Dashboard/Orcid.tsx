@@ -1,14 +1,7 @@
 import { urlJoin } from "apis/common";
 import { removeOrcid } from "apis/eduidOrcid";
 import EduIDButton from "components/Common/EduIDButton";
-<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-=======
-import {
-  useIndexAppDispatch as useDashboardAppDispatch,
-  useIndexAppSelector as useDashboardAppSelector,
-} from "eduid-hooks";
->>>>>>> 75081a95d (Fix conflicts)
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
