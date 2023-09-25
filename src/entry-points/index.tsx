@@ -48,11 +48,17 @@ const getConfig = async function () {
 polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
+<<<<<<< HEAD
 setupLanguage(loginStore.dispatch);
+=======
+
+setupLanguage(eduidStore.dispatch);
+>>>>>>> d20e1f2b3 (Fix conflict)
 
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
+<<<<<<< HEAD
   <SignupGlobalStateProvider>
     <ResetPasswordGlobalStateProvider>
       <ReduxIntlProvider store={eduidStore}>
@@ -63,6 +69,15 @@ ReactDOM.render(
       </ReduxIntlProvider>
     </ResetPasswordGlobalStateProvider>
   </SignupGlobalStateProvider>,
+=======
+  <ResetPasswordGlobalStateProvider>
+    <ReduxIntlProvider store={eduidStore}>
+      <BrowserRouter>
+        <IndexMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
+  </ResetPasswordGlobalStateProvider>,
+>>>>>>> d20e1f2b3 (Fix conflict)
   initDomTarget,
   getConfig
 );

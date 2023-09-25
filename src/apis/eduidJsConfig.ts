@@ -3,27 +3,8 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-<<<<<<< HEAD
 import { EduIDAppDispatch } from "eduid-init-app";
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { DashboardAppDispatch } from "dashboard-init-app";
-import { helpAppDispatch } from "help-init-app";
-import { IndexAppDispatch as ErrorsAppDispatch, IndexAppDispatch as SignupAppDispatch } from "index-init-app";
-import { LoginAppDispatch } from "login-init-app";
-=======
-import {
-  IndexAppDispatch as DashboardAppDispatch,
-  IndexAppDispatch as ErrorsAppDispatch,
-  IndexAppDispatch as LoginAppDispatch,
-  IndexAppDispatch as SignupAppDispatch,
-} from "eduid-init-app";
->>>>>>> 0011ea6ce (Fix conflicts)
-=======
-import { EduIDAppDispatch } from "eduid-init-app";
->>>>>>> ff94614b5 (merged hooks files into one and changed name from index to eduid)
->>>>>>> 2918324e8 (merged hooks files into one and changed name from index to eduid)
+
 import { KeyValues, makeBareRequest, RequestThunkAPI, StateWithCommonConfig } from "./common";
 
 /*********************************************************************************************************************/
@@ -40,15 +21,7 @@ export const fetchJsConfig = createAsyncThunk<
   JsConfigGetConfigResponse, // return type
   { url: string }, // args type
   {
-<<<<<<< HEAD
     dispatch: EduIDAppDispatch;
-=======
-<<<<<<< HEAD
-    dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch | helpAppDispatch;
-=======
-    dispatch: EduIDAppDispatch;
->>>>>>> ff94614b5 (merged hooks files into one and changed name from index to eduid)
->>>>>>> 2918324e8 (merged hooks files into one and changed name from index to eduid)
     state: StateWithCommonConfig;
   }
 >("config/fetchJsConfig", async (args, thunkAPI) => {
