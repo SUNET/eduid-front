@@ -9,7 +9,7 @@ import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";

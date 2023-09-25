@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "eduid-hooks";
 import { ERRORS_CONFIG_URL } from "globals";
-import { useIndexAppDispatch as useErrorsAppDispatch, useIndexAppSelector as useErrorsAppSelector } from "index-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";

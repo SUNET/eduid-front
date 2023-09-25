@@ -1,4 +1,4 @@
-import { useIndexAppSelector as useSignupAppSelector } from "index-hooks";
+import { useIndexAppSelector as useSignupAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "./EduIDButton";

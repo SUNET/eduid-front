@@ -1,7 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+import { IndexRootState as DashboardRootState, getTestIndexStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
-import { IndexRootState as DashboardRootState, getTestIndexStore } from "index-init-app";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as configInitialState } from "slices/IndexConfig";

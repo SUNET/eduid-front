@@ -5,7 +5,7 @@ import NotificationModal from "components/Common/NotificationModal";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";

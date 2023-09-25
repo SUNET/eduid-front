@@ -3,7 +3,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { HeaderNav } from "./HeaderNav";
 

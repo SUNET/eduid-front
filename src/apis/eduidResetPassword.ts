@@ -3,8 +3,8 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { IndexAppDispatch as LoginAppDispatch, IndexRootState as LoginRootState } from "eduid-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
-import { IndexAppDispatch as LoginAppDispatch, IndexRootState as LoginRootState } from "index-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/

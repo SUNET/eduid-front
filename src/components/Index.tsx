@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { useIndexAppDispatch, useIndexAppSelector as useLoginAppSelector } from "eduid-hooks";
 import { LOGIN_CONFIG_URL } from "globals";
-import { useIndexAppDispatch, useIndexAppSelector as useLoginAppSelector } from "index-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";

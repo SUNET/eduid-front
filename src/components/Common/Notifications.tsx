@@ -1,7 +1,7 @@
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { Alert } from "reactstrap";

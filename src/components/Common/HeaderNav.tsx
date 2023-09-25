@@ -3,7 +3,7 @@ import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesom
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/IndexMain";
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";

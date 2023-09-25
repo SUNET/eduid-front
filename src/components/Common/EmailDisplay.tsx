@@ -1,4 +1,4 @@
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
+import { useIndexAppSelector as useDashboardAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 function EmailDisplay(): JSX.Element {

@@ -1,7 +1,7 @@
 import { useActor } from "@xstate/react";
 import { getPasswordRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
-import { useIndexAppDispatch as useSignupAppDispatch } from "index-hooks";
+import { useIndexAppDispatch as useSignupAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";

@@ -5,12 +5,12 @@ import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "a
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
-import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";

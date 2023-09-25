@@ -8,7 +8,7 @@ import { advancedSettingsPath, identityPath, settingsPath } from "components/Ind
 import {
   useIndexAppDispatch as useDashboardAppDispatch,
   useIndexAppSelector as useDashboardAppSelector,
-} from "index-hooks";
+} from "eduid-hooks";
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
