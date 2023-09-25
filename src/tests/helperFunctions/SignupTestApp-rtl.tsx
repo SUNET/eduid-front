@@ -3,13 +3,8 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
-<<<<<<< HEAD
-=======
-import { IndexRootState as SignupRootState, getTestIndexStore } from "index-init-app";
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-<<<<<<< HEAD
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState } from "slices/AppLoading";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
@@ -24,8 +19,6 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
-=======
->>>>>>> f5959dcad (Fix conflict)
 import { initialState as signupInitialState } from "slices/Signup";
 
 export const signupTestState: EduIDAppRootState = {
@@ -72,11 +65,9 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       debug: true,
     },
   };
-<<<<<<< HEAD
+
   const store = getTestEduIDStore(args.state || defaultState);
-=======
-  const store = getTestIndexStore(args.state || defaultState);
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
+
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <SignupGlobalStateProvider>

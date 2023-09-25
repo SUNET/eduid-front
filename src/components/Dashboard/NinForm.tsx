@@ -1,7 +1,14 @@
 import { addNin } from "apis/eduidSecurity";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+=======
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "eduid-hooks";
+>>>>>>> 75081a95d (Fix conflicts)
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 

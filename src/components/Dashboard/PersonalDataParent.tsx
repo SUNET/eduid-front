@@ -1,10 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
-<<<<<<< HEAD
 import { useAppSelector } from "eduid-hooks";
-=======
-import { useIndexAppSelector as useDashboardAppSelector } from "index-hooks";
->>>>>>> a84b08339 (correct path)
 import { Fragment, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import NameDisplay from "./NameDisplay";

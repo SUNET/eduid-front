@@ -1,4 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";

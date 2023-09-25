@@ -3,16 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-<<<<<<< HEAD
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-=======
-import {
-  IndexAppDispatch as DashboardAppDispatch,
-  IndexRootState as DashboardRootState,
-  IndexAppDispatch as LoginAppDispatch,
-  IndexRootState as LoginRootState,
-} from "index-init-app";
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 type EidasMethods = "eidas" | "freja";

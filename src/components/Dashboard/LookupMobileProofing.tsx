@@ -2,7 +2,14 @@ import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
+<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+=======
+import {
+  useIndexAppDispatch as useDashboardAppDispatch,
+  useIndexAppSelector as useDashboardAppSelector,
+} from "eduid-hooks";
+>>>>>>> 75081a95d (Fix conflicts)
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";

@@ -3,10 +3,6 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
-<<<<<<< HEAD
-=======
-import { IndexRootState as LoginRootState, getTestIndexStore } from "index-init-app";
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
@@ -63,11 +59,7 @@ interface renderArgs {
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
-<<<<<<< HEAD
   const store = getTestEduIDStore(args.state || loginTestState);
-=======
-  const store = getTestIndexStore(args.state || loginTestState);
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <ResetPasswordGlobalStateProvider>

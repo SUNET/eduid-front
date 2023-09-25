@@ -1,11 +1,6 @@
 import { fetchNewDevice } from "apis/eduidLogin";
-<<<<<<< HEAD
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
-=======
-import { useAppDispatch, useAppSelector } from "hooks";
-import { IndexAppDispatch as LoginAppDispatch } from "index-init-app";
->>>>>>> 3cb06bdce (DashboardMain -> IndexMain)
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
