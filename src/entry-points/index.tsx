@@ -1,5 +1,4 @@
-
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
@@ -15,69 +14,27 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = async function () {
-  indexStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
-  const result = await indexStore.dispatch(fetchJsConfig({ url: DASHBOARD_CONFIG_URL }));
-  if (fetchJsConfig.fulfilled.match(result)) {
-    const response = await indexStore.dispatch(requestAllPersonalData());
-    if (requestAllPersonalData.fulfilled.match(response)) {
-      if (response.payload.language) {
-        indexStore.dispatch(
-          updateIntl({
-            locale: response.payload.language,
-            messages: LOCALIZED_MESSAGES[response.payload.language],
-          })
-        );
-      }
-      indexStore.dispatch(appLoadingSlice.actions.appLoaded());
-    }
-  }
-
-  const params = new URLSearchParams(document.location.search);
-  if (params) {
-    const msg = params.get("msg");
-    if (msg !== null) {
-      if (msg.indexOf(":ERROR:") === 0) {
-        indexStore.dispatch(showNotification({ message: msg.substr(7), level: "error" }));
-      } else {
-        indexStore.dispatch(showNotification({ message: msg, level: "info" }));
-      }
-    }
-  }
+  eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
+};
 
 /* Initialise common polyfills for missing browser functionality */
 polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
-<<<<<<< HEAD
-setupLanguage(loginStore.dispatch);
-=======
-
 setupLanguage(eduidStore.dispatch);
->>>>>>> d20e1f2b3 (Fix conflict)
 
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-<<<<<<< HEAD
   <SignupGlobalStateProvider>
     <ResetPasswordGlobalStateProvider>
       <ReduxIntlProvider store={eduidStore}>
-
         <BrowserRouter>
           <IndexMain />
         </BrowserRouter>
       </ReduxIntlProvider>
     </ResetPasswordGlobalStateProvider>
   </SignupGlobalStateProvider>,
-=======
-  <ResetPasswordGlobalStateProvider>
-    <ReduxIntlProvider store={eduidStore}>
-      <BrowserRouter>
-        <IndexMain />
-      </BrowserRouter>
-    </ReduxIntlProvider>
-  </ResetPasswordGlobalStateProvider>,
->>>>>>> d20e1f2b3 (Fix conflict)
   initDomTarget,
   getConfig
 );

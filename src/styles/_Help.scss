@@ -1,28 +1,4 @@
 .help-content > li {
-.contact-container {
-  font-size: 1rem;
-  margin-top: 2rem;
-  dt {
-    font-family: $proxima-bold;
-  }
-  dl.support-phone-info,
-  dl.support-email-info {
-    display: flex;
-    dt {
-      margin-right: 5px;
-
-      svg {
-        margin-right: 5px;
-      }
-    }
-  }
-  dl.support-phone-info {
-    margin-top: 1rem;
-  }
-}
-
-.faq-content > li {
-.help-content > li {
   border-bottom: 1px solid #d8d8d8;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -32,18 +8,10 @@
 }
 
 .help-content {
-<<<<<<< HEAD
-
-=======
->>>>>>> d20e1f2b3 (Fix conflict)
   article {
     padding-bottom: 1em !important;
   }
 
-<<<<<<< HEAD
-.faq-content {
-=======
->>>>>>> d20e1f2b3 (Fix conflict)
   h3 {
     line-height: 1.2;
     font-size: 1.5rem;

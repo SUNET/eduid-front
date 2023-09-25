@@ -4,7 +4,7 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-import { KeyValues } from "./common";
+import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 export interface EmailInfo {
   email: string;
