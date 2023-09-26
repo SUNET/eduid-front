@@ -9,7 +9,7 @@
   },
   "+9mdAK": {
     "developer_comment": "about contact support - handle",
-    "string": "Kontakta eduID support"
+    "string": "Kontakt med eduID support"
   },
   "+B59c5": {
     "developer_comment": "Return to register",
@@ -89,7 +89,7 @@
   },
   "0LOfL0": {
     "developer_comment": "verification methods - list item 2",
-    "string": "{mobile} användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att fullfölja verifieringen på eduid.se,"
+    "string": "{mobile} användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att slutföra verifieringen i eduid.se,"
   },
   "0RdYDw": {
     "developer_comment": "pd no data added",
@@ -145,7 +145,7 @@
   },
   "1vF6Ky": {
     "developer_comment": "how use other devices - paragraph",
-    "string": "Lösenordsfri inloggning kan även användas genom att logga in till eduID med hjälp av en annan enhet:"
+    "string": "Lösenordsfri inloggning kan även användas genom att logga in i eduID med hjälp av en annan enhet:"
   },
   "2D7weB": {
     "developer_comment": "orcid connect button",
@@ -157,7 +157,7 @@
   },
   "2QWlvD": {
     "developer_comment": "what is sunet - paragraph 1",
-    "string": "eduID är en tjänst som tillhandahålls av SUNET (Swedish University Computer Network), en organisation som är en del av Vetenskapsrådet. SUNET tillgodoser bl.a. datakommunikation och nätverk hos svenska lärosäten och andra offentliga organisationer med koppling till forskning eller högre utbildning."
+    "string": "eduID är en tjänst som tillhandahålls av SUNET (Swedish University Computer Network), som är en del av Vetenskapsrådet. SUNET tillgodoser bl.a. datakommunikation och nätverk hos svenska lärosäten och andra offentliga organisationer med koppling till forskning eller högre utbildning."
   },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
@@ -217,7 +217,7 @@
   },
   "3kNowi": {
     "developer_comment": "create eduid - list item 3",
-    "string": "Acceptera användarvillkoren,"
+    "string": "acceptera användarvillkoren,"
   },
   "3lgcSo": {
     "developer_comment": "accordion item security key additional info",
@@ -257,7 +257,7 @@
   },
   "4JwhDk": {
     "developer_comment": "svipe if personal number - paragraph",
-    "string": "Observera: innehavare av svenskt personnummer uppmanas att använda sig av metoderna som därav stöds istället."
+    "string": "Innehavare av svenskt personnummer uppmanas att istället använda sig av metoderna som stöds därav."
   },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
@@ -435,7 +435,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiera identitet'."
+    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -451,7 +451,7 @@
   },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
-    "string": "Det språk som användas som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
+    "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -475,7 +475,7 @@
   },
   "Cdd9/Y": {
     "developer_comment": "verification methods - list item 1",
-    "string": "{post} användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om hur man slutför verifieringen i eduid.se,"
+    "string": "{post} användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
   },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
@@ -632,7 +632,7 @@
   },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
-    "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort och ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
+    "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
   },
   "HDyZDY": {
     "developer_comment": "received sms",
@@ -998,7 +998,7 @@
   },
   "S+T+bv": {
     "developer_comment": "method svipe - paragraph",
-    "string": "{strong}, kan du använda {emphasis} för att verifiera din identitet med hjälp av ditt pass. Läs mer om Svipe iD nedan."
+    "string": "{strong}, kan du använda {emphasis} med hjälp av ditt pass för att verifiera din identitet. Läs mer om Svipe iD nedan."
   },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
@@ -1333,7 +1333,7 @@
   },
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
-    "string": "ansöka till och acceptera plats på högskolan,"
+    "string": "ansöker till och accepterar plats på högskolan,"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
@@ -1471,7 +1471,7 @@
   },
   "eOKhUB": {
     "developer_comment": "verification methods - list item 3",
-    "string": "{freja} användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan bekräfta ditt eduID. Läs mer om Freja+ nedan."
+    "string": "{freja} användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja+ nedan."
   },
   "eau1zR": {
     "developer_comment": "about verification of identity - info",
@@ -1604,7 +1604,7 @@
   },
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
-    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
+    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
   "fqZXes": {
     "developer_comment": "Reset Password email link sent",
@@ -1748,7 +1748,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Vissa tjänster kräver en högre tillitsnivå; så för att förstärka säkerheten i ditt eduID, utöver kännedom om ditt användarnamn (bekräftad e-postadress) och lösenords-kombination, kan du lägga till ett ytterligare lager av autentisering för att kunna logga in. Det kallas multifaktorautentisering (MFA), och i eduIDs fall tvåfaktorsautentisering (2FA)."
+    "string": "Vissa tjänster kräver en högre tillitsnivå, för att förstärka säkerheten i ditt eduID, utöver kännedom om ditt användarnamn (bekräftad e-postadress) och lösenords-kombination, kan du lägga till ett ytterligare lager av autentisering för att kunna logga in. Det kallas multifaktorautentisering (MFA), och i eduIDs fall tvåfaktorsautentisering (2FA)."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -1851,7 +1851,7 @@
   },
   "lic2YR": {
     "developer_comment": "what if verification for freja fails - paragraph",
-    "string": "Avinstallera appen, gör om registreringen, samt kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
+    "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
   },
   "login.assurance_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
@@ -1963,7 +1963,7 @@
   },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
-    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in informationen från ditt pass eller ID-dokument, men informationen sparas bara lokalt i din enhet och företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
+    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
   },
   "nV6G8Q": {
     "developer_comment": "what are verification levels - heading",
@@ -1971,7 +1971,7 @@
   },
   "nZx6UW": {
     "developer_comment": "what is privacy policy - paragraph",
-    "string": "Läs {privacy} för användning av eduID i sin helhet på Sunets hemsida, där du även hittar kontaktinformation till Dataskyddsombudet och Integritetsskyddsmyndigheten."
+    "string": "Läs {privacy} i sin helhet för användning av eduID på Sunets hemsida, där du även hittar kontaktinformation till Dataskyddsombudet och Integritetsskyddsmyndigheten."
   },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
@@ -2035,7 +2035,7 @@
   },
   "oEFGdi": {
     "developer_comment": "use svipe - list item 1",
-    "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
+    "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -2710,7 +2710,7 @@
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
-    "string": "Länka till Orcid / Ladok"
+    "string": "Länkning till Orcid / Ladok"
   },
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
