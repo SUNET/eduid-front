@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
@@ -14,6 +14,7 @@ const Footer = (): JSX.Element => {
   // const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
 
   const messages = LOCALIZED_MESSAGES;
+  const navigate = useNavigate();
 
   let translateTo: string[][] = [];
   let locale = "";
@@ -40,6 +41,13 @@ const Footer = (): JSX.Element => {
         })
       );
     }
+  };
+
+  const goToHelp = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (eppn) {
+      navigate("/faq");
+    } else window.location.href = `${eduidHomeUrl}/faq`;
   };
 
   return (
