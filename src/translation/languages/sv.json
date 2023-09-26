@@ -1604,7 +1604,7 @@
   },
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
-    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
+    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
   "fqZXes": {
     "developer_comment": "Reset Password email link sent",
