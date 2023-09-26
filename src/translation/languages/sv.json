@@ -89,7 +89,7 @@
   },
   "0LOfL0": {
     "developer_comment": "verification methods - list item 2",
-    "string": "{mobile} användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att fullfölja verifieringen på eduid.se,"
+    "string": "{mobile} användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att slutföra verifieringen i eduid.se,"
   },
   "0RdYDw": {
     "developer_comment": "pd no data added",
