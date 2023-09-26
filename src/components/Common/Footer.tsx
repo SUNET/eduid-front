@@ -1,14 +1,14 @@
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
-  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
-  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const eppn = useDashboardAppSelector((state) => state.personal_data?.eppn);
-  const dispatch = useDashboardAppDispatch();
+  const currentLocale = useAppSelector((state) => state.intl.locale);
+  const eduidHomeUrl = useAppSelector((state) => state.config.eduid_site_url);
+  const eppn = useAppSelector((state) => state.personal_data?.eppn);
+  const dispatch = useAppDispatch();
 
   const messages = LOCALIZED_MESSAGES;
   const navigate = useNavigate();
@@ -50,9 +50,9 @@ const Footer = (): JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
-          <div className="sunet-logo" />
-        </a>
+        <Link className="help-link" to="/faq">
+          <FormattedMessage defaultMessage="Help" description="Footer help" />
+        </Link>
         <span>
           &copy;
           <FormattedMessage defaultMessage="2013-2023" description="Footer copyright" />

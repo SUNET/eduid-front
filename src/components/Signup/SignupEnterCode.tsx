@@ -3,10 +3,10 @@ import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
@@ -16,9 +16,9 @@ interface ResponseCodeButtonsProps {
 }
 
 export function SignupEnterCode(): JSX.Element {
-  const signupState = useSignupAppSelector((state) => state.signup.state);
+  const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
@@ -170,9 +170,9 @@ export function SignupEnterCode(): JSX.Element {
 }
 
 export function ProcessEmailCode() {
-  const code = useSignupAppSelector((state) => state.signup.email_code);
+  const code = useAppSelector((state) => state.signup.email_code);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function verifyCode(verification_code: string) {
     const res = await dispatch(verifyEmailRequest({ verification_code }));

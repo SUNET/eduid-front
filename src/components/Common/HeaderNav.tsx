@@ -2,8 +2,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
-import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/Dashboard/DashboardMain";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/IndexMain";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
@@ -22,7 +22,7 @@ export interface RenderUserNameProps {
 }
 
 function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
+  const emails = useAppSelector((state) => state.emails.emails);
 
   if (!emails.length) {
     return null;

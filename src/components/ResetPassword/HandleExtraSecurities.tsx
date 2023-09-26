@@ -1,8 +1,8 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
-import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";

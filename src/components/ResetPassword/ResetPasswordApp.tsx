@@ -1,7 +1,7 @@
 import { useActor } from "@xstate/react";
 import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router-dom";

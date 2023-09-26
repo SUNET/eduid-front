@@ -1,6 +1,6 @@
 import { eidasGetStatus, GetStatusResponse } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useAppDispatch } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";
@@ -12,7 +12,7 @@ interface LoginParams {
 }
 
 export function ExternalReturnHandler() {
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
 

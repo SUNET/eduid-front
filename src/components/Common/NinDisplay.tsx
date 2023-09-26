@@ -1,7 +1,7 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ interface NinDisplayProps {
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   if (!props.nin) {
     // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that

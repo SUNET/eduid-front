@@ -1,6 +1,6 @@
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 export function FrejaeID(): JSX.Element {

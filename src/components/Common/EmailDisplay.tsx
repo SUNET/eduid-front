@@ -1,9 +1,8 @@
-import React from "react";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 function EmailDisplay(): JSX.Element {
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
+  const emails = useAppSelector((state) => state.emails.emails);
   const primary = emails.filter((email) => email.primary);
   let userData;
 

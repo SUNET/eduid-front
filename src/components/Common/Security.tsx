@@ -8,7 +8,7 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
@@ -19,13 +19,13 @@ import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 export function Security(): React.ReactElement | null {
-  const dispatch = useDashboardAppDispatch();
-  const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const dispatch = useAppDispatch();
+  const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
     (async () => {
@@ -195,7 +195,7 @@ export function Security(): React.ReactElement | null {
 function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
     (cred: CredentialType) =>

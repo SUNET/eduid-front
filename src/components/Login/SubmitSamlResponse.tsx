@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import ShowAfterDelay from "components/Common/ShowAfterDelay";
-import { useAppSelector } from "hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";

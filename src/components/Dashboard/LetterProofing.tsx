@@ -3,7 +3,7 @@ import { requestAllPersonalData } from "apis/eduidPersonalData";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
@@ -15,13 +15,13 @@ export interface LetterProofingProps {
 export default function LetterProofing(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const identities = useDashboardAppSelector((state) => state.identities);
-  const letter_expired = useDashboardAppSelector((state) => state.letter_proofing.letter_expired);
-  const letter_sent_date = useDashboardAppSelector((state) => state.letter_proofing.letter_sent);
-  const letter_expires_date = useDashboardAppSelector((state) => state.letter_proofing.letter_expires);
+  const identities = useAppSelector((state) => state.identities);
+  const letter_expired = useAppSelector((state) => state.letter_proofing.letter_expired);
+  const letter_sent_date = useAppSelector((state) => state.letter_proofing.letter_sent);
+  const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
   const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities.nin?.number || letter_expired;
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchLetterProofingState());

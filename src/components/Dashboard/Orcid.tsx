@@ -1,16 +1,16 @@
 import { urlJoin } from "apis/common";
 import { removeOrcid } from "apis/eduidOrcid";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 
 export function Orcid(): JSX.Element {
-  const dispatch = useDashboardAppDispatch();
-  const orcid = useDashboardAppSelector((state) => state.account_linking.orcid);
-  const orcid_url = useDashboardAppSelector((state) => state.config.orcid_url);
+  const dispatch = useAppDispatch();
+  const orcid = useAppSelector((state) => state.account_linking.orcid);
+  const orcid_url = useAppSelector((state) => state.config.orcid_url);
   const intl = useIntl();
 
   async function handleOrcidDelete() {

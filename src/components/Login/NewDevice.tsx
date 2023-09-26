@@ -1,6 +1,6 @@
 import { fetchNewDevice } from "apis/eduidLogin";
-import { useAppDispatch, useAppSelector } from "hooks";
-import { LoginAppDispatch } from "login-init-app";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { EduIDAppDispatch } from "eduid-init-app";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
@@ -127,7 +127,7 @@ interface KnownDeviceParams {
 export function initKnownDevice(
   this_device: string | undefined,
   remember_me: boolean | undefined,
-  dispatch: LoginAppDispatch
+  dispatch: EduIDAppDispatch
 ): KnownDeviceParams {
   if (!window.localStorage) {
     // Can't remember devices if there is no local storage
@@ -158,7 +158,7 @@ export function initKnownDevice(
  * Retire means that it is retained in memory to allow the user to revert the decision to forget it.
  *
  */
-export function forgetThisDevice(dispatch: LoginAppDispatch) {
+export function forgetThisDevice(dispatch: EduIDAppDispatch) {
   if (window.localStorage) {
     window.localStorage.removeItem(THIS_DEVICE_KEY);
   }

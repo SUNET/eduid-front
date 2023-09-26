@@ -1,5 +1,5 @@
 import { eidasGetStatus } from "apis/eduidEidas";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";

@@ -2,8 +2,8 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
-import { useSignupAppDispatch } from "signup-hooks";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
@@ -37,7 +37,7 @@ export function SignupApp(): JSX.Element {
  * Startup state to determine what kind of signup this is, and what to do next.
  */
 function SignupStart() {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
 
   useEffect(() => {

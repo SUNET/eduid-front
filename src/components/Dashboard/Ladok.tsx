@@ -1,4 +1,4 @@
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -11,9 +11,9 @@ interface SelectedUniProps {
 }
 
 const LadokContainer = (): JSX.Element => {
-  const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
+  const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSwitchChange = (): void => {
     // Easiest way to understand the logic in this function is to store the old switch status here.
@@ -73,11 +73,11 @@ const LadokContainer = (): JSX.Element => {
 };
 
 const LadokUniversitiesDropdown = (): JSX.Element => {
-  const locale = useDashboardAppSelector((state) => state.intl.locale);
-  const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
-  const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
-  const ladokName = useDashboardAppSelector((state) => state.ladok.ladokName);
-  const dispatch = useDashboardAppDispatch();
+  const locale = useAppSelector((state) => state.intl.locale);
+  const ladokUnis = useAppSelector((state) => state.ladok.unis);
+  const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
+  const ladokName = useAppSelector((state) => state.ladok.ladokName);
+  const dispatch = useAppDispatch();
   const intl = useIntl();
 
   const placeholder = intl.formatMessage({
@@ -167,10 +167,10 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 };
 
 const LadokLinkStatus = (): JSX.Element => {
-  const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
-  const unis = useDashboardAppSelector((state) => state.ladok.unis);
-  const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
-  const locale = useDashboardAppSelector((state) => state.intl.locale);
+  const isLinked = useAppSelector((state) => state.ladok.isLinked);
+  const unis = useAppSelector((state) => state.ladok.unis);
+  const ladok_name = useAppSelector((state) => state.ladok.ladokName);
+  const locale = useAppSelector((state) => state.intl.locale);
   // Initial university name will be empty string until information has been updated
   let university_name = "";
   if (unis && ladok_name && unis[ladok_name]) {
