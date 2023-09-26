@@ -475,7 +475,7 @@
   },
   "Cdd9/Y": {
     "developer_comment": "verification methods - list item 1",
-    "string": "{post} användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om hur man slutför verifieringen i eduid.se,"
+    "string": "{post} användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
   },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
