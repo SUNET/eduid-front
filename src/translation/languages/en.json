@@ -451,7 +451,7 @@
   },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
-    "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
+    "string": "To change the default language you can log in to eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
