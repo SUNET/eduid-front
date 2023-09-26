@@ -1,8 +1,10 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { LoginMain } from "components/Login/LoginMain";
+import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
-import { LOGIN_CONFIG_URL } from "globals";
+import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
+import { eduidStore } from "eduid-init-app";
+import { SIGNUP_CONFIG_URL } from "globals";
 import { loginStore } from "login-init-app";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -15,7 +17,7 @@ import "./public-path";
 /* Get configuration */
 const getConfig = async function () {
   console.log("Initializing state for the login app...");
-  const config = await loginStore.dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
+  const config = await eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(config)) {
     loginStore.dispatch(appLoadingSlice.actions.appLoaded());
   }
@@ -25,18 +27,20 @@ const getConfig = async function () {
 polyfillsInit();
 
 /* Get the language from the browser and initialise locale with the best match */
-setupLanguage(loginStore.dispatch);
+setupLanguage(eduidStore.dispatch);
 
 /* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <ResetPasswordGlobalStateProvider>
-    <ReduxIntlProvider store={loginStore}>
-      <BrowserRouter>
-        <LoginMain />
-      </BrowserRouter>
-    </ReduxIntlProvider>
-  </ResetPasswordGlobalStateProvider>,
+  <SignupGlobalStateProvider>
+    <ResetPasswordGlobalStateProvider>
+      <ReduxIntlProvider store={eduidStore}>
+        <BrowserRouter>
+          <IndexMain />
+        </BrowserRouter>
+      </ReduxIntlProvider>
+    </ResetPasswordGlobalStateProvider>
+  </SignupGlobalStateProvider>,
   initDomTarget,
   getConfig
 );

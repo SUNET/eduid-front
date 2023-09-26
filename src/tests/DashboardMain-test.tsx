@@ -1,6 +1,6 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("shows splash screen when not configured", () => {

@@ -1,5 +1,5 @@
 import { IndexMain } from "components/IndexMain";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { initialState } from "slices/PersonalData";
 import { render } from "./helperFunctions/DashboardTestApp-rtl";
 

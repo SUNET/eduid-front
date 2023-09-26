@@ -1,27 +1,19 @@
-/*
- * This is meant to be imported in the different entry points
- * to initialize the different components that the entry points
- * may want to render in different parts of the app.
- * Initialization involves localizing the app and providing
- * it with the redux store.
- */
-
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import eduIDApp from "./dashboard-store";
+import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
 const middlewares = [notifyAndDispatch, logger];
 
-export const dashboardStore = configureStore({
+export const indexStore = configureStore({
   reducer: eduIDApp,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
   devTools: process.env.NODE_ENV !== "production",
 });
 
 // The same thing again, for use in tests
-export function getTestDashboardStore(preloadedState: Partial<DashboardRootState>) {
+export function getTestSignupStore(preloadedState: Partial<IndexRootState>) {
   const testStore = configureStore({
     reducer: eduIDApp,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
@@ -32,5 +24,5 @@ export function getTestDashboardStore(preloadedState: Partial<DashboardRootState
 }
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type DashboardRootState = ReturnType<typeof dashboardStore.getState>;
-export type DashboardAppDispatch = typeof dashboardStore.dispatch;
+export type IndexRootState = ReturnType<typeof indexStore.getState>;
+export type IndexAppDispatch = typeof indexStore.dispatch;
