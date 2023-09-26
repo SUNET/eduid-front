@@ -1471,7 +1471,7 @@
   },
   "eOKhUB": {
     "developer_comment": "verification methods - list item 3",
-    "string": "{freja} användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan bekräfta ditt eduID. Läs mer om Freja+ nedan."
+    "string": "{freja} användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja+ nedan."
   },
   "eau1zR": {
     "developer_comment": "about verification of identity - info",
