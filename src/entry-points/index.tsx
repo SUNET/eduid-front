@@ -7,7 +7,6 @@ import { eduidStore } from "eduid-init-app";
 import { SIGNUP_CONFIG_URL } from "globals";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { appLoadingSlice } from "slices/AppLoading";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
 import { polyfillsInit } from "./polyfills-common";
@@ -15,11 +14,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = async function () {
-  console.log("Initializing state for the login app...");
-  const config = await eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
-  if (fetchJsConfig.fulfilled.match(config)) {
-    eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
-  }
+  eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
 };
 
 /* Initialise common polyfills for missing browser functionality */

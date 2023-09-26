@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
@@ -50,9 +50,9 @@ const Footer = (): JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <Link className="help-link" to="/faq">
-          <FormattedMessage defaultMessage="Help" description="Footer help" />
-        </Link>
+        <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
+          <div className="sunet-logo" />
+        </a>
         <span>
           &copy;
           <FormattedMessage defaultMessage="2013-2023" description="Footer copyright" />

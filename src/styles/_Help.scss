@@ -8,13 +8,28 @@
 }
 
 .help-content {
+  article {
+    padding-bottom: 1em !important;
+  }
+
   h3 {
     line-height: 1.2;
     font-size: 1.5rem;
     margin-bottom: 0.75em;
   }
+  h4:not(:first-of-type) {
+    margin-top: 1.25em;
+  }
   p {
     font-size: inherit;
+    margin-bottom: 1.25em;
+  }
+
+  section {
+    padding: 1.25rem 1rem 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid $bright-orange;
+    border-radius: 10px;
   }
 
   ul.bullets {
