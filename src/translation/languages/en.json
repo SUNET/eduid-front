@@ -767,7 +767,7 @@
   },
   "Lj3vAT": {
     "developer_comment": "how to contact support - paragraph 2",
-    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ as presented in the Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
+    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
   },
   "LlYcJl": {
     "developer_comment": "button_add",
