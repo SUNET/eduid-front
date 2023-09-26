@@ -1748,7 +1748,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
+    "string": "Some services will require a higher security level so to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
