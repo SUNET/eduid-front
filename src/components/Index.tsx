@@ -20,6 +20,7 @@ export function Index() {
       }
     }
   }
+
   return (
     <>
       <h1 className="tagline">
