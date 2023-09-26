@@ -201,7 +201,7 @@
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
-    "string": "Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to an Erasmus exchange student program."
+    "string": "Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. Some  schools have chosen to release the ESI (European Student Identifier) attribute to eduID, used for instance when applying to an Erasmus exchange student program."
   },
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
