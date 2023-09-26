@@ -1604,7 +1604,7 @@
   },
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
-    "string": "If you have a Swedish personal identity number, use thereby supported methods instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
+    "string": "If you have a Swedish personal identity number, use methods supported thereby instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
   "fqZXes": {
     "developer_comment": "Reset Password email link sent",
