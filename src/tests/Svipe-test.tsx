@@ -1,5 +1,5 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidSvipe";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { initialState as configInitialState } from "slices/DashboardConfig";
@@ -22,7 +22,7 @@ test("renders svipeID as expected", () => {
   );
   mswServer.printHandlers();
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       config: { ...configInitialState, svipe_url: "/svipe-url/", is_app_loaded: true },
     },

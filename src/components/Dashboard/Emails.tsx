@@ -8,7 +8,7 @@ import {
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -24,8 +24,8 @@ interface EmailFormData {
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [selectedEmail, setSelectedEmail] = useState<string | undefined>();
-  const dispatch = useDashboardAppDispatch();
-  const emails = useDashboardAppSelector((state) => state.emails);
+  const dispatch = useAppDispatch();
+  const emails = useAppSelector((state) => state.emails);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here

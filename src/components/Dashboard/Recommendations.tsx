@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { PhonesResponse } from "apis/eduidPhone";
 import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
+import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -11,7 +12,6 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
-import { advancedSettingsPath, identityPath, settingsPath } from "./DashboardMain";
 
 /**
  * Recommendation for adding name, security key and phone number and verification of identity

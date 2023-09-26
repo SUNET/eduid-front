@@ -6,7 +6,7 @@ import {
   requestCredentials,
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
@@ -24,12 +24,12 @@ async function linkToAdvancedSettings() {
 }
 
 test("renders security key as expected, not security key added", async () => {
-  render(<DashboardMain />);
+  render(<IndexMain />);
   await linkToAdvancedSettings();
 });
 
 test("renders security key as expected, with added security key", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       security: {
         credentials: [
@@ -64,7 +64,7 @@ test("renders security key as expected, with added security key", async () => {
 });
 
 test("renders modals onclick security key button", async () => {
-  render(<DashboardMain />);
+  render(<IndexMain />);
   await linkToAdvancedSettings();
   const securityKeyButton = screen.getByRole("button", { name: "security key" });
   // Click the 'security key' button
@@ -81,7 +81,7 @@ test("renders modals onclick security key button", async () => {
 });
 
 test("should not display close button when only one security key is added", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       security: {
         credentials: [
@@ -105,7 +105,7 @@ test("should not display close button when only one security key is added", asyn
 });
 
 test("can remove a security key", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
       security: {
         credentials: [
@@ -182,7 +182,7 @@ test("api call webauthn/remove", async () => {
     })
   );
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: { security: { credentials: response.credentials } },
   });
   await linkToAdvancedSettings();

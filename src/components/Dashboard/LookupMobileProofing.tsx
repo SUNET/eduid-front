@@ -2,7 +2,7 @@ import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { fetchIdentities, requestAllPersonalData } from "apis/eduidPersonalData";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";
@@ -13,8 +13,8 @@ interface LookupMobileProofingProps {
 }
 
 function ExplanationText(): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
-  const phones = useDashboardAppSelector((state) => state.phones.phones);
+  const nin = useAppSelector((state) => state.identities.nin);
+  const phones = useAppSelector((state) => state.phones.phones);
 
   const linkToSettings = (
     <HashLink key="1" to={"/profile/settings/#phone"}>
@@ -59,8 +59,8 @@ function ExplanationText(): JSX.Element {
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
-  const nin = useDashboardAppSelector((state) => state.identities.nin);
-  const dispatch = useDashboardAppDispatch();
+  const nin = useAppSelector((state) => state.identities.nin);
+  const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState(false);
 
   function handleShowModal() {
