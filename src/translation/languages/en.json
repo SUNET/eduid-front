@@ -201,7 +201,7 @@
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
-    "string": "Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to an Erasmus exchange student program."
+    "string": "Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. Some  schools have chosen to release the ESI (European Student Identifier) attribute to eduID, used for instance when applying to an Erasmus exchange student program."
   },
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
@@ -257,7 +257,7 @@
   },
   "4JwhDk": {
     "developer_comment": "svipe if personal number - paragraph",
-    "string": "Note: Holders of Swedish personal identity numbers are advised to use those supported method instead."
+    "string": "Note: Holders of a Swedish personal identity number are advised to use methods supported thereby instead."
   },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
@@ -451,7 +451,7 @@
   },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
-    "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
+    "string": "To change the default language you can log in to eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -767,7 +767,7 @@
   },
   "Lj3vAT": {
     "developer_comment": "how to contact support - paragraph 2",
-    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ as presented in the Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
+    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -843,7 +843,7 @@
   },
   "O0L1gB": {
     "developer_comment": "method eidas - paragraph",
-    "string": "{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS below."
+    "string": "{strong}, you could use {emphasis} to verify your identity using your European eID. Read more about eIDAS below."
   },
   "O234Pp": {
     "developer_comment": "verification status heading verified",
@@ -1604,7 +1604,7 @@
   },
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
-    "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
+    "string": "If you have a Swedish personal identity number, use methods supported thereby instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
   "fqZXes": {
     "developer_comment": "Reset Password email link sent",
@@ -1748,7 +1748,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
+    "string": "Some services will require a higher security level so to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2662,7 +2662,7 @@
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
-    "string": "What are the methods of verification for eduID?"
+    "string": "Which are the methods of verification for eduID?"
   },
   "y1sPSs": {
     "developer_comment": "what is orcid - heading",
