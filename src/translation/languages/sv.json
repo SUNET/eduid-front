@@ -1851,7 +1851,7 @@
   },
   "lic2YR": {
     "developer_comment": "what if verification for freja fails - paragraph",
-    "string": "Avinstallera appen, gör om registreringen, samt kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
+    "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
   },
   "login.assurance_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
