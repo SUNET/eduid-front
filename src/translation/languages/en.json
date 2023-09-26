@@ -843,7 +843,7 @@
   },
   "O0L1gB": {
     "developer_comment": "method eidas - paragraph",
-    "string": "{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS below."
+    "string": "{strong}, you could use {emphasis} to verify your identity using your European eID. Read more about eIDAS below."
   },
   "O234Pp": {
     "developer_comment": "verification status heading verified",
