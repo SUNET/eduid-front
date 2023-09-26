@@ -8,7 +8,6 @@ import { signupSlice } from "slices/Signup";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 // export for use in tests
-// TODO: use base url from js config
 export const SIGNUP_SERVICE_URL = "https://signup.eduid.docker/services/signup";
 
 export interface SignupState {
