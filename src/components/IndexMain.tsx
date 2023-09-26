@@ -36,8 +36,11 @@ export function IndexMain(): JSX.Element {
   return (
     <React.StrictMode>
       <Header
-        showLogin={!authn_options && !eppn}
-        showRegister={!authn_options.has_session && !eppn}
+        showLogin={
+          window.location.href.includes("register") ||
+          (!window.location.href.includes("login") && !window.location.href.includes("register"))
+        }
+        showRegister={window.location.href.includes("login")}
         showLogout={authn_options.has_session}
         loginRef={loginRef}
         showMenu={Boolean(eppn)}
