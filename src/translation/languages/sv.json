@@ -1963,7 +1963,7 @@
   },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
-    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in informationen från ditt pass eller ID-dokument, men informationen sparas bara lokalt i din enhet och företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
+    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
   },
   "nV6G8Q": {
     "developer_comment": "what are verification levels - heading",
