@@ -3,7 +3,6 @@ const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
 //const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 var webpackProd = {
   entry: webpackConfig.entry,
@@ -32,14 +31,6 @@ webpackProd.plugins = [
   }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.html`,
-      chunks: [`${entryName}`],
-    });
-  }),
 ];
 
 webpackProd.mode = "production";

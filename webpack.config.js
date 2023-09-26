@@ -18,11 +18,7 @@ module.exports = {
     // add a script to package.json pointing to "webpack-dev-server"
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
-    signup: "./src/entry-points/signup",
-    dashboard: "./src/entry-points/dashboard",
     index: "./src/entry-points/index",
-    errors: "./src/entry-points/errors",
-    faq: "./src/entry-points/faq",
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -97,14 +93,6 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-      return new HtmlWebpackPlugin({
-        hash: true,
-        template: `./public/${entryName}.html`,
-        filename: `${entryName}.dev.html`,
-        chunks: [`${entryName}`],
-      });
-    }),
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),

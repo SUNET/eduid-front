@@ -5,7 +5,6 @@ import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/Reset
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
 import { SIGNUP_CONFIG_URL } from "globals";
-import { loginStore } from "login-init-app";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -19,7 +18,7 @@ const getConfig = async function () {
   console.log("Initializing state for the login app...");
   const config = await eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(config)) {
-    loginStore.dispatch(appLoadingSlice.actions.appLoaded());
+    eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
   }
 };
 
