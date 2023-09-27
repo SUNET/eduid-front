@@ -1,6 +1,7 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOGIN_CONFIG_URL } from "globals";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -21,7 +22,7 @@ export function Index() {
     }
   }
   return (
-    <>
+    <React.Fragment>
       <h1 className="tagline">
         <FormattedMessage defaultMessage="eduID is easier and safer login." description="eduID index" />
       </h1>
@@ -64,6 +65,6 @@ export function Index() {
           <FormattedMessage defaultMessage="log in" description="login button" />
         </EduIDButton>
       </div>
-    </>
+    </React.Fragment>
   );
 }
