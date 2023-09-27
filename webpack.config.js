@@ -23,6 +23,7 @@ module.exports = {
     index: "./src/entry-points/index",
     errors: "./src/entry-points/errors",
     faq: "./src/entry-points/faq",
+    login: "./src/entry-points/login",
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -97,7 +98,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
+    ...["faq", "errors", "index", "dashboard", "signup", "login"].map((entryName) => {
       return new HtmlWebpackPlugin({
         hash: true,
         template: `./public/${entryName}.html`,

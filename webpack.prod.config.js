@@ -32,7 +32,7 @@ webpackProd.plugins = [
   }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
+  ...["faq", "errors", "index", "dashboard", "signup", "login"].map((entryName) => {
     return new HtmlWebpackPlugin({
       hash: true,
       template: `./public/${entryName}.html`,
