@@ -3,6 +3,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
+import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { Settings } from "./Common/Settings";
@@ -75,6 +76,7 @@ export function IndexMain(): JSX.Element {
           </section>
         </Splash>
       </main>
+      <Footer />
     </React.StrictMode>
   );
 }
