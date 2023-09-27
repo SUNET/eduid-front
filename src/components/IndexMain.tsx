@@ -35,13 +35,7 @@ export function IndexMain(): JSX.Element {
 
   return (
     <React.StrictMode>
-      <Header
-        showLogin={!authn_options && !eppn}
-        showRegister={!authn_options.has_session && !eppn}
-        showLogout={authn_options.has_session}
-        loginRef={loginRef}
-        showMenu={Boolean(eppn)}
-      />
+      <Header loginRef={loginRef} showMenu={Boolean(eppn)} />
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>
