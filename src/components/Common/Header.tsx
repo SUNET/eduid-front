@@ -2,6 +2,7 @@ import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
@@ -15,13 +16,13 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const signup_url = useAppSelector((state) => state.config.signup_url);
   const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
   const login_url = useAppSelector((state) => state.config.login_base_url);
   const eppn = useAppSelector((state) => state.personal_data?.eppn);
   const start_url = eppn ? dashboard_url : eduid_site_url;
   let button = null;
+  const navigate = useNavigate();
 
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
@@ -34,9 +35,7 @@ export function Header(props: HeaderProps): JSX.Element {
   }
 
   function handleRegister() {
-    if (signup_url) {
-      document.location.href = signup_url;
-    }
+    navigate("/register");
   }
 
   function handleLogin() {
