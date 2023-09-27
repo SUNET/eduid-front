@@ -92,17 +92,6 @@ module.exports = {
     ],
   },
   plugins: [
-<<<<<<< HEAD
-=======
-    ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-      return new HtmlWebpackPlugin({
-        hash: true,
-        template: `./public/${entryName}.html`,
-        filename: `${entryName}.dev.html`,
-        chunks: [`${entryName}`],
-      });
-    }),
->>>>>>> main
     // Initial configuration
     //initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
