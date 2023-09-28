@@ -428,7 +428,14 @@ export function Help(): JSX.Element {
                     description="verification methods - list definition"
                     defaultMessage="{emphasis}, verifying it can be done via:"
                     values={{
-                      emphasis: <strong>If you have a Swedish personal identity number</strong>,
+                      emphasis: (
+                        <strong>
+                          <FormattedMessage
+                            description="swedish nin - heading"
+                            defaultMessage={`If you have a Swedish personal identity number`}
+                          />
+                        </strong>
+                      ),
                     }}
                   />
                 </p>
@@ -440,7 +447,11 @@ export function Help(): JSX.Element {
                       registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
                       verification on eduid.se,`}
                       values={{
-                        post: <em>post:</em>,
+                        post: (
+                          <em>
+                            <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
+                          </em>
+                        ),
                       }}
                     />
                   </li>
@@ -451,7 +462,11 @@ export function Help(): JSX.Element {
                       in the Swedish telephone register, and instructions on how to complete the verification on 
                       eduid.se,`}
                       values={{
-                        mobile: <em>mobile:</em>,
+                        mobile: (
+                          <em>
+                            <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
+                          </em>
+                        ),
                       }}
                     />
                   </li>
@@ -462,7 +477,14 @@ export function Help(): JSX.Element {
                       use their service. If you don't have Freja+ you have to create it separately before you can
                       complete verification of your eduID. Read more about Freja+ below.`}
                       values={{
-                        freja: <em>Freja+ (digital ID-card):</em>,
+                        freja: (
+                          <em>
+                            <FormattedMessage
+                              description="swedish nin freja - heading"
+                              defaultMessage="Freja+ (digital ID-card):"
+                            />
+                          </em>
+                        ),
                       }}
                     />
                   </li>
@@ -475,7 +497,14 @@ export function Help(): JSX.Element {
                     defaultMessage={`{strong}, you could use 
                     {emphasis} to verify your identity. Read more about eIDAS below.`}
                     values={{
-                      strong: <strong>If you are an EU citizen and without a Swedish personal identity number</strong>,
+                      strong: (
+                        <strong>
+                          <FormattedMessage
+                            description="method eidas - heading"
+                            defaultMessage={`If you are an EU citizen and without a Swedish personal identity number`}
+                          />
+                        </strong>
+                      ),
                       emphasis: <em>eIDAS</em>,
                     }}
                   />
@@ -489,7 +518,12 @@ export function Help(): JSX.Element {
                     Read more about Svipe iD below.`}
                     values={{
                       strong: (
-                        <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
+                        <strong>
+                          <FormattedMessage
+                            description="method svipe - heading"
+                            defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
+                          />
+                        </strong>
                       ),
                       emphasis: <em>Svipe eID</em>,
                     }}
@@ -836,7 +870,7 @@ export function Help(): JSX.Element {
                         href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid"
                         target="_blank"
                       >
-                        Privacy policy
+                        <FormattedMessage description="privacy policy - link" defaultMessage="Privacy policy" />
                       </a>
                     ),
                   }}
@@ -912,18 +946,21 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what is accessibility report - paragraph 1"
-                  defaultMessage={`Read the full {accessability} regarding the eduID site at Sunets website, where you 
+                  defaultMessage={`Read the full {accessibility} regarding the eduID site at Sunets website, where you 
                   also find instructions on how to report accessibility issues. The report addresses how eduID adheres 
                   to the Swedish law governing accessibility to digital public services as well as currently known 
                   issues of the site (in Swedish).`}
                   values={{
-                    accessability: (
+                    accessibility: (
                       <a
                         className="text-link"
                         href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se"
                         target="_blank"
                       >
-                        Accessibility report
+                        <FormattedMessage
+                          description="accessibility report - link"
+                          defaultMessage="Accessibility report"
+                        />
                       </a>
                     ),
                   }}
@@ -1018,7 +1055,14 @@ export function Help(): JSX.Element {
                   defaultMessage="{strong}, but for simple
               matters you can also reach us on phone number {phone}."
                   values={{
-                    strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
+                    strong: (
+                      <strong>
+                        <FormattedMessage
+                          description="how to contact support email - strong"
+                          defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
+                        />
+                      </strong>
+                    ),
                     phone: (
                       <a className="text-link" href="tel:+46455-385200">
                         0455-385200
