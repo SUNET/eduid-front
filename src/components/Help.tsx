@@ -424,87 +424,69 @@ export function Help(): JSX.Element {
               </p>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="swedish nin - heading"
+                      defaultMessage={`If you have a Swedish personal identity number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="verification methods - list definition"
-                    defaultMessage="{emphasis}, verifying it can be done via:"
-                    values={{
-                      emphasis: (
-                        <strong>
-                          <FormattedMessage
-                            description="swedish nin - heading"
-                            defaultMessage={`If you have a Swedish personal identity number`}
-                          />
-                        </strong>
-                      ),
-                    }}
+                    defaultMessage=", verifying it can be done via:"
                   />
                 </p>
                 <ul className="bullets">
                   <li>
+                    <em>
+                      <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
+                    </em>
                     <FormattedMessage
                       description="verification methods - list item 1"
-                      defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
+                      defaultMessage={` the user receives a letter with a code sent to their home address as 
                       registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
                       verification on eduid.se,`}
-                      values={{
-                        post: (
-                          <em>
-                            <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
-                          </em>
-                        ),
-                      }}
                     />
                   </li>
                   <li>
+                    <em>
+                      <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
+                    </em>
                     <FormattedMessage
                       description="verification methods - list item 2"
-                      defaultMessage={`{mobile} the user receives a message sent to the phone number that is registered 
+                      defaultMessage={` the user receives a message sent to the phone number that is registered 
                       in the Swedish telephone register, and instructions on how to complete the verification on 
                       eduid.se,`}
-                      values={{
-                        mobile: (
-                          <em>
-                            <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
-                          </em>
-                        ),
-                      }}
                     />
                   </li>
                   <li>
+                    <em>
+                      <FormattedMessage
+                        description="swedish nin freja - heading"
+                        defaultMessage="Freja+ (digital ID-card):"
+                      />
+                    </em>
                     <FormattedMessage
                       description="verification methods - list item 3"
-                      defaultMessage={`{freja} the user will be directed to the Freja eID website to
+                      defaultMessage={` the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
                       complete verification of your eduID. Read more about Freja+ below.`}
-                      values={{
-                        freja: (
-                          <em>
-                            <FormattedMessage
-                              description="swedish nin freja - heading"
-                              defaultMessage="Freja+ (digital ID-card):"
-                            />
-                          </em>
-                        ),
-                      }}
                     />
                   </li>
                 </ul>
               </section>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="method eidas - heading"
+                      defaultMessage={`If you are an EU citizen and without a Swedish personal identity number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="method eidas - paragraph"
-                    defaultMessage={`{strong}, you could use 
+                    defaultMessage={`, you could use 
                     {emphasis} to verify your identity. Read more about eIDAS below.`}
                     values={{
-                      strong: (
-                        <strong>
-                          <FormattedMessage
-                            description="method eidas - heading"
-                            defaultMessage={`If you are an EU citizen and without a Swedish personal identity number`}
-                          />
-                        </strong>
-                      ),
                       emphasis: <em>eIDAS</em>,
                     }}
                   />
@@ -512,19 +494,17 @@ export function Help(): JSX.Element {
               </section>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="method svipe - heading"
+                      defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="method svipe - paragraph"
-                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. 
+                    defaultMessage={`, you could use {emphasis} to verify your identity using your passport. 
                     Read more about Svipe iD below.`}
                     values={{
-                      strong: (
-                        <strong>
-                          <FormattedMessage
-                            description="method svipe - heading"
-                            defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
-                          />
-                        </strong>
-                      ),
                       emphasis: <em>Svipe eID</em>,
                     }}
                   />
@@ -1050,19 +1030,17 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
+                <strong>
+                  <FormattedMessage
+                    description="how to contact support email - strong"
+                    defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
+                  />
+                </strong>
                 <FormattedMessage
                   description="how to contact support - paragraph 3"
-                  defaultMessage="{strong}, but for simple
+                  defaultMessage=", but for simple
               matters you can also reach us on phone number {phone}."
                   values={{
-                    strong: (
-                      <strong>
-                        <FormattedMessage
-                          description="how to contact support email - strong"
-                          defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
-                        />
-                      </strong>
-                    ),
                     phone: (
                       <a className="text-link" href="tel:+46455-385200">
                         0455-385200

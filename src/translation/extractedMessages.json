@@ -67,6 +67,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
   },
+  "/aIXqR": {
+    "developer_comment": "what is accessibility report - paragraph 1",
+    "string": "Read the full {accessibility} regarding the eduID site at Sunets website, where you also find instructions on how to report accessibility issues. The report addresses how eduID adheres to the Swedish law governing accessibility to digital public services as well as currently known issues of the site (in Swedish)."
+  },
   "/h666/": {
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
@@ -282,6 +286,10 @@
     "developer_comment": "Phone display title",
     "string": "Phone number"
   },
+  "58dN25": {
+    "developer_comment": "method eidas - heading",
+    "string": "If you are an EU citizen and without a Swedish personal identity number"
+  },
   "5P95+P": {
     "developer_comment": "Reset password add email heading",
     "string": "Enter the email address registered to your eduID account."
@@ -397,6 +405,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9ftFZW": {
+    "developer_comment": "swedish nin mobile - heading",
+    "string": "mobile:"
+  },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
     "string": "Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely."
@@ -452,6 +464,10 @@
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
+  },
+  "C+b7F7": {
+    "developer_comment": "swedish nin - heading",
+    "string": "If you have a Swedish personal identity number"
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -1008,6 +1024,10 @@
     "developer_comment": "Reset Password heading",
     "string": "Reset password"
   },
+  "SK2AK4": {
+    "developer_comment": "method svipe - heading",
+    "string": "If you are not an EU citizen and without a Swedish personal identity number"
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
@@ -1311,6 +1331,10 @@
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verify your eduID with a Swedish national ID number."
   },
+  "b/o0DY": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digital ID-card):"
+  },
   "bCIMPQ": {
     "developer_comment": "security key title",
     "string": "Make your eduID more secure"
@@ -1452,6 +1476,10 @@
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
     "string": "When will I use eduID?"
+  },
+  "e+YGAd": {
+    "developer_comment": "privacy policy - link",
+    "string": "Privacy policy"
   },
   "eIAskC": {
     "developer_comment": "Start",
@@ -1718,6 +1746,10 @@
     "developer_comment": "chpass old password label",
     "string": "Current password"
   },
+  "ibG0qO": {
+    "developer_comment": "accessibility report - link",
+    "string": "Accessibility report"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
@@ -1757,6 +1789,10 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
+  },
+  "kFNEXu": {
+    "developer_comment": "swedish nin post - heading",
+    "string": "post:"
   },
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
@@ -2211,10 +2247,6 @@
   "pwfield.weak": {
     "string": "Weak password"
   },
-  "pyGKbH": {
-    "developer_comment": "what is accessibility report - paragraph 1",
-    "string": "Read the full {accessability} regarding the eduID site at Sunets website, where you also find instructions on how to report accessibility issues. The report addresses how eduID adheres to the Swedish law governing accessibility to digital public services as well as currently known issues of the site (in Swedish)."
-  },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
@@ -2246,6 +2278,10 @@
   "qJxWkn": {
     "developer_comment": "verify identity vetting explanation add nin",
     "string": "Start by adding your ID number above"
+  },
+  "qMRp3m": {
+    "developer_comment": "how to contact support email - strong",
+    "string": "In order to get best possible support, we recommend that you send e-mail"
   },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
