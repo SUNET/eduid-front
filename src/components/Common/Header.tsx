@@ -42,7 +42,7 @@ export function Header(props: HeaderProps): JSX.Element {
     }
   }
 
-  if (!window.location.pathname.includes("login")) {
+  if (window.location.pathname.includes("register")) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
