@@ -33,6 +33,7 @@ test("can click the button", async () => {
   render(<IndexMain />, {
     state: {
       config: { ...defaultDashboardTestState.config, security_url: "/security/" },
+      personal_data: { ...defaultDashboardTestState.personal_data },
     },
   });
 
