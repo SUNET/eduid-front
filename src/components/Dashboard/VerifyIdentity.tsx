@@ -9,6 +9,7 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
@@ -297,6 +298,7 @@ function AccordionItemSwedish(): JSX.Element | null {
           </p>
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
+              icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
               title={
                 <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
               }
