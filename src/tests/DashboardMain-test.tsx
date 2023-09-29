@@ -26,6 +26,7 @@ test("renders Profile page as expected", () => {
           eppn: "hubba-bubba",
           display_name: "test user",
         },
+        ...defaultDashboardTestState.personal_data,
       },
     },
   });
@@ -53,6 +54,7 @@ test("renders identity verification progress, unverified after password reset", 
           eppn: "hubba-bubba",
           display_name: "test user",
         },
+        ...defaultDashboardTestState.personal_data,
       },
       identities: {
         is_verified: false,

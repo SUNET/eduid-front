@@ -7,7 +7,10 @@ import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunc
 
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {
-    routes: ["/profile/"],
+    routes: ["/profile"],
+    state: {
+      ...defaultDashboardTestState,
+    },
   });
 
   // Navigate to Advanced settings
@@ -16,14 +19,17 @@ test("renders AccountLinking as expected", async () => {
     nav.click();
   });
   expect(nav).toHaveClass(activeClassName);
-
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
-
   expect(screen.getByRole("heading", { name: /orcid account/i })).toBeInTheDocument();
 });
 
 test("can add an ORCID iD", () => {
-  render(<IndexMain />);
+  render(<IndexMain />, {
+    routes: ["/profile"],
+    state: {
+      ...defaultDashboardTestState,
+    },
+  });
 
   // Navigate to Advanced settings
   const nav = screen.getByRole("link", { name: "Advanced settings" });
@@ -89,7 +95,7 @@ test("can remove an ORCID iD", async () => {
 
   render(<IndexMain />, {
     state: {
-      config: { ...defaultDashboardTestState.config, orcid_url: "/orcid/" },
+      ...defaultDashboardTestState,
       account_linking: { orcid },
     },
   });

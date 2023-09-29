@@ -2,8 +2,7 @@ import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidSvipe";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
-import { initialState as configInitialState } from "slices/IndexConfig";
-import { render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders svipeID as expected", () => {
   const method = "svipeidVerifyIdentity";
@@ -24,7 +23,8 @@ test("renders svipeID as expected", () => {
 
   render(<IndexMain />, {
     state: {
-      config: { ...configInitialState, svipe_service_url: "/svipe-url/", is_app_loaded: true },
+      personal_data: { ...defaultDashboardTestState.personal_data },
+      config: { ...defaultDashboardTestState.config, svipe_url: "/svipe-url/", is_app_loaded: true },
     },
   });
   // Navigate to Identity

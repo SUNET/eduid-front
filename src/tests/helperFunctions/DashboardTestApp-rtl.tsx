@@ -15,6 +15,9 @@ export const defaultDashboardTestState = {
     is_app_loaded: true,
     debug: true,
   },
+  personal_data: {
+    eppn: "test-eppn",
+  },
 };
 
 interface renderArgs {
