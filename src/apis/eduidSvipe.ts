@@ -74,9 +74,9 @@ async function makeSvipeRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.svipe_url) {
-    throw new Error("Missing configuration svipe_url");
+  if (!state.config.svipe_service_url) {
+    throw new Error("Missing configuration svipe_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.svipe_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.svipe_service_url, endpoint, body, data);
 }

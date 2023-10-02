@@ -324,7 +324,7 @@ function makeSignupRequest<T>(
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
-  // TODO: Get SIGNUP_SERVICE_URL from jsconfig instead? signup_url isn't the full path to the services
+  // TODO: Get SIGNUP_SERVICE_URL from jsconfig instead? signup_link isn't the full path to the services
   //const state = thunkAPI.getState();
   //if (!state.config.signup_service_url) {
   if (!SIGNUP_SERVICE_URL) {
