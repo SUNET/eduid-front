@@ -24,7 +24,7 @@ interface APIEndpoints {
   emails_service_url?: string;
   ladok_url?: string;
   letter_proofing_url?: string;
-  login_base_url?: string;
+  login_service_url?: string;
   lookup_mobile_proofing_service_url?: string;
   orcid_url?: string;
   personal_data_service_url?: string;

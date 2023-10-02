@@ -148,7 +148,7 @@ export const fetchErrorInfo = createAsyncThunk<
   { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
 >("login/api/fetchErrorInfo", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
-  const base_url = state.config.login_base_url || state.config.error_info_url;
+  const base_url = state.config.login_service_url || state.config.error_info_url;
 
   if (!base_url) {
     return { logged_in: false };
@@ -412,9 +412,9 @@ async function makeLoginRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.login_base_url) {
-    throw new Error("Missing configuration base_url");
+  if (!state.config.login_service_url) {
+    throw new Error("Missing configuration login_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.login_base_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.login_service_url, endpoint, body, data);
 }

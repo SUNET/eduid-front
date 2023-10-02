@@ -9,7 +9,7 @@ export const resetPasswordLinkId = "reset-password";
 
 export default function EmailInUse(): JSX.Element {
   const email = useSignupAppSelector((state) => state.signup.email);
-  const reset_password_link = useSignupAppSelector((state) => state.config.reset_password_link);
+  const reset_password_service_url = useSignupAppSelector((state) => state.config.reset_password_service_url);
 
   return (
     <React.Fragment>
@@ -30,7 +30,7 @@ export default function EmailInUse(): JSX.Element {
           </p>
         </div>
 
-        <a href={reset_password_link}>
+        <a href={reset_password_service_url}>
           <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
             <FormattedMessage defaultMessage="Reset your password" description="Signup" />
           </EduIDButton>

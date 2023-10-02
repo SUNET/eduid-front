@@ -18,7 +18,7 @@ export function Header(props: HeaderProps): JSX.Element {
   const signup_link = useDashboardAppSelector((state) => state.config.signup_link);
   const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
+  const login_url = useDashboardAppSelector((state) => state.config.login_service_url);
   const start_url = dashboard_link || eduid_site_url;
   let button = null;
 
