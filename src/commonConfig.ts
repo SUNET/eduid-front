@@ -13,7 +13,7 @@ interface CommonJsConfig {
   eduid_site_url?: string;
   environment?: "dev" | "staging" | "production";
   reset_password_service_url?: string;
-  signup_url?: string;
+  signup_link?: string;
 }
 
 // typing in the apis become too complicated if these are not shared in all configs,
@@ -31,7 +31,7 @@ interface APIEndpoints {
   phone_service_url?: string;
   security_service_url?: string;
   token_service_url?: string;
-  svipe_url?: string;
+  svipe_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this

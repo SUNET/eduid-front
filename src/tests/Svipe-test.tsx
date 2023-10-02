@@ -24,7 +24,7 @@ test("renders svipeID as expected", () => {
 
   render(<DashboardMain />, {
     state: {
-      config: { ...configInitialState, svipe_url: "/svipe-url/", is_app_loaded: true },
+      config: { ...configInitialState, svipe_service_url: "/svipe-url/", is_app_loaded: true },
     },
   });
   // Navigate to Identity

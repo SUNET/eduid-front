@@ -15,7 +15,7 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps): JSX.Element {
   const dispatch = useDashboardAppDispatch();
-  const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
+  const signup_link = useDashboardAppSelector((state) => state.config.signup_link);
   const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
@@ -33,8 +33,8 @@ export function Header(props: HeaderProps): JSX.Element {
   }
 
   function handleRegister() {
-    if (signup_url) {
-      document.location.href = signup_url;
+    if (signup_link) {
+      document.location.href = signup_link;
     }
   }
 

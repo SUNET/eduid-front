@@ -143,7 +143,7 @@ function UsernameInputPart(): JSX.Element {
 }
 
 function RenderRegisterLink(): JSX.Element {
-  const toSignup = useAppSelector((state) => state.config.signup_url);
+  const toSignup = useAppSelector((state) => state.config.signup_link);
   return (
     <div className="text-small">
       <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
