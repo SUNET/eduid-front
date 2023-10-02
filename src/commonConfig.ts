@@ -25,7 +25,7 @@ interface APIEndpoints {
   ladok_url?: string;
   letter_proofing_url?: string;
   login_base_url?: string;
-  lookup_mobile_proofing_url?: string;
+  lookup_mobile_proofing_service_url?: string;
   orcid_url?: string;
   personal_data_url?: string;
   phone_url?: string;
