@@ -239,9 +239,9 @@ async function makeResetPasswordRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.reset_password_url) {
-    throw new Error("Missing configuration reset_password_url");
+  if (!state.config.reset_password_service_url) {
+    throw new Error("Missing configuration reset_password_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.reset_password_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.reset_password_service_url, endpoint, body, data);
 }
