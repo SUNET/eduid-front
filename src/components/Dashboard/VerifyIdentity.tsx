@@ -1,4 +1,6 @@
-import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faIdCard, faMobile } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
@@ -313,6 +315,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <FrejaeID />
             </AccordionItemTemplate>
             <AccordionItemTemplate
+              icon={<FontAwesomeIcon icon={faEnvelope as IconProp} />}
               title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
               additionalInfo={
                 <FormattedMessage
@@ -326,6 +329,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
             <AccordionItemTemplate
+              icon={<FontAwesomeIcon icon={faMobile as IconProp} />}
               title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
               additionalInfo={
                 <FormattedMessage
