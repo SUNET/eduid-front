@@ -28,7 +28,7 @@ interface APIEndpoints {
   lookup_mobile_proofing_service_url?: string;
   orcid_url?: string;
   personal_data_service_url?: string;
-  phone_url?: string;
+  phone_service_url?: string;
   security_url?: string;
   token_service_url?: string;
   svipe_url?: string;
