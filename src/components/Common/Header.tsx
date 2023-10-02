@@ -16,10 +16,10 @@ interface HeaderProps {
 export function Header(props: HeaderProps): JSX.Element {
   const dispatch = useDashboardAppDispatch();
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const login_url = useDashboardAppSelector((state) => state.config.login_base_url);
-  const start_url = dashboard_url || eduid_site_url;
+  const start_url = dashboard_link || eduid_site_url;
   let button = null;
 
   async function handleLogout() {
@@ -39,8 +39,8 @@ export function Header(props: HeaderProps): JSX.Element {
   }
 
   function handleLogin() {
-    if (dashboard_url) {
-      document.location.href = dashboard_url;
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
     }
   }
 

@@ -291,7 +291,7 @@ export interface VerifyLinkResponseSuccess {
   status: "verified";
   password: string;
   email?: string;
-  dashboard_url: string;
+  dashboard_link: string;
 }
 
 export type VerifyLinkResponse = VerifyLinkResponseFail | VerifyLinkResponseSuccess;

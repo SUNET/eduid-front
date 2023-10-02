@@ -8,7 +8,7 @@ interface CommonConfig {
 
 interface CommonJsConfig {
   csrf_token?: string;
-  dashboard_url?: string;
+  dashboard_link?: string;
   debug: boolean;
   eduid_site_url?: string;
   environment?: "dev" | "staging" | "production";

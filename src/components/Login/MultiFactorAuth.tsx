@@ -65,7 +65,7 @@ export function MultiFactorAuth(): JSX.Element {
 }
 
 function ExtraSecurityNotAvailable(): JSX.Element {
-  const toDashboard = useAppSelector((state) => state.config.dashboard_url);
+  const toDashboard = useAppSelector((state) => state.config.dashboard_link);
 
   return (
     <article>

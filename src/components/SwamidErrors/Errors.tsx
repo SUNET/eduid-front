@@ -18,7 +18,7 @@ export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
   const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
-  const dashboard_url = useErrorsAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useErrorsAppSelector((state) => state.config.dashboard_link);
 
   const [errorURL, setErrorURL] = useState<errorURLData>({});
   useEffect(() => {
@@ -26,8 +26,8 @@ export function Errors() {
   }, []);
 
   function handleDashboardOnClick() {
-    if (is_configured && dashboard_url) {
-      window.location.href = dashboard_url;
+    if (is_configured && dashboard_link) {
+      window.location.href = dashboard_link;
     }
   }
 
