@@ -171,9 +171,9 @@ async function makePhoneRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.phone_url) {
-    throw new Error("Missing configuration phone_url");
+  if (!state.config.phone_service_url) {
+    throw new Error("Missing configuration phone_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.phone_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.phone_service_url, endpoint, body, data);
 }
