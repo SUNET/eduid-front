@@ -21,7 +21,7 @@ interface CommonJsConfig {
 // can all be optional
 interface APIEndpoints {
   eidas_service_url?: string;
-  emails_url?: string;
+  emails_service_url?: string;
   ladok_url?: string;
   letter_proofing_url?: string;
   login_base_url?: string;
