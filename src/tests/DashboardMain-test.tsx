@@ -20,7 +20,7 @@ test("renders Profile page as expected", () => {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
           eppn: "hubba-bubba",
@@ -50,7 +50,7 @@ test("renders identity verification progress, unverified after password reset", 
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
           eppn: "hubba-bubba",
@@ -72,7 +72,7 @@ test("renders identity verification progress, new user", () => {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
           eppn: "hubba-bubba",
@@ -93,7 +93,7 @@ test("renders identity verification progress, verified user", () => {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, login_base_url: "https://example.com/login" },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
           eppn: "hubba-bubba",
