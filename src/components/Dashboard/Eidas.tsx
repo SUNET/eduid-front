@@ -6,9 +6,9 @@ import { FormattedMessage } from "react-intl";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const eidas_url = useDashboardAppSelector((state) => state.config.eidas_url);
+  const eidas_service_url = useDashboardAppSelector((state) => state.config.eidas_service_url);
   const token_verify_idp = useDashboardAppSelector((state) => state.config.token_verify_idp);
-  let eidas_sp_url = eidas_url;
+  let eidas_sp_url = eidas_service_url;
   const freja_idp_url = token_verify_idp;
 
   if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
