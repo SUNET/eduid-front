@@ -32,7 +32,7 @@ test("can click the button", async () => {
   mswServer.printHandlers();
   render(<DashboardMain />, {
     state: {
-      config: { ...defaultDashboardTestState.config, security_url: "/security/" },
+      config: { ...defaultDashboardTestState.config, security_service_url: "/security/" },
     },
   });
 
