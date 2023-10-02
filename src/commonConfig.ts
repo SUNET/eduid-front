@@ -12,7 +12,7 @@ interface CommonJsConfig {
   debug: boolean;
   eduid_site_url?: string;
   environment?: "dev" | "staging" | "production";
-  reset_password_url?: string;
+  reset_password_service_url?: string;
   signup_url?: string;
 }
 
