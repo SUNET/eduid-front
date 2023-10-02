@@ -261,11 +261,11 @@ function makeSecurityRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.security_url) {
-    throw new Error("Missing configuration security_url");
+  if (!state.config.security_service_url) {
+    throw new Error("Missing configuration security_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.security_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.security_service_url, endpoint, body, data);
 }
 
 /*********************************************************************************************************************/
