@@ -13,12 +13,13 @@ interface HeaderProps {
 
 export function Header(props: HeaderProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
-  const login_url = useAppSelector((state) => state.config.login_base_url);
-  const eppn = useAppSelector((state) => state.personal_data?.eppn);
+  const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
-  const start_url = eppn ? dashboard_url : eduid_site_url;
+  const eppn = useAppSelector((state) => state.personal_data.eppn);
+  const start_url = dashboard_link || eduid_site_url;
+
   let button = null;
   const navigate = useNavigate();
 

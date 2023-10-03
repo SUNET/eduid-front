@@ -2,6 +2,7 @@ import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidSvipe";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders svipeID as expected", () => {

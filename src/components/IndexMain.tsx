@@ -29,7 +29,6 @@ export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
-  const authn_options = useAppSelector((state) => state.login.authn_options);
   const loginRef = useAppSelector((state) => state.login.ref);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
 
