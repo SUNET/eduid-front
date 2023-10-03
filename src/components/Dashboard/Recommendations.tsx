@@ -24,7 +24,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
   return (
     <AccordionItemTemplate
       uuid="recommendation-security-key"
-      icon={<FontAwesomeIcon icon={faKey as IconProp} />}
+      icon={<FontAwesomeIcon icon={faKey as IconProp} className="circle-icon" />}
       title={
         <FormattedMessage description="accordion item Adding security key" defaultMessage="Add your security key" />
       }
@@ -79,7 +79,7 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} />}
+      icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
       title={title}
       additionalInfo={null}
       uuid="recommendation-phone"
@@ -100,7 +100,7 @@ function RecommendationAddingName(props: { display_name?: string }): JSX.Element
 
   return (
     <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faUser as IconProp} />}
+      icon={<FontAwesomeIcon icon={faUser as IconProp} className="circle-icon" />}
       title={<FormattedMessage description="accordion item Adding name" defaultMessage="Add your name" />}
       additionalInfo={null}
       uuid="recommendation-add-name"
@@ -151,7 +151,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
 
   return (
     <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faIdCard as IconProp} />}
+      icon={<FontAwesomeIcon icon={faIdCard as IconProp} className="circle-icon" />}
       title={title}
       additionalInfo={null}
       uuid="recommendation-verify-identity"

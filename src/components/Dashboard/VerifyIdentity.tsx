@@ -315,7 +315,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <FrejaeID />
             </AccordionItemTemplate>
             <AccordionItemTemplate
-              icon={<FontAwesomeIcon icon={faEnvelope as IconProp} />}
+              icon={<FontAwesomeIcon icon={faEnvelope as IconProp} className="circle-icon" />}
               title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
               additionalInfo={
                 <FormattedMessage
@@ -329,7 +329,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
             <AccordionItemTemplate
-              icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} />}
+              icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
               title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
               additionalInfo={
                 <FormattedMessage
