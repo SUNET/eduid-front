@@ -234,7 +234,7 @@ test("handles rejected ToU", async () => {
 });
 
 test("handles wrong email code", async () => {
-  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   await testEnterEmail({ email: testEmailAddress });
 
