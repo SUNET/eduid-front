@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faIdCard, faMobile } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faIdCard, faMobileScreen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
@@ -329,7 +329,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
             <AccordionItemTemplate
-              icon={<FontAwesomeIcon icon={faMobile as IconProp} />}
+              icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} />}
               title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
               additionalInfo={
                 <FormattedMessage

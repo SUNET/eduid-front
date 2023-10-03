@@ -43,7 +43,8 @@
         }
 
         #{$a}-icon {
-          .circle-icon {
+          .circle-icon,
+          > * {
             height: 1.25rem;
             margin-right: 0.75rem;
             vertical-align: text-top;
