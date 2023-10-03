@@ -10,14 +10,14 @@ import EduIDButton from "./Common/EduIDButton";
 export function Index() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   async function getLoginConfig() {
     const config = await dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
     if (fetchJsConfig.fulfilled.match(config)) {
       dispatch(appLoadingSlice.actions.appLoaded());
-      if (dashboard_url) {
-        document.location.href = dashboard_url;
+      if (dashboard_link) {
+        document.location.href = dashboard_link;
       }
     }
   }
