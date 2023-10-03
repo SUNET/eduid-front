@@ -1,4 +1,6 @@
-import { useErrorsAppSelector } from "errors-hooks";
+import { fetchJsConfig } from "apis/eduidJsConfig";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { ERRORS_CONFIG_URL } from "globals";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
@@ -17,12 +19,21 @@ export interface FailureComponentProps {
 export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
-  const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
-  const dashboard_link = useErrorsAppSelector((state) => state.config.dashboard_link);
-
+  const is_configured = useAppSelector((state) => state.config.is_configured);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const dispatch = useAppDispatch();
   const [errorURL, setErrorURL] = useState<errorURLData>({});
+
   useEffect(() => {
-    setErrorURL(parseErrorURL(query));
+    // bootstrap signup state in redux store by asking the backend for it
+    async function fetchJsErrorsConfig(): Promise<void> {
+      const response = await dispatch(fetchJsConfig({ url: ERRORS_CONFIG_URL }));
+      if (fetchJsConfig.fulfilled.match(response)) {
+        setErrorURL(parseErrorURL(query));
+      }
+    }
+
+    fetchJsErrorsConfig();
   }, []);
 
   function handleDashboardOnClick() {
@@ -64,7 +75,7 @@ export function Errors() {
 }
 
 export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Element {
-  const error_info = useErrorsAppSelector((state) => state.config.error_info);
+  const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
     <React.Fragment>

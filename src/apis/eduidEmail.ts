@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 export interface EmailInfo {
@@ -26,7 +26,7 @@ export interface EmailsResponse {
 export const requestMakePrimaryEmail = createAsyncThunk<
   EmailsResponse, // return type
   { email: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("emails/requestMakePrimaryEmail", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,
@@ -45,7 +45,7 @@ export const requestMakePrimaryEmail = createAsyncThunk<
 export const requestVerifyEmail = createAsyncThunk<
   EmailsResponse, // return type
   { code: string; email: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("emails/requestVerifyEmail", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,
@@ -65,7 +65,7 @@ export const requestVerifyEmail = createAsyncThunk<
 export const requestResendEmailCode = createAsyncThunk<
   EmailsResponse, // return type
   { email: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("emails/requestResendEmailCode", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,
@@ -84,7 +84,7 @@ export const requestResendEmailCode = createAsyncThunk<
 export const postNewEmail = createAsyncThunk<
   EmailsResponse, // return type
   { email: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("emails/postNewEmail", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,
@@ -105,7 +105,7 @@ export const postNewEmail = createAsyncThunk<
 export const requestRemoveEmail = createAsyncThunk<
   EmailsResponse, // return type
   { email: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("emails/requestRemoveEmail", async (args, thunkAPI) => {
   const data: KeyValues = {
     email: args.email,

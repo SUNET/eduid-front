@@ -1,6 +1,6 @@
 import { fetchAbort } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 

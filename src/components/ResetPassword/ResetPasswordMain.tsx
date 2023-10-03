@@ -1,6 +1,6 @@
 import { useActor } from "@xstate/react";
 import { verifyEmailLink } from "apis/eduidResetPassword";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useCallback, useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";

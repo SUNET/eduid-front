@@ -1,10 +1,10 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { DashboardRootState, getTestDashboardStore } from "dashboard-init-app";
+import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState as configInitialState } from "slices/IndexConfig";
 
 export const defaultDashboardTestState = {
   config: {
@@ -15,17 +15,20 @@ export const defaultDashboardTestState = {
     is_app_loaded: true,
     debug: true,
   },
+  personal_data: {
+    eppn: "test-eppn",
+  },
 };
 
 interface renderArgs {
-  state?: Partial<DashboardRootState>;
+  state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const routes = args.routes || ["/profile/"];
-  const store = getTestDashboardStore(args.state || defaultDashboardTestState);
+  const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (

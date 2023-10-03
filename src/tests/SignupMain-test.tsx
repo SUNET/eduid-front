@@ -1,8 +1,8 @@
-import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
+import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
 import { fireEvent, render, screen, signupTestState } from "./helperFunctions/SignupTestApp-rtl";
 
 test("show splash screen when not configured", () => {
-  render(<SignupMain />, {
+  render(<IndexMain />, {
     state: { config: { ...signupTestState.config, is_configured: false } },
     routes: [`${SIGNUP_BASE_PATH}/email`],
   });
@@ -14,7 +14,7 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders e-mail form as expected", () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 
@@ -39,12 +39,12 @@ test("renders e-mail form as expected", () => {
 });
 
 test("redirects from slash", () => {
-  render(<SignupMain />, { routes: [SIGNUP_BASE_PATH] });
+  render(<IndexMain />, { routes: [SIGNUP_BASE_PATH] });
 
   expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/);
 });
 
 test("renders the register page title", () => {
-  render(<SignupMain />);
+  render(<IndexMain />);
   expect(document.title).toContain("Register");
 });

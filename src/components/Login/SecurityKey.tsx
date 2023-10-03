@@ -1,7 +1,7 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
-import { useAppDispatch, useAppSelector } from "hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";

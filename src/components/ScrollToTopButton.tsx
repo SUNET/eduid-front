@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "reactstrap";
 
 export default function ScrollToTopButton(): JSX.Element {
-  const [showBtn, setShowBtn] = useState("display-none");
+  const [showBtn, setShowBtn] = useState("none");
 
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function () {
