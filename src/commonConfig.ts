@@ -30,7 +30,7 @@ interface APIEndpoints {
   personal_data_url?: string;
   phone_url?: string;
   security_url?: string;
-  token_service_url?: string;
+  authn_url?: string;
   svipe_url?: string;
 }
 
