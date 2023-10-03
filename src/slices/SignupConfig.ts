@@ -4,7 +4,7 @@ import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 
 export interface SignupConfig extends EduidJSAppCommonConfig {
   recaptcha_public_key?: string;
-  reset_password_link?: string;
+  reset_password_service_url?: string;
   preferred_captcha: "internal" | "recaptcha";
 }
 
