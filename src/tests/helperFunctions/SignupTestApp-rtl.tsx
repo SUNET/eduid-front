@@ -12,7 +12,7 @@ export const signupTestState: SignupRootState = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",
-    reset_password_link: "http://dummy.example.com/reset-password",
+    reset_password_service_url: "http://dummy.example.com/reset-password",
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,
