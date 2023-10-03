@@ -13,7 +13,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   const config = useDashboardAppSelector((state) => state.config);
 
   function handleAcceptModal() {
-    const chpassURL = config.token_service_url + "chpass";
+    const chpassURL = config.authn_url + "chpass";
     // the "chpass" path will route to the ChangePasswordContainer when we get back
     const nextURL = config.dashboard_url + "chpass";
     const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
