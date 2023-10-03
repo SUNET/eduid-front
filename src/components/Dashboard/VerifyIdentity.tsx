@@ -1,4 +1,6 @@
-import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faIdCard, faMobileScreen } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { svipeVerifyIdentity } from "apis/eduidSvipe";
 import FrejaeID from "components/Dashboard/Eidas";
@@ -9,6 +11,7 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
@@ -297,6 +300,7 @@ function AccordionItemSwedish(): JSX.Element | null {
           </p>
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
+              icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
               title={
                 <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
               }
@@ -311,6 +315,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <FrejaeID />
             </AccordionItemTemplate>
             <AccordionItemTemplate
+              icon={<FontAwesomeIcon icon={faEnvelope as IconProp} className="circle-icon" />}
               title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
               additionalInfo={
                 <FormattedMessage
@@ -324,6 +329,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               <LetterProofing disabled={letterProofingDisabled} />
             </AccordionItemTemplate>
             <AccordionItemTemplate
+              icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
               title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
               additionalInfo={
                 <FormattedMessage
