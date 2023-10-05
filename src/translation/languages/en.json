@@ -2277,7 +2277,7 @@
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
-    "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
+    "string": "If you have a Swedish national identity number and Freja+, confirm your identity and you'll be able to use Freja+ to log in."
   },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
