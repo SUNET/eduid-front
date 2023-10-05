@@ -2277,7 +2277,7 @@
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
-    "string": "Om du har ett svenskt personnummer och Freja eID+ så kan du använda Freja eID+ för att logga in efter att du har bekräfta din identitet."
+    "string": "Om du har ett svenskt personnummer och Freja+ så kan du använda Freja+ för att logga in efter att du har bekräfta din identitet."
   },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
