@@ -1414,7 +1414,7 @@
   },
   "dKVwzI": {
     "developer_comment": "eidas freja instructions step5",
-    "string": "Freja eID is now ready to be used with your eduID, proceed by clicking the button below"
+    "string": "Freja+ is now ready to be used with your eduID, proceed by clicking the button below"
   },
   "dKcigP": {
     "string": "The code sent to {email} has expired."
