@@ -775,7 +775,7 @@
   },
   "Lj3vAT": {
     "developer_comment": "how to contact support - paragraph 2",
-    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar i inställningarna i eduID om du är inloggad. Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
+    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar bland avancerade inställningar i eduID om du är inloggad. Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
   },
   "LlYcJl": {
     "developer_comment": "button_add",
