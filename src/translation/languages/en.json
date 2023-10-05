@@ -619,6 +619,9 @@
     "developer_comment": "device info",
     "string": "IP address"
   },
+  "G5uigS": {
+    "string": "Freja+"
+  },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Choose your principal identification method"
@@ -804,11 +807,7 @@
   },
   "Lj3vAT": {
     "developer_comment": "how to contact support - paragraph 2",
-<<<<<<< HEAD
-    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your unique id ‘eppn’ as presented in the Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
-=======
     "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the Advanced Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
->>>>>>> 06fdc96b3 (Translate extractedMessages.json in en)
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -886,13 +885,6 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
-<<<<<<< HEAD
-  "O0L1gB": {
-    "developer_comment": "method eidas - paragraph",
-    "string": "{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS below."
-  },
-=======
->>>>>>> 06fdc96b3 (Translate extractedMessages.json in en)
   "O234Pp": {
     "developer_comment": "verification status heading verified",
     "string": "Your identity is verified."
@@ -1527,8 +1519,6 @@
     "developer_comment": "when use eduID - heading",
     "string": "When will I use eduID?"
   },
-<<<<<<< HEAD
-=======
   "e+YGAd": {
     "developer_comment": "privacy policy - link",
     "string": "Privacy Policy"
@@ -1537,7 +1527,6 @@
     "developer_comment": "how to contact support - paragraph 3",
     "string": ", but for simple matters you can also reach us on phone number {phone}."
   },
->>>>>>> 06fdc96b3 (Translate extractedMessages.json in en)
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -2809,13 +2798,10 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
-<<<<<<< HEAD
-=======
   },
   "xvMcTx": {
     "developer_comment": "security verify",
     "string": "Verify"
->>>>>>> 06fdc96b3 (Translate extractedMessages.json in en)
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
