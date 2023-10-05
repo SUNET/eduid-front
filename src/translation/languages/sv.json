@@ -619,6 +619,12 @@
     "developer_comment": "device info",
     "string": "IP adress"
   },
+<<<<<<< HEAD
+=======
+  "G5uigS": {
+    "string": "Freja+"
+  },
+>>>>>>> e662b1072 (Translate extractedMessages.json in sv)
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Välj din huvudsakliga identifieringsmetod"
