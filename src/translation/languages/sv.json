@@ -1414,7 +1414,7 @@
   },
   "dKVwzI": {
     "developer_comment": "eidas freja instructions step5",
-    "string": "Freja eID är nu redo att användas med ditt eduID, fortsätt genom att klicka på knappen nedan"
+    "string": "Freja+ är nu redo att användas med ditt eduID, fortsätt genom att klicka på knappen nedan"
   },
   "dKcigP": {
     "string": "Koden som skickades till {email} är inte längre giltig."
