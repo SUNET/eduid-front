@@ -619,12 +619,9 @@
     "developer_comment": "device info",
     "string": "IP adress"
   },
-<<<<<<< HEAD
-=======
   "G5uigS": {
     "string": "Freja+"
   },
->>>>>>> e662b1072 (Translate extractedMessages.json in sv)
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Välj din huvudsakliga identifieringsmetod"
@@ -1650,13 +1647,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja+ konto (godkänd svensk e-legitimation)"
-<<<<<<< HEAD
   },
   "fEDxuK": {
     "developer_comment": "opening hours - list item 1",
     "string": "måndag till torsdag 09:00-12:00, 13:00-16:00"
-=======
->>>>>>> a80521226 (Translate extractedMessages.json in sv)
   },
   "fEDxuK": {
     "developer_comment": "opening hours - list item 1",
