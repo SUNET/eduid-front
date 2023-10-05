@@ -1677,7 +1677,7 @@
   },
   "fIdUh2": {
     "developer_comment": "how add security key - heading",
-    "string": "How can I implement 2FA with eduID?"
+    "string": "How can I add 2FA to eduID?"
   },
   "foTEGF": {
     "developer_comment": "verification status heading unverified",
