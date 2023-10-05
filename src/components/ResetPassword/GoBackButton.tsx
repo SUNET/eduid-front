@@ -15,7 +15,7 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
 
   if (!props.onClickHandler && !loginRef) {
     // for the default click handler, loginRef is mandatory
@@ -26,8 +26,8 @@ export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null 
     e.preventDefault();
     if (props.onClickHandler) {
       props.onClickHandler();
-    } else if (dashboard_url) {
-      document.location.href = dashboard_url;
+    } else if (dashboard_link) {
+      document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
       resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }

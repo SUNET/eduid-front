@@ -21,7 +21,7 @@ function Login(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
-  const base_url = useAppSelector((state) => state.config.login_base_url);
+  const base_url = useAppSelector((state) => state.config.login_service_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const fetching_next = useAppSelector((state) => state.login.fetching_next);
   let this_device = useAppSelector((state) => state.login.this_device);

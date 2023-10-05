@@ -396,7 +396,7 @@ function AccordionItemEu(): JSX.Element | null {
 
 function AccordionItemWorld(): JSX.Element | null {
   const dispatch = useDashboardAppDispatch();
-  const svipe_url = useDashboardAppSelector((state) => state.config.svipe_url);
+  const svipe_service_url = useDashboardAppSelector((state) => state.config.svipe_service_url);
 
   async function handleOnClick() {
     const response = await dispatch(svipeVerifyIdentity({ method: "svipe_id" }));
@@ -407,7 +407,7 @@ function AccordionItemWorld(): JSX.Element | null {
     }
   }
 
-  if (!svipe_url) {
+  if (!svipe_service_url) {
     return null;
   }
 

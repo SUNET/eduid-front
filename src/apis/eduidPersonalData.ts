@@ -121,9 +121,9 @@ function makePersonalDataRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.personal_data_url) {
-    throw new Error("Missing configuration personal_data_url");
+  if (!state.config.personal_data_service_url) {
+    throw new Error("Missing configuration personal_data_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.personal_data_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.personal_data_service_url, endpoint, body, data);
 }

@@ -144,9 +144,9 @@ async function makeEidasRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.eidas_url) {
-    throw new Error("Missing configuration eidas_url");
+  if (!state.config.eidas_service_url) {
+    throw new Error("Missing configuration eidas_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.eidas_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.eidas_service_url, endpoint, body, data);
 }

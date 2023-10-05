@@ -87,7 +87,7 @@ test("can remove an ORCID iD", async () => {
 
   render(<DashboardMain />, {
     state: {
-      config: { ...defaultDashboardTestState.config, orcid_url: "/orcid/" },
+      config: { ...defaultDashboardTestState.config, orcid_service_url: "/orcid/" },
       account_linking: { orcid },
     },
   });

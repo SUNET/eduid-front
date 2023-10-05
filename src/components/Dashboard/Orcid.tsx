@@ -10,7 +10,7 @@ const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 export function Orcid(): JSX.Element {
   const dispatch = useDashboardAppDispatch();
   const orcid = useDashboardAppSelector((state) => state.account_linking.orcid);
-  const orcid_url = useDashboardAppSelector((state) => state.config.orcid_url);
+  const orcid_service_url = useDashboardAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();
 
   async function handleOrcidDelete() {
@@ -18,8 +18,8 @@ export function Orcid(): JSX.Element {
   }
 
   function handleOrcidConnect() {
-    if (orcid_url) {
-      const auth_url = urlJoin(orcid_url, "authorize");
+    if (orcid_service_url) {
+      const auth_url = urlJoin(orcid_service_url, "authorize");
       window.location.assign(auth_url);
     }
   }
