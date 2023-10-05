@@ -73,11 +73,11 @@ function DataTableRows(props: DataTableProps) {
               />
             </td>
             {/* not render the close button when there is only one email */}
-            {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
-              <td className="remove-data">
+            <td className="remove-data">
+              {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
                 <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
-              </td>
-            ) : null}
+              ) : null}
+            </td>
           </tr>
         );
       })}
