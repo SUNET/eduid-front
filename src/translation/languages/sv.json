@@ -95,10 +95,6 @@
     "developer_comment": "SAML login finished",
     "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
   },
-  "0LOfL0": {
-    "developer_comment": "verification methods - list item 2",
-    "string": "{mobile} användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att fullfölja verifieringen på eduid.se,"
-  },
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "Ingen information har lagts till."
@@ -158,10 +154,6 @@
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
-  },
-  "1vF6Ky": {
-    "developer_comment": "how use other devices - paragraph",
-    "string": "Lösenordsfri inloggning kan även användas genom att logga in till eduID med hjälp av en annan enhet:"
   },
   "2D7weB": {
     "developer_comment": "orcid connect button",
@@ -289,10 +281,6 @@
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "För att begära kod, fyll i nedan captcha."
-  },
-  "4aLbZQ": {
-    "developer_comment": "privacy policy list - item 9",
-    "string": "använder inte kakor."
   },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
@@ -517,10 +505,6 @@
     "developer_comment": "chpass suggest password",
     "string": "Rekommendera ett lösenord"
   },
-  "Cdd9/Y": {
-    "developer_comment": "verification methods - list item 1",
-    "string": "{post} användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om hur man slutför verifieringen i eduid.se,"
-  },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
     "string": "Med Svipe ID kryptografisk identitetsverifiering"
@@ -579,10 +563,6 @@
   },
   "Ek2FGc": {
     "string": "Logga in på den andra enheten"
-  },
-  "Eli5rn": {
-    "developer_comment": "verification methods - list definition",
-    "string": "{emphasis}, kan det verifieras med:"
   },
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
@@ -666,6 +646,10 @@
   "GMrz0F": {
     "developer_comment": "use svipe - list definition",
     "string": "Hur du kan använda Svipe iD med eduID:"
+  },
+  "GO322p": {
+    "developer_comment": "how use other devices - paragraph",
+    "string": "Inloggning kan även ske genom att logga in i eduID med hjälp av en annan enhet:"
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -898,10 +882,6 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID-identifierare"
   },
-  "O0L1gB": {
-    "developer_comment": "method eidas - paragraph",
-    "string": "{strong}, kan du använda {emphasis} med hjälp av ett europeiskt eID för att verifiera din identitet. Läs mer om eIDAS nedan."
-  },
   "O234Pp": {
     "developer_comment": "verification status heading verified",
     "string": "Din identitet är verifierad."
@@ -1037,10 +1017,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Blanksteg (mellanslag) ignoreras"
   },
-  "Rd1GNL": {
-    "developer_comment": "how to contact support - paragraph 3",
-    "string": "{strong}, men för enklare ärenden kan du också nå oss per telefon {phone}."
-  },
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "OK"
@@ -1052,10 +1028,6 @@
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
     "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
-  },
-  "S+T+bv": {
-    "developer_comment": "method svipe - paragraph",
-    "string": "{strong}, kan du använda {emphasis} för att verifiera din identitet med hjälp av ditt pass. Läs mer om Svipe iD nedan."
   },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
@@ -1544,6 +1516,14 @@
     "developer_comment": "when use eduID - heading",
     "string": "När använder jag eduID?"
   },
+  "e+YGAd": {
+    "developer_comment": "privacy policy - link",
+    "string": "Integritetspolicyn"
+  },
+  "e0xgSg": {
+    "developer_comment": "how to contact support - paragraph 3",
+    "string": ", men för enklare ärenden kan du också nå oss per telefon {phone}."
+  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -1559,10 +1539,6 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "Om du inte längre vill att eduID ska känna till ditt ORCID iD kan du enkelt ta bort det genom att klicka på krysset."
-  },
-  "eOKhUB": {
-    "developer_comment": "verification methods - list item 3",
-    "string": "{freja} användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan bekräfta ditt eduID. Läs mer om Freja+ nedan."
   },
   "eau1zR": {
     "developer_comment": "about verification of identity - info",
@@ -1764,6 +1740,10 @@
   "hHpM+l": {
     "developer_comment": "how remove linked orcid - heading",
     "string": "Hur kan jag ta bort ett länkat ORCID från eduID?"
+  },
+  "hNaNOA": {
+    "developer_comment": "verification methods - list definition",
+    "string": ", kan det verifieras med:"
   },
   "hRXpVn": {
     "developer_comment": "Header logout",
@@ -2816,21 +2796,9 @@
     "developer_comment": "verification methods - list item 1",
     "string": "användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
   },
-  "xw6F28": {
-    "developer_comment": "which verification methods - heading",
-    "string": "Vilka verifieringsmetoder finns för eduID?"
-  },
-  "y1sPSs": {
-    "developer_comment": "what is orcid - heading",
-    "string": "Vad är ORCID?"
-  },
-  "y3eqwF": {
-    "developer_comment": "create eduid - list definition",
-    "string": "Hur du kan skapa ditt eduID-konto på {eduidLink}:"
-  },
-  "y4SB0a": {
-    "developer_comment": "use orcid - list item 1",
-    "string": "läs mer och skaffa ett ORCID på {orcid},"
+  "xvMcTx": {
+    "developer_comment": "security verify",
+    "string": "Verifiera"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
