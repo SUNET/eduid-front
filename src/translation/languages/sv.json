@@ -73,7 +73,7 @@
   },
   "/aIXqR": {
     "developer_comment": "what is accessibility report - paragraph 1",
-    "string": "Läs {accessability} i sin helhet angående eduID.se på Sunets hemsida, där du även hittar instruktioner för hur du kan meddela innehåll som brister i tillgänglighet. Rapporten beskriver eduIDs arbete för förenlighet med lagen om tillgänglighet till digital offentlig service, inklusive kända brister."
+    "string": "Läs {accessibility} i sin helhet angående eduID.se på Sunets hemsida, där du även hittar instruktioner för hur du kan meddela innehåll som brister i tillgänglighet. Rapporten beskriver eduIDs arbete för förenlighet med lagen om tillgänglighet till digital offentlig service, inklusive kända brister."
   },
   "/h666/": {
     "developer_comment": "select extra webauthn",
