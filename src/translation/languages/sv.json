@@ -592,7 +592,7 @@
     "string": "IP adress"
   },
   "G5uigS": {
-    "string": "Freja eID+"
+    "string": "Freja+"
   },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
@@ -600,7 +600,7 @@
   },
   "G86+D9": {
     "developer_comment": "eidas freja instructions install link",
-    "string": "Vad är Freja eID+?"
+    "string": "Vad är Freja+?"
   },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
