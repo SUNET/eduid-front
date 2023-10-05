@@ -95,10 +95,13 @@
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
   },
+<<<<<<< HEAD
   "0QJd38": {
     "developer_comment": "usb key technical section - list item 2 code",
     "string": "\"fido certified\""
   },
+=======
+>>>>>>> d131a7e81 (edited help text after feedback)
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
@@ -158,10 +161,6 @@
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
-  },
-  "1vF6Ky": {
-    "developer_comment": "how use other devices - paragraph",
-    "string": "Passwordless login can also be supported by using another device to login to eduID on the device you are currently using:"
   },
   "2D7weB": {
     "developer_comment": "orcid connect button",
@@ -293,10 +292,6 @@
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
-  },
-  "4aLbZQ": {
-    "developer_comment": "privacy policy list - item 9",
-    "string": "does not use cookies."
   },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
@@ -541,10 +536,13 @@
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
   },
+<<<<<<< HEAD
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Username"
   },
+=======
+>>>>>>> d131a7e81 (edited help text after feedback)
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
     "string": "With Svipe ID cryptographic identity verification"
@@ -599,10 +597,6 @@
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
-  },
-  "Eli5rn": {
-    "developer_comment": "verification methods - list definition",
-    "string": "{emphasis}, verifying it can be done via:"
   },
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
@@ -926,10 +920,6 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
-  "O0L1gB": {
-    "developer_comment": "method eidas - paragraph",
-    "string": "{strong}, you could use {emphasis} to verify your identity. Read more about eIDAS below."
-  },
   "O234Pp": {
     "developer_comment": "verification status heading verified",
     "string": "Your identity is verified."
@@ -1065,10 +1055,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
   },
-  "Rd1GNL": {
-    "developer_comment": "how to contact support - paragraph 3",
-    "string": "{strong}, but for simple matters you can also reach us on phone number {phone}."
-  },
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "ok"
@@ -1080,10 +1066,6 @@
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
     "string": "You will need to log in again to change your password."
-  },
-  "S+T+bv": {
-    "developer_comment": "method svipe - paragraph",
-    "string": "{strong}, you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below."
   },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
@@ -2918,6 +2900,7 @@
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
   },
+<<<<<<< HEAD
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "What are the methods of verification for eduID?"
@@ -2933,6 +2916,11 @@
   "y4SB0a": {
     "developer_comment": "use orcid - list item 1",
     "string": "read more and register for an ORCID at {orcid},"
+=======
+  "xvMcTx": {
+    "developer_comment": "security verify",
+    "string": "Verify"
+>>>>>>> d131a7e81 (edited help text after feedback)
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",

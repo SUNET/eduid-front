@@ -287,7 +287,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how use other devices - paragraph"
-                  defaultMessage={`Passwordless login can also be supported by using another device to login to eduID 
+                  defaultMessage={`You can also login using another device to login to eduID 
                   on the device you are currently using:`}
                 />
               </p>
@@ -434,6 +434,10 @@ export function Help(): JSX.Element {
                 </p>
                 <ul className="bullets">
                   <li>
+                    <em>
+                      <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
+                    </em>
+                    &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 1"
                       defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
@@ -445,6 +449,10 @@ export function Help(): JSX.Element {
                     />
                   </li>
                   <li>
+                    <em>
+                      <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
+                    </em>
+                    &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 2"
                       defaultMessage={`{mobile} the user receives a message sent to the phone number that is registered 
@@ -456,6 +464,13 @@ export function Help(): JSX.Element {
                     />
                   </li>
                   <li>
+                    <em>
+                      <FormattedMessage
+                        description="swedish nin freja - heading"
+                        defaultMessage="Freja+ (digital ID-card):"
+                      />
+                    </em>
+                    &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 3"
                       defaultMessage={`{freja} the user will be directed to the Freja eID website to
@@ -488,10 +503,7 @@ export function Help(): JSX.Element {
                     defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. 
                     Read more about Svipe iD below.`}
                     values={{
-                      strong: (
-                        <strong>If you are not an EU citizen and without a Swedish personal identity number</strong>
-                      ),
-                      emphasis: <em>Svipe eID</em>,
+                      emphasis: <em>Svipe ID</em>,
                     }}
                   />
                 </p>
@@ -896,9 +908,6 @@ export function Help(): JSX.Element {
                     description="privacy policy - list item 8"
                     defaultMessage="retains inactive accounts for a maximum of 2 years,"
                   />
-                </li>
-                <li>
-                  <FormattedMessage description="privacy policy list - item 9" defaultMessage="does not use cookies." />
                 </li>
               </ul>
             </article>
