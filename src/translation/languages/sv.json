@@ -1663,7 +1663,7 @@
   },
   "fIdUh2": {
     "developer_comment": "how add security key - heading",
-    "string": "Hur kan jag implementera 2FA för mitt eduID?"
+    "string": "Hur kan jag lägga till 2FA för mitt eduID?"
   },
   "foTEGF": {
     "developer_comment": "verification status heading unverified",
