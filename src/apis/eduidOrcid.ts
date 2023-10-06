@@ -65,11 +65,11 @@ function makeOrcidRequest<T>(
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
-  if (!state.config.orcid_url) {
-    throw new Error("Missing orcid_url");
+  if (!state.config.orcid_service_url) {
+    throw new Error("Missing orcid_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.orcid_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.orcid_service_url, endpoint, body, data);
 }
 
 /*********************************************************************************************************************/
