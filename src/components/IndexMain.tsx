@@ -40,7 +40,7 @@ export function IndexMain(): JSX.Element {
         <Splash showChildren={isLoaded}>
           <section id="content" className="horizontal-content-margin content">
             <Routes>
-              <Route path="static/front-build/index.dev.html" element={<Index />} />
+              <Route path="/" element={<Index />} />
               {/* Signup */}
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
               {/* Login */}
