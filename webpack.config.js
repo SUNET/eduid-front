@@ -4,6 +4,7 @@ const autoprefixer = require("autoprefixer");
 //const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const transform = require("@formatjs/ts-transformer").transform;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -96,6 +97,12 @@ module.exports = {
   plugins: [
     // Initial configuration
     //initialConfigPlugin,
+    new HtmlWebpackPlugin({
+      hash: true,
+      template: `./public/index.html`,
+      filename: `index.dev.html`,
+      chunks: `index`,
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       // test: /\.xxx$/, // may apply this only for some modules
