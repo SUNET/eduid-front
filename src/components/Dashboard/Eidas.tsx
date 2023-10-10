@@ -79,7 +79,7 @@ function Eidas(): JSX.Element {
           values={{
             freja_eid_link: (
               <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-                Freja eID+
+                Freja
               </a>
             ),
           }}
