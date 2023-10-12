@@ -57,7 +57,7 @@
   },
   "/JEhOK": {
     "developer_comment": "progress title",
-    "string": "Nuvarande framsteg i din identitets verifiering"
+    "string": "Status för verifiering av din identitet"
   },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
@@ -2189,7 +2189,7 @@
   },
   "pi0Vka": {
     "developer_comment": "privacy policy - list item 2",
-    "string": "överför information enligt minimiseringsprincipen - aldrig mer än vad som behövs,"
+    "string": "överför information enligt minimeringsprincipen - aldrig mer än vad som behövs,"
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
