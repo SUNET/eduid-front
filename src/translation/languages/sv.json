@@ -57,7 +57,7 @@
   },
   "/JEhOK": {
     "developer_comment": "progress title",
-    "string": "Nuvarande framsteg i din identitets verifiering"
+    "string": "Status för verifiering av din identitet"
   },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
