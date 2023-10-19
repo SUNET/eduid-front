@@ -2,8 +2,6 @@
  * Typed variants of things defined in common.js. Converting common.js to TypeScript was too big of a bite right now.
  */
 
-import { TOKEN_SERVICE_URL } from "globals";
-
 export class NeedsAuthenticationError extends Error {}
 
 export const checkStatus = function (response: Response): Response {
@@ -11,8 +9,11 @@ export const checkStatus = function (response: Response): Response {
     return response;
   } else if (response.status === 0) {
     const next = document.location.href;
-    document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);
-    console.log("next", next);
+    /* TODO: Modify the code for better logic. The service URL should be the same as config.authn_service_url,
+      but this code replaced it when the "url dashboard" was removed from the URL.*/
+    const urlObject = new URL(response.url);
+    const cleanedURL = urlObject.origin;
+    document.location.href = cleanedURL + "/services/authn/login" + "?next=" + next;
     throw new NeedsAuthenticationError("Request needs authentication");
   } else {
     throw new Error(`HTTP ${response.status} ${response.statusText}`);
