@@ -21,7 +21,7 @@ export function Index() {
       }
     }
   }
-  console.log("hihi");
+
   return (
     <React.Fragment>
       <h1 className="tagline">
