@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
+import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import { LetterProofingState } from "slices/LetterProofing";
@@ -141,7 +142,7 @@ export default function Start(): JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <Splash showChildren={isLoaded}>
       <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
       <section className="intro">
         <h1>
@@ -170,6 +171,6 @@ export default function Start(): JSX.Element {
       </article>
       {progress}
       <Recommendations />
-    </React.Fragment>
+    </Splash>
   );
 }
