@@ -12,8 +12,8 @@ export const checkStatus = function (response: Response): Response {
     /* TODO: Modify the code for better logic. The service URL should be the same as config.authn_service_url,
       but this code replaced it when the "url dashboard" was removed from the URL.*/
     const urlObject = new URL(response.url);
-    const cleanedURL = urlObject.origin;
-    document.location.href = cleanedURL + "/services/authn/login" + "?next=" + next;
+    const authn_service_url = urlObject.origin;
+    document.location.href = authn_service_url + "/services/authn/login" + "?next=" + next;
     throw new NeedsAuthenticationError("Request needs authentication");
   } else {
     throw new Error(`HTTP ${response.status} ${response.statusText}`);
