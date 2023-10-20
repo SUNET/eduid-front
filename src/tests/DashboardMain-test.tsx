@@ -10,9 +10,8 @@ test("shows splash screen when not configured", () => {
   });
 
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
-
-  expect(screen.getByRole("progressbar")).toBeInTheDocument();
-  expect(screen.getByRole("progressbar")).toHaveClass("spinner");
+  expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
+  expect(screen.getAllByRole("progressbar")[0]).toHaveClass("spinner");
 });
 
 test("renders Profile page as expected", () => {
