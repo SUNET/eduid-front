@@ -20,7 +20,14 @@ export function Header(props: HeaderProps): JSX.Element {
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const start_url = dashboard_link || eduid_site_url;
 
-  let button = null;
+  const initialButton = (
+    <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
+      <FormattedMessage defaultMessage="Log in" description="Header login" />
+    </EduIDButton>
+  );
+
+  let button = initialButton;
+
   const navigate = useNavigate();
 
   async function handleLogout() {
