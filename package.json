@@ -43,7 +43,6 @@
     "react-popper": "^2.3.0",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.9",
-    "react-router-dom": "^6.14.0",
     "react-router-hash-link": "^2.4.3",
     "react-script-loader-hoc": "^1.2.2",
     "react-select": "^5.7.3",
