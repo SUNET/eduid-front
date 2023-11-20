@@ -1,24 +1,20 @@
+import { bankIDVerifyIdentity } from "apis/eduidBankid";
 import EduIDButton from "components/Common/EduIDButton";
+import { useDashboardAppDispatch } from "dashboard-hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 function BankID(): JSX.Element {
-  // const bank_id_url = useDashboardAppSelector((state) => state.config.bank_id_url);
-  // const token_verify_idp = useDashboardAppSelector((state) => state.config.token_verify_idp);
-  // let eidas_sp_url = bank_id_url;
-  // const freja_idp_url = token_verify_idp;
+  const dispatch = useDashboardAppDispatch();
 
-  // if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
-  //   eidas_sp_url = eidas_sp_url.concat("/");
-  // }
-
-  // function useBankID(event?: React.MouseEvent<HTMLElement>) {
-  //   if (event) {
-  //     event.preventDefault();
-  //   }
-
-  //   window.location.href = bankidURL;
-  // }
+  async function useBankID() {
+    const response = await dispatch(bankIDVerifyIdentity({ method: "bankid" }));
+    if (bankIDVerifyIdentity.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    }
+  }
 
   return (
     <Fragment>
@@ -44,7 +40,7 @@ function BankID(): JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary" size="sm" onClick={() => console.log("hi")}>
+      <EduIDButton buttonstyle="primary" size="sm" onClick={useBankID}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </Fragment>
