@@ -51,10 +51,10 @@ export const bankIDVerifyIdentity = createAsyncThunk<
 
 /**
  * @public
- * @function svipeGetStatus
+ * @function bankIDGetStatus
  * @desc Redux async thunk to fetch status for an earlier operation.
  */
-export const svipeGetStatus = createAsyncThunk<
+export const bankIDGetStatus = createAsyncThunk<
   GetStatusResponse, // return type
   GetStatusRequest, // args type
   { dispatch: DispatchWithBankID; state: StateWithBankID }
@@ -73,10 +73,9 @@ async function makeBankIDRequest<T>(
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
-  // TODO: Change to bankid_url
-  if (!state.config.svipe_url) {
-    throw new Error("Missing configuration bankid_url");
+  if (!state.config.bankid_service_url) {
+    throw new Error("Missing configuration bankid_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, "https://bankid.eduid.docker", endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.bankid_service_url, endpoint, body, data);
 }
