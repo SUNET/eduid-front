@@ -88,4 +88,11 @@ export const apiResponses = {
   "resetpw.send-sms-success": (
     <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`A code has been sent to your phone.`} />
   ),
+
+  "chpass.different-repeat": (
+    <FormattedMessage
+      id="chpass.different-repeat"
+      defaultMessage={`The new password and repeat password are different.`}
+    />
+  ),
 };
