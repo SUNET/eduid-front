@@ -44,6 +44,9 @@ export const apiResponse = {
       defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
+  "common.locked_identity_not_matching": (
+    <FormattedMessage id="common.locked_identity_not_matching" defaultMessage={`Identity not matching`} />
+  ),
 };
 
 export const proofing = {
