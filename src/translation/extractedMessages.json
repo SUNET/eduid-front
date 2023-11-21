@@ -1389,6 +1389,9 @@
   "code.unknown-code": {
     "string": "Unknown code"
   },
+  "common.locked_identity_not_matching": {
+    "string": "Identity not matching"
+  },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
     "string": "Invalid code"
