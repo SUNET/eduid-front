@@ -1371,6 +1371,9 @@
     "developer_comment": "orcid remove",
     "string": "remove"
   },
+  "chpass.different-repeat": {
+    "string": "The new password and repeat password are different."
+  },
   "chpass.low-password-entropy": {
     "string": "Please provide a stronger password"
   },
