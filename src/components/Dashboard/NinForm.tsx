@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
-    return "required";
+    return undefined;
   }
   // accept only digits
   if (/[^0-9]+/.test(value)) return "nins.illegal_chars";
@@ -64,7 +64,7 @@ function NinForm(): JSX.Element {
       initialValues={{
         nin: nin?.number || "",
       }}
-      render={({ handleSubmit, pristine, invalid }) => {
+      render={({ handleSubmit, pristine, invalid, values }) => {
         return (
           <form onSubmit={handleSubmit} className="single-input-form x-adjust">
             <fieldset id="nins-form" className="tabpane">
@@ -85,7 +85,12 @@ function NinForm(): JSX.Element {
               />
             </fieldset>
             <div className="buttons">
-              <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+              <EduIDButton
+                id="add-nin-button"
+                buttonstyle="primary"
+                disabled={pristine || invalid || !values.nin}
+                type="submit"
+              >
                 <FormattedMessage description="button_add" defaultMessage="Add" />
               </EduIDButton>
             </div>
