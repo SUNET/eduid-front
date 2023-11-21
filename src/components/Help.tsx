@@ -475,6 +475,20 @@ export function Help(): JSX.Element {
                       complete verification of your eduID. Read more about Freja+ below.`}
                     />
                   </li>
+                  <li>
+                    <em>
+                      <FormattedMessage
+                        description="swedish nin bankid - heading"
+                        defaultMessage="BankID (electronic identification system):"
+                      />
+                    </em>
+                    &nbsp;
+                    <FormattedMessage
+                      description="verification methods - list item 3"
+                      defaultMessage={` the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can
+                      complete verification of your eduID. Read more about BankID below.`}
+                    />
+                  </li>
                 </ul>
               </section>
               <section>
@@ -565,7 +579,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use freja - list item 3"
-                        defaultMessage={`log in to eduID and choose the 'Digital ID-card' option in the Identity area 
+                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area 
                         and follow the instructions.`}
                       />
                     </li>
@@ -603,6 +617,57 @@ export function Help(): JSX.Element {
                     ID and personal identity number (personnummer).`}
                     />
                   </p>
+                </article>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-bankid"
+                title={<FormattedMessage description="about bankid - handle" defaultMessage="About BankID" />}
+                additionalInfo={null}
+              >
+                <article>
+                  <h4>
+                    <FormattedMessage description="what is bankid - heading" defaultMessage="What is BankID?" />
+                  </h4>
+                  <p>
+                    <FormattedMessage
+                      description="what is bankid - paragraph"
+                      defaultMessage={`BankID is a widely used electronic verification system, available to 
+                      holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden.`}
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage
+                      description="use bankid - list definition"
+                      defaultMessage="How to use BankID with eduID:"
+                    />
+                  </p>
+
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="use bankid - list item 1"
+                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
+                        values={{
+                          Freja: (
+                            <a
+                              className="text-link"
+                              href="https://www.bankid.com/en/privat/skaffa-bankid"
+                              target="_blank"
+                            >
+                              their website
+                            </a>
+                          ),
+                        }}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="use bankid - list item 2"
+                        defaultMessage={`log in to eduID and choose the 'Electronic BankID' option in the Identity area 
+                        and follow the instructions.`}
+                      />
+                    </li>
+                  </ul>
                 </article>
               </AccordionItemTemplate>
               <AccordionItemTemplate
