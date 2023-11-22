@@ -1,4 +1,5 @@
-import { eidasGetStatus, GetStatusResponse } from "apis/eduidEidas";
+import { bankIDGetStatus } from "apis/eduidBankid";
+import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { useEffect } from "react";
@@ -32,6 +33,7 @@ export function ExternalReturnHandler() {
           eidasVerifyIdentity: "/profile/verify-identity/",
           eidasVerifyCredential: "/profile/settings/advanced-settings/",
           svipeidVerifyIdentity: "/profile/verify-identity/",
+          bankidVerifyIdentity: "/profile/verify-identity/",
         };
         const _path = actionToRoute[status.frontend_action];
         if (_path) {
@@ -58,12 +60,22 @@ export function ExternalReturnHandler() {
     }
   }
 
+  async function fetchBankIDStatus(authn_id: string) {
+    const response = await dispatch(bankIDGetStatus({ authn_id: authn_id }));
+    if (bankIDGetStatus.fulfilled.match(response)) {
+      processStatus(response.payload);
+    }
+  }
+
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas") {
       fetchEidasStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "svipe_id") {
       fetchSvipeStatus(params.authn_id).catch(console.error);
+    }
+    if (params.authn_id && params.app_name === "bankid") {
+      fetchBankIDStatus(params.authn_id).catch(console.error);
     }
   }, [params]);
 

@@ -11,6 +11,8 @@ import * as eidas from "./defaultMessages/eidas";
 import * as email from "./defaultMessages/email";
 import * as orcid from "./defaultMessages/orcid";
 import * as phone from "./defaultMessages/phone";
+import * as bankid from "./defaultMessages/bankid";
+import * as svipe from "./defaultMessages/svipe";
 
 export const formattedMessages = {
   ...common.proofing,
@@ -28,4 +30,6 @@ export const formattedMessages = {
   ...letterProofing.apiResponses,
   ...resetPassword.apiResponses,
   ...lookupMobileProofing.apiResponses,
+  ...bankid.apiResponses,
+  ...svipe.apiResponses,
 };

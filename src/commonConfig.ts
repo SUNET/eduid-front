@@ -20,6 +20,7 @@ interface CommonJsConfig {
 // but the API:s should throw an error if used without an actual value present so they
 // can all be optional
 interface APIEndpoints {
+  bankid_service_url?: string;
   eidas_url?: string;
   emails_url?: string;
   ladok_url?: string;

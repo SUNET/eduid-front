@@ -11,6 +11,7 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
@@ -20,6 +21,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import AddNin from "./AddNin";
+import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
@@ -298,7 +300,21 @@ function AccordionItemSwedish(): JSX.Element | null {
               defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
             />
           </p>
+
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+            <AccordionItemTemplate
+              icon={<img height="35" className="circle-icon" alt="BankID" src={BankIdFlag} />}
+              title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
+              additionalInfo={
+                <FormattedMessage
+                  description="verify identity vetting BankID tagline"
+                  defaultMessage={`For you able to use BankID`}
+                />
+              }
+              uuid="se-bankID"
+            >
+              <BankID />
+            </AccordionItemTemplate>
             <AccordionItemTemplate
               icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
               title={
