@@ -64,10 +64,10 @@ function Phones() {
 
   async function handleAdd(values: PhoneFormData) {
     const number = toE164Number(values.number, default_country_code);
-
     if (number.startsWith("+")) {
       const response = await dispatch(postNewPhone({ number: number }));
       if (postNewPhone.fulfilled.match(response)) {
+        dispatch(clearNotifications());
         // phone number form closed when user have successfully added phone number
         return setShowPhoneForm(false);
       }
