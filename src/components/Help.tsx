@@ -648,13 +648,13 @@ export function Help(): JSX.Element {
                         description="use bankid - list item 1"
                         defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
                         values={{
-                          Freja: (
+                          bankid: (
                             <a
                               className="text-link"
                               href="https://www.bankid.com/en/privat/skaffa-bankid"
                               target="_blank"
                             >
-                              their website
+                              the BankID website
                             </a>
                           ),
                         }}
