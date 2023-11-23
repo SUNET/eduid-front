@@ -317,9 +317,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             </AccordionItemTemplate>
             <AccordionItemTemplate
               icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
-              title={
-                <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
-              }
+              title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
               additionalInfo={
                 <FormattedMessage
                   description="verify identity vetting freja tagline"
