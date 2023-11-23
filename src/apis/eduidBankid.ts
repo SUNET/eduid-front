@@ -94,7 +94,7 @@ export const bankIDVerifyCredential = createAsyncThunk<
   VerifyCredentialResponse, // return type
   VerifyCredentialRequest, // args type
   { dispatch: DispatchWithBankID; state: StateWithBankID }
->("eidas/verifyCredential", async (args, thunkAPI) => {
+>("bankid/verifyCredential", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
     body.frontend_action = "bankidVerifyCredential";

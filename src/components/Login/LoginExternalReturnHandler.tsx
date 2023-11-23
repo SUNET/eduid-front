@@ -1,3 +1,4 @@
+import { bankIDGetStatus } from "apis/eduidBankid";
 import { eidasGetStatus } from "apis/eduidEidas";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { useEffect } from "react";
@@ -21,8 +22,10 @@ export function LoginExternalReturnHandler() {
   const app_loaded = useAppSelector((state) => state.app.is_loaded);
 
   async function fetchStatus(authn_id: string) {
-    const response = await dispatch(eidasGetStatus({ authn_id: authn_id }));
-    if (eidasGetStatus.fulfilled.match(response)) {
+    const getStatusAction = params.app_name === "freja" ? eidasGetStatus : bankIDGetStatus;
+
+    const response = await dispatch(getStatusAction({ authn_id: authn_id }));
+    if (getStatusAction.fulfilled.match(response)) {
       const status = response.payload;
       if (status?.method) {
         // Status has been fetched
