@@ -1362,7 +1362,7 @@
     "string": "BankId must authenticate"
   },
   "bankid.no_redirect_url": {
-    "string": "MFA autheticaion is missing a redirect URL"
+    "string": "MFA authentication is missing a redirect URL"
   },
   "bankid.not_found": {
     "string": "BankID not found"
