@@ -58,7 +58,7 @@ export function SwedishEID(): JSX.Element {
         >
           <FormattedMessage
             defaultMessage={`Use my {bankID}`}
-            values={{ bankID: <span className="verbatim">Bank ID</span> }}
+            values={{ bankID: <span className="verbatim">BankID</span> }}
           />
         </EduIDButton>
         <EduIDButton

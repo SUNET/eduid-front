@@ -91,9 +91,12 @@ table {
         padding-right: 1rem;
       }
 
-      // & td:last-child {
-      //   text-align: center;
-      // }
+      & td:last-child {
+        text-align: center;
+      }
+      & td.value-status .btn-link {
+        height: 20px;
+      }
     }
 
     & tr.webauthn-token-holder.verified {
@@ -128,6 +131,14 @@ table {
 
     & tr.display-none {
       display: none;
+    }
+  }
+
+  td.value-status {
+    @media (max-width: 414px) {
+      button.btn.btn-link {
+        height: 30px;
+      }
     }
   }
 
@@ -175,7 +186,7 @@ table.table-form.passwords {
 
   .security-name {
     width: 25%;
-    @media (min-width: $bp-md) {
+    @media (max-width: $bp-sm) {
       width: 50%;
     }
   }

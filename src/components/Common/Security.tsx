@@ -231,7 +231,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       await dispatch(removeWebauthnToken({ credential_key }));
     })();
   }
-
   // data that goes onto the table
   const security_key_table_data = tokens.map((cred: CredentialType) => {
     // date created
