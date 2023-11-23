@@ -325,6 +325,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7B1RyH": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "För dig som kan använda BankID"
+  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "ansluta ditt eduID till Ladok och/eller befintligt ORCID iD om det stöds av din institution,"
@@ -1339,6 +1343,33 @@
     "developer_comment": "when use eduID - list item 1",
     "string": "ansöker till och accepterar plats på högskolan,"
   },
+  "bankid.attribute_missing": {
+    "string": "BankID attribut saknas"
+  },
+  "bankid.authn_context_mismatch": {
+    "string": "Mottog fel representation av tillitsnivå"
+  },
+  "bankid.identity_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "bankid.identity_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "bankid.method_not_available": {
+    "string": "BankID metoden är inte tillgänglig"
+  },
+  "bankid.must_authenticate": {
+    "string": "BankId måste autentisera"
+  },
+  "bankid.no_redirect_url": {
+    "string": "MFA autentisering saknar en omdirigerings URL"
+  },
+  "bankid.not_found": {
+    "string": "BankID hittades inte"
+  },
+  "bankid.token_not_found": {
+    "string": "Säkerhetsnyckeln hittades inte"
+  },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
     "string": "För att komma igång med kontoåterställningen, klicka på knappen nedan för att skicka ett e-postmeddelande till {email}."
@@ -1388,6 +1419,9 @@
   },
   "code.unknown-code": {
     "string": "Okänd kod"
+  },
+  "common.locked_identity_not_matching": {
+    "string": "Identitet matchar inte"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1757,6 +1791,10 @@
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
   },
+  "j9AXsq": {
+    "developer_comment": "bankID proofing help text",
+    "string": "För att använda det här alternativet måste du först skapa ett digitalt ID-kort i {bankID_link} appen."
+  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
@@ -1988,6 +2026,10 @@
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS är en federation av anslutna EU-länder som utfärdar en elektronisk identifiering för att erbjuda inloggning till alla offentliga verksamheters system för medborgare inom EU, med hjälp av sitt lands e-legitimation."
   },
+  "nCc6tZ": {
+    "developer_comment": "BankID vetting button",
+    "string": "med BankID"
+  },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
     "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
@@ -2109,6 +2151,10 @@
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
+  },
+  "pIstaO": {
+    "developer_comment": "verify identity",
+    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Bank ID verifierar din identitet mot eduID."
   },
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
