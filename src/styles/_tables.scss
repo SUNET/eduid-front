@@ -91,7 +91,7 @@ table {
         padding-right: 1rem;
       }
 
-      & td:last-child {
+      & td:last-child:not(.value-status) {
         text-align: center;
       }
       & td.value-status .btn-link {

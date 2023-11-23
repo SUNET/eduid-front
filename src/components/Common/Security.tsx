@@ -218,7 +218,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   function handleVerifyWebauthnTokenBankID(token: string) {
     (async () => {
       const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
-      if (eidasVerifyCredential.fulfilled.match(response)) {
+      if (bankIDVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
