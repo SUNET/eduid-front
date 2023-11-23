@@ -1,3 +1,4 @@
+import { bankIDVerifyCredential } from "apis/eduidBankid";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 import {
   beginRegisterWebauthn,
@@ -203,9 +204,20 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       cred.credential_type == "security.webauthn_credential_type"
   );
 
-  function handleVerifyWebauthnToken(token: string) {
+  function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
       const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      if (eidasVerifyCredential.fulfilled.match(response)) {
+        if (response.payload.location) {
+          window.location.assign(response.payload.location);
+        }
+      }
+    })();
+  }
+
+  function handleVerifyWebauthnTokenBankID(token: string) {
+    (async () => {
+      const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
@@ -240,9 +252,14 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       );
     } else {
       btnVerify = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnToken(cred.key)}>
-          <FormattedMessage description="security verify" defaultMessage="Verify" />
-        </EduIDButton>
+        <>
+          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+            <FormattedMessage description="security verify" defaultMessage="Freja+" />
+          </EduIDButton>
+          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+            <FormattedMessage description="security verify" defaultMessage="BankID" />
+          </EduIDButton>
+        </>
       );
     }
 
@@ -288,8 +305,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           <th className="security-last-used-date">
             <FormattedMessage description="security last used" defaultMessage="Used on" />
           </th>
-          <th className="display-none">
-            <FormattedMessage description="security key status" defaultMessage="Status" />
+          <th>
+            <FormattedMessage description="security key status" defaultMessage="Verify" />
           </th>
           <th className="display-none">
             <FormattedMessage description="security key remove" defaultMessage="Remove" />

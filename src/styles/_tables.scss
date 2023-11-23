@@ -38,6 +38,10 @@ table {
           padding: 0;
         }
 
+        .btn-link {
+          margin-right: 20px;
+        }
+
         & span {
           font-family: $akkurat;
           letter-spacing: 1px;
@@ -87,9 +91,9 @@ table {
         padding-right: 1rem;
       }
 
-      & td:last-child {
-        text-align: center;
-      }
+      // & td:last-child {
+      //   text-align: center;
+      // }
     }
 
     & tr.webauthn-token-holder.verified {
@@ -170,7 +174,10 @@ table.table-form.passwords {
   }
 
   .security-name {
-    width: 36%;
+    width: 25%;
+    @media (min-width: $bp-md) {
+      width: 50%;
+    }
   }
 
   .security-creation-date {

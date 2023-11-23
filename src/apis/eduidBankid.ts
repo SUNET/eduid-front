@@ -3,11 +3,13 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { LoginAppDispatch, LoginRootState } from "login-init-app";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
 interface BankIDCommonRequest {
+  frontend_state?: string;
   frontend_action?: string;
   method: string;
 }
@@ -16,8 +18,8 @@ interface BankIDCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithBankID = DashboardAppDispatch;
-type StateWithBankID = DashboardRootState;
+type DispatchWithBankID = LoginAppDispatch | DashboardAppDispatch;
+type StateWithBankID = LoginRootState | DashboardRootState;
 
 /*********************************************************************************************************************/
 
@@ -43,6 +45,61 @@ export const bankIDVerifyIdentity = createAsyncThunk<
   }
 
   return makeBankIDRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MfaAuthenticateRequest extends BankIDCommonRequest {}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MfaAuthenticateResponse extends BankIDCommonResponse {}
+
+/**
+ * @public
+ * @function bankIDMfaAuthenticate
+ * @desc Redux async thunk to start an mfa-authenticate operation.
+ */
+export const bankIDMfaAuthenticate = createAsyncThunk<
+  MfaAuthenticateResponse, // return type
+  MfaAuthenticateRequest, // args type
+  { dispatch: DispatchWithBankID; state: StateWithBankID }
+>("bankid/mfaAuthenticate", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+  if (body.frontend_action === undefined) {
+    body.frontend_action = "bankidMfaAuthenticate";
+  }
+  return makeBankIDRequest<MfaAuthenticateResponse>(thunkAPI, "mfa-authenticate", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
+export interface VerifyCredentialRequest extends BankIDCommonRequest {
+  credential_id: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface VerifyCredentialResponse extends MfaAuthenticateResponse {}
+
+/**
+ * @public
+ * @function verifyCredential
+ * @desc Redux async thunk to start a verify-credential operation.
+ */
+export const bankIDVerifyCredential = createAsyncThunk<
+  VerifyCredentialResponse, // return type
+  VerifyCredentialRequest, // args type
+  { dispatch: DispatchWithBankID; state: StateWithBankID }
+>("eidas/verifyCredential", async (args, thunkAPI) => {
+  const body: KeyValues = args;
+  if (body.frontend_action === undefined) {
+    body.frontend_action = "bankidVerifyCredential";
+  }
+  return makeBankIDRequest<VerifyCredentialResponse>(thunkAPI, "verify-credential", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
