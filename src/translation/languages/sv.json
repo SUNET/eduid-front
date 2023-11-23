@@ -1347,7 +1347,7 @@
     "string": "BankID attribut saknas"
   },
   "bankid.authn_context_mismatch": {
-    "string": "Mottog fel representation av tillitsnivå"
+    "string": "Fel autentiseringskontext mottagen."
   },
   "bankid.identity_already_verified": {
     "string": "Du har redan bekräftat din identitet"
