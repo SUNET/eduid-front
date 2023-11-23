@@ -22,7 +22,7 @@ export function LoginExternalReturnHandler() {
   const app_loaded = useAppSelector((state) => state.app.is_loaded);
 
   async function fetchStatus(authn_id: string) {
-    const getStatusAction = params.app_name === "freja" ? eidasGetStatus : bankIDGetStatus;
+    const getStatusAction = params.app_name === "eidas" ? eidasGetStatus : bankIDGetStatus;
 
     const response = await dispatch(getStatusAction({ authn_id: authn_id }));
     if (getStatusAction.fulfilled.match(response)) {
