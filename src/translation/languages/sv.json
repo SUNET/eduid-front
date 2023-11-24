@@ -1079,6 +1079,10 @@
     "developer_comment": "button proceed",
     "string": "Fortsätt"
   },
+  "TZ7dg4": {
+    "developer_comment": "bankID ready",
+    "string": "Use my BankID"
+  },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
     "string": "T.ex. USB säkerhetsnyckel som du använder."
@@ -1374,6 +1378,9 @@
   "bankid.authn_context_mismatch": {
     "string": "Fel autentiseringskontext mottagen."
   },
+  "bankid.credential_verify_success": {
+    "string": "Klart"
+  },
   "bankid.identity_already_verified": {
     "string": "Du har redan bekräftat din identitet"
   },
@@ -1382,6 +1389,9 @@
   },
   "bankid.method_not_available": {
     "string": "BankID metoden är inte tillgänglig"
+  },
+  "bankid.mfa_authn_success": {
+    "string": "Klart"
   },
   "bankid.must_authenticate": {
     "string": "BankId måste autentisera"
