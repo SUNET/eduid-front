@@ -8,6 +8,9 @@ import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   clearCountdown,
@@ -30,12 +33,26 @@ function ExternalMFA({ handleOnClickBankID, handleOnClickFreja, external_mfa }: 
   return (
     <React.Fragment>
       <div className="buttons">
-        <EduIDButton type="submit" buttonstyle="primary" id="extra-security-freja" onClick={handleOnClickFreja}>
+        <EduIDButton
+          type="submit"
+          buttonstyle="secondary"
+          className="btn-icon freja-icon"
+          id="extra-security-freja"
+          onClick={handleOnClickFreja}
+        >
+          <img height="35" alt="Freja+" src={FrejaFlag} />
           <FormattedMessage description="eidas freja eid ready" defaultMessage="Use my Freja eID" />
         </EduIDButton>
       </div>
       <div className="buttons">
-        <EduIDButton type="submit" buttonstyle="primary" id="extra-security-bankid" onClick={handleOnClickBankID}>
+        <EduIDButton
+          className="btn-icon"
+          type="submit"
+          buttonstyle="secondary"
+          id="extra-security-bankid"
+          onClick={handleOnClickBankID}
+        >
+          <img height="35" alt="BankID" src={BankIdFlag} />
           <FormattedMessage description="bankID ready" defaultMessage="Use my BankID" />
         </EduIDButton>
       </div>
