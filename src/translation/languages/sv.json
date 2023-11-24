@@ -175,6 +175,10 @@
     "developer_comment": "Reset password link",
     "string": "Glömt ditt lösenord?"
   },
+  "2i/BS7": {
+    "developer_comment": "use freja - list item 3",
+    "string": "logga in i eduID och välj metoden 'Med Freja+ digitalt id-kort' i identitetshanteringen och följ instruktionerna."
+  },
   "2n5qg/": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Inställningar"
@@ -242,6 +246,10 @@
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
+  },
+  "41atQw": {
+    "developer_comment": "eidas vetting button freja",
+    "string": "med Freja+"
   },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
@@ -325,6 +333,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7B1RyH": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "För dig som kan använda BankID"
+  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "ansluta ditt eduID till Ladok och/eller befintligt ORCID iD om det stöds av din institution,"
@@ -393,6 +405,10 @@
     "developer_comment": "help text for custom password tips",
     "string": "Lägg till en eller flera siffror någonstans i mitten av lösenordet"
   },
+  "9djX63": {
+    "developer_comment": "what is bankid - heading",
+    "string": "Vad är BankID?"
+  },
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
@@ -440,6 +456,10 @@
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
+  },
+  "AsYVb4": {
+    "developer_comment": "use bankid - list item 1",
+    "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -591,9 +611,6 @@
     "developer_comment": "device info",
     "string": "IP adress"
   },
-  "G5uigS": {
-    "string": "Freja+"
-  },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Välj din huvudsakliga identifieringsmetod"
@@ -649,6 +666,10 @@
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
     "string": "För att skapa ditt eduID måste du acceptera användarvillkoren för eduID."
+  },
+  "HSZS8/": {
+    "developer_comment": "security key status",
+    "string": "Verifiera"
   },
   "HgjRtU": {
     "developer_comment": "button add more",
@@ -817,6 +838,10 @@
     "developer_comment": "generic error page",
     "string": "Problemet har rapporterats till teamet."
   },
+  "Mx5Yyp": {
+    "developer_comment": "verification methods - list item 3",
+    "string": "användaren blir ombedd att identifiera sig med hjälp av sitt BankID i BankID-tjänsten. Om du inte redan har ett BankID behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om BankID nedan."
+  },
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Spara"
@@ -953,10 +978,6 @@
     "developer_comment": "security last used date",
     "string": "Aldrig använd"
   },
-  "QOxuYY": {
-    "developer_comment": "use freja - list item 3",
-    "string": "logga in i eduID och välj metoden 'Med digitalt id-kort' i identitetshanteringen och följ instruktionerna."
-  },
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
@@ -968,6 +989,10 @@
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Radera mitt eduID"
+  },
+  "Qu1QyR": {
+    "developer_comment": "swedish nin bankid - heading",
+    "string": "BankID (elektroniskt identifieringssystem)"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -1046,10 +1071,6 @@
     "developer_comment": "SAML login finished",
     "string": "Inloggningen har redan genomförts."
   },
-  "T80C1A": {
-    "developer_comment": "eidas vetting button freja",
-    "string": "med digitalt ID-kort"
-  },
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repetera ditt nya lösenord"
@@ -1095,10 +1116,6 @@
   "UI0vOY": {
     "developer_comment": "why have eduID - paragraph 1",
     "string": "För användaren leder eduID på sikt till ett färre antal konton att hålla reda på under t.ex. studietiden. För många organisationer är identitetshantering en komplex fråga och det finns ett behov av att arbeta med bekräftade användare."
-  },
-  "UUuKzu": {
-    "developer_comment": "security key status",
-    "string": "Status"
   },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
@@ -1159,6 +1176,10 @@
   "WOHMLr": {
     "developer_comment": "Dashboard change password link description text",
     "string": "Du kan antingen använda ett rekommenderat lösenord som vi skapar åt dig eller ett du väljer helt själv."
+  },
+  "WR0ZnH": {
+    "developer_comment": "use bankid - list item 2",
+    "string": "logga in i eduID och välj metoden 'Med elektroniskt BankID' i identitetshanteringen och följ instruktionerna."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -1296,6 +1317,10 @@
     "developer_comment": "Dashboard nav tab name",
     "string": "Avancerade inställningar"
   },
+  "aRUmm4": {
+    "developer_comment": "what is bankid - paragraph",
+    "string": "BankID är en e-legitimation som är tillgänglig för innehavare av ett svenskt personnummer, svensk godkänd ID-handling (inkl. pass, körkort och ID-kort) och kund hos en av de anslutna bankerna."
+  },
   "actions.action-completed": {
     "string": "Klart"
   },
@@ -1310,6 +1335,10 @@
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verifiera ditt eduID med ett svenskt personnummer."
+  },
+  "aqzfAc": {
+    "developer_comment": "use bankid - list definition",
+    "string": "Hur du kan använda BankID med eduID:"
   },
   "b/o0DY": {
     "developer_comment": "swedish nin freja - heading",
@@ -1338,6 +1367,33 @@
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
     "string": "ansöker till och accepterar plats på högskolan,"
+  },
+  "bankid.attribute_missing": {
+    "string": "BankID attribut saknas"
+  },
+  "bankid.authn_context_mismatch": {
+    "string": "Fel autentiseringskontext mottagen."
+  },
+  "bankid.identity_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "bankid.identity_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "bankid.method_not_available": {
+    "string": "BankID metoden är inte tillgänglig"
+  },
+  "bankid.must_authenticate": {
+    "string": "BankId måste autentisera"
+  },
+  "bankid.no_redirect_url": {
+    "string": "MFA autentisering saknar en omdirigerings URL"
+  },
+  "bankid.not_found": {
+    "string": "BankID hittades inte"
+  },
+  "bankid.token_not_found": {
+    "string": "Säkerhetsnyckeln hittades inte"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
@@ -1388,6 +1444,9 @@
   },
   "code.unknown-code": {
     "string": "Okänd kod"
+  },
+  "common.locked_identity_not_matching": {
+    "string": "Identitet matchar inte"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1757,6 +1816,10 @@
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
   },
+  "j9AXsq": {
+    "developer_comment": "bankID proofing help text",
+    "string": "För att använda det här alternativet måste du först skapa ett digitalt ID-kort i {bankID_link} appen."
+  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
@@ -1827,6 +1890,10 @@
     "developer_comment": "SAML login finished",
     "string": "Försök igen"
   },
+  "lXwaZ5": {
+    "developer_comment": "security verify",
+    "string": "Freja+"
+  },
   "lZy8ZA": {
     "developer_comment": "verification status sub text",
     "string": "Vänligen se rekommenderade åtgärder nedan."
@@ -1891,11 +1958,17 @@
   "login.general_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
   },
+  "login.identity_proofing_method_not_allowed": {
+    "string": "Det är inte möjligt att använda detta alternativ för att verifiera identiteten. Välj en giltig verifieringsmetod."
+  },
   "login.mfa.h2-heading": {
     "string": "Logga in: Extra säkerhet"
   },
   "login.mfa.paragraph": {
     "string": "Du måste välja en ytterligare metod att autentisera dig själv med. Detta säkerställer att bara du kan komma åt ditt eduID."
+  },
+  "login.mfa_proofing_method_not_allowed": {
+    "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autenticeringen (MFA). Välj en giltig autenticeringsmetod."
   },
   "login.no_sso_session": {
     "string": "Sessionen hittades inte. Var god försök igen."
@@ -1988,6 +2061,10 @@
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS är en federation av anslutna EU-länder som utfärdar en elektronisk identifiering för att erbjuda inloggning till alla offentliga verksamheters system för medborgare inom EU, med hjälp av sitt lands e-legitimation."
   },
+  "nCc6tZ": {
+    "developer_comment": "BankID vetting button",
+    "string": "med BankID"
+  },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
     "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
@@ -2060,6 +2137,9 @@
     "developer_comment": "Help",
     "string": "Hjälp"
   },
+  "oAK8WM": {
+    "string": "Använd mitt {bankID}"
+  },
   "oEFGdi": {
     "developer_comment": "use svipe - list item 1",
     "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
@@ -2075,6 +2155,9 @@
   "oiMtbK": {
     "developer_comment": "Terms of use (heading)",
     "string": "Användarvillkor"
+  },
+  "ojB17W": {
+    "string": "Svensk eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2102,6 +2185,10 @@
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "owAbvV": {
+    "developer_comment": "security verify",
+    "string": "BankID"
+  },
   "p8IPLU": {
     "developer_comment": "Reset Password email link sent",
     "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost eller skicka e-postmeddelandet igen."
@@ -2109,6 +2196,10 @@
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
+  },
+  "pIstaO": {
+    "developer_comment": "verify identity",
+    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Bank ID verifierar din identitet mot eduID."
   },
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
@@ -2548,6 +2639,10 @@
     "developer_comment": "use svipe - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'Alla andra länder' och scanna QR-koden som genereras av Svipe iD genom att följa instruktionerna."
   },
+  "tbAqMH": {
+    "developer_comment": "about bankid - handle",
+    "string": "Om BankID"
+  },
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Använd min säkerhetsnyckel"
@@ -2690,10 +2785,6 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
-  },
-  "xvMcTx": {
-    "developer_comment": "security verify",
-    "string": "Verifiera"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
