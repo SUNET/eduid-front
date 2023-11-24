@@ -1,7 +1,7 @@
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";
@@ -16,6 +16,7 @@ export function ExternalReturnHandler() {
   const dispatch = useDashboardAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
+  const app_loaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
@@ -74,10 +75,10 @@ export function ExternalReturnHandler() {
     if (params.authn_id && params.app_name === "svipe_id") {
       fetchSvipeStatus(params.authn_id).catch(console.error);
     }
-    if (params.authn_id && params.app_name === "bankid") {
+    if (params.authn_id && params.app_name === "bankid" && app_loaded) {
       fetchBankIDStatus(params.authn_id).catch(console.error);
     }
-  }, [params]);
+  }, [params, app_loaded]);
 
   return null;
 }
