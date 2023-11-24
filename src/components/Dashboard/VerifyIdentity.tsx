@@ -303,7 +303,7 @@ function AccordionItemSwedish(): JSX.Element | null {
 
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
-              icon={<img height="35" className="circle-icon" alt="BankID" src={BankIdFlag} />}
+              icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
               title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
               additionalInfo={
                 <FormattedMessage

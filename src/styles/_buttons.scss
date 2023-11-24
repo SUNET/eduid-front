@@ -164,6 +164,12 @@ button.btn-icon {
   svg,
   img {
     margin-right: 0.5rem;
+    width: auto;
+  }
+  &.freja-icon {
+    img {
+      height: 22px;
+    }
   }
 }
 

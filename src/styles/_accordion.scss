@@ -45,9 +45,13 @@
         #{$a}-icon {
           .circle-icon {
             height: 1.25rem;
-
             margin-right: 0.75rem;
             vertical-align: text-top;
+            &.bankid-icon {
+              background: $white;
+              width: 1.3rem;
+              height: 1.3rem;
+            }
 
             @media (max-width: $bp-md) {
               height: 1.125rem;

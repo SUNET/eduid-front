@@ -81,4 +81,18 @@ export const apiResponses = {
       defaultMessage={`This account has been terminated, but is still present. Perform a password reset to cancel termination. `}
     />
   ),
+
+  "login.mfa_proofing_method_not_allowed": (
+    <FormattedMessage
+      id="login.mfa_proofing_method_not_allowed"
+      defaultMessage={`This multi-factor authentication (MFA) method is not allowed. Please choose a valid authentication method.`}
+    />
+  ),
+
+  "login.identity_proofing_method_not_allowed": (
+    <FormattedMessage
+      id="login.identity_proofing_method_not_allowed"
+      defaultMessage={`This identity proofing method is not allowed. Please choose a valid proofing method.`}
+    />
+  ),
 };
