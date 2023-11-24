@@ -130,6 +130,7 @@ async function makeBankIDRequest<T>(
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
+
   if (!state.config.bankid_service_url) {
     throw new Error("Missing configuration bankid_service_url");
   }
