@@ -1387,6 +1387,9 @@
   "bankid.identity_not_matching": {
     "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
   },
+  "bankid.identity_verify_success": {
+    "string": "Klart"
+  },
   "bankid.method_not_available": {
     "string": "BankID metoden är inte tillgänglig"
   },
