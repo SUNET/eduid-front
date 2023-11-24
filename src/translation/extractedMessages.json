@@ -175,6 +175,10 @@
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
   },
+  "2i/BS7": {
+    "developer_comment": "use freja - list item 3",
+    "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
+  },
   "2n5qg/": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Settings"
@@ -397,6 +401,10 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
+  "9djX63": {
+    "developer_comment": "what is bankid - heading",
+    "string": "What is BankID?"
+  },
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
@@ -444,6 +452,10 @@
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+  },
+  "AsYVb4": {
+    "developer_comment": "use bankid - list item 1",
+    "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -821,6 +833,10 @@
     "developer_comment": "generic error page",
     "string": "The issue has been reported to the team."
   },
+  "Mx5Yyp": {
+    "developer_comment": "verification methods - list item 3",
+    "string": "the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can complete verification of your eduID. Read more about BankID below."
+  },
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Save"
@@ -957,10 +973,6 @@
     "developer_comment": "security last used date",
     "string": "Never used"
   },
-  "QOxuYY": {
-    "developer_comment": "use freja - list item 3",
-    "string": "log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
-  },
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
@@ -972,6 +984,10 @@
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Delete my eduID"
+  },
+  "Qu1QyR": {
+    "developer_comment": "swedish nin bankid - heading",
+    "string": "BankID (electronic identification system):"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -1164,6 +1180,10 @@
     "developer_comment": "Dashboard change password link description text",
     "string": "Click the link to change your eduID password."
   },
+  "WR0ZnH": {
+    "developer_comment": "use bankid - list item 2",
+    "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
+  },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
@@ -1300,6 +1320,10 @@
     "developer_comment": "Dashboard nav tab name",
     "string": "Advanced settings"
   },
+  "aRUmm4": {
+    "developer_comment": "what is bankid - paragraph",
+    "string": "BankID is a widely used electronic verification system, available to holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden."
+  },
   "actions.action-completed": {
     "string": "Success"
   },
@@ -1314,6 +1338,10 @@
   "aqSAPG": {
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verify your eduID with a Swedish national ID number."
+  },
+  "aqzfAc": {
+    "developer_comment": "use bankid - list definition",
+    "string": "How to use BankID with eduID:"
   },
   "b/o0DY": {
     "developer_comment": "swedish nin freja - heading",
@@ -2593,6 +2621,10 @@
   "tarlwb": {
     "developer_comment": "use svipe - list item 2",
     "string": "login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
+  },
+  "tbAqMH": {
+    "developer_comment": "about bankid - handle",
+    "string": "About BankID"
   },
   "tcDcv5": {
     "developer_comment": "mfa primary option",
