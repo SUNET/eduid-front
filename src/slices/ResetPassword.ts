@@ -7,6 +7,7 @@ import {
   verifyEmailLink,
 } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
+import { bankIDGetStatus } from "apis/eduidBankid";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 export type Phone = { index: string; number: string; phone_code: string };
@@ -25,7 +26,7 @@ export interface ResetPasswordState {
   goto_url?: string;
   email_response?: RequestEmailLinkResponse;
   email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
-  eidas_status?: string;
+  swedishEID_status?: string;
 }
 
 // Define the initial state using that type
@@ -93,7 +94,10 @@ export const resetPasswordSlice = createSlice({
         state.email_code = action.payload.email_code;
       })
       .addCase(eidasGetStatus.fulfilled, (state, action) => {
-        state.eidas_status = action.payload.status;
+        state.swedishEID_status = action.payload.status;
+      })
+      .addCase(bankIDGetStatus.fulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.status;
       });
   },
 });
