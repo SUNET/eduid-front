@@ -82,7 +82,7 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
       if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
-    } else if (selected_option === "freja") {
+    } else if (selected_option === "swedishEID") {
       const response = await dispatch(
         postSetNewPasswordExternalMfa({
           email_code: email_code,

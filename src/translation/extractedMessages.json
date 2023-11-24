@@ -1079,6 +1079,10 @@
     "developer_comment": "button proceed",
     "string": "Proceed"
   },
+  "TZ7dg4": {
+    "developer_comment": "bankID ready",
+    "string": "Use my BankID"
+  },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
     "string": "USB Security Key."
