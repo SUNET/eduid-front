@@ -325,10 +325,6 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
-  "7B1RyH": {
-    "developer_comment": "verify identity vetting BankID tagline",
-    "string": "For you able to use BankID"
-  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
@@ -1343,33 +1339,6 @@
     "developer_comment": "when use eduID - list item 1",
     "string": "apply to and accept your place at a university,"
   },
-  "bankid.attribute_missing": {
-    "string": "BankID attribute is missing"
-  },
-  "bankid.authn_context_mismatch": {
-    "string": "Wrong authentication context received"
-  },
-  "bankid.identity_already_verified": {
-    "string": "You have already verified your identity"
-  },
-  "bankid.identity_not_matching": {
-    "string": "The identity does not match the one verified for this eduID"
-  },
-  "bankid.method_not_available": {
-    "string": "BankID method is not available"
-  },
-  "bankid.must_authenticate": {
-    "string": "BankId must authenticate"
-  },
-  "bankid.no_redirect_url": {
-    "string": "MFA authentication is missing a redirect URL"
-  },
-  "bankid.not_found": {
-    "string": "BankID not found"
-  },
-  "bankid.token_not_found": {
-    "string": "U2F token not found"
-  },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
     "string": "To start the account recovery process, press the button below to send an email to {email}."
@@ -1419,9 +1388,6 @@
   },
   "code.unknown-code": {
     "string": "Unknown code"
-  },
-  "common.locked_identity_not_matching": {
-    "string": "Identity not matching"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -1791,10 +1757,6 @@
     "developer_comment": "use freja - list definition",
     "string": "How to use Freja+ with eduID:"
   },
-  "j9AXsq": {
-    "developer_comment": "bankID proofing help text",
-    "string": "To use this option you will need to first create a digital ID-card in the {bankID_link} app."
-  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
@@ -2026,10 +1988,6 @@
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS is a federation of EU countries providing electronic identification to allow access to public authority systems for EU citizens, using their country's electronic ID."
   },
-  "nCc6tZ": {
-    "developer_comment": "BankID vetting button",
-    "string": "with a BankID"
-  },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
     "string": "You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short; the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it."
@@ -2151,10 +2109,6 @@
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
-  },
-  "pIstaO": {
-    "developer_comment": "verify identity",
-    "string": "The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
   },
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
