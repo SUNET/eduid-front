@@ -1387,6 +1387,9 @@
   "bankid.identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
   },
+  "bankid.identity_verify_success": {
+    "string": "Success"
+  },
   "bankid.method_not_available": {
     "string": "BankID method is not available"
   },
