@@ -1378,6 +1378,9 @@
   "bankid.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
+  "bankid.credential_verify_success": {
+    "string": "Success"
+  },
   "bankid.identity_already_verified": {
     "string": "You have already verified your identity"
   },
@@ -1386,6 +1389,9 @@
   },
   "bankid.method_not_available": {
     "string": "BankID method is not available"
+  },
+  "bankid.mfa_authn_success": {
+    "string": "Success"
   },
   "bankid.must_authenticate": {
     "string": "BankId must authenticate"
