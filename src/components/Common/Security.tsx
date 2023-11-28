@@ -197,6 +197,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
   const dispatch = useDashboardAppDispatch();
+  const config = useDashboardAppSelector((state) => state.config);
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
     (cred: CredentialType) =>
@@ -217,11 +218,16 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   function handleVerifyWebauthnTokenBankID(token: string) {
     (async () => {
-      const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+      const response: any = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
       if (bankIDVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
+      } else if (response?.payload.payload.message === "bankid.must_authenticate") {
+        dispatch(clearNotifications());
+        const nextURL = config.dashboard_url + "settings/advanced-settings";
+        const url = config.authn_url + "reauthn?next=" + encodeURIComponent(nextURL);
+        window.location.assign(url);
       }
     })();
   }
