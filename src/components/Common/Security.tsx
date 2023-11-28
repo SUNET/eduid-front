@@ -197,6 +197,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
   const dispatch = useDashboardAppDispatch();
+  const authn_url = useDashboardAppSelector((state) => state.config.authn_url);
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
     (cred: CredentialType) =>
@@ -206,22 +207,28 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
-      const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      const response: any = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
+      } else if (response?.payload.payload.message === "eidas.must_authenticate") {
+        dispatch(clearNotifications());
+        window.location.assign(authn_url + "/reauthn?next=´profile/settings/advanced-settings´");
       }
     })();
   }
 
   function handleVerifyWebauthnTokenBankID(token: string) {
     (async () => {
-      const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+      const response: any = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
       if (bankIDVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
+      } else if (response?.payload.payload.message === "bankid.must_authenticate") {
+        dispatch(clearNotifications());
+        window.location.assign(authn_url + "/reauthn?next=´profile/settings/advanced-settings´");
       }
     })();
   }
