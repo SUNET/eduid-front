@@ -1459,7 +1459,7 @@
     "string": "Okänd kod"
   },
   "common.locked_identity_not_matching": {
-    "string": "The identity does not match the one verified for this eduID"
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
