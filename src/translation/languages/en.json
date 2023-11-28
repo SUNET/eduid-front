@@ -1459,7 +1459,7 @@
     "string": "Unknown code"
   },
   "common.locked_identity_not_matching": {
-    "string": "Identity not matching"
+    "string": "The identity does not match the one verified for this eduI"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
