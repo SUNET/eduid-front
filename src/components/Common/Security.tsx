@@ -197,7 +197,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
   const dispatch = useDashboardAppDispatch();
-  const authn_url = useDashboardAppSelector((state) => state.config.authn_url);
+  const config = useDashboardAppSelector((state) => state.config);
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
     (cred: CredentialType) =>
@@ -225,7 +225,9 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         }
       } else if (response?.payload.payload.message === "bankid.must_authenticate") {
         dispatch(clearNotifications());
-        window.location.assign(authn_url + "/reauthn?next=´profile/settings/advanced-settings´");
+        const nextURL = config.dashboard_url + "settings/advanced-settings";
+        const url = config.authn_url + "?next=" + encodeURIComponent(nextURL);
+        window.location.assign(url);
       }
     })();
   }
