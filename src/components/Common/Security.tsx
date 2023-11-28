@@ -226,7 +226,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       } else if (response?.payload.payload.message === "bankid.must_authenticate") {
         dispatch(clearNotifications());
         const nextURL = config.dashboard_url + "settings/advanced-settings";
-        const url = config.authn_url + "?next=" + encodeURIComponent(nextURL);
+        const url = config.authn_url + "reauthn?next=" + encodeURIComponent(nextURL);
         window.location.assign(url);
       }
     })();
