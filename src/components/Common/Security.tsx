@@ -207,14 +207,11 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
-      const response: any = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
-      } else if (response?.payload.payload.message === "eidas.must_authenticate") {
-        dispatch(clearNotifications());
-        window.location.assign(authn_url + "/reauthn?next=´profile/settings/advanced-settings´");
       }
     })();
   }
