@@ -1459,7 +1459,7 @@
     "string": "Okänd kod"
   },
   "common.locked_identity_not_matching": {
-    "string": "Identitet matchar inte"
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
   },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
@@ -2170,7 +2170,7 @@
     "string": "Användarvillkor"
   },
   "ojB17W": {
-    "string": "Svensk eID"
+    "string": "Svenskt eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
