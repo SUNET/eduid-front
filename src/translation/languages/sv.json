@@ -1404,7 +1404,7 @@
     "string": "BankId måste autentisera"
   },
   "bankid.no_redirect_url": {
-    "string": "MFA-authentisering saknar en omdirigerings-URL"
+    "string": "MFA authentisering saknar en omdirigerings URL"
   },
   "bankid.not_found": {
     "string": "BankID hittades inte"
