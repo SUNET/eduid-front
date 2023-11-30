@@ -1131,6 +1131,14 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
+              <p>
+                <strong>
+                  <FormattedMessage
+                    description="opening hours - differing paragraph"
+                    defaultMessage="Note: During December 25th - January 5th (weeks 52-1) the regular phone support hours are 09:00-12:00, 13:00-14:30."
+                  />
+                </strong>
+              </p>
             </article>
           </AccordionItemTemplate>
         </Accordion>
