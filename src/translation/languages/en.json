@@ -147,10 +147,6 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
-  "2B71Js": {
-    "developer_comment": "opening hours - differing paragraph",
-    "string": "Note: during December 25th - January 5th (weeks 52-1) the regular phone support hours are 09:00-12:00, 13:00-14:30."
-  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
@@ -1375,6 +1371,42 @@
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
     "string": "apply to and accept your place at a university,"
+  },
+  "bankid.attribute_missing": {
+    "string": "BankID attribute is missing"
+  },
+  "bankid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "bankid.credential_verify_success": {
+    "string": "Success"
+  },
+  "bankid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "bankid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "bankid.identity_verify_success": {
+    "string": "Success"
+  },
+  "bankid.method_not_available": {
+    "string": "BankID method is not available"
+  },
+  "bankid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "bankid.must_authenticate": {
+    "string": "BankId must authenticate"
+  },
+  "bankid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "bankid.not_found": {
+    "string": "BankID not found"
+  },
+  "bankid.token_not_found": {
+    "string": "U2F token not found"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
