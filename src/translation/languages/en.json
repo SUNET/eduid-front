@@ -147,6 +147,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "2B71Js": {
+    "developer_comment": "opening hours - differing paragraph",
+    "string": "Note: during December 25th - January 5th (weeks 52-1) the regular phone support hours are 09:00-12:00, 13:00-14:30."
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
