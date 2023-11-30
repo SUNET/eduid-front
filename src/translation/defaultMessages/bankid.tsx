@@ -18,7 +18,7 @@ export const apiResponses = {
   ),
 
   "bankid.no_redirect_url": (
-    <FormattedMessage id="bankid.no_redirect_url" defaultMessage="MFA autheticaion is missing a redirect URL" />
+    <FormattedMessage id="bankid.no_redirect_url" defaultMessage="MFA authentication is missing a redirect URL" />
   ),
 
   "bankid.token_not_found": <FormattedMessage id="bankid.token_not_found" defaultMessage="U2F token not found" />,
