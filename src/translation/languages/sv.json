@@ -147,6 +147,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "2B71Js": {
+    "developer_comment": "opening hours - differing paragraph",
+    "string": "Obs: mellan 25:e december och 5:e januari (vecka 52-1) är ordinarie telefontid 09:00-12:00, 13:00-14:30."
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Länka ORCID konto"
@@ -1400,7 +1404,7 @@
     "string": "BankId måste autentisera"
   },
   "bankid.no_redirect_url": {
-    "string": "MFA autentisering saknar en omdirigerings URL"
+    "string": "MFA authentisering saknar en omdirigerings URL"
   },
   "bankid.not_found": {
     "string": "BankID hittades inte"
