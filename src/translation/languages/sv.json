@@ -147,6 +147,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "2B71Js": {
+    "developer_comment": "opening hours - differing paragraph",
+    "string": "Obs: Mellan 25:e december och 5:e januari (vecka 51-1) är ordinarie telefontid 09:00-12:00, 13:00-14:30."
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Länka ORCID konto"
@@ -1371,42 +1375,6 @@
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
     "string": "ansöker till och accepterar plats på högskolan,"
-  },
-  "bankid.attribute_missing": {
-    "string": "BankID attribut saknas"
-  },
-  "bankid.authn_context_mismatch": {
-    "string": "Fel autentiseringskontext mottagen."
-  },
-  "bankid.credential_verify_success": {
-    "string": "Klart"
-  },
-  "bankid.identity_already_verified": {
-    "string": "Du har redan bekräftat din identitet"
-  },
-  "bankid.identity_not_matching": {
-    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
-  },
-  "bankid.identity_verify_success": {
-    "string": "Klart"
-  },
-  "bankid.method_not_available": {
-    "string": "BankID metoden är inte tillgänglig"
-  },
-  "bankid.mfa_authn_success": {
-    "string": "Klart"
-  },
-  "bankid.must_authenticate": {
-    "string": "BankId måste autentisera"
-  },
-  "bankid.no_redirect_url": {
-    "string": "MFA autentisering saknar en omdirigerings URL"
-  },
-  "bankid.not_found": {
-    "string": "BankID hittades inte"
-  },
-  "bankid.token_not_found": {
-    "string": "Säkerhetsnyckeln hittades inte"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
