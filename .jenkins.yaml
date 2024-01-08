@@ -16,6 +16,10 @@ script:
   - "echo ${GIT_LOCAL_BRANCH} > build/revision.txt"
   - "git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt"
 clean_workspace: true
+copy_artifacts:
+  project_name: eduid-managed-accounts
+  target_dir: react/build/front/eduid-managed-accounts
+  flatten: true
 archive_artifacts:
   include: "build/*"
 triggers:
