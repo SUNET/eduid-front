@@ -8,6 +8,9 @@ git:
 build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
 script:
+  - "echo DEBUG"
+  - "ls -la build/*"
+  - "echo END DEBUG"
   - "unset LD_LIBRARY_PATH"
   - "node --version"
   - "npm --version"
@@ -18,7 +21,7 @@ script:
 clean_workspace: true
 copy_artifacts:
   project_name: eduid-managed-accounts
-  target_dir: react/build/front/eduid-managed-accounts
+  target_dir: react/build/front/eduid-managed-accounts/
   flatten: true
 archive_artifacts:
   include: "build/*"
