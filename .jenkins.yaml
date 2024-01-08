@@ -21,7 +21,7 @@ script:
 clean_workspace: true
 copy_artifacts:
   project_name: eduid-managed-accounts
-  target_dir: react/build/front/eduid-managed-accounts/
+  target_dir: build/eduid-managed-accounts/
   flatten: true
 archive_artifacts:
   include: "build/*"
