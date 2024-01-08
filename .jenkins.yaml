@@ -26,7 +26,7 @@ copy_artifacts:
   project_name: eduid-managed-accounts
   target_dir: build/eduid-managed-accounts/
 archive_artifacts:
-  include: "build/*"
+  include: "build/**/*"
 triggers:
   cron: "@weekly"
 slack:
