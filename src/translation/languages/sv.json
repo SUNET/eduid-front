@@ -1000,7 +1000,7 @@
   },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
-    "string": "bland dina inställningar i eduID, aktivera Ladok-kontrollen,"
+    "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
   },
   "RHOeL5": {
     "string": "Använd eduID för att komma åt {service_name}"
