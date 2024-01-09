@@ -21,7 +21,7 @@
   },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
-    "string": "Vad är Ladok?"
+    "string": "Vad är Ladok och ESI?"
   },
   "+YwDxB": {
     "developer_comment": "button add",
@@ -209,7 +209,7 @@
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
-    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier), som t.ex. används vid ansökning till Erasmus utbytesprogram."
+    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier) från Ladok, som t.ex. används vid ansökning till Erasmus utbytesprogram."
   },
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
@@ -343,7 +343,7 @@
   },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
-    "string": "ansluta ditt eduID till Ladok och/eller befintligt ORCID iD om det stöds av din institution,"
+    "string": "ansluta ditt eduID till ESI och/eller befintligt ORCID iD om det stöds av din institution,"
   },
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
@@ -499,7 +499,7 @@
   },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
-    "string": "Länka ditt konto till Ladok"
+    "string": "Länka ditt ESI till ditt eduID-konto"
   },
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
@@ -1000,7 +1000,7 @@
   },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
-    "string": "bland dina inställningar i eduID, aktivera Ladok-kontrollen,"
+    "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
   },
   "RHOeL5": {
     "string": "Använd eduID för att komma åt {service_name}"
@@ -1163,7 +1163,7 @@
   },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
-    "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
+    "string": "Vissa lärosäten har anslutit sig till att låta eduID hämta ut ditt ESI - European Student Identifier från Ladok för att kunna få tillgång till vissa tjänster."
   },
   "VwFaJg": {
     "developer_comment": "verify identity",
@@ -1715,7 +1715,7 @@
   },
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
-    "string": "Ditt konto är länkat med Ladok-information från"
+    "string": "Ditt konto är länkat med ESI-information från"
   },
   "gSfkGK": {
     "developer_comment": "use orcid - list item 3",
@@ -1723,7 +1723,7 @@
   },
   "gYfp8T": {
     "developer_comment": "use ladok - list definition",
-    "string": "Hur du kan länka Ladok med eduID:"
+    "string": "Hur du kan länka ditt ESI med eduID:"
   },
   "gaVV7S": {
     "developer_comment": "ErrorURL other error",
@@ -1923,10 +1923,10 @@
     "string": "Okänt lärosäte. Vänligen försök igen senare."
   },
   "ladok.no-data-for-user": {
-    "string": "Ingen information om dig hittades i Ladok för detta lärosäte."
+    "string": "Ingen ESI-information om dig hittades i Ladok för detta lärosäte."
   },
   "ladok.no-verified-nin": {
-    "string": "Du behöver verifiera ditt svenska personnummer för att länka ditt konto med Ladok."
+    "string": "Du behöver verifiera ditt svenska personnummer för att länka ditt konto med ditt ESI."
   },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
@@ -2626,7 +2626,7 @@
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
-    "string": "Ladok information"
+    "string": "ESI information"
   },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
@@ -2825,7 +2825,7 @@
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
-    "string": "Att länka ditt eduID-konto med Ladok är nödvändigt om du vill komma åt en tjänst som kräver en European Student Identifier."
+    "string": "Finns ditt lärosäte inte i listan ska du inte använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för mer information."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
@@ -2853,7 +2853,7 @@
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
-    "string": "Länkning till Orcid / Ladok"
+    "string": "Länkning till Orcid / ESI"
   },
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
