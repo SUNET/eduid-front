@@ -2825,7 +2825,7 @@
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
-    "string": "Att länka ditt eduID-konto med Ladok är nödvändigt om du vill komma åt en tjänst som kräver en European Student Identifier."
+    "string": "Finns ditt lärosäte inte i listan betyder det att du inte ska använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för att få mer information."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
