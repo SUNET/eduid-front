@@ -1163,7 +1163,7 @@
   },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
-    "string": "Some higher education institutions allow eduID to fetch your  ESI - European Student identifier from Ladok, which might give you access to more services."
+    "string": "Some higher education institutions allow eduID to fetch your  ESI - European Student identifier from Ladok, which might give you access to some services."
   },
   "VwFaJg": {
     "developer_comment": "verify identity",
