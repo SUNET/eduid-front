@@ -1163,7 +1163,7 @@
   },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
-    "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
+    "string": "Vissa lärosäten har anslutit sig till att låta eduID hämta ut ditt ESI - European Student identifier från Ladok."
   },
   "VwFaJg": {
     "developer_comment": "verify identity",
