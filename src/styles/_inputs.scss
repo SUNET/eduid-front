@@ -173,8 +173,12 @@ input:focus {
   justify-content: space-between;
   align-items: center;
 
-  > legend {
+  > legend,
+  > span {
     flex: 1;
+  }
+  > span {
+    margin-right: 10px;
   }
 }
 
