@@ -499,7 +499,7 @@
   },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
-    "string": "Länka ditt konto till Ladok"
+    "string": "Länka ditt ESI till ditt eduID-konto"
   },
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
