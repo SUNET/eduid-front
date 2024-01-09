@@ -1923,7 +1923,7 @@
     "string": "Okänt lärosäte. Vänligen försök igen senare."
   },
   "ladok.no-data-for-user": {
-    "string": "Ingen information om dig hittades i Ladok för detta lärosäte."
+    "string": "Ingen ESI-information om dig hittades i Ladok för detta lärosäte."
   },
   "ladok.no-verified-nin": {
     "string": "Du behöver verifiera ditt svenska personnummer för att länka ditt konto med ditt ESI."
