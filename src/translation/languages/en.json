@@ -1923,7 +1923,7 @@
     "string": "Unknown higher education institution. Please try again later."
   },
   "ladok.no-data-for-user": {
-    "string": "No information regarding you found in Ladok for that higher education institution."
+    "string": "No ESI information regarding you found in Ladok for that higher education institution."
   },
   "ladok.no-verified-nin": {
     "string": "You need a verified Swedish national identity number to link your account with ESI."
