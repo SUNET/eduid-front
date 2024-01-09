@@ -1430,7 +1430,7 @@
   },
   "c26Ksk": {
     "developer_comment": "captcha option",
-    "string": "Använd en valideringstjänst som tillhandahålls av en tredje part"
+    "string": "Använd en valideringstjänst som tillhandahålls av en tredje part, mer kompatibel med skärmläsare"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
