@@ -21,7 +21,7 @@
   },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
-    "string": "What is Ladok?"
+    "string": "What is Ladok and ESI?"
   },
   "+YwDxB": {
     "developer_comment": "button add",
@@ -343,7 +343,7 @@
   },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
-    "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
+    "string": "connecting your eduID to ESI if enabled by your institution, or sharing it with your existing ORCID iD,"
   },
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
@@ -499,7 +499,7 @@
   },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
-    "string": "Link your account to Ladok"
+    "string": "Link your ESI with your eduID account"
   },
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
@@ -1000,7 +1000,7 @@
   },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
-    "string": "in the Settings area of eduID, toggle the Ladok control,"
+    "string": "in the Settings area of eduID, toggle the ESI control,"
   },
   "RHOeL5": {
     "string": "Use eduID to access {service_name}"
@@ -1163,7 +1163,7 @@
   },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
-    "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
+    "string": "Some higher education institutions allow eduID to fetch your  ESI - European Student identifier from Ladok, which might give you access to certain services."
   },
   "VwFaJg": {
     "developer_comment": "verify identity",
@@ -1715,7 +1715,7 @@
   },
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
-    "string": "Your account is linked with Ladok information from"
+    "string": "Your account is linked with ESI information from"
   },
   "gSfkGK": {
     "developer_comment": "use orcid - list item 3",
@@ -1723,7 +1723,7 @@
   },
   "gYfp8T": {
     "developer_comment": "use ladok - list definition",
-    "string": "How to link Ladok with eduID:"
+    "string": "How to link ESI with eduID:"
   },
   "gaVV7S": {
     "developer_comment": "ErrorURL other error",
@@ -1923,10 +1923,10 @@
     "string": "Unknown higher education institution. Please try again later."
   },
   "ladok.no-data-for-user": {
-    "string": "No information for you found in Ladok with that higher education institution."
+    "string": "No ESI information regarding you found in Ladok for that higher education institution."
   },
   "ladok.no-verified-nin": {
-    "string": "You need a verified Swedish national identity number to link your account with Ladok."
+    "string": "You need a verified Swedish national identity number to link your account with ESI."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -2626,7 +2626,7 @@
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
-    "string": "Ladok information"
+    "string": "ESI information"
   },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
@@ -2825,7 +2825,7 @@
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
-    "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
+    "string": "If your institution is not in the list you cannot use your eduID to access services requiring ESI, contact your institution for more information."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
@@ -2853,7 +2853,7 @@
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
-    "string": "Connecting account with Orcid / Ladok"
+    "string": "Connecting account with Orcid / ESI"
   },
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
