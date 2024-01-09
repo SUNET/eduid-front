@@ -2825,7 +2825,7 @@
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
-    "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
+    "string": "If your institution is not in the list you cannot use your eduID to access services requiring ESI, then contact your institution for more information."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
