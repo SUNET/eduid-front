@@ -209,7 +209,7 @@
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
-    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier), som t.ex. används vid ansökning till Erasmus utbytesprogram."
+    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier) från Ladok, som t.ex. används vid ansökning till Erasmus utbytesprogram."
   },
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
