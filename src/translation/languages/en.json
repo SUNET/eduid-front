@@ -934,10 +934,6 @@
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
   },
-  "PLps10": {
-    "developer_comment": "Footer copyright",
-    "string": "2013-2023"
-  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, please try again"
@@ -1224,6 +1220,10 @@
   "XuhAU7": {
     "developer_comment": "accordion item Confirm phone number",
     "string": "Confirm your phone number"
+  },
+  "Xx5Akw": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2024"
   },
   "XyA1T0": {
     "developer_comment": "Verification letter expired, status",
