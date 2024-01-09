@@ -1000,7 +1000,7 @@
   },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
-    "string": "in the Settings area of eduID, toggle the Ladok control,"
+    "string": "in the Settings area of eduID, toggle the ESI control,"
   },
   "RHOeL5": {
     "string": "Use eduID to access {service_name}"
