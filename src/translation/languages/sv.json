@@ -543,7 +543,7 @@
   },
   "EHZ5WY": {
     "developer_comment": "how more secure description 2",
-    "string": "Exempelvis en fysiskt USB-säkerhetsnyckel (viss ändamålsenlig sorts USB-nyckel) eller biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, är vad vi hänvisar till som 'Säkerhetsnyckel'."
+    "string": "Exempelvis en fysiskt USB-säkerhetsnyckel (viss ändamålsenlig typ av USB-nyckel) eller biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, är vad vi hänvisar till som 'Säkerhetsnyckel'."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
