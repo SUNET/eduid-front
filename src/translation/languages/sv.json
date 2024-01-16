@@ -1783,7 +1783,7 @@
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
-    "string": "Lägg till en säkerhetsnyckel till ditt konto. Detta kan vara en fysisk USB-nyckel eller en enhet som en smartphone eller surfplatta som stöder WebAuthn-standarden. Vissa datorer har även inbyggda fingeravtrycksläsare som kan användas som säkerhetsnyckel."
+    "string": "Lägg till en säkerhetsnyckel till ditt konto. Detta kan vara en fysisk USB-säkerhetsnyckel eller en enhet som en smartphone eller surfplatta som stöder WebAuthn-standarden. Vissa datorer har även inbyggda fingeravtrycksläsare som kan användas som säkerhetsnyckel."
   },
   "i65t9c": {
     "developer_comment": "delete.modal_info",
