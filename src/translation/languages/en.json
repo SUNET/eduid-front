@@ -1783,7 +1783,7 @@
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
-    "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
+    "string": "Add a Security Key to your account. This can be a physical USB security key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
   },
   "i65t9c": {
     "developer_comment": "delete.modal_info",
