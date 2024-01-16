@@ -543,7 +543,7 @@
   },
   "EHZ5WY": {
     "developer_comment": "how more secure description 2",
-    "string": "Examples can be a physical device in your possession such as a USB token, or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to any of these techniques as a 'Security key'."
+    "string": "Examples can be a physical device in your possession such as a USB token (types of USB-keys for this purpose), or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to any of these techniques as a 'Security key'."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -1783,7 +1783,7 @@
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
-    "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
+    "string": "Add a Security Key to your account. This can be a physical USB security key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
   },
   "i65t9c": {
     "developer_comment": "delete.modal_info",
