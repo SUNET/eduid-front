@@ -1,7 +1,7 @@
 import { emailPattern, eppnPattern, studentEppnPattern } from "./regexPatterns";
 
-interface EmailData {
-  email?: string;
+interface UserNameData {
+  username?: string;
 }
 
 /**
@@ -9,10 +9,10 @@ interface EmailData {
  * @param values
  * @returns
  */
-export function validateUserNameInForm(values: EmailData): EmailData {
-  const errors: EmailData = {};
+export function validateUserNameInForm(values: UserNameData): UserNameData {
+  const errors: UserNameData = {};
   if (values !== undefined) {
-    errors.email = validateUserNameField(values.email);
+    errors.username = validateUserNameField(values.username);
   }
 
   return errors;
@@ -29,11 +29,15 @@ export const validate = validateUserNameInForm;
 export function validateUserNameField(value?: string): string | undefined {
   if (!value) {
     return "required";
-  } else if (eppnPattern.test(value)) {
-    return;
-  } else if (studentEppnPattern.test(value)) {
-    return;
-  } else if (emailPattern.test(value)) {
-    return;
-  } else "invalid form";
+  }
+  if (eppnPattern.test(value)) {
+    return undefined;
+  }
+  if (studentEppnPattern.test(value)) {
+    return undefined;
+  }
+  if (emailPattern.test(value)) {
+    return undefined;
+  }
+  return "invalid username";
 }
