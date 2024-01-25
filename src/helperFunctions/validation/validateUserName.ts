@@ -5,7 +5,7 @@ interface UserNameData {
 }
 
 /**
- * Validate that the value is a plausible e-mail address. The returned string should be a translate() lookup key.
+ * Validate that the value is a plausible username. The returned string should be a translate() lookup key.
  * @param values
  * @returns
  */
@@ -22,22 +22,19 @@ export function validateUserNameInForm(values: UserNameData): UserNameData {
 export const validate = validateUserNameInForm;
 
 /**
- * Validate that the value is a plausible e-mail address. The returned string should be a translate() lookup key.
+ * Validate that the value is a plausible username. The returned string should be a translate() lookup key.
  * @param values
  * @returns
  */
 export function validateUserNameField(value?: string): string | undefined {
-  if (!value) {
+  const stringWithoutSpaces = value?.replace(/\s/g, "");
+  if (!stringWithoutSpaces) {
     return "required";
-  }
-  if (eppnPattern.test(value)) {
+  } else if (eppnPattern.test(stringWithoutSpaces)) {
     return undefined;
-  }
-  if (studentEppnPattern.test(value)) {
+  } else if (studentEppnPattern.test(stringWithoutSpaces)) {
     return undefined;
-  }
-  if (emailPattern.test(value)) {
+  } else if (emailPattern.test(stringWithoutSpaces)) {
     return undefined;
-  }
-  return "invalid username";
+  } else return "invalid username";
 }
