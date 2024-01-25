@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
-import EmailInput from "components/Common/EmailInput";
 import PasswordInput from "components/Common/PasswordInput";
+import UserNameInput from "components/Common/UserNameInput";
+import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
@@ -139,7 +140,7 @@ function UsernameInputPart(): JSX.Element {
       </React.Fragment>
     );
   }
-  return <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />;
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderRegisterLink(): JSX.Element {
@@ -159,14 +160,15 @@ function RenderResetPasswordLink(): JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const emailField = useField("email");
+  const usernameField = useField("username");
+  const isValidEmail = emailPattern.test(usernameField.input.value);
 
   const sendLink = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     /* Propagate the email address to the reset password slice if valid, or if empty. */
-    if ((emailField.input.value && emailField.meta.valid) || !emailField.input.value) {
-      dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
+    if ((isValidEmail && usernameField.meta.valid) || !usernameField.input.value) {
+      dispatch(resetPasswordSlice.actions.setEmailAddress(usernameField.input.value));
     }
     dispatch(clearNotifications());
     navigate("/reset-password/");
