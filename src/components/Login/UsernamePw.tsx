@@ -20,7 +20,7 @@ import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
 
 interface UsernamePwFormData {
-  email?: string;
+  username?: string;
   currentPassword?: string;
 }
 
@@ -32,12 +32,12 @@ export default function UsernamePw() {
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
 
-    if (ref && values.email && values.currentPassword) {
+    if (ref && values.username && values.currentPassword) {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
       const res = await dispatch(
-        fetchUsernamePassword({ ref, username: values.email, password: values.currentPassword })
+        fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword })
       );
       if (fetchUsernamePassword.fulfilled.match(res)) {
         if (res.payload.finished) {
@@ -48,8 +48,8 @@ export default function UsernamePw() {
       return;
     }
 
-    if (!values.email) {
-      errors.email = "required";
+    if (!values.username) {
+      errors.username = "required";
     }
     if (!values.currentPassword) {
       errors.currentPassword = "required";
