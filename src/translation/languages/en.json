@@ -2324,7 +2324,7 @@
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
-    "string": "E-postadress eller användarnamn"
+    "string": "e-postadress eller användarnamn"
   },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
