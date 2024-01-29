@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
-import EmailInput from "components/Common/EmailInput";
 import PasswordInput from "components/Common/PasswordInput";
+import UserNameInput from "components/Common/UserNameInput";
+import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
@@ -19,7 +20,7 @@ import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
 
 interface UsernamePwFormData {
-  email?: string;
+  username?: string;
   currentPassword?: string;
 }
 
@@ -31,12 +32,12 @@ export default function UsernamePw() {
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
 
-    if (ref && values.email && values.currentPassword) {
+    if (ref && values.username && values.currentPassword) {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
       const res = await dispatch(
-        fetchUsernamePassword({ ref, username: values.email, password: values.currentPassword })
+        fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword })
       );
       if (fetchUsernamePassword.fulfilled.match(res)) {
         if (res.payload.finished) {
@@ -47,8 +48,8 @@ export default function UsernamePw() {
       return;
     }
 
-    if (!values.email) {
-      errors.email = "required";
+    if (!values.username) {
+      errors.username = "required";
     }
     if (!values.currentPassword) {
       errors.currentPassword = "required";
@@ -131,7 +132,7 @@ function UsernameInputPart(): JSX.Element {
           disabled={true}
           component={TextInput}
           componentClass="input"
-          name="email"
+          name="username"
           autoComplete="username"
           defaultValue={authn_options.forced_username}
           label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
@@ -139,7 +140,7 @@ function UsernameInputPart(): JSX.Element {
       </React.Fragment>
     );
   }
-  return <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />;
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderRegisterLink(): JSX.Element {
@@ -159,14 +160,15 @@ function RenderResetPasswordLink(): JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const emailField = useField("email");
+  const usernameField = useField("username");
+  const isValidEmail = emailPattern.test(usernameField.input.value);
 
   const sendLink = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     /* Propagate the email address to the reset password slice if valid, or if empty. */
-    if ((emailField.input.value && emailField.meta.valid) || !emailField.input.value) {
-      dispatch(resetPasswordSlice.actions.setEmailAddress(emailField.input.value));
+    if ((isValidEmail && usernameField.meta.valid) || !usernameField.input.value) {
+      dispatch(resetPasswordSlice.actions.setEmailAddress(usernameField.input.value));
     }
     dispatch(clearNotifications());
     navigate("/reset-password/");
