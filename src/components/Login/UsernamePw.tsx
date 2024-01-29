@@ -132,7 +132,7 @@ function UsernameInputPart(): JSX.Element {
           disabled={true}
           component={TextInput}
           componentClass="input"
-          name="email"
+          name="username"
           autoComplete="username"
           defaultValue={authn_options.forced_username}
           label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
