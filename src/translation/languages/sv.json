@@ -147,10 +147,6 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
-  "2B71Js": {
-    "developer_comment": "opening hours - differing paragraph",
-    "string": "Obs: mellan 25:e december och 5:e januari (vecka 52-1) är ordinarie telefontid 09:00-12:00, 13:00-14:30."
-  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Länka ORCID konto"
@@ -504,6 +500,10 @@
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Rekommendera ett lösenord"
+  },
+  "Cnpo0l": {
+    "developer_comment": "profile username display title",
+    "string": "Användarnamn"
   },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
@@ -2321,6 +2321,10 @@
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
     "string": "Telefonnummer"
+  },
+  "placeholder.username": {
+    "developer_comment": "placeholder text for user name input",
+    "string": "e-post eller användarnamn"
   },
   "proofing.attribute_missing": {
     "string": "Nödvändig information för identifiering saknas. Vänligen försök igen."
