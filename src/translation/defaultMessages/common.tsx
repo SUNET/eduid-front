@@ -74,6 +74,8 @@ export const validations = {
   // Validation error
   required: <FormattedMessage id="required" defaultMessage={`*Field cannot be empty`} />,
 
+  "invalid username": <FormattedMessage id="invalid username" defaultMessage={`Invalid username`} />,
+
   error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
 
   "chpass.low-password-entropy": (
