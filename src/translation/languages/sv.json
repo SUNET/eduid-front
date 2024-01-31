@@ -1813,6 +1813,9 @@
     "developer_comment": "accessibility report - link",
     "string": "Tillgänglighetsredogörelsen"
   },
+  "invalid username": {
+    "string": "Ogiltigt användarnamn"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Skriv in koden som skickats till {phone}"
