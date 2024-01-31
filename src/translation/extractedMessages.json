@@ -1813,6 +1813,9 @@
     "developer_comment": "accessibility report - link",
     "string": "Accessibility report"
   },
+  "invalid username": {
+    "string": "Invalid username"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
