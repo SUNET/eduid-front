@@ -5,12 +5,11 @@ import { FormattedMessage } from "react-intl";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
-  email?: string;
-  showLogin?: boolean;
-  showLogout?: boolean;
-  showMenu?: boolean;
-  showRegister?: boolean;
-  loginRef?: string;
+  readonly showLogin?: boolean;
+  readonly showLogout?: boolean;
+  readonly showMenu?: boolean;
+  readonly showRegister?: boolean;
+  readonly loginRef?: string;
 }
 
 export function Header(props: HeaderProps): JSX.Element {
