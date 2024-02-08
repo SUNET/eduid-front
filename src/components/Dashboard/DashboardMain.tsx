@@ -2,6 +2,7 @@ import { ExternalReturnHandler } from "components/Common/ExternalReturnHandler";
 import Footer from "components/Common/Footer";
 import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
+import { PageNotFound } from "components/Common/PageNotFound";
 import { Settings } from "components/Common/Settings";
 import Splash from "components/Common/Splash";
 import { AdvancedSettings } from "components/Dashboard/AdvancedSettings";
@@ -42,6 +43,7 @@ export function DashboardMain() {
               <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
               <Route path={helpPath} element={<Help />} />
               <Route path={startPath} element={<Start />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </section>
         </Splash>

@@ -1,3 +1,4 @@
+import { PageNotFound } from "components/Common/PageNotFound";
 import { Help } from "components/Help";
 import { LoginExternalReturnHandler } from "components/Login/LoginExternalReturnHandler";
 import { Route, Routes } from "react-router-dom";
@@ -13,8 +14,9 @@ function LoginApp(): JSX.Element {
         <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
         <Route path="/login/password/:ref" element={<Login />} />
         <Route path="/login/:ref" element={<Login />} />
-        <Route path="/reset-password/*" element={<ResetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="faq" element={<Help />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </section>
   );

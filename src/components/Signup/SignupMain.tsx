@@ -1,6 +1,7 @@
 import Footer from "components/Common/Footer";
 import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
+import { PageNotFound } from "components/Common/PageNotFound";
 import Splash from "components/Common/Splash";
 import { Help } from "components/Help";
 import CodeVerified from "components/Signup/CodeVerified";
@@ -38,6 +39,7 @@ export function SignupMain(): JSX.Element {
               <Route path={`${SIGNUP_BASE_PATH}/email`} element={<Navigate to={SIGNUP_BASE_PATH} />} />
               <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
               <Route path="faq" element={<Help />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </section>
         </Splash>
