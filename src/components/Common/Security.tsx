@@ -121,8 +121,15 @@ export function Security(): React.ReactElement | null {
         <p>
           <FormattedMessage
             description="security second factor"
-            defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
-                  to prove you are the owner of your eduID.`}
+            defaultMessage={`Add a security key as a second layer of identification, beyond username and password,
+                  to prove you are the owner of your eduID. You can read more about security keys in the Help section: {FAQSecurityKeys}`}
+            values={{
+              FAQSecurityKeys: (
+                <a className="text-link" href="/faq#eduid-security" target="_blank">
+                  <FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />
+                </a>
+              ),
+            }}
           />
         </p>
         <div id="register-webauthn-tokens-area" className="table-responsive">
