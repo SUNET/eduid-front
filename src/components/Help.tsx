@@ -349,7 +349,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how more secure description 2"
-                  defaultMessage={`Examples can be a physical device in your possession such as a USB token, 
+                  defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
                   or biometric information such as fingerprint or face-recognition supported on the device you are 
                   using, and we refer to these techniques as a 'Security key'.`}
                 />
@@ -364,7 +364,7 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="how add security key - paragraph 1"
                   defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the Settings area of eduID and follow the instructions.`}
+                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
                 />
               </p>
               <p>
@@ -373,6 +373,82 @@ export function Help(): JSX.Element {
                   defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
                 />
               </p>
+
+              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
+                <AccordionItemTemplate
+                  uuid="help-security-usb"
+                  title={
+                    <FormattedMessage description="about usb key - handle" defaultMessage="About USB Security Keys" />
+                  }
+                  additionalInfo={null}
+                >
+                  <article>
+                    <h4>
+                      <FormattedMessage
+                        description="choosing usb key - heading"
+                        defaultMessage="Choosing a USB Security Key"
+                      />
+                    </h4>
+                    <p>
+                      <FormattedMessage
+                        description="choosing usb key - paragraph"
+                        defaultMessage={`Not all USB security keys meet the necessary specifications to be used as a security key for eduID.`}
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        description="use freja - list definition"
+                        defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
+                      />
+                    </p>
+
+                    <ul className="bullets">
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 1"
+                          defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
+                          values={{
+                            Fido: (
+                              <a className="text-link" href="https://fidoalliance.org/" target="_blank">
+                                fidoalliance.org
+                              </a>
+                            ),
+                          }}
+                        />
+                      </li>
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 2"
+                          defaultMessage={`Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used.`}
+                        />
+                      </li>
+                    </ul>
+                    <section>
+                      <h5>Further technical information: </h5>
+                      <ul className="bullets">
+                        <li>The key must perform an attestation and exist in the metadata,</li>
+                        <li>
+                          it must not contain any other status in the metadata than a few variants of{" "}
+                          <code>"fido certified"</code>,
+                        </li>
+                        <li>
+                          it must support any of the following user verification methods:{" "}
+                          <code>
+                            "faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
+                            "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal",
+                            "apple"
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          and must not support any other key protection than:{" "}
+                          <code>"remote_handle", "hardware", "secure_element", "tee", "apple"</code>.
+                        </li>
+                      </ul>
+                    </section>
+                  </article>
+                </AccordionItemTemplate>
+              </Accordion>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
