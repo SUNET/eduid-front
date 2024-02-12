@@ -99,6 +99,10 @@
     "developer_comment": "pd no data added",
     "string": "No information has been added."
   },
+  "0S7EtW": {
+    "developer_comment": "not found paragraph",
+    "string": "We can't find what you are looking for. This may be due to a technical error or a typo. Please try again or use the link to move forward."
+  },
   "0aGYAe": {
     "developer_comment": "without extra security description",
     "string": "Your account will require confirmation after the password has been reset."
@@ -1133,6 +1137,10 @@
     "developer_comment": "opening hours - list definition",
     "string": "Opening hours:"
   },
+  "V2oqjw": {
+    "developer_comment": "not found link",
+    "string": "Go to eduID"
+  },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
@@ -1164,6 +1172,10 @@
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
+  },
+  "VtD50r": {
+    "developer_comment": "not found heading",
+    "string": "Page not found"
   },
   "VwFaJg": {
     "developer_comment": "verify identity",

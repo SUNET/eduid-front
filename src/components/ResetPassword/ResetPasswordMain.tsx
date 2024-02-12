@@ -1,5 +1,6 @@
 import { useActor } from "@xstate/react";
 import { verifyEmailLink } from "apis/eduidResetPassword";
+import { PageNotFound } from "components/Common/PageNotFound";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { useCallback, useContext, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -31,6 +32,7 @@ export default function ResetPasswordMain(): JSX.Element {
         <Routes>
           <Route path="email-code/:emailCode" element={<HandleEmailCode />} />
           <Route path="" element={<ResetPasswordApp />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
     </React.Fragment>
