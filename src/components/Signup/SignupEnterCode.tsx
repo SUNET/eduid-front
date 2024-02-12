@@ -60,21 +60,36 @@ export function SignupEnterCode(): JSX.Element {
     }
 
     // 'convert' from FormRenderProps to a simple "disabled" boolean
-    return <ResponseCodeAbortButton disabled={props.formProps.submitting} />;
+    return (
+      <ResponseCodeAbortButton
+        disabled={props.formProps.submitting}
+        invalid={props.formProps.invalid}
+        submit={props.formProps.form.submit}
+      />
+    );
   }
 
-  function ResponseCodeAbortButton(props: { disabled: boolean }) {
+  function ResponseCodeAbortButton(props: { disabled: boolean; invalid: boolean; submit: () => void }) {
     // abort button usable from both ResponseCodeButtons and when isExpired below
     return (
       <div className="buttons">
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="secondary"
           onClick={handleAbortButtonOnClick}
           id="response-code-abort-button"
           disabled={props.disabled}
         >
           <FormattedMessage defaultMessage="Cancel" description="Short code form" />
+        </EduIDButton>
+        <EduIDButton
+          type="submit"
+          buttonstyle="primary"
+          onClick={props.submit}
+          id="response-code-ok-button"
+          disabled={props.invalid}
+        >
+          <FormattedMessage defaultMessage="Ok" description="Short code form Ok button" />
         </EduIDButton>
       </div>
     );
