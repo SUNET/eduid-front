@@ -99,6 +99,10 @@
     "developer_comment": "pd no data added",
     "string": "Ingen information har lagts till."
   },
+  "0S7EtW": {
+    "developer_comment": "not found paragraph",
+    "string": "Vi kan tyvärr inte hitta det du letar efter. Det kan bero på ett tekniskt fel eller stavfel. Vänligen prova igen eller använd länken för att ta dig vidare."
+  },
   "0aGYAe": {
     "developer_comment": "without extra security description",
     "string": "Din identitet kommer att behöva verifieras efter att lösenordet har återställts."
@@ -1133,6 +1137,10 @@
     "developer_comment": "opening hours - list definition",
     "string": "Öppettider:"
   },
+  "V2oqjw": {
+    "developer_comment": "not found link",
+    "string": "Gå till eduID"
+  },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
@@ -1164,6 +1172,10 @@
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Vissa lärosäten har anslutit sig till att låta eduID hämta ut ditt ESI - European Student Identifier från Ladok för att kunna få tillgång till vissa tjänster."
+  },
+  "VtD50r": {
+    "developer_comment": "not found heading",
+    "string": "Sidan kan inte hittas"
   },
   "VwFaJg": {
     "developer_comment": "verify identity",
