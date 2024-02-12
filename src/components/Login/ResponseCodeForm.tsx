@@ -138,6 +138,10 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       event.preventDefault();
       target.nextElementSibling.focus();
     }
+
+    if ((form.getState().valid && event.key === "Enter") || event.keyCode === 13) {
+      form.submit();
+    }
   }
 
   function handlePaste(event: React.ClipboardEvent<HTMLInputElement>) {
