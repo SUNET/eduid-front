@@ -377,27 +377,25 @@ export function Help(): JSX.Element {
               <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
                 <AccordionItemTemplate
                   uuid="help-security-usb"
-                  title={
-                    <FormattedMessage description="about usb key - handle" defaultMessage="About USB Security Keys" />
-                  }
+                  title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
                   additionalInfo={null}
                 >
                   <article>
                     <h4>
                       <FormattedMessage
                         description="choosing usb key - heading"
-                        defaultMessage="Choosing a USB Security Key"
+                        defaultMessage="Choosing a Security Key"
                       />
                     </h4>
                     <p>
                       <FormattedMessage
                         description="choosing usb key - paragraph"
-                        defaultMessage={`Not all USB security keys meet the necessary specifications to be used as a security key for eduID.`}
+                        defaultMessage={`Not all security keys meet the necessary specifications to be used as a security key for eduID.`}
                       />
                     </p>
                     <p>
                       <FormattedMessage
-                        description="use freja - list definition"
+                        description="choosing usb key - list definition"
                         defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
                       />
                     </p>
@@ -424,25 +422,61 @@ export function Help(): JSX.Element {
                       </li>
                     </ul>
                     <section>
-                      <h5>Further technical information: </h5>
+                      <h5>
+                        <FormattedMessage
+                          description="usb key technical section - heading"
+                          defaultMessage="Further technical information: "
+                        />
+                      </h5>
                       <ul className="bullets">
-                        <li>The key must perform an attestation and exist in the metadata,</li>
                         <li>
-                          it must not contain any other status in the metadata than a few variants of{" "}
-                          <code>"fido certified"</code>,
+                          <FormattedMessage
+                            description="usb key technical section - list item 1"
+                            defaultMessage="The key must perform an attestation and exist in the metadata,"
+                          />
                         </li>
                         <li>
-                          it must support any of the following user verification methods:{" "}
+                          <FormattedMessage
+                            description="usb key technical section - list item 2"
+                            defaultMessage="it must not contain any other status in the metadata than a few variants of: "
+                          />
+                          &nbsp;
                           <code>
-                            "faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
-                            "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal",
-                            "apple"
+                            <FormattedMessage
+                              description="usb key technical section - list item 2 code"
+                              defaultMessage='"fido certified"'
+                            />
                           </code>
                           ,
                         </li>
                         <li>
-                          and must not support any other key protection than:{" "}
-                          <code>"remote_handle", "hardware", "secure_element", "tee", "apple"</code>.
+                          <FormattedMessage
+                            description="usb key technical section - list item 3"
+                            defaultMessage="it must support any of the following user verification methods: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 3 code"
+                              defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
+                  "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
+                            />
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 4"
+                            defaultMessage="and must not support any other key protection than: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 4 code"
+                              defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
+                            />
+                          </code>
+                          .
                         </li>
                       </ul>
                     </section>
