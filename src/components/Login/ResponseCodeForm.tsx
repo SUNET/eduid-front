@@ -28,11 +28,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
   return (
     <FinalForm<ResponseCodeValues>
       onSubmit={(values) => {
-        setShowSpinner(true);
-        setTimeout(() => {
-          props.handleSubmitCode(values);
-          setShowSpinner(false);
-        }, 1000);
+        props.handleSubmitCode(values);
       }}
       initialValues={initialValues}
       render={(formProps) => {
@@ -94,7 +90,6 @@ interface CodeFieldProps {
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
-  const [isPasted, setIsPasted] = useState(false);
 
   function validateCodeForm(value: number): string | undefined {
     if (!value) {
@@ -129,9 +124,6 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       target.previousElementSibling instanceof HTMLInputElement
     ) {
       target?.previousElementSibling?.focus();
-    }
-    if (form.getState().valid && !isPasted) {
-      form.submit();
     }
   }
 
@@ -198,17 +190,6 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
 
           updateInputAndForm(input as HTMLInputElement, cursorPosition + i, digit);
         });
-    }
-
-    // Trigger form submission if all inputs are filled
-    const allInputsFilled = Array.from(inputs).every((input) => (input as HTMLInputElement).value !== "");
-    if (allInputsFilled && form.getState().valid) {
-      setIsPasted(true);
-
-      setTimeout(() => {
-        form.submit();
-        setIsPasted(false);
-      }, 1000); // 1 second delay
     }
   }
 
