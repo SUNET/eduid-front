@@ -1,12 +1,18 @@
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/DashboardConfig";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders bankID as expected", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
-      config: { ...configInitialState, bankid_service_url: "/bankid-url/", is_app_loaded: true },
+      personal_data: { ...defaultDashboardTestState.personal_data },
+      config: {
+        ...configInitialState,
+        svipe_service_url: "/svipe-url/",
+        is_app_loaded: true,
+        preferred_captcha: "internal",
+      },
     },
   });
   // Navigate to Identity

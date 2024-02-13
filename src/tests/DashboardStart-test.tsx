@@ -8,8 +8,8 @@ test("start page heading text for new user", async () => {
     state: { config: { ...configInitialState, is_app_loaded: false } },
     routes: ["/profile/"],
   });
-  expect(screen.getByRole("progressbar")).toBeInTheDocument();
-  expect(screen.getByRole("progressbar")).toHaveClass("spinner");
+  expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
+  expect(screen.getAllByRole("progressbar")[0]).toHaveClass("spinner");
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
   expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is not verified./);
 });
