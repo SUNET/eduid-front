@@ -14,6 +14,7 @@ import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { Link } from "react-router-dom";
 import { clearNotifications } from "slices/Notifications";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
@@ -22,6 +23,7 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 export function Security(): React.ReactElement | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -111,7 +113,6 @@ export function Security(): React.ReactElement | null {
   }
 
   if (!isPlatformAuthLoaded) return null;
-
   return (
     <article id="security-container">
       <div id="register-security-key-container">
@@ -121,10 +122,27 @@ export function Security(): React.ReactElement | null {
         <p>
           <FormattedMessage
             description="security second factor"
-            defaultMessage={`Add a security key as a second layer of identification, beyond email and password,
+            defaultMessage={`Add a security key as a second layer of identification, beyond username and password,
                   to prove you are the owner of your eduID.`}
           />
         </p>
+        <p className="help-text">
+          <FormattedMessage
+            description="security second factor help info"
+            defaultMessage={`You can read more about security keys in the Help section: {FAQSecurityKeys}.`}
+            values={{
+              FAQSecurityKeys: (
+                <Link className="text-link" to={`../../../faq`}>
+                  <FormattedMessage
+                    description="about security key - handle"
+                    defaultMessage="Improving the security level of eduID"
+                  />
+                </Link>
+              ),
+            }}
+          />
+        </p>
+
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable credentials={credentials} />
           <span aria-label="select extra webauthn">
