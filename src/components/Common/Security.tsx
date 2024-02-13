@@ -14,7 +14,7 @@ import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import { clearNotifications } from "slices/Notifications";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
@@ -132,12 +132,12 @@ export function Security(): React.ReactElement | null {
             defaultMessage={`You can read more about security keys in the Help section: {FAQSecurityKeys}.`}
             values={{
               FAQSecurityKeys: (
-                <HashLink className="text-link" to={`../../../faq`}>
+                <Link className="text-link" to={`../../../faq`}>
                   <FormattedMessage
                     description="about security key - handle"
                     defaultMessage="Improving the security level of eduID"
                   />
-                </HashLink>
+                </Link>
               ),
             }}
           />
