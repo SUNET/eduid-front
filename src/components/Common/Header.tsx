@@ -16,7 +16,6 @@ export function Header(props: HeaderProps): JSX.Element {
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
-  const start_url = dashboard_link || eduid_site_url;
 
   const initialButton = (
     <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
@@ -31,9 +30,8 @@ export function Header(props: HeaderProps): JSX.Element {
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
     if (fetchLogout.fulfilled.match(resp)) {
-      const goto_url = resp.payload.location || eduid_site_url || start_url;
-      if (goto_url) {
-        window.location.assign(goto_url);
+      if (eduid_site_url) {
+        window.location.assign(eduid_site_url);
       }
     }
   }
@@ -72,10 +70,9 @@ export function Header(props: HeaderProps): JSX.Element {
 
   return (
     <header id="header">
-      <a href={start_url} aria-label="eduID start" title="eduID start">
+      <a href={eduid_site_url} aria-label="eduID start" title="eduID start">
         <div id="eduid-logo" className="eduid-logo" />
       </a>
-
       {button}
     </header>
   );
