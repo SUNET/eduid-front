@@ -34,7 +34,7 @@ export function IndexMain(): JSX.Element {
 
   return (
     <React.StrictMode>
-      <Header loginRef={loginRef} showMenu={Boolean(eppn)} />
+      <Header loginRef={loginRef} />
       <main id="panel" className="panel">
         <Notifications />
         <Splash showChildren={isLoaded}>

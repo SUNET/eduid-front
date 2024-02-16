@@ -20,7 +20,7 @@ export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
   const is_configured = useAppSelector((state) => state.config.is_configured);
-  const dashboard_url = useAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const dispatch = useAppDispatch();
 
   const [errorURL, setErrorURL] = useState<errorURLData>({});

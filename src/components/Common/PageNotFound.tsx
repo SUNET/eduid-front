@@ -1,8 +1,8 @@
-import { useErrorsAppSelector } from "errors-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 export function PageNotFound(): JSX.Element {
-  const eduid_site_url = useErrorsAppSelector((state) => state.config.eduid_site_url);
+  const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
 
   return (
     <section className="intro">

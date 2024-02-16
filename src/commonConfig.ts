@@ -32,6 +32,7 @@ interface APIEndpoints {
   security_service_url?: string;
   token_service_url?: string;
   svipe_service_url?: string;
+  bankid_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this

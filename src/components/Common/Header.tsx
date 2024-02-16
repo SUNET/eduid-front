@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
-  email?: string;
-  showMenu?: boolean;
   loginRef?: string;
 }
 

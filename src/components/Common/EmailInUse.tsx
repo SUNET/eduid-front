@@ -30,7 +30,7 @@ export default function EmailInUse(): JSX.Element {
           </p>
         </div>
 
-        <a href={reset_password_service_url}>
+        <a href={reset_password_link}>
           <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
             <FormattedMessage defaultMessage="Reset your password" description="Signup" />
           </EduIDButton>

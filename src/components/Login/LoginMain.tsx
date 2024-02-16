@@ -3,7 +3,7 @@ import { GenericError } from "components/Common/GenericError";
 import { Header } from "components/Common/Header";
 import { Notifications } from "components/Common/Notifications";
 import Splash from "components/Common/Splash";
-import { useAppSelector } from "hooks";
+import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import LoginApp from "./LoginApp";
@@ -16,11 +16,7 @@ export function LoginMain(): JSX.Element {
 
   return (
     <React.StrictMode>
-      <Header
-        showRegister={!authn_options.has_session}
-        showLogout={authn_options.has_session || Boolean(error)}
-        loginRef={loginRef}
-      />
+      <Header loginRef={loginRef} />
       <main id="panel" className="panel">
         <Notifications />
         <ErrorBoundary FallbackComponent={GenericError}>

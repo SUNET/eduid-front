@@ -211,6 +211,7 @@ export function Security(): React.ReactElement | null {
 }
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
+  const config = useAppSelector((state) => state.config);
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -241,8 +242,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         }
       } else if (response?.payload.payload.message === "bankid.must_authenticate") {
         dispatch(clearNotifications());
-        const nextURL = config.dashboard_url + "settings/advanced-settings";
-        const url = config.authn_url + "reauthn?next=" + encodeURIComponent(nextURL);
+        const nextURL = config.dashboard_link + "settings/advanced-settings";
+        const url = config.token_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
         window.location.assign(url);
       }
     })();

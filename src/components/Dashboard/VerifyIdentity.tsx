@@ -410,7 +410,7 @@ function AccordionItemEu(): JSX.Element | null {
 
 function AccordionItemWorld(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const svipe_url = useAppSelector((state) => state.config.svipe_url);
+  const svipe_service_url = useAppSelector((state) => state.config.svipe_service_url);
 
   async function handleOnClick() {
     const response = await dispatch(svipeVerifyIdentity({ method: "svipe_id" }));

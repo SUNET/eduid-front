@@ -19,8 +19,6 @@ module.exports = {
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
     index: "./src/entry-points/index",
-    errors: "./src/entry-points/errors",
-    faq: "./src/entry-points/faq",
   },
   output: {
     path: path.join(__dirname, "build"),
