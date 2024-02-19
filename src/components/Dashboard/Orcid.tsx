@@ -14,13 +14,21 @@ export function Orcid(): JSX.Element {
   const intl = useIntl();
 
   async function handleOrcidDelete() {
-    await dispatch(removeOrcid());
+    try {
+      await dispatch(removeOrcid());
+    } catch (error) {
+      console.error("Error removing orcid", error);
+    }
   }
 
   function handleOrcidConnect() {
-    if (orcid_service_url) {
-      const auth_url = urlJoin(orcid_service_url, "authorize");
-      window.location.assign(auth_url);
+    try {
+      if (orcid_service_url) {
+        const auth_url = urlJoin(orcid_service_url, "authorize");
+        window.location.assign(auth_url);
+      }
+    } catch (error) {
+      console.error("Error connecting to orcid", error);
     }
   }
 
