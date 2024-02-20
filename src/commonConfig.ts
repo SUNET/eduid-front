@@ -23,7 +23,7 @@ interface APIEndpoints {
   eidas_service_url?: string;
   emails_service_url?: string;
   ladok_service_url?: string;
-  letter_proofing_url?: string;
+  letter_proofing_service_url?: string;
   login_service_url?: string;
   lookup_mobile_proofing_service_url?: string;
   orcid_service_url?: string;
