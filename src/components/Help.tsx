@@ -1092,7 +1092,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="privacy policy - list item 9"
-                    defaultMessage="only use necessary functional cookies."
+                    defaultMessage="only uses necessary functional cookies."
                   />
                 </li>
               </ul>
