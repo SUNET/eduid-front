@@ -49,7 +49,7 @@ export function SignupUserCreated(): JSX.Element {
         <p>
           <FormattedMessage
             defaultMessage={`These are your login details for eduID. A password has been generated for you. 
-              Save the password! Note: the spaces in the generated password below are only there for legibility so don't need to be included, and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
+              Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
             description="Registration finished"
           />
         </p>

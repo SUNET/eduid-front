@@ -321,7 +321,7 @@ function AccordionItemSwedish(): JSX.Element | null {
               additionalInfo={
                 <FormattedMessage
                   description="verify identity vetting freja tagline"
-                  defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+                  defaultMessage={`For you able to create a Freja+ by using the app or visiting one of the authorised agents`}
                 />
               }
               uuid="se-freja"
