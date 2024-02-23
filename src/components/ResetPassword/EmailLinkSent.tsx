@@ -65,7 +65,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="If you didn’t receive the email, check your junk email, or resend the email."
+          defaultMessage="If you didn’t receive the email, check your junk email before resending it after five minutes, according to the timer next to the Resend button."
           description="Reset Password email link sent"
         />
       </p>

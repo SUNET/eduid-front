@@ -333,10 +333,6 @@
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
   },
-  "6ZbDjw": {
-    "developer_comment": "Signup, code expired",
-    "string": "To get a new code, click the link below. You will be redirected to the register page."
-  },
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID Dashboard:"
@@ -364,10 +360,6 @@
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
     "string": "How can I login with other devices?"
-  },
-  "7h5tj9": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to eduid"
   },
   "7rcGK1": {
     "developer_comment": "column value label",
@@ -966,6 +958,10 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
+  "PL+81z": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to eduid to login"
+  },
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
@@ -1237,10 +1233,6 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
-  "WlcZVg": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. A password has been generated for you. Save the password. Once you've logged in you can change your password."
-  },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
     "string": "How to use eIDAS with eduID:"
@@ -1304,6 +1296,10 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
+  },
+  "YyZ4yf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email, check your junk email before resending it after five minutes, according to the timer next to the Resend button."
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1789,6 +1785,10 @@
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Choose a suitable method to verify that you have access to the added id number."
   },
+  "gyVTaa": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "For you able to create a Freja+ by using the app or visiting one of the authorised agents"
+  },
   "hB1XT2": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from"
@@ -2034,6 +2034,10 @@
   "lic2YR": {
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Reinstall the app, redo the registration and make sure that you have entered the correct expiration date as well as written down the correct reference number of the chosen form of ID and personal identity number (personnummer)."
+  },
+  "ljDyEx": {
+    "developer_comment": "Signup, code expired",
+    "string": "To receive a new code, click the link below. You will be redirected to the register page."
   },
   "login.assurance_failure": {
     "string": "An error occurred. Please try again later."
@@ -2285,10 +2289,6 @@
     "developer_comment": "security verify",
     "string": "BankID"
   },
-  "p8IPLU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you didn’t receive the email, check your junk email, or resend the email."
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
@@ -2440,10 +2440,6 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
-  },
-  "qGDW86": {
-    "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2628,7 +2624,7 @@
     "string": "No credential added."
   },
   "signup.email-address-used": {
-    "string": "The email address is already in use."
+    "string": "The email address is already registered."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Try again later."
@@ -2658,7 +2654,7 @@
     "string": "There was a problem verifying that you are a human. Please try again"
   },
   "signup.registering-address-used": {
-    "string": "The email address you entered is already in use."
+    "string": "The email address you entered is already registered."
   },
   "signup.registering-new": {
     "string": "Email address successfully registered"
@@ -2747,6 +2743,10 @@
     "developer_comment": "mfa primary option",
     "string": "Use security key"
   },
+  "thUSiK": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. A password has been generated for you. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
+  },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
     "string": "lose a student account password and need to regain access."
@@ -2789,10 +2789,6 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
-  },
-  "usrhfV": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "For you able to create a Freja eID+ by visiting one of the authorised agents"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
@@ -2917,6 +2913,14 @@
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "that all usage of user accounts follow the laws and by-laws of Sweden,"
+  },
+  "ysi2d4": {
+    "developer_comment": "privacy policy - list item 9",
+    "string": "only uses necessary functional cookies."
+  },
+  "z2oWSP": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
