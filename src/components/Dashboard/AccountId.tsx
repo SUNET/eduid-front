@@ -8,12 +8,12 @@ export function AccountId(): JSX.Element {
   return (
     <article id="uniqueId-container">
       <h2>
-        <FormattedMessage defaultMessage="EPPN - Unique ID" description="Dashboard AccountId" />
+        <FormattedMessage defaultMessage="EPPN - username" description="Dashboard AccountId" />
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`Eppn is a unique ID for your eduID that you may need to provide when requesting technical 
-          support or to identify your account.`}
+          defaultMessage={`Eppn is a unique identifier for your eduID that you may need to provide when requesting  
+          support or identifying your account when accessing other services.`}
           description="Dashboard AccountId"
         />
       </p>
@@ -26,7 +26,7 @@ export function AccountId(): JSX.Element {
         </span>
         <div className="display-data">
           <output name={eppn} id={idUserEppn}>
-            {eppn}
+            {eppn}@eduid.se
           </output>
         </div>
       </div>

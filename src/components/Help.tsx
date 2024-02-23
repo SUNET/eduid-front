@@ -1204,10 +1204,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how to contact support - paragraph 2"
-                  defaultMessage={`Always let us know the e-mail address you used when you logged in to eduID, and if 
-                  you are logged in include your unique id ‘eppn’ in the Settings area.  
-                  If something went wrong, it is always a good idea to include screenshots with error messages to 
-                  ease troubleshooting.`}
+                  defaultMessage={`Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting.`}
                 />
               </p>
               <p>
