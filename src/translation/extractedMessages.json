@@ -95,13 +95,6 @@
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
   },
-<<<<<<< HEAD
-  "0QJd38": {
-    "developer_comment": "usb key technical section - list item 2 code",
-    "string": "\"fido certified\""
-  },
-=======
->>>>>>> d131a7e81 (edited help text after feedback)
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
@@ -528,13 +521,6 @@
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
   },
-<<<<<<< HEAD
-  "Cnpo0l": {
-    "developer_comment": "profile username display title",
-    "string": "Username"
-  },
-=======
->>>>>>> d131a7e81 (edited help text after feedback)
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
     "string": "With Svipe ID cryptographic identity verification"
@@ -2896,27 +2882,9 @@
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
   },
-<<<<<<< HEAD
-  "xw6F28": {
-    "developer_comment": "which verification methods - heading",
-    "string": "What are the methods of verification for eduID?"
-  },
-  "y1sPSs": {
-    "developer_comment": "what is orcid - heading",
-    "string": "What is ORCID?"
-  },
-  "y3eqwF": {
-    "developer_comment": "create eduid - list definition",
-    "string": "How to create your eduID account at {eduidLink}:"
-  },
-  "y4SB0a": {
-    "developer_comment": "use orcid - list item 1",
-    "string": "read more and register for an ORCID at {orcid},"
-=======
   "xvMcTx": {
     "developer_comment": "security verify",
     "string": "Verify"
->>>>>>> d131a7e81 (edited help text after feedback)
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
