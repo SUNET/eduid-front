@@ -10,9 +10,7 @@ import LoginApp from "./LoginApp";
 
 export function LoginMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.app.is_loaded);
-  const authn_options = useAppSelector((state) => state.login.authn_options);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const error = useAppSelector((state) => state.notifications.error);
 
   return (
     <React.StrictMode>

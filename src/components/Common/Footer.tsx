@@ -6,12 +6,7 @@ import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
-  const eduidHomeUrl = useAppSelector((state) => state.config.eduid_site_url);
-  const eppn = useAppSelector((state) => state.personal_data?.eppn);
-
-  // const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useAppDispatch();
-  // const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
 
   const messages = LOCALIZED_MESSAGES;
 
