@@ -25,9 +25,9 @@ export const RESET_PASSWORD_SERVICE_URL = "/reset-password-url/";
 export const loginTestState: EduIDAppRootState = {
   config: {
     ...configInitialState,
-    next_url: "http://localhost/next",
+    next_url: "https://localhost/next",
     mfa_auth_idp: "https://swedenconnect.idp/",
-    eidas_service_url: "http://eidas.docker",
+    eidas_service_url: "https://eidas.docker",
     reset_password_service_url: RESET_PASSWORD_SERVICE_URL,
     csrf_token: "csrf-token",
     login_service_url: "/",
