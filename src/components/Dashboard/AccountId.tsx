@@ -12,8 +12,8 @@ export function AccountId(): JSX.Element {
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`Eppn is a unique identifier for your eduID that you may need to provide when requesting  
-          support or identifying your account when accessing other services.`}
+          defaultMessage={`Eppn is a unique identifier for your eduID that you may need to provide when accessing other services or requesting  
+          support.`}
           description="Dashboard AccountId"
         />
       </p>
