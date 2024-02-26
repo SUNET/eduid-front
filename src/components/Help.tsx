@@ -909,6 +909,12 @@ export function Help(): JSX.Element {
                     defaultMessage="retains inactive accounts for a maximum of 2 years,"
                   />
                 </li>
+                <li>
+                  <FormattedMessage
+                    description="privacy policy - list item 9"
+                    defaultMessage="only uses necessary functional cookies."
+                  />
+                </li>
               </ul>
             </article>
             <article>

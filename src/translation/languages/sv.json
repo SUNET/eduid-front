@@ -325,10 +325,6 @@
     "developer_comment": "choosing usb key - heading",
     "string": "Att välja säkerhetsnyckel"
   },
-  "6ZbDjw": {
-    "developer_comment": "Signup, code expired",
-    "string": "För att få en ny kod, klicka på länken nedan. Du kommer då att bli omdirigeras till registreringssidan."
-  },
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID Dashboard:"
@@ -352,10 +348,6 @@
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
     "string": "Hur kan jag logga in med en annan enhet?"
-  },
-  "7h5tj9": {
-    "developer_comment": "go to eudID link text",
-    "string": "Gå till eduID"
   },
   "7rcGK1": {
     "developer_comment": "column value label",
@@ -712,7 +704,7 @@
   },
   "IcXwl+": {
     "developer_comment": "privacy policy - list item 7",
-    "string": "lagrar användarloggar i 6 månader,"
+    "string": "lagrar användarloggar i sex månader,"
   },
   "Identity": {
     "developer_comment": "Identity",
@@ -936,6 +928,10 @@
   "P8LMog": {
     "developer_comment": "what is privacy policy - heading",
     "string": "Vad är eduIDs Personuppgiftspolicy?"
+  },
+  "PL+81z": {
+    "developer_comment": "go to eudID link text",
+    "string": "Gå till eduID för att logga in"
   },
   "PLjl7A": {
     "developer_comment": "settings main title",
@@ -1208,10 +1204,6 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
   },
-  "WlcZVg": {
-    "developer_comment": "Registration finished",
-    "string": "Detta är dina inloggningsuppgifter. Ett lösenord har genererats. Spara lösenordet. Du kan efter du loggat in välja att byta lösenord."
-  },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
     "string": "Hur du kan använda eIDAS med eduID:"
@@ -1276,6 +1268,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
   },
+  "YyZ4yf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost innan du skickar e-postmeddelandet igen efter fem minuter, enligt timern intill Skicka E-post igen knappen."
+  },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
@@ -1334,7 +1330,7 @@
   },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
-    "string": "tar bort inaktiva konton efter 2 år."
+    "string": "tar bort inaktiva konton efter två år,"
   },
   "aLDxnQ": {
     "developer_comment": "go to Advanced settings",
@@ -1728,6 +1724,10 @@
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Välj en lämplig metod att verifiera ditt personnummer."
   },
+  "gyVTaa": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
+  },
   "hB1XT2": {
     "developer_comment": "verify identity unverified description",
     "string": "För att använda vissa tjänster behöver din identitet verifieras. Koppla din identitet till ditt eduID för att få mest användning "
@@ -1966,6 +1966,10 @@
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Avinstallera appen, gör om registreringen, samt kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
   },
+  "ljDyEx": {
+    "developer_comment": "Signup, code expired",
+    "string": "För att få en ny kod, klicka på länken nedan. Du kommer då att omdirigeras till registreringssidan."
+  },
   "login.assurance_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
   },
@@ -2202,10 +2206,6 @@
     "developer_comment": "security verify",
     "string": "BankID"
   },
-  "p8IPLU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost eller skicka e-postmeddelandet igen."
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -2357,10 +2357,6 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
-  },
-  "qGDW86": {
-    "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2545,7 +2541,7 @@
     "string": "Inga inloggningsuppgifter har lagts till."
   },
   "signup.email-address-used": {
-    "string": "E-postadressen används redan."
+    "string": "E-postadressen är redan registrerad."
   },
   "signup.email-throttled": {
     "string": "För många försök att skapa ett konto har gjorts. Försök igen senare."
@@ -2575,7 +2571,7 @@
     "string": "Vi kunde inte verifiera att du är människa. Var vänlig försök igen."
   },
   "signup.registering-address-used": {
-    "string": "E-postadressen används redan."
+    "string": "E-postadressen du angivit är redan registrerad."
   },
   "signup.registering-new": {
     "string": "E-postadressen har registrerats"
@@ -2660,6 +2656,10 @@
     "developer_comment": "mfa primary option",
     "string": "Använd min säkerhetsnyckel"
   },
+  "thUSiK": {
+    "developer_comment": "Registration finished",
+    "string": "Här är dina inloggningsuppgifter med ett genererat lösenord. Spara lösenordet! Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. Du kan efter att du har loggat in välja att byta lösenord."
+  },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
     "string": "förlorar ett lösenord och behöver återfå åtkomst till konto."
@@ -2702,10 +2702,6 @@
   },
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
-  },
-  "usrhfV": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "För dig som har eller kan skapa Freja+ genom att besöka ett ombud i Sverige"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
@@ -2839,9 +2835,13 @@
     "developer_comment": "ToU first paragraph",
     "string": "att all användning av användarkonton ska följa Sveriges lagar och förordningar, "
   },
-  "z2ygf8": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "När du är inloggad kan du lägga till och bekräfta säkerhetsnycklar som du har möjlighet att använda, bland Inställningar i eduID och följa instruktionerna."
+  "ysi2d4": {
+    "developer_comment": "privacy policy - list item 9",
+    "string": "sparar endast nödvändiga funktionella kakor."
+  },
+  "z2oWSP": {
+    "developer_comment": "Set new password",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
   },
   "zUxMDK": {
     "developer_comment": "Footer help",

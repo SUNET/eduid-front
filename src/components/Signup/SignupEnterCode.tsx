@@ -104,7 +104,7 @@ export function SignupEnterCode(): JSX.Element {
         </div>
         <p>
           <FormattedMessage
-            defaultMessage="To get a new code, click the link below. You will be redirected to the register page."
+            defaultMessage="To receive a new code, click the link below. You will be redirected to the register page."
             description="Signup, code expired"
           />
         </p>
