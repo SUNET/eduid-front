@@ -20,12 +20,13 @@ import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
+import { RESET_PASSWORD_SERVICE_URL } from "./LoginTestApp-rtl";
 
 export const signupTestState: EduIDAppRootState = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",
-    reset_password_service_url: "http://dummy.example.com/reset-password",
+    reset_password_service_url: RESET_PASSWORD_SERVICE_URL,
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,

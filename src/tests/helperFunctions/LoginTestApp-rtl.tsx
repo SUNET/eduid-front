@@ -20,13 +20,15 @@ import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
 
+export const RESET_PASSWORD_SERVICE_URL = "/reset-password-url/";
+
 export const loginTestState: EduIDAppRootState = {
   config: {
     ...configInitialState,
     next_url: "http://localhost/next",
     mfa_auth_idp: "https://swedenconnect.idp/",
     eidas_service_url: "http://eidas.docker",
-    reset_password_service_url: "/reset-password-url/",
+    reset_password_service_url: RESET_PASSWORD_SERVICE_URL,
     csrf_token: "csrf-token",
     login_service_url: "/",
     // default to being in 'configured' state, since only the test of
