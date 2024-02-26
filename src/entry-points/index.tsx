@@ -6,7 +6,7 @@ import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/Reset
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 
 import { eduidStore } from "eduid-init-app";
-import { LOCALIZED_MESSAGES, SIGNUP_CONFIG_URL } from "globals";
+import { EDUID_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -19,7 +19,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = async function () {
-  const result = await eduidStore.dispatch(fetchJsConfig({ url: SIGNUP_CONFIG_URL }));
+  const result = await eduidStore.dispatch(fetchJsConfig({ url: EDUID_CONFIG_URL }));
   if (fetchJsConfig.fulfilled.match(result) && window.location.href.includes("/profile/")) {
     const response = await eduidStore.dispatch(requestAllPersonalData());
     if (requestAllPersonalData.fulfilled.match(response)) {
