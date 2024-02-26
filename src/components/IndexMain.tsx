@@ -30,7 +30,6 @@ export const SIGNUP_BASE_PATH = "/register";
 export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const eppn = useAppSelector((state) => state.personal_data.eppn);
 
   return (
     <React.StrictMode>
