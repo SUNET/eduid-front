@@ -537,7 +537,7 @@ export function Help(): JSX.Element {
                   <strong>
                     <FormattedMessage
                       description="swedish nin - heading"
-                      defaultMessage={`If you have a Swedish personal identity number`}
+                      defaultMessage={`If you are a Swedish citizen`}
                     />
                   </strong>
                   <FormattedMessage
@@ -548,7 +548,10 @@ export function Help(): JSX.Element {
                 <ul className="bullets">
                   <li>
                     <em>
-                      <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
+                      <FormattedMessage
+                        description="swedish nin post - heading"
+                        defaultMessage="post - for Swedish personal identity number holders:"
+                      />
                     </em>
                     &nbsp;
                     <FormattedMessage
@@ -560,7 +563,10 @@ export function Help(): JSX.Element {
                   </li>
                   <li>
                     <em>
-                      <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
+                      <FormattedMessage
+                        description="swedish nin mobile - heading"
+                        defaultMessage="mobile - for Swedish personal identity number holders:"
+                      />
                     </em>
                     &nbsp;
                     <FormattedMessage
@@ -574,7 +580,7 @@ export function Help(): JSX.Element {
                     <em>
                       <FormattedMessage
                         description="swedish nin freja - heading"
-                        defaultMessage="Freja+ (digital ID-card):"
+                        defaultMessage="Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
                       />
                     </em>
                     &nbsp;
@@ -589,7 +595,7 @@ export function Help(): JSX.Element {
                     <em>
                       <FormattedMessage
                         description="swedish nin bankid - heading"
-                        defaultMessage="BankID (electronic identification system):"
+                        defaultMessage="BankID (electronic identification system) - for Swedish personal identity number holders:"
                       />
                     </em>
                     &nbsp;
@@ -653,7 +659,7 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="what is freja - paragraph"
                       defaultMessage={`Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to 
-                      holders of a Swedish personal identification number.`}
+                      holders of a Swedish personal identification number or coordination number.`}
                     />
                   </p>
                   <p>
@@ -723,8 +729,8 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="what if verification for freja fails - paragraph"
                       defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
-                    correct expiration date as well as written down the correct reference number of the chosen form of 
-                    ID and personal identity number (personnummer).`}
+                    correct expiration date as well as the correct reference number of the chosen form of 
+                    ID and personal identity number or coordination number.`}
                     />
                   </p>
                 </article>
