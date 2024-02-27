@@ -16,7 +16,6 @@ export function Header(props: HeaderProps): JSX.Element {
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
-  const error = useAppSelector((state) => state.notifications.error);
 
   const initialButton = (
     <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
@@ -53,7 +52,7 @@ export function Header(props: HeaderProps): JSX.Element {
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </EduIDButton>
     );
-  } else if (authn_options.has_session || Boolean(error)) {
+  } else if (authn_options.has_session) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -71,7 +70,7 @@ export function Header(props: HeaderProps): JSX.Element {
 
   return (
     <header id="header">
-      <a href={eduid_site_url} aria-label="eduID start" title="eduID start">
+      <a href={eppn ? dashboard_link : eduid_site_url} aria-label="eduID start" title="eduID start">
         <div id="eduid-logo" className="eduid-logo" />
       </a>
       {button}
