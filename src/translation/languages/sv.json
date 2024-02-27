@@ -159,6 +159,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "1tt2b7": {
+    "developer_comment": "what if verification for freja fails - paragraph",
+    "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer eller samordningsnummer."
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Länka ORCID konto"
@@ -437,10 +441,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
   },
-  "9ftFZW": {
-    "developer_comment": "swedish nin mobile - heading",
-    "string": "mobil:"
-  },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
     "string": "Svipe iD är en identitetsverifierings-plattform som med hjälp av Svipe-appen, ett biometriskt pass eller ett ID-kort från 140 olika länder, tillsammans med användarens mobils ansiktsigenkännings-teknik kan verifiera en digital identitet på distans."
@@ -500,10 +500,6 @@
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
-  },
-  "C+b7F7": {
-    "developer_comment": "swedish nin - heading",
-    "string": "Om du har ett svenskt personnummer"
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -858,10 +854,6 @@
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "Det är av stor vikt för oss att så många som möjligt kan använda tjänsten på ett bra och säkert sätt och är ett av områdena eduID alltid försöker att utvecklas."
   },
-  "MeVXBf": {
-    "developer_comment": "what is freja - paragraph",
-    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer."
-  },
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "Det finns ingen detaljerad information tillgänglig"
@@ -950,6 +942,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
   },
+  "P2JYwK": {
+    "developer_comment": "what is freja - paragraph",
+    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer eller samordningsnummer."
+  },
   "P7d2zq": {
     "developer_comment": "button save",
     "string": "spara"
@@ -1021,10 +1017,6 @@
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Radera mitt eduID"
-  },
-  "Qu1QyR": {
-    "developer_comment": "swedish nin bankid - heading",
-    "string": "BankID (elektroniskt identifieringssystem)"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -1253,6 +1245,10 @@
     "developer_comment": "accordion item svipe title",
     "string": "Alla andra länder"
   },
+  "Xi2uNT": {
+    "developer_comment": "accordion item swedish title",
+    "string": "Svenskt personnummer eller samordningsnummer"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
@@ -1392,10 +1388,6 @@
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
   },
-  "b/o0DY": {
-    "developer_comment": "swedish nin freja - heading",
-    "string": "Freja+ (digitalt ID-kort):"
-  },
   "bCIMPQ": {
     "developer_comment": "security key title",
     "string": "Gör ditt eduID säkrare"
@@ -1519,10 +1511,6 @@
   },
   "cred.credential_type": {
     "string": "Inloggningsuppgiftstyp"
-  },
-  "cs88WE": {
-    "developer_comment": "accordion item swedish title",
-    "string": "Svenskt personnummer"
   },
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
@@ -1704,6 +1692,10 @@
   },
   "error_navet_task": {
     "string": "Problem att nå Navet"
+  },
+  "evIsxX": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digitalt ID-kort) - med svenskt personnummer eller samordningsnummer:"
   },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
@@ -1932,10 +1924,6 @@
     "developer_comment": "about eidas - handle",
     "string": "Om eIDAS"
   },
-  "kFNEXu": {
-    "developer_comment": "swedish nin post - heading",
-    "string": "post:"
-  },
   "kHCeni": {
     "string": "Ange den sexsiffriga koden som skickats till {email} för att verifiera din e-postadress. Du kan också kopiera och klistra in koden från e-posten i inmatningsfältet."
   },
@@ -2030,10 +2018,6 @@
   },
   "letter.wrong-code": {
     "string": "Den kod du angett stämmer inte. Var god försök igen"
-  },
-  "lic2YR": {
-    "developer_comment": "what if verification for freja fails - paragraph",
-    "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer."
   },
   "ljDyEx": {
     "developer_comment": "Signup, code expired",
@@ -2232,6 +2216,10 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
+  },
+  "o4XlTZ": {
+    "developer_comment": "swedish nin bankid - heading",
+    "string": "BankID (elektroniskt identifieringssystem) - med svenskt personnummer:"
   },
   "o4jkq9": {
     "developer_comment": "Help",
@@ -2558,6 +2546,10 @@
     "developer_comment": "verify identity",
     "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Svipe ID verifierar din identitet mot eduID."
   },
+  "sbCA3x": {
+    "developer_comment": "swedish nin - heading",
+    "string": "Om du har svenskt personnummer eller samordningsnummer"
+  },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
     "string": "Beskrivningen är för lång"
@@ -2604,6 +2596,10 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
+  },
+  "shCOk2": {
+    "developer_comment": "swedish nin mobile - heading",
+    "string": "mobil - med svenskt personnummer:"
   },
   "signup.already-verified": {
     "string": "Du har redan verifierat ditt konto."
@@ -2805,6 +2801,10 @@
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Välj ett extra säkerhetsalternativ"
+  },
+  "vQ4UOq": {
+    "developer_comment": "swedish nin post - heading",
+    "string": "post - med svenskt personnummer:"
   },
   "vQpAQz": {
     "developer_comment": "verification status sub text",
