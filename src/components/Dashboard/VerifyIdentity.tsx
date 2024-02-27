@@ -275,7 +275,7 @@ function AccordionItemSwedish(): JSX.Element | null {
       title={
         <FormattedMessage
           description="accordion item swedish title"
-          defaultMessage="Swedish personal ID number or coordination number"
+          defaultMessage="Swedish personal ID or coordination number"
         />
       }
       additionalInfo={

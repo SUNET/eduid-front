@@ -1245,6 +1245,10 @@
     "developer_comment": "accordion item svipe title",
     "string": "All other countries"
   },
+  "Xi2uNT": {
+    "developer_comment": "accordion item swedish title",
+    "string": "Swedish personal ID or coordination number"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -2239,10 +2243,6 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
-  },
-  "ohAmxm": {
-    "developer_comment": "accordion item swedish title",
-    "string": "Swedish personal ID number or coordination number"
   },
   "oiMtbK": {
     "developer_comment": "Terms of use (heading)",
