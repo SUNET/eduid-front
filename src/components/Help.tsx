@@ -537,7 +537,7 @@ export function Help(): JSX.Element {
                   <strong>
                     <FormattedMessage
                       description="swedish nin - heading"
-                      defaultMessage={`If you are a Swedish citizen`}
+                      defaultMessage={`If you have a Swedish personal identity number or coordination number`}
                     />
                   </strong>
                   <FormattedMessage

@@ -1849,10 +1849,6 @@
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
   },
-  "iJtaSv": {
-    "developer_comment": "swedish nin - heading",
-    "string": "If you are a Swedish citizen"
-  },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
@@ -2549,6 +2545,10 @@
   "sVb591": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
+  },
+  "sbCA3x": {
+    "developer_comment": "swedish nin - heading",
+    "string": "If you have a Swedish personal identity number or coordination number"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
