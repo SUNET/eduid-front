@@ -4,7 +4,6 @@ import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
-
 import { eduidStore } from "eduid-init-app";
 import { EDUID_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import ReactDOM from "react-dom";
@@ -16,6 +15,20 @@ import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
+
+function showErrorMsg() {
+  const params = new URLSearchParams(document.location.search);
+  if (params) {
+    const msg = params.get("msg");
+    if (msg !== null) {
+      if (msg.startsWith(":ERROR:")) {
+        eduidStore.dispatch(showNotification({ message: msg.substr(7), level: "error" }));
+      } else {
+        eduidStore.dispatch(showNotification({ message: msg, level: "info" }));
+      }
+    }
+  }
+}
 
 /* Get configuration */
 const getConfig = async function () {
@@ -33,18 +46,7 @@ const getConfig = async function () {
       }
       eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
     }
-
-    const params = new URLSearchParams(document.location.search);
-    if (params) {
-      const msg = params.get("msg");
-      if (msg !== null) {
-        if (msg.indexOf(":ERROR:") === 0) {
-          eduidStore.dispatch(showNotification({ message: msg.substr(7), level: "error" }));
-        } else {
-          eduidStore.dispatch(showNotification({ message: msg, level: "info" }));
-        }
-      }
-    }
+    showErrorMsg();
   }
 };
 
