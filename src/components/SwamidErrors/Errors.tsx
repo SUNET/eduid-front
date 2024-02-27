@@ -1,6 +1,6 @@
 import { fetchJsConfig } from "apis/eduidJsConfig";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { ERRORS_CONFIG_URL } from "globals";
+import { EDUID_CONFIG_URL } from "globals";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
@@ -28,7 +28,7 @@ export function Errors() {
   useEffect(() => {
     // bootstrap signup state in redux store by asking the backend for it
     async function fetchJsErrorsConfig(): Promise<void> {
-      const response = await dispatch(fetchJsConfig({ url: ERRORS_CONFIG_URL }));
+      const response = await dispatch(fetchJsConfig({ url: EDUID_CONFIG_URL }));
       if (fetchJsConfig.fulfilled.match(response)) {
         setErrorURL(parseErrorURL(query));
       }

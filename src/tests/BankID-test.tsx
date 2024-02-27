@@ -1,6 +1,6 @@
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
-import { initialState as configInitialState } from "slices/DashboardConfig";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders bankID as expected", async () => {

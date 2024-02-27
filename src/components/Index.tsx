@@ -1,6 +1,4 @@
-import { fetchJsConfig } from "apis/eduidJsConfig";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { LOGIN_CONFIG_URL } from "globals";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -13,12 +11,9 @@ export function Index() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   async function getLoginConfig() {
-    const config = await dispatch(fetchJsConfig({ url: LOGIN_CONFIG_URL }));
-    if (fetchJsConfig.fulfilled.match(config)) {
-      dispatch(appLoadingSlice.actions.appLoaded());
-      if (dashboard_link) {
-        document.location.href = dashboard_link;
-      }
+    dispatch(appLoadingSlice.actions.appLoaded());
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
     }
   }
 
