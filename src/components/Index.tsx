@@ -10,7 +10,7 @@ export function Index() {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
-  async function getLoginConfig() {
+  async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
     if (dashboard_link) {
       document.location.href = dashboard_link;
@@ -57,7 +57,7 @@ export function Index() {
         <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
           <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
         </EduIDButton>
-        <EduIDButton onClick={getLoginConfig} buttonstyle="secondary" id="login-button">
+        <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
           <FormattedMessage defaultMessage="log in" description="login button" />
         </EduIDButton>
       </div>
