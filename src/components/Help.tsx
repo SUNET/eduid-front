@@ -424,6 +424,12 @@ export function Help(): JSX.Element {
               </p>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="swedish nin - heading"
+                      defaultMessage={`If you have a Swedish personal identity number or coordination number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="verification methods - list definition"
                     defaultMessage="{emphasis}, verifying it can be done via:"
@@ -435,7 +441,10 @@ export function Help(): JSX.Element {
                 <ul className="bullets">
                   <li>
                     <em>
-                      <FormattedMessage description="swedish nin post - heading" defaultMessage="post:" />
+                      <FormattedMessage
+                        description="swedish nin post - heading"
+                        defaultMessage="post - for Swedish personal identity number holders:"
+                      />
                     </em>
                     &nbsp;
                     <FormattedMessage
@@ -450,7 +459,10 @@ export function Help(): JSX.Element {
                   </li>
                   <li>
                     <em>
-                      <FormattedMessage description="swedish nin mobile - heading" defaultMessage="mobile:" />
+                      <FormattedMessage
+                        description="swedish nin mobile - heading"
+                        defaultMessage="mobile - for Swedish personal identity number holders:"
+                      />
                     </em>
                     &nbsp;
                     <FormattedMessage
@@ -467,7 +479,7 @@ export function Help(): JSX.Element {
                     <em>
                       <FormattedMessage
                         description="swedish nin freja - heading"
-                        defaultMessage="Freja+ (digital ID-card):"
+                        defaultMessage="Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
                       />
                     </em>
                     &nbsp;
@@ -476,9 +488,20 @@ export function Help(): JSX.Element {
                       defaultMessage={`{freja} the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
                       complete verification of your eduID. Read more about Freja+ below.`}
-                      values={{
-                        freja: <em>Freja+ (digital ID-card):</em>,
-                      }}
+                    />
+                  </li>
+                  <li>
+                    <em>
+                      <FormattedMessage
+                        description="swedish nin bankid - heading"
+                        defaultMessage="BankID (electronic identification system) - for Swedish personal identity number holders:"
+                      />
+                    </em>
+                    &nbsp;
+                    <FormattedMessage
+                      description="verification methods - list item 3"
+                      defaultMessage={` the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can
+                      complete verification of your eduID. Read more about BankID below.`}
                     />
                   </li>
                 </ul>
@@ -524,7 +547,7 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="what is freja - paragraph"
                       defaultMessage={`Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to 
-                      holders of a Swedish personal identification number.`}
+                      holders of a Swedish personal identification number or coordination number.`}
                     />
                   </p>
                   <p>
@@ -594,8 +617,8 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="what if verification for freja fails - paragraph"
                       defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
-                    correct expiration date as well as written down the correct reference number of the chosen form of 
-                    ID and personal identity number (personnummer).`}
+                    correct expiration date as well as the correct reference number of the chosen form of 
+                    ID and personal identity number or coordination number.`}
                     />
                   </p>
                 </article>
