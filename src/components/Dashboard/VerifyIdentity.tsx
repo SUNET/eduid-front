@@ -273,7 +273,10 @@ function AccordionItemSwedish(): JSX.Element | null {
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
       title={
-        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
+        <FormattedMessage
+          description="accordion item swedish title"
+          defaultMessage="Swedish personal ID number or coordination number"
+        />
       }
       additionalInfo={
         <FormattedMessage
