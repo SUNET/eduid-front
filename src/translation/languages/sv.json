@@ -747,6 +747,10 @@
     "developer_comment": "resend code",
     "string": "Skicka ny kod igen"
   },
+  "J5e+d2": {
+    "developer_comment": "svipe-na",
+    "string": "Det här alternativet är för närvarande inte tillgängligt."
+  },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. {link} eller ditt studentkonto."
@@ -1200,10 +1204,6 @@
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
-  },
-  "VwFaJg": {
-    "developer_comment": "verify identity",
-    "string": "Om du har ett {Svipe_ID} kan du koppla det till ditt eduID."
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -2541,10 +2541,6 @@
   "sIENAc": {
     "developer_comment": "extra security description",
     "string": "Genom att återställa lösenordet med ett extra säkerhetsalternativ kommer kontot att förbli verifierat."
-  },
-  "sVb591": {
-    "developer_comment": "verify identity",
-    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Svipe ID verifierar din identitet mot eduID."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
