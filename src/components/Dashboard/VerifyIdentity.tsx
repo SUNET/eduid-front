@@ -430,6 +430,7 @@ function AccordionItemWorld(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
+      disabled
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
       title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
       additionalInfo={
@@ -440,7 +441,7 @@ function AccordionItemWorld(): JSX.Element | null {
       }
       uuid="world"
     >
-      <p>
+      {/* <p>
         <FormattedMessage
           description="verify identity"
           defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
@@ -458,9 +459,12 @@ function AccordionItemWorld(): JSX.Element | null {
           description="verify identity"
           defaultMessage={`The button below will take you to an external identification site, where you by
           identifying yourself with Svipe ID will verify your identity towards eduID.`}
-        />
+        /> 
+      </p> */}
+      <p>
+        <FormattedMessage description="svipe-na" defaultMessage={`This option is currently unavailable.`} />
       </p>
-      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary" size="sm" disabled onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>

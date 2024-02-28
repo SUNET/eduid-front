@@ -739,6 +739,10 @@
     "developer_comment": "resend code",
     "string": "Send a new code"
   },
+  "J5e+d2": {
+    "developer_comment": "svipe-na",
+    "string": "This option is currently unavailable."
+  },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account."
@@ -1196,10 +1200,6 @@
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Page not found"
-  },
-  "VwFaJg": {
-    "developer_comment": "verify identity",
-    "string": "If you have a {Svipe_ID} you can connect it to your eduID."
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -2541,10 +2541,6 @@
   "sIENAc": {
     "developer_comment": "extra security description",
     "string": "A password reset using an extra security option will keep your account confirmed."
-  },
-  "sVb591": {
-    "developer_comment": "verify identity",
-    "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
