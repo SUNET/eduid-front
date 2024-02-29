@@ -349,7 +349,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how more secure description 2"
-                  defaultMessage={`Examples can be a physical device in your possession such as a USB token, 
+                  defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
                   or biometric information such as fingerprint or face-recognition supported on the device you are 
                   using, and we refer to these techniques as a 'Security key'.`}
                 />
@@ -364,7 +364,7 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="how add security key - paragraph 1"
                   defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the Settings area of eduID and follow the instructions.`}
+                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
                 />
               </p>
               <p>
@@ -373,6 +373,116 @@ export function Help(): JSX.Element {
                   defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
                 />
               </p>
+
+              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
+                <AccordionItemTemplate
+                  uuid="help-security-usb"
+                  title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
+                  additionalInfo={null}
+                >
+                  <article>
+                    <h4>
+                      <FormattedMessage
+                        description="choosing usb key - heading"
+                        defaultMessage="Choosing a Security Key"
+                      />
+                    </h4>
+                    <p>
+                      <FormattedMessage
+                        description="choosing usb key - paragraph"
+                        defaultMessage={`Not all security keys meet the necessary specifications to be used as a security key for eduID.`}
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        description="choosing usb key - list definition"
+                        defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
+                      />
+                    </p>
+
+                    <ul className="bullets">
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 1"
+                          defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
+                          values={{
+                            Fido: (
+                              <a className="text-link" href="https://fidoalliance.org/" target="_blank">
+                                fidoalliance.org
+                              </a>
+                            ),
+                          }}
+                        />
+                      </li>
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 2"
+                          defaultMessage={`Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used.`}
+                        />
+                      </li>
+                    </ul>
+                    <section>
+                      <h5>
+                        <FormattedMessage
+                          description="usb key technical section - heading"
+                          defaultMessage="Further technical information: "
+                        />
+                      </h5>
+                      <ul className="bullets">
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 1"
+                            defaultMessage="The key must perform an attestation and exist in the metadata,"
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 2"
+                            defaultMessage="it must not contain any other status in the metadata than a few variants of: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 2 code"
+                              defaultMessage='"fido certified"'
+                            />
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 3"
+                            defaultMessage="it must support any of the following user verification methods: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 3 code"
+                              defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
+                  "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
+                            />
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 4"
+                            defaultMessage="and must not support any other key protection than: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 4 code"
+                              defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
+                            />
+                          </code>
+                          .
+                        </li>
+                      </ul>
+                    </section>
+                  </article>
+                </AccordionItemTemplate>
+              </Accordion>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
@@ -432,10 +542,7 @@ export function Help(): JSX.Element {
                   </strong>
                   <FormattedMessage
                     description="verification methods - list definition"
-                    defaultMessage="{emphasis}, verifying it can be done via:"
-                    values={{
-                      emphasis: <strong>If you have a Swedish personal identity number</strong>,
-                    }}
+                    defaultMessage=", verifying it can be done via:"
                   />
                 </p>
                 <ul className="bullets">
@@ -449,12 +556,9 @@ export function Help(): JSX.Element {
                     &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 1"
-                      defaultMessage={`{post} the user receives a letter with a code sent to their home address as 
+                      defaultMessage={` the user receives a letter with a code sent to their home address as 
                       registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
                       verification on eduid.se,`}
-                      values={{
-                        post: <em>post:</em>,
-                      }}
                     />
                   </li>
                   <li>
@@ -467,12 +571,9 @@ export function Help(): JSX.Element {
                     &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 2"
-                      defaultMessage={`{mobile} the user receives a message sent to the phone number that is registered 
+                      defaultMessage={` the user receives a message sent to the phone number that is registered 
                       in the Swedish telephone register, and instructions on how to complete the verification on 
                       eduid.se,`}
-                      values={{
-                        mobile: <em>mobile:</em>,
-                      }}
                     />
                   </li>
                   <li>
@@ -485,7 +586,7 @@ export function Help(): JSX.Element {
                     &nbsp;
                     <FormattedMessage
                       description="verification methods - list item 3"
-                      defaultMessage={`{freja} the user will be directed to the Freja eID website to
+                      defaultMessage={` the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
                       complete verification of your eduID. Read more about Freja+ below.`}
                     />
@@ -508,12 +609,17 @@ export function Help(): JSX.Element {
               </section>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="method eidas - heading"
+                      defaultMessage={`If you are an EU citizen and without a Swedish personal identity number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="method eidas - paragraph"
-                    defaultMessage={`{strong}, you could use 
+                    defaultMessage={`, you could use 
                     {emphasis} to verify your identity. Read more about eIDAS below.`}
                     values={{
-                      strong: <strong>If you are an EU citizen and without a Swedish personal identity number</strong>,
                       emphasis: <em>eIDAS</em>,
                     }}
                   />
@@ -521,9 +627,15 @@ export function Help(): JSX.Element {
               </section>
               <section>
                 <p>
+                  <strong>
+                    <FormattedMessage
+                      description="method svipe - heading"
+                      defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
+                    />
+                  </strong>
                   <FormattedMessage
                     description="method svipe - paragraph"
-                    defaultMessage={`{strong}, you could use {emphasis} to verify your identity using your passport. 
+                    defaultMessage={`, you could use {emphasis} to verify your identity using your passport. 
                     Read more about Svipe iD below.`}
                     values={{
                       emphasis: <em>Svipe ID</em>,
@@ -583,7 +695,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use freja - list item 3"
-                        defaultMessage={`log in to eduID and choose the 'Digital ID-card' option in the Identity area 
+                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area 
                         and follow the instructions.`}
                       />
                     </li>
@@ -621,6 +733,57 @@ export function Help(): JSX.Element {
                     ID and personal identity number or coordination number.`}
                     />
                   </p>
+                </article>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-bankid"
+                title={<FormattedMessage description="about bankid - handle" defaultMessage="About BankID" />}
+                additionalInfo={null}
+              >
+                <article>
+                  <h4>
+                    <FormattedMessage description="what is bankid - heading" defaultMessage="What is BankID?" />
+                  </h4>
+                  <p>
+                    <FormattedMessage
+                      description="what is bankid - paragraph"
+                      defaultMessage={`BankID is a widely used electronic verification system, available to 
+                      holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden.`}
+                    />
+                  </p>
+                  <p>
+                    <FormattedMessage
+                      description="use bankid - list definition"
+                      defaultMessage="How to use BankID with eduID:"
+                    />
+                  </p>
+
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="use bankid - list item 1"
+                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
+                        values={{
+                          bankid: (
+                            <a
+                              className="text-link"
+                              href="https://www.bankid.com/en/privat/skaffa-bankid"
+                              target="_blank"
+                            >
+                              the BankID website
+                            </a>
+                          ),
+                        }}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="use bankid - list item 2"
+                        defaultMessage={`log in to eduID and choose the 'Electronic BankID' option in the Identity area 
+                        and follow the instructions.`}
+                      />
+                    </li>
+                  </ul>
                 </article>
               </AccordionItemTemplate>
               <AccordionItemTemplate
@@ -871,7 +1034,7 @@ export function Help(): JSX.Element {
                         href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid"
                         target="_blank"
                       >
-                        Privacy policy
+                        <FormattedMessage description="privacy policy - link" defaultMessage="Privacy policy" />
                       </a>
                     ),
                   }}
@@ -950,18 +1113,21 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what is accessibility report - paragraph 1"
-                  defaultMessage={`Read the full {accessability} regarding the eduID site at Sunets website, where you 
+                  defaultMessage={`Read the full {accessibility} regarding the eduID site at Sunets website, where you 
                   also find instructions on how to report accessibility issues. The report addresses how eduID adheres 
                   to the Swedish law governing accessibility to digital public services as well as currently known 
                   issues of the site (in Swedish).`}
                   values={{
-                    accessability: (
+                    accessibility: (
                       <a
                         className="text-link"
                         href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se"
                         target="_blank"
                       >
-                        Accessibility report
+                        <FormattedMessage
+                          description="accessibility report - link"
+                          defaultMessage="Accessibility report"
+                        />
                       </a>
                     ),
                   }}
@@ -1051,12 +1217,17 @@ export function Help(): JSX.Element {
                 />
               </p>
               <p>
+                <strong>
+                  <FormattedMessage
+                    description="how to contact support email - strong"
+                    defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
+                  />
+                </strong>
                 <FormattedMessage
                   description="how to contact support - paragraph 3"
-                  defaultMessage="{strong}, but for simple
+                  defaultMessage=", but for simple
               matters you can also reach us on phone number {phone}."
                   values={{
-                    strong: <strong>In order to get best possible support, we recommend that you send e-mail</strong>,
                     phone: (
                       <a className="text-link" href="tel:+46455-385200">
                         0455-385200
@@ -1082,6 +1253,14 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
+              {/* <p>
+                <strong>
+                  <FormattedMessage
+                    description="opening hours - differing paragraph"
+                    defaultMessage="Note: During December 25th - January 5th (weeks 52-1) the regular phone support hours are 09:00-12:00, 13:00-14:30."
+                  />
+                </strong>
+              </p> */}
             </article>
           </AccordionItemTemplate>
         </Accordion>
