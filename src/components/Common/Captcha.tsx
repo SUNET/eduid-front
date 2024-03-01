@@ -1,6 +1,6 @@
 import { CaptchaProps } from "components/Signup/SignupCaptcha";
 import { useAppSelector } from "eduid-hooks";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Recaptcha from "react-recaptcha";
 import ScriptLoader from "react-script-loader-hoc";
@@ -21,24 +21,22 @@ function LoadingCaptcha(props: LoadingCaptchaProps) {
   }
 
   return (
-    <React.Fragment>
-      <div id="captcha-container">
-        <div id="captcha">
-          <Recaptcha
-            sitekey={recaptcha_key}
-            render="explicit"
-            verifyCallback={props.handleCaptchaCompleted}
-            onloadCallback={loadedCaptcha}
-          />
-        </div>
-        <div id="captcha-buttons" className="buttons">
-          <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
-            <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
-          </EduIDButton>
-          <DevSubmitCaptchaButton {...props} />
-        </div>
+    <div id="captcha-container">
+      <div id="captcha">
+        <Recaptcha
+          sitekey={recaptcha_key}
+          render="explicit"
+          verifyCallback={props.handleCaptchaCompleted}
+          onloadCallback={loadedCaptcha}
+        />
       </div>
-    </React.Fragment>
+      <div id="captcha-buttons" className="buttons">
+        <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
+          <FormattedMessage defaultMessage="Cancel" description="Signup cancel button" />
+        </EduIDButton>
+        <DevSubmitCaptchaButton {...props} />
+      </div>
+    </div>
   );
 }
 
@@ -78,10 +76,8 @@ export function Captcha(props: CaptchaProps) {
   }
 
   return (
-    <React.Fragment>
-      <Splash showChildren={scriptLoaded}>
-        <WrappedCaptcha {...props} scriptLoadedCallback={scriptLoadedCallback} />
-      </Splash>
-    </React.Fragment>
+    <Splash showChildren={scriptLoaded}>
+      <WrappedCaptcha {...props} scriptLoadedCallback={scriptLoadedCallback} />
+    </Splash>
   );
 }
