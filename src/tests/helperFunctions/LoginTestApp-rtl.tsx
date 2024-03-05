@@ -14,10 +14,10 @@ export const loginTestState: LoginRootState = {
     ...configInitialState,
     next_url: "http://localhost/next",
     mfa_auth_idp: "https://swedenconnect.idp/",
-    eidas_url: "http://eidas.docker",
-    reset_password_url: "/reset-password-url/",
+    eidas_service_url: "http://eidas.docker",
+    reset_password_service_url: "/reset-password-url/",
     csrf_token: "csrf-token",
-    login_base_url: "/",
+    login_service_url: "/",
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,

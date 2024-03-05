@@ -8,12 +8,12 @@ interface CommonConfig {
 
 interface CommonJsConfig {
   csrf_token?: string;
-  dashboard_url?: string;
+  dashboard_link?: string;
   debug: boolean;
   eduid_site_url?: string;
   environment?: "dev" | "staging" | "production";
-  reset_password_url?: string;
-  signup_url?: string;
+  reset_password_service_url?: string;
+  signup_link?: string;
 }
 
 // typing in the apis become too complicated if these are not shared in all configs,
@@ -21,18 +21,18 @@ interface CommonJsConfig {
 // can all be optional
 interface APIEndpoints {
   bankid_service_url?: string;
-  eidas_url?: string;
-  emails_url?: string;
-  ladok_url?: string;
-  letter_proofing_url?: string;
-  login_base_url?: string;
-  lookup_mobile_proofing_url?: string;
-  orcid_url?: string;
-  personal_data_url?: string;
-  phone_url?: string;
-  security_url?: string;
-  authn_url?: string;
-  svipe_url?: string;
+  eidas_service_url?: string;
+  emails_service_url?: string;
+  ladok_service_url?: string;
+  letter_proofing_service_url?: string;
+  login_service_url?: string;
+  lookup_mobile_proofing_service_url?: string;
+  orcid_service_url?: string;
+  personal_data_service_url?: string;
+  phone_service_url?: string;
+  security_service_url?: string;
+  authn_service_url?: string;
+  svipe_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this

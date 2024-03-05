@@ -12,7 +12,7 @@ test("shows new user data", async () => {
     payload: {
       status: "verified",
       password: password,
-      dashboard_url: "https://dashboard.example.org/",
+      dashboard_link: "https://dashboard.example.org/",
       email: email,
     },
   };

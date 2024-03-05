@@ -109,11 +109,11 @@ function makeLadokRequest<T>(
     try {
       const state = thunkAPI.getState();
 
-      if (!state.config.ladok_url) {
-        throw new Error("Missing configuration ladok_url");
+      if (!state.config.ladok_service_url) {
+        throw new Error("Missing configuration ladok_service_url");
       }
 
-      const response = await makeRequest<T>(thunkAPI, state.config.ladok_url, endpoint, body, data);
+      const response = await makeRequest<T>(thunkAPI, state.config.ladok_service_url, endpoint, body, data);
 
       if (response.error) {
         // Dispatch fail responses so that notification middleware will show them to the user.

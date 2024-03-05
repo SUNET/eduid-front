@@ -22,7 +22,7 @@ function ChangePassword() {
 
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {
-      // call fetchSuggestedPassword once state.config.security_url is initialised
+      // call fetchSuggestedPassword once state.config.security_service_url is initialised
       dispatch(fetchSuggestedPassword());
     }
   }, [suggested_password, is_app_loaded]);
