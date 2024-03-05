@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
-import { KeyList } from "components/Common/KeyList";
+import { SecurityKeyList } from "components/Common/SecurityKeyList";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import React, { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -171,7 +171,7 @@ export default function Start(): JSX.Element {
       </article>
       {progress}
       <Recommendations />
-      <KeyList />
+      <SecurityKeyList />
     </React.Fragment>
   );
 }

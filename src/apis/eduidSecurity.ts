@@ -253,6 +253,23 @@ export const removeNin = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+/**
+ * @public
+ * @function fetchApprovedSecurityKeys
+ * @desc Redux async thunk to fetch approved security keys.
+ */
+export const fetchApprovedSecurityKeys = createAsyncThunk<
+  any, // return type
+  undefined, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("security/approvedSecurityKeys", async (nin, thunkAPI) => {
+  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "webauthn/approved-security-keys")
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
 function makeSecurityRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,

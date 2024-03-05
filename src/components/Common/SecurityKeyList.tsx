@@ -1,6 +1,15 @@
+import { fetchApprovedSecurityKeys } from "apis/eduidSecurity";
+import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function KeyList(): JSX.Element {
+export function SecurityKeyList(): JSX.Element {
+  const dispatch = useDashboardAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchApprovedSecurityKeys());
+  });
+  console.log("ssshdd");
   return (
     <article>
       <h2>
