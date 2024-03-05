@@ -23,7 +23,7 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 export function Security(): React.ReactElement | null {
   const dispatch = useDashboardAppDispatch();
   const credentials = useDashboardAppSelector((state) => state.security.credentials);
-  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -243,8 +243,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         }
       } else if (response?.payload.payload.message === "bankid.must_authenticate") {
         dispatch(clearNotifications());
-        const nextURL = config.dashboard_url + "settings/advanced-settings";
-        const url = config.authn_url + "reauthn?next=" + encodeURIComponent(nextURL);
+        const nextURL = config.dashboard_link + "settings/advanced-settings";
+        const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
         window.location.assign(url);
       }
     })();

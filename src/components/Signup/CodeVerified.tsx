@@ -21,7 +21,7 @@ interface CodeParams {
 
 export default function CodeVerified() {
   // TODO: get dashboard URL from config instead of from backend response?
-  // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  // const dashboard_link = useSignupAppSelector((state) => state.config.dashboard_link);
   const dispatch = useSignupAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as CodeParams;
