@@ -17,6 +17,8 @@ build-production:
 	npm run build-production
 
 build: node_modules build-staging build-production
+	git rev-parse --abbrev-ref HEAD > build/revision.txt
+	git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt
 
 just_test:
 	npm run-script test

@@ -95,9 +95,17 @@
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
   },
+  "0QJd38": {
+    "developer_comment": "usb key technical section - list item 2 code",
+    "string": "\"fido certified\""
+  },
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
+  },
+  "0S7EtW": {
+    "developer_comment": "not found paragraph",
+    "string": "We can't find what you are looking for. This may be due to a technical error or a typo. Please try again or use the link to move forward."
   },
   "0aGYAe": {
     "developer_comment": "without extra security description",
@@ -110,6 +118,10 @@
   "0jJrec": {
     "developer_comment": "verify identity vetting explanation verify phone",
     "string": "Confirm your phone number in {linkToSettings}"
+  },
+  "0u1oEd": {
+    "developer_comment": "choosing usb key - paragraph",
+    "string": "Not all security keys meet the necessary specifications to be used as a security key for eduID."
   },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
@@ -147,6 +159,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "1tt2b7": {
+    "developer_comment": "what if verification for freja fails - paragraph",
+    "string": "Reinstall the app, redo the registration and make sure that you have entered the correct expiration date as well as the correct reference number of the chosen form of ID and personal identity number or coordination number."
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
@@ -174,6 +190,10 @@
   "2hrJd2": {
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
+  },
+  "2i/BS7": {
+    "developer_comment": "use freja - list item 3",
+    "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
   },
   "2n5qg/": {
     "developer_comment": "Dashboard nav tab name",
@@ -243,6 +263,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
+  "41atQw": {
+    "developer_comment": "eidas vetting button freja",
+    "string": "with a Freja+"
+  },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
     "string": "install the {Freja} on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
@@ -301,13 +325,17 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
+  "615OzR": {
+    "developer_comment": "security second factor",
+    "string": "Add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
+  },
   "6P7rNZ": {
     "developer_comment": "Dashboard AccountId",
     "string": "EPPN - Unique ID"
   },
-  "6ZbDjw": {
-    "developer_comment": "Signup, code expired",
-    "string": "To get a new code, click the link below. You will be redirected to the register page."
+  "6RftZU": {
+    "developer_comment": "choosing usb key - heading",
+    "string": "Choosing a Security Key"
   },
   "6k2J31": {
     "developer_comment": "Login MFA",
@@ -325,6 +353,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "7B1RyH": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "For you able to use BankID"
+  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
@@ -332,10 +364,6 @@
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
     "string": "How can I login with other devices?"
-  },
-  "7h5tj9": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to eduid"
   },
   "7rcGK1": {
     "developer_comment": "column value label",
@@ -356,6 +384,10 @@
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
+  },
+  "8K8fhV": {
+    "developer_comment": "usb key technical section - heading",
+    "string": "Further technical information:"
   },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
@@ -385,6 +417,10 @@
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
   },
+  "9LmNwQ": {
+    "developer_comment": "usb key technical section - list item 1",
+    "string": "The key must perform an attestation and exist in the metadata,"
+  },
   "9OkbaG": {
     "developer_comment": "create eduid - list item 4",
     "string": "verify your email address by entering the code emailed to you,"
@@ -393,13 +429,17 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
+  "9WxCNa": {
+    "developer_comment": "security second factor help info",
+    "string": "You can read more about security keys in the Help section: {FAQSecurityKeys}."
+  },
+  "9djX63": {
+    "developer_comment": "what is bankid - heading",
+    "string": "What is BankID?"
+  },
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
-  },
-  "9ftFZW": {
-    "developer_comment": "swedish nin mobile - heading",
-    "string": "mobile:"
   },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
@@ -441,6 +481,10 @@
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
   },
+  "AsYVb4": {
+    "developer_comment": "use bankid - list item 1",
+    "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -456,10 +500,6 @@
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
-  },
-  "C+b7F7": {
-    "developer_comment": "swedish nin - heading",
-    "string": "If you have a Swedish personal identity number"
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -480,6 +520,10 @@
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Suggest a password for me"
+  },
+  "Cnpo0l": {
+    "developer_comment": "profile username display title",
+    "string": "Username"
   },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
@@ -505,6 +549,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter is valid to"
   },
+  "E8UHSN": {
+    "developer_comment": "how more secure description 2",
+    "string": "Examples can be a physical device in your possession such as a USB security token, or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to these techniques as a 'Security key'."
+  },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
@@ -516,10 +564,6 @@
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "How can I enhance my eduID?"
-  },
-  "EHZ5WY": {
-    "developer_comment": "how more secure description 2",
-    "string": "Examples can be a physical device in your possession such as a USB token, or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to these techniques as a 'Security key'."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -591,9 +635,6 @@
     "developer_comment": "device info",
     "string": "IP address"
   },
-  "G5uigS": {
-    "string": "Freja eID+"
-  },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Choose your principal identification method"
@@ -650,6 +691,10 @@
     "developer_comment": "Terms of use (lead text)",
     "string": "To create your eduID you need to accept the eduID terms of use."
   },
+  "HSZS8/": {
+    "developer_comment": "security key status",
+    "string": "Verify"
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -701,6 +746,10 @@
   "J3IlyU": {
     "developer_comment": "resend code",
     "string": "Send a new code"
+  },
+  "J5e+d2": {
+    "developer_comment": "svipe-na",
+    "string": "This option is currently unavailable."
   },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
@@ -801,13 +850,13 @@
     "developer_comment": "which login email - paragraph",
     "string": "You can log in with all the email addresses you have entered and confirmed in eduID."
   },
+  "M63gc4": {
+    "developer_comment": "usb key technical section - list item 2",
+    "string": "it must not contain any other status in the metadata than a few variants of:"
+  },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and is one of the many ways eduID is always striving to improve."
-  },
-  "MeVXBf": {
-    "developer_comment": "what is freja - paragraph",
-    "string": "Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number."
   },
   "MnbIkV": {
     "developer_comment": "no error information message",
@@ -816,6 +865,10 @@
   "MuypUP": {
     "developer_comment": "generic error page",
     "string": "The issue has been reported to the team."
+  },
+  "Mx5Yyp": {
+    "developer_comment": "verification methods - list item 3",
+    "string": "the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can complete verification of your eduID. Read more about BankID below."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -893,6 +946,10 @@
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "P2JYwK": {
+    "developer_comment": "what is freja - paragraph",
+    "string": "Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number or coordination number."
+  },
   "P7d2zq": {
     "developer_comment": "button save",
     "string": "save"
@@ -901,13 +958,13 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
+  "PL+81z": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to eduid to login"
+  },
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
-  },
-  "PLps10": {
-    "developer_comment": "Footer copyright",
-    "string": "2013-2023"
   },
   "PQoWSY": {
     "developer_comment": "Short code form",
@@ -952,10 +1009,6 @@
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Never used"
-  },
-  "QOxuYY": {
-    "developer_comment": "use freja - list item 3",
-    "string": "log in to eduID and choose the 'Digital ID-card' option in the Identity area and follow the instructions."
   },
   "Qa3Xhm": {
     "developer_comment": "orcid id",
@@ -1046,10 +1099,6 @@
     "developer_comment": "SAML login finished",
     "string": "This login has already been processed."
   },
-  "T80C1A": {
-    "developer_comment": "eidas vetting button freja",
-    "string": "with a digital ID-card"
-  },
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repeat new password"
@@ -1057,6 +1106,10 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
+  },
+  "TZ7dg4": {
+    "developer_comment": "bankID ready",
+    "string": "Use my BankID"
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
@@ -1081,6 +1134,10 @@
     "developer_comment": "need visit atg agent for freja - paragraph",
     "string": "Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your app and follow the instructions in their terminal. You will be informed when you have passed the ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated."
   },
+  "U3Ez+R": {
+    "developer_comment": "usb key technical section - list item 3",
+    "string": "it must support any of the following user verification methods:"
+  },
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
   },
@@ -1096,10 +1153,6 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
   },
-  "UUuKzu": {
-    "developer_comment": "security key status",
-    "string": "Status"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
@@ -1111,6 +1164,10 @@
   "Uq6Cvr": {
     "developer_comment": "opening hours - list definition",
     "string": "Opening hours:"
+  },
+  "V2oqjw": {
+    "developer_comment": "not found link",
+    "string": "Go to eduID"
   },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
@@ -1144,9 +1201,9 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
-  "VwFaJg": {
-    "developer_comment": "verify identity",
-    "string": "If you have a {Svipe_ID} you can connect it to your eduID."
+  "VtD50r": {
+    "developer_comment": "not found heading",
+    "string": "Page not found"
   },
   "VymaGb": {
     "developer_comment": "Resend e-mail button",
@@ -1160,13 +1217,13 @@
     "developer_comment": "Dashboard change password link description text",
     "string": "Click the link to change your eduID password."
   },
+  "WR0ZnH": {
+    "developer_comment": "use bankid - list item 2",
+    "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
+  },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
-  },
-  "WlcZVg": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. A password has been generated for you. Save the password. Once you've logged in you can change your password."
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1188,6 +1245,10 @@
     "developer_comment": "accordion item svipe title",
     "string": "All other countries"
   },
+  "Xi2uNT": {
+    "developer_comment": "accordion item swedish title",
+    "string": "Swedish personal ID or coordination number"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -1196,9 +1257,17 @@
     "developer_comment": "accordion item Confirm phone number",
     "string": "Confirm your phone number"
   },
+  "Xx5Akw": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2024"
+  },
   "XyA1T0": {
     "developer_comment": "Verification letter expired, status",
     "string": "A verification letter has been expired"
+  },
+  "XzQO4I": {
+    "developer_comment": "choosing usb key - list definition",
+    "string": "Check with the manufacturer or retailer that the product meets the following requirements:"
   },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
@@ -1212,10 +1281,6 @@
     "developer_comment": "go to eudID link text",
     "string": "Go to my eduid"
   },
-  "YJQhMp": {
-    "developer_comment": "security second factor",
-    "string": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
-  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
@@ -1227,6 +1292,10 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
+  },
+  "YyZ4yf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email, check your junk email before resending it after five minutes, according to the timer next to the Resend button."
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1296,6 +1365,10 @@
     "developer_comment": "Dashboard nav tab name",
     "string": "Advanced settings"
   },
+  "aRUmm4": {
+    "developer_comment": "what is bankid - paragraph",
+    "string": "BankID is a widely used electronic verification system, available to holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden."
+  },
   "actions.action-completed": {
     "string": "Success"
   },
@@ -1311,9 +1384,9 @@
     "developer_comment": "verify identity with swedish ID description",
     "string": "Verify your eduID with a Swedish national ID number."
   },
-  "b/o0DY": {
-    "developer_comment": "swedish nin freja - heading",
-    "string": "Freja+ (digital ID-card):"
+  "aqzfAc": {
+    "developer_comment": "use bankid - list definition",
+    "string": "How to use BankID with eduID:"
   },
   "bCIMPQ": {
     "developer_comment": "security key title",
@@ -1338,6 +1411,46 @@
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
     "string": "apply to and accept your place at a university,"
+  },
+  "bYDxCn": {
+    "developer_comment": "usb key technical section - list item 4 code",
+    "string": "\"remote_handle\", \"hardware\", \"secure_element\", \"tee\""
+  },
+  "bankid.attribute_missing": {
+    "string": "BankID attribute is missing"
+  },
+  "bankid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "bankid.credential_verify_success": {
+    "string": "Success"
+  },
+  "bankid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "bankid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "bankid.identity_verify_success": {
+    "string": "Success"
+  },
+  "bankid.method_not_available": {
+    "string": "BankID method is not available"
+  },
+  "bankid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "bankid.must_authenticate": {
+    "string": "BankId must authenticate"
+  },
+  "bankid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "bankid.not_found": {
+    "string": "BankID not found"
+  },
+  "bankid.token_not_found": {
+    "string": "U2F token not found"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
@@ -1371,6 +1484,9 @@
     "developer_comment": "orcid remove",
     "string": "remove"
   },
+  "chpass.different-repeat": {
+    "string": "The new password and repeat password are different."
+  },
   "chpass.low-password-entropy": {
     "string": "Please provide a stronger password"
   },
@@ -1386,16 +1502,15 @@
   "code.unknown-code": {
     "string": "Unknown code"
   },
+  "common.locked_identity_not_matching": {
+    "string": "Identity not matching"
+  },
   "confirmation.code_invalid_format": {
     "developer_comment": "error text for invalid code",
     "string": "Invalid code"
   },
   "cred.credential_type": {
     "string": "Credential type."
-  },
-  "cs88WE": {
-    "developer_comment": "accordion item swedish title",
-    "string": "Swedish personal ID number"
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
@@ -1418,6 +1533,10 @@
   },
   "dKcigP": {
     "string": "The code sent to {email} has expired."
+  },
+  "dQm5ii": {
+    "developer_comment": "usb key technical section - list item 4",
+    "string": "and must not support any other key protection than:"
   },
   "dcHeKQ": {
     "developer_comment": "about eduid - info",
@@ -1574,6 +1693,10 @@
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
+  "evIsxX": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
+  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
@@ -1654,6 +1777,10 @@
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Choose a suitable method to verify that you have access to the added id number."
   },
+  "gyVTaa": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "For you able to create a Freja+ by using the app or visiting one of the authorised agents"
+  },
   "hB1XT2": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from"
@@ -1702,9 +1829,17 @@
     "developer_comment": "Use other device 2",
     "string": "Request denied."
   },
+  "hq3YDD": {
+    "developer_comment": "how add security key - paragraph 1",
+    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions."
+  },
   "hs3tJz": {
     "developer_comment": "Login MFA",
     "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
+  },
+  "i3E2/S": {
+    "developer_comment": "about usb key - handle",
+    "string": "About Security Keys"
   },
   "i65t9c": {
     "developer_comment": "delete.modal_info",
@@ -1734,9 +1869,16 @@
     "developer_comment": "accessibility report - link",
     "string": "Accessibility report"
   },
+  "invalid username": {
+    "string": "Invalid username"
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
+  },
+  "iyw+WR": {
+    "developer_comment": "usb key technical section - list item 3 code",
+    "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
@@ -1754,9 +1896,17 @@
     "developer_comment": "use freja - list definition",
     "string": "How to use Freja+ with eduID:"
   },
+  "j9AXsq": {
+    "developer_comment": "bankID proofing help text",
+    "string": "To use this option you will need to first create a digital ID-card in the {bankID_link} app."
+  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
+  },
+  "jQvHTz": {
+    "developer_comment": "usb key - list item 2",
+    "string": "Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used."
   },
   "jYWXMn": {
     "developer_comment": "enter code",
@@ -1773,10 +1923,6 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
-  },
-  "kFNEXu": {
-    "developer_comment": "swedish nin post - heading",
-    "string": "post:"
   },
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
@@ -1824,6 +1970,10 @@
     "developer_comment": "SAML login finished",
     "string": "Retry"
   },
+  "lXwaZ5": {
+    "developer_comment": "security verify",
+    "string": "Freja+"
+  },
   "lZy8ZA": {
     "developer_comment": "verification status sub text",
     "string": "Please see the recommended actions below."
@@ -1869,9 +2019,9 @@
   "letter.wrong-code": {
     "string": "Incorrect code"
   },
-  "lic2YR": {
-    "developer_comment": "what if verification for freja fails - paragraph",
-    "string": "Reinstall the app, redo the registration and make sure that you have entered the correct expiration date as well as written down the correct reference number of the chosen form of ID and personal identity number (personnummer)."
+  "ljDyEx": {
+    "developer_comment": "Signup, code expired",
+    "string": "To receive a new code, click the link below. You will be redirected to the register page."
   },
   "login.assurance_failure": {
     "string": "An error occurred. Please try again later."
@@ -1888,11 +2038,17 @@
   "login.general_failure": {
     "string": "An error occurred. Please try again later."
   },
+  "login.identity_proofing_method_not_allowed": {
+    "string": "This identity proofing method is not allowed. Please choose a valid proofing method."
+  },
   "login.mfa.h2-heading": {
     "string": "Log in: Extra level of security"
   },
   "login.mfa.paragraph": {
     "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+  },
+  "login.mfa_proofing_method_not_allowed": {
+    "string": "This multi-factor authentication (MFA) method is not allowed. Please choose a valid authentication method."
   },
   "login.no_sso_session": {
     "string": "Session not found. Please try again."
@@ -1985,6 +2141,14 @@
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS is a federation of EU countries providing electronic identification to allow access to public authority systems for EU citizens, using their country's electronic ID."
   },
+  "nCc6tZ": {
+    "developer_comment": "BankID vetting button",
+    "string": "with a BankID"
+  },
+  "nR0u/W": {
+    "developer_comment": "usb key - list item 1",
+    "string": "Certified FIDO 2.0, you can read more at {Fido}."
+  },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
     "string": "You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short, the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it."
@@ -2053,9 +2217,16 @@
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
   },
+  "o4XlTZ": {
+    "developer_comment": "swedish nin bankid - heading",
+    "string": "BankID (electronic identification system) - for Swedish personal identity number holders:"
+  },
   "o4jkq9": {
     "developer_comment": "Help",
     "string": "Help"
+  },
+  "oAK8WM": {
+    "string": "Use my {bankID}"
   },
   "oEFGdi": {
     "developer_comment": "use svipe - list item 1",
@@ -2072,6 +2243,9 @@
   "oiMtbK": {
     "developer_comment": "Terms of use (heading)",
     "string": "Terms of use"
+  },
+  "ojB17W": {
+    "string": "Swedish eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2099,13 +2273,17 @@
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
-  "p8IPLU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you didn’t receive the email, check your junk email, or resend the email."
+  "owAbvV": {
+    "developer_comment": "security verify",
+    "string": "BankID"
   },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
+  },
+  "pIstaO": {
+    "developer_comment": "verify identity",
+    "string": "The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
   },
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
@@ -2211,6 +2389,10 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Phone number"
   },
+  "placeholder.username": {
+    "developer_comment": "placeholder text for user name input",
+    "string": "email or username"
+  },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
   },
@@ -2246,10 +2428,6 @@
   "q3DlxO": {
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
-  },
-  "qGDW86": {
-    "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2364,9 +2542,9 @@
     "developer_comment": "extra security description",
     "string": "A password reset using an extra security option will keep your account confirmed."
   },
-  "sVb591": {
-    "developer_comment": "verify identity",
-    "string": "The button below will take you to an external identification site, where you by identifying yourself with Svipe ID will verify your identity towards eduID."
+  "sbCA3x": {
+    "developer_comment": "swedish nin - heading",
+    "string": "If you have a Swedish personal identity number or coordination number"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
@@ -2415,6 +2593,10 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
+  "shCOk2": {
+    "developer_comment": "swedish nin mobile - heading",
+    "string": "mobile - for Swedish personal identity number holders:"
+  },
   "signup.already-verified": {
     "string": "You have already verified your account."
   },
@@ -2434,7 +2616,7 @@
     "string": "No credential added."
   },
   "signup.email-address-used": {
-    "string": "The email address is already in use."
+    "string": "The email address is already registered."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Try again later."
@@ -2464,7 +2646,7 @@
     "string": "There was a problem verifying that you are a human. Please try again"
   },
   "signup.registering-address-used": {
-    "string": "The email address you entered is already in use."
+    "string": "The email address you entered is already registered."
   },
   "signup.registering-new": {
     "string": "Email address successfully registered"
@@ -2545,9 +2727,17 @@
     "developer_comment": "use svipe - list item 2",
     "string": "login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
   },
+  "tbAqMH": {
+    "developer_comment": "about bankid - handle",
+    "string": "About BankID"
+  },
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Use security key"
+  },
+  "thUSiK": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. A password has been generated for you. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
@@ -2592,10 +2782,6 @@
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
-  "usrhfV": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "For you able to create a Freja eID+ by visiting one of the authorised agents"
-  },
   "uzoZmv": {
     "developer_comment": "Login front page",
     "string": "Log in"
@@ -2611,6 +2797,10 @@
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
+  },
+  "vQ4UOq": {
+    "developer_comment": "swedish nin post - heading",
+    "string": "post - for Swedish personal identity number holders:"
   },
   "vQpAQz": {
     "developer_comment": "verification status sub text",
@@ -2688,10 +2878,6 @@
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
   },
-  "xvMcTx": {
-    "developer_comment": "security verify",
-    "string": "Verify"
-  },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "What are the methods of verification for eduID?"
@@ -2724,9 +2910,13 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all usage of user accounts follow the laws and by-laws of Sweden,"
   },
-  "z2ygf8": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Settings area of eduID and follow the instructions."
+  "ysi2d4": {
+    "developer_comment": "privacy policy - list item 9",
+    "string": "only uses necessary functional cookies."
+  },
+  "z2oWSP": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
   },
   "zUxMDK": {
     "developer_comment": "Footer help",

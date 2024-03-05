@@ -55,7 +55,7 @@ const Footer = (): JSX.Element => {
         </a>
         <span>
           &copy;
-          <FormattedMessage defaultMessage="2013-2023" description="Footer copyright" />
+          <FormattedMessage defaultMessage="2013-2024" description="Footer copyright" />
         </span>
       </div>
 

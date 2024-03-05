@@ -38,6 +38,10 @@ table {
           padding: 0;
         }
 
+        .btn-link {
+          margin-right: 20px;
+        }
+
         & span {
           font-family: $akkurat;
           letter-spacing: 1px;
@@ -87,8 +91,11 @@ table {
         padding-right: 1rem;
       }
 
-      & td:last-child {
+      & td:last-child:not(.value-status) {
         text-align: center;
+      }
+      & td.value-status .btn-link {
+        height: 20px;
       }
     }
 
@@ -124,6 +131,14 @@ table {
 
     & tr.display-none {
       display: none;
+    }
+  }
+
+  td.value-status {
+    @media (max-width: 414px) {
+      button.btn.btn-link {
+        height: 30px;
+      }
     }
   }
 
@@ -170,7 +185,10 @@ table.table-form.passwords {
   }
 
   .security-name {
-    width: 36%;
+    width: 25%;
+    @media (max-width: $bp-sm) {
+      width: 50%;
+    }
   }
 
   .security-creation-date {

@@ -59,7 +59,7 @@ test("renders extra security screen as expected", async () => {
 
   expect(screen.getByRole("link", { name: /enter code/i })).toBeInTheDocument();
 
-  const frejaeIDButton = screen.getByRole("button", { name: /^use my Freja eID/i });
+  const frejaeIDButton = screen.getByRole("button", { name: "Freja+ Use my Freja eID" });
   expect(frejaeIDButton).toBeEnabled();
 
   fireEvent.click(securityKeyButton);

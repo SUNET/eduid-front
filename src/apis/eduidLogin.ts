@@ -328,6 +328,7 @@ export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?:
 export interface LoginAuthnOptions {
   display_name?: string;
   forced_username?: string;
+  // TODO: when backend is updated to swedish_eid, we should be able to rename this.
   freja_eidplus?: boolean;
   has_session?: boolean;
   other_device?: boolean;

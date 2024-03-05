@@ -3,10 +3,10 @@ import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { FrejaeID } from "./FrejaeID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { SecurityKey } from "./SecurityKey";
+import { SwedishEID } from "./SwedishEID";
 
 export function MultiFactorAuth(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -16,6 +16,7 @@ export function MultiFactorAuth(): JSX.Element {
   const ref = useAppSelector((state) => state.login.ref);
 
   const isLoaded = mfa?.state === "loaded";
+  //TODO: when backend is updated to swedish_eid, we should be able to rename this.
   const hasMfaOptions = authn_options.freja_eidplus || authn_options.webauthn;
 
   useEffect(() => {
@@ -53,7 +54,7 @@ export function MultiFactorAuth(): JSX.Element {
             </p>
             <div className="options">
               <SecurityKey />
-              <FrejaeID />
+              <SwedishEID />
             </div>
           </React.Fragment>
         ) : (

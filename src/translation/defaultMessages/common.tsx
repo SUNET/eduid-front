@@ -44,6 +44,9 @@ export const apiResponse = {
       defaultMessage={`You have recently been sent a code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
+  "common.locked_identity_not_matching": (
+    <FormattedMessage id="common.locked_identity_not_matching" defaultMessage={`Identity not matching`} />
+  ),
 };
 
 export const proofing = {
@@ -70,6 +73,8 @@ export const personalData = {
 export const validations = {
   // Validation error
   required: <FormattedMessage id="required" defaultMessage={`*Field cannot be empty`} />,
+
+  "invalid username": <FormattedMessage id="invalid username" defaultMessage={`Invalid username`} />,
 
   error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
 

@@ -12,10 +12,15 @@ export function LoginMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.app.is_loaded);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const loginRef = useAppSelector((state) => state.login.ref);
+  const error = useAppSelector((state) => state.notifications.error);
 
   return (
     <React.StrictMode>
-      <Header showRegister={!authn_options.has_session} showLogout={authn_options.has_session} loginRef={loginRef} />
+      <Header
+        showRegister={!authn_options.has_session}
+        showLogout={authn_options.has_session || Boolean(error)}
+        loginRef={loginRef}
+      />
       <main id="panel" className="panel">
         <Notifications />
         <ErrorBoundary FallbackComponent={GenericError}>

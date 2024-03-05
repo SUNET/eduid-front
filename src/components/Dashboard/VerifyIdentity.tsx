@@ -11,6 +11,7 @@ import React, { Fragment, useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
@@ -20,6 +21,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import AddNin from "./AddNin";
+import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
@@ -271,7 +273,10 @@ function AccordionItemSwedish(): JSX.Element | null {
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
       title={
-        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish personal ID number" />
+        <FormattedMessage
+          description="accordion item swedish title"
+          defaultMessage="Swedish personal ID or coordination number"
+        />
       }
       additionalInfo={
         <FormattedMessage
@@ -298,16 +303,28 @@ function AccordionItemSwedish(): JSX.Element | null {
               defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
             />
           </p>
+
           <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
             <AccordionItemTemplate
-              icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
-              title={
-                <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
+              icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
+              title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
+              additionalInfo={
+                <FormattedMessage
+                  description="verify identity vetting BankID tagline"
+                  defaultMessage={`For you able to use BankID`}
+                />
               }
+              uuid="se-bankID"
+            >
+              <BankID />
+            </AccordionItemTemplate>
+            <AccordionItemTemplate
+              icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
+              title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
               additionalInfo={
                 <FormattedMessage
                   description="verify identity vetting freja tagline"
-                  defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+                  defaultMessage={`For you able to create a Freja+ by using the app or visiting one of the authorised agents`}
                 />
               }
               uuid="se-freja"
@@ -413,6 +430,7 @@ function AccordionItemWorld(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
+      disabled
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
       title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
       additionalInfo={
@@ -423,7 +441,7 @@ function AccordionItemWorld(): JSX.Element | null {
       }
       uuid="world"
     >
-      <p>
+      {/* <p>
         <FormattedMessage
           description="verify identity"
           defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
@@ -441,9 +459,12 @@ function AccordionItemWorld(): JSX.Element | null {
           description="verify identity"
           defaultMessage={`The button below will take you to an external identification site, where you by
           identifying yourself with Svipe ID will verify your identity towards eduID.`}
-        />
+        /> 
+      </p> */}
+      <p>
+        <FormattedMessage description="svipe-na" defaultMessage={`This option is currently unavailable.`} />
       </p>
-      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary" size="sm" disabled onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>

@@ -59,7 +59,7 @@ h4,
 h5 {
   font-family: $inter-light;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 0.5em;
 }
 
@@ -132,4 +132,9 @@ em {
 
 .verbatim {
   text-transform: none;
+}
+
+code {
+  font-family: monospace;
+  color: $txt-gray;
 }

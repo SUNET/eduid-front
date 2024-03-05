@@ -71,8 +71,8 @@ test("renders UsernamePw as expected", async () => {
   expect(screen.getByRole("heading")).toHaveTextContent(/^Log in/);
   const input = screen.getByRole("textbox");
   expect(input).toHaveFocus();
-  expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", "name@example.com");
+  expect(input).toHaveAccessibleName(/^Username/);
+  expect(input).toHaveProperty("placeholder", "email or username");
 });
 
 test("renders the login page title", () => {
