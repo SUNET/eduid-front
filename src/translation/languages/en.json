@@ -2429,6 +2429,10 @@
     "developer_comment": "settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
   },
+  "qC/BaD": {
+    "developer_comment": "Security keys list - heading",
+    "string": "Currently valid physical Security Keys"
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
@@ -2530,6 +2534,10 @@
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
   },
+  "ryPtkg": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "Next update"
+  },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
     "string": "Settings"
@@ -2619,7 +2627,7 @@
     "string": "The email address is already registered."
   },
   "signup.email-throttled": {
-    "string": "Too many attempts to create account have been made. Pleas try again later."
+    "string": "Too many attempts to create account have been made. Please try again later."
   },
   "signup.email-verification-expired": {
     "string": "Code expired. Please try again."
@@ -2631,7 +2639,7 @@
     "string": "The email verification has not been completed."
   },
   "signup.email-verification-to-many-tries": {
-    "string": "Too many invalid verification attempts. Please try again."
+    "string": "Too many invalid verification attempts. Please try again later."
   },
   "signup.invite-already-completed": {
     "string": "Invitation already completed."
@@ -2925,6 +2933,10 @@
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
     "string": "This may be because eduID is missing those attributes or that eduID won't release those attributes to the service you tried to access."
+  },
+  "zdVSFQ": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month"
   },
   "zeCbht": {
     "developer_comment": "start main title",
