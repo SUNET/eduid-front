@@ -2431,7 +2431,7 @@
   },
   "qC/BaD": {
     "developer_comment": "Security keys list - heading",
-    "string": "Currently valid physical Security Keys"
+    "string": "Valid physical Security Key oiptions"
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
