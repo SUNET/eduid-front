@@ -221,3 +221,52 @@ caption {
     display: none;
   }
 }
+
+table.keys {
+  table-layout: auto;
+  font-size: $txt-sm;
+  //font-family: $inter-light;
+  @extend code;
+
+  tr {
+    height: auto;
+
+    &:nth-child(even) {
+      background-color: $bg-gray;
+    }
+  }
+
+  th {
+    border-bottom: 2px dashed $border-gray;
+    padding: 0.75rem 0.5rem;
+
+    &:first-child {
+      width: 2rem;
+    }
+  }
+  th,
+  td {
+    &:first-child {
+      padding-left: 1rem;
+    }
+    &:last-child {
+      padding-right: 1rem;
+    }
+  }
+
+  td {
+    word-wrap: break-word;
+    line-height: 1.25;
+    padding: 0.5rem;
+  }
+}
+
+.key-update {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+
+  label {
+    display: inline-block;
+  }
+}

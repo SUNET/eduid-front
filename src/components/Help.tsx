@@ -1,11 +1,21 @@
-import React, { useEffect } from "react";
+import { fetchApprovedSecurityKeys } from "apis/eduidSecurity";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
 import ScrollToTopButton from "./ScrollToTopButton";
 
+interface ApprovedSecurityKeysTypes {
+  entries: [];
+  next_update: Date;
+}
+
 export function Help(): JSX.Element {
   const intl = useIntl();
+  const dispatch = useDashboardAppDispatch();
+  const is_configured = useDashboardAppSelector((state) => state.config.is_configured);
+  const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -13,6 +23,28 @@ export function Help(): JSX.Element {
       defaultMessage: "Faq | eduID",
     });
   }, []);
+
+  useEffect(() => {
+    if (is_configured) {
+      handleApprovedSecurityKeys();
+    }
+  }, [is_configured]);
+
+  async function handleApprovedSecurityKeys() {
+    const response = await dispatch(fetchApprovedSecurityKeys());
+    if (fetchApprovedSecurityKeys.fulfilled.match(response)) {
+      setApprovedSecurityKeys(response.payload);
+    }
+  }
+
+  const newDate = approvedSecurityKeys && new Date(approvedSecurityKeys?.next_update);
+  const formattedNextUpdateDate =
+    newDate &&
+    newDate.getFullYear() +
+      "-" +
+      (newDate.getMonth() + 1).toString().padStart(2, "0") +
+      "-" +
+      newDate.getDate().toString().padStart(2, "0");
 
   return (
     <React.Fragment>
@@ -483,6 +515,52 @@ export function Help(): JSX.Element {
                   </article>
                 </AccordionItemTemplate>
               </Accordion>
+            </article>
+          </AccordionItemTemplate>
+          {/* security key list */}
+          <AccordionItemTemplate
+            uuid="security-key-list"
+            title={
+              <FormattedMessage
+                defaultMessage="Currently valid physical Security Keys"
+                description="Security keys list - heading"
+              />
+            }
+            additionalInfo={null}
+          >
+            <article>
+              <p>
+                <FormattedMessage
+                  defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
+                  description="Security keys list - paragraph"
+                />
+              </p>
+              <form>
+                <fieldset className="key-update">
+                  <div>
+                    <label>
+                      <FormattedMessage defaultMessage="Next update" description="Security keys list - paragraph" />
+                    </label>
+                    <time>{formattedNextUpdateDate}</time>
+                  </div>
+                </fieldset>
+                <table className="keys">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Model</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {approvedSecurityKeys?.entries.map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{item}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </form>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
