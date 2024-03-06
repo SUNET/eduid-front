@@ -2431,7 +2431,7 @@
   },
   "qC/BaD": {
     "developer_comment": "Security keys list - heading",
-    "string": "Aktuellt giltiga fysiska säkerhetsnycklar"
+    "string": "Giltiga modeller av fysiska säkerhetsnycklar"
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
