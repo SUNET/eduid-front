@@ -22,7 +22,7 @@ interface UseOtherParams {
 function UseOtherDevice2() {
   const data = useAppSelector((state) => state.login.other_device2);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const base_url = useAppSelector((state) => state.config.login_base_url);
+  const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
   const [fetching, setFetching] = useState(false);

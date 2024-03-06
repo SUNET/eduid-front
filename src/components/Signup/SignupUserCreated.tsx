@@ -35,10 +35,10 @@ export function CreateUser() {
 
 export function SignupUserCreated(): JSX.Element {
   const signupState = useSignupAppSelector((state) => state.signup.state);
-  const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  const dashboard_link = useSignupAppSelector((state) => state.config.dashboard_link);
 
   return (
-    <form method="GET" action={dashboard_url}>
+    <form method="GET" action={dashboard_link}>
       <h1>
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."

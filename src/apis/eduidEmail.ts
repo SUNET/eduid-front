@@ -124,9 +124,9 @@ async function makeEmailsRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.emails_url) {
-    throw new Error("Missing configuration emails_url");
+  if (!state.config.emails_service_url) {
+    throw new Error("Missing configuration emails_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.emails_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.emails_service_url, endpoint, body, data);
 }

@@ -86,11 +86,11 @@ function makeLetterProofingRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.letter_proofing_url) {
-    throw new Error("Missing configuration letter_proofing_url");
+  if (!state.config.letter_proofing_service_url) {
+    throw new Error("Missing configuration letter_proofing_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.letter_proofing_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.letter_proofing_service_url, endpoint, body, data);
 }
 
 /*********************************************************************************************************************/

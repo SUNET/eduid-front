@@ -21,7 +21,7 @@ interface CodeParams {
 
 export default function CodeVerified() {
   // TODO: get dashboard URL from config instead of from backend response?
-  // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  // const dashboard_link = useSignupAppSelector((state) => state.config.dashboard_link);
   const dispatch = useSignupAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as CodeParams;
@@ -56,7 +56,7 @@ export default function CodeVerified() {
 
 function SignupComplete(props: VerifyLinkResponseSuccess) {
   return (
-    <form method="GET" action={props.dashboard_url}>
+    <form method="GET" action={props.dashboard_link}>
       <h1>
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."
