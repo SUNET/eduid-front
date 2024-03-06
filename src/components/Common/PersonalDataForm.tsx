@@ -11,6 +11,7 @@ import validatePersonalData from "helperFunctions/validation/validatePersonalDat
 import { Fragment } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import Select from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -57,7 +58,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               {props.isVerifiedIdentity ? (
                 <RenderLockedNames labels={labels} />
               ) : (
-                <RenderEditableNames labels={labels} />
+                <RenderEditableNames labels={labels} displayName={personal_data?.display_name} />
               )}
             </fieldset>
             <RenderLanguageSelect />
@@ -143,7 +144,13 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   );
 };
 
-function RenderEditableNames(props: { labels: NameLabels }) {
+function RenderEditableNames(props: { labels: NameLabels; displayName: string | undefined }) {
+  const splitDisplayName = props?.displayName?.split(" ") || props?.displayName?.split("-");
+  const transformedOptions = splitDisplayName?.map((name) => ({
+    label: name,
+    value: name,
+  }));
+
   return (
     <Fragment>
       <fieldset>
@@ -166,6 +173,28 @@ function RenderEditableNames(props: { labels: NameLabels }) {
           name="surname"
           label={props.labels.last}
           placeholder={props.labels.last}
+        />
+      </fieldset>
+      <fieldset>
+        <legend className="require">
+          <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
+        </legend>
+        <Select
+          isMulti
+          defaultValue={transformedOptions}
+          name="display name"
+          options={transformedOptions}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          noOptionsMessage={() => (
+            <FormattedMessage
+              defaultMessage="To change the display name, delete and choose again"
+              description="Display name noOptionsMessage"
+            />
+          )}
+          placeholder={
+            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+          }
         />
       </fieldset>
       <p className="help-text">
