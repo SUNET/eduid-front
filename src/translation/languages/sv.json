@@ -2631,7 +2631,7 @@
     "string": "E-post verifieringen har inte slutförts."
   },
   "signup.email-verification-to-many-tries": {
-    "string": "För många ogiltiga verifieringsförsök. Var god försök igen."
+    "string": "För många ogiltiga verifieringsförsök. Var god försök igen senare."
   },
   "signup.invite-already-completed": {
     "string": "Inbjudan är redan klar."
