@@ -9,6 +9,7 @@ export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields
   first: string;
   last: string;
+  display_name: string;
 }
 
 interface RenderAddPersonalDataPromptProps {
@@ -31,6 +32,7 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 function RenderPersonalData(props: { labels: NameLabels }) {
   const first_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useDashboardAppSelector((state) => state.personal_data.response?.surname);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
   const pref_language = useDashboardAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
@@ -47,6 +49,7 @@ function RenderPersonalData(props: { labels: NameLabels }) {
     <div className="personal-data-info">
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
+      <NameDisplay htmlFor="display name" label={props.labels.display_name} name={display_name} />
       {hasPrefLanguage ? (
         <NameDisplay
           htmlFor="language"
@@ -119,6 +122,11 @@ function PersonalDataParent() {
       id: "pd.surname",
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
+    }),
+    display_name: intl.formatMessage({
+      id: "pd.display_name",
+      defaultMessage: "Display name",
+      description: "Display name label/template (edit personal data)",
     }),
   };
 
