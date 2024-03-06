@@ -9,6 +9,7 @@ export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields
   first: string;
   last: string;
+  display_name: string;
 }
 
 interface RenderAddPersonalDataPromptProps {
@@ -47,6 +48,7 @@ function RenderPersonalData(props: { labels: NameLabels }) {
     <div className="personal-data-info">
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
+      <NameDisplay htmlFor="display name" label={props.labels.display_name} name={display_name} />
       {hasPrefLanguage ? (
         <NameDisplay
           htmlFor="language"
@@ -119,6 +121,11 @@ function PersonalDataParent() {
       id: "pd.surname",
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
+    }),
+    display_name: intl.formatMessage({
+      id: "pd.display_name",
+      defaultMessage: "Display name",
+      description: "Display name label/template (edit personal data)",
     }),
   };
 
