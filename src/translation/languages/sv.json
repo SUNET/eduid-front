@@ -2429,6 +2429,10 @@
     "developer_comment": "settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
   },
+  "qC/BaD": {
+    "developer_comment": "Security keys list - heading",
+    "string": "Giltiga modeller av fysiska säkerhetsnycklar"
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Välkommen tillbaka, {username}!"
@@ -2529,6 +2533,10 @@
   },
   "resetpw.user-not-found": {
     "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
+  },
+  "ryPtkg": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "Nästa uppdatering"
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2631,7 +2639,7 @@
     "string": "E-post verifieringen har inte slutförts."
   },
   "signup.email-verification-to-many-tries": {
-    "string": "För många ogiltiga verifieringsförsök. Var god försök igen."
+    "string": "För många ogiltiga verifieringsförsök. Var god försök igen senare."
   },
   "signup.invite-already-completed": {
     "string": "Inbjudan är redan klar."
@@ -2925,6 +2933,10 @@
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Det kan bero på att eduID saknar attribut eller inte är konfigurerad för att dela de attribut med tjänsten du försöker komma åt."
+  },
+  "zdVSFQ": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan uppdateras en gång i månaden."
   },
   "zeCbht": {
     "developer_comment": "start main title",
