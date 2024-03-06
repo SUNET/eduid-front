@@ -518,51 +518,54 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           {/* security key list */}
-          <AccordionItemTemplate
-            uuid="security-key-list"
-            title={
-              <FormattedMessage
-                defaultMessage="Currently valid physical Security Keys"
-                description="Security keys list - heading"
-              />
-            }
-            additionalInfo={null}
-          >
-            <article>
-              <p>
+          {approvedSecurityKeys?.entries ? (
+            <AccordionItemTemplate
+              uuid="security-key-list"
+              title={
                 <FormattedMessage
-                  defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
-                  description="Security keys list - paragraph"
+                  defaultMessage="Currently valid physical Security Keys"
+                  description="Security keys list - heading"
                 />
-              </p>
-              <form>
-                <fieldset className="key-update">
-                  <div>
-                    <label>
-                      <FormattedMessage defaultMessage="Next update" description="Security keys list - paragraph" />
-                    </label>
-                    <time>{formattedNextUpdateDate}</time>
-                  </div>
-                </fieldset>
-                <table className="keys">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Model</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {approvedSecurityKeys?.entries.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{item}</td>
+              }
+              additionalInfo={null}
+            >
+              <article>
+                <p>
+                  <FormattedMessage
+                    defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
+                    description="Security keys list - paragraph"
+                  />
+                </p>
+                <form>
+                  <fieldset className="key-update">
+                    <div>
+                      <label>
+                        <FormattedMessage defaultMessage="Next update" description="Security keys list - paragraph" />
+                      </label>
+                      <time>{formattedNextUpdateDate}</time>
+                    </div>
+                  </fieldset>
+                  <table className="keys">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Model</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </form>
-            </article>
-          </AccordionItemTemplate>
+                    </thead>
+                    <tbody>
+                      {approvedSecurityKeys?.entries.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>{item}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </form>
+              </article>
+            </AccordionItemTemplate>
+          ) : null}
+
           <AccordionItemTemplate
             uuid="help-verification"
             title={
