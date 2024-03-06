@@ -2631,7 +2631,7 @@
     "string": "The email verification has not been completed."
   },
   "signup.email-verification-to-many-tries": {
-    "string": "Too many invalid verification attempts. Please try again."
+    "string": "Too many invalid verification attempts. Please try again later."
   },
   "signup.invite-already-completed": {
     "string": "Invitation already completed."
