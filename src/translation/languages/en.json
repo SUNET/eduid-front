@@ -2431,7 +2431,7 @@
   },
   "qC/BaD": {
     "developer_comment": "Security keys list - heading",
-    "string": "Currently valid physical Security Keys"
+    "string": "Valid physical Security Key options"
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2936,7 +2936,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month."
+    "string": "Listed below are maker and model names of physical security keys which should meet the technical requirements to be used for eduID. The list is updated once a month."
   },
   "zeCbht": {
     "developer_comment": "start main title",
