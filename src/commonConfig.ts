@@ -20,7 +20,6 @@ interface CommonJsConfig {
 // but the API:s should throw an error if used without an actual value present so they
 // can all be optional
 interface APIEndpoints {
-  bankid_service_url?: string;
   eidas_service_url?: string;
   emails_service_url?: string;
   ladok_service_url?: string;
@@ -33,6 +32,7 @@ interface APIEndpoints {
   security_service_url?: string;
   authn_service_url?: string;
   svipe_service_url?: string;
+  bankid_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this
