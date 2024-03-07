@@ -78,7 +78,7 @@ function SelectDisplayName(): JSX.Element {
   const given_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useDashboardAppSelector((state) => state.personal_data.response?.surname);
   const fullName = `${given_name} ${surname}`;
-  const splitFullName = fullName?.split(" ") || fullName?.split("-");
+  const splitFullName = fullName?.split(/[\s-]+/);
   const transformedOptions = splitFullName?.map((name) => ({
     label: name,
     value: name,
