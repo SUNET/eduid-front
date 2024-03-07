@@ -1918,7 +1918,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Vissa tjänster kräver en högre tillitsnivå, för att förstärka säkerheten i ditt eduID, utöver kännedom om ditt användarnamn (bekräftad e-postadress) och lösenords-kombination, kan du lägga till ett ytterligare lager av autentisering för att kunna logga in. Det kallas multifaktorautentisering (MFA), och i eduIDs fall tvåfaktorsautentisering (2FA)."
+    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
