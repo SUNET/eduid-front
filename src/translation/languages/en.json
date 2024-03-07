@@ -1835,7 +1835,7 @@
   },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
-    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions."
+    "string": "Once you have logged in you can add your security keys in the Settings area of eduID by following the instructions there. "
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
