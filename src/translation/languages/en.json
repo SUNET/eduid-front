@@ -551,7 +551,7 @@
   },
   "E8UHSN": {
     "developer_comment": "how more secure description 2",
-    "string": "Examples can be a physical device in your possession such as a USB token (types of USB-keys for this purpose), or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to any of these techniques as a 'Security key'."
+    "string": "An example of a security key would be a physical device in your possession, such as a specific type of USB token for this purpose, that requires you to be present by the device. You may also add biometric information such as fingerprint or face-recognition supported on the device you are using, to be able to unlock you security key, if needed."
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
