@@ -2944,7 +2944,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Listed below are maker and model names of physical security keys which should meet the technical requirements to be used for eduID. The list is updated once a month."
+    "string": "Listed below are maker and model names of physical security keys which should meet the technical requirements to be used for eduID. They are listed in alphabetical order and the list is updated once a month."
   },
   "zeCbht": {
     "developer_comment": "start main title",
