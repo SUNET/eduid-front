@@ -8,7 +8,7 @@ import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select from "react-select";
@@ -71,6 +71,53 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
         );
       }}
     />
+  );
+}
+
+function SelectDisplayName(): JSX.Element {
+  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
+  const splitDisplayName = display_name?.split(" ") || display_name?.split("-");
+  const transformedOptions = splitDisplayName?.map((name) => ({
+    label: name,
+    value: name,
+  }));
+  const [selectedOptions, setSelectedOptions] = useState(transformedOptions);
+
+  useEffect(() => {
+    if (display_name) {
+      setSelectedOptions(transformedOptions);
+    }
+  }, [display_name]);
+
+  const handleSelectChange = (selectedOptions: [{ label: string; value: string }]) => {
+    setSelectedOptions(selectedOptions);
+  };
+
+  return (
+    <fieldset>
+      <legend className="require">
+        <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
+      </legend>
+      <Select
+        isMulti
+        value={selectedOptions}
+        // defaultValue={displayName}
+        name="display name"
+        options={transformedOptions}
+        onChange={() => handleSelectChange}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        noOptionsMessage={() => (
+          <FormattedMessage
+            defaultMessage="To change the display name, delete and choose again"
+            description="Display name noOptionsMessage"
+          />
+        )}
+        placeholder={
+          <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+        }
+      />
+    </fieldset>
   );
 }
 
@@ -140,17 +187,12 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
           />
         </label>
       </div>
+      <SelectDisplayName />
     </Fragment>
   );
 };
 
 function RenderEditableNames(props: { labels: NameLabels; displayName: string | undefined }) {
-  const splitDisplayName = props?.displayName?.split(" ") || props?.displayName?.split("-");
-  const transformedOptions = splitDisplayName?.map((name) => ({
-    label: name,
-    value: name,
-  }));
-
   return (
     <Fragment>
       <fieldset>
@@ -175,28 +217,7 @@ function RenderEditableNames(props: { labels: NameLabels; displayName: string | 
           placeholder={props.labels.last}
         />
       </fieldset>
-      <fieldset>
-        <legend className="require">
-          <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
-        </legend>
-        <Select
-          isMulti
-          defaultValue={transformedOptions}
-          name="display name"
-          options={transformedOptions}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          noOptionsMessage={() => (
-            <FormattedMessage
-              defaultMessage="To change the display name, delete and choose again"
-              description="Display name noOptionsMessage"
-            />
-          )}
-          placeholder={
-            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
-          }
-        />
-      </fieldset>
+      <SelectDisplayName />
       <p className="help-text">
         <FormattedMessage
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
