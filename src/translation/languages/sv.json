@@ -551,7 +551,7 @@
   },
   "E8UHSN": {
     "developer_comment": "how more secure description 2",
-    "string": "Exempelvis en fysiskt USB-säkerhetsnyckel (viss ändamålsenlig typ av USB-nyckel) eller biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, är vad vi hänvisar till som 'Säkerhetsnyckel'."
+    "string": "Ett exempel på en säkerhetsnyckel är en fysisk ändamålsenlig USB-nyckel som kräver att du är närvarande vid enheten. Du har också möjlighet att lägga till biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, för att kunna låsa upp säkerhetsnyckeln vid behov."
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -1029,6 +1029,10 @@
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
     "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
+  },
+  "RFkwNK": {
+    "developer_comment": "which type of security key - paragraph",
+    "string": "Vi följer en standard utöver vår egen policy för vilka säkerhetsnycklar som är möjliga att användas för tjänsten. Mer information om de tekniska förutsättningarna samt en uppdaterad lista över nycklar som möter dem finns nedan."
   },
   "RHOeL5": {
     "string": "Använd eduID för att komma åt {service_name}"
@@ -1831,7 +1835,7 @@
   },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
-    "string": "När du är inloggad kan du lägga till och bekräfta säkerhetsnycklar som du har möjlighet att använda, bland 'Avancerade inställningar' i eduID och följa instruktionerna."
+    "string": "När du har loggat in kan du lägga till och bekräfta säkerhetsnycklar bland inställningarna i eduID genom att följa instruktionerna där."
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
@@ -1914,7 +1918,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Vissa tjänster kräver en högre tillitsnivå, för att förstärka säkerheten i ditt eduID, utöver kännedom om ditt användarnamn (bekräftad e-postadress) och lösenords-kombination, kan du lägga till ett ytterligare lager av autentisering för att kunna logga in. Det kallas multifaktorautentisering (MFA), och i eduIDs fall tvåfaktorsautentisering (2FA)."
+    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2536,7 +2540,7 @@
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Nästa uppdatering"
+    "string": "Nästa uppdatering: "
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2600,6 +2604,10 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
+  },
+  "sf+Nbv": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Vilka säkerhetsnycklar kan jag använda för eduID?"
   },
   "shCOk2": {
     "developer_comment": "swedish nin mobile - heading",
@@ -2936,7 +2944,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan uppdateras en gång i månaden."
+    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan är sorterad alfabetiskt och uppdateras en gång i månaden."
   },
   "zeCbht": {
     "developer_comment": "start main title",
