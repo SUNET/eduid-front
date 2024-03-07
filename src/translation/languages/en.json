@@ -551,7 +551,7 @@
   },
   "E8UHSN": {
     "developer_comment": "how more secure description 2",
-    "string": "Examples can be a physical device in your possession such as a USB token (types of USB-keys for this purpose), or biometric information such as fingerprint or face-recognition supported on the device you are using, and we refer to any of these techniques as a 'Security key'."
+    "string": "An example of a security key would be a physical device in your possession, such as a specific type of USB token for this purpose, that requires you to be present by the device. You may also add biometric information such as fingerprint or face-recognition supported on the device you are using, to be able to unlock your security key, if needed."
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -1029,6 +1029,10 @@
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
     "string": "in the Settings area of eduID, toggle the ESI control,"
+  },
+  "RFkwNK": {
+    "developer_comment": "which type of security key - paragraph",
+    "string": "We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below."
   },
   "RHOeL5": {
     "string": "Use eduID to access {service_name}"
@@ -1831,7 +1835,7 @@
   },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
-    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions."
+    "string": "Once you have logged in you can add your security keys in the Settings area of eduID by following the instructions there. "
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
@@ -1914,7 +1918,7 @@
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
-    "string": "Some services will require a higher security level so to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
+    "string": "Depending on the service you are trying to access it might require that the account used to log in has reached a certain level of security. When you create your account you are required to have knowledge of your username (confirmed email address) and its associated password. The password is considered the first factor of authentication. For an additional layer of authentication to log in you may add a security key. The security key is called a two-factor authentication (2FA) or in some cases multi-factor (MFA), depending on the specifics of the layers of authentication."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2536,7 +2540,7 @@
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Next update"
+    "string": "Next update: "
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2600,6 +2604,10 @@
   },
   "security.webauthn_register_success": {
     "string": "Security key added"
+  },
+  "sf+Nbv": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Which type of security key can I use with eduID?"
   },
   "shCOk2": {
     "developer_comment": "swedish nin mobile - heading",
@@ -2936,7 +2944,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Listed below are maker and model names of physical security keys which should meet the technical requirements to be used for eduID. The list is updated once a month."
+    "string": "Listed below are maker and model names of physical security keys which should meet the technical requirements to be used for eduID. They are listed in alphabetical order and the list is updated once a month."
   },
   "zeCbht": {
     "developer_comment": "start main title",
