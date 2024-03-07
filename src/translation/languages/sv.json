@@ -1030,6 +1030,10 @@
     "developer_comment": "use ladok - list item 1",
     "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
   },
+  "RFkwNK": {
+    "developer_comment": "which type of security key - paragraph",
+    "string": "Vi följer en standard utöver vår egen policy för vilka säkerhetsnycklar som är möjliga att användas för tjänsten. Mer information om de tekniska förutsättningarna samt en uppdaterad lista över nycklar som möter dem finns nedan."
+  },
   "RHOeL5": {
     "string": "Använd eduID för att komma åt {service_name}"
   },
@@ -2536,7 +2540,7 @@
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Nästa uppdatering"
+    "string": "Nästa uppdatering: "
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2600,6 +2604,10 @@
   },
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
+  },
+  "sf+Nbv": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Vilka säkerhetsnycklar kan jag använda för eduID?"
   },
   "shCOk2": {
     "developer_comment": "swedish nin mobile - heading",
@@ -2936,7 +2944,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan uppdateras en gång i månaden."
+    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan är sorterad alfabetiskt och uppdateras en gång i månaden."
   },
   "zeCbht": {
     "developer_comment": "start main title",
