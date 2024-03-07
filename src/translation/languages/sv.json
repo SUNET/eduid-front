@@ -1835,7 +1835,7 @@
   },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
-    "string": "När du är inloggad kan du lägga till och bekräfta säkerhetsnycklar som du har möjlighet att använda, bland 'Avancerade inställningar' i eduID och följa instruktionerna."
+    "string": "När du har loggat in kan du lägga till och bekräfta säkerhetsnycklar bland inställningarna i eduID genom att följa instruktionerna där."
   },
   "hs3tJz": {
     "developer_comment": "Login MFA",
