@@ -1030,6 +1030,10 @@
     "developer_comment": "use ladok - list item 1",
     "string": "in the Settings area of eduID, toggle the ESI control,"
   },
+  "RFkwNK": {
+    "developer_comment": "which type of security key - paragraph",
+    "string": "We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below."
+  },
   "RHOeL5": {
     "string": "Use eduID to access {service_name}"
   },
@@ -2536,7 +2540,7 @@
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Next update"
+    "string": "Next update: "
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2600,6 +2604,10 @@
   },
   "security.webauthn_register_success": {
     "string": "Security key added"
+  },
+  "sf+Nbv": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Which type of security key can I use with eduID?"
   },
   "shCOk2": {
     "developer_comment": "swedish nin mobile - heading",
