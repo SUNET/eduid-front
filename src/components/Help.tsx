@@ -405,7 +405,18 @@ export function Help(): JSX.Element {
                   defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
                 />
               </p>
-
+              <h4>
+                <FormattedMessage
+                  description="which type of security key - heading"
+                  defaultMessage="Which type of security key can I use with eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="which type of security key - paragraph"
+                  defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below.`}
+                />
+              </p>
               <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
                 <AccordionItemTemplate
                   uuid="help-security-usb"
