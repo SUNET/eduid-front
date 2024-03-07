@@ -2536,7 +2536,7 @@
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Nästa uppdatering: "
+    "string": "Nästa uppdatering"
   },
   "s5EpgK": {
     "developer_comment": "verify identity vetting link settings",
@@ -2936,7 +2936,7 @@
   },
   "zdVSFQ": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan är sorterad alfabetiskt och uppdateras en gång i månaden."
+    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan uppdateras en gång i månaden."
   },
   "zeCbht": {
     "developer_comment": "start main title",
