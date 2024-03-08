@@ -1053,6 +1053,10 @@
     "developer_comment": "Dashboard change password modal main text",
     "string": "You will need to log in again to change your password."
   },
+  "Ryb62w": {
+    "developer_comment": "Display name noOptionsMessage",
+    "string": "To change the display name, delete and choose again"
+  },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
     "string": "Currently in progress"
@@ -1272,6 +1276,10 @@
   "XzQO4I": {
     "developer_comment": "choosing usb key - list definition",
     "string": "Check with the manufacturer or retailer that the product meets the following requirements:"
+  },
+  "XzScE+": {
+    "developer_comment": "Display name select legend",
+    "string": "Display name"
   },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
@@ -1587,6 +1595,10 @@
   "e0xgSg": {
     "developer_comment": "how to contact support - paragraph 3",
     "string": ", but for simple matters you can also reach us on phone number {phone}."
+  },
+  "eFceSz": {
+    "developer_comment": "Display name select placeholder",
+    "string": "Select display name..."
   },
   "eIAskC": {
     "developer_comment": "Start",
@@ -2300,6 +2312,10 @@
   "pb/yW9": {
     "developer_comment": "help - headline",
     "string": "Help and contact"
+  },
+  "pd.display_name": {
+    "developer_comment": "Display name label/template (edit personal data)",
+    "string": "Display name"
   },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
