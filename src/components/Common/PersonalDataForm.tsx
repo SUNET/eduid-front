@@ -89,7 +89,7 @@ function SelectDisplayName(): JSX.Element {
     if (given_name && surname) {
       setSelectedOptions(transformedOptions);
     }
-  }, [given_name, surname]);
+  }, [selectedOptions]);
 
   const handleSelectChange = (selectedOptions: [{ label: string; value: string }]) => {
     setSelectedOptions(selectedOptions);
@@ -103,7 +103,6 @@ function SelectDisplayName(): JSX.Element {
       <Select
         isMulti
         defaultValue={selectedOptions}
-        // defaultValue={displayName}
         name="display name"
         options={transformedOptions}
         onChange={() => handleSelectChange}
