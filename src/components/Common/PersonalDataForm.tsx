@@ -58,7 +58,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               {props.isVerifiedIdentity ? (
                 <RenderLockedNames labels={labels} />
               ) : (
-                <RenderEditableNames labels={labels} displayName={personal_data?.display_name} />
+                <RenderEditableNames labels={labels} />
               )}
             </fieldset>
             <RenderLanguageSelect />
@@ -193,7 +193,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   );
 };
 
-function RenderEditableNames(props: { labels: NameLabels; displayName: string | undefined }) {
+function RenderEditableNames(props: { labels: NameLabels }) {
   return (
     <Fragment>
       <fieldset>
