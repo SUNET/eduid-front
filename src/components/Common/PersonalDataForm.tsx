@@ -77,23 +77,27 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
 function SelectDisplayName(): JSX.Element {
   const given_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useDashboardAppSelector((state) => state.personal_data.response?.surname);
-  const fullName = `${given_name} ${surname}`;
-  const splitFullName = fullName?.split(/[\s-]+/);
-  const transformedOptions = splitFullName?.map((name) => ({
-    label: name,
-    value: name,
-  }));
-  const [selectedOptions, setSelectedOptions] = useState(transformedOptions);
+  const [selectedOptions, setSelectedOptions] = useState<{ label: string; value: string }[]>([]);
 
   useEffect(() => {
     if (given_name && surname) {
+      const fullName = `${given_name} ${surname}`;
+      const splitFullName = fullName?.split(/[\s-]+/);
+      const transformedOptions = splitFullName?.map((name) => ({
+        label: name,
+        value: name,
+      }));
       setSelectedOptions(transformedOptions);
     }
-  }, [selectedOptions]);
+  }, [given_name, surname]);
 
-  const handleSelectChange = (selectedOptions: [{ label: string; value: string }]) => {
+  const handleSelectChange = (selectedOptions: { label: string; value: string }[]) => {
     setSelectedOptions(selectedOptions);
   };
+
+  if (!selectedOptions.length) {
+    return <></>;
+  }
 
   return (
     <fieldset>
@@ -103,8 +107,8 @@ function SelectDisplayName(): JSX.Element {
       <Select
         isMulti
         defaultValue={selectedOptions}
-        name="display name"
-        options={transformedOptions}
+        name="display_name"
+        options={selectedOptions}
         onChange={() => handleSelectChange}
         className="basic-multi-select"
         classNamePrefix="select"
