@@ -95,17 +95,19 @@ export function SignupCaptcha(): JSX.Element | null {
 function InternalCaptcha(props: CaptchaProps) {
   const dispatch = useAppDispatch();
   const [img, setImg] = useState<string | undefined>(undefined);
+  const [audio, setAudio] = useState<string | undefined>(undefined);
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
     if (getCaptchaRequest.fulfilled.match(res)) {
-      return res.payload.captcha_img;
+      return res.payload;
     }
   }
 
   function getNewCaptcha() {
-    getCaptcha().then((img) => {
-      setImg(img);
+    getCaptcha().then((captcha: any) => {
+      setImg(captcha.captcha_img);
+      setAudio(captcha.captcha_audio);
     });
   }
 
@@ -113,8 +115,14 @@ function InternalCaptcha(props: CaptchaProps) {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
     if (!img) {
-      getCaptcha().then((img) => {
-        if (!aborted && img) setImg(img);
+      getCaptcha().then((img: any) => {
+        if (!aborted && img) setImg(img.captcha_img);
+      });
+    }
+
+    if (!audio) {
+      getCaptcha().then((audio: any) => {
+        if (!aborted && audio) setAudio(audio.captcha_audio);
       });
     }
 
@@ -128,7 +136,8 @@ function InternalCaptcha(props: CaptchaProps) {
   return (
     <React.Fragment>
       <figure className="captcha-responsive">
-        <img className="captcha-image" src={img} />
+        <img alt="captcha image" className="captcha-image" src={img} />
+        <audio controls className="captcha-audio" src={audio} />
       </figure>
       <div className="icon-text">
         <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
