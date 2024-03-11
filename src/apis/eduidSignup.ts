@@ -3,12 +3,13 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { signupSlice } from "slices/Signup";
-import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 // export for use in tests
-export const SIGNUP_SERVICE_URL = "/services/signup";
+// TODO: use base url from js config
+export const SIGNUP_SERVICE_URL = "https://signup.eduid.docker/services/signup";
 
 export interface SignupState {
   already_signed_up: boolean;
@@ -51,7 +52,7 @@ export interface SignupStatusResponse {
 export const fetchState = createAsyncThunk<
   SignupStatusResponse, // return type
   undefined, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/fetchState", async (args, thunkAPI) => {
   return makeSignupRequest<SignupStatusResponse>(thunkAPI, "state")
     .then((response) => response.payload)
@@ -73,7 +74,7 @@ export interface GetCaptchaResponse {
 export const getCaptchaRequest = createAsyncThunk<
   GetCaptchaResponse, // return type
   undefined, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/getCaptchaRequest", async (args, thunkAPI) => {
   const body: KeyValues = {};
 
@@ -96,7 +97,7 @@ export interface CaptchaRequest {
 export const sendCaptchaResponse = createAsyncThunk<
   SignupStatusResponse, // return type
   CaptchaRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/sendCaptchaResponse", async (args, thunkAPI) => {
   const body: KeyValues = {
     internal_response: args.internal_response,
@@ -127,7 +128,7 @@ export interface AcceptToUArgs {
 export const acceptToURequest = createAsyncThunk<
   SignupStatusResponse, // return type
   AcceptToUArgs, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/acceptToURequest", async (args, thunkAPI) => {
   const body: AcceptToURequest = {
     tou_accepted: true,
@@ -153,7 +154,7 @@ export interface RegisterEmailRequest {
 export const registerEmailRequest = createAsyncThunk<
   SignupStatusResponse, // return type
   RegisterEmailRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/registerEmailRequest", async (args, thunkAPI) => {
   const body: KeyValues = {
     email: args.email,
@@ -178,7 +179,7 @@ export interface VerifyEmailRequest {
 export const verifyEmailRequest = createAsyncThunk<
   SignupStatusResponse, // return type
   VerifyEmailRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/verifyEmailRequest", async (args, thunkAPI) => {
   const body: KeyValues = {
     verification_code: args.verification_code,
@@ -199,7 +200,7 @@ export const verifyEmailRequest = createAsyncThunk<
 export const getPasswordRequest = createAsyncThunk<
   SignupStatusResponse, // return type
   undefined, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/getPasswordRequest", async (args, thunkAPI) => {
   const body: KeyValues = {};
 
@@ -223,7 +224,7 @@ export interface CreateUserRequest {
 export const createUserRequest = createAsyncThunk<
   SignupStatusResponse, // return type
   CreateUserRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/createUserRequest", async (args, thunkAPI) => {
   const body: KeyValues = {
     use_password: Boolean(args.use_password),
@@ -260,7 +261,7 @@ export interface TryCaptchaResponse {
 export const fetchTryCaptcha = createAsyncThunk<
   TryCaptchaResponse, // return type
   TryCaptchaRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/fetchTryCaptcha", async (args, thunkAPI) => {
   const body: KeyValues = {
     email: args.email,
@@ -304,7 +305,7 @@ export type VerifyLinkResponse = VerifyLinkResponseFail | VerifyLinkResponseSucc
 export const fetchVerifyLink = createAsyncThunk<
   VerifyLinkResponse, // return type
   VerifyLinkRequest, // args type
-  { dispatch: SignupAppDispatch; state: SignupRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/fetchVerifyLink", async (args, thunkAPI) => {
   return makeSignupRequest<VerifyLinkResponse>(thunkAPI, `verify-link/${args.code}`)
     .then((response) => response.payload)

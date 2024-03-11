@@ -1,6 +1,6 @@
 import { fetchAbort, fetchToU } from "apis/eduidLogin";
 import { CommonToU } from "components/Common/CommonToU";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";

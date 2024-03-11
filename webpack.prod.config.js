@@ -25,20 +25,13 @@ webpackProd.output = {
 
 webpackProd.plugins = [
   //  initialConfigPlugin,
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production"),
-    },
-  }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CompressionPlugin(),
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.html`,
-      chunks: [`${entryName}`],
-    });
+  new HtmlWebpackPlugin({
+    hash: true,
+    template: `./public/index.html`,
+    filename: `index.html`,
+    chunks: `index`,
   }),
 ];
 

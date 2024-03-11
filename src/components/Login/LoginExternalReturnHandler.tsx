@@ -1,6 +1,6 @@
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { eidasGetStatus } from "apis/eduidEidas";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { showNotification } from "slices/Notifications";
@@ -19,7 +19,7 @@ export function LoginExternalReturnHandler() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
-  const app_loaded = useAppSelector((state) => state.app.is_loaded);
+  const is_configured = useAppSelector((state) => state.config.is_configured);
 
   async function fetchStatus(authn_id: string) {
     const getStatusAction = params.app_name === "eidas" ? eidasGetStatus : bankIDGetStatus;
@@ -56,10 +56,10 @@ export function LoginExternalReturnHandler() {
 
   useEffect(() => {
     // have to wait for the app to be loaded (jsconfig completed) before we can fetch the status
-    if (params.authn_id && app_loaded) {
+    if (params.authn_id && is_configured) {
       fetchStatus(params.authn_id);
     }
-  }, [params, app_loaded]);
+  }, [params, is_configured]);
 
   return null;
 }

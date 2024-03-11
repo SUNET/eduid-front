@@ -1,13 +1,13 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const eidas_service_url = useDashboardAppSelector((state) => state.config.eidas_service_url);
-  const token_verify_idp = useDashboardAppSelector((state) => state.config.token_verify_idp);
+  const eidas_service_url = useAppSelector((state) => state.config.eidas_service_url);
+  const token_verify_idp = useAppSelector((state) => state.config.token_verify_idp);
   let eidas_sp_url = eidas_service_url;
   const freja_idp_url = token_verify_idp;
 

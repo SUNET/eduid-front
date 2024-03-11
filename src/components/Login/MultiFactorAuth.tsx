@@ -1,6 +1,6 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { LoginAbortButton } from "./LoginAbortButton";

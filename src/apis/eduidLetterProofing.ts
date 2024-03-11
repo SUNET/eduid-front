@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -24,7 +24,7 @@ export interface LetterProofingResponse {
 export const fetchLetterProofingState = createAsyncThunk<
   LetterProofingResponse, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("letterProofing/fetchLetterProofingState", async (args, thunkAPI) => {
   return makeLetterProofingRequest<LetterProofingResponse>(thunkAPI, "proofing")
     .then((response) => response.payload)
@@ -39,7 +39,7 @@ export const fetchLetterProofingState = createAsyncThunk<
 export const postRequestLetter = createAsyncThunk<
   LetterProofingResponse, // return type
   undefined, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("letterProofing/postRequestLetter", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const data: KeyValues = {
@@ -67,7 +67,7 @@ export interface ConfirmLetterCodeResponse {
 export const confirmLetterCode = createAsyncThunk<
   LetterProofingResponse, // return type
   { code: string }, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("letterProofing/confirmLetterCode", async (args, thunkAPI) => {
   const data: KeyValues = {
     code: args.code,

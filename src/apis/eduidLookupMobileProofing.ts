@@ -1,5 +1,5 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -16,7 +16,7 @@ export interface LookupMobileProofingResponse {
 export const lookupMobileProofing = createAsyncThunk<
   LookupMobileProofingResponse, // return type
   string, // args type
-  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("lookupMobileProofing/proofing", async (nin, thunkAPI) => {
   const body: KeyValues = {
     nin: nin,

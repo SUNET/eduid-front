@@ -1,4 +1,4 @@
-import { useAppSelector } from "hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 

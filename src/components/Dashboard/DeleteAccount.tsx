@@ -1,14 +1,14 @@
 import { postDeleteAccount } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   function handleStartConfirmationDeletion() {
     dispatch(clearNotifications());

@@ -1,17 +1,17 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { LoginMain } from "components/Login/LoginMain";
+import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("show splash screen when not configured", () => {
-  render(<LoginMain />, {
+  render(<IndexMain />, {
     state: {
       app: { ...loginTestState.app, is_loaded: false },
     },
     routes: ["/login/abc123"],
   });
 
-  const button = screen.getByRole("button", { name: "Register" });
+  const button = screen.getByRole("button", { name: "Log in" });
   expect(button).toBeEnabled();
 
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
@@ -37,7 +37,7 @@ test("renders FINISHED as expected", async () => {
     })
   );
 
-  render(<LoginMain />, { routes: [`/login/${ref}`] });
+  render(<IndexMain />, { routes: [`/login/${ref}`] });
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -64,7 +64,7 @@ test("renders UsernamePw as expected", async () => {
     })
   );
 
-  render(<LoginMain />, { routes: [`/login/password/${ref}`] });
+  render(<IndexMain />, { routes: [`/login/password/${ref}`] });
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -76,6 +76,6 @@ test("renders UsernamePw as expected", async () => {
 });
 
 test("renders the login page title", () => {
-  render(<LoginMain />);
+  render(<IndexMain />);
   expect(document.title).toContain("Log in");
 });

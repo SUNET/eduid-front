@@ -1,27 +1,19 @@
-/*
- * This is meant to be imported in the different entry points
- * to initialize the different components that the entry points
- * may want to render in different parts of the app.
- * Initialization involves localizing the app and providing
- * it with the redux store.
- */
-
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
-import eduIDApp from "./signup-store";
 
 /* setup to run the combined sagas */
 const middlewares = [notifyAndDispatch, logger];
 
-export const signupStore = configureStore({
+export const eduidStore = configureStore({
   reducer: eduIDApp,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
   devTools: process.env.NODE_ENV !== "production",
 });
 
 // The same thing again, for use in tests
-export function getTestSignupStore(preloadedState: Partial<SignupRootState>) {
+export function getTestEduIDStore(preloadedState: Partial<EduIDAppRootState>) {
   const testStore = configureStore({
     reducer: eduIDApp,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
@@ -32,5 +24,5 @@ export function getTestSignupStore(preloadedState: Partial<SignupRootState>) {
 }
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type SignupRootState = ReturnType<typeof signupStore.getState>;
-export type SignupAppDispatch = typeof signupStore.dispatch;
+export type EduIDAppRootState = ReturnType<typeof eduidStore.getState>;
+export type EduIDAppDispatch = typeof eduidStore.dispatch;

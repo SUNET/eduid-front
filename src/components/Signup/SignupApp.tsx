@@ -2,8 +2,8 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
-import { useSignupAppDispatch } from "signup-hooks";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
@@ -37,15 +37,20 @@ export function SignupApp(): JSX.Element {
  * Startup state to determine what kind of signup this is, and what to do next.
  */
 function SignupStart() {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
 
   useEffect(() => {
     // bootstrap signup state in redux store by asking the backend for it
-    dispatch(fetchState());
-  }, []);
+    async function fetchSignupState(): Promise<void> {
+      const response = await dispatch(fetchState());
+      if (fetchState.fulfilled.match(response)) {
+        signupContext.signupService.send({ type: "COMPLETE" });
+      }
+    }
 
-  signupContext.signupService.send({ type: "COMPLETE" });
+    fetchSignupState();
+  }, []);
 
   return null;
 }

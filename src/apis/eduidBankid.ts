@@ -3,8 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { LoginAppDispatch, LoginRootState } from "login-init-app";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
@@ -18,8 +17,8 @@ interface BankIDCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithBankID = LoginAppDispatch | DashboardAppDispatch;
-type StateWithBankID = LoginRootState | DashboardRootState;
+type DispatchWithBankID = EduIDAppDispatch;
+type StateWithBankID = EduIDAppRootState;
 
 /*********************************************************************************************************************/
 

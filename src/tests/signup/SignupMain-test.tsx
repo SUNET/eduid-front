@@ -8,11 +8,10 @@ import {
   SignupStatusResponse,
   VerifyEmailRequest,
 } from "apis/eduidSignup";
-import { codeFormTestId } from "components/Login/ResponseCodeForm";
-import SignupMain, { SIGNUP_BASE_PATH } from "components/Signup/SignupMain";
-import { formatPassword } from "components/Signup/SignupUserCreated";
-
 import { emailPlaceHolder } from "components/Common/EmailInput";
+import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { codeFormTestId } from "components/Login/ResponseCodeForm";
+import { formatPassword } from "components/Signup/SignupUserCreated";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
@@ -63,19 +62,20 @@ function happyCaseBackend(state: SignupState) {
 
   mswServer.use(
     // this request happens at render of SignupMain
-    rest.get("/services/signup/state", (req, res, ctx) => {
+    rest.get("https://signup.eduid.docker/services/signup/state", (req, res, ctx) => {
       const payload: SignupStatusResponse = { state: currentState };
+      console.debug("[payload]", payload);
       return res(ctx.json({ type: "test response", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("/services/signup/get-captcha", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/get-captcha", (req, res, ctx) => {
       getCaptchaCalled = true;
       const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
       return res(ctx.json({ type: "test success", payload }));
     }),
-    rest.post("/services/signup/captcha", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/captcha", (req, res, ctx) => {
       const body = req.body as CaptchaRequest;
       if (body.internal_response != captchaTestValue) {
         return res(ctx.status(400));
@@ -89,7 +89,7 @@ function happyCaseBackend(state: SignupState) {
   );
 
   mswServer.use(
-    rest.post("/services/signup/accept-tou", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/accept-tou", (req, res, ctx) => {
       const body = req.body as AcceptToURequest;
       if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
         return res(ctx.status(400));
@@ -101,7 +101,7 @@ function happyCaseBackend(state: SignupState) {
       const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
     }),
-    rest.post("/services/signup/register-email", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/register-email", (req, res, ctx) => {
       const body = req.body as RegisterEmailRequest;
       if (body.email !== testEmailAddress) {
         return res(ctx.status(400));
@@ -118,7 +118,7 @@ function happyCaseBackend(state: SignupState) {
   );
 
   mswServer.use(
-    rest.post("/services/signup/verify-email", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/verify-email", (req, res, ctx) => {
       const body = req.body as VerifyEmailRequest;
       if (body.verification_code !== correctEmailCode) {
         const bad_attempts = currentState.email.bad_attempts || 0;
@@ -143,7 +143,7 @@ function happyCaseBackend(state: SignupState) {
   );
 
   mswServer.use(
-    rest.post("/services/signup/get-password", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/get-password", (req, res, ctx) => {
       getPasswordCalled = true;
       currentState.credentials.password = testPassword;
       currentState.credentials.completed = true;
@@ -153,7 +153,7 @@ function happyCaseBackend(state: SignupState) {
   );
 
   mswServer.use(
-    rest.post("/services/signup/create-user", (req, res, ctx) => {
+    rest.post("https://signup.eduid.docker/services/signup/create-user", (req, res, ctx) => {
       const body = req.body as CreateUserRequest;
       if (body.use_webauthn && !body.use_password) {
         console.error("Missing password, or webauthn is not supported");
@@ -182,13 +182,14 @@ afterEach(async () => {
 });
 
 test("e-mail form works as expected", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/`] });
-
+  render(<IndexMain />, {
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
   await testEnterEmail({ email: testEmailAddress });
 });
 
 test("complete signup happy case", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   screen.debug();
 
@@ -218,7 +219,7 @@ test("complete signup happy case", async () => {
 });
 
 test("handles rejected ToU", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   await testEnterEmail({ email: testEmailAddress });
 
@@ -235,7 +236,7 @@ test("handles rejected ToU", async () => {
 });
 
 test("handles wrong email code", async () => {
-  render(<SignupMain />, { routes: [`${SIGNUP_BASE_PATH}/email`] });
+  render(<IndexMain />, { routes: [`${SIGNUP_BASE_PATH}`] });
 
   await testEnterEmail({ email: testEmailAddress });
 

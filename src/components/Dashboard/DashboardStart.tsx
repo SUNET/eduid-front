@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import { UserIdentities } from "apis/eduidPersonalData";
 import AccordionItemTemplate from "components/Common/AccordionItemTemplate";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect } from "react";
+import Splash from "components/Common/Splash";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import { LetterProofingState } from "slices/LetterProofing";
@@ -100,12 +101,12 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
  */
 export default function Start(): JSX.Element {
   const intl = useIntl();
-  const display_name = useDashboardAppSelector((state) => state.personal_data.response?.display_name);
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
-  const isLoaded = useDashboardAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useDashboardAppDispatch();
-  const identities = useDashboardAppSelector((state) => state.identities);
-  const letter_proofing = useDashboardAppSelector((state) => state.letter_proofing);
+  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
+  const emails = useAppSelector((state) => state.emails.emails);
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const dispatch = useAppDispatch();
+  const identities = useAppSelector((state) => state.identities);
+  const letter_proofing = useAppSelector((state) => state.letter_proofing);
   let username;
   let progress;
 
@@ -141,7 +142,7 @@ export default function Start(): JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <Splash showChildren={isLoaded}>
       <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
       <section className="intro">
         <h1>
@@ -170,6 +171,6 @@ export default function Start(): JSX.Element {
       </article>
       {progress}
       <Recommendations />
-    </React.Fragment>
+    </Splash>
   );
 }

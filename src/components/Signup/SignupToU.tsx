@@ -1,13 +1,13 @@
 import { acceptToURequest } from "apis/eduidSignup";
 import { CommonToU } from "components/Common/CommonToU";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): JSX.Element {
-  const signupState = useSignupAppSelector((state) => state.signup.state);
+  const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const version = signupState?.tou.version;
 
@@ -39,9 +39,9 @@ export function SignupToU(): JSX.Element {
 }
 
 export function ProcessToU(): JSX.Element {
-  const signupState = useSignupAppSelector((state) => state.signup.state);
+  const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const version = signupState?.tou.version;
 
   async function sendToUAcceptance(version: string) {

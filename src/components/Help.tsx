@@ -1,5 +1,5 @@
 import { fetchApprovedSecurityKeys } from "apis/eduidSecurity";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -13,8 +13,8 @@ interface ApprovedSecurityKeysTypes {
 
 export function Help(): JSX.Element {
   const intl = useIntl();
-  const dispatch = useDashboardAppDispatch();
-  const is_configured = useDashboardAppSelector((state) => state.config.is_configured);
+  const dispatch = useAppDispatch();
+  const is_configured = useAppSelector((state) => state.config.is_configured);
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
 
   useEffect(() => {
