@@ -10,10 +10,11 @@ import {
   requestVerifyPhone,
   sendCaptchaResponse,
 } from "apis/eduidPhone";
+import { GetCaptchaResponse } from "apis/eduidSignup";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -34,11 +35,11 @@ function Phones() {
    */
   const [completeCaptcha, setCompleteCaptcha] = useState(false);
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
-  const dispatch = useDashboardAppDispatch();
-  const phones = useDashboardAppSelector((state) => state.phones);
-  const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
-  const error = useDashboardAppSelector((state) => state.notifications.error);
-  const [img, setImg] = useState<string | undefined>(undefined);
+  const dispatch = useAppDispatch();
+  const phones = useAppSelector((state) => state.phones);
+  const default_country_code = useAppSelector((state) => state.config.default_country_code);
+  const error = useAppSelector((state) => state.notifications.error);
+  const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
 
   useEffect(() => {
     if (error?.message === "phone.captcha-already-completed") {
@@ -47,14 +48,19 @@ function Phones() {
   }, [error]);
 
   async function getNewCaptcha() {
-    const promise = await getCaptcha().then((img) => setImg(img));
+    const promise = await getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
+      setCaptchaResponse({
+        captcha_img: captcha?.captcha_img,
+        captcha_audio: captcha?.captcha_audio,
+      });
+    });
     return promise;
   }
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
     if (getCaptchaRequest.fulfilled.match(res)) {
-      return res.payload.captcha_img;
+      return res.payload;
     }
   }
 
@@ -86,9 +92,12 @@ function Phones() {
       const phoneNumber = dataNode?.getAttribute("data-object");
       if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
       try {
-        await getCaptcha().then((img) => {
-          if (img) {
-            setImg(img);
+        await getCaptcha().then((captchaResponse) => {
+          if (captchaResponse) {
+            setCaptchaResponse({
+              captcha_img: captchaResponse.captcha_img,
+              captcha_audio: captchaResponse.captcha_audio,
+            });
             setCompleteCaptcha(true);
           }
         });
@@ -258,7 +267,7 @@ function Phones() {
       {completeCaptcha ? (
         <ConfirmModal
           id="phone-captcha-modal"
-          captchaImage={img}
+          captcha={captchaResponse}
           title={
             <FormattedMessage
               defaultMessage={`To receive code, complete below captcha.`}
@@ -279,7 +288,7 @@ function Phones() {
                 type="button"
                 className="icon-only"
                 aria-label="name-check"
-                disabled={!img}
+                disabled={!captchaResponse?.captcha_img}
                 onClick={getNewCaptcha}
               >
                 <FontAwesomeIcon icon={faRedo as IconProp} />

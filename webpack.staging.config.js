@@ -1,7 +1,7 @@
 const path = require("path");
 const webpackProd = require("./webpack.prod.config");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 //const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 var webpackStaging = {
   ...webpackProd,
@@ -16,16 +16,13 @@ webpackStaging.output = {
 
 webpackStaging.plugins = [
   //  initialConfigPlugin,
-  ...["faq", "errors", "index", "dashboard", "signup"].map((entryName) => {
-    return new HtmlWebpackPlugin({
-      hash: true,
-      template: `./public/${entryName}.html`,
-      filename: `${entryName}.staging.html`,
-      chunks: [`${entryName}`],
-    });
+  new HtmlWebpackPlugin({
+    hash: true,
+    template: `./public/index.html`,
+    filename: `index.staging.html`,
+    chunks: `index`,
   }),
 ];
-
 webpackStaging.devtool = "source-map";
 
 module.exports = webpackStaging;

@@ -1,26 +1,34 @@
 import { urlJoin } from "apis/common";
 import { removeOrcid } from "apis/eduidOrcid";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 
 export function Orcid(): JSX.Element {
-  const dispatch = useDashboardAppDispatch();
-  const orcid = useDashboardAppSelector((state) => state.account_linking.orcid);
-  const orcid_service_url = useDashboardAppSelector((state) => state.config.orcid_service_url);
+  const dispatch = useAppDispatch();
+  const orcid = useAppSelector((state) => state.account_linking.orcid);
+  const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();
 
   async function handleOrcidDelete() {
-    await dispatch(removeOrcid());
+    try {
+      await dispatch(removeOrcid());
+    } catch (error) {
+      console.error("Error removing orcid", error);
+    }
   }
 
   function handleOrcidConnect() {
-    if (orcid_service_url) {
-      const auth_url = urlJoin(orcid_service_url, "authorize");
-      window.location.assign(auth_url);
+    try {
+      if (orcid_service_url) {
+        const auth_url = urlJoin(orcid_service_url, "authorize");
+        window.location.assign(auth_url);
+      }
+    } catch (error) {
+      console.error("Error connecting to orcid", error);
     }
   }
 

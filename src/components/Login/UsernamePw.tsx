@@ -6,8 +6,8 @@ import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import { useAppDispatch, useAppSelector } from "hooks";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -188,7 +188,6 @@ function RenderResetPasswordLink(): JSX.Element {
 
 function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
-
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error

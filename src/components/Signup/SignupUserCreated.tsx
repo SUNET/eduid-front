@@ -1,8 +1,8 @@
 import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
@@ -12,7 +12,7 @@ export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
 
 export function CreateUser() {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
 
   async function createUser() {
@@ -34,8 +34,8 @@ export function CreateUser() {
 }
 
 export function SignupUserCreated(): JSX.Element {
-  const signupState = useSignupAppSelector((state) => state.signup.state);
-  const dashboard_link = useSignupAppSelector((state) => state.config.dashboard_link);
+  const signupState = useAppSelector((state) => state.signup.state);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   return (
     <form method="GET" action={dashboard_link}>

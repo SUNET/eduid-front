@@ -1,5 +1,5 @@
 import { requestEmailLink } from "apis/eduidResetPassword";
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";

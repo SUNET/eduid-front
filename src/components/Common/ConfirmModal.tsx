@@ -1,3 +1,4 @@
+import { GetCaptchaResponse } from "apis/eduidSignup";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -17,7 +18,7 @@ interface ConfirmModalProps {
   validationPattern?: RegExp;
   helpBlock?: React.ReactNode;
   resendMarkup?: React.ReactNode;
-  captchaImage?: string;
+  captcha?: GetCaptchaResponse;
   submitButtonText?: React.ReactNode;
 }
 
@@ -39,63 +40,71 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
       }}
       {...props}
       render={({ submitting, invalid, handleSubmit, form }) => (
-        <React.Fragment>
-          <div tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
-            <Modal id="confirm-user-data-modal" isOpen={props.showModal} autoFocus={false}>
-              <ModalHeader>
-                {props.title}
-                <EduIDButton
-                  buttonstyle="close"
-                  onClick={() => {
-                    props.closeModal();
-                    form.reset();
-                  }}
-                ></EduIDButton>
-              </ModalHeader>
-              <form
-                id={props.id + "-form"}
-                role="form"
-                onSubmit={async (event) => {
-                  await handleSubmit(event);
+        <dialog tabIndex={-1} aria-hidden="true" data-backdrop="true">
+          <Modal id="confirm-user-data-modal" isOpen={props.showModal} autoFocus={false}>
+            <ModalHeader>
+              {props.title}
+              <EduIDButton
+                buttonstyle="close"
+                onClick={() => {
+                  props.closeModal();
                   form.reset();
                 }}
-              >
-                <ModalBody>
-                  {props.captchaImage && <img src={props.captchaImage} />}
-                  <div id="confirmation-code-area">
-                    <FinalField<string>
-                      component={CustomInput}
-                      componentClass="input"
-                      type="text"
-                      label={props.modalFormLabel}
-                      placeholder={props.placeholder}
-                      id={props.id}
-                      name={props.id}
-                      helpBlock={props.helpBlock}
-                      validate={validate}
-                      autoFocus={true}
+              ></EduIDButton>
+            </ModalHeader>
+            <form
+              id={props.id + "-form"}
+              role="form"
+              onSubmit={async (event) => {
+                await handleSubmit(event);
+                form.reset();
+              }}
+            >
+              <ModalBody>
+                {props.captcha && (
+                  <React.Fragment>
+                    <img src={props.captcha.captcha_img} alt="captcha" />
+                    <audio
+                      controls
+                      aria-label="Audio for captcha"
+                      className="captcha-audio"
+                      src={props.captcha.captcha_audio}
                     />
-                  </div>
-                  {props.resendMarkup ? props.resendMarkup : null}
-                </ModalBody>
-                <ModalFooter>
-                  <EduIDButton
-                    type="submit"
-                    buttonstyle="primary"
-                    disabled={submitting || invalid}
-                    onClick={() => props.handleConfirm}
-                  >
-                    {props.submitButtonText ? (
-                      props.submitButtonText
-                    ) : (
-                      <FormattedMessage defaultMessage="ok" description="ok button" />
-                    )}
-                  </EduIDButton>
-                </ModalFooter>
-              </form>
-            </Modal>
-          </div>
-        </React.Fragment>
+                  </React.Fragment>
+                )}
+                <div id="confirmation-code-area">
+                  <FinalField<string>
+                    component={CustomInput}
+                    componentClass="input"
+                    type="text"
+                    label={props.modalFormLabel}
+                    placeholder={props.placeholder}
+                    id={props.id}
+                    name={props.id}
+                    helpBlock={props.helpBlock}
+                    validate={validate}
+                    autoFocus={true}
+                  />
+                </div>
+                {props.resendMarkup ? props.resendMarkup : null}
+              </ModalBody>
+              <ModalFooter>
+                <EduIDButton
+                  type="submit"
+                  buttonstyle="primary"
+                  disabled={submitting || invalid}
+                  onClick={() => props.handleConfirm}
+                >
+                  {props.submitButtonText ? (
+                    props.submitButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="ok" description="ok button" />
+                  )}
+                </EduIDButton>
+              </ModalFooter>
+            </form>
+          </Modal>
+        </dialog>
       )}
     />
   );

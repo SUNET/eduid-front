@@ -1,40 +1,43 @@
 import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
-  readonly showLogin?: boolean;
-  readonly showLogout?: boolean;
-  readonly showMenu?: boolean;
-  readonly showRegister?: boolean;
   readonly loginRef?: string;
 }
 
 export function Header(props: HeaderProps): JSX.Element {
-  const dispatch = useDashboardAppDispatch();
-  const signup_link = useDashboardAppSelector((state) => state.config.signup_link);
-  const dashboard_link = useDashboardAppSelector((state) => state.config.dashboard_link);
-  const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const login_url = useDashboardAppSelector((state) => state.config.login_service_url);
-  const start_url = dashboard_link || eduid_site_url;
-  let button = null;
+  const dispatch = useAppDispatch();
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
+  const login_url = useAppSelector((state) => state.config.login_service_url);
+  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const eppn = useAppSelector((state) => state.personal_data.eppn);
+
+  const initialButton = (
+    <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
+      <FormattedMessage defaultMessage="Log in" description="Header login" />
+    </EduIDButton>
+  );
+
+  let button = initialButton;
+
+  const navigate = useNavigate();
 
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
     if (fetchLogout.fulfilled.match(resp)) {
-      const goto_url = resp.payload.location || eduid_site_url || start_url;
-      if (goto_url) {
-        window.location.assign(goto_url);
+      if (eduid_site_url) {
+        window.location.assign(eduid_site_url);
       }
     }
   }
 
   function handleRegister() {
-    if (signup_link) {
-      document.location.href = signup_link;
-    }
+    navigate("/register");
   }
 
   function handleLogin() {
@@ -43,31 +46,31 @@ export function Header(props: HeaderProps): JSX.Element {
     }
   }
 
-  if (props.showLogin) {
+  if (window.location.pathname.includes("register")) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </EduIDButton>
     );
-  } else if (props.showLogout) {
+  } else if (authn_options.has_session) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
-  } else if (props.showRegister) {
+  } else if (window.location.pathname.includes("login")) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
       </EduIDButton>
     );
-  } else if (props.showMenu) {
+  } else if (eppn) {
     button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
   }
 
   return (
     <header id="header">
-      <a href={start_url} aria-label="eduID start" title="eduID start">
+      <a href={eppn ? dashboard_link : eduid_site_url} aria-label="eduID start" title="eduID start">
         <div id="eduid-logo" className="eduid-logo" />
       </a>
       {button}

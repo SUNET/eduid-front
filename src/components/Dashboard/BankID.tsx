@@ -1,11 +1,11 @@
 import { bankIDVerifyIdentity } from "apis/eduidBankid";
 import EduIDButton from "components/Common/EduIDButton";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import { useAppDispatch } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 function BankID(): JSX.Element {
-  const dispatch = useDashboardAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function useBankID() {
     const response = await dispatch(bankIDVerifyIdentity({ method: "bankid" }));

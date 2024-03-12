@@ -1,8 +1,8 @@
 import { PhoneCaptchaResponse, PhonesResponse } from "apis/eduidPhone";
-import { DashboardMain } from "components/Dashboard/DashboardMain";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
-import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 const testPhoneNumber = "+46701233333";
 
@@ -29,7 +29,7 @@ async function addPhoneNumber(phone: string) {
 }
 
 test("renders Phones component as expected", async () => {
-  render(<DashboardMain />);
+  render(<IndexMain />);
   await linkToSettings();
   await addPhoneNumber(testPhoneNumber);
   const addPhoneButton = screen.getByRole("button", { name: "Add" });
@@ -40,8 +40,9 @@ test("renders Phones component as expected", async () => {
 });
 
 test("disable to add number already in the list", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
+      ...defaultDashboardTestState,
       phones: {
         phones: [{ number: "+46701233333", primary: false, verified: false }],
       },
@@ -56,8 +57,9 @@ test("disable to add number already in the list", async () => {
 });
 
 test("enable to add number", async () => {
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
+      ...defaultDashboardTestState,
       phones: {
         phones: [{ number: "+46701233333", primary: false, verified: false }],
       },
@@ -89,8 +91,9 @@ test("renders confirmation code modal", async () => {
   );
   mswServer.printHandlers();
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
+      ...defaultDashboardTestState,
       phones: {
         captcha: {
           captcha_img: "data:image/png;base64,iVBORw0KGgoAAAANSUhE",
@@ -134,8 +137,9 @@ test("renders primary as expected", async () => {
     })
   );
 
-  render(<DashboardMain />, {
+  render(<IndexMain />, {
     state: {
+      ...defaultDashboardTestState,
       phones: {
         captcha: {
           captcha_img: "data:image/png;base64,iVBORw0KGgoAAAANSUhE",

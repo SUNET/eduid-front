@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Fragment, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import NameDisplay from "./NameDisplay";
@@ -29,9 +29,9 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 }
 
 function RenderPersonalData(props: { labels: NameLabels }) {
-  const first_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
-  const last_name = useDashboardAppSelector((state) => state.personal_data.response?.surname);
-  const pref_language = useDashboardAppSelector((state) => state.personal_data.response?.language);
+  const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const last_name = useAppSelector((state) => state.personal_data.response?.surname);
+  const pref_language = useAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
@@ -64,7 +64,7 @@ interface RenderEditBoxProps {
 }
 
 function RenderEditBox(props: RenderEditBoxProps) {
-  const identities = useDashboardAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.identities);
   const isVerifiedIdentity = Boolean(identities?.is_verified);
 
   return (
@@ -104,7 +104,7 @@ function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEd
 function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
-  const personal_data = useDashboardAppSelector((state) => state.personal_data);
+  const personal_data = useAppSelector((state) => state.personal_data);
   const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings

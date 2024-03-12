@@ -2,10 +2,10 @@ import { registerEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
@@ -37,7 +37,7 @@ interface EmailFormData {
 
 /* FORM */
 function EmailForm() {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
 
   function submitEmailForm(values: EmailFormData) {
@@ -89,9 +89,9 @@ function EmailForm() {
  * Send the user-provided email address to the backend.
  */
 export function RegisterEmail() {
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
-  const email = useSignupAppSelector((state) => state.signup.email);
+  const email = useAppSelector((state) => state.signup.email);
 
   if (!email) {
     signupContext.signupService.send({ type: "API_FAIL" });

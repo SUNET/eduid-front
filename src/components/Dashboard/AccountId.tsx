@@ -1,10 +1,10 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 const idUserEppn = "user-eppn";
 
 export function AccountId(): JSX.Element {
-  const eppn = useDashboardAppSelector((state) => state.personal_data.eppn);
+  const eppn = useAppSelector((state) => state.personal_data.eppn);
   return (
     <article id="uniqueId-container">
       <h2>

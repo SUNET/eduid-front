@@ -23,6 +23,10 @@
     "developer_comment": "what is ladok - heading",
     "string": "What is Ladok?"
   },
+  "+XDF4Z": {
+    "developer_comment": "eduID index lead text",
+    "string": "eduID is easier for you because you only have to remember one password and safer for the Universities because it is connected to a real individual."
+  },
   "+YwDxB": {
     "developer_comment": "button add",
     "string": "Add"
@@ -143,6 +147,10 @@
     "developer_comment": "security verified",
     "string": "Verified"
   },
+  "1CLEos": {
+    "developer_comment": "login button",
+    "string": "log in"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -206,6 +214,10 @@
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Why have eduID?"
+  },
+  "2t+khx": {
+    "developer_comment": "read more at Sunet",
+    "string": "You can read more about eduID at {Sunet}"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -846,6 +858,10 @@
     "developer_comment": "Reset password",
     "string": "Send sms to {phone}"
   },
+  "M2RPTv": {
+    "developer_comment": "Signup button",
+    "string": "Create your eduID"
+  },
   "M3X9hA": {
     "developer_comment": "which login email - paragraph",
     "string": "You can log in with all the email addresses you have entered and confirmed in eduID."
@@ -1025,6 +1041,10 @@
   "R3n7aY": {
     "developer_comment": "Use other device",
     "string": "The request has been aborted"
+  },
+  "R5Olyc": {
+    "developer_comment": "eduID index",
+    "string": "eduID is easier and safer login."
   },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
@@ -1472,10 +1492,6 @@
     "developer_comment": "Dashboard change password",
     "string": "Change your current password"
   },
-  "c26Ksk": {
-    "developer_comment": "captcha option",
-    "string": "Use a validation service provided by a third party"
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
@@ -1564,9 +1580,6 @@
   "document title Log in using another device": {
     "string": "Log in using another device | eduID"
   },
-  "document title Register": {
-    "string": "Register | eduID"
-  },
   "document title Reset Password": {
     "string": "Reset Password | eduID"
   },
@@ -1591,6 +1604,10 @@
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
+  },
+  "eJ63eJ": {
+    "developer_comment": "eduID index lead text",
+    "string": "Create an eduID and connect it to your identity to gain access to services and organisations related to higher education."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",

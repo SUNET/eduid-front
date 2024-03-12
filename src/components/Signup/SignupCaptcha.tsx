@@ -1,28 +1,24 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
-import { Captcha as GoogleCaptcha } from "components/Common/Captcha";
+import { CaptchaRequest, GetCaptchaResponse, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 import { SignupCaptchaForm } from "./SignupCaptchaForm";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export interface CaptchaProps {
-  handleCaptchaCancel: () => void;
-  handleCaptchaCompleted: (response: string) => void;
-  toggleCaptcha: () => void;
+  readonly handleCaptchaCancel: () => void;
+  readonly handleCaptchaCompleted: (response: string) => void;
 }
 
 export function SignupCaptcha(): JSX.Element | null {
-  const preferredCaptcha = useSignupAppSelector((state) => state.config.preferred_captcha);
-  const state = useSignupAppSelector((state) => state.signup.state);
+  const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const [useInternalCaptcha, setUseInternalCaptcha] = useState<boolean>(preferredCaptcha === "internal");
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (state?.captcha.completed) {
@@ -35,19 +31,13 @@ export function SignupCaptcha(): JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
-    if (useInternalCaptcha) {
+    if (response) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-    } else {
-      dispatch(signupSlice.actions.setCaptchaResponse({ recaptcha_response: response }));
+      signupContext.signupService.send({ type: "COMPLETE" });
     }
-    signupContext.signupService.send({ type: "COMPLETE" });
   }
 
-  function toggleCaptcha() {
-    setUseInternalCaptcha(!useInternalCaptcha);
-  }
-
-  const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
+  const args = { handleCaptchaCancel, handleCaptchaCompleted };
 
   // If the user has already completed the captcha, don't show it again
   if (state?.captcha.completed) {
@@ -69,52 +59,42 @@ export function SignupCaptcha(): JSX.Element | null {
         </p>
       </div>
 
-      <fieldset>
-        <label className="toggle flex-between" htmlFor="captcha-switch">
-          <span>
-            <FormattedMessage
-              defaultMessage="Use a validation service provided by a third party"
-              description="captcha option"
-            />
-          </span>
-          <input
-            onChange={toggleCaptcha}
-            className="toggle-checkbox"
-            type="checkbox"
-            checked={useInternalCaptcha ? false : true}
-            id="captcha-switch"
-          />
-          <div className="toggle-switch"></div>
-        </label>
-      </fieldset>
-      {useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}
+      <InternalCaptcha {...args} />
     </Fragment>
   );
 }
 
 function InternalCaptcha(props: CaptchaProps) {
-  const dispatch = useSignupAppDispatch();
-  const [img, setImg] = useState<string | undefined>(undefined);
+  const dispatch = useAppDispatch();
+  const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
     if (getCaptchaRequest.fulfilled.match(res)) {
-      return res.payload.captcha_img;
+      return res.payload;
     }
   }
 
   function getNewCaptcha() {
-    getCaptcha().then((img) => {
-      setImg(img);
+    getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
+      setCaptchaResponse({
+        captcha_img: captcha?.captcha_img,
+        captcha_audio: captcha?.captcha_audio,
+      });
     });
   }
 
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
-    if (!img) {
-      getCaptcha().then((img) => {
-        if (!aborted && img) setImg(img);
+    if (!captchaResponse) {
+      getCaptcha().then((captchaResponse: any) => {
+        if (!aborted && captchaResponse) {
+          setCaptchaResponse({
+            captcha_img: captchaResponse.captcha_img,
+            captcha_audio: captchaResponse.captcha_audio,
+          });
+        }
       });
     }
 
@@ -123,15 +103,22 @@ function InternalCaptcha(props: CaptchaProps) {
     return () => {
       aborted = true;
     };
-  }, [img]);
+  }, []);
 
   return (
     <React.Fragment>
       <figure className="captcha-responsive">
-        <img className="captcha-image" src={img} />
+        <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
+        <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
       </figure>
       <div className="icon-text">
-        <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+        <button
+          type="button"
+          className="icon-only"
+          aria-label="name-check"
+          disabled={!captchaResponse?.captcha_img}
+          onClick={getNewCaptcha}
+        >
           <FontAwesomeIcon icon={faRedo as IconProp} />
         </button>
         <label htmlFor="name-check" className="hint">
@@ -143,9 +130,9 @@ function InternalCaptcha(props: CaptchaProps) {
   );
 }
 export function ProcessCaptcha(): null {
-  const captcha = useSignupAppSelector((state) => state.signup.captcha);
+  const captcha = useAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);
-  const dispatch = useSignupAppDispatch();
+  const dispatch = useAppDispatch();
 
   async function sendCaptcha(captcha: CaptchaRequest) {
     const res = await dispatch(sendCaptchaResponse(captcha));
