@@ -11,7 +11,7 @@ import validatePersonalData from "helperFunctions/validation/validatePersonalDat
 import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -28,8 +28,11 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const messages = LOCALIZED_MESSAGES;
 
+  const [displayName, setDisplayName] = useState<string | undefined>();
+
   async function formSubmit(values: PersonalDataRequest) {
-    const response = await dispatch(postPersonalData(values));
+    const response = await dispatch(postPersonalData(displayName ? { ...values, display_name: displayName } : values));
+
     if (postPersonalData.fulfilled.match(response)) {
       props.setEditMode(false); // tell parent component we're done editing
       if (response.payload.language) {
@@ -56,7 +59,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
               {props.isVerifiedIdentity ? (
-                <RenderLockedNames labels={labels} />
+                <RenderLockedNames labels={labels} setDisplayName={setDisplayName} />
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
@@ -74,13 +77,29 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   );
 }
 
-function SelectDisplayName(): JSX.Element {
-  const given_name = useDashboardAppSelector((state) => state.personal_data.response?.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.response?.surname);
+function SelectDisplayName(props: { setDisplayName: any }): JSX.Element {
+  const is_verified = useAppSelector((state) => state.identities.is_verified);
+  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const [selectedOptions, setSelectedOptions] = useState<{ label: string; value: string }[]>([]);
+  const [defaultValues, setDefaultValues] = useState<{ label: string; value: string }[]>([]);
+  const givenNameInputElement = document.getElementById("given_name") as HTMLInputElement;
+  const givenNameInputValue = givenNameInputElement?.value;
+  const surNameInputElement = document.getElementById("surname") as HTMLInputElement;
+  const surNameInputValue = surNameInputElement?.value;
 
   useEffect(() => {
-    if (given_name && surname) {
+    if (!is_verified && givenNameInputValue && surNameInputValue) {
+      const fullName = `${givenNameInputValue} ${surNameInputValue}`;
+      const splitFullName = fullName?.split(/[\s-]+/);
+      const transformedOptions = splitFullName?.map((name) => ({
+        label: name,
+        value: name,
+      }));
+      setSelectedOptions(transformedOptions);
+      setDefaultValues(transformedOptions);
+    }
+    if (is_verified && given_name && surname) {
       const fullName = `${given_name} ${surname}`;
       const splitFullName = fullName?.split(/[\s-]+/);
       const transformedOptions = splitFullName?.map((name) => ({
@@ -88,14 +107,23 @@ function SelectDisplayName(): JSX.Element {
         value: name,
       }));
       setSelectedOptions(transformedOptions);
+      setDefaultValues(transformedOptions);
     }
-  }, [given_name, surname]);
+  }, [given_name, surname, givenNameInputValue, surNameInputValue]);
 
-  const handleSelectChange = (selectedOptions: { label: string; value: string }[]) => {
-    setSelectedOptions(selectedOptions);
+  const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
+    const updatedValue = Array.from(newValue);
+    if (updatedValue) {
+      setSelectedOptions(updatedValue);
+      const result = updatedValue.map((name: any) => name.value).join(" ");
+      if (result) {
+        props.setDisplayName(result);
+        console.log("result", result);
+      }
+    }
   };
 
-  if (!selectedOptions.length) {
+  if (!defaultValues.length) {
     return <></>;
   }
 
@@ -108,8 +136,8 @@ function SelectDisplayName(): JSX.Element {
         isMulti
         defaultValue={selectedOptions}
         name="display_name"
-        options={selectedOptions}
-        onChange={() => handleSelectChange}
+        options={defaultValues}
+        onChange={handleSelectChange}
         className="basic-multi-select"
         classNamePrefix="select"
         noOptionsMessage={() => (
@@ -192,7 +220,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
           />
         </label>
       </div>
-      <SelectDisplayName />
+      <SelectDisplayName setDisplayName={props.setDisplayName} />
     </Fragment>
   );
 };
@@ -222,7 +250,6 @@ function RenderEditableNames(props: { labels: NameLabels }) {
           placeholder={props.labels.last}
         />
       </fieldset>
-      <SelectDisplayName />
       <p className="help-text">
         <FormattedMessage
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
