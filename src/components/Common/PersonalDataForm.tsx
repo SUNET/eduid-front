@@ -17,8 +17,8 @@ import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
 interface PersonalDataFormProps {
-  labels: NameLabels;
-  isVerifiedIdentity: boolean;
+  readonly labels: NameLabels;
+  readonly isVerifiedIdentity: boolean;
   setEditMode(value: boolean): void;
 }
 
@@ -77,7 +77,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   );
 }
 
-function SelectDisplayName(props: { setDisplayName: any }): JSX.Element {
+function SelectDisplayName(props: { readonly setDisplayName: (name: string) => void }): JSX.Element {
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
@@ -104,7 +104,6 @@ function SelectDisplayName(props: { setDisplayName: any }): JSX.Element {
       const result = updatedValue.map((name: any) => name.value).join(" ");
       if (result) {
         props.setDisplayName(result);
-        console.log("result", result);
       }
     }
   };
@@ -170,7 +169,7 @@ function RenderLanguageSelect(): JSX.Element {
  * the legal names from Skatteverket. There is however a button to request renewal of the names
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
-const RenderLockedNames = (props: { labels: NameLabels }) => {
+const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: string) => void }) => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
@@ -211,7 +210,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   );
 };
 
-function RenderEditableNames(props: { labels: NameLabels }) {
+function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
     <Fragment>
       <fieldset>
