@@ -8,16 +8,17 @@ import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import Select, { MultiValue } from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
 interface PersonalDataFormProps {
-  labels: NameLabels;
-  isVerifiedIdentity: boolean;
+  readonly labels: NameLabels;
+  readonly isVerifiedIdentity: boolean;
   setEditMode(value: boolean): void;
 }
 
@@ -27,8 +28,11 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const messages = LOCALIZED_MESSAGES;
 
+  const [displayName, setDisplayName] = useState<string | undefined>();
+
   async function formSubmit(values: PersonalDataRequest) {
-    const response = await dispatch(postPersonalData(values));
+    const response = await dispatch(postPersonalData(displayName ? { ...values, display_name: displayName } : values));
+
     if (postPersonalData.fulfilled.match(response)) {
       props.setEditMode(false); // tell parent component we're done editing
       if (response.payload.language) {
@@ -55,7 +59,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
               {props.isVerifiedIdentity ? (
-                <RenderLockedNames labels={labels} />
+                <RenderLockedNames labels={labels} setDisplayName={setDisplayName} />
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
@@ -70,6 +74,68 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
         );
       }}
     />
+  );
+}
+
+function SelectDisplayName(props: { readonly setDisplayName: (name: string) => void }): JSX.Element {
+  const is_verified = useAppSelector((state) => state.identities.is_verified);
+  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const surname = useAppSelector((state) => state.personal_data.response?.surname);
+  const [selectedOptions, setSelectedOptions] = useState<{ label: string; value: string }[]>([]);
+  const [defaultValues, setDefaultValues] = useState<{ label: string; value: string }[]>([]);
+
+  useEffect(() => {
+    if (is_verified && given_name && surname) {
+      const fullName = `${given_name} ${surname}`;
+      const splitFullName = fullName?.split(/[\s-]+/);
+      const transformedOptions = splitFullName?.map((name) => ({
+        label: name,
+        value: name,
+      }));
+      setSelectedOptions(transformedOptions);
+      setDefaultValues(transformedOptions);
+    }
+  }, [given_name, surname]);
+
+  const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
+    const updatedValue = Array.from(newValue);
+    if (updatedValue) {
+      setSelectedOptions(updatedValue);
+      const result = updatedValue.map((name: any) => name.value).join(" ");
+      if (result) {
+        props.setDisplayName(result);
+      }
+    }
+  };
+
+  if (!defaultValues.length) {
+    return <></>;
+  }
+
+  return (
+    <fieldset>
+      <legend className="require">
+        <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
+      </legend>
+      <Select
+        isMulti
+        defaultValue={selectedOptions}
+        name="display_name"
+        options={defaultValues}
+        onChange={handleSelectChange}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        noOptionsMessage={() => (
+          <FormattedMessage
+            defaultMessage="To change the display name, delete and choose again"
+            description="Display name noOptionsMessage"
+          />
+        )}
+        placeholder={
+          <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+        }
+      />
+    </fieldset>
   );
 }
 
@@ -103,7 +169,7 @@ function RenderLanguageSelect(): JSX.Element {
  * the legal names from Skatteverket. There is however a button to request renewal of the names
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
-const RenderLockedNames = (props: { labels: NameLabels }) => {
+const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: string) => void }) => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
@@ -139,11 +205,12 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
           />
         </label>
       </div>
+      <SelectDisplayName setDisplayName={props.setDisplayName} />
     </Fragment>
   );
 };
 
-function RenderEditableNames(props: { labels: NameLabels }) {
+function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
     <Fragment>
       <fieldset>
