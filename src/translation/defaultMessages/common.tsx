@@ -68,6 +68,10 @@ export const personalData = {
   "pd.save-success": <FormattedMessage id="pd.save-success" defaultMessage={`Personal information updated`} />,
 
   "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
+
+  "pdata.display_name_invalid": (
+    <FormattedMessage id="pdata.display_name_invalid" defaultMessage={`Invalid display name. Please choose again.`} />
+  ),
 };
 
 export const validations = {

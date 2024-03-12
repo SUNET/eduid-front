@@ -2345,6 +2345,9 @@
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Last name"
   },
+  "pdata.display_name_invalid": {
+    "string": "Invalid display name. Please choose again."
+  },
   "pdata.field_required": {
     "string": "This field is required"
   },
