@@ -38,7 +38,10 @@
         line-height: 1.4;
         // captcha image
         img {
-          padding-bottom: 20px;
+          padding-bottom: 1rem;
+        }
+        audio {
+          margin-bottom: 1rem;
         }
         input {
           background-color: $body-gray;

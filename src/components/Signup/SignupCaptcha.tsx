@@ -2,7 +2,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, GetCaptchaResponse, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
-import { Captcha as GoogleCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -12,16 +11,13 @@ import { SignupCaptchaForm } from "./SignupCaptchaForm";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export interface CaptchaProps {
-  handleCaptchaCancel: () => void;
-  handleCaptchaCompleted: (response: string) => void;
-  toggleCaptcha: () => void;
+  readonly handleCaptchaCancel: () => void;
+  readonly handleCaptchaCompleted: (response: string) => void;
 }
 
 export function SignupCaptcha(): JSX.Element | null {
-  const preferredCaptcha = useAppSelector((state) => state.config.preferred_captcha);
   const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
-  const [useInternalCaptcha, setUseInternalCaptcha] = useState<boolean>(preferredCaptcha === "internal");
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -35,19 +31,13 @@ export function SignupCaptcha(): JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
-    if (useInternalCaptcha) {
+    if (response) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-    } else {
-      dispatch(signupSlice.actions.setCaptchaResponse({ recaptcha_response: response }));
+      signupContext.signupService.send({ type: "COMPLETE" });
     }
-    signupContext.signupService.send({ type: "COMPLETE" });
   }
 
-  function toggleCaptcha() {
-    setUseInternalCaptcha(!useInternalCaptcha);
-  }
-
-  const args = { handleCaptchaCancel, handleCaptchaCompleted, toggleCaptcha };
+  const args = { handleCaptchaCancel, handleCaptchaCompleted };
 
   // If the user has already completed the captcha, don't show it again
   if (state?.captcha.completed) {
@@ -69,25 +59,7 @@ export function SignupCaptcha(): JSX.Element | null {
         </p>
       </div>
 
-      <fieldset>
-        <label className="toggle flex-between" htmlFor="captcha-switch">
-          <span>
-            <FormattedMessage
-              defaultMessage="Use a validation service provided by a third party"
-              description="captcha option"
-            />
-          </span>
-          <input
-            onChange={toggleCaptcha}
-            className="toggle-checkbox"
-            type="checkbox"
-            checked={useInternalCaptcha ? false : true}
-            id="captcha-switch"
-          />
-          <div className="toggle-switch"></div>
-        </label>
-      </fieldset>
-      {useInternalCaptcha ? <InternalCaptcha {...args} /> : <GoogleCaptcha {...args} />}
+      <InternalCaptcha {...args} />
     </Fragment>
   );
 }
