@@ -83,22 +83,8 @@ function SelectDisplayName(props: { setDisplayName: any }): JSX.Element {
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const [selectedOptions, setSelectedOptions] = useState<{ label: string; value: string }[]>([]);
   const [defaultValues, setDefaultValues] = useState<{ label: string; value: string }[]>([]);
-  const givenNameInputElement = document.getElementById("given_name") as HTMLInputElement;
-  const givenNameInputValue = givenNameInputElement?.value;
-  const surNameInputElement = document.getElementById("surname") as HTMLInputElement;
-  const surNameInputValue = surNameInputElement?.value;
 
   useEffect(() => {
-    if (!is_verified && givenNameInputValue && surNameInputValue) {
-      const fullName = `${givenNameInputValue} ${surNameInputValue}`;
-      const splitFullName = fullName?.split(/[\s-]+/);
-      const transformedOptions = splitFullName?.map((name) => ({
-        label: name,
-        value: name,
-      }));
-      setSelectedOptions(transformedOptions);
-      setDefaultValues(transformedOptions);
-    }
     if (is_verified && given_name && surname) {
       const fullName = `${given_name} ${surname}`;
       const splitFullName = fullName?.split(/[\s-]+/);
@@ -109,7 +95,7 @@ function SelectDisplayName(props: { setDisplayName: any }): JSX.Element {
       setSelectedOptions(transformedOptions);
       setDefaultValues(transformedOptions);
     }
-  }, [given_name, surname, givenNameInputValue, surNameInputValue]);
+  }, [given_name, surname]);
 
   const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
     const updatedValue = Array.from(newValue);
