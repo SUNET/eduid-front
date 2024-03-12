@@ -65,7 +65,7 @@ function RenderPersonalData(props: { labels: NameLabels }) {
 
 interface RenderEditBoxProps {
   setEditMode(value: boolean): void;
-  labels: NameLabels;
+  readonly labels: NameLabels;
 }
 
 function RenderEditBox(props: RenderEditBoxProps) {
@@ -73,24 +73,22 @@ function RenderEditBox(props: RenderEditBoxProps) {
   const isVerifiedIdentity = Boolean(identities?.is_verified);
 
   return (
-    <Fragment>
-      <div className="edit-data">
-        <div className="title">
-          <h4>
-            <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
-          </h4>
-          <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
-        </div>
-        <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
+    <div className="edit-data">
+      <div className="title">
+        <h4>
+          <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
+        </h4>
+        <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
       </div>
-    </Fragment>
+      <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
+    </div>
   );
 }
 
 interface RenderEditButtonProps {
-  isEditMode: boolean;
+  readonly isEditMode: boolean;
   setEditMode(value: boolean): void;
-  hasPersonalData: boolean;
+  readonly hasPersonalData: boolean;
 }
 
 function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) {
@@ -107,7 +105,7 @@ function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEd
 }
 
 function PersonalDataParent() {
-  const [isEditMode, setEditMode] = useState(false);
+  const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
   const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
@@ -146,11 +144,9 @@ function PersonalDataParent() {
           defaultMessage="This information may be used to personalise services that you access with your eduID."
         />
       </p>
-      <Fragment>
-        {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
-        {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
-        {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
-      </Fragment>
+      {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
+      {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
+      {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
     </article>
   );
 }
