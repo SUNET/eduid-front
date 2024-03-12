@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
+import { CaptchaRequest, GetCaptchaResponse, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
 import { Captcha as GoogleCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
@@ -94,8 +94,7 @@ export function SignupCaptcha(): JSX.Element | null {
 
 function InternalCaptcha(props: CaptchaProps) {
   const dispatch = useAppDispatch();
-  const [img, setImg] = useState<string | undefined>(undefined);
-  const [audio, setAudio] = useState<string | undefined>(undefined);
+  const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
 
   async function getCaptcha() {
     const res = await dispatch(getCaptchaRequest());
@@ -105,24 +104,25 @@ function InternalCaptcha(props: CaptchaProps) {
   }
 
   function getNewCaptcha() {
-    getCaptcha().then((captcha: any) => {
-      setImg(captcha.captcha_img);
-      setAudio(captcha.captcha_audio);
+    getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
+      setCaptchaResponse({
+        captcha_img: captcha?.captcha_img,
+        captcha_audio: captcha?.captcha_audio,
+      });
     });
   }
 
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
-    if (!img) {
-      getCaptcha().then((img: any) => {
-        if (!aborted && img) setImg(img.captcha_img);
-      });
-    }
-
-    if (!audio) {
-      getCaptcha().then((audio: any) => {
-        if (!aborted && audio) setAudio(audio.captcha_audio);
+    if (!captchaResponse) {
+      getCaptcha().then((captchaResponse: any) => {
+        if (!aborted && captchaResponse) {
+          setCaptchaResponse({
+            captcha_img: captchaResponse.captcha_img,
+            captcha_audio: captchaResponse.captcha_audio,
+          });
+        }
       });
     }
 
@@ -131,16 +131,22 @@ function InternalCaptcha(props: CaptchaProps) {
     return () => {
       aborted = true;
     };
-  }, [img]);
+  }, []);
 
   return (
     <React.Fragment>
       <figure className="captcha-responsive">
-        <img alt="captcha image" className="captcha-image" src={img} />
-        <audio controls className="captcha-audio" src={audio} />
+        <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
+        <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
       </figure>
       <div className="icon-text">
-        <button type="button" className="icon-only" aria-label="name-check" disabled={!img} onClick={getNewCaptcha}>
+        <button
+          type="button"
+          className="icon-only"
+          aria-label="name-check"
+          disabled={!captchaResponse?.captcha_img}
+          onClick={getNewCaptcha}
+        >
           <FontAwesomeIcon icon={faRedo as IconProp} />
         </button>
         <label htmlFor="name-check" className="hint">
