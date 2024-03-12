@@ -1492,10 +1492,6 @@
     "developer_comment": "Dashboard change password",
     "string": "Change your current password"
   },
-  "c26Ksk": {
-    "developer_comment": "captcha option",
-    "string": "Use a validation service provided by a third party"
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
