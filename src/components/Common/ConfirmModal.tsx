@@ -64,7 +64,12 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                 {props.captcha && (
                   <React.Fragment>
                     <img src={props.captcha.captcha_img} alt="captcha" />
-                    <audio controls className="captcha-audio" src={props.captcha.captcha_audio} />
+                    <audio
+                      controls
+                      aria-label="Audio for captcha"
+                      className="captcha-audio"
+                      src={props.captcha.captcha_audio}
+                    />
                   </React.Fragment>
                 )}
                 <div id="confirmation-code-area">
