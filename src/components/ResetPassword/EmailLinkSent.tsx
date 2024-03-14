@@ -36,7 +36,6 @@ export function EmailLinkSent(): JSX.Element | null {
           dispatch(clearNotifications());
           resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
         } else {
-          console.log("FAIL");
           resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
         }
       }
