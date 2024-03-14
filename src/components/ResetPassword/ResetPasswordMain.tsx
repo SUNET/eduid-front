@@ -44,6 +44,7 @@ interface CodeParams {
   emailCode?: string;
 }
 
+//TODO:  remove it after the email code release
 export function HandleEmailCode(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
