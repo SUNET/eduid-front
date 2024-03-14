@@ -165,6 +165,12 @@ export function HandleExtraSecurities(): JSX.Element | null {
     }
   }, [swedishEID_status]);
 
+  useEffect(() => {
+    if (extra_security && !Object.values(extra_security).length) {
+      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+    }
+  }, [extra_security]);
+
   function handleOnClickFreja() {
     (async () => {
       const response = await dispatch(
@@ -214,7 +220,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_NO_EXTRA_SECURITY" });
+    resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
   }
 
   if (!extra_security) {
