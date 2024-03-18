@@ -63,13 +63,17 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
+              <article>
+                <RenderLanguageSelect />
+              </article>
+              <article>
+                <div className="buttons">
+                  <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
+                    <FormattedMessage defaultMessage="save" description="button save" />
+                  </EduIDButton>
+                </div>
+              </article>
             </fieldset>
-            <RenderLanguageSelect />
-            <div className="buttons">
-              <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
-                <FormattedMessage defaultMessage="save" description="button save" />
-              </EduIDButton>
-            </div>
           </form>
         );
       }}
@@ -119,31 +123,30 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
       </legend>
       <p className="help-text">
         <FormattedMessage
-          defaultMessage={`If your identity is verified you can choose which of your first names from the population 
-          register to use as your display name for some services, in addition to your last name.`}
+          defaultMessage={`If your identity is verified you can choose which of your names from the population 
+          register to use as your display name for some services. Select a first name and your last name below.`}
           description="Display name select paragraph"
         />
       </p>
-      <fieldset>
-        <Select
-          isMulti
-          defaultValue={selectedOptions}
-          name="display_name"
-          options={defaultValues}
-          onChange={handleSelectChange}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          noOptionsMessage={() => (
-            <FormattedMessage
-              defaultMessage="To change the display name, delete and choose again"
-              description="Display name noOptionsMessage"
-            />
-          )}
-          placeholder={
-            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
-          }
-        />
-      </fieldset>
+
+      <Select
+        isMulti
+        defaultValue={selectedOptions}
+        name="display_name"
+        options={defaultValues}
+        onChange={handleSelectChange}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        noOptionsMessage={() => (
+          <FormattedMessage
+            defaultMessage="To change the display name, delete and choose again"
+            description="Display name noOptionsMessage"
+          />
+        )}
+        placeholder={
+          <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+        }
+      />
     </>
   );
 }
@@ -154,7 +157,7 @@ function RenderLanguageSelect(): JSX.Element {
   const language_list = Object.entries(_languages);
 
   return (
-    <fieldset>
+    <>
       <legend className="require">
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
       </legend>
@@ -169,7 +172,7 @@ function RenderLanguageSelect(): JSX.Element {
           );
         })}
       </div>
-    </fieldset>
+    </>
   );
 }
 
@@ -193,28 +196,32 @@ const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: s
 
   return (
     <Fragment>
-      <div className="external-names">
-        <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
-        <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
-      </div>
-      <div className="icon-text">
-        <button
-          type="button"
-          className="icon-only"
-          disabled={loading}
-          aria-label="name-check"
-          onClick={() => handleUpdateName()}
-        >
-          <FontAwesomeIcon icon={faRedo as IconProp} />
-        </button>
-        <label htmlFor="name-check" className="hint">
-          <FormattedMessage
-            defaultMessage="Update first and last names from the Swedish Population Register."
-            description="Personal data update locked names"
-          />
-        </label>
-      </div>
-      <SelectDisplayName setDisplayName={props.setDisplayName} />
+      <article>
+        <div className="external-names">
+          <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
+          <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
+        </div>
+        <div className="icon-text">
+          <button
+            type="button"
+            className="icon-only"
+            disabled={loading}
+            aria-label="name-check"
+            onClick={() => handleUpdateName()}
+          >
+            <FontAwesomeIcon icon={faRedo as IconProp} />
+          </button>
+          <label htmlFor="name-check" className="hint">
+            <FormattedMessage
+              defaultMessage="Update first and last names from the Swedish Population Register."
+              description="Personal data update locked names"
+            />
+          </label>
+        </div>
+      </article>
+      <article>
+        <SelectDisplayName setDisplayName={props.setDisplayName} />
+      </article>
     </Fragment>
   );
 };
@@ -222,34 +229,36 @@ const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: s
 function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
     <Fragment>
-      <fieldset>
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="given_name"
-          label={props.labels.first}
-          placeholder={props.labels.first}
-        />
-      </fieldset>
-      <fieldset>
-        <Field
-          component={CustomInput}
-          required={true}
-          componentClass="input"
-          type="text"
-          name="surname"
-          label={props.labels.last}
-          placeholder={props.labels.last}
-        />
-      </fieldset>
-      <p className="help-text">
-        <FormattedMessage
-          defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-          description="Personal data hint names locked when verified"
-        />
-      </p>
+      <article>
+        <fieldset>
+          <Field
+            component={CustomInput}
+            required={true}
+            componentClass="input"
+            type="text"
+            name="given_name"
+            label={props.labels.first}
+            placeholder={props.labels.first}
+          />
+        </fieldset>
+        <fieldset>
+          <Field
+            component={CustomInput}
+            required={true}
+            componentClass="input"
+            type="text"
+            name="surname"
+            label={props.labels.last}
+            placeholder={props.labels.last}
+          />
+        </fieldset>
+        <p className="help-text">
+          <FormattedMessage
+            defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+            description="Personal data hint names locked when verified"
+          />
+        </p>
+      </article>
     </Fragment>
   );
 }

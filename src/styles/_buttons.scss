@@ -223,6 +223,8 @@ button.btn-icon {
   align-items: baseline;
 
   button.icon-only {
+    height: auto;
+
     &:hover {
       transform: rotate(180deg);
       padding: initial;
