@@ -1,5 +1,6 @@
 /** react-select style overrides, final-form element prefixed by "react-select" **/
-form .react-select {
+form .react-select,
+.basic-multi-select .select {
   &-container {
     padding-top: 2px;
   }
@@ -42,4 +43,8 @@ form .react-select {
 
 .basic-multi-select {
   margin-top: 1rem;
+
+  .select__input-container {
+    display: none;
+  }
 }
