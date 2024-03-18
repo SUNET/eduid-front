@@ -113,29 +113,38 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
   }
 
   return (
-    <fieldset>
+    <>
       <legend className="require">
         <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
       </legend>
-      <Select
-        isMulti
-        defaultValue={selectedOptions}
-        name="display_name"
-        options={defaultValues}
-        onChange={handleSelectChange}
-        className="basic-multi-select"
-        classNamePrefix="select"
-        noOptionsMessage={() => (
-          <FormattedMessage
-            defaultMessage="To change the display name, delete and choose again"
-            description="Display name noOptionsMessage"
-          />
-        )}
-        placeholder={
-          <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
-        }
-      />
-    </fieldset>
+      <p className="help-text">
+        <FormattedMessage
+          defaultMessage={`If your identity is verified you can choose which of your first names from the population 
+          register to use as your display name for some services, in addition to your last name.`}
+          description="Display name select paragraph"
+        />
+      </p>
+      <fieldset>
+        <Select
+          isMulti
+          defaultValue={selectedOptions}
+          name="display_name"
+          options={defaultValues}
+          onChange={handleSelectChange}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          noOptionsMessage={() => (
+            <FormattedMessage
+              defaultMessage="To change the display name, delete and choose again"
+              description="Display name noOptionsMessage"
+            />
+          )}
+          placeholder={
+            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+          }
+        />
+      </fieldset>
+    </>
   );
 }
 
