@@ -34,6 +34,7 @@ interface APIEndpoints {
   svipe_service_url?: string;
   bankid_service_url?: string;
   authn_service_url?: string;
+  signup_service_url?: string;
 }
 
 // The apps have their separate config slices, but all config slices need to listen for this
