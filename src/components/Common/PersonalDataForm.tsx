@@ -52,6 +52,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
       validate={validatePersonalData}
       onSubmit={formSubmit}
       render={(formProps) => {
+        console.log("formProps", formProps);
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
 
@@ -120,7 +121,7 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
   }
 
   return (
-    <>
+    <article>
       <legend className="require">
         <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
       </legend>
@@ -150,7 +151,7 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
           <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
         }
       />
-    </>
+    </article>
   );
 }
 
