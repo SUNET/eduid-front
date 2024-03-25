@@ -59,7 +59,10 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
               {props.isVerifiedIdentity ? (
-                <RenderLockedNames labels={labels} setDisplayName={setDisplayName} />
+                <>
+                  <RenderLockedNames labels={labels} />
+                  <SelectDisplayName setDisplayName={setDisplayName} />
+                </>
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
@@ -90,9 +93,9 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
 
   useEffect(() => {
     if (is_verified && given_name && surname) {
-      const fullName = `${given_name} ${surname}`;
-      const splitFullName = fullName?.split(/[\s-]+/);
-      const transformedOptions = splitFullName?.map((name) => ({
+      const fullName = given_name?.split(/[\s-]+/);
+      fullName.push(surname);
+      const transformedOptions = fullName?.map((name) => ({
         label: name,
         value: name,
       }));
@@ -181,7 +184,7 @@ function RenderLanguageSelect(): JSX.Element {
  * the legal names from Skatteverket. There is however a button to request renewal of the names
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
-const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: string) => void }) => {
+const RenderLockedNames = (props: { labels: NameLabels }) => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
@@ -218,9 +221,6 @@ const RenderLockedNames = (props: { labels: NameLabels; setDisplayName: (name: s
             />
           </label>
         </div>
-      </article>
-      <article>
-        <SelectDisplayName setDisplayName={props.setDisplayName} />
       </article>
     </Fragment>
   );
