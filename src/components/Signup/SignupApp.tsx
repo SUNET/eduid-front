@@ -2,7 +2,7 @@ import { useActor } from "@xstate/react";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { useAppDispatch } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
@@ -39,6 +39,7 @@ export function SignupApp(): JSX.Element {
 function SignupStart() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
+  const is_configured = useAppSelector((state) => state.config.is_configured);
 
   useEffect(() => {
     // bootstrap signup state in redux store by asking the backend for it
@@ -48,9 +49,10 @@ function SignupStart() {
         signupContext.signupService.send({ type: "COMPLETE" });
       }
     }
-
-    fetchSignupState();
-  }, []);
+    if (is_configured) {
+      fetchSignupState();
+    }
+  }, [is_configured]);
 
   return null;
 }
