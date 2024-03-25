@@ -9,7 +9,7 @@
   },
   "+9mdAK": {
     "developer_comment": "about contact support - handle",
-    "string": "Kontakta eduID support"
+    "string": "Kontakt med eduID support"
   },
   "+B59c5": {
     "developer_comment": "Return to register",
@@ -21,7 +21,11 @@
   },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
-    "string": "Vad är Ladok?"
+    "string": "Vad är Ladok och ESI?"
+  },
+  "+XDF4Z": {
+    "developer_comment": "eduID index lead text",
+    "string": "eduID gör det enklare för dig eftersom du bara behöver komma ihåg ett lösenord och säkrare för skolorna eftersom det är kopplat till en riktig individ."
   },
   "+YwDxB": {
     "developer_comment": "button add",
@@ -95,6 +99,10 @@
     "developer_comment": "SAML login finished",
     "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
   },
+  "0QJd38": {
+    "developer_comment": "usb key technical section - list item 2 code",
+    "string": "\"fido certified\""
+  },
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "Ingen information har lagts till."
@@ -139,6 +147,10 @@
     "developer_comment": "security verified",
     "string": "Verifierad"
   },
+  "1CLEos": {
+    "developer_comment": "login button",
+    "string": "Logga in"
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
@@ -169,7 +181,7 @@
   },
   "2QWlvD": {
     "developer_comment": "what is sunet - paragraph 1",
-    "string": "eduID är en tjänst som tillhandahålls av SUNET (Swedish University Computer Network), en organisation som är en del av Vetenskapsrådet. SUNET tillgodoser bl.a. datakommunikation och nätverk hos svenska lärosäten och andra offentliga organisationer med koppling till forskning eller högre utbildning."
+    "string": "eduID är en tjänst som tillhandahålls av SUNET (Swedish University Computer Network), som är en del av Vetenskapsrådet. SUNET tillgodoser bl.a. datakommunikation och nätverk hos svenska lärosäten och andra offentliga organisationer med koppling till forskning eller högre utbildning."
   },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
@@ -203,6 +215,10 @@
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
   },
+  "2t+khx": {
+    "developer_comment": "read more at Sunet",
+    "string": "Du kan läsa mer om eduID på {Sunet}"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
@@ -217,7 +233,7 @@
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
-    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier), som t.ex. används vid ansökning till Erasmus utbytesprogram."
+    "string": "Ladok är ett system för studieadministration vid svenska universitet och högskolor för antagning och betygssättning. Vissa lärosäten har valt att ge eduID åtkomst till ESI-attributet (European Student Identifier) från Ladok, som t.ex. används vid ansökning till Erasmus utbytesprogram."
   },
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
@@ -233,7 +249,7 @@
   },
   "3kNowi": {
     "developer_comment": "create eduid - list item 3",
-    "string": "Acceptera användarvillkoren,"
+    "string": "acceptera användarvillkoren,"
   },
   "3lgcSo": {
     "developer_comment": "accordion item security key additional info",
@@ -259,6 +275,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
   },
+  "41atQw": {
+    "developer_comment": "eidas vetting button freja",
+    "string": "med Freja+"
+  },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
     "string": "installera {Freja} på din mobila enhet (iOS eller Android) och skapa ett Freja+ konto enligt instruktionerna,"
@@ -273,7 +293,7 @@
   },
   "4JwhDk": {
     "developer_comment": "svipe if personal number - paragraph",
-    "string": "Observera: innehavare av svenskt personnummer uppmanas att använda sig av metoderna som därav stöds istället."
+    "string": "Innehavare av svenskt personnummer uppmanas att istället använda sig av metoderna som stöds därav."
   },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
@@ -345,9 +365,13 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7B1RyH": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "För dig som kan använda BankID"
+  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
-    "string": "ansluta ditt eduID till Ladok och/eller befintligt ORCID iD om det stöds av din institution,"
+    "string": "ansluta ditt eduID till ESI och/eller befintligt ORCID iD om det stöds av din institution,"
   },
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
@@ -404,6 +428,10 @@
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Har du inte eduID?"
+  },
+  "9LmNwQ": {
+    "developer_comment": "usb key technical section - list item 1",
+    "string": "Säkerhetsnyckeln måste kunna genomföra en attestation och finnas i metadatat,"
   },
   "9OkbaG": {
     "developer_comment": "create eduid - list item 4",
@@ -463,7 +491,11 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiera identitet'."
+    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
+  },
+  "AsYVb4": {
+    "developer_comment": "use bankid - list item 1",
+    "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -500,6 +532,10 @@
   "CTDOpR": {
     "developer_comment": "chpass suggest password",
     "string": "Rekommendera ett lösenord"
+  },
+  "Cnpo0l": {
+    "developer_comment": "profile username display title",
+    "string": "Användarnamn"
   },
   "CoT2UX": {
     "developer_comment": "accordion item Svipe ID additional info",
@@ -540,10 +576,6 @@
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "Hur kan jag utöka mitt eduID?"
-  },
-  "EHZ5WY": {
-    "developer_comment": "how more secure description 2",
-    "string": "Exempelvis en fysiskt USB-nyckel eller biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, är vad vi hänvisar till som 'Säkerhetsnyckel'."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -615,9 +647,6 @@
     "developer_comment": "device info",
     "string": "IP adress"
   },
-  "G5uigS": {
-    "string": "Freja+"
-  },
   "G5xTVt": {
     "developer_comment": "verify identity non verified description",
     "string": "Välj din huvudsakliga identifieringsmetod"
@@ -664,7 +693,7 @@
   },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
-    "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort och ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
+    "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
   },
   "HDyZDY": {
     "developer_comment": "received sms",
@@ -829,9 +858,17 @@
     "developer_comment": "Reset password",
     "string": "Skicka sms till {phone}"
   },
+  "M2RPTv": {
+    "developer_comment": "Signup button",
+    "string": "Skapa ditt eduID"
+  },
   "M3X9hA": {
     "developer_comment": "which login email - paragraph",
     "string": "Du kan logga in med alla e-postadresser som du angett och bekräftat i eduID."
+  },
+  "M63gc4": {
+    "developer_comment": "usb key technical section - list item 2",
+    "string": "får inte ha någon annan status i metadata än några olika varianter av: "
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -989,10 +1026,6 @@
     "developer_comment": "security last used date",
     "string": "Aldrig använd"
   },
-  "QOxuYY": {
-    "developer_comment": "use freja - list item 3",
-    "string": "logga in i eduID och välj metoden 'Med digitalt id-kort' i identitetshanteringen och följ instruktionerna."
-  },
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
@@ -1009,9 +1042,13 @@
     "developer_comment": "Use other device",
     "string": "Begäran har avbrutits"
   },
+  "R5Olyc": {
+    "developer_comment": "eduID index",
+    "string": "eduID är enklare och säkrare inloggning."
+  },
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
-    "string": "bland dina inställningar i eduID, aktivera Ladok-kontrollen,"
+    "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
   },
   "RFkwNK": {
     "developer_comment": "which type of security key - paragraph",
@@ -1121,6 +1158,10 @@
     "developer_comment": "need visit atg agent for freja - paragraph",
     "string": "Bara om du använder en annan ID-handling än svenskt pass. ATG ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
   },
+  "U3Ez+R": {
+    "developer_comment": "usb key technical section - list item 3",
+    "string": "måste stödja någon av följande \"user verification methods\": "
+  },
   "U5eTH/": {
     "string": "Notera att du använder den här enheten för att logga in på enheten nedan"
   },
@@ -1136,10 +1177,6 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "För användaren leder eduID på sikt till ett färre antal konton att hålla reda på under t.ex. studietiden. För många organisationer är identitetshantering en komplex fråga och det finns ett behov av att arbeta med bekräftade användare."
   },
-  "UUuKzu": {
-    "developer_comment": "security key status",
-    "string": "Status"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
@@ -1151,6 +1188,10 @@
   "Uq6Cvr": {
     "developer_comment": "opening hours - list definition",
     "string": "Öppettider:"
+  },
+  "V2oqjw": {
+    "developer_comment": "not found link",
+    "string": "Gå till eduID"
   },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
@@ -1393,7 +1434,47 @@
   },
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
-    "string": "ansöka till och acceptera plats på högskolan,"
+    "string": "ansöker till och accepterar plats på högskolan,"
+  },
+  "bYDxCn": {
+    "developer_comment": "usb key technical section - list item 4 code",
+    "string": "\"remote_handle\", \"hardware\", \"secure_element\", \"tee\""
+  },
+  "bankid.attribute_missing": {
+    "string": "BankID attribut saknas"
+  },
+  "bankid.authn_context_mismatch": {
+    "string": "Fel autentiseringskontext mottagen."
+  },
+  "bankid.credential_verify_success": {
+    "string": "Klart"
+  },
+  "bankid.identity_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "bankid.identity_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "bankid.identity_verify_success": {
+    "string": "Klart"
+  },
+  "bankid.method_not_available": {
+    "string": "BankID metoden är inte tillgänglig"
+  },
+  "bankid.mfa_authn_success": {
+    "string": "Klart"
+  },
+  "bankid.must_authenticate": {
+    "string": "BankId måste autentisera"
+  },
+  "bankid.no_redirect_url": {
+    "string": "MFA authentisering saknar en omdirigerings URL"
+  },
+  "bankid.not_found": {
+    "string": "BankID hittades inte"
+  },
+  "bankid.token_not_found": {
+    "string": "Säkerhetsnyckeln hittades inte"
   },
   "bcHXR2": {
     "developer_comment": "Account recovery front page",
@@ -1410,10 +1491,6 @@
   "bhw+hL": {
     "developer_comment": "Dashboard change password",
     "string": "Byt ditt lösenord"
-  },
-  "c26Ksk": {
-    "developer_comment": "captcha option",
-    "string": "Använd en valideringstjänst som tillhandahålls av en tredje part, mer kompatibel med skärmläsare"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -1477,6 +1554,10 @@
   "dKcigP": {
     "string": "Koden som skickades till {email} är inte längre giltig."
   },
+  "dQm5ii": {
+    "developer_comment": "usb key technical section - list item 4",
+    "string": "samt inte stödja någon annan \"key protection\" än: "
+  },
   "dcHeKQ": {
     "developer_comment": "about eduid - info",
     "string": "Beskrivning och syfte"
@@ -1498,9 +1579,6 @@
   },
   "document title Log in using another device": {
     "string": "Logga in med hjälp av en annan enhet | eduID"
-  },
-  "document title Register": {
-    "string": "Registrera | eduID"
   },
   "document title Reset Password": {
     "string": "Återställ Lösenord | eduID"
@@ -1526,6 +1604,10 @@
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
+  },
+  "eJ63eJ": {
+    "developer_comment": "eduID index lead text",
+    "string": "Skapa ett eduID och koppla det till din identitet för att kunna komma åt flera olika tjänster och organisationer inom högskolan."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
@@ -1652,10 +1734,6 @@
     "developer_comment": "opening hours - list item 1",
     "string": "måndag till torsdag 09:00-12:00, 13:00-16:00"
   },
-  "fEDxuK": {
-    "developer_comment": "opening hours - list item 1",
-    "string": "måndag till torsdag 09:00-12:00, 13:00-16:00"
-  },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
     "string": "Uppdatera för- och efternamn från folkbokföringen."
@@ -1678,7 +1756,7 @@
   },
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
-    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
+    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
   "fqZXes": {
     "developer_comment": "Reset Password email link sent",
@@ -1711,14 +1789,6 @@
   "gYfp8T": {
     "developer_comment": "use ladok - list definition",
     "string": "Hur du kan länka ditt ESI med eduID:"
-  },
-  "gSfkGK": {
-    "developer_comment": "use orcid - list item 3",
-    "string": "logga in i ORCID och ge eduID tillstånd att använda ditt ORCID iD för att försäkra att det är ​​korrekt kopplat till dig."
-  },
-  "gYfp8T": {
-    "developer_comment": "use ladok - list definition",
-    "string": "Hur du kan länka Ladok med eduID:"
   },
   "gaVV7S": {
     "developer_comment": "ErrorURL other error",
@@ -1846,6 +1916,10 @@
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
+  },
+  "j9AXsq": {
+    "developer_comment": "bankID proofing help text",
+    "string": "För att använda det här alternativet måste du först skapa ett digitalt ID-kort i {bankID_link} appen."
   },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
@@ -2088,9 +2162,17 @@
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS är en federation av anslutna EU-länder som utfärdar en elektronisk identifiering för att erbjuda inloggning till alla offentliga verksamheters system för medborgare inom EU, med hjälp av sitt lands e-legitimation."
   },
+  "nCc6tZ": {
+    "developer_comment": "BankID vetting button",
+    "string": "med BankID"
+  },
+  "nR0u/W": {
+    "developer_comment": "usb key - list item 1",
+    "string": "Certifierad FIDO 2.0, läs mer på {Fido}."
+  },
   "nRRq5w": {
     "developer_comment": "what is svipe - paragraph 2",
-    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in informationen från ditt pass eller ID-dokument, men informationen sparas bara lokalt i din enhet och företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
+    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
   },
   "nV6G8Q": {
     "developer_comment": "what are verification levels - heading",
@@ -2098,7 +2180,7 @@
   },
   "nZx6UW": {
     "developer_comment": "what is privacy policy - paragraph",
-    "string": "Läs {privacy} för användning av eduID i sin helhet på Sunets hemsida, där du även hittar kontaktinformation till Dataskyddsombudet och Integritetsskyddsmyndigheten."
+    "string": "Läs {privacy} i sin helhet för användning av eduID på Sunets hemsida, där du även hittar kontaktinformation till Dataskyddsombudet och Integritetsskyddsmyndigheten."
   },
   "ncGA4y": {
     "developer_comment": "Login MFA link",
@@ -2164,9 +2246,12 @@
     "developer_comment": "Help",
     "string": "Hjälp"
   },
+  "oAK8WM": {
+    "string": "Använd mitt {bankID}"
+  },
   "oEFGdi": {
     "developer_comment": "use svipe - list item 1",
-    "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
+    "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -2179,6 +2264,9 @@
   "oiMtbK": {
     "developer_comment": "Terms of use (heading)",
     "string": "Användarvillkor"
+  },
+  "ojB17W": {
+    "string": "Svenskt eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2213,6 +2301,10 @@
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
+  },
+  "pIstaO": {
+    "developer_comment": "verify identity",
+    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Bank ID verifierar din identitet mot eduID."
   },
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
@@ -2345,10 +2437,6 @@
   },
   "pwfield.weak": {
     "string": "Svagt lösenord"
-  },
-  "pyGKbH": {
-    "developer_comment": "what is accessibility report - paragraph 1",
-    "string": "Läs {accessability} i sin helhet angående eduID.se på Sunets hemsida, där du även hittar instruktioner för hur kan meddela innehåll som brister i tillgänglighet. Rapporten beskriver eduIDs arbete för förenlighet med lagen om tillgänglighet till digital offentlig service, inklusive kända brister."
   },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
@@ -2672,6 +2760,10 @@
     "developer_comment": "use svipe - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'Alla andra länder' och scanna QR-koden som genereras av Svipe iD genom att följa instruktionerna."
   },
+  "tbAqMH": {
+    "developer_comment": "about bankid - handle",
+    "string": "Om BankID"
+  },
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Använd min säkerhetsnyckel"
@@ -2819,10 +2911,6 @@
     "developer_comment": "verification methods - list item 1",
     "string": "användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
   },
-  "xvMcTx": {
-    "developer_comment": "security verify",
-    "string": "Verifiera"
-  },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "Vilka verifieringsmetoder finns för eduID?"
@@ -2846,10 +2934,6 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Finns ditt lärosäte inte i listan ska du inte använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för mer information."
-  },
-  "yL6rhr": {
-    "developer_comment": "use orcid - list item 2",
-    "string": "klicka på knappen 'Länka Orcid konto' bland Inställningar i eduID,"
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
@@ -2885,7 +2969,7 @@
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
-    "string": "Länka till Orcid / Ladok"
+    "string": "Länkning till Orcid / ESI"
   },
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
