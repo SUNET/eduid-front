@@ -10,7 +10,7 @@ interface CommonJsConfig {
   csrf_token?: string;
   dashboard_link?: string;
   debug: boolean;
-  eduid_site_url?: string;
+  eduid_site_link?: string;
   environment?: "dev" | "staging" | "production";
   reset_password_service_url?: string;
   signup_link?: string;

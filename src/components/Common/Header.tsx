@@ -12,7 +12,7 @@ interface HeaderProps {
 export function Header(props: HeaderProps): JSX.Element {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const eduid_site_url = useAppSelector((state) => state.config.eduid_site_url);
+  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
@@ -30,8 +30,8 @@ export function Header(props: HeaderProps): JSX.Element {
   async function handleLogout() {
     const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
     if (fetchLogout.fulfilled.match(resp)) {
-      if (eduid_site_url) {
-        window.location.assign(eduid_site_url);
+      if (eduid_site_link) {
+        window.location.assign(eduid_site_link);
       }
     }
   }
@@ -70,7 +70,7 @@ export function Header(props: HeaderProps): JSX.Element {
 
   return (
     <header id="header">
-      <a href={eppn ? dashboard_link : eduid_site_url} aria-label="eduID start" title="eduID start">
+      <a href={eppn ? dashboard_link : eduid_site_link} aria-label="eduID start" title="eduID start">
         <div id="eduid-logo" className="eduid-logo" />
       </a>
       {button}
