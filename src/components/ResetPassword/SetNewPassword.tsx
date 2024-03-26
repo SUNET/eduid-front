@@ -214,7 +214,7 @@ export function SetNewPassword(): JSX.Element | null {
 }
 
 export function ResetPasswordSuccess(): JSX.Element {
-  const toHome = useAppSelector((state) => state.config.eduid_site_url);
+  const toHome = useAppSelector((state) => state.config.eduid_site_link);
 
   return (
     <React.Fragment>
