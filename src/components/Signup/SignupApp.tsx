@@ -4,6 +4,7 @@ import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailFor
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
+import { useIntl } from "react-intl";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
@@ -13,6 +14,15 @@ import { CreateUser, SignupUserCreated } from "./SignupUserCreated";
 export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const [state] = useActor(signupContext.signupService);
+
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Register",
+      defaultMessage: "Register | eduID",
+    });
+  }, []);
 
   return (
     <React.Fragment>
