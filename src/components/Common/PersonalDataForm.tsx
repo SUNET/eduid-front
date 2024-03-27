@@ -29,8 +29,8 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const messages = LOCALIZED_MESSAGES;
 
-  const [displayName, setDisplayName] = useState<string | undefined>(personal_data?.display_name);
-  console.log("displayName", displayName);
+  const [displayName, setDisplayName] = useState<string | undefined>();
+
   async function formSubmit(values: PersonalDataRequest) {
     const response = await dispatch(postPersonalData(is_verified ? { ...values, display_name: displayName } : values));
 
@@ -104,14 +104,16 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
     }
   }, [given_name]);
 
-  // TODO: Check, the correct value has been updated or not
   const handleSelectChange = (selectedOptions: any) => {
     if (selectedOptions) {
       setSelectedOptions(selectedOptions);
-      const result = selectedOptions.map((name: any) => name.value).join(" ");
-      if (result) {
-        props.setDisplayName(result + " " + surname);
-      }
+      const selectedGivenName = selectedOptions.map((name: any) => name.value).join(" ");
+      if (selectedGivenName) {
+        props.setDisplayName(selectedGivenName + " " + surname);
+      } else props.setDisplayName(" " + surname);
+    } else {
+      setSelectedOptions([]);
+      props.setDisplayName("");
     }
   };
 
