@@ -52,7 +52,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
       validate={validatePersonalData}
       onSubmit={formSubmit}
       render={(formProps) => {
-        console.log("formProps", formProps);
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
 
@@ -93,17 +92,16 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
   const [defaultValues, setDefaultValues] = useState<{ label: string; value: string }[]>([]);
 
   useEffect(() => {
-    if (is_verified && given_name && surname) {
-      const fullName = given_name?.split(/[\s-]+/);
-      fullName.push(surname);
-      const transformedOptions = fullName?.map((name) => ({
+    if (is_verified && given_name) {
+      const splitGivenName = given_name?.split(/[\s-]+/);
+      const transformedOptions = splitGivenName?.map((name) => ({
         label: name,
         value: name,
       }));
       setSelectedOptions(transformedOptions);
       setDefaultValues(transformedOptions);
     }
-  }, [given_name, surname]);
+  }, [given_name]);
 
   const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
     const updatedValue = Array.from(newValue);
@@ -132,25 +130,26 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
           description="Display name select paragraph"
         />
       </p>
-
-      <Select
-        isMulti
-        defaultValue={selectedOptions}
-        name="display_name"
-        options={defaultValues}
-        onChange={handleSelectChange}
-        className="basic-multi-select"
-        classNamePrefix="select"
-        noOptionsMessage={() => (
-          <FormattedMessage
-            defaultMessage="To change the display name, delete and choose again"
-            description="Display name noOptionsMessage"
-          />
-        )}
-        placeholder={
-          <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
-        }
-      />
+      <div className="buttons">
+        <Select
+          isMulti
+          defaultValue={selectedOptions}
+          options={defaultValues}
+          onChange={handleSelectChange}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          noOptionsMessage={() => (
+            <FormattedMessage
+              defaultMessage="To change the display name, delete and choose again"
+              description="Display name noOptionsMessage"
+            />
+          )}
+          placeholder={
+            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+          }
+        />
+        <Select isDisabled={true} defaultValue={{ label: surname, value: surname }} classNamePrefix="select" />
+      </div>
     </article>
   );
 }
