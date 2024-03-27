@@ -1,6 +1,6 @@
 .personal-data {
   .title {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   @media (max-width: $bp-xs) {
@@ -14,7 +14,6 @@
     .icon-text {
       display: flex;
       align-items: baseline;
-      margin-bottom: 2rem;
 
       button.icon-only {
         &:hover,

@@ -9,6 +9,7 @@ export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields
   first: string;
   last: string;
+  display_name: string;
 }
 
 interface RenderAddPersonalDataPromptProps {
@@ -31,6 +32,8 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 function RenderPersonalData(props: { labels: NameLabels }) {
   const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
+  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
+  const is_verified = useAppSelector((state) => state.identities.is_verified);
   const pref_language = useAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
@@ -43,10 +46,12 @@ function RenderPersonalData(props: { labels: NameLabels }) {
         <FormattedMessage defaultMessage="English" description="pd label en" />
       );
   }
+
   return (
     <div className="personal-data-info">
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
+      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={display_name} />}
       {hasPrefLanguage ? (
         <NameDisplay
           htmlFor="language"
@@ -60,7 +65,7 @@ function RenderPersonalData(props: { labels: NameLabels }) {
 
 interface RenderEditBoxProps {
   setEditMode(value: boolean): void;
-  labels: NameLabels;
+  readonly labels: NameLabels;
 }
 
 function RenderEditBox(props: RenderEditBoxProps) {
@@ -68,24 +73,22 @@ function RenderEditBox(props: RenderEditBoxProps) {
   const isVerifiedIdentity = Boolean(identities?.is_verified);
 
   return (
-    <Fragment>
-      <div className="edit-data">
-        <div className="title">
-          <h4>
-            <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
-          </h4>
-          <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
-        </div>
-        <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
+    <div className="edit-data">
+      <div className="title">
+        <h4>
+          <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
+        </h4>
+        <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
       </div>
-    </Fragment>
+      <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
+    </div>
   );
 }
 
 interface RenderEditButtonProps {
-  isEditMode: boolean;
+  readonly isEditMode: boolean;
   setEditMode(value: boolean): void;
-  hasPersonalData: boolean;
+  readonly hasPersonalData: boolean;
 }
 
 function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) {
@@ -102,7 +105,7 @@ function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEd
 }
 
 function PersonalDataParent() {
-  const [isEditMode, setEditMode] = useState(false);
+  const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
   const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
@@ -120,6 +123,11 @@ function PersonalDataParent() {
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
     }),
+    display_name: intl.formatMessage({
+      id: "pd.display_name",
+      defaultMessage: "Display name",
+      description: "Display name label/template (edit personal data)",
+    }),
   };
 
   return (
@@ -136,11 +144,9 @@ function PersonalDataParent() {
           defaultMessage="This information may be used to personalise services that you access with your eduID."
         />
       </p>
-      <Fragment>
-        {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
-        {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
-        {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
-      </Fragment>
+      {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
+      {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
+      {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
     </article>
   );
 }

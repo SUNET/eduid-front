@@ -63,6 +63,22 @@ body {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
   }
+
+  //nested
+  article {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px dashed $border-gray;
+
+    @media (max-width: $bp-md) {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
 }
 
 // this is a horizontal-margin and should be renamed
