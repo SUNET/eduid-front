@@ -126,12 +126,12 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
       </legend>
       <p className="help-text">
         <FormattedMessage
-          defaultMessage={`If your identity is verified you can choose which of your names from the population 
-          register to use as your display name for some services. If you wish to change it, select at least one first name and your last name below.`}
+          defaultMessage={`If your identity is verified you can choose which of your first names from the population 
+          register to use as your display name for some services. If you wish to change it, select at least one first name below.`}
           description="Display name select paragraph"
         />
       </p>
-      <div className="buttons">
+      <div className="select-group">
         <Select
           isMulti
           defaultValue={selectedOptions}
