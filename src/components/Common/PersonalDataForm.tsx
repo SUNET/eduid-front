@@ -11,7 +11,7 @@ import validatePersonalData from "helperFunctions/validation/validatePersonalDat
 import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import Select, { MultiValue } from "react-select";
+import Select from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -26,12 +26,13 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
+  const is_verified = useAppSelector((state) => state.identities.is_verified);
   const messages = LOCALIZED_MESSAGES;
 
-  const [displayName, setDisplayName] = useState<string | undefined>();
-
+  const [displayName, setDisplayName] = useState<string | undefined>(personal_data?.display_name);
+  console.log("displayName", displayName);
   async function formSubmit(values: PersonalDataRequest) {
-    const response = await dispatch(postPersonalData(displayName ? { ...values, display_name: displayName } : values));
+    const response = await dispatch(postPersonalData(is_verified ? { ...values, display_name: displayName } : values));
 
     if (postPersonalData.fulfilled.match(response)) {
       props.setEditMode(false); // tell parent component we're done editing
@@ -53,7 +54,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
       onSubmit={formSubmit}
       render={(formProps) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
-        const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
+        const _disabled = Boolean(formProps.hasValidationErrors || _submitError);
 
         return (
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
@@ -103,13 +104,13 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
     }
   }, [given_name]);
 
-  const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
-    const updatedValue = Array.from(newValue);
-    if (updatedValue) {
-      setSelectedOptions(updatedValue);
-      const result = updatedValue.map((name: any) => name.value).join(" ");
+  // TODO: Check, the correct value has been updated or not
+  const handleSelectChange = (selectedOptions: any) => {
+    if (selectedOptions) {
+      setSelectedOptions(selectedOptions);
+      const result = selectedOptions.map((name: any) => name.value).join(" ");
       if (result) {
-        props.setDisplayName(result);
+        props.setDisplayName(result + " " + surname);
       }
     }
   };
