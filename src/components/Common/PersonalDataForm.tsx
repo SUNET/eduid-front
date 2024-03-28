@@ -22,6 +22,11 @@ interface PersonalDataFormProps {
   setEditMode(value: boolean): void;
 }
 
+interface SelectedNameValues {
+  label: string;
+  value: string;
+}
+
 export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useAppDispatch();
@@ -89,8 +94,8 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
-  const [selectedOptions, setSelectedOptions] = useState<{ label: string; value: string }[]>([]);
-  const [defaultValues, setDefaultValues] = useState<{ label: string; value: string }[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<SelectedNameValues[]>([]);
+  const [defaultValues, setDefaultValues] = useState<SelectedNameValues[]>([]);
 
   useEffect(() => {
     if (is_verified && given_name) {
@@ -104,11 +109,11 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
     }
   }, [given_name]);
 
-  const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
+  const handleSelectChange = (newValue: MultiValue<SelectedNameValues>) => {
     const updatedValue = Array.from(newValue);
     if (updatedValue) {
       setSelectedOptions(updatedValue);
-      const selectedGivenName = updatedValue.map((name: any) => name.value).join(" ");
+      const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
       if (selectedGivenName) {
         props.setDisplayName(`${selectedGivenName} ${surname}`);
       } else props.setDisplayName(`${surname}`);
@@ -170,7 +175,7 @@ function RenderLanguageSelect(): JSX.Element {
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
       </legend>
       <div className="radio-input-container">
-        {language_list.map((option: string[], index: number) => {
+        {language_list.map((option: string[]) => {
           const [key, value] = option;
           return (
             <label key={key} htmlFor={value}>
