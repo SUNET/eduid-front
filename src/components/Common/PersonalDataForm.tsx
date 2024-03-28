@@ -13,6 +13,7 @@ import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue } from "react-select";
 import { updateIntl } from "slices/Internationalisation";
+import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
@@ -40,6 +41,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
     const response = await dispatch(postPersonalData(is_verified ? { ...values, display_name: displayName } : values));
 
     if (postPersonalData.fulfilled.match(response)) {
+      dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
       if (response.payload.language) {
         dispatch(
