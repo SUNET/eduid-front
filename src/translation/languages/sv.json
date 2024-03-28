@@ -942,6 +942,10 @@
     "developer_comment": "about verification of identity - handle",
     "string": "Verifiering av identitet"
   },
+  "OOZ1Jb": {
+    "developer_comment": "Short code form Ok button",
+    "string": "Ok"
+  },
   "OPkp7U": {
     "developer_comment": "nin label",
     "string": "Personnummer"
@@ -2328,6 +2332,9 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Efternamn"
+  },
+  "pdata.display_name_invalid": {
+    "string": "Ogiltig visningsnamn. Vänligen försök igen."
   },
   "pdata.field_required": {
     "string": "Obligatoriskt"

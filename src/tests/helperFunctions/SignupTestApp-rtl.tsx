@@ -31,6 +31,7 @@ export const signupTestState: EduIDAppRootState = {
     // the splash screen is ever interested in the opposite
     is_configured: true,
     debug: true,
+    signup_service_url: "https://signup.eduid.docker/services/signup",
   },
   signup: signupInitialState,
   intl: { locale: "en", messages: {} },

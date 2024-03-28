@@ -942,6 +942,10 @@
     "developer_comment": "about verification of identity - handle",
     "string": "Verification of Identity"
   },
+  "OOZ1Jb": {
+    "developer_comment": "Short code form Ok button",
+    "string": "Ok"
+  },
   "OPkp7U": {
     "developer_comment": "nin label",
     "string": "Id number"
@@ -2328,6 +2332,9 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Last name"
+  },
+  "pdata.display_name_invalid": {
+    "string": "Invalid display name, please try again."
   },
   "pdata.field_required": {
     "string": "This field is required"

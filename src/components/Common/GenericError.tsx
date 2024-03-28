@@ -29,7 +29,7 @@ export function GenericError() {
 }
 
 function ToHomeOption() {
-  const toHome = useAppSelector((state) => state.config.eduid_site_url);
+  const toHome = useAppSelector((state) => state.config.eduid_site_link);
   return (
     <a className="text-link" href={toHome}>
       <FormattedMessage defaultMessage="Return to home" description="generic error page" />

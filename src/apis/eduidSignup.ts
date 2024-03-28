@@ -7,10 +7,6 @@ import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { signupSlice } from "slices/Signup";
 import { isFSA, KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
-// export for use in tests
-// TODO: use base url from js config
-export const SIGNUP_SERVICE_URL = "https://signup.eduid.docker/services/signup";
-
 export interface SignupState {
   already_signed_up: boolean;
   email: {
@@ -325,11 +321,9 @@ function makeSignupRequest<T>(
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
-  // TODO: Get SIGNUP_SERVICE_URL from jsconfig instead? signup_link isn't the full path to the services
-  //const state = thunkAPI.getState();
-  //if (!state.config.signup_service_url) {
-  if (!SIGNUP_SERVICE_URL) {
-    throw new Error("Missing global SIGNUP_SERVICE_URL");
+  const state = thunkAPI.getState();
+  if (!state.config.signup_service_url) {
+    throw new Error("Missing config signup_service_url");
   }
 
   // type predicate to help identify payloads with the signup state.
@@ -356,7 +350,7 @@ function makeSignupRequest<T>(
     return action;
   }
 
-  return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data)
+  return makeGenericRequest<T>(thunkAPI, state.config.signup_service_url, endpoint, body, data)
     .then((response) => updateState(response, thunkAPI))
     .catch((err) => {
       updateState(err, thunkAPI);
