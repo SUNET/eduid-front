@@ -2913,6 +2913,10 @@
     "developer_comment": "pd label sw",
     "string": "Svenska"
   },
+  "wzW57P": {
+    "developer_comment": "svipe - error",
+    "string": "{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but solutions are being investigated."
+  },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
