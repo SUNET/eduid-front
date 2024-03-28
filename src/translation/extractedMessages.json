@@ -1592,6 +1592,9 @@
   "document title Log in using another device": {
     "string": "Log in using another device | eduID"
   },
+  "document title Register": {
+    "string": "Register | eduID"
+  },
   "document title Reset Password": {
     "string": "Reset Password | eduID"
   },
