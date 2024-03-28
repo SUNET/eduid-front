@@ -738,6 +738,15 @@ export function Help(): JSX.Element {
                     }}
                   />
                 </p>
+                <p className="error-txt">
+                  <FormattedMessage
+                    description="svipe - error"
+                    defaultMessage={`{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
+                    values={{
+                      strong: <strong>Note</strong>,
+                    }}
+                  />
+                </p>
               </section>
             </article>
 
@@ -983,6 +992,15 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="svipe if personal number - paragraph"
                       defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
+                    />
+                  </p>
+                  <p className="error-txt">
+                    <FormattedMessage
+                      description="svipe - error"
+                      defaultMessage={`{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
+                      values={{
+                        strong: <strong>Note</strong>,
+                      }}
                     />
                   </p>
                 </article>
