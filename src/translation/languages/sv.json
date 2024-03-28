@@ -2357,7 +2357,7 @@
     "string": "Efternamn"
   },
   "pdata.display_name_invalid": {
-    "string": "Ogiltig visningsnamn. Vänligen försök igen."
+    "string": "Ogiltigt visningsnamn. Vänligen försök igen."
   },
   "pdata.field_required": {
     "string": "Obligatoriskt"
