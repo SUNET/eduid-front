@@ -38,6 +38,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const [displayName, setDisplayName] = useState<string | undefined>();
 
   async function formSubmit(values: PersonalDataRequest) {
+    // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     const response = await dispatch(postPersonalData(is_verified ? { ...values, display_name: displayName } : values));
 
     if (postPersonalData.fulfilled.match(response)) {
