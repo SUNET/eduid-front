@@ -51,9 +51,11 @@ form .react-select,
   > div:nth-child(2) {
     flex: 1;
   }
-
+  .select__control {
+    min-height: 3rem;
+  }
   input {
-    height: 2rem;
+    height: auto;
 
     &:focus {
       box-shadow: none;
