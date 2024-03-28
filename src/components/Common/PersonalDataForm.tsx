@@ -11,7 +11,7 @@ import validatePersonalData from "helperFunctions/validation/validatePersonalDat
 import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -104,13 +104,14 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
     }
   }, [given_name]);
 
-  const handleSelectChange = (selectedOptions: any) => {
-    if (selectedOptions) {
-      setSelectedOptions(selectedOptions);
-      const selectedGivenName = selectedOptions.map((name: any) => name.value).join(" ");
+  const handleSelectChange = (newValue: MultiValue<{ label: string; value: string }>) => {
+    const updatedValue = Array.from(newValue);
+    if (updatedValue) {
+      setSelectedOptions(updatedValue);
+      const selectedGivenName = updatedValue.map((name: any) => name.value).join(" ");
       if (selectedGivenName) {
-        props.setDisplayName(selectedGivenName + " " + surname);
-      } else props.setDisplayName(" " + surname);
+        props.setDisplayName(`${selectedGivenName} ${surname}`);
+      } else props.setDisplayName(`${surname}`);
     } else {
       setSelectedOptions([]);
       props.setDisplayName("");
@@ -150,6 +151,7 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
           placeholder={
             <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
           }
+          isSearchable={false}
         />
         <Select isDisabled={true} defaultValue={{ label: surname, value: surname }} classNamePrefix="select" />
       </div>
