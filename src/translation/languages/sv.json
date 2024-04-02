@@ -683,6 +683,10 @@
     "developer_comment": "what is eduID - paragraph 2",
     "string": "För federerade identiteter är en av grundstenarna tillit mellan organisationer. Tilliten ligger i att organisationerna litar på att alla genomför sin autentisering, identifiering och verifiering, på ett korrekt sätt och i en kontrollerad och tillförlitlig IT-miljö. "
   },
+  "GmoJ8i": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "E-postkoden är giltig i två timmar."
+  },
   "H08uQ1": {
     "developer_comment": "enhance eduid - list item 3",
     "string": "en säkerhetsnyckel om du har möjlighet för ytterligare säkerhet,"
@@ -1237,10 +1241,6 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
-  "VymaGb": {
-    "developer_comment": "Resend e-mail button",
-    "string": "Skicka e-post igen"
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
@@ -1328,10 +1328,6 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
-  },
-  "YyZ4yf": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost innan du skickar e-postmeddelandet igen efter fem minuter, enligt timern intill Skicka E-post igen knappen."
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1777,10 +1773,6 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
-  "fqZXes": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto, har ett meddelande med instruktioner skickats till {email}."
-  },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
     "string": "Avbryt"
@@ -1955,6 +1947,10 @@
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
+  },
+  "jeREhn": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte har fått e-postkoden kan du avbryta processen och börja om från början."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2508,6 +2504,10 @@
     "developer_comment": "Reset Password button",
     "string": "skicka e-post"
   },
+  "qiazcf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto, har koden skickats till {email}."
+  },
   "qkwsql": {
     "developer_comment": "Login MFA",
     "string": "Om du har ett svenskt personnummer och Freja+ så kan du använda Freja+ för att logga in efter att du har bekräfta din identitet."
@@ -2809,10 +2809,6 @@
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'EU-medborgare' och följ instruktionerna."
-  },
-  "uKzmRZ": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Länken i e-postmeddelandet är giltig i två timmar."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
