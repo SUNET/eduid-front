@@ -15,7 +15,6 @@ const resetPasswordModel = createModel(
       CHOOSE_SECURITY_KEY: () => ({}), // no payload
       CHOOSE_PHONE_VERIFICATION: () => ({}), // no payload
       CHOOSE_FREJA_EID: () => ({}), // no payload
-      CHOOSE_NO_EXTRA_SECURITY: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
       CAN_DO_EXTRA_SECURITY: () => ({}), // no payload
       WITHOUT_EXTRA_SECURITY: () => ({}), // no payload
@@ -90,14 +89,24 @@ export function createResetPasswordMachine() {
             },
             EmailLinkSent: {
               on: {
+                API_SUCCESS: {
+                  target: "Finished",
+                },
                 API_FAIL: {
-                  target: "ResetPasswordEnterEmail",
+                  // target: "ResetPasswordEnterEmail",
+                  target: "EmailLinkSent",
                 },
                 GO_BACK: {
                   target: "#resetPassword.ReturnToPrevious",
                 },
               },
             },
+            Finished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "HandleExtraSecurities",
           },
         },
         HandleExtraSecurities: {
@@ -114,7 +123,7 @@ export function createResetPasswordMachine() {
                 CHOOSE_FREJA_EID: {
                   target: "ResetPasswordExternalMFA",
                 },
-                CHOOSE_NO_EXTRA_SECURITY: {
+                WITHOUT_EXTRA_SECURITY: {
                   target: "ExtraSecurityFinished",
                 },
                 API_SUCCESS: {

@@ -9,8 +9,10 @@ import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
+import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail
 export interface UrlParams {
@@ -38,6 +40,9 @@ export function ResetPasswordApp(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
+      {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
+      {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
+      {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }
