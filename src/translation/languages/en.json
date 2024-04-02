@@ -683,6 +683,10 @@
     "developer_comment": "what is eduID - paragraph 2",
     "string": "Federated identities are one of the cornerstones of trust between organisations. Trust is based on all the organisations relying on all the others to carry out their authentication - identification and verification - properly and in a controlled and reliable IT environment."
   },
+  "GmoJ8i": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "The email code is valid for two hours."
+  },
   "H08uQ1": {
     "developer_comment": "enhance eduid - list item 3",
     "string": "a security key if you are able to for added security,"
@@ -1237,10 +1241,6 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
-  "VymaGb": {
-    "developer_comment": "Resend e-mail button",
-    "string": "Resend email"
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -1328,10 +1328,6 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
-  },
-  "YyZ4yf": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you didn’t receive the email, check your junk email before resending it after five minutes, according to the timer next to the Resend button."
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1777,10 +1773,6 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use methods supported thereby instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
-  "fqZXes": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account, an email with instructions has been sent to {email}."
-  },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
     "string": "Cancel"
@@ -1955,6 +1947,10 @@
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Depending on the service you are trying to access it might require that the account used to log in has reached a certain level of security. When you create your account you are required to have knowledge of your username (confirmed email address) and its associated password. The password is considered the first factor of authentication. For an additional layer of authentication to log in you may add a security key. The security key is called a two-factor authentication (2FA) or in some cases multi-factor (MFA), depending on the specifics of the layers of authentication."
+  },
+  "jeREhn": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you haven't receive the email code, please cancel the process and restart from the beginning."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2508,6 +2504,10 @@
     "developer_comment": "Reset Password button",
     "string": "send email"
   },
+  "qiazcf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account, the code has been sent to {email}."
+  },
   "qkwsql": {
     "developer_comment": "Login MFA",
     "string": "If you have a Swedish national identity number and Freja+, confirm your identity and you'll be able to use Freja+ to log in."
@@ -2809,10 +2809,6 @@
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
-  },
-  "uKzmRZ": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "The link in the email is valid for two hours."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
