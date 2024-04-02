@@ -1077,6 +1077,10 @@
     "developer_comment": "Dashboard change password modal main text",
     "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
   },
+  "Ryb62w": {
+    "developer_comment": "Display name noOptionsMessage",
+    "string": "För att byta visningsnamn, ta bort och välj igen"
+  },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
     "string": "Pågående just nu"
@@ -1296,6 +1300,10 @@
   "XzQO4I": {
     "developer_comment": "choosing usb key - list definition",
     "string": "Kontrollera med tillverkaren eller återförsäljaren om produkten möter dessa krav: "
+  },
+  "XzScE+": {
+    "developer_comment": "Display name select legend",
+    "string": "Visningsnamn"
   },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
@@ -1584,6 +1592,9 @@
   "document title Log in using another device": {
     "string": "Logga in med hjälp av en annan enhet | eduID"
   },
+  "document title Register": {
+    "string": "Registrera | eduID"
+  },
   "document title Reset Password": {
     "string": "Återställ Lösenord | eduID"
   },
@@ -1604,6 +1615,10 @@
   "e0xgSg": {
     "developer_comment": "how to contact support - paragraph 3",
     "string": ", men för enklare ärenden kan du också nå oss per telefon {phone}."
+  },
+  "eFceSz": {
+    "developer_comment": "Display name select placeholder",
+    "string": "Välj visningsnamn..."
   },
   "eIAskC": {
     "developer_comment": "Start",
@@ -2126,6 +2141,10 @@
     "developer_comment": "Signup",
     "string": "Ett eduID konto använder redan {email}"
   },
+  "mUFDKl": {
+    "developer_comment": "Display name select paragraph",
+    "string": "Om din identitet är bekräftad kan du välja vilket av dina förnamn från folkbokföringen som ska användas som visningsnamn för vissa tjänster. Om du vill ändra det välj minst ett av förnamnen nedan."
+  },
   "mVSSC0": {
     "developer_comment": "about using eduid - info",
     "string": "Skapa, använda och utöka ditt eduID"
@@ -2322,6 +2341,10 @@
     "developer_comment": "help - headline",
     "string": "Hjälpavsnitt och kontaktuppgifter"
   },
+  "pd.display_name": {
+    "developer_comment": "Display name label/template (edit personal data)",
+    "string": "Visningsnamn"
+  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "Förnamn"
@@ -2334,7 +2357,7 @@
     "string": "Efternamn"
   },
   "pdata.display_name_invalid": {
-    "string": "Ogiltig visningsnamn. Vänligen försök igen."
+    "string": "Ogiltigt visningsnamn. Vänligen försök igen."
   },
   "pdata.field_required": {
     "string": "Obligatoriskt"
@@ -2889,6 +2912,10 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "wzW57P": {
+    "developer_comment": "svipe - error",
+    "string": "{strong}: pga ändrade förhållanden samt regler kring personuppgiftshantering finns detta alternativ inte tillgängligt för närvarande men utredning av lösningar är pågående."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",

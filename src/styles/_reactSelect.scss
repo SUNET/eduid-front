@@ -1,9 +1,7 @@
 /** react-select style overrides, final-form element prefixed by "react-select" **/
-form .react-select {
-  &-container {
-    padding-top: 2px;
-  }
-
+form .react-select,
+.basic-multi-select .select,
+.select--is-disabled .select {
   &__control {
     border: 2px solid $border-gray;
 
@@ -17,9 +15,9 @@ form .react-select {
     box-shadow: none;
   }
 
-  &__control--is-focused {
-    box-shadow: none;
-  }
+  // &__control--is-focused {
+  //   box-shadow: none;
+  // }
 
   &__indicator-separator {
     width: 0;
@@ -37,5 +35,41 @@ form .react-select {
   &__option--is-selected {
     color: initial;
     background-color: darken($bg-orange, 5%);
+  }
+}
+
+.select-group {
+  @extend .flex-between;
+
+  margin-top: 0.75rem;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+
+  > div:nth-child(1) {
+    flex: 2;
+  }
+  > div:nth-child(2) {
+    flex: 1;
+  }
+  .select__control {
+    min-height: 3rem;
+  }
+  input {
+    height: auto;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  @media (max-width: $bp-md) {
+    > div:nth-child(1) {
+      flex: 1;
+    }
+  }
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    > div {
+      width: 100%;
+    }
   }
 }
