@@ -23,6 +23,7 @@ interface NewPasswordFormProps {
     callback?: ((errors?: SubmissionErrors) => void) | undefined
   ) => void | Promise<void>;
 }
+
 export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
