@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   ExtraSecurityAlternatives,
   postSetNewPassword,
@@ -8,6 +5,7 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
+import { CopyToClipboard } from "components/Common/CopyToClipboard";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -145,28 +143,11 @@ export function SetNewPassword(): JSX.Element | null {
   const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
-
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setPassword(suggested_password);
   }, [suggested_password]);
-
-  function copyToClipboard() {
-    if (ref && ref.current) {
-      ref.current.select();
-      document.execCommand("copy");
-      setTooltipCopied(true);
-      (document.getElementById("icon-copy") as HTMLInputElement).style.display = "none";
-      (document.getElementById("icon-check") as HTMLInputElement).style.display = "inline";
-      setTimeout(() => {
-        (document.getElementById("icon-copy") as HTMLInputElement).style.display = "inline";
-        (document.getElementById("icon-check") as HTMLInputElement).style.display = "none";
-        setTooltipCopied(false);
-      }, 1000);
-    }
-  }
 
   if (suggested_password === undefined) {
     return null;
@@ -196,17 +177,7 @@ export function SetNewPassword(): JSX.Element | null {
           defaultValue={password ? password : ""}
           readOnly={true}
         />
-        <button id="clipboard" className="icon-only copybutton" onClick={copyToClipboard}>
-          <FontAwesomeIcon id="icon-copy" icon={faCopy as IconProp} />
-          <FontAwesomeIcon id="icon-check" icon={faCheck as IconProp} />
-          <div className="tool-tip-text" id="tool-tip">
-            {tooltipCopied ? (
-              <FormattedMessage defaultMessage="Copied!" description="Reset password copy password tooltip" />
-            ) : (
-              <FormattedMessage defaultMessage="Copy to clipboard" description="Reset password copy password tooltip" />
-            )}
-          </div>
-        </button>
+        <CopyToClipboard ref={ref} />
       </div>
       <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
     </React.Fragment>
