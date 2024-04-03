@@ -1,34 +1,22 @@
 import {
-  ExtraSecurityAlternatives,
   postSetNewPassword,
   postSetNewPasswordExternalMfa,
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
 import { CopyToClipboard } from "components/Common/CopyToClipboard";
-import CustomInput from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
-import { GoBackButton } from "./GoBackButton";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-const newPasswordFormId = "new-password-form";
-
-interface NewPasswordFormData {
-  newPassword?: string;
-}
-
-interface NewPasswordFormProps {
-  extra_security?: ExtraSecurityAlternatives;
-  suggested_password: string | undefined;
-}
-
-function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
+export function SetNewPassword(): JSX.Element | null {
+  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
+  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
+  const [password, setPassword] = useState<string | undefined>(undefined);
+  const ref = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
@@ -36,17 +24,14 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
-  function validateNewPassword(values: NewPasswordFormData) {
-    const newPassword = values.newPassword;
-    const errors: NewPasswordFormData = {};
+  useEffect(() => {
+    setPassword(suggested_password);
+  }, [suggested_password]);
 
-    if (!newPassword || emptyStringPattern.test(newPassword)) {
-      errors.newPassword = "required";
-    } else if (newPassword?.replace(/\s/g, "") !== props.suggested_password?.replace(/\s/g, "")) {
-      // Remove whitespace from both passwords before comparing
-      errors.newPassword = "chpass.different-repeat";
-    }
-    return errors;
+  function goBack() {
+    resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
+    // initialization of state
+    dispatch(resetPasswordSlice.actions.resetState());
   }
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
@@ -93,62 +78,6 @@ function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
     }
   }
 
-  function goBack() {
-    resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
-    // initialization of state
-    dispatch(resetPasswordSlice.actions.resetState());
-  }
-
-  return (
-    <FinalForm<NewPasswordFormData>
-      onSubmit={submitNewPasswordForm}
-      validate={validateNewPassword}
-      render={(formProps) => {
-        return (
-          <form id={newPasswordFormId} onSubmit={formProps.handleSubmit}>
-            <input
-              autoComplete="new-password"
-              type="password"
-              name="display-none-new-password"
-              id="display-none-new-password"
-              defaultValue={formProps.values.newPassword ? formProps.values.newPassword : ""}
-            />
-            <FinalField
-              id="new-password"
-              type="text"
-              name="newPassword"
-              component={CustomInput}
-              required={true}
-              label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
-              placeholder="xxxx xxxx xxxx"
-              autoFocus={true}
-            />
-
-            <div className="buttons">
-              {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-                <GoBackButton onClickHandler={goBack} />
-              )}
-              <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
-                <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
-              </EduIDButton>
-            </div>
-          </form>
-        );
-      }}
-    />
-  );
-}
-
-export function SetNewPassword(): JSX.Element | null {
-  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
-  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const [password, setPassword] = useState<string | undefined>(undefined);
-  const ref = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setPassword(suggested_password);
-  }, [suggested_password]);
-
   if (suggested_password === undefined) {
     return null;
   }
@@ -179,7 +108,12 @@ export function SetNewPassword(): JSX.Element | null {
         />
         <CopyToClipboard ref={ref} />
       </div>
-      <NewPasswordForm suggested_password={suggested_password} extra_security={extra_security} />
+      <NewPasswordForm
+        suggested_password={suggested_password}
+        extra_security={extra_security}
+        submitNewPasswordForm={submitNewPasswordForm}
+        goBack={goBack}
+      />
     </React.Fragment>
   );
 }
