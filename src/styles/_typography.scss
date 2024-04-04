@@ -138,3 +138,7 @@ code {
   font-family: monospace;
   color: $txt-gray;
 }
+.error-txt {
+  color: $error-red;
+  font-size: $txt-sm !important;
+}

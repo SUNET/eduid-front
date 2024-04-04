@@ -315,22 +315,22 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   return (
-    <table className="table-form passwords">
+    <table className="active-keys">
       <tbody>
         <tr>
-          <th className="security-name">
+          <th>
             <FormattedMessage description="security description name" defaultMessage="Name" />
           </th>
-          <th className="security-creation-date">
+          <th>
             <FormattedMessage description="security creation date" defaultMessage="Created on" />
           </th>
-          <th className="security-last-used-date">
+          <th>
             <FormattedMessage description="security last used" defaultMessage="Used on" />
           </th>
           <th>
             <FormattedMessage description="security key status" defaultMessage="Verify" />
           </th>
-          <th className="display-none">
+          <th>
             <FormattedMessage description="security key remove" defaultMessage="Remove" />
           </th>
         </tr>

@@ -683,6 +683,10 @@
     "developer_comment": "what is eduID - paragraph 2",
     "string": "För federerade identiteter är en av grundstenarna tillit mellan organisationer. Tilliten ligger i att organisationerna litar på att alla genomför sin autentisering, identifiering och verifiering, på ett korrekt sätt och i en kontrollerad och tillförlitlig IT-miljö. "
   },
+  "GmoJ8i": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "E-postkoden är giltig i två timmar."
+  },
   "H08uQ1": {
     "developer_comment": "enhance eduid - list item 3",
     "string": "en säkerhetsnyckel om du har möjlighet för ytterligare säkerhet,"
@@ -942,6 +946,10 @@
     "developer_comment": "about verification of identity - handle",
     "string": "Verifiering av identitet"
   },
+  "OOZ1Jb": {
+    "developer_comment": "Short code form Ok button",
+    "string": "Ok"
+  },
   "OPkp7U": {
     "developer_comment": "nin label",
     "string": "Personnummer"
@@ -1072,6 +1080,10 @@
   "Rv0ENK": {
     "developer_comment": "Dashboard change password modal main text",
     "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
+  },
+  "Ryb62w": {
+    "developer_comment": "Display name noOptionsMessage",
+    "string": "För att byta visningsnamn, ta bort och välj igen"
   },
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
@@ -1229,10 +1241,6 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
-  "VymaGb": {
-    "developer_comment": "Resend e-mail button",
-    "string": "Skicka e-post igen"
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
@@ -1293,6 +1301,10 @@
     "developer_comment": "choosing usb key - list definition",
     "string": "Kontrollera med tillverkaren eller återförsäljaren om produkten möter dessa krav: "
   },
+  "XzScE+": {
+    "developer_comment": "Display name select legend",
+    "string": "Visningsnamn"
+  },
   "Y33LNf": {
     "developer_comment": "explanation text for vetting phone",
     "string": "För dig med ett telefonnummer registrerat i ditt namn"
@@ -1316,10 +1328,6 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
-  },
-  "YyZ4yf": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte fick e-postmeddelandet, kontrollera din skräppost innan du skickar e-postmeddelandet igen efter fem minuter, enligt timern intill Skicka E-post igen knappen."
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1580,6 +1588,9 @@
   "document title Log in using another device": {
     "string": "Logga in med hjälp av en annan enhet | eduID"
   },
+  "document title Register": {
+    "string": "Registrera | eduID"
+  },
   "document title Reset Password": {
     "string": "Återställ Lösenord | eduID"
   },
@@ -1600,6 +1611,10 @@
   "e0xgSg": {
     "developer_comment": "how to contact support - paragraph 3",
     "string": ", men för enklare ärenden kan du också nå oss per telefon {phone}."
+  },
+  "eFceSz": {
+    "developer_comment": "Display name select placeholder",
+    "string": "Välj visningsnamn..."
   },
   "eIAskC": {
     "developer_comment": "Start",
@@ -1757,10 +1772,6 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
-  },
-  "fqZXes": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto, har ett meddelande med instruktioner skickats till {email}."
   },
   "fr8eQq": {
     "developer_comment": "Emails button cancel",
@@ -1936,6 +1947,10 @@
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
+  },
+  "jeREhn": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte har fått e-postkoden kan du avbryta processen och börja om från början."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2121,6 +2136,10 @@
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "Ett eduID konto använder redan {email}"
+  },
+  "mUFDKl": {
+    "developer_comment": "Display name select paragraph",
+    "string": "Om din identitet är bekräftad kan du välja vilket av dina förnamn från folkbokföringen som ska användas som visningsnamn för vissa tjänster. Om du vill ändra det välj minst ett av förnamnen nedan."
   },
   "mVSSC0": {
     "developer_comment": "about using eduid - info",
@@ -2318,6 +2337,10 @@
     "developer_comment": "help - headline",
     "string": "Hjälpavsnitt och kontaktuppgifter"
   },
+  "pd.display_name": {
+    "developer_comment": "Display name label/template (edit personal data)",
+    "string": "Visningsnamn"
+  },
   "pd.given_name": {
     "developer_comment": "First name label/template (edit personal data)",
     "string": "Förnamn"
@@ -2328,6 +2351,9 @@
   "pd.surname": {
     "developer_comment": "Last name label/template (edit personal data)",
     "string": "Efternamn"
+  },
+  "pdata.display_name_invalid": {
+    "string": "Ogiltigt visningsnamn. Vänligen försök igen."
   },
   "pdata.field_required": {
     "string": "Obligatoriskt"
@@ -2477,6 +2503,10 @@
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "skicka e-post"
+  },
+  "qiazcf": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto, har koden skickats till {email}."
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
@@ -2780,10 +2810,6 @@
     "developer_comment": "use eidas - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'EU-medborgare' och följ instruktionerna."
   },
-  "uKzmRZ": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Länken i e-postmeddelandet är giltig i två timmar."
-  },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Tjänsten som du försöker komma åt kräver ytterligare rättigheter."
@@ -2882,6 +2908,10 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "wzW57P": {
+    "developer_comment": "svipe - error",
+    "string": "{strong}: pga ändrade förhållanden samt regler kring personuppgiftshantering finns detta alternativ inte tillgängligt för närvarande men utredning av lösningar är pågående."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",

@@ -181,19 +181,14 @@ function Emails() {
             values={{ email: selectedEmail }}
           />
         }
-        placeholder={modalPlaceholder}
+        //TODO: Add short code placeholder and helpBlock
+        placeholder=""
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage description="emails enter code" defaultMessage={`Code`} />}
         validationError="confirmation.code_invalid_format"
         validationPattern={longCodePattern}
-        helpBlock={
-          <FormattedMessage
-            description="Help text for email code"
-            defaultMessage={`The code is formatted as five groups of characters and numbers, separated by hyphens`}
-          />
-        }
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>

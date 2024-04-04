@@ -1,39 +1,46 @@
-import { requestEmailLink } from "apis/eduidResetPassword";
-import EduIDButton from "components/Common/EduIDButton";
-import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
+import { verifyEmailLink } from "apis/eduidResetPassword";
+import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
+import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
-import { ExpiresMeter } from "../Login/ExpiresMeter";
-import { GoBackButton } from "./GoBackButton";
+import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function EmailLinkSent(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const [resendDisabled, setResendDisabled] = useState(true);
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
-  /**
-   * The user has clicked the button to request that another e-mail should be sent.
-   */
-  function sendEmailOnClick(e: React.MouseEvent<HTMLElement>) {
-    (async () => {
-      e.preventDefault();
-      if (response?.email) {
-        try {
-          const resp = await dispatch(requestEmailLink({ email: response.email }));
-          if (requestEmailLink.rejected.match(resp)) {
-            resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-          }
-        } catch (error) {}
+  async function handleSubmitCode(values: ResponseCodeValues) {
+    const code = values.v.join("");
+
+    const match = code.match(/^\d\d\d\d\d\d$/);
+    if (match?.length == 1) {
+      // match[0] is whole matched string
+      const digits = match[0];
+
+      if (digits) {
+        // dispatch(signupSlice.actions.setEmailCode(digits));
+        const response = await dispatch(verifyEmailLink({ email_code: digits }));
+        if (verifyEmailLink.fulfilled.match(response)) {
+          dispatch(clearNotifications());
+          resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        } else {
+          resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+        }
       }
-      setResendDisabled(true); // disabled button again on use
-    })();
+    }
   }
 
-  function handleTimerReachZero() {
-    setResendDisabled(false); // allow user to request a new e-mail when timer expires
+  function handleAbortButtonOnClick() {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+      dispatch(resetPasswordSlice.actions.resetEmailStatus());
+      resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
+    }
   }
 
   if (!response) {
@@ -44,7 +51,7 @@ export function EmailLinkSent(): JSX.Element | null {
     <React.Fragment>
       <p>
         <FormattedMessage
-          defaultMessage="If you have an eduID account, an email with instructions has been sent to {email}."
+          defaultMessage="If you have an eduID account, the code has been sent to {email}."
           description="Reset Password email link sent"
           values={{
             email: (
@@ -59,36 +66,20 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="The link in the e-mail is valid for two hours."
+          defaultMessage="The email code is valid for two hours."
           description="Reset Password email link sent"
         />
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="If you didn’t receive the email, check your junk email before resending it after five minutes, according to the timer next to the Resend button."
+          defaultMessage="If you haven't receive the email code, please cancel the process and restart from the beginning."
           description="Reset Password email link sent"
         />
       </p>
-
-      <div className="buttons">
-        <GoBackButton />
-        <EduIDButton
-          buttonstyle="primary"
-          type="submit"
-          id="send-email-button"
-          onClick={sendEmailOnClick}
-          disabled={resendDisabled}
-        >
-          <FormattedMessage defaultMessage="Resend e-mail" description="Resend e-mail button" />
-        </EduIDButton>
-        <TimeRemainingWrapper
-          name="reset-password-email-expires"
-          unique_id={response?.email}
-          value={response?.throttled_seconds}
-          onReachZero={handleTimerReachZero}
-        >
-          <ExpiresMeter showMeter={false} expires_max={response?.throttled_max} />
-        </TimeRemainingWrapper>
+      <div className="enter-code">
+        <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
+          <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
+        </ResponseCodeForm>
       </div>
     </React.Fragment>
   );
