@@ -99,6 +99,7 @@ export function SignupUserCreated(): JSX.Element {
             <NewPasswordForm
               suggested_password={signupState?.credentials.password}
               submitNewPasswordForm={submitNewPasswordForm}
+              submitButtonText={<FormattedMessage defaultMessage="Ok" description="ok button" />}
             />
           </div>
         </fieldset>

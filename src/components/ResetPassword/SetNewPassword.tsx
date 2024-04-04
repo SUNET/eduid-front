@@ -113,6 +113,9 @@ export function SetNewPassword(): JSX.Element | null {
         extra_security={extra_security}
         submitNewPasswordForm={submitNewPasswordForm}
         goBack={goBack}
+        submitButtonText={
+          <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
+        }
       />
     </React.Fragment>
   );

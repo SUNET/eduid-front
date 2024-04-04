@@ -22,6 +22,7 @@ interface NewPasswordFormProps {
     form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
     callback?: ((errors?: SubmissionErrors) => void) | undefined
   ) => void | Promise<void>;
+  submitButtonText: React.ReactChild;
 }
 
 export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
@@ -68,7 +69,7 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
                 <GoBackButton onClickHandler={props.goBack} />
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
-                <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
+                {props.submitButtonText}
               </EduIDButton>
             </div>
           </form>
