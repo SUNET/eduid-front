@@ -14,7 +14,7 @@ export interface NewPasswordFormData {
 }
 
 interface NewPasswordFormProps {
-  goBack: () => void;
+  goBack?: () => void;
   extra_security?: ExtraSecurityAlternatives;
   suggested_password: string | undefined;
   submitNewPasswordForm: (

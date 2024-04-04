@@ -1,7 +1,8 @@
 import { createUserRequest } from "apis/eduidSignup";
-import EduIDButton from "components/Common/EduIDButton";
+import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import { NewPasswordForm } from "components/Common/NewPasswordForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
@@ -36,9 +37,19 @@ export function CreateUser() {
 export function SignupUserCreated(): JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const ref = useRef<HTMLInputElement>(null);
+
+  async function submitNewPasswordForm(values: any) {
+    const newPassword = values.newPassword;
+
+    if (!newPassword) {
+      return;
+    }
+  }
 
   return (
-    <form method="GET" action={dashboard_link}>
+    <>
+      {/* <form method="GET" action={dashboard_link}> */}
       <h1>
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."
@@ -69,8 +80,26 @@ export function SignupUserCreated(): JSX.Element {
           </label>
           <div className="display-data">
             <mark className="force-select-all">
-              <output id={idUserPassword}>{formatPassword(signupState?.credentials.password)}</output>
+              {/* <output ref={ref} id={idUserPassword}>
+         
+                 {formatPassword(signupState?.credentials.password)} 
+              </output> */}
+              <input
+                name="copy-new-password"
+                id="copy-new-password"
+                ref={ref}
+                defaultValue={
+                  signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""
+                }
+                readOnly={true}
+              />
+              <CopyToClipboard ref={ref} />
             </mark>
+
+            <NewPasswordForm
+              suggested_password={signupState?.credentials.password}
+              submitNewPasswordForm={submitNewPasswordForm}
+            />
           </div>
         </fieldset>
         {/* Hidden elements for password managers */}
@@ -82,12 +111,12 @@ export function SignupUserCreated(): JSX.Element {
           defaultValue={formatPassword(signupState?.credentials.password)}
         />
       </div>
-      <div className="buttons">
+      {/* <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
         </EduIDButton>
-      </div>
-    </form>
+      </div> */}
+    </>
   );
 }
 
