@@ -195,9 +195,9 @@ export function createSignupMachine() {
         },
       },
       FinaliseUser: {
-        initial: "CreateUser",
+        initial: "SignupConfirmPassword",
         states: {
-          CreateUser: {
+          SignupConfirmPassword: {
             on: {
               API_SUCCESS: {
                 target: "SignupUserCreated",
