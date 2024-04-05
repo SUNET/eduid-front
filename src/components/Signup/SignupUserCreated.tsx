@@ -3,7 +3,7 @@ import { CopyToClipboard } from "components/Common/CopyToClipboard";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
@@ -36,7 +36,7 @@ export function SignupConfirmPassword() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <h1>
         <FormattedMessage
           defaultMessage="Confirm your password for registration completion."
@@ -85,7 +85,7 @@ export function SignupConfirmPassword() {
           </div>
         </fieldset>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 
@@ -129,14 +129,6 @@ export function SignupUserCreated(): JSX.Element {
             </mark>
           </div>
         </fieldset>
-        {/* Hidden elements for password managers */}
-        <input className="display-none" type="text" autoComplete="username" defaultValue={signupState?.email.address} />
-        <input
-          className="display-none"
-          type="password"
-          autoComplete="new-password"
-          defaultValue={formatPassword(signupState?.credentials.password)}
-        />
       </div>
 
       <div className="buttons">
