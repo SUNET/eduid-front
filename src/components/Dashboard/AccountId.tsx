@@ -21,7 +21,7 @@ export function AccountId(): JSX.Element {
           description="Dashboard AccountId"
         />
       </p>
-      <div className="profile-grid-cell figure">
+      <div className="profile-grid-cell figure tight">
         <span aria-label={idUserEppn}>
           <strong>
             <FormattedMessage defaultMessage="EPPN:" description="Dashboard AccountId" />
