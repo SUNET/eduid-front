@@ -47,11 +47,14 @@ function RenderPersonalData(props: { labels: NameLabels }) {
       );
   }
 
+  const displayName =
+    chosen_given_name && last_name ? `${chosen_given_name} ${last_name}` : `${first_name} ${last_name}`;
+
   return (
     <div className="personal-data-info">
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
-      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={chosen_given_name} />}
+      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={displayName} />}
       {hasPrefLanguage ? (
         <NameDisplay
           htmlFor="language"
