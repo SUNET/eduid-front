@@ -11,7 +11,7 @@ import validatePersonalData from "helperFunctions/validation/validatePersonalDat
 import { Fragment, useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import Select, { MultiValue } from "react-select";
+import Select, { MultiValue, SingleValue } from "react-select";
 import { updateIntl } from "slices/Internationalisation";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
@@ -114,17 +114,19 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
     }
   }, [given_name]);
 
-  const handleSelectChange = (newValue: MultiValue<SelectedNameValues>) => {
-    const updatedValue = Array.from(newValue);
-    if (updatedValue) {
-      setSelectedOptions(updatedValue);
-      const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
-      if (selectedGivenName) {
-        props.setChosenGivenName(`${selectedGivenName} ${surname}`);
-      } else props.setChosenGivenName(`${surname}`);
-    } else {
-      setSelectedOptions([]);
-      props.setChosenGivenName("");
+  const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
+    if (defaultValues.length > 1) {
+      const updatedValue = Array.isArray(newValue) ? newValue : [newValue];
+      if (updatedValue) {
+        setSelectedOptions(updatedValue);
+        const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
+        if (selectedGivenName) {
+          props.setChosenGivenName(`${selectedGivenName} ${surname}`);
+        } else props.setChosenGivenName(`${surname}`);
+      } else {
+        setSelectedOptions([]);
+        props.setChosenGivenName("");
+      }
     }
   };
 
@@ -146,7 +148,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       </p>
       <div className="select-group">
         <Select
-          isMulti
+          isMulti={defaultValues.length > 1}
           defaultValue={selectedOptions}
           options={defaultValues}
           onChange={handleSelectChange}
@@ -161,6 +163,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
           placeholder={
             <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
           }
+          isDisabled={defaultValues.length === 1}
           isSearchable={false}
         />
         <Select isDisabled={true} defaultValue={{ label: surname, value: surname }} classNamePrefix="select" />
