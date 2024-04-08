@@ -2,6 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CaptchaRequest, GetCaptchaResponse, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidSignup";
+import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -107,10 +108,12 @@ function InternalCaptcha(props: CaptchaProps) {
 
   return (
     <React.Fragment>
-      <figure className="captcha-responsive">
-        <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
-        <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
-      </figure>
+      <Splash showChildren={captchaResponse !== undefined}>
+        <figure className="captcha-responsive">
+          <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
+          <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
+        </figure>
+      </Splash>
       <div className="icon-text">
         <button
           type="button"
