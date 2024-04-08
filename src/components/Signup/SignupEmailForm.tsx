@@ -85,6 +85,16 @@ function EmailForm() {
   );
 }
 
+interface ResponseType {
+  res: {
+    payload: {
+      payload: {
+        message: string;
+      };
+    };
+  };
+}
+
 /**
  * Send the user-provided email address to the backend.
  */
@@ -92,6 +102,7 @@ export function RegisterEmail() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
   const email = useAppSelector((state) => state.signup.email);
+  const error = useAppSelector((state) => state.notifications.error);
 
   if (!email) {
     signupContext.signupService.send({ type: "API_FAIL" });
@@ -104,6 +115,9 @@ export function RegisterEmail() {
     if (registerEmailRequest.fulfilled.match(res)) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
+      if (error?.message === "signup.email-address-used") {
+        signupContext.signupService.send({ type: "EMAIL_ADDRESS_USED" });
+      }
       signupContext.signupService.send({ type: "API_FAIL" });
     }
   }
