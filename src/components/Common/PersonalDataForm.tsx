@@ -35,11 +35,13 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const messages = LOCALIZED_MESSAGES;
 
-  const [displayName, setDisplayName] = useState<string | undefined>();
+  const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
 
   async function formSubmit(values: PersonalDataRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
-    const response = await dispatch(postPersonalData(is_verified ? { ...values, display_name: displayName } : values));
+    const response = await dispatch(
+      postPersonalData(is_verified ? { ...values, chosen_given_name: chosenGivenName } : values)
+    );
 
     if (postPersonalData.fulfilled.match(response)) {
       dispatch(clearNotifications());
@@ -70,7 +72,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               {props.isVerifiedIdentity ? (
                 <>
                   <RenderLockedNames labels={labels} />
-                  <SelectDisplayName setDisplayName={setDisplayName} />
+                  <SelectDisplayName setChosenGivenName={setChosenGivenName} />
                 </>
               ) : (
                 <RenderEditableNames labels={labels} />
@@ -93,7 +95,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   );
 }
 
-function SelectDisplayName(props: { readonly setDisplayName: (name: string) => void }): JSX.Element {
+function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) => void }): JSX.Element {
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
@@ -118,11 +120,11 @@ function SelectDisplayName(props: { readonly setDisplayName: (name: string) => v
       setSelectedOptions(updatedValue);
       const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
       if (selectedGivenName) {
-        props.setDisplayName(`${selectedGivenName} ${surname}`);
-      } else props.setDisplayName(`${surname}`);
+        props.setChosenGivenName(`${selectedGivenName} ${surname}`);
+      } else props.setChosenGivenName(`${surname}`);
     } else {
       setSelectedOptions([]);
-      props.setDisplayName("");
+      props.setChosenGivenName("");
     }
   };
 

@@ -23,7 +23,7 @@ test("renders Profile page as expected", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
         ...defaultDashboardTestState.personal_data,
       },
@@ -51,7 +51,7 @@ test("renders identity verification progress, unverified after password reset", 
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
         ...defaultDashboardTestState.personal_data,
       },
@@ -74,7 +74,7 @@ test("renders identity verification progress, new user", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
       },
       identities: {
@@ -95,7 +95,7 @@ test("renders identity verification progress, verified user", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
       },
       identities: {
