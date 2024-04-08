@@ -23,7 +23,8 @@ test("renders Profile page as expected", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          chosen_given_name: "test user",
+          chosen_given_name: "test",
+          surname: "user",
         },
         ...defaultDashboardTestState.personal_data,
       },
