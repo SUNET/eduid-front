@@ -178,7 +178,9 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
           isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}
         />
-        <div className="default-surname">{surname}</div>
+        <div className="default-surname">
+          <span>{surname}</span>
+        </div>
       </div>
     </article>
   );

@@ -51,7 +51,8 @@ form .react-select,
   > div:nth-child(2) {
     flex: 1;
   }
-  .select__control {
+  .select__control,
+  div.default-surname {
     min-height: 3rem;
   }
   input {
@@ -74,11 +75,12 @@ form .react-select,
   }
   div.default-surname {
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 2px solid $border-gray;
     border-radius: 4px;
-    padding: 8px 12px;
+    padding: 6px 12px;
     cursor: not-allowed;
-    background-color: #f0f0f0;
-    color: gray;
+    background-color: $bg-gray;
+    color: $txt-gray;
+    font-size: 1.25rem;
   }
 }
