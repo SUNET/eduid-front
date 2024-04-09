@@ -63,7 +63,7 @@ test("renders identity verification progress, unverified after password reset", 
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/no longer verified after password reset./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/no longer verified after password reset./);
 });
 
 test("renders identity verification progress, new user", () => {
@@ -84,7 +84,7 @@ test("renders identity verification progress, new user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is not verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
 });
 
 test("renders identity verification progress, verified user", () => {
@@ -105,5 +105,5 @@ test("renders identity verification progress, verified user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
 });

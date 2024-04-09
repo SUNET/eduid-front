@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import { LetterProofingState } from "slices/LetterProofing";
+import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
@@ -167,6 +168,9 @@ export default function Start(): JSX.Element {
           </p>
         </div>
       </section>
+
+      <AccountId />
+
       <article className="intro">
         <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />

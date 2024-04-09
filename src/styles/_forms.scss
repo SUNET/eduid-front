@@ -48,7 +48,8 @@ form {
 }
 
 .form-control:disabled,
-.form-control[readonly] {
+.form-control[readonly],
+input[readonly] {
   border-bottom: none;
   color: $txt-gray;
 }
