@@ -8,7 +8,7 @@ import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
-import { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
@@ -70,10 +70,10 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
               {props.isVerifiedIdentity ? (
-                <>
+                <React.Fragment>
                   <RenderLockedNames labels={labels} />
                   <SelectDisplayName setChosenGivenName={setChosenGivenName} />
-                </>
+                </React.Fragment>
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
@@ -98,21 +98,32 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
 function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) => void }): JSX.Element {
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const [selectedOptions, setSelectedOptions] = useState<SelectedNameValues[]>([]);
   const [defaultValues, setDefaultValues] = useState<SelectedNameValues[]>([]);
+  const splitGivenName = given_name?.split(/[\s-]+/);
+  const splitChosenGivenName = chosen_given_name?.split(/[\s-]+/);
+  const transformedChosenGivenNameOptions = splitChosenGivenName?.map((name) => ({
+    label: name,
+    value: name,
+  }));
+
+  const transformedOptions = splitGivenName?.map((name) => ({
+    label: name,
+    value: name,
+  }));
 
   useEffect(() => {
-    if (is_verified && given_name) {
-      const splitGivenName = given_name?.split(/[\s-]+/);
-      const transformedOptions = splitGivenName?.map((name) => ({
-        label: name,
-        value: name,
-      }));
-      setSelectedOptions(transformedOptions);
-      setDefaultValues(transformedOptions);
+    if (is_verified) {
+      if (chosen_given_name) {
+        transformedChosenGivenNameOptions && setSelectedOptions(transformedChosenGivenNameOptions);
+      } else {
+        transformedOptions && setSelectedOptions(transformedOptions);
+      }
+      transformedOptions && setDefaultValues(transformedOptions);
     }
-  }, [given_name]);
+  }, [given_name, chosen_given_name]);
 
   const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
     if (defaultValues.length > 1) {
@@ -121,8 +132,9 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
         setSelectedOptions(updatedValue);
         const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
         if (selectedGivenName) {
-          props.setChosenGivenName(`${selectedGivenName} ${surname}`);
-        } else props.setChosenGivenName(`${surname}`);
+          props.setChosenGivenName(selectedGivenName);
+          setSelectedOptions(updatedValue);
+        }
       } else {
         setSelectedOptions([]);
         props.setChosenGivenName("");
@@ -148,7 +160,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       </p>
       <div className="select-group">
         <Select
-          isMulti={defaultValues.length > 1}
+          isMulti={transformedOptions && transformedOptions.length > 1}
           defaultValue={selectedOptions}
           options={defaultValues}
           onChange={handleSelectChange}
@@ -163,7 +175,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
           placeholder={
             <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
           }
-          isDisabled={defaultValues.length === 1}
+          isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}
         />
         <Select isDisabled={true} defaultValue={{ label: surname, value: surname }} classNamePrefix="select" />
@@ -178,7 +190,7 @@ function RenderLanguageSelect(): JSX.Element {
   const language_list = Object.entries(_languages);
 
   return (
-    <>
+    <React.Fragment>
       <legend className="require">
         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
       </legend>
@@ -193,7 +205,7 @@ function RenderLanguageSelect(): JSX.Element {
           );
         })}
       </div>
-    </>
+    </React.Fragment>
   );
 }
 
@@ -216,67 +228,63 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   }
 
   return (
-    <Fragment>
-      <article>
-        <div className="external-names">
-          <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
-          <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
-        </div>
-        <div className="icon-text">
-          <button
-            type="button"
-            className="icon-only"
-            disabled={loading}
-            aria-label="name-check"
-            onClick={() => handleUpdateName()}
-          >
-            <FontAwesomeIcon icon={faRedo as IconProp} />
-          </button>
-          <label htmlFor="name-check" className="hint">
-            <FormattedMessage
-              defaultMessage="Update first and last names from the Swedish Population Register."
-              description="Personal data update locked names"
-            />
-          </label>
-        </div>
-      </article>
-    </Fragment>
+    <article>
+      <div className="external-names">
+        <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
+        <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
+      </div>
+      <div className="icon-text">
+        <button
+          type="button"
+          className="icon-only"
+          disabled={loading}
+          aria-label="name-check"
+          onClick={() => handleUpdateName()}
+        >
+          <FontAwesomeIcon icon={faRedo as IconProp} />
+        </button>
+        <label htmlFor="name-check" className="hint">
+          <FormattedMessage
+            defaultMessage="Update first and last names from the Swedish Population Register."
+            description="Personal data update locked names"
+          />
+        </label>
+      </div>
+    </article>
   );
 };
 
 function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
-    <Fragment>
-      <article>
-        <fieldset>
-          <Field
-            component={CustomInput}
-            required={true}
-            componentClass="input"
-            type="text"
-            name="given_name"
-            label={props.labels.first}
-            placeholder={props.labels.first}
-          />
-        </fieldset>
-        <fieldset>
-          <Field
-            component={CustomInput}
-            required={true}
-            componentClass="input"
-            type="text"
-            name="surname"
-            label={props.labels.last}
-            placeholder={props.labels.last}
-          />
-        </fieldset>
-        <p className="help-text">
-          <FormattedMessage
-            defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
-            description="Personal data hint names locked when verified"
-          />
-        </p>
-      </article>
-    </Fragment>
+    <article>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="given_name"
+          label={props.labels.first}
+          placeholder={props.labels.first}
+        />
+      </fieldset>
+      <fieldset>
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="surname"
+          label={props.labels.last}
+          placeholder={props.labels.last}
+        />
+      </fieldset>
+      <p className="help-text">
+        <FormattedMessage
+          defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+          description="Personal data hint names locked when verified"
+        />
+      </p>
+    </article>
   );
 }
