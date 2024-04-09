@@ -29,7 +29,7 @@ export function AccountId(): JSX.Element {
           </strong>
         </span>
         <div className="display-data">
-          <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
+          <input disabled readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
           <CopyToClipboard ref={ref} />
         </div>
       </div>
