@@ -123,7 +123,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       }
       transformedOptions && setDefaultValues(transformedOptions);
     }
-  }, [given_name, chosen_given_name]);
+  }, [given_name, chosen_given_name, surname]);
 
   const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
     if (defaultValues.length > 1) {
@@ -178,7 +178,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
           isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}
         />
-        <Select isDisabled={true} defaultValue={{ label: surname, value: surname }} classNamePrefix="select" />
+        <div className="default-surname">{surname}</div>
       </div>
     </article>
   );

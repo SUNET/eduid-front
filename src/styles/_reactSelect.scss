@@ -72,4 +72,13 @@ form .react-select,
       width: 100%;
     }
   }
+  div.default-surname {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: not-allowed;
+    background-color: #f0f0f0;
+    color: gray;
+  }
 }
