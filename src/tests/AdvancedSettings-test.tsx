@@ -14,7 +14,7 @@ test("renders AccountId as expected", () => {
         eppn: test_eppn,
         response: {
           eppn: test_eppn,
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
       },
     },
