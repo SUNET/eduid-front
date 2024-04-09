@@ -13,12 +13,12 @@ import { PhoneInfo } from "./eduidPhone";
 export interface PersonalDataRequest {
   given_name?: string;
   surname?: string;
-  display_name?: string;
+  chosen_given_name?: string;
   language?: string;
 }
 
 export interface AllUserData {
-  display_name?: string;
+  chosen_given_name?: string;
   emails: EmailInfo[];
   eppn: string;
   given_name?: string;
@@ -70,7 +70,7 @@ export const postPersonalData = createAsyncThunk<
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/postPersonalData", async (args, thunkAPI) => {
   const data: KeyValues = {
-    display_name: args.display_name,
+    chosen_given_name: args.chosen_given_name,
     given_name: args.given_name,
     surname: args.surname,
     language: args.language,

@@ -93,8 +93,8 @@ function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
   );
 }
 
-function RecommendationAddingName(props: { display_name?: string }): JSX.Element | null {
-  if (props.display_name) {
+function RecommendationAddingName(props: { given_name?: string }): JSX.Element | null {
+  if (props.given_name) {
     return null;
   }
 
@@ -170,10 +170,10 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
 export function Recommendations(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const credentials = useAppSelector((state) => state.security.credentials);
   const phones = useAppSelector((state) => state.phones.phones);
   const identities = useAppSelector((state) => state.identities);
-  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
   const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
@@ -188,7 +188,7 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities.nin?.verified && verifiedNumber && tokens.length && display_name) {
+  if (identities.nin?.verified && verifiedNumber && tokens.length && given_name) {
     return null;
   }
 
@@ -204,7 +204,7 @@ export function Recommendations(): JSX.Element | null {
         />
       </p>
       <Accordion allowMultipleExpanded allowZeroExpanded>
-        <RecommendationAddingName display_name={display_name} />
+        <RecommendationAddingName given_name={given_name} />
         <RecommendationPhone phones={phones} />
         <RecommendationVerifyIdentity identities={identities} />
         <RecommendationAddingSecurityKey credentials={tokens} />

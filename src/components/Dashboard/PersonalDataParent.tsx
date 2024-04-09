@@ -32,7 +32,7 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
 function RenderPersonalData(props: { labels: NameLabels }) {
   const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
-  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
+  const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const is_verified = useAppSelector((state) => state.identities.is_verified);
   const pref_language = useAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
@@ -47,11 +47,14 @@ function RenderPersonalData(props: { labels: NameLabels }) {
       );
   }
 
+  const displayName =
+    chosen_given_name && last_name ? `${chosen_given_name} ${last_name}` : `${first_name} ${last_name}`;
+
   return (
     <div className="personal-data-info">
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
-      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={display_name} />}
+      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={displayName} />}
       {hasPrefLanguage ? (
         <NameDisplay
           htmlFor="language"
