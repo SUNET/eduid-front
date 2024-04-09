@@ -36,11 +36,12 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const messages = LOCALIZED_MESSAGES;
 
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
+  const defaultDisplayGivenName = chosenGivenName ? chosenGivenName : personal_data?.given_name;
 
   async function formSubmit(values: PersonalDataRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     const response = await dispatch(
-      postPersonalData(is_verified ? { ...values, chosen_given_name: chosenGivenName } : values)
+      postPersonalData(is_verified ? { ...values, chosen_given_name: defaultDisplayGivenName } : values)
     );
 
     if (postPersonalData.fulfilled.match(response)) {
