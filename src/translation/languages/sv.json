@@ -2863,7 +2863,7 @@
   },
   "vlpAsW": {
     "developer_comment": "Dashboard AccountId",
-    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange för att identifiera ditt konto eller ber om teknisk support."
+    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange för att identifiera ditt konto eller vid teknisk support."
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
