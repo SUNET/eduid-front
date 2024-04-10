@@ -53,7 +53,7 @@
   },
   "/Aj3eQ": {
     "developer_comment": "verification status heading after password reset",
-    "string": "Din identitet är inte längre verifierad efter lösenords återställningen."
+    "string": "Din identitet är inte längre verifierad efter lösenordsåterställningen."
   },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
