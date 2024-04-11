@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import { longCodePattern } from "../../helperFunctions/validation/regexPatterns";
+import { shortLongCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
 import DataTable from "./DataTable";
 
@@ -181,14 +181,14 @@ function Emails() {
             values={{ email: selectedEmail }}
           />
         }
-        //TODO: Add short code placeholder and helpBlock
+        //TODO: Add short code placeholder and helpBlock - and switch to shortcode validation pattern when the time is right
         placeholder=""
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage description="emails enter code" defaultMessage={`Code`} />}
         validationError="confirmation.code_invalid_format"
-        validationPattern={longCodePattern}
+        validationPattern={shortLongCodePattern}
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>

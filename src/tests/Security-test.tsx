@@ -74,7 +74,7 @@ test("renders modals onclick security key button", async () => {
     securityKeyButton.click();
   });
   expect(screen.getByRole("heading", { name: /Add a name/i })).toBeInTheDocument();
-  const input = screen.getByRole("textbox");
+  const input = screen.getAllByRole("textbox")[1];
   fireEvent.change(input, { target: { value: "security key" } });
   expect(input).toHaveValue("security key");
 

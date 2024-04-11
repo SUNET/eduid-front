@@ -71,6 +71,10 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Code"
   },
+  "/Uf+1v": {
+    "developer_comment": "how to contact support - paragraph 2",
+    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -186,10 +190,6 @@
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
-  },
-  "2c6ARj": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Eppn is a unique ID for your eduID that you may need to provide when requesting technical support or to identify your account."
   },
   "2hnsRO": {
     "developer_comment": "nins input help text",
@@ -341,13 +341,13 @@
     "developer_comment": "security second factor",
     "string": "If possible, it is advisable to add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
   },
-  "6P7rNZ": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN - Unique ID"
-  },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
+  },
+  "6bBJYy": {
+    "developer_comment": "Copied tooltip",
+    "string": "Copied!"
   },
   "6k2J31": {
     "developer_comment": "Login MFA",
@@ -719,10 +719,6 @@
     "developer_comment": "nin/password button label",
     "string": "SHOW"
   },
-  "HqrAl+": {
-    "developer_comment": "Reset password copy password tooltip",
-    "string": "Copied!"
-  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
@@ -783,10 +779,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
   },
-  "KV3/EM": {
-    "developer_comment": "Help text for email code",
-    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
-  },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
   },
@@ -837,10 +829,6 @@
   "LiU6wZ": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
-  },
-  "Lj3vAT": {
-    "developer_comment": "how to contact support - paragraph 2",
-    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the Advanced Settings area. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -893,6 +881,10 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Save"
+  },
+  "NGsnQE": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN - username"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -1857,6 +1849,10 @@
     "developer_comment": "Use other device 2",
     "string": "Request cancelled."
   },
+  "hm1MQK": {
+    "developer_comment": "Copy tooltip",
+    "string": "Copy to clipboard"
+  },
   "hq/xBV": {
     "developer_comment": "Use other device 2",
     "string": "Request denied."
@@ -1947,10 +1943,6 @@
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Depending on the service you are trying to access it might require that the account used to log in has reached a certain level of security. When you create your account you are required to have knowledge of your username (confirmed email address) and its associated password. The password is considered the first factor of authentication. For an additional layer of authentication to log in you may add a security key. The security key is called a two-factor authentication (2FA) or in some cases multi-factor (MFA), depending on the specifics of the layers of authentication."
-  },
-  "jeREhn": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you haven't receive the email code, please cancel the process and restart from the beginning."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2516,6 +2508,10 @@
     "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
+  "qn24rz": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you haven't receive the code, please cancel the process and restart from the beginning."
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
@@ -2818,10 +2814,6 @@
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
   },
-  "ugLZcg": {
-    "developer_comment": "Reset password copy password tooltip",
-    "string": "Copy to clipboard"
-  },
   "uhm1kD": {
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet}."
@@ -2868,6 +2860,10 @@
   "vf92mh": {
     "developer_comment": "chpass custom password",
     "string": "I don't want a suggested password"
+  },
+  "vlpAsW": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Eppn is a unique identifier for your eduID that you may need to provide when accessing other services or requesting support."
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",

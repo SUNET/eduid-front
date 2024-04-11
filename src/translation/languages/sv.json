@@ -53,7 +53,7 @@
   },
   "/Aj3eQ": {
     "developer_comment": "verification status heading after password reset",
-    "string": "Din identitet är inte längre verifierad efter lösenords återställningen."
+    "string": "Din identitet är inte längre verifierad efter lösenordsåterställningen."
   },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
@@ -70,6 +70,10 @@
   "/O9rcw": {
     "developer_comment": "letter proofing modal form label",
     "string": "Kod"
+  },
+  "/Uf+1v": {
+    "developer_comment": "how to contact support - paragraph 2",
+    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar på startsidan i eduID om du är inloggad. Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
   },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
@@ -186,10 +190,6 @@
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 tecken"
-  },
-  "2c6ARj": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange när du ber om teknisk support eller för att identifiera ditt konto."
   },
   "2hnsRO": {
     "developer_comment": "nins input help text",
@@ -341,13 +341,13 @@
     "developer_comment": "security second factor",
     "string": "Om möjligt lägg till ett ytterligare sätt, utöver användarnamn och lösenord, för att kunna identifiera dig så att du är säker på att bara du har tillgång till ditt eduID."
   },
-  "6P7rNZ": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN - Unikt ID"
-  },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Att välja säkerhetsnyckel"
+  },
+  "6bBJYy": {
+    "developer_comment": "Copied tooltip",
+    "string": "Kopierat!"
   },
   "6k2J31": {
     "developer_comment": "Login MFA",
@@ -719,10 +719,6 @@
     "developer_comment": "nin/password button label",
     "string": "VISA"
   },
-  "HqrAl+": {
-    "developer_comment": "Reset password copy password tooltip",
-    "string": "Kopierat!"
-  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
@@ -783,10 +779,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
   },
-  "KV3/EM": {
-    "developer_comment": "Help text for email code",
-    "string": "Koden är formaterad som fem grupper med tecken och nummer, åtskilda av bindestreck"
-  },
   "KWAMem": {
     "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
   },
@@ -837,10 +829,6 @@
   "LiU6wZ": {
     "developer_comment": "verify identity",
     "string": "Knappen Fortsätt tar dig till en extern sida där du kan logga in med ditt elektroniska ID för att koppla din identitet till eduID."
-  },
-  "Lj3vAT": {
-    "developer_comment": "how to contact support - paragraph 2",
-    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar bland avancerade inställningar i eduID om du är inloggad. Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -893,6 +881,10 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Spara"
+  },
+  "NGsnQE": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "EPPN - användarnamn"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -1857,6 +1849,10 @@
     "developer_comment": "Use other device 2",
     "string": "Avbrutet."
   },
+  "hm1MQK": {
+    "developer_comment": "Copy tooltip",
+    "string": "Kopiera till urklipp"
+  },
   "hq/xBV": {
     "developer_comment": "Use other device 2",
     "string": "Åtkomst nekad."
@@ -1947,10 +1943,6 @@
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
-  },
-  "jeREhn": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte har fått e-postkoden kan du avbryta processen och börja om från början."
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2516,6 +2508,10 @@
     "developer_comment": "Dashboard change password",
     "string": "Byt lösenord"
   },
+  "qn24rz": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte har fått koden kan du avbryta processen och börja om från början."
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
@@ -2818,10 +2814,6 @@
     "developer_comment": "what is eidas - heading",
     "string": "Vad är eIDAS?"
   },
-  "ugLZcg": {
-    "developer_comment": "Reset password copy password tooltip",
-    "string": "Kopiera till urklipp"
-  },
   "uhm1kD": {
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET tog fram eduID i syfte att erbjuda framförallt lärosäten gemensamma rutiner för identitetshantering av väl identifierade och autenticerade användare. Läs mer om SUNET på {sunet}."
@@ -2868,6 +2860,10 @@
   "vf92mh": {
     "developer_comment": "chpass custom password",
     "string": "Jag vill inte använda det rekommenderade lösenordet"
+  },
+  "vlpAsW": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange för att identifiera ditt konto eller vid teknisk support."
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",

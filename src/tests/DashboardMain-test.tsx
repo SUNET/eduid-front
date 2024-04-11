@@ -23,7 +23,8 @@ test("renders Profile page as expected", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test",
+          surname: "user",
         },
         ...defaultDashboardTestState.personal_data,
       },
@@ -51,7 +52,7 @@ test("renders identity verification progress, unverified after password reset", 
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
         ...defaultDashboardTestState.personal_data,
       },
@@ -62,7 +63,7 @@ test("renders identity verification progress, unverified after password reset", 
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/no longer verified after password reset./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/no longer verified after password reset./);
 });
 
 test("renders identity verification progress, new user", () => {
@@ -74,7 +75,7 @@ test("renders identity verification progress, new user", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
       },
       identities: {
@@ -83,7 +84,7 @@ test("renders identity verification progress, new user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is not verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
 });
 
 test("renders identity verification progress, verified user", () => {
@@ -95,7 +96,7 @@ test("renders identity verification progress, verified user", () => {
       personal_data: {
         response: {
           eppn: "hubba-bubba",
-          display_name: "test user",
+          chosen_given_name: "test user",
         },
       },
       identities: {
@@ -104,5 +105,5 @@ test("renders identity verification progress, verified user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Your identity is verified./);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
 });

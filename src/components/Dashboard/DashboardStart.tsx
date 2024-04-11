@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import { LetterProofingState } from "slices/LetterProofing";
+import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
@@ -101,7 +102,9 @@ function LetterProofingProgress(props: { letter_proofing: LetterProofingState })
  */
 export default function Start(): JSX.Element {
   const intl = useIntl();
-  const display_name = useAppSelector((state) => state.personal_data.response?.display_name);
+  const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
+  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
@@ -110,10 +113,12 @@ export default function Start(): JSX.Element {
   let username;
   let progress;
 
-  if (!display_name && emails.length > 0) {
+  if (!chosen_given_name && !given_name && emails.length > 0) {
     username = emails.filter((mail) => mail.primary)[0].email;
-  } else {
-    username = display_name;
+  } else if (chosen_given_name) {
+    username = `${chosen_given_name} ${surname}`;
+  } else if (given_name) {
+    username = `${given_name} ${surname}`;
   }
 
   useEffect(() => {
@@ -163,6 +168,9 @@ export default function Start(): JSX.Element {
           </p>
         </div>
       </section>
+
+      <AccountId />
+
       <article className="intro">
         <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />

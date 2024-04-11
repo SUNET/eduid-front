@@ -17,12 +17,7 @@ table {
 
     & th:first-child {
       padding-left: 1rem;
-      padding-top: 0.75rem;
       line-height: 1;
-    }
-
-    & th.display-none {
-      display: none;
     }
 
     & td {
@@ -31,15 +26,9 @@ table {
       line-height: 1;
 
       &.value-status {
-        width: 25%;
-
         & button {
           margin: 0;
           padding: 0;
-        }
-
-        .btn-link {
-          margin-right: 20px;
         }
 
         & span {
@@ -60,8 +49,6 @@ table {
       }
 
       &.remove-data {
-        width: 8%;
-
         & .icon-button {
           margin: 0;
           padding: 0;
@@ -79,23 +66,6 @@ table {
 
       .btn-remove-webauthn {
         padding: 0;
-      }
-    }
-
-    & tr.webauthn-token-holder {
-      & td:first-child {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      & td:last-child:not(.value-status) {
-        text-align: center;
-      }
-      & td.value-status .btn-link {
-        height: 20px;
       }
     }
 
@@ -134,14 +104,6 @@ table {
     }
   }
 
-  td.value-status {
-    @media (max-width: 414px) {
-      button.btn.btn-link {
-        height: 30px;
-      }
-    }
-  }
-
   .identity-summary &,
   .progress-summary & {
     table-layout: auto;
@@ -170,41 +132,11 @@ table {
     }
   }
 
-  .progress-summary & td:first-child {
-    width: 60%;
-  }
-}
-
-table.table-form.passwords {
-  tr:first-child {
-    font-size: 1rem;
-    letter-spacing: 0;
-    color: $txt-black;
-    font-family: $inter-bold;
-    height: auto;
-  }
-
-  .security-name {
-    width: 25%;
-    @media (max-width: $bp-sm) {
-      width: 50%;
+  .progress-summary &,
+  #email-display & {
+    td:first-child {
+      width: 60%;
     }
-  }
-
-  .security-creation-date {
-    width: 21%;
-  }
-
-  .security-last-used-date {
-    width: 21%;
-  }
-
-  .security-verify-link {
-    width: 17%;
-  }
-
-  .security-remove-data {
-    width: 5%;
   }
 }
 
@@ -213,32 +145,20 @@ caption {
   color: inherit;
 }
 
-@media (max-width: $bp-sm) {
-  .security-creation-date,
-  .security-last-used-date,
-  .webauthn-token-holder td:nth-child(2),
-  .webauthn-token-holder td:nth-child(3) {
-    display: none;
-  }
-}
-
-table.keys {
+// FAQ list
+.keys,
+  // Security keys in use
+  .active-keys {
   table-layout: auto;
   font-size: $txt-sm;
-  //font-family: $inter-light;
-  @extend code;
 
   tr {
     height: auto;
-
-    &:nth-child(even) {
-      background-color: $bg-gray;
-    }
   }
 
   th {
     border-bottom: 2px dashed $border-gray;
-    padding: 0.75rem 0.5rem;
+    padding: 1rem 0.5rem 0.75rem;
 
     &:first-child {
       width: 2rem;
@@ -246,6 +166,9 @@ table.keys {
   }
   th,
   td {
+    vertical-align: top;
+    line-height: 1.25;
+
     &:first-child {
       padding-left: 1rem;
     }
@@ -256,8 +179,56 @@ table.keys {
 
   td {
     word-wrap: break-word;
-    line-height: 1.25;
     padding: 0.5rem;
+  }
+}
+.active-keys {
+  margin: 1rem 0;
+
+  th {
+    border-width: 1px;
+  }
+  th,
+  td {
+    &:first-child {
+      width: 30%;
+    }
+  }
+
+  tr:last-child td {
+    padding-bottom: 1rem;
+  }
+  .btn-link {
+    height: auto;
+    margin-right: 1rem;
+  }
+
+  @media (max-width: $bp-sm) {
+    th,
+    td {
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(5) {
+        display: none;
+      }
+      &:nth-child(1) {
+        width: 50%;
+      }
+    }
+  }
+}
+.keys {
+  @extend code;
+  tr {
+    &:nth-child(even) {
+      background-color: $bg-gray;
+    }
+
+    th {
+      &:first-child {
+        width: 2rem;
+      }
+    }
   }
 }
 
