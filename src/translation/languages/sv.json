@@ -1944,10 +1944,6 @@
     "developer_comment": "how more secure description 1",
     "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
   },
-  "jeREhn": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte har fått e-postkoden kan du avbryta processen och börja om från början."
-  },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
     "string": "Personuppgiftsbehandling och Webbtillgänglighet"
@@ -2511,6 +2507,10 @@
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Byt lösenord"
+  },
+  "qn24rz": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte har fått koden kan du avbryta processen och börja om från början."
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
