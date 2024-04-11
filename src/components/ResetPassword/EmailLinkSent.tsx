@@ -72,7 +72,7 @@ export function EmailLinkSent(): JSX.Element | null {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="If you haven't receive the email code, please cancel the process and restart from the beginning."
+          defaultMessage="If you haven't receive the code, please cancel the process and restart from the beginning."
           description="Reset Password email link sent"
         />
       </p>
