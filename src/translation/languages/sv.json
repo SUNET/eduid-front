@@ -71,10 +71,6 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Kod"
   },
-  "/Uf+1v": {
-    "developer_comment": "how to contact support - paragraph 2",
-    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar på startsidan i eduID om du är inloggad. Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
-  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Försök igen"
@@ -1221,6 +1217,10 @@
     "developer_comment": "SAML login finished",
     "string": "Det är möjligt att du kan komma tillbaka dit du kom ifrån med 'Framåt'-knappen."
   },
+  "VeyLsj": {
+    "developer_comment": "how to contact support - list item 3",
+    "string": "Om något har blivit fel är det alltid bra att skicka med skärmdumpar med felmeddelanden för att underlätta felsökning."
+  },
   "VlSXpR": {
     "developer_comment": "Header login",
     "string": "Logga in"
@@ -1627,6 +1627,10 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "Om du inte längre vill att eduID ska känna till ditt ORCID iD kan du enkelt ta bort det genom att klicka på krysset."
+  },
+  "eY0QYK": {
+    "developer_comment": "how to contact support - list item 1",
+    "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar på startsidan i eduID om du är inloggad."
   },
   "eau1zR": {
     "developer_comment": "about verification of identity - info",
@@ -3000,5 +3004,9 @@
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
     "string": "ditt namn för att kunna lägga till en säkerhetsnyckel eller hantera vissa tjänster från ett icke verifierat konto,"
+  },
+  "zvu5VP": {
+    "developer_comment": "how to contact support - list item 2",
+    "string": "Inkludera inte konfidentiell eller skyddsvärd information som t.ex. ditt personnummer!"
   }
 }
