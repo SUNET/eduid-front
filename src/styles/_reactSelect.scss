@@ -11,8 +11,10 @@ form .react-select,
 
     &--is-disabled {
       background-color: $bg-gray;
-      color: $txt-gray;
       font-size: 1.25rem;
+      * {
+        color: $txt-gray;
+      }
     }
   }
 
