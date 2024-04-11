@@ -71,10 +71,6 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Code"
   },
-  "/Uf+1v": {
-    "developer_comment": "how to contact support - paragraph 2",
-    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
-  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -1221,6 +1217,10 @@
     "developer_comment": "SAML login finished",
     "string": "You might be able to get back to where you came from by using the 'forward' button."
   },
+  "VeyLsj": {
+    "developer_comment": "how to contact support - list item 3",
+    "string": "If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
+  },
   "VlSXpR": {
     "developer_comment": "Header login",
     "string": "Log in"
@@ -1627,6 +1627,10 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "If you no longer want eduID to know your ORCID iD you can remove it by clicking the Remove button in your eduID."
+  },
+  "eY0QYK": {
+    "developer_comment": "how to contact support - list item 1",
+    "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page."
   },
   "eau1zR": {
     "developer_comment": "about verification of identity - info",
@@ -3000,5 +3004,9 @@
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
     "string": "your full name to be able to add a security key or access some services from an unverified account,"
+  },
+  "zvu5VP": {
+    "developer_comment": "how to contact support - list item 2",
+    "string": "Don't include confidential or sensitive information such as your personal identity number in the email!"
   }
 }
