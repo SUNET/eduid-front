@@ -115,9 +115,6 @@ export function RegisterEmail() {
     if (registerEmailRequest.fulfilled.match(res)) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
     } else {
-      if (error?.message === "signup.email-address-used") {
-        signupContext.signupService.send({ type: "EMAIL_ADDRESS_USED" });
-      }
       signupContext.signupService.send({ type: "API_FAIL" });
     }
   }
