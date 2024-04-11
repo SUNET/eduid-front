@@ -1944,10 +1944,6 @@
     "developer_comment": "how more secure description 1",
     "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
   },
-  "jeREhn": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you haven't receive the email code, please cancel the process and restart from the beginning."
-  },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
     "string": "Privacy policy and Web accessibility"
@@ -2511,6 +2507,10 @@
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Change password"
+  },
+  "qn24rz": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you haven't receive the code, please cancel the process and restart from the beginning."
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
