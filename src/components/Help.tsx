@@ -1321,12 +1321,26 @@ export function Help(): JSX.Element {
                   }}
                 />
               </p>
-              <p>
-                <FormattedMessage
-                  description="how to contact support - paragraph 2"
-                  defaultMessage={`Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page. If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting.`}
-                />
-              </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="how to contact support - list item 1"
+                    defaultMessage="Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page."
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="how to contact support - list item 2"
+                    defaultMessage="Don't include confidential or sensitive information such as your personal identity number in the email!"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="how to contact support - list item 3"
+                    defaultMessage="If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
+                  />
+                </li>
+              </ul>
               <p>
                 <strong>
                   <FormattedMessage
