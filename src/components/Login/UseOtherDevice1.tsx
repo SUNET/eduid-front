@@ -113,11 +113,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     setIsExpired(true);
   }
 
-  // have to pass a function to ResponseCodeForm in order for it to show the button
-  function handleLoginButtonOnClick() {
-    return undefined;
-  }
-
   function handleAbortButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     if (login_ref) {
@@ -197,7 +192,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
         <EduIDButton
           type="submit"
-          onClick={handleLoginButtonOnClick}
+          onClick={props.formProps.handleSubmit}
           id="response-code-submit-button"
           buttonstyle="primary"
           disabled={props.formProps.submitting || props.formProps.invalid || props.formProps.pristine}
