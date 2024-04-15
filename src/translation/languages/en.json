@@ -2096,7 +2096,7 @@
     "string": "There was a problem, please try again."
   },
   "login.state_already_used": {
-    "string": "Please cancel ongoing login session and try again."
+    "string": "Please cancel ongoing login and try again."
   },
   "login.state_not_found": {
     "string": "Not found"
