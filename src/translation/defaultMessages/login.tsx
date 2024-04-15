@@ -35,6 +35,13 @@ export const apiResponses = {
 
   "login.state_not_found": <FormattedMessage id="login.state_not_found" defaultMessage="Not found" />,
 
+  "login.state_already_used": (
+    <FormattedMessage
+      id="login.state_already_used"
+      defaultMessage="Please cancel ongoing login session and try again."
+    />
+  ),
+
   "login.no_sso_session": (
     <FormattedMessage id="login.no_sso_session" defaultMessage="Session not found. Please try again." />
   ),
