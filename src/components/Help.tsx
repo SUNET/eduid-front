@@ -741,10 +741,7 @@ export function Help(): JSX.Element {
                 <p className="error-txt">
                   <FormattedMessage
                     description="svipe - error"
-                    defaultMessage={`{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
-                    values={{
-                      strong: <strong>Note</strong>,
-                    }}
+                    defaultMessage={`Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
                   />
                 </p>
               </section>
@@ -997,10 +994,7 @@ export function Help(): JSX.Element {
                   <p className="error-txt">
                     <FormattedMessage
                       description="svipe - error"
-                      defaultMessage={`{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
-                      values={{
-                        strong: <strong>Note</strong>,
-                      }}
+                      defaultMessage={`Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
                     />
                   </p>
                 </article>
