@@ -40,7 +40,6 @@ function UseOtherDevice2() {
       if (params?.state_id) {
         setFetching(true);
         await dispatch(fetchUseOtherDevice2({ state_id: params.state_id }));
-        console.log("params?.state_id", params?.state_id);
         setFetching(false);
       }
     }
@@ -56,9 +55,8 @@ function UseOtherDevice2() {
     } else {
       // after login, this page is rendered with a loginRef present in the state
       dispatch(fetchUseOtherDevice2({ ref: loginRef }));
-      console.log("loginRef ", loginRef);
     }
-  }, [base_url, params, loginRef]);
+  }, [base_url]);
 
   return (
     <div className="use-another-device device2">
