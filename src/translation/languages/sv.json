@@ -1089,6 +1089,10 @@
     "developer_comment": "Password label",
     "string": "Lösenord"
   },
+  "SUnzob": {
+    "developer_comment": "svipe - error",
+    "string": "Obs: pga ändrade förhållanden samt regler kring personuppgiftshantering finns detta alternativ inte tillgängligt för närvarande men utredning av lösningar är pågående."
+  },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in"
@@ -2908,10 +2912,6 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
-  },
-  "wzW57P": {
-    "developer_comment": "svipe - error",
-    "string": "{strong}: pga ändrade förhållanden samt regler kring personuppgiftshantering finns detta alternativ inte tillgängligt för närvarande men utredning av lösningar är pågående."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
