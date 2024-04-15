@@ -1089,6 +1089,10 @@
     "developer_comment": "Password label",
     "string": "Password"
   },
+  "SUnzob": {
+    "developer_comment": "svipe - error",
+    "string": "Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated."
+  },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in"
@@ -2908,10 +2912,6 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
-  },
-  "wzW57P": {
-    "developer_comment": "svipe - error",
-    "string": "{strong}: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but solutions are being investigated."
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
