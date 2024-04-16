@@ -292,14 +292,14 @@ function AccordionItemSwedish(): JSX.Element | null {
           defaultMessage="Verify that you have access to your id or coordination number"
         />
       </h4> */}
-      <p className="x-adjust">
+      <p>
         <FormattedMessage
           description="verify-identity.connect-nin_description"
           defaultMessage={`Verify that you have access to your ID- or coordination number.`}
         />
       </p>
 
-      <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
+      <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
           title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}

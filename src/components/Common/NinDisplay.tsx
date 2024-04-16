@@ -55,7 +55,7 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 
 export function NinDisplay(props: NinDisplayProps) {
   return (
-    <div className="profile-grid-cell x-adjust">
+    <div className="profile-grid-cell">
       <span aria-label="id number">
         <strong>
           <FormattedMessage description="nin label" defaultMessage="Id number" />
