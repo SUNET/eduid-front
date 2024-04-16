@@ -10,6 +10,7 @@ import { clearNotifications } from "slices/Notifications";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
+import { PhoneCodeSent } from "./PhoneCodeSent";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 import { SelectedSecurityToken } from "./SelectedSecurityToken";
@@ -43,6 +44,7 @@ export function ResetPasswordApp(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("HandleExtraSecurities.ResetPasswordSecurityKey") && <SelectedSecurityToken />}
+      {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
       {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}
     </React.Fragment>
