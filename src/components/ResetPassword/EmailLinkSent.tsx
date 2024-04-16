@@ -23,7 +23,6 @@ export function EmailLinkSent(): JSX.Element | null {
       const digits = match[0];
 
       if (digits) {
-        // dispatch(signupSlice.actions.setEmailCode(digits));
         const response = await dispatch(verifyEmailLink({ email_code: digits }));
         if (verifyEmailLink.fulfilled.match(response)) {
           dispatch(clearNotifications());
