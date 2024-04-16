@@ -96,21 +96,37 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p>
-        <FormattedMessage
-          defaultMessage="To start the account recovery process, press the button below to send an e-mail to {email}."
-          description="Account recovery front page"
-          values={{
-            email: (
-              <span id="email_address">
-                <output data-testid="email-address">
-                  <strong>{email_address}</strong>
-                </output>
-              </span>
-            ),
-          }}
-        />
-      </p>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Start account recovery process"
+            description="Account recovery front page heading"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Click the button below to send an e-mail to {email}."
+              description="Account recovery front page"
+              values={{
+                email: (
+                  <span id="email_address">
+                    <output data-testid="email-address">
+                      <strong>{email_address}</strong>
+                    </output>
+                  </span>
+                ),
+              }}
+            />
+          </p>
+          <p>
+            <FormattedMessage
+              defaultMessage="If you decide to cancel, simply click the Go Back button to return to the login page."
+              description="Account recovery cancel information"
+            />
+          </p>
+        </div>
+      </section>
 
       <div className="buttons">
         <GoBackButton />
