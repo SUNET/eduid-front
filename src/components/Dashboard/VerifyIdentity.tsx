@@ -336,7 +336,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             />
           }
           uuid="se-letter"
-          disabled={letterProofingDisabled}
+          //
         >
           <LetterProofing disabled={letterProofingDisabled} />
         </AccordionItemTemplate>
