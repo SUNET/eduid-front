@@ -286,13 +286,16 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
-      <h4>
-        <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-      </h4>
+      {/* <h4>
+        <FormattedMessage
+          description="verify identity connect nin"
+          defaultMessage="Verify that you have access to your id or coordination number"
+        />
+      </h4> */}
       <p className="x-adjust">
         <FormattedMessage
           description="verify-identity.connect-nin_description"
-          defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
+          defaultMessage={`Verify that you have access to your ID- or coordination number.`}
         />
       </p>
 
