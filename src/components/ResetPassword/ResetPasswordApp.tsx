@@ -3,7 +3,7 @@ import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
@@ -26,6 +26,14 @@ export function ResetPasswordApp(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
+  const intl = useIntl();
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Reset Password",
+      defaultMessage: "Reset Password | eduID",
+    });
+  }, []);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
