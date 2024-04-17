@@ -2551,7 +2551,7 @@
     "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
   "resetpw.expired-phone-code": {
-    "string": "Koden är inte längre giltig. Begär en ny kod med knappen nedan."
+    "string": "Koden är inte längre giltig. Var vänlig försök igen."
   },
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
