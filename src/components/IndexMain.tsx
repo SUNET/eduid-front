@@ -34,6 +34,10 @@ export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
 
+  if (location.pathname === "/profile") {
+    return <Navigate to={`${location.pathname}/`} />;
+  }
+
   return (
     <React.StrictMode>
       <Header loginRef={loginRef} />
