@@ -130,16 +130,26 @@ export function PhoneCodeSent(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <p>
-        <FormattedMessage
-          defaultMessage="Enter the code sent to {phone}"
-          description="Reset Password phone code sent"
-          // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
-          values={{
-            phone: <b>{phone.number.replaceAll("X", "*")}</b>,
-          }}
-        />
-      </p>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Phone verification for password reset"
+            description="Reset Password phone code sent heading"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Please enter the code sent to {phone}"
+              description="Reset Password phone code sent lead"
+              // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
+              values={{
+                phone: <b>{phone.number.replaceAll("X", "*")}</b>,
+              }}
+            />
+          </p>
+        </div>
+      </section>
       <PhoneCodeForm />
       <div className="timer">
         <a id={"resend-phone"} onClick={resendPhoneCode}>

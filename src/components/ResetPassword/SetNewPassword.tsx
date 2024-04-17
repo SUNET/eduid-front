@@ -155,17 +155,21 @@ export function SetNewPassword(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <h2>
-        <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
-      </h2>
-      <p>
-        <FormattedMessage
-          defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the
                           password in to the Repeat new password field and click Accept Password and save it for future 
                           use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered.`}
-          description="Set new password"
-        />
-      </p>
+              description="Set new password"
+            />
+          </p>
+        </div>
+      </section>
       <div className="reset-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
