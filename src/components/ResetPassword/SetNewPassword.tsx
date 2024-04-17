@@ -189,19 +189,54 @@ export function SetNewPassword(): JSX.Element | null {
 }
 
 export function ResetPasswordSuccess(): JSX.Element {
-  const toHome = useAppSelector((state) => state.config.eduid_site_link);
+  const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const new_password = useAppSelector((state) => state.resetPassword.new_password);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   return (
-    <React.Fragment>
-      <p>
-        <FormattedMessage
-          defaultMessage="Password has been updated."
-          description="Reset Password set new password success"
-        />
-      </p>
-      <a id="return-login" href={toHome}>
-        <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
-      </a>
-    </React.Fragment>
+    <form method="GET" action={dashboard_link}>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Password reset completed"
+            description="Reset Password set new password success heading"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage={`These are your new password for eduID. Save the password! 
+                Once you've logged in it is possible to change your password.`}
+              description="Reset Password set new password success lead"
+            />
+          </p>
+        </div>
+      </section>
+      <div id="email-display">
+        <fieldset>
+          <label htmlFor="user-email">
+            <FormattedMessage defaultMessage="Email address" description="Email label" />
+          </label>
+          <div className="display-data">
+            <output id="user-email">{email_address}</output>
+          </div>
+        </fieldset>
+        <fieldset>
+          <label htmlFor="user-password">
+            <FormattedMessage defaultMessage="Password" description="Password label" />
+          </label>
+          <div className="display-data">
+            <mark className="force-select-all">
+              <output id="user-password">{new_password}</output>
+            </mark>
+          </div>
+        </fieldset>
+      </div>
+      <div className="buttons">
+        <EduIDButton id="reset-password-finished" buttonstyle="link" className="normal-case" type="submit">
+          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
+        </EduIDButton>
+      </div>
+    </form>
   );
 }
