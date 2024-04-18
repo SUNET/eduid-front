@@ -58,7 +58,7 @@ export function NinDisplay(props: NinDisplayProps) {
     <div className="profile-grid-cell">
       <span aria-label="id number">
         <strong>
-          <FormattedMessage description="nin label" defaultMessage="Id number" />
+          <FormattedMessage description="nin label" defaultMessage="National ID number" />
         </strong>
       </span>
       {!props.nin ? (
