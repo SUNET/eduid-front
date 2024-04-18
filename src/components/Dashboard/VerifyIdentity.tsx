@@ -126,7 +126,7 @@ function VerifyIdentityIntro(): JSX.Element {
             <FormattedMessage
               description="verify identity unverified description"
               defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from `}
+            to get the most benefit from it.`}
             />
           </p>
         </div>
@@ -350,7 +350,7 @@ function AccordionItemSwedish(): JSX.Element | null {
             />
           }
           uuid="se-phone"
-          disabled={lookupMobileDisabled}
+          //disabled={lookupMobileDisabled}
         >
           <LookupMobileProofing disabled={lookupMobileDisabled} />
         </AccordionItemTemplate>

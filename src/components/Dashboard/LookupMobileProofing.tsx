@@ -7,6 +7,7 @@ import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HashLink } from "react-router-hash-link";
 import { clearNotifications } from "slices/Notifications";
+import AddNin from "./AddNin";
 
 interface LookupMobileProofingProps {
   disabled: boolean;
@@ -25,7 +26,7 @@ function ExplanationText(): JSX.Element {
   if (!nin) {
     return (
       <FormattedMessage
-        defaultMessage="Start by adding your ID number above"
+        defaultMessage="Start by adding your ID number above."
         description="verify identity vetting explanation add nin"
       />
     );
@@ -93,6 +94,11 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
           />
         }
       </p>
+
+      <AddNin />
+
+      <hr className="border-line border-line-lesser" />
+
       <p>
         <ExplanationText />
       </p>
