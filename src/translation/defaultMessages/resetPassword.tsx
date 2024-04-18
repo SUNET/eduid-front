@@ -60,7 +60,7 @@ export const apiResponses = {
   "resetpw.expired-phone-code": (
     <FormattedMessage
       id="resetpw.expired-phone-code"
-      defaultMessage={`The code is no longer valid. Request a new code using the button below.`}
+      defaultMessage={`The code is no longer valid. Please try again`}
     />
   ),
 

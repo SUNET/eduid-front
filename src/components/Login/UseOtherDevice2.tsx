@@ -56,7 +56,7 @@ function UseOtherDevice2() {
       // after login, this page is rendered with a loginRef present in the state
       dispatch(fetchUseOtherDevice2({ ref: loginRef }));
     }
-  }, [base_url, params, loginRef]);
+  }, [base_url]);
 
   return (
     <div className="use-another-device device2">
@@ -308,38 +308,36 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
   }
 
   return (
-    <p>
-      <div className="finished device2">
+    <div className="finished device2">
+      <FormattedMessage
+        defaultMessage="Use the response code below in the first device to continue logging in"
+        description="Use another device, finished"
+      />
+
+      <span className="text-small">
         <FormattedMessage
-          defaultMessage="Use the response code below in the first device to continue logging in"
+          defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
+      </span>
+      <div className="x-adjust figure">
+        <div className="device2">
+          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={handleSubmit} />
 
-        <span className="text-small">
-          <FormattedMessage
-            defaultMessage="After using the code on the other device, please close this browser window."
-            description="Use another device, finished"
-          />
-        </span>
-        <div className="x-adjust figure">
-          <div className="device2">
-            <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={handleSubmit} />
-
-            <div className="warning-text">
-              <span className="warning-symbol">
-                <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
-              </span>
-              <span>
-                <FormattedMessage
-                  defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
-                  description="Use another device, finished"
-                />
-              </span>
-            </div>
+          <div className="warning-text">
+            <span className="warning-symbol">
+              <FontAwesomeIcon icon={faExclamationCircle as IconProp} />
+            </span>
+            <span>
+              <FormattedMessage
+                defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
+                description="Use another device, finished"
+              />
+            </span>
           </div>
         </div>
       </div>
-    </p>
+    </div>
   );
 }
 
