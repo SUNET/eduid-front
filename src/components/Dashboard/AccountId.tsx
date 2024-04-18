@@ -12,19 +12,19 @@ export function AccountId(): JSX.Element {
   return (
     <article id="uniqueId-container">
       <h2>
-        <FormattedMessage defaultMessage="EPPN - username" description="Dashboard AccountId" />
+        <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`Eppn is a unique identifier for your eduID that you may need to provide when accessing other services or requesting  
-          support.`}
+          defaultMessage={`This identifier is a username for your eduID that you may need to provide when accessing other services or requesting  
+          support. It is part of what may be referred to as EPPN.`}
           description="Dashboard AccountId"
         />
       </p>
       <div className="profile-grid-cell figure tight">
         <span aria-label={idUserEppn}>
           <strong>
-            <FormattedMessage defaultMessage="EPPN:" description="Dashboard AccountId" />
+            <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
             &nbsp;
           </strong>
         </span>
