@@ -215,6 +215,10 @@ button.btn-icon {
       margin: 0.5rem 0;
     }
   }
+  &-center {
+    @extend .buttons;
+    align-items: center;
+  }
 }
 
 // TODO: remove this when we move icon-text to a more generic place
