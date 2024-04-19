@@ -145,6 +145,9 @@ test("can click 'forgot password' without an e-mail address", async () => {
   await waitFor(() => {
     expect(screen.getByTestId("email-address")).toHaveTextContent(email);
   });
+  await waitFor(() =>
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Verification of email address to reset password/)
+  );
 
   // the ok button is initially disabled without code
   const resendButton = screen.getByRole("button", { name: /^ok/i });
