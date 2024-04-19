@@ -99,6 +99,10 @@
     "developer_comment": "SAML login finished",
     "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
   },
+  "0L3NZX": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Detta unika ID är ett användarnamn för ditt eduID som du kan behöva ange för att identifiera ditt konto eller vid teknisk support. Det är en del av vad som kan hänvisas till som EPPN."
+  },
   "0QJd38": {
     "developer_comment": "usb key technical section - list item 2 code",
     "string": "\"fido certified\""
@@ -537,6 +541,10 @@
     "developer_comment": "accordion item Svipe ID additional info",
     "string": "Med Svipe ID kryptografisk identitetsverifiering"
   },
+  "CuFdZp": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unikt ID:"
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "Enhetsnyckel/säkerhetsnyckel"
@@ -838,10 +846,6 @@
     "developer_comment": "Signup",
     "string": "Registrera din e-postadress för att skapa ditt eduID."
   },
-  "LwTCni": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN:"
-  },
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Skicka sms till {phone}"
@@ -877,10 +881,6 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Spara"
-  },
-  "NGsnQE": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN - användarnamn"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -2872,10 +2872,6 @@
     "developer_comment": "chpass custom password",
     "string": "Jag vill inte använda det rekommenderade lösenordet"
   },
-  "vlpAsW": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Eppn är ett unikt ID för ditt eduID som du kan behöva ange för att identifiera ditt konto eller vid teknisk support."
-  },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
     "string": "Lägg till ditt namn"
@@ -2971,6 +2967,10 @@
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
     "string": "klicka på knappen 'Länka Orcid konto' bland Inställningar i eduID,"
+  },
+  "yktrEi": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unikt ID"
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
