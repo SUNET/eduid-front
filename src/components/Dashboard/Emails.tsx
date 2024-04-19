@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import { shortLongCodePattern } from "../../helperFunctions/validation/regexPatterns";
+import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
 import DataTable from "./DataTable";
 
@@ -188,7 +188,7 @@ function Emails() {
         handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage description="emails enter code" defaultMessage={`Code`} />}
         validationError="confirmation.code_invalid_format"
-        validationPattern={shortLongCodePattern}
+        validationPattern={shortCodePattern}
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>
