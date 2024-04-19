@@ -99,6 +99,10 @@
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
   },
+  "0L3NZX": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "This identifier is a username for your eduID that you may need to provide when accessing other services or requesting support. It is part of what may be referred to as EPPN."
+  },
   "0QJd38": {
     "developer_comment": "usb key technical section - list item 2 code",
     "string": "\"fido certified\""
@@ -537,6 +541,10 @@
     "developer_comment": "accordion item Svipe ID additional info",
     "string": "With Svipe ID cryptographic identity verification"
   },
+  "CuFdZp": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unique ID:"
+  },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
@@ -838,10 +846,6 @@
     "developer_comment": "Signup",
     "string": "Register your email address to create your eduID."
   },
-  "LwTCni": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN:"
-  },
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Send sms to {phone}"
@@ -877,10 +881,6 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Save"
-  },
-  "NGsnQE": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "EPPN - username"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -2872,10 +2872,6 @@
     "developer_comment": "chpass custom password",
     "string": "I don't want a suggested password"
   },
-  "vlpAsW": {
-    "developer_comment": "Dashboard AccountId",
-    "string": "Eppn is a unique identifier for your eduID that you may need to provide when accessing other services or requesting support."
-  },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
     "string": "Add your name"
@@ -2971,6 +2967,10 @@
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
     "string": "click the 'Connect ORCID account' button in the Settings area of eduID,"
+  },
+  "yktrEi": {
+    "developer_comment": "Dashboard AccountId",
+    "string": "Unique ID"
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
