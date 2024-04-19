@@ -58,10 +58,10 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   // We should get to a page asking if we want to start the account recovery process
   await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent("Reset password");
+    expect(screen.getByRole("heading")).toHaveTextContent("Start account recovery process");
   });
 
-  expect(screen.getByText(/To start the account recovery/i)).toBeInTheDocument();
+  expect(screen.getByText(/Click the button below to send an e-mail to/i)).toBeInTheDocument();
 
   // Verify the e-mail address is shown
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
