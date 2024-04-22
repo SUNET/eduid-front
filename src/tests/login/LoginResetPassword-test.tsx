@@ -13,6 +13,8 @@ import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
+const TEST_PASSWORD = "password";
+
 test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
   const ref = "abc567";
@@ -91,7 +93,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const email = "test@example.org";
   const code = "123456";
   const ref = "abc567";
-  const password = "very-secret";
+
   mswServer.use(
     rest.post("/next", (req, res, ctx) => {
       const body = req.body as LoginNextRequest;
@@ -123,7 +125,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
         return res(ctx.status(400));
       }
       const payload: VerifyCodeResponse = {
-        suggested_password: password,
+        suggested_password: TEST_PASSWORD,
         email_code: code,
         email_address: email,
         extra_security: {},
@@ -134,7 +136,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     rest.post("/reset-password-url/new-password-extra-security-token", (req, res, ctx) => {
       const body = req.body as NewPasswordRequest;
-      if (body.email_code != code || body.password != password) {
+      if (body.email_code != code || body.password != TEST_PASSWORD) {
         return res(ctx.status(400));
       }
       const payload: NewPasswordResponse = {};
@@ -142,7 +144,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     rest.post("/reset-password-url/new-password", (req, res, ctx) => {
       const body = req.body as NewPasswordRequest;
-      if (body.email_code != code || body.password != password) {
+      if (body.email_code != code || body.password != TEST_PASSWORD) {
         return res(ctx.status(400));
       }
       const payload: NewPasswordResponse = {};
