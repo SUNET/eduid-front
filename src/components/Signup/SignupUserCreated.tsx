@@ -13,6 +13,23 @@ export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
 
+interface EmailProps {
+  email?: string;
+}
+
+const EmailFieldset = ({ email }: EmailProps): JSX.Element => {
+  return (
+    <fieldset>
+      <label htmlFor={idUserEmail}>
+        <FormattedMessage defaultMessage="Email address" description="Email label" />
+      </label>
+      <div className="display-data">
+        <output id={idUserEmail}>{email}</output>
+      </div>
+    </fieldset>
+  );
+};
+
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
@@ -52,14 +69,15 @@ export function SignupConfirmPassword() {
         </p>
       </div>
       <div id="email-display">
-        <fieldset>
+        <EmailFieldset email={signupState?.email.address} />
+        {/* <fieldset>
           <label htmlFor={idUserEmail}>
             <FormattedMessage defaultMessage="Email address" description="Email label" />
           </label>
           <div className="display-data">
             <output id={idUserEmail}>{signupState?.email.address}</output>
           </div>
-        </fieldset>
+        </fieldset> */}
         <fieldset>
           <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
@@ -111,14 +129,15 @@ export function SignupUserCreated(): JSX.Element {
         </p>
       </div>
       <div id="email-display">
-        <fieldset>
+        <EmailFieldset email={signupState?.email.address} />
+        {/* <fieldset>
           <label htmlFor={idUserEmail}>
             <FormattedMessage defaultMessage="Email address" description="Email label" />
           </label>
           <div className="display-data">
             <output id={idUserEmail}>{signupState?.email.address}</output>
           </div>
-        </fieldset>
+        </fieldset> */}
         <fieldset>
           <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
