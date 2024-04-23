@@ -5,6 +5,7 @@ import {
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
 import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect, useRef, useState } from "react";
