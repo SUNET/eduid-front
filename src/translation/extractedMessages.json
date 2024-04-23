@@ -191,10 +191,6 @@
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
   },
-  "2hnsRO": {
-    "developer_comment": "nins input help text",
-    "string": "National identity number with 12 digits"
-  },
   "2hrJd2": {
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
@@ -349,6 +345,10 @@
     "developer_comment": "Copied tooltip",
     "string": "Copied!"
   },
+  "6i0Tfo": {
+    "developer_comment": "nin label",
+    "string": "ID number"
+  },
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID Dashboard:"
@@ -497,6 +497,14 @@
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
   },
+  "AxZguv": {
+    "developer_comment": "nin label",
+    "string": "National ID number"
+  },
+  "AyJxQp": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Start by adding your ID number above."
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -553,6 +561,10 @@
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
   },
+  "DD8rTQ": {
+    "developer_comment": "nins input help text",
+    "string": "12 digits"
+  },
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
     "string": "If you can't find the answers to your questions about eduID on this help page, you can contact the eduID support by mailing {support}."
@@ -560,6 +572,10 @@
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
+  },
+  "DuLi7B": {
+    "developer_comment": "verify identity unverified description",
+    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
   },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
@@ -937,10 +953,6 @@
   "OOZ1Jb": {
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
-  },
-  "OPkp7U": {
-    "developer_comment": "nin label",
-    "string": "Id number"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -1500,6 +1512,10 @@
     "developer_comment": "nin/password button label",
     "string": "HIDE"
   },
+  "cFlMrU": {
+    "developer_comment": "verify-identity.connect-nin_description",
+    "string": "Verify that you have access to your ID- or coordination number."
+  },
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
@@ -1805,17 +1821,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gn2lIO": {
-    "developer_comment": "verify-identity.connect-nin_description",
-    "string": "Choose a suitable method to verify that you have access to the added id number."
-  },
   "gyVTaa": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "For you able to create a Freja+ by using the app or visiting one of the authorised agents"
-  },
-  "hB1XT2": {
-    "developer_comment": "verify identity unverified description",
-    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from"
   },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
@@ -2332,10 +2340,6 @@
     "developer_comment": "how create eduid - heading",
     "string": "How do I create an eduID?"
   },
-  "pRXT2e": {
-    "developer_comment": "verify identity add nin heading",
-    "string": "Add your id number"
-  },
   "pb/yW9": {
     "developer_comment": "help - headline",
     "string": "Help and contact"
@@ -2494,10 +2498,6 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
-  },
-  "qJxWkn": {
-    "developer_comment": "verify identity vetting explanation add nin",
-    "string": "Start by adding your ID number above"
   },
   "qMRp3m": {
     "developer_comment": "how to contact support email - strong",
@@ -2760,10 +2760,6 @@
   },
   "svipe_id.not_found": {
     "string": "Svipe id not found."
-  },
-  "t0C4LH": {
-    "developer_comment": "verify identity connect nin",
-    "string": "Verify your id number"
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",

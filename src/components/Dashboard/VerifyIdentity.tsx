@@ -20,7 +20,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
-import AddNin from "./AddNin";
+
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -126,7 +126,7 @@ function VerifyIdentityIntro(): JSX.Element {
             <FormattedMessage
               description="verify identity unverified description"
               defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from `}
+            to get the most benefit from it.`}
             />
           </p>
         </div>
@@ -286,82 +286,75 @@ function AccordionItemSwedish(): JSX.Element | null {
       }
       uuid="swedish"
     >
-      <ol className="listed-steps">
-        <li>
-          <h4>
-            <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
-          </h4>
-          <AddNin />
-        </li>
-        <li>
-          <h4>
-            <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
-          </h4>
-          <p className="x-adjust">
-            <FormattedMessage
-              description="verify-identity.connect-nin_description"
-              defaultMessage={`Choose a suitable method to verify that you have access to the added id number.`}
-            />
-          </p>
+      {/* <h4>
+        <FormattedMessage
+          description="verify identity connect nin"
+          defaultMessage="Verify that you have access to your id or coordination number"
+        />
+      </h4> */}
+      <p>
+        <FormattedMessage
+          description="verify-identity.connect-nin_description"
+          defaultMessage={`Verify that you have access to your ID- or coordination number.`}
+        />
+      </p>
 
-          <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested x-adjust">
-            <AccordionItemTemplate
-              icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
-              title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
-              additionalInfo={
-                <FormattedMessage
-                  description="verify identity vetting BankID tagline"
-                  defaultMessage={`For you able to use BankID`}
-                />
-              }
-              uuid="se-bankID"
-            >
-              <BankID />
-            </AccordionItemTemplate>
-            <AccordionItemTemplate
-              icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
-              title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
-              additionalInfo={
-                <FormattedMessage
-                  description="verify identity vetting freja tagline"
-                  defaultMessage={`For you able to create a Freja+ by using the app or visiting one of the authorised agents`}
-                />
-              }
-              uuid="se-freja"
-            >
-              <FrejaeID />
-            </AccordionItemTemplate>
-            <AccordionItemTemplate
-              icon={<FontAwesomeIcon icon={faEnvelope as IconProp} className="circle-icon" />}
-              title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
-              additionalInfo={
-                <FormattedMessage
-                  defaultMessage="For you registered at your current address"
-                  description="explanation text for letter proofing"
-                />
-              }
-              uuid="se-letter"
-              disabled={letterProofingDisabled}
-            >
-              <LetterProofing disabled={letterProofingDisabled} />
-            </AccordionItemTemplate>
-            <AccordionItemTemplate
-              icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
-              title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-              additionalInfo={
-                <FormattedMessage
-                  defaultMessage="For you with a phone number registered in your name"
-                  description="explanation text for vetting phone"
-                />
-              }
-              uuid="se-phone"
-              disabled={lookupMobileDisabled}
-            >
-              <LookupMobileProofing disabled={lookupMobileDisabled} />
-            </AccordionItemTemplate>
-          </Accordion>
-        </li>
-      </ol>
+      <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested">
+        <AccordionItemTemplate
+          icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
+          title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
+          additionalInfo={
+            <FormattedMessage
+              description="verify identity vetting BankID tagline"
+              defaultMessage={`For you able to use BankID`}
+            />
+          }
+          uuid="se-bankID"
+        >
+          <BankID />
+        </AccordionItemTemplate>
+        <AccordionItemTemplate
+          icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
+          title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
+          additionalInfo={
+            <FormattedMessage
+              description="verify identity vetting freja tagline"
+              defaultMessage={`For you able to create a Freja+ by using the app or visiting one of the authorised agents`}
+            />
+          }
+          uuid="se-freja"
+        >
+          <FrejaeID />
+        </AccordionItemTemplate>
+        <AccordionItemTemplate
+          icon={<FontAwesomeIcon icon={faEnvelope as IconProp} className="circle-icon" />}
+          title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+          additionalInfo={
+            <FormattedMessage
+              defaultMessage="For you registered at your current address"
+              description="explanation text for letter proofing"
+            />
+          }
+          uuid="se-letter"
+          //
+        >
+          <LetterProofing disabled={letterProofingDisabled} />
+        </AccordionItemTemplate>
+        <AccordionItemTemplate
+          icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
+          title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
+          additionalInfo={
+            <FormattedMessage
+              defaultMessage="For you with a phone number registered in your name"
+              description="explanation text for vetting phone"
+            />
+          }
+          uuid="se-phone"
+          //disabled={lookupMobileDisabled}
+        >
+          <LookupMobileProofing disabled={lookupMobileDisabled} />
+        </AccordionItemTemplate>
+      </Accordion>
     </AccordionItemTemplate>
   );
 }
