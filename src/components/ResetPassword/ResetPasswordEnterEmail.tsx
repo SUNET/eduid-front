@@ -28,12 +28,23 @@ export function ResetPasswordEnterEmail(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p>
-        <FormattedMessage
-          defaultMessage="Enter the email address registered to your eduID account."
-          description="Reset password add email heading"
-        />
-      </p>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Enter the email address registered with your account"
+            description="ResetPasswordEnterEmail heading"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Once entered, if the address is registered, a message with instructions to reset the password will be sent."
+              description="ResetPasswordEnterEmail lead text"
+            />
+          </p>
+        </div>
+      </section>
+
       <EmailForm
         passEmailUp={onEnteredEmailAddress}
         disabled={email_status === "requested"}
