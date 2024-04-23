@@ -37,7 +37,7 @@ function Emails() {
 
   const modalPlaceholder = intl.formatMessage({
     id: "emails.confirm_email_placeholder",
-    defaultMessage: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    defaultMessage: "enter code",
     description: "Placeholder for email code input",
   });
 
@@ -181,8 +181,7 @@ function Emails() {
             values={{ email: selectedEmail }}
           />
         }
-        //TODO: Add short code placeholder and helpBlock - and switch to shortcode validation pattern when the time is right
-        placeholder=""
+        placeholder={modalPlaceholder}
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}

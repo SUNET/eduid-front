@@ -1691,7 +1691,7 @@
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
-    "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    "string": "enter code"
   },
   "emails.duplicated": {
     "string": "The email is already in the list."
