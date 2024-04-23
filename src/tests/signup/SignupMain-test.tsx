@@ -213,6 +213,26 @@ test("complete signup happy case", async () => {
     expect(getPasswordCalled).toBe(true);
   });
 
+  // verify accept button is initially disabled
+  const okButton = screen.getByRole("button", { name: /^ok/i });
+  expect(okButton).toBeDisabled();
+
+  const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
+  expect(repeatInput).toHaveFocus();
+  expect(repeatInput).toHaveProperty("placeholder", "xxxx xxxx xxxx");
+  fireEvent.change(repeatInput, { target: { value: "not the right password" } });
+
+  // verify ok button is still disabled (because of non-matching passwords)
+  expect(okButton).toBeDisabled();
+
+  // enter the right password
+  fireEvent.change(repeatInput, { target: { value: testPassword } });
+
+  // verify ok button is now enabled
+  expect(okButton).toBeEnabled();
+
+  fireEvent.click(okButton);
+
   await waitFor(() => {
     expect(createUserCalled).toBe(true);
   });

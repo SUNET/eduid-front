@@ -35,6 +35,10 @@
     "developer_comment": "method svipe - paragraph",
     "string": ", you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below."
   },
+  "+j4RcB": {
+    "developer_comment": "Registration confirm password",
+    "string": "Confirm your password for registration completion."
+  },
   "/+3WQI": {
     "developer_comment": "recommendation title",
     "string": "Recommended actions for you"
@@ -86,6 +90,10 @@
   "/hAEZl": {
     "developer_comment": "mfa reset-password tapit",
     "string": "Use your security key to reset password. If it has a button, tap it."
+  },
+  "/oseeC": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
@@ -1321,10 +1329,6 @@
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
   },
-  "YGVN20": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to my eduid"
-  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
@@ -1987,10 +1991,6 @@
     "developer_comment": "enhance eduid - list item 5",
     "string": "verifying your identity to strengthen your eduID sufficiently for many external services."
   },
-  "kffxhw": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID."
-  },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
@@ -2503,6 +2503,10 @@
     "developer_comment": "how to contact support email - strong",
     "string": "In order to get best possible support, we recommend that you send e-mail"
   },
+  "qQnhgJ": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "A password has been generated for you. you can easily copy and paste your password by clicking the copy to clipboard button."
+  },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
@@ -2686,7 +2690,7 @@
     "string": "No credential added."
   },
   "signup.email-address-used": {
-    "string": "The email address is already registered."
+    "string": "The email address is already registered. If you've forgotten your password, go to the login page and reset it."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Try again later."
@@ -2765,6 +2769,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
   },
+  "t2jZx/": {
+    "developer_comment": "ok button",
+    "string": "Ok"
+  },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Your identity is not verified. Please verify your identity to get access to more services."
@@ -2800,10 +2808,6 @@
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Use security key"
-  },
-  "thUSiK": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. A password has been generated for you. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
