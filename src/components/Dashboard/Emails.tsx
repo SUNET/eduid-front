@@ -190,9 +190,9 @@ function Emails() {
         validationPattern={shortCodePattern}
         resendMarkup={
           <div className="resend-code-container">
-            <a href="#" onClick={handleResend}>
+            <EduIDButton buttonstyle="link" className="normal-case" onClick={handleResend}>
               <FormattedMessage description="resend code" defaultMessage={`Send a new code`} />
-            </a>
+            </EduIDButton>
           </div>
         }
       />
