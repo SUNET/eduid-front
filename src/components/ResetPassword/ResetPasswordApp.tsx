@@ -101,7 +101,7 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Start account recovery process"
+            defaultMessage="Reset Password: Start account recovery process"
             description="Account recovery front page heading"
           />
         </h1>

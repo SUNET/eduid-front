@@ -232,7 +232,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Choose your password reset method"
+            defaultMessage="Reset Password: Verification method"
             description="HandleExtraSecurities heading"
           />
         </h1>
