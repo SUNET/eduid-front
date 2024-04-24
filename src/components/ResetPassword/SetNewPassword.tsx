@@ -143,7 +143,7 @@ export function ResetPasswordSuccess(): JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage={`These are your new password for eduID. Save the password! 
+              defaultMessage={`These is your new password for eduID. Save the password! 
                 Once you've logged in it is possible to change your password.`}
               description="Reset Password set new password success lead"
             />
