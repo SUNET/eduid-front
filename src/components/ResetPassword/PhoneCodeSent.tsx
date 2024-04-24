@@ -133,7 +133,7 @@ export function PhoneCodeSent(): JSX.Element | null {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Phone verification for password reset"
+            defaultMessage="Reset Password: Phone verification"
             description="Reset Password phone code sent heading"
           />
         </h1>
