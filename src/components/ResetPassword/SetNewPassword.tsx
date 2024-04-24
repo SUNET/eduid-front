@@ -87,7 +87,7 @@ export function SetNewPassword(): JSX.Element | null {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
+          <FormattedMessage defaultMessage="Reset Password: Set new password" description="Set new password" />
         </h1>
         <div className="lead">
           <p>
@@ -136,14 +136,14 @@ export function ResetPasswordSuccess(): JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Password reset completed"
+            defaultMessage="Reset Password: Completed"
             description="Reset Password set new password success heading"
           />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage={`These are your new password for eduID. Save the password! 
+              defaultMessage={`These is your new password for eduID. Save the password! 
                 Once you've logged in it is possible to change your password.`}
               description="Reset Password set new password success lead"
             />

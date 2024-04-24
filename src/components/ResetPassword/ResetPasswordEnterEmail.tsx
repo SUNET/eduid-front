@@ -31,7 +31,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Enter the email address registered with your account"
+            defaultMessage="Reset Password: Enter the email address"
             description="ResetPasswordEnterEmail heading"
           />
         </h1>

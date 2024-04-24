@@ -51,7 +51,7 @@ export function EmailLinkSent(): JSX.Element | null {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Verification of email address to reset password"
+            defaultMessage="Reset Password: Verify email address"
             description="Reset Password email link sent heading"
           />
         </h1>
