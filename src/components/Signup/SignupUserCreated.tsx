@@ -130,14 +130,6 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <div id="email-display">
         <EmailFieldset email={signupState?.email.address} />
-        {/* <fieldset>
-          <label htmlFor={idUserEmail}>
-            <FormattedMessage defaultMessage="Email address" description="Email label" />
-          </label>
-          <div className="display-data">
-            <output id={idUserEmail}>{signupState?.email.address}</output>
-          </div>
-        </fieldset> */}
         <fieldset>
           <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
@@ -147,6 +139,13 @@ export function SignupUserCreated(): JSX.Element {
               <output id={idUserPassword}>{formatPassword(signupState?.credentials.password)}</output>
             </mark>
           </div>
+          <input
+            autoComplete="new-password"
+            type="password"
+            name="display-none-new-password"
+            id="display-none-new-password"
+            defaultValue={signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""}
+          />
         </fieldset>
       </div>
 
