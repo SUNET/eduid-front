@@ -14,7 +14,7 @@ export function SignupEmailForm(): JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
+          <FormattedMessage defaultMessage="Register: Enter the email address" description="Signup" />
         </h1>
         <div className="lead">
           <p>

@@ -47,7 +47,7 @@ export function SignupCaptcha(): JSX.Element | null {
   return (
     <Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Confirm that you are a human." description="Signup" />
+        <FormattedMessage defaultMessage="Register: Confirm that you are a human." description="Signup" />
       </h1>
 
       <div className="lead">

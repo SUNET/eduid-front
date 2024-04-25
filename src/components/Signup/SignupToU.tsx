@@ -22,7 +22,7 @@ export function SignupToU(): JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Terms of use" description="Terms of use (heading)" />
+        <FormattedMessage defaultMessage="Register: Terms of use" description="Terms of use (heading)" />
       </h1>
       <div className="lead">
         <p tabIndex={0}>
