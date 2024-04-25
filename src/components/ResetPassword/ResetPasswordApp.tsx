@@ -108,13 +108,13 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Click the button below to send an e-mail to {email}."
+              defaultMessage="Click the button below to send an e-mail to {email}"
               description="Account recovery front page"
               values={{
                 email: (
                   <span id="email_address">
                     <output data-testid="email-address">
-                      <strong>{email_address}</strong>
+                      <strong>{email_address}</strong>.
                     </output>
                   </span>
                 ),
