@@ -56,7 +56,7 @@ export function SignupConfirmPassword() {
     <React.Fragment>
       <h1>
         <FormattedMessage
-          defaultMessage="Confirm your password for registration completion."
+          defaultMessage="Register: Confirm your password"
           description="Registration confirm password"
         />
       </h1>
@@ -114,10 +114,7 @@ export function SignupUserCreated(): JSX.Element {
   return (
     <form method="GET" action={dashboard_link}>
       <h1>
-        <FormattedMessage
-          defaultMessage="You have completed the registration for eduID."
-          description="Registration complete"
-        />
+        <FormattedMessage defaultMessage="Register: Completed" description="Registration complete" />
       </h1>
       <div className="lead">
         <p>
