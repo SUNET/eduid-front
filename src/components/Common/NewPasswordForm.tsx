@@ -46,13 +46,6 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
       render={(formProps) => {
         return (
           <form id={newPasswordFormId} onSubmit={formProps.handleSubmit}>
-            <input
-              autoComplete="new-password"
-              type="password"
-              name="display-none-new-password"
-              id="display-none-new-password"
-              defaultValue={formProps.values.newPassword ? formProps.values.newPassword : ""}
-            />
             <FinalField
               id="new-password"
               type="text"
