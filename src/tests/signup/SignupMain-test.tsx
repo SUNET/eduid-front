@@ -238,7 +238,7 @@ test("complete signup happy case", async () => {
   });
 
   await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent(/^You have completed/);
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Completed/);
   });
 
   // verify e-mail and password are shown
@@ -293,7 +293,7 @@ test("handles wrong email code", async () => {
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter the email address/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -355,7 +355,7 @@ async function testTermsOfUse({
   registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
-  await screen.findByText(/^Terms of use/);
+  await screen.findByText(/^Register: Terms of use/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
   if (state.tou.version === "1999-v1") {
