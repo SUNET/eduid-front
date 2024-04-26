@@ -57,11 +57,10 @@ header {
       font-family: $inter-light;
       background: none;
       box-shadow: none;
+      padding: 0 1.125rem;
 
       svg {
-        padding-left: 5px;
-        font-size: 1.25rem;
-        color: $txt-gray;
+        padding-left: 0.75rem;
       }
     }
 
