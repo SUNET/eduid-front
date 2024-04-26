@@ -137,7 +137,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "letter.placeholder",
-    defaultMessage: "Code",
+    defaultMessage: "enter code",
     description: "Placeholder for letter proofing text input",
   });
 
