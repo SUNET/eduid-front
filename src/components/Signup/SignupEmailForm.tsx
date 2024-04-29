@@ -1,11 +1,12 @@
 import { registerEmailRequest } from "apis/eduidSignup";
+import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";
-import { Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FormattedMessage } from "react-intl";
+import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
+import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
@@ -39,6 +40,19 @@ interface EmailFormData {
 function EmailForm() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
+  const intl = useIntl();
+
+  const firstNamePlaceholder = intl.formatMessage({
+    id: "placeholder.firstName",
+    defaultMessage: "First name",
+    description: "placeholder First name",
+  });
+
+  const lastNamePlaceholder = intl.formatMessage({
+    id: "placeholder.lastName",
+    defaultMessage: "Last name",
+    description: "placeholder Last name",
+  });
 
   function submitEmailForm(values: EmailFormData) {
     const errors: EmailFormData = {};
@@ -67,6 +81,21 @@ function EmailForm() {
 
         return (
           <form id="register-form" onSubmit={formProps.handleSubmit}>
+            <FinalField
+              component={CustomInput}
+              type="text"
+              name="given-name"
+              autoFocus={true}
+              placeholder={firstNamePlaceholder}
+              label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
+            />
+            <FinalField
+              component={CustomInput}
+              type="text"
+              name="surname"
+              placeholder={lastNamePlaceholder}
+              label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
+            />
             <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
             <div className="buttons">
               <EduIDButton
