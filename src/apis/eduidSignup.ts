@@ -140,6 +140,8 @@ export const acceptToURequest = createAsyncThunk<
 
 export interface RegisterEmailRequest {
   email: string;
+  given_name: string;
+  surname: string;
 }
 
 /**
@@ -154,6 +156,8 @@ export const registerEmailRequest = createAsyncThunk<
 >("signup/registerEmailRequest", async (args, thunkAPI) => {
   const body: KeyValues = {
     email: args.email,
+    surname: args.surname,
+    given_name: args.given_name,
   };
 
   return makeSignupRequest<SignupStatusResponse>(thunkAPI, "register-email", body)

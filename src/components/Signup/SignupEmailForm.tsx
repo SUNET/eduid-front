@@ -35,6 +35,8 @@ export function SignupEmailForm(): JSX.Element {
 
 interface EmailFormData {
   email?: string;
+  given_name?: string;
+  surname?: string;
 }
 
 /* FORM */
@@ -58,10 +60,16 @@ function EmailForm() {
   function submitEmailForm(values: EmailFormData) {
     const errors: EmailFormData = {};
 
-    if (values.email) {
+    if (values) {
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
-      dispatch(signupSlice.actions.setEmail(values.email));
+      dispatch(
+        signupSlice.actions.setEmail({
+          email: values.email || "",
+          given_name: values.given_name || "",
+          surname: values.surname || "",
+        })
+      );
       dispatch(clearNotifications());
       signupContext.signupService.send({ type: "COMPLETE" });
     } else {
@@ -76,6 +84,8 @@ function EmailForm() {
       validate={validateEmailInForm}
       initialValues={{
         email: "",
+        given_name: "",
+        surname: "",
       }}
       render={(formProps: FormRenderProps<EmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
@@ -86,7 +96,7 @@ function EmailForm() {
             <FinalField
               component={CustomInput}
               type="text"
-              name="given-name"
+              name="given_name"
               autoFocus={true}
               placeholder={firstNamePlaceholder}
               label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
@@ -98,7 +108,7 @@ function EmailForm() {
               placeholder={lastNamePlaceholder}
               label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
             />
-            <EmailInput name="email" autoFocus={true} required={true} autoComplete="username" />
+            <EmailInput name="email" required={true} autoComplete="username" />
             <div className="buttons">
               <EduIDButton
                 buttonstyle="primary"
@@ -123,14 +133,17 @@ export function RegisterEmail() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
   const email = useAppSelector((state) => state.signup.email);
+  const given_name = useAppSelector((state) => state.signup.given_name);
+  const surname = useAppSelector((state) => state.signup.surname);
+  const signupUser = { email: email || "", given_name: given_name || "", surname: surname || "" };
 
-  if (!email) {
+  if (!signupUser) {
     signupContext.signupService.send({ type: "API_FAIL" });
     return null;
   }
 
-  async function registerEmail(email: string) {
-    const res = await dispatch(registerEmailRequest({ email }));
+  async function registerEmail(signupUser: { email: string; given_name: string; surname: string }) {
+    const res = await dispatch(registerEmailRequest(signupUser));
 
     if (registerEmailRequest.fulfilled.match(res)) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
@@ -140,7 +153,7 @@ export function RegisterEmail() {
   }
 
   useEffect(() => {
-    registerEmail(email);
+    registerEmail(signupUser);
   }, []);
 
   // Show a blank screen while we wait for the response from the backend
