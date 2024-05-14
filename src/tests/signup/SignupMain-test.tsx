@@ -292,21 +292,11 @@ test("handles wrong email code", async () => {
   // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
   await testEnterEmail({
     email: testEmailAddress,
-    // given_name: testFirstName,
-    // surname: testLastName,
     expectErrorShown: true,
   });
 });
 
-async function testEnterEmail({
-  email,
-  // given_name,
-  // surname,
-  expectErrorShown = false,
-}: {
-  email?: string;
-  expectErrorShown?: boolean;
-}) {
+async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter the email address/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
