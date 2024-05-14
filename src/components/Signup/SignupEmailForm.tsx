@@ -4,7 +4,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { validateEmailInForm } from "helperFunctions/validation/validateEmail";
+import { validateSignupUserInForm } from "helperFunctions/validation/validateEmail";
 import { Fragment, useContext, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -81,7 +81,7 @@ function EmailForm() {
   return (
     <FinalForm<EmailFormData>
       onSubmit={submitEmailForm}
-      validate={validateEmailInForm}
+      validate={validateSignupUserInForm}
       initialValues={{
         email: "",
         given_name: "",
