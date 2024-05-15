@@ -1323,10 +1323,12 @@ export function Help(): JSX.Element {
                   />
                 </li>
                 <li>
-                  <FormattedMessage
-                    description="how to contact support - list item 2"
-                    defaultMessage="Don't include confidential or sensitive information such as your personal identity number in the email!"
-                  />
+                  <strong>
+                    <FormattedMessage
+                      description="how to contact support - list item 2"
+                      defaultMessage="Don't include confidential or sensitive information such as your personal identity number in the email!"
+                    />
+                  </strong>
                 </li>
                 <li>
                   <FormattedMessage
