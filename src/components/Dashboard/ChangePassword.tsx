@@ -132,9 +132,7 @@ function ChangePassword() {
             <fieldset>
               <form>
                 <label className="toggle flex-between" htmlFor="change-custom-password">
-                  <legend>
-                    <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
-                  </legend>
+                  <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
                   <input
                     onChange={handleSwitchChange}
                     className="toggle-checkbox"
