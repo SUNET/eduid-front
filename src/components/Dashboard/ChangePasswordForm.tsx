@@ -1,11 +1,9 @@
 import { changePassword } from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
-import { ButtonGroup } from "reactstrap";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
@@ -16,6 +14,7 @@ export interface ChangePasswordFormProps {
 // These are the props we pass to the sub-components with the different forms
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
+  handleCancel?: any;
 }
 
 interface ChangePasswordFormData {
@@ -57,6 +56,10 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
   const initialValues = { suggested };
 
+  function handleSwitchChange() {
+    setRenderSuggested(!renderSuggested);
+  }
+
   return (
     <FinalForm<ChangePasswordFormData>
       onSubmit={handleSubmitPasswords}
@@ -66,30 +69,36 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
         return (
           <React.Fragment>
+            <fieldset>
+              <form>
+                <label className="toggle flex-between" htmlFor="change-custom-password">
+                  <legend>
+                    <FormattedMessage defaultMessage="Create a custom password?" description="change custom passowrd" />
+                  </legend>
+                  <input
+                    onChange={handleSwitchChange}
+                    className="toggle-checkbox"
+                    type="checkbox"
+                    checked={!renderSuggested}
+                    id="change-custom-password"
+                  />
+                  <div className="toggle-switch"></div>
+                </label>
+              </form>
+              <p className="help-text">
+                <FormattedMessage
+                  defaultMessage="Toggle the custom password switch to set your own password."
+                  description="Change password toggle"
+                />
+              </p>
+            </fieldset>
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} />
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} />
             ) : (
-              <ChangePasswordCustomForm {...child_props} />
+              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}
 
-            <div id="password-suggestion">
-              <ButtonGroup>
-                <EduIDButton buttonstyle="link" className="normal-case" id="pwmode-button" onClick={togglePasswordType}>
-                  {renderSuggested ? (
-                    <FormattedMessage
-                      description="chpass custom password"
-                      defaultMessage="I don't want a suggested password"
-                    />
-                  ) : (
-                    <FormattedMessage
-                      description="chpass suggest password"
-                      defaultMessage="Suggest a password for me"
-                    />
-                  )}
-                </EduIDButton>
-              </ButtonGroup>
-            </div>
-            <div id="chpass-form" className="tabpane buttons">
+            {/* <div id="chpass-form" className="tabpane buttons">
               <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
                 <FormattedMessage defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
@@ -102,7 +111,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               >
                 <FormattedMessage defaultMessage="Save" description="button save" />
               </EduIDButton>
-            </div>
+            </div> */}
           </React.Fragment>
         );
       }}

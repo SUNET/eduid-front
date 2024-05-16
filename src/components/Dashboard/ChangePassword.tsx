@@ -41,8 +41,7 @@ function ChangePassword() {
             <FormattedMessage
               description="Change password - lead"
               defaultMessage={`To enhance security, we have generated a new password for you. You can either copy the 
-                suggested password provided, or if your prefer, create a custom password by toggling 
-                the Custom Password switch.`}
+                suggested password provided, or if your prefer, create a custom password.`}
             />
           </p>
         </div>
