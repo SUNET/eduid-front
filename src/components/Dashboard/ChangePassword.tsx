@@ -55,7 +55,6 @@ function ChangePassword() {
   }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
-    console.log("values", values);
     // Use the right form field for the currently displayed password mode
     const newPassword = renderSuggested ? values.suggested : values.custom;
     // Callback from sub-component when the user clicks on the button to change password
@@ -121,15 +120,15 @@ function ChangePassword() {
                   <p>
                     <FormattedMessage
                       description="Change password - lead"
-                      defaultMessage={`To enhance security, we have generated a new password for you. You can either copy the 
-            suggested password provided, or if your prefer, create a custom password.`}
+                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
+                        accounts safe.`}
                     />
                   </p>
                 </div>
               </section>
             )}
 
-            <fieldset>
+            <fieldset className="toggle-change-password-options">
               <form>
                 <label className="toggle flex-between" htmlFor="change-custom-password">
                   <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
