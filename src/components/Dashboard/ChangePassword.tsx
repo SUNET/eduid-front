@@ -20,7 +20,6 @@ export interface ChangePasswordChildFormProps {
 }
 
 interface ChangePasswordFormData {
-  old?: string; // used by both modes
   custom?: string; // used with custom password
   score?: number; // used with custom password
   suggested?: string; // used with suggested password
