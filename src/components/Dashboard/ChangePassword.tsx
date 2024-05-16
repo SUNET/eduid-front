@@ -33,7 +33,7 @@ function ChangePassword() {
         <h1>
           <FormattedMessage
             description="Change password - headline"
-            defaultMessage="Change password: Suggested password"
+            defaultMessage="Change password: Password options"
           />
         </h1>
         <div className="lead">
