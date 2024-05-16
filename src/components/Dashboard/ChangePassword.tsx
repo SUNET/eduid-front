@@ -25,7 +25,7 @@ interface ChangePasswordFormData {
   suggested?: string; // used with suggested password
 }
 
-function ChangePassword() {
+export function ChangePassword() {
   const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
@@ -47,11 +47,6 @@ function ChangePassword() {
       dispatch(fetchSuggestedPassword());
     }
   }, [suggested_password, is_app_loaded]);
-
-  function togglePasswordType() {
-    // Toggle between rendering the suggested password form, or the custom password form
-    setRenderSuggested(!renderSuggested);
-  }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
     // Use the right form field for the currently displayed password mode
@@ -159,5 +154,3 @@ function ChangePassword() {
     />
   );
 }
-
-export const ChangePasswordContainer = ChangePassword;
