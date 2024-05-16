@@ -1,9 +1,10 @@
+import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
+import { ChangePasswordChildFormProps } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
@@ -45,7 +46,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   }
 
   return (
-    <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
+    <form id="passwordsview-form" onSubmit={props.formProps.handleSubmit}>
       <div className="password-format">
         <label>
           <FormattedMessage
@@ -111,6 +112,20 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           />
         </div>
       </fieldset>
+      <div id="chpass-form" className="tabpane buttons">
+        <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
+          <FormattedMessage defaultMessage="cancel" description="button cancel" />
+        </EduIDButton>
+        <EduIDButton
+          type="submit"
+          id="chpass-button"
+          buttonstyle="primary"
+          disabled={props.formProps.submitting || props.formProps.invalid}
+          onClick={props.formProps.handleSubmit}
+        >
+          <FormattedMessage defaultMessage="Save" description="button save" />
+        </EduIDButton>
+      </div>
     </form>
   );
 }
