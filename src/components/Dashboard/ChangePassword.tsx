@@ -29,9 +29,24 @@ function ChangePassword() {
 
   return (
     <React.Fragment>
-      <h4>
-        <FormattedMessage defaultMessage="Change your current password" description="Dashboard change password" />
-      </h4>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            description="Change password - headline"
+            defaultMessage="Change password: Suggested password"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              description="Change password - lead"
+              defaultMessage={`To enhance security, we have generated a new password for you. You can either copy the 
+                suggested password provided, or if your prefer, create a custom password by toggling 
+                the Custom Password switch.`}
+            />
+          </p>
+        </div>
+      </section>
       <div id="changePasswordDialog">
         <ChangePasswordForm finish_url={finish_url} />
       </div>
