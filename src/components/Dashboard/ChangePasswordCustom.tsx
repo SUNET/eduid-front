@@ -26,8 +26,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     // PasswordStrengthMeter component.
     if (!value) {
       return "required";
-    }
-    if (passwordData.isTooWeak !== false) {
+    } else if (passwordData.isTooWeak !== false) {
       return "chpass.low-password-entropy";
     }
   }
@@ -44,7 +43,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
 
   return (
     <form id="passwordsview-form" onSubmit={props.formProps.handleSubmit}>
-      <div className="password-format">
+      <fieldset className="password-format">
         <label>
           <FormattedMessage
             defaultMessage="Tip: Choose a strong password"
@@ -77,37 +76,37 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             return <li key={list.key}>{list}</li>;
           })}
         </ul>
-      </div>
+      </fieldset>
 
-      <fieldset>
-        <div>
-          <FinalField
-            name="custom"
-            component={CustomInput}
-            componentClass="input"
-            type="password"
-            label={
-              <FormattedMessage defaultMessage="Enter new password" description="chpass form custom password label" />
-            }
-            passwordStrengthMeter={
-              <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
-            }
-            id="custom-password-field"
-            validate={strongEnough}
-            autoComplete="new-password"
-          />
-          <FinalField
-            name="repeat"
-            component={CustomInput}
-            componentClass="input"
-            type="password"
-            id="repeat-password-field"
-            label={
-              <FormattedMessage defaultMessage="Repeat new password" description="chpass form custom password repeat" />
-            }
-            validate={mustMatch}
-          />
-        </div>
+      <fieldset className="change-password-custom-inputs">
+        <FinalField
+          name="custom"
+          component={CustomInput}
+          componentClass="input"
+          type="password"
+          label={
+            <FormattedMessage defaultMessage="Enter new password" description="chpass form custom password label" />
+          }
+          passwordStrengthMeter={
+            <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
+          }
+          id="custom-password-field"
+          validate={strongEnough}
+          autoComplete="new-password"
+          required={true}
+        />
+        <FinalField
+          name="repeat"
+          component={CustomInput}
+          componentClass="input"
+          type="password"
+          id="repeat-password-field"
+          label={
+            <FormattedMessage defaultMessage="Repeat new password" description="chpass form custom password repeat" />
+          }
+          validate={mustMatch}
+          required={true}
+        />
       </fieldset>
       <div id="chpass-form" className="tabpane buttons">
         <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
