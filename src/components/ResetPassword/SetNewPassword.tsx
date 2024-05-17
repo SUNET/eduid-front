@@ -100,7 +100,7 @@ export function SetNewPassword(): JSX.Element | null {
           </p>
         </div>
       </section>
-      <div className="reset-password-input">
+      <div className="copy-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
         </label>

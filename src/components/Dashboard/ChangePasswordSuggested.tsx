@@ -8,14 +8,12 @@ import { ChangePasswordChildFormProps } from "./ChangePassword";
 export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFormProps) {
   const ref = useRef<HTMLInputElement>(null);
   const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
-  // Form field validator
-  const required = (value: string) => (value ? undefined : "required");
 
   return (
     <React.Fragment>
-      <div className="reset-password-input">
+      <div className="copy-password-input">
         <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="New password" description="Set new password" />
+          <FormattedMessage defaultMessage="new password" description="new password" />
         </label>
         <input
           name="copy-new-password"
