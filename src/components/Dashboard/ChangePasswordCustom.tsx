@@ -1,5 +1,5 @@
+import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import TextInput from "components/Common/EduIDTextInput";
 import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
@@ -20,9 +20,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     setPasswordData(value);
     props.formProps.form.change("custom", props.formProps.values.custom);
   }
-
-  // Form field validators
-  const required = (value?: string) => (value ? undefined : "required");
 
   function strongEnough(value?: string): string | undefined {
     // check that the custom password is strong enough, using a score computed in the
@@ -86,13 +83,13 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
         <div>
           <FinalField
             name="custom"
-            component={TextInput}
+            component={CustomInput}
             componentClass="input"
             type="password"
             label={
               <FormattedMessage defaultMessage="Enter new password" description="chpass form custom password label" />
             }
-            helpBlock={
+            passwordStrengthMeter={
               <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
             }
             id="custom-password-field"
@@ -101,7 +98,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           />
           <FinalField
             name="repeat"
-            component={TextInput}
+            component={CustomInput}
             componentClass="input"
             type="password"
             id="repeat-password-field"

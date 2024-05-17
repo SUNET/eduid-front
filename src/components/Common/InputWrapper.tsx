@@ -8,6 +8,7 @@ export interface InputWrapperProps extends FieldRenderProps<string> {
   helpBlock?: React.ReactNode; // help text show above input
   autoComplete?: "current-password" | "new-password" | "username";
   children?: React.ReactNode;
+  passwordStrengthMeter?: React.ReactNode;
 }
 
 /**
@@ -56,6 +57,7 @@ function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
         {errorMsg || submitErrorMsg}
       </span>
+      {props.passwordStrengthMeter && props.passwordStrengthMeter}
     </FormText>
   );
 }
