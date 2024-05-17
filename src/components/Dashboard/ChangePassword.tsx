@@ -1,4 +1,5 @@
 import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -81,7 +82,7 @@ export function ChangePassword() {
         const child_props: ChangePasswordChildFormProps = { formProps };
 
         return (
-          <React.Fragment>
+          <Splash showChildren={Boolean(suggested_password)}>
             {renderSuggested ? (
               <section className="intro">
                 <h1>
@@ -148,7 +149,7 @@ export function ChangePassword() {
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}
-          </React.Fragment>
+          </Splash>
         );
       }}
     />
