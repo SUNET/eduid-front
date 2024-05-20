@@ -1,5 +1,5 @@
-import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
@@ -28,6 +28,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       return "required";
     } else if (passwordData.isTooWeak !== false) {
       return "chpass.low-password-entropy";
+    } else {
+      return;
     }
   }
 
@@ -81,7 +83,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       <fieldset className="change-password-custom-inputs">
         <FinalField
           name="custom"
-          component={CustomInput}
+          component={NewPasswordInput}
           componentClass="input"
           type="password"
           label={
@@ -97,7 +99,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
         />
         <FinalField
           name="repeat"
-          component={CustomInput}
+          component={NewPasswordInput}
           componentClass="input"
           type="password"
           id="repeat-password-field"
