@@ -157,6 +157,12 @@ input[readonly]:focus-visible {
   }
 }
 
+fieldset.change-password-custom-inputs {
+  span.input-validate-error {
+    position: relative !important;
+  }
+}
+
 // login username-pw / reset-password set-new-password
 .password-input {
   display: flex;
