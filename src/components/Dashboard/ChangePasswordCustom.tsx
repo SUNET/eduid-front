@@ -3,7 +3,7 @@ import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
 import { useState } from "react";
 import { Field as FinalField } from "react-final-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -11,6 +11,19 @@ interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
   const [passwordData, setPasswordData] = useState<PasswordStrengthData>({});
+  const intl = useIntl();
+
+  const new_password_placeholder = intl.formatMessage({
+    id: "placeholder.new_password_placeholder",
+    defaultMessage: "enter new password",
+    description: "placeholder text for new password",
+  });
+
+  const repeat_new_password_placeholder = intl.formatMessage({
+    id: "placeholder.repeat_new_password_placeholder",
+    defaultMessage: "repeat new password",
+    description: "placeholder text for repeat new password",
+  });
 
   function updatePasswordData(value: PasswordStrengthData) {
     // This function is called when the password strength meter has calculated password strength
@@ -96,6 +109,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           validate={strongEnough}
           autoComplete="new-password"
           required={true}
+          placeHolder={new_password_placeholder}
         />
         <FinalField
           name="repeat"
@@ -108,6 +122,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           }
           validate={mustMatch}
           required={true}
+          placeHolder={repeat_new_password_placeholder}
         />
       </fieldset>
       <div id="chpass-form" className="tabpane buttons">
