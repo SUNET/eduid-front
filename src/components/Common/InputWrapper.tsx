@@ -54,10 +54,10 @@ function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
 
   return (
     <FormText>
-      {props.passwordStrengthMeter && props.passwordStrengthMeter}
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
         {errorMsg || submitErrorMsg}
       </span>
+      {props.passwordStrengthMeter && props.passwordStrengthMeter}
     </FormText>
   );
 }
