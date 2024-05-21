@@ -41,8 +41,9 @@ function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
 function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
   const intl = useIntl();
   const { meta } = props;
-  if ((!meta.error && !meta.submitError) || (!meta.touched && !meta.dirty)) {
-    // no error, no message
+
+  if ((!meta.error && !meta.submitError && !props.passwordStrengthMeter) || (!meta.touched && !meta.dirty)) {
+    // no error, no message only for !props.passwordStrengthMeter
     return null;
   }
 
