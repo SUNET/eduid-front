@@ -49,7 +49,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     const data: PasswordStrengthData = { score: score, isTooWeak: entropy < minRequiredEntropy };
     props.passStateUp(data);
   }, [pdata, emails, minRequiredEntropy, props.password]);
-  console.log("2jjj");
+
   return (
     <React.Fragment>
       <div className="form-field-error-area" key="1">
