@@ -7,6 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
+import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
 
 // exported for use in tests
 export const finish_url = "/profile/security";
@@ -17,7 +18,7 @@ export interface ChangePasswordFormProps {
 
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
-  handleCancel?: any;
+  handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface ChangePasswordFormData {
@@ -122,28 +123,7 @@ export function ChangePassword() {
                 </div>
               </section>
             )}
-
-            <fieldset className="toggle-change-password-options">
-              <form>
-                <label className="toggle flex-between" htmlFor="change-custom-password">
-                  <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
-                  <input
-                    onChange={handleSwitchChange}
-                    className="toggle-checkbox"
-                    type="checkbox"
-                    checked={!renderSuggested}
-                    id="change-custom-password"
-                  />
-                  <div className="toggle-switch"></div>
-                </label>
-              </form>
-              <p className="help-text">
-                <FormattedMessage
-                  defaultMessage="Toggle the custom password switch to set your own password."
-                  description="Change password toggle"
-                />
-              </p>
-            </fieldset>
+            <ChangePasswordSwitchToggle handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
               <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} />
             ) : (
