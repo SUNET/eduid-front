@@ -49,13 +49,13 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     const data: PasswordStrengthData = { score: score, isTooWeak: entropy < minRequiredEntropy };
     props.passStateUp(data);
   }, [pdata, emails, minRequiredEntropy, props.password]);
-
+  console.log("2jjj");
   return (
     <React.Fragment>
-      <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       <div className="form-field-error-area" key="1">
         {props.password !== undefined && <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>}
       </div>
+      <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
     </React.Fragment>
   );
 }
