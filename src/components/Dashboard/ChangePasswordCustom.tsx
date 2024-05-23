@@ -39,10 +39,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     // PasswordStrengthMeter component.
     if (!value) {
       return "required";
-    } else if (passwordData.isTooWeak !== false) {
+    } else if (passwordData.isTooWeak && passwordData.score !== 4) {
       return "chpass.low-password-entropy";
-    } else {
-      return;
     }
   }
 
