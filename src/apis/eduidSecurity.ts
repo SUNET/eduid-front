@@ -174,7 +174,7 @@ export const fetchSuggestedPassword = createAsyncThunk<
   undefined,
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("chpass/fetchSuggestedPassword", async (args, thunkAPI) => {
-  return makeSecurityRequest<SuggestedPasswordResponse>(thunkAPI, "suggested-password")
+  return makeSecurityRequest<SuggestedPasswordResponse>(thunkAPI, "change-password/suggested-password")
     .then((response) => response.payload.suggested_password)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -198,7 +198,7 @@ export const changePassword = createAsyncThunk<
   ChangePasswordPayload,
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("chpass/changePassword", async (args, thunkAPI) => {
-  return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password", args)
+  return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password/set-password", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
