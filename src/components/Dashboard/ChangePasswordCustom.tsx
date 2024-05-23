@@ -55,7 +55,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   }
 
   return (
-    <form id="passwordsview-form" onSubmit={props.formProps.handleSubmit}>
+    <form id="passwords-view-form" onSubmit={props.formProps.handleSubmit}>
       <fieldset className="password-format">
         <label>
           <FormattedMessage
@@ -123,7 +123,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           placeHolder={repeat_new_password_placeholder}
         />
       </fieldset>
-      <div id="chpass-form" className="tabpane buttons">
+      <div id="chpass-form" className="tab-pane buttons">
         <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
           <FormattedMessage defaultMessage="cancel" description="button cancel" />
         </EduIDButton>
