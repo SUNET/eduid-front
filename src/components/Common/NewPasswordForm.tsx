@@ -23,7 +23,7 @@ interface NewPasswordFormProps {
   //   callback?: ((errors?: SubmissionErrors) => void) | undefined
   // ) => void | Promise<void>;
   submitButtonText: React.ReactChild;
-  handleCancel?: any;
+  handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
