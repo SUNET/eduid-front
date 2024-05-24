@@ -1,7 +1,7 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
@@ -11,8 +11,14 @@ interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
   const [passwordData, setPasswordData] = useState<PasswordStrengthData>({});
+  const [repeatNewPassword, setRepeatNewPassword] = useState<string>();
   const intl = useIntl();
 
+  useEffect(() => {
+    setRepeatNewPassword(props.formProps.values.custom);
+  }, [props.formProps.values.custom]);
+
+  useEffect(() => {}, [props.formProps.values.custom]);
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
     defaultMessage: "enter new password",
@@ -49,7 +55,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     if (!value) {
       return "required";
     }
-    if (value !== props.formProps.values.custom) {
+    if (value !== repeatNewPassword) {
       return "chpass.different-repeat";
     }
   }
