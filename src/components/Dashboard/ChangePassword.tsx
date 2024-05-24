@@ -45,19 +45,28 @@ export function ChangePassword() {
 
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {
-      // call fetchSuggestedPassword once state.config.security_service_url is initialised
-      dispatch(fetchSuggestedPassword());
+      handleSuggestedPassword();
     }
   }, [suggested_password, is_app_loaded]);
+
+  async function handleSuggestedPassword() {
+    const response = await dispatch(fetchSuggestedPassword());
+    if (fetchSuggestedPassword.rejected.match(response)) {
+      navigate(finish_url);
+    }
+  }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
     // Use the right form field for the currently displayed password mode
     const newPassword = renderSuggested ? values.suggested : values.custom;
+
     // Callback from sub-component when the user clicks on the button to change password
     if (newPassword) {
       const response = await dispatch(changePassword({ new_password: newPassword }));
       if (changePassword.fulfilled.match(response)) {
-        navigate(finish_url);
+        navigate("/profile/chpass/success", {
+          state: newPassword,
+        });
       }
     }
   }
@@ -65,7 +74,7 @@ export function ChangePassword() {
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     // Callback from sub-component when the user clicks on the button to abort changing password
     event.preventDefault();
-    // TODO: should clear passwords from form to avoid browser password manager asking user to save the password
+
     navigate(finish_url);
   }
 
