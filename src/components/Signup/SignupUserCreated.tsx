@@ -1,4 +1,5 @@
 import { createUserRequest } from "apis/eduidSignup";
+import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import { CopyToClipboard } from "components/Common/CopyToClipboard";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
@@ -12,23 +13,6 @@ import { SignupGlobalStateContext } from "./SignupGlobalState";
 export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
-
-interface EmailProps {
-  email?: string;
-}
-
-const EmailFieldset = ({ email }: EmailProps): JSX.Element => {
-  return (
-    <fieldset>
-      <label htmlFor={idUserEmail}>
-        <FormattedMessage defaultMessage="Email address" description="Email label" />
-      </label>
-      <div className="display-data">
-        <output id={idUserEmail}>{email}</output>
-      </div>
-    </fieldset>
-  );
-};
 
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
@@ -70,14 +54,6 @@ export function SignupConfirmPassword() {
       </div>
       <div id="email-display">
         <EmailFieldset email={signupState?.email.address} />
-        {/* <fieldset>
-          <label htmlFor={idUserEmail}>
-            <FormattedMessage defaultMessage="Email address" description="Email label" />
-          </label>
-          <div className="display-data">
-            <output id={idUserEmail}>{signupState?.email.address}</output>
-          </div>
-        </fieldset> */}
         <fieldset>
           <label htmlFor={idUserPassword}>
             <FormattedMessage defaultMessage="Password" description="Password label" />
@@ -125,27 +101,10 @@ export function SignupUserCreated(): JSX.Element {
           />
         </p>
       </div>
-      <div id="email-display">
-        <EmailFieldset email={signupState?.email.address} />
-        <fieldset>
-          <label htmlFor={idUserPassword}>
-            <FormattedMessage defaultMessage="Password" description="Password label" />
-          </label>
-          <div className="display-data">
-            <mark className="force-select-all">
-              <output id={idUserPassword}>{formatPassword(signupState?.credentials.password)}</output>
-            </mark>
-          </div>
-          <input
-            autoComplete="new-password"
-            type="password"
-            name="display-none-new-password"
-            id="display-none-new-password"
-            defaultValue={signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""}
-          />
-        </fieldset>
-      </div>
-
+      <ConfirmUserInfo
+        email_address={signupState?.email.address as string}
+        new_password={formatPassword(signupState?.credentials.password)}
+      />
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
