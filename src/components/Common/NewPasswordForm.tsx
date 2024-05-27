@@ -14,15 +14,15 @@ export interface NewPasswordFormData {
 }
 
 interface NewPasswordFormProps {
-  goBack?: () => void;
-  extra_security?: ExtraSecurityAlternatives;
-  suggested_password: string | undefined;
-  submitNewPasswordForm: (
+  readonly goBack?: () => void;
+  readonly extra_security?: ExtraSecurityAlternatives;
+  readonly suggested_password: string | undefined;
+  readonly submitNewPasswordForm: (
     values: NewPasswordFormData,
     form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
     callback?: ((errors?: SubmissionErrors) => void) | undefined
   ) => void | Promise<void>;
-  submitButtonText: React.ReactChild;
+  readonly submitButtonText: React.ReactChild;
 }
 
 export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
