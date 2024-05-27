@@ -156,80 +156,49 @@ function VerifiedIdentitiesTable(): JSX.Element {
   return (
     <React.Fragment>
       {identities.nin?.verified && (
-        <figure className="table-responsive identity-summary">
-          <table className="table">
-            <tbody>
-              <tr className="border-row">
-                <td>
-                  <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
-                </td>
-                <td>
-                  <strong>
-                    <FormattedMessage
-                      defaultMessage="Swedish national identity number"
-                      description="Verified identity"
-                    />
-                  </strong>
-                </td>
-                <td>
-                  <NinDisplay nin={identities.nin} allowDelete={true} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <figure className="grid-container identity-summary">
+          <div>
+            <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
+          </div>
+          <div className="profile-grid-cell">
+            <strong>
+              <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
+            </strong>
+          </div>
+          <NinDisplay nin={identities.nin} allowDelete={true} />
         </figure>
       )}
 
       {identities.eidas?.verified && (
-        <React.Fragment>
-          <figure className="table-responsive identity-summary">
-            <table className="table">
-              <tbody>
-                <tr className="border-row">
-                  <td>
-                    <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
-                  </td>
-                  <td>
-                    <strong>
-                      <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
-                    </strong>
-                  </td>
-                  <td>
-                    {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </figure>
-        </React.Fragment>
+        <figure className="grid-container identity-summary">
+          <div>
+            <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
+          </div>
+          <div className="profile-grid-cell">
+            <strong>
+              <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
+            </strong>
+          </div>
+          {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
+        </figure>
       )}
 
       {identities.svipe?.verified && (
-        <React.Fragment>
-          <figure className="table-responsive identity-summary">
-            <table className="table">
-              <tbody>
-                <tr className="border-row">
-                  <td>
-                    <ReactCountryFlag
-                      className="flag-icon"
-                      aria-label={regionNames.of(identities.svipe.country_code)}
-                      countryCode={identities.svipe.country_code}
-                    />
-                  </td>
-                  <td>
-                    <strong>
-                      <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
-                    </strong>
-                  </td>
-                  <td>
-                    {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </figure>
-        </React.Fragment>
+        <figure className="grid-container identity-summary">
+          <div>
+            <ReactCountryFlag
+              className="flag-icon"
+              aria-label={regionNames.of(identities.svipe.country_code)}
+              countryCode={identities.svipe.country_code}
+            />
+          </div>
+          <div className="profile-grid-cell">
+            <strong>
+              <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
+            </strong>
+          </div>
+          {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
+        </figure>
       )}
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities.nin?.verified && (
