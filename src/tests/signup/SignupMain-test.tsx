@@ -37,7 +37,8 @@ const emptyState: SignupState = {
   },
   user_created: false,
 };
-
+const testFirstName = "test";
+const testLastName = "test";
 const testEmailAddress = "test@example.org";
 const captchaTestValue = "captcha-test-value";
 const testPassword = "abcdefghij";
@@ -289,7 +290,10 @@ test("handles wrong email code", async () => {
   });
 
   // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
-  await testEnterEmail({ email: testEmailAddress, expectErrorShown: true });
+  await testEnterEmail({
+    email: testEmailAddress,
+    expectErrorShown: true,
+  });
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
@@ -304,19 +308,29 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   }
 
-  const input = screen.getByRole("textbox");
-  expect(input).toHaveFocus();
-  expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", emailPlaceHolder);
+  const firstNameInput = screen.getAllByRole("textbox")[0];
+  expect(firstNameInput).toHaveFocus();
+  expect(firstNameInput).toHaveAccessibleName(/^First name/);
+  expect(firstNameInput).toHaveProperty("placeholder", "First name");
+
+  const lastNameInput = screen.getAllByRole("textbox")[1];
+  expect(lastNameInput).toHaveAccessibleName(/^Last name/);
+  expect(lastNameInput).toHaveProperty("placeholder", "Last name");
+
+  const emailInput = screen.getAllByRole("textbox")[2];
+  expect(emailInput).toHaveAccessibleName(/^Email address/);
+  expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
 
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeDisabled();
 
-  fireEvent.change(input, { target: { value: "not-an-email" } });
+  fireEvent.change(emailInput, { target: { value: "not-an-email" } });
   expect(button).toBeDisabled();
 
   if (email) {
-    fireEvent.change(input, { target: { value: email } });
+    fireEvent.change(firstNameInput, { target: { value: "test" } });
+    fireEvent.change(lastNameInput, { target: { value: "test" } });
+    fireEvent.change(emailInput, { target: { value: email } });
     expect(button).toBeEnabled();
 
     fireEvent.click(button);
