@@ -22,7 +22,10 @@ form {
 // single input and button on a row
 .single-input-form {
   flex-direction: row;
-
+  align-items: center;
+  .buttons {
+    align-self: center;
+  }
   button {
     margin: auto 0 0.5rem 1rem;
   }

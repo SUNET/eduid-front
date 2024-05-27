@@ -54,7 +54,7 @@ export function SignupEnterCode(): JSX.Element {
     return (
       <div>
         <h1>
-          <FormattedMessage defaultMessage="Code expired" description="Signup" />
+          <FormattedMessage defaultMessage="Register: Code expired" description="Signup" />
         </h1>
         <div className="lead">
           <p>
@@ -96,7 +96,7 @@ export function SignupEnterCode(): JSX.Element {
   return (
     <Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Verification of email address" description="Signup" />
+        <FormattedMessage defaultMessage="Register: Verification of email address" description="Signup" />
       </h1>
       <div className="lead">
         <p>

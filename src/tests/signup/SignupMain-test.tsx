@@ -37,7 +37,8 @@ const emptyState: SignupState = {
   },
   user_created: false,
 };
-
+const testFirstName = "test";
+const testLastName = "test";
 const testEmailAddress = "test@example.org";
 const captchaTestValue = "captcha-test-value";
 const testPassword = "abcdefghij";
@@ -213,12 +214,32 @@ test("complete signup happy case", async () => {
     expect(getPasswordCalled).toBe(true);
   });
 
+  // verify accept button is initially disabled
+  const okButton = screen.getByRole("button", { name: /^ok/i });
+  expect(okButton).toBeDisabled();
+
+  const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
+  expect(repeatInput).toHaveFocus();
+  expect(repeatInput).toHaveProperty("placeholder", "xxxx xxxx xxxx");
+  fireEvent.change(repeatInput, { target: { value: "not the right password" } });
+
+  // verify ok button is still disabled (because of non-matching passwords)
+  expect(okButton).toBeDisabled();
+
+  // enter the right password
+  fireEvent.change(repeatInput, { target: { value: testPassword } });
+
+  // verify ok button is now enabled
+  expect(okButton).toBeEnabled();
+
+  fireEvent.click(okButton);
+
   await waitFor(() => {
     expect(createUserCalled).toBe(true);
   });
 
   await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent(/^You have completed/);
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Completed/);
   });
 
   // verify e-mail and password are shown
@@ -269,11 +290,14 @@ test("handles wrong email code", async () => {
   });
 
   // after three incorrect attempts, we should be returned to the first page where we enter an e-mail address
-  await testEnterEmail({ email: testEmailAddress, expectErrorShown: true });
+  await testEnterEmail({
+    email: testEmailAddress,
+    expectErrorShown: true,
+  });
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register your email/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter the email address/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -284,19 +308,29 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   }
 
-  const input = screen.getByRole("textbox");
-  expect(input).toHaveFocus();
-  expect(input).toHaveAccessibleName(/^Email address/);
-  expect(input).toHaveProperty("placeholder", emailPlaceHolder);
+  const firstNameInput = screen.getAllByRole("textbox")[0];
+  expect(firstNameInput).toHaveFocus();
+  expect(firstNameInput).toHaveAccessibleName(/^First name/);
+  expect(firstNameInput).toHaveProperty("placeholder", "First name");
+
+  const lastNameInput = screen.getAllByRole("textbox")[1];
+  expect(lastNameInput).toHaveAccessibleName(/^Last name/);
+  expect(lastNameInput).toHaveProperty("placeholder", "Last name");
+
+  const emailInput = screen.getAllByRole("textbox")[2];
+  expect(emailInput).toHaveAccessibleName(/^Email address/);
+  expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
 
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeDisabled();
 
-  fireEvent.change(input, { target: { value: "not-an-email" } });
+  fireEvent.change(emailInput, { target: { value: "not-an-email" } });
   expect(button).toBeDisabled();
 
   if (email) {
-    fireEvent.change(input, { target: { value: email } });
+    fireEvent.change(firstNameInput, { target: { value: "test" } });
+    fireEvent.change(lastNameInput, { target: { value: "test" } });
+    fireEvent.change(emailInput, { target: { value: email } });
     expect(button).toBeEnabled();
 
     fireEvent.click(button);
@@ -335,7 +369,7 @@ async function testTermsOfUse({
   registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
-  await screen.findByText(/^Terms of use/);
+  await screen.findByText(/^Register: Terms of use/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
   if (state.tou.version === "1999-v1") {

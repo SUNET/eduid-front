@@ -9,7 +9,7 @@ import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
 import { ProcessToU, SignupToU } from "./SignupToU";
-import { CreateUser, SignupUserCreated } from "./SignupUserCreated";
+import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
@@ -37,7 +37,7 @@ export function SignupApp(): JSX.Element {
       {state.matches("HandleEmail.ProcessEmailCode") && <ProcessEmailCode />}
       {state.matches("HandleCredentials.SignupCredentials") && <SignupCredentials />}
       {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
-      {state.matches("FinaliseUser.CreateUser") && <CreateUser />}
+      {state.matches("FinaliseUser.SignupConfirmPassword") && <SignupConfirmPassword />}
       {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
     </React.Fragment>
   );

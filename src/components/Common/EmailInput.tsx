@@ -9,7 +9,7 @@ export const emailPlaceHolder = "name@example.com";
 
 interface EmailInputProps {
   required: boolean;
-  autoFocus: boolean;
+  autoFocus?: boolean;
   name: string;
   autoComplete?: "username";
   helpBlock?: React.ReactNode; // help text shown above input

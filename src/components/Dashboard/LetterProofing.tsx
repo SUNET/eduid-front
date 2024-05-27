@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
+import AddNin from "./AddNin";
 
 export interface LetterProofingProps {
   disabled: boolean;
@@ -136,18 +137,26 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "letter.placeholder",
-    defaultMessage: "Code",
+    defaultMessage: "enter code",
     description: "Placeholder for letter proofing text input",
   });
 
   return (
     <Fragment>
+      {/* <h4>
+        <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
+      </h4> */}
+
       <p className="proofing-btn-help">
         <FormattedMessage
           description="letter initialize proofing help text"
           defaultMessage={`You will receive a letter which contains a code that for security reasons expires in two weeks.`}
         />
       </p>
+
+      <AddNin />
+
+      <hr className="border-line border-line-lesser" />
 
       {description}
 

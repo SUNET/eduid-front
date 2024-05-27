@@ -170,7 +170,7 @@ function Phones() {
 
   const modalPlaceholder = intl.formatMessage({
     id: "mobile.confirm_mobile_placeholder",
-    defaultMessage: "Code",
+    defaultMessage: "enter code",
     description: "placeholder text for phone code input",
   });
 

@@ -1,10 +1,19 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { RequestEmailLinkRequest, RequestEmailLinkResponse } from "apis/eduidResetPassword";
+import {
+  NewPasswordRequest,
+  NewPasswordResponse,
+  RequestEmailLinkRequest,
+  RequestEmailLinkResponse,
+  VerifyCodeRequest,
+  VerifyCodeResponse,
+} from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+
+const TEST_PASSWORD = "password";
 
 test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
@@ -58,10 +67,10 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   // We should get to a page asking if we want to start the account recovery process
   await waitFor(() => {
-    expect(screen.getByRole("heading")).toHaveTextContent("Reset password");
+    expect(screen.getByRole("heading")).toHaveTextContent("Start account recovery process");
   });
 
-  expect(screen.getByText(/To start the account recovery/i)).toBeInTheDocument();
+  expect(screen.getByText(/Click the button below to send an e-mail to/i)).toBeInTheDocument();
 
   // Verify the e-mail address is shown
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
@@ -82,7 +91,9 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
 test("can click 'forgot password' without an e-mail address", async () => {
   const email = "test@example.org";
+  const code = "123456";
   const ref = "abc567";
+
   mswServer.use(
     rest.post("/next", (req, res, ctx) => {
       const body = req.body as LoginNextRequest;
@@ -106,6 +117,37 @@ test("can click 'forgot password' without an e-mail address", async () => {
         throttled_max: 60,
         throttled_seconds: 60,
       };
+      return res(ctx.json({ type: "test response", payload: payload }));
+    }),
+    rest.post("/reset-password-url/verify-email", (req, res, ctx) => {
+      const body = req.body as VerifyCodeRequest;
+      if (body.email_code != code) {
+        return res(ctx.status(400));
+      }
+      const payload: VerifyCodeResponse = {
+        suggested_password: TEST_PASSWORD,
+        email_code: code,
+        email_address: email,
+        extra_security: {},
+        success: true,
+        zxcvbn_terms: [],
+      };
+      return res(ctx.json({ type: "test response", payload: payload }));
+    }),
+    rest.post("/reset-password-url/new-password-extra-security-token", (req, res, ctx) => {
+      const body = req.body as NewPasswordRequest;
+      if (body.email_code != code || body.password != TEST_PASSWORD) {
+        return res(ctx.status(400));
+      }
+      const payload: NewPasswordResponse = {};
+      return res(ctx.json({ type: "test response", payload: payload }));
+    }),
+    rest.post("/reset-password-url/new-password", (req, res, ctx) => {
+      const body = req.body as NewPasswordRequest;
+      if (body.email_code != code || body.password != TEST_PASSWORD) {
+        return res(ctx.status(400));
+      }
+      const payload: NewPasswordResponse = {};
       return res(ctx.json({ type: "test response", payload: payload }));
     })
   );
@@ -145,6 +187,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   await waitFor(() => {
     expect(screen.getByTestId("email-address")).toHaveTextContent(email);
   });
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
 
   // the ok button is initially disabled without code
   const resendButton = screen.getByRole("button", { name: /^ok/i });

@@ -80,7 +80,10 @@ export const apiResponses = {
   ),
 
   "signup.email-address-used": (
-    <FormattedMessage id="signup.email-address-used" defaultMessage={`The email address is already registered.`} />
+    <FormattedMessage
+      id="signup.email-address-used"
+      defaultMessage={`The email address is already registered. If you've forgotten your password, go to the login page and reset it.`}
+    />
   ),
 
   "signup.captcha-not-completed": (

@@ -229,15 +229,25 @@ export function HandleExtraSecurities(): JSX.Element | null {
 
   return (
     <React.Fragment>
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Reset Password: Verification method"
+            description="HandleExtraSecurities heading"
+          />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
+              description="HandleExtraSecurities lead text"
+            />
+          </p>
+        </div>
+      </section>
       <h2>
         <FormattedMessage description="extra security heading" defaultMessage="Select an extra security option" />
       </h2>
-      <p>
-        <FormattedMessage
-          description="extra security description"
-          defaultMessage="A password reset using an extra security option will keep your account confirmed."
-        />
-      </p>
       <SecurityKey
         selected_option={selected_option}
         ShowSecurityKey={ShowSecurityKey}

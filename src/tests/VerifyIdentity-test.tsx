@@ -17,8 +17,14 @@ test("renders verifyIdentity, non verified user", async () => {
   act(() => {
     swedishAccordion.click();
   });
+  const byPostAccordion = screen.getAllByRole("button", {
+    name: /by post/i,
+  })[0];
+  act(() => {
+    byPostAccordion.click();
+  });
   await waitFor(() => {
-    expect(screen.getByRole("heading", { name: /Add your id number/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/ID number/i)).toBeInTheDocument();
   });
   act(() => {
     eidasAccordion.click();

@@ -28,6 +28,25 @@ figure,
   &.tight {
     padding: 0.5em 1em;
   }
+  &.grid-container {
+    display: grid;
+    grid-template-columns: 10% 40% 50%;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1;
+
+    img {
+      height: 1.5rem;
+    }
+    > div {
+      padding: 0.5rem 0.5rem;
+      align-self: center;
+
+      .display-data.verified {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 .captcha-responsive {

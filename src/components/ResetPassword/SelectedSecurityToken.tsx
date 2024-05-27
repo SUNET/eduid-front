@@ -77,12 +77,17 @@ export function SelectedSecurityToken(): JSX.Element {
 
   return (
     <React.Fragment>
-      <p>
-        <FormattedMessage
-          description="mfa reset-password tapit"
-          defaultMessage="Use your security key to reset password. If it has a button, tap it."
-        />
-      </p>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Reset Password: Use security key" description="mfa security key heading" />
+        </h1>
+        <div className="lead">
+          <p>
+            <FormattedMessage description="mfa reset-password tapit" defaultMessage="If it has a button, tap it." />
+          </p>
+        </div>
+      </section>
+
       <figure>
         <div className="key-animation" />
         <div>

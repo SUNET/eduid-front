@@ -35,6 +35,10 @@
     "developer_comment": "method svipe - paragraph",
     "string": ", you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below."
   },
+  "+j4RcB": {
+    "developer_comment": "Registration confirm password",
+    "string": "Confirm your password for registration completion."
+  },
   "/+3WQI": {
     "developer_comment": "recommendation title",
     "string": "Recommended actions for you"
@@ -86,6 +90,10 @@
   "/hAEZl": {
     "developer_comment": "mfa reset-password tapit",
     "string": "Use your security key to reset password. If it has a button, tap it."
+  },
+  "/oseeC": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
@@ -190,10 +198,6 @@
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
-  },
-  "2hnsRO": {
-    "developer_comment": "nins input help text",
-    "string": "National identity number with 12 digits"
   },
   "2hrJd2": {
     "developer_comment": "Reset password link",
@@ -349,6 +353,10 @@
     "developer_comment": "Copied tooltip",
     "string": "Copied!"
   },
+  "6i0Tfo": {
+    "developer_comment": "nin label",
+    "string": "ID number"
+  },
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID Dashboard:"
@@ -497,6 +505,14 @@
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
   },
+  "AxZguv": {
+    "developer_comment": "nin label",
+    "string": "National ID number"
+  },
+  "AyJxQp": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Start by adding your ID number above."
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -553,6 +569,10 @@
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
   },
+  "DD8rTQ": {
+    "developer_comment": "nins input help text",
+    "string": "12 digits"
+  },
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
     "string": "If you can't find the answers to your questions about eduID on this help page, you can contact the eduID support by mailing {support}."
@@ -560,6 +580,10 @@
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
+  },
+  "DuLi7B": {
+    "developer_comment": "verify identity unverified description",
+    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
   },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
@@ -938,10 +962,6 @@
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
   },
-  "OPkp7U": {
-    "developer_comment": "nin label",
-    "string": "Id number"
-  },
   "Ok/e72": {
     "developer_comment": "Add emails description",
     "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
@@ -1309,10 +1329,6 @@
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
   },
-  "YGVN20": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to my eduid"
-  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
@@ -1499,6 +1515,10 @@
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
+  },
+  "cFlMrU": {
+    "developer_comment": "verify-identity.connect-nin_description",
+    "string": "Verify that you have access to your ID- or coordination number."
   },
   "cM/njp": {
     "developer_comment": "SAML login finished",
@@ -1691,7 +1711,7 @@
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
-    "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    "string": "enter code"
   },
   "emails.duplicated": {
     "string": "The email is already in the list."
@@ -1805,17 +1825,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gn2lIO": {
-    "developer_comment": "verify-identity.connect-nin_description",
-    "string": "Choose a suitable method to verify that you have access to the added id number."
-  },
   "gyVTaa": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "For you able to create a Freja+ by using the app or visiting one of the authorised agents"
-  },
-  "hB1XT2": {
-    "developer_comment": "verify identity unverified description",
-    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from"
   },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
@@ -1978,10 +1990,6 @@
   "kdhlZf": {
     "developer_comment": "enhance eduid - list item 5",
     "string": "verifying your identity to strengthen your eduID sufficiently for many external services."
-  },
-  "kffxhw": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID."
   },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
@@ -2332,10 +2340,6 @@
     "developer_comment": "how create eduid - heading",
     "string": "How do I create an eduID?"
   },
-  "pRXT2e": {
-    "developer_comment": "verify identity add nin heading",
-    "string": "Add your id number"
-  },
   "pb/yW9": {
     "developer_comment": "help - headline",
     "string": "Help and contact"
@@ -2495,13 +2499,13 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
   },
-  "qJxWkn": {
-    "developer_comment": "verify identity vetting explanation add nin",
-    "string": "Start by adding your ID number above"
-  },
   "qMRp3m": {
     "developer_comment": "how to contact support email - strong",
     "string": "In order to get best possible support, we recommend that you send e-mail"
+  },
+  "qQnhgJ": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "A password has been generated for you. you can easily copy and paste your password by clicking the copy to clipboard button."
   },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
@@ -2686,7 +2690,7 @@
     "string": "No credential added."
   },
   "signup.email-address-used": {
-    "string": "The email address is already registered."
+    "string": "The email address is already registered. If you've forgotten your password, go to the login page and reset it."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Try again later."
@@ -2761,13 +2765,13 @@
   "svipe_id.not_found": {
     "string": "Svipe id not found."
   },
-  "t0C4LH": {
-    "developer_comment": "verify identity connect nin",
-    "string": "Verify your id number"
-  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
+  },
+  "t2jZx/": {
+    "developer_comment": "ok button",
+    "string": "Ok"
   },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
@@ -2804,10 +2808,6 @@
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Use security key"
-  },
-  "thUSiK": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. A password has been generated for you. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",

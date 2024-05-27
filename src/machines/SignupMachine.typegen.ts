@@ -20,7 +20,7 @@ export interface Typegen0 {
     | "AskForEmailAddress"
     | "AskForEmailAddress.SignupEmailForm"
     | "FinaliseUser"
-    | "FinaliseUser.CreateUser"
+    | "FinaliseUser.SignupConfirmPassword"
     | "FinaliseUser.SignupUserCreated"
     | "HandleCaptchaAndToU"
     | "HandleCaptchaAndToU.Fail"
@@ -42,7 +42,7 @@ export interface Typegen0 {
     | "SignupStart"
     | {
         "AskForEmailAddress"?: "SignupEmailForm";
-        "FinaliseUser"?: "CreateUser" | "SignupUserCreated";
+        "FinaliseUser"?: "SignupConfirmPassword" | "SignupUserCreated";
         "HandleCaptchaAndToU"?:
           | "Fail"
           | "Finished"

@@ -73,14 +73,9 @@ function NinForm(): JSX.Element {
                 componentClass="input"
                 type="text"
                 name="nin"
-                label={<FormattedMessage description="nin label" defaultMessage="Id number" />}
+                label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
                 placeholder={placeholder}
-                helpBlock={
-                  <FormattedMessage
-                    description="nins input help text"
-                    defaultMessage="National identity number with 12 digits"
-                  />
-                }
+                helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
                 validate={validateNin}
               />
             </fieldset>
