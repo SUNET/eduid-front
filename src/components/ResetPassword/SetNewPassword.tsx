@@ -173,7 +173,7 @@ export function ResetPasswordSuccess(): JSX.Element {
             type="password"
             name="display-none-new-password"
             id="display-none-new-password"
-            defaultValue={new_password ? new_password : ""}
+            defaultValue={new_password}
           />
         </fieldset>
       </div>
