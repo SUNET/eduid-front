@@ -65,9 +65,9 @@ function EmailForm() {
       // terms of use, and solved a captcha. So we store it in the redux state here.
       dispatch(
         signupSlice.actions.setEmail({
-          email: values.email || "",
-          given_name: values.given_name || "",
-          surname: values.surname || "",
+          email: values.email ?? "",
+          given_name: values.given_name ?? "",
+          surname: values.surname ?? "",
         })
       );
       dispatch(clearNotifications());
@@ -137,7 +137,7 @@ export function RegisterEmail() {
   const email = useAppSelector((state) => state.signup.email);
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
-  const signupUser = { email: email || "", given_name: given_name || "", surname: surname || "" };
+  const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
 
   if (!signupUser) {
     signupContext.signupService.send({ type: "API_FAIL" });
