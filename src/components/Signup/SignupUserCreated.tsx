@@ -139,7 +139,6 @@ export function SignupUserCreated(): JSX.Element {
           <input
             autoComplete="new-password"
             type="password"
-            name="display-none-new-password"
             id="display-none-new-password"
             defaultValue={signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""}
           />
