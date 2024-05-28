@@ -171,7 +171,6 @@ export function ResetPasswordSuccess(): JSX.Element {
           <input
             autoComplete="new-password"
             type="password"
-            name="display-none-new-password"
             id="display-none-new-password"
             defaultValue={new_password}
           />
