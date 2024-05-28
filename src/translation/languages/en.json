@@ -83,9 +83,9 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose additional identification method:"
   },
-  "/hAEZl": {
-    "developer_comment": "mfa reset-password tapit",
-    "string": "Use your security key to reset password. If it has a button, tap it."
+  "/oseeC": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
@@ -191,10 +191,6 @@
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
   },
-  "2hnsRO": {
-    "developer_comment": "nins input help text",
-    "string": "National identity number with 12 digits"
-  },
   "2hrJd2": {
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
@@ -206,10 +202,6 @@
   "2n5qg/": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Settings"
-  },
-  "2nIzjL": {
-    "developer_comment": "Signup",
-    "string": "Code expired"
   },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
@@ -238,6 +230,10 @@
   "3U7hS5": {
     "developer_comment": "when use eduID - list item 2",
     "string": "organise your student account for email and intranet,"
+  },
+  "3Y8gXc": {
+    "developer_comment": "Account recovery front page",
+    "string": "Click the button below to send an e-mail to {email}"
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
@@ -318,10 +314,6 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
-  "5P95+P": {
-    "developer_comment": "Reset password add email heading",
-    "string": "Enter the email address registered to your eduID account."
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -341,6 +333,10 @@
     "developer_comment": "security second factor",
     "string": "If possible, it is advisable to add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
   },
+  "61F71s": {
+    "developer_comment": "mfa security key heading",
+    "string": "Reset Password: Use security key"
+  },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
@@ -348,6 +344,10 @@
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
     "string": "Copied!"
+  },
+  "6i0Tfo": {
+    "developer_comment": "nin label",
+    "string": "ID number"
   },
   "6k2J31": {
     "developer_comment": "Login MFA",
@@ -380,6 +380,10 @@
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
+  },
+  "7rfaTz": {
+    "developer_comment": "Account recovery front page heading",
+    "string": "Reset Password: Start account recovery process"
   },
   "7yS+J6": {
     "developer_comment": "edit button",
@@ -489,6 +493,10 @@
     "developer_comment": "Advanced settings",
     "string": "Advanced settings"
   },
+  "AfTLxJ": {
+    "developer_comment": "mfa reset-password tapit",
+    "string": "If it has a button, tap it."
+  },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
@@ -496,6 +504,14 @@
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
+  },
+  "AxZguv": {
+    "developer_comment": "nin label",
+    "string": "National ID number"
+  },
+  "AyJxQp": {
+    "developer_comment": "verify identity vetting explanation add nin",
+    "string": "Start by adding your ID number above."
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -553,13 +569,17 @@
     "developer_comment": "Set new password (accept button)",
     "string": "accept password"
   },
+  "DD8rTQ": {
+    "developer_comment": "nins input help text",
+    "string": "12 digits"
+  },
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
     "string": "If you can't find the answers to your questions about eduID on this help page, you can contact the eduID support by mailing {support}."
   },
-  "DuBOC3": {
-    "developer_comment": "Set new password",
-    "string": "Set your new password"
+  "DuLi7B": {
+    "developer_comment": "verify identity unverified description",
+    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
   },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
@@ -627,6 +647,10 @@
   "Fjbcnk": {
     "developer_comment": "profile email display no data",
     "string": "no email added"
+  },
+  "FsCTCK": {
+    "developer_comment": "Reset Password set new password success heading",
+    "string": "Reset Password: Completed"
   },
   "FutYRQ": {
     "string": "Use my {freja_eidplus_verbatim}"
@@ -786,10 +810,6 @@
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
   },
-  "KZrck9": {
-    "developer_comment": "Signup",
-    "string": "Verification of email address"
-  },
   "KaX8vx": {
     "developer_comment": "pd label en",
     "string": "English"
@@ -842,10 +862,6 @@
     "developer_comment": "mfa problems heading",
     "string": "Problems?"
   },
-  "LuSrd4": {
-    "developer_comment": "Signup",
-    "string": "Register your email address to create your eduID."
-  },
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Send sms to {phone}"
@@ -861,6 +877,10 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
+  },
+  "MHzJ0N": {
+    "developer_comment": "Reset Password set new password success lead",
+    "string": "These is your new password for eduID. Save the password! Once you've logged in it is possible to change your password."
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -938,10 +958,6 @@
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
   },
-  "OPkp7U": {
-    "developer_comment": "nin label",
-    "string": "Id number"
-  },
   "Ok/e72": {
     "developer_comment": "Add emails description",
     "string": "You can connect one or more email addresses to your eduID."
@@ -998,10 +1014,6 @@
     "developer_comment": "what is svipe - heading",
     "string": "What is Svipe iD?"
   },
-  "PwI8gG": {
-    "developer_comment": "Reset Password set new password success",
-    "string": "Password has been updated."
-  },
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tip: Choose a strong password"
@@ -1013,6 +1025,10 @@
   "Q8CeJV": {
     "developer_comment": "mfa try again",
     "string": "Please try again"
+  },
+  "QDS1P5": {
+    "developer_comment": "signup last name",
+    "string": "Last name"
   },
   "QHR4Ik": {
     "developer_comment": "about freja - handle",
@@ -1076,10 +1092,6 @@
   "S1ESg7": {
     "developer_comment": "Currently in progress title",
     "string": "Currently in progress"
-  },
-  "SJUMOA": {
-    "developer_comment": "Reset Password heading",
-    "string": "Reset password"
   },
   "SK2AK4": {
     "developer_comment": "method svipe - heading",
@@ -1157,6 +1169,10 @@
   "TpraxF": {
     "developer_comment": "Dashboard change password modal title",
     "string": "For security reasons..."
+  },
+  "TtQt1m": {
+    "developer_comment": "Registration complete",
+    "string": "Register: Completed"
   },
   "TxOjgK": {
     "developer_comment": "need visit atg agent for freja - paragraph",
@@ -1277,6 +1293,10 @@
     "developer_comment": "accordion item swedish title",
     "string": "Swedish personal ID or coordination number"
   },
+  "Xl8Jtp": {
+    "developer_comment": "signup first name",
+    "string": "First name"
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -1309,10 +1329,6 @@
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
   },
-  "YGVN20": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to my eduID"
-  },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you first need to create a digital ID-card in the {freja_eid_link} app."
@@ -1332,6 +1348,10 @@
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using this code on the first device, please close this browser window."
+  },
+  "ZF97+M": {
+    "developer_comment": "Reset Password phone code sent lead",
+    "string": "Please enter the code sent to {phone}"
   },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
@@ -1368,10 +1388,6 @@
   "ZsPPwh": {
     "developer_comment": "Signup credentials button",
     "string": "Retry"
-  },
-  "ZyrvXd": {
-    "developer_comment": "Registration complete",
-    "string": "You have completed the registration for eduID."
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
@@ -1480,10 +1496,6 @@
   "bankid.token_not_found": {
     "string": "U2F token not found"
   },
-  "bcHXR2": {
-    "developer_comment": "Account recovery front page",
-    "string": "To start the account recovery process, press the button below to send an email to {email}."
-  },
   "beRQGp": {
     "developer_comment": "Short code form",
     "string": "The code expires in"
@@ -1499,6 +1511,10 @@
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
+  },
+  "cFlMrU": {
+    "developer_comment": "verify-identity.connect-nin_description",
+    "string": "Verify that you have access to your ID- or coordination number."
   },
   "cM/njp": {
     "developer_comment": "SAML login finished",
@@ -1547,6 +1563,10 @@
     "developer_comment": "letter initialize proofing help text",
     "string": "You will receive a letter which contains a code that for security reasons expires in two weeks."
   },
+  "dEXuhK": {
+    "developer_comment": "Signup",
+    "string": "Register: Verification of email address"
+  },
   "dHoc4Y": {
     "developer_comment": "eidas modal title",
     "string": "Use Freja+ and visit a local authorised agent"
@@ -1557,6 +1577,10 @@
   },
   "dKcigP": {
     "string": "The code sent to {email} has expired."
+  },
+  "dLknIH": {
+    "developer_comment": "Set new password",
+    "string": "Reset Password: Set new password"
   },
   "dQm5ii": {
     "developer_comment": "usb key technical section - list item 4",
@@ -1608,6 +1632,10 @@
     "developer_comment": "how to contact support - paragraph 3",
     "string": ", but for simple matters you can also reach us on phone number {phone}."
   },
+  "e6XTxx": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account, the code has been sent to {email}"
+  },
   "eFceSz": {
     "developer_comment": "Display name select placeholder",
     "string": "Select display name..."
@@ -1623,10 +1651,6 @@
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in this device"
-  },
-  "eLbkSr": {
-    "developer_comment": "Signup",
-    "string": "Confirm that you are a human."
   },
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
@@ -1691,7 +1715,7 @@
   },
   "emails.confirm_email_placeholder": {
     "developer_comment": "Placeholder for email code input",
-    "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    "string": "enter code"
   },
   "emails.duplicated": {
     "string": "The email is already in the list."
@@ -1805,17 +1829,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gn2lIO": {
-    "developer_comment": "verify-identity.connect-nin_description",
-    "string": "Choose a suitable method to verify that you have access to the added id number."
-  },
   "gyVTaa": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "For you able to create a Freja+ by using the app or visiting an authorised agent"
-  },
-  "hB1XT2": {
-    "developer_comment": "verify identity unverified description",
-    "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from"
   },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
@@ -1861,6 +1877,10 @@
     "developer_comment": "Copy tooltip",
     "string": "Copy to clipboard"
   },
+  "hnyHof": {
+    "developer_comment": "HandleExtraSecurities heading",
+    "string": "Reset Password: Verification method"
+  },
   "hq/xBV": {
     "developer_comment": "Use other device 2",
     "string": "Request denied."
@@ -1889,6 +1909,10 @@
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
   },
+  "iSg5BA": {
+    "developer_comment": "Signup",
+    "string": "Register: Code expired"
+  },
   "iSo6Bf": {
     "developer_comment": "accordion item additional info Verification with Swedish national ID number",
     "string": "If you have obtained a Swedish national ID number you are able to verify your identity with the Swedish national ID number."
@@ -1905,12 +1929,12 @@
     "developer_comment": "accessibility report - link",
     "string": "Accessibility Report"
   },
+  "ikmIz4": {
+    "developer_comment": "Signup",
+    "string": "Register: Confirm that you are a human."
+  },
   "invalid username": {
     "string": "Invalid username"
-  },
-  "irC/sN": {
-    "developer_comment": "Reset Password phone code sent",
-    "string": "Enter the code sent to {phone}"
   },
   "iyw+WR": {
     "developer_comment": "usb key technical section - list item 3 code",
@@ -1963,6 +1987,10 @@
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
   },
+  "kK4Hum": {
+    "developer_comment": "Account recovery cancel information",
+    "string": "If you decide to cancel, simply click the Go Back button to return to the login page."
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "make primary"
@@ -1978,10 +2006,6 @@
   "kdhlZf": {
     "developer_comment": "enhance eduid - list item 5",
     "string": "verifying your identity to strengthen your eduID sufficiently for many external services."
-  },
-  "kffxhw": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID."
   },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
@@ -2005,6 +2029,10 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
+  },
+  "lNjmQc": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Register: Terms of use"
   },
   "lXwaZ5": {
     "developer_comment": "security verify",
@@ -2044,7 +2072,7 @@
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
-    "string": "Code"
+    "string": "enter code"
   },
   "letter.saved-unconfirmed": {
     "string": "A letter with a code has been sent."
@@ -2248,6 +2276,10 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
+  "nsFjU0": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent."
+  },
   "nuB/SD": {
     "developer_comment": "captcha input label",
     "string": "Enter the code from the image"
@@ -2282,10 +2314,6 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
-  },
-  "oiMtbK": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Terms of use"
   },
   "ojB17W": {
     "string": "Swedish eID"
@@ -2331,10 +2359,6 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "How can I create an eduID?"
-  },
-  "pRXT2e": {
-    "developer_comment": "verify identity add nin heading",
-    "string": "Add your id number"
   },
   "pb/yW9": {
     "developer_comment": "help - headline",
@@ -2419,6 +2443,10 @@
     "developer_comment": "privacy policy - list item 2",
     "string": "transfers information according to the data minimisation principle - never more than required,"
   },
+  "piqcwF": {
+    "developer_comment": "Signup",
+    "string": "Register: Enter the email address"
+  },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
     "string": "Note: once you have added a security key to your eduID it must be used to log in."
@@ -2430,6 +2458,14 @@
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
     "string": "name@example.com"
+  },
+  "placeholder.firstName": {
+    "developer_comment": "placeholder First name",
+    "string": "First name"
+  },
+  "placeholder.lastName": {
+    "developer_comment": "placeholder Last name",
+    "string": "Last name"
   },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
@@ -2495,21 +2531,17 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
   },
-  "qJxWkn": {
-    "developer_comment": "verify identity vetting explanation add nin",
-    "string": "Start by adding your ID number above"
-  },
   "qMRp3m": {
     "developer_comment": "how to contact support email - strong",
     "string": "In order to get best possible support, we recommend that you send e-mail"
   },
+  "qQnhgJ": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "A password has been generated for you. you can easily copy and paste your password by clicking the copy to clipboard button."
+  },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
-  },
-  "qiazcf": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account, the code has been sent to {email}."
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
@@ -2537,6 +2569,10 @@
   "rLwIkG": {
     "developer_comment": "which login email - heading",
     "string": "Which email account can I use to log in?"
+  },
+  "raU2o7": {
+    "developer_comment": "Registration confirm password",
+    "string": "Register: Confirm your password"
   },
   "required": {
     "string": "*Field cannot be empty"
@@ -2592,6 +2628,10 @@
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
   },
+  "rr418r": {
+    "developer_comment": "HandleExtraSecurities lead text",
+    "string": "Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
+  },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
     "string": "Next update: "
@@ -2604,9 +2644,9 @@
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
   },
-  "sIENAc": {
-    "developer_comment": "extra security description",
-    "string": "A password reset using an extra security option will keep your identity confirmed."
+  "sC4pUE": {
+    "developer_comment": "ResetPasswordEnterEmail heading",
+    "string": "Reset Password: Enter the email address"
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
@@ -2686,7 +2726,7 @@
     "string": "No credential added."
   },
   "signup.email-address-used": {
-    "string": "The email address is already registered."
+    "string": "The email address is already registered. If you've forgotten your password, go to the login page and reset it."
   },
   "signup.email-throttled": {
     "string": "Too many attempts to create account have been made. Please try again later."
@@ -2761,13 +2801,13 @@
   "svipe_id.not_found": {
     "string": "Svipe ID not found."
   },
-  "t0C4LH": {
-    "developer_comment": "verify identity connect nin",
-    "string": "Verify your id number"
-  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
+  },
+  "t2jZx/": {
+    "developer_comment": "ok button",
+    "string": "Ok"
   },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
@@ -2781,10 +2821,6 @@
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
   },
-  "tQpfHe": {
-    "developer_comment": "Reset Password go to eduID",
-    "string": "Go to eduID"
-  },
   "tUkPGr": {
     "developer_comment": "verify identity vetting explanation add swedish phone",
     "string": "Only possible with Swedish phone number"
@@ -2792,6 +2828,10 @@
   "tVcCe6": {
     "developer_comment": "emails enter code",
     "string": "Code"
+  },
+  "tW2jR4": {
+    "developer_comment": "Reset Password email link sent heading",
+    "string": "Reset Password: Verify email address"
   },
   "tarlwb": {
     "developer_comment": "use svipe - list item 2",
@@ -2804,10 +2844,6 @@
   "tcDcv5": {
     "developer_comment": "mfa primary option",
     "string": "Use my security key"
-  },
-  "thUSiK": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. A password has been generated for you. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
@@ -2843,6 +2879,10 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "uzDSzk": {
+    "developer_comment": "Reset Password phone code sent heading",
+    "string": "Reset Password: Phone verification"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
