@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
-import PasswordStrengthMeter, { PasswordStrengthData } from "components/Common/PasswordStrengthMeter";
+import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -24,7 +24,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     description: "placeholder text for repeat new password",
   });
 
-  function updatePasswordData(value: PasswordStrengthData) {
+  function updatePasswordData() {
     // This function is called when the password strength meter has calculated password strength
     // on the current value in the form. We need to trigger validation of the field again at this
     // point, since validation uses this calculated value (and will already have executed when we
@@ -32,13 +32,13 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     props.formProps.form.change("custom", props.formProps.values.custom);
   }
 
-  function validateNewPassword(values: any) {
-    const errors: any = {};
+  function validateNewPassword(values: { custom?: string; repeat?: string }) {
+    const errors: { custom?: string; repeat?: string } = {};
     if (values !== undefined) {
-      ["custom", "repeat"].forEach((inputName) => {
-        if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
+      (["custom", "repeat"] as Array<keyof typeof values>).forEach((inputName) => {
+        if (!values[inputName] || emptyStringPattern.test(values[inputName] as string)) {
           errors[inputName] = "required";
-        } else if (values["custom"].replace(/\s/g, "") !== values["repeat"].replace(/\s/g, "")) {
+        } else if (values["custom"]?.replace(/\s/g, "") !== values["repeat"]?.replace(/\s/g, "")) {
           // Remove whitespace from both passwords before comparing
           errors["repeat"] = "chpass.different-repeat";
         }
