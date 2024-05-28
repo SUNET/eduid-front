@@ -1514,7 +1514,7 @@
   },
   "cFlMrU": {
     "developer_comment": "verify-identity.connect-nin_description",
-    "string": "Verifiera att du har tillgång till ditt ID- eller samordningsnummer."
+    "string": "Verifiera att du har tillgång till ditt person- eller samordningsnummer."
   },
   "cM/njp": {
     "developer_comment": "SAML login finished",
