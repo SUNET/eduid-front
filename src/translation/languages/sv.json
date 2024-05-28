@@ -233,7 +233,7 @@
   },
   "3Y8gXc": {
     "developer_comment": "Account recovery front page",
-    "string": "Klicka på knappen nedan för att skicka ett e-post till {email}"
+    "string": "Klicka på knappen nedan för att skicka ett e-postmeddelande till {email}"
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
