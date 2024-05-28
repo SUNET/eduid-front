@@ -579,7 +579,7 @@
   },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
-    "string": "För att använda vissa tjänster behöver din identitet verifieras. Koppla din identitet till ditt eduID för att få mest användning."
+    "string": "För att använda vissa tjänster behöver din identitet verifieras. Koppla din identitet till ditt eduID för att få mest användning av det."
   },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
