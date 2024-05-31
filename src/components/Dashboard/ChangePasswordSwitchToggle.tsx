@@ -1,8 +1,8 @@
 import { FormattedMessage } from "react-intl";
 
 export function ChangePasswordSwitchToggle(props: {
-  handleSwitchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  renderSuggested: boolean;
+  readonly handleSwitchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  readonly renderSuggested: boolean;
 }) {
   return (
     <fieldset className="toggle-change-password-options">

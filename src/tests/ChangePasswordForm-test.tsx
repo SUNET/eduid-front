@@ -3,12 +3,14 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 
 import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
+const suggestPassword = "test-password";
+
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
   render(<ChangePassword />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       chpass: {
-        suggested_password: "test password",
+        suggested_password: suggestPassword,
       },
     },
   });
@@ -22,7 +24,7 @@ test("renders custom password form after clicking do not want a suggested passwo
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       chpass: {
-        suggested_password: "test password",
+        suggested_password: suggestPassword,
       },
     },
   });
