@@ -41,7 +41,7 @@ export const eidasVerifyIdentity = createAsyncThunk<
 >("eidas/verifyIdentity", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "eidasVerifyIdentity";
+    body.frontend_action = "verifyIdentity";
   }
   return makeEidasRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
     .then((response) => response.payload)
@@ -69,7 +69,7 @@ export const eidasVerifyCredential = createAsyncThunk<
 >("eidas/verifyCredential", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "eidasVerifyCredential";
+    body.frontend_action = "verifyCredential";
   }
   return makeEidasRequest<VerifyCredentialResponse>(thunkAPI, "verify-credential", body)
     .then((response) => response.payload)
@@ -96,7 +96,7 @@ export const eidasMfaAuthenticate = createAsyncThunk<
 >("eidas/mfaAuthenticate", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "eidasMfaAuthenticate";
+    body.frontend_action = "loginMfaAuthn";
   }
   return makeEidasRequest<MfaAuthenticateResponse>(thunkAPI, "mfa-authenticate", body)
     .then((response) => response.payload)

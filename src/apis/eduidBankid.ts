@@ -40,7 +40,7 @@ export const bankIDVerifyIdentity = createAsyncThunk<
 >("bankid/verifyIdentity", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "bankidVerifyIdentity";
+    body.frontend_action = "verifyIdentity";
   }
 
   return makeBankIDRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
@@ -68,7 +68,7 @@ export const bankIDMfaAuthenticate = createAsyncThunk<
 >("bankid/mfaAuthenticate", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "bankidMfaAuthenticate";
+    body.frontend_action = "loginMfaAuthn";
   }
   return makeBankIDRequest<MfaAuthenticateResponse>(thunkAPI, "mfa-authenticate", body)
     .then((response) => response.payload)
@@ -96,7 +96,7 @@ export const bankIDVerifyCredential = createAsyncThunk<
 >("bankid/verifyCredential", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "bankidVerifyCredential";
+    body.frontend_action = "verifyCredential";
   }
   return makeBankIDRequest<VerifyCredentialResponse>(thunkAPI, "verify-credential", body)
     .then((response) => response.payload)
