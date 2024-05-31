@@ -116,7 +116,7 @@ export const bankIDGetStatus = createAsyncThunk<
   { dispatch: DispatchWithBankID; state: StateWithBankID }
 >("bankid/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
-  return makeBankIDRequest<GetStatusResponse>(thunkAPI, "get_status", body)
+  return makeBankIDRequest<GetStatusResponse>(thunkAPI, "get-status", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

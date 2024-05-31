@@ -129,7 +129,7 @@ export const eidasGetStatus = createAsyncThunk<
   { dispatch: DispatchWithEidas; state: StateWithEidas }
 >("eidas/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
-  return makeEidasRequest<GetStatusResponse>(thunkAPI, "get_status", body)
+  return makeEidasRequest<GetStatusResponse>(thunkAPI, "get-status", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
