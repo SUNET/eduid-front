@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import authnSlice from "slices/Authn";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
@@ -28,9 +29,18 @@ interface ChangePasswordFormData {
   suggested?: string; // used with suggested password
 }
 
+export async function handleAuthenticate(props: { action: string; dispatch: any }) {
+  props.dispatch(authnSlice.actions.setFrontendAction({ frontend_action: props.action }));
+  const response = await props.dispatch(authenticate({ frontend_action: props.action }));
+  if (authenticate.fulfilled.match(response)) {
+    window.location.href = response?.payload.location;
+  }
+}
+
 export function ChangePassword() {
   const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
+
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
@@ -44,13 +54,6 @@ export function ChangePassword() {
     });
   }, []);
 
-  async function handleAuthenticate() {
-    const response = await dispatch(authenticate({ frontend_action: "changepwAuthn" }));
-    if (authenticate.fulfilled.match(response)) {
-      window.location.href = response?.payload.location;
-    }
-  }
-
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {
       handleSuggestedPassword();
@@ -61,7 +64,7 @@ export function ChangePassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.rejected.match(response)) {
       if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        handleAuthenticate();
+        handleAuthenticate({ action: "changepwAtuhn", dispatch: dispatch });
       } else navigate(finish_url);
     }
   }

@@ -1,4 +1,4 @@
-import { changePWGetStatus } from "apis/eduidAuthn";
+import { authnGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
@@ -29,11 +29,10 @@ export function ExternalReturnHandler() {
       // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
       // the user should be returned to
       const actionToRoute: { [key: string]: string } = {
-        eidasVerifyIdentity: "/profile/verify-identity/",
-        eidasVerifyCredential: "/profile/settings/advanced-settings/",
-        svipeidVerifyIdentity: "/profile/verify-identity/",
-        bankidVerifyIdentity: "/profile/verify-identity/",
+        verifyIdentity: "/profile/verify-identity/",
+        verifyCredential: "/profile/settings/advanced-settings/",
         changepwAuthn: "/profile/chpass",
+        terminateAccountAuthn: "/",
       };
       const _path = actionToRoute[status.frontend_action];
       if (_path) {
@@ -67,8 +66,8 @@ export function ExternalReturnHandler() {
   }
 
   async function fetchAuthStatus(authn_id: string) {
-    const response = await dispatch(changePWGetStatus({ authn_id: authn_id }));
-    if (changePWGetStatus.fulfilled.match(response)) {
+    const response = await dispatch(authnGetStatus({ authn_id: authn_id }));
+    if (authnGetStatus.fulfilled.match(response)) {
       processStatus(response.payload);
     }
   }

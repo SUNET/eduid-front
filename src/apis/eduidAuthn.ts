@@ -38,10 +38,10 @@ export const authenticate = createAsyncThunk<
 /*********************************************************************************************************************/
 /**
  * @public
- * @function changePWGetStatus
+ * @function authnGetStatus
  * @desc Redux async thunk to fetch status for an earlier operation.
  */
-export const changePWGetStatus = createAsyncThunk<
+export const authnGetStatus = createAsyncThunk<
   GetStatusResponse, // return type
   GetStatusRequest, // args type
   { dispatch: DispatchWithAuthn; state: StateWithAuthn }

@@ -5,6 +5,7 @@ import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
+import { handleAuthenticate } from "./ChangePassword";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,8 @@ export default function DeleteAccount(): JSX.Element | null {
     const response = await dispatch(postDeleteAccount());
     if (postDeleteAccount.fulfilled.match(response)) {
       window.location.assign(response.payload.location);
+    } else if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+      handleAuthenticate({ action: "terminateAccountAuthn", dispatch: dispatch });
     }
   }
 
