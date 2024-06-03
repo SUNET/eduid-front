@@ -1,3 +1,4 @@
+import { authenticate } from "apis/eduidAuthn";
 import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -43,6 +44,13 @@ export function ChangePassword() {
     });
   }, []);
 
+  async function handleAuthenticate() {
+    const response = await dispatch(authenticate({ frontend_action: "changepwAuthn" }));
+    if (authenticate.fulfilled.match(response)) {
+      window.location.href = response?.payload.location;
+    }
+  }
+
   useEffect(() => {
     if (is_app_loaded && suggested_password === undefined) {
       handleSuggestedPassword();
@@ -52,7 +60,9 @@ export function ChangePassword() {
   async function handleSuggestedPassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.rejected.match(response)) {
-      navigate(finish_url);
+      if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+        handleAuthenticate();
+      } else navigate(finish_url);
     }
   }
 
