@@ -1,8 +1,8 @@
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
 interface ChangePasswordDisplayProps {
   showModal?: boolean;
@@ -10,14 +10,11 @@ interface ChangePasswordDisplayProps {
 
 function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   const [showModal, setShowModal] = useState<boolean>(props.showModal === true);
-  const config = useAppSelector((state) => state.config);
+  const navigate = useNavigate();
 
   function handleAcceptModal() {
-    const chpassURL = config.authn_service_url + "chpass";
-    // the "chpass" path will route to the ChangePassword when we get back
-    const nextURL = config.dashboard_link + "chpass";
-    const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
-    window.location.assign(url);
+    const newUrl = "/profile/chpass/";
+    navigate(newUrl);
   }
 
   return (
