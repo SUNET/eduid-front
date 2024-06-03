@@ -1,3 +1,4 @@
+import { changePWGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { svipeGetStatus } from "apis/eduidSvipe";
@@ -20,31 +21,28 @@ export function ExternalReturnHandler() {
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
-    if (status?.method) {
-      // Status has been fetched
-
-      if (status.status) {
-        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
-      }
-
-      if (status.frontend_action) {
-        // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
-        // the user should be returned to
-        const actionToRoute: { [key: string]: string } = {
-          eidasVerifyIdentity: "/profile/verify-identity/",
-          eidasVerifyCredential: "/profile/settings/advanced-settings/",
-          svipeidVerifyIdentity: "/profile/verify-identity/",
-          bankidVerifyIdentity: "/profile/verify-identity/",
-        };
-        const _path = actionToRoute[status.frontend_action];
-        if (_path) {
-          navigate(_path);
-          return;
-        }
-      }
-
-      navigate("/profile/"); // GOTO start
+    // Status has been fetched
+    if (status.status) {
+      dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
     }
+    if (status.frontend_action) {
+      // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
+      // the user should be returned to
+      const actionToRoute: { [key: string]: string } = {
+        eidasVerifyIdentity: "/profile/verify-identity/",
+        eidasVerifyCredential: "/profile/settings/advanced-settings/",
+        svipeidVerifyIdentity: "/profile/verify-identity/",
+        bankidVerifyIdentity: "/profile/verify-identity/",
+        changepwAuthn: "/profile/chpass",
+      };
+      const _path = actionToRoute[status.frontend_action];
+      if (_path) {
+        navigate(_path);
+        return;
+      }
+    }
+
+    navigate("/profile/"); // GOTO start
   }
 
   async function fetchEidasStatus(authn_id: string) {
@@ -68,6 +66,13 @@ export function ExternalReturnHandler() {
     }
   }
 
+  async function fetchAuthStatus(authn_id: string) {
+    const response = await dispatch(changePWGetStatus({ authn_id: authn_id }));
+    if (changePWGetStatus.fulfilled.match(response)) {
+      processStatus(response.payload);
+    }
+  }
+
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas") {
       fetchEidasStatus(params.authn_id).catch(console.error);
@@ -77,6 +82,9 @@ export function ExternalReturnHandler() {
     }
     if (params.authn_id && params.app_name === "bankid" && app_loaded) {
       fetchBankIDStatus(params.authn_id).catch(console.error);
+    }
+    if (params.authn_id && params.app_name === "authn" && app_loaded) {
+      fetchAuthStatus(params.authn_id).catch(console.error);
     }
   }, [params, app_loaded]);
 
