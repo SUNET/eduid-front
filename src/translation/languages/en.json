@@ -1565,7 +1565,7 @@
   },
   "dEXuhK": {
     "developer_comment": "Signup",
-    "string": "Register: Verification of email address"
+    "string": "Register: Verify email address"
   },
   "dHoc4Y": {
     "developer_comment": "eidas modal title",
@@ -1931,7 +1931,7 @@
   },
   "ikmIz4": {
     "developer_comment": "Signup",
-    "string": "Register: Confirm that you are a human."
+    "string": "Register: Confirm that you are a human"
   },
   "invalid username": {
     "string": "Invalid username"
@@ -2032,7 +2032,7 @@
   },
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
-    "string": "Register: Terms of use"
+    "string": "Register: Approve terms of use"
   },
   "lXwaZ5": {
     "developer_comment": "security verify",
@@ -2445,7 +2445,7 @@
   },
   "piqcwF": {
     "developer_comment": "Signup",
-    "string": "Register: Enter the email address"
+    "string": "Register: Enter your details"
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
