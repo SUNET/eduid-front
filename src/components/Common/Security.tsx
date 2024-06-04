@@ -9,6 +9,7 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+import { handleAuthenticate } from "components/Dashboard/ChangePassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
@@ -230,6 +231,11 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           window.location.assign(response.payload.location);
         }
       }
+      if (bankIDVerifyCredential.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          handleAuthenticate({ action: "verifyCredential", dispatch: dispatch });
+        }
+      }
     })();
   }
 
@@ -240,12 +246,19 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
-      } else if (response?.payload.payload.message === "bankid.must_authenticate") {
-        dispatch(clearNotifications());
-        const nextURL = config.dashboard_link + "settings/advanced-settings";
-        const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
-        window.location.assign(url);
       }
+      if (bankIDVerifyCredential.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          handleAuthenticate({ action: "verifyCredential", dispatch: dispatch });
+        }
+      }
+      //TODO: Check if frontend are still receiving this error message from the backend.
+      // else if (response?.payload.payload.message === "bankid.must_authenticate") {
+      //   dispatch(clearNotifications());
+      //   const nextURL = config.dashboard_link + "settings/advanced-settings";
+      //   const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
+      //   window.location.assign(url);
+      // }
     })();
   }
 
