@@ -1,4 +1,3 @@
-import { authenticate } from "apis/eduidAuthn";
 import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -6,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import { handleAuthenticate } from "./Authenticate";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
@@ -26,13 +26,6 @@ interface ChangePasswordFormData {
   custom?: string; // used with custom password
   score?: number; // used with custom password
   suggested?: string; // used with suggested password
-}
-
-export async function handleAuthenticate(props: { action: string; dispatch: any }) {
-  const response = await props.dispatch(authenticate({ frontend_action: props.action }));
-  if (authenticate.fulfilled.match(response)) {
-    window.location.href = response?.payload.location;
-  }
 }
 
 export function ChangePassword() {

@@ -9,7 +9,7 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { handleAuthenticate } from "components/Dashboard/ChangePassword";
+import { handleAuthenticate } from "components/Dashboard/Authenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";

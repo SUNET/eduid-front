@@ -5,7 +5,7 @@ import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import { handleAuthenticate } from "./ChangePassword";
+import { handleAuthenticate } from "./Authenticate";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
