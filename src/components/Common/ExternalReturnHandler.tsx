@@ -33,6 +33,8 @@ export function ExternalReturnHandler() {
         verifyCredential: "/profile/settings/advanced-settings/",
         changepwAuthn: "/profile/chpass",
         terminateAccountAuthn: "/",
+        addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
+        removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
       };
       const _path = actionToRoute[status.frontend_action];
       if (_path) {

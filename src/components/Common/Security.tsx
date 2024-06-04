@@ -103,10 +103,13 @@ export function Security(): React.ReactElement | null {
         setShowModal(false);
         const resp = await dispatch(beginRegisterWebauthn());
         if (beginRegisterWebauthn.fulfilled.match(resp)) {
-          const response = await dispatch(createCredential(resp.payload));
+          const response: any = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
+        }
+        if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
+          handleAuthenticate({ action: "addSecurityKeyAuthn", dispatch: dispatch });
         }
       } catch (err) {}
     })();
@@ -262,9 +265,14 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     })();
   }
 
-  function handleRemoveWebauthnToken(credential_key: string) {
+  async function handleRemoveWebauthnToken(credential_key: string) {
     (async () => {
-      await dispatch(removeWebauthnToken({ credential_key }));
+      const response: any = await dispatch(removeWebauthnToken({ credential_key }));
+      if (removeWebauthnToken.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          handleAuthenticate({ action: "removeIdentity", dispatch: dispatch });
+        }
+      }
     })();
   }
   // data that goes onto the table
