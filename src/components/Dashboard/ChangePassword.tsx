@@ -55,7 +55,7 @@ export function ChangePassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.rejected.match(response)) {
       if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        handleAuthenticate({ action: "changepwAtuhn", dispatch: dispatch });
+        handleAuthenticate({ action: "changepwAuthn", dispatch: dispatch });
       } else navigate(finish_url);
     }
   }
