@@ -1,5 +1,4 @@
 import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -34,14 +33,14 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           buttonstyle="link"
           className="lowercase"
           onClick={() => {
-            setShowModal(true);
+            navigate("/profile/chpass/");
           }}
         >
           <FormattedMessage defaultMessage="Change password" description="Dashboard change password button text" />
         </EduIDButton>
       </div>
 
-      <NotificationModal
+      {/* <NotificationModal
         id="security-confirm-modal"
         title={
           <FormattedMessage
@@ -61,7 +60,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
         }}
         acceptModal={handleAcceptModal}
         acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
-      />
+      /> */}
     </article>
   );
 }
