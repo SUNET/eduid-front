@@ -59,7 +59,6 @@ export function ChangePassword() {
       if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
         dispatch(clearNotifications());
         setShowModal(true);
-        // handleAuthenticate({ action: "changepwAuthn", dispatch: dispatch });
       } else navigate(finish_url);
     }
   }

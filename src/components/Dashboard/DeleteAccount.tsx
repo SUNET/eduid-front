@@ -1,24 +1,14 @@
 import { postDeleteAccount } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import { handleAuthenticate } from "./Authenticate";
+import { AuthenticateModal } from "./Authenticate";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
-
-  function handleStartConfirmationDeletion() {
-    dispatch(clearNotifications());
-    setShowModal(true);
-  }
-
-  function handleStopConfirmationDeletion() {
-    setShowModal(false);
-  }
 
   async function handleConfirmationDeletion() {
     setShowModal(false);
@@ -26,7 +16,8 @@ export default function DeleteAccount(): JSX.Element | null {
     if (postDeleteAccount.fulfilled.match(response)) {
       window.location.assign(response.payload.location);
     } else if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-      handleAuthenticate({ action: "terminateAccountAuthn", dispatch: dispatch });
+      dispatch(clearNotifications());
+      setShowModal(true);
     }
   }
 
@@ -41,34 +32,14 @@ export default function DeleteAccount(): JSX.Element | null {
           description="DeleteAccount"
         />
       </p>
-      <EduIDButton
-        buttonstyle="link"
-        className="lowercase"
-        id="delete-button"
-        onClick={handleStartConfirmationDeletion}
-      >
+      <EduIDButton buttonstyle="link" className="lowercase" id="delete-button" onClick={handleConfirmationDeletion}>
         <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
       </EduIDButton>
-
-      <NotificationModal
-        id="delete-account-modal"
-        title={
-          <FormattedMessage
-            defaultMessage="Are you sure you want to delete your eduID?"
-            description="settings.modal_delete_title"
-          />
-        }
-        mainText={
-          <FormattedMessage
-            defaultMessage={`Deleting your eduID will permanently remove all your saved
-              information. After clicking the button you need to use your log in details one final time.`}
-            description="delete.modal_info"
-          />
-        }
+      <AuthenticateModal
+        action="terminateAccountAuthn"
+        dispatch={dispatch}
         showModal={showModal}
-        closeModal={handleStopConfirmationDeletion}
-        acceptModal={handleConfirmationDeletion}
-        acceptButtonText={<FormattedMessage defaultMessage="Delete my eduID" description="delete.confirm_button" />}
+        setShowModal={setShowModal}
       />
     </article>
   );
