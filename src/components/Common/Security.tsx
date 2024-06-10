@@ -225,6 +225,12 @@ export function Security(): React.ReactElement | null {
         dispatch={dispatch}
         showModal={showAuthnModal}
         setShowModal={setShowAuthnModal}
+        mainText={
+          <FormattedMessage
+            description="To add your security key, you'll have to log in again, please press the button again."
+            defaultMessage="add Security key"
+          />
+        }
       />
     </article>
   );
@@ -326,6 +332,12 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             dispatch={dispatch}
             showModal={showAuthnModal}
             setShowModal={setShowAuthnModal}
+            mainText={
+              <FormattedMessage
+                description="You will need to login again to verify your security key."
+                defaultMessage="verify Security key"
+              />
+            }
           />
         </React.Fragment>
       );
@@ -354,6 +366,12 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
               dispatch={dispatch}
               showModal={showAuthnModal}
               setShowModal={setShowAuthnModal}
+              mainText={
+                <FormattedMessage
+                  description="To remove your security, you'll have to log in again. Once logged in, please press the button again"
+                  defaultMessage="remove Security key"
+                />
+              }
             />
           </td>
         ) : null}

@@ -43,7 +43,18 @@ function ChangePasswordDisplay() {
           <FormattedMessage defaultMessage="Change password" description="Dashboard change password button text" />
         </EduIDButton>
       </div>
-      <AuthenticateModal action="changepwAuthn" dispatch={dispatch} showModal={showModal} setShowModal={setShowModal} />
+      <AuthenticateModal
+        action="changepwAuthn"
+        dispatch={dispatch}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        mainText={
+          <FormattedMessage
+            defaultMessage="You will need to log in again to change your password."
+            description="Dashboard change password modal main text"
+          />
+        }
+      />
     </article>
   );
 }

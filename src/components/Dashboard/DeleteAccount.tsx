@@ -40,6 +40,13 @@ export default function DeleteAccount(): JSX.Element | null {
         dispatch={dispatch}
         showModal={showModal}
         setShowModal={setShowModal}
+        mainText={
+          <FormattedMessage
+            defaultMessage={`Deleting your eduID will permanently remove all your saved information. After clicking the 
+              button you need to use your log in details one final time.`}
+            description="Dashboard delete account modal main text"
+          />
+        }
       />
     </article>
   );
