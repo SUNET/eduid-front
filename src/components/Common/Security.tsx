@@ -224,8 +224,8 @@ export function Security(): React.ReactElement | null {
         setShowModal={setShowAuthnModal}
         mainText={
           <FormattedMessage
-            description="To add your security key, you'll have to log in again, please press the button again."
-            defaultMessage="add Security key"
+            description="add Security key"
+            defaultMessage="To add your security key, you'll have to log in again, please press the button again. "
           />
         }
       />
