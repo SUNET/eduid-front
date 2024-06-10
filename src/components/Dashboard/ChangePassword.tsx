@@ -1,12 +1,10 @@
-import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import { changePassword } from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
-import { clearNotifications } from "slices/Notifications";
-import { AuthenticateModal } from "./Authenticate";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
@@ -47,21 +45,21 @@ export function ChangePassword() {
     });
   }, []);
 
-  useEffect(() => {
-    if (is_app_loaded && suggested_password === undefined) {
-      handleSuggestedPassword();
-    }
-  }, [suggested_password, is_app_loaded]);
+  // useEffect(() => {
+  //   if (is_app_loaded && suggested_password === undefined) {
+  //     handleSuggestedPassword();
+  //   }
+  // }, [suggested_password, is_app_loaded]);
 
-  async function handleSuggestedPassword() {
-    const response = await dispatch(fetchSuggestedPassword());
-    if (fetchSuggestedPassword.rejected.match(response)) {
-      if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        dispatch(clearNotifications());
-        setShowModal(true);
-      } else navigate(finish_url);
-    }
-  }
+  // async function handleSuggestedPassword() {
+  //   const response = await dispatch(fetchSuggestedPassword());
+  //   if (fetchSuggestedPassword.rejected.match(response)) {
+  //     if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+  //       dispatch(clearNotifications());
+  //       setShowModal(true);
+  //     } else navigate(finish_url);
+  //   }
+  // }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
     // Use the right form field for the currently displayed password mode
@@ -144,12 +142,12 @@ export function ChangePassword() {
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}
-            <AuthenticateModal
+            {/* <AuthenticateModal
               action="changepwAuthn"
               dispatch={dispatch}
               showModal={showModal}
               setShowModal={setShowModal}
-            />
+            /> */}
           </Splash>
         );
       }}
