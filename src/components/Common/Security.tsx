@@ -16,7 +16,6 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { clearNotifications } from "slices/Notifications";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -95,7 +94,6 @@ export function Security(): React.ReactElement | null {
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.rejected.match(resp)) {
       if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        dispatch(clearNotifications());
         setShowAuthnModal(true);
       }
     }
@@ -118,7 +116,6 @@ export function Security(): React.ReactElement | null {
           }
         }
         if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
-          dispatch(clearNotifications());
           setShowAuthnModal(true);
         }
       } catch (err) {}
@@ -258,7 +255,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       }
       if (bankIDVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          dispatch(clearNotifications());
           setShowAuthnModal(true);
         }
       }
@@ -275,7 +271,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       }
       if (bankIDVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          dispatch(clearNotifications());
           setShowAuthnModal(true);
         }
       }
@@ -294,7 +289,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       const response = await dispatch(removeWebauthnToken({ credential_key }));
       if (removeWebauthnToken.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          dispatch(clearNotifications());
           setShowAuthnModal(true);
         }
       }

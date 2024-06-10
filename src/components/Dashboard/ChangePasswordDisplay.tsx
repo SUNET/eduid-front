@@ -4,7 +4,6 @@ import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
-import { clearNotifications } from "slices/Notifications";
 import { AuthenticateModal } from "./Authenticate";
 import { finish_url } from "./ChangePassword";
 
@@ -17,7 +16,6 @@ function ChangePasswordDisplay() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.rejected.match(response)) {
       if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        dispatch(clearNotifications());
         setShowModal(true);
       } else navigate(finish_url);
     }

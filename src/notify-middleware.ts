@@ -1,9 +1,11 @@
-import { showNotification } from "slices/Notifications";
+import { clearNotifications, showNotification } from "slices/Notifications";
 
 showNotification;
 const notifyAndDispatch = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
-    if (action.error && action.payload) {
+    if (action.payload.message === "authn_status.must-authenticate") {
+      next(clearNotifications());
+    } else if (action.error && action.payload) {
       if (action.payload.error && action.payload.error.csrf_token !== undefined) {
         const msg = "csrf.try-again";
         next(showNotification({ message: msg, level: "error" }));

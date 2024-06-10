@@ -3,7 +3,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { AuthenticateModal } from "./Authenticate";
 
 export default function DeleteAccount(): JSX.Element | null {
@@ -16,7 +15,6 @@ export default function DeleteAccount(): JSX.Element | null {
     if (postDeleteAccount.fulfilled.match(response)) {
       window.location.assign(response.payload.location);
     } else if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-      dispatch(clearNotifications());
       setShowModal(true);
     }
   }
