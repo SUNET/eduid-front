@@ -362,8 +362,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
               setShowModal={setShowAuthnModal}
               mainText={
                 <FormattedMessage
-                  description="To remove your security, you'll have to log in again. Once logged in, please press the button again"
-                  defaultMessage="remove Security key"
+                  description="remove Security key"
+                  defaultMessage="To remove your security, you'll have to log in again. Once logged in, please press the button again."
                 />
               }
             />
