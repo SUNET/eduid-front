@@ -216,7 +216,9 @@ test("complete signup happy case", async () => {
 
   // verify accept button is initially disabled
   const okButton = screen.getByRole("button", { name: /^ok/i });
-  expect(okButton).toBeDisabled();
+  await waitFor(() => {
+    expect(okButton).toBeDisabled();
+  });
 
   const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
   expect(repeatInput).toHaveFocus();
