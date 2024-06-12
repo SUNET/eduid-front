@@ -248,6 +248,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
       const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      console.log("response", response);
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
