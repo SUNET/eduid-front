@@ -27,7 +27,6 @@ export function Security(): React.ReactElement | null {
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showAuthnModal, setShowAuthnModal] = useState(false);
-
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
@@ -235,6 +234,7 @@ export function Security(): React.ReactElement | null {
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
+  const [credentialKey, setCredentialKey] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -289,6 +289,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       const response = await dispatch(removeWebauthnToken({ credential_key }));
       if (removeWebauthnToken.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          setCredentialKey(credential_key);
           setShowAuthnModal(true);
         }
       }
@@ -321,18 +322,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
-          <AuthenticateModal
-            action="verifyCredential"
-            dispatch={dispatch}
-            showModal={showAuthnModal}
-            setShowModal={setShowAuthnModal}
-            mainText={
-              <FormattedMessage
-                description="You will need to login again to verify your security key."
-                defaultMessage="verify Security key"
-              />
-            }
-          />
         </React.Fragment>
       );
     }
@@ -356,9 +345,9 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
               onClick={() => handleRemoveWebauthnToken(cred.key)}
             ></EduIDButton>
             <AuthenticateModal
-              action="removeIdentity"
+              action="removeSecurityKeyAuthn"
               dispatch={dispatch}
-              showModal={showAuthnModal}
+              showModal={cred.key === credentialKey && showAuthnModal}
               setShowModal={setShowAuthnModal}
               mainText={
                 <FormattedMessage
