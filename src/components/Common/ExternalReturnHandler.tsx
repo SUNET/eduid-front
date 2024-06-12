@@ -75,7 +75,7 @@ export function ExternalReturnHandler() {
   }
 
   useEffect(() => {
-    if (params.authn_id && params.app_name === "eidas") {
+    if (params.authn_id && params.app_name === "eidas" && app_loaded) {
       fetchEidasStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "svipe_id") {
