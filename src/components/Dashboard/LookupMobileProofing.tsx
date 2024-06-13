@@ -95,7 +95,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         }
       </p>
 
-      <AddNin />
+      <AddNin name="lookup-mobile-proofing" />
 
       <hr className="border-line border-line-lesser" />
 

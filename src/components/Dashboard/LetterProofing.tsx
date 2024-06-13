@@ -154,7 +154,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         />
       </p>
 
-      <AddNin />
+      <AddNin name="letter-proofing" />
 
       <hr className="border-line border-line-lesser" />
 

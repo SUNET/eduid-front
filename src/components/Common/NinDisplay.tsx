@@ -9,9 +9,11 @@ import { Link } from "react-router-dom";
 interface NinDisplayProps {
   nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
   allowDelete?: boolean; // show delete option, if applicable to this NIN
+  name?: string;
 }
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
+  console.log("props", props);
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const dispatch = useAppDispatch();
 
@@ -32,7 +34,7 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
         {showFullNin ? props.nin.number : props.nin.number.replace(/.{4}$/, "****")}
       </div>
       <EduIDButton
-        id="show-hide-button"
+        id={`${props.name + "-show-hide-button"}`}
         buttonstyle="link"
         size="sm"
         onClick={() => {
