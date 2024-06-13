@@ -109,7 +109,7 @@ export function Security(): React.ReactElement | null {
         setShowModal(false);
         const resp = await dispatch(beginRegisterWebauthn());
         if (beginRegisterWebauthn.fulfilled.match(resp)) {
-          const response: any = await dispatch(createCredential(resp.payload));
+          const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
