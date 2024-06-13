@@ -235,6 +235,7 @@ export function Security(): React.ReactElement | null {
 function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [credentialKey, setCredentialKey] = useState<string | null>();
+  const [credentialDescription, setCredentialDescription] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -248,15 +249,14 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
       const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-      console.log("response", response);
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
-      }
-      if (bankIDVerifyCredential.rejected.match(response)) {
+      } else if (eidasVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
+          setCredentialDescription((response?.payload as any).payload.credential_description);
         }
       }
     })();
@@ -269,10 +269,10 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
-      }
-      if (bankIDVerifyCredential.rejected.match(response)) {
+      } else if (bankIDVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
+          setCredentialDescription((response?.payload as any).payload.credential_description);
         }
       }
       //TODO: Check if frontend are still receiving this error message from the backend.
@@ -323,6 +323,21 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
+          <AuthenticateModal
+            action="verifyCredential"
+            dispatch={dispatch}
+            showModal={showAuthnModal}
+            setShowModal={setShowAuthnModal}
+            mainText={
+              <FormattedMessage
+                description="verify credential"
+                defaultMessage="To verify your security key {securityKey}, you'll have to log in again. Once logged in, please press the button again."
+                values={{
+                  securityKey: <strong>{credentialDescription}</strong>,
+                }}
+              />
+            }
+          />
         </React.Fragment>
       );
     }
