@@ -58,7 +58,7 @@ export default function DeleteAccount(): JSX.Element | null {
         mainText={
           <FormattedMessage
             defaultMessage={`Deleting your eduID will permanently remove all your saved
-              information. After clicking the button, if it has been more than 5 minutes since you last logged in, you may need to log in again.`}
+              information. If it has been more than 5 minutes since you last logged in, you may need to log in again.`}
             description="delete.modal_info"
           />
         }
