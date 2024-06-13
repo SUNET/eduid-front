@@ -286,15 +286,13 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   async function handleRemoveWebauthnToken(credential_key: string) {
-    (async () => {
-      const response = await dispatch(removeWebauthnToken({ credential_key }));
-      if (removeWebauthnToken.rejected.match(response)) {
-        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          setCredentialKey(credential_key);
-          setShowAuthnModal(true);
-        }
+    const response = await dispatch(removeWebauthnToken({ credential_key }));
+    if (removeWebauthnToken.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setCredentialKey(credential_key);
+        setShowAuthnModal(true);
       }
-    })();
+    }
   }
   // data that goes onto the table
   const security_key_table_data = tokens.map((cred: CredentialType) => {
