@@ -1,5 +1,5 @@
 /*
- * Code and data structures for talking to the BankID backend microservice.
+ * Code and data structures for talking to the Authn backend microservice.
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
@@ -22,7 +22,7 @@ export interface AuthenticateRequest {
 /**
  * @public
  * @function authenticate
- * @desc Redux async thunk to start a verify-identity operation.
+ * @desc
  */
 export const authenticate = createAsyncThunk<
   AuthenticateResponse, // return type
