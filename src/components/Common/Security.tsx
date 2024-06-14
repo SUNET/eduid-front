@@ -234,6 +234,7 @@ export function Security(): React.ReactElement | null {
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
+  const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const [credentialKey, setCredentialKey] = useState<string | null>();
   const [credentialDescription, setCredentialDescription] = useState<string | null>();
   let btnVerify;
@@ -290,7 +291,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     if (removeWebauthnToken.rejected.match(response)) {
       if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
         setCredentialKey(credential_key);
-        setShowAuthnModal(true);
+        setRemoveSecurityKeyModal(true);
       }
     }
   }
@@ -361,8 +362,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             <AuthenticateModal
               action="removeSecurityKeyAuthn"
               dispatch={dispatch}
-              showModal={cred.key === credentialKey && showAuthnModal}
-              setShowModal={setShowAuthnModal}
+              showModal={cred.key === credentialKey && removeSecurityKeyModal}
+              setShowModal={setRemoveSecurityKeyModal}
               mainText={
                 <FormattedMessage
                   description="remove Security key"
