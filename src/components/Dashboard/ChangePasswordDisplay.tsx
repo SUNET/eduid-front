@@ -14,7 +14,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
 
   function handleAcceptModal() {
     const chpassURL = config.authn_service_url + "chpass";
-    // the "chpass" path will route to the ChangePasswordContainer when we get back
+    // the "chpass" path will route to the ChangePassword when we get back
     const nextURL = config.dashboard_link + "chpass";
     const url = chpassURL + "?next=" + encodeURIComponent(nextURL);
     window.location.assign(url);

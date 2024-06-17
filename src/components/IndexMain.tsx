@@ -12,7 +12,8 @@ import { PageNotFound } from "./Common/PageNotFound";
 import { Settings } from "./Common/Settings";
 import Splash from "./Common/Splash";
 import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
-import { ChangePasswordContainer } from "./Dashboard/ChangePassword";
+import { ChangePassword } from "./Dashboard/ChangePassword";
+import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
 import VerifyIdentity from "./Dashboard/VerifyIdentity";
 import { Help } from "./Help";
@@ -61,7 +62,8 @@ export function IndexMain(): JSX.Element {
                 <Route path={settingsPath} element={<Settings />} />
                 <Route path="/profile/settings/" element={<Navigate to={settingsPath} />} />
                 <Route path={identityPath} element={<VerifyIdentity />} />
-                <Route path="/profile/chpass/" element={<ChangePasswordContainer />} />
+                <Route path="/profile/chpass/" element={<ChangePassword />} />
+                <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                 {/* Navigates for old paths. TODO: redirect in backend server instead */}
                 <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />

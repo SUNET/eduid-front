@@ -2,6 +2,8 @@ import { FieldRenderProps } from "react-final-form";
 import { Input } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";
 
+type InputType = "text" | "password" | "email";
+
 export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
@@ -16,7 +18,7 @@ const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
     <Input
       {...props.input}
       id={props.input.name}
-      type={props.type}
+      type={props.input.type as InputType}
       placeholder={props.placeholder}
       aria-required={props.input.required}
       valid={props.meta.valid}

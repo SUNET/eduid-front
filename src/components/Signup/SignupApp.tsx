@@ -14,7 +14,6 @@ import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const [state] = useActor(signupContext.signupService);
-
   const intl = useIntl();
 
   useEffect(() => {

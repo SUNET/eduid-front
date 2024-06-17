@@ -50,7 +50,7 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
  * @param props
  * @returns
  */
-function PasswordInputElement(props: InputProps): JSX.Element {
+export function PasswordInputElement(props: InputProps): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
 
   function toggleShowPassword() {

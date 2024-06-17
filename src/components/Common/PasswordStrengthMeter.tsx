@@ -21,7 +21,6 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   const emails = useAppSelector((state) => state.emails.emails);
   const [pwScore, setPwScore] = useState(0);
   const intl = useIntl();
-
   const pwStrengthMessages = ["pwfield.terrible", "pwfield.bad", "pwfield.weak", "pwfield.good", "pwfield.strong"];
 
   useEffect(() => {
@@ -53,10 +52,10 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
   return (
     <React.Fragment>
-      <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       <div className="form-field-error-area" key="1">
-        <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>
+        {props.password !== undefined && <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>}
       </div>
+      <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
     </React.Fragment>
   );
 }

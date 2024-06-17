@@ -2,7 +2,6 @@ import { ExtraSecurityAlternatives } from "apis/eduidResetPassword";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { GoBackButton } from "components/ResetPassword/GoBackButton";
-import { FormApi, SubmissionErrors } from "final-form";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -17,12 +16,14 @@ interface NewPasswordFormProps {
   readonly goBack?: () => void;
   readonly extra_security?: ExtraSecurityAlternatives;
   readonly suggested_password: string | undefined;
-  readonly submitNewPasswordForm: (
-    values: NewPasswordFormData,
-    form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
-    callback?: ((errors?: SubmissionErrors) => void) | undefined
-  ) => void | Promise<void>;
+  readonly submitNewPasswordForm: any;
+  // submitNewPasswordForm: (
+  //   values: NewPasswordFormData,
+  //   form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
+  //   callback?: ((errors?: SubmissionErrors) => void) | undefined
+  // ) => void | Promise<void>;
   readonly submitButtonText: React.ReactChild;
+  readonly handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
@@ -60,6 +61,11 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <GoBackButton onClickHandler={props.goBack} />
+              )}
+              {props.handleCancel && (
+                <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
+                  <FormattedMessage defaultMessage="cancel" description="button cancel" />
+                </EduIDButton>
               )}
               <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 {props.submitButtonText}

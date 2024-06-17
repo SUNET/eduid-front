@@ -4,6 +4,7 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
+import { ConfirmUserInfo } from "components/Common/ConfirmUserInfo";
 import { CopyToClipboard } from "components/Common/CopyToClipboard";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
@@ -100,7 +101,7 @@ export function SetNewPassword(): JSX.Element | null {
           </p>
         </div>
       </section>
-      <div className="reset-password-input">
+      <div className="copy-password-input">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="Set new password" />
         </label>
@@ -150,32 +151,7 @@ export function ResetPasswordSuccess(): JSX.Element {
           </p>
         </div>
       </section>
-      <div id="email-display">
-        <fieldset>
-          <label htmlFor="user-email">
-            <FormattedMessage defaultMessage="Email address" description="Email label" />
-          </label>
-          <div className="display-data">
-            <output id="user-email">{email_address}</output>
-          </div>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="user-password">
-            <FormattedMessage defaultMessage="Password" description="Password label" />
-          </label>
-          <div className="display-data">
-            <mark className="force-select-all">
-              <output id="user-password">{new_password}</output>
-            </mark>
-          </div>
-          <input
-            autoComplete="new-password"
-            type="password"
-            id="display-none-new-password"
-            defaultValue={new_password}
-          />
-        </fieldset>
-      </div>
+      <ConfirmUserInfo email_address={email_address as string} new_password={new_password as string} />
       <div className="buttons">
         <EduIDButton id="reset-password-finished" buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
