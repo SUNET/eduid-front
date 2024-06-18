@@ -2449,7 +2449,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: once you have added a security key to your eduID it must be used to log in."
+    "string": "Note: if you have added a security key to your eduID it must be used to log in and you need to keep at least one."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",

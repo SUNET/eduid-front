@@ -1903,7 +1903,7 @@
   },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
-    "string": "Om din säkerhetsnyckel har en knapp, trycka på den."
+    "string": "Om din säkerhetsnyckel har en knapp, tryck på den."
   },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
@@ -2449,7 +2449,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: när du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in."
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in och du behöver ha minst en."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
