@@ -66,8 +66,8 @@ function EmailForm() {
       dispatch(
         signupSlice.actions.setEmail({
           email: values.email ?? "",
-          given_name: values.given_name ?? "",
-          surname: values.surname ?? "",
+          given_name: values.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+          surname: values.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
         })
       );
       dispatch(clearNotifications());
