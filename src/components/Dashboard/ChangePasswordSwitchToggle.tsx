@@ -8,7 +8,9 @@ export function ChangePasswordSwitchToggle(props: {
     <fieldset className="toggle-change-password-options">
       <form>
         <label className="toggle flex-between" htmlFor="change-custom-password">
-          <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
+          <legend>
+            <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
+          </legend>
           <input
             onChange={props.handleSwitchChange}
             className="toggle-checkbox"
