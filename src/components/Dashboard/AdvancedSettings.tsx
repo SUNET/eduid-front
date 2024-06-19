@@ -4,7 +4,6 @@ import { AccountLinking } from "components/Dashboard/AccountLinking";
 import LadokContainer from "components/Dashboard/Ladok";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
@@ -43,7 +42,6 @@ export function AdvancedSettings(): JSX.Element {
       <Security />
       <AccountLinking />
       <LadokContainer />
-      <AccountId />
     </React.Fragment>
   );
 }
