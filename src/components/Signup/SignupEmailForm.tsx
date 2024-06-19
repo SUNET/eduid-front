@@ -116,6 +116,7 @@ function EmailForm() {
                 buttonstyle="primary"
                 id="register-button"
                 disabled={_disabled}
+                type="submit"
                 onClick={formProps.handleSubmit}
               >
                 <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
