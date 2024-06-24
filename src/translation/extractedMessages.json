@@ -171,6 +171,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
   },
+  "1rgBqf": {
+    "developer_comment": "Set new password (Accept button)",
+    "string": "Accept"
+  },
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Reinstall the app, redo the registration and make sure that you have entered the correct expiration date as well as the correct reference number of the chosen form of ID and personal identity number or coordination number."
@@ -357,6 +361,10 @@
     "developer_comment": "security last used",
     "string": "Used on"
   },
+  "6sAedm": {
+    "developer_comment": "new password",
+    "string": "new password"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -392,10 +400,6 @@
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "You are not logged in, or the session expired."
-  },
-  "86/PBW": {
-    "developer_comment": "chpass suggested password",
-    "string": "Suggested password"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -529,6 +533,10 @@
     "developer_comment": "how change language - paragraph",
     "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
   },
+  "Bu8Qem": {
+    "developer_comment": "Change password - headline",
+    "string": "Change password: Suggested password"
+  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "To request a new code, proceed by clicking the button below."
@@ -545,9 +553,9 @@
     "developer_comment": "Ladok account linking",
     "string": "Link your account to Ladok"
   },
-  "CTDOpR": {
-    "developer_comment": "chpass suggest password",
-    "string": "Suggest a password for me"
+  "CQMMIg": {
+    "developer_comment": "Change password set new password success heading",
+    "string": "Change Password: Completed"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -706,6 +714,10 @@
   "GO322p": {
     "developer_comment": "how use other devices - paragraph",
     "string": "You can also login using another device to login to eduID on the device you are currently using:"
+  },
+  "Gig0Ga": {
+    "developer_comment": "delete.modal_info",
+    "string": "Deleting your eduID will permanently remove all your saved information. If it has been more than 5 minutes since you last logged in, you may need to log in again."
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -878,6 +890,10 @@
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
   },
+  "M9XO2K": {
+    "developer_comment": "Change password - lead",
+    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
+  },
   "MHzJ0N": {
     "developer_comment": "Reset Password set new password success lead",
     "string": "These is your new password for eduID. Save the password! Once you've logged in it is possible to change your password."
@@ -965,6 +981,10 @@
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Add a name for your security key"
+  },
+  "OruvPO": {
+    "developer_comment": "add Security key",
+    "string": "To add your security key, you'll have to log in again, please press the button again."
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1127,6 +1147,10 @@
     "developer_comment": "what is eduID - heading",
     "string": "What is eduID?"
   },
+  "SujckF": {
+    "developer_comment": "verify credential",
+    "string": "To verify your security key {securityKey}, you'll have to log in again. Once logged in, please press the button again."
+  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
@@ -1253,6 +1277,10 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
+  "WAbi07": {
+    "developer_comment": "Change password toggle",
+    "string": "Toggle the custom password switch to set your own password."
+  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -1268,6 +1296,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
+  },
+  "WwD9Nq": {
+    "developer_comment": "Change password set new password success lead",
+    "string": "These is your new password for eduID. Make sure to store your password securely for future use"
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1504,10 +1536,6 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
-  "bhw+hL": {
-    "developer_comment": "Dashboard change password",
-    "string": "Change your current password"
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
@@ -1554,6 +1582,10 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
+  },
+  "cwXmMW": {
+    "developer_comment": "Change password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
   },
   "cyhncE": {
     "developer_comment": "use other devices - list item 3",
@@ -1651,6 +1683,10 @@
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in this device"
+  },
+  "eKtgTd": {
+    "developer_comment": "remove Security key",
+    "string": "To remove your security, you'll have to log in again. Once logged in, please press the button again."
   },
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
@@ -1897,10 +1933,6 @@
     "developer_comment": "about usb key - handle",
     "string": "About Security Keys"
   },
-  "i65t9c": {
-    "developer_comment": "delete.modal_info",
-    "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
-  },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
@@ -1920,10 +1952,6 @@
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
-  },
-  "iYsuen": {
-    "developer_comment": "chpass old password label",
-    "string": "Current password"
   },
   "ibG0qO": {
     "developer_comment": "accessibility report - link",
@@ -1967,6 +1995,10 @@
   "jQvHTz": {
     "developer_comment": "usb key - list item 2",
     "string": "Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used."
+  },
+  "jULdoG": {
+    "developer_comment": "change custom password",
+    "string": "Create a custom password?"
   },
   "jYWXMn": {
     "developer_comment": "enter code",
@@ -2467,6 +2499,10 @@
     "developer_comment": "placeholder Last name",
     "string": "Last name"
   },
+  "placeholder.new_password_placeholder": {
+    "developer_comment": "placeholder text for new password",
+    "string": "enter new password"
+  },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "enter password"
@@ -2474,6 +2510,10 @@
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
     "string": "Phone number"
+  },
+  "placeholder.repeat_new_password_placeholder": {
+    "developer_comment": "placeholder text for repeat new password",
+    "string": "repeat new password"
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
@@ -2562,6 +2602,10 @@
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
+  },
+  "r7nFY2": {
+    "developer_comment": "Dashboard delete account modal main text",
+    "string": "After clicking the button you need to use your log in details one final time."
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
@@ -2877,6 +2921,10 @@
     "developer_comment": "column name label",
     "string": "Name"
   },
+  "us/TbC": {
+    "developer_comment": "Go to dashboard",
+    "string": "Go to dashboard"
+  },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
@@ -2896,6 +2944,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
+  "vBunVe": {
+    "developer_comment": "Change password - headline",
+    "string": "Change password: Custom password"
+  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
@@ -2907,10 +2959,6 @@
   "vQpAQz": {
     "developer_comment": "verification status sub text",
     "string": "Your eduID is ready to use."
-  },
-  "vf92mh": {
-    "developer_comment": "chpass custom password",
-    "string": "I don't want a suggested password"
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
