@@ -2923,7 +2923,7 @@
   },
   "us/TbC": {
     "developer_comment": "Go to dashboard",
-    "string": "Go to dashboard"
+    "string": "Go to eduID dashboard"
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
