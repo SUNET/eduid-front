@@ -31,13 +31,13 @@ export interface ChangePasswordFormData {
 export function ChangePassword() {
   const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
-
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState<boolean>(false);
+  let isMounted = true;
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -50,16 +50,25 @@ export function ChangePassword() {
     if (is_app_loaded && suggested === undefined) {
       handleSuggestedPassword();
     }
+    return () => {
+      isMounted = false;
+    };
   }, [suggested, is_app_loaded]);
 
   async function handleSuggestedPassword() {
-    const response = await dispatch(fetchSuggestedPassword());
-    if (fetchSuggestedPassword.fulfilled.match(response)) {
-      navigate("/profile/chpass");
-    } else if (fetchSuggestedPassword.rejected.match(response)) {
-      if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        setShowModal(true);
+    try {
+      const response = await dispatch(fetchSuggestedPassword());
+      if (isMounted) {
+        if (fetchSuggestedPassword.fulfilled.match(response)) {
+          navigate("/profile/chpass");
+        } else if (fetchSuggestedPassword.rejected.match(response)) {
+          if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+            setShowModal(true);
+          }
+        }
       }
+    } catch (error) {
+      console.error("Error handleSuggestedPassword:", error);
     }
   }
 
