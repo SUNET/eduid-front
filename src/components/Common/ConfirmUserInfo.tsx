@@ -39,7 +39,6 @@ export function ConfirmUserInfo(props: ConfirmUserInfoProps) {
         <input
           autoComplete="new-password"
           type="password"
-          name="display-none-new-password"
           id="display-none-new-password"
           defaultValue={props.new_password ? props.new_password : ""}
         />

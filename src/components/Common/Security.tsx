@@ -9,13 +9,13 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+import { AuthenticateModal } from "components/Dashboard/Authenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { clearNotifications } from "slices/Notifications";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -26,7 +26,7 @@ export function Security(): React.ReactElement | null {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const [showAuthnModal, setShowAuthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   useEffect(() => {
@@ -84,14 +84,21 @@ export function Security(): React.ReactElement | null {
     description: "placeholder text for security key description input",
   });
 
-  function handleStartAskingWebauthnDescription(authType: string) {
-    dispatch(clearNotifications());
-    dispatch(securitySlice.actions.chooseAuthenticator(authType));
-    setShowModal(true);
-  }
-
   function handleStopAskingWebauthnDescription() {
     setShowModal(false);
+  }
+
+  async function handleRegisterWebauthn(authType: string) {
+    dispatch(securitySlice.actions.chooseAuthenticator(authType));
+    const resp = await dispatch(beginRegisterWebauthn());
+    if (beginRegisterWebauthn.rejected.match(resp)) {
+      if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
+        setShowAuthnModal(true);
+      }
+    }
+    if (beginRegisterWebauthn.fulfilled.match(resp)) {
+      setShowModal(true);
+    }
   }
 
   function handleStartWebauthnRegistration(values: { [key: string]: string }) {
@@ -106,6 +113,9 @@ export function Security(): React.ReactElement | null {
           if (createCredential.fulfilled.match(response)) {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
+        }
+        if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
+          setShowAuthnModal(true);
         }
       } catch (err) {}
     })();
@@ -158,7 +168,7 @@ export function Security(): React.ReactElement | null {
                 <EduIDButton
                   id="security-webauthn-platform-button"
                   buttonstyle="primary"
-                  onClick={() => handleStartAskingWebauthnDescription("platform")}
+                  onClick={() => handleRegisterWebauthn("platform")}
                 >
                   <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
                 </EduIDButton>
@@ -174,7 +184,7 @@ export function Security(): React.ReactElement | null {
               <EduIDButton
                 id="security-webauthn-button"
                 buttonstyle="primary"
-                onClick={() => handleStartAskingWebauthnDescription("cross-platform")}
+                onClick={() => handleRegisterWebauthn("cross-platform")}
               >
                 <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
@@ -206,12 +216,27 @@ export function Security(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
+      <AuthenticateModal
+        action="addSecurityKeyAuthn"
+        dispatch={dispatch}
+        showModal={showAuthnModal}
+        setShowModal={setShowAuthnModal}
+        mainText={
+          <FormattedMessage
+            description="add Security key"
+            defaultMessage="To add your security key, you'll have to log in again, please press the button again. "
+          />
+        }
+      />
     </article>
   );
 }
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
-  const config = useAppSelector((state) => state.config);
+  const [showAuthnModal, setShowAuthnModal] = useState(false);
+  const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
+  const [credentialKey, setCredentialKey] = useState<string | null>();
+  const [credentialDescription, setCredentialDescription] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -229,30 +254,46 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
+      } else if (eidasVerifyCredential.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          setShowAuthnModal(true);
+          setCredentialDescription((response?.payload as any).payload.credential_description);
+        }
       }
     })();
   }
 
   function handleVerifyWebauthnTokenBankID(token: string) {
     (async () => {
-      const response: any = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+      const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
       if (bankIDVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
         }
-      } else if (response?.payload.payload.message === "bankid.must_authenticate") {
-        dispatch(clearNotifications());
-        const nextURL = config.dashboard_link + "settings/advanced-settings";
-        const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
-        window.location.assign(url);
+      } else if (bankIDVerifyCredential.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          setShowAuthnModal(true);
+          setCredentialDescription((response?.payload as any).payload.credential_description);
+        }
       }
+      //TODO: Check if frontend are still receiving this error message from the backend.
+      // else if (response?.payload.payload.message === "bankid.must_authenticate") {
+      //   dispatch(clearNotifications());
+      //   const nextURL = config.dashboard_link + "settings/advanced-settings";
+      //   const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
+      //   window.location.assign(url);
+      // }
     })();
   }
 
-  function handleRemoveWebauthnToken(credential_key: string) {
-    (async () => {
-      await dispatch(removeWebauthnToken({ credential_key }));
-    })();
+  async function handleRemoveWebauthnToken(credential_key: string) {
+    const response = await dispatch(removeWebauthnToken({ credential_key }));
+    if (removeWebauthnToken.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setCredentialKey(credential_key);
+        setRemoveSecurityKeyModal(true);
+      }
+    }
   }
   // data that goes onto the table
   const security_key_table_data = tokens.map((cred: CredentialType) => {
@@ -274,14 +315,29 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       );
     } else {
       btnVerify = (
-        <>
+        <React.Fragment>
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="Freja+" />
           </EduIDButton>
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
-        </>
+          <AuthenticateModal
+            action="verifyCredential"
+            dispatch={dispatch}
+            showModal={showAuthnModal}
+            setShowModal={setShowAuthnModal}
+            mainText={
+              <FormattedMessage
+                description="verify credential"
+                defaultMessage="To verify your security key {securityKey}, you'll have to log in again. Once logged in, please press the button again."
+                values={{
+                  securityKey: <strong>{credentialDescription}</strong>,
+                }}
+              />
+            }
+          />
+        </React.Fragment>
       );
     }
 
@@ -303,6 +359,18 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
               size="sm"
               onClick={() => handleRemoveWebauthnToken(cred.key)}
             ></EduIDButton>
+            <AuthenticateModal
+              action="removeSecurityKeyAuthn"
+              dispatch={dispatch}
+              showModal={cred.key === credentialKey && removeSecurityKeyModal}
+              setShowModal={setRemoveSecurityKeyModal}
+              mainText={
+                <FormattedMessage
+                  description="remove Security key"
+                  defaultMessage="To remove your security, you'll have to log in again. Once logged in, please press the button again."
+                />
+              }
+            />
           </td>
         ) : null}
       </tr>

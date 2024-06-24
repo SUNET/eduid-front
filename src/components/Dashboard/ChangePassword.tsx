@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import { AuthenticateModal } from "./Authenticate";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
@@ -21,7 +22,7 @@ export interface ChangePasswordChildFormProps {
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-interface ChangePasswordFormData {
+export interface ChangePasswordFormData {
   custom?: string; // used with custom password
   score?: number; // used with custom password
   suggested?: string; // used with suggested password
@@ -35,6 +36,8 @@ export function ChangePassword() {
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  let isMounted = true;
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -44,28 +47,37 @@ export function ChangePassword() {
   }, []);
 
   useEffect(() => {
-    if (is_app_loaded && suggested_password === undefined) {
+    if (is_app_loaded && suggested === undefined) {
       handleSuggestedPassword();
     }
-  }, [suggested_password, is_app_loaded]);
+    return () => {
+      isMounted = false;
+    };
+  }, [suggested, is_app_loaded]);
 
   async function handleSuggestedPassword() {
-    const response = await dispatch(fetchSuggestedPassword());
-    if (fetchSuggestedPassword.rejected.match(response)) {
-      navigate(finish_url);
+    try {
+      const response = await dispatch(fetchSuggestedPassword());
+      if (isMounted) {
+        if (fetchSuggestedPassword.fulfilled.match(response)) {
+          navigate("/profile/chpass");
+        } else if (fetchSuggestedPassword.rejected.match(response)) {
+          if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+            setShowModal(true);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error handleSuggestedPassword:", error);
     }
   }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
-    // Use the right form field for the currently displayed password mode
-    const newPassword = renderSuggested ? values.suggested : values.custom;
-
-    // Callback from sub-component when the user clicks on the button to change password
-    if (newPassword) {
-      const response = await dispatch(changePassword({ new_password: newPassword }));
+    if (renderSuggested && values.suggested) {
+      const response = await dispatch(changePassword({ new_password: values.suggested }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: newPassword,
+          state: values.suggested,
         });
       }
     }
@@ -90,7 +102,6 @@ export function ChangePassword() {
       initialValues={initialValues}
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
-
         return (
           <Splash showChildren={Boolean(suggested_password)}>
             {renderSuggested ? (
@@ -137,6 +148,18 @@ export function ChangePassword() {
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}
+            <AuthenticateModal
+              action="changepwAuthn"
+              dispatch={dispatch}
+              showModal={showModal}
+              setShowModal={setShowModal}
+              mainText={
+                <FormattedMessage
+                  defaultMessage="You will need to log in again to change your password."
+                  description="Dashboard change password modal main text"
+                />
+              }
+            />
           </Splash>
         );
       }}

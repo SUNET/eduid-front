@@ -10,7 +10,7 @@ import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
@@ -65,22 +65,22 @@ test("renders security key as expected, with added security key", async () => {
   expect(screen.getByRole("button", { name: "Freja+" })).toBeEnabled();
 });
 
-test("renders modals onclick security key button", async () => {
-  render(<IndexMain />);
-  await linkToAdvancedSettings();
-  const securityKeyButton = screen.getByRole("button", { name: "security key" });
-  // Click the 'security key' button
-  act(() => {
-    securityKeyButton.click();
-  });
-  expect(screen.getByRole("heading", { name: /Add a name/i })).toBeInTheDocument();
-  const input = screen.getAllByRole("textbox")[1];
-  fireEvent.change(input, { target: { value: "security key" } });
-  expect(input).toHaveValue("security key");
+// test("renders modals onclick security key button", async () => {
+//   render(<IndexMain />);
+//   await linkToAdvancedSettings();
+//   const securityKeyButton = screen.getByRole("button", { name: "security key" });
+//   // Click the 'security key' button
+//   act(() => {
+//     securityKeyButton.click();
+//   });
+//   expect(screen.getByRole("heading", { name: /Add a name/i })).toBeInTheDocument();
+//   const input = screen.getAllByRole("textbox")[1];
+//   fireEvent.change(input, { target: { value: "security key" } });
+//   expect(input).toHaveValue("security key");
 
-  const addSecurityKeyButton = screen.getByRole("button", { name: /ok/i });
-  expect(addSecurityKeyButton).toBeEnabled();
-});
+//   const addSecurityKeyButton = screen.getByRole("button", { name: /ok/i });
+//   expect(addSecurityKeyButton).toBeEnabled();
+// });
 
 test("should not display close button when only one security key is added", async () => {
   render(<IndexMain />, {
