@@ -22,7 +22,7 @@ export interface ChangePasswordChildFormProps {
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-interface ChangePasswordFormData {
+export interface ChangePasswordFormData {
   custom?: string; // used with custom password
   score?: number; // used with custom password
   suggested?: string; // used with suggested password
@@ -64,15 +64,11 @@ export function ChangePassword() {
   }
 
   async function handleSubmitPasswords(values: ChangePasswordFormData) {
-    // Use the right form field for the currently displayed password mode
-    const newPassword = renderSuggested ? values.suggested : values.custom;
-
-    // Callback from sub-component when the user clicks on the button to change password
-    if (newPassword) {
-      const response = await dispatch(changePassword({ new_password: newPassword }));
+    if (renderSuggested && values.suggested) {
+      const response = await dispatch(changePassword({ new_password: values.suggested }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: newPassword,
+          state: values.suggested,
         });
       }
     }
@@ -97,7 +93,6 @@ export function ChangePassword() {
       initialValues={initialValues}
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
-
         return (
           <Splash showChildren={Boolean(suggested_password)}>
             {renderSuggested ? (
