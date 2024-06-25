@@ -40,5 +40,11 @@ export const apiResponses = {
     <FormattedMessage id="eidas.token_verify_success" defaultMessage={`U2F token verified successfully`} />
   ),
 
+  "eidas.credential_verify_success": (
+    <FormattedMessage id="eidas.credential_verify_success" defaultMessage={`Success`} />
+  ),
+
+  "eidas.mfa_authn_success": <FormattedMessage id="eidas.mfa_authn_success" defaultMessage={`Success`} />,
+
   "actions.action-completed": <FormattedMessage id="actions.action-completed" defaultMessage={`Success`} />,
 };
