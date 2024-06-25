@@ -7,19 +7,19 @@ import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
 interface ConfirmModalProps {
-  id: string;
-  title: React.ReactNode;
-  placeholder: string;
-  showModal: boolean;
-  closeModal: () => void;
-  handleConfirm: (values: { [key: string]: string }) => void;
-  modalFormLabel: React.ReactNode;
-  validationError?: string;
-  validationPattern?: RegExp;
-  helpBlock?: React.ReactNode;
-  resendMarkup?: React.ReactNode;
-  captcha?: GetCaptchaResponse;
-  submitButtonText?: React.ReactNode;
+  readonly id: string;
+  readonly title: React.ReactNode;
+  readonly placeholder: string;
+  readonly showModal: boolean;
+  readonly closeModal: () => void;
+  readonly handleConfirm: (values: { [key: string]: string }) => void;
+  readonly modalFormLabel: React.ReactNode;
+  readonly validationError?: string;
+  readonly validationPattern?: RegExp;
+  readonly helpBlock?: React.ReactNode;
+  readonly resendMarkup?: React.ReactNode;
+  readonly captcha?: GetCaptchaResponse;
+  readonly submitButtonText?: React.ReactNode;
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {

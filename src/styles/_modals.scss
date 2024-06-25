@@ -8,6 +8,12 @@
   margin: 0 20%;
   padding: 1rem 0;
 
+  .modal-dialog.security-confirm-modal {
+    .modal-body {
+      display: block;
+    }
+  }
+
   &-dialog {
     background-color: $white;
     border-radius: 20px;

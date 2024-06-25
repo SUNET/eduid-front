@@ -171,6 +171,10 @@
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
   },
+  "1rgBqf": {
+    "developer_comment": "Set new password (Accept button)",
+    "string": "Godkänn"
+  },
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer eller samordningsnummer."
@@ -357,6 +361,10 @@
     "developer_comment": "security last used",
     "string": "Senast använd"
   },
+  "6sAedm": {
+    "developer_comment": "new password",
+    "string": "Nytt lösenord"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -392,10 +400,6 @@
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Du är ej inloggad, eller så avslutades sessionen."
-  },
-  "86/PBW": {
-    "developer_comment": "chpass suggested password",
-    "string": "Rekommenderat lösenord"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -529,6 +533,10 @@
     "developer_comment": "how change language - paragraph",
     "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
   },
+  "Bu8Qem": {
+    "developer_comment": "Change password - headline",
+    "string": "Ändra lösenord: Föreslaget lösenord"
+  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "För att begära en ny kod, fortsätt genom att klicka på knappen nedan."
@@ -545,9 +553,9 @@
     "developer_comment": "Ladok account linking",
     "string": "Länka ditt ESI till ditt eduID-konto"
   },
-  "CTDOpR": {
-    "developer_comment": "chpass suggest password",
-    "string": "Rekommendera ett lösenord"
+  "CQMMIg": {
+    "developer_comment": "Change password set new password success heading",
+    "string": "Ändra lösenord: Slutfört"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -706,6 +714,10 @@
   "GO322p": {
     "developer_comment": "how use other devices - paragraph",
     "string": "Inloggning kan även ske genom att logga in i eduID med hjälp av en annan enhet:"
+  },
+  "Gig0Ga": {
+    "developer_comment": "delete.modal_info",
+    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått mer än 5 minuter sedan du senast loggade in kan det hända att du behöver logga in igen."
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -878,6 +890,10 @@
     "developer_comment": "usb key technical section - list item 2",
     "string": "får inte ha någon annan status i metadata än några olika varianter av: "
   },
+  "M9XO2K": {
+    "developer_comment": "Change password - lead",
+    "string": "När du skapar ditt eget lösenord bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
+  },
   "MHzJ0N": {
     "developer_comment": "Reset Password set new password success lead",
     "string": "Detta är ditt nya lösenord för eduID. Spara lösenordet! När du har loggat in är det möjligt att byta ditt lösenord."
@@ -965,6 +981,10 @@
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Ge ett namn till din säkerhetsnyckel"
+  },
+  "OruvPO": {
+    "developer_comment": "add Security key",
+    "string": "För att lägga till din säkerhetsnyckel måste du logga in igen, vänligen tryck på knappen igen."
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1127,6 +1147,10 @@
     "developer_comment": "what is eduID - heading",
     "string": "Vad är eduID?"
   },
+  "SujckF": {
+    "developer_comment": "verify credential",
+    "string": "För att verifiera din säkerhetsnyckel {securityKey} måste du logga in igen. när du har loggat in, trycker du på knappen igen."
+  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
@@ -1253,6 +1277,10 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
+  "WAbi07": {
+    "developer_comment": "Change password toggle",
+    "string": "Växla om knappen för anpassat lösenord för att ställa in ditt eget lösenord."
+  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
@@ -1268,6 +1296,10 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
+  },
+  "WwD9Nq": {
+    "developer_comment": "Change password set new password success lead",
+    "string": "Detta är ditt nya lösenord för eduID. Se till att förvara ditt lösenord säkert för framtida användning."
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1504,10 +1536,6 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
-  "bhw+hL": {
-    "developer_comment": "Dashboard change password",
-    "string": "Byt ditt lösenord"
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "DÖLJ"
@@ -1554,6 +1582,10 @@
   },
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
+  },
+  "cwXmMW": {
+    "developer_comment": "Change password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "cyhncE": {
     "developer_comment": "use other devices - list item 3",
@@ -1651,6 +1683,10 @@
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in den här enheten"
+  },
+  "eKtgTd": {
+    "developer_comment": "remove Security key",
+    "string": "För att ta bort säkerhetsnyckel måste du logga in igen. när du har loggat in trycker du på knappen igen."
   },
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
@@ -1897,10 +1933,6 @@
     "developer_comment": "about usb key - handle",
     "string": "Om Säkerhetsnycklar"
   },
-  "i65t9c": {
-    "developer_comment": "delete.modal_info",
-    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
-  },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "Om din säkerhetsnyckel har en knapp, tryck på den."
@@ -1920,10 +1952,6 @@
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Ditt eduID är redo att användas"
-  },
-  "iYsuen": {
-    "developer_comment": "chpass old password label",
-    "string": "Skriv ditt nuvarande lösenord"
   },
   "ibG0qO": {
     "developer_comment": "accessibility report - link",
@@ -1967,6 +1995,10 @@
   "jQvHTz": {
     "developer_comment": "usb key - list item 2",
     "string": "Släpper ett intyg utfärdat av tillverkaren som berättar vilken enhet det är i samband med inloggningen och kräver att personen är fysiskt vid säkerhetsnyckeln för att den ska kunna användas. "
+  },
+  "jULdoG": {
+    "developer_comment": "change custom password",
+    "string": "Skapa ett eget lösenord?"
   },
   "jYWXMn": {
     "developer_comment": "enter code",
@@ -2467,6 +2499,10 @@
     "developer_comment": "placeholder Last name",
     "string": "Efternamn"
   },
+  "placeholder.new_password_placeholder": {
+    "developer_comment": "placeholder text for new password",
+    "string": "Ange ett nytt lösenord"
+  },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "ange lösenord"
@@ -2474,6 +2510,10 @@
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
     "string": "Telefonnummer"
+  },
+  "placeholder.repeat_new_password_placeholder": {
+    "developer_comment": "placeholder text for repeat new password",
+    "string": "Repetera ditt nya lösenord"
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
@@ -2562,6 +2602,10 @@
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "Tjänsten du försöker logga in på kräver en högre säkerhetsnivå. Ditt eduID-konto har inte konfigurerats med något av de tillgängliga alternativen för detta."
+  },
+  "r7nFY2": {
+    "developer_comment": "Dashboard delete account modal main text",
+    "string": "När du har klickat på knappen måste du använda dina inloggningsuppgifter en sista gång."
   },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
@@ -2877,6 +2921,10 @@
     "developer_comment": "column name label",
     "string": "Namn"
   },
+  "us/TbC": {
+    "developer_comment": "Go to dashboard",
+    "string": "gå till eduID Dashboard"
+  },
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
@@ -2896,6 +2944,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
   },
+  "vBunVe": {
+    "developer_comment": "Change password - headline",
+    "string": "Ändra lösenord: Anpassat lösenord"
+  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Välj ett extra säkerhetsalternativ"
@@ -2907,10 +2959,6 @@
   "vQpAQz": {
     "developer_comment": "verification status sub text",
     "string": "Ditt eduID är redo att användas."
-  },
-  "vf92mh": {
-    "developer_comment": "chpass custom password",
-    "string": "Jag vill inte använda det rekommenderade lösenordet"
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",

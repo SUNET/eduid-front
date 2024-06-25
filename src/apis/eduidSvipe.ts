@@ -60,7 +60,7 @@ export const svipeGetStatus = createAsyncThunk<
   { dispatch: DispatchWithSvipe; state: StateWithSvipe }
 >("svipe/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
-  return makeSvipeRequest<GetStatusResponse>(thunkAPI, "get_status", body)
+  return makeSvipeRequest<GetStatusResponse>(thunkAPI, "get-status", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

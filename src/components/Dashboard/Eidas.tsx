@@ -1,20 +1,13 @@
+import { eidasVerifyIdentity } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useAppSelector } from "eduid-hooks";
-import React, { Fragment, useState } from "react";
+import { useAppDispatch } from "eduid-hooks";
+import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 function Eidas(): JSX.Element {
+  const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState<boolean>(false);
-  const eidas_service_url = useAppSelector((state) => state.config.eidas_service_url);
-  const token_verify_idp = useAppSelector((state) => state.config.token_verify_idp);
-  let eidas_sp_url = eidas_service_url;
-  const freja_idp_url = token_verify_idp;
-
-  if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
-    eidas_sp_url = eidas_sp_url.concat("/");
-  }
-  const frejafullURL = eidas_sp_url + "verify-nin?idp=" + freja_idp_url;
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
@@ -61,12 +54,13 @@ function Eidas(): JSX.Element {
     </div>
   );
 
-  function useFrejaeID(event?: React.MouseEvent<HTMLElement>) {
-    if (event) {
-      event.preventDefault();
+  async function useFrejaeID() {
+    const response = await dispatch(eidasVerifyIdentity({ method: "freja" }));
+    if (eidasVerifyIdentity.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
     }
-
-    window.location.href = frejafullURL;
   }
 
   return (

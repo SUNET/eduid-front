@@ -1,16 +1,21 @@
+import { changePassword } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
+import { useAppDispatch } from "eduid-hooks";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { ChangePasswordChildFormProps } from "./ChangePassword";
+import { useNavigate } from "react-router-dom";
+import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
   const intl = useIntl();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -48,9 +53,20 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     return errors;
   }
 
+  async function handleSubmitPasswords(values: ChangePasswordFormData) {
+    if (values.custom) {
+      const response = await dispatch(changePassword({ new_password: values.custom }));
+      if (changePassword.fulfilled.match(response)) {
+        navigate("/profile/chpass/success", {
+          state: values.custom,
+        });
+      }
+    }
+  }
+
   return (
     <FinalForm<any>
-      onSubmit={props.formProps.handleSubmit}
+      onSubmit={handleSubmitPasswords}
       validate={validateNewPassword}
       render={(formProps) => {
         return (
