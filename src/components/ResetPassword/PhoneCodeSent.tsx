@@ -47,7 +47,7 @@ function PhoneCodeForm(): JSX.Element {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "mobile.confirm_mobile_placeholder",
-    defaultMessage: "Code",
+    defaultMessage: "enter code",
     description: "placeholder text for phone code input",
   });
 
