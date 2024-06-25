@@ -135,7 +135,7 @@ export function ChangePassword() {
                   <p>
                     <FormattedMessage
                       description="Change password - lead"
-                      defaultMessage={`When create your own password. make sure it's strong enough to keep your 
+                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
                         accounts safe.`}
                     />
                   </p>
