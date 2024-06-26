@@ -123,6 +123,10 @@
     "developer_comment": "SAML login finished",
     "string": "Please wait, you are being logged in..."
   },
+  "0gu24s": {
+    "developer_comment": "new password",
+    "string": "New password"
+  },
   "0jJrec": {
     "developer_comment": "verify identity vetting explanation verify phone",
     "string": "Confirm your phone number in {linkToSettings}"
@@ -361,10 +365,6 @@
     "developer_comment": "security last used",
     "string": "Used on"
   },
-  "6sAedm": {
-    "developer_comment": "new password",
-    "string": "new password"
-  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -404,6 +404,10 @@
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
+  },
+  "8BQhd2": {
+    "developer_comment": "Change password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept button and save it for future use."
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -460,6 +464,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
+  },
+  "9r+XZS": {
+    "developer_comment": "Change password - lead",
+    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
   },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
@@ -890,10 +898,6 @@
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
   },
-  "M9XO2K": {
-    "developer_comment": "Change password - lead",
-    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
-  },
   "MHzJ0N": {
     "developer_comment": "Reset Password set new password success lead",
     "string": "These is your new password for eduID. Save the password! Once you've logged in it is possible to change your password."
@@ -1277,10 +1281,6 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
-  "WAbi07": {
-    "developer_comment": "Change password toggle",
-    "string": "Toggle the custom password switch to set your own password."
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -1328,6 +1328,10 @@
   "Xl8Jtp": {
     "developer_comment": "signup first name",
     "string": "First name"
+  },
+  "Xqmccu": {
+    "developer_comment": "summer vacation support info - strong",
+    "string": "During the summer, please contact us by email only as we are not offering phone support."
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1583,10 +1587,6 @@
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
   },
-  "cwXmMW": {
-    "developer_comment": "Change password - lead",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
-  },
   "cyhncE": {
     "developer_comment": "use other devices - list item 3",
     "string": "on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
@@ -1659,10 +1659,6 @@
   "e+YGAd": {
     "developer_comment": "privacy policy - link",
     "string": "Privacy policy"
-  },
-  "e0xgSg": {
-    "developer_comment": "how to contact support - paragraph 3",
-    "string": ", but for simple matters you can also reach us on phone number {phone}."
   },
   "e6XTxx": {
     "developer_comment": "Reset Password email link sent",
@@ -1995,10 +1991,6 @@
   "jQvHTz": {
     "developer_comment": "usb key - list item 2",
     "string": "Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used."
-  },
-  "jULdoG": {
-    "developer_comment": "change custom password",
-    "string": "Create a custom password?"
   },
   "jYWXMn": {
     "developer_comment": "enter code",
@@ -2343,6 +2335,10 @@
     "developer_comment": "button cancel",
     "string": "cancel"
   },
+  "oWYI6Z": {
+    "developer_comment": "Change password toggle",
+    "string": "Toggle the switch button to set your own password."
+  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
@@ -2571,9 +2567,9 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
   },
-  "qMRp3m": {
-    "developer_comment": "how to contact support email - strong",
-    "string": "In order to get best possible support, we recommend that you send e-mail"
+  "qPEmqp": {
+    "developer_comment": "Change password - headline",
+    "string": "Change password: Set your own password"
   },
   "qQnhgJ": {
     "developer_comment": "Registration copy and paste password",
@@ -2944,10 +2940,6 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
-  "vBunVe": {
-    "developer_comment": "Change password - headline",
-    "string": "Change password: Custom password"
-  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Select an extra security option"
@@ -3071,6 +3063,10 @@
   "z2oWSP": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
+  },
+  "zLM+UZ": {
+    "developer_comment": "change custom password",
+    "string": "Set your own password?"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",

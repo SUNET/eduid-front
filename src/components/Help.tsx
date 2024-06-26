@@ -1340,6 +1340,12 @@ export function Help(): JSX.Element {
               <p>
                 <strong>
                   <FormattedMessage
+                    description="summer vacation support info - strong"
+                    defaultMessage={`During the summer, please contact us by email only as we are not offering phone support.`}
+                  />
+                </strong>
+                {/* <strong>
+                  <FormattedMessage
                     description="how to contact support email - strong"
                     defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
                   />
@@ -1355,7 +1361,7 @@ export function Help(): JSX.Element {
                       </a>
                     ),
                   }}
-                />
+                /> */}
               </p>
               <p>
                 <FormattedMessage description="opening hours - list definition" defaultMessage="Opening hours:" />

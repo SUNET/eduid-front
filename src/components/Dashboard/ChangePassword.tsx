@@ -117,7 +117,7 @@ export function ChangePassword() {
                     <FormattedMessage
                       description="Change password - lead"
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
-                    the password in to the Repeat new password field and click Accept Password and save it for 
+                    the password in to the Repeat new password field and click Accept button and save it for 
                     future use.`}
                     />
                   </p>
@@ -128,14 +128,14 @@ export function ChangePassword() {
                 <h1>
                   <FormattedMessage
                     description="Change password - headline"
-                    defaultMessage="Change password: Custom password"
+                    defaultMessage="Change password: Set your own password"
                   />
                 </h1>
                 <div className="lead">
                   <p>
                     <FormattedMessage
                       description="Change password - lead"
-                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
+                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
                         accounts safe.`}
                     />
                   </p>

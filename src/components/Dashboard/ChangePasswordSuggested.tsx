@@ -13,7 +13,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
     <React.Fragment>
       <div className="copy-password-input">
         <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="new password" description="new password" />
+          <FormattedMessage defaultMessage="New password" description="new password" />
         </label>
         <input
           name="copy-new-password"
