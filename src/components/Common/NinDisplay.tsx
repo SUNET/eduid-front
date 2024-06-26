@@ -40,6 +40,7 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
         onClick={() => {
           setShowFullNin(!showFullNin);
         }}
+        tabIndex={-1}
       >
         {!showFullNin ? (
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
