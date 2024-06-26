@@ -465,6 +465,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9r+XZS": {
+    "developer_comment": "Change password - lead",
+    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
+  },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
     "string": "Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely."
@@ -893,10 +897,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
-  },
-  "M9XO2K": {
-    "developer_comment": "Change password - lead",
-    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
   },
   "MHzJ0N": {
     "developer_comment": "Reset Password set new password success lead",
