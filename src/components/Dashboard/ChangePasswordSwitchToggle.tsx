@@ -9,7 +9,7 @@ export function ChangePasswordSwitchToggle(props: {
       <form>
         <label className="toggle flex-between" htmlFor="change-custom-password">
           <legend>
-            <FormattedMessage defaultMessage="Create a custom password?" description="change custom password" />
+            <FormattedMessage defaultMessage="Set your own password?" description="change custom password" />
           </legend>
           <input
             onChange={props.handleSwitchChange}
@@ -23,7 +23,7 @@ export function ChangePasswordSwitchToggle(props: {
       </form>
       <p className="help-text">
         <FormattedMessage
-          defaultMessage="Toggle the custom password switch to set your own password."
+          defaultMessage="Toggle the switch button to set your own password."
           description="Change password toggle"
         />
       </p>

@@ -1707,8 +1707,14 @@
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
+  "eidas.credential_verify_success": {
+    "string": "Success"
+  },
   "eidas.identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
+  },
+  "eidas.mfa_authn_success": {
+    "string": "Success"
   },
   "eidas.nin_already_verified": {
     "string": "You have already verified your identity"
