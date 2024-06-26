@@ -123,6 +123,10 @@
     "developer_comment": "SAML login finished",
     "string": "Var god vänta, du loggas nu in..."
   },
+  "0gu24s": {
+    "developer_comment": "new password",
+    "string": "Nytt lösenord"
+  },
   "0jJrec": {
     "developer_comment": "verify identity vetting explanation verify phone",
     "string": "Bekräfta ditt telefonnummer under {linkToSettings}"
@@ -361,10 +365,6 @@
     "developer_comment": "security last used",
     "string": "Senast använd"
   },
-  "6sAedm": {
-    "developer_comment": "new password",
-    "string": "Nytt lösenord"
-  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -404,6 +404,10 @@
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
+  },
+  "8BQhd2": {
+    "developer_comment": "Change password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera och spara det för framtida bruk."
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -460,6 +464,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
+  },
+  "9r+XZS": {
+    "developer_comment": "Change password - lead",
+    "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
   },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
@@ -890,10 +898,6 @@
     "developer_comment": "usb key technical section - list item 2",
     "string": "får inte ha någon annan status i metadata än några olika varianter av: "
   },
-  "M9XO2K": {
-    "developer_comment": "Change password - lead",
-    "string": "När du skapar ditt eget lösenord bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
-  },
   "MHzJ0N": {
     "developer_comment": "Reset Password set new password success lead",
     "string": "Detta är ditt nya lösenord för eduID. Spara lösenordet! När du har loggat in är det möjligt att byta ditt lösenord."
@@ -1277,10 +1281,6 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
-  "WAbi07": {
-    "developer_comment": "Change password toggle",
-    "string": "Växla om knappen för anpassat lösenord för att ställa in ditt eget lösenord."
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
@@ -1328,6 +1328,10 @@
   "Xl8Jtp": {
     "developer_comment": "signup first name",
     "string": "Förnamn"
+  },
+  "Xqmccu": {
+    "developer_comment": "summer vacation support info - strong",
+    "string": "Under sommaren, vänligen kontakta oss endast via e-post då vi inte erbjuder telefonsupport."
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1583,10 +1587,6 @@
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
   },
-  "cwXmMW": {
-    "developer_comment": "Change password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
-  },
   "cyhncE": {
     "developer_comment": "use other devices - list item 3",
     "string": "på den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
@@ -1659,10 +1659,6 @@
   "e+YGAd": {
     "developer_comment": "privacy policy - link",
     "string": "Integritetspolicyn"
-  },
-  "e0xgSg": {
-    "developer_comment": "how to contact support - paragraph 3",
-    "string": ", men för enklare ärenden kan du också nå oss per telefon {phone}."
   },
   "e6XTxx": {
     "developer_comment": "Reset Password email link sent",
@@ -1995,10 +1991,6 @@
   "jQvHTz": {
     "developer_comment": "usb key - list item 2",
     "string": "Släpper ett intyg utfärdat av tillverkaren som berättar vilken enhet det är i samband med inloggningen och kräver att personen är fysiskt vid säkerhetsnyckeln för att den ska kunna användas. "
-  },
-  "jULdoG": {
-    "developer_comment": "change custom password",
-    "string": "Skapa ett eget lösenord?"
   },
   "jYWXMn": {
     "developer_comment": "enter code",
@@ -2343,6 +2335,10 @@
     "developer_comment": "button cancel",
     "string": "Avbryt"
   },
+  "oWYI6Z": {
+    "developer_comment": "Change password toggle",
+    "string": "Växla om knappen för att skapa ditt eget lösenord."
+  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
@@ -2571,9 +2567,9 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "När du har mottagit brevet, fortsätt genom att klicka på knappen nedan."
   },
-  "qMRp3m": {
-    "developer_comment": "how to contact support email - strong",
-    "string": "För bästa möjliga support rekommenderar vi dig alltid att skicka e-post"
+  "qPEmqp": {
+    "developer_comment": "Change password - headline",
+    "string": "Ändra lösenord: Skapa ditt eget lösenord"
   },
   "qQnhgJ": {
     "developer_comment": "Registration copy and paste password",
@@ -2944,10 +2940,6 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
   },
-  "vBunVe": {
-    "developer_comment": "Change password - headline",
-    "string": "Ändra lösenord: Anpassat lösenord"
-  },
   "vKFmEL": {
     "developer_comment": "extra security heading",
     "string": "Välj ett extra säkerhetsalternativ"
@@ -3071,6 +3063,10 @@
   "z2oWSP": {
     "developer_comment": "Set new password",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
+  },
+  "zLM+UZ": {
+    "developer_comment": "change custom password",
+    "string": "Skapa ditt eget lösenord?"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
