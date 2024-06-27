@@ -1338,30 +1338,15 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
               <p>
-                {/* <strong>
-                  <FormattedMessage
-                    description="summer vacation support info - strong"
-                    defaultMessage={`During the summer, please contact us by email only as we are not offering phone support.`}
-                  />
-                </strong> */}
                 <strong>
                   <FormattedMessage
                     description="how to contact support email - strong"
                     defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
                   />
                 </strong>
-                <FormattedMessage
-                  description="how to contact support - paragraph 3"
-                  defaultMessage=", but for simple
-              matters you can also reach us on phone number {phone}."
-                  values={{
-                    phone: (
-                      <a className="text-link" href="tel:+468-55521362">
-                        08-555 213 62
-                      </a>
-                    ),
-                  }}
-                />
+                <a className="text-link" href="tel:+468-55521362">
+                  08-555 213 62
+                </a>
               </p>
               <p>
                 <FormattedMessage description="opening hours - list definition" defaultMessage="Opening hours:" />
