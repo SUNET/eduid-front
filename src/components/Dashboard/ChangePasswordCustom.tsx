@@ -1,12 +1,16 @@
 import { changePassword } from "apis/eduidSecurity";
+import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
-import { useAppDispatch } from "eduid-hooks";
+import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
+import { useContext } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { clearNotifications } from "slices/Notifications";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -16,6 +20,11 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   const intl = useIntl();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const signupContext = useContext(SignupGlobalStateContext);
+  const location = useLocation();
+  const currentUrl = location.pathname;
+  const signupState = useAppSelector((state) => state.signup.state);
+  console.log("currentUrl", currentUrl);
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -64,9 +73,25 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     }
   }
 
+  async function submitNewPasswordForm(values: ChangePasswordFormData) {
+    const newPassword = values.custom;
+    if (!newPassword) {
+      return;
+    } else {
+      const res = await dispatch(createUserRequest({ use_password: true }));
+
+      if (createUserRequest.fulfilled.match(res)) {
+        dispatch(clearNotifications());
+        signupContext.signupService.send({ type: "API_SUCCESS" });
+      } else {
+        signupContext.signupService.send({ type: "API_FAIL" });
+      }
+    }
+  }
+
   return (
     <FinalForm<any>
-      onSubmit={handleSubmitPasswords}
+      onSubmit={currentUrl.includes("/register") ? submitNewPasswordForm : handleSubmitPasswords}
       validate={validateNewPassword}
       render={(formProps) => {
         return (
