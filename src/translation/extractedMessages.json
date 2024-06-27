@@ -1329,10 +1329,6 @@
     "developer_comment": "signup first name",
     "string": "First name"
   },
-  "Xqmccu": {
-    "developer_comment": "summer vacation support info - strong",
-    "string": "During the summer, please contact us by email only as we are not offering phone support."
-  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -1703,8 +1699,14 @@
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
+  "eidas.credential_verify_success": {
+    "string": "Success"
+  },
   "eidas.identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
+  },
+  "eidas.mfa_authn_success": {
+    "string": "Success"
   },
   "eidas.nin_already_verified": {
     "string": "You have already verified your identity"
@@ -2214,7 +2216,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Code"
+    "string": "enter code"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -2566,6 +2568,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
+  },
+  "qMRp3m": {
+    "developer_comment": "how to contact support email - strong",
+    "string": "In order to get best possible support, we recommend that you send e-mail"
   },
   "qPEmqp": {
     "developer_comment": "Change password - headline",
