@@ -11,9 +11,9 @@ export function ChangePasswordRadioOption(props: {
         <FormattedMessage defaultMessage="Choose an option" description="Change password radio group legend" />
       </legend>
       <div className="radio-input-container">
-        <label htmlFor="suggested password">
+        <label htmlFor="suggested-pw">
           <Field
-            name="change password"
+            name="suggested-password"
             component="input"
             type="radio"
             id="suggested-pw"
@@ -24,9 +24,9 @@ export function ChangePasswordRadioOption(props: {
             <FormattedMessage defaultMessage="Suggested password" description="suggested password radio button" />
           </span>
         </label>
-        <label htmlFor="custom password">
+        <label htmlFor="custom-pw">
           <Field
-            name="change password"
+            name="custom-password"
             component="input"
             type="radio"
             id="custom-pw"
