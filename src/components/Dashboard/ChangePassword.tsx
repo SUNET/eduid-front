@@ -7,8 +7,8 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { AuthenticateModal } from "./Authenticate";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
+import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
-import { ChangePasswordSwitchToggle } from "./ChangePasswordSwitchToggle";
 
 // exported for use in tests
 export const finish_url = "/profile/security";
@@ -117,7 +117,7 @@ export function ChangePassword() {
                     <FormattedMessage
                       description="Change password - lead"
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
-                    the password in to the Repeat new password field and click Accept button and save it for 
+                    the password in to the Repeat new password field and click the Save button to store it for 
                     future use.`}
                     />
                   </p>
@@ -142,7 +142,7 @@ export function ChangePassword() {
                 </div>
               </section>
             )}
-            <ChangePasswordSwitchToggle handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
               <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} />
             ) : (
