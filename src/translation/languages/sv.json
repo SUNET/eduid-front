@@ -131,6 +131,10 @@
     "developer_comment": "verify identity vetting explanation verify phone",
     "string": "Bekräfta ditt telefonnummer under {linkToSettings}"
   },
+  "0nQOwn": {
+    "developer_comment": "Change password radio group legend",
+    "string": "Välj ett alternativ"
+  },
   "0u1oEd": {
     "developer_comment": "choosing usb key - paragraph",
     "string": "Inte alla säkerhetsnycklar uppnår kraven för att kunna användas som säkerhetsnyckel för eduID."
@@ -174,10 +178,6 @@
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
-  },
-  "1rgBqf": {
-    "developer_comment": "Set new password (Accept button)",
-    "string": "Godkänn"
   },
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
@@ -405,10 +405,6 @@
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
   },
-  "8BQhd2": {
-    "developer_comment": "Change password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera och spara det för framtida bruk."
-  },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
     "string": "Ytterligare teknisk information:"
@@ -513,6 +509,10 @@
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
   },
+  "AqC6nN": {
+    "developer_comment": "Set your own password radio button",
+    "string": "Skapa ditt eget lösenord"
+  },
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}"
@@ -564,6 +564,10 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Ändra lösenord: Slutfört"
+  },
+  "CYTG9J": {
+    "developer_comment": "Change password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -1329,10 +1333,6 @@
     "developer_comment": "signup first name",
     "string": "Förnamn"
   },
-  "Xqmccu": {
-    "developer_comment": "summer vacation support info - strong",
-    "string": "Under sommaren, vänligen kontakta oss endast via e-post då vi inte erbjuder telefonsupport."
-  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
@@ -1364,6 +1364,10 @@
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "Vad är Freja+?"
+  },
+  "YTqn7P": {
+    "developer_comment": "suggested password radio button",
+    "string": "Rekommenderat lösenord"
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
@@ -1467,6 +1471,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
+  },
+  "b7acbg": {
+    "developer_comment": "how to contact support phone",
+    "string": ", men för enklare ärenden kan du också nå oss per telefonnummer"
   },
   "bCIMPQ": {
     "developer_comment": "security key title",
@@ -1703,8 +1711,14 @@
   "eidas.authn_context_mismatch": {
     "string": "Mottog fel representation av tillitsnivå"
   },
+  "eidas.credential_verify_success": {
+    "string": "Klart"
+  },
   "eidas.identity_not_matching": {
     "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "eidas.mfa_authn_success": {
+    "string": "Klart"
   },
   "eidas.nin_already_verified": {
     "string": "Du har redan bekräftat din identitet"
@@ -2214,7 +2228,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Kod"
+    "string": "skriv in koden"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -2335,10 +2349,6 @@
     "developer_comment": "button cancel",
     "string": "Avbryt"
   },
-  "oWYI6Z": {
-    "developer_comment": "Change password toggle",
-    "string": "Växla om knappen för att skapa ditt eget lösenord."
-  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
@@ -2387,6 +2397,10 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "Hur kan jag skapa ett eduID?"
+  },
+  "pZ5I5t": {
+    "developer_comment": "Set new password (Save button)",
+    "string": "Spara"
   },
   "pb/yW9": {
     "developer_comment": "help - headline",
@@ -2566,6 +2580,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "När du har mottagit brevet, fortsätt genom att klicka på knappen nedan."
+  },
+  "qMRp3m": {
+    "developer_comment": "how to contact support email - strong",
+    "string": "För bästa möjliga support rekommenderar vi dig alltid att skicka e-post"
   },
   "qPEmqp": {
     "developer_comment": "Change password - headline",
@@ -3063,10 +3081,6 @@
   "z2oWSP": {
     "developer_comment": "Set new password",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
-  },
-  "zLM+UZ": {
-    "developer_comment": "change custom password",
-    "string": "Skapa ditt eget lösenord?"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
