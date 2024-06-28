@@ -1472,6 +1472,10 @@
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
   },
+  "b7acbg": {
+    "developer_comment": "how to contact support phone",
+    "string": ", but for simple matters you can also reach us on phone number"
+  },
   "bCIMPQ": {
     "developer_comment": "security key title",
     "string": "Make your eduID more secure"
