@@ -27,7 +27,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
       <NewPasswordForm
         suggested_password={suggested_password}
         submitNewPasswordForm={props.formProps.handleSubmit}
-        submitButtonText={<FormattedMessage defaultMessage="Accept" description="Set new password (Accept button)" />}
+        submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
         handleCancel={props.handleCancel}
       />
     </React.Fragment>
