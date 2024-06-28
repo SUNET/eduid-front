@@ -1344,6 +1344,7 @@ export function Help(): JSX.Element {
                     defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
                   />
                 </strong>
+                &nbsp;
                 <a className="text-link" href="tel:+468-55521362">
                   08-555 213 62
                 </a>
