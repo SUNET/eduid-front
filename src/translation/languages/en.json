@@ -131,6 +131,10 @@
     "developer_comment": "verify identity vetting explanation verify phone",
     "string": "Confirm your phone number in {linkToSettings}"
   },
+  "0nQOwn": {
+    "developer_comment": "Change password radio group legend",
+    "string": "Choose an option"
+  },
   "0u1oEd": {
     "developer_comment": "choosing usb key - paragraph",
     "string": "Not all security keys meet the necessary specifications to be used as a security key for eduID."
@@ -174,10 +178,6 @@
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
-  },
-  "1rgBqf": {
-    "developer_comment": "Set new password (Accept button)",
-    "string": "Accept"
   },
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
@@ -405,10 +405,6 @@
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
   },
-  "8BQhd2": {
-    "developer_comment": "Change password - lead",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept button and save it for future use."
-  },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
     "string": "Further technical information:"
@@ -513,6 +509,10 @@
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
   },
+  "AqC6nN": {
+    "developer_comment": "Set your own password radio button",
+    "string": "Set your own password"
+  },
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
@@ -564,6 +564,10 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Change Password: Completed"
+  },
+  "CYTG9J": {
+    "developer_comment": "Change password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -1329,10 +1333,6 @@
     "developer_comment": "signup first name",
     "string": "First name"
   },
-  "Xqmccu": {
-    "developer_comment": "summer vacation support info - strong",
-    "string": "During the summer, please contact us by email only as we are not offering phone support."
-  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -1364,6 +1364,10 @@
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
+  },
+  "YTqn7P": {
+    "developer_comment": "suggested password radio button",
+    "string": "Suggested password"
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
@@ -1467,6 +1471,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
+  },
+  "b7acbg": {
+    "developer_comment": "how to contact support phone",
+    "string": ", but for simple matters you can also reach us on phone number"
   },
   "bCIMPQ": {
     "developer_comment": "security key title",
@@ -1703,8 +1711,14 @@
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
   },
+  "eidas.credential_verify_success": {
+    "string": "Success"
+  },
   "eidas.identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
+  },
+  "eidas.mfa_authn_success": {
+    "string": "Success"
   },
   "eidas.nin_already_verified": {
     "string": "You have already verified your identity"
@@ -2214,7 +2228,7 @@
   },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
-    "string": "Code"
+    "string": "enter code"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -2335,10 +2349,6 @@
     "developer_comment": "button cancel",
     "string": "Cancel"
   },
-  "oWYI6Z": {
-    "developer_comment": "Change password toggle",
-    "string": "Toggle the switch button to set your own password."
-  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
@@ -2387,6 +2397,10 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "How can I create an eduID?"
+  },
+  "pZ5I5t": {
+    "developer_comment": "Set new password (Save button)",
+    "string": "Save"
   },
   "pb/yW9": {
     "developer_comment": "help - headline",
@@ -2566,6 +2580,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
+  },
+  "qMRp3m": {
+    "developer_comment": "how to contact support email - strong",
+    "string": "In order to get best possible support, we recommend that you send e-mail"
   },
   "qPEmqp": {
     "developer_comment": "Change password - headline",
@@ -3063,10 +3081,6 @@
   "z2oWSP": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
-  },
-  "zLM+UZ": {
-    "developer_comment": "change custom password",
-    "string": "Set your own password?"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
