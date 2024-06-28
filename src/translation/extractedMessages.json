@@ -1333,10 +1333,6 @@
     "developer_comment": "signup first name",
     "string": "First name"
   },
-  "Xqmccu": {
-    "developer_comment": "summer vacation support info - strong",
-    "string": "During the summer, please contact us by email only as we are not offering phone support."
-  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -2580,6 +2576,10 @@
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
+  },
+  "qMRp3m": {
+    "developer_comment": "how to contact support email - strong",
+    "string": "In order to get best possible support, we recommend that you send e-mail"
   },
   "qPEmqp": {
     "developer_comment": "Change password - headline",
