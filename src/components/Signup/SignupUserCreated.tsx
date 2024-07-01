@@ -5,8 +5,8 @@ import { NewPasswordFormData } from "components/Common/NewPasswordForm";
 import Splash from "components/Common/Splash";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
 import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
+import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
-import { ChangePasswordSwitchToggle } from "components/Dashboard/ChangePasswordSwitchToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useContext, useRef, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -103,7 +103,7 @@ export function SignupConfirmPassword() {
                 </div>
               </section>
             )}
-            <ChangePasswordSwitchToggle handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
               <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
