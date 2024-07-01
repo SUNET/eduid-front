@@ -463,7 +463,7 @@
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
-    "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
+    "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla ditt konto säkert."
   },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
@@ -543,7 +543,7 @@
   },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
-    "string": "Ändra lösenord: Föreslaget lösenord"
+    "string": "Ändra lösenord: Rekommenderat lösenord"
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
