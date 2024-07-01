@@ -1,5 +1,6 @@
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { eidasGetStatus } from "apis/eduidEidas";
+import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -39,8 +40,11 @@ export function LoginExternalReturnHandler() {
           // the user should be returned to
           const actionToRoute: { [key: string]: string } = {
             loginMfaAuthn: `/login/${status.frontend_state}`,
-            resetpwMfaAuthn: `/reset-password/email-code/${status.frontend_state}`,
+            resetpwMfaAuthn: `/reset-password/`,
           };
+          if (status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
+            dispatch(verifyEmailLink({ email_code: status.frontend_state }));
+          }
           const _path = actionToRoute[status.frontend_action];
           if (_path) {
             navigate(_path);
