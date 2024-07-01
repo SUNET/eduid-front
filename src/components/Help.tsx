@@ -1345,17 +1345,13 @@ export function Help(): JSX.Element {
                   />
                 </strong>
                 <FormattedMessage
-                  description="how to contact support - paragraph 3"
-                  defaultMessage=", but for simple
-              matters you can also reach us on phone number {phone}."
-                  values={{
-                    phone: (
-                      <a className="text-link" href="tel:+46455-385200">
-                        0455-385200
-                      </a>
-                    ),
-                  }}
+                  description="how to contact support phone"
+                  defaultMessage={`, but for simple matters you can also reach us on phone number `}
                 />
+                &nbsp;
+                <a className="text-link" href="tel:+468-55521362">
+                  08-555 213 62
+                </a>
               </p>
               <p>
                 <FormattedMessage description="opening hours - list definition" defaultMessage="Opening hours:" />

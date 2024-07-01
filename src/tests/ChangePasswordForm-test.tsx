@@ -28,7 +28,7 @@ test("renders custom password form after clicking do not want a suggested passwo
       },
     },
   });
-  const customPasswordButton = screen.getByRole("checkbox", { name: /Create a custom password?/i });
+  const customPasswordButton = screen.getByLabelText(/Set Your Own Password/i);
   expect(customPasswordButton).toBeInTheDocument();
 
   fireEvent.click(customPasswordButton);
