@@ -42,7 +42,7 @@ export function LoginExternalReturnHandler() {
             loginMfaAuthn: `/login/${status.frontend_state}`,
             resetpwMfaAuthn: `/reset-password/`,
           };
-          if (status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
+          if (!status.error && status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
             dispatch(verifyEmailLink({ email_code: status.frontend_state }));
           }
           const _path = actionToRoute[status.frontend_action];
