@@ -17,7 +17,7 @@ const resetPasswordModel = createModel(
       CHOOSE_FREJA_EID: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
       CAN_DO_EXTRA_SECURITY: () => ({}), // no payload
-      WITHOUT_EXTRA_SECURITY: () => ({}), // no payload
+      CONTINUE_SET_PASSWORD: () => ({}), // no payload
       START_EXTRA_SECURITY: () => ({}), // no payload
       KNOWN_USER: () => ({}), // no payload
       UNKNOWN_USER: () => ({}), // no payload
@@ -43,7 +43,7 @@ export function createResetPasswordMachine() {
             CAN_DO_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
             },
-            WITHOUT_EXTRA_SECURITY: {
+            CONTINUE_SET_PASSWORD: {
               target: "FinaliseResetPassword",
             },
           },
@@ -123,7 +123,7 @@ export function createResetPasswordMachine() {
                 CHOOSE_FREJA_EID: {
                   target: "ResetPasswordExternalMFA",
                 },
-                WITHOUT_EXTRA_SECURITY: {
+                CONTINUE_SET_PASSWORD: {
                   target: "ExtraSecurityFinished",
                 },
                 API_SUCCESS: {

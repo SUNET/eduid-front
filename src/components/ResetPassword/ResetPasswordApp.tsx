@@ -41,7 +41,7 @@ export function ResetPasswordApp(): JSX.Element {
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      resetPasswordContext.resetPasswordService.send({ type: "CONTINUE_SET_PASSWORD" });
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
   }, [swedishEID_status]);
