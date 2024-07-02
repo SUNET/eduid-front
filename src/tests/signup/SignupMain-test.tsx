@@ -22,6 +22,7 @@ const emptyState: SignupState = {
   },
   credentials: {
     completed: false,
+    generated_password: "",
   },
   email: {
     completed: false,
@@ -146,7 +147,7 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     rest.post("https://signup.eduid.docker/services/signup/get-password", (req, res, ctx) => {
       getPasswordCalled = true;
-      currentState.credentials.password = testPassword;
+      currentState.credentials.generated_password = testPassword;
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
       return res(ctx.json({ type: "test success", payload }));
@@ -196,6 +197,35 @@ test("complete signup happy case", async () => {
   render(<IndexMain />, {
     state: {
       config: { ...signupTestState.config },
+      signup: {
+        ...signupTestState.signup,
+        state: {
+          already_signed_up: false,
+          email: {
+            completed: true,
+            address: "eunjutest0629@test.se",
+            expires_time_left: 270,
+            expires_time_max: 270,
+            sent_at: "2024-07-01T01:24:56.062105+00:00",
+            // throttle_time_left?: number,
+            // throttle_time_max?: number,
+            // bad_attempts?: number,
+            // bad_attempts_max?: number,
+          },
+          invite: {
+            user: { given_name: undefined, surname: "", email: "string " },
+            code: "",
+            completed: false,
+            finish_url: undefined,
+            initiated_signup: false,
+            is_logged_in: true,
+          },
+          tou: { completed: true, version: "2024" },
+          captcha: { completed: true },
+          credentials: { completed: true, generated_password: testPassword },
+          user_created: false,
+        },
+      },
     },
     routes: [`${SIGNUP_BASE_PATH}`],
   });
@@ -213,13 +243,11 @@ test("complete signup happy case", async () => {
   await waitFor(() => {
     expect(getPasswordCalled).toBe(true);
   });
-
   // verify accept button is initially disabled
   const okButton = screen.getByRole("button", { name: /^ok/i });
   await waitFor(() => {
     expect(okButton).toBeDisabled();
   });
-
   const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
   expect(repeatInput).toHaveFocus();
   expect(repeatInput).toHaveProperty("placeholder", "xxxx xxxx xxxx");

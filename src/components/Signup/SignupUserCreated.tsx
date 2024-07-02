@@ -65,14 +65,16 @@ export function SignupConfirmPassword() {
                 id="copy-new-password"
                 ref={ref}
                 defaultValue={
-                  signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""
+                  signupState?.credentials.generated_password
+                    ? formatPassword(signupState?.credentials.generated_password)
+                    : ""
                 }
                 readOnly={true}
               />
               <CopyToClipboard ref={ref} />
             </mark>
             <NewPasswordForm
-              suggested_password={signupState?.credentials.password}
+              suggested_password={signupState?.credentials.generated_password}
               submitNewPasswordForm={submitNewPasswordForm}
               submitButtonText={<FormattedMessage defaultMessage="Ok" description="ok button" />}
             />
@@ -103,7 +105,7 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <ConfirmUserInfo
         email_address={signupState?.email.address as string}
-        new_password={formatPassword(signupState?.credentials.password)}
+        new_password={formatPassword(signupState?.credentials.generated_password)}
       />
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">

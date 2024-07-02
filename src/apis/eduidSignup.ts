@@ -30,7 +30,7 @@ export interface SignupState {
   };
   tou: { completed: boolean; version?: string };
   captcha: { completed: boolean };
-  credentials: { completed: boolean; password?: string };
+  credentials: { completed: boolean; generated_password?: string };
   user_created: boolean;
 }
 
