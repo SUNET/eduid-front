@@ -167,7 +167,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
 
   useEffect(() => {
     if (extra_security && !Object.values(extra_security).length) {
-      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      resetPasswordContext.resetPasswordService.send({ type: "CONTINUE_SET_PASSWORD" });
     }
   }, [extra_security]);
 
@@ -220,7 +220,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+    resetPasswordContext.resetPasswordService.send({ type: "CONTINUE_SET_PASSWORD" });
   }
 
   if (!extra_security) {
