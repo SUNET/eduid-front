@@ -727,10 +727,6 @@
     "developer_comment": "how use other devices - paragraph",
     "string": "Inloggning kan även ske genom att logga in i eduID med hjälp av en annan enhet:"
   },
-  "Gig0Ga": {
-    "developer_comment": "delete.modal_info",
-    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått mer än 5 minuter sedan du senast loggade in kan det hända att du behöver logga in igen."
-  },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
     "string": "För federerade identiteter är en av grundstenarna tillit mellan organisationer. Tilliten ligger i att organisationerna litar på att alla genomför sin autentisering, identifiering och verifiering, på ett korrekt sätt och i en kontrollerad och tillförlitlig IT-miljö. "
@@ -1296,6 +1292,10 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "logga in i eduID och välj metoden 'Med elektroniskt BankID' i identitetshanteringen och följ instruktionerna."
+  },
+  "WSPzti": {
+    "developer_comment": "Dashboard delete account modal main text",
+    "string": "Det har gått för lång tid sedan din inloggning. Efter att du har klickat på knappen Acceptera måste du använda dina inloggningsuppgifter en sista gång."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -2617,12 +2617,12 @@
     "developer_comment": "Login MFA",
     "string": "Tjänsten du försöker logga in på kräver en högre säkerhetsnivå. Ditt eduID-konto har inte konfigurerats med något av de tillgängliga alternativen för detta."
   },
-  "r7nFY2": {
-    "developer_comment": "Dashboard delete account modal main text",
-    "string": "När du har klickat på knappen måste du använda dina inloggningsuppgifter en sista gång."
-  },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
+  },
+  "rHjPO1": {
+    "developer_comment": "delete.modal_info",
+    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått lång tid sedan du senast loggade in kan det hända att du behöver logga in igen."
   },
   "rLwIkG": {
     "developer_comment": "which login email - heading",

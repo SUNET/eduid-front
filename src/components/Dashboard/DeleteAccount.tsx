@@ -42,7 +42,7 @@ export default function DeleteAccount(): JSX.Element | null {
         setShowModal={setShowAuthnModal}
         mainText={
           <FormattedMessage
-            defaultMessage={`After clicking the button you need to use your log in details one final time.`}
+            defaultMessage={`It has been too long since your login. After clicking the Accept button, you need to use your login details one final time.`}
             description="Dashboard delete account modal main text"
           />
         }
@@ -58,7 +58,7 @@ export default function DeleteAccount(): JSX.Element | null {
         mainText={
           <FormattedMessage
             defaultMessage={`Deleting your eduID will permanently remove all your saved
-              information. If it has been more than 5 minutes since you last logged in, you may need to log in again.`}
+              information. If it has been a long time since you last logged in, you may need to log in again.`}
             description="delete.modal_info"
           />
         }
