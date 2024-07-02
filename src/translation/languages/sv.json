@@ -2622,7 +2622,7 @@
   },
   "rHjPO1": {
     "developer_comment": "delete.modal_info",
-    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått mer lång tid sedan du senast loggade in kan det hända att du behöver logga in igen."
+    "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått lång tid sedan du senast loggade in kan det hända att du behöver logga in igen."
   },
   "rLwIkG": {
     "developer_comment": "which login email - heading",
