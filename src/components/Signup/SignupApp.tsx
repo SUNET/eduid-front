@@ -15,7 +15,7 @@ export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const [state] = useActor(signupContext.signupService);
   const intl = useIntl();
-
+  console.log("12ssss");
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Register",
