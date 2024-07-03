@@ -1295,7 +1295,7 @@
   },
   "WSPzti": {
     "developer_comment": "Dashboard delete account modal main text",
-    "string": "Det har gått för lång tid sedan din inloggning. Efter att du har klickat på knappen Acceptera måste du använda dina inloggningsuppgifter en sista gång."
+    "string": "Det har gått för lång tid sedan din inloggning. Efter att du har klickat på knappen Godkänn måste du använda dina inloggningsuppgifter en sista gång."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
