@@ -24,7 +24,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   const location = useLocation();
   const currentUrl = location.pathname;
   const signupState = useAppSelector((state) => state.signup.state);
-  console.log("currentUrl", currentUrl);
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -78,7 +77,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(createUserRequest({ use_password: true }));
+      const res = await dispatch(createUserRequest({ use_suggested_password: false, custom_password: newPassword }));
 
       if (createUserRequest.fulfilled.match(res)) {
         dispatch(clearNotifications());

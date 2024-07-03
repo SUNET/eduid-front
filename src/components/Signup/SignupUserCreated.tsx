@@ -33,7 +33,7 @@ export function SignupConfirmPassword() {
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(createUserRequest({ use_password: true }));
+      const res = await dispatch(createUserRequest({ use_suggested_password: true }));
 
       if (createUserRequest.fulfilled.match(res)) {
         dispatch(clearNotifications());
@@ -54,7 +54,7 @@ export function SignupConfirmPassword() {
     navigate("/register");
   }
 
-  const suggested = signupState?.credentials.password;
+  const suggested = signupState?.credentials.generated_password;
   const initialValues = { suggested };
 
   return (
@@ -64,7 +64,7 @@ export function SignupConfirmPassword() {
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
-          <Splash showChildren={Boolean(signupState?.credentials.password)}>
+          <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
             {renderSuggested ? (
               <section className="intro">
                 <h1>
@@ -136,7 +136,7 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <ConfirmUserInfo
         email_address={signupState?.email.address as string}
-        new_password={formatPassword(signupState?.credentials.password)}
+        new_password={formatPassword(signupState?.credentials.generated_password)}
       />
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
