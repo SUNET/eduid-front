@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
 import { appLoadingSlice } from "slices/AppLoading";
+import authnSlice from "slices/Authn";
 import chpassSlice from "slices/ChangePassword";
 import emailsSlice from "slices/Emails";
 import identitiesSlice from "slices/Identities";
@@ -35,6 +36,7 @@ const eduIDApp = combineReducers({
   account_linking: accountLinkingSlice.reducer,
   security: securitySlice.reducer,
   ladok: ladokSlice.reducer,
+  authn: authnSlice.reducer,
 });
 
 export default eduIDApp;
