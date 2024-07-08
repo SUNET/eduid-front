@@ -7,9 +7,8 @@ import Emails from "components/Dashboard/Emails";
 import PersonalDataParent from "components/Dashboard/PersonalDataParent";
 import Phones from "components/Dashboard/Phones";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import Splash from "./Splash";
 
 /* The Dashboard "Settings" tab */
 export function Settings(): JSX.Element {
@@ -45,7 +44,7 @@ export function Settings(): JSX.Element {
   }, [frontend_action]);
 
   return (
-    <Splash showChildren={is_loaded}>
+    <React.Fragment>
       <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
       <section className="intro">
         <h1>
@@ -65,6 +64,6 @@ export function Settings(): JSX.Element {
       <Phones />
       <ChangePasswordDisplay />
       <DeleteAccount />
-    </Splash>
+    </React.Fragment>
   );
 }
