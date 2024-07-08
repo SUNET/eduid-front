@@ -1,5 +1,6 @@
+import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -9,6 +10,7 @@ export function Index() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const is_loaded = useAppSelector((state) => state.app.is_loaded);
 
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
@@ -16,6 +18,20 @@ export function Index() {
       document.location.href = dashboard_link;
     }
   }
+  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+
+  async function deleteAccount() {
+    const response = await dispatch(postDeleteAccount());
+    if (postDeleteAccount.fulfilled.match(response)) {
+      window.location.assign(response.payload.location);
+    }
+  }
+
+  useEffect(() => {
+    if (frontend_action === "terminateAccountAuthn") {
+      deleteAccount();
+    }
+  }, [frontend_action]);
 
   return (
     <React.Fragment>
