@@ -32,7 +32,7 @@ export function ExternalReturnHandler() {
         verifyIdentity: "/profile/verify-identity/",
         verifyCredential: "/profile/settings/advanced-settings/",
         changepwAuthn: "/profile/chpass",
-        terminateAccountAuthn: "/",
+        terminateAccountAuthn: "/profile/settings/",
         addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
         removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
       };
