@@ -7,6 +7,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState } from "slices/AppLoading";
+import { initialState as authnInitialState } from "slices/Authn";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
 import { initialState as emailsInitialState } from "slices/Emails";
 import { initialState as identityInitialState } from "slices/Identities";
@@ -49,6 +50,7 @@ export const signupTestState: EduIDAppRootState = {
   account_linking: accountLinkingInitialState,
   security: securityInitialState,
   ladok: ladokInitialState,
+  authn: authnInitialState,
 };
 
 interface renderArgs {
