@@ -136,7 +136,11 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <ConfirmUserInfo
         email_address={signupState?.email.address as string}
-        new_password={formatPassword(signupState?.credentials.generated_password)}
+        new_password={
+          signupState?.credentials.custom_password
+            ? signupState?.credentials.custom_password
+            : formatPassword(signupState?.credentials.generated_password)
+        }
       />
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
