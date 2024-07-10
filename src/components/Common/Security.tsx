@@ -353,28 +353,26 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           {date_success}
         </td>
         <td className="value-status">{btnVerify}</td>
-        {tokens.length > 1 ? (
-          <td>
-            <EduIDButton
-              id="remove-webauthn"
-              buttonstyle="close"
-              size="sm"
-              onClick={() => handleRemoveWebauthnToken(cred.key)}
-            ></EduIDButton>
-            <AuthenticateModal
-              action="removeSecurityKeyAuthn"
-              dispatch={dispatch}
-              showModal={cred.key === credentialKey && removeSecurityKeyModal}
-              setShowModal={setRemoveSecurityKeyModal}
-              mainText={
-                <FormattedMessage
-                  description="remove Security key"
-                  defaultMessage="To remove your security, you'll have to log in again. Once logged in, please press the button again."
-                />
-              }
-            />
-          </td>
-        ) : null}
+        <td>
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleRemoveWebauthnToken(cred.key)}
+          ></EduIDButton>
+          <AuthenticateModal
+            action="removeSecurityKeyAuthn"
+            dispatch={dispatch}
+            showModal={cred.key === credentialKey && removeSecurityKeyModal}
+            setShowModal={setRemoveSecurityKeyModal}
+            mainText={
+              <FormattedMessage
+                description="remove Security key"
+                defaultMessage="To remove your security, you'll have to log in again. Once logged in, please press the button again."
+              />
+            }
+          />
+        </td>
       </tr>
     );
   });
