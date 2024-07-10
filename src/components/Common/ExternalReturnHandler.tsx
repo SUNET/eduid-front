@@ -35,6 +35,7 @@ export function ExternalReturnHandler() {
         terminateAccountAuthn: "/",
         addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
         removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
+        changeSecurityPreferencesAuthn: "/profile/settings/advanced-settings/",
       };
       const _path = actionToRoute[status.frontend_action];
       if (_path) {

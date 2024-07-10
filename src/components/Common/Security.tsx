@@ -10,6 +10,7 @@ import {
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { AuthenticateModal } from "components/Dashboard/Authenticate";
+import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
@@ -195,6 +196,7 @@ export function Security(): React.ReactElement | null {
           </div>
         </div>
       </div>
+      <UseSecurityKeyToggle />
       <ConfirmModal
         id="describe-webauthn-token-modal"
         title={
