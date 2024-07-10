@@ -157,7 +157,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
 
   async function handleRemoveIdentity() {
-    const response = await dispatch(removeIdentity({ identity_type: "nin" }));
+    // find dynamically which identity_type
+    const idType = Object.keys(identities).filter(function (objProp) {
+      return objProp !== "is_verified";
+    })[0];
+    console.log("idType: ", idType);
+    const response = await dispatch(removeIdentity({ identity_type: idType }));
     if (removeIdentity.rejected.match(response)) {
       if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
         setShowAuthnModal(true);
