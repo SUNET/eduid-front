@@ -269,6 +269,23 @@ export const fetchApprovedSecurityKeys = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+/**
+ * @public
+ * @function removeIdentity
+ * @desc Redux async thunk to post remove identity.
+ */
+export const removeIdentity = createAsyncThunk<
+  any, // return type
+  { identity_type: string }, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("security/removeIdentity", async (args, thunkAPI) => {
+  return makeSecurityRequest<any>(thunkAPI, "remove-identity", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+
 function makeSecurityRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,

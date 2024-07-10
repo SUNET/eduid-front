@@ -7,7 +7,7 @@ import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -18,9 +18,10 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
+import { removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
-
+import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -152,6 +153,17 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const identities = useAppSelector((state) => state.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  const dispatch = useAppDispatch();
+  const [showAuthnModal, setShowAuthnModal] = useState(false);
+
+  async function handleRemoveIdentity() {
+    const response = await dispatch(removeIdentity({ identity_type: "nin" }));
+    if (removeIdentity.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setShowAuthnModal(true);
+      }
+    }
+  }
 
   return (
     <React.Fragment>
@@ -166,6 +178,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
             </strong>
           </div>
           <NinDisplay nin={identities.nin} allowDelete={true} />
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleRemoveIdentity()}
+          ></EduIDButton>
         </figure>
       )}
 
@@ -200,6 +218,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
         </figure>
       )}
+      <AuthenticateModal
+        action="removeIdentity"
+        dispatch={dispatch}
+        showModal={showAuthnModal}
+        setShowModal={setShowAuthnModal}
+        mainText={
+          <FormattedMessage
+            description="remove Security key"
+            defaultMessage="To remove your identity, you'll have to log in again. Once logged in, please press the button again."
+          />
+        }
+      />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities.nin?.verified && (
         <React.Fragment>

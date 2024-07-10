@@ -36,6 +36,7 @@ export function ExternalReturnHandler() {
         addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
         removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
         changeSecurityPreferencesAuthn: "/profile/settings/advanced-settings/",
+        removeIdentity: "/profile/verify-identity/",
       };
       const _path = actionToRoute[status.frontend_action];
       if (_path) {
