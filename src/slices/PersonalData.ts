@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
+import {
+  PersonalDataRequest,
+  postPersonalData,
+  postSecurityKeyPreference,
+  PreferencesData,
+  requestAllPersonalData,
+} from "apis/eduidPersonalData";
 
 interface PersonalDataState {
   eppn?: string;
@@ -24,6 +30,11 @@ const personalDataSlice = createSlice({
       })
       .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
         state.response = action.payload;
+      })
+      .addCase(postSecurityKeyPreference.fulfilled, (state, action: PayloadAction<PreferencesData>) => {
+        if (state.response) {
+          state.response.preferences = action.payload;
+        }
       });
   },
 });
