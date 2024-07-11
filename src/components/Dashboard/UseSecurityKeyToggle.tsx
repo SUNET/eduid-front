@@ -14,19 +14,19 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
 
   async function handleSwitchChange() {
     // Easiest way to understand the logic in this function is to store the old switch status here.
-    const wasChecked = switchChecked;
-    setSwitchChecked(!switchChecked);
-    if (wasChecked && always_use_security_key) {
-      const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: wasChecked }));
+    const newChecked = !switchChecked;
+    const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: newChecked }));
 
-      if (postSecurityKeyPreference.rejected.match(response)) {
-        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          setShowAuthnModal(true);
-        }
-      } else setSwitchChecked(!switchChecked);
+    if (postSecurityKeyPreference.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setShowAuthnModal(true);
+      }
+    } else {
+      setSwitchChecked(newChecked);
     }
   }
 
+  // this would not be necessary if the component reacts directly from the value always_use_security_key in store
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
