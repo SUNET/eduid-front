@@ -30,6 +30,13 @@ export function Security(): React.ReactElement | null {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
+  // get FIDO tokens from list of all user credentials - copy from SecurityKeyTable
+  const tokens = credentials.filter(
+    (cred: CredentialType) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
+
   useEffect(() => {
     (async () => {
       if (isLoaded && !credentials.length) {
@@ -127,7 +134,7 @@ export function Security(): React.ReactElement | null {
     <article id="security-container">
       <div id="register-security-key-container">
         <h2>
-          <FormattedMessage description="security key title" defaultMessage="Make your eduID more secure" />
+          <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
         </h2>
         <p>
           <FormattedMessage
@@ -154,6 +161,7 @@ export function Security(): React.ReactElement | null {
         </p>
 
         <div id="register-webauthn-tokens-area" className="table-responsive">
+          {Boolean(tokens.length) && <UseSecurityKeyToggle />}
           <SecurityKeyTable credentials={credentials} />
           <span aria-label="select extra webauthn">
             <strong>
@@ -164,23 +172,22 @@ export function Security(): React.ReactElement | null {
             </strong>
           </span>
           <div className="buttons">
-            {isPlatformAuthenticatorAvailable ? (
-              <div>
-                <EduIDButton
-                  id="security-webauthn-platform-button"
-                  buttonstyle="primary"
-                  onClick={() => handleRegisterWebauthn("platform")}
-                >
-                  <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-                </EduIDButton>
-                <p className="help-text">
-                  <FormattedMessage
-                    description="platform authn device help text"
-                    defaultMessage="Touch/ Face ID on this device."
-                  />
-                </p>
-              </div>
-            ) : null}
+            <div>
+              <EduIDButton
+                id="security-webauthn-platform-button"
+                buttonstyle="primary"
+                onClick={() => handleRegisterWebauthn("platform")}
+                disabled={!isPlatformAuthenticatorAvailable}
+              >
+                <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+              </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage
+                  description="platform authn device help text"
+                  defaultMessage="Touch/ Face ID on this device."
+                />
+              </p>
+            </div>
             <div>
               <EduIDButton
                 id="security-webauthn-button"
@@ -196,7 +203,6 @@ export function Security(): React.ReactElement | null {
           </div>
         </div>
       </div>
-      <UseSecurityKeyToggle />
       <ConfirmModal
         id="describe-webauthn-token-modal"
         title={
