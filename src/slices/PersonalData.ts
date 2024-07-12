@@ -6,6 +6,7 @@ import {
   PreferencesData,
   requestAllPersonalData,
 } from "apis/eduidPersonalData";
+import { removeIdentity } from "apis/eduidSecurity";
 
 interface PersonalDataState {
   eppn?: string;
@@ -35,6 +36,9 @@ const personalDataSlice = createSlice({
         if (state.response) {
           state.response.preferences = action.payload;
         }
+      })
+      .addCase(removeIdentity.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        state.response = action.payload;
       });
   },
 });

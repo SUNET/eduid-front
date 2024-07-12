@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchIdentities, requestAllPersonalData, UserIdentities } from "apis/eduidPersonalData";
-import { addNin, removeNin } from "apis/eduidSecurity";
+import { addNin, removeIdentity, removeNin } from "apis/eduidSecurity";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IdentitiesState extends UserIdentities {}
@@ -23,6 +23,9 @@ const identitiesSlice = createSlice({
         return action.payload.identities;
       })
       .addCase(removeNin.fulfilled, (state, action) => {
+        return action.payload.identities;
+      })
+      .addCase(removeIdentity.fulfilled, (state, action) => {
         return action.payload.identities;
       })
       .addCase(requestAllPersonalData.fulfilled, (state, action) => {
