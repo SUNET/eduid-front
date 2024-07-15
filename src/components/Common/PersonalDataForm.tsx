@@ -32,7 +32,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
-  const is_verified = useAppSelector((state) => state.identities.is_verified);
+  const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const messages = LOCALIZED_MESSAGES;
 
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
@@ -100,7 +100,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
 }
 
 function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) => void }): JSX.Element {
-  const is_verified = useAppSelector((state) => state.identities.is_verified);
+  const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);

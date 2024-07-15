@@ -53,12 +53,13 @@ test("renders identity verification progress, unverified after password reset", 
         response: {
           eppn: "hubba-bubba",
           chosen_given_name: "test user",
+          identities: {
+            is_verified: false,
+            nin: { number: "199008199391", verified: false },
+          },
         },
+
         ...defaultDashboardTestState.personal_data,
-      },
-      identities: {
-        is_verified: false,
-        nin: { number: "199008199391", verified: false },
       },
     },
   });
@@ -76,10 +77,10 @@ test("renders identity verification progress, new user", () => {
         response: {
           eppn: "hubba-bubba",
           chosen_given_name: "test user",
+          identities: {
+            is_verified: false,
+          },
         },
-      },
-      identities: {
-        is_verified: false,
       },
     },
   });
@@ -97,10 +98,10 @@ test("renders identity verification progress, verified user", () => {
         response: {
           eppn: "hubba-bubba",
           chosen_given_name: "test user",
+          identities: {
+            is_verified: true,
+          },
         },
-      },
-      identities: {
-        is_verified: true,
       },
     },
   });

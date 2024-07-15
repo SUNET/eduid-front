@@ -4,7 +4,6 @@ import { appLoadingSlice } from "slices/AppLoading";
 import authnSlice from "slices/Authn";
 import chpassSlice from "slices/ChangePassword";
 import emailsSlice from "slices/Emails";
-import identitiesSlice from "slices/Identities";
 import configSlice from "slices/IndexConfig";
 import { intlReducer } from "slices/Internationalisation";
 import ladokSlice from "slices/Ladok";
@@ -29,7 +28,6 @@ const eduIDApp = combineReducers({
   chpass: chpassSlice.reducer,
   emails: emailsSlice.reducer,
   lookup_mobile: lookupMobileProofingSlice.reducer,
-  identities: identitiesSlice.reducer,
   personal_data: personalDataSlice.reducer,
   phones: phonesSlice.reducer,
   letter_proofing: letterProofingSlice.reducer,

@@ -108,7 +108,7 @@ export default function Start(): JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const letter_proofing = useAppSelector((state) => state.letter_proofing);
   let username;
   let progress;
@@ -135,7 +135,7 @@ export default function Start(): JSX.Element {
   }, [isLoaded]);
 
   // when the user has verified their identity with swedish option, we don't need to show the letter proofing progress
-  if (!identities.nin?.verified && letter_proofing.letter_sent !== undefined) {
+  if (!identities?.nin?.verified && letter_proofing.letter_sent !== undefined) {
     progress = (
       <article>
         <h2>
@@ -175,7 +175,7 @@ export default function Start(): JSX.Element {
         <h2>
           <FormattedMessage description="progress title" defaultMessage="Your identity verification progress" />
         </h2>
-        <VerificationProgress identities={identities} />
+        {identities && <VerificationProgress identities={identities} />}
       </article>
       {progress}
       <Recommendations />

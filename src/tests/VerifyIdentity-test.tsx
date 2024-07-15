@@ -38,7 +38,12 @@ test("renders verifyIdentity as expected, verified user with swedish person numb
   render(<VerifyIdentity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
-      identities: { is_verified: true, nin: { number: "190102031234", verified: true } },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { is_verified: true, nin: { number: "190102031234", verified: true } },
+        },
+      },
     },
   });
   expect(
@@ -51,9 +56,20 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   render(<VerifyIdentity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
-      identities: {
-        is_verified: true,
-        eidas: { country_code: "1234", verified: true, date_of_birth: "19850101", prid: "prid", prid_persistence: "A" },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            eidas: {
+              country_code: "1234",
+              verified: true,
+              date_of_birth: "19850101",
+              prid: "prid",
+              prid_persistence: "A",
+            },
+          },
+        },
       },
     },
   });

@@ -83,9 +83,14 @@ test("not renders letter proofing progress, verified user with swedish id number
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: true,
-        nin: { number: "190102031234", verified: true },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            nin: { number: "190102031234", verified: true },
+          },
+        },
       },
       letter_proofing: {
         letter_expired: false,
@@ -106,9 +111,14 @@ test("heading text after password reset", () => {
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: false,
-        nin: { number: "190102031234", verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: false,
+            nin: { number: "190102031234", verified: false },
+          },
+        },
       },
     },
     routes: ["/profile/"],
@@ -123,10 +133,21 @@ test("renders swedish verification options when user verified with eidas", () =>
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: true,
-        nin: { number: "190102031234", verified: false },
-        eidas: { prid: "abcd", prid_persistence: "A", date_of_birth: "1990-08-19", country_code: "XE", verified: true },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            nin: { number: "190102031234", verified: false },
+            eidas: {
+              prid: "abcd",
+              prid_persistence: "A",
+              date_of_birth: "1990-08-19",
+              country_code: "XE",
+              verified: true,
+            },
+          },
+        },
       },
     },
     routes: ["/profile/"],
