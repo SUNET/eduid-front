@@ -12,6 +12,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import { AuthenticateModal } from "components/Dashboard/Authenticate";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { EduIDAppRootState } from "eduid-init-app";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,15 @@ import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
+function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
+  // get FIDO tokens from list of all user credentials
+  return state.security.credentials.filter(
+    (cred: CredentialType) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
+}
+
 export function Security(): React.ReactElement | null {
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
@@ -29,13 +39,9 @@ export function Security(): React.ReactElement | null {
   const [showModal, setShowModal] = useState(false);
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-
-  // get FIDO tokens from list of all user credentials - copy from SecurityKeyTable
-  const tokens = credentials.filter(
-    (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
-  );
+  const tokens = useAppSelector((state) => {
+    return filterTokensFromCredentials(state);
+  });
 
   useEffect(() => {
     (async () => {
@@ -163,6 +169,7 @@ export function Security(): React.ReactElement | null {
         <div id="register-webauthn-tokens-area" className="table-responsive">
           {Boolean(tokens.length) && <UseSecurityKeyToggle />}
           <SecurityKeyTable credentials={credentials} />
+          {!tokens.length && <br />}
           <span aria-label="select extra webauthn">
             <strong>
               <FormattedMessage
@@ -248,12 +255,9 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
-  // get FIDO tokens from list of all user credentials
-  const tokens = props.credentials.filter(
-    (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
-  );
+  const tokens = useAppSelector((state) => {
+    return filterTokensFromCredentials(state);
+  });
 
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
@@ -389,27 +393,32 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   return (
-    <table className="active-keys">
-      <tbody>
-        <tr>
-          <th>
-            <FormattedMessage description="security description name" defaultMessage="Name" />
-          </th>
-          <th>
-            <FormattedMessage description="security creation date" defaultMessage="Created on" />
-          </th>
-          <th>
-            <FormattedMessage description="security last used" defaultMessage="Used on" />
-          </th>
-          <th>
-            <FormattedMessage description="security key status" defaultMessage="Verify" />
-          </th>
-          <th>
-            <FormattedMessage description="security key remove" defaultMessage="Remove" />
-          </th>
-        </tr>
-        {security_key_table_data}
-      </tbody>
-    </table>
+    <React.Fragment>
+      <h4>
+        <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
+      </h4>
+      <table className="active-keys">
+        <tbody>
+          <tr>
+            <th>
+              <FormattedMessage description="security description name" defaultMessage="Name" />
+            </th>
+            <th>
+              <FormattedMessage description="security creation date" defaultMessage="Created on" />
+            </th>
+            <th>
+              <FormattedMessage description="security last used" defaultMessage="Used on" />
+            </th>
+            <th>
+              <FormattedMessage description="security key status" defaultMessage="Verify" />
+            </th>
+            <th>
+              <FormattedMessage description="security key remove" defaultMessage="Remove" />
+            </th>
+          </tr>
+          {security_key_table_data}
+        </tbody>
+      </table>
+    </React.Fragment>
   );
 }

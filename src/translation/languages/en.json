@@ -81,7 +81,7 @@
   },
   "/h666/": {
     "developer_comment": "select extra webauthn",
-    "string": "Choose additional identification method:"
+    "string": "Add a new token:"
   },
   "/oseeC": {
     "developer_comment": "Registration finished",
@@ -339,7 +339,7 @@
   },
   "615OzR": {
     "developer_comment": "security second factor",
-    "string": "If possible, it is advisable to add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
+    "string": "Add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
   },
   "61F71s": {
     "developer_comment": "mfa security key heading",
