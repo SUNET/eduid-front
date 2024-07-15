@@ -57,14 +57,6 @@ const personalDataSlice = createSlice({
         if (state.response) {
           state.response.identities = action.payload.identities;
         }
-      })
-      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
-        if (state.response) {
-          state.response.identities = action.payload.identities;
-        }
-      })
-      .addCase(removeIdentity.fulfilled, (state, action) => {
-        return action.payload.identities;
       });
   },
 });
