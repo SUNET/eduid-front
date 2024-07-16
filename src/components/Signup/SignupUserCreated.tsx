@@ -1,11 +1,17 @@
 import { createUserRequest } from "apis/eduidSignup";
-import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
-import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import { ConfirmUserInfo } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
-import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
+import { NewPasswordFormData } from "components/Common/NewPasswordForm";
+import Splash from "components/Common/Splash";
+import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
+import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
+import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
+import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
+import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
@@ -19,13 +25,15 @@ export function SignupConfirmPassword() {
   const signupContext = useContext(SignupGlobalStateContext);
   const signupState = useAppSelector((state) => state.signup.state);
   const ref = useRef<HTMLInputElement>(null);
+  const [renderSuggested, setRenderSuggested] = useState(true);
+  const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values.newPassword;
+    const newPassword = values.suggested;
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(createUserRequest({ use_password: true }));
+      const res = await dispatch(createUserRequest({ use_suggested_password: true }));
 
       if (createUserRequest.fulfilled.match(res)) {
         dispatch(clearNotifications());
@@ -36,50 +44,79 @@ export function SignupConfirmPassword() {
     }
   }
 
+  function handleSwitchChange() {
+    setRenderSuggested(!renderSuggested);
+  }
+
+  function handleCancel(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
+    signupContext.signupService.send({ type: "ABORT" });
+    navigate("/register");
+  }
+
+  const suggested = signupState?.credentials.generated_password;
+  const initialValues = { suggested };
+
   return (
-    <React.Fragment>
-      <h1>
-        <FormattedMessage
-          defaultMessage="Register: Confirm your password"
-          description="Registration confirm password"
-        />
-      </h1>
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`A password has been generated for you. you can easily copy and paste your password by clicking the copy to clipboard button.`}
-            description="Registration copy and paste password"
-          />
-        </p>
-      </div>
-      <div id="email-display">
-        <EmailFieldset email={signupState?.email.address} />
-        <fieldset>
-          <label htmlFor={idUserPassword}>
-            <FormattedMessage defaultMessage="Password" description="Password label" />
-          </label>
-          <div className="display-data">
-            <mark className="force-select-all">
-              <input
-                name="copy-new-password"
-                id="copy-new-password"
-                ref={ref}
-                defaultValue={
-                  signupState?.credentials.password ? formatPassword(signupState?.credentials.password) : ""
-                }
-                readOnly={true}
+    <FinalForm<any>
+      onSubmit={submitNewPasswordForm}
+      initialValues={initialValues}
+      render={(formProps) => {
+        const child_props: ChangePasswordChildFormProps = { formProps };
+        return (
+          <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
+            {renderSuggested ? (
+              <section className="intro">
+                <h1>
+                  <FormattedMessage
+                    defaultMessage="Register: Suggested password"
+                    description="Registration confirm password"
+                  />
+                </h1>
+                <div className="lead">
+                  <p>
+                    <FormattedMessage
+                      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
+                    the password in to the Repeat new password field and click Accept Password and save it for 
+                    future use.`}
+                      description="Registration copy and paste password"
+                    />
+                  </p>
+                </div>
+              </section>
+            ) : (
+              <section className="intro">
+                <h1>
+                  <FormattedMessage
+                    description="Register - headline"
+                    defaultMessage="Register: Set your own password"
+                  />
+                </h1>
+                <div className="lead">
+                  <p>
+                    <FormattedMessage
+                      description="Register - lead"
+                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
+                        accounts safe.`}
+                    />
+                  </p>
+                </div>
+              </section>
+            )}
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+            {renderSuggested ? (
+              <ChangePasswordSuggestedForm
+                {...child_props}
+                handleCancel={handleCancel}
+                suggestedPassword={formatPassword(suggested)}
               />
-              <CopyToClipboard ref={ref} />
-            </mark>
-            <NewPasswordForm
-              suggested_password={signupState?.credentials.password}
-              submitNewPasswordForm={submitNewPasswordForm}
-              submitButtonText={<FormattedMessage defaultMessage="Ok" description="ok button" />}
-            />
-          </div>
-        </fieldset>
-      </div>
-    </React.Fragment>
+            ) : (
+              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
+            )}
+          </Splash>
+        );
+      }}
+    />
   );
 }
 
@@ -103,7 +140,11 @@ export function SignupUserCreated(): JSX.Element {
       </div>
       <ConfirmUserInfo
         email_address={signupState?.email.address as string}
-        new_password={formatPassword(signupState?.credentials.password)}
+        new_password={
+          signupState?.credentials.custom_password
+            ? signupState?.credentials.custom_password
+            : formatPassword(signupState?.credentials.generated_password)
+        }
       />
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">

@@ -20,6 +20,7 @@ export interface ChangePasswordFormProps {
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
+  suggestedPassword?: string;
 }
 
 export interface ChangePasswordFormData {
@@ -144,7 +145,7 @@ export function ChangePassword() {
             )}
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} />
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}
