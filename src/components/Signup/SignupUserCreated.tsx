@@ -29,7 +29,7 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values.newPassword;
+    const newPassword = values.suggested;
     if (!newPassword) {
       return;
     } else {
@@ -105,7 +105,11 @@ export function SignupConfirmPassword() {
             )}
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
+              <ChangePasswordSuggestedForm
+                {...child_props}
+                handleCancel={handleCancel}
+                suggestedPassword={formatPassword(suggested)}
+              />
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}

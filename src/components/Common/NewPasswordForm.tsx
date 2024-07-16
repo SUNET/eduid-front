@@ -10,6 +10,7 @@ const newPasswordFormId = "new-password-form";
 
 export interface NewPasswordFormData {
   newPassword?: string;
+  suggested?: string;
 }
 
 interface NewPasswordFormProps {
