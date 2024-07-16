@@ -156,7 +156,7 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     rest.post("https://signup.eduid.docker/services/signup/create-user", (req, res, ctx) => {
       const body = req.body as CreateUserRequest;
-      if (body.use_webauthn && !body.use_suggested_password) {
+      if (body.use_webauthn && !body.use_password) {
         console.error("Missing password, or webauthn is not supported");
         return res(ctx.status(400));
       }
@@ -191,90 +191,6 @@ test("e-mail form works as expected", async () => {
   });
   await testEnterEmail({ email: testEmailAddress });
 });
-
-// test("complete signup happy case", async () => {
-//   render(<IndexMain />, {
-//     state: {
-//       config: { ...signupTestState.config },
-//       signup: {
-//         ...signupTestState.signup,
-//         state: {
-//           already_signed_up: false,
-//           email: {
-//             completed: true,
-//             address: "eunjutest0629@test.se",
-//             expires_time_left: 270,
-//             expires_time_max: 270,
-//             sent_at: "2024-07-01T01:24:56.062105+00:00",
-//             // throttle_time_left?: number,
-//             // throttle_time_max?: number,
-//             // bad_attempts?: number,
-//             // bad_attempts_max?: number,
-//           },
-//           invite: {
-//             user: { given_name: undefined, surname: "", email: "string " },
-//             code: "",
-//             completed: false,
-//             finish_url: undefined,
-//             initiated_signup: false,
-//             is_logged_in: true,
-//           },
-//           tou: { completed: true, version: "2024" },
-//           captcha: { completed: true },
-//           credentials: { completed: true, generated_password: testPassword },
-//           user_created: false,
-//         },
-//       },
-//     },
-//     routes: [`${SIGNUP_BASE_PATH}`],
-//   });
-
-//   screen.debug();
-
-//   await testEnterEmail({ email: testEmailAddress });
-
-//   await testInternalCaptcha();
-
-//   await testTermsOfUse({ state: emptyState });
-
-//   await testEnterEmailCode({ email: testEmailAddress });
-
-//   await waitFor(() => {
-//     expect(getPasswordCalled).toBe(true);
-//   });
-//   // verify accept button is initially disabled
-//   const okButton = screen.getByRole("button", { name: /^ok/i });
-//   await waitFor(() => {
-//     expect(okButton).toBeDisabled();
-//   });
-//   const repeatInput = screen.getByRole("textbox", { name: /Repeat new password/i });
-//   expect(repeatInput).toHaveFocus();
-//   expect(repeatInput).toHaveProperty("placeholder", "xxxx xxxx xxxx");
-//   fireEvent.change(repeatInput, { target: { value: "not the right password" } });
-
-//   // verify ok button is still disabled (because of non-matching passwords)
-//   expect(okButton).toBeDisabled();
-
-//   // enter the right password
-//   fireEvent.change(repeatInput, { target: { value: testPassword } });
-
-//   // verify ok button is now enabled
-//   expect(okButton).toBeEnabled();
-
-//   fireEvent.click(okButton);
-
-//   await waitFor(() => {
-//     expect(createUserCalled).toBe(true);
-//   });
-
-//   await waitFor(() => {
-//     expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Completed/);
-//   });
-
-//   // verify e-mail and password are shown
-//   expect(screen.getByRole("status", { name: /mail/i })).toHaveTextContent(testEmailAddress);
-//   expect(screen.getByRole("status", { name: /password/i })).toHaveTextContent(formatPassword(testPassword));
-// });
 
 test("handles rejected ToU", async () => {
   render(<IndexMain />, {
