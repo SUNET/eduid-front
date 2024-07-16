@@ -1,9 +1,11 @@
+import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
 import EduIDButton from "./Common/EduIDButton";
+import Splash from "./Common/Splash";
 
 export function Index() {
   const navigate = useNavigate();
@@ -16,9 +18,23 @@ export function Index() {
       document.location.href = dashboard_link;
     }
   }
+  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+
+  async function deleteAccount() {
+    const response = await dispatch(postDeleteAccount());
+    if (postDeleteAccount.fulfilled.match(response)) {
+      window.location.assign(response.payload.location);
+    }
+  }
+
+  useEffect(() => {
+    if (frontend_action === "terminateAccountAuthn") {
+      deleteAccount();
+    }
+  }, [frontend_action]);
 
   return (
-    <React.Fragment>
+    <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
       <h1 className="tagline">
         <FormattedMessage defaultMessage="eduID is easier and safer login." description="eduID index" />
       </h1>
@@ -61,6 +77,6 @@ export function Index() {
           <FormattedMessage defaultMessage="log in" description="login button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </Splash>
   );
 }

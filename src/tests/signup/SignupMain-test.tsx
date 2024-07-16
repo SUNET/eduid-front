@@ -157,7 +157,7 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     rest.post("https://signup.eduid.docker/services/signup/create-user", (req, res, ctx) => {
       const body = req.body as CreateUserRequest;
-      if (body.use_webauthn && !body.use_password) {
+      if (body.use_webauthn && !body.use_suggested_password) {
         console.error("Missing password, or webauthn is not supported");
         return res(ctx.status(400));
       }

@@ -463,7 +463,7 @@
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
-    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
+    "string": "When creating your own password, make sure it's strong enough to keep your account safe."
   },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
@@ -726,10 +726,6 @@
   "GO322p": {
     "developer_comment": "how use other devices - paragraph",
     "string": "You can also login using another device to login to eduID on the device you are currently using:"
-  },
-  "Gig0Ga": {
-    "developer_comment": "delete.modal_info",
-    "string": "Deleting your eduID will permanently remove all your saved information. If it has been more than 5 minutes since you last logged in, you may need to log in again."
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -1296,6 +1292,10 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
+  },
+  "WSPzti": {
+    "developer_comment": "Dashboard delete account modal main text",
+    "string": "It has been too long since your login. After clicking the Accept button, you need to use your login details one final time."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -2617,12 +2617,12 @@
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
   },
-  "r7nFY2": {
-    "developer_comment": "Dashboard delete account modal main text",
-    "string": "After clicking the button you need to use your log in details one final time."
-  },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
+  },
+  "rHjPO1": {
+    "developer_comment": "delete.modal_info",
+    "string": "Deleting your eduID will permanently remove all your saved information. If it has been a long time since you last logged in, you may need to log in again."
   },
   "rLwIkG": {
     "developer_comment": "which login email - heading",

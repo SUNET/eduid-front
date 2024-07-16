@@ -205,6 +205,9 @@ export function createSignupMachine() {
               API_FAIL: {
                 target: "#signup.HandleCredentials",
               },
+              ABORT: {
+                target: "#signup.AskForEmailAddress",
+              },
             },
           },
           SignupUserCreated: {

@@ -9,6 +9,7 @@ export function ChangePasswordSuccess(): JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const location = useLocation();
   const password = location.state;
+  const state = useAppSelector((state) => state.signup.state);
 
   return (
     <form method="GET" action={finish_url}>

@@ -7,6 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
@@ -25,6 +26,8 @@ export function ResetPasswordApp(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
+  const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
   const intl = useIntl();
@@ -35,6 +38,13 @@ export function ResetPasswordApp(): JSX.Element {
       defaultMessage: "Reset Password | eduID",
     });
   }, []);
+
+  useEffect(() => {
+    if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
+      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
+    }
+  }, [swedishEID_status]);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
