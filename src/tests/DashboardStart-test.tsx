@@ -5,7 +5,17 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 
 test("start page heading text for new user", async () => {
   render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
+    state: {
+      config: { ...configInitialState, is_app_loaded: false },
+      personal_data: {
+        response: {
+          eppn: "12345",
+          identities: {
+            is_verified: false,
+          },
+        },
+      },
+    },
     routes: ["/profile/"],
   });
   expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
@@ -47,7 +57,17 @@ test("recommendations for new users, adding phone", async () => {
 
 test("recommendations for new user, verify identity", async () => {
   render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
+    state: {
+      config: { ...configInitialState, is_app_loaded: false },
+      personal_data: {
+        response: {
+          eppn: "12345",
+          identities: {
+            is_verified: false,
+          },
+        },
+      },
+    },
     routes: ["/profile/"],
   });
 
