@@ -13,7 +13,6 @@ interface NinDisplayProps {
 }
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
-  console.log("props", props);
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const dispatch = useAppDispatch();
 
