@@ -1,6 +1,6 @@
 import { postSecurityKeyPreference, PreferencesData } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { AuthenticateModal } from "./Authenticate";
 
@@ -12,11 +12,14 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
 
+  useEffect(() => {
+    setSwitchChecked(always_use_security_key);
+  }, [always_use_security_key]);
+
   async function handleSwitchChange() {
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: switchChecked }));
-
       if (postSecurityKeyPreference.rejected.match(response)) {
         if ((response?.payload as { payload: PreferencesData }).payload.message === "authn_status.must-authenticate") {
           setSwitchChecked(false);
