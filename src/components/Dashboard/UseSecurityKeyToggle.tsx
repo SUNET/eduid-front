@@ -7,7 +7,7 @@ import { AuthenticateModal } from "./Authenticate";
 export default function UseSecurityKeyToggle(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
-    (state) => state.personal_data?.response?.preferences?.always_use_security_key
+    (state: any) => state.personal_data?.response?.preferences?.always_use_security_key
   );
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
@@ -19,10 +19,10 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   async function handleSwitchChange() {
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
-      const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: switchChecked }));
+      const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));
       if (postSecurityKeyPreference.rejected.match(response)) {
         if ((response?.payload as { payload: PreferencesData }).payload.message === "authn_status.must-authenticate") {
-          setSwitchChecked(false);
+          setSwitchChecked(always_use_security_key);
           setShowAuthnModal(true);
         }
       }
