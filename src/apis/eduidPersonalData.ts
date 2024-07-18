@@ -12,6 +12,7 @@ import { PhoneInfo } from "./eduidPhone";
 
 export interface PreferencesData {
   always_use_security_key: boolean;
+  message?: string;
 }
 
 export interface PersonalDataRequest {
