@@ -133,9 +133,22 @@ table {
   }
 
   .progress-summary &,
+  #phone-display &,
   #email-display & {
-    td:first-child {
-      width: 60%;
+    tr.display-none {
+      display: none;
+    }
+    tr {
+      display: grid;
+      grid-template-columns: 3fr 1.5fr 0.5fr;
+      gap: 5px;
+      align-items: center;
+      padding: 5px;
+    }
+    tr > * {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }
