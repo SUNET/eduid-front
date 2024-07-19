@@ -34,7 +34,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
       {/* always_use_security_key toggle button */}
       <fieldset>
         <form>
-          <label className="toggle flex-between" htmlFor="security-key-mfa">
+          <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
             <legend>
               <FormattedMessage defaultMessage={`Activate 2FA`} description="Security key toggle" />
             </legend>
