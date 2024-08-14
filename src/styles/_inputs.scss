@@ -12,10 +12,6 @@
   }
 }
 
-.radio-input-container label:hover {
-  cursor: pointer;
-}
-
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
@@ -24,6 +20,8 @@ input[type="radio"] {
   display: inline-block;
   width: 1rem;
   height: 1rem;
+  min-width: 1rem;
+  min-height: 1rem;
   align-self: center;
 
   /* background-color only for content */
@@ -59,17 +57,21 @@ input[type="radio"]:checked.error {
 /* optional styles for centering radio buttons */
 .radio-input-container {
   display: flex;
-  height: 3rem;
 
+  label {
+    margin-top: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
   span {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     align-self: center;
     color: $txt-black;
     font-family: $inter-regular;
     font-weight: normal;
-    text-transform: capitalize;
     margin: 0 2rem 0 0;
-    text-align: center;
     margin-left: 8px;
   }
 }
@@ -89,8 +91,10 @@ input::placeholder {
 .form-control:focus,
 input:focus:not([readonly]) {
   outline: 0;
-  border-bottom: solid 2px $txt-black;
   box-shadow: 0 0 0 0.2rem $border-gray;
+  &:not([type="radio"]) {
+    border-bottom: solid 2px $txt-black;
+  }
 }
 
 input[readonly]:focus {
@@ -274,6 +278,12 @@ input.display-none {
   .form-control::placeholder,
   input::placeholder {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .radio-input-container {
+    flex-direction: column;
   }
 }
 
