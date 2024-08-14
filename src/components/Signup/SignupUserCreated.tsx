@@ -1,5 +1,5 @@
 import { createUserRequest } from "apis/eduidSignup";
-import { ConfirmUserInfo } from "components/Common/ConfirmUserInfo";
+import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
 import Splash from "components/Common/Splash";
@@ -138,14 +138,17 @@ export function SignupUserCreated(): JSX.Element {
           />
         </p>
       </div>
-      <ConfirmUserInfo
-        email_address={signupState?.email.address as string}
-        new_password={
-          signupState?.credentials.custom_password
-            ? signupState?.credentials.custom_password
-            : formatPassword(signupState?.credentials.generated_password)
-        }
-      />
+      {signupState?.credentials.custom_password ? (
+        <div id="email-display">
+          <EmailFieldset email={signupState?.email.address} />
+        </div>
+      ) : (
+        <ConfirmUserInfo
+          email_address={signupState?.email.address as string}
+          new_password={formatPassword(signupState?.credentials.generated_password)}
+        />
+      )}
+
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
