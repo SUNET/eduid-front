@@ -37,7 +37,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
           <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
             <legend>
               <FormattedMessage
-                defaultMessage={`Use a second factor (2FA) to log in`}
+                defaultMessage={`Always use a second factor (2FA) to log in`}
                 description="Security key toggle"
               />
             </legend>
