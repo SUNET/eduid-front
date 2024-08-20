@@ -29,6 +29,11 @@ export interface ChangePasswordFormData {
   suggested?: string; // used with suggested password
 }
 
+export interface ChangePasswordSuccessState {
+  password: string; // user password
+  isSuggested: boolean; // is it a generated password from server?
+}
+
 export function ChangePassword() {
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
@@ -77,7 +82,7 @@ export function ChangePassword() {
       const response = await dispatch(changePassword({ new_password: values.suggested }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: values.suggested,
+          state: { password: values.suggested, isSuggested: true } as ChangePasswordSuccessState,
         });
       }
     }

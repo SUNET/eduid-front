@@ -1,4 +1,4 @@
-import { ConfirmUserInfo } from "components/Common/ConfirmUserInfo";
+import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
@@ -8,8 +8,9 @@ import { finish_url } from "./ChangePassword";
 export function ChangePasswordSuccess(): JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const location = useLocation();
-  const password = location.state;
-  const state = useAppSelector((state) => state.signup.state);
+  const password = location.state.password;
+  const isSuggested = location.state.isSuggested;
+  const email = emails.filter((mail) => mail.primary)[0].email;
 
   return (
     <form method="GET" action={finish_url}>
@@ -29,7 +30,14 @@ export function ChangePasswordSuccess(): JSX.Element {
           </p>
         </div>
       </section>
-      <ConfirmUserInfo email_address={emails.filter((mail) => mail.primary)[0].email} new_password={password} />
+
+      {!isSuggested ? (
+        <div id="email-display">
+          <EmailFieldset email={email} />
+        </div>
+      ) : (
+        <ConfirmUserInfo email_address={email} new_password={password} />
+      )}
       <div className="buttons">
         <EduIDButton id="change-password-finished" buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to dashboard" description="Go to dashboard" />
