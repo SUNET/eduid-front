@@ -30,7 +30,6 @@ export interface ChangePasswordFormData {
 }
 
 export function ChangePassword() {
-  const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
   const intl = useIntl();
@@ -104,7 +103,7 @@ export function ChangePassword() {
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
-          <Splash showChildren={Boolean(suggested_password)}>
+          <Splash showChildren={Boolean(suggested)}>
             {renderSuggested ? (
               <section className="intro">
                 <h1>
