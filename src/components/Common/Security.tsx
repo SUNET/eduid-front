@@ -145,8 +145,8 @@ export function Security(): React.ReactElement | null {
         <p>
           <FormattedMessage
             description="security second factor"
-            defaultMessage={`Add a security key as a second layer of identification, beyond username and password,
-                  to prove you are the owner of your eduID.`}
+            defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
+                  to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
           />
         </p>
         <p className="help-text">
