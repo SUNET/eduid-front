@@ -83,10 +83,6 @@
     "developer_comment": "select extra webauthn",
     "string": "Välj ytterligare identifieringsmetod:"
   },
-  "/oseeC": {
-    "developer_comment": "Registration finished",
-    "string": "Här är dina inloggningsuppgifter med ett genererat lösenord. Spara lösenordet! Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. Du kan efter att du har loggat in välja att byta lösenord."
-  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "Vad är SUNET?"
@@ -322,9 +318,17 @@
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
   },
+  "5T2oWK": {
+    "developer_comment": "change Security key setting preference",
+    "string": "För att ändra inställningar för dina säkerhetsnycklar behöver du åter logga in och sedan trycka på knappen igen."
+  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "Med eIDAS elektronisk identifiering"
+  },
+  "5iUbyQ": {
+    "developer_comment": "Security key toggle",
+    "string": "Använd alltid tvåfaktorsautenticering (2FA) vid inloggning"
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
@@ -336,10 +340,6 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
-  },
-  "615OzR": {
-    "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt, utöver användarnamn och lösenord, för att kunna identifiera dig så att du är säker på att bara du har tillgång till ditt eduID."
   },
   "61F71s": {
     "developer_comment": "mfa security key heading",
@@ -460,6 +460,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
+  },
+  "9hkMET": {
+    "developer_comment": "Registration confirm password",
+    "string": "Ändra lösenord: Rekommenderat lösenord"
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
@@ -815,6 +819,10 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. {link} eller ditt studentkonto."
   },
+  "K427ha": {
+    "developer_comment": "security second factor",
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan en USB-säkerhetsnyckel eller din enhet."
+  },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
     "string": "Lägg till ditt telefonnummer"
@@ -917,6 +925,10 @@
   "Mx5Yyp": {
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir ombedd att identifiera sig med hjälp av sitt BankID i BankID-tjänsten. Om du inte redan har ett BankID behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om BankID nedan."
+  },
+  "N91sEJ": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "Om en andra faktor krävs av anslutande tjänster för autentisering kommer det att efterfrågas vid inloggning även när denna inställning är avslagen."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -1025,6 +1037,10 @@
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer."
+  },
+  "PjYp7X": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
@@ -1170,6 +1186,10 @@
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repetera ditt nya lösenord"
+  },
+  "THXIiA": {
+    "developer_comment": "remove Security key",
+    "string": "För att ta bort en säkerhetsnyckel behöver du åter logga in och sedan trycka på knappen igen."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1475,10 +1495,6 @@
   "b7acbg": {
     "developer_comment": "how to contact support phone",
     "string": ", men för enklare ärenden kan du också nå oss per telefonnummer"
-  },
-  "bCIMPQ": {
-    "developer_comment": "security key title",
-    "string": "Gör ditt eduID säkrare"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -2326,6 +2342,10 @@
     "developer_comment": "security description name",
     "string": "Namn"
   },
+  "nyRE3J": {
+    "developer_comment": "manage your tokens",
+    "string": "Hantera dina säkerhetsnycklar"
+  },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
@@ -2348,6 +2368,10 @@
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Avbryt"
+  },
+  "oXHHnD": {
+    "developer_comment": "Registration finished",
+    "string": "Här är dina inloggningsuppgifter för eduID. Kom ihåg eller spara lösenordet på ett säkert sätt! Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. Du kan efter att du har loggat in välja att byta lösenord."
   },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
@@ -2589,10 +2613,6 @@
     "developer_comment": "Change password - headline",
     "string": "Ändra lösenord: Skapa ditt eget lösenord"
   },
-  "qQnhgJ": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "Ett lösenord har genererats åt dig. Du kan enkelt kopiera och klistra in ditt lösenord genom att klicka på ikonen för att Kopiera till klippbordet."
-  },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "skicka e-post"
@@ -2627,10 +2647,6 @@
   "rLwIkG": {
     "developer_comment": "which login email - heading",
     "string": "Vilken e-postadress kan jag använda för att logga in?"
-  },
-  "raU2o7": {
-    "developer_comment": "Registration confirm password",
-    "string": "Registrera: Bekräfta ditt lösenord"
   },
   "required": {
     "string": "*Fältet kan inte vara tomt"
@@ -2863,10 +2879,6 @@
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
   },
-  "t2jZx/": {
-    "developer_comment": "ok button",
-    "string": "Ok"
-  },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Din identitet är inte verifierad. Vänligen verifiera din identitet för att få tillgång till fler tjänster."
@@ -2878,6 +2890,10 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
+  },
+  "tSv9Wq": {
+    "developer_comment": "Register - lead",
+    "string": "När du skapar ditt eget lösenord bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
   },
   "tUkPGr": {
     "developer_comment": "verify identity vetting explanation add swedish phone",
@@ -3009,6 +3025,14 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "wnJXsu": {
+    "developer_comment": "Register - headline",
+    "string": "Ändra lösenord: Skapa eget lösenord"
+  },
+  "x46y5H": {
+    "developer_comment": "security key title",
+    "string": "Tvåfaktorsautenticering (2FA)"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
