@@ -1189,7 +1189,7 @@
   },
   "THXIiA": {
     "developer_comment": "remove Security key",
-    "string": "To remove your token, you'll have to log in again. Once logged in, please press the button again."
+    "string": "To remove your security key, you need to log in and then press the button again."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
