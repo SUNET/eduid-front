@@ -173,7 +173,7 @@ export function Recommendations(): JSX.Element | null {
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const credentials = useAppSelector((state) => state.security.credentials);
   const phones = useAppSelector((state) => state.phones.phones);
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
@@ -188,7 +188,7 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities.nin?.verified && verifiedNumber && tokens.length && given_name) {
+  if (identities?.nin?.verified && verifiedNumber && tokens.length && given_name) {
     return null;
   }
 
@@ -206,7 +206,7 @@ export function Recommendations(): JSX.Element | null {
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName given_name={given_name} />
         <RecommendationPhone phones={phones} />
-        <RecommendationVerifyIdentity identities={identities} />
+        {identities && <RecommendationVerifyIdentity identities={identities} />}
         <RecommendationAddingSecurityKey credentials={tokens} />
       </Accordion>
     </article>

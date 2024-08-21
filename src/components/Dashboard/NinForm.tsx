@@ -39,7 +39,7 @@ export interface NinFormData {
 }
 
 function NinForm(): JSX.Element {
-  const nin = useAppSelector((state) => state.identities.nin);
+  const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here

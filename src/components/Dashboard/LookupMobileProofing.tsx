@@ -14,7 +14,7 @@ interface LookupMobileProofingProps {
 }
 
 function ExplanationText(): JSX.Element {
-  const nin = useAppSelector((state) => state.identities.nin);
+  const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
   const phones = useAppSelector((state) => state.phones.phones);
 
   const linkToSettings = (
@@ -60,7 +60,7 @@ function ExplanationText(): JSX.Element {
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
-  const nin = useAppSelector((state) => state.identities.nin);
+  const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
   const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState(false);
 

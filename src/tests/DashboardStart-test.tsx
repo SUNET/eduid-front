@@ -5,7 +5,17 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 
 test("start page heading text for new user", async () => {
   render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
+    state: {
+      config: { ...configInitialState, is_app_loaded: false },
+      personal_data: {
+        response: {
+          eppn: "12345",
+          identities: {
+            is_verified: false,
+          },
+        },
+      },
+    },
     routes: ["/profile/"],
   });
   expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
@@ -47,7 +57,17 @@ test("recommendations for new users, adding phone", async () => {
 
 test("recommendations for new user, verify identity", async () => {
   render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
+    state: {
+      config: { ...configInitialState, is_app_loaded: false },
+      personal_data: {
+        response: {
+          eppn: "12345",
+          identities: {
+            is_verified: false,
+          },
+        },
+      },
+    },
     routes: ["/profile/"],
   });
 
@@ -83,9 +103,14 @@ test("not renders letter proofing progress, verified user with swedish id number
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: true,
-        nin: { number: "190102031234", verified: true },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            nin: { number: "190102031234", verified: true },
+          },
+        },
       },
       letter_proofing: {
         letter_expired: false,
@@ -106,9 +131,14 @@ test("heading text after password reset", () => {
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: false,
-        nin: { number: "190102031234", verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: false,
+            nin: { number: "190102031234", verified: false },
+          },
+        },
       },
     },
     routes: ["/profile/"],
@@ -123,10 +153,21 @@ test("renders swedish verification options when user verified with eidas", () =>
   render(<IndexMain />, {
     state: {
       config: { ...configInitialState, is_app_loaded: false },
-      identities: {
-        is_verified: true,
-        nin: { number: "190102031234", verified: false },
-        eidas: { prid: "abcd", prid_persistence: "A", date_of_birth: "1990-08-19", country_code: "XE", verified: true },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            nin: { number: "190102031234", verified: false },
+            eidas: {
+              prid: "abcd",
+              prid_persistence: "A",
+              date_of_birth: "1990-08-19",
+              country_code: "XE",
+              verified: true,
+            },
+          },
+        },
       },
     },
     routes: ["/profile/"],

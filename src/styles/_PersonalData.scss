@@ -69,22 +69,6 @@
   flex-wrap: wrap;
 }
 
-#personaldata-view-form {
-  margin-top: 0;
-
-  @media (max-width: $bp-sm) {
-    .radio-input-container span,
-    .form-control,
-    input {
-      font-size: 1.5rem;
-
-      &::placeholder {
-        font-size: 1.5rem;
-      }
-    }
-  }
-}
-
 // styles for input on white bg
 .edit-data {
   .form-control,

@@ -30,7 +30,12 @@ export interface SignupState {
   };
   tou: { completed: boolean; version?: string };
   captcha: { completed: boolean };
-  credentials: { completed: boolean; password?: string };
+  credentials: {
+    completed?: boolean;
+    generated_password?: string;
+    use_suggested_password?: string;
+    custom_password?: string;
+  };
   user_created: boolean;
 }
 
@@ -212,8 +217,9 @@ export const getPasswordRequest = createAsyncThunk<
 /*********************************************************************************************************************/
 
 export interface CreateUserRequest {
-  use_password?: boolean;
+  use_suggested_password?: boolean;
   use_webauthn?: boolean;
+  custom_password?: string;
 }
 
 /**
@@ -227,7 +233,8 @@ export const createUserRequest = createAsyncThunk<
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("signup/createUserRequest", async (args, thunkAPI) => {
   const body: KeyValues = {
-    use_password: Boolean(args.use_password),
+    use_suggested_password: Boolean(args.use_suggested_password),
+    custom_password: args.custom_password,
     use_webauthn: Boolean(args.use_webauthn),
   };
 

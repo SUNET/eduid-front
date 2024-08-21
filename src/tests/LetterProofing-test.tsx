@@ -5,7 +5,12 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 test("renders LetterProofing without ID number", () => {
   render(<LetterProofing disabled={true} />, {
     state: {
-      identities: { is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { is_verified: false },
+        },
+      },
     },
   });
   const button = screen.getByRole("button", { name: /proceed/i });
@@ -16,7 +21,12 @@ test("renders LetterProofing without ID number", () => {
 test("renders LetterProofing, after sent letter enabled proceed button to enter code", () => {
   render(<LetterProofing disabled={false} />, {
     state: {
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+        },
+      },
       letter_proofing: {
         letter_expired: false,
         letter_expires: "2022-10-17T23:59:59.525002+00:00",
@@ -36,7 +46,12 @@ test("renders LetterProofing, after sent letter enabled proceed button to enter 
 test("renders LetterProofing, expired letter enabled to resend letter", async () => {
   render(<LetterProofing disabled={false} />, {
     state: {
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+        },
+      },
       letter_proofing: {
         letter_expired: true,
         letter_expires: "2020-01-15T23:59:59.123000+00:00",

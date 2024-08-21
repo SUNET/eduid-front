@@ -10,11 +10,17 @@ import { PhoneInfo } from "./eduidPhone";
  * Code and data structures for talking to the eduid-personal_data backend microservice.
  */
 
+export interface PreferencesData {
+  always_use_security_key: boolean;
+  message?: string;
+}
+
 export interface PersonalDataRequest {
   given_name?: string;
   surname?: string;
   chosen_given_name?: string;
   language?: string;
+  preferences?: PreferencesData;
 }
 
 export interface AllUserData {
@@ -108,6 +114,22 @@ export const fetchIdentities = createAsyncThunk<
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("personalData/fetchIdentities", async (args, thunkAPI) => {
   return makePersonalDataRequest<FetchIdentitiesResponse>(thunkAPI, "identities", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function postSecurityKeyPreference
+ * @desc Redux async thunk to post user preferences
+ */
+export const postSecurityKeyPreference = createAsyncThunk<
+  PreferencesData, // return type
+  PreferencesData, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("personalData/postSecurityKeyPreference", async (args, thunkAPI) => {
+  return makePersonalDataRequest<any>(thunkAPI, "preferences", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

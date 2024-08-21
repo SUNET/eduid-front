@@ -16,12 +16,12 @@ export interface LetterProofingProps {
 export default function LetterProofing(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const letter_expired = useAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useAppSelector((state) => state.letter_proofing.letter_sent);
   const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
   const disabled: boolean = props.disabled;
-  const requestLetterAllowed = identities.nin?.number || letter_expired;
+  const requestLetterAllowed = identities?.nin?.number || letter_expired;
   const dispatch = useAppDispatch();
 
   useEffect(() => {

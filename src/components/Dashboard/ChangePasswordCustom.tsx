@@ -1,13 +1,17 @@
 import { changePassword } from "apis/eduidSecurity";
+import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
+import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch } from "eduid-hooks";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
+import { useContext } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
-import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
+import { useLocation, useNavigate } from "react-router-dom";
+import { clearNotifications } from "slices/Notifications";
+import { ChangePasswordChildFormProps, ChangePasswordFormData, ChangePasswordSuccessState } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
@@ -16,6 +20,9 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   const intl = useIntl();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const signupContext = useContext(SignupGlobalStateContext);
+  const location = useLocation();
+  const currentUrl = location.pathname;
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -58,15 +65,31 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       const response = await dispatch(changePassword({ new_password: values.custom }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: values.custom,
+          state: { password: values.custom, isSuggested: false } as ChangePasswordSuccessState,
         });
+      }
+    }
+  }
+
+  async function submitNewPasswordForm(values: ChangePasswordFormData) {
+    const newPassword = values.custom;
+    if (!newPassword) {
+      return;
+    } else {
+      const res = await dispatch(createUserRequest({ use_suggested_password: false, custom_password: newPassword }));
+
+      if (createUserRequest.fulfilled.match(res)) {
+        dispatch(clearNotifications());
+        signupContext.signupService.send({ type: "API_SUCCESS" });
+      } else {
+        signupContext.signupService.send({ type: "API_FAIL" });
       }
     }
   }
 
   return (
     <FinalForm<any>
-      onSubmit={handleSubmitPasswords}
+      onSubmit={currentUrl.includes("/register") ? submitNewPasswordForm : handleSubmitPasswords}
       validate={validateNewPassword}
       render={(formProps) => {
         return (

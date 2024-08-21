@@ -5,7 +5,12 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 test("renders LookupMobileProofing without ID number", () => {
   render(<LookupMobileProofing disabled={true} />, {
     state: {
-      identities: { is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { is_verified: false },
+        },
+      },
     },
   });
   const button = screen.getByRole("button", { name: /proceed/i });
@@ -16,7 +21,12 @@ test("renders LookupMobileProofing without ID number", () => {
 test("renders LookupMobileProofing without phone number", () => {
   render(<LookupMobileProofing disabled={true} />, {
     state: {
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+        },
+      },
     },
   });
   const button = screen.getByRole("button", { name: /proceed/i });
@@ -27,7 +37,12 @@ test("renders LookupMobileProofing without phone number", () => {
 test("renders Confirmation Modal, enabled to click proceed button", async () => {
   render(<LookupMobileProofing disabled={false} />, {
     state: {
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+        },
+      },
       phones: { phones: [{ number: "+46700011555", verified: true, primary: true }] },
     },
   });
@@ -47,7 +62,12 @@ test("renders Confirmation Modal, enabled to click proceed button", async () => 
 test("renders button text, confirm phone number to verify by phone", async () => {
   render(<LookupMobileProofing disabled={false} />, {
     state: {
-      identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: { nin: { number: "198812120000", verified: false }, is_verified: false },
+        },
+      },
       phones: { phones: [{ number: "+46700011555", verified: false, primary: false }] },
     },
   });

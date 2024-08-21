@@ -7,7 +7,7 @@ import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -18,9 +18,10 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
+import { removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
-
+import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -66,18 +67,18 @@ function VerifyIdentity(): JSX.Element | null {
 }
 
 function VerifyIdentityIntro(): JSX.Element {
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
 
-  if (!identities.is_verified) {
-    if (identities.nin) {
+  if (!identities?.is_verified) {
+    if (identities?.nin) {
       /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
       preExpanded.push("swedish");
     }
   }
 
-  if (identities.is_verified) {
+  if (identities?.is_verified) {
     /* User has a verified identity. Show which one (or ones) it is.
      *   TODO: Support other types of identities than NINs.
      */
@@ -149,13 +150,32 @@ function VerifyIdentityIntro(): JSX.Element {
 }
 
 function VerifiedIdentitiesTable(): JSX.Element {
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  const dispatch = useAppDispatch();
+  const [showAuthnModal, setShowAuthnModal] = useState(false);
+
+  async function handleRemoveIdentity() {
+    // find dynamically which identity_type
+    const idType =
+      identities &&
+      Object.keys(identities).filter((objProp) => {
+        return objProp !== "is_verified";
+      })[0];
+    if (idType) {
+      const response = await dispatch(removeIdentity({ identity_type: idType }));
+      if (removeIdentity.rejected.match(response)) {
+        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+          setShowAuthnModal(true);
+        }
+      }
+    }
+  }
 
   return (
     <React.Fragment>
-      {identities.nin?.verified && (
+      {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
             <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
@@ -165,11 +185,17 @@ function VerifiedIdentitiesTable(): JSX.Element {
               <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
             </strong>
           </div>
-          <NinDisplay nin={identities.nin} allowDelete={true} />
+          <NinDisplay nin={identities?.nin} allowDelete={true} />
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleRemoveIdentity()}
+          ></EduIDButton>
         </figure>
       )}
 
-      {identities.eidas?.verified && (
+      {identities?.eidas?.verified && (
         <figure className="grid-container identity-summary">
           <div>
             <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
@@ -183,7 +209,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
         </figure>
       )}
 
-      {identities.svipe?.verified && (
+      {identities?.svipe?.verified && (
         <figure className="grid-container identity-summary">
           <div>
             <ReactCountryFlag
@@ -200,8 +226,20 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
         </figure>
       )}
+      <AuthenticateModal
+        action="removeIdentity"
+        dispatch={dispatch}
+        showModal={showAuthnModal}
+        setShowModal={setShowAuthnModal}
+        mainText={
+          <FormattedMessage
+            description="remove Security key"
+            defaultMessage="To remove your identity, you'll have to log in again. Once logged in, please press the button again."
+          />
+        }
+      />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
-      {!identities.nin?.verified && (
+      {!identities?.nin?.verified && (
         <React.Fragment>
           <h2>
             <FormattedMessage
@@ -225,7 +263,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
 }
 
 function AccordionItemSwedish(): JSX.Element | null {
-  const nin = useAppSelector((state) => state.identities.nin);
+  const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const phones = useAppSelector((state) => state.phones.phones);
   const hasVerifiedSwePhone = phones?.some((phone) => phone.verified && phone.number.startsWith("+46"));
   // this is where the buttons are generated

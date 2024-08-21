@@ -20,6 +20,7 @@ export interface ChangePasswordFormProps {
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
+  suggestedPassword?: string;
 }
 
 export interface ChangePasswordFormData {
@@ -28,8 +29,12 @@ export interface ChangePasswordFormData {
   suggested?: string; // used with suggested password
 }
 
+export interface ChangePasswordSuccessState {
+  password: string; // user password
+  isSuggested: boolean; // is it a generated password from server?
+}
+
 export function ChangePassword() {
-  const suggested_password = useAppSelector((state) => state.chpass.suggested_password);
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
   const dispatch = useAppDispatch();
   const intl = useIntl();
@@ -77,7 +82,7 @@ export function ChangePassword() {
       const response = await dispatch(changePassword({ new_password: values.suggested }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: values.suggested,
+          state: { password: values.suggested, isSuggested: true } as ChangePasswordSuccessState,
         });
       }
     }
@@ -103,7 +108,7 @@ export function ChangePassword() {
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
-          <Splash showChildren={Boolean(suggested_password)}>
+          <Splash showChildren={Boolean(suggested)}>
             {renderSuggested ? (
               <section className="intro">
                 <h1>
@@ -144,7 +149,7 @@ export function ChangePassword() {
             )}
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} />
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
               <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
             )}

@@ -33,7 +33,7 @@ function RenderPersonalData(props: { labels: NameLabels }) {
   const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
-  const is_verified = useAppSelector((state) => state.identities.is_verified);
+  const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const pref_language = useAppSelector((state) => state.personal_data.response?.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
@@ -72,7 +72,7 @@ interface RenderEditBoxProps {
 }
 
 function RenderEditBox(props: RenderEditBoxProps) {
-  const identities = useAppSelector((state) => state.identities);
+  const identities = useAppSelector((state) => state.personal_data?.response?.identities);
   const isVerifiedIdentity = Boolean(identities?.is_verified);
 
   return (
