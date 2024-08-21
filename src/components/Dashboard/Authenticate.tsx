@@ -10,13 +10,7 @@ export async function handleAuthenticate(props: { action: string; dispatch: any 
   }
 }
 
-export function AuthenticateModal(props: {
-  action: string;
-  dispatch: any;
-  setShowModal: any;
-  showModal: boolean;
-  mainText?: React.ReactNode;
-}) {
+export function AuthenticateModal(props: { action: string; dispatch: any; setShowModal: any; showModal: boolean }) {
   async function handleAuthenticate() {
     props.setShowModal(false);
     props.dispatch(clearNotifications());
@@ -29,13 +23,13 @@ export function AuthenticateModal(props: {
   return (
     <NotificationModal
       id="security-confirm-modal"
-      title={
+      title={<FormattedMessage defaultMessage="Security check" description="Dashboard change password modal title" />}
+      mainText={
         <FormattedMessage
-          defaultMessage="For security reasons..."
-          description="Dashboard change password modal title"
+          description="security zone modal"
+          defaultMessage="To perform the requested action you need to log in again"
         />
       }
-      mainText={props.mainText}
       showModal={props.showModal}
       closeModal={() => {
         props.setShowModal(false);

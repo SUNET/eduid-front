@@ -231,12 +231,6 @@ function VerifiedIdentitiesTable(): JSX.Element {
         dispatch={dispatch}
         showModal={showAuthnModal}
         setShowModal={setShowAuthnModal}
-        mainText={
-          <FormattedMessage
-            description="remove Security key"
-            defaultMessage="To remove your identity, you'll have to log in again. Once logged in, please press the button again."
-          />
-        }
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (

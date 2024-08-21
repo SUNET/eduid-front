@@ -40,12 +40,6 @@ export default function DeleteAccount(): JSX.Element | null {
         dispatch={dispatch}
         showModal={showAuthnModal}
         setShowModal={setShowAuthnModal}
-        mainText={
-          <FormattedMessage
-            defaultMessage={`It has been too long since your login. After clicking the Accept button, you need to use your login details one final time.`}
-            description="Dashboard delete account modal main text"
-          />
-        }
       />
       <NotificationModal
         id="delete-account-modal"

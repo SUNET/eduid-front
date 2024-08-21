@@ -57,12 +57,6 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
         dispatch={dispatch}
         showModal={showAuthnModal}
         setShowModal={setShowAuthnModal}
-        mainText={
-          <FormattedMessage
-            description="change Security key setting preference"
-            defaultMessage="To change your security key settings preference, you'll have to log in again,and then try to toggle the button again."
-          />
-        }
       />
     </>
   );
