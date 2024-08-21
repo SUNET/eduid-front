@@ -83,10 +83,6 @@
     "developer_comment": "select extra webauthn",
     "string": "Choose extra identification method:"
   },
-  "/oseeC": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. Save the password! Note: spaces in the generated password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
-  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "What is SUNET?"
@@ -322,9 +318,17 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
+  "5T2oWK": {
+    "developer_comment": "change Security key setting preference",
+    "string": "To change your security key settings preference, you'll have to log in again,and then try to toggle the button again."
+  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
+  },
+  "5iUbyQ": {
+    "developer_comment": "Security key toggle",
+    "string": "Always use a second factor (2FA) to log in"
   },
   "5l4hxp": {
     "string": "Log in on another device"
@@ -336,10 +340,6 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
-  },
-  "615OzR": {
-    "developer_comment": "security second factor",
-    "string": "Add a security key as a second layer of identification, beyond username and password, to prove you are the owner of your eduID."
   },
   "61F71s": {
     "developer_comment": "mfa security key heading",
@@ -460,6 +460,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
+  },
+  "9hkMET": {
+    "developer_comment": "Registration confirm password",
+    "string": "Register: Suggested password"
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
@@ -815,6 +819,10 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account."
   },
+  "K427ha": {
+    "developer_comment": "security second factor",
+    "string": "Add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. For example a token can be a security key or your device."
+  },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
     "string": "Add your phone number"
@@ -1026,6 +1034,10 @@
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
   },
+  "PjYp7X": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use."
+  },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "What is eduIDs Accessibility report?"
@@ -1170,6 +1182,10 @@
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repeat new password"
+  },
+  "THXIiA": {
+    "developer_comment": "remove Security key",
+    "string": "To remove your identity, you'll have to log in again. Once logged in, please press the button again."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1475,10 +1491,6 @@
   "b7acbg": {
     "developer_comment": "how to contact support phone",
     "string": ", but for simple matters you can also reach us on phone number"
-  },
-  "bCIMPQ": {
-    "developer_comment": "security key title",
-    "string": "Make your eduID more secure"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -2326,6 +2338,10 @@
     "developer_comment": "security description name",
     "string": "Name"
   },
+  "nyRE3J": {
+    "developer_comment": "manage your tokens",
+    "string": "Manage your tokens"
+  },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
@@ -2348,6 +2364,10 @@
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "cancel"
+  },
+  "oXHHnD": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID. Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
@@ -2589,10 +2609,6 @@
     "developer_comment": "Change password - headline",
     "string": "Change password: Set your own password"
   },
-  "qQnhgJ": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "A password has been generated for you. you can easily copy and paste your password by clicking the copy to clipboard button."
-  },
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
@@ -2627,10 +2643,6 @@
   "rLwIkG": {
     "developer_comment": "which login email - heading",
     "string": "Which email account should I use to log in?"
-  },
-  "raU2o7": {
-    "developer_comment": "Registration confirm password",
-    "string": "Register: Confirm your password"
   },
   "required": {
     "string": "*Field cannot be empty"
@@ -2863,10 +2875,6 @@
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
   },
-  "t2jZx/": {
-    "developer_comment": "ok button",
-    "string": "Ok"
-  },
   "t5c+1i": {
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Your identity is not verified. Please verify your identity to get access to more services."
@@ -2878,6 +2886,10 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
+  },
+  "tSv9Wq": {
+    "developer_comment": "Register - lead",
+    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
   },
   "tUkPGr": {
     "developer_comment": "verify identity vetting explanation add swedish phone",
@@ -3009,6 +3021,14 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "wnJXsu": {
+    "developer_comment": "Register - headline",
+    "string": "Register: Set your own password"
+  },
+  "x46y5H": {
+    "developer_comment": "security key title",
+    "string": "Two-factor Authentication (2FA)"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
