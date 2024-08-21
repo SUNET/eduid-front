@@ -320,7 +320,7 @@
   },
   "5T2oWK": {
     "developer_comment": "change Security key setting preference",
-    "string": "To change your security key settings preference, you will have to log in and then toggle the button again."
+    "string": "To change your security key settings preference, you need to log in and then toggle the button again."
   },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
