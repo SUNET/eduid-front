@@ -821,7 +821,7 @@
   },
   "K427ha": {
     "developer_comment": "security second factor",
-    "string": "If possible add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. For example a token can be a security key or your device."
+    "string": "If possible add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples of tokens are security keys or your device."
   },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
