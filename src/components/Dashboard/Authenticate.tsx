@@ -27,7 +27,7 @@ export function AuthenticateModal(props: { action: string; dispatch: any; setSho
       mainText={
         <FormattedMessage
           description="security zone modal"
-          defaultMessage="To perform the requested action you need to log in again"
+          defaultMessage="You need to log in again to perform the requested action."
         />
       }
       showModal={props.showModal}
