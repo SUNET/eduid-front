@@ -926,6 +926,10 @@
     "developer_comment": "verification methods - list item 3",
     "string": "the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can complete verification of your eduID. Read more about BankID below."
   },
+  "N91sEJ": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
+  },
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Save"
