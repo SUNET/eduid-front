@@ -41,6 +41,12 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
                 description="Security key toggle"
               />
             </legend>
+            <p className="help-text">
+              <FormattedMessage
+                description="help text toggle 2FA"
+                defaultMessage="If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
+              />
+            </p>
             <input
               onChange={handleSwitchChange}
               className="toggle-checkbox"
