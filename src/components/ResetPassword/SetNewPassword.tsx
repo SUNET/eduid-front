@@ -4,31 +4,34 @@ import {
   postSetNewPasswordExtraSecurityPhone,
   postSetNewPasswordExtraSecurityToken,
 } from "apis/eduidResetPassword";
-import { ConfirmUserInfo } from "components/Common/ConfirmUserInfo";
-import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
-import { NewPasswordForm, NewPasswordFormData } from "components/Common/NewPasswordForm";
+import { NewPasswordFormData } from "components/Common/NewPasswordForm";
+import Splash from "components/Common/Splash";
+import { ChangePasswordChildFormProps, ChangePasswordFormData } from "components/Dashboard/ChangePassword";
+import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
+import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
+import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function SetNewPassword(): JSX.Element | null {
-  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
-  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const [password, setPassword] = useState<string | undefined>(undefined);
-  const ref = useRef<HTMLInputElement>(null);
+  const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const [renderSuggested, setRenderSuggested] = useState(true);
 
   useEffect(() => {
-    setPassword(suggested_password);
-  }, [suggested_password]);
+    dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
+  }, [renderSuggested, suggested]);
 
   function goBack() {
     resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
@@ -37,7 +40,7 @@ export function SetNewPassword(): JSX.Element | null {
   }
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values.newPassword;
+    const newPassword = renderSuggested ? values.suggested : values.newPassword;
 
     if (!newPassword || !email_code) {
       return;
@@ -80,50 +83,73 @@ export function SetNewPassword(): JSX.Element | null {
     }
   }
 
-  if (suggested_password === undefined) {
+  if (suggested === undefined) {
     return null;
   }
 
+  function handleSwitchChange() {
+    setRenderSuggested(!renderSuggested);
+  }
+
+  const initialValues = { suggested };
+
   return (
-    <React.Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage defaultMessage="Reset Password: Set new password" description="Set new password" />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the
-                          password in to the Repeat new password field and click Accept Password and save it for future 
-                          use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered.`}
-              description="Set new password"
-            />
-          </p>
-        </div>
-      </section>
-      <div className="copy-password-input">
-        <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="New password" description="Set new password" />
-        </label>
-        <input
-          name="copy-new-password"
-          id="copy-new-password"
-          ref={ref}
-          defaultValue={password ? password : ""}
-          readOnly={true}
-        />
-        <CopyToClipboard ref={ref} />
-      </div>
-      <NewPasswordForm
-        suggested_password={suggested_password}
-        extra_security={extra_security}
-        submitNewPasswordForm={submitNewPasswordForm}
-        goBack={goBack}
-        submitButtonText={
-          <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
-        }
-      />
-    </React.Fragment>
+    <FinalForm<ChangePasswordFormData>
+      onSubmit={submitNewPasswordForm}
+      initialValues={initialValues}
+      render={(formProps) => {
+        const child_props: ChangePasswordChildFormProps = { formProps };
+        return (
+          <Splash showChildren={Boolean(suggested)}>
+            {renderSuggested ? (
+              <section className="intro">
+                <h1>
+                  <FormattedMessage
+                    description="Reset Password - headline"
+                    defaultMessage="Reset Password: Suggested password"
+                  />
+                </h1>
+                <div className="lead">
+                  <p>
+                    <FormattedMessage
+                      description="Reset Password - lead"
+                      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
+                          the password in to the Repeat new password field and click Accept Password and save it for future 
+                          use. Note: spaces in the generated password are there for legibility and will be removed 
+                          automatically if entered.`}
+                    />
+                  </p>
+                </div>
+              </section>
+            ) : (
+              <section className="intro">
+                <h1>
+                  <FormattedMessage
+                    description="Reset Password - headline"
+                    defaultMessage="Reset Password: Set your own password"
+                  />
+                </h1>
+                <div className="lead">
+                  <p>
+                    <FormattedMessage
+                      description="Reset Password - lead"
+                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
+                        accounts safe.`}
+                    />
+                  </p>
+                </div>
+              </section>
+            )}
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+            {renderSuggested ? (
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={goBack} suggestedPassword={suggested} />
+            ) : (
+              <ChangePasswordCustomForm {...child_props} handleCancel={goBack} />
+            )}
+          </Splash>
+        );
+      }}
+    />
   );
 }
 
@@ -131,6 +157,7 @@ export function ResetPasswordSuccess(): JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const new_password = useAppSelector((state) => state.resetPassword.new_password);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const suggested = useAppSelector((state) => state.resetPassword.suggested);
 
   return (
     <form method="GET" action={dashboard_link}>
@@ -151,7 +178,14 @@ export function ResetPasswordSuccess(): JSX.Element {
           </p>
         </div>
       </section>
-      <ConfirmUserInfo email_address={email_address as string} new_password={new_password as string} />
+      {!suggested ? (
+        <div id="email-display">
+          <EmailFieldset email={email_address} />
+        </div>
+      ) : (
+        <ConfirmUserInfo email_address={email_address as string} new_password={new_password as string} />
+      )}
+
       <div className="buttons">
         <EduIDButton id="reset-password-finished" buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />

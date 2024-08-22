@@ -22,6 +22,7 @@ export interface ResetPasswordState {
   selected_option?: string;
   new_password?: string;
   suggested_password?: string;
+  suggested: boolean;
   extra_security?: ExtraSecurityAlternatives;
   goto_url?: string;
   email_response?: RequestEmailLinkResponse;
@@ -32,6 +33,7 @@ export interface ResetPasswordState {
 // Define the initial state using that type
 export const initialState: ResetPasswordState = {
   phone: { index: undefined, number: undefined, phone_code: undefined },
+  suggested: true,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -61,6 +63,9 @@ export const resetPasswordSlice = createSlice({
     resetState: (state) => {
       state.webauthn_assertion = undefined;
       state.selected_option = undefined;
+    },
+    useSuggestedPassword: (state, action: PayloadAction<boolean>) => {
+      state.suggested = action.payload;
     },
   },
   extraReducers: (builder) => {

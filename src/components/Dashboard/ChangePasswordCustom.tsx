@@ -1,16 +1,24 @@
+import {
+  postSetNewPassword,
+  postSetNewPasswordExternalMfa,
+  postSetNewPasswordExtraSecurityPhone,
+  postSetNewPasswordExtraSecurityToken,
+} from "apis/eduidResetPassword";
 import { changePassword } from "apis/eduidSecurity";
 import { createUserRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
+import { ResetPasswordGlobalStateContext } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { useAppDispatch } from "eduid-hooks";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { useContext } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import { ChangePasswordChildFormProps, ChangePasswordFormData, ChangePasswordSuccessState } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -23,6 +31,11 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   const signupContext = useContext(SignupGlobalStateContext);
   const location = useLocation();
   const currentUrl = location.pathname;
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
+  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
+  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -60,7 +73,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     return errors;
   }
 
-  async function handleSubmitPasswords(values: ChangePasswordFormData) {
+  async function submitNewPasswordForChangePW(values: ChangePasswordFormData) {
     if (values.custom) {
       const response = await dispatch(changePassword({ new_password: values.custom }));
       if (changePassword.fulfilled.match(response)) {
@@ -71,7 +84,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     }
   }
 
-  async function submitNewPasswordForm(values: ChangePasswordFormData) {
+  async function submitNewPasswordForSignup(values: ChangePasswordFormData) {
     const newPassword = values.custom;
     if (!newPassword) {
       return;
@@ -87,9 +100,63 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     }
   }
 
+  async function submitNewPasswordForResetPW(values: ChangePasswordFormData) {
+    const newPassword = values.custom;
+
+    if (!newPassword || !email_code) {
+      return;
+    }
+
+    dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
+    if (!selected_option || selected_option === "without") {
+      const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
+      if (postSetNewPassword.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      }
+    } else if (selected_option === "phoneCode" && phone_code) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
+      );
+      if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      }
+    } else if (selected_option === "securityKey" && webauthn_assertion) {
+      const response = await dispatch(
+        postSetNewPasswordExtraSecurityToken({
+          webauthn_assertion: webauthn_assertion,
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      }
+    } else if (selected_option === "swedishEID") {
+      const response = await dispatch(
+        postSetNewPasswordExternalMfa({
+          email_code: email_code,
+          password: newPassword,
+        })
+      );
+      if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      }
+    }
+  }
+
+  function submitPassword(values: ChangePasswordFormData) {
+    if (currentUrl.includes("/register")) {
+      submitNewPasswordForSignup(values);
+    } else if (currentUrl.includes("/chpass")) {
+      submitNewPasswordForChangePW(values);
+    } else {
+      submitNewPasswordForResetPW(values);
+    }
+  }
+
   return (
     <FinalForm<any>
-      onSubmit={currentUrl.includes("/register") ? submitNewPasswordForm : handleSubmitPasswords}
+      onSubmit={submitPassword}
       validate={validateNewPassword}
       render={(formProps) => {
         return (
