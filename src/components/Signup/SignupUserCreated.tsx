@@ -29,11 +29,16 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values.suggested;
+    const newPassword = renderSuggested ? values.suggested : values.newPassword;
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(createUserRequest({ use_suggested_password: true }));
+      const res = await dispatch(
+        createUserRequest({
+          use_suggested_password: renderSuggested,
+          custom_password: renderSuggested ? undefined : newPassword,
+        })
+      );
 
       if (createUserRequest.fulfilled.match(res)) {
         dispatch(clearNotifications());
@@ -111,7 +116,11 @@ export function SignupConfirmPassword() {
                 suggestedPassword={formatPassword(suggested)}
               />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
+              <ChangePasswordCustomForm
+                {...child_props}
+                handleCancel={handleCancel}
+                handleSubmit={submitNewPasswordForm}
+              />
             )}
           </Splash>
         );

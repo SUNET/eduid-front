@@ -39,7 +39,7 @@ export function SetNewPassword(): JSX.Element | null {
     dispatch(resetPasswordSlice.actions.resetState());
   }
 
-  async function submitNewPasswordForm(values: NewPasswordFormData) {
+  async function submitNewPassword(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.newPassword;
 
     if (!newPassword || !email_code) {
@@ -95,7 +95,7 @@ export function SetNewPassword(): JSX.Element | null {
 
   return (
     <FinalForm<ChangePasswordFormData>
-      onSubmit={submitNewPasswordForm}
+      onSubmit={submitNewPassword}
       initialValues={initialValues}
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
@@ -144,7 +144,7 @@ export function SetNewPassword(): JSX.Element | null {
             {renderSuggested ? (
               <ChangePasswordSuggestedForm {...child_props} handleCancel={goBack} suggestedPassword={suggested} />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={goBack} />
+              <ChangePasswordCustomForm {...child_props} handleCancel={goBack} handleSubmit={submitNewPassword} />
             )}
           </Splash>
         );
