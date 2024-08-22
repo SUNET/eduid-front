@@ -255,6 +255,10 @@
     "developer_comment": "accordion item security key additional info",
     "string": "Lägg till en säkerhetsnyckel för att aktivera säker återställning av lösenord"
   },
+  "3liNln": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Återställ lösenord: Ange ditt eget lösenord"
+  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
@@ -262,10 +266,6 @@
   "3ulSXr": {
     "developer_comment": "lmp.confirm_info",
     "string": "Den här kontrollen görs mot ett register som innehåller uppgifter från telefonoperatörerna. Om dina uppgifter inte stämmer behöver du verifiera dig på ett annat sätt."
-  },
-  "4+GwOq": {
-    "developer_comment": "Set new password",
-    "string": "Nytt lösenord"
   },
   "4/fziK": {
     "developer_comment": "how change language - heading",
@@ -404,6 +404,10 @@
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
+  },
+  "8E0uP1": {
+    "developer_comment": "Change password set new password success lead",
+    "string": "Du har uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning."
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -549,6 +553,10 @@
     "developer_comment": "Change password - headline",
     "string": "Ändra lösenord: Rekommenderat lösenord"
   },
+  "C3lfK7": {
+    "developer_comment": "Reset Password set new password success lead",
+    "string": "Du har framgångsrikt uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "För att begära en ny kod, fortsätt genom att klicka på knappen nedan."
@@ -588,10 +596,6 @@
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "Enhetsnyckel/säkerhetsnyckel"
-  },
-  "D7/IyL": {
-    "developer_comment": "Set new password (accept button)",
-    "string": "Acceptera lösenord"
   },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
@@ -799,6 +803,10 @@
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
   },
+  "IpR0Xk": {
+    "developer_comment": "Reset Password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
+  },
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "Bekräfta"
@@ -905,10 +913,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "får inte ha någon annan status i metadata än några olika varianter av: "
-  },
-  "MHzJ0N": {
-    "developer_comment": "Reset Password set new password success lead",
-    "string": "Detta är ditt nya lösenord för eduID. Spara lösenordet! När du har loggat in är det möjligt att byta ditt lösenord."
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1297,6 +1301,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Vissa lärosäten har anslutit sig till att låta eduID hämta ut ditt ESI - European Student Identifier från Ladok för att kunna få tillgång till vissa tjänster."
   },
+  "Vor1nv": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Återställ lösenord: Föreslaget lösenord"
+  },
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
@@ -1320,10 +1328,6 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
-  },
-  "WwD9Nq": {
-    "developer_comment": "Change password set new password success lead",
-    "string": "Detta är ditt nya lösenord för eduID. Se till att förvara ditt lösenord säkert för framtida användning."
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1633,10 +1637,6 @@
   },
   "dKcigP": {
     "string": "Koden som skickades till {email} är inte längre giltig."
-  },
-  "dLknIH": {
-    "developer_comment": "Set new password",
-    "string": "Återställ lösenord: Ange nytt lösenord"
   },
   "dQm5ii": {
     "developer_comment": "usb key technical section - list item 4",
@@ -2593,6 +2593,10 @@
     "developer_comment": "Security keys list - heading",
     "string": "Giltiga modeller av fysiska säkerhetsnycklar"
   },
+  "qD47l8": {
+    "developer_comment": "Reset Password - lead",
+    "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla ditt konto säkert."
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Välkommen tillbaka, {username}!"
@@ -3101,10 +3105,6 @@
   "ysi2d4": {
     "developer_comment": "privacy policy - list item 9",
     "string": "sparar endast nödvändiga funktionella kakor."
-  },
-  "z2oWSP": {
-    "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
