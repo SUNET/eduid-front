@@ -77,12 +77,13 @@ export function ChangePassword() {
     }
   }
 
-  async function handleSubmitPasswords(values: ChangePasswordFormData) {
-    if (renderSuggested && values.suggested) {
-      const response = await dispatch(changePassword({ new_password: values.suggested }));
+  async function handleSubmitNewPassword(values: ChangePasswordFormData) {
+    const newPassword = renderSuggested ? values.suggested : values.custom;
+    if (newPassword) {
+      const response = await dispatch(changePassword({ new_password: newPassword }));
       if (changePassword.fulfilled.match(response)) {
         navigate("/profile/chpass/success", {
-          state: { password: values.suggested, isSuggested: true } as ChangePasswordSuccessState,
+          state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
         });
       }
     }
@@ -103,7 +104,7 @@ export function ChangePassword() {
 
   return (
     <FinalForm<ChangePasswordFormData>
-      onSubmit={handleSubmitPasswords}
+      onSubmit={handleSubmitNewPassword}
       initialValues={initialValues}
       render={(formProps) => {
         const child_props: ChangePasswordChildFormProps = { formProps };
@@ -151,7 +152,11 @@ export function ChangePassword() {
             {renderSuggested ? (
               <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
+              <ChangePasswordCustomForm
+                {...child_props}
+                handleCancel={handleCancel}
+                handleSubmit={handleSubmitNewPassword}
+              />
             )}
             <AuthenticateModal
               action="changepwAuthn"

@@ -8,7 +8,7 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -24,16 +24,20 @@ export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
   const signupState = useAppSelector((state) => state.signup.state);
-  const ref = useRef<HTMLInputElement>(null);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = values.suggested;
+    const newPassword = renderSuggested ? values.suggested : values.newPassword;
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(createUserRequest({ use_suggested_password: true }));
+      const res = await dispatch(
+        createUserRequest({
+          use_suggested_password: renderSuggested,
+          custom_password: renderSuggested ? undefined : newPassword,
+        })
+      );
 
       if (createUserRequest.fulfilled.match(res)) {
         dispatch(clearNotifications());
@@ -111,7 +115,11 @@ export function SignupConfirmPassword() {
                 suggestedPassword={formatPassword(suggested)}
               />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} />
+              <ChangePasswordCustomForm
+                {...child_props}
+                handleCancel={handleCancel}
+                handleSubmit={submitNewPasswordForm}
+              />
             )}
           </Splash>
         );
