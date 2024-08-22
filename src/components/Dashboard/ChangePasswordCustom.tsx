@@ -4,11 +4,11 @@ import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { ChangePasswordChildFormProps } from "./ChangePassword";
+import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
-  handleSubmit: any;
+  handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
 }
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {

@@ -8,7 +8,7 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,6 @@ export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
   const signupState = useAppSelector((state) => state.signup.state);
-  const ref = useRef<HTMLInputElement>(null);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
 
