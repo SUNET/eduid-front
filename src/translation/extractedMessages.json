@@ -255,6 +255,10 @@
     "developer_comment": "accordion item security key additional info",
     "string": "Add your security key to enable safe reset of password"
   },
+  "3liNln": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Reset Password: Set your own password"
+  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
@@ -262,10 +266,6 @@
   "3ulSXr": {
     "developer_comment": "lmp.confirm_info",
     "string": "This check will be done in a registry updated by the phone operators. If it doesn't find your details you need to choose another way to verify your identity."
-  },
-  "4+GwOq": {
-    "developer_comment": "Set new password",
-    "string": "New password"
   },
   "4/fziK": {
     "developer_comment": "how change language - heading",
@@ -404,6 +404,10 @@
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
+  },
+  "8E0uP1": {
+    "developer_comment": "Change password set new password success lead",
+    "string": "You have successfully updated your password. Make sure to store your password securely for future use."
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -549,6 +553,10 @@
     "developer_comment": "Change password - headline",
     "string": "Change password: Suggested password"
   },
+  "C3lfK7": {
+    "developer_comment": "Reset Password set new password success lead",
+    "string": "You have successfully updated your password. Make sure to store your password securely for future use. Once you've logged in it is possible to change your password."
+  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "To request a new code, proceed by clicking the button below."
@@ -588,10 +596,6 @@
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
-  },
-  "D7/IyL": {
-    "developer_comment": "Set new password (accept button)",
-    "string": "accept password"
   },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
@@ -799,6 +803,10 @@
     "developer_comment": "Emails main title",
     "string": "Email addresses"
   },
+  "IpR0Xk": {
+    "developer_comment": "Reset Password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
+  },
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
@@ -905,10 +913,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
-  },
-  "MHzJ0N": {
-    "developer_comment": "Reset Password set new password success lead",
-    "string": "These is your new password for eduID. Save the password! Once you've logged in it is possible to change your password."
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1297,6 +1301,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "Vor1nv": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Reset Password: Suggested password"
+  },
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Page not found"
@@ -1320,10 +1328,6 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
-  },
-  "WwD9Nq": {
-    "developer_comment": "Change password set new password success lead",
-    "string": "These is your new password for eduID. Make sure to store your password securely for future use"
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1633,10 +1637,6 @@
   },
   "dKcigP": {
     "string": "The code sent to {email} has expired."
-  },
-  "dLknIH": {
-    "developer_comment": "Set new password",
-    "string": "Reset Password: Set new password"
   },
   "dQm5ii": {
     "developer_comment": "usb key technical section - list item 4",
@@ -2593,6 +2593,10 @@
     "developer_comment": "Security keys list - heading",
     "string": "Currently valid physical Security Keys"
   },
+  "qD47l8": {
+    "developer_comment": "Reset Password - lead",
+    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
@@ -3101,10 +3105,6 @@
   "ysi2d4": {
     "developer_comment": "privacy policy - list item 9",
     "string": "only uses necessary functional cookies."
-  },
-  "z2oWSP": {
-    "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password and save it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
