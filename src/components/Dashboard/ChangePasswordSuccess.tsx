@@ -30,7 +30,7 @@ export function ChangePasswordSuccess(): JSX.Element {
           <div className="lead">
             <p>
               <FormattedMessage
-                defaultMessage={`These is your new password for eduID. Make sure to store your password securely for future use`}
+                defaultMessage={`You have successfully updated your password. Make sure to store your password securely for future use.`}
                 description="Change password set new password success lead"
               />
             </p>
