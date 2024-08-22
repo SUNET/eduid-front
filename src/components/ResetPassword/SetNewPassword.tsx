@@ -40,7 +40,7 @@ export function SetNewPassword(): JSX.Element | null {
   }
 
   async function submitNewPassword(values: NewPasswordFormData) {
-    const newPassword = renderSuggested ? values.suggested : values.newPassword;
+    const newPassword = renderSuggested ? values.suggested : values.custom;
 
     if (!newPassword || !email_code) {
       return;
