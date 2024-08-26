@@ -81,7 +81,7 @@ export function SignupConfirmPassword() {
                   <p>
                     <FormattedMessage
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
-                    the password in to the Repeat new password field and click Accept Password and save it for 
+                    the password in to the Repeat new password field and click Save and save it for
                     future use.`}
                       description="Registration copy and paste password"
                     />

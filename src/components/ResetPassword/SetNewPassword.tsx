@@ -114,7 +114,7 @@ export function SetNewPassword(): JSX.Element | null {
                     <FormattedMessage
                       description="Reset Password - lead"
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
-                          the password in to the Repeat new password field and click Accept Password and save it for future 
+                          the password in to the Repeat new password field and click Save and save it for future
                           use. Note: spaces in the generated password are there for legibility and will be removed 
                           automatically if entered.`}
                     />
