@@ -467,7 +467,7 @@
   },
   "9hkMET": {
     "developer_comment": "Registration confirm password",
-    "string": "Registrera: Rekommenderat lösenord"
+    "string": "Ändra lösenord: Rekommenderat lösenord"
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
@@ -555,7 +555,7 @@
   },
   "C3lfK7": {
     "developer_comment": "Reset Password set new password success lead",
-    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+    "string": "Du har framgångsrikt uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -805,7 +805,7 @@
   },
   "IpR0Xk": {
     "developer_comment": "Reset Password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
   },
   "Ipp+o7": {
     "developer_comment": "confirm button",
@@ -1044,7 +1044,7 @@
   },
   "PjYp7X": {
     "developer_comment": "Registration copy and paste password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och spara det för framtida bruk."
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
