@@ -121,7 +121,7 @@ export function ChangePassword() {
                 <div className="lead">
                   <p>
                     <FormattedMessage
-                      description="Change password - lead"
+                      description="Generated password - lead"
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
                     the password in to the Repeat new password field and click the Save button to store it for 
                     future use.`}

@@ -83,7 +83,7 @@ export function SignupConfirmPassword() {
                       defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
                     the password in to the Repeat new password field and click Save and store it for
                     future use.`}
-                      description="Registration copy and paste password"
+                      description="Generated password - lead"
                     />
                   </p>
                 </div>
