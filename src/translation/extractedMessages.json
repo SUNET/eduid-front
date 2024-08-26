@@ -429,10 +429,6 @@
     "developer_comment": "what is eduID - paragraph 1",
     "string": "eduID is a federated identity - a user identity that can be used in several different organisations that have agreed on how identities will be managed. The basic idea is that a given user, who is authenticated with an organisation, is automatically authenticated with other organisations in the federation."
   },
-  "8U/9Xt": {
-    "developer_comment": "Reset Password - lead",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Save and store it for future use. Note: spaces in the generated password are there for legibility and will be removed automatically if entered."
-  },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
@@ -549,10 +545,6 @@
     "developer_comment": "Verification letter requested, status",
     "string": "A verification letter has been requested."
   },
-  "BBtjly": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Save and store it for future use."
-  },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
@@ -584,10 +576,6 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Change Password: Completed"
-  },
-  "CYTG9J": {
-    "developer_comment": "Change password - lead",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -1919,6 +1907,10 @@
     "developer_comment": "which verification methods - paragraph",
     "string": "The service is constantly being developed to better support the needs of our various users. At present the methods below are available, depending on your situation such as assurance level requirements, nationality and residence."
   },
+  "hc40Q5": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
+  },
   "hcvQ9B": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access requires a \"confirmed\" Swedish National Identity Number (personnummer)."
@@ -2421,6 +2413,10 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "How do I create an eduID?"
+  },
+  "pMH5Sq": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Save and store it for future use."
   },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
