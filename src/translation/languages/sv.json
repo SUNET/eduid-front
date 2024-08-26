@@ -429,10 +429,6 @@
     "developer_comment": "what is eduID - paragraph 1",
     "string": "eduID är en federerad identitet – en användaridentitet som kan användas inom flera olika organisationer eftersom man har enats kring hur identiteter ska hanteras. Grundidén är att en given användare som autentiserat sig hos en organisation per automatik kan bli autentiserad hos en annan som ingår i federationen."
   },
-  "8U/9Xt": {
-    "developer_comment": "Reset Password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och lagra det för framtida bruk"
-  },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
@@ -549,10 +545,6 @@
     "developer_comment": "Verification letter requested, status",
     "string": "Verifieringsbrev har begärts"
   },
-  "BBtjly": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och lagra det för framtida bruk."
-  },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
@@ -584,10 +576,6 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Ändra lösenord: Slutfört"
-  },
-  "CYTG9J": {
-    "developer_comment": "Change password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -1919,6 +1907,10 @@
     "developer_comment": "which verification methods - paragraph",
     "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
   },
+  "hc40Q5": {
+    "developer_comment": "Generated password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
+  },
   "hcvQ9B": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker använda kräver ett \"bekräftat\" svenskt personnummer."
@@ -2421,6 +2413,10 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "Hur kan jag skapa ett eduID?"
+  },
+  "pMH5Sq": {
+    "developer_comment": "Generated password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och lagra det för framtida bruk."
   },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
