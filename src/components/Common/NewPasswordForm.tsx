@@ -57,6 +57,7 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
               required={true}
               label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
               autoFocus={true}
+              placeholder="xxxx xxxx xxxx"
             />
 
             <div className="buttons">
