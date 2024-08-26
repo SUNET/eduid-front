@@ -555,7 +555,7 @@
   },
   "C3lfK7": {
     "developer_comment": "Reset Password set new password success lead",
-    "string": "Du har framgångsrikt uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
