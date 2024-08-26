@@ -136,3 +136,9 @@ fieldset {
   font-size: 1.25rem !important;
   align-self: center !important;
 }
+
+
+.legend-2fa {
+  flex-direction: column;
+  p {font-family: $inter-regular }
+}
