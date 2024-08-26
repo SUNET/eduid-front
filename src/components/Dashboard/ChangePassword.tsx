@@ -163,12 +163,6 @@ export function ChangePassword() {
               dispatch={dispatch}
               showModal={showModal}
               setShowModal={setShowModal}
-              mainText={
-                <FormattedMessage
-                  defaultMessage="You will need to log in again to change your password."
-                  description="Dashboard change password modal main text"
-                />
-              }
             />
           </Splash>
         );
