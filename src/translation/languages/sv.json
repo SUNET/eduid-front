@@ -429,6 +429,10 @@
     "developer_comment": "what is eduID - paragraph 1",
     "string": "eduID är en federerad identitet – en användaridentitet som kan användas inom flera olika organisationer eftersom man har enats kring hur identiteter ska hanteras. Grundidén är att en given användare som autentiserat sig hos en organisation per automatik kan bli autentiserad hos en annan som ingår i federationen."
   },
+  "8U/9Xt": {
+    "developer_comment": "Reset Password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och lagra det för framtida bruk"
+  },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
@@ -467,7 +471,7 @@
   },
   "9hkMET": {
     "developer_comment": "Registration confirm password",
-    "string": "Ändra lösenord: Rekommenderat lösenord"
+    "string": "Registrera: Rekommenderat lösenord"
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
@@ -545,6 +549,10 @@
     "developer_comment": "Verification letter requested, status",
     "string": "Verifieringsbrev har begärts"
   },
+  "BBtjly": {
+    "developer_comment": "Registration copy and paste password",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara och lagra det för framtida bruk."
+  },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "Det språk som används som standard i eduID är baserat på den språkinställning som din webbläsare använder. För att byta standardspråk kan du logga in i eduID och välja önskat språk under Personlig information. Du kan också byta det visade språket i hemsidans sidfot. Möjliga val är svenska och engelska."
@@ -555,7 +563,7 @@
   },
   "C3lfK7": {
     "developer_comment": "Reset Password set new password success lead",
-    "string": "Du har framgångsrikt uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -803,10 +811,6 @@
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
   },
-  "IpR0Xk": {
-    "developer_comment": "Reset Password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
-  },
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "Bekräfta"
@@ -1041,10 +1045,6 @@
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer."
-  },
-  "PjYp7X": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
