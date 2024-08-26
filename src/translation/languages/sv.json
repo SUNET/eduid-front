@@ -467,7 +467,7 @@
   },
   "9hkMET": {
     "developer_comment": "Registration confirm password",
-    "string": "Ändra lösenord: Rekommenderat lösenord"
+    "string": "Registrera: Rekommenderat lösenord"
   },
   "9r+XZS": {
     "developer_comment": "Change password - lead",
@@ -555,7 +555,7 @@
   },
   "C3lfK7": {
     "developer_comment": "Reset Password set new password success lead",
-    "string": "Du har framgångsrikt uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
   },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
@@ -576,10 +576,6 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Ändra lösenord: Slutfört"
-  },
-  "CYTG9J": {
-    "developer_comment": "Change password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -802,10 +798,6 @@
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
-  },
-  "IpR0Xk": {
-    "developer_comment": "Reset Password - lead",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk. Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. "
   },
   "Ipp+o7": {
     "developer_comment": "confirm button",
@@ -1041,10 +1033,6 @@
   "PRzfUP": {
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer."
-  },
-  "PjYp7X": {
-    "developer_comment": "Registration copy and paste password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Acceptera lösenord och spara det för framtida bruk."
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
@@ -1918,6 +1906,10 @@
   "hW6nti": {
     "developer_comment": "which verification methods - paragraph",
     "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
+  },
+  "hc40Q5": {
+    "developer_comment": "Generated password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
   },
   "hcvQ9B": {
     "developer_comment": "ErrorURL identification failure",
