@@ -318,10 +318,6 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
-  "5T2oWK": {
-    "developer_comment": "change Security key setting preference",
-    "string": "To change your security key settings preference, you need to log in and then toggle the button again."
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -432,6 +428,10 @@
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
+  },
+  "8frc5N": {
+    "developer_comment": "Dashboard change password modal title",
+    "string": "Security check"
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
@@ -994,10 +994,6 @@
     "developer_comment": "security webauthn describe title",
     "string": "Add a name for your security key"
   },
-  "OruvPO": {
-    "developer_comment": "add Security key",
-    "string": "To add your security key, you'll have to log in again, please press the button again."
-  },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
     "string": "Do I need to visit an authorised ATG agent to create Freja+?"
@@ -1113,10 +1109,6 @@
     "developer_comment": "privacy policy - list definition",
     "string": "Summary of how eduID treats your information according to the policy:"
   },
-  "Rv0ENK": {
-    "developer_comment": "Dashboard change password modal main text",
-    "string": "You will need to log in again to change your password."
-  },
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
@@ -1159,10 +1151,6 @@
     "developer_comment": "what is eduID - heading",
     "string": "What is eduID?"
   },
-  "SujckF": {
-    "developer_comment": "verify credential",
-    "string": "To verify your security key {securityKey}, you'll have to log in again. Once logged in, please press the button again."
-  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
@@ -1178,10 +1166,6 @@
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repeat new password"
-  },
-  "THXIiA": {
-    "developer_comment": "remove Security key",
-    "string": "To remove your security key, you need to log in and then press the button again."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1205,10 +1189,6 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
-  },
-  "TpraxF": {
-    "developer_comment": "Dashboard change password modal title",
-    "string": "For security reasons..."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
@@ -1308,10 +1288,6 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
-  },
-  "WSPzti": {
-    "developer_comment": "Dashboard delete account modal main text",
-    "string": "It has been too long since your login. After clicking the Accept button, you need to use your login details one final time."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -1691,10 +1667,6 @@
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in this device"
-  },
-  "eKtgTd": {
-    "developer_comment": "remove Security key",
-    "string": "To remove your security, you'll have to log in again. Once logged in, please press the button again."
   },
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
@@ -2643,6 +2615,10 @@
   "rLwIkG": {
     "developer_comment": "which login email - heading",
     "string": "Which email account can I use to log in?"
+  },
+  "rN3KF1": {
+    "developer_comment": "security zone modal",
+    "string": "You need to log in again to perform the requested action."
   },
   "required": {
     "string": "*Field cannot be empty"
