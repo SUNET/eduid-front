@@ -924,7 +924,7 @@
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
-    "string": "If a second factor of authentication is required by external services, it will always be requested during login even when this option is turned off."
+    "string": "If external services other than eduID require a second factor during login, you will still need to use your security key even when this setting is toggled off."
   },
   "NDdvRn": {
     "developer_comment": "button save",
