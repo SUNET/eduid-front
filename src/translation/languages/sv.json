@@ -617,10 +617,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
   },
-  "ECT4Ho": {
-    "developer_comment": "Signup credentials button",
-    "string": "Avbryt"
-  },
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "Hur kan jag utöka mitt eduID?"
@@ -782,10 +778,6 @@
   "IE2L2s": {
     "developer_comment": "enhance eduid - list item 2",
     "string": "ditt telefonnummer för att lättare kunna återställa ditt konto om det skulle behövas,"
-  },
-  "IR238P": {
-    "developer_comment": "Short code form",
-    "string": "Avbryt"
   },
   "IcXwl+": {
     "developer_comment": "privacy policy - list item 7",
@@ -1014,10 +1006,6 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "Vad är eduIDs Personuppgiftspolicy?"
   },
-  "PL+81z": {
-    "developer_comment": "go to eudID link text",
-    "string": "Gå till eduID för att logga in"
-  },
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Hantera dina eduID inställningar"
@@ -1241,10 +1229,6 @@
     "developer_comment": "verify identity vetting phone tagline",
     "string": "För svenska telefonnummer angivna och bekräftade i eduID."
   },
-  "VL/TNV": {
-    "developer_comment": "ToU button cancel",
-    "string": "Avbryt"
-  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
@@ -1361,14 +1345,6 @@
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
   },
-  "YqZO+p": {
-    "developer_comment": "Login button",
-    "string": "Avbryt"
-  },
-  "YxJ0EU": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Avbryt"
-  },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
@@ -1459,6 +1435,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
+  },
+  "b7CFjs": {
+    "developer_comment": "go to eduID link text",
+    "string": "Gå till eduID för att logga in"
   },
   "b7acbg": {
     "developer_comment": "how to contact support phone",
@@ -1818,10 +1798,6 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
-  },
-  "fr8eQq": {
-    "developer_comment": "Emails button cancel",
-    "string": "Avbryt"
   },
   "fuyJ7x": {
     "developer_comment": "button cancel",
@@ -2855,10 +2831,6 @@
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Din identitet är inte verifierad. Vänligen verifiera din identitet för att få tillgång till fler tjänster."
   },
-  "t9CdwX": {
-    "developer_comment": "Signup cancel button",
-    "string": "Avbryt"
-  },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
@@ -3013,10 +2985,6 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Språk"
-  },
-  "xCrGiU": {
-    "developer_comment": "Use another device, finished",
-    "string": "Avbryt"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
