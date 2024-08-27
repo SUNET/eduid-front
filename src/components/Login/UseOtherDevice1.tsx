@@ -81,7 +81,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
         >
-          <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         {props.handleNewQRCodeOnClick && (
           <EduIDButton
@@ -187,7 +187,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
           id="response-code-abort-button"
           disabled={props.formProps.submitting}
         >
-          <FormattedMessage defaultMessage="Cancel" description="Short code form" />
+          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
 
         <EduIDButton
@@ -238,7 +238,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
                     onClick={handleAbortButtonOnClick}
                     id="response-code-cancel-button"
                   >
-                    <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+                    <FormattedMessage defaultMessage="Cancel" description="button cancel" />
                   </EduIDButton>
                   <EduIDButton
                     type="submit"

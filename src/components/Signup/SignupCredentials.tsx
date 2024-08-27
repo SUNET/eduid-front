@@ -34,7 +34,7 @@ export function SignupCredentials(): JSX.Element {
             onClick={() => signupContext.signupService.send({ type: "ABORT" })}
             id="abort-button"
           >
-            <FormattedMessage defaultMessage="Cancel" description="Signup credentials button" />
+            <FormattedMessage defaultMessage="Cancel" description="button cancel" />
           </EduIDButton>
           <EduIDButton
             type="submit"

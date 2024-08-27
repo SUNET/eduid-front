@@ -41,7 +41,7 @@ export function ResponseCodeAbortButton(props: {
         id="response-code-abort-button"
         disabled={props.disabled}
       >
-        <FormattedMessage defaultMessage="Cancel" description="Short code form" />
+        <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
       <EduIDButton
         type="submit"

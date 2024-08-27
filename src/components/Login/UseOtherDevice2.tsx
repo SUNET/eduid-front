@@ -272,7 +272,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
         id="cancel-other-device-button"
         disabled={!data}
       >
-        <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
+        <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
 
       {props.showLogin && (
