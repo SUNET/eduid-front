@@ -324,7 +324,7 @@
   },
   "5iUbyQ": {
     "developer_comment": "Security key toggle",
-    "string": "Always use a second factor (2FA) to log in"
+    "string": "Always use a second factor (2FA) to log in to eduID"
   },
   "5l4hxp": {
     "string": "Log in on another device"
