@@ -150,7 +150,7 @@ function Emails() {
                   />
                   <div className="buttons">
                     <EduIDButton id="cancel-adding-email" buttonstyle="secondary" onClick={handleCancel}>
-                      <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
+                      <FormattedMessage defaultMessage="Cancel" description="button cancel" />
                     </EduIDButton>
                     <EduIDButton
                       type="submit"

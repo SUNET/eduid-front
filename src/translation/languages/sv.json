@@ -318,17 +318,13 @@
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
   },
-  "5T2oWK": {
-    "developer_comment": "change Security key setting preference",
-    "string": "För att ändra inställningar för dina säkerhetsnycklar behöver du åter logga in och sedan trycka på knappen igen."
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "Med eIDAS elektronisk identifiering"
   },
   "5iUbyQ": {
     "developer_comment": "Security key toggle",
-    "string": "Använd alltid tvåfaktorsautenticering (2FA) vid inloggning"
+    "string": "Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID"
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
@@ -432,6 +428,10 @@
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
+  },
+  "8frc5N": {
+    "developer_comment": "Dashboard change password modal title",
+    "string": "Säkerhetsskäl"
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
@@ -617,10 +617,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
   },
-  "ECT4Ho": {
-    "developer_comment": "Signup credentials button",
-    "string": "Avbryt"
-  },
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "Hur kan jag utöka mitt eduID?"
@@ -783,10 +779,6 @@
     "developer_comment": "enhance eduid - list item 2",
     "string": "ditt telefonnummer för att lättare kunna återställa ditt konto om det skulle behövas,"
   },
-  "IR238P": {
-    "developer_comment": "Short code form",
-    "string": "Avbryt"
-  },
   "IcXwl+": {
     "developer_comment": "privacy policy - list item 7",
     "string": "lagrar användarloggar i sex månader,"
@@ -924,7 +916,7 @@
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
-    "string": "Om en andra faktor krävs av anslutande tjänster för autentisering kommer det att efterfrågas vid inloggning även när denna inställning är avslagen."
+    "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautenticering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -994,10 +986,6 @@
     "developer_comment": "security webauthn describe title",
     "string": "Ge ett namn till din säkerhetsnyckel"
   },
-  "OruvPO": {
-    "developer_comment": "add Security key",
-    "string": "För att lägga till din säkerhetsnyckel måste du logga in igen, vänligen tryck på knappen igen."
-  },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
     "string": "Behöver jag besöka ett auktoriserat ATG ombud för att skapa Freja+?"
@@ -1017,10 +1005,6 @@
   "P8LMog": {
     "developer_comment": "what is privacy policy - heading",
     "string": "Vad är eduIDs Personuppgiftspolicy?"
-  },
-  "PL+81z": {
-    "developer_comment": "go to eudID link text",
-    "string": "Gå till eduID för att logga in"
   },
   "PLjl7A": {
     "developer_comment": "settings main title",
@@ -1113,10 +1097,6 @@
     "developer_comment": "privacy policy - list definition",
     "string": "Sammanfattning av hur eduID behandlar dina personuppgifter enligt policyn:"
   },
-  "Rv0ENK": {
-    "developer_comment": "Dashboard change password modal main text",
-    "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
-  },
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
     "string": "För att byta visningsnamn, ta bort och välj igen"
@@ -1159,10 +1139,6 @@
     "developer_comment": "what is eduID - heading",
     "string": "Vad är eduID?"
   },
-  "SujckF": {
-    "developer_comment": "verify credential",
-    "string": "För att verifiera din säkerhetsnyckel {securityKey} måste du logga in igen. när du har loggat in, trycker du på knappen igen."
-  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
@@ -1178,10 +1154,6 @@
   "T9+zD2": {
     "developer_comment": "chpass form custom password repeat",
     "string": "Repetera ditt nya lösenord"
-  },
-  "THXIiA": {
-    "developer_comment": "remove Security key",
-    "string": "För att ta bort en säkerhetsnyckel behöver du åter logga in och sedan trycka på knappen igen."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1205,10 +1177,6 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
-  },
-  "TpraxF": {
-    "developer_comment": "Dashboard change password modal title",
-    "string": "Av säkerhetsskäl..."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
@@ -1261,10 +1229,6 @@
     "developer_comment": "verify identity vetting phone tagline",
     "string": "För svenska telefonnummer angivna och bekräftade i eduID."
   },
-  "VL/TNV": {
-    "developer_comment": "ToU button cancel",
-    "string": "Avbryt"
-  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
@@ -1308,10 +1272,6 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "logga in i eduID och välj metoden 'Med elektroniskt BankID' i identitetshanteringen och följ instruktionerna."
-  },
-  "WSPzti": {
-    "developer_comment": "Dashboard delete account modal main text",
-    "string": "Det har gått för lång tid sedan din inloggning. Efter att du har klickat på knappen Godkänn måste du använda dina inloggningsuppgifter en sista gång."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -1384,14 +1344,6 @@
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
-  },
-  "YqZO+p": {
-    "developer_comment": "Login button",
-    "string": "Avbryt"
-  },
-  "YxJ0EU": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Avbryt"
   },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
@@ -1483,6 +1435,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
+  },
+  "b7CFjs": {
+    "developer_comment": "go to eduID link text",
+    "string": "Gå till eduID för att logga in"
   },
   "b7acbg": {
     "developer_comment": "how to contact support phone",
@@ -1692,10 +1648,6 @@
     "developer_comment": "Login OtherDevice",
     "string": "Logga in den här enheten"
   },
-  "eKtgTd": {
-    "developer_comment": "remove Security key",
-    "string": "För att ta bort säkerhetsnyckel måste du logga in igen. när du har loggat in trycker du på knappen igen."
-  },
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "Om du inte längre vill att eduID ska känna till ditt ORCID iD kan du enkelt ta bort det genom att klicka på krysset."
@@ -1846,10 +1798,6 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
-  },
-  "fr8eQq": {
-    "developer_comment": "Emails button cancel",
-    "string": "Avbryt"
   },
   "fuyJ7x": {
     "developer_comment": "button cancel",
@@ -2644,6 +2592,10 @@
     "developer_comment": "which login email - heading",
     "string": "Vilken e-postadress kan jag använda för att logga in?"
   },
+  "rN3KF1": {
+    "developer_comment": "security zone modal",
+    "string": "Du behöver logga in igen för att kunna utföra åtgärden."
+  },
   "required": {
     "string": "*Fältet kan inte vara tomt"
   },
@@ -2879,10 +2831,6 @@
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Din identitet är inte verifierad. Vänligen verifiera din identitet för att få tillgång till fler tjänster."
   },
-  "t9CdwX": {
-    "developer_comment": "Signup cancel button",
-    "string": "Avbryt"
-  },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
@@ -3037,10 +2985,6 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Språk"
-  },
-  "xCrGiU": {
-    "developer_comment": "Use another device, finished",
-    "string": "Avbryt"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
