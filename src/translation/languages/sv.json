@@ -846,6 +846,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Skriv in koden du fått hemskickad"
   },
+  "Km8xmv": {
+    "developer_comment": "continue button",
+    "string": "Fortsätt"
+  },
   "Kn4Dfq": {
     "developer_comment": "create eduid - list item 1",
     "string": "ange din e-postadress,"
