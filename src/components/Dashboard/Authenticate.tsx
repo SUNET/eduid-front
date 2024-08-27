@@ -35,7 +35,7 @@ export function AuthenticateModal(props: { action: string; dispatch: any; setSho
         props.setShowModal(false);
       }}
       acceptModal={handleAuthenticate}
-      acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
+      acceptButtonText={<FormattedMessage defaultMessage="Continue" description="continue button" />}
     />
   );
 }
