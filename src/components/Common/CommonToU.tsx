@@ -30,7 +30,7 @@ export function CommonToU(props: CommonToUProps): JSX.Element {
 
       <div className="buttons">
         <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
-          <FormattedMessage defaultMessage="Cancel" description="ToU button cancel" />
+          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
           <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />

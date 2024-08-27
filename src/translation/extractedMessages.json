@@ -617,10 +617,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
   },
-  "ECT4Ho": {
-    "developer_comment": "Signup credentials button",
-    "string": "Cancel"
-  },
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "How can I enhance my eduID?"
@@ -782,10 +778,6 @@
   "IE2L2s": {
     "developer_comment": "enhance eduid - list item 2",
     "string": "your phone number for easier retrieval of your account should it be needed,"
-  },
-  "IR238P": {
-    "developer_comment": "Short code form",
-    "string": "Cancel"
   },
   "IcXwl+": {
     "developer_comment": "privacy policy - list item 7",
@@ -1014,10 +1006,6 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
-  "PL+81z": {
-    "developer_comment": "go to eudID link text",
-    "string": "Go to eduid to login"
-  },
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
@@ -1241,10 +1229,6 @@
     "developer_comment": "verify identity vetting phone tagline",
     "string": "For Swedish phone numbers entered and confirmed in eduID."
   },
-  "VL/TNV": {
-    "developer_comment": "ToU button cancel",
-    "string": "Cancel"
-  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
@@ -1361,14 +1345,6 @@
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
   },
-  "YqZO+p": {
-    "developer_comment": "Login button",
-    "string": "Cancel"
-  },
-  "YxJ0EU": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Cancel"
-  },
   "Z0Ireq": {
     "developer_comment": "Verified identity",
     "string": "Swedish national identity number"
@@ -1459,6 +1435,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
+  },
+  "b7CFjs": {
+    "developer_comment": "go to eduID link text",
+    "string": "Go to eduid to login"
   },
   "b7acbg": {
     "developer_comment": "how to contact support phone",
@@ -1818,10 +1798,6 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
-  },
-  "fr8eQq": {
-    "developer_comment": "Emails button cancel",
-    "string": "Cancel"
   },
   "fuyJ7x": {
     "developer_comment": "button cancel",
@@ -2855,10 +2831,6 @@
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Your identity is not verified. Please verify your identity to get access to more services."
   },
-  "t9CdwX": {
-    "developer_comment": "Signup cancel button",
-    "string": "Cancel"
-  },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
@@ -3013,10 +2985,6 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Language"
-  },
-  "xCrGiU": {
-    "developer_comment": "Use another device, finished",
-    "string": "Cancel"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",

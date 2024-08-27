@@ -186,7 +186,7 @@ export function ResetPasswordSuccess(): JSX.Element {
 
       <div className="buttons">
         <EduIDButton id="reset-password-finished" buttonstyle="link" className="normal-case" type="submit">
-          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eudID link text" />
+          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
         </EduIDButton>
       </div>
     </form>
