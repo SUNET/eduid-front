@@ -256,11 +256,11 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   const firstNameInput = screen.getAllByRole("textbox")[0];
   expect(firstNameInput).toHaveFocus();
   expect(firstNameInput).toHaveAccessibleName(/^First name/);
-  expect(firstNameInput).toHaveProperty("placeholder", "First name");
+  expect(firstNameInput).toHaveProperty("placeholder", "first name");
 
   const lastNameInput = screen.getAllByRole("textbox")[1];
   expect(lastNameInput).toHaveAccessibleName(/^Last name/);
-  expect(lastNameInput).toHaveProperty("placeholder", "Last name");
+  expect(lastNameInput).toHaveProperty("placeholder", "last name");
 
   const emailInput = screen.getAllByRole("textbox")[2];
   expect(emailInput).toHaveAccessibleName(/^Email address/);
