@@ -99,7 +99,7 @@ export function SignupConfirmPassword() {
                   <p>
                     <FormattedMessage
                       description="Strong password - lead"
-                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
+                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
                         accounts safe.`}
                     />
                   </p>
