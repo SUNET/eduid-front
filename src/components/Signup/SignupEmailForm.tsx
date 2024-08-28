@@ -47,13 +47,13 @@ function EmailForm() {
 
   const firstNamePlaceholder = intl.formatMessage({
     id: "placeholder.firstName",
-    defaultMessage: "First name",
+    defaultMessage: "first name",
     description: "placeholder First name",
   });
 
   const lastNamePlaceholder = intl.formatMessage({
     id: "placeholder.lastName",
-    defaultMessage: "Last name",
+    defaultMessage: "last name",
     description: "placeholder Last name",
   });
 
