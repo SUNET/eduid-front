@@ -177,7 +177,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
             />
           )}
           placeholder={
-            <FormattedMessage defaultMessage="Select display name..." description="Display name select placeholder" />
+            <FormattedMessage defaultMessage="select display name..." description="Display name select placeholder" />
           }
           isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}

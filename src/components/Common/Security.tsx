@@ -94,7 +94,7 @@ export function Security(): React.ReactElement | null {
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "security.placeholder",
-    defaultMessage: "Describe your security key",
+    defaultMessage: "describe your security key",
     description: "placeholder text for security key description input",
   });
 

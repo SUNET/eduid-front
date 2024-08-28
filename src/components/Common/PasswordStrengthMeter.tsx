@@ -52,7 +52,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
   return (
     <React.Fragment>
-      <div className="form-field-error-area" key="1">
+      <div className={`form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
         {props.password !== undefined && <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>}
       </div>
       <meter max="4" value={pwScore} id="password-strength-meter" key="0" />

@@ -130,7 +130,7 @@ export function SetNewPassword(): JSX.Element | null {
                 <div className="lead">
                   <p>
                     <FormattedMessage
-                      description="Reset Password - lead"
+                      description="Strong password - lead"
                       defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
                         accounts safe.`}
                     />

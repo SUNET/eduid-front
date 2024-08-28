@@ -28,7 +28,7 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = renderSuggested ? values.suggested : values.newPassword;
+    const newPassword = renderSuggested ? values.suggested : values.custom;
     if (!newPassword) {
       return;
     } else {
@@ -98,8 +98,8 @@ export function SignupConfirmPassword() {
                 <div className="lead">
                   <p>
                     <FormattedMessage
-                      description="Register - lead"
-                      defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
+                      description="Strong password - lead"
+                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
                         accounts safe.`}
                     />
                   </p>

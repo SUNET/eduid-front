@@ -164,7 +164,7 @@ function Phones() {
   // placeholder can't be an Element, we need to get the actual translated string here
   const phonePlaceholder = intl.formatMessage({
     id: "placeholder.phone",
-    defaultMessage: "Phone number",
+    defaultMessage: "phone number",
     description: "placeholder text for phone input",
   });
 
