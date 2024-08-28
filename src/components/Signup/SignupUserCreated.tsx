@@ -98,7 +98,7 @@ export function SignupConfirmPassword() {
                 <div className="lead">
                   <p>
                     <FormattedMessage
-                      description="Register - lead"
+                      description="Strong password - lead"
                       defaultMessage={`When creating your own password. make sure it's strong enough to keep your 
                         accounts safe.`}
                     />
