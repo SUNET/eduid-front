@@ -469,10 +469,6 @@
     "developer_comment": "Registration confirm password",
     "string": "Register: Suggested password"
   },
-  "9r+XZS": {
-    "developer_comment": "Change password - lead",
-    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
-  },
   "9t9vVw": {
     "developer_comment": "what is svipe - paragraph 1",
     "string": "Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely."
@@ -1022,6 +1018,10 @@
     "developer_comment": "lmp.modal_confirm_title",
     "string": "Check if your phone number is connected to your id number."
   },
+  "Pa6Av7": {
+    "developer_comment": "Display name select placeholder",
+    "string": "select display name..."
+  },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "What is eduIDs Accessibility report?"
@@ -1177,6 +1177,10 @@
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
+  },
+  "TlgxUw": {
+    "developer_comment": "Strong password - lead",
+    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
   },
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
@@ -1635,10 +1639,6 @@
   "e6XTxx": {
     "developer_comment": "Reset Password email link sent",
     "string": "If you have an eduID account, the code has been sent to {email}"
-  },
-  "eFceSz": {
-    "developer_comment": "Display name select placeholder",
-    "string": "Select display name..."
   },
   "eIAskC": {
     "developer_comment": "Start",
@@ -2182,6 +2182,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Far from your address now)"
   },
+  "mXz4X5": {
+    "developer_comment": "Strong password - lead",
+    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
+  },
   "md5xqk": {
     "developer_comment": "Dashboard AccountLinking",
     "string": "If you are a researcher with an ORCID iD you can share it with your eduID."
@@ -2471,11 +2475,11 @@
   },
   "placeholder.firstName": {
     "developer_comment": "placeholder First name",
-    "string": "First name"
+    "string": "first name"
   },
   "placeholder.lastName": {
     "developer_comment": "placeholder Last name",
-    "string": "Last name"
+    "string": "last name"
   },
   "placeholder.new_password_placeholder": {
     "developer_comment": "placeholder text for new password",
@@ -2487,7 +2491,7 @@
   },
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
-    "string": "Phone number"
+    "string": "phone number"
   },
   "placeholder.repeat_new_password_placeholder": {
     "developer_comment": "placeholder text for repeat new password",
@@ -2536,10 +2540,6 @@
   "qC/BaD": {
     "developer_comment": "Security keys list - heading",
     "string": "Currently valid physical Security Keys"
-  },
-  "qD47l8": {
-    "developer_comment": "Reset Password - lead",
-    "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
   },
   "qHomsQ": {
     "developer_comment": "Login username input",
@@ -2687,7 +2687,7 @@
   },
   "security.placeholder": {
     "developer_comment": "placeholder text for security key description input",
-    "string": "Describe your security key"
+    "string": "describe your security key"
   },
   "security.stale_authn_info": {
     "string": "The authentication expired. Please try again."
@@ -2838,10 +2838,6 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
-  },
-  "tSv9Wq": {
-    "developer_comment": "Register - lead",
-    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
   },
   "tUkPGr": {
     "developer_comment": "verify identity vetting explanation add swedish phone",
