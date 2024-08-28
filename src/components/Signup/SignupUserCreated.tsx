@@ -28,7 +28,7 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
-    const newPassword = renderSuggested ? values.suggested : values.newPassword;
+    const newPassword = renderSuggested ? values.suggested : values.custom;
     if (!newPassword) {
       return;
     } else {
