@@ -2182,10 +2182,6 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Far from your address now)"
   },
-  "mXz4X5": {
-    "developer_comment": "Strong password - lead",
-    "string": "When creating your own password. make sure it's strong enough to keep your accounts safe."
-  },
   "md5xqk": {
     "developer_comment": "Dashboard AccountLinking",
     "string": "If you are a researcher with an ORCID iD you can share it with your eduID."
