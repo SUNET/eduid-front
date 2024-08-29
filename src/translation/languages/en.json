@@ -2459,7 +2459,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in and you need to keep at least one."
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use the security key if other connecting services require 2FA."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
