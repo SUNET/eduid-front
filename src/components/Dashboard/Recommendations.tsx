@@ -125,7 +125,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
     return null;
   }
   // if user verified with eidas or svipe, show accordion item to verify with nin
-  if (props.identities.svipe?.verified || props.identities.eidas?.verified) {
+  if (props.identities.freja?.verified || props.identities.eidas?.verified) {
     title = (
       <FormattedMessage
         description="accordion item Verification with Swedish national ID number"

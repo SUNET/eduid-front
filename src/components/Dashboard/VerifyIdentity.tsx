@@ -209,21 +209,21 @@ function VerifiedIdentitiesTable(): JSX.Element {
         </figure>
       )}
 
-      {identities?.svipe?.verified && (
+      {identities?.freja?.verified && (
         <figure className="grid-container identity-summary">
           <div>
             <ReactCountryFlag
               className="flag-icon"
-              aria-label={regionNames.of(identities.svipe.country_code)}
-              countryCode={identities.svipe.country_code}
+              aria-label={regionNames.of(identities.freja.country_code)}
+              countryCode={identities.freja.country_code}
             />
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
+              <FormattedMessage defaultMessage="Freja eID identity" description="Verified identity" />
             </strong>
           </div>
-          {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
+          {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
         </figure>
       )}
       <AuthenticateModal

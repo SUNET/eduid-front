@@ -39,7 +39,7 @@ export const frejaeIDVerifyIdentity = createAsyncThunk<
 >("freja/verifyIdentity", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "frejaVerifyIdentity";
+    body.frontend_action = "verifyIdentity";
   }
 
   return makeFrejaeIDRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
