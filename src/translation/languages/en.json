@@ -257,7 +257,7 @@
   },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
-    "string": "Reset Password: Set your own password"
+    "string": "Reset password: Set your own password"
   },
   "3q1uE5": {
     "developer_comment": "orcid description",
@@ -339,7 +339,7 @@
   },
   "61F71s": {
     "developer_comment": "mfa security key heading",
-    "string": "Reset Password: Use security key"
+    "string": "Reset password: Use security key"
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
