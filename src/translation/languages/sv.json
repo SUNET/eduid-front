@@ -809,7 +809,7 @@
   },
   "K427ha": {
     "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan en USB-säkerhetsnyckel eller din enhet."
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
   },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
@@ -1777,7 +1777,7 @@
   },
   "fEDxuK": {
     "developer_comment": "opening hours - list item 1",
-    "string": "måndag till torsdag 09:00-12:00, 13:00-16:00"
+    "string": "måndag - fredag 09:00 - 16:00"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
@@ -1857,7 +1857,7 @@
   },
   "hW6nti": {
     "developer_comment": "which verification methods - paragraph",
-    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
+    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats. Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID under Identitet."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2196,7 +2196,7 @@
   },
   "mr79Fz": {
     "developer_comment": "opening hours - list item 2",
-    "string": "fredag 9:00-12:00, 13:00-14:30"
+    "string": " "
   },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
@@ -2204,7 +2204,7 @@
   },
   "n3DMk8": {
     "developer_comment": "create eduid - list item 5",
-    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Ditt eduID är redo att användas."
+    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Du kan välja ett genererat eller ett du skapat själv både vid registrering, återställning och ändring av lösenord. Ditt eduID är redo att användas."
   },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
@@ -2459,7 +2459,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in och du behöver ha minst en."
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in i eduID, om du inte stänger av denna funktion under Tvåfaktorsautenticering (2FA) i Avancerade inställningar. Även då kan du behöva använda säkerhetsnyckel om andra anslutande tjänster kräver 2FA."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
