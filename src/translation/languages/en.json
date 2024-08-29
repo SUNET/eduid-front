@@ -666,7 +666,7 @@
   },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
-    "string": "Reset Password: Completed"
+    "string": "Reset password: Completed"
   },
   "FutYRQ": {
     "string": "Use my {freja_eidplus_verbatim}"
@@ -1263,7 +1263,7 @@
   },
   "Vor1nv": {
     "developer_comment": "Reset Password - headline",
-    "string": "Reset Password: Suggested password"
+    "string": "Reset password: Suggested password"
   },
   "VtD50r": {
     "developer_comment": "not found heading",
