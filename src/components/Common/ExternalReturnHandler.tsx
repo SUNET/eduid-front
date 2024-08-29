@@ -1,7 +1,7 @@
 import { authnGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
-import { svipeGetStatus } from "apis/eduidSvipe";
+import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -56,8 +56,8 @@ export function ExternalReturnHandler() {
   }
 
   async function fetchSvipeStatus(authn_id: string) {
-    const response = await dispatch(svipeGetStatus({ authn_id: authn_id }));
-    if (svipeGetStatus.fulfilled.match(response)) {
+    const response = await dispatch(frejaeIDGetStatus({ authn_id: authn_id }));
+    if (frejaeIDGetStatus.fulfilled.match(response)) {
       processStatus(response.payload);
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Code and data structures for talking to the Svipe backend microservice.
+ * Code and data structures for talking to the FrejaeID backend microservice.
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
@@ -7,42 +7,42 @@ import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
-interface SvipeCommonRequest {
+interface FrejaeIDCommonRequest {
   frontend_action?: string;
   method: string;
 }
 
-interface SvipeCommonResponse {
+interface FrejaeIDCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithSvipe = EduIDAppDispatch;
-type StateWithSvipe = EduIDAppRootState;
+type DispatchWithFrejaeID = EduIDAppDispatch;
+type StateWithFrejaeID = EduIDAppRootState;
 
 /*********************************************************************************************************************/
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityRequest extends SvipeCommonRequest {}
+export interface VerifyIdentityRequest extends FrejaeIDCommonRequest {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityResponse extends SvipeCommonResponse {}
+export interface VerifyIdentityResponse extends FrejaeIDCommonResponse {}
 
 /**
  * @public
- * @function svipeVerifyIdentity
+ * @function frejaeIDVerifyIdentity
  * @desc Redux async thunk to start a verify-identity operation.
  */
-export const svipeVerifyIdentity = createAsyncThunk<
+export const frejaeIDVerifyIdentity = createAsyncThunk<
   VerifyIdentityResponse, // return type
   VerifyIdentityRequest, // args type
-  { dispatch: DispatchWithSvipe; state: StateWithSvipe }
->("svipe/verifyIdentity", async (args, thunkAPI) => {
+  { dispatch: DispatchWithFrejaeID; state: StateWithFrejaeID }
+>("freja/verifyIdentity", async (args, thunkAPI) => {
   const body: KeyValues = args;
   if (body.frontend_action === undefined) {
-    body.frontend_action = "svipeidVerifyIdentity";
+    body.frontend_action = "frejaVerifyIdentity";
   }
 
-  return makeSvipeRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
+  return makeFrejaeIDRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -51,22 +51,22 @@ export const svipeVerifyIdentity = createAsyncThunk<
 
 /**
  * @public
- * @function svipeGetStatus
+ * @function frejaeIDGetStatus
  * @desc Redux async thunk to fetch status for an earlier operation.
  */
-export const svipeGetStatus = createAsyncThunk<
+export const frejaeIDGetStatus = createAsyncThunk<
   GetStatusResponse, // return type
   GetStatusRequest, // args type
-  { dispatch: DispatchWithSvipe; state: StateWithSvipe }
->("svipe/getStatus", async (args, thunkAPI) => {
+  { dispatch: DispatchWithFrejaeID; state: StateWithFrejaeID }
+>("freja/getStatus", async (args, thunkAPI) => {
   const body: KeyValues = args;
-  return makeSvipeRequest<GetStatusResponse>(thunkAPI, "get-status", body)
+  return makeFrejaeIDRequest<GetStatusResponse>(thunkAPI, "get-status", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-async function makeSvipeRequest<T>(
+async function makeFrejaeIDRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
@@ -74,9 +74,9 @@ async function makeSvipeRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.svipe_service_url) {
-    throw new Error("Missing configuration svipe_service_url");
+  if (!state.config.freja_eid_service_url) {
+    throw new Error("Missing configuration frejaeID_service_url");
   }
 
-  return makeGenericRequest<T>(thunkAPI, state.config.svipe_service_url, endpoint, body, data);
+  return makeGenericRequest<T>(thunkAPI, state.config.freja_eid_service_url, endpoint, body, data);
 }

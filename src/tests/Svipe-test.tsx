@@ -1,11 +1,11 @@
-import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidSvipe";
+import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
-test("renders svipeID as expected", () => {
-  const method = "svipeidVerifyIdentity";
+test("renders frejaeID as expected", () => {
+  const method = "frejaeIDVerifyIdentity";
 
   mswServer.use(
     rest.post("verify-identity", (req, res, ctx) => {
@@ -24,7 +24,7 @@ test("renders svipeID as expected", () => {
   render(<IndexMain />, {
     state: {
       personal_data: { ...defaultDashboardTestState.personal_data },
-      config: { ...defaultDashboardTestState.config, svipe_service_url: "/svipe-url/", is_app_loaded: true },
+      config: { ...defaultDashboardTestState.config, freja_eid_service_url: "/freja-eid-service-url/", is_app_loaded: true },
     },
   });
   // Navigate to Identity
