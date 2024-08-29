@@ -2459,7 +2459,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in i eduID, om du inte stänger av denna funktion under Tvåfaktorsautenticering (2FA) i Inställningar. Även då kan du behöva använda säkerhetsnyckel om andra anslutande tjänster kräver 2FA."
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in i eduID, om du inte stänger av denna funktion under Tvåfaktorsautenticering (2FA) i Avancerade inställningar. Även då kan du behöva använda säkerhetsnyckel om andra anslutande tjänster kräver 2FA."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
