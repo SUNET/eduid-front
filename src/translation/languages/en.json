@@ -511,7 +511,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+    "string": "In some situations that require added security, e.g. when changing your password, deleting your eduID account or adding/removing a security key, you need to log in again, with your security key if you are using one, if more than 5 minutes have passed since you logged in. \nFor more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
