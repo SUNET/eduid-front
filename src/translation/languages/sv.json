@@ -2204,7 +2204,7 @@
   },
   "n3DMk8": {
     "developer_comment": "create eduid - list item 5",
-    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Du kan välja ett genererat eller ett du skapat själv både vid registrering, återställning och ändring av lösenord. Ditt eduID är redo att användas."
+    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Du kan välja ett automatiskt genererat eller ett du skapat själv, både vid registrering, återställning och ändring av lösenord. Ditt eduID är redo att användas."
   },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
