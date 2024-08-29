@@ -24,7 +24,11 @@ test("renders frejaeID as expected", () => {
   render(<IndexMain />, {
     state: {
       personal_data: { ...defaultDashboardTestState.personal_data },
-      config: { ...defaultDashboardTestState.config, freja_eid_service_url: "/freja-eid-service-url/", is_app_loaded: true },
+      config: {
+        ...defaultDashboardTestState.config,
+        freja_eid_service_url: "/freja-eid-service-url/",
+        is_app_loaded: true,
+      },
     },
   });
   // Navigate to Identity
@@ -33,9 +37,9 @@ test("renders frejaeID as expected", () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const svipeAccordion = screen.getByRole("button", { name: /All other countries With Svipe ID/i });
+  const frejaeIDAccordion = screen.getByRole("button", { name: /All other countries With Freja eID/i });
   act(() => {
-    svipeAccordion.click();
+    frejaeIDAccordion.click();
   });
-  // expect(screen.getByRole("button", { name: /Proceed/ })).toBeEnabled();
+  expect(screen.getByRole("button", { name: /Proceed/ })).toBeEnabled();
 });
