@@ -437,21 +437,21 @@ function AccordionItemWorld(): JSX.Element | null {
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
-          // values={{
-          //   Svipe_ID: (
-          //     <a href=" https://www.svipe.com/get-started" target="_blank">
-          //       Svipe ID
-          //     </a>
-          //   ),
-          // }}
+          defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
+          values={{
+            Freja_eID: (
+              <a href=" https://www.svipe.com/get-started" target="_blank">
+                Freja eID
+              </a>
+            ),
+          }}
         />
       </p>
       <p>
         <FormattedMessage
           description="verify identity"
           defaultMessage={`The button below will take you to an external identification site, where you by
-          identifying yourself with Svipe ID will verify your identity towards eduID.`}
+          identifying yourself with Freja eID, you will verify your identity towards eduID.`}
         />
       </p>
       <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
