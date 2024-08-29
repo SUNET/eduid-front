@@ -1360,13 +1360,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="opening hours - list item 1"
-                    defaultMessage="Monday-Thursday 09:00-12:00, 13:00-16:00"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="opening hours - list item 2"
-                    defaultMessage="Friday 9:00-12:00, 13:00-14:30"
+                    defaultMessage="Monday - Friday 09:00 - 16:00"
                   />
                 </li>
               </ul>

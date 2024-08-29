@@ -279,6 +279,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "with a Freja+"
   },
+  "43bN4Q": {
+    "developer_comment": "opening hours - list item 1",
+    "string": "Monday - Friday 09:00 - 16:00"
+  },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
     "string": "install the {Freja} on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
@@ -1775,10 +1779,6 @@
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
   },
-  "fEDxuK": {
-    "developer_comment": "opening hours - list item 1",
-    "string": "Monday-Thursday 09:00-12:00, 13:00-16:00"
-  },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
     "string": "Update first and last names from the Swedish Population Register."
@@ -2193,10 +2193,6 @@
   "modal.close": {
     "developer_comment": "Notification modal close label",
     "string": "Close"
-  },
-  "mr79Fz": {
-    "developer_comment": "opening hours - list item 2",
-    "string": "Friday 9:00-12:00, 13:00-14:30"
   },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
