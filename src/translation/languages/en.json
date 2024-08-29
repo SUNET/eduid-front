@@ -1620,7 +1620,7 @@
     "string": "Register | eduID"
   },
   "document title Reset Password": {
-    "string": "Reset Password | eduID"
+    "string": "Reset password | eduID"
   },
   "document title Settings": {
     "string": "Settings | eduID"
@@ -1885,7 +1885,7 @@
   },
   "hnyHof": {
     "developer_comment": "HandleExtraSecurities heading",
-    "string": "Reset Password: Verification method"
+    "string": "Reset password: Verification method"
   },
   "hq/xBV": {
     "developer_comment": "Use other device 2",
