@@ -257,7 +257,7 @@
   },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
-    "string": "Reset Password: Set your own password"
+    "string": "Reset password: Set your own password"
   },
   "3q1uE5": {
     "developer_comment": "orcid description",
@@ -339,7 +339,7 @@
   },
   "61F71s": {
     "developer_comment": "mfa security key heading",
-    "string": "Reset Password: Use security key"
+    "string": "Reset password: Use security key"
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
@@ -387,7 +387,7 @@
   },
   "7rfaTz": {
     "developer_comment": "Account recovery front page heading",
-    "string": "Reset Password: Start account recovery process"
+    "string": "Reset password: Start account recovery process"
   },
   "7yS+J6": {
     "developer_comment": "edit button",
@@ -571,7 +571,7 @@
   },
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
-    "string": "Change Password: Completed"
+    "string": "Change password: Completed"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -666,7 +666,7 @@
   },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
-    "string": "Reset Password: Completed"
+    "string": "Reset password: Completed"
   },
   "FutYRQ": {
     "string": "Use my {freja_eidplus_verbatim}"
@@ -1263,7 +1263,7 @@
   },
   "Vor1nv": {
     "developer_comment": "Reset Password - headline",
-    "string": "Reset Password: Suggested password"
+    "string": "Reset password: Suggested password"
   },
   "VtD50r": {
     "developer_comment": "not found heading",
@@ -1602,7 +1602,7 @@
     "string": "Advanced Settings | eduID"
   },
   "document title Change Password": {
-    "string": "Change Password | eduID"
+    "string": "Change password | eduID"
   },
   "document title Help": {
     "string": "FAQ | eduID"
@@ -1620,7 +1620,7 @@
     "string": "Register | eduID"
   },
   "document title Reset Password": {
-    "string": "Reset Password | eduID"
+    "string": "Reset password | eduID"
   },
   "document title Settings": {
     "string": "Settings | eduID"
@@ -1885,7 +1885,7 @@
   },
   "hnyHof": {
     "developer_comment": "HandleExtraSecurities heading",
-    "string": "Reset Password: Verification method"
+    "string": "Reset password: Verification method"
   },
   "hq/xBV": {
     "developer_comment": "Use other device 2",
@@ -2668,7 +2668,7 @@
   },
   "sC4pUE": {
     "developer_comment": "ResetPasswordEnterEmail heading",
-    "string": "Reset Password: Enter the email address"
+    "string": "Reset password: Enter the email address"
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
@@ -2845,7 +2845,7 @@
   },
   "tW2jR4": {
     "developer_comment": "Reset Password email link sent heading",
-    "string": "Reset Password: Verify email address"
+    "string": "Reset password: Verify email address"
   },
   "tarlwb": {
     "developer_comment": "use svipe - list item 2",
@@ -2900,7 +2900,7 @@
   },
   "uzDSzk": {
     "developer_comment": "Reset Password phone code sent heading",
-    "string": "Reset Password: Phone verification"
+    "string": "Reset password: Phone verification"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
