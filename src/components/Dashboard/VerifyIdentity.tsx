@@ -21,6 +21,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import { removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
+import PersonalDataParent from "components/Dashboard/PersonalDataParent";
 import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
@@ -84,6 +85,7 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
+        <PersonalDataParent />
         <section className="intro">
           <h1>
             <FormattedMessage

@@ -90,6 +90,14 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+            to={settingsPath}
+          >
+            <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
+          </NavLink>
+
+          <NavLink
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to={identityPath}
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
@@ -98,17 +106,9 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={settingsPath}
-          >
-            <FormattedMessage defaultMessage="Settings" description="Dashboard nav tab name" />
-          </NavLink>
-
-          <NavLink
-            onClick={() => setOpenMenu(false)}
-            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to={advancedSettingsPath}
           >
-            <FormattedMessage defaultMessage="Advanced settings" description="Dashboard nav tab name" />
+            <FormattedMessage defaultMessage="Account Linking" description="Dashboard nav tab name" />
           </NavLink>
 
           <EduIDButton

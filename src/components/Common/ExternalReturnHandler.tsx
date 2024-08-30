@@ -30,12 +30,12 @@ export function ExternalReturnHandler() {
       // the user should be returned to
       const actionToRoute: { [key: string]: string } = {
         verifyIdentity: "/profile/verify-identity/",
-        verifyCredential: "/profile/settings/advanced-settings/",
+        verifyCredential: "/profile/settings/personaldata/",
         changepwAuthn: "/profile/chpass",
         terminateAccountAuthn: "/",
-        addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
-        removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
-        changeSecurityPreferencesAuthn: "/profile/settings/advanced-settings/",
+        addSecurityKeyAuthn: "/profile/settings/personaldata/",
+        removeSecurityKeyAuthn: "/profile/settings/personaldata/",
+        changeSecurityPreferencesAuthn: "/profile/settings/personaldata/",
         removeIdentity: "/profile/verify-identity/",
       };
       const _path = actionToRoute[status.frontend_action];
