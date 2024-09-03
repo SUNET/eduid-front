@@ -446,7 +446,7 @@ function AccordionItemWorld(): JSX.Element | null {
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
             Freja_eID: (
-              <a href=" https://www.svipe.com/get-started" target="_blank">
+              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
                 Freja eID
               </a>
             ),
