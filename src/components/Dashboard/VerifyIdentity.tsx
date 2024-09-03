@@ -224,6 +224,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
             </strong>
           </div>
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleRemoveIdentity()}
+          ></EduIDButton>
         </figure>
       )}
       <AuthenticateModal
