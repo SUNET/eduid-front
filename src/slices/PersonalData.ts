@@ -20,6 +20,7 @@ export const initialState: PersonalDataState = {};
 interface PersonalDataResponse extends PersonalDataRequest {
   eppn: string;
   identities?: UserIdentities;
+  legal_name?: string;
 }
 
 const personalDataSlice = createSlice({
@@ -33,7 +34,13 @@ const personalDataSlice = createSlice({
         state.response = action.payload;
       })
       .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.response = action.payload;
+        if (state.response) {
+          state.response.chosen_given_name = action.payload.chosen_given_name;
+          state.response.given_name = action.payload.given_name;
+          state.response.language = action.payload.language;
+          state.response.legal_name = action.payload.legal_name;
+          state.response.surname = action.payload.surname;
+        }
       })
       .addCase(postSecurityKeyPreference.fulfilled, (state, action: PayloadAction<PreferencesData>) => {
         if (state.response) {
