@@ -1803,6 +1803,24 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
+  "freja_eid.authn_request_failed": {
+    "string": "Freja eID autentiseringsbegäran misslyckades. Vänligen Försök igen."
+  },
+  "freja_eid.authorization_fail": {
+    "string": "Freja eID autentisering misslyckades."
+  },
+  "freja_eid.frontend_action_not_supported": {
+    "string": "Freja eID frontend action stöds inte. "
+  },
+  "freja_eid.identity_verify_success": {
+    "string": "Freja eID Identitetsverifiering lyckades."
+  },
+  "freja_eid.method_not_available": {
+    "string": "Freja eID är inte tillgängligt för detta konto. Vänligen försök med en annan verifieringsmetod."
+  },
+  "freja_eid.registration_level_not_satisfied": {
+    "string": "Freja eID registreringsnivå inte uppfylld."
+  },
   "fuyJ7x": {
     "developer_comment": "button cancel",
     "string": "Avbryt"
@@ -2803,21 +2821,6 @@
   },
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
-  },
-  "svipe_id.authn_request_failed": {
-    "string": "Svipe ID autentiseringsbegäran misslyckades. Försök igen"
-  },
-  "svipe_id.authorization_fail": {
-    "string": "Svipe ID auktorisering misslyckades."
-  },
-  "svipe_id.identity_verify_success": {
-    "string": "Svipe ID verifiering lyckades"
-  },
-  "svipe_id.method_not_available": {
-    "string": "Svipe ID är inte tillgängligt för detta konto. Försök med en annan verifieringsmetod."
-  },
-  "svipe_id.not_found": {
-    "string": "Svipe ID hittades inte."
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
