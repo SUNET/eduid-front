@@ -18,6 +18,7 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -38,10 +39,21 @@ export function Security(): React.ReactElement | null {
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showAuthnModal, setShowAuthnModal] = useState(false);
+  const [authnType, setAuthnType] = useState<string>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
+  const authn = useAppSelector((state) => state.authn);
+
+  useEffect(() => {
+    (async () => {
+      if (authn.frontend_action === "addSecurityKeyAuthn" && authn.frontend_state) {
+        // call requestCredentials once app is loaded
+        setShowModal(true);
+      }
+    })();
+  }, [isLoaded, authn]);
 
   useEffect(() => {
     (async () => {
@@ -103,7 +115,9 @@ export function Security(): React.ReactElement | null {
   }
 
   async function handleRegisterWebauthn(authType: string) {
+    dispatch(authnSlice.actions.setFrontendActionState());
     dispatch(securitySlice.actions.chooseAuthenticator(authType));
+    setAuthnType(authType);
     const resp = await dispatch(beginRegisterWebauthn());
     if (beginRegisterWebauthn.rejected.match(resp)) {
       if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
@@ -118,6 +132,9 @@ export function Security(): React.ReactElement | null {
   function handleStartWebauthnRegistration(values: { [key: string]: string }) {
     (async () => {
       try {
+        if (authn.frontend_state) {
+          dispatch(securitySlice.actions.chooseAuthenticator(authn.frontend_state));
+        }
         const description = values["describe-webauthn-token-modal"];
         const descriptionValue = description?.trim();
         setShowModal(false);
@@ -232,6 +249,7 @@ export function Security(): React.ReactElement | null {
         }
       />
       <AuthenticateModal
+        state={authnType}
         action="addSecurityKeyAuthn"
         dispatch={dispatch}
         showModal={showAuthnModal}
@@ -246,12 +264,23 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const [credentialKey, setCredentialKey] = useState<string | null>();
   const [credentialDescription, setCredentialDescription] = useState<string | null>();
+  const authn = useAppSelector((state) => state.authn);
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+
+  useEffect(() => {
+    (async () => {
+      if (authn.frontend_action === "removeSecurityKeyAuthn" && authn.frontend_state) {
+        // call requestCredentials once app is loaded
+        handleRemoveWebauthnToken(authn.frontend_state);
+      }
+    })();
+  }, [authn.frontend_action]);
 
   function handleVerifyWebauthnTokenFreja(token: string) {
     (async () => {
@@ -293,6 +322,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   async function handleRemoveWebauthnToken(credential_key: string) {
+    dispatch(authnSlice.actions.setFrontendActionState());
     const response = await dispatch(removeWebauthnToken({ credential_key }));
     if (removeWebauthnToken.rejected.match(response)) {
       if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
@@ -357,6 +387,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           ></EduIDButton>
           <AuthenticateModal
             action="removeSecurityKeyAuthn"
+            state={cred.key}
             dispatch={dispatch}
             showModal={cred.key === credentialKey && removeSecurityKeyModal}
             setShowModal={setRemoveSecurityKeyModal}
