@@ -1803,6 +1803,24 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: If you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
+  "freja_eid.authn_request_failed": {
+    "string": "Freja eID authentication request failed.Please try again"
+  },
+  "freja_eid.authorization_fail": {
+    "string": "Freja eID authorization failed."
+  },
+  "freja_eid.frontend_action_not_supported": {
+    "string": "Freja eID frontend action not supported."
+  },
+  "freja_eid.identity_verify_success": {
+    "string": "Freja eID identity verification success."
+  },
+  "freja_eid.method_not_available": {
+    "string": "Freja eID is not available for this account. Please try another verification method."
+  },
+  "freja_eid.registration_level_not_satisfied": {
+    "string": "Freja eID registration level not satisfied."
+  },
   "fuyJ7x": {
     "developer_comment": "button cancel",
     "string": "Cancel"
@@ -2803,21 +2821,6 @@
   },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
-  },
-  "svipe_id.authn_request_failed": {
-    "string": "Svipe authentication request failed.Please try again"
-  },
-  "svipe_id.authorization_fail": {
-    "string": "Svipe authorization failed."
-  },
-  "svipe_id.identity_verify_success": {
-    "string": "Svipe identity verification success"
-  },
-  "svipe_id.method_not_available": {
-    "string": "Svipe is not available for this account. Please try another verification method."
-  },
-  "svipe_id.not_found": {
-    "string": "Svipe id not found."
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
