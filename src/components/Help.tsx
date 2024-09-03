@@ -684,7 +684,7 @@ export function Help(): JSX.Element {
                       description="verification methods - list item 3"
                       defaultMessage={` the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
-                      complete verification of your eduID. Read more about Freja+ below.`}
+                      complete verification of your eduID. Read more about Freja below.`}
                     />
                   </li>
                   <li>
@@ -725,23 +725,23 @@ export function Help(): JSX.Element {
                 <p>
                   <strong>
                     <FormattedMessage
-                      description="method svipe - heading"
+                      description="method international - heading"
                       defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
                     />
                   </strong>
                   <FormattedMessage
-                    description="method svipe - paragraph"
+                    description="method international - paragraph"
                     defaultMessage={`, you could use {emphasis} to verify your identity using your passport. 
-                    Read more about Svipe iD below.`}
+                    Read more about Freja below.`}
                     values={{
-                      emphasis: <em>Svipe ID</em>,
+                      emphasis: <em>Freja</em>,
                     }}
                   />
                 </p>
                 <p className="error-txt">
                   <FormattedMessage
-                    description="svipe - error"
-                    defaultMessage={`Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
+                    description="freja - error"
+                    defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to increase the range is ongoing.`}
                   />
                 </p>
               </section>
@@ -750,7 +750,12 @@ export function Help(): JSX.Element {
             <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
-                title={<FormattedMessage description="about freja - handle" defaultMessage="About Freja+" />}
+                title={
+                  <FormattedMessage
+                    description="about freja - handle"
+                    defaultMessage="About Freja (with Swedish ID/COORD number)"
+                  />
+                }
                 additionalInfo={null}
               >
                 <article>
@@ -938,63 +943,77 @@ export function Help(): JSX.Element {
                 </article>
               </AccordionItemTemplate>
               <AccordionItemTemplate
-                uuid="help-svipe"
-                title={<FormattedMessage description="about svipe - handle" defaultMessage="About Svipe iD" />}
+                uuid="help-international"
+                title={
+                  <FormattedMessage
+                    description="about international - handle"
+                    defaultMessage="About Freja (outside EU and without Swedish ID/COORD number)"
+                  />
+                }
                 additionalInfo={null}
               >
-                <article id="svipe">
+                <article id="international">
                   <h4>
-                    <FormattedMessage description="what is svipe - heading" defaultMessage="What is Svipe iD?" />
+                    <FormattedMessage description="what is international - heading" defaultMessage="What is Freja?" />
                   </h4>
                   <p>
                     <FormattedMessage
-                      description="what is svipe - paragraph 1"
-                      defaultMessage={`Svipe iD is based on an identity verification platform using biometric documents 
-                      from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device 
-                      face-recognition ability, to create a verified digital identity than can be used remotely.`}
+                      description="what is international - paragraph 1"
+                      defaultMessage={`Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely.`}
                     />
                   </p>
+
                   <p>
                     <FormattedMessage
-                      description="what is svipe - paragraph 2"
-                      defaultMessage={`You can stay informed about the information that Svipe saves about you and your 
-                      ID-document by reading their data privacy policy. In short, the information uploaded to the app 
-                      from your ID-document is saved locally on your device, and the company Svipe does not have access to it.`}
+                      description="what is international - paragraph 2"
+                      defaultMessage={`At present this solution is available for EU/EEA countries as well as Ukraine and the United Kingdom. Current information on what nationalities are included can be found at: {FrejaList}`}
+                      values={{
+                        FrejaList: (
+                          <a
+                            className="text-link"
+                            href="https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
+                            target="_blank"
+                          >
+                            Freja eID
+                          </a>
+                        ),
+                      }}
                     />
                   </p>
+
                   <p>
                     <FormattedMessage
-                      description="use svipe - list definition"
-                      defaultMessage={`How to use Svipe iD with eduID:`}
+                      description="use international - list definition"
+                      defaultMessage={`How to use Freja with eduID:`}
                     />
                   </p>
                   <ul className="bullets">
                     <li>
                       <FormattedMessage
-                        description="use svipe - list item 1"
-                        defaultMessage={`to verify your eduID using Svipe you first need a Svipe account with a verified
-                         profile supported by your ID-document, in the Svipe app available at App store for IOS, or 
-                         Google Play for Android,`}
+                        description="use international - list item 1"
+                        defaultMessage={`to verify your eduID using Freja you first need to get a Freja account with a verified
+                         profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,`}
+                        values={{
+                          FrejaApp: (
+                            <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
+                              Freja app
+                            </a>
+                          ),
+                        }}
                       />
                     </li>
                     <li>
                       <FormattedMessage
-                        description="use svipe - list item 2"
-                        defaultMessage={`login to eduID and scan the QR code produced by Svipe iD from the 'All other 
+                        description="use international - list item 2"
+                        defaultMessage={`login to eduID and scan the QR code produced by Freja from the 'Other 
                         countries' section in the Identity area of eduID by following the instructions.`}
                       />
                     </li>
                   </ul>
                   <p>
                     <FormattedMessage
-                      description="svipe if personal number - paragraph"
-                      defaultMessage={`Note: Holders of Swedish personal identity numbers are advised to use that method instead.`}
-                    />
-                  </p>
-                  <p className="error-txt">
-                    <FormattedMessage
-                      description="svipe - error"
-                      defaultMessage={`Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated.`}
+                      description="international if personal number - paragraph"
+                      defaultMessage={`Note: Holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead.`}
                     />
                   </p>
                 </article>
