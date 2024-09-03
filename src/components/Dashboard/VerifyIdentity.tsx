@@ -206,6 +206,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
             </strong>
           </div>
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleRemoveIdentity()}
+          ></EduIDButton>
         </figure>
       )}
 
