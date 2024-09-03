@@ -22,7 +22,7 @@ function VerificationProgress(props: { identities: UserIdentities }): JSX.Elemen
         <FontAwesomeIcon icon={faCircleExclamation as IconProp} />
         <div>
           <h3>
-            {!props.identities.nin && !props.identities.svipe && !props.identities.eidas ? (
+            {!props.identities.nin && !props.identities.freja && !props.identities.eidas ? (
               <FormattedMessage
                 description="verification status heading unverified"
                 defaultMessage="Your identity is not verified."

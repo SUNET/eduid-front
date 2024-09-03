@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faIdCard, faMobileScreen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
-import { svipeVerifyIdentity } from "apis/eduidSvipe";
+import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
@@ -209,21 +209,21 @@ function VerifiedIdentitiesTable(): JSX.Element {
         </figure>
       )}
 
-      {identities?.svipe?.verified && (
+      {identities?.freja?.verified && (
         <figure className="grid-container identity-summary">
           <div>
             <ReactCountryFlag
               className="flag-icon"
-              aria-label={regionNames.of(identities.svipe.country_code)}
-              countryCode={identities.svipe.country_code}
+              aria-label={regionNames.of(identities.freja.country_code)}
+              countryCode={identities.freja.country_code}
             />
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="Foreign Svipe identity" description="Verified identity" />
+              <FormattedMessage defaultMessage="Freja eID identity" description="Verified identity" />
             </strong>
           </div>
-          {regionNames.of(identities.svipe.country_code)}&nbsp;{identities.svipe.date_of_birth}
+          {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
         </figure>
       )}
       <AuthenticateModal
@@ -407,42 +407,41 @@ function AccordionItemEu(): JSX.Element | null {
 
 function AccordionItemWorld(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const svipe_service_url = useAppSelector((state) => state.config.svipe_service_url);
+  const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
 
   async function handleOnClick() {
-    const response = await dispatch(svipeVerifyIdentity({ method: "svipe_id" }));
-    if (svipeVerifyIdentity.fulfilled.match(response)) {
+    const response = await dispatch(frejaeIDVerifyIdentity({ method: "freja_eid" }));
+    if (frejaeIDVerifyIdentity.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
     }
   }
 
-  if (!svipe_service_url) {
+  if (!freja_eid_service_url) {
     return null;
   }
 
   return (
     <AccordionItemTemplate
-      disabled
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
       title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
       additionalInfo={
         <FormattedMessage
           description="accordion item Svipe ID additional info"
-          defaultMessage="With Svipe ID cryptographic identity verification "
+          defaultMessage="With Freja eID identity verification "
         />
       }
       uuid="world"
     >
-      {/* <p>
+      <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage="If you have a {Svipe_ID} you can connect it to your eduID."
+          defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
-            Svipe_ID: (
+            Freja_eID: (
               <a href=" https://www.svipe.com/get-started" target="_blank">
-                Svipe ID
+                Freja eID
               </a>
             ),
           }}
@@ -452,13 +451,10 @@ function AccordionItemWorld(): JSX.Element | null {
         <FormattedMessage
           description="verify identity"
           defaultMessage={`The button below will take you to an external identification site, where you by
-          identifying yourself with Svipe ID will verify your identity towards eduID.`}
-        /> 
-      </p> */}
-      <p>
-        <FormattedMessage description="svipe-na" defaultMessage={`This option is currently unavailable.`} />
+          identifying yourself with Freja eID, you will verify your identity towards eduID.`}
+        />
       </p>
-      <EduIDButton buttonstyle="primary" size="sm" disabled onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
