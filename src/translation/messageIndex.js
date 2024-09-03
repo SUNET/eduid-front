@@ -12,7 +12,7 @@ import * as email from "./defaultMessages/email";
 import * as orcid from "./defaultMessages/orcid";
 import * as phone from "./defaultMessages/phone";
 import * as bankid from "./defaultMessages/bankid";
-import * as svipe from "./defaultMessages/svipe";
+import * as frejaeid from "./defaultMessages/frejaeid";
 
 export const formattedMessages = {
   ...common.proofing,
@@ -31,5 +31,5 @@ export const formattedMessages = {
   ...resetPassword.apiResponses,
   ...lookupMobileProofing.apiResponses,
   ...bankid.apiResponses,
-  ...svipe.apiResponses,
+  ...frejaeid.apiResponses,
 };
