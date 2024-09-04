@@ -263,15 +263,16 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const [credentialKey, setCredentialKey] = useState<string | null>();
-  const [credentialDescription, setCredentialDescription] = useState<string | null>();
+  // const [credentialDescription, setCredentialDescription] = useState<string | null>();
   const authn = useAppSelector((state) => state.authn);
+  const [method, setMethod] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
-  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const parsedFrontendState = authn.frontend_state && JSON.parse(authn?.frontend_state);
 
   useEffect(() => {
     (async () => {
@@ -279,12 +280,19 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
         // call requestCredentials once app is loaded
         handleRemoveWebauthnToken(authn.frontend_state);
       }
+      if (authn.frontend_action === "verifyCredential" && authn.frontend_state) {
+        if (parsedFrontendState.method === "freja") {
+          handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
+        } else handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
+      }
     })();
   }, [authn.frontend_action]);
 
   function handleVerifyWebauthnTokenFreja(token: string) {
+    dispatch(authnSlice.actions.setFrontendActionState());
     (async () => {
       const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+      setMethod("freja");
       if (eidasVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
@@ -292,15 +300,17 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       } else if (eidasVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
-          setCredentialDescription((response?.payload as any).payload.credential_description);
+          // setCredentialDescription((response?.payload as any).payload.credential_description);
         }
       }
     })();
   }
 
   function handleVerifyWebauthnTokenBankID(token: string) {
+    dispatch(authnSlice.actions.setFrontendActionState());
     (async () => {
       const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+      setMethod("bankid");
       if (bankIDVerifyCredential.fulfilled.match(response)) {
         if (response.payload.location) {
           window.location.assign(response.payload.location);
@@ -308,7 +318,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       } else if (bankIDVerifyCredential.rejected.match(response)) {
         if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
-          setCredentialDescription((response?.payload as any).payload.credential_description);
+          // setCredentialDescription((response?.payload as any).payload.credential_description);
         }
       }
       //TODO: Check if frontend are still receiving this error message from the backend.
@@ -359,6 +369,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
           <AuthenticateModal
+            state={JSON.stringify({ method: method, credential: cred.key })}
             action="verifyCredential"
             dispatch={dispatch}
             showModal={showAuthnModal}
