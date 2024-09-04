@@ -322,6 +322,10 @@
     "developer_comment": "Phone display title",
     "string": "Phone number"
   },
+  "56tvVG": {
+    "developer_comment": "which verification methods - paragraph2",
+    "string": "Note: you can remove a verified identity connected to your eduID in the Identity area."
+  },
   "58dN25": {
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
@@ -352,6 +356,10 @@
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
+  },
+  "6Y+n+L": {
+    "developer_comment": "why re-login - heading",
+    "string": "I'm already logged in, why do I need to log in again?"
   },
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
@@ -1066,6 +1074,10 @@
     "developer_comment": "Login MFA heading",
     "string": "Log in: Extra security"
   },
+  "QhPfkI": {
+    "developer_comment": "international if personal number - paragraph",
+    "string": "Note: holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead."
+  },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Delete my eduID"
@@ -1393,10 +1405,6 @@
     "developer_comment": "Signup credentials button",
     "string": "Retry"
   },
-  "ZzoFJY": {
-    "developer_comment": "international if personal number - paragraph",
-    "string": "Note: Holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead."
-  },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
     "string": "Enter the code sent to {phone}"
@@ -1459,6 +1467,10 @@
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
     "string": "How can I make my eduID more secure?"
+  },
+  "bNO1Tz": {
+    "developer_comment": "which verification methods - paragraph1",
+    "string": "The service is constantly being developed to better support the needs of our various users. At present the methods below are available, depending on your situation such as assurance level requirements, nationality and residence. Note: you can remove a verified identity connected to your eduID in the Identity area."
   },
   "bO7IGW": {
     "developer_comment": "generic error page",
@@ -1791,10 +1803,6 @@
     "developer_comment": "generic error page",
     "string": "Return to home"
   },
-  "fqWgWY": {
-    "developer_comment": "eidas if personal number - paragraph",
-    "string": "If you have a Swedish personal identity number, use methods supported thereby instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
-  },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID authentication request failed. Please try again."
   },
@@ -1864,10 +1872,6 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
-  },
-  "hW6nti": {
-    "developer_comment": "which verification methods - paragraph",
-    "string": "The service is constantly being developed to better support the needs of our various users. At present the methods below are available, depending on your situation such as assurance level requirements, nationality and residence. Note: you can remove a verified identity connected to your eduID in the Identity area."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2212,10 +2216,6 @@
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
   },
-  "n3DMk8": {
-    "developer_comment": "create eduid - list item 5",
-    "string": "take note of the email address and password in use when your login details are presented to you. You can choose between an automatically generated or one you have created, when you register, reset and change password. Your eduID is now ready to use."
-  },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS is a federation of EU countries providing electronic identification to allow access to public authority systems for EU citizens, using their country's electronic ID."
@@ -2368,6 +2368,10 @@
     "developer_comment": "how create eduid - heading",
     "string": "How can I create an eduID?"
   },
+  "pUOZzA": {
+    "developer_comment": "create eduid - list item 5",
+    "string": "take note of your login details (username and password). Your eduID is now ready to use."
+  },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
     "string": "Save"
@@ -2459,10 +2463,6 @@
     "developer_comment": "Signup",
     "string": "Register: Enter your details"
   },
-  "piqytF": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
-  },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
     "string": "Click the link to permanently delete your eduID."
@@ -2522,6 +2522,10 @@
   },
   "pwfield.weak": {
     "string": "Weak password"
+  },
+  "pxZzwC": {
+    "developer_comment": "why re-login - paragraph",
+    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
   },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
@@ -2602,6 +2606,10 @@
     "developer_comment": "what is international - paragraph 1",
     "string": "Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely."
   },
+  "refRZe": {
+    "developer_comment": "how add security key - paragraph 2",
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
+  },
   "required": {
     "string": "*Field cannot be empty"
   },
@@ -2675,6 +2683,10 @@
   "sC4pUE": {
     "developer_comment": "ResetPasswordEnterEmail heading",
     "string": "Reset password: Enter the email address"
+  },
+  "sUoezh": {
+    "developer_comment": "eidas if personal number - paragraph",
+    "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
@@ -3024,6 +3036,10 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "If your institution is not in the list you cannot use your eduID to access services requiring ESI, contact your institution for more information."
+  },
+  "yKTxY6": {
+    "developer_comment": "create eduid - paragraph",
+    "string": "Note: you can choose between an automatically generated password or one you have created, when you register, reset and change password."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
