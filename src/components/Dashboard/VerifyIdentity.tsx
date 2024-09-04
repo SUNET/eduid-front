@@ -437,7 +437,7 @@ function AccordionItemWorld(): JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
-      title={<FormattedMessage description="accordion item svipe title" defaultMessage="All other countries" />}
+      title={<FormattedMessage description="accordion item svipe title" defaultMessage="Other countries" />}
       additionalInfo={
         <FormattedMessage
           description="accordion item Svipe ID additional info"

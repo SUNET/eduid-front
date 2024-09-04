@@ -37,7 +37,7 @@ test("renders frejaeID as expected", () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const frejaeIDAccordion = screen.getByRole("button", { name: /All other countries With Freja eID/i });
+  const frejaeIDAccordion = screen.getByRole("button", { name: /Other countries With Freja eID/i });
   act(() => {
     frejaeIDAccordion.click();
   });
