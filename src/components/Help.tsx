@@ -350,6 +350,18 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
+              <h4>
+                <FormattedMessage
+                  description="why re-login - heading"
+                  defaultMessage="I'm already logged in, why do I need to log in again?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="why re-login - paragraph"
+                  defaultMessage="In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
