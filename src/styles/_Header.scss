@@ -110,33 +110,31 @@ header {
   }
 }
 
-header nav ul {
-  display: flex;
-  align-items: baseline;
-  margin: 0;
-  padding: 0;
-}
-
-header nav .help-link {
-  padding: 0;
-  margin-right: 1rem;
-}
-
-header nav .lang-selected {
-  margin: 0;
-  cursor: pointer;
-  color: $txt-orange;
-  font-size: 0.9rem;
-  margin-right: 1rem;
-}
-
-
-#language-selector {
-  display: flex;
-}
-
-header .right-header {
+.right-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  #language-selector {
+    display: flex;
+  }
+
+  .lang-selected {
+    margin: 0;
+    cursor: pointer;
+    color: $txt-orange;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
+
+  .help-link {
+    padding: 0;
+    margin-right: 1rem;
+  }
+  .ul-right {
+    display: flex;
+    align-items: baseline;
+    margin: 0;
+    padding: 0;
+  }
 }

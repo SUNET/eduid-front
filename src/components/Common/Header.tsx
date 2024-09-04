@@ -110,7 +110,7 @@ export function Header(props: HeaderProps): JSX.Element {
       </a>
       <div className="right-header">
         <nav>
-          <ul>
+          <ul className="ul-right">
             <li id="language-selector">
               <span className="lang-selected" data-lang={locale}>
                 <a className="link" href="#" onClick={changeLanguage}>
