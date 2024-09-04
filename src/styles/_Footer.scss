@@ -22,29 +22,6 @@ footer {
   }
 }
 
-footer nav ul {
-  display: flex;
-  align-items: baseline;
-  margin: 0;
-  padding: 0;
-}
-
-footer nav .help-link {
-  padding: 0;
-  margin-right: 1rem;
-}
-
-footer nav .lang-selected {
-  margin: 0;
-  cursor: pointer;
-  color: $txt-orange;
-  font-size: 0.9rem;
-}
-
-#language-selector {
-  display: flex;
-}
-
 .non-selected {
   margin: 0;
   display: none;
