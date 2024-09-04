@@ -222,11 +222,16 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 5"
-                    defaultMessage={`take note of the email address and password in use when your login details are 
-                    presented to you. Your eduID is now ready to use.`}
+                    defaultMessage={`take note of your login details (username and password). Your eduID is now ready to use.`}
                   />
                 </li>
               </ul>
+              <p>
+                <FormattedMessage
+                  description="create eduid - paragraph"
+                  defaultMessage={`Note: you can choose between an automatically generated password or one you have created, when you register, reset and change password. `}
+                />
+              </p>
               <h4>
                 <FormattedMessage
                   description="how enhance eduid - heading"
@@ -402,7 +407,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="how add security key - paragraph 2"
-                  defaultMessage="Note: once you have added a security key to your eduID it must be used to log in."
+                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
                 />
               </p>
               <h4>
@@ -622,10 +627,16 @@ export function Help(): JSX.Element {
               </h4>
               <p>
                 <FormattedMessage
-                  description="which verification methods - paragraph"
+                  description="which verification methods - paragraph1"
                   defaultMessage={`The service is constantly being developed to better support the needs of our various 
                   users. At present the methods below are available, depending on your situation such as assurance 
                   level requirements, nationality and residence.`}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="which verification methods - paragraph2"
+                  defaultMessage={`Note: you can remove a verified identity connected to your eduID in the Identity area.`}
                 />
               </p>
               <section>
@@ -935,7 +946,7 @@ export function Help(): JSX.Element {
                     <FormattedMessage
                       description="eidas if personal number - paragraph"
                       defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
-                      simplify communication with Swedish authorities. Note: If you initially verify your identity with 
+                      simplify communication with Swedish authorities. Note: if you initially verify your identity with 
                       eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify 
                       yourself again using it in the Identity area.`}
                     />
@@ -1013,7 +1024,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="international if personal number - paragraph"
-                      defaultMessage={`Note: Holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead.`}
+                      defaultMessage={`Note: holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead.`}
                     />
                   </p>
                 </article>
