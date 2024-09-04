@@ -1,7 +1,7 @@
 import { authnGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
-import { svipeGetStatus } from "apis/eduidSvipe";
+import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -55,9 +55,9 @@ export function ExternalReturnHandler() {
     }
   }
 
-  async function fetchSvipeStatus(authn_id: string) {
-    const response = await dispatch(svipeGetStatus({ authn_id: authn_id }));
-    if (svipeGetStatus.fulfilled.match(response)) {
+  async function fetchFrejaeIDStatus(authn_id: string) {
+    const response = await dispatch(frejaeIDGetStatus({ authn_id: authn_id }));
+    if (frejaeIDGetStatus.fulfilled.match(response)) {
       processStatus(response.payload);
     }
   }
@@ -80,8 +80,8 @@ export function ExternalReturnHandler() {
     if (params.authn_id && params.app_name === "eidas" && app_loaded) {
       fetchEidasStatus(params.authn_id).catch(console.error);
     }
-    if (params.authn_id && params.app_name === "svipe_id") {
-      fetchSvipeStatus(params.authn_id).catch(console.error);
+    if (params.authn_id && params.app_name === "freja_eid") {
+      fetchFrejaeIDStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "bankid" && app_loaded) {
       fetchBankIDStatus(params.authn_id).catch(console.error);

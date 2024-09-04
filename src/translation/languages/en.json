@@ -47,6 +47,10 @@
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your identity."
   },
+  "/4y+Xd": {
+    "developer_comment": "accordion item Svipe ID additional info",
+    "string": "With Freja eID identity verification"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
@@ -138,10 +142,6 @@
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
-  },
-  "0xT3Pl": {
-    "developer_comment": "Verified identity",
-    "string": "Foreign Svipe identity"
   },
   "0zRv+w": {
     "developer_comment": "what are verification levels - paragraph",
@@ -278,6 +278,10 @@
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "with Freja+"
+  },
+  "43bN4Q": {
+    "developer_comment": "opening hours - list item 1",
+    "string": "Monday - Friday 09:00 - 16:00"
   },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
@@ -511,7 +515,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
+    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you need to log in again, with your security key if you are using one, if more than 5 minutes have passed since you logged in. \nFor more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
@@ -576,10 +580,6 @@
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Username"
-  },
-  "CoT2UX": {
-    "developer_comment": "accordion item Svipe ID additional info",
-    "string": "With Svipe ID cryptographic identity verification"
   },
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
@@ -799,10 +799,6 @@
     "developer_comment": "resend code",
     "string": "Send a new code"
   },
-  "J5e+d2": {
-    "developer_comment": "svipe-na",
-    "string": "This option is currently unavailable."
-  },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account."
@@ -921,6 +917,10 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Save"
+  },
+  "NGnsYS": {
+    "developer_comment": "verify identity",
+    "string": "If you have a {Freja_eID} you can connect it to your eduID."
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -1312,6 +1312,10 @@
   "Xl8Jtp": {
     "developer_comment": "signup first name",
     "string": "First name"
+  },
+  "Xopyks": {
+    "developer_comment": "verify identity",
+    "string": "The button below will take you to an external identification site, where by identifying yourself with Freja eID, you will verify your identity towards eduID."
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1775,10 +1779,6 @@
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja+ account (awarded the \"Svensk e-legitimation\" quality mark)"
   },
-  "fEDxuK": {
-    "developer_comment": "opening hours - list item 1",
-    "string": "Monday-Thursday 09:00-12:00, 13:00-16:00"
-  },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
     "string": "Update first and last names from the Swedish Population Register."
@@ -1802,6 +1802,24 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use methods supported thereby instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
+  },
+  "freja_eid.authn_request_failed": {
+    "string": "Freja eID authentication request failed. Please try again."
+  },
+  "freja_eid.authorization_fail": {
+    "string": "Freja eID authorization failed."
+  },
+  "freja_eid.frontend_action_not_supported": {
+    "string": "Freja eID frontend action not supported."
+  },
+  "freja_eid.identity_verify_success": {
+    "string": "Freja eID identity verification success."
+  },
+  "freja_eid.method_not_available": {
+    "string": "Freja eID is not available for this account. Please try another verification method."
+  },
+  "freja_eid.registration_level_not_satisfied": {
+    "string": "Freja eID registration level not satisfied."
   },
   "fuyJ7x": {
     "developer_comment": "button cancel",
@@ -1857,7 +1875,7 @@
   },
   "hW6nti": {
     "developer_comment": "which verification methods - paragraph",
-    "string": "The service is constantly being developed to better support the needs of our various users. At present the methods below are available, depending on your situation such as assurance level requirements, nationality and residence."
+    "string": "The service is constantly being developed to better support the needs of our various users. At present the methods below are available, depending on your situation such as assurance level requirements, nationality and residence. Note: you can remove a verified identity connected to your eduID in the Identity area."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2194,17 +2212,13 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
-  "mr79Fz": {
-    "developer_comment": "opening hours - list item 2",
-    "string": "Friday 9:00-12:00, 13:00-14:30"
-  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
   },
   "n3DMk8": {
     "developer_comment": "create eduid - list item 5",
-    "string": "take note of the email address and password in use when your login details are presented to you. Your eduID is now ready to use."
+    "string": "take note of the email address and password in use when your login details are presented to you. You can choose between an automatically generated or one you have created, when you register, reset and change password. Your eduID is now ready to use."
   },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
@@ -2459,7 +2473,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in and you need to keep at least one."
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
@@ -2808,21 +2822,6 @@
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
-  "svipe_id.authn_request_failed": {
-    "string": "Svipe ID authentication request failed. Please try again"
-  },
-  "svipe_id.authorization_fail": {
-    "string": "Svipe ID authorization failed."
-  },
-  "svipe_id.identity_verify_success": {
-    "string": "Svipe ID verification success"
-  },
-  "svipe_id.method_not_available": {
-    "string": "Svipe ID is not available for this account. Please try another verification method."
-  },
-  "svipe_id.not_found": {
-    "string": "Svipe ID not found."
-  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
@@ -3001,6 +3000,10 @@
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "Which are the methods of verification for eduID?"
+  },
+  "y/qTJ8": {
+    "developer_comment": "Verified identity",
+    "string": "Freja eID identity"
   },
   "y1sPSs": {
     "developer_comment": "what is orcid - heading",

@@ -51,12 +51,12 @@ export interface EidasIdentity {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SvipeIdentity extends EidasIdentity {}
+export interface FrejaeIDIdentity extends EidasIdentity {}
 
 export interface UserIdentities {
   nin?: NinIdentity;
   eidas?: EidasIdentity;
-  svipe?: SvipeIdentity;
+  freja?: FrejaeIDIdentity;
   is_verified: boolean;
 }
 

@@ -47,6 +47,10 @@
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
   },
+  "/4y+Xd": {
+    "developer_comment": "accordion item Svipe ID additional info",
+    "string": "Med Freja eID identitetsverifiering"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Registrera"
@@ -138,10 +142,6 @@
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
-  },
-  "0xT3Pl": {
-    "developer_comment": "Verified identity",
-    "string": "Utländskt Svipe-identitet"
   },
   "0zRv+w": {
     "developer_comment": "what are verification levels - paragraph",
@@ -278,6 +278,10 @@
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "med Freja+"
+  },
+  "43bN4Q": {
+    "developer_comment": "opening hours - list item 1",
+    "string": "måndag - fredag 09:00 - 16:00"
   },
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
@@ -511,7 +515,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
+    "string": "Vid vissa användningstillfällen som kräver högre säkerhet, t.ex. när du byter lösenord, ändrar 2FA login inställning, raderar ditt eduID-konto eller lägger till/tar bort säkerhetsnyckel behöver du logga in igen, med din säkerhetsnyckel om du använder det, om det har gått mer än 5 minuter sedan inloggning. \nFör mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
@@ -576,10 +580,6 @@
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Användarnamn"
-  },
-  "CoT2UX": {
-    "developer_comment": "accordion item Svipe ID additional info",
-    "string": "Med Svipe ID kryptografisk identitetsverifiering"
   },
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
@@ -799,17 +799,13 @@
     "developer_comment": "resend code",
     "string": "Skicka ny kod igen"
   },
-  "J5e+d2": {
-    "developer_comment": "svipe-na",
-    "string": "Det här alternativet är för närvarande inte tillgängligt."
-  },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. {link} eller ditt studentkonto."
   },
   "K427ha": {
     "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan en USB-säkerhetsnyckel eller din enhet."
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
   },
   "KGKbB9": {
     "developer_comment": "accordion item Add phone number",
@@ -921,6 +917,10 @@
   "NDdvRn": {
     "developer_comment": "button save",
     "string": "Spara"
+  },
+  "NGnsYS": {
+    "developer_comment": "verify identity",
+    "string": "Om du har ett {Freja_eID} kan du koppla det till ditt eduID."
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -1312,6 +1312,10 @@
   "Xl8Jtp": {
     "developer_comment": "signup first name",
     "string": "Förnamn"
+  },
+  "Xopyks": {
+    "developer_comment": "verify identity",
+    "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Freja eID verifierar din identitet mot eduID."
   },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
@@ -1775,10 +1779,6 @@
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja+ konto (godkänd svensk e-legitimation)"
   },
-  "fEDxuK": {
-    "developer_comment": "opening hours - list item 1",
-    "string": "måndag till torsdag 09:00-12:00, 13:00-16:00"
-  },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
     "string": "Uppdatera för- och efternamn från folkbokföringen."
@@ -1802,6 +1802,24 @@
   "fqWgWY": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
+  },
+  "freja_eid.authn_request_failed": {
+    "string": "Freja eID autentiseringsbegäran misslyckades. Vänligen Försök igen."
+  },
+  "freja_eid.authorization_fail": {
+    "string": "Freja eID autentisering misslyckades."
+  },
+  "freja_eid.frontend_action_not_supported": {
+    "string": "Freja eID frontend action stöds inte. "
+  },
+  "freja_eid.identity_verify_success": {
+    "string": "Freja eID Identitetsverifiering lyckades."
+  },
+  "freja_eid.method_not_available": {
+    "string": "Freja eID är inte tillgängligt för detta konto. Vänligen försök med en annan verifieringsmetod."
+  },
+  "freja_eid.registration_level_not_satisfied": {
+    "string": "Freja eID registreringsnivå inte uppfylld."
   },
   "fuyJ7x": {
     "developer_comment": "button cancel",
@@ -1857,7 +1875,7 @@
   },
   "hW6nti": {
     "developer_comment": "which verification methods - paragraph",
-    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
+    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats. Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID under Identitet."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2194,17 +2212,13 @@
     "developer_comment": "Notification modal close label",
     "string": "Stäng"
   },
-  "mr79Fz": {
-    "developer_comment": "opening hours - list item 2",
-    "string": "fredag 9:00-12:00, 13:00-14:30"
-  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Radera eduID"
   },
   "n3DMk8": {
     "developer_comment": "create eduid - list item 5",
-    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Ditt eduID är redo att användas."
+    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Du kan välja ett automatiskt genererat eller ett du skapat själv, både vid registrering, återställning och ändring av lösenord. Ditt eduID är redo att användas."
   },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
@@ -2459,7 +2473,7 @@
   },
   "piqytF": {
     "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in och du behöver ha minst en."
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in i eduID, om du inte stänger av denna funktion under Tvåfaktorsautenticering (2FA) i Avancerade inställningar. Även då kan du behöva använda din säkerhetsnyckel om andra anslutande tjänster kräver 2FA."
   },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
@@ -2808,21 +2822,6 @@
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
-  "svipe_id.authn_request_failed": {
-    "string": "Svipe ID autentiseringsbegäran misslyckades. Försök igen"
-  },
-  "svipe_id.authorization_fail": {
-    "string": "Svipe ID auktorisering misslyckades."
-  },
-  "svipe_id.identity_verify_success": {
-    "string": "Svipe ID verifiering lyckades"
-  },
-  "svipe_id.method_not_available": {
-    "string": "Svipe ID är inte tillgängligt för detta konto. Försök med en annan verifieringsmetod."
-  },
-  "svipe_id.not_found": {
-    "string": "Svipe ID hittades inte."
-  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
@@ -3001,6 +3000,10 @@
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "Vilka verifieringsmetoder finns för eduID?"
+  },
+  "y/qTJ8": {
+    "developer_comment": "Verified identity",
+    "string": "Freja eID identitet"
   },
   "y1sPSs": {
     "developer_comment": "what is orcid - heading",
