@@ -2525,7 +2525,7 @@
   },
   "pxZzwC": {
     "developer_comment": "why re-login - paragraph",
-    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
+    "string": "Some situations require added security, e.g. changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key. If more than 5 minutes have passed since you last logged in you will be asked to log in again (with your security key if you are using one), to complete these actions."
   },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
