@@ -31,9 +31,9 @@
     "developer_comment": "button add",
     "string": "Lägg till"
   },
-  "+j0JYj": {
-    "developer_comment": "method svipe - paragraph",
-    "string": ", kan du använda {emphasis} med hjälp av ditt pass för att verifiera din identitet. Läs mer om Svipe iD nedan."
+  "+ZbEOX": {
+    "developer_comment": "accordion item svipe title",
+    "string": "Andra länder"
   },
   "/+3WQI": {
     "developer_comment": "recommendation title",
@@ -191,6 +191,10 @@
     "developer_comment": "what is sunet - paragraph 1",
     "string": "eduID är en tjänst som tillhandahålls av SUNET (Swedish University Computer Network), som är en del av Vetenskapsrådet. SUNET tillgodoser bl.a. datakommunikation och nätverk hos svenska lärosäten och andra offentliga organisationer med koppling till forskning eller högre utbildning."
   },
+  "2WFt6m": {
+    "developer_comment": "freja - error",
+    "string": "Obs: inte alla nationaliteter stöds ännu av denna lösning men arbetet med att avsevärt öka omfattningen är pågående."
+  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 tecken"
@@ -295,10 +299,6 @@
     "developer_comment": "NIN display link text",
     "string": "lägg till personnummer"
   },
-  "4JwhDk": {
-    "developer_comment": "svipe if personal number - paragraph",
-    "string": "Innehavare av svenskt personnummer uppmanas att istället använda sig av metoderna som stöds därav."
-  },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Inte inloggad"
@@ -310,6 +310,10 @@
     "developer_comment": "captcha modal title",
     "string": "För att begära kod, fyll i nedan captcha."
   },
+  "4bJr5y": {
+    "developer_comment": "what is international - heading",
+    "string": "Vad är Freja?"
+  },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
     "string": "Öka säkerheten för ditt eduID eller anslut det till andra tjänster."
@@ -317,6 +321,10 @@
   "56cz7x": {
     "developer_comment": "Phone display title",
     "string": "Telefonnummer"
+  },
+  "56tvVG": {
+    "developer_comment": "which verification methods - paragraph2",
+    "string": "Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID bland inställningarna för Identitet."
   },
   "58dN25": {
     "developer_comment": "method eidas - heading",
@@ -348,6 +356,10 @@
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Att välja säkerhetsnyckel"
+  },
+  "6Y+n+L": {
+    "developer_comment": "why re-login - heading",
+    "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
   },
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
@@ -384,6 +396,10 @@
   "7W/zTi": {
     "developer_comment": "how use other devices - heading",
     "string": "Hur kan jag logga in med en annan enhet?"
+  },
+  "7j/9Vn": {
+    "developer_comment": "about freja - handle",
+    "string": "Om Freja (med Svenskt person/samordnings-nummer)"
   },
   "7rcGK1": {
     "developer_comment": "column value label",
@@ -445,6 +461,10 @@
     "developer_comment": "Login front page",
     "string": "Har du inte eduID?"
   },
+  "9KOh5D": {
+    "developer_comment": "use international - list definition",
+    "string": "Hur du kan använda Freja med eduID:"
+  },
   "9LmNwQ": {
     "developer_comment": "usb key technical section - list item 1",
     "string": "Säkerhetsnyckeln måste kunna genomföra en attestation och finnas i metadatat,"
@@ -472,10 +492,6 @@
   "9hkMET": {
     "developer_comment": "Registration confirm password",
     "string": "Registrera: Rekommenderat lösenord"
-  },
-  "9t9vVw": {
-    "developer_comment": "what is svipe - paragraph 1",
-    "string": "Svipe iD är en identitetsverifierings-plattform som med hjälp av Svipe-appen, ett biometriskt pass eller ett ID-kort från 140 olika länder, tillsammans med användarens mobils ansiktsigenkännings-teknik kan verifiera en digital identitet på distans."
   },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
@@ -515,7 +531,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "Vid vissa användningstillfällen som kräver högre säkerhet, t.ex. när du byter lösenord, ändrar 2FA login inställning, raderar ditt eduID-konto eller lägger till/tar bort säkerhetsnyckel behöver du logga in igen, med din säkerhetsnyckel om du använder det, om det har gått mer än 5 minuter sedan inloggning. \nFör mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
+    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
@@ -601,6 +617,10 @@
     "developer_comment": "verify identity unverified description",
     "string": "För att använda vissa tjänster behöver din identitet verifieras. Koppla din identitet till ditt eduID för att få mest användning av det."
   },
+  "DwpQaM": {
+    "developer_comment": "method international - heading",
+    "string": "Om du inte är EU-medborgare och inte har ett svenskt personnummer"
+  },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Brevet är giltigt till"
@@ -636,10 +656,6 @@
     "developer_comment": "Errors go to dashboard instruction",
     "string": "Du har åtkomst till dina inställningar i"
   },
-  "EvzjFY": {
-    "developer_comment": "about svipe - handle",
-    "string": "Om Svipe iD"
-  },
   "FDlOke": {
     "developer_comment": "verify identity vetting explanation add phone number",
     "string": "Börja med att lägga till ditt telefonnummer i {linkToSettings}"
@@ -652,9 +668,9 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Koppla din identitet till ditt eduID"
   },
-  "FfExJp": {
-    "developer_comment": "verification methods - list item 3",
-    "string": "användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja+ nedan."
+  "Fcqru6": {
+    "developer_comment": "use international - list item 1",
+    "string": "för att bekräfta ditt eduID med Freja behöver du först ett Freja-konto med en profil som är bekräftad med ditt pass, genom att installera {FrejaApp} på din mobila enhet (iOS eller Android) och följa instruktionerna,"
   },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
@@ -714,10 +730,6 @@
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Lösenord"
-  },
-  "GMrz0F": {
-    "developer_comment": "use svipe - list definition",
-    "string": "Hur du kan använda Svipe iD med eduID:"
   },
   "GO322p": {
     "developer_comment": "how use other devices - paragraph",
@@ -974,6 +986,10 @@
     "developer_comment": "about verification of identity - handle",
     "string": "Verifiering av identitet"
   },
+  "ONk9/l": {
+    "developer_comment": "method international - paragraph",
+    "string": ", kan du använda {emphasis} med hjälp av ditt pass för att verifiera din identitet. Läs mer om Freja nedan."
+  },
   "OOZ1Jb": {
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
@@ -1030,10 +1046,6 @@
     "developer_comment": "status",
     "string": "status"
   },
-  "PrREZm": {
-    "developer_comment": "what is svipe - heading",
-    "string": "Vad är Svipe iD?"
-  },
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tänk på att välja ett säkert lösenord"
@@ -1050,10 +1062,6 @@
     "developer_comment": "signup last name",
     "string": "Efternamn"
   },
-  "QHR4Ik": {
-    "developer_comment": "about freja - handle",
-    "string": "Om Freja+"
-  },
   "QLJcC4": {
     "developer_comment": "security last used date",
     "string": "Aldrig använd"
@@ -1065,6 +1073,10 @@
   "Qgc9l0": {
     "developer_comment": "Login MFA heading",
     "string": "Logga in: Extra säkerhet"
+  },
+  "QhPfkI": {
+    "developer_comment": "international if personal number - paragraph",
+    "string": "Obs: innehavare av svenskt person- eller samordningsnummer eller EU-medborgare uppmanas att istället använda sig av metoderna som stöds därav."
   },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
@@ -1109,17 +1121,9 @@
     "developer_comment": "Currently in progress title",
     "string": "Pågående just nu"
   },
-  "SK2AK4": {
-    "developer_comment": "method svipe - heading",
-    "string": "Om du inte är EU-medborgare och inte har ett svenskt personnummer"
-  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Lösenord"
-  },
-  "SUnzob": {
-    "developer_comment": "svipe - error",
-    "string": "Obs: pga ändrade förhållanden samt regler kring personuppgiftshantering finns detta alternativ inte tillgängligt för närvarande men utredning av lösningar är pågående."
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -1301,10 +1305,6 @@
     "developer_comment": "privacy policy - list item 1",
     "string": "lagrar information som du har angivit samt uppdateringar från betrodda register,"
   },
-  "XRiftZ": {
-    "developer_comment": "accordion item svipe title",
-    "string": "Alla andra länder"
-  },
   "Xi2uNT": {
     "developer_comment": "accordion item swedish title",
     "string": "Svenskt personnummer eller samordningsnummer"
@@ -1467,6 +1467,10 @@
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
     "string": "Hur kan jag göra mitt eduID säkrare?"
+  },
+  "bNO1Tz": {
+    "developer_comment": "which verification methods - paragraph1",
+    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
   },
   "bO7IGW": {
     "developer_comment": "generic error page",
@@ -1799,10 +1803,6 @@
     "developer_comment": "generic error page",
     "string": "Återvänd till startsidan"
   },
-  "fqWgWY": {
-    "developer_comment": "eidas if personal number - paragraph",
-    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
-  },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID autentiseringsbegäran misslyckades. Vänligen Försök igen."
   },
@@ -1873,10 +1873,6 @@
     "developer_comment": "Header logout",
     "string": "Logga ut"
   },
-  "hW6nti": {
-    "developer_comment": "which verification methods - paragraph",
-    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats. Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID under Identitet."
-  },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta måste du kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på Spara knappen för att lagra det för framtida bruk. "
@@ -1920,6 +1916,10 @@
   "i3E2/S": {
     "developer_comment": "about usb key - handle",
     "string": "Om Säkerhetsnycklar"
+  },
+  "iC8nbv": {
+    "developer_comment": "use international - list item 2",
+    "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'Andra länder' och scanna QR-koden som genereras av Freja genom att följa instruktionerna."
   },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
@@ -2216,10 +2216,6 @@
     "developer_comment": "DeleteAccount",
     "string": "Radera eduID"
   },
-  "n3DMk8": {
-    "developer_comment": "create eduid - list item 5",
-    "string": "notera e-postadressen och lösenordet när dina inloggningsuppgifter visas för dig. Du kan välja ett automatiskt genererat eller ett du skapat själv, både vid registrering, återställning och ändring av lösenord. Ditt eduID är redo att användas."
-  },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS är en federation av anslutna EU-länder som utfärdar en elektronisk identifiering för att erbjuda inloggning till alla offentliga verksamheters system för medborgare inom EU, med hjälp av sitt lands e-legitimation."
@@ -2231,10 +2227,6 @@
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
     "string": "Certifierad FIDO 2.0, läs mer på {Fido}."
-  },
-  "nRRq5w": {
-    "developer_comment": "what is svipe - paragraph 2",
-    "string": "Informationen som Svipe sparar om dig kan läsas i deras dataskyddspolicy, men i korthet kan sägas att appen läser in information från ditt pass eller ID-dokument, som sparas lokalt i din enhet, så företaget Svipe har inte tillgång till informationen som finns lagrad på din enhet."
   },
   "nV6G8Q": {
     "developer_comment": "what are verification levels - heading",
@@ -2319,10 +2311,6 @@
   "oAK8WM": {
     "string": "Använd mitt {bankID}"
   },
-  "oEFGdi": {
-    "developer_comment": "use svipe - list item 1",
-    "string": "för att bekräfta ditt eduID med Svipe behöver du först ett Svipe-konto med en profil som är bekräftad med ditt pass eller ID-kort i appen Svipe, tillgänglig i App store for IOS och Google Play för Android,"
-  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Avbryt"
@@ -2379,6 +2367,10 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "Hur kan jag skapa ett eduID?"
+  },
+  "pUOZzA": {
+    "developer_comment": "create eduid - list item 5",
+    "string": "notera dina inloggningsuppgifter (e-postadress och lösenord). Ditt eduID är redo att användas."
   },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
@@ -2471,10 +2463,6 @@
     "developer_comment": "Signup",
     "string": "Registrera: Ange dina uppgifter"
   },
-  "piqytF": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in i eduID, om du inte stänger av denna funktion under Tvåfaktorsautenticering (2FA) i Avancerade inställningar. Även då kan du behöva använda din säkerhetsnyckel om andra anslutande tjänster kräver 2FA."
-  },
   "pkC7dv": {
     "developer_comment": "DeleteAccount",
     "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
@@ -2534,6 +2522,10 @@
   },
   "pwfield.weak": {
     "string": "Svagt lösenord"
+  },
+  "pxZzwC": {
+    "developer_comment": "why re-login - paragraph",
+    "string": "Vissa situationer kräver högre säkerhet, t.ex. lösenordsbyte, ändring av 2FA inställning, raderande av eduID-konto och ändrade säkerhetsnycklar. Om mer än 5 minuter har passerat sedan senaste inloggning kommer du behöva logga in igen (med säkerhetsnyckel om du har en tillagd) för att slutföra åtgärderna."
   },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
@@ -2610,6 +2602,14 @@
     "developer_comment": "security zone modal",
     "string": "Du behöver logga in igen för att kunna utföra åtgärden."
   },
+  "rdd33t": {
+    "developer_comment": "what is international - paragraph 1",
+    "string": "Freja är ett eID, en identitetsverifierings-plattform som med hjälp av Freja-appen i användarens mobil tillsammans med ett biometriskt pass kan verifiera en digital identitet på distans."
+  },
+  "refRZe": {
+    "developer_comment": "how add security key - paragraph 2",
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in, om du inte har stängt av 2FA inställningen i Avancerade inställningar. Du kan ändå behöva använda säkerhetsnyckeln för åtkomst till andra anslutande tjänster som kräver det."
+  },
   "required": {
     "string": "*Fältet kan inte vara tomt"
   },
@@ -2683,6 +2683,10 @@
   "sC4pUE": {
     "developer_comment": "ResetPasswordEnterEmail heading",
     "string": "Återställ lösenord: Ange e-postadressen"
+  },
+  "sUoezh": {
+    "developer_comment": "eidas if personal number - paragraph",
+    "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
@@ -2815,6 +2819,10 @@
   "signup.webauthn-not-registered": {
     "string": "Säkerhetsnyckel inte registrerad."
   },
+  "sjWO92": {
+    "developer_comment": "what is international - paragraph 2",
+    "string": "Uppdaterad information om inkluderade länder kan hittas på: {FrejaList}"
+  },
   "slewFg": {
     "developer_comment": "start page lead title",
     "string": "Få ut det mesta av eduID genom att granska din information."
@@ -2845,10 +2853,6 @@
   "tW2jR4": {
     "developer_comment": "Reset Password email link sent heading",
     "string": "Återställ lösenord: Verifiera e-postadressen"
-  },
-  "tarlwb": {
-    "developer_comment": "use svipe - list item 2",
-    "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'Alla andra länder' och scanna QR-koden som genereras av Svipe iD genom att följa instruktionerna."
   },
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
@@ -2961,6 +2965,10 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
   },
+  "wd5z3l": {
+    "developer_comment": "about international - handle",
+    "string": "Om Freja (utanför EU och utan Svenskt person/samordnings-nummer)"
+  },
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
@@ -3017,6 +3025,10 @@
     "developer_comment": "use orcid - list item 1",
     "string": "läs mer och skaffa ett ORCID på {orcid},"
   },
+  "yGWQnw": {
+    "developer_comment": "verification methods - list item 3",
+    "string": "användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja nedan."
+  },
   "yHgn4B": {
     "developer_comment": "accordion item Phone additional info",
     "string": "Bekräfta ditt telefonnummer för att möjliggöra säker återställning av lösenord och verifiering av identitet."
@@ -3024,6 +3036,10 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Finns ditt lärosäte inte i listan ska du inte använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för mer information."
+  },
+  "yKTxY6": {
+    "developer_comment": "create eduid - paragraph",
+    "string": "Obs: du kan välja mellan ett automatiskt genererat lösenord eller ett du har skapat själv när du registrerar dig, återställer eller byter lösenord."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
