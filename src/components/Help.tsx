@@ -741,7 +741,7 @@ export function Help(): JSX.Element {
                 <p className="error-txt">
                   <FormattedMessage
                     description="freja - error"
-                    defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to increase the range is ongoing.`}
+                    defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to substantially increase the range is in progress.`}
                   />
                 </p>
               </section>
@@ -966,7 +966,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="what is international - paragraph 2"
-                      defaultMessage={`At present this solution is available for EU/EEA countries as well as Ukraine and the United Kingdom. Current information on what nationalities are included can be found at: {FrejaList}`}
+                      defaultMessage={`Current information on included nationalities can be found at: {FrejaList}`}
                       values={{
                         FrejaList: (
                           <a
