@@ -98,17 +98,17 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={identityPath}
+            to={advancedSettingsPath}
           >
-            <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
+            <FormattedMessage defaultMessage="Security/2FA" description="Dashboard nav tab name" />
           </NavLink>
 
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={advancedSettingsPath}
+            to={identityPath}
           >
-            <FormattedMessage defaultMessage="Account Linking" description="Dashboard nav tab name" />
+            <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
           </NavLink>
 
           <EduIDButton

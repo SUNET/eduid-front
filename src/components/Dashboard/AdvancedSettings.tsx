@@ -1,6 +1,6 @@
 import { faGears } from "@fortawesome/free-solid-svg-icons";
-import { AccountLinking } from "components/Dashboard/AccountLinking";
-import LadokContainer from "components/Dashboard/Ladok";
+import { Security } from "components/Common/Security";
+
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
@@ -17,9 +17,9 @@ export function AdvancedSettings(): JSX.Element {
   }, []);
 
   const currentPage = intl.formatMessage({
-    id: "Account Linking",
-    defaultMessage: "Account Linking",
-    description: "Account Linking",
+    id: "Security/2FA",
+    defaultMessage: "Security/2FA",
+    description: "Security/2FA",
   });
 
   return (
@@ -40,9 +40,8 @@ export function AdvancedSettings(): JSX.Element {
             />
           </p>
         </div>
+        <Security />
       </section>
-      <AccountLinking />
-      <LadokContainer />
     </React.Fragment>
   );
 }

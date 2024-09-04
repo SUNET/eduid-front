@@ -1,10 +1,11 @@
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import { Security } from "components/Common/Security";
 import { AccountId } from "components/Dashboard/AccountId";
+import { AccountLinking } from "components/Dashboard/AccountLinking";
 import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
 import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
+import LadokContainer from "components/Dashboard/Ladok";
 import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -45,8 +46,9 @@ export function Settings(): JSX.Element {
       <AccountId />
       <Emails />
       <ChangePasswordDisplay />
-      <Security />
       <Phones />
+      <AccountLinking />
+      <LadokContainer />
       <DeleteAccount />
     </React.Fragment>
   );
