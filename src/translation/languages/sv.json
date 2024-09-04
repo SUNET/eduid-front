@@ -531,7 +531,7 @@
   },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
-    "string": "Vid vissa användningstillfällen som kräver högre säkerhet, t.ex. när du byter lösenord, ändrar 2FA login inställning, raderar ditt eduID-konto eller lägger till/tar bort säkerhetsnyckel behöver du logga in igen, med din säkerhetsnyckel om du använder det, om det har gått mer än 5 minuter sedan inloggning. \nFör mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
+    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
