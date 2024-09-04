@@ -31,9 +31,9 @@
     "developer_comment": "button add",
     "string": "Add"
   },
-  "+j0JYj": {
-    "developer_comment": "method svipe - paragraph",
-    "string": ", you could use {emphasis} to verify your identity using your passport. Read more about Svipe iD below."
+  "+ZbEOX": {
+    "developer_comment": "accordion item svipe title",
+    "string": "Other countries"
   },
   "/+3WQI": {
     "developer_comment": "recommendation title",
@@ -191,6 +191,10 @@
     "developer_comment": "what is sunet - paragraph 1",
     "string": "eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions."
   },
+  "2WFt6m": {
+    "developer_comment": "freja - error",
+    "string": "Note: not all nationalities are yet supported by this solution but the work to substantially increase the range is in progress."
+  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
@@ -295,10 +299,6 @@
     "developer_comment": "NIN display link text",
     "string": "add id number"
   },
-  "4JwhDk": {
-    "developer_comment": "svipe if personal number - paragraph",
-    "string": "Note: Holders of Swedish personal identity numbers are advised to use that method instead."
-  },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Not logged in"
@@ -309,6 +309,10 @@
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
+  },
+  "4bJr5y": {
+    "developer_comment": "what is international - heading",
+    "string": "What is Freja?"
   },
   "4wt0d3": {
     "developer_comment": "advanced settings lead title",
@@ -385,6 +389,10 @@
     "developer_comment": "how use other devices - heading",
     "string": "How can I login with other devices?"
   },
+  "7j/9Vn": {
+    "developer_comment": "about freja - handle",
+    "string": "About Freja (with Swedish ID/COORD number)"
+  },
   "7rcGK1": {
     "developer_comment": "column value label",
     "string": "Value"
@@ -445,6 +453,10 @@
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
   },
+  "9KOh5D": {
+    "developer_comment": "use international - list definition",
+    "string": "How to use Freja with eduID:"
+  },
   "9LmNwQ": {
     "developer_comment": "usb key technical section - list item 1",
     "string": "The key must perform an attestation and exist in the metadata,"
@@ -472,10 +484,6 @@
   "9hkMET": {
     "developer_comment": "Registration confirm password",
     "string": "Register: Suggested password"
-  },
-  "9t9vVw": {
-    "developer_comment": "what is svipe - paragraph 1",
-    "string": "Svipe iD is based on an identity verification platform using biometric documents from over 140 countries, e.g. passports and ID-cards, combined with the users mobile device face-recognition ability, to create a verified digital identity than can be used remotely."
   },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
@@ -605,6 +613,10 @@
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
   },
+  "DwpQaM": {
+    "developer_comment": "method international - heading",
+    "string": "If you are not an EU citizen and without a Swedish personal identity number"
+  },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter is valid to"
@@ -640,10 +652,6 @@
     "developer_comment": "Errors go to dashboard instruction",
     "string": "You can review your settings at the"
   },
-  "EvzjFY": {
-    "developer_comment": "about svipe - handle",
-    "string": "About Svipe iD"
-  },
   "FDlOke": {
     "developer_comment": "verify identity vetting explanation add phone number",
     "string": "Start by adding your Swedish phone number in {linkToSettings}"
@@ -656,9 +664,9 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Connect your identity to your eduID"
   },
-  "FfExJp": {
-    "developer_comment": "verification methods - list item 3",
-    "string": "the user will be directed to the Freja eID website to use their service. If you don't have Freja+ you have to create it separately before you can complete verification of your eduID. Read more about Freja+ below."
+  "Fcqru6": {
+    "developer_comment": "use international - list item 1",
+    "string": "to verify your eduID using Freja you first need to get a Freja account with a verified profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,"
   },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
@@ -718,10 +726,6 @@
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Password"
-  },
-  "GMrz0F": {
-    "developer_comment": "use svipe - list definition",
-    "string": "How to use Svipe iD with eduID:"
   },
   "GO322p": {
     "developer_comment": "how use other devices - paragraph",
@@ -978,6 +982,10 @@
     "developer_comment": "about verification of identity - handle",
     "string": "Verification of Identity"
   },
+  "ONk9/l": {
+    "developer_comment": "method international - paragraph",
+    "string": ", you could use {emphasis} to verify your identity using your passport. Read more about Freja below."
+  },
   "OOZ1Jb": {
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
@@ -1034,10 +1042,6 @@
     "developer_comment": "status",
     "string": "status"
   },
-  "PrREZm": {
-    "developer_comment": "what is svipe - heading",
-    "string": "What is Svipe iD?"
-  },
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tip: Choose a strong password"
@@ -1053,10 +1057,6 @@
   "QDS1P5": {
     "developer_comment": "signup last name",
     "string": "Last name"
-  },
-  "QHR4Ik": {
-    "developer_comment": "about freja - handle",
-    "string": "About Freja+"
   },
   "QLJcC4": {
     "developer_comment": "security last used date",
@@ -1113,17 +1113,9 @@
     "developer_comment": "Currently in progress title",
     "string": "Currently in progress"
   },
-  "SK2AK4": {
-    "developer_comment": "method svipe - heading",
-    "string": "If you are not an EU citizen and without a Swedish personal identity number"
-  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
-  },
-  "SUnzob": {
-    "developer_comment": "svipe - error",
-    "string": "Note: due to changed circumstances and legislation regarding handling of personal information this alternative is not available at present, but a solution is being investigated."
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -1305,10 +1297,6 @@
     "developer_comment": "privacy policy - list item 1",
     "string": "stores information that you have provided as well as updates from trusted registers,"
   },
-  "XRiftZ": {
-    "developer_comment": "accordion item svipe title",
-    "string": "All other countries"
-  },
   "Xi2uNT": {
     "developer_comment": "accordion item swedish title",
     "string": "Swedish personal ID or coordination number"
@@ -1404,6 +1392,10 @@
   "ZsPPwh": {
     "developer_comment": "Signup credentials button",
     "string": "Retry"
+  },
+  "ZzoFJY": {
+    "developer_comment": "international if personal number - paragraph",
+    "string": "Note: Holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead."
   },
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
@@ -1903,6 +1895,10 @@
     "developer_comment": "about usb key - handle",
     "string": "About Security Keys"
   },
+  "iC8nbv": {
+    "developer_comment": "use international - list item 2",
+    "string": "login to eduID and scan the QR code produced by Freja from the 'Other countries' section in the Identity area of eduID by following the instructions."
+  },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
@@ -2214,10 +2210,6 @@
     "developer_comment": "usb key - list item 1",
     "string": "Certified FIDO 2.0, you can read more at {Fido}."
   },
-  "nRRq5w": {
-    "developer_comment": "what is svipe - paragraph 2",
-    "string": "You can stay informed about the information that Svipe saves about you and your ID-document by reading their data privacy policy. In short, the information uploaded to the app from your ID-document is saved locally on your device, and the company Svipe does not have access to it."
-  },
   "nV6G8Q": {
     "developer_comment": "what are verification levels - heading",
     "string": "What are verification levels?"
@@ -2300,10 +2292,6 @@
   },
   "oAK8WM": {
     "string": "Use my {bankID}"
-  },
-  "oEFGdi": {
-    "developer_comment": "use svipe - list item 1",
-    "string": "to verify your eduID using Svipe you first need a Svipe account with a verified profile supported by your ID-document, in the Svipe app available at App store for IOS, or Google Play for Android,"
   },
   "oR7sIx": {
     "developer_comment": "button cancel",
@@ -2592,6 +2580,10 @@
     "developer_comment": "security zone modal",
     "string": "You need to log in again to perform the requested action."
   },
+  "rdd33t": {
+    "developer_comment": "what is international - paragraph 1",
+    "string": "Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely."
+  },
   "required": {
     "string": "*Field cannot be empty"
   },
@@ -2797,6 +2789,10 @@
   "signup.webauthn-not-registered": {
     "string": "Webauthn not registered."
   },
+  "sjWO92": {
+    "developer_comment": "what is international - paragraph 2",
+    "string": "Current information on included nationalities can be found at: {FrejaList}"
+  },
   "slewFg": {
     "developer_comment": "start page lead title",
     "string": "Make the most out of eduID by reviewing your information."
@@ -2842,10 +2838,6 @@
   "tW2jR4": {
     "developer_comment": "Reset Password email link sent heading",
     "string": "Reset Password: Verify email address"
-  },
-  "tarlwb": {
-    "developer_comment": "use svipe - list item 2",
-    "string": "login to eduID and scan the QR code produced by Svipe iD from the 'All other countries' section in the Identity area of eduID by following the instructions."
   },
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
@@ -2958,6 +2950,10 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
   },
+  "wd5z3l": {
+    "developer_comment": "about international - handle",
+    "string": "About Freja (outside EU and without Swedish ID/COORD number)"
+  },
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
@@ -3009,6 +3005,10 @@
   "y4SB0a": {
     "developer_comment": "use orcid - list item 1",
     "string": "read more and register for an ORCID at {orcid},"
+  },
+  "yGWQnw": {
+    "developer_comment": "verification methods - list item 3",
+    "string": "the user will be directed to the Freja eID website to use their service. If you don't have Freja+ you have to create it separately before you can complete verification of your eduID. Read more about Freja below."
   },
   "yHgn4B": {
     "developer_comment": "accordion item Phone additional info",
