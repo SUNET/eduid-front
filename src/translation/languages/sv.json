@@ -1470,7 +1470,7 @@
   },
   "bNO1Tz": {
     "developer_comment": "which verification methods - paragraph1",
-    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats. Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID under Identitet."
+    "string": "Tjänsten utvecklas löpande för att bäst kunna möta våra användares olika behov. För närvarande stöds verifieringsmetoderna nedan, beroende av din situation som t.ex. efterfrågad tillitsnivå, nationalitet och boplats."
   },
   "bO7IGW": {
     "developer_comment": "generic error page",
