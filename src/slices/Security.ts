@@ -27,7 +27,6 @@ const securitySlice = createSlice({
   initialState,
   reducers: {
     chooseAuthenticator: (state, action: PayloadAction<string>) => {
-      console.log("[action.payload", action.payload);
       return {
         ...state,
         webauthn_authenticator: action.payload,
