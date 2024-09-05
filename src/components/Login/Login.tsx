@@ -7,10 +7,10 @@ import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
+import TemporaryInfo from "./TemporaryInfo";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
 import UseOtherDevice2 from "./UseOtherDevice2";
-import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {
@@ -68,8 +68,9 @@ function Login(): JSX.Element {
     <React.Fragment>
       {next_page === "NEW_DEVICE" && <NewDevice />}
       {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
-      {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
+      {/* {next_page === "USERNAMEPASSWORD" && <UsernamePw />} */}
       {next_page === "TOU" && <TermsOfUse />}
+      {next_page === "USERNAMEPASSWORD" && <TemporaryInfo />}
       {next_page === "MFA" && <MultiFactorAuth />}
       {next_page === "FINISHED" && <RenderFinished />}
       {/* show nothing before next_page is initialised */ next_page && <RememberMeCheckbox />}

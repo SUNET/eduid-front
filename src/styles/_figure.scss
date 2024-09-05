@@ -68,4 +68,10 @@ figure,
   border: 1px solid $bright-orange;
   border-radius: 10px;
   background: $white;
+
+  ul.bullets {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-bottom: 1.5rem;
+  }
 }

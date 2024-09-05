@@ -5,7 +5,7 @@ import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
-export default function TermsOfUse(): JSX.Element {
+export default function TemporaryInfo(): JSX.Element {
   const dispatch = useAppDispatch();
   const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
   // version is the version of the ToU the backend requests we ask the user to accept
@@ -57,7 +57,7 @@ export default function TermsOfUse(): JSX.Element {
       <div className="notice-box">
         <h2>
           <FormattedMessage
-            defaultMessage="We're no longer supporting phone numbers"
+            defaultMessage="We're no longer supporting phone verification"
             description="Temp info - heading"
           />
         </h2>
@@ -70,6 +70,19 @@ export default function TermsOfUse(): JSX.Element {
         <ul className="bullets">
           <li>verifying identity</li>
           <li>resetting password</li>
+        </ul>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="This change may affect your current verification methods. As an alternative, we recommend verifying:"
+            description="Temp info - message"
+          />
+        </p>
+        <ul className="bullets">
+          <li>with a security key</li>
+          <li>with BankID</li>
+          <li>with Freja+</li>
+          <li>with eIDAS</li>
         </ul>
       </div>
 
