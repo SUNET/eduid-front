@@ -290,45 +290,32 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   async function handleVerifyWebauthnTokenFreja(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
-    (async () => {
-      const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-      setMethod("freja");
-      if (eidasVerifyCredential.fulfilled.match(response)) {
-        if (response.payload.location) {
-          window.location.assign(response.payload.location);
-        }
-      } else if (eidasVerifyCredential.rejected.match(response)) {
-        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          setShowAuthnModal(true);
-          // setCredentialDescription((response?.payload as any).payload.credential_description);
-        }
+    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+    setMethod("freja");
+    if (eidasVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
       }
-    })();
+    } else if (eidasVerifyCredential.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setShowAuthnModal(true);
+      }
+    }
   }
 
   async function handleVerifyWebauthnTokenBankID(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
-    (async () => {
-      const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
-      setMethod("bankid");
-      if (bankIDVerifyCredential.fulfilled.match(response)) {
-        if (response.payload.location) {
-          window.location.assign(response.payload.location);
-        }
-      } else if (bankIDVerifyCredential.rejected.match(response)) {
-        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          setShowAuthnModal(true);
-          // setCredentialDescription((response?.payload as any).payload.credential_description);
-        }
+    const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+    setMethod("bankid");
+    if (bankIDVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
       }
-      //TODO: Check if frontend are still receiving this error message from the backend.
-      // else if (response?.payload.payload.message === "bankid.must_authenticate") {
-      //   dispatch(clearNotifications());
-      //   const nextURL = config.dashboard_link + "settings/advanced-settings";
-      //   const url = config.authn_service_url + "reauthn?next=" + encodeURIComponent(nextURL);
-      //   window.location.assign(url);
-      // }
-    })();
+    } else if (bankIDVerifyCredential.rejected.match(response)) {
+      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+        setShowAuthnModal(true);
+      }
+    }
   }
 
   async function handleRemoveWebauthnToken(credential_key: string) {
