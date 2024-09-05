@@ -3,10 +3,7 @@
 
 .modal {
   display: flex !important;
-  justify-content: center;
-  width: 60%;
-  margin: 0 20%;
-  padding: 1rem 0;
+  padding: 1rem 4rem;
 
   .modal-dialog.security-confirm-modal {
     .modal-body {
@@ -15,9 +12,10 @@
   }
 
   &-dialog {
+    @extend .horizontal-content-margin;
+    max-width: calc(870px - 4rem);
     background-color: $white;
     border-radius: 20px;
-    width: 100%;
     margin: auto;
 
     .modal-content {
@@ -74,14 +72,6 @@
           }
         }
 
-        // .resend-code-container {
-        //   margin-top: 1rem;
-
-        //   a {
-        //     font-size: 1rem;
-        //   }
-        // }
-
         @media (max-width: $bp-lg) {
           font-size: 1.125rem;
 
@@ -93,11 +83,6 @@
               font-size: inherit;
             }
           }
-
-          // .resend-code-container {
-          //   margin-top: 1rem;
-          //   font-size: 0.9rem;
-          // }
         }
       }
 
@@ -115,14 +100,7 @@
       }
     }
 
-    @media (min-width: 576px) {
-      max-width: 100%;
-    }
-
     @media (max-width: $bp-lg) {
-      width: calc(100% - 1.25rem);
-      margin: auto 1rem;
-
       .modal-body {
         font-size: 1.125rem;
 
@@ -134,21 +112,14 @@
             font-size: inherit;
           }
         }
-
-        // .resend-code-container {
-        //   margin-top: 1rem;
-        //   font-size: 0.9rem;
-        // }
       }
-    }
-
-    @media (max-width: $bp-md) {
-      max-width: calc(100% - 40px);
     }
   }
 
   @media (max-width: $bp-lg) {
-    width: 100%;
-    margin: 0;
+    padding: 1rem 2rem;
+  }
+  @media (max-width: $bp-md) {
+    padding: 1rem;
   }
 }
