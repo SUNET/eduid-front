@@ -16,6 +16,7 @@ export interface AuthenticateResponse {
 
 export interface AuthenticateRequest {
   frontend_action?: string;
+  frontend_state?: string;
 }
 
 /*********************************************************************************************************************/

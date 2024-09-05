@@ -11,6 +11,7 @@ export function Index() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
 
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
@@ -18,7 +19,6 @@ export function Index() {
       document.location.href = dashboard_link;
     }
   }
-  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
 
   async function deleteAccount() {
     const response = await dispatch(postDeleteAccount());

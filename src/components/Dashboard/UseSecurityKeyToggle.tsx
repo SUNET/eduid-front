@@ -2,6 +2,7 @@ import { postSecurityKeyPreference, PreferencesData } from "apis/eduidPersonalDa
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import authnSlice from "slices/Authn";
 import { AuthenticateModal } from "./Authenticate";
 
 export default function UseSecurityKeyToggle(): JSX.Element | null {
@@ -11,12 +12,20 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   );
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
+  const frontend_action = useAppSelector((state: any) => state.authn.frontend_action);
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
 
+  useEffect(() => {
+    if (frontend_action === "changeSecurityPreferencesAuthn") {
+      handleSwitchChange();
+    }
+  }, [frontend_action]);
+
   async function handleSwitchChange() {
+    dispatch(authnSlice.actions.setFrontendActionState());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));

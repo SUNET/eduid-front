@@ -10,11 +10,17 @@ export async function handleAuthenticate(props: { action: string; dispatch: any 
   }
 }
 
-export function AuthenticateModal(props: { action: string; dispatch: any; setShowModal: any; showModal: boolean }) {
+export function AuthenticateModal(props: {
+  action: string;
+  state?: string;
+  dispatch: any;
+  setShowModal: any;
+  showModal: boolean;
+}) {
   async function handleAuthenticate() {
     props.setShowModal(false);
     props.dispatch(clearNotifications());
-    const response = await props.dispatch(authenticate({ frontend_action: props.action }));
+    const response = await props.dispatch(authenticate({ frontend_action: props.action, frontend_state: props.state }));
     if (authenticate.fulfilled.match(response)) {
       window.location.href = response?.payload.location;
     }

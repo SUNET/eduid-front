@@ -21,6 +21,7 @@ import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import { removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
+import authnSlice from "slices/Authn";
 import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
@@ -155,8 +156,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
   const [showAuthnModal, setShowAuthnModal] = useState(false);
+  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+
+  useEffect(() => {
+    if (frontend_action) {
+      if (frontend_action === "removeIdentity") {
+        handleRemoveIdentity();
+      }
+    }
+  }, [frontend_action]);
 
   async function handleRemoveIdentity() {
+    dispatch(authnSlice.actions.setFrontendActionState());
     // find dynamically which identity_type
     const idType =
       identities &&
