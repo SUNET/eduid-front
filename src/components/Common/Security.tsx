@@ -263,7 +263,6 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const [credentialKey, setCredentialKey] = useState<string | null>();
-  // const [credentialDescription, setCredentialDescription] = useState<string | null>();
   const authn = useAppSelector((state) => state.authn);
   const [method, setMethod] = useState<string | null>();
   let btnVerify;
@@ -272,23 +271,24 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
-  const parsedFrontendState = authn.frontend_state && JSON.parse(authn?.frontend_state);
 
   useEffect(() => {
     (async () => {
       if (authn.frontend_action === "removeSecurityKeyAuthn" && authn.frontend_state) {
         // call requestCredentials once app is loaded
         handleRemoveWebauthnToken(authn.frontend_state);
-      }
-      if (authn.frontend_action === "verifyCredential" && authn.frontend_state) {
+      } else if (authn.frontend_action === "verifyCredential" && authn.frontend_state) {
+        const parsedFrontendState = authn.frontend_state && JSON.parse(authn?.frontend_state);
         if (parsedFrontendState.method === "freja") {
-          handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
-        } else handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
+          await handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
+        } else {
+          await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
+        }
       }
     })();
   }, [authn.frontend_action]);
 
-  function handleVerifyWebauthnTokenFreja(token: string) {
+  async function handleVerifyWebauthnTokenFreja(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
     (async () => {
       const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
@@ -306,7 +306,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     })();
   }
 
-  function handleVerifyWebauthnTokenBankID(token: string) {
+  async function handleVerifyWebauthnTokenBankID(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
     (async () => {
       const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
