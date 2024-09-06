@@ -479,7 +479,7 @@
   },
   "9WxCNa": {
     "developer_comment": "security second factor help info",
-    "string": "You can read more about security keys in the Help section: {FAQSecurityKeys}."
+    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
   },
   "9djX63": {
     "developer_comment": "what is bankid - heading",

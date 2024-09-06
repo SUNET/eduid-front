@@ -169,9 +169,9 @@ export function Security(): React.ReactElement | null {
         <p className="help-text">
           <FormattedMessage
             description="security second factor help info"
-            defaultMessage={`You can read more about security keys in the Help section: {FAQSecurityKeys}.`}
+            defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
             values={{
-              FAQSecurityKeys: (
+              HelpSecurityKeys: (
                 <Link className="text-link" to={`../../../help`}>
                   <FormattedMessage
                     description="about security key - handle"
