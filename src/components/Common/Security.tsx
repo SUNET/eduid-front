@@ -172,7 +172,7 @@ export function Security(): React.ReactElement | null {
             defaultMessage={`You can read more about security keys in the Help section: {FAQSecurityKeys}.`}
             values={{
               FAQSecurityKeys: (
-                <Link className="text-link" to={`../../../faq`}>
+                <Link className="text-link" to={`../../../help`}>
                   <FormattedMessage
                     description="about security key - handle"
                     defaultMessage="Improving the security level of eduID"

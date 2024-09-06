@@ -73,7 +73,8 @@ export function IndexMain(): JSX.Element {
                 <Route path={startPath} element={<Start />} />
                 {/* Errors*/}
                 <Route path="/errors" element={<Errors />} />
-                <Route path="/faq" element={<Help />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/faq" element={<Help />} /> {/* Legacy help page URL */}
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </section>
