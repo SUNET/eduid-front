@@ -35,7 +35,7 @@ export function ResetPasswordApp(): JSX.Element {
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Reset Password",
-      defaultMessage: "Reset Password | eduID",
+      defaultMessage: "Reset password | eduID",
     });
   }, []);
 
