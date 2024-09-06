@@ -111,6 +111,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 autoComplete="new-password"
                 required={true}
                 placeHolder={new_password_placeholder}
+                tabIndex={1}
+                autoFocus={true}
               />
               <FinalField
                 name="repeat"
@@ -126,6 +128,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 }
                 required={true}
                 placeHolder={repeat_new_password_placeholder}
+                tabIndex={2}
               />
             </fieldset>
             <div id="chpass-form" className="tab-pane buttons">
