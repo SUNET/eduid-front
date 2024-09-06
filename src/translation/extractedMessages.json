@@ -1610,10 +1610,10 @@
     "string": "Advanced Settings | eduID"
   },
   "document title Change Password": {
-    "string": "Change Password | eduID"
+    "string": "Change password | eduID"
   },
   "document title Help": {
-    "string": "Faq | eduID"
+    "string": "Help | eduID"
   },
   "document title Identity": {
     "string": "Identity | eduID"
@@ -1628,7 +1628,7 @@
     "string": "Register | eduID"
   },
   "document title Reset Password": {
-    "string": "Reset Password | eduID"
+    "string": "Reset password | eduID"
   },
   "document title Settings": {
     "string": "Settings | eduID"
