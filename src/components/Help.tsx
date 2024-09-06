@@ -20,7 +20,7 @@ export function Help(): JSX.Element {
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Help",
-      defaultMessage: "Faq | eduID",
+      defaultMessage: "Help | eduID",
     });
   }, []);
 
