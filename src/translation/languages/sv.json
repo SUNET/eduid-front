@@ -479,7 +479,7 @@
   },
   "9WxCNa": {
     "developer_comment": "security second factor help info",
-    "string": "Du kan läsa mer om säkerhetsnycklar i hjälpavsnittet: {FAQSecurityKeys}."
+    "string": "Du kan läsa mer om säkerhetsnycklar i hjälpavsnittet: {HelpSecurityKeys}."
   },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
@@ -1610,10 +1610,10 @@
     "string": "Avancerade Inställningar | eduID"
   },
   "document title Change Password": {
-    "string": "Byt Lösenord | eduID"
+    "string": "Byt lösenord | eduID"
   },
   "document title Help": {
-    "string": "FAQ | eduID"
+    "string": "Hjälp | eduID"
   },
   "document title Identity": {
     "string": "Identitet | eduID"
@@ -1628,7 +1628,7 @@
     "string": "Registrera | eduID"
   },
   "document title Reset Password": {
-    "string": "Återställ Lösenord | eduID"
+    "string": "Återställ lösenord | eduID"
   },
   "document title Settings": {
     "string": "Inställningar | eduID"
