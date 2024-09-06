@@ -64,7 +64,7 @@ export function Help(): JSX.Element {
         </div>
       </section>
       <div className="help-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-faq">
+        <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-help">
           <AccordionItemTemplate
             uuid="help-about-eduid"
             title={<FormattedMessage description="about eduid - handle" defaultMessage="About eduID" />}
