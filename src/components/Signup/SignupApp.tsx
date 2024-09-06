@@ -55,7 +55,25 @@ function SignupStart() {
     async function fetchSignupState(): Promise<void> {
       const response = await dispatch(fetchState());
       if (fetchState.fulfilled.match(response)) {
-        signupContext.signupService.send({ type: "COMPLETE" });
+        console.log("response.payload.state.already_signed_up", response.payload.state.already_signed_up);
+        if (!response.payload.state.already_signed_up) {
+          if (!response.payload.state.user_created) {
+            if (response.payload.state.captcha.completed && !response.payload.state.tou.completed) {
+              console.log("CAPTCHA_COMPLETE");
+              signupContext.signupService.send({ type: "CAPTCHA_COMPLETE" });
+            } else if (
+              response.payload.state.captcha.completed &&
+              response.payload.state.tou.completed &&
+              !response.payload.state.credentials.completed
+            ) {
+              console.log("TOU_COMPLETE");
+              signupContext.signupService.send({ type: "TOU_COMPLETE" });
+            } else if (response.payload.state.credentials.completed) {
+              console.log("CREDENTIALS_COMPLETE");
+              signupContext.signupService.send({ type: "CREDENTIALS_COMPLETE" });
+            } else signupContext.signupService.send({ type: "COMPLETE" });
+          }
+        }
       }
     }
     if (is_configured) {

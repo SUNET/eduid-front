@@ -18,6 +18,9 @@ const signupModel = createModel(
       COMPLETE: () => ({}), // no payload
       FAIL: () => ({}), // no payload
       SUCCESS: () => ({}), // no payload
+      CAPTCHA_COMPLETE: () => ({}), // no payload
+      TOU_COMPLETE: () => ({}), // no payload
+      CREDENTIALS_COMPLETE: () => ({}), // no payload
     },
   }
 );
@@ -34,6 +37,15 @@ export function createSignupMachine() {
         on: {
           COMPLETE: {
             target: "AskForEmailAddress",
+          },
+          CAPTCHA_COMPLETE: {
+            target: "HandleCaptchaAndToU.SignupToU",
+          },
+          TOU_COMPLETE: {
+            target: "HandleEmail.SignupEnterCode",
+          },
+          CREDENTIALS_COMPLETE: {
+            target: "HandleCredentials.SignupCredentials",
           },
         },
       },

@@ -37,6 +37,10 @@ export interface SignupState {
     custom_password?: string;
   };
   user_created: boolean;
+  name?: {
+    given_name: string;
+    surname: string;
+  };
 }
 
 export interface SignupStatusResponse {

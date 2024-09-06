@@ -135,12 +135,17 @@ function EmailForm() {
 export function RegisterEmail() {
   const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
-  const email = useAppSelector((state) => state.signup.email);
-  const given_name = useAppSelector((state) => state.signup.given_name);
-  const surname = useAppSelector((state) => state.signup.surname);
+  const email = useAppSelector((state) => state.signup.state?.email?.address);
+  const given_name = useAppSelector((state) => state.signup.state?.name?.given_name);
+  const surname = useAppSelector((state) => state.signup.state?.name?.surname);
+  const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
   const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
+  console.log("[RegisterEmail]");
+  console.log("email", email);
+  console.log("given_name", given_name);
+  console.log("is_app_loaded", is_app_loaded);
 
-  if (!signupUser) {
+  if (is_app_loaded && !signupUser) {
     signupContext.signupService.send({ type: "API_FAIL" });
     return null;
   }
