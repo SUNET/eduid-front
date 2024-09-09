@@ -55,7 +55,9 @@ function SignupStart() {
     async function fetchSignupState(): Promise<void> {
       const response = await dispatch(fetchState());
       if (fetchState.fulfilled.match(response)) {
-        signupContext.signupService.send({ type: "COMPLETE" });
+        if (response.payload.state?.email.address) {
+          signupContext.signupService.send({ type: "BYPASS" });
+        } else signupContext.signupService.send({ type: "COMPLETE" });
       }
     }
     if (is_configured) {
