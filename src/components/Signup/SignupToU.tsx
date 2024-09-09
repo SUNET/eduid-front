@@ -10,6 +10,13 @@ export function SignupToU(): JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const version = signupState?.tou.version;
+  const state = useAppSelector((state) => state.signup.state);
+
+  useEffect(() => {
+    if (state?.tou.completed) {
+      signupContext.signupService.send({ type: "BYPASS" });
+    }
+  }, [state]);
 
   function handleAccept() {
     signupContext.signupService.send({ type: "COMPLETE" });

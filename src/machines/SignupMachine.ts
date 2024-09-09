@@ -35,6 +35,9 @@ export function createSignupMachine() {
           COMPLETE: {
             target: "AskForEmailAddress",
           },
+          BYPASS: {
+            target: "#signup.HandleCaptchaAndToU",
+          },
         },
       },
       AskForEmailAddress: {
@@ -83,6 +86,9 @@ export function createSignupMachine() {
               ABORT: {
                 target: "Fail",
               },
+              BYPASS: {
+                target: "Finished",
+              },
             },
           },
           ProcessToU: {
@@ -126,6 +132,9 @@ export function createSignupMachine() {
             on: {
               COMPLETE: {
                 target: "ProcessEmailCode",
+              },
+              BYPASS: {
+                target: "EmailFinished",
               },
               ABORT: {
                 target: "#signup.AskForEmailAddress",
