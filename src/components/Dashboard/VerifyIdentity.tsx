@@ -62,6 +62,7 @@ function VerifyIdentity(): JSX.Element | null {
   return (
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
+      <PersonalDataParent />
       <VerifyIdentityIntro />
     </Fragment>
   );
@@ -85,7 +86,6 @@ function VerifyIdentityIntro(): JSX.Element {
      */
     return (
       <React.Fragment>
-        <PersonalDataParent />
         <section className="intro">
           <h1>
             <FormattedMessage

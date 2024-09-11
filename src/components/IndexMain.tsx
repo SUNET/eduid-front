@@ -15,6 +15,7 @@ import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
+import { OtherAccounts } from "./Dashboard/OtherAccounts";
 import VerifyIdentity from "./Dashboard/VerifyIdentity";
 import { Help } from "./Help";
 import { Index } from "./Index";
@@ -28,6 +29,7 @@ import { Errors } from "./SwamidErrors/Errors";
 export const startPath = "/profile/";
 export const identityPath = "/profile/verify-identity/";
 export const settingsPath = "/profile/settings/personaldata";
+export const otherAccountsPath = "/profile/other-accounts/";
 export const advancedSettingsPath = "/profile/settings/advanced-settings";
 export const SIGNUP_BASE_PATH = "/register";
 
@@ -65,6 +67,7 @@ export function IndexMain(): JSX.Element {
                 <Route path="/profile/chpass/" element={<ChangePassword />} />
                 <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
+                <Route path="/profile/other-accounts" element={<OtherAccounts />} />
                 {/* Navigates for old paths. TODO: redirect in backend server instead */}
                 <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />
                 <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />

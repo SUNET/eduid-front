@@ -1,15 +1,12 @@
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import { AccountId } from "components/Dashboard/AccountId";
-import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
+import { AccountLinking } from "components/Dashboard/AccountLinking";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
-import DeleteAccount from "components/Dashboard/DeleteAccount";
-import Emails from "components/Dashboard/Emails";
-import Phones from "components/Dashboard/Phones";
+import LadokContainer from "components/Dashboard/Ladok";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 /* The Dashboard "Settings" tab */
-export function Settings(): JSX.Element {
+export function OtherAccounts(): JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {
@@ -30,22 +27,19 @@ export function Settings(): JSX.Element {
       <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
       <section className="intro">
         <h1>
-          <FormattedMessage description="account main title" defaultMessage="Manage your account" />
+          <FormattedMessage description="account main title" defaultMessage="Other accounts" />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
               description="account lead title"
-              defaultMessage="Update your eduID account settings, change password, add a security key (2FA) or delete your eduID."
+              defaultMessage="Connect your eduID account with other academic identification services"
             />
           </p>
         </div>
       </section>
-      <AccountId />
-      <Emails />
-      <ChangePasswordDisplay />
-      <Phones />
-      <DeleteAccount />
+      <AccountLinking />
+      <LadokContainer />
     </React.Fragment>
   );
 }

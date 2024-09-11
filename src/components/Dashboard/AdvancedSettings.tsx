@@ -17,9 +17,9 @@ export function AdvancedSettings(): JSX.Element {
   }, []);
 
   const currentPage = intl.formatMessage({
-    id: "Security/2FA",
-    defaultMessage: "Security/2FA",
-    description: "Security/2FA",
+    id: "Security (2FA)",
+    defaultMessage: "Security (2FA)",
+    description: "Security (2FA)",
   });
 
   return (

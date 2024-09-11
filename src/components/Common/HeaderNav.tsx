@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
-import { advancedSettingsPath, identityPath, settingsPath, startPath } from "components/IndexMain";
+import { advancedSettingsPath, identityPath, otherAccountsPath, settingsPath, startPath } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -100,7 +100,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
             to={advancedSettingsPath}
           >
-            <FormattedMessage defaultMessage="Security/2FA" description="Dashboard nav tab name" />
+            <FormattedMessage defaultMessage="Security (2FA)" description="Dashboard nav tab name" />
           </NavLink>
 
           <NavLink
@@ -109,6 +109,14 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             to={identityPath}
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
+          </NavLink>
+
+          <NavLink
+            onClick={() => setOpenMenu(false)}
+            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+            to={otherAccountsPath}
+          >
+            <FormattedMessage defaultMessage="Other accounts" description="Dashboard nav tab name" />
           </NavLink>
 
           <EduIDButton
