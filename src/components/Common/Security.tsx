@@ -15,12 +15,13 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
+import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
@@ -262,7 +263,7 @@ export function Security(): React.ReactElement | null {
 function SecurityKeyTable(props: RequestCredentialsResponse) {
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
-  const [credentialKey, setCredentialKey] = useState<string | null>();
+  const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   const [method, setMethod] = useState<string | null>();
   let btnVerify;
@@ -271,12 +272,14 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
+  const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
 
   useEffect(() => {
     (async () => {
       if (authn.frontend_action === "removeSecurityKeyAuthn" && authn.frontend_state) {
         // call requestCredentials once app is loaded
-        handleRemoveWebauthnToken(authn.frontend_state);
+        credentialKey.current = authn.frontend_state;
+        handleRemoveWebauthnToken();
       } else if (authn.frontend_action === "verifyCredential" && authn.frontend_state) {
         const parsedFrontendState = authn.frontend_state && JSON.parse(authn?.frontend_state);
         if (parsedFrontendState.method === "freja") {
@@ -318,12 +321,17 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     }
   }
 
-  async function handleRemoveWebauthnToken(credential_key: string) {
+  function handleConfirmDeleteModal(credential_key: string) {
+    credentialKey.current = credential_key;
+    setShowConfirmRemoveSecurityKeyModal(true);
+  }
+
+  async function handleRemoveWebauthnToken() {
+    setShowConfirmRemoveSecurityKeyModal(false);
     dispatch(authnSlice.actions.setFrontendActionState());
-    const response = await dispatch(removeWebauthnToken({ credential_key }));
+    const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
     if (removeWebauthnToken.rejected.match(response)) {
       if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-        setCredentialKey(credential_key);
         setRemoveSecurityKeyModal(true);
       }
     }
@@ -381,13 +389,32 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleRemoveWebauthnToken(cred.key)}
+            onClick={() => handleConfirmDeleteModal(cred.key)}
           ></EduIDButton>
+          <NotificationModal
+            id="remove-security-key"
+            title={
+              <FormattedMessage
+                defaultMessage="Remove security key"
+                description="settings.remove_security_key_modal_title"
+              />
+            }
+            mainText={
+              <FormattedMessage
+                defaultMessage={`Are you sure you want to remove your security key?`}
+                description="delete.remove_security_key_modal_text"
+              />
+            }
+            showModal={showConfirmRemoveSecurityKeyModal}
+            closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
+            acceptModal={handleRemoveWebauthnToken}
+            acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+          />
           <AuthenticateModal
             action="removeSecurityKeyAuthn"
             state={cred.key}
             dispatch={dispatch}
-            showModal={cred.key === credentialKey && removeSecurityKeyModal}
+            showModal={cred.key === credentialKey.current && removeSecurityKeyModal}
             setShowModal={setRemoveSecurityKeyModal}
           />
         </td>
