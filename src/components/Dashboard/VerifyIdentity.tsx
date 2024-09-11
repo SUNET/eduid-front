@@ -193,7 +193,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="Swedish national identity number" description="Verified identity" />
+              <FormattedMessage defaultMessage="Swedish national ID number" description="Verified identity" />
             </strong>
           </div>
           <NinDisplay nin={identities?.nin} allowDelete={true} />

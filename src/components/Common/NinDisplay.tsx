@@ -58,11 +58,6 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 export function NinDisplay(props: NinDisplayProps) {
   return (
     <div className="profile-grid-cell">
-      <span aria-label="id number">
-        <strong>
-          <FormattedMessage description="nin label" defaultMessage="National ID number" />
-        </strong>
-      </span>
       {!props.nin ? (
         // if there is no NIN, render a link to verify-identity
         <Link to={`/profile/verify-identity/`} className="display-data unverified">
