@@ -74,19 +74,22 @@ function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
   async function startTokenAssertion() {
     if (mfa.webauthn_challenge && !mfa.webauthn_assertion && ref) {
       const res = await dispatch(performAuthentication(mfa.webauthn_challenge));
-
       if (performAuthentication.fulfilled.match(res)) {
         // Send response from security key to backend
         dispatch(fetchMfaAuth({ ref: ref, webauthn_response: res.payload }));
       }
-
       setActive(false);
     }
   }
 
   useEffect(() => {
-    startTokenAssertion();
-  }, []);
+    if (ref) {
+      //fetch the webauthn challenge to perform authentication
+      if (!mfa.webauthn_challenge) {
+        dispatch(fetchMfaAuth({ ref: ref }));
+      } else startTokenAssertion();
+    }
+  }, [mfa]);
 
   return (
     <Fragment>
