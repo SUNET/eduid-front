@@ -477,10 +477,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
-  "9WxCNa": {
-    "developer_comment": "security second factor help info",
-    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
-  },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
     "string": "What is BankID?"
@@ -1182,6 +1178,9 @@
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
   },
+  "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
+    "string": "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+  },
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
@@ -1189,6 +1188,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TpkLxO": {
+    "developer_comment": "security second factor help info",
+    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
