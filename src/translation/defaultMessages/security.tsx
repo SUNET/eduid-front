@@ -93,4 +93,12 @@ export const apiResponses = {
   "SecurityMsg.rm_webauthn": (
     <FormattedMessage id="SecurityMsg.rm_webauthn" defaultMessage={`Security key has been removed.`} />
   ),
+
+  "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.":
+    (
+      <FormattedMessage
+        id="The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+        defaultMessage={`The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.`}
+      />
+    ),
 };

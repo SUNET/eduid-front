@@ -19,6 +19,7 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
+import { showNotification } from "slices/Notifications";
 import securitySlice from "slices/Security";
 import ConfirmModal from "./ConfirmModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -143,7 +144,8 @@ export function Security(): React.ReactElement | null {
           const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             await dispatch(registerWebauthn({ descriptionValue }));
-          }
+          } else
+            response.error.message && dispatch(showNotification({ message: response?.error?.message, level: "error" }));
         }
         if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
