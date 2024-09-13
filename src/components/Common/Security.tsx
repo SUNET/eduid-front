@@ -3,6 +3,7 @@ import { eidasVerifyCredential } from "apis/eduidEidas";
 import {
   beginRegisterWebauthn,
   CredentialType,
+  getAuthnStatus,
   registerWebauthn,
   removeWebauthnToken,
   requestCredentials,
@@ -321,8 +322,9 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     }
   }
 
-  function handleConfirmDeleteModal(credential_key: string) {
-    credentialKey.current = credential_key;
+  async function handleConfirmDeleteModal(credential_key: string) {
+    // Test if the user can direct execute the action or a re-auth security zone will be required
+    dispatch(getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" }));
     setShowConfirmRemoveSecurityKeyModal(true);
   }
 
