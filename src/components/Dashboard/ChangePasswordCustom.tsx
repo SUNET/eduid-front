@@ -111,6 +111,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 autoComplete="new-password"
                 required={true}
                 placeHolder={new_password_placeholder}
+                autoFocus={true}
               />
               <FinalField
                 name="repeat"
