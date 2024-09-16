@@ -80,7 +80,10 @@ function Login(): JSX.Element {
 
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
-  const [hasReadAnnouncement, setHasReadAnnouncement] = useState(false);
+  const [hasReadAnnouncement, setHasReadAnnouncement] = useState(
+    Boolean(window.localStorage.getItem("hasReadAnnouncement"))
+  );
+
   let ComponentToRender;
 
   if (hasReadAnnouncement && SAMLParameters) {

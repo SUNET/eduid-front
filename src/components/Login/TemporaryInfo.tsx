@@ -3,16 +3,19 @@ import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 export default function TemporaryInfo(props: {
-  hasReadAnnouncement: boolean;
+  hasReadAnnouncement?: boolean;
   setHasReadAnnouncement: (key: boolean) => void;
 }): JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
-  async function handleAccept() {
+  function handleAccept() {
     if (activeButton) {
-      props.setHasReadAnnouncement(true);
+      window.localStorage.setItem("hasReadAnnouncement", "true");
+      props.setHasReadAnnouncement(Boolean(window.localStorage.getItem("hasReadAnnouncement")));
     }
   }
+
+  console.log("10  hasReadAnnouncement", props.hasReadAnnouncement);
 
   return (
     <Fragment>
@@ -78,7 +81,7 @@ export default function TemporaryInfo(props: {
         </label>
 
         <EduIDButton
-          disabled={!props.hasReadAnnouncement}
+          disabled={!activeButton}
           type="submit"
           buttonstyle="primary"
           onClick={handleAccept}
