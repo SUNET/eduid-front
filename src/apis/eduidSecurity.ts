@@ -286,14 +286,33 @@ export const removeIdentity = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+export enum ActionStatus {
+  OK = "ok",
+  NOT_FOUND = "not-found",
+  CONSUMED = "consumed",
+  STALE = "stale",
+  WRONG_ACCR = "wrong-accr",
+  NO_MFA = "no-mfa",
+  CREDENTIAL_NOT_RECENTLY_USED = "credential-not-recently-used",
+}
+
+export interface AuthnActionStatusResponse {
+  authn_status: ActionStatus;
+}
+
+export interface AuthnActionStatusRequest {
+  frontend_action: string;
+  credential_id?: string;
+}
+
 /**
  * @public
  * @function getAuthnStatus
  * @desc Redux async thunk to post get authn status.
  */
 export const getAuthnStatus = createAsyncThunk<
-  any, // return type
-  any, // args type
+  AuthnActionStatusResponse, // return type
+  AuthnActionStatusRequest, // args type
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/authn-status", async (args, thunkAPI) => {
   const body: KeyValues = args;

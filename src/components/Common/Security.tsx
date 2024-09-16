@@ -1,6 +1,7 @@
 import { bankIDVerifyCredential } from "apis/eduidBankid";
 import { eidasVerifyCredential } from "apis/eduidEidas";
 import {
+  ActionStatus,
   beginRegisterWebauthn,
   CredentialType,
   getAuthnStatus,
@@ -325,9 +326,16 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   }
 
   async function handleConfirmDeleteModal(credential_key: string) {
-    // Test if the user can direct execute the action or a re-auth security zone will be required
-    dispatch(getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" }));
-    setShowConfirmRemoveSecurityKeyModal(true);
+    credentialKey.current = credential_key;
+    // Test if the user can directly execute the action or a re-auth security zone will be required
+    // If no re-auth is required, then show the modal to confirm the removal
+    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
+    const response = await dispatch(getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" }));
+    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
+      setShowConfirmRemoveSecurityKeyModal(true);
+    } else {
+      setRemoveSecurityKeyModal(true);
+    }
   }
 
   async function handleRemoveWebauthnToken() {
@@ -340,6 +348,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       }
     }
   }
+
   // data that goes onto the table
   const security_key_table_data = tokens.map((cred: CredentialType) => {
     // date created
