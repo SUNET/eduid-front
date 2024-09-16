@@ -181,6 +181,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   }
 
   async function handleRemoveIdentity() {
+    setShowConfirmRemoveIdentityVerificationModal(false);
     dispatch(authnSlice.actions.setFrontendActionState());
     // find dynamically which identity_type
     const idType =
