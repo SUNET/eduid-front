@@ -1,40 +1,16 @@
-import { fetchAbort, fetchToU } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import loginSlice from "slices/Login";
 
-export default function TemporaryInfo(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
-  // version is the version of the ToU the backend requests we ask the user to accept
-  const version = useAppSelector((state) => state.login.tou.version);
-  const loginRef = useAppSelector((state) => state.login.ref);
-
-  useEffect(() => {
-    if (!version && loginRef) {
-      // Tell the backend what ToU versions are available in this bundle
-      dispatch(fetchToU({ ref: loginRef, versions: availableTouVersions }));
-    }
-  }, []);
+export default function TemporaryInfo(props: {
+  hasReadAnnouncement: boolean;
+  setHasReadAnnouncement: (key: boolean) => void;
+}): JSX.Element {
+  const [activeButton, setActiveButton] = useState<boolean>(false);
 
   async function handleAccept() {
-    if (version && loginRef) {
-      // Tell the backend which ToU version the user accepted
-      const res = await dispatch(fetchToU({ ref: loginRef, user_accepts: version }));
-
-      if (fetchToU.fulfilled.match(res)) {
-        if (res.payload.finished) {
-          dispatch(loginSlice.actions.callLoginNext());
-        }
-      }
-    }
-  }
-
-  function handleCancel() {
-    if (loginRef) {
-      dispatch(fetchAbort({ ref: loginRef }));
+    if (activeButton) {
+      props.setHasReadAnnouncement(true);
     }
   }
 
@@ -89,19 +65,28 @@ export default function TemporaryInfo(): JSX.Element {
       {/* "Don't show again" checkbox and "Continue" button */}
       <div className="buttons-center">
         <label htmlFor="show-check">
-          <input type="checkbox" id="show-check" name="show-check" />
+          <input
+            type="checkbox"
+            id="show-check"
+            name="show-check"
+            checked={activeButton}
+            onChange={() => setActiveButton(!activeButton)}
+          />
           <span>
             <FormattedMessage defaultMessage="Don't show this message again" description="Temp info - checkbox" />
           </span>
         </label>
 
-        <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
+        <EduIDButton
+          disabled={!props.hasReadAnnouncement}
+          type="submit"
+          buttonstyle="primary"
+          onClick={handleAccept}
+          id="continue-button"
+        >
           <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
-
-      {/* Maybe we can reuse the ToU way of showing one of several messages?? */}
-      {/* {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />} */}
     </Fragment>
   );
 }

@@ -1,6 +1,6 @@
 import { fetchNext } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 import loginSlice from "../../slices/Login";
@@ -11,6 +11,7 @@ import TemporaryInfo from "./TemporaryInfo";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
 import UseOtherDevice2 from "./UseOtherDevice2";
+import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {
@@ -68,9 +69,8 @@ function Login(): JSX.Element {
     <React.Fragment>
       {next_page === "NEW_DEVICE" && <NewDevice />}
       {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
-      {/* {next_page === "USERNAMEPASSWORD" && <UsernamePw />} */}
+      {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}
-      {next_page === "USERNAMEPASSWORD" && <TemporaryInfo />}
       {next_page === "MFA" && <MultiFactorAuth />}
       {next_page === "FINISHED" && <RenderFinished />}
       {/* show nothing before next_page is initialised */ next_page && <RememberMeCheckbox />}
@@ -80,7 +80,19 @@ function Login(): JSX.Element {
 
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+  const [hasReadAnnouncement, setHasReadAnnouncement] = useState(false);
+  let ComponentToRender;
 
-  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <UseOtherDevice2 />}</React.Fragment>;
+  if (hasReadAnnouncement && SAMLParameters) {
+    ComponentToRender = <SubmitSamlResponse />;
+  } else if (hasReadAnnouncement && !SAMLParameters) {
+    ComponentToRender = <UseOtherDevice2 />;
+  } else {
+    ComponentToRender = (
+      <TemporaryInfo hasReadAnnouncement={hasReadAnnouncement} setHasReadAnnouncement={setHasReadAnnouncement} />
+    );
+  }
+
+  return ComponentToRender;
 }
 export default Login;
