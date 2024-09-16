@@ -164,7 +164,9 @@ export function decode(data: ArrayBufferLike, tagger: any = undefined, simpleVal
     return value;
   }
   function readArrayBuffer(length: number): Uint8Array {
-    return commitRead(length, new Uint8Array(data, offset, length));
+    const arrayBufferView = new Uint8Array(data, offset, length);
+    const arrayBufferCopy = new Uint8Array(arrayBufferView)
+    return commitRead(length, arrayBufferCopy);
   }
   function readFloat16() {
     const tempArrayBuffer = new ArrayBuffer(4);

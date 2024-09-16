@@ -35,8 +35,6 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
 }
 
 export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Element {
-  const { input, meta } = props;
-
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -67,6 +65,7 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         invalid={props.meta.invalid}
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
+        autoFocus={props.autoFocus}
       />
 
       <button
