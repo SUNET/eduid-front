@@ -1175,7 +1175,7 @@
     "string": "Temporary technical problems, please try again later"
   },
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
-    "string": "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+    "string": "This security key has been already registered. Please try with another one."
   },
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
