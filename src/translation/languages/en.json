@@ -477,10 +477,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
-  "9WxCNa": {
-    "developer_comment": "security second factor help info",
-    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
-  },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
     "string": "What is BankID?"
@@ -540,10 +536,6 @@
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
-  },
-  "AxZguv": {
-    "developer_comment": "nin label",
-    "string": "National ID number"
   },
   "AyJxQp": {
     "developer_comment": "verify identity vetting explanation add nin",
@@ -1182,6 +1174,9 @@
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
   },
+  "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
+    "string": "This security key has been already registered. Please try with another one."
+  },
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your account safe."
@@ -1189,6 +1184,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TpkLxO": {
+    "developer_comment": "security second factor help info",
+    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
@@ -1357,10 +1356,6 @@
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you first need to create a digital ID-card in the {freja_eid_link} app."
   },
-  "Z0Ireq": {
-    "developer_comment": "Verified identity",
-    "string": "Swedish national identity number"
-  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using this code on the first device, please close this browser window."
@@ -1527,6 +1522,10 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
+  },
+  "c1nVKp": {
+    "developer_comment": "Verified identity",
+    "string": "Swedish national ID number"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
