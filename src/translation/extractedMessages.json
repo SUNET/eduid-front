@@ -537,10 +537,6 @@
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
   },
-  "AxZguv": {
-    "developer_comment": "nin label",
-    "string": "National ID number"
-  },
   "AyJxQp": {
     "developer_comment": "verify identity vetting explanation add nin",
     "string": "Start by adding your ID number above."
@@ -1360,10 +1356,6 @@
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
   },
-  "Z0Ireq": {
-    "developer_comment": "Verified identity",
-    "string": "Swedish national identity number"
-  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
@@ -1530,6 +1522,10 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
+  },
+  "c1nVKp": {
+    "developer_comment": "Verified identity",
+    "string": "Swedish national ID number"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
