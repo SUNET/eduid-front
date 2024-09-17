@@ -477,10 +477,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Lägg till en eller flera siffror någonstans i mitten av lösenordet"
   },
-  "9WxCNa": {
-    "developer_comment": "security second factor help info",
-    "string": "Du kan läsa mer om säkerhetsnycklar i hjälpavsnittet: {HelpSecurityKeys}."
-  },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
     "string": "Vad är BankID?"
@@ -540,10 +536,6 @@
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}"
-  },
-  "AxZguv": {
-    "developer_comment": "nin label",
-    "string": "personnummer"
   },
   "AyJxQp": {
     "developer_comment": "verify identity vetting explanation add nin",
@@ -1182,6 +1174,9 @@
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
   },
+  "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
+    "string": "Denna säkerhetsnyckel har redan registrerats. Vänligen försök med en annan."
+  },
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla ditt konto säkert."
@@ -1189,6 +1184,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TpkLxO": {
+    "developer_comment": "security second factor help info",
+    "string": "Du kan läsa mer om säkerhetsnycklar i hjälpavsnittet: {HelpSecurityKeys}."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
@@ -1357,10 +1356,6 @@
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
   },
-  "Z0Ireq": {
-    "developer_comment": "Verified identity",
-    "string": "Svenskt personnummer"
-  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "Efter att du har använt den här koden i den första enheten bör du stänga det här fönstret."
@@ -1527,6 +1522,10 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
+  },
+  "c1nVKp": {
+    "developer_comment": "Verified identity",
+    "string": "Svenskt personnummer"
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
