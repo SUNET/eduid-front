@@ -107,6 +107,10 @@ fieldset {
   line-height: 1.2;
   color: $txt-gray;
   font-size: 14px;
+  
+  &.black {
+    color:$txt-black;
+  }
 
   .btn + & {
     @media (max-width: $bp-md) {
