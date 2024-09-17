@@ -2,20 +2,13 @@ import EduIDButton from "components/Common/EduIDButton";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export default function TemporaryInfo(props: {
-  hasReadAnnouncement?: boolean;
-  setHasReadAnnouncement: (key: boolean) => void;
-}): JSX.Element {
+export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: (key: boolean) => void }): JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {
-    if (activeButton) {
-      window.localStorage.setItem("hasReadAnnouncement", "true");
-      props.setHasReadAnnouncement(Boolean(window.localStorage.getItem("hasReadAnnouncement")));
-    }
+    window.localStorage.setItem("hasReadAnnouncement", "true");
+    props.setHasReadAnnouncement(Boolean(window.localStorage.getItem("hasReadAnnouncement")));
   }
-
-  console.log("10  hasReadAnnouncement", props.hasReadAnnouncement);
 
   return (
     <Fragment>
@@ -47,8 +40,12 @@ export default function TemporaryInfo(props: {
           />
         </p>
         <ul className="bullets">
-          <li>verifying identity</li>
-          <li>resetting password</li>
+          <li>
+            <FormattedMessage defaultMessage="Verifying identity" description="Temp info - list item1" />
+          </li>
+          <li>
+            <FormattedMessage defaultMessage="Resetting password" description="Temp info - list item2" />
+          </li>
         </ul>
 
         <p>
@@ -58,10 +55,15 @@ export default function TemporaryInfo(props: {
           />
         </p>
         <ul className="bullets">
-          <li>with a security key</li>
-          <li>with BankID</li>
-          <li>with Freja+</li>
-          <li>with eIDAS</li>
+          <li>
+            <FormattedMessage defaultMessage="With Bank ID" description="Temp info - list item3" />
+          </li>
+          <li>
+            <FormattedMessage defaultMessage="With Freja+" description="Temp info - list item4" />
+          </li>
+          <li>
+            <FormattedMessage defaultMessage="With eIDAS" description="Temp info - list item5" />
+          </li>
         </ul>
       </div>
 
@@ -80,13 +82,7 @@ export default function TemporaryInfo(props: {
           </span>
         </label>
 
-        <EduIDButton
-          disabled={!activeButton}
-          type="submit"
-          buttonstyle="primary"
-          onClick={handleAccept}
-          id="continue-button"
-        >
+        <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
           <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
