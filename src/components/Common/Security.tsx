@@ -210,7 +210,7 @@ export function Security(): React.ReactElement | null {
               <p className="help-text">
                 <FormattedMessage
                   description="platform authn device help text"
-                  defaultMessage="Touch/ Face ID on this device."
+                  defaultMessage="The device you are currently using"
                 />
               </p>
               {!isPlatformAuthenticatorAvailable && (
