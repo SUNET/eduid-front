@@ -18,6 +18,9 @@ interface LoginParams {
   ref?: string;
 }
 
+/* keep all use through functions in this module */
+export const HAS_READ_ANNOUNCEMENT = "hasReadAnnouncement";
+
 function Login(): JSX.Element {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
@@ -81,7 +84,7 @@ function Login(): JSX.Element {
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
   const [hasReadAnnouncement, setHasReadAnnouncement] = useState(
-    Boolean(window.localStorage.getItem("hasReadAnnouncement"))
+    Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT))
   );
 
   let ComponentToRender;
