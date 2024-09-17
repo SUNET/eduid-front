@@ -91,9 +91,7 @@ function RenderFinished(): JSX.Element {
   } else if (hasReadAnnouncement && !SAMLParameters) {
     ComponentToRender = <UseOtherDevice2 />;
   } else {
-    ComponentToRender = (
-      <TemporaryInfo hasReadAnnouncement={hasReadAnnouncement} setHasReadAnnouncement={setHasReadAnnouncement} />
-    );
+    ComponentToRender = <TemporaryInfo setHasReadAnnouncement={setHasReadAnnouncement} />;
   }
 
   return ComponentToRender;
