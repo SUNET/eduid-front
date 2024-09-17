@@ -207,12 +207,21 @@ export function Security(): React.ReactElement | null {
               >
                 <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
               </EduIDButton>
-              <p className="help-text">
-                <FormattedMessage
-                  description="platform authn device help text"
-                  defaultMessage="Touch/ Face ID on this device."
-                />
-              </p>
+              {isPlatformAuthenticatorAvailable ? (
+                <p className="help-text">
+                  <FormattedMessage
+                    description="platform authn device help text"
+                    defaultMessage="Touch/ Face ID on this device."
+                  />
+                </p>
+              ) : (
+                <p className="help-text">
+                  <FormattedMessage
+                    description="platform authn device error text"
+                    defaultMessage="Your device is not compatible."
+                  />
+                </p>
+              )}
             </div>
             <div>
               <EduIDButton
