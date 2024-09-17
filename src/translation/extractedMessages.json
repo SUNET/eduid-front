@@ -345,6 +345,10 @@
     "developer_comment": "Login front page",
     "string": "Register"
   },
+  "5paghv": {
+    "developer_comment": "platform authn device error text",
+    "string": "*Your device is not compatible."
+  },
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
@@ -739,10 +743,6 @@
     "developer_comment": "enhance eduid - list item 3",
     "string": "a security key of you are able to for added security,"
   },
-  "H1z9GE": {
-    "developer_comment": "platform authn device help text",
-    "string": "Touch/ Face ID on this device."
-  },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
     "string": "if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
@@ -897,6 +897,10 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
+  },
+  "MDEHdc": {
+    "developer_comment": "platform authn device help text",
+    "string": "The device you are currently using"
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
