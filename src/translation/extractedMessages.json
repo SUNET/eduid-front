@@ -306,6 +306,10 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
+  "4XAsSn": {
+    "developer_comment": "settings.remove_identity_verification_modal_title",
+    "string": "Remove Identity Verification"
+  },
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
@@ -954,6 +958,10 @@
     "developer_comment": "personal data edit title",
     "string": "Edit name and language"
   },
+  "NmCGzv": {
+    "developer_comment": "delete.confirm_button",
+    "string": "Confirm"
+  },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
@@ -1120,6 +1128,10 @@
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
+  },
+  "SWwNRP": {
+    "developer_comment": "settings.remove_security_key_modal_title",
+    "string": "Remove security key"
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -2030,6 +2042,10 @@
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
   },
+  "kvqCWB": {
+    "developer_comment": "delete.remove_identity_verification_modal_text",
+    "string": "Are you sure you want to remove your identity verfication?"
+  },
   "kz8YmP": {
     "string": "You are logging in as {display_name} ({username}) on the other device"
   },
@@ -2569,6 +2585,10 @@
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
+  },
+  "qYvm5T": {
+    "developer_comment": "delete.remove_security_key_modal_text",
+    "string": "Are you sure you want to remove your security key?"
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
