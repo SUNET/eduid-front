@@ -30,7 +30,7 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
       <div className="notice-box">
         <h2>
           <FormattedMessage
-            defaultMessage="We're no longer supporting phone verification"
+            defaultMessage="Phone verification will be discontinued on November 10th"
             description="Temp info - heading"
           />
         </h2>
@@ -55,17 +55,6 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
             description="Temp info - message"
           />
         </p>
-        <ul className="bullets">
-          <li>
-            <FormattedMessage defaultMessage="With Bank ID" description="Temp info - list item3" />
-          </li>
-          <li>
-            <FormattedMessage defaultMessage="With Freja+" description="Temp info - list item4" />
-          </li>
-          <li>
-            <FormattedMessage defaultMessage="With eIDAS" description="Temp info - list item5" />
-          </li>
-        </ul>
       </div>
 
       {/* "Don't show again" checkbox and "Continue" button */}
