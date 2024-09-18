@@ -16,6 +16,13 @@ export function SignupEnterCode(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
+  const state = useAppSelector((state) => state.signup.state);
+
+  useEffect(() => {
+    if (state?.credentials.completed) {
+      signupContext.signupService.send({ type: "BYPASS" });
+    }
+  }, [state]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
