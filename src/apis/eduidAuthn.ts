@@ -54,6 +54,22 @@ export const authnGetStatus = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+/**
+ * @public
+ * @function authnLogin
+ * @desc Redux async thunk to post authn login for an earlier operation.
+ */
+export const authnLogin = createAsyncThunk<
+  GetStatusResponse, // return type
+  undefined, // args type
+  { dispatch: DispatchWithAuthn; state: StateWithAuthn }
+>("authn/authnLogin", async (args, thunkAPI) => {
+  return makeAuthnRequest<GetStatusResponse>(thunkAPI, "login")
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 async function makeAuthnRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,

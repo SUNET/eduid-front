@@ -41,9 +41,9 @@ export interface Typegen0 {
     | "HandleEmail.SignupEnterCode"
     | "SignupStart"
     | {
-        "AskForEmailAddress"?: "SignupEmailForm";
-        "FinaliseUser"?: "SignupConfirmPassword" | "SignupUserCreated";
-        "HandleCaptchaAndToU"?:
+        AskForEmailAddress?: "SignupEmailForm";
+        FinaliseUser?: "SignupConfirmPassword" | "SignupUserCreated";
+        HandleCaptchaAndToU?:
           | "Fail"
           | "Finished"
           | "ProcessCaptcha"
@@ -51,12 +51,12 @@ export interface Typegen0 {
           | "RegisterEmail"
           | "SignupCaptcha"
           | "SignupToU";
-        "HandleCredentials"?:
+        HandleCredentials?:
           | "CredentialsFinished"
           | "SignupCredentialPassword"
           | "SignupCredentialWebauthn"
           | "SignupCredentials";
-        "HandleEmail"?: "EmailFinished" | "ProcessEmailCode" | "SignupEnterCode";
+        HandleEmail?: "EmailFinished" | "ProcessEmailCode" | "SignupEnterCode";
       };
   tags: never;
 }
