@@ -18,9 +18,10 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
-import { removeIdentity } from "apis/eduidSecurity";
+import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
+import NotificationModal from "components/Common/NotificationModal";
 import authnSlice from "slices/Authn";
 import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
@@ -157,6 +158,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const dispatch = useAppDispatch();
   const [showAuthnModal, setShowAuthnModal] = useState(false);
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+  const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
   useEffect(() => {
     if (frontend_action) {
@@ -166,7 +168,20 @@ function VerifiedIdentitiesTable(): JSX.Element {
     }
   }, [frontend_action]);
 
+  async function handleConfirmDeleteModal() {
+    // Test if the user can directly execute the action or a re-auth security zone will be required
+    // If no re-auth is required, then show the modal to confirm the removal
+    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
+    const response = await dispatch(getAuthnStatus({ frontend_action: "removeIdentity" }));
+    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
+      setShowConfirmRemoveIdentityVerificationModal(true);
+    } else {
+      setShowAuthnModal(true);
+    }
+  }
+
   async function handleRemoveIdentity() {
+    setShowConfirmRemoveIdentityVerificationModal(false);
     dispatch(authnSlice.actions.setFrontendActionState());
     // find dynamically which identity_type
     const idType =
@@ -201,7 +216,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleRemoveIdentity()}
+            onClick={() => handleConfirmDeleteModal()}
           ></EduIDButton>
         </figure>
       )}
@@ -221,7 +236,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleRemoveIdentity()}
+            onClick={() => handleConfirmDeleteModal()}
           ></EduIDButton>
         </figure>
       )}
@@ -245,10 +260,29 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleRemoveIdentity()}
+            onClick={() => handleConfirmDeleteModal()}
           ></EduIDButton>
         </figure>
       )}
+      <NotificationModal
+        id="remove-identity-verification"
+        title={
+          <FormattedMessage
+            defaultMessage="Remove Identity Verification"
+            description="settings.remove_identity_verification_modal_title"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage={`Are you sure you want to remove your identity verfication?`}
+            description="delete.remove_identity_verification_modal_text"
+          />
+        }
+        showModal={showConfirmRemoveIdentityVerificationModal}
+        closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
+        acceptModal={handleRemoveIdentity}
+        acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+      />
       <AuthenticateModal
         action="removeIdentity"
         dispatch={dispatch}
