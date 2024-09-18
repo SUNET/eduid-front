@@ -38,6 +38,18 @@ const notifyAndDispatch = () => (next: any) => (action: any) => {
       delete action.payload.errorMsg;
     }
   }
+  // If the user cancels or times out, perform authentication
+  else if (
+    (action.type.endsWith("performAuthentication/rejected") || action.type.endsWith("createCredential/rejected")) &&
+    action.error.name === "NotAllowedError"
+  ) {
+    next(showNotification({ message: action.error.message, level: "error" }));
+    setTimeout(() => {
+      try {
+        window.scroll(0, 0);
+      } catch (error) {}
+    }, 100);
+  }
   return next(action);
 };
 export default notifyAndDispatch;
