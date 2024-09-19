@@ -1,3 +1,4 @@
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
@@ -32,6 +33,16 @@ export function Index() {
       deleteAccount();
     }
   }, [frontend_action]);
+
+  // Test if user is already logged in and redirect to Dashboard if so
+  async function testIfUserIsAlreadyLoggedIn() {
+    const response = await dispatch(requestAllPersonalData());
+    if (requestAllPersonalData.fulfilled.match(response)) {
+      redirectToLogin();
+    }
+  }
+
+  testIfUserIsAlreadyLoggedIn();
 
   return (
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
