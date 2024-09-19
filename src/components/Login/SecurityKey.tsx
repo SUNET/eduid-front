@@ -48,7 +48,7 @@ function SecurityKeyInactive({ setActive }: SecurityKeyProps): JSX.Element {
       <p className="help-text">
         <FormattedMessage
           description="platform authn help text"
-          defaultMessage="E.g. USB Security Key, Touch ID or Face ID"
+          defaultMessage="E.g. USB Security Key or the device you are currently using."
         />
       </p>
       <EduIDButton
