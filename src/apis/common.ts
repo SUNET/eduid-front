@@ -2,6 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
+import { authenticate, AuthenticateResponse } from "./eduidAuthn";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
@@ -48,7 +49,6 @@ export async function makeGenericRequest<T>(
   return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
     try {
       const response = await makeRequest<T>(thunkAPI, base_url, endpoint, body, data);
-
       if (response.error) {
         // Dispatch fail responses so that notification middleware will show them to the user.
         // The current implementation in notify-middleware.js _removes_ error and payload.message from
@@ -62,6 +62,8 @@ export async function makeGenericRequest<T>(
     } catch (error) {
       if (error instanceof NeedsAuthenticationError) {
         // silently ignore errors about missing authentication
+        const response = await thunkAPI.dispatch(authenticate({ frontend_action: "login" }));
+        window.location.href = (response?.payload as AuthenticateResponse).location;
         reject();
       } else if (error instanceof Error) {
         thunkAPI.dispatch(genericApiFail(error.toString()));
