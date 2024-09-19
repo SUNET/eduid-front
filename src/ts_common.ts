@@ -5,7 +5,9 @@
 export class NeedsAuthenticationError extends Error {}
 
 export const checkStatus = function (response: Response): Response {
-  if (response.status >= 200 && response.status < 300) {
+  if (response.status === 401) {
+    throw new NeedsAuthenticationError("Request needs authentication");
+  } else if (response.status >= 200 && response.status < 300) {
     return response;
   } else if (response.status === 0) {
     const next = document.location.href;
