@@ -30,29 +30,33 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
       <div className="notice-box">
         <h2>
           <FormattedMessage
-            defaultMessage="Phone verification will be discontinued on November 10th"
+            defaultMessage="We're discontinuing phone number support on November 10th"
             description="Temp info - heading"
           />
         </h2>
         <p>
           <FormattedMessage
-            defaultMessage="As an important step in improving the security of eduID we will shortly discontinue the use of phone numbers as a means of:"
+            defaultMessage="As an important step in improving the security of eduID, we will soon discontinue the use of phone numbers for verifying identity and resetting passwords."
             description="Temp info - message"
           />
         </p>
-        <ul className="bullets">
-          <li>
-            <FormattedMessage defaultMessage="Verifying identity" description="Temp info - list item1" />
-          </li>
-          <li>
-            <FormattedMessage defaultMessage="Resetting password" description="Temp info - list item2" />
-          </li>
-        </ul>
-
         <p>
           <FormattedMessage
-            defaultMessage="This change may affect your current verification methods. As an alternative, we recommend verifying:"
+            defaultMessage="To ensurer continued safe access and use of eduID, we recommend that you choose another verification method."
             description="Temp info - message"
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section.`}
+            description="Temp info - message"
+            values={{
+              help: (
+                <a className="text-link" href="https://www.eduid.se/help" target="_blank">
+                  eduid.se/help
+                </a>
+              ),
+            }}
           />
         </p>
       </div>
