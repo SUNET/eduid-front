@@ -1,11 +1,10 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faIdCard, faMobileScreen } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
-import LookupMobileProofing from "components/Dashboard/LookupMobileProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -397,20 +396,6 @@ function AccordionItemSwedish(): JSX.Element | null {
           //
         >
           <LetterProofing disabled={letterProofingDisabled} />
-        </AccordionItemTemplate>
-        <AccordionItemTemplate
-          icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
-          title={<FormattedMessage defaultMessage="by phone" description="explanation text for vetting phone" />}
-          additionalInfo={
-            <FormattedMessage
-              defaultMessage="For you with a phone number registered in your name"
-              description="explanation text for vetting phone"
-            />
-          }
-          uuid="se-phone"
-          //disabled={lookupMobileDisabled}
-        >
-          <LookupMobileProofing disabled={lookupMobileDisabled} />
         </AccordionItemTemplate>
       </Accordion>
     </AccordionItemTemplate>

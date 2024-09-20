@@ -14,7 +14,6 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 import { initialState as ladokInitialState } from "slices/Ladok";
 import { initialState as letterProofingInitialState } from "slices/LetterProofing";
 import { initialState as loginInitialState } from "slices/Login";
-import { initialState as lookupMobileInitialState } from "slices/LookupMobileProofing";
 import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
@@ -41,7 +40,6 @@ export const signupTestState: EduIDAppRootState = {
   resetPassword: resetPasswordState,
   chpass: changePasswordInitialState,
   emails: emailsInitialState,
-  lookup_mobile: lookupMobileInitialState,
   personal_data: personalDataInitialState,
   phones: phonesInitialState,
   letter_proofing: letterProofingInitialState,
