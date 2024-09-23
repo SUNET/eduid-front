@@ -133,9 +133,6 @@ table {
   }
 
   .progress-summary &,
-  #phone-display {
-    margin-top: 1rem;
-  }
   #phone-display &,
   #email-display & {
     tr.display-none {
@@ -154,6 +151,10 @@ table {
       text-overflow: ellipsis;
     }
   }
+}
+
+div#phone-display {
+  margin-top: 1rem;
 }
 
 caption {
