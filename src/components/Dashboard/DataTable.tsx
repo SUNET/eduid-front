@@ -6,8 +6,8 @@ import { EmailInfo } from "../../apis/eduidEmail";
 
 interface DataTableProps {
   data?: EmailInfo[] | PhoneInfo[];
-  handleStartConfirmation?: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary?: (event: React.MouseEvent<HTMLElement>) => void;
+  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
   handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -15,8 +15,8 @@ interface DataStatusProps {
   name?: string;
   verified: boolean;
   primary: boolean;
-  handleStartConfirmation?: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary?: (event: React.MouseEvent<HTMLElement>) => void;
+  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 function DataStatus(props: DataStatusProps) {
@@ -83,8 +83,8 @@ function DataTableRows(props: DataTableProps) {
                 name={valueName}
                 verified={datum.verified}
                 primary={datum.primary}
-                handleStartConfirmation={props.handleStartConfirmation && props.handleStartConfirmation}
-                handleMakePrimary={props.handleMakePrimary && props.handleMakePrimary}
+                handleStartConfirmation={props.handleStartConfirmation}
+                handleMakePrimary={props.handleMakePrimary}
               />
             </td>
             {/* not render the close button when there is only one email */}
