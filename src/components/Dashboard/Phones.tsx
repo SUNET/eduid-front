@@ -199,8 +199,7 @@ function Phones() {
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`You can connect one or more mobile phone numbers to your eduID,
-            but one has to be set as primary.`}
+          defaultMessage={`This is your connected mobile phone numbers to your eduID. To enhance security, we will soon discontinue the use of mobile phone numbers`}
           description="Phones long description"
         />
       </p>
