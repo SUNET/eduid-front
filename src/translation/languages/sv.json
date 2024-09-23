@@ -306,6 +306,10 @@
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
   },
+  "4XAsSn": {
+    "developer_comment": "settings.remove_identity_verification_modal_title",
+    "string": "Ta bort verifiering av din identitet"
+  },
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "För att begära kod, fyll i nedan captcha."
@@ -934,6 +938,10 @@
     "developer_comment": "help text for custom password tips",
     "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
   },
+  "NT4bZ4": {
+    "developer_comment": "platform authn help text",
+    "string": "T.ex. USB säkerhetsnyckel eller enheten som du just nu använder."
+  },
   "NcY26W": {
     "developer_comment": "why have eduID - paragraph 2",
     "string": "Det är många tjänster som har behov av identifiering av användare. Ofta sker detta genom att användaren anger en e-postadress dit tjänsten skickar ett lösenord och för många tjänster är detta en tillräcklig nivå. En sådan användare kallas ofta obekräftad, eftersom tjänsten egentligen inte vet vem användaren med e-postadressen är. Genom eduID kan identifieringen av användare lyftas ett steg, till att bli bekräftade användare."
@@ -953,6 +961,10 @@
   "Nk+I3K": {
     "developer_comment": "personal data edit title",
     "string": "Ändra namn och språk"
+  },
+  "NmCGzv": {
+    "developer_comment": "delete.confirm_button",
+    "string": "Bekräfta"
   },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
@@ -1120,6 +1132,10 @@
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Lösenord"
+  },
+  "SWwNRP": {
+    "developer_comment": "settings.remove_security_key_modal_title",
+    "string": "Ta bort säkerhetsnyckel"
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -1967,10 +1983,6 @@
     "developer_comment": "Phones main title",
     "string": "Telefonnummer"
   },
-  "j8KKR3": {
-    "developer_comment": "platform authn help text",
-    "string": "T.ex. USB säkerhetsnyckel, Touch ID eller Face ID."
-  },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
@@ -2029,6 +2041,10 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
+  },
+  "kvqCWB": {
+    "developer_comment": "delete.remove_identity_verification_modal_text",
+    "string": "Är du säker på att du vill ta bort verifiering av din identitet?"
   },
   "kz8YmP": {
     "string": "Du loggar in som {display_name} ({username}) på den andra enheten"
@@ -2569,6 +2585,10 @@
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "skicka e-post"
+  },
+  "qYvm5T": {
+    "developer_comment": "delete.remove_security_key_modal_text",
+    "string": "Är du säker på att du vill ta bort din säkerhetsnyckel?"
   },
   "qkwsql": {
     "developer_comment": "Login MFA",
