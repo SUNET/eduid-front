@@ -225,6 +225,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
+  const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
 
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
@@ -239,23 +240,27 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
         <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
         <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
       </div>
-      <div className="icon-text">
-        <button
-          type="button"
-          className="icon-only"
-          disabled={loading}
-          aria-label="name-check"
-          onClick={() => handleUpdateName()}
-        >
-          <FontAwesomeIcon icon={faRedo as IconProp} />
-        </button>
-        <label htmlFor="name-check" className="hint">
-          <FormattedMessage
-            defaultMessage="Update first and last names from the Swedish Population Register."
-            description="Personal data update locked names"
-          />
-        </label>
-      </div>
+
+      {/* Only available for Swedish identities */}
+      {nin?.verified && (
+        <div className="icon-text">
+          <button
+            type="button"
+            className="icon-only"
+            disabled={loading}
+            aria-label="name-check"
+            onClick={() => handleUpdateName()}
+          >
+            <FontAwesomeIcon icon={faRedo as IconProp} />
+          </button>
+          <label htmlFor="name-check" className="hint">
+            <FormattedMessage
+              defaultMessage="Update first and last names from the Swedish Population Register."
+              description="Personal data update locked names"
+            />
+          </label>
+        </div>
+      )}
     </article>
   );
 };
