@@ -199,7 +199,13 @@ function Phones() {
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage={`This is your connected mobile phone numbers to your eduID. To enhance security, we will soon discontinue the use of mobile phone numbers`}
+          defaultMessage={`You can connect one or more mobile phone numbers to your eduID.`}
+          description="Phones long description"
+        />
+      </p>
+      <p className="help-text black">
+        <FormattedMessage
+          defaultMessage={`Note: the use of phone numbers will soon be discontinued. Verified numbers remain unchanged, but new numbers can no longer be added.`}
           description="Phones long description"
         />
       </p>
@@ -210,6 +216,7 @@ function Phones() {
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
+
         {showPhoneForm ? (
           <FinalForm<PhoneFormData>
             onSubmit={handleAdd}
@@ -256,7 +263,7 @@ function Phones() {
           <EduIDButton
             id="phone-number-add-more-button"
             buttonstyle="link"
-            className=" lowercase"
+            className="lowercase disabled"
             onClick={handlePhoneForm}
           >
             <FormattedMessage defaultMessage=" + add more" description="button add more" />
