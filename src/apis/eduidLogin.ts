@@ -333,6 +333,7 @@ export interface LoginAuthnOptions {
   password?: boolean;
   usernamepassword?: boolean;
   webauthn?: boolean;
+  verified_phone_number?: boolean;
 }
 
 /**
