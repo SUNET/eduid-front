@@ -83,18 +83,18 @@ function Login(): JSX.Element {
 
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+  const verified_phone_number = useAppSelector((state) => state.login.authn_options.verified_phone_number);
   const [hasReadAnnouncement, setHasReadAnnouncement] = useState(
     Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT))
   );
 
   let ComponentToRender;
-
-  if (hasReadAnnouncement && SAMLParameters) {
-    ComponentToRender = <SubmitSamlResponse />;
-  } else if (hasReadAnnouncement && !SAMLParameters) {
+  if (!hasReadAnnouncement && verified_phone_number && SAMLParameters) {
+    ComponentToRender = <TemporaryInfo setHasReadAnnouncement={setHasReadAnnouncement} />;
+  } else if (!SAMLParameters) {
     ComponentToRender = <UseOtherDevice2 />;
   } else {
-    ComponentToRender = <TemporaryInfo setHasReadAnnouncement={setHasReadAnnouncement} />;
+    ComponentToRender = <SubmitSamlResponse />;
   }
 
   return ComponentToRender;

@@ -16,7 +16,6 @@ export function Header(props: HeaderProps): JSX.Element {
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
-  const next_page = useAppSelector((state) => state.login.next_page);
 
   const initialButton = (
     <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
@@ -53,9 +52,7 @@ export function Header(props: HeaderProps): JSX.Element {
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </EduIDButton>
     );
-  }
-  // check next page === FINISHED for users who receive temporary messages
-  else if (authn_options.has_session || next_page === "FINISHED") {
+  } else if (authn_options.has_session) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />

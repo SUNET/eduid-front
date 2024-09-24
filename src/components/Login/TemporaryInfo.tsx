@@ -9,6 +9,10 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
   function handleAccept() {
     window.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");
     props.setHasReadAnnouncement(Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT)));
+    if (!activeButton) {
+      console.log("remove");
+      window.localStorage.removeItem(HAS_READ_ANNOUNCEMENT);
+    }
   }
 
   return (
@@ -30,7 +34,7 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
       <div className="notice-box">
         <h2>
           <FormattedMessage
-            defaultMessage="We're discontinuing phone number support on November 10th"
+            defaultMessage="We're discontinuing phone number support"
             description="Temp info - heading"
           />
         </h2>
@@ -42,7 +46,7 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
         </p>
         <p>
           <FormattedMessage
-            defaultMessage="To ensurer continued safe access and use of eduID, we recommend that you choose another verification method."
+            defaultMessage="To ensure continued safe access and use of eduID, we recommend that you choose another verification method."
             description="Temp info - message"
           />
         </p>
