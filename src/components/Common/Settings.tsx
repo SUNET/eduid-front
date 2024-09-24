@@ -3,6 +3,7 @@ import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
 import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
+import LanguagePreference from "components/Dashboard/Language";
 import PersonalDataParent from "components/Dashboard/PersonalDataParent";
 import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
@@ -42,6 +43,7 @@ export function Settings(): JSX.Element {
         </div>
       </section>
       <PersonalDataParent />
+      <LanguagePreference />
       <Emails />
       <Phones />
       <ChangePasswordDisplay />
