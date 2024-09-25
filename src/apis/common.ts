@@ -2,7 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import securitySlice from "slices/Security";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
-import { EduIDAppDispatch, eduidStore } from "../eduid-init-app";
+import { EduIDAppDispatch } from "../eduid-init-app";
 import { authenticate } from "./eduidAuthn";
 
 export interface StateWithCommonConfig {
@@ -63,7 +63,7 @@ export async function makeGenericRequest<T>(
           // security zone, re-auth
           // toggle status of re-auth in state, that will trig the visualization of AuthenticateModal
           console.log("HERE IN AUTHN_STATUS.MUST-AUTHENTICATE");
-          eduidStore.dispatch(securitySlice.actions.setReAuthenticate(true));
+          thunkAPI.dispatch(securitySlice.actions.setReAuthenticate(true));
         }
 
         thunkAPI.dispatch(response);
