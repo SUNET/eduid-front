@@ -147,3 +147,12 @@ fieldset {
     font-family: $inter-regular;
   }
 }
+
+input[type="checkbox"] {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
