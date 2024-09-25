@@ -190,31 +190,6 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
   );
 }
 
-// function RenderLanguageSelect(): JSX.Element {
-//   // Make an ordered list of languages to be presented as radio buttons
-//   const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
-//   const language_list = Object.entries(_languages);
-
-//   return (
-//     <React.Fragment>
-//       <legend className="require">
-//         <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
-//       </legend>
-//       <div className="radio-input-container">
-//         {language_list.map((option: string[]) => {
-//           const [key, value] = option;
-//           return (
-//             <label key={key} htmlFor={value}>
-//               <Field name="language" component="input" type="radio" id={value} value={key} />
-//               <span>{value}</span>
-//             </label>
-//           );
-//         })}
-//       </div>
-//     </React.Fragment>
-//   );
-// }
-
 /*
  * If the user has a verified NIN, editing the first and last name is not permitted because we get
  * the legal names from Skatteverket. There is however a button to request renewal of the names
