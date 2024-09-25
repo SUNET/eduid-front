@@ -122,7 +122,6 @@ export function Recommendations(): JSX.Element | null {
   const credentials = useAppSelector((state) => state.security.credentials);
   const phones = useAppSelector((state) => state.phones.phones);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
-  const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
@@ -136,7 +135,7 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities?.nin?.verified && verifiedNumber && tokens.length && given_name) {
+  if (identities?.nin?.verified && tokens.length && given_name) {
     return null;
   }
 
