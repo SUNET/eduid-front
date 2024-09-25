@@ -120,7 +120,6 @@ export function Recommendations(): JSX.Element | null {
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const credentials = useAppSelector((state) => state.security.credentials);
-  const phones = useAppSelector((state) => state.phones.phones);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
