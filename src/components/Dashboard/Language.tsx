@@ -1,5 +1,4 @@
 import { PersonalDataRequest, postPersonalData } from "apis/eduidPersonalData";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -63,7 +62,7 @@ export function LanguagePreference() {
           const _disabled = Boolean(formProps.hasValidationErrors || _submitError);
 
           return (
-            <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
+            <form id="personaldata-view-form" onChange={formProps.handleSubmit}>
               <fieldset className="name-inputs">
                 <article>
                   <legend className="require">
@@ -79,13 +78,6 @@ export function LanguagePreference() {
                         </label>
                       );
                     })}
-                  </div>
-                </article>
-                <article>
-                  <div className="buttons">
-                    <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
-                      <FormattedMessage defaultMessage="save" description="button save" />
-                    </EduIDButton>
                   </div>
                 </article>
               </fieldset>
