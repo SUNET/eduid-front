@@ -83,6 +83,10 @@
     "developer_comment": "what is accessibility report - paragraph 1",
     "string": "Läs {accessibility} i sin helhet angående eduID.se på Sunets hemsida, där du även hittar instruktioner för hur du kan meddela innehåll som brister i tillgänglighet. Rapporten beskriver eduIDs arbete för förenlighet med lagen om tillgänglighet till digital offentlig service, inklusive kända brister."
   },
+  "/fK7xJ": {
+    "developer_comment": "unverified",
+    "string": "overifierad"
+  },
   "/h666/": {
     "developer_comment": "select extra webauthn",
     "string": "Välj ytterligare identifieringsmetod:"
@@ -126,10 +130,6 @@
   "0gu24s": {
     "developer_comment": "new password",
     "string": "Nytt lösenord"
-  },
-  "0jJrec": {
-    "developer_comment": "verify identity vetting explanation verify phone",
-    "string": "Bekräfta ditt telefonnummer under {linkToSettings}"
   },
   "0nQOwn": {
     "developer_comment": "Change password radio group legend",
@@ -266,10 +266,6 @@
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
-  },
-  "3ulSXr": {
-    "developer_comment": "lmp.confirm_info",
-    "string": "Den här kontrollen görs mot ett register som innehåller uppgifter från telefonoperatörerna. Om dina uppgifter inte stämmer behöver du verifiera dig på ett annat sätt."
   },
   "4/fziK": {
     "developer_comment": "how change language - heading",
@@ -497,6 +493,10 @@
     "developer_comment": "Registration confirm password",
     "string": "Registrera: Rekommenderat lösenord"
   },
+  "9q4gIM": {
+    "developer_comment": "Phones long description",
+    "string": "Du kan koppla ett eller flera mobiltelefonnummer till ditt eduID."
+  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Byt lösenord"
@@ -544,10 +544,6 @@
   "AsYVb4": {
     "developer_comment": "use bankid - list item 1",
     "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}"
-  },
-  "AyJxQp": {
-    "developer_comment": "verify identity vetting explanation add nin",
-    "string": "Börja med att lägga till ditt personnummer ovan."
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -655,10 +651,6 @@
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
     "string": "Du har åtkomst till dina inställningar i"
-  },
-  "FDlOke": {
-    "developer_comment": "verify identity vetting explanation add phone number",
-    "string": "Börja med att lägga till ditt telefonnummer i {linkToSettings}"
   },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
@@ -803,6 +795,10 @@
     "developer_comment": "about using eduid - handle",
     "string": "Användning av eduID"
   },
+  "J/A8aF": {
+    "developer_comment": "Phones long description",
+    "string": "Obs: användningen av telefonnummer i eduID kommer snart att upphöra. Redan verifierade nummer kommer att vara oförändrade, men nya nummer kan inte läggas till."
+  },
   "J3IlyU": {
     "developer_comment": "resend code",
     "string": "Skicka ny kod igen"
@@ -814,10 +810,6 @@
   "K427ha": {
     "developer_comment": "security second factor",
     "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
-  },
-  "KGKbB9": {
-    "developer_comment": "accordion item Add phone number",
-    "string": "Lägg till ditt telefonnummer"
   },
   "KK1zTc": {
     "developer_comment": "enhance eduid - list definition",
@@ -974,10 +966,6 @@
     "developer_comment": "verification status heading verified",
     "string": "Din identitet är verifierad."
   },
-  "O2laus": {
-    "developer_comment": "accordion item Phone additional info",
-    "string": "Lägg till ditt telefonnummer för att möjliggöra säker återställning av lösenord och fortsatt verifiering av din identitet."
-  },
   "O4hsHb": {
     "developer_comment": "go to settings",
     "string": "Gå till Inställningar"
@@ -1018,6 +1006,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
   },
+  "P/hsFU": {
+    "developer_comment": "Temp info - message",
+    "string": "Som ett viktigt steg i arbetet med att förbättra och bibehålla säkerheten i eduID, kommer snart användningen av telefonnummer för att verifiera identitet och återställa lösenord att upphöra."
+  },
   "P2JYwK": {
     "developer_comment": "what is freja - paragraph",
     "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer eller samordningsnummer."
@@ -1037,10 +1029,6 @@
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Felaktig kod, försök igen"
-  },
-  "PRzfUP": {
-    "developer_comment": "lmp.modal_confirm_title",
-    "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer."
   },
   "Pa6Av7": {
     "developer_comment": "Display name select placeholder",
@@ -1256,10 +1244,6 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
   },
-  "VFhU1F": {
-    "developer_comment": "verify identity vetting phone tagline",
-    "string": "För svenska telefonnummer angivna och bekräftade i eduID."
-  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
@@ -1340,10 +1324,6 @@
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
   },
-  "XuhAU7": {
-    "developer_comment": "accordion item Confirm phone number",
-    "string": "Bekräfta ditt telefonnummer"
-  },
   "Xx5Akw": {
     "developer_comment": "Footer copyright",
     "string": "2013-2024"
@@ -1359,10 +1339,6 @@
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Visningsnamn"
-  },
-  "Y33LNf": {
-    "developer_comment": "explanation text for vetting phone",
-    "string": "För dig med ett telefonnummer registrerat i ditt namn"
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -1391,10 +1367,6 @@
   "ZN7bfi": {
     "developer_comment": "security creation date",
     "string": "Skapad den"
-  },
-  "ZQcORE": {
-    "developer_comment": "Phones long description",
-    "string": "Du kan koppla ett eller flera mobiltelefonnummer till ditt eduID."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -1620,6 +1592,10 @@
   "dQm5ii": {
     "developer_comment": "usb key technical section - list item 4",
     "string": "samt inte stödja någon annan \"key protection\" än: "
+  },
+  "dc/cAW": {
+    "developer_comment": "Temp info - message",
+    "string": "För mer information om tillgängliga sätt att verifiera sig, besök avsnittet för 'Verifiering av identitet' i {help}."
   },
   "dcHeKQ": {
     "developer_comment": "about eduid - info",
@@ -2007,6 +1983,10 @@
     "developer_comment": "how more secure description 1",
     "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas tvåfaktorsautentisering (2FA) eller i vissa fall multifaktorautentisering (MFA)."
   },
+  "jdtrs0": {
+    "developer_comment": "Temp info - title",
+    "string": "Viktig information"
+  },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
     "string": "Personuppgiftsbehandling och Webbtillgänglighet"
@@ -2014,6 +1994,10 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "Om eIDAS"
+  },
+  "kAzf2M": {
+    "developer_comment": "Temp info - message",
+    "string": "För att bibehålla säker tillgång och användning av eduID, rekommenderar vi att du väljer en annan verifieringsmetod."
   },
   "kHCeni": {
     "string": "Ange den sexsiffriga koden som skickats till {email} för att verifiera din e-postadress. Du kan också kopiera och klistra in koden från e-posten i inmatningsfältet."
@@ -2191,10 +2175,6 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Tillbaka"
   },
-  "lvFfgQ": {
-    "developer_comment": "verification methods - list item 2",
-    "string": "användaren får ett sms skickat till det telefonnummer som är registrerat i mobiloperatörernas egna register, med instruktioner om att slutföra verifieringen i eduid.se,"
-  },
   "lyfTgy": {
     "developer_comment": "Title for email code input",
     "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
@@ -2218,6 +2198,10 @@
   "mXkdvt": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Långt från din adress nu)"
+  },
+  "mbACj8": {
+    "developer_comment": "Temp info - checkbox",
+    "string": "Visa inte detta meddelande igen"
   },
   "md5xqk": {
     "developer_comment": "Dashboard AccountLinking",
@@ -2695,10 +2679,6 @@
     "developer_comment": "Security keys list - paragraph",
     "string": "Nästa uppdatering: "
   },
-  "s5EpgK": {
-    "developer_comment": "verify identity vetting link settings",
-    "string": "Inställningar"
-  },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", kan du använda {emphasis} med hjälp av ett europeiskt eID för att verifiera din identitet. Läs mer om eIDAS nedan."
@@ -2765,10 +2745,6 @@
   "sf+Nbv": {
     "developer_comment": "which type of security key - heading",
     "string": "Vilka säkerhetsnycklar kan jag använda för eduID?"
-  },
-  "shCOk2": {
-    "developer_comment": "swedish nin mobile - heading",
-    "string": "mobil - med svenskt personnummer:"
   },
   "signup.already-verified": {
     "string": "Du har redan verifierat ditt konto."
@@ -2865,10 +2841,6 @@
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
   },
-  "tUkPGr": {
-    "developer_comment": "verify identity vetting explanation add swedish phone",
-    "string": "Bara möjligt med svenskt telefonnummer"
-  },
   "tVcCe6": {
     "developer_comment": "emails enter code",
     "string": "Kod"
@@ -2892,6 +2864,10 @@
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'EU-medborgare' och följ instruktionerna."
+  },
+  "uMFspJ": {
+    "developer_comment": "Temp info - continue button",
+    "string": "Fortsätt"
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
@@ -2972,10 +2948,6 @@
     "developer_comment": "accordion item name additionalInfo",
     "string": "Namn kan användas för att anpassa tjänster som du kommer åt med ditt eduID."
   },
-  "wHO+q8": {
-    "developer_comment": "explanation text for vetting phone",
-    "string": "via telefon"
-  },
   "wLDO8N": {
     "developer_comment": "pd label language",
     "string": "Språk"
@@ -2995,6 +2967,10 @@
   "wesR1u": {
     "developer_comment": "pd label sw",
     "string": "Svenska"
+  },
+  "wn+c+3": {
+    "developer_comment": "Temp info - heading",
+    "string": "Vi upphör med stöd för användning av telefonnummer i eduID"
   },
   "wnJXsu": {
     "developer_comment": "Register - headline",
@@ -3052,10 +3028,6 @@
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja nedan."
   },
-  "yHgn4B": {
-    "developer_comment": "accordion item Phone additional info",
-    "string": "Bekräfta ditt telefonnummer för att möjliggöra säker återställning av lösenord och verifiering av identitet."
-  },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Finns ditt lärosäte inte i listan ska du inte använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för mer information."
@@ -3079,6 +3051,10 @@
   "ysi2d4": {
     "developer_comment": "privacy policy - list item 9",
     "string": "sparar endast nödvändiga funktionella kakor."
+  },
+  "yzw0Bl": {
+    "developer_comment": "Temp info - lead",
+    "string": "Nedanstående information är relevant för dig och vi behöver bekräftat att du har tagit del av den. Vänligen läs innan du fortsätter."
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
