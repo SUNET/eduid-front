@@ -34,19 +34,6 @@ function RenderPersonalData(props: { labels: NameLabels }) {
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
-  // const pref_language = useAppSelector((state) => state.personal_data.response?.language);
-  // // if language is set render label
-  // const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
-  // let languageLabel;
-  // if (hasPrefLanguage) {
-  //   languageLabel =
-  //     pref_language === "sv" ? (
-  //       <FormattedMessage defaultMessage="Svenska" description="pd label sw" />
-  //     ) : (
-  //       <FormattedMessage defaultMessage="English" description="pd label en" />
-  //     );
-  // }
-
   const displayName =
     chosen_given_name && last_name ? `${chosen_given_name} ${last_name}` : `${first_name} ${last_name}`;
 
@@ -55,13 +42,6 @@ function RenderPersonalData(props: { labels: NameLabels }) {
       <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
       <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
       {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={displayName} />}
-      {/* {hasPrefLanguage ? (
-        <NameDisplay
-          htmlFor="language"
-          label={<FormattedMessage defaultMessage="Language" description="pd label language" />}
-          name={languageLabel}
-        />
-      ) : null} */}
     </div>
   );
 }
