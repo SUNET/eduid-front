@@ -153,6 +153,10 @@ button.btn-link {
       display: none;
     }
   }
+  &.disabled {
+    color: $txt-gray;
+    opacity: 1;
+  }
 }
 
 /* icon left of button text */
@@ -214,6 +218,10 @@ button.btn-icon {
     button {
       margin: 0.5rem 0;
     }
+  }
+  &-center {
+    @extend .buttons;
+    align-items: center;
   }
 }
 

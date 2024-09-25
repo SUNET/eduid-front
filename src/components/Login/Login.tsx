@@ -1,12 +1,13 @@
 import { fetchNext } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
+import TemporaryInfo from "./TemporaryInfo";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
 import UseOtherDevice2 from "./UseOtherDevice2";
@@ -16,6 +17,9 @@ import UsernamePw from "./UsernamePw";
 interface LoginParams {
   ref?: string;
 }
+
+/* keep all use through functions in this module */
+export const HAS_READ_ANNOUNCEMENT = "hasReadAnnouncement";
 
 function Login(): JSX.Element {
   const navigate = useNavigate();
@@ -79,7 +83,20 @@ function Login(): JSX.Element {
 
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+  const verified_phone_number = useAppSelector((state) => state.login.authn_options.verified_phone_number);
+  const [hasReadAnnouncement, setHasReadAnnouncement] = useState(
+    Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT))
+  );
 
-  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <UseOtherDevice2 />}</React.Fragment>;
+  let ComponentToRender;
+  if (!hasReadAnnouncement && verified_phone_number && SAMLParameters) {
+    ComponentToRender = <TemporaryInfo setHasReadAnnouncement={setHasReadAnnouncement} />;
+  } else if (!SAMLParameters) {
+    ComponentToRender = <UseOtherDevice2 />;
+  } else {
+    ComponentToRender = <SubmitSamlResponse />;
+  }
+
+  return ComponentToRender;
 }
 export default Login;

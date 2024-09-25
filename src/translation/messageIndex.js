@@ -4,7 +4,6 @@ import * as resetPassword from "./defaultMessages/resetPassword";
 import * as ladok from "./defaultMessages/ladok";
 import * as security from "./defaultMessages/security";
 import * as signup from "./defaultMessages/signup";
-import * as lookupMobileProofing from "./defaultMessages/lookupMobileProofing";
 import * as letterProofing from "./defaultMessages/letterProofing";
 import * as common from "./defaultMessages/common";
 import * as eidas from "./defaultMessages/eidas";
@@ -29,7 +28,6 @@ export const formattedMessages = {
   ...security.apiResponses,
   ...letterProofing.apiResponses,
   ...resetPassword.apiResponses,
-  ...lookupMobileProofing.apiResponses,
   ...bankid.apiResponses,
   ...frejaeid.apiResponses,
 };

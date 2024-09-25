@@ -1,8 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faIdCard, faKey, faMobileScreen, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faIdCard, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
-import { PhonesResponse } from "apis/eduidPhone";
 import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
 import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -10,7 +9,6 @@ import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
 /**
@@ -39,56 +37,6 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
       <Link key="advanced-settings" to={advancedSettingsPath}>
         <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
       </Link>
-    </AccordionItemTemplate>
-  );
-}
-
-function RecommendationPhone(props: PhonesResponse): JSX.Element | null {
-  let description, title;
-  const verifiedNumber = props.phones?.some((num) => num.verified === true);
-
-  // if user has phone number and it is verified, do not show accordion item
-  if (verifiedNumber) {
-    return null;
-  }
-  // if user has no phone number or not confirmed, show accordion item with description and title
-  if (props.phones === undefined || props.phones.length === 0) {
-    description = (
-      <FormattedMessage
-        description="accordion item Phone additional info"
-        defaultMessage="Add your phone number to enable safe reset of password and verification of identity."
-      />
-    );
-    title = <FormattedMessage description="accordion item Add phone number" defaultMessage="Add your phone number" />;
-  } else {
-    if (!verifiedNumber) {
-      description = (
-        <FormattedMessage
-          description="accordion item Phone additional info"
-          defaultMessage="Confirm your phone number to enable safe reset of password and verification of identity."
-        />
-      );
-      title = (
-        <FormattedMessage
-          description="accordion item Confirm phone number"
-          defaultMessage="Confirm your phone number"
-        />
-      );
-    }
-  }
-
-  return (
-    <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faMobileScreen as IconProp} className="circle-icon" />}
-      title={title}
-      additionalInfo={null}
-      uuid="recommendation-phone"
-    >
-      <p> {description}</p>
-
-      <HashLink to={`${settingsPath}/#phone`}>
-        <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </HashLink>
     </AccordionItemTemplate>
   );
 }
@@ -172,9 +120,7 @@ export function Recommendations(): JSX.Element | null {
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const credentials = useAppSelector((state) => state.security.credentials);
-  const phones = useAppSelector((state) => state.phones.phones);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
-  const verifiedNumber = phones?.some((num) => num.verified === true);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
@@ -188,7 +134,7 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities?.nin?.verified && verifiedNumber && tokens.length && given_name) {
+  if (identities?.nin?.verified && tokens.length && given_name) {
     return null;
   }
 
@@ -205,7 +151,6 @@ export function Recommendations(): JSX.Element | null {
       </p>
       <Accordion allowMultipleExpanded allowZeroExpanded>
         <RecommendationAddingName given_name={given_name} />
-        <RecommendationPhone phones={phones} />
         {identities && <RecommendationVerifyIdentity identities={identities} />}
         <RecommendationAddingSecurityKey credentials={tokens} />
       </Accordion>
