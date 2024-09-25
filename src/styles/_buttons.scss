@@ -153,6 +153,10 @@ button.btn-link {
       display: none;
     }
   }
+  &.disabled {
+    color: $txt-gray;
+    opacity: 1;
+  }
 }
 
 /* icon left of button text */

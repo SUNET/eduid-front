@@ -683,21 +683,6 @@ export function Help(): JSX.Element {
                   <li>
                     <em>
                       <FormattedMessage
-                        description="swedish nin mobile - heading"
-                        defaultMessage="mobile - for Swedish personal identity number holders:"
-                      />
-                    </em>
-                    &nbsp;
-                    <FormattedMessage
-                      description="verification methods - list item 2"
-                      defaultMessage={` the user receives a message sent to the phone number that is registered 
-                      in the Swedish telephone register, and instructions on how to complete the verification on 
-                      eduid.se,`}
-                    />
-                  </li>
-                  <li>
-                    <em>
-                      <FormattedMessage
                         description="swedish nin freja - heading"
                         defaultMessage="Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
                       />

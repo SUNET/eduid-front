@@ -1,4 +1,4 @@
-import { IndexMain, advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
+import { IndexMain, advancedSettingsPath, identityPath } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
@@ -36,22 +36,6 @@ test("recommendations for new users, adding name", async () => {
   });
   await waitFor(() => {
     expect(screen.getByRole("link", { name: /Go to Settings/i })).toBeInTheDocument();
-  });
-});
-
-test("recommendations for new users, adding phone", async () => {
-  render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile/"],
-  });
-
-  const addingPhoneButton = screen.getByRole("button", { name: /Add your phone number/i });
-  expect(addingPhoneButton).toBeEnabled();
-  act(() => {
-    addingPhoneButton.click();
-  });
-  await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Settings/i })).toHaveAttribute("href", `${settingsPath}/#phone`);
   });
 });
 

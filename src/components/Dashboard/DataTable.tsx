@@ -12,8 +12,7 @@ interface DataTableProps {
 }
 
 interface DataStatusProps {
-  email?: string;
-  phone?: string;
+  name?: string;
   verified: boolean;
   primary: boolean;
   handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
@@ -23,8 +22,17 @@ interface DataStatusProps {
 function DataStatus(props: DataStatusProps) {
   if (!props.verified) {
     return (
-      <EduIDButton buttonstyle="link" size="sm" onClick={props.handleStartConfirmation}>
-        <FormattedMessage defaultMessage="confirm" description="confirm button" />
+      <EduIDButton
+        className={`${props.name ? "disabled" : ""}`}
+        buttonstyle="link"
+        size="sm"
+        onClick={props.handleStartConfirmation}
+      >
+        {props.name === "number" ? (
+          <FormattedMessage defaultMessage="unverified" description="unverified" />
+        ) : (
+          <FormattedMessage defaultMessage="confirm" description="confirm button" />
+        )}
       </EduIDButton>
     );
   }
@@ -36,7 +44,12 @@ function DataStatus(props: DataStatusProps) {
     );
   }
   return (
-    <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
+    <EduIDButton
+      className={`${props.name ? "disabled" : ""}`}
+      buttonstyle="link"
+      size="sm"
+      onClick={props.handleMakePrimary}
+    >
       <FormattedMessage defaultMessage="make primary" description="Make primary button" />
     </EduIDButton>
   );
@@ -46,6 +59,7 @@ function DataTableRows(props: DataTableProps) {
   if (!props.data) {
     return null;
   }
+
   return (
     <Fragment>
       {props.data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
@@ -66,6 +80,7 @@ function DataTableRows(props: DataTableProps) {
             <td className={valueStatus}>{value}</td>
             <td className="value-status">
               <DataStatus
+                name={valueName}
                 verified={datum.verified}
                 primary={datum.primary}
                 handleStartConfirmation={props.handleStartConfirmation}
