@@ -36,7 +36,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const messages = LOCALIZED_MESSAGES;
 
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
-  const defaultDisplayGivenName = chosenGivenName ? chosenGivenName : personal_data?.given_name;
+  const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
 
   async function formSubmit(values: PersonalDataRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
@@ -132,7 +132,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
   const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
     if (defaultValues.length > 1) {
       const updatedValue = Array.isArray(newValue) ? newValue : [newValue];
-      if (updatedValue) {
+      if (updatedValue.length) {
         setSelectedOptions(updatedValue);
         const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
         if (selectedGivenName) {
