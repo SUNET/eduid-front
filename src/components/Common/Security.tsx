@@ -11,7 +11,7 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { AuthenticateModal } from "components/Dashboard/Authenticate";
+import { AuthenticateModal } from "components/Dashboard/AuthenticateModal";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
@@ -41,7 +41,6 @@ export function Security(): React.ReactElement | null {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [authnType, setAuthnType] = useState<string>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const tokens = useAppSelector((state) => {
@@ -122,11 +121,11 @@ export function Security(): React.ReactElement | null {
     dispatch(securitySlice.actions.chooseAuthenticator(authType));
     setAuthnType(authType);
     const resp = await dispatch(beginRegisterWebauthn());
-    if (beginRegisterWebauthn.rejected.match(resp)) {
-      if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        setShowAuthnModal(true);
-      }
-    }
+    // if (beginRegisterWebauthn.rejected.match(resp)) {
+    //   if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
+    //     setShowAuthnModal(true);
+    //   }
+    // }
     if (beginRegisterWebauthn.fulfilled.match(resp)) {
       setShowModal(true);
     }
@@ -148,9 +147,9 @@ export function Security(): React.ReactElement | null {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
         }
-        if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
-          setShowAuthnModal(true);
-        }
+        // if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
+        //   setShowAuthnModal(true);
+        // }
       } catch (err) {}
     })();
   }
@@ -260,18 +259,15 @@ export function Security(): React.ReactElement | null {
         }
       />
       <AuthenticateModal
-        state={authnType}
-        action="addSecurityKeyAuthn"
-        dispatch={dispatch}
-        showModal={showAuthnModal}
-        setShowModal={setShowAuthnModal}
+        frontend_state={authnType}
+        //action="addSecurityKeyAuthn"
       />
     </article>
   );
 }
 
 function SecurityKeyTable(props: RequestCredentialsResponse) {
-  const [showAuthnModal, setShowAuthnModal] = useState(false);
+  // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
@@ -309,10 +305,10 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
-    } else if (eidasVerifyCredential.rejected.match(response)) {
-      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-        setShowAuthnModal(true);
-      }
+      // } else if (eidasVerifyCredential.rejected.match(response)) {
+      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+      //     setShowAuthnModal(true);
+      //   }
     }
   }
 
@@ -324,10 +320,10 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
-    } else if (bankIDVerifyCredential.rejected.match(response)) {
-      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-        setShowAuthnModal(true);
-      }
+      // } else if (bankIDVerifyCredential.rejected.match(response)) {
+      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+      //     setShowAuthnModal(true);
+      //   }
     }
   }
 
@@ -348,11 +344,11 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     setShowConfirmRemoveSecurityKeyModal(false);
     dispatch(authnSlice.actions.setFrontendActionState());
     const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
-    if (removeWebauthnToken.rejected.match(response)) {
-      if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-        setRemoveSecurityKeyModal(true);
-      }
-    }
+    // if (removeWebauthnToken.rejected.match(response)) {
+    //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+    //     setRemoveSecurityKeyModal(true);
+    //   }
+    // }
   }
 
   // data that goes onto the table
@@ -383,11 +379,8 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
           <AuthenticateModal
-            state={JSON.stringify({ method: method, credential: cred.key })}
-            action="verifyCredential"
-            dispatch={dispatch}
-            showModal={showAuthnModal}
-            setShowModal={setShowAuthnModal}
+            frontend_state={JSON.stringify({ method: method, credential: cred.key })}
+            // action="verifyCredential"
           />
         </React.Fragment>
       );
@@ -430,11 +423,10 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
           />
           <AuthenticateModal
-            action="removeSecurityKeyAuthn"
-            state={cred.key}
-            dispatch={dispatch}
-            showModal={cred.key === credentialKey.current && removeSecurityKeyModal}
-            setShowModal={setRemoveSecurityKeyModal}
+            // action="removeSecurityKeyAuthn"
+            frontend_state={cred.key}
+            // showModal={cred.key === credentialKey.current && removeSecurityKeyModal}
+            // setShowModal={setRemoveSecurityKeyModal}
           />
         </td>
       </tr>

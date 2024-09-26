@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
-import { AuthenticateModal } from "./Authenticate";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
@@ -41,7 +40,7 @@ export function ChangePassword() {
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState<boolean>(false);
+  // const [showModal, setShowModal] = useState<boolean>(false);
   let isMounted = true;
 
   useEffect(() => {
@@ -66,10 +65,10 @@ export function ChangePassword() {
       if (isMounted) {
         if (fetchSuggestedPassword.fulfilled.match(response)) {
           navigate("/profile/chpass");
-        } else if (fetchSuggestedPassword.rejected.match(response)) {
-          if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-            setShowModal(true);
-          }
+          // } else if (fetchSuggestedPassword.rejected.match(response)) {
+          //   if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
+          //     setShowModal(true);
+          //   }
         }
       }
     } catch (error) {
@@ -158,12 +157,6 @@ export function ChangePassword() {
                 handleSubmit={handleSubmitNewPassword}
               />
             )}
-            <AuthenticateModal
-              action="changepwAuthn"
-              dispatch={dispatch}
-              showModal={showModal}
-              setShowModal={setShowModal}
-            />
           </Splash>
         );
       }}

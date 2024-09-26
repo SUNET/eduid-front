@@ -18,6 +18,7 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as phonesInitialState } from "slices/Phones";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
+import { initialState as securityZoneInitialState } from "slices/SecurityZone";
 import { initialState as signupInitialState } from "slices/Signup";
 
 export const RESET_PASSWORD_SERVICE_URL = "/reset-password-url/";
@@ -52,6 +53,7 @@ export const loginTestState: EduIDAppRootState = {
   ladok: ladokInitialState,
   signup: signupInitialState,
   authn: authnInitialState,
+  securityZone: securityZoneInitialState,
 };
 
 interface renderArgs {

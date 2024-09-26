@@ -23,7 +23,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
 import authnSlice from "slices/Authn";
-import { AuthenticateModal } from "./Authenticate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
@@ -156,7 +155,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
-  const [showAuthnModal, setShowAuthnModal] = useState(false);
+  // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
@@ -175,8 +174,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
     const response = await dispatch(getAuthnStatus({ frontend_action: "removeIdentity" }));
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
-    } else {
-      setShowAuthnModal(true);
+      // } else {
+      //   setShowAuthnModal(true);
     }
   }
 
@@ -191,11 +190,11 @@ function VerifiedIdentitiesTable(): JSX.Element {
       })[0];
     if (idType) {
       const response = await dispatch(removeIdentity({ identity_type: idType }));
-      if (removeIdentity.rejected.match(response)) {
-        if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-          setShowAuthnModal(true);
-        }
-      }
+      // if (removeIdentity.rejected.match(response)) {
+      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
+      //     setShowAuthnModal(true);
+      //   }
+      // }
     }
   }
 
@@ -282,12 +281,6 @@ function VerifiedIdentitiesTable(): JSX.Element {
         closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
         acceptModal={handleRemoveIdentity}
         acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
-      />
-      <AuthenticateModal
-        action="removeIdentity"
-        dispatch={dispatch}
-        showModal={showAuthnModal}
-        setShowModal={setShowAuthnModal}
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (

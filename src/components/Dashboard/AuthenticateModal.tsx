@@ -3,32 +3,35 @@ import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import securitySlice from "slices/Security";
+import securityZoneSlice from "slices/SecurityZone";
 
-export async function handleAuthenticate(props: { action: string; dispatch: any }) {
-  const response = await props.dispatch(authenticate({ frontend_action: props.action }));
-  if (authenticate.fulfilled.match(response)) {
-    window.location.href = response?.payload.location;
-  }
-}
+// export async function handleAuthenticate(props: { action: string; dispatch: any }) {
+//   const response = await props.dispatch(authenticate({ frontend_action: props.action }));
+//   if (authenticate.fulfilled.match(response)) {
+//     window.location.href = response?.payload.location;
+//   }
+// }
 
 export function AuthenticateModal(
   props: Readonly<{
-    action: string;
-    state?: string;
-    dispatch: any;
+    //action: string;
+    frontend_state?: string;
+    // dispatch: any;
     // setShowModal: any;
     // showModal: boolean;
   }>
 ) {
   const dispatch = useAppDispatch();
-  const re_authenticate = useAppSelector((state) => state.security.re_authenticate);
+  const re_authenticate = useAppSelector((state) => state.securityZone.re_authenticate);
+  const frontend_action = useAppSelector((state) => state.securityZone.frontend_action);
 
   async function handleAuthenticate() {
     // props.setShowModal(false);
-    dispatch(securitySlice.actions.setReAuthenticate(false));
-    props.dispatch(clearNotifications());
-    const response = await props.dispatch(authenticate({ frontend_action: props.action, frontend_state: props.state }));
+    dispatch(securityZoneSlice.actions.setReAuthenticate(false));
+    dispatch(clearNotifications());
+    const response = await dispatch(
+      authenticate({ frontend_action: frontend_action, frontend_state: props.frontend_state })
+    );
     if (authenticate.fulfilled.match(response)) {
       window.location.href = response?.payload.location;
     }
@@ -46,7 +49,7 @@ export function AuthenticateModal(
       }
       showModal={re_authenticate || false}
       closeModal={() => {
-        dispatch(securitySlice.actions.setReAuthenticate(false));
+        dispatch(securityZoneSlice.actions.setReAuthenticate(false));
       }}
       acceptModal={handleAuthenticate}
       acceptButtonText={<FormattedMessage defaultMessage="Continue" description="continue button" />}
