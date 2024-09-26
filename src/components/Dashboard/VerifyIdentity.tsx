@@ -173,8 +173,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
     const response = await dispatch(getAuthnStatus({ frontend_action: "removeIdentity" }));
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
-      // } else {
-      //   setShowAuthnModal(true);
+    } else {
+      handleRemoveIdentity();
     }
   }
 

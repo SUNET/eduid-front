@@ -336,7 +336,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveSecurityKeyModal(true);
     } else {
-      setRemoveSecurityKeyModal(true);
+      handleRemoveWebauthnToken();
     }
   }
 
