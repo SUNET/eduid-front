@@ -9,7 +9,6 @@ import { intlReducer } from "slices/Internationalisation";
 import ladokSlice from "slices/Ladok";
 import letterProofingSlice from "slices/LetterProofing";
 import loginSlice from "slices/Login";
-import lookupMobileProofingSlice from "slices/LookupMobileProofing";
 import { notificationsSlice } from "slices/Notifications";
 import personalDataSlice from "slices/PersonalData";
 import phonesSlice from "slices/Phones";
@@ -28,7 +27,6 @@ const eduIDApp = combineReducers({
   signup: signupSlice.reducer,
   chpass: chpassSlice.reducer,
   emails: emailsSlice.reducer,
-  lookup_mobile: lookupMobileProofingSlice.reducer,
   personal_data: personalDataSlice.reducer,
   phones: phonesSlice.reducer,
   letter_proofing: letterProofingSlice.reducer,

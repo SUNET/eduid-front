@@ -36,7 +36,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const messages = LOCALIZED_MESSAGES;
 
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
-  const defaultDisplayGivenName = chosenGivenName ? chosenGivenName : personal_data?.given_name;
+  const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
 
   async function formSubmit(values: PersonalDataRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
@@ -132,7 +132,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
   const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
     if (defaultValues.length > 1) {
       const updatedValue = Array.isArray(newValue) ? newValue : [newValue];
-      if (updatedValue) {
+      if (updatedValue.length) {
         setSelectedOptions(updatedValue);
         const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
         if (selectedGivenName) {
@@ -225,6 +225,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
+  const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
 
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
@@ -239,23 +240,27 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
         <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
         <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
       </div>
-      <div className="icon-text">
-        <button
-          type="button"
-          className="icon-only"
-          disabled={loading}
-          aria-label="name-check"
-          onClick={() => handleUpdateName()}
-        >
-          <FontAwesomeIcon icon={faRedo as IconProp} />
-        </button>
-        <label htmlFor="name-check" className="hint">
-          <FormattedMessage
-            defaultMessage="Update first and last names from the Swedish Population Register."
-            description="Personal data update locked names"
-          />
-        </label>
-      </div>
+
+      {/* Only available for Swedish identities */}
+      {nin?.verified && (
+        <div className="icon-text">
+          <button
+            type="button"
+            className="icon-only"
+            disabled={loading}
+            aria-label="name-check"
+            onClick={() => handleUpdateName()}
+          >
+            <FontAwesomeIcon icon={faRedo as IconProp} />
+          </button>
+          <label htmlFor="name-check" className="hint">
+            <FormattedMessage
+              defaultMessage="Update first and last names from the Swedish Population Register."
+              description="Personal data update locked names"
+            />
+          </label>
+        </div>
+      )}
     </article>
   );
 };

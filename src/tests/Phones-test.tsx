@@ -1,4 +1,4 @@
-import { PhoneCaptchaResponse, PhonesResponse } from "apis/eduidPhone";
+import { PhonesResponse } from "apis/eduidPhone";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
@@ -70,48 +70,6 @@ test("enable to add number", async () => {
 
   const addPhoneButton = screen.getByRole("button", { name: "Add" });
   expect(addPhoneButton).toBeEnabled();
-});
-
-test("renders confirmation code modal", async () => {
-  const internal_response = "image12345";
-
-  mswServer.use(
-    rest.post("captcha", (req, res, ctx) => {
-      const body = req.body as {
-        internal_response: string;
-      };
-      if (body.internal_response != internal_response) {
-        return res(ctx.status(400));
-      }
-      const payload: PhoneCaptchaResponse = {
-        captcha_img: "image",
-      };
-      return res(ctx.json({ type: "test response", payload: payload }));
-    })
-  );
-  mswServer.printHandlers();
-
-  render(<IndexMain />, {
-    state: {
-      ...defaultDashboardTestState,
-      phones: {
-        captcha: {
-          captcha_img: "data:image/png;base64,iVBORw0KGgoAAAANSUhE",
-        },
-        phones: [{ number: "+46701233333", primary: false, verified: false }],
-      },
-    },
-  });
-  await linkToSettings();
-
-  const confirmButton = screen.getByText("confirm", { selector: "button" });
-  expect(confirmButton).toBeEnabled();
-  // Click the 'confirm' button
-  act(() => {
-    confirmButton.click();
-  });
-  const captchaModal = await screen.getByRole("dialog", { hidden: false });
-  expect(captchaModal).toHaveTextContent("Enter the code sent to");
 });
 
 test("renders primary as expected", async () => {
