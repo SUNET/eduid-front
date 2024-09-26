@@ -23,6 +23,17 @@ export interface PersonalDataRequest {
   preferences?: PreferencesData;
 }
 
+export interface UserNameRequest {
+  given_name?: string;
+  surname?: string;
+  chosen_given_name?: string;
+  preferences?: PreferencesData;
+}
+
+export interface UserLanguageRequest {
+  language: string;
+}
+
 export interface AllUserData {
   chosen_given_name?: string;
   emails: EmailInfo[];
@@ -82,6 +93,46 @@ export const postPersonalData = createAsyncThunk<
     language: args.language,
   };
   return makePersonalDataRequest<AllUserData>(thunkAPI, "user", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function postUserName
+ * @desc Redux async thunk to post user name.
+ */
+export const postUserName = createAsyncThunk<
+  AllUserData, // return type
+  PersonalDataRequest, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("personalData/postUserName", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    chosen_given_name: args.chosen_given_name,
+    given_name: args.given_name,
+    surname: args.surname,
+  };
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "user/name", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+/**
+ * @public
+ * @function postUserLanguage
+ * @desc Redux async thunk to post user language.
+ */
+export const postUserLanguage = createAsyncThunk<
+  AllUserData, // return type
+  UserLanguageRequest, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("personalData/postUserLanguage", async (args, thunkAPI) => {
+  const data: KeyValues = {
+    language: args.language,
+  };
+  return makePersonalDataRequest<AllUserData>(thunkAPI, "user/language", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
