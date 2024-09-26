@@ -92,3 +92,44 @@ form .react-select,
     font-size: 1.25rem;
   }
 }
+//login react select
+.mfa-select {
+  height: 3rem;
+  min-width: 100px;
+  padding: 0 1.125rem;
+  .react-select__control {
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    background-color: $white;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    border: solid 2px $bright-orange;
+  }
+
+  .react-select__control:hover {
+    border: solid 2px $bright-orange;
+  }
+  .react-select__value-container {
+    height: 3rem;
+    padding: 0;
+    text-align: center;
+  }
+
+  .react-select__placeholder {
+    color: $txt-orange;
+    font-family: $akkurat;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .css-tj5bde-Svg {
+    color: $txt-orange;
+  }
+}
+.mfa-select__control--is-focused {
+  border-color: transparent;
+}
+.mfa-select__control:not(.custom-select__control--is-focused) {
+  border-color: transparent;
+}
