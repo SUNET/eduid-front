@@ -15,13 +15,11 @@ export interface SecurityState {
   webauthn_token_description?: string;
   webauthn_attestation?: webauthnAttestation;
   webauthn_authenticator?: string;
-  re_authenticate?: boolean;
 }
 
 // export this for use in tests
 export const initialState: SecurityState = {
   credentials: [],
-  re_authenticate: false,
 };
 
 const securitySlice = createSlice({
@@ -33,10 +31,6 @@ const securitySlice = createSlice({
         ...state,
         webauthn_authenticator: action.payload,
       };
-    },
-    setReAuthenticate: (state, action: PayloadAction<boolean>) => {
-      console.log("setReAuthenticate");
-      state.re_authenticate = action.payload;
     },
   },
   extraReducers: (builder) => {
