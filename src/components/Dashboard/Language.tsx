@@ -1,4 +1,4 @@
-import { postPersonalData, postUserLanguage, UserLanguageRequest } from "apis/eduidPersonalData";
+import { postUserLanguage, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -9,7 +9,6 @@ import { clearNotifications } from "slices/Notifications";
 export function LanguagePreference() {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
-  const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const messages = LOCALIZED_MESSAGES;
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
@@ -23,7 +22,7 @@ export function LanguagePreference() {
     };
     const response = await dispatch(postUserLanguage(postData));
 
-    if (postPersonalData.fulfilled.match(response)) {
+    if (postUserLanguage.fulfilled.match(response)) {
       dispatch(clearNotifications());
       if (response.payload.language) {
         dispatch(

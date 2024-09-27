@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PersonalDataRequest, postPersonalData, requestAllPersonalData } from "apis/eduidPersonalData";
+import { PersonalDataRequest, postUserName, requestAllPersonalData } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
@@ -45,9 +45,9 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
     if (is_verified) {
       postData = { ...values, chosen_given_name: defaultDisplayGivenName };
     }
-    const response = await dispatch(postPersonalData(postData));
+    const response = await dispatch(postUserName(postData));
 
-    if (postPersonalData.fulfilled.match(response)) {
+    if (postUserName.fulfilled.match(response)) {
       dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
       if (response.payload.language) {
