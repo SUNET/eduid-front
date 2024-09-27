@@ -2,11 +2,16 @@ import { bankIDMfaAuthenticate } from "apis/eduidBankid";
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select from "react-select";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+
+interface SingleValueProps {
+  value: string;
+}
 
 export function SwedishEID(): JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
@@ -14,6 +19,7 @@ export function SwedishEID(): JSX.Element {
   const dispatch = useAppDispatch();
   // TODO: when backend is updated to swedish_eid, we should be able to rename this.
   const notAvailable = !authn_options.freja_eidplus;
+  const [selected, setSelected] = useState();
 
   const IconWithText = ({ icon, text }: any) => {
     return (
@@ -66,6 +72,14 @@ export function SwedishEID(): JSX.Element {
     }
   }
 
+  function handleOnChange(newValue: any): void {
+    if (newValue?.value === "Bank ID") {
+      handleOnClickBankID();
+    } else if (newValue?.value === "Freja+") {
+      handleOnClickFrejaeID();
+    }
+  }
+
   return (
     <>
       <div className="option-wrapper">
@@ -85,8 +99,8 @@ export function SwedishEID(): JSX.Element {
                 <Select
                   // isDisabled={fetchFailed}
                   options={options}
-                  // onChange={handleOnChange}
-                  // value={selected}
+                  onChange={handleOnChange}
+                  value={selected}
                   placeholder={"Select recovery option"}
                   isSearchable={false}
                   className="mfa-select"
