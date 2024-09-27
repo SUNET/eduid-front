@@ -6,7 +6,7 @@ import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import { LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -81,9 +81,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
-              <article>
-                <RenderLanguageSelect />
-              </article>
               <article>
                 <div className="buttons">
                   <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
@@ -187,31 +184,6 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
         </div>
       </div>
     </article>
-  );
-}
-
-function RenderLanguageSelect(): JSX.Element {
-  // Make an ordered list of languages to be presented as radio buttons
-  const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
-  const language_list = Object.entries(_languages);
-
-  return (
-    <React.Fragment>
-      <legend className="require">
-        <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
-      </legend>
-      <div className="radio-input-container">
-        {language_list.map((option: string[]) => {
-          const [key, value] = option;
-          return (
-            <label key={key} htmlFor={value}>
-              <Field name="language" component="input" type="radio" id={value} value={key} />
-              <span>{value}</span>
-            </label>
-          );
-        })}
-      </div>
-    </React.Fragment>
   );
 }
 
