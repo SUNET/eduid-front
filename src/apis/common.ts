@@ -62,7 +62,7 @@ export async function makeGenericRequest<T>(
           // security zone, re-auth
           // toggle status of re-auth in state, that will trig the visualization of AuthenticateModal
           console.log("HERE IN AUTHN_STATUS.MUST-AUTHENTICATE");
-          thunkAPI.dispatch(securityZoneSlice.actions.setFontendAction(saved.meta.frontend_action));
+          thunkAPI.dispatch(securityZoneSlice.actions.setFrontendAction(saved.meta.frontend_action));
           thunkAPI.dispatch(securityZoneSlice.actions.setReAuthenticate(true));
         }
 

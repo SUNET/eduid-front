@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface SecurityZoneState {
   re_authenticate: boolean;
   frontend_action?: string;
+  frontend_state?: string;
 }
 
 // export this for use in tests
@@ -18,9 +19,13 @@ const securityZoneSlice = createSlice({
       console.log("setReAuthenticate");
       state.re_authenticate = action.payload;
     },
-    setFontendAction: (state, action: PayloadAction<string>) => {
-      console.log("setFontendAction");
+    setFrontendAction: (state, action: PayloadAction<string>) => {
+      console.log("setFrontendAction");
       state.frontend_action = action.payload;
+    },
+    setFrontendState: (state, action: PayloadAction<string>) => {
+      console.log("setFrontendState");
+      state.frontend_state = action.payload;
     },
   },
 });

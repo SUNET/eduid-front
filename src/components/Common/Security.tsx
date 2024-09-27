@@ -8,10 +8,8 @@ import {
   registerWebauthn,
   removeWebauthnToken,
   requestCredentials,
-  RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { AuthenticateModal } from "components/Dashboard/AuthenticateModal";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
@@ -22,6 +20,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
+import securityZoneSlice from "slices/SecurityZone";
 import ConfirmModal from "./ConfirmModal";
 import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -187,7 +186,7 @@ export function Security(): React.ReactElement | null {
 
         <div id="register-webauthn-tokens-area" className="table-responsive">
           {Boolean(tokens.length) && <UseSecurityKeyToggle />}
-          <SecurityKeyTable credentials={credentials} />
+          <SecurityKeyTable />
           {!tokens.length && <br />}
           <span aria-label="select extra webauthn">
             <strong>
@@ -258,17 +257,17 @@ export function Security(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
-      <AuthenticateModal
+      {/* <AuthenticateModal
         frontend_state={authnType}
         //action="addSecurityKeyAuthn"
-      />
+      /> */}
     </article>
   );
 }
 
-function SecurityKeyTable(props: RequestCredentialsResponse) {
+function SecurityKeyTable() {
   // const [showAuthnModal, setShowAuthnModal] = useState(false);
-  const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
+  // const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   const [method, setMethod] = useState<string | null>();
@@ -299,6 +298,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   async function handleVerifyWebauthnTokenFreja(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
+    dispatch(securityZoneSlice.actions.setFrontendState(JSON.stringify({ method: "freja", credential: token })));
     const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
     setMethod("freja");
     if (eidasVerifyCredential.fulfilled.match(response)) {
@@ -314,6 +314,7 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
 
   async function handleVerifyWebauthnTokenBankID(token: string) {
     dispatch(authnSlice.actions.setFrontendActionState());
+    dispatch(securityZoneSlice.actions.setFrontendState(JSON.stringify({ method: "bankid", credential: token })));
     const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
     setMethod("bankid");
     if (bankIDVerifyCredential.fulfilled.match(response)) {
@@ -343,6 +344,9 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
   async function handleRemoveWebauthnToken() {
     setShowConfirmRemoveSecurityKeyModal(false);
     dispatch(authnSlice.actions.setFrontendActionState());
+    dispatch(
+      securityZoneSlice.actions.setFrontendState(JSON.stringify({ method: method, credential: credentialKey.current }))
+    );
     const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
     // if (removeWebauthnToken.rejected.match(response)) {
     //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
@@ -378,10 +382,10 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
-          <AuthenticateModal
+          {/* <AuthenticateModal
             frontend_state={JSON.stringify({ method: method, credential: cred.key })}
             // action="verifyCredential"
-          />
+          /> */}
         </React.Fragment>
       );
     }
@@ -422,12 +426,12 @@ function SecurityKeyTable(props: RequestCredentialsResponse) {
             acceptModal={handleRemoveWebauthnToken}
             acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
           />
-          <AuthenticateModal
+          {/* <AuthenticateModal
             // action="removeSecurityKeyAuthn"
             frontend_state={cred.key}
             // showModal={cred.key === credentialKey.current && removeSecurityKeyModal}
             // setShowModal={setRemoveSecurityKeyModal}
-          />
+          /> */}
         </td>
       </tr>
     );
