@@ -3,7 +3,7 @@ import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import securityZoneSlice from "slices/SecurityZone";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
-import { authenticate } from "./eduidAuthn";
+import { authenticate, AuthenticateResponse } from "./eduidAuthn";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
@@ -48,7 +48,6 @@ export async function makeGenericRequest<T>(
   // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    const state = thunkAPI.getState();
     try {
       const response = await makeRequest<T>(thunkAPI, base_url, endpoint, body, data);
       console.log("HERE");
@@ -75,8 +74,8 @@ export async function makeGenericRequest<T>(
     } catch (error) {
       if (error instanceof NeedsAuthenticationError) {
         // silently ignore errors about missing authentication
-        await thunkAPI.dispatch(authenticate({ frontend_action: "login" }));
-        window.location.href = state.config.authn_service_url + "/login";
+        const response = await thunkAPI.dispatch(authenticate({ frontend_action: "login" }));
+        window.location.href = (response?.payload as AuthenticateResponse).location;
         reject();
       } else if (error instanceof Error) {
         thunkAPI.dispatch(genericApiFail(error.toString()));
