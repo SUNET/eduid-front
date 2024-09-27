@@ -1,4 +1,4 @@
-import { PersonalDataRequest, postPersonalData } from "apis/eduidPersonalData";
+import { postUserLanguage, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -9,26 +9,20 @@ import { clearNotifications } from "slices/Notifications";
 export function LanguagePreference() {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
-  const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const messages = LOCALIZED_MESSAGES;
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
   const language_list = Object.entries(_languages);
 
-  async function formSubmit(values: PersonalDataRequest) {
+  async function formSubmit(values: UserLanguageRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     let postData = values;
-    if (is_verified) {
-      postData = {
-        chosen_given_name: personal_data?.chosen_given_name,
-        given_name: personal_data?.given_name,
-        surname: personal_data?.surname,
-        language: values.language,
-      };
-    }
-    const response = await dispatch(postPersonalData(postData));
+    postData = {
+      language: values.language,
+    };
+    const response = await dispatch(postUserLanguage(postData));
 
-    if (postPersonalData.fulfilled.match(response)) {
+    if (postUserLanguage.fulfilled.match(response)) {
       dispatch(clearNotifications());
       if (response.payload.language) {
         dispatch(
@@ -54,7 +48,7 @@ export function LanguagePreference() {
           defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
         />
       </p>
-      <FinalForm<PersonalDataRequest>
+      <FinalForm<UserLanguageRequest>
         initialValues={personal_data}
         onSubmit={formSubmit}
         render={(formProps) => {
