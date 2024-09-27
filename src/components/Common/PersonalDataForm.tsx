@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PersonalDataRequest, postUserName, requestAllPersonalData } from "apis/eduidPersonalData";
+import { PersonalDataRequest, postUserName, requestAllPersonalData, UserNameRequest } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
@@ -62,7 +62,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   }
 
   return (
-    <FinalForm<PersonalDataRequest>
+    <FinalForm<UserNameRequest>
       initialValues={personal_data}
       validate={validatePersonalData}
       onSubmit={formSubmit}
