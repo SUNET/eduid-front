@@ -81,9 +81,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
-              {/* <article>
-                <RenderLanguageSelect />
-              </article> */}
               <article>
                 <div className="buttons">
                   <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
