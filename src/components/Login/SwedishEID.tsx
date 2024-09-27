@@ -15,11 +15,35 @@ export function SwedishEID(): JSX.Element {
   // TODO: when backend is updated to swedish_eid, we should be able to rename this.
   const notAvailable = !authn_options.freja_eidplus;
 
-  const options = [
-    { value: "Bank ID", label: "Bank ID" },
-    { value: "Freja+", label: "Freja+" },
-  ];
+  const IconWithText = ({ icon, text }: any) => {
+    return (
+      <>
+        {icon}
+        <span className="select-option-text">{text}</span>
+      </>
+    );
+  };
 
+  const options = [
+    {
+      value: "Bank ID",
+      label: (
+        <IconWithText
+          icon={<img height="35" alt="BankID" src={BankIdFlag} />}
+          text={<FormattedMessage defaultMessage={`Bank ID`} />}
+        />
+      ),
+    },
+    {
+      value: "Freja+",
+      label: (
+        <IconWithText
+          icon={<img className="freja" height="35" alt="Freja+" src={FrejaFlag} />}
+          text={<FormattedMessage defaultMessage={`Freja+`} />}
+        />
+      ),
+    },
+  ];
   async function handleOnClickBankID() {
     const response = await dispatch(
       bankIDMfaAuthenticate({ method: "bankid", frontend_action: "loginMfaAuthn", frontend_state: ref })
@@ -48,10 +72,11 @@ export function SwedishEID(): JSX.Element {
         <div className="or-container">
           <div className="line" />
           <span>
-            <FormattedMessage defaultMessage="OR" />
+            <FormattedMessage defaultMessage="or use recovery mode" />
           </span>
           <div className="line" />
         </div>
+
         <FinalForm
           onSubmit={() => {}}
           render={({ handleSubmit }) => (
@@ -62,16 +87,27 @@ export function SwedishEID(): JSX.Element {
                   options={options}
                   // onChange={handleOnChange}
                   // value={selected}
-                  placeholder={"Select another option"}
+                  placeholder={"Select recovery option"}
                   isSearchable={false}
                   className="mfa-select"
                   classNamePrefix="react-select"
+                  // menuIsOpen={true}
+                  isDisabled={notAvailable}
                 />
               </fieldset>
             </form>
           )}
         />
+        {!notAvailable && (
+          <p className="help-text">
+            <FormattedMessage
+              description="MFA Freja help text"
+              defaultMessage="Requires a confirmed Swedish national identity number."
+            />
+          </p>
+        )}
       </div>
+
       <div className="option-wrapper">
         <div className="option">
           <h3>

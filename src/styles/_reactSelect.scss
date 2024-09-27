@@ -97,6 +97,19 @@ form .react-select,
   height: 3rem;
   min-width: 100px;
   padding: 0 1.125rem;
+
+  .react-select__placeholder {
+    color: $txt-orange;
+    font-family: $akkurat;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .css-tj5bde-Svg {
+    color: $txt-orange;
+  }
+
   .react-select__control {
     display: flex;
     height: 3rem;
@@ -105,6 +118,22 @@ form .react-select,
     border-radius: 1.5rem;
     cursor: pointer;
     border: solid 2px $bright-orange;
+
+    &.react-select__control--is-disabled {
+      cursor: not-allowed;
+      pointer-events: all !important;
+      background-color: #db3a00;
+      border-color: inherit;
+      color: #fff;
+      opacity: 0.4;
+
+      .react-select__placeholder {
+        color: $white;
+      }
+      svg.css-tj5bde-Svg {
+        display: none;
+      }
+    }
   }
 
   .react-select__control:hover {
@@ -114,17 +143,38 @@ form .react-select,
     height: 3rem;
     padding: 0;
     text-align: center;
+
+    .react-select__single-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
-  .react-select__placeholder {
+  .react-select__menu {
+    width: 90%;
+  }
+  .react-select__menu-list {
+    .react-select__option {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  img.freja {
+    height: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  img {
+    width: auto;
+  }
+
+  .select-option-text {
     color: $txt-orange;
     font-family: $akkurat;
-    text-transform: uppercase;
     font-weight: 700;
-  }
-
-  .css-tj5bde-Svg {
-    color: $txt-orange;
   }
 }
 .mfa-select__control--is-focused {
