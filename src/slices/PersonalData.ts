@@ -4,6 +4,8 @@ import {
   PersonalDataRequest,
   postPersonalData,
   postSecurityKeyPreference,
+  postUserLanguage,
+  postUserName,
   PreferencesData,
   requestAllPersonalData,
   UserIdentities,
@@ -40,6 +42,19 @@ const personalDataSlice = createSlice({
           state.response.language = action.payload.language;
           state.response.legal_name = action.payload.legal_name;
           state.response.surname = action.payload.surname;
+        }
+      })
+      .addCase(postUserName.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        if (state.response) {
+          state.response.chosen_given_name = action.payload.chosen_given_name;
+          state.response.given_name = action.payload.given_name;
+          state.response.legal_name = action.payload.legal_name;
+          state.response.surname = action.payload.surname;
+        }
+      })
+      .addCase(postUserLanguage.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+        if (state.response) {
+          state.response.language = action.payload.language;
         }
       })
       .addCase(postSecurityKeyPreference.fulfilled, (state, action: PayloadAction<PreferencesData>) => {
