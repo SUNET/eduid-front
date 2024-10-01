@@ -48,6 +48,7 @@ export function Security(): React.ReactElement | null {
     return filterTokensFromCredentials(state);
   });
   const authn = useAppSelector((state) => state.authn);
+  const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -114,10 +115,12 @@ export function Security(): React.ReactElement | null {
   });
 
   function handleStopAskingWebauthnDescription() {
+    setIsRegisteringAuthenticator(false);
     setShowModal(false);
   }
 
   async function handleRegisterWebauthn(authType: string) {
+    setIsRegisteringAuthenticator(true);
     dispatch(authnSlice.actions.setFrontendActionState());
     dispatch(securitySlice.actions.chooseAuthenticator(authType));
     setAuthnType(authType);
@@ -147,6 +150,7 @@ export function Security(): React.ReactElement | null {
           if (createCredential.fulfilled.match(response)) {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
+          setIsRegisteringAuthenticator(false);
         }
         if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
           setShowAuthnModal(true);
@@ -204,7 +208,7 @@ export function Security(): React.ReactElement | null {
                 id="security-webauthn-platform-button"
                 buttonstyle="primary"
                 onClick={() => handleRegisterWebauthn("platform")}
-                disabled={!isPlatformAuthenticatorAvailable}
+                disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
                 <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
               </EduIDButton>
@@ -228,6 +232,7 @@ export function Security(): React.ReactElement | null {
                 id="security-webauthn-button"
                 buttonstyle="primary"
                 onClick={() => handleRegisterWebauthn("cross-platform")}
+                disabled={isRegisteringAuthenticator}
               >
                 <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
