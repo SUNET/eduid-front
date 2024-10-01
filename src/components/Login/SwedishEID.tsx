@@ -1,6 +1,5 @@
 import { bankIDMfaAuthenticate } from "apis/eduidBankid";
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -112,7 +111,7 @@ export function SwedishEID(): JSX.Element {
             </form>
           )}
         />
-        {!notAvailable && (
+        {notAvailable && (
           <p className="help-text">
             <FormattedMessage
               description="MFA Freja help text"
@@ -120,52 +119,6 @@ export function SwedishEID(): JSX.Element {
             />
           </p>
         )}
-      </div>
-
-      <div className="option-wrapper">
-        <div className="option">
-          <h3>
-            <FormattedMessage defaultMessage={`Swedish eID`} />
-          </h3>
-
-          {notAvailable && (
-            <p className="help-text">
-              <FormattedMessage
-                description="MFA Freja help text"
-                defaultMessage="Requires a confirmed Swedish national identity number."
-              />
-            </p>
-          )}
-
-          <EduIDButton
-            buttonstyle="secondary"
-            type="submit"
-            className="btn-icon"
-            onClick={handleOnClickBankID}
-            id="mfa-bankid"
-            disabled={notAvailable}
-          >
-            <img height="35" alt="BankID" src={BankIdFlag} />
-            <FormattedMessage
-              defaultMessage={`Use my {bankID}`}
-              values={{ bankID: <span className="verbatim">&nbsp;BankID</span> }}
-            />
-          </EduIDButton>
-          <EduIDButton
-            buttonstyle="secondary"
-            type="submit"
-            onClick={handleOnClickFrejaeID}
-            id="mfa-freja"
-            className="btn-icon freja-icon"
-            disabled={notAvailable}
-          >
-            <img height="35" alt="Freja+" src={FrejaFlag} />
-            <FormattedMessage
-              defaultMessage={`Use my {freja_eidplus_verbatim}`}
-              values={{ freja_eidplus_verbatim: <span className="verbatim">&nbsp;Freja+</span> }}
-            />
-          </EduIDButton>
-        </div>
       </div>
     </>
   );
