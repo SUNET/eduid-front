@@ -51,26 +51,24 @@ export function Errors() {
     errorURL.code !== "EDUID_ERROR";
 
   return (
-    <div className="horizontal-content-margin content">
-      <div className="error-page">
-        {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
-        {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
-        {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}
-        {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
-        {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
-        {isUnknown && <UnknownError errorURL={errorURL} />}
-        <p>
-          <FormattedMessage
-            defaultMessage="You can review your settings at the"
-            description="Errors go to dashboard instruction"
-          />
-          &nbsp;
-          <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
-            <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
-          </a>
-        </p>
-        <ErrorTechnicalInfo errorURL={errorURL} />
-      </div>
+    <div className="error-page">
+      {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
+      {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
+      {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}
+      {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
+      {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
+      {isUnknown && <UnknownError errorURL={errorURL} />}
+      <p>
+        <FormattedMessage
+          defaultMessage="You can review your settings at the"
+          description="Errors go to dashboard instruction"
+        />
+        &nbsp;
+        <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
+          <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
+        </a>
+      </p>
+      <ErrorTechnicalInfo errorURL={errorURL} />
     </div>
   );
 }
