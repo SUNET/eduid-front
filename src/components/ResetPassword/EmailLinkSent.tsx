@@ -26,7 +26,9 @@ export function EmailLinkSent(): JSX.Element | null {
         const response = await dispatch(verifyEmailLink({ email_code: digits }));
         if (verifyEmailLink.fulfilled.match(response)) {
           dispatch(clearNotifications());
-          resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+          if (Object.values(response.payload.extra_security)) {
+            resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+          } else resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
         } else {
           resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
         }

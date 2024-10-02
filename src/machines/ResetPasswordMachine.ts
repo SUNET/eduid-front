@@ -89,12 +89,12 @@ export function createResetPasswordMachine() {
             },
             EmailLinkSent: {
               on: {
-                API_SUCCESS: {
-                  target: "Finished",
+                WITHOUT_EXTRA_SECURITY: {
+                  target: "#resetPassword.FinaliseResetPassword",
                 },
-                API_FAIL: {
+                CHOOSE_SECURITY_KEY: {
                   // target: "ResetPasswordEnterEmail",
-                  target: "EmailLinkSent",
+                  target: "Finished",
                 },
                 GO_BACK: {
                   target: "#resetPassword.ReturnToPrevious",
@@ -180,6 +180,9 @@ export function createResetPasswordMachine() {
                   target: "ResetPasswordSuccess",
                 },
                 GO_BACK: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail.ResetPasswordEnterEmail",
+                },
+                START_EXTRA_SECURITY: {
                   target: "#resetPassword.HandleExtraSecurities",
                 },
               },
