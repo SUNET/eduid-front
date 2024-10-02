@@ -2,8 +2,8 @@ import { authenticate } from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
-import securityZoneSlice from "slices/SecurityZone";
 
 // export async function handleAuthenticate(props: { action: string; dispatch: any }) {
 //   const response = await props.dispatch(authenticate({ frontend_action: props.action }));
@@ -12,26 +12,25 @@ import securityZoneSlice from "slices/SecurityZone";
 //   }
 // }
 
-export function AuthenticateModal(
-  props: Readonly<{
-    //action: string;
-    frontend_state?: string;
-    // dispatch: any;
-    // setShowModal: any;
-    // showModal: boolean;
-  }>
-) {
+export function AuthenticateModal() {
+  // props: Readonly<{
+  //   //action: string;
+  //   // frontend_state?: string;
+  //   // dispatch: any;
+  //   // setShowModal: any;
+  //   // showModal: boolean;
+  // }>
   const dispatch = useAppDispatch();
-  const re_authenticate = useAppSelector((state) => state.securityZone.re_authenticate);
-  const frontend_action = useAppSelector((state) => state.securityZone.frontend_action);
+  const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
+  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+  const frontend_state = useAppSelector((state) => state.authn.frontend_state);
 
   async function handleAuthenticate() {
     // props.setShowModal(false);
-    dispatch(securityZoneSlice.actions.setReAuthenticate(false));
+    dispatch(authnSlice.actions.setReAuthenticate(false));
     dispatch(clearNotifications());
-    const response = await dispatch(
-      authenticate({ frontend_action: frontend_action, frontend_state: props.frontend_state })
-    );
+    const response = await dispatch(authenticate({ frontend_action: frontend_action, frontend_state: frontend_state }));
+
     if (authenticate.fulfilled.match(response)) {
       window.location.href = response?.payload.location;
     }
@@ -47,9 +46,9 @@ export function AuthenticateModal(
           defaultMessage="You need to log in again to perform the requested action."
         />
       }
-      showModal={re_authenticate || false}
+      showModal={re_authenticate}
       closeModal={() => {
-        dispatch(securityZoneSlice.actions.setReAuthenticate(false));
+        dispatch(authnSlice.actions.setReAuthenticate(false));
       }}
       acceptModal={handleAuthenticate}
       acceptButtonText={<FormattedMessage defaultMessage="Continue" description="continue button" />}

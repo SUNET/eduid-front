@@ -14,7 +14,6 @@ import personalDataSlice from "slices/PersonalData";
 import phonesSlice from "slices/Phones";
 import resetPasswordSlice from "slices/ResetPassword";
 import securitySlice from "slices/Security";
-import securityZoneSlice from "slices/SecurityZone";
 import { signupSlice } from "slices/Signup";
 
 const eduIDApp = combineReducers({
@@ -34,7 +33,6 @@ const eduIDApp = combineReducers({
   security: securitySlice.reducer,
   ladok: ladokSlice.reducer,
   authn: authnSlice.reducer,
-  securityZone: securityZoneSlice.reducer,
 });
 
 export default eduIDApp;

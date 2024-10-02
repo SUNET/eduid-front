@@ -11,20 +11,22 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   );
   // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
-  const frontend_action = useAppSelector((state: any) => state.authn.frontend_action);
+  const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
 
   useEffect(() => {
+    // without checking for re_autenticate it will loop because makeGenericRequest() sets frontend_action
     if (frontend_action === "changeSecurityPreferencesAuthn") {
       handleSwitchChange();
     }
   }, [frontend_action]);
 
   async function handleSwitchChange() {
-    dispatch(authnSlice.actions.setFrontendActionState());
+    dispatch(authnSlice.actions.setFrontendActionStateReset());
+    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));
