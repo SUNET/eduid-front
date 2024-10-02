@@ -30,6 +30,34 @@ import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 type accordionUUID = "swedish" | "eu" | "world";
 type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
+export function VerificationMethod(): JSX.Element {
+  const identities = useAppSelector((state) => state.personal_data?.response?.identities);
+  const preExpanded: accordionUUID[] = [];
+
+  if (!identities?.is_verified) {
+    if (identities?.nin) {
+      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
+      preExpanded.push("swedish");
+    }
+  }
+
+  return (
+    <article>
+      <h2>
+        <FormattedMessage
+          description="verify identity non verified description"
+          defaultMessage="Choose your principal identification method"
+        />
+      </h2>
+      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+        <AccordionItemSwedish />
+        <AccordionItemEu />
+        <AccordionItemWorld />
+      </Accordion>
+    </article>
+  );
+}
+
 function VerifyIdentity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
@@ -69,15 +97,6 @@ function VerifyIdentity(): JSX.Element | null {
 
 function VerifyIdentityIntro(): JSX.Element {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
-
-  const preExpanded: accordionUUID[] = [];
-
-  if (!identities?.is_verified) {
-    if (identities?.nin) {
-      /* If the user has a Swedish NIN, pre-expand the "Swedish" option. */
-      preExpanded.push("swedish");
-    }
-  }
 
   if (identities?.is_verified) {
     /* User has a verified identity. Show which one (or ones) it is.
@@ -133,19 +152,7 @@ function VerifyIdentityIntro(): JSX.Element {
           </p>
         </div>
       </section>
-      <article>
-        <h2>
-          <FormattedMessage
-            description="verify identity non verified description"
-            defaultMessage="Choose your principal identification method"
-          />
-        </h2>
-        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-          <AccordionItemSwedish />
-          <AccordionItemEu />
-          <AccordionItemWorld />
-        </Accordion>
-      </article>
+      <VerificationMethod />
     </React.Fragment>
   );
 }

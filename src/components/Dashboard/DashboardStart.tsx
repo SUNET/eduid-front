@@ -14,6 +14,7 @@ import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import LetterProofing from "./LetterProofing";
 import { Recommendations } from "./Recommendations";
+import WizardModal from "./WizardModal";
 
 function VerificationProgress(props: { identities: UserIdentities }): JSX.Element {
   if (!props.identities.is_verified) {
@@ -179,6 +180,7 @@ export default function Start(): JSX.Element {
       </article>
       {progress}
       <Recommendations />
+      <WizardModal />
     </Splash>
   );
 }
