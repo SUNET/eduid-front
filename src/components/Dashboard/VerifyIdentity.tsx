@@ -155,13 +155,14 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
   // const [showAuthnModal, setShowAuthnModal] = useState(false);
-  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+  const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
   useEffect(() => {
     if (frontend_action) {
       if (frontend_action === "removeIdentity") {
         handleRemoveIdentity();
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
       }
     }
   }, [frontend_action]);
@@ -180,7 +181,6 @@ function VerifiedIdentitiesTable(): JSX.Element {
 
   async function handleRemoveIdentity() {
     setShowConfirmRemoveIdentityVerificationModal(false);
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
     // find dynamically which identity_type
     const idType =
       identities &&

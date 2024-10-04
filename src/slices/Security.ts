@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  beginRegisterWebauthn,
   CredentialType,
   postDeleteAccount,
   registerWebauthn,
@@ -16,7 +15,7 @@ export interface SecurityState {
   webauthn_token_description?: string;
   webauthn_attestation?: webauthnAttestation;
   webauthn_authenticator?: string;
-  registration_data?: string;
+  // registration_data?: string;
 }
 
 // export this for use in tests
@@ -36,9 +35,9 @@ const securitySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(beginRegisterWebauthn.fulfilled, (state, action) => {
-      state.registration_data = action.payload;
-    });
+    // builder.addCase(beginRegisterWebauthn.fulfilled, (state, action) => {
+    //   state.registration_data = action.payload;
+    // });
     builder.addCase(createCredential.fulfilled, (state, action) => {
       state.webauthn_attestation = action.payload;
     });

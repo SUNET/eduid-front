@@ -19,22 +19,20 @@ const authnSlice = createSlice({
   initialState,
   reducers: {
     setReAuthenticate: (state, action: PayloadAction<boolean>) => {
-      console.log("setReAuthenticate");
       state.re_authenticate = action.payload;
     },
-    setFrontendActionStateReset: (state) => {
+    setAuthnFrontendReset: (state) => {
       state.frontend_action = undefined;
       state.frontend_state = undefined;
-    },
-    setFrontendActionStateResponseReset: (state) => {
       state.response = undefined;
     },
+    // setFrontendActionStateResponseReset: (state) => {
+    //   state.response = undefined;
+    // },
     setFrontendAction: (state, action: PayloadAction<string>) => {
-      console.log("setFrontendAction");
       state.frontend_action = action.payload;
     },
     setFrontendState: (state, action: PayloadAction<string>) => {
-      console.log("setFrontendState");
       state.frontend_state = action.payload;
     },
   },

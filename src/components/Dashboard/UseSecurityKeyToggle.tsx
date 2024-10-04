@@ -25,8 +25,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   }, [frontend_action]);
 
   async function handleSwitchChange() {
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
-    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
+    dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));

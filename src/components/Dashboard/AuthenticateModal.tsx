@@ -48,6 +48,7 @@ export function AuthenticateModal() {
       }
       showModal={re_authenticate}
       closeModal={() => {
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
         dispatch(authnSlice.actions.setReAuthenticate(false));
       }}
       acceptModal={handleAuthenticate}

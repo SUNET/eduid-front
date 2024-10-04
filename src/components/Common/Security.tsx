@@ -41,7 +41,7 @@ export function Security(): React.ReactElement | null {
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const webauthnAuthenticatorType = useAppSelector((state) => state.security.webauthn_authenticator);
-  const webauthnRegistrationData = useAppSelector((state) => state.security.registration_data);
+  // const webauthnRegistrationData = useAppSelector((state) => state.security.registration_data);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -49,6 +49,7 @@ export function Security(): React.ReactElement | null {
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
+  // Runs after re-auth security zone
   useEffect(() => {
     (async () => {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
@@ -118,19 +119,27 @@ export function Security(): React.ReactElement | null {
     setShowSecurityKeyNameModal(false);
   }
 
+  // buttons "My Device" or "My security key"
   async function handleRegisterWebauthn(authType: string) {
     setIsRegisteringAuthenticator(true);
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
-    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
-    dispatch(securitySlice.actions.chooseAuthenticator(authType));
-    const resp = await dispatch(beginRegisterWebauthn());
-    console.log("hihi");
-    if (beginRegisterWebauthn.fulfilled.match(resp)) {
+    // dispatch(securitySlice.actions.chooseAuthenticator(authType)); // it saves state.security.webauthn_authenticator that will be body for beginRegisterWebauthn()
+    // const resp = await dispatch(beginRegisterWebauthn()); // here can come "must authenticate". Works as a test?
+
+    // prepare for authenticate() / AuthenticateModal
+    dispatch(authnSlice.actions.setFrontendState(authType));
+    dispatch(authnSlice.actions.setFrontendAction("addSecurityKeyAuthn"));
+
+    const response = await dispatch(getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" }));
+    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setIsRegisteringAuthenticator(true);
       setShowSecurityKeyNameModal(true);
-    } else dispatch(authnSlice.actions.setFrontendState(authType));
+    } else {
+      setIsRegisteringAuthenticator(false);
+      dispatch(authnSlice.actions.setReAuthenticate(true));
+    }
   }
 
+  // function that is called when the user clicks OK in the "security key name"  modal
   function handleStartWebauthnRegistration(values: { [key: string]: string }) {
     const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
     (async () => {
@@ -148,9 +157,8 @@ export function Security(): React.ReactElement | null {
             await dispatch(registerWebauthn({ descriptionValue }));
           }
         }
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
         setIsRegisteringAuthenticator(false);
-        dispatch(authnSlice.actions.setFrontendActionStateReset());
-        dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
         // if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
         //   setShowAuthnModal(true);
         // }
@@ -276,7 +284,7 @@ function SecurityKeyTable() {
   // const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
-  const [method, setMethod] = useState<string | null>();
+  // const [method, setMethod] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -285,12 +293,14 @@ function SecurityKeyTable() {
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
 
+  // Runs after re-auth security zone
   useEffect(() => {
     (async () => {
       if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
         // call requestCredentials once app is loaded
         credentialKey.current = authn?.response?.frontend_state;
         handleRemoveWebauthnToken();
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
         if (parsedFrontendState.method === "freja") {
@@ -298,15 +308,15 @@ function SecurityKeyTable() {
         } else {
           await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
         }
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
       }
     })();
   }, [authn?.response?.frontend_action]);
 
+  // Verify Freja
   async function handleVerifyWebauthnTokenFreja(token: string) {
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
-    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
     const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-    setMethod("freja");
+    // setMethod("freja");
     if (eidasVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
@@ -315,14 +325,17 @@ function SecurityKeyTable() {
       //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
       //     setShowAuthnModal(true);
       //   }
+    } else if (eidasVerifyCredential.rejected.match(response)) {
+      // prepare authenticate() and AuthenticateModal
+      dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
+      dispatch(authnSlice.actions.setFrontendState(JSON.stringify({ method: "freja", credential: token })));
     }
   }
 
+  // Verify BankID
   async function handleVerifyWebauthnTokenBankID(token: string) {
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
-    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
     const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
-    setMethod("bankid");
+    // setMethod("bankid");
     if (bankIDVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
@@ -331,13 +344,16 @@ function SecurityKeyTable() {
       //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
       //     setShowAuthnModal(true);
       //   }
+    } else if (bankIDVerifyCredential.rejected.match(response)) {
+      // prepare authenticate() and AuthenticateModal
+      dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
+      dispatch(authnSlice.actions.setFrontendState(JSON.stringify({ method: "bankid", credential: token })));
     }
   }
 
   async function handleConfirmDeleteModal(credential_key: string) {
     credentialKey.current = credential_key;
-    dispatch(authnSlice.actions.setFrontendState(credential_key));
-    dispatch(authnSlice.actions.setFrontendAction("removeSecurityKeyAuthn"));
+
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
@@ -351,9 +367,6 @@ function SecurityKeyTable() {
 
   async function handleRemoveWebauthnToken() {
     setShowConfirmRemoveSecurityKeyModal(false);
-    // dispatch(authnSlice.actions.setFrontendActionStateReset());
-    // dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
-    // dispatch(authnSlice.actions.setFrontendAction("removeSecurityKeyAuthn"));
 
     const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
     // if (removeWebauthnToken.rejected.match(response)) {
@@ -361,8 +374,14 @@ function SecurityKeyTable() {
     //     setRemoveSecurityKeyModal(true);
     //   }
     // }
-    dispatch(authnSlice.actions.setFrontendActionStateReset());
-    dispatch(authnSlice.actions.setFrontendActionStateResponseReset());
+    // if (removeWebauthnToken.fulfilled.match(response)) {
+    //   dispatch(authnSlice.actions.setAuthnFrontendReset());
+    // }
+    if (removeWebauthnToken.rejected.match(response)) {
+      // prepare authenticate() and AuthenticateModal
+      dispatch(authnSlice.actions.setFrontendState(credentialKey.current as string));
+      dispatch(authnSlice.actions.setFrontendAction("removeSecurityKeyAuthn"));
+    }
   }
 
   // data that goes onto the table
