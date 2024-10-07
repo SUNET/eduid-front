@@ -302,10 +302,6 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
-  "4XAsSn": {
-    "developer_comment": "settings.remove_identity_verification_modal_title",
-    "string": "Remove Identity Verification"
-  },
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
@@ -617,6 +613,10 @@
     "developer_comment": "method international - heading",
     "string": "If you are not an EU citizen and without a Swedish personal identity number"
   },
+  "DxCHSK": {
+    "developer_comment": "pd long description",
+    "string": "You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
+  },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter is valid to"
@@ -655,6 +655,10 @@
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
+  },
+  "FICYKZ": {
+    "developer_comment": "accordion item swedish additional info",
+    "string": "With a digital ID-card / By post"
   },
   "FRVeZw": {
     "developer_comment": "verify identity unverified main title",
@@ -767,10 +771,6 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
-  "IBEyFQ": {
-    "developer_comment": "pd main title",
-    "string": "Name & language"
-  },
   "IE2L2s": {
     "developer_comment": "enhance eduid - list item 2",
     "string": "your phone number for easier retrieval of your account should it be needed,"
@@ -821,10 +821,6 @@
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
-  },
-  "KaX8vx": {
-    "developer_comment": "pd label en",
-    "string": "English"
   },
   "KeIhmQ": {
     "developer_comment": "ErrorURL authentication failure",
@@ -1034,6 +1030,10 @@
     "developer_comment": "Display name select placeholder",
     "string": "select display name"
   },
+  "Pi/dSU": {
+    "developer_comment": "settings.remove_identity_verification_modal_title",
+    "string": "Disconnect your identity"
+  },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "What is eduIDs Accessibility report?"
@@ -1049,6 +1049,10 @@
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Code"
+  },
+  "Q5YIVS": {
+    "developer_comment": "delete.remove_identity_verification_modal_text",
+    "string": "Are you sure you want to disconnect your identity from your eduID account?"
   },
   "Q8CeJV": {
     "developer_comment": "mfa try again",
@@ -1395,10 +1399,6 @@
   "a2qUxL": {
     "developer_comment": "Title for phone code input",
     "string": "Enter the code sent to {phone}"
-  },
-  "a4X4wS": {
-    "developer_comment": "accordion item swedish additional info",
-    "string": "With a digital ID-card / By post / By phone"
   },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
@@ -2026,9 +2026,9 @@
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
   },
-  "kvqCWB": {
-    "developer_comment": "delete.remove_identity_verification_modal_text",
-    "string": "Are you sure you want to remove your identity verification?"
+  "kwQM6Z": {
+    "developer_comment": "pd main title",
+    "string": "Language"
   },
   "kz8YmP": {
     "string": "You are logging in as {display_name} ({username}) on the other device"
@@ -2554,6 +2554,10 @@
     "developer_comment": "accordion item Adding security key",
     "string": "Add your security key"
   },
+  "qIGw46": {
+    "developer_comment": "pd main title",
+    "string": "Names & Display Name"
+  },
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
@@ -2948,10 +2952,6 @@
     "developer_comment": "accordion item name additionalInfo",
     "string": "Name can be used to personalise services that you access with your eduID."
   },
-  "wLDO8N": {
-    "developer_comment": "pd label language",
-    "string": "Language"
-  },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
@@ -2963,10 +2963,6 @@
   "wd5z3l": {
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
-  },
-  "wesR1u": {
-    "developer_comment": "pd label sw",
-    "string": "Svenska"
   },
   "wn+c+3": {
     "developer_comment": "Temp info - heading",
