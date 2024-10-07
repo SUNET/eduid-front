@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { authnGetStatus } from "apis/eduidAuthn";
 
-export interface AuthnState {
-  re_authenticate: boolean;
-  frontend_action?: string;
+interface FrontendActionAndState {
+  frontend_action: string;
   frontend_state?: string;
-  response?: {
-    frontend_action?: string;
-    frontend_state?: string;
-  };
+}
+
+export interface AuthnState extends Partial<FrontendActionAndState> {
+  re_authenticate: boolean;
+  response?: FrontendActionAndState;
 }
 
 // export for use in tests
@@ -26,11 +26,9 @@ const authnSlice = createSlice({
       state.frontend_state = undefined;
       state.response = undefined;
     },
-    setFrontendAction: (state, action: PayloadAction<string>) => {
-      state.frontend_action = action.payload;
-    },
-    setFrontendState: (state, action: PayloadAction<string>) => {
-      state.frontend_state = action.payload;
+    setFrontendActionAndState: (state, action: PayloadAction<FrontendActionAndState>) => {
+      state.frontend_action = action.payload.frontend_action;
+      state.frontend_state = action.payload.frontend_state;
     },
   },
   extraReducers: (builder) => {

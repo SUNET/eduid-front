@@ -121,8 +121,12 @@ export function Security(): React.ReactElement | null {
     setIsRegisteringAuthenticator(true);
 
     // prepare for authenticate() / AuthenticateModal
-    dispatch(authnSlice.actions.setFrontendState(authType));
-    dispatch(authnSlice.actions.setFrontendAction("addSecurityKeyAuthn"));
+    dispatch(
+      authnSlice.actions.setFrontendActionAndState({
+        frontend_action: "addSecurityKeyAuthn",
+        frontend_state: authType,
+      })
+    );
 
     const response = await dispatch(getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" }));
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
@@ -307,8 +311,12 @@ function SecurityKeyTable() {
       }
     } else if (eidasVerifyCredential.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
-      dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
-      dispatch(authnSlice.actions.setFrontendState(JSON.stringify({ method: "freja", credential: token })));
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "verifyCredential",
+          frontend_state: JSON.stringify({ method: "freja", credential: token }),
+        })
+      );
     }
   }
 
@@ -321,8 +329,12 @@ function SecurityKeyTable() {
       }
     } else if (bankIDVerifyCredential.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
-      dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
-      dispatch(authnSlice.actions.setFrontendState(JSON.stringify({ method: "bankid", credential: token })));
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "verifyCredential",
+          frontend_state: JSON.stringify({ method: "bankid", credential: token }),
+        })
+      );
     }
   }
 
@@ -344,8 +356,12 @@ function SecurityKeyTable() {
     const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
     if (removeWebauthnToken.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
-      dispatch(authnSlice.actions.setFrontendState(credentialKey.current as string));
-      dispatch(authnSlice.actions.setFrontendAction("removeSecurityKeyAuthn"));
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "removeSecurityKeyAuthn",
+          frontend_state: credentialKey.current as string,
+        })
+      );
     }
   }
 
