@@ -260,13 +260,13 @@ function VerifiedIdentitiesTable(): JSX.Element {
         id="remove-identity-verification"
         title={
           <FormattedMessage
-            defaultMessage="Remove Identity Verification"
+            defaultMessage="Disconnect your identity"
             description="settings.remove_identity_verification_modal_title"
           />
         }
         mainText={
           <FormattedMessage
-            defaultMessage={`Are you sure you want to remove your identity verfication?`}
+            defaultMessage={`Are you sure you want to disconnect your identity from your eduID account?`}
             description="delete.remove_identity_verification_modal_text"
           />
         }
