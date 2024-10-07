@@ -6,17 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
-  // const [showModal, setShowModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   async function handleSuggestedPassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.fulfilled.match(response)) {
       navigate("/profile/chpass");
-      // } else if (fetchSuggestedPassword.rejected.match(response)) {
-      //   if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-      //     setShowModal(true);
-      //   }
     }
   }
   return (

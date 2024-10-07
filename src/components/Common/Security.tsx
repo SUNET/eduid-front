@@ -39,9 +39,6 @@ export function Security(): React.ReactElement | null {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
-  // const [showAuthnModal, setShowAuthnModal] = useState(false);
-  const webauthnAuthenticatorType = useAppSelector((state) => state.security.webauthn_authenticator);
-  // const webauthnRegistrationData = useAppSelector((state) => state.security.registration_data);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -122,8 +119,6 @@ export function Security(): React.ReactElement | null {
   // buttons "My Device" or "My security key"
   async function handleRegisterWebauthn(authType: string) {
     setIsRegisteringAuthenticator(true);
-    // dispatch(securitySlice.actions.chooseAuthenticator(authType)); // it saves state.security.webauthn_authenticator that will be body for beginRegisterWebauthn()
-    // const resp = await dispatch(beginRegisterWebauthn()); // here can come "must authenticate". Works as a test?
 
     // prepare for authenticate() / AuthenticateModal
     dispatch(authnSlice.actions.setFrontendState(authType));
@@ -159,9 +154,6 @@ export function Security(): React.ReactElement | null {
         }
         dispatch(authnSlice.actions.setAuthnFrontendReset());
         setIsRegisteringAuthenticator(false);
-        // if ((resp?.payload as any)?.payload.message === "authn_status.must-authenticate") {
-        //   setShowAuthnModal(true);
-        // }
       } catch (err) {}
     })();
   }
@@ -271,20 +263,13 @@ export function Security(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
-      {/* <AuthenticateModal
-        frontend_state={authnType}
-        //action="addSecurityKeyAuthn"
-      /> */}
     </article>
   );
 }
 
 function SecurityKeyTable() {
-  // const [showAuthnModal, setShowAuthnModal] = useState(false);
-  // const [removeSecurityKeyModal, setRemoveSecurityKeyModal] = useState(false);
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
-  // const [method, setMethod] = useState<string | null>();
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -316,15 +301,10 @@ function SecurityKeyTable() {
   // Verify Freja
   async function handleVerifyWebauthnTokenFreja(token: string) {
     const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-    // setMethod("freja");
     if (eidasVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
-      // } else if (eidasVerifyCredential.rejected.match(response)) {
-      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-      //     setShowAuthnModal(true);
-      //   }
     } else if (eidasVerifyCredential.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
       dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
@@ -335,15 +315,10 @@ function SecurityKeyTable() {
   // Verify BankID
   async function handleVerifyWebauthnTokenBankID(token: string) {
     const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
-    // setMethod("bankid");
     if (bankIDVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
-      // } else if (bankIDVerifyCredential.rejected.match(response)) {
-      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-      //     setShowAuthnModal(true);
-      //   }
     } else if (bankIDVerifyCredential.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
       dispatch(authnSlice.actions.setFrontendAction("verifyCredential"));
@@ -353,7 +328,6 @@ function SecurityKeyTable() {
 
   async function handleConfirmDeleteModal(credential_key: string) {
     credentialKey.current = credential_key;
-
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
@@ -367,16 +341,7 @@ function SecurityKeyTable() {
 
   async function handleRemoveWebauthnToken() {
     setShowConfirmRemoveSecurityKeyModal(false);
-
     const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
-    // if (removeWebauthnToken.rejected.match(response)) {
-    //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-    //     setRemoveSecurityKeyModal(true);
-    //   }
-    // }
-    // if (removeWebauthnToken.fulfilled.match(response)) {
-    //   dispatch(authnSlice.actions.setAuthnFrontendReset());
-    // }
     if (removeWebauthnToken.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
       dispatch(authnSlice.actions.setFrontendState(credentialKey.current as string));
@@ -411,10 +376,6 @@ function SecurityKeyTable() {
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
-          {/* <AuthenticateModal
-            frontend_state={JSON.stringify({ method: method, credential: cred.key })}
-            // action="verifyCredential"
-          /> */}
         </React.Fragment>
       );
     }
@@ -455,12 +416,6 @@ function SecurityKeyTable() {
             acceptModal={handleRemoveWebauthnToken}
             acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
           />
-          {/* <AuthenticateModal
-            // action="removeSecurityKeyAuthn"
-            frontend_state={cred.key}
-            // showModal={cred.key === credentialKey.current && removeSecurityKeyModal}
-            // setShowModal={setRemoveSecurityKeyModal}
-          /> */}
         </td>
       </tr>
     );

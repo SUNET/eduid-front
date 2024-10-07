@@ -40,7 +40,6 @@ export function ChangePassword() {
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
-  // const [showModal, setShowModal] = useState<boolean>(false);
   let isMounted = true;
 
   useEffect(() => {
@@ -65,10 +64,6 @@ export function ChangePassword() {
       if (isMounted) {
         if (fetchSuggestedPassword.fulfilled.match(response)) {
           navigate("/profile/chpass");
-          // } else if (fetchSuggestedPassword.rejected.match(response)) {
-          //   if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-          //     setShowModal(true);
-          //   }
         }
       }
     } catch (error) {

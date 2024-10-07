@@ -26,9 +26,6 @@ const authnSlice = createSlice({
       state.frontend_state = undefined;
       state.response = undefined;
     },
-    // setFrontendActionStateResponseReset: (state) => {
-    //   state.response = undefined;
-    // },
     setFrontendAction: (state, action: PayloadAction<string>) => {
       state.frontend_action = action.payload;
     },

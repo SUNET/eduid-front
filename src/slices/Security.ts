@@ -15,7 +15,6 @@ export interface SecurityState {
   webauthn_token_description?: string;
   webauthn_attestation?: webauthnAttestation;
   webauthn_authenticator?: string;
-  // registration_data?: string;
 }
 
 // export this for use in tests
@@ -35,18 +34,12 @@ const securitySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder.addCase(beginRegisterWebauthn.fulfilled, (state, action) => {
-    //   state.registration_data = action.payload;
-    // });
     builder.addCase(createCredential.fulfilled, (state, action) => {
       state.webauthn_attestation = action.payload;
     });
     builder.addCase(registerWebauthn.fulfilled, (state, action) => {
       state.webauthn_attestation = action.payload.webauthn_attestation;
       state.credentials = action.payload.credentials;
-      // last step in the webauthn registration, we can remove the registration data
-      // state.registration_data = undefined;
-      // state.webauthn_authenticator = undefined;
     });
     builder.addCase(requestCredentials.fulfilled, (state, action) => {
       state.credentials = action.payload.credentials;

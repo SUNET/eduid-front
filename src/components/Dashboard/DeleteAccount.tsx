@@ -7,7 +7,6 @@ import { FormattedMessage } from "react-intl";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
-  // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const dispatch = useAppDispatch();
 
   async function handleConfirmationDeletion() {
@@ -15,8 +14,6 @@ export default function DeleteAccount(): JSX.Element | null {
     const response = await dispatch(postDeleteAccount());
     if (postDeleteAccount.fulfilled.match(response)) {
       window.location.assign(response.payload.location);
-      // } else if ((response.payload as any)?.payload.message === "authn_status.must-authenticate") {
-      //   setShowAuthnModal(true);
     }
   }
 

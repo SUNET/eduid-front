@@ -154,7 +154,6 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
-  // const [showAuthnModal, setShowAuthnModal] = useState(false);
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
@@ -189,11 +188,6 @@ function VerifiedIdentitiesTable(): JSX.Element {
       })[0];
     if (idType) {
       const response = await dispatch(removeIdentity({ identity_type: idType }));
-      // if (removeIdentity.rejected.match(response)) {
-      //   if ((response?.payload as any).payload.message === "authn_status.must-authenticate") {
-      //     setShowAuthnModal(true);
-      //   }
-      // }
     }
   }
 
