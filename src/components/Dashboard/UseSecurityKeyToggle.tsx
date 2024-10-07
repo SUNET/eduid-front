@@ -1,39 +1,35 @@
-import { postSecurityKeyPreference, PreferencesData } from "apis/eduidPersonalData";
+import { postSecurityKeyPreference } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
-import { AuthenticateModal } from "./Authenticate";
 
 export default function UseSecurityKeyToggle(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
     (state: any) => state.personal_data?.response?.preferences?.always_use_security_key
   );
-  const [showAuthnModal, setShowAuthnModal] = useState(false);
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
-  const frontend_action = useAppSelector((state: any) => state.authn.frontend_action);
+  const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
 
   useEffect(() => {
+    // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
     if (frontend_action === "changeSecurityPreferencesAuthn") {
       handleSwitchChange();
     }
   }, [frontend_action]);
 
   async function handleSwitchChange() {
-    dispatch(authnSlice.actions.setFrontendActionState());
+    dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));
       if (postSecurityKeyPreference.rejected.match(response)) {
-        if ((response?.payload as { payload: PreferencesData }).payload.message === "authn_status.must-authenticate") {
-          setSwitchChecked(always_use_security_key);
-          setShowAuthnModal(true);
-        }
+        setSwitchChecked(always_use_security_key);
       }
     }
   }
@@ -67,12 +63,6 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
           </label>
         </form>
       </fieldset>
-      <AuthenticateModal
-        action="changeSecurityPreferencesAuthn"
-        dispatch={dispatch}
-        showModal={showAuthnModal}
-        setShowModal={setShowAuthnModal}
-      />
     </>
   );
 }

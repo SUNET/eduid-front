@@ -12,6 +12,7 @@ import { PageNotFound } from "./Common/PageNotFound";
 import { Settings } from "./Common/Settings";
 import Splash from "./Common/Splash";
 import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
+import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
@@ -80,6 +81,7 @@ export function IndexMain(): JSX.Element {
             </section>
           </Splash>
         </ErrorBoundary>
+        <AuthenticateModal />
       </main>
       <Footer />
     </React.StrictMode>

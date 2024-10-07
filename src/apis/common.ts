@@ -1,5 +1,6 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
+import authnSlice from "slices/Authn";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
 import { authenticate, AuthenticateResponse } from "./eduidAuthn";
@@ -54,6 +55,16 @@ export async function makeGenericRequest<T>(
         // The current implementation in notify-middleware.js _removes_ error and payload.message from
         // response, so we clone it first so we can reject the promise with the full error response.
         const saved = JSON.parse(JSON.stringify(response));
+
+        if (saved.payload.message === "authn_status.must-authenticate") {
+          // security zone, re-auth
+          // toggle status of re-auth in state, that will trig the visualization of AuthenticateModal
+          thunkAPI.dispatch(
+            authnSlice.actions.setFrontendActionAndState({ frontend_action: saved.meta.frontend_action })
+          );
+          thunkAPI.dispatch(authnSlice.actions.setReAuthenticate(true));
+        }
+
         thunkAPI.dispatch(response);
         reject(saved);
       } else {
