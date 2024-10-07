@@ -302,10 +302,6 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
-  "4XAsSn": {
-    "developer_comment": "settings.remove_identity_verification_modal_title",
-    "string": "Remove Identity Verification"
-  },
   "4a79Tk": {
     "developer_comment": "captcha modal title",
     "string": "To receive code, complete below captcha."
@@ -1034,6 +1030,10 @@
     "developer_comment": "Display name select placeholder",
     "string": "select display name..."
   },
+  "Pi/dSU": {
+    "developer_comment": "settings.remove_identity_verification_modal_title",
+    "string": "Disconnect your identity"
+  },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "What is eduIDs Accessibility report?"
@@ -1049,6 +1049,10 @@
   "Q3aPtX": {
     "developer_comment": "phones modal form label",
     "string": "Code"
+  },
+  "Q5YIVS": {
+    "developer_comment": "delete.remove_identity_verification_modal_text",
+    "string": "Are you sure you want to disconnect your identity from your eduID account?"
   },
   "Q8CeJV": {
     "developer_comment": "mfa try again",
@@ -2021,10 +2025,6 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
-  },
-  "kvqCWB": {
-    "developer_comment": "delete.remove_identity_verification_modal_text",
-    "string": "Are you sure you want to remove your identity verfication?"
   },
   "kwQM6Z": {
     "developer_comment": "pd main title",
