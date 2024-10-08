@@ -1,6 +1,7 @@
 import { bankIDMfaAuthenticate } from "apis/eduidBankid";
 import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select from "react-select";
@@ -23,10 +24,10 @@ export function SwedishEID(): JSX.Element {
 
   const IconWithText = ({ icon, text }: any) => {
     return (
-      <>
+      <React.Fragment>
         {icon}
         <span className="select-option-text">{text}</span>
-      </>
+      </React.Fragment>
     );
   };
 
@@ -81,7 +82,7 @@ export function SwedishEID(): JSX.Element {
   }
 
   return (
-    <div className="option-wrapper">
+    <>
       <div className="or-container">
         <div className="line" />
         <span>
@@ -89,33 +90,34 @@ export function SwedishEID(): JSX.Element {
         </span>
         <div className="line" />
       </div>
-
-      <FinalForm
-        onSubmit={() => {}}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <fieldset>
-              <Select
-                options={options}
-                onChange={handleOnChange}
-                placeholder={placeholder}
-                isSearchable={false}
-                className="mfa-select"
-                classNamePrefix="react-select"
-                isDisabled={notAvailable}
-              />
-            </fieldset>
-          </form>
+      <div className="option-wrapper">
+        <FinalForm
+          onSubmit={() => {}}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <fieldset>
+                <Select
+                  options={options}
+                  onChange={handleOnChange}
+                  placeholder={placeholder}
+                  isSearchable={false}
+                  className="mfa-select"
+                  classNamePrefix="react-select"
+                  isDisabled={notAvailable}
+                />
+              </fieldset>
+            </form>
+          )}
+        />
+        {notAvailable && (
+          <p className="help-text">
+            <FormattedMessage
+              description="MFA Freja help text"
+              defaultMessage="Requires a confirmed Swedish national identity number."
+            />
+          </p>
         )}
-      />
-      {notAvailable && (
-        <p className="help-text">
-          <FormattedMessage
-            description="MFA Freja help text"
-            defaultMessage="Requires a confirmed Swedish national identity number."
-          />
-        </p>
-      )}
-    </div>
+      </div>
+    </>
   );
 }

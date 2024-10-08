@@ -47,8 +47,7 @@ export function MultiFactorAuth(): JSX.Element {
           <React.Fragment>
             <p>
               <FormattedMessage
-                defaultMessage={`You need to choose a second method to authenticate yourself.
-                           This helps guarantee that only you can access your eduID.`}
+                defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, use the recovery mode below.`}
                 description="Login MFA paragraph"
               />
             </p>
