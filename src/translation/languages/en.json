@@ -2035,7 +2035,7 @@
   },
   "l+J8JG": {
     "developer_comment": "Temp info - message5",
-    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving the security level of eduID' section."
+    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' and 'Improving the security level of eduID' sections."
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
