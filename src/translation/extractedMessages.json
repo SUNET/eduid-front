@@ -11,6 +11,10 @@
     "developer_comment": "about contact support - handle",
     "string": "Contacting eduID support"
   },
+  "+ADpXY": {
+    "developer_comment": "Temp info - message1",
+    "string": "Soon it will not be possible to use phone numbers to verify identity and resetting password."
+  },
   "+B59c5": {
     "developer_comment": "Return to register",
     "string": "Return to Register"
@@ -18,10 +22,6 @@
   "+EKyAl": {
     "developer_comment": "continue reset password",
     "string": "Continue reset password"
-  },
-  "+EOmRl": {
-    "developer_comment": "Temp info - message",
-    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section.\""
   },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
@@ -368,10 +368,6 @@
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
     "string": "Copied!"
-  },
-  "6bEPSp": {
-    "developer_comment": "Temp info - message",
-    "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as a security key."
   },
   "6i0Tfo": {
     "developer_comment": "nin label",
@@ -811,6 +807,10 @@
     "developer_comment": "resend code",
     "string": "Send a new code"
   },
+  "J5Vh6s": {
+    "developer_comment": "Temp info - message4",
+    "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
+  },
   "JcDPK+": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account."
@@ -1009,10 +1009,6 @@
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
-  },
-  "P/hsFU": {
-    "developer_comment": "Temp info - message",
-    "string": "As an important step in improving the security of eduID, we will soon discontinue the use of phone numbers for verifying identity and resetting passwords."
   },
   "P2JYwK": {
     "developer_comment": "what is freja - paragraph",
@@ -2014,10 +2010,6 @@
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
   },
-  "kbIDMK": {
-    "developer_comment": "Temp info - message",
-    "string": "Already verified identities will not be affected by this change."
-  },
   "kbKgSK": {
     "developer_comment": "go to identity",
     "string": "Go to Identity"
@@ -2040,6 +2032,10 @@
   "kzoeVh": {
     "developer_comment": "what is orcid - paragraph",
     "string": "ORCID is integrated into many research-related services, such as systems used by publishers, funders and institutions. ORCID is an independent non-profit organisation that provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD."
+  },
+  "l+J8JG": {
+    "developer_comment": "Temp info - message5",
+    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section."
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
@@ -2408,9 +2404,9 @@
   "pdata.field_required": {
     "string": "This field is required"
   },
-  "peZC+F": {
-    "developer_comment": "Temp info - message",
-    "string": "It will no longer be a possible to use a phone number as a method for resetting your password."
+  "pekRpN": {
+    "developer_comment": "Temp info - heading",
+    "string": "We are discontinuing phone number support"
   },
   "phone.captcha-failed": {
     "string": "Captcha failed. Please try again."
@@ -2699,6 +2695,10 @@
     "developer_comment": "ResetPasswordEnterEmail heading",
     "string": "Reset Password: Enter the email address"
   },
+  "sCxiby": {
+    "developer_comment": "Temp info - message2",
+    "string": "Already verified identities will not be affected by this change."
+  },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
@@ -2971,10 +2971,6 @@
   "wd5z3l": {
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
-  },
-  "wn+c+3": {
-    "developer_comment": "Temp info - heading",
-    "string": "We're discontinuing phone number support"
   },
   "wnJXsu": {
     "developer_comment": "Register - headline",
