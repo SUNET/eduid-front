@@ -65,7 +65,7 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
                 <GoBackButton onClickHandler={props.goBack} />
               )}
               {props.handleCancel && (
-                <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
+                <EduIDButton buttonstyle="secondary" id="new-password-cancel-button" onClick={props.handleCancel}>
                   <FormattedMessage defaultMessage="cancel" description="button cancel" />
                 </EduIDButton>
               )}
