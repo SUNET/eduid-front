@@ -59,7 +59,7 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
         </p>
         <span className="help-text">
           <FormattedMessage
-            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section."`}
+            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section.`}
             description="Temp info - message5"
             values={{
               help: (
