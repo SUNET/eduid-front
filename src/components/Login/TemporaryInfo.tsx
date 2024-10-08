@@ -46,13 +46,27 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
         </p>
         <p>
           <FormattedMessage
-            defaultMessage="To ensure continued safe access and use of eduID, we recommend that you choose another verification method."
+            defaultMessage="Already verified identities will not be affected by this change."
+            description="Temp info - message"
+          />
+        </p>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="It will no longer be a possible to use a phone number as a method for resetting your password."
+            description="Temp info - message"
+          />
+        </p>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as a security key."
             description="Temp info - message"
           />
         </p>
         <p>
           <FormattedMessage
-            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section.`}
+            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section."`}
             description="Temp info - message"
             values={{
               help: (
