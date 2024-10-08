@@ -19,6 +19,10 @@
     "developer_comment": "continue reset password",
     "string": "Continue reset password"
   },
+  "+EOmRl": {
+    "developer_comment": "Temp info - message",
+    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section.\""
+  },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
     "string": "What is Ladok?"
@@ -364,6 +368,10 @@
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
     "string": "Copied!"
+  },
+  "6bEPSp": {
+    "developer_comment": "Temp info - message",
+    "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as a security key."
   },
   "6i0Tfo": {
     "developer_comment": "nin label",
@@ -1593,10 +1601,6 @@
     "developer_comment": "usb key technical section - list item 4",
     "string": "and must not support any other key protection than:"
   },
-  "dc/cAW": {
-    "developer_comment": "Temp info - message",
-    "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section."
-  },
   "dcHeKQ": {
     "developer_comment": "about eduid - info",
     "string": "What it is and may be used for"
@@ -1995,10 +1999,6 @@
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
   },
-  "kAzf2M": {
-    "developer_comment": "Temp info - message",
-    "string": "To ensure continued safe access and use of eduID, we recommend that you choose another verification method."
-  },
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
   },
@@ -2013,6 +2013,10 @@
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kbIDMK": {
+    "developer_comment": "Temp info - message",
+    "string": "Already verified identities will not be affected by this change."
   },
   "kbKgSK": {
     "developer_comment": "go to identity",
@@ -2403,6 +2407,10 @@
   },
   "pdata.field_required": {
     "string": "This field is required"
+  },
+  "peZC+F": {
+    "developer_comment": "Temp info - message",
+    "string": "It will no longer be a possible to use a phone number as a method for resetting your password."
   },
   "phone.captcha-failed": {
     "string": "Captcha failed. Please try again."

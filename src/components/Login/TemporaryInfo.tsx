@@ -34,26 +34,33 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
       <div className="notice-box">
         <h2>
           <FormattedMessage
-            defaultMessage="We're discontinuing phone number support"
+            defaultMessage="We are discontinuing phone number support"
             description="Temp info - heading"
           />
         </h2>
         <p>
           <FormattedMessage
-            defaultMessage="As an important step in improving the security of eduID, we will soon discontinue the use of phone numbers for verifying identity and resetting passwords."
-            description="Temp info - message"
+            defaultMessage="Soon it will not be possible to use phone numbers to verify identity and resetting password."
+            description="Temp info - message1"
           />
         </p>
         <p>
           <FormattedMessage
-            defaultMessage="To ensure continued safe access and use of eduID, we recommend that you choose another verification method."
-            description="Temp info - message"
+            defaultMessage="Already verified identities will not be affected by this change."
+            description="Temp info - message2"
           />
         </p>
+
         <p>
           <FormattedMessage
-            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section.`}
-            description="Temp info - message"
+            defaultMessage="To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
+            description="Temp info - message4"
+          />
+        </p>
+        <span className="help-text">
+          <FormattedMessage
+            defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section."`}
+            description="Temp info - message5"
             values={{
               help: (
                 <a className="text-link" href="https://www.eduid.se/help" target="_blank">
@@ -62,7 +69,9 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
               ),
             }}
           />
-        </p>
+        </span>
+        {/* an empty p tag for padding bottom effect for the notice box */}
+        <p></p>
       </div>
 
       {/* "Don't show again" checkbox and "Continue" button */}

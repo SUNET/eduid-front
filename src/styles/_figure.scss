@@ -68,6 +68,9 @@ figure,
   border: 1px solid $bright-orange;
   border-radius: 10px;
   background: $white;
+  .help-text {
+    padding-bottom: 0.75rem;
+  }
 
   ul.bullets {
     list-style-position: inside;
