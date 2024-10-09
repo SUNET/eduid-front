@@ -3,7 +3,6 @@ import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { performAuthentication } from "helperFunctions/navigatorCredential";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";
@@ -11,6 +10,8 @@ import resetPasswordSlice from "slices/ResetPassword";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
+import { SecurityKey as SecurityKeyLogin } from "components/Login//SecurityKey";
+import { SwedishEID } from "components/Login/SwedishEID";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   clearCountdown,
@@ -18,7 +19,6 @@ import {
   setLocalStorage,
 } from "./CountDownTimer";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
-import { SecurityKey } from "./SelectedSecurityToken";
 
 interface ExternalMFAProps {
   handleOnClickFreja: () => void;
@@ -197,20 +197,20 @@ export function HandleExtraSecurities(): JSX.Element | null {
     })();
   }
 
-  function ShowSecurityKey(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
-    startTokenAssertion();
-    dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-  }
+  // function ShowSecurityKey(e: React.MouseEvent<HTMLElement>) {
+  //   e.preventDefault();
+  //   dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
+  //   startTokenAssertion();
+  //   dispatch(clearNotifications());
+  //   resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+  // }
 
-  function startTokenAssertion() {
-    const webauthn_challenge = extra_security?.tokens?.webauthn_options;
-    if (webauthn_challenge && !webauthn_assertion) {
-      dispatch(performAuthentication(webauthn_challenge));
-    }
-  }
+  // function startTokenAssertion() {
+  //   const webauthn_challenge = extra_security?.tokens?.webauthn_options;
+  //   if (webauthn_challenge && !webauthn_assertion) {
+  //     dispatch(performAuthentication(webauthn_challenge));
+  //   }
+  // }
 
   function toPhoneCodeForm() {
     dispatch(clearNotifications());
@@ -248,11 +248,17 @@ export function HandleExtraSecurities(): JSX.Element | null {
       <h2>
         <FormattedMessage description="extra security heading" defaultMessage="Select an extra security option" />
       </h2>
-      <SecurityKey
+
+      <div className="options">
+        <SecurityKeyLogin webauthn={extra_security.tokens} />
+        <SwedishEID />
+      </div>
+
+      {/* <SecurityKey
         selected_option={selected_option}
         ShowSecurityKey={ShowSecurityKey}
         extraSecurityKey={extra_security.tokens}
-      />
+      /> */}
       <ExternalMFA
         handleOnClickBankID={handleOnClickBankID}
         handleOnClickFreja={handleOnClickFreja}
@@ -263,6 +269,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
         extraSecurityPhone={extra_security.phone_numbers}
         toPhoneCodeForm={toPhoneCodeForm}
       />
+
       <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"

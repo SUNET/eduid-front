@@ -52,7 +52,7 @@ export function MultiFactorAuth(): JSX.Element {
               />
             </p>
             <div className="options">
-              <SecurityKey />
+              <SecurityKey webauthn={authn_options?.webauthn} />
               <SwedishEID />
             </div>
           </React.Fragment>
