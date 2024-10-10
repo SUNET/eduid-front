@@ -11,7 +11,7 @@ export function Index() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const frontend_action = useAppSelector((state) => state.authn.frontend_action);
+  const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
 
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
