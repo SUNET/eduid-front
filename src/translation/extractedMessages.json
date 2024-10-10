@@ -609,6 +609,10 @@
     "developer_comment": "how to contact support - paragraph 1",
     "string": "If you can't find the answers to your questions about eduID on this help page, you can contact the eduID support by mailing {support}."
   },
+  "DrV2tW": {
+    "developer_comment": "HandleExtraSecurities lead text",
+    "string": "Select an extra security option, such as using a security key, to ensure identity verification during the password reset process. If you don’t have a security key, please use the recovery options below. If neither option is available, you can continue without extra security, but identity confirmation will be required after the password reset."
+  },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
@@ -683,9 +687,6 @@
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset Password: Completed"
-  },
-  "FutYRQ": {
-    "string": "Use my {freja_eidplus_verbatim}"
   },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
@@ -1022,6 +1023,9 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
+  "PAjoNf": {
+    "string": "Bank ID"
+  },
   "PLjl7A": {
     "developer_comment": "settings main title",
     "string": "Manage your eduID settings"
@@ -1129,6 +1133,9 @@
     "developer_comment": "Password label",
     "string": "Password"
   },
+  "SUUODR": {
+    "string": "Freja+"
+  },
   "SWwNRP": {
     "developer_comment": "settings.remove_security_key_modal_title",
     "string": "Remove security key"
@@ -1159,10 +1166,6 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
   },
-  "SvKyxR": {
-    "developer_comment": "Login MFA paragraph",
-    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
-  },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
     "string": "This login has already been processed."
@@ -1174,10 +1177,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
-  },
-  "TZ7dg4": {
-    "developer_comment": "bankID ready",
-    "string": "Use my BankID"
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
@@ -2311,9 +2310,6 @@
     "developer_comment": "Help",
     "string": "Help"
   },
-  "oAK8WM": {
-    "string": "Use my {bankID}"
-  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "cancel"
@@ -2325,9 +2321,6 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
-  },
-  "ojB17W": {
-    "string": "Swedish eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2498,6 +2491,10 @@
     "developer_comment": "placeholder text for phone input",
     "string": "phone number"
   },
+  "placeholder.recovery_option": {
+    "developer_comment": "placeholder text for recovery option",
+    "string": "Show recovery options"
+  },
   "placeholder.repeat_new_password_placeholder": {
     "developer_comment": "placeholder text for repeat new password",
     "string": "repeat new password"
@@ -2602,6 +2599,10 @@
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
   },
+  "r5c4pu": {
+    "developer_comment": "Login MFA paragraph",
+    "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, use the recovery mode below."
+  },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
   },
@@ -2616,6 +2617,9 @@
   "rN3KF1": {
     "developer_comment": "security zone modal",
     "string": "You need to log in again to perform the requested action."
+  },
+  "rZlsxr": {
+    "string": "or use recovery mode"
   },
   "rdd33t": {
     "developer_comment": "what is international - paragraph 1",
@@ -2678,10 +2682,6 @@
   },
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
-  },
-  "rr418r": {
-    "developer_comment": "HandleExtraSecurities lead text",
-    "string": "Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
   },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
