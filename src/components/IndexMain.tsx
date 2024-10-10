@@ -9,14 +9,15 @@ import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { PageNotFound } from "./Common/PageNotFound";
-import { Settings } from "./Common/Settings";
 import Splash from "./Common/Splash";
-import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
+import { AcademicIdentities } from "./Dashboard/AcademicIdentitiesPage";
+import { AccountSecurity } from "./Dashboard/AccountSecurityPage";
+import { AccountSettings } from "./Dashboard/AccountSettingsPage";
 import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
-import Start from "./Dashboard/DashboardStart";
-import VerifyIdentity from "./Dashboard/VerifyIdentity";
+import Start from "./Dashboard/DashboardStartPage";
+import Identity from "./Dashboard/IdentityPage";
 import { Help } from "./Help";
 import { Index } from "./Index";
 import Login from "./Login/Login";
@@ -27,9 +28,10 @@ import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
 export const startPath = "/profile/";
+export const accountPath = "/profile/settings/personaldata";
+export const securityPath = "/profile/settings/advanced-settings";
 export const identityPath = "/profile/verify-identity/";
-export const settingsPath = "/profile/settings/personaldata";
-export const advancedSettingsPath = "/profile/settings/advanced-settings";
+export const academicIdentityPath = "/profile/academic-identities/";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): JSX.Element {
@@ -59,18 +61,19 @@ export function IndexMain(): JSX.Element {
                 <Route path="/login/:ref" element={<Login />} />
                 <Route path="/reset-password/*" element={<ResetPasswordApp />} />
                 {/* Dashboard */}
-                <Route path={advancedSettingsPath} element={<AdvancedSettings />} />
-                <Route path={settingsPath} element={<Settings />} />
-                <Route path="/profile/settings/" element={<Navigate to={settingsPath} />} />
-                <Route path={identityPath} element={<VerifyIdentity />} />
+                <Route path={securityPath} element={<AccountSecurity />} />
+                <Route path={accountPath} element={<AccountSettings />} />
+                <Route path="/profile/settings/" element={<Navigate to={accountPath} />} />
+                <Route path={identityPath} element={<Identity />} />
+                <Route path={academicIdentityPath} element={<AcademicIdentities />} />
                 <Route path="/profile/chpass/" element={<ChangePassword />} />
                 <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                 {/* Navigates for old paths. TODO: redirect in backend server instead */}
                 <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />
-                <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
+                <Route path="/profile/accountlinking/" element={<Navigate to={academicIdentityPath} />} />
                 <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
-                <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
+                <Route path="/profile/emails/" element={<Navigate to={accountPath} />} />
                 <Route path={startPath} element={<Start />} />
                 {/* Errors*/}
                 <Route path="/errors" element={<Errors />} />

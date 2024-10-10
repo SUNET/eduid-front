@@ -33,7 +33,7 @@ function filterTokensFromCredentials(state: EduIDAppRootState): Array<Credential
   );
 }
 
-export function Security(): React.ReactElement | null {
+export function MultifactorAuthentication(): React.ReactElement | null {
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
