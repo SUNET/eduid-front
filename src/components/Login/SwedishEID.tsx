@@ -8,13 +8,17 @@ import Select from "react-select";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
-export function SwedishEID(): JSX.Element {
+interface SwedishEIDProps {
+  readonly recoveryAvailable?: boolean;
+}
+
+export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element {
   const intl = useIntl();
-  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
-  // TODO: when backend is updated to swedish_eid, we should be able to rename this.
-  const notAvailable = !authn_options.freja_eidplus;
+  const frontend_action = location.pathname.includes("login") ? "loginMfaAuthn" : "resetpwMfaAuthn";
+  const frontend_state = location.pathname.includes("login") ? ref : email_code;
 
   const placeholder = intl.formatMessage({
     id: "placeholder.recovery_option",
@@ -51,9 +55,10 @@ export function SwedishEID(): JSX.Element {
       ),
     },
   ];
+
   async function handleOnClickBankID() {
     const response = await dispatch(
-      bankIDMfaAuthenticate({ method: "bankid", frontend_action: "loginMfaAuthn", frontend_state: ref })
+      bankIDMfaAuthenticate({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state })
     );
     if (bankIDMfaAuthenticate.fulfilled.match(response)) {
       if (response.payload.location) {
@@ -64,7 +69,7 @@ export function SwedishEID(): JSX.Element {
 
   async function handleOnClickFrejaeID() {
     const response = await dispatch(
-      eidasMfaAuthenticate({ method: "freja", frontend_action: "loginMfaAuthn", frontend_state: ref })
+      eidasMfaAuthenticate({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state })
     );
     if (eidasMfaAuthenticate.fulfilled.match(response)) {
       if (response.payload.location) {
@@ -82,7 +87,7 @@ export function SwedishEID(): JSX.Element {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className="or-container">
         <div className="line" />
         <span>
@@ -103,13 +108,13 @@ export function SwedishEID(): JSX.Element {
                   isSearchable={false}
                   className="mfa-select"
                   classNamePrefix="react-select"
-                  isDisabled={notAvailable}
+                  isDisabled={!recoveryAvailable}
                 />
               </fieldset>
             </form>
           )}
         />
-        {notAvailable && (
+        {!recoveryAvailable && (
           <p className="help-text">
             <FormattedMessage
               description="MFA Freja help text"
@@ -118,6 +123,6 @@ export function SwedishEID(): JSX.Element {
           </p>
         )}
       </div>
-    </>
+    </React.Fragment>
   );
 }

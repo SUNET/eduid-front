@@ -53,7 +53,7 @@ export function MultiFactorAuth(): JSX.Element {
             </p>
             <div className="options">
               <SecurityKey webauthn={authn_options?.webauthn} />
-              <SwedishEID />
+              <SwedishEID recoveryAvailable={authn_options.freja_eidplus} />
             </div>
           </React.Fragment>
         ) : (
