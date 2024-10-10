@@ -94,7 +94,7 @@
     "jquery": "^3.7.0",
     "js-cookie": "^3.0.5",
     "json-loader": "^0.5.7",
-    "msw": "^0.47.4",
+    "msw": "^2.4.9",
     "postcss-loader": "^7.3.3",
     "prop-types": "^15.8.1",
     "react-country-flag": "^3.1.0",
