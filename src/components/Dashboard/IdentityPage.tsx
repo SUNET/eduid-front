@@ -24,12 +24,13 @@ import NotificationModal from "components/Common/NotificationModal";
 import authnSlice from "slices/Authn";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
-function VerifyIdentity(): JSX.Element | null {
+function Identity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   const intl = useIntl();
@@ -61,12 +62,12 @@ function VerifyIdentity(): JSX.Element | null {
   return (
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
-      <VerifyIdentityIntro />
+      <IdentityContent />
     </Fragment>
   );
 }
 
-function VerifyIdentityIntro(): JSX.Element {
+function IdentityContent(): JSX.Element {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -78,41 +79,9 @@ function VerifyIdentityIntro(): JSX.Element {
     }
   }
 
-  if (identities?.is_verified) {
-    /* User has a verified identity. Show which one (or ones) it is.
-     *   TODO: Support other types of identities than NINs.
-     */
-    return (
-      <React.Fragment>
-        <section className="intro">
-          <h1>
-            <FormattedMessage
-              description="verify identity unverified main title"
-              defaultMessage={`Connect your identity to your eduID`}
-            />
-          </h1>
-          <div className="lead">
-            <p>
-              <FormattedMessage
-                description="verify identity verified title"
-                defaultMessage="Your eduID is ready to use"
-              />
-            </p>
-          </div>
-        </section>
-        <article>
-          <h2>
-            <FormattedMessage
-              description="verify identity verified description"
-              defaultMessage="The identities below are now connected to your eduID"
-            />
-          </h2>
-          <VerifiedIdentitiesTable />
-        </article>
-      </React.Fragment>
-    );
-  }
-
+  /* User has a verified identity. Show which one (or ones) it is.
+   *   TODO: Support other types of identities than NINs.
+   */
   return (
     <React.Fragment>
       <section className="intro">
@@ -123,27 +92,52 @@ function VerifyIdentityIntro(): JSX.Element {
           />
         </h1>
         <div className="lead">
-          <p>
-            <FormattedMessage
-              description="verify identity unverified description"
-              defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+          {identities?.is_verified ? (
+            <p>
+              <FormattedMessage
+                description="verify identity verified title"
+                defaultMessage="Your eduID is ready to use"
+              />
+            </p>
+          ) : (
+            <p>
+              <FormattedMessage
+                description="verify identity unverified description"
+                defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
             to get the most benefit from it.`}
-            />
-          </p>
+              />
+            </p>
+          )}
         </div>
       </section>
+      <PersonalDataParent />
+
       <article>
-        <h2>
-          <FormattedMessage
-            description="verify identity non verified description"
-            defaultMessage="Choose your principal identification method"
-          />
-        </h2>
-        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-          <AccordionItemSwedish />
-          <AccordionItemEu />
-          <AccordionItemWorld />
-        </Accordion>
+        {identities?.is_verified ? (
+          <React.Fragment>
+            <h2>
+              <FormattedMessage
+                description="verify identity verified description"
+                defaultMessage="The identities below are now connected to your eduID"
+              />
+            </h2>
+            <VerifiedIdentitiesTable />{" "}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h2>
+              <FormattedMessage
+                description="verify identity non verified description"
+                defaultMessage="Choose your principal identification method"
+              />
+            </h2>
+            <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+              <AccordionItemSwedish />
+              <AccordionItemEu />
+              <AccordionItemWorld />
+            </Accordion>
+          </React.Fragment>
+        )}
       </article>
     </React.Fragment>
   );
@@ -490,4 +484,4 @@ function AccordionItemWorld(): JSX.Element | null {
   );
 }
 
-export default VerifyIdentity;
+export default Identity;
