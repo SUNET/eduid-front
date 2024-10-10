@@ -17,9 +17,9 @@ import {
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface SecurityWithSMSProps {
-  extraSecurityPhone?: Array<PhoneInterface>;
-  toPhoneCodeForm: () => void;
-  requestedPhoneCode: {
+  readonly extraSecurityPhone?: Array<PhoneInterface>;
+  readonly toPhoneCodeForm: () => void;
+  readonly requestedPhoneCode: {
     index?: number;
     number?: string;
   };
@@ -89,13 +89,13 @@ function SecurityWithSMS({
       <p className="enter-phone-code">
         <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
         &nbsp;
-        <a
+        <EduIDButton
+          buttonstyle="link"
           className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`}
-          role="link"
           onClick={toPhoneCodeForm}
         >
           <FormattedMessage description="enter code" defaultMessage="enter code" />
-        </a>
+        </EduIDButton>
       </p>
     </React.Fragment>
   );
@@ -151,7 +151,10 @@ export function HandleExtraSecurities(): JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
+              defaultMessage={`Select an extra security option, such as using a security key, to ensure identity 
+                verification during the password reset process. If you don’t have a security key, please use the 
+                recovery options below. If neither option is available, you can continue without extra security, 
+                but identity confirmation will be required after the password reset.`}
               description="HandleExtraSecurities lead text"
             />
           </p>
@@ -182,9 +185,14 @@ export function HandleExtraSecurities(): JSX.Element | null {
           defaultMessage="Your account will require confirmation after the password has been reset."
         />
         &nbsp;
-        <a className="text-link" id="continue-without-security" onClick={continueSetPassword}>
+        <EduIDButton
+          buttonstyle="link"
+          className="lowercase"
+          id="continue-without-security"
+          onClick={continueSetPassword}
+        >
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
-        </a>
+        </EduIDButton>
       </p>
     </React.Fragment>
   );
