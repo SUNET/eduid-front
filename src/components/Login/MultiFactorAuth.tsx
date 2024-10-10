@@ -3,10 +3,10 @@ import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { SecurityKey } from "../Common/SecurityKey";
+import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
-import { SecurityKey } from "./SecurityKey";
-import { SwedishEID } from "./SwedishEID";
 
 export function MultiFactorAuth(): JSX.Element {
   const dispatch = useAppDispatch();

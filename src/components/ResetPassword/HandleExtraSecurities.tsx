@@ -6,8 +6,8 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 
-import { SecurityKey as SecurityKeyLogin } from "components/Login//SecurityKey";
-import { SwedishEID } from "components/Login/SwedishEID";
+import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
+import { SwedishEID } from "components/Common/SwedishEID";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   clearCountdown,
