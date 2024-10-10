@@ -91,7 +91,7 @@ function SecurityWithSMS({
         &nbsp;
         <EduIDButton
           buttonstyle="link"
-          className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`}
+          className={`lowercase ${requestedPhoneCode.index === undefined && "disabled"}`}
           onClick={toPhoneCodeForm}
         >
           <FormattedMessage description="enter code" defaultMessage="enter code" />
@@ -151,19 +151,13 @@ export function HandleExtraSecurities(): JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage={`Select an extra security option, such as using a security key, to ensure identity 
-                verification during the password reset process. If you don’t have a security key, please use the 
-                recovery options below. If neither option is available, you can continue without extra security, 
-                but identity confirmation will be required after the password reset.`}
-              description="HandleExtraSecurities lead text"
+              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. 
+                If you are unable to use the security key, use the recovery mode below.`}
+              description="MFA paragraph"
             />
           </p>
         </div>
       </section>
-      <h2>
-        <FormattedMessage description="extra security heading" defaultMessage="Select an extra security option" />
-      </h2>
-
       <div className="options">
         <SecurityKeyLogin webauthn={extra_security.tokens} />
         <SwedishEID recoveryAvailable={extra_security.external_mfa} />
