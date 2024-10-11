@@ -91,10 +91,6 @@
     "developer_comment": "unverified",
     "string": "unverified"
   },
-  "/h666/": {
-    "developer_comment": "select extra webauthn",
-    "string": "Choose extra identification method:"
-  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "What is SUNET?"
@@ -500,10 +496,6 @@
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
-  },
-  "A2MTya": {
-    "developer_comment": "add webauthn token key",
-    "string": "security key"
   },
   "ABLcOw": {
     "developer_comment": "explanation text for letter proofing",
@@ -1777,6 +1769,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
+  },
+  "f6GNZ7": {
+    "developer_comment": "select extra webauthn",
+    "string": "Add a new security key:"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
@@ -3071,6 +3067,10 @@
   "zeCbht": {
     "developer_comment": "start main title",
     "string": "Welcome, {username}!"
+  },
+  "zkvDpu": {
+    "developer_comment": "add webauthn token key",
+    "string": "external security key"
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
