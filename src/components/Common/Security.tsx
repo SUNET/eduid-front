@@ -199,10 +199,7 @@ export function Security(): React.ReactElement | null {
           {!tokens.length && <br />}
           <span aria-label="select extra webauthn">
             <strong>
-              <FormattedMessage
-                description="select extra webauthn"
-                defaultMessage="Choose extra identification method:"
-              />
+              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
             </strong>
           </span>
           <div className="buttons">
@@ -237,7 +234,7 @@ export function Security(): React.ReactElement | null {
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
-                <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
