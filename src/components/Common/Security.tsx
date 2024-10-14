@@ -199,7 +199,7 @@ export function Security(): React.ReactElement | null {
           {!tokens.length && <br />}
           <span aria-label="select extra webauthn">
             <strong>
-              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key to:" />
             </strong>
           </span>
           <div className="buttons">
