@@ -1292,6 +1292,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
+  "X/kMCX": {
+    "developer_comment": "select extra webauthn",
+    "string": "Add a new security key to:"
+  },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
     "string": "How to use eIDAS with eduID:"
@@ -1769,10 +1773,6 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
-  },
-  "f6GNZ7": {
-    "developer_comment": "select extra webauthn",
-    "string": "Add a new security key:"
   },
   "fEKz/1": {
     "developer_comment": "Personal data update locked names",
