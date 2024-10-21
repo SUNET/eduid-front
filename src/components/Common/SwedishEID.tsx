@@ -12,6 +12,15 @@ interface SwedishEIDProps {
   readonly recoveryAvailable?: boolean;
 }
 
+const IconWithText = ({ icon, text }: any) => {
+  return (
+    <React.Fragment>
+      {icon}
+      <span className="select-option-text">{text}</span>
+    </React.Fragment>
+  );
+};
+
 export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
@@ -25,15 +34,6 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
     defaultMessage: "Show recovery options",
     description: "placeholder text for recovery option",
   });
-
-  const IconWithText = ({ icon, text }: any) => {
-    return (
-      <React.Fragment>
-        {icon}
-        <span className="select-option-text">{text}</span>
-      </React.Fragment>
-    );
-  };
 
   const options = [
     {
