@@ -41,7 +41,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
       label: (
         <IconWithText
           icon={<img height="35" alt="BankID" src={BankIdFlag} />}
-          text={<FormattedMessage defaultMessage={`Bank ID`} />}
+          text={<FormattedMessage defaultMessage={`BankID`} />}
         />
       ),
     },
