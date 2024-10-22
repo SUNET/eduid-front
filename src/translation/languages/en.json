@@ -349,9 +349,9 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
-  "61F71s": {
-    "developer_comment": "mfa security key heading",
-    "string": "Reset password: Use security key"
+  "5zqSh6": {
+    "developer_comment": "MFA paragraph",
+    "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select from other options below, such as BankID or Freja+."
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
@@ -521,10 +521,6 @@
     "developer_comment": "Advanced settings",
     "string": "Advanced settings"
   },
-  "AfTLxJ": {
-    "developer_comment": "mfa reset-password tapit",
-    "string": "If it has a button, tap it."
-  },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you need to log in again, with your security key if you are using one, if more than 5 minutes have passed since you logged in. \nFor more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
@@ -675,9 +671,6 @@
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset password: Completed"
-  },
-  "FutYRQ": {
-    "string": "Use my {freja_eidplus_verbatim}"
   },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
@@ -870,10 +863,6 @@
     "developer_comment": "button_add",
     "string": "Add"
   },
-  "LolQ90": {
-    "developer_comment": "mfa problems heading",
-    "string": "Problems?"
-  },
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Send sms to {phone}"
@@ -1050,10 +1039,6 @@
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Are you sure you want to disconnect your identity from your eduID account?"
   },
-  "Q8CeJV": {
-    "developer_comment": "mfa try again",
-    "string": "Please try again"
-  },
   "QDS1P5": {
     "developer_comment": "signup last name",
     "string": "Last name"
@@ -1121,6 +1106,9 @@
     "developer_comment": "Password label",
     "string": "Password"
   },
+  "SUUODR": {
+    "string": "Freja+"
+  },
   "SWwNRP": {
     "developer_comment": "settings.remove_security_key_modal_title",
     "string": "Remove security key"
@@ -1151,10 +1139,6 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
   },
-  "SvKyxR": {
-    "developer_comment": "Login MFA paragraph",
-    "string": "You need to choose a second method to authenticate yourself. This ensures that only you can access your eduID."
-  },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
     "string": "This login has already been processed."
@@ -1166,10 +1150,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
-  },
-  "TZ7dg4": {
-    "developer_comment": "bankID ready",
-    "string": "Use my BankID"
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
@@ -1840,6 +1820,10 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
+  "ggGC2l": {
+    "developer_comment": "login this device, security key button",
+    "string": "Security key"
+  },
   "gyVTaa": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "For you able to create a Freja+ by using the app or visiting an authorised agent"
@@ -2307,9 +2291,6 @@
     "developer_comment": "Help",
     "string": "Help"
   },
-  "oAK8WM": {
-    "string": "Use my {bankID}"
-  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Cancel"
@@ -2321,9 +2302,6 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
-  },
-  "ojB17W": {
-    "string": "Swedish eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2493,6 +2471,10 @@
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
     "string": "phone number"
+  },
+  "placeholder.recovery_option": {
+    "developer_comment": "placeholder text for recovery option",
+    "string": "Show other options"
   },
   "placeholder.repeat_new_password_placeholder": {
     "developer_comment": "placeholder text for repeat new password",
@@ -2675,10 +2657,6 @@
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
   },
-  "rr418r": {
-    "developer_comment": "HandleExtraSecurities lead text",
-    "string": "Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
-  },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
     "string": "Next update: "
@@ -2845,6 +2823,9 @@
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Your identity is not verified. Please verify your identity to get access to more services."
   },
+  "tAcT/R": {
+    "string": "BankID"
+  },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
@@ -2860,10 +2841,6 @@
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
     "string": "About BankID"
-  },
-  "tcDcv5": {
-    "developer_comment": "mfa primary option",
-    "string": "Use my security key"
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
@@ -2923,10 +2900,6 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
-  },
-  "vKFmEL": {
-    "developer_comment": "extra security heading",
-    "string": "Select an extra security option"
   },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
@@ -3035,6 +3008,9 @@
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
     "string": "click the 'Connect ORCID account' button in the Settings area of eduID,"
+  },
+  "yM0mAW": {
+    "string": "Having issues using a security key?"
   },
   "yktrEi": {
     "developer_comment": "Dashboard AccountId",
