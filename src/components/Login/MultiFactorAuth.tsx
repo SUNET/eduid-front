@@ -3,10 +3,10 @@ import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { SecurityKey } from "../Common/SecurityKey";
+import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
-import { SecurityKey } from "./SecurityKey";
-import { SwedishEID } from "./SwedishEID";
 
 export function MultiFactorAuth(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -47,14 +47,13 @@ export function MultiFactorAuth(): JSX.Element {
           <React.Fragment>
             <p>
               <FormattedMessage
-                defaultMessage={`You need to choose a second method to authenticate yourself.
-                           This helps guarantee that only you can access your eduID.`}
-                description="Login MFA paragraph"
+                defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+                description="MFA paragraph"
               />
             </p>
             <div className="options">
-              <SecurityKey />
-              <SwedishEID />
+              <SecurityKey webauthn={authn_options?.webauthn} />
+              <SwedishEID recoveryAvailable={authn_options.freja_eidplus} />
             </div>
           </React.Fragment>
         ) : (

@@ -115,7 +115,7 @@ export function createResetPasswordMachine() {
             HandleExtraSecurities: {
               on: {
                 CHOOSE_SECURITY_KEY: {
-                  target: "ResetPasswordSecurityKey",
+                  target: "ExtraSecurityFinished",
                 },
                 CHOOSE_PHONE_VERIFICATION: {
                   target: "ResetPasswordPhoneVerification",
