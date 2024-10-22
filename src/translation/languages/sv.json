@@ -349,9 +349,9 @@
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
   },
-  "61F71s": {
-    "developer_comment": "mfa security key heading",
-    "string": "Återställ lösenord: Använd säkerhetsnyckel"
+  "5zqSh6": {
+    "developer_comment": "MFA paragraph",
+    "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID. Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
@@ -521,10 +521,6 @@
     "developer_comment": "Advanced settings",
     "string": "Avancerade inställningar"
   },
-  "AfTLxJ": {
-    "developer_comment": "mfa reset-password tapit",
-    "string": "Om det finns en knapp, tryck på den."
-  },
   "AoUp1z": {
     "developer_comment": "enhance eduID verification - paragraph",
     "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
@@ -675,9 +671,6 @@
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Återställ lösenord: Slutförd"
-  },
-  "FutYRQ": {
-    "string": "Använd mitt {freja_eidplus_verbatim}"
   },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
@@ -870,10 +863,6 @@
     "developer_comment": "button_add",
     "string": "Lägg till"
   },
-  "LolQ90": {
-    "developer_comment": "mfa problems heading",
-    "string": "Problem?"
-  },
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Skicka sms till {phone}"
@@ -1050,10 +1039,6 @@
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Är du säker på att du vill koppla bort din identitet från ditt eduID konto?"
   },
-  "Q8CeJV": {
-    "developer_comment": "mfa try again",
-    "string": "Försök igen"
-  },
   "QDS1P5": {
     "developer_comment": "signup last name",
     "string": "Efternamn"
@@ -1121,6 +1106,9 @@
     "developer_comment": "Password label",
     "string": "Lösenord"
   },
+  "SUUODR": {
+    "string": "Freja+"
+  },
   "SWwNRP": {
     "developer_comment": "settings.remove_security_key_modal_title",
     "string": "Ta bort säkerhetsnyckel"
@@ -1151,10 +1139,6 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
   },
-  "SvKyxR": {
-    "developer_comment": "Login MFA paragraph",
-    "string": "Du måste välja en ytterligare metod att autentisera dig själv med. Detta säkerställer att bara du kan komma åt ditt eduID."
-  },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
     "string": "Inloggningen har redan genomförts."
@@ -1166,10 +1150,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Fortsätt"
-  },
-  "TZ7dg4": {
-    "developer_comment": "bankID ready",
-    "string": "Använd mitt BankID"
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
@@ -1840,6 +1820,10 @@
     "developer_comment": "ErrorURL other error",
     "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
+  "ggGC2l": {
+    "developer_comment": "login this device, security key button",
+    "string": "Säkerhetsnyckel"
+  },
   "gyVTaa": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
@@ -2307,9 +2291,6 @@
     "developer_comment": "Help",
     "string": "Hjälp"
   },
-  "oAK8WM": {
-    "string": "Använd mitt {bankID}"
-  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Avbryt"
@@ -2321,9 +2302,6 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
-  },
-  "ojB17W": {
-    "string": "Svenskt eID"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2493,6 +2471,10 @@
   "placeholder.phone": {
     "developer_comment": "placeholder text for phone input",
     "string": "telefonnummer"
+  },
+  "placeholder.recovery_option": {
+    "developer_comment": "placeholder text for recovery option",
+    "string": "Visa andra alternativ"
   },
   "placeholder.repeat_new_password_placeholder": {
     "developer_comment": "placeholder text for repeat new password",
@@ -2675,10 +2657,6 @@
   "resetpw.user-not-found": {
     "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
   },
-  "rr418r": {
-    "developer_comment": "HandleExtraSecurities lead text",
-    "string": "Välj ett extra säkerhetsalternativ för att bekräfta din identitet under lösenordsåterställningsprocessen, eller fortsätt utan extra säkerhet, med krav på identitetsbekräftelse efter lösenordsåterställningen."
-  },
   "ryPtkg": {
     "developer_comment": "Security keys list - paragraph",
     "string": "Nästa uppdatering: "
@@ -2845,6 +2823,9 @@
     "developer_comment": "accordion item additional info Verification additional info",
     "string": "Din identitet är inte verifierad. Vänligen verifiera din identitet för att få tillgång till fler tjänster."
   },
+  "tAcT/R": {
+    "string": "BankID"
+  },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
@@ -2860,10 +2841,6 @@
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
     "string": "Om BankID"
-  },
-  "tcDcv5": {
-    "developer_comment": "mfa primary option",
-    "string": "Använd min säkerhetsnyckel"
   },
   "tpgHTa": {
     "developer_comment": "when use eduID - list item 4",
@@ -2923,10 +2900,6 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
-  },
-  "vKFmEL": {
-    "developer_comment": "extra security heading",
-    "string": "Välj ett extra säkerhetsalternativ"
   },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
@@ -3035,6 +3008,9 @@
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",
     "string": "klicka på knappen 'Länka Orcid konto' bland Inställningar i eduID,"
+  },
+  "yM0mAW": {
+    "string": "Kan du inte använda säkerhetsnyckel?"
   },
   "yktrEi": {
     "developer_comment": "Dashboard AccountId",
