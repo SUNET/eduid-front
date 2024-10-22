@@ -48,10 +48,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
   return (
     <Fragment>
       <h3>
-        <FormattedMessage
-          description="login this device, security key button"
-          defaultMessage="This Device / Security key"
-        />
+        <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
         <FormattedMessage

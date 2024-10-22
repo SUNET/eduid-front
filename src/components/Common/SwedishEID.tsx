@@ -31,7 +31,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
 
   const placeholder = intl.formatMessage({
     id: "placeholder.recovery_option",
-    defaultMessage: "Show recovery options",
+    defaultMessage: "Show other options",
     description: "placeholder text for recovery option",
   });
 
@@ -91,7 +91,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
       <div className="or-container">
         <div className="line" />
         <span>
-          <FormattedMessage defaultMessage="or use recovery mode" />
+          <FormattedMessage defaultMessage="Having issues using a security key?" />
         </span>
         <div className="line" />
       </div>
