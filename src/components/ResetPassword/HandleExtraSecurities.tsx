@@ -152,7 +152,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
           <p>
             <FormattedMessage
               defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. 
-                If you are unable to use the security key, If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+                If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
               description="MFA paragraph"
             />
           </p>
