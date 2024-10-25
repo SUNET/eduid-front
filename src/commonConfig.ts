@@ -14,6 +14,7 @@ interface CommonJsConfig {
   environment?: "dev" | "staging" | "production";
   reset_password_service_url?: string;
   signup_link?: string;
+  sentry_dsn?: string;
 }
 
 // typing in the apis become too complicated if these are not shared in all configs,
