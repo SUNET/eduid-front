@@ -3,7 +3,7 @@ import { emptyStringPattern } from "./regexPatterns";
 const validatePersonalData = (values, props) => {
   const errors = {};
   if (values !== undefined) {
-    ["given_name", "surname", "language"].forEach((inputName) => {
+    ["given_name", "surname"].forEach((inputName) => {
       if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
         errors[inputName] = "required";
       }
