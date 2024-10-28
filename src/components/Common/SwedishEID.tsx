@@ -100,17 +100,15 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
           onSubmit={() => {}}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <fieldset>
-                <Select
-                  options={options}
-                  onChange={handleOnChange}
-                  placeholder={placeholder}
-                  isSearchable={false}
-                  className="mfa-select"
-                  classNamePrefix="react-select"
-                  isDisabled={!recoveryAvailable}
-                />
-              </fieldset>
+              <Select
+                options={options}
+                onChange={handleOnChange}
+                placeholder={placeholder}
+                isSearchable={false}
+                className="mfa-select"
+                classNamePrefix="react-select"
+                isDisabled={!recoveryAvailable}
+              />
             </form>
           )}
         />
