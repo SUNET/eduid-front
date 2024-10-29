@@ -76,7 +76,11 @@ function Login(): JSX.Element {
       {next_page === "TOU" && <TermsOfUse />}
       {next_page === "MFA" && <MultiFactorAuth />}
       {next_page === "FINISHED" && <RenderFinished />}
-      {/* show nothing before next_page is initialised */ next_page && <RememberMeCheckbox />}
+      {
+        /* show remember me toggle only for login password page */ next_page === "USERNAMEPASSWORD" && (
+          <RememberMeCheckbox />
+        )
+      }
     </React.Fragment>
   );
 }

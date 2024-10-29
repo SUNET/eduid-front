@@ -46,10 +46,17 @@ export function MultiFactorAuth(): JSX.Element {
         {hasMfaOptions ? (
           <React.Fragment>
             <p>
-              <FormattedMessage
-                defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
-                description="MFA paragraph"
-              />
+              {authn_options.freja_eidplus ? (
+                <FormattedMessage
+                  defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+                  description="MFA paragraph with swedish option"
+                />
+              ) : (
+                <FormattedMessage
+                  defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
+                  description="MFA paragraph"
+                />
+              )}
             </p>
             <div className="options">
               <SecurityKey webauthn={authn_options?.webauthn} />
