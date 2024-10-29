@@ -171,6 +171,10 @@
     "developer_comment": "privacy policy - list item 6",
     "string": "möjliggör borttagning av ett eduID och dess kopplingar direkt i tjänsten,"
   },
+  "1hKgwA": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID. Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
+  },
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
@@ -348,10 +352,6 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
-  },
-  "5zqSh6": {
-    "developer_comment": "MFA paragraph",
-    "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID. Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
@@ -663,6 +663,10 @@
   "FfxTGR": {
     "developer_comment": "SAML login finished",
     "string": "Du loggas nu in"
+  },
+  "Fg16nQ": {
+    "developer_comment": "MFA paragraph",
+    "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID."
   },
   "Fjbcnk": {
     "developer_comment": "profile email display no data",
