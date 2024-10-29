@@ -49,7 +49,7 @@ export function MultiFactorAuth(): JSX.Element {
               {authn_options.freja_eidplus ? (
                 <FormattedMessage
                   defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
-                  description="MFA paragraph"
+                  description="MFA paragraph with swedish option"
                 />
               ) : (
                 <FormattedMessage

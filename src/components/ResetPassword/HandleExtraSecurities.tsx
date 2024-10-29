@@ -149,13 +149,17 @@ export function HandleExtraSecurities(): JSX.Element | null {
           />
         </h1>
         <div className="lead">
-          <p>
+          {extra_security.external_mfa ? (
             <FormattedMessage
-              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. 
-                If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+              description="MFA paragraph with swedish option"
+            />
+          ) : (
+            <FormattedMessage
+              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
               description="MFA paragraph"
             />
-          </p>
+          )}
         </div>
       </section>
       <div className="options">
