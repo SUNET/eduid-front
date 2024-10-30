@@ -251,6 +251,14 @@ export function Security(): React.ReactElement | null {
             defaultMessage="Add a name for your security key"
           />
         }
+        mainText={
+          <p>
+            <FormattedMessage
+              description="security webauthn describe paragraph"
+              defaultMessage={`Note: this is only for your own use to be able to distinguish between your added keys.`}
+            />
+          </p>
+        }
         placeholder={placeholder}
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
