@@ -752,6 +752,10 @@
     "developer_comment": "security key status",
     "string": "Verify"
   },
+  "HgfPrt": {
+    "developer_comment": "security webauthn describe paragraph",
+    "string": "Note: this is only for your own use to be able to distinguish between your added keys."
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -2912,6 +2916,9 @@
   "vQpAQz": {
     "developer_comment": "verification status sub text",
     "string": "Your eduID is ready to use."
+  },
+  "verified identity delete button": {
+    "string": "Delete this verified identity"
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
