@@ -36,13 +36,14 @@ function AssuranceLevel3(): JSX.Element | null {
         <li>
           <FormattedMessage
             description="accordion item Assurance Level AL3 step1"
-            defaultMessage="Go to {link}, Complete connect your identity to your eduID with using swedish alternative"
+            defaultMessage="Go to {link}, Complete connect your identity to your eduID using your {swedishOption}."
             values={{
               link: (
                 <Link key="verify-identity" to={advancedSettingsPath}>
                   Identity
                 </Link>
               ),
+              swedishOption: <em>Swedish personal ID or coordination number</em>,
             }}
           />
         </li>
@@ -61,14 +62,16 @@ function AssuranceLevel3(): JSX.Element | null {
         </li>
         <li>
           <FormattedMessage
-            description="accordion item Assurance Level AL3 step2"
-            defaultMessage="In {link}, Verify the security key using Freja+ or bankID"
+            description="accordion item Assurance Level AL2 step2"
+            defaultMessage="In {link}, Verify the security key using {Freja} or {BankID}"
             values={{
               link: (
                 <Link key="verify-identity" to={advancedSettingsPath}>
                   Advanced Settings
                 </Link>
               ),
+              Freja: <em>Freja+</em>,
+              BankID: <em>BankID</em>,
             }}
           />
         </li>
@@ -132,7 +135,7 @@ function AssuranceLevel2(): JSX.Element | null {
         <li>
           <FormattedMessage
             description="accordion item Assurance Level AL2 step2"
-            defaultMessage="Go to {link}, Add a security key for Two-factor authentication(2FA)"
+            defaultMessage="Go to {link},"
             values={{
               link: (
                 <Link key="verify-identity" to={advancedSettingsPath}>
@@ -141,22 +144,34 @@ function AssuranceLevel2(): JSX.Element | null {
               ),
             }}
           />
+
+          <ol className="bullets">
+            <li>
+              <FormattedMessage
+                description="accordion item Assurance Level AL2 step2"
+                defaultMessage="Add a security key for Two-factor authentication(2FA)"
+                values={{
+                  link: (
+                    <Link key="verify-identity" to={advancedSettingsPath}>
+                      Advanced Settings
+                    </Link>
+                  ),
+                }}
+              />
+            </li>
+            <li>
+              <FormattedMessage
+                description="accordion item Assurance Level AL2 step2"
+                defaultMessage="Verify the security key using {Freja} or {BankID}"
+                values={{
+                  Freja: <em>Freja+</em>,
+                  BankID: <em>BankID</em>,
+                }}
+              />
+            </li>
+          </ol>
         </li>
-        <li>
-          <FormattedMessage
-            description="accordion item Assurance Level AL2 step2"
-            defaultMessage="In {link}, Verify the security key using {Freja} or {BankID}"
-            values={{
-              link: (
-                <Link key="verify-identity" to={advancedSettingsPath}>
-                  Advanced Settings
-                </Link>
-              ),
-              Freja: <em>Freja+</em>,
-              BankID: <em>BankID+</em>,
-            }}
-          />
-        </li>
+
         <li>
           <FormattedMessage
             description="accordion item Assurance Level AL2 step2"
@@ -211,14 +226,16 @@ function AssuranceLevel1(): JSX.Element | null {
         </li>
         <li>
           <FormattedMessage
-            description="accordion item Assurance Level AL1 step2"
-            defaultMessage="In {link}, Verify the security key using Freja+ or bankID "
+            description="accordion item Assurance Level AL2 step2"
+            defaultMessage="In {link}, Verify the security key using {Freja} or {BankID}"
             values={{
               link: (
                 <Link key="verify-identity" to={advancedSettingsPath}>
                   Advanced Settings
                 </Link>
               ),
+              Freja: <em>Freja+</em>,
+              BankID: <em>BankID</em>,
             }}
           />
         </li>

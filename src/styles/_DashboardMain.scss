@@ -119,3 +119,9 @@
     color: $success-green;
   }
 }
+
+li ol.bullets li {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  list-style: disc;
+}
