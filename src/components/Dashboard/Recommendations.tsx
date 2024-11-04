@@ -1,8 +1,4 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faIdCard, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UserIdentities } from "apis/eduidPersonalData";
-import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
+import { CredentialType, requestCredentials } from "apis/eduidSecurity";
 import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
@@ -11,103 +7,222 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
-/**
- * Recommendation for adding name, security key and phone number and verification of identity
- */
-function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX.Element | null {
-  if (props.credentials.length) {
-    return null;
-  }
-
+function AssuranceLevel3(): JSX.Element | null {
   return (
     <AccordionItemTemplate
-      uuid="recommendation-security-key"
-      icon={<FontAwesomeIcon icon={faKey as IconProp} className="circle-icon" />}
       title={
-        <FormattedMessage description="accordion item Adding security key" defaultMessage="Add your security key" />
+        <FormattedMessage
+          description="accordion item Assurance Level AL3"
+          defaultMessage="Assurance Level AL3 Requirements"
+        />
+      }
+      additionalInfo={
+        <FormattedMessage
+          description="accordion item Assurance Level AL3"
+          defaultMessage="ex: Digital national prov, NICE"
+        />
+      }
+      uuid="assurance-level3"
+    >
+      <p>
+        <strong>
+          <FormattedMessage
+            description="accordion item Assurance Level AL3"
+            defaultMessage="To achieve assurance level AL3, complete the following steps:"
+          />
+        </strong>
+      </p>
+      <ol className="listed-steps">
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL3 step1"
+            defaultMessage="Go to {link}, Complete connect your identity to your eduID with using swedish alternative"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Identity
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL3 step2"
+            defaultMessage="Go to {link}, Add security key for Two-factor authentication(2FA)"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL3 step2"
+            defaultMessage="In {link}, Verify the security key using Freja+ or bankID"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL3 step2"
+            defaultMessage="Go to {link}, Set the display name you want to use your external services"
+            values={{
+              link: (
+                <Link key="verify-identity" to={settingsPath}>
+                  Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+      </ol>
+    </AccordionItemTemplate>
+  );
+}
+
+function AssuranceLevel2(): JSX.Element | null {
+  return (
+    <AccordionItemTemplate
+      title={
+        <FormattedMessage
+          description="accordion item Assurance Level AL2"
+          defaultMessage="Assurance Level AL2 Requirements"
+        />
+      }
+      additionalInfo={
+        <FormattedMessage
+          description="accordion item Assurance Level AL3"
+          defaultMessage="ex: Ladok, Higher education institutions, password reset at higher education institutions"
+        />
+      }
+      uuid="assurance-level2"
+    >
+      <p>
+        <strong>
+          <FormattedMessage
+            description="accordion item Assurance Level AL2"
+            defaultMessage="To achieve assurance level AL2, complete the following steps: "
+          />
+        </strong>
+      </p>
+      <ol className="listed-steps">
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL2 step1"
+            defaultMessage="Go to {link}, Complete connect your identity to your eduID"
+            values={{
+              link: (
+                <Link key="verify-identity" to={identityPath}>
+                  Identity
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL2 step2"
+            defaultMessage="Go to {link}, Add a security key for Two-factor authentication(2FA)"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL2 step2"
+            defaultMessage="In {link}, Verify the security key using {Freja} or {BankID}"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+              Freja: <em>Freja+</em>,
+              BankID: <em>BankID+</em>,
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL2 step2"
+            defaultMessage="Go to {link}, Set the display name you want to use your external services"
+            values={{
+              link: (
+                <Link key="verify-identity" to={settingsPath}>
+                  Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+      </ol>
+    </AccordionItemTemplate>
+  );
+}
+
+function AssuranceLevel1(): JSX.Element | null {
+  return (
+    <AccordionItemTemplate
+      title={
+        <FormattedMessage
+          description="accordion item Assurance Level AL1"
+          defaultMessage="Assurance Level AL1 Requirements"
+        />
       }
       additionalInfo={null}
+      uuid="assurance-level1"
     >
       <p>
-        <FormattedMessage
-          description="accordion item security key additional info"
-          defaultMessage="Add your security key to enable safe reset of password"
-        />
+        <strong>
+          <FormattedMessage
+            description="accordion item Assurance Level AL1"
+            defaultMessage="To achieve assurance level AL1, complete the following steps: "
+          />
+        </strong>
       </p>
-      <Link key="advanced-settings" to={advancedSettingsPath}>
-        <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
-      </Link>
-    </AccordionItemTemplate>
-  );
-}
-
-function RecommendationAddingName(props: { given_name?: string }): JSX.Element | null {
-  if (props.given_name) {
-    return null;
-  }
-
-  return (
-    <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faUser as IconProp} className="circle-icon" />}
-      title={<FormattedMessage description="accordion item Adding name" defaultMessage="Add your name" />}
-      additionalInfo={null}
-      uuid="recommendation-add-name"
-    >
-      <p>
-        <FormattedMessage
-          description="accordion item name additionalInfo"
-          defaultMessage="Name can be used to personalise services that you access with your eduID."
-        />
-      </p>
-      <Link key="settings" to={settingsPath}>
-        <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </Link>
-    </AccordionItemTemplate>
-  );
-}
-
-function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JSX.Element | null {
-  let title, description;
-  // if user has swedish nin and it is verified, do not show accordion item
-  if (props.identities.nin?.verified) {
-    return null;
-  }
-  // if user verified with eidas or svipe, show accordion item to verify with nin
-  if (props.identities.freja?.verified || props.identities.eidas?.verified) {
-    title = (
-      <FormattedMessage
-        description="accordion item Verification with Swedish national ID number"
-        defaultMessage="Verify your identity with Swedish national ID number"
-      />
-    );
-    description = (
-      <FormattedMessage
-        description="accordion item additional info Verification with Swedish national ID number"
-        defaultMessage={`If you have obtained a Swedish national ID number you are able to verify your identity 
-            with the Swedish national ID number.`}
-      />
-    );
-  } else {
-    title = <FormattedMessage description="accordion item Verification" defaultMessage="Verify your identity" />;
-    description = (
-      <FormattedMessage
-        description="accordion item additional info Verification additional info"
-        defaultMessage="Your identity is not verified. Please verify your identity to get access to more services."
-      />
-    );
-  }
-
-  return (
-    <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faIdCard as IconProp} className="circle-icon" />}
-      title={title}
-      additionalInfo={null}
-      uuid="recommendation-verify-identity"
-    >
-      <p>{description}</p>
-      <Link key="verify-identity" to={identityPath}>
-        <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
-      </Link>
+      <ol className="listed-steps">
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL1 step1"
+            defaultMessage="Go to {link}, Add a security key for Two-factor authentication(2FA)"
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="accordion item Assurance Level AL1 step2"
+            defaultMessage="In {link}, Verify the security key using Freja+ or bankID "
+            values={{
+              link: (
+                <Link key="verify-identity" to={advancedSettingsPath}>
+                  Advanced Settings
+                </Link>
+              ),
+            }}
+          />
+        </li>
+      </ol>
     </AccordionItemTemplate>
   );
 }
@@ -141,18 +256,18 @@ export function Recommendations(): JSX.Element | null {
   return (
     <article>
       <h2>
-        <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
+        <FormattedMessage description="recommendation title" defaultMessage="Suggested Steps for You" />
       </h2>
       <p>
         <FormattedMessage
           description="recommendation title"
-          defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
+          defaultMessage="To get the most out of eduID, we recommend following the steps below. "
         />
       </p>
       <Accordion allowMultipleExpanded allowZeroExpanded>
-        <RecommendationAddingName given_name={given_name} />
-        {identities && <RecommendationVerifyIdentity identities={identities} />}
-        <RecommendationAddingSecurityKey credentials={tokens} />
+        <AssuranceLevel1 />
+        <AssuranceLevel2 />
+        <AssuranceLevel3 />
       </Accordion>
     </article>
   );
