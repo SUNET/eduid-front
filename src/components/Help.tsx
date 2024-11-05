@@ -15,6 +15,8 @@ export function Help(): JSX.Element {
   const intl = useIntl();
   const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
+  const signup_link = useAppSelector((state) => state.config.signup_link);
+
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
 
   useEffect(() => {
@@ -187,7 +189,7 @@ export function Help(): JSX.Element {
                   defaultMessage={"How to create your eduID account at {eduidLink}:"}
                   values={{
                     eduidLink: (
-                      <a className="text-link" href="https://signup.eduid.se/register/" target="_blank">
+                      <a className="text-link" href={signup_link} target="_blank">
                         eduid.se
                       </a>
                     ),
