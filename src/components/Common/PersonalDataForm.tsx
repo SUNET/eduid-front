@@ -162,7 +162,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       <div className="select-group">
         <Select
           isMulti={transformedOptions && transformedOptions.length > 1}
-          defaultValue={selectedOptions}
+          value={selectedOptions}
           options={defaultValues}
           onChange={handleSelectChange}
           className="basic-multi-select"
