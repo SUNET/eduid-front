@@ -60,8 +60,9 @@
 // multi-factor authentication
 .options {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
   margin-top: #{2 * $margin};
 
   .option-wrapper {
@@ -232,5 +233,22 @@
     font-size: 0.8rem;
     overflow: hidden;
     word-break: break-all;
+  }
+}
+
+// MFA or-line
+.or-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+  color: $txt-gray;
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: $border-gray;
   }
 }

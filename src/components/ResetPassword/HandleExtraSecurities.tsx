@@ -1,16 +1,13 @@
-import { bankIDMfaAuthenticate } from "apis/eduidBankid";
-import { eidasMfaAuthenticate } from "apis/eduidEidas";
 import { requestPhoneCodeForNewPassword } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { performAuthentication } from "helperFunctions/navigatorCredential";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications, showNotification } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import BankIdFlag from "../../../img/flags/BankID_logo.svg";
-import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
+import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
+import { SwedishEID } from "components/Common/SwedishEID";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   clearCountdown,
@@ -18,52 +15,11 @@ import {
   setLocalStorage,
 } from "./CountDownTimer";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
-import { SecurityKey } from "./SelectedSecurityToken";
-
-interface ExternalMFAProps {
-  handleOnClickFreja: () => void;
-  handleOnClickBankID: () => void;
-  external_mfa?: boolean;
-}
-
-function ExternalMFA({ handleOnClickBankID, handleOnClickFreja, external_mfa }: ExternalMFAProps): JSX.Element | null {
-  if (!external_mfa) {
-    return null;
-  }
-  return (
-    <React.Fragment>
-      <div className="buttons">
-        <EduIDButton
-          type="submit"
-          buttonstyle="secondary"
-          className="btn-icon freja-icon"
-          id="extra-security-freja"
-          onClick={handleOnClickFreja}
-        >
-          <img height="35" alt="Freja+" src={FrejaFlag} />
-          <FormattedMessage description="eidas freja eid ready" defaultMessage="Use my Freja eID" />
-        </EduIDButton>
-      </div>
-      <div className="buttons">
-        <EduIDButton
-          className="btn-icon"
-          type="submit"
-          buttonstyle="secondary"
-          id="extra-security-bankid"
-          onClick={handleOnClickBankID}
-        >
-          <img height="35" alt="BankID" src={BankIdFlag} />
-          <FormattedMessage description="bankID ready" defaultMessage="Use my BankID" />
-        </EduIDButton>
-      </div>
-    </React.Fragment>
-  );
-}
 
 interface SecurityWithSMSProps {
-  extraSecurityPhone?: Array<PhoneInterface>;
-  toPhoneCodeForm: () => void;
-  requestedPhoneCode: {
+  readonly extraSecurityPhone?: Array<PhoneInterface>;
+  readonly toPhoneCodeForm: () => void;
+  readonly requestedPhoneCode: {
     index?: number;
     number?: string;
   };
@@ -133,13 +89,13 @@ function SecurityWithSMS({
       <p className="enter-phone-code">
         <FormattedMessage description="received sms" defaultMessage="Already received sms?" />
         &nbsp;
-        <a
-          className={`text-link ${requestedPhoneCode.index === undefined && "disabled"}`}
-          role="link"
+        <EduIDButton
+          buttonstyle="link"
+          className={`lowercase ${requestedPhoneCode.index === undefined && "disabled"}`}
           onClick={toPhoneCodeForm}
         >
           <FormattedMessage description="enter code" defaultMessage="enter code" />
-        </a>
+        </EduIDButton>
       </p>
     </React.Fragment>
   );
@@ -150,11 +106,8 @@ function SecurityWithSMS({
  */
 export function HandleExtraSecurities(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
   const requestedPhoneCode = useAppSelector((state) => state.resetPassword.phone);
-  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
@@ -170,47 +123,6 @@ export function HandleExtraSecurities(): JSX.Element | null {
       resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
     }
   }, [extra_security]);
-
-  function handleOnClickFreja() {
-    (async () => {
-      const response = await dispatch(
-        eidasMfaAuthenticate({ method: "freja", frontend_action: "resetpwMfaAuthn", frontend_state: emailCode })
-      );
-      if (eidasMfaAuthenticate.fulfilled.match(response)) {
-        if (response.payload.location) {
-          window.location.assign(response.payload.location);
-        }
-      }
-    })();
-  }
-
-  function handleOnClickBankID() {
-    (async () => {
-      const response = await dispatch(
-        bankIDMfaAuthenticate({ method: "bankid", frontend_action: "resetpwMfaAuthn", frontend_state: emailCode })
-      );
-      if (bankIDMfaAuthenticate.fulfilled.match(response)) {
-        if (response.payload.location) {
-          window.location.assign(response.payload.location);
-        }
-      }
-    })();
-  }
-
-  function ShowSecurityKey(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
-    startTokenAssertion();
-    dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-  }
-
-  function startTokenAssertion() {
-    const webauthn_challenge = extra_security?.tokens?.webauthn_options;
-    if (webauthn_challenge && !webauthn_assertion) {
-      dispatch(performAuthentication(webauthn_challenge));
-    }
-  }
 
   function toPhoneCodeForm() {
     dispatch(clearNotifications());
@@ -237,32 +149,28 @@ export function HandleExtraSecurities(): JSX.Element | null {
           />
         </h1>
         <div className="lead">
-          <p>
+          {extra_security.external_mfa ? (
             <FormattedMessage
-              defaultMessage="Select an extra security option to maintain identity confirmation during the password reset process, or continue without extra security, with identity confirmation required after the password reset."
-              description="HandleExtraSecurities lead text"
+              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+              description="MFA paragraph with swedish option"
             />
-          </p>
+          ) : (
+            <FormattedMessage
+              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
+              description="MFA paragraph"
+            />
+          )}
         </div>
       </section>
-      <h2>
-        <FormattedMessage description="extra security heading" defaultMessage="Select an extra security option" />
-      </h2>
-      <SecurityKey
-        selected_option={selected_option}
-        ShowSecurityKey={ShowSecurityKey}
-        extraSecurityKey={extra_security.tokens}
-      />
-      <ExternalMFA
-        handleOnClickBankID={handleOnClickBankID}
-        handleOnClickFreja={handleOnClickFreja}
-        external_mfa={extra_security.external_mfa}
-      />
-      <SecurityWithSMS
-        requestedPhoneCode={requestedPhoneCode}
-        extraSecurityPhone={extra_security.phone_numbers}
-        toPhoneCodeForm={toPhoneCodeForm}
-      />
+      <div className="options">
+        <SecurityKeyLogin webauthn={extra_security.tokens} />
+        <SwedishEID recoveryAvailable={extra_security.external_mfa} />
+        <SecurityWithSMS
+          requestedPhoneCode={requestedPhoneCode}
+          extraSecurityPhone={extra_security.phone_numbers}
+          toPhoneCodeForm={toPhoneCodeForm}
+        />
+      </div>
       <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
@@ -275,9 +183,14 @@ export function HandleExtraSecurities(): JSX.Element | null {
           defaultMessage="Your account will require confirmation after the password has been reset."
         />
         &nbsp;
-        <a className="text-link" id="continue-without-security" onClick={continueSetPassword}>
+        <EduIDButton
+          buttonstyle="link"
+          className="lowercase"
+          id="continue-without-security"
+          onClick={continueSetPassword}
+        >
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
-        </a>
+        </EduIDButton>
       </p>
     </React.Fragment>
   );

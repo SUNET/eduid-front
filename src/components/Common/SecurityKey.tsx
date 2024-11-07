@@ -2,11 +2,19 @@ import { fetchMfaAuth } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
+import { ResetPasswordGlobalStateContext } from "../ResetPassword/ResetPasswordGlobalState";
 
-export function SecurityKey(): JSX.Element {
+interface SecurityKeyProps {
+  webauthn?: any;
+  setActive?(val: boolean): void;
+}
+
+export function SecurityKey(props: SecurityKeyProps): JSX.Element {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -16,7 +24,11 @@ export function SecurityKey(): JSX.Element {
   return (
     <div className="option-wrapper">
       <div className="option">
-        {active ? <SecurityKeyActive setActive={setActive} /> : <SecurityKeyInactive setActive={setActive} />}
+        {active ? (
+          <SecurityKeyActive webauthn={props.webauthn} setActive={setActive} />
+        ) : (
+          <SecurityKeyInactive webauthn={props.webauthn} setActive={setActive} />
+        )}
         {active && (
           <p className="help-text">
             <FormattedMessage
@@ -30,20 +42,13 @@ export function SecurityKey(): JSX.Element {
   );
 }
 
-interface SecurityKeyProps {
-  setActive(val: boolean): void;
-}
-
-function SecurityKeyInactive({ setActive }: SecurityKeyProps): JSX.Element {
-  const authn_options = useAppSelector((state) => state.login.authn_options);
+function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
+  // const authn_options = useAppSelector((state) => state.login.authn_options);
 
   return (
     <Fragment>
       <h3>
-        <FormattedMessage
-          description="login this device, security key button"
-          defaultMessage="This Device / Security key"
-        />
+        <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
         <FormattedMessage
@@ -55,10 +60,10 @@ function SecurityKeyInactive({ setActive }: SecurityKeyProps): JSX.Element {
         buttonstyle="primary"
         type="submit"
         onClick={() => {
-          setActive(true);
+          if (props.setActive) props.setActive(true);
         }}
         id="mfa-security-key"
-        disabled={!authn_options.webauthn}
+        disabled={!props.webauthn}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </EduIDButton>
@@ -66,19 +71,34 @@ function SecurityKeyInactive({ setActive }: SecurityKeyProps): JSX.Element {
   );
 }
 
-function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
+function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  //login
   const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
-  const dispatch = useAppDispatch();
+  //resetpw
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
 
   async function startTokenAssertion(webauthn_challenge?: string) {
-    if (webauthn_challenge && !mfa.webauthn_assertion && ref) {
-      const res = await dispatch(performAuthentication(webauthn_challenge));
-      if (performAuthentication.fulfilled.match(res)) {
-        // Send response from security key to backend
-        dispatch(fetchMfaAuth({ ref: ref, webauthn_response: res.payload }));
+    if (location.pathname.includes("login")) {
+      if (webauthn_challenge && !mfa.webauthn_assertion && ref) {
+        const res = await dispatch(performAuthentication(webauthn_challenge));
+        if (performAuthentication.fulfilled.match(res)) {
+          // Send response from security key to backend
+          dispatch(fetchMfaAuth({ ref: ref, webauthn_response: res.payload }));
+        }
+        if (props.setActive) props.setActive(false);
       }
-      setActive(false);
+    } else {
+      const webauthn_challenge = props.webauthn.webauthn_options;
+      if (webauthn_challenge && !webauthn_assertion) {
+        const response = await dispatch(performAuthentication(webauthn_challenge));
+        if (performAuthentication.fulfilled.match(response)) {
+          resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+        }
+        if (props.setActive) props.setActive(false);
+      }
     }
   }
 
@@ -94,8 +114,17 @@ function SecurityKeyActive({ setActive }: SecurityKeyProps): JSX.Element {
   }
 
   useEffect(() => {
-    fetchAuthnChallenge();
+    if (location.pathname.includes("login")) {
+      fetchAuthnChallenge();
+    } else handleResetPWSecurityKey();
   }, []);
+
+  //Reset password
+  function handleResetPWSecurityKey() {
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
+    startTokenAssertion();
+    dispatch(clearNotifications());
+  }
 
   return (
     <Fragment>

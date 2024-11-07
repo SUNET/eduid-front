@@ -2,7 +2,7 @@ import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -37,6 +37,8 @@ export const SIGNUP_BASE_PATH = "/register";
 export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
+  const location = useLocation();
+  const showAuthenticateModal = location.pathname.startsWith("/profile");
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
@@ -82,9 +84,9 @@ export function IndexMain(): JSX.Element {
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </section>
+            {showAuthenticateModal && <AuthenticateModal />}
           </Splash>
         </ErrorBoundary>
-        <AuthenticateModal />
       </main>
       <Footer />
     </React.StrictMode>
