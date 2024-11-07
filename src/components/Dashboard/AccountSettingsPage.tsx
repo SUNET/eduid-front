@@ -8,6 +8,8 @@ import { LanguagePreference } from "components/Dashboard/Language";
 import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { AccountLinking } from "./AccountLinking";
+import LadokContainer from "./Ladok";
 
 /* The Dashboard "Account settings" tab */
 export function AccountSettings(): JSX.Element {
@@ -44,6 +46,8 @@ export function AccountSettings(): JSX.Element {
       </section>
       <AccountId />
       <Emails />
+      <AccountLinking />
+      <LadokContainer />
       <Phones />
       <LanguagePreference />
       <ChangePasswordDisplay />
