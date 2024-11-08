@@ -1,3 +1,4 @@
+import EduIDButton from "components/Common/EduIDButton";
 import { forwardRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -17,16 +18,12 @@ export const CopyToClipboardButton = forwardRef((props, ref: any) => {
   }
 
   return (
-    <button
-      className="show-hide-button"
-      onClick={copyToClipboard}
-      aria-label={tooltipCopied ? "Copied!" : "Copy to clipboard"}
-    >
+    <EduIDButton className="txt-toggle-btn" buttonstyle="link" size="sm" onClick={copyToClipboard}>
       {tooltipCopied ? (
         <FormattedMessage defaultMessage="COPIED" description="copied button label" />
       ) : (
         <FormattedMessage defaultMessage="COPY" description="copy button label" />
       )}
-    </button>
+    </EduIDButton>
   );
 });
