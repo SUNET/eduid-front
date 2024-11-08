@@ -23,9 +23,9 @@ export const CopyToClipboardButton = forwardRef((props, ref: any) => {
       aria-label={tooltipCopied ? "Copied!" : "Copy to clipboard"}
     >
       {tooltipCopied ? (
-        <FormattedMessage defaultMessage="COPIED" description="eppn copy button label" />
+        <FormattedMessage defaultMessage="COPIED" description="copied button label" />
       ) : (
-        <FormattedMessage defaultMessage="COPY" description="eppn copy button label" />
+        <FormattedMessage defaultMessage="COPY" description="copy button label" />
       )}
     </button>
   );
