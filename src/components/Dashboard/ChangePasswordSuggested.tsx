@@ -1,4 +1,4 @@
-import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import { CopyToClipboardButton } from "components/Common/CopyToClipboardButton";
 import { NewPasswordForm } from "components/Common/NewPasswordForm";
 import React, { useRef } from "react";
 import { FormattedMessage } from "react-intl";
@@ -21,7 +21,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
           defaultValue={props.suggestedPassword}
           readOnly={true}
         />
-        <CopyToClipboard ref={ref} />
+        <CopyToClipboardButton ref={ref} />
       </div>
       <NewPasswordForm
         suggested_password={props.suggestedPassword}
