@@ -13,7 +13,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="new password" />
         </label>
-        <CopyToClipboard ref={ref} />
+
         <input
           name="copy-new-password"
           id="copy-new-password"
@@ -21,6 +21,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
           defaultValue={props.suggestedPassword}
           readOnly={true}
         />
+        <CopyToClipboard ref={ref} />
       </div>
       <NewPasswordForm
         suggested_password={props.suggestedPassword}
