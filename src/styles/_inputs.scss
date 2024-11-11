@@ -111,6 +111,21 @@ input[readonly]:focus {
   &.accordion__button {
     outline-offset: -2px;
   }
+  &.toggle-checkbox + .toggle-switch {
+    outline: 2px dashed #000 !important;
+  }
+}
+
+// hides object from view but still accessible to screen readers
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .form-control.is-valid {
@@ -254,8 +269,8 @@ fieldset.change-password-custom-inputs {
 
 .toggle-checkbox {
   position: absolute;
-  visibility: hidden;
   width: auto;
+  @extend .visuallyhidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
