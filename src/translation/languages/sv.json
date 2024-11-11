@@ -750,7 +750,7 @@
   },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
-    "string": "Note: this is only for your own use to be able to distinguish between your added keys."
+    "string": "Obs: beskrivningen är endast för att hjälpa dig skilja på dina tillagda nycklar."
   },
   "HgjRtU": {
     "developer_comment": "button add more",
