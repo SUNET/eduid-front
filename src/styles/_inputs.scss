@@ -98,11 +98,21 @@ input:focus:not([readonly]) {
 }
 
 input[readonly]:focus {
-  outline: none;
+  outline: none !important;
+  pointer-events: none;
 }
-input[readonly]:focus-visible {
-  outline: auto;
+
+// tab-focus
+:focus-visible {
+  outline: 2px dashed #000 !important;
+  transition: none !important;
+
+  // parent has overflow hidden to round corners
+  &.accordion__button {
+    outline-offset: -2px;
+  }
 }
+
 .form-control.is-valid {
   background-image: none;
 
