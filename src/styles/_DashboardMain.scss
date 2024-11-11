@@ -119,3 +119,41 @@
     color: $success-green;
   }
 }
+
+// --- STATUS OVERVIEW STYLES--- //
+.status-box {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: $white;
+  border-radius: 15px;
+  border: 1px solid $bright-orange;
+  margin-top: 0.5rem;
+  &.success {
+    background-color: $bg-orange;
+  }
+}
+
+.custom-checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="checkbox"] {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.custom-checkbox-wrapper h4 {
+  grid-column: 2;
+  margin: 0;
+}
+
+p {
+  grid-column: 2;
+}

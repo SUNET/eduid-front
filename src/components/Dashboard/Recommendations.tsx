@@ -1,3 +1,4 @@
+import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -5,51 +6,108 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
-function RecommendationAddingSecurityKey(): JSX.Element | null {
+function ConfirmedAccountStatus(props: { given_name?: string }): JSX.Element | null {
   return (
-    <>
+    <div className={`status-box ${props.given_name ? "success" : ""}`}>
+      <div className="custom-checkbox-wrapper">
+        <input type="checkbox" checked={Boolean(props.given_name)} aria-label="confirmed account" />
+      </div>
+      <h4>
+        <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
+      </h4>
       <p>
         <FormattedMessage
-          description="accordion item security key additional info"
-          defaultMessage="Add your security key to enable safe reset of password"
+          description="confirmed account description"
+          defaultMessage="add your name at {account}"
+          values={{
+            account: (
+              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                Account
+              </Link>
+            ),
+          }}
         />
       </p>
-      <Link key="advanced-settings" to={SECURITY_PATH}>
-        <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
-      </Link>
-    </>
+    </div>
   );
 }
 
-function RecommendationAddingName(): JSX.Element | null {
+function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Element | null {
   return (
-    <>
+    <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
+      <div className="custom-checkbox-wrapper">
+        <input type="checkbox" checked={props.identities?.is_verified} aria-label="Verified Identity" />
+      </div>
+      <h4>
+        <FormattedMessage description="connect your identity to eduID heading" defaultMessage="Verified Identity" />
+      </h4>
       <p>
         <FormattedMessage
-          description="accordion item name additionalInfo"
-          defaultMessage="Name can be used to personalise services that you access with your eduID."
+          description="connect your identity to eduID description"
+          defaultMessage="connect your identity to eduID at {identity}"
+          values={{
+            identity: (
+              <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
+                Identity
+              </Link>
+            ),
+          }}
         />
       </p>
-      <Link key="settings" to={ACCOUNT_PATH}>
-        <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </Link>
-    </>
+    </div>
   );
 }
 
-function RecommendationVerifyIdentity(): JSX.Element | null {
+function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
   return (
-    <>
+    <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
+      <div className="custom-checkbox-wrapper">
+        <input type="checkbox" checked={Boolean(props.tokens?.length)} aria-label="Verified Identity" />
+      </div>
+      <h4>
+        <FormattedMessage description="add two-factor authentication heading" defaultMessage="Improved security" />
+      </h4>
       <p>
         <FormattedMessage
-          description="accordion item name additionalInfo"
-          defaultMessage="Name can be used to personalise services that you access with your eduID."
+          description="add two-factor authentication description"
+          defaultMessage="add two-factor authentication at {security}"
+          values={{
+            security: (
+              <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+                Security
+              </Link>
+            ),
+          }}
         />
       </p>
-      <Link key="verify-identity" to={IDENTITY_PATH}>
-        <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
-      </Link>
-    </>
+    </div>
+  );
+}
+
+function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
+  const verifiedToken = props.tokens?.find((token) => token.verified);
+  return (
+    <div className={`status-box ${verifiedToken ? "success" : ""}`}>
+      <div className="custom-checkbox-wrapper">
+        <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" />
+      </div>
+      <h4>
+        <FormattedMessage description="verified security key heading" defaultMessage="Verified security" />
+      </h4>
+      <p>
+        <FormattedMessage
+          description="verified security key description"
+          defaultMessage="verified security key at {security}"
+          values={{
+            security: (
+              <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+                Security
+              </Link>
+            ),
+          }}
+        />
+      </p>
+    </div>
   );
 }
 
@@ -82,17 +140,37 @@ export function Recommendations(): JSX.Element | null {
   return (
     <article>
       <h2>
-        <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
+        <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
       </h2>
       <p>
         <FormattedMessage
-          description="recommendation title"
-          defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
+          description="status overview paragraph1"
+          defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
         />
       </p>
-      <RecommendationAddingName />
-      <RecommendationVerifyIdentity />
-      <RecommendationAddingSecurityKey />
+      <p>
+        <FormattedMessage
+          description="status overview paragraph2"
+          defaultMessage="Suggestions as to what might be required depending on the assurance level from the organisation you are accessing with your eduID, can be found at {help}"
+          values={{
+            help: (
+              <Link key="/help" to="/help" aria-label="go to help page">
+                Help
+              </Link>
+            ),
+          }}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          description="status overview paragraph3"
+          defaultMessage="Status of completed steps are indicted with a checkmark."
+        />
+      </p>
+      <ConfirmedAccountStatus given_name={given_name} />
+      <VerifiedIdentityStatus identities={identities} />
+      <ImprovedSecurityStatus tokens={tokens} />
+      <VerifiedSecurityStatus tokens={tokens} />
     </article>
   );
 }
