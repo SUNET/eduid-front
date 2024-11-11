@@ -122,6 +122,7 @@
 
 // --- STATUS OVERVIEW STYLES--- //
 .status-box {
+  @extend .accordion;
   display: grid;
   grid-template-columns: 30px 1fr;
   grid-template-rows: auto;
@@ -129,9 +130,17 @@
   align-items: center;
   padding: 10px;
   background-color: $white;
-  border-radius: 15px;
-  border: 1px solid $bright-orange;
   margin-top: 0.5rem;
+
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+    color: $txt-orange;
+  }
+  p {
+    margin-bottom: 0;
+  }
   &.success {
     background-color: $bg-orange;
   }
@@ -146,6 +155,17 @@
     display: block;
     width: 20px;
     height: 20px;
+  }
+
+  svg {
+    color: $txt-orange;
+  }
+
+  div {
+    width: 17px;
+    height: 17px;
+    border: 1px solid $txt-orange;
+    border-radius: 50%;
   }
 }
 

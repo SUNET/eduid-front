@@ -1,6 +1,7 @@
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
-import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -10,24 +11,28 @@ function ConfirmedAccountStatus(props: { given_name?: string }): JSX.Element | n
   return (
     <div className={`status-box ${props.given_name ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input type="checkbox" checked={Boolean(props.given_name)} aria-label="confirmed account" />
+        {props.given_name ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+
+        {/* <input type="checkbox" checked={Boolean(props.given_name)} aria-label="confirmed account" onChange={() => {}} /> */}
       </div>
-      <h4>
-        <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
-      </h4>
-      <p>
-        <FormattedMessage
-          description="confirmed account description"
-          defaultMessage="add your name at {account}"
-          values={{
-            account: (
-              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                Account
-              </Link>
-            ),
-          }}
-        />
-      </p>
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
+        </h3>
+        <p>
+          <FormattedMessage
+            description="confirmed account description"
+            defaultMessage="Add your name at {account}"
+            values={{
+              account: (
+                <Link key={settingsPath} to={settingsPath} aria-label="go to account page">
+                  Account
+                </Link>
+              ),
+            }}
+          />
+        </p>
+      </div>
     </div>
   );
 }
@@ -36,24 +41,32 @@ function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Ele
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input type="checkbox" checked={props.identities?.is_verified} aria-label="Verified Identity" />
+        {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {/* <input
+          type="checkbox"
+          checked={props.identities?.is_verified === true}
+          aria-label="Verified Identity"
+          onChange={() => {}}
+        /> */}
       </div>
-      <h4>
-        <FormattedMessage description="connect your identity to eduID heading" defaultMessage="Verified Identity" />
-      </h4>
-      <p>
-        <FormattedMessage
-          description="connect your identity to eduID description"
-          defaultMessage="connect your identity to eduID at {identity}"
-          values={{
-            identity: (
-              <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
-                Identity
-              </Link>
-            ),
-          }}
-        />
-      </p>
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage description="connect your identity to eduID heading" defaultMessage="Verified Identity" />
+        </h3>
+        <p>
+          <FormattedMessage
+            description="connect your identity to eduID description"
+            defaultMessage="Connect your identity to eduID at {identity}"
+            values={{
+              identity: (
+                <Link key={identityPath} to={identityPath} aria-label="go to identity page">
+                  Identity
+                </Link>
+              ),
+            }}
+          />
+        </p>
+      </div>
     </div>
   );
 }
@@ -62,24 +75,31 @@ function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input type="checkbox" checked={Boolean(props.tokens?.length)} aria-label="Verified Identity" />
-      </div>
-      <h4>
-        <FormattedMessage description="add two-factor authentication heading" defaultMessage="Improved security" />
-      </h4>
-      <p>
-        <FormattedMessage
-          description="add two-factor authentication description"
-          defaultMessage="add two-factor authentication at {security}"
-          values={{
-            security: (
-              <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
-                Security
-              </Link>
-            ),
-          }}
+        <input
+          type="checkbox"
+          checked={Boolean(props.tokens?.length)}
+          aria-label="Verified Identity"
+          onChange={() => {}}
         />
-      </p>
+      </div>
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage description="add two-factor authentication heading" defaultMessage="Improved security" />
+        </h3>
+        <p>
+          <FormattedMessage
+            description="add two-factor authentication description"
+            defaultMessage="Add two-factor authentication at {security}"
+            values={{
+              security: (
+                <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+                  Security
+                </Link>
+              ),
+            }}
+          />
+        </p>
+      </div>
     </div>
   );
 }
@@ -89,24 +109,26 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" />
+        <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" onChange={() => {}} />
       </div>
-      <h4>
-        <FormattedMessage description="verified security key heading" defaultMessage="Verified security" />
-      </h4>
-      <p>
-        <FormattedMessage
-          description="verified security key description"
-          defaultMessage="verified security key at {security}"
-          values={{
-            security: (
-              <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
-                Security
-              </Link>
-            ),
-          }}
-        />
-      </p>
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage description="verified security key heading" defaultMessage="Verified security" />
+        </h3>
+        <p>
+          <FormattedMessage
+            description="verified security key description"
+            defaultMessage="Verified security key at {security}"
+            values={{
+              security: (
+                <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+                  Security
+                </Link>
+              ),
+            }}
+          />
+        </p>
+      </div>
     </div>
   );
 }
@@ -164,7 +186,7 @@ export function Recommendations(): JSX.Element | null {
       <p>
         <FormattedMessage
           description="status overview paragraph3"
-          defaultMessage="Status of completed steps are indicted with a checkmark."
+          defaultMessage="Status of completed steps are indicated with a checkmark."
         />
       </p>
       <ConfirmedAccountStatus given_name={given_name} />
