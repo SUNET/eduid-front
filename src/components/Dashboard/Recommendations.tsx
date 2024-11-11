@@ -72,7 +72,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
   if (props.identities.nin?.verified) {
     return null;
   }
-  // if user verified with eidas or svipe, show accordion item to verify with nin
+  // if user verified with eidas or passport, show accordion item to verify with nin
   if (props.identities.freja?.verified || props.identities.eidas?.verified) {
     title = (
       <FormattedMessage

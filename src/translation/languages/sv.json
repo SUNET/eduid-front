@@ -7,6 +7,10 @@
     "developer_comment": "MFA Freja help text",
     "string": "Kräver ett bekräftat svenskt personnummer."
   },
+  "+9NBhe": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "För dig som har en svensk folkbokföringsadress"
+  },
   "+9mdAK": {
     "developer_comment": "about contact support - handle",
     "string": "Kontakt med eduID support"
@@ -35,10 +39,6 @@
     "developer_comment": "button add",
     "string": "Lägg till"
   },
-  "+ZbEOX": {
-    "developer_comment": "accordion item svipe title",
-    "string": "Andra länder"
-  },
   "/+3WQI": {
     "developer_comment": "recommendation title",
     "string": "Rekommenderade åtgärder för dig"
@@ -50,10 +50,6 @@
   "/2jUvY": {
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
-  },
-  "/4y+Xd": {
-    "developer_comment": "accordion item Svipe ID additional info",
-    "string": "Med Freja eID identitetsverifiering"
   },
   "/ANjhk": {
     "developer_comment": "Header register",
@@ -385,10 +381,6 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
-  "7B1RyH": {
-    "developer_comment": "verify identity vetting BankID tagline",
-    "string": "För dig som kan använda BankID"
-  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "ansluta ditt eduID till ESI och/eller befintligt ORCID iD om det stöds av din institution,"
@@ -656,6 +648,10 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Koppla din identitet till ditt eduID"
   },
+  "FU7D54": {
+    "developer_comment": "accordion item passport title",
+    "string": "De flesta länder"
+  },
   "Fcqru6": {
     "developer_comment": "use international - list item 1",
     "string": "för att bekräfta ditt eduID med Freja behöver du först ett Freja-konto med en profil som är bekräftad med ditt pass, genom att installera {FrejaApp} på din mobila enhet (iOS eller Android) och följa instruktionerna,"
@@ -751,6 +747,10 @@
   "HSZS8/": {
     "developer_comment": "security key status",
     "string": "Verifiera"
+  },
+  "HgfPrt": {
+    "developer_comment": "security webauthn describe paragraph",
+    "string": "Obs: beskrivningen är endast för att hjälpa dig skilja på dina tillagda nycklar."
   },
   "HgjRtU": {
     "developer_comment": "button add more",
@@ -995,6 +995,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
   },
+  "P/NqW7": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
+  },
   "P2JYwK": {
     "developer_comment": "what is freja - paragraph",
     "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer eller samordningsnummer."
@@ -1078,6 +1082,10 @@
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
     "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
+  },
+  "RFjlYD": {
+    "developer_comment": "accordion item passport additional info",
+    "string": "Med Freja eID identitetsverifiering"
   },
   "RFkwNK": {
     "developer_comment": "which type of security key - paragraph",
@@ -1335,6 +1343,10 @@
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
+  },
+  "YhOtY3": {
+    "developer_comment": "copied button label",
+    "string": "KOPIERAD"
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -1828,10 +1840,6 @@
     "developer_comment": "login this device, security key button",
     "string": "Säkerhetsnyckel"
   },
-  "gyVTaa": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
-  },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
     "string": "Inloggning misslyckades"
@@ -1986,6 +1994,10 @@
     "developer_comment": "Account recovery cancel information",
     "string": "Om du väljer att avbryta, klicka på knappen Gå tillbaka för att återgå till inloggningssidan."
   },
+  "kKMiD/": {
+    "developer_comment": "copy button label",
+    "string": "KOPIERA"
+  },
   "kN1GC+": {
     "developer_comment": "Make primary button",
     "string": "gör primär"
@@ -2020,10 +2032,6 @@
   "l+J8JG": {
     "developer_comment": "Temp info - message5",
     "string": "För mer information om verifieringsmetoder som stöds, besök {hjälp} och se avsnitten 'Verifiering av identitet' och 'Utökad säkerhet med ditt eduID'."
-  },
-  "l+PAQr": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "För dig som har en svensk folkbokföringsadress"
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
@@ -2913,6 +2921,9 @@
     "developer_comment": "verification status sub text",
     "string": "Ditt eduID är redo att användas."
   },
+  "verified identity delete button": {
+    "string": "Ta bort den här verifierade identiteten"
+  },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",
     "string": "Lägg till ditt namn"
@@ -3031,6 +3042,10 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "Nedanstående information är relevant för dig och vi behöver bekräftat att du har tagit del av den. Vänligen läs innan du fortsätter."
+  },
+  "zTHT2m": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "För dig som kan använda BankID"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",

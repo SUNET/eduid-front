@@ -1,3 +1,4 @@
+import EduIDButton from "components/Common/EduIDButton";
 import React, { useState } from "react";
 import { FieldRenderProps, Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -68,10 +69,11 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         autoFocus={props.autoFocus}
       />
 
-      <button
-        type="button"
+      <EduIDButton
+        className="txt-toggle-btn"
+        buttonstyle="link"
+        size="sm"
         aria-label={showPassword ? "hide password" : "show password"}
-        className="show-hide-button"
         onClick={toggleShowPassword}
         tabIndex={-1}
       >
@@ -80,7 +82,7 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         ) : (
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
-      </button>
+      </EduIDButton>
     </div>
   );
 }

@@ -151,6 +151,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
+  const intl = useIntl();
+
   useEffect(() => {
     if (frontend_action) {
       if (frontend_action === "removeIdentity") {
@@ -203,6 +205,10 @@ function VerifiedIdentitiesTable(): JSX.Element {
             buttonstyle="close"
             size="sm"
             onClick={() => handleConfirmDeleteModal()}
+            title={intl.formatMessage({
+              id: "verified identity delete button",
+              defaultMessage: "Delete this verified identity",
+            })}
           ></EduIDButton>
         </figure>
       )}
@@ -344,7 +350,7 @@ function AccordionItemSwedish(): JSX.Element | null {
           additionalInfo={
             <FormattedMessage
               description="verify identity vetting BankID tagline"
-              defaultMessage={`For you able to use BankID`}
+              defaultMessage={`If you are able to use BankID`}
             />
           }
           uuid="se-bankID"
@@ -357,7 +363,7 @@ function AccordionItemSwedish(): JSX.Element | null {
           additionalInfo={
             <FormattedMessage
               description="verify identity vetting freja tagline"
-              defaultMessage={`For you able to create a Freja+ by using the app or visiting one of the authorised agents`}
+              defaultMessage={`If you are able to create a Freja+ by using the app or visiting one of the authorised agents`}
             />
           }
           uuid="se-freja"
@@ -369,7 +375,7 @@ function AccordionItemSwedish(): JSX.Element | null {
           title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
           additionalInfo={
             <FormattedMessage
-              defaultMessage="For you registered at your current address"
+              defaultMessage="If you are registered at your current address"
               description="explanation text for letter proofing"
             />
           }
@@ -448,10 +454,10 @@ function AccordionItemWorld(): JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
-      title={<FormattedMessage description="accordion item svipe title" defaultMessage="Other countries" />}
+      title={<FormattedMessage description="accordion item passport title" defaultMessage="Most countries" />}
       additionalInfo={
         <FormattedMessage
-          description="accordion item Svipe ID additional info"
+          description="accordion item passport additional info"
           defaultMessage="With Freja eID identity verification "
         />
       }
