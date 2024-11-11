@@ -17,15 +17,15 @@ export function AccountSettings(): JSX.Element {
 
   useEffect(() => {
     document.title = intl.formatMessage({
-      id: "document title Account settings",
-      defaultMessage: "Account settings | eduID",
+      id: "document title Account",
+      defaultMessage: "Account | eduID",
     });
   }, []);
 
   const currentPage = intl.formatMessage({
-    id: "Account Settings",
-    defaultMessage: "Account Settings",
-    description: "Account Settings",
+    id: "Account",
+    defaultMessage: "Account",
+    description: "Account",
   });
 
   return (
@@ -33,7 +33,7 @@ export function AccountSettings(): JSX.Element {
       <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
       <section className="intro">
         <h1>
-          <FormattedMessage description="settings main title" defaultMessage="Account Settings" />
+          <FormattedMessage description="settings main title" defaultMessage="Account" />
         </h1>
         <div className="lead">
           <p>

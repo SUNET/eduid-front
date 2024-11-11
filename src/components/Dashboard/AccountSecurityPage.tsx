@@ -11,14 +11,14 @@ export function AccountSecurity(): JSX.Element {
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Security",
-      defaultMessage: "Account Security | eduID",
+      defaultMessage: "Security | eduID",
     });
   }, []);
 
   const currentPage = intl.formatMessage({
-    id: "Account Security",
-    defaultMessage: "Account Security",
-    description: "Account Security",
+    id: "Security",
+    defaultMessage: "Security",
+    description: "Security",
   });
 
   return (
@@ -26,7 +26,7 @@ export function AccountSecurity(): JSX.Element {
       <DashboardBreadcrumbs pageIcon={faGears} currentPage={currentPage} />
       <section className="intro">
         <h1>
-          <FormattedMessage description="security main title" defaultMessage="Account Security" />
+          <FormattedMessage description="security main title" defaultMessage="Security" />
         </h1>
         <div className="lead">
           <p>
