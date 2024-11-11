@@ -7,6 +7,10 @@
     "developer_comment": "MFA Freja help text",
     "string": "Requires a confirmed Swedish national identity number."
   },
+  "+9NBhe": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "If you are registered at your current address"
+  },
   "+9mdAK": {
     "developer_comment": "about contact support - handle",
     "string": "Contacting eduID support"
@@ -35,10 +39,6 @@
     "developer_comment": "button add",
     "string": "Add"
   },
-  "+ZbEOX": {
-    "developer_comment": "accordion item svipe title",
-    "string": "Other countries"
-  },
   "/+3WQI": {
     "developer_comment": "recommendation title",
     "string": "Recommended actions for you"
@@ -50,10 +50,6 @@
   "/2jUvY": {
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your identity."
-  },
-  "/4y+Xd": {
-    "developer_comment": "accordion item Svipe ID additional info",
-    "string": "With Freja eID identity verification"
   },
   "/ANjhk": {
     "developer_comment": "Header register",
@@ -385,10 +381,6 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
-  "7B1RyH": {
-    "developer_comment": "verify identity vetting BankID tagline",
-    "string": "For you able to use BankID"
-  },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
@@ -655,6 +647,10 @@
   "FRVeZw": {
     "developer_comment": "verify identity unverified main title",
     "string": "Connect your identity to your eduID"
+  },
+  "FU7D54": {
+    "developer_comment": "accordion item passport title",
+    "string": "Most countries"
   },
   "Fcqru6": {
     "developer_comment": "use international - list item 1",
@@ -999,6 +995,10 @@
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "P/NqW7": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "If you are able to create a Freja+ by using the app or visiting one of the authorised agents"
+  },
   "P2JYwK": {
     "developer_comment": "what is freja - paragraph",
     "string": "Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number or coordination number."
@@ -1082,6 +1082,10 @@
   "RCu3GS": {
     "developer_comment": "use ladok - list item 1",
     "string": "in the Settings area of eduID, toggle the Ladok control,"
+  },
+  "RFjlYD": {
+    "developer_comment": "accordion item passport additional info",
+    "string": "With Freja eID identity verification"
   },
   "RFkwNK": {
     "developer_comment": "which type of security key - paragraph",
@@ -1836,10 +1840,6 @@
     "developer_comment": "login this device, security key button",
     "string": "Security key"
   },
-  "gyVTaa": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "For you able to create a Freja+ by using the app or visiting one of the authorised agents"
-  },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
     "string": "Login failed"
@@ -2032,10 +2032,6 @@
   "l+J8JG": {
     "developer_comment": "Temp info - message5",
     "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section."
-  },
-  "l+PAQr": {
-    "developer_comment": "explanation text for letter proofing",
-    "string": "For you registered at your current address"
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
@@ -3046,6 +3042,10 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
+  },
+  "zTHT2m": {
+    "developer_comment": "verify identity vetting BankID tagline",
+    "string": "If you are able to use BankID"
   },
   "zUxMDK": {
     "developer_comment": "Footer help",
