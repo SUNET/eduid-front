@@ -752,6 +752,10 @@
     "developer_comment": "security key status",
     "string": "Verify"
   },
+  "HgfPrt": {
+    "developer_comment": "security webauthn describe paragraph",
+    "string": "Note: this is only for your own use to be able to distinguish between your added keys."
+  },
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
@@ -1335,6 +1339,10 @@
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
+  },
+  "YhOtY3": {
+    "developer_comment": "copied button label",
+    "string": "COPIED"
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -1985,6 +1993,10 @@
   "kK4Hum": {
     "developer_comment": "Account recovery cancel information",
     "string": "If you decide to cancel, simply click the Go Back button to return to the login page."
+  },
+  "kKMiD/": {
+    "developer_comment": "copy button label",
+    "string": "COPY"
   },
   "kN1GC+": {
     "developer_comment": "Make primary button",
@@ -2912,6 +2924,9 @@
   "vQpAQz": {
     "developer_comment": "verification status sub text",
     "string": "Your eduID is ready to use."
+  },
+  "verified identity delete button": {
+    "string": "Delete this verified identity"
   },
   "vmreyb": {
     "developer_comment": "accordion item Adding name",

@@ -23,6 +23,7 @@ import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
+import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
@@ -50,6 +51,7 @@ export function IndexMain(): JSX.Element {
         <ErrorBoundary FallbackComponent={GenericError}>
           <Splash showChildren={isLoaded}>
             <section id="content" className="horizontal-content-margin content">
+              <ScrollToTop />
               <Routes>
                 <Route path="/" element={<Index />} />
                 {/* Signup */}

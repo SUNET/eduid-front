@@ -157,6 +157,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
 
+  const intl = useIntl();
+
   useEffect(() => {
     if (frontend_action) {
       if (frontend_action === "removeIdentity") {
@@ -209,6 +211,10 @@ function VerifiedIdentitiesTable(): JSX.Element {
             buttonstyle="close"
             size="sm"
             onClick={() => handleConfirmDeleteModal()}
+            title={intl.formatMessage({
+              id: "verified identity delete button",
+              defaultMessage: "Delete this verified identity",
+            })}
           ></EduIDButton>
         </figure>
       )}

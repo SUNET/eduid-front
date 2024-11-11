@@ -252,10 +252,8 @@ button.btn-icon {
   }
 }
 
-// login username-pw / reset-password set-new-password
-.show-hide-button {
-  @extend #{".btn", ".btn-link", ".btn-sm"};
-
+//textual toggle control, eg. copy/show
+.txt-toggle-btn {
   position: absolute;
   right: 1rem;
 }

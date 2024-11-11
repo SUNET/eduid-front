@@ -1,4 +1,4 @@
-import { CopyToClipboard } from "components/Common/CopyToClipboard";
+import { CopyToClipboardButton } from "components/Common/CopyToClipboardButton";
 import { useAppSelector } from "eduid-hooks";
 import { useRef } from "react";
 import { FormattedMessage } from "react-intl";
@@ -30,7 +30,7 @@ export function AccountId(): JSX.Element {
         </span>
         <div className="display-data">
           <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
-          <CopyToClipboard ref={ref} />
+          <CopyToClipboardButton ref={ref} />
         </div>
       </div>
     </article>
