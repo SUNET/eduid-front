@@ -9,6 +9,7 @@ import EduIDButton from "./EduIDButton";
 interface ConfirmModalProps {
   readonly id: string;
   readonly title: React.ReactNode;
+  readonly mainText?: React.ReactNode;
   readonly placeholder: string;
   readonly showModal: boolean;
   readonly closeModal: () => void;
@@ -71,6 +72,9 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                     />
                   </React.Fragment>
                 )}
+
+                {props.mainText ? props.mainText : null}
+
                 <div id="confirmation-code-area">
                   <FinalField<string>
                     component={CustomInput}
