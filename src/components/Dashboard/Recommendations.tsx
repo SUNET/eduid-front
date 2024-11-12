@@ -2,26 +2,24 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
+import Splash from "components/Common/Splash";
+import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
-function ConfirmedAccountStatus(props: { username?: string }): JSX.Element | null {
+function ConfirmedAccountStatus(props: { email?: string }): JSX.Element | null {
   return (
-    <div className={`status-box ${props.username ? "success" : ""}`}>
-      <div className="custom-checkbox-wrapper">
-        {props.username ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
-
-        {/* <input type="checkbox" checked={Boolean(props.given_name)} aria-label="confirmed account" onChange={() => {}} /> */}
-      </div>
+    <div className={`status-box ${props.email ? "success" : ""}`}>
+      <div className="custom-checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
       <div className="text-wrapper">
         <h3>
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
         </h3>
         <span>
-          {props.username ? (
-            props.username
+          {props.email ? (
+            props.email
           ) : (
             <FormattedMessage
               description="confirmed account description"
@@ -51,12 +49,6 @@ function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Ele
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
         {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
-        {/* <input
-          type="checkbox"
-          checked={props.identities?.is_verified === true}
-          aria-label="Verified Identity"
-          onChange={() => {}}
-        /> */}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -100,12 +92,6 @@ function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
         {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
-        {/* <input
-          type="checkbox"
-          checked={Boolean(props.tokens?.length)}
-          aria-label="Verified Identity"
-          onChange={() => {}}
-        /> */}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -150,7 +136,6 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
         {verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
-        {/* <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" onChange={() => {}} /> */}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -190,9 +175,6 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
 export function Recommendations(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
-  const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
-  const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const emails = useAppSelector((state) => state.emails.emails);
@@ -209,14 +191,16 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  // console.log("1 emails", emails);
-  const username = `${chosen_given_name} ${surname}`;
-  // const email = emails && emails?.filter((mail) => mail.primary)[0].email;
-  // console.log("2 email", email);
+  if (!emails.length) {
+    return null;
+  }
+
+  const email = emails?.filter((mail) => mail.primary)[0].email;
+
   const steps = [
     {
-      component: <ConfirmedAccountStatus username={username} />,
-      completed: Boolean(username),
+      component: <ConfirmedAccountStatus email={email} />,
+      completed: Boolean(email),
     },
     { component: <VerifiedIdentityStatus identities={identities} />, completed: identities?.is_verified },
     { component: <ImprovedSecurityStatus tokens={tokens} />, completed: Boolean(tokens.length > 0) },
@@ -227,50 +211,50 @@ export function Recommendations(): JSX.Element | null {
   ];
 
   const orderedSteps = [...steps].sort((a, b): any => {
-    const completedA = a.completed ?? false;
-    const completedB = b.completed ?? false;
-    return Number(completedA) - Number(completedB);
+    const completedA = a.completed ?? true;
+    const completedB = b.completed ?? true;
+    return Number(completedB) - Number(completedA);
   });
 
-  console.log("orderedSteps", orderedSteps);
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
-    <article>
-      <h2>
-        <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
-      </h2>
-      <p>
-        <FormattedMessage
-          description="status overview paragraph1"
-          defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
-        />
-      </p>
-      <p>
-        <FormattedMessage
-          description="status overview paragraph2"
-          defaultMessage="Suggestions as to what might be required depending on the assurance level from the organisation you are accessing with your eduID, can be found at {help}"
-          values={{
-            help: (
-              <Link key="/help" to="/help" aria-label="go to help page">
-                Help
-              </Link>
-            ),
-          }}
-        />
-      </p>
-      <p>
-        <FormattedMessage
-          description="status overview paragraph3"
-          defaultMessage="Status of completed steps are indicated with a checkmark."
-        />
-      </p>
-      {orderedSteps.map((step, index) => {
-        <React.Fragment key={index}>{step.component}</React.Fragment>;
-      })}
-      <ConfirmedAccountStatus username={username} />
-      <VerifiedIdentityStatus identities={identities} />
-      <ImprovedSecurityStatus tokens={tokens} />
-      <VerifiedSecurityStatus tokens={tokens} />
-    </article>
+    <Splash showChildren={isLoaded}>
+      <article>
+        <h2>
+          <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
+        </h2>
+        <p>
+          <FormattedMessage
+            description="status overview paragraph1"
+            defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            description="status overview paragraph2"
+            defaultMessage="Suggestions as to what might be required depending on the assurance level from the organisation you are accessing with your eduID, can be found at {help}."
+            values={{
+              help: (
+                <Link key="/help" to="/help" aria-label="go to help page">
+                  Help
+                </Link>
+              ),
+            }}
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            description="status overview paragraph3"
+            defaultMessage="Status of completed steps are indicated with a checkmark."
+          />
+        </p>
+        {orderedSteps.map((step, index) => {
+          return <React.Fragment key={index}>{step.component}</React.Fragment>;
+        })}
+      </article>
+    </Splash>
   );
 }
