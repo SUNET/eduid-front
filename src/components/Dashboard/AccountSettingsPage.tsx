@@ -46,11 +46,11 @@ export function AccountSettings(): JSX.Element {
       </section>
       <AccountId />
       <Emails />
-      <AccountLinking />
-      <LadokContainer />
       <Phones />
       <LanguagePreference />
       <ChangePasswordDisplay />
+      <AccountLinking />
+      <LadokContainer />
       <DeleteAccount />
     </React.Fragment>
   );

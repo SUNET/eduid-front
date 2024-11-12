@@ -86,10 +86,7 @@ function IdentityContent(): JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage
-            description="verify identity unverified main title"
-            defaultMessage={`Connect your identity to your eduID`}
-          />
+          <FormattedMessage description="verify identity unverified main title" defaultMessage={`Identity`} />
         </h1>
         <div className="lead">
           {identities?.is_verified ? (
