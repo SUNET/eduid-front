@@ -59,7 +59,7 @@ function RenderEditBox(props: RenderEditBoxProps) {
     <div className="edit-data">
       <div className="title">
         <h4>
-          <FormattedMessage defaultMessage="Edit name and language" description="personal data edit title" />
+          <FormattedMessage defaultMessage="Edit name and display name" description="personal data edit title" />
         </h4>
         <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
       </div>
