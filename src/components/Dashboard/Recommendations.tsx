@@ -7,11 +7,11 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
-function ConfirmedAccountStatus(props: { given_name?: string }): JSX.Element | null {
+function ConfirmedAccountStatus(props: { username?: string }): JSX.Element | null {
   return (
-    <div className={`status-box ${props.given_name ? "success" : ""}`}>
+    <div className={`status-box ${props.username ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        {props.given_name ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {props.username ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
 
         {/* <input type="checkbox" checked={Boolean(props.given_name)} aria-label="confirmed account" onChange={() => {}} /> */}
       </div>
@@ -20,17 +20,21 @@ function ConfirmedAccountStatus(props: { given_name?: string }): JSX.Element | n
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
         </h3>
         <p>
-          <FormattedMessage
-            description="confirmed account description"
-            defaultMessage="Add your name at {account}"
-            values={{
-              account: (
-                <Link key={settingsPath} to={settingsPath} aria-label="go to account page">
-                  Account
-                </Link>
-              ),
-            }}
-          />
+          {props.username ? (
+            props.username
+          ) : (
+            <FormattedMessage
+              description="confirmed account description"
+              defaultMessage="Add your name at {account}"
+              values={{
+                account: (
+                  <Link key={settingsPath} to={settingsPath} aria-label="go to account page">
+                    Account
+                  </Link>
+                ),
+              }}
+            />
+          )}
         </p>
       </div>
     </div>
@@ -140,14 +144,19 @@ export function Recommendations(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
+  const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
+  const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
+  // const emails = useAppSelector((state) => state.emails.emails);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
 
+  const username = `${chosen_given_name} ${surname}`;
+  // const email = emails?.filter((mail) => mail.primary)[0].email;
   useEffect(() => {
     if (isLoaded) {
       // call requestCredentials once app is loaded
@@ -155,9 +164,23 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities?.nin?.verified && tokens.length && given_name) {
-    return null;
-  }
+  const steps = [
+    {
+      component: <ConfirmedAccountStatus username={username} />,
+      completed: Boolean(username),
+    },
+    { component: <VerifiedIdentityStatus identities={identities} />, completed: identities?.is_verified },
+    { component: <ImprovedSecurityStatus tokens={tokens} />, completed: Boolean(tokens.length > 0) },
+    { component: <VerifiedSecurityStatus tokens={tokens} />, completed: tokens?.find((token) => token.verified) },
+  ];
+
+  const orderedSteps = [...steps].sort((a, b): any => {
+    const completedA = a.completed ?? false;
+    const completedB = b.completed ?? false;
+    return Number(completedA) - Number(completedB);
+  });
+
+  console.log("orderedSteps", orderedSteps);
 
   return (
     <article>
@@ -189,10 +212,14 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="Status of completed steps are indicated with a checkmark."
         />
       </p>
-      <ConfirmedAccountStatus given_name={given_name} />
+
+      {orderedSteps.map((step, index) => {
+        <div key={index}>{step.component}</div>;
+      })}
+      {/* <ConfirmedAccountStatus username={username} />
       <VerifiedIdentityStatus identities={identities} />
       <ImprovedSecurityStatus tokens={tokens} />
-      <VerifiedSecurityStatus tokens={tokens} />
+      <VerifiedSecurityStatus tokens={tokens} /> */}
     </article>
   );
 }
