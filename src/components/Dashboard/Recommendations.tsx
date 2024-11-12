@@ -169,9 +169,6 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
   );
 }
 
-/**
- * This component is responsible for rendering the recommendations accordion.
- */
 export function Recommendations(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
@@ -210,7 +207,7 @@ export function Recommendations(): JSX.Element | null {
     },
   ];
 
-  const orderedSteps = [...steps].sort((a, b): any => {
+  const orderedSteps = [...steps].sort((a, b) => {
     const completedA = a.completed ?? true;
     const completedB = b.completed ?? true;
     return Number(completedB) - Number(completedA);
@@ -235,7 +232,8 @@ export function Recommendations(): JSX.Element | null {
         <p>
           <FormattedMessage
             description="status overview paragraph2"
-            defaultMessage="Suggestions as to what might be required depending on the assurance level from the organisation you are accessing with your eduID, can be found at {help}."
+            defaultMessage={`Suggestions as to what might be required depending on the assurance level from the 
+              organisation you are accessing with your eduID, can be found at {help}.`}
             values={{
               help: (
                 <Link key="/help" to="/help" aria-label="go to help page">
