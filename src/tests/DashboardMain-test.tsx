@@ -43,11 +43,14 @@ test("renders Profile page as expected", () => {
   expect(nav2).not.toHaveClass(activeClassName);
 });
 
-test("renders identity verification progress, unverified after password reset", () => {
+test("renders eduID status overview, confirmed account", () => {
   render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
       config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
@@ -64,35 +67,17 @@ test("renders identity verification progress, unverified after password reset", 
     },
   });
 
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/no longer verified after password reset./);
+  expect(screen.getAllByRole("heading")[6]).toHaveTextContent(/Verify your Security key/);
 });
 
-test("renders identity verification progress, new user", () => {
+test("renders verified identity user", () => {
   render(<IndexMain />, {
     routes: ["/profile/"],
     state: {
       ...defaultDashboardTestState,
-      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
-      personal_data: {
-        response: {
-          eppn: "hubba-bubba",
-          chosen_given_name: "test user",
-          identities: {
-            is_verified: false,
-          },
-        },
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
       },
-    },
-  });
-
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
-});
-
-test("renders identity verification progress, verified user", () => {
-  render(<IndexMain />, {
-    routes: ["/profile/"],
-    state: {
-      ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
@@ -106,5 +91,29 @@ test("renders identity verification progress, verified user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
+  expect(screen.getAllByRole("heading")[4]).toHaveTextContent(/Verified Identity/);
+});
+
+test("renders identity verification progress, verified user", () => {
+  render(<IndexMain />, {
+    routes: ["/profile/"],
+    state: {
+      ...defaultDashboardTestState,
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
+      personal_data: {
+        response: {
+          eppn: "hubba-bubba",
+          chosen_given_name: "test user",
+          identities: {
+            is_verified: false,
+          },
+        },
+      },
+    },
+  });
+
+  expect(screen.getAllByRole("heading")[4]).toHaveTextContent(/Verify Your Identity/);
 });

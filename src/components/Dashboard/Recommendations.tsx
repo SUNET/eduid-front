@@ -156,8 +156,8 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
             />
           ) : (
             <FormattedMessage
-              description="add two-factor authentication description"
-              defaultMessage="Add two-factor authentication at {security}"
+              description="verify your security key description"
+              defaultMessage="Verify your security key at {security}"
               values={{
                 security: securityLink,
               }}
