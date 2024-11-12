@@ -1,22 +1,57 @@
 @import "variables";
 
+/* Common for form controls */
+.input-container {
+  margin-bottom: 1.125rem;
+  margin-right: 0.5rem;
+  flex: 1;
+}
+
 .form-control {
   display: flex;
+}
+.form-control::placeholder,
+input::placeholder {
+  font-family: $inter-regular;
+  font-size: 1.5rem;
+}
+.form-control:focus,
+input:focus:not([readonly]) {
+  color: $txt-black;
+  background-color: $white;
+  border-color: $txt-gray;
+  box-shadow: 0 0 0 0.2rem $border-gray;
+  outline: 0 !important;
 
-  &:focus {
-    color: $txt-black;
-    background-color: $white;
-    border-color: $txt-gray;
-    box-shadow: 0 0 0 0.2rem $border-gray;
-    outline: 0;
+  &:not([type="radio"]) {
+    border-bottom: solid 2px $txt-black;
   }
 }
 
+input[readonly]:focus {
+  pointer-events: none;
+}
+
+//tab-focus
+:focus-visible {
+  outline: 2px dashed #000 !important;
+  transition: none !important;
+
+  //parent has overflow hidden to round corners
+  &.accordion__button {
+    outline-offset: -2px;
+  }
+  &.toggle-checkbox + .toggle-switch {
+    outline: 2px dashed #000 !important;
+  }
+}
+
+/* Radio buttons */
 input[type="radio"] {
-  /* remove standard background appearance */
+  //remove standard background appearance
   appearance: none;
 
-  /* create custom radio button appearance */
+  //create custom radio button appearance
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -24,14 +59,14 @@ input[type="radio"] {
   min-height: 1rem;
   align-self: center;
 
-  /* background-color only for content */
+  //background-color only for content
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   border: 2px solid $bright-orange;
   background-color: transparent;
   border-radius: 50%;
 
-  /* to prevent overwrite from input padding, this ensures that the radio button remains round */
+  //to prevent overwrite from input padding, this ensures that the radio button remains round
   padding: 0;
 
   &:hover {
@@ -39,22 +74,20 @@ input[type="radio"] {
     cursor: pointer;
     border: none;
   }
+
+  &:checked {
+    background-color: $bright-orange;
+    border: none;
+
+    .error {
+      background: $error-red;
+      color: $white;
+      border: none;
+    }
+  }
 }
 
-/* appearance for checked radiobutton */
-input[type="radio"]:checked {
-  // background-color: #28a745;
-  background-color: $bright-orange;
-  border: none;
-}
-
-input[type="radio"]:checked.error {
-  background: $error-red;
-  color: $white;
-  border: none;
-}
-
-/* optional styles for centering radio buttons */
+//optional styles for centering radio buttons
 .radio-input-container {
   display: flex;
 
@@ -76,58 +109,7 @@ input[type="radio"]:checked.error {
   }
 }
 
-.input-container {
-  margin-bottom: 1.125rem;
-  margin-right: 0.5rem;
-  flex: 1;
-}
-
-.form-control::placeholder,
-input::placeholder {
-  font-family: $inter-regular;
-  font-size: 1.5rem;
-}
-
-.form-control:focus,
-input:focus:not([readonly]) {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem $border-gray;
-  &:not([type="radio"]) {
-    border-bottom: solid 2px $txt-black;
-  }
-}
-
-input[readonly]:focus {
-  outline: none !important;
-  pointer-events: none;
-}
-
-// tab-focus
-:focus-visible {
-  outline: 2px dashed #000 !important;
-  transition: none !important;
-
-  // parent has overflow hidden to round corners
-  &.accordion__button {
-    outline-offset: -2px;
-  }
-  &.toggle-checkbox + .toggle-switch {
-    outline: 2px dashed #000 !important;
-  }
-}
-
-// hides object from view but still accessible to screen readers
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
+/* Error/validation */
 .form-control.is-valid {
   background-image: none;
 
@@ -136,19 +118,7 @@ input[readonly]:focus {
   }
 }
 
-/* invalid form input */
-// .form-control.is-invalid {
-//   border: none;
-//   border-bottom: 2px solid $bright-orange;
-//   background-image: none;
-//   padding-right: 8px;
-
-//   &:focus {
-//     box-shadow: 0 0 0 0.2rem $border-gray;
-//   }
-// }
-
-/* error message */
+//error message
 .input-error {
   color: $bright-orange;
   font-weight: 700;
@@ -165,7 +135,7 @@ input[readonly]:focus {
     font-size: 1rem;
   }
 
-  /* for orange asterisk after label */
+  //for orange asterisk after label
   & label.required::after {
     content: " *";
     color: $txt-orange;
@@ -192,7 +162,7 @@ fieldset.change-password-custom-inputs {
   }
 }
 
-// login username-pw / reset-password set-new-password
+/* Login username-pw / reset-password set-new-password */
 .password-input {
   display: flex;
   position: relative;
@@ -207,7 +177,11 @@ fieldset.change-password-custom-inputs {
   background-color: $border-gray;
 }
 
-// Switch toggle
+input#display-none-new-password {
+  display: none;
+}
+
+/* Switch toggle */
 .toggle {
   cursor: pointer;
   display: flex;
@@ -273,14 +247,16 @@ fieldset.change-password-custom-inputs {
   @extend .visuallyhidden;
 }
 
-/* Chrome, Safari, Edge, Opera */
+/* Cross browser */
+
+//Chrome, Safari, Edge, Opera
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+//Firefox
 input[type="number"] {
   appearance: textfield;
 }
@@ -289,6 +265,12 @@ input.display-none {
   display: none;
 }
 
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 50px $white inset;
+}
+
+/* Responsive */
 @media (max-width: $bp-sm) {
   .form-control,
   input,
@@ -310,13 +292,4 @@ input.display-none {
   .radio-input-container {
     flex-direction: column;
   }
-}
-
-input:-webkit-autofill {
-  background-color: transparent !important;
-  box-shadow: 0 0 0 50px $white inset;
-}
-
-input#display-none-new-password {
-  display: none;
 }
