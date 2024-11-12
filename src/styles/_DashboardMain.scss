@@ -128,21 +128,21 @@
   grid-template-rows: auto;
   grid-gap: 10px;
   align-items: center;
-  padding: 10px;
+  padding: 1rem;
   background-color: $white;
   margin-top: 0.5rem;
 
   h3 {
     font-size: 1.3rem;
     line-height: 1.4;
-    margin-bottom: 0;
+    margin-bottom: 0.3rem;
     color: $txt-orange;
   }
   p {
     margin-bottom: 0;
   }
   &.success {
-    // background-color: $bg-orange;
+    background-color: $bg-orange;
   }
 }
 
@@ -159,12 +159,13 @@
 
   svg {
     color: $txt-orange;
+    height: 1.5rem;
   }
 
   div {
-    width: 17px;
-    height: 17px;
-    border: 1px solid $txt-orange;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid $txt-orange;
     border-radius: 50%;
   }
 }
