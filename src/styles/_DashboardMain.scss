@@ -136,13 +136,13 @@
     font-size: 1.3rem;
     line-height: 1.4;
     margin-bottom: 0.3rem;
-    color: $txt-orange;
+    color: $txt-black;
   }
   p {
     margin-bottom: 0;
   }
   &.success {
-    background-color: $bg-orange;
+    border: 1px #008631 solid;
   }
 }
 
@@ -158,14 +158,14 @@
   }
 
   svg {
-    color: $txt-orange;
+    color: #008631;
     height: 1.5rem;
   }
 
   div {
     width: 1.5rem;
     height: 1.5rem;
-    border: 2px solid $txt-orange;
+    border: 2px solid $txt-gray;
     border-radius: 50%;
   }
 }
