@@ -95,8 +95,7 @@ button.btn-secondary:hover {
   }
 }
 
-/* color for CANCEL and CLOSE buttons in modals */
-// ----- buttons that close modals ----  //
+/* CLOSE buttons in modals */
 button.btn-close {
   background-color: transparent;
   margin: 0;
@@ -192,7 +191,7 @@ button.btn-icon {
   }
 }
 
-/* Wraps all buttons for responsive behaviour independend on number */
+/* Wraps all buttons for responsive behaviour independent on number */
 .buttons {
   display: flex;
   column-gap: 1rem;
@@ -285,11 +284,6 @@ button.icon-only {
   }
 }
 
-// a link focus
-// a:focus {
-//   box-shadow: 0 0 0 1px #f9f9d1, 0 0 0 2px #396196, 0 0 2px 4px #f9f9d1 !important;
-// }
-
 .btn-close.btn-sm:focus,
 .header-user:focus {
   background-color: $body-gray !important;
@@ -314,10 +308,6 @@ button.scroll-to-top {
     right: 0.5rem;
     bottom: 6.5rem;
   }
-}
-
-.display-none {
-  display: none;
 }
 
 @media (max-width: $bp-xs) {

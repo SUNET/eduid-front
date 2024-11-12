@@ -1,15 +1,47 @@
 @import "variables";
 
-/* Common for form controls */
-.input-container {
-  margin-bottom: 1.125rem;
-  margin-right: 0.5rem;
-  flex: 1;
-}
+/* Inputs and form controls, mainly non button */
 
+/* Form controls and interactive states */
 .form-control {
   display: flex;
 }
+
+.form-control:disabled,
+.form-control[readonly],
+input[readonly] {
+  border-bottom: none;
+  color: $txt-gray;
+
+  :focus {
+    pointer-events: none;
+  }
+}
+
+input.form-control,
+input.form-control.is-valid,
+input.form-control.is-invalid,
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  border-color: initial;
+  background-image: none;
+}
+
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem $border-gray;
+}
+
+.form-control.is-valid {
+  background-image: none;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem $border-gray;
+  }
+}
+
 .form-control::placeholder,
 input::placeholder {
   font-family: $inter-regular;
@@ -26,10 +58,6 @@ input:focus:not([readonly]) {
   &:not([type="radio"]) {
     border-bottom: solid 2px $txt-black;
   }
-}
-
-input[readonly]:focus {
-  pointer-events: none;
 }
 
 //tab-focus
@@ -109,59 +137,6 @@ input[type="radio"] {
   }
 }
 
-/* Error/validation */
-.form-control.is-valid {
-  background-image: none;
-
-  &:focus {
-    box-shadow: 0 0 0 0.2rem $border-gray;
-  }
-}
-
-//error message
-.input-error {
-  color: $bright-orange;
-  font-weight: 700;
-  letter-spacing: 0.025rem;
-}
-
-.input-label-help-text-container {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-
-  & label {
-    letter-spacing: 0;
-    font-size: 1rem;
-  }
-
-  //for orange asterisk after label
-  & label.required::after {
-    content: " *";
-    color: $txt-orange;
-  }
-
-  & .help-block {
-    font-size: 1rem;
-    text-transform: lowercase;
-  }
-}
-
-.input-validate-error {
-  font-size: $txt-sm;
-  color: $error-red;
-
-  fieldset & {
-    position: absolute;
-  }
-}
-
-fieldset.change-password-custom-inputs {
-  span.input-validate-error {
-    position: relative !important;
-  }
-}
-
 /* Login username-pw / reset-password set-new-password */
 .password-input {
   display: flex;
@@ -179,6 +154,16 @@ fieldset.change-password-custom-inputs {
 
 input#display-none-new-password {
   display: none;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* Switch toggle */
@@ -245,6 +230,22 @@ input#display-none-new-password {
   position: absolute;
   width: auto;
   @extend .visuallyhidden;
+}
+
+/* Select */
+select {
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  background-color: $white;
+  height: 40px;
+  margin-top: 3px;
+}
+
+//react-select
+.select__multi-value__label {
+  font-size: 1.25rem !important;
+  align-self: center !important;
 }
 
 /* Cross browser */

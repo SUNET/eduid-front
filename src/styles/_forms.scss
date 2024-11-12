@@ -1,10 +1,16 @@
-/* Form */
+/* Form layout elements */
 
-// top margin here assumes that text above has bottom margin of 1rem
+//top margin here assumes that text above has bottom margin of 1rem
 form {
   display: flex;
   flex-direction: column;
   margin-top: 1.25rem;
+}
+
+.input-container {
+  margin-bottom: 1.125rem;
+  margin-right: 0.5rem;
+  flex: 1;
 }
 
 .element-pair,
@@ -19,7 +25,7 @@ form {
   align-items: unset;
 }
 
-// single input and button on a row
+//single input and button on a row
 .single-input-form {
   flex-direction: row;
   align-items: center;
@@ -43,46 +49,19 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    align-items: unset;
+
+    button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
 }
 
-.transparent-input-error {
-  background-color: transparent;
-  color: transparent;
-}
-
-.form-control:disabled,
-.form-control[readonly],
-input[readonly] {
-  border-bottom: none;
-  color: $txt-gray;
-}
-
-input.form-control,
-input.form-control.is-valid,
-input.form-control.is-invalid,
-input.form-control:focus,
-input.form-control.is-valid:focus,
-input.form-control.is-invalid:focus {
-  border-color: initial;
-  background-image: none;
-}
-
-input.form-control:focus,
-input.form-control.is-valid:focus,
-input.form-control.is-invalid:focus {
-  box-shadow: 0 0 0 0.2rem $border-gray;
-}
-
-// Possible not used due to react-select
-select {
-  padding: 5px;
-  border-radius: 3px;
-  width: 100%;
-  background-color: $white;
-  height: 40px;
-  margin-top: 3px;
-}
-
+//fieldset
 fieldset {
   width: 100%;
   position: relative;
@@ -101,15 +80,64 @@ fieldset {
   }
 }
 
-/* smallish grayish additional info underneath corresponding form elements */
+//help/error
+fieldset.change-password-custom-inputs {
+  span.input-validate-error {
+    position: relative !important;
+  }
+}
+
+.transparent-input-error {
+  background-color: transparent;
+  color: transparent;
+}
+
+.input-error {
+  color: $bright-orange;
+  font-weight: 700;
+  letter-spacing: 0.025rem;
+}
+
+.input-validate-error {
+  font-size: $txt-sm;
+  color: $error-red;
+
+  fieldset & {
+    position: absolute;
+  }
+}
+
+.input-label-help-text-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+
+  & label {
+    letter-spacing: 0;
+    font-size: 1rem;
+  }
+
+  //for orange asterisk after label
+  & label.required::after {
+    content: " *";
+    color: $txt-orange;
+  }
+
+  & .help-block {
+    font-size: 1rem;
+    text-transform: lowercase;
+  }
+}
+
+//smallish grayish additional info underneath corresponding form elements
 .help-text {
   margin: 0.5rem 0 0;
   line-height: 1.2;
   color: $txt-gray;
   font-size: 14px;
-  
+
   &.black {
-    color:$txt-black;
+    color: $txt-black;
   }
 
   .btn + & {
@@ -123,36 +151,9 @@ fieldset {
   }
 }
 
-@media (max-width: $bp-sm) {
-  #reset-password-email-form {
-    flex-direction: column;
-    align-items: unset;
-
-    button {
-      width: 100%;
-      margin-top: 1rem;
-    }
-  }
-}
-
-// React-select
-.select__multi-value__label {
-  font-size: 1.25rem !important;
-  align-self: center !important;
-}
-
 .legend-2fa {
   flex-direction: column;
   p {
     font-family: $inter-regular;
   }
-}
-
-input[type="checkbox"] {
-  height: 1rem;
-  width: 1rem;
-  margin-right: 0.5rem;
-  border: none;
-  outline: none;
-  box-shadow: none;
 }
