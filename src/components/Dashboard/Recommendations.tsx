@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function ConfirmedAccountStatus(props: { username?: string }): JSX.Element | nul
         <h3>
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
         </h3>
-        <p>
+        <span>
           {props.username ? (
             props.username
           ) : (
@@ -35,13 +35,18 @@ function ConfirmedAccountStatus(props: { username?: string }): JSX.Element | nul
               }}
             />
           )}
-        </p>
+        </span>
       </div>
     </div>
   );
 }
 
 function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Element | null {
+  const identityLink = (
+    <Link key={identityPath} to={identityPath} aria-label="go to identity page">
+      Identity
+    </Link>
+  );
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
@@ -55,83 +60,125 @@ function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Ele
       </div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage description="connect your identity to eduID heading" defaultMessage="Verified Identity" />
+          {props.identities?.is_verified === true ? (
+            <FormattedMessage description="Verified Identity heading" defaultMessage="Verified Identity" />
+          ) : (
+            <FormattedMessage description="Verify Identity heading" defaultMessage="Verify Your Identity" />
+          )}
         </h3>
-        <p>
-          <FormattedMessage
-            description="connect your identity to eduID description"
-            defaultMessage="Connect your identity to eduID at {identity}"
-            values={{
-              identity: (
-                <Link key={identityPath} to={identityPath} aria-label="go to identity page">
-                  Identity
-                </Link>
-              ),
-            }}
-          />
-        </p>
+        <span>
+          {props.identities?.is_verified === true ? (
+            <FormattedMessage
+              description="See more details about your verified identity description"
+              defaultMessage="See more details about your verified identity at {identity}"
+              values={{
+                identity: identityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="connect your identity to eduID description"
+              defaultMessage="Connect your identity to eduID at {identity}"
+              values={{
+                identity: identityLink,
+              }}
+            />
+          )}
+        </span>
       </div>
     </div>
   );
 }
 
 function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
+  const securityLink = (
+    <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+      Security
+    </Link>
+  );
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input
+        {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {/* <input
           type="checkbox"
           checked={Boolean(props.tokens?.length)}
           aria-label="Verified Identity"
           onChange={() => {}}
-        />
+        /> */}
       </div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage description="add two-factor authentication heading" defaultMessage="Improved security" />
+          {props.tokens?.length ? (
+            <FormattedMessage description="Improved Security heading" defaultMessage="Improved Security" />
+          ) : (
+            <FormattedMessage description="Improve Security heading" defaultMessage="Improve Security" />
+          )}
         </h3>
-        <p>
-          <FormattedMessage
-            description="add two-factor authentication description"
-            defaultMessage="Add two-factor authentication at {security}"
-            values={{
-              security: (
-                <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
-                  Security
-                </Link>
-              ),
-            }}
-          />
-        </p>
+        <span>
+          {props.tokens?.length ? (
+            <FormattedMessage
+              description="See more about your two-factor authentication description"
+              defaultMessage="See more about your two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="add two-factor authentication description"
+              defaultMessage="Add two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          )}
+        </span>
       </div>
     </div>
   );
 }
 
 function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
+  const securityLink = (
+    <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+      Security
+    </Link>
+  );
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">
-        <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" onChange={() => {}} />
+        {verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {/* <input type="checkbox" checked={Boolean(verifiedToken)} aria-label="Verified security" onChange={() => {}} /> */}
       </div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage description="verified security key heading" defaultMessage="Verified security" />
+          {verifiedToken ? (
+            <FormattedMessage description="Verified Security key heading" defaultMessage="Verified Security key" />
+          ) : (
+            <FormattedMessage description="Verify your Security key" defaultMessage="Verify your Security key" />
+          )}
         </h3>
-        <p>
-          <FormattedMessage
-            description="verified security key description"
-            defaultMessage="Verified security key at {security}"
-            values={{
-              security: (
-                <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
-                  Security
-                </Link>
-              ),
-            }}
-          />
-        </p>
+        <span>
+          {verifiedToken ? (
+            <FormattedMessage
+              description="verified security key description"
+              defaultMessage="See more details about your verified two-factor authentication settings at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="add two-factor authentication description"
+              defaultMessage="Add two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          )}
+        </span>
       </div>
     </div>
   );
@@ -148,15 +195,13 @@ export function Recommendations(): JSX.Element | null {
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
-  // const emails = useAppSelector((state) => state.emails.emails);
+  const emails = useAppSelector((state) => state.emails.emails);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
 
-  const username = `${chosen_given_name} ${surname}`;
-  // const email = emails?.filter((mail) => mail.primary)[0].email;
   useEffect(() => {
     if (isLoaded) {
       // call requestCredentials once app is loaded
@@ -164,6 +209,10 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
+  // console.log("1 emails", emails);
+  const username = `${chosen_given_name} ${surname}`;
+  // const email = emails && emails?.filter((mail) => mail.primary)[0].email;
+  // console.log("2 email", email);
   const steps = [
     {
       component: <ConfirmedAccountStatus username={username} />,
@@ -171,7 +220,10 @@ export function Recommendations(): JSX.Element | null {
     },
     { component: <VerifiedIdentityStatus identities={identities} />, completed: identities?.is_verified },
     { component: <ImprovedSecurityStatus tokens={tokens} />, completed: Boolean(tokens.length > 0) },
-    { component: <VerifiedSecurityStatus tokens={tokens} />, completed: tokens?.find((token) => token.verified) },
+    {
+      component: <VerifiedSecurityStatus tokens={tokens} />,
+      completed: Boolean(tokens?.find((token) => token.verified)),
+    },
   ];
 
   const orderedSteps = [...steps].sort((a, b): any => {
@@ -212,14 +264,13 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="Status of completed steps are indicated with a checkmark."
         />
       </p>
-
       {orderedSteps.map((step, index) => {
-        <div key={index}>{step.component}</div>;
+        <React.Fragment key={index}>{step.component}</React.Fragment>;
       })}
-      {/* <ConfirmedAccountStatus username={username} />
+      <ConfirmedAccountStatus username={username} />
       <VerifiedIdentityStatus identities={identities} />
       <ImprovedSecurityStatus tokens={tokens} />
-      <VerifiedSecurityStatus tokens={tokens} /> */}
+      <VerifiedSecurityStatus tokens={tokens} />
     </article>
   );
 }
