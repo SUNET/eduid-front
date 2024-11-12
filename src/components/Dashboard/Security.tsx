@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
-export function AccountSecurity(): JSX.Element {
+export function Security(): JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {

@@ -10,14 +10,13 @@ import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { PageNotFound } from "./Common/PageNotFound";
 import Splash from "./Common/Splash";
-import { AcademicIdentities } from "./Dashboard/AcademicIdentitiesPage";
-import { AccountSecurity } from "./Dashboard/AccountSecurityPage";
-import { AccountSettings } from "./Dashboard/AccountSettingsPage";
+import { Account } from "./Dashboard/Account";
 import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
-import Start from "./Dashboard/DashboardStartPage";
-import Identity from "./Dashboard/IdentityPage";
+import Start from "./Dashboard/DashboardStart";
+import Identity from "./Dashboard/Identity";
+import { Security } from "./Dashboard/Security";
 import { Help } from "./Help";
 import { Index } from "./Index";
 import Login from "./Login/Login";
@@ -65,11 +64,10 @@ export function IndexMain(): JSX.Element {
                 <Route path="/login/:ref" element={<Login />} />
                 <Route path="/reset-password/*" element={<ResetPasswordApp />} />
                 {/* Dashboard */}
-                <Route path={securityPath} element={<AccountSecurity />} />
-                <Route path={accountPath} element={<AccountSettings />} />
+                <Route path={securityPath} element={<Security />} />
+                <Route path={accountPath} element={<Account />} />
                 <Route path="/profile/settings/" element={<Navigate to={accountPath} />} />
                 <Route path={identityPath} element={<Identity />} />
-                <Route path={academicIdentityPath} element={<AcademicIdentities />} />
                 <Route path="/profile/chpass/" element={<ChangePassword />} />
                 <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />

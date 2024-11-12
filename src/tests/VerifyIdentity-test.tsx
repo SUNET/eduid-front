@@ -1,4 +1,4 @@
-import VerifyIdentity from "components/Dashboard/IdentityPage";
+import VerifyIdentity from "components/Dashboard/Identity";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";

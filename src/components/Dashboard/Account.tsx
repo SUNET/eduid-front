@@ -12,7 +12,7 @@ import { AccountLinking } from "./AccountLinking";
 import LadokContainer from "./Ladok";
 
 /* The Dashboard "Account settings" tab */
-export function AccountSettings(): JSX.Element {
+export function Account(): JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {
