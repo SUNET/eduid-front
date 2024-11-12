@@ -939,10 +939,6 @@
     "developer_comment": "Emails button add",
     "string": "Add"
   },
-  "Nk+I3K": {
-    "developer_comment": "personal data edit title",
-    "string": "Edit name and language"
-  },
   "NmCGzv": {
     "developer_comment": "delete.confirm_button",
     "string": "Confirm"
@@ -1215,6 +1211,10 @@
   "UI0vOY": {
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
+  },
+  "UQlcH7": {
+    "developer_comment": "personal data edit title",
+    "string": "Edit name and display name"
   },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
