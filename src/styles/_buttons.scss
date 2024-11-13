@@ -285,7 +285,8 @@ button.icon-only {
 }
 
 .btn-close.btn-sm:focus,
-.header-user:focus {
+.header-user:focus-within,
+.header-user:hover {
   background-color: $body-gray !important;
 }
 
