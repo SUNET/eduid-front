@@ -284,10 +284,12 @@ button.icon-only {
   }
 }
 
-.btn-close.btn-sm:focus,
-.header-user:focus-within,
-.header-user:hover {
-  background-color: $body-gray !important;
+//menu name control
+button.header-user {
+  &:hover,
+  &:focus-within {
+    background-color: $body-gray !important;
+  }
 }
 
 //Scroll To top button
