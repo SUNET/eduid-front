@@ -5,7 +5,7 @@ import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl"
 
 test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);
-  expect(screen.getByRole("heading", { name: /Connect your identity to your eduID/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();
   // show two options for verification, swedish id and eu id
   const swedishAccordion = screen.getByRole("button", {
     name: /swedish personal ID or coordination number With a digital ID-card/i,

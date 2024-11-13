@@ -14,7 +14,7 @@ import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunc
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  const nav = screen.getByRole("link", { name: "Security" });
   act(() => {
     nav.click();
   });

@@ -7,7 +7,7 @@ test("renders DeleteAccount as expected", () => {
   render(<IndexMain />);
 
   // Navigate to Settings
-  const nav = screen.getByRole("link", { name: "Settings" });
+  const nav = screen.getByRole("link", { name: "Account" });
   act(() => {
     nav.click();
   });
