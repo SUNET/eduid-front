@@ -152,9 +152,11 @@ button.btn-link {
       display: none;
     }
   }
-  &.disabled {
+  &.disabled,
+  :disabled {
     color: $txt-gray;
     opacity: 1;
+    box-shadow: none;
   }
 }
 
