@@ -5,11 +5,11 @@ import { CredentialType, requestCredentials } from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
-function ConfirmedAccountStatus(props: { email?: string }): JSX.Element | null {
+function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
       <div className="custom-checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
@@ -39,7 +39,7 @@ function ConfirmedAccountStatus(props: { email?: string }): JSX.Element | null {
   );
 }
 
-function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Element | null {
+function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): JSX.Element | null {
   const identityLink = (
     <Link key={identityPath} to={identityPath} aria-label="go to identity page">
       Identity
@@ -82,7 +82,7 @@ function VerifiedIdentityStatus(props: { identities?: UserIdentities }): JSX.Ele
   );
 }
 
-function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
+function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
     <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
       Security
@@ -125,7 +125,7 @@ function ImprovedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
   );
 }
 
-function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Element | null {
+function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
     <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
       Security
@@ -149,7 +149,7 @@ function VerifiedSecurityStatus(props: { tokens?: CredentialType[] }): JSX.Eleme
           {verifiedToken ? (
             <FormattedMessage
               description="verified security key description"
-              defaultMessage="See more details about your verified two-factor authentication settings at {security}"
+              defaultMessage="See more details about your verified two-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
@@ -194,25 +194,6 @@ export function Recommendations(): JSX.Element | null {
 
   const email = emails?.filter((mail) => mail.primary)[0].email;
 
-  const steps = [
-    {
-      component: <ConfirmedAccountStatus email={email} />,
-      completed: Boolean(email),
-    },
-    { component: <VerifiedIdentityStatus identities={identities} />, completed: identities?.is_verified },
-    { component: <ImprovedSecurityStatus tokens={tokens} />, completed: Boolean(tokens.length > 0) },
-    {
-      component: <VerifiedSecurityStatus tokens={tokens} />,
-      completed: Boolean(tokens?.find((token) => token.verified)),
-    },
-  ];
-
-  const orderedSteps = [...steps].sort((a, b) => {
-    const completedA = a.completed ?? true;
-    const completedB = b.completed ?? true;
-    return Number(completedB) - Number(completedA);
-  });
-
   if (!isLoaded) {
     return null;
   }
@@ -249,9 +230,10 @@ export function Recommendations(): JSX.Element | null {
             defaultMessage="Status of completed steps are indicated with a checkmark."
           />
         </p>
-        {orderedSteps.map((step, index) => {
-          return <React.Fragment key={index}>{step.component}</React.Fragment>;
-        })}
+        <ConfirmedAccountStatus email={email} />
+        <VerifiedIdentityStatus identities={identities} />
+        <ImprovedSecurityStatus tokens={tokens} />
+        <VerifiedSecurityStatus tokens={tokens} />
       </article>
     </Splash>
   );
