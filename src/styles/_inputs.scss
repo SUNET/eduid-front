@@ -53,7 +53,7 @@ input:focus:not([readonly]) {
   background-color: $white;
   border-color: $txt-gray;
   box-shadow: 0 0 0 0.2rem $border-gray;
-  outline: 0 !important;
+  outline: 0;
 
   &:not([type="radio"]) {
     border-bottom: solid 2px $txt-black;
@@ -65,8 +65,9 @@ input:focus:not([readonly]) {
   outline: 2px dashed #000 !important;
   transition: none !important;
 
-  //parent has overflow hidden to round corners
-  &.accordion__button {
+  //has parents with overflow hidden
+  &.accordion__button,
+  table & {
     outline-offset: -2px;
   }
   &.toggle-checkbox + .toggle-switch {
