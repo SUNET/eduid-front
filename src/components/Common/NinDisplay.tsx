@@ -1,6 +1,7 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+import { IDENTITY_PATH } from "components/IndexMain";
 import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -60,7 +61,7 @@ export function NinDisplay(props: NinDisplayProps) {
     <div className="profile-grid-cell">
       {!props.nin ? (
         // if there is no NIN, render a link to verify-identity
-        <Link to={`/profile/verify-identity/`} className="display-data unverified">
+        <Link to={IDENTITY_PATH} className="display-data unverified">
           <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
         </Link>
       ) : (

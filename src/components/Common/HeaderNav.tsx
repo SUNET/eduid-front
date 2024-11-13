@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
-import { accountPath, identityPath, securityPath, startPath } from "components/IndexMain";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -81,7 +81,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={startPath}
+            to={START_PATH}
             end
           >
             <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
@@ -90,7 +90,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={identityPath}
+            to={IDENTITY_PATH}
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
           </NavLink>
@@ -98,7 +98,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={securityPath}
+            to={SECURITY_PATH}
           >
             <FormattedMessage defaultMessage="Security" description="Dashboard nav tab name" />
           </NavLink>
@@ -106,7 +106,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={accountPath}
+            to={ACCOUNT_PATH}
           >
             <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
           </NavLink>

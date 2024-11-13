@@ -2,8 +2,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faIdCard, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
-import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
-import { accountPath, identityPath, securityPath } from "components/IndexMain";
+import { CredentialType, requestCredentials, RequestCredentialsResponse } from "apis/eduidSecurity";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -34,7 +34,7 @@ function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX
           defaultMessage="Add your security key to enable safe reset of password"
         />
       </p>
-      <Link key="advanced-settings" to={securityPath}>
+      <Link key="advanced-settings" to={SECURITY_PATH}>
         <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
       </Link>
     </AccordionItemTemplate>
@@ -59,7 +59,7 @@ function RecommendationAddingName(props: { given_name?: string }): JSX.Element |
           defaultMessage="Name can be used to personalise services that you access with your eduID."
         />
       </p>
-      <Link key="settings" to={accountPath}>
+      <Link key="settings" to={ACCOUNT_PATH}>
         <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
       </Link>
     </AccordionItemTemplate>
@@ -105,7 +105,7 @@ function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JS
       uuid="recommendation-verify-identity"
     >
       <p>{description}</p>
-      <Link key="verify-identity" to={identityPath}>
+      <Link key="verify-identity" to={IDENTITY_PATH}>
         <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
       </Link>
     </AccordionItemTemplate>
