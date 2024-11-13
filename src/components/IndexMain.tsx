@@ -65,17 +65,18 @@ export function IndexMain(): JSX.Element {
                 {/* Dashboard */}
                 <Route path={SECURITY_PATH} element={<Security />} />
                 <Route path={ACCOUNT_PATH} element={<Account />} />
-                <Route path="/profile/settings/" element={<Navigate to="/profile/account/" />} />
-                <Route path="/profile/account/" element={<Navigate to={ACCOUNT_PATH} />} />
                 <Route path={IDENTITY_PATH} element={<Identity />} />
                 <Route path="/profile/chpass/" element={<ChangePassword />} />
                 <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                 {/* Navigates for old paths. TODO: redirect in backend server instead */}
-                <Route path="/profile/settings/" element={<Navigate to="/profile/security/" />} />
                 <Route path="/profile/accountlinking/" element={<Navigate to={ACCOUNT_PATH} />} />
                 <Route path="/profile/nins/" element={<Navigate to={IDENTITY_PATH} />} />
                 <Route path="/profile/emails/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/personaldata/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/advanced-settings/" element={<Navigate to={SECURITY_PATH} />} />
+                <Route path="/profile/verify-identity/" element={<Navigate to={IDENTITY_PATH} />} />
                 <Route path={START_PATH} element={<Start />} />
                 {/* Errors*/}
                 <Route path="/errors" element={<Errors />} />

@@ -1,4 +1,4 @@
-import { identityPath, IndexMain, securityPath } from "components/IndexMain";
+import { IDENTITY_PATH, IndexMain, SECURITY_PATH } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
@@ -61,7 +61,7 @@ test("recommendations for new user, verify identity", async () => {
     verifyIdentityButton.click();
   });
   await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Identity/i })).toHaveAttribute("href", identityPath);
+    expect(screen.getByRole("link", { name: /Go to Identity/i })).toHaveAttribute("href", IDENTITY_PATH);
   });
 });
 
@@ -76,7 +76,7 @@ test("recommendations for new user, adding security key", async () => {
     addingSecurityButton.click();
   });
   await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Advanced Settings/i })).toHaveAttribute("href", securityPath);
+    expect(screen.getByRole("link", { name: /Go to Advanced Settings/i })).toHaveAttribute("href", SECURITY_PATH);
   });
 });
 
