@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
-      <div className="custom-checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
       <div className="text-wrapper">
         <h3>
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
@@ -47,7 +47,7 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   );
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
-      <div className="custom-checkbox-wrapper">
+      <div className="checkbox-wrapper">
         {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
       </div>
       <div className="text-wrapper">
@@ -90,7 +90,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   );
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
-      <div className="custom-checkbox-wrapper">
+      <div className="checkbox-wrapper">
         {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
       </div>
       <div className="text-wrapper">
@@ -134,9 +134,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
-      <div className="custom-checkbox-wrapper">
-        {verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
-      </div>
+      <div className="checkbox-wrapper">{verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
