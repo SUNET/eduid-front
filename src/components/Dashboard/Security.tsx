@@ -1,5 +1,5 @@
 import { faGears } from "@fortawesome/free-solid-svg-icons";
-import { MultifactorAuthentication } from "components/Common/MultifactorAuthentication";
+import { MultiFactorAuthentication } from "components/Common/MultiFactorAuthentication";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
@@ -34,7 +34,7 @@ export function Security(): JSX.Element {
           </p>
         </div>
       </section>
-      <MultifactorAuthentication />
+      <MultiFactorAuthentication />
     </React.Fragment>
   );
 }

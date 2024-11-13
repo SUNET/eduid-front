@@ -111,14 +111,6 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
           </NavLink>
 
-          {/* <NavLink
-            onClick={() => setOpenMenu(false)}
-            className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-            to={academicIdentityPath}
-          >
-            <FormattedMessage defaultMessage="Academic Identities" description="Dashboard nav tab name" />
-          </NavLink> */}
-
           <EduIDButton
             buttonstyle="link"
             size="sm"
