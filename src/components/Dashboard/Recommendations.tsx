@@ -2,7 +2,6 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
-import Splash from "components/Common/Splash";
 import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
@@ -197,42 +196,40 @@ export function Recommendations(): JSX.Element | null {
   }
 
   return (
-    <Splash showChildren={isLoaded}>
-      <article>
-        <h2>
-          <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
-        </h2>
-        <p>
-          <FormattedMessage
-            description="status overview paragraph1"
-            defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
-          />
-        </p>
-        <p>
-          <FormattedMessage
-            description="status overview paragraph2"
-            defaultMessage={`Suggestions as to what might be required depending on the assurance level from the 
+    <article>
+      <h2>
+        <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
+      </h2>
+      <p>
+        <FormattedMessage
+          description="status overview paragraph1"
+          defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          description="status overview paragraph2"
+          defaultMessage={`Suggestions as to what might be required depending on the assurance level from the 
               organisation you are accessing with your eduID, can be found at {help}.`}
-            values={{
-              help: (
-                <Link key="/help" to="/help" aria-label="go to help page">
-                  Help
-                </Link>
-              ),
-            }}
-          />
-        </p>
-        <p>
-          <FormattedMessage
-            description="status overview paragraph3"
-            defaultMessage="Status of completed steps are indicated with a checkmark."
-          />
-        </p>
-        <ConfirmedAccountStatus email={email} />
-        <VerifiedIdentityStatus identities={identities} />
-        <ImprovedSecurityStatus tokens={tokens} />
-        <VerifiedSecurityStatus tokens={tokens} />
-      </article>
-    </Splash>
+          values={{
+            help: (
+              <Link key="/help" to="/help" aria-label="go to help page">
+                Help
+              </Link>
+            ),
+          }}
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          description="status overview paragraph3"
+          defaultMessage="Status of completed steps are indicated with a checkmark."
+        />
+      </p>
+      <ConfirmedAccountStatus email={email} />
+      <VerifiedIdentityStatus identities={identities} />
+      <ImprovedSecurityStatus tokens={tokens} />
+      <VerifiedSecurityStatus tokens={tokens} />
+    </article>
   );
 }
