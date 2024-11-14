@@ -2,7 +2,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
-import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -25,7 +25,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
               defaultMessage="Add your name at {account}"
               values={{
                 account: (
-                  <Link key={settingsPath} to={settingsPath} aria-label="go to account page">
+                  <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
                     Account
                   </Link>
                 ),
@@ -40,7 +40,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
 
 function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): JSX.Element | null {
   const identityLink = (
-    <Link key={identityPath} to={identityPath} aria-label="go to identity page">
+    <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       Identity
     </Link>
   );
@@ -83,7 +83,7 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
 
 function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
-    <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       Security
     </Link>
   );
@@ -126,7 +126,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 
 function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
-    <Link key={advancedSettingsPath} to={advancedSettingsPath} aria-label="go to security page">
+    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       Security
     </Link>
   );

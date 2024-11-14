@@ -1,5 +1,4 @@
-import { IDENTITY_PATH, IndexMain, SECURITY_PATH } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { IDENTITY_PATH, IndexMain } from "components/IndexMain";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -47,26 +46,12 @@ test("recommendations for new users, connect your identity", async () => {
   });
 
   await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Identity/i })).toHaveAttribute("href", IDENTITY_PATH);
+    expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Identity/i })).toHaveAttribute("href", IDENTITY_PATH);
   });
 });
 
-test("recommendations for new user, adding security key", async () => {
-  render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile/"],
-  });
-  const addingSecurityButton = screen.getByRole("button", { name: /Add your security key/i });
-  expect(addingSecurityButton).toBeEnabled();
-  act(() => {
-    addingSecurityButton.click();
-  });
-  await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Advanced Settings/i })).toHaveAttribute("href", SECURITY_PATH);
-  });
-});
-
-test("not renders letter proofing progress, verified user with swedish id number", () => {
+test("recommendations for new users, add your security key", async () => {
   render(<IndexMain />, {
     state: {
       emails: {
