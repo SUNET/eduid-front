@@ -55,14 +55,9 @@ export default function Start(): JSX.Element {
             }}
           />
         </h1>
-        <AccountIdShort />
+
         <div className="lead">
-          <p>
-            <FormattedMessage
-              description="start page lead title"
-              defaultMessage="Make the most out of eduID by reviewing your information."
-            />
-          </p>
+          <AccountIdShort />
         </div>
       </section>
 

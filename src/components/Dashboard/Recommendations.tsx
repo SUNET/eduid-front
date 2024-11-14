@@ -203,14 +203,14 @@ export function Recommendations(): JSX.Element | null {
       <p>
         <FormattedMessage
           description="status overview paragraph1"
-          defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
+          defaultMessage="There are steps you can take to improve the strength and usage of your eduID listed below."
         />
       </p>
       <p>
         <FormattedMessage
           description="status overview paragraph2"
-          defaultMessage={`Suggestions as to what might be required depending on the assurance level from the 
-              organisation you are accessing with your eduID, can be found at {help}.`}
+          defaultMessage={`Suggestions on what might be required depending on the 
+              organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
               <Link key="/help" to="/help" aria-label="go to help page">
