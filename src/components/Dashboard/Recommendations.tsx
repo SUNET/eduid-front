@@ -220,7 +220,7 @@ export function Recommendations(): JSX.Element | null {
           }}
         />
       </p>
-      <p>
+      <p className="help-text">
         <FormattedMessage
           description="status overview paragraph3"
           defaultMessage="Status of completed steps are indicated with a checkmark."

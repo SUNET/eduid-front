@@ -66,7 +66,7 @@ header {
 
     .nav-menu {
       display: none;
-      min-width: 200px;
+      min-width: 250px;
 
       ul {
         text-align: left;
@@ -95,6 +95,7 @@ header {
         }
       }
 
+      //menu item
       .menu {
         display: flex;
         align-items: center;
@@ -102,6 +103,7 @@ header {
         justify-content: left;
         width: fit-content;
         line-height: 1.2;
+        width: 100%;
 
         &:nth-child(4) {
           border-bottom: 1px solid $border-gray;
