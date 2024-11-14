@@ -14,10 +14,11 @@
       height: auto;
     }
   }
-  #uniqueId-container & {
-    flex-direction: row;
-    align-items: baseline;
-  }
+}
+
+#uniqueId-container {
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .display-data {
