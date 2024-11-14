@@ -24,7 +24,7 @@ import ConfirmModal from "./ConfirmModal";
 import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
-function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
+export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
   // get FIDO tokens from list of all user credentials
   return state.security.credentials.filter(
     (cred: CredentialType) =>
