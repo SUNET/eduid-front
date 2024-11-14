@@ -107,7 +107,6 @@ function IdentityContent(): JSX.Element {
           )}
         </div>
       </section>
-      <PersonalDataParent />
 
       <article>
         {identities?.is_verified ? (
@@ -136,6 +135,7 @@ function IdentityContent(): JSX.Element {
           </React.Fragment>
         )}
       </article>
+      <PersonalDataParent />
     </React.Fragment>
   );
 }
