@@ -174,7 +174,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
       <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
-          defaultMessage="Continue without extra security option"
+          defaultMessage="Continue without security option"
         />
       </h3>
       <p>

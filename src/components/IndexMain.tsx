@@ -9,14 +9,14 @@ import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { PageNotFound } from "./Common/PageNotFound";
-import { Settings } from "./Common/Settings";
 import Splash from "./Common/Splash";
-import { AdvancedSettings } from "./Dashboard/AdvancedSettings";
+import { Account } from "./Dashboard/Account";
 import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
-import VerifyIdentity from "./Dashboard/VerifyIdentity";
+import Identity from "./Dashboard/Identity";
+import { Security } from "./Dashboard/Security";
 import { Help } from "./Help";
 import { Index } from "./Index";
 import Login from "./Login/Login";
@@ -27,10 +27,10 @@ import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
-export const startPath = "/profile/";
-export const identityPath = "/profile/verify-identity/";
-export const settingsPath = "/profile/settings/personaldata";
-export const advancedSettingsPath = "/profile/settings/advanced-settings";
+export const START_PATH = "/profile/";
+export const ACCOUNT_PATH = "/profile/account/";
+export const SECURITY_PATH = "/profile/security/";
+export const IDENTITY_PATH = "/profile/identity/";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): JSX.Element {
@@ -63,19 +63,21 @@ export function IndexMain(): JSX.Element {
                 <Route path="/login/:ref" element={<Login />} />
                 <Route path="/reset-password/*" element={<ResetPasswordApp />} />
                 {/* Dashboard */}
-                <Route path={advancedSettingsPath} element={<AdvancedSettings />} />
-                <Route path={settingsPath} element={<Settings />} />
-                <Route path="/profile/settings/" element={<Navigate to={settingsPath} />} />
-                <Route path={identityPath} element={<VerifyIdentity />} />
+                <Route path={SECURITY_PATH} element={<Security />} />
+                <Route path={ACCOUNT_PATH} element={<Account />} />
+                <Route path={IDENTITY_PATH} element={<Identity />} />
                 <Route path="/profile/chpass/" element={<ChangePassword />} />
                 <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
                 <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                 {/* Navigates for old paths. TODO: redirect in backend server instead */}
-                <Route path="/profile/security/" element={<Navigate to="/profile/settings/" />} />
-                <Route path="/profile/accountlinking/" element={<Navigate to={advancedSettingsPath} />} />
-                <Route path="/profile/nins/" element={<Navigate to={identityPath} />} />
-                <Route path="/profile/emails/" element={<Navigate to={settingsPath} />} />
-                <Route path={startPath} element={<Start />} />
+                <Route path="/profile/accountlinking/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/nins/" element={<Navigate to={IDENTITY_PATH} />} />
+                <Route path="/profile/emails/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/personaldata/" element={<Navigate to={ACCOUNT_PATH} />} />
+                <Route path="/profile/settings/advanced-settings/" element={<Navigate to={SECURITY_PATH} />} />
+                <Route path="/profile/verify-identity/" element={<Navigate to={IDENTITY_PATH} />} />
+                <Route path={START_PATH} element={<Start />} />
                 {/* Errors*/}
                 <Route path="/errors" element={<Errors />} />
                 <Route path="/help" element={<Help />} />

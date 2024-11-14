@@ -2,6 +2,7 @@ import { authnGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
+import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,14 +30,14 @@ export function ExternalReturnHandler() {
       // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
       // the user should be returned to
       const actionToRoute: { [key: string]: string } = {
-        verifyIdentity: "/profile/verify-identity/",
-        verifyCredential: "/profile/settings/advanced-settings/",
+        verifyIdentity: IDENTITY_PATH,
+        verifyCredential: SECURITY_PATH,
         changepwAuthn: "/profile/chpass",
         terminateAccountAuthn: "/",
-        addSecurityKeyAuthn: "/profile/settings/advanced-settings/",
-        removeSecurityKeyAuthn: "/profile/settings/advanced-settings/",
-        changeSecurityPreferencesAuthn: "/profile/settings/advanced-settings/",
-        removeIdentity: "/profile/verify-identity/",
+        addSecurityKeyAuthn: SECURITY_PATH,
+        removeSecurityKeyAuthn: SECURITY_PATH,
+        changeSecurityPreferencesAuthn: SECURITY_PATH,
+        removeIdentity: IDENTITY_PATH,
       };
       const _path = actionToRoute[status.frontend_action];
       if (_path) {
