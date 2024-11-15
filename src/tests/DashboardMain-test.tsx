@@ -67,7 +67,7 @@ test("renders eduID status overview, confirmed account", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[6]).toHaveTextContent(/Verify your Security key/);
+  expect(screen.getAllByRole("heading")[2]).toHaveTextContent(/Confirmed account/);
 });
 
 test("renders verified identity user", () => {
@@ -91,7 +91,7 @@ test("renders verified identity user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[4]).toHaveTextContent(/Verified Identity/);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Verified identity/);
 });
 
 test("renders identity verification progress, verified user", () => {
@@ -115,5 +115,5 @@ test("renders identity verification progress, verified user", () => {
     },
   });
 
-  expect(screen.getAllByRole("heading")[4]).toHaveTextContent(/Verify Your Identity/);
+  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Verify your identity/);
 });
