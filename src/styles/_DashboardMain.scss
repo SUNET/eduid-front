@@ -85,6 +85,9 @@
 }
 
 // --- STATUS OVERVIEW STYLES--- //
+.status-boxes {
+  margin: 1rem 0;
+}
 .status-box {
   @extend .accordion;
   display: grid;

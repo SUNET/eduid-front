@@ -104,12 +104,11 @@ fieldset {
 /* smallish grayish additional info underneath corresponding form elements */
 .help-text {
   margin: 0.5rem 0 0;
-  line-height: 1.2;
   color: $txt-gray;
   font-size: 14px;
-  
+
   &.black {
-    color:$txt-black;
+    color: $txt-black;
   }
 
   .btn + & {

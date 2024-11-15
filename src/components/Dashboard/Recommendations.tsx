@@ -226,10 +226,26 @@ export function Recommendations(): JSX.Element | null {
           defaultMessage="Status of completed steps are indicated with a checkmark."
         />
       </p>
-      <ConfirmedAccountStatus email={email} />
-      <VerifiedIdentityStatus identities={identities} />
-      <ImprovedSecurityStatus tokens={tokens} />
-      <VerifiedSecurityStatus tokens={tokens} />
+      <section className="status-boxes">
+        <ConfirmedAccountStatus email={email} />
+        <VerifiedIdentityStatus identities={identities} />
+        <ImprovedSecurityStatus tokens={tokens} />
+        <VerifiedSecurityStatus tokens={tokens} />
+      </section>
+      <p className="help-text">
+        <FormattedMessage
+          description="confirmed account description"
+          defaultMessage="Note: additional settings such as display name, language, email addresses, password management as well as ORCID and ESI affiliation 
+      can be edited at  {account}."
+          values={{
+            account: (
+              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                Account
+              </Link>
+            ),
+          }}
+        />
+      </p>
     </article>
   );
 }
