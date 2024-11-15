@@ -17,6 +17,7 @@ import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
@@ -181,6 +182,9 @@ function VerifiedIdentitiesTable(): JSX.Element {
       })[0];
     if (idType) {
       const response = await dispatch(removeIdentity({ identity_type: idType }));
+      if (removeIdentity.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      }
     }
   }
 
