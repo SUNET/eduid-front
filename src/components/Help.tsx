@@ -366,240 +366,7 @@ export function Help(): JSX.Element {
               </p>
             </article>
           </AccordionItemTemplate>
-          <AccordionItemTemplate
-            uuid="help-security-key"
-            title={
-              <FormattedMessage
-                description="about security key - handle"
-                defaultMessage="Improving the security level of eduID"
-              />
-            }
-            additionalInfo={
-              <FormattedMessage
-                description="about security key - info"
-                defaultMessage="Adding an MFA/2FA Security Key"
-              />
-            }
-          >
-            <article>
-              <h4>
-                <FormattedMessage
-                  description="how more secure - heading"
-                  defaultMessage="How do I make my eduID more secure?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="how more secure description 1"
-                  defaultMessage={`Some services will require a higher security level and to improve the security of 
-                  your eduID, in addition to knowledge of your username (confirmed email address) and password 
-                  combination, you can use another layer of authentication to log in. This is called multi-Factor 
-                  authentication (MFA); and in eduID's case two-factor authentication (2FA).`}
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="how more secure description 2"
-                  defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
-                  or biometric information such as fingerprint or face-recognition supported on the device you are 
-                  using, and we refer to these techniques as a 'Security key'.`}
-                />
-              </p>
-              <h4>
-                <FormattedMessage
-                  description="how add security key - heading"
-                  defaultMessage="How do I implement 2FA with eduID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="how add security key - paragraph 1"
-                  defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="how add security key - paragraph 2"
-                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
-                />
-              </p>
-              <h4>
-                <FormattedMessage
-                  description="which type of security key - heading"
-                  defaultMessage="Which type of security key can I use with eduID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="which type of security key - paragraph"
-                  defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below.`}
-                />
-              </p>
-              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
-                <AccordionItemTemplate
-                  uuid="help-security-usb"
-                  title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
-                  additionalInfo={null}
-                >
-                  <article>
-                    <h4>
-                      <FormattedMessage
-                        description="choosing usb key - heading"
-                        defaultMessage="Choosing a Security Key"
-                      />
-                    </h4>
-                    <p>
-                      <FormattedMessage
-                        description="choosing usb key - paragraph"
-                        defaultMessage={`Not all security keys meet the necessary specifications to be used as a security key for eduID.`}
-                      />
-                    </p>
-                    <p>
-                      <FormattedMessage
-                        description="choosing usb key - list definition"
-                        defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
-                      />
-                    </p>
 
-                    <ul className="bullets">
-                      <li>
-                        <FormattedMessage
-                          description="usb key - list item 1"
-                          defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
-                          values={{
-                            Fido: (
-                              <a className="text-link" href="https://fidoalliance.org/" target="_blank">
-                                fidoalliance.org
-                              </a>
-                            ),
-                          }}
-                        />
-                      </li>
-                      <li>
-                        <FormattedMessage
-                          description="usb key - list item 2"
-                          defaultMessage={`Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used.`}
-                        />
-                      </li>
-                    </ul>
-                    <section>
-                      <h5>
-                        <FormattedMessage
-                          description="usb key technical section - heading"
-                          defaultMessage="Further technical information: "
-                        />
-                      </h5>
-                      <ul className="bullets">
-                        <li>
-                          <FormattedMessage
-                            description="usb key technical section - list item 1"
-                            defaultMessage="The key must perform an attestation and exist in the metadata,"
-                          />
-                        </li>
-                        <li>
-                          <FormattedMessage
-                            description="usb key technical section - list item 2"
-                            defaultMessage="it must not contain any other status in the metadata than a few variants of: "
-                          />
-                          &nbsp;
-                          <code>
-                            <FormattedMessage
-                              description="usb key technical section - list item 2 code"
-                              defaultMessage='"fido certified"'
-                            />
-                          </code>
-                          ,
-                        </li>
-                        <li>
-                          <FormattedMessage
-                            description="usb key technical section - list item 3"
-                            defaultMessage="it must support any of the following user verification methods: "
-                          />
-                          &nbsp;
-                          <code>
-                            <FormattedMessage
-                              description="usb key technical section - list item 3 code"
-                              defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
-                  "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
-                            />
-                          </code>
-                          ,
-                        </li>
-                        <li>
-                          <FormattedMessage
-                            description="usb key technical section - list item 4"
-                            defaultMessage="and must not support any other key protection than: "
-                          />
-                          &nbsp;
-                          <code>
-                            <FormattedMessage
-                              description="usb key technical section - list item 4 code"
-                              defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
-                            />
-                          </code>
-                          .
-                        </li>
-                      </ul>
-                    </section>
-                  </article>
-                </AccordionItemTemplate>
-              </Accordion>
-              {/* security key list */}
-              {approvedSecurityKeys?.entries ? (
-                <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security-keys-list">
-                  <AccordionItemTemplate
-                    uuid="security-key-list"
-                    title={
-                      <FormattedMessage
-                        defaultMessage="Currently valid physical Security Keys"
-                        description="Security keys list - heading"
-                      />
-                    }
-                    additionalInfo={null}
-                  >
-                    <article>
-                      <p>
-                        <FormattedMessage
-                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
-                          description="Security keys list - paragraph"
-                        />
-                      </p>
-                      <form>
-                        <fieldset className="key-update">
-                          <div>
-                            <label>
-                              <FormattedMessage
-                                defaultMessage="Next update"
-                                description="Security keys list - paragraph"
-                              />
-                            </label>
-                            <time>{formattedNextUpdateDate}</time>
-                          </div>
-                        </fieldset>
-                        <table className="keys">
-                          <thead>
-                            <tr>
-                              <th>No.</th>
-                              <th>Model</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {approvedSecurityKeys?.entries.map((item, index) => (
-                              <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{item}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </form>
-                    </article>
-                  </AccordionItemTemplate>
-                </Accordion>
-              ) : null}
-            </article>
-          </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-verification"
             title={
@@ -611,27 +378,10 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about verification of identity - info"
-                defaultMessage="Levels and methods of verifying eduID for different user groups"
+                defaultMessage="Methods of verifying eduID for different user groups"
               />
             }
           >
-            <article id="identity">
-              <h4>
-                <FormattedMessage
-                  description="what are verification levels - heading"
-                  defaultMessage="What are verification levels?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="what are verification levels - paragraph"
-                  defaultMessage={`Service providers need to rely on organisations to manage their users credentials 
-                  according to certain assurance levels (e.g. AL1-3), depending on the type of information accessible. 
-                  The levels range from unconfirmed, to confirmed, to verified users also using MFA when logging in to 
-                  the system.`}
-                />
-              </p>
-            </article>
             <article>
               <h4>
                 <FormattedMessage
@@ -1029,6 +779,308 @@ export function Help(): JSX.Element {
                 </article>
               </AccordionItemTemplate>
             </Accordion>
+          </AccordionItemTemplate>
+
+          <AccordionItemTemplate
+            uuid="help-security-key"
+            title={
+              <FormattedMessage
+                description="about security key - handle"
+                defaultMessage="Improving the security level of eduID"
+              />
+            }
+            additionalInfo={
+              <FormattedMessage
+                description="about security key - info"
+                defaultMessage="Adding an MFA/2FA Security Key"
+              />
+            }
+          >
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="how more secure - heading"
+                  defaultMessage="How do I make my eduID more secure?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="how more secure description 1"
+                  defaultMessage={`Some services will require a higher security level and to improve the security of 
+                  your eduID, in addition to knowledge of your username (confirmed email address) and password 
+                  combination, you can use another layer of authentication to log in. This is called multi-Factor 
+                  authentication (MFA); and in eduID's case two-factor authentication (2FA).`}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="how more secure description 2"
+                  defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
+                  or biometric information such as fingerprint or face-recognition supported on the device you are 
+                  using, and we refer to these techniques as a 'Security key'.`}
+                />
+              </p>
+              <h4>
+                <FormattedMessage
+                  description="how add security key - heading"
+                  defaultMessage="How do I implement 2FA with eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="how add security key - paragraph 1"
+                  defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
+                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="how add security key - paragraph 2"
+                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
+                />
+              </p>
+              <h4>
+                <FormattedMessage
+                  description="which type of security key - heading"
+                  defaultMessage="Which type of security key can I use with eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="which type of security key - paragraph"
+                  defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below.`}
+                />
+              </p>
+              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
+                <AccordionItemTemplate
+                  uuid="help-security-usb"
+                  title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
+                  additionalInfo={null}
+                >
+                  <article>
+                    <h4>
+                      <FormattedMessage
+                        description="choosing usb key - heading"
+                        defaultMessage="Choosing a Security Key"
+                      />
+                    </h4>
+                    <p>
+                      <FormattedMessage
+                        description="choosing usb key - paragraph"
+                        defaultMessage={`Not all security keys meet the necessary specifications to be used as a security key for eduID.`}
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        description="choosing usb key - list definition"
+                        defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
+                      />
+                    </p>
+
+                    <ul className="bullets">
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 1"
+                          defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
+                          values={{
+                            Fido: (
+                              <a className="text-link" href="https://fidoalliance.org/" target="_blank">
+                                fidoalliance.org
+                              </a>
+                            ),
+                          }}
+                        />
+                      </li>
+                      <li>
+                        <FormattedMessage
+                          description="usb key - list item 2"
+                          defaultMessage={`Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used.`}
+                        />
+                      </li>
+                    </ul>
+                    <section>
+                      <h5>
+                        <FormattedMessage
+                          description="usb key technical section - heading"
+                          defaultMessage="Further technical information: "
+                        />
+                      </h5>
+                      <ul className="bullets">
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 1"
+                            defaultMessage="The key must perform an attestation and exist in the metadata,"
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 2"
+                            defaultMessage="it must not contain any other status in the metadata than a few variants of: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 2 code"
+                              defaultMessage='"fido certified"'
+                            />
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 3"
+                            defaultMessage="it must support any of the following user verification methods: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 3 code"
+                              defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
+                  "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
+                            />
+                          </code>
+                          ,
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="usb key technical section - list item 4"
+                            defaultMessage="and must not support any other key protection than: "
+                          />
+                          &nbsp;
+                          <code>
+                            <FormattedMessage
+                              description="usb key technical section - list item 4 code"
+                              defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
+                            />
+                          </code>
+                          .
+                        </li>
+                      </ul>
+                    </section>
+                  </article>
+                </AccordionItemTemplate>
+              </Accordion>
+              {/* security key list */}
+              {approvedSecurityKeys?.entries ? (
+                <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security-keys-list">
+                  <AccordionItemTemplate
+                    uuid="security-key-list"
+                    title={
+                      <FormattedMessage
+                        defaultMessage="Currently valid physical Security Keys"
+                        description="Security keys list - heading"
+                      />
+                    }
+                    additionalInfo={null}
+                  >
+                    <article>
+                      <p>
+                        <FormattedMessage
+                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
+                          description="Security keys list - paragraph"
+                        />
+                      </p>
+                      <form>
+                        <fieldset className="key-update">
+                          <div>
+                            <label>
+                              <FormattedMessage
+                                defaultMessage="Next update"
+                                description="Security keys list - paragraph"
+                              />
+                            </label>
+                            <time>{formattedNextUpdateDate}</time>
+                          </div>
+                        </fieldset>
+                        <table className="keys">
+                          <thead>
+                            <tr>
+                              <th>No.</th>
+                              <th>Model</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {approvedSecurityKeys?.entries.map((item, index) => (
+                              <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{item}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </form>
+                    </article>
+                  </AccordionItemTemplate>
+                </Accordion>
+              ) : null}
+            </article>
+          </AccordionItemTemplate>
+
+          <AccordionItemTemplate
+            uuid="help-assurance-levels"
+            title={<FormattedMessage description="about assurance levels - handle" defaultMessage="Assurance levels" />}
+            additionalInfo={
+              <FormattedMessage description="about assurance levels - info" defaultMessage="AL, LOA etc." />
+            }
+          >
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="what are assurance levels - heading"
+                  defaultMessage="What are assurance levels?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="what are assurance levels - paragraph"
+                  defaultMessage={`Service providers need to rely on organisations to manage their users credentials according to certain assurance levels set by relevant authorities, depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users with additional authentication when logging in to a system.`}
+                />
+              </p>
+              <h4>
+                <FormattedMessage
+                  description="At what level is your eduID - heading"
+                  defaultMessage="At what level is your eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph1"
+                  defaultMessage={`When successfully creating an eduID you have a {strong} (confirmed email-address and passed CAPTCHA) which generally conforms to AL1.`}
+                  values={{
+                    strong: <strong>confirmed account</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph2"
+                  defaultMessage={`With a {strong} the eduID account generally reaches AL2, which is at a sufficient level for many services at higher education institutions and e.g. Ladok.
+`}
+                  values={{
+                    strong: <strong>verified identity</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph3"
+                  defaultMessage={`With a verified Swedish identity and {strong1} in the form of additional multi factor authentication, e.g. a {strong2}, the account generally conforms to Swamid AL3/ DIGG LOA2 and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+`}
+                  values={{
+                    strong1: <strong>improved security</strong>,
+                    strong2: <strong>verified security key</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph4"
+                  defaultMessage={`Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+
+`}
+                />
+              </p>
+            </article>
           </AccordionItemTemplate>
 
           <AccordionItemTemplate

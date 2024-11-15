@@ -14,7 +14,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
       <div className="checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed Account" />
+          <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
         </h3>
         <span>
           {props.email ? (
@@ -52,9 +52,9 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
       <div className="text-wrapper">
         <h3>
           {props.identities?.is_verified === true ? (
-            <FormattedMessage description="Verified Identity heading" defaultMessage="Verified Identity" />
+            <FormattedMessage description="Verified Identity heading" defaultMessage="Verified identity" />
           ) : (
-            <FormattedMessage description="Verify Identity heading" defaultMessage="Verify Your Identity" />
+            <FormattedMessage description="Verify Identity heading" defaultMessage="Verify your identity" />
           )}
         </h3>
         <span>
@@ -95,9 +95,9 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
       <div className="text-wrapper">
         <h3>
           {props.tokens?.length ? (
-            <FormattedMessage description="Improved Security heading" defaultMessage="Improved Security" />
+            <FormattedMessage description="Improved Security heading" defaultMessage="Improved security" />
           ) : (
-            <FormattedMessage description="Improve Security heading" defaultMessage="Improve Security" />
+            <FormattedMessage description="Improve Security heading" defaultMessage="Improve security" />
           )}
         </h3>
         <span>
@@ -137,9 +137,9 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
-            <FormattedMessage description="Verified Security key heading" defaultMessage="Verified Security key" />
+            <FormattedMessage description="Verified Security key heading" defaultMessage="Verified security key" />
           ) : (
-            <FormattedMessage description="Verify your Security key" defaultMessage="Verify your Security key" />
+            <FormattedMessage description="Verify your Security key" defaultMessage="Verify your security key" />
           )}
         </h3>
         <span>
@@ -203,14 +203,14 @@ export function Recommendations(): JSX.Element | null {
       <p>
         <FormattedMessage
           description="status overview paragraph1"
-          defaultMessage="These are steps you can take to improve the strength and usage of your eduID listed below."
+          defaultMessage="The strength and usage of your eduID can be improved by following the steps listed below."
         />
       </p>
       <p>
         <FormattedMessage
           description="status overview paragraph2"
-          defaultMessage={`Suggestions as to what might be required depending on the assurance level from the 
-              organisation you are accessing with your eduID, can be found at {help}.`}
+          defaultMessage={`Suggestions on what might be required depending on the 
+              organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
               <Link key="/help" to="/help" aria-label="go to help page">
@@ -220,16 +220,32 @@ export function Recommendations(): JSX.Element | null {
           }}
         />
       </p>
-      <p>
+      <p className="help-text">
         <FormattedMessage
           description="status overview paragraph3"
           defaultMessage="Status of completed steps are indicated with a checkmark."
         />
       </p>
-      <ConfirmedAccountStatus email={email} />
-      <VerifiedIdentityStatus identities={identities} />
-      <ImprovedSecurityStatus tokens={tokens} />
-      <VerifiedSecurityStatus tokens={tokens} />
+      <section className="status-boxes">
+        <ConfirmedAccountStatus email={email} />
+        <VerifiedIdentityStatus identities={identities} />
+        <ImprovedSecurityStatus tokens={tokens} />
+        <VerifiedSecurityStatus tokens={tokens} />
+      </section>
+      <p className="help-text">
+        <FormattedMessage
+          description="confirmed account description"
+          defaultMessage="Note: additional settings such as language, email addresses, password management as well as ORCID and ESI affiliation 
+      can be edited at  {account}."
+          values={{
+            account: (
+              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                Account
+              </Link>
+            ),
+          }}
+        />
+      </p>
     </article>
   );
 }
