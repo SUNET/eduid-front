@@ -235,7 +235,7 @@ export function Recommendations(): JSX.Element | null {
       <p className="help-text">
         <FormattedMessage
           description="confirmed account description"
-          defaultMessage="Note: additional settings such as display name, language, email addresses, password management as well as ORCID and ESI affiliation 
+          defaultMessage="Note: additional settings such as language, email addresses, password management as well as ORCID and ESI affiliation 
       can be edited at  {account}."
           values={{
             account: (
