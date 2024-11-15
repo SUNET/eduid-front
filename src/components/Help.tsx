@@ -1036,6 +1036,50 @@ export function Help(): JSX.Element {
                   defaultMessage={`Service providers need to rely on organisations to manage their users credentials according to certain assurance levels set by relevant authorities, depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users with additional authentication when logging in to a system.`}
                 />
               </p>
+              <h4>
+                <FormattedMessage
+                  description="At what level is your eduID - heading"
+                  defaultMessage="At what level is your eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph1"
+                  defaultMessage={`When successfully creating an eduID you have a {strong} (confirmed email-address and passed CAPTCHA) which generally conforms to AL1.`}
+                  values={{
+                    strong: <strong>confirmed account</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph2"
+                  defaultMessage={`With a {strong} the eduID account generally reaches AL2, which is at a sufficient level for many services at higher education institutions and e.g. Ladok.
+`}
+                  values={{
+                    strong: <strong>verified identity</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph3"
+                  defaultMessage={`With a verified Swedish identity and {strong1} in the form of additional multi factor authentication, e.g. a {strong2}, the account generally conforms to Swamid AL3/ DIGG LOA2 and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+`}
+                  values={{
+                    strong1: <strong>improved security</strong>,
+                    strong2: <strong>verified security key</strong>,
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph4"
+                  defaultMessage={`Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+
+`}
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
 
