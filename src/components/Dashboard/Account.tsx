@@ -1,5 +1,5 @@
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import { AccountId } from "components/Dashboard/AccountId";
+import { AccountIdDisplay } from "components/Dashboard/AccountId";
 import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
 import DeleteAccount from "components/Dashboard/DeleteAccount";
@@ -44,7 +44,7 @@ export function Account(): JSX.Element {
           </p>
         </div>
       </section>
-      <AccountId />
+      <AccountIdDisplay />
       <Emails />
       <Phones />
       <LanguagePreference />

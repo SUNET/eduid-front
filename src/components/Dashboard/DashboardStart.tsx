@@ -4,7 +4,7 @@ import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { AccountIdShort } from "./AccountId";
+import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
 
@@ -55,12 +55,10 @@ export default function Start(): JSX.Element {
             }}
           />
         </h1>
-
         <div className="lead">
-          <AccountIdShort />
+          <AccountId />
         </div>
       </section>
-
       <Recommendations />
     </Splash>
   );
