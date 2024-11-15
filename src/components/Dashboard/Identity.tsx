@@ -3,6 +3,11 @@ import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
+import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
+import EduIDButton from "components/Common/EduIDButton";
+import NinDisplay from "components/Common/NinDisplay";
+import NotificationModal from "components/Common/NotificationModal";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -10,18 +15,13 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
-
-import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
-import NinDisplay from "components/Common/NinDisplay";
-import NotificationModal from "components/Common/NotificationModal";
-import authnSlice from "slices/Authn";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import PersonalDataParent from "./PersonalDataParent";
@@ -181,6 +181,9 @@ function VerifiedIdentitiesTable(): JSX.Element {
       })[0];
     if (idType) {
       const response = await dispatch(removeIdentity({ identity_type: idType }));
+      if (removeIdentity.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      }
     }
   }
 
