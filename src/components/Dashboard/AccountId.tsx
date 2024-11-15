@@ -38,7 +38,7 @@ export function AccountIdDisplay(): JSX.Element {
           description="Dashboard AccountId"
         />
       </p>
-      {AccountId}
+      <AccountId />
     </article>
   );
 }
