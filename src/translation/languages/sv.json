@@ -1426,7 +1426,7 @@
   },
   "aSOlMx": {
     "developer_comment": "verified security key description",
-    "string": "Se mer om din verifierade tvåfaktorsautentisering under {security}"
+    "string": "Läs mer om din verifierade tvåfaktorsautentisering under {security}"
   },
   "actions.action-completed": {
     "string": "Klart"
