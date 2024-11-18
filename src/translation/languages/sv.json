@@ -591,7 +591,7 @@
   },
   "E7bB/9": {
     "developer_comment": "status overview title",
-    "string": "eduID statusöversikt"
+    "string": "eduID statusöversikt."
   },
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
@@ -1426,7 +1426,7 @@
   },
   "aSOlMx": {
     "developer_comment": "verified security key description",
-    "string": "Läs mer om din verifierade tvåfaktorsautentisering under {security}"
+    "string": "Se mer om din verifierade tvåfaktorsautentisering under {security}"
   },
   "actions.action-completed": {
     "string": "Klart"
