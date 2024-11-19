@@ -95,9 +95,9 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
       <div className="text-wrapper">
         <h3>
           {props.tokens?.length ? (
-            <FormattedMessage description="Improved Security heading" defaultMessage="Improved security" />
+            <FormattedMessage description="Improved Security heading" defaultMessage="Enhanced security" />
           ) : (
-            <FormattedMessage description="Improve Security heading" defaultMessage="Improve security" />
+            <FormattedMessage description="Improve Security heading" defaultMessage="Enhance security" />
           )}
         </h3>
         <span>
