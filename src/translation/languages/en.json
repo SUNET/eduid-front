@@ -27,6 +27,10 @@
     "developer_comment": "continue reset password",
     "string": "Continue resetting password"
   },
+  "+IKRPb": {
+    "developer_comment": "Assurance levels with your eduID - paragraph3",
+    "string": "the eduID account generally reaches {emphasis}, which is at a sufficient level for many services at higher education institutions and e.g. Ladok."
+  },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
     "string": "What is Ladok and ESI?"
@@ -329,6 +333,10 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
+  "6Kmray": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2",
+    "string": "when successfully creating an eduID (with confirmed email-address and passed CAPTCHA) which generally conforms to {emphasis}."
+  },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
@@ -521,6 +529,10 @@
     "developer_comment": "Set new password",
     "string": "Repeat new password"
   },
+  "BKznd0": {
+    "developer_comment": "Assurance levels with your eduID - paragraph4",
+    "string": "your added security key is connected to your identity."
+  },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
     "string": "To change the default language you can log in to eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
@@ -572,10 +584,6 @@
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
     "string": "If you can't find the answers to your questions about eduID on this help page, you can contact the eduID support by mailing {support}."
-  },
-  "Dndoli": {
-    "developer_comment": "Improved Security heading",
-    "string": "Enhanced security"
   },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
@@ -632,9 +640,9 @@
     "developer_comment": "Errors go to dashboard instruction",
     "string": "You can review your settings at the"
   },
-  "EyETE3": {
-    "developer_comment": "security lead title",
-    "string": "Increase the security of your eduID."
+  "F6k/XP": {
+    "developer_comment": "about security key - handle",
+    "string": "Enhancing the security level of eduID"
   },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
@@ -776,6 +784,10 @@
     "developer_comment": "Identity",
     "string": "Identity"
   },
+  "IebhrL": {
+    "developer_comment": "Assurance levels with your eduID - paragraph1",
+    "string": "At the logged in start page you can see an overview of the status of your eduID."
+  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "Email addresses"
@@ -807,6 +819,10 @@
   "K427ha": {
     "developer_comment": "security second factor",
     "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are USB security keys or your device."
+  },
+  "KBCDxK": {
+    "developer_comment": "recommendations security link",
+    "string": "Security"
   },
   "KK1zTc": {
     "developer_comment": "enhance eduid - list definition",
@@ -874,6 +890,10 @@
   "LxAnnP": {
     "developer_comment": "Reset password",
     "string": "Send sms to {phone}"
+  },
+  "LxTqDa": {
+    "developer_comment": "recommendations identity link",
+    "string": "Identity"
   },
   "M0VtTr": {
     "developer_comment": "See more details about your verified identity description",
@@ -1031,10 +1051,6 @@
     "developer_comment": "Display name select placeholder",
     "string": "select display name"
   },
-  "PbFRqj": {
-    "developer_comment": "Assurance levels with your eduID - paragraph3",
-    "string": "With a verified Swedish identity and {strong1} in the form of additional multi factor authentication, e.g. a {strong2}, the account generally conforms to Swamid AL3/ DIGG LOA2 and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
-  },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
     "string": "Disconnect your identity"
@@ -1075,10 +1091,6 @@
     "developer_comment": "international if personal number - paragraph",
     "string": "Note: holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead."
   },
-  "Qk/6Zg": {
-    "developer_comment": "Improve Security heading",
-    "string": "Enhance security"
-  },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Delete my eduID"
@@ -1113,6 +1125,10 @@
   "RQxyUT": {
     "developer_comment": "status overview paragraph2",
     "string": "Suggestions on what might be required depending on the organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}."
+  },
+  "RRwNqZ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph4strong",
+    "string": "Verified security key:"
   },
   "Rf84nl": {
     "developer_comment": "ok button",
@@ -1288,6 +1304,10 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
+  "WHX2Wh": {
+    "developer_comment": "Improved Security heading",
+    "string": "Enhanced security"
+  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -1368,6 +1388,18 @@
     "developer_comment": "copied button label",
     "string": "COPIED"
   },
+  "Ylwurh": {
+    "developer_comment": "Assurance levels with your eduID - paragraph4",
+    "string": "is added in the form of multi factor authentication."
+  },
+  "Yqyf5c": {
+    "developer_comment": "Assurance levels with your eduID - paragraph6",
+    "string": "Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services."
+  },
+  "YuWePR": {
+    "developer_comment": "recommendations account link",
+    "string": "Account"
+  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using this code on the first device, please close this browser window."
@@ -1442,10 +1474,6 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
-  },
-  "aryhbi": {
-    "developer_comment": "Assurance levels with your eduID - paragraph4",
-    "string": "Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services."
   },
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
@@ -1526,6 +1554,10 @@
   "bfWfFp": {
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
+  },
+  "boeOxE": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2strong",
+    "string": "Confirmed account:"
   },
   "c1nVKp": {
     "developer_comment": "Verified identity",
@@ -1824,6 +1856,10 @@
     "developer_comment": "button cancel",
     "string": "Cancel"
   },
+  "g1y6QE": {
+    "developer_comment": "Assurance levels with your eduID - paragraph5",
+    "string": "With a verified Swedish identity and a verified security key the account generally conforms to {emphasis} and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -1871,6 +1907,10 @@
   "hHpM+l": {
     "developer_comment": "how remove linked orcid - heading",
     "string": "How can I remove a linked ORCID from eduID?"
+  },
+  "hI2GLK": {
+    "developer_comment": "Assurance levels with your eduID - paragraph3strong",
+    "string": "Verified identity:"
   },
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
@@ -1955,6 +1995,10 @@
   "invalid username": {
     "string": "Invalid username"
   },
+  "iqYb0U": {
+    "developer_comment": "Assurance levels with your eduID - paragraph4strong",
+    "string": "Enhanced security:"
+  },
   "iyw+WR": {
     "developer_comment": "usb key technical section - list item 3 code",
     "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
@@ -1983,6 +2027,10 @@
     "developer_comment": "usb key - list item 2",
     "string": "Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used."
   },
+  "jXjX1p": {
+    "developer_comment": "security lead title",
+    "string": "Enhance the security of your eduID."
+  },
   "jYWXMn": {
     "developer_comment": "enter code",
     "string": "enter code"
@@ -1999,13 +2047,13 @@
     "developer_comment": "about privacy accessibility - handle",
     "string": "Privacy policy and Web accessibility"
   },
+  "jgEunh": {
+    "developer_comment": "Improve Security heading",
+    "string": "Enhance security"
+  },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
-  },
-  "kBTG7h": {
-    "developer_comment": "Assurance levels with your eduID - paragraph1",
-    "string": "When successfully creating an eduID you have a {strong} (confirmed email-address and passed CAPTCHA) which generally conforms to AL1."
   },
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
@@ -2380,10 +2428,6 @@
   "pJdAxW": {
     "developer_comment": "how create eduid - heading",
     "string": "How can I create an eduID?"
-  },
-  "pKbvrL": {
-    "developer_comment": "Assurance levels with your eduID - paragraph2",
-    "string": "With a {strong} the eduID account generally reaches AL2, which is at a sufficient level for many services at higher education institutions and e.g. Ladok."
   },
   "pUOZzA": {
     "developer_comment": "create eduid - list item 5",
@@ -2885,6 +2929,10 @@
   "uMFspJ": {
     "developer_comment": "Temp info - continue button",
     "string": "Continue"
+  },
+  "uUvCmK": {
+    "developer_comment": "recommendations help link",
+    "string": "Help"
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
