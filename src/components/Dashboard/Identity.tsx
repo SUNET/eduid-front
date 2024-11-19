@@ -146,20 +146,37 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
+  const frontend_state = useAppSelector((state) => state.authn.response?.frontend_state);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
-
+  const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
 
   useEffect(() => {
-    if (frontend_action) {
-      if (frontend_action === "removeIdentity") {
-        handleRemoveIdentity();
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
+    if (frontend_action === "removeIdentity" && frontend_state) {
+      handleRemoveIdentity(frontend_state);
+      dispatch(authnSlice.actions.setAuthnFrontendReset());
+    }
+  }, [frontend_action, frontend_state]);
+
+  async function handleRemoveIdentity(identityType: string) {
+    setShowConfirmRemoveIdentityVerificationModal(false);
+    if (identityType) {
+      const response = await dispatch(removeIdentity({ identity_type: identityType }));
+      if (removeIdentity.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      } else {
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "removeIdentity",
+            frontend_state: identityType,
+          })
+        );
       }
     }
-  }, [frontend_action]);
+  }
 
-  async function handleConfirmDeleteModal() {
+  async function handleConfirmDeleteModal(identityType: string) {
+    setIdentityType(identityType);
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
@@ -167,23 +184,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
     } else {
-      handleRemoveIdentity();
-    }
-  }
-
-  async function handleRemoveIdentity() {
-    setShowConfirmRemoveIdentityVerificationModal(false);
-    // find dynamically which identity_type
-    const idType =
-      identities &&
-      Object.keys(identities).filter((objProp) => {
-        return objProp !== "is_verified";
-      })[0];
-    if (idType) {
-      const response = await dispatch(removeIdentity({ identity_type: idType }));
-      if (removeIdentity.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
-      }
+      handleRemoveIdentity(identityType);
     }
   }
 
@@ -204,7 +205,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
               id: "verified identity delete button",
               defaultMessage: "Delete this verified identity",
@@ -228,7 +229,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("eidas")}
           ></EduIDButton>
         </figure>
       )}
@@ -252,7 +253,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("freja")}
           ></EduIDButton>
         </figure>
       )}
@@ -272,24 +273,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
         }
         showModal={showConfirmRemoveIdentityVerificationModal}
         closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
-        acceptModal={handleRemoveIdentity}
+        acceptModal={() => handleRemoveIdentity(identityType)}
         acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
         <React.Fragment>
-          <h2>
+          <h4>
             <FormattedMessage
-              description="verify identity non verified description"
-              defaultMessage="Choose your principal identification method"
+              description="verify identity non swedish verified heading"
+              defaultMessage="Verify your identity to access more services"
             />
-          </h2>
-          <p>
-            <FormattedMessage
-              description="verify identity with swedish ID description"
-              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
-            />
-          </p>
+          </h4>
           <Accordion allowZeroExpanded>
             <AccordionItemSwedish />
           </Accordion>
