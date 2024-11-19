@@ -597,6 +597,10 @@
     "developer_comment": "pd long description",
     "string": "You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
   },
+  "Dzp8k8": {
+    "developer_comment": "verify identity non swedish verified heading",
+    "string": "If you have a Swedish identity you can verify that as well, to be able to access more services."
+  },
   "E7bB/9": {
     "developer_comment": "status overview title",
     "string": "eduID status overview"
@@ -783,10 +787,6 @@
   "Identity": {
     "developer_comment": "Identity",
     "string": "Identity"
-  },
-  "IebhrL": {
-    "developer_comment": "Assurance levels with your eduID - paragraph1",
-    "string": "At the logged in start page you can see an overview of the status of your eduID."
   },
   "Ifusv7": {
     "developer_comment": "Emails main title",
@@ -1467,10 +1467,6 @@
     "developer_comment": "orcid logo",
     "string": "orcid logo"
   },
-  "aqSAPG": {
-    "developer_comment": "verify identity with swedish ID description",
-    "string": "Verify your eduID with a Swedish national ID number."
-  },
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
@@ -2002,6 +1998,10 @@
   "iyw+WR": {
     "developer_comment": "usb key technical section - list item 3 code",
     "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
+  },
+  "j/6lUz": {
+    "developer_comment": "Assurance levels with your eduID - paragraph1",
+    "string": "At the logged in start page an overview of the status of your eduID is presented."
   },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
