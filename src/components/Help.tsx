@@ -1045,7 +1045,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph1"
-                  defaultMessage={`At the logged in start page you can see an overview of the status of your eduID.`}
+                  defaultMessage={`At the logged in start page an overview of the status of your eduID is presented.`}
                 />
               </p>
               <p>

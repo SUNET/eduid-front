@@ -282,7 +282,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           <h4>
             <FormattedMessage
               description="verify identity non swedish verified heading"
-              defaultMessage="Verify your identity to access more services"
+              defaultMessage="If you have a Swedish identity you can verify that as well, to be able to access more services."
             />
           </h4>
           <Accordion allowZeroExpanded>
