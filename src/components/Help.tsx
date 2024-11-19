@@ -786,7 +786,7 @@ export function Help(): JSX.Element {
             title={
               <FormattedMessage
                 description="about security key - handle"
-                defaultMessage="Improving the security level of eduID"
+                defaultMessage="Enhancing the security level of eduID"
               />
             }
             additionalInfo={
@@ -1045,36 +1045,91 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph1"
-                  defaultMessage={`When successfully creating an eduID you have a {strong} (confirmed email-address and passed CAPTCHA) which generally conforms to AL1.`}
-                  values={{
-                    strong: <strong>confirmed account</strong>,
-                  }}
+                  defaultMessage={`At the logged in start page you can see an overview of the status of your eduID.`}
                 />
               </p>
               <p>
+                <strong>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph2strong"
+                    defaultMessage={`Confirmed account:
+`}
+                  />
+                </strong>
+                &nbsp;
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph2"
-                  defaultMessage={`With a {strong} the eduID account generally reaches AL2, which is at a sufficient level for many services at higher education institutions and e.g. Ladok.
+                  defaultMessage={`when successfully creating an eduID you have a confirmed account (confirmed email-address and passed CAPTCHA) which generally conforms to {emphasis}.
 `}
                   values={{
-                    strong: <strong>verified identity</strong>,
+                    emphasis: <em>AL1</em>,
                   }}
                 />
               </p>
               <p>
+                <strong>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph3strong"
+                    defaultMessage={`Verified identity:
+`}
+                  />
+                </strong>
+                &nbsp;
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph3"
-                  defaultMessage={`With a verified Swedish identity and {strong1} in the form of additional multi factor authentication, e.g. a {strong2}, the account generally conforms to Swamid AL3/ DIGG LOA2 and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+                  defaultMessage={`the eduID account generally reaches {emphasis}, which is at a sufficient level for many services at higher education institutions and e.g. Ladok.
 `}
                   values={{
-                    strong1: <strong>improved security</strong>,
-                    strong2: <strong>verified security key</strong>,
+                    emphasis: <em>AL2</em>,
+                  }}
+                />
+              </p>
+              <p>
+                <strong>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph4strong"
+                    defaultMessage={`Enhanced security:
+`}
+                  />
+                </strong>
+                &nbsp;
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph4"
+                  defaultMessage={`is added in the form of additional multi factor authentication. 
+
+`}
+                />
+              </p>
+              <p>
+                <strong>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph4strong"
+                    defaultMessage={`Verified security key:
+`}
+                  />
+                </strong>
+                &nbsp;
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph4"
+                  defaultMessage={`your added security key is connected to your identity.
+ 
+
+`}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="Assurance levels with your eduID - paragraph5"
+                  defaultMessage={`With a verified Swedish identity and a verified security key the account generally conforms to {emphasis} and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+`}
+                  values={{
+                    emphasis: <em>Swamid AL3/ DIGG LOA2</em>,
                   }}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph4"
+                  description="Assurance levels with your eduID - paragraph6"
                   defaultMessage={`Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
 
 `}

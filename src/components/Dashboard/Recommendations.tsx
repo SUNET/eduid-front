@@ -26,7 +26,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
               values={{
                 account: (
                   <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                    Account
+                    <FormattedMessage description="recommendations account link" defaultMessage="Account" />
                   </Link>
                 ),
               }}
@@ -41,7 +41,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
 function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): JSX.Element | null {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
-      Identity
+      <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
     </Link>
   );
   return (
@@ -84,7 +84,7 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
 function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
-      Security
+      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
   return (
@@ -95,9 +95,9 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
       <div className="text-wrapper">
         <h3>
           {props.tokens?.length ? (
-            <FormattedMessage description="Improved Security heading" defaultMessage="Improved security" />
+            <FormattedMessage description="Improved Security heading" defaultMessage="Enhanced security" />
           ) : (
-            <FormattedMessage description="Improve Security heading" defaultMessage="Improve security" />
+            <FormattedMessage description="Improve Security heading" defaultMessage="Enhance security" />
           )}
         </h3>
         <span>
@@ -127,7 +127,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
-      Security
+      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
   const verifiedToken = props.tokens?.find((token) => token.verified);
@@ -214,7 +214,7 @@ export function Recommendations(): JSX.Element | null {
           values={{
             help: (
               <Link key="/help" to="/help" aria-label="go to help page">
-                Help
+                <FormattedMessage description="recommendations help link" defaultMessage="Help" />
               </Link>
             ),
           }}
@@ -240,7 +240,7 @@ export function Recommendations(): JSX.Element | null {
           values={{
             account: (
               <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                Account
+                <FormattedMessage description="recommendations account link" defaultMessage="Account" />
               </Link>
             ),
           }}
