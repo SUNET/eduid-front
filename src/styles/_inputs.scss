@@ -66,6 +66,8 @@ input:focus:not([readonly]) {
   transition: none !important;
 
   //has parents with overflow hidden
+  &[type="text"],
+  &[type="password"],
   &.accordion__button,
   table & {
     outline-offset: -2px;
