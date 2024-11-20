@@ -23,9 +23,10 @@ form .react-select,
     box-shadow: none;
   }
 
-  // &__control--is-focused {
-  //   box-shadow: none;
-  // }
+  //also focus-visible
+  &__control--is-focused {
+    outline: 2px dashed #000 !important;
+  }
 
   &__indicator-separator {
     width: 0;
@@ -38,6 +39,8 @@ form .react-select,
 
   &__option--is-focused {
     background-color: $bg-orange;
+    outline: 1px dashed #000 !important;
+    outline-offset: -1px;
   }
 
   &__option--is-selected {
