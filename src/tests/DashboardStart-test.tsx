@@ -1,11 +1,13 @@
-import { IndexMain, advancedSettingsPath, identityPath } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { IDENTITY_PATH, IndexMain } from "components/IndexMain";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("start page heading text for new user", async () => {
   render(<IndexMain />, {
     state: {
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
       config: { ...configInitialState, is_app_loaded: false },
       personal_data: {
         response: {
@@ -20,32 +22,20 @@ test("start page heading text for new user", async () => {
   });
   expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
   expect(screen.getAllByRole("progressbar")[0]).toHaveClass("spinner");
-  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is not verified./);
+  expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, test@test.se!/);
 });
 
-test("recommendations for new users, adding name", async () => {
-  render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile/"],
-  });
-  const addingNameButton = screen.getByRole("button", { name: /Add your name/i });
-  expect(addingNameButton).toBeEnabled();
-  act(() => {
-    addingNameButton.click();
-  });
-  await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Settings/i })).toBeInTheDocument();
-  });
-});
-
-test("recommendations for new user, verify identity", async () => {
+test("recommendations for new users, connect your identity", async () => {
   render(<IndexMain />, {
     state: {
-      config: { ...configInitialState, is_app_loaded: false },
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
-          eppn: "12345",
+          eppn: "hubba-bubba",
+          chosen_given_name: "test user",
           identities: {
             is_verified: false,
           },
@@ -55,106 +45,83 @@ test("recommendations for new user, verify identity", async () => {
     routes: ["/profile/"],
   });
 
-  const verifyIdentityButton = screen.getByRole("button", { name: /Verify your identity/i });
-  expect(verifyIdentityButton).toBeEnabled();
-  act(() => {
-    verifyIdentityButton.click();
-  });
   await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Identity/i })).toHaveAttribute("href", identityPath);
+    expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Identity/i })).toHaveAttribute("href", IDENTITY_PATH);
   });
 });
 
-test("recommendations for new user, adding security key", async () => {
-  render(<IndexMain />, {
-    state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile/"],
-  });
-  const addingSecurityButton = screen.getByRole("button", { name: /Add your security key/i });
-  expect(addingSecurityButton).toBeEnabled();
-  act(() => {
-    addingSecurityButton.click();
-  });
-  await waitFor(() => {
-    expect(screen.getByRole("link", { name: /Go to Advanced Settings/i })).toHaveAttribute(
-      "href",
-      advancedSettingsPath
-    );
-  });
-});
-
-test("not renders letter proofing progress, verified user with swedish id number", () => {
+test("recommendations for new users, add your security key", async () => {
   render(<IndexMain />, {
     state: {
-      config: { ...configInitialState, is_app_loaded: false },
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
       personal_data: {
         response: {
-          eppn: "test",
-          identities: {
-            is_verified: true,
-            nin: { number: "190102031234", verified: true },
-          },
-        },
-      },
-      letter_proofing: {
-        letter_expired: false,
-        letter_expires: "2023-04-10T23:59:59.678000+00:00",
-        letter_expires_in_days: 12,
-        letter_sent: "2023-03-27T10:25:37.678000+00:00",
-        letter_sent_days_ago: 2,
-      },
-    },
-    routes: ["/profile/"],
-  });
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(/Your identity is verified./);
-  const progressHeading = screen.queryByText("Currently in progress");
-  expect(progressHeading).not.toBeInTheDocument();
-});
-
-test("heading text after password reset", () => {
-  render(<IndexMain />, {
-    state: {
-      config: { ...configInitialState, is_app_loaded: false },
-      personal_data: {
-        response: {
-          eppn: "test",
+          eppn: "hubba-bubba",
+          chosen_given_name: "test user",
           identities: {
             is_verified: false,
-            nin: { number: "190102031234", verified: false },
           },
         },
+      },
+      security: {
+        credentials: [
+          {
+            created_ts: "2022-10-14",
+            credential_type: "security.password_credential_type",
+            description: null,
+            key: "dummy key1",
+            success_ts: "2022-10-17",
+            used_for_login: false,
+            verified: false,
+          },
+        ],
       },
     },
     routes: ["/profile/"],
   });
-  expect(screen.getAllByRole("heading")[3]).toHaveTextContent(
-    /Your identity is no longer verified after password reset./
-  );
-  expect(screen.getByRole("button", { name: /Verify your identity/i })).toBeEnabled();
+
+  await waitFor(() => {
+    expect(screen.getByText(/Add two-factor authentication at/i)).toBeInTheDocument();
+  });
 });
 
-test("renders swedish verification options when user verified with eidas", () => {
+test("recommendations for new user, verify security key", async () => {
   render(<IndexMain />, {
     state: {
-      config: { ...configInitialState, is_app_loaded: false },
-      personal_data: {
-        response: {
-          eppn: "test",
-          identities: {
-            is_verified: true,
-            nin: { number: "190102031234", verified: false },
-            eidas: {
-              prid: "abcd",
-              prid_persistence: "A",
-              date_of_birth: "1990-08-19",
-              country_code: "XE",
-              verified: true,
-            },
+      emails: {
+        emails: [{ email: "test@test.se", primary: true, verified: true }],
+      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
+      security: {
+        credentials: [
+          {
+            created_ts: "2021-12-02",
+            credential_type: "security.webauthn_credential_type",
+            description: "touchID",
+            key: "dummy dummy",
+            success_ts: "2022-10-17",
+            used_for_login: false,
+            verified: false,
           },
-        },
+          {
+            created_ts: "2022-10-14",
+            credential_type: "security.password_credential_type",
+            description: null,
+            key: "dummy key1",
+            success_ts: "2022-10-17",
+            used_for_login: false,
+            verified: false,
+          },
+        ],
       },
     },
     routes: ["/profile/"],
   });
-  expect(screen.getByRole("button", { name: /Verify your identity with Swedish/i })).toBeEnabled();
+  await waitFor(() => {
+    expect(screen.getByText(/Verify your Security key at/i)).toBeInTheDocument();
+  });
 });

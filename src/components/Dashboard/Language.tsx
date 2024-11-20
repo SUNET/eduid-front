@@ -11,7 +11,7 @@ export function LanguagePreference() {
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const messages = LOCALIZED_MESSAGES;
   // Make an ordered list of languages to be presented as radio buttons
-  const _languages = AVAILABLE_LANGUAGES as { [key: string]: string };
+  const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
   const language_list = Object.entries(_languages);
 
   async function formSubmit(values: UserLanguageRequest) {

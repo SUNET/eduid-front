@@ -1,126 +1,177 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faIdCard, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
-import { CredentialType, RequestCredentialsResponse, requestCredentials } from "apis/eduidSecurity";
-import { advancedSettingsPath, identityPath, settingsPath } from "components/IndexMain";
+import { CredentialType, requestCredentials } from "apis/eduidSecurity";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
-import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 
-/**
- * Recommendation for adding name, security key and phone number and verification of identity
- */
-function RecommendationAddingSecurityKey(props: RequestCredentialsResponse): JSX.Element | null {
-  if (props.credentials.length) {
-    return null;
-  }
-
+function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
-    <AccordionItemTemplate
-      uuid="recommendation-security-key"
-      icon={<FontAwesomeIcon icon={faKey as IconProp} className="circle-icon" />}
-      title={
-        <FormattedMessage description="accordion item Adding security key" defaultMessage="Add your security key" />
-      }
-      additionalInfo={null}
-    >
-      <p>
-        <FormattedMessage
-          description="accordion item security key additional info"
-          defaultMessage="Add your security key to enable safe reset of password"
-        />
-      </p>
-      <Link key="advanced-settings" to={advancedSettingsPath}>
-        <FormattedMessage defaultMessage="Go to Advanced settings" description="go to Advanced settings" />
-      </Link>
-    </AccordionItemTemplate>
+    <div className={`status-box ${props.email ? "success" : ""}`}>
+      <div className="checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
+        </h3>
+        <span>
+          {props.email ? (
+            props.email
+          ) : (
+            <FormattedMessage
+              description="confirmed account description"
+              defaultMessage="Add your name at {account}"
+              values={{
+                account: (
+                  <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                    <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+                  </Link>
+                ),
+              }}
+            />
+          )}
+        </span>
+      </div>
+    </div>
   );
 }
 
-function RecommendationAddingName(props: { given_name?: string }): JSX.Element | null {
-  if (props.given_name) {
-    return null;
-  }
-
+function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): JSX.Element | null {
+  const identityLink = (
+    <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
+      <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
+    </Link>
+  );
   return (
-    <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faUser as IconProp} className="circle-icon" />}
-      title={<FormattedMessage description="accordion item Adding name" defaultMessage="Add your name" />}
-      additionalInfo={null}
-      uuid="recommendation-add-name"
-    >
-      <p>
-        <FormattedMessage
-          description="accordion item name additionalInfo"
-          defaultMessage="Name can be used to personalise services that you access with your eduID."
-        />
-      </p>
-      <Link key="settings" to={settingsPath}>
-        <FormattedMessage defaultMessage="Go to Settings" description="go to settings" />
-      </Link>
-    </AccordionItemTemplate>
+    <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
+      <div className="checkbox-wrapper">
+        {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+      </div>
+      <div className="text-wrapper">
+        <h3>
+          {props.identities?.is_verified === true ? (
+            <FormattedMessage description="Verified Identity heading" defaultMessage="Verified identity" />
+          ) : (
+            <FormattedMessage description="Verify Identity heading" defaultMessage="Verify your identity" />
+          )}
+        </h3>
+        <span>
+          {props.identities?.is_verified === true ? (
+            <FormattedMessage
+              description="See more details about your verified identity description"
+              defaultMessage="See more details about your verified identity at {identity}"
+              values={{
+                identity: identityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="connect your identity to eduID description"
+              defaultMessage="Connect your identity to eduID at {identity}"
+              values={{
+                identity: identityLink,
+              }}
+            />
+          )}
+        </span>
+      </div>
+    </div>
   );
 }
 
-function RecommendationVerifyIdentity(props: { identities: UserIdentities }): JSX.Element | null {
-  let title, description;
-  // if user has swedish nin and it is verified, do not show accordion item
-  if (props.identities.nin?.verified) {
-    return null;
-  }
-  // if user verified with eidas or passport, show accordion item to verify with nin
-  if (props.identities.freja?.verified || props.identities.eidas?.verified) {
-    title = (
-      <FormattedMessage
-        description="accordion item Verification with Swedish national ID number"
-        defaultMessage="Verify your identity with Swedish national ID number"
-      />
-    );
-    description = (
-      <FormattedMessage
-        description="accordion item additional info Verification with Swedish national ID number"
-        defaultMessage={`If you have obtained a Swedish national ID number you are able to verify your identity 
-            with the Swedish national ID number.`}
-      />
-    );
-  } else {
-    title = <FormattedMessage description="accordion item Verification" defaultMessage="Verify your identity" />;
-    description = (
-      <FormattedMessage
-        description="accordion item additional info Verification additional info"
-        defaultMessage="Your identity is not verified. Please verify your identity to get access to more services."
-      />
-    );
-  }
-
+function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
+  const securityLink = (
+    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
+    </Link>
+  );
   return (
-    <AccordionItemTemplate
-      icon={<FontAwesomeIcon icon={faIdCard as IconProp} className="circle-icon" />}
-      title={title}
-      additionalInfo={null}
-      uuid="recommendation-verify-identity"
-    >
-      <p>{description}</p>
-      <Link key="verify-identity" to={identityPath}>
-        <FormattedMessage defaultMessage="Go to Identity" description="go to identity" />
-      </Link>
-    </AccordionItemTemplate>
+    <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
+      <div className="checkbox-wrapper">
+        {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+      </div>
+      <div className="text-wrapper">
+        <h3>
+          {props.tokens?.length ? (
+            <FormattedMessage description="Improved Security heading" defaultMessage="Enhanced security" />
+          ) : (
+            <FormattedMessage description="Improve Security heading" defaultMessage="Enhance security" />
+          )}
+        </h3>
+        <span>
+          {props.tokens?.length ? (
+            <FormattedMessage
+              description="See more about your two-factor authentication description"
+              defaultMessage="See more about your two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="add two-factor authentication description"
+              defaultMessage="Add two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          )}
+        </span>
+      </div>
+    </div>
   );
 }
 
-/**
- * This component is responsible for rendering the recommendations accordion.
- */
+function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
+  const securityLink = (
+    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
+    </Link>
+  );
+  const verifiedToken = props.tokens?.find((token) => token.verified);
+  return (
+    <div className={`status-box ${verifiedToken ? "success" : ""}`}>
+      <div className="checkbox-wrapper">{verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="text-wrapper">
+        <h3>
+          {verifiedToken ? (
+            <FormattedMessage description="Verified Security key heading" defaultMessage="Verified security key" />
+          ) : (
+            <FormattedMessage description="Verify your Security key" defaultMessage="Verify your security key" />
+          )}
+        </h3>
+        <span>
+          {verifiedToken ? (
+            <FormattedMessage
+              description="verified security key description"
+              defaultMessage="See more details about your verified two-factor authentication at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              description="verify your security key description"
+              defaultMessage="Verify your security key at {security}"
+              values={{
+                security: securityLink,
+              }}
+            />
+          )}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Recommendations(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
+  const emails = useAppSelector((state) => state.emails.emails);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
@@ -134,26 +185,67 @@ export function Recommendations(): JSX.Element | null {
     }
   }, [isLoaded]);
 
-  if (identities?.nin?.verified && tokens.length && given_name) {
+  if (!emails.length) {
+    return null;
+  }
+
+  const email = emails?.filter((mail) => mail.primary)[0].email;
+
+  if (!isLoaded) {
     return null;
   }
 
   return (
     <article>
       <h2>
-        <FormattedMessage description="recommendation title" defaultMessage="Recommended actions for you" />
+        <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
       </h2>
       <p>
         <FormattedMessage
-          description="recommendation title"
-          defaultMessage="To get the most out of eduID we recommend that you follow the below recommendations."
+          description="status overview paragraph1"
+          defaultMessage="The strength and usage of your eduID can be improved by following the steps listed below."
         />
       </p>
-      <Accordion allowMultipleExpanded allowZeroExpanded>
-        <RecommendationAddingName given_name={given_name} />
-        {identities && <RecommendationVerifyIdentity identities={identities} />}
-        <RecommendationAddingSecurityKey credentials={tokens} />
-      </Accordion>
+      <p>
+        <FormattedMessage
+          description="status overview paragraph2"
+          defaultMessage={`Suggestions on what might be required depending on the 
+              organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
+          values={{
+            help: (
+              <Link key="/help" to="/help" aria-label="go to help page">
+                <FormattedMessage description="recommendations help link" defaultMessage="Help" />
+              </Link>
+            ),
+          }}
+        />
+      </p>
+      <p className="help-text">
+        <FormattedMessage
+          description="status overview paragraph3"
+          defaultMessage="Status of completed steps are indicated with a checkmark."
+        />
+      </p>
+      <section className="status-boxes">
+        <ConfirmedAccountStatus email={email} />
+        <VerifiedIdentityStatus identities={identities} />
+        <ImprovedSecurityStatus tokens={tokens} />
+        <VerifiedSecurityStatus tokens={tokens} />
+      </section>
+      <p className="help-text">
+        <FormattedMessage
+          description="confirmed account description"
+          defaultMessage="Note: additional settings such as language, email addresses, password management as well as ORCID and ESI affiliation 
+      can be edited at  {account}."
+          values={{
+            account: (
+              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+              </Link>
+            ),
+          }}
+        />
+      </p>
     </article>
   );
 }

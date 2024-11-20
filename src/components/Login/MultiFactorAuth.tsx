@@ -36,7 +36,7 @@ export function MultiFactorAuth(): JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login MFA heading" />
+          <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
         </h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />

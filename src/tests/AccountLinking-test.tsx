@@ -14,7 +14,7 @@ test("renders AccountLinking as expected", async () => {
   });
 
   // Navigate to Advanced settings
-  const nav = await screen.getByRole("link", { name: "Advanced settings" });
+  const nav = await screen.getByRole("link", { name: "Account" });
   act(() => {
     nav.click();
   });
@@ -32,7 +32,7 @@ test("can add an ORCID iD", () => {
   });
 
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  const nav = screen.getByRole("link", { name: "Account" });
   act(() => {
     nav.click();
   });
@@ -61,7 +61,7 @@ test("can show an ORCID iD", () => {
   });
 
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  const nav = screen.getByRole("link", { name: "Account" });
   act(() => {
     nav.click();
   });
@@ -100,7 +100,7 @@ test("can remove an ORCID iD", async () => {
     },
   });
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Advanced settings" });
+  const nav = screen.getByRole("link", { name: "Account" });
   act(() => {
     nav.click();
   });

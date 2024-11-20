@@ -14,10 +14,11 @@
       height: auto;
     }
   }
-  #uniqueId-container & {
-    flex-direction: row;
-    align-items: baseline;
-  }
+}
+
+#uniqueId-container {
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .display-data {
@@ -83,39 +84,69 @@
   }
 }
 
-// --- VERIFICATION PROGRESS STYLES--- //
-.status {
-  @extend figure;
-
-  display: flex;
+// --- STATUS OVERVIEW STYLES--- //
+.status-boxes {
+  margin: 1rem 0;
+}
+.status-box {
+  @extend .accordion;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
   align-items: center;
-  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
-  border-radius: 6px;
+  padding: 1rem;
+  background-color: $white;
+  margin-top: 0.5rem;
+  border: 1px $success-green solid !important;
 
   h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    text-align: left;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+    color: $txt-black;
   }
+  p {
+    margin-bottom: 0;
+  }
+  &.success {
+    border-color: #c1e1cd !important;
+    &:nth-of-type(1) {
+      background-color: #f3f9f5;
+    }
+    &:nth-of-type(2) {
+      background-color: #e6f3eb;
+    }
+    &:nth-of-type(3) {
+      background-color: #daede1;
+    }
+    &:nth-of-type(4) {
+      background-color: #cde7d7;
+    }
+  }
+}
 
-  p.help-text {
-    margin-top: 8px;
-    text-align: left;
+.checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="checkbox"] {
+    display: block;
+    width: 20px;
+    height: 20px;
   }
 
   svg {
-    font-size: 2.5em;
-    border-radius: 25px;
-    margin-right: 16px;
-    box-shadow: 0 2px 5px rgb(0 0 0 / 25%);
-    background-color: $white;
-  }
-
-  &.unverified svg {
-    color: $txt-orange;
-  }
-
-  &.verified svg {
     color: $success-green;
+    height: 1.5rem;
+  }
+
+  div {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid $txt-gray;
+    border-radius: 50%;
+    background-color: $white;
   }
 }

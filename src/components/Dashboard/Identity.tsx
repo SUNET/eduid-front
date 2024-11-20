@@ -3,6 +3,11 @@ import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
+import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
+import EduIDButton from "components/Common/EduIDButton";
+import NinDisplay from "components/Common/NinDisplay";
+import NotificationModal from "components/Common/NotificationModal";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -10,26 +15,22 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import EuFlag from "../../../img/flags/eu.svg";
 import SeFlag from "../../../img/flags/se.svg";
 import WorldFlag from "../../../img/flags/world.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
-
-import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
-import NinDisplay from "components/Common/NinDisplay";
-import NotificationModal from "components/Common/NotificationModal";
-import authnSlice from "slices/Authn";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
+import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
-function VerifyIdentity(): JSX.Element | null {
+function Identity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
 
   const intl = useIntl();
@@ -61,12 +62,12 @@ function VerifyIdentity(): JSX.Element | null {
   return (
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
-      <VerifyIdentityIntro />
+      <IdentityContent />
     </Fragment>
   );
 }
 
-function VerifyIdentityIntro(): JSX.Element {
+function IdentityContent(): JSX.Element {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -78,73 +79,63 @@ function VerifyIdentityIntro(): JSX.Element {
     }
   }
 
-  if (identities?.is_verified) {
-    /* User has a verified identity. Show which one (or ones) it is.
-     *   TODO: Support other types of identities than NINs.
-     */
-    return (
-      <React.Fragment>
-        <section className="intro">
-          <h1>
-            <FormattedMessage
-              description="verify identity unverified main title"
-              defaultMessage={`Connect your identity to your eduID`}
-            />
-          </h1>
-          <div className="lead">
+  /* User has a verified identity. Show which one (or ones) it is.
+   *   TODO: Support other types of identities than NINs.
+   */
+  return (
+    <React.Fragment>
+      <section className="intro">
+        <h1>
+          <FormattedMessage description="verify identity unverified main title" defaultMessage={`Identity`} />
+        </h1>
+        <div className="lead">
+          {identities?.is_verified ? (
             <p>
               <FormattedMessage
                 description="verify identity verified title"
                 defaultMessage="Your eduID is ready to use"
               />
             </p>
-          </div>
-        </section>
-        <article>
-          <h2>
-            <FormattedMessage
-              description="verify identity verified description"
-              defaultMessage="The identities below are now connected to your eduID"
-            />
-          </h2>
-          <VerifiedIdentitiesTable />
-        </article>
-      </React.Fragment>
-    );
-  }
-
-  return (
-    <React.Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage
-            description="verify identity unverified main title"
-            defaultMessage={`Connect your identity to your eduID`}
-          />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              description="verify identity unverified description"
-              defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
+          ) : (
+            <p>
+              <FormattedMessage
+                description="verify identity unverified description"
+                defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
             to get the most benefit from it.`}
-            />
-          </p>
+              />
+            </p>
+          )}
         </div>
       </section>
+
       <article>
-        <h2>
-          <FormattedMessage
-            description="verify identity non verified description"
-            defaultMessage="Choose your principal identification method"
-          />
-        </h2>
-        <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
-          <AccordionItemSwedish />
-          <AccordionItemEu />
-          <AccordionItemWorld />
-        </Accordion>
+        {identities?.is_verified ? (
+          <React.Fragment>
+            <h2>
+              <FormattedMessage
+                description="verify identity verified description"
+                defaultMessage="The identities below are now connected to your eduID"
+              />
+            </h2>
+            <VerifiedIdentitiesTable />{" "}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h2>
+              <FormattedMessage
+                description="verify identity non verified description"
+                defaultMessage="Choose your principal identification method"
+              />
+            </h2>
+            <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+              <AccordionItemSwedish />
+              <AccordionItemEu />
+              <AccordionItemWorld />
+            </Accordion>
+          </React.Fragment>
+        )}
       </article>
+      <PersonalDataParent />
     </React.Fragment>
   );
 }
@@ -155,20 +146,37 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const dispatch = useAppDispatch();
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
+  const frontend_state = useAppSelector((state) => state.authn.response?.frontend_state);
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
-
+  const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
 
   useEffect(() => {
-    if (frontend_action) {
-      if (frontend_action === "removeIdentity") {
-        handleRemoveIdentity();
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
+    if (frontend_action === "removeIdentity" && frontend_state) {
+      handleRemoveIdentity(frontend_state);
+      dispatch(authnSlice.actions.setAuthnFrontendReset());
+    }
+  }, [frontend_action, frontend_state]);
+
+  async function handleRemoveIdentity(identityType: string) {
+    setShowConfirmRemoveIdentityVerificationModal(false);
+    if (identityType) {
+      const response = await dispatch(removeIdentity({ identity_type: identityType }));
+      if (removeIdentity.fulfilled.match(response)) {
+        dispatch(requestAllPersonalData());
+      } else {
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "removeIdentity",
+            frontend_state: identityType,
+          })
+        );
       }
     }
-  }, [frontend_action]);
+  }
 
-  async function handleConfirmDeleteModal() {
+  async function handleConfirmDeleteModal(identityType: string) {
+    setIdentityType(identityType);
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
@@ -176,20 +184,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
     if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
     } else {
-      handleRemoveIdentity();
-    }
-  }
-
-  async function handleRemoveIdentity() {
-    setShowConfirmRemoveIdentityVerificationModal(false);
-    // find dynamically which identity_type
-    const idType =
-      identities &&
-      Object.keys(identities).filter((objProp) => {
-        return objProp !== "is_verified";
-      })[0];
-    if (idType) {
-      const response = await dispatch(removeIdentity({ identity_type: idType }));
+      handleRemoveIdentity(identityType);
     }
   }
 
@@ -210,7 +205,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
               id: "verified identity delete button",
               defaultMessage: "Delete this verified identity",
@@ -234,7 +229,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("eidas")}
           ></EduIDButton>
         </figure>
       )}
@@ -258,7 +253,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={() => handleConfirmDeleteModal()}
+            onClick={() => handleConfirmDeleteModal("freja")}
           ></EduIDButton>
         </figure>
       )}
@@ -278,24 +273,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
         }
         showModal={showConfirmRemoveIdentityVerificationModal}
         closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
-        acceptModal={handleRemoveIdentity}
+        acceptModal={() => handleRemoveIdentity(identityType)}
         acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
         <React.Fragment>
-          <h2>
+          <h4>
             <FormattedMessage
-              description="verify identity non verified description"
-              defaultMessage="Choose your principal identification method"
+              description="verify identity non swedish verified heading"
+              defaultMessage="If you have a Swedish identity you can verify that as well, to be able to access more services."
             />
-          </h2>
-          <p>
-            <FormattedMessage
-              description="verify identity with swedish ID description"
-              defaultMessage={`Verify your eduID with a Swedish national ID number.`}
-            />
-          </p>
+          </h4>
           <Accordion allowZeroExpanded>
             <AccordionItemSwedish />
           </Accordion>
@@ -496,4 +485,4 @@ function AccordionItemWorld(): JSX.Element | null {
   );
 }
 
-export default VerifyIdentity;
+export default Identity;

@@ -10,7 +10,24 @@ export function AccountId(): JSX.Element {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <article id="uniqueId-container">
+    <div className="profile-grid-cell figure tight" id="uniqueId-container">
+      <span aria-label={idUserEppn}>
+        <strong>
+          <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
+          &nbsp;
+        </strong>
+      </span>
+      <div className="display-data">
+        <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
+        <CopyToClipboardButton ref={ref} />
+      </div>
+    </div>
+  );
+}
+
+export function AccountIdDisplay(): JSX.Element {
+  return (
+    <article>
       <h2>
         <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
       </h2>
@@ -21,18 +38,7 @@ export function AccountId(): JSX.Element {
           description="Dashboard AccountId"
         />
       </p>
-      <div className="profile-grid-cell figure tight">
-        <span aria-label={idUserEppn}>
-          <strong>
-            <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
-            &nbsp;
-          </strong>
-        </span>
-        <div className="display-data">
-          <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
-          <CopyToClipboardButton ref={ref} />
-        </div>
-      </div>
+      <AccountId />
     </article>
   );
 }
