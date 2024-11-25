@@ -384,27 +384,80 @@ function SecurityKeyTable() {
     // verify button/ verified badge
     if (cred.verified) {
       btnVerify = (
-        <span>
+        <p aria-label="verification status">
+          <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+          &nbsp;
           <FormattedMessage description="security verified" defaultMessage="Verified" />
-        </span>
+        </p>
       );
     } else {
       btnVerify = (
-        <React.Fragment>
+        <p aria-label="verify with freja or bankID">
+          <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+          &nbsp;
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="Freja+" />
           </EduIDButton>
           <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
             <FormattedMessage description="security verify" defaultMessage="BankID" />
           </EduIDButton>
-        </React.Fragment>
+        </p>
       );
     }
 
     return (
       <tr key={cred.key} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
-        <td>{cred.description}</td>
-        <td data-toggle="tooltip" data-placement="top" title={new Date(cred.created_ts).toString()}>
+        <td>
+          <p aria-label="name">
+            <FormattedMessage description="security description name" defaultMessage="Name:" />
+            &nbsp;
+            <strong>{cred.description}</strong>
+          </p>
+          <p aria-label="created on">
+            <FormattedMessage description="security creation date" defaultMessage="Created on:" />
+            &nbsp;
+            {date_created}
+          </p>
+          <p aria-label="used on">
+            <FormattedMessage description="security last used" defaultMessage="Used on:" />
+            &nbsp;
+            {date_success}
+          </p>
+          {/* <p>
+            <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+            &nbsp; */}
+          {btnVerify}
+          {/* </p> */}
+        </td>
+        <td>
+          <EduIDButton
+            id="remove-webauthn"
+            buttonstyle="close"
+            size="sm"
+            onClick={() => handleConfirmDeleteModal(cred.key)}
+          ></EduIDButton>
+          <NotificationModal
+            id="remove-security-key"
+            title={
+              <FormattedMessage
+                defaultMessage="Remove security key"
+                description="settings.remove_security_key_modal_title"
+              />
+            }
+            mainText={
+              <FormattedMessage
+                defaultMessage={`Are you sure you want to remove your security key?`}
+                description="delete.remove_security_key_modal_text"
+              />
+            }
+            showModal={showConfirmRemoveSecurityKeyModal}
+            closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
+            acceptModal={handleRemoveWebauthnToken}
+            acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+          />
+        </td>
+
+        {/* <td data-toggle="tooltip" data-placement="top" title={new Date(cred.created_ts).toString()}>
           {date_created}
         </td>
         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.success_ts).toString()}>
@@ -437,7 +490,7 @@ function SecurityKeyTable() {
             acceptModal={handleRemoveWebauthnToken}
             acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
           />
-        </td>
+        </td> */}
       </tr>
     );
   });
@@ -453,8 +506,8 @@ function SecurityKeyTable() {
         <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
       </h4>
       <table className="active-keys">
-        <tbody>
-          <tr>
+        <tbody role="presentation">
+          {/* <tr>
             <th>
               <FormattedMessage description="security description name" defaultMessage="Name" />
             </th>
@@ -470,7 +523,7 @@ function SecurityKeyTable() {
             <th>
               <FormattedMessage description="security key remove" defaultMessage="Remove" />
             </th>
-          </tr>
+          </tr> */}
           {security_key_table_data}
         </tbody>
       </table>
