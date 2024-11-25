@@ -1638,7 +1638,7 @@
     "string": "Beskrivning och syfte"
   },
   "document title Account": {
-    "string": "Account | eduID"
+    "string": "Konto | eduID"
   },
   "document title Change Password": {
     "string": "Byt lösenord | eduID"
@@ -1662,7 +1662,7 @@
     "string": "Återställ lösenord | eduID"
   },
   "document title Security": {
-    "string": "Security | eduID"
+    "string": "Säkerhet | eduID"
   },
   "document title Start": {
     "string": "Start | eduID"
