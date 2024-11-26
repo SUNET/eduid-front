@@ -1,4 +1,5 @@
 import { useActor } from "@xstate/react";
+import { fetchLogout } from "apis/eduidLogin";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
@@ -55,7 +56,11 @@ function SignupStart() {
     async function fetchSignupState(): Promise<void> {
       const response = await dispatch(fetchState());
       if (fetchState.fulfilled.match(response)) {
-        if (response.payload.state?.email.address) {
+        if (response.payload.state.already_signed_up) {
+          dispatch(fetchLogout({}));
+        }
+        const { email } = response.payload.state || {};
+        if (email?.address) {
           signupContext.signupService.send({ type: "BYPASS" });
         } else signupContext.signupService.send({ type: "COMPLETE" });
       }
