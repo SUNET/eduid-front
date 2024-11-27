@@ -409,7 +409,7 @@ function SecurityKeyTable() {
 
     return (
       <React.Fragment key={cred.key}>
-        <div className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
+        <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
           <div>
             <p aria-label="name">
               <FormattedMessage description="security description name" defaultMessage="Name:" />
@@ -435,7 +435,7 @@ function SecurityKeyTable() {
             size="sm"
             onClick={() => handleConfirmDeleteModal(cred.key)}
           ></EduIDButton>
-        </div>
+        </figure>
         <NotificationModal
           id="remove-security-key"
           title={
