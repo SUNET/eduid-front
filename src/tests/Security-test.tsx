@@ -58,8 +58,8 @@ test("renders security key as expected, with added security key", async () => {
 
   await linkToAdvancedSettings();
 
-  expect(screen.getByRole("table")).toBeInTheDocument();
-  expect(screen.getByRole("cell", { name: "touchID" })).toBeInTheDocument();
+  expect(screen.getByRole("figure")).toBeInTheDocument();
+  expect(screen.getByText("touchID")).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "BankID" })).toBeEnabled();
   expect(screen.getByRole("button", { name: "Freja+" })).toBeEnabled();
 });
@@ -190,7 +190,7 @@ test("api call webauthn/remove", async () => {
   });
   await linkToAdvancedSettings();
   await waitFor(() => {
-    expect(screen.getByRole("table")).toBeInTheDocument();
+    expect(screen.getByRole("figure")).toBeInTheDocument();
   });
 });
 
