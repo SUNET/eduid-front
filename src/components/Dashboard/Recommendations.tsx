@@ -60,8 +60,8 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
         <span>
           {props.identities?.is_verified === true ? (
             <FormattedMessage
-              description="See more details about your verified identity description"
-              defaultMessage="See more details about your verified identity at {identity}"
+              description="read more details about your verified identity description"
+              defaultMessage="Read more details about your verified identity at {identity}"
               values={{
                 identity: identityLink,
               }}
@@ -103,8 +103,8 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
         <span>
           {props.tokens?.length ? (
             <FormattedMessage
-              description="See more about your two-factor authentication description"
-              defaultMessage="See more about your two-factor authentication at {security}"
+              description="read more about your two-factor authentication description"
+              defaultMessage="Read more about your two-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
@@ -146,7 +146,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
           {verifiedToken ? (
             <FormattedMessage
               description="verified security key description"
-              defaultMessage="See more details about your verified two-factor authentication at {security}"
+              defaultMessage="Read more details about your verified two-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
