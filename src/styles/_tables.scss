@@ -195,52 +195,7 @@ caption {
     padding: 0.5rem;
   }
 }
-.active-keys {
-  margin: 1rem 0;
 
-  th {
-    border-width: 1px;
-  }
-  th,
-  td {
-    &:first-child {
-      width: 95%;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-
-      strong {
-        font-size: 1.15rem;
-      }
-    }
-    button#remove-webauthn {
-      font-size: 1rem;
-    }
-  }
-
-  tr:last-child td {
-    padding-bottom: 1rem;
-  }
-  .btn-link {
-    height: auto;
-    margin-right: 1rem;
-  }
-
-  @media (max-width: $bp-sm) {
-    th,
-    td {
-      &:nth-child(2),
-      &:nth-child(3) {
-        display: none;
-      }
-      &:nth-child(1) {
-        width: 50%;
-      }
-    }
-  }
-}
 .keys {
   @extend code;
   tr {
