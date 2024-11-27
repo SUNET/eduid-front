@@ -213,7 +213,7 @@ export function Recommendations(): JSX.Element | null {
               organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
-              <Link key="/help" to="/help" aria-label="go to help page">
+              <Link key="/help" to="/help" aria-label="go to help page" target="_blank">
                 <FormattedMessage description="recommendations help link" defaultMessage="Help" />
               </Link>
             ),

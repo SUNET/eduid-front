@@ -182,7 +182,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
             values={{
               HelpSecurityKeys: (
-                <Link className="text-link" to={`../../../help`}>
+                <Link className="text-link" to={`../../../help`} target="_blank">
                   <FormattedMessage
                     description="about security key - handle"
                     defaultMessage="Improving the security level of eduID"
