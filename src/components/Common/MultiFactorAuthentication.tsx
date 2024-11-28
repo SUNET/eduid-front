@@ -384,26 +384,30 @@ function SecurityKeyTable() {
     // verify button/ verified badge
     if (cred.verified) {
       btnVerify = (
-        <p aria-label="verification status" className="verified">
-          <FormattedMessage description="security key status" defaultMessage="Verification status:" />
-          &nbsp;
-          <strong>
-            <FormattedMessage description="security verified" defaultMessage="verified" />
-          </strong>
-        </p>
+        <div aria-label="verification status" className="verified">
+          <span>
+            <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+            &nbsp;
+            <strong>
+              <FormattedMessage description="security verified" defaultMessage="verified" />
+            </strong>
+          </span>
+        </div>
       );
     } else {
       btnVerify = (
-        <p aria-label="verify with freja or bankID">
-          <FormattedMessage description="security key status" defaultMessage="Verify with: " />
-          &nbsp;
-          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
-            <FormattedMessage description="security verify" defaultMessage="Freja+" />
-          </EduIDButton>
-          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
-            <FormattedMessage description="security verify" defaultMessage="BankID" />
-          </EduIDButton>
-        </p>
+        <div aria-label="verify with freja or bankID">
+          <span>
+            <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+            &nbsp;
+            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+              <FormattedMessage description="security verify" defaultMessage="Freja+" />
+            </EduIDButton>
+            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+              <FormattedMessage description="security verify" defaultMessage="BankID" />
+            </EduIDButton>
+          </span>
+        </div>
       );
     }
 
@@ -411,11 +415,11 @@ function SecurityKeyTable() {
       <React.Fragment key={cred.key}>
         <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
           <div>
-            <p aria-label="name">
+            <span aria-label="key name">
               <FormattedMessage description="security description name" defaultMessage="Name:" />
               &nbsp;
               <strong>{cred.description}</strong>
-            </p>
+            </span>
             <EduIDButton
               id="remove-webauthn"
               buttonstyle="close"
@@ -424,16 +428,19 @@ function SecurityKeyTable() {
             ></EduIDButton>
           </div>
           <div>
-            <p aria-label="created on">
+            <span aria-label="date created">
               <FormattedMessage description="security creation date" defaultMessage="Created:" />
               &nbsp;
+              <wbr />
               {date_created}
-            </p>
-            <p aria-label="used on">
+            </span>
+
+            <span aria-label="date used">
               <FormattedMessage description="security last used" defaultMessage="Used:" />
               &nbsp;
+              <wbr />
               {date_success}
-            </p>
+            </span>
           </div>
 
           {btnVerify}
