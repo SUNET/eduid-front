@@ -416,25 +416,27 @@ function SecurityKeyTable() {
               &nbsp;
               <strong>{cred.description}</strong>
             </p>
+            <EduIDButton
+              id="remove-webauthn"
+              buttonstyle="close"
+              size="sm"
+              onClick={() => handleConfirmDeleteModal(cred.key)}
+            ></EduIDButton>
+          </div>
+          <div>
             <p aria-label="created on">
-              <FormattedMessage description="security creation date" defaultMessage="Created on:" />
+              <FormattedMessage description="security creation date" defaultMessage="Created:" />
               &nbsp;
               {date_created}
             </p>
             <p aria-label="used on">
-              <FormattedMessage description="security last used" defaultMessage="Used on:" />
+              <FormattedMessage description="security last used" defaultMessage="Used:" />
               &nbsp;
               {date_success}
             </p>
-            {btnVerify}
           </div>
 
-          <EduIDButton
-            id="remove-webauthn"
-            buttonstyle="close"
-            size="sm"
-            onClick={() => handleConfirmDeleteModal(cred.key)}
-          ></EduIDButton>
+          {btnVerify}
         </figure>
         <NotificationModal
           id="remove-security-key"
