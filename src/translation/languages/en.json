@@ -3010,7 +3010,7 @@
   },
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
-    "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
+    "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate to:"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
