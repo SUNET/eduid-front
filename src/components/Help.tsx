@@ -1045,7 +1045,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph1"
-                  defaultMessage={`At the logged in start page an overview of the status of your eduID is presented.`}
+                  defaultMessage={`At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:`}
                 />
               </p>
 
@@ -1060,7 +1060,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Assurance levels with your eduID - paragraph2"
-                    defaultMessage={`This typically means you can authenticate against services requiring a low level of assurance, some times called {emphasis}.
+                    defaultMessage={`services requiring a low level of assurance, often called {emphasis}.
 `}
                     values={{
                       emphasis: <em>AL1 / RAF Low</em>,
@@ -1079,7 +1079,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Assurance levels with your eduID - paragraph3"
-                    defaultMessage={`This typically means you can authenticate against services requiring a medium level of assurance, including many higher education institutions, some times called {emphasis}.
+                    defaultMessage={`services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}.
 `}
                     values={{
                       emphasis: <em>AL2 / RAF Medium</em>,
@@ -1099,7 +1099,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Assurance levels with your eduID - paragraph4"
-                    defaultMessage={`This typically means you can authenticate against services requiring you to log in using multi factor authentication, some times called {emphasis}. 
+                    defaultMessage={`services requiring you to log in using multi factor authentication, often called {emphasis}. 
 
 `}
                     values={{
@@ -1120,7 +1120,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="Assurance levels with your eduID - paragraph5"
-                    defaultMessage={`This typically means you can authenticate against services requiring a strong binding between your identity and your login, some times called {emphasis}.
+                    defaultMessage={`services requiring a strong binding between your identity and your login, often called {emphasis}.
  
 
 `}
@@ -1130,18 +1130,19 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
+
               <p>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph6"
-                  defaultMessage={`With a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+                  description="Assurance levels with your eduID - paragraph7"
+                  defaultMessage={`Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+
 `}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph7"
-                  defaultMessage={`Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
-
+                  description="Assurance levels with your eduID - paragraph6"
+                  defaultMessage={`As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
 `}
                 />
               </p>

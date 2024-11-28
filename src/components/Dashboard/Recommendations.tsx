@@ -17,21 +17,17 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
         </h3>
         <span>
-          {props.email ? (
-            props.email
-          ) : (
-            <FormattedMessage
-              description="confirmed account description"
-              defaultMessage="Add your name at {account}"
-              values={{
-                account: (
-                  <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                    <FormattedMessage description="recommendations account link" defaultMessage="Account" />
-                  </Link>
-                ),
-              }}
-            />
-          )}
+          <FormattedMessage
+            description="confirmed account description"
+            defaultMessage="Read more details about your confirmed account at {account}"
+            values={{
+              account: (
+                <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                  <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+                </Link>
+              ),
+            }}
+          />
         </span>
       </div>
     </div>
