@@ -8,6 +8,7 @@ import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
+import { RemoveIcon } from "components/Common/RemoveIcon";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -117,7 +118,7 @@ function IdentityContent(): JSX.Element {
                 defaultMessage="The identities below are now connected to your eduID"
               />
             </h2>
-            <VerifiedIdentitiesTable />{" "}
+            <VerifiedIdentitiesTable />
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -203,14 +204,16 @@ function VerifiedIdentitiesTable(): JSX.Element {
           <NinDisplay nin={identities?.nin} allowDelete={true} />
           <EduIDButton
             id="remove-webauthn"
-            buttonstyle="close"
+            buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
               id: "verified identity delete button",
               defaultMessage: "Delete this verified identity",
             })}
-          ></EduIDButton>
+          >
+            <RemoveIcon />
+          </EduIDButton>
         </figure>
       )}
 
