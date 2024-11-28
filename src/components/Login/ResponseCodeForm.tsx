@@ -33,7 +33,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
       initialValues={initialValues}
       render={(formProps) => {
         // Add the formProps to all the children of this component. The children are typically buttons,
-        // and they need to know some of the formProps to know if they should be disabled or not.
+        // and they need to know some of the formProps to know if they should be disabled/readonly or not.
         const childrenWithProps = React.Children.map(props.children, (child) => {
           if (React.isValidElement<{ formProps: any }>(child)) {
             return React.cloneElement(child, { formProps });
@@ -58,12 +58,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
       <div className="response-code-inputs">
-        <CodeField num={0} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-        <CodeField num={1} disabled={props.inputsDisabled} />
-        <CodeField num={2} disabled={props.inputsDisabled} />
-        <CodeField num={3} disabled={props.inputsDisabled} />
-        <CodeField num={4} disabled={props.inputsDisabled} />
-        <CodeField num={5} disabled={props.inputsDisabled} />
+        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={1} readonly={props.inputsDisabled} />
+        <CodeField num={2} readonly={props.inputsDisabled} />
+        <CodeField num={3} readonly={props.inputsDisabled} />
+        <CodeField num={4} readonly={props.inputsDisabled} />
+        <CodeField num={5} readonly={props.inputsDisabled} />
       </div>
 
       {showBadAttempts && (
@@ -84,10 +84,11 @@ interface CodeFieldProps {
   value?: string;
   disabled?: boolean;
   autoFocus?: boolean;
+  readonly?: boolean;
 }
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
-function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
+function CodeField({ num, value, disabled = false, autoFocus = undefined, readonly="false"}: CodeFieldProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
 
