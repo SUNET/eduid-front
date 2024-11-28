@@ -27,10 +27,6 @@
     "developer_comment": "continue reset password",
     "string": "Continue resetting password"
   },
-  "+IKRPb": {
-    "developer_comment": "Assurance levels with your eduID - paragraph3",
-    "string": "the eduID account generally reaches {emphasis}, which is at a sufficient level for many services at higher education institutions and e.g. Ladok."
-  },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
     "string": "What is Ladok and ESI?"
@@ -154,6 +150,10 @@
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
+  },
+  "1Q28b+": {
+    "developer_comment": "read more details about your verified identity description",
+    "string": "Read more details about your verified identity at {identity}"
   },
   "1ReiZJ": {
     "developer_comment": "Dashboard nav tab name",
@@ -333,9 +333,9 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
-  "6Kmray": {
-    "developer_comment": "Assurance levels with your eduID - paragraph2",
-    "string": "when successfully creating an eduID (with confirmed email-address and passed CAPTCHA) which generally conforms to {emphasis}."
+  "6Ka904": {
+    "developer_comment": "confirmed account description",
+    "string": "Read more details about your confirmed account at {account}"
   },
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
@@ -528,10 +528,6 @@
   "B4vR5O": {
     "developer_comment": "Set new password",
     "string": "Repeat new password"
-  },
-  "BKznd0": {
-    "developer_comment": "Assurance levels with your eduID - paragraph4",
-    "string": "your added security key is connected to your identity."
   },
   "BRcd2V": {
     "developer_comment": "how change language - paragraph",
@@ -768,6 +764,14 @@
     "developer_comment": "nin/password button label",
     "string": "SHOW"
   },
+  "HoJqhO": {
+    "developer_comment": "verified security key description",
+    "string": "Read more details about your verified two-factor authentication at {security}"
+  },
+  "Hz8c/G": {
+    "developer_comment": "read more about your two-factor authentication description",
+    "string": "Read more about your added two-factor authentication at {security}"
+  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
@@ -895,10 +899,6 @@
     "developer_comment": "recommendations identity link",
     "string": "Identity"
   },
-  "M0VtTr": {
-    "developer_comment": "See more details about your verified identity description",
-    "string": "See more details about your verified identity at {identity}"
-  },
   "M2RPTv": {
     "developer_comment": "Signup button",
     "string": "Create your eduID"
@@ -934,10 +934,6 @@
   "Mxw9Ni": {
     "developer_comment": "account settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
-  },
-  "N1zyxM": {
-    "developer_comment": "See more about your two-factor authentication description",
-    "string": "See more about your two-factor authentication at {security}"
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
@@ -1125,10 +1121,6 @@
   "RQxyUT": {
     "developer_comment": "status overview paragraph2",
     "string": "Suggestions on what might be required depending on the organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}."
-  },
-  "RRwNqZ": {
-    "developer_comment": "Assurance levels with your eduID - paragraph4strong",
-    "string": "Verified security key:"
   },
   "Rf84nl": {
     "developer_comment": "ok button",
@@ -1364,6 +1356,10 @@
     "developer_comment": "Footer copyright",
     "string": "2013-2024"
   },
+  "Xz6ZO5": {
+    "developer_comment": "Assurance levels with your eduID - paragraph6",
+    "string": "As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
+  },
   "XzQO4I": {
     "developer_comment": "choosing usb key - list definition",
     "string": "Check with the manufacturer or retailer that the product meets the following requirements:"
@@ -1376,9 +1372,17 @@
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
   },
+  "YStEhP": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2",
+    "string": "Services requiring a low level of assurance, often called {emphasis}."
+  },
   "YTqn7P": {
     "developer_comment": "suggested password radio button",
     "string": "Suggested password"
+  },
+  "YaxJDC": {
+    "developer_comment": "Assurance levels with your eduID - paragraph5",
+    "string": "Services requiring a strong binding between your identity and your login, often called {emphasis}."
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
@@ -1387,14 +1391,6 @@
   "YhOtY3": {
     "developer_comment": "copied button label",
     "string": "COPIED"
-  },
-  "Ylwurh": {
-    "developer_comment": "Assurance levels with your eduID - paragraph4",
-    "string": "is added in the form of multi factor authentication."
-  },
-  "Yqyf5c": {
-    "developer_comment": "Assurance levels with your eduID - paragraph6",
-    "string": "Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services."
   },
   "YuWePR": {
     "developer_comment": "recommendations account link",
@@ -1448,17 +1444,9 @@
     "developer_comment": "privacy policy - list item 8",
     "string": "retains inactive accounts for a maximum of two years,"
   },
-  "aH2yE4": {
-    "developer_comment": "confirmed account description",
-    "string": "Add your name at {account}"
-  },
   "aRUmm4": {
     "developer_comment": "what is bankid - paragraph",
     "string": "BankID is a widely used electronic verification system, available to holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden."
-  },
-  "aSOlMx": {
-    "developer_comment": "verified security key description",
-    "string": "See more details about your verified two-factor authentication at {security}"
   },
   "actions.action-completed": {
     "string": "Success"
@@ -1852,10 +1840,6 @@
     "developer_comment": "button cancel",
     "string": "Cancel"
   },
-  "g1y6QE": {
-    "developer_comment": "Assurance levels with your eduID - paragraph5",
-    "string": "With a verified Swedish identity and a verified security key the account generally conforms to {emphasis} and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
-  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -1999,10 +1983,6 @@
     "developer_comment": "usb key technical section - list item 3 code",
     "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
   },
-  "j/6lUz": {
-    "developer_comment": "Assurance levels with your eduID - paragraph1",
-    "string": "At the logged in start page an overview of the status of your eduID is presented."
-  },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
@@ -2070,6 +2050,10 @@
     "developer_comment": "Make primary button",
     "string": "make primary"
   },
+  "kWc6Ud": {
+    "developer_comment": "Assurance levels with your eduID - paragraph4",
+    "string": "Services requiring you to log in using multi factor authentication, often called {emphasis}."
+  },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
@@ -2125,6 +2109,10 @@
   },
   "ladok.no-verified-nin": {
     "string": "You need a verified Swedish national identity number to link your account with ESI."
+  },
+  "le1mfK": {
+    "developer_comment": "Assurance levels with your eduID - paragraph5strong",
+    "string": "Verified security key:"
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -2234,10 +2222,6 @@
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
-  },
-  "mUFDKl": {
-    "developer_comment": "Display name select paragraph",
-    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services. If you wish to change it, select at least one first name below."
   },
   "mVSSC0": {
     "developer_comment": "about using eduid - info",
@@ -2640,6 +2624,10 @@
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Are you sure you want to remove your security key?"
   },
+  "qc7Yi8": {
+    "developer_comment": "Assurance levels with your eduID - paragraph7",
+    "string": "Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services."
+  },
   "qkwsql": {
     "developer_comment": "Login MFA",
     "string": "If you have a Swedish national identity number and Freja+, confirm your identity and you'll be able to use Freja+ to log in."
@@ -2892,6 +2880,10 @@
     "developer_comment": "what is international - paragraph 2",
     "string": "Current information on included nationalities can be found at: {FrejaList}"
   },
+  "smayl9": {
+    "developer_comment": "Display name select paragraph",
+    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services. Select at least one first name below if you wish to change it."
+  },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
@@ -3015,6 +3007,14 @@
   "wd5z3l": {
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
+  },
+  "wgc4Lk": {
+    "developer_comment": "Assurance levels with your eduID - paragraph1",
+    "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
+  },
+  "wlFVRa": {
+    "developer_comment": "Assurance levels with your eduID - paragraph3",
+    "string": "Services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
   },
   "wnJXsu": {
     "developer_comment": "Register - headline",
