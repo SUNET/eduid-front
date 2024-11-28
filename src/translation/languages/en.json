@@ -2052,7 +2052,7 @@
   },
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
-    "string": "Services requiring you to log in using multi factor authentication, often called {emphasis}."
+    "string": "services requiring you to log in using multi factor authentication, often called {emphasis}."
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
@@ -3014,7 +3014,7 @@
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
-    "string": "Services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
+    "string": "services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
   },
   "wnJXsu": {
     "developer_comment": "Register - headline",
