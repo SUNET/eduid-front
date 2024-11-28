@@ -8,7 +8,6 @@ import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
-import { RemoveIcon } from "components/Common/RemoveIcon";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -212,7 +211,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
               defaultMessage: "Delete this verified identity",
             })}
           >
-            <RemoveIcon />
+            {/* <RemoveIcon /> */}
           </EduIDButton>
         </figure>
       )}

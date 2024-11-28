@@ -327,6 +327,11 @@ button.scroll-to-top {
 }
 
 .btn-remove {
-  padding: 0;
-  box-shadow: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("../../img/remove-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
