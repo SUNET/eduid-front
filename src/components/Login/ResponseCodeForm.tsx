@@ -88,7 +88,7 @@ interface CodeFieldProps {
 }
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
-function CodeField({ num, value, disabled = false, autoFocus = undefined, readonly="false"}: CodeFieldProps) {
+function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
 
