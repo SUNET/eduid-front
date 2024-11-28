@@ -1374,7 +1374,7 @@
   },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
-    "string": "Services requiring a low level of assurance, often called {emphasis}."
+    "string": "services requiring a low level of assurance, often called {emphasis}."
   },
   "YTqn7P": {
     "developer_comment": "suggested password radio button",
@@ -1382,7 +1382,7 @@
   },
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
-    "string": "Services requiring a strong binding between your identity and your login, often called {emphasis}."
+    "string": "services requiring a strong binding between your identity and your login, often called {emphasis}."
   },
   "YbLEig": {
     "developer_comment": "eidas proofing help text",
