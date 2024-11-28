@@ -77,3 +77,56 @@ figure,
     margin-bottom: 1.5rem;
   }
 }
+
+// SECURITY TABLE
+figure.webauthn-token-holder {
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  margin: 0;
+  border-bottom: 1px solid $border-gray;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1rem;
+  }
+
+  & div:first-child {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & div:nth-child(2) {
+    display: flex;
+    align-items: end;
+    column-gap: 1em;
+
+    & p:last-child {
+      margin-left: 1rem;
+    }
+  }
+
+  span {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+  }
+  .verified {
+    strong {
+      font-family: $akkurat;
+      letter-spacing: 1px;
+      font-weight: 700;
+      padding: 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+  }
+  .btn-link {
+    height: auto;
+    margin-right: 1rem;
+  }
+  button.btn-close {
+    justify-self: flex-end;
+  }
+}

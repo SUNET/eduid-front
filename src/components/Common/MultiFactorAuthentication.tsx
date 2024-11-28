@@ -371,7 +371,7 @@ function SecurityKeyTable() {
   }
 
   // data that goes onto the table
-  const security_key_table_data = tokens.map((cred: CredentialType) => {
+  const securityKeyData = tokens.map((cred: CredentialType) => {
     // date created
     const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
     // date last used
@@ -384,61 +384,87 @@ function SecurityKeyTable() {
     // verify button/ verified badge
     if (cred.verified) {
       btnVerify = (
-        <span>
-          <FormattedMessage description="security verified" defaultMessage="Verified" />
-        </span>
+        <div aria-label="verification status" className="verified">
+          <span>
+            <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+            &nbsp;
+            <strong>
+              <FormattedMessage description="security verified" defaultMessage="verified" />
+            </strong>
+          </span>
+        </div>
       );
     } else {
       btnVerify = (
-        <React.Fragment>
-          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
-            <FormattedMessage description="security verify" defaultMessage="Freja+" />
-          </EduIDButton>
-          <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
-            <FormattedMessage description="security verify" defaultMessage="BankID" />
-          </EduIDButton>
-        </React.Fragment>
+        <div aria-label="verify with freja or bankID">
+          <span>
+            <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+            &nbsp;
+            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+              <FormattedMessage description="security verify" defaultMessage="Freja+" />
+            </EduIDButton>
+            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+              <FormattedMessage description="security verify" defaultMessage="BankID" />
+            </EduIDButton>
+          </span>
+        </div>
       );
     }
 
     return (
-      <tr key={cred.key} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
-        <td>{cred.description}</td>
-        <td data-toggle="tooltip" data-placement="top" title={new Date(cred.created_ts).toString()}>
-          {date_created}
-        </td>
-        <td data-toggle="tooltip" data-placement="top" title={new Date(cred.success_ts).toString()}>
-          {date_success}
-        </td>
-        <td className="value-status">{btnVerify}</td>
-        <td>
-          <EduIDButton
-            id="remove-webauthn"
-            buttonstyle="close"
-            size="sm"
-            onClick={() => handleConfirmDeleteModal(cred.key)}
-          ></EduIDButton>
-          <NotificationModal
-            id="remove-security-key"
-            title={
-              <FormattedMessage
-                defaultMessage="Remove security key"
-                description="settings.remove_security_key_modal_title"
-              />
-            }
-            mainText={
-              <FormattedMessage
-                defaultMessage={`Are you sure you want to remove your security key?`}
-                description="delete.remove_security_key_modal_text"
-              />
-            }
-            showModal={showConfirmRemoveSecurityKeyModal}
-            closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
-            acceptModal={handleRemoveWebauthnToken}
-            acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
-          />
-        </td>
-      </tr>
+      <React.Fragment key={cred.key}>
+        <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
+          <div>
+            <span aria-label="key name">
+              <FormattedMessage description="security description name" defaultMessage="Name:" />
+              &nbsp;
+              <strong>{cred.description}</strong>
+            </span>
+            <EduIDButton
+              id="remove-webauthn"
+              buttonstyle="close"
+              size="sm"
+              onClick={() => handleConfirmDeleteModal(cred.key)}
+            ></EduIDButton>
+          </div>
+          <div>
+            <span aria-label="date created">
+              <FormattedMessage description="security creation date" defaultMessage="Created:" />
+              &nbsp;
+              <wbr />
+              {date_created}
+            </span>
+
+            <span aria-label="date used">
+              <FormattedMessage description="security last used" defaultMessage="Used:" />
+              &nbsp;
+              <wbr />
+              {date_success}
+            </span>
+          </div>
+
+          {btnVerify}
+        </figure>
+        <NotificationModal
+          id="remove-security-key"
+          title={
+            <FormattedMessage
+              defaultMessage="Remove security key"
+              description="settings.remove_security_key_modal_title"
+            />
+          }
+          mainText={
+            <FormattedMessage
+              defaultMessage={`Are you sure you want to remove your security key?`}
+              description="delete.remove_security_key_modal_text"
+            />
+          }
+          showModal={showConfirmRemoveSecurityKeyModal}
+          closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
+          acceptModal={handleRemoveWebauthnToken}
+          acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+        />
+      </React.Fragment>
     );
   });
 
@@ -449,31 +475,10 @@ function SecurityKeyTable() {
 
   return (
     <React.Fragment>
-      <h4>
+      <h3>
         <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
-      </h4>
-      <table className="active-keys">
-        <tbody>
-          <tr>
-            <th>
-              <FormattedMessage description="security description name" defaultMessage="Name" />
-            </th>
-            <th>
-              <FormattedMessage description="security creation date" defaultMessage="Created on" />
-            </th>
-            <th>
-              <FormattedMessage description="security last used" defaultMessage="Used on" />
-            </th>
-            <th>
-              <FormattedMessage description="security key status" defaultMessage="Verify" />
-            </th>
-            <th>
-              <FormattedMessage description="security key remove" defaultMessage="Remove" />
-            </th>
-          </tr>
-          {security_key_table_data}
-        </tbody>
-      </table>
+      </h3>
+      {securityKeyData}
     </React.Fragment>
   );
 }
