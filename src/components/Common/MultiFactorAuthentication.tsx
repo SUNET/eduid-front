@@ -421,6 +421,7 @@ function SecurityKeyTable() {
               <strong>{cred.description}</strong>
             </span>
             <EduIDButton
+              aria-label="Remove"
               id="remove-webauthn"
               buttonstyle="remove"
               size="sm"
