@@ -32,7 +32,7 @@ export function SignupToU(): JSX.Element {
         <FormattedMessage defaultMessage="Register: Terms of use" description="Terms of use (heading)" />
       </h1>
       <div className="lead">
-        <p tabIndex={0}>
+        <p>
           <FormattedMessage
             defaultMessage="To create your eduID you need to accept the eduID terms of use."
             description="Terms of use (lead text)"

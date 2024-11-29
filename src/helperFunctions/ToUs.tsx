@@ -7,7 +7,7 @@ export const ToUs: { [key: string]: ReactElement } = {
       <p>
         <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
       </p>
-      <ul tabIndex={0}>
+      <ul>
         <li>
           <p>This a test version of terms of use version 1 from 2021,</p>
         </li>
@@ -23,7 +23,7 @@ export const ToUs: { [key: string]: ReactElement } = {
 
   "2016-v1": (
     <React.Fragment>
-      <dl tabIndex={0} className="terms">
+      <dl className="terms">
         <dt>
           <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
         </dt>

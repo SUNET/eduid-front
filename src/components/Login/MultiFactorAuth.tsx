@@ -86,7 +86,7 @@ function ExtraSecurityNotAvailable(): JSX.Element {
         />
       </p>
       <p>
-        <dl tabIndex={0} className="terms">
+        <dl className="terms">
           <dt>
             <FormattedMessage defaultMessage="Options available in the eduID Dashboard:" description="Login MFA" />
           </dt>

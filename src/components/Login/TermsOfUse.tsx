@@ -44,7 +44,7 @@ export default function TermsOfUse(): JSX.Element {
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
       </h1>
       <div className="lead">
-        <p tabIndex={0}>
+        <p>
           <FormattedMessage
             defaultMessage="We need an updated acceptance from you of the eduID terms of use."
             description="Terms of use (banner text)"
