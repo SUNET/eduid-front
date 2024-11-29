@@ -17,21 +17,17 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
         </h3>
         <span>
-          {props.email ? (
-            props.email
-          ) : (
-            <FormattedMessage
-              description="confirmed account description"
-              defaultMessage="Add your name at {account}"
-              values={{
-                account: (
-                  <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                    <FormattedMessage description="recommendations account link" defaultMessage="Account" />
-                  </Link>
-                ),
-              }}
-            />
-          )}
+          <FormattedMessage
+            description="confirmed account description"
+            defaultMessage="Read more details about your confirmed account at {account}"
+            values={{
+              account: (
+                <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                  <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+                </Link>
+              ),
+            }}
+          />
         </span>
       </div>
     </div>
@@ -60,8 +56,8 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
         <span>
           {props.identities?.is_verified === true ? (
             <FormattedMessage
-              description="See more details about your verified identity description"
-              defaultMessage="See more details about your verified identity at {identity}"
+              description="read more details about your verified identity description"
+              defaultMessage="Read more details about your verified identity at {identity}"
               values={{
                 identity: identityLink,
               }}
@@ -103,8 +99,8 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
         <span>
           {props.tokens?.length ? (
             <FormattedMessage
-              description="See more about your two-factor authentication description"
-              defaultMessage="See more about your two-factor authentication at {security}"
+              description="read more about your two-factor authentication description"
+              defaultMessage="Read more about your two-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
@@ -146,7 +142,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
           {verifiedToken ? (
             <FormattedMessage
               description="verified security key description"
-              defaultMessage="See more details about your verified two-factor authentication at {security}"
+              defaultMessage="Read more details about your verified two-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
@@ -213,7 +209,7 @@ export function Recommendations(): JSX.Element | null {
               organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
-              <Link key="/help" to="/help" aria-label="go to help page">
+              <Link key="/help" to="/help" aria-label="go to help page" target="_blank">
                 <FormattedMessage description="recommendations help link" defaultMessage="Help" />
               </Link>
             ),

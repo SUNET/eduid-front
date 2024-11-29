@@ -52,7 +52,7 @@ const Footer = (): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <Link className="help-link" to="/help">
+            <Link className="help-link" to="/help" target="_blank">
               <FormattedMessage defaultMessage="Help" description="Footer help" />
             </Link>
           </li>

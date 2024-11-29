@@ -1045,93 +1045,104 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph1"
-                  defaultMessage={`At the logged in start page an overview of the status of your eduID is presented.`}
+                  defaultMessage={`At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:`}
                 />
               </p>
-              <p>
-                <strong>
-                  <FormattedMessage
-                    description="Assurance levels with your eduID - paragraph2strong"
-                    defaultMessage={`Confirmed account:
-`}
-                  />
-                </strong>
-                &nbsp;
+
+              <strong>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph2"
-                  defaultMessage={`when successfully creating an eduID you have a confirmed account (confirmed email-address and passed CAPTCHA) which generally conforms to {emphasis}.
+                  description="Assurance levels with your eduID - paragraph2strong"
+                  defaultMessage={`Confirmed account:
 `}
-                  values={{
-                    emphasis: <em>AL1</em>,
-                  }}
                 />
-              </p>
-              <p>
-                <strong>
+              </strong>
+              <ul className="bullets">
+                <li>
                   <FormattedMessage
-                    description="Assurance levels with your eduID - paragraph3strong"
-                    defaultMessage={`Verified identity:
+                    description="Assurance levels with your eduID - paragraph2"
+                    defaultMessage={`services requiring a low level of assurance, often called {emphasis}.
 `}
+                    values={{
+                      emphasis: <em>AL1 / RAF Low</em>,
+                    }}
                   />
-                </strong>
-                &nbsp;
+                </li>
+              </ul>
+              <strong>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph3"
-                  defaultMessage={`the eduID account generally reaches {emphasis}, which is at a sufficient level for many services at higher education institutions and e.g. Ladok.
+                  description="Assurance levels with your eduID - paragraph3strong"
+                  defaultMessage={`Verified identity:
 `}
-                  values={{
-                    emphasis: <em>AL2</em>,
-                  }}
                 />
-              </p>
-              <p>
-                <strong>
+              </strong>
+              <ul className="bullets">
+                <li>
                   <FormattedMessage
-                    description="Assurance levels with your eduID - paragraph4strong"
-                    defaultMessage={`Enhanced security:
+                    description="Assurance levels with your eduID - paragraph3"
+                    defaultMessage={`services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}.
 `}
+                    values={{
+                      emphasis: <em>AL2 / RAF Medium</em>,
+                    }}
                   />
-                </strong>
-                &nbsp;
+                </li>
+              </ul>
+
+              <strong>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph4"
-                  defaultMessage={`is added in the form of additional multi factor authentication. 
+                  description="Assurance levels with your eduID - paragraph4strong"
+                  defaultMessage={`Enhanced security:
+`}
+                />
+              </strong>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph4"
+                    defaultMessage={`services requiring you to log in using multi factor authentication, often called {emphasis}. 
 
 `}
-                />
-              </p>
-              <p>
-                <strong>
-                  <FormattedMessage
-                    description="Assurance levels with your eduID - paragraph4strong"
-                    defaultMessage={`Verified security key:
-`}
+                    values={{
+                      emphasis: <em>REFEDS MFA</em>,
+                    }}
                   />
-                </strong>
-                &nbsp;
+                </li>
+              </ul>
+
+              <strong>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph4"
-                  defaultMessage={`your added security key is connected to your identity.
+                  description="Assurance levels with your eduID - paragraph5strong"
+                  defaultMessage={`Verified security key:
+`}
+                />
+              </strong>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="Assurance levels with your eduID - paragraph5"
+                    defaultMessage={`services requiring a strong binding between your identity and your login, often called {emphasis}.
  
 
 `}
-                />
-              </p>
+                    values={{
+                      emphasis: <em>AL3 / RAF High / LoA2</em>,
+                    }}
+                  />
+                </li>
+              </ul>
+
               <p>
                 <FormattedMessage
-                  description="Assurance levels with your eduID - paragraph5"
-                  defaultMessage={`With a verified Swedish identity and a verified security key the account generally conforms to {emphasis} and is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+                  description="Assurance levels with your eduID - paragraph7"
+                  defaultMessage={`Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+
 `}
-                  values={{
-                    emphasis: <em>Swamid AL3/ DIGG LOA2</em>,
-                  }}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph6"
-                  defaultMessage={`Note: this is only a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
-
+                  defaultMessage={`As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
 `}
                 />
               </p>

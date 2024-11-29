@@ -155,7 +155,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`If your identity is verified you can choose which of your first names from the population 
-          register to use as your display name for some services. If you wish to change it, select at least one first name below.`}
+          register to use as your display name for some services. Select at least one first name below if you wish to change it.`}
           description="Display name select paragraph"
         />
       </p>
