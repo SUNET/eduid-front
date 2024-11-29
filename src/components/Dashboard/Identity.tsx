@@ -210,9 +210,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
               id: "verified identity delete button",
               defaultMessage: "Delete this verified identity",
             })}
-          >
-            {/* <RemoveIcon /> */}
-          </EduIDButton>
+          ></EduIDButton>
         </figure>
       )}
 
