@@ -422,7 +422,7 @@ function SecurityKeyTable() {
             </span>
             <EduIDButton
               id="remove-webauthn"
-              buttonstyle="close"
+              buttonstyle="remove"
               size="sm"
               onClick={() => handleConfirmDeleteModal(cred.key)}
             ></EduIDButton>
