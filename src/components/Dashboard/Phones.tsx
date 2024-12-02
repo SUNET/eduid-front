@@ -261,6 +261,7 @@ function Phones() {
           />
         ) : (
           <EduIDButton
+            disabled={true}
             id="phone-number-add-more-button"
             buttonstyle="link"
             className="lowercase disabled"
