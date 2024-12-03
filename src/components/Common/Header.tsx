@@ -17,13 +17,7 @@ export function Header(props: HeaderProps): JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
 
-  const initialButton = (
-    <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
-      <FormattedMessage defaultMessage="Log in" description="Header login" />
-    </EduIDButton>
-  );
-
-  let button = initialButton;
+  let button = null;
 
   const navigate = useNavigate();
 
@@ -46,7 +40,12 @@ export function Header(props: HeaderProps): JSX.Element {
     }
   }
 
-  if (window.location.pathname.includes("register")) {
+  if (
+    window.location.pathname.includes("register") ||
+    window.location.pathname.includes("error") ||
+    window.location.pathname.includes("errors") ||
+    window.location.pathname.includes("reset-password")
+  ) {
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />

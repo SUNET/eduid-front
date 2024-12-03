@@ -11,9 +11,6 @@ test("show splash screen when not configured", () => {
     routes: ["/login/abc123"],
   });
 
-  const button = screen.getByRole("button", { name: "Log in" });
-  expect(button).toBeEnabled();
-
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).toHaveClass("spinner");
 });
