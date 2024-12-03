@@ -227,7 +227,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
           <EduIDButton
             id="remove-webauthn"
-            buttonstyle="close"
+            buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("eidas")}
           ></EduIDButton>
@@ -251,7 +251,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
           <EduIDButton
             id="remove-webauthn"
-            buttonstyle="close"
+            buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("freja")}
           ></EduIDButton>
