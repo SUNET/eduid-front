@@ -442,28 +442,8 @@ function SecurityKeyTable() {
               {date_success}
             </span>
           </div>
-
           {btnVerify}
         </figure>
-        <NotificationModal
-          id="remove-security-key"
-          title={
-            <FormattedMessage
-              defaultMessage="Remove security key"
-              description="settings.remove_security_key_modal_title"
-            />
-          }
-          mainText={
-            <FormattedMessage
-              defaultMessage={`Are you sure you want to remove your security key?`}
-              description="delete.remove_security_key_modal_text"
-            />
-          }
-          showModal={showConfirmRemoveSecurityKeyModal}
-          closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
-          acceptModal={handleRemoveWebauthnToken}
-          acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
-        />
       </React.Fragment>
     );
   });
@@ -479,6 +459,25 @@ function SecurityKeyTable() {
         <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
       </h3>
       {securityKeyData}
+      <NotificationModal
+        id="remove-security-key"
+        title={
+          <FormattedMessage
+            defaultMessage="Remove security key"
+            description="settings.remove_security_key_modal_title"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage={`Are you sure you want to remove your security key?`}
+            description="delete.remove_security_key_modal_text"
+          />
+        }
+        showModal={showConfirmRemoveSecurityKeyModal}
+        closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
+        acceptModal={handleRemoveWebauthnToken}
+        acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+      />
     </React.Fragment>
   );
 }
