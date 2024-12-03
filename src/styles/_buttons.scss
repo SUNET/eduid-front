@@ -325,3 +325,18 @@ button.scroll-to-top {
     width: 60px;
   }
 }
+
+.btn-remove {
+  width: 1.2rem;
+  height: 1.2rem !important;
+  background-image: url("../../img/remove-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: none !important;
+
+  &:hover {
+    background-image: url("../../img/remove-icon-black.svg");
+  }
+}

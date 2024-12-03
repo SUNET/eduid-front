@@ -81,31 +81,6 @@ test("renders security key as expected, with added security key", async () => {
 //   expect(addSecurityKeyButton).toBeEnabled();
 // });
 
-test("should display close button when only one security key is added", async () => {
-  render(<IndexMain />, {
-    state: {
-      ...defaultDashboardTestState,
-      security: {
-        credentials: [
-          {
-            created_ts: "2021-12-02",
-            credential_type: "security.webauthn_credential_type",
-            description: "touchID",
-            key: "dummy dummy",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-        ],
-      },
-    },
-  });
-  await linkToAdvancedSettings();
-
-  const CloseButton = screen.getAllByLabelText("Close")[1];
-  expect(CloseButton).toBeEnabled();
-});
-
 test("can remove a security key", async () => {
   render(<IndexMain />, {
     state: {
@@ -145,8 +120,8 @@ test("can remove a security key", async () => {
   });
   await linkToAdvancedSettings();
 
-  const CloseButton = screen.getAllByLabelText("Close")[1];
-  expect(CloseButton).toBeEnabled();
+  const RemoveButton = screen.getAllByLabelText("Remove")[1];
+  expect(RemoveButton).toBeEnabled();
 });
 
 test("api call webauthn/remove", async () => {

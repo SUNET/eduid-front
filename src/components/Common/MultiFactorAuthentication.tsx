@@ -421,8 +421,9 @@ function SecurityKeyTable() {
               <strong>{cred.description}</strong>
             </span>
             <EduIDButton
+              aria-label="Remove"
               id="remove-webauthn"
-              buttonstyle="close"
+              buttonstyle="remove"
               size="sm"
               onClick={() => handleConfirmDeleteModal(cred.key)}
             ></EduIDButton>
