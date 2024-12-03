@@ -66,7 +66,7 @@ h3 {
   .response-code-inputs {
     input {
       display: inline-block;
-      border: 1px solid $txt-gray;
+      border: 2px solid $txt-gray;
       font-size: 1.75rem;
       margin: 5px;
       height: 4rem;
@@ -76,7 +76,6 @@ h3 {
 
       &:focus {
         box-shadow: none;
-        border: 2px solid $txt-black;
         position: relative;
       }
 

@@ -26,6 +26,7 @@ form .react-select,
   //also focus-visible
   &__control--is-focused {
     outline: 2px dashed #000 !important;
+    box-shadow: none;
   }
 
   &__indicator-separator {

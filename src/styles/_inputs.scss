@@ -10,10 +10,10 @@
 .form-control:disabled,
 .form-control[readonly],
 input[readonly] {
-  border-bottom: none;
   color: $txt-gray;
 
-  :focus {
+  :focus,
+  :hover {
     pointer-events: none;
   }
 }
@@ -24,22 +24,12 @@ input.form-control.is-invalid,
 input.form-control:focus,
 input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
-  border-color: initial;
+  outline: 2px solid $border-gray;
   background-image: none;
-}
-
-input.form-control:focus,
-input.form-control.is-valid:focus,
-input.form-control.is-invalid:focus {
-  box-shadow: 0 0 0 0.2rem $border-gray;
-}
-
-.form-control.is-valid {
-  background-image: none;
-
-  &:focus {
-    box-shadow: 0 0 0 0.2rem $border-gray;
-  }
+  background-color: $white !important;
+  transition: none;
+  border: none;
+  box-shadow: none;
 }
 
 .form-control::placeholder,
@@ -47,22 +37,19 @@ input::placeholder {
   font-family: $inter-regular;
   font-size: 1.5rem;
 }
-.form-control:focus,
-input:focus:not([readonly]) {
-  color: $txt-black;
-  background-color: $white;
-  border-color: $txt-gray;
-  box-shadow: 0 0 0 0.2rem $border-gray;
-  outline: 0;
 
-  &:not([type="radio"]) {
-    border-bottom: solid 2px $txt-black;
+:hover:not(:focus) {
+  &[type="text"],
+  &[type="password"],
+  &[type="email"] {
+    border-top: 2px solid $white;
+    border-bottom: 2px solid $txt-black !important;
   }
 }
 
 //tab-focus
 :focus-visible {
-  outline: 2px dashed #000 !important;
+  outline: 2px dashed $txt-black !important;
   transition: none !important;
 
   //has parents with overflow hidden
@@ -77,6 +64,19 @@ input:focus:not([readonly]) {
     outline: 2px dashed #000 !important;
     transition: none;
   }
+}
+
+//removing chrome autocomplete babyblue
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
 }
 
 /* Radio buttons */
@@ -153,7 +153,6 @@ input[type="radio"] {
 }
 
 #copy-new-password {
-  border-bottom: none;
   background-color: $border-gray;
 }
 

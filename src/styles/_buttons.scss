@@ -26,9 +26,11 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    // background-color: $btn-orange;
     border-color: inherit;
     color: $white;
+    &:not(.btn-link) {
+      background-color: $btn-orange;
+    }
   }
 }
 
