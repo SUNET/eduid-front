@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
+import { CommonToU } from "./Common/CommonToU";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 interface ApprovedSecurityKeysTypes {
@@ -16,7 +17,6 @@ export function Help(): JSX.Element {
   const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
-  const version = useAppSelector((state) => state.login.tou.version);
 
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
 
@@ -1273,12 +1273,7 @@ export function Help(): JSX.Element {
                   defaultMessage="What are eduIDs terms of use?"
                 />
               </h4>
-              <p>
-                <FormattedMessage
-                  description="what are eduIDs terms of use - paragraph"
-                  defaultMessage={`These are the terms that are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
-                />
-              </p>
+              <CommonToU version="2016-v1" />
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
