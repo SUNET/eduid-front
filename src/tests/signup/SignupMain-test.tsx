@@ -317,7 +317,7 @@ async function testTermsOfUse({
   await screen.findByText(/^Register: Terms of use/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
-  if (state.tou.version === "1999-v1") {
+  if (state.tou.version === "2016-v1") {
     await screen.findByText(/This a test version of terms of use version/);
   }
 

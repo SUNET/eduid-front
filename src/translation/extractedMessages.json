@@ -609,6 +609,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
   },
+  "EDXXCi": {
+    "developer_comment": "what are eduIDs terms of use - heading",
+    "string": "What are eduIDs terms of use?"
+  },
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "How can I enhance my eduID?"
@@ -914,6 +918,10 @@
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "There is no technical information available"
+  },
+  "MuAdBa": {
+    "developer_comment": "about terms of use - handle",
+    "string": "Terms of use"
   },
   "MuypUP": {
     "developer_comment": "generic error page",
@@ -1994,6 +2002,10 @@
   "j0hRyW": {
     "developer_comment": "Phones main title",
     "string": "Mobile phone numbers"
+  },
+  "j7couZ": {
+    "developer_comment": "what are eduIDs terms of use - paragraph",
+    "string": "These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time."
   },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
