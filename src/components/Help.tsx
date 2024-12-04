@@ -16,6 +16,7 @@ export function Help(): JSX.Element {
   const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
+  const version = useAppSelector((state) => state.login.tou.version);
 
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
 
