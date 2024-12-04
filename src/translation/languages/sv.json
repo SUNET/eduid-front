@@ -1840,6 +1840,10 @@
     "developer_comment": "button cancel",
     "string": "Avbryt"
   },
+  "g0Q/Ki": {
+    "developer_comment": "Title for email code input",
+    "string": "Skriv in koden som skickats till {email}"
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "Ett fel uppstod under åtkomst till tjänsten."
@@ -2218,10 +2222,6 @@
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
     "string": "Tillbaka"
-  },
-  "lyfTgy": {
-    "developer_comment": "Title for email code input",
-    "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
   },
   "mO/ijL": {
     "developer_comment": "Signup",
