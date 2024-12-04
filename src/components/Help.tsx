@@ -1273,6 +1273,12 @@ export function Help(): JSX.Element {
                   defaultMessage="What are eduIDs terms of use?"
                 />
               </h4>
+              <p>
+                <FormattedMessage
+                  description="what are eduIDs terms of use - paragraph"
+                  defaultMessage={`These are the terms that are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
+                />
+              </p>
               <CommonToU version="2016-v1" />
             </article>
           </AccordionItemTemplate>
