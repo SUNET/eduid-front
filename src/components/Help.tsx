@@ -1398,35 +1398,21 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-about-sunet"
-            title={<FormattedMessage description="about sunet - handle" defaultMessage="About SUNET" />}
+            uuid="help-tou"
+            title={<FormattedMessage description="about terms of use - handle" defaultMessage="Terms of use" />}
             additionalInfo={null}
           >
             <article>
               <h4>
-                <FormattedMessage description="what is sunet - heading" defaultMessage="What is SUNET?" />
+                <FormattedMessage
+                  description="what are eduIDs terms of use - heading"
+                  defaultMessage="What are eduIDs terms of use"
+                />
               </h4>
               <p>
                 <FormattedMessage
-                  description="what is sunet - paragraph 1"
-                  defaultMessage={`eduID is a service provided by SUNET - the Swedish University Computer Network, 
-                  which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication 
-                  networks and many other related services to public organisations and higher education and research institutions.`}
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  description="what is sunet - paragraph 2"
-                  defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the 
-                  higher education community, with adequate authorization levels of confirmed accounts. 
-                  More information about SUNET is available at {sunet}.`}
-                  values={{
-                    sunet: (
-                      <a className="text-link" href="https://www.sunet.se" target="_blank">
-                        www.sunet.se
-                      </a>
-                    ),
-                  }}
+                  description="what are eduIDs terms of use - paragraph"
+                  defaultMessage={`These are the terms that are accepted by creating an eduID account. You may need to accept the terms again if you haven't used the service for a period of time.`}
                 />
               </p>
             </article>
