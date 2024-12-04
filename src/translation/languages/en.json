@@ -139,10 +139,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
-  "19fREK": {
-    "developer_comment": "security verified",
-    "string": "Verified"
-  },
   "1CLEos": {
     "developer_comment": "login button",
     "string": "Log in"
@@ -333,6 +329,10 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
+  "67pXNw": {
+    "developer_comment": "security creation date",
+    "string": "Created:"
+  },
   "6Ka904": {
     "developer_comment": "confirmed account description",
     "string": "Read more details about your confirmed account at {account}"
@@ -356,10 +356,6 @@
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID Dashboard:"
-  },
-  "6l0g1Y": {
-    "developer_comment": "security last used",
-    "string": "Used on"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
@@ -684,10 +680,6 @@
     "developer_comment": "use other devices - list item 2",
     "string": "scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
   },
-  "G/4orj": {
-    "developer_comment": "security key remove",
-    "string": "Remove"
-  },
   "G0xkV6": {
     "developer_comment": "Short code form",
     "string": "Continue"
@@ -724,6 +716,10 @@
     "developer_comment": "how use other devices - paragraph",
     "string": "You can also login using another device to login to eduID on the device you are currently using:"
   },
+  "GcpVPo": {
+    "developer_comment": "security last used",
+    "string": "Used:"
+  },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
     "string": "Federated identities are one of the cornerstones of trust between organisations. Trust is based on all the organisations relying on all the others to carry out their authentication - identification and verification - properly and in a controlled and reliable IT environment."
@@ -747,10 +743,6 @@
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
     "string": "To create your eduID you need to accept the eduID terms of use."
-  },
-  "HSZS8/": {
-    "developer_comment": "security key status",
-    "string": "Verify"
   },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
@@ -1264,6 +1256,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
   },
+  "VAbv/4": {
+    "developer_comment": "security verified",
+    "string": "verified"
+  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
@@ -1295,6 +1291,10 @@
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Page not found"
+  },
+  "WBKF0h": {
+    "developer_comment": "security key status",
+    "string": "Verify with:"
   },
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
@@ -1372,6 +1372,10 @@
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
   },
+  "YLzAJF": {
+    "developer_comment": "security key status",
+    "string": "Verification status:"
+  },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
     "string": "services requiring a low level of assurance, often called {emphasis}."
@@ -1407,10 +1411,6 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
-  },
-  "ZN7bfi": {
-    "developer_comment": "security creation date",
-    "string": "Created on"
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -2081,6 +2081,10 @@
     "developer_comment": "Temp info - message5",
     "string": "For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' and 'Improving the security level of eduID' sections."
   },
+  "l1XkUC": {
+    "developer_comment": "security description name",
+    "string": "Name:"
+  },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Start by adding your ID number above."
@@ -2338,10 +2342,6 @@
   "nuB/SD": {
     "developer_comment": "captcha input label",
     "string": "Enter the code from the image"
-  },
-  "nw6cAK": {
-    "developer_comment": "security description name",
-    "string": "Name"
   },
   "nyRE3J": {
     "developer_comment": "manage your tokens",
