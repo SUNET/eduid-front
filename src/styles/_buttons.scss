@@ -87,13 +87,16 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   }
 }
 
-button.btn-primary:hover,
-button.btn-secondary:hover {
-  transform: scale(0.95);
+button.btn-primary,
+button.btn-secondary,
+.mfa-select .react-select__control {
+  :hover {
+    transform: scale(0.95);
 
-  &:disabled,
-  .disabled {
-    transform: scale(1);
+    &:disabled,
+    .disabled {
+      transform: scale(1);
+    }
   }
 }
 

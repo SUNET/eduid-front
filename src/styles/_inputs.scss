@@ -11,7 +11,7 @@
 .form-control[readonly],
 input[readonly] {
   color: $txt-gray;
-
+  background-color: $bg-gray;
   :focus,
   :hover {
     pointer-events: none;
@@ -26,7 +26,7 @@ input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
   outline: 2px solid $border-gray;
   background-image: none;
-  background-color: $white !important;
+  background-color: $white;
   transition: none;
   border: none;
   box-shadow: none;
@@ -38,7 +38,7 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
-:hover:not(:focus) {
+:hover:not(:focus):not(:disabled) {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
