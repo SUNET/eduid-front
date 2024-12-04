@@ -139,10 +139,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
   },
-  "19fREK": {
-    "developer_comment": "security verified",
-    "string": "Verifierad"
-  },
   "1CLEos": {
     "developer_comment": "login button",
     "string": "Logga in"
@@ -333,6 +329,10 @@
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
   },
+  "67pXNw": {
+    "developer_comment": "security creation date",
+    "string": "Skapad:"
+  },
   "6Ka904": {
     "developer_comment": "confirmed account description",
     "string": "Läs mer om ditt bekräftade konto under {account}"
@@ -356,10 +356,6 @@
   "6k2J31": {
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID Dashboard:"
-  },
-  "6l0g1Y": {
-    "developer_comment": "security last used",
-    "string": "Senast använd"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
@@ -684,10 +680,6 @@
     "developer_comment": "use other devices - list item 2",
     "string": "skanna QR-koden med enheten där du har din säkerhetsnyckel eller sparat lösenord,"
   },
-  "G/4orj": {
-    "developer_comment": "security key remove",
-    "string": "Ta bort"
-  },
   "G0xkV6": {
     "developer_comment": "Short code form",
     "string": "Fortsätt"
@@ -724,6 +716,10 @@
     "developer_comment": "how use other devices - paragraph",
     "string": "Inloggning kan även ske genom att logga in i eduID med hjälp av en annan enhet:"
   },
+  "GcpVPo": {
+    "developer_comment": "security last used",
+    "string": "Använd:"
+  },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
     "string": "För federerade identiteter är en av grundstenarna tillit mellan organisationer. Tilliten ligger i att organisationerna litar på att alla genomför sin autentisering, identifiering och verifiering, på ett korrekt sätt och i en kontrollerad och tillförlitlig IT-miljö. "
@@ -747,10 +743,6 @@
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
     "string": "För att skapa ditt eduID måste du acceptera användarvillkoren för eduID."
-  },
-  "HSZS8/": {
-    "developer_comment": "security key status",
-    "string": "Verifiera"
   },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
@@ -1264,6 +1256,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
   },
+  "VAbv/4": {
+    "developer_comment": "security verified",
+    "string": "verifierad"
+  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
@@ -1295,6 +1291,10 @@
   "VtD50r": {
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
+  },
+  "WBKF0h": {
+    "developer_comment": "security key status",
+    "string": "Verifiera med:"
   },
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
@@ -1372,6 +1372,10 @@
     "developer_comment": "what is freja - heading",
     "string": "Vad är Freja+?"
   },
+  "YLzAJF": {
+    "developer_comment": "security key status",
+    "string": "Verifieringsstatus:"
+  },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
     "string": "tjänster som kräver en låg tillitsnivå, ofta kallad {emphasis}."
@@ -1407,10 +1411,6 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
-  },
-  "ZN7bfi": {
-    "developer_comment": "security creation date",
-    "string": "Skapad den"
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -2081,6 +2081,10 @@
     "developer_comment": "Temp info - message5",
     "string": "För mer information om verifieringsmetoder som stöds, besök {hjälp} och se avsnitten 'Verifiering av identitet' och 'Utökad säkerhet med ditt eduID'."
   },
+  "l1XkUC": {
+    "developer_comment": "security description name",
+    "string": "Namn:"
+  },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Börja med att lägga till ditt personnummer ovan."
@@ -2338,10 +2342,6 @@
   "nuB/SD": {
     "developer_comment": "captcha input label",
     "string": "Ange koden från bilden"
-  },
-  "nw6cAK": {
-    "developer_comment": "security description name",
-    "string": "Namn"
   },
   "nyRE3J": {
     "developer_comment": "manage your tokens",
