@@ -1420,6 +1420,21 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
+            uuid="help-tou"
+            title={<FormattedMessage description="about terms of use - handle" defaultMessage="Terms of use" />}
+            additionalInfo={null}
+          >
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="what are eduIDs terms of use - heading"
+                  defaultMessage="What are eduIDs terms of use?"
+                />
+              </h4>
+              <CommonToU version="2016-v1" />
+            </article>
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
             uuid="help-contact"
             title={
               <FormattedMessage
