@@ -26,9 +26,11 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $btn-orange;
     border-color: inherit;
     color: $white;
+    &:not(.btn-link) {
+      background-color: $btn-orange;
+    }
   }
 }
 
@@ -85,23 +87,26 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   }
 }
 
-button.btn-primary:hover,
-button.btn-secondary:hover {
-  transform: scale(0.95);
+button.btn-primary,
+button.btn-secondary,
+.mfa-select .react-select__control {
+  :hover {
+    transform: scale(0.95);
 
-  &:disabled,
-  .disabled {
-    transform: scale(1);
+    &:disabled,
+    .disabled {
+      transform: scale(1);
+    }
   }
 }
 
-/* color for CANCEL and CLOSE buttons in modals */
-// ----- buttons that close modals ----  //
+/* CLOSE buttons in modals */
 button.btn-close {
   background-color: transparent;
   margin: 0;
   box-shadow: none;
   height: 1rem;
+  width: 1rem;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -153,9 +158,12 @@ button.btn-link {
       display: none;
     }
   }
-  &.disabled {
+  &.disabled,
+  :disabled {
     color: $txt-gray;
     opacity: 1;
+    box-shadow: none;
+    text-decoration: none;
   }
 }
 
@@ -192,7 +200,7 @@ button.btn-icon {
   }
 }
 
-/* Wraps all buttons for responsive behaviour independend on number */
+/* Wraps all buttons for responsive behaviour independent on number */
 .buttons {
   display: flex;
   column-gap: 1rem;
@@ -285,14 +293,12 @@ button.icon-only {
   }
 }
 
-// a link focus
-// a:focus {
-//   box-shadow: 0 0 0 1px #f9f9d1, 0 0 0 2px #396196, 0 0 2px 4px #f9f9d1 !important;
-// }
-
-.btn-close.btn-sm:focus,
-.header-user:focus {
-  background-color: $body-gray !important;
+//menu name control
+button.header-user {
+  &:hover,
+  &:focus-within {
+    background-color: $body-gray !important;
+  }
 }
 
 //Scroll To top button
@@ -314,10 +320,6 @@ button.scroll-to-top {
     right: 0.5rem;
     bottom: 6.5rem;
   }
-}
-
-.display-none {
-  display: none;
 }
 
 @media (max-width: $bp-xs) {

@@ -75,7 +75,6 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         size="sm"
         aria-label={showPassword ? "hide password" : "show password"}
         onClick={toggleShowPassword}
-        tabIndex={-1}
       >
         {showPassword ? (
           <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />

@@ -1,22 +1,90 @@
 @import "variables";
 
+/* Inputs and form controls, mainly non button */
+
+/* Form controls and interactive states */
 .form-control {
   display: flex;
+}
 
-  &:focus {
-    color: $txt-black;
-    background-color: $white;
-    border-color: $txt-gray;
-    box-shadow: 0 0 0 0.2rem $border-gray;
-    outline: 0;
+.form-control:disabled,
+.form-control[readonly],
+input[readonly] {
+  color: $txt-gray;
+  background-color: $bg-gray;
+  :focus,
+  :hover {
+    pointer-events: none;
   }
 }
 
+input.form-control,
+input.form-control.is-valid,
+input.form-control.is-invalid,
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  outline: 2px solid $border-gray;
+  background-image: none;
+  background-color: $white;
+  transition: none;
+  border: none;
+  box-shadow: none;
+}
+
+.form-control::placeholder,
+input::placeholder {
+  font-family: $inter-regular;
+  font-size: 1.5rem;
+}
+
+:hover:not(:focus):not(:disabled) {
+  &[type="text"],
+  &[type="password"],
+  &[type="email"] {
+    border-top: 2px solid $white;
+    border-bottom: 2px solid $txt-black !important;
+  }
+}
+
+//tab-focus
+:focus-visible {
+  outline: 2px dashed $txt-black !important;
+  transition: none !important;
+
+  //has parents with overflow hidden
+  &[type="text"],
+  &[type="password"],
+  &[type="email"],
+  &.accordion__button,
+  table & {
+    outline-offset: -2px;
+  }
+  &.toggle-checkbox + .toggle-switch {
+    outline: 2px dashed #000 !important;
+    transition: none;
+  }
+}
+
+//removing chrome autocomplete babyblue
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+}
+
+/* Radio buttons */
 input[type="radio"] {
-  /* remove standard background appearance */
+  //remove standard background appearance
   appearance: none;
 
-  /* create custom radio button appearance */
+  //create custom radio button appearance
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -24,14 +92,14 @@ input[type="radio"] {
   min-height: 1rem;
   align-self: center;
 
-  /* background-color only for content */
+  //background-color only for content
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   border: 2px solid $bright-orange;
   background-color: transparent;
   border-radius: 50%;
 
-  /* to prevent overwrite from input padding, this ensures that the radio button remains round */
+  //to prevent overwrite from input padding, this ensures that the radio button remains round
   padding: 0;
 
   &:hover {
@@ -39,22 +107,20 @@ input[type="radio"] {
     cursor: pointer;
     border: none;
   }
+
+  &:checked {
+    background-color: $bright-orange;
+    border: none;
+
+    .error {
+      background: $error-red;
+      color: $white;
+      border: none;
+    }
+  }
 }
 
-/* appearance for checked radiobutton */
-input[type="radio"]:checked {
-  // background-color: #28a745;
-  background-color: $bright-orange;
-  border: none;
-}
-
-input[type="radio"]:checked.error {
-  background: $error-red;
-  color: $white;
-  border: none;
-}
-
-/* optional styles for centering radio buttons */
+//optional styles for centering radio buttons
 .radio-input-container {
   display: flex;
 
@@ -76,98 +142,7 @@ input[type="radio"]:checked.error {
   }
 }
 
-.input-container {
-  margin-bottom: 1.125rem;
-  margin-right: 0.5rem;
-  flex: 1;
-}
-
-.form-control::placeholder,
-input::placeholder {
-  font-family: $inter-regular;
-  font-size: 1.5rem;
-}
-
-.form-control:focus,
-input:focus:not([readonly]) {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem $border-gray;
-  &:not([type="radio"]) {
-    border-bottom: solid 2px $txt-black;
-  }
-}
-
-input[readonly]:focus {
-  outline: none;
-}
-input[readonly]:focus-visible {
-  outline: auto;
-}
-.form-control.is-valid {
-  background-image: none;
-
-  &:focus {
-    box-shadow: 0 0 0 0.2rem $border-gray;
-  }
-}
-
-/* invalid form input */
-// .form-control.is-invalid {
-//   border: none;
-//   border-bottom: 2px solid $bright-orange;
-//   background-image: none;
-//   padding-right: 8px;
-
-//   &:focus {
-//     box-shadow: 0 0 0 0.2rem $border-gray;
-//   }
-// }
-
-/* error message */
-.input-error {
-  color: $bright-orange;
-  font-weight: 700;
-  letter-spacing: 0.025rem;
-}
-
-.input-label-help-text-container {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-
-  & label {
-    letter-spacing: 0;
-    font-size: 1rem;
-  }
-
-  /* for orange asterisk after label */
-  & label.required::after {
-    content: " *";
-    color: $txt-orange;
-  }
-
-  & .help-block {
-    font-size: 1rem;
-    text-transform: lowercase;
-  }
-}
-
-.input-validate-error {
-  font-size: $txt-sm;
-  color: $error-red;
-
-  fieldset & {
-    position: absolute;
-  }
-}
-
-fieldset.change-password-custom-inputs {
-  span.input-validate-error {
-    position: relative !important;
-  }
-}
-
-// login username-pw / reset-password set-new-password
+/* Login username-pw / reset-password set-new-password */
 .password-input {
   display: flex;
   position: relative;
@@ -178,11 +153,24 @@ fieldset.change-password-custom-inputs {
 }
 
 #copy-new-password {
-  border-bottom: none;
   background-color: $border-gray;
 }
 
-// Switch toggle
+input#display-none-new-password {
+  display: none;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Switch toggle */
 .toggle {
   cursor: pointer;
   display: flex;
@@ -244,18 +232,36 @@ fieldset.change-password-custom-inputs {
 
 .toggle-checkbox {
   position: absolute;
-  visibility: hidden;
   width: auto;
+  @extend .visuallyhidden;
 }
 
-/* Chrome, Safari, Edge, Opera */
+/* Select */
+select {
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  background-color: $white;
+  height: 40px;
+  margin-top: 3px;
+}
+
+//react-select
+.select__multi-value__label {
+  font-size: 1.25rem !important;
+  align-self: center !important;
+}
+
+/* Cross browser */
+
+//Chrome, Safari, Edge, Opera
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+//Firefox
 input[type="number"] {
   appearance: textfield;
 }
@@ -264,6 +270,12 @@ input.display-none {
   display: none;
 }
 
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 50px $white inset;
+}
+
+/* Responsive */
 @media (max-width: $bp-sm) {
   .form-control,
   input,
@@ -285,13 +297,4 @@ input.display-none {
   .radio-input-container {
     flex-direction: column;
   }
-}
-
-input:-webkit-autofill {
-  background-color: transparent !important;
-  box-shadow: 0 0 0 50px $white inset;
-}
-
-input#display-none-new-password {
-  display: none;
 }

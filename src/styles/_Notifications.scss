@@ -29,9 +29,11 @@
   .close {
     position: absolute;
     height: 1.5rem;
+    width: 1.5rem;
     right: 1rem;
     top: 1rem;
     padding: 0;
+    border-radius: 50%;
 
     &:hover {
       color: $bright-orange;

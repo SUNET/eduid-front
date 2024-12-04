@@ -261,9 +261,10 @@ function Phones() {
           />
         ) : (
           <EduIDButton
+            disabled={true}
             id="phone-number-add-more-button"
             buttonstyle="link"
-            className="lowercase disabled"
+            className="lowercase"
             onClick={handlePhoneForm}
           >
             <FormattedMessage defaultMessage=" + add more" description="button add more" />

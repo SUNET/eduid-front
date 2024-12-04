@@ -18,7 +18,7 @@ export function CommonToU(props: CommonToUProps): JSX.Element {
     <React.Fragment>
       {ToUs[props.version]}
 
-      <p tabIndex={0}>
+      <p>
         <strong>
           <FormattedMessage
             defaultMessage={`Any person found violating or suspected of violating these rules can be disabled
