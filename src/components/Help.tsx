@@ -1275,7 +1275,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what are eduIDs terms of use - paragraph"
-                  defaultMessage={`These are the terms that are accepted by the user upon creating an eduID account. You may need to accept the terms again if you haven't used the service for a period of time.`}
+                  defaultMessage={`These are the terms that are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
                 />
               </p>
             </article>
