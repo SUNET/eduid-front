@@ -1262,21 +1262,6 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
-            uuid="help-tou"
-            title={<FormattedMessage description="about terms of use - handle" defaultMessage="Terms of use" />}
-            additionalInfo={null}
-          >
-            <article>
-              <h4>
-                <FormattedMessage
-                  description="what are eduIDs terms of use - heading"
-                  defaultMessage="What are eduIDs terms of use?"
-                />
-              </h4>
-              <CommonToU version="2016-v1" />
-            </article>
-          </AccordionItemTemplate>
-          <AccordionItemTemplate
             uuid="help-privacy-accessibility"
             title={
               <FormattedMessage
@@ -1411,6 +1396,21 @@ export function Help(): JSX.Element {
                   service in a convenient and safe manner and is one of the many ways eduID is always striving to improve.`}
                 />
               </p>
+            </article>
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
+            uuid="help-tou"
+            title={<FormattedMessage description="about terms of use - handle" defaultMessage="Terms of use" />}
+            additionalInfo={null}
+          >
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="what are eduIDs terms of use - heading"
+                  defaultMessage="What are eduIDs terms of use?"
+                />
+              </h4>
+              <CommonToU version="2016-v1" />
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
