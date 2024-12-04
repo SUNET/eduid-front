@@ -176,7 +176,7 @@ function Emails() {
         id="email-confirm-modal"
         title={
           <FormattedMessage
-            defaultMessage={`Click the link or enter the code sent to {email} here`}
+            defaultMessage={`Enter the code sent to {email}`}
             description="Title for email code input"
             values={{ email: selectedEmail }}
           />
