@@ -1840,6 +1840,10 @@
     "developer_comment": "button cancel",
     "string": "Cancel"
   },
+  "g0Q/Ki": {
+    "developer_comment": "Title for email code input",
+    "string": "Enter the code sent to {email}"
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -2218,10 +2222,6 @@
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
-  },
-  "lyfTgy": {
-    "developer_comment": "Title for email code input",
-    "string": "Click the link or enter the code sent to {email} here"
   },
   "mO/ijL": {
     "developer_comment": "Signup",
