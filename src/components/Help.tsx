@@ -1406,7 +1406,7 @@ export function Help(): JSX.Element {
               <h4>
                 <FormattedMessage
                   description="what are eduIDs terms of use - heading"
-                  defaultMessage="What are eduIDs terms of use"
+                  defaultMessage="What are eduIDs terms of use?"
                 />
               </h4>
               <p>
