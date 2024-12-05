@@ -74,21 +74,18 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                 )}
 
                 {props.mainText ? props.mainText : null}
-
-                <div id="confirmation-code-area">
-                  <FinalField<string>
-                    component={CustomInput}
-                    componentClass="input"
-                    type="text"
-                    label={props.modalFormLabel}
-                    placeholder={props.placeholder}
-                    id={props.id}
-                    name={props.id}
-                    helpBlock={props.helpBlock}
-                    validate={validate}
-                    autoFocus={true}
-                  />
-                </div>
+                <FinalField<string>
+                  component={CustomInput}
+                  componentClass="input"
+                  type="text"
+                  label={props.modalFormLabel}
+                  placeholder={props.placeholder}
+                  id={props.id}
+                  name={props.id}
+                  helpBlock={props.helpBlock}
+                  validate={validate}
+                  autoFocus={true}
+                />
                 {props.resendMarkup ? props.resendMarkup : null}
               </ModalBody>
               <ModalFooter>

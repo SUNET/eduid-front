@@ -32,7 +32,7 @@ export default function TextInput(props: TextInputProps) {
   }
 
   return (
-    <FormGroup id={`${props.input.name}-wrapper`}>
+    <FormGroup id={`${props.input.name}-wrapper`} className="form-wrapper">
       {label && (
         <Label for={props.input.name} aria-label={props.input.name}>
           {label}

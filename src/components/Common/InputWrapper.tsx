@@ -15,7 +15,7 @@ export interface InputWrapperProps extends FieldRenderProps<string> {
  */
 export function InputWrapper(props: InputWrapperProps): JSX.Element {
   return (
-    <FormGroup id={`${props.input.name}-wrapper`}>
+    <FormGroup id={`${props.input.name}-wrapper`} className="form-wrapper">
       <RenderLabelAndHelpText {...props} />
       {props.children}
       <RenderErrorMessage {...props} />
