@@ -5,8 +5,8 @@ import EduIDButton from "./EduIDButton";
 
 interface CommonToUProps {
   version: string;
-  handleAccept(e: React.MouseEvent<HTMLElement>): void;
-  handleCancel(e: React.MouseEvent<HTMLElement>): void;
+  handleAccept?(e: React.MouseEvent<HTMLElement>): void;
+  handleCancel?(e: React.MouseEvent<HTMLElement>): void;
 }
 
 /**
@@ -16,7 +16,7 @@ interface CommonToUProps {
 export function CommonToU(props: CommonToUProps): JSX.Element {
   return (
     <React.Fragment>
-      {ToUs[props.version]}
+      {ToUs["2016-v1"]}
 
       <p>
         <strong>
@@ -27,15 +27,16 @@ export function CommonToU(props: CommonToUProps): JSX.Element {
           />
         </strong>
       </p>
-
-      <div className="buttons">
-        <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
-          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-        </EduIDButton>
-        <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
-          <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
-        </EduIDButton>
-      </div>
+      {props.handleAccept ? (
+        <div className="buttons">
+          <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
+            <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+          </EduIDButton>
+          <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
+            <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
+          </EduIDButton>
+        </div>
+      ) : null}
     </React.Fragment>
   );
 }

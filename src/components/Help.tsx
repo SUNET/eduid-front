@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
+import { CommonToU } from "./Common/CommonToU";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 interface ApprovedSecurityKeysTypes {
@@ -1261,6 +1262,27 @@ export function Help(): JSX.Element {
             </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
+            uuid="help-tou"
+            title={<FormattedMessage description="about terms of use - handle" defaultMessage="Terms of use" />}
+            additionalInfo={null}
+          >
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="what are eduIDs terms of use - heading"
+                  defaultMessage="What are eduIDs terms of use?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="what are eduIDs terms of use - paragraph"
+                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
+                />
+              </p>
+              <CommonToU version="2016-v1" />
+            </article>
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
             uuid="help-privacy-accessibility"
             title={
               <FormattedMessage
@@ -1414,6 +1436,7 @@ export function Help(): JSX.Element {
                   networks and many other related services to public organisations and higher education and research institutions.`}
                 />
               </p>
+
               <p>
                 <FormattedMessage
                   description="what is sunet - paragraph 2"
