@@ -609,6 +609,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
   },
+  "EDXXCi": {
+    "developer_comment": "what are eduIDs terms of use - heading",
+    "string": "Vad är eduIDs användarvillkor?"
+  },
   "EGngEP": {
     "developer_comment": "how enhance eduid - heading",
     "string": "Hur kan jag utöka mitt eduID?"
@@ -914,6 +918,10 @@
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "Det finns ingen detaljerad information tillgänglig"
+  },
+  "MuAdBa": {
+    "developer_comment": "about terms of use - handle",
+    "string": "Användarvillkor"
   },
   "MuypUP": {
     "developer_comment": "generic error page",
@@ -1994,6 +2002,10 @@
   "j0hRyW": {
     "developer_comment": "Phones main title",
     "string": "Telefonnummer"
+  },
+  "j7couZ": {
+    "developer_comment": "what are eduIDs terms of use - paragraph",
+    "string": "Villkoren accepteras av användaren när eduID-kontot skapas. Det är en juridisk överenskommelse mellan eduID och dess användare att följa användarvillkoren. Du kan bli ombedd att acceptera villkoren på nytt om du inte har använt tjänsten sedan en tid."
   },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
