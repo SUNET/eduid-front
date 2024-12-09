@@ -24,11 +24,12 @@ button.btn {
 
   &:disabled,
   .disabled {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
     pointer-events: all !important;
     border-color: inherit;
     color: $white;
-    &:not(.btn-link) {
+
+    &.btn-primary {
       background-color: $btn-orange;
     }
   }
@@ -253,6 +254,14 @@ button.btn-icon {
 
     svg {
       color: $bright-orange;
+    }
+    &:disabled {
+      &:hover {
+        transform: none;
+      }
+      path {
+        fill: $txt-gray;
+      }
     }
   }
 
