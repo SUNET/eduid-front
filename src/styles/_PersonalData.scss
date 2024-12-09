@@ -9,25 +9,10 @@
     }
   }
 
-  //TODO: remove this when we move icon-text to a more generic place
   .name-inputs {
     .icon-text {
       display: flex;
       align-items: baseline;
-
-      button.icon-only {
-        &:hover,
-        &:active,
-        &:focus,
-        &:active:focus {
-          transform: rotate(180deg);
-          padding: initial;
-        }
-
-        svg {
-          color: $bright-orange;
-        }
-      }
 
       label.hint {
         font-family: inherit;
