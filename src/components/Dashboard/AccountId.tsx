@@ -11,7 +11,7 @@ export function AccountId(): JSX.Element {
 
   return (
     <div className="profile-grid-cell figure tight" id="uniqueId-container">
-      <label htmlFor={idUserEppn} id={idUserEppn}>
+      <label htmlFor={idUserEppn}>
         <strong>
           <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
         </strong>
