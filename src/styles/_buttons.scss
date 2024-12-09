@@ -223,6 +223,10 @@ button.btn-icon {
   @media (max-width: $bp-xs) {
     flex-direction: column-reverse;
 
+    button[type="submit"] {
+      order: 1;
+    }
+
     button {
       margin: 0.5rem 0;
     }
