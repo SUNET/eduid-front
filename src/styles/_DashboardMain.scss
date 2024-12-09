@@ -19,6 +19,10 @@
 #uniqueId-container {
   flex-direction: row;
   align-items: baseline;
+
+  button.btn-link {
+    padding: 0.5rem;
+  }
 }
 
 .display-data {

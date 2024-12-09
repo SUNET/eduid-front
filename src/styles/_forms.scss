@@ -5,6 +5,10 @@ form {
   display: flex;
   flex-direction: column;
   margin-top: 1.25rem;
+
+  .form-wrapper {
+    height: 5.5rem;
+  }
 }
 
 .input-container {

@@ -76,10 +76,8 @@ export default function UsernamePw() {
           render={(formProps: FormRenderProps<UsernamePwFormData>) => {
             return (
               <form onSubmit={formProps.handleSubmit}>
-                <fieldset>
-                  <UsernameInputPart />
-                  <PasswordInput name="currentPassword" autoComplete="current-password" />
-                </fieldset>
+                <UsernameInputPart />
+                <PasswordInput name="currentPassword" autoComplete="current-password" />
                 <div className="flex-between">
                   <div className="buttons">
                     <LoginAbortButton />

@@ -11,16 +11,13 @@ export function AccountId(): JSX.Element {
 
   return (
     <div className="profile-grid-cell figure tight" id="uniqueId-container">
-      <span aria-label={idUserEppn}>
+      <label htmlFor={idUserEppn}>
         <strong>
           <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
-          &nbsp;
         </strong>
-      </span>
-      <div className="display-data">
-        <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
-        <CopyToClipboardButton ref={ref} />
-      </div>
+      </label>
+      <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
+      <CopyToClipboardButton ref={ref} />
     </div>
   );
 }

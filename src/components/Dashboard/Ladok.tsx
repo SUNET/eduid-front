@@ -42,8 +42,8 @@ const LadokContainer = (): JSX.Element => {
         />
       </p>
 
-      <fieldset>
-        <form>
+      <form>
+        <fieldset>
           <label className="toggle flex-between" htmlFor="ladok-connection">
             <legend>
               <FormattedMessage defaultMessage={`Link your account to Ladok`} description="Ladok account linking" />
@@ -57,8 +57,8 @@ const LadokContainer = (): JSX.Element => {
             />
             <div className="toggle-switch"></div>
           </label>
-        </form>
-      </fieldset>
+        </fieldset>
+      </form>
       {switchChecked ? <LadokLinkStatus /> : undefined}
       {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
       <p className="help-text">
