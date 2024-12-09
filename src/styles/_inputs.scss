@@ -53,9 +53,6 @@ input::placeholder {
   transition: none !important;
 
   //has parents with overflow hidden
-  &[type="text"],
-  &[type="password"],
-  &[type="email"],
   &.accordion__button,
   table & {
     outline-offset: -2px;
