@@ -29,6 +29,8 @@ export function Help(): JSX.Element {
     locale === "en"
       ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
       : "https://org.frejaeid.com/en-e-legitimation-for-utlandska-medborgare/";
+  const UniversityAdmissionURL =
+    locale === "en" ? "https://www.universityadmissions.se/intl/start" : "https://www.antagning.se";
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -142,7 +144,7 @@ export function Help(): JSX.Element {
                   account.`}
                   values={{
                     link: (
-                      <a className="text-link" href="https://www.universityadmissions.se" target="_blank">
+                      <a className="text-link" href={UniversityAdmissionURL} target="_blank">
                         universityadmissions.se
                       </a>
                     ),
