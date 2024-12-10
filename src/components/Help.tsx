@@ -17,8 +17,18 @@ export function Help(): JSX.Element {
   const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
+  const locale = useAppSelector((state) => state.intl.locale);
 
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
+
+  const FrejaAppURL =
+    locale === "en" ? "https://frejaeid.com/en/get-freja-eid/" : "https://frejaeid.com/skaffa-freja-eid/";
+  const BankIdURL =
+    locale === "en" ? "https://www.bankid.com/en/privat/skaffa-bankid" : "https://www.bankid.com/privat/skaffa-bankid";
+  const FrejaeIdURL =
+    locale === "en"
+      ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
+      : "https://org.frejaeid.com/en-e-legitimation-for-utlandska-medborgare/";
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -545,7 +555,7 @@ export function Help(): JSX.Element {
                         Freja+ account according to the instructions,`}
                         values={{
                           Freja: (
-                            <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
+                            <a className="text-link" href={FrejaeIdURL} target="_blank">
                               Freja app
                             </a>
                           ),
@@ -633,11 +643,7 @@ export function Help(): JSX.Element {
                         defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
                         values={{
                           bankid: (
-                            <a
-                              className="text-link"
-                              href="https://www.bankid.com/en/privat/skaffa-bankid"
-                              target="_blank"
-                            >
+                            <a className="text-link" href={BankIdURL} target="_blank">
                               the BankID website
                             </a>
                           ),
@@ -730,11 +736,7 @@ export function Help(): JSX.Element {
                       defaultMessage={`Current information on included nationalities can be found at: {FrejaList}`}
                       values={{
                         FrejaList: (
-                          <a
-                            className="text-link"
-                            href="https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
-                            target="_blank"
-                          >
+                          <a className="text-link" href={FrejaeIdURL} target="_blank">
                             Freja eID
                           </a>
                         ),
@@ -756,7 +758,7 @@ export function Help(): JSX.Element {
                          profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,`}
                         values={{
                           FrejaApp: (
-                            <a className="text-link" href="https://frejaeid.com/en/get-freja-eid/" target="_blank">
+                            <a className="text-link" href={FrejaAppURL} target="_blank">
                               Freja app
                             </a>
                           ),
