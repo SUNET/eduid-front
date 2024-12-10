@@ -116,7 +116,7 @@ export function Help(): JSX.Element {
                     normally called unconfirmed, because the service 
                     provider does not really know who the user with that email address is - and for many 
                     services this is at a sufficient level. Through the use of eduID, 
-                    identification of users is elevated to that of confirmed users.`}
+                    identification of users is elevated to that of confirmed users. You can read more about the requirements in the Assurance levels help section.`}
                 />
               </p>
               <h4>
