@@ -146,7 +146,7 @@ export function SignupUserCreated(): JSX.Element {
         </p>
       </div>
       {signupState?.credentials.custom_password ? (
-        <div id="email-display">
+        <div className="email-display">
           <EmailFieldset email={signupState?.email.address} />
         </div>
       ) : (

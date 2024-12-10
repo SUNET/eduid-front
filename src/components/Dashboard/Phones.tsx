@@ -209,7 +209,7 @@ function Phones() {
           description="Phones long description"
         />
       </p>
-      <div id="phone-display">
+      <div className="phone-display">
         <DataTable
           data={phones.phones}
           handleStartConfirmation={handleStartConfirmation}

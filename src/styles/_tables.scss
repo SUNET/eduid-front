@@ -129,8 +129,8 @@ table {
   }
 
   .progress-summary &,
-  #phone-display &,
-  #email-display & {
+  .phone-display &,
+  .email-display & {
     tr.display-none {
       display: none;
     }
@@ -149,7 +149,7 @@ table {
   }
 }
 
-div#phone-display {
+div.phone-display {
   margin-top: 1rem;
 }
 

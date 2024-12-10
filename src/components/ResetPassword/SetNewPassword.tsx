@@ -181,7 +181,7 @@ export function ResetPasswordSuccess(): JSX.Element {
         </div>
       </section>
       {!suggested ? (
-        <div id="email-display">
+        <div className="email-display">
           <EmailFieldset email={email_address} />
         </div>
       ) : (
