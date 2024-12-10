@@ -231,16 +231,17 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 5"
+                    defaultMessage="choose between an automatically generated password or one you have created (also when you reset or change password),"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 6"
                     defaultMessage={`take note of your login details (username and password). Your eduID is now ready to use.`}
                   />
                 </li>
               </ul>
-              <p>
-                <FormattedMessage
-                  description="create eduid - paragraph"
-                  defaultMessage={`Note: you can choose between an automatically generated password or one you have created, when you register, reset and change password. `}
-                />
-              </p>
+
               <h4>
                 <FormattedMessage
                   description="how enhance eduid - heading"
@@ -1141,7 +1142,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph7"
-                  defaultMessage={`Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+                  defaultMessage={`Note: this is a generalization and could change, complete information as to what is required of your eduID must be provided by the connecting services.
 
 `}
                 />
