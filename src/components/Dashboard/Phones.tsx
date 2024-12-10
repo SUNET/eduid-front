@@ -193,7 +193,7 @@ function Phones() {
   }
 
   return (
-    <article className="phone-view-form-container" id="phone">
+    <article>
       <h2>
         <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
       </h2>

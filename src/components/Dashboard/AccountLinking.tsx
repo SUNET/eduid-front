@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 
 export function AccountLinking() {
   return (
-    <article id="orcid-connect-container">
+    <article>
       <h2>
         <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
       </h2>

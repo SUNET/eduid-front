@@ -109,7 +109,7 @@ function Emails() {
   }
 
   return (
-    <article className="emails-view-form-container">
+    <article>
       <h2>
         <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
       </h2>
