@@ -192,7 +192,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         />
       </p>
 
-      <div id="register-webauthn-tokens-area" className="table-responsive">
+      <div className="table-responsive">
         {Boolean(tokens.length) && <UseSecurityKeyToggle />}
         <SecurityKeyTable />
         {!tokens.length && <br />}

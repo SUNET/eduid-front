@@ -71,7 +71,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
 
   useCloseMenuClickOutside(wrapperRef, () => setOpenMenu(false));
   return (
-    <nav id="header-nav" className="header-nav" ref={wrapperRef}>
+    <nav className="header-nav" ref={wrapperRef}>
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <EduIDButton buttonstyle="close" size="sm" onClick={() => setOpenMenu(false)}></EduIDButton>
