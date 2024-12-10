@@ -202,7 +202,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           </div>
           <NinDisplay nin={identities?.nin} allowDelete={true} />
           <EduIDButton
-            id="remove-webauthn"
+            id="remove-identity-nin"
             buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("nin")}
@@ -226,7 +226,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           </div>
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
           <EduIDButton
-            id="remove-webauthn"
+            id="remove-identity-eidas"
             buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("eidas")}
@@ -250,7 +250,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           </div>
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
           <EduIDButton
-            id="remove-webauthn"
+            id="remove-identity-freja"
             buttonstyle="remove"
             size="sm"
             onClick={() => handleConfirmDeleteModal("freja")}
