@@ -557,7 +557,7 @@ export function Help(): JSX.Element {
                         Freja+ account according to the instructions,`}
                         values={{
                           Freja: (
-                            <a className="text-link" href={FrejaeIdURL} target="_blank">
+                            <a className="text-link" href={FrejaAppURL} target="_blank">
                               Freja app
                             </a>
                           ),
