@@ -36,12 +36,10 @@ export function LanguagePreference() {
   }
 
   return (
-    <article className="personal-data">
-      <div className="heading">
-        <h2>
-          <FormattedMessage description="pd main title" defaultMessage={`Language`} />
-        </h2>
-      </div>
+    <article>
+      <h2>
+        <FormattedMessage description="pd main title" defaultMessage={`Language`} />
+      </h2>
       <p>
         <FormattedMessage
           description="pd long description"
