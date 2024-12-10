@@ -145,7 +145,10 @@ export function Help(): JSX.Element {
                   values={{
                     link: (
                       <a className="text-link" href={UniversityAdmissionURL} target="_blank">
-                        universityadmissions.se
+                        <FormattedMessage
+                          description="universityadmissions - link text"
+                          defaultMessage="universityadmissions.se"
+                        />
                       </a>
                     ),
                   }}
@@ -565,7 +568,7 @@ export function Help(): JSX.Element {
                         values={{
                           Freja: (
                             <a className="text-link" href={FrejaAppURL} target="_blank">
-                              Freja app
+                              <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </a>
                           ),
                         }}
@@ -768,7 +771,7 @@ export function Help(): JSX.Element {
                         values={{
                           FrejaApp: (
                             <a className="text-link" href={FrejaAppURL} target="_blank">
-                              Freja app
+                              <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </a>
                           ),
                         }}
