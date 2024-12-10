@@ -128,8 +128,8 @@ export function Help(): JSX.Element {
                   defaultMessage={`Depending on where you work or study you might only use your eduID account a few 
                   times, or you might use it every day. Some schools, institutions and services use eduID as their 
                   identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may 
-                  mainly use your eduID account to create and access other accounts, such as {link} or your student 
-                  account.`}
+                  mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}.
+                 `}
                   values={{
                     link: (
                       <a className="text-link" href="https://www.universityadmissions.se" target="_blank">
@@ -636,7 +636,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use bankid - list item 1"
-                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
+                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},`}
                         values={{
                           bankid: (
                             <a
@@ -644,7 +644,7 @@ export function Help(): JSX.Element {
                               href="https://www.bankid.com/en/privat/skaffa-bankid"
                               target="_blank"
                             >
-                              the BankID website
+                              BankID.com
                             </a>
                           ),
                         }}
@@ -1448,7 +1448,7 @@ export function Help(): JSX.Element {
                   description="what is sunet - paragraph 2"
                   defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the 
                   higher education community, with adequate authorization levels of confirmed accounts. 
-                  More information about SUNET is available at {sunet}.`}
+                  More information about SUNET is available at {sunet} (in Swedish).`}
                   values={{
                     sunet: (
                       <a className="text-link" href="https://www.sunet.se" target="_blank">
