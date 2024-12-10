@@ -120,7 +120,7 @@ function Emails() {
           description="Add emails description"
         />
       </p>
-      <div id="email-display">
+      <div className="email-display">
         <DataTable
           data={emails.emails}
           handleStartConfirmation={handleStartConfirmation}
