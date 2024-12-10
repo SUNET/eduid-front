@@ -164,85 +164,84 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <article id="security-container">
-      <div id="register-security-key-container">
-        <h2>
-          <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
-        </h2>
-        <p>
-          <FormattedMessage
-            description="security second factor"
-            defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
+    <article>
+      <h2>
+        <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
+      </h2>
+      <p>
+        <FormattedMessage
+          description="security second factor"
+          defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
                   to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
-          />
-        </p>
-        <p className="help-text">
-          <FormattedMessage
-            description="security second factor help info"
-            defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
-            values={{
-              HelpSecurityKeys: (
-                <Link className="text-link" to={`../../../help`} target="_blank">
-                  <FormattedMessage
-                    description="about security key - handle"
-                    defaultMessage="Improving the security level of eduID"
-                  />
-                </Link>
-              ),
-            }}
-          />
-        </p>
-
-        <div id="register-webauthn-tokens-area" className="table-responsive">
-          {Boolean(tokens.length) && <UseSecurityKeyToggle />}
-          <SecurityKeyTable />
-          {!tokens.length && <br />}
-          <span aria-label="select extra webauthn">
-            <strong>
-              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
-            </strong>
-          </span>
-          <div className="buttons">
-            <div>
-              <EduIDButton
-                id="security-webauthn-platform-button"
-                buttonstyle="primary"
-                onClick={() => handleRegisterWebauthn("platform")}
-                disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
-              >
-                <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-              </EduIDButton>
-              <p className="help-text">
+        />
+      </p>
+      <p className="help-text">
+        <FormattedMessage
+          description="security second factor help info"
+          defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
+          values={{
+            HelpSecurityKeys: (
+              <Link className="text-link" to={`../../../help`} target="_blank">
                 <FormattedMessage
-                  description="platform authn device help text"
-                  defaultMessage="The device you are currently using"
+                  description="about security key - handle"
+                  defaultMessage="Improving the security level of eduID"
+                />
+              </Link>
+            ),
+          }}
+        />
+      </p>
+
+      <div id="register-webauthn-tokens-area" className="table-responsive">
+        {Boolean(tokens.length) && <UseSecurityKeyToggle />}
+        <SecurityKeyTable />
+        {!tokens.length && <br />}
+        <span aria-label="select extra webauthn">
+          <strong>
+            <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+          </strong>
+        </span>
+        <div className="buttons">
+          <div>
+            <EduIDButton
+              id="security-webauthn-platform-button"
+              buttonstyle="primary"
+              onClick={() => handleRegisterWebauthn("platform")}
+              disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
+            >
+              <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+            </EduIDButton>
+            <p className="help-text">
+              <FormattedMessage
+                description="platform authn device help text"
+                defaultMessage="The device you are currently using"
+              />
+            </p>
+            {!isPlatformAuthenticatorAvailable && (
+              <p className="help-text black">
+                <FormattedMessage
+                  description="platform authn device error text"
+                  defaultMessage="*Your device is not compatible."
                 />
               </p>
-              {!isPlatformAuthenticatorAvailable && (
-                <p className="help-text black">
-                  <FormattedMessage
-                    description="platform authn device error text"
-                    defaultMessage="*Your device is not compatible."
-                  />
-                </p>
-              )}
-            </div>
-            <div>
-              <EduIDButton
-                id="security-webauthn-button"
-                buttonstyle="primary"
-                onClick={() => handleRegisterWebauthn("cross-platform")}
-                disabled={isRegisteringAuthenticator}
-              >
-                <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
-              </EduIDButton>
-              <p className="help-text">
-                <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
-              </p>
-            </div>
+            )}
+          </div>
+          <div>
+            <EduIDButton
+              id="security-webauthn-button"
+              buttonstyle="primary"
+              onClick={() => handleRegisterWebauthn("cross-platform")}
+              disabled={isRegisteringAuthenticator}
+            >
+              <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
+            </EduIDButton>
+            <p className="help-text">
+              <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
+            </p>
           </div>
         </div>
       </div>
+
       <ConfirmModal
         id="describe-webauthn-token-modal"
         title={
