@@ -227,6 +227,10 @@
     "developer_comment": "when use eduID - list item 2",
     "string": "organise your student account for email and intranet,"
   },
+  "3UOqCW": {
+    "developer_comment": "create eduid - list item 6",
+    "string": "when validated for strength, repeat the password in the corresponding field and press the ”Save” button,"
+  },
   "3Y8gXc": {
     "developer_comment": "Account recovery front page",
     "string": "Click the button below to send an e-mail to {email}"
@@ -234,14 +238,6 @@
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
-  },
-  "3j947P": {
-    "developer_comment": "create eduid - list item 2",
-    "string": "confirm that you are human by using captcha,"
-  },
-  "3kNowi": {
-    "developer_comment": "create eduid - list item 3",
-    "string": "accept the eduID terms of use,"
   },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
@@ -453,10 +449,6 @@
     "developer_comment": "usb key technical section - list item 1",
     "string": "The key must perform an attestation and exist in the metadata,"
   },
-  "9OkbaG": {
-    "developer_comment": "create eduid - list item 4",
-    "string": "verify your email address by entering the code emailed to you,"
-  },
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
@@ -512,10 +504,6 @@
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
-  },
-  "AsYVb4": {
-    "developer_comment": "use bankid - list item 1",
-    "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -593,6 +581,14 @@
     "developer_comment": "verify identity non swedish verified heading",
     "string": "If you have a Swedish identity you can verify that as well, to be able to access more services."
   },
+  "E+PXmV": {
+    "developer_comment": "create eduid - list item 7",
+    "string": "take careful note of your login details (used email address and password)!"
+  },
+  "E0OaFE": {
+    "developer_comment": "create eduid - list definition",
+    "string": "How to register your new eduID account at {eduidRegisterLink}:"
+  },
   "E7bB/9": {
     "developer_comment": "status overview title",
     "string": "eduID status overview"
@@ -620,6 +616,10 @@
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
+  },
+  "ES63c/": {
+    "developer_comment": "universityadmissions - link text",
+    "string": "universityadmissions.se"
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -720,6 +720,10 @@
     "developer_comment": "how use other devices - paragraph",
     "string": "You can also login using another device to login to eduID on the device you are currently using:"
   },
+  "GXtHky": {
+    "developer_comment": "when use eduID - list item 5",
+    "string": "administrate students taking the Digital national exam."
+  },
   "GcpVPo": {
     "developer_comment": "security last used",
     "string": "Used:"
@@ -812,9 +816,9 @@
     "developer_comment": "Temp info - message4",
     "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
   },
-  "JcDPK+": {
-    "developer_comment": "when use eduID - paragraph",
-    "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as {link} or your student account."
+  "K34PZJ": {
+    "developer_comment": "create eduid - list item 4",
+    "string": "verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
   },
   "K427ha": {
     "developer_comment": "security second factor",
@@ -851,13 +855,13 @@
     "developer_comment": "continue button",
     "string": "Continue"
   },
-  "Kn4Dfq": {
-    "developer_comment": "create eduid - list item 1",
-    "string": "register your email address,"
-  },
   "KpcTvu": {
     "developer_comment": "button add",
     "string": "add"
+  },
+  "KpgroI": {
+    "developer_comment": "use bankid - list item 1",
+    "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -959,10 +963,6 @@
     "developer_comment": "about assurance levels - info",
     "string": "AL, LOA etc."
   },
-  "NcY26W": {
-    "developer_comment": "why have eduID - paragraph 2",
-    "string": "There are many services that require identification of users. This is often done by the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service provider does not really know who the user with that email address is - and for many services this is at a sufficient level. Through the use of eduID, identification of users is elevated to that of confirmed users."
-  },
   "Ncmam8": {
     "developer_comment": "Verified identity",
     "string": "European EIDAS identity"
@@ -1046,6 +1046,10 @@
   "Pa6Av7": {
     "developer_comment": "Display name select placeholder",
     "string": "select display name..."
+  },
+  "Pf9X55": {
+    "developer_comment": "create eduid - list item 1",
+    "string": "enter your first name, last name and email address in the form and press the ”Create eduID” button,"
   },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
@@ -1134,6 +1138,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
   },
+  "S9xoAc": {
+    "developer_comment": "create eduid - list item 5",
+    "string": "choose using the radio buttons between a suggested (automatically generated) password or one you create,"
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
@@ -1212,6 +1220,10 @@
   "TtQt1m": {
     "developer_comment": "Registration complete",
     "string": "Register: Completed"
+  },
+  "Ttf9Tr": {
+    "developer_comment": "create eduid - list item 8",
+    "string": "You can now log in with your eduID."
   },
   "TxOjgK": {
     "developer_comment": "need visit atg agent for freja - paragraph",
@@ -1360,6 +1372,10 @@
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
   },
+  "XujYxO": {
+    "developer_comment": "use freja - link text",
+    "string": "Freja app"
+  },
   "Xx5Akw": {
     "developer_comment": "Footer copyright",
     "string": "2013-2024"
@@ -1423,6 +1439,10 @@
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "develops using open source code accessible at GitHub,"
+  },
+  "ZZ3KgA": {
+    "developer_comment": "create eduid - list item 3",
+    "string": "read and approve the eduID terms of use by pressing the ”I Accept” button,"
   },
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
@@ -1629,6 +1649,10 @@
     "developer_comment": "usb key technical section - list item 4",
     "string": "and must not support any other key protection than:"
   },
+  "dVAE6a": {
+    "developer_comment": "why have eduID - paragraph 2",
+    "string": "There are many services that require identification of users. This is often done by the user entering an email address to which the service provider sends a password. Such a user is normally called unconfirmed, because the service provider does not really know who the user with that email address is - and for many services this is at a sufficient level. Through the use of eduID, identification of users is elevated to that of confirmed users. You can read more about these requirements in the Assurance levels help section."
+  },
   "dcHeKQ": {
     "developer_comment": "about eduid - info",
     "string": "What it is and may be used for"
@@ -1805,6 +1829,10 @@
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
+  },
+  "ez2CnQ": {
+    "developer_comment": "what is sunet - paragraph 2",
+    "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet} (in Swedish)."
   },
   "f6GNZ7": {
     "developer_comment": "select extra webauthn",
@@ -2023,6 +2051,10 @@
     "developer_comment": "usb key - list item 2",
     "string": "Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used."
   },
+  "jSH+Oi": {
+    "developer_comment": "when use eduID - list item 4",
+    "string": "lose a student account password and need to regain access,"
+  },
   "jXjX1p": {
     "developer_comment": "security lead title",
     "string": "Enhance the security of your eduID."
@@ -2073,6 +2105,10 @@
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kaI61H": {
+    "developer_comment": "when use eduID - paragraph",
+    "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}."
   },
   "kdhlZf": {
     "developer_comment": "enhance eduid - list item 5",
@@ -2425,10 +2461,6 @@
     "developer_comment": "how create eduid - heading",
     "string": "How do I create an eduID?"
   },
-  "pUOZzA": {
-    "developer_comment": "create eduid - list item 5",
-    "string": "take note of your login details (username and password). Your eduID is now ready to use."
-  },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
     "string": "Save"
@@ -2461,6 +2493,10 @@
   "pekRpN": {
     "developer_comment": "Temp info - heading",
     "string": "We are discontinuing phone number support"
+  },
+  "phTnPK": {
+    "developer_comment": "create eduid - list item 2",
+    "string": "confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
   },
   "phone.captcha-failed": {
     "string": "Captcha failed. Please try again."
@@ -2636,10 +2672,6 @@
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Are you sure you want to remove your security key?"
   },
-  "qc7Yi8": {
-    "developer_comment": "Assurance levels with your eduID - paragraph7",
-    "string": "Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services."
-  },
   "qkwsql": {
     "developer_comment": "Login MFA",
     "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
@@ -2674,6 +2706,10 @@
   "rN3KF1": {
     "developer_comment": "security zone modal",
     "string": "You need to log in again to perform the requested action."
+  },
+  "rOcchi": {
+    "developer_comment": "Assurance levels with your eduID - paragraph7",
+    "string": "Note: this is a generalization and could change, complete information as to what is required of your eduID must be provided by the connecting services."
   },
   "rT3vhi": {
     "developer_comment": "Dashboard nav tab name",
@@ -2922,10 +2958,6 @@
     "developer_comment": "about bankid - handle",
     "string": "About BankID"
   },
-  "tpgHTa": {
-    "developer_comment": "when use eduID - list item 4",
-    "string": "lose a student account password and need to regain access."
-  },
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
@@ -2945,10 +2977,6 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
-  },
-  "uhm1kD": {
-    "developer_comment": "what is sunet - paragraph 2",
-    "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet}."
   },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
@@ -3072,10 +3100,6 @@
     "developer_comment": "what is orcid - heading",
     "string": "What is ORCID?"
   },
-  "y3eqwF": {
-    "developer_comment": "create eduid - list definition",
-    "string": "How to create your eduID account at {eduidLink}:"
-  },
   "y4SB0a": {
     "developer_comment": "use orcid - list item 1",
     "string": "read more and register for an ORCID at {orcid},"
@@ -3087,10 +3111,6 @@
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
     "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
-  },
-  "yKTxY6": {
-    "developer_comment": "create eduid - paragraph",
-    "string": "Note: you can choose between an automatically generated password or one you have created, when you register, reset and change password."
   },
   "yL6rhr": {
     "developer_comment": "use orcid - list item 2",

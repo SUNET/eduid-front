@@ -208,55 +208,68 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="create eduid - list definition"
-                  defaultMessage={"How to create your eduID account at {eduidLink}:"}
+                  defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
                   values={{
-                    eduidLink: (
+                    eduidRegisterLink: (
                       <a className="text-link" href={signup_link} target="_blank">
-                        eduid.se
+                        eduid.se/register
                       </a>
                     ),
                   }}
                 />
               </p>
-              <ul className="bullets">
+              <ol className="numbers">
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 1"
-                    defaultMessage="register your email address,"
+                    defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 2"
-                    defaultMessage="confirm that you are human by using captcha,"
+                    defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 3"
-                    defaultMessage="accept the eduID terms of use,"
+                    defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 4"
-                    defaultMessage="verify your email address by entering the code emailed to you,"
+                    defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 5"
-                    defaultMessage="choose between an automatically generated password or one you have created (also when you reset or change password),"
+                    defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 6"
-                    defaultMessage={`take note of your login details (username and password). Your eduID is now ready to use.`}
+                    defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
                   />
                 </li>
-              </ul>
-
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 7"
+                    defaultMessage={`take careful note of your login details (used email address and password)! `}
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 8"
+                    defaultMessage={`You can now log in with your eduID. `}
+                  />
+                </li>
+              </ol>
+            </article>
+            <article>
               <h4>
                 <FormattedMessage
                   description="how enhance eduid - heading"
