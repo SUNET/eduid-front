@@ -2275,10 +2275,6 @@
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
   },
-  "mVSSC0": {
-    "developer_comment": "about using eduid - info",
-    "string": "How to create, use and strengthen your eduID"
-  },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
     "string": "Verified identity"
@@ -2326,6 +2322,10 @@
   "nCc6tZ": {
     "developer_comment": "BankID vetting button",
     "string": "with a BankID"
+  },
+  "nNjd4z": {
+    "developer_comment": "about using eduid - info",
+    "string": "Create, login and account settings"
   },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",

@@ -197,7 +197,7 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about using eduid - info"
-                defaultMessage="How to create, use and strengthen your eduID"
+                defaultMessage="Create, login and account settings"
               />
             }
           >
