@@ -52,15 +52,6 @@ export function Help(): JSX.Element {
     }
   }
 
-  const newDate = approvedSecurityKeys && new Date(approvedSecurityKeys?.next_update);
-  const formattedNextUpdateDate =
-    newDate &&
-    newDate.getFullYear() +
-      "-" +
-      (newDate.getMonth() + 1).toString().padStart(2, "0") +
-      "-" +
-      newDate.getDate().toString().padStart(2, "0");
-
   return (
     <React.Fragment>
       <section className="intro">
@@ -128,7 +119,7 @@ export function Help(): JSX.Element {
                     normally called unconfirmed, because the service 
                     provider does not really know who the user with that email address is - and for many 
                     services this is at a sufficient level. Through the use of eduID, 
-                    identification of users is elevated to that of confirmed users.`}
+                    identification of users is elevated to that of confirmed users. You can read more about these requirements in the Assurance levels help section.`}
                 />
               </p>
               <h4>
@@ -140,12 +131,15 @@ export function Help(): JSX.Element {
                   defaultMessage={`Depending on where you work or study you might only use your eduID account a few 
                   times, or you might use it every day. Some schools, institutions and services use eduID as their 
                   identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may 
-                  mainly use your eduID account to create and access other accounts, such as {link} or your student 
-                  account.`}
+                  mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}.
+                 `}
                   values={{
                     link: (
                       <a className="text-link" href={UniversityAdmissionURL} target="_blank">
-                        universityadmissions.se
+                        <FormattedMessage
+                          description="universityadmissions - link text"
+                          defaultMessage="universityadmissions.se"
+                        />
                       </a>
                     ),
                   }}
@@ -176,7 +170,13 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="when use eduID - list item 4"
-                    defaultMessage="lose a student account password and need to regain access."
+                    defaultMessage="lose a student account password and need to regain access,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="when use eduID - list item 5"
+                    defaultMessage="administrate students taking the Digital national exam."
                   />
                 </li>
               </ul>
@@ -188,7 +188,7 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about using eduid - info"
-                defaultMessage="How to create, use and strengthen your eduID"
+                defaultMessage="Create, login and account settings"
               />
             }
           >
@@ -199,54 +199,68 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="create eduid - list definition"
-                  defaultMessage={"How to create your eduID account at {eduidLink}:"}
+                  defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
                   values={{
-                    eduidLink: (
+                    eduidRegisterLink: (
                       <a className="text-link" href={signup_link} target="_blank">
-                        eduid.se
+                        eduid.se/register
                       </a>
                     ),
                   }}
                 />
               </p>
-              <ul className="bullets">
+              <ol className="numbers">
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 1"
-                    defaultMessage="register your email address,"
+                    defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 2"
-                    defaultMessage="confirm that you are human by using captcha,"
+                    defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 3"
-                    defaultMessage="accept the eduID terms of use,"
+                    defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 4"
-                    defaultMessage="verify your email address by entering the code emailed to you,"
+                    defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
                     description="create eduid - list item 5"
-                    defaultMessage={`take note of your login details (username and password). Your eduID is now ready to use.`}
+                    defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
                   />
                 </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="create eduid - paragraph"
-                  defaultMessage={`Note: you can choose between an automatically generated password or one you have created, when you register, reset and change password. `}
-                />
-              </p>
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 6"
+                    defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 7"
+                    defaultMessage={`take careful note of your login details (used email address and password)! `}
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="create eduid - list item 8"
+                    defaultMessage={`You can now log in with your eduID. `}
+                  />
+                </li>
+              </ol>
+            </article>
+            <article>
               <h4>
                 <FormattedMessage
                   description="how enhance eduid - heading"
@@ -558,7 +572,7 @@ export function Help(): JSX.Element {
                         values={{
                           Freja: (
                             <a className="text-link" href={FrejaAppURL} target="_blank">
-                              Freja app
+                              <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </a>
                           ),
                         }}
@@ -642,11 +656,11 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use bankid - list item 1"
-                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid}`}
+                        defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},`}
                         values={{
                           bankid: (
                             <a className="text-link" href={BankIdURL} target="_blank">
-                              the BankID website
+                              BankID.com
                             </a>
                           ),
                         }}
@@ -761,7 +775,7 @@ export function Help(): JSX.Element {
                         values={{
                           FrejaApp: (
                             <a className="text-link" href={FrejaAppURL} target="_blank">
-                              Freja app
+                              <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </a>
                           ),
                         }}
@@ -981,22 +995,11 @@ export function Help(): JSX.Element {
                     <article>
                       <p>
                         <FormattedMessage
-                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
+                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID at present:`}
                           description="Security keys list - paragraph"
                         />
                       </p>
                       <form>
-                        <fieldset className="key-update">
-                          <div>
-                            <label>
-                              <FormattedMessage
-                                defaultMessage="Next update"
-                                description="Security keys list - paragraph"
-                              />
-                            </label>
-                            <time>{formattedNextUpdateDate}</time>
-                          </div>
-                        </fieldset>
                         <table className="keys">
                           <thead>
                             <tr>
@@ -1139,7 +1142,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph7"
-                  defaultMessage={`Note: this is a generalization and is subject to change, complete information as to what is required of your eduID must be provided by the connecting services.
+                  defaultMessage={`Note: this is a generalization and could change, complete information as to what is required of your eduID must be provided by the connecting services.
 
 `}
                 />
@@ -1446,7 +1449,7 @@ export function Help(): JSX.Element {
                   description="what is sunet - paragraph 2"
                   defaultMessage={`SUNET developed eduID to provide a secure common routine for managing identity in the 
                   higher education community, with adequate authorization levels of confirmed accounts. 
-                  More information about SUNET is available at {sunet}.`}
+                  More information about SUNET is available at {sunet} (in Swedish).`}
                   values={{
                     sunet: (
                       <a className="text-link" href="https://www.sunet.se" target="_blank">
