@@ -545,6 +545,10 @@
     "developer_comment": "Change password set new password success heading",
     "string": "Change Password: Completed"
   },
+  "CRmnyw": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
+  },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Username"
@@ -2777,10 +2781,6 @@
   "resetpw.user-not-found": {
     "string": "If the address is registered, a message with instructions to reset the password has been sent."
   },
-  "ryPtkg": {
-    "developer_comment": "Security keys list - paragraph",
-    "string": "Next update"
-  },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
@@ -3146,10 +3146,6 @@
   "zV24f+": {
     "developer_comment": "ErrorURL identification failure",
     "string": "This may be because eduID is missing those attributes or that eduID is not configured to release those attributes to the service you tried to access."
-  },
-  "zdVSFQ": {
-    "developer_comment": "Security keys list - paragraph",
-    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month"
   },
   "zeCbht": {
     "developer_comment": "start main title",

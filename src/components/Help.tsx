@@ -52,15 +52,6 @@ export function Help(): JSX.Element {
     }
   }
 
-  const newDate = approvedSecurityKeys && new Date(approvedSecurityKeys?.next_update);
-  const formattedNextUpdateDate =
-    newDate &&
-    newDate.getFullYear() +
-      "-" +
-      (newDate.getMonth() + 1).toString().padStart(2, "0") +
-      "-" +
-      newDate.getDate().toString().padStart(2, "0");
-
   return (
     <React.Fragment>
       <section className="intro">
@@ -1004,22 +995,11 @@ export function Help(): JSX.Element {
                     <article>
                       <p>
                         <FormattedMessage
-                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID. The list is updated once a month`}
+                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID at present:`}
                           description="Security keys list - paragraph"
                         />
                       </p>
                       <form>
-                        <fieldset className="key-update">
-                          <div>
-                            <label>
-                              <FormattedMessage
-                                defaultMessage="Next update"
-                                description="Security keys list - paragraph"
-                              />
-                            </label>
-                            <time>{formattedNextUpdateDate}</time>
-                          </div>
-                        </fieldset>
                         <table className="keys">
                           <thead>
                             <tr>
