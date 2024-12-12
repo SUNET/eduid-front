@@ -547,7 +547,7 @@
   },
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
-    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
+    "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present. It is alphabetically sorted and undated regularly."
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
