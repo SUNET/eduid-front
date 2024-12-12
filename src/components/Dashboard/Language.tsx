@@ -67,7 +67,7 @@ export function LanguagePreference() {
                       const [key, value] = option;
                       return (
                         <label key={key} htmlFor={value}>
-                          <Field name={value} component="input" type="radio" id={value} value={key} />
+                          <Field name="language" component="input" type="radio" id={value} value={key} />
                           <span>{value}</span>
                         </label>
                       );
