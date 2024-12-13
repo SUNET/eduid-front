@@ -67,18 +67,16 @@ function NinForm(): JSX.Element {
       render={({ handleSubmit, pristine, invalid }) => {
         return (
           <form onSubmit={handleSubmit} className="single-input-form x-adjust">
-            <fieldset id="nins-form" className="tab-pane">
-              <FinalField
-                component={CustomInput}
-                componentClass="input"
-                type="text"
-                name="nin"
-                label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
-                placeholder={placeholder}
-                helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
-                validate={validateNin}
-              />
-            </fieldset>
+            <FinalField
+              component={CustomInput}
+              componentClass="input"
+              type="text"
+              name="nin"
+              label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
+              placeholder={placeholder}
+              helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
+              validate={validateNin}
+            />
             <div className="buttons">
               <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
                 <FormattedMessage description="button_add" defaultMessage="Add" />
