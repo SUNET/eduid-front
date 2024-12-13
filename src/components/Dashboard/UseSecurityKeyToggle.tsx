@@ -35,34 +35,32 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   }
 
   return (
-    <>
+    <form>
       {/* always_use_security_key toggle button */}
       <fieldset>
-        <form>
-          <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
-            <legend className="legend-2fa">
-              <FormattedMessage
-                defaultMessage={`Always use a second factor (2FA) to log in`}
-                description="Security key toggle"
-              />
-              <p className="help-text">
-                <FormattedMessage
-                  description="help text toggle 2FA"
-                  defaultMessage="If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
-                />
-              </p>
-            </legend>
-            <input
-              onChange={handleSwitchChange}
-              className="toggle-checkbox"
-              type="checkbox"
-              checked={switchChecked}
-              id="security-key-mfa"
+        <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
+          <legend className="legend-2fa">
+            <FormattedMessage
+              defaultMessage={`Always use a second factor (2FA) to log in`}
+              description="Security key toggle"
             />
-            <div className="toggle-switch"></div>
-          </label>
-        </form>
+            <p className="help-text">
+              <FormattedMessage
+                description="help text toggle 2FA"
+                defaultMessage="If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
+              />
+            </p>
+          </legend>
+          <input
+            onChange={handleSwitchChange}
+            className="toggle-checkbox"
+            type="checkbox"
+            checked={switchChecked}
+            id="security-key-mfa"
+          />
+          <div className="toggle-switch"></div>
+        </label>
       </fieldset>
-    </>
+    </form>
   );
 }
