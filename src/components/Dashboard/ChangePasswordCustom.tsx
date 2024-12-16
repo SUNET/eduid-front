@@ -57,13 +57,13 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       render={(formProps) => {
         return (
           <form id="passwords-view-form" onSubmit={formProps.handleSubmit}>
-            <fieldset className="password-format">
-              <label>
+            <fieldset>
+              <legend>
                 <FormattedMessage
                   defaultMessage="Tip: Choose a strong password"
                   description="help text for custom password label"
                 />
-              </label>
+              </legend>
               <ul id="password-custom-help">
                 {[
                   <FormattedMessage
@@ -90,9 +90,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                   return <li key={list.key}>{list}</li>;
                 })}
               </ul>
-            </fieldset>
 
-            <fieldset className="change-password-custom-inputs">
               <FinalField
                 name="custom"
                 component={NewPasswordInput}
