@@ -89,29 +89,27 @@ export function RememberMeCheckbox(): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <fieldset>
-        <label className="toggle flex-between" htmlFor="remember-me">
-          <legend>
-            <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-          </legend>
-          <input
-            onChange={handleSwitchChange}
-            className="toggle-checkbox"
-            type="checkbox"
-            checked={switchChecked}
-            id="remember-me"
+      <label className="toggle flex-between" htmlFor="remember-me">
+        <legend>
+          <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
+        </legend>
+        <input
+          onChange={handleSwitchChange}
+          className="toggle-checkbox"
+          type="checkbox"
+          checked={switchChecked}
+          id="remember-me"
+        />
+        <div className="toggle-switch"></div>
+      </label>
+      {!switchChecked && (
+        <p className="help-text">
+          <FormattedMessage
+            defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
+            description="Login remember user device"
           />
-          <div className="toggle-switch"></div>
-        </label>
-        {!switchChecked && (
-          <p className="help-text">
-            <FormattedMessage
-              defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
-              description="Login remember user device"
-            />
-          </p>
-        )}
-      </fieldset>
+        </p>
+      )}
     </React.Fragment>
   );
 }

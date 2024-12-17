@@ -64,7 +64,7 @@ export function EmailLinkSent(): JSX.Element | null {
               description="Reset Password email link sent"
               values={{
                 email: (
-                  <span id="email_address">
+                  <span>
                     <output data-testid="email-address">
                       <strong>{response?.email}</strong>.
                     </output>

@@ -38,7 +38,7 @@ export function ChangePasswordSuccess(): JSX.Element {
         </section>
 
         {!isSuggested ? (
-          <div id="email-display">
+          <div className="email-display">
             <EmailFieldset email={email} />
           </div>
         ) : (
