@@ -2,6 +2,7 @@ import { authenticate } from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
 
@@ -10,6 +11,7 @@ export function AuthenticateModal() {
   const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
   const frontend_state = useAppSelector((state) => state.authn.frontend_state);
+  const navigate = useNavigate();
 
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
@@ -19,6 +21,15 @@ export function AuthenticateModal() {
     if (authenticate.fulfilled.match(response)) {
       window.location.href = response?.payload.location;
     }
+  }
+
+  function handleCloseModal() {
+    // navigate to account when user cancel re-authentication
+    if (frontend_action === "changepwAuthn" && re_authenticate) {
+      navigate("profile/account/");
+    }
+    dispatch(authnSlice.actions.setAuthnFrontendReset());
+    dispatch(authnSlice.actions.setReAuthenticate(false));
   }
 
   return (
@@ -32,10 +43,7 @@ export function AuthenticateModal() {
         />
       }
       showModal={re_authenticate}
-      closeModal={() => {
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
-        dispatch(authnSlice.actions.setReAuthenticate(false));
-      }}
+      closeModal={handleCloseModal}
       acceptModal={handleAuthenticate}
       acceptButtonText={<FormattedMessage defaultMessage="Continue" description="continue button" />}
     />

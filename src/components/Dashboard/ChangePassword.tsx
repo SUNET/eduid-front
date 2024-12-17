@@ -38,6 +38,7 @@ export function ChangePassword() {
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
+  const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   let isMounted = true;
