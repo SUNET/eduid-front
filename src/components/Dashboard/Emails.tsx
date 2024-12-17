@@ -109,7 +109,7 @@ function Emails() {
   }
 
   return (
-    <article className="emails-view-form-container">
+    <article>
       <h2>
         <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
       </h2>
@@ -120,7 +120,7 @@ function Emails() {
           description="Add emails description"
         />
       </p>
-      <div id="email-display">
+      <div className="email-display">
         <DataTable
           data={emails.emails}
           handleStartConfirmation={handleStartConfirmation}

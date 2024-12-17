@@ -21,7 +21,7 @@ export default function EmailInUse(): JSX.Element {
             values={{ email: email }}
           />
         </h3>
-        <div id="email-display">
+        <div className="email-display">
           <p>
             <FormattedMessage
               defaultMessage="If this is your eduID, you can reset your password to log back in."

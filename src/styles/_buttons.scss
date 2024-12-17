@@ -335,12 +335,6 @@ button.scroll-to-top {
   }
 }
 
-@media (max-width: $bp-xs) {
-  button.scroll-to-top {
-    width: 60px;
-  }
-}
-
 .btn-remove {
   width: 1.2rem;
   height: 1.2rem !important;
