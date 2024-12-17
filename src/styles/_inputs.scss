@@ -30,6 +30,7 @@ input.form-control.is-invalid:focus {
   transition: none;
   border: none;
   box-shadow: none;
+  outline-offset: -2px;
 }
 
 .form-control::placeholder,
