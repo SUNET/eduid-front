@@ -21,6 +21,7 @@ export interface Typegen0 {
     | "AskForEmailOrConfirmEmail.AskForEmailOrConfirmEmail"
     | "AskForEmailOrConfirmEmail.EmailLinkSent"
     | "AskForEmailOrConfirmEmail.Finished"
+    | "AskForEmailOrConfirmEmail.ResetPasswordCaptcha"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
     | "FinaliseResetPassword"
@@ -41,6 +42,7 @@ export interface Typegen0 {
           | "AskForEmailOrConfirmEmail"
           | "EmailLinkSent"
           | "Finished"
+          | "ResetPasswordCaptcha"
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
