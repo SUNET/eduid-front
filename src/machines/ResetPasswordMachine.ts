@@ -76,6 +76,19 @@ export function createResetPasswordMachine() {
             ResetPasswordEnterEmail: {
               on: {
                 API_SUCCESS: {
+                  target: "ResetPasswordCaptcha",
+                },
+                API_FAIL: {
+                  target: "ResetPasswordEnterEmail",
+                },
+                GO_BACK: {
+                  target: "#resetPassword.ReturnToPrevious",
+                },
+              },
+            },
+            ResetPasswordCaptcha: {
+              on: {
+                API_SUCCESS: {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
