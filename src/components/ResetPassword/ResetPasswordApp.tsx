@@ -58,6 +58,7 @@ export function ResetPasswordApp(): JSX.Element {
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordCaptcha") && <ResetPasswordEnterEmail />}
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("HandleExtraSecurities.ResetPasswordPhoneVerification") && <PhoneCodeSent />}
