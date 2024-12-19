@@ -17,10 +17,10 @@ import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
-import EuFlag from "../../../img/flags/eu.svg";
-import SeFlag from "../../../img/flags/se.svg";
-import WorldFlag from "../../../img/flags/world.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import SvFlag from "../../../img/flags/SvFlag.svg";
 import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
@@ -193,7 +193,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
       {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />
+            <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
           </div>
           <div className="profile-grid-cell">
             <strong>
@@ -310,7 +310,7 @@ function AccordionItemSwedish(): JSX.Element | null {
      and not in case the NIN is already verified. */
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="Sweden" src={SeFlag} />}
+      icon={<img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />}
       title={
         <FormattedMessage
           description="accordion item swedish title"
@@ -448,7 +448,7 @@ function AccordionItemWorld(): JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="World" src={WorldFlag} />}
+      icon={<img height="35" className="circle-icon" alt="World" src={GlobalFlag} />}
       title={<FormattedMessage description="accordion item passport title" defaultMessage="Most countries" />}
       additionalInfo={
         <FormattedMessage
