@@ -264,19 +264,19 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="how login eduid - heading"
-                  defaultMessage="How can I login with my eduID?"
+                  description="login eduid - heading"
+                  defaultMessage="How can I log in with my eduID?"
                 />
               </h4>
               <h5>
                 <FormattedMessage
-                  description="how login eduid - username heading"
+                  description="login eduid - username heading"
                   defaultMessage={`With username and password`}
                 />
               </h5>
               <p>
                 <FormattedMessage
-                  description="how login eduid - list definition"
+                  description="login eduid - username list definition"
                   defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
                   values={{
                     eduidLoginLink: (
@@ -290,59 +290,59 @@ export function Help(): JSX.Element {
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="how login eduid - list item 1"
+                    description="login eduid - username list item 1"
                     defaultMessage={`any email address you have entered and confirmed in eduID under Account,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="how login eduid - list item 2"
+                    description="login eduid - username list item 2"
                     defaultMessage="your unique ID, shown on the logged in start page and under Account."
                   />
                 </li>
               </ul>
               <h5>
                 <FormattedMessage
-                  description="how login eduid - remember me heading"
+                  description="login eduid - remember me heading"
                   defaultMessage={`With saved credentials`}
                 />
               </h5>
               <p>
                 <FormattedMessage
-                  description="how login eduid - remember me paragraph"
+                  description="login eduid - remember me paragraph"
                   defaultMessage={`Underneath the login form there is a toggle control called "Remember me on this device". 
                     If this is switched on the web browser will attempt to fill in your username and hidden password in the form. For a different account or on a shared device, set this to off.`}
                 />
               </p>
               <h5>
                 <FormattedMessage
-                  description="how login eduid - other device heading"
+                  description="login eduid - other device heading"
                   defaultMessage={`With another device`}
                 />
               </h5>
               <p>
                 <FormattedMessage
-                  description="how login eduid - other device list definition"
+                  description="login eduid - other device list definition"
                   defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
                 />
               </p>
               <ol className="numbers">
                 <li>
                   <FormattedMessage
-                    description="use other devices - list item 1"
+                    description="login eduid - other devices list item 1"
                     defaultMessage="press the 'Other device' button in the login form,"
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="use other devices - list item 2"
+                    description="login eduid - other devices list item 2"
                     defaultMessage={`scan the presented QR-code with the other device where you have your login credentials, 
                     e.g. security key or saved password,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="use other devices - list item 3"
+                    description="login eduid - other devices list item 3"
                     defaultMessage={`on that second device, review the device requesting to be logged in and use the 
                     presented code to login by entering it within the time shown, in the first device.`}
                   />
@@ -350,13 +350,13 @@ export function Help(): JSX.Element {
               </ol>
               <h5>
                 <FormattedMessage
-                  description="how login eduid - security key heading"
+                  description="login eduid - security key heading"
                   defaultMessage={`With security key`}
                 />
               </h5>
               <p>
                 <FormattedMessage
-                  description="how login eduid - login security key paragraph"
+                  description="login eduid - security key list definition"
                   defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
                     `}
                 />
@@ -364,64 +364,70 @@ export function Help(): JSX.Element {
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="enhance eduid - list item 2"
-                    defaultMessage={`Press the "Use my security key" button and follow the instructions, which will wary depending on your key.`}
+                    description="login eduid - security key list item 1"
+                    defaultMessage={`Press the "Use my security key" button and follow the instructions, which will vary depending on your key.`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="enhance eduid - list item 2"
+                    description="login eduid - security key list item 2"
                     defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID and Freja+. `}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="enhance eduid - list item 1"
+                    description="login eduid - security key list item 3"
                     defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (2FA) to log in to eduID" toggle control under Security to off.`}
                   />
                 </li>
               </ul>
               <p>
                 <FormattedMessage
-                  description="why re-login - heading"
+                  description="login eduid - security key paragraph"
                   defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
                 />
               </p>
               <h4>
                 <FormattedMessage
-                  description="why re-login - heading"
+                  description="login eduid - forgot pw heading"
                   defaultMessage="I have forgotten my password, how can I regain access?"
                 />
               </h4>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
-                    description="why re-login - paragraph"
+                    description="login eduid - forgot pw list item 1"
                     defaultMessage={`press the "Forgot your password?" link below the login form,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="enhance eduid - list item 1"
+                    description="login eduid - forgot pw list item 2"
                     defaultMessage={`press the "Send email" button to receive a code to the email address presented on the page,`}
                   />
                 </li>
                 <li>
                   <FormattedMessage
-                    description="enhance eduid - list item 1"
+                    description="login eduid - forgot pw list item 3"
                     defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
                   />
                 </li>
               </ul>
+              <p>
+                <FormattedMessage
+                  description="login eduid - forgot pw paragraph"
+                  defaultMessage={`Note: depending on your previous settings you might need to re-verify your identity in eduID.`}
+                />
+              </p>
               <h4>
                 <FormattedMessage
-                  description="why re-login - heading"
+                  description="login eduID - re-login heading"
                   defaultMessage="I'm already logged in, why do I need to log in again?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="why re-login - paragraph"
+                  description="login eduID - re-login paragraph"
                   defaultMessage="In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
                 />
               </p>
