@@ -20,9 +20,15 @@ figure,
   &.identity-summary {
     padding: 1em 0.5em;
     align-items: center;
-
+    margin: 0;
     @media (max-width: $bp-md) {
       padding: 0.5em;
+    }
+    &:not(:last-of-type) {
+      border-bottom: 1px solid $bg-gray;
+    }
+    &:last-of-type {
+      margin-bottom: 1em;
     }
   }
   &.tight {
@@ -85,7 +91,7 @@ figure.webauthn-token-holder {
   padding: 0.5rem 1rem;
   text-align: left;
   margin: 0;
-  border-bottom: 1px solid $border-gray;
+  border-bottom: 1px solid $bg-gray;
 
   &:last-of-type {
     border-bottom: none;

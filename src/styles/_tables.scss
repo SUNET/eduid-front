@@ -100,8 +100,7 @@ table {
     }
   }
 
-  .identity-summary &,
-  .progress-summary & {
+  .identity-summary & {
     table-layout: auto;
     margin-bottom: 0;
 
@@ -128,7 +127,6 @@ table {
     }
   }
 
-  .progress-summary &,
   .phone-display &,
   .email-display & {
     tr.display-none {
@@ -145,6 +143,9 @@ table {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+    tr:not(:last-child) {
+      border-bottom: 1px solid $bg-gray;
     }
   }
 }
