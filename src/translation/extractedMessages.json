@@ -3,6 +3,10 @@
     "developer_comment": "when use eduID - list item 3",
     "string": "change university,"
   },
+  "+/L+4k": {
+    "developer_comment": "login eduid - forgot pw list item 2",
+    "string": "press the \"Send email\" button to receive a code to the email address presented on the page,"
+  },
   "+3ABAe": {
     "developer_comment": "MFA Freja help text",
     "string": "Requires a confirmed Swedish national identity number."
@@ -139,6 +143,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
+  "13aRJH": {
+    "developer_comment": "login eduid - security key paragraph",
+    "string": "Note: you can read more about security keys in the \"Enhancing the security level of eduID\" help section.\""
+  },
   "1CLEos": {
     "developer_comment": "login button",
     "string": "log in"
@@ -174,6 +182,10 @@
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Reinstall the app, redo the registration and make sure that you have entered the correct expiration date as well as the correct reference number of the chosen form of ID and personal identity number or coordination number."
+  },
+  "27eki2": {
+    "developer_comment": "login eduid - remember me heading",
+    "string": "With saved credentials"
   },
   "2D7weB": {
     "developer_comment": "orcid connect button",
@@ -239,6 +251,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
   },
+  "3kyFju": {
+    "developer_comment": "login eduID - re-login heading",
+    "string": "I'm already logged in, why do I need to log in again?"
+  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Reset Password: Set your own password"
@@ -290,6 +306,10 @@
     "developer_comment": "what is international - heading",
     "string": "What is Freja?"
   },
+  "4fCXFw": {
+    "developer_comment": "login eduid - other devices list item 3",
+    "string": "on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
+  },
   "56cz7x": {
     "developer_comment": "Phone display title",
     "string": "Phone number"
@@ -317,6 +337,10 @@
     "developer_comment": "Login front page",
     "string": "Register"
   },
+  "5p+ec/": {
+    "developer_comment": "login eduid - remember me paragraph",
+    "string": "Underneath the login form there is a toggle control called \"Remember me on this device\". If this is switched on the web browser will attempt to fill in your username and hidden password in the form. For a different account or on a shared device, set this to off."
+  },
   "5paghv": {
     "developer_comment": "platform authn device error text",
     "string": "*Your device is not compatible."
@@ -336,10 +360,6 @@
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
-  },
-  "6Y+n+L": {
-    "developer_comment": "why re-login - heading",
-    "string": "I'm already logged in, why do I need to log in again?"
   },
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
@@ -364,10 +384,6 @@
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
-  },
-  "7W/zTi": {
-    "developer_comment": "how use other devices - heading",
-    "string": "How can I login with other devices?"
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -561,6 +577,10 @@
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
   },
+  "D718Ba": {
+    "developer_comment": "login eduid - other devices list item 2",
+    "string": "scan the presented QR-code with the other device where you have your login credentials, e.g. security key or saved password,"
+  },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 digits"
@@ -684,10 +704,6 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
-  "Fyl7YK": {
-    "developer_comment": "use other devices - list item 2",
-    "string": "scan the QR-code with the device where you have your login credentials, e.g. security key or saved password,"
-  },
   "G0xkV6": {
     "developer_comment": "Short code form",
     "string": "Continue"
@@ -716,13 +732,13 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance from you of the eduID terms of use."
   },
+  "GJsTES": {
+    "developer_comment": "login eduid - heading",
+    "string": "How can I log in with my eduID?"
+  },
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Password"
-  },
-  "GO322p": {
-    "developer_comment": "how use other devices - paragraph",
-    "string": "You can also login using another device to login to eduID on the device you are currently using:"
   },
   "GXtHky": {
     "developer_comment": "when use eduID - list item 5",
@@ -780,6 +796,10 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "I93Be7": {
+    "developer_comment": "login eduid - username list item 2",
+    "string": "your unique ID, shown on the logged in start page and under Account."
+  },
   "IE2L2s": {
     "developer_comment": "enhance eduid - list item 2",
     "string": "your phone number for easier retrieval of your account should it be needed,"
@@ -803,6 +823,10 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
+  },
+  "Iu0UZA": {
+    "developer_comment": "login eduid - security key heading",
+    "string": "With security key"
   },
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
@@ -875,13 +899,13 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Identity"
   },
+  "Kv+6nj": {
+    "developer_comment": "login eduid - forgot pw list item 3",
+    "string": "follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID."
+  },
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "What should I do if my identity verification for Freja+ fails?"
-  },
-  "LJ68Zo": {
-    "developer_comment": "use other devices - list item 1",
-    "string": "select 'Other device' button in the login form,"
   },
   "LNBvhT": {
     "developer_comment": "Errors button",
@@ -890,6 +914,10 @@
   "LiU6wZ": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
+  },
+  "LkOik6": {
+    "developer_comment": "login eduid - other devices list item 1",
+    "string": "press the 'Other device' button in the login form,"
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -906,10 +934,6 @@
   "M2RPTv": {
     "developer_comment": "Signup button",
     "string": "Create your eduID"
-  },
-  "M3X9hA": {
-    "developer_comment": "which login email - paragraph",
-    "string": "You can log in with all the email addresses you have entered and confirmed in eduID."
   },
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
@@ -1043,6 +1067,10 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
+  "PAeoo9": {
+    "developer_comment": "login eduid - username list definition",
+    "string": "If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button \"Log in\". Your username can be:"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, try again"
@@ -1062,6 +1090,10 @@
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "What is eduIDs Accessibility report?"
+  },
+  "PngTON": {
+    "developer_comment": "login eduid - other device heading",
+    "string": "With another device"
   },
   "Pnu06c": {
     "developer_comment": "status",
@@ -1121,6 +1153,10 @@
   },
   "RHOeL5": {
     "string": "Use eduID to access {service_name}"
+  },
+  "RI6YRb": {
+    "developer_comment": "login eduid - forgot pw list item 1",
+    "string": "press the \"Forgot your password?\" link below the login form,"
   },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
@@ -1340,6 +1376,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
+  "WhD8Hj": {
+    "developer_comment": "login eduid - security key list item 1",
+    "string": "Press the \"Use my security key\" button and follow the instructions, which will vary depending on your key."
+  },
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "The strength and usage of your eduID can be improved by following the steps listed below."
@@ -1420,6 +1460,10 @@
     "developer_comment": "copied button label",
     "string": "COPIED"
   },
+  "YssJWJ": {
+    "developer_comment": "login eduid - security key list item 3",
+    "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a second factor (2FA) to log in to eduID\" toggle control under Security to off."
+  },
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Account"
@@ -1490,6 +1534,10 @@
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
     "string": "Go to eduid to login"
+  },
+  "b7IBUu": {
+    "developer_comment": "login eduid - username list item 1",
+    "string": "any email address you have entered and confirmed in eduID under Account,"
   },
   "b7acbg": {
     "developer_comment": "how to contact support phone",
@@ -1622,9 +1670,9 @@
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
   },
-  "cyhncE": {
-    "developer_comment": "use other devices - list item 3",
-    "string": "on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
+  "d/bTw0": {
+    "developer_comment": "login eduid - security key list item 2",
+    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID and Freja+."
   },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
@@ -2295,6 +2343,10 @@
     "developer_comment": "Dashboard AccountLinking",
     "string": "If you are a researcher with an ORCID iD you can share it with your eduID."
   },
+  "mn8rvf": {
+    "developer_comment": "login eduid - username heading",
+    "string": "With username and password"
+  },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
     "string": "enter code"
@@ -2383,6 +2435,10 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent."
   },
+  "nsiEuF": {
+    "developer_comment": "login eduid - forgot pw heading",
+    "string": "I have forgotten my password, how can I regain access?"
+  },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
     "string": "Status of completed steps are indicated with a checkmark."
@@ -2449,9 +2505,17 @@
     "developer_comment": "security verify",
     "string": "BankID"
   },
+  "p0tKqD": {
+    "developer_comment": "login eduID - re-login paragraph",
+    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
+  },
+  "pHT3iR": {
+    "developer_comment": "login eduid - other device list definition",
+    "string": "Use your credentials from another device than you wish to access eduID with:"
   },
   "pIstaO": {
     "developer_comment": "verify identity",
@@ -2624,10 +2688,6 @@
   "pwfield.weak": {
     "string": "Weak password"
   },
-  "pxZzwC": {
-    "developer_comment": "why re-login - paragraph",
-    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
-  },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
@@ -2698,10 +2758,6 @@
   "rHjPO1": {
     "developer_comment": "delete.modal_info",
     "string": "Deleting your eduID will permanently remove all your saved information. If it has been a long time since you last logged in, you may need to log in again."
-  },
-  "rLwIkG": {
-    "developer_comment": "which login email - heading",
-    "string": "Which email account should I use to log in?"
   },
   "rN3KF1": {
     "developer_comment": "security zone modal",
@@ -2990,6 +3046,10 @@
     "developer_comment": "Go to dashboard",
     "string": "Go to dashboard"
   },
+  "usd6iL": {
+    "developer_comment": "login eduid - security key list definition",
+    "string": "If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:"
+  },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
@@ -3004,6 +3064,10 @@
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "The identities below are now connected to your eduID"
+  },
+  "v1MVM6": {
+    "developer_comment": "login eduid - forgot pw paragraph",
+    "string": "Note: depending on your previous settings you might need to re-verify your identity in eduID."
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
