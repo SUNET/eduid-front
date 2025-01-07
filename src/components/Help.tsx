@@ -17,7 +17,8 @@ export function Help(): JSX.Element {
   const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
-  const profile_link = "https://eduid.se/profile/";
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+
   const locale = useAppSelector((state) => state.intl.locale);
 
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
@@ -280,7 +281,7 @@ export function Help(): JSX.Element {
                   defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
                   values={{
                     eduidLoginLink: (
-                      <a className="text-link" href={profile_link} target="_blank">
+                      <a className="text-link" href={dashboard_link} target="_blank">
                         eduid.se
                       </a>
                     ),
