@@ -145,7 +145,7 @@ table {
       text-overflow: ellipsis;
     }
     tr:not(:last-child) {
-      border-bottom: 1px solid $border-gray;
+      border-bottom: 1px solid $bg-gray;
     }
   }
 }
