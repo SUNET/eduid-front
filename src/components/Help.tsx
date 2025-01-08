@@ -518,19 +518,33 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="how change language - heading"
+                  description="settings eduid - language heading"
                   defaultMessage="How do I change the default language in eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="how change language - paragraph"
-                  defaultMessage={`To change the default language you can log into eduID and select your language 
-                  preference in the Personal information area in eduID. The default language is based on the language 
-                  setting that your browser uses. You can also change the displayed language in the footer of the 
-                  webpage. Available options are Swedish and English.`}
+                  description="settings eduid - language paragraph"
+                  defaultMessage={`The default language is based on the language 
+                  setting that your browser uses. Available options are Swedish and English.`}
                 />
               </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="settings eduid - re-login list item 1"
+                    defaultMessage="To change the default language for eduID you can log in to eduID and select your 
+                  preference using the Language radio buttons under Account. "
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="settings eduid - re-login list item 2"
+                    defaultMessage="You can also change the language for the displayed page in the footer of the 
+                  webpage."
+                  />
+                </li>
+              </ul>
             </article>
           </AccordionItemTemplate>
 
