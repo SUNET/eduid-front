@@ -148,7 +148,8 @@ export function HandleExtraSecurities(): JSX.Element | null {
             description="HandleExtraSecurities heading"
           />
         </h1>
-        <div className="lead">
+        <div className="lead" />
+        <p>
           {extra_security.external_mfa ? (
             <FormattedMessage
               defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
@@ -160,7 +161,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
               description="MFA paragraph"
             />
           )}
-        </div>
+        </p>
       </section>
       <div className="options">
         <SecurityKeyLogin webauthn={extra_security.tokens} />
