@@ -394,7 +394,7 @@ export function Help(): JSX.Element {
                   defaultMessage="I have forgotten my password, how can I regain access?"
                 />
               </h4>
-              <ul className="bullets">
+              <ol className="numbers">
                 <li>
                   <FormattedMessage
                     description="login eduid - forgot pw list item 1"
@@ -413,7 +413,7 @@ export function Help(): JSX.Element {
                     defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
                   />
                 </li>
-              </ul>
+              </ol>
               <p>
                 <FormattedMessage
                   description="login eduid - forgot pw paragraph"
@@ -429,9 +429,35 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="login eduID - re-login paragraph"
-                  defaultMessage="In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
+                  defaultMessage="In some situations that require added security you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in, e.g: "
                 />
               </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="login eduid - re-login list item 1"
+                    defaultMessage="when changing your password,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="login eduid - re-login list item 2"
+                    defaultMessage="toggling 2FA login requirement setting,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="login eduid - re-login list item 3"
+                    defaultMessage="deleting your eduID account or "
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="login eduid - re-login list item 4"
+                    defaultMessage="adding/removing a security key."
+                  />
+                </li>
+              </ul>
             </article>
             <article>
               <h4>
