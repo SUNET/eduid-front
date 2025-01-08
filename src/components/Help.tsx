@@ -195,17 +195,12 @@ export function Help(): JSX.Element {
             }
           >
             <h4>
-              <FormattedMessage description="create eduid - heading" defaultMessage="Creating an account" />
+              <FormattedMessage description="create eduid - heading" defaultMessage="How do I get an account?" />
             </h4>
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-create">
               <AccordionItemTemplate
                 uuid="help-create"
-                title={
-                  <FormattedMessage
-                    description="how create eduid - handle"
-                    defaultMessage="How do I create an eduID?"
-                  />
-                }
+                title={<FormattedMessage description="how create eduid - handle" defaultMessage="Create an eduID" />}
                 additionalInfo={null}
               >
                 <p>
@@ -275,17 +270,12 @@ export function Help(): JSX.Element {
             </Accordion>
 
             <h4>
-              <FormattedMessage description="login eduid - heading" defaultMessage="Log in with an account" />
+              <FormattedMessage description="login eduid - heading" defaultMessage="How do I log in with my account?" />
             </h4>
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-login">
               <AccordionItemTemplate
                 uuid="help-login"
-                title={
-                  <FormattedMessage
-                    description="login eduid - handle"
-                    defaultMessage="How can I log in with my eduID?"
-                  />
-                }
+                title={<FormattedMessage description="login eduid - handle" defaultMessage="Log in with eduID" />}
                 additionalInfo={null}
               >
                 <article>
@@ -421,7 +411,7 @@ export function Help(): JSX.Element {
                 title={
                   <FormattedMessage
                     description="login eduid - forgot pw handle"
-                    defaultMessage="I have forgotten my password, how can I regain access?"
+                    defaultMessage="Regain access if forgotten password"
                   />
                 }
                 additionalInfo={null}
@@ -500,14 +490,55 @@ export function Help(): JSX.Element {
 
             <article>
               <h4>
-                <FormattedMessage description="how enhance eduid - heading" defaultMessage="Account settings" />
+                <FormattedMessage
+                  description="how enhance eduid - heading"
+                  defaultMessage="How do I update my account?"
+                />
               </h4>
               <p>
                 <FormattedMessage
-                  description="enhance eduid - list definition"
-                  defaultMessage={`In eduID you are encouraged to add further details such as:`}
+                  description="settings eduid - intro definition"
+                  defaultMessage={`When you log in to eduid.se, there are 4 views accessible from the drop down menu in the header, by clicking on your username:`}
                 />
               </p>
+              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-start">
+                <AccordionItemTemplate
+                  uuid="help-start"
+                  title={<FormattedMessage description="login eduid - start handle" defaultMessage="Start" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="start eduid - list definition"
+                      defaultMessage={`The start page shows:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name,`} />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="start eduid - list item 2"
+                        defaultMessage={`your unique user ID`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="start eduid - list item 3"
+                        defaultMessage={`and an overview of the status of your eduID - if your identity is verified, you have added and verified a security key.`}
+                      />
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="start eduid - paragraph"
+                      defaultMessage={`These tasks strengthen and increase the use of your eduID and you can read about how the status correlates to connecting services in the help section "Assurance levels".`}
+                    />
+                  </p>
+                </AccordionItemTemplate>
+              </Accordion>
+
               <ul className="bullets">
                 <li>
                   <FormattedMessage
