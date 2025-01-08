@@ -3,6 +3,10 @@
     "developer_comment": "when use eduID - list item 3",
     "string": "byter lärosäte,"
   },
+  "+/L+4k": {
+    "developer_comment": "login eduid - forgot pw list item 2",
+    "string": "klicka på knappen \"Skicka e-post\" för att skicka en kod till adressen som presenteras på sidan,"
+  },
   "+3ABAe": {
     "developer_comment": "MFA Freja help text",
     "string": "Kräver ett bekräftat svenskt personnummer."
@@ -139,6 +143,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
   },
+  "13aRJH": {
+    "developer_comment": "login eduid - security key paragraph",
+    "string": "Obs: du kan läsa mer om säkerhetsnycklar i hjälpavsnittet \"Utökad säkerhet med ditt eduID\"."
+  },
   "1CLEos": {
     "developer_comment": "login button",
     "string": "Logga in"
@@ -174,6 +182,10 @@
   "1tt2b7": {
     "developer_comment": "what if verification for freja fails - paragraph",
     "string": "Avinstallera appen, gör om registreringen och kontrollera noga att du angivit rätt datum då ID-handlingen upphör att gälla samt att du fyllt i rätt referensnummer och personnummer eller samordningsnummer."
+  },
+  "27eki2": {
+    "developer_comment": "login eduid - remember me heading",
+    "string": "Med sparade användaruppgifter"
   },
   "2D7weB": {
     "developer_comment": "orcid connect button",
@@ -239,6 +251,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Tjänsten du försökte använda misslyckades med autentiseringen."
   },
+  "3kyFju": {
+    "developer_comment": "login eduID - re-login heading",
+    "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
+  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Återställ lösenord: Ange ditt eget lösenord"
@@ -290,6 +306,10 @@
     "developer_comment": "what is international - heading",
     "string": "Vad är Freja?"
   },
+  "4fCXFw": {
+    "developer_comment": "login eduid - other devices list item 3",
+    "string": "på den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
+  },
   "56cz7x": {
     "developer_comment": "Phone display title",
     "string": "Telefonnummer"
@@ -317,6 +337,10 @@
     "developer_comment": "Login front page",
     "string": "Registrera"
   },
+  "5p+ec/": {
+    "developer_comment": "login eduid - remember me paragraph",
+    "string": "Under inloggningsformuläret finns en toggle-kontroll märkt \"Kom ihåg mig på den här enheten\". Om den är påslagen kommer webbläsaren försöka fylla i sparat användarnamn och dolt lösenord i formuläret. Stäng av kontrollen för att använda ett annat konto eller logga in på en enhet som inte är privat. "
+  },
   "5paghv": {
     "developer_comment": "platform authn device error text",
     "string": "*Din enhet är inte kompatibel."
@@ -336,10 +360,6 @@
   "6RftZU": {
     "developer_comment": "choosing usb key - heading",
     "string": "Att välja säkerhetsnyckel"
-  },
-  "6Y+n+L": {
-    "developer_comment": "why re-login - heading",
-    "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
   },
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
@@ -364,10 +384,6 @@
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
     "string": "ansluta ditt eduID till ESI och/eller befintligt ORCID iD om det stöds av din institution,"
-  },
-  "7W/zTi": {
-    "developer_comment": "how use other devices - heading",
-    "string": "Hur kan jag logga in med en annan enhet?"
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -561,6 +577,10 @@
     "developer_comment": "login this device, security key button",
     "string": "Enhetsnyckel/säkerhetsnyckel"
   },
+  "D718Ba": {
+    "developer_comment": "login eduid - other devices list item 2",
+    "string": "skanna QR-koden som visas med enheten där du har din säkerhetsnyckel eller sparat lösenord,"
+  },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 siffror"
@@ -684,10 +704,6 @@
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
   },
-  "Fyl7YK": {
-    "developer_comment": "use other devices - list item 2",
-    "string": "skanna QR-koden med enheten där du har din säkerhetsnyckel eller sparat lösenord,"
-  },
   "G0xkV6": {
     "developer_comment": "Short code form",
     "string": "Fortsätt"
@@ -716,13 +732,13 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
   },
+  "GJsTES": {
+    "developer_comment": "login eduid - heading",
+    "string": "Hur kan jag logga in med mitt eduID?"
+  },
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Lösenord"
-  },
-  "GO322p": {
-    "developer_comment": "how use other devices - paragraph",
-    "string": "Inloggning kan även ske genom att logga in i eduID med hjälp av en annan enhet:"
   },
   "GXtHky": {
     "developer_comment": "when use eduID - list item 5",
@@ -780,6 +796,10 @@
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
   },
+  "I93Be7": {
+    "developer_comment": "login eduid - username list item 2",
+    "string": "ditt unika ID som visas på inloggade startsidan och under Konto."
+  },
   "IE2L2s": {
     "developer_comment": "enhance eduid - list item 2",
     "string": "ditt telefonnummer för att lättare kunna återställa ditt konto om det skulle behövas,"
@@ -803,6 +823,10 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "Bekräfta"
+  },
+  "Iu0UZA": {
+    "developer_comment": "login eduid - security key heading",
+    "string": "Med säkerhetsnyckel"
   },
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
@@ -875,13 +899,13 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Identitet"
   },
+  "Kv+6nj": {
+    "developer_comment": "login eduid - forgot pw list item 3",
+    "string": "Följ instruktionerna i mejlet inom 2 timmar. Stegen för att bekräfta din epostadress och välja nytt lösenord är samma som när du skapar ditt eduID."
+  },
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "Vad kan jag göra om legitimationskontrollen för Freja+ misslyckades?"
-  },
-  "LJ68Zo": {
-    "developer_comment": "use other devices - list item 1",
-    "string": "klicka på knappen 'Annan enhet' i inloggnings-formuläret,"
   },
   "LNBvhT": {
     "developer_comment": "Errors button",
@@ -890,6 +914,10 @@
   "LiU6wZ": {
     "developer_comment": "verify identity",
     "string": "Knappen Fortsätt tar dig till en extern sida där du kan logga in med ditt elektroniska ID för att koppla din identitet till eduID."
+  },
+  "LkOik6": {
+    "developer_comment": "login eduid - other devices list item 1",
+    "string": "klicka på knappen \"Annan enhet\" i inloggningsformuläret,"
   },
   "LlYcJl": {
     "developer_comment": "button_add",
@@ -906,10 +934,6 @@
   "M2RPTv": {
     "developer_comment": "Signup button",
     "string": "Skapa ditt eduID"
-  },
-  "M3X9hA": {
-    "developer_comment": "which login email - paragraph",
-    "string": "Du kan logga in med alla e-postadresser som du angett och bekräftat i eduID."
   },
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
@@ -1043,6 +1067,10 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "Vad är eduIDs Personuppgiftspolicy?"
   },
+  "PAeoo9": {
+    "developer_comment": "login eduid - username list definition",
+    "string": "Om du har ett eduID-konto, skriv in dina inloggningsuppgifter i formuläret på {eduidLoginLink} och klicka på knappen \"Logga in\". Ditt användarnamn kan vara:"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Felaktig kod, försök igen"
@@ -1062,6 +1090,10 @@
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
     "string": "Vad är eduIDs Tillgänglighetsrapport?"
+  },
+  "PngTON": {
+    "developer_comment": "login eduid - other device heading",
+    "string": "Med annan enhet"
   },
   "Pnu06c": {
     "developer_comment": "status",
@@ -1121,6 +1153,10 @@
   },
   "RHOeL5": {
     "string": "Använd eduID för att komma åt {service_name}"
+  },
+  "RI6YRb": {
+    "developer_comment": "login eduid - forgot pw list item 1",
+    "string": "klicka på länken \"Glömt ditt lösenord?\" under inloggningsformuläret,"
   },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
@@ -1340,6 +1376,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
   },
+  "WhD8Hj": {
+    "developer_comment": "login eduid - security key list item 1",
+    "string": "Klicka på knappen \"Använd min säkerhetsnyckel\" och följ instruktionerna för din säkerhetsnyckel."
+  },
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "Säkerheten och användbarheten av ditt eduID kan förbättras genom nedanstående åtgärder."
@@ -1420,6 +1460,10 @@
     "developer_comment": "copied button label",
     "string": "KOPIERAD"
   },
+  "YssJWJ": {
+    "developer_comment": "login eduid - security key list item 3",
+    "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID\" under Säkerhet."
+  },
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Konto"
@@ -1490,6 +1534,10 @@
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
     "string": "Gå till eduID för att logga in"
+  },
+  "b7IBUu": {
+    "developer_comment": "login eduid - username list item 1",
+    "string": "alla e-postadresser som lagts till och bekräftats i eduID under Konto,"
   },
   "b7acbg": {
     "developer_comment": "how to contact support phone",
@@ -1622,9 +1670,9 @@
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
   },
-  "cyhncE": {
-    "developer_comment": "use other devices - list item 3",
-    "string": "på den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
+  "d/bTw0": {
+    "developer_comment": "login eduid - security key list item 2",
+    "string": "Ytterligare tillagd säkerhet finns listad i menyn \"Visa andra alternativ\", t.ex. BankID och Freja+"
   },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
@@ -2295,6 +2343,10 @@
     "developer_comment": "Dashboard AccountLinking",
     "string": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID."
   },
+  "mn8rvf": {
+    "developer_comment": "login eduid - username heading",
+    "string": "Med användarnamn och lösenord"
+  },
   "mobile.confirm_mobile_placeholder": {
     "developer_comment": "placeholder text for phone code input",
     "string": "skriv in koden"
@@ -2383,6 +2435,10 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
   },
+  "nsiEuF": {
+    "developer_comment": "login eduid - forgot pw heading",
+    "string": "Jag har glömt mitt lösenord, hur kan jag återfå tillgång till kontot?"
+  },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
     "string": "Status på slutförda åtgärder markeras med en bockmarkering."
@@ -2449,9 +2505,17 @@
     "developer_comment": "security verify",
     "string": "BankID"
   },
+  "p0tKqD": {
+    "developer_comment": "login eduID - re-login paragraph",
+    "string": "Vissa situationer kräver högre säkerhet, t.ex. lösenordsbyte, ändring av 2FA inställning, raderande av eduID-konto och ändrade säkerhetsnycklar. Om mer än 5 minuter har passerat sedan senaste inloggning kommer du behöva logga in igen (med säkerhetsnyckel om du har en tillagd) för att slutföra åtgärderna."
+  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
+  },
+  "pHT3iR": {
+    "developer_comment": "login eduid - other device list definition",
+    "string": "Använd dina inloggningsuppgifter från en annan enhet än du vill logga i eduID med:"
   },
   "pIstaO": {
     "developer_comment": "verify identity",
@@ -2624,10 +2688,6 @@
   "pwfield.weak": {
     "string": "Svagt lösenord"
   },
-  "pxZzwC": {
-    "developer_comment": "why re-login - paragraph",
-    "string": "Vissa situationer kräver högre säkerhet, t.ex. lösenordsbyte, ändring av 2FA inställning, raderande av eduID-konto och ändrade säkerhetsnycklar. Om mer än 5 minuter har passerat sedan senaste inloggning kommer du behöva logga in igen (med säkerhetsnyckel om du har en tillagd) för att slutföra åtgärderna."
-  },
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
@@ -2698,10 +2758,6 @@
   "rHjPO1": {
     "developer_comment": "delete.modal_info",
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om det har gått lång tid sedan du senast loggade in kan det hända att du behöver logga in igen."
-  },
-  "rLwIkG": {
-    "developer_comment": "which login email - heading",
-    "string": "Vilken e-postadress kan jag använda för att logga in?"
   },
   "rN3KF1": {
     "developer_comment": "security zone modal",
@@ -2990,6 +3046,10 @@
     "developer_comment": "Go to dashboard",
     "string": "gå till eduID Dashboard"
   },
+  "usd6iL": {
+    "developer_comment": "login eduid - security key list definition",
+    "string": "Om du har lagt till säkerhetsnyckel för autentisering under Säkerhet kommer den att efterfrågas i ett extra steg efter inloggningsformuläret:"
+  },
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
@@ -3004,6 +3064,10 @@
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "Följande identiteter är nu kopplade till ditt eduID"
+  },
+  "v1MVM6": {
+    "developer_comment": "login eduid - forgot pw paragraph",
+    "string": "Obs: beroende av dina tidigare inställningar kan du behöva återverifiera din identitet i eduID."
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
