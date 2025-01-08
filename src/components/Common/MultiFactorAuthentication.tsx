@@ -164,83 +164,83 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <article>
-      <h2>
-        <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
-      </h2>
-      <p>
-        <FormattedMessage
-          description="security second factor"
-          defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
+    <>
+      <article>
+        <h2>
+          <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
+        </h2>
+        <p>
+          <FormattedMessage
+            description="security second factor"
+            defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
                   to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
-        />
-      </p>
-      <p className="help-text">
-        <FormattedMessage
-          description="security second factor help info"
-          defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
-          values={{
-            HelpSecurityKeys: (
-              <Link className="text-link" to={`../../../help`} target="_blank">
-                <FormattedMessage
-                  description="about security key - handle"
-                  defaultMessage="Improving the security level of eduID"
-                />
-              </Link>
-            ),
-          }}
-        />
-      </p>
+          />
+        </p>
+        <p className="help-text">
+          <FormattedMessage
+            description="security second factor help info"
+            defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
+            values={{
+              HelpSecurityKeys: (
+                <Link className="text-link" to={`../../../help`} target="_blank">
+                  <FormattedMessage
+                    description="about security key - handle"
+                    defaultMessage="Improving the security level of eduID"
+                  />
+                </Link>
+              ),
+            }}
+          />
+        </p>
 
-      <div className="table-responsive">
-        {Boolean(tokens.length) && <UseSecurityKeyToggle />}
-        <SecurityKeyTable />
-        {!tokens.length && <br />}
-        <span aria-label="select extra webauthn">
-          <strong>
-            <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
-          </strong>
-        </span>
-        <div className="buttons">
-          <div>
-            <EduIDButton
-              id="security-webauthn-platform-button"
-              buttonstyle="primary"
-              onClick={() => handleRegisterWebauthn("platform")}
-              disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
-            >
-              <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-            </EduIDButton>
-            <p className="help-text">
-              <FormattedMessage
-                description="platform authn device help text"
-                defaultMessage="The device you are currently using"
-              />
-            </p>
-            {!isPlatformAuthenticatorAvailable && (
-              <p className="help-text black">
+        <div className="table-responsive">
+          <span aria-label="select extra webauthn">
+            <strong>
+              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+            </strong>
+          </span>
+          <div className="buttons">
+            <div>
+              <EduIDButton
+                id="security-webauthn-platform-button"
+                buttonstyle="primary"
+                onClick={() => handleRegisterWebauthn("platform")}
+                disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
+              >
+                <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+              </EduIDButton>
+              <p className="help-text">
                 <FormattedMessage
-                  description="platform authn device error text"
-                  defaultMessage="*Your device is not compatible."
+                  description="platform authn device help text"
+                  defaultMessage="The device you are currently using"
                 />
               </p>
-            )}
-          </div>
-          <div>
-            <EduIDButton
-              id="security-webauthn-button"
-              buttonstyle="primary"
-              onClick={() => handleRegisterWebauthn("cross-platform")}
-              disabled={isRegisteringAuthenticator}
-            >
-              <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
-            </EduIDButton>
-            <p className="help-text">
-              <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
-            </p>
+              {!isPlatformAuthenticatorAvailable && (
+                <p className="help-text black">
+                  <FormattedMessage
+                    description="platform authn device error text"
+                    defaultMessage="*Your device is not compatible."
+                  />
+                </p>
+              )}
+            </div>
+            <div>
+              <EduIDButton
+                id="security-webauthn-button"
+                buttonstyle="primary"
+                onClick={() => handleRegisterWebauthn("cross-platform")}
+                disabled={isRegisteringAuthenticator}
+              >
+                <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
+              </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </article>
+      <SecurityKeyTable />
 
       <ConfirmModal
         id="describe-webauthn-token-modal"
@@ -271,7 +271,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
-    </article>
+    </>
   );
 }
 
@@ -370,94 +370,101 @@ function SecurityKeyTable() {
   }
 
   // data that goes onto the table
-  const securityKeyData = tokens.map((cred: CredentialType) => {
-    // date created
-    const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
-    // date last used
-    if (cred.success_ts) {
-      date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
-    } else {
-      date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
-    }
+  const securityKeyData = !tokens.length ? (
+    <figure>
+      <p className="help-text">
+        <FormattedMessage
+          description="no security key has been added"
+          defaultMessage="No security key has been added"
+        />
+      </p>
+    </figure>
+  ) : (
+    tokens.map((cred: CredentialType) => {
+      // date created
+      const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
+      // date last used
+      if (cred.success_ts) {
+        date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
+      } else {
+        date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
+      }
 
-    // verify button/ verified badge
-    if (cred.verified) {
-      btnVerify = (
-        <div aria-label="verification status" className="verified">
-          <span>
-            <FormattedMessage description="security key status" defaultMessage="Verification status:" />
-            &nbsp;
-            <strong>
-              <FormattedMessage description="security verified" defaultMessage="verified" />
-            </strong>
-          </span>
-        </div>
-      );
-    } else {
-      btnVerify = (
-        <div aria-label="verify with freja or bankID">
-          <span>
-            <FormattedMessage description="security key status" defaultMessage="Verify with: " />
-            &nbsp;
-            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
-              <FormattedMessage description="security verify" defaultMessage="Freja+" />
-            </EduIDButton>
-            <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
-              <FormattedMessage description="security verify" defaultMessage="BankID" />
-            </EduIDButton>
-          </span>
-        </div>
-      );
-    }
-
-    return (
-      <React.Fragment key={cred.key}>
-        <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
-          <div>
-            <span aria-label="key name">
-              <FormattedMessage description="security description name" defaultMessage="Name:" />
+      // verify button/ verified badge
+      if (cred.verified) {
+        btnVerify = (
+          <div aria-label="verification status" className="verified">
+            <span>
+              <FormattedMessage description="security key status" defaultMessage="Verification status:" />
               &nbsp;
-              <strong>{cred.description}</strong>
-            </span>
-            <EduIDButton
-              aria-label="Remove"
-              id="remove-webauthn"
-              buttonstyle="remove"
-              size="sm"
-              onClick={() => handleConfirmDeleteModal(cred.key)}
-            ></EduIDButton>
-          </div>
-          <div>
-            <span aria-label="date created">
-              <FormattedMessage description="security creation date" defaultMessage="Created:" />
-              &nbsp;
-              <wbr />
-              {date_created}
-            </span>
-
-            <span aria-label="date used">
-              <FormattedMessage description="security last used" defaultMessage="Used:" />
-              &nbsp;
-              <wbr />
-              {date_success}
+              <strong>
+                <FormattedMessage description="security verified" defaultMessage="verified" />
+              </strong>
             </span>
           </div>
-          {btnVerify}
-        </figure>
-      </React.Fragment>
-    );
-  });
+        );
+      } else {
+        btnVerify = (
+          <div aria-label="verify with freja or bankID">
+            <span>
+              <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+              &nbsp;
+              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+                <FormattedMessage description="security verify" defaultMessage="Freja+" />
+              </EduIDButton>
+              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+                <FormattedMessage description="security verify" defaultMessage="BankID" />
+              </EduIDButton>
+            </span>
+          </div>
+        );
+      }
 
-  // show no table if no security keys
-  if (!tokens.length) {
-    return null;
-  }
+      return (
+        <React.Fragment key={cred.key}>
+          <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
+            <div>
+              <span aria-label="key name">
+                <FormattedMessage description="security description name" defaultMessage="Name:" />
+                &nbsp;
+                <strong>{cred.description}</strong>
+              </span>
+              <EduIDButton
+                aria-label="Remove"
+                id="remove-webauthn"
+                buttonstyle="remove"
+                size="sm"
+                onClick={() => handleConfirmDeleteModal(cred.key)}
+              ></EduIDButton>
+            </div>
+            <div>
+              <span aria-label="date created">
+                <FormattedMessage description="security creation date" defaultMessage="Created:" />
+                &nbsp;
+                <wbr />
+                {date_created}
+              </span>
+
+              <span aria-label="date used">
+                <FormattedMessage description="security last used" defaultMessage="Used:" />
+                &nbsp;
+                <wbr />
+                {date_success}
+              </span>
+            </div>
+            {btnVerify}
+          </figure>
+        </React.Fragment>
+      );
+    })
+  );
 
   return (
-    <React.Fragment>
-      <h3>
+    <article>
+      <h2>
         <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
-      </h3>
+      </h2>
+      {Boolean(tokens.length) && <UseSecurityKeyToggle />}
       {securityKeyData}
       <NotificationModal
         id="remove-security-key"
@@ -478,6 +485,6 @@ function SecurityKeyTable() {
         acceptModal={handleRemoveWebauthnToken}
         acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
       />
-    </React.Fragment>
+    </article>
   );
 }
