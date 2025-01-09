@@ -194,246 +194,444 @@ export function Help(): JSX.Element {
               />
             }
           >
-            <article>
-              <h4>
-                <FormattedMessage description="how create eduid - heading" defaultMessage="How do I create an eduID?" />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="create eduid - list definition"
-                  defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
-                  values={{
-                    eduidRegisterLink: (
-                      <a className="text-link" href={signup_link} target="_blank">
-                        eduid.se/register
-                      </a>
-                    ),
-                  }}
-                />
-              </p>
-              <ol className="numbers">
-                <li>
+            <h4>
+              <FormattedMessage description="create eduid - heading" defaultMessage="How do I get an account?" />
+            </h4>
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-create">
+              <AccordionItemTemplate
+                uuid="help-create"
+                title={<FormattedMessage description="how create eduid - handle" defaultMessage="Create an eduID" />}
+                additionalInfo={null}
+              >
+                <p>
                   <FormattedMessage
-                    description="create eduid - list item 1"
-                    defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
+                    description="create eduid - list definition"
+                    defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
+                    values={{
+                      eduidRegisterLink: (
+                        <a className="text-link" href={signup_link} target="_blank">
+                          eduid.se/register
+                        </a>
+                      ),
+                    }}
                   />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 2"
-                    defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 3"
-                    defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 4"
-                    defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 5"
-                    defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 6"
-                    defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 7"
-                    defaultMessage={`take careful note of your login details (used email address and password)! `}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="create eduid - list item 8"
-                    defaultMessage={`You can now log in with your eduID. `}
-                  />
-                </li>
-              </ol>
-            </article>
-            <article>
-              <h4>
-                <FormattedMessage
-                  description="login eduid - heading"
-                  defaultMessage="How can I log in with my eduID?"
-                />
-              </h4>
-              <h5>
-                <FormattedMessage
-                  description="login eduid - username heading"
-                  defaultMessage={`With username and password`}
-                />
-              </h5>
-              <p>
-                <FormattedMessage
-                  description="login eduid - username list definition"
-                  defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
-                  values={{
-                    eduidLoginLink: (
-                      <a className="text-link" href={dashboard_link} target="_blank">
-                        eduid.se
-                      </a>
-                    ),
-                  }}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="login eduid - username list item 1"
-                    defaultMessage={`any email address you have entered and confirmed in eduID under Account,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="login eduid - username list item 2"
-                    defaultMessage="your unique ID, shown on the logged in start page and under Account."
-                  />
-                </li>
-              </ul>
-              <h5>
-                <FormattedMessage
-                  description="login eduid - remember me heading"
-                  defaultMessage={`With saved credentials`}
-                />
-              </h5>
-              <p>
-                <FormattedMessage
-                  description="login eduid - remember me paragraph"
-                  defaultMessage={`Underneath the login form there is a toggle control called "Remember me on this device". 
+                </p>
+                <ol className="numbers">
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 1"
+                      defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 2"
+                      defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 3"
+                      defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 4"
+                      defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 5"
+                      defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 6"
+                      defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 7"
+                      defaultMessage={`take careful note of your login details (used email address and password)! `}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="create eduid - list item 8"
+                      defaultMessage={`You can now log in with your eduID. `}
+                    />
+                  </li>
+                </ol>
+              </AccordionItemTemplate>
+            </Accordion>
+
+            <h4>
+              <FormattedMessage description="login eduid - heading" defaultMessage="How do I log in with my account?" />
+            </h4>
+            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-login">
+              <AccordionItemTemplate
+                uuid="help-login"
+                title={<FormattedMessage description="login eduid - handle" defaultMessage="Log in with eduID" />}
+                additionalInfo={null}
+              >
+                <article>
+                  <h5>
+                    <FormattedMessage
+                      description="login eduid - username heading"
+                      defaultMessage={`With username and password`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - username list definition"
+                      defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
+                      values={{
+                        eduidLoginLink: (
+                          <a className="text-link" href={dashboard_link} target="_blank">
+                            eduid.se
+                          </a>
+                        ),
+                      }}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - username list item 1"
+                        defaultMessage={`any email address you have entered and confirmed in eduID under Account,`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - username list item 2"
+                        defaultMessage="your unique ID, shown on the logged in start page and under Account."
+                      />
+                    </li>
+                  </ul>
+                </article>
+                <article>
+                  <h5>
+                    <FormattedMessage
+                      description="login eduid - remember me heading"
+                      defaultMessage={`With saved credentials`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - remember me paragraph"
+                      defaultMessage={`Underneath the login form there is a toggle control called "Remember me on this device". 
                     If this is switched on the web browser will attempt to fill in your username and hidden password in the form. For a different account or on a shared device, set this to off.`}
-                />
-              </p>
-              <h5>
-                <FormattedMessage
-                  description="login eduid - other device heading"
-                  defaultMessage={`With another device`}
-                />
-              </h5>
-              <p>
-                <FormattedMessage
-                  description="login eduid - other device list definition"
-                  defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
-                />
-              </p>
-              <ol className="numbers">
-                <li>
-                  <FormattedMessage
-                    description="login eduid - other devices list item 1"
-                    defaultMessage="press the 'Other device' button in the login form,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="login eduid - other devices list item 2"
-                    defaultMessage={`scan the presented QR-code with the other device where you have your login credentials, 
+                    />
+                  </p>
+                </article>
+                <article>
+                  <h5>
+                    <FormattedMessage
+                      description="login eduid - other device heading"
+                      defaultMessage={`With another device`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - other device list definition"
+                      defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
+                    />
+                  </p>
+                  <ol className="numbers">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 1"
+                        defaultMessage="press the 'Other device' button in the login form,"
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 2"
+                        defaultMessage={`scan the presented QR-code with the other device where you have your login credentials, 
                     e.g. security key or saved password,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="login eduid - other devices list item 3"
-                    defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 3"
+                        defaultMessage={`on that second device, review the device requesting to be logged in and use the 
                     presented code to login by entering it within the time shown, in the first device.`}
-                  />
-                </li>
-              </ol>
-              <h5>
-                <FormattedMessage
-                  description="login eduid - security key heading"
-                  defaultMessage={`With security key`}
-                />
-              </h5>
-              <p>
-                <FormattedMessage
-                  description="login eduid - security key list definition"
-                  defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
+                      />
+                    </li>
+                  </ol>
+                </article>
+                <article>
+                  <h5>
+                    <FormattedMessage
+                      description="login eduid - security key heading"
+                      defaultMessage={`With security key`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - security key list definition"
+                      defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
                     `}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 1"
+                        defaultMessage={`Press the "Use my security key" button and follow the instructions, which will vary depending on your key.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 2"
+                        defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID and Freja+. `}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 3"
+                        defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (2FA) to log in to eduID" toggle control under Security to off.`}
+                      />
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - security key paragraph"
+                      defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
+                    />
+                  </p>
+                </article>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-pw"
+                title={
                   <FormattedMessage
-                    description="login eduid - security key list item 1"
-                    defaultMessage={`Press the "Use my security key" button and follow the instructions, which will vary depending on your key.`}
+                    description="login eduid - forgot pw handle"
+                    defaultMessage="Regain access if forgotten password"
                   />
-                </li>
-                <li>
+                }
+                additionalInfo={null}
+              >
+                <ol className="numbers">
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - forgot pw list item 1"
+                      defaultMessage={`press the "Forgot your password?" link below the login form,`}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - forgot pw list item 2"
+                      defaultMessage={`press the "Send email" button to receive a code to the email address presented on the page,`}
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - forgot pw list item 3"
+                      defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
+                    />
+                  </li>
+                </ol>
+                <p>
                   <FormattedMessage
-                    description="login eduid - security key list item 2"
-                    defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID and Freja+. `}
+                    description="login eduid - forgot pw paragraph"
+                    defaultMessage={`Note: depending on your previous settings you might need to re-verify your identity in eduID.`}
                   />
-                </li>
-                <li>
+                </p>
+              </AccordionItemTemplate>
+              <AccordionItemTemplate
+                uuid="help-relogin"
+                title={
                   <FormattedMessage
-                    description="login eduid - security key list item 3"
-                    defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (2FA) to log in to eduID" toggle control under Security to off.`}
+                    description="login eduID - re-login handle"
+                    defaultMessage="I'm already logged in, why do I need to log in again?"
                   />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="login eduid - security key paragraph"
-                  defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
-                />
-              </p>
-              <h4>
-                <FormattedMessage
-                  description="login eduid - forgot pw heading"
-                  defaultMessage="I have forgotten my password, how can I regain access?"
-                />
-              </h4>
-              <ul className="bullets">
-                <li>
+                }
+                additionalInfo={null}
+              >
+                <p>
                   <FormattedMessage
-                    description="login eduid - forgot pw list item 1"
-                    defaultMessage={`press the "Forgot your password?" link below the login form,`}
+                    description="login eduID - re-login paragraph"
+                    defaultMessage="In some situations that require added security you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in, e.g: "
                   />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="login eduid - forgot pw list item 2"
-                    defaultMessage={`press the "Send email" button to receive a code to the email address presented on the page,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="login eduid - forgot pw list item 3"
-                    defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
-                  />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="login eduid - forgot pw paragraph"
-                  defaultMessage={`Note: depending on your previous settings you might need to re-verify your identity in eduID.`}
-                />
-              </p>
-              <h4>
-                <FormattedMessage
-                  description="login eduID - re-login heading"
-                  defaultMessage="I'm already logged in, why do I need to log in again?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="login eduID - re-login paragraph"
-                  defaultMessage="In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
-                />
-              </p>
-            </article>
+                </p>
+                <ul className="bullets">
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - re-login list item 1"
+                      defaultMessage="when changing your password,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - re-login list item 2"
+                      defaultMessage="toggling 2FA login requirement setting,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - re-login list item 3"
+                      defaultMessage="deleting your eduID account or "
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - re-login list item 4"
+                      defaultMessage="adding/removing a security key."
+                    />
+                  </li>
+                </ul>
+              </AccordionItemTemplate>
+            </Accordion>
+
             <article>
+              <h4>
+                <FormattedMessage description="settings eduid - heading" defaultMessage="How do I update my account?" />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="settings eduid - intro definition"
+                  defaultMessage={`When you log in to eduid.se, there are 4 views accessible from the drop down menu in the header, by clicking on your username:`}
+                />
+              </p>
+              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-settings">
+                <AccordionItemTemplate
+                  uuid="help-start"
+                  title={<FormattedMessage description="settings eduid - start handle" defaultMessage="Start" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="start eduid - list definition"
+                      defaultMessage={`The Start page contains:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name,`} />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="start eduid - list item 2"
+                        defaultMessage={`your unique user ID,`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="start eduid - list item 3"
+                        defaultMessage={`an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:
+                          `}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-1"
+                            defaultMessage={`if account is confirmed (confirmed email address and accepted terms of use),
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-2"
+                            defaultMessage={`real identity verified,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-3"
+                            defaultMessage={`enhanced security (added a method used for multi factor login),
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-4"
+                            defaultMessage={`verified a security key (bound your verified identity to your multi factor login).
+                          `}
+                          />
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="start eduid - paragraph"
+                      defaultMessage={`Note: You can read about how the status correlates to connecting services in the help section "Assurance levels".`}
+                    />
+                  </p>
+                </AccordionItemTemplate>
+                {/* <AccordionItemTemplate
+                  uuid="help-identity"
+                  title={<FormattedMessage description="settings eduid - identity handle" defaultMessage="Identity" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="identity eduid - list definition"
+                      defaultMessage={`The Identity page contains:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <em>
+                        <FormattedMessage
+                          description="identity eduid - list item 1"
+                          defaultMessage={`Content in progress.`}
+                        />
+                      </em>
+                    </li>
+                  </ul>
+                </AccordionItemTemplate>
+                <AccordionItemTemplate
+                  uuid="help-security"
+                  title={<FormattedMessage description="settings eduid - security handle" defaultMessage="Security" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="security eduid - list definition"
+                      defaultMessage={`The Security page contains:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <em>
+                        <FormattedMessage
+                          description="security eduid - list item 1"
+                          defaultMessage={`Content in progress.`}
+                        />
+                      </em>
+                    </li>
+                  </ul>
+                </AccordionItemTemplate>
+                <AccordionItemTemplate
+                  uuid="help-Account"
+                  title={<FormattedMessage description="settings eduid - account handle" defaultMessage="Account" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="account eduid - list definition"
+                      defaultMessage={`The Account page contains:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <em>
+                        <FormattedMessage
+                          description="account eduid - list item 1"
+                          defaultMessage={`Content in progress.`}
+                        />
+                      </em>
+                    </li>
+                  </ul>
+                </AccordionItemTemplate> */}
+              </Accordion>
               <h4>
                 <FormattedMessage
                   description="how enhance eduid - heading"
@@ -452,12 +650,6 @@ export function Help(): JSX.Element {
                     description="enhance eduid - list item 1"
                     defaultMessage={`your full name to be able to add a security key or access some services from an 
                     unverified account,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 2"
-                    defaultMessage="your phone number for easier retrieval of your account should it be needed,"
                   />
                 </li>
                 <li>
@@ -492,19 +684,33 @@ export function Help(): JSX.Element {
             <article>
               <h4>
                 <FormattedMessage
-                  description="how change language - heading"
+                  description="settings eduid - language heading"
                   defaultMessage="How do I change the default language in eduID?"
                 />
               </h4>
               <p>
                 <FormattedMessage
-                  description="how change language - paragraph"
-                  defaultMessage={`To change the default language you can log into eduID and select your language 
-                  preference in the Personal information area in eduID. The default language is based on the language 
-                  setting that your browser uses. You can also change the displayed language in the footer of the 
-                  webpage. Available options are Swedish and English.`}
+                  description="settings eduid - language paragraph"
+                  defaultMessage={`The default language is based on the language 
+                  setting that your browser uses. Available options are Swedish and English.`}
                 />
               </p>
+              <ul className="bullets">
+                <li>
+                  <FormattedMessage
+                    description="settings eduid - re-login list item 1"
+                    defaultMessage="To change the default language for eduID you can log in to eduID and select your 
+                  preference using the Language radio buttons under Account. "
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="settings eduid - re-login list item 2"
+                    defaultMessage="You can also change the language for the displayed page in the footer of the 
+                  webpage."
+                  />
+                </li>
+              </ul>
             </article>
           </AccordionItemTemplate>
 

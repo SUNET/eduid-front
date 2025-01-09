@@ -67,6 +67,10 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Code"
   },
+  "/PeCMr": {
+    "developer_comment": "start eduid - list item 2",
+    "string": "your unique user ID,"
+  },
   "/XduYi": {
     "developer_comment": "verify your security key description",
     "string": "Verify your security key at {security}"
@@ -163,6 +167,10 @@
     "developer_comment": "Dashboard nav tab name",
     "string": "Account"
   },
+  "1WYsQ6": {
+    "developer_comment": "login eduid - heading",
+    "string": "How do I log in with my account?"
+  },
   "1XDKxO": {
     "developer_comment": "accept button",
     "string": "Accept"
@@ -207,6 +215,10 @@
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
   },
+  "2cX0FD": {
+    "developer_comment": "login eduID - re-login paragraph",
+    "string": "In some situations that require added security you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in, e.g:"
+  },
   "2hrJd2": {
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
@@ -231,6 +243,10 @@
     "developer_comment": "about security key - info",
     "string": "Adding an MFA/2FA Security Key"
   },
+  "3QAHfi": {
+    "developer_comment": "settings eduid - heading",
+    "string": "How do I update my account?"
+  },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
     "string": "Ladok is a student administration system used in all Swedish higher education institutions for registration and grading. A couple of schools have chosen to let eduID release the ESI attribute, used for instance when applying to a Erasmus exchange student program."
@@ -251,10 +267,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
   },
-  "3kyFju": {
-    "developer_comment": "login eduID - re-login heading",
-    "string": "I'm already logged in, why do I need to log in again?"
-  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Reset Password: Set your own password"
@@ -262,10 +274,6 @@
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
-  },
-  "4/fziK": {
-    "developer_comment": "how change language - heading",
-    "string": "How do I change the default language in eduID?"
   },
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
@@ -385,6 +393,10 @@
     "developer_comment": "enhance eduid - list item 4",
     "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
   },
+  "7MHYRh": {
+    "developer_comment": "login eduID - re-login handle",
+    "string": "I'm already logged in, why do I need to log in again?"
+  },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
     "string": "About Freja (with Swedish ID/COORD number)"
@@ -445,6 +457,10 @@
     "developer_comment": "Dashboard change password modal title",
     "string": "Security check"
   },
+  "8j1yta": {
+    "developer_comment": "settings eduid - start handle",
+    "string": "Start"
+  },
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Remember me on this device"
@@ -493,6 +509,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The code expired"
   },
+  "ADmPw7": {
+    "developer_comment": "start eduid - list definition",
+    "string": "The Start page contains:"
+  },
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
@@ -528,10 +548,6 @@
   "B4vR5O": {
     "developer_comment": "Set new password",
     "string": "Repeat new password"
-  },
-  "BRcd2V": {
-    "developer_comment": "how change language - paragraph",
-    "string": "To change the default language you can log into eduID and select your language preference in the Personal information area in eduID. The default language is based on the language setting that your browser uses. You can also change the displayed language in the footer of the webpage. Available options are Swedish and English."
   },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
@@ -637,6 +653,10 @@
     "developer_comment": "how enhance eduid - heading",
     "string": "How can I enhance my eduID?"
   },
+  "EJzCVC": {
+    "developer_comment": "start eduid - list item 3-1",
+    "string": "if account is confirmed (confirmed email address and accepted terms of use),"
+  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
@@ -696,6 +716,10 @@
     "developer_comment": "profile email display no data",
     "string": "no email added"
   },
+  "FqY+a1": {
+    "developer_comment": "login eduid - re-login list item 1",
+    "string": "when changing your password,"
+  },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset Password: Completed"
@@ -732,9 +756,9 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance from you of the eduID terms of use."
   },
-  "GJsTES": {
-    "developer_comment": "login eduid - heading",
-    "string": "How can I log in with my eduID?"
+  "GH385e": {
+    "developer_comment": "start eduid - list item 3",
+    "string": "an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:"
   },
   "GMXbvp": {
     "developer_comment": "password input field label",
@@ -755,6 +779,10 @@
   "GmoJ8i": {
     "developer_comment": "Reset Password email link sent",
     "string": "The email code is valid for two hours."
+  },
+  "Gms3Xj": {
+    "developer_comment": "start eduid - list item 3-3",
+    "string": "enhanced security (added a method used for multi factor login),"
   },
   "H08uQ1": {
     "developer_comment": "enhance eduid - list item 3",
@@ -799,10 +827,6 @@
   "I93Be7": {
     "developer_comment": "login eduid - username list item 2",
     "string": "your unique ID, shown on the logged in start page and under Account."
-  },
-  "IE2L2s": {
-    "developer_comment": "enhance eduid - list item 2",
-    "string": "your phone number for easier retrieval of your account should it be needed,"
   },
   "IW+u0G": {
     "developer_comment": "confirmed account description",
@@ -1075,6 +1099,10 @@
     "developer_comment": "Short code form",
     "string": "Incorrect code, try again"
   },
+  "PWokag": {
+    "developer_comment": "how create eduid - handle",
+    "string": "Create an eduID"
+  },
   "Pa6Av7": {
     "developer_comment": "Display name select placeholder",
     "string": "select display name..."
@@ -1110,6 +1138,10 @@
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Are you sure you want to disconnect your identity from your eduID account?"
+  },
+  "QCywLo": {
+    "developer_comment": "login eduid - handle",
+    "string": "Log in with eduID"
   },
   "QDS1P5": {
     "developer_comment": "signup last name",
@@ -1336,6 +1368,10 @@
     "developer_comment": "how to contact support - list item 3",
     "string": "If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
   },
+  "VhVMaE": {
+    "developer_comment": "start eduid - list item 3-2",
+    "string": "real identity verified,"
+  },
   "VlSXpR": {
     "developer_comment": "Header login",
     "string": "Log in"
@@ -1468,6 +1504,10 @@
     "developer_comment": "recommendations account link",
     "string": "Account"
   },
+  "Z0RMkb": {
+    "developer_comment": "start eduid - list item 3-4",
+    "string": "verified a security key (bound your verified identity to your multi factor login)."
+  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
@@ -1566,6 +1606,10 @@
   "bPBJL5": {
     "developer_comment": "when use eduID - list item 1",
     "string": "apply to and accept your place at a university,"
+  },
+  "bQzsIx": {
+    "developer_comment": "start eduid - paragraph",
+    "string": "Note: You can read about how the status correlates to connecting services in the help section \"Assurance levels\"."
   },
   "bYDxCn": {
     "developer_comment": "usb key technical section - list item 4 code",
@@ -1762,6 +1806,10 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "If you do not longer want eduID to know your ORCID iD you can remove it by clicking the Remove button in your eduID."
+  },
+  "eQBIty": {
+    "developer_comment": "settings eduid - language paragraph",
+    "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
   },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
@@ -1988,6 +2036,10 @@
     "developer_comment": "Header logout",
     "string": "Log out"
   },
+  "hZqszR": {
+    "developer_comment": "start eduid - list item 1",
+    "string": "your name,"
+  },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
     "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
@@ -2019,6 +2071,10 @@
   "hq/xBV": {
     "developer_comment": "Use other device 2",
     "string": "Request denied."
+  },
+  "hq21qm": {
+    "developer_comment": "login eduid - re-login list item 3",
+    "string": "deleting your eduID account or"
   },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
@@ -2133,6 +2189,10 @@
   },
   "kHCeni": {
     "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
+  },
+  "kK+mFS": {
+    "developer_comment": "login eduid - forgot pw handle",
+    "string": "Regain access if forgotten password"
   },
   "kK4Hum": {
     "developer_comment": "Account recovery cancel information",
@@ -2319,6 +2379,10 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
   },
+  "m/q3KQ": {
+    "developer_comment": "login eduid - re-login list item 4",
+    "string": "adding/removing a security key."
+  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
@@ -2435,10 +2499,6 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent."
   },
-  "nsiEuF": {
-    "developer_comment": "login eduid - forgot pw heading",
-    "string": "I have forgotten my password, how can I regain access?"
-  },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
     "string": "Status of completed steps are indicated with a checkmark."
@@ -2505,10 +2565,6 @@
     "developer_comment": "security verify",
     "string": "BankID"
   },
-  "p0tKqD": {
-    "developer_comment": "login eduID - re-login paragraph",
-    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you will be asked to log in again (with your security key if you are using one), if more than 5 minutes have passed since you logged in."
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
@@ -2520,10 +2576,6 @@
   "pIstaO": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
-  },
-  "pJdAxW": {
-    "developer_comment": "how create eduid - heading",
-    "string": "How do I create an eduID?"
   },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
@@ -2904,6 +2956,10 @@
     "developer_comment": "which type of security key - heading",
     "string": "Which type of security key can I use with eduID?"
   },
+  "sgCLAn": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "When you log in to eduid.se, there are 4 views accessible from the drop down menu in the header, by clicking on your username:"
+  },
   "signup.already-verified": {
     "string": "You have already verified your account."
   },
@@ -2987,6 +3043,10 @@
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
+  "t1BZi/": {
+    "developer_comment": "settings eduid - language heading",
+    "string": "How do I change the default language in eduID?"
+  },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
@@ -2997,6 +3057,10 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
+  },
+  "tUj9S2": {
+    "developer_comment": "create eduid - heading",
+    "string": "How do I get an account?"
   },
   "tVcCe6": {
     "developer_comment": "emails enter code",
@@ -3029,6 +3093,14 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
+  },
+  "uhqjcc": {
+    "developer_comment": "login eduid - re-login list item 2",
+    "string": "toggling 2FA login requirement setting,"
+  },
+  "ujk+b2": {
+    "developer_comment": "settings eduid - re-login list item 2",
+    "string": "You can also change the language for the displayed page in the footer of the webpage."
   },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
@@ -3190,6 +3262,10 @@
   "ysi2d4": {
     "developer_comment": "privacy policy - list item 9",
     "string": "only uses necessary functional cookies."
+  },
+  "ywtIEI": {
+    "developer_comment": "settings eduid - re-login list item 1",
+    "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
   },
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
