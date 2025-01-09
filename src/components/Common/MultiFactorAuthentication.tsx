@@ -20,6 +20,8 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
+import passKey from "../../../img/pass-key.svg";
+import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
 import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -192,7 +194,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             }}
           />
         </p>
-
         <div className="table-responsive">
           <span aria-label="select extra webauthn">
             <strong>
@@ -203,10 +204,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-platform-button"
+                className="flex"
                 buttonstyle="primary"
                 onClick={() => handleRegisterWebauthn("platform")}
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
+                <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
                 <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
               </EduIDButton>
               <p className="help-text">
@@ -228,10 +231,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <EduIDButton
                 id="security-webauthn-button"
                 buttonstyle="primary"
+                className="flex"
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
-                <FormattedMessage description="add webauthn token key" defaultMessage="external security key" />
+                <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
