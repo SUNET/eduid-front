@@ -510,7 +510,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="start eduid - list definition"
-                      defaultMessage={`The start page shows:`}
+                      defaultMessage={`The start page contains:`}
                     />
                   </p>
                   <ul className="bullets">
@@ -520,22 +520,76 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 2"
-                        defaultMessage={`your unique user ID`}
+                        defaultMessage={`your unique user ID,`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 3"
-                        defaultMessage={`and an overview of the status of your eduID - if your identity is verified, you have added and verified a security key.`}
+                        defaultMessage={`an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:
+                          `}
                       />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-1"
+                            defaultMessage={`if account is confirmed (confirmed email address and accepted terms of use),
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-2"
+                            defaultMessage={`real identity verified,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-3"
+                            defaultMessage={`enhanced security (added a method used for multi factor login),
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="start eduid - list item 3-4"
+                            defaultMessage={`verified a security key (bound your verified identity to your multi factor login).
+                          `}
+                          />
+                        </li>
+                      </ul>
                     </li>
                   </ul>
+
                   <p>
                     <FormattedMessage
                       description="start eduid - paragraph"
-                      defaultMessage={`These tasks strengthen and increase the use of your eduID and you can read about how the status correlates to connecting services in the help section "Assurance levels".`}
+                      defaultMessage={`Note: You can read about how the status correlates to connecting services in the help section "Assurance levels".`}
                     />
                   </p>
+                </AccordionItemTemplate>
+                <AccordionItemTemplate
+                  uuid="help-identity"
+                  title={<FormattedMessage description="update eduid - identity handle" defaultMessage="Identity" />}
+                  additionalInfo={null}
+                >
+                  <p>
+                    <FormattedMessage
+                      description="identity eduid - list definition"
+                      defaultMessage={`The identity page contains:`}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <em>
+                        <FormattedMessage
+                          description="identity eduid - list item 1"
+                          defaultMessage={`Content in progress.`}
+                        />
+                      </em>
+                    </li>
+                  </ul>
                 </AccordionItemTemplate>
               </Accordion>
 
@@ -545,12 +599,6 @@ export function Help(): JSX.Element {
                     description="enhance eduid - list item 1"
                     defaultMessage={`your full name to be able to add a security key or access some services from an 
                     unverified account,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 2"
-                    defaultMessage="your phone number for easier retrieval of your account should it be needed,"
                   />
                 </li>
                 <li>
