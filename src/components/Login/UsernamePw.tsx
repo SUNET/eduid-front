@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faQrcode } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
@@ -15,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import qrCode from "../../../img/qrcode.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
@@ -225,7 +223,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
 
   return (
     <EduIDButton buttonstyle="primary" onClick={handleOnClick} className="btn-icon" id="login-other-device-button">
-      <FontAwesomeIcon icon={faQrcode as IconProp} />
+      <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>
   );
