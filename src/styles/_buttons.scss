@@ -349,3 +349,13 @@ button.scroll-to-top {
     background-image: url("../../img/remove-icon-black.svg");
   }
 }
+
+button.flex {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: auto;
+    padding-right: 10px;
+  }
+}

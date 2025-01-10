@@ -18,7 +18,7 @@ async function linkToAdvancedSettings() {
   act(() => {
     nav.click();
   });
-  expect(screen.getByRole("button", { name: "external security key" })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
   // expect(screen.getByRole("heading", { name: /Two-factor Authentication (2FA)/i })).toBeInTheDocument();
 }
 
