@@ -377,7 +377,7 @@ function SecurityKeyTable() {
   // data that goes onto the table
   const securityKeyData = !tokens.length ? (
     <figure>
-      <em>
+      <em className="help-text">
         <FormattedMessage
           description="no security key has been added"
           defaultMessage="No security key has been added"
