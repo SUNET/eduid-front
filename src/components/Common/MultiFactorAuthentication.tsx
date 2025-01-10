@@ -204,7 +204,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-platform-button"
-                className="flex"
+                className="btn-icon"
                 buttonstyle="primary"
                 onClick={() => handleRegisterWebauthn("platform")}
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
@@ -231,7 +231,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <EduIDButton
                 id="security-webauthn-button"
                 buttonstyle="primary"
-                className="flex"
+                className="btn-icon"
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
