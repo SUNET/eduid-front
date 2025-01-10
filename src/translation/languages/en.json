@@ -3100,7 +3100,7 @@
   },
   "ujk+b2": {
     "developer_comment": "settings eduid - re-login list item 2",
-    "string": "You can also change the language for the displayed page in the footer of the webpage."
+    "string": "You can also change the language for the loaded page in the footer of the webpage."
   },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
