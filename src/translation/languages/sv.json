@@ -505,6 +505,10 @@
     "developer_comment": "Dashboard change password button text",
     "string": "Byt lösenord"
   },
+  "A2MTya": {
+    "developer_comment": "add webauthn token key",
+    "string": "Säkerhetsnyckel"
+  },
   "ABLcOw": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Koden gick ut"
@@ -604,6 +608,10 @@
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
     "string": "Om du inte hittar svar på dina frågor om eduID på vår hjälpsida kan du kontakta eduID-supporten via e-post till {support}."
+  },
+  "DRBzcL": {
+    "developer_comment": "no security key has been added",
+    "string": "Ingen säkerhetsnyckel har lagts till"
   },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
@@ -3286,10 +3294,6 @@
   "zeCbht": {
     "developer_comment": "start main title",
     "string": "Välkommen, {username}!"
-  },
-  "zkvDpu": {
-    "developer_comment": "add webauthn token key",
-    "string": "fysisk säkerhetsnyckel"
   },
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
