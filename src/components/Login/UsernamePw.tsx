@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import qrCode from "../../../img/qrcode.svg";
+import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
