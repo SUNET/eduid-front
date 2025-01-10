@@ -377,12 +377,12 @@ function SecurityKeyTable() {
   // data that goes onto the table
   const securityKeyData = !tokens.length ? (
     <figure>
-      <p className="help-text">
+      <em>
         <FormattedMessage
           description="no security key has been added"
           defaultMessage="No security key has been added"
         />
-      </p>
+      </em>
     </figure>
   ) : (
     tokens.map((cred: CredentialType) => {
