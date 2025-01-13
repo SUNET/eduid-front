@@ -81,10 +81,17 @@
   a {
     padding-right: 5px;
   }
+  a.disabled {
+    display: flex;
+  }
 
-  svg {
+  svg,
+  img {
     padding-right: 5px;
     padding-left: 5px;
+  }
+  img {
+    width: auto;
   }
 }
 

@@ -1,7 +1,7 @@
-import { faGears } from "@fortawesome/free-solid-svg-icons";
 import { MultiFactorAuthentication } from "components/Common/MultiFactorAuthentication";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import securityIcon from "../../../img/security-icon.svg";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
@@ -23,7 +23,7 @@ export function Security(): JSX.Element {
 
   return (
     <React.Fragment>
-      <DashboardBreadcrumbs pageIcon={faGears} currentPage={currentPage} />
+      <DashboardBreadcrumbs icon={securityIcon} currentPage={currentPage} />
       <section className="intro">
         <h1>
           <FormattedMessage description="security main title" defaultMessage="Security" />
