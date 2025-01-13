@@ -345,7 +345,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 1"
-                        defaultMessage="press the 'Other device' button in the login form,"
+                        defaultMessage={`press the "Other device" button in the login form,`}
                       />
                     </li>
                     <li>
@@ -463,7 +463,7 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 1"
-                      defaultMessage="when changing your password,"
+                      defaultMessage="changing your password,"
                     />
                   </li>
                   <li>
@@ -475,13 +475,19 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 3"
-                      defaultMessage="deleting your eduID account or "
+                      defaultMessage="deleting your eduID account,"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 4"
-                      defaultMessage="adding/removing a security key."
+                      defaultMessage="adding/removing a security key,"
+                    />
+                  </li>
+                  <li>
+                    <FormattedMessage
+                      description="login eduid - re-login list item 5"
+                      defaultMessage="deleting your verified identity."
                     />
                   </li>
                 </ul>
@@ -495,7 +501,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="settings eduid - intro definition"
-                  defaultMessage={`When you log in to eduid.se, there are 4 views accessible from the drop down menu in the header, by clicking on your username:`}
+                  defaultMessage={`When you log in to eduid.se there are 4 views; Start, Identity, Security and Account. They are accessible from the drop down menu in the header, by clicking on your username.`}
                 />
               </p>
               <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-settings">
@@ -530,7 +536,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-1"
-                            defaultMessage={`if account is confirmed (confirmed email address and accepted terms of use),
+                            defaultMessage={`confirmed account (confirmed email address and accepted terms of use),
                           `}
                           />
                         </li>
@@ -551,7 +557,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-4"
-                            defaultMessage={`verified a security key (bound your verified identity to your multi factor login).
+                            defaultMessage={`a verified security key (bound your verified identity to your multi factor login).
                           `}
                           />
                         </li>
