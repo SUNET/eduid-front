@@ -81,7 +81,7 @@
   a {
     padding-right: 5px;
   }
-  a.disabled {
+  a.disabled:has(> img) {
     display: flex;
   }
 
