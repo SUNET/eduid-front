@@ -345,6 +345,10 @@
     "developer_comment": "Login front page",
     "string": "Registrera"
   },
+  "5m/KL7": {
+    "developer_comment": "start eduid - list item 3-4",
+    "string": "en verifierad säkerhetsnyckel (kopplat din verifierade identitet till din multifaktor-inloggning)."
+  },
   "5p+ec/": {
     "developer_comment": "login eduid - remember me paragraph",
     "string": "Under inloggningsformuläret finns en toggle-kontroll märkt \"Kom ihåg mig på den här enheten\". Om den är påslagen kommer webbläsaren försöka fylla i sparat användarnamn och dolt lösenord i formuläret. Stäng av kontrollen för att använda ett annat konto eller logga in på en enhet som inte är privat. "
@@ -381,6 +385,10 @@
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID Dashboard:"
   },
+  "6k3H8s": {
+    "developer_comment": "login eduid - re-login list item 4",
+    "string": "lägga till / ta bort säkerhetsnyckel,"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -396,6 +404,10 @@
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
+  },
+  "7b+tL8": {
+    "developer_comment": "login eduid - other devices list item 1",
+    "string": "klicka på knappen \"Annan enhet\" i inloggningsformuläret,"
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -448,6 +460,10 @@
   "8Rtn1V": {
     "developer_comment": "what is eduID - paragraph 1",
     "string": "eduID är en federerad identitet – en användaridentitet som kan användas inom flera olika organisationer eftersom man har enats kring hur identiteter ska hanteras. Grundidén är att en given användare som autentiserat sig hos en organisation per automatik kan bli autentiserad hos en annan som ingår i federationen."
+  },
+  "8T8ZLB": {
+    "developer_comment": "login eduid - re-login list item 5",
+    "string": "radera din verifierade identitet."
   },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
@@ -661,10 +677,6 @@
     "developer_comment": "how enhance eduid - heading",
     "string": "Hur kan jag utöka mitt eduID?"
   },
-  "EJzCVC": {
-    "developer_comment": "start eduid - list item 3-1",
-    "string": "om ditt konto är bekräftat (bekräftad epostadress och godkända användarvillkor),"
-  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verifiera din identitet"
@@ -723,10 +735,6 @@
   "Fjbcnk": {
     "developer_comment": "profile email display no data",
     "string": "ingen e-postadress sparad"
-  },
-  "FqY+a1": {
-    "developer_comment": "login eduid - re-login list item 1",
-    "string": "vid lösenordsbyte,"
   },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
@@ -947,10 +955,6 @@
     "developer_comment": "verify identity",
     "string": "Knappen Fortsätt tar dig till en extern sida där du kan logga in med ditt elektroniska ID för att koppla din identitet till eduID."
   },
-  "LkOik6": {
-    "developer_comment": "login eduid - other devices list item 1",
-    "string": "klicka på knappen \"Annan enhet\" i inloggningsformuläret,"
-  },
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Lägg till"
@@ -974,6 +978,10 @@
   "MDEHdc": {
     "developer_comment": "platform authn device help text",
     "string": "Enheten som du just nu använder"
+  },
+  "MS7gyy": {
+    "developer_comment": "start eduid - list item 3-1",
+    "string": "bekräftat konto (bekräftad epostadress och godkända användarvillkor),"
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1511,10 +1519,6 @@
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Konto"
-  },
-  "Z0RMkb": {
-    "developer_comment": "start eduid - list item 3-4",
-    "string": "verifierat en säkerhetsnyckel (kopplat din verifierade identitet till din multifaktor-inloggning)."
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -2080,10 +2084,6 @@
     "developer_comment": "Use other device 2",
     "string": "Åtkomst nekad."
   },
-  "hq21qm": {
-    "developer_comment": "login eduid - re-login list item 3",
-    "string": "radera eduID konto eller"
-  },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
     "string": "När du har loggat in kan du lägga till och bekräfta säkerhetsnycklar bland inställningarna i eduID genom att följa instruktionerna där."
@@ -2103,6 +2103,10 @@
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "Om din säkerhetsnyckel har en knapp, tryck på den."
+  },
+  "iJOGO3": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "När du loggar in i eduid.se finns 4 vyer; Start, Identitet, Säkerhet och Konto. De nås med menyn i övre högra hörnet genom att klicka på användarnamnet:"
   },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
@@ -2387,13 +2391,13 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Tillbaka"
   },
-  "m/q3KQ": {
-    "developer_comment": "login eduid - re-login list item 4",
-    "string": "lägga till/ta bort säkerhetsnyckel."
-  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "Ett eduID konto använder redan {email}"
+  },
+  "mPETL8": {
+    "developer_comment": "login eduid - re-login list item 1",
+    "string": "lösenordsbyte,"
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -2964,10 +2968,6 @@
     "developer_comment": "which type of security key - heading",
     "string": "Vilka säkerhetsnycklar kan jag använda för eduID?"
   },
-  "sgCLAn": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "När du loggat in i eduid.se finns 4 vyer tillgängliga med menyn i övre högra hörnet genom att klicka på användarnamnet:"
-  },
   "signup.already-verified": {
     "string": "Du har redan verifierat ditt konto."
   },
@@ -3302,6 +3302,10 @@
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
     "string": "ditt namn för att kunna lägga till en säkerhetsnyckel eller hantera vissa tjänster från ett icke verifierat konto,"
+  },
+  "ztVnUK": {
+    "developer_comment": "login eduid - re-login list item 3",
+    "string": "radera eduID-konto,"
   },
   "zvu5VP": {
     "developer_comment": "how to contact support - list item 2",
