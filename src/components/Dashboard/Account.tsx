@@ -1,4 +1,3 @@
-import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { AccountIdDisplay } from "components/Dashboard/AccountId";
 import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
@@ -8,6 +7,7 @@ import { LanguagePreference } from "components/Dashboard/Language";
 import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import accountIcon from "../../../img/account-icon.svg";
 import { AccountLinking } from "./AccountLinking";
 import LadokContainer from "./Ladok";
 
@@ -30,7 +30,7 @@ export function Account(): JSX.Element {
 
   return (
     <React.Fragment>
-      <DashboardBreadcrumbs pageIcon={faGear} currentPage={currentPage} />
+      <DashboardBreadcrumbs icon={accountIcon} currentPage={currentPage} />
       <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Account" />

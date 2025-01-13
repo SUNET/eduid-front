@@ -5,11 +5,12 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
 interface DashboardBreadcrumbsTypes {
-  pageIcon: IconProp;
+  pageIcon?: IconProp;
   currentPage: string;
+  icon?: string;
 }
 
-export function DashboardBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcrumbsTypes): JSX.Element {
+export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardBreadcrumbsTypes): JSX.Element {
   if (currentPage === "Start") {
     return (
       <nav className="breadcrumb" aria-label="breadcrumb">
@@ -28,33 +29,7 @@ export function DashboardBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcr
       </Link>
       <span aria-hidden="true">/</span>
       <Link to="#" className="disabled" aria-label={`disabled link to ${currentPage}`}>
-        <FontAwesomeIcon icon={pageIcon} />
-        {currentPage}
-      </Link>
-    </nav>
-  );
-}
-
-export function HelpBreadcrumbs({ pageIcon, currentPage }: DashboardBreadcrumbsTypes): JSX.Element {
-  if (currentPage === "Help") {
-    return (
-      <nav className="breadcrumb" aria-label="breadcrumb">
-        <Link to="#" className="disabled" aria-label="disabled link to start page">
-          <FontAwesomeIcon icon={pageIcon} />
-          <FormattedMessage description="Help" defaultMessage="Help" />
-        </Link>
-      </nav>
-    );
-  }
-  return (
-    <nav className="breadcrumb" aria-label="breadcrumb">
-      <Link key="/profile/" to="/profile/" aria-label="go to help page">
-        <FontAwesomeIcon icon={faHome as IconProp} />
-        <FormattedMessage description="Help" defaultMessage="Help" />
-      </Link>
-      <span aria-hidden="true">/</span>
-      <Link to="#" className="disabled" aria-label={`disabled link to ${currentPage}`}>
-        <FontAwesomeIcon icon={pageIcon} />
+        {pageIcon ? <FontAwesomeIcon icon={pageIcon} /> : <img height="18" src={icon} alt={icon} />}
         {currentPage}
       </Link>
     </nav>
