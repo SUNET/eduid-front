@@ -345,6 +345,10 @@
     "developer_comment": "Login front page",
     "string": "Register"
   },
+  "5m/KL7": {
+    "developer_comment": "start eduid - list item 3-4",
+    "string": "a verified security key (bound your verified identity to your multi factor login)."
+  },
   "5p+ec/": {
     "developer_comment": "login eduid - remember me paragraph",
     "string": "Underneath the login form there is a toggle control called \"Remember me on this device\". If this is switched on the web browser will attempt to fill in your username and hidden password in the form. For a different account or on a shared device, set this to off."
@@ -381,6 +385,10 @@
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID Dashboard:"
   },
+  "6k3H8s": {
+    "developer_comment": "login eduid - re-login list item 4",
+    "string": "adding/removing a security key,"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -396,6 +404,10 @@
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
+  },
+  "7b+tL8": {
+    "developer_comment": "login eduid - other devices list item 1",
+    "string": "press the \"Other device\" button in the login form,"
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -448,6 +460,10 @@
   "8Rtn1V": {
     "developer_comment": "what is eduID - paragraph 1",
     "string": "eduID is a federated identity - a user identity that can be used in several different organisations that have agreed on how identities will be managed. The basic idea is that a given user, who is authenticated with an organisation, is automatically authenticated with other organisations in the federation."
+  },
+  "8T8ZLB": {
+    "developer_comment": "login eduid - re-login list item 5",
+    "string": "deleting your verified identity."
   },
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
@@ -661,10 +677,6 @@
     "developer_comment": "how enhance eduid - heading",
     "string": "How can I enhance my eduID?"
   },
-  "EJzCVC": {
-    "developer_comment": "start eduid - list item 3-1",
-    "string": "if account is confirmed (confirmed email address and accepted terms of use),"
-  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
@@ -723,10 +735,6 @@
   "Fjbcnk": {
     "developer_comment": "profile email display no data",
     "string": "no email added"
-  },
-  "FqY+a1": {
-    "developer_comment": "login eduid - re-login list item 1",
-    "string": "when changing your password,"
   },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
@@ -947,10 +955,6 @@
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
   },
-  "LkOik6": {
-    "developer_comment": "login eduid - other devices list item 1",
-    "string": "press the 'Other device' button in the login form,"
-  },
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Add"
@@ -974,6 +978,10 @@
   "MDEHdc": {
     "developer_comment": "platform authn device help text",
     "string": "The device you are currently using"
+  },
+  "MS7gyy": {
+    "developer_comment": "start eduid - list item 3-1",
+    "string": "confirmed account (confirmed email address and accepted terms of use),"
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1511,10 +1519,6 @@
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Account"
-  },
-  "Z0RMkb": {
-    "developer_comment": "start eduid - list item 3-4",
-    "string": "verified a security key (bound your verified identity to your multi factor login)."
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -2080,10 +2084,6 @@
     "developer_comment": "Use other device 2",
     "string": "Request denied."
   },
-  "hq21qm": {
-    "developer_comment": "login eduid - re-login list item 3",
-    "string": "deleting your eduID account or"
-  },
   "hq3YDD": {
     "developer_comment": "how add security key - paragraph 1",
     "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions."
@@ -2103,6 +2103,10 @@
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
+  },
+  "iJOGO3": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "When you log in to eduid.se there are 4 views; Start, Identity, Security and Account. They are accessible from the drop down menu in the header, by clicking on your username."
   },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
@@ -2387,13 +2391,13 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
   },
-  "m/q3KQ": {
-    "developer_comment": "login eduid - re-login list item 4",
-    "string": "adding/removing a security key."
-  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
+  },
+  "mPETL8": {
+    "developer_comment": "login eduid - re-login list item 1",
+    "string": "changing your password,"
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -2964,10 +2968,6 @@
     "developer_comment": "which type of security key - heading",
     "string": "Which type of security key can I use with eduID?"
   },
-  "sgCLAn": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "When you log in to eduid.se, there are 4 views accessible from the drop down menu in the header, by clicking on your username:"
-  },
   "signup.already-verified": {
     "string": "You have already verified your account."
   },
@@ -3302,6 +3302,10 @@
   "zrkVyF": {
     "developer_comment": "enhance eduid - list item 1",
     "string": "your full name to be able to add a security key or access some services from an unverified account,"
+  },
+  "ztVnUK": {
+    "developer_comment": "login eduid - re-login list item 3",
+    "string": "deleting your eduID account,"
   },
   "zvu5VP": {
     "developer_comment": "how to contact support - list item 2",
