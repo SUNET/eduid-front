@@ -138,6 +138,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         window.location.assign(response.payload.location);
       }
     } else if (eidasVerifyCredential.rejected.match(response)) {
+      setShowVerifyWebauthnModal(false);
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
@@ -156,6 +157,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         window.location.assign(response.payload.location);
       }
     } else if (bankIDVerifyCredential.rejected.match(response)) {
+      setShowVerifyWebauthnModal(false);
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
