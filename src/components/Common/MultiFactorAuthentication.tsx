@@ -21,6 +21,8 @@ import { Link } from "react-router-dom";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
@@ -361,18 +363,22 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <ModalFooter>
             <div className="buttons">
               <EduIDButton
+                className="btn-icon"
                 id={`verify-webauthn-token-modal-continue-bankID-button`}
                 buttonstyle="primary"
                 onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
               >
-                BankID
+                <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
+                <span>BankID</span>
               </EduIDButton>
               <EduIDButton
+                className="btn-icon"
                 id={`verify-webauthn-token-modal-continue-frejaID-button`}
                 buttonstyle="primary"
                 onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
               >
-                Freja+
+                <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
+                <span>Freja+</span>
               </EduIDButton>
             </div>
           </ModalFooter>
