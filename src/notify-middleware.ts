@@ -4,7 +4,7 @@ showNotification;
 const notifyAndDispatch = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
     if (action.payload.message === "authn_status.must-authenticate") {
-      if (action.meta.authn_status !== "credential-not-recently-used") {
+   
         next(clearNotifications());
       } else {
         next(showNotification({ message: action.meta.authn_status, level: "error" }));

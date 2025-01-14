@@ -56,10 +56,7 @@ export async function makeGenericRequest<T>(
         // response, so we clone it first so we can reject the promise with the full error response.
         const saved = JSON.parse(JSON.stringify(response));
 
-        if (
-          saved.payload.message === "authn_status.must-authenticate" &&
-          saved.meta.authn_status !== "credential-not-recently-used"
-        ) {
+        if (saved.payload.message === "authn_status.must-authenticate") {
           // security zone, re-auth
           // toggle status of re-auth in state, that will trig the visualization of AuthenticateModal
           thunkAPI.dispatch(
