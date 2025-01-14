@@ -402,8 +402,6 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
         handleRemoveWebauthnToken();
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
-        console.log("authn?.response?.frontend_action", authn?.response?.frontend_action);
-        console.log("authn.response.frontend_state", authn.response.frontend_state);
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
         if (parsedFrontendState.method === "freja") {
           await handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
