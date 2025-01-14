@@ -101,4 +101,10 @@ export const apiResponses = {
         defaultMessage={`The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.`}
       />
     ),
+  "credential-not-recently-used": (
+    <FormattedMessage
+      id="credential-not-recently-used"
+      defaultMessage={`You have not used the security key for login that you want to verify. Please use it during the login security process.`}
+    />
+  ),
 };
