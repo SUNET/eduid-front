@@ -107,6 +107,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params:
         {data.state === "FINISHED" && (
           <FormattedMessage defaultMessage="Request completed." description="Use other device 2" />
         )}
+        &nbsp;
         <FormattedMessage defaultMessage="You should close this browser window." description="Use other device 2" />
       </p>
     );
