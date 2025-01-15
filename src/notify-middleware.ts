@@ -4,11 +4,7 @@ showNotification;
 const notifyAndDispatch = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
     if (action.payload.message === "authn_status.must-authenticate") {
-   
-        next(clearNotifications());
-      } else {
-        next(showNotification({ message: action.meta.authn_status, level: "error" }));
-      }
+      next(clearNotifications());
     } else if (action.error && action.payload) {
       if (action.payload.error && action.payload.error.csrf_token !== undefined) {
         const msg = "csrf.try-again";
