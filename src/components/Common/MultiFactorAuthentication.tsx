@@ -133,19 +133,23 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   // Verify Freja
   async function handleVerifyWebauthnTokenFreja(token: string) {
-    console.log("token", token);
     const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
     if (eidasVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
     } else if (eidasVerifyCredential.rejected.match(response)) {
+      const VerifyCredentialResponse: any = response;
       setShowVerifyWebauthnModal(false);
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({ method: "freja", credential: token }),
+          frontend_state: JSON.stringify({
+            method: "freja",
+            credential: token,
+            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+          }),
         })
       );
     }
@@ -153,18 +157,28 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   // Verify BankID
   async function handleVerifyWebauthnTokenBankID(token: string) {
-    const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
+    const response = await dispatch(
+      bankIDVerifyCredential({
+        credential_id: token,
+        method: "bankid",
+      })
+    );
     if (bankIDVerifyCredential.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
     } else if (bankIDVerifyCredential.rejected.match(response)) {
+      const VerifyCredentialResponse: any = response;
       setShowVerifyWebauthnModal(false);
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({ method: "bankid", credential: token }),
+          frontend_state: JSON.stringify({
+            method: "bankid",
+            credential: token,
+            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+          }),
         })
       );
     }
