@@ -571,7 +571,7 @@ export function Help(): JSX.Element {
                     />
                   </p>
                 </AccordionItemTemplate>
-                {/* <AccordionItemTemplate
+                <AccordionItemTemplate
                   uuid="help-identity"
                   title={<FormattedMessage description="settings eduid - identity handle" defaultMessage="Identity" />}
                   additionalInfo={null}
@@ -584,15 +584,55 @@ export function Help(): JSX.Element {
                   </p>
                   <ul className="bullets">
                     <li>
-                      <em>
+                      <FormattedMessage
+                        description="identity eduid - list item 1"
+                        defaultMessage={`A table presenting your verified identities if you have any,`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="identity eduid - list item 2"
+                        defaultMessage={`options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="identity eduid - list item 2-1"
+                            defaultMessage={`with Swedish digital ID (Freja+/BankID) or by post,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="identity eduid - list item 2-2"
+                            defaultMessage={`with eIDAS electronic identification for EU citizens,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="identity eduid - list item 2-3"
+                            defaultMessage={`Freja eID for most nationalities.
+                          `}
+                          />
+                        </li>
+                      </ul>
+                      <p>
                         <FormattedMessage
-                          description="identity eduid - list item 1"
-                          defaultMessage={`Content in progress.`}
+                          description="start eduid - paragraph"
+                          defaultMessage={`Note: You can read more about these methods in the help section "Verification of identity".`}
                         />
-                      </em>
+                      </p>
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="identity eduid - list item 3"
+                        defaultMessage={`A form for updating name and display name by clicking on the link "edit", where available settings are dependant on wether your identity is verified.`}
+                      />
                     </li>
                   </ul>
-                </AccordionItemTemplate>
+                </AccordionItemTemplate>{" "}
+                {/*
                 <AccordionItemTemplate
                   uuid="help-security"
                   title={<FormattedMessage description="settings eduid - security handle" defaultMessage="Security" />}

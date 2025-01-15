@@ -267,6 +267,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
   },
+  "3lTCXS": {
+    "developer_comment": "identity eduid - list item 2-2",
+    "string": "with eIDAS electronic identification for EU citizens,"
+  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Reset Password: Set your own password"
@@ -441,6 +445,10 @@
     "developer_comment": "about assurance levels - handle",
     "string": "Assurance levels"
   },
+  "8J4WSu": {
+    "developer_comment": "identity eduid - list item 2",
+    "string": "options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:"
+  },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
     "string": "Further technical information:"
@@ -596,6 +604,10 @@
   "CQMMIg": {
     "developer_comment": "Change password set new password success heading",
     "string": "Change Password: Completed"
+  },
+  "CQOWCu": {
+    "developer_comment": "identity eduid - list item 2-3",
+    "string": "Freja eID for most nationalities."
   },
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
@@ -1364,6 +1376,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
   },
+  "V71+LX": {
+    "developer_comment": "identity eduid - list definition",
+    "string": "The Identity page contains:"
+  },
   "VAbv/4": {
     "developer_comment": "security verified",
     "string": "verified"
@@ -1564,6 +1580,10 @@
     "developer_comment": "Title for phone code input",
     "string": "Enter the code sent to {phone}"
   },
+  "aArsWE": {
+    "developer_comment": "identity eduid - list item 1",
+    "string": "A table presenting your verified identities if you have any,"
+  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "retains inactive accounts for a maximum of 2 years,"
@@ -1582,6 +1602,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
+  },
+  "b2zzvJ": {
+    "developer_comment": "start eduid - paragraph",
+    "string": "Note: You can read more about these methods in the help section \"Verification of identity\"."
   },
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
@@ -1662,6 +1686,10 @@
   },
   "bankid.token_not_found": {
     "string": "U2F token not found"
+  },
+  "bbYk43": {
+    "developer_comment": "identity eduid - list item 2-1",
+    "string": "with Swedish digital ID (Freja+/BankID) or by post,"
   },
   "beRQGp": {
     "developer_comment": "Short code form",
@@ -2256,6 +2284,10 @@
   "l1XkUC": {
     "developer_comment": "security description name",
     "string": "Name:"
+  },
+  "lAabXZ": {
+    "developer_comment": "identity eduid - list item 3",
+    "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
@@ -3105,6 +3137,10 @@
   "ujk+b2": {
     "developer_comment": "settings eduid - re-login list item 2",
     "string": "You can also change the language for the displayed page in the footer of the webpage."
+  },
+  "una38W": {
+    "developer_comment": "settings eduid - identity handle",
+    "string": "Identity"
   },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
