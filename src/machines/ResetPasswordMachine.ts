@@ -13,7 +13,6 @@ const resetPasswordModel = createModel(
       API_FAIL: () => ({}), // no payload
       API_SUCCESS: () => ({}), // no payload
       CHOOSE_SECURITY_KEY: () => ({}), // no payload
-      CHOOSE_PHONE_VERIFICATION: () => ({}), // no payload
       CHOOSE_FREJA_EID: () => ({}), // no payload
       COMPLETE: () => ({}), // no payload
       CAN_DO_EXTRA_SECURITY: () => ({}), // no payload
@@ -117,9 +116,6 @@ export function createResetPasswordMachine() {
                 CHOOSE_SECURITY_KEY: {
                   target: "ExtraSecurityFinished",
                 },
-                CHOOSE_PHONE_VERIFICATION: {
-                  target: "ResetPasswordPhoneVerification",
-                },
                 CHOOSE_FREJA_EID: {
                   target: "ResetPasswordExternalMFA",
                 },
@@ -134,16 +130,6 @@ export function createResetPasswordMachine() {
             ResetPasswordSecurityKey: {
               on: {
                 API_SUCCESS: {
-                  target: "ExtraSecurityFinished",
-                },
-                API_FAIL: {
-                  target: "Fail",
-                },
-              },
-            },
-            ResetPasswordPhoneVerification: {
-              on: {
-                COMPLETE: {
                   target: "ExtraSecurityFinished",
                 },
                 API_FAIL: {

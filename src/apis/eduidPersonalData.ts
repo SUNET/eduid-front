@@ -4,7 +4,6 @@ import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { LadokData } from "./eduidLadok";
 import { OrcidInfo } from "./eduidOrcid";
-import { PhoneInfo } from "./eduidPhone";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
@@ -41,7 +40,6 @@ export interface AllUserData {
   given_name?: string;
   language?: string;
   identities: UserIdentities;
-  phones: PhoneInfo[];
   surname?: string;
   orcid?: OrcidInfo;
   ladok?: LadokData;

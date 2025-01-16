@@ -296,15 +296,12 @@ function VerifiedIdentitiesTable(): JSX.Element {
 
 function AccordionItemSwedish(): JSX.Element | null {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
-  const phones = useAppSelector((state) => state.phones.phones);
-  const hasVerifiedSwePhone = phones?.some((phone) => phone.verified && phone.number.startsWith("+46"));
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
 
   // proofing via letter requires the user to have added a NIN first
   const letterProofingDisabled = !addedNin;
   // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
-  const lookupMobileDisabled = !addedNin || !hasVerifiedSwePhone;
 
   /* Show step two ("use one of these options to verify your NIN") only after step 1 (enter your NIN) is complete,
      and not in case the NIN is already verified. */
