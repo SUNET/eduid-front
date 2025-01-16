@@ -501,7 +501,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="settings eduid - intro definition"
-                  defaultMessage={`When you log in to eduid.se there are 4 views; Start, Identity, Security and Account. They are accessible from the drop down menu in the header, by clicking on your username.`}
+                  defaultMessage={`When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, accessible from the drop down menu in the header by clicking on your username. Read more about the contents of each view below.`}
                 />
               </p>
               <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-settings">
@@ -632,7 +632,6 @@ export function Help(): JSX.Element {
                     </li>
                   </ul>
                 </AccordionItemTemplate>{" "}
-                {/*
                 <AccordionItemTemplate
                   uuid="help-security"
                   title={<FormattedMessage description="settings eduid - security handle" defaultMessage="Security" />}
@@ -655,6 +654,7 @@ export function Help(): JSX.Element {
                     </li>
                   </ul>
                 </AccordionItemTemplate>
+                {/*
                 <AccordionItemTemplate
                   uuid="help-Account"
                   title={<FormattedMessage description="settings eduid - account handle" defaultMessage="Account" />}
