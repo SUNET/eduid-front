@@ -10,7 +10,7 @@ import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
 // exported for use in tests
-export const finish_url = "/profile/security";
+export const finish_url = "/profile/account";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
