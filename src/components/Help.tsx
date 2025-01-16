@@ -501,7 +501,8 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="settings eduid - intro definition"
-                  defaultMessage={`When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, accessible from the drop down menu in the header by clicking on your username. Read more about the contents of each view below.`}
+                  defaultMessage={`When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, 
+                    accessible from the drop down menu in the header by clicking on your username. Read more about the possible actions of each page below.`}
                 />
               </p>
               <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-settings">
@@ -645,14 +646,81 @@ export function Help(): JSX.Element {
                   </p>
                   <ul className="bullets">
                     <li>
-                      <em>
-                        <FormattedMessage
-                          description="security eduid - list item 1"
-                          defaultMessage={`Content in progress.`}
-                        />
-                      </em>
+                      <FormattedMessage
+                        description="security eduid - list item 1"
+                        defaultMessage={`Buttons to add Two-factor authentication to increase the security of your eduID by adding a layer 
+                            called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account.
+                            You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:`}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 1-1"
+                            defaultMessage={`This device: built in passkeys including your biometrics,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 1-2"
+                            defaultMessage={`Security key: external device such as your USB security key,
+                          `}
+                          />
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="security eduid - list item 2"
+                        defaultMessage={`Under "Manage your security keys" is a toggle control marked "Always use a second factor (2FA) to log in to eduID"
+                           which can let you log in with your eduID account without using your added security key when allowed. Default setting is on.
+                          `}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="security eduid - list item 3"
+                        defaultMessage={`A table displaying all your added security keys with the following information: 
+                          `}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 3-1"
+                            defaultMessage={`the descriptive name given by you when created,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 3-2"
+                            defaultMessage={`dates of creation and latest use,
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 3-3"
+                            defaultMessage={`verification status / verification options (Freja+/BankID),
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="security eduid - list item 3-4"
+                            defaultMessage={`a bin icon which deletes the key when clicked.
+                          `}
+                          />
+                        </li>
+                      </ul>
                     </li>
                   </ul>
+                  <p>
+                    <FormattedMessage
+                      description="security eduid - paragraph"
+                      defaultMessage={`Note: You can read more about security keys in the help section "Enhancing the security level of eduID".`}
+                    />
+                  </p>
                 </AccordionItemTemplate>
                 {/*
                 <AccordionItemTemplate

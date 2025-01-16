@@ -30,7 +30,7 @@ export function Security(): JSX.Element {
         </h1>
         <div className="lead">
           <p>
-            <FormattedMessage description="security lead title" defaultMessage="Enhance the security of your eduID." />
+            <FormattedMessage description="security lead title" defaultMessage="Enhanced security of your eduID." />
           </p>
         </div>
       </section>
