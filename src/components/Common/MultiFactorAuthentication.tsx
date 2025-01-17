@@ -354,11 +354,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       />
       {/* Verify WebauthnToken Modal */}
-      <div id="verify-webauthn-token-modal" tabIndex={-1} role="dialog" aria-hidden="true" data-backdrop="true">
+      <dialog id="verify-webauthn-token-modal" tabIndex={-1} aria-hidden="true" data-backdrop="true">
         <Modal isOpen={showVerifyWebauthnModal} className="verify-webauthn-token-modal">
           <ModalHeader>
             <FormattedMessage
-              defaultMessage="Verify your security key"
+              defaultMessage="Verify your added security key"
               description="verify webauthn token modal title"
             />
             <EduIDButton
@@ -370,9 +370,15 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           </ModalHeader>
           <ModalBody>
             <FormattedMessage
-              description="security zone modal"
+              description="verify webauthn token modal body text"
               defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
             />
+            <p className="help-text">
+              <FormattedMessage
+                description="verify webauthn token modal body note text"
+                defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+              />
+            </p>
           </ModalBody>
           <ModalFooter>
             <div className="buttons">
@@ -397,7 +403,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             </div>
           </ModalFooter>
         </Modal>
-      </div>
+      </dialog>
     </>
   );
 }
