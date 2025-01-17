@@ -18,13 +18,21 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
 import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
+
+interface SecurityKeyTable {
+  handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
+  handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
+}
 
 export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
   // get FIDO tokens from list of all user credentials
@@ -41,12 +49,22 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
+  const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
+  const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
+
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
+
+  useEffect(() => {
+    if (tokens.length > 0) {
+      setTokenKey(tokens[tokens.length - 1].key);
+    }
+  }, [tokens]);
 
   // Runs after re-auth security zone
   useEffect(() => {
@@ -113,6 +131,59 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     description: "placeholder text for security key description input",
   });
 
+  // Verify Freja
+  async function handleVerifyWebauthnTokenFreja(token: string) {
+    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
+    if (eidasVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    } else if (eidasVerifyCredential.rejected.match(response)) {
+      const VerifyCredentialResponse: any = response;
+      setShowVerifyWebauthnModal(false);
+      // prepare authenticate() and AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "verifyCredential",
+          frontend_state: JSON.stringify({
+            method: "freja",
+            credential: token,
+            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+          }),
+        })
+      );
+    }
+  }
+
+  // Verify BankID
+  async function handleVerifyWebauthnTokenBankID(token: string) {
+    const response = await dispatch(
+      bankIDVerifyCredential({
+        credential_id: token,
+        method: "bankid",
+      })
+    );
+    if (bankIDVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    } else if (bankIDVerifyCredential.rejected.match(response)) {
+      const VerifyCredentialResponse: any = response;
+      setShowVerifyWebauthnModal(false);
+      // prepare authenticate() and AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "verifyCredential",
+          frontend_state: JSON.stringify({
+            method: "bankid",
+            credential: token,
+            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+          }),
+        })
+      );
+    }
+  }
+
   function handleStopAskingWebauthnDescription() {
     setIsRegisteringAuthenticator(false);
     setShowSecurityKeyNameModal(false);
@@ -155,7 +226,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         if (beginRegisterWebauthn.fulfilled.match(resp)) {
           const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
-            await dispatch(registerWebauthn({ descriptionValue }));
+            const response = await dispatch(registerWebauthn({ descriptionValue }));
+            if (registerWebauthn.fulfilled.match(response)) {
+              setShowVerifyWebauthnModal(true);
+            }
           }
         }
         dispatch(authnSlice.actions.setAuthnFrontendReset());
@@ -245,7 +319,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           </div>
         </div>
       </article>
-      <SecurityKeyTable />
+      <SecurityKeyTable
+        handleVerifyWebauthnTokenFreja={handleVerifyWebauthnTokenFreja}
+        handleVerifyWebauthnTokenBankID={handleVerifyWebauthnTokenBankID}
+      />
 
       <ConfirmModal
         id="describe-webauthn-token-modal"
@@ -276,11 +353,62 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
+      {/* Verify WebauthnToken Modal */}
+      <dialog id="verify-webauthn-token-modal" tabIndex={-1} aria-hidden="true" data-backdrop="true">
+        <Modal isOpen={showVerifyWebauthnModal} className="verify-webauthn-token-modal">
+          <ModalHeader>
+            <FormattedMessage
+              defaultMessage="Verify your added security key"
+              description="verify webauthn token modal title"
+            />
+            <EduIDButton
+              id={`verify-webauthn-token-modal-close-button`}
+              buttonstyle="close"
+              className="float-right"
+              onClick={() => setShowVerifyWebauthnModal(false)}
+            ></EduIDButton>
+          </ModalHeader>
+          <ModalBody>
+            <FormattedMessage
+              description="verify webauthn token modal body text"
+              defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
+            />
+            <p className="help-text">
+              <FormattedMessage
+                description="verify webauthn token modal body note text"
+                defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+              />
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <div className="buttons">
+              <EduIDButton
+                className="btn-icon"
+                id={`verify-webauthn-token-modal-continue-bankID-button`}
+                buttonstyle="primary"
+                onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
+              >
+                <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
+                <span>BankID</span>
+              </EduIDButton>
+              <EduIDButton
+                className="btn-icon"
+                id={`verify-webauthn-token-modal-continue-frejaID-button`}
+                buttonstyle="primary"
+                onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
+              >
+                <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
+                <span>Freja+</span>
+              </EduIDButton>
+            </div>
+          </ModalFooter>
+        </Modal>
+      </dialog>
     </>
   );
 }
 
-function SecurityKeyTable() {
+function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauthnTokenFreja }: SecurityKeyTable) {
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   let btnVerify;
@@ -310,42 +438,6 @@ function SecurityKeyTable() {
       }
     })();
   }, [authn?.response?.frontend_action]);
-
-  // Verify Freja
-  async function handleVerifyWebauthnTokenFreja(token: string) {
-    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-    if (eidasVerifyCredential.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
-      }
-    } else if (eidasVerifyCredential.rejected.match(response)) {
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({ method: "freja", credential: token }),
-        })
-      );
-    }
-  }
-
-  // Verify BankID
-  async function handleVerifyWebauthnTokenBankID(token: string) {
-    const response = await dispatch(bankIDVerifyCredential({ credential_id: token, method: "bankid" }));
-    if (bankIDVerifyCredential.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
-      }
-    } else if (bankIDVerifyCredential.rejected.match(response)) {
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({ method: "bankid", credential: token }),
-        })
-      );
-    }
-  }
 
   async function handleConfirmDeleteModal(credential_key: string) {
     credentialKey.current = credential_key;

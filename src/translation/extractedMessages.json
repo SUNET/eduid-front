@@ -1739,6 +1739,10 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
+  "bkpUyB": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Please click either the BankID or Freja+ button to verify your security key"
+  },
   "bnSKX2": {
     "developer_comment": "security eduid - list item 1-1",
     "string": "This device: built in passkeys including your biometrics,"
@@ -3150,6 +3154,10 @@
     "developer_comment": "Reset Password email link sent heading",
     "string": "Reset Password: Verify email address"
   },
+  "tZDeeT": {
+    "developer_comment": "security zone modal",
+    "string": "Note: please use your security key {securityKeyDescription} during the login process."
+  },
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
     "string": "About BankID"
@@ -3228,6 +3236,10 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
+  },
+  "vG+ARA": {
+    "developer_comment": "verify webauthn token modal title",
+    "string": "Verify your added security key"
   },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
@@ -3323,6 +3335,10 @@
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
     "string": "the user will be directed to the Freja eID website to use their service. If you don't have Freja+ you have to create it separately before you can complete verification of your eduID. Read more about Freja below."
+  },
+  "yI4/1E": {
+    "developer_comment": "verify webauthn token modal body note text",
+    "string": "Note: your added security keys can also be verified from the \"Manage your security keys\" table."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

@@ -32,4 +32,9 @@ svg {
   width: inherit;
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
   border-radius: 50%;
+
+  &.bankid-icon {
+    background: $white;
+    width: 20px;
+  }
 }

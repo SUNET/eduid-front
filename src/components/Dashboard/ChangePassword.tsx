@@ -10,7 +10,7 @@ import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
 // exported for use in tests
-export const finish_url = "/profile/security";
+export const finish_url = "/profile/account";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
@@ -51,7 +51,8 @@ export function ChangePassword() {
   }, []);
 
   useEffect(() => {
-    if (is_app_loaded && suggested === undefined) {
+    //TODO: Too many conditions for getting the suggested password, need to refactor.
+    if (is_app_loaded && suggested === undefined && !window.location.pathname.includes("success")) {
       handleSuggestedPassword();
     }
     return () => {
