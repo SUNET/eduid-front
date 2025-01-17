@@ -1671,6 +1671,10 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
+  "bkpUyB": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Please click either the BankID or Freja+ button to verify your security key"
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -2531,10 +2535,6 @@
     "developer_comment": "swedish nin bankid - heading",
     "string": "BankID (electronic identification system) - for Swedish personal identity number holders:"
   },
-  "oFtKN2": {
-    "developer_comment": "security zone modal",
-    "string": "Please click either the BankID or Freja+ button to verify your security key"
-  },
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "cancel"
@@ -3051,10 +3051,6 @@
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
-  "sz4ZeD": {
-    "developer_comment": "verify webauthn token modal title",
-    "string": "Verify your security key"
-  },
   "t1BZi/": {
     "developer_comment": "settings eduid - language heading",
     "string": "How do I change the default language in eduID?"
@@ -3161,6 +3157,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
+  "vG+ARA": {
+    "developer_comment": "verify webauthn token modal title",
+    "string": "Verify your added security key"
+  },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
     "string": "post - for Swedish personal identity number holders:"
@@ -3255,6 +3255,10 @@
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
     "string": "the user will be directed to the Freja eID website to use their service. If you don't have Freja+ you have to create it separately before you can complete verification of your eduID. Read more about Freja below."
+  },
+  "yI4/1E": {
+    "developer_comment": "verify webauthn token modal body note text",
+    "string": "Note: your added security keys can also be verified from the \"Manage your security keys\" table."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
