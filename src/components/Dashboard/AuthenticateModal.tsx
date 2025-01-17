@@ -1,6 +1,7 @@
 import { authenticate } from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import authnSlice from "slices/Authn";
@@ -11,7 +12,24 @@ export function AuthenticateModal() {
   const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
   const frontend_state = useAppSelector((state) => state.authn.frontend_state);
+  const [securityKeyDescription, setSecurityKeyDescription] = useState(null);
   const navigate = useNavigate();
+
+  function isValidJson(jsonString: string) {
+    try {
+      JSON.parse(jsonString);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
+  useEffect(() => {
+    if (frontend_state && isValidJson(frontend_state)) {
+      const parsedFrontendState = JSON.parse(frontend_state);
+      setSecurityKeyDescription(parsedFrontendState.description);
+    }
+  }, [frontend_state]);
 
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
@@ -37,10 +55,24 @@ export function AuthenticateModal() {
       id="security-confirm-modal"
       title={<FormattedMessage defaultMessage="Security check" description="Dashboard change password modal title" />}
       mainText={
-        <FormattedMessage
-          description="security zone modal"
-          defaultMessage="You need to log in again to perform the requested action."
-        />
+        <Fragment>
+          <FormattedMessage
+            description="security zone modal"
+            defaultMessage="You need to log in again to perform the requested action."
+          />
+          <br />
+          {securityKeyDescription && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: please use your security key {securityKeyDescription} during the login process."
+                values={{
+                  securityKeyDescription: <strong>{securityKeyDescription}</strong>,
+                }}
+              />
+            </p>
+          )}
+        </Fragment>
       }
       showModal={re_authenticate}
       closeModal={handleCloseModal}
