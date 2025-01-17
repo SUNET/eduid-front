@@ -1671,6 +1671,10 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
+  "bkpUyB": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Klicka på knappen för BankID eller Freja+ för att verifiera din säkerhetsnyckel."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -3074,6 +3078,10 @@
     "developer_comment": "Reset Password email link sent heading",
     "string": "Återställ lösenord: Verifiera e-postadressen"
   },
+  "tZDeeT": {
+    "developer_comment": "security zone modal",
+    "string": "Obs: använd säkerhetsnyckeln {securityKeyDescription} vid inloggningen."
+  },
   "tbAqMH": {
     "developer_comment": "about bankid - handle",
     "string": "Om BankID"
@@ -3148,6 +3156,10 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
+  },
+  "vG+ARA": {
+    "developer_comment": "verify webauthn token modal title",
+    "string": "Verifiera din tillagda säkerhetsnyckel"
   },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
@@ -3243,6 +3255,10 @@
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja nedan."
+  },
+  "yI4/1E": {
+    "developer_comment": "verify webauthn token modal body note text",
+    "string": "Obs: dina tillagda säkerhetsnycklar kan även verifieras från tabellen \"Hantera dina säkerhetsnycklar\"."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
