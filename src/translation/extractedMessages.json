@@ -267,6 +267,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
   },
+  "3lTCXS": {
+    "developer_comment": "identity eduid - list item 2-2",
+    "string": "with eIDAS electronic identification for EU citizens,"
+  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Reset Password: Set your own password"
@@ -330,6 +334,10 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
+  "5DJYxR": {
+    "developer_comment": "security eduid - paragraph",
+    "string": "Note: You can read more about security keys in the help section \"Enhancing the security level of eduID\"."
+  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -365,6 +373,14 @@
     "developer_comment": "security creation date",
     "string": "Created:"
   },
+  "6AlTYE": {
+    "developer_comment": "security eduid - list definition",
+    "string": "The Security page contains:"
+  },
+  "6FTaDj": {
+    "developer_comment": "security eduid - list item 1-2",
+    "string": "Security key: external device such as your USB security key,"
+  },
   "6Ka904": {
     "developer_comment": "confirmed account description",
     "string": "Read more details about your confirmed account at {account}"
@@ -396,6 +412,10 @@
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
+  },
+  "7Fw0mr": {
+    "developer_comment": "security eduid - list item 3",
+    "string": "A table displaying all your added security keys with the following information:"
   },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
@@ -440,6 +460,10 @@
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
     "string": "Assurance levels"
+  },
+  "8J4WSu": {
+    "developer_comment": "identity eduid - list item 2",
+    "string": "options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:"
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -597,6 +621,10 @@
     "developer_comment": "Change password set new password success heading",
     "string": "Change Password: Completed"
   },
+  "CQOWCu": {
+    "developer_comment": "identity eduid - list item 2-3",
+    "string": "Freja eID for most nationalities."
+  },
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
     "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
@@ -620,6 +648,10 @@
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 digits"
+  },
+  "DLvSVI": {
+    "developer_comment": "security eduid - list item 3-3",
+    "string": "verification status / verification options (Freja+/BankID),"
   },
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
@@ -668,6 +700,10 @@
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
+  },
+  "E9wj6b": {
+    "developer_comment": "security eduid - list item 2",
+    "string": "Under \"Manage your security keys\" is a toggle control marked \"Always use a second factor (2FA) to log in to eduID\" which can let you log in with your eduID account without using your added security key when allowed. Default setting is on."
   },
   "EDXXCi": {
     "developer_comment": "what are eduIDs terms of use - heading",
@@ -950,6 +986,10 @@
   "LNBvhT": {
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
+  },
+  "LNk6xM": {
+    "developer_comment": "security lead title",
+    "string": "Enhanced security of your eduID."
   },
   "LiU6wZ": {
     "developer_comment": "verify identity",
@@ -1364,6 +1404,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
   },
+  "V71+LX": {
+    "developer_comment": "identity eduid - list definition",
+    "string": "The Identity page contains:"
+  },
   "VAbv/4": {
     "developer_comment": "security verified",
     "string": "verified"
@@ -1468,6 +1512,10 @@
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
   },
+  "Xtc+kf": {
+    "developer_comment": "settings eduid - security handle",
+    "string": "Security"
+  },
   "XujYxO": {
     "developer_comment": "use freja - link text",
     "string": "Freja app"
@@ -1483,6 +1531,10 @@
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Display name"
+  },
+  "Y/yF5+": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, accessible from the drop down menu in the header by clicking on your username. Read more about the possible actions of each page below."
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -1564,6 +1616,10 @@
     "developer_comment": "Title for phone code input",
     "string": "Enter the code sent to {phone}"
   },
+  "aArsWE": {
+    "developer_comment": "identity eduid - list item 1",
+    "string": "A table presenting your verified identities if you have any,"
+  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "retains inactive accounts for a maximum of 2 years,"
@@ -1582,6 +1638,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
+  },
+  "b2zzvJ": {
+    "developer_comment": "start eduid - paragraph",
+    "string": "Note: You can read more about these methods in the help section \"Verification of identity\"."
   },
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
@@ -1623,6 +1683,10 @@
     "developer_comment": "start eduid - paragraph",
     "string": "Note: You can read about how the status correlates to connecting services in the help section \"Assurance levels\"."
   },
+  "bWoD7K": {
+    "developer_comment": "security eduid - list item 3-2",
+    "string": "dates of creation and latest use,"
+  },
   "bYDxCn": {
     "developer_comment": "usb key technical section - list item 4 code",
     "string": "\"remote_handle\", \"hardware\", \"secure_element\", \"tee\""
@@ -1663,6 +1727,10 @@
   "bankid.token_not_found": {
     "string": "U2F token not found"
   },
+  "bbYk43": {
+    "developer_comment": "identity eduid - list item 2-1",
+    "string": "with Swedish digital ID (Freja+/BankID) or by post,"
+  },
   "beRQGp": {
     "developer_comment": "Short code form",
     "string": "Code expires in"
@@ -1674,6 +1742,10 @@
   "bkpUyB": {
     "developer_comment": "verify webauthn token modal body text",
     "string": "Please click either the BankID or Freja+ button to verify your security key"
+  },
+  "bnSKX2": {
+    "developer_comment": "security eduid - list item 1-1",
+    "string": "This device: built in passkeys including your biometrics,"
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
@@ -2108,10 +2180,6 @@
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
   },
-  "iJOGO3": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "When you log in to eduid.se there are 4 views; Start, Identity, Security and Account. They are accessible from the drop down menu in the header, by clicking on your username."
-  },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
@@ -2175,10 +2243,6 @@
     "developer_comment": "when use eduID - list item 4",
     "string": "lose a student account password and need to regain access,"
   },
-  "jXjX1p": {
-    "developer_comment": "security lead title",
-    "string": "Enhance the security of your eduID."
-  },
   "jYWXMn": {
     "developer_comment": "enter code",
     "string": "enter code"
@@ -2222,6 +2286,10 @@
     "developer_comment": "Make primary button",
     "string": "make primary"
   },
+  "kPVuAC": {
+    "developer_comment": "security eduid - list item 3-4",
+    "string": "a bin icon which deletes the key when clicked."
+  },
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "services requiring you to log in using multi factor authentication, often called {emphasis}."
@@ -2260,6 +2328,10 @@
   "l1XkUC": {
     "developer_comment": "security description name",
     "string": "Name:"
+  },
+  "lAabXZ": {
+    "developer_comment": "identity eduid - list item 3",
+    "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
@@ -2546,6 +2618,10 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
+  },
+  "oinZ6N": {
+    "developer_comment": "security eduid - list item 3-1",
+    "string": "the descriptive name given by you when created,"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -3114,6 +3190,10 @@
     "developer_comment": "settings eduid - re-login list item 2",
     "string": "You can also change the language for the displayed page in the footer of the webpage."
   },
+  "una38W": {
+    "developer_comment": "settings eduid - identity handle",
+    "string": "Identity"
+  },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
     "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
@@ -3290,6 +3370,10 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
+  },
+  "z0oVIf": {
+    "developer_comment": "security eduid - list item 1",
+    "string": "Buttons to add Two-factor authentication to increase the security of your eduID by adding a layer called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account. You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:"
   },
   "zTHT2m": {
     "developer_comment": "verify identity vetting BankID tagline",
