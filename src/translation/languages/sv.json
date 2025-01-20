@@ -2998,7 +2998,7 @@
     "string": "Beskrivningen är för lång"
   },
   "security.no_reauthn": {
-    "string": "Autenticering saknas"
+    "string": "Autentisering saknas"
   },
   "security.placeholder": {
     "developer_comment": "placeholder text for security key description input",
@@ -3290,7 +3290,7 @@
   },
   "x46y5H": {
     "developer_comment": "security key title",
-    "string": "Tvåfaktorsautenticering (2FA)"
+    "string": "Tvåfaktorsautentisering (2FA)"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
