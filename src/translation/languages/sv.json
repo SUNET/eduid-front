@@ -2016,7 +2016,7 @@
   },
   "ez2CnQ": {
     "developer_comment": "what is sunet - paragraph 2",
-    "string": "SUNET tog fram eduID i syfte att erbjuda framförallt lärosäten gemensamma rutiner för identitetshantering av väl identifierade och autenticerade användare. Läs mer om SUNET på {sunet}."
+    "string": "SUNET tog fram eduID i syfte att erbjuda framförallt lärosäten gemensamma rutiner för identitetshantering av väl identifierade och autentiserade användare. Läs mer om SUNET på {sunet}."
   },
   "f6GNZ7": {
     "developer_comment": "select extra webauthn",
