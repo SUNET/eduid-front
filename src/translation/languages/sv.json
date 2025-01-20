@@ -267,6 +267,10 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Tjänsten du försökte använda misslyckades med autentiseringen."
   },
+  "3lTCXS": {
+    "developer_comment": "identity eduid - list item 2-2",
+    "string": "med eIDAS elektronisk identifiering för EU-medborgare,"
+  },
   "3liNln": {
     "developer_comment": "Reset Password - headline",
     "string": "Återställ lösenord: Ange ditt eget lösenord"
@@ -330,13 +334,17 @@
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
   },
+  "5DJYxR": {
+    "developer_comment": "security eduid - paragraph",
+    "string": "Obs: du kan läsa mer om säkerhetsnycklar i hjälpavsnittet \"Utökad säkerhet med ditt eduID\"."
+  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "Med eIDAS elektronisk identifiering"
   },
   "5iUbyQ": {
     "developer_comment": "Security key toggle",
-    "string": "Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID"
+    "string": "Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID"
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
@@ -364,6 +372,14 @@
   "67pXNw": {
     "developer_comment": "security creation date",
     "string": "Skapad:"
+  },
+  "6AlTYE": {
+    "developer_comment": "security eduid - list definition",
+    "string": "Säkerhetssidan innehåller:"
+  },
+  "6FTaDj": {
+    "developer_comment": "security eduid - list item 1-2",
+    "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB säkerhetsnyckel,"
   },
   "6Ka904": {
     "developer_comment": "confirmed account description",
@@ -396,6 +412,10 @@
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
+  },
+  "7Fw0mr": {
+    "developer_comment": "security eduid - list item 3",
+    "string": "En tabell som visar dina tillagda nycklar med följande information:"
   },
   "7H7RQA": {
     "developer_comment": "enhance eduid - list item 4",
@@ -440,6 +460,10 @@
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
     "string": "Tillitsnivåer"
+  },
+  "8J4WSu": {
+    "developer_comment": "identity eduid - list item 2",
+    "string": "alternativ för identitetsverifiering om din verkliga identitet inte är verifierad eller din existerande verifiering inte är med ett svenskt person- eller samordningsnummer, beroende på din situation:"
   },
   "8K8fhV": {
     "developer_comment": "usb key technical section - heading",
@@ -597,6 +621,10 @@
     "developer_comment": "Change password set new password success heading",
     "string": "Ändra lösenord: Slutfört"
   },
+  "CQOWCu": {
+    "developer_comment": "identity eduid - list item 2-3",
+    "string": "Freja eID för de flesta länder."
+  },
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
     "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan är sorterad alfabetiskt och uppdateras regelbundet."
@@ -620,6 +648,10 @@
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 siffror"
+  },
+  "DLvSVI": {
+    "developer_comment": "security eduid - list item 3-3",
+    "string": "verifierings-status / alternativ (Freja+/BankID),"
   },
   "DN18jb": {
     "developer_comment": "how to contact support - paragraph 1",
@@ -668,6 +700,10 @@
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
+  },
+  "E9wj6b": {
+    "developer_comment": "security eduid - list item 2",
+    "string": "Under \"Hantera dina säkerhetsnycklar\" finns en toggle-kontroll märkt \"Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID\" som kan stängas av för att bara använda säkerhetsnyckel för att logga in när det efterfrågas. Standardinställning är påslagen."
   },
   "EDXXCi": {
     "developer_comment": "what are eduIDs terms of use - heading",
@@ -951,6 +987,10 @@
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
   },
+  "LNk6xM": {
+    "developer_comment": "security lead title",
+    "string": "Ökad säkerhet för ditt eduID."
+  },
   "LiU6wZ": {
     "developer_comment": "verify identity",
     "string": "Knappen Fortsätt tar dig till en extern sida där du kan logga in med ditt elektroniska ID för att koppla din identitet till eduID."
@@ -1009,7 +1049,7 @@
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
-    "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautenticering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
+    "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautentisering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -1364,6 +1404,10 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
   },
+  "V71+LX": {
+    "developer_comment": "identity eduid - list definition",
+    "string": "Identitetssidan innehåller:"
+  },
   "VAbv/4": {
     "developer_comment": "security verified",
     "string": "verifierad"
@@ -1468,6 +1512,10 @@
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
   },
+  "Xtc+kf": {
+    "developer_comment": "settings eduid - security handle",
+    "string": "Säkerhet"
+  },
   "XujYxO": {
     "developer_comment": "use freja - link text",
     "string": "Freja-appen"
@@ -1483,6 +1531,10 @@
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Visningsnamn"
+  },
+  "Y/yF5+": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "När du loggar in i eduid.se finns olika inställningar uppdelade i 4 vyer; Start, Identitet, Säkerhet och Konto som nås med menyn i övre högra hörnet genom att klicka på användarnamnet. Läs mer om varje sida nedan."
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -1514,7 +1566,7 @@
   },
   "YssJWJ": {
     "developer_comment": "login eduid - security key list item 3",
-    "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID\" under Säkerhet."
+    "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID\" under Säkerhet."
   },
   "YuWePR": {
     "developer_comment": "recommendations account link",
@@ -1564,6 +1616,10 @@
     "developer_comment": "Title for phone code input",
     "string": "Skriv in koden som skickats till {phone}"
   },
+  "aArsWE": {
+    "developer_comment": "identity eduid - list item 1",
+    "string": "En tabell med dina verifierade identiteter om du har någon,"
+  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "tar bort inaktiva konton efter två år,"
@@ -1582,6 +1638,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
+  },
+  "b2zzvJ": {
+    "developer_comment": "start eduid - paragraph",
+    "string": "Obs: du kan läsa mer om metoderna i hjälpavsnittet \"Verifiering av identitet\"."
   },
   "b7CFjs": {
     "developer_comment": "go to eduID link text",
@@ -1623,6 +1683,10 @@
     "developer_comment": "start eduid - paragraph",
     "string": "Obs: Du kan läsa om hur statusen relaterar till anslutande tjänster i hjälpavsnittet \"Tillitsnivåer\"."
   },
+  "bWoD7K": {
+    "developer_comment": "security eduid - list item 3-2",
+    "string": "datum då skapat och senast använt,"
+  },
   "bYDxCn": {
     "developer_comment": "usb key technical section - list item 4 code",
     "string": "\"remote_handle\", \"hardware\", \"secure_element\", \"tee\""
@@ -1663,6 +1727,10 @@
   "bankid.token_not_found": {
     "string": "Säkerhetsnyckeln hittades inte"
   },
+  "bbYk43": {
+    "developer_comment": "identity eduid - list item 2-1",
+    "string": "med svenskt digitalt ID (Freja+/BankID) eller via post,"
+  },
   "beRQGp": {
     "developer_comment": "Short code form",
     "string": "Koden går ut om"
@@ -1674,6 +1742,10 @@
   "bkpUyB": {
     "developer_comment": "verify webauthn token modal body text",
     "string": "Klicka på knappen för BankID eller Freja+ för att verifiera din säkerhetsnyckel."
+  },
+  "bnSKX2": {
+    "developer_comment": "security eduid - list item 1-1",
+    "string": "Denna enhet: inbyggd passkey t.ex. med din biometriska information,"
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
@@ -1944,7 +2016,7 @@
   },
   "ez2CnQ": {
     "developer_comment": "what is sunet - paragraph 2",
-    "string": "SUNET tog fram eduID i syfte att erbjuda framförallt lärosäten gemensamma rutiner för identitetshantering av väl identifierade och autenticerade användare. Läs mer om SUNET på {sunet}."
+    "string": "SUNET tog fram eduID i syfte att erbjuda framförallt lärosäten gemensamma rutiner för identitetshantering av väl identifierade och autentiserade användare. Läs mer om SUNET på {sunet}."
   },
   "f6GNZ7": {
     "developer_comment": "select extra webauthn",
@@ -2108,10 +2180,6 @@
     "developer_comment": "login mfa primary option hint",
     "string": "Om din säkerhetsnyckel har en knapp, tryck på den."
   },
-  "iJOGO3": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "När du loggar in i eduid.se finns 4 vyer; Start, Identitet, Säkerhet och Konto. De nås med menyn i övre högra hörnet genom att klicka på användarnamnet:"
-  },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "Det uppstod ett problem som gjorde att det inte gick inte att skapa ditt konto."
@@ -2175,10 +2243,6 @@
     "developer_comment": "when use eduID - list item 4",
     "string": "förlorar ett lösenord och behöver återfå åtkomst till konto,"
   },
-  "jXjX1p": {
-    "developer_comment": "security lead title",
-    "string": "Öka säkerheten för ditt eduID."
-  },
   "jYWXMn": {
     "developer_comment": "enter code",
     "string": "skriv in koden"
@@ -2222,6 +2286,10 @@
     "developer_comment": "Make primary button",
     "string": "gör primär"
   },
+  "kPVuAC": {
+    "developer_comment": "security eduid - list item 3-4",
+    "string": "en papperskorgs-ikon som raderar nyckeln vid klick."
+  },
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "tjänster som kräver att du loggar in med multifaktorautentisering, ofta kallad {emphasis}."
@@ -2260,6 +2328,10 @@
   "l1XkUC": {
     "developer_comment": "security description name",
     "string": "Namn:"
+  },
+  "lAabXZ": {
+    "developer_comment": "identity eduid - list item 3",
+    "string": "Ett formulär för att uppdatera namn och visningsnamn genom att klicka på länken \"ändra\", där tillgängliga inställningar beror på om din identitet är verifierad."
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
@@ -2351,7 +2423,7 @@
     "string": "Du måste välja en ytterligare metod att autentisera dig själv med. Detta säkerställer att bara du kan komma åt ditt eduID."
   },
   "login.mfa_proofing_method_not_allowed": {
-    "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autenticeringen (MFA). Välj en giltig autenticeringsmetod."
+    "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autentiseringen (MFA). Välj en giltig autentiseringsmetod."
   },
   "login.no_sso_session": {
     "string": "Sessionen hittades inte. Var god försök igen."
@@ -2546,6 +2618,10 @@
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
+  },
+  "oinZ6N": {
+    "developer_comment": "security eduid - list item 3-1",
+    "string": "det beskrivande namnet du gav nyckeln då den lades till,"
   },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
@@ -2922,7 +2998,7 @@
     "string": "Beskrivningen är för lång"
   },
   "security.no_reauthn": {
-    "string": "Autenticering saknas"
+    "string": "Autentisering saknas"
   },
   "security.placeholder": {
     "developer_comment": "placeholder text for security key description input",
@@ -3114,6 +3190,10 @@
     "developer_comment": "settings eduid - re-login list item 2",
     "string": "Du kan även ändra visat språk för laddade sidan i sidfoten."
   },
+  "una38W": {
+    "developer_comment": "settings eduid - identity handle",
+    "string": "Identitet"
+  },
   "unexpected-problem": {
     "developer_comment": "unexpected problem error",
     "string": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår."
@@ -3210,7 +3290,7 @@
   },
   "x46y5H": {
     "developer_comment": "security key title",
-    "string": "Tvåfaktorsautenticering (2FA)"
+    "string": "Tvåfaktorsautentisering (2FA)"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
@@ -3290,6 +3370,10 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "Nedanstående information är relevant för dig och vi behöver bekräftat att du har tagit del av den. Vänligen läs innan du fortsätter."
+  },
+  "z0oVIf": {
+    "developer_comment": "security eduid - list item 1",
+    "string": "Knappar för att lägga till tvåfaktorsautentisering för att öka säkerheten för ditt eduID m.h.a. en säkerhetsnyckel som ytterligare ett lager till inloggningsprocessen utöver ditt lösenord. Genom att även verifiera säkerhetsnyckeln kopplas den till din identitet vilket stärker kontots tillitsnivå. Du kan lägga till så många säkerhetsnycklar du önskar och beroende på din enhet (dator, mobil, operativsystem m.m.) är alternativen för att lägga till en säkerhetsnyckel följande:"
   },
   "zTHT2m": {
     "developer_comment": "verify identity vetting BankID tagline",
