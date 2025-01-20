@@ -6,6 +6,52 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { GetCaptchaResponse } from "./eduidSignup";
+
+/*********************************************************************************************************************/
+
+/**
+ * @public
+ * @function getCaptchaResponse
+ * @desc Redux async thunk to fetch a captcha image from the backend.
+ */
+export const getCaptchaRequest = createAsyncThunk<
+  GetCaptchaResponse, // return type
+  undefined, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("resetPassword/getCaptchaRequest", async (args, thunkAPI) => {
+  const body: KeyValues = {};
+
+  return makeResetPasswordRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface CaptchaRequest {
+  internal_response?: string;
+  recaptcha_response?: string;
+}
+
+/**
+ * @public
+ * @function sendCaptchaResponse
+ * @desc Redux async thunk to post the result of a CAPTCHA operation.
+ */
+export const sendCaptchaResponse = createAsyncThunk<
+  any, // return type
+  CaptchaRequest, // args type
+  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
+>("resetPassword/sendCaptchaResponse", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    internal_response: args.internal_response,
+    recaptcha_response: args.recaptcha_response,
+  };
+
+  return makeResetPasswordRequest<any>(thunkAPI, "captcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
 
 /*********************************************************************************************************************/
 

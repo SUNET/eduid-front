@@ -37,7 +37,7 @@ export function createResetPasswordMachine() {
         ResetPasswordApp: {
           on: {
             UNKNOWN_USER: {
-              target: "AskForEmailOrConfirmEmail",
+              target: "HandleCaptcha",
             },
             CAN_DO_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
@@ -45,6 +45,45 @@ export function createResetPasswordMachine() {
             WITHOUT_EXTRA_SECURITY: {
               target: "FinaliseResetPassword",
             },
+          },
+        },
+        HandleCaptcha: {
+          initial: "HandleCaptcha",
+          states: {
+            HandleCaptcha: {
+              on: {
+                COMPLETE: {
+                  target: "ProcessCaptcha",
+                },
+                GO_BACK: {
+                  target: "Fail",
+                },
+                // BYPASS: {
+                //   target: "SignupToU",
+                // },
+              },
+            },
+            ProcessCaptcha: {
+              on: {
+                API_SUCCESS: {
+                  target: "Finished",
+                },
+                API_FAIL: {
+                  target: "Fail",
+                },
+              },
+            },
+            Fail: {
+              always: {
+                target: "#resetPassword.AskForEmailOrConfirmEmail",
+              },
+            },
+            Finished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "AskForEmailOrConfirmEmail",
           },
         },
         AskForEmailOrConfirmEmail: {

@@ -1,4 +1,4 @@
-import { getCaptchaRequest } from "apis/eduidPhone";
+import { getCaptchaRequest } from "apis/eduidResetPassword";
 import { GetCaptchaResponse } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

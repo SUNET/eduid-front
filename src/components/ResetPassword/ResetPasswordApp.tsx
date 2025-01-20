@@ -11,6 +11,7 @@ import resetPasswordSlice from "slices/ResetPassword";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
+import { ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
@@ -54,11 +55,11 @@ export function ResetPasswordApp(): JSX.Element {
 
   return (
     <React.Fragment>
+      {/* TO DO: Replace with ResetPasswordCaptcha */}
+      {state.matches("HandleCaptcha") && <ResetPasswordCaptcha />}
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
-      {/* TO DO: Replace with ResetPasswordCaptcha */}
-      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordCaptcha") && <ResetPasswordEnterEmail />}
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
