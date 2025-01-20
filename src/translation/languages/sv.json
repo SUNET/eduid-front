@@ -2423,7 +2423,7 @@
     "string": "Du måste välja en ytterligare metod att autentisera dig själv med. Detta säkerställer att bara du kan komma åt ditt eduID."
   },
   "login.mfa_proofing_method_not_allowed": {
-    "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autenticeringen (MFA). Välj en giltig autenticeringsmetod."
+    "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autentiseringen (MFA). Välj en giltig autentiseringsmetod."
   },
   "login.no_sso_session": {
     "string": "Sessionen hittades inte. Var god försök igen."
