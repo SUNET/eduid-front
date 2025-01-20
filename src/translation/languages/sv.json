@@ -703,7 +703,7 @@
   },
   "E9wj6b": {
     "developer_comment": "security eduid - list item 2",
-    "string": "Under \"Hantera dina säkerhetsnycklar\" finns en toggle-kontroll märkt \"Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID\" som kan stängas av för att bara använda säkerhetsnyckel för att logga in när det efterfrågas. Standardinställning är påslagen."
+    "string": "Under \"Hantera dina säkerhetsnycklar\" finns en toggle-kontroll märkt \"Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID\" som kan stängas av för att bara använda säkerhetsnyckel för att logga in när det efterfrågas. Standardinställning är påslagen."
   },
   "EDXXCi": {
     "developer_comment": "what are eduIDs terms of use - heading",
