@@ -1049,7 +1049,7 @@
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
-    "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautenticering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
+    "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautentisering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -1566,7 +1566,7 @@
   },
   "YssJWJ": {
     "developer_comment": "login eduid - security key list item 3",
-    "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautenticering (2FA) vid inloggning till eduID\" under Säkerhet."
+    "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID\" under Säkerhet."
   },
   "YuWePR": {
     "developer_comment": "recommendations account link",
