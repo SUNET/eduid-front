@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
@@ -88,6 +89,7 @@ interface CaptchaProps {
 
 export function InternalCaptcha(props: CaptchaProps) {
   const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
+  const is_configured = useAppSelector((state) => state.config.is_configured);
 
   function getNewCaptcha() {
     props.getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
@@ -101,7 +103,7 @@ export function InternalCaptcha(props: CaptchaProps) {
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
 
-    if (!captchaResponse) {
+    if (is_configured && !captchaResponse) {
       props.getCaptcha().then((captchaResponse: any) => {
         if (!aborted && captchaResponse) {
           setCaptchaResponse({
@@ -117,7 +119,7 @@ export function InternalCaptcha(props: CaptchaProps) {
     return () => {
       aborted = true;
     };
-  }, []);
+  }, [is_configured]);
 
   return (
     <React.Fragment>

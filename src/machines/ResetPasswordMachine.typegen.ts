@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // This file was automatically generated. Edits will be overwritten
 
 export interface Typegen0 {
@@ -61,3 +62,5 @@ export interface Typegen0 {
       };
   tags: never;
 }
+=======
+>>>>>>> 5ab2050db (Add captcha endpoint add adjust resetpw machine)

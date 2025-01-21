@@ -1,9 +1,11 @@
-import { getCaptchaRequest } from "apis/eduidResetPassword";
+import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidResetPassword";
 import { GetCaptchaResponse } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export interface CaptchaProps {
@@ -13,21 +15,24 @@ export interface CaptchaProps {
 }
 
 export function ResetPasswordCaptcha(): JSX.Element | null {
-  const state = useAppSelector((state) => state.resetPassword);
+  const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // if (state?.captcha.completed) {
-    //   resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-    // }
-  }, [state]);
+    if (captcha?.internal_response) {
+      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+    }
+  }, []);
 
   async function getCaptcha() {
     // temporary code
+    console.log("is_configured");
     const res = await dispatch(getCaptchaRequest());
     if (getCaptchaRequest.fulfilled.match(res)) {
       return res.payload;
+    } else if (res.error.message === "resetpw.captcha-already-completed") {
+      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
   }
 
@@ -37,17 +42,17 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
 
   function handleCaptchaCompleted(response: string) {
     if (response) {
-      // dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-      // signupContext.signupService.send({ type: "COMPLETE" });
+      dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
 
   const args = { handleCaptchaCancel, handleCaptchaCompleted };
 
   // If the user has already completed the captcha, don't show it again
-  // if (state?.captcha.completed) {
-  //   return null;
-  // }
+  if (captcha?.internal_response) {
+    return null;
+  }
 
   return (
     <Fragment>
@@ -70,4 +75,31 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
       <InternalCaptcha {...args} getCaptcha={getCaptcha} />
     </Fragment>
   );
+}
+
+export function ProcessCaptcha(): null {
+  const captcha = useAppSelector((state) => state.resetPassword.captcha);
+  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const dispatch = useAppDispatch();
+
+  async function sendCaptcha(captcha: CaptchaRequest) {
+    const res = await dispatch(sendCaptchaResponse(captcha));
+
+    if (sendCaptchaResponse.fulfilled.match(res)) {
+      dispatch(clearNotifications());
+      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+    } else {
+      resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+    }
+  }
+
+  useEffect(() => {
+    if (captcha) {
+      console.log("ProcessCaptcha captcha");
+      sendCaptcha(captcha);
+    }
+  }, []);
+
+  // Show a blank screen while we wait for a captcha response from the backend
+  return null;
 }

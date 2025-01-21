@@ -20,6 +20,8 @@ const resetPasswordModel = createModel(
       START_EXTRA_SECURITY: () => ({}), // no payload
       KNOWN_USER: () => ({}), // no payload
       UNKNOWN_USER: () => ({}), // no payload
+      BYPASS: () => ({}),
+      START_RESET_PW: () => ({}),
     },
   }
 );
@@ -36,7 +38,7 @@ export function createResetPasswordMachine() {
       states: {
         ResetPasswordApp: {
           on: {
-            UNKNOWN_USER: {
+            START_RESET_PW: {
               target: "HandleCaptcha",
             },
             CAN_DO_EXTRA_SECURITY: {
@@ -48,19 +50,19 @@ export function createResetPasswordMachine() {
           },
         },
         HandleCaptcha: {
-          initial: "HandleCaptcha",
+          initial: "ResetPasswordCaptcha",
           states: {
-            HandleCaptcha: {
+            ResetPasswordCaptcha: {
               on: {
                 COMPLETE: {
                   target: "ProcessCaptcha",
                 },
-                GO_BACK: {
-                  target: "Fail",
-                },
-                // BYPASS: {
-                //   target: "SignupToU",
+                // GO_BACK: {
+                //   target: "Fail",
                 // },
+                BYPASS: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                },
               },
             },
             ProcessCaptcha: {
@@ -69,15 +71,15 @@ export function createResetPasswordMachine() {
                   target: "Finished",
                 },
                 API_FAIL: {
-                  target: "Fail",
+                  target: "#resetPassword.HandleCaptcha",
                 },
               },
             },
-            Fail: {
-              always: {
-                target: "#resetPassword.AskForEmailOrConfirmEmail",
-              },
-            },
+            // Fail: {
+            //   always: {
+            //     target: "#resetPassword.AskForEmailOrConfirmEmail",
+            //   },
+            // },
             Finished: {
               type: "final",
             },

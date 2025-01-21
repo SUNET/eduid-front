@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { eidasGetStatus } from "apis/eduidEidas";
 import {
+  CaptchaRequest,
   ExtraSecurityAlternatives,
   requestEmailLink,
   RequestEmailLinkResponse,
@@ -28,6 +29,7 @@ export interface ResetPasswordState {
   email_response?: RequestEmailLinkResponse;
   email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
   swedishEID_status?: string;
+  captcha?: CaptchaRequest; // pass captcha response from one state to another
 }
 
 // Define the initial state using that type
@@ -66,6 +68,9 @@ export const resetPasswordSlice = createSlice({
     },
     useSuggestedPassword: (state, action: PayloadAction<boolean>) => {
       state.suggested = action.payload;
+    },
+    setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
+      state.captcha = action.payload;
     },
   },
   extraReducers: (builder) => {
