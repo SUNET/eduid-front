@@ -4,7 +4,6 @@ import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs"
 import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
-import Phones from "components/Dashboard/Phones";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import accountIcon from "../../../img/account-icon.svg";
@@ -46,7 +45,6 @@ export function Account(): JSX.Element {
       </section>
       <AccountIdDisplay />
       <Emails />
-      <Phones />
       <LanguagePreference />
       <ChangePasswordDisplay />
       <AccountLinking />

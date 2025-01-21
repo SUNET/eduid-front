@@ -1,11 +1,10 @@
-import { PhoneInfo } from "apis/eduidPhone";
 import EduIDButton from "components/Common/EduIDButton";
 import React, { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { EmailInfo } from "../../apis/eduidEmail";
 
 interface DataTableProps {
-  data?: EmailInfo[] | PhoneInfo[];
+  data?: EmailInfo[];
   handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
   handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
   handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
