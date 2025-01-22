@@ -55,7 +55,6 @@ export function ResetPasswordApp(): JSX.Element {
 
   return (
     <React.Fragment>
-      {/* TO DO: Replace with ResetPasswordCaptcha */}
       {state.matches("HandleCaptcha") && <ResetPasswordCaptcha />}
       {state.matches("HandleCaptcha.ProcessCaptcha") && <ProcessCaptcha />}
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
