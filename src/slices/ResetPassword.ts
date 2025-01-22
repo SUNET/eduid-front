@@ -3,8 +3,10 @@ import { eidasGetStatus } from "apis/eduidEidas";
 import {
   CaptchaRequest,
   ExtraSecurityAlternatives,
+  getCaptchaRequest,
   requestEmailLink,
   RequestEmailLinkResponse,
+  sendCaptchaResponse,
   verifyEmailLink,
 } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
@@ -14,7 +16,6 @@ import { performAuthentication, webauthnAssertion } from "../helperFunctions/nav
 export type Phone = { index: string; number: string; phone_code: string };
 
 export type EmailStatus = "requested" | "success" | "failed";
-
 export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
@@ -29,13 +30,15 @@ export interface ResetPasswordState {
   email_response?: RequestEmailLinkResponse;
   email_status?: EmailStatus; // status of asking backend to send an email. undefined before asking backend.
   swedishEID_status?: string;
-  captcha?: CaptchaRequest; // pass captcha response from one state to another
+  captcha?: CaptchaRequest;
+  captcha_completed: boolean;
 }
 
 // Define the initial state using that type
 export const initialState: ResetPasswordState = {
   phone: { index: undefined, number: undefined, phone_code: undefined },
   suggested: true,
+  captcha_completed: false,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -108,6 +111,20 @@ export const resetPasswordSlice = createSlice({
       })
       .addCase(bankIDGetStatus.fulfilled, (state, action) => {
         state.swedishEID_status = action.payload.status;
+      })
+      .addCase(sendCaptchaResponse.fulfilled, (state, action) => {
+        state.captcha = action.payload;
+      })
+      .addCase(sendCaptchaResponse.rejected, (state, action: PayloadAction<any>) => {
+        state.captcha_completed = action?.payload?.payload.captcha_completed;
+        if (state.captcha) {
+          state.captcha.internal_response = undefined;
+        }
+      })
+      .addCase(getCaptchaRequest.rejected, (state, action: PayloadAction<any>) => {
+        if (action.payload.payload.message === "resetpw.captcha-already-completed") {
+          state.captcha_completed = true;
+        }
       });
   },
 });

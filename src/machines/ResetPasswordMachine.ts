@@ -71,7 +71,7 @@ export function createResetPasswordMachine() {
                   target: "Finished",
                 },
                 API_FAIL: {
-                  target: "#resetPassword.HandleCaptcha",
+                  target: "ResetPasswordCaptcha",
                 },
               },
             },

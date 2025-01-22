@@ -16,6 +16,7 @@ export interface CaptchaProps {
 
 export function ResetPasswordCaptcha(): JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
+  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
 
@@ -23,20 +24,21 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
     if (captcha?.internal_response) {
       resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
-  }, []);
+    if (captcha_completed) {
+      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+      dispatch(clearNotifications());
+    }
+  }, [captcha_completed]);
 
   async function getCaptcha() {
-    // temporary code
-    console.log("is_configured");
     const res = await dispatch(getCaptchaRequest());
     if (getCaptchaRequest.fulfilled.match(res)) {
       return res.payload;
-    } else if (res.error.message === "resetpw.captcha-already-completed") {
-      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
   }
 
   function handleCaptchaCancel() {
+    // GOTO LOGIN PAGE
     // resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
   }
 

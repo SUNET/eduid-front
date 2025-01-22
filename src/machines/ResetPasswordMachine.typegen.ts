@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // This file was automatically generated. Edits will be overwritten
 
 export interface Typegen0 {
@@ -29,10 +28,9 @@ export interface Typegen0 {
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
     | "HandleCaptcha"
-    | "HandleCaptcha.Fail"
     | "HandleCaptcha.Finished"
-    | "HandleCaptcha.HandleCaptcha"
     | "HandleCaptcha.ProcessCaptcha"
+    | "HandleCaptcha.ResetPasswordCaptcha"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
     | "HandleExtraSecurities.Fail"
@@ -51,7 +49,7 @@ export interface Typegen0 {
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
-        "HandleCaptcha"?: "Fail" | "Finished" | "HandleCaptcha" | "ProcessCaptcha";
+        "HandleCaptcha"?: "Finished" | "ProcessCaptcha" | "ResetPasswordCaptcha";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"
@@ -62,5 +60,3 @@ export interface Typegen0 {
       };
   tags: never;
 }
-=======
->>>>>>> 5ab2050db (Add captcha endpoint add adjust resetpw machine)

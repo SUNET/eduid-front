@@ -77,10 +77,8 @@ function AskForEmailOrConfirmEmail(): null {
   useEffect(() => {
     if (email_status === undefined || !email_status) {
       if (email_address) {
-        console.log("KNOWN_USER", resetPasswordContext.resetPasswordService);
         resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
       } else {
-        console.log("4 email_address", email_address);
         resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
       }
     }
@@ -97,14 +95,18 @@ function AskForEmailOrConfirmEmail(): null {
 export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  console.log("ResetPasswordConfirmEmail", email_address);
+
+  useEffect(() => {
+    if (captcha_completed) {
+      dispatch(clearNotifications());
+    }
+  }, [captcha_completed]);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());
-    console.log("sendEmailOnClick email address", email_address);
     if (email_address) {
-      console.log("sendEmailOnClick email address", email_address);
       const response = await dispatch(requestEmailLink({ email: email_address }));
       if (requestEmailLink.fulfilled.match(response)) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
