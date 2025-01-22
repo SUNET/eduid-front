@@ -17,6 +17,7 @@ export interface CaptchaProps {
 export function ResetPasswordCaptcha(): JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
 
@@ -38,8 +39,9 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   }
 
   function handleCaptchaCancel() {
-    // GOTO LOGIN PAGE
-    // resetPasswordContext.resetPasswordService.send({ type: "ABORT" });
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+    }
   }
 
   function handleCaptchaCompleted(response: string) {
