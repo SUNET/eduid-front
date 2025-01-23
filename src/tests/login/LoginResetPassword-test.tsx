@@ -11,7 +11,7 @@ import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
-import { fireEvent, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { fireEvent, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 const TEST_PASSWORD = "password";
 
@@ -47,7 +47,16 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  render(<IndexMain />, { routes: [`/login/${ref}`] });
+  render(<IndexMain />, {
+    routes: [`/login/${ref}`],
+    state: {
+      ...loginTestState,
+      resetPassword: {
+        ...loginTestState.resetPassword,
+        captcha_completed: true,
+      },
+    },
+  });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {
@@ -154,7 +163,16 @@ test("can click 'forgot password' without an e-mail address", async () => {
 
   mswServer.printHandlers();
 
-  render(<IndexMain />, { routes: [`/login/${ref}`] });
+  render(<IndexMain />, {
+    routes: [`/login/${ref}`],
+    state: {
+      ...loginTestState,
+      resetPassword: {
+        ...loginTestState.resetPassword,
+        captcha_completed: true,
+      },
+    },
+  });
 
   // Wait for the username-password screen to be displayed
   await waitFor(() => {
