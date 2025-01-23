@@ -95,4 +95,19 @@ export const apiResponses = {
       defaultMessage={`The new password and repeat password are different.`}
     />
   ),
+  "resetpw.captcha-already-completed": (
+    <FormattedMessage id="resetpw.captcha-already-completed" defaultMessage="The captcha has already been completed." />
+  ),
+  "resetpw.captcha-failed": (
+    <FormattedMessage
+      id="resetpw.captcha-failed"
+      defaultMessage="There was a problem verifying that you are a human. Please try again."
+    />
+  ),
+  "resetpw.captcha-not-completed": (
+    <FormattedMessage id="resetpw.captcha-not-completed" defaultMessage="The captcha has not been completed." />
+  ),
+  "resetpw.captcha-not-requested": (
+    <FormattedMessage id="resetpw.captcha-not-requested" defaultMessage="The captcha has not been requested." />
+  ),
 };
