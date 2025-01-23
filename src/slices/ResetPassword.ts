@@ -122,7 +122,7 @@ export const resetPasswordSlice = createSlice({
         }
       })
       .addCase(getCaptchaRequest.rejected, (state, action: PayloadAction<any>) => {
-        if (action.payload.payload.message === "resetpw.captcha-already-completed") {
+        if (action.payload?.payload?.message === "resetpw.captcha-already-completed") {
           state.captcha_completed = true;
         }
       });
