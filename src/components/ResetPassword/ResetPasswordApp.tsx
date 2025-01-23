@@ -27,6 +27,7 @@ export function ResetPasswordApp(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
+  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
   const intl = useIntl();

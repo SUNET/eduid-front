@@ -18,6 +18,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const loading = useAppSelector((state) => state.resetPassword.loading);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
 
@@ -27,7 +28,6 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
     }
     if (captcha_completed) {
       resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
-      dispatch(clearNotifications());
     }
   }, [captcha_completed]);
 
@@ -53,8 +53,8 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
 
   const args = { handleCaptchaCancel, handleCaptchaCompleted };
 
-  // If the user has already completed the captcha, don't show it again
-  if (captcha?.internal_response) {
+  // If the user has already completed the captcha or is loading don't show it again
+  if (captcha_completed || loading) {
     return null;
   }
 
@@ -99,7 +99,6 @@ export function ProcessCaptcha(): null {
 
   useEffect(() => {
     if (captcha) {
-      console.log("ProcessCaptcha captcha");
       sendCaptcha(captcha);
     }
   }, []);
