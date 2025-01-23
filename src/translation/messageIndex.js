@@ -9,7 +9,6 @@ import * as common from "./defaultMessages/common";
 import * as eidas from "./defaultMessages/eidas";
 import * as email from "./defaultMessages/email";
 import * as orcid from "./defaultMessages/orcid";
-import * as phone from "./defaultMessages/phone";
 import * as bankid from "./defaultMessages/bankid";
 import * as frejaeid from "./defaultMessages/frejaeid";
 
@@ -24,7 +23,6 @@ export const formattedMessages = {
   ...eidas.apiResponses,
   ...email.apiResponses,
   ...orcid.apiResponses,
-  ...phone.apiResponses,
   ...security.apiResponses,
   ...letterProofing.apiResponses,
   ...resetPassword.apiResponses,
