@@ -57,9 +57,6 @@ export function createResetPasswordMachine() {
                 COMPLETE: {
                   target: "ProcessCaptcha",
                 },
-                // GO_BACK: {
-                //   target: "Fail",
-                // },
                 BYPASS: {
                   target: "#resetPassword.AskForEmailOrConfirmEmail",
                 },
@@ -75,11 +72,6 @@ export function createResetPasswordMachine() {
                 },
               },
             },
-            // Fail: {
-            //   always: {
-            //     target: "#resetPassword.AskForEmailOrConfirmEmail",
-            //   },
-            // },
             Finished: {
               type: "final",
             },
