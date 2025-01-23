@@ -20,6 +20,8 @@ const resetPasswordModel = createModel(
       START_EXTRA_SECURITY: () => ({}), // no payload
       KNOWN_USER: () => ({}), // no payload
       UNKNOWN_USER: () => ({}), // no payload
+      BYPASS: () => ({}),
+      START_RESET_PW: () => ({}),
     },
   }
 );
@@ -36,8 +38,8 @@ export function createResetPasswordMachine() {
       states: {
         ResetPasswordApp: {
           on: {
-            UNKNOWN_USER: {
-              target: "AskForEmailOrConfirmEmail",
+            START_RESET_PW: {
+              target: "HandleCaptcha",
             },
             CAN_DO_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
@@ -45,6 +47,37 @@ export function createResetPasswordMachine() {
             WITHOUT_EXTRA_SECURITY: {
               target: "FinaliseResetPassword",
             },
+          },
+        },
+        HandleCaptcha: {
+          initial: "ResetPasswordCaptcha",
+          states: {
+            ResetPasswordCaptcha: {
+              on: {
+                COMPLETE: {
+                  target: "ProcessCaptcha",
+                },
+                BYPASS: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail",
+                },
+              },
+            },
+            ProcessCaptcha: {
+              on: {
+                API_SUCCESS: {
+                  target: "Finished",
+                },
+                API_FAIL: {
+                  target: "ResetPasswordCaptcha",
+                },
+              },
+            },
+            Finished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "AskForEmailOrConfirmEmail",
           },
         },
         AskForEmailOrConfirmEmail: {

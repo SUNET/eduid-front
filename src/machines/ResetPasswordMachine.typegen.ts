@@ -26,6 +26,10 @@ export interface Typegen0 {
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
+    | "HandleCaptcha"
+    | "HandleCaptcha.Finished"
+    | "HandleCaptcha.ProcessCaptcha"
+    | "HandleCaptcha.ResetPasswordCaptcha"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
     | "HandleExtraSecurities.Fail"
@@ -43,6 +47,7 @@ export interface Typegen0 {
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
+        "HandleCaptcha"?: "Finished" | "ProcessCaptcha" | "ResetPasswordCaptcha";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"
