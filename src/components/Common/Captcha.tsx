@@ -102,7 +102,6 @@ export function InternalCaptcha(props: CaptchaProps) {
 
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
-
     if (is_configured && !captchaResponse) {
       props.getCaptcha().then((captchaResponse: any) => {
         if (!aborted && captchaResponse) {

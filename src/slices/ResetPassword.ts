@@ -32,7 +32,6 @@ export interface ResetPasswordState {
   swedishEID_status?: string;
   captcha?: CaptchaRequest;
   captcha_completed: boolean;
-  loading: boolean;
 }
 
 // Define the initial state using that type
@@ -40,7 +39,6 @@ export const initialState: ResetPasswordState = {
   phone: { index: undefined, number: undefined, phone_code: undefined },
   suggested: true,
   captcha_completed: false,
-  loading: false,
 };
 
 export const resetPasswordSlice = createSlice({
@@ -122,12 +120,6 @@ export const resetPasswordSlice = createSlice({
         if (state.captcha) {
           state.captcha.internal_response = undefined;
         }
-      })
-      .addCase(getCaptchaRequest.fulfilled, (state) => {
-        state.loading = false;
-      })
-      .addCase(getCaptchaRequest.pending, (state) => {
-        state.loading = true;
       })
       .addCase(getCaptchaRequest.rejected, (state, action: PayloadAction<any>) => {
         if (action.payload?.payload?.message === "resetpw.captcha-already-completed") {
