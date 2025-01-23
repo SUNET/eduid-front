@@ -43,10 +43,6 @@
     "developer_comment": "eduID index lead text",
     "string": "eduID gör det enklare för dig eftersom du bara behöver komma ihåg ett lösenord och säkrare för skolorna eftersom det är kopplat till en riktig individ."
   },
-  "+YwDxB": {
-    "developer_comment": "button add",
-    "string": "Lägg till"
-  },
   "/2jUvY": {
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
@@ -310,10 +306,6 @@
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
   },
-  "4a79Tk": {
-    "developer_comment": "captcha modal title",
-    "string": "För att begära kod, fyll i nedan captcha."
-  },
   "4bJr5y": {
     "developer_comment": "what is international - heading",
     "string": "Vad är Freja?"
@@ -321,10 +313,6 @@
   "4fCXFw": {
     "developer_comment": "login eduid - other devices list item 3",
     "string": "på den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
-  },
-  "56cz7x": {
-    "developer_comment": "Phone display title",
-    "string": "Telefonnummer"
   },
   "56tvVG": {
     "developer_comment": "which verification methods - paragraph2",
@@ -537,10 +525,6 @@
     "developer_comment": "Registration confirm password",
     "string": "Registrera: Rekommenderat lösenord"
   },
-  "9q4gIM": {
-    "developer_comment": "Phones long description",
-    "string": "Du kan koppla ett eller flera mobiltelefonnummer till ditt eduID."
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Byt lösenord"
@@ -557,17 +541,13 @@
     "developer_comment": "start eduid - list definition",
     "string": "Startsidan innehåller:"
   },
+  "AEinlE": {
+    "developer_comment": "Reset password captcha lead text",
+    "string": "Som ett skydd mot automatisk spam måste du bekräfta att du är en människa."
+  },
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
-  },
-  "ARpH/T": {
-    "developer_comment": "Phones input help text",
-    "string": "Telefonnummer som börjar med 0 eller +"
-  },
-  "AZ7oSU": {
-    "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Kod"
   },
   "AaQdgT": {
     "developer_comment": "help text for custom password tips",
@@ -844,10 +824,6 @@
     "developer_comment": "use freja - list item 2",
     "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
   },
-  "HDyZDY": {
-    "developer_comment": "received sms",
-    "string": "Redan fått en kod? "
-  },
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
     "string": "För att skapa ditt eduID måste du acceptera användarvillkoren för eduID."
@@ -907,10 +883,6 @@
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
     "string": "Användning av eduID"
-  },
-  "J/A8aF": {
-    "developer_comment": "Phones long description",
-    "string": "Obs: användningen av telefonnummer i eduID kommer snart att upphöra. Redan verifierade nummer kommer att vara oförändrade, men nya nummer kan inte läggas till."
   },
   "J3IlyU": {
     "developer_comment": "resend code",
@@ -998,10 +970,6 @@
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Lägg till"
-  },
-  "LxAnnP": {
-    "developer_comment": "Reset password",
-    "string": "Skicka sms till {phone}"
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1187,10 +1155,6 @@
     "developer_comment": "help text for custom password label",
     "string": "Tänk på att välja ett säkert lösenord"
   },
-  "Q3aPtX": {
-    "developer_comment": "phones modal form label",
-    "string": "Kod"
-  },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Är du säker på att du vill koppla bort din identitet från ditt eduID konto?"
@@ -1336,10 +1300,6 @@
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla ditt konto säkert."
-  },
-  "TmkRXi": {
-    "developer_comment": "Reset Password phone code sent (OK button)",
-    "string": "OK"
   },
   "TpkLxO": {
     "developer_comment": "security second factor help info",
@@ -1576,10 +1536,6 @@
     "developer_comment": "Use another device, finished",
     "string": "Efter att du har använt den här koden i den första enheten bör du stänga det här fönstret."
   },
-  "ZF97+M": {
-    "developer_comment": "Reset Password phone code sent lead",
-    "string": "Skriv in koden som skickats till {phone}"
-  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
@@ -1611,10 +1567,6 @@
   "ZsPPwh": {
     "developer_comment": "Signup credentials button",
     "string": "Försök igen"
-  },
-  "a2qUxL": {
-    "developer_comment": "Title for phone code input",
-    "string": "Skriv in koden som skickats till {phone}"
   },
   "aArsWE": {
     "developer_comment": "identity eduid - list item 1",
@@ -2006,10 +1958,6 @@
     "developer_comment": "ErrorURL identification failure",
     "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
   },
-  "exeSPB": {
-    "developer_comment": "phones modal form label",
-    "string": "Ange koden från bilden"
-  },
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
     "string": "Skapa ett Freja+ konto (godkänd svensk e-legitimation)"
@@ -2207,6 +2155,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph4strong",
     "string": "Ökad säkerhet:"
   },
+  "iqhKZR": {
+    "developer_comment": "Reset password captcha",
+    "string": "Återställ lösenord: Bekräfta att du är en människa."
+  },
   "iyw+WR": {
     "developer_comment": "usb key technical section - list item 3 code",
     "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
@@ -2214,10 +2166,6 @@
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "Jag accepterar"
-  },
-  "j0hRyW": {
-    "developer_comment": "Phones main title",
-    "string": "Telefonnummer"
   },
   "j7couZ": {
     "developer_comment": "what are eduIDs terms of use - paragraph",
@@ -2242,10 +2190,6 @@
   "jSH+Oi": {
     "developer_comment": "when use eduID - list item 4",
     "string": "förlorar ett lösenord och behöver återfå åtkomst till konto,"
-  },
-  "jYWXMn": {
-    "developer_comment": "enter code",
-    "string": "skriv in koden"
   },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
@@ -2499,10 +2443,6 @@
     "developer_comment": "login eduid - username heading",
     "string": "Med användarnamn och lösenord"
   },
-  "mobile.confirm_mobile_placeholder": {
-    "developer_comment": "placeholder text for phone code input",
-    "string": "skriv in koden"
-  },
   "modal.close": {
     "developer_comment": "Notification modal close label",
     "string": "Stäng"
@@ -2702,59 +2642,14 @@
     "developer_comment": "create eduid - list item 2",
     "string": "bekräfta att du inte är en robot m.h.a. CAPTCHA genom att skriva in koden som presenteras/läses upp i fälten och klicka på knappen \"Fortsätt\","
   },
-  "phone.captcha-failed": {
-    "string": "Captcha inte slutförd. Vänligen försök igen"
-  },
-  "phone.captcha-not-completed": {
-    "string": "Captcha misslyckades. Vänligen försök igen"
-  },
-  "phone.captcha-not-requested": {
-    "string": "Captcha kunde inte initieras. Vänligen försök igen."
-  },
-  "phone.e164_format": {
-    "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror."
-  },
-  "phone.swedish_mobile_format": {
-    "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror."
-  },
-  "phone_duplicated": {
-    "string": "Telefonnumret är redan tillagt"
-  },
-  "phone_format": {
-    "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror."
-  },
-  "phones.code-sent": {
-    "string": "En ny kod har skickats"
-  },
   "phones.code_invalid": {
     "string": "Den kod du angett stämmer inte. Var god försök igen"
-  },
-  "phones.code_invalid_or_expired": {
-    "string": "Ogiltig kod eller en kod som har gått ut. Var god prova igen eller begär en ny kod"
   },
   "phones.duplicated": {
     "string": "Numret finns redan i listan."
   },
   "phones.invalid_phone": {
     "string": "Ogiltigt telefonnummer"
-  },
-  "phones.primary-success": {
-    "string": "Ditt primära telefonnummer har ändrats"
-  },
-  "phones.removal-success": {
-    "string": "Telefonnummer har tagits bort"
-  },
-  "phones.save-success": {
-    "string": "Telefonnummer sparades"
-  },
-  "phones.unconfirmed_number_not_primary": {
-    "string": "Du kan inte sätta ett obekräftat telefonnummer som primärt nummer"
-  },
-  "phones.unknown_phone": {
-    "string": "Telefonnumret du angav kan inte hittas"
-  },
-  "phones.verification-success": {
-    "string": "Telefonnummer har bekräftats"
   },
   "pi0Vka": {
     "developer_comment": "privacy policy - list item 2",
@@ -2787,10 +2682,6 @@
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "ange lösenord"
-  },
-  "placeholder.phone": {
-    "developer_comment": "placeholder text for phone input",
-    "string": "telefonnummer"
   },
   "placeholder.recovery_option": {
     "developer_comment": "placeholder text for recovery option",
@@ -2921,6 +2812,18 @@
   },
   "required": {
     "string": "*Fältet kan inte vara tomt"
+  },
+  "resetpw.captcha-already-completed": {
+    "string": "Captcha processen har redan slutförts."
+  },
+  "resetpw.captcha-failed": {
+    "string": "Det uppstod ett problem med verifieringen av att du är en människa. Var god försök igen."
+  },
+  "resetpw.captcha-not-completed": {
+    "string": "Captcha har inte slutförts."
+  },
+  "resetpw.captcha-not-requested": {
+    "string": "Captcha har inte begärts."
   },
   "resetpw.email-send-failure": {
     "string": "Misslyckades att skicka e-post, vänligen försök igen"
@@ -3217,10 +3120,6 @@
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
-  "uzDSzk": {
-    "developer_comment": "Reset Password phone code sent heading",
-    "string": "Återställ lösenord: Telefonverifiering"
-  },
   "uzoZmv": {
     "developer_comment": "Login front page",
     "string": "Logga in"
@@ -3267,10 +3166,6 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
-  },
-  "wUi3zr": {
-    "developer_comment": "Reset Password phone code sent",
-    "string": "om"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",
