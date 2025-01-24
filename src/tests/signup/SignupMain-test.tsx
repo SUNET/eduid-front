@@ -35,6 +35,10 @@ const emptyState: SignupState = {
     completed: false,
     version: "1999-v1",
   },
+  name: {
+    given_name: "",
+    surname: "",
+  },
   user_created: false,
 };
 const testFirstName = "test";
