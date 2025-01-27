@@ -39,6 +39,10 @@
     "developer_comment": "eduID index lead text",
     "string": "eduID gör det enklare för dig eftersom du bara behöver komma ihåg ett lösenord och säkrare för skolorna eftersom det är kopplat till en riktig individ."
   },
+  "+Z2aYk": {
+    "developer_comment": "account eduid - list item 1-2",
+    "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
+  },
   "/2jUvY": {
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
@@ -187,6 +191,10 @@
     "developer_comment": "login eduid - remember me heading",
     "string": "Med sparade användaruppgifter"
   },
+  "2BFcMx": {
+    "developer_comment": "account eduid - list item 5-heading",
+    "string": "ESI information:"
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Länka ORCID konto"
@@ -218,6 +226,10 @@
   "2i/BS7": {
     "developer_comment": "use freja - list item 3",
     "string": "logga in i eduID och välj metoden 'Med Freja+ digitalt id-kort' i identitetshanteringen och följ instruktionerna."
+  },
+  "2ogwNX": {
+    "developer_comment": "account eduid - list item 3-heading",
+    "string": "Byt lösenord"
   },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
@@ -393,6 +405,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
   },
+  "70yodu": {
+    "developer_comment": "account eduid - list definition",
+    "string": "Kontosidan innehåller:"
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
@@ -401,13 +417,13 @@
     "developer_comment": "security eduid - list item 3",
     "string": "En tabell som visar dina tillagda nycklar med följande information:"
   },
-  "7H7RQA": {
-    "developer_comment": "enhance eduid - list item 4",
-    "string": "ansluta ditt eduID till ESI och/eller befintligt ORCID iD om det stöds av din institution,"
-  },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
+  },
+  "7UpsOK": {
+    "developer_comment": "settings eduid - account handle",
+    "string": "Konto"
   },
   "7b+tL8": {
     "developer_comment": "login eduid - other devices list item 1",
@@ -553,10 +569,6 @@
     "developer_comment": "Account",
     "string": "Konto"
   },
-  "AoUp1z": {
-    "developer_comment": "enhance eduID verification - paragraph",
-    "string": "För mer detaljerad information om hur du bäst kan verifiera ditt skapade eduID-konto, se hjälpavsnittet 'Verifiering av identitet'."
-  },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Skapa ditt eget lösenord"
@@ -661,6 +673,10 @@
     "developer_comment": "create eduid - list definition",
     "string": "Hur du registrerar ditt nya eduID-konto på {eduidRegisterLink}:"
   },
+  "E4ZifZ": {
+    "developer_comment": "account eduid - list item 1-1",
+    "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
+  },
   "E7bB/9": {
     "developer_comment": "status overview title",
     "string": "eduID statusöversikt"
@@ -685,10 +701,6 @@
     "developer_comment": "what are eduIDs terms of use - heading",
     "string": "Vad är eduIDs användarvillkor?"
   },
-  "EGngEP": {
-    "developer_comment": "how enhance eduid - heading",
-    "string": "Hur kan jag utöka mitt eduID?"
-  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verifiera din identitet"
@@ -708,6 +720,10 @@
   "EYO4YN": {
     "developer_comment": "privacy policy - list item 4",
     "string": "skyddar och lagrar informationen säkert,"
+  },
+  "EgNSWv": {
+    "developer_comment": "account eduid - list item 2-heading",
+    "string": "Språk:"
   },
   "Ek2FGc": {
     "string": "Logga in på den andra enheten"
@@ -812,10 +828,6 @@
     "developer_comment": "start eduid - list item 3-3",
     "string": "ökad säkerhet (lagt till metod för multifaktor-inloggning),"
   },
-  "H08uQ1": {
-    "developer_comment": "enhance eduid - list item 3",
-    "string": "en säkerhetsnyckel om du har möjlighet för ytterligare säkerhet,"
-  },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
     "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
@@ -848,6 +860,10 @@
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
   },
+  "I470G3": {
+    "developer_comment": "account eduid - list item 1-3",
+    "string": "Gör en epostadress primär genom att klicka på länken \"Gör primär\"."
+  },
   "I93Be7": {
     "developer_comment": "login eduid - username list item 2",
     "string": "ditt unika ID som visas på inloggade startsidan och under Konto."
@@ -871,6 +887,10 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "Bekräfta"
+  },
+  "IqxNFW": {
+    "developer_comment": "account eduid - list item 4",
+    "string": "Ansluta ditt eduID med befintligt ORCID iD."
   },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
@@ -899,10 +919,6 @@
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
-  },
-  "KK1zTc": {
-    "developer_comment": "enhance eduid - list definition",
-    "string": "I eduID har du möjlighet att lägga till information som t.ex:"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1118,6 +1134,10 @@
   "PJxPbg": {
     "developer_comment": "send a new code",
     "string": "Skicka ny kod igen"
+  },
+  "PLbXLW": {
+    "developer_comment": "account eduid - list item 2",
+    "string": "Standardspråket baseras på din webbläsares språkinställning. I eduID kan du kan välja mellan svenska och engelska."
   },
   "PQoWSY": {
     "developer_comment": "Short code form",
@@ -1436,6 +1456,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
   },
+  "WfjKNE": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Radera eduID"
+  },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Klicka på knappen \"Använd min säkerhetsnyckel\" och följ instruktionerna för din säkerhetsnyckel."
@@ -1443,6 +1467,10 @@
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "Säkerheten och användbarheten av ditt eduID kan förbättras genom nedanstående åtgärder."
+  },
+  "Wzwjvn": {
+    "developer_comment": "account eduid - list item 1-heading",
+    "string": "Epostadresser:"
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1851,10 +1879,6 @@
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "Om du inte längre vill att eduID ska känna till ditt ORCID iD kan du enkelt ta bort det genom att klicka på krysset."
   },
-  "eQBIty": {
-    "developer_comment": "settings eduid - language paragraph",
-    "string": "Standardspråket baseras på din webbläsares språkinställning. I eduID kan du kan välja mellan svenska och engelska."
-  },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
     "string": "Ange alltid den e-postadress som du använde när du loggade in, samt ditt unika 'eppn' ID som du hittar på startsidan i eduID om du är inloggad."
@@ -1944,6 +1968,10 @@
   },
   "emails.verification-success": {
     "string": "E-postadressen bekräftad"
+  },
+  "epYGtQ": {
+    "developer_comment": "account eduid - list item 5",
+    "string": "Länka ditt eduID till ESI om det stöds av din institution."
   },
   "error_in_form": {
     "string": "Formulärfel. Se nedan för specifikt felmeddelande"
@@ -2211,6 +2239,10 @@
     "developer_comment": "Improve Security heading",
     "string": "Öka säkerheten"
   },
+  "jqbSR+": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "Du kan lägga till så många du önskar men behöver minst en epostadress som du har bekräftad åtkomst till. Du kan logga in med alla bekräftade adresser men den primära används för att kommunicera med dig. De listas i en tabell med följande alternativ:"
+  },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "Om eIDAS"
@@ -2249,10 +2281,6 @@
   "kaI61H": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. ditt studentkonto eller {link}."
-  },
-  "kdhlZf": {
-    "developer_comment": "enhance eduid - list item 5",
-    "string": "verifiera din identitet för att förstärka ditt eduID tillräckligt för många externa tjänsters behov."
   },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
@@ -2418,6 +2446,10 @@
   "mPETL8": {
     "developer_comment": "login eduid - re-login list item 1",
     "string": "lösenordsbyte,"
+  },
+  "mQuVeV": {
+    "developer_comment": "settings eduid - list item 2-2",
+    "string": "Du kan även ändra visat språk för laddade sidan i sidfoten."
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -3030,9 +3062,9 @@
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
-  "t1BZi/": {
-    "developer_comment": "settings eduid - language heading",
-    "string": "Hur kan jag ändra standardspråk i eduID?"
+  "t/umOn": {
+    "developer_comment": "settings eduid - list item 2-1",
+    "string": "För att byta standardspråk kan du logga in i eduID och välja önskat språk med radioknapparna under Konto."
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
@@ -3065,6 +3097,10 @@
     "developer_comment": "about bankid - handle",
     "string": "Om BankID"
   },
+  "tcDXie": {
+    "developer_comment": "account eduid - list item 4-heading",
+    "string": "ORCID konto:"
+  },
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'EU-medborgare' och följ instruktionerna."
@@ -3088,10 +3124,6 @@
   "uhqjcc": {
     "developer_comment": "login eduid - re-login list item 2",
     "string": "på- och avslagning av 2FA vid inloggning,"
-  },
-  "ujk+b2": {
-    "developer_comment": "settings eduid - re-login list item 2",
-    "string": "Du kan även ändra visat språk för laddade sidan i sidfoten."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
@@ -3258,10 +3290,6 @@
     "developer_comment": "privacy policy - list item 9",
     "string": "sparar endast nödvändiga funktionella kakor."
   },
-  "ywtIEI": {
-    "developer_comment": "settings eduid - re-login list item 1",
-    "string": "För att byta standardspråk kan du logga in i eduID och välja önskat språk med radioknapparna under Konto."
-  },
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "Nedanstående information är relevant för dig och vi behöver bekräftat att du har tagit del av den. Vänligen läs innan du fortsätter."
@@ -3289,10 +3317,6 @@
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
     "string": "Länkning till Orcid / ESI"
-  },
-  "zrkVyF": {
-    "developer_comment": "enhance eduid - list item 1",
-    "string": "ditt namn för att kunna lägga till en säkerhetsnyckel eller hantera vissa tjänster från ett icke verifierat konto,"
   },
   "ztVnUK": {
     "developer_comment": "login eduid - re-login list item 3",
