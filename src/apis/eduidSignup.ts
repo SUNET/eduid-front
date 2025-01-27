@@ -28,6 +28,10 @@ export interface SignupState {
     initiated_signup: boolean;
     is_logged_in: boolean;
   };
+  name: {
+    given_name?: string;
+    surname?: string;
+  };
   tou: { completed: boolean; version?: string };
   captcha: { completed: boolean };
   credentials: {

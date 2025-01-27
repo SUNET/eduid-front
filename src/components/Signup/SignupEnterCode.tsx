@@ -1,4 +1,4 @@
-import { verifyEmailRequest } from "apis/eduidSignup";
+import { registerEmailRequest, verifyEmailRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
@@ -33,6 +33,22 @@ export function SignupEnterCode(): JSX.Element {
 
   function handleTimerReachZero() {
     setIsExpired(true);
+  }
+
+  async function registerEmail() {
+    if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
+      const res = await dispatch(
+        registerEmailRequest({
+          email: signupState?.email.address,
+          given_name: signupState?.name?.given_name,
+          surname: signupState?.name?.surname,
+        })
+      );
+
+      if (registerEmailRequest.fulfilled.match(res)) {
+        setIsExpired(false);
+      }
+    }
   }
 
   function handleAbortButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -81,18 +97,13 @@ export function SignupEnterCode(): JSX.Element {
         </div>
         <p>
           <FormattedMessage
-            defaultMessage="To receive a new code, click the link below. You will be redirected to the register page."
+            defaultMessage="Click the link below to receive a new code. You will be redirected to a page where you can enter the new code."
             description="Signup, code expired"
           />
         </p>
 
-        <EduIDButton
-          buttonstyle="link"
-          className="lowercase"
-          onClick={handleAbortButtonOnClick}
-          id="return-to-register-button"
-        >
-          <FormattedMessage defaultMessage="Return to Register" description="Return to register" />
+        <EduIDButton buttonstyle="link" className="lowercase" onClick={registerEmail} id="send-new-code">
+          <FormattedMessage defaultMessage="Send a new code" description="send a new code" />
         </EduIDButton>
       </div>
     );

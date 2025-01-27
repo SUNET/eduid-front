@@ -11,6 +11,7 @@ import resetPasswordSlice from "slices/ResetPassword";
 import { EmailLinkSent } from "./EmailLinkSent";
 import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
+import { ProcessCaptcha, ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
@@ -24,7 +25,6 @@ export function ResetPasswordApp(): JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
-  const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [state] = useActor(resetPasswordContext.resetPasswordService);
@@ -49,11 +49,13 @@ export function ResetPasswordApp(): JSX.Element {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
-    resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
+    resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
   }, [loginRef, params]);
 
   return (
     <React.Fragment>
+      {state.matches("HandleCaptcha") && <ResetPasswordCaptcha />}
+      {state.matches("HandleCaptcha.ProcessCaptcha") && <ProcessCaptcha />}
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
@@ -71,9 +73,12 @@ function AskForEmailOrConfirmEmail(): null {
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
 
   useEffect(() => {
-    if (!email_status) {
-      if (!email_address) resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
-      else resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
+    if (email_status === undefined || !email_status) {
+      if (email_address) {
+        resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
+      }
     }
   }, [email_status, email_address]);
 
@@ -88,7 +93,14 @@ function AskForEmailOrConfirmEmail(): null {
 export function ResetPasswordConfirmEmail(): JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
+  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+
+  useEffect(() => {
+    if (captcha_completed) {
+      dispatch(clearNotifications());
+    }
+  }, [captcha_completed]);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());
@@ -111,29 +123,28 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
             description="Account recovery front page heading"
           />
         </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage="Click the button below to send an e-mail to {email}"
-              description="Account recovery front page"
-              values={{
-                email: (
-                  <span id="email_address">
-                    <output data-testid="email-address">
-                      <strong>{email_address}</strong>.
-                    </output>
-                  </span>
-                ),
-              }}
-            />
-          </p>
-          <p>
-            <FormattedMessage
-              defaultMessage="If you decide to cancel, simply click the Go Back button to return to the login page."
-              description="Account recovery cancel information"
-            />
-          </p>
-        </div>
+        <div className="lead" />
+        <p>
+          <FormattedMessage
+            defaultMessage="Click the button below to send an e-mail to {email}"
+            description="Account recovery front page"
+            values={{
+              email: (
+                <span id="email_address">
+                  <output data-testid="email-address">
+                    <strong>{email_address}</strong>.
+                  </output>
+                </span>
+              ),
+            }}
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            defaultMessage="If you decide to cancel, simply click the Go Back button to return to the login page."
+            description="Account recovery cancel information"
+          />
+        </p>
       </section>
 
       <div className="buttons">
