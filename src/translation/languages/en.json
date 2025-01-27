@@ -23,10 +23,6 @@
     "developer_comment": "Temp info - message1",
     "string": "Soon it will not be possible to use phone numbers to verify identities and resetting passwords."
   },
-  "+B59c5": {
-    "developer_comment": "Return to register",
-    "string": "Return to Register"
-  },
   "+EKyAl": {
     "developer_comment": "continue reset password",
     "string": "Continue resetting password"
@@ -1119,6 +1115,10 @@
     "developer_comment": "login eduid - username list definition",
     "string": "If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button \"Log in\". Your username can be:"
   },
+  "PJxPbg": {
+    "developer_comment": "send a new code",
+    "string": "Send a new code"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, please try again"
@@ -1355,6 +1355,10 @@
   "Uul2qQ": {
     "developer_comment": "At what level is your eduID - heading",
     "string": "At what level is your eduID?"
+  },
+  "UviVo2": {
+    "developer_comment": "Signup, code expired",
+    "string": "Click the link below to receive a new code. You will be redirected to a page where you can enter the new code."
   },
   "V2oqjw": {
     "developer_comment": "not found link",
@@ -2337,10 +2341,6 @@
   },
   "letter.wrong-code": {
     "string": "Incorrect code"
-  },
-  "ljDyEx": {
-    "developer_comment": "Signup, code expired",
-    "string": "To receive a new code, click the link below. You will be redirected to the register page."
   },
   "login.assurance_failure": {
     "string": "An error occurred. Please try again later."
