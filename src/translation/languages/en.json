@@ -39,6 +39,10 @@
     "developer_comment": "eduID index lead text",
     "string": "eduID is easier for you because you only have to remember one password and safer for the Universities because it is connected to a real individual."
   },
+  "+Z2aYk": {
+    "developer_comment": "account eduid - list item 1-2",
+    "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
+  },
   "/2jUvY": {
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your identity."
@@ -187,6 +191,10 @@
     "developer_comment": "login eduid - remember me heading",
     "string": "With saved credentials"
   },
+  "2BFcMx": {
+    "developer_comment": "account eduid - list item 5-heading",
+    "string": "ESI information:"
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
@@ -218,6 +226,10 @@
   "2i/BS7": {
     "developer_comment": "use freja - list item 3",
     "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
+  },
+  "2ogwNX": {
+    "developer_comment": "account eduid - list item 3-heading",
+    "string": "Change password"
   },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
@@ -393,6 +405,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "70yodu": {
+    "developer_comment": "account eduid - list definition",
+    "string": "The Account page contains:"
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
@@ -401,13 +417,13 @@
     "developer_comment": "security eduid - list item 3",
     "string": "A table displaying all your added security keys with the following information:"
   },
-  "7H7RQA": {
-    "developer_comment": "enhance eduid - list item 4",
-    "string": "connecting your eduID to ESI if enabled by your institution, or sharing it with your existing ORCID iD,"
-  },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
+  },
+  "7UpsOK": {
+    "developer_comment": "settings eduid - account handle",
+    "string": "Account"
   },
   "7b+tL8": {
     "developer_comment": "login eduid - other devices list item 1",
@@ -553,10 +569,6 @@
     "developer_comment": "Account",
     "string": "Account"
   },
-  "AoUp1z": {
-    "developer_comment": "enhance eduID verification - paragraph",
-    "string": "In some situations that require added security, e.g. when changing your password, toggling 2FA login requirement setting, deleting your eduID account or adding/removing a security key, you need to log in again, with your security key if you are using one, if more than 5 minutes have passed since you logged in. \nFor more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
-  },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
@@ -661,6 +673,10 @@
     "developer_comment": "create eduid - list definition",
     "string": "How to register your new eduID account at {eduidRegisterLink}:"
   },
+  "E4ZifZ": {
+    "developer_comment": "account eduid - list item 1-1",
+    "string": "Add by clicking on the \"+ add more\" link and remove by clicking on the bin icon."
+  },
   "E7bB/9": {
     "developer_comment": "status overview title",
     "string": "eduID status overview"
@@ -685,10 +701,6 @@
     "developer_comment": "what are eduIDs terms of use - heading",
     "string": "What are eduIDs terms of use?"
   },
-  "EGngEP": {
-    "developer_comment": "how enhance eduid - heading",
-    "string": "How can I enhance my eduID?"
-  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
@@ -708,6 +720,10 @@
   "EYO4YN": {
     "developer_comment": "privacy policy - list item 4",
     "string": "protects and stores the information securely,"
+  },
+  "EgNSWv": {
+    "developer_comment": "account eduid - list item 2-heading",
+    "string": "Language:"
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
@@ -812,10 +828,6 @@
     "developer_comment": "start eduid - list item 3-3",
     "string": "enhanced security (added a method used for multi factor login),"
   },
-  "H08uQ1": {
-    "developer_comment": "enhance eduid - list item 3",
-    "string": "a security key if you are able to for added security,"
-  },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
     "string": "if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
@@ -848,6 +860,10 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "I470G3": {
+    "developer_comment": "account eduid - list item 1-3",
+    "string": "Make one email address your primary address by clicking on the link \"Make primary\"."
+  },
   "I93Be7": {
     "developer_comment": "login eduid - username list item 2",
     "string": "your unique ID, shown on the logged in start page and under Account."
@@ -871,6 +887,10 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
+  },
+  "IqxNFW": {
+    "developer_comment": "account eduid - list item 4",
+    "string": "Sharing your eduID with your existing ORCID iD."
   },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
@@ -899,10 +919,6 @@
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
-  },
-  "KK1zTc": {
-    "developer_comment": "enhance eduid - list definition",
-    "string": "In eduID you are encouraged to add further details such as:"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1118,6 +1134,10 @@
   "PJxPbg": {
     "developer_comment": "send a new code",
     "string": "Send a new code"
+  },
+  "PLbXLW": {
+    "developer_comment": "account eduid - list item 2",
+    "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
   },
   "PQoWSY": {
     "developer_comment": "Short code form",
@@ -1436,6 +1456,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
+  "WfjKNE": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Delete eduID"
+  },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Press the \"Use my security key\" button and follow the instructions, which will vary depending on your key."
@@ -1443,6 +1467,10 @@
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "The strength and usage of your eduID can be improved by following the steps listed below."
+  },
+  "Wzwjvn": {
+    "developer_comment": "account eduid - list item 1-heading",
+    "string": "Email addresses:"
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1851,10 +1879,6 @@
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "If you no longer want eduID to know your ORCID iD you can remove it by clicking the Remove button in your eduID."
   },
-  "eQBIty": {
-    "developer_comment": "settings eduid - language paragraph",
-    "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
-  },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
     "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page."
@@ -1944,6 +1968,10 @@
   },
   "emails.verification-success": {
     "string": "Successfully verified email address"
+  },
+  "epYGtQ": {
+    "developer_comment": "account eduid - list item 5",
+    "string": "Connecting your eduID to ESI if enabled by your institution."
   },
   "error_in_form": {
     "string": "Check the form below for errors."
@@ -2211,6 +2239,10 @@
     "developer_comment": "Improve Security heading",
     "string": "Enhance security"
   },
+  "jqbSR+": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:"
+  },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
@@ -2249,10 +2281,6 @@
   "kaI61H": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}."
-  },
-  "kdhlZf": {
-    "developer_comment": "enhance eduid - list item 5",
-    "string": "verifying your identity to strengthen your eduID sufficiently for many external services."
   },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
@@ -2418,6 +2446,10 @@
   "mPETL8": {
     "developer_comment": "login eduid - re-login list item 1",
     "string": "changing your password,"
+  },
+  "mQuVeV": {
+    "developer_comment": "settings eduid - list item 2-2",
+    "string": "You can also change the language for the loaded page in the footer of the webpage."
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -3030,9 +3062,9 @@
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
-  "t1BZi/": {
-    "developer_comment": "settings eduid - language heading",
-    "string": "How can I change the default language in eduID?"
+  "t/umOn": {
+    "developer_comment": "settings eduid - list item 2-1",
+    "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
@@ -3065,6 +3097,10 @@
     "developer_comment": "about bankid - handle",
     "string": "About BankID"
   },
+  "tcDXie": {
+    "developer_comment": "account eduid - list item 4-heading",
+    "string": "ORCID account:"
+  },
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
@@ -3088,10 +3124,6 @@
   "uhqjcc": {
     "developer_comment": "login eduid - re-login list item 2",
     "string": "toggling 2FA login requirement setting,"
-  },
-  "ujk+b2": {
-    "developer_comment": "settings eduid - re-login list item 2",
-    "string": "You can also change the language for the loaded page in the footer of the webpage."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
@@ -3258,10 +3290,6 @@
     "developer_comment": "privacy policy - list item 9",
     "string": "only uses necessary functional cookies."
   },
-  "ywtIEI": {
-    "developer_comment": "settings eduid - re-login list item 1",
-    "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
-  },
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
@@ -3289,10 +3317,6 @@
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
     "string": "Connecting account with Orcid / ESI"
-  },
-  "zrkVyF": {
-    "developer_comment": "enhance eduid - list item 1",
-    "string": "your full name to be able to add a security key or access some services from an unverified account,"
   },
   "ztVnUK": {
     "developer_comment": "login eduid - re-login list item 3",
