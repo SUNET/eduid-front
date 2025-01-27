@@ -43,9 +43,9 @@
     "developer_comment": "eduID index lead text",
     "string": "eduID is easier for you because you only have to remember one password and safer for the Universities because it is connected to a real individual."
   },
-  "+YwDxB": {
-    "developer_comment": "button add",
-    "string": "Add"
+  "+Z2aYk": {
+    "developer_comment": "account eduid - list item 1-2",
+    "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
   "/2jUvY": {
     "developer_comment": "Signup",
@@ -195,6 +195,10 @@
     "developer_comment": "login eduid - remember me heading",
     "string": "With saved credentials"
   },
+  "2BFcMx": {
+    "developer_comment": "account eduid - list item 5-heading",
+    "string": "ESI information:"
+  },
   "2D7weB": {
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
@@ -226,6 +230,10 @@
   "2i/BS7": {
     "developer_comment": "use freja - list item 3",
     "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
+  },
+  "2ogwNX": {
+    "developer_comment": "account eduid - list item 3-heading",
+    "string": "Change password"
   },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
@@ -310,10 +318,6 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
-  "4a79Tk": {
-    "developer_comment": "captcha modal title",
-    "string": "To receive code, complete below captcha."
-  },
   "4bJr5y": {
     "developer_comment": "what is international - heading",
     "string": "What is Freja?"
@@ -321,10 +325,6 @@
   "4fCXFw": {
     "developer_comment": "login eduid - other devices list item 3",
     "string": "on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
-  },
-  "56cz7x": {
-    "developer_comment": "Phone display title",
-    "string": "Phone number"
   },
   "56tvVG": {
     "developer_comment": "which verification methods - paragraph2",
@@ -409,6 +409,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "70yodu": {
+    "developer_comment": "account eduid - list definition",
+    "string": "The Account page contains:"
+  },
   "71fMkJ": {
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
@@ -417,13 +421,13 @@
     "developer_comment": "security eduid - list item 3",
     "string": "A table displaying all your added security keys with the following information:"
   },
-  "7H7RQA": {
-    "developer_comment": "enhance eduid - list item 4",
-    "string": "connecting your eduID to Ladok if enabled by your institution, or sharing it with your existing ORCID iD,"
-  },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
+  },
+  "7UpsOK": {
+    "developer_comment": "settings eduid - account handle",
+    "string": "Account"
   },
   "7b+tL8": {
     "developer_comment": "login eduid - other devices list item 1",
@@ -537,10 +541,6 @@
     "developer_comment": "Registration confirm password",
     "string": "Register: Suggested password"
   },
-  "9q4gIM": {
-    "developer_comment": "Phones long description",
-    "string": "You can connect one or more mobile phone numbers to your eduID."
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -561,14 +561,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
-  "ARpH/T": {
-    "developer_comment": "Phones input help text",
-    "string": "Phone number starting with 0 or +"
-  },
-  "AZ7oSU": {
-    "developer_comment": "Reset Password phone code sent (Input label)",
-    "string": "Code"
-  },
   "AaQdgT": {
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ \\ + _ %"
@@ -576,10 +568,6 @@
   "Account": {
     "developer_comment": "Account",
     "string": "Account"
-  },
-  "AoUp1z": {
-    "developer_comment": "enhance eduID verification - paragraph",
-    "string": "For more detailed information on how to verify your created account based on your situation, see the 'Verification of Identity' help section."
   },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
@@ -685,6 +673,10 @@
     "developer_comment": "create eduid - list definition",
     "string": "How to register your new eduID account at {eduidRegisterLink}:"
   },
+  "E4ZifZ": {
+    "developer_comment": "account eduid - list item 1-1",
+    "string": "Add by clicking on the \"+ add more\" link and remove by clicking on the bin icon."
+  },
   "E7bB/9": {
     "developer_comment": "status overview title",
     "string": "eduID status overview"
@@ -709,10 +701,6 @@
     "developer_comment": "what are eduIDs terms of use - heading",
     "string": "What are eduIDs terms of use?"
   },
-  "EGngEP": {
-    "developer_comment": "how enhance eduid - heading",
-    "string": "How can I enhance my eduID?"
-  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
@@ -732,6 +720,10 @@
   "EYO4YN": {
     "developer_comment": "privacy policy - list item 4",
     "string": "protects and stores the information securely,"
+  },
+  "EgNSWv": {
+    "developer_comment": "account eduid - list item 2-heading",
+    "string": "Language:"
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
@@ -836,17 +828,9 @@
     "developer_comment": "start eduid - list item 3-3",
     "string": "enhanced security (added a method used for multi factor login),"
   },
-  "H08uQ1": {
-    "developer_comment": "enhance eduid - list item 3",
-    "string": "a security key of you are able to for added security,"
-  },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
     "string": "if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
-  },
-  "HDyZDY": {
-    "developer_comment": "received sms",
-    "string": "Already received sms?"
   },
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
@@ -876,6 +860,10 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "I470G3": {
+    "developer_comment": "account eduid - list item 1-3",
+    "string": "Make one email address your primary address by clicking on the link \"Make primary\"."
+  },
   "I93Be7": {
     "developer_comment": "login eduid - username list item 2",
     "string": "your unique ID, shown on the logged in start page and under Account."
@@ -900,6 +888,10 @@
     "developer_comment": "confirm button",
     "string": "confirm"
   },
+  "IqxNFW": {
+    "developer_comment": "account eduid - list item 4",
+    "string": "Sharing your eduID with your existing ORCID iD."
+  },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
     "string": "With security key"
@@ -907,10 +899,6 @@
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
     "string": "Using eduID"
-  },
-  "J/A8aF": {
-    "developer_comment": "Phones long description",
-    "string": "Note: the use of phone numbers will soon be discontinued. Verified numbers remain unchanged, but new numbers can no longer be added."
   },
   "J3IlyU": {
     "developer_comment": "resend code",
@@ -931,10 +919,6 @@
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
-  },
-  "KK1zTc": {
-    "developer_comment": "enhance eduid - list definition",
-    "string": "In eduID you are encouraged to add further details such as:"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -998,10 +982,6 @@
   "LlYcJl": {
     "developer_comment": "button_add",
     "string": "Add"
-  },
-  "LxAnnP": {
-    "developer_comment": "Reset password",
-    "string": "Send sms to {phone}"
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1151,6 +1131,10 @@
     "developer_comment": "login eduid - username list definition",
     "string": "If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button \"Log in\". Your username can be:"
   },
+  "PLbXLW": {
+    "developer_comment": "account eduid - list item 2",
+    "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, try again"
@@ -1186,10 +1170,6 @@
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tip: Choose a strong password"
-  },
-  "Q3aPtX": {
-    "developer_comment": "phones modal form label",
-    "string": "Code"
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
@@ -1337,10 +1317,6 @@
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
   },
-  "TmkRXi": {
-    "developer_comment": "Reset Password phone code sent (OK button)",
-    "string": "OK"
-  },
   "TpkLxO": {
     "developer_comment": "security second factor help info",
     "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
@@ -1472,6 +1448,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
+  "WfjKNE": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Delete eduID"
+  },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Press the \"Use my security key\" button and follow the instructions, which will vary depending on your key."
@@ -1479,6 +1459,10 @@
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "The strength and usage of your eduID can be improved by following the steps listed below."
+  },
+  "Wzwjvn": {
+    "developer_comment": "account eduid - list item 1-heading",
+    "string": "Email addresses:"
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
@@ -1576,10 +1560,6 @@
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
   },
-  "ZF97+M": {
-    "developer_comment": "Reset Password phone code sent lead",
-    "string": "Please enter the code sent to {phone}"
-  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
@@ -1611,10 +1591,6 @@
   "ZsPPwh": {
     "developer_comment": "Signup credentials button",
     "string": "Retry"
-  },
-  "a2qUxL": {
-    "developer_comment": "Title for phone code input",
-    "string": "Enter the code sent to {phone}"
   },
   "aArsWE": {
     "developer_comment": "identity eduid - list item 1",
@@ -1895,10 +1871,6 @@
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "If you do not longer want eduID to know your ORCID iD you can remove it by clicking the Remove button in your eduID."
   },
-  "eQBIty": {
-    "developer_comment": "settings eduid - language paragraph",
-    "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
-  },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
     "string": "Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page."
@@ -1989,6 +1961,10 @@
   "emails.verification-success": {
     "string": "Successfully verified email address"
   },
+  "epYGtQ": {
+    "developer_comment": "account eduid - list item 5",
+    "string": "Connecting your eduID to ESI if enabled by your institution."
+  },
   "error_in_form": {
     "string": "Check the form below for errors."
   },
@@ -2005,10 +1981,6 @@
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
-  },
-  "exeSPB": {
-    "developer_comment": "phones modal form label",
-    "string": "Enter the code from the image"
   },
   "exo9+K": {
     "developer_comment": "eidas freja instructions step2",
@@ -2215,10 +2187,6 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
   },
-  "j0hRyW": {
-    "developer_comment": "Phones main title",
-    "string": "Mobile phone numbers"
-  },
   "j7couZ": {
     "developer_comment": "what are eduIDs terms of use - paragraph",
     "string": "These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time."
@@ -2243,10 +2211,6 @@
     "developer_comment": "when use eduID - list item 4",
     "string": "lose a student account password and need to regain access,"
   },
-  "jYWXMn": {
-    "developer_comment": "enter code",
-    "string": "enter code"
-  },
   "jc2mpm": {
     "developer_comment": "how more secure description 1",
     "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case two-factor authentication (2FA)."
@@ -2262,6 +2226,10 @@
   "jgEunh": {
     "developer_comment": "Improve Security heading",
     "string": "Enhance security"
+  },
+  "jqbSR+": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:"
   },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
@@ -2301,10 +2269,6 @@
   "kaI61H": {
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}."
-  },
-  "kdhlZf": {
-    "developer_comment": "enhance eduid - list item 5",
-    "string": "verifying your identity to strengthen your eduID sufficiently for many external services."
   },
   "kq3UJV": {
     "developer_comment": "about security key - handle",
@@ -2475,6 +2439,10 @@
     "developer_comment": "login eduid - re-login list item 1",
     "string": "changing your password,"
   },
+  "mQuVeV": {
+    "developer_comment": "settings eduid - list item 2-2",
+    "string": "You can also change the language for the displayed page in the footer of the webpage."
+  },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
     "string": "Verified identity"
@@ -2498,10 +2466,6 @@
   "mn8rvf": {
     "developer_comment": "login eduid - username heading",
     "string": "With username and password"
-  },
-  "mobile.confirm_mobile_placeholder": {
-    "developer_comment": "placeholder text for phone code input",
-    "string": "enter code"
   },
   "modal.close": {
     "developer_comment": "Notification modal close label",
@@ -2787,10 +2751,6 @@
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "enter password"
-  },
-  "placeholder.phone": {
-    "developer_comment": "placeholder text for phone input",
-    "string": "phone number"
   },
   "placeholder.recovery_option": {
     "developer_comment": "placeholder text for recovery option",
@@ -3127,9 +3087,9 @@
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
-  "t1BZi/": {
-    "developer_comment": "settings eduid - language heading",
-    "string": "How do I change the default language in eduID?"
+  "t/umOn": {
+    "developer_comment": "settings eduid - list item 2-1",
+    "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
   },
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
@@ -3162,6 +3122,10 @@
     "developer_comment": "about bankid - handle",
     "string": "About BankID"
   },
+  "tcDXie": {
+    "developer_comment": "account eduid - list item 4-heading",
+    "string": "ORCID account:"
+  },
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
@@ -3185,10 +3149,6 @@
   "uhqjcc": {
     "developer_comment": "login eduid - re-login list item 2",
     "string": "toggling 2FA login requirement setting,"
-  },
-  "ujk+b2": {
-    "developer_comment": "settings eduid - re-login list item 2",
-    "string": "You can also change the language for the displayed page in the footer of the webpage."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
@@ -3216,10 +3176,6 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
-  },
-  "uzDSzk": {
-    "developer_comment": "Reset Password phone code sent heading",
-    "string": "Reset Password: Phone verification"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
@@ -3267,10 +3223,6 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
-  },
-  "wUi3zr": {
-    "developer_comment": "Reset Password phone code sent",
-    "string": "in"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",
@@ -3363,10 +3315,6 @@
     "developer_comment": "privacy policy - list item 9",
     "string": "only uses necessary functional cookies."
   },
-  "ywtIEI": {
-    "developer_comment": "settings eduid - re-login list item 1",
-    "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
-  },
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
@@ -3394,10 +3342,6 @@
   "zmf6Gz": {
     "developer_comment": "about orcid ladok - handle",
     "string": "Connecting account with Orcid / Ladok"
-  },
-  "zrkVyF": {
-    "developer_comment": "enhance eduid - list item 1",
-    "string": "your full name to be able to add a security key or access some services from an unverified account,"
   },
   "ztVnUK": {
     "developer_comment": "login eduid - re-login list item 3",
