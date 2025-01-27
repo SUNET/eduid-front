@@ -23,10 +23,6 @@
     "developer_comment": "Temp info - message1",
     "string": "Snart kommer det inte vara möjligt att använda telefonnummer för att verifiera identitet och återställa lösenord."
   },
-  "+B59c5": {
-    "developer_comment": "Return to register",
-    "string": "Börja om"
-  },
   "+EKyAl": {
     "developer_comment": "continue reset password",
     "string": "Fortsätt återställa lösenordet"
@@ -1119,6 +1115,10 @@
     "developer_comment": "login eduid - username list definition",
     "string": "Om du har ett eduID-konto, skriv in dina inloggningsuppgifter i formuläret på {eduidLoginLink} och klicka på knappen \"Logga in\". Ditt användarnamn kan vara:"
   },
+  "PJxPbg": {
+    "developer_comment": "send a new code",
+    "string": "Skicka ny kod igen"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Felaktig kod, försök igen"
@@ -1355,6 +1355,10 @@
   "Uul2qQ": {
     "developer_comment": "At what level is your eduID - heading",
     "string": "På vilken nivå är ditt eduID?"
+  },
+  "UviVo2": {
+    "developer_comment": "Signup, code expired",
+    "string": "Klicka på länken nedan för att få en ny kod. Du skickas då till en sida där du kan fylla i den nya koden."
   },
   "V2oqjw": {
     "developer_comment": "not found link",
@@ -2337,10 +2341,6 @@
   },
   "letter.wrong-code": {
     "string": "Den kod du angett stämmer inte. Var god försök igen"
-  },
-  "ljDyEx": {
-    "developer_comment": "Signup, code expired",
-    "string": "För att få en ny kod, klicka på länken nedan. Du kommer då att omdirigeras till registreringssidan."
   },
   "login.assurance_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
