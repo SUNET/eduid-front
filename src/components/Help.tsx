@@ -632,7 +632,7 @@ export function Help(): JSX.Element {
                       />
                     </li>
                   </ul>
-                </AccordionItemTemplate>{" "}
+                </AccordionItemTemplate>
                 <AccordionItemTemplate
                   uuid="help-security"
                   title={<FormattedMessage description="settings eduid - security handle" defaultMessage="Security" />}
@@ -722,7 +722,6 @@ export function Help(): JSX.Element {
                     />
                   </p>
                 </AccordionItemTemplate>
-                {/*
                 <AccordionItemTemplate
                   uuid="help-Account"
                   title={<FormattedMessage description="settings eduid - account handle" defaultMessage="Account" />}
@@ -736,95 +735,117 @@ export function Help(): JSX.Element {
                   </p>
                   <ul className="bullets">
                     <li>
-                      <em>
+                      <strong>
                         <FormattedMessage
-                          description="account eduid - list item 1"
-                          defaultMessage={`Content in progress.`}
+                          description="account eduid - list item 1-heading"
+                          defaultMessage={`Email addresses: `}
                         />
-                      </em>
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 1"
+                        defaultMessage={` You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:`}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 1-1"
+                            defaultMessage={`Add by clicking on the "+ add more" link and remove by clicking on the bin icon.`}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 1-2"
+                            defaultMessage={`Confirm an address by clicking on the link "Confirm" and enter the code that is emailed to that address into the website form.`}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 1-3"
+                            defaultMessage={`Make one email address your primary address by clicking on the link "Make primary".`}
+                          />
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 2-heading"
+                          defaultMessage={`Language:  `}
+                        />
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 2"
+                        defaultMessage={` The default language is based on the language 
+                  setting that your browser uses. Available options are Swedish and English.`}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="settings eduid - list item 2-1"
+                            defaultMessage="To change the default language for eduID you can log in to eduID and select your 
+                  preference using the Language radio buttons under Account. "
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="settings eduid - list item 2-2"
+                            defaultMessage="You can also change the language for the displayed page in the footer of the 
+                  webpage."
+                          />
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 3-heading"
+                          defaultMessage={`Change password  `}
+                        />
+                      </strong>
+                      {/* &nbsp;
+                      <FormattedMessage description="account eduid - list item 3" defaultMessage={`...`} /> */}
+                    </li>
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 4-heading"
+                          defaultMessage={`ORCID account: `}
+                        />
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 4"
+                        defaultMessage={`Sharing your eduID with your existing ORCID iD.`}
+                      />
+                    </li>
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 5-heading"
+                          defaultMessage={`ESI information: `}
+                        />
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 5"
+                        defaultMessage={`Connecting your eduID to ESI if enabled by your institution.`}
+                      />
+                    </li>
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 6-heading"
+                          defaultMessage={`Delete eduID  `}
+                        />
+                      </strong>
+                      {/* &nbsp;
+                      <FormattedMessage description="account eduid - list item 6" defaultMessage={`...`} /> */}
                     </li>
                   </ul>
-                </AccordionItemTemplate> */}
+                </AccordionItemTemplate>
               </Accordion>
-              <h4>
-                <FormattedMessage
-                  description="how enhance eduid - heading"
-                  defaultMessage="How can I enhance my eduID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="enhance eduid - list definition"
-                  defaultMessage={`In eduID you are encouraged to add further details such as:`}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 1"
-                    defaultMessage={`your full name to be able to add a security key or access some services from an 
-                    unverified account,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 3"
-                    defaultMessage="a security key of you are able to for added security,"
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 4"
-                    defaultMessage={`connecting your eduID to Ladok if enabled by your institution, or sharing it with 
-                    your existing ORCID iD,`}
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="enhance eduid - list item 5"
-                    defaultMessage={`verifying your identity to strengthen your eduID sufficiently for many external 
-                    services.`}
-                  />
-                </li>
-              </ul>
-              <p>
-                <FormattedMessage
-                  description="enhance eduID verification - paragraph"
-                  defaultMessage={`For more detailed information on how to verify your created account based on your 
-                  situation, see the 'Verification of Identity' help section.`}
-                />
-              </p>
-            </article>
-            <article>
-              <h4>
-                <FormattedMessage
-                  description="settings eduid - language heading"
-                  defaultMessage="How do I change the default language in eduID?"
-                />
-              </h4>
-              <p>
-                <FormattedMessage
-                  description="settings eduid - language paragraph"
-                  defaultMessage={`The default language is based on the language 
-                  setting that your browser uses. Available options are Swedish and English.`}
-                />
-              </p>
-              <ul className="bullets">
-                <li>
-                  <FormattedMessage
-                    description="settings eduid - re-login list item 1"
-                    defaultMessage="To change the default language for eduID you can log in to eduID and select your 
-                  preference using the Language radio buttons under Account. "
-                  />
-                </li>
-                <li>
-                  <FormattedMessage
-                    description="settings eduid - re-login list item 2"
-                    defaultMessage="You can also change the language for the displayed page in the footer of the 
-                  webpage."
-                  />
-                </li>
-              </ul>
             </article>
           </AccordionItemTemplate>
 
