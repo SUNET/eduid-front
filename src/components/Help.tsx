@@ -663,7 +663,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-2"
-                            defaultMessage={`Security key: external device such as your USB security key,
+                            defaultMessage={`Security key: external device such as your USB security key.
                           `}
                           />
                         </li>
