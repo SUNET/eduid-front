@@ -29,7 +29,7 @@ export function AuthenticateModal() {
       const parsedFrontendState = JSON.parse(frontend_state);
       setSecurityKeyDescription(parsedFrontendState.description);
     }
-  }, [frontend_state, securityKeyDescription]);
+  }, [frontend_state]);
 
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
@@ -76,7 +76,7 @@ export function AuthenticateModal() {
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
-                defaultMessage="Note: Your security key {securityKeyDescription} will be removed after login."
+                defaultMessage="Note: Your security key {securityKeyDescription} will be removed after you log in."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
                 }}
