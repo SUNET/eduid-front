@@ -29,7 +29,7 @@ export function AuthenticateModal() {
       const parsedFrontendState = JSON.parse(frontend_state);
       setSecurityKeyDescription(parsedFrontendState.description);
     }
-  }, [frontend_state]);
+  }, [frontend_state, securityKeyDescription]);
 
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
@@ -61,11 +61,22 @@ export function AuthenticateModal() {
             defaultMessage="You need to log in again to perform the requested action."
           />
           <br />
-          {securityKeyDescription && (
+          {frontend_action === "verifyCredentials" && (
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
                 defaultMessage="Note: please use your security key {securityKeyDescription} during the login process."
+                values={{
+                  securityKeyDescription: <strong>{securityKeyDescription}</strong>,
+                }}
+              />
+            </p>
+          )}
+          {frontend_action === "removeSecurityKeyAuthn" && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: Your security key {securityKeyDescription} will be removed after login."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
                 }}
