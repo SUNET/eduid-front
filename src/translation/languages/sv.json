@@ -227,10 +227,6 @@
     "developer_comment": "use freja - list item 3",
     "string": "logga in i eduID och välj metoden 'Med Freja+ digitalt id-kort' i identitetshanteringen och följ instruktionerna."
   },
-  "2ogwNX": {
-    "developer_comment": "account eduid - list item 3-heading",
-    "string": "Byt lösenord"
-  },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
@@ -373,10 +369,6 @@
     "developer_comment": "security eduid - list definition",
     "string": "Säkerhetssidan innehåller:"
   },
-  "6FTaDj": {
-    "developer_comment": "security eduid - list item 1-2",
-    "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB säkerhetsnyckel,"
-  },
   "6Ka904": {
     "developer_comment": "confirmed account description",
     "string": "Läs mer om ditt bekräftade konto under {account}"
@@ -413,6 +405,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "75yL3y": {
+    "developer_comment": "use ladok - list item 1",
+    "string": "under Konto i eduID, aktivera ESI-kontrollen,"
+  },
   "7Fw0mr": {
     "developer_comment": "security eduid - list item 3",
     "string": "En tabell som visar dina tillagda nycklar med följande information:"
@@ -444,6 +440,10 @@
   "7yS+J6": {
     "developer_comment": "edit button",
     "string": "ändra"
+  },
+  "859E+h": {
+    "developer_comment": "about orcid ladok - handle",
+    "string": "Länkning till ORCID / ESI"
   },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
@@ -581,6 +581,10 @@
     "developer_comment": "Set new password",
     "string": "Repetera ditt nya lösenord"
   },
+  "BR5TIv": {
+    "developer_comment": "account eduid - list item 6",
+    "string": "Länken \"Radera eduID\" öppnar en modal för att bekräfta att ditt konto ska raderas permanent."
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Ändra lösenord: Rekommenderat lösenord"
@@ -705,9 +709,17 @@
     "developer_comment": "Verify Identity heading",
     "string": "Verifiera din identitet"
   },
+  "ERY9/S": {
+    "developer_comment": "account eduid - list item 3-heading",
+    "string": "Byt lösenord:"
+  },
   "ES63c/": {
     "developer_comment": "universityadmissions - link text",
     "string": "antagning.se"
+  },
+  "EVSSGm": {
+    "developer_comment": "how add security key - paragraph 2",
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in, om du inte har stängt av 2FA inställningen under Säkerhet. Du kan ändå behöva använda säkerhetsnyckeln för åtkomst till andra anslutande tjänster som kräver det."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -743,6 +755,10 @@
   "FICYKZ": {
     "developer_comment": "accordion item swedish additional info",
     "string": "Med digitalt ID-kort / Via post"
+  },
+  "FTlcWo": {
+    "developer_comment": "login eduid - security key paragraph",
+    "string": "Obs: du kan läsa mer om ORCID iD, Ladok och ESI i hjälpavsnittet \"Länkning till ORCID / ESI\"."
   },
   "FU7D54": {
     "developer_comment": "accordion item passport title",
@@ -868,6 +884,10 @@
     "developer_comment": "login eduid - username list item 2",
     "string": "ditt unika ID som visas på inloggade startsidan och under Konto."
   },
+  "IRnUgl": {
+    "developer_comment": "account eduid - list item 3",
+    "string": "Byt alltid ditt lösenord om du tror att någon annan har tillgång till det."
+  },
   "IW+u0G": {
     "developer_comment": "confirmed account description",
     "string": "Obs: ytterligare inställningar för språk, e-postadresser, lösenordshantering samt länkning till ORCID och ESI kan hanteras under {account}. "
@@ -887,10 +907,6 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "Bekräfta"
-  },
-  "IqxNFW": {
-    "developer_comment": "account eduid - list item 4",
-    "string": "Ansluta ditt eduID med befintligt ORCID iD."
   },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
@@ -1045,7 +1061,7 @@
   },
   "NT4bZ4": {
     "developer_comment": "platform authn help text",
-    "string": "T.ex. USB säkerhetsnyckel eller enheten som du just nu använder."
+    "string": "T.ex. USB-säkerhetsnyckel eller enheten som du just nu använder."
   },
   "NYEFAp": {
     "developer_comment": "about assurance levels - info",
@@ -1070,6 +1086,10 @@
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID-identifierare"
+  },
+  "O22iSq": {
+    "developer_comment": "account eduid - list item 5",
+    "string": "En toggle-kontroll och meny för att länka ditt eduID till ESI om det stöds av din institution."
   },
   "O7HVVj": {
     "developer_comment": "device info",
@@ -1151,6 +1171,10 @@
     "developer_comment": "Display name select placeholder",
     "string": "välj visningsnamn"
   },
+  "Pd9suV": {
+    "developer_comment": "how add security key - paragraph 1",
+    "string": "När du är inloggad kan du lägga till och bekräfta säkerhetsnycklar som du har möjlighet att använda, under Säkerhet i eduID och följa instruktionerna."
+  },
   "Pf9X55": {
     "developer_comment": "create eduid - list item 1",
     "string": "ange ditt förnamn, efternamn och e-postadress i formuläret och klicka på knappen \"Skapa eduID\","
@@ -1210,10 +1234,6 @@
   "R5Olyc": {
     "developer_comment": "eduID index",
     "string": "eduID är enklare och säkrare inloggning."
-  },
-  "RCu3GS": {
-    "developer_comment": "use ladok - list item 1",
-    "string": "bland dina inställningar i eduID, aktivera ESI-kontrollen,"
   },
   "RFjlYD": {
     "developer_comment": "accordion item passport additional info",
@@ -1305,7 +1325,7 @@
   },
   "TZU5ir": {
     "developer_comment": "platform authn key help text",
-    "string": "T.ex. USB säkerhetsnyckel som du använder."
+    "string": "T.ex. USB-säkerhetsnyckel som du använder."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -1432,9 +1452,17 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
+  "W0anmW": {
+    "developer_comment": "account eduid - list item 3-3",
+    "string": "Om du använder en passkey för din inloggning, spara den inte på samma nyckelring som ditt lösenord."
+  },
   "WBKF0h": {
     "developer_comment": "security key status",
     "string": "Verifiera med:"
+  },
+  "WEPUTC": {
+    "developer_comment": "security eduid - list item 1-1",
+    "string": "Denna enhet: inbyggd säkerhetsnyckel i mobil eller laptop, t.ex. passkey med din biometriska information,"
   },
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
@@ -1455,10 +1483,6 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
-  },
-  "WfjKNE": {
-    "developer_comment": "account eduid - list item 6-heading",
-    "string": "Radera eduID"
   },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
@@ -1531,6 +1555,10 @@
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "Vad är Freja+?"
+  },
+  "YDtIOb": {
+    "developer_comment": "account eduid - list item 3-1",
+    "string": "Länken \"Byt lösenord\" tar dig igenom stegen för att byta ditt lösenord. Som när du skapade ditt eduID kommer du få välja mellan ett föreslaget (automatiskt genererat) lösenord och ett du skapar själv."
   },
   "YLzAJF": {
     "developer_comment": "security key status",
@@ -1726,10 +1754,6 @@
   "bkpUyB": {
     "developer_comment": "verify webauthn token modal body text",
     "string": "Klicka på knappen för BankID eller Freja+ för att verifiera din säkerhetsnyckel."
-  },
-  "bnSKX2": {
-    "developer_comment": "security eduid - list item 1-1",
-    "string": "Denna enhet: inbyggd passkey t.ex. med din biometriska information,"
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
@@ -1969,10 +1993,6 @@
   "emails.verification-success": {
     "string": "E-postadressen bekräftad"
   },
-  "epYGtQ": {
-    "developer_comment": "account eduid - list item 5",
-    "string": "Länka ditt eduID till ESI om det stöds av din institution."
-  },
   "error_in_form": {
     "string": "Formulärfel. Se nedan för specifikt felmeddelande"
   },
@@ -2140,10 +2160,6 @@
     "developer_comment": "Use other device 2",
     "string": "Åtkomst nekad."
   },
-  "hq3YDD": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "När du har loggat in kan du lägga till och bekräfta säkerhetsnycklar bland inställningarna i eduID genom att följa instruktionerna där."
-  },
   "hs3tJz": {
     "developer_comment": "Login MFA",
     "string": "Lägg till en säkerhetsnyckel till ditt konto. Detta kan vara en fysisk USB-säkerhetsnyckel eller en enhet som en smartphone eller surfplatta som stöder WebAuthn-standarden. Vissa datorer har även inbyggda fingeravtrycksläsare som kan användas som säkerhetsnyckel."
@@ -2238,6 +2254,10 @@
   "jgEunh": {
     "developer_comment": "Improve Security heading",
     "string": "Öka säkerheten"
+  },
+  "jhAmOa": {
+    "developer_comment": "account eduid - list item 3-2",
+    "string": "Ett föreslaget slumpmässigt genererat lösenord är vanligtvis säkrast och du kan använda en lösenordshanterare, antigen inbyggd i webbläsaren eller installerad tredje-part, för att hjälpa dig att komma ihåg ditt lösenord."
   },
   "jqbSR+": {
     "developer_comment": "account eduid - list item 1",
@@ -2439,6 +2459,10 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Tillbaka"
   },
+  "lxJwll": {
+    "developer_comment": "use orcid - list item 2",
+    "string": "klicka på knappen 'Länka ORCID konto' under Konto i eduID,"
+  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "Ett eduID konto använder redan {email}"
@@ -2566,6 +2590,10 @@
   "nuB/SD": {
     "developer_comment": "captcha input label",
     "string": "Ange koden från bilden"
+  },
+  "nvCSyo": {
+    "developer_comment": "account eduid - list item 4",
+    "string": "En knapp för att ansluta ditt eduID med befintligt ORCID iD."
   },
   "nyRE3J": {
     "developer_comment": "manage your tokens",
@@ -2838,10 +2866,6 @@
     "developer_comment": "what is international - paragraph 1",
     "string": "Freja är ett eID, en identitetsverifierings-plattform som med hjälp av Freja-appen i användarens mobil tillsammans med ett biometriskt pass kan verifiera en digital identitet på distans."
   },
-  "refRZe": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in, om du inte har stängt av 2FA inställningen i Avancerade inställningar. Du kan ändå behöva använda säkerhetsnyckeln för åtkomst till andra anslutande tjänster som kräver det."
-  },
   "required": {
     "string": "*Fältet kan inte vara tomt"
   },
@@ -2919,6 +2943,10 @@
   "sCxiby": {
     "developer_comment": "Temp info - message2",
     "string": "Redan verifierade identiteter kommer inte att påverkas av denna ändring."
+  },
+  "sNx8Ua": {
+    "developer_comment": "security eduid - list item 1-2",
+    "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB-säkerhetsnyckel,"
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
@@ -3195,6 +3223,10 @@
     "developer_comment": "about eduid - handle",
     "string": "Om eduID"
   },
+  "wDDWqO": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Radera eduID:"
+  },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
@@ -3271,10 +3303,6 @@
     "developer_comment": "Ladok account linking",
     "string": "Finns ditt lärosäte inte i listan ska du inte använda eduID för att logga in i tjänster som kräver ESI. Kontakta då istället ditt lärosäte för mer information."
   },
-  "yL6rhr": {
-    "developer_comment": "use orcid - list item 2",
-    "string": "klicka på knappen 'Länka Orcid konto' bland Inställningar i eduID,"
-  },
   "yM0mAW": {
     "string": "Kan du inte använda säkerhetsnyckel?"
   },
@@ -3313,10 +3341,6 @@
   "zeCbht": {
     "developer_comment": "start main title",
     "string": "Välkommen, {username}!"
-  },
-  "zmf6Gz": {
-    "developer_comment": "about orcid ladok - handle",
-    "string": "Länkning till Orcid / ESI"
   },
   "ztVnUK": {
     "developer_comment": "login eduid - re-login list item 3",
