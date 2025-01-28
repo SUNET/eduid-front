@@ -656,14 +656,14 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-1"
-                            defaultMessage={`This device: built in passkeys including your biometrics,
+                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics,
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-2"
-                            defaultMessage={`Security key: external device such as your USB security key,
+                            defaultMessage={`Security key: external device such as your USB security key.
                           `}
                           />
                         </li>
@@ -801,11 +801,36 @@ export function Help(): JSX.Element {
                       <strong>
                         <FormattedMessage
                           description="account eduid - list item 3-heading"
-                          defaultMessage={`Change password  `}
+                          defaultMessage={`Change password: `}
                         />
                       </strong>
-                      {/* &nbsp;
-                      <FormattedMessage description="account eduid - list item 3" defaultMessage={`...`} /> */}
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 3"
+                        defaultMessage={`Always change your password if you believe someone else has access to it. `}
+                      />
+                      <ul className="nested">
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 3-1"
+                            defaultMessage={`Clicking on the link 
+                        "Change password" will take you through the steps for changing your password. As when you created your eduID, 
+                        there is a choice between a suggested (automatically generated) password or one you create.`}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 3-2"
+                            defaultMessage={`A randomly created suggested password is generally considered safest and you can use a third party or browser built in Password Manager tool to help you keep track of your password.`}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
+                            description="account eduid - list item 3-3"
+                            defaultMessage={`If you are using a passkey for your login, don't save it on the same key chain as your password.`}
+                          />
+                        </li>
+                      </ul>
                     </li>
                     <li>
                       <strong>
@@ -817,7 +842,7 @@ export function Help(): JSX.Element {
                       &nbsp;
                       <FormattedMessage
                         description="account eduid - list item 4"
-                        defaultMessage={`Sharing your eduID with your existing ORCID iD.`}
+                        defaultMessage={`A button connecting your eduID with your existing ORCID iD.`}
                       />
                     </li>
                     <li>
@@ -830,20 +855,29 @@ export function Help(): JSX.Element {
                       &nbsp;
                       <FormattedMessage
                         description="account eduid - list item 5"
-                        defaultMessage={`Connecting your eduID to ESI if enabled by your institution.`}
+                        defaultMessage={`A toggle control and select box connecting your eduID to ESI, if enabled by your institution.`}
                       />
                     </li>
                     <li>
                       <strong>
                         <FormattedMessage
                           description="account eduid - list item 6-heading"
-                          defaultMessage={`Delete eduID  `}
+                          defaultMessage={`Delete eduID: `}
                         />
                       </strong>
-                      {/* &nbsp;
-                      <FormattedMessage description="account eduid - list item 6" defaultMessage={`...`} /> */}
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 6"
+                        defaultMessage={`Clicking on the link "Delete eduID" will open a modal confirming deletion of your account permanently.`}
+                      />
                     </li>
                   </ul>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - security key paragraph"
+                      defaultMessage={`Note: you can read more about ORCID iD and Ladok and ESI settings in the "Connecting account with Orcid / ESI" help section."`}
+                    />
+                  </p>
                 </AccordionItemTemplate>
               </Accordion>
             </article>
@@ -1304,13 +1338,13 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="how add security key - paragraph 1"
                   defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
+                    have access to any of these methods) in the Security area of eduID and follow the instructions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="how add security key - paragraph 2"
-                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
+                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Security. You might still need to use your security key if other connecting services require 2FA."
                 />
               </p>
               <h4>
@@ -1617,7 +1651,7 @@ export function Help(): JSX.Element {
             title={
               <FormattedMessage
                 description="about orcid ladok - handle"
-                defaultMessage="Connecting account with Orcid / Ladok"
+                defaultMessage="Connecting account with ORCID / Ladok"
               />
             }
             additionalInfo={null}
@@ -1659,7 +1693,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="use orcid - list item 2"
-                    defaultMessage="click the 'Connect ORCID account' button in the Settings area of eduID,"
+                    defaultMessage="click the 'Add ORCID account' button in the Account area of eduID,"
                   />
                 </li>
                 <li>
@@ -1711,7 +1745,7 @@ export function Help(): JSX.Element {
                 <li>
                   <FormattedMessage
                     description="use ladok - list item 1"
-                    defaultMessage="in the Settings area of eduID, toggle the Ladok control,"
+                    defaultMessage="in the Account area of eduID, toggle the ESI control,"
                   />
                 </li>
                 <li>
