@@ -1338,13 +1338,13 @@ export function Help(): JSX.Element {
                 <FormattedMessage
                   description="how add security key - paragraph 1"
                   defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions.`}
+                    have access to any of these methods) in the Security area of eduID and follow the instructions.`}
                 />
               </p>
               <p>
                 <FormattedMessage
                   description="how add security key - paragraph 2"
-                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
+                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Security. You might still need to use your security key if other connecting services require 2FA."
                 />
               </p>
               <h4>
