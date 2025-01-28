@@ -4,7 +4,7 @@ import IntlProvider from "./IntlProvider";
 import { Provider as ReduxProvider } from "react-redux";
 import { AnyAction, Store } from "redux";
 
-type Props = {
+interface Props extends React.PropsWithChildren {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: Store<any, AnyAction>;
 };

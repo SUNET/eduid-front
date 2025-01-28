@@ -1,5 +1,5 @@
 import Splash from "components/Common/Splash";
-import React, { useRef, useState } from "react";
+import React, { PropsWithChildren, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -8,7 +8,6 @@ export const codeFormTestId = "response-code-form";
 
 interface ResponseCodeFormProps {
   bad_attempts?: number;
-  children?: React.ReactNode;
   code?: string;
   handleSubmitCode(values: ResponseCodeValues): void;
   inputsDisabled: boolean;
@@ -18,7 +17,7 @@ export interface ResponseCodeValues {
   v: string[];
 }
 
-export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
+export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): JSX.Element {
   const valueChars = (props.code || "").split("");
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
