@@ -83,6 +83,14 @@ export function AuthenticateModal() {
               />
             </p>
           )}
+          {frontend_action === "removeIdentity" && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: Your identity will be disconnected after you log in."
+              />
+            </p>
+          )}
         </Fragment>
       }
       showModal={re_authenticate}
