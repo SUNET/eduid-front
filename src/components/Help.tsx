@@ -656,7 +656,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-1"
-                            defaultMessage={`This device: built in passkeys including your biometrics,
+                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics,
                           `}
                           />
                         </li>
