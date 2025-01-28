@@ -1089,7 +1089,7 @@
   },
   "O22iSq": {
     "developer_comment": "account eduid - list item 5",
-    "string": "A toggle control and select box connecting your eduID to ESI, if enabled by your institution."
+    "string": "A toggle control and select menu connecting your eduID to ESI, if enabled by your institution."
   },
   "O7HVVj": {
     "developer_comment": "device info",
