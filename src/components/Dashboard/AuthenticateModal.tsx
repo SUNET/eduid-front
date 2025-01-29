@@ -87,7 +87,7 @@ export function AuthenticateModal() {
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
-                defaultMessage="Note: Your identity will be disconnected after you log in."
+                defaultMessage="Note: continuing will disconnect your real identity from your eduID after you log in."
               />
             </p>
           )}
