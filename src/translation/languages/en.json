@@ -1673,7 +1673,7 @@
   },
   "b7rKTd": {
     "developer_comment": "security zone modal",
-    "string": "Note: continuing will disconnect your real identity from your eduID after you log in."
+    "string": "Note: Continuing will disconnect your real identity from your eduID after you log in."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
