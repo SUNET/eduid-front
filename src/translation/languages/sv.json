@@ -318,6 +318,10 @@
     "developer_comment": "login eduid - other devices list item 3",
     "string": "på den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
   },
+  "54jpQ0": {
+    "developer_comment": "security zone modal",
+    "string": "Obs: Din säkerhetsnyckel {securityKeyDescription} kommer att tas bort efter inloggningen."
+  },
   "56tvVG": {
     "developer_comment": "which verification methods - paragraph2",
     "string": "Obs: du kan ta bort en verifierad identitet som är kopplad till ditt eduID bland inställningarna för Identitet."
@@ -1666,6 +1670,10 @@
   "b7acbg": {
     "developer_comment": "how to contact support phone",
     "string": ", men för enklare ärenden kan du också nå oss per telefonnummer"
+  },
+  "b7rKTd": {
+    "developer_comment": "security zone modal",
+    "string": "Obs: din verkliga identitet kommer att frånkopplas ditt eduID efter inloggningen."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
