@@ -439,8 +439,8 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
     })();
   }, [authn?.response?.frontend_action]);
 
-  async function handleConfirmDeleteModal(credential_key: string) {
-    credentialKey.current = credential_key;
+  async function handleConfirmDeleteModal(cred: CredentialType) {
+    credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
@@ -454,13 +454,14 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
 
   async function handleRemoveWebauthnToken() {
     setShowConfirmRemoveSecurityKeyModal(false);
-    const response = await dispatch(removeWebauthnToken({ credential_key: credentialKey.current as string }));
+    const parsedFrontendState = credentialKey.current && JSON.parse(credentialKey.current);
+    const response = await dispatch(removeWebauthnToken({ credential_key: parsedFrontendState.credential as string }));
     if (removeWebauthnToken.rejected.match(response)) {
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: credentialKey.current as string,
+          frontend_state: JSON.stringify(parsedFrontendState),
         })
       );
     }
@@ -531,7 +532,7 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
                 id="remove-webauthn"
                 buttonstyle="remove"
                 size="sm"
-                onClick={() => handleConfirmDeleteModal(cred.key)}
+                onClick={() => handleConfirmDeleteModal(cred)}
               ></EduIDButton>
             </div>
             <div>

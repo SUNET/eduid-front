@@ -61,7 +61,7 @@ export function AuthenticateModal() {
             defaultMessage="You need to log in again to perform the requested action."
           />
           <br />
-          {securityKeyDescription && (
+          {frontend_action === "verifyCredentials" && (
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
@@ -69,6 +69,25 @@ export function AuthenticateModal() {
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
                 }}
+              />
+            </p>
+          )}
+          {frontend_action === "removeSecurityKeyAuthn" && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: Your security key {securityKeyDescription} will be removed after you log in."
+                values={{
+                  securityKeyDescription: <strong>{securityKeyDescription}</strong>,
+                }}
+              />
+            </p>
+          )}
+          {frontend_action === "removeIdentity" && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: continuing will disconnect your real identity from your eduID after you log in."
               />
             </p>
           )}
