@@ -318,6 +318,10 @@
     "developer_comment": "login eduid - other devices list item 3",
     "string": "on that second device, review the device requesting to be logged in, and use the presented code to log in by entering it within the time shown, in the first device."
   },
+  "54jpQ0": {
+    "developer_comment": "security zone modal",
+    "string": "Note: Your security key {securityKeyDescription} will be removed after you log in."
+  },
   "56tvVG": {
     "developer_comment": "which verification methods - paragraph2",
     "string": "Note: you can remove a verified identity connected to your eduID in the Identity area."
@@ -1666,6 +1670,10 @@
   "b7acbg": {
     "developer_comment": "how to contact support phone",
     "string": ", but for simple matters you can also reach us on phone number"
+  },
+  "b7rKTd": {
+    "developer_comment": "security zone modal",
+    "string": "Note: Continuing will disconnect your real identity from your eduID after you log in."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
