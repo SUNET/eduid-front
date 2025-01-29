@@ -87,9 +87,6 @@ export function createResetPasswordMachine() {
                 COMPLETE: {
                   target: "ProcessCaptcha",
                 },
-                // BYPASS: {
-                //   target: "EmailLinkSent",
-                // },
               },
             },
             ProcessCaptcha: {
@@ -111,7 +108,6 @@ export function createResetPasswordMachine() {
                   target: "#resetPassword.FinaliseResetPassword",
                 },
                 CHOOSE_SECURITY_KEY: {
-                  // target: "ResetPasswordEnterEmail",
                   target: "Finished",
                 },
                 GO_BACK: {
