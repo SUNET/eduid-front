@@ -1,5 +1,4 @@
 import { useActor } from "@xstate/react";
-import { requestEmailLink } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
@@ -54,11 +53,11 @@ export function ResetPasswordApp(): JSX.Element {
 
   return (
     <React.Fragment>
-      {state.matches("HandleCaptcha") && <ResetPasswordCaptcha />}
-      {state.matches("HandleCaptcha.ProcessCaptcha") && <ProcessCaptcha />}
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
       {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
+      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordCaptcha") && <ResetPasswordCaptcha />}
+      {state.matches("AskForEmailOrConfirmEmail.ProcessCaptcha") && <ProcessCaptcha />}
       {state.matches("AskForEmailOrConfirmEmail.EmailLinkSent") && <EmailLinkSent />}
       {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
       {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
@@ -105,12 +104,8 @@ export function ResetPasswordConfirmEmail(): JSX.Element {
   async function sendEmailOnClick() {
     dispatch(clearNotifications());
     if (email_address) {
-      const response = await dispatch(requestEmailLink({ email: email_address }));
-      if (requestEmailLink.fulfilled.match(response)) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-      } else {
-        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-      }
+      dispatch(resetPasswordSlice.actions.setEmailAddress(email_address));
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
 

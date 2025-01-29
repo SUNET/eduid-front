@@ -39,7 +39,7 @@ export function createResetPasswordMachine() {
         ResetPasswordApp: {
           on: {
             START_RESET_PW: {
-              target: "HandleCaptcha",
+              target: "AskForEmailOrConfirmEmail",
             },
             CAN_DO_EXTRA_SECURITY: {
               target: "HandleExtraSecurities",
@@ -47,37 +47,6 @@ export function createResetPasswordMachine() {
             WITHOUT_EXTRA_SECURITY: {
               target: "FinaliseResetPassword",
             },
-          },
-        },
-        HandleCaptcha: {
-          initial: "ResetPasswordCaptcha",
-          states: {
-            ResetPasswordCaptcha: {
-              on: {
-                COMPLETE: {
-                  target: "ProcessCaptcha",
-                },
-                BYPASS: {
-                  target: "#resetPassword.AskForEmailOrConfirmEmail",
-                },
-              },
-            },
-            ProcessCaptcha: {
-              on: {
-                API_SUCCESS: {
-                  target: "Finished",
-                },
-                API_FAIL: {
-                  target: "ResetPasswordCaptcha",
-                },
-              },
-            },
-            Finished: {
-              type: "final",
-            },
-          },
-          onDone: {
-            target: "AskForEmailOrConfirmEmail",
           },
         },
         AskForEmailOrConfirmEmail: {
@@ -95,11 +64,8 @@ export function createResetPasswordMachine() {
             },
             ResetPasswordConfirmEmail: {
               on: {
-                API_SUCCESS: {
-                  target: "EmailLinkSent",
-                },
-                API_FAIL: {
-                  target: "ResetPasswordEnterEmail",
+                COMPLETE: {
+                  target: "ResetPasswordCaptcha",
                 },
                 GO_BACK: {
                   target: "#resetPassword.ReturnToPrevious",
@@ -108,14 +74,34 @@ export function createResetPasswordMachine() {
             },
             ResetPasswordEnterEmail: {
               on: {
+                COMPLETE: {
+                  target: "ResetPasswordCaptcha",
+                },
+                GO_BACK: {
+                  target: "#resetPassword.ReturnToPrevious",
+                },
+              },
+            },
+            ResetPasswordCaptcha: {
+              on: {
+                COMPLETE: {
+                  target: "ProcessCaptcha",
+                },
+                // BYPASS: {
+                //   target: "EmailLinkSent",
+                // },
+              },
+            },
+            ProcessCaptcha: {
+              on: {
                 API_SUCCESS: {
                   target: "EmailLinkSent",
                 },
                 API_FAIL: {
-                  target: "ResetPasswordEnterEmail",
+                  target: "ResetPasswordCaptcha",
                 },
-                GO_BACK: {
-                  target: "#resetPassword.ReturnToPrevious",
+                START_RESET_PW: {
+                  target: "#resetPassword.AskForEmailOrConfirmEmail.ResetPasswordEnterEmail",
                 },
               },
             },
