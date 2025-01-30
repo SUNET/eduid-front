@@ -2938,7 +2938,7 @@
     "string": "Could not continue the reset password process. Please try again"
   },
   "resetpw.user-not-found": {
-    "string": "If the address is registered, a message with instructions to reset the password has been sent."
+    "string": "User not found. Please try again."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",

@@ -2,10 +2,7 @@ import { FormattedMessage } from "react-intl";
 
 export const apiResponses = {
   "resetpw.user-not-found": (
-    <FormattedMessage
-      id="resetpw.user-not-found"
-      defaultMessage="If the address is registered, a message with instructions to reset the password has been sent."
-    />
+    <FormattedMessage id="resetpw.user-not-found" defaultMessage="User not found. Please try again." />
   ),
 
   "resetpw.invalid_user": (

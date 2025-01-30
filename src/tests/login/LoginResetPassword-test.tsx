@@ -93,9 +93,9 @@ test("can click 'forgot password' with an e-mail address", async () => {
     expect(screen.getByTestId("email-address")).toHaveTextContent(email);
   });
 
-  // go back button is shown
-  const resendButton = screen.getByRole("button", { name: /^go back/i });
-  expect(resendButton).toBeInTheDocument();
+  // Cancel button is shown
+  const cancelButton = screen.getByRole("button", { name: /^Cancel/i });
+  expect(cancelButton).toBeInTheDocument();
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
