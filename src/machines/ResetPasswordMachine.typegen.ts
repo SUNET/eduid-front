@@ -19,15 +19,17 @@ export interface Typegen0 {
   matchesStates:
     | "AskForEmailOrConfirmEmail"
     | "AskForEmailOrConfirmEmail.AskForEmailOrConfirmEmail"
-    | "AskForEmailOrConfirmEmail.EmailLinkSent"
     | "AskForEmailOrConfirmEmail.Finished"
-    | "AskForEmailOrConfirmEmail.ProcessCaptcha"
-    | "AskForEmailOrConfirmEmail.ResetPasswordCaptcha"
     | "AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail"
     | "AskForEmailOrConfirmEmail.ResetPasswordEnterEmail"
     | "FinaliseResetPassword"
     | "FinaliseResetPassword.ResetPasswordSuccess"
     | "FinaliseResetPassword.SetNewPassword"
+    | "HandleCaptcha"
+    | "HandleCaptcha.EmailLinkSent"
+    | "HandleCaptcha.Finished"
+    | "HandleCaptcha.ProcessCaptcha"
+    | "HandleCaptcha.ResetPasswordCaptcha"
     | "HandleExtraSecurities"
     | "HandleExtraSecurities.ExtraSecurityFinished"
     | "HandleExtraSecurities.Fail"
@@ -40,13 +42,11 @@ export interface Typegen0 {
     | {
         "AskForEmailOrConfirmEmail"?:
           | "AskForEmailOrConfirmEmail"
-          | "EmailLinkSent"
           | "Finished"
-          | "ProcessCaptcha"
-          | "ResetPasswordCaptcha"
           | "ResetPasswordConfirmEmail"
           | "ResetPasswordEnterEmail";
         "FinaliseResetPassword"?: "ResetPasswordSuccess" | "SetNewPassword";
+        "HandleCaptcha"?: "EmailLinkSent" | "Finished" | "ProcessCaptcha" | "ResetPasswordCaptcha";
         "HandleExtraSecurities"?:
           | "ExtraSecurityFinished"
           | "Fail"

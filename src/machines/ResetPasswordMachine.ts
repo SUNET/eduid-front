@@ -65,7 +65,7 @@ export function createResetPasswordMachine() {
             ResetPasswordConfirmEmail: {
               on: {
                 COMPLETE: {
-                  target: "ResetPasswordCaptcha",
+                  target: "Finished",
                 },
                 GO_BACK: {
                   target: "#resetPassword.ReturnToPrevious",
@@ -75,21 +75,29 @@ export function createResetPasswordMachine() {
             ResetPasswordEnterEmail: {
               on: {
                 COMPLETE: {
-                  target: "ResetPasswordCaptcha",
+                  target: "Finished",
                 },
                 GO_BACK: {
                   target: "#resetPassword.ReturnToPrevious",
                 },
               },
             },
+            Finished: {
+              type: "final",
+            },
+          },
+          onDone: {
+            target: "HandleCaptcha",
+          },
+        },
+        HandleCaptcha: {
+          initial: "ResetPasswordCaptcha",
+          states: {
             ResetPasswordCaptcha: {
               on: {
                 COMPLETE: {
                   target: "ProcessCaptcha",
                 },
-                // BYPASS: {
-                //   target: "EmailLinkSent",
-                // },
               },
             },
             ProcessCaptcha: {
