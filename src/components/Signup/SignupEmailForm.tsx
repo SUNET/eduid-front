@@ -42,6 +42,7 @@ interface EmailFormData {
 /* FORM */
 function EmailForm() {
   const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const intl = useIntl();
 
@@ -57,21 +58,31 @@ function EmailForm() {
     description: "placeholder Last name",
   });
 
-  function submitEmailForm(values: EmailFormData) {
+  async function submitEmailForm(values: EmailFormData) {
     const errors: EmailFormData = {};
 
     if (values) {
+      const signupUser = {
+        email: values.email ?? "",
+        given_name: values.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+        surname: values.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+      };
+      dispatch(signupSlice.actions.setEmail(signupUser));
+
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
-      dispatch(
-        signupSlice.actions.setEmail({
-          email: values.email ?? "",
-          given_name: values.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
-          surname: values.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
-        })
-      );
-      dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "COMPLETE" });
+      if (state?.captcha.completed && state?.tou.completed) {
+        const res = await dispatch(registerEmailRequest(signupUser));
+        if (registerEmailRequest.fulfilled.match(res)) {
+          dispatch(clearNotifications());
+          signupContext.signupService.send({ type: "API_SUCCESS" });
+        } else {
+          signupContext.signupService.send({ type: "API_FAIL" });
+        }
+      } else {
+        dispatch(clearNotifications());
+        signupContext.signupService.send({ type: "COMPLETE" });
+      }
     } else {
       errors.email = "required";
     }

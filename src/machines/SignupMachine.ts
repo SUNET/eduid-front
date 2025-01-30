@@ -48,6 +48,12 @@ export function createSignupMachine() {
               COMPLETE: {
                 target: "#signup.HandleCaptchaAndToU",
               },
+              API_SUCCESS: {
+                target: "#signup.HandleEmail.SignupEnterCode",
+              },
+              API_FAIL: {
+                target: "SignupEmailForm",
+              },
             },
           },
         },
