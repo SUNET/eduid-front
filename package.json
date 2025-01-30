@@ -17,8 +17,8 @@
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
   "engines": {
-    "npm": ">=7.21.0",
-    "node": ">=16.8.0"
+    "npm": ">=10.9.2",
+    "node": ">=22.13.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
