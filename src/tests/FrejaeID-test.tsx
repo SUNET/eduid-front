@@ -8,8 +8,8 @@ test("renders frejaeID as expected", () => {
   const method = "frejaeIDVerifyIdentity";
 
   mswServer.use(
-    rest.post("verify-identity", (req, res, ctx) => {
-      const body = req.body as VerifyIdentityRequest;
+    rest.post("verify-identity", async (req, res, ctx) => {
+      const body = (await req.json()) as VerifyIdentityRequest;
       if (body.method != method) {
         return res(ctx.status(400));
       }

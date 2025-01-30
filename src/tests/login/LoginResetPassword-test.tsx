@@ -19,8 +19,8 @@ test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
   const ref = "abc567";
   mswServer.use(
-    rest.post("/next", (req, res, ctx) => {
-      const body = req.body as LoginNextRequest;
+    rest.post("/next", async (req, res, ctx) => {
+      const body = (await req.json()) as LoginNextRequest;
       if (body.ref != ref) {
         return res(ctx.status(400));
       }
@@ -30,8 +30,8 @@ test("can click 'forgot password' with an e-mail address", async () => {
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url", (req, res, ctx) => {
-      const body = req.body as RequestEmailLinkRequest;
+    rest.post("/reset-password-url", async (req, res, ctx) => {
+      const body = (await req.json()) as RequestEmailLinkRequest;
       if (body.email != email) {
         return res(ctx.status(400));
       }
@@ -104,8 +104,8 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const ref = "abc567";
 
   mswServer.use(
-    rest.post("/next", (req, res, ctx) => {
-      const body = req.body as LoginNextRequest;
+    rest.post("/next", async (req, res, ctx) => {
+      const body = (await req.json()) as LoginNextRequest;
       if (body.ref != ref) {
         return res(ctx.status(400));
       }
@@ -115,8 +115,8 @@ test("can click 'forgot password' without an e-mail address", async () => {
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url", (req, res, ctx) => {
-      const body = req.body as RequestEmailLinkRequest;
+    rest.post("/reset-password-url", async (req, res, ctx) => {
+      const body = (await req.json()) as RequestEmailLinkRequest;
       if (body.email != email) {
         return res(ctx.status(400));
       }
@@ -128,8 +128,8 @@ test("can click 'forgot password' without an e-mail address", async () => {
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url/verify-email", (req, res, ctx) => {
-      const body = req.body as VerifyCodeRequest;
+    rest.post("/reset-password-url/verify-email", async (req, res, ctx) => {
+      const body = (await req.json()) as VerifyCodeRequest;
       if (body.email_code != code) {
         return res(ctx.status(400));
       }
@@ -143,16 +143,16 @@ test("can click 'forgot password' without an e-mail address", async () => {
       };
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url/new-password-extra-security-token", (req, res, ctx) => {
-      const body = req.body as NewPasswordRequest;
+    rest.post("/reset-password-url/new-password-extra-security-token", async (req, res, ctx) => {
+      const body = (await req.json()) as NewPasswordRequest;
       if (body.email_code != code || body.password != TEST_PASSWORD) {
         return res(ctx.status(400));
       }
       const payload: NewPasswordResponse = {};
       return res(ctx.json({ type: "test response", payload: payload }));
     }),
-    rest.post("/reset-password-url/new-password", (req, res, ctx) => {
-      const body = req.body as NewPasswordRequest;
+    rest.post("/reset-password-url/new-password", async (req, res, ctx) => {
+      const body = (await req.json()) as NewPasswordRequest;
       if (body.email_code != code || body.password != TEST_PASSWORD) {
         return res(ctx.status(400));
       }
