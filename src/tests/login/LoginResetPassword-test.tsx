@@ -88,14 +88,15 @@ test("can click 'forgot password' with an e-mail address", async () => {
   expect(confirmButton).toBeEnabled();
   fireEvent.click(confirmButton);
 
-  // verify e-mail address is shown after response is received from backend
-  await waitFor(() => {
-    expect(screen.getByTestId("email-address")).toHaveTextContent(email);
-  });
+  // wait for page to change after clicking the confirm button
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
 
-  // go back button is shown
-  const resendButton = screen.getByRole("button", { name: /^go back/i });
-  expect(resendButton).toBeInTheDocument();
+  // verify e-mail address is shown after response is received from backend
+  expect(screen.getByTestId("email-address")).toHaveTextContent(email);
+
+  // the ok button is initially disabled without code
+  const okButton = screen.getByRole("button", { name: /^ok/i });
+  expect(okButton).toBeDisabled();
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
@@ -201,13 +202,13 @@ test("can click 'forgot password' without an e-mail address", async () => {
   expect(sendButton).toBeEnabled();
   fireEvent.click(sendButton);
 
-  // verify e-mail address is shown after response is received from backend
-  await waitFor(() => {
-    expect(screen.getByTestId("email-address")).toHaveTextContent(email);
-  });
+  // wait for page to change after clicking the confirm button
   await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
 
+  // verify e-mail address is shown after response is received from backend
+  expect(screen.getByTestId("email-address")).toHaveTextContent(email);
+
   // the ok button is initially disabled without code
-  const resendButton = screen.getByRole("button", { name: /^ok/i });
-  expect(resendButton).toBeDisabled();
+  const okButton = screen.getByRole("button", { name: /^ok/i });
+  expect(okButton).toBeDisabled();
 });
