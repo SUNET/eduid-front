@@ -65,7 +65,7 @@
     "@formatjs/cli": "^5.1.13",
     "@formatjs/ts-transformer": "^3.13.3",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^14.3.1",
+    "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^27.5.2",
     "@types/node": "^22.12.0",
