@@ -1,8 +1,9 @@
 import { CaptchaRequest, getCaptchaRequest, requestEmailLink, sendCaptchaResponse } from "apis/eduidResetPassword";
 import { GetCaptchaResponse } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
+import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -55,7 +56,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   }
 
   return (
-    <Fragment>
+    <Splash showChildren={Boolean(captcha?.internal_response)}>
       <h1>
         <FormattedMessage
           defaultMessage="Reset Password: Confirm that you are a human."
@@ -73,7 +74,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
       </div>
 
       <InternalCaptcha {...args} getCaptcha={getCaptcha} />
-    </Fragment>
+    </Splash>
   );
 }
 
