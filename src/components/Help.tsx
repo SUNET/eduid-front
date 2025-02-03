@@ -420,19 +420,19 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 1"
-                      defaultMessage={`press the "Forgot your password?" link below the login form,`}
+                      defaultMessage={`Press the "Forgot your password?" link below the login form.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 2"
-                      defaultMessage={`press the "Send email" button to receive a code to the email address presented on the page,`}
+                      defaultMessage={`Press the "Send email" button to receive a code to the email address presented on the page.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 3"
-                      defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
+                      defaultMessage={`Follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
                     />
                   </li>
                 </ol>
