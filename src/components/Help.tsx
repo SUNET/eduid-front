@@ -656,7 +656,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-1"
-                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics,
+                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics.
                           `}
                           />
                         </li>
@@ -687,21 +687,21 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-1"
-                            defaultMessage={`the descriptive name given by you when created,
+                            defaultMessage={`the descriptive name given by you when created
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-2"
-                            defaultMessage={`dates of creation and latest use,
+                            defaultMessage={`dates of creation and latest use
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-3"
-                            defaultMessage={`verification status / verification options (Freja+/BankID),
+                            defaultMessage={`verification status / verification options (Freja+/BankID)
                           `}
                           />
                         </li>
