@@ -587,33 +587,33 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="identity eduid - list item 1"
-                        defaultMessage={`A table presenting your verified identities if you have any,`}
+                        defaultMessage={`A table presenting your verified identities if you have any.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="identity eduid - list item 2"
-                        defaultMessage={`options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
+                        defaultMessage={`Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
                       />
                       <ul className="nested">
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-1"
-                            defaultMessage={`with Swedish digital ID (Freja+/BankID) or by post,
+                            defaultMessage={`With Swedish digital ID (Freja+/BankID) or by post.
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-2"
-                            defaultMessage={`with eIDAS electronic identification for EU citizens,
+                            defaultMessage={`With eIDAS electronic identification for EU citizens.
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-3"
-                            defaultMessage={`Freja eID for most nationalities.
+                            defaultMessage={`With Freja eID for most nationalities.
                           `}
                           />
                         </li>
