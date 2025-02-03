@@ -519,12 +519,12 @@ export function Help(): JSX.Element {
                   </p>
                   <ul className="bullets">
                     <li>
-                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name,`} />
+                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name`} />
                     </li>
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 2"
-                        defaultMessage={`your unique user ID,`}
+                        defaultMessage={`your unique user ID`}
                       />
                     </li>
                     <li>
@@ -537,21 +537,21 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-1"
-                            defaultMessage={`confirmed account (confirmed email address and accepted terms of use),
+                            defaultMessage={`confirmed account (confirmed email address and accepted terms of use)
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-2"
-                            defaultMessage={`real identity verified,
+                            defaultMessage={`real identity verified
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-3"
-                            defaultMessage={`enhanced security (added a method used for multi factor login),
+                            defaultMessage={`enhanced security (added a method used for multi factor login)
                           `}
                           />
                         </li>
