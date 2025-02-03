@@ -227,10 +227,6 @@
     "developer_comment": "use freja - list item 3",
     "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
   },
-  "2ogwNX": {
-    "developer_comment": "account eduid - list item 3-heading",
-    "string": "Change password"
-  },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Why have eduID?"
@@ -322,6 +318,10 @@
     "developer_comment": "login eduid - other devices list item 3",
     "string": "on that second device, review the device requesting to be logged in and use the presented code to login by entering it within the time shown, in the first device."
   },
+  "54jpQ0": {
+    "developer_comment": "security zone modal",
+    "string": "Note: Your security key {securityKeyDescription} will be removed after you log in."
+  },
   "56tvVG": {
     "developer_comment": "which verification methods - paragraph2",
     "string": "Note: you can remove a verified identity connected to your eduID in the Identity area."
@@ -373,10 +373,6 @@
     "developer_comment": "security eduid - list definition",
     "string": "The Security page contains:"
   },
-  "6FTaDj": {
-    "developer_comment": "security eduid - list item 1-2",
-    "string": "Security key: external device such as your USB security key,"
-  },
   "6Ka904": {
     "developer_comment": "confirmed account description",
     "string": "Read more details about your confirmed account at {account}"
@@ -413,6 +409,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "75yL3y": {
+    "developer_comment": "use ladok - list item 1",
+    "string": "in the Account area of eduID, toggle the ESI control,"
+  },
   "7Fw0mr": {
     "developer_comment": "security eduid - list item 3",
     "string": "A table displaying all your added security keys with the following information:"
@@ -444,6 +444,10 @@
   "7yS+J6": {
     "developer_comment": "edit button",
     "string": "edit"
+  },
+  "859E+h": {
+    "developer_comment": "about orcid ladok - handle",
+    "string": "Connecting account with ORCID / Ladok"
   },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
@@ -581,6 +585,10 @@
     "developer_comment": "Set new password",
     "string": "Repeat new password"
   },
+  "BR5TIv": {
+    "developer_comment": "account eduid - list item 6",
+    "string": "Clicking on the link \"Delete eduID\" will open a modal confirming deletion of your account permanently."
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Change password: Suggested password"
@@ -705,9 +713,17 @@
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
   },
+  "ERY9/S": {
+    "developer_comment": "account eduid - list item 3-heading",
+    "string": "Change password:"
+  },
   "ES63c/": {
     "developer_comment": "universityadmissions - link text",
     "string": "universityadmissions.se"
+  },
+  "EVSSGm": {
+    "developer_comment": "how add security key - paragraph 2",
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Security. You might still need to use your security key if other connecting services require 2FA."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -743,6 +759,10 @@
   "FICYKZ": {
     "developer_comment": "accordion item swedish additional info",
     "string": "With a digital ID-card / By post"
+  },
+  "FTlcWo": {
+    "developer_comment": "login eduid - security key paragraph",
+    "string": "Note: you can read more about ORCID iD and Ladok and ESI settings in the \"Connecting account with Orcid / ESI\" help section.\""
   },
   "FU7D54": {
     "developer_comment": "accordion item passport title",
@@ -868,6 +888,10 @@
     "developer_comment": "login eduid - username list item 2",
     "string": "your unique ID, shown on the logged in start page and under Account."
   },
+  "IRnUgl": {
+    "developer_comment": "account eduid - list item 3",
+    "string": "Always change your password if you believe someone else has access to it."
+  },
   "IW+u0G": {
     "developer_comment": "confirmed account description",
     "string": "Note: additional settings such as language, email addresses, password management as well as ORCID and ESI affiliation can be edited at {account}."
@@ -887,10 +911,6 @@
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
-  },
-  "IqxNFW": {
-    "developer_comment": "account eduid - list item 4",
-    "string": "Sharing your eduID with your existing ORCID iD."
   },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
@@ -1071,6 +1091,10 @@
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
   },
+  "O22iSq": {
+    "developer_comment": "account eduid - list item 5",
+    "string": "A toggle control and select box connecting your eduID to ESI, if enabled by your institution."
+  },
   "O7HVVj": {
     "developer_comment": "device info",
     "string": "Description"
@@ -1151,6 +1175,10 @@
     "developer_comment": "Display name select placeholder",
     "string": "select display name..."
   },
+  "Pd9suV": {
+    "developer_comment": "how add security key - paragraph 1",
+    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Security area of eduID and follow the instructions."
+  },
   "Pf9X55": {
     "developer_comment": "create eduid - list item 1",
     "string": "enter your first name, last name and email address in the form and press the ”Create eduID” button,"
@@ -1210,10 +1238,6 @@
   "R5Olyc": {
     "developer_comment": "eduID index",
     "string": "eduID is easier and safer login."
-  },
-  "RCu3GS": {
-    "developer_comment": "use ladok - list item 1",
-    "string": "in the Settings area of eduID, toggle the Ladok control,"
   },
   "RFjlYD": {
     "developer_comment": "accordion item passport additional info",
@@ -1432,9 +1456,17 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
+  "W0anmW": {
+    "developer_comment": "account eduid - list item 3-3",
+    "string": "If you are using a passkey for your login, don't save it on the same key chain as your password."
+  },
   "WBKF0h": {
     "developer_comment": "security key status",
     "string": "Verify with:"
+  },
+  "WEPUTC": {
+    "developer_comment": "security eduid - list item 1-1",
+    "string": "This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics,"
   },
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
@@ -1455,10 +1487,6 @@
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
-  },
-  "WfjKNE": {
-    "developer_comment": "account eduid - list item 6-heading",
-    "string": "Delete eduID"
   },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
@@ -1531,6 +1559,10 @@
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
+  },
+  "YDtIOb": {
+    "developer_comment": "account eduid - list item 3-1",
+    "string": "Clicking on the link \"Change password\" will take you through the steps for changing your password. As when you created your eduID, there is a choice between a suggested (automatically generated) password or one you create."
   },
   "YLzAJF": {
     "developer_comment": "security key status",
@@ -1639,6 +1671,10 @@
     "developer_comment": "how to contact support phone",
     "string": ", but for simple matters you can also reach us on phone number"
   },
+  "b7rKTd": {
+    "developer_comment": "security zone modal",
+    "string": "Note: continuing will disconnect your real identity from your eduID after you log in."
+  },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Close to your address now)"
@@ -1726,10 +1762,6 @@
   "bkpUyB": {
     "developer_comment": "verify webauthn token modal body text",
     "string": "Please click either the BankID or Freja+ button to verify your security key"
-  },
-  "bnSKX2": {
-    "developer_comment": "security eduid - list item 1-1",
-    "string": "This device: built in passkeys including your biometrics,"
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
@@ -1969,10 +2001,6 @@
   "emails.verification-success": {
     "string": "Successfully verified email address"
   },
-  "epYGtQ": {
-    "developer_comment": "account eduid - list item 5",
-    "string": "Connecting your eduID to ESI if enabled by your institution."
-  },
   "error_in_form": {
     "string": "Check the form below for errors."
   },
@@ -2140,10 +2168,6 @@
     "developer_comment": "Use other device 2",
     "string": "Request denied."
   },
-  "hq3YDD": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the 'Advanced Settings' area of eduID and follow the instructions."
-  },
   "hs3tJz": {
     "developer_comment": "Login MFA",
     "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
@@ -2238,6 +2262,10 @@
   "jgEunh": {
     "developer_comment": "Improve Security heading",
     "string": "Enhance security"
+  },
+  "jhAmOa": {
+    "developer_comment": "account eduid - list item 3-2",
+    "string": "A randomly created suggested password is generally considered safest and you can use a third party or browser built in Password Manager tool to help you keep track of your password."
   },
   "jqbSR+": {
     "developer_comment": "account eduid - list item 1",
@@ -2439,6 +2467,10 @@
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
   },
+  "lxJwll": {
+    "developer_comment": "use orcid - list item 2",
+    "string": "click the 'Add ORCID account' button in the Account area of eduID,"
+  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
@@ -2566,6 +2598,10 @@
   "nuB/SD": {
     "developer_comment": "captcha input label",
     "string": "Enter the code from the image"
+  },
+  "nvCSyo": {
+    "developer_comment": "account eduid - list item 4",
+    "string": "A button connecting your eduID with your existing ORCID iD."
   },
   "nyRE3J": {
     "developer_comment": "manage your tokens",
@@ -2838,10 +2874,6 @@
     "developer_comment": "what is international - paragraph 1",
     "string": "Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely."
   },
-  "refRZe": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Advanced settings. You might still need to use your security key if other connecting services require 2FA."
-  },
   "required": {
     "string": "*Field cannot be empty"
   },
@@ -2906,7 +2938,7 @@
     "string": "Could not continue the reset password process. Please try again"
   },
   "resetpw.user-not-found": {
-    "string": "If the address is registered, a message with instructions to reset the password has been sent."
+    "string": "User not found. Please try again."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
@@ -2919,6 +2951,10 @@
   "sCxiby": {
     "developer_comment": "Temp info - message2",
     "string": "Already verified identities will not be affected by this change."
+  },
+  "sNx8Ua": {
+    "developer_comment": "security eduid - list item 1-2",
+    "string": "Security key: external device such as your USB security key."
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
@@ -3195,6 +3231,10 @@
     "developer_comment": "about eduid - handle",
     "string": "About eduID"
   },
+  "wDDWqO": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Delete eduID:"
+  },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
@@ -3271,10 +3311,6 @@
     "developer_comment": "Ladok account linking",
     "string": "Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
   },
-  "yL6rhr": {
-    "developer_comment": "use orcid - list item 2",
-    "string": "click the 'Connect ORCID account' button in the Settings area of eduID,"
-  },
   "yM0mAW": {
     "string": "Having issues using a security key?"
   },
@@ -3313,10 +3349,6 @@
   "zeCbht": {
     "developer_comment": "start main title",
     "string": "Welcome, {username}!"
-  },
-  "zmf6Gz": {
-    "developer_comment": "about orcid ladok - handle",
-    "string": "Connecting account with Orcid / Ladok"
   },
   "ztVnUK": {
     "developer_comment": "login eduid - re-login list item 3",

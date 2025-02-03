@@ -1,4 +1,4 @@
-import { CaptchaRequest, getCaptchaRequest, sendCaptchaResponse } from "apis/eduidResetPassword";
+import { CaptchaRequest, getCaptchaRequest, requestEmailLink, sendCaptchaResponse } from "apis/eduidResetPassword";
 import { GetCaptchaResponse } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -22,11 +22,8 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (captcha?.internal_response) {
-      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-    }
-    if (captcha_completed) {
-      resetPasswordContext.resetPasswordService.send({ type: "BYPASS" });
+    if (captcha?.internal_response || captcha_completed) {
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }, [captcha_completed]);
 
@@ -82,19 +79,37 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
 
 export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
+  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
+  const email = useAppSelector((state) => state.resetPassword.email_address);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
 
+  async function sendEmailLink() {
+    if (email) {
+      const response = await dispatch(requestEmailLink({ email }));
+      if (requestEmailLink.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      } else {
+        resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
+      }
+    }
+  }
+
   async function sendCaptcha(captcha: CaptchaRequest) {
     const res = await dispatch(sendCaptchaResponse(captcha));
-
     if (sendCaptchaResponse.fulfilled.match(res)) {
       dispatch(clearNotifications());
-      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      sendEmailLink();
     } else {
       resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
     }
   }
+
+  useEffect(() => {
+    if (captcha_completed) {
+      sendEmailLink();
+    }
+  }, [captcha_completed]);
 
   useEffect(() => {
     if (captcha) {

@@ -1,4 +1,3 @@
-import { requestEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
@@ -17,12 +16,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
     dispatch(clearNotifications());
     if (email) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email));
-      const response = await dispatch(requestEmailLink({ email }));
-      if (requestEmailLink.fulfilled.match(response)) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-      } else {
-        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-      }
+      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
 

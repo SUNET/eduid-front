@@ -19,11 +19,12 @@ interface SignupCaptchaFormData {
 }
 
 function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
-  function submitCaptchaForm(values: SignupCaptchaFormData) {
+  function submitCaptchaForm(values: SignupCaptchaFormData, form: any) {
     const errors: SignupCaptchaFormData = {};
 
     if (values.value) {
       props.handleCaptchaCompleted(values.value);
+      form.reset();
     } else {
       errors.value = "required";
     }

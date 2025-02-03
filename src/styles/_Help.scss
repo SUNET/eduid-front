@@ -33,9 +33,9 @@
   ol.numbers {
     list-style-position: inside;
     margin-bottom: 1.5rem;
-    li {
+    > li {
       list-style-position: inside;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
   }
   ul.bullets {
@@ -50,6 +50,9 @@
     margin-bottom: 1rem;
     margin-top: 0.5rem;
     margin-left: 1rem;
+  }
+  ul.nested li {
+    margin: 0 0 0.75rem 1.75rem;
   }
 
   .accordion:not(:last-child) {
