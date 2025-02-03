@@ -7,7 +7,7 @@ import { AnyAction, Store } from "redux";
 interface Props extends React.PropsWithChildren {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: Store<any, AnyAction>;
-};
+}
 
 /* The ReduxIntlProvider combines the ReduxProvider (that makes the redux store available
  * to the children of the ReduxProvider component) with the IntlProvider, that makes
