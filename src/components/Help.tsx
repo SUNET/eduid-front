@@ -220,43 +220,43 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 1"
-                      defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
+                      defaultMessage="Enter your first name, last name and email address in the form and press the ”Create eduID” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 2"
-                      defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
+                      defaultMessage="Confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 3"
-                      defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
+                      defaultMessage="Read and approve the eduID terms of use by pressing the ”I Accept” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 4"
-                      defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
+                      defaultMessage="Verify your email address by entering the code emailed to you in the website form and press the ”Ok” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 5"
-                      defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
+                      defaultMessage="Choose using the radio buttons between a suggested (automatically generated) password or one you create."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 6"
-                      defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
+                      defaultMessage={`When validated for strength, repeat the password in the corresponding field and press the ”Save” button.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 7"
-                      defaultMessage={`take careful note of your login details (used email address and password)! `}
+                      defaultMessage={`Take careful note of your login details (used email address and password)! `}
                     />
                   </li>
                   <li>
