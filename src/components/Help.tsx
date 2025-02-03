@@ -288,7 +288,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="login eduid - username list definition"
-                      defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
+                      defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be`}
                       values={{
                         eduidLoginLink: (
                           <a className="text-link" href={dashboard_link} target="_blank">
@@ -302,7 +302,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - username list item 1"
-                        defaultMessage={`any email address you have entered and confirmed in eduID under Account,`}
+                        defaultMessage={`any email address you have entered and confirmed in eduID under Account`}
                       />
                     </li>
                     <li>
@@ -345,20 +345,20 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 1"
-                        defaultMessage={`press the "Other device" button in the login form,`}
+                        defaultMessage={`Press the "Other device" button in the login form.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 2"
-                        defaultMessage={`scan the presented QR-code with the other device where you have your login credentials, 
-                    e.g. security key or saved password,`}
+                        defaultMessage={`Scan the presented QR-code with the other device where you have your login credentials, 
+                    e.g. security key or saved password.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 3"
-                        defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                        defaultMessage={`On that second device, review the device requesting to be logged in and use the 
                     presented code to login by entering it within the time shown, in the first device.`}
                       />
                     </li>
