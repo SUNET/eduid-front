@@ -463,31 +463,31 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 1"
-                      defaultMessage="changing your password,"
+                      defaultMessage="Changing your password."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 2"
-                      defaultMessage="toggling 2FA login requirement setting,"
+                      defaultMessage="Toggling 2FA login requirement setting."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 3"
-                      defaultMessage="deleting your eduID account,"
+                      defaultMessage="Deleting your eduID account."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 4"
-                      defaultMessage="adding/removing a security key,"
+                      defaultMessage="Adding/removing a security key."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 5"
-                      defaultMessage="deleting your verified identity."
+                      defaultMessage="Deleting your verified identity."
                     />
                   </li>
                 </ul>
