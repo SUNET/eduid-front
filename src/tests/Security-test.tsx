@@ -150,8 +150,8 @@ test("api call webauthn/remove", async () => {
   };
 
   mswServer.use(
-    rest.post("webauthn/remove", (req, res, ctx) => {
-      const body = req.body as RemoveWebauthnTokensRequest;
+    rest.post("webauthn/remove", async (req, res, ctx) => {
+      const body = (await req.json()) as RemoveWebauthnTokensRequest;
       if (body.credential_key != credential_key) {
         return res(ctx.status(400));
       }

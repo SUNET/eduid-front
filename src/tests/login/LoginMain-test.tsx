@@ -19,8 +19,8 @@ test("renders FINISHED as expected", async () => {
   const ref = "abc987";
 
   mswServer.use(
-    rest.post("/next", (req, res, ctx) => {
-      const body = req.body as LoginNextRequest;
+    rest.post("/next", async (req, res, ctx) => {
+      const body = (await req.json()) as LoginNextRequest;
       if (body.ref != ref) {
         return res(ctx.status(400));
       }
@@ -47,8 +47,8 @@ test("renders UsernamePw as expected", async () => {
   const ref = "abc987";
 
   mswServer.use(
-    rest.post("/next", (req, res, ctx) => {
-      const body = req.body as LoginNextRequest;
+    rest.post("/next", async (req, res, ctx) => {
+      const body = (await req.json()) as LoginNextRequest;
       if (body.ref != ref) {
         return res(ctx.status(400));
       }
