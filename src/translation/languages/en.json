@@ -1602,7 +1602,7 @@
   },
   "Z3NgIk": {
     "developer_comment": "freja - protected ID paragraph 2",
-    "string": "You can read more about using Freja with your eduID below in the \"About Freja\" section and on their website at {FrejaProtectedId}"
+    "string": "You can read more about using Freja with your eduID below in the \"About Freja (with Swedish ID/COORD number)\" section and on their website at {FrejaProtectedId}"
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
