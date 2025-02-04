@@ -43,10 +43,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
-  "/2jUvY": {
-    "developer_comment": "Signup",
-    "string": "Once you have created an eduID you will be able to log in and connect it to your identity."
-  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
@@ -589,6 +585,10 @@
     "developer_comment": "account eduid - list item 6",
     "string": "Clicking on the link \"Delete eduID\" will open a modal confirming deletion of your account permanently."
   },
+  "BhlUhw": {
+    "developer_comment": "Signup",
+    "string": "Once you have created an eduID you will be able to log in and connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code."
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Change password: Suggested password"
@@ -927,6 +927,10 @@
   "J5Vh6s": {
     "developer_comment": "Temp info - message4",
     "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
+  },
+  "Jcu4y9": {
+    "developer_comment": "freja - protected I paragraph 1",
+    "string": "you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent."
   },
   "K34PZJ": {
     "developer_comment": "create eduid - list item 4",
@@ -1357,10 +1361,6 @@
     "developer_comment": "create eduid - list item 8",
     "string": "You can now log in with your eduID."
   },
-  "TxOjgK": {
-    "developer_comment": "need visit atg agent for freja - paragraph",
-    "string": "Only if you use another means of identification than a Swedish passport. On site, the agent can start the verification process by scanning a QR code in your Freja app and follow the instructions in their terminal. You will be informed when you have passed the ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated."
-  },
   "U0DSGi": {
     "developer_comment": "add two-factor authentication description",
     "string": "Add two-factor authentication at {security}"
@@ -1500,6 +1500,10 @@
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
   },
+  "X+EKkF": {
+    "developer_comment": "need visit atg agent for freja - paragraph",
+    "string": "Only if you use another means of identification than a Swedish passport, {protectedId}. On site, the agent can start the verification process by scanning a QR code in your app and follow the instructions in their terminal. You will be informed when you have passed the ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated."
+  },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
     "string": "How to use eIDAS with eduID:"
@@ -1595,6 +1599,10 @@
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Account"
+  },
+  "Z3NgIk": {
+    "developer_comment": "freja - protected ID paragraph 2",
+    "string": "You can read more about using Freja with your eduID below in the \"About Freja\" section and on their website at {FrejaProtectedId}"
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -1891,6 +1899,9 @@
     "developer_comment": "privacy policy - link",
     "string": "Privacy Policy"
   },
+  "e/7hU+": {
+    "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
+  },
   "e6XTxx": {
     "developer_comment": "Reset Password email link sent",
     "string": "If you have an eduID account, the code has been sent to {email}"
@@ -2108,6 +2119,10 @@
     "developer_comment": "login this device, security key button",
     "string": "Security key"
   },
+  "gtyqud": {
+    "developer_comment": "use freja protected id - link text",
+    "string": "freja-for-swedes-with-protected-identities/"
+  },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
     "string": "Login failed"
@@ -2274,9 +2289,6 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
-  },
-  "kHCeni": {
-    "string": "Enter the six digit code sent to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
