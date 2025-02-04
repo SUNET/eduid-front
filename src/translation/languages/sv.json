@@ -1133,7 +1133,7 @@
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
-    "string": "Behöver jag besöka ett auktoriserat ATG ombud för att skapa Freja+?"
+    "string": "Behöver jag besöka ett auktoriserat ATG-ombud för att skapa Freja+?"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
@@ -1502,7 +1502,7 @@
   },
   "X+EKkF": {
     "developer_comment": "need visit atg agent for freja - paragraph",
-    "string": "Bara om du använder en annan ID-handling än svenskt pass, {protectedId}. ATG ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
+    "string": "Bara om du använder en annan ID-handling än svenskt pass, {protectedId}. ATG-ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
   },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
