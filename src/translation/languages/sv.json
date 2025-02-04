@@ -43,10 +43,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
   },
-  "/2jUvY": {
-    "developer_comment": "Signup",
-    "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet."
-  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Registrera"
@@ -589,6 +585,10 @@
     "developer_comment": "account eduid - list item 6",
     "string": "Länken \"Radera eduID\" öppnar en modal för att bekräfta att ditt konto ska raderas permanent."
   },
+  "BhlUhw": {
+    "developer_comment": "Signup",
+    "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet. Se till att ange en epostadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit."
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Ändra lösenord: Rekommenderat lösenord"
@@ -927,6 +927,10 @@
   "J5Vh6s": {
     "developer_comment": "Temp info - message4",
     "string": "För att säkerställa fortsatt säker åtkomst och användning av eduID rekommenderar vi att du väljer en annan metod för återställning av lösenord, t.ex. med hjälp av en säkerhetsnyckel."
+  },
+  "Jcu4y9": {
+    "developer_comment": "freja - protected I paragraph 1",
+    "string": "du kan verifiera den m.h.a. {emphasis}, genom att skaffa Freja eID och verifiera ditt svenska pass hos ett auktoriserat ATG-ombud."
   },
   "K34PZJ": {
     "developer_comment": "create eduid - list item 4",
@@ -1357,10 +1361,6 @@
     "developer_comment": "create eduid - list item 8",
     "string": "Du kan nu logga in med ditt eduID."
   },
-  "TxOjgK": {
-    "developer_comment": "need visit atg agent for freja - paragraph",
-    "string": "Bara om du använder en annan ID-handling än svenskt pass. ATG ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
-  },
   "U0DSGi": {
     "developer_comment": "add two-factor authentication description",
     "string": "Lägg till tvåfaktorsautentisering under {security}"
@@ -1500,6 +1500,10 @@
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Epostadresser:"
   },
+  "X+EKkF": {
+    "developer_comment": "need visit atg agent for freja - paragraph",
+    "string": "Bara om du använder en annan ID-handling än svenskt pass, {protectedId}. ATG ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
+  },
   "X3L5qP": {
     "developer_comment": "use eidas - list definition",
     "string": "Hur du kan använda eIDAS med eduID:"
@@ -1595,6 +1599,10 @@
   "YuWePR": {
     "developer_comment": "recommendations account link",
     "string": "Konto"
+  },
+  "Z3NgIk": {
+    "developer_comment": "freja - protected ID paragraph 2",
+    "string": "Du kan läsa mer om att använda Freja med ditt eduID nedan i avsnittet \"Om Freja (med Svenskt person/samordnings-nummer)\" och på deras hemsida {FrejaProtectedId}"
   },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
@@ -1891,6 +1899,9 @@
     "developer_comment": "privacy policy - link",
     "string": "Integritetspolicyn"
   },
+  "e/7hU+": {
+    "string": "Ange den sexsiffriga koden som skickats från no-reply@eduid.se till {email} för att verifiera din e-postadress. Du kan också kopiera och klistra in koden från e-posten i inmatningsfältet."
+  },
   "e6XTxx": {
     "developer_comment": "Reset Password email link sent",
     "string": "Om du har ett eduID-konto har koden skickats till {email}"
@@ -2108,6 +2119,10 @@
     "developer_comment": "login this device, security key button",
     "string": "Säkerhetsnyckel"
   },
+  "gtyqud": {
+    "developer_comment": "use freja protected id - link text",
+    "string": "freja-for-swedes-with-protected-identities/"
+  },
   "hCOaxe": {
     "developer_comment": "SAML login finished",
     "string": "Inloggning misslyckades"
@@ -2274,9 +2289,6 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "Om eIDAS"
-  },
-  "kHCeni": {
-    "string": "Ange den sexsiffriga koden som skickats till {email} för att verifiera din e-postadress. Du kan också kopiera och klistra in koden från e-posten i inmatningsfältet."
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
