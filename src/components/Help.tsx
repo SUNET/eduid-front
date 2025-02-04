@@ -983,24 +983,24 @@ export function Help(): JSX.Element {
                   </li>
                 </ul>
                 <p>
-                  Note: <strong>If you have a protected identity </strong>
                   <FormattedMessage
                     description="freja - protected I paragraph 1"
-                    defaultMessage={` you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
+                    defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
                     values={{
+                      strong: <strong>If you have a protected identity </strong>,
                       emphasis: <em>Freja+</em>,
                     }}
                   />
                   <br />
                   <FormattedMessage
                     description="freja - protected ID paragraph 2"
-                    defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja" section and on their website at {FrejaProtectedId}`}
+                    defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
                     values={{
                       FrejaProtectedId: (
                         <a className="text-link" href={FrejaProtectedIdURL} target="_blank">
                           <FormattedMessage
                             description="use freja protected id - link text"
-                            defaultMessage={`freja-for-swedes-with-protected-identities/`}
+                            defaultMessage={`freja-for-swedes-with-protected-identities`}
                           />
                         </a>
                       ),
