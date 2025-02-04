@@ -31,6 +31,10 @@ export function Help(): JSX.Element {
     locale === "en"
       ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
       : "https://org.frejaeid.com/en-e-legitimation-for-utlandska-medborgare/";
+  const FrejaProtectedIdURL =
+    locale === "en"
+      ? " https://frejaeid.com/en/freja-for-swedes-with-protected-identities/"
+      : "https://frejaeid.com/freja-for-svenskar-med-skyddad-identitet/";
   const UniversityAdmissionURL =
     locale === "en" ? "https://www.universityadmissions.se/intl/start" : "https://www.antagning.se";
 
@@ -978,6 +982,31 @@ export function Help(): JSX.Element {
                     />
                   </li>
                 </ul>
+                <p>
+                  Note: <strong>If you have a protected identity </strong>
+                  <FormattedMessage
+                    description="freja - protected I paragraph 1"
+                    defaultMessage={` you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
+                    values={{
+                      emphasis: <em>Freja+</em>,
+                    }}
+                  />
+                  <br />
+                  <FormattedMessage
+                    description="freja - protected ID paragraph 2"
+                    defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja" section and on their website at {FrejaProtectedId}`}
+                    values={{
+                      FrejaProtectedId: (
+                        <a className="text-link" href={FrejaProtectedIdURL} target="_blank">
+                          <FormattedMessage
+                            description="use freja protected id - link text"
+                            defaultMessage={`freja-for-swedes-with-protected-identities/`}
+                          />
+                        </a>
+                      ),
+                    }}
+                  />
+                </p>
               </section>
               <section>
                 <p>
@@ -1093,11 +1122,14 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="need visit atg agent for freja - paragraph"
-                      defaultMessage={`Only if you use another means of identification than a Swedish passport. 
+                      defaultMessage={`Only if you use another means of identification than a Swedish passport, {protectedId}. 
                       On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for 
                     your Freja+ to be fully activated.`}
+                      values={{
+                        protectedId: <strong>or if you have a protected identity</strong>,
+                      }}
                     />
                   </p>
 
