@@ -30,8 +30,9 @@ import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 interface SecurityKeyTable {
-  handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
-  handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
+  readonly wrapperRef: React.RefObject<HTMLElement>;
+  readonly handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
+  readonly handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
 }
 
 export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
@@ -52,6 +53,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const wrapperRef = useRef<HTMLElement | null>(null);
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -227,6 +229,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             const response = await dispatch(registerWebauthn({ descriptionValue }));
+            if (wrapperRef.current) {
+              wrapperRef.current.focus();
+            }
             if (registerWebauthn.fulfilled.match(response)) {
               setShowVerifyWebauthnModal(true);
             }
@@ -320,6 +325,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         </div>
       </article>
       <SecurityKeyTable
+        wrapperRef={wrapperRef}
         handleVerifyWebauthnTokenFreja={handleVerifyWebauthnTokenFreja}
         handleVerifyWebauthnTokenBankID={handleVerifyWebauthnTokenBankID}
       />
@@ -408,7 +414,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   );
 }
 
-function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauthnTokenFreja }: SecurityKeyTable) {
+function SecurityKeyTable({
+  wrapperRef,
+  handleVerifyWebauthnTokenBankID,
+  handleVerifyWebauthnTokenFreja,
+}: SecurityKeyTable) {
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   let btnVerify;
@@ -519,40 +529,44 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
       }
 
       return (
-        <React.Fragment key={cred.key}>
-          <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
-            <div>
-              <span aria-label="key name">
-                <FormattedMessage description="security description name" defaultMessage="Name:" />
-                &nbsp;
-                <strong>{cred.description}</strong>
-              </span>
-              <EduIDButton
-                aria-label="Remove"
-                id="remove-webauthn"
-                buttonstyle="remove"
-                size="sm"
-                onClick={() => handleConfirmDeleteModal(cred)}
-              ></EduIDButton>
-            </div>
-            <div>
-              <span aria-label="date created">
-                <FormattedMessage description="security creation date" defaultMessage="Created:" />
-                &nbsp;
-                <wbr />
-                {date_created}
-              </span>
+        <figure
+          key={cred.key}
+          ref={wrapperRef}
+          tabIndex={0}
+          className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
+          data-token={cred.key}
+        >
+          <div>
+            <span aria-label="key name">
+              <FormattedMessage description="security description name" defaultMessage="Name:" />
+              &nbsp;
+              <strong>{cred.description}</strong>
+            </span>
+            <EduIDButton
+              aria-label="Remove"
+              id="remove-webauthn"
+              buttonstyle="remove"
+              size="sm"
+              onClick={() => handleConfirmDeleteModal(cred)}
+            ></EduIDButton>
+          </div>
+          <div>
+            <span aria-label="date created">
+              <FormattedMessage description="security creation date" defaultMessage="Created:" />
+              &nbsp;
+              <wbr />
+              {date_created}
+            </span>
 
-              <span aria-label="date used">
-                <FormattedMessage description="security last used" defaultMessage="Used:" />
-                &nbsp;
-                <wbr />
-                {date_success}
-              </span>
-            </div>
-            {btnVerify}
-          </figure>
-        </React.Fragment>
+            <span aria-label="date used">
+              <FormattedMessage description="security last used" defaultMessage="Used:" />
+              &nbsp;
+              <wbr />
+              {date_success}
+            </span>
+          </div>
+          {btnVerify}
+        </figure>
       );
     })
   );
