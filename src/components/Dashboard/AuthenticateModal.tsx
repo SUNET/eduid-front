@@ -13,6 +13,7 @@ export function AuthenticateModal() {
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
   const frontend_state = useAppSelector((state) => state.authn.frontend_state);
   const [securityKeyDescription, setSecurityKeyDescription] = useState(null);
+  const [method, setMethod] = useState<string>("");
   const navigate = useNavigate();
 
   function isValidJson(jsonString: string) {
@@ -28,6 +29,7 @@ export function AuthenticateModal() {
     if (frontend_state && isValidJson(frontend_state)) {
       const parsedFrontendState = JSON.parse(frontend_state);
       setSecurityKeyDescription(parsedFrontendState.description);
+      setMethod(parsedFrontendState.method);
     }
   }, [frontend_state]);
 
@@ -61,13 +63,21 @@ export function AuthenticateModal() {
             defaultMessage="You need to log in again to perform the requested action."
           />
           <br />
-          {frontend_action === "verifyCredentials" && (
+          {frontend_action === "verifyCredential" && (
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
                 defaultMessage="Note: please use your security key {securityKeyDescription} during the login process."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
+                }}
+              />
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="After logging in, you will be redirected to {externalPage} page to verify your security key."
+                values={{
+                  securityKeyDescription: <strong>{securityKeyDescription}</strong>,
+                  externalPage: <strong>{method.toUpperCase()}</strong>,
                 }}
               />
             </p>
@@ -88,6 +98,14 @@ export function AuthenticateModal() {
               <FormattedMessage
                 description="security zone modal"
                 defaultMessage="Note: continuing will disconnect your real identity from your eduID after you log in."
+              />
+            </p>
+          )}
+          {frontend_action === "addSecurityKeyAuthn" && (
+            <p className="help-text">
+              <FormattedMessage
+                description="security zone modal"
+                defaultMessage="Note: Note: After logging in, you'll be asked to enter the name of your security key."
               />
             </p>
           )}
