@@ -572,9 +572,10 @@ function SecurityKeyTable({
   );
 
   return (
-    <article>
+    // unique ID to scroll to the correct section
+    <article id="manage-security-keys">
       <h2>
-        <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
+        <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
       </h2>
       {Boolean(tokens.length) && <UseSecurityKeyToggle />}
       {securityKeyData}
