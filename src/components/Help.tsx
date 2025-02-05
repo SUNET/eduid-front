@@ -987,7 +987,14 @@ export function Help(): JSX.Element {
                     description="freja - protected I paragraph 1"
                     defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
                     values={{
-                      strong: <strong>If you have a protected identity </strong>,
+                      strong: (
+                        <strong>
+                          <FormattedMessage
+                            description="freja - protected strong"
+                            defaultMessage={`If you have a protected identity `}
+                          />
+                        </strong>
+                      ),
                       emphasis: <em>Freja+</em>,
                     }}
                   />
@@ -1128,7 +1135,14 @@ export function Help(): JSX.Element {
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for 
                     your Freja+ to be fully activated.`}
                       values={{
-                        protectedId: <strong>or if you have a protected identity</strong>,
+                        protectedId: (
+                          <strong>
+                            <FormattedMessage
+                              description="need visit atg agent for freja - strong"
+                              defaultMessage="or if you have a protected identity"
+                            />
+                          </strong>
+                        ),
                       }}
                     />
                   </p>
