@@ -1796,7 +1796,7 @@
   },
   "d/bTw0": {
     "developer_comment": "login eduid - security key list item 2",
-    "string": "Ytterligare tillagd säkerhet finns listad i menyn \"Visa andra alternativ\", t.ex. BankID och Freja+"
+    "string": "Ytterligare tillagd säkerhet finns listad i menyn \"Visa andra alternativ\", t.ex. BankID och Freja+."
   },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
@@ -2960,6 +2960,10 @@
     "developer_comment": "Temp info - message2",
     "string": "Redan verifierade identiteter kommer inte att påverkas av denna ändring."
   },
+  "sDOXFj": {
+    "developer_comment": "freja - protected strong",
+    "string": "Om du har skyddad identitet"
+  },
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB-säkerhetsnyckel,"
@@ -2971,6 +2975,10 @@
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
     "string": "Om du har svenskt personnummer eller samordningsnummer"
+  },
+  "sdnCTc": {
+    "developer_comment": "need visit atg agent for freja - strong",
+    "string": "eller om du har skyddad identitet"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
