@@ -2960,6 +2960,10 @@
     "developer_comment": "Temp info - message2",
     "string": "Already verified identities will not be affected by this change."
   },
+  "sDOXFj": {
+    "developer_comment": "freja - protected strong",
+    "string": "If you have a protected identity"
+  },
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Security key: external device such as your USB security key."
@@ -2971,6 +2975,10 @@
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
     "string": "If you have a Swedish personal identity number or coordination number"
+  },
+  "sdnCTc": {
+    "developer_comment": "need visit atg agent for freja - strong",
+    "string": "or if you have a protected identity"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
