@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 
 // export for use in tests
 export const activeClassName = "active";
+type ButtonKey = "identity" | "security" | "account";
 
 export interface HeaderNavProps {
   handleLogout: () => void;
@@ -67,7 +68,19 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement>, handler: ()
 
 export function HeaderNav(props: HeaderNavProps): JSX.Element {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<{ [key in ButtonKey]: boolean }>({
+    identity: false,
+    security: false,
+    account: false,
+  });
   const wrapperRef = useRef(null);
+
+  const toggleOpen = (button: ButtonKey) => {
+    setIsOpen((prevState) => ({
+      ...prevState,
+      [button]: !prevState[button],
+    }));
+  };
 
   useCloseMenuClickOutside(wrapperRef, () => setOpenMenu(false));
   return (
@@ -92,7 +105,19 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           >
             <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
           </NavLink>
-
+          <button onClick={() => toggleOpen("identity")}>
+            {isOpen.identity ? (
+              <FontAwesomeIcon icon={faChevronUp as IconProp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronDown as IconProp} />
+            )}
+          </button>
+          <div className={isOpen.identity ? "panel-collapse" : "panel-collapse panel-close"}>
+            <ul>
+              <li> Verify Identity</li>
+              <li>Names & Display Name</li>
+            </ul>
+          </div>
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -101,6 +126,20 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             <FormattedMessage defaultMessage="Security" description="Dashboard nav tab name" />
           </NavLink>
 
+          <button onClick={() => toggleOpen("security")}>
+            {isOpen.security ? (
+              <FontAwesomeIcon icon={faChevronUp as IconProp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronDown as IconProp} />
+            )}
+          </button>
+          <div className={isOpen.security ? "panel-collapse" : "panel-collapse panel-close"}>
+            <ul>
+              <li>Two-factor Authentication (2FA)</li>
+              <li>Manage your security keys</li>
+            </ul>
+          </div>
+
           <NavLink
             onClick={() => setOpenMenu(false)}
             className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -108,7 +147,24 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           >
             <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
           </NavLink>
-
+          <button onClick={() => toggleOpen("account")}>
+            {isOpen.account ? (
+              <FontAwesomeIcon icon={faChevronUp as IconProp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronDown as IconProp} />
+            )}
+          </button>
+          <div className={isOpen.account ? "panel-collapse" : "panel-collapse panel-close"}>
+            <ul>
+              <li>Unique ID</li>
+              <li>Email addresses</li>
+              <li>Language</li>
+              <li>Change password</li>
+              <li>ORCID account</li>
+              <li>ESI information</li>
+              <li>Delete eduID</li>
+            </ul>
+          </div>
           <EduIDButton
             buttonstyle="link"
             size="sm"
