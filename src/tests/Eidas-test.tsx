@@ -6,7 +6,7 @@ test("renders frejaeID", () => {
   render(<Eidas />);
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeEnabled();
-  expect(screen.getByText(/To use this option you will need to first create a digital ID-card /i)).toBeInTheDocument();
+  expect(screen.getByText(/To use this option you will need to first create a digital ID /i)).toBeInTheDocument();
 });
 
 test("renders Confirmation Modal, enabled to click proceed button", async () => {

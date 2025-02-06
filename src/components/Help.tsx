@@ -956,7 +956,7 @@ export function Help(): JSX.Element {
                     <em>
                       <FormattedMessage
                         description="swedish nin freja - heading"
-                        defaultMessage="Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
+                        defaultMessage="Freja+ (digital ID) - for Swedish personal identity or coordination number holders:"
                       />
                     </em>
                     &nbsp;
@@ -1077,7 +1077,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="what is freja - paragraph"
-                      defaultMessage={`Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to 
+                      defaultMessage={`Freja+ is a digital ID (a verified Freja eID) free of charge, available to 
                       holders of a Swedish personal identification number or coordination number.`}
                     />
                   </p>
@@ -1114,7 +1114,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use freja - list item 3"
-                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area 
+                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID' option in the Identity area 
                         and follow the instructions.`}
                       />
                     </li>
