@@ -1606,7 +1606,14 @@ export function Help(): JSX.Element {
                     defaultMessage={`services requiring a low level of assurance, often called {emphasis}.
 `}
                     values={{
-                      emphasis: <em>AL1 / RAF Low</em>,
+                      emphasis: (
+                        <em>
+                          <FormattedMessage
+                            description="Assurance levels with your eduID - paragraph2em"
+                            defaultMessage={`AL1 (unconfirmed user) / RAF Low`}
+                          />
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1625,7 +1632,14 @@ export function Help(): JSX.Element {
                     defaultMessage={`services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}.
 `}
                     values={{
-                      emphasis: <em>AL2 / RAF Medium</em>,
+                      emphasis: (
+                        <em>
+                          <FormattedMessage
+                            description="Assurance levels with your eduID - paragraph3em"
+                            defaultMessage={`AL2 (confirmed user) / RAF Medium`}
+                          />
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1668,7 +1682,16 @@ export function Help(): JSX.Element {
 
 `}
                     values={{
-                      emphasis: <em>AL3 / RAF High / LoA2</em>,
+                      emphasis: (
+                        <em>
+                          <em>
+                            <FormattedMessage
+                              description="Assurance levels with your eduID - paragraph5em"
+                              defaultMessage={`AL3 (verified user) / RAF High / LoA2`}
+                            />
+                          </em>
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1685,7 +1708,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph6"
-                  defaultMessage={`As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+                  defaultMessage={`As an example, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
 `}
                 />
               </p>
