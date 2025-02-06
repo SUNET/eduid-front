@@ -497,6 +497,10 @@
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
   },
+  "9K6DoI": {
+    "developer_comment": "Assurance levels with your eduID - paragraph3em",
+    "string": "AL2 (confirmed user) / RAF Medium"
+  },
   "9KOh5D": {
     "developer_comment": "use international - list definition",
     "string": "How to use Freja with eduID:"
@@ -904,6 +908,10 @@
     "developer_comment": "Temp info - message4",
     "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
   },
+  "JgFblM": {
+    "developer_comment": "Assurance levels with your eduID - paragraph5em",
+    "string": "AL3 (verified user) / RAF High / LoA2"
+  },
   "K427ha": {
     "developer_comment": "security second factor",
     "string": "Add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. For example a token can be a security key or your device."
@@ -1098,6 +1106,10 @@
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Add a name for your security key"
+  },
+  "OuY4pQ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph6",
+    "string": "As an example, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1515,10 +1527,6 @@
   "XujYxO": {
     "developer_comment": "use freja - link text",
     "string": "Freja app"
-  },
-  "Xz6ZO5": {
-    "developer_comment": "Assurance levels with your eduID - paragraph6",
-    "string": "As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
   },
   "XzQO4I": {
     "developer_comment": "choosing usb key - list definition",
@@ -3282,6 +3290,10 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Language"
+  },
+  "x8ZGkQ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2em",
+    "string": "AL1 (unconfirmed user) / RAF Low"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
