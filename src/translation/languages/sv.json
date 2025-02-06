@@ -497,6 +497,10 @@
     "developer_comment": "Login front page",
     "string": "Har du inte eduID?"
   },
+  "9K6DoI": {
+    "developer_comment": "Assurance levels with your eduID - paragraph3em",
+    "string": "AL2 (bekräftad användare) / RAF Medium"
+  },
   "9KOh5D": {
     "developer_comment": "use international - list definition",
     "string": "Hur du kan använda Freja med eduID:"
@@ -904,6 +908,10 @@
     "developer_comment": "Temp info - message4",
     "string": "För att säkerställa fortsatt säker åtkomst och användning av eduID rekommenderar vi att du väljer en annan metod för återställning av lösenord, t.ex. med hjälp av en säkerhetsnyckel."
   },
+  "JgFblM": {
+    "developer_comment": "Assurance levels with your eduID - paragraph5em",
+    "string": "AL3 (verifierad användare) / RAF High / LoA2"
+  },
   "K427ha": {
     "developer_comment": "security second factor",
     "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
@@ -1098,6 +1106,10 @@
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Ge ett namn till din säkerhetsnyckel"
+  },
+  "OuY4pQ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph6",
+    "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet SWAMID AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. Digitala Nationella Proven (DNP) och Nice."
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1515,10 +1527,6 @@
   "XujYxO": {
     "developer_comment": "use freja - link text",
     "string": "Freja-appen"
-  },
-  "Xz6ZO5": {
-    "developer_comment": "Assurance levels with your eduID - paragraph6",
-    "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet Swamid AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. Digitala Nationella Proven (DNP) och Nice."
   },
   "XzQO4I": {
     "developer_comment": "choosing usb key - list definition",
@@ -3282,6 +3290,10 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Språk"
+  },
+  "x8ZGkQ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2em",
+    "string": "AL1 (obekräftad användare) / RAF Low"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
