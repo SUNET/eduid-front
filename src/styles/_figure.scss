@@ -105,7 +105,7 @@ figure.webauthn-token-holder {
 
   & div:nth-child(2) {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     column-gap: 1em;
 
     & p:last-child {
