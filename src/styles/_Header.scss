@@ -80,6 +80,20 @@ header {
 
       ul {
         text-align: left;
+
+        .flex-between {
+          padding-left: 10px;
+
+          button {
+            background-color: transparent;
+            box-shadow: none;
+          }
+        }
+
+        .flex-between:hover {
+          background-color: $body-gray;
+          border-radius: 15px;
+        }
       }
 
       .btn-close {
@@ -112,7 +126,7 @@ header {
         height: 2.7rem;
         justify-content: left;
         line-height: 1.2;
-        width: 100%;
+        // width: 100%;
 
         &:nth-child(4) {
           border-bottom: 1px solid $border-gray;
