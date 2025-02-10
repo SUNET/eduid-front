@@ -1,9 +1,14 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
+import accountIcon from "../../img/account-icon.svg";
+import securityIcon from "../../img/security-icon.svg";
 import EduIDButton from "./Common/EduIDButton";
 import Splash from "./Common/Splash";
 
@@ -36,7 +41,7 @@ export function Index() {
   return (
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
       <h1 className="tagline">
-        <FormattedMessage defaultMessage="eduID is easier and safer login." description="eduID index" />
+        <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
       </h1>
       <div className="lead">
         <p>
@@ -50,14 +55,14 @@ export function Index() {
         </p>
         <p>
           <FormattedMessage
-            defaultMessage={`eduID is easier for you because you only have to remember one password and safer 
-              for the Universities because it is connected to a real individual.`}
+            defaultMessage={`eduID is easier because you only have one login and safer 
+             because it's connected to a real individual - you.`}
             description="eduID index lead text"
           />
         </p>
-        <p>
+        <p className="med-txt">
           <FormattedMessage
-            defaultMessage=" You can read more about eduID at {Sunet}"
+            defaultMessage="You can read more about eduID at {Sunet} and by clicking on the Help link in the footer, or go ahead and register or login using the buttons below!"
             description="read more at Sunet"
             values={{
               Sunet: (
@@ -68,14 +73,42 @@ export function Index() {
             }}
           />
         </p>
+        <div className="buttons">
+          <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
+            <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
+          </EduIDButton>
+          <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
+            <FormattedMessage defaultMessage="log in" description="login button" />
+          </EduIDButton>
+        </div>
       </div>
-      <div className="buttons">
-        <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
-          <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
-        </EduIDButton>
-        <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
-          <FormattedMessage defaultMessage="log in" description="login button" />
-        </EduIDButton>
+      <h2 className="heading-5">How it works:</h2>
+      <div className="flex-between landing-how-to">
+        <div>
+          Create an account with your email address - basic stuff.
+          <span className="icon-holder">
+            <img height="24" src={accountIcon} alt="Account" />
+          </span>
+        </div>
+        <div>
+          Prove that you are YOU.{" "}
+          <span className="icon-holder">
+            <FontAwesomeIcon icon={faIdCard as IconProp} />
+          </span>
+        </div>
+        <div>
+          Level up your login security.{" "}
+          <span className="icon-holder">
+            <img height="24" src={securityIcon} alt="Security" />
+          </span>
+        </div>
+        <div>
+          Level up again - proving that YOU are logging in.{" "}
+          <span className="icon-holder">
+            <FontAwesomeIcon icon={faIdCard as IconProp} />
+            <img height="24" src={securityIcon} alt="Security" />
+          </span>
+        </div>
       </div>
     </Splash>
   );

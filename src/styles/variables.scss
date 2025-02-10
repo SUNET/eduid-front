@@ -49,3 +49,84 @@ $bp-xl: 1200px;
 * Layout
 * ========================================================================== */
 $border-width: 2px;
+
+/** experimenting below for landing styles **/
+.panel,
+footer {
+  background: white;
+}
+
+footer {
+  border-top: none;
+}
+h1 {
+  font-size: 2.5rem;
+}
+.panel .content {
+  padding-top: 0;
+}
+.heading-5 {
+  margin-bottom: 0.75em;
+}
+.lead {
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-color: $bright-orange;
+  p {
+    font-size: inherit;
+    &.med-txt {
+      font-size: $txt-sm !important;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+.landing-how-to {
+  //border-radius: 4.25rem;
+  //overflow: hidden;
+  //   margin-left: -1.5rem;
+  //   margin-right: -1.5rem;
+  //background-image: linear-gradient(to right, #f3f9f5, #cde7d7);
+  div {
+    flex: 1;
+    height: 100%;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 5rem;
+    font-family: "Inter-Medium";
+    color: $txt-gray;
+    //border: 1px $success-green solid !important;
+
+    &:nth-of-type(1) {
+      //background-color: rgba(243, 249, 245, 0.5);
+      background: darken(rgba(243, 249, 245, 0.5), 10%);
+    }
+    &:nth-of-type(2) {
+      //background-color: rgba(230, 243, 235, 0.5);
+      background: darken(rgba(230, 243, 235, 0.5), 10%);
+    }
+    &:nth-of-type(3) {
+      //background-color: rgba(218, 237, 225, 0.5);
+      background: darken(rgba(218, 237, 225, 0.5), 10%);
+    }
+    &:nth-of-type(4) {
+      //background-color: rgba(205, 231, 215, 0.5);
+      background: darken(rgba(205, 231, 215, 0.5), 10%);
+    }
+  }
+  .icon-holder {
+    margin-top: 0.5rem;
+
+    img,
+    svg {
+      width: auto;
+      height: 24px;
+      margin: 5px;
+      color: $txt-gray;
+    }
+  }
+}
