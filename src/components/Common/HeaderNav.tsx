@@ -110,9 +110,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.start ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={START_PATH}>
-                  <FormattedMessage defaultMessage="eduID status overview" description="Start sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="eduID status overview" description="Start sub menu" />
               </li>
             </ul>
           </div>
@@ -136,14 +134,10 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.identity ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={IDENTITY_PATH}>
-                  <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
               </li>
               <li>
-                <NavLink to={IDENTITY_PATH}>
-                  <FormattedMessage defaultMessage="Names & Display Name" description="Identity sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Names & Display Name" description="Identity sub menu" />
               </li>
             </ul>
           </div>
@@ -167,14 +161,10 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.security ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={SECURITY_PATH}>
-                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="Security sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="Security sub menu" />
               </li>
               <li>
-                <NavLink to={SECURITY_PATH}>
-                  <FormattedMessage defaultMessage="Manage your security keys" description="Security sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Manage your security keys" description="Security sub menu" />
               </li>
             </ul>
           </div>
@@ -197,52 +187,40 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.account ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="Unique ID" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Unique ID" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="Email addresses" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Email addresses" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="Language" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Language" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="Change password" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Change password" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="ORCID account" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="ORCID account" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="ESI information" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="ESI information" description="Account sub menu" />
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
-                  <FormattedMessage defaultMessage="Delete eduID" description="Account sub menu" />
-                </NavLink>
+                <FormattedMessage defaultMessage="Delete eduID" description="Account sub menu" />
               </li>
             </ul>
           </div>
-          <EduIDButton
-            buttonstyle="link"
-            size="sm"
-            id="logout"
-            onClick={props.handleLogout}
-            disabled={!props.login_url}
-          >
-            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
-            <FormattedMessage defaultMessage="Log out" description="Header logout" />
-          </EduIDButton>
+          <div className="logout-button-wrapper">
+            <EduIDButton
+              buttonstyle="link"
+              size="sm"
+              id="logout"
+              onClick={props.handleLogout}
+              disabled={!props.login_url}
+            >
+              <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+              <FormattedMessage defaultMessage="Log out" description="Header logout" />
+            </EduIDButton>
+          </div>
         </ul>
       </div>
     </nav>
