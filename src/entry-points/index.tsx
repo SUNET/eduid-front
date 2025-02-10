@@ -14,7 +14,6 @@ import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
-import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 
 function showErrorMsg() {
@@ -56,8 +55,7 @@ const getConfig = async function () {
     showErrorMsg();
   }
 };
-/* Initialise common polyfills for missing browser functionality */
-polyfillsInit();
+
 
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(eduidStore.dispatch);
