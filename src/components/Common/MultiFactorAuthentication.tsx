@@ -452,7 +452,8 @@ function SecurityKeyTable({
         } else {
           await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
         }
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
+        // TODO: clean up
+        // dispatch(authnSlice.actions.setAuthnFrontendReset());
       }
     })();
   }, [authn?.response?.frontend_action]);
