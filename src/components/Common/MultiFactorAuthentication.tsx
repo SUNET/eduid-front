@@ -257,6 +257,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                   to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
           />
         </p>
+        <p className="text-medium">
+          <strong>
+            <FormattedMessage
+              description="security second factor individual"
+              defaultMessage={`Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder.`}
+            />
+          </strong>
+        </p>
         <p className="help-text">
           <FormattedMessage
             description="security second factor help info"
