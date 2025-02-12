@@ -8,7 +8,7 @@ test("renders verifyIdentity, non verified user", async () => {
   expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();
   // show two options for verification, swedish id and eu id
   const swedishAccordion = screen.getByRole("button", {
-    name: /swedish personal ID or coordination number With a digital ID-card/i,
+    name: /swedish personal ID or coordination number With a digital ID/i,
   });
   expect(swedishAccordion).toBeEnabled();
   const eidasAccordion = screen.getByRole("button", { name: /EU citizen/i });
@@ -79,7 +79,7 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   expect(screen.getByText(/19850101/i)).toBeInTheDocument();
   // after eidas verification, still showing swedish identification options
   expect(
-    screen.getByRole("button", { name: /swedish personal ID or coordination number With a digital ID-card/i })
+    screen.getByRole("button", { name: /swedish personal ID or coordination number With a digital ID/i })
   ).toBeInTheDocument();
 });
 

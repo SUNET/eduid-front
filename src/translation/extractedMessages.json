@@ -219,10 +219,6 @@
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
   },
-  "2i/BS7": {
-    "developer_comment": "use freja - list item 3",
-    "string": "log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area and follow the instructions."
-  },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Why have eduID?"
@@ -352,6 +348,10 @@
   "5paghv": {
     "developer_comment": "platform authn device error text",
     "string": "*Your device is not compatible."
+  },
+  "5pfXO3": {
+    "developer_comment": "bankID proofing help text",
+    "string": "To use this option you will need to first create a digital ID in the {bankID_link} app."
   },
   "5zKqUX": {
     "developer_comment": "login eduid - re-login list item 1",
@@ -740,10 +740,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
   },
-  "FICYKZ": {
-    "developer_comment": "accordion item swedish additional info",
-    "string": "With a digital ID-card / By post"
-  },
   "FTlcWo": {
     "developer_comment": "login eduid - security key paragraph",
     "string": "Note: you can read more about ORCID iD and Ladok and ESI settings in the \"Connecting account with Orcid / ESI\" help section.\""
@@ -859,6 +855,10 @@
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
+  },
+  "I10FOL": {
+    "developer_comment": "what is freja - paragraph",
+    "string": "Freja+ is a digital ID (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number or coordination number."
   },
   "I470G3": {
     "developer_comment": "account eduid - list item 1-3",
@@ -1003,6 +1003,10 @@
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and is one of the many ways eduID is always striving to improve."
   },
+  "MkJVFg": {
+    "developer_comment": "use freja - list item 3",
+    "string": "log in to eduID and choose the 'Freja+ digital ID' option in the Identity area and follow the instructions."
+  },
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "There is no technical information available"
@@ -1022,6 +1026,10 @@
   "Mxw9Ni": {
     "developer_comment": "account settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
+  },
+  "N22YcU": {
+    "developer_comment": "security zone modal",
+    "string": "After logging in, you will be redirected to {externalPage} page to verify your security key."
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
@@ -1122,10 +1130,6 @@
   "P/NqW7": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "If you are able to create a Freja+ by using the app or visiting one of the authorised agents"
-  },
-  "P2JYwK": {
-    "developer_comment": "what is freja - paragraph",
-    "string": "Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number or coordination number."
   },
   "P7d2zq": {
     "developer_comment": "button save",
@@ -1436,6 +1440,10 @@
     "developer_comment": "not found heading",
     "string": "Page not found"
   },
+  "VwUC+6": {
+    "developer_comment": "eidas proofing help text",
+    "string": "To use this option you will need to first create a digital ID in the {freja_eid_link} app."
+  },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
     "string": "If you are using a passkey for your login, don't save it on the same key chain as your password."
@@ -1552,6 +1560,10 @@
     "developer_comment": "account eduid - list item 3-1",
     "string": "Clicking on the link \"Change password\" will take you through the steps for changing your password. As when you created your eduID, there is a choice between a suggested (automatically generated) password or one you create."
   },
+  "YE2ST1": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digital ID) - for Swedish personal identity or coordination number holders:"
+  },
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verification status:"
@@ -1567,10 +1579,6 @@
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "services requiring a strong binding between your identity and your login, often called {emphasis}."
-  },
-  "YbLEig": {
-    "developer_comment": "eidas proofing help text",
-    "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
   },
   "YhOtY3": {
     "developer_comment": "copied button label",
@@ -2001,10 +2009,6 @@
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
-  "evIsxX": {
-    "developer_comment": "swedish nin freja - heading",
-    "string": "Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
-  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
@@ -2217,10 +2221,6 @@
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "How to use Freja+ with eduID:"
-  },
-  "j9AXsq": {
-    "developer_comment": "bankID proofing help text",
-    "string": "To use this option you will need to first create a digital ID-card in the {bankID_link} app."
   },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
@@ -2491,6 +2491,10 @@
     "developer_comment": "Verified Identity heading",
     "string": "Verified identity"
   },
+  "mXO+3H": {
+    "developer_comment": "accordion item swedish additional info",
+    "string": "With a digital ID / By post"
+  },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
     "string": "Use my Freja eID"
@@ -2555,6 +2559,10 @@
     "developer_comment": "Login MFA link",
     "string": "go to eduID Dashboard"
   },
+  "ng2KA4": {
+    "developer_comment": "security second factor individual",
+    "string": "Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder."
+  },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
   },
@@ -2610,10 +2618,6 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "A button connecting your eduID with your existing ORCID iD."
-  },
-  "nyRE3J": {
-    "developer_comment": "manage your tokens",
-    "string": "Manage your tokens"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -3243,6 +3247,10 @@
     "developer_comment": "identity eduid - list item 2",
     "string": "Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:"
   },
+  "vh98ct": {
+    "developer_comment": "security zone modal",
+    "string": "Note: After logging in, you'll be asked to enter a name for your security key."
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
@@ -3294,6 +3302,10 @@
   "x8ZGkQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph2em",
     "string": "AL1 (unconfirmed user) / RAF Low"
+  },
+  "x8e6Gj": {
+    "developer_comment": "manage your tokens",
+    "string": "Manage your security keys"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
