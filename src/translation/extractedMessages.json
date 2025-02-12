@@ -1890,10 +1890,6 @@
     "developer_comment": "start eduid - list item 3-1",
     "string": "confirmed account (confirmed email address and accepted terms of use)"
   },
-  "e6XTxx": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account, the code has been sent to {email}"
-  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -2310,6 +2306,10 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}."
   },
+  "kg94pm": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Adding/removing a security key."
@@ -2317,6 +2317,10 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
+  },
+  "krGZEd": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account, the code has been sent to {email} from no-reply@eduid.se."
   },
   "krGqLm": {
     "developer_comment": "login eduid - forgot pw list item 2",
@@ -2602,10 +2606,6 @@
   "notifications.info-label": {
     "developer_comment": "Notification type",
     "string": "Information"
-  },
-  "nsFjU0": {
-    "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent."
   },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
