@@ -3243,6 +3243,10 @@
   "verified identity delete button": {
     "string": "Delete this verified identity"
   },
+  "vh4acG": {
+    "developer_comment": "identity eduid - list item 2",
+    "string": "Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:"
+  },
   "vh98ct": {
     "developer_comment": "security zone modal",
     "string": "Note: After logging in, you'll be asked to enter a name for your security key."
@@ -3294,6 +3298,10 @@
   "x6V8oh": {
     "developer_comment": "Language radio group legend",
     "string": "Language"
+  },
+  "x8ZGkQ": {
+    "developer_comment": "Assurance levels with your eduID - paragraph2em",
+    "string": "AL1 (unconfirmed user) / RAF Low"
   },
   "x8e6Gj": {
     "developer_comment": "manage your tokens",
