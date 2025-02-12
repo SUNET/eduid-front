@@ -1027,6 +1027,10 @@
     "developer_comment": "account settings lead title",
     "string": "Update your eduID account settings, change password or delete your eduID."
   },
+  "N22YcU": {
+    "developer_comment": "security zone modal",
+    "string": "After logging in, you will be redirected to {externalPage} page to verify your security key."
+  },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
     "string": "If external services other than eduID require a second factor during login, you will then still need to use your security key even when this setting is toggled off."
@@ -1997,7 +2001,7 @@
     "string": "Successfully verified email address"
   },
   "error_in_form": {
-    "string": "Check the form below for errors."
+    "string": "Please try again. If the issue persists, contact support."
   },
   "error_lookup_mobile_task": {
     "string": "Your phone number could not be found in the registry. Please try another method."
@@ -2555,6 +2559,10 @@
     "developer_comment": "Login MFA link",
     "string": "go to eduID Dashboard"
   },
+  "ng2KA4": {
+    "developer_comment": "security second factor individual",
+    "string": "Note: Added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder."
+  },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
   },
@@ -2610,10 +2618,6 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "A button connecting your eduID with your existing ORCID iD."
-  },
-  "nyRE3J": {
-    "developer_comment": "manage your tokens",
-    "string": "Manage your security keys"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -3243,6 +3247,10 @@
     "developer_comment": "identity eduid - list item 2",
     "string": "Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:"
   },
+  "vh98ct": {
+    "developer_comment": "security zone modal",
+    "string": "Note: After logging in, you'll be asked to enter a name for your security key."
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
@@ -3294,6 +3302,10 @@
   "x8ZGkQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph2em",
     "string": "AL1 (unconfirmed user) / RAF Low"
+  },
+  "x8e6Gj": {
+    "developer_comment": "manage your tokens",
+    "string": "Manage your security keys"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
