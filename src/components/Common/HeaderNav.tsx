@@ -7,6 +7,7 @@ import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 // export for use in tests
 export const activeClassName = "active";
@@ -136,14 +137,18 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.identity ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={IDENTITY_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={IDENTITY_PATH}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={IDENTITY_PATH}>
+                <NavHashLink
+                  onClick={() => setOpenMenu(false)}
+                  to={`${IDENTITY_PATH}#personal-data`}
+                  aria-label="go to manage your security key section"
+                >
                   <FormattedMessage defaultMessage="Names & Display Name" description="Identity sub menu" />
-                </NavLink>
+                </NavHashLink>
               </li>
             </ul>
           </div>
@@ -167,12 +172,12 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.security ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={SECURITY_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={SECURITY_PATH}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="Security sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={SECURITY_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={SECURITY_PATH}>
                   <FormattedMessage defaultMessage="Manage your security keys" description="Security sub menu" />
                 </NavLink>
               </li>
@@ -197,37 +202,37 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <div className={isOpen.account ? "panel-collapse" : "panel-collapse panel-close"}>
             <ul>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="Unique ID" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="Email addresses" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="Language" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="Change password" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="ORCID account" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="ESI information" description="Account sub menu" />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={ACCOUNT_PATH}>
+                <NavLink onClick={() => setOpenMenu(false)} to={ACCOUNT_PATH}>
                   <FormattedMessage defaultMessage="Delete eduID" description="Account sub menu" />
                 </NavLink>
               </li>
