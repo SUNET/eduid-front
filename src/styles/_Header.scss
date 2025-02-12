@@ -29,13 +29,22 @@ header {
       transition: max-height 0.2s ease;
       margin-left: 1.3rem;
 
-      li {
-        font-size: 0.9rem;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        font-family: $akkurat;
-        color: $txt-gray;
+      ul {
+        a {
+          font-size: 0.9rem;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          color: $txt-gray;
+        }
       }
+
+      // li {
+      //   font-size: 0.9rem;
+      //   padding-top: 3px;
+      //   padding-bottom: 3px;
+      //   font-family: $akkurat;
+      //   color: $txt-gray;
+      // }
     }
     .panel-close {
       max-height: 0;
