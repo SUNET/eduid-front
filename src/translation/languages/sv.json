@@ -1890,10 +1890,6 @@
     "developer_comment": "start eduid - list item 3-1",
     "string": "bekräftat konto (bekräftad epostadress och godkända användarvillkor)"
   },
-  "e6XTxx": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto har koden skickats till {email}"
-  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -2310,6 +2306,10 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. ditt studentkonto eller {link}."
   },
+  "kg94pm": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner från no-reply@eduid.se."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Lägga till/ta bort säkerhetsnyckel."
@@ -2317,6 +2317,10 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
+  },
+  "krGZEd": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto, har koden skickats till {email} från no-reply@eduid.se."
   },
   "krGqLm": {
     "developer_comment": "login eduid - forgot pw list item 2",
@@ -2602,10 +2606,6 @@
   "notifications.info-label": {
     "developer_comment": "Notification type",
     "string": "Information"
-  },
-  "nsFjU0": {
-    "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
   },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
