@@ -32,7 +32,7 @@ export function ResetPasswordEnterEmail(): JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Once entered, if the address is registered, a message with instructions to reset the password will be sent."
+              defaultMessage="Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
               description="ResetPasswordEnterEmail lead text"
             />
           </p>
