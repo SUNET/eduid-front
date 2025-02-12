@@ -30,8 +30,9 @@ header {
       margin-left: 1.3rem;
 
       li {
-        padding-top: 5px;
-        padding-bottom: 5px;
+        font-size: 0.9rem;
+        padding-top: 3px;
+        padding-bottom: 3px;
         font-family: $akkurat;
         color: $txt-gray;
       }
@@ -101,12 +102,13 @@ header {
 
         .flex-between:hover {
           background-color: $body-gray;
-          border-radius: 25px;
+          border-radius: 20px;
         }
       }
 
       .btn-close {
         align-self: flex-end;
+        margin-bottom: 1rem;
       }
 
       &.active {
@@ -142,8 +144,8 @@ header {
         }
       }
       .logout-button-wrapper {
-        margin-top: 1rem;
-        padding-top: 1rem;
+        margin: 0.5rem 0 0 10px;
+        padding-top: 0.5rem;
         border-top: 1px solid $border-gray;
       }
     }
