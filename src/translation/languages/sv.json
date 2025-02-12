@@ -219,10 +219,6 @@
     "developer_comment": "Reset password link",
     "string": "Glömt ditt lösenord?"
   },
-  "2i/BS7": {
-    "developer_comment": "use freja - list item 3",
-    "string": "logga in i eduID och välj metoden 'Med Freja+ digitalt id-kort' i identitetshanteringen och följ instruktionerna."
-  },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
@@ -352,6 +348,10 @@
   "5paghv": {
     "developer_comment": "platform authn device error text",
     "string": "*Din enhet är inte kompatibel."
+  },
+  "5pfXO3": {
+    "developer_comment": "bankID proofing help text",
+    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID i {bankID_link} appen."
   },
   "5zKqUX": {
     "developer_comment": "login eduid - re-login list item 1",
@@ -740,10 +740,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Åtkomstfel"
   },
-  "FICYKZ": {
-    "developer_comment": "accordion item swedish additional info",
-    "string": "Med digitalt ID-kort / Via post"
-  },
   "FTlcWo": {
     "developer_comment": "login eduid - security key paragraph",
     "string": "Obs: du kan läsa mer om ORCID iD, Ladok och ESI i hjälpavsnittet \"Länkning till ORCID / ESI\"."
@@ -859,6 +855,10 @@
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
+  },
+  "I10FOL": {
+    "developer_comment": "what is freja - paragraph",
+    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID tillgängligt för personer med svenskt personnummer eller samordningsnummer."
   },
   "I470G3": {
     "developer_comment": "account eduid - list item 1-3",
@@ -1003,6 +1003,10 @@
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "Det är av stor vikt för oss att så många som möjligt kan använda tjänsten på ett bra och säkert sätt och är ett av områdena eduID alltid försöker att utvecklas."
   },
+  "MkJVFg": {
+    "developer_comment": "use freja - list item 3",
+    "string": "logga in i eduID och välj metoden 'Med Freja+' i identitetshanteringen och följ instruktionerna."
+  },
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "Det finns ingen detaljerad information tillgänglig"
@@ -1122,10 +1126,6 @@
   "P/NqW7": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
-  },
-  "P2JYwK": {
-    "developer_comment": "what is freja - paragraph",
-    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer eller samordningsnummer."
   },
   "P7d2zq": {
     "developer_comment": "button save",
@@ -1436,6 +1436,10 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
+  "VwUC+6": {
+    "developer_comment": "eidas proofing help text",
+    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID i {freja_eid_link} appen."
+  },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
     "string": "Om du använder en passkey för din inloggning, spara den inte på samma nyckelring som ditt lösenord."
@@ -1552,6 +1556,10 @@
     "developer_comment": "account eduid - list item 3-1",
     "string": "Länken \"Byt lösenord\" tar dig igenom stegen för att byta ditt lösenord. Som när du skapade ditt eduID kommer du få välja mellan ett föreslaget (automatiskt genererat) lösenord och ett du skapar själv."
   },
+  "YE2ST1": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digitalt ID) - med svenskt personnummer eller samordningsnummer:"
+  },
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verifieringsstatus:"
@@ -1567,10 +1575,6 @@
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "tjänster som kräver en stark koppling mellan din identitet och din inloggning, ofta kallad {emphasis}."
-  },
-  "YbLEig": {
-    "developer_comment": "eidas proofing help text",
-    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
   },
   "YhOtY3": {
     "developer_comment": "copied button label",
@@ -2001,10 +2005,6 @@
   "error_navet_task": {
     "string": "Problem att nå Navet"
   },
-  "evIsxX": {
-    "developer_comment": "swedish nin freja - heading",
-    "string": "Freja+ (digitalt ID-kort) - med svenskt personnummer eller samordningsnummer:"
-  },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
@@ -2217,10 +2217,6 @@
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
-  },
-  "j9AXsq": {
-    "developer_comment": "bankID proofing help text",
-    "string": "För att använda det här alternativet måste du först skapa ett digitalt ID-kort i {bankID_link} appen."
   },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
@@ -2490,6 +2486,10 @@
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
     "string": "Verifierad identitet"
+  },
+  "mXO+3H": {
+    "developer_comment": "accordion item swedish additional info",
+    "string": "Med digitalt ID / Via post"
   },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
