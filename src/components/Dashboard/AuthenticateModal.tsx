@@ -67,14 +67,15 @@ export function AuthenticateModal() {
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
-                defaultMessage="Note: please use your security key {securityKeyDescription} during the login process."
+                defaultMessage="Note: please use your security key {securityKeyDescription} during the login process. "
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
                 }}
               />
+              &nbsp;
               <FormattedMessage
                 description="security zone modal"
-                defaultMessage="After logging in, you will be redirected to {externalPage} page to verify your security key."
+                defaultMessage=" After logging in, you will be redirected to {externalPage} page to verify your security key."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
                   externalPage: <strong>{method.toUpperCase()}</strong>,

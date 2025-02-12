@@ -2001,7 +2001,7 @@
     "string": "Successfully verified email address"
   },
   "error_in_form": {
-    "string": "Check the form below for errors."
+    "string": "Please try again. if the issue persists, contact support."
   },
   "error_lookup_mobile_task": {
     "string": "Your phone number could not be found in the registry. Please try another method."
