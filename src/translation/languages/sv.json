@@ -1027,6 +1027,10 @@
     "developer_comment": "account settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
   },
+  "N22YcU": {
+    "developer_comment": "security zone modal",
+    "string": "Efter inloggning omdirigeras du till {externalPage} för att verifiera din säkerhetsnyckel."
+  },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
     "string": "Om andra externa tjänster än eduID kräver tvåfaktorsautentisering (2FA) vid inloggning, kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
@@ -1997,7 +2001,7 @@
     "string": "E-postadressen bekräftad"
   },
   "error_in_form": {
-    "string": "Formulärfel. Se nedan för specifikt felmeddelande"
+    "string": "Vänligen försök igen, om problemet kvarstår kontakta supporten."
   },
   "error_lookup_mobile_task": {
     "string": "Ditt telefonnummer kunde inte hittas i registret. Var god prova en annan metod."
@@ -2555,6 +2559,10 @@
     "developer_comment": "Login MFA link",
     "string": "gå till eduID Dashboard"
   },
+  "ng2KA4": {
+    "developer_comment": "security second factor individual",
+    "string": "Obs: Tillagda säkerhetsnycklar är personliga och ska inte delas med andra. Det är för att säkerställa att endast du som kontohavare har tillgång till ditt konto."
+  },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
   },
@@ -2610,10 +2618,6 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "En knapp för att ansluta ditt eduID med befintligt ORCID iD."
-  },
-  "nyRE3J": {
-    "developer_comment": "manage your tokens",
-    "string": "Hantera dina säkerhetsnycklar"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -3243,6 +3247,10 @@
     "developer_comment": "identity eduid - list item 2",
     "string": "Alternativ för identitetsverifiering om din verkliga identitet inte är verifierad eller din existerande verifiering inte är med ett svenskt person- eller samordningsnummer, beroende på din situation:"
   },
+  "vh98ct": {
+    "developer_comment": "security zone modal",
+    "string": "Efter inloggning blir du ombedd att namnge din säkerhetsnyckel."
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
@@ -3294,6 +3302,10 @@
   "x8ZGkQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph2em",
     "string": "AL1 (obekräftad användare) / RAF Low"
+  },
+  "x8e6Gj": {
+    "developer_comment": "manage your tokens",
+    "string": "Hantera dina säkerhetsnycklar"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
