@@ -105,7 +105,7 @@ export function AuthenticateModal() {
             <p className="help-text">
               <FormattedMessage
                 description="security zone modal"
-                defaultMessage="Note: After logging in, you'll be asked to enter the name of your security key."
+                defaultMessage="Note: After logging in, you'll be asked to enter a name for your security key."
               />
             </p>
           )}
