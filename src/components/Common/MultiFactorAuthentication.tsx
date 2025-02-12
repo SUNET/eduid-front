@@ -273,7 +273,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             }}
           />
         </p>
-        <div className="table-responsive">
+        <section className="top-spacing">
           <span aria-label="select extra webauthn">
             <strong>
               <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
@@ -322,7 +322,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               </p>
             </div>
           </div>
-        </div>
+        </section>
       </article>
       <SecurityKeyTable
         wrapperRef={wrapperRef}
