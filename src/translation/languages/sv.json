@@ -219,10 +219,6 @@
     "developer_comment": "Reset password link",
     "string": "Glömt ditt lösenord?"
   },
-  "2i/BS7": {
-    "developer_comment": "use freja - list item 3",
-    "string": "logga in i eduID och välj metoden 'Med Freja+ digitalt id-kort' i identitetshanteringen och följ instruktionerna."
-  },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
@@ -352,6 +348,10 @@
   "5paghv": {
     "developer_comment": "platform authn device error text",
     "string": "*Din enhet är inte kompatibel."
+  },
+  "5pfXO3": {
+    "developer_comment": "bankID proofing help text",
+    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID i {bankID_link} appen."
   },
   "5zKqUX": {
     "developer_comment": "login eduid - re-login list item 1",
@@ -740,10 +740,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Åtkomstfel"
   },
-  "FICYKZ": {
-    "developer_comment": "accordion item swedish additional info",
-    "string": "Med digitalt ID-kort / Via post"
-  },
   "FTlcWo": {
     "developer_comment": "login eduid - security key paragraph",
     "string": "Obs: du kan läsa mer om ORCID iD, Ladok och ESI i hjälpavsnittet \"Länkning till ORCID / ESI\"."
@@ -859,6 +855,10 @@
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
+  },
+  "I10FOL": {
+    "developer_comment": "what is freja - paragraph",
+    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID tillgängligt för personer med svenskt personnummer eller samordningsnummer."
   },
   "I470G3": {
     "developer_comment": "account eduid - list item 1-3",
@@ -1003,6 +1003,10 @@
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "Det är av stor vikt för oss att så många som möjligt kan använda tjänsten på ett bra och säkert sätt och är ett av områdena eduID alltid försöker att utvecklas."
   },
+  "MkJVFg": {
+    "developer_comment": "use freja - list item 3",
+    "string": "logga in i eduID och välj metoden 'Med Freja+' i identitetshanteringen och följ instruktionerna."
+  },
   "MnbIkV": {
     "developer_comment": "no error information message",
     "string": "Det finns ingen detaljerad information tillgänglig"
@@ -1022,6 +1026,10 @@
   "Mxw9Ni": {
     "developer_comment": "account settings lead title",
     "string": "Uppdatera dina eduID-kontoinställningar, byt lösenord eller ta bort ditt eduID."
+  },
+  "N22YcU": {
+    "developer_comment": "security zone modal",
+    "string": "Efter inloggning omdirigeras du till {externalPage} för att verifiera din säkerhetsnyckel."
   },
   "N91sEJ": {
     "developer_comment": "help text toggle 2FA",
@@ -1122,10 +1130,6 @@
   "P/NqW7": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
-  },
-  "P2JYwK": {
-    "developer_comment": "what is freja - paragraph",
-    "string": "Freja+ (ett verifierat Freja eID) är ett kostnadsfritt digitalt ID-kort tillgängligt för personer med svenskt personnummer eller samordningsnummer."
   },
   "P7d2zq": {
     "developer_comment": "button save",
@@ -1436,6 +1440,10 @@
     "developer_comment": "not found heading",
     "string": "Sidan kan inte hittas"
   },
+  "VwUC+6": {
+    "developer_comment": "eidas proofing help text",
+    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID i {freja_eid_link} appen."
+  },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
     "string": "Om du använder en passkey för din inloggning, spara den inte på samma nyckelring som ditt lösenord."
@@ -1552,6 +1560,10 @@
     "developer_comment": "account eduid - list item 3-1",
     "string": "Länken \"Byt lösenord\" tar dig igenom stegen för att byta ditt lösenord. Som när du skapade ditt eduID kommer du få välja mellan ett föreslaget (automatiskt genererat) lösenord och ett du skapar själv."
   },
+  "YE2ST1": {
+    "developer_comment": "swedish nin freja - heading",
+    "string": "Freja+ (digitalt ID) - med svenskt personnummer eller samordningsnummer:"
+  },
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verifieringsstatus:"
@@ -1567,10 +1579,6 @@
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "tjänster som kräver en stark koppling mellan din identitet och din inloggning, ofta kallad {emphasis}."
-  },
-  "YbLEig": {
-    "developer_comment": "eidas proofing help text",
-    "string": "För att använda det här alternativet behöver du först skapa ett digitalt ID-kort i {freja_eid_link} appen."
   },
   "YhOtY3": {
     "developer_comment": "copied button label",
@@ -1882,10 +1890,6 @@
     "developer_comment": "start eduid - list item 3-1",
     "string": "bekräftat konto (bekräftad epostadress och godkända användarvillkor)"
   },
-  "e6XTxx": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto har koden skickats till {email}"
-  },
   "eIAskC": {
     "developer_comment": "Start",
     "string": "Start"
@@ -1993,17 +1997,13 @@
     "string": "E-postadressen bekräftad"
   },
   "error_in_form": {
-    "string": "Formulärfel. Se nedan för specifikt felmeddelande"
+    "string": "Vänligen försök igen, om problemet kvarstår kontakta supporten."
   },
   "error_lookup_mobile_task": {
     "string": "Ditt telefonnummer kunde inte hittas i registret. Var god prova en annan metod."
   },
   "error_navet_task": {
     "string": "Problem att nå Navet"
-  },
-  "evIsxX": {
-    "developer_comment": "swedish nin freja - heading",
-    "string": "Freja+ (digitalt ID-kort) - med svenskt personnummer eller samordningsnummer:"
   },
   "ewgN8J": {
     "developer_comment": "ErrorURL identification failure",
@@ -2218,10 +2218,6 @@
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
   },
-  "j9AXsq": {
-    "developer_comment": "bankID proofing help text",
-    "string": "För att använda det här alternativet måste du först skapa ett digitalt ID-kort i {bankID_link} appen."
-  },
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
@@ -2310,6 +2306,10 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. ditt studentkonto eller {link}."
   },
+  "kg94pm": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner från no-reply@eduid.se."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Lägga till/ta bort säkerhetsnyckel."
@@ -2317,6 +2317,10 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
+  },
+  "krGZEd": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto, har koden skickats till {email} från no-reply@eduid.se."
   },
   "krGqLm": {
     "developer_comment": "login eduid - forgot pw list item 2",
@@ -2491,6 +2495,10 @@
     "developer_comment": "Verified Identity heading",
     "string": "Verifierad identitet"
   },
+  "mXO+3H": {
+    "developer_comment": "accordion item swedish additional info",
+    "string": "Med digitalt ID / Via post"
+  },
   "mXSAC0": {
     "developer_comment": "eidas freja eid ready",
     "string": "Använd mitt Freja+"
@@ -2555,6 +2563,10 @@
     "developer_comment": "Login MFA link",
     "string": "gå till eduID Dashboard"
   },
+  "ng2KA4": {
+    "developer_comment": "security second factor individual",
+    "string": "Obs: Tillagda säkerhetsnycklar är personliga och ska inte delas med andra. Det är för att säkerställa att endast du som kontohavare har tillgång till ditt konto."
+  },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
   },
@@ -2595,10 +2607,6 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
-  "nsFjU0": {
-    "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner."
-  },
   "nu7mGL": {
     "developer_comment": "status overview paragraph3",
     "string": "Status på slutförda åtgärder markeras med en bockmarkering."
@@ -2610,10 +2618,6 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "En knapp för att ansluta ditt eduID med befintligt ORCID iD."
-  },
-  "nyRE3J": {
-    "developer_comment": "manage your tokens",
-    "string": "Hantera dina säkerhetsnycklar"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -3243,6 +3247,10 @@
     "developer_comment": "identity eduid - list item 2",
     "string": "Alternativ för identitetsverifiering om din verkliga identitet inte är verifierad eller din existerande verifiering inte är med ett svenskt person- eller samordningsnummer, beroende på din situation:"
   },
+  "vh98ct": {
+    "developer_comment": "security zone modal",
+    "string": "Efter inloggning blir du ombedd att namnge din säkerhetsnyckel."
+  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
@@ -3294,6 +3302,10 @@
   "x8ZGkQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph2em",
     "string": "AL1 (obekräftad användare) / RAF Low"
+  },
+  "x8e6Gj": {
+    "developer_comment": "manage your tokens",
+    "string": "Hantera dina säkerhetsnycklar"
   },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",

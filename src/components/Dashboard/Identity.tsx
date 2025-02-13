@@ -317,7 +317,7 @@ function AccordionItemSwedish(): JSX.Element | null {
       additionalInfo={
         <FormattedMessage
           description="accordion item swedish additional info"
-          defaultMessage="With a digital ID-card / By post"
+          defaultMessage="With a digital ID / By post"
         />
       }
       uuid="swedish"

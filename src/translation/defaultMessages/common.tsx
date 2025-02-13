@@ -80,7 +80,9 @@ export const validations = {
 
   "invalid username": <FormattedMessage id="invalid username" defaultMessage={`Invalid username`} />,
 
-  error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
+  error_in_form: (
+    <FormattedMessage id="error_in_form" defaultMessage={`Please try again. if the issue persists, contact support.`} />
+  ),
 
   "chpass.low-password-entropy": (
     <FormattedMessage id="chpass.low-password-entropy" defaultMessage={`Please provide a stronger password`} />

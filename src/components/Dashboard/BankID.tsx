@@ -21,7 +21,7 @@ function BankID(): JSX.Element {
       <p className="proofing-btn-help">
         <FormattedMessage
           description="bankID proofing help text"
-          defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+          defaultMessage={`To use this option you will need to first create a digital ID in the 
             {bankID_link} app.`}
           values={{
             bankID_link: (
