@@ -29,7 +29,7 @@ const LadokContainer = (): JSX.Element => {
   useEffect(() => setSwitchChecked(isLinked), [isLinked]);
 
   return (
-    <article className="ladok">
+    <article className="ladok" id="ladok">
       <h2>
         <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
       </h2>

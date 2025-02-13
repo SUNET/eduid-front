@@ -36,7 +36,7 @@ export function LanguagePreference() {
   }
 
   return (
-    <article>
+    <article id="language">
       <h2>
         <FormattedMessage description="pd main title" defaultMessage={`Language`} />
       </h2>
