@@ -197,7 +197,7 @@ export function Recommendations(): JSX.Element | null {
   }
 
   return (
-    <article>
+    <article id="status-overview">
       <h2>
         <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
       </h2>

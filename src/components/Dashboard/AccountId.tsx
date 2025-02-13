@@ -24,7 +24,7 @@ export function AccountId(): JSX.Element {
 
 export function AccountIdDisplay(): JSX.Element {
   return (
-    <article>
+    <article id="unique-id">
       <h2>
         <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
       </h2>

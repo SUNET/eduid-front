@@ -16,7 +16,7 @@ function ChangePasswordDisplay() {
     }
   }
   return (
-    <article>
+    <article id="change-password">
       <h2>
         <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
       </h2>

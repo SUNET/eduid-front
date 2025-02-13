@@ -131,6 +131,10 @@
     "developer_comment": "security eduid - list item 3-1",
     "string": "the descriptive name given by you when created"
   },
+  "10CjiE": {
+    "developer_comment": "Identity sub menu",
+    "string": "Names & Display Name"
+  },
   "12hWj7": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
@@ -322,6 +326,10 @@
     "developer_comment": "security eduid - paragraph",
     "string": "Note: You can read more about security keys in the help section \"Enhancing the security level of eduID\"."
   },
+  "5H6C2O": {
+    "developer_comment": "Account sub menu",
+    "string": "Language"
+  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -448,6 +456,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
+  },
+  "8HcZ0r": {
+    "developer_comment": "Start sub menu",
+    "string": "eduID status overview"
   },
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
@@ -616,6 +628,13 @@
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
     "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
+  },
+  "CWZl1q": {
+    "developer_comment": "Account sub menu",
+    "string": "ORCID account"
+  },
+  "Close": {
+    "string": "Close"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -1071,6 +1090,14 @@
     "developer_comment": "delete.confirm_button",
     "string": "Confirm"
   },
+  "NmJs6W": {
+    "developer_comment": "Security sub menu",
+    "string": "Manage your security keys"
+  },
+  "NsZ2wz": {
+    "developer_comment": "Security sub menu",
+    "string": "Two-factor Authentication (2FA)"
+  },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
@@ -1404,6 +1431,10 @@
     "developer_comment": "security verified",
     "string": "verified"
   },
+  "VBiKJw": {
+    "developer_comment": "Account sub menu",
+    "string": "Delete eduID"
+  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
@@ -1475,6 +1506,10 @@
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Press the \"Use my security key\" button and follow the instructions, which will vary depending on your key."
+  },
+  "WogNGU": {
+    "developer_comment": "Identity sub menu",
+    "string": "Verify Identity"
   },
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
@@ -2033,6 +2068,10 @@
     "developer_comment": "how add security key - heading",
     "string": "How do I implement 2FA with eduID?"
   },
+  "fIkbOL": {
+    "developer_comment": "Account sub menu",
+    "string": "Email addresses"
+  },
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
@@ -2122,6 +2161,10 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
+  },
+  "hbZaQQ": {
+    "developer_comment": "Account sub menu",
+    "string": "Change password"
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2523,6 +2566,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
+  "n/EMF1": {
+    "developer_comment": "Account sub menu",
+    "string": "ESI information"
+  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
@@ -2538,6 +2585,10 @@
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS is a federation of EU countries providing electronic identification to allow access to public authority systems for EU citizens, using their country's electronic ID."
+  },
+  "nC6VRn": {
+    "developer_comment": "Account sub menu",
+    "string": "Unique ID"
   },
   "nCc6tZ": {
     "developer_comment": "BankID vetting button",

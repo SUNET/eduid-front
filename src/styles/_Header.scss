@@ -22,6 +22,34 @@ header {
   }
 
   .header-nav {
+    // sub menu
+    .submenu-collapse {
+      max-height: 500px;
+      overflow: hidden;
+      transition: max-height 0.2s ease;
+      margin-left: 1.3rem;
+
+      ul {
+        a {
+          font-size: 0.9rem;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          color: $txt-gray;
+        }
+      }
+
+      // li {
+      //   font-size: 0.9rem;
+      //   padding-top: 3px;
+      //   padding-bottom: 3px;
+      //   font-family: $akkurat;
+      //   color: $txt-gray;
+      // }
+    }
+    .submenu-close {
+      max-height: 0;
+    }
+
     button {
       @media (max-width: $bp-sm) {
         span {
@@ -69,10 +97,28 @@ header {
 
       ul {
         text-align: left;
+
+        .flex-between {
+          padding-left: 10px;
+          margin-top: 3px;
+          margin-bottom: 3px;
+
+          button {
+            background-color: transparent;
+            box-shadow: none;
+            padding-left: 10px;
+          }
+        }
+
+        .flex-between:hover {
+          background-color: $body-gray;
+          border-radius: 20px;
+        }
       }
 
       .btn-close {
         align-self: flex-end;
+        margin-bottom: 1rem;
       }
 
       &.active {
@@ -88,6 +134,7 @@ header {
         border-radius: 10px;
         padding: 20px;
         right: 20px;
+        max-width: 20rem;
 
         .btn-link svg {
           padding-right: 5px;
@@ -101,11 +148,15 @@ header {
         height: 2.7rem;
         justify-content: left;
         line-height: 1.2;
-        width: 100%;
 
         &:nth-child(4) {
           border-bottom: 1px solid $border-gray;
         }
+      }
+      .logout-button-wrapper {
+        margin: 0.5rem 0 0 10px;
+        padding-top: 0.5rem;
+        border-top: 1px solid $border-gray;
       }
     }
   }

@@ -114,7 +114,7 @@ function PersonalDataParent() {
   };
 
   return (
-    <article className="personal-data">
+    <article className="personal-data" id="personal-data">
       <div className="heading">
         <h2>
           <FormattedMessage description="pd main title" defaultMessage={`Names & Display Name`} />

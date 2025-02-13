@@ -109,7 +109,7 @@ function Emails() {
   }
 
   return (
-    <article>
+    <article id="add-email-addresses">
       <h2>
         <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
       </h2>
