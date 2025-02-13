@@ -5,7 +5,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
@@ -76,6 +76,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
     account: false,
   });
   const wrapperRef = useRef(null);
+  const intl = useIntl();
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => ({
@@ -89,7 +90,15 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
     <nav className="header-nav" ref={wrapperRef}>
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
-        <EduIDButton buttonstyle="close" size="sm" onClick={() => setOpenMenu(false)}></EduIDButton>
+        <EduIDButton
+          title={intl.formatMessage({
+            id: "Close",
+            defaultMessage: "Close",
+          })}
+          buttonstyle="close"
+          size="sm"
+          onClick={() => setOpenMenu(false)}
+        ></EduIDButton>
         <ul>
           <div className="flex-between">
             <NavLink
