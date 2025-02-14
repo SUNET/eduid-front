@@ -61,7 +61,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
   useEffect(() => {
-    if (tokens.length > 0) {
+    if (tokens.length > 0 && tokenKey !== tokens[tokens.length - 1].key) {
       setTokenKey(tokens[tokens.length - 1].key);
     }
   }, [tokens]);
