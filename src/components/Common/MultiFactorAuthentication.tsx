@@ -82,7 +82,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     (async () => {
       if (isLoaded && !credentials.length) {
         // call requestCredentials once app is loaded
-        await dispatch(requestCredentials());
+        const response = await dispatch(requestCredentials());
+        if (requestCredentials.fulfilled.match(response)) {
+          wrapperRef?.current?.focus();
+        }
       }
     })();
   }, [isLoaded]);
@@ -229,9 +232,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             const response = await dispatch(registerWebauthn({ descriptionValue }));
-            if (wrapperRef.current) {
-              wrapperRef.current.focus();
-            }
+            wrapperRef?.current?.focus();
             if (registerWebauthn.fulfilled.match(response)) {
               setShowVerifyWebauthnModal(true);
             }
@@ -483,6 +484,8 @@ function SecurityKeyTable({
           frontend_state: JSON.stringify(parsedFrontendState),
         })
       );
+    } else {
+      wrapperRef?.current?.focus();
     }
   }
 
