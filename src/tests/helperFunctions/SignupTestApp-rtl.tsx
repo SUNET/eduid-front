@@ -49,7 +49,7 @@ export const signupTestState: EduIDAppRootState = {
 
 interface renderArgs {
   state?: Partial<EduIDAppRootState>;
-  options?: Omit<RenderOptions, "wrapper" | "legacyRoot">;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
@@ -75,7 +75,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       </SignupGlobalStateProvider>
     );
   }
-  return rtlRender(ui, { wrapper: Wrapper, legacyRoot: true, ...args.options });
+  return rtlRender(ui, { wrapper: Wrapper, ...args.options });
 }
 
 // re-export everything
