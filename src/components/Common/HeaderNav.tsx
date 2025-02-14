@@ -93,7 +93,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <ul>
-          <div className="flex-between">
+          <li className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
               className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -109,8 +109,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 <FontAwesomeIcon icon={faChevronDown as IconProp} />
               )}
             </button>
-          </div>
-          <div className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+          </li>
+          <li className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`} end>
@@ -118,9 +118,9 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 </NavHashLink>
               </li>
             </ul>
-          </div>
+          </li>
 
-          <div className="flex-between">
+          <li className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
               className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -135,8 +135,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 <FontAwesomeIcon icon={faChevronDown as IconProp} />
               )}
             </button>
-          </div>
-          <div className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+          </li>
+          <li className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
@@ -153,8 +153,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 </NavHashLink>
               </li>
             </ul>
-          </div>
-          <div className="flex-between">
+          </li>
+          <li className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
               className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -170,8 +170,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 <FontAwesomeIcon icon={faChevronDown as IconProp} />
               )}
             </button>
-          </div>
-          <div className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+          </li>
+          <li className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
@@ -184,8 +184,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 </NavHashLink>
               </li>
             </ul>
-          </div>
-          <div className="flex-between">
+          </li>
+          <li className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
               className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -200,8 +200,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 <FontAwesomeIcon icon={faChevronDown as IconProp} />
               )}
             </button>
-          </div>
-          <div className={isOpen.account ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+          </li>
+          <li className={isOpen.account ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
@@ -239,8 +239,8 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                 </NavHashLink>
               </li>
             </ul>
-          </div>
-          <div className="logout-button-wrapper">
+          </li>
+          <li className="logout-button-wrapper">
             <EduIDButton
               buttonstyle="link"
               size="sm"
@@ -251,7 +251,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
               <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
               <FormattedMessage defaultMessage="Log out" description="Header logout" />
             </EduIDButton>
-          </div>
+          </li>
         </ul>
       </div>
     </nav>
