@@ -131,10 +131,6 @@
     "developer_comment": "security eduid - list item 3-1",
     "string": "the descriptive name given by you when created"
   },
-  "10CjiE": {
-    "developer_comment": "Identity sub menu",
-    "string": "Names & Display Name"
-  },
   "12hWj7": {
     "developer_comment": "ErrorURL authentication failure",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
@@ -326,10 +322,6 @@
     "developer_comment": "security eduid - paragraph",
     "string": "Note: You can read more about security keys in the help section \"Enhancing the security level of eduID\"."
   },
-  "5H6C2O": {
-    "developer_comment": "Account sub menu",
-    "string": "Language"
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -456,10 +448,6 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
-  },
-  "8HcZ0r": {
-    "developer_comment": "Start sub menu",
-    "string": "eduID status overview"
   },
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
@@ -628,10 +616,6 @@
   "CRmnyw": {
     "developer_comment": "Security keys list - paragraph",
     "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
-  },
-  "CWZl1q": {
-    "developer_comment": "Account sub menu",
-    "string": "ORCID account"
   },
   "Close": {
     "string": "Close"
@@ -1018,6 +1002,10 @@
     "developer_comment": "platform authn device help text",
     "string": "The device you are currently using"
   },
+  "MGhoaU": {
+    "developer_comment": "Language",
+    "string": "Language"
+  },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and is one of the many ways eduID is always striving to improve."
@@ -1089,14 +1077,6 @@
   "NmCGzv": {
     "developer_comment": "delete.confirm_button",
     "string": "Confirm"
-  },
-  "NmJs6W": {
-    "developer_comment": "Security sub menu",
-    "string": "Manage your security keys"
-  },
-  "NsZ2wz": {
-    "developer_comment": "Security sub menu",
-    "string": "Two-factor Authentication (2FA)"
   },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
@@ -1431,10 +1411,6 @@
     "developer_comment": "security verified",
     "string": "verified"
   },
-  "VBiKJw": {
-    "developer_comment": "Account sub menu",
-    "string": "Delete eduID"
-  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
@@ -1474,6 +1450,10 @@
   "VwUC+6": {
     "developer_comment": "eidas proofing help text",
     "string": "To use this option you will need to first create a digital ID in the {freja_eid_link} app."
+  },
+  "VweyRk": {
+    "developer_comment": "Ladok account linking",
+    "string": "ESI information"
   },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
@@ -1670,6 +1650,10 @@
   "aRUmm4": {
     "developer_comment": "what is bankid - paragraph",
     "string": "BankID is a widely used electronic verification system, available to holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden."
+  },
+  "aXZyf1": {
+    "developer_comment": "Names & Display Name",
+    "string": "Names & Display Name"
   },
   "actions.action-completed": {
     "string": "Success"
@@ -2068,10 +2052,6 @@
     "developer_comment": "how add security key - heading",
     "string": "How do I implement 2FA with eduID?"
   },
-  "fIkbOL": {
-    "developer_comment": "Account sub menu",
-    "string": "Email addresses"
-  },
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
@@ -2161,10 +2141,6 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
-  },
-  "hbZaQQ": {
-    "developer_comment": "Account sub menu",
-    "string": "Change password"
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2566,10 +2542,6 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
-  "n/EMF1": {
-    "developer_comment": "Account sub menu",
-    "string": "ESI information"
-  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
@@ -2585,10 +2557,6 @@
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
     "string": "eIDAS is a federation of EU countries providing electronic identification to allow access to public authority systems for EU citizens, using their country's electronic ID."
-  },
-  "nC6VRn": {
-    "developer_comment": "Account sub menu",
-    "string": "Unique ID"
   },
   "nCc6tZ": {
     "developer_comment": "BankID vetting button",
@@ -2874,10 +2842,6 @@
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
   },
-  "qIGw46": {
-    "developer_comment": "pd main title",
-    "string": "Names & Display Name"
-  },
   "qJmOW9": {
     "developer_comment": "explanation text for letter proofing",
     "string": "When you have received the letter, proceed by clicking the button below."
@@ -2932,10 +2896,6 @@
   "rOcchi": {
     "developer_comment": "Assurance levels with your eduID - paragraph7",
     "string": "Note: this is a generalization and could change, complete information as to what is required of your eduID must be provided by the connecting services."
-  },
-  "rT3vhi": {
-    "developer_comment": "Dashboard nav tab name",
-    "string": "Security"
   },
   "rdd33t": {
     "developer_comment": "what is international - paragraph 1",
@@ -3181,10 +3141,6 @@
     "developer_comment": "settings eduid - list item 2-1",
     "string": "To change the default language for eduID you can log in to eduID and select your preference using the Language radio buttons under Account."
   },
-  "t2g4sA": {
-    "developer_comment": "Ladok account linking",
-    "string": "Ladok information"
-  },
   "tAcT/R": {
     "string": "BankID"
   },
@@ -3345,10 +3301,6 @@
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
-  },
-  "x6V8oh": {
-    "developer_comment": "Language radio group legend",
-    "string": "Language"
   },
   "x8ZGkQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph2em",

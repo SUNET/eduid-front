@@ -58,7 +58,7 @@ export function LanguagePreference() {
               <fieldset className="name-inputs">
                 <article>
                   <legend className="require">
-                    <FormattedMessage defaultMessage="Language" description="Language radio group legend" />
+                    <FormattedMessage defaultMessage="Language" description="Language" />
                   </legend>
                   <div className="radio-input-container">
                     {language_list.map((option: string[]) => {

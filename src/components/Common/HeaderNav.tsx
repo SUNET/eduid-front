@@ -123,7 +123,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`} end>
-                  <FormattedMessage defaultMessage="eduID status overview" description="Start sub menu" />
+                  <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
                 </NavHashLink>
               </li>
             </ul>
@@ -158,7 +158,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
-                  <FormattedMessage defaultMessage="Names & Display Name" description="Identity sub menu" />
+                  <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
                 </NavHashLink>
               </li>
             </ul>
@@ -169,7 +169,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
               className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
               to={SECURITY_PATH}
             >
-              <FormattedMessage defaultMessage="Security" description="Dashboard nav tab name" />
+              <FormattedMessage defaultMessage="Security" description="security main title" />
             </NavLink>
 
             <button onClick={() => toggleOpen("security")}>
@@ -184,12 +184,12 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
-                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="Security sub menu" />
+                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
-                  <FormattedMessage defaultMessage="Manage your security keys" description="Security sub menu" />
+                  <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
                 </NavHashLink>
               </li>
             </ul>
@@ -214,37 +214,37 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             <ul>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
-                  <FormattedMessage defaultMessage="Unique ID" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
-                  <FormattedMessage defaultMessage="Email addresses" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
-                  <FormattedMessage defaultMessage="Language" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="Language" description="Language" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
-                  <FormattedMessage defaultMessage="Change password" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
-                  <FormattedMessage defaultMessage="ORCID account" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
-                  <FormattedMessage defaultMessage="ESI information" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
                 </NavHashLink>
               </li>
               <li>
                 <NavHashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
-                  <FormattedMessage defaultMessage="Delete eduID" description="Account sub menu" />
+                  <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
                 </NavHashLink>
               </li>
             </ul>
