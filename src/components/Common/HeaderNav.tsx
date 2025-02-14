@@ -1,5 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRightFromBracket, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faBars,
+  faChevronDown,
+  faChevronUp,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
@@ -39,11 +45,7 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
       data-name={emails.filter((mail) => mail.primary)[0].email}
     >
       <span>{emails.filter((mail) => mail.primary)[0].email}</span>
-      {props.openMenu ? (
-        <FontAwesomeIcon icon={faChevronUp as IconProp} />
-      ) : (
-        <FontAwesomeIcon icon={faChevronDown as IconProp} />
-      )}
+      {props.openMenu ? <FontAwesomeIcon icon={faXmark as IconProp} /> : <FontAwesomeIcon icon={faBars as IconProp} />}
     </button>
   );
 }
@@ -91,17 +93,6 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <ul>
-          <div className="close-button-wrapper">
-            <EduIDButton
-              title={intl.formatMessage({
-                id: "Close",
-                defaultMessage: "Close",
-              })}
-              buttonstyle="close"
-              size="sm"
-              onClick={() => setOpenMenu(false)}
-            ></EduIDButton>
-          </div>
           <div className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
