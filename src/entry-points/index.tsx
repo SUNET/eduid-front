@@ -7,7 +7,7 @@ import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
 import { EDUID_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
-import ReactDOM from "react-dom";
+import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
@@ -62,7 +62,11 @@ setupLanguage(eduidStore.dispatch);
 
 /* render app */
 const initDomTarget = document.getElementById("root");
-ReactDOM.render(
+if (initDomTarget === null) {
+  throw new Error("No root element found");
+}
+const root = ReactDOMClient.createRoot(initDomTarget);
+root.render(
   <SignupGlobalStateProvider>
     <ResetPasswordGlobalStateProvider>
       <ReduxIntlProvider store={eduidStore}>
@@ -71,7 +75,6 @@ ReactDOM.render(
         </BrowserRouter>
       </ReduxIntlProvider>
     </ResetPasswordGlobalStateProvider>
-  </SignupGlobalStateProvider>,
-  initDomTarget,
-  getConfig
+  </SignupGlobalStateProvider>
 );
+requestIdleCallback(getConfig)
