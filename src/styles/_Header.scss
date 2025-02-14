@@ -38,6 +38,11 @@ header {
         }
       }
 
+      .close-button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+      }
+
       // li {
       //   font-size: 0.9rem;
       //   padding-top: 3px;
@@ -135,9 +140,16 @@ header {
         padding: 20px;
         right: 20px;
         max-width: 20rem;
+        overflow-y: auto;
+        max-height: 80vh;
 
         .btn-link svg {
           padding-right: 5px;
+        }
+
+        .close-button-wrapper {
+          display: flex;
+          justify-content: flex-end;
         }
       }
 

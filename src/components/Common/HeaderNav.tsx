@@ -90,16 +90,18 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
     <nav className="header-nav" ref={wrapperRef}>
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
-        <EduIDButton
-          title={intl.formatMessage({
-            id: "Close",
-            defaultMessage: "Close",
-          })}
-          buttonstyle="close"
-          size="sm"
-          onClick={() => setOpenMenu(false)}
-        ></EduIDButton>
         <ul>
+          <div className="close-button-wrapper">
+            <EduIDButton
+              title={intl.formatMessage({
+                id: "Close",
+                defaultMessage: "Close",
+              })}
+              buttonstyle="close"
+              size="sm"
+              onClick={() => setOpenMenu(false)}
+            ></EduIDButton>
+          </div>
           <div className="flex-between">
             <NavLink
               onClick={() => setOpenMenu(false)}
