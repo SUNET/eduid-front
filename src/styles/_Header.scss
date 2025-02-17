@@ -27,13 +27,15 @@ header {
       max-height: 500px;
       overflow: hidden;
       transition: max-height 0.2s ease;
-      margin-left: 1.3rem;
+      margin-left: 1.5rem;
+      margin-right: 0.75rem;
 
       ul {
         li {
-          padding: 5px 3px;
+          padding: 0.5rem 0;
+          line-height: 1.2;
           a {
-            font-size: 0.9rem;
+            font-size: $txt-sm;
             color: $txt-gray;
           }
         }
@@ -77,14 +79,14 @@ header {
       font-family: $inter-light;
       background: none;
       box-shadow: none;
-      padding: 0 1.125rem;
+      padding: 0 1rem;
       display: flex;
       align-items: center;
 
       svg {
         padding-left: 0.75rem;
         font-size: 1.5rem;
-        width: 30px;
+        width: 24px;
       }
     }
 
@@ -92,36 +94,36 @@ header {
       display: none;
       min-width: 250px;
 
+      @media (max-width: $bp-xs) {
+        min-width: calc(100% - #{2 * $margin});
+        left: $margin;
+      }
+
       ul {
         text-align: left;
 
         .flex-between {
-          padding-left: 10px;
+          padding-left: 0.75rem;
           margin-top: 3px;
           margin-bottom: 3px;
           &:has(a.active) {
             background-color: $body-gray;
-            border-radius: 20px;
+            border-radius: 1.5rem;
           }
 
           button {
             background-color: transparent;
             box-shadow: none;
-            padding: 0 5px;
+            padding: 0 0.75rem;
 
             svg {
               color: $txt-gray;
             }
-            svg:hover {
-              color: $txt-black;
+            &:hover svg {
+              color: $txt-orange;
             }
           }
         }
-      }
-
-      .btn-close {
-        align-self: flex-end;
-        margin-bottom: 1rem;
       }
 
       &.active {
@@ -135,8 +137,8 @@ header {
         background-color: $white;
         box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
         border-radius: 10px;
-        padding: 20px;
-        right: 20px;
+        padding: 0.75rem;
+        right: $margin;
         max-width: 20rem;
         overflow-y: auto;
         max-height: 80vh;
@@ -159,7 +161,7 @@ header {
         }
       }
       .logout-button-wrapper {
-        margin: 0.5rem 0 0 10px;
+        margin: 0.5rem 0.75rem;
         padding-top: 0.5rem;
         border-top: 1px solid $border-gray;
       }
