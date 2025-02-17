@@ -247,7 +247,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   if (!isPlatformAuthLoaded) return null;
   return (
     <>
-      <article>
+      <article id="add-two-factor">
         <h2>
           <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
         </h2>
