@@ -40,74 +40,76 @@ export function Index() {
 
   return (
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
-      <h1 className="tagline">
-        <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
-      </h1>
-      <div className="lead">
-        <p>
-          <strong>
-            <FormattedMessage
-              defaultMessage={`Create an eduID and connect it to your identity to gain access to services and 
+      <div className="landing">
+        <h1 className="tagline">
+          <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
+        </h1>
+        <div className="lead">
+          <p>
+            <strong>
+              <FormattedMessage
+                defaultMessage={`Create an eduID and connect it to your identity to gain access to services and 
                 organisations related to higher education.`}
+                description="eduID index lead text"
+              />
+            </strong>
+          </p>
+          <p>
+            <FormattedMessage
+              defaultMessage={`eduID is easier because you only have one login and safer 
+             because it's connected to a real individual - you.`}
               description="eduID index lead text"
             />
-          </strong>
-        </p>
-        <p>
-          <FormattedMessage
-            defaultMessage={`eduID is easier because you only have one login and safer 
-             because it's connected to a real individual - you.`}
-            description="eduID index lead text"
-          />
-        </p>
-        <p className="med-txt">
-          <FormattedMessage
-            defaultMessage="You can read more about eduID at {Sunet} and by clicking on the Help link in the footer, or go ahead and register or login using the buttons below!"
-            description="read more at Sunet"
-            values={{
-              Sunet: (
-                <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
-                  Sunet
-                </a>
-              ),
-            }}
-          />
-        </p>
-        <div className="buttons">
-          <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
-            <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
-          </EduIDButton>
-          <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
-            <FormattedMessage defaultMessage="log in" description="login button" />
-          </EduIDButton>
+          </p>
+          <p className="med-txt">
+            <FormattedMessage
+              defaultMessage="You can read more about eduID at {Sunet} and by clicking on the Help link in the footer, or go ahead and register or login using the buttons below!"
+              description="read more at Sunet"
+              values={{
+                Sunet: (
+                  <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
+                    Sunet
+                  </a>
+                ),
+              }}
+            />
+          </p>
+          <div className="buttons">
+            <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
+              <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
+            </EduIDButton>
+            <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
+              <FormattedMessage defaultMessage="log in" description="login button" />
+            </EduIDButton>
+          </div>
         </div>
-      </div>
-      <h2 className="heading-5">How it works:</h2>
-      <div className="flex-between landing-how-to">
-        <div>
-          Create an account with your email address - basic stuff.
-          <span className="icon-holder">
-            <img height="24" src={accountIcon} alt="Account" />
-          </span>
-        </div>
-        <div>
-          Prove that you are YOU.{" "}
-          <span className="icon-holder">
-            <FontAwesomeIcon icon={faIdCard as IconProp} />
-          </span>
-        </div>
-        <div>
-          Level up your login security.{" "}
-          <span className="icon-holder">
-            <img height="24" src={securityIcon} alt="Security" />
-          </span>
-        </div>
-        <div>
-          Level up again - proving that YOU are logging in.{" "}
-          <span className="icon-holder">
-            <FontAwesomeIcon icon={faIdCard as IconProp} />
-            <img height="24" src={securityIcon} alt="Security" />
-          </span>
+        <h2 className="heading-5">How it works:</h2>
+        <div className="flex-between landing-how-to">
+          <div>
+            Create an account with your email address - basic stuff.
+            <span className="icon-holder">
+              <img height="24" src={accountIcon} alt="Account" />
+            </span>
+          </div>
+          <div>
+            Prove that you are YOU.{" "}
+            <span className="icon-holder">
+              <FontAwesomeIcon icon={faIdCard as IconProp} />
+            </span>
+          </div>
+          <div>
+            Level up your login security.{" "}
+            <span className="icon-holder">
+              <img height="24" src={securityIcon} alt="Security" />
+            </span>
+          </div>
+          <div>
+            Level up again - proving that YOU are logging in.{" "}
+            <span className="icon-holder">
+              <FontAwesomeIcon icon={faIdCard as IconProp} />
+              <img height="24" src={securityIcon} alt="Security" />
+            </span>
+          </div>
         </div>
       </div>
     </Splash>

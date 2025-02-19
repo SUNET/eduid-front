@@ -1,0 +1,89 @@
+/* typography */
+
+@import "variables";
+
+/** experimenting below for landing styles **/
+
+.landing {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 231, 221, 0)),
+    url("../../img/texture.png");
+  padding: 1rem 1rem 0;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(89 89 89 / 7%);
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  .lead {
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+
+    p {
+      font-size: inherit;
+      &.med-txt {
+        font-size: $txt-sm !important;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+  .landing-how-to {
+    align-items: flex-end;
+    margin: 1.5rem -4rem -4rem;
+    //box-shadow: 0 -6px 1px rgb(23 125 77 / 50%);
+    filter: drop-shadow(0 -6px 0 rgb(23 125 77 / 50%));
+
+    div {
+      flex: 1;
+      height: 100%;
+      padding: 4rem 3rem 5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-radius: 100%;
+      font-family: "Inter-Medium";
+      font-size: $txt-sm;
+      color: $txt-gray;
+      // border-top: 1px $success-green solid !important;
+      // outline: 1px dashed $success-green;
+      // box-shadow: 0 -6px 1px rgb(89 89 89 / 7%);
+
+      &:nth-of-type(1) {
+        //background-color: rgba(243, 249, 245, 0.5);
+        background: darken(rgba(243, 249, 245, 0.5), 10%);
+        padding: 5rem 3rem 5rem 5rem;
+        background-color: #f3f9f5;
+      }
+      &:nth-of-type(2) {
+        //background-color: rgba(230, 243, 235, 0.5);
+        background: darken(rgba(230, 243, 235, 0.5), 10%);
+        background-color: #e6f3eb;
+      }
+      &:nth-of-type(3) {
+        //background-color: rgba(218, 237, 225, 0.5);
+        background: darken(rgba(218, 237, 225, 0.5), 10%);
+        background-color: #daede1;
+      }
+      &:nth-of-type(4) {
+        //background-color: rgba(205, 231, 215, 0.5);
+        background: darken(rgba(205, 231, 215, 0.5), 10%);
+        background-color: #cde7d7;
+        padding: 5rem 5rem 5rem 3rem;
+      }
+    }
+
+    .icon-holder {
+      margin-top: 0.5rem;
+
+      img,
+      svg {
+        width: auto;
+        height: 24px;
+        margin: 5px;
+        color: $txt-gray;
+      }
+    }
+  }
+}
