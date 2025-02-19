@@ -1530,7 +1530,7 @@ export function Help(): JSX.Element {
                     <article>
                       <p>
                         <FormattedMessage
-                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID at present:`}
+                          defaultMessage={`This is a list, derived from Fido Alliance, of names of maker and models of external security keys that can be used for eduID, though there might be other keys that could work for this purpose. They are listed in alphabetical order and updated regularly.`}
                           description="Security keys list - paragraph"
                         />
                       </p>
