@@ -5,7 +5,7 @@ import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
 import accountIcon from "../../img/account-icon.svg";
 import securityIcon from "../../img/security-icon.svg";
@@ -48,7 +48,7 @@ export function Index() {
           <p>
             <strong>
               <FormattedMessage
-                defaultMessage={`Create an eduID and connect it to your identity to gain access to services and 
+                defaultMessage={`Create an eduID and connect it to your identity for access to services and 
                 organisations related to higher education.`}
                 description="eduID index lead text"
               />
@@ -63,13 +63,18 @@ export function Index() {
           </p>
           <p className="med-txt">
             <FormattedMessage
-              defaultMessage="You can read more about eduID at {Sunet} and by clicking on the Help link in the footer, or go ahead and register or login using the buttons below!"
+              defaultMessage="You can read more about eduID at {Sunet} website and by clicking on the eduID {Help} link always in the footer, or go ahead and register or login using the buttons below!"
               description="read more at Sunet"
               values={{
                 Sunet: (
                   <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
-                    Sunet
+                    Sunets
                   </a>
+                ),
+                Help: (
+                  <Link className="text-link" to={`../../help`} target="_blank">
+                    <FormattedMessage description="help link" defaultMessage="Help" />
+                  </Link>
                 ),
               }}
             />
@@ -86,7 +91,7 @@ export function Index() {
         <h2 className="heading-5">How it works:</h2>
         <div className="flex-between landing-how-to">
           <div>
-            Create an account with your email address - basic stuff.
+            Create a basic account with your email address.
             <span className="icon-holder">
               <img height="24" src={accountIcon} alt="Account" />
             </span>
