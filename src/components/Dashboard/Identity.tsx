@@ -108,7 +108,7 @@ function IdentityContent(): JSX.Element {
         </div>
       </section>
 
-      <article>
+      <article id="verify-identity">
         {identities?.is_verified ? (
           <React.Fragment>
             <h2>
