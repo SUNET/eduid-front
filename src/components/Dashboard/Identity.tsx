@@ -11,6 +11,7 @@ import NotificationModal from "components/Common/NotificationModal";
 import { WizardLink } from "components/Common/WizardLink";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
+import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -64,7 +65,14 @@ function Identity(): JSX.Element | null {
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <IdentityContent />
-      <WizardLink />
+      <WizardLink
+        previousLink={START_PATH}
+        previousText={<FormattedMessage description="wizard link start" defaultMessage="Back to overview on start" />}
+        nextLink={SECURITY_PATH}
+        nextText={
+          <FormattedMessage description="wizard link security" defaultMessage="Continue to security settings" />
+        }
+      />
     </Fragment>
   );
 }
