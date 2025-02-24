@@ -1,4 +1,4 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
@@ -12,7 +12,13 @@ import { HashLink } from "react-router-hash-link";
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
-      <div className="checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="checkbox-wrapper">
+        {props.email ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
+      </div>
       <div className="text-wrapper">
         <h3>
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
@@ -44,7 +50,11 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {props.identities?.is_verified === true ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -87,7 +97,11 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {props.tokens?.length ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -134,7 +148,13 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
-      <div className="checkbox-wrapper">{verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="checkbox-wrapper">
+        {verifiedToken ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
+      </div>
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
