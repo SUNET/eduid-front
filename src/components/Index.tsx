@@ -88,28 +88,37 @@ export function Index() {
             </EduIDButton>
           </div>
         </div>
-        <h2 className="heading-5">How it works:</h2>
+        <h2 className="heading-4">
+          <FormattedMessage defaultMessage="How it works: " description="how-to heading" />
+        </h2>
         <div className="flex-between landing-how-to">
           <div>
-            Create a basic account with your email address.
+            <FormattedMessage defaultMessage="Create a basic account with your email address." description="how-to 1" />
+
             <span className="icon-holder">
               <img height="24" src={accountIcon} alt="Account" />
             </span>
           </div>
           <div>
-            Prove that you are YOU.{" "}
+            <FormattedMessage defaultMessage="Prove that you are YOU." description="how-to 2" />
+
             <span className="icon-holder">
               <FontAwesomeIcon icon={faIdCard as IconProp} />
             </span>
           </div>
           <div>
-            Level up your login security.{" "}
+            <FormattedMessage defaultMessage="Level up your login security." description="how-to 3" />
+
             <span className="icon-holder">
               <img height="24" src={securityIcon} alt="Security" />
             </span>
           </div>
           <div>
-            Level up again - proving that YOU are logging in.{" "}
+            <FormattedMessage
+              defaultMessage="Level up again - proving that YOU are logging in."
+              description="how-to 4"
+            />
+
             <span className="icon-holder">
               <FontAwesomeIcon icon={faIdCard as IconProp} />
               <img height="24" src={securityIcon} alt="Security" />
