@@ -3,14 +3,19 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-export function WizardLink({ previousLink, previousText, nextLink, nextText }: any) {
+interface WizardLinkTypes {
+  readonly previousLink: string;
+  readonly previousText: string;
+  readonly nextLink?: string;
+  readonly nextText?: string;
+}
+
+export function WizardLink({ previousLink, previousText, nextLink, nextText }: WizardLinkTypes) {
   return (
     <section className="wizard-link-wrapper">
-      {previousLink ? (
-        <Link className="text-link left" to={previousLink}>
-          <FontAwesomeIcon icon={faArrowLeft as IconProp} /> <span>{previousText}</span>
-        </Link>
-      ) : null}
+      <Link className="text-link left" to={previousLink}>
+        <FontAwesomeIcon icon={faArrowLeft as IconProp} /> <span>{previousText}</span>
+      </Link>
       {nextLink ? (
         <Link className="text-link right" to={nextLink}>
           <span>{nextText}</span> <FontAwesomeIcon icon={faArrowRight as IconProp} />

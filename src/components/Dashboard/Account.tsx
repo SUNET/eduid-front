@@ -54,9 +54,10 @@ export function Account(): JSX.Element {
       <DeleteAccount />
       <WizardLink
         previousLink={SECURITY_PATH}
-        previousText={
-          <FormattedMessage description="wizard link security" defaultMessage="Back to security settings" />
-        }
+        previousText={intl.formatMessage({
+          id: "wizard link security",
+          defaultMessage: "Back to security settings",
+        })}
       />
     </React.Fragment>
   );

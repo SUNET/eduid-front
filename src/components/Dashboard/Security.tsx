@@ -39,11 +39,15 @@ export function Security(): JSX.Element {
       <MultiFactorAuthentication />
       <WizardLink
         previousLink={IDENTITY_PATH}
-        previousText={
-          <FormattedMessage description="wizard link identity" defaultMessage="Back to identity settings" />
-        }
+        previousText={intl.formatMessage({
+          id: "wizard link identity",
+          defaultMessage: "Back to identity settings",
+        })}
         nextLink={ACCOUNT_PATH}
-        nextText={<FormattedMessage description="wizard link security" defaultMessage="Continue to account settings" />}
+        nextText={intl.formatMessage({
+          id: "wizard link security",
+          defaultMessage: "Continue to account settings",
+        })}
       />
     </React.Fragment>
   );

@@ -34,7 +34,6 @@ type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function Identity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
-
   const intl = useIntl();
 
   useEffect(() => {
@@ -67,11 +66,15 @@ function Identity(): JSX.Element | null {
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}
-        previousText={<FormattedMessage description="wizard link start" defaultMessage="Back to overview on start" />}
+        previousText={intl.formatMessage({
+          id: "wizard link start",
+          defaultMessage: "Back to overview on start",
+        })}
         nextLink={SECURITY_PATH}
-        nextText={
-          <FormattedMessage description="wizard link security" defaultMessage="Continue to security settings" />
-        }
+        nextText={intl.formatMessage({
+          id: "wizard link security",
+          defaultMessage: "Continue to security settings",
+        })}
       />
     </Fragment>
   );
