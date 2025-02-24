@@ -1,4 +1,18 @@
 .wizard-link-wrapper {
   display: flex;
   justify-content: space-between;
+  padding-top: 2.5rem;
+
+  a {
+    display: grid;
+    align-items: center;
+    &.left {
+      grid-template-columns: 0.1fr 1fr;
+    }
+    &.right {
+      grid-template-columns: 1fr 0.1fr;
+      justify-items: end;
+      text-align: end;
+    }
+  }
 }
