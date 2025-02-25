@@ -3283,6 +3283,21 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate to:"
   },
+  "wizard link back identity": {
+    "string": "Back to Identity settings"
+  },
+  "wizard link back security": {
+    "string": "Back to Security settings"
+  },
+  "wizard link back start": {
+    "string": "Back to overview on Start"
+  },
+  "wizard link next account": {
+    "string": "Continue to Account settings"
+  },
+  "wizard link next security": {
+    "string": "Continue to Security settings"
+  },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
     "string": "services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
