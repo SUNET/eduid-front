@@ -613,13 +613,6 @@
     "developer_comment": "Change password set new password success heading",
     "string": "Ändra lösenord: Slutfört"
   },
-  "CRmnyw": {
-    "developer_comment": "Security keys list - paragraph",
-    "string": "Här listas märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID. Listan är sorterad alfabetiskt och uppdateras regelbundet."
-  },
-  "Close": {
-    "string": "Stäng"
-  },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Användarnamn"
@@ -627,6 +620,10 @@
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
     "string": "Unikt ID:"
+  },
+  "CzJ8yc": {
+    "developer_comment": "Security keys list - paragraph",
+    "string": "Här listas, från Fido Alliance, märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID, det kan även finnas andra som fungerar. Listan är sorterad alfabetiskt och uppdateras regelbundet."
   },
   "D2FJI3": {
     "developer_comment": "login this device, security key button",

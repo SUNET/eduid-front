@@ -151,6 +151,10 @@
   svg {
     color: $success-green;
     height: 1.5rem;
+
+    &.disabled {
+      color: $border-gray;
+    }
   }
 
   div {
