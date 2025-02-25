@@ -617,9 +617,6 @@
     "developer_comment": "Security keys list - paragraph",
     "string": "This is a list of names of maker and models of external security keys that kan be used for eduID at present:"
   },
-  "Close": {
-    "string": "Close"
-  },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Username"
@@ -3285,6 +3282,21 @@
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
+  },
+  "wizard link back identity": {
+    "string": "Back to Identity Settings"
+  },
+  "wizard link back security": {
+    "string": "Back to Security Settings"
+  },
+  "wizard link back start": {
+    "string": "Back to Overview on Start"
+  },
+  "wizard link next account": {
+    "string": "Continue to Account Settings"
+  },
+  "wizard link next security": {
+    "string": "Continue to Security Settings"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",

@@ -40,12 +40,12 @@ export function Security(): JSX.Element {
       <WizardLink
         previousLink={IDENTITY_PATH}
         previousText={intl.formatMessage({
-          id: "wizard link identity",
+          id: "wizard link back identity",
           defaultMessage: "Back to Identity Settings",
         })}
         nextLink={ACCOUNT_PATH}
         nextText={intl.formatMessage({
-          id: "wizard link security",
+          id: "wizard link next account",
           defaultMessage: "Continue to Account Settings",
         })}
       />

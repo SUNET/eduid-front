@@ -55,7 +55,7 @@ export function Account(): JSX.Element {
       <WizardLink
         previousLink={SECURITY_PATH}
         previousText={intl.formatMessage({
-          id: "wizard link security",
+          id: "wizard link back security",
           defaultMessage: "Back to Security Settings",
         })}
       />
