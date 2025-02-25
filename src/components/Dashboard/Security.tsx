@@ -41,12 +41,12 @@ export function Security(): JSX.Element {
         previousLink={IDENTITY_PATH}
         previousText={intl.formatMessage({
           id: "wizard link identity",
-          defaultMessage: "Back to identity settings",
+          defaultMessage: "Back to Identity Settings",
         })}
         nextLink={ACCOUNT_PATH}
         nextText={intl.formatMessage({
           id: "wizard link security",
-          defaultMessage: "Continue to account settings",
+          defaultMessage: "Continue to Account Settings",
         })}
       />
     </React.Fragment>
