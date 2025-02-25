@@ -89,14 +89,14 @@
     .landing-how-to {
       flex-direction: column;
       margin: 1rem -2rem 0;
-      filter: none;
+      //filter: none;
       border-radius: none;
 
       div {
         width: 100%;
         margin: 0 0 -5rem;
         padding: 3rem 2rem 5.5rem !important;
-        filter: drop-shadow(0 -6px 0 #c1e1cd);
+        //filter: drop-shadow(0 -6px 0 #c1e1cd);
 
         &:nth-of-type(4) {
           background-color: #cde7d7;
