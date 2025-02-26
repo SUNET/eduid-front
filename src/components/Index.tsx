@@ -39,8 +39,8 @@ export function Index() {
   }, [frontend_action]);
 
   return (
-    <Splash showChildren={frontend_action !== "terminateAccountAuthn"} className="landing-splash">
-      <div className="landing-container">
+    <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
+      <div className="landing-content horizontal-content-margin">
         <h1 className="tagline">
           <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
         </h1>

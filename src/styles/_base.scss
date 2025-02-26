@@ -16,15 +16,11 @@ body {
   display: flex;
 }
 
-#root {
+#root,
+.page-wrapper {
   display: flex;
   flex: 1;
-
-  // height: 100vh;
   flex-direction: column;
-
-  // this is commented out to accommodate DashboardMain, should be introduced again for login app
-  // background-color: #f4f4f4;
 }
 
 .panel {
@@ -32,16 +28,16 @@ body {
   flex-direction: column;
   flex: 1;
   background-color: $body-gray;
+  padding-top: 2rem;
 
   @media (max-width: $bp-lg) {
+    padding-top: 1.5rem;
   }
 
   .content {
-    padding-top: 2rem;
     padding-bottom: 4rem;
 
     @media (max-width: $bp-lg) {
-      padding-top: 1.5rem;
       padding-bottom: 3rem;
     }
   }
