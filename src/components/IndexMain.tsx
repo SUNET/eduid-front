@@ -38,6 +38,7 @@ export function IndexMain(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
   const showAuthenticateModal = location.pathname.startsWith("/profile");
+  const isIndex = location.pathname === "/";
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
@@ -50,9 +51,10 @@ export function IndexMain(): JSX.Element {
         <Notifications />
         <ErrorBoundary FallbackComponent={GenericError}>
           <Splash showChildren={isLoaded}>
-            <section id="content" className="horizontal-content-margin content">
+            <section id="content" className={isIndex ? "" : "horizontal-content-margin content"}>
               <ScrollToTop />
               <Routes>
+                {/* Landing */}
                 <Route path="/" element={<Index />} />
                 {/* Signup */}
                 <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />

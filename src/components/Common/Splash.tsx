@@ -12,6 +12,7 @@ export const spinnerOpts = {
 interface SplashProps {
   showChildren: boolean;
   children?: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -21,6 +22,7 @@ export default function Splash(props: SplashProps): JSX.Element {
   const { showChildren, children } = props;
   const eduidSplash = useRef<HTMLDivElement>(null);
   const [spinner, setSpinner] = useState<Spinner | undefined>(undefined);
+  const className = props;
 
   useEffect(() => {
     if (!spinner) {
@@ -36,7 +38,7 @@ export default function Splash(props: SplashProps): JSX.Element {
         spinner.stop();
       }
     }
-  }, [showChildren, eduidSplash, spinner]);
+  }, [showChildren, eduidSplash, spinner, className]);
 
   /* The "eduid-splash-and-children" div has position: relative, which the surrounding element must have
    * in order for the spin.js spinner to be positioned properly.
@@ -48,7 +50,7 @@ export default function Splash(props: SplashProps): JSX.Element {
    * and is rendered as long as showChildren is false.
    */
   return (
-    <div id="eduid-splash-and-children">
+    <div id="eduid-splash-and-children" className={props.className}>
       {!showChildren && <span ref={eduidSplash} id="eduid-splash-spinner" role="presentation"></span>}
       {children}
     </div>

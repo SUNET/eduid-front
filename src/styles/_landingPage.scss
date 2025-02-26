@@ -1,48 +1,43 @@
 @import "variables";
 
-.landing {
+.landing-splash {
   background-image: radial-gradient(
-      ellipse at 112% 100%,
-      rgba(255, 255, 255, 0) 0,
-      rgba(255, 255, 255, 0) 45%,
-      rgba(255, 255, 255, 0.25) 45%,
-      rgba(255, 255, 255, 0.65) 75%,
-      rgb(255, 255, 255) 75%
-    ),
-    url("../../img/texture.png");
-  padding: 1.5rem 2rem 0;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgb(89 89 89 / 7%);
-  border-radius: 0 0 3rem 0;
+    ellipse at 112% 100%,
+    $body-gray 0,
+    $body-gray 45%,
+    #fafafa 45%,
+    #fafafa 75%,
+    $white 75%
+  );
+  height: 100%;
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.75em;
-  }
-  .lead {
-    padding-bottom: 0.75rem;
-    margin-bottom: 2rem;
+  .landing-container {
+    @extend .horizontal-content-margin;
 
-    p {
-      font-size: inherit;
-      &.med-txt {
-        font-size: $txt-sm !important;
-        margin-bottom: 0.5rem;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75em;
+    }
+    .lead {
+      p {
+        font-size: inherit;
+        &.med-txt {
+          font-size: $txt-sm !important;
+        }
       }
     }
+    .buttons {
+      padding: 0.25rem 0 1rem;
+    }
   }
-  .buttons {
-    padding: 0.75rem 0;
-  }
-  .landing-how-to {
+  .landing-howTo {
     align-items: flex-end;
-    margin: 0.5rem -4rem -4rem;
     filter: drop-shadow(0 -6px 0 #c1e1cd);
+    box-shadow: 0 10px 10px -10px rgb(89 89 89 / 50%);
 
     div {
       flex: 1;
-      height: 100%;
-      padding: 4rem 3rem 5rem;
+      padding: 4rem 3rem 3rem;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -55,7 +50,6 @@
       color: $txt-gray;
 
       &:nth-of-type(1) {
-        padding: 4rem 3rem 5rem 5rem;
         background-color: #f3f9f5;
       }
       &:nth-of-type(2) {
@@ -66,7 +60,7 @@
       }
       &:nth-of-type(4) {
         background-color: #cde7d7;
-        padding: 5rem 5rem 5rem 3rem;
+        padding-top: 5rem;
       }
     }
 
@@ -81,26 +75,35 @@
         color: $txt-gray;
       }
     }
-  }
+    @media (min-width: $bp-lg) {
+      max-width: calc(870px + 4rem);
+      margin: 0 auto 2rem;
+      border-radius: 0 0 3rem 3rem;
+      overflow: hidden;
+    }
+    @media (max-width: $bp-lg) {
+      margin-top: 1rem;
 
-  @media (max-width: $bp-md) {
-    border-radius: 0;
+      div {
+        padding: 3rem 2rem 2rem;
 
-    .landing-how-to {
+        &:nth-of-type(4) {
+          padding-top: 3rem;
+        }
+      }
+    }
+    @media (max-width: $bp-md) {
       flex-direction: column;
       margin: 1rem -2rem 0;
-      //filter: none;
-      border-radius: none;
 
       div {
         width: 100%;
         margin: 0 0 -5rem;
-        padding: 3rem 2rem 5.5rem !important;
-        //filter: drop-shadow(0 -6px 0 #c1e1cd);
+        padding: 3.5rem 2rem 6rem;
 
         &:nth-of-type(4) {
-          background-color: #cde7d7;
-          padding-bottom: 7rem;
+          padding-bottom: 4rem;
+          margin-bottom: 0;
         }
       }
     }
