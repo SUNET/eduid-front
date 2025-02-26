@@ -1,7 +1,20 @@
+import { activeClassName } from "components/Common/HeaderNav";
 import VerifyIdentity from "components/Dashboard/Identity";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+
+async function linkToIdentitySettings() {
+  // Navigate to Identity
+  const nav = screen.getByRole("link", { name: "Identity" });
+  act(() => {
+    nav.click();
+  });
+  expect(nav).toHaveClass(activeClassName);
+
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+}
 
 test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);
@@ -83,7 +96,22 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   ).toBeInTheDocument();
 });
 
-test("renders the identity page title", () => {
-  render(<VerifyIdentity />);
+test("renders the identity page title", async () => {
+  render(<IndexMain />);
+  await linkToIdentitySettings();
+
   expect(document.title).toContain("Identity");
+});
+
+test("renders the wizard link that can go back to the start and continue to the security page", async () => {
+  render(<IndexMain />);
+  await linkToIdentitySettings();
+
+  expect(screen.getByLabelText(/Back to overview on Start/i)).toBeInTheDocument();
+  const continueSecuritySettings = screen.getByLabelText(/Continue to Security Settings/i);
+  expect(continueSecuritySettings).toBeInTheDocument();
+  act(() => {
+    continueSecuritySettings.click();
+  });
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
 });
