@@ -12,7 +12,6 @@ export const spinnerOpts = {
 interface SplashProps {
   showChildren: boolean;
   children?: React.ReactNode;
-  className?: string;
 }
 
 /**
