@@ -8,8 +8,10 @@ import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
+import { WizardLink } from "components/Common/WizardLink";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
+import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -32,7 +34,6 @@ type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function Identity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
-
   const intl = useIntl();
 
   useEffect(() => {
@@ -63,6 +64,18 @@ function Identity(): JSX.Element | null {
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <IdentityContent />
+      <WizardLink
+        previousLink={START_PATH}
+        previousText={intl.formatMessage({
+          id: "wizard link back start",
+          defaultMessage: "Back to Overview on Start",
+        })}
+        nextLink={SECURITY_PATH}
+        nextText={intl.formatMessage({
+          id: "wizard link next security",
+          defaultMessage: "Continue to Security Settings",
+        })}
+      />
     </Fragment>
   );
 }
