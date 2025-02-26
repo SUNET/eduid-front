@@ -3,7 +3,7 @@ import VerifyIdentity from "components/Dashboard/Identity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToIdentitySettings() {
   // Navigate to Identity
@@ -114,4 +114,39 @@ test("renders the wizard link that can go back to the start and continue to the 
     continueSecuritySettings.click();
   });
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
+});
+
+test("renders the edit name and display name view", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      personal_data: {
+        ...defaultDashboardTestState.personal_data,
+        response: {
+          eppn: "test-test",
+          given_name: "Test",
+          identities: {
+            is_verified: false,
+            nin: {
+              number: "197010632391",
+              verified: false,
+            },
+          },
+          language: "en",
+          legal_name: "Test Test",
+          preferences: {
+            always_use_security_key: true,
+          },
+          surname: "Test",
+        },
+      },
+    },
+  });
+  await linkToIdentitySettings();
+
+  const editButton = screen.getByRole("button", { name: /edit/i });
+  act(() => {
+    editButton.click();
+  });
+  expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(/^Edit name and display name/);
 });
