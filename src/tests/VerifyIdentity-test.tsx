@@ -3,7 +3,7 @@ import VerifyIdentity from "components/Dashboard/Identity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToIdentitySettings() {
   // Navigate to Identity
@@ -116,7 +116,7 @@ test("renders the wizard link that can go back to the start and continue to the 
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
 });
 
-test("renders the edit name and display name view", async () => {
+test("renders the edit view, then be able to change names", async () => {
   render(<IndexMain />, {
     state: {
       ...defaultDashboardTestState,
@@ -149,4 +149,18 @@ test("renders the edit name and display name view", async () => {
     editButton.click();
   });
   expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(/^Edit name and display name/);
+  const firstName = screen.getByRole("textbox", { name: "First name" });
+  expect(firstName).toHaveAccessibleName(/^First name/);
+  const surName = screen.getByRole("textbox", { name: "Last name" });
+  expect(surName).toHaveAccessibleName(/^Last name/);
+
+  fireEvent.change(firstName, { target: { value: "Sixten" } });
+  fireEvent.change(surName, { target: { value: "von Samordnungsnummer" } });
+  const saveButton = screen.getByRole("button", { name: /^save/i });
+  expect(saveButton).toBeEnabled();
+
+  fireEvent.click(saveButton);
+
+  expect(firstName).toHaveValue("Sixten");
+  expect(surName).toHaveValue("von Samordnungsnummer");
 });
