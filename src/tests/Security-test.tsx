@@ -10,7 +10,7 @@ import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
@@ -19,7 +19,7 @@ async function linkToAdvancedSettings() {
     nav.click();
   });
   expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
-  // expect(screen.getByRole("heading", { name: /Two-factor Authentication (2FA)/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
 }
 
 test("renders security key as expected, not security key added", async () => {
@@ -226,4 +226,13 @@ test("security reducer, registerWebauthn", async () => {
     credentials: action.payload.credentials,
     webauthn_attestation: action.payload.webauthn_attestation,
   });
+});
+
+test("render the security key table without any security keys", async () => {
+  render(<IndexMain />);
+  await linkToAdvancedSettings();
+
+  expect(screen.getByRole("heading", { level: 2, name: "Manage your security keys" })).toBeInTheDocument();
+  const figure = screen.getByRole("figure");
+  expect(within(figure).getByText("No security key has been added")).toBeInTheDocument();
 });
