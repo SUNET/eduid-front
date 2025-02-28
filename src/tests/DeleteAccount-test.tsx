@@ -63,3 +63,13 @@ test("can delete eduid account", async () => {
 
   expect(terminateCalled).toBe(true);
 });
+
+test("render, enable navigation back to security settings", async () => {
+  render(<IndexMain />);
+
+  await linkToAccountSettings();
+  const backToSecuritySettings = screen.getByLabelText(/Back to Security settings/i);
+  expect(backToSecuritySettings).toBeInTheDocument();
+  fireEvent.click(backToSecuritySettings);
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
+});
