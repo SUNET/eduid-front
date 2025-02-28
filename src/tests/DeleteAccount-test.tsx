@@ -2,7 +2,7 @@ import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { mswServer, rest } from "setupTests";
-import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAccountSettings() {
   // Navigate to Identity
@@ -48,24 +48,18 @@ test("can delete eduid account", async () => {
   expect(button).toBeEnabled();
 
   // Click the 'delete eduid' button
-  act(() => {
-    button.click();
-  });
-
+  fireEvent.click(button);
   expect(screen.getByRole("heading", { name: /Are you sure/i })).toBeInTheDocument();
 
   const deleteButton = screen.getByRole("button", { name: /delete my eduid/i });
   expect(deleteButton).toBeEnabled();
 
-  // Click the button in the modal
-  act(() => {
-    deleteButton.click();
-  });
+  fireEvent.click(deleteButton);
 
   // wait for the modal to disappear
   await waitFor(() => {
     expect(screen.queryByRole("heading", { name: /Are you sure/i })).not.toBeInTheDocument();
   });
 
-  await expect(terminateCalled).toBe(true);
+  expect(terminateCalled).toBe(true);
 });
