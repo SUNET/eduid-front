@@ -1,0 +1,116 @@
+@import "variables";
+
+.landing {
+  background-image: radial-gradient(
+    ellipse at 112% 100%,
+    $body-gray 0,
+    $body-gray 45%,
+    #fafafa 45%,
+    #fafafa 75%,
+    $white 75%
+  );
+
+  header,
+  .panel,
+  footer {
+    background-color: transparent;
+  }
+}
+
+.landing-content {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75em;
+  }
+  .lead {
+    p {
+      font-size: inherit;
+      &.med-txt {
+        font-size: $txt-sm !important;
+      }
+    }
+  }
+  .buttons {
+    padding: 0.25rem 0 1rem;
+  }
+}
+
+.landing-howTo {
+  align-items: flex-end;
+  filter: drop-shadow(0 -6px 0 #c1e1cd);
+  box-shadow: 0 10px 10px -10px rgb(89 89 89 / 50%);
+  overflow: hidden;
+
+  div {
+    flex: 1;
+    padding: 4rem 3rem 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 100% 100% 0 0;
+    font-family: $inter-medium;
+    font-size: $txt-sm;
+    color: $txt-gray;
+
+    &:nth-of-type(1) {
+      background-color: #f3f9f5;
+    }
+    &:nth-of-type(2) {
+      background-color: #e6f3eb;
+    }
+    &:nth-of-type(3) {
+      background-color: #daede1;
+    }
+    &:nth-of-type(4) {
+      background-color: #cde7d7;
+      padding-top: 5rem;
+    }
+  }
+
+  .icon-holder {
+    margin-top: 0.5rem;
+
+    img,
+    svg {
+      width: auto;
+      height: 24px;
+      margin: 5px;
+      color: $txt-gray;
+    }
+  }
+  @media (min-width: $bp-lg) {
+    max-width: calc(870px + 4rem);
+    margin: 0 auto 2rem;
+    border-radius: 0 0 4rem 3rem;
+  }
+  @media (max-width: $bp-lg) {
+    margin: 1rem auto 0;
+
+    div {
+      padding: 3rem 2rem 2rem;
+
+      &:nth-of-type(4) {
+        padding-top: 3rem;
+      }
+    }
+  }
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0 0;
+
+    div {
+      width: calc(100% + 4rem);
+      margin: 0 0 -5rem;
+      padding: 3.5rem 3rem 6rem;
+
+      &:nth-of-type(4) {
+        padding-bottom: 4rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

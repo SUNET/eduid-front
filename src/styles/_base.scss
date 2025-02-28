@@ -16,35 +16,32 @@ body {
   display: flex;
 }
 
-#root {
+#root,
+.page-wrapper {
   display: flex;
   flex: 1;
-
-  // height: 100vh;
   flex-direction: column;
-
-  // this is commented out to accommodate DashboardMain, should be introduced again for login app
-  // background-color: #f4f4f4;
 }
 
 .panel {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 4rem;
   background-color: $body-gray;
-
-  @media (max-width: $bp-lg) {
-    padding-bottom: 3rem;
-  }
 
   .content {
     padding-top: 2rem;
+    padding-bottom: 4rem;
 
     @media (max-width: $bp-lg) {
       padding-top: 1.5rem;
+      padding-bottom: 3rem;
     }
   }
+}
+// in common for content pages and landing
+#content {
+  height: 100%;
 }
 
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
