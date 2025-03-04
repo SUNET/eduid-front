@@ -1,4 +1,4 @@
-import { useActor } from "@xstate/react";
+import { useSelector } from "@xstate/react";
 import { getPasswordRequest } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
@@ -9,16 +9,16 @@ import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCredentials(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
-  const [state] = useActor(signupContext.signupService);
+  const state = useSelector(signupContext.signupService, (s) => s);
 
   useEffect(() => {
-    if (state.event.type != "API_FAIL") {
+    if (state.context.event.type != "API_FAIL") {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
       signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
     }
   }, []);
 
-  if (state.event.type == "API_FAIL") {
+  if (state.context.event.type == "API_FAIL") {
     return (
       <React.Fragment>
         <p>

@@ -1,4 +1,4 @@
-import { useActor } from "@xstate/react";
+import { useSelector } from "@xstate/react";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
@@ -26,7 +26,7 @@ export function ResetPasswordApp(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const [state] = useActor(resetPasswordContext.resetPasswordService);
+  const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
 
   useEffect(() => {
@@ -54,14 +54,14 @@ export function ResetPasswordApp(): JSX.Element {
   return (
     <React.Fragment>
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
-      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordConfirmEmail") && <ResetPasswordConfirmEmail />}
-      {state.matches("AskForEmailOrConfirmEmail.ResetPasswordEnterEmail") && <ResetPasswordEnterEmail />}
-      {state.matches("HandleCaptcha.ResetPasswordCaptcha") && <ResetPasswordCaptcha />}
-      {state.matches("HandleCaptcha.ProcessCaptcha") && <ProcessCaptcha />}
-      {state.matches("HandleCaptcha.EmailLinkSent") && <EmailLinkSent />}
-      {state.matches("HandleExtraSecurities.HandleExtraSecurities") && <HandleExtraSecurities />}
-      {state.matches("FinaliseResetPassword.SetNewPassword") && <SetNewPassword />}
-      {state.matches("FinaliseResetPassword.ResetPasswordSuccess") && <ResetPasswordSuccess />}
+      {state.matches({AskForEmailOrConfirmEmail: "ResetPasswordConfirmEmail"}) && <ResetPasswordConfirmEmail />}
+      {state.matches({AskForEmailOrConfirmEmail: "ResetPasswordEnterEmail"}) && <ResetPasswordEnterEmail />}
+      {state.matches({HandleCaptcha: "ResetPasswordCaptcha"}) && <ResetPasswordCaptcha />}
+      {state.matches({HandleCaptcha: "ProcessCaptcha"}) && <ProcessCaptcha />}
+      {state.matches({HandleCaptcha: "EmailLinkSent"}) && <EmailLinkSent />}
+      {state.matches({HandleExtraSecurities: "HandleExtraSecurities"}) && <HandleExtraSecurities />}
+      {state.matches({FinaliseResetPassword: "SetNewPassword"}) && <SetNewPassword />}
+      {state.matches({FinaliseResetPassword: "ResetPasswordSuccess"}) && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }

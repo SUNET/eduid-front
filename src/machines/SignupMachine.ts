@@ -1,34 +1,24 @@
-import { createModel } from "xstate/lib/model";
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface SignupContext {}
-
-const signupModel = createModel(
-  // Initial context
-  {} as SignupContext,
-  {
-    // Event creators
-    events: {
-      ABORT: () => ({}), // no payload
-      API_FAIL: () => ({}), // no payload
-      API_SUCCESS: () => ({}), // no payload
-      BYPASS: () => ({}), // no payload
-      CHOOSE_FIDO: () => ({}), // no payload
-      CHOOSE_PASSWORD: () => ({}), // no payload
-      COMPLETE: () => ({}), // no payload
-      FAIL: () => ({}), // no payload
-      SUCCESS: () => ({}), // no payload
-    },
-  }
-);
+import { setup } from "xstate";
 
 export function createSignupMachine() {
-  const machine = signupModel.createMachine({
-    context: signupModel.initialContext,
-    tsTypes: {} as import("./SignupMachine.typegen").Typegen0,
+  const machine = setup({
+    types: {
+      events: {} as 
+        | { type: 'ABORT' }
+        | { type: 'API_FAIL' }
+        | { type: 'API_SUCCESS' }
+        | { type: 'BYPASS' }
+        | { type: 'CHOOSE_FIDO' }
+        | { type: 'CHOOSE_PASSWORD' }
+        | { type: 'COMPLETE' }
+        | { type: 'SUCCESS' } 
+        | { type: 'FAIL' }
+    }
+  }).createMachine({
     predictableActionArguments: true,
     id: "signup",
     initial: "SignupStart",
+    context: { event: undefined },
     states: {
       SignupStart: {
         on: {

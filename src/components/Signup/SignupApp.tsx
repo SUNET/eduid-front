@@ -1,4 +1,4 @@
-import { useActor } from "@xstate/react";
+import { useSelector } from "@xstate/react";
 import { fetchLogout } from "apis/eduidLogin";
 import { fetchState } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
@@ -14,7 +14,7 @@ import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
-  const [state] = useActor(signupContext.signupService);
+  const state = useSelector(signupContext.signupService, (s) => s);
   const intl = useIntl();
 
   useEffect(() => {
@@ -27,18 +27,18 @@ export function SignupApp(): JSX.Element {
   return (
     <React.Fragment>
       {state.matches("SignupStart") && <SignupStart />}
-      {state.matches("AskForEmailAddress.SignupEmailForm") && <SignupEmailForm />}
-      {state.matches("HandleCaptchaAndToU.SignupCaptcha") && <SignupCaptcha />}
-      {state.matches("HandleCaptchaAndToU.ProcessCaptcha") && <ProcessCaptcha />}
-      {state.matches("HandleCaptchaAndToU.SignupToU") && <SignupToU />}
-      {state.matches("HandleCaptchaAndToU.ProcessToU") && <ProcessToU />}
-      {state.matches("HandleCaptchaAndToU.RegisterEmail") && <RegisterEmail />}
-      {state.matches("HandleEmail.SignupEnterCode") && <SignupEnterCode />}
-      {state.matches("HandleEmail.ProcessEmailCode") && <ProcessEmailCode />}
-      {state.matches("HandleCredentials.SignupCredentials") && <SignupCredentials />}
-      {state.matches("HandleCredentials.SignupCredentialPassword") && <SignupCredentialPassword />}
-      {state.matches("FinaliseUser.SignupConfirmPassword") && <SignupConfirmPassword />}
-      {state.matches("FinaliseUser.SignupUserCreated") && <SignupUserCreated />}
+      {state.matches({AskForEmailAddress: "SignupEmailForm"}) && <SignupEmailForm />}
+      {state.matches({HandleCaptchaAndToU: "ProcessCaptcha"}) && <ProcessCaptcha />}
+      {state.matches({HandleCaptchaAndToU: "SignupCaptcha"}) && <SignupCaptcha />}
+      {state.matches({HandleCaptchaAndToU: "SignupToU"}) && <SignupToU />}
+      {state.matches({HandleCaptchaAndToU: "ProcessToU"}) && <ProcessToU />}
+      {state.matches({HandleCaptchaAndToU: "RegisterEmail"}) && <RegisterEmail />}
+      {state.matches({HandleEmail: "SignupEnterCode"}) && <SignupEnterCode />}
+      {state.matches({HandleEmail: "ProcessEmailCode"}) && <ProcessEmailCode />}
+      {state.matches({HandleCredentials: "SignupCredentials"}) && <SignupCredentials />}
+      {state.matches({HandleCredentials: "SignupCredentialPassword"}) && <SignupCredentialPassword />}
+      {state.matches({FinaliseUser: "SignupConfirmPassword"}) && <SignupConfirmPassword />}
+      {state.matches({FinaliseUser: "SignupUserCreated"}) && <SignupUserCreated />}
     </React.Fragment>
   );
 }
