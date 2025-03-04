@@ -137,7 +137,22 @@
       "<rootDir>/src/"
     ],
     "transform": {
-      "^.+\\.[tj]sx?$": "ts-jest"
+      "^.+\\.[tj]sx?$": [
+        "ts-jest",
+        {
+          "astTransformers": {
+            "before": [
+              {
+                "path": "@formatjs/ts-transformer/ts-jest-integration",
+                "options": {
+                  "overrideIdFn": "[sha512:contenthash:base64:6]",
+                  "ast": true
+                }
+              }
+            ]
+          }
+        }
+      ]
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\\.js$"
@@ -145,21 +160,9 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
     ],
-    "globals": {
-      "ts-jest": {
-        "astTransformers": {
-          "before": [
-            {
-              "path": "@formatjs/ts-transformer/ts-jest-integration",
-              "options": {
-                "overrideIdFn": "[sha512:contenthash:base64:6]",
-                "ast": true
-              }
-            }
-          ]
-        }
-      }
-    }
+    "roots" : [
+      "<rootDir>/src"
+    ]
   },
   "moduleDirectories": [
     "node_modules",
