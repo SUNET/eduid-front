@@ -2326,10 +2326,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "services requiring you to log in using multi factor authentication, often called {emphasis}."
   },
-  "kXQmVz": {
-    "developer_comment": "read more at Sunet",
-    "string": "You can read more about eduID at {Sunet} website or in the {Help} link in the footer. You can also register or log in using the buttons below!"
-  },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
@@ -2514,6 +2510,10 @@
   "lxJwll": {
     "developer_comment": "use orcid - list item 2",
     "string": "click the 'Add ORCID account' button in the Account area of eduID,"
+  },
+  "m7h+J4": {
+    "developer_comment": "read more at Sunet",
+    "string": "You can read more about eduID at {Sunet} website or in the {Help} link in the footer. You can also register or log in using the buttons below!"
   },
   "mO/ijL": {
     "developer_comment": "Signup",
