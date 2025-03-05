@@ -31,10 +31,6 @@
     "developer_comment": "what are assurance levels - heading",
     "string": "Vad är tillitsnivåer?"
   },
-  "+XDF4Z": {
-    "developer_comment": "eduID index lead text",
-    "string": "eduID gör det enklare för dig eftersom du bara behöver komma ihåg ett lösenord och säkrare för skolorna eftersom det är kopplat till en riktig individ."
-  },
   "+Z2aYk": {
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
@@ -102,6 +98,10 @@
   "0S7EtW": {
     "developer_comment": "not found paragraph",
     "string": "Vi kan tyvärr inte hitta det du letar efter. Det kan bero på ett tekniskt fel eller stavfel. Vänligen prova igen eller använd länken för att ta dig vidare."
+  },
+  "0WQlHQ": {
+    "developer_comment": "how-to 4",
+    "string": "Höj nivån igen - bevisa att DU loggar in."
   },
   "0aGYAe": {
     "developer_comment": "without extra security description",
@@ -222,10 +222,6 @@
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
-  },
-  "2t+khx": {
-    "developer_comment": "read more at Sunet",
-    "string": "Du kan läsa mer om eduID på {Sunet}"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
@@ -380,6 +376,10 @@
   "6bBJYy": {
     "developer_comment": "Copied tooltip",
     "string": "Kopierat!"
+  },
+  "6dEYlZ": {
+    "developer_comment": "help link",
+    "string": "Hjälp"
   },
   "6i0Tfo": {
     "developer_comment": "nin label",
@@ -728,6 +728,10 @@
   "Ek2FGc": {
     "string": "Logga in på den andra enheten"
   },
+  "EmE1Az": {
+    "developer_comment": "eduID index",
+    "string": "Säkrare och enklare inloggning med eduID"
+  },
   "EqjCQt": {
     "developer_comment": "Errors go to dashboard instruction",
     "string": "Du har åtkomst till dina inställningar i"
@@ -831,6 +835,10 @@
   "HM/Z3D": {
     "developer_comment": "Terms of use (lead text)",
     "string": "För att skapa ditt eduID måste du acceptera användarvillkoren för eduID."
+  },
+  "HUCgY6": {
+    "developer_comment": "how-to 1",
+    "string": "Skapa ett grundläggande konto med din e-postadress."
   },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
@@ -1231,10 +1239,6 @@
     "developer_comment": "Use other device",
     "string": "Begäran har avbrutits"
   },
-  "R5Olyc": {
-    "developer_comment": "eduID index",
-    "string": "eduID är enklare och säkrare inloggning."
-  },
   "RFjlYD": {
     "developer_comment": "accordion item passport additional info",
     "string": "Med Freja eID identitetsverifiering"
@@ -1524,6 +1528,10 @@
     "developer_comment": "login eduid - other devices list item 3",
     "string": "På den andra enheten; kontrollera informationen om enheten som försöker logga in och använd koden som visas, inom den angivna tiden, för att logga in på den första enheten."
   },
+  "Xfi7cx": {
+    "developer_comment": "how-to 3",
+    "string": "Höj din inloggningssäkerhet."
+  },
   "Xi2uNT": {
     "developer_comment": "accordion item swedish title",
     "string": "Svenskt personnummer eller samordningsnummer"
@@ -1662,6 +1670,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "Hur du kan använda BankID med eduID:"
+  },
+  "axK04o": {
+    "developer_comment": "eduID index lead text",
+    "string": "Skapa ett eduID och koppla det till din identitet för att få tillgång till tjänster och organisationer som är relaterade till högre utbildning."
   },
   "b2zzvJ": {
     "developer_comment": "start eduid - paragraph",
@@ -1910,10 +1922,6 @@
     "developer_comment": "Start",
     "string": "Start"
   },
-  "eJ63eJ": {
-    "developer_comment": "eduID index lead text",
-    "string": "Skapa ett eduID och koppla det till din identitet för att kunna komma åt flera olika tjänster och organisationer inom högskolan."
-  },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in den här enheten"
@@ -2119,6 +2127,10 @@
     "developer_comment": "SAML login finished",
     "string": "Inloggning misslyckades"
   },
+  "hDIypl": {
+    "developer_comment": "how-to 2",
+    "string": "Bevisa att du är DU."
+  },
   "hEOTTF": {
     "developer_comment": "Use another device, finished",
     "string": "Koden har gått ut och du bör stänga det här fönstret"
@@ -2313,6 +2325,10 @@
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "tjänster som kräver att du loggar in med multifaktorautentisering, ofta kallad {emphasis}."
+  },
+  "kXQmVz": {
+    "developer_comment": "read more at Sunet",
+    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
@@ -2570,6 +2586,10 @@
   "nZx6UW": {
     "developer_comment": "what is privacy policy - paragraph",
     "string": "Läs {privacy} i sin helhet för användning av eduID på Sunets hemsida, där du även hittar kontaktinformation till Dataskyddsombudet och Integritetsskyddsmyndigheten."
+  },
+  "naK2Gb": {
+    "developer_comment": "how-to heading",
+    "string": "Hur det fungerar:"
   },
   "naczj1": {
     "developer_comment": "start eduid - list item 3-2",
@@ -3235,6 +3255,10 @@
   "vG+ARA": {
     "developer_comment": "verify webauthn token modal title",
     "string": "Verifiera din tillagda säkerhetsnyckel"
+  },
+  "vL+WHz": {
+    "developer_comment": "eduID index lead text",
+    "string": "eduID är enklare eftersom du bara har en inloggning och säkrare eftersom det är kopplat till en verklig person - dig."
   },
   "vQ4UOq": {
     "developer_comment": "swedish nin post - heading",
