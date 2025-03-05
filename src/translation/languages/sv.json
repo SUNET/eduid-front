@@ -1031,6 +1031,10 @@
     "developer_comment": "generic error page",
     "string": "Problemet har rapporterats till teamet."
   },
+  "MvJt9z": {
+    "developer_comment": "read more at Sunet",
+    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller"
+  },
   "Mx5Yyp": {
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir ombedd att identifiera sig med hjälp av sitt BankID i BankID-tjänsten. Om du inte redan har ett BankID behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om BankID nedan."
@@ -2385,6 +2389,10 @@
     "developer_comment": "SAML login finished",
     "string": "Försök igen"
   },
+  "lMcN5K": {
+    "developer_comment": "read more in the help link",
+    "string": "i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
+  },
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
     "string": "Registrera: Godkänn användarvillkor"
@@ -2510,10 +2518,6 @@
   "lxJwll": {
     "developer_comment": "use orcid - list item 2",
     "string": "klicka på knappen 'Länka ORCID konto' under Konto i eduID,"
-  },
-  "m7h+J4": {
-    "developer_comment": "read more at Sunet",
-    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
   },
   "mO/ijL": {
     "developer_comment": "Signup",
