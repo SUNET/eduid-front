@@ -64,7 +64,7 @@ export function Index() {
           </p>
           <p className="med-txt">
             <FormattedMessage
-              defaultMessage="You can read more about eduID at {Sunet} website or "
+              defaultMessage="You can read more about eduID at {Sunet} website or in the"
               description="read more at Sunet"
               values={{
                 Sunet: (
@@ -75,16 +75,13 @@ export function Index() {
               }}
             />
             &nbsp;
+            <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
+              <FormattedMessage description="help link" defaultMessage="Help" />
+            </a>
+            &nbsp;
             <FormattedMessage
-              defaultMessage="in the {Help} link in the footer. You can also register or log in using the buttons below!"
+              defaultMessage="link in the footer. You can also register or log in using the buttons below!"
               description="read more in the help link"
-              values={{
-                Help: (
-                  <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
-                    <FormattedMessage description="help link" defaultMessage="Help" />
-                  </a>
-                ),
-              }}
             />
           </p>
           <div className="buttons">
