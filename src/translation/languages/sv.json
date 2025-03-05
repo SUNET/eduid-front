@@ -1031,10 +1031,6 @@
     "developer_comment": "generic error page",
     "string": "Problemet har rapporterats till teamet."
   },
-  "MvJt9z": {
-    "developer_comment": "read more at Sunet",
-    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller"
-  },
   "Mx5Yyp": {
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir ombedd att identifiera sig med hjälp av sitt BankID i BankID-tjänsten. Om du inte redan har ett BankID behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om BankID nedan."
@@ -1504,6 +1500,10 @@
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Epostadresser:"
   },
+  "X+6FEh": {
+    "developer_comment": "read more at Sunet",
+    "string": "You can read more about eduID at {Sunet} website or in the"
+  },
   "X+EKkF": {
     "developer_comment": "need visit atg agent for freja - paragraph",
     "string": "Bara om du använder en annan ID-handling än svenskt pass, {protectedId}. ATG-ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
@@ -1591,6 +1591,10 @@
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verifieringsstatus:"
+  },
+  "YOCct5": {
+    "developer_comment": "read more in the help link",
+    "string": "link in the footer. You can also register or log in using the buttons below!"
   },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
@@ -2388,10 +2392,6 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Försök igen"
-  },
-  "lMcN5K": {
-    "developer_comment": "read more in the help link",
-    "string": "i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
   },
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
