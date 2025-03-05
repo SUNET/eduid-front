@@ -2328,7 +2328,7 @@
   },
   "kXQmVz": {
     "developer_comment": "read more at Sunet",
-    "string": "You can read more about eduID at {Sunet} website and by clicking on the eduID {Help} link always in the footer, or go ahead and register or login using the buttons below!"
+    "string": "You can read more about eduID at {Sunet} website or in the {Help} link in the footer. You can also register or log in using the buttons below!"
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
