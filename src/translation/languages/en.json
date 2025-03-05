@@ -1031,10 +1031,6 @@
     "developer_comment": "generic error page",
     "string": "The issue has been reported to the team."
   },
-  "MvJt9z": {
-    "developer_comment": "read more at Sunet",
-    "string": "You can read more about eduID at {Sunet} website or"
-  },
   "Mx5Yyp": {
     "developer_comment": "verification methods - list item 3",
     "string": "the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can complete verification of your eduID. Read more about BankID below."
@@ -1504,6 +1500,10 @@
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
   },
+  "X+6FEh": {
+    "developer_comment": "read more at Sunet",
+    "string": "You can read more about eduID at {Sunet} website or in the"
+  },
   "X+EKkF": {
     "developer_comment": "need visit atg agent for freja - paragraph",
     "string": "Only if you use another means of identification than a Swedish passport, {protectedId}. On site, the agent can start the verification process by scanning a QR code in your app and follow the instructions in their terminal. You will be informed when you have passed the ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for your Freja+ to be fully activated."
@@ -1591,6 +1591,10 @@
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verification status:"
+  },
+  "YOCct5": {
+    "developer_comment": "read more in the help link",
+    "string": "link in the footer. You can also register or log in using the buttons below!"
   },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
@@ -2388,10 +2392,6 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
-  },
-  "lMcN5K": {
-    "developer_comment": "read more in the help link",
-    "string": "in the {Help} link in the footer. You can also register or log in using the buttons below!"
   },
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
