@@ -5,7 +5,7 @@ import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { appLoadingSlice } from "slices/AppLoading";
 import accountIcon from "../../img/account-icon.svg";
 import securityIcon from "../../img/security-icon.svg";
@@ -17,7 +17,9 @@ export function Index() {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
+  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
 
+  console.log("123");
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
     if (dashboard_link) {
@@ -72,9 +74,9 @@ export function Index() {
                   </a>
                 ),
                 Help: (
-                  <Link className="text-link" to={`../../help`} target="_blank">
+                  <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
                     <FormattedMessage description="help link" defaultMessage="Help" />
-                  </Link>
+                  </a>
                 ),
               }}
             />
