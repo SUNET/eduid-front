@@ -63,7 +63,7 @@ export function Index() {
           </p>
           <p className="med-txt">
             <FormattedMessage
-              defaultMessage="You can read more about eduID at {Sunet} website and by clicking on the eduID {Help} link always in the footer, or go ahead and register or login using the buttons below!"
+              defaultMessage="You can read more about eduID at {Sunet} website or in the {Help} link in the footer. You can also register or log in using the buttons below!"
               description="read more at Sunet"
               values={{
                 Sunet: (
