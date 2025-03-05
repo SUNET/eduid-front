@@ -19,7 +19,6 @@ export function Index() {
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
 
-  console.log("123");
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
     if (dashboard_link) {
@@ -65,7 +64,7 @@ export function Index() {
           </p>
           <p className="med-txt">
             <FormattedMessage
-              defaultMessage="You can read more about eduID at {Sunet} website or in the {Help} link in the footer. You can also register or log in using the buttons below!"
+              defaultMessage="You can read more about eduID at {Sunet} website or "
               description="read more at Sunet"
               values={{
                 Sunet: (
@@ -73,6 +72,13 @@ export function Index() {
                     Sunets
                   </a>
                 ),
+              }}
+            />
+            &nbsp;
+            <FormattedMessage
+              defaultMessage="in the {Help} link in the footer. You can also register or log in using the buttons below!"
+              description="read more in the help link"
+              values={{
                 Help: (
                   <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
                     <FormattedMessage description="help link" defaultMessage="Help" />
