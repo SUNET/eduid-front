@@ -2326,10 +2326,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "tjänster som kräver att du loggar in med multifaktorautentisering, ofta kallad {emphasis}."
   },
-  "kXQmVz": {
-    "developer_comment": "read more at Sunet",
-    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
-  },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare"
@@ -2514,6 +2510,10 @@
   "lxJwll": {
     "developer_comment": "use orcid - list item 2",
     "string": "klicka på knappen 'Länka ORCID konto' under Konto i eduID,"
+  },
+  "m7h+J4": {
+    "developer_comment": "read more at Sunet",
+    "string": "Du kan läsa mer om eduID på {Sunet}s hemsida eller i {Hjälp}en i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
   },
   "mO/ijL": {
     "developer_comment": "Signup",
