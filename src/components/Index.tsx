@@ -18,7 +18,7 @@ export function Index() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
-  console.log("hhhh");
+
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
     if (dashboard_link) {
