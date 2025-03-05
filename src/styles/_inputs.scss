@@ -48,7 +48,8 @@ input::placeholder {
 }
 
 //tab-focus
-:focus-visible {
+:focus-visible,
+.focus {
   outline: $border-width dashed $txt-black !important;
   transition: none !important;
 
