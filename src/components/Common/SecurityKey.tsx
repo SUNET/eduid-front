@@ -62,7 +62,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
       {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
       <button
         ref={ref}
-        className="btn btn-primary focus"
+        className="btn btn-primary"
         type="submit"
         onClick={() => {
           if (props.setActive) props.setActive(true);

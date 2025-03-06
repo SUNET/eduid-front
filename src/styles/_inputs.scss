@@ -49,7 +49,7 @@ input::placeholder {
 
 //tab-focus
 :focus-visible,
-.focus {
+#mfa-security-key:focus {
   outline: $border-width dashed $txt-black !important;
   transition: none !important;
 
