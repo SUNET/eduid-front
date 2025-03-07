@@ -1,8 +1,7 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -20,6 +19,13 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
   const [active, setActive] = useState(false);
+  const is_configured = useAppSelector((state) => state.config.is_configured);
+
+  useEffect(() => {
+    if (is_configured) {
+      setActive(true);
+    }
+  }, []);
 
   return (
     <div className="option-wrapper">
@@ -43,7 +49,11 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
 }
 
 function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
-  // const authn_options = useAppSelector((state) => state.login.authn_options);
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (ref.current) ref?.current?.focus();
+  }, []);
 
   return (
     <Fragment>
@@ -56,8 +66,10 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
           defaultMessage="E.g. USB Security Key or the device you are currently using."
         />
       </p>
-      <EduIDButton
-        buttonstyle="primary"
+      {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
+      <button
+        ref={ref}
+        className="btn btn-primary"
         type="submit"
         onClick={() => {
           if (props.setActive) props.setActive(true);
@@ -66,7 +78,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
         disabled={!props.webauthn}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
-      </EduIDButton>
+      </button>
     </Fragment>
   );
 }
