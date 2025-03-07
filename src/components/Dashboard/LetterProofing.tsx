@@ -160,7 +160,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
 
       {description}
 
-      <EduIDButton disabled={disabled} buttonstyle="primary" size="sm" onClick={() => handleModal()}>
+      <EduIDButton disabled={disabled} buttonstyle="primary sm" onClick={() => handleModal()}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 

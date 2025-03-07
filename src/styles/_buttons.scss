@@ -29,17 +29,17 @@ button.btn {
     border-color: inherit;
     color: $white;
 
-    &.btn-primary {
+    &.primary {
       background-color: $btn-orange;
     }
   }
 }
 
-button.btn-primary,
-button.btn-primary:not(:disabled):not(.disabled):active,
-button.btn-primary:not(:disabled):not(.disabled):focus,
-button.btn-primary:not(:disabled):not(.disabled):active:focus,
-button.btn-primary:not(:disabled):not(.disabled):hover {
+button.primary,
+button.primary:not(:disabled):not(.disabled):active,
+button.primary:not(:disabled):not(.disabled):focus,
+button.primary:not(:disabled):not(.disabled):active:focus,
+button.primary:not(:disabled):not(.disabled):hover {
   color: $white;
   border: solid 2px $bright-orange;
   background-color: $btn-orange;
@@ -49,7 +49,7 @@ button.btn-primary:not(:disabled):not(.disabled):hover {
   //min-width: min-content;
   padding: 0 1.125rem;
 
-  &.btn-sm {
+  &.sm {
     padding: 0.5rem 1rem;
     font-size: 13px;
     min-width: fit-content;
@@ -61,11 +61,11 @@ button.btn-primary:not(:disabled):not(.disabled):hover {
   }
 }
 
-button.btn-secondary,
-button.btn-secondary:not(:disabled):not(.disabled):active,
-button.btn-secondary:not(:disabled):not(.disabled):focus,
-button.btn-secondary:not(:disabled):not(.disabled):active:focus,
-button.btn-secondary:not(:disabled):not(.disabled):hover {
+button.secondary,
+button.secondary:not(:disabled):not(.disabled):active,
+button.secondary:not(:disabled):not(.disabled):focus,
+button.secondary:not(:disabled):not(.disabled):active:focus,
+button.secondary:not(:disabled):not(.disabled):hover {
   color: $txt-orange;
   border: solid 2px $bright-orange;
   background-color: $white;
@@ -76,7 +76,7 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   padding: 0 1.125rem;
 
   /* Login, Logout, Register button in Header */
-  &.btn-sm {
+  &.sm {
     padding: 0.5rem 1rem;
     font-size: 13px;
     min-width: fit-content;
@@ -88,8 +88,8 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   }
 }
 
-button.btn-primary,
-button.btn-secondary,
+button.primary,
+button.secondary,
 .mfa-select .react-select__control {
   &:hover {
     transform: scale(0.95);
@@ -102,7 +102,7 @@ button.btn-secondary,
 }
 
 /* CLOSE buttons in modals */
-button.btn-close {
+button.close {
   background-color: transparent;
   margin: 0;
   box-shadow: none;
@@ -118,13 +118,13 @@ button.btn-close {
     box-shadow: none;
   }
 
-  &.btn-sm {
+  &.sm {
     font-size: $txt-xs;
   }
 }
 
 /* styles for links that are also buttons */
-button.btn-link {
+button.link {
   background-color: transparent;
   color: $txt-orange;
   border-radius: 0;
@@ -144,7 +144,7 @@ button.btn-link {
     box-shadow: none;
   }
 
-  &.btn-sm {
+  &.sm {
     font-size: $txt-xs;
   }
 
@@ -169,7 +169,7 @@ button.btn-link {
 }
 
 /* icon left of button text */
-button.btn-icon {
+button.icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,16 +291,16 @@ button.icon-only {
 }
 
 @media (max-width: $bp-xs) {
-  button.btn:not(.btn-sm) {
+  button.btn:not(.sm) {
     font-size: $txt-sm;
   }
 
-  button.btn-primary,
-  button.btn-secondary {
+  button.primary,
+  button.secondary {
     width: 100%;
   }
 
-  button.btn.btn-link {
+  button.btn.link {
     width: auto;
     padding: 0;
   }
@@ -335,7 +335,7 @@ button.scroll-to-top {
   }
 }
 
-.btn-remove {
+.remove {
   width: 1.2rem;
   height: 1.2rem !important;
   background-image: url("../../img/remove-icon.svg");

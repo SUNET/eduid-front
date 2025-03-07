@@ -70,9 +70,7 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
       />
 
       <EduIDButton
-        className="txt-toggle-btn"
-        buttonstyle="link"
-        size="sm"
+        buttonstyle="txt-toggle-btn link sm"
         aria-label={showPassword ? "hide password" : "show password"}
         onClick={toggleShowPassword}
       >
