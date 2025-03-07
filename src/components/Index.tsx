@@ -45,57 +45,52 @@ export function Index() {
         <h1 className="tagline">
           <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
         </h1>
-        <div className="lead">
-          <p>
-            <strong>
-              <FormattedMessage
-                defaultMessage={`Create an eduID and connect it to your identity for access to services and 
-                organisations related to higher education.`}
-                description="eduID index lead text"
-              />
-            </strong>
-          </p>
-          <p>
+        <p>
+          <strong>
             <FormattedMessage
-              defaultMessage={`eduID is easier because you only have one login and safer 
-             because it's connected to a real individual - you.`}
+              defaultMessage={`Create an eduID and connect it to your identity for access to services and 
+                organisations related to higher education.`}
               description="eduID index lead text"
             />
-          </p>
-          <p className="med-txt">
-            <FormattedMessage
-              defaultMessage="You can read more about eduID at {Sunet} website or in the"
-              description="read more at Sunet"
-              values={{
-                Sunet: (
-                  <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
-                    Sunet
-                  </a>
-                ),
-              }}
-            />
-            &nbsp;
-            <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
-              <FormattedMessage description="help link" defaultMessage="Help" />
-            </a>
-            &nbsp;
-            <FormattedMessage
-              defaultMessage="link in the footer. You can also register or log in using the buttons below!"
-              description="read more in the help link"
-            />
-          </p>
-          <div className="buttons">
-            <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
-              <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
-            </EduIDButton>
-            <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
-              <FormattedMessage defaultMessage="log in" description="login button" />
-            </EduIDButton>
-          </div>
+          </strong>
+        </p>
+        <p>
+          <FormattedMessage
+            defaultMessage={`eduID is easier because you only have one login and safer 
+             because it's connected to a real individual - you.`}
+            description="eduID index lead text"
+          />
+        </p>
+        <p className="med-txt">
+          <FormattedMessage
+            defaultMessage="You can read more about eduID at {Sunet} website or in the"
+            description="read more at Sunet"
+            values={{
+              Sunet: (
+                <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
+                  Sunet
+                </a>
+              ),
+            }}
+          />
+          &nbsp;
+          <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
+            <FormattedMessage description="help link" defaultMessage="Help" />
+          </a>
+          &nbsp;
+          <FormattedMessage
+            defaultMessage="link in the footer. You can also register or log in using the buttons below!"
+            description="read more in the help link"
+          />
+        </p>
+        <div className="buttons">
+          <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
+            <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
+          </EduIDButton>
+          <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
+            <FormattedMessage defaultMessage="log in" description="login button" />
+          </EduIDButton>
         </div>
-        <h2 className="heading-4">
-          <FormattedMessage defaultMessage="How it works: " description="how-to heading" />
-        </h2>
       </div>
       <div className="flex-between landing-howTo">
         <div>
