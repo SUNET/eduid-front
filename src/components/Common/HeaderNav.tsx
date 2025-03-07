@@ -240,13 +240,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             </ul>
           </li>
           <li className="logout-button-wrapper">
-            <EduIDButton
-              buttonstyle="link"
-              size="sm"
-              id="logout"
-              onClick={props.handleLogout}
-              disabled={!props.login_url}
-            >
+            <EduIDButton buttonstyle="link sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
               <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
               <FormattedMessage defaultMessage="Log out" description="Header logout" />
             </EduIDButton>
