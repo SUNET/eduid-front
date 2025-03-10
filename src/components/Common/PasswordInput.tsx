@@ -52,7 +52,8 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
 export function PasswordInputElement(props: InputProps): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
 
-  function toggleShowPassword() {
+  function toggleShowPassword(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
     setShowPassword(!showPassword);
   }
 
