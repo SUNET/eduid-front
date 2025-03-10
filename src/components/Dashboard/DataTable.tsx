@@ -22,7 +22,7 @@ function DataStatus(props: DataStatusProps) {
   if (!props.verified) {
     return (
       <EduIDButton
-        className={`${props.name === "number" ? "disabled" : " "}`}
+        className={`${props.name === "number" ? "disabled link sm" : "link sm"}`}
         buttonstyle="link sm"
         onClick={props.handleStartConfirmation}
       >
