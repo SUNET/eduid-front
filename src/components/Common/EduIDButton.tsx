@@ -11,9 +11,8 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   const intl = useIntl();
   const extra: ButtonProps = {};
-
   // Provide a textual representation of the "close" button for screen readers (and RTL)
-  if (props.buttonstyle === "close") {
+  if (props.buttonstyle.includes("close")) {
     // aria-label can't be an Element, we need to get the actual translated string here
     const closeLabel = intl.formatMessage({
       id: "modal.close",
@@ -25,7 +24,7 @@ export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   }
 
   return (
-    <button className={props.buttonstyle} {...extra} {...props}>
+    <button className={props.buttonstyle} {...extra} {...{ ...props, buttonstyle: undefined }}>
       {props.children}
     </button>
   );
