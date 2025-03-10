@@ -43,12 +43,7 @@ export function Orcid(): JSX.Element {
     return (
       <Fragment>
         <div className="buttons">
-          <EduIDButton
-            buttonstyle="primary"
-            id="connect-orcid-button"
-            className="btn-icon"
-            onClick={handleOrcidConnect}
-          >
+          <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
             <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
             <FormattedMessage description="orcid connect button" defaultMessage={`Add ORCID account`} />
           </EduIDButton>
@@ -86,8 +81,7 @@ export function Orcid(): JSX.Element {
             </td>
             <td>
               <EduIDButton
-                buttonstyle="close"
-                size="sm"
+                buttonstyle="close sm"
                 id="remove-orcid-button"
                 onClick={handleOrcidDelete}
                 aria-label={removeLabel}

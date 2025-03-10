@@ -157,7 +157,7 @@ export function SignupUserCreated(): JSX.Element {
       )}
 
       <div className="buttons">
-        <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
+        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
         </EduIDButton>
       </div>

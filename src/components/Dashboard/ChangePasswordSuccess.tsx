@@ -45,7 +45,7 @@ export function ChangePasswordSuccess(): JSX.Element {
           <ConfirmUserInfo email_address={email} new_password={password} />
         )}
         <div className="buttons">
-          <EduIDButton id="change-password-finished" buttonstyle="link" className="normal-case" type="submit">
+          <EduIDButton id="change-password-finished" buttonstyle="link normal-case" type="submit">
             <FormattedMessage defaultMessage="Go to dashboard" description="Go to dashboard" />
           </EduIDButton>
         </div>
