@@ -2591,10 +2591,6 @@
     "developer_comment": "what is privacy policy - paragraph",
     "string": "Read the full {privacy} regarding use of eduID at the Sunet website, where you also find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish)."
   },
-  "naK2Gb": {
-    "developer_comment": "how-to heading",
-    "string": "How it works:"
-  },
   "naczj1": {
     "developer_comment": "start eduid - list item 3-2",
     "string": "real identity verified"
