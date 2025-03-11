@@ -19,13 +19,6 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
   const [active, setActive] = useState(false);
-  const is_configured = useAppSelector((state) => state.config.is_configured);
-
-  useEffect(() => {
-    if (is_configured) {
-      setActive(true);
-    }
-  }, []);
 
   return (
     <div className="option-wrapper">
