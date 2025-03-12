@@ -1,11 +1,10 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { Button, ButtonProps } from "reactstrap";
+import { ButtonProps } from "reactstrap";
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  id?: string;
-  size?: string;
-  buttonstyle: "primary" | "secondary" | "link" | "close" | "remove";
+  readonly id?: string;
+  readonly buttonstyle: string;
 }
 
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
@@ -26,8 +25,8 @@ export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   }
 
   return (
-    <Button {...extra} {...props} size={props.size} color={props.buttonstyle}>
+    <button className={props.buttonstyle} {...extra} {...props}>
       {props.children}
-    </Button>
+    </button>
   );
 }

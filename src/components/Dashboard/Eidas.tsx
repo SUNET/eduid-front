@@ -80,7 +80,7 @@ function Eidas(): JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
+      <EduIDButton buttonstyle="primary sm" onClick={() => setShowModal(true)}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 

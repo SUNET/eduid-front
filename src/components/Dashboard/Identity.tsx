@@ -216,8 +216,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           <NinDisplay nin={identities?.nin} allowDelete={true} />
           <EduIDButton
             id="remove-identity-nin"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
               id: "verified identity delete button",
@@ -240,8 +239,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
           <EduIDButton
             id="remove-identity-eidas"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("eidas")}
           ></EduIDButton>
         </figure>
@@ -264,8 +262,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
           <EduIDButton
             id="remove-identity-freja"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("freja")}
           ></EduIDButton>
         </figure>
@@ -432,7 +429,7 @@ function AccordionItemEu(): JSX.Element | null {
                          electronic ID to connect your identity to eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
@@ -488,7 +485,7 @@ function AccordionItemWorld(): JSX.Element | null {
           identifying yourself with Freja eID, you will verify your identity towards eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>

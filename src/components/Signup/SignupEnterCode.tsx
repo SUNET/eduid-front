@@ -102,7 +102,7 @@ export function SignupEnterCode(): JSX.Element {
           />
         </p>
 
-        <EduIDButton buttonstyle="link" className="lowercase" onClick={registerEmail} id="send-new-code">
+        <EduIDButton buttonstyle="link lowercase" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send a new code" description="send a new code" />
         </EduIDButton>
       </div>
