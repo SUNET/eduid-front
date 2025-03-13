@@ -50,3 +50,29 @@ $bp-xl: 1200px;
 * Layout
 * ========================================================================== */
 $border-width: 2px;
+
+/*
+* Dark mode
+* ========================================================================== */
+
+// @media (prefers-color-scheme: dark) {
+
+// }
+$white: #000;
+$txt-black: #fff;
+$body-gray: #161616;
+$txt-gray: #ebebeb;
+$bright-orange: #ff4500;
+$txt-orange: #ff4500;
+
+a,
+.text-link {
+  font-weight: 600;
+}
+button.btn-primary,
+button.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):focus,
+button.btn-primary:not(:disabled):not(.disabled):active:focus,
+button.btn-primary:not(:disabled):not(.disabled):hover {
+  color: #fff;
+}
