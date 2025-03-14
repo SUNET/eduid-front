@@ -56,7 +56,7 @@ export function Account(): JSX.Element {
         previousLink={SECURITY_PATH}
         previousText={intl.formatMessage({
           id: "wizard link back security",
-          defaultMessage: "Back to Security Settings",
+          defaultMessage: "To Security Settings",
         })}
       />
     </React.Fragment>
