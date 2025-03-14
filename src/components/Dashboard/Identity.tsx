@@ -68,12 +68,12 @@ function Identity(): JSX.Element | null {
         previousLink={START_PATH}
         previousText={intl.formatMessage({
           id: "wizard link back start",
-          defaultMessage: "Back to Overview on Start",
+          defaultMessage: "To Overview on Start",
         })}
         nextLink={SECURITY_PATH}
         nextText={intl.formatMessage({
           id: "wizard link next security",
-          defaultMessage: "Continue to Security Settings",
+          defaultMessage: "To Security Settings",
         })}
       />
     </Fragment>
