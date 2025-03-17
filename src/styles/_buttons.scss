@@ -368,7 +368,7 @@ button.scroll-to-top {
   background-position: center;
   cursor: pointer;
   box-shadow: none !important;
-
+  background-color: transparent;
   &:hover {
     background-image: url("../../img/remove-icon-black.svg");
   }
