@@ -3308,19 +3308,19 @@
     "string": "Under inloggade startsidan presenteras en statusöversikt av ditt eduID. Det här är vad den vanligtvis innebär för din tillitsnivå och tjänsterna som du kan autentisera dig för:"
   },
   "wizard link back identity": {
-    "string": "Tillbaka till identitetsinställningar"
+    "string": "Till identitetsinställningar"
   },
   "wizard link back security": {
-    "string": "Tillbaka till säkerhetsinställningar"
+    "string": "Till säkerhetsinställningar"
   },
   "wizard link back start": {
-    "string": "Tillbaka till översikten på startsidan"
+    "string": "Till översikten på startsidan"
   },
   "wizard link next account": {
-    "string": "Fortsätt till kontoinställningar"
+    "string": "Till säkerhetsinställningar"
   },
   "wizard link next security": {
-    "string": "Fortsätt till säkerhetsinställningar"
+    "string": "Till säkerhetsinställningar"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
