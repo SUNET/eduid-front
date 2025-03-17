@@ -109,6 +109,10 @@ button.close {
   height: 1rem;
   width: 1rem;
 
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -121,6 +125,26 @@ button.close {
   &.sm {
     font-size: $txt-xs;
   }
+}
+
+.close::before,
+.close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: $txt-gray;
+  transform-origin: center;
+}
+
+.close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* styles for links that are also buttons */
