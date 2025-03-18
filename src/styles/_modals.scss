@@ -1,9 +1,17 @@
 /* Modals
 -------------------------------------------------- */
+dialog[open] {
+  display: block;
+  opacity: 1;
+}
 
 .modal {
   display: flex !important;
   padding: 1rem 4rem;
+  &.show {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+  }
 
   .modal-dialog.security-confirm-modal {
     .modal-body {
