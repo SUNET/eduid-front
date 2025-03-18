@@ -26,12 +26,7 @@ function ChangePasswordDisplay() {
           description="Dashboard change password link description text"
         />
       </p>
-      <EduIDButton
-        id="security-change-button"
-        buttonstyle="link"
-        className="lowercase"
-        onClick={handleSuggestedPassword}
-      >
+      <EduIDButton id="security-change-button" buttonstyle="link lowercase" onClick={handleSuggestedPassword}>
         <FormattedMessage defaultMessage="Change password" description="Dashboard change password button text" />
       </EduIDButton>
     </article>

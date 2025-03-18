@@ -79,7 +79,7 @@ function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEd
     <Fragment>
       {isEditMode ||
         (hasPersonalData && (
-          <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
+          <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(true)}>
             <FormattedMessage description="edit button" defaultMessage={`edit`} />
           </EduIDButton>
         ))}

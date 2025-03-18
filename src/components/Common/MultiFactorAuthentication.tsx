@@ -292,8 +292,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-platform-button"
-                className="btn-icon"
-                buttonstyle="primary"
+                buttonstyle="primary icon"
                 onClick={() => handleRegisterWebauthn("platform")}
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
@@ -318,8 +317,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-button"
-                buttonstyle="primary"
-                className="btn-icon"
+                buttonstyle="primary icon"
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
@@ -378,8 +376,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             />
             <EduIDButton
               id={`verify-webauthn-token-modal-close-button`}
-              buttonstyle="close"
-              className="float-right"
+              buttonstyle="close float-right"
               onClick={() => setShowVerifyWebauthnModal(false)}
             ></EduIDButton>
           </ModalHeader>
@@ -398,18 +395,16 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <ModalFooter>
             <div className="buttons">
               <EduIDButton
-                className="btn-icon"
                 id={`verify-webauthn-token-modal-continue-bankID-button`}
-                buttonstyle="primary"
+                buttonstyle="primary icon"
                 onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
               >
                 <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
                 <span>BankID</span>
               </EduIDButton>
               <EduIDButton
-                className="btn-icon"
+                buttonstyle="primary icon"
                 id={`verify-webauthn-token-modal-continue-frejaID-button`}
-                buttonstyle="primary"
                 onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
               >
                 <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
@@ -529,10 +524,10 @@ function SecurityKeyTable({
             <span>
               <FormattedMessage description="security key status" defaultMessage="Verify with: " />
               &nbsp;
-              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
                 <FormattedMessage description="security verify" defaultMessage="Freja+" />
               </EduIDButton>
-              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
                 <FormattedMessage description="security verify" defaultMessage="BankID" />
               </EduIDButton>
             </span>
@@ -557,8 +552,7 @@ function SecurityKeyTable({
             <EduIDButton
               aria-label="Remove"
               id="remove-webauthn"
-              buttonstyle="remove"
-              size="sm"
+              buttonstyle="remove sm"
               onClick={() => handleConfirmDeleteModal(cred)}
             ></EduIDButton>
           </div>

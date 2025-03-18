@@ -40,7 +40,7 @@ function BankID(): JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary" size="sm" onClick={useBankID}>
+      <EduIDButton buttonstyle="primary sm" onClick={useBankID}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </Fragment>

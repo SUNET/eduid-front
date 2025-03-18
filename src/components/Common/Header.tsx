@@ -47,19 +47,19 @@ export function Header(props: HeaderProps): JSX.Element {
     window.location.pathname.includes("reset-password")
   ) {
     button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="login" onClick={handleLogin}>
+      <EduIDButton buttonstyle="secondary sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </EduIDButton>
     );
   } else if (authn_options.has_session) {
     button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+      <EduIDButton buttonstyle="secondary sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
   } else if (window.location.pathname.includes("login")) {
     button = (
-      <EduIDButton buttonstyle="secondary" size="sm" id="register" onClick={handleRegister}>
+      <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
       </EduIDButton>
     );
