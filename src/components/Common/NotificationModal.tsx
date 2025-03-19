@@ -12,13 +12,6 @@ interface NotificationModalProps {
 }
 
 function NotificationModal(props: NotificationModalProps) {
-  function handlePress(event: React.KeyboardEvent<HTMLDivElement>) {
-    event.preventDefault();
-    if (event.key === "Enter") {
-      props.acceptModal();
-    }
-  }
-
   if (!props.showModal) return null;
 
   return (
@@ -27,7 +20,6 @@ function NotificationModal(props: NotificationModalProps) {
         className={props.showModal ? "modal fade show" : "modal"}
         id={props.id}
         tabIndex={-1}
-        onKeyDown={handlePress}
         aria-hidden={!props.showModal}
       >
         <div className={`modal-dialog ${props.id}`}>
@@ -38,9 +30,16 @@ function NotificationModal(props: NotificationModalProps) {
             </div>
             <div className="modal-body">{props.mainText}</div>
             <div className="modal-footer">
-              <EduIDButton id={`${props.id}-accept-button`} buttonstyle="primary" onClick={props.acceptModal}>
-                {props.acceptButtonText}
-              </EduIDButton>
+              <form onSubmit={() => props.acceptModal}>
+                <EduIDButton
+                  type="submit"
+                  id={`${props.id}-accept-button`}
+                  buttonstyle="primary"
+                  onClick={props.acceptModal}
+                >
+                  {props.acceptButtonText}
+                </EduIDButton>
+              </form>
             </div>
           </div>
         </div>
