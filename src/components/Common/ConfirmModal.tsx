@@ -23,7 +23,6 @@ interface ConfirmModalProps {
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
-  console.log("123");
   function validate(value: string) {
     if (!value?.trim()) {
       return "required";
