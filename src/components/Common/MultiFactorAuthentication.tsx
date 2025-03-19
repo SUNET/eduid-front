@@ -18,7 +18,6 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -367,52 +366,68 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       />
       {/* Verify WebauthnToken Modal */}
-      <dialog id="verify-webauthn-token-modal" tabIndex={-1} aria-hidden="true" data-backdrop="true">
-        <Modal isOpen={showVerifyWebauthnModal} className="verify-webauthn-token-modal">
-          <ModalHeader>
-            <FormattedMessage
-              defaultMessage="Verify your added security key"
-              description="verify webauthn token modal title"
-            />
-            <EduIDButton
-              id={`verify-webauthn-token-modal-close-button`}
-              buttonstyle="close float-right"
-              onClick={() => setShowVerifyWebauthnModal(false)}
-            ></EduIDButton>
-          </ModalHeader>
-          <ModalBody>
-            <FormattedMessage
-              description="verify webauthn token modal body text"
-              defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
-            />
-            <p className="help-text">
-              <FormattedMessage
-                description="verify webauthn token modal body note text"
-                defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
-              />
-            </p>
-          </ModalBody>
-          <ModalFooter>
-            <div className="buttons">
-              <EduIDButton
-                id={`verify-webauthn-token-modal-continue-bankID-button`}
-                buttonstyle="primary icon"
-                onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
-              >
-                <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
-                <span>BankID</span>
-              </EduIDButton>
-              <EduIDButton
-                buttonstyle="primary icon"
-                id={`verify-webauthn-token-modal-continue-frejaID-button`}
-                onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
-              >
-                <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
-                <span>Freja+</span>
-              </EduIDButton>
+      <dialog
+        open={showVerifyWebauthnModal}
+        id="verify-webauthn-token-modal"
+        tabIndex={-1}
+        aria-hidden="true"
+        data-backdrop="true"
+      >
+        <div
+          className={showVerifyWebauthnModal ? "modal fade show" : "modal"}
+          tabIndex={-1}
+          aria-hidden={!showVerifyWebauthnModal}
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <FormattedMessage
+                    defaultMessage="Verify your added security key"
+                    description="verify webauthn token modal title"
+                  />
+                </h5>
+                <EduIDButton
+                  id={`verify-webauthn-token-modal-close-button`}
+                  buttonstyle="close float-right"
+                  onClick={() => setShowVerifyWebauthnModal(false)}
+                ></EduIDButton>
+              </div>
+              <div className="modal-body">
+                <FormattedMessage
+                  description="verify webauthn token modal body text"
+                  defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
+                />
+                <p className="help-text">
+                  <FormattedMessage
+                    description="verify webauthn token modal body note text"
+                    defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+                  />
+                </p>
+              </div>
+              <div className="modal-footer">
+                <div className="buttons">
+                  <EduIDButton
+                    id={`verify-webauthn-token-modal-continue-bankID-button`}
+                    buttonstyle="primary icon"
+                    onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
+                  >
+                    <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
+                    <span>BankID</span>
+                  </EduIDButton>
+                  <EduIDButton
+                    buttonstyle="primary icon"
+                    id={`verify-webauthn-token-modal-continue-frejaID-button`}
+                    onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
+                  >
+                    <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
+                    <span>Freja+</span>
+                  </EduIDButton>
+                </div>
+              </div>
             </div>
-          </ModalFooter>
-        </Modal>
+          </div>
+        </div>
       </dialog>
     </>
   );
