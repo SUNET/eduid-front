@@ -28,8 +28,7 @@ function NotificationModal(props: NotificationModalProps) {
             {props.title}
             <EduIDButton
               id={`${props.id}-close-button`}
-              buttonstyle="close"
-              className="float-right"
+              buttonstyle="close float-right"
               onClick={props.closeModal}
             ></EduIDButton>
           </ModalHeader>

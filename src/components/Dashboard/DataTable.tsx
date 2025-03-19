@@ -22,9 +22,8 @@ function DataStatus(props: DataStatusProps) {
   if (!props.verified) {
     return (
       <EduIDButton
-        className={`${props.name === "number" ? "disabled" : " "}`}
-        buttonstyle="link"
-        size="sm"
+        className={`${props.name === "number" ? "disabled link sm" : "link sm"}`}
+        buttonstyle="link sm"
         onClick={props.handleStartConfirmation}
       >
         {props.name === "number" ? (
@@ -45,8 +44,7 @@ function DataStatus(props: DataStatusProps) {
   return (
     <EduIDButton
       className={`${props.name === "number" ? "disabled" : " "}`}
-      buttonstyle="link"
-      size="sm"
+      buttonstyle="link sm"
       onClick={props.handleMakePrimary}
     >
       <FormattedMessage defaultMessage="make primary" description="Make primary button" />
@@ -89,7 +87,7 @@ function DataTableRows(props: DataTableProps) {
             {/* not render the close button when there is only one email */}
             <td className="remove-data">
               {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
-                <EduIDButton buttonstyle="remove" size="sm" onClick={props.handleRemove} />
+                <EduIDButton buttonstyle="remove sm" onClick={props.handleRemove} />
               ) : null}
             </td>
           </tr>

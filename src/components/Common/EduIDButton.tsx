@@ -1,20 +1,22 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { Button, ButtonProps } from "reactstrap";
+
+interface ExtraProps {
+  "aria-label"?: string;
+}
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  id?: string;
-  size?: string;
-  buttonstyle: "primary" | "secondary" | "link" | "close" | "remove";
+  readonly id?: string;
+  readonly buttonstyle: string;
 }
 
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
 export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   const intl = useIntl();
-  const extra: ButtonProps = {};
+  const extra: ExtraProps = {};
 
   // Provide a textual representation of the "close" button for screen readers (and RTL)
-  if (props.buttonstyle === "close") {
+  if (props.buttonstyle.includes("close")) {
     // aria-label can't be an Element, we need to get the actual translated string here
     const closeLabel = intl.formatMessage({
       id: "modal.close",
@@ -26,8 +28,8 @@ export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   }
 
   return (
-    <Button {...extra} {...props} size={props.size} color={props.buttonstyle}>
+    <button className={props.buttonstyle} {...extra} {...{ ...props, buttonstyle: undefined }}>
       {props.children}
-    </Button>
+    </button>
   );
 }
