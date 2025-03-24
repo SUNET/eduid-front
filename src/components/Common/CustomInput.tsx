@@ -1,5 +1,4 @@
 import { FieldRenderProps } from "react-final-form";
-import { Input } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";
 
 type InputType = "text" | "password" | "email";
@@ -15,14 +14,12 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 
 const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
   return (
-    <Input
+    <input
       {...props.input}
       id={props.input.name}
       type={props.input.type as InputType}
       placeholder={props.placeholder}
       aria-required={props.input.required}
-      valid={props.meta.valid}
-      invalid={props.invalid}
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
     />

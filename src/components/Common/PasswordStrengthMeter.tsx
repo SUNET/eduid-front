@@ -1,7 +1,6 @@
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import { FormText } from "reactstrap";
 import zxcvbn from "zxcvbn";
 
 interface PasswordStrengthMeterProps {
@@ -53,7 +52,9 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   return (
     <React.Fragment>
       <div className={`form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
-        {props.password !== undefined && <FormText>{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</FormText>}
+        {props.password !== undefined && (
+          <div className="form-group">{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</div>
+        )}
       </div>
       <div className="meter-wrapper">
         <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
