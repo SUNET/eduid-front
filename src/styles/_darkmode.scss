@@ -1,42 +1,75 @@
 /* Dark mode overrides */
 
-@import "variables";
+@media (prefers-color-scheme: dark) {
+  $white: #000;
+  $txt-black: #f4f4f4;
+  $body-gray: #2e2e2e;
+  $txt-gray: #bdbdbd;
+  $border-gray: #5e5e5e;
+  $bg-orange: #36251e;
+  $error-red: #ff5965;
 
-// @media (prefers-color-scheme: dark) {
+  a,
+  .text-link,
+  .btn-link,
+  .header-nav ul li a.active {
+    color: #ff6d32 !important;
+  }
+  button.btn-primary,
+  button.btn-primary:not(:disabled):not(.disabled):active,
+  button.btn-primary:not(:disabled):not(.disabled):focus,
+  button.btn-primary:not(:disabled):not(.disabled):active:focus,
+  button.btn-primary:not(:disabled):not(.disabled):hover {
+    color: #fff !important;
+  }
+  button.secondary,
+  button.secondary:not(:disabled):not(.disabled):active,
+  button.secondary:not(:disabled):not(.disabled):focus,
+  button.secondary:not(:disabled):not(.disabled):active:focus,
+  button.secondary:not(:disabled):not(.disabled):hover {
+    background: transparent;
+    color: #ff6d32;
+  }
+  header .eduid-logo {
+    background-image: url(../../img/eduid-logo-orange.svg) !important;
+  }
+  footer .sunet-logo {
+    background-image: url("../../img/sunet_logo_white.svg") !important;
+  }
+  .header-user {
+    color: #fff;
+  }
+  .form-control:disabled,
+  .form-control[readonly],
+  input[readonly] {
+    background-color: #000;
+  }
 
-// }
-$white: #000;
-$txt-black: #f4f4f4;
-$body-gray: #2e2e2e;
-$txt-gray: #bdbdbd;
-$border-gray: #5e5e5e;
-$bg-orange: #36251e;
-$error-red: #ff5965;
+  .status-box.success,
+  .landing-howTo div {
+    &:nth-of-type(1) {
+      background-color: rgba(23, 125, 77, 0.1);
+    }
+    &:nth-of-type(2) {
+      background-color: rgba(23, 125, 77, 0.2);
+    }
+    &:nth-of-type(3) {
+      background-color: rgba(23, 125, 77, 0.3);
+    }
+    &:nth-of-type(4) {
+      background-color: rgba(23, 125, 77, 0.4);
+    }
+  }
 
-a,
-.text-link,
-.btn-link,
-.header-nav ul li a.active {
-  color: #ff6d32 !important;
-}
-button.btn-primary,
-button.btn-primary:not(:disabled):not(.disabled):active,
-button.btn-primary:not(:disabled):not(.disabled):focus,
-button.btn-primary:not(:disabled):not(.disabled):active:focus,
-button.btn-primary:not(:disabled):not(.disabled):hover {
-  color: #fff !important;
-}
-header .eduid-logo {
-  background-image: url(../../img/eduid-logo-orange.svg) !important;
-}
-footer .sunet-logo {
-  background-image: url("../../img/sunet_logo_white.svg") !important;
-}
-.header-user {
-  color: #fff;
-}
-.form-control:disabled,
-.form-control[readonly],
-input[readonly] {
-  background-color: #000;
+  .landing {
+    background-image: radial-gradient(
+      ellipse at 112% 100%,
+      $body-gray 0,
+      $body-gray 45%,
+      #161616 45%,
+      #161616 75%,
+      $white 75%
+    );
+    color: $txt-black;
+  }
 }
