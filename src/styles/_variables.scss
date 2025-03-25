@@ -4,7 +4,7 @@
  * Colors
  * ========================================================================== */
 
-//CSS vars inst of SASS to enable override for dark mode
+//CSS vars inst of SASS to enable dark mode overrides
 :root {
   --white: #fff;
   --txt-black: #161616;
@@ -15,7 +15,7 @@
   --error-red: #d2143a;
 }
 $bg-gray: #ebebeb;
-$bright-orange: #ff4500; //eduID, higlights
+$bright-orange: #ff4500; //eduID, highlights
 $txt-orange: #c23400; //text on gray or orange
 $btn-orange: #db3a00; //white on orange
 $success-green: #177d4d;
