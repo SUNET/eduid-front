@@ -15,7 +15,7 @@ input {
   font-family: $inter-regular;
   font-size: 1.5rem;
   font-weight: 500;
-  color: $txt-black;
+  color: var(--txt-black);
   box-shadow: none;
   border-radius: 0;
   border: none;

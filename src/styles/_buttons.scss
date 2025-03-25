@@ -27,7 +27,7 @@ button.btn {
     cursor: not-allowed !important;
     pointer-events: all !important;
     border-color: inherit;
-    color: $white;
+    color: var(--white);
 
     &.primary {
       background-color: $btn-orange;
@@ -40,7 +40,7 @@ button.primary:not(:disabled):not(.disabled):active,
 button.primary:not(:disabled):not(.disabled):focus,
 button.primary:not(:disabled):not(.disabled):active:focus,
 button.primary:not(:disabled):not(.disabled):hover {
-  color: $white;
+  color: var(--white);
   border: solid 2px $bright-orange;
   background-color: $btn-orange;
   box-shadow: none;
@@ -68,7 +68,7 @@ button.secondary:not(:disabled):not(.disabled):active:focus,
 button.secondary:not(:disabled):not(.disabled):hover {
   color: $txt-orange;
   border: solid 2px $bright-orange;
-  background-color: $white;
+  background-color: var(--white);
   box-shadow: none;
   min-width: 100px;
 
@@ -117,7 +117,7 @@ button.close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $txt-gray;
+    color: var(--txt-gray);
     background-color: transparent;
     box-shadow: none;
   }
@@ -135,7 +135,7 @@ button.close {
   left: 50%;
   width: 20px;
   height: 2px;
-  background-color: $txt-gray;
+  background-color: var(--txt-gray);
   transform-origin: center;
 }
 
@@ -185,7 +185,7 @@ button.link {
   }
   &.disabled,
   :disabled {
-    color: $txt-gray;
+    color: var(--txt-gray);
     opacity: 1;
     box-shadow: none;
     text-decoration: none;
@@ -284,7 +284,7 @@ button.icon {
         transform: none;
       }
       path {
-        fill: $txt-gray;
+        fill: var(--txt-gray);
       }
     }
   }
@@ -334,7 +334,7 @@ button.icon-only {
 button.header-user {
   &:hover,
   &:focus-within {
-    background-color: $body-gray !important;
+    background-color: var(--body-gray) !important;
   }
 }
 

@@ -5,13 +5,13 @@ label,
   font-family: $inter-bold;
   letter-spacing: 0.5px;
   line-height: 1;
-  color: $txt-black;
+  color: var(--txt-black);
   margin: 0 5px 5px 0;
 }
 
 .border-toggle-area {
   flex-basis: 100%;
-  border-color: $border-gray;
+  border-color: var(--border-gray);
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;

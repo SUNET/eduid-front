@@ -35,11 +35,11 @@
   }
 
   &.no-data {
-    color: $txt-gray;
+    color: var(--txt-gray);
   }
 
   &.verified {
-    color: $txt-black;
+    color: var(--txt-black);
   }
 
   @media (max-width: $bp-md) {
@@ -74,7 +74,7 @@
 // --- BREADCRUMB STYLES--- //
 .breadcrumb {
   align-items: center;
-  color: $txt-gray;
+  color: var(--txt-gray);
   font-family: $akkurat;
   font-size: $txt-sm;
 
@@ -107,7 +107,7 @@
   grid-gap: 10px;
   align-items: center;
   padding: 1rem;
-  background-color: $white;
+  background-color: var(--white);
   margin-top: 0.5rem;
   border: 1px $success-green solid !important;
 
@@ -115,7 +115,7 @@
     font-size: 1.3rem;
     line-height: 1.4;
     margin-bottom: 0.3rem;
-    color: $txt-black;
+    color: var(--txt-black);
   }
   p {
     margin-bottom: 0;
@@ -157,15 +157,15 @@
     height: 1.5rem;
 
     &.disabled {
-      color: $border-gray;
+      color: var(--border-gray);
     }
   }
 
   div {
     width: 1.5rem;
     height: 1.5rem;
-    border: 2px solid $border-gray;
+    border: 2px solid var(--border-gray);
     border-radius: 50%;
-    background-color: $white;
+    background-color: var(--white);
   }
 }

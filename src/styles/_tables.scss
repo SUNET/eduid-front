@@ -1,12 +1,11 @@
-/* styles for tables displaying user info on settings page */
-@import "variables";
+/** Table styles **/
 
 table {
   width: 100%;
   font-size: 1.125rem;
   font-family: $inter-light;
   table-layout: fixed;
-  background-color: $white;
+  background-color: var(--white);
 
   @media (max-width: $bp-md) {
     font-size: 1rem;
@@ -56,7 +55,7 @@ table {
       }
 
       &.primary {
-        color: $txt-black;
+        color: var(--txt-black);
       }
       &.verified,
       &.unverified,
@@ -74,7 +73,7 @@ table {
 
       &.border-row {
         font-size: 0.8rem;
-        border-bottom: 1px solid $border-gray;
+        border-bottom: 1px solid var(--border-gray);
       }
 
       &td:first-child {
@@ -171,7 +170,7 @@ caption {
   }
 
   th {
-    border-bottom: 2px dashed $border-gray;
+    border-bottom: 2px dashed var(--border-gray);
     padding: 1rem 0.5rem 0.75rem;
 
     &:first-child {

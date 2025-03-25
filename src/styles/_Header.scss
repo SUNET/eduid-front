@@ -1,7 +1,7 @@
 @import "./variables";
 
 header {
-  background-color: $white;
+  background-color: var(--white);
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -35,7 +35,7 @@ header {
           line-height: 1.2;
           a {
             font-size: $txt-sm;
-            color: $txt-gray;
+            color: var(--txt-gray);
           }
         }
       }
@@ -60,7 +60,7 @@ header {
 
     ul li {
       a {
-        color: $txt-black;
+        color: var(--txt-black);
 
         // styling for when menu item is clicked
         &.active {
@@ -107,7 +107,7 @@ header {
           margin-top: 3px;
           margin-bottom: 3px;
           &:has(a.active) {
-            background-color: $body-gray;
+            background-color: var(--body-gray);
             border-radius: 1.5rem;
           }
 
@@ -117,7 +117,7 @@ header {
             padding: 0 0.75rem;
 
             svg {
-              color: $txt-gray;
+              color: var(--txt-gray);
             }
             &:hover svg {
               color: $txt-orange;
@@ -134,7 +134,7 @@ header {
         z-index: 200;
         position: absolute;
         top: 70px;
-        background-color: $white;
+        background-color: var(--white);
         box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
         border-radius: 10px;
         padding: 0.75rem;
@@ -157,13 +157,13 @@ header {
         line-height: 1.2;
 
         &:nth-child(4) {
-          border-bottom: 1px solid $border-gray;
+          border-bottom: 1px solid var(--border-gray);
         }
       }
       .logout-button-wrapper {
         margin: 0.5rem 0.75rem;
         padding-top: 0.5rem;
-        border-top: 1px solid $border-gray;
+        border-top: 1px solid var(--border-gray);
       }
     }
   }

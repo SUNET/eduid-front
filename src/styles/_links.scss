@@ -1,4 +1,4 @@
-@import "variables";
+/* Textual non-button-styled links */
 
 a,
 .text-link {
@@ -24,7 +24,7 @@ a,
 a .disabled,
 a.disabled,
 .text-link.disabled {
-  color: $txt-gray;
+  color: var(--txt-gray);
   text-decoration: none;
   pointer-events: none;
 

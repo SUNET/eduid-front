@@ -1,9 +1,8 @@
-/* white plate to highlight content, use .figure if not semantically a "figure" */
-@import "variables";
+/* White plate to highlight content, use .figure if not semantically a "figure" */
 
 figure,
 .figure {
-  background: $white;
+  background: var(--white);
   text-align: center;
   margin: 1em 0;
   padding: 1em;
@@ -14,7 +13,7 @@ figure,
     font-size: $txt-sm;
     font-weight: bold;
     font-family: $akkurat;
-    color: $txt-black;
+    color: var(--txt-black);
   }
 
   &.identity-summary {
@@ -72,7 +71,7 @@ figure,
   margin: 1rem 0;
   border: 1px solid $bright-orange;
   border-radius: 10px;
-  background: $white;
+  background: var(--white);
   .help-text {
     padding-bottom: 0.75rem;
   }

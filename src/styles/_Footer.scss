@@ -4,7 +4,7 @@ footer {
   align-items: baseline;
   padding: 1rem;
   border-top: 6px solid $bright-orange;
-  background-color: $body-gray;
+  background-color: var(--body-gray);
   font-size: 0.9rem;
 
   .logo-wrapper {

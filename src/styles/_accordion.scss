@@ -6,17 +6,17 @@
   $a: &;
 
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
-  border: 2px solid $border-gray;
+  border: 2px solid var(--border-gray);
   border-radius: 6px;
   overflow: hidden;
 
   &__item {
     + #{$a}__item {
-      border-top: 2px solid $border-gray;
+      border-top: 2px solid var(--border-gray);
     }
 
     &.expanded > #{$a}__heading > #{$a}__button {
-      background: $bg-orange;
+      background: var(--bg-orange);
     }
 
     // Clickable
@@ -35,7 +35,7 @@
 
         &:hover {
           background: $btn-orange;
-          color: $white;
+          color: var(--white);
 
           #{$a}-title {
             text-decoration: underline;
@@ -91,7 +91,7 @@
 
     // Content
     #{$a}__panel {
-      background-color: $white;
+      background-color: var(--white);
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
 
@@ -106,7 +106,7 @@
       }
 
       input[type="text"] {
-        background-color: $body-gray;
+        background-color: var(--body-gray);
       }
     }
 
@@ -114,15 +114,15 @@
     &.disabled,
     &.disabled:hover,
     &.expanded.disabled {
-      color: $txt-gray;
+      color: var(--txt-gray);
 
       #{$a}__button,
       #{$a}__button:hover {
-        color: $txt-gray !important;
+        color: var(--txt-gray) !important;
         background-color: $bg-gray !important;
       }
       #{$a}__panel {
-        color: $txt-gray;
+        color: var(--txt-gray);
       }
 
       #{$a}-icon img {
@@ -147,7 +147,7 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $border-gray;
+      border: 2px solid var(--border-gray);
       border-radius: 6px;
       overflow: hidden;
 
@@ -159,19 +159,19 @@
         border-color: $bright-orange;
 
         &.expanded {
-          border-color: $border-gray;
+          border-color: var(--border-gray);
         }
       }
 
       &.expanded > #{$a}__heading > #{$a}__button {
-        background: $bg-orange;
+        background: var(--bg-orange);
       }
 
       // Clickable
       #{$a}__heading {
         #{$a}__button {
           &:hover {
-            color: $white;
+            color: var(--white);
             background: $btn-orange;
           }
 
@@ -196,14 +196,14 @@
       &.disabled,
       &.disabled:hover,
       &.expanded.disabled {
-        border-color: $border-gray;
+        border-color: var(--border-gray);
       }
 
       &.disabled,
       &.disabled:hover {
         #{$a}__button,
         #{$a}__button:hover {
-          background-color: $white !important;
+          background-color: var(--white) !important;
         }
       }
 

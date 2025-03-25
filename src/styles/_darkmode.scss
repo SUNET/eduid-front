@@ -1,13 +1,15 @@
-/* Dark mode overrides */
+/* System/browser set dark mode overrides */
 
 @media (prefers-color-scheme: dark) {
-  $white: #000;
-  $txt-black: #f4f4f4;
-  $body-gray: #2e2e2e;
-  $txt-gray: #bdbdbd;
-  $border-gray: #5e5e5e;
-  $bg-orange: #36251e;
-  $error-red: #ff5965;
+  :root {
+    --white: #000;
+    --txt-black: #f4f4f4;
+    --body-gray: #2e2e2e;
+    --txt-gray: #bdbdbd;
+    --border-gray: #5e5e5e;
+    --bg-orange: #36251e;
+    --error-red: #ff5965;
+  }
 
   a,
   .text-link,
@@ -64,12 +66,12 @@
   .landing {
     background-image: radial-gradient(
       ellipse at 112% 100%,
-      $body-gray 0,
-      $body-gray 45%,
+      var(--body-gray) 0,
+      var(--body-gray) 45%,
       #161616 45%,
       #161616 75%,
-      $white 75%
+      var(--white) 75%
     );
-    color: $txt-black;
+    color: var(--txt-black);
   }
 }

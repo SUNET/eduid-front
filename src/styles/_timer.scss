@@ -1,8 +1,7 @@
-/* simple digital timer */
-@import "variables.scss";
+/** Digital timer **/
 
 .expires-meter {
-  color: $txt-black;
+  color: var(--txt-black);
   font-size: 1.25rem;
   text-align: center;
 

@@ -1,3 +1,5 @@
+/** Signup flow specific styles **/
+
 // #currentPassword-wrapper {
 //   margin-top: 2rem !important;
 // }
@@ -62,7 +64,7 @@ h3 {
   .response-code-inputs {
     input {
       display: inline-block;
-      border: 2px solid $txt-gray;
+      border: 2px solid var(--txt-gray);
       font-size: 1.75rem;
       margin: 5px;
       height: 4rem;

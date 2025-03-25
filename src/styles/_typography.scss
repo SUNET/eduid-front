@@ -1,6 +1,4 @@
-/* typography */
-
-@import "variables";
+/** Site wide typography **/
 
 h1,
 h2,
@@ -67,7 +65,7 @@ h5,
 .lead {
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid $border-gray;
+  border-bottom: 2px solid var(--border-gray);
 
   p {
     font-size: 1.375rem;
@@ -98,7 +96,7 @@ p {
 }
 
 p.verified {
-  color: $txt-black;
+  color: var(--txt-black);
 }
 
 // these styles are the same as input values and placeholder
@@ -108,7 +106,7 @@ p.data {
 }
 
 p.no-data.data {
-  color: $txt-gray;
+  color: var(--txt-gray);
 }
 
 .text-large {
@@ -139,9 +137,9 @@ em {
 
 code {
   font-family: monospace;
-  color: $txt-gray;
+  color: var(--txt-gray);
 }
 .error-txt {
-  color: $error-red;
+  color: var(--error-red);
   font-size: $txt-sm !important;
 }

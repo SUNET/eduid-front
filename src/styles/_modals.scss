@@ -14,12 +14,12 @@
   &-dialog {
     @extend .horizontal-content-margin;
     max-width: calc(870px - 4rem);
-    background-color: $white;
+    background-color: var(--white);
     border-radius: 20px;
     margin: auto;
 
     .modal-content {
-      background-color: $white;
+      background-color: var(--white);
       border-radius: 20px;
 
       .modal-header {
@@ -49,7 +49,7 @@
           margin-bottom: 1rem;
         }
         input {
-          background-color: $body-gray;
+          background-color: var(--body-gray);
         }
 
         form {

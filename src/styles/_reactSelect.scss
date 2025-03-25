@@ -1,25 +1,26 @@
-/** react-select style overrides, final-form element prefixed by "react-select" **/
+/** React-select style overrides, final-form element prefixed by "react-select" **/
+
 form .react-select,
 .basic-multi-select .select,
 .select--is-disabled .select {
   &__control {
-    border: 2px solid $border-gray;
+    border: 2px solid var(--border-gray);
 
     .react-select__indicator {
-      color: $txt-gray;
+      color: var(--txt-gray);
     }
 
     &--is-disabled {
       background-color: $bg-gray;
       font-size: 1.25rem;
       * {
-        color: $txt-gray;
+        color: var(--txt-gray);
       }
     }
   }
 
   &__control:hover {
-    border: 2px solid $txt-gray;
+    border: 2px solid var(--txt-gray);
     box-shadow: none;
   }
 
@@ -35,18 +36,18 @@ form .react-select,
 
   &__placeholder {
     font-family: $inter-regular;
-    color: $txt-black;
+    color: var(--txt-black);
   }
 
   &__option--is-focused {
-    background-color: $bg-orange;
+    background-color: var(--bg-orange);
     outline: 1px dashed #000 !important;
     outline-offset: -1px;
   }
 
   &__option--is-selected {
     color: initial;
-    background-color: darken($bg-orange, 5%);
+    background-color: darken var(--bg-orange), 5%;
   }
 }
 
@@ -87,12 +88,12 @@ form .react-select,
   }
   div.default-surname {
     display: inline-block;
-    border: 2px solid $border-gray;
+    border: 2px solid var(--border-gray);
     border-radius: 4px;
     padding: 6px 12px;
     cursor: not-allowed;
     background-color: $bg-gray;
-    color: $txt-gray;
+    color: var(--txt-gray);
     font-size: 1.25rem;
   }
 }
@@ -118,7 +119,7 @@ form .react-select,
     display: flex;
     height: 3rem;
     align-items: center;
-    background-color: $white;
+    background-color: var(--white);
     border-radius: 1.5rem;
     cursor: pointer;
     border: solid 2px $bright-orange;
@@ -132,7 +133,7 @@ form .react-select,
       opacity: 0.4;
 
       .react-select__placeholder {
-        color: $white;
+        color: var(--white);
       }
       svg.css-tj5bde-Svg {
         display: none;

@@ -18,7 +18,7 @@ svg {
     &.close {
       fill: #808080;
       &:hover {
-        fill: $txt-gray;
+        fill: var(--txt-gray);
       }
     }
   }
@@ -34,7 +34,7 @@ svg {
   border-radius: 50%;
 
   &.bankid-icon {
-    background: $white;
+    background: var(--white);
     width: 20px;
   }
 }
