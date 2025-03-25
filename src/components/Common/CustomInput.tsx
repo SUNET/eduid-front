@@ -13,11 +13,22 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 }
 
 const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
+  }
+
   return (
     <input
       {...props.input}
       id={props.input.name}
       type={props.input.type as InputType}
+      className={`${className} form-control`}
       placeholder={props.placeholder}
       aria-required={props.input.required}
       autoFocus={props.autoFocus}

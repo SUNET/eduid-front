@@ -12,14 +12,17 @@ interface TextInputProps extends FieldRenderProps<string> {
 export default function TextInput(props: TextInputProps) {
   const intl = useIntl();
   const { label, helpBlock } = props;
-  let valid = false,
-    invalid = false;
+  let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
-    invalid = Boolean(props.meta.error);
-    valid = !invalid;
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
   }
 
-  const errorMsg = (invalid && intl.formatMessage({ id: props.meta.error })) || "";
+  const errorMsg = (Boolean(props.meta.invalid) && intl.formatMessage({ id: props.meta.error })) || "";
   let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
@@ -29,7 +32,6 @@ export default function TextInput(props: TextInputProps) {
       </div>
     );
   }
-
   return (
     <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
       {label && (
@@ -39,6 +41,8 @@ export default function TextInput(props: TextInputProps) {
       )}
       <input
         id={props.input.name}
+        className={`${className}  form-control`}
+        // className={invalid || props.disabled ? "form-control" : "is-valid form-control"}
         type={props.type}
         {...props.input}
         disabled={props.disabled}

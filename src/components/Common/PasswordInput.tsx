@@ -50,6 +50,15 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
  */
 export function PasswordInputElement(props: any): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
+  }
 
   function toggleShowPassword(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
@@ -65,6 +74,7 @@ export function PasswordInputElement(props: any): JSX.Element {
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
         autoFocus={props.autoFocus}
+        className={`${className} form-control`}
       />
 
       <EduIDButton
