@@ -20,7 +20,7 @@ export default function DeleteAccount(): JSX.Element | null {
   return (
     <article id="delete-account">
       <h2>
-        <FormattedMessage defaultMessage="Delete/block eduID" description="DeleteAccount" />
+        <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
       </h2>
       <p>
         <FormattedMessage
