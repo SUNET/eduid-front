@@ -1841,7 +1841,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what are eduIDs terms of use - paragraph"
-                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
+                  defaultMessage={`These terms are accepted by the user upon creating an eduID account.`}
                 />
               </p>
               <CommonToU version="2016-v1" />

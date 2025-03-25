@@ -16,6 +16,12 @@ interface CommonToUProps {
 export function CommonToU(props: CommonToUProps): JSX.Element {
   return (
     <React.Fragment>
+      <p>
+        <FormattedMessage
+          defaultMessage={`You may be asked to accept the terms again if you haven't used the service for a period of time or any time the terms have changed.`}
+        />
+      </p>
+
       {ToUs["2016-v1"]}
 
       <p>
