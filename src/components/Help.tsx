@@ -194,7 +194,7 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about using eduid - info"
-                defaultMessage="Create, login and account settings"
+                defaultMessage="Create, login, account settings and delete/block account"
               />
             }
           >
@@ -866,13 +866,13 @@ export function Help(): JSX.Element {
                       <strong>
                         <FormattedMessage
                           description="account eduid - list item 6-heading"
-                          defaultMessage={`Delete eduID: `}
+                          defaultMessage={`Delete/block eduID: `}
                         />
                       </strong>
                       &nbsp;
                       <FormattedMessage
                         description="account eduid - list item 6"
-                        defaultMessage={`Clicking on the link "Delete eduID" will open a modal confirming deletion of your account permanently.`}
+                        defaultMessage={`Clicking on the link "delete eduID" will open a modal confirming deletion of your account.`}
                       />
                     </li>
                   </ul>
@@ -884,6 +884,18 @@ export function Help(): JSX.Element {
                   </p>
                 </AccordionItemTemplate>
               </Accordion>
+              <h4>
+                <FormattedMessage
+                  description="delete eduid - heading"
+                  defaultMessage="How do I delete/block my account?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="delete eduid - paragraph"
+                  defaultMessage={`If you wish to block access to your account you have the option to remove it under Delete/block eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
 
