@@ -7,12 +7,16 @@ export function createSignupMachine() {
         | { type: 'ABORT' }
         | { type: 'API_FAIL' }
         | { type: 'API_SUCCESS' }
-        | { type: 'BYPASS' }
         | { type: 'CHOOSE_FIDO' }
         | { type: 'CHOOSE_PASSWORD' }
         | { type: 'COMPLETE' }
         | { type: 'SUCCESS' } 
         | { type: 'FAIL' }
+        | { type: 'EMAIL_DONE' }
+        | { type: 'CAPTCHA_DONE' }
+        | { type: 'TOU_DONE' }
+        | { type: 'CAPTCHA_AND_TOU_DONE' }
+        | { type: 'CREDENTIALS_DONE' }
     }
   }).createMachine({
     predictableActionArguments: true,
@@ -25,7 +29,7 @@ export function createSignupMachine() {
           COMPLETE: {
             target: "AskForEmailAddress",
           },
-          BYPASS: {
+          EMAIL_DONE: {
             target: "#signup.HandleCaptchaAndToU",
           },
         },
@@ -44,6 +48,9 @@ export function createSignupMachine() {
               API_FAIL: {
                 target: "SignupEmailForm",
               },
+              CAPTCHA_AND_TOU_DONE: {
+                target: "#signup.HandleCaptchaAndToU.RegisterEmail",
+              }
             },
           },
         },
@@ -59,7 +66,7 @@ export function createSignupMachine() {
               ABORT: {
                 target: "Fail",
               },
-              BYPASS: {
+              CAPTCHA_DONE: {
                 target: "SignupToU",
               },
             },
@@ -82,7 +89,7 @@ export function createSignupMachine() {
               ABORT: {
                 target: "Fail",
               },
-              BYPASS: {
+              TOU_DONE: {
                 target: "Finished",
               },
             },
@@ -129,7 +136,7 @@ export function createSignupMachine() {
               COMPLETE: {
                 target: "ProcessEmailCode",
               },
-              BYPASS: {
+              CREDENTIALS_DONE: {
                 target: "EmailFinished",
               },
               ABORT: {
