@@ -19,7 +19,7 @@ test("renders DeleteAccount as expected", async () => {
   render(<IndexMain />);
 
   await linkToAccountSettings();
-  expect(screen.getAllByRole("heading")[7]).toHaveTextContent(/^Delete eduID/);
+  expect(screen.getAllByRole("heading")[7]).toHaveTextContent(/^Block and delete eduID/);
 });
 
 test("can delete eduid account", async () => {
@@ -68,7 +68,7 @@ test("render, enable navigation back to security settings", async () => {
   render(<IndexMain />);
 
   await linkToAccountSettings();
-  const backToSecuritySettings = screen.getByLabelText(/Back to Security settings/i);
+  const backToSecuritySettings = screen.getByLabelText(/To Security settings/i);
   expect(backToSecuritySettings).toBeInTheDocument();
   fireEvent.click(backToSecuritySettings);
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);

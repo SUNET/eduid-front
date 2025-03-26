@@ -107,8 +107,7 @@ test("renders the wizard link that can go back to the start and continue to the 
   render(<IndexMain />);
   await linkToIdentitySettings();
 
-  expect(screen.getByLabelText(/Back to overview on Start/i)).toBeInTheDocument();
-  const continueSecuritySettings = screen.getByLabelText(/Continue to Security Settings/i);
+  const continueSecuritySettings = screen.getByLabelText(/To Security settings/i);
   expect(continueSecuritySettings).toBeInTheDocument();
   act(() => {
     continueSecuritySettings.click();
