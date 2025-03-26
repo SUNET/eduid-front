@@ -361,6 +361,9 @@
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
   },
+  "65yiON": {
+    "string": "Du kan bli ombedd att acceptera villkoren på nytt om du inte har använt tjänsten sedan en tid, eller närsomhelst om villkoren har ändrats."
+  },
   "67YP0e": {
     "developer_comment": "account eduid - list item 6",
     "string": "Länken \"radera eduID\" öppnar en modal för att bekräfta att ditt konto ska tas bort."
@@ -1628,10 +1631,6 @@
     "developer_comment": "copied button label",
     "string": "KOPIERAD"
   },
-  "YlGf7e": {
-    "developer_comment": "what are eduIDs terms of use - paragraph",
-    "string": "Villkoren accepteras av användaren när eduID-kontot skapas."
-  },
   "YssJWJ": {
     "developer_comment": "login eduid - security key list item 3",
     "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid tvåfaktorsautentisering (2FA) vid inloggning till eduID\" under Säkerhet."
@@ -2691,6 +2690,10 @@
     "developer_comment": "Registration finished",
     "string": "Här är dina inloggningsuppgifter för eduID. Kom ihåg eller spara lösenordet på ett säkert sätt! Obs: mellanrummen i lösenordet är för att göra det mer läsbart och tas automatiskt bort vid inmatning. Du kan efter att du har loggat in välja att byta lösenord."
   },
+  "oXOfnD": {
+    "developer_comment": "what are eduIDs terms of use - paragraph",
+    "string": "Villkoren accepteras av användaren när eduID-kontot skapas. Det är en juridisk överenskommelse mellan eduID och dess användare att följa användarvillkoren. "
+  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
@@ -2999,9 +3002,6 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "Med svenskt digitalt ID (Freja+/BankID) eller via post."
-  },
-  "s09qT5": {
-    "string": "Du kan bli ombedd att acceptera villkoren på nytt om du inte har använt tjänsten sedan en tid, eller närsomhelst om villkoren har ändrats."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
