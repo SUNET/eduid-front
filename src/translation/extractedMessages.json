@@ -67,6 +67,10 @@
     "developer_comment": "unverified",
     "string": "unverified"
   },
+  "/ueJt0": {
+    "developer_comment": "DeleteAccount",
+    "string": "Block and delete eduID"
+  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "What is SUNET?"
@@ -357,6 +361,10 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
+  "67YP0e": {
+    "developer_comment": "account eduid - list item 6",
+    "string": "Clicking on the link \"delete eduID\" will open a modal confirming removal of your account."
+  },
   "67pXNw": {
     "developer_comment": "security creation date",
     "string": "Created:"
@@ -576,10 +584,6 @@
   "B9GqT0": {
     "developer_comment": "create eduid - list item 5",
     "string": "Choose using the radio buttons between a suggested (automatically generated) password or one you create."
-  },
-  "BR5TIv": {
-    "developer_comment": "account eduid - list item 6",
-    "string": "Clicking on the link \"Delete eduID\" will open a modal confirming deletion of your account permanently."
   },
   "BhlUhw": {
     "developer_comment": "Signup",
@@ -916,6 +920,10 @@
     "developer_comment": "Temp info - message4",
     "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
   },
+  "JYinGg": {
+    "developer_comment": "about using eduid - info",
+    "string": "Create, login, account settings and blocking/deleting account"
+  },
   "JgFblM": {
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
@@ -1231,6 +1239,10 @@
     "developer_comment": "international if personal number - paragraph",
     "string": "Note: holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead."
   },
+  "QoHgz5": {
+    "developer_comment": "DeleteAccount",
+    "string": "Click the link to delete your eduID. It will block any access to the account unless you change your password within one week, after which it will be removed permanently."
+  },
   "Qqe6f9": {
     "developer_comment": "delete.confirm_button",
     "string": "Delete my eduID"
@@ -1464,6 +1476,10 @@
     "developer_comment": "security key status",
     "string": "Verify with:"
   },
+  "WF93+B": {
+    "developer_comment": "delete eduid - heading",
+    "string": "How do I block and delete my account?"
+  },
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
     "string": "Enhanced security"
@@ -1611,6 +1627,10 @@
   "YhOtY3": {
     "developer_comment": "copied button label",
     "string": "COPIED"
+  },
+  "YlGf7e": {
+    "developer_comment": "what are eduIDs terms of use - paragraph",
+    "string": "These terms are accepted by the user upon creating an eduID account."
   },
   "YssJWJ": {
     "developer_comment": "login eduid - security key list item 3",
@@ -2238,6 +2258,10 @@
     "developer_comment": "Reset password captcha",
     "string": "Reset Password: Confirm that you are a human."
   },
+  "iu/C4Z": {
+    "developer_comment": "account eduid - list item 6-heading",
+    "string": "Blocking and deleting eduID:"
+  },
   "iyw+WR": {
     "developer_comment": "usb key technical section - list item 3 code",
     "string": "\"faceprint_internal\", \"passcode_external\", \"passcode_internal\", \"handprint_internal\", \"pattern_internal\", \"voiceprint_internal\", \"fingerprint_internal\", \"eyeprint_internal\""
@@ -2245,10 +2269,6 @@
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
-  },
-  "j7couZ": {
-    "developer_comment": "what are eduIDs terms of use - paragraph",
-    "string": "These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time."
   },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
@@ -2579,10 +2599,6 @@
     "developer_comment": "BankID vetting button",
     "string": "with a BankID"
   },
-  "nNjd4z": {
-    "developer_comment": "about using eduid - info",
-    "string": "Create, login and account settings"
-  },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
     "string": "Certified FIDO 2.0, you can read more at {Fido}."
@@ -2778,10 +2794,6 @@
   "piqcwF": {
     "developer_comment": "Signup",
     "string": "Register: Enter the email address"
-  },
-  "pkC7dv": {
-    "developer_comment": "DeleteAccount",
-    "string": "Click the link to permanently delete your eduID."
   },
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
@@ -2987,6 +2999,9 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
+  },
+  "s09qT5": {
+    "string": "You may be asked to accept the terms again if you haven't used the service for a period of time or any time the terms have changed."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
@@ -3252,6 +3267,10 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
   },
+  "v9a0TP": {
+    "developer_comment": "delete eduid - paragraph",
+    "string": "If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week."
+  },
   "vG+ARA": {
     "developer_comment": "verify webauthn token modal title",
     "string": "Verify your added security key"
@@ -3290,10 +3309,6 @@
   "w1VC26": {
     "developer_comment": "about eduid - handle",
     "string": "About eduID"
-  },
-  "wDDWqO": {
-    "developer_comment": "account eduid - list item 6-heading",
-    "string": "Delete eduID:"
   },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
