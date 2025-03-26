@@ -70,7 +70,7 @@ function happyCaseBackend(state: SignupState) {
     rest.get("https://signup.eduid.docker/services/signup/state", (req, res, ctx) => {
       const payload: SignupStatusResponse = { state: currentState };
       console.debug("[payload]", payload);
-      return res(ctx.json({ type: "test response", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test response", payload }));
     })
   );
 
@@ -78,7 +78,7 @@ function happyCaseBackend(state: SignupState) {
     rest.post("https://signup.eduid.docker/services/signup/get-captcha", (req, res, ctx) => {
       getCaptchaCalled = true;
       const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     }),
     rest.post("https://signup.eduid.docker/services/signup/captcha", async (req, res, ctx) => {
       const body = (await req.json()) as CaptchaRequest;
@@ -89,7 +89,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.captcha.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
@@ -104,7 +104,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.tou.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     }),
     rest.post("https://signup.eduid.docker/services/signup/register-email", async (req, res, ctx) => {
       const body = (await req.json()) as RegisterEmailRequest;
@@ -118,7 +118,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.email.expires_time_total = 60;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
@@ -132,7 +132,7 @@ function happyCaseBackend(state: SignupState) {
         const payload: SignupStatusResponse = { state: currentState };
         return res(
           ctx.json({
-            type: "test_FAIL",
+            type: "_SIGNUP_ test_FAIL",
             error: true,
             payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
           })
@@ -143,7 +143,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.email.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
@@ -153,7 +153,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.credentials.generated_password = testPassword;
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
@@ -169,7 +169,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.user_created = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "test success", payload }));
+      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
     })
   );
   mswServer.printHandlers();
