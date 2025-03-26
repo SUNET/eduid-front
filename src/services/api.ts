@@ -43,6 +43,10 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     }    
     return result;
 }
+export interface ApiResponse<T> {
+    payload: T;
+    type: string;
+}
 
 export const eduIDApi = createApi({
     baseQuery: customBaseQuery,
