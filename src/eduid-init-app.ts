@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import { eduIDApi } from "services/api";
+import { csrfTokenMiddleware } from "services/CsrfTokenMiddleware";
+import { signupStateMiddleware } from "services/signupStateMiddleware";
 import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
 
-/* setup to run the combined sagas */
-const middlewares = [notifyAndDispatch, logger];
+/* setup middlewares */
+const middlewares = [notifyAndDispatch, logger, eduIDApi.middleware, csrfTokenMiddleware, signupStateMiddleware];
 
 export const eduidStore = configureStore({
   reducer: eduIDApp,
