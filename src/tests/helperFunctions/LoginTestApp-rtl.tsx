@@ -17,10 +17,11 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
+import { Optional } from "./Optional";
 
 export const RESET_PASSWORD_SERVICE_URL = "/reset-password-url/";
 
-export const loginTestState: EduIDAppRootState = {
+export const loginTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
   config: {
     ...configInitialState,
     next_url: "https://localhost/next",
