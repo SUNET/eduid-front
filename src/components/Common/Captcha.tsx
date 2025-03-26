@@ -1,9 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GetCaptchaResponse } from "apis/eduidSignup";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { GetCaptchaResponse } from "services/signup";
 
 import { skipToken } from "@reduxjs/toolkit/query";
 import CustomInput from "components/Common/CustomInput";

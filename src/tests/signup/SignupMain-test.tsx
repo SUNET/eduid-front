@@ -1,3 +1,6 @@
+import { emailPlaceHolder } from "components/Common/EmailInput";
+import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { codeFormTestId } from "components/Login/ResponseCodeForm";
 import {
   AcceptToURequest,
   CaptchaRequest,
@@ -6,11 +9,8 @@ import {
   RegisterEmailRequest,
   SignupState,
   SignupStatusResponse,
-  VerifyEmailRequest,
-} from "apis/eduidSignup";
-import { emailPlaceHolder } from "components/Common/EmailInput";
-import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
-import { codeFormTestId } from "components/Login/ResponseCodeForm";
+  VerifyEmailRequest
+} from "services/signup";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

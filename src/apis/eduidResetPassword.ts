@@ -5,8 +5,8 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
+import { GetCaptchaResponse } from "services/signup";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetCaptchaResponse } from "./eduidSignup";
 
 /*********************************************************************************************************************/
 

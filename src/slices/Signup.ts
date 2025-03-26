@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CaptchaRequest, SignupState as SignupBackendState } from "apis/eduidSignup";
+import { CaptchaRequest, SignupState as SignupBackendState } from "services/signup";
 
 interface SignupState {
   state?: SignupBackendState;

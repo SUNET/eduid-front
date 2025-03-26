@@ -1,8 +1,8 @@
-import { GetCaptchaResponse } from "apis/eduidSignup";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { GetCaptchaResponse } from "services/signup";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
