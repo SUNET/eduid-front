@@ -361,6 +361,9 @@
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
   },
+  "65yiON": {
+    "string": "You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed."
+  },
   "67YP0e": {
     "developer_comment": "account eduid - list item 6",
     "string": "Clicking on the link \"delete eduID\" will open a modal confirming removal of your account."
@@ -1628,10 +1631,6 @@
     "developer_comment": "copied button label",
     "string": "COPIED"
   },
-  "YlGf7e": {
-    "developer_comment": "what are eduIDs terms of use - paragraph",
-    "string": "These terms are accepted by the user upon creating an eduID account."
-  },
   "YssJWJ": {
     "developer_comment": "login eduid - security key list item 3",
     "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a second factor (2FA) to log in to eduID\" toggle control under Security to off."
@@ -2691,6 +2690,10 @@
     "developer_comment": "Registration finished",
     "string": "These are your login details for eduID. Remember or save the password securely! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
+  "oXOfnD": {
+    "developer_comment": "what are eduIDs terms of use - paragraph",
+    "string": "These terms are accepted by the user upon creating an eduID account. It is a legal agreement between eduID and its users to abide by the terms."
+  },
   "oZtIIz": {
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
@@ -2999,9 +3002,6 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
-  },
-  "s09qT5": {
-    "string": "You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
