@@ -5,10 +5,12 @@ import { GetCaptchaResponse } from "apis/eduidSignup";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
+import { skipToken } from "@reduxjs/toolkit/query";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { signupApi } from "services/signup";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
   disabled?: boolean; // disable the submit button if true
@@ -85,41 +87,23 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
 interface CaptchaProps {
   readonly handleCaptchaCancel: () => void;
   readonly handleCaptchaCompleted: (response: string) => void;
-  readonly getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
 }
 
 export function InternalCaptcha(props: CaptchaProps) {
   const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
   const is_configured = useAppSelector((state) => state.config.is_configured);
+  const { data, refetch } = signupApi.useGetCaptchaQuery(is_configured?undefined:skipToken);
 
-  function getNewCaptcha() {
-    props.getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
+
+  useEffect(()=>{
+    if (data) {
       setCaptchaResponse({
-        captcha_img: captcha?.captcha_img,
-        captcha_audio: captcha?.captcha_audio,
-      });
-    });
-  }
-
-  useEffect(() => {
-    let aborted = false; // flag to avoid updating unmounted components after this promise resolves
-    if (is_configured && !captchaResponse) {
-      props.getCaptcha().then((captchaResponse: any) => {
-        if (!aborted && captchaResponse) {
-          setCaptchaResponse({
-            captcha_img: captchaResponse.captcha_img,
-            captcha_audio: captchaResponse.captcha_audio,
-          });
-        }
-      });
+        captcha_img: data.payload.captcha_img,
+        captcha_audio: data.payload.captcha_audio
+      })
     }
-
-    // create a cleanup function that will allow the async code above to realise it shouldn't
-    // try to update state on an unmounted react component
-    return () => {
-      aborted = true;
-    };
-  }, [is_configured]);
+      
+  },[data])
 
   return (
     <React.Fragment>
@@ -133,7 +117,7 @@ export function InternalCaptcha(props: CaptchaProps) {
           className="icon-only"
           aria-label="name-check"
           disabled={!captchaResponse?.captcha_img}
-          onClick={getNewCaptcha}
+          onClick={refetch}
         >
           <FontAwesomeIcon icon={faRedo as IconProp} />
         </button>

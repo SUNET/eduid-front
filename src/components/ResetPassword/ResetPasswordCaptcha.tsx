@@ -72,7 +72,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
         </p>
       </div>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
+      <InternalCaptcha {...args} />
     </Fragment>
   );
 }
