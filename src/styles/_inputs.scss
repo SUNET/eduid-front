@@ -9,6 +9,17 @@ input {
 /* Form controls and interactive states */
 .form-control {
   display: flex;
+  background-color: white;
+  font-family: $inter-regular;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $txt-black;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  height: 3rem;
 }
 
 .form-control:disabled,

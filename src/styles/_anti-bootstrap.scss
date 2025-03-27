@@ -8,22 +8,6 @@
   }
 }
 
-// // all inputs have a .form-control class which is hijacked by bootstrap
-.form-control,
-input {
-  background-color: white;
-  font-family: $inter-regular;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: $txt-black;
-  box-shadow: none;
-  border-radius: 0;
-  border: none;
-  width: 100%;
-  padding: 1.25rem 0.5rem;
-  height: 3rem;
-}
-
 // text under inputs
 .small,
 small {
