@@ -43,6 +43,11 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
 
 function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
+  let buttonDisabled = false;
+
+  if (props.webauthn !== undefined && !props.webauthn) {
+    buttonDisabled = true;
+  }
 
   useEffect(() => {
     if (ref.current) ref?.current?.focus();
@@ -68,7 +73,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
           if (props.setActive) props.setActive(true);
         }}
         id="mfa-security-key"
-        disabled={!props.webauthn}
+        disabled={buttonDisabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </button>
