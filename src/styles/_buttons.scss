@@ -27,7 +27,7 @@ button.btn {
     cursor: not-allowed !important;
     pointer-events: all !important;
     border-color: inherit;
-    color: var(--white);
+    color: var(--contrast-color);
 
     &.primary {
       background-color: $btn-orange;
@@ -40,7 +40,7 @@ button.primary:not(:disabled):not(.disabled):active,
 button.primary:not(:disabled):not(.disabled):focus,
 button.primary:not(:disabled):not(.disabled):active:focus,
 button.primary:not(:disabled):not(.disabled):hover {
-  color: var(--white);
+  color: var(--contrast-color);
   border: solid 2px $bright-orange;
   background-color: $btn-orange;
   box-shadow: none;
@@ -68,7 +68,7 @@ button.secondary:not(:disabled):not(.disabled):active:focus,
 button.secondary:not(:disabled):not(.disabled):hover {
   color: $txt-orange;
   border: solid 2px $bright-orange;
-  background-color: var(--white);
+  background-color: var(--contrast-color);
   box-shadow: none;
   min-width: 100px;
 

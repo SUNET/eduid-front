@@ -2,8 +2,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --white: #000;
-    --txt-black: #f4f4f4;
+    --contrast-color: #000;
+    --body-txt: #f4f4f4;
     --body-gray: #2e2e2e;
     --txt-gray: #bdbdbd;
     --border-gray: #5e5e5e;
@@ -79,9 +79,9 @@
       var(--body-gray) 45%,
       #202020 45%,
       #202020 75%,
-      var(--white) 75%
+      var(--contrast-color) 75%
     );
-    color: var(--txt-black);
+    color: var(--body-txt);
 
     .icon-holder {
       color: #fff;

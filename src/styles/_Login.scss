@@ -71,7 +71,7 @@
 
     .option {
       border-radius: 20px;
-      background: var(--white);
+      background: var(--contrast-color);
       box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
       padding: 1rem;
       min-height: 210px;
@@ -98,7 +98,7 @@
         border: none;
 
         svg {
-          color: var(--txt-black);
+          color: var(--body-txt);
           height: 1rem;
           width: 1rem;
         }
@@ -132,7 +132,7 @@
 
       &:focus {
         box-shadow: none;
-        border: 2px solid var(--txt-black);
+        border: 2px solid var(--body-txt);
         position: relative;
       }
 

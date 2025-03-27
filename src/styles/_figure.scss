@@ -2,7 +2,7 @@
 
 figure,
 .figure {
-  background: var(--white);
+  background: var(--contrast-color);
   text-align: center;
   margin: 1em 0;
   padding: 1em;
@@ -13,7 +13,7 @@ figure,
     font-size: $txt-sm;
     font-weight: bold;
     font-family: $akkurat;
-    color: var(--txt-black);
+    color: var(--body-txt);
   }
 
   &.identity-summary {
@@ -71,7 +71,7 @@ figure,
   margin: 1rem 0;
   border: 1px solid $bright-orange;
   border-radius: 10px;
-  background: var(--white);
+  background: var(--contrast-color);
   .help-text {
     padding-bottom: 0.75rem;
   }

@@ -5,7 +5,7 @@ table {
   font-size: 1.125rem;
   font-family: $inter-light;
   table-layout: fixed;
-  background-color: var(--white);
+  background-color: var(--contrast-color);
 
   @media (max-width: $bp-md) {
     font-size: 1rem;
@@ -55,7 +55,7 @@ table {
       }
 
       &.primary {
-        color: var(--txt-black);
+        color: var(--body-txt);
       }
       &.verified,
       &.unverified,

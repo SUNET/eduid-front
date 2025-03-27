@@ -1,7 +1,7 @@
 @import "./variables";
 
 header {
-  background-color: var(--white);
+  background-color: var(--contrast-color);
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -60,7 +60,7 @@ header {
 
     ul li {
       a {
-        color: var(--txt-black);
+        color: var(--body-txt);
 
         // styling for when menu item is clicked
         &.active {
@@ -134,7 +134,7 @@ header {
         z-index: 200;
         position: absolute;
         top: 70px;
-        background-color: var(--white);
+        background-color: var(--contrast-color);
         box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
         border-radius: 10px;
         padding: 0.75rem;

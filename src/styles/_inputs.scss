@@ -24,7 +24,7 @@ input.form-control.is-valid:focus,
 input.form-control.is-invalid:focus {
   outline: $border-width solid var(--border-gray);
   background-image: none;
-  background-color: var(--white);
+  background-color: var(--contrast-color);
   transition: none;
   border: none;
   box-shadow: none;
@@ -40,15 +40,15 @@ input::placeholder {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    border-top: $border-width solid var(--white);
-    border-bottom: $border-width solid var(--txt-black) !important;
+    border-top: $border-width solid var(--contrast-color);
+    border-bottom: $border-width solid var(--body-txt) !important;
   }
 }
 
 //tab-focus
 :focus-visible,
 #mfa-security-key:focus {
-  outline: $border-width dashed var(--txt-black) !important;
+  outline: $border-width dashed var(--body-txt) !important;
   transition: none !important;
 
   //has parents with overflow hidden
@@ -72,7 +72,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--contrast-color) inset !important;
 }
 
 /* Radio buttons */
@@ -110,7 +110,7 @@ input[type="radio"] {
 
     .error {
       background: var(--error-red);
-      color: var(--white);
+      color: var(--contrast-color);
       border: none;
     }
   }
@@ -130,7 +130,7 @@ input[type="radio"] {
   span {
     font-size: 1.25rem;
     align-self: center;
-    color: var(--txt-black);
+    color: var(--body-txt);
     font-family: $inter-regular;
     font-weight: normal;
     margin: 0 2rem 0 0;
@@ -199,7 +199,7 @@ input[type="checkbox"] {
 
   &::before {
     display: block;
-    background: var(--white);
+    background: var(--contrast-color);
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -237,7 +237,7 @@ select {
   padding: 5px;
   border-radius: 3px;
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--contrast-color);
   height: 40px;
   margin-top: 3px;
 }
@@ -268,7 +268,7 @@ input.display-none {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  box-shadow: 0 0 0 50px var(--white) inset;
+  box-shadow: 0 0 0 50px var(--contrast-color) inset;
 }
 
 /* Responsive */

@@ -35,7 +35,7 @@
 
         &:hover {
           background: $btn-orange;
-          color: var(--white);
+          color: var(--contrast-color);
 
           #{$a}-title {
             text-decoration: underline;
@@ -91,7 +91,7 @@
 
     // Content
     #{$a}__panel {
-      background-color: var(--white);
+      background-color: var(--contrast-color);
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
 
@@ -171,7 +171,7 @@
       #{$a}__heading {
         #{$a}__button {
           &:hover {
-            color: var(--white);
+            color: var(--contrast-color);
             background: $btn-orange;
           }
 
@@ -203,7 +203,7 @@
       &.disabled:hover {
         #{$a}__button,
         #{$a}__button:hover {
-          background-color: var(--white) !important;
+          background-color: var(--contrast-color) !important;
         }
       }
 

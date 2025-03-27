@@ -75,8 +75,8 @@
   left: calc(50%);
   transform: translateX(-50%);
   padding: 6px;
-  color: var(--white);
-  background: var(--txt-black);
+  color: var(--contrast-color);
+  background: var(--body-txt);
   font-size: 0.875rem;
   font-family: $inter-regular;
   line-height: 1;
@@ -98,7 +98,7 @@
   pointer-events: none;
   border-width: 6px;
   top: 100%;
-  border-top-color: var(--txt-black);
+  border-top-color: var(--body-txt);
 }
 
 /* Absolute positioning */

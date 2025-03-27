@@ -14,12 +14,12 @@
   &-dialog {
     @extend .horizontal-content-margin;
     max-width: calc(870px - 4rem);
-    background-color: var(--white);
+    background-color: var(--contrast-color);
     border-radius: 20px;
     margin: auto;
 
     .modal-content {
-      background-color: var(--white);
+      background-color: var(--contrast-color);
       border-radius: 20px;
 
       .modal-header {

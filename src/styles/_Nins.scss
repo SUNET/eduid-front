@@ -41,8 +41,8 @@
       margin: 0.5rem 0;
 
       & a span {
-        color: var(--txt-black);
-        border-bottom: var(--txt-black) solid 1px;
+        color: var(--body-txt);
+        border-bottom: var(--body-txt) solid 1px;
       }
 
       & a span:hover {
@@ -66,9 +66,9 @@
     margin-bottom: 0.5rem;
     font-family: $inter-bold;
     line-height: 1;
-    color: var(--txt-black);
-    border: solid var(--txt-black) 2px;
-    background-color: var(--white);
+    color: var(--body-txt);
+    border: solid var(--body-txt) 2px;
+    background-color: var(--contrast-color);
     padding: 1rem 1.5rem;
     border-radius: 20px;
     width: 100%;
@@ -103,11 +103,11 @@
       color: var(--txt-gray);
 
       & .description {
-        color: var(--txt-black);
+        color: var(--body-txt);
       }
 
       & .explanation-link {
-        color: var(--txt-black);
+        color: var(--body-txt);
       }
     }
 
@@ -124,7 +124,7 @@
 // .proofing-btn-help {
 //   margin: 0 0.5rem 2rem;
 //   line-height: 1.2;
-//   color: var(--txt-black);
+//   color: var(--body-txt);
 //   font-size: 0.875rem;
 // }
 
