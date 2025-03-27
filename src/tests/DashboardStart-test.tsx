@@ -1,4 +1,5 @@
-import { IDENTITY_PATH, IndexMain } from "components/IndexMain";
+import { IDENTITY_PATH, IndexMain, SECURITY_PATH } from "components/IndexMain";
+import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -45,9 +46,15 @@ test("recommendations for new users, connect your identity", async () => {
     routes: ["/profile/"],
   });
 
+  expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
+  const identityPath = screen.getByRole("link", { name: /Identity/i });
+  expect(identityPath).toHaveAttribute("href", IDENTITY_PATH);
+
+  act(() => {
+    identityPath.click();
+  });
   await waitFor(() => {
-    expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Identity/i })).toHaveAttribute("href", IDENTITY_PATH);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Identity/);
   });
 });
 
@@ -84,8 +91,15 @@ test("recommendations for new users, add your security key", async () => {
     routes: ["/profile/"],
   });
 
+  expect(screen.getByText(/Add two-factor authentication at/i)).toBeInTheDocument();
+  const securityPath = screen.getAllByRole("link", { name: /Security/i })[0];
+  expect(securityPath).toHaveAttribute("href", SECURITY_PATH);
+
+  act(() => {
+    securityPath.click();
+  });
   await waitFor(() => {
-    expect(screen.getByText(/Add two-factor authentication at/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
   });
 });
 
@@ -121,7 +135,14 @@ test("recommendations for new user, verify security key", async () => {
     },
     routes: ["/profile/"],
   });
+  expect(screen.getByText(/Verify your Security key at/i)).toBeInTheDocument();
+  const securityPath = screen.getAllByRole("link", { name: /Security/i })[0];
+  expect(securityPath).toHaveAttribute("href", SECURITY_PATH);
+
+  act(() => {
+    securityPath.click();
+  });
   await waitFor(() => {
-    expect(screen.getByText(/Verify your Security key at/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
   });
 });

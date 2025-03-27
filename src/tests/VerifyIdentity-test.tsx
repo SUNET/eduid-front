@@ -1,7 +1,20 @@
+import { activeClassName } from "components/Common/HeaderNav";
 import VerifyIdentity from "components/Dashboard/Identity";
+import { IndexMain } from "components/IndexMain";
 import { act } from "react-dom/test-utils";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+
+async function linkToIdentitySettings() {
+  // Navigate to Identity
+  const nav = screen.getByRole("link", { name: "Identity" });
+  act(() => {
+    nav.click();
+  });
+  expect(nav).toHaveClass(activeClassName);
+
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+}
 
 test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);
@@ -83,7 +96,70 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   ).toBeInTheDocument();
 });
 
-test("renders the identity page title", () => {
-  render(<VerifyIdentity />);
+test("renders the identity page title", async () => {
+  render(<IndexMain />);
+  await linkToIdentitySettings();
+
   expect(document.title).toContain("Identity");
+});
+
+test("renders the wizard link that can go back to the start and continue to the security page", async () => {
+  render(<IndexMain />);
+  await linkToIdentitySettings();
+
+  const continueSecuritySettings = screen.getByLabelText(/To Security settings/i);
+  expect(continueSecuritySettings).toBeInTheDocument();
+  act(() => {
+    continueSecuritySettings.click();
+  });
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
+});
+
+test("renders the edit view, then be able to change names", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      personal_data: {
+        ...defaultDashboardTestState.personal_data,
+        response: {
+          eppn: "test-test",
+          given_name: "Test",
+          identities: {
+            is_verified: false,
+            nin: {
+              number: "197010632391",
+              verified: false,
+            },
+          },
+          language: "en",
+          legal_name: "Test Test",
+          preferences: {
+            always_use_security_key: true,
+          },
+          surname: "Test",
+        },
+      },
+    },
+  });
+  await linkToIdentitySettings();
+
+  const editButton = screen.getByRole("button", { name: /edit/i });
+  act(() => {
+    editButton.click();
+  });
+  expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(/^Edit name and display name/);
+  const firstName = screen.getByRole("textbox", { name: "First name" });
+  expect(firstName).toHaveAccessibleName(/^First name/);
+  const surName = screen.getByRole("textbox", { name: "Last name" });
+  expect(surName).toHaveAccessibleName(/^Last name/);
+
+  fireEvent.change(firstName, { target: { value: "Sixten" } });
+  fireEvent.change(surName, { target: { value: "von Samordnungsnummer" } });
+  const saveButton = screen.getByRole("button", { name: /^save/i });
+  expect(saveButton).toBeEnabled();
+
+  fireEvent.click(saveButton);
+
+  expect(firstName).toHaveValue("Sixten");
+  expect(surName).toHaveValue("von Samordnungsnummer");
 });
