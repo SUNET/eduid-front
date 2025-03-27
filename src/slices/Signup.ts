@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CaptchaRequest, SignupState as SignupBackendState } from "services/signup";
+import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { isFSA } from "apis/common";
+import { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "services/signup";
 
 interface SignupState {
   state?: SignupBackendState;
@@ -8,6 +9,28 @@ interface SignupState {
   surname?: string;
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
+}
+
+// type predicate to help identify payloads with the signup state.
+function isSignupStateResponse(action: any): action is PayloadAction<SignupStatusResponse> {
+  if (!isFSA(action)) {
+    return false;
+  }
+  try {
+    const payload = action.payload as unknown as SignupStatusResponse;
+    // if the payload has 'state', we consider it a SignupStatusResponse
+    return Boolean(payload.state !== undefined);
+  } catch {
+    return false;
+  }
+}
+
+// type predicate for rtk queries that wrap the SignupStatusResponse
+function hasSignupStateResponse(action: Action): action is PayloadAction<PayloadAction<SignupStatusResponse>> {
+  if (!isFSA(action)) {
+    return false;
+  }
+  return isSignupStateResponse(action.payload);
 }
 
 // export for use in tests
@@ -28,8 +51,10 @@ export const signupSlice = createSlice({
     setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
       state.captcha = action.payload;
     },
-    setSignupState: (state, action: PayloadAction<SignupBackendState>) => {
-      state.state = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(hasSignupStateResponse, (state, action) => {
+      state.state = action.payload.payload.state;
+    });
   },
 });
