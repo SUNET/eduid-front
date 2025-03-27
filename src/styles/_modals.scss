@@ -1,9 +1,24 @@
 /* Modals
 -------------------------------------------------- */
+dialog[open] {
+  all: unset;
+}
 
 .modal {
   display: flex !important;
-  padding: 1rem 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+
+  &.show {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+  }
 
   .modal-dialog.security-confirm-modal {
     .modal-body {
@@ -25,6 +40,8 @@
       .modal-header {
         border-bottom: none;
         padding: 1.5rem 1.5rem 0;
+        align-items: baseline;
+        display: flex;
 
         .modal-title {
           width: 100%;
