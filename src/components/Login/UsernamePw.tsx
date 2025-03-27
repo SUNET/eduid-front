@@ -222,7 +222,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <EduIDButton buttonstyle="primary" onClick={handleOnClick} className="btn-icon" id="login-other-device-button">
+    <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>

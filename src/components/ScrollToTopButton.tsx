@@ -2,7 +2,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Button } from "reactstrap";
 
 export default function ScrollToTopButton(): JSX.Element {
   const [showBtn, setShowBtn] = useState("display-none");
@@ -27,8 +26,8 @@ export default function ScrollToTopButton(): JSX.Element {
   }
 
   return (
-    <Button onClick={topFunction} id="scroll-top-button" color="primary" className={showBtn} title="Go to top">
+    <button onClick={topFunction} id="scroll-top-button" className={`${showBtn} primary`} title="Go to top">
       <FontAwesomeIcon icon={faArrowUp as IconProp} />
-    </Button>
+    </button>
   );
 }

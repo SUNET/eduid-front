@@ -60,7 +60,7 @@ export function EmailLinkSent(): JSX.Element | null {
         <div className="lead" />
         <p>
           <FormattedMessage
-            defaultMessage="If you have an eduID account, the code has been sent to {email}"
+            defaultMessage="If you have an eduID account, the code has been sent to {email} from no-reply@eduid.se."
             description="Reset Password email link sent"
             values={{
               email: (

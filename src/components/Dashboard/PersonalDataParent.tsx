@@ -79,7 +79,7 @@ function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEd
     <Fragment>
       {isEditMode ||
         (hasPersonalData && (
-          <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
+          <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(true)}>
             <FormattedMessage description="edit button" defaultMessage={`edit`} />
           </EduIDButton>
         ))}
@@ -114,10 +114,10 @@ function PersonalDataParent() {
   };
 
   return (
-    <article className="personal-data">
+    <article className="personal-data" id="personal-data">
       <div className="heading">
         <h2>
-          <FormattedMessage description="pd main title" defaultMessage={`Names & Display Name`} />
+          <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
         </h2>
         <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
       </div>

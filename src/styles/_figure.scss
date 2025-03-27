@@ -52,7 +52,7 @@ figure,
         font-size: 1rem;
       }
     }
-    .btn-close {
+    .close {
       align-self: center;
     }
   }
@@ -105,7 +105,7 @@ figure.webauthn-token-holder {
 
   & div:nth-child(2) {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     column-gap: 1em;
 
     & p:last-child {
@@ -128,11 +128,11 @@ figure.webauthn-token-holder {
       text-transform: uppercase;
     }
   }
-  .btn-link {
+  .link {
     height: auto;
     margin-right: 1rem;
   }
-  button.btn-close {
+  button.close {
     justify-self: flex-end;
   }
 }

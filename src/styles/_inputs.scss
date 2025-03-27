@@ -2,6 +2,10 @@
 
 /* Inputs and form controls, mainly non button */
 
+input {
+  box-sizing: border-box;
+}
+
 /* Form controls and interactive states */
 .form-control {
   display: flex;
@@ -20,11 +24,12 @@ input[readonly] {
 
 input.form-control,
 input.form-control.is-valid,
-input.form-control.is-invalid,
+// input.form-control.is-invalid,
 input.form-control:focus,
-input.form-control.is-valid:focus,
-input.form-control.is-invalid:focus {
-  outline: 2px solid $border-gray;
+input.form-control.is-valid:focus
+// input.form-control.is-invalid:focus
+{
+  outline: $border-width solid $border-gray;
   background-image: none;
   background-color: $white;
   transition: none;
@@ -42,23 +47,30 @@ input::placeholder {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    border-top: 2px solid $white;
-    border-bottom: 2px solid $txt-black !important;
+    border-top: $border-width solid $white;
+    border-bottom: $border-width solid $txt-black !important;
   }
 }
 
+input.form-control.is-invalid,
+input.form-control.is-invalid:focus {
+  // outline: $border-width solid $error-red;
+  background-image: none;
+}
+
 //tab-focus
-:focus-visible {
-  outline: 2px dashed $txt-black !important;
+:focus-visible,
+#mfa-security-key:focus {
+  outline: $border-width dashed $txt-black !important;
   transition: none !important;
 
   //has parents with overflow hidden
   &.accordion__button,
   table & {
-    outline-offset: -2px;
+    outline-offset: -$border-width;
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: 2px dashed #000 !important;
+    outline: $border-width dashed #000 !important;
     transition: none;
   }
 }
@@ -92,7 +104,7 @@ input[type="radio"] {
   //background-color only for content
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: 2px solid $bright-orange;
+  border: $border-width solid $bright-orange;
   background-color: transparent;
   border-radius: 50%;
 
@@ -210,9 +222,9 @@ input[type="checkbox"] {
     transition: left 0.25s;
   }
 
-  &:hover {
-    background: $bright-orange;
-  }
+  // &:hover {
+  //   background: $bright-orange;
+  // }
 
   .toggle:hover &::before {
     transform: scale(0.9);

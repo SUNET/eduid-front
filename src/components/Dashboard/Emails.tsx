@@ -109,7 +109,7 @@ function Emails() {
   }
 
   return (
-    <article>
+    <article id="add-email-addresses">
       <h2>
         <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
       </h2>
@@ -167,7 +167,7 @@ function Emails() {
             }}
           />
         ) : (
-          <EduIDButton id="emails-add-more-button" buttonstyle="link" className=" lowercase" onClick={handleEmailForm}>
+          <EduIDButton id="emails-add-more-button" buttonstyle="link lowercase" onClick={handleEmailForm}>
             <FormattedMessage defaultMessage="+ add more" description="button add more" />
           </EduIDButton>
         )}
@@ -190,7 +190,7 @@ function Emails() {
         validationPattern={shortCodePattern}
         resendMarkup={
           <div className="resend-code-container">
-            <EduIDButton buttonstyle="link" className="normal-case" onClick={handleResend}>
+            <EduIDButton buttonstyle="link normal-case" onClick={handleResend}>
               <FormattedMessage description="resend code" defaultMessage={`Send a new code`} />
             </EduIDButton>
           </div>

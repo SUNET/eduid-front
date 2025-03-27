@@ -1,8 +1,7 @@
 import { fetchMfaAuth } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -43,7 +42,16 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
 }
 
 function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
-  // const authn_options = useAppSelector((state) => state.login.authn_options);
+  const ref = useRef<HTMLButtonElement>(null);
+  let buttonDisabled = false;
+
+  if (props.webauthn !== undefined && !props.webauthn) {
+    buttonDisabled = true;
+  }
+
+  useEffect(() => {
+    if (ref.current) ref?.current?.focus();
+  }, []);
 
   return (
     <Fragment>
@@ -56,17 +64,19 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
           defaultMessage="E.g. USB Security Key or the device you are currently using."
         />
       </p>
-      <EduIDButton
-        buttonstyle="primary"
+      {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
+      <button
+        ref={ref}
+        className="primary"
         type="submit"
         onClick={() => {
           if (props.setActive) props.setActive(true);
         }}
         id="mfa-security-key"
-        disabled={!props.webauthn}
+        disabled={buttonDisabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
-      </EduIDButton>
+      </button>
     </Fragment>
   );
 }

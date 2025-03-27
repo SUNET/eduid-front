@@ -22,7 +22,7 @@ export function SignupEmailForm(): JSX.Element {
           <p>
             <FormattedMessage
               defaultMessage={`Once you have created an eduID you will be able to log in and
-                             connect it to your identity.`}
+                             connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
               description="Signup"
             />
           </p>

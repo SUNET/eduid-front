@@ -68,7 +68,7 @@ function Eidas(): JSX.Element {
       <p className="proofing-btn-help">
         <FormattedMessage
           description="eidas proofing help text"
-          defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+          defaultMessage={`To use this option you will need to first create a digital ID in the 
             {freja_eid_link} app.`}
           values={{
             freja_eid_link: (
@@ -80,7 +80,7 @@ function Eidas(): JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary" size="sm" onClick={() => setShowModal(true)}>
+      <EduIDButton buttonstyle="primary sm" onClick={() => setShowModal(true)}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 

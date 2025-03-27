@@ -18,7 +18,6 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -30,8 +29,9 @@ import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 interface SecurityKeyTable {
-  handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
-  handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
+  readonly wrapperRef: React.RefObject<HTMLElement>;
+  readonly handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
+  readonly handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
 }
 
 export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
@@ -52,6 +52,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
+  const wrapperRef = useRef<HTMLElement | null>(null);
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -80,7 +81,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     (async () => {
       if (isLoaded && !credentials.length) {
         // call requestCredentials once app is loaded
-        await dispatch(requestCredentials());
+        const response = await dispatch(requestCredentials());
+        if (requestCredentials.fulfilled.match(response)) {
+          wrapperRef?.current?.focus();
+        }
       }
     })();
   }, [isLoaded]);
@@ -227,6 +231,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           const response = await dispatch(createCredential(resp.payload));
           if (createCredential.fulfilled.match(response)) {
             const response = await dispatch(registerWebauthn({ descriptionValue }));
+            wrapperRef?.current?.focus();
             if (registerWebauthn.fulfilled.match(response)) {
               setShowVerifyWebauthnModal(true);
             }
@@ -241,7 +246,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   if (!isPlatformAuthLoaded) return null;
   return (
     <>
-      <article>
+      <article id="add-two-factor">
         <h2>
           <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
         </h2>
@@ -251,6 +256,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
                   to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
           />
+        </p>
+        <p className="text-medium">
+          <strong>
+            <FormattedMessage
+              description="security second factor individual"
+              defaultMessage={`Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder.`}
+            />
+          </strong>
         </p>
         <p className="help-text">
           <FormattedMessage
@@ -268,7 +281,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             }}
           />
         </p>
-        <div className="table-responsive">
+        <section className="top-spacing">
           <span aria-label="select extra webauthn">
             <strong>
               <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
@@ -278,8 +291,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-platform-button"
-                className="btn-icon"
-                buttonstyle="primary"
+                buttonstyle="primary icon"
                 onClick={() => handleRegisterWebauthn("platform")}
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
@@ -304,8 +316,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <div>
               <EduIDButton
                 id="security-webauthn-button"
-                buttonstyle="primary"
-                className="btn-icon"
+                buttonstyle="primary icon"
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
@@ -317,9 +328,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               </p>
             </div>
           </div>
-        </div>
+        </section>
       </article>
       <SecurityKeyTable
+        wrapperRef={wrapperRef}
         handleVerifyWebauthnTokenFreja={handleVerifyWebauthnTokenFreja}
         handleVerifyWebauthnTokenBankID={handleVerifyWebauthnTokenBankID}
       />
@@ -354,61 +366,78 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       />
       {/* Verify WebauthnToken Modal */}
-      <dialog id="verify-webauthn-token-modal" tabIndex={-1} aria-hidden="true" data-backdrop="true">
-        <Modal isOpen={showVerifyWebauthnModal} className="verify-webauthn-token-modal">
-          <ModalHeader>
-            <FormattedMessage
-              defaultMessage="Verify your added security key"
-              description="verify webauthn token modal title"
-            />
-            <EduIDButton
-              id={`verify-webauthn-token-modal-close-button`}
-              buttonstyle="close"
-              className="float-right"
-              onClick={() => setShowVerifyWebauthnModal(false)}
-            ></EduIDButton>
-          </ModalHeader>
-          <ModalBody>
-            <FormattedMessage
-              description="verify webauthn token modal body text"
-              defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
-            />
-            <p className="help-text">
-              <FormattedMessage
-                description="verify webauthn token modal body note text"
-                defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
-              />
-            </p>
-          </ModalBody>
-          <ModalFooter>
-            <div className="buttons">
-              <EduIDButton
-                className="btn-icon"
-                id={`verify-webauthn-token-modal-continue-bankID-button`}
-                buttonstyle="primary"
-                onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
-              >
-                <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
-                <span>BankID</span>
-              </EduIDButton>
-              <EduIDButton
-                className="btn-icon"
-                id={`verify-webauthn-token-modal-continue-frejaID-button`}
-                buttonstyle="primary"
-                onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
-              >
-                <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
-                <span>Freja+</span>
-              </EduIDButton>
+      <dialog
+        open={showVerifyWebauthnModal}
+        id="verify-webauthn-token-modal"
+        tabIndex={-1}
+        aria-hidden="true"
+        data-backdrop="true"
+      >
+        <div
+          className={showVerifyWebauthnModal ? "modal fade show" : "modal"}
+          tabIndex={-1}
+          aria-hidden={!showVerifyWebauthnModal}
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <FormattedMessage
+                    defaultMessage="Verify your added security key"
+                    description="verify webauthn token modal title"
+                  />
+                </h5>
+                <EduIDButton
+                  id={`verify-webauthn-token-modal-close-button`}
+                  buttonstyle="close float-right"
+                  onClick={() => setShowVerifyWebauthnModal(false)}
+                ></EduIDButton>
+              </div>
+              <div className="modal-body">
+                <FormattedMessage
+                  description="verify webauthn token modal body text"
+                  defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
+                />
+                <p className="help-text">
+                  <FormattedMessage
+                    description="verify webauthn token modal body note text"
+                    defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+                  />
+                </p>
+              </div>
+              <div className="modal-footer">
+                <div className="buttons">
+                  <EduIDButton
+                    id={`verify-webauthn-token-modal-continue-bankID-button`}
+                    buttonstyle="primary icon"
+                    onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
+                  >
+                    <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
+                    <span>BankID</span>
+                  </EduIDButton>
+                  <EduIDButton
+                    buttonstyle="primary icon"
+                    id={`verify-webauthn-token-modal-continue-frejaID-button`}
+                    onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
+                  >
+                    <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
+                    <span>Freja+</span>
+                  </EduIDButton>
+                </div>
+              </div>
             </div>
-          </ModalFooter>
-        </Modal>
+          </div>
+        </div>
       </dialog>
     </>
   );
 }
 
-function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauthnTokenFreja }: SecurityKeyTable) {
+function SecurityKeyTable({
+  wrapperRef,
+  handleVerifyWebauthnTokenBankID,
+  handleVerifyWebauthnTokenFreja,
+}: SecurityKeyTable) {
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   let btnVerify;
@@ -434,7 +463,8 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
         } else {
           await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
         }
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
+        // TODO: clean up
+        // dispatch(authnSlice.actions.setAuthnFrontendReset());
       }
     })();
   }, [authn?.response?.frontend_action]);
@@ -464,6 +494,8 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
           frontend_state: JSON.stringify(parsedFrontendState),
         })
       );
+    } else {
+      wrapperRef?.current?.focus();
     }
   }
 
@@ -507,10 +539,10 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
             <span>
               <FormattedMessage description="security key status" defaultMessage="Verify with: " />
               &nbsp;
-              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
                 <FormattedMessage description="security verify" defaultMessage="Freja+" />
               </EduIDButton>
-              <EduIDButton buttonstyle="link" size="sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
                 <FormattedMessage description="security verify" defaultMessage="BankID" />
               </EduIDButton>
             </span>
@@ -519,48 +551,52 @@ function SecurityKeyTable({ handleVerifyWebauthnTokenBankID, handleVerifyWebauth
       }
 
       return (
-        <React.Fragment key={cred.key}>
-          <figure className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
-            <div>
-              <span aria-label="key name">
-                <FormattedMessage description="security description name" defaultMessage="Name:" />
-                &nbsp;
-                <strong>{cred.description}</strong>
-              </span>
-              <EduIDButton
-                aria-label="Remove"
-                id="remove-webauthn"
-                buttonstyle="remove"
-                size="sm"
-                onClick={() => handleConfirmDeleteModal(cred)}
-              ></EduIDButton>
-            </div>
-            <div>
-              <span aria-label="date created">
-                <FormattedMessage description="security creation date" defaultMessage="Created:" />
-                &nbsp;
-                <wbr />
-                {date_created}
-              </span>
+        <figure
+          key={cred.key}
+          ref={wrapperRef}
+          tabIndex={0}
+          className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
+          data-token={cred.key}
+        >
+          <div>
+            <span aria-label="key name">
+              <FormattedMessage description="security description name" defaultMessage="Name:" />
+              &nbsp;
+              <strong>{cred.description}</strong>
+            </span>
+            <EduIDButton
+              aria-label="Remove"
+              id="remove-webauthn"
+              buttonstyle="remove sm"
+              onClick={() => handleConfirmDeleteModal(cred)}
+            ></EduIDButton>
+          </div>
+          <div>
+            <span aria-label="date created">
+              <FormattedMessage description="security creation date" defaultMessage="Created:" />
+              &nbsp;
+              <wbr />
+              {date_created}
+            </span>
 
-              <span aria-label="date used">
-                <FormattedMessage description="security last used" defaultMessage="Used:" />
-                &nbsp;
-                <wbr />
-                {date_success}
-              </span>
-            </div>
-            {btnVerify}
-          </figure>
-        </React.Fragment>
+            <span aria-label="date used">
+              <FormattedMessage description="security last used" defaultMessage="Used:" />
+              &nbsp;
+              <wbr />
+              {date_success}
+            </span>
+          </div>
+          {btnVerify}
+        </figure>
       );
     })
   );
 
   return (
-    <article>
+    // unique ID to scroll to the correct section
+    <article id="manage-security-keys">
       <h2>
-        <FormattedMessage description="manage your tokens" defaultMessage="Manage your tokens" />
+        <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
       </h2>
       {Boolean(tokens.length) && <UseSecurityKeyToggle />}
       {securityKeyData}

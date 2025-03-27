@@ -1,9 +1,11 @@
+import { WizardLink } from "components/Common/WizardLink";
 import { AccountIdDisplay } from "components/Dashboard/AccountId";
 import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
 import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
 import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
+import { SECURITY_PATH } from "components/IndexMain";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import accountIcon from "../../../img/account-icon.svg";
@@ -50,6 +52,13 @@ export function Account(): JSX.Element {
       <AccountLinking />
       <LadokContainer />
       <DeleteAccount />
+      <WizardLink
+        previousLink={SECURITY_PATH}
+        previousText={intl.formatMessage({
+          id: "wizard link back security",
+          defaultMessage: "To Security Settings",
+        })}
+      />
     </React.Fragment>
   );
 }

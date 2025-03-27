@@ -20,7 +20,7 @@
   flex-direction: row;
   align-items: baseline;
 
-  button.btn-link {
+  button.link {
     padding: 0.5rem;
   }
 }
@@ -74,9 +74,10 @@
 // --- BREADCRUMB STYLES--- //
 .breadcrumb {
   align-items: center;
-  color: #57606a;
+  color: $txt-gray;
   font-family: $akkurat;
-  font-size: 14px;
+  font-size: $txt-sm;
+  display: flex;
 
   a {
     padding-right: 5px;
@@ -151,6 +152,10 @@
   svg {
     color: $success-green;
     height: 1.5rem;
+
+    &.disabled {
+      color: $border-gray;
+    }
   }
 
   div {

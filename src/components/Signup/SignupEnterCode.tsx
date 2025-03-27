@@ -102,7 +102,7 @@ export function SignupEnterCode(): JSX.Element {
           />
         </p>
 
-        <EduIDButton buttonstyle="link" className="lowercase" onClick={registerEmail} id="send-new-code">
+        <EduIDButton buttonstyle="link lowercase" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send a new code" description="send a new code" />
         </EduIDButton>
       </div>
@@ -119,7 +119,7 @@ export function SignupEnterCode(): JSX.Element {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage={`Enter the six digit code sent to {email} to verify your email address. You can also copy 
+            defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address. You can also copy 
             and paste the code from the email into the input field.`}
             values={{
               email: (

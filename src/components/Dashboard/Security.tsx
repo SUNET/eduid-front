@@ -1,4 +1,6 @@
 import { MultiFactorAuthentication } from "components/Common/MultiFactorAuthentication";
+import { WizardLink } from "components/Common/WizardLink";
+import { ACCOUNT_PATH, IDENTITY_PATH } from "components/IndexMain";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import securityIcon from "../../../img/security-icon.svg";
@@ -35,6 +37,18 @@ export function Security(): JSX.Element {
         </div>
       </section>
       <MultiFactorAuthentication />
+      <WizardLink
+        previousLink={IDENTITY_PATH}
+        previousText={intl.formatMessage({
+          id: "wizard link back identity",
+          defaultMessage: "To Identity Settings",
+        })}
+        nextLink={ACCOUNT_PATH}
+        nextText={intl.formatMessage({
+          id: "wizard link next account",
+          defaultMessage: "To Account Settings",
+        })}
+      />
     </React.Fragment>
   );
 }

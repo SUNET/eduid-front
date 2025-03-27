@@ -8,8 +8,10 @@ import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
+import { WizardLink } from "components/Common/WizardLink";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
+import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
@@ -32,7 +34,6 @@ type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function Identity(): JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
-
   const intl = useIntl();
 
   useEffect(() => {
@@ -63,6 +64,18 @@ function Identity(): JSX.Element | null {
     <Fragment>
       <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <IdentityContent />
+      <WizardLink
+        previousLink={START_PATH}
+        previousText={intl.formatMessage({
+          id: "wizard link back start",
+          defaultMessage: "To Overview on Start",
+        })}
+        nextLink={SECURITY_PATH}
+        nextText={intl.formatMessage({
+          id: "wizard link next security",
+          defaultMessage: "To Security Settings",
+        })}
+      />
     </Fragment>
   );
 }
@@ -108,7 +121,7 @@ function IdentityContent(): JSX.Element {
         </div>
       </section>
 
-      <article>
+      <article id="verify-identity">
         {identities?.is_verified ? (
           <React.Fragment>
             <h2>
@@ -203,8 +216,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           <NinDisplay nin={identities?.nin} allowDelete={true} />
           <EduIDButton
             id="remove-identity-nin"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
               id: "verified identity delete button",
@@ -227,8 +239,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
           <EduIDButton
             id="remove-identity-eidas"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("eidas")}
           ></EduIDButton>
         </figure>
@@ -251,8 +262,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
           <EduIDButton
             id="remove-identity-freja"
-            buttonstyle="remove"
-            size="sm"
+            buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("freja")}
           ></EduIDButton>
         </figure>
@@ -317,7 +327,7 @@ function AccordionItemSwedish(): JSX.Element | null {
       additionalInfo={
         <FormattedMessage
           description="accordion item swedish additional info"
-          defaultMessage="With a digital ID-card / By post"
+          defaultMessage="With a digital ID / By post"
         />
       }
       uuid="swedish"
@@ -419,7 +429,7 @@ function AccordionItemEu(): JSX.Element | null {
                          electronic ID to connect your identity to eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle={"primary"} size={"sm"} onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
@@ -475,7 +485,7 @@ function AccordionItemWorld(): JSX.Element | null {
           identifying yourself with Freja eID, you will verify your identity towards eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle="primary" size="sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>

@@ -1,4 +1,4 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, requestCredentials } from "apis/eduidSecurity";
@@ -7,11 +7,18 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
-      <div className="checkbox-wrapper">{props.email ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="checkbox-wrapper">
+        {props.email ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
+      </div>
       <div className="text-wrapper">
         <h3>
           <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
@@ -43,7 +50,11 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.identities?.is_verified === true ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {props.identities?.is_verified === true ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -86,7 +97,11 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.tokens?.length ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}
+        {props.tokens?.length ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
       </div>
       <div className="text-wrapper">
         <h3>
@@ -121,15 +136,25 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 }
 
 function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
-  const securityLink = (
-    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+  const manageSecurityKeyLink = (
+    <HashLink
+      key={`${SECURITY_PATH}#manage-security-keys`}
+      to={`${SECURITY_PATH}#manage-security-keys`}
+      aria-label="go to manage your security key section"
+    >
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
-    </Link>
+    </HashLink>
   );
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
-      <div className="checkbox-wrapper">{verifiedToken ? <FontAwesomeIcon icon={faCircleCheck} /> : <div />}</div>
+      <div className="checkbox-wrapper">
+        {verifiedToken ? (
+          <FontAwesomeIcon icon={faCircleCheck} />
+        ) : (
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        )}
+      </div>
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
@@ -144,7 +169,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
               description="verified security key description"
               defaultMessage="Read more details about your verified two-factor authentication at {security}"
               values={{
-                security: securityLink,
+                security: manageSecurityKeyLink,
               }}
             />
           ) : (
@@ -152,7 +177,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
               description="verify your security key description"
               defaultMessage="Verify your security key at {security}"
               values={{
-                security: securityLink,
+                security: manageSecurityKeyLink,
               }}
             />
           )}
@@ -192,7 +217,7 @@ export function Recommendations(): JSX.Element | null {
   }
 
   return (
-    <article>
+    <article id="status-overview">
       <h2>
         <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
       </h2>

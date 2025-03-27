@@ -18,17 +18,17 @@ export default function DeleteAccount(): JSX.Element | null {
   }
 
   return (
-    <article>
+    <article id="delete-account">
       <h2>
-        <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
+        <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
       </h2>
       <p>
         <FormattedMessage
-          defaultMessage="Click the link to permanently delete your eduID."
+          defaultMessage="Click the link to delete your eduID. It will block any access to the account unless you change your password within one week, after which it will be removed permanently."
           description="DeleteAccount"
         />
       </p>
-      <EduIDButton buttonstyle="link" className="lowercase" id="delete-button" onClick={() => setShowModal(true)}>
+      <EduIDButton buttonstyle="link lowercase" id="delete-button" onClick={() => setShowModal(true)}>
         <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
       </EduIDButton>
       <NotificationModal

@@ -31,6 +31,10 @@ export function Help(): JSX.Element {
     locale === "en"
       ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
       : "https://org.frejaeid.com/en-e-legitimation-for-utlandska-medborgare/";
+  const FrejaProtectedIdURL =
+    locale === "en"
+      ? " https://frejaeid.com/en/freja-for-swedes-with-protected-identities/"
+      : "https://frejaeid.com/freja-for-svenskar-med-skyddad-identitet/";
   const UniversityAdmissionURL =
     locale === "en" ? "https://www.universityadmissions.se/intl/start" : "https://www.antagning.se";
 
@@ -190,7 +194,7 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about using eduid - info"
-                defaultMessage="Create, login and account settings"
+                defaultMessage="Create, login, account settings and blocking/deleting account"
               />
             }
           >
@@ -220,43 +224,43 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 1"
-                      defaultMessage="enter your first name, last name and email address in the form and press the ”Create eduID” button,"
+                      defaultMessage="Enter your first name, last name and email address in the form and press the ”Create eduID” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 2"
-                      defaultMessage="confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button,"
+                      defaultMessage="Confirm that you are human using CAPTCHA by entering the displayed/read out code and press the ”Continue” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 3"
-                      defaultMessage="read and approve the eduID terms of use by pressing the ”I Accept” button,"
+                      defaultMessage="Read and approve the eduID terms of use by pressing the ”I Accept” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 4"
-                      defaultMessage="verify your email address by entering the code emailed to you in the website form and press the ”Ok” button,"
+                      defaultMessage="Verify your email address by entering the code emailed to you in the website form and press the ”Ok” button."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 5"
-                      defaultMessage="choose using the radio buttons between a suggested (automatically generated) password or one you create,"
+                      defaultMessage="Choose using the radio buttons between a suggested (automatically generated) password or one you create."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 6"
-                      defaultMessage={`when validated for strength, repeat the password in the corresponding field and press the ”Save” button,`}
+                      defaultMessage={`When validated for strength, repeat the password in the corresponding field and press the ”Save” button.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="create eduid - list item 7"
-                      defaultMessage={`take careful note of your login details (used email address and password)! `}
+                      defaultMessage={`Take careful note of your login details (used email address and password)! `}
                     />
                   </li>
                   <li>
@@ -288,7 +292,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="login eduid - username list definition"
-                      defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be:`}
+                      defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be`}
                       values={{
                         eduidLoginLink: (
                           <a className="text-link" href={dashboard_link} target="_blank">
@@ -302,7 +306,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - username list item 1"
-                        defaultMessage={`any email address you have entered and confirmed in eduID under Account,`}
+                        defaultMessage={`any email address you have entered and confirmed in eduID under Account`}
                       />
                     </li>
                     <li>
@@ -345,20 +349,20 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 1"
-                        defaultMessage={`press the "Other device" button in the login form,`}
+                        defaultMessage={`Press the "Other device" button in the login form.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 2"
-                        defaultMessage={`scan the presented QR-code with the other device where you have your login credentials, 
-                    e.g. security key or saved password,`}
+                        defaultMessage={`Scan the presented QR-code with the other device where you have your login credentials, 
+                    e.g. security key or saved password.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="login eduid - other devices list item 3"
-                        defaultMessage={`on that second device, review the device requesting to be logged in and use the 
+                        defaultMessage={`On that second device, review the device requesting to be logged in and use the 
                     presented code to login by entering it within the time shown, in the first device.`}
                       />
                     </li>
@@ -420,19 +424,19 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 1"
-                      defaultMessage={`press the "Forgot your password?" link below the login form,`}
+                      defaultMessage={`Press the "Forgot your password?" link below the login form.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 2"
-                      defaultMessage={`press the "Send email" button to receive a code to the email address presented on the page,`}
+                      defaultMessage={`Press the "Send email" button to receive a code to the email address presented on the page.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - forgot pw list item 3"
-                      defaultMessage={`follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
+                      defaultMessage={`Follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
                     />
                   </li>
                 </ol>
@@ -463,31 +467,31 @@ export function Help(): JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 1"
-                      defaultMessage="changing your password,"
+                      defaultMessage="Changing your password."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 2"
-                      defaultMessage="toggling 2FA login requirement setting,"
+                      defaultMessage="Toggling 2FA login requirement setting."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 3"
-                      defaultMessage="deleting your eduID account,"
+                      defaultMessage="Deleting your eduID account."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 4"
-                      defaultMessage="adding/removing a security key,"
+                      defaultMessage="Adding/removing a security key."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 5"
-                      defaultMessage="deleting your verified identity."
+                      defaultMessage="Deleting your verified identity."
                     />
                   </li>
                 </ul>
@@ -519,12 +523,12 @@ export function Help(): JSX.Element {
                   </p>
                   <ul className="bullets">
                     <li>
-                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name,`} />
+                      <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name`} />
                     </li>
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 2"
-                        defaultMessage={`your unique user ID,`}
+                        defaultMessage={`your unique user ID`}
                       />
                     </li>
                     <li>
@@ -537,21 +541,21 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-1"
-                            defaultMessage={`confirmed account (confirmed email address and accepted terms of use),
+                            defaultMessage={`confirmed account (confirmed email address and accepted terms of use)
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-2"
-                            defaultMessage={`real identity verified,
+                            defaultMessage={`real identity verified
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="start eduid - list item 3-3"
-                            defaultMessage={`enhanced security (added a method used for multi factor login),
+                            defaultMessage={`enhanced security (added a method used for multi factor login)
                           `}
                           />
                         </li>
@@ -587,33 +591,33 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="identity eduid - list item 1"
-                        defaultMessage={`A table presenting your verified identities if you have any,`}
+                        defaultMessage={`A table presenting your verified identities if you have any.`}
                       />
                     </li>
                     <li>
                       <FormattedMessage
                         description="identity eduid - list item 2"
-                        defaultMessage={`options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
+                        defaultMessage={`Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
                       />
                       <ul className="nested">
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-1"
-                            defaultMessage={`with Swedish digital ID (Freja+/BankID) or by post,
+                            defaultMessage={`With Swedish digital ID (Freja+/BankID) or by post.
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-2"
-                            defaultMessage={`with eIDAS electronic identification for EU citizens,
+                            defaultMessage={`With eIDAS electronic identification for EU citizens.
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="identity eduid - list item 2-3"
-                            defaultMessage={`Freja eID for most nationalities.
+                            defaultMessage={`With Freja eID for most nationalities.
                           `}
                           />
                         </li>
@@ -656,7 +660,7 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 1-1"
-                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics,
+                            defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics.
                           `}
                           />
                         </li>
@@ -687,21 +691,21 @@ export function Help(): JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-1"
-                            defaultMessage={`the descriptive name given by you when created,
+                            defaultMessage={`the descriptive name given by you when created
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-2"
-                            defaultMessage={`dates of creation and latest use,
+                            defaultMessage={`dates of creation and latest use
                           `}
                           />
                         </li>
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-3"
-                            defaultMessage={`verification status / verification options (Freja+/BankID),
+                            defaultMessage={`verification status / verification options (Freja+/BankID)
                           `}
                           />
                         </li>
@@ -862,13 +866,13 @@ export function Help(): JSX.Element {
                       <strong>
                         <FormattedMessage
                           description="account eduid - list item 6-heading"
-                          defaultMessage={`Delete eduID: `}
+                          defaultMessage={`Blocking and deleting eduID: `}
                         />
                       </strong>
                       &nbsp;
                       <FormattedMessage
                         description="account eduid - list item 6"
-                        defaultMessage={`Clicking on the link "Delete eduID" will open a modal confirming deletion of your account permanently.`}
+                        defaultMessage={`Clicking on the link "delete eduID" will open a modal confirming removal of your account.`}
                       />
                     </li>
                   </ul>
@@ -880,6 +884,18 @@ export function Help(): JSX.Element {
                   </p>
                 </AccordionItemTemplate>
               </Accordion>
+              <h4>
+                <FormattedMessage
+                  description="delete eduid - heading"
+                  defaultMessage="How do I block and delete my account?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="delete eduid - paragraph"
+                  defaultMessage={`If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
 
@@ -952,7 +968,7 @@ export function Help(): JSX.Element {
                     <em>
                       <FormattedMessage
                         description="swedish nin freja - heading"
-                        defaultMessage="Freja+ (digital ID-card) - for Swedish personal identity or coordination number holders:"
+                        defaultMessage="Freja+ (digital ID) - for Swedish personal identity or coordination number holders:"
                       />
                     </em>
                     &nbsp;
@@ -978,6 +994,38 @@ export function Help(): JSX.Element {
                     />
                   </li>
                 </ul>
+                <p>
+                  <FormattedMessage
+                    description="freja - protected I paragraph 1"
+                    defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
+                    values={{
+                      strong: (
+                        <strong>
+                          <FormattedMessage
+                            description="freja - protected strong"
+                            defaultMessage={`If you have a protected identity `}
+                          />
+                        </strong>
+                      ),
+                      emphasis: <em>Freja+</em>,
+                    }}
+                  />
+                  <br />
+                  <FormattedMessage
+                    description="freja - protected ID paragraph 2"
+                    defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
+                    values={{
+                      FrejaProtectedId: (
+                        <a className="text-link" href={FrejaProtectedIdURL} target="_blank">
+                          <FormattedMessage
+                            description="use freja protected id - link text"
+                            defaultMessage={`freja-for-swedes-with-protected-identities`}
+                          />
+                        </a>
+                      ),
+                    }}
+                  />
+                </p>
               </section>
               <section>
                 <p>
@@ -1041,7 +1089,7 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="what is freja - paragraph"
-                      defaultMessage={`Freja+ is a digital ID-card (a verified Freja eID) free of charge, available to 
+                      defaultMessage={`Freja+ is a digital ID (a verified Freja eID) free of charge, available to 
                       holders of a Swedish personal identification number or coordination number.`}
                     />
                   </p>
@@ -1078,7 +1126,7 @@ export function Help(): JSX.Element {
                     <li>
                       <FormattedMessage
                         description="use freja - list item 3"
-                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID-card' option in the Identity area 
+                        defaultMessage={`log in to eduID and choose the 'Freja+ digital ID' option in the Identity area 
                         and follow the instructions.`}
                       />
                     </li>
@@ -1093,11 +1141,21 @@ export function Help(): JSX.Element {
                   <p>
                     <FormattedMessage
                       description="need visit atg agent for freja - paragraph"
-                      defaultMessage={`Only if you use another means of identification than a Swedish passport. 
+                      defaultMessage={`Only if you use another means of identification than a Swedish passport, {protectedId}. 
                       On site, the agent can start the verification process by scanning a QR code in your 
                     app and follow the instructions in their terminal. You will be informed when you have passed the 
                     ID verification and will be able use your Freja+ with your eduID. It can take up to three hours for 
                     your Freja+ to be fully activated.`}
+                      values={{
+                        protectedId: (
+                          <strong>
+                            <FormattedMessage
+                              description="need visit atg agent for freja - strong"
+                              defaultMessage="or if you have a protected identity"
+                            />
+                          </strong>
+                        ),
+                      }}
                     />
                   </p>
 
@@ -1484,7 +1542,7 @@ export function Help(): JSX.Element {
                     <article>
                       <p>
                         <FormattedMessage
-                          defaultMessage={`This is a list of names of maker and models of external security keys that kan be used for eduID at present:`}
+                          defaultMessage={`This is a list, derived from Fido Alliance, of names of maker and models of external security keys that can be used for eduID, though there might be other keys that could work for this purpose. They are listed in alphabetical order and updated regularly.`}
                           description="Security keys list - paragraph"
                         />
                       </p>
@@ -1560,7 +1618,14 @@ export function Help(): JSX.Element {
                     defaultMessage={`services requiring a low level of assurance, often called {emphasis}.
 `}
                     values={{
-                      emphasis: <em>AL1 / RAF Low</em>,
+                      emphasis: (
+                        <em>
+                          <FormattedMessage
+                            description="Assurance levels with your eduID - paragraph2em"
+                            defaultMessage={`AL1 (unconfirmed user) / RAF Low`}
+                          />
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1579,7 +1644,14 @@ export function Help(): JSX.Element {
                     defaultMessage={`services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}.
 `}
                     values={{
-                      emphasis: <em>AL2 / RAF Medium</em>,
+                      emphasis: (
+                        <em>
+                          <FormattedMessage
+                            description="Assurance levels with your eduID - paragraph3em"
+                            defaultMessage={`AL2 (confirmed user) / RAF Medium`}
+                          />
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1622,7 +1694,16 @@ export function Help(): JSX.Element {
 
 `}
                     values={{
-                      emphasis: <em>AL3 / RAF High / LoA2</em>,
+                      emphasis: (
+                        <em>
+                          <em>
+                            <FormattedMessage
+                              description="Assurance levels with your eduID - paragraph5em"
+                              defaultMessage={`AL3 (verified user) / RAF High / LoA2`}
+                            />
+                          </em>
+                        </em>
+                      ),
                     }}
                   />
                 </li>
@@ -1639,7 +1720,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph6"
-                  defaultMessage={`As an exemple, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
+                  defaultMessage={`As an example, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.
 `}
                 />
               </p>
@@ -1772,7 +1853,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what are eduIDs terms of use - paragraph"
-                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
+                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. It is a legal agreement between eduID and its users to abide by the terms.`}
                 />
               </p>
               <CommonToU version="2016-v1" />

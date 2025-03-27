@@ -1,5 +1,4 @@
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "./EduIDButton";
 
@@ -12,30 +11,28 @@ export default function EmailInUse(): JSX.Element {
   const reset_password_link = useAppSelector((state) => state.config.reset_password_link);
 
   return (
-    <React.Fragment>
-      <div>
-        <h3 className={registerHeaderClass}>
+    <div>
+      <h3 className={registerHeaderClass}>
+        <FormattedMessage
+          defaultMessage="An eduID is already using {email}"
+          description="Signup"
+          values={{ email: email }}
+        />
+      </h3>
+      <div className="email-display">
+        <p>
           <FormattedMessage
-            defaultMessage="An eduID is already using {email}"
+            defaultMessage="If this is your eduID, you can reset your password to log back in."
             description="Signup"
-            values={{ email: email }}
           />
-        </h3>
-        <div className="email-display">
-          <p>
-            <FormattedMessage
-              defaultMessage="If this is your eduID, you can reset your password to log back in."
-              description="Signup"
-            />
-          </p>
-        </div>
-
-        <a href={reset_password_link}>
-          <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
-            <FormattedMessage defaultMessage="Reset your password" description="Signup" />
-          </EduIDButton>
-        </a>
+        </p>
       </div>
-    </React.Fragment>
+
+      <a href={reset_password_link}>
+        <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
+          <FormattedMessage defaultMessage="Reset your password" description="Signup" />
+        </EduIDButton>
+      </a>
+    </div>
   );
 }
