@@ -1,6 +1,7 @@
 /* System/browser set dark mode overrides */
 
 @media (prefers-color-scheme: dark) {
+  //variables
   :root {
     --contrast-color: #000;
     --body-txt: #f4f4f4;
@@ -11,6 +12,59 @@
     --error-red: #ff5965;
   }
 
+  //header and footer
+  header .eduid-logo {
+    background-image: url(../../img/eduid-logo-orange.svg) !important;
+  }
+  footer .sunet-logo {
+    background-image: url("../../img/sunet_logo_white.svg") !important;
+  }
+  .header-user {
+    color: #fff;
+  }
+
+  //landing and start page
+  .status-box.success,
+  .landing-howTo div {
+    color: #fff;
+    &:nth-of-type(1) {
+      background-color: #15221a;
+    }
+    &:nth-of-type(2) {
+      background-color: #273e30;
+    }
+    &:nth-of-type(3) {
+      background-color: #355543;
+    }
+    &:nth-of-type(4) {
+      background-color: #3b634c;
+    }
+  }
+
+  .landing {
+    background-image: radial-gradient(
+      ellipse at 112% 100%,
+      var(--body-gray) 0,
+      var(--body-gray) 45%,
+      #202020 45%,
+      #202020 75%,
+      var(--contrast-color) 75%
+    );
+    color: var(--body-txt);
+
+    .landing-howTo {
+      filter: drop-shadow(0 -6px 0 $success-green);
+    }
+
+    .icon-holder {
+      color: #fff;
+      img {
+        filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
+      }
+    }
+  }
+
+  //links and buttons
   a,
   .text-link,
   .btn-link,
@@ -32,66 +86,17 @@
     background: transparent;
     color: #ff6d32;
   }
-  header .eduid-logo {
-    background-image: url(../../img/eduid-logo-orange.svg) !important;
-  }
-  footer .sunet-logo {
-    background-image: url("../../img/sunet_logo_white.svg") !important;
-  }
-  .header-user {
-    color: #fff;
-  }
+
+  //form
   .form-control:disabled,
   .form-control[readonly],
   input[readonly] {
     background-color: #000;
   }
 
-  .landing-howTo {
-    filter: drop-shadow(0 -6px 0 $success-green);
+  //accordion
+  .accordion__item .accordion__heading .accordion__button {
+    background: #202020;
+    color: #ff6d32;
   }
-
-  .status-box.success,
-  .landing-howTo div {
-    color: #fff;
-    &:nth-of-type(1) {
-      background-color: rgba(23, 125, 77, 0.1);
-      background-color: #15221a;
-    }
-    &:nth-of-type(2) {
-      background-color: rgba(23, 125, 77, 0.2);
-      background-color: #273e30;
-    }
-    &:nth-of-type(3) {
-      background-color: rgba(23, 125, 77, 0.3);
-      background-color: #355543;
-    }
-    &:nth-of-type(4) {
-      background-color: rgba(23, 125, 77, 0.4);
-      background-color: #3b634c;
-    }
-  }
-
-  .landing {
-    background-image: radial-gradient(
-      ellipse at 112% 100%,
-      var(--body-gray) 0,
-      var(--body-gray) 45%,
-      #202020 45%,
-      #202020 75%,
-      var(--contrast-color) 75%
-    );
-    color: var(--body-txt);
-
-    .icon-holder {
-      color: #fff;
-      img {
-        filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
-      }
-    }
-  }
-}
-.accordion__item .accordion__heading .accordion__button {
-  background: #202020;
-  color: #ff6d32;
 }
