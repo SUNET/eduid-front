@@ -94,6 +94,15 @@
     background-color: #000;
   }
 
+  ::placeholder {
+    color: var(--txt-gray) !important;
+    opacity: 1; /* Firefox */
+  }
+  ::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: var(--txt-gray) !important;
+  }
+
   //accordion
   .accordion__item .accordion__heading .accordion__button {
     background: #202020;
