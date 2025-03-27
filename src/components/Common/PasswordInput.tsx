@@ -2,7 +2,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import React, { useState } from "react";
 import { FieldRenderProps, Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Input, InputProps } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";
 
 interface PasswordInputProps {
@@ -49,8 +48,17 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
  * @param props
  * @returns
  */
-export function PasswordInputElement(props: InputProps): JSX.Element {
+export function PasswordInputElement(props: any): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
+  }
 
   function toggleShowPassword(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
@@ -59,15 +67,14 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
 
   return (
     <div className="password-input">
-      <Input
+      <input
         {...props.input}
         id={props.input.name}
         type={showPassword ? "text" : "password"}
-        valid={props.meta.valid}
-        invalid={props.meta.invalid}
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
         autoFocus={props.autoFocus}
+        className={`${className} form-control`}
       />
 
       <EduIDButton

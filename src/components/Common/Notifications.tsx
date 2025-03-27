@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
-import { Alert } from "reactstrap";
 import { clearNotifications, eduidNotification, notificationLevel } from "slices/Notifications";
 import { UNKNOWN_MESSAGE } from "translation";
+import EduIDButton from "./EduIDButton";
 
 export function Notifications(): JSX.Element | null {
   const debug = useAppSelector((state) => state.config.debug);
@@ -55,11 +55,12 @@ export function Notifications(): JSX.Element | null {
 
   return (
     <div className="notifications-area" aria-live="polite">
-      <Alert color={color} toggle={handleRMNotification} closeClassName="close">
+      <div className={`alert alert-${color} alert-dismissible fade show`} role="alert">
         <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
-      </Alert>
+        <EduIDButton buttonstyle="close" id="close-error" onClick={handleRMNotification} />
+      </div>
     </div>
   );
 }

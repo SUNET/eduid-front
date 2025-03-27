@@ -234,7 +234,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
               </li>
               <li>
                 <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
-                  <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
+                  <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
                 </HashLink>
               </li>
             </ul>

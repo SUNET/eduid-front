@@ -1,5 +1,4 @@
 import { FieldRenderProps } from "react-final-form";
-import { Input } from "reactstrap";
 import { InputWrapper } from "./InputWrapper";
 
 type InputType = "text" | "password" | "email";
@@ -14,15 +13,24 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 }
 
 const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
+  }
+
   return (
-    <Input
+    <input
       {...props.input}
       id={props.input.name}
       type={props.input.type as InputType}
+      className={`${className} form-control`}
       placeholder={props.placeholder}
       aria-required={props.input.required}
-      valid={props.meta.valid}
-      invalid={props.invalid}
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
     />

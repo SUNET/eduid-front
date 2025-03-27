@@ -1,5 +1,9 @@
 /* Inputs and form controls, mainly non button */
 
+input {
+  box-sizing: border-box;
+}
+
 /* Form controls and interactive states */
 .form-control {
   display: flex;
@@ -18,10 +22,11 @@ input[readonly] {
 
 input.form-control,
 input.form-control.is-valid,
-input.form-control.is-invalid,
+// input.form-control.is-invalid,
 input.form-control:focus,
-input.form-control.is-valid:focus,
-input.form-control.is-invalid:focus {
+input.form-control.is-valid:focus
+// input.form-control.is-invalid:focus
+{
   outline: $border-width solid var(--border-gray);
   background-image: none;
   background-color: var(--contrast-color);
@@ -43,6 +48,18 @@ input::placeholder {
     border-top: $border-width solid var(--contrast-color);
     border-bottom: $border-width solid var(--body-txt) !important;
   }
+}
+
+input.form-control.is-invalid,
+input.form-control.is-invalid:focus {
+  // outline: $border-width solid $error-red;
+  background-image: none;
+}
+
+input.form-control.is-invalid,
+input.form-control.is-invalid:focus {
+  // outline: $border-width solid $error-red;
+  background-image: none;
 }
 
 //tab-focus
@@ -209,9 +226,9 @@ input[type="checkbox"] {
     transition: left 0.25s;
   }
 
-  &:hover {
-    background: $bright-orange;
-  }
+  // &:hover {
+  //   background: $bright-orange;
+  // }
 
   .toggle:hover &::before {
     transform: scale(0.9);

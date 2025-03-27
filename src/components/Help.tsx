@@ -194,7 +194,7 @@ export function Help(): JSX.Element {
             additionalInfo={
               <FormattedMessage
                 description="about using eduid - info"
-                defaultMessage="Create, login and account settings"
+                defaultMessage="Create, login, account settings and blocking/deleting account"
               />
             }
           >
@@ -866,13 +866,13 @@ export function Help(): JSX.Element {
                       <strong>
                         <FormattedMessage
                           description="account eduid - list item 6-heading"
-                          defaultMessage={`Delete eduID: `}
+                          defaultMessage={`Blocking and deleting eduID: `}
                         />
                       </strong>
                       &nbsp;
                       <FormattedMessage
                         description="account eduid - list item 6"
-                        defaultMessage={`Clicking on the link "Delete eduID" will open a modal confirming deletion of your account permanently.`}
+                        defaultMessage={`Clicking on the link "delete eduID" will open a modal confirming removal of your account.`}
                       />
                     </li>
                   </ul>
@@ -884,6 +884,18 @@ export function Help(): JSX.Element {
                   </p>
                 </AccordionItemTemplate>
               </Accordion>
+              <h4>
+                <FormattedMessage
+                  description="delete eduid - heading"
+                  defaultMessage="How do I block and delete my account?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="delete eduid - paragraph"
+                  defaultMessage={`If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
+                />
+              </p>
             </article>
           </AccordionItemTemplate>
 
@@ -1841,7 +1853,7 @@ export function Help(): JSX.Element {
               <p>
                 <FormattedMessage
                   description="what are eduIDs terms of use - paragraph"
-                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. You may be asked to accept the terms again if you haven't used the service for a period of time.`}
+                  defaultMessage={`These terms are accepted by the user upon creating an eduID account. It is a legal agreement between eduID and its users to abide by the terms.`}
                 />
               </p>
               <CommonToU version="2016-v1" />
