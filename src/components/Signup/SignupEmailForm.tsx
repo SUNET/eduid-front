@@ -1,4 +1,3 @@
-import { registerEmailRequest } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
@@ -8,6 +7,7 @@ import { validateSignupUserInForm } from "helperFunctions/validation/validateEma
 import { Fragment, useContext, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
@@ -72,13 +72,8 @@ function EmailForm() {
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
       if (state?.captcha.completed && state?.tou.completed) {
-        const res = await dispatch(registerEmailRequest(signupUser));
-        if (registerEmailRequest.fulfilled.match(res)) {
-          dispatch(clearNotifications());
-          signupContext.signupService.send({ type: "API_SUCCESS" });
-        } else {
-          signupContext.signupService.send({ type: "API_FAIL" });
-        }
+        // Go to RegisterEmail
+        signupContext.signupService.send({ type: "CAPTCHA_AND_TOU_DONE" });
       } else {
         dispatch(clearNotifications());
         signupContext.signupService.send({ type: "COMPLETE" });
@@ -150,25 +145,20 @@ export function RegisterEmail() {
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
   const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
+  const { isSuccess, isError} = signupApi.useRegisterEmailRequestQuery(signupUser);
 
   if (!signupUser) {
     signupContext.signupService.send({ type: "API_FAIL" });
     return null;
   }
 
-  async function registerEmail(signupUser: { email: string; given_name: string; surname: string }) {
-    const res = await dispatch(registerEmailRequest(signupUser));
-
-    if (registerEmailRequest.fulfilled.match(res)) {
+  useEffect(() => {
+    if (isSuccess) {
       signupContext.signupService.send({ type: "API_SUCCESS" });
-    } else {
+    } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }
-
-  useEffect(() => {
-    registerEmail(signupUser);
-  }, []);
+  }, [isSuccess, isError]);
 
   // Show a blank screen while we wait for the response from the backend
   return null;
