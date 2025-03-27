@@ -71,6 +71,8 @@ export interface CreateUserRequest {
     custom_password?: string;
 }
 
+type EmptyObj = Record<PropertyKey, never>;
+
 export const signupApi = eduIDApi.injectEndpoints({
     endpoints: (builder) => ({
         fetchState: builder.query<ApiResponse<SignupStatusResponse>, void>({
@@ -80,7 +82,7 @@ export const signupApi = eduIDApi.injectEndpoints({
             extraOptions: { service: 'signup' }
         }),
         getCaptcha: builder.query<ApiResponse<GetCaptchaResponse>,void>({
-            query: (): { url: string; body: {} } => ({
+            query: (): { url: string; body: EmptyObj } => ({
                 url: 'get-captcha',
                 body: {}
             }),
@@ -121,7 +123,7 @@ export const signupApi = eduIDApi.injectEndpoints({
             extraOptions: { service: 'signup' }
         }),
         getPasswordRequest: builder.query<ApiResponse<SignupStatusResponse>,void>({
-            query: (): { url: string; body: {} } => ({
+            query: (): { url: string; body: EmptyObj } => ({
                 url: 'get-password',
                 body: {}
             }),

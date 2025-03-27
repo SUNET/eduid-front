@@ -6,7 +6,7 @@ import { ajaxHeaders } from 'ts_common';
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
     let baseUrl;
-    let state = api.getState() as StateWithCommonConfig;
+    const state = api.getState() as StateWithCommonConfig;
     if (!extraOptions?.service) {
         throw new Error('No service specified');
     } else if (extraOptions.service === 'jsConfig') {
