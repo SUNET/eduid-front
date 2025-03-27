@@ -1,7 +1,6 @@
 import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { useIntl } from "react-intl";
-import { FormGroup, FormText, Input, Label } from "reactstrap";
 
 interface TextInputProps extends FieldRenderProps<string> {
   label?: string;
@@ -13,41 +12,43 @@ interface TextInputProps extends FieldRenderProps<string> {
 export default function TextInput(props: TextInputProps) {
   const intl = useIntl();
   const { label, helpBlock } = props;
-  let valid = false,
-    invalid = false;
+  let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
-    invalid = Boolean(props.meta.error);
-    valid = !invalid;
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+  if (props.disabled) {
+    className = "disabled";
   }
 
-  const errorMsg = (invalid && intl.formatMessage({ id: props.meta.error })) || "";
-  let help = <FormText>{helpBlock}</FormText>;
+  const errorMsg = (Boolean(props.meta.invalid) && intl.formatMessage({ id: props.meta.error })) || "";
+  let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
     help = (
-      <FormText>
+      <div>
         {feedback} {helpBlock && "|"} {helpBlock}
-      </FormText>
+      </div>
     );
   }
-
   return (
-    <FormGroup id={`${props.input.name}-wrapper`} className="form-wrapper">
+    <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
       {label && (
-        <Label for={props.input.name} aria-label={props.input.name}>
+        <label htmlFor={props.input.name} aria-label={props.input.name}>
           {label}
-        </Label>
+        </label>
       )}
-      <Input
+      <input
         id={props.input.name}
-        valid={valid}
-        invalid={invalid}
+        className={`${className}  form-control`}
+        // className={invalid || props.disabled ? "form-control" : "is-valid form-control"}
         type={props.type}
         {...props.input}
         disabled={props.disabled}
         autoComplete={props.autoComplete}
       />
       {help}
-    </FormGroup>
+    </div>
   );
 }
