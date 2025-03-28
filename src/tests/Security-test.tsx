@@ -7,7 +7,7 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
@@ -21,6 +21,11 @@ async function linkToAdvancedSettings() {
   expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
   expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
 }
+
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
 
 test("renders security key as expected, not security key added", async () => {
   render(<IndexMain />);
@@ -100,7 +105,7 @@ test("can remove a security key", async () => {
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "extra touchID",
-            key: "dummy dummy",
+            key: "dummy dummy2",
             success_ts: "2022-10-17",
             used_for_login: false,
             verified: false,

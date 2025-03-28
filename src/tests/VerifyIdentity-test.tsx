@@ -1,7 +1,7 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import VerifyIdentity from "components/Dashboard/Identity";
 import { IndexMain } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -15,6 +15,11 @@ async function linkToIdentitySettings() {
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 }
+
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
 
 test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);

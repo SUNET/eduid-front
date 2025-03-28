@@ -15,6 +15,11 @@ import { fireEvent, loginTestState, render, screen, waitFor } from "../helperFun
 
 const TEST_PASSWORD = "password";
 
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
+
 test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
   const ref = "abc567";
