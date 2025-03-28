@@ -1,6 +1,6 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
