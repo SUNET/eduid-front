@@ -67,7 +67,7 @@
   //links and buttons
   a,
   .text-link,
-  .btn-link,
+  button.link,
   .header-nav ul li a.active {
     color: #ff6d32 !important;
   }
@@ -84,14 +84,30 @@
   button.secondary:not(:disabled):not(.disabled):active:focus,
   button.secondary:not(:disabled):not(.disabled):hover {
     background: transparent;
-    color: #ff6d32;
+    color: #fff;
   }
 
   //form
   .form-control:disabled,
   .form-control[readonly],
   input[readonly] {
-    background-color: #000;
+    background-color: #202020;
+  }
+  .form-control:focus {
+    color: var(--body-txt);
+  }
+
+  input:is(:-webkit-autofill, :autofill),
+  input:-internal-autofill-selected {
+    color: var(--txt-gray) !important;
+    -webkit-text-fill-color: var(--txt-gray) !important;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    color: var(--txt-gray) !important;
+    -webkit-text-fill-color: var(--txt-gray) !important;
   }
 
   ::placeholder {
