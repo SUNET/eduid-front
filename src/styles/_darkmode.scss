@@ -71,11 +71,11 @@
   .header-nav ul li a.active {
     color: #ff6d32 !important;
   }
-  button.btn-primary,
-  button.btn-primary:not(:disabled):not(.disabled):active,
-  button.btn-primary:not(:disabled):not(.disabled):focus,
-  button.btn-primary:not(:disabled):not(.disabled):active:focus,
-  button.btn-primary:not(:disabled):not(.disabled):hover {
+  button.primary,
+  button.primary:not(:disabled):not(.disabled):active,
+  button.primary:not(:disabled):not(.disabled):focus,
+  button.primary:not(:disabled):not(.disabled):active:focus,
+  button.primary:not(:disabled):not(.disabled):hover {
     color: #fff !important;
   }
   button.secondary,
