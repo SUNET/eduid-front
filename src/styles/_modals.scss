@@ -93,8 +93,6 @@ dialog[open] {
 
         @media (max-width: $bp-lg) {
           font-size: 1.125rem;
-
-          .form-control,
           input {
             font-size: inherit;
 
@@ -122,8 +120,6 @@ dialog[open] {
     @media (max-width: $bp-lg) {
       .modal-body {
         font-size: 1.125rem;
-
-        .form-control,
         input {
           font-size: inherit;
 
