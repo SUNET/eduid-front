@@ -19,24 +19,10 @@ input {
 
 /* Form controls and interactive states */
 
-.form-control:disabled,
-.form-control[readonly],
-input[readonly] {
-  color: $txt-gray;
-  background-color: $bg-gray;
-  :focus,
-  :hover {
-    pointer-events: none;
-  }
-}
-
-input.form-control,
-input.form-control.is-valid,
-// input.form-control.is-invalid,
-input.form-control:focus,
-input.form-control.is-valid:focus
-// input.form-control.is-invalid:focus
-{
+input,
+input.is-valid,
+input:focus,
+input.is-valid:focus {
   outline: $border-width solid $border-gray;
   background-image: none;
   background-color: $white;
@@ -45,7 +31,6 @@ input.form-control.is-valid:focus
   box-shadow: none;
 }
 
-.form-control::placeholder,
 input::placeholder {
   font-family: $inter-regular;
   font-size: 1.5rem;
@@ -60,9 +45,9 @@ input::placeholder {
   }
 }
 
-input.form-control.is-invalid,
-input.form-control.is-invalid:focus {
-  // outline: $border-width solid $error-red;
+input.is-invalid,
+input.is-invalid:focus {
+  outline: $border-width solid rgba($error-red, 0.5);
   background-image: none;
 }
 
@@ -83,6 +68,19 @@ input.form-control.is-invalid:focus {
   }
 }
 
+input:disabled,
+input[readonly] {
+  color: $txt-gray;
+  background-color: $bg-gray;
+  :focus,
+  :hover {
+    pointer-events: none;
+  }
+}
+input[readonly] {
+  outline: none;
+}
+
 //removing chrome autocomplete babyblue
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -100,6 +98,7 @@ select:-webkit-autofill:focus {
 input[type="radio"] {
   //remove standard background appearance
   appearance: none;
+  outline: none;
 
   //create custom radio button appearance
   display: inline-block;
@@ -294,7 +293,6 @@ input:-webkit-autofill {
 
 /* Responsive */
 @media (max-width: $bp-sm) {
-  .form-control,
   input,
   .radio-input-container span {
     font-size: 1rem;
@@ -304,7 +302,6 @@ input:-webkit-autofill {
     margin: 0;
   }
 
-  .form-control::placeholder,
   input::placeholder {
     font-size: 1rem;
   }
