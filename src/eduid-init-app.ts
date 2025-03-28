@@ -4,7 +4,10 @@ import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
-const middlewares = [notifyAndDispatch, logger];
+const middlewares = [notifyAndDispatch];
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
 
 export const eduidStore = configureStore({
   reducer: eduIDApp,
