@@ -3,6 +3,11 @@ import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
+
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
     state: {

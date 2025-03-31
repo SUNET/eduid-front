@@ -1,8 +1,13 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
-import { act } from "react-dom/test-utils";
+import { act } from "react";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
 
 test("renders frejaeID as expected", () => {
   const method = "frejaeIDVerifyIdentity";
