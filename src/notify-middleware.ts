@@ -1,7 +1,8 @@
+import { Middleware } from "redux";
 import { clearNotifications, showNotification } from "slices/Notifications";
 
 showNotification;
-const notifyAndDispatch = () => (next: any) => (action: any) => {
+const notifyAndDispatch: Middleware = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
     if (
       action.payload.message === "authn_status.must-authenticate" ||
