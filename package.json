@@ -107,7 +107,7 @@
     "stylelint-scss": "^4.7.0",
     "ts-jest": "^29.0.0",
     "ts-loader": "^9.4.4",
-    "typescript": "~5.5.4",
+    "typescript": "^5.8.2",
     "webpack": "^5.88.1",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.15.1",
@@ -140,6 +140,7 @@
       "^.+\\.[tj]sx?$": [
         "ts-jest",
         {
+          "isolatedModules": true,
           "astTransformers": {
             "before": [
               {
