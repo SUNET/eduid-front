@@ -61,7 +61,10 @@ test("can delete eduid account", async () => {
     expect(screen.queryByRole("heading", { name: /Are you sure/i })).not.toBeInTheDocument();
   });
 
-  expect(terminateCalled).toBe(true);
+  await waitFor(() => {
+    expect(terminateCalled).toBe(true);
+  });
+
 });
 
 test("render, enable navigation back to security settings", async () => {
