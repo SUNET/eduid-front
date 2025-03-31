@@ -1,9 +1,9 @@
 @import "./variables";
 
-button.disabled,
 button:disabled {
   cursor: not-allowed;
   pointer-events: all;
+  opacity: 0.4;
 }
 
 a.button,
