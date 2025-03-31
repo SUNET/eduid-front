@@ -5,7 +5,7 @@ import notifyAndDispatch from "./notify-middleware";
 
 /* setup to run the combined sagas */
 const middlewares = [notifyAndDispatch];
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV !== "production") {
   middlewares.push(logger);
 }
 
