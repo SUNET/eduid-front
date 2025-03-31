@@ -6,7 +6,10 @@ import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
 
 /* setup middlewares */
-const middlewares = [notifyAndDispatch, logger, eduIDApi.middleware, csrfTokenMiddleware];
+const middlewares = [notifyAndDispatch, eduIDApi.middleware, csrfTokenMiddleware];
+if (process.env.NODE_ENV !== "production") {
+  middlewares.push(logger);
+}
 
 export const eduidStore = configureStore({
   reducer: eduIDApp,

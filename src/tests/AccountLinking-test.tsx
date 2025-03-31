@@ -5,6 +5,11 @@ import { act } from "react";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
+beforeEach(() => {
+  // mock window.scroll for the notification middleware that scrolls to the top of the screen
+  window.scroll = jest.fn();
+});
+
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {
     routes: ["/profile"],
