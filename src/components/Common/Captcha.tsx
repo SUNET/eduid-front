@@ -3,14 +3,13 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { GetCaptchaResponse } from "services/signup";
 
 import { skipToken } from "@reduxjs/toolkit/query";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
-import { signupApi } from "services/signup";
+import { GetCaptchaResponse, signupApi } from "services/signup";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
   disabled?: boolean; // disable the submit button if true

@@ -61,7 +61,7 @@ export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-  const {isSuccess, isError, error} = signupApi.useSendCaptchaResponseQuery(captcha?captcha:skipToken)
+  const {isSuccess, isError } = signupApi.useSendCaptchaResponseQuery(captcha||skipToken)
 
   useEffect(() => {
     if (captcha) {
