@@ -28,7 +28,7 @@ const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
       {...props.input}
       id={props.input.name}
       type={props.input.type as InputType}
-      className={`${className} form-control`}
+      className={`${className}`}
       placeholder={props.placeholder}
       aria-required={props.input.required}
       autoFocus={props.autoFocus}

@@ -1,13 +1,13 @@
 @import "./variables";
 
-.btn.disabled,
-.btn:disabled {
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
   opacity: 0.4;
 }
 
-a.btn,
-button,
-button.btn {
+a.button,
+button {
   font-family: $akkurat;
   letter-spacing: 1px;
   font-size: 1rem;
@@ -71,8 +71,6 @@ button.secondary:not(:disabled):not(.disabled):hover {
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
-
-  //min-width: min-content;
   padding: 0 1.125rem;
 
   /* Login, Logout, Register button in Header */
@@ -315,7 +313,7 @@ button.icon-only {
 }
 
 @media (max-width: $bp-xs) {
-  button.btn:not(.sm) {
+  button:not(.sm) {
     font-size: $txt-sm;
   }
 
@@ -324,7 +322,7 @@ button.icon-only {
     width: 100%;
   }
 
-  button.btn.link {
+  button.link {
     width: auto;
     padding: 0;
   }

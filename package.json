@@ -28,7 +28,6 @@
     "@ungap/url-search-params": "^0.2.2",
     "@xstate/react": "^3.2.2",
     "audit-ci": "^6.6.1",
-    "bootstrap": "^5.3.0",
     "final-form": "^4.20.9",
     "html-webpack-plugin": "^5.5.3",
     "invariant": "^2.2.4",

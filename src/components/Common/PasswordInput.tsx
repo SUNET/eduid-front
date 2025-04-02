@@ -74,7 +74,7 @@ export function PasswordInputElement(props: any): JSX.Element {
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
         autoFocus={props.autoFocus}
-        className={`${className} form-control`}
+        className={`${className}`}
       />
 
       <EduIDButton

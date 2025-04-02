@@ -1,6 +1,29 @@
 /* Form layout elements */
 
 //top margin here assumes that text above has bottom margin of 1rem
+
+.single-input-form .form-group {
+  margin-bottom: 0;
+
+  & .text-muted {
+    margin-top: 0;
+  }
+}
+
+// text under inputs
+.small,
+small {
+  font-size: 100% !important;
+
+  &.form-text {
+    margin-top: 0 !important;
+  }
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -8,6 +31,7 @@ form {
 
   .form-wrapper {
     min-height: 5.5rem;
+    margin-bottom: 1rem;
   }
 }
 

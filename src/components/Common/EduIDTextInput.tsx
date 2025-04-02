@@ -41,8 +41,7 @@ export default function TextInput(props: TextInputProps) {
       )}
       <input
         id={props.input.name}
-        className={`${className}  form-control`}
-        // className={invalid || props.disabled ? "form-control" : "is-valid form-control"}
+        className={`${className}`}
         type={props.type}
         {...props.input}
         disabled={props.disabled}
