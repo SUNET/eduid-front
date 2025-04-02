@@ -130,11 +130,4 @@ dialog[open] {
       }
     }
   }
-
-  @media (max-width: $bp-lg) {
-    padding: 1rem 2rem;
-  }
-  @media (max-width: $bp-md) {
-    padding: 1rem;
-  }
 }
