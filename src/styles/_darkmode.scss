@@ -87,6 +87,12 @@
     color: #fff;
   }
 
+  .breadcrumb svg,
+  .breadcrumb img {
+    filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
+      contrast(101%);
+  }
+
   //form
   .form-control:disabled,
   .form-control[readonly],
@@ -117,6 +123,10 @@
   ::-ms-input-placeholder {
     /* Edge 12 -18 */
     color: var(--txt-gray) !important;
+  }
+
+  .modal.show {
+    background-color: rgba(46, 46, 46, 0.75);
   }
 
   //accordion
