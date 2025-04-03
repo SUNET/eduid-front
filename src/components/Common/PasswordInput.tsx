@@ -83,6 +83,7 @@ export function PasswordInputElement(props: any): JSX.Element {
         autoComplete={props.autoComplete}
         autoFocus={props.autoFocus}
         className={className}
+        ref={inputRef}
       />
 
       <EduIDButton
