@@ -137,6 +137,9 @@ button.close {
   height: 2px;
   background-color: var(--txt-gray);
   transform-origin: center;
+  :hover > & {
+    background-color: var(--body-txt);
+  }
 }
 
 .close::before {
@@ -370,7 +373,9 @@ button.scroll-to-top {
   box-shadow: none !important;
   background-color: transparent;
   &:hover {
-    background-image: url("../../img/remove-icon-black.svg");
+    //background-image: url("../../img/remove-icon-black.svg");
+    filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(657%) hue-rotate(340deg) brightness(96%)
+      contrast(83%);
   }
 }
 

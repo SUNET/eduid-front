@@ -58,6 +58,7 @@
 
     .icon-holder {
       color: #fff;
+      //success green color
       img {
         filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
       }
@@ -89,8 +90,20 @@
 
   .breadcrumb svg,
   .breadcrumb img {
+    //link-orange color
     filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
       contrast(101%);
+  }
+
+  .remove {
+    //text gray color
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
+      contrast(76%);
+    //body-text white color
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(99%) sepia(3%) saturate(363%) hue-rotate(209deg) brightness(115%)
+        contrast(91%);
+    }
   }
 
   //form
