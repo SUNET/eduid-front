@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import { eduIDApi } from "services/api";
+import { csrfTokenMiddleware } from "services/CsrfTokenMiddleware";
 import eduIDApp from "./eduid-store";
 import notifyAndDispatch from "./notify-middleware";
 
-/* setup to run the combined sagas */
-const middlewares = [notifyAndDispatch];
+/* setup middlewares */
+const middlewares = [notifyAndDispatch, eduIDApi.middleware, csrfTokenMiddleware];
 if (process.env.NODE_ENV !== "production") {
   middlewares.push(logger);
 }
