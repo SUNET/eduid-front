@@ -189,8 +189,9 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
+  const _inputValues = Boolean(props.values["username"]) && Boolean(props.values["currentPassword"]);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const _disabled = Boolean(props.hasValidationErrors || _submitError || loading);
+  const _disabled = Boolean(props.hasValidationErrors || !_inputValues || _submitError || loading);
 
   return (
     <EduIDButton
