@@ -17,7 +17,7 @@ export function LoginAbortButton(): JSX.Element {
   }
 
   return (
-    <EduIDButton buttonstyle="secondary" onClick={handleOnClick} id="login-abort-button">
+    <EduIDButton type="button" buttonstyle="secondary" onClick={handleOnClick} id="login-abort-button">
       <FormattedMessage defaultMessage="Cancel" description="button cancel" />
     </EduIDButton>
   );
