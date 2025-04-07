@@ -191,7 +191,10 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
    */
   const _inputValues = Boolean(props.values["username"]) && Boolean(props.values["currentPassword"]);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const _disabled = (props.hasValidationErrors ?? true) || !_inputValues || (_submitError ?? true) || (loading ?? true);
+  const hasErrors = props.hasValidationErrors ?? true;
+  const hasSubmitError = _submitError ?? true;
+  const isLoading = loading ?? true;
+  const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError || isLoading);
 
   return (
     <EduIDButton
