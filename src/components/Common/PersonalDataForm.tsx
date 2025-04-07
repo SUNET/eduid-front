@@ -83,7 +83,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
               )}
               <article>
                 <div className="buttons">
-                  <EduIDButton id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
+                  <EduIDButton type="submit" id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
                     <FormattedMessage defaultMessage="save" description="button save" />
                   </EduIDButton>
                 </div>

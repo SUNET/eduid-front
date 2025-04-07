@@ -68,6 +68,7 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
                 <EduIDButton
                   buttonstyle="primary"
                   id="captcha-continue-button"
+                  type="submit"
                   disabled={_disabled}
                   onClick={formProps.handleSubmit}
                 >
