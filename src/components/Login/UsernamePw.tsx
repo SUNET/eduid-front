@@ -200,7 +200,6 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
     <EduIDButton
       buttonstyle="primary"
       type="submit"
-      disabled={_disabled}
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}
