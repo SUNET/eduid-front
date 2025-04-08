@@ -41,12 +41,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
       {...props}
       render={({ submitting, invalid, handleSubmit, form }) => (
         <dialog open={props.showModal}>
-          <div
-            className={props.showModal ? "modal fade show" : "modal"}
-            id={props.id}
-            tabIndex={-1}
-            aria-hidden={!props.showModal}
-          >
+          <div className={props.showModal ? "modal fade show" : "modal"} id={props.id} tabIndex={-1}>
             <div className={`modal-dialog ${props.id}`}>
               <div className={`modal-content ${props.id} `}>
                 <div className="modal-header">

@@ -373,11 +373,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         aria-hidden="true"
         data-backdrop="true"
       >
-        <div
-          className={showVerifyWebauthnModal ? "modal fade show" : "modal"}
-          tabIndex={-1}
-          aria-hidden={!showVerifyWebauthnModal}
-        >
+        <div className={showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
