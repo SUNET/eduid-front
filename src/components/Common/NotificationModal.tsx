@@ -7,13 +7,13 @@ interface NotificationModalProps {
   readonly mainText: React.ReactNode;
   readonly showModal: boolean;
   readonly closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  readonly acceptModal?: (event?: React.MouseEvent<HTMLElement>) => void | Promise<void>;
+  readonly acceptModal: (event?: React.MouseEvent<HTMLElement>) => void;
   readonly acceptButtonText: React.ReactNode;
 }
 
 function NotificationModal(props: NotificationModalProps) {
   if (!props.showModal) return null;
-  console.log("123");
+
   return (
     <dialog open={props.showModal}>
       <div className={props.showModal ? "modal fade show" : "modal"} id={props.id} tabIndex={-1}>
