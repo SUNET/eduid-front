@@ -45,7 +45,8 @@ input::placeholder {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    border-top: $border-width solid var(--contrast-color);
+    //border-top: $border-width solid var(--contrast-color);
+    padding-top: calc(1.25rem + $border-width);
     border-bottom: $border-width solid var(--body-txt) !important;
   }
 }
