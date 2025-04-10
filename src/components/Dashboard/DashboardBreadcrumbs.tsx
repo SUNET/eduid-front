@@ -29,7 +29,11 @@ export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardB
       </Link>
       <span aria-hidden="true">/</span>
       <Link to="#" className="disabled" aria-label={`disabled link to ${currentPage}`}>
-        {pageIcon ? <FontAwesomeIcon icon={pageIcon} /> : <img height="18" src={icon} alt={icon} />}
+        {pageIcon ? (
+          <FontAwesomeIcon icon={pageIcon} />
+        ) : (
+          <img height="18" src={icon} alt={`current page ${currentPage}`} />
+        )}
         {currentPage}
       </Link>
     </nav>
