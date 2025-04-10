@@ -69,14 +69,16 @@
   a,
   .text-link,
   button.link,
-  .header-nav ul li a.active {
+  .header-nav ul li a.active,
+  .select-option-text {
     color: #ff6d32 !important;
   }
   button.primary,
   button.primary:not(:disabled):not(.disabled):active,
   button.primary:not(:disabled):not(.disabled):focus,
   button.primary:not(:disabled):not(.disabled):active:focus,
-  button.primary:not(:disabled):not(.disabled):hover {
+  button.primary:not(:disabled):not(.disabled):hover,
+  .react-select__single-value .select-option-text {
     color: #fff !important;
   }
   button.secondary,
@@ -85,7 +87,6 @@
   button.secondary:not(:disabled):not(.disabled):active:focus,
   button.secondary:not(:disabled):not(.disabled):hover,
   .mfa-select .react-select__placeholder {
-    background: transparent;
     color: #fff;
   }
 

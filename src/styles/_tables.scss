@@ -117,7 +117,7 @@ table {
       text-overflow: ellipsis;
     }
     tr:not(:last-child) {
-      border-bottom: 1px solid $bg-gray;
+      border-bottom: 1px solid var(--body-gray);
     }
   }
 }
