@@ -26,7 +26,7 @@ form .react-select,
 
   //also focus-visible
   &__control--is-focused {
-    outline: 2px dashed #000 !important;
+    outline: 2px dashed var(--body-txt) !important;
     box-shadow: none;
   }
 
@@ -41,7 +41,7 @@ form .react-select,
 
   &__option--is-focused {
     background-color: var(--bg-orange);
-    outline: 1px dashed #000 !important;
+    outline: 1px dashed var(--body-txt) !important;
     outline-offset: -1px;
   }
 
@@ -158,22 +158,14 @@ form .react-select,
 
   .react-select__menu {
     width: 90%;
+    background-color: var(--contrast-color);
+    padding: 0 3px;
   }
   .react-select__menu-list {
     .react-select__option {
       display: flex;
       align-items: center;
     }
-  }
-
-  img.freja {
-    height: 22px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  img {
-    width: auto;
   }
 
   .select-option-text {

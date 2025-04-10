@@ -99,33 +99,6 @@ table {
     }
   }
 
-  .identity-summary & {
-    table-layout: auto;
-    margin-bottom: 0;
-
-    .border-row {
-      &:last-of-type {
-        border-bottom: none;
-      }
-
-      .flag-icon {
-        font-size: 2em !important;
-      }
-
-      .circle-icon {
-        height: 2rem;
-
-        @media (max-width: $bp-md) {
-          height: 1.5rem;
-        }
-      }
-    }
-
-    a {
-      font-size: 1rem;
-    }
-  }
-
   .phone-display &,
   .email-display & {
     tr.display-none {
