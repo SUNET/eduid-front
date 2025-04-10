@@ -8,6 +8,7 @@
     --body-gray: #2e2e2e;
     --txt-gray: #bdbdbd;
     --border-gray: #5e5e5e;
+    --txt-orange: #ff6d32;
     --bg-orange: #36251e;
     --error-red: #ff5965;
   }
@@ -65,36 +66,36 @@
     }
   }
 
-  //links and buttons
-  a,
-  .text-link,
-  button.link,
-  .header-nav ul li a.active,
-  .select-option-text {
-    color: #ff6d32 !important;
-  }
-  button.primary,
-  button.primary:not(:disabled):not(.disabled):active,
-  button.primary:not(:disabled):not(.disabled):focus,
-  button.primary:not(:disabled):not(.disabled):active:focus,
-  button.primary:not(:disabled):not(.disabled):hover,
-  .react-select__single-value .select-option-text {
-    color: #fff !important;
-  }
+  // button.primary,
+  // button.primary:not(:disabled):not(.disabled):active,
+  // button.primary:not(:disabled):not(.disabled):focus,
+  // button.primary:not(:disabled):not(.disabled):active:focus,
+  // button.primary:not(:disabled):not(.disabled):hover,
+  // .react-select__single-value .select-option-text {
+  //   color: #fff !important;
+  // }
   button.secondary,
   button.secondary:not(:disabled):not(.disabled):active,
   button.secondary:not(:disabled):not(.disabled):focus,
   button.secondary:not(:disabled):not(.disabled):active:focus,
   button.secondary:not(:disabled):not(.disabled):hover,
-  .mfa-select .react-select__placeholder {
+  .mfa-select .react-select__placeholder,
+  .react-select__single-value .select-option-text {
     color: #fff;
   }
 
-  .breadcrumb svg,
-  .breadcrumb img {
-    //link-orange color
-    filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
-      contrast(101%);
+  .breadcrumb a {
+    svg,
+    img {
+      //link-orange color
+      filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
+        contrast(101%);
+    }
+    &.disabled {
+      //text gray color
+      filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
+        contrast(76%);
+    }
   }
 
   .remove {
@@ -147,6 +148,5 @@
   //accordion
   .accordion__item .accordion__heading .accordion__button {
     background: #202020;
-    color: #ff6d32;
   }
 }

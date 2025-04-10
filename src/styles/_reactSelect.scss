@@ -104,7 +104,7 @@ form .react-select,
   padding: 0 1.125rem;
 
   .react-select__placeholder {
-    color: $txt-orange;
+    color: var(--txt-orange);
     font-family: $akkurat;
     text-transform: uppercase;
     font-weight: 700;
@@ -112,7 +112,7 @@ form .react-select,
   }
 
   .css-tj5bde-Svg {
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 
   .react-select__control {
@@ -168,7 +168,7 @@ form .react-select,
   }
 
   .select-option-text {
-    color: $txt-orange;
+    color: var(--txt-orange);
     font-family: $akkurat;
     font-weight: 700;
   }

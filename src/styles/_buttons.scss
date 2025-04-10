@@ -66,7 +66,7 @@ button.secondary:not(:disabled):not(.disabled):active,
 button.secondary:not(:disabled):not(.disabled):focus,
 button.secondary:not(:disabled):not(.disabled):active:focus,
 button.secondary:not(:disabled):not(.disabled):hover {
-  color: $txt-orange;
+  color: var(--txt-orange);
   border: solid 2px $bright-orange;
   background-color: var(--contrast-color);
   box-shadow: none;
@@ -153,7 +153,7 @@ button.close {
 /* styles for links that are also buttons */
 button.link {
   background-color: transparent;
-  color: $txt-orange;
+  color: var(--txt-orange);
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -165,7 +165,7 @@ button.link {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $txt-orange;
+    color: var(--txt-orange);
     background-color: transparent;
     text-decoration: underline;
     box-shadow: none;

@@ -64,12 +64,12 @@ header {
 
         // styling for when menu item is clicked
         &.active {
-          color: $txt-orange;
+          color: var(--txt-orange);
         }
 
         // styling for when hovering the menu item
         &:hover {
-          color: $txt-orange;
+          color: var(--txt-orange);
         }
       }
     }
@@ -120,7 +120,7 @@ header {
               color: var(--txt-gray);
             }
             &:hover svg {
-              color: $txt-orange;
+              color: var(--txt-orange);
             }
           }
         }

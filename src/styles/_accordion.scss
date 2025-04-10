@@ -25,7 +25,7 @@
         display: flex;
         cursor: pointer;
         background: $bg-gray;
-        color: $txt-orange;
+        color: var(--txt-orange);
         font-weight: bold;
         position: relative;
         align-items: center;

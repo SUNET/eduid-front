@@ -80,7 +80,7 @@ fieldset {
 
   legend.required::after {
     content: " *";
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 }
 
@@ -124,7 +124,7 @@ fieldset.change-password-custom-inputs {
   //for orange asterisk after label
   & label.required::after {
     content: " *";
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 
   & .help-block {
