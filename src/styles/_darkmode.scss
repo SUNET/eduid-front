@@ -83,7 +83,8 @@
   button.secondary:not(:disabled):not(.disabled):active,
   button.secondary:not(:disabled):not(.disabled):focus,
   button.secondary:not(:disabled):not(.disabled):active:focus,
-  button.secondary:not(:disabled):not(.disabled):hover {
+  button.secondary:not(:disabled):not(.disabled):hover,
+  .mfa-select .react-select__placeholder {
     background: transparent;
     color: #fff;
   }

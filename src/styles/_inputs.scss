@@ -75,7 +75,7 @@ input.form-control.is-invalid:focus {
     outline-offset: -$border-width;
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: $border-width dashed #000 !important;
+    outline: $border-width dashed var(--body-txt) !important;
     transition: none;
   }
 }
