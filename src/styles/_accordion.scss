@@ -24,7 +24,7 @@
       #{$a}__button {
         display: flex;
         cursor: pointer;
-        background: $bg-gray;
+        background: var(--bg-gray);
         color: var(--txt-orange);
         font-weight: bold;
         position: relative;
@@ -109,7 +109,7 @@
       #{$a}__button,
       #{$a}__button:hover {
         color: var(--txt-gray) !important;
-        background-color: $bg-gray !important;
+        background-color: var(--bg-gray) !important;
       }
       #{$a}__panel {
         color: var(--txt-gray);
@@ -200,7 +200,7 @@
       &.expanded.disabled {
         #{$a}__button,
         #{$a}__button:hover {
-          background-color: $bg-gray !important;
+          background-color: var(--bg-gray) !important;
         }
       }
     }

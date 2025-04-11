@@ -11,7 +11,7 @@ form .react-select,
     }
 
     &--is-disabled {
-      background-color: $bg-gray;
+      background-color: var(--bg-gray);
       font-size: 1.25rem;
       * {
         color: var(--txt-gray);
@@ -92,7 +92,7 @@ form .react-select,
     border-radius: 4px;
     padding: 6px 12px;
     cursor: not-allowed;
-    background-color: $bg-gray;
+    background-color: var(--bg-gray);
     color: var(--txt-gray);
     font-size: 1.25rem;
   }

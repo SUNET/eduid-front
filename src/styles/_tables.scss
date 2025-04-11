@@ -173,7 +173,7 @@ caption {
   @extend code;
   tr {
     &:nth-child(even) {
-      background-color: $bg-gray;
+      background-color: var(--bg-gray);
     }
 
     th {

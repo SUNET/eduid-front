@@ -11,6 +11,7 @@
     --txt-orange: #ff6d32;
     --bg-orange: #36251e;
     --error-red: #ff5965;
+    --bg-gray: #202020;
   }
 
   //header and footer
@@ -47,8 +48,8 @@
       ellipse at 112% 100%,
       var(--body-gray) 0,
       var(--body-gray) 45%,
-      #202020 45%,
-      #202020 75%,
+      var(--bg-gray) 45%,
+      var(--bg-gray) 75%,
       var(--contrast-color) 75%
     );
     color: var(--body-txt);
@@ -105,7 +106,7 @@
   .form-control:disabled,
   .form-control[readonly],
   input[readonly] {
-    background-color: #202020;
+    background-color: var(--bg-gray);
   }
   .form-control:focus {
     color: var(--body-txt);
@@ -138,7 +139,7 @@
   }
 
   //accordion
-  .accordion__item .accordion__heading .accordion__button {
-    background: #202020;
-  }
+  // .accordion__item .accordion__heading .accordion__button {
+  //   background: #202020;
+  // }
 }
