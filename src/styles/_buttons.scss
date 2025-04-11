@@ -40,7 +40,7 @@ button.primary:not(:disabled):not(.disabled):active,
 button.primary:not(:disabled):not(.disabled):focus,
 button.primary:not(:disabled):not(.disabled):active:focus,
 button.primary:not(:disabled):not(.disabled):hover {
-  color: var(--contrast-color);
+  color: #fff;
   border: solid 2px $bright-orange;
   background-color: $btn-orange;
   box-shadow: none;
