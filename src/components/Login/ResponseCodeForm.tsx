@@ -199,6 +199,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
 
   return (
     <FinalField<number>
+      id={`v[${num}]`}
       name={`v[${num}]`}
       component="input"
       type="number"
@@ -214,6 +215,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
       onKeyDown={handleArrows}
       onPaste={handlePaste}
       readOnly={readonly}
+      aria-label={`Enter digit in ${num}'s input`}
     />
   );
 }
