@@ -1,18 +1,10 @@
-import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { useIntl } from "react-intl";
-
-export interface InputWrapperProps extends FieldRenderProps<string> {
-  label?: string; // label shown above input
-  helpBlock?: React.ReactNode; // help text show above input
-  autoComplete?: "current-password" | "new-password" | "username";
-  children?: React.ReactNode;
-}
 
 /**
  * Render an input with an optional label and help text, and an error message when validation fails.
  */
-export function InputWrapper(props: InputWrapperProps): JSX.Element {
+export function InputWrapper(props: FieldRenderProps<string>): JSX.Element {
   return (
     <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
       <RenderLabelAndHelpText {...props} />
@@ -22,7 +14,7 @@ export function InputWrapper(props: InputWrapperProps): JSX.Element {
   );
 }
 
-function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
+function RenderLabelAndHelpText(props: FieldRenderProps<string>): JSX.Element {
   const { input, label, helpBlock, required } = props;
   return (
     <div className="input-label-help-text-container">
@@ -36,7 +28,7 @@ function RenderLabelAndHelpText(props: InputWrapperProps): JSX.Element {
   );
 }
 
-function RenderErrorMessage(props: InputWrapperProps): JSX.Element | null {
+function RenderErrorMessage(props: FieldRenderProps<string>): JSX.Element | null {
   const intl = useIntl();
   const { meta } = props;
   if ((!meta.error && !meta.submitError && !props.passwordStrengthMeter) || (!meta.touched && !meta.dirty)) {
