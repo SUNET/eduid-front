@@ -11,7 +11,7 @@
 // // all inputs have a .form-control class which is hijacked by bootstrap
 .form-control,
 input {
-  background-color: white;
+  background-color: var(--contrast-color);
   font-family: $inter-regular;
   font-size: 1.5rem;
   font-weight: 500;
