@@ -1,8 +1,15 @@
+import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
+import { eduidStore } from "eduid-init-app";
+import { LOCALIZED_MESSAGES } from "globals";
+import Raven from "raven-js";
+import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { jsConfigApi } from "services/jsConfig";
+import { appLoadingSlice } from "slices/AppLoading";
+import { updateIntl } from "slices/Internationalisation";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -39,10 +46,38 @@ export function IndexMain(): JSX.Element {
   const location = useLocation();
   const showAuthenticateModal = location.pathname.startsWith("/profile");
   const isIndex = location.pathname === "/";
+  const { data ,isLoading, isError } = jsConfigApi.useFetchJsConfigQuery();
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
+
+  async function getPersonalData() {
+    const response = await eduidStore.dispatch(requestAllPersonalData());
+    if (requestAllPersonalData.fulfilled.match(response)) {
+      if (response.payload.language) {
+        eduidStore.dispatch(
+          updateIntl({
+            locale: response.payload.language,
+            messages: LOCALIZED_MESSAGES[response.payload.language],
+          })
+        );
+      }
+      eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
+    }
+
+  }
+  
+  useEffect(() => {
+    if (data && !isLoading && !isError) {
+      if (data.payload?.sentry_dsn) {
+        Raven.config(data.payload.sentry_dsn as string).install();
+      }
+      if (location.pathname.includes("/profile/")) {
+        getPersonalData()
+      }
+    }
+  }, [data, isLoading, isError]);
 
   return (
     <React.StrictMode>

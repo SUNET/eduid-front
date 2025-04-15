@@ -1,16 +1,10 @@
-import { fetchJsConfig } from "apis/eduidJsConfig";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
-import { EDUID_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
-import Raven from "raven-js";
 import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { appLoadingSlice } from "slices/AppLoading";
-import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
@@ -30,32 +24,7 @@ function showErrorMsg() {
   }
 }
 
-/* Get configuration */
-const getConfig = async function () {
-  const result = await eduidStore.dispatch(fetchJsConfig({ url: EDUID_CONFIG_URL }));
-  if (fetchJsConfig.fulfilled.match(result)) {
-    if (result?.payload?.sentry_dsn) {
-      Raven.config(result.payload.sentry_dsn as string).install();
-    }
-    if (window.location.href.includes("/profile/")) {
-      const response = await eduidStore.dispatch(requestAllPersonalData());
-      if (requestAllPersonalData.fulfilled.match(response)) {
-        if (response.payload.language) {
-          eduidStore.dispatch(
-            updateIntl({
-              locale: response.payload.language,
-              messages: LOCALIZED_MESSAGES[response.payload.language],
-            })
-          );
-        }
-        eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
-      }
-    }
-
-    showErrorMsg();
-  }
-};
-
+showErrorMsg();
 
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(eduidStore.dispatch);
@@ -77,4 +46,3 @@ root.render(
     </ResetPasswordGlobalStateProvider>
   </SignupGlobalStateProvider>
 );
-requestIdleCallback(getConfig)
