@@ -1,7 +1,6 @@
 /** Note! Order of import below affects cascaded application of styles, so change with care. **/
 
 @import "reset";
-@import "anti-bootstrap";
 @import "fonts";
 @import "typography";
 @import "base";
@@ -38,4 +37,3 @@
 @import "landingPage";
 @import "variables";
 @import "darkmode";
-@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";

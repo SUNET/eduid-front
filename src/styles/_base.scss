@@ -173,3 +173,9 @@ hr.border-line {
 section.top-spacing {
   margin-top: 1rem;
 }
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}

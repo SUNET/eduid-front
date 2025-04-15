@@ -69,7 +69,7 @@ table {
     }
 
     & tr {
-      height: 3rem;
+      // height: 3rem;
 
       &.border-row {
         font-size: 0.8rem;
@@ -109,7 +109,6 @@ table {
       grid-template-columns: 3fr 1.5fr 0.5fr;
       gap: 5px;
       align-items: center;
-      padding: 5px;
     }
     tr > * {
       overflow: hidden;

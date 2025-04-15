@@ -60,6 +60,7 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
                   buttonstyle="primary"
                   id="reset-password-button"
                   disabled={_disabled}
+                  type="submit"
                   onClick={formProps.handleSubmit}
                 >
                   <FormattedMessage defaultMessage="send email" description="Reset Password button" />

@@ -43,6 +43,7 @@ a.disabled,
   a {
     display: grid;
     align-items: center;
+    word-break: break-word;
     &.left {
       grid-template-columns: 0.1fr 1fr;
     }

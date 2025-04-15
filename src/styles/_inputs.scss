@@ -2,31 +2,25 @@
 
 input {
   box-sizing: border-box;
+  font-family: $inter-regular;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--body-txt);
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  height: 3rem;
+  background-color: var(--contrast-color);
 }
 
 /* Form controls and interactive states */
-.form-control {
-  display: flex;
-}
 
-.form-control:disabled,
-.form-control[readonly],
-input[readonly] {
-  color: var(--txt-gray);
-  background-color: var(--bg-gray);
-  :focus,
-  :hover {
-    pointer-events: none;
-  }
-}
-
-input.form-control,
-input.form-control.is-valid,
-// input.form-control.is-invalid,
-input.form-control:focus,
-input.form-control.is-valid:focus
-// input.form-control.is-invalid:focus
-{
+input,
+input.is-valid,
+input:focus,
+input.is-valid:focus {
   outline: $border-width solid var(--border-gray);
   background-image: none;
   background-color: var(--contrast-color);
@@ -35,7 +29,6 @@ input.form-control.is-valid:focus
   box-shadow: none;
 }
 
-.form-control::placeholder,
 input::placeholder {
   font-family: $inter-regular;
   font-size: 1.5rem;
@@ -51,15 +44,9 @@ input::placeholder {
   }
 }
 
-input.form-control.is-invalid,
-input.form-control.is-invalid:focus {
-  // outline: $border-width solid $error-red;
-  background-image: none;
-}
-
-input.form-control.is-invalid,
-input.form-control.is-invalid:focus {
-  // outline: $border-width solid $error-red;
+input.is-invalid,
+input.is-invalid:focus {
+  outline: $border-width solid rgba(var(--error-red), 0.5);
   background-image: none;
 }
 
@@ -80,6 +67,19 @@ input.form-control.is-invalid:focus {
   }
 }
 
+input:disabled,
+input[readonly] {
+  color: $txt-gray;
+  background-color: $bg-gray;
+  :focus,
+  :hover {
+    pointer-events: none;
+  }
+}
+input[readonly] {
+  outline: none;
+}
+
 //removing chrome autocomplete babyblue
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -97,6 +97,7 @@ select:-webkit-autofill:focus {
 input[type="radio"] {
   //remove standard background appearance
   appearance: none;
+  outline: none;
 
   //create custom radio button appearance
   display: inline-block;
@@ -167,7 +168,7 @@ input[type="radio"] {
 }
 
 #copy-new-password {
-  background-color: var(--border-gray);
+  background-color: var(--bg-gray);
 }
 
 input#display-none-new-password {
@@ -291,7 +292,6 @@ input:-webkit-autofill {
 
 /* Responsive */
 @media (max-width: $bp-sm) {
-  .form-control,
   input,
   .radio-input-container span {
     font-size: 1rem;
@@ -301,7 +301,6 @@ input:-webkit-autofill {
     margin: 0;
   }
 
-  .form-control::placeholder,
   input::placeholder {
     font-size: 1rem;
   }

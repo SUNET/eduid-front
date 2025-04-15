@@ -28,7 +28,12 @@ export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
   }
 
   return (
-    <button className={props.buttonstyle} {...extra} {...{ ...props, buttonstyle: undefined }}>
+    <button
+      type={props.type ? props.type : "button"}
+      className={props.buttonstyle}
+      {...extra}
+      {...{ ...props, buttonstyle: undefined }}
+    >
       {props.children}
     </button>
   );
