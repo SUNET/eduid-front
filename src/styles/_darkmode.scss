@@ -103,12 +103,11 @@
   }
 
   //form
-  .form-control:disabled,
-  .form-control[readonly],
+  input:disabled,
   input[readonly] {
     background-color: var(--bg-gray);
   }
-  .form-control:focus {
+  input:focus {
     color: var(--body-txt);
   }
 
