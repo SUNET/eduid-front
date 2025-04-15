@@ -1,24 +1,24 @@
-import { useActor } from "@xstate/react";
-import { getPasswordRequest } from "apis/eduidSignup";
+import { useSelector } from "@xstate/react";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCredentials(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
-  const [state] = useActor(signupContext.signupService);
+  const state = useSelector(signupContext.signupService, (s) => s);
 
   useEffect(() => {
-    if (state.event.type != "API_FAIL") {
+    if (state.context.event?.type != "API_FAIL") {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
       signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
     }
   }, []);
 
-  if (state.event.type == "API_FAIL") {
+  if (state.context.event?.type == "API_FAIL") {
     return (
       <React.Fragment>
         <p>
@@ -55,21 +55,16 @@ export function SignupCredentials(): JSX.Element {
 export function SignupCredentialPassword(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-
-  async function getPassword() {
-    const res = await dispatch(getPasswordRequest());
-
-    if (getPasswordRequest.fulfilled.match(res) && res.payload.state.credentials.completed === true) {
-      dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
-    } else {
-      signupContext.signupService.send({ type: "API_FAIL" });
-    }
-  }
+  const { isSuccess, isError } = signupApi.useGetPasswordRequestQuery();
 
   useEffect(() => {
-    getPassword();
-  }, []);
+    if (isSuccess) {
+      dispatch(clearNotifications());
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else if (isError) {
+      signupContext.signupService.send({ type: "API_FAIL" });
+    }
+  }, [isSuccess, isError]);
 
   return <React.Fragment></React.Fragment>;
 }
