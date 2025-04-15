@@ -73,7 +73,7 @@
   button.secondary:not(:disabled):not(.disabled):active:focus,
   button.secondary:not(:disabled):not(.disabled):hover,
   .mfa-select .react-select__placeholder,
-  .react-select__single-value .select-option-text {
+  .mfa-select .react-select__single-value .select-option-text {
     color: #fff;
   }
 

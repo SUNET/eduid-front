@@ -5,8 +5,14 @@ form .react-select,
 .select--is-disabled .select {
   &__control {
     border: 2px solid var(--border-gray);
+    background-color: var(--contrast-color);
+    color: var(--body-txt);
 
     .react-select__indicator {
+      color: var(--txt-gray);
+    }
+
+    .react-select__single-value {
       color: var(--txt-gray);
     }
 
@@ -17,6 +23,11 @@ form .react-select,
         color: var(--txt-gray);
       }
     }
+  }
+
+  &__menu {
+    color: var(--body-txt);
+    background-color: var(--contrast-color);
   }
 
   &__control:hover {
@@ -46,8 +57,9 @@ form .react-select,
   }
 
   &__option--is-selected {
-    color: initial;
-    background-color: darken var(--bg-orange), 5%;
+    color: var(--txt-gray);
+    background-color: inherit;
+    font-weight: bold;
   }
 }
 
