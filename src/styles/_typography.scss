@@ -13,6 +13,7 @@ h5,
   margin-bottom: 1em;
   line-height: 1.2;
   font-family: $inter-bold;
+  font-weight: normal;
 
   @media (max-width: $bp-md) {
     word-wrap: break-word;
