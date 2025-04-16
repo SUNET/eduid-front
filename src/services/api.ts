@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { StateWithCommonConfig } from 'apis/common';
 import { EDUID_CONFIG_URL } from 'globals';
@@ -32,17 +33,41 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     }
     const result = await rawBaseQuery(base_args, api, extraOptions);
 
-    // TODO: auth and generic error
+    // TODO: auth error
     
     if (result.data && typeof result.data === 'object' && 'error' in result.data && result.data.error === true) {
-        api.dispatch(result.data)
+        // dispatch the error to the nofification middleware
+        // but use a clone of the data as the current middleware modifies the data
+        api.dispatch(structuredClone(result.data));
+        // return as error for rtk query purposes
         return {
             error: result.data,
             meta: result.meta
         }
-    }    
+    }
+    // handle errors cought by fetchBaseQuery
+    if (result.error) {
+        if ("error" in result.error) {
+            api.dispatch(genericApiFail(result.error.error));
+        } else {
+            api.dispatch(genericApiFail("Unknown error"));
+        }
+    }
     return result;
 }
+
+/*********************************************************************************************************************/
+// Fake an error response from the backend. The action ending in _FAIL will make the notification
+// middleware picks this error up and shows something to the user.
+export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
+    return {
+      error: true,
+      payload: {
+        message,
+      },
+    };
+  });
+  
 export interface ApiResponse<T> {
     payload: T;
     type: string;
