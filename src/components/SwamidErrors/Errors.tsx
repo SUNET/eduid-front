@@ -1,6 +1,4 @@
-import { fetchJsConfig } from "apis/eduidJsConfig";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { EDUID_CONFIG_URL } from "globals";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
@@ -21,20 +19,11 @@ export function Errors() {
   const query = new URLSearchParams(useLocation().search);
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const dispatch = useAppDispatch();
-
+  
   const [errorURL, setErrorURL] = useState<errorURLData>({});
 
   useEffect(() => {
-    // bootstrap signup state in redux store by asking the backend for it
-    async function fetchJsErrorsConfig(): Promise<void> {
-      const response = await dispatch(fetchJsConfig({ url: EDUID_CONFIG_URL }));
-      if (fetchJsConfig.fulfilled.match(response)) {
-        setErrorURL(parseErrorURL(query));
-      }
-    }
-
-    fetchJsErrorsConfig();
+    setErrorURL(parseErrorURL(query));
   }, []);
 
   function handleDashboardOnClick() {
