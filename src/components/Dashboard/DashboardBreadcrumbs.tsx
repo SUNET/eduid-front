@@ -5,9 +5,9 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
 interface DashboardBreadcrumbsTypes {
-  pageIcon?: IconProp;
-  currentPage: string;
-  icon?: string;
+  readonly pageIcon?: IconProp;
+  readonly currentPage: string;
+  readonly icon?: string;
 }
 
 export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardBreadcrumbsTypes): JSX.Element {

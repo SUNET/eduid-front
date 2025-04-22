@@ -9,7 +9,7 @@ import SecurityKeyGif from "../../../img/computer_animation.gif";
 import { ResetPasswordGlobalStateContext } from "../ResetPassword/ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
-  webauthn?: any;
+  readonly webauthn?: any;
   setActive?(val: boolean): void;
 }
 
