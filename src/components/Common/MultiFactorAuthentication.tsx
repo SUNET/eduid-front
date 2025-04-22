@@ -32,6 +32,7 @@ interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement>;
   readonly handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
   readonly handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
+  readonly handleVerifyWebauthnTokenEidas: (token: string) => Promise<void>;
 }
 
 export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
@@ -188,6 +189,35 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     }
   }
 
+  // Verify eidas
+  async function handleVerifyWebauthnTokenEidas(token: string) {
+    const response = await dispatch(
+      bankIDVerifyCredential({
+        credential_id: token,
+        method: "eidas",
+      })
+    );
+    if (eidasVerifyCredential.fulfilled.match(response)) {
+      if (response.payload.location) {
+        window.location.assign(response.payload.location);
+      }
+    } else if (eidasVerifyCredential.rejected.match(response)) {
+      const VerifyCredentialResponse: any = response;
+      setShowVerifyWebauthnModal(false);
+      // prepare authenticate() and AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "verifyCredential",
+          frontend_state: JSON.stringify({
+            method: "eidas",
+            credential: token,
+            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+          }),
+        })
+      );
+    }
+  }
+
   function handleStopAskingWebauthnDescription() {
     setIsRegisteringAuthenticator(false);
     setShowSecurityKeyNameModal(false);
@@ -334,6 +364,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         wrapperRef={wrapperRef}
         handleVerifyWebauthnTokenFreja={handleVerifyWebauthnTokenFreja}
         handleVerifyWebauthnTokenBankID={handleVerifyWebauthnTokenBankID}
+        handleVerifyWebauthnTokenEidas={handleVerifyWebauthnTokenEidas}
       />
 
       <ConfirmModal
@@ -433,6 +464,7 @@ function SecurityKeyTable({
   wrapperRef,
   handleVerifyWebauthnTokenBankID,
   handleVerifyWebauthnTokenFreja,
+  handleVerifyWebauthnTokenEidas,
 }: SecurityKeyTable) {
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
@@ -540,6 +572,9 @@ function SecurityKeyTable({
               </EduIDButton>
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
                 <FormattedMessage description="security verify" defaultMessage="BankID" />
+              </EduIDButton>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenEidas(cred.key)}>
+                <FormattedMessage description="security verify" defaultMessage="EIDAS" />
               </EduIDButton>
             </span>
           </div>
