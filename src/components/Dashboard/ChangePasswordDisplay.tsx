@@ -11,7 +11,6 @@ function ChangePasswordDisplay() {
   async function handleSuggestedPassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.fulfilled.match(response)) {
-      console.log("response", response);
       navigate("/profile/chpass");
     }
   }

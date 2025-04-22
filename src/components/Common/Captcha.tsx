@@ -11,7 +11,7 @@ import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
-  disabled?: boolean; // disable the submit button if true
+  readonly disabled?: boolean; // disable the submit button if true
 }
 
 interface SignupCaptchaFormData {

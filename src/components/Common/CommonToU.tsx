@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import EduIDButton from "./EduIDButton";
 
 interface CommonToUProps {
-  version: string;
+  readonly version: string;
   handleAccept?(e: React.MouseEvent<HTMLElement>): void;
   handleCancel?(e: React.MouseEvent<HTMLElement>): void;
 }

@@ -76,6 +76,11 @@ table {
       &.border-row {
         font-size: 0.8rem;
         border-bottom: 1px solid var(--border-gray);
+        height: 2rem;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
       }
 
       &td:first-child {
