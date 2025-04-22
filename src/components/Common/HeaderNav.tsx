@@ -101,7 +101,11 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             >
               <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
             </NavLink>
-            <button onClick={() => toggleOpen("start")}>
+            <button
+              onClick={() => toggleOpen("start")}
+              type="button"
+              aria-label={isOpen.start ? "open start menu" : "start menu"}
+            >
               {isOpen.start ? (
                 <FontAwesomeIcon icon={faChevronUp as IconProp} />
               ) : (
@@ -127,7 +131,11 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             >
               <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
             </NavLink>
-            <button onClick={() => toggleOpen("identity")}>
+            <button
+              onClick={() => toggleOpen("identity")}
+              type="button"
+              aria-label={isOpen.identity ? "open identity menu" : "start menu"}
+            >
               {isOpen.identity ? (
                 <FontAwesomeIcon icon={faChevronUp as IconProp} />
               ) : (
@@ -162,7 +170,11 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
               <FormattedMessage defaultMessage="Security" description="security main title" />
             </NavLink>
 
-            <button onClick={() => toggleOpen("security")}>
+            <button
+              onClick={() => toggleOpen("security")}
+              type="button"
+              aria-label={isOpen.security ? "open security menu" : "start menu"}
+            >
               {isOpen.security ? (
                 <FontAwesomeIcon icon={faChevronUp as IconProp} />
               ) : (
@@ -192,7 +204,11 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
             >
               <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
             </NavLink>
-            <button onClick={() => toggleOpen("account")}>
+            <button
+              onClick={() => toggleOpen("account")}
+              type="button"
+              aria-label={isOpen.account ? "open account menu" : "start menu"}
+            >
               {isOpen.account ? (
                 <FontAwesomeIcon icon={faChevronUp as IconProp} />
               ) : (
