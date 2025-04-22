@@ -1,3 +1,5 @@
+/** Personal identity / co-ordination number form **/
+
 #connect-nin-number-container {
   margin-top: 30px;
 
@@ -39,12 +41,12 @@
       margin: 0.5rem 0;
 
       & a span {
-        color: $txt-black;
-        border-bottom: $txt-black solid 1px;
+        color: var(--body-txt);
+        border-bottom: var(--body-txt) solid 1px;
       }
 
       & a span:hover {
-        color: $txt-orange;
+        color: var(--txt-orange);
         border-bottom: transparent solid 1px;
       }
     }
@@ -64,9 +66,9 @@
     margin-bottom: 0.5rem;
     font-family: $inter-bold;
     line-height: 1;
-    color: $txt-black;
-    border: solid $txt-black 2px;
-    background-color: $white;
+    color: var(--body-txt);
+    border: solid var(--body-txt) 2px;
+    background-color: var(--contrast-color);
     padding: 1rem 1.5rem;
     border-radius: 20px;
     width: 100%;
@@ -82,7 +84,7 @@
     &:hover {
       transform: scale(0.99);
       border: solid $bright-orange 2px;
-      color: $txt-orange;
+      color: var(--txt-orange);
       transition: all 0.3s ease;
     }
 
@@ -94,23 +96,23 @@
 
 .vetting-button {
   & button:disabled {
-    background-color: $body-gray;
-    border-color: $txt-gray;
+    background-color: var(--body-gray);
+    border-color: var(--txt-gray);
 
     & .text {
-      color: $txt-gray;
+      color: var(--txt-gray);
 
       & .description {
-        color: $txt-black;
+        color: var(--body-txt);
       }
 
       & .explanation-link {
-        color: $txt-black;
+        color: var(--body-txt);
       }
     }
 
     & .name {
-      color: $txt-gray;
+      color: var(--txt-gray);
     }
 
     &:hover {
@@ -122,12 +124,12 @@
 // .proofing-btn-help {
 //   margin: 0 0.5rem 2rem;
 //   line-height: 1.2;
-//   color: $txt-black;
+//   color: var(--body-txt);
 //   font-size: 0.875rem;
 // }
 
 .proofing-btn-help.disabled {
-  color: $txt-gray;
+  color: var(--txt-gray);
 }
 
 @media (max-width: $bp-md) {

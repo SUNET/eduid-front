@@ -1,5 +1,3 @@
-@import "variables";
-
 /* Inputs and form controls, mainly non button */
 
 input {
@@ -7,14 +5,14 @@ input {
   font-family: $inter-regular;
   font-size: 1.5rem;
   font-weight: 500;
-  color: $txt-black;
+  color: var(--body-txt);
   box-shadow: none;
   border-radius: 0;
   border: none;
   width: 100%;
   padding: 1.25rem 0.5rem;
   height: 3rem;
-  background-color: $white;
+  background-color: var(--contrast-color);
 }
 
 /* Form controls and interactive states */
@@ -23,9 +21,9 @@ input,
 input.is-valid,
 input:focus,
 input.is-valid:focus {
-  outline: $border-width solid $border-gray;
+  outline: $border-width solid var(--border-gray);
   background-image: none;
-  background-color: $white;
+  background-color: var(--contrast-color);
   transition: none;
   border: none;
   box-shadow: none;
@@ -40,21 +38,22 @@ input::placeholder {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    border-top: $border-width solid $white;
-    border-bottom: $border-width solid $txt-black !important;
+    //border-top: $border-width solid var(--contrast-color);
+    padding-top: calc(1.25rem + $border-width);
+    border-bottom: $border-width solid var(--body-txt) !important;
   }
 }
 
 input.is-invalid,
 input.is-invalid:focus {
-  outline: $border-width solid rgba($error-red, 0.5);
+  outline: $border-width solid rgba(var(--error-red), 0.5);
   background-image: none;
 }
 
 //tab-focus
 :focus-visible,
 #mfa-security-key:focus {
-  outline: $border-width dashed $txt-black !important;
+  outline: $border-width dashed var(--body-txt) !important;
   transition: none !important;
 
   //has parents with overflow hidden
@@ -63,15 +62,15 @@ input.is-invalid:focus {
     outline-offset: -$border-width;
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: $border-width dashed #000 !important;
+    outline: $border-width dashed var(--body-txt) !important;
     transition: none;
   }
 }
 
 input:disabled,
 input[readonly] {
-  color: $txt-gray;
-  background-color: $bg-gray;
+  color: var(--txt-txt);
+  background-color: var(--bg-gray);
   :focus,
   :hover {
     pointer-events: none;
@@ -91,7 +90,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--contrast-color) inset !important;
 }
 
 /* Radio buttons */
@@ -129,8 +128,8 @@ input[type="radio"] {
     border: none;
 
     .error {
-      background: $error-red;
-      color: $white;
+      background: var(--error-red);
+      color: var(--contrast-color);
       border: none;
     }
   }
@@ -150,7 +149,7 @@ input[type="radio"] {
   span {
     font-size: 1.25rem;
     align-self: center;
-    color: $txt-black;
+    color: var(--body-txt);
     font-family: $inter-regular;
     font-weight: normal;
     margin: 0 2rem 0 0;
@@ -169,7 +168,7 @@ input[type="radio"] {
 }
 
 #copy-new-password {
-  background-color: $bg-gray;
+  background-color: var(--bg-gray);
 }
 
 input#display-none-new-password {
@@ -204,7 +203,7 @@ input[type="checkbox"] {
 
 .toggle-switch {
   display: inline-block;
-  background: $border-gray;
+  background: var(--border-gray);
   border-radius: 16px;
   width: 54px;
   height: 28px;
@@ -219,7 +218,7 @@ input[type="checkbox"] {
 
   &::before {
     display: block;
-    background: $white;
+    background: var(--contrast-color);
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -257,7 +256,7 @@ select {
   padding: 5px;
   border-radius: 3px;
   width: 100%;
-  background-color: $white;
+  background-color: var(--contrast-color);
   height: 40px;
   margin-top: 3px;
 }
@@ -288,7 +287,7 @@ input.display-none {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  box-shadow: 0 0 0 50px $white inset;
+  box-shadow: 0 0 0 50px var(--contrast-color) inset;
 }
 
 /* Responsive */

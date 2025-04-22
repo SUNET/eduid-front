@@ -1,4 +1,7 @@
+/** Note! Order of import below affects cascaded application of styles, so change with care. **/
+
 @import "reset";
+@import "variables";
 @import "fonts";
 @import "typography";
 @import "base";
@@ -15,8 +18,6 @@
 @import "figure";
 @import "timer";
 @import "Help";
-
-/* replaces specific stylesheets */
 @import "AccountLinking";
 @import "ChangePassword";
 @import "DashboardMain";
@@ -35,3 +36,4 @@
 @import "reactSelect";
 @import "accordion";
 @import "landingPage";
+@import "darkmode";

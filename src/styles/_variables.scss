@@ -1,22 +1,24 @@
+/** System wide variables to reuse for consistency **/
+
 /*
  * Colors
  * ========================================================================== */
 
-$white: #fff;
-$txt-black: #161616;
-$body-gray: #f4f4f4;
-$bg-gray: #ebebeb;
-$border-gray: #d8d8d8;
-$txt-gray: #5e5e5e; //text on bg gray
-
-$bg-orange: #ffe7dd;
-$bright-orange: #ff4500; //eduID, higlights
-$txt-orange: #c23400; //text on gray or orange
+//CSS vars inst of SASS to enable dark mode overrides
+:root {
+  --contrast-color: #fff;
+  --body-txt: #161616;
+  --body-gray: #f4f4f4;
+  --txt-gray: #5e5e5e; //text on bg gray
+  --border-gray: #d8d8d8;
+  --txt-orange: #c23400; //text on gray or orange
+  --bg-orange: #ffe7dd;
+  --error-red: #d2143a;
+  --bg-gray: #ebebeb;
+}
+$bright-orange: #ff4500; //eduID, highlights
 $btn-orange: #db3a00; //white on orange
-
-$error-red: #d2143a;
 $success-green: #177d4d;
-
 /*
  * Typography
  * ========================================================================== */

@@ -1,12 +1,11 @@
-/* styles for tables displaying user info on settings page */
-@import "variables";
+/** Table styles **/
 
 table {
   width: 100%;
   font-size: 1.125rem;
   font-family: $inter-light;
   table-layout: fixed;
-  background-color: $white;
+  background-color: var(--contrast-color);
 
   @media (max-width: $bp-md) {
     font-size: 1rem;
@@ -56,7 +55,7 @@ table {
       }
 
       &.primary {
-        color: $txt-black;
+        color: var(--body-txt);
       }
       &.verified,
       &.unverified,
@@ -74,7 +73,7 @@ table {
 
       &.border-row {
         font-size: 0.8rem;
-        border-bottom: 1px solid $border-gray;
+        border-bottom: 1px solid var(--border-gray);
         height: 2rem;
 
         &:last-of-type {
@@ -105,33 +104,6 @@ table {
     }
   }
 
-  .identity-summary & {
-    table-layout: auto;
-    margin-bottom: 0;
-
-    .border-row {
-      &:last-of-type {
-        border-bottom: none;
-      }
-
-      .flag-icon {
-        font-size: 2em !important;
-      }
-
-      .circle-icon {
-        height: 2rem;
-
-        @media (max-width: $bp-md) {
-          height: 1.5rem;
-        }
-      }
-    }
-
-    a {
-      font-size: 1rem;
-    }
-  }
-
   .phone-display &,
   .email-display & {
     tr.display-none {
@@ -149,7 +121,7 @@ table {
       text-overflow: ellipsis;
     }
     tr:not(:last-child) {
-      border-bottom: 1px solid $bg-gray;
+      border-bottom: 1px solid var(--body-gray);
     }
   }
 }
@@ -175,7 +147,7 @@ caption {
   }
 
   th {
-    border-bottom: 2px dashed $border-gray;
+    border-bottom: 2px dashed var(--border-gray);
     padding: 1rem 0.5rem 0.75rem;
 
     &:first-child {
@@ -205,7 +177,7 @@ caption {
   @extend code;
   tr {
     &:nth-child(even) {
-      background-color: $bg-gray;
+      background-color: var(--bg-gray);
     }
 
     th {

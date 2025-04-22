@@ -1,0 +1,144 @@
+/* System/browser set dark mode overrides */
+
+@media (prefers-color-scheme: dark) {
+  //variables
+  :root {
+    --contrast-color: #000;
+    --body-txt: #f4f4f4;
+    --body-gray: #2e2e2e;
+    --txt-gray: #bdbdbd;
+    --border-gray: #5e5e5e;
+    --txt-orange: #ff6d32;
+    --bg-orange: #36251e;
+    --error-red: #ff5965;
+    --bg-gray: #202020;
+  }
+
+  //header and footer
+  header .eduid-logo {
+    background-image: url(../../img/eduid-logo-orange.svg) !important;
+  }
+  footer .sunet-logo {
+    background-image: url("../../img/sunet_logo_white.svg") !important;
+  }
+  .header-user {
+    color: #fff;
+  }
+
+  //landing and start page
+  .status-box.success,
+  .landing-howTo div {
+    color: #fff;
+    &:nth-of-type(1) {
+      background-color: #15221a;
+    }
+    &:nth-of-type(2) {
+      background-color: #273e30;
+    }
+    &:nth-of-type(3) {
+      background-color: #355543;
+    }
+    &:nth-of-type(4) {
+      background-color: #3b634c;
+    }
+  }
+
+  .landing {
+    background-image: radial-gradient(
+      ellipse at 112% 100%,
+      var(--body-gray) 0,
+      var(--body-gray) 45%,
+      var(--bg-gray) 45%,
+      var(--bg-gray) 75%,
+      var(--contrast-color) 75%
+    );
+    color: var(--body-txt);
+
+    .landing-howTo {
+      filter: drop-shadow(0 -6px 0 $success-green);
+    }
+
+    .icon-holder {
+      color: #fff;
+      //success green color
+      img {
+        filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
+      }
+    }
+  }
+
+  button.secondary,
+  button.secondary:not(:disabled):not(.disabled):active,
+  button.secondary:not(:disabled):not(.disabled):focus,
+  button.secondary:not(:disabled):not(.disabled):active:focus,
+  button.secondary:not(:disabled):not(.disabled):hover,
+  .mfa-select .react-select__placeholder,
+  .mfa-select .react-select__single-value .select-option-text {
+    color: #fff;
+  }
+
+  .breadcrumb a {
+    svg,
+    img {
+      //link-orange color
+      filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
+        contrast(101%);
+    }
+    &.disabled {
+      //text gray color
+      filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
+        contrast(76%);
+    }
+  }
+
+  .remove {
+    //text gray color
+    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
+      contrast(76%);
+    //body-text white color
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(99%) sepia(3%) saturate(363%) hue-rotate(209deg) brightness(115%)
+        contrast(91%);
+    }
+  }
+
+  //form
+  input:disabled,
+  input[readonly] {
+    background-color: var(--bg-gray);
+  }
+  input:focus {
+    color: var(--body-txt);
+  }
+
+  input:is(:-webkit-autofill, :autofill),
+  input:-internal-autofill-selected {
+    color: var(--txt-gray) !important;
+    -webkit-text-fill-color: var(--txt-gray) !important;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    color: var(--txt-gray) !important;
+    -webkit-text-fill-color: var(--txt-gray) !important;
+  }
+
+  ::placeholder {
+    color: var(--txt-gray) !important;
+    opacity: 1; /* Firefox */
+  }
+  ::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: var(--txt-gray) !important;
+  }
+
+  .modal.show {
+    background-color: rgba(46, 46, 46, 0.75);
+  }
+
+  //accordion
+  // .accordion__item .accordion__heading .accordion__button {
+  //   background: #202020;
+  // }
+}

@@ -1,22 +1,20 @@
-@import "./variables";
-
 /* Accordion */
 
 .accordion {
   $a: &;
 
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
-  border: 2px solid $border-gray;
+  border: 2px solid var(--border-gray);
   border-radius: 6px;
   overflow: hidden;
 
   &__item {
     + #{$a}__item {
-      border-top: 2px solid $border-gray;
+      border-top: 2px solid var(--border-gray);
     }
 
     &.expanded > #{$a}__heading > #{$a}__button {
-      background: $bg-orange;
+      background: var(--bg-orange);
     }
 
     // Clickable
@@ -24,8 +22,8 @@
       #{$a}__button {
         display: flex;
         cursor: pointer;
-        background: $bg-gray;
-        color: $txt-orange;
+        background: var(--bg-gray);
+        color: var(--txt-orange);
         font-weight: bold;
         position: relative;
         align-items: center;
@@ -35,7 +33,7 @@
 
         &:hover {
           background: $btn-orange;
-          color: $white;
+          color: var(--contrast-color);
 
           #{$a}-title {
             text-decoration: underline;
@@ -43,16 +41,6 @@
         }
 
         #{$a}-icon {
-          .circle-icon {
-            height: 1.25rem;
-            margin-right: 0.75rem;
-            vertical-align: text-top;
-
-            @media (max-width: $bp-md) {
-              height: 1.125rem;
-            }
-          }
-
           svg {
             text-align: center;
             font-size: 0.9rem;
@@ -92,7 +80,7 @@
 
     // Content
     #{$a}__panel {
-      background-color: $white;
+      background-color: var(--contrast-color);
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
 
@@ -107,7 +95,7 @@
       }
 
       input[type="text"] {
-        background-color: $body-gray;
+        background-color: var(--body-gray);
       }
     }
 
@@ -115,15 +103,15 @@
     &.disabled,
     &.disabled:hover,
     &.expanded.disabled {
-      color: $txt-gray;
+      color: var(--txt-gray);
 
       #{$a}__button,
       #{$a}__button:hover {
-        color: $txt-gray !important;
-        background-color: $bg-gray !important;
+        color: var(--txt-gray) !important;
+        background-color: var(--bg-gray) !important;
       }
       #{$a}__panel {
-        color: $txt-gray;
+        color: var(--txt-gray);
       }
 
       #{$a}-icon img {
@@ -148,7 +136,7 @@
 
     #{$a}__item {
       margin-bottom: 10px;
-      border: 2px solid $border-gray;
+      border: 2px solid var(--border-gray);
       border-radius: 6px;
       overflow: hidden;
 
@@ -160,19 +148,19 @@
         border-color: $bright-orange;
 
         &.expanded {
-          border-color: $border-gray;
+          border-color: var(--border-gray);
         }
       }
 
       &.expanded > #{$a}__heading > #{$a}__button {
-        background: $bg-orange;
+        background: var(--bg-orange);
       }
 
       // Clickable
       #{$a}__heading {
         #{$a}__button {
           &:hover {
-            color: $white;
+            color: var(--contrast-color);
             background: $btn-orange;
           }
 
@@ -197,21 +185,21 @@
       &.disabled,
       &.disabled:hover,
       &.expanded.disabled {
-        border-color: $border-gray;
+        border-color: var(--border-gray);
       }
 
       &.disabled,
       &.disabled:hover {
         #{$a}__button,
         #{$a}__button:hover {
-          background-color: $white !important;
+          background-color: var(--contrast-color) !important;
         }
       }
 
       &.expanded.disabled {
         #{$a}__button,
         #{$a}__button:hover {
-          background-color: $bg-gray !important;
+          background-color: var(--bg-gray) !important;
         }
       }
     }

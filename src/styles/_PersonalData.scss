@@ -1,3 +1,5 @@
+/** Edit name form **/
+
 .personal-data {
   .title {
     margin-bottom: 1.25rem;
@@ -40,7 +42,7 @@
   }
 
   .edit-data {
-    background-color: #fff;
+    background-color: var(--contrast-color);
     padding: 1rem;
   }
 }
@@ -56,6 +58,10 @@
 
 // styles for input on white bg
 .edit-data {
+  input {
+    background-color: var(--body-gray);
+  }
+
   .form-group {
     flex: 1;
 

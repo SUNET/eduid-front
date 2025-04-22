@@ -30,12 +30,12 @@ dialog[open] {
   &-dialog {
     @extend .horizontal-content-margin;
     max-width: calc(870px - 4rem);
-    background-color: $white;
+    background-color: var(--contrast-color);
     border-radius: 20px;
     margin: auto;
 
     .modal-content {
-      background-color: $white;
+      background-color: var(--contrast-color);
       border-radius: 20px;
 
       .modal-header {
@@ -67,7 +67,7 @@ dialog[open] {
           margin-bottom: 1rem;
         }
         input {
-          background-color: $body-gray;
+          background-color: var(--body-gray);
         }
 
         form {

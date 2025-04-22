@@ -1,4 +1,4 @@
-@import "./variables";
+/** Dynamic user communications **/
 
 // Top notification bar
 .notifications-area {
@@ -13,8 +13,8 @@
 
   &.alert-danger,
   &.alert-success {
-    color: $error-red;
-    background-color: $bg-orange;
+    color: var(--error-red);
+    background-color: var(--bg-orange);
     border: none;
   }
 
@@ -75,8 +75,8 @@
   left: calc(50%);
   transform: translateX(-50%);
   padding: 6px;
-  color: $white;
-  background: $txt-black;
+  color: var(--contrast-color);
+  background: var(--body-txt);
   font-size: 0.875rem;
   font-family: $inter-regular;
   line-height: 1;
@@ -98,7 +98,7 @@
   pointer-events: none;
   border-width: 6px;
   top: 100%;
-  border-top-color: $txt-black;
+  border-top-color: var(--body-txt);
 }
 
 /* Absolute positioning */

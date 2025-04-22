@@ -1,5 +1,3 @@
-@import "./variables";
-
 // username and password
 .username-pw {
   margin-bottom: 2rem;
@@ -71,7 +69,7 @@
 
     .option {
       border-radius: 20px;
-      background: $white;
+      background: var(--contrast-color);
       box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
       padding: 1rem;
       min-height: 210px;
@@ -97,7 +95,7 @@
         border: none;
 
         svg {
-          color: $txt-black;
+          color: var(--body-txt);
           height: 1rem;
           width: 1rem;
         }
@@ -123,7 +121,7 @@
   .response-code-inputs {
     input {
       display: inline-block;
-      border: 1px solid $txt-gray;
+      border: 1px solid var(--txt-gray);
       font-size: 1.75rem;
       margin: 5px;
       width: 2.5rem;
@@ -131,7 +129,7 @@
 
       &:focus {
         box-shadow: none;
-        border: 2px solid $txt-black;
+        border: 2px solid var(--body-txt);
         position: relative;
       }
 
@@ -243,11 +241,11 @@
   gap: 10px;
   width: 100%;
   margin: 0 auto;
-  color: $txt-gray;
+  color: var(--txt-gray);
 
   .line {
     flex: 1;
     height: 1px;
-    background-color: $border-gray;
+    background-color: var(--border-gray);
   }
 }
