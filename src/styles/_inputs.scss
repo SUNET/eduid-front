@@ -1,3 +1,5 @@
+@import "./variables";
+
 /* Inputs and form controls, mainly non button */
 
 input {
@@ -69,8 +71,8 @@ input.is-invalid:focus {
 
 input:disabled,
 input[readonly] {
-  color: $txt-gray;
-  background-color: $bg-gray;
+  color: var(--txt-txt);
+  background-color: var(--bg-gray);
   :focus,
   :hover {
     pointer-events: none;
