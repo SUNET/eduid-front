@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
@@ -192,7 +193,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   // Verify eidas
   async function handleVerifyWebauthnTokenEidas(token: string) {
     const response = await dispatch(
-      bankIDVerifyCredential({
+      eidasVerifyCredential({
         credential_id: token,
         method: "eidas",
       })
@@ -450,6 +451,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                     <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
                     <span>Freja+</span>
                   </EduIDButton>
+                  <EduIDButton
+                    buttonstyle="primary icon"
+                    id={`verify-webauthn-token-modal-continue-eidas-button`}
+                    onClick={() => handleVerifyWebauthnTokenEidas(tokenKey)}
+                  >
+                    <img className="freja" height="20" alt="Freja+" src={EuFlag} />
+                    <span>eidas</span>
+                  </EduIDButton>
                 </div>
               </div>
             </div>
@@ -488,9 +497,10 @@ function SecurityKeyTable({
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
         if (parsedFrontendState.method === "freja") {
           await handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
-        } else {
+        } else if (parsedFrontendState.method === "bankid") {
           await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
-        }
+        } else await handleVerifyWebauthnTokenEidas(parsedFrontendState.credential);
+
         // TODO: clean up
         // dispatch(authnSlice.actions.setAuthnFrontendReset());
       }
