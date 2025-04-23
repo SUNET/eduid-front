@@ -84,7 +84,7 @@ h5,
 
 p {
   font-size: 1.125rem;
-  line-height: 1.5;
+  line-height: $line-height;
   margin-bottom: 1rem;
 
   + p {
@@ -101,10 +101,10 @@ p.verified {
 }
 
 // these styles are the same as input values and placeholder
-p.data {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
+// p.data {
+//   font-size: 1.5rem;
+//   font-weight: 500;
+// }
 
 p.no-data.data {
   color: var(--txt-gray);
