@@ -369,7 +369,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <div className="modal-body">
                 <FormattedMessage
                   description="verify webauthn token modal body text"
-                  defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
+                  defaultMessage="Please click either the BankID, Freja+ or eIDAS button to verify your security key"
                 />
                 <p className="help-text">
                   <FormattedMessage
@@ -514,13 +514,13 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
               <FormattedMessage description="security key status" defaultMessage="Verify with: " />
               &nbsp;
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
-                <FormattedMessage description="security verify" defaultMessage="Freja+" />
+                Freja+
               </EduIDButton>
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
-                <FormattedMessage description="security verify" defaultMessage="BankID" />
+                BankID
               </EduIDButton>
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
-                <FormattedMessage description="security verify" defaultMessage="EIDAS" />
+                Eidas
               </EduIDButton>
             </span>
           </div>
