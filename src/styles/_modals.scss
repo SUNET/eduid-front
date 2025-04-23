@@ -57,7 +57,7 @@ dialog[open] {
         padding: 0 1.5rem 1rem;
         display: flex;
         flex-direction: column;
-        font-size: 1.25rem;
+        font-size: $txt-xl;
         line-height: 1.4;
         // captcha image
         img {
@@ -86,13 +86,13 @@ dialog[open] {
               margin-top: 0.5rem;
               font-family: $inter-bold;
               display: block;
-              font-size: 1rem;
+              font-size: $txt-md;
             }
           }
         }
 
         @media (max-width: $bp-lg) {
-          font-size: 1.125rem;
+          font-size: $txt-lg;
           input {
             font-size: inherit;
 
@@ -119,7 +119,8 @@ dialog[open] {
 
     @media (max-width: $bp-lg) {
       .modal-body {
-        font-size: 1.125rem;
+        font-size: $txt-lg;
+
         input {
           font-size: inherit;
 

@@ -54,7 +54,7 @@
 
   & .name {
     align-self: flex-end;
-    font-size: 1.125rem;
+    font-size: $txt-lg;
     line-height: 1;
     letter-spacing: 0;
     text-transform: uppercase;
@@ -145,10 +145,10 @@
 @media (max-width: $bp-sm) {
   #nin {
     & input {
-      font-size: 1rem;
+      font-size: $txt-md;
 
       &::placeholder {
-        font-size: 1rem;
+        font-size: $txt-md;
       }
     }
   }

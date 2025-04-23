@@ -24,7 +24,7 @@
 }
 
 .display-data {
-  font-size: 1.25rem;
+  font-size: $txt-xl;
   word-wrap: break-word;
 
   &:not(a) {
@@ -40,7 +40,7 @@
   }
 
   @media (max-width: $bp-md) {
-    font-size: 1.125rem;
+    font-size: $txt-lg;
 
     &:not(a) {
       font-family: $inter-light;
