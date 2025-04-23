@@ -1,5 +1,5 @@
 import { bankIDVerifyCredential } from "apis/eduidBankid";
-import { eidasVerifyCredential } from "apis/eduidEidas";
+import { eidasVerifyCredential, WebauthnMethods } from "apis/eduidEidas";
 import {
   ActionStatus,
   beginRegisterWebauthn,
@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
@@ -30,8 +31,7 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement>;
-  readonly handleVerifyWebauthnTokenBankID: (token: string) => Promise<void>;
-  readonly handleVerifyWebauthnTokenFreja: (token: string) => Promise<void>;
+  readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
 }
 
 export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
@@ -135,51 +135,32 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     description: "placeholder text for security key description input",
   });
 
-  // Verify Freja
-  async function handleVerifyWebauthnTokenFreja(token: string) {
-    const response = await dispatch(eidasVerifyCredential({ credential_id: token, method: "freja" }));
-    if (eidasVerifyCredential.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
-      }
-    } else if (eidasVerifyCredential.rejected.match(response)) {
-      const VerifyCredentialResponse: any = response;
-      setShowVerifyWebauthnModal(false);
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({
-            method: "freja",
-            credential: token,
-            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
-          }),
-        })
-      );
-    }
-  }
+  const tokenTypeMap = {
+    freja: eidasVerifyCredential,
+    bankid: bankIDVerifyCredential,
+    eidas: eidasVerifyCredential,
+  };
 
-  // Verify BankID
-  async function handleVerifyWebauthnTokenBankID(token: string) {
+  async function handleVerificationWebauthnToken(token: string, method: WebauthnMethods) {
+    const verifyAction = tokenTypeMap[method];
     const response = await dispatch(
-      bankIDVerifyCredential({
+      verifyAction({
         credential_id: token,
-        method: "bankid",
+        method,
       })
     );
-    if (bankIDVerifyCredential.fulfilled.match(response)) {
+    if (verifyAction.fulfilled.match(response)) {
       if (response.payload.location) {
         window.location.assign(response.payload.location);
       }
-    } else if (bankIDVerifyCredential.rejected.match(response)) {
+    } else if (verifyAction.rejected.match(response)) {
       const VerifyCredentialResponse: any = response;
       setShowVerifyWebauthnModal(false);
-      // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "verifyCredential",
           frontend_state: JSON.stringify({
-            method: "bankid",
+            method,
             credential: token,
             description: VerifyCredentialResponse?.payload?.payload?.credential_description,
           }),
@@ -330,11 +311,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           </div>
         </section>
       </article>
-      <SecurityKeyTable
-        wrapperRef={wrapperRef}
-        handleVerifyWebauthnTokenFreja={handleVerifyWebauthnTokenFreja}
-        handleVerifyWebauthnTokenBankID={handleVerifyWebauthnTokenBankID}
-      />
+      <SecurityKeyTable wrapperRef={wrapperRef} handleVerificationWebauthnToken={handleVerificationWebauthnToken} />
 
       <ConfirmModal
         id="describe-webauthn-token-modal"
@@ -392,7 +369,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <div className="modal-body">
                 <FormattedMessage
                   description="verify webauthn token modal body text"
-                  defaultMessage="Please click either the BankID or Freja+ button to verify your security key"
+                  defaultMessage="Please click either the BankID, Freja+ or eIDAS button to verify your security key"
                 />
                 <p className="help-text">
                   <FormattedMessage
@@ -406,7 +383,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                   <EduIDButton
                     id={`verify-webauthn-token-modal-continue-bankID-button`}
                     buttonstyle="primary icon"
-                    onClick={() => handleVerifyWebauthnTokenBankID(tokenKey)}
+                    onClick={() => handleVerificationWebauthnToken(tokenKey, "bankid")}
                   >
                     <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
                     <span>BankID</span>
@@ -414,10 +391,18 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                   <EduIDButton
                     buttonstyle="primary icon"
                     id={`verify-webauthn-token-modal-continue-frejaID-button`}
-                    onClick={() => handleVerifyWebauthnTokenFreja(tokenKey)}
+                    onClick={() => handleVerificationWebauthnToken(tokenKey, "freja")}
                   >
                     <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
                     <span>Freja+</span>
+                  </EduIDButton>
+                  <EduIDButton
+                    buttonstyle="primary icon"
+                    id={`verify-webauthn-token-modal-continue-eidas-button`}
+                    onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
+                  >
+                    <img className="freja" height="20" alt="eIDAS" src={EuFlag} />
+                    <span>eidas</span>
                   </EduIDButton>
                 </div>
               </div>
@@ -429,11 +414,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   );
 }
 
-function SecurityKeyTable({
-  wrapperRef,
-  handleVerifyWebauthnTokenBankID,
-  handleVerifyWebauthnTokenFreja,
-}: SecurityKeyTable) {
+function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: SecurityKeyTable) {
   const credentialKey = useRef<string | null>(null);
   const authn = useAppSelector((state) => state.authn);
   let btnVerify;
@@ -454,13 +435,10 @@ function SecurityKeyTable({
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        if (parsedFrontendState.method === "freja") {
-          await handleVerifyWebauthnTokenFreja(parsedFrontendState.credential);
-        } else {
-          await handleVerifyWebauthnTokenBankID(parsedFrontendState.credential);
-        }
-        // TODO: clean up
-        // dispatch(authnSlice.actions.setAuthnFrontendReset());
+        await handleVerificationWebauthnToken(
+          parsedFrontendState.credential,
+          parsedFrontendState.method as WebauthnMethods
+        );
       }
     })();
   }, [authn?.response?.frontend_action]);
@@ -535,11 +513,14 @@ function SecurityKeyTable({
             <span>
               <FormattedMessage description="security key status" defaultMessage="Verify with: " />
               &nbsp;
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenFreja(cred.key)}>
-                <FormattedMessage description="security verify" defaultMessage="Freja+" />
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
+                BankID
               </EduIDButton>
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerifyWebauthnTokenBankID(cred.key)}>
-                <FormattedMessage description="security verify" defaultMessage="BankID" />
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
+                Freja+
+              </EduIDButton>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
+                Eidas
               </EduIDButton>
             </span>
           </div>
