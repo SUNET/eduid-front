@@ -72,7 +72,7 @@ table {
       // height: 3rem;
 
       &.border-row {
-        font-size: 0.8rem;
+        font-size: $txt-xs;
         border-bottom: 1px solid var(--border-gray);
         height: 2rem;
 
@@ -94,7 +94,7 @@ table {
         text-align: center;
 
         a {
-          font-size: 0.75em;
+          font-size: $txt-xs;
         }
       }
     }

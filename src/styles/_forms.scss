@@ -162,7 +162,7 @@ fieldset.change-password-custom-inputs {
 .help-text {
   margin: 0.5rem 0 0;
   color: var(--txt-gray);
-  font-size: 14px;
+  font-size: $txt-sm;
 
   &.black {
     color: var(--body-txt);

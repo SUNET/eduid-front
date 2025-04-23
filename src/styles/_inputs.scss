@@ -31,7 +31,7 @@ input.is-valid:focus {
 
 input::placeholder {
   font-family: $inter-regular;
-  font-size: 1.5rem;
+  font-size: $txt-xl;
 }
 
 :hover:not(:focus):not(:disabled) {
