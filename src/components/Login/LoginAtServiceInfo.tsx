@@ -28,13 +28,13 @@ export function LoginAtServiceInfo(props: LoginAtServiceInfoProps): JSX.Element 
   }
 
   return (
-    <h2>
+    <p>
       <FormattedMessage
         defaultMessage="Use eduID to access {service_name}"
         values={{
           service_name: <strong>{service_name}</strong>,
         }}
       />
-    </h2>
+    </p>
   );
 }
