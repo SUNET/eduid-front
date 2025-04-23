@@ -5,11 +5,11 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetStatusRequest, GetStatusResponse, WebauthnMethods } from "./eduidEidas";
+import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
 interface FrejaeIDCommonRequest {
   frontend_action?: string;
-  method: WebauthnMethods;
+  method: string;
 }
 
 interface FrejaeIDCommonResponse {
