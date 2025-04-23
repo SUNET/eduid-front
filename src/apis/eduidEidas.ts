@@ -6,12 +6,12 @@ import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
-type EidasMethods = "eidas" | "freja";
+export type WebauthnMethods = "eidas" | "freja" | "bankid";
 
 interface EidasCommonRequest {
   frontend_state?: string; // frontend can pass something here (like a ref) and get it back after the authn flow
   frontend_action?: string; // this maps to config in the backend telling it where to return to after completion
-  method: EidasMethods;
+  method: WebauthnMethods;
 }
 
 interface EidasCommonResponse {
@@ -113,7 +113,7 @@ export interface GetStatusRequest {
 export interface GetStatusResponse {
   frontend_action: string;
   frontend_state?: string;
-  method: EidasMethods;
+  method: WebauthnMethods;
   error?: boolean;
   status?: string;
 }
