@@ -401,7 +401,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                     id={`verify-webauthn-token-modal-continue-eidas-button`}
                     onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
                   >
-                    <img className="freja" height="20" alt="Freja+" src={EuFlag} />
+                    <img className="freja" height="20" alt="eIDAS" src={EuFlag} />
                     <span>eidas</span>
                   </EduIDButton>
                 </div>
@@ -513,11 +513,11 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
             <span>
               <FormattedMessage description="security key status" defaultMessage="Verify with: " />
               &nbsp;
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
-                Freja+
-              </EduIDButton>
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
                 BankID
+              </EduIDButton>
+              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
+                Freja+
               </EduIDButton>
               <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
                 Eidas
