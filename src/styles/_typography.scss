@@ -20,19 +20,19 @@ h5,
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-family: $inter-regular;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 
   @media (max-width: $bp-md) {
-    font-size: 1.75rem;
+    font-size: 1.625rem;
   }
 }
 
 h2,
 .heading-2 {
-  font-size: 1.65rem;
+  font-size: 1.625rem;
   margin-bottom: 0.75em;
 
   @media (max-width: $bp-md) {
@@ -41,7 +41,7 @@ h2,
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   margin-bottom: 0.75em;
 
   @media (max-width: $bp-md) {
@@ -69,7 +69,7 @@ h5,
   border-bottom: 2px solid var(--border-gray);
 
   p {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
 
   @media (max-width: $bp-md) {
@@ -83,7 +83,7 @@ h5,
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   margin-bottom: 1rem;
 
