@@ -3017,7 +3017,7 @@
   },
   "sat8ZW": {
     "developer_comment": "verify webauthn token modal body text",
-    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+ eller eIDAS nedan."
+    "string": "Please click either the BankID, Freja+ or eIDAS button to verify your security key."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
