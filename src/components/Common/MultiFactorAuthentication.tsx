@@ -435,14 +435,10 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        if (parsedFrontendState.method === "freja") {
-          await handleVerificationWebauthnToken(parsedFrontendState.credential, "freja");
-        } else if (parsedFrontendState.method === "bankid") {
-          await handleVerificationWebauthnToken(parsedFrontendState.credential, "bankid");
-        } else await handleVerificationWebauthnToken(parsedFrontendState.credential, "eidas");
-
-        // TODO: clean up
-        // dispatch(authnSlice.actions.setAuthnFrontendReset());
+        await handleVerificationWebauthnToken(
+          parsedFrontendState.credential,
+          parsedFrontendState.method as WebauthnMethods
+        );
       }
     })();
   }, [authn?.response?.frontend_action]);
