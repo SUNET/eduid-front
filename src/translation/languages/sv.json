@@ -1798,10 +1798,6 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "På- och avstängning av 2FA vid inloggning."
   },
-  "bkpUyB": {
-    "developer_comment": "verify webauthn token modal body text",
-    "string": "Klicka på knappen för BankID eller Freja+ för att verifiera din säkerhetsnyckel."
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -2416,10 +2412,6 @@
     "developer_comment": "Terms of use (heading)",
     "string": "Registrera: Godkänn användarvillkor"
   },
-  "lXwaZ5": {
-    "developer_comment": "security verify",
-    "string": "Freja+"
-  },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
     "string": "Tillgängliga lärosäten"
@@ -2732,10 +2724,6 @@
     "developer_comment": "security eduid - list item 3-3",
     "string": "verifierings-status / alternativ (Freja+/BankID)"
   },
-  "owAbvV": {
-    "developer_comment": "security verify",
-    "string": "BankID"
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -3026,6 +3014,10 @@
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
+  },
+  "sat8ZW": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+ eller eIDAS nedan."
   },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
