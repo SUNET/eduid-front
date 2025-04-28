@@ -62,7 +62,7 @@ export function Help(): JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage description="help - headline" defaultMessage="Help and contact" />
+          <FormattedMessage description="help - general headline" defaultMessage="Help and contact" />
         </h1>
         <div className="lead">
           <p>
@@ -75,6 +75,9 @@ export function Help(): JSX.Element {
           </p>
         </div>
       </section>
+      <h2>
+        <FormattedMessage description="help - content headline" defaultMessage="Content areas" />
+      </h2>
       <div className="help-content">
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-help">
           <AccordionItemTemplate
