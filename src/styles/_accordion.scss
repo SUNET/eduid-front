@@ -24,11 +24,11 @@
         cursor: pointer;
         background: var(--bg-gray);
         color: var(--txt-orange);
-        font-weight: bold;
         position: relative;
         align-items: center;
         padding: 1rem;
         font-family: $akkurat;
+        font-weight: bold;
         transition: all 0.1s ease-in;
 
         &:hover {
@@ -53,11 +53,10 @@
         }
 
         #{$a}-title {
+          font-family: $akkurat;
           font-size: $txt-lg;
           line-height: 1.4;
           margin-bottom: 0;
-          font-family: $akkurat;
-          font-weight: 500;
 
           @media (max-width: $bp-md) {
             font-size: $txt-md;

@@ -74,13 +74,12 @@ header {
 
     .header-user {
       text-transform: lowercase;
-      font-family: $inter-bold;
-      font-weight: normal;
       background: none;
       box-shadow: none;
       padding: 0 1rem;
       display: flex;
       align-items: center;
+      @extend .text-bold;
 
       svg {
         padding-left: 0.75rem;

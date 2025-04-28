@@ -59,7 +59,7 @@ form .react-select,
   &__option--is-selected {
     color: var(--txt-gray);
     background-color: inherit;
-    font-weight: bold;
+    @extend .text-bold;
   }
 }
 
@@ -119,7 +119,7 @@ form .react-select,
     color: var(--txt-orange);
     font-family: $akkurat;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: bold;
     font-size: $txt-md;
   }
 
@@ -182,7 +182,7 @@ form .react-select,
   .select-option-text {
     color: var(--txt-orange);
     font-family: $akkurat;
-    font-weight: 700;
+    font-weight: bold;
   }
 }
 .mfa-select__control--is-focused {

@@ -33,7 +33,7 @@ table {
         & span {
           font-family: $akkurat;
           letter-spacing: 1px;
-          font-weight: 700;
+          font-weight: bold;
           padding: 0;
           font-size: $txt-xs;
           text-transform: uppercase;
@@ -42,9 +42,8 @@ table {
 
       .verified {
         text-transform: uppercase;
-        font-family: $inter-regular;
-        font-weight: 700;
         font-size: $txt-xs;
+        @extend .text-bold;
       }
 
       &.remove-data {

@@ -84,7 +84,7 @@
   white-space: nowrap;
 
   & b {
-    font-weight: 700;
+    @extend .text-bold;
   }
 }
 
