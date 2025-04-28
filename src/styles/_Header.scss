@@ -74,7 +74,8 @@ header {
 
     .header-user {
       text-transform: lowercase;
-      font-family: $inter-light;
+      font-family: $inter-bold;
+      font-weight: normal;
       background: none;
       box-shadow: none;
       padding: 0 1rem;
