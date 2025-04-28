@@ -1607,13 +1607,13 @@ export function Help(): JSX.Element {
                 />
               </p>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph2strong"
                   defaultMessage={`Confirmed account:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1633,13 +1633,13 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph3strong"
                   defaultMessage={`Verified identity:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1660,13 +1660,13 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph4strong"
                   defaultMessage={`Enhanced security:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1681,13 +1681,13 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph5strong"
                   defaultMessage={`Verified security key:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
