@@ -31,7 +31,7 @@ function AccordionItemTemplate(props: AccordionItemTemplateProps) {
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
             <h3 className="accordion-title">{props.title}</h3>
-            <p className="accordion-description">{props.additionalInfo}</p>
+            <span className="accordion-description">{props.additionalInfo}</span>
           </div>
           <AccordionItemState>
             {({ expanded }) =>
