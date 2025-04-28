@@ -20,22 +20,23 @@ h5,
 }
 
 h1 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  font-family: $inter-light;
 
   @media (max-width: $bp-md) {
-    font-size: 1.625rem;
+    font-size: 1.75rem;
   }
 }
 
 h2,
 .heading-2 {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   margin-bottom: 0.75em;
 
   @media (max-width: $bp-md) {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 }
 
