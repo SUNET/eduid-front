@@ -23,15 +23,19 @@ $success-green: #177d4d;
  * Typography
  * ========================================================================== */
 
-$inter-bold: "Inter-SemiBold", "Arial", "Helvetica", "sans-serif";
+$inter-bold: "Inter-SemiBold", "Arial", "Helvetica", "sans-serif"; //bold enough for normal text
 $inter-regular: "Inter-Regular", "Arial", "Helvetica", "sans-serif";
 $inter-medium: "Inter-Medium", "Arial", "Helvetica", "sans-serif";
 $inter-light: "Inter-light", "Arial", "Helvetica", "sans-serif";
 $akkurat: "Akkurat", "Arial", "Helvetica", "sans-serif";
-$txt-xs: 0.75rem;
-$txt-sm: 0.9rem;
-$txt-md: 1rem;
-$txt-lg: 1.25rem;
+
+$txt-xs: 0.75rem; //12px
+$txt-sm: 0.875rem; //14px
+$txt-md: 1rem; //16px (body 100%, default)
+$txt-lg: 1.125rem; //18px
+$txt-xl: 1.25rem; //20px
+$txt-xxl: 1.375rem; //22px
+
 $line-height: 1.4;
 $margin: 1rem;
 $list-indent: 2.25rem;

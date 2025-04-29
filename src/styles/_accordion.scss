@@ -43,7 +43,7 @@
         #{$a}-icon {
           svg {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: $txt-sm;
             margin-right: 10px;
           }
           + div {
@@ -53,19 +53,19 @@
         }
 
         #{$a}-title {
-          font-size: 1.125rem;
+          font-size: $txt-lg;
           line-height: 1.4;
           margin-bottom: 0;
           font-family: $akkurat;
           font-weight: 500;
 
           @media (max-width: $bp-md) {
-            font-size: 1rem;
+            font-size: $txt-md;
           }
         }
 
         #{$a}-description {
-          font-size: 12px;
+          font-size: $txt-xs;
           display: block;
           margin-bottom: 0;
         }
@@ -165,7 +165,7 @@
           }
 
           #{$a}-title {
-            font-size: 1rem;
+            font-size: $txt-md;
             text-transform: uppercase;
             letter-spacing: 1px;
           }
@@ -177,7 +177,7 @@
         padding: 1rem 1rem 1.25rem;
 
         p {
-          font-size: 1.125rem;
+          font-size: $txt-lg;
           line-height: 1.25;
         }
       }

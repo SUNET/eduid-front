@@ -18,7 +18,7 @@ form .react-select,
 
     &--is-disabled {
       background-color: var(--bg-gray);
-      font-size: 1.25rem;
+      font-size: $txt-xl;
       * {
         color: var(--txt-gray);
       }
@@ -106,7 +106,7 @@ form .react-select,
     cursor: not-allowed;
     background-color: var(--bg-gray);
     color: var(--txt-gray);
-    font-size: 1.25rem;
+    font-size: $txt-xl;
   }
 }
 //login react select
@@ -120,7 +120,7 @@ form .react-select,
     font-family: $akkurat;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 
   .css-tj5bde-Svg {

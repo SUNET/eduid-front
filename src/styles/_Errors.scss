@@ -6,12 +6,12 @@
   & span {
     line-height: 1.5;
     font-family: $inter-bold;
-    font-size: 1.5rem;
+    font-size: $txt-xxl;
   }
 
   & ul {
     margin-bottom: 3.5rem;
-    font-size: 1.25rem;
+    font-size: $txt-xl;
 
     div {
       margin-left: 2rem;
@@ -37,7 +37,7 @@
 
   & .technical-info-heading span {
     font-family: $inter-bold;
-    font-size: 1.25rem;
+    font-size: $txt-xl;
   }
 
   & .technical-info-box {
@@ -49,7 +49,7 @@
       justify-content: flex-start;
 
       p {
-        font-size: 1rem;
+        font-size: $txt-md;
         padding-bottom: 0;
       }
 
@@ -97,7 +97,7 @@
 
 .error-info {
   text-align: left;
-  font-size: 1rem;
+  font-size: $txt-md;
 
   tr {
     height: auto;

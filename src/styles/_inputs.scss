@@ -3,7 +3,7 @@
 input {
   box-sizing: border-box;
   font-family: $inter-regular;
-  font-size: 1.5rem;
+  font-size: $txt-xl;
   font-weight: 500;
   color: var(--body-txt);
   box-shadow: none;
@@ -31,7 +31,7 @@ input.is-valid:focus {
 
 input::placeholder {
   font-family: $inter-regular;
-  font-size: 1.5rem;
+  font-size: $txt-xl;
 }
 
 :hover:not(:focus):not(:disabled) {
@@ -147,7 +147,7 @@ input[type="radio"] {
     }
   }
   span {
-    font-size: 1.25rem;
+    font-size: $txt-xl;
     align-self: center;
     color: var(--body-txt);
     font-family: $inter-regular;
@@ -263,7 +263,7 @@ select {
 
 //react-select
 .select__multi-value__label {
-  font-size: 1.25rem !important;
+  font-size: $txt-xl !important;
   align-self: center !important;
 }
 
@@ -294,7 +294,7 @@ input:-webkit-autofill {
 @media (max-width: $bp-sm) {
   input,
   .radio-input-container span {
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 
   .input-container {
@@ -302,7 +302,7 @@ input:-webkit-autofill {
   }
 
   input::placeholder {
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 }
 

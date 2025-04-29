@@ -45,7 +45,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
             <div className={`modal-dialog ${props.id}`}>
               <div className={`modal-content ${props.id} `}>
                 <div className="modal-header">
-                  <h5 className="modal-title">{props.title}</h5>
+                  <h4 className="modal-title">{props.title}</h4>
                   <EduIDButton
                     buttonstyle="close"
                     onClick={() => {

@@ -78,7 +78,7 @@
       justify-content: space-between;
 
       h3 {
-        font-size: 1.25rem;
+        font-size: $txt-xl;
       }
 
       h3,
@@ -227,7 +227,7 @@
   .developer {
     // show QR URL at the bottom for non-production environments
     height: 10rem;
-    font-size: 0.8rem;
+    font-size: $txt-xs;
     overflow: hidden;
     word-break: break-all;
   }

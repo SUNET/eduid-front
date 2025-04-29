@@ -5,12 +5,12 @@
   list-style-type: decimal;
 
   li {
-    font-size: 1.125rem;
+    font-size: $txt-lg;
     line-height: 1.25;
     margin-bottom: 2em;
 
     &::marker {
-      font-size: 1em;
+      font-size: $txt-md;
       font-family: $akkurat;
       font-weight: bold;
     }

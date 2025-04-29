@@ -354,12 +354,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">
+                <h4 className="modal-title">
                   <FormattedMessage
                     defaultMessage="Verify your added security key"
                     description="verify webauthn token modal title"
                   />
-                </h5>
+                </h4>
                 <EduIDButton
                   id={`verify-webauthn-token-modal-close-button`}
                   buttonstyle="close float-right"

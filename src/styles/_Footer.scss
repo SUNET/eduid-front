@@ -5,7 +5,7 @@ footer {
   padding: 1rem;
   border-top: 6px solid $bright-orange;
   background-color: var(--body-gray);
-  font-size: 0.9rem;
+  font-size: $txt-sm;
 
   .logo-wrapper {
     display: flex;
@@ -39,7 +39,7 @@ footer nav .lang-selected {
   margin: 0;
   cursor: pointer;
   color: var(--txt-orange);
-  font-size: 0.9rem;
+  font-size: $txt-sm;
 }
 
 #language-selector {

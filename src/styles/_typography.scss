@@ -21,9 +21,9 @@ h5,
 
 h1 {
   font-size: 2rem;
-  font-family: $inter-regular;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  font-family: $inter-light;
 
   @media (max-width: $bp-md) {
     font-size: 1.75rem;
@@ -32,16 +32,16 @@ h1 {
 
 h2,
 .heading-2 {
-  font-size: 1.65rem;
+  font-size: 1.5rem;
   margin-bottom: 0.75em;
 
   @media (max-width: $bp-md) {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   margin-bottom: 0.75em;
 
   @media (max-width: $bp-md) {
@@ -59,7 +59,7 @@ h5,
 .heading-5 {
   font-family: $inter-light;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: $txt-sm;
   margin-bottom: 0.5em;
 }
 
@@ -69,7 +69,7 @@ h5,
   border-bottom: 2px solid var(--border-gray);
 
   p {
-    font-size: 1.375rem;
+    font-size: $txt-xl;
   }
 
   @media (max-width: $bp-md) {
@@ -77,14 +77,14 @@ h5,
     padding-bottom: 0;
 
     p {
-      font-size: 1.25rem;
+      font-size: $txt-lg;
     }
   }
 }
 
 p {
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: $txt-lg;
+  line-height: $line-height;
   margin-bottom: 1rem;
 
   + p {
@@ -92,7 +92,7 @@ p {
   }
 
   @media (max-width: $bp-md) {
-    font-size: 1.125rem;
+    font-size: $txt-md;
   }
 }
 
@@ -101,10 +101,10 @@ p.verified {
 }
 
 // these styles are the same as input values and placeholder
-p.data {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
+// p.data {
+//   font-size: 1.5rem;
+//   font-weight: 500;
+// }
 
 p.no-data.data {
   color: var(--txt-gray);

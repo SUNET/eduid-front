@@ -289,12 +289,14 @@ function VerifiedIdentitiesTable(): JSX.Element {
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
         <React.Fragment>
-          <h4>
-            <FormattedMessage
-              description="verify identity non swedish verified heading"
-              defaultMessage="If you have a Swedish identity you can verify that as well, to be able to access more services."
-            />
-          </h4>
+          <p>
+            <strong>
+              <FormattedMessage
+                description="verify identity non swedish verified heading"
+                defaultMessage="If you have a Swedish identity you can verify that as well, to be able to access more services."
+              />
+            </strong>
+          </p>
           <Accordion allowZeroExpanded>
             <AccordionItemSwedish />
           </Accordion>
