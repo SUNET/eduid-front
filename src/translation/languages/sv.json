@@ -1196,7 +1196,7 @@
   },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
-    "string": "Koppla bort din identitet"
+    "string": "Frånkoppla din identitet"
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
