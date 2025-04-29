@@ -215,23 +215,21 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
 
       {/* Only available for Swedish identities */}
       {nin?.verified && (
-        <div className="icon-text">
-          <button
-            type="button"
-            className="icon-only"
-            disabled={loading}
-            aria-label="name-check"
-            onClick={() => handleUpdateName()}
-          >
-            <FontAwesomeIcon icon={faRedo as IconProp} />
-          </button>
-          <label htmlFor="name-check" className="hint">
+        <button
+          type="button"
+          className="link lowercase sm icon refresh"
+          disabled={loading}
+          aria-label="name-check"
+          onClick={() => handleUpdateName()}
+        >
+          <FontAwesomeIcon icon={faRedo as IconProp} />
+          <span>
             <FormattedMessage
               defaultMessage="Update first and last names from the Swedish Population Register."
               description="Personal data update locked names"
             />
-          </label>
-        </div>
+          </span>
+        </button>
       )}
     </article>
   );
