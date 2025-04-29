@@ -120,10 +120,14 @@ p.no-data.data {
   font-size: $txt-sm;
 }
 
-strong {
-  font-weight: bold;
-
-  @extend b;
+//only for body text, Akkurat links and buttons need separate handling
+strong,
+b,
+.text-bold {
+  font-family: $inter-bold;
+  font-weight: normal;
+  //font-weight: bold;
+  //@extend b;
 }
 
 em {

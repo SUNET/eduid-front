@@ -121,10 +121,11 @@ fieldset.change-password-custom-inputs {
   color: transparent;
 }
 
+// in use?
 .input-error {
   color: $bright-orange;
-  font-weight: 700;
   letter-spacing: 0.025rem;
+  @extend .text-bold;
 }
 
 .input-validate-error {
