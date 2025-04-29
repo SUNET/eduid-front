@@ -1,4 +1,4 @@
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { skipToken } from "@reduxjs/toolkit/query";
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
 import { eduidStore } from "eduid-init-app";
@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { jsConfigApi } from "services/jsConfig";
+import personalDataApi from "services/personalData";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import "../styles/index.scss";
@@ -44,40 +45,36 @@ export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const showAuthenticateModal = location.pathname.startsWith("/profile");
+  const isUserDashboard = location.pathname.startsWith("/profile");
   const isIndex = location.pathname === "/";
-  const { data ,isLoading, isError } = jsConfigApi.useFetchJsConfigQuery();
+  const jsConfig = jsConfigApi.useFetchJsConfigQuery();
+  const personalData = personalDataApi.useRequestAllPersonalDataQuery((isUserDashboard&&isLoaded)?undefined:skipToken);
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
-
-  async function getPersonalData() {
-    const response = await eduidStore.dispatch(requestAllPersonalData());
-    if (requestAllPersonalData.fulfilled.match(response)) {
-      if (response.payload.language) {
+  
+  useEffect(() => {
+    if (personalData.data && !personalData.isLoading && !personalData.isError) {
+      if (personalData.data.payload.language) {
         eduidStore.dispatch(
           updateIntl({
-            locale: response.payload.language,
-            messages: LOCALIZED_MESSAGES[response.payload.language],
+            locale: personalData.data.payload.language,
+            messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
           })
         );
       }
       eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
-    }
+    } 
+  }, [personalData.data, personalData.isLoading, personalData.isError])
 
-  }
-  
   useEffect(() => {
-    if (data && !isLoading && !isError) {
-      if (data.payload?.sentry_dsn) {
-        Raven.config(data.payload.sentry_dsn as string).install();
-      }
-      if (location.pathname.includes("/profile/")) {
-        getPersonalData()
+    if (jsConfig.data && !jsConfig.isLoading && !jsConfig.isError) {
+      if (jsConfig.data.payload?.sentry_dsn) {
+        Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
       }
     }
-  }, [data, isLoading, isError]);
+  }, [jsConfig.data, jsConfig.isLoading, jsConfig.isError]);
 
   return (
     <React.StrictMode>
@@ -123,7 +120,7 @@ export function IndexMain(): JSX.Element {
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </section>
-              {showAuthenticateModal && <AuthenticateModal />}
+              {isUserDashboard && <AuthenticateModal />}
             </Splash>
           </ErrorBoundary>
         </main>

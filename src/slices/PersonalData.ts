@@ -7,10 +7,10 @@ import {
   postUserLanguage,
   postUserName,
   PreferencesData,
-  requestAllPersonalData,
-  UserIdentities,
+  UserIdentities
 } from "apis/eduidPersonalData";
 import { addNin, removeIdentity, removeNin } from "apis/eduidSecurity";
+import personalDataApi from "services/personalData";
 
 interface PersonalDataState {
   eppn?: string;
@@ -31,10 +31,6 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.eppn = action.payload.eppn;
-        state.response = action.payload;
-      })
       .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
         if (state.response) {
           state.response.chosen_given_name = action.payload.chosen_given_name;
@@ -79,7 +75,11 @@ const personalDataSlice = createSlice({
         if (state.response) {
           state.response.identities = action.payload.identities;
         }
-      });
+      })
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {        
+        state.eppn = action.payload.payload.eppn,
+        state.response= action.payload.payload;
+    });
   },
 });
 

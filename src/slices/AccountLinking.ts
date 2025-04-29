@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchOrcid, OrcidInfo, removeOrcid } from "apis/eduidOrcid";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import personalDataApi from "services/personalData";
 
 export interface AccountLinkingState {
   orcid?: OrcidInfo;
@@ -21,9 +21,9 @@ const accountLinkingSlice = createSlice({
       .addCase(removeOrcid.fulfilled, (state) => {
         state.orcid = undefined;
       })
-      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
-        state.orcid = action.payload.orcid;
-      });
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {
+        state.orcid = action.payload.payload.orcid;
+      })
   },
 });
 

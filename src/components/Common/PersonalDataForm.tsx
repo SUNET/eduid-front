@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PersonalDataRequest, postUserName, requestAllPersonalData, UserNameRequest } from "apis/eduidPersonalData";
+import { PersonalDataRequest, postUserName, UserNameRequest } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
+import personalDataApi from "services/personalData";
 import { updateIntl } from "slices/Internationalisation";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
@@ -198,11 +199,12 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery()
 
   async function handleUpdateName() {
     const response = await dispatch(updateOfficialUserData());
     if (updateOfficialUserData.fulfilled.match(response)) {
-      dispatch(requestAllPersonalData());
+      personal_data_refetch();
     }
   }
 

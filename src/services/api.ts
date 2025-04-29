@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { StateWithCommonConfig } from 'apis/common';
+import { AuthenticateResponse } from 'apis/eduidAuthn';
 import { EDUID_CONFIG_URL } from 'globals';
 import { ajaxHeaders } from 'ts_common';
 
@@ -13,7 +14,11 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     } else if (extraOptions.service === 'jsConfig') {
         baseUrl = EDUID_CONFIG_URL;
     } else if (extraOptions.service === 'signup') {
-        baseUrl = state.config.signup_service_url
+        baseUrl = state.config.signup_service_url;
+    } else if (extraOptions.service === 'personalData') {
+        baseUrl = state.config.personal_data_service_url;
+    } else if (extraOptions.service === 'authn') {
+        baseUrl = state.config.authn_service_url;
     }
 
     const rawBaseQuery = fetchBaseQuery({
@@ -36,7 +41,7 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     // TODO: auth error
     
     if (result.data && typeof result.data === 'object' && 'error' in result.data && result.data.error === true) {
-        // dispatch the error to the nofification middleware
+        // dispatch the API error to the nofification middleware
         // but use a clone of the data as the current middleware modifies the data
         api.dispatch(structuredClone(result.data));
         // return as error for rtk query purposes
@@ -45,10 +50,22 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
             meta: result.meta
         }
     }
-    // handle errors cought by fetchBaseQuery
+    // handle HTTP errors cought by fetchBaseQuery
     if (result.error) {
-        if ("error" in result.error) {
-            api.dispatch(genericApiFail(result.error.error));
+        if (result.error.status === 401) {
+            const authnBaseQuery = fetchBaseQuery({
+                baseUrl: state.config.authn_service_url,
+                credentials: 'include',
+                redirect: 'manual',
+                method: 'POST',
+                headers: ajaxHeaders
+            })
+            const authn_result = await authnBaseQuery({url: 'authenticate', body: { frontend_action: "login", csrf_token: state.config.csrf_token }}, api, {})
+            if (authn_result?.data && (authn_result.data as ApiResponse<AuthenticateResponse>).payload.location) {
+                window.location.href = (authn_result.data as ApiResponse<AuthenticateResponse>).payload.location
+            }
+        } else if ("data" in result.error) {
+            api.dispatch(`HTTP ${result.error.status} ${(result.error.data as {message: string}).message}`);
         } else {
             api.dispatch(genericApiFail("Unknown error"));
         }

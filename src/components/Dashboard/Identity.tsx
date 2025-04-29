@@ -3,7 +3,6 @@ import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
 import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
@@ -17,6 +16,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import personalDataApi from "services/personalData";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
@@ -163,6 +163,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
   const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery()
 
   useEffect(() => {
     if (frontend_action === "removeIdentity" && frontend_state) {
@@ -176,7 +177,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
     if (identityType) {
       const response = await dispatch(removeIdentity({ identity_type: identityType }));
       if (removeIdentity.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
+        personal_data_refetch();
       } else {
         dispatch(
           authnSlice.actions.setFrontendActionAndState({

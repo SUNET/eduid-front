@@ -1,11 +1,11 @@
 import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import personalDataApi from "services/personalData";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import AddNin from "./AddNin";
 
@@ -23,6 +23,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities?.nin?.number || letter_expired;
   const dispatch = useAppDispatch();
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery()
 
   useEffect(() => {
     dispatch(fetchLetterProofingState());
@@ -51,7 +52,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
         if (confirmationCode) {
           const response = await dispatch(confirmLetterCode({ code: confirmationCode.trim() }));
           if (confirmLetterCode.fulfilled.match(response)) {
-            dispatch(requestAllPersonalData());
+            personal_data_refetch();
           }
         }
         setShowConfirmationModal(false);
@@ -63,7 +64,7 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     (async () => {
       const response = await dispatch(postRequestLetter());
       if (postRequestLetter.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
+        personal_data_refetch();
       }
       setShowNotificationModal(false);
     })();

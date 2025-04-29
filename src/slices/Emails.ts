@@ -7,7 +7,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
 } from "apis/eduidEmail";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import personalDataApi from "services/personalData";
 
 export const initialState: EmailsResponse = {
   emails: [],
@@ -34,8 +34,8 @@ const emailsSlice = createSlice({
       .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       });
   },
 });
