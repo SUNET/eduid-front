@@ -12,7 +12,7 @@ import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "componen
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import { HashLink } from "react-router-hash-link";
 
 // export for use in tests

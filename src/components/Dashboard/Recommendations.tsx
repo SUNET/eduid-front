@@ -6,7 +6,7 @@ import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {

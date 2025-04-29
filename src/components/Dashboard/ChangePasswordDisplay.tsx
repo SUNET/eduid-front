@@ -2,7 +2,7 @@ import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
