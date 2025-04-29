@@ -78,6 +78,9 @@ export function Help(): JSX.Element {
       <h2>
         <FormattedMessage description="help - content headline" defaultMessage="Content areas" />
       </h2>
+      <p>
+        <FormattedMessage description="help - content paragraph" defaultMessage="Expand sections to learn more." />
+      </p>
       <div className="help-content">
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-help">
           <AccordionItemTemplate
