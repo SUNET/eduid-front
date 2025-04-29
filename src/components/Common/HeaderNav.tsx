@@ -12,8 +12,7 @@ import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "componen
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink } from "react-router";
-import { HashLink } from "react-router-hash-link";
+import { Link, NavLink } from "react-router";
 
 // export for use in tests
 export const activeClassName = "active";
@@ -116,9 +115,9 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <li className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
-                </HashLink>
+                </Link>
               </li>
             </ul>
           </li>
@@ -146,18 +145,18 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <li className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink
+                <Link
                   onClick={() => setOpenMenu(false)}
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
                   <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
-                </HashLink>
+                </Link>
               </li>
             </ul>
           </li>
@@ -185,14 +184,14 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <li className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
                   <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
-                </HashLink>
+                </Link>
               </li>
             </ul>
           </li>
@@ -219,39 +218,39 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
           <li className={isOpen.account ? "submenu-collapse" : "submenu-collapse submenu-close"}>
             <ul>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
                   <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
                   <FormattedMessage defaultMessage="Language" description="Language" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
                   <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
                   <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
                   <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
                   <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
-                </HashLink>
+                </Link>
               </li>
             </ul>
           </li>
