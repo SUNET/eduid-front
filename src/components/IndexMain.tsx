@@ -1,4 +1,3 @@
-import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
@@ -24,6 +23,7 @@ import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
+import ScrollToHash from "./ScrollToHash";
 import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
@@ -48,7 +48,7 @@ export function IndexMain(): JSX.Element {
   return (
     <React.StrictMode>
       <div className={isIndex ? "page-wrapper landing" : "page-wrapper"}>
-        <ScrollToHashElement/>
+        <ScrollToHash />
         <Header loginRef={loginRef} />
         <main id="panel" className="panel">
           <Notifications />
