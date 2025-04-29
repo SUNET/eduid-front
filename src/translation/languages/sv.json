@@ -1216,7 +1216,7 @@
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
-    "string": "Är du säker på att du vill koppla bort din identitet från ditt eduID konto?"
+    "string": "Är du säker på att du vill ta bort koppling till din identitet från ditt eduID konto?"
   },
   "Q65OFZ": {
     "developer_comment": "login eduid - username list item 1",
