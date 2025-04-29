@@ -19,8 +19,9 @@ import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
 import { RESET_PASSWORD_SERVICE_URL } from "./LoginTestApp-rtl";
+import { Optional } from "./Optional";
 
-export const signupTestState: EduIDAppRootState = {
+export const signupTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",
@@ -49,7 +50,7 @@ export const signupTestState: EduIDAppRootState = {
 
 interface renderArgs {
   state?: Partial<EduIDAppRootState>;
-  options?: Omit<RenderOptions, "wrapper" | "legacyRoot">;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
@@ -75,7 +76,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       </SignupGlobalStateProvider>
     );
   }
-  return rtlRender(ui, { wrapper: Wrapper, legacyRoot: true, ...args.options });
+  return rtlRender(ui, { wrapper: Wrapper, ...args.options });
 }
 
 // re-export everything
