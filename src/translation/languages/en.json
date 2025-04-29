@@ -267,6 +267,10 @@
     "developer_comment": "start eduid - list item 2",
     "string": "your unique user ID"
   },
+  "4+MTla": {
+    "developer_comment": "help - content headline",
+    "string": "Content areas"
+  },
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
@@ -2166,6 +2170,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3strong",
     "string": "Verified identity:"
   },
+  "hJj6pX": {
+    "developer_comment": "help - general headline",
+    "string": "Help and contact"
+  },
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
     "string": ", verifying it can be done via:"
@@ -2740,10 +2748,6 @@
     "developer_comment": "Set new password (Save button)",
     "string": "Save"
   },
-  "pb/yW9": {
-    "developer_comment": "help - headline",
-    "string": "Help and contact"
-  },
   "pd.display_name": {
     "developer_comment": "Display name label/template (edit personal data)",
     "string": "Display name"
@@ -3215,6 +3219,10 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
+  },
+  "uigsKE": {
+    "developer_comment": "help - content paragraph",
+    "string": "Expand sections to learn more."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",

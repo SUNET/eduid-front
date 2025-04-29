@@ -3220,6 +3220,10 @@
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
   },
+  "uigsKE": {
+    "developer_comment": "help - content paragraph",
+    "string": "Expand sections to learn more."
+  },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
     "string": "Identity"
