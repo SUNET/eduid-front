@@ -17,7 +17,7 @@ import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";

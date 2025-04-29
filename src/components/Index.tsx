@@ -5,7 +5,7 @@ import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { appLoadingSlice } from "slices/AppLoading";
 import accountIcon from "../../img/account-icon.svg";
 import securityIcon from "../../img/security-icon.svg";

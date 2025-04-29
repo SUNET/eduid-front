@@ -8,7 +8,7 @@ import { eduidStore } from "eduid-init-app";
 import { EDUID_CONFIG_URL, LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";

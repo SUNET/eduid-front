@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
 
 const Footer = (): JSX.Element => {

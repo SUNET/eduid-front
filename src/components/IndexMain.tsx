@@ -1,8 +1,9 @@
+import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -47,6 +48,7 @@ export function IndexMain(): JSX.Element {
   return (
     <React.StrictMode>
       <div className={isIndex ? "page-wrapper landing" : "page-wrapper"}>
+        <ScrollToHashElement/>
         <Header loginRef={loginRef} />
         <main id="panel" className="panel">
           <Notifications />
