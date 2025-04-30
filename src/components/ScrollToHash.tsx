@@ -11,7 +11,8 @@ function ScrollToHash() {
       const id = hash.replace("#", "");
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const prefersReduceMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+        element.scrollIntoView({ behavior: prefersReduceMotion ? "auto" : "smooth" });
       }
     };
     setTimeout(scroll, 50);
