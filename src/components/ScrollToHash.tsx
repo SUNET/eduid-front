@@ -14,7 +14,7 @@ function ScrollToHash() {
         element.scrollIntoView({ behavior: "smooth" });
       }
     };
-    setTimeout(scroll, 0);
+    setTimeout(scroll, 50);
   }, [hash, pathname]);
   return null;
 }
