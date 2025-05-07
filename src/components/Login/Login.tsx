@@ -76,9 +76,8 @@ function Login(): JSX.Element {
       {next_page === "MFA" && <MultiFactorAuth />}
       {next_page === "FINISHED" && <RenderFinished />}
       {
-        /* show remember me toggle only for login password page */ next_page === "USERNAMEPASSWORD" && (
-          <RememberMeCheckbox />
-        )
+        /* show remember me toggle only for login password and MFA page */ (next_page === "USERNAMEPASSWORD" ||
+          next_page === "MFA") && <RememberMeCheckbox />
       }
     </React.Fragment>
   );
