@@ -134,12 +134,12 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <fieldset>
-              <label htmlFor="ladok-universities">
+              <span className="form-label">
                 <FormattedMessage
                   defaultMessage="Select higher education institution"
                   description="Ladok account linking"
                 />
-              </label>
+              </span>
               <Select
                 isDisabled={fetchFailed}
                 options={selectOptions}
