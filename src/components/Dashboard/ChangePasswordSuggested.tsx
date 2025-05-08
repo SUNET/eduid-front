@@ -9,11 +9,11 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
 
   return (
     <React.Fragment>
-      <div className="copy-password-input">
-        <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="New password" description="new password" />
-        </label>
-
+      <label htmlFor="copy-new-password">
+        <FormattedMessage defaultMessage="New password" description="new password" />
+      </label>
+      <div className="password-input">
+        <CopyToClipboardButton ref={ref} />
         <input
           name="copy-new-password"
           id="copy-new-password"
@@ -21,7 +21,6 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
           defaultValue={props.suggestedPassword}
           readOnly={true}
         />
-        <CopyToClipboardButton ref={ref} />
       </div>
       <NewPasswordForm
         suggested_password={props.suggestedPassword}

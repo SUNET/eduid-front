@@ -270,8 +270,14 @@ button.icon {
 
 //textual toggle control, eg. copy/show
 .txt-toggle-btn {
-  position: absolute;
-  right: 1rem;
+  height: auto;
+
+  //and show/hide just before input
+  &:has(+ input) {
+    position: absolute;
+    right: 0;
+    top: -1.1rem;
+  }
 }
 
 /* Instance/icon unique styles to be set in targeted css */
