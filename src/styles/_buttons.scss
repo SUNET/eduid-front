@@ -158,9 +158,7 @@ button.link {
   padding: 0;
 
   &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
+  &:active {
     color: var(--txt-orange);
     background-color: transparent;
     text-decoration: underline;
@@ -183,7 +181,8 @@ button.link {
     }
   }
   &.disabled,
-  :disabled {
+  &:disabled,
+  &[disabled] {
     color: var(--txt-gray);
     opacity: 1;
     box-shadow: none;
@@ -201,6 +200,16 @@ button.icon {
   img {
     margin-right: 0.5rem;
     width: auto;
+    transition: transform 0.5s;
+  }
+
+  //round arrow update link
+  &.refresh:hover svg {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
+  &.refresh[disabled]:hover svg {
+    transform: none;
   }
 }
 
@@ -253,41 +262,6 @@ button.icon {
   &-center {
     @extend .buttons;
     align-items: center;
-  }
-}
-
-// TODO: remove this when we move icon-text to a more generic place
-.icon-text {
-  display: flex;
-  align-items: baseline;
-
-  button.icon-only {
-    height: auto;
-
-    &:hover {
-      transform: rotate(180deg);
-      padding: initial;
-      cursor: pointer;
-    }
-
-    svg {
-      color: $bright-orange;
-    }
-    &:disabled {
-      &:hover {
-        transform: none;
-      }
-      path {
-        fill: var(--txt-gray);
-      }
-    }
-  }
-
-  label.hint {
-    font-family: inherit;
-    line-height: 1.2;
-    margin: 0 0 0 0.5rem;
-    padding: 0;
   }
 }
 
