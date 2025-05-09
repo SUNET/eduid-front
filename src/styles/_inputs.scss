@@ -158,7 +158,6 @@ input[type="radio"] {
 
 /* Login username-pw / reset-password set-new-password */
 .password-input {
-  display: flex;
   position: relative;
 
   input[name="currentPassword"].is-valid {

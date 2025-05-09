@@ -9,6 +9,8 @@ import "@testing-library/jest-dom";
 
 import { setupServer } from "msw/node";
 
+import { TextEncoder } from "util";
+
 // Setup MSW to act as a mock backend in tests. In a test that accesses a backend endpoint,
 // do something like this:
 //
@@ -33,6 +35,8 @@ beforeAll(() =>
 );
 afterEach(() => mswServer.resetHandlers());
 afterAll(() => mswServer.close());
+
+global.TextEncoder = TextEncoder;
 
 // re-export rest for convenience in imports to tests
 export { rest } from "msw";

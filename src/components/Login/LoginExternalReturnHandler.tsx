@@ -6,7 +6,7 @@ import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
