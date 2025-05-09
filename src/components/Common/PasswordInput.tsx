@@ -75,17 +75,6 @@ export function PasswordInputElement(props: any): JSX.Element {
 
   return (
     <div className="password-input">
-      <input
-        {...props.input}
-        id={props.input.name}
-        type={showPassword ? "text" : "password"}
-        placeholder={props.placeholder}
-        autoComplete={props.autoComplete}
-        autoFocus={props.autoFocus}
-        className={className}
-        ref={inputRef}
-      />
-
       <EduIDButton
         type="button"
         buttonstyle="txt-toggle-btn link sm"
@@ -98,6 +87,16 @@ export function PasswordInputElement(props: any): JSX.Element {
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
       </EduIDButton>
+      <input
+        {...props.input}
+        id={props.input.name}
+        type={showPassword ? "text" : "password"}
+        placeholder={props.placeholder}
+        autoComplete={props.autoComplete}
+        autoFocus={props.autoFocus}
+        className={className}
+        ref={inputRef}
+      />
     </div>
   );
 }
