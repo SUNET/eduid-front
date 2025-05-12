@@ -378,6 +378,7 @@ export const fetchNewDevice = createAsyncThunk<
 export interface LoginMfaAuthRequest {
   ref: string;
   webauthn_response?: webauthnAssertion;
+  this_device?: string;
 }
 
 export interface LoginMfaAuthResponse {

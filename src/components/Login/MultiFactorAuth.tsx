@@ -14,6 +14,7 @@ export function MultiFactorAuth(): JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
+  const this_device = useAppSelector((state) => state.login.this_device);
 
   const isLoaded = mfa?.state === "loaded";
   //TODO: when backend is updated to swedish_eid, we should be able to rename this.
@@ -28,7 +29,7 @@ export function MultiFactorAuth(): JSX.Element {
       //
       // If returning from external authentication with Sweden Connect, we need
       // to call the MFA endpoint for it to complete.
-      dispatch(fetchMfaAuth({ ref: ref }));
+      dispatch(fetchMfaAuth({ ref: ref, this_device: this_device }));
     }
   }, [authn_options, mfa]);
 
