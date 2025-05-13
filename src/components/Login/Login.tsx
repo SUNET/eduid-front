@@ -5,6 +5,7 @@ import { useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
+import { MultiFactorPassword } from "./MultiFactorPassword";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
@@ -61,6 +62,8 @@ function Login(): JSX.Element {
        */
       if (next_page === "USERNAMEPASSWORD") {
         navigate(`/login/password/${ref}`);
+      } else if (next_page === "PASSWORD") {
+        navigate(`/login/mfa/password/${ref}`);
       } else {
         navigate(`/login/${ref}`);
       }
@@ -74,10 +77,12 @@ function Login(): JSX.Element {
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}
       {next_page === "MFA" && <MultiFactorAuth />}
+      {next_page === "PASSWORD" && <MultiFactorPassword />}
       {next_page === "FINISHED" && <RenderFinished />}
       {
         /* show remember me toggle only for login password and MFA page */ (next_page === "USERNAMEPASSWORD" ||
-          next_page === "MFA") && <RememberMeCheckbox />
+          next_page === "MFA" ||
+          next_page === "PASSWORD") && <RememberMeCheckbox />
       }
     </React.Fragment>
   );

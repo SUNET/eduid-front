@@ -38,7 +38,7 @@ export const fetchAbort = createAsyncThunk<
 /*********************************************************************************************************************/
 export interface LoginUsernamePasswordRequest {
   ref: string;
-  username: string;
+  username?: string;
   password: string;
 }
 
@@ -307,7 +307,7 @@ export interface LoginNextRequest {
   remember_me: boolean;
 }
 
-export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
+export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED" | "PASSWORD";
 
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
