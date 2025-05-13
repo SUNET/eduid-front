@@ -6,16 +6,16 @@ header {
   align-items: center;
 
   .eduid-logo {
-    width: 116px;
+    width: 113px;
     height: 40px;
-    background-image: url(../../img/eduid-logo-black.svg);
+    background-image: url(../../img/eduid-logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 0;
+    margin-right: $margin;
 
     @media (max-width: $bp-md) {
-      width: 99px;
       height: 34px;
+      width: 95px;
     }
   }
 
