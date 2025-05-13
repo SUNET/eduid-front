@@ -45,6 +45,7 @@ export function NewDevice(): JSX.Element | null {
  */
 export function RememberMeCheckbox(): JSX.Element | null {
   const remember_me = useAppSelector((state) => state.login.remember_me);
+  const has_session = useAppSelector((state) => state.login.authn_options.has_session);
   const previous_this_device = useAppSelector((state) => state.login.previous_this_device);
   const next_page = useAppSelector((state) => state.login.next_page);
   const [switchChecked, setSwitchChecked] = useState(remember_me);
@@ -102,6 +103,14 @@ export function RememberMeCheckbox(): JSX.Element | null {
         />
         <div className="toggle-switch"></div>
       </label>
+      {!has_session && switchChecked && (
+        <p className="help-text">
+          <FormattedMessage
+            defaultMessage="If you turn this off, you'll need to log in with your username and password."
+            description="MFA as the first step of login, toggle off"
+          />
+        </p>
+      )}
       {!switchChecked && (
         <p className="help-text">
           <FormattedMessage
