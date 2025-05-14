@@ -1,9 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
 import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { StateWithCommonConfig } from 'apis/common';
-import { AuthenticateResponse } from 'apis/eduidAuthn';
 import { EDUID_CONFIG_URL } from 'globals';
 import { ajaxHeaders } from 'ts_common';
+import { AuthenticateResponse } from "./authn";
 
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {

@@ -1,4 +1,3 @@
-import { authnGetStatus } from "apis/eduidAuthn";
 import { bankIDGetStatus } from "apis/eduidBankid";
 import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
@@ -6,6 +5,7 @@ import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import authnApi from "services/authn";
 import { showNotification } from "slices/Notifications";
 
 // URL parameters passed to this component
@@ -19,6 +19,7 @@ export function ExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const app_loaded = useAppSelector((state) => state.config.is_app_loaded);
+  const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery()
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
@@ -70,12 +71,11 @@ export function ExternalReturnHandler() {
     }
   }
 
-  async function fetchAuthStatus(authn_id: string) {
-    const response = await dispatch(authnGetStatus({ authn_id: authn_id }));
-    if (authnGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+  useEffect(() => {
+    if (authnGetStatus.data && !authnGetStatus.isError && !authnGetStatus.isLoading) {
+      processStatus(authnGetStatus.data.payload)
     }
-  }
+  }, [authnGetStatus.data, authnGetStatus.isError, authnGetStatus.isLoading])
 
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas" && app_loaded) {
@@ -88,7 +88,7 @@ export function ExternalReturnHandler() {
       fetchBankIDStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "authn" && app_loaded) {
-      fetchAuthStatus(params.authn_id).catch(console.error);
+      authnGetStatus_trigger({ authn_id: params.authn_id });
     }
   }, [params, app_loaded]);
 

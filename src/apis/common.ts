@@ -1,9 +1,10 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
+import { AuthenticateResponse } from "services/authn";
 import authnSlice from "slices/Authn";
 import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
 import { EduIDAppDispatch } from "../eduid-init-app";
-import { authenticate, AuthenticateResponse } from "./eduidAuthn";
+import { authenticate } from "./eduidAuthn";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
