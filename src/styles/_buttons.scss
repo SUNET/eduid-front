@@ -1,17 +1,15 @@
-@import "./variables";
-
-.btn.disabled,
-.btn:disabled {
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
   opacity: 0.4;
 }
 
-a.btn,
-button,
-button.btn {
+a.button,
+button {
   font-family: $akkurat;
   letter-spacing: 1px;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: $txt-md;
+  font-weight: bold;
   line-height: 1;
   text-transform: uppercase;
   height: 3rem;
@@ -27,7 +25,7 @@ button.btn {
     cursor: not-allowed !important;
     pointer-events: all !important;
     border-color: inherit;
-    color: $white;
+    color: var(--contrast-color);
 
     &.primary {
       background-color: $btn-orange;
@@ -40,7 +38,7 @@ button.primary:not(:disabled):not(.disabled):active,
 button.primary:not(:disabled):not(.disabled):focus,
 button.primary:not(:disabled):not(.disabled):active:focus,
 button.primary:not(:disabled):not(.disabled):hover {
-  color: $white;
+  color: #fff;
   border: solid 2px $bright-orange;
   background-color: $btn-orange;
   box-shadow: none;
@@ -66,13 +64,11 @@ button.secondary:not(:disabled):not(.disabled):active,
 button.secondary:not(:disabled):not(.disabled):focus,
 button.secondary:not(:disabled):not(.disabled):active:focus,
 button.secondary:not(:disabled):not(.disabled):hover {
-  color: $txt-orange;
+  color: var(--txt-orange);
   border: solid 2px $bright-orange;
-  background-color: $white;
+  background-color: var(--contrast-color);
   box-shadow: none;
   min-width: 100px;
-
-  //min-width: min-content;
   padding: 0 1.125rem;
 
   /* Login, Logout, Register button in Header */
@@ -117,7 +113,7 @@ button.close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: $txt-gray;
+    color: var(--txt-gray);
     background-color: transparent;
     box-shadow: none;
   }
@@ -135,8 +131,11 @@ button.close {
   left: 50%;
   width: 20px;
   height: 2px;
-  background-color: $txt-gray;
+  background-color: var(--txt-gray);
   transform-origin: center;
+  :hover > & {
+    background-color: var(--body-txt);
+  }
 }
 
 .close::before {
@@ -150,7 +149,7 @@ button.close {
 /* styles for links that are also buttons */
 button.link {
   background-color: transparent;
-  color: $txt-orange;
+  color: var(--txt-orange);
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -159,10 +158,8 @@ button.link {
   padding: 0;
 
   &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: $txt-orange;
+  &:active {
+    color: var(--txt-orange);
     background-color: transparent;
     text-decoration: underline;
     box-shadow: none;
@@ -184,8 +181,9 @@ button.link {
     }
   }
   &.disabled,
-  :disabled {
-    color: $txt-gray;
+  &:disabled,
+  &[disabled] {
+    color: var(--txt-gray);
     opacity: 1;
     box-shadow: none;
     text-decoration: none;
@@ -202,11 +200,16 @@ button.icon {
   img {
     margin-right: 0.5rem;
     width: auto;
+    transition: transform 0.5s;
   }
-  &.freja-icon {
-    img {
-      height: 22px;
-    }
+
+  //round arrow update link
+  &.refresh:hover svg {
+    transform-origin: center;
+    transform: rotate(360deg);
+  }
+  &.refresh[disabled]:hover svg {
+    transform: none;
   }
 }
 
@@ -262,45 +265,16 @@ button.icon {
   }
 }
 
-// TODO: remove this when we move icon-text to a more generic place
-.icon-text {
-  display: flex;
-  align-items: baseline;
-
-  button.icon-only {
-    height: auto;
-
-    &:hover {
-      transform: rotate(180deg);
-      padding: initial;
-      cursor: pointer;
-    }
-
-    svg {
-      color: $bright-orange;
-    }
-    &:disabled {
-      &:hover {
-        transform: none;
-      }
-      path {
-        fill: $txt-gray;
-      }
-    }
-  }
-
-  label.hint {
-    font-family: inherit;
-    line-height: 1.2;
-    margin: 0 0 0 0.5rem;
-    padding: 0;
-  }
-}
-
-//textual toggle control, eg. copy/show
+//textual toggle control, eg. copy/copied right after input
 .txt-toggle-btn {
-  position: absolute;
-  right: 1rem;
+  height: auto;
+
+  //and show/hide just before input
+  &:has(+ input) {
+    position: absolute;
+    right: 0;
+    top: -1.1rem;
+  }
 }
 
 /* Instance/icon unique styles to be set in targeted css */
@@ -315,7 +289,7 @@ button.icon-only {
 }
 
 @media (max-width: $bp-xs) {
-  button.btn:not(.sm) {
+  button:not(.sm) {
     font-size: $txt-sm;
   }
 
@@ -324,7 +298,7 @@ button.icon-only {
     width: 100%;
   }
 
-  button.btn.link {
+  button.link {
     width: auto;
     padding: 0;
   }
@@ -334,7 +308,7 @@ button.icon-only {
 button.header-user {
   &:hover,
   &:focus-within {
-    background-color: $body-gray !important;
+    background-color: var(--body-gray) !important;
   }
 }
 
@@ -370,7 +344,9 @@ button.scroll-to-top {
   box-shadow: none !important;
   background-color: transparent;
   &:hover {
-    background-image: url("../../img/remove-icon-black.svg");
+    //background-image: url("../../img/remove-icon-black.svg");
+    filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(657%) hue-rotate(340deg) brightness(96%)
+      contrast(83%);
   }
 }
 

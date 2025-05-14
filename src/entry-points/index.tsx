@@ -4,7 +4,7 @@ import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/Reset
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
 import ReactDOMClient from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";

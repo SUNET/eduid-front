@@ -4,12 +4,13 @@ footer {
   align-items: baseline;
   padding: 1rem;
   border-top: 6px solid $bright-orange;
-  background-color: $body-gray;
-  font-size: 0.9rem;
+  background-color: var(--body-gray);
+  font-size: $txt-sm;
 
   .logo-wrapper {
     display: flex;
     align-items: baseline;
+    font-size: $txt-xs;
 
     .sunet-logo {
       width: 40px;
@@ -37,8 +38,8 @@ footer nav .help-link {
 footer nav .lang-selected {
   margin: 0;
   cursor: pointer;
-  color: $txt-orange;
-  font-size: 0.9rem;
+  color: var(--txt-orange);
+  font-size: $txt-sm;
 }
 
 #language-selector {

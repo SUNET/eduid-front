@@ -69,7 +69,7 @@ export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
                   <FormattedMessage defaultMessage="cancel" description="button cancel" />
                 </EduIDButton>
               )}
-              <EduIDButton buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
+              <EduIDButton type="submit" buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 {props.submitButtonText}
               </EduIDButton>
             </div>

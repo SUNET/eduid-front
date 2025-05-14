@@ -1,17 +1,16 @@
 /* styles for ordered list with large number */
-@import "variables.scss";
 
 .listed-steps {
   margin-left: $list-indent;
   list-style-type: decimal;
 
   li {
-    font-size: 1.125rem;
+    font-size: $txt-lg;
     line-height: 1.25;
     margin-bottom: 2em;
 
     &::marker {
-      font-size: 1em;
+      font-size: $txt-md;
       font-family: $akkurat;
       font-weight: bold;
     }
@@ -30,7 +29,6 @@
 dl.terms {
   dt {
     @extend .heading-4;
-    font-weight: 500;
   }
   dd {
     margin-bottom: 0.5rem;

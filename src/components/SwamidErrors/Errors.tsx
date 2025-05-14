@@ -1,7 +1,7 @@
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { AuthenticationFailure } from "./AuthenticationFailure";
 import { AuthorizationFailure } from "./AuthorizationFailure";
 import { EduidError } from "./EduidError";

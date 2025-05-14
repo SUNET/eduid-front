@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useContext, useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";

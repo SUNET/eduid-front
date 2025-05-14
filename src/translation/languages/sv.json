@@ -267,6 +267,10 @@
     "developer_comment": "start eduid - list item 2",
     "string": "ditt unika användar-ID"
   },
+  "4+MTla": {
+    "developer_comment": "help - content headline",
+    "string": "Ämnesområden"
+  },
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
@@ -1192,7 +1196,7 @@
   },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
-    "string": "Koppla bort din identitet"
+    "string": "Frånkoppla din identitet"
   },
   "PnCws9": {
     "developer_comment": "what is accessibility report - heading",
@@ -1212,7 +1216,7 @@
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
-    "string": "Är du säker på att du vill koppla bort din identitet från ditt eduID konto?"
+    "string": "Är du säker på att du vill ta bort koppling till din identitet från ditt eduID konto?"
   },
   "Q65OFZ": {
     "developer_comment": "login eduid - username list item 1",
@@ -1798,10 +1802,6 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "På- och avstängning av 2FA vid inloggning."
   },
-  "bkpUyB": {
-    "developer_comment": "verify webauthn token modal body text",
-    "string": "Klicka på knappen för BankID eller Freja+ för att verifiera din säkerhetsnyckel."
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -2170,6 +2170,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3strong",
     "string": "Verifierad identitet:"
   },
+  "hJj6pX": {
+    "developer_comment": "help - general headline",
+    "string": "Hjälpavsnitt och kontaktuppgifter"
+  },
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
     "string": ", kan det verifieras med:"
@@ -2415,10 +2419,6 @@
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
     "string": "Registrera: Godkänn användarvillkor"
-  },
-  "lXwaZ5": {
-    "developer_comment": "security verify",
-    "string": "Freja+"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2732,10 +2732,6 @@
     "developer_comment": "security eduid - list item 3-3",
     "string": "verifierings-status / alternativ (Freja+/BankID)"
   },
-  "owAbvV": {
-    "developer_comment": "security verify",
-    "string": "BankID"
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -2751,10 +2747,6 @@
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
     "string": "Spara"
-  },
-  "pb/yW9": {
-    "developer_comment": "help - headline",
-    "string": "Hjälpavsnitt och kontaktuppgifter"
   },
   "pd.display_name": {
     "developer_comment": "Display name label/template (edit personal data)",
@@ -3027,6 +3019,10 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "Om du har ett svenskt personnummer, använd istället någon av metoderna som stöds därav för att underlätta kommunikationen med svenska myndigheter. Obs: om du initialt har verifierat dig med eIDAS och senare får svenskt personnummer kan du lägga till det och verifiera dig igen med hjälp av det i identitetshanteringen i eduID."
   },
+  "sat8ZW": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+ eller eIDAS nedan."
+  },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
     "string": "Om du har svenskt personnummer eller samordningsnummer"
@@ -3223,6 +3219,10 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "Vad är eIDAS?"
+  },
+  "uigsKE": {
+    "developer_comment": "help - content paragraph",
+    "string": "Fäll ut avsnitten för att läsa mer."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",

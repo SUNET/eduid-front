@@ -21,11 +21,7 @@ interface DataStatusProps {
 function DataStatus(props: DataStatusProps) {
   if (!props.verified) {
     return (
-      <EduIDButton
-        className={`${props.name === "number" ? "disabled link sm" : "link sm"}`}
-        buttonstyle="link sm"
-        onClick={props.handleStartConfirmation}
-      >
+      <EduIDButton buttonstyle="link sm" onClick={props.handleStartConfirmation}>
         {props.name === "number" ? (
           <FormattedMessage defaultMessage="unverified" description="unverified" />
         ) : (
@@ -42,11 +38,7 @@ function DataStatus(props: DataStatusProps) {
     );
   }
   return (
-    <EduIDButton
-      className={`${props.name === "number" ? "disabled" : " "}`}
-      buttonstyle="link sm"
-      onClick={props.handleMakePrimary}
-    >
+    <EduIDButton buttonstyle="link sm" onClick={props.handleMakePrimary}>
       <FormattedMessage defaultMessage="make primary" description="Make primary button" />
     </EduIDButton>
   );

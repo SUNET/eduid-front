@@ -1,35 +1,42 @@
+/** System wide variables to reuse for consistency **/
+
 /*
  * Colors
  * ========================================================================== */
 
-$white: #fff;
-$txt-black: #161616;
-$body-gray: #f4f4f4;
-$bg-gray: #ebebeb;
-$border-gray: #d8d8d8;
-$txt-gray: #5e5e5e; //text on bg gray
-
-$bg-orange: #ffe7dd;
-$bright-orange: #ff4500; //eduID, higlights
-$txt-orange: #c23400; //text on gray or orange
+//CSS vars inst of SASS to enable dark mode overrides
+:root {
+  --contrast-color: #fff;
+  --body-txt: #161616;
+  --body-gray: #f4f4f4;
+  --txt-gray: #5e5e5e; //text on bg gray
+  --border-gray: #d8d8d8;
+  --txt-orange: #c23400; //text on gray or orange
+  --bg-orange: #ffe7dd;
+  --error-red: #d2143a;
+  --error-red-t: #d2143a80; //with 50% transparency
+  --bg-gray: #ebebeb;
+}
+$bright-orange: #ff4500; //eduID, highlights
 $btn-orange: #db3a00; //white on orange
-
-$error-red: #d2143a;
 $success-green: #177d4d;
-
 /*
  * Typography
  * ========================================================================== */
 
-$inter-bold: "Inter-SemiBold", "Arial", "Helvetica", "sans-serif";
+$inter-bold: "Inter-SemiBold", "Arial", "Helvetica", "sans-serif"; //bold enough for normal text
 $inter-regular: "Inter-Regular", "Arial", "Helvetica", "sans-serif";
 $inter-medium: "Inter-Medium", "Arial", "Helvetica", "sans-serif";
 $inter-light: "Inter-light", "Arial", "Helvetica", "sans-serif";
 $akkurat: "Akkurat", "Arial", "Helvetica", "sans-serif";
-$txt-xs: 0.75rem;
-$txt-sm: 0.9rem;
-$txt-md: 1rem;
-$txt-lg: 1.25rem;
+
+$txt-xs: 0.75rem; //12px
+$txt-sm: 0.875rem; //14px
+$txt-md: 1rem; //16px (body 100%, default)
+$txt-lg: 1.125rem; //18px
+$txt-xl: 1.25rem; //20px
+$txt-xxl: 1.375rem; //22px
+
 $line-height: 1.4;
 $margin: 1rem;
 $list-indent: 2.25rem;

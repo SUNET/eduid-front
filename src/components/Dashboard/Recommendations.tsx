@@ -6,8 +6,7 @@ import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
@@ -137,13 +136,13 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 
 function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
   const manageSecurityKeyLink = (
-    <HashLink
+    <Link
       key={`${SECURITY_PATH}#manage-security-keys`}
       to={`${SECURITY_PATH}#manage-security-keys`}
       aria-label="go to manage your security key section"
     >
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
-    </HashLink>
+    </Link>
   );
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (

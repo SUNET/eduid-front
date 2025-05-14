@@ -1,67 +1,58 @@
-@import "variables";
-
 /* Inputs and form controls, mainly non button */
 
 input {
   box-sizing: border-box;
+  font-family: $inter-regular;
+  font-size: $txt-xl;
+  color: var(--body-txt);
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  height: 3rem;
+  background-color: var(--contrast-color);
 }
 
 /* Form controls and interactive states */
-.form-control {
-  display: flex;
-}
 
-.form-control:disabled,
-.form-control[readonly],
-input[readonly] {
-  color: $txt-gray;
-  background-color: $bg-gray;
-  :focus,
-  :hover {
-    pointer-events: none;
-  }
-}
-
-input.form-control,
-input.form-control.is-valid,
-// input.form-control.is-invalid,
-input.form-control:focus,
-input.form-control.is-valid:focus
-// input.form-control.is-invalid:focus
-{
-  outline: $border-width solid $border-gray;
+input,
+input.is-valid,
+input:focus,
+input.is-valid:focus {
+  outline: $border-width solid var(--border-gray);
   background-image: none;
-  background-color: $white;
+  background-color: var(--contrast-color);
   transition: none;
   border: none;
   box-shadow: none;
 }
 
-.form-control::placeholder,
 input::placeholder {
   font-family: $inter-regular;
-  font-size: 1.5rem;
+  font-size: $txt-xl;
 }
 
 :hover:not(:focus):not(:disabled) {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    border-top: $border-width solid $white;
-    border-bottom: $border-width solid $txt-black !important;
+    //border-top: $border-width solid var(--contrast-color);
+    padding-top: calc(1.25rem + $border-width);
+    border-bottom: $border-width solid var(--body-txt) !important;
   }
 }
 
-input.form-control.is-invalid,
-input.form-control.is-invalid:focus {
-  // outline: $border-width solid $error-red;
+input.is-invalid,
+input.is-invalid:focus {
+  outline: $border-width solid var(--error-red-t);
   background-image: none;
 }
 
 //tab-focus
 :focus-visible,
 #mfa-security-key:focus {
-  outline: $border-width dashed $txt-black !important;
+  outline: $border-width dashed var(--body-txt) !important;
   transition: none !important;
 
   //has parents with overflow hidden
@@ -70,9 +61,22 @@ input.form-control.is-invalid:focus {
     outline-offset: -$border-width;
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: $border-width dashed #000 !important;
+    outline: $border-width dashed var(--body-txt) !important;
     transition: none;
   }
+}
+
+input:disabled,
+input[readonly] {
+  color: var(--txt-txt);
+  background-color: var(--bg-gray);
+  :focus,
+  :hover {
+    pointer-events: none;
+  }
+}
+input[readonly] {
+  outline: none;
 }
 
 //removing chrome autocomplete babyblue
@@ -85,13 +89,14 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--contrast-color) inset !important;
 }
 
 /* Radio buttons */
 input[type="radio"] {
   //remove standard background appearance
   appearance: none;
+  outline: none;
 
   //create custom radio button appearance
   display: inline-block;
@@ -122,8 +127,8 @@ input[type="radio"] {
     border: none;
 
     .error {
-      background: $error-red;
-      color: $white;
+      background: var(--error-red);
+      color: var(--contrast-color);
       border: none;
     }
   }
@@ -141,9 +146,9 @@ input[type="radio"] {
     }
   }
   span {
-    font-size: 1.25rem;
+    font-size: $txt-xl;
     align-self: center;
-    color: $txt-black;
+    color: var(--body-txt);
     font-family: $inter-regular;
     font-weight: normal;
     margin: 0 2rem 0 0;
@@ -153,7 +158,6 @@ input[type="radio"] {
 
 /* Login username-pw / reset-password set-new-password */
 .password-input {
-  display: flex;
   position: relative;
 
   input[name="currentPassword"].is-valid {
@@ -162,7 +166,7 @@ input[type="radio"] {
 }
 
 #copy-new-password {
-  background-color: $border-gray;
+  background-color: var(--bg-gray);
 }
 
 input#display-none-new-password {
@@ -197,7 +201,7 @@ input[type="checkbox"] {
 
 .toggle-switch {
   display: inline-block;
-  background: $border-gray;
+  background: var(--border-gray);
   border-radius: 16px;
   width: 54px;
   height: 28px;
@@ -212,7 +216,7 @@ input[type="checkbox"] {
 
   &::before {
     display: block;
-    background: $white;
+    background: var(--contrast-color);
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -250,14 +254,14 @@ select {
   padding: 5px;
   border-radius: 3px;
   width: 100%;
-  background-color: $white;
+  background-color: var(--contrast-color);
   height: 40px;
   margin-top: 3px;
 }
 
 //react-select
 .select__multi-value__label {
-  font-size: 1.25rem !important;
+  font-size: $txt-xl !important;
   align-self: center !important;
 }
 
@@ -281,24 +285,22 @@ input.display-none {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  box-shadow: 0 0 0 50px $white inset;
+  box-shadow: 0 0 0 50px var(--contrast-color) inset;
 }
 
 /* Responsive */
 @media (max-width: $bp-sm) {
-  .form-control,
   input,
   .radio-input-container span {
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 
   .input-container {
     margin: 0;
   }
 
-  .form-control::placeholder,
   input::placeholder {
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 }
 

@@ -2,7 +2,7 @@ import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
@@ -11,7 +11,6 @@ function ChangePasswordDisplay() {
   async function handleSuggestedPassword() {
     const response = await dispatch(fetchSuggestedPassword());
     if (fetchSuggestedPassword.fulfilled.match(response)) {
-      console.log("response", response);
       navigate("/profile/chpass");
     }
   }

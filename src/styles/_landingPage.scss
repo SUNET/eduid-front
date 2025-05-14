@@ -1,13 +1,13 @@
-@import "variables";
+/* Pre login/register root landing page */
 
 .landing {
   background-image: radial-gradient(
     ellipse at 112% 100%,
-    $body-gray 0,
-    $body-gray 45%,
+    var(--body-gray) 0,
+    var(--body-gray) 45%,
     #fafafa 45%,
     #fafafa 75%,
-    $white 75%
+    var(--contrast-color) 75%
   );
 
   header,
@@ -22,8 +22,12 @@
 
 .landing-content {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     margin-bottom: 0.75em;
+
+    @media (max-width: $bp-md) {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -54,7 +58,7 @@
     border-radius: 100% 100% 0 0;
     font-family: $inter-medium;
     font-size: $txt-sm;
-    color: $txt-gray;
+    color: var(--txt-gray);
 
     &:nth-of-type(1) {
       background-color: #f3f9f5;
@@ -79,7 +83,6 @@
       width: auto;
       height: 24px;
       margin: 5px;
-      color: $txt-gray;
     }
   }
   @media (min-width: $bp-lg) {

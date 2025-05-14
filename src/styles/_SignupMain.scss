@@ -1,3 +1,5 @@
+/** Signup flow specific styles **/
+
 // #currentPassword-wrapper {
 //   margin-top: 2rem !important;
 // }
@@ -53,7 +55,7 @@ h3 {
 
 @media (max-width: 375px) {
   #resend-button {
-    font-size: 0.8rem;
+    font-size: $txt-xs;
   }
 }
 
@@ -62,13 +64,14 @@ h3 {
   .response-code-inputs {
     input {
       display: inline-block;
-      border: 2px solid $txt-gray;
+      border: 2px solid var(--border-gray);
       font-size: 1.75rem;
       margin: 5px;
       height: 4rem;
       width: 3.5rem;
       text-align: center;
       border-radius: 5px;
+      outline: none;
 
       &:focus {
         box-shadow: none;

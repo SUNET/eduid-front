@@ -1,3 +1,5 @@
+/** Content wrapping load spinner **/
+
 #eduid-splash-and-children {
   position: relative;
   display: flex;
@@ -9,7 +11,7 @@
   height: 100%;
   width: calc(100% + 2 * ($border-width));
   left: -$border-width;
-  background-color: $body-gray;
+  background-color: var(--body-gray);
   position: absolute;
   z-index: 100;
 

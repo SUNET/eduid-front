@@ -11,12 +11,12 @@ import {
 } from "react-accessible-accordion";
 
 interface AccordionItemTemplateProps {
-  icon?: React.ReactNode;
-  title: React.ReactNode;
-  additionalInfo: React.ReactNode;
-  uuid?: string;
-  children?: React.ReactNode;
-  disabled?: boolean;
+  readonly icon?: React.ReactNode;
+  readonly title: React.ReactNode;
+  readonly additionalInfo: React.ReactNode;
+  readonly uuid?: string;
+  readonly children?: React.ReactNode;
+  readonly disabled?: boolean;
 }
 
 function AccordionItemTemplate(props: AccordionItemTemplateProps) {
@@ -31,7 +31,7 @@ function AccordionItemTemplate(props: AccordionItemTemplateProps) {
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
             <h3 className="accordion-title">{props.title}</h3>
-            <p className="accordion-description">{props.additionalInfo}</p>
+            <span className="accordion-description">{props.additionalInfo}</span>
           </div>
           <AccordionItemState>
             {({ expanded }) =>

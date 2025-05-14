@@ -21,8 +21,8 @@
   }
 
   &-universities-status {
-    color: $error-red;
-    font-size: 1rem;
+    color: var(--error-red);
+    font-size: $txt-md;
   }
 
   svg {

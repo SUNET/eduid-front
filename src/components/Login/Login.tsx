@@ -2,7 +2,7 @@ import { fetchNext } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";

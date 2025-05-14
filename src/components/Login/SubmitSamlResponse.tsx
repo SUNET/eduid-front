@@ -3,7 +3,7 @@ import ShowAfterDelay from "components/Common/ShowAfterDelay";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function SubmitSamlResponse() {
   const [error, setError] = useState(false);

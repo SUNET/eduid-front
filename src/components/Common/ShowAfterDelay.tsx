@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 interface ShowAfterDelayProps extends React.BaseHTMLAttributes<HTMLBaseElement> {
-  delay: number;
+  readonly delay: number;
 }
 
 /**

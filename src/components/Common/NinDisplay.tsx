@@ -5,7 +5,7 @@ import { IDENTITY_PATH } from "components/IndexMain";
 import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 interface NinDisplayProps {
   nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable

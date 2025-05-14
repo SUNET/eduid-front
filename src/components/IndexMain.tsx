@@ -6,7 +6,7 @@ import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
 import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import { jsConfigApi } from "services/jsConfig";
 import personalDataApi from "services/personalData";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -31,6 +31,7 @@ import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
 import UseOtherDevice2 from "./Login/UseOtherDevice2";
 import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
+import ScrollToHash from "./ScrollToHash";
 import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
@@ -79,6 +80,7 @@ export function IndexMain(): JSX.Element {
   return (
     <React.StrictMode>
       <div className={isIndex ? "page-wrapper landing" : "page-wrapper"}>
+        <ScrollToHash />
         <Header loginRef={loginRef} />
         <main id="panel" className="panel">
           <Notifications />

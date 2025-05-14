@@ -3,7 +3,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { finish_url } from "./ChangePassword";
 
 export function ChangePasswordSuccess(): JSX.Element {

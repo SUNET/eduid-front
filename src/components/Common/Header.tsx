@@ -2,7 +2,7 @@ import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {

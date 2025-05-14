@@ -267,6 +267,10 @@
     "developer_comment": "start eduid - list item 2",
     "string": "your unique user ID"
   },
+  "4+MTla": {
+    "developer_comment": "help - content headline",
+    "string": "Content areas"
+  },
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
@@ -1798,10 +1802,6 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "Toggling 2FA login requirement setting."
   },
-  "bkpUyB": {
-    "developer_comment": "verify webauthn token modal body text",
-    "string": "Please click either the BankID or Freja+ button to verify your security key"
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -2170,6 +2170,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3strong",
     "string": "Verified identity:"
   },
+  "hJj6pX": {
+    "developer_comment": "help - general headline",
+    "string": "Help and contact"
+  },
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
     "string": ", verifying it can be done via:"
@@ -2415,10 +2419,6 @@
   "lNjmQc": {
     "developer_comment": "Terms of use (heading)",
     "string": "Register: Terms of use"
-  },
-  "lXwaZ5": {
-    "developer_comment": "security verify",
-    "string": "Freja+"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2732,10 +2732,6 @@
     "developer_comment": "security eduid - list item 3-3",
     "string": "verification status / verification options (Freja+/BankID)"
   },
-  "owAbvV": {
-    "developer_comment": "security verify",
-    "string": "BankID"
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
@@ -2751,10 +2747,6 @@
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
     "string": "Save"
-  },
-  "pb/yW9": {
-    "developer_comment": "help - headline",
-    "string": "Help and contact"
   },
   "pd.display_name": {
     "developer_comment": "Display name label/template (edit personal data)",
@@ -3027,6 +3019,10 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
+  "sat8ZW": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Please click either the BankID, Freja+ or eIDAS button to verify your security key"
+  },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
     "string": "If you have a Swedish personal identity number or coordination number"
@@ -3223,6 +3219,10 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
+  },
+  "uigsKE": {
+    "developer_comment": "help - content paragraph",
+    "string": "Expand sections to learn more."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",

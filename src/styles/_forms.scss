@@ -1,6 +1,30 @@
 /* Form layout elements */
 
 //top margin here assumes that text above has bottom margin of 1rem
+
+.single-input-form .form-group {
+  margin-bottom: 0;
+  width: 100%;
+
+  & .text-muted {
+    margin-top: 0;
+  }
+}
+
+// text under inputs
+.small,
+small {
+  font-size: 100% !important;
+
+  &.form-text {
+    margin-top: 0 !important;
+  }
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -8,6 +32,7 @@ form {
 
   .form-wrapper {
     min-height: 5.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -37,7 +62,7 @@ form {
     align-self: center;
   }
   button {
-    margin: auto 0 0.5rem 1rem;
+    margin: 0.5rem 0 0 1rem;
   }
 
   @media (max-width: $bp-sm) {
@@ -80,7 +105,7 @@ fieldset {
 
   legend.required::after {
     content: " *";
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 }
 
@@ -96,15 +121,16 @@ fieldset.change-password-custom-inputs {
   color: transparent;
 }
 
+// in use?
 .input-error {
   color: $bright-orange;
-  font-weight: 700;
   letter-spacing: 0.025rem;
+  @extend .text-bold;
 }
 
 .input-validate-error {
   font-size: $txt-sm;
-  color: $error-red;
+  color: var(--error-red);
 
   fieldset & {
     position: absolute;
@@ -118,17 +144,17 @@ fieldset.change-password-custom-inputs {
 
   & label {
     letter-spacing: 0;
-    font-size: 1rem;
+    font-size: $txt-md;
   }
 
   //for orange asterisk after label
   & label.required::after {
     content: " *";
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 
   & .help-block {
-    font-size: 1rem;
+    font-size: $txt-md;
     text-transform: lowercase;
   }
 }
@@ -136,11 +162,11 @@ fieldset.change-password-custom-inputs {
 //smallish grayish additional info underneath corresponding form elements
 .help-text {
   margin: 0.5rem 0 0;
-  color: $txt-gray;
-  font-size: 14px;
+  color: var(--txt-gray);
+  font-size: $txt-sm;
 
   &.black {
-    color: $txt-black;
+    color: var(--body-txt);
   }
 
   .btn + & {

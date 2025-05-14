@@ -14,6 +14,7 @@ dialog[open] {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
+  z-index: 100;
 
   &.show {
     background-color: rgba(0, 0, 0, 0.5);
@@ -29,12 +30,12 @@ dialog[open] {
   &-dialog {
     @extend .horizontal-content-margin;
     max-width: calc(870px - 4rem);
-    background-color: $white;
+    background-color: var(--contrast-color);
     border-radius: 20px;
     margin: auto;
 
     .modal-content {
-      background-color: $white;
+      background-color: var(--contrast-color);
       border-radius: 20px;
 
       .modal-header {
@@ -56,7 +57,7 @@ dialog[open] {
         padding: 0 1.5rem 1rem;
         display: flex;
         flex-direction: column;
-        font-size: 1.25rem;
+        font-size: $txt-xl;
         line-height: 1.4;
         // captcha image
         img {
@@ -66,7 +67,7 @@ dialog[open] {
           margin-bottom: 1rem;
         }
         input {
-          background-color: $body-gray;
+          background-color: var(--body-gray);
         }
 
         form {
@@ -85,15 +86,13 @@ dialog[open] {
               margin-top: 0.5rem;
               font-family: $inter-bold;
               display: block;
-              font-size: 1rem;
+              font-size: $txt-md;
             }
           }
         }
 
         @media (max-width: $bp-lg) {
-          font-size: 1.125rem;
-
-          .form-control,
+          font-size: $txt-lg;
           input {
             font-size: inherit;
 
@@ -120,9 +119,8 @@ dialog[open] {
 
     @media (max-width: $bp-lg) {
       .modal-body {
-        font-size: 1.125rem;
+        font-size: $txt-lg;
 
-        .form-control,
         input {
           font-size: inherit;
 
@@ -132,12 +130,5 @@ dialog[open] {
         }
       }
     }
-  }
-
-  @media (max-width: $bp-lg) {
-    padding: 1rem 2rem;
-  }
-  @media (max-width: $bp-md) {
-    padding: 1rem;
   }
 }

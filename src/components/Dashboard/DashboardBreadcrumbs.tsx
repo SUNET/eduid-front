@@ -2,12 +2,12 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 interface DashboardBreadcrumbsTypes {
-  pageIcon?: IconProp;
-  currentPage: string;
-  icon?: string;
+  readonly pageIcon?: IconProp;
+  readonly currentPage: string;
+  readonly icon?: string;
 }
 
 export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardBreadcrumbsTypes): JSX.Element {
@@ -29,7 +29,11 @@ export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardB
       </Link>
       <span aria-hidden="true">/</span>
       <Link to="#" className="disabled" aria-label={`disabled link to ${currentPage}`}>
-        {pageIcon ? <FontAwesomeIcon icon={pageIcon} /> : <img height="18" src={icon} alt={icon} />}
+        {pageIcon ? (
+          <FontAwesomeIcon icon={pageIcon} />
+        ) : (
+          <img height="18" src={icon} alt={`current page ${currentPage}`} />
+        )}
         {currentPage}
       </Link>
     </nav>

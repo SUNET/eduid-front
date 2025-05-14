@@ -40,7 +40,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
       value: "Bank ID",
       label: (
         <IconWithText
-          icon={<img height="35" alt="BankID" src={BankIdFlag} />}
+          icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
           text={<FormattedMessage defaultMessage={`BankID`} />}
         />
       ),
@@ -49,7 +49,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
       value: "Freja+",
       label: (
         <IconWithText
-          icon={<img className="freja" height="35" alt="Freja+" src={FrejaFlag} />}
+          icon={<img className="circle-icon" height="35" alt="Freja+" src={FrejaFlag} />}
           text={<FormattedMessage defaultMessage={`Freja+`} />}
         />
       ),

@@ -4,7 +4,7 @@ import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import authnApi from "services/authn";
 import personalDataApi from "services/personalData";
 import { appLoadingSlice } from "slices/AppLoading";

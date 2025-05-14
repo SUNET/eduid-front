@@ -1,6 +1,5 @@
-@import "variables";
+/* Overall page structure */
 
-/* overall structure of page */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,7 +10,7 @@ body {
   font-family: $inter-regular;
   font-size: 16px;
   line-height: 1.5;
-  color: $txt-black;
+  color: var(--body-txt);
   scroll-behavior: smooth;
   display: flex;
 }
@@ -27,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: $body-gray;
+  background-color: var(--body-gray);
 
   .content {
     padding-top: 2rem;
@@ -49,7 +48,7 @@ body {
 #content article {
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid $border-gray;
+  border-bottom: 1px solid var(--border-gray);
 
   &:last-of-type {
     border-bottom: none;
@@ -65,7 +64,7 @@ body {
   article {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
-    border-bottom: 1px dashed $border-gray;
+    border-bottom: 1px dashed var(--border-gray);
 
     @media (max-width: $bp-md) {
       margin-bottom: 1rem;
@@ -94,12 +93,12 @@ body {
 // Mimic lead paragraph border
 hr.border-line {
   margin: 0.5rem 0 2rem;
-  border-bottom: 2px solid $border-gray;
+  border-bottom: 2px solid var(--border-gray);
   border-top: none;
   opacity: unset;
 
   &-lesser {
-    border-bottom: 1px dashed $border-gray;
+    border-bottom: 1px dashed var(--border-gray);
   }
 }
 
@@ -173,4 +172,10 @@ hr.border-line {
 
 section.top-spacing {
   margin-top: 1rem;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }

@@ -1,3 +1,5 @@
+/** Edit name form **/
+
 .personal-data {
   .title {
     margin-bottom: 1.25rem;
@@ -6,20 +8,6 @@
   @media (max-width: $bp-xs) {
     .button-pair {
       flex-direction: column;
-    }
-  }
-
-  .name-inputs {
-    .icon-text {
-      display: flex;
-      align-items: baseline;
-
-      label.hint {
-        font-family: inherit;
-        line-height: 1.2;
-        margin: 0 0 0 0.5rem;
-        padding: 0;
-      }
     }
   }
 
@@ -40,7 +28,7 @@
   }
 
   .edit-data {
-    background-color: #fff;
+    background-color: var(--contrast-color);
     padding: 1rem;
   }
 }
@@ -56,9 +44,8 @@
 
 // styles for input on white bg
 .edit-data {
-  .form-control,
   input {
-    background-color: $body-gray;
+    background-color: var(--body-gray);
   }
 
   .form-group {

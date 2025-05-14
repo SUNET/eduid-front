@@ -8,7 +8,7 @@ import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -189,14 +189,17 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
+  const _inputValues = Boolean(props.values["username"]) && Boolean(props.values["currentPassword"]);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const _disabled = Boolean(props.hasValidationErrors || _submitError || loading);
+  const hasErrors = props.hasValidationErrors ?? true;
+  const hasSubmitError = _submitError ?? true;
+  const isLoading = loading ?? true;
+  const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError || isLoading);
 
   return (
     <EduIDButton
       buttonstyle="primary"
       type="submit"
-      disabled={_disabled}
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}

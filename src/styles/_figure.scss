@@ -1,9 +1,8 @@
-/* white plate to highlight content, use .figure if not semantically a "figure" */
-@import "variables";
+/* White plate to highlight content, use .figure if not semantically a "figure" */
 
 figure,
 .figure {
-  background: $white;
+  background: var(--contrast-color);
   text-align: center;
   margin: 1em 0;
   padding: 1em;
@@ -14,7 +13,7 @@ figure,
     font-size: $txt-sm;
     font-weight: bold;
     font-family: $akkurat;
-    color: $txt-black;
+    color: var(--body-txt);
   }
 
   &.identity-summary {
@@ -25,7 +24,7 @@ figure,
       padding: 0.5em;
     }
     &:not(:last-of-type) {
-      border-bottom: 1px solid $bg-gray;
+      border-bottom: 1px solid var(--bg-gray);
     }
     &:last-of-type {
       margin-bottom: 1em;
@@ -41,15 +40,12 @@ figure,
     vertical-align: middle;
     line-height: 1;
 
-    img {
-      height: 1.5rem;
-    }
     > div {
       padding: 0.3rem 0.3rem;
       align-self: center;
 
       .display-data.verified {
-        font-size: 1rem;
+        font-size: $txt-md;
       }
     }
     .close {
@@ -60,6 +56,13 @@ figure,
 
 .captcha-responsive {
   width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+  button.refresh {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   @media (max-width: $bp-md) {
     width: 100%;
@@ -72,7 +75,7 @@ figure,
   margin: 1rem 0;
   border: 1px solid $bright-orange;
   border-radius: 10px;
-  background: $white;
+  background: var(--contrast-color);
   .help-text {
     padding-bottom: 0.75rem;
   }
@@ -91,7 +94,7 @@ figure.webauthn-token-holder {
   padding: 0.5rem 1rem;
   text-align: left;
   margin: 0;
-  border-bottom: 1px solid $bg-gray;
+  border-bottom: 1px solid var(--bg-gray);
 
   &:last-of-type {
     border-bottom: none;
@@ -114,7 +117,7 @@ figure.webauthn-token-holder {
   }
 
   span {
-    font-size: 0.9rem;
+    font-size: $txt-sm;
     margin-bottom: 0.2rem;
     white-space: nowrap;
   }
@@ -122,9 +125,9 @@ figure.webauthn-token-holder {
     strong {
       font-family: $akkurat;
       letter-spacing: 1px;
-      font-weight: 700;
+      font-weight: bold;
       padding: 0;
-      font-size: 0.75rem;
+      font-size: $txt-xs;
       text-transform: uppercase;
     }
   }

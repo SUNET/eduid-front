@@ -16,27 +16,29 @@ function NotificationModal(props: NotificationModalProps) {
 
   return (
     <dialog open={props.showModal}>
-      <div
-        className={props.showModal ? "modal fade show" : "modal"}
-        id={props.id}
-        tabIndex={-1}
-        aria-hidden={!props.showModal}
-      >
+      <div className={props.showModal ? "modal fade show" : "modal"} id={props.id} tabIndex={-1}>
         <div className={`modal-dialog ${props.id}`}>
           <div className={`modal-content ${props.id} `}>
             <div className="modal-header">
-              <h5 className="modal-title">{props.title}</h5>
-              <EduIDButton id={`${props.id}-close-button`} buttonstyle="close" onClick={props.closeModal}></EduIDButton>
+              <h4 className="modal-title">{props.title}</h4>
+              <EduIDButton
+                type="button"
+                id={`${props.id}-close-button`}
+                buttonstyle="close"
+                onClick={props.closeModal}
+              ></EduIDButton>
             </div>
             <div className="modal-body">{props.mainText}</div>
             <div className="modal-footer">
-              <form onSubmit={() => props.acceptModal}>
-                <EduIDButton
-                  type="submit"
-                  id={`${props.id}-accept-button`}
-                  buttonstyle="primary"
-                  onClick={props.acceptModal}
-                >
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (props.acceptModal) {
+                    props.acceptModal();
+                  }
+                }}
+              >
+                <EduIDButton type="submit" id={`${props.id}-accept-button`} buttonstyle="primary">
                   {props.acceptButtonText}
                 </EduIDButton>
               </form>

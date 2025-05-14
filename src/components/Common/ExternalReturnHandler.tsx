@@ -4,7 +4,7 @@ import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import authnApi from "services/authn";
 import { showNotification } from "slices/Notifications";
 

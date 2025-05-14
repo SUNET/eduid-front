@@ -10,7 +10,6 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
     window.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");
     props.setHasReadAnnouncement(Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT)));
     if (!activeButton) {
-      console.log("remove");
       window.localStorage.removeItem(HAS_READ_ANNOUNCEMENT);
     }
   }

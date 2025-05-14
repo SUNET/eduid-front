@@ -58,9 +58,9 @@ function RenderEditBox(props: RenderEditBoxProps) {
   return (
     <div className="edit-data">
       <div className="title">
-        <h4>
+        <h3>
           <FormattedMessage defaultMessage="Edit name and display name" description="personal data edit title" />
-        </h4>
+        </h3>
         <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
       </div>
       <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />

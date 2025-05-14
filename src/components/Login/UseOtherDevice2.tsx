@@ -6,7 +6,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
 //import { LoginAtServiceInfo } from "./LoginAtServiceInfo";

@@ -18,7 +18,8 @@ export interface ResponseCodeValues {
 }
 
 export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): JSX.Element {
-  const valueChars = (props.code || "").split("");
+  // const valueChars = (props.code || "").split("");
+  const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
   };
@@ -183,14 +184,14 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
         }
       });
 
-    const cursorPosition = event.currentTarget.selectionStart || 0;
+    const cursorPosition = event.currentTarget.selectionStart ?? 0;
     if (cursorPosition < inputs.length) {
       const remainingDigits = digits.slice(cursorPosition);
 
       Array.from(inputs)
         .slice(cursorPosition)
         .forEach((input, i) => {
-          const digit = remainingDigits[i] || "";
+          const digit = remainingDigits[i] ?? "";
 
           updateInputAndForm(input as HTMLInputElement, cursorPosition + i, digit);
         });
@@ -199,6 +200,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
 
   return (
     <FinalField<number>
+      id={`v[${num}]`}
       name={`v[${num}]`}
       component="input"
       type="number"
@@ -214,6 +216,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
       onKeyDown={handleArrows}
       onPaste={handlePaste}
       readOnly={readonly}
+      aria-label={`Enter digit in ${num}'s input`}
     />
   );
 }

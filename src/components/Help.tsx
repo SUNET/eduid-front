@@ -62,7 +62,7 @@ export function Help(): JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage description="help - headline" defaultMessage="Help and contact" />
+          <FormattedMessage description="help - general headline" defaultMessage="Help and contact" />
         </h1>
         <div className="lead">
           <p>
@@ -75,6 +75,12 @@ export function Help(): JSX.Element {
           </p>
         </div>
       </section>
+      <h2>
+        <FormattedMessage description="help - content headline" defaultMessage="Content areas" />
+      </h2>
+      <p>
+        <FormattedMessage description="help - content paragraph" defaultMessage="Expand sections to learn more." />
+      </p>
       <div className="help-content">
         <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-help">
           <AccordionItemTemplate
@@ -1604,13 +1610,13 @@ export function Help(): JSX.Element {
                 />
               </p>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph2strong"
                   defaultMessage={`Confirmed account:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1630,13 +1636,13 @@ export function Help(): JSX.Element {
                   />
                 </li>
               </ul>
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph3strong"
                   defaultMessage={`Verified identity:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1657,13 +1663,13 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph4strong"
                   defaultMessage={`Enhanced security:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage
@@ -1678,13 +1684,13 @@ export function Help(): JSX.Element {
                 </li>
               </ul>
 
-              <strong>
+              <h5>
                 <FormattedMessage
                   description="Assurance levels with your eduID - paragraph5strong"
                   defaultMessage={`Verified security key:
 `}
                 />
-              </strong>
+              </h5>
               <ul className="bullets">
                 <li>
                   <FormattedMessage

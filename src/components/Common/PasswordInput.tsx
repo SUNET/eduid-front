@@ -1,5 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
-import React, { useState } from "react";
+import { useAppSelector } from "eduid-hooks";
+import React, { useEffect, useRef, useState } from "react";
 import { FieldRenderProps, Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { InputWrapper } from "./InputWrapper";
@@ -50,6 +51,13 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
  */
 export function PasswordInputElement(props: any): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const forced_username = useAppSelector((state) => state.login.authn_options.forced_username);
+
+  useEffect(() => {
+    if (inputRef.current && forced_username) inputRef?.current?.focus();
+  }, []);
+
   let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
     if (props.meta.invalid) {
@@ -67,17 +75,8 @@ export function PasswordInputElement(props: any): JSX.Element {
 
   return (
     <div className="password-input">
-      <input
-        {...props.input}
-        id={props.input.name}
-        type={showPassword ? "text" : "password"}
-        placeholder={props.placeholder}
-        autoComplete={props.autoComplete}
-        autoFocus={props.autoFocus}
-        className={`${className} form-control`}
-      />
-
       <EduIDButton
+        type="button"
         buttonstyle="txt-toggle-btn link sm"
         aria-label={showPassword ? "hide password" : "show password"}
         onClick={toggleShowPassword}
@@ -88,6 +87,16 @@ export function PasswordInputElement(props: any): JSX.Element {
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
       </EduIDButton>
+      <input
+        {...props.input}
+        id={props.input.name}
+        type={showPassword ? "text" : "password"}
+        placeholder={props.placeholder}
+        autoComplete={props.autoComplete}
+        autoFocus={props.autoFocus}
+        className={className}
+        ref={inputRef}
+      />
     </div>
   );
 }

@@ -1,31 +1,43 @@
-/** react-select style overrides, final-form element prefixed by "react-select" **/
+/** React-select style overrides, final-form element prefixed by "react-select" **/
+
 form .react-select,
 .basic-multi-select .select,
 .select--is-disabled .select {
   &__control {
-    border: 2px solid $border-gray;
+    border: 2px solid var(--border-gray);
+    background-color: var(--contrast-color);
+    color: var(--body-txt);
 
     .react-select__indicator {
-      color: $txt-gray;
+      color: var(--txt-gray);
+    }
+
+    .react-select__single-value {
+      color: var(--txt-gray);
     }
 
     &--is-disabled {
-      background-color: $bg-gray;
-      font-size: 1.25rem;
+      background-color: var(--bg-gray);
+      font-size: $txt-xl;
       * {
-        color: $txt-gray;
+        color: var(--txt-gray);
       }
     }
   }
 
+  &__menu {
+    color: var(--body-txt);
+    background-color: var(--contrast-color);
+  }
+
   &__control:hover {
-    border: 2px solid $txt-gray;
+    border: 2px solid var(--txt-gray);
     box-shadow: none;
   }
 
   //also focus-visible
   &__control--is-focused {
-    outline: 2px dashed #000 !important;
+    outline: 2px dashed var(--body-txt) !important;
     box-shadow: none;
   }
 
@@ -35,18 +47,19 @@ form .react-select,
 
   &__placeholder {
     font-family: $inter-regular;
-    color: $txt-black;
+    color: var(--body-txt);
   }
 
   &__option--is-focused {
-    background-color: $bg-orange;
-    outline: 1px dashed #000 !important;
+    background-color: var(--bg-orange);
+    outline: 1px dashed var(--body-txt) !important;
     outline-offset: -1px;
   }
 
   &__option--is-selected {
-    color: initial;
-    background-color: darken($bg-orange, 5%);
+    color: var(--txt-gray);
+    background-color: inherit;
+    @extend .text-bold;
   }
 }
 
@@ -87,13 +100,13 @@ form .react-select,
   }
   div.default-surname {
     display: inline-block;
-    border: 2px solid $border-gray;
+    border: 2px solid var(--border-gray);
     border-radius: 4px;
     padding: 6px 12px;
     cursor: not-allowed;
-    background-color: $bg-gray;
-    color: $txt-gray;
-    font-size: 1.25rem;
+    background-color: var(--bg-gray);
+    color: var(--txt-gray);
+    font-size: $txt-xl;
   }
 }
 //login react select
@@ -103,22 +116,22 @@ form .react-select,
   padding: 0 1.125rem;
 
   .react-select__placeholder {
-    color: $txt-orange;
+    color: var(--txt-orange);
     font-family: $akkurat;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: $txt-md;
   }
 
   .css-tj5bde-Svg {
-    color: $txt-orange;
+    color: var(--txt-orange);
   }
 
   .react-select__control {
     display: flex;
     height: 3rem;
     align-items: center;
-    background-color: $white;
+    background-color: var(--contrast-color);
     border-radius: 1.5rem;
     cursor: pointer;
     border: solid 2px $bright-orange;
@@ -132,7 +145,7 @@ form .react-select,
       opacity: 0.4;
 
       .react-select__placeholder {
-        color: $white;
+        color: var(--contrast-color);
       }
       svg.css-tj5bde-Svg {
         display: none;
@@ -157,6 +170,7 @@ form .react-select,
 
   .react-select__menu {
     width: 90%;
+    background-color: var(--contrast-color);
   }
   .react-select__menu-list {
     .react-select__option {
@@ -165,20 +179,10 @@ form .react-select,
     }
   }
 
-  img.freja {
-    height: 22px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  img {
-    width: auto;
-  }
-
   .select-option-text {
-    color: $txt-orange;
+    color: var(--txt-orange);
     font-family: $akkurat;
-    font-weight: 700;
+    font-weight: bold;
   }
 }
 .mfa-select__control--is-focused {

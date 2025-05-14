@@ -4,7 +4,7 @@ import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/Reset
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState as authnInitialState } from "slices/Authn";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";

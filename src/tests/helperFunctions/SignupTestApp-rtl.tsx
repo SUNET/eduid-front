@@ -4,7 +4,7 @@ import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import type { InitialEntry } from "history";
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState } from "slices/AppLoading";
 import { initialState as authnInitialState } from "slices/Authn";

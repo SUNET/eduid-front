@@ -12,7 +12,7 @@ import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { GetCaptchaResponse, signupApi } from "services/signup";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
-  disabled?: boolean; // disable the submit button if true
+  readonly disabled?: boolean; // disable the submit button if true
 }
 
 interface SignupCaptchaFormData {
@@ -69,6 +69,7 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
                 <EduIDButton
                   buttonstyle="primary"
                   id="captcha-continue-button"
+                  type="submit"
                   disabled={_disabled}
                   onClick={formProps.handleSubmit}
                 >
@@ -109,21 +110,21 @@ export function InternalCaptcha(props: CaptchaProps) {
       <figure className="captcha-responsive">
         <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
         <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
-      </figure>
-      <div className="icon-text">
+
         <button
           type="button"
-          className="icon-only"
-          aria-label="name-check"
+          className="link lowercase sm icon refresh"
+          aria-label="refresh-captcha"
           disabled={!captchaResponse?.captcha_img}
           onClick={refetch}
         >
           <FontAwesomeIcon icon={faRedo as IconProp} />
+          <span>
+            <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+          </span>
         </button>
-        <label htmlFor="name-check" className="hint">
-          <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
-        </label>
-      </div>
+      </figure>
+
       <CaptchaForm {...props} />
     </React.Fragment>
   );
