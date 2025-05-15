@@ -12,10 +12,8 @@ authnMiddleware.startListening({
         // re-implement logic from ts_common.ts, common.ts
         const response = action.payload as Response
         if (response.status === 401) {
-            console.log("authMiddleware", JSON.stringify(action));
             const authn = api.dispatch(authnApi.endpoints.authenticate.initiate({ frontend_action: "login" }));
             const { data } = await authn
-            console.log("data", data)
             if (data && (data as ApiResponse<AuthenticateResponse>).payload.location) {
                 window.location.href = (data as ApiResponse<AuthenticateResponse>).payload.location
             }
