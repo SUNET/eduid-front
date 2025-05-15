@@ -3,7 +3,6 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/r
 import { StateWithCommonConfig } from 'apis/common';
 import { EDUID_CONFIG_URL } from 'globals';
 import { ajaxHeaders } from 'ts_common';
-import { AuthenticateResponse } from "./authn";
 
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
@@ -48,26 +47,6 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         return {
             error: result.data,
             meta: result.meta
-        }
-    }
-    // handle HTTP errors cought by fetchBaseQuery
-    if (result.error) {
-        if (result.error.status === 401) {
-            const authnBaseQuery = fetchBaseQuery({
-                baseUrl: state.config.authn_service_url,
-                credentials: 'include',
-                redirect: 'manual',
-                method: 'POST',
-                headers: ajaxHeaders
-            })
-            const authn_result = await authnBaseQuery({url: 'authenticate', body: { frontend_action: "login", csrf_token: state.config.csrf_token }}, api, {})
-            if (authn_result?.data && (authn_result.data as ApiResponse<AuthenticateResponse>).payload.location) {
-                window.location.href = (authn_result.data as ApiResponse<AuthenticateResponse>).payload.location
-            }
-        } else if ("data" in result.error) {
-            api.dispatch(`HTTP ${result.error.status} ${(result.error.data as {message: string}).message}`);
-        } else {
-            api.dispatch(genericApiFail("Unknown error"));
         }
     }
     return result;
