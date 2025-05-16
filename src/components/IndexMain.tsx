@@ -66,6 +66,7 @@ export function IndexMain(): JSX.Element {
                   <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
                   <Route path="/login/password/:ref" element={<Login />} />
                   <Route path="/login/:ref" element={<Login />} />
+                  <Route path="/login/mfa/password/:ref" element={<Login />} />
                   <Route path="/reset-password/*" element={<ResetPasswordApp />} />
                   {/* Dashboard */}
                   <Route path={SECURITY_PATH} element={<Security />} />
