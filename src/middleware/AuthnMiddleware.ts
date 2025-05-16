@@ -1,4 +1,4 @@
-import { createListenerMiddleware, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createListenerMiddleware } from "@reduxjs/toolkit";
 import { StateWithCommonConfig } from "apis/common";
 import { ApiResponse, genericApiFail } from "services/api";
 import authnApi, { AuthenticateResponse } from "services/authn";
@@ -6,8 +6,17 @@ import authnApi, { AuthenticateResponse } from "services/authn";
 
 export const authnMiddleware = createListenerMiddleware()
 
+interface httpStatusPayload {
+    status: number
+}
+
 authnMiddleware.startListening({
-    matcher: isRejectedWithValue,
+    predicate: (action) => {
+        // only if there is a payload and it has a status
+        if ((action.payload as httpStatusPayload)?.status)
+            return true
+        return false
+    },
     effect: async (action, api) => {
         // re-implement logic from ts_common.ts, common.ts
         const response = action.payload as Response
