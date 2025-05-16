@@ -2,12 +2,18 @@ import { configureStore } from "@reduxjs/toolkit";
 import authnMiddleware from "middleware/AuthnMiddleware";
 import csrfTokenMiddleware from "middleware/CsrfTokenMiddleware";
 import notifyAndDispatch from "middleware/notify-middleware";
+import { reAuthnMiddleware } from "middleware/ReAuthnMiddleware";
 import logger from "redux-logger";
 import { eduIDApi } from "services/api";
 import eduIDApp from "./eduid-store";
 
 /* setup middlewares */
-const middlewares = [notifyAndDispatch, eduIDApi.middleware, csrfTokenMiddleware, authnMiddleware.middleware];
+const middlewares = [
+  notifyAndDispatch,
+  eduIDApi.middleware,
+  csrfTokenMiddleware,
+  authnMiddleware.middleware,
+  reAuthnMiddleware.middleware];
 if (process.env.NODE_ENV !== "production") {
   middlewares.push(logger);
 }

@@ -3,10 +3,8 @@ import {
   fetchIdentities,
   PersonalDataRequest,
   postPersonalData,
-  postSecurityKeyPreference,
   postUserLanguage,
   postUserName,
-  PreferencesData,
   UserIdentities
 } from "apis/eduidPersonalData";
 import { addNin, removeIdentity, removeNin } from "apis/eduidSecurity";
@@ -53,11 +51,6 @@ const personalDataSlice = createSlice({
           state.response.language = action.payload.language;
         }
       })
-      .addCase(postSecurityKeyPreference.fulfilled, (state, action: PayloadAction<PreferencesData>) => {
-        if (state.response) {
-          state.response.preferences = action.payload;
-        }
-      })
       .addCase(removeIdentity.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
         state.response = action.payload;
       })
@@ -79,7 +72,12 @@ const personalDataSlice = createSlice({
       .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {        
         state.eppn = action.payload.payload.eppn,
         state.response= action.payload.payload;
-    });
+      })
+      .addMatcher(personalDataApi.endpoints.postSecurityKeyPreference.matchFulfilled, (state, action) => {
+        if (state.response) {
+          state.response.preferences = action.payload.payload
+        }
+      });
   },
 });
 

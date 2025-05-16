@@ -168,22 +168,6 @@ export const fetchIdentities = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
-/**
- * @public
- * @function postSecurityKeyPreference
- * @desc Redux async thunk to post user preferences
- */
-export const postSecurityKeyPreference = createAsyncThunk<
-  PreferencesData, // return type
-  PreferencesData, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("personalData/postSecurityKeyPreference", async (args, thunkAPI) => {
-  return makePersonalDataRequest<any>(thunkAPI, "preferences", args)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 function makePersonalDataRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,

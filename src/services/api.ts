@@ -36,8 +36,6 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         base_args = args;
     }
     const result = await rawBaseQuery(base_args, api, extraOptions);
-
-    // TODO: auth error
     
     if (result.data && typeof result.data === 'object' && 'error' in result.data && result.data.error === true) {
         // dispatch the API error to the nofification middleware
