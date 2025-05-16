@@ -47,6 +47,7 @@ export function MultiFactorPassword(): JSX.Element {
 
   async function handleSubmitUsernamePw(values: PasswordFormData) {
     const errors: PasswordFormData = {};
+    const required = "required";
 
     if (ref && values.currentPassword) {
       /* Send username and password to backend for authentication. If the response is successful,
@@ -62,7 +63,7 @@ export function MultiFactorPassword(): JSX.Element {
       return;
     }
     if (!values.currentPassword) {
-      errors.currentPassword = "required";
+      errors.currentPassword = required;
     }
     return errors;
   }
