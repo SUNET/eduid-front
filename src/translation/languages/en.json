@@ -99,6 +99,10 @@
     "developer_comment": "pd no data added",
     "string": "No information has been added."
   },
+  "0RpqP8": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Choose a method to authenticate yourself, ensuring only you can access your eduID."
+  },
   "0S7EtW": {
     "developer_comment": "not found paragraph",
     "string": "We can't find what you are looking for. This may be due to a technical error or a typo. Please try again or use the link to move forward."
@@ -2349,6 +2353,10 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "a bin icon which deletes the key when clicked."
   },
+  "kQTWeZ": {
+    "developer_comment": "lead text final step enter password",
+    "string": "For security reasons, please re-enter your password to complete the login process."
+  },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
     "string": "enhanced security (added a method used for multi factor login)"
@@ -3211,6 +3219,10 @@
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Help"
+  },
+  "uV2DBQ": {
+    "developer_comment": "MFA as the first step of login, toggle off",
+    "string": "Turning this off will enable login with username and password instead."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
