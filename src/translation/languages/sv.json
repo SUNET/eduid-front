@@ -99,6 +99,10 @@
     "developer_comment": "pd no data added",
     "string": "Ingen information har lagts till."
   },
+  "0RpqP8": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Välj din autentiseringsmetod för att vara säker på att bara du har tillgång till ditt eduID."
+  },
   "0S7EtW": {
     "developer_comment": "not found paragraph",
     "string": "Vi kan tyvärr inte hitta det du letar efter. Det kan bero på ett tekniskt fel eller stavfel. Vänligen prova igen eller använd länken för att ta dig vidare."
@@ -2349,6 +2353,10 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "en papperskorgs-ikon som raderar nyckeln vid klick."
   },
+  "kQTWeZ": {
+    "developer_comment": "lead text final step enter password",
+    "string": "Av säkerhetsskäl, ange ditt lösenord för att slutföra inloggningen."
+  },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
     "string": "ökad säkerhet (lagt till metod för multifaktor-inloggning)"
@@ -3211,6 +3219,10 @@
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Hjälp"
+  },
+  "uV2DBQ": {
+    "developer_comment": "MFA as the first step of login, toggle off",
+    "string": "Om denna stängs av kommer du till inloggning med användarnamn och lösenord istället. "
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
