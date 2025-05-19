@@ -125,6 +125,12 @@
     -webkit-text-fill-color: var(--txt-gray) !important;
   }
 
+  // Akkurat less legible in the dark
+  a,
+  .text-link {
+    font-weight: bold;
+  }
+
   ::placeholder {
     color: var(--txt-gray) !important;
     opacity: 1; /* Firefox */
