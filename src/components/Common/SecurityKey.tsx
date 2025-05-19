@@ -86,6 +86,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
   //login
   const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
+  const this_device = useAppSelector((state) => state.login.this_device);
   //resetpw
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
@@ -96,7 +97,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
         const res = await dispatch(performAuthentication(webauthn_challenge));
         if (performAuthentication.fulfilled.match(res)) {
           // Send response from security key to backend
-          dispatch(fetchMfaAuth({ ref: ref, webauthn_response: res.payload }));
+          dispatch(fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload }));
         }
         if (props.setActive) props.setActive(false);
       }
