@@ -9,7 +9,7 @@ export const personalDataApi = eduIDApi.injectEndpoints({
             }),
             extraOptions: { service: 'personalData' },
         }),
-        postSecurityKeyPreference: builder.query<ApiResponse<PreferencesData>, PreferencesData>({
+        postSecurityKeyPreference: builder.mutation<ApiResponse<PreferencesData>, PreferencesData>({
             query: (args) => ({
                 url: "preferences",
                 body: {

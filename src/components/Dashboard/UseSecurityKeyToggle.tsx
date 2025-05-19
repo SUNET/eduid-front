@@ -11,17 +11,17 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
   const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
-  const [postSecurityKeyPreference_trigger, preference] = personalDataApi.useLazyPostSecurityKeyPreferenceQuery()
+  const [postSecurityKeyPreference_trigger, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation()
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
 
   useEffect(() => {
-    if (!preference.isFetching) {
+    if (!preference.isLoading) {
       setSwitchChecked(always_use_security_key);
     }
-  }, [preference.isFetching]);
+  }, [preference.isLoading]);
 
   useEffect(() => {
     // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
