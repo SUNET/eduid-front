@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchIdentities,
   PersonalDataRequest,
-  postPersonalData,
   postUserLanguage,
   postUserName,
   UserIdentities
@@ -29,15 +28,6 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        if (state.response) {
-          state.response.chosen_given_name = action.payload.chosen_given_name;
-          state.response.given_name = action.payload.given_name;
-          state.response.language = action.payload.language;
-          state.response.legal_name = action.payload.legal_name;
-          state.response.surname = action.payload.surname;
-        }
-      })
       .addCase(postUserName.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
         if (state.response) {
           state.response.chosen_given_name = action.payload.chosen_given_name;

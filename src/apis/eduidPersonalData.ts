@@ -76,28 +76,6 @@ export interface FetchIdentitiesResponse {
 /*********************************************************************************************************************/
 /**
  * @public
- * @function postPersonalData
- * @desc Redux async thunk to post personal data.
- */
-export const postPersonalData = createAsyncThunk<
-  AllUserData, // return type
-  PersonalDataRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("personalData/postPersonalData", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    chosen_given_name: args.chosen_given_name,
-    given_name: args.given_name,
-    surname: args.surname,
-    language: args.language,
-  };
-  return makePersonalDataRequest<AllUserData>(thunkAPI, "user", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-/**
- * @public
  * @function postUserName
  * @desc Redux async thunk to post user name.
  */
