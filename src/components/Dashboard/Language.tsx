@@ -55,7 +55,7 @@ export function LanguagePreference() {
 
           return (
             <form id="personaldata-view-form" onChange={formProps.handleSubmit}>
-              <fieldset className="name-inputs">
+              <fieldset>
                 <article>
                   <legend className="require">
                     <FormattedMessage defaultMessage="Language" description="Language" />
