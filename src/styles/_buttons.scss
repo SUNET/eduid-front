@@ -211,6 +211,10 @@ button.icon {
   &.refresh[disabled]:hover svg {
     transform: none;
   }
+  span {
+    text-align: left;
+    line-height: $line-height;
+  }
 }
 
 /* TODO possibly replace with .buttons */
