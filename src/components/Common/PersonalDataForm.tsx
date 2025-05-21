@@ -1,7 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PersonalDataRequest, postUserName, UserNameRequest } from "apis/eduidPersonalData";
 import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
@@ -12,8 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import personalDataApi from "services/personalData";
-import { updateIntl } from "slices/Internationalisation";
+import personalDataApi, { UserNameSchema } from "services/personalData";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -38,33 +36,30 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
 
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
   const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
+  const [postUserName_trigger] = personalDataApi.usePostUserNameMutation();
 
-  async function formSubmit(values: PersonalDataRequest) {
+  async function formSubmit(values: UserNameSchema) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
 
     let postData = values;
     if (is_verified) {
       postData = { ...values, chosen_given_name: defaultDisplayGivenName };
     }
-    const response = await dispatch(postUserName(postData));
-
-    if (postUserName.fulfilled.match(response)) {
+    const response = await postUserName_trigger(postData);
+    if ("data" in response) {
       dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
-      if (response.payload.language) {
-        dispatch(
-          updateIntl({
-            locale: response.payload.language,
-            messages: messages[response.payload.language],
-          })
-        );
-      }
     }
   }
 
   return (
-    <FinalForm<UserNameRequest>
-      initialValues={personal_data}
+    <FinalForm<UserNameSchema>
+      initialValues={{
+        given_name: personal_data?.given_name,
+        chosen_given_name: personal_data?.chosen_given_name,
+        surname: personal_data?.surname,
+        legal_name: personal_data?.legal_name
+      }}
       validate={validatePersonalData}
       onSubmit={formSubmit}
       render={(formProps) => {
