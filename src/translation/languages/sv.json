@@ -851,6 +851,10 @@
     "developer_comment": "Terms of use (lead text)",
     "string": "För att skapa ditt eduID måste du acceptera användarvillkoren för eduID."
   },
+  "HQ+JLY": {
+    "developer_comment": "Display name select paragraph",
+    "string": "Om din identitet är bekräftad kan du välja vilket av dina förnamn från folkbokföringen som ska användas som visningsnamn för vissa tjänster. "
+  },
   "HUCgY6": {
     "developer_comment": "how-to 1",
     "string": "Skapa ett grundläggande konto med din e-postadress."
@@ -1506,6 +1510,10 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "logga in i eduID och välj metoden 'Med elektroniskt BankID' i identitetshanteringen och följ instruktionerna."
+  },
+  "WRq5Yu": {
+    "developer_comment": "Display name select disabled paragraph",
+    "string": "Om det bara finns ett förnamn går det inte att ändra."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -2225,6 +2233,10 @@
   "i3E2/S": {
     "developer_comment": "about usb key - handle",
     "string": "Om Säkerhetsnycklar"
+  },
+  "i7Zj5k": {
+    "developer_comment": "Display name select abled paragraph",
+    "string": "Välj minst ett av förnamnen nedan om du vill göra en ändring."
   },
   "iC8nbv": {
     "developer_comment": "use international - list item 2",
@@ -3165,10 +3177,6 @@
   "sjWO92": {
     "developer_comment": "what is international - paragraph 2",
     "string": "Uppdaterad information om inkluderade länder kan hittas på: {FrejaList}"
-  },
-  "smayl9": {
-    "developer_comment": "Display name select paragraph",
-    "string": "Om din identitet är bekräftad kan du välja vilket av dina förnamn från folkbokföringen som ska användas som visningsnamn för vissa tjänster. Välj minst ett av förnamnen nedan om du vill göra en ändring."
   },
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
