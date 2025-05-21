@@ -162,12 +162,12 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
         {transformedOptions && transformedOptions.length > 1 ? (
           <FormattedMessage
             defaultMessage="Select at least one first name below if you wish to change it."
-            description="Display name select paragraph"
+            description="Display name select abled paragraph"
           />
         ) : (
           <FormattedMessage
             defaultMessage="If you only have one first name, no selection is possible."
-            description="Display name select paragraph"
+            description="Display name select disabled paragraph"
           />
         )}
       </p>
