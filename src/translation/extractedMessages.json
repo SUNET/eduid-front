@@ -851,6 +851,10 @@
     "developer_comment": "Terms of use (lead text)",
     "string": "To create your eduID you need to accept the eduID terms of use."
   },
+  "HQ+JLY": {
+    "developer_comment": "Display name select paragraph",
+    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services."
+  },
   "HUCgY6": {
     "developer_comment": "how-to 1",
     "string": "Create a basic account with your email address."
@@ -1506,6 +1510,10 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
+  },
+  "WRq5Yu": {
+    "developer_comment": "Display name select disabled paragraph",
+    "string": "If you only have one first name, no selection is possible."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -2225,6 +2233,10 @@
   "i3E2/S": {
     "developer_comment": "about usb key - handle",
     "string": "About Security Keys"
+  },
+  "i7Zj5k": {
+    "developer_comment": "Display name select abled paragraph",
+    "string": "Select at least one first name below if you wish to change it."
   },
   "iC8nbv": {
     "developer_comment": "use international - list item 2",
@@ -3165,10 +3177,6 @@
   "sjWO92": {
     "developer_comment": "what is international - paragraph 2",
     "string": "Current information on included nationalities can be found at: {FrejaList}"
-  },
-  "smayl9": {
-    "developer_comment": "Display name select paragraph",
-    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services. Select at least one first name below if you wish to change it."
   },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
