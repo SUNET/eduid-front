@@ -155,9 +155,21 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`If your identity is verified you can choose which of your first names from the population 
-          register to use as your display name for some services. Select at least one first name below if you wish to change it.`}
+          register to use as your display name for some services.`}
           description="Display name select paragraph"
         />
+        &nbsp;
+        {transformedOptions && transformedOptions.length > 1 ? (
+          <FormattedMessage
+            defaultMessage="Select at least one first name below if you wish to change it."
+            description="Display name select paragraph"
+          />
+        ) : (
+          <FormattedMessage
+            defaultMessage="If you only have one first name, no selection is possible."
+            description="Display name select paragraph"
+          />
+        )}
       </p>
       <div className="select-group">
         <Select
