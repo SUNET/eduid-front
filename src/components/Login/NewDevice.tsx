@@ -50,6 +50,8 @@ export function RememberMeCheckbox(): JSX.Element | null {
   const next_page = useAppSelector((state) => state.login.next_page);
   const [switchChecked, setSwitchChecked] = useState(remember_me);
   const dispatch = useAppDispatch();
+  const warnRedirectToLogin: boolean | undefined = !has_session && switchChecked && next_page !== "USERNAMEPASSWORD";
+  const infoRememberME = !switchChecked;
 
   function handleSwitchChange(): void {
     const newValue = !switchChecked;
@@ -103,7 +105,7 @@ export function RememberMeCheckbox(): JSX.Element | null {
         />
         <div className="toggle-switch"></div>
       </label>
-      {!has_session && switchChecked && (
+      {warnRedirectToLogin && (
         <p className="help-text">
           <FormattedMessage
             defaultMessage="If you turn this off, you'll need to log in with your username and password."
@@ -111,7 +113,7 @@ export function RememberMeCheckbox(): JSX.Element | null {
           />
         </p>
       )}
-      {!switchChecked && (
+      {infoRememberME && (
         <p className="help-text">
           <FormattedMessage
             defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
