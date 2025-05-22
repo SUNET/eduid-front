@@ -1,16 +1,8 @@
-import { skipToken } from "@reduxjs/toolkit/query";
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
-import { eduidStore } from "eduid-init-app";
-import { LOCALIZED_MESSAGES } from "globals";
-import Raven from "raven-js";
-import React, { useEffect } from "react";
+import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router";
-import { jsConfigApi } from "services/jsConfig";
-import personalDataApi from "services/personalData";
-import { appLoadingSlice } from "slices/AppLoading";
-import { updateIntl } from "slices/Internationalisation";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -48,35 +40,11 @@ export function IndexMain(): JSX.Element {
   const location = useLocation();
   const isUserDashboard = location.pathname.startsWith("/profile");
   const isIndex = location.pathname === "/";
-  const jsConfig = jsConfigApi.useFetchJsConfigQuery();
-  const personalData = personalDataApi.useRequestAllPersonalDataQuery((isUserDashboard&&isLoaded)?undefined:skipToken);
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
   
-  useEffect(() => {
-    if (personalData.data && !personalData.isLoading && !personalData.isError) {
-      if (personalData.data.payload.language) {
-        eduidStore.dispatch(
-          updateIntl({
-            locale: personalData.data.payload.language,
-            messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
-          })
-        );
-      }
-      eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
-    } 
-  }, [personalData.data, personalData.isLoading, personalData.isError])
-
-  useEffect(() => {
-    if (jsConfig.data && !jsConfig.isLoading && !jsConfig.isError) {
-      if (jsConfig.data.payload?.sentry_dsn) {
-        Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
-      }
-    }
-  }, [jsConfig.data, jsConfig.isLoading, jsConfig.isError]);
-
   return (
     <React.StrictMode>
       <div className={isIndex ? "page-wrapper landing" : "page-wrapper"}>
