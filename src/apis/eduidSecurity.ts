@@ -4,9 +4,9 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
+import { FetchIdentitiesResponse } from "services/personalData";
 import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { FetchIdentitiesResponse } from "./eduidPersonalData";
 
 /*********************************************************************************************************************/
 export interface UpdateOfficialUserDataResponse {

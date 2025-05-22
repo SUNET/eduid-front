@@ -1,4 +1,3 @@
-import { NinIdentity } from "apis/eduidPersonalData";
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
@@ -6,6 +5,7 @@ import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
+import { NinIdentity } from "services/personalData";
 
 interface NinDisplayProps {
   nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable

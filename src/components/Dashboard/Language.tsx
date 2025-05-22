@@ -1,9 +1,8 @@
-import { UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import personalDataApi, { UserLanguageSchema } from "services/personalData";
+import { personalDataApi, UserLanguageSchema } from "services/personalData";
 import { updateIntl } from "slices/Internationalisation";
 import { clearNotifications } from "slices/Notifications";
 
@@ -16,7 +15,7 @@ export function LanguagePreference() {
   const language_list = Object.entries(_languages);
   const [postUserLanguage_trigger] = personalDataApi.usePostUserLanguageMutation()
 
-  async function formSubmit(values: UserLanguageRequest) {
+  async function formSubmit(values: UserLanguageSchema) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     let postData = values;
     postData = {

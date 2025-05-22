@@ -1,6 +1,60 @@
-import { AllUserData } from "apis/eduidPersonalData";
+import { EmailInfo } from "apis/eduidEmail";
+import { LadokData } from "apis/eduidLadok";
+import { OrcidInfo } from "apis/eduidOrcid";
 import { ApiResponse, eduIDApi } from "./api";
 
+
+/*
+ * Code and data structures for talking to the eduid-personal_data backend microservice.
+ */
+
+export interface PersonalDataRequest {
+  given_name?: string;
+  surname?: string;
+  chosen_given_name?: string;
+  language?: string;
+  preferences?: UserPreferences;
+}
+
+export interface AllUserData {
+  chosen_given_name?: string;
+  emails: EmailInfo[];
+  eppn: string;
+  given_name?: string;
+  language?: string;
+  identities: UserIdentities;
+  surname?: string;
+  orcid?: OrcidInfo;
+  ladok?: LadokData;
+}
+/*********************************************************************************************************************/
+
+export interface NinIdentity {
+  number: string;
+  verified: boolean;
+}
+
+export interface EidasIdentity {
+  prid: string;
+  prid_persistence: "A" | "B" | "C";
+  date_of_birth: string;
+  country_code: string;
+  verified: boolean;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FrejaeIDIdentity extends EidasIdentity { }
+
+export interface UserIdentities {
+  nin?: NinIdentity;
+  eidas?: EidasIdentity;
+  freja?: FrejaeIDIdentity;
+  is_verified: boolean;
+}
+
+export interface FetchIdentitiesResponse {
+  identities: UserIdentities;
+}
 
 export interface UserNameSchema {
     given_name: string;
