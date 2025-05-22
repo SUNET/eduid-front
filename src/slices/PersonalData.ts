@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchIdentities,
   PersonalDataRequest,
-  postUserLanguage,
   UserIdentities
 } from "apis/eduidPersonalData";
 import { addNin, removeIdentity, removeNin } from "apis/eduidSecurity";
@@ -27,11 +26,6 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(postUserLanguage.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        if (state.response) {
-          state.response.language = action.payload.language;
-        }
-      })
       .addCase(removeIdentity.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
         state.response = action.payload;
       })
@@ -56,6 +50,11 @@ const personalDataSlice = createSlice({
           state.response.chosen_given_name = action.payload.payload.chosen_given_name;
           state.response.surname = action.payload.payload.surname;
           state.response.legal_name = action.payload.payload.legal_name;
+        }
+      })
+      .addMatcher(personalDataApi.endpoints.postUserLanguage.matchFulfilled, (state, action) => {
+        if (state.response) {
+          state.response.language = action.payload.payload.language;
         }
       })
       .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {        

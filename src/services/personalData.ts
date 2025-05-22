@@ -2,15 +2,19 @@ import { AllUserData } from "apis/eduidPersonalData";
 import { ApiResponse, eduIDApi } from "./api";
 
 
-interface UserPreferences {
-    always_use_security_key: boolean;
-}
-
 export interface UserNameSchema {
     given_name: string;
     chosen_given_name?: string;
     surname: string;
     legal_name?: string;
+}
+
+export interface UserLanguageSchema {
+    language: string;
+}
+
+interface UserPreferences {
+    always_use_security_key: boolean;
 }
 
 export const personalDataApi = eduIDApi.injectEndpoints({
@@ -23,6 +27,15 @@ export const personalDataApi = eduIDApi.injectEndpoints({
                     chosen_given_name: args.chosen_given_name,
                     surname: args.surname,
                     legal_name: args.legal_name,
+                }
+            }),
+            extraOptions: { service: 'personalData' },
+        }),
+        postUserLanguage: builder.mutation<ApiResponse<UserLanguageSchema>, UserLanguageSchema>({
+            query: (args) => ({
+                url: "user/language",
+                body: {
+                    language: args.language,
                 }
             }),
             extraOptions: { service: 'personalData' },
