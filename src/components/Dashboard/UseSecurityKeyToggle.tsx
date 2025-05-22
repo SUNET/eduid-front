@@ -47,7 +47,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
             <p className="help-text">
               <FormattedMessage
                 description="help text toggle 2FA"
-                defaultMessage="If external services other than eduID require extra login verification, you will then still need to use your security key even when this setting is toggled off."
+                defaultMessage="If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
               />
             </p>
           </legend>
