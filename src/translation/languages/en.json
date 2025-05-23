@@ -3009,7 +3009,7 @@
   },
   "rpjEOF": {
     "developer_comment": "help text toggle 2FA",
-    "string": "If a service require a second factor during login, you will then still need to use your security key even when this setting is toggled off."
+    "string": "If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
