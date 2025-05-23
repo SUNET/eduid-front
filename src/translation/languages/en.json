@@ -334,10 +334,6 @@
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
   },
-  "5iUbyQ": {
-    "developer_comment": "Security key toggle",
-    "string": "Always use a second factor (2FA) to log in to eduID"
-  },
   "5l4hxp": {
     "string": "Log in on another device"
   },
@@ -779,10 +775,6 @@
     "developer_comment": "MFA paragraph",
     "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID."
   },
-  "Fjbcnk": {
-    "developer_comment": "profile email display no data",
-    "string": "no email added"
-  },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset password: Completed"
@@ -1065,10 +1057,6 @@
   "N22YcU": {
     "developer_comment": "security zone modal",
     "string": "After logging in, you will be redirected to {externalPage} page to verify your security key."
-  },
-  "N91sEJ": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "If external services other than eduID require a second factor during login, you will then still need to use your security key even when this setting is toggled off."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -2080,6 +2068,10 @@
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet} (in Swedish)."
   },
+  "f05TNT": {
+    "developer_comment": "Security key toggle",
+    "string": "Always use a security key to log in"
+  },
   "f6GNZ7": {
     "developer_comment": "select extra webauthn",
     "string": "Add a new security key:"
@@ -3014,6 +3006,10 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
+  },
+  "rpjEOF": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "If a service require a second factor during login, you will then still need to use your security key even when this setting is toggled off."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
