@@ -49,6 +49,7 @@ export function LoginExternalReturnHandler() {
         }
         if (!status.error && status.frontend_action === "login") {
           personal_data_refetch();
+          dispatch(appLoadingSlice.actions.appLoaded());
         }
         const _path = actionToRoute[status.frontend_action];
         if (_path) {
@@ -85,7 +86,6 @@ export function LoginExternalReturnHandler() {
           })
         );
       }
-      dispatch(appLoadingSlice.actions.appLoaded());
     }
   }, [personalData.data, personalData.isLoading, personalData.isError])
 
