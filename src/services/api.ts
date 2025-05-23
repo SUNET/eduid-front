@@ -8,17 +8,20 @@ import { ajaxHeaders } from 'ts_common';
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
     let baseUrl;
     const state = api.getState() as StateWithCommonConfig;
+    const service_urls: { [key: string]: string | undefined } = {
+        jsConfig: EDUID_CONFIG_URL,
+        signup: state.config.signup_service_url,
+        personalData: state.config.personal_data_service_url,
+        authn: state.config.authn_service_url,
+        security: state.config.security_service_url
+    };
     if (!extraOptions?.service) {
         throw new Error('No service specified');
-    } else if (extraOptions.service === 'jsConfig') {
-        baseUrl = EDUID_CONFIG_URL;
-    } else if (extraOptions.service === 'signup') {
-        baseUrl = state.config.signup_service_url;
-    } else if (extraOptions.service === 'personalData') {
-        baseUrl = state.config.personal_data_service_url;
-    } else if (extraOptions.service === 'authn') {
-        baseUrl = state.config.authn_service_url;
     }
+    if (!(extraOptions.service in service_urls)) {
+        throw new Error(`Unknown service: ${extraOptions.service}`);
+    }
+    baseUrl = service_urls[extraOptions.service];
 
     const rawBaseQuery = fetchBaseQuery({
         baseUrl, 

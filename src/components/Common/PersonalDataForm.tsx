@@ -1,7 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { updateOfficialUserData } from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -12,6 +11,7 @@ import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
 import personalDataApi, { UserNameSchema } from "services/personalData";
+import securityApi from "services/security";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -189,16 +189,17 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
 const RenderLockedNames = (props: { labels: NameLabels }) => {
-  const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
-  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery()
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [updateOfficialUserData_trigger] = securityApi.useLazyUpdateOfficialUserDataQuery();
 
   async function handleUpdateName() {
-    const response = await dispatch(updateOfficialUserData());
-    if (updateOfficialUserData.fulfilled.match(response)) {
+    const response = await updateOfficialUserData_trigger();
+
+    if (response.isSuccess) {
       personal_data_refetch();
     }
   }
