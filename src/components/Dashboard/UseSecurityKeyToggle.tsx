@@ -41,13 +41,13 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
         <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
           <legend className="legend-2fa">
             <FormattedMessage
-              defaultMessage={`Always use a second factor (2FA) to log in`}
+              defaultMessage={`Always use a security key to log in`}
               description="Security key toggle"
             />
             <p className="help-text">
               <FormattedMessage
                 description="help text toggle 2FA"
-                defaultMessage="If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
+                defaultMessage="If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
               />
             </p>
           </legend>
