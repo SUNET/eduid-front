@@ -1,12 +1,13 @@
 import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CredentialType, requestCredentials } from "apis/eduidSecurity";
+import { CredentialType } from "apis/eduidSecurity";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { UserIdentities } from "services/personalData";
+import securityApi from "services/security";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (
@@ -197,11 +198,12 @@ export function Recommendations(): JSX.Element | null {
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
+  const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery();
 
   useEffect(() => {
     if (isLoaded) {
       // call requestCredentials once app is loaded
-      dispatch(requestCredentials());
+      requestCredentials_trigger();
     }
   }, [isLoaded]);
 

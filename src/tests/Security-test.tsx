@@ -3,8 +3,7 @@ import {
   RegisterWebauthnResponse,
   RemoveWebauthnTokensRequest,
   RemoveWebauthnTokensResponse,
-  requestCredentials,
-  RequestCredentialsResponse,
+  RequestCredentialsResponse
 } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
@@ -197,11 +196,14 @@ test("security reducer, request credentials", async () => {
       },
     ],
   };
-  const action = { type: requestCredentials.fulfilled.type, payload: payload };
+  const action = {
+    type: "eduIDApi/executeQuery/fulfilled",
+    payload: {payload: payload},
+    meta: { arg: { endpointName: "requestCredentials" } } };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
-    credentials: action.payload.credentials,
+    credentials: action.payload.payload.credentials,
   });
 });
 

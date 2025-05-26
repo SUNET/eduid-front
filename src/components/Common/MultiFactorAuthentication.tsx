@@ -5,8 +5,7 @@ import {
   beginRegisterWebauthn,
   CredentialType,
   getAuthnStatus,
-  registerWebauthn,
-  requestCredentials
+  registerWebauthn
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
@@ -53,6 +52,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
+  const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery()
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -81,8 +81,8 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     (async () => {
       if (isLoaded && !credentials.length) {
         // call requestCredentials once app is loaded
-        const response = await dispatch(requestCredentials());
-        if (requestCredentials.fulfilled.match(response)) {
+        const response = await requestCredentials_trigger();
+        if (response.isSuccess) {
           wrapperRef?.current?.focus();
         }
       }
