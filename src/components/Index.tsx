@@ -1,11 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { postDeleteAccount } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
+import securityApi from "services/security";
 import { appLoadingSlice } from "slices/AppLoading";
 import accountIcon from "../../img/account-icon.svg";
 import securityIcon from "../../img/security-icon.svg";
@@ -18,6 +18,7 @@ export function Index() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
+  const [postDeleteAcccount_trigger] = securityApi.useLazyPostDeleteAccountQuery()
 
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
@@ -27,9 +28,9 @@ export function Index() {
   }
 
   async function deleteAccount() {
-    const response = await dispatch(postDeleteAccount());
-    if (postDeleteAccount.fulfilled.match(response)) {
-      window.location.assign(response.payload.location);
+    const response = await postDeleteAcccount_trigger();
+    if (response.isSuccess) {
+      window.location.assign(response.data.payload.location);
     }
   }
 

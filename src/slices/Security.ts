@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   CredentialType,
-  postDeleteAccount,
   registerWebauthn,
   removeWebauthnToken,
-  requestCredentials,
+  requestCredentials
 } from "apis/eduidSecurity";
 import { createCredential, webauthnAttestation } from "helperFunctions/navigatorCredential";
+import securityApi from "services/security";
 
 export interface SecurityState {
   credentials: CredentialType[];
@@ -34,22 +34,23 @@ const securitySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(createCredential.fulfilled, (state, action) => {
-      state.webauthn_attestation = action.payload;
-    });
-    builder.addCase(registerWebauthn.fulfilled, (state, action) => {
-      state.webauthn_attestation = action.payload.webauthn_attestation;
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(requestCredentials.fulfilled, (state, action) => {
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(removeWebauthnToken.fulfilled, (state, action) => {
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(postDeleteAccount.fulfilled, (state, action) => {
-      state.location = action.payload.location;
-    });
+    builder
+      .addCase(createCredential.fulfilled, (state, action) => {
+        state.webauthn_attestation = action.payload;
+      })
+      .addCase(registerWebauthn.fulfilled, (state, action) => {
+        state.webauthn_attestation = action.payload.webauthn_attestation;
+        state.credentials = action.payload.credentials;
+      })
+      .addCase(requestCredentials.fulfilled, (state, action) => {
+        state.credentials = action.payload.credentials;
+      })
+      .addCase(removeWebauthnToken.fulfilled, (state, action) => {
+        state.credentials = action.payload.credentials;
+      })
+      .addMatcher(securityApi.endpoints.postDeleteAccount.matchFulfilled, (state, action) => {
+        state.location = action.payload.payload.location;
+      })
   },
 });
 export default securitySlice;
