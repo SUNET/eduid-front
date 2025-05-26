@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   CredentialType,
   registerWebauthn,
-  removeWebauthnToken,
   requestCredentials
 } from "apis/eduidSecurity";
 import { createCredential, webauthnAttestation } from "helperFunctions/navigatorCredential";
@@ -45,8 +44,8 @@ const securitySlice = createSlice({
       .addCase(requestCredentials.fulfilled, (state, action) => {
         state.credentials = action.payload.credentials;
       })
-      .addCase(removeWebauthnToken.fulfilled, (state, action) => {
-        state.credentials = action.payload.credentials;
+      .addMatcher(securityApi.endpoints.removeWebauthnToken.matchFulfilled, (state, action) => {
+        state.credentials = action.payload.payload.credentials;
       })
       .addMatcher(securityApi.endpoints.postDeleteAccount.matchFulfilled, (state, action) => {
         state.location = action.payload.payload.location;

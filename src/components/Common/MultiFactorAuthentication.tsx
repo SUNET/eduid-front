@@ -6,8 +6,7 @@ import {
   CredentialType,
   getAuthnStatus,
   registerWebauthn,
-  removeWebauthnToken,
-  requestCredentials,
+  requestCredentials
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
@@ -18,6 +17,7 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
+import securityApi from "services/security";
 import authnSlice from "slices/Authn";
 import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -424,6 +424,7 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
     return filterTokensFromCredentials(state);
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
+  const [removeWebauthnToken_trigger] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
   // Runs after re-auth security zone
   useEffect(() => {
@@ -459,8 +460,8 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
   async function handleRemoveWebauthnToken() {
     setShowConfirmRemoveSecurityKeyModal(false);
     const parsedFrontendState = credentialKey.current && JSON.parse(credentialKey.current);
-    const response = await dispatch(removeWebauthnToken({ credential_key: parsedFrontendState.credential as string }));
-    if (removeWebauthnToken.rejected.match(response)) {
+    const response = await removeWebauthnToken_trigger({ credential_key: parsedFrontendState.credential as string });
+    if (response.isSuccess) {
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({

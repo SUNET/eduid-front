@@ -1,3 +1,4 @@
+import { RemoveWebauthnTokensRequest, RemoveWebauthnTokensResponse } from "apis/eduidSecurity";
 import { ApiResponse, eduIDApi } from "./api";
 
 interface UpdateOfficialUserDataResponse {
@@ -21,6 +22,15 @@ export const securityApi = eduIDApi.injectEndpoints({
             query: () => ({
                 url: "terminate-account",
                 body: {}
+            }),
+            extraOptions: { service: "security" }
+        }),
+        removeWebauthnToken: builder.query<ApiResponse<RemoveWebauthnTokensResponse>, RemoveWebauthnTokensRequest>({
+            query: (args) => ({
+                url: "webauthn/remove",
+                body: {
+                    credential_key: args.credential_key
+                }
             }),
             extraOptions: { service: "security" }
         })
