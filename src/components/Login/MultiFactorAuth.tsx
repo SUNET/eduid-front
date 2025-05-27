@@ -25,7 +25,7 @@ export function MultiFactorAuth(): JSX.Element {
         description="MFA paragraph with swedish option"
       />
     );
-  } else if (authn_options.freja_eidplus) {
+  } else if (authn_options.swedish_eid) {
     leadText = (
       <FormattedMessage
         defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
@@ -42,8 +42,7 @@ export function MultiFactorAuth(): JSX.Element {
   }
 
   const isLoaded = mfa?.state === "loaded";
-  //TODO: when backend is updated to swedish_eid, we should be able to rename this.
-  const hasMfaOptions = authn_options.freja_eidplus || authn_options.webauthn;
+  const hasMfaOptions = authn_options.swedish_eid || authn_options.webauthn;
 
   useEffect(() => {
     if (ref && mfa?.state === undefined) {
@@ -84,7 +83,7 @@ export function MultiFactorAuth(): JSX.Element {
             <p>{leadText}</p>
             <div className="options">
               <SecurityKey webauthn={authn_options?.webauthn} />
-              <SwedishEID recoveryAvailable={authn_options.freja_eidplus} />
+              <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
             </div>
           </React.Fragment>
         ) : (
