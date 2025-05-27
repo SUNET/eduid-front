@@ -42,7 +42,6 @@ export function MultiFactorAuth(): JSX.Element {
   }
 
   const isLoaded = mfa?.state === "loaded";
-  //TODO: when backend is updated to swedish_eid, we should be able to rename this.
   const hasMfaOptions = authn_options.swedish_eid || authn_options.webauthn;
 
   useEffect(() => {
