@@ -3,10 +3,6 @@
     "developer_comment": "when use eduID - list item 3",
     "string": "change university,"
   },
-  "+3ABAe": {
-    "developer_comment": "MFA Freja help text",
-    "string": "Requires a confirmed Swedish national identity number."
-  },
   "+9NBhe": {
     "developer_comment": "explanation text for letter proofing",
     "string": "If you are registered at your Swedish address"
@@ -3183,6 +3179,10 @@
   },
   "tAcT/R": {
     "string": "BankID"
+  },
+  "tD/37U": {
+    "developer_comment": "MFA Freja help text",
+    "string": "Requires a confirmed Swedish national identity or coordination number."
   },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
