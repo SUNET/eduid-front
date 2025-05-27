@@ -3,10 +3,6 @@
     "developer_comment": "when use eduID - list item 3",
     "string": "byter lärosäte,"
   },
-  "+3ABAe": {
-    "developer_comment": "MFA Freja help text",
-    "string": "Kräver ett bekräftat svenskt personnummer."
-  },
   "+9NBhe": {
     "developer_comment": "explanation text for letter proofing",
     "string": "För dig som har en svensk folkbokföringsadress"
@@ -3183,6 +3179,10 @@
   },
   "tAcT/R": {
     "string": "BankID"
+  },
+  "tD/37U": {
+    "developer_comment": "MFA Freja help text",
+    "string": "Kräver ett bekräftat svenskt person- eller samordningsnummer."
   },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
