@@ -327,7 +327,7 @@ export interface LoginAuthnOptions {
   display_name?: string;
   forced_username?: string;
   // TODO: when backend is updated to swedish_eid, we should be able to rename this.
-  freja_eidplus?: boolean;
+  swedish_eid?: boolean;
   has_session?: boolean;
   other_device?: boolean;
   password?: boolean;
