@@ -116,7 +116,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
           <p className="help-text">
             <FormattedMessage
               description="MFA Freja help text"
-              defaultMessage="Requires a confirmed Swedish national identity number."
+              defaultMessage="Requires a confirmed Swedish national identity or coordination number."
             />
           </p>
         )}
