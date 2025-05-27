@@ -46,7 +46,7 @@ authnMiddleware.startListening({
             } else {
                 api.dispatch(genericApiFail(`HTTP ${response.status} ${response.statusText}`))
             }
-        } else if (response.error && response.payload?.error.csrf_token[0] === "CSRF failed to validate") {
+        } else if (response.error && response.payload?.error?.csrf_token && response.payload?.error.csrf_token[0] === "CSRF failed to validate") {
             // re-authenticate
             await re_authenticate(api);
         }
