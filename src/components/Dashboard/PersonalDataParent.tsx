@@ -1,7 +1,7 @@
 import EduIDButton from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import NameDisplay from "./NameDisplay";
 
@@ -68,25 +68,6 @@ function RenderEditBox(props: RenderEditBoxProps) {
   );
 }
 
-interface RenderEditButtonProps {
-  readonly isEditMode: boolean;
-  setEditMode(value: boolean): void;
-  readonly hasPersonalData: boolean;
-}
-
-function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) {
-  return (
-    <Fragment>
-      {isEditMode ||
-        (hasPersonalData && (
-          <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(true)}>
-            <FormattedMessage description="edit button" defaultMessage={`edit`} />
-          </EduIDButton>
-        ))}
-    </Fragment>
-  );
-}
-
 function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
@@ -119,7 +100,13 @@ function PersonalDataParent() {
         <h2>
           <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
         </h2>
-        <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
+        <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(!isEditMode)}>
+          {isEditMode ? (
+            <FormattedMessage description="close button" defaultMessage="close" />
+          ) : (
+            <FormattedMessage description="edit button" defaultMessage="edit" />
+          )}
+        </EduIDButton>
       </div>
       <p>
         <FormattedMessage
