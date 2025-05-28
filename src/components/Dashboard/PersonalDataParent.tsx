@@ -50,7 +50,7 @@ function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
-  const isVerifiedIdentity = Boolean(personal_data?.response?.identities);
+  const isVerifiedIdentity = Boolean(personal_data?.response?.identities?.is_verified);
   const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
