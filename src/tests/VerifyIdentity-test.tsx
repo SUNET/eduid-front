@@ -152,7 +152,7 @@ test("renders the edit view, then be able to change names", async () => {
   act(() => {
     editButton.click();
   });
-  expect(screen.getAllByRole("heading", { level: 3 })[10]).toHaveTextContent(/^Edit name and display name/);
+  expect(screen.getAllByRole("heading", { level: 2 })[1]).toHaveTextContent(/^Edit Names & Display Name/);
   const firstName = screen.getByRole("textbox", { name: "First name" });
   expect(firstName).toHaveAccessibleName(/^First name/);
   const surName = screen.getByRole("textbox", { name: "Last name" });

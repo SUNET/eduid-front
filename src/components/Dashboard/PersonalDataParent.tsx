@@ -1,7 +1,7 @@
 import EduIDButton from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import NameDisplay from "./NameDisplay";
 
@@ -46,51 +46,11 @@ function RenderPersonalData(props: { labels: NameLabels }) {
   );
 }
 
-interface RenderEditBoxProps {
-  setEditMode(value: boolean): void;
-  readonly labels: NameLabels;
-}
-
-function RenderEditBox(props: RenderEditBoxProps) {
-  const identities = useAppSelector((state) => state.personal_data?.response?.identities);
-  const isVerifiedIdentity = Boolean(identities?.is_verified);
-
-  return (
-    <div className="edit-data">
-      <div className="title">
-        <h3>
-          <FormattedMessage defaultMessage="Edit name and display name" description="personal data edit title" />
-        </h3>
-        <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
-      </div>
-      <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} {...props} />
-    </div>
-  );
-}
-
-interface RenderEditButtonProps {
-  readonly isEditMode: boolean;
-  setEditMode(value: boolean): void;
-  readonly hasPersonalData: boolean;
-}
-
-function RenderEditButton({ setEditMode, hasPersonalData, isEditMode }: RenderEditButtonProps) {
-  return (
-    <Fragment>
-      {isEditMode ||
-        (hasPersonalData && (
-          <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(true)}>
-            <FormattedMessage description="edit button" defaultMessage={`edit`} />
-          </EduIDButton>
-        ))}
-    </Fragment>
-  );
-}
-
 function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
+  const isVerifiedIdentity = Boolean(personal_data?.response?.identities?.is_verified);
   const hasPersonalData = Boolean(personal_data?.response?.given_name) || Boolean(personal_data?.response?.surname);
   const intl = useIntl();
   // Field placeholders can't be Elements, we need to get the actual translated strings
@@ -117,9 +77,19 @@ function PersonalDataParent() {
     <article className="personal-data" id="personal-data">
       <div className="heading">
         <h2>
-          <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+          {isEditMode ? (
+            <FormattedMessage description="Edit Names & Display Name" defaultMessage={`Edit Names & Display Name`} />
+          ) : (
+            <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+          )}
         </h2>
-        <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
+        <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(!isEditMode)}>
+          {isEditMode ? (
+            <FormattedMessage description="close button" defaultMessage="close" />
+          ) : (
+            <FormattedMessage description="edit button" defaultMessage="edit" />
+          )}
+        </EduIDButton>
       </div>
       <p>
         <FormattedMessage
@@ -129,7 +99,11 @@ function PersonalDataParent() {
       </p>
       {!hasPersonalData && !isEditMode ? <RenderAddPersonalDataPrompt setEditMode={setEditMode} /> : null}
       {hasPersonalData && !isEditMode ? <RenderPersonalData labels={names} /> : null}
-      {isEditMode && <RenderEditBox setEditMode={setEditMode} labels={names} />}
+      {isEditMode && (
+        <div className="edit-data">
+          <PersonalDataForm isVerifiedIdentity={isVerifiedIdentity} setEditMode={setEditMode} labels={names} />
+        </div>
+      )}
     </article>
   );
 }
