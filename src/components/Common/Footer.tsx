@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
@@ -37,6 +38,13 @@ const Footer = (): JSX.Element => {
     }
   };
 
+  const [switchChecked, setSwitchChecked] = useState(false);
+
+  const handleSwitchChange = (): void => {
+    setSwitchChecked(!switchChecked);
+    document.getElementsByTagName("html")[0].toggleAttribute("data-theme");
+  };
+
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
@@ -45,6 +53,17 @@ const Footer = (): JSX.Element => {
         </a>
         <span>&copy;2013-2025</span>
       </div>
+
+      <label className="toggle flex-between" htmlFor="color-mode">
+        <input
+          onChange={handleSwitchChange}
+          className="toggle-checkbox"
+          type="checkbox"
+          checked={switchChecked}
+          id="color-mode"
+        />
+        <div className="toggle-switch"></div>
+      </label>
 
       <nav>
         <ul>
