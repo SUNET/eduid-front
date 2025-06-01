@@ -1387,10 +1387,6 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
   },
-  "UQlcH7": {
-    "developer_comment": "personal data edit title",
-    "string": "Edit name and display name"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
@@ -1643,6 +1639,10 @@
     "developer_comment": "Use another device, finished",
     "string": "After using this code on the first device, please close this browser window."
   },
+  "ZG77Sq": {
+    "developer_comment": "close button",
+    "string": "close"
+  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
@@ -1725,6 +1725,10 @@
   "bCqIxV": {
     "developer_comment": "profile email display title",
     "string": "Email address"
+  },
+  "bGUOCU": {
+    "developer_comment": "Edit Names & Display Name",
+    "string": "Edit Names & Display Name"
   },
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
