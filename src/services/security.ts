@@ -1,4 +1,4 @@
-import { CredentialType, RemoveWebauthnTokensRequest } from "apis/eduidSecurity";
+import { CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
 
@@ -76,6 +76,12 @@ export const securityApi = eduIDApi.injectEndpoints({
                 body: {
                     authenticator: args.authenticator
                 }
+            }),
+            extraOptions: { service: "security" }
+        }),
+        fetchSuggestedPassword: builder.query<ApiResponse<SuggestedPasswordResponse>,void>({
+            query: () => ({
+                url: "change-password/suggested-password"
             }),
             extraOptions: { service: "security" }
         })

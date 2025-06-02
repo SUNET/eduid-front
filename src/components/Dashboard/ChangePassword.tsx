@@ -1,10 +1,11 @@
-import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import { changePassword } from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
+import securityApi from "services/security";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
@@ -42,6 +43,7 @@ export function ChangePassword() {
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   let isMounted = true;
+  const [ fetchSuggestedPassword_trigger ] = securityApi.useLazyFetchSuggestedPasswordQuery()
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -62,9 +64,9 @@ export function ChangePassword() {
 
   async function handleSuggestedPassword() {
     try {
-      const response = await dispatch(fetchSuggestedPassword());
+      const response = await fetchSuggestedPassword_trigger();
       if (isMounted) {
-        if (fetchSuggestedPassword.fulfilled.match(response)) {
+        if (response.isSuccess) {
           navigate("/profile/chpass");
         }
       }

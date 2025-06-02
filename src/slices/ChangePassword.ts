@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import { changePassword } from "apis/eduidSecurity";
+import securityApi from "services/security";
 
 export interface ChangePasswordState {
   message?: string;
@@ -15,13 +16,13 @@ const chpassSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchSuggestedPassword.fulfilled, (state, action) => {
-        state.suggested_password = action.payload;
-      })
       .addCase(changePassword.fulfilled, (state) => {
         // On successful password change, we remove the suggested_password from state to avoid it ending up
         // in sentry or something, but also to fetch a new suggested password should the user change password again.
         state.suggested_password = undefined;
+      })
+      .addMatcher(securityApi.endpoints.fetchSuggestedPassword.matchFulfilled, (state, action) => {
+        state.suggested_password = action.payload.payload.suggested_password;
       });
   },
 });
