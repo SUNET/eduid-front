@@ -10,7 +10,7 @@ interface PostDeleteAccountResponse {
   location: string;
 }
 
-interface SecurityResponse {
+export interface SecurityResponse {
   credentials: CredentialType[];
 }
 

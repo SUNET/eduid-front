@@ -1,12 +1,9 @@
 import {
-  registerWebauthn,
-  RegisterWebauthnResponse,
-  RemoveWebauthnTokensRequest,
-  RemoveWebauthnTokensResponse,
-  RequestCredentialsResponse
+  RemoveWebauthnTokensRequest
 } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
+import { SecurityResponse } from "services/security";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
@@ -130,7 +127,7 @@ test("can remove a security key", async () => {
 
 test("api call webauthn/remove", async () => {
   const credential_key = "dummy_dummy";
-  const response: RemoveWebauthnTokensResponse = {
+  const response: SecurityResponse = {
     credentials: [
       {
         created_ts: "2022-10-14",
@@ -174,7 +171,7 @@ test("api call webauthn/remove", async () => {
 });
 
 test("security reducer, request credentials", async () => {
-  const payload: RequestCredentialsResponse = {
+  const payload: SecurityResponse = {
     credentials: [
       {
         created_ts: "2022-10-14",
@@ -208,12 +205,7 @@ test("security reducer, request credentials", async () => {
 });
 
 test("security reducer, registerWebauthn", async () => {
-  const payload: RegisterWebauthnResponse = {
-    webauthn_attestation: {
-      attestationObject: "dummy",
-      clientDataJSON: "dummy",
-      credentialId: "dummy",
-    },
+  const payload: SecurityResponse = {
     credentials: [
       {
         created_ts: "2021-12-02",
@@ -226,12 +218,15 @@ test("security reducer, registerWebauthn", async () => {
       },
     ],
   };
-  const action = { type: registerWebauthn.fulfilled.type, payload: payload };
+  const action = { 
+    type: "eduIDApi/executeQuery/fulfilled",
+    payload: {payload: payload},
+    meta: { arg: { endpointName: "registerWebauthn" }}
+  };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
-    credentials: action.payload.credentials,
-    webauthn_attestation: action.payload.webauthn_attestation,
+    credentials: action.payload.payload.credentials
   });
 });
 
