@@ -1,9 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {
-  CredentialType,
-  registerWebauthn
+  CredentialType
 } from "apis/eduidSecurity";
-import { createCredential, webauthnAttestation } from "helperFunctions/navigatorCredential";
+import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import securityApi from "services/security";
 
 export interface SecurityState {
@@ -24,22 +23,9 @@ const securitySlice = createSlice({
   name: "security",
   initialState,
   reducers: {
-    chooseAuthenticator: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        webauthn_authenticator: action.payload,
-      };
-    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createCredential.fulfilled, (state, action) => {
-        state.webauthn_attestation = action.payload;
-      })
-      .addCase(registerWebauthn.fulfilled, (state, action) => {
-        state.webauthn_attestation = action.payload.webauthn_attestation;
-        state.credentials = action.payload.credentials;
-      })
       .addMatcher(securityApi.endpoints.requestCredentials.matchFulfilled, (state, action) => {
         state.credentials = action.payload.payload.credentials;
       })
@@ -48,6 +34,9 @@ const securitySlice = createSlice({
       })
       .addMatcher(securityApi.endpoints.postDeleteAccount.matchFulfilled, (state, action) => {
         state.location = action.payload.payload.location;
+      })
+      .addMatcher(securityApi.endpoints.registerWebauthn.matchFulfilled, (state, action) => {
+        state.credentials = action.payload.payload.credentials;
       })
   },
 });

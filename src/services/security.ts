@@ -1,4 +1,5 @@
-import { RemoveWebauthnTokensRequest, RemoveWebauthnTokensResponse, RequestCredentialsResponse } from "apis/eduidSecurity";
+import { CredentialType, RemoveWebauthnTokensRequest } from "apis/eduidSecurity";
+import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
 
 interface UpdateOfficialUserDataResponse {
@@ -7,6 +8,23 @@ interface UpdateOfficialUserDataResponse {
 
 interface PostDeleteAccountResponse {
   location: string;
+}
+
+interface SecurityResponse {
+  credentials: CredentialType[];
+}
+
+interface RegisterWebAuthnRequest {
+    webauthn_attestation: webauthnAttestation
+    description: string;
+}
+
+interface BeginRegisterWebAuthnRequest {
+    authenticator: string;
+}
+
+interface BeginRegisterWebauthnResponse {
+    registration_data: string
 }
 
 export const securityApi = eduIDApi.injectEndpoints({
@@ -25,7 +43,7 @@ export const securityApi = eduIDApi.injectEndpoints({
             }),
             extraOptions: { service: "security" }
         }),
-        removeWebauthnToken: builder.query<ApiResponse<RemoveWebauthnTokensResponse>, RemoveWebauthnTokensRequest>({
+        removeWebauthnToken: builder.query<ApiResponse<SecurityResponse>, RemoveWebauthnTokensRequest>({
             query: (args) => ({
                 url: "webauthn/remove",
                 body: {
@@ -34,9 +52,30 @@ export const securityApi = eduIDApi.injectEndpoints({
             }),
             extraOptions: { service: "security" }
         }),
-        requestCredentials: builder.query<ApiResponse<RequestCredentialsResponse>, void>({
+        requestCredentials: builder.query<ApiResponse<SecurityResponse>, void>({
             query: () => ({
                 url: "credentials"
+            }),
+            extraOptions: { service: "security" }
+        }),
+        registerWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
+            query: (args) => ({
+                url: "webauthn/register/complete",
+                body: {
+                    attestationObject: args.webauthn_attestation.attestationObject,
+                    clientDataJSON: args.webauthn_attestation.clientDataJSON,
+                    credentialId: args.webauthn_attestation.credentialId,
+                    description: args.description
+                }
+            }),
+            extraOptions: { service: "security" }
+        }),
+        beginRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebAuthnRequest>({
+            query: (args) => ({
+                url: "webauthn/register/begin",
+                body: {
+                    authenticator: args.authenticator
+                }
             }),
             extraOptions: { service: "security" }
         })

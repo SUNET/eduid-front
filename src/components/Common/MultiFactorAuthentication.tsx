@@ -2,10 +2,8 @@ import { bankIDVerifyCredential } from "apis/eduidBankid";
 import { eidasVerifyCredential, WebauthnMethods } from "apis/eduidEidas";
 import {
   ActionStatus,
-  beginRegisterWebauthn,
   CredentialType,
-  getAuthnStatus,
-  registerWebauthn
+  getAuthnStatus
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
@@ -18,7 +16,6 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import securityApi from "services/security";
 import authnSlice from "slices/Authn";
-import securitySlice from "slices/Security";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
@@ -52,7 +49,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
-  const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery()
+  const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery();
+  const [beginRegisterWebauthn_trigger] = securityApi.useLazyBeginRegisterWebauthnQuery();
+  const [registerWebauthn_trigger] = securityApi.useLazyRegisterWebauthnQuery();
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -196,30 +195,29 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     }
   }
 
-  // function that is called when the user clicks OK in the "security key name"  modal
+  // function that is called when the user clicks OK in the "security key name" modal
   function handleStartWebauthnRegistration(values: { [key: string]: string }) {
     const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
     (async () => {
       try {
         if (frontend_state) {
-          dispatch(securitySlice.actions.chooseAuthenticator(frontend_state));
-        }
-        const description = values["describe-webauthn-token-modal"];
-        const descriptionValue = description?.trim();
-        setShowSecurityKeyNameModal(false);
-        const resp = await dispatch(beginRegisterWebauthn());
-        if (beginRegisterWebauthn.fulfilled.match(resp)) {
-          const response = await dispatch(createCredential(resp.payload));
-          if (createCredential.fulfilled.match(response)) {
-            const response = await dispatch(registerWebauthn({ descriptionValue }));
-            wrapperRef?.current?.focus();
-            if (registerWebauthn.fulfilled.match(response)) {
-              setShowVerifyWebauthnModal(true);
+          const description_value = values["describe-webauthn-token-modal"];
+          const description = description_value?.trim();
+          setShowSecurityKeyNameModal(false);
+          const registration = await beginRegisterWebauthn_trigger({ authenticator: frontend_state })
+          if (registration.isSuccess) {
+            const credential = await dispatch(createCredential(registration.data.payload.registration_data));
+            if (createCredential.fulfilled.match(credential)) {
+              const response = await registerWebauthn_trigger({ webauthn_attestation: credential.payload, description})
+              wrapperRef?.current?.focus();
+              if (response.isSuccess) {
+                setShowVerifyWebauthnModal(true);
+              }
             }
           }
+          dispatch(authnSlice.actions.setAuthnFrontendReset());
+          setIsRegisteringAuthenticator(false);
         }
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
-        setIsRegisteringAuthenticator(false);
       } catch (err) {}
     })();
   }
