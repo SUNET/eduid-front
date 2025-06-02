@@ -55,6 +55,9 @@ const Footer = (): JSX.Element => {
       </div>
 
       <label className="toggle flex-between" htmlFor="color-mode">
+        <span className="text-small">
+          <FormattedMessage defaultMessage="Color mode" description="color mode toggle" />
+        </span>
         <input
           onChange={handleSwitchChange}
           className="toggle-checkbox"

@@ -1,5 +1,6 @@
 /* System/browser set dark mode overrides */
 
+//[data-theme="dark"] {
 @media (prefers-color-scheme: dark) {
   //variables
   :root {
