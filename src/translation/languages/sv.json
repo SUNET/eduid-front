@@ -1387,10 +1387,6 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "För användaren leder eduID på sikt till ett färre antal konton att hålla reda på under t.ex. studietiden. För många organisationer är identitetshantering en komplex fråga och det finns ett behov av att arbeta med bekräftade användare."
   },
-  "UQlcH7": {
-    "developer_comment": "personal data edit title",
-    "string": "Ändra namn och visningsnamn"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
@@ -1643,6 +1639,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Efter att du har använt den här koden i den första enheten bör du stänga det här fönstret."
   },
+  "ZG77Sq": {
+    "developer_comment": "close button",
+    "string": "stäng"
+  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
@@ -1685,7 +1685,7 @@
   },
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
-    "string": "Namn & Visningsnamn"
+    "string": "Namn & visningsnamn"
   },
   "actions.action-completed": {
     "string": "Klart"
@@ -1725,6 +1725,10 @@
   "bCqIxV": {
     "developer_comment": "profile email display title",
     "string": "E-postadress"
+  },
+  "bGUOCU": {
+    "developer_comment": "Edit Names & Display Name",
+    "string": "Ändra namn & visningsnamn"
   },
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
