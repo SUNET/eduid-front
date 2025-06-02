@@ -1,6 +1,7 @@
-import { CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
+import { ChangePasswordPayload, ChangePasswordResponse, CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
+import { FetchIdentitiesResponse } from "./personalData";
 
 interface UpdateOfficialUserDataResponse {
     message: string
@@ -25,6 +26,10 @@ interface BeginRegisterWebAuthnRequest {
 
 interface BeginRegisterWebauthnResponse {
     registration_data: string
+}
+
+interface NinPayload {
+  nin: string;
 }
 
 export const securityApi = eduIDApi.injectEndpoints({
@@ -82,6 +87,33 @@ export const securityApi = eduIDApi.injectEndpoints({
         fetchSuggestedPassword: builder.query<ApiResponse<SuggestedPasswordResponse>,void>({
             query: () => ({
                 url: "change-password/suggested-password"
+            }),
+            extraOptions: { service: "security" }
+        }),
+        changePassword: builder.query<ApiResponse<ChangePasswordResponse>, ChangePasswordPayload>({
+            query: (args) => ({
+                url: "change-password/set-password",
+                body: {
+                    new_password: args.new_password
+                }
+            }),
+            extraOptions: { service: "security" }
+        }),
+        addNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
+            query: (args) => ({
+                url: "add-nin",
+                body: {
+                    nin: args.nin
+                }
+            }),
+            extraOptions: { service: "security" }
+        }),
+        removeNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
+            query: (args) => ({
+                url: "remove-nin",
+                body: {
+                    nin: args.nin
+                }
             }),
             extraOptions: { service: "security" }
         })

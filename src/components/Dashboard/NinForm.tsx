@@ -1,9 +1,9 @@
-import { addNin } from "apis/eduidSecurity";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import securityApi from "services/security";
 
 function validateNin(value: string): string | undefined {
   if (!value) {
@@ -40,6 +40,7 @@ export interface NinFormData {
 
 function NinForm(): JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
+  const [addNin_trigger] = securityApi.useLazyAddNinQuery()
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -53,7 +54,7 @@ function NinForm(): JSX.Element {
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;
     if (nin) {
-      dispatch(addNin(nin));
+      addNin_trigger({nin});
     }
   }
 
