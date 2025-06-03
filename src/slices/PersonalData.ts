@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { removeIdentity } from "apis/eduidSecurity";
+import { createSlice } from "@reduxjs/toolkit";
 import { personalDataApi, PersonalDataRequest, UserIdentities } from "services/personalData";
 import securityApi from "services/security";
 
@@ -22,8 +21,10 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(removeIdentity.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.response = action.payload;
+      .addMatcher(securityApi.endpoints.removeIdentity.matchFulfilled, (state, action) => {
+        if (state.response) {
+          state.response.identities = action.payload.payload.identities;
+        }
       })
       .addMatcher(securityApi.endpoints.addNin.matchFulfilled, (state, action) => {
         if (state.response) {

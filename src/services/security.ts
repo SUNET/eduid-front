@@ -1,7 +1,7 @@
 import { AuthnActionStatusRequest, AuthnActionStatusResponse, ChangePasswordPayload, ChangePasswordResponse, CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
-import { FetchIdentitiesResponse } from "./personalData";
+import { FetchIdentitiesResponse, UserIdentities } from "./personalData";
 
 interface UpdateOfficialUserDataResponse {
     message: string
@@ -35,6 +35,15 @@ interface NinPayload {
 export interface SecurityKeysResponse {
     next_update: string; // currently unused
     entries: string[];
+}
+
+interface IdentityRequest {
+    identity_type: string;
+}
+
+interface IdentitiesResponse {
+    message: string;
+    identities: UserIdentities
 }
 
 export const securityApi = eduIDApi.injectEndpoints({
@@ -128,8 +137,16 @@ export const securityApi = eduIDApi.injectEndpoints({
             }),
             extraOptions: { service: "security" }
         }),
-        //removeIdentity: builder.query<
-        getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>,AuthnActionStatusRequest>({
+        removeIdentity: builder.query<ApiResponse<IdentitiesResponse>, IdentityRequest>({
+            query: (args) => ({
+                url: "remove-identity",
+                body: {
+                    identity_type: args.identity_type
+                }
+            }),
+            extraOptions: { service: "security" }
+        }),
+        getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>, AuthnActionStatusRequest>({
             query: (args) => ({
                 url: "authn-status",
                 body: {

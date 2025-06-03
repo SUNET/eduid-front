@@ -3,7 +3,7 @@ import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
-import { ActionStatus, removeIdentity } from "apis/eduidSecurity";
+import { ActionStatus } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
@@ -164,8 +164,9 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
   const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
-  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery()
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery();
   const [getAuthnStatus_trigger] = securityApi.useLazyGetAuthnStatusQuery();
+  const [removeIdentity_trigger] = securityApi.useLazyRemoveIdentityQuery();
 
   useEffect(() => {
     if (frontend_action === "removeIdentity" && frontend_state) {
@@ -177,8 +178,8 @@ function VerifiedIdentitiesTable(): JSX.Element {
   async function handleRemoveIdentity(identityType: string) {
     setShowConfirmRemoveIdentityVerificationModal(false);
     if (identityType) {
-      const response = await dispatch(removeIdentity({ identity_type: identityType }));
-      if (removeIdentity.fulfilled.match(response)) {
+      const response = await removeIdentity_trigger({ identity_type: identityType });
+      if (response.isSuccess) {
         personal_data_refetch();
       } else {
         dispatch(
@@ -195,12 +196,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
     setIdentityType(identityType);
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
-    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
+    // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
     const response = await getAuthnStatus_trigger({ frontend_action: "removeIdentity" });
     if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
     } else {
-      handleRemoveIdentity(identityType);
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "removeIdentity",
+          frontend_state: identityType,
+        })
+      );
+      dispatch(authnSlice.actions.setReAuthenticate(true));
     }
   }
 
