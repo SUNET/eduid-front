@@ -2,8 +2,7 @@ import { bankIDVerifyCredential } from "apis/eduidBankid";
 import { eidasVerifyCredential, WebauthnMethods } from "apis/eduidEidas";
 import {
   ActionStatus,
-  CredentialType,
-  getAuthnStatus
+  CredentialType
 } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
@@ -52,6 +51,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery();
   const [beginRegisterWebauthn_trigger] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn_trigger] = securityApi.useLazyRegisterWebauthnQuery();
+  const [getAuthnStatus_trigger] = securityApi.useLazyGetAuthnStatusQuery();
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -185,8 +185,8 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       })
     );
 
-    const response = await dispatch(getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" }));
-    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
+    const response = await getAuthnStatus_trigger({ frontend_action: "addSecurityKeyAuthn" });
+    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
       setIsRegisteringAuthenticator(true);
       setShowSecurityKeyNameModal(true);
     } else {
@@ -423,6 +423,7 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
   const [removeWebauthnToken_trigger] = securityApi.useLazyRemoveWebauthnTokenQuery();
+  const [getAuthnStatus_trigger] = securityApi.useLazyGetAuthnStatusQuery();
 
   // Runs after re-auth security zone
   useEffect(() => {
@@ -447,8 +448,8 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
     // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
-    const response = await dispatch(getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" }));
-    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
+    const response = await getAuthnStatus_trigger({ frontend_action: "removeSecurityKeyAuthn" });
+    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveSecurityKeyModal(true);
     } else {
       handleRemoveWebauthnToken();

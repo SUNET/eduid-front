@@ -1,4 +1,4 @@
-import { ChangePasswordPayload, ChangePasswordResponse, CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
+import { AuthnActionStatusRequest, AuthnActionStatusResponse, ChangePasswordPayload, ChangePasswordResponse, CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
 import { FetchIdentitiesResponse } from "./personalData";
@@ -127,8 +127,18 @@ export const securityApi = eduIDApi.injectEndpoints({
                 url: "webauthn/approved-security-keys"
             }),
             extraOptions: { service: "security" }
-        })
+        }),
         //removeIdentity: builder.query<
+        getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>,AuthnActionStatusRequest>({
+            query: (args) => ({
+                url: "authn-status",
+                body: {
+                    frontend_action: args.frontend_action,
+                    credential_id: args.credential_id
+                }
+            }),
+            extraOptions: { service: "security" }
+        })
     })
 })
 
