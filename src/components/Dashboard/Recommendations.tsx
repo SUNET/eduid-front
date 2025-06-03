@@ -1,13 +1,12 @@
 import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CredentialType } from "apis/eduidSecurity";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { UserIdentities } from "services/personalData";
-import securityApi from "services/security";
+import { CredentialType, securityApi } from "services/security";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
   return (

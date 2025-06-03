@@ -1,4 +1,3 @@
-import { AuthnActionStatusRequest, AuthnActionStatusResponse, ChangePasswordPayload, ChangePasswordResponse, CredentialType, RemoveWebauthnTokensRequest, SuggestedPasswordResponse } from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./api";
 import { FetchIdentitiesResponse, UserIdentities } from "./personalData";
@@ -9,6 +8,20 @@ interface UpdateOfficialUserDataResponse {
 
 interface PostDeleteAccountResponse {
   location: string;
+}
+
+export interface RemoveWebauthnTokensRequest {
+  credential_key: string;
+}
+
+export interface CredentialType {
+  created_ts: string;
+  credential_type: string;
+  description: string | null;
+  key: string;
+  success_ts: string;
+  used_for_login: boolean;
+  verified: boolean;
 }
 
 export interface SecurityResponse {
@@ -28,6 +41,18 @@ interface BeginRegisterWebauthnResponse {
     registration_data: string
 }
 
+interface SuggestedPasswordResponse {
+  suggested_password: string;
+}
+
+interface ChangePasswordPayload {
+  new_password: string;
+}
+
+interface ChangePasswordResponse {
+  message?: string;
+}
+
 interface NinPayload {
   nin: string;
 }
@@ -45,6 +70,26 @@ interface IdentitiesResponse {
     message: string;
     identities: UserIdentities
 }
+
+export enum ActionStatus {
+  OK = "ok",
+  NOT_FOUND = "not-found",
+  CONSUMED = "consumed",
+  STALE = "stale",
+  WRONG_ACCR = "wrong-accr",
+  NO_MFA = "no-mfa",
+  CREDENTIAL_NOT_RECENTLY_USED = "credential-not-recently-used"
+}
+
+interface AuthnActionStatusResponse {
+  authn_status: ActionStatus;
+}
+
+interface AuthnActionStatusRequest {
+  frontend_action: string;
+  credential_id?: string;
+}
+
 
 export const securityApi = eduIDApi.injectEndpoints({
     endpoints: (builder) => ({

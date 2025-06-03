@@ -1,9 +1,6 @@
-import {
-  RemoveWebauthnTokensRequest
-} from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
-import { SecurityResponse } from "services/security";
+import { RemoveWebauthnTokensRequest, SecurityResponse } from "services/security";
 import { mswServer, rest } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";

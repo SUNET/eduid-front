@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  CredentialType
-} from "apis/eduidSecurity";
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
-import securityApi from "services/security";
+import { CredentialType, securityApi } from "services/security";
 
 export interface SecurityState {
   credentials: CredentialType[];
