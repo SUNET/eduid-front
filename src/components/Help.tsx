@@ -1,16 +1,12 @@
-import { fetchApprovedSecurityKeys } from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
+import securityApi, { SecurityKeysResponse } from "services/security";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
 import { CommonToU } from "./Common/CommonToU";
 import ScrollToTopButton from "./ScrollToTopButton";
 
-interface ApprovedSecurityKeysTypes {
-  entries: [];
-  next_update: Date;
-}
 
 export function Help(): JSX.Element {
   const intl = useIntl();
@@ -18,10 +14,11 @@ export function Help(): JSX.Element {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const [ fetchApprovedSecurityKeys_trigger ] = securityApi.useLazyFetchApprovedSecurityKeysQuery()
 
   const locale = useAppSelector((state) => state.intl.locale);
 
-  const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<ApprovedSecurityKeysTypes>();
+  const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<SecurityKeysResponse>();
 
   const FrejaAppURL =
     locale === "en" ? "https://frejaeid.com/en/get-freja-eid/" : "https://frejaeid.com/skaffa-freja-eid/";
@@ -52,9 +49,9 @@ export function Help(): JSX.Element {
   }, [is_configured]);
 
   async function handleApprovedSecurityKeys() {
-    const response = await dispatch(fetchApprovedSecurityKeys());
-    if (fetchApprovedSecurityKeys.fulfilled.match(response)) {
-      setApprovedSecurityKeys(response.payload);
+    const response = await fetchApprovedSecurityKeys_trigger();
+    if (response.isSuccess) {
+      setApprovedSecurityKeys(response.data.payload);
     }
   }
 

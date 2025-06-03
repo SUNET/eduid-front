@@ -32,6 +32,11 @@ interface NinPayload {
   nin: string;
 }
 
+export interface SecurityKeysResponse {
+    next_update: string; // currently unused
+    entries: string[];
+}
+
 export const securityApi = eduIDApi.injectEndpoints({
     endpoints: (builder) => ({
         updateOfficialUserData: builder.query<ApiResponse<UpdateOfficialUserDataResponse>, void>({
@@ -116,7 +121,14 @@ export const securityApi = eduIDApi.injectEndpoints({
                 }
             }),
             extraOptions: { service: "security" }
+        }),
+        fetchApprovedSecurityKeys: builder.query<ApiResponse<SecurityKeysResponse>, void>({
+            query: () => ({
+                url: "webauthn/approved-security-keys"
+            }),
+            extraOptions: { service: "security" }
         })
+        //removeIdentity: builder.query<
     })
 })
 
