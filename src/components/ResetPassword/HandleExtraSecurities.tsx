@@ -25,7 +25,10 @@ export function HandleExtraSecurities(): JSX.Element | null {
   }, [swedishEID_status]);
 
   useEffect(() => {
-    if (extra_security && !Object.values(extra_security).length) {
+    if (
+      (extra_security && !Object.values(extra_security).length) ||
+      (extra_security?.tokens === undefined && !extra_security?.external_mfa)
+    ) {
       resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
     }
   }, [extra_security]);
@@ -65,7 +68,7 @@ export function HandleExtraSecurities(): JSX.Element | null {
         </p>
       </section>
       <div className="options">
-        <SecurityKeyLogin webauthn={extra_security.tokens} />
+        {extra_security.tokens !== undefined && <SecurityKeyLogin webauthn={extra_security.tokens} />}
         <SwedishEID recoveryAvailable={extra_security.external_mfa} />
       </div>
       <h3 className="description-without-security">
