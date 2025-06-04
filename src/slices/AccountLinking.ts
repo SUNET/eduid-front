@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchOrcid, OrcidInfo, removeOrcid } from "apis/eduidOrcid";
+import { orcidApi, OrcidInfo } from "services/orcid";
 import personalDataApi from "services/personalData";
 
 export interface AccountLinkingState {
@@ -15,10 +15,10 @@ const accountLinkingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrcid.fulfilled, (state, action) => {
-        state.orcid = action.payload.orcid;
+      .addMatcher(orcidApi.endpoints.fetchOrcid.matchFulfilled, (state, action) => {
+        state.orcid = action.payload.payload.orcid;
       })
-      .addCase(removeOrcid.fulfilled, (state) => {
+      .addMatcher(orcidApi.endpoints.removeOrcid.matchFulfilled, (state) => {
         state.orcid = undefined;
       })
       .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {

@@ -1,7 +1,7 @@
 import { EmailInfo } from "apis/eduidEmail";
 import { LadokData } from "apis/eduidLadok";
-import { OrcidInfo } from "apis/eduidOrcid";
 import { ApiResponse, eduIDApi } from "./api";
+import { OrcidInfo } from "./orcid";
 
 
 /*
