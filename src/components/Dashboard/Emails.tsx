@@ -1,10 +1,3 @@
-import {
-  postNewEmail,
-  requestMakePrimaryEmail,
-  requestRemoveEmail,
-  requestResendEmailCode,
-  requestVerifyEmail,
-} from "apis/eduidEmail";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
@@ -12,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import { emailApi } from "services/email";
 import { clearNotifications } from "slices/Notifications";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
@@ -26,6 +20,11 @@ function Emails() {
   const [selectedEmail, setSelectedEmail] = useState<string | undefined>();
   const dispatch = useAppDispatch();
   const emails = useAppSelector((state) => state.emails);
+  const [makePrimaryEmail] = emailApi.useLazyMakePrimaryEmailQuery();
+  const [verifyEmail] = emailApi.useLazyVerifyEmailQuery();
+  const [resendEmailCode] = emailApi.useLazyResendEmailCodeQuery();
+  const [newEmail] = emailApi.useLazyNewEmailQuery();
+  const [removeEmail] = emailApi.useLazyRemoveEmailQuery();
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -43,8 +42,8 @@ function Emails() {
 
   async function handleAdd(values: EmailFormData) {
     if (values.email) {
-      const response = await dispatch(postNewEmail({ email: values.email }));
-      if (postNewEmail.fulfilled.match(response)) {
+      const response = await newEmail({ email: values.email });
+      if (response.isSuccess) {
         // email form closed when user have successfully added an email
         return setShowEmailForm(false);
       }
@@ -59,7 +58,7 @@ function Emails() {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
     const email = dataNode?.getAttribute("data-object");
     if (email) {
-      dispatch(requestRemoveEmail({ email: email }));
+      removeEmail({ email: email });
     }
   }
 
@@ -69,7 +68,7 @@ function Emails() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    if (selectedEmail) dispatch(requestResendEmailCode({ email: selectedEmail }));
+    if (selectedEmail) resendEmailCode({ email: selectedEmail });
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
@@ -86,14 +85,14 @@ function Emails() {
   function handleConfirm(values: { [key: string]: string }) {
     const confirmationCode = values["email-confirm-modal"];
     if (confirmationCode && selectedEmail)
-      dispatch(requestVerifyEmail({ code: confirmationCode.trim(), email: selectedEmail }));
+      verifyEmail({ code: confirmationCode.trim(), email: selectedEmail });
     setSelectedEmail(undefined);
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
     const email = dataNode?.getAttribute("data-object");
-    if (email) dispatch(requestMakePrimaryEmail({ email: email }));
+    if (email) makePrimaryEmail({ email: email });
   }
 
   function validateEmailsInForm(value: string): string | undefined {
