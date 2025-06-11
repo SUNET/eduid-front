@@ -6,7 +6,6 @@ import { ajaxHeaders } from 'ts_common';
 
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
-    let baseUrl;
     const state = api.getState() as StateWithCommonConfig;
     const service_urls: { [key: string]: string | undefined } = {
         jsConfig: EDUID_CONFIG_URL,
@@ -23,7 +22,7 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     if (!(extraOptions.service in service_urls)) {
         throw new Error(`Unknown service: ${extraOptions.service}`);
     }
-    baseUrl = service_urls[extraOptions.service];
+    const baseUrl = service_urls[extraOptions.service];
 
     const rawBaseQuery = fetchBaseQuery({
         baseUrl, 
