@@ -1,4 +1,7 @@
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+
+const reset_password_link = useAppSelector((state) => state.config.reset_password_link);
 
 export const apiResponses = {
   "login.mfa.h2-heading": (
@@ -85,7 +88,14 @@ export const apiResponses = {
   "login.user_terminated": (
     <FormattedMessage
       id="login.user_terminated"
-      defaultMessage={`This account has been terminated, but is still present. Perform a password reset to cancel termination. `}
+      defaultMessage={`This account has been terminated, but is still present. Perform a {link} if you wish to cancel termination. `}
+      values={{
+        link: (
+          <a href={reset_password_link}>
+            <FormattedMessage defaultMessage="password reset" description="retrieve account link" />
+          </a>
+        ),
+      }}
     />
   ),
 
