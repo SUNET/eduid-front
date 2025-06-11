@@ -88,7 +88,7 @@ export const apiResponses = {
   "login.user_terminated": (
     <FormattedMessage
       id="login.user_terminated"
-      defaultMessage={`This account has been terminated, but is still present. Perform a {link} if you wish to cancel termination. `}
+      defaultMessage={`This account has been terminated, but will persist for a few days. Perform a {link} if you wish to cancel termination. `}
       values={{
         link: (
           <a href={reset_password_link}>

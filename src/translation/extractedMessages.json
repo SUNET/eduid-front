@@ -2526,7 +2526,7 @@
     "string": "This account has reached the limit for incorrect logins and is temporarily disabled. Try again next calendar month."
   },
   "login.user_terminated": {
-    "string": "This account has been terminated, but is still present. Perform a password reset to cancel termination."
+    "string": "This account has been terminated, but will persist for a few days. Perform a {link} if you wish to cancel termination."
   },
   "login.wrong_credentials": {
     "string": "The email address or password was incorrect."
@@ -3443,6 +3443,10 @@
   "ysi2d4": {
     "developer_comment": "privacy policy - list item 9",
     "string": "only uses necessary functional cookies."
+  },
+  "yunE3F": {
+    "developer_comment": "retrieve account link",
+    "string": "password reset"
   },
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
