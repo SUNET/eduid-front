@@ -1,6 +1,6 @@
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import securityApi from "services/security";
@@ -49,7 +49,6 @@ function NinForm(): JSX.Element {
     defaultMessage: "yyyymmddnnnn",
     description: "Swedish NIN template",
   });
-  const dispatch = useAppDispatch();
 
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;

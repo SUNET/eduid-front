@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
@@ -32,8 +31,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
-  const messages = LOCALIZED_MESSAGES;
-
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
   const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
   const [postUserName_trigger] = personalDataApi.usePostUserNameMutation();

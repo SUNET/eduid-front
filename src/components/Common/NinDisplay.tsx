@@ -1,6 +1,5 @@
 import EduIDButton from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
-import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
@@ -15,7 +14,6 @@ interface NinDisplayProps {
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
-  const dispatch = useAppDispatch();
   const [removeNin_trigger] = securityApi.useLazyRemoveNinQuery()
 
   if (!props.nin) {

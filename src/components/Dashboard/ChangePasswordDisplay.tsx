@@ -1,12 +1,10 @@
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import securityApi from "services/security";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [ fetchSuggestedPassword_trigger ] = securityApi.useLazyFetchSuggestedPasswordQuery()
 
   async function handleSuggestedPassword() {

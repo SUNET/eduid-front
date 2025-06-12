@@ -1,7 +1,7 @@
 import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
@@ -187,7 +187,6 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 }
 
 export function Recommendations(): JSX.Element | null {
-  const dispatch = useAppDispatch();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

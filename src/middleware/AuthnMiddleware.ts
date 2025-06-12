@@ -4,7 +4,7 @@ import { ApiResponse, genericApiFail } from "services/api";
 import authnApi, { AuthenticateResponse } from "services/authn";
 
 
-interface errorPayload {
+interface ErrorPayload {
     status?: number
     statusText?: string
     error?: boolean
@@ -30,7 +30,7 @@ authnMiddleware.startListening({
     matcher: isRejectedWithValue,
     effect: async (action, api) => {
         // re-implement logic from ts_common.ts, common.ts
-        const response = action.payload as errorPayload
+        const response = action.payload as ErrorPayload
         if (response.status) {
             // handle HTTP responses
             if (response.status === 401) {

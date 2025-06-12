@@ -50,7 +50,7 @@ const personalDataSlice = createSlice({
         }
       })
       .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {        
-        state.eppn = action.payload.payload.eppn,
+        state.eppn = action.payload.payload.eppn;
         state.response= action.payload.payload;
       })
       .addMatcher(personalDataApi.endpoints.postSecurityKeyPreference.matchFulfilled, (state, action) => {

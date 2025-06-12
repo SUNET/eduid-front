@@ -1,6 +1,6 @@
 import { urlJoin } from "apis/common";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { orcidApi } from "services/orcid";
@@ -8,7 +8,6 @@ import { orcidApi } from "services/orcid";
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 
 export function Orcid(): JSX.Element {
-  const dispatch = useAppDispatch();
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();

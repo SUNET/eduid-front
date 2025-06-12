@@ -1,5 +1,5 @@
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -35,10 +35,8 @@ export interface ChangePasswordSuccessState {
 
 export function ChangePassword() {
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useAppDispatch();
   const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
-  const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   let isMounted = true;

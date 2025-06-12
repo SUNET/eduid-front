@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -10,7 +10,6 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 export function Help(): JSX.Element {
   const intl = useIntl();
-  const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
