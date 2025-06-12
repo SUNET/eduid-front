@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchJsConfig } from "apis/eduidJsConfig";
 import { LoginErrorInfoResponse, fetchErrorInfo } from "apis/eduidLogin";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
+import { jsConfigApi } from "services/jsConfig";
 import { appLoadingSlice } from "slices/AppLoading";
 
 export interface IndexConfig extends EduidJSAppCommonConfig {
@@ -36,9 +36,6 @@ const indexSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchJsConfig.fulfilled, (state, action) => {
-        return { ...state, ...action.payload, is_configured: true };
-      })
       .addCase(storeCsrfToken, (state, action) => {
         state.csrf_token = action.payload;
       })
@@ -47,7 +44,10 @@ const indexSlice = createSlice({
       })
       .addCase(appLoadingSlice.actions.appLoaded, (state) => {
         state.is_app_loaded = true;
-      });
+      })
+      .addMatcher(jsConfigApi.endpoints.fetchJsConfig.matchFulfilled, (state, action) => {
+        return { ...state, ...action.payload.payload, is_configured: true };
+      })
   },
 });
 

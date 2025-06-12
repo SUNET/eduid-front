@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import personalDataApi from "services/personalData";
 import { fetchLadokUniversities, LadokData, LadokUniversityData, linkUser, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
@@ -37,12 +37,13 @@ const ladokSlice = createSlice({
         state.ladokName = undefined;
         state.isLinked = false;
       })
-      .addCase(requestAllPersonalData.fulfilled, (state, action) => {
-        if (action.payload.ladok !== undefined) {
-          state.data = action.payload.ladok;
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {
+        const data = action.payload.payload
+        if (data.ladok !== undefined) {
+          state.data = data.ladok;
           state.ladokName = state.data.university.ladok_name;
           state.isLinked =
-            action.payload.ladok.external_id !== undefined && action.payload.ladok.university !== undefined;
+            data.ladok.external_id !== undefined && data.ladok.university !== undefined;
         }
       });
   },
