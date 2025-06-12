@@ -14,7 +14,8 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         authn: state.config.authn_service_url,
         security: state.config.security_service_url,
         orcid: state.config.orcid_service_url,
-        email: state.config.emails_service_url
+        email: state.config.emails_service_url,
+        letterProofing: state.config.letter_proofing_service_url
     };
     if (!extraOptions?.service) {
         throw new Error('No service specified');
