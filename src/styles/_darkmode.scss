@@ -1,20 +1,21 @@
 /* System/browser set dark mode overrides */
 
-//[data-theme="dark"] {
-@media (prefers-color-scheme: dark) {
+//[data-theme] {
+//@media (prefers-color-scheme: dark) {
+.dark {
   //variables
-  :root {
-    --contrast-color: #000;
-    --body-txt: #f4f4f4;
-    --body-gray: #2e2e2e;
-    --txt-gray: #bdbdbd;
-    --border-gray: #5e5e5e;
-    --txt-orange: #ff6d32;
-    --bg-orange: #36251e;
-    --error-red: #ff5965;
-    --error-red-t: #ff596580; //with 50% transparency
-    --bg-gray: #202020;
-  }
+  //:root {
+  --contrast-color: #000;
+  --body-txt: #f4f4f4;
+  --body-gray: #2e2e2e;
+  --txt-gray: #bdbdbd;
+  --border-gray: #5e5e5e;
+  --txt-orange: #ff6d32;
+  --bg-orange: #36251e;
+  --error-red: #ff5965;
+  --error-red-t: #ff596580; //with 50% transparency
+  --bg-gray: #202020;
+  //}
 
   //header and footer
   header .eduid-logo {
@@ -130,7 +131,7 @@
   a,
   .text-link {
     font-weight: bold;
-    letter-spacing: 0.5px;
+    //letter-spacing: 0.5px;
   }
 
   ::placeholder {

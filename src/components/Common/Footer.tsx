@@ -1,6 +1,6 @@
+import ThemeToggle from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
-import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
@@ -40,43 +40,44 @@ const Footer = (): JSX.Element => {
 
   /* Dark/light mode toggle in footer, looks for previous cookie setting, system setting and defaults to light. */
 
-  const localStorageTheme = localStorage.getItem("theme");
-  const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+  // const localStorageTheme = localStorage.getItem("theme");
+  // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-  function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
-    if (localStorageTheme !== null) {
-      return localStorageTheme;
-    }
+  // function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
+  //   if (localStorageTheme !== null) {
+  //     return localStorageTheme;
+  //   }
 
-    if (systemSettingDark.matches) {
-      return "dark";
-    }
+  //   if (systemSettingDark.matches) {
+  //     return "dark";
+  //   }
 
-    return "light";
-  }
+  //   return "light";
+  // }
 
-  let currentThemeSetting = calculateSettingAsThemeString({ localStorageTheme, systemSettingDark });
+  // let currentThemeSetting = calculateSettingAsThemeString({ localStorageTheme, systemSettingDark });
 
-  const [switchChecked, setSwitchChecked] = useState(false);
+  // const [switchChecked, setSwitchChecked] = useState(false);
 
-  const handleSwitchChange = (): void => {
-    setSwitchChecked(!switchChecked);
-    //document.getElementsByTagName("html")[0].toggleAttribute("data-theme");
+  // const handleSwitchChange = (): void => {
+  // setSwitchChecked(!switchChecked);
+  // document.getElementsByTagName("html")[0].toggleAttribute("data-theme");
+  // document.getElementsByTagName("html")[0].className = "dark";
 
-    const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+  // const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
 
-    const newCta = newTheme === "dark" ? "Change to light theme" : "Change to dark theme";
-    // use an aria-label if you are omitting text on the button
-    (document.getElementById("color-mode") as HTMLInputElement).setAttribute("aria-label", newCta);
-    // update theme attribute on HTML to switch theme in CSS
-    document.getElementsByTagName("html")[0].setAttribute("data-theme", newTheme);
+  // const newCta = newTheme === "dark" ? "Change to light theme" : "Change to dark theme";
+  // // use an aria-label if you are omitting text on the button
+  // (document.getElementById("color-mode") as HTMLInputElement).setAttribute("aria-label", newCta);
+  // // update theme attribute on HTML to switch theme in CSS
+  // document.getElementsByTagName("html")[0].setAttribute("data-theme", newTheme);
 
-    // update in local storage
-    localStorage.setItem("theme", newTheme);
+  // // update in local storage
+  // localStorage.setItem("theme", newTheme);
 
-    // update the currentThemeSetting in memory
-    currentThemeSetting = newTheme;
-  };
+  // // update the currentThemeSetting in memory
+  // currentThemeSetting = newTheme;
+  // };
 
   return (
     <footer key="0" id="footer">
@@ -87,19 +88,7 @@ const Footer = (): JSX.Element => {
         <span>&copy;2013-2025</span>
       </div>
 
-      <label className="toggle flex-between" htmlFor="color-mode">
-        <span className="text-small">
-          <FormattedMessage defaultMessage="Color mode" description="color mode toggle" />
-        </span>
-        <input
-          onChange={handleSwitchChange}
-          className="toggle-checkbox"
-          type="checkbox"
-          checked={switchChecked}
-          id="color-mode"
-        />
-        <div className="toggle-switch"></div>
-      </label>
+      <ThemeToggle />
 
       <nav>
         <ul>
@@ -108,6 +97,7 @@ const Footer = (): JSX.Element => {
               <FormattedMessage defaultMessage="Help" description="Footer help" />
             </Link>
           </li>
+
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
               <a className="link" href="#" onClick={changeLanguage}>
