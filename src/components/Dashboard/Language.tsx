@@ -1,6 +1,7 @@
 import { postUserLanguage, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import { useEffect } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { updateIntl } from "slices/Internationalisation";
@@ -9,10 +10,17 @@ import { clearNotifications } from "slices/Notifications";
 export function LanguagePreference() {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
+  const locale = useAppSelector((state) => state.intl.locale);
   const messages = LOCALIZED_MESSAGES;
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
   const language_list = Object.entries(_languages);
+
+  useEffect(() => {
+    if (personal_data?.language === undefined) {
+      postLanguage({ language: locale });
+    }
+  }, []);
 
   async function formSubmit(values: UserLanguageRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
@@ -20,6 +28,10 @@ export function LanguagePreference() {
     postData = {
       language: values.language,
     };
+    postLanguage(postData);
+  }
+
+  async function postLanguage(postData: UserLanguageRequest) {
     const response = await dispatch(postUserLanguage(postData));
 
     if (postUserLanguage.fulfilled.match(response)) {
