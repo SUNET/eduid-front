@@ -1,8 +1,10 @@
-import { fetchNext } from "apis/eduidLogin";
+import { fetchLogout, fetchNext } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
+import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { MultiFactorPassword } from "./MultiFactorPassword";
@@ -31,6 +33,7 @@ function Login(): JSX.Element {
   let this_device = useAppSelector((state) => state.login.this_device);
   let remember_me = useAppSelector((state) => state.login.remember_me);
   let ref = useAppSelector((state) => state.login.ref);
+  const error_state = useAppSelector((state) => state.login.error)
   const intl = useIntl();
 
   useEffect(() => {
@@ -84,6 +87,7 @@ function Login(): JSX.Element {
           next_page === "MFA" ||
           next_page === "PASSWORD") && <RememberMeCheckbox />
       }
+      {error_state === "login.user_terminated" && <UserTerminated />}
     </React.Fragment>
   );
 }
@@ -101,3 +105,48 @@ function RenderFinished(): JSX.Element {
   return ComponentToRender;
 }
 export default Login;
+
+function UserTerminated(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const error_state = useAppSelector((state) => state.login.error)
+
+  useEffect(() => {
+    if (error_state) {
+      dispatch(fetchLogout({}))
+    }
+  }, [error_state])
+
+  function reset_password() {
+    dispatch(clearNotifications());
+    navigate("/reset-password");
+  }
+
+  function return_to_start() {
+    dispatch(clearNotifications());
+    navigate("/");
+  }
+
+  return (
+    <React.Fragment>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Account terminated" description="Account terminated page" />
+        </h1>
+      </section>
+      <section>
+        <FormattedMessage defaultMessage="This account has been terminated. To re-activate the account reset the password." description="Account terminated list alternatives - description" />
+      </section>
+      <div className="flex-between">
+        <div className="buttons">
+        <EduIDButton onClick={() => reset_password()} buttonstyle="primary">
+          <FormattedMessage defaultMessage="Reset password" description="reset password alternative - button" />
+        </EduIDButton>
+        <EduIDButton onClick={() => return_to_start()} buttonstyle="secondary">
+          <FormattedMessage defaultMessage="Return to start" description="return to start - button" />
+        </EduIDButton>
+        </div>
+      </div>
+    </React.Fragment>
+  )
+}

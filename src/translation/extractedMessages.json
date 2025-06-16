@@ -536,6 +536,10 @@
     "developer_comment": "Registration confirm password",
     "string": "Register: Suggested password"
   },
+  "9rjfbq": {
+    "developer_comment": "reset password alternative - button",
+    "string": "Reset password"
+  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -2710,6 +2714,10 @@
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
   },
+  "ogqQ93": {
+    "developer_comment": "return to start - button",
+    "string": "Return to start"
+  },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
     "string": "How to link ORCID with eduID:"
@@ -2898,6 +2906,10 @@
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Are you sure you want to remove your security key?"
   },
+  "qgcUTa": {
+    "developer_comment": "Account terminated page",
+    "string": "Account terminated"
+  },
   "qkwsql": {
     "developer_comment": "Login MFA",
     "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
@@ -2909,6 +2921,10 @@
   "qn24rz": {
     "developer_comment": "Reset Password email link sent",
     "string": "If you haven't receive the code, please cancel the process and restart from the beginning."
+  },
+  "qphlGq": {
+    "developer_comment": "Account terminated list alternatives - description",
+    "string": "This account has been terminated. To re-activate the account reset the password."
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",

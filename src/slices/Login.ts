@@ -42,6 +42,7 @@ interface LoginState {
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
   service_info?: ServiceInfo;
+  error?: string
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -50,6 +51,15 @@ export const initialState: LoginState = {
   tou: { available_versions: Object.keys(ToUs) },
   authn_options: {},
 };
+
+interface ActionWithErrorMessage {
+  payload: {
+    error: string;
+    payload: {
+      message: string;
+    }
+  }
+}
 
 export const loginSlice = createSlice({
   name: "login",
@@ -148,8 +158,14 @@ export const loginSlice = createSlice({
         if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
         state.fetching_next = false;
         state.service_info = action.payload.service_info;
+        state.error = undefined;
       })
-      .addCase(fetchNext.rejected, (state) => {
+      .addCase(fetchNext.rejected, (state, action) => {
+        if ((action as ActionWithErrorMessage).payload.error
+          && (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
+        ) {
+            state.error = (action as ActionWithErrorMessage).payload.payload.message;
+          }
         state.fetching_next = false;
       })
       .addCase(fetchNewDevice.fulfilled, (state, action) => {
