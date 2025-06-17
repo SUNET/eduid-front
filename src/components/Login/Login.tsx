@@ -33,7 +33,7 @@ function Login(): JSX.Element {
   let this_device = useAppSelector((state) => state.login.this_device);
   let remember_me = useAppSelector((state) => state.login.remember_me);
   let ref = useAppSelector((state) => state.login.ref);
-  const error_state = useAppSelector((state) => state.login.error)
+  const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
 
   useEffect(() => {
@@ -109,13 +109,13 @@ export default Login;
 function UserTerminated(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const error_state = useAppSelector((state) => state.login.error)
+  const error_state = useAppSelector((state) => state.login.error);
 
   useEffect(() => {
     if (error_state) {
-      dispatch(fetchLogout({}))
+      dispatch(fetchLogout({}));
     }
-  }, [error_state])
+  }, [error_state]);
 
   function reset_password() {
     dispatch(clearNotifications());
@@ -129,24 +129,34 @@ function UserTerminated(): JSX.Element {
 
   return (
     <React.Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage defaultMessage="Account terminated" description="Account terminated page" />
-        </h1>
-      </section>
       <section>
-        <FormattedMessage defaultMessage="This account has been terminated. To re-activate the account reset the password." description="Account terminated list alternatives - description" />
-      </section>
-      <div className="flex-between">
-        <div className="buttons">
-        <EduIDButton onClick={() => reset_password()} buttonstyle="link">
-          <FormattedMessage defaultMessage="Reset password" description="reset password alternative - button" />
-        </EduIDButton>
-        <EduIDButton onClick={() => return_to_start()} buttonstyle="link">
-          <FormattedMessage defaultMessage="Return to start" description="return to start - button" />
-        </EduIDButton>
+        <h1>
+          <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
+        </h1>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
+            description="Account terminated - paragraph"
+          />
+        </p>
+
+        <div>
+          <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
+            <FormattedMessage
+              defaultMessage="Go to reset password page"
+              description="Account terminated - reset password link"
+            />
+          </EduIDButton>
         </div>
-      </div>
+
+        <p className="text-small">
+          <FormattedMessage
+            defaultMessage="You may also login to another account or register a new account by using the controls in the header."
+            description="Account terminated - help text"
+          />
+        </p>
+      </section>
     </React.Fragment>
-  )
+  );
 }
