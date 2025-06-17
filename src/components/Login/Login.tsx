@@ -113,7 +113,10 @@ function UserTerminated(): JSX.Element {
 
   useEffect(() => {
     if (error_state) {
+      // make sure the backend idp logs out the user from the session to get out of a stuck state
       dispatch(fetchLogout({}));
+      // clear localStorage so that the same user is not used again
+      window.localStorage.clear()
     }
   }, [error_state]);
 
