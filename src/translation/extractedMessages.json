@@ -39,6 +39,10 @@
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
   },
+  "/JIH87": {
+    "developer_comment": "Account terminated - paragraph",
+    "string": "This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
+  },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
     "string": "Generate a new captcha image"
@@ -854,6 +858,10 @@
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
+  },
+  "Hi6qxM": {
+    "developer_comment": "Account terminated - heading",
+    "string": "Account terminated"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -2590,6 +2598,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
+  "mwt1Dw": {
+    "developer_comment": "Account terminated - reset password link",
+    "string": "Go to reset password page"
+  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Delete eduID"
@@ -3030,6 +3042,10 @@
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Security key: external device such as your USB security key."
+  },
+  "sQKNVC": {
+    "developer_comment": "Account terminated - help text",
+    "string": "You may also login to another account or register a new account by using the controls in the header."
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",

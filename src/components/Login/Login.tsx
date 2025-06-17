@@ -1,8 +1,10 @@
-import { fetchNext } from "apis/eduidLogin";
+import { fetchLogout, fetchNext } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
+import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { MultiFactorPassword } from "./MultiFactorPassword";
@@ -31,6 +33,7 @@ function Login(): JSX.Element {
   let this_device = useAppSelector((state) => state.login.this_device);
   let remember_me = useAppSelector((state) => state.login.remember_me);
   let ref = useAppSelector((state) => state.login.ref);
+  const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
 
   useEffect(() => {
@@ -50,7 +53,7 @@ function Login(): JSX.Element {
     }
 
     // Ask the backend what to do
-    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined) {
+    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined && !error_state) {
       dispatch(fetchNext({ ref, this_device, remember_me }));
     }
   }, [base_url, ref, this_device, remember_me, next_page, params]);
@@ -84,6 +87,7 @@ function Login(): JSX.Element {
           next_page === "MFA" ||
           next_page === "PASSWORD") && <RememberMeCheckbox />
       }
+      {error_state === "login.user_terminated" && <UserTerminated />}
     </React.Fragment>
   );
 }
@@ -101,3 +105,57 @@ function RenderFinished(): JSX.Element {
   return ComponentToRender;
 }
 export default Login;
+
+function UserTerminated(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const error_state = useAppSelector((state) => state.login.error);
+
+  useEffect(() => {
+    // If we have an error and localStorage is not empty, we need to logout the user from the session
+    if (error_state && window.localStorage.length > 0) {
+      // make sure the backend idp logs out the user from the session to get out of a stuck state
+      dispatch(fetchLogout({}));
+      // clear localStorage so that the same user is not used again
+      window.localStorage.clear()
+    }
+  }, [error_state]);
+
+  function reset_password() {
+    dispatch(clearNotifications());
+    navigate("/reset-password");
+  }
+
+  return (
+    <React.Fragment>
+      <section>
+        <h1>
+          <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
+        </h1>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
+            description="Account terminated - paragraph"
+          />
+        </p>
+
+        <div>
+          <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
+            <FormattedMessage
+              defaultMessage="Go to reset password page"
+              description="Account terminated - reset password link"
+            />
+          </EduIDButton>
+        </div>
+
+        <p className="text-small">
+          <FormattedMessage
+            defaultMessage="You may also login to another account or register a new account by using the controls in the header."
+            description="Account terminated - help text"
+          />
+        </p>
+      </section>
+    </React.Fragment>
+  );
+}
