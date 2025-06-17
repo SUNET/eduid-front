@@ -39,6 +39,10 @@
     "developer_comment": "security webauthn credential type",
     "string": "Säkerhetsnyckel"
   },
+  "/JIH87": {
+    "developer_comment": "Account terminated - paragraph",
+    "string": "Det här kontot har nyligen raderats och kan inte användas för inloggning. Under en kort tid därefter kan kontot återupptas genom att återställa lösenordet med hjälp av länken nedan."
+  },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
     "string": "Generera en ny bild"
@@ -854,6 +858,10 @@
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ lägg till fler"
+  },
+  "Hi6qxM": {
+    "developer_comment": "Account terminated - heading",
+    "string": "Raderat konto"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -2590,6 +2598,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Stäng"
   },
+  "mwt1Dw": {
+    "developer_comment": "Account terminated - reset password link",
+    "string": "Till återställ lösenord"
+  },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
     "string": "Radera eduID"
@@ -3030,6 +3042,10 @@
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB-säkerhetsnyckel,"
+  },
+  "sQKNVC": {
+    "developer_comment": "Account terminated - help text",
+    "string": "Du kan även logga in med ett annat konto eller skapa ett nytt konto med hjälp av kontrollerna i sidhuvudet."
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
