@@ -139,10 +139,10 @@ function UserTerminated(): JSX.Element {
       </section>
       <div className="flex-between">
         <div className="buttons">
-        <EduIDButton onClick={() => reset_password()} buttonstyle="primary">
+        <EduIDButton onClick={() => reset_password()} buttonstyle="link">
           <FormattedMessage defaultMessage="Reset password" description="reset password alternative - button" />
         </EduIDButton>
-        <EduIDButton onClick={() => return_to_start()} buttonstyle="secondary">
+        <EduIDButton onClick={() => return_to_start()} buttonstyle="link">
           <FormattedMessage defaultMessage="Return to start" description="return to start - button" />
         </EduIDButton>
         </div>
