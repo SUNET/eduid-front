@@ -53,7 +53,7 @@ function Login(): JSX.Element {
     }
 
     // Ask the backend what to do
-    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined) {
+    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined && !error_state) {
       dispatch(fetchNext({ ref, this_device, remember_me }));
     }
   }, [base_url, ref, this_device, remember_me, next_page, params]);
@@ -112,7 +112,8 @@ function UserTerminated(): JSX.Element {
   const error_state = useAppSelector((state) => state.login.error);
 
   useEffect(() => {
-    if (error_state) {
+    // If we have an error and localStorage is not empty, we need to logout the user from the session
+    if (error_state && window.localStorage.length > 0) {
       // make sure the backend idp logs out the user from the session to get out of a stuck state
       dispatch(fetchLogout({}));
       // clear localStorage so that the same user is not used again
