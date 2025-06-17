@@ -122,11 +122,6 @@ function UserTerminated(): JSX.Element {
     navigate("/reset-password");
   }
 
-  function return_to_start() {
-    dispatch(clearNotifications());
-    navigate("/");
-  }
-
   return (
     <React.Fragment>
       <section>
