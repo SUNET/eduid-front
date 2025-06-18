@@ -1,10 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { eidasVerifyIdentity } from "apis/eduidEidas";
-import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
-import { ActionStatus, getAuthnStatus, removeIdentity } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
@@ -17,6 +13,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import { eidasApi } from "services/eidas";
+import { frejaeIDApi } from "services/frejaeID";
+import personalDataApi from "services/personalData";
+import { ActionStatus, securityApi } from "services/security";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
@@ -163,6 +163,9 @@ function VerifiedIdentitiesTable(): JSX.Element {
   const [showConfirmRemoveIdentityVerificationModal, setShowConfirmRemoveIdentityVerificationModal] = useState(false);
   const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
+  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [getAuthnStatus_trigger] = securityApi.useLazyGetAuthnStatusQuery();
+  const [removeIdentity_trigger] = securityApi.useLazyRemoveIdentityQuery();
 
   useEffect(() => {
     if (frontend_action === "removeIdentity" && frontend_state) {
@@ -174,9 +177,9 @@ function VerifiedIdentitiesTable(): JSX.Element {
   async function handleRemoveIdentity(identityType: string) {
     setShowConfirmRemoveIdentityVerificationModal(false);
     if (identityType) {
-      const response = await dispatch(removeIdentity({ identity_type: identityType }));
-      if (removeIdentity.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
+      const response = await removeIdentity_trigger({ identity_type: identityType });
+      if (response.isSuccess) {
+        personal_data_refetch();
       } else {
         dispatch(
           authnSlice.actions.setFrontendActionAndState({
@@ -192,12 +195,18 @@ function VerifiedIdentitiesTable(): JSX.Element {
     setIdentityType(identityType);
     // Test if the user can directly execute the action or a re-auth security zone will be required
     // If no re-auth is required, then show the modal to confirm the removal
-    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
-    const response = await dispatch(getAuthnStatus({ frontend_action: "removeIdentity" }));
-    if (getAuthnStatus.fulfilled.match(response) && response.payload.authn_status === ActionStatus.OK) {
+    // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
+    const response = await getAuthnStatus_trigger({ frontend_action: "removeIdentity" });
+    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveIdentityVerificationModal(true);
     } else {
-      handleRemoveIdentity(identityType);
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "removeIdentity",
+          frontend_state: identityType,
+        })
+      );
+      dispatch(authnSlice.actions.setReAuthenticate(true));
     }
   }
 
@@ -394,13 +403,13 @@ function AccordionItemSwedish(): JSX.Element | null {
 }
 
 function AccordionItemEu(): JSX.Element | null {
-  const dispatch = useAppDispatch();
+  const [eidasVerifyIdentity_trigger] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   async function handleOnClick() {
-    const response = await dispatch(eidasVerifyIdentity({ method: "eidas" }));
-    if (eidasVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await eidasVerifyIdentity_trigger({ method: "eidas" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }
@@ -441,12 +450,13 @@ function AccordionItemEu(): JSX.Element | null {
 function AccordionItemWorld(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
+  const [frejaeIDVerifyIdentity_trigger] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 
   async function handleOnClick() {
-    const response = await dispatch(frejaeIDVerifyIdentity({ method: "freja_eid" }));
-    if (frejaeIDVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await frejaeIDVerifyIdentity_trigger({ method: "freja_eid" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

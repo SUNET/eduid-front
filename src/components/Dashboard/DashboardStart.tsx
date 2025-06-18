@@ -1,9 +1,9 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { fetchLetterProofingState } from "apis/eduidLetterProofing";
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { letterProofingApi } from "services/letterProofing";
 import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
@@ -18,7 +18,7 @@ export default function Start(): JSX.Element {
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useAppDispatch();
+  const [letterProofingState_trigger] = letterProofingApi.useLazyLetterProfingStateQuery();
   let username;
 
   if (!chosen_given_name && !given_name && emails.length > 0) {
@@ -38,7 +38,7 @@ export default function Start(): JSX.Element {
 
   useEffect(() => {
     if (isLoaded) {
-      dispatch(fetchLetterProofingState());
+      letterProofingState_trigger();
     }
   }, [isLoaded]);
 

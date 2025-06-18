@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { authnGetStatus } from "apis/eduidAuthn";
+import authnApi from "services/authn";
 
 interface FrontendActionAndState {
   frontend_action: string;
@@ -32,10 +32,10 @@ const authnSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(authnGetStatus.fulfilled, (state, action) => {
+    builder.addMatcher(authnApi.endpoints.authnGetStatus.matchFulfilled, (state, action) => {
       state.frontend_action = undefined;
       state.frontend_state = undefined;
-      state.response = action.payload;
+      state.response = action.payload.payload;
     });
   },
 });

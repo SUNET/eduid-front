@@ -1,11 +1,11 @@
-import { authnGetStatus } from "apis/eduidAuthn";
-import { bankIDGetStatus } from "apis/eduidBankid";
-import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
-import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import authnApi from "services/authn";
+import { bankIDApi } from "services/bankid";
+import { eidasApi, GetStatusResponse } from "services/eidas";
+import { frejaeIDApi } from "services/frejaeID";
 import { showNotification } from "slices/Notifications";
 
 // URL parameters passed to this component
@@ -19,6 +19,10 @@ export function ExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const app_loaded = useAppSelector((state) => state.config.is_app_loaded);
+  const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
+  const [bankIDGetStatus_trigger] = bankIDApi.useLazyBankIDGetStatusQuery();
+  const [eidasGetStatus_trigger] = eidasApi.useLazyEidasGetStatusQuery();
+  const [frejaeIDGetStatus_trigger] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
@@ -50,32 +54,31 @@ export function ExternalReturnHandler() {
   }
 
   async function fetchEidasStatus(authn_id: string) {
-    const response = await dispatch(eidasGetStatus({ authn_id: authn_id }));
-    if (eidasGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+    const response = await eidasGetStatus_trigger({ authn_id: authn_id });
+    if (response.isSuccess) {
+      processStatus(response.data.payload);
     }
   }
 
   async function fetchFrejaeIDStatus(authn_id: string) {
-    const response = await dispatch(frejaeIDGetStatus({ authn_id: authn_id }));
-    if (frejaeIDGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+    const response = await frejaeIDGetStatus_trigger({ authn_id: authn_id });
+    if (response.isSuccess) {
+      processStatus(response.data.payload);
     }
   }
 
   async function fetchBankIDStatus(authn_id: string) {
-    const response = await dispatch(bankIDGetStatus({ authn_id: authn_id }));
-    if (bankIDGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+    const response = await bankIDGetStatus_trigger({ authn_id: authn_id });
+    if (response.isSuccess) {
+      processStatus(response.data.payload);
     }
   }
 
-  async function fetchAuthStatus(authn_id: string) {
-    const response = await dispatch(authnGetStatus({ authn_id: authn_id }));
-    if (authnGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+  useEffect(() => {
+    if (authnGetStatus.data && !authnGetStatus.isError && !authnGetStatus.isLoading) {
+      processStatus(authnGetStatus.data.payload)
     }
-  }
+  }, [authnGetStatus.data, authnGetStatus.isError, authnGetStatus.isLoading])
 
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas" && app_loaded) {
@@ -88,7 +91,7 @@ export function ExternalReturnHandler() {
       fetchBankIDStatus(params.authn_id).catch(console.error);
     }
     if (params.authn_id && params.app_name === "authn" && app_loaded) {
-      fetchAuthStatus(params.authn_id).catch(console.error);
+      authnGetStatus_trigger({ authn_id: params.authn_id });
     }
   }, [params, app_loaded]);
 

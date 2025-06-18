@@ -253,7 +253,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
 
   function handleLoginOnClick() {
     if (data && data.login_ref) {
-      dispatch(loginSlice.actions.callLoginNext);
+      dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
       navigate(`/login/${data.login_ref}`);
     }

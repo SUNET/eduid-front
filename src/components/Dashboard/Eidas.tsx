@@ -1,13 +1,12 @@
-import { eidasVerifyIdentity } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useAppDispatch } from "eduid-hooks";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { eidasApi } from "services/eidas";
 
 function Eidas(): JSX.Element {
-  const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [eidasVerifyIdentity_trigger] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
@@ -55,10 +54,10 @@ function Eidas(): JSX.Element {
   );
 
   async function useFrejaeID() {
-    const response = await dispatch(eidasVerifyIdentity({ method: "freja" }));
-    if (eidasVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await eidasVerifyIdentity_trigger({ method: "freja" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

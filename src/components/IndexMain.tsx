@@ -38,13 +38,13 @@ export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const showAuthenticateModal = location.pathname.startsWith("/profile");
+  const isUserDashboard = location.pathname.startsWith("/profile");
   const isIndex = location.pathname === "/";
 
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
-
+  
   return (
     <React.StrictMode>
       <div className={isIndex ? "page-wrapper landing" : "page-wrapper"}>
@@ -91,7 +91,7 @@ export function IndexMain(): JSX.Element {
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </section>
-              {showAuthenticateModal && <AuthenticateModal />}
+              {isUserDashboard && <AuthenticateModal />}
             </Splash>
           </ErrorBoundary>
         </main>

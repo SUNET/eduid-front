@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
+import { createSlice } from "@reduxjs/toolkit";
+import { letterProofingApi } from "services/letterProofing";
 
 export interface LetterProofingState {
   code?: string;
@@ -18,21 +18,21 @@ const letterProofingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchLetterProofingState.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
-      state.letter_expires_in_days = action.payload.letter_expires_in_days;
-      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
-      state.letter_sent = action.payload.letter_sent;
-      state.letter_expires = action.payload.letter_expires;
-      state.letter_expired = action.payload.letter_expired;
+    builder.addMatcher(letterProofingApi.endpoints.letterProfingState.matchFulfilled, (state, action) => {
+      state.letter_expires_in_days = action.payload.payload.letter_expires_in_days;
+      state.letter_sent_days_ago = action.payload.payload.letter_sent_days_ago;
+      state.letter_sent = action.payload.payload.letter_sent;
+      state.letter_expires = action.payload.payload.letter_expires;
+      state.letter_expired = action.payload.payload.letter_expired;
     });
-    builder.addCase(postRequestLetter.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
-      state.letter_sent = action.payload.letter_sent;
-      state.letter_expires = action.payload.letter_expires;
-      state.letter_expired = action.payload.letter_expired;
-      state.letter_expires_in_days = action.payload.letter_expires_in_days;
-      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
+    builder.addMatcher(letterProofingApi.endpoints.requestLetter.matchFulfilled, (state, action) => {
+      state.letter_sent = action.payload.payload.letter_sent;
+      state.letter_expires = action.payload.payload.letter_expires;
+      state.letter_expired = action.payload.payload.letter_expired;
+      state.letter_expires_in_days = action.payload.payload.letter_expires_in_days;
+      state.letter_sent_days_ago = action.payload.payload.letter_sent_days_ago;
     });
-    builder.addCase(confirmLetterCode.fulfilled, (state) => {
+    builder.addMatcher(letterProofingApi.endpoints.confirmLetterCode.matchFulfilled, (state) => {
       state.letter_sent = undefined;
       state.letter_expires = undefined;
       state.letter_expired = undefined;
