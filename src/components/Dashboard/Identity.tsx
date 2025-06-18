@@ -1,7 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
@@ -15,6 +14,7 @@ import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import { eidasApi } from "services/eidas";
+import { frejaeIDApi } from "services/frejaeID";
 import personalDataApi from "services/personalData";
 import { ActionStatus, securityApi } from "services/security";
 import authnSlice from "slices/Authn";
@@ -450,12 +450,13 @@ function AccordionItemEu(): JSX.Element | null {
 function AccordionItemWorld(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
+  const [frejaeIDVerifyIdentity_trigger] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 
   async function handleOnClick() {
-    const response = await dispatch(frejaeIDVerifyIdentity({ method: "freja_eid" }));
-    if (frejaeIDVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await frejaeIDVerifyIdentity_trigger({ method: "freja_eid" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

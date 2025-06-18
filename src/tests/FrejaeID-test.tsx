@@ -1,6 +1,6 @@
-import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
+import { VerifyIdentityRequest, VerifyIdentityResponse } from "services/frejaeID";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
