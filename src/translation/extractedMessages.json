@@ -2424,6 +2424,10 @@
     "developer_comment": "security description name",
     "string": "Name:"
   },
+  "l9zYOT": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
+  },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
@@ -3042,10 +3046,6 @@
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Security key: external device such as your USB security key."
-  },
-  "sQKNVC": {
-    "developer_comment": "Account terminated - help text",
-    "string": "You may also login to another account or register a new account by using the controls in the header."
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
