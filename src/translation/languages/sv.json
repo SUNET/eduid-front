@@ -2424,6 +2424,10 @@
     "developer_comment": "security description name",
     "string": "Namn:"
   },
+  "l9zYOT": {
+    "developer_comment": "Account terminated - help text",
+    "string": "Gå till startsidan genom att klicka eduIDs logo i sidhuvudet för att logga in med ett annat konto, eller skapa ett nytt konto med knappen Registrera."
+  },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "Ett formulär för att uppdatera namn och visningsnamn genom att klicka på länken \"ändra\", där tillgängliga inställningar beror på om din identitet är verifierad."
@@ -3042,10 +3046,6 @@
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
     "string": "Säkerhetsnyckel: extern enhet som t.ex. din USB-säkerhetsnyckel,"
-  },
-  "sQKNVC": {
-    "developer_comment": "Account terminated - help text",
-    "string": "Du kan även logga in med ett annat konto eller skapa ett nytt konto med hjälp av kontrollerna i sidhuvudet."
   },
   "sUoezh": {
     "developer_comment": "eidas if personal number - paragraph",
