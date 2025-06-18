@@ -1,7 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { eidasVerifyIdentity } from "apis/eduidEidas";
 import { frejaeIDVerifyIdentity } from "apis/eduidFrejaeID";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
@@ -15,6 +14,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
+import { eidasApi } from "services/eidas";
 import personalDataApi from "services/personalData";
 import { ActionStatus, securityApi } from "services/security";
 import authnSlice from "slices/Authn";
@@ -403,13 +403,13 @@ function AccordionItemSwedish(): JSX.Element | null {
 }
 
 function AccordionItemEu(): JSX.Element | null {
-  const dispatch = useAppDispatch();
+  const [eidasVerifyIdentity_trigger] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   async function handleOnClick() {
-    const response = await dispatch(eidasVerifyIdentity({ method: "eidas" }));
-    if (eidasVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await eidasVerifyIdentity_trigger({ method: "eidas" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

@@ -1,10 +1,10 @@
-import { bankIDMfaAuthenticate } from "apis/eduidBankid";
-import { eidasMfaAuthenticate } from "apis/eduidEidas";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select from "react-select";
+import { bankIDApi } from "services/bankid";
+import { eidasApi } from "services/eidas";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
@@ -25,9 +25,10 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);
-  const dispatch = useAppDispatch();
   const frontend_action = location.pathname.includes("login") ? "loginMfaAuthn" : "resetpwMfaAuthn";
   const frontend_state = location.pathname.includes("login") ? ref : email_code;
+  const [ bankIDMfaAuthenticate_trigger ] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
+  const [ eidasMfaAuthenticate_trigger ] = eidasApi.useLazyEidasMfaAuthenticateQuery();
 
   const placeholder = intl.formatMessage({
     id: "placeholder.recovery_option",
@@ -57,23 +58,19 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
   ];
 
   async function handleOnClickBankID() {
-    const response = await dispatch(
-      bankIDMfaAuthenticate({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state })
-    );
-    if (bankIDMfaAuthenticate.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await bankIDMfaAuthenticate_trigger({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }
 
   async function handleOnClickFrejaeID() {
-    const response = await dispatch(
-      eidasMfaAuthenticate({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state })
-    );
-    if (eidasMfaAuthenticate.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await eidasMfaAuthenticate_trigger({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

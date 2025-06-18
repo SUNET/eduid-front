@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { eidasGetStatus } from "apis/eduidEidas";
 import {
   CaptchaRequest,
   ExtraSecurityAlternatives,
@@ -10,7 +9,8 @@ import {
   verifyEmailLink,
 } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
-import { bankIDGetStatus } from "apis/eduidBankid";
+import { bankIDApi } from "services/bankid";
+import { eidasApi } from "services/eidas";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 export type Phone = { index: string; number: string; phone_code: string };
@@ -106,12 +106,6 @@ export const resetPasswordSlice = createSlice({
         state.suggested_password = action.payload.suggested_password;
         state.email_code = action.payload.email_code;
       })
-      .addCase(eidasGetStatus.fulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.status;
-      })
-      .addCase(bankIDGetStatus.fulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.status;
-      })
       .addCase(sendCaptchaResponse.fulfilled, (state, action) => {
         state.captcha = action.payload;
       })
@@ -125,6 +119,12 @@ export const resetPasswordSlice = createSlice({
         if (action.payload?.payload?.message === "resetpw.captcha-already-completed") {
           state.captcha_completed = true;
         }
+      })
+      .addMatcher(eidasApi.endpoints.eidasGetStatus.matchFulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.payload.status;
+      })
+      .addMatcher(bankIDApi.endpoints.bankIDGetStatus.matchFulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.payload.status;
       });
   },
 });

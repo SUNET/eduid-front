@@ -1,11 +1,11 @@
-import { bankIDGetStatus } from "apis/eduidBankid";
-import { GetStatusResponse, eidasGetStatus } from "apis/eduidEidas";
 import { frejaeIDGetStatus } from "apis/eduidFrejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import authnApi from "services/authn";
+import { bankIDApi } from "services/bankid";
+import { eidasApi, GetStatusResponse } from "services/eidas";
 import { showNotification } from "slices/Notifications";
 
 // URL parameters passed to this component
@@ -19,7 +19,9 @@ export function ExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const app_loaded = useAppSelector((state) => state.config.is_app_loaded);
-  const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery()
+  const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
+  const [ bankIDGetStatus_trigger ] = bankIDApi.useLazyBankIDGetStatusQuery();
+  const [ eidasGetStatus_trigger ] = eidasApi.useLazyEidasGetStatusQuery();
 
   function processStatus(response: GetStatusResponse) {
     const status = response;
@@ -51,9 +53,9 @@ export function ExternalReturnHandler() {
   }
 
   async function fetchEidasStatus(authn_id: string) {
-    const response = await dispatch(eidasGetStatus({ authn_id: authn_id }));
-    if (eidasGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+    const response = await eidasGetStatus_trigger({ authn_id: authn_id });
+    if (response.isSuccess) {
+      processStatus(response.data.payload);
     }
   }
 
@@ -65,9 +67,9 @@ export function ExternalReturnHandler() {
   }
 
   async function fetchBankIDStatus(authn_id: string) {
-    const response = await dispatch(bankIDGetStatus({ authn_id: authn_id }));
-    if (bankIDGetStatus.fulfilled.match(response)) {
-      processStatus(response.payload);
+    const response = await bankIDGetStatus_trigger({ authn_id: authn_id });
+    if (response.isSuccess) {
+      processStatus(response.data.payload);
     }
   }
 

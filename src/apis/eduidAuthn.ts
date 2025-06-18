@@ -4,8 +4,8 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
+import { GetStatusRequest, GetStatusResponse } from "services/eidas";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
 type DispatchWithAuthn = EduIDAppDispatch;
 type StateWithAuthn = EduIDAppRootState;

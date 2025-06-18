@@ -1,5 +1,3 @@
-import { bankIDVerifyCredential } from "apis/eduidBankid";
-import { eidasVerifyCredential, WebauthnMethods } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -9,6 +7,8 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
+import { bankIDApi } from "services/bankid";
+import { eidasApi, WebauthnMethods } from "services/eidas";
 import { ActionStatus, CredentialType, securityApi } from "services/security";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -48,6 +48,8 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [beginRegisterWebauthn_trigger] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn_trigger] = securityApi.useLazyRegisterWebauthnQuery();
   const [getAuthnStatus_trigger] = securityApi.useLazyGetAuthnStatusQuery();
+  const [bankIDVerifyCredential_trigger] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
+  const [eidasVerifyCredential_trigger] = eidasApi.useLazyEidasVerifyCredentialQuery()
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -131,24 +133,23 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   });
 
   const tokenTypeMap = {
-    freja: eidasVerifyCredential,
-    bankid: bankIDVerifyCredential,
-    eidas: eidasVerifyCredential,
+    freja: eidasVerifyCredential_trigger,
+    bankid: bankIDVerifyCredential_trigger,
+    eidas: eidasVerifyCredential_trigger,
   };
 
   async function handleVerificationWebauthnToken(token: string, method: WebauthnMethods) {
     const verifyAction = tokenTypeMap[method];
-    const response = await dispatch(
+    const response = await 
       verifyAction({
         credential_id: token,
         method,
-      })
-    );
-    if (verifyAction.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+      });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
-    } else if (verifyAction.rejected.match(response)) {
+    } else if (response.isError) {
       const VerifyCredentialResponse: any = response;
       setShowVerifyWebauthnModal(false);
       dispatch(
