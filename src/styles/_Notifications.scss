@@ -3,6 +3,10 @@
 // Top notification bar
 .notifications-area {
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  opacity: 0.95;
 }
 
 .alert.alert-dismissible {

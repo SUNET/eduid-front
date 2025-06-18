@@ -1,10 +1,13 @@
-import { fetchNext } from "apis/eduidLogin";
+import { fetchLogout, fetchNext } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
+import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
+import { MultiFactorPassword } from "./MultiFactorPassword";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
@@ -30,6 +33,7 @@ function Login(): JSX.Element {
   let this_device = useAppSelector((state) => state.login.this_device);
   let remember_me = useAppSelector((state) => state.login.remember_me);
   let ref = useAppSelector((state) => state.login.ref);
+  const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
 
   useEffect(() => {
@@ -49,7 +53,7 @@ function Login(): JSX.Element {
     }
 
     // Ask the backend what to do
-    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined) {
+    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined && !error_state) {
       dispatch(fetchNext({ ref, this_device, remember_me }));
     }
   }, [base_url, ref, this_device, remember_me, next_page, params]);
@@ -61,6 +65,8 @@ function Login(): JSX.Element {
        */
       if (next_page === "USERNAMEPASSWORD") {
         navigate(`/login/password/${ref}`);
+      } else if (next_page === "PASSWORD") {
+        navigate(`/login/mfa/password/${ref}`);
       } else {
         navigate(`/login/${ref}`);
       }
@@ -74,12 +80,14 @@ function Login(): JSX.Element {
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}
       {next_page === "MFA" && <MultiFactorAuth />}
+      {next_page === "PASSWORD" && <MultiFactorPassword />}
       {next_page === "FINISHED" && <RenderFinished />}
       {
-        /* show remember me toggle only for login password page */ next_page === "USERNAMEPASSWORD" && (
-          <RememberMeCheckbox />
-        )
+        /* show remember me toggle only for login password and MFA page */ (next_page === "USERNAMEPASSWORD" ||
+          next_page === "MFA" ||
+          next_page === "PASSWORD") && <RememberMeCheckbox />
       }
+      {error_state === "login.user_terminated" && <UserTerminated />}
     </React.Fragment>
   );
 }
@@ -97,3 +105,57 @@ function RenderFinished(): JSX.Element {
   return ComponentToRender;
 }
 export default Login;
+
+function UserTerminated(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const error_state = useAppSelector((state) => state.login.error);
+
+  useEffect(() => {
+    // If we have an error and localStorage is not empty, we need to logout the user from the session
+    if (error_state && window.localStorage.length > 0) {
+      // make sure the backend idp logs out the user from the session to get out of a stuck state
+      dispatch(fetchLogout({}));
+      // clear localStorage so that the same user is not used again
+      window.localStorage.clear();
+    }
+  }, [error_state]);
+
+  function reset_password() {
+    dispatch(clearNotifications());
+    navigate("/reset-password");
+  }
+
+  return (
+    <React.Fragment>
+      <section>
+        <h1>
+          <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
+        </h1>
+
+        <p>
+          <FormattedMessage
+            defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
+            description="Account terminated - paragraph"
+          />
+        </p>
+
+        <div>
+          <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
+            <FormattedMessage
+              defaultMessage="Go to reset password page"
+              description="Account terminated - reset password link"
+            />
+          </EduIDButton>
+        </div>
+
+        <p className="text-small">
+          <FormattedMessage
+            defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
+            description="Account terminated - help text"
+          />
+        </p>
+      </section>
+    </React.Fragment>
+  );
+}

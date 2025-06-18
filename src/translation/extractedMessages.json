@@ -3,10 +3,6 @@
     "developer_comment": "when use eduID - list item 3",
     "string": "change university,"
   },
-  "+3ABAe": {
-    "developer_comment": "MFA Freja help text",
-    "string": "Requires a confirmed Swedish national identity number."
-  },
   "+9NBhe": {
     "developer_comment": "explanation text for letter proofing",
     "string": "If you are registered at your current address"
@@ -42,6 +38,10 @@
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
+  },
+  "/JIH87": {
+    "developer_comment": "Account terminated - paragraph",
+    "string": "This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
   },
   "/Nnkxj": {
     "developer_comment": "captcha img change",
@@ -98,6 +98,10 @@
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
+  },
+  "0RpqP8": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Choose a method to authenticate yourself, ensuring only you can access your eduID."
   },
   "0S7EtW": {
     "developer_comment": "not found paragraph",
@@ -329,10 +333,6 @@
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
-  },
-  "5iUbyQ": {
-    "developer_comment": "Security key toggle",
-    "string": "Always use a second factor (2FA) to log in"
   },
   "5l4hxp": {
     "string": "Log in on another device"
@@ -775,10 +775,6 @@
     "developer_comment": "MFA paragraph",
     "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID."
   },
-  "Fjbcnk": {
-    "developer_comment": "profile email display no data",
-    "string": "no email added"
-  },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset Password: Completed"
@@ -847,6 +843,10 @@
     "developer_comment": "Terms of use (lead text)",
     "string": "To create your eduID you need to accept the eduID terms of use."
   },
+  "HQ+JLY": {
+    "developer_comment": "Display name select paragraph",
+    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services."
+  },
   "HUCgY6": {
     "developer_comment": "how-to 1",
     "string": "Create a basic account with your email address."
@@ -858,6 +858,10 @@
   "HgjRtU": {
     "developer_comment": "button add more",
     "string": "+ add more"
+  },
+  "Hi6qxM": {
+    "developer_comment": "Account terminated - heading",
+    "string": "Account terminated"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -1057,10 +1061,6 @@
   "N22YcU": {
     "developer_comment": "security zone modal",
     "string": "After logging in, you will be redirected to {externalPage} page to verify your security key."
-  },
-  "N91sEJ": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "If a second factor is required by external services for authentication, it will be always requested during the login even if this option is off."
   },
   "NDdvRn": {
     "developer_comment": "button save",
@@ -1395,10 +1395,6 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
   },
-  "UQlcH7": {
-    "developer_comment": "personal data edit title",
-    "string": "Edit name and display name"
-  },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
@@ -1502,6 +1498,10 @@
   "WR0ZnH": {
     "developer_comment": "use bankid - list item 2",
     "string": "log in to eduID and choose the 'Electronic BankID' option in the Identity area and follow the instructions."
+  },
+  "WRq5Yu": {
+    "developer_comment": "Display name select disabled paragraph",
+    "string": "If you only have one first name, no selection is possible."
   },
   "WYEquP": {
     "developer_comment": "settings.modal_delete_title",
@@ -1647,6 +1647,10 @@
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
   },
+  "ZG77Sq": {
+    "developer_comment": "close button",
+    "string": "close"
+  },
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
@@ -1729,6 +1733,10 @@
   "bCqIxV": {
     "developer_comment": "profile email display title",
     "string": "Email address"
+  },
+  "bGUOCU": {
+    "developer_comment": "Edit Names & Display Name",
+    "string": "Edit Names & Display Name"
   },
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
@@ -2068,6 +2076,10 @@
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet} (in Swedish)."
   },
+  "f05TNT": {
+    "developer_comment": "Security key toggle",
+    "string": "Always use a security key to log in"
+  },
   "f6GNZ7": {
     "developer_comment": "select extra webauthn",
     "string": "Add a new security key:"
@@ -2222,6 +2234,10 @@
     "developer_comment": "about usb key - handle",
     "string": "About Security Keys"
   },
+  "i7Zj5k": {
+    "developer_comment": "Display name select abled paragraph",
+    "string": "Select at least one first name below if you wish to change it."
+  },
   "iC8nbv": {
     "developer_comment": "use international - list item 2",
     "string": "login to eduID and scan the QR code produced by Freja from the 'Other countries' section in the Identity area of eduID by following the instructions."
@@ -2349,6 +2365,10 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "a bin icon which deletes the key when clicked."
   },
+  "kQTWeZ": {
+    "developer_comment": "lead text final step enter password",
+    "string": "For security, please enter your password again to complete the login process."
+  },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
     "string": "enhanced security (added a method used for multi factor login)"
@@ -2403,6 +2423,10 @@
   "l1XkUC": {
     "developer_comment": "security description name",
     "string": "Name:"
+  },
+  "l9zYOT": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
   },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
@@ -2577,6 +2601,10 @@
   "modal.close": {
     "developer_comment": "Notification modal close label",
     "string": "Close"
+  },
+  "mwt1Dw": {
+    "developer_comment": "Account terminated - reset password link",
+    "string": "Go to reset password page"
   },
   "n0mqo6": {
     "developer_comment": "DeleteAccount",
@@ -2995,6 +3023,10 @@
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
   },
+  "rpjEOF": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
+  },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
@@ -3158,10 +3190,6 @@
     "developer_comment": "what is international - paragraph 2",
     "string": "Current information on included nationalities can be found at: {FrejaList}"
   },
-  "smayl9": {
-    "developer_comment": "Display name select paragraph",
-    "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services. Select at least one first name below if you wish to change it."
-  },
   "still-valid-code": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."
   },
@@ -3171,6 +3199,10 @@
   },
   "tAcT/R": {
     "string": "BankID"
+  },
+  "tD/37U": {
+    "developer_comment": "MFA Freja help text",
+    "string": "Requires a confirmed Swedish national identity or coordination number."
   },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
@@ -3211,6 +3243,10 @@
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Help"
+  },
+  "uV2DBQ": {
+    "developer_comment": "MFA as the first step of login, toggle off",
+    "string": "If you turn this off, you'll need to log in with your username and password."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",

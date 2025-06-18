@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import securityApi from "services/security";
 import { appLoadingSlice } from "slices/AppLoading";
-import accountIcon from "../../img/account-icon.svg";
+import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
 import EduIDButton from "./Common/EduIDButton";
 import Splash from "./Common/Splash";
@@ -98,7 +98,7 @@ export function Index() {
           <FormattedMessage defaultMessage="Create a basic account with your email address." description="how-to 1" />
 
           <span className="icon-holder">
-            <img height="24" src={accountIcon} alt="Account" />
+            <img height="24" src={registerIcon} alt="Register" />
           </span>
         </div>
         <div>

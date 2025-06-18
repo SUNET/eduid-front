@@ -14,10 +14,35 @@ export function MultiFactorAuth(): JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
+  const this_device = useAppSelector((state) => state.login.this_device);
+  const has_session = authn_options?.has_session;
+
+  let leadText;
+  if (!has_session) {
+    leadText = (
+      <FormattedMessage
+        defaultMessage={`Choose a method to authenticate yourself, ensuring only you can access your eduID.`}
+        description="MFA paragraph with swedish option"
+      />
+    );
+  } else if (authn_options.swedish_eid) {
+    leadText = (
+      <FormattedMessage
+        defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+        description="MFA paragraph with swedish option"
+      />
+    );
+  } else {
+    leadText = (
+      <FormattedMessage
+        defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
+        description="MFA paragraph"
+      />
+    );
+  }
 
   const isLoaded = mfa?.state === "loaded";
-  //TODO: when backend is updated to swedish_eid, we should be able to rename this.
-  const hasMfaOptions = authn_options.freja_eidplus || authn_options.webauthn;
+  const hasMfaOptions = authn_options.swedish_eid || authn_options.webauthn;
 
   useEffect(() => {
     if (ref && mfa?.state === undefined) {
@@ -28,7 +53,7 @@ export function MultiFactorAuth(): JSX.Element {
       //
       // If returning from external authentication with Sweden Connect, we need
       // to call the MFA endpoint for it to complete.
-      dispatch(fetchMfaAuth({ ref: ref }));
+      dispatch(fetchMfaAuth({ ref: ref, this_device: this_device }));
     }
   }, [authn_options, mfa]);
 
@@ -36,7 +61,17 @@ export function MultiFactorAuth(): JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
+          {has_session ? (
+            <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
+          ) : (
+            <FormattedMessage
+              defaultMessage="Welcome, {username}!"
+              description="start main title"
+              values={{
+                username: <strong>{authn_options.display_name}</strong>,
+              }}
+            />
+          )}
         </h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
@@ -45,22 +80,10 @@ export function MultiFactorAuth(): JSX.Element {
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
           <React.Fragment>
-            <p>
-              {authn_options.freja_eidplus ? (
-                <FormattedMessage
-                  defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
-                  description="MFA paragraph with swedish option"
-                />
-              ) : (
-                <FormattedMessage
-                  defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
-                  description="MFA paragraph"
-                />
-              )}
-            </p>
+            <p>{leadText}</p>
             <div className="options">
               <SecurityKey webauthn={authn_options?.webauthn} />
-              <SwedishEID recoveryAvailable={authn_options.freja_eidplus} />
+              <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
             </div>
           </React.Fragment>
         ) : (

@@ -38,7 +38,7 @@ export const fetchAbort = createAsyncThunk<
 /*********************************************************************************************************************/
 export interface LoginUsernamePasswordRequest {
   ref: string;
-  username: string;
+  username?: string;
   password: string;
 }
 
@@ -307,7 +307,7 @@ export interface LoginNextRequest {
   remember_me: boolean;
 }
 
-export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
+export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED" | "PASSWORD";
 
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
@@ -326,8 +326,7 @@ export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?:
 export interface LoginAuthnOptions {
   display_name?: string;
   forced_username?: string;
-  // TODO: when backend is updated to swedish_eid, we should be able to rename this.
-  freja_eidplus?: boolean;
+  swedish_eid?: boolean;
   has_session?: boolean;
   other_device?: boolean;
   password?: boolean;
@@ -378,6 +377,7 @@ export const fetchNewDevice = createAsyncThunk<
 export interface LoginMfaAuthRequest {
   ref: string;
   webauthn_response?: webauthnAssertion;
+  this_device?: string;
 }
 
 export interface LoginMfaAuthResponse {
