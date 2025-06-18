@@ -117,7 +117,7 @@ function UserTerminated(): JSX.Element {
       // make sure the backend idp logs out the user from the session to get out of a stuck state
       dispatch(fetchLogout({}));
       // clear localStorage so that the same user is not used again
-      window.localStorage.clear()
+      window.localStorage.clear();
     }
   }, [error_state]);
 
@@ -151,7 +151,7 @@ function UserTerminated(): JSX.Element {
 
         <p className="text-small">
           <FormattedMessage
-            defaultMessage="You may also login to another account or register a new account by using the controls in the header."
+            defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
             description="Account terminated - help text"
           />
         </p>
