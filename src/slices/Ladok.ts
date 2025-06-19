@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ladokApi, LadokData, LadokUniversityData } from "services/ladok";
 import personalDataApi from "services/personalData";
-import { fetchLadokUniversities, LadokData, LadokUniversityData, linkUser, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
   isLinked: boolean;
@@ -19,20 +19,20 @@ const ladokSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchLadokUniversities.fulfilled, (state, action) => {
-        state.unis = action.payload;
+      .addMatcher(ladokApi.endpoints.fetchLadokUniversities.matchFulfilled, (state, action) => {
+        state.unis = action.payload.payload.universities;
         state.unisFetchFailed = false;
       })
-      .addCase(fetchLadokUniversities.rejected, (state) => {
+      .addMatcher(ladokApi.endpoints.fetchLadokUniversities.matchRejected, (state) => {
         state.unisFetchFailed = true;
       })
-      .addCase(linkUser.fulfilled, (state, action) => {
-        state.data = action.payload.ladok;
+      .addMatcher(ladokApi.endpoints.linkUser.matchFulfilled, (state, action) => {
+        state.data = action.payload.payload.ladok;
         state.ladokName = state.data.university.ladok_name;
         state.isLinked =
-          action.payload.ladok.external_id !== undefined && action.payload.ladok.university !== undefined;
+          action.payload.payload.ladok.external_id !== undefined && action.payload.payload.ladok.university !== undefined;
       })
-      .addCase(unlinkUser.fulfilled, (state) => {
+      .addMatcher(ladokApi.endpoints.unlinkUser.matchFulfilled, (state) => {
         state.data = undefined;
         state.ladokName = undefined;
         state.isLinked = false;
