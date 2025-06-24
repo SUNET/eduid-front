@@ -1,5 +1,5 @@
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { loginApi } from "services/login";
@@ -9,7 +9,6 @@ import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 export function MultiFactorAuth(): JSX.Element {
-  const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const mfa = useAppSelector((state) => state.login.mfa);

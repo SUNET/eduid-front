@@ -6,12 +6,11 @@ import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
-import { LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "services/login";
+import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "services/login";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
 //import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { loginApi } from "services/login";
 import { ResponseCodeForm } from "./ResponseCodeForm";
 
 // optional URL parameters passed to this component

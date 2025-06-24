@@ -2,7 +2,7 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { useSelector } from "@xstate/react";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { useIntl } from "react-intl";
 import { loginApi } from "services/login";
@@ -48,7 +48,6 @@ export function SignupApp(): JSX.Element {
  * Startup state to determine what kind of signup this is, and what to do next.
  */
 function SignupStart() {
-  const dispatch = useAppDispatch();
   const signupContext = useContext(SignupGlobalStateContext);
   const is_configured = useAppSelector((state) => state.config.is_configured);
   // bootstrap signup state in redux store by asking the backend for it when configuration is done

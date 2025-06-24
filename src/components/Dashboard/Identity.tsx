@@ -448,7 +448,6 @@ function AccordionItemEu(): JSX.Element | null {
 }
 
 function AccordionItemWorld(): JSX.Element | null {
-  const dispatch = useAppDispatch();
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity_trigger] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 
