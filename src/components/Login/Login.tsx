@@ -1,9 +1,9 @@
-import { fetchLogout, fetchNext } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
+import { loginApi } from "services/login";
 import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
@@ -35,6 +35,7 @@ function Login(): JSX.Element {
   let ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
+  const [ fetchNext_trigger ] = loginApi.useLazyFetchNextQuery();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -54,7 +55,7 @@ function Login(): JSX.Element {
 
     // Ask the backend what to do
     if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined && !error_state) {
-      dispatch(fetchNext({ ref, this_device, remember_me }));
+      fetchNext_trigger({ ref, this_device, remember_me });
     }
   }, [base_url, ref, this_device, remember_me, next_page, params]);
 
@@ -110,12 +111,13 @@ function UserTerminated(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error_state = useAppSelector((state) => state.login.error);
+  const [ fetchLogout_trigger ] = loginApi.useLazyFetchLogoutQuery();
 
   useEffect(() => {
     // If we have an error and localStorage is not empty, we need to logout the user from the session
     if (error_state && window.localStorage.length > 0) {
       // make sure the backend idp logs out the user from the session to get out of a stuck state
-      dispatch(fetchLogout({}));
+      fetchLogout_trigger({});
       // clear localStorage so that the same user is not used again
       window.localStorage.clear();
     }

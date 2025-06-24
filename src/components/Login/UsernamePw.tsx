@@ -1,4 +1,3 @@
-import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordInput from "components/Common/PasswordInput";
@@ -9,6 +8,7 @@ import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
+import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -26,6 +26,7 @@ export default function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
+  const [ fetchUsernamePassword_trigger ] = loginApi.useLazyFetchUsernamePasswordQuery();
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -34,11 +35,9 @@ export default function UsernamePw() {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const res = await dispatch(
-        fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword })
-      );
-      if (fetchUsernamePassword.fulfilled.match(res)) {
-        if (res.payload.finished) {
+      const response = await fetchUsernamePassword_trigger({ ref, username: values.username, password: values.currentPassword });
+      if (response.isSuccess) {
+        if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
           dispatch(clearNotifications());
         }

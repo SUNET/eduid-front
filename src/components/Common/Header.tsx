@@ -1,8 +1,8 @@
-import { fetchLogout } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
+import { loginApi } from "services/login";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
@@ -10,20 +10,20 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps): JSX.Element {
-  const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
+  const [ fetchLogout_trigger ] = loginApi.useLazyFetchLogoutQuery();
 
   let button = null;
 
   const navigate = useNavigate();
 
   async function handleLogout() {
-    const resp = await dispatch(fetchLogout({ ref: props.loginRef }));
-    if (fetchLogout.fulfilled.match(resp)) {
+    const response = await fetchLogout_trigger({ ref: props.loginRef });
+    if (response.isSuccess) {
       if (eduid_site_link) {
         window.location.assign(eduid_site_link);
       }

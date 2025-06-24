@@ -1,8 +1,8 @@
-import { fetchAbort, fetchToU } from "apis/eduidLogin";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 
 export default function TermsOfUse(): JSX.Element {
@@ -11,21 +11,23 @@ export default function TermsOfUse(): JSX.Element {
   // version is the version of the ToU the backend requests we ask the user to accept
   const version = useAppSelector((state) => state.login.tou.version);
   const loginRef = useAppSelector((state) => state.login.ref);
+  const [ fetchAbort_trigger ] = loginApi.useLazyFetchAbortQuery();
+  const [ fetchToU_trigger ] = loginApi.useLazyFetchToUQuery();
 
   useEffect(() => {
     if (!version && loginRef) {
       // Tell the backend what ToU versions are available in this bundle
-      dispatch(fetchToU({ ref: loginRef, versions: availableTouVersions }));
+      fetchToU_trigger({ ref: loginRef, versions: availableTouVersions });
     }
   }, []);
 
   async function handleAccept() {
     if (version && loginRef) {
       // Tell the backend which ToU version the user accepted
-      const res = await dispatch(fetchToU({ ref: loginRef, user_accepts: version }));
+      const response = await fetchToU_trigger({ ref: loginRef, user_accepts: version });
 
-      if (fetchToU.fulfilled.match(res)) {
-        if (res.payload.finished) {
+      if (response.isSuccess) {
+        if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
         }
       }
@@ -34,7 +36,7 @@ export default function TermsOfUse(): JSX.Element {
 
   function handleCancel() {
     if (loginRef) {
-      dispatch(fetchAbort({ ref: loginRef }));
+      fetchAbort_trigger({ ref: loginRef });
     }
   }
 

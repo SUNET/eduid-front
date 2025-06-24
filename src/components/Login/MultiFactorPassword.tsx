@@ -1,9 +1,9 @@
-import { fetchUsernamePassword } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import PasswordInput from "components/Common/PasswordInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
@@ -44,6 +44,7 @@ export function MultiFactorPassword(): JSX.Element {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const ref = useAppSelector((state) => state.login.ref);
+  const [ fetchUsernamePassword_trigger ] = loginApi.useLazyFetchUsernamePasswordQuery();
 
   async function handleSubmitUsernamePw(values: PasswordFormData) {
     const errors: PasswordFormData = {};
@@ -53,9 +54,9 @@ export function MultiFactorPassword(): JSX.Element {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const res = await dispatch(fetchUsernamePassword({ ref, password: values.currentPassword }));
-      if (fetchUsernamePassword.fulfilled.match(res)) {
-        if (res.payload.finished) {
+      const response = await fetchUsernamePassword_trigger({ ref, password: values.currentPassword });
+      if (response.isSuccess) {
+        if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
           dispatch(clearNotifications());
         }

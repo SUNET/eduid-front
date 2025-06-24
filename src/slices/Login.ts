@@ -1,21 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  fetchAbort,
-  fetchMfaAuth,
-  fetchNewDevice,
-  fetchNext,
-  fetchToU,
-  fetchUseOtherDevice1,
-  fetchUseOtherDevice2,
-  IdPAction,
-  LoginAuthnOptions,
-  LoginNextResponse,
-  LoginUseOtherDevice1Response,
-  LoginUseOtherDevice2Response,
-  SAMLParameters,
-  ServiceInfo,
-} from "apis/eduidLogin";
 import { ToUs } from "helperFunctions/ToUs";
+import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "services/login";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 // Define a type for the slice state
@@ -120,47 +105,47 @@ export const loginSlice = createSlice({
         state.mfa.webauthn_challenge = undefined;
         state.mfa.webauthn_assertion = undefined;
       })
-      .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
+      .addMatcher(loginApi.endpoints.fetchUseOtherDevice1.matchFulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
-        if (action.payload.state === "ABORTED" || action.payload.state === "FINISHED") {
+        if (action.payload.payload.state === "ABORTED" || action.payload.payload.state === "FINISHED") {
           // Remove state in frontend too when backend confirms the request has been aborted or finished
           state.other_device1 = undefined;
           state.next_page = undefined;
         } else {
-          state.other_device1 = action.payload;
+          state.other_device1 = action.payload.payload;
         }
       })
-      .addCase(fetchUseOtherDevice1.rejected, (state) => {
+      .addMatcher(loginApi.endpoints.fetchUseOtherDevice1.matchRejected, (state) => {
         state.other_device1 = undefined;
       })
-      .addCase(fetchUseOtherDevice2.fulfilled, (state, action) => {
+      .addMatcher(loginApi.endpoints.fetchUseOtherDevice2.matchFulfilled, (state, action) => {
         // Store the result from fetching state about logging in on another device (from this device).
-        state.other_device2 = action.payload;
+        state.other_device2 = action.payload.payload;
       })
-      .addCase(fetchUseOtherDevice2.rejected, (state) => {
+      .addMatcher(loginApi.endpoints.fetchUseOtherDevice2.matchRejected, (state) => {
         state.other_device2 = undefined;
       })
-      .addCase(fetchAbort.fulfilled, (state, action) => {
-        if (action.payload.finished) {
+      .addMatcher(loginApi.endpoints.fetchAbort.matchFulfilled, (state, action) => {
+        if (action.payload.payload.finished) {
           // Trigger fetching of /next on successful abort
           state.next_page = undefined;
         }
       })
-      .addCase(fetchNext.pending, (state) => {
+      .addMatcher(loginApi.endpoints.fetchNext.matchPending, (state) => {
         state.fetching_next = true;
       })
-      .addCase(fetchNext.fulfilled, (state, action) => {
+      .addMatcher(loginApi.endpoints.fetchNext.matchFulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next
-        const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
-        state.next_page = action.payload.action;
-        state.post_to = action.payload.target;
+        const samlParameters = action.payload.payload.action === "FINISHED" ? action.payload.payload.parameters : undefined;
+        state.next_page = action.payload.payload.action;
+        state.post_to = action.payload.payload.target;
         state.saml_parameters = samlParameters;
-        if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
+        if (action.payload.payload.authn_options) state.authn_options = action.payload.payload.authn_options;
         state.fetching_next = false;
-        state.service_info = action.payload.service_info;
+        state.service_info = action.payload.payload.service_info;
         state.error = undefined;
       })
-      .addCase(fetchNext.rejected, (state, action) => {
+      .addMatcher(loginApi.endpoints.fetchNext.matchRejected, (state, action) => {
         if ((action as ActionWithErrorMessage).payload.error
           && (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
         ) {
@@ -168,23 +153,23 @@ export const loginSlice = createSlice({
           }
         state.fetching_next = false;
       })
-      .addCase(fetchNewDevice.fulfilled, (state, action) => {
-        state.this_device = action.payload.new_device;
-      })
-      .addCase(fetchMfaAuth.pending, (state, action) => {
+      .addMatcher(loginApi.endpoints.fetchNewDevice.matchFulfilled, (state, action) => {
+        state.this_device = action.payload.payload.new_device;
+            })
+      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchPending, (state, action) => {
         state.mfa = { state: "loading" };
       })
-      .addCase(fetchMfaAuth.fulfilled, (state, action) => {
-        state.mfa.webauthn_challenge = action.payload.webauthn_options; // not always present
-        if (action.payload.finished) {
+      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchFulfilled, (state, action) => {
+        state.mfa.webauthn_challenge = action.payload.payload.webauthn_options; // not always present
+        if (action.payload.payload.finished) {
           // Trigger fetching of /next on successful MFA authentication
           state.next_page = undefined;
         }
         state.mfa.state = "loaded";
       })
-      .addCase(fetchToU.fulfilled, (state, action) => {
-        if (action.payload.version) {
-          state.tou.version = action.payload.version;
+      .addMatcher(loginApi.endpoints.fetchToU.matchFulfilled, (state, action) => {
+        if (action.payload.payload.version) {
+          state.tou.version = action.payload.payload.version;
         }
       });
   },

@@ -1,11 +1,11 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useSelector } from "@xstate/react";
-import { fetchLogout } from "apis/eduidLogin";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { useIntl } from "react-intl";
+import { loginApi } from "services/login";
 import { signupApi } from "services/signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
@@ -53,11 +53,12 @@ function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured?undefined:skipToken);
+  const [ fetchLogout_trigger ] = loginApi.useLazyFetchLogoutQuery();
   
   useEffect(() => {
     if (data != undefined) {
       if (data.payload.state.already_signed_up) {
-        dispatch(fetchLogout({}));
+        fetchLogout_trigger({});
       }
       if(data.payload.state.email?.address) {
         signupContext.signupService.send({ type: "EMAIL_DONE" });

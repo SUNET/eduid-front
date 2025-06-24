@@ -19,7 +19,8 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         bankid: state.config.bankid_service_url,
         eidas: state.config.eidas_service_url,
         frejaeID: state.config.freja_eid_service_url,
-        ladok: state.config.ladok_service_url
+        ladok: state.config.ladok_service_url,
+        login: state.config.login_service_url
 
     };
     if (!extraOptions?.service) {

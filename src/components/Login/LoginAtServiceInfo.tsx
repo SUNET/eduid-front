@@ -1,6 +1,6 @@
-import { ServiceInfo } from "apis/eduidLogin";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import { ServiceInfo } from "services/login";
 
 interface LoginAtServiceInfoProps {
   service_info?: ServiceInfo;
