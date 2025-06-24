@@ -11,11 +11,11 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const savedTheme = localStorage.getItem("theme") as Theme | null;
+
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (systemSettingDark.matches) {
