@@ -1,103 +1,9 @@
-import { createAction, PayloadAction } from "@reduxjs/toolkit";
-import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
-import { AuthenticateResponse } from "services/authn";
-import authnSlice from "slices/Authn";
-import { checkStatus, getRequest, NeedsAuthenticationError, postRequest } from "ts_common";
-import { EduIDAppDispatch } from "../eduid-init-app";
-import { authenticate } from "./eduidAuthn";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { EduidJSAppCommonConfig } from "commonConfig";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
 }
-
-export interface RequestThunkAPI {
-  getState: () => StateWithCommonConfig;
-  dispatch: EduIDAppDispatch;
-  signal: AbortSignal;
-}
-
-export interface KeyValues {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
-
-/*
- * Any response received from the backend might contain an updated CSRF token, which needs to be
- * passed to the backend on any subsequent requests. Update the value in the store if it changes.
- */
-interface ResponseWithCsrf {
-  payload: { csrf_token?: string };
-}
-function updateCsrf(action: ResponseWithCsrf, thunkAPI: RequestThunkAPI) {
-  if (action.payload === undefined || action.payload.csrf_token === undefined) return action;
-  const state = thunkAPI.getState();
-  if (action.payload.csrf_token != state.config.csrf_token) {
-    thunkAPI.dispatch(storeCsrfToken(action.payload.csrf_token));
-  }
-  delete action.payload.csrf_token;
-  return action;
-}
-
-/*********************************************************************************************************************/
-export async function makeGenericRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  base_url: string,
-  endpoint?: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    try {
-      const response = await makeRequest<T>(thunkAPI, base_url, endpoint, body, data);
-      if (response.error) {
-        // Dispatch fail responses so that notification middleware will show them to the user.
-        // The current implementation in notify-middleware.js _removes_ error and payload.message from
-        // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
-
-        if (saved.payload.message === "authn_status.must-authenticate") {
-          // security zone, re-auth
-          // toggle status of re-auth in state, that will trig the visualization of AuthenticateModal
-          thunkAPI.dispatch(
-            authnSlice.actions.setFrontendActionAndState({ frontend_action: saved.meta.frontend_action })
-          );
-          thunkAPI.dispatch(authnSlice.actions.setReAuthenticate(true));
-        }
-
-        thunkAPI.dispatch(response);
-        reject(saved);
-      } else {
-        resolve(response);
-      }
-    } catch (error) {
-      if (error instanceof NeedsAuthenticationError) {
-        // silently ignore errors about missing authentication
-        const response = await thunkAPI.dispatch(authenticate({ frontend_action: "login" }));
-        window.location.href = (response?.payload as AuthenticateResponse).location;
-        reject();
-      } else if (error instanceof Error) {
-        thunkAPI.dispatch(genericApiFail(error.toString()));
-        reject(error.toString());
-      } else {
-        reject(error);
-      }
-    }
-  });
-}
-
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
 
 /*********************************************************************************************************************/
 /*
@@ -111,56 +17,6 @@ export function urlJoin(base_url: string, endpoint?: string) {
     return base_url + endpoint;
   }
   return base_url;
-}
-
-/*********************************************************************************************************************/
-/*
- * Return a promise that will make an API call to an eduID backend, for use in async thunks.
- */
-export function makeRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  base_url: string,
-  endpoint?: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  const state = thunkAPI.getState();
-
-  const url = urlJoin(base_url, endpoint);
-
-  // Add the current CSRF token
-  if (body !== undefined && body.csrf_token === undefined) {
-    body.csrf_token = state.config.csrf_token;
-  }
-
-  return makeBareRequest<T>(thunkAPI, url, body, data);
-}
-
-/*********************************************************************************************************************/
-/*
- * Return a promise that will make an API call to an eduID backend, for use in async thunks.
- * Less restricted than makeRequest above.
- */
-export function makeBareRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  url: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  // do POST if there is a body, otherwise GET
-  const req = body === undefined ? getRequest : postRequest;
-
-  const request: RequestInit = {
-    ...req,
-    ...data,
-    body: body !== undefined ? JSON.stringify(body) : undefined,
-    signal: thunkAPI.signal,
-  };
-
-  return fetch(url, request)
-    .then(checkStatus)
-    .then(async (response) => (await response.json()) as ResponseWithCsrf)
-    .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
 }
 
 // type predicate to help identify rejected payloads from backend.
