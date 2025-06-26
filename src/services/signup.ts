@@ -46,7 +46,6 @@ export interface GetCaptchaResponse {
 }
 export interface CaptchaRequest {
     internal_response?: string;
-    recaptcha_response?: string;
 }
 
 export interface AcceptToURequest {
@@ -81,19 +80,18 @@ export const signupApi = eduIDApi.injectEndpoints({
             }),
             extraOptions: { service: 'signup' }
         }),
-        getCaptcha: builder.query<ApiResponse<GetCaptchaResponse>,void>({
+        getSignupCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>,void>({
             query: (): { url: string; body: EmptyObj } => ({
                 url: 'get-captcha',
                 body: {}
             }),
             extraOptions: { service: 'signup' }
         }),
-        sendCaptchaResponse: builder.query<ApiResponse<SignupStatusResponse>, CaptchaRequest>({
+        sendSignupCaptchaResponse: builder.query<ApiResponse<SignupStatusResponse>, CaptchaRequest>({
             query: (captcha): { url: string; body: CaptchaRequest } => ({
                 url: 'captcha',
                 body: {
                     internal_response: captcha.internal_response,
-                    recaptcha_response: captcha.recaptcha_response
                 }
             }),
             extraOptions: { service: 'signup' }

@@ -1,4 +1,3 @@
-import { verifyEmailLink } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
@@ -7,6 +6,7 @@ import authnApi from "services/authn";
 import { bankIDApi } from "services/bankid";
 import { eidasApi, GetStatusResponse } from "services/eidas";
 import personalDataApi from "services/personalData";
+import { resetPasswordApi } from "services/resetPassword";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
@@ -30,6 +30,7 @@ export function LoginExternalReturnHandler() {
   const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
   const [bankIDGetStatus_trigger] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus_trigger] = eidasApi.useLazyEidasGetStatusQuery();
+  const [verifyEmailLink_trigger] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   function processStatus(response: GetStatusResponse) {
       const status = response;
@@ -47,7 +48,7 @@ export function LoginExternalReturnHandler() {
           login: "/profile/",
         };
         if (!status.error && status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
-          dispatch(verifyEmailLink({ email_code: status.frontend_state }));
+          verifyEmailLink_trigger({ email_code: status.frontend_state });
         }
         if (!status.error && status.frontend_action === "login") {
           personal_data_refetch();

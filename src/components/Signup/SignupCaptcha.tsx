@@ -12,12 +12,21 @@ export function SignupCaptcha(): JSX.Element | null {
   const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
+  const [ getCaptchaRequest_trigger ] = signupApi.useLazyGetSignupCaptchaRequestQuery();
 
   useEffect(() => {
     if (state?.captcha.completed) {
       signupContext.signupService.send({ type: "CAPTCHA_DONE" });
     }
   }, [state]);
+
+  async function getCaptcha() {
+    const response = await getCaptchaRequest_trigger();
+    if (response.isSuccess) {
+      return response.data.payload;
+    }
+  }
+
 
   function handleCaptchaCancel() {
     signupContext.signupService.send({ type: "ABORT" });
@@ -52,7 +61,7 @@ export function SignupCaptcha(): JSX.Element | null {
         </p>
       </div>
 
-      <InternalCaptcha {...args} />
+      <InternalCaptcha {...args} getCaptcha={getCaptcha}/>
     </Fragment>
   );
 }
@@ -61,7 +70,7 @@ export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-  const {isSuccess, isError } = signupApi.useSendCaptchaResponseQuery(captcha??skipToken)
+  const {isSuccess, isError } = signupApi.useSendSignupCaptchaResponseQuery(captcha??skipToken)
 
   useEffect(() => {
     if (captcha) {

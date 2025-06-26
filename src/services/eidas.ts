@@ -72,6 +72,7 @@ export const eidasApi = eduIDApi.injectEndpoints({
         url: "mfa-authenticate",
         body: {
           method: args.method,
+          frontend_state: args.frontend_state,
           frontend_action: args.frontend_action ?? "loginMfaAuthn"
         }
       }),

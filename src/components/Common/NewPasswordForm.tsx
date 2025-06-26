@@ -1,10 +1,10 @@
-import { ExtraSecurityAlternatives } from "apis/eduidResetPassword";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { GoBackButton } from "components/ResetPassword/GoBackButton";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { ExtraSecurityAlternatives } from "services/resetPassword";
 
 const newPasswordFormId = "new-password-form";
 

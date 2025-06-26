@@ -42,6 +42,7 @@ export function SignupEnterCode(): JSX.Element {
   }, [isSuccess])
 
   async function registerEmail() {
+    console.log(signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname)
     if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
       resendCode({
         email: signupState?.email.address,
