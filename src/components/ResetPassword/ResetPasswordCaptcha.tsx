@@ -1,9 +1,9 @@
+import { resetPasswordApi } from "apis/resetPassword";
+import { CaptchaRequest } from "apis/signup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { resetPasswordApi } from "services/resetPassword";
-import { CaptchaRequest } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";

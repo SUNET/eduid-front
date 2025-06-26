@@ -1,7 +1,7 @@
+import personalDataApi from "apis/personalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import personalDataApi from "services/personalData";
 import authnSlice from "slices/Authn";
 
 export default function UseSecurityKeyToggle(): JSX.Element | null {

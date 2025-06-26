@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
+import { GetCaptchaResponse } from "apis/signup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
-import { GetCaptchaResponse } from "services/signup";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
   readonly disabled?: boolean; // disable the submit button if true

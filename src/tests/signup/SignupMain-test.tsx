@@ -1,16 +1,16 @@
+import {
+    AcceptToURequest,
+    CaptchaRequest,
+    CreateUserRequest,
+    GetCaptchaResponse,
+    RegisterEmailRequest,
+    SignupState,
+    SignupStatusResponse,
+    VerifyEmailRequest
+} from "apis/signup";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";
-import {
-  AcceptToURequest,
-  CaptchaRequest,
-  CreateUserRequest,
-  GetCaptchaResponse,
-  RegisterEmailRequest,
-  SignupState,
-  SignupStatusResponse,
-  VerifyEmailRequest
-} from "services/signup";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 

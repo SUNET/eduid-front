@@ -1,8 +1,8 @@
+import securityApi, { SecurityKeysResponse } from "apis/security";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";
 import { FormattedMessage, useIntl } from "react-intl";
-import securityApi, { SecurityKeysResponse } from "services/security";
 import AccordionItemTemplate from "./Common/AccordionItemTemplate";
 import { CommonToU } from "./Common/CommonToU";
 import ScrollToTopButton from "./ScrollToTopButton";

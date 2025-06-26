@@ -1,9 +1,9 @@
 import { urlJoin } from "apis/common";
+import { orcidApi } from "apis/orcid";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { orcidApi } from "services/orcid";
 
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 

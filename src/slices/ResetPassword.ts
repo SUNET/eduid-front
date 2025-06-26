@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
-import { bankIDApi } from "services/bankid";
-import { eidasApi } from "services/eidas";
-import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "services/resetPassword";
-import { CaptchaRequest } from "services/signup";
+import { bankIDApi } from "apis/bankid";
+import { eidasApi } from "apis/eidas";
+import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/resetPassword";
+import { CaptchaRequest } from "apis/signup";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 export type Phone = { index: string; number: string; phone_code: string };

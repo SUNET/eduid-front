@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { eduIDApi } from "apis/api";
 import authnMiddleware from "middleware/AuthnMiddleware";
 import csrfTokenMiddleware from "middleware/CsrfTokenMiddleware";
 import notifyAndDispatch from "middleware/notify-middleware";
 import { reAuthnMiddleware } from "middleware/ReAuthnMiddleware";
 import logger from "redux-logger";
-import { eduIDApi } from "services/api";
 import eduIDApp from "./eduid-store";
 
 /* setup middlewares */

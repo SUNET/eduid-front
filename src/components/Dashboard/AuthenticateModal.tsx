@@ -1,9 +1,9 @@
+import authnApi from "apis/authn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import authnApi from "services/authn";
 import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
 

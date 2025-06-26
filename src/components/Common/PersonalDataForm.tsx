@@ -1,6 +1,8 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import personalDataApi, { UserNameSchema } from "apis/personalData";
+import securityApi from "apis/security";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -9,8 +11,6 @@ import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import personalDataApi, { UserNameSchema } from "services/personalData";
-import securityApi from "services/security";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";

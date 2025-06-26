@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 
 export default function TermsOfUse(): JSX.Element {

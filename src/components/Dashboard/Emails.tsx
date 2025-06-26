@@ -1,3 +1,4 @@
+import { emailApi } from "apis/email";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
@@ -5,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { emailApi } from "services/email";
 import { clearNotifications } from "slices/Notifications";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";

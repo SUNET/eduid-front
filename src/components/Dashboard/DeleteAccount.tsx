@@ -1,8 +1,8 @@
+import securityApi from "apis/security";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import securityApi from "services/security";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);

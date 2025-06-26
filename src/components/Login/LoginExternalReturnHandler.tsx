@@ -1,12 +1,12 @@
+import authnApi from "apis/authn";
+import { bankIDApi } from "apis/bankid";
+import { eidasApi, GetStatusResponse } from "apis/eidas";
+import personalDataApi from "apis/personalData";
+import { resetPasswordApi } from "apis/resetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import authnApi from "services/authn";
-import { bankIDApi } from "services/bankid";
-import { eidasApi, GetStatusResponse } from "services/eidas";
-import personalDataApi from "services/personalData";
-import { resetPasswordApi } from "services/resetPassword";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";

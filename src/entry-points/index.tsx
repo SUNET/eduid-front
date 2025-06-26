@@ -1,3 +1,5 @@
+import { jsConfigApi } from "apis/jsConfig";
+import personalDataApi from "apis/personalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
@@ -7,8 +9,6 @@ import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
 import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router";
-import { jsConfigApi } from "services/jsConfig";
-import personalDataApi from "services/personalData";
 import { appLoadingSlice } from "slices/AppLoading";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";

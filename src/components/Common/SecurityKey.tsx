@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import SecurityKeyGif from "../../../img/computer_animation.gif";

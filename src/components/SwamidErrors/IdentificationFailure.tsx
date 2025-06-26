@@ -1,7 +1,7 @@
+import { loginApi } from "apis/login";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import { FailureComponentProps } from "./Errors";
 
 export function IdentificationFailure(props: FailureComponentProps): JSX.Element {

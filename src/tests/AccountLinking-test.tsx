@@ -1,7 +1,7 @@
+import { OrcidInfo } from "apis/orcid";
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
-import { OrcidInfo } from "services/orcid";
 import { mswServer, rest } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 

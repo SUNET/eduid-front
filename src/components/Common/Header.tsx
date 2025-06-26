@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import { loginApi } from "services/login";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {

@@ -1,8 +1,8 @@
+import { LoginNextRequest, LoginNextResponse } from "apis/login";
+import { NewPasswordRequest, NewPasswordResponse, RequestEmailLinkRequest, RequestEmailLinkResponse, VerifyCodeRequest, VerifyCodeResponse } from "apis/resetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
-import { LoginNextRequest, LoginNextResponse } from "services/login";
-import { NewPasswordRequest, NewPasswordResponse, RequestEmailLinkRequest, RequestEmailLinkResponse, VerifyCodeRequest, VerifyCodeResponse } from "services/resetPassword";
 import { mswServer, rest } from "setupTests";
 import { fireEvent, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 

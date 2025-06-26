@@ -1,9 +1,9 @@
+import { loginApi } from "apis/login";
 import EduIDButton from "components/Common/EduIDButton";
 import PasswordInput from "components/Common/PasswordInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";

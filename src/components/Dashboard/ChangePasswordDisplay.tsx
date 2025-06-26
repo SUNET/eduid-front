@@ -1,7 +1,7 @@
+import securityApi from "apis/security";
 import EduIDButton from "components/Common/EduIDButton";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import securityApi from "services/security";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();

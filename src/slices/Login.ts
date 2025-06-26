@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "apis/login";
 import { ToUs } from "helperFunctions/ToUs";
-import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "services/login";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 // Define a type for the slice state

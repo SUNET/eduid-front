@@ -1,10 +1,10 @@
+import { bankIDApi } from "apis/bankid";
+import { eidasApi } from "apis/eidas";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select from "react-select";
-import { bankIDApi } from "services/bankid";
-import { eidasApi } from "services/eidas";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 

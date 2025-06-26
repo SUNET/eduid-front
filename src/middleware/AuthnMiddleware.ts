@@ -1,7 +1,7 @@
 import { createListenerMiddleware, isRejectedWithValue, ListenerEffectAPI, ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
+import { ApiResponse, genericApiFail } from "apis/api";
+import authnApi, { AuthenticateResponse } from "apis/authn";
 import { StateWithCommonConfig } from "apis/common";
-import { ApiResponse, genericApiFail } from "services/api";
-import authnApi, { AuthenticateResponse } from "services/authn";
 
 
 interface ErrorPayload {

@@ -1,10 +1,10 @@
+import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/login";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { loginApi, UseOtherDevice1ResponseWithQR } from "services/login";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";

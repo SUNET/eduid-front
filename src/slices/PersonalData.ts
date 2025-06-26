@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { personalDataApi, PersonalDataRequest, UserIdentities } from "services/personalData";
-import securityApi from "services/security";
+import { personalDataApi, PersonalDataRequest, UserIdentities } from "apis/personalData";
+import securityApi from "apis/security";
 
 interface PersonalDataState {
   eppn?: string;

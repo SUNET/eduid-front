@@ -1,3 +1,4 @@
+import { resetPasswordApi } from "apis/resetPassword";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
@@ -10,7 +11,6 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useContext, useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { resetPasswordApi } from "services/resetPassword";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 

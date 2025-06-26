@@ -1,9 +1,9 @@
+import securityApi from "apis/security";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import securityApi from "services/security";
 
 function validateNin(value: string): string | undefined {
   if (!value) {

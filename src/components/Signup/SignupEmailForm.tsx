@@ -1,3 +1,4 @@
+import { signupApi } from "apis/signup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
@@ -7,7 +8,6 @@ import { validateSignupUserInForm } from "helperFunctions/validation/validateEma
 import { Fragment, useContext, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 

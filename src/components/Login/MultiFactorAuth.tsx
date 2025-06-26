@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import { SecurityKey } from "../Common/SecurityKey";
 import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";

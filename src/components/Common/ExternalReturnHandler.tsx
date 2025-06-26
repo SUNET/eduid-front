@@ -1,11 +1,11 @@
+import authnApi from "apis/authn";
+import { bankIDApi } from "apis/bankid";
+import { eidasApi, GetStatusResponse } from "apis/eidas";
+import { frejaeIDApi } from "apis/frejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import authnApi from "services/authn";
-import { bankIDApi } from "services/bankid";
-import { eidasApi, GetStatusResponse } from "services/eidas";
-import { frejaeIDApi } from "services/frejaeID";
 import { showNotification } from "slices/Notifications";
 
 // URL parameters passed to this component

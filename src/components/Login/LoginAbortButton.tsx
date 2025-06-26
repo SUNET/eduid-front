@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 
 export function LoginAbortButton(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);

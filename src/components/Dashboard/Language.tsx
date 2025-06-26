@@ -1,9 +1,9 @@
+import { personalDataApi, UserLanguageSchema } from "apis/personalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { personalDataApi, UserLanguageSchema } from "services/personalData";
 import { updateIntl } from "slices/Internationalisation";
 import { clearNotifications } from "slices/Notifications";
 

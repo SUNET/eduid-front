@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { orcidApi, OrcidInfo } from "services/orcid";
-import personalDataApi from "services/personalData";
+import { orcidApi, OrcidInfo } from "apis/orcid";
+import personalDataApi from "apis/personalData";
 
 export interface AccountLinkingState {
   orcid?: OrcidInfo;

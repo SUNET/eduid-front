@@ -1,9 +1,9 @@
 import { useSelector } from "@xstate/react";
+import { signupApi } from "apis/signup";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 

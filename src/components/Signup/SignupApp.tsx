@@ -1,12 +1,12 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useSelector } from "@xstate/react";
+import { loginApi } from "apis/login";
+import { signupApi } from "apis/signup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { useIntl } from "react-intl";
-import { loginApi } from "services/login";
-import { signupApi } from "services/signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentials } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";

@@ -1,9 +1,9 @@
 import { skipToken } from "@reduxjs/toolkit/query";
+import { signupApi } from "apis/signup";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { signupApi } from "services/signup";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 

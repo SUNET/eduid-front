@@ -1,7 +1,7 @@
+import { bankIDApi } from "apis/bankid";
 import EduIDButton from "components/Common/EduIDButton";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
-import { bankIDApi } from "services/bankid";
 
 function BankID(): JSX.Element {
   const [bankIDVerifyIdentity_trigger] = bankIDApi.useLazyBankIDVerifyIdentityQuery()

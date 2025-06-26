@@ -1,9 +1,9 @@
+import { resetPasswordApi } from "apis/resetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
-import { resetPasswordApi } from "services/resetPassword";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";

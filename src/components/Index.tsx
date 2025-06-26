@@ -1,11 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import securityApi from "apis/security";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import securityApi from "services/security";
 import { appLoadingSlice } from "slices/AppLoading";
 import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";

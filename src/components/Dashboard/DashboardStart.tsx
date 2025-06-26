@@ -1,9 +1,9 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { letterProofingApi } from "apis/letterProofing";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { letterProofingApi } from "services/letterProofing";
 import { AccountId } from "./AccountId";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";

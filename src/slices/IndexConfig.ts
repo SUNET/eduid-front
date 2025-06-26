@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { jsConfigApi } from "apis/jsConfig";
+import { loginApi, LoginErrorInfoResponse } from "apis/login";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
-import { jsConfigApi } from "services/jsConfig";
-import { loginApi, LoginErrorInfoResponse } from "services/login";
 import { appLoadingSlice } from "slices/AppLoading";
 
 export interface IndexConfig extends EduidJSAppCommonConfig {

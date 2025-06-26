@@ -1,9 +1,9 @@
+import { ladokApi } from "apis/ladok";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
-import { ladokApi } from "services/ladok";
 
 interface SelectedUniProps {
   label: string;

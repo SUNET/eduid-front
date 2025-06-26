@@ -1,3 +1,6 @@
+import { bankIDApi } from "apis/bankid";
+import { eidasApi, WebauthnMethods } from "apis/eidas";
+import { ActionStatus, CredentialType, securityApi } from "apis/security";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -7,9 +10,6 @@ import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
-import { bankIDApi } from "services/bankid";
-import { eidasApi, WebauthnMethods } from "services/eidas";
-import { ActionStatus, CredentialType, securityApi } from "services/security";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";

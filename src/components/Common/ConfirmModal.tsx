@@ -1,7 +1,7 @@
+import { GetCaptchaResponse } from "apis/signup";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { GetCaptchaResponse } from "services/signup";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 

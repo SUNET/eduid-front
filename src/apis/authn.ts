@@ -1,4 +1,4 @@
-import { GetStatusRequest, GetStatusResponse } from "services/eidas";
+import { GetStatusRequest, GetStatusResponse } from "apis/eidas";
 import { ApiResponse, eduIDApi } from "./api";
 
 export interface AuthenticateResponse {

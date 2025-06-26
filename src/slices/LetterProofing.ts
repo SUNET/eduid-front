@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { letterProofingApi } from "services/letterProofing";
+import { letterProofingApi } from "apis/letterProofing";
 
 export interface LetterProofingState {
   code?: string;

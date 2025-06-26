@@ -1,8 +1,8 @@
+import { loginApi } from "apis/login";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { loginApi } from "services/login";
 import loginSlice from "slices/Login";
 
 /* Not exported - keep all use through functions in this module */

@@ -1,8 +1,8 @@
+import { eidasApi } from "apis/eidas";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { eidasApi } from "services/eidas";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
