@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import React, { useEffect, useState } from "react";

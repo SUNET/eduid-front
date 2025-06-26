@@ -1,6 +1,6 @@
-import { bankIDApi } from "apis/bankid";
-import { eidasApi, WebauthnMethods } from "apis/eidas";
-import { ActionStatus, CredentialType, securityApi } from "apis/security";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
+import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

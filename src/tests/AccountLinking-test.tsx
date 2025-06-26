@@ -1,4 +1,4 @@
-import { OrcidInfo } from "apis/orcid";
+import { OrcidInfo } from "apis/eduidOrcid";
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";

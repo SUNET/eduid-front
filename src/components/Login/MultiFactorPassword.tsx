@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import PasswordInput from "components/Common/PasswordInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

@@ -1,5 +1,5 @@
-import { ApiResponse, eduIDApi } from "./api";
-import { GetStatusRequest, GetStatusResponse } from "./eidas";
+import { ApiResponse, eduIDApi } from "./common";
+import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 
 interface FrejaeIDCommonRequest {
   frontend_action?: string;

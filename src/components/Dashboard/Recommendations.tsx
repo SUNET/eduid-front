@@ -1,7 +1,7 @@
 import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UserIdentities } from "apis/personalData";
-import { CredentialType, securityApi } from "apis/security";
+import { UserIdentities } from "apis/eduidPersonalData";
+import { CredentialType, securityApi } from "apis/eduidSecurity";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";

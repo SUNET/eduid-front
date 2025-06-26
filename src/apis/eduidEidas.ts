@@ -1,4 +1,4 @@
-import { ApiResponse, eduIDApi } from "./api";
+import { ApiResponse, eduIDApi } from "./common";
 
 export type WebauthnMethods = "eidas" | "freja" | "bankid";
 

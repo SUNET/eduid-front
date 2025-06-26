@@ -1,7 +1,7 @@
-import authnApi from "apis/authn";
-import { bankIDApi } from "apis/bankid";
-import { eidasApi, GetStatusResponse } from "apis/eidas";
-import { frejaeIDApi } from "apis/frejaeID";
+import authnApi from "apis/eduidAuthn";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";

@@ -1,4 +1,4 @@
-import personalDataApi from "apis/personalData";
+import personalDataApi from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";

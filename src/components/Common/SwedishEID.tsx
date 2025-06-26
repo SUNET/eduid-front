@@ -1,5 +1,5 @@
-import { bankIDApi } from "apis/bankid";
-import { eidasApi } from "apis/eidas";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi } from "apis/eduidEidas";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { Form as FinalForm } from "react-final-form";

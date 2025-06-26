@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "apis/login";
+import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "apis/eduidLogin";
 import { ToUs } from "helperFunctions/ToUs";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 

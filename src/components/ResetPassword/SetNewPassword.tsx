@@ -1,4 +1,4 @@
-import { resetPasswordApi } from "apis/resetPassword";
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";

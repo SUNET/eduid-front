@@ -1,4 +1,4 @@
-import { ladokApi } from "apis/ladok";
+import { ladokApi } from "apis/eduidLadok";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";

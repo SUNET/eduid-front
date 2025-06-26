@@ -1,4 +1,4 @@
-import securityApi from "apis/security";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { useState } from "react";

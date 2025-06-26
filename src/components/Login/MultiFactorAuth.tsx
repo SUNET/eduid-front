@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";

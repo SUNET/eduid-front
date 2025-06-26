@@ -1,4 +1,4 @@
-import { ExtraSecurityAlternatives } from "apis/resetPassword";
+import { ExtraSecurityAlternatives } from "apis/eduidResetPassword";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { GoBackButton } from "components/ResetPassword/GoBackButton";

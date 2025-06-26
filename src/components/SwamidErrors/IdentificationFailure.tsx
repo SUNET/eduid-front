@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";

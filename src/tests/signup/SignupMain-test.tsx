@@ -1,13 +1,13 @@
 import {
-    AcceptToURequest,
-    CaptchaRequest,
-    CreateUserRequest,
-    GetCaptchaResponse,
-    RegisterEmailRequest,
-    SignupState,
-    SignupStatusResponse,
-    VerifyEmailRequest
-} from "apis/signup";
+  AcceptToURequest,
+  CaptchaRequest,
+  CreateUserRequest,
+  GetCaptchaResponse,
+  RegisterEmailRequest,
+  SignupState,
+  SignupStatusResponse,
+  VerifyEmailRequest
+} from "apis/eduidSignup";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";

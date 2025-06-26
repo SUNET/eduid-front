@@ -1,7 +1,7 @@
-import { ApiResponse, eduIDApi } from "./api";
-import { EmailInfo } from "./email";
-import { LadokData } from "./ladok";
-import { OrcidInfo } from "./orcid";
+import { ApiResponse, eduIDApi } from "./common";
+import { EmailInfo } from "./eduidEmail";
+import { LadokData } from "./eduidLadok";
+import { OrcidInfo } from "./eduidOrcid";
 
 
 /*

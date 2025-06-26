@@ -1,5 +1,5 @@
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
-import { ApiResponse, eduIDApi } from "./api";
+import { ApiResponse, eduIDApi } from "./common";
 
 export interface LoginAbortRequest {
   ref: string;

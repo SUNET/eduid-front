@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import securityApi from "apis/security";
+import securityApi from "apis/eduidSecurity";
 
 export interface ChangePasswordState {
   message?: string;

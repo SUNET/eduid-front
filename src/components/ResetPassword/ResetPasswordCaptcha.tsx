@@ -1,5 +1,5 @@
-import { resetPasswordApi } from "apis/resetPassword";
-import { CaptchaRequest } from "apis/signup";
+import { resetPasswordApi } from "apis/eduidResetPassword";
+import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";

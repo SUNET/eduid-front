@@ -1,4 +1,4 @@
-import securityApi, { SecurityKeysResponse } from "apis/security";
+import securityApi, { SecurityKeysResponse } from "apis/eduidSecurity";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Accordion } from "react-accessible-accordion";

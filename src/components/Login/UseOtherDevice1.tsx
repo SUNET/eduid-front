@@ -1,4 +1,4 @@
-import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/login";
+import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

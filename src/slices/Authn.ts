@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import authnApi from "apis/authn";
+import authnApi from "apis/eduidAuthn";
 
 interface FrontendActionAndState {
   frontend_action: string;

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ladokApi, LadokData, LadokUniversityData } from "apis/ladok";
-import personalDataApi from "apis/personalData";
+import { ladokApi, LadokData, LadokUniversityData } from "apis/eduidLadok";
+import personalDataApi from "apis/eduidPersonalData";
 
 interface LadokState {
   isLinked: boolean;

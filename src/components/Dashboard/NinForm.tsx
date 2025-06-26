@@ -1,4 +1,4 @@
-import securityApi from "apis/security";
+import securityApi from "apis/eduidSecurity";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";

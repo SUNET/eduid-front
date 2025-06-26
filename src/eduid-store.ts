@@ -1,4 +1,4 @@
-import { eduIDApi } from "apis/api";
+import { eduIDApi } from "apis/common";
 import { combineReducers } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
 import { appLoadingSlice } from "slices/AppLoading";

@@ -1,5 +1,5 @@
-import { jsConfigApi } from "apis/jsConfig";
-import personalDataApi from "apis/personalData";
+import { jsConfigApi } from "apis/eduidJsConfig";
+import personalDataApi from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";

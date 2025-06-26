@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { emailApi, EmailsResponse } from "apis/email";
-import personalDataApi from "apis/personalData";
+import { emailApi, EmailsResponse } from "apis/eduidEmail";
+import personalDataApi from "apis/eduidPersonalData";
 
 export const initialState: EmailsResponse = {
   emails: [],

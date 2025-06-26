@@ -1,4 +1,4 @@
-import securityApi from "apis/security";
+import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";

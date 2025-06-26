@@ -1,5 +1,5 @@
-import { GetStatusRequest, GetStatusResponse } from "apis/eidas";
-import { ApiResponse, eduIDApi } from "./api";
+import { GetStatusRequest, GetStatusResponse } from "apis/eduidEidas";
+import { ApiResponse, eduIDApi } from "./common";
 
 export interface AuthenticateResponse {
   location: string;

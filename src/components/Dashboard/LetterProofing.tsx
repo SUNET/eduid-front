@@ -1,5 +1,5 @@
-import { letterProofingApi } from "apis/letterProofing";
-import personalDataApi from "apis/personalData";
+import { letterProofingApi } from "apis/eduidLetterProofing";
+import personalDataApi from "apis/eduidPersonalData";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";

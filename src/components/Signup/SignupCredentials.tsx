@@ -1,5 +1,5 @@
 import { useSelector } from "@xstate/react";
-import { signupApi } from "apis/signup";
+import { signupApi } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";

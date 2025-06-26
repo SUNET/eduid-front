@@ -1,4 +1,4 @@
-import { ServiceInfo } from "apis/login";
+import { ServiceInfo } from "apis/eduidLogin";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 

@@ -1,8 +1,8 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import personalDataApi, { UserNameSchema } from "apis/personalData";
-import securityApi from "apis/security";
+import personalDataApi, { UserNameSchema } from "apis/eduidPersonalData";
+import securityApi from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

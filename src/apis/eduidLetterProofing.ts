@@ -1,4 +1,4 @@
-import { ApiResponse, eduIDApi } from "./api";
+import { ApiResponse, eduIDApi } from "./common";
 
 interface LetterProofingRequest {
     nin: string

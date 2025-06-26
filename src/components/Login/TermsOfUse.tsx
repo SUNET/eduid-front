@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect } from "react";

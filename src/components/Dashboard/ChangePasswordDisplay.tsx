@@ -1,4 +1,4 @@
-import securityApi from "apis/security";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";

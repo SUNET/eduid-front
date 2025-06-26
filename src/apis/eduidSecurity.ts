@@ -1,6 +1,6 @@
 import { webauthnAttestation } from "helperFunctions/navigatorCredential";
-import { ApiResponse, eduIDApi } from "./api";
-import { FetchIdentitiesResponse, UserIdentities } from "./personalData";
+import { ApiResponse, eduIDApi } from "./common";
+import { FetchIdentitiesResponse, UserIdentities } from "./eduidPersonalData";
 
 interface UpdateOfficialUserDataResponse {
     message: string

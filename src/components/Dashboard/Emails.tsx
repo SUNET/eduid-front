@@ -1,4 +1,4 @@
-import { emailApi } from "apis/email";
+import { emailApi } from "apis/eduidEmail";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";

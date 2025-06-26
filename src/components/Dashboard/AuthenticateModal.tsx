@@ -1,4 +1,4 @@
-import authnApi from "apis/authn";
+import authnApi from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";

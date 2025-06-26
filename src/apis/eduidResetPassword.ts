@@ -1,6 +1,6 @@
 import { webauthnAssertion } from "helperFunctions/navigatorCredential";
-import { ApiResponse, eduIDApi } from "./api";
-import { CaptchaRequest, GetCaptchaResponse } from "./signup";
+import { ApiResponse, eduIDApi } from "./common";
+import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
 
 interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;

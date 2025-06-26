@@ -1,8 +1,8 @@
-import authnApi from "apis/authn";
-import { bankIDApi } from "apis/bankid";
-import { eidasApi, GetStatusResponse } from "apis/eidas";
-import personalDataApi from "apis/personalData";
-import { resetPasswordApi } from "apis/resetPassword";
+import authnApi from "apis/eduidAuthn";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
+import personalDataApi from "apis/eduidPersonalData";
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";

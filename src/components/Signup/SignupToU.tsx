@@ -1,5 +1,5 @@
 import { skipToken } from "@reduxjs/toolkit/query";
-import { signupApi } from "apis/signup";
+import { signupApi } from "apis/eduidSignup";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";

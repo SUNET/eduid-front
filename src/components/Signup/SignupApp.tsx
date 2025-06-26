@@ -1,7 +1,7 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useSelector } from "@xstate/react";
-import { loginApi } from "apis/login";
-import { signupApi } from "apis/signup";
+import { loginApi } from "apis/eduidLogin";
+import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppSelector } from "eduid-hooks";

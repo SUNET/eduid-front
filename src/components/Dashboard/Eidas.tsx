@@ -1,4 +1,4 @@
-import { eidasApi } from "apis/eidas";
+import { eidasApi } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import { Fragment, useState } from "react";

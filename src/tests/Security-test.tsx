@@ -1,4 +1,4 @@
-import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/security";
+import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
 import { mswServer, rest } from "setupTests";

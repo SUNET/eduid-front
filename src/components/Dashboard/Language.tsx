@@ -1,4 +1,4 @@
-import { personalDataApi, UserLanguageSchema } from "apis/personalData";
+import { personalDataApi, UserLanguageSchema } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";

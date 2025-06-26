@@ -1,10 +1,10 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { eidasApi } from "apis/eidas";
-import { frejaeIDApi } from "apis/frejaeID";
-import personalDataApi from "apis/personalData";
-import { ActionStatus, securityApi } from "apis/security";
+import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
+import personalDataApi from "apis/eduidPersonalData";
+import { ActionStatus, securityApi } from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";

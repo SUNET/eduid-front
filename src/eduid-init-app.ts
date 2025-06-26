@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { eduIDApi } from "apis/api";
+import { eduIDApi } from "apis/common";
 import authnMiddleware from "middleware/AuthnMiddleware";
 import csrfTokenMiddleware from "middleware/CsrfTokenMiddleware";
 import notifyAndDispatch from "middleware/notify-middleware";

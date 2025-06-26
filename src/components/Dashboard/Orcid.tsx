@@ -1,5 +1,5 @@
 import { urlJoin } from "apis/common";
-import { orcidApi } from "apis/orcid";
+import { orcidApi } from "apis/eduidOrcid";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";

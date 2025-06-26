@@ -1,5 +1,5 @@
-import { NinIdentity } from "apis/personalData";
-import securityApi from "apis/security";
+import { NinIdentity } from "apis/eduidPersonalData";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
 import { useState } from "react";

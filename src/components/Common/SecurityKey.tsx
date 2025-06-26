@@ -1,4 +1,4 @@
-import { loginApi } from "apis/login";
+import { loginApi } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { Fragment, useContext, useEffect, useRef, useState } from "react";

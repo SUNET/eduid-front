@@ -1,5 +1,5 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { letterProofingApi } from "apis/letterProofing";
+import { letterProofingApi } from "apis/eduidLetterProofing";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";

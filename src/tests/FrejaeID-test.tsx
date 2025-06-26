@@ -1,4 +1,4 @@
-import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/frejaeID";
+import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
 import { mswServer, rest } from "setupTests";

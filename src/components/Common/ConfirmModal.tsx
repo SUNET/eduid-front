@@ -1,4 +1,4 @@
-import { GetCaptchaResponse } from "apis/signup";
+import { GetCaptchaResponse } from "apis/eduidSignup";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
