@@ -8,7 +8,7 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
@@ -26,26 +26,27 @@ export function SignupConfirmPassword() {
   const signupState = useAppSelector((state) => state.signup.state);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
-  const [createUser, { isSuccess, isError }] = signupApi.useLazyCreateUserRequestQuery()
+  const [createUser] = signupApi.useLazyCreateUserRequestQuery()
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
-    if (newPassword) {
-      createUser({
+    if (!newPassword) {
+      return;
+    } else {
+      const response = await createUser({
         use_suggested_password: renderSuggested,
         custom_password: renderSuggested ? undefined : newPassword,
       });
+
+
+      if (response.isSuccess) {
+        dispatch(clearNotifications());
+        signupContext.signupService.send({ type: "API_SUCCESS" });
+      } else {
+        signupContext.signupService.send({ type: "API_FAIL" });
+      }
     }
   }
-
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
-    } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
-    }
-  }, [isSuccess, isError])
 
   function handleSwitchChange() {
     setRenderSuggested(!renderSuggested);
