@@ -1,4 +1,4 @@
-import { personalDataApi, UserLanguageSchema } from "apis/eduidPersonalData";
+import { personalDataApi, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
@@ -23,7 +23,7 @@ export function LanguagePreference() {
     }
   }, []);
 
-  async function formSubmit(values: UserLanguageSchema) {
+  async function formSubmit(values: UserLanguageRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     let postData = values;
     postData = {
@@ -32,7 +32,7 @@ export function LanguagePreference() {
     postLanguage(postData);
   }
 
-  async function postLanguage(postData: UserLanguageSchema) {
+  async function postLanguage(postData: UserLanguageRequest) {
     const response = await postUserLanguage(postData);
     if ("data" in response) {
       dispatch(clearNotifications());
@@ -58,7 +58,7 @@ export function LanguagePreference() {
           defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
         />
       </p>
-      <FinalForm<UserLanguageSchema>
+      <FinalForm<UserLanguageRequest>
         initialValues={{language: personal_data?.language}}
         onSubmit={formSubmit}
         render={(formProps) => {

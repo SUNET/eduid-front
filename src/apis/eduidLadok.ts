@@ -8,8 +8,8 @@ export interface LadokUniversity {
   ladok_name: string;
   name: { [locale: string]: string; }; // mapping from locale name to name of university
 }
-// Data about a user in Ladok
 
+// Data about a user in Ladok
 export interface LadokData {
   external_id: string; // Ladok's unique and stable identifier for a user
   university: LadokUniversity; // The source of the information
@@ -28,7 +28,7 @@ export interface LadokLinkUserResponse {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface LadokUnlinkUserResponse { }
+export interface LadokUnlinkUserResponse {}
 
 export const ladokApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

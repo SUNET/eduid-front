@@ -11,10 +11,10 @@ interface FrejaeIDCommonResponse {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityRequest extends FrejaeIDCommonRequest { }
+export interface VerifyIdentityRequest extends FrejaeIDCommonRequest {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityResponse extends FrejaeIDCommonResponse { }
+export interface VerifyIdentityResponse extends FrejaeIDCommonResponse {}
 
 export const frejaeIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

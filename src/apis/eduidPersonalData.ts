@@ -8,12 +8,27 @@ import { OrcidInfo } from "./eduidOrcid";
  * Code and data structures for talking to the eduid-personal_data backend microservice.
  */
 
+export interface PreferencesData {
+  always_use_security_key: boolean;
+}
+
 export interface PersonalDataRequest {
   given_name?: string;
   surname?: string;
   chosen_given_name?: string;
   language?: string;
-  preferences?: UserPreferences;
+  preferences?: PreferencesData;
+}
+
+export interface UserNameRequest {
+  given_name: string;
+  surname: string;
+  chosen_given_name?: string;
+  legal_name?: string;
+}
+
+export interface UserLanguageRequest {
+  language: string;
 }
 
 export interface AllUserData {
@@ -27,8 +42,8 @@ export interface AllUserData {
   orcid?: OrcidInfo;
   ladok?: LadokData;
 }
-/*********************************************************************************************************************/
 
+/*********************************************************************************************************************/
 export interface NinIdentity {
   number: string;
   verified: boolean;
@@ -43,7 +58,7 @@ export interface EidasIdentity {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FrejaeIDIdentity extends EidasIdentity { }
+export interface FrejaeIDIdentity extends EidasIdentity {}
 
 export interface UserIdentities {
   nin?: NinIdentity;
@@ -56,60 +71,45 @@ export interface FetchIdentitiesResponse {
   identities: UserIdentities;
 }
 
-export interface UserNameSchema {
-    given_name: string;
-    chosen_given_name?: string;
-    surname: string;
-    legal_name?: string;
-}
-
-export interface UserLanguageSchema {
-    language: string;
-}
-
-interface UserPreferences {
-    always_use_security_key: boolean;
-}
-
 export const personalDataApi = eduIDApi.injectEndpoints({
-    endpoints: (builder) => ({
-        postUserName: builder.mutation<ApiResponse<UserNameSchema>, UserNameSchema>({
-            query: (args) => ({
-                url: "user/name",
-                body: {
-                    given_name: args.given_name,
-                    chosen_given_name: args.chosen_given_name,
-                    surname: args.surname,
-                    legal_name: args.legal_name,
-                }
-            }),
-            extraOptions: { service: 'personalData' },
-        }),
-        postUserLanguage: builder.mutation<ApiResponse<UserLanguageSchema>, UserLanguageSchema>({
-            query: (args) => ({
-                url: "user/language",
-                body: {
-                    language: args.language,
-                }
-            }),
-            extraOptions: { service: 'personalData' },
-        }),
-        requestAllPersonalData: builder.query<ApiResponse<AllUserData>, void>({
-            query: () => ({
-                url: "all-user-data",
-            }),
-            extraOptions: { service: 'personalData' },
-        }),
-        postSecurityKeyPreference: builder.mutation<ApiResponse<UserPreferences>, UserPreferences>({
-            query: (args) => ({
-                url: "preferences",
-                body: {
-                    always_use_security_key: args.always_use_security_key
-                }
-            }),
-            extraOptions: { service: 'personalData' },
-        })
+  endpoints: (builder) => ({
+    postUserName: builder.mutation<ApiResponse<UserNameRequest>, UserNameRequest>({
+      query: (args) => ({
+        url: "user/name",
+        body: {
+          given_name: args.given_name,
+          chosen_given_name: args.chosen_given_name,
+          surname: args.surname,
+          legal_name: args.legal_name,
+        }
+      }),
+      extraOptions: { service: 'personalData' },
+    }),
+    postUserLanguage: builder.mutation<ApiResponse<UserLanguageRequest>, UserLanguageRequest>({
+      query: (args) => ({
+        url: "user/language",
+        body: {
+          language: args.language,
+        }
+    }),
+      extraOptions: { service: 'personalData' },
+    }),
+    requestAllPersonalData: builder.query<ApiResponse<AllUserData>, void>({
+      query: () => ({
+        url: "all-user-data",
+      }),
+      extraOptions: { service: 'personalData' },
+    }),
+    postSecurityKeyPreference: builder.mutation<ApiResponse<PreferencesData>, PreferencesData>({
+      query: (args) => ({
+        url: "preferences",
+        body: {
+          always_use_security_key: args.always_use_security_key
+        }
+      }),
+      extraOptions: { service: 'personalData' },
     })
+  })
 })
 
 export default personalDataApi

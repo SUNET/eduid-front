@@ -12,19 +12,19 @@ interface OrcidResponse {
 }
 
 export const orcidApi = eduIDApi.injectEndpoints({
-    endpoints: (builder) => ({
-        fetchOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
-            query: () => ({
-                url: ""
-            }),
-            extraOptions: { service: "orcid" }
-        }),
-        removeOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
-            query: () => ({
-                url: "remove",
-                body: {}
-            }),
-            extraOptions: { service: "orcid" }
-        })
+  endpoints: (builder) => ({
+    fetchOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
+      query: () => ({
+        url: ""
+      }),
+      extraOptions: { service: "orcid" }
+    }),
+    removeOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
+      query: () => ({
+        url: "remove",
+        body: {}
+      }),
+      extraOptions: { service: "orcid" }
     })
+  })
 })

@@ -6,14 +6,6 @@ interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;
 }
 
-export interface NewPasswordRequest {
-  email_code: string;
-  password: string;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NewPasswordResponse {}
-
 export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest, webauthnAssertion {}
 
 /* phone is unused and kept for backwards compatibility */
@@ -32,6 +24,17 @@ export interface RequestPhoneCodeResponse {
   message: string;
 }
 /* phone is unused and kept for backwards compatibility */
+
+export interface RequestEmailLinkRequest {
+  email: string;
+}
+
+export interface RequestEmailLinkResponse {
+  email: string;
+  email_code_timeout: number; // How many seconds the link in the e-mail is valid. Currently unused in frontend.
+  throttled_seconds: number;
+  throttled_max: number;
+}
 
 export interface VerifyCodeRequest {
   email_code: string;
@@ -61,16 +64,13 @@ export interface ExtraSecurityTokens {
   webauthn_options?: string;
 }
 
-export interface RequestEmailLinkRequest {
-  email: string;
+export interface NewPasswordRequest {
+  email_code: string;
+  password: string;
 }
 
-export interface RequestEmailLinkResponse {
-  email: string;
-  email_code_timeout: number; // How many seconds the link in the e-mail is valid. Currently unused in frontend.
-  throttled_seconds: number;
-  throttled_max: number;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NewPasswordResponse {}
 
 export const resetPasswordApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

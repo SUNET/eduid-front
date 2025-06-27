@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import personalDataApi, { UserNameSchema } from "apis/eduidPersonalData";
+import personalDataApi, { UserNameRequest } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
@@ -35,7 +35,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
   const [postUserName] = personalDataApi.usePostUserNameMutation();
 
-  async function formSubmit(values: UserNameSchema) {
+  async function formSubmit(values: UserNameRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
 
     let postData = values;
@@ -50,7 +50,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   }
 
   return (
-    <FinalForm<UserNameSchema>
+    <FinalForm<UserNameRequest>
       initialValues={{
         given_name: personal_data?.given_name,
         chosen_given_name: personal_data?.chosen_given_name,
