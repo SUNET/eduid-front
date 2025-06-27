@@ -21,38 +21,31 @@ interface VerifyEmailRequest extends EmailRequest {
 export const emailApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     makePrimaryEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "primary",
-        body: {
-          email: args.email
-        }
+        body
       }),
       extraOptions: { service: "email" }
     }),
     verifyEmail: builder.query<ApiResponse<EmailsResponse>, VerifyEmailRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "verify",
-        body: {
-          code: args.code,
-          email: args.email
-        }
+        body
       }),
       extraOptions: { service: "email" }
     }),
     resendEmailCode: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "resend-code",
-        body: {
-          email: args.email
-        }
+        body
       }),
       extraOptions: { service: "email" }
     }),
     newEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "new",
         body: {
-          email: args.email,
+          ...body,
           verified: false,
           primary: false
         }
@@ -60,11 +53,9 @@ export const emailApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "email" }
     }),
     removeEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "remove",
-        body: {
-          email: args.email
-        }
+        body
       }),
       extraOptions: { service: "email" }
     })

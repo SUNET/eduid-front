@@ -8,9 +8,9 @@ export const jsConfigApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchJsConfig: builder.query<ApiResponse<JsConfigGetConfigResponse>,void>({
       query: () => ({
-        url: ''
+        url: ""
       }),
-      extraOptions: { service: 'jsConfig'}
+      extraOptions: { service: "jsConfig"}
     })
   })
 })

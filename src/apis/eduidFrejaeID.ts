@@ -19,21 +19,19 @@ export interface VerifyIdentityResponse extends FrejaeIDCommonResponse {}
 export const frejaeIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     frejaeIDVerifyIdentity: builder.query<ApiResponse<VerifyIdentityResponse>, VerifyIdentityRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "verify-identity",
         body: {
-          method: args.method,
-          frontend_action: args.frontend_action ?? "verifyIdentity"
+          ...body,
+          frontend_action: body.frontend_action ?? "verifyIdentity"
         }
       }),
       extraOptions: { service: "frejaeID" }
     }),
     frejaeIDGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "get-status",
-        body: {
-          authn_id: args.authn_id
-        }
+        body
       }),
       extraOptions: { service: "frejaeID" }
     })

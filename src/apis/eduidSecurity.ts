@@ -108,11 +108,9 @@ export const securityApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "security" }
     }),
     removeWebauthnToken: builder.query<ApiResponse<SecurityResponse>, RemoveWebauthnTokensRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "webauthn/remove",
-        body: {
-          credential_key: args.credential_key
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
@@ -123,23 +121,19 @@ export const securityApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "security" }
     }),
     registerWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "webauthn/register/complete",
         body: {
-          attestationObject: args.webauthn_attestation.attestationObject,
-          clientDataJSON: args.webauthn_attestation.clientDataJSON,
-          credentialId: args.webauthn_attestation.credentialId,
-          description: args.description
+          ...body.webauthn_attestation,
+          description: body.description
         }
       }),
       extraOptions: { service: "security" }
     }),
     beginRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebauthnRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "webauthn/register/begin",
-        body: {
-          authenticator: args.authenticator
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
@@ -150,29 +144,23 @@ export const securityApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "security" }
     }),
     changePassword: builder.query<ApiResponse<ChangePasswordResponse>, ChangePasswordPayload>({
-      query: (args) => ({
+      query: (body) => ({
         url: "change-password/set-password",
-        body: {
-          new_password: args.new_password
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
     addNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
-      query: (args) => ({
+      query: (body) => ({
         url: "add-nin",
-        body: {
-          nin: args.nin
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
     removeNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
-      query: (args) => ({
+      query: (body) => ({
         url: "remove-nin",
-        body: {
-          nin: args.nin
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
@@ -183,21 +171,16 @@ export const securityApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "security" }
     }),
     removeIdentity: builder.query<ApiResponse<IdentitiesResponse>, IdentityRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "remove-identity",
-        body: {
-          identity_type: args.identity_type
-        }
+        body
       }),
       extraOptions: { service: "security" }
     }),
     getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>, AuthnActionStatusRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "authn-status",
-        body: {
-          frontend_action: args.frontend_action,
-          credential_id: args.credential_id
-        }
+        body
       }),
       extraOptions: { service: "security" }
     })

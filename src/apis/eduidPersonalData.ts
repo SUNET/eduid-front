@@ -74,24 +74,17 @@ export interface FetchIdentitiesResponse {
 export const personalDataApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     postUserName: builder.mutation<ApiResponse<UserNameRequest>, UserNameRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "user/name",
-        body: {
-          given_name: args.given_name,
-          chosen_given_name: args.chosen_given_name,
-          surname: args.surname,
-          legal_name: args.legal_name,
-        }
+        body
       }),
       extraOptions: { service: 'personalData' },
     }),
     postUserLanguage: builder.mutation<ApiResponse<UserLanguageRequest>, UserLanguageRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "user/language",
-        body: {
-          language: args.language,
-        }
-    }),
+        body
+      }),
       extraOptions: { service: 'personalData' },
     }),
     requestAllPersonalData: builder.query<ApiResponse<AllUserData>, void>({
@@ -101,11 +94,9 @@ export const personalDataApi = eduIDApi.injectEndpoints({
       extraOptions: { service: 'personalData' },
     }),
     postSecurityKeyPreference: builder.mutation<ApiResponse<PreferencesData>, PreferencesData>({
-      query: (args) => ({
+      query: (body) => ({
         url: "preferences",
-        body: {
-          always_use_security_key: args.always_use_security_key
-        }
+        body
       }),
       extraOptions: { service: 'personalData' },
     })

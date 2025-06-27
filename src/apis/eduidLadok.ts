@@ -39,11 +39,9 @@ export const ladokApi = eduIDApi.injectEndpoints({
       extraOptions: { service: "ladok" }
     }),
     linkUser: builder.query<ApiResponse<LadokLinkUserResponse>, LadokLinkUserRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "link-user",
-        body: {
-          ladok_name: args.ladok_name
-        }
+        body
       }),
       extraOptions: { service: "ladok" }
     }),

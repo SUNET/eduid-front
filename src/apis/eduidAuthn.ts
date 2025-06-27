@@ -13,21 +13,16 @@ export interface AuthenticateRequest {
 export const authnApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     authenticate: builder.query<ApiResponse<AuthenticateResponse>, AuthenticateRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "authenticate",
-        body: {
-          frontend_action: args.frontend_action,
-          frontend_state: args.frontend_state
-        }
+        body
       }),
       extraOptions: { service: "authn" }
     }),
     authnGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "get-status",
-        body: {
-          authn_id: args.authn_id
-        }
+        body
       }),
       extraOptions: { service: "authn" }
     })

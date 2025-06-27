@@ -1,11 +1,11 @@
 import { ApiResponse, eduIDApi } from "./common";
 
 interface LetterProofingRequest {
-    nin: string
+  nin: string
 }
 
 interface LetterProofingConfirmation {
-    code: string
+  code: string
 }
 
 export interface LetterProofingResponse {
@@ -18,31 +18,27 @@ export interface LetterProofingResponse {
 }
 
 export const letterProofingApi = eduIDApi.injectEndpoints({
-    endpoints: (builder) => ({
-        letterProfingState: builder.query<ApiResponse<LetterProofingResponse>, void>({
-            query: () => ({
-                url: "proofing"
-            }),
-            extraOptions: { service: "letterProofing" }
-        }),
-        requestLetter: builder.query<ApiResponse<LetterProofingResponse>, LetterProofingRequest>({
-            query: (args) => ({
-                url: "proofing",
-                body: {
-                    nin: args.nin
-                }
-            }),
-            extraOptions: { service: "letterProofing" }
-        }),
-        confirmLetterCode: builder.query<ApiResponse<LetterProofingRequest>, LetterProofingConfirmation>({
-            query: (args) => ({
-                url: "verify-code",
-                body: {
-                    code: args.code
-                }
-            }),
-            extraOptions: { service: "letterProofing" }
-        })
-    })
+  endpoints: (builder) => ({
+    letterProfingState: builder.query<ApiResponse<LetterProofingResponse>, void>({
+      query: () => ({
+        url: "proofing"
+      }),
+      extraOptions: { service: "letterProofing" }
+    }),
+    requestLetter: builder.query<ApiResponse<LetterProofingResponse>, LetterProofingRequest>({
+      query: (body) => ({
+        url: "proofing",
+        body
+      }),
+      extraOptions: { service: "letterProofing" }
+    }),
+    confirmLetterCode: builder.query<ApiResponse<LetterProofingRequest>, LetterProofingConfirmation>({
+      query: (body) => ({
+        url: "verify-code",
+        body
+      }),
+      extraOptions: { service: "letterProofing" }
+  })
+  })
 })
 

@@ -32,43 +32,39 @@ export interface VerifyCredentialResponse extends MfaAuthenticateResponse {}
 export const bankIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     bankIDVerifyIdentity: builder.query<ApiResponse<VerifyIdentityResponse>, VerifyIdentityRequest>({
-    query: (args) => ({
+    query: (body) => ({
         url: "verify-identity",
         body: {
-          method: args.method,
-          frontend_action: args.frontend_action ?? "verifyIdentity"
+          ...body,
+          frontend_action: body.frontend_action ?? "verifyIdentity"
         }
       }),
       extraOptions: { service: "bankid" }
     }),
     bankIDMfaAuthenticate: builder.query<ApiResponse<MfaAuthenticateResponse>, MfaAuthenticateRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "mfa-authenticate",
         body: {
-          method: args.method,
-          frontend_state: args.frontend_state,
-          frontend_action: args.frontend_action ?? "loginMfaAuthn"
+          ...body,
+          frontend_action: body.frontend_action ?? "loginMfaAuthn"
         }
       }),
       extraOptions: { service: "bankid" }
     }),
     bankIDVerifyCredential: builder.query<ApiResponse<VerifyCredentialResponse>,VerifyCredentialRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "verify-credential",
         body: {
-          method: args.method,
-          credential_id: args.credential_id,
-          frontend_action: args.frontend_action ?? "verifyCredential"
+          ...body,
+          frontend_action: body.frontend_action ?? "verifyCredential"
         }
       }),
       extraOptions: { service: "bankid" }
     }),
     bankIDGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
-      query: (args) => ({
+      query: (body) => ({
         url: "get-status",
-        body: {
-          authn_id: args.authn_id
-        }
+        body
       }),
       extraOptions: { service: "bankid" }
     })
