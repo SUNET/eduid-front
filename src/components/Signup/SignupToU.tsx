@@ -1,4 +1,5 @@
-import { acceptToURequest } from "apis/eduidSignup";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { signupApi } from "apis/eduidSignup";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
@@ -14,7 +15,7 @@ export function SignupToU(): JSX.Element {
 
   useEffect(() => {
     if (state?.tou.completed) {
-      signupContext.signupService.send({ type: "BYPASS" });
+      signupContext.signupService.send({ type: "TOU_DONE" });
     }
   }, [state]);
 
@@ -50,23 +51,16 @@ export function ProcessToU(): JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const version = signupState?.tou.version;
-
-  async function sendToUAcceptance(version: string) {
-    const res = await dispatch(acceptToURequest({ version }));
-
-    if (acceptToURequest.fulfilled.match(res)) {
-      dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
-    } else {
-      signupContext.signupService.send({ type: "API_FAIL" });
-    }
-  }
+  const {isSuccess,isError} = signupApi.useAcceptToURequestQuery(version?{version}:skipToken)
 
   useEffect(() => {
-    if (version) {
-      sendToUAcceptance(version);
+    if (isSuccess) {
+      dispatch(clearNotifications());
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else if (isError) {
+      signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, []);
+  }, [isSuccess,isError]);
 
   return <React.Fragment></React.Fragment>;
 }

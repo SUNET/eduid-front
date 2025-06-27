@@ -1,16 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  fetchIdentities,
-  PersonalDataRequest,
-  postPersonalData,
-  postSecurityKeyPreference,
-  postUserLanguage,
-  postUserName,
-  PreferencesData,
-  requestAllPersonalData,
-  UserIdentities,
-} from "apis/eduidPersonalData";
-import { addNin, removeIdentity, removeNin } from "apis/eduidSecurity";
+import { createSlice } from "@reduxjs/toolkit";
+import { personalDataApi, PersonalDataRequest, UserIdentities } from "apis/eduidPersonalData";
+import securityApi from "apis/eduidSecurity";
 
 interface PersonalDataState {
   eppn?: string;
@@ -31,53 +21,41 @@ const personalDataSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.eppn = action.payload.eppn;
-        state.response = action.payload;
-      })
-      .addCase(postPersonalData.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+      .addMatcher(securityApi.endpoints.removeIdentity.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.chosen_given_name = action.payload.chosen_given_name;
-          state.response.given_name = action.payload.given_name;
-          state.response.language = action.payload.language;
-          state.response.legal_name = action.payload.legal_name;
-          state.response.surname = action.payload.surname;
+          state.response.identities = action.payload.payload.identities;
         }
       })
-      .addCase(postUserName.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+      .addMatcher(securityApi.endpoints.addNin.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.chosen_given_name = action.payload.chosen_given_name;
-          state.response.given_name = action.payload.given_name;
-          state.response.legal_name = action.payload.legal_name;
-          state.response.surname = action.payload.surname;
+          state.response.identities = action.payload.payload.identities;
         }
       })
-      .addCase(postUserLanguage.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
+      .addMatcher(securityApi.endpoints.removeNin.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.language = action.payload.language;
+          state.response.identities = action.payload.payload.identities;
         }
       })
-      .addCase(postSecurityKeyPreference.fulfilled, (state, action: PayloadAction<PreferencesData>) => {
+      .addMatcher(personalDataApi.endpoints.postUserName.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.preferences = action.payload;
+          state.response.given_name = action.payload.payload.given_name;
+          state.response.chosen_given_name = action.payload.payload.chosen_given_name;
+          state.response.surname = action.payload.payload.surname;
+          state.response.legal_name = action.payload.payload.legal_name;
         }
       })
-      .addCase(removeIdentity.fulfilled, (state, action: PayloadAction<PersonalDataResponse>) => {
-        state.response = action.payload;
-      })
-      .addCase(fetchIdentities.fulfilled, (state, action) => {
+      .addMatcher(personalDataApi.endpoints.postUserLanguage.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.identities = action.payload.identities;
+          state.response.language = action.payload.payload.language;
         }
       })
-      .addCase(addNin.fulfilled, (state, action) => {
-        if (state.response) {
-          state.response.identities = action.payload.identities;
-        }
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {        
+        state.eppn = action.payload.payload.eppn;
+        state.response= action.payload.payload;
       })
-      .addCase(removeNin.fulfilled, (state, action) => {
+      .addMatcher(personalDataApi.endpoints.postSecurityKeyPreference.matchFulfilled, (state, action) => {
         if (state.response) {
-          state.response.identities = action.payload.identities;
+          state.response.preferences = action.payload.payload
         }
       });
   },

@@ -1,4 +1,5 @@
-import { registerEmailRequest, verifyEmailRequest } from "apis/eduidSignup";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { signupApi } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
@@ -17,10 +18,11 @@ export function SignupEnterCode(): JSX.Element {
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
   const state = useAppSelector((state) => state.signup.state);
+  const [ resendCode, { isSuccess } ] = signupApi.useLazyRegisterEmailRequestQuery()
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      signupContext.signupService.send({ type: "BYPASS" });
+      signupContext.signupService.send({ type: "CREDENTIALS_DONE" });
     }
   }, [state]);
 
@@ -35,19 +37,18 @@ export function SignupEnterCode(): JSX.Element {
     setIsExpired(true);
   }
 
-  async function registerEmail() {
-    if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
-      const res = await dispatch(
-        registerEmailRequest({
-          email: signupState?.email.address,
-          given_name: signupState?.name?.given_name,
-          surname: signupState?.name?.surname,
-        })
-      );
+  useEffect(() => {
+    setIsExpired(false);
+  }, [isSuccess])
 
-      if (registerEmailRequest.fulfilled.match(res)) {
-        setIsExpired(false);
-      }
+  async function registerEmail() {
+    console.log(signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname)
+    if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
+      resendCode({
+        email: signupState?.email.address,
+        given_name: signupState?.name?.given_name,
+        surname: signupState?.name?.surname,
+      })
     }
   }
 
@@ -158,26 +159,19 @@ export function SignupEnterCode(): JSX.Element {
 }
 
 export function ProcessEmailCode() {
-  const code = useAppSelector((state) => state.signup.email_code);
+  const verification_code = useAppSelector((state) => state.signup.email_code);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-
-  async function verifyCode(verification_code: string) {
-    const res = await dispatch(verifyEmailRequest({ verification_code }));
-
-    if (verifyEmailRequest.fulfilled.match(res) && res.payload.state.email.completed === true) {
-      dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
-    } else {
-      signupContext.signupService.send({ type: "API_FAIL" });
-    }
-  }
+  const { isSuccess, isError } = signupApi.useVerifyEmailRequestQuery(verification_code?{verification_code}:skipToken)
 
   useEffect(() => {
-    if (code) {
-      verifyCode(code);
+    if (isSuccess) {
+      dispatch(clearNotifications());
+      signupContext.signupService.send({ type: "API_SUCCESS" });
+    } else if (isError) {
+      signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, []);
+  }, [isSuccess,isError]);
 
   return null;
 }

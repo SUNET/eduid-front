@@ -1,19 +1,18 @@
-import { postDeleteAccount } from "apis/eduidSecurity";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useAppDispatch();
+  const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery()
 
   async function handleConfirmationDeletion() {
     setShowModal(false);
-    const response = await dispatch(postDeleteAccount());
-    if (postDeleteAccount.fulfilled.match(response)) {
-      window.location.assign(response.payload.location);
+    const response = await postDeleteAcccount()
+    if (response.isSuccess) {
+      window.location.assign(response.data.payload.location);
     }
   }
 
