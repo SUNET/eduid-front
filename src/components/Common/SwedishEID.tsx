@@ -27,8 +27,8 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
   const ref = useAppSelector((state) => state.login.ref);
   const frontend_action = location.pathname.includes("login") ? "loginMfaAuthn" : "resetpwMfaAuthn";
   const frontend_state = location.pathname.includes("login") ? ref : email_code;
-  const [ bankIDMfaAuthenticate_trigger ] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
-  const [ eidasMfaAuthenticate_trigger ] = eidasApi.useLazyEidasMfaAuthenticateQuery();
+  const [bankIDMfaAuthenticate] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
+  const [eidasMfaAuthenticate] = eidasApi.useLazyEidasMfaAuthenticateQuery();
 
   const placeholder = intl.formatMessage({
     id: "placeholder.recovery_option",
@@ -58,7 +58,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
   ];
 
   async function handleOnClickBankID() {
-    const response = await bankIDMfaAuthenticate_trigger({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state });
+    const response = await bankIDMfaAuthenticate({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
@@ -67,7 +67,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element 
   }
 
   async function handleOnClickFrejaeID() {
-    const response = await eidasMfaAuthenticate_trigger({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state });
+    const response = await eidasMfaAuthenticate({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);

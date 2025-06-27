@@ -26,7 +26,7 @@ export default function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
-  const [ fetchUsernamePassword_trigger ] = loginApi.useLazyFetchUsernamePasswordQuery();
+  const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -35,7 +35,7 @@ export default function UsernamePw() {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const response = await fetchUsernamePassword_trigger({ ref, username: values.username, password: values.currentPassword });
+      const response = await fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword });
       if (response.isSuccess) {
         if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());

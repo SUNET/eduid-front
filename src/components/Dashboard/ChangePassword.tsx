@@ -40,8 +40,8 @@ export function ChangePassword() {
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   let isMounted = true;
-  const [ fetchSuggestedPassword_trigger ] = securityApi.useLazyFetchSuggestedPasswordQuery();
-  const [ changePassword_trigger ] = securityApi.useLazyChangePasswordQuery();
+  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
+  const [changePassword] = securityApi.useLazyChangePasswordQuery();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -62,7 +62,7 @@ export function ChangePassword() {
 
   async function handleSuggestedPassword() {
     try {
-      const response = await fetchSuggestedPassword_trigger();
+      const response = await fetchSuggestedPassword();
       if (isMounted) {
         if (response.isSuccess) {
           navigate("/profile/chpass");
@@ -76,7 +76,7 @@ export function ChangePassword() {
   async function handleSubmitNewPassword(values: ChangePasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
     if (newPassword) {
-      const response = await changePassword_trigger({ new_password: newPassword });
+      const response = await changePassword({ new_password: newPassword });
       if (response.isSuccess) {
         navigate("/profile/chpass/success", {
           state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,

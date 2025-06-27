@@ -6,11 +6,11 @@ import { FormattedMessage } from "react-intl";
 
 export default function DeleteAccount(): JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
-  const [postDeleteAcccount_trigger] = securityApi.useLazyPostDeleteAccountQuery()
+  const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery()
 
   async function handleConfirmationDeletion() {
     setShowModal(false);
-    const response = await postDeleteAcccount_trigger()
+    const response = await postDeleteAcccount()
     if (response.isSuccess) {
       window.location.assign(response.data.payload.location);
     }

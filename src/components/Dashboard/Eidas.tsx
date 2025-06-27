@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [eidasVerifyIdentity_trigger] = eidasApi.useLazyEidasVerifyIdentityQuery();
+  const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
@@ -54,7 +54,7 @@ function Eidas(): JSX.Element {
   );
 
   async function useFrejaeID() {
-    const response = await eidasVerifyIdentity_trigger({ method: "freja" });
+    const response = await eidasVerifyIdentity({ method: "freja" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);

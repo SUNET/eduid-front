@@ -13,7 +13,7 @@ interface SelectedUniProps {
 const LadokContainer = (): JSX.Element => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
-  const [unlinkUser_trigger] = ladokApi.useLazyUnlinkUserQuery();
+  const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
 
   const handleSwitchChange = (): void => {
     // Easiest way to understand the logic in this function is to store the old switch status here.
@@ -21,7 +21,7 @@ const LadokContainer = (): JSX.Element => {
     setSwitchChecked(!switchChecked);
 
     if (wasChecked && isLinked) {
-      unlinkUser_trigger();
+      unlinkUser();
     }
   };
 
@@ -78,8 +78,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
   const ladokName = useAppSelector((state) => state.ladok.ladokName);
   const intl = useIntl();
-  const [ fetchLadokUniversities_trigger ] = ladokApi.useLazyFetchLadokUniversitiesQuery();
-  const [ linkUser_trigger ] = ladokApi.useLazyLinkUserQuery();
+  const [fetchLadokUniversities] = ladokApi.useLazyFetchLadokUniversitiesQuery();
+  const [linkUser] = ladokApi.useLazyLinkUserQuery();
 
   const placeholder = intl.formatMessage({
     id: "ladok.dropdown_placeholder",
@@ -93,14 +93,14 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     if (ladokUnis === undefined) {
       // initiate fetching of universities metadata when the user indicates they
       // are interested in linking their account
-      fetchLadokUniversities_trigger();
+      fetchLadokUniversities();
     }
   }, [ladokUnis]);
 
   function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
     if (newValue?.value) {
       setSelected(newValue);
-      linkUser_trigger({ ladok_name: newValue.value });
+      linkUser({ ladok_name: newValue.value });
     }
   }
 

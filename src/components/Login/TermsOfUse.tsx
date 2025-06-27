@@ -11,20 +11,20 @@ export default function TermsOfUse(): JSX.Element {
   // version is the version of the ToU the backend requests we ask the user to accept
   const version = useAppSelector((state) => state.login.tou.version);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const [ fetchAbort_trigger ] = loginApi.useLazyFetchAbortQuery();
-  const [ fetchToU_trigger ] = loginApi.useLazyFetchToUQuery();
+  const [fetchAbort] = loginApi.useLazyFetchAbortQuery();
+  const [fetchToU] = loginApi.useLazyFetchToUQuery();
 
   useEffect(() => {
     if (!version && loginRef) {
       // Tell the backend what ToU versions are available in this bundle
-      fetchToU_trigger({ ref: loginRef, versions: availableTouVersions });
+      fetchToU({ ref: loginRef, versions: availableTouVersions });
     }
   }, []);
 
   async function handleAccept() {
     if (version && loginRef) {
       // Tell the backend which ToU version the user accepted
-      const response = await fetchToU_trigger({ ref: loginRef, user_accepts: version });
+      const response = await fetchToU({ ref: loginRef, user_accepts: version });
 
       if (response.isSuccess) {
         if (response.data.payload.finished) {
@@ -36,7 +36,7 @@ export default function TermsOfUse(): JSX.Element {
 
   function handleCancel() {
     if (loginRef) {
-      fetchAbort_trigger({ ref: loginRef });
+      fetchAbort({ ref: loginRef });
     }
   }
 

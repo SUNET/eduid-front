@@ -18,7 +18,7 @@ export default function Start(): JSX.Element {
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const [letterProofingState_trigger] = letterProofingApi.useLazyLetterProfingStateQuery();
+  const [letterProofingState] = letterProofingApi.useLazyLetterProfingStateQuery();
   let username;
 
   if (!chosen_given_name && !given_name && emails.length > 0) {
@@ -38,7 +38,7 @@ export default function Start(): JSX.Element {
 
   useEffect(() => {
     if (isLoaded) {
-      letterProofingState_trigger();
+      letterProofingState();
     }
   }, [isLoaded]);
 

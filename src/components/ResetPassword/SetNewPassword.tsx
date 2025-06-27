@@ -40,9 +40,9 @@ export function SetNewPassword(): JSX.Element | null {
 
   async function submitNewPassword(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
-    const [ postSetNewPasswordExternalMfa_trigger ] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
-    const [ postSetNewPasswordExtraSecurityToken_trigger ] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
-    const [ postSetNewPassword_trigger ] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
+    const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
+    const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
+    const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
 
     if (!newPassword || !email_code) {
       return;
@@ -50,12 +50,12 @@ export function SetNewPassword(): JSX.Element | null {
 
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
-      const response = await postSetNewPassword_trigger({ email_code: email_code, password: newPassword });
+      const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
       if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
-      const response = await postSetNewPasswordExtraSecurityToken_trigger({
+      const response = await postSetNewPasswordExtraSecurityToken({
         ...webauthn_assertion,
         email_code: email_code,
         password: newPassword,
@@ -64,7 +64,7 @@ export function SetNewPassword(): JSX.Element | null {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "swedishEID") {
-      const response = await postSetNewPasswordExternalMfa_trigger({
+      const response = await postSetNewPasswordExternalMfa({
         email_code: email_code,
         password: newPassword,
       });

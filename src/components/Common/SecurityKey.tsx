@@ -90,7 +90,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
   //resetpw
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const [ fetchMfaAuth_trigger ] = loginApi.useLazyFetchMfaAuthQuery();
+  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
 
   async function startTokenAssertion(webauthn_challenge?: string) {
     if (location.pathname.includes("login")) {
@@ -98,7 +98,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
         const res = await dispatch(performAuthentication(webauthn_challenge));
         if (performAuthentication.fulfilled.match(res)) {
           // Send response from security key to backend
-          fetchMfaAuth_trigger({ ref: ref, this_device: this_device, webauthn_response: res.payload });
+          fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload });
         }
         if (props.setActive) props.setActive(false);
       }
@@ -117,7 +117,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
   async function fetchAuthnChallenge() {
     if (ref) {
       if (!mfa.webauthn_challenge) {
-        const response = await fetchMfaAuth_trigger({ ref: ref });
+        const response = await fetchMfaAuth({ ref: ref });
         if (response.isSuccess) {
           startTokenAssertion(response.data.payload.webauthn_options);
         }

@@ -11,10 +11,10 @@ export function Orcid(): JSX.Element {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();
-  const [removeOrcid_trigger] = orcidApi.useLazyRemoveOrcidQuery()
+  const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery()
 
   async function handleOrcidDelete() {
-    const result = await removeOrcid_trigger();
+    const result = await removeOrcid();
     if ( result.isError) {
       console.error("Error removing orcid", result.error);
     }

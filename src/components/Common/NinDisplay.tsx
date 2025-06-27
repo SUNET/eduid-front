@@ -14,7 +14,7 @@ interface NinDisplayProps {
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
-  const [removeNin_trigger] = securityApi.useLazyRemoveNinQuery()
+  const [removeNin] = securityApi.useLazyRemoveNinQuery()
 
   if (!props.nin) {
     // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that
@@ -23,7 +23,7 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 
   const handleDelete = function (): void {
     if (props.allowDelete && props.nin) {
-      removeNin_trigger({nin: props.nin.number});
+      removeNin({nin: props.nin.number});
     }
   };
 

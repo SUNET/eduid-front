@@ -22,13 +22,13 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
   const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities?.nin?.number || letter_expired;
-  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [letterProofingState_trigger] = letterProofingApi.useLazyLetterProfingStateQuery();
-  const [requestLetter_trigger] = letterProofingApi.useLazyRequestLetterQuery();
-  const [confirmLetterCode_trigger] = letterProofingApi.useLazyConfirmLetterCodeQuery();
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [letterProofingState] = letterProofingApi.useLazyLetterProfingStateQuery();
+  const [requestLetter] = letterProofingApi.useLazyRequestLetterQuery();
+  const [confirmLetterCode] = letterProofingApi.useLazyConfirmLetterCodeQuery();
 
   useEffect(() => {
-    letterProofingState_trigger();
+    letterProofingState();
   }, []);
 
   function handleModal() {
@@ -50,9 +50,9 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   async function sendConfirmationCode(values: { [key: string]: string }) {
     const confirmationCode = values["letter-confirm-modal"];
     if (confirmationCode) {
-      const response = await confirmLetterCode_trigger({ code: confirmationCode.trim() });
+      const response = await confirmLetterCode({ code: confirmationCode.trim() });
       if (response.isSuccess) {
-        personal_data_refetch();
+        requestAllPersonalData();
       }
     }
     setShowConfirmationModal(false);
@@ -60,9 +60,9 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
 
   async function confirmLetterProofing() {
     if (identities?.nin?.number) {
-      const response = await requestLetter_trigger({nin: identities.nin.number});
+      const response = await requestLetter({nin: identities.nin.number});
       if (response.isSuccess) {
-        personal_data_refetch();
+        requestAllPersonalData();
       }
     }
     setShowNotificationModal(false);

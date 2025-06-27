@@ -26,7 +26,7 @@ function UseOtherDevice2() {
   const params = useParams() as UseOtherParams;
   const [fetching, setFetching] = useState(false);
   const intl = useIntl();
-  const [ fetchUseOtherDevice2_trigger ] = loginApi.useLazyFetchUseOtherDevice2Query();
+  const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -39,7 +39,7 @@ function UseOtherDevice2() {
     async function initialFetch() {
       if (params?.state_id) {
         setFetching(true);
-        await fetchUseOtherDevice2_trigger({ state_id: params.state_id });
+        await fetchUseOtherDevice2({ state_id: params.state_id });
         setFetching(false);
       }
     }
@@ -54,7 +54,7 @@ function UseOtherDevice2() {
       }
     } else {
       // after login, this page is rendered with a loginRef present in the state
-      fetchUseOtherDevice2_trigger({ ref: loginRef });
+      fetchUseOtherDevice2({ ref: loginRef });
     }
   }, [base_url]);
 
@@ -250,7 +250,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [ fetchUseOtherDevice2_trigger ] =loginApi.useLazyFetchUseOtherDevice2Query();
+  const [fetchUseOtherDevice2] =loginApi.useLazyFetchUseOtherDevice2Query();
 
   function handleLoginOnClick() {
     if (data && data.login_ref) {
@@ -262,7 +262,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
 
   function handleCancelOnClick() {
     if (data) {
-      fetchUseOtherDevice2_trigger({ ref: data.login_ref, action: "ABORT" });
+      fetchUseOtherDevice2({ ref: data.login_ref, action: "ABORT" });
     }
   }
 

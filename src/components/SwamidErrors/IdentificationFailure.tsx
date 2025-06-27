@@ -6,12 +6,12 @@ import { FailureComponentProps } from "./Errors";
 
 export function IdentificationFailure(props: FailureComponentProps): JSX.Element {
   const is_configured = useAppSelector((state) => state.config.is_configured);
-  const [ fetchErrorInfo_trigger ] = loginApi.useLazyFetchErrorInfoQuery();
+  const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 
   useEffect(() => {
     if (is_configured) {
       // call fetchErrorInfo once state.config.error_info_url is initialised
-      fetchErrorInfo_trigger();
+      fetchErrorInfo();
     }
   }, [is_configured]);
 

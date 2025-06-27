@@ -18,7 +18,7 @@ export function Index() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
-  const [postDeleteAcccount_trigger] = securityApi.useLazyPostDeleteAccountQuery()
+  const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery()
 
   async function redirectToLogin() {
     dispatch(appLoadingSlice.actions.appLoaded());
@@ -28,7 +28,7 @@ export function Index() {
   }
 
   async function deleteAccount() {
-    const response = await postDeleteAcccount_trigger();
+    const response = await postDeleteAcccount();
     if (response.isSuccess) {
       window.location.assign(response.data.payload.location);
     }

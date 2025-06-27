@@ -15,14 +15,14 @@ export function Header(props: HeaderProps): JSX.Element {
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
-  const [ fetchLogout_trigger ] = loginApi.useLazyFetchLogoutQuery();
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   let button = null;
 
   const navigate = useNavigate();
 
   async function handleLogout() {
-    const response = await fetchLogout_trigger({ ref: props.loginRef });
+    const response = await fetchLogout({ ref: props.loginRef });
     if (response.isSuccess) {
       if (eduid_site_link) {
         window.location.assign(eduid_site_link);

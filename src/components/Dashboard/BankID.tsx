@@ -4,10 +4,10 @@ import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 function BankID(): JSX.Element {
-  const [bankIDVerifyIdentity_trigger] = bankIDApi.useLazyBankIDVerifyIdentityQuery()
+  const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery()
 
   async function useBankID() {
-    const response = await bankIDVerifyIdentity_trigger({ method: "bankid" });
+    const response = await bankIDVerifyIdentity({ method: "bankid" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);

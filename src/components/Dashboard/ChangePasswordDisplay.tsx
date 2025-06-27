@@ -5,10 +5,10 @@ import { useNavigate } from "react-router";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
-  const [ fetchSuggestedPassword_trigger ] = securityApi.useLazyFetchSuggestedPasswordQuery()
+  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery()
 
   async function handleSuggestedPassword() {
-    const response = await fetchSuggestedPassword_trigger();
+    const response = await fetchSuggestedPassword();
     if (response.isSuccess) {
       navigate("/profile/chpass");
     }

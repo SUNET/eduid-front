@@ -15,12 +15,12 @@ const REMEMBER_ME_KEY = "login.remember_me";
 export function NewDevice(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
-  const [ fetchNewDevice_trigger ] = loginApi.useLazyFetchNewDeviceQuery();
+  const [fetchNewDevice] = loginApi.useLazyFetchNewDeviceQuery();
 
   useEffect(() => {
     async function getKnownDevice(): Promise<void> {
       if (ref) {
-        const response = await fetchNewDevice_trigger({ ref });
+        const response = await fetchNewDevice({ ref });
         if (response.isSuccess) {
           const thisDevice = response.data.payload.new_device;
           if (window.localStorage) {

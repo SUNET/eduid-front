@@ -1,6 +1,6 @@
 import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
+import { eidasApi } from "apis/eduidEidas";
 import personalDataApi from "apis/eduidPersonalData";
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -26,14 +26,25 @@ export function LoginExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const is_configured = useAppSelector((state) => state.config.is_configured);
-  const [personal_data_refetch, personalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [authnGetStatus_trigger, authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
-  const [bankIDGetStatus_trigger] = bankIDApi.useLazyBankIDGetStatusQuery();
-  const [eidasGetStatus_trigger] = eidasApi.useLazyEidasGetStatusQuery();
-  const [verifyEmailLink_trigger] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
+  const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
+  const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
+  const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
-  function processStatus(response: GetStatusResponse) {
-      const status = response;
+  async function fetchStatus(authn_id: string) {
+    let getStatusAction;
+
+    if (params.app_name === "eidas") {
+      getStatusAction = eidasGetStatus;
+    } else if (params.app_name === "bankid") {
+      getStatusAction = bankIDGetStatus;
+    } else {
+      getStatusAction = authnGetStatus;
+    }
+    const response = await getStatusAction({ authn_id: authn_id});
+    if (response.isSuccess) {
+      const status = response.data.payload;
 
       if (status.status) {
         dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
@@ -48,10 +59,20 @@ export function LoginExternalReturnHandler() {
           login: "/profile/",
         };
         if (!status.error && status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
-          verifyEmailLink_trigger({ email_code: status.frontend_state });
+          verifyEmailLink({ email_code: status.frontend_state });
         }
         if (!status.error && status.frontend_action === "login") {
-          personal_data_refetch();
+          const response = await requestAllPersonalData();
+          if (response.isSuccess) {
+            if (response.data.payload.language) {
+              dispatch(
+                updateIntl({
+                  locale: response.data.payload.language,
+                  messages: LOCALIZED_MESSAGES[response.data.payload.language],
+                })
+              );
+            }
+          }
           dispatch(appLoadingSlice.actions.appLoaded());
         }
         const _path = actionToRoute[status.frontend_action];
@@ -63,52 +84,13 @@ export function LoginExternalReturnHandler() {
 
       // TODO: Navigate to errors page here
       navigate("/login/"); // GOTO start
-  }
-
-  async function fetchEidasStatus(authn_id: string) {
-    const response = await eidasGetStatus_trigger({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload)
     }
   }
-
-  async function fetchBankIDStatus(authn_id: string) {
-    const response = await bankIDGetStatus_trigger({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload)
-    }
-  }
-
-  useEffect(() => {
-    if (personalData.data && !personalData.isLoading && !personalData.isError) {
-      if (personalData.data.payload.language) {
-        dispatch(
-          updateIntl({
-            locale: personalData.data.payload.language,
-            messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
-          })
-        );
-      }
-    }
-  }, [personalData.data, personalData.isLoading, personalData.isError])
-
-  useEffect(() => {
-    if (authnGetStatus.data && !authnGetStatus.isLoading && !authnGetStatus.isError) {
-      processStatus(authnGetStatus.data.payload);
-
-    }
-  }, [authnGetStatus.data, authnGetStatus.isError, authnGetStatus.isLoading])
 
   useEffect(() => {
     // have to wait for the app to be loaded (jsconfig completed) before we can fetch the status
     if (params.authn_id && is_configured) {
-      if (params.app_name === "eidas") {
-        fetchEidasStatus(params.authn_id);
-      } else if (params.app_name === "bankid") {
-        fetchBankIDStatus(params.authn_id);
-      } else {
-        authnGetStatus_trigger({ authn_id: params.authn_id });
-      }
+      fetchStatus(params.authn_id);
     }
   }, [params, is_configured]);
 

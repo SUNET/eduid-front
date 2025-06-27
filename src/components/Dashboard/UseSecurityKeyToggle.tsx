@@ -11,7 +11,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
   const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
-  const [postSecurityKeyPreference_trigger, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation()
+  const [postSecurityKeyPreference, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation()
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
@@ -34,7 +34,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
-      postSecurityKeyPreference_trigger({ always_use_security_key: !switchChecked });
+      postSecurityKeyPreference({ always_use_security_key: !switchChecked });
     }
   }
 

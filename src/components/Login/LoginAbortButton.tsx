@@ -6,13 +6,13 @@ import { FormattedMessage } from "react-intl";
 
 export function LoginAbortButton(): JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
-  const [ fetchAbort_trigger ] = loginApi.useLazyFetchAbortQuery();
+  const [fetchAbort] = loginApi.useLazyFetchAbortQuery();
 
   async function handleOnClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault(); // don't submit the form when this button is clicked
 
     if (loginRef) {
-      fetchAbort_trigger({ ref: loginRef });
+      fetchAbort({ ref: loginRef });
     }
   }
 

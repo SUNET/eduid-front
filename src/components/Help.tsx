@@ -13,7 +13,7 @@ export function Help(): JSX.Element {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const [ fetchApprovedSecurityKeys_trigger ] = securityApi.useLazyFetchApprovedSecurityKeysQuery()
+  const [fetchApprovedSecurityKeys] = securityApi.useLazyFetchApprovedSecurityKeysQuery()
 
   const locale = useAppSelector((state) => state.intl.locale);
 
@@ -48,7 +48,7 @@ export function Help(): JSX.Element {
   }, [is_configured]);
 
   async function handleApprovedSecurityKeys() {
-    const response = await fetchApprovedSecurityKeys_trigger();
+    const response = await fetchApprovedSecurityKeys();
     if (response.isSuccess) {
       setApprovedSecurityKeys(response.data.payload);
     }

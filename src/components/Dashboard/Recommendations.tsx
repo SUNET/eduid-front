@@ -196,12 +196,12 @@ export function Recommendations(): JSX.Element | null {
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
-  const [requestCredentials_trigger] = securityApi.useLazyRequestCredentialsQuery();
+  const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
 
   useEffect(() => {
     if (isLoaded) {
       // call requestCredentials once app is loaded
-      requestCredentials_trigger();
+      requestCredentials();
     }
   }, [isLoaded]);
 

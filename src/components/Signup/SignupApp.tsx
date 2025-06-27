@@ -52,12 +52,12 @@ function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured?undefined:skipToken);
-  const [ fetchLogout_trigger ] = loginApi.useLazyFetchLogoutQuery();
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
   
   useEffect(() => {
     if (data != undefined) {
       if (data.payload.state.already_signed_up) {
-        fetchLogout_trigger({});
+        fetchLogout({});
       }
       if(data.payload.state.email?.address) {
         signupContext.signupService.send({ type: "EMAIL_DONE" });

@@ -15,7 +15,7 @@ export function LanguagePreference() {
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
   const language_list = Object.entries(_languages);
-  const [postUserLanguage_trigger] = personalDataApi.usePostUserLanguageMutation()
+  const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation()
 
   useEffect(() => {
     if (personal_data?.language === undefined) {
@@ -33,7 +33,7 @@ export function LanguagePreference() {
   }
 
   async function postLanguage(postData: UserLanguageSchema) {
-    const response = await postUserLanguage_trigger(postData);
+    const response = await postUserLanguage(postData);
     if ("data" in response) {
       dispatch(clearNotifications());
       if (response.data?.payload.language) {

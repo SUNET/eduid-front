@@ -13,7 +13,7 @@ export function EmailLinkSent(): JSX.Element | null {
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const [ verifyEmailLink_trigger ] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
+  const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   async function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
@@ -24,7 +24,7 @@ export function EmailLinkSent(): JSX.Element | null {
       const digits = match[0];
 
       if (digits) {
-        const response = await verifyEmailLink_trigger({ email_code: digits });
+        const response = await verifyEmailLink({ email_code: digits });
         if (response.isSuccess) {
           dispatch(clearNotifications());
           if (Object.values(response.data.payload.extra_security)) {

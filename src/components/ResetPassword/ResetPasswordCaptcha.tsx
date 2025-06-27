@@ -14,7 +14,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
-  const [ getCaptchaRequest_trigger ] = resetPasswordApi.useLazyGetResetPasswordCaptchaRequestQuery();
+  const [getCaptchaRequest] = resetPasswordApi.useLazyGetResetPasswordCaptchaRequestQuery();
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
@@ -23,7 +23,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   }, [captcha_completed]);
 
   async function getCaptcha() {
-    const response = await getCaptchaRequest_trigger();
+    const response = await getCaptchaRequest();
     if (response.isSuccess) {
       return response.data.payload;
     }
@@ -78,12 +78,12 @@ export function ProcessCaptcha(): null {
   const email = useAppSelector((state) => state.resetPassword.email_address);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
-  const [ sendCaptchaResponse_trigger ] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
-  const [ requestEmailLink_trigger ] = resetPasswordApi.useLazyRequestEmailLinkQuery();
+  const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
+  const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
 
   async function sendEmailLink() {
     if (email) {
-      const response = await requestEmailLink_trigger({ email });
+      const response = await requestEmailLink({ email });
       if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       } else {
@@ -93,7 +93,7 @@ export function ProcessCaptcha(): null {
   }
 
   async function sendCaptcha(captcha: CaptchaRequest) {
-    const response = await sendCaptchaResponse_trigger(captcha);
+    const response = await sendCaptchaResponse(captcha);
     if (response.isSuccess) {
       dispatch(clearNotifications());
       sendEmailLink();

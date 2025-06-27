@@ -44,7 +44,7 @@ export function MultiFactorPassword(): JSX.Element {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const ref = useAppSelector((state) => state.login.ref);
-  const [ fetchUsernamePassword_trigger ] = loginApi.useLazyFetchUsernamePasswordQuery();
+  const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
 
   async function handleSubmitUsernamePw(values: PasswordFormData) {
     const errors: PasswordFormData = {};
@@ -54,7 +54,7 @@ export function MultiFactorPassword(): JSX.Element {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const response = await fetchUsernamePassword_trigger({ ref, password: values.currentPassword });
+      const response = await fetchUsernamePassword({ ref, password: values.currentPassword });
       if (response.isSuccess) {
         if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());

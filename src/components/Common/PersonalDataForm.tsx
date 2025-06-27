@@ -33,7 +33,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
   const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
-  const [postUserName_trigger] = personalDataApi.usePostUserNameMutation();
+  const [postUserName] = personalDataApi.usePostUserNameMutation();
 
   async function formSubmit(values: UserNameSchema) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
@@ -42,7 +42,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
     if (is_verified) {
       postData = { ...values, chosen_given_name: defaultDisplayGivenName };
     }
-    const response = await postUserName_trigger(postData);
+    const response = await postUserName(postData);
     if ("data" in response) {
       dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
@@ -202,14 +202,14 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
-  const [personal_data_refetch] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [updateOfficialUserData_trigger] = securityApi.useLazyUpdateOfficialUserDataQuery();
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [updateOfficialUserData] = securityApi.useLazyUpdateOfficialUserDataQuery();
 
   async function handleUpdateName() {
-    const response = await updateOfficialUserData_trigger();
+    const response = await updateOfficialUserData();
 
     if (response.isSuccess) {
-      personal_data_refetch();
+      requestAllPersonalData();
     }
   }
 

@@ -12,7 +12,7 @@ export function SignupCaptcha(): JSX.Element | null {
   const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-  const [ getCaptchaRequest_trigger ] = signupApi.useLazyGetSignupCaptchaRequestQuery();
+  const [getCaptchaRequest] = signupApi.useLazyGetSignupCaptchaRequestQuery();
 
   useEffect(() => {
     if (state?.captcha.completed) {
@@ -21,7 +21,7 @@ export function SignupCaptcha(): JSX.Element | null {
   }, [state]);
 
   async function getCaptcha() {
-    const response = await getCaptchaRequest_trigger();
+    const response = await getCaptchaRequest();
     if (response.isSuccess) {
       return response.data.payload;
     }

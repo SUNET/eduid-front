@@ -40,7 +40,7 @@ export interface NinFormData {
 
 function NinForm(): JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
-  const [addNin_trigger] = securityApi.useLazyAddNinQuery()
+  const [addNin] = securityApi.useLazyAddNinQuery()
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -53,7 +53,7 @@ function NinForm(): JSX.Element {
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;
     if (nin) {
-      addNin_trigger({nin});
+      addNin({nin});
     }
   }
 

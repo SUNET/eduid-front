@@ -24,13 +24,13 @@ function UseOtherDevice1() {
   const service_info = useAppSelector((state) => state.login.service_info);
   const this_device = useAppSelector((state) => state.login.this_device);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
-  const [ fetchUseOtherDevice1_trigger ] = loginApi.useLazyFetchUseOtherDevice1Query();
+  const [fetchUseOtherDevice1] = loginApi.useLazyFetchUseOtherDevice1Query();
 
   useEffect(() => {
     if (loginRef && !other_device) {
       // refresh state on page reload
       const _name = username ? username : undefined; // backend is picky and won't allow null
-      fetchUseOtherDevice1_trigger({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me });
+      fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me });
     }
   }, []);
 
@@ -106,7 +106,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const response_code_required = useAppSelector((state) => state.login.other_device1?.response_code_required);
   const bad_attempts = useAppSelector((state) => state.login.other_device1?.bad_attempts);
   const [isExpired, setIsExpired] = useState(false);
-  const [ fetchUseOtherDevice1_trigger ] = loginApi.useLazyFetchUseOtherDevice1Query();
+  const [fetchUseOtherDevice1] = loginApi.useLazyFetchUseOtherDevice1Query();
 
   function handleTimerReachZero() {
     setIsExpired(true);
@@ -116,7 +116,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     event.preventDefault();
     if (login_ref) {
       // Tell backend we're abandoning the request to login using another device
-      fetchUseOtherDevice1_trigger({ ref: login_ref, action: "ABORT" });
+      fetchUseOtherDevice1({ ref: login_ref, action: "ABORT" });
     }
   }
 
@@ -124,7 +124,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     // Get new code
     if (login_ref) {
       const _name = username ? username : undefined; // backend is picky and won't allow null
-      fetchUseOtherDevice1_trigger({ ref: login_ref, action: "FETCH", username: _name, this_device, remember_me });
+      fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name, this_device, remember_me });
       setIsExpired(false);
     }
   }
@@ -136,7 +136,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
       // match[0] is whole matched string
       const digits = match[0];
       if (login_ref) {
-        fetchUseOtherDevice1_trigger({
+        fetchUseOtherDevice1({
           ref: login_ref,
           action: "SUBMIT_CODE",
           response_code: digits,
@@ -152,7 +152,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   function handleContinueWithoutCode() {
     // If the user is known on device #1, the correct response code is not required by the backend
   if (login_ref) {
-      fetchUseOtherDevice1_trigger({
+      fetchUseOtherDevice1({
         ref: login_ref,
         action: "SUBMIT_CODE",
         response_code: "000000",
