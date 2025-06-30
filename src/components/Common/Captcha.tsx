@@ -86,7 +86,7 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
 export interface CaptchaProps {
   readonly handleCaptchaCancel: () => void;
   readonly handleCaptchaCompleted: (response: string) => void;
-  getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
+  readonly getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
 }
 
 export function InternalCaptcha(props: CaptchaProps) {
