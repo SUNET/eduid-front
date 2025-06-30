@@ -1,4 +1,4 @@
-import { fetchNewDevice } from "apis/eduidLogin";
+import { loginApi } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import React, { useEffect, useState } from "react";
@@ -15,13 +15,14 @@ const REMEMBER_ME_KEY = "login.remember_me";
 export function NewDevice(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
+  const [fetchNewDevice] = loginApi.useLazyFetchNewDeviceQuery();
 
   useEffect(() => {
     async function getKnownDevice(): Promise<void> {
       if (ref) {
-        const response = await dispatch(fetchNewDevice({ ref }));
-        if (fetchNewDevice.fulfilled.match(response)) {
-          const thisDevice = response.payload.new_device;
+        const response = await fetchNewDevice({ ref });
+        if (response.isSuccess) {
+          const thisDevice = response.data.payload.new_device;
           if (window.localStorage) {
             window.localStorage.setItem(THIS_DEVICE_KEY, thisDevice);
           }

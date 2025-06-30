@@ -1,4 +1,4 @@
-import { postUserLanguage, UserLanguageRequest } from "apis/eduidPersonalData";
+import { personalDataApi, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
@@ -16,6 +16,7 @@ export function LanguagePreference() {
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
   const language_list = Object.entries(_languages);
+  const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation()
 
   useEffect(() => {
     if (isLoaded && personal_data?.language === undefined) {
@@ -33,15 +34,14 @@ export function LanguagePreference() {
   }
 
   async function postLanguage(postData: UserLanguageRequest) {
-    const response = await dispatch(postUserLanguage(postData));
-
-    if (postUserLanguage.fulfilled.match(response)) {
+    const response = await postUserLanguage(postData);
+    if ("data" in response) {
       dispatch(clearNotifications());
-      if (response.payload.language) {
+      if (response.data?.payload.language) {
         dispatch(
           updateIntl({
-            locale: response.payload.language,
-            messages: messages[response.payload.language],
+            locale: response.data.payload.language,
+            messages: messages[response.data.payload.language],
           })
         );
       }
@@ -60,7 +60,7 @@ export function LanguagePreference() {
         />
       </p>
       <FinalForm<UserLanguageRequest>
-        initialValues={personal_data}
+        initialValues={{language: personal_data?.language}}
         onSubmit={formSubmit}
         render={(formProps) => {
           const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);

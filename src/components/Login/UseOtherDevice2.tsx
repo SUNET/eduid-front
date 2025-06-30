@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fetchUseOtherDevice2, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
+import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import React, { useEffect, useState } from "react";
@@ -24,9 +24,9 @@ function UseOtherDevice2() {
   const loginRef = useAppSelector((state) => state.login.ref);
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
-  const dispatch = useAppDispatch();
   const [fetching, setFetching] = useState(false);
   const intl = useIntl();
+  const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -39,7 +39,7 @@ function UseOtherDevice2() {
     async function initialFetch() {
       if (params?.state_id) {
         setFetching(true);
-        await dispatch(fetchUseOtherDevice2({ state_id: params.state_id }));
+        await fetchUseOtherDevice2({ state_id: params.state_id });
         setFetching(false);
       }
     }
@@ -54,7 +54,7 @@ function UseOtherDevice2() {
       }
     } else {
       // after login, this page is rendered with a loginRef present in the state
-      dispatch(fetchUseOtherDevice2({ ref: loginRef }));
+      fetchUseOtherDevice2({ ref: loginRef });
     }
   }, [base_url]);
 
@@ -250,10 +250,11 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [fetchUseOtherDevice2] =loginApi.useLazyFetchUseOtherDevice2Query();
 
   function handleLoginOnClick() {
     if (data && data.login_ref) {
-      dispatch(loginSlice.actions.callLoginNext);
+      dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
       navigate(`/login/${data.login_ref}`);
     }
@@ -261,7 +262,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
 
   function handleCancelOnClick() {
     if (data) {
-      dispatch(fetchUseOtherDevice2({ ref: data.login_ref, action: "ABORT" }));
+      fetchUseOtherDevice2({ ref: data.login_ref, action: "ABORT" });
     }
   }
 

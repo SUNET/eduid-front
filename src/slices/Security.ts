@@ -1,12 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  CredentialType,
-  postDeleteAccount,
-  registerWebauthn,
-  removeWebauthnToken,
-  requestCredentials,
-} from "apis/eduidSecurity";
-import { createCredential, webauthnAttestation } from "helperFunctions/navigatorCredential";
+import { createSlice } from "@reduxjs/toolkit";
+import { CredentialType, securityApi } from "apis/eduidSecurity";
+import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 
 export interface SecurityState {
   credentials: CredentialType[];
@@ -26,30 +20,21 @@ const securitySlice = createSlice({
   name: "security",
   initialState,
   reducers: {
-    chooseAuthenticator: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        webauthn_authenticator: action.payload,
-      };
-    },
   },
   extraReducers: (builder) => {
-    builder.addCase(createCredential.fulfilled, (state, action) => {
-      state.webauthn_attestation = action.payload;
-    });
-    builder.addCase(registerWebauthn.fulfilled, (state, action) => {
-      state.webauthn_attestation = action.payload.webauthn_attestation;
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(requestCredentials.fulfilled, (state, action) => {
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(removeWebauthnToken.fulfilled, (state, action) => {
-      state.credentials = action.payload.credentials;
-    });
-    builder.addCase(postDeleteAccount.fulfilled, (state, action) => {
-      state.location = action.payload.location;
-    });
+    builder
+      .addMatcher(securityApi.endpoints.requestCredentials.matchFulfilled, (state, action) => {
+        state.credentials = action.payload.payload.credentials;
+      })
+      .addMatcher(securityApi.endpoints.removeWebauthnToken.matchFulfilled, (state, action) => {
+        state.credentials = action.payload.payload.credentials;
+      })
+      .addMatcher(securityApi.endpoints.postDeleteAccount.matchFulfilled, (state, action) => {
+        state.location = action.payload.payload.location;
+      })
+      .addMatcher(securityApi.endpoints.registerWebauthn.matchFulfilled, (state, action) => {
+        state.credentials = action.payload.payload.credentials;
+      })
   },
 });
 export default securitySlice;

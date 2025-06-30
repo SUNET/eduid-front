@@ -17,10 +17,11 @@ import { initialState as personalDataInitialState } from "slices/PersonalData";
 import { initialState as resetPasswordState } from "slices/ResetPassword";
 import { initialState as securityInitialState } from "slices/Security";
 import { initialState as signupInitialState } from "slices/Signup";
+import { Optional } from "./Optional";
 
 export const RESET_PASSWORD_SERVICE_URL = "/reset-password-url/";
 
-export const loginTestState: EduIDAppRootState = {
+export const loginTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
   config: {
     ...configInitialState,
     next_url: "https://localhost/next",
@@ -52,7 +53,7 @@ export const loginTestState: EduIDAppRootState = {
 
 interface renderArgs {
   state?: Partial<EduIDAppRootState>;
-  options?: Omit<RenderOptions, "wrapper" | "legacyRoot">;
+  options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
@@ -67,7 +68,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
       </ResetPasswordGlobalStateProvider>
     );
   }
-  return rtlRender(ui, { wrapper: Wrapper, legacyRoot: true, ...args.options });
+  return rtlRender(ui, { wrapper: Wrapper, ...args.options });
 }
 
 // re-export everything

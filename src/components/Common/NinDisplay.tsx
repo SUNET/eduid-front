@@ -1,8 +1,7 @@
 import { NinIdentity } from "apis/eduidPersonalData";
-import { removeNin } from "apis/eduidSecurity";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
-import { useAppDispatch } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
@@ -15,7 +14,7 @@ interface NinDisplayProps {
 
 function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
-  const dispatch = useAppDispatch();
+  const [removeNin] = securityApi.useLazyRemoveNinQuery()
 
   if (!props.nin) {
     // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that
@@ -24,7 +23,7 @@ function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
 
   const handleDelete = function (): void {
     if (props.allowDelete && props.nin) {
-      dispatch(removeNin(props.nin.number));
+      removeNin({nin: props.nin.number});
     }
   };
 

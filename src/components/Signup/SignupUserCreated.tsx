@@ -1,4 +1,4 @@
-import { createUserRequest } from "apis/eduidSignup";
+import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
@@ -26,20 +26,20 @@ export function SignupConfirmPassword() {
   const signupState = useAppSelector((state) => state.signup.state);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
+  const [createUser] = signupApi.useLazyCreateUserRequestQuery()
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
     if (!newPassword) {
       return;
     } else {
-      const res = await dispatch(
-        createUserRequest({
-          use_suggested_password: renderSuggested,
-          custom_password: renderSuggested ? undefined : newPassword,
-        })
-      );
+      const response = await createUser({
+        use_suggested_password: renderSuggested,
+        custom_password: renderSuggested ? undefined : newPassword,
+      });
 
-      if (createUserRequest.fulfilled.match(res)) {
+
+      if (response.isSuccess) {
         dispatch(clearNotifications());
         signupContext.signupService.send({ type: "API_SUCCESS" });
       } else {
