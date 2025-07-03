@@ -1,3 +1,5 @@
+@use "variables";
+
 /* System/browser set dark mode overrides */
 
 @media (prefers-color-scheme: dark) {
@@ -56,7 +58,7 @@
     color: var(--body-txt);
 
     .landing-howTo {
-      filter: drop-shadow(0 -6px 0 $success-green);
+      filter: drop-shadow(0 -6px 0 variables.$success-green);
     }
 
     .icon-holder {

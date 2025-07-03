@@ -1,3 +1,5 @@
+@use "variables";
+
 /* Modals
 -------------------------------------------------- */
 dialog[open] {
@@ -28,7 +30,7 @@ dialog[open] {
   }
 
   &-dialog {
-    @extend .horizontal-content-margin;
+    @extend .horizontal-content-margin !optional;
     max-width: calc(870px - 4rem);
     background-color: var(--contrast-color);
     border-radius: 20px;
@@ -49,7 +51,7 @@ dialog[open] {
           display: flex;
           text-transform: none;
           justify-content: space-between;
-          @extend .heading-2;
+          @extend .heading-2 !optional;
         }
       }
 
@@ -57,7 +59,7 @@ dialog[open] {
         padding: 0 1.5rem 1rem;
         display: flex;
         flex-direction: column;
-        font-size: $txt-xl;
+        font-size: variables.$txt-xl;
         line-height: 1.4;
         // captcha image
         img {
@@ -84,15 +86,15 @@ dialog[open] {
 
             span {
               margin-top: 0.5rem;
-              font-family: $inter-bold;
+              font-family: variables.$inter-bold;
               display: block;
-              font-size: $txt-md;
+              font-size: variables.$txt-md;
             }
           }
         }
 
-        @media (max-width: $bp-lg) {
-          font-size: $txt-lg;
+        @media (max-width: variables.$bp-lg) {
+          font-size: variables.$txt-lg;
           input {
             font-size: inherit;
 
@@ -117,9 +119,9 @@ dialog[open] {
       }
     }
 
-    @media (max-width: $bp-lg) {
+    @media (max-width: variables.$bp-lg) {
       .modal-body {
-        font-size: $txt-lg;
+        font-size: variables.$txt-lg;
 
         input {
           font-size: inherit;

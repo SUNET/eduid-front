@@ -1,8 +1,10 @@
+@use "variables";
+
 label,
 .form-label {
   display: flex;
-  font-size: $txt-md;
-  font-family: $inter-bold;
+  font-size: variables.$txt-md;
+  font-family: variables.$inter-bold;
   letter-spacing: 0.5px;
   line-height: 1;
   color: var(--body-txt);

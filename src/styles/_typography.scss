@@ -1,3 +1,5 @@
+@use "variables";
+
 /** Site wide typography **/
 
 h1,
@@ -10,10 +12,10 @@ h5,
   margin-top: 0;
   margin-bottom: 1em;
   line-height: 1.2;
-  font-family: $inter-bold;
+  font-family: variables.$inter-bold;
   font-weight: normal;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     word-wrap: break-word;
     word-break: break-word;
   }
@@ -23,9 +25,9 @@ h1 {
   font-size: 2rem;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  font-family: $inter-light;
+  font-family: variables.$inter-light;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     font-size: 1.75rem;
   }
 }
@@ -35,7 +37,7 @@ h2,
   font-size: 1.5rem;
   margin-bottom: 0.75em;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     font-size: 1.375rem;
   }
 }
@@ -44,7 +46,7 @@ h3 {
   font-size: 1.375rem;
   margin-bottom: 0.75em;
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     font-size: 1.25rem;
   }
 }
@@ -57,9 +59,9 @@ h4,
 
 h5,
 .heading-5 {
-  font-family: $inter-light;
+  font-family: variables.$inter-light;
   text-transform: uppercase;
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
   margin-bottom: 0.5em;
 }
 
@@ -69,30 +71,30 @@ h5,
   border-bottom: 2px solid var(--border-gray);
 
   p {
-    font-size: $txt-xl;
+    font-size: variables.$txt-xl;
   }
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     margin-bottom: 1.25rem;
     padding-bottom: 0;
 
     p {
-      font-size: $txt-lg;
+      font-size: variables.$txt-lg;
     }
   }
 }
 
 p {
-  font-size: $txt-lg;
-  line-height: $line-height;
+  font-size: variables.$txt-lg;
+  line-height: variables.$line-height;
   margin-bottom: 1rem;
 
   + p {
     margin-top: -0.5rem;
   }
 
-  @media (max-width: $bp-md) {
-    font-size: $txt-md;
+  @media (max-width: variables.$bp-md) {
+    font-size: variables.$txt-md;
   }
 }
 
@@ -111,20 +113,20 @@ p.no-data.data {
 }
 
 .text-large {
-  font-size: $txt-lg;
+  font-size: variables.$txt-lg;
 }
 .text-medium {
-  font-size: $txt-md;
+  font-size: variables.$txt-md;
 }
 .text-small {
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
 }
 
 //only for body text, Akkurat links and buttons need separate handling
 strong,
 b,
 .text-bold {
-  font-family: $inter-bold;
+  font-family: variables.$inter-bold;
   font-weight: normal;
   //font-weight: bold;
   //@extend b;
@@ -133,7 +135,7 @@ b,
 em {
   font-style: italic;
 
-  @extend i;
+  @extend i !optional;
 }
 
 .verbatim {
@@ -146,5 +148,5 @@ code {
 }
 .error-txt {
   color: var(--error-red);
-  font-size: $txt-sm !important;
+  font-size: variables.$txt-sm !important;
 }

@@ -1,3 +1,5 @@
+@use "variables";
+
 /** Edit name form **/
 
 .personal-data {
@@ -5,7 +7,7 @@
     margin-bottom: 1.25rem;
   }
 
-  @media (max-width: $bp-xs) {
+  @media (max-width: variables.$bp-xs) {
     .button-pair {
       flex-direction: column;
     }
@@ -47,14 +49,14 @@
   .form-group {
     flex: 1;
 
-    @media (max-width: $bp-sm) {
+    @media (max-width: variables.$bp-sm) {
       margin-top: 1rem;
     }
 
     &:last-child {
       margin-left: 1rem;
 
-      @media (max-width: $bp-sm) {
+      @media (max-width: variables.$bp-sm) {
         margin-left: 0;
       }
     }

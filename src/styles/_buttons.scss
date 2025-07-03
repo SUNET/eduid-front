@@ -1,3 +1,5 @@
+@use "variables";
+
 button:disabled {
   cursor: not-allowed;
   pointer-events: all;
@@ -6,9 +8,9 @@ button:disabled {
 
 a.button,
 button {
-  font-family: $akkurat;
+  font-family: variables.$akkurat;
   letter-spacing: 1px;
-  font-size: $txt-md;
+  font-size: variables.$txt-md;
   font-weight: bold;
   line-height: 1;
   text-transform: uppercase;
@@ -28,7 +30,7 @@ button {
     color: var(--contrast-color);
 
     &.primary {
-      background-color: $btn-orange;
+      background-color: variables.$btn-orange;
     }
   }
 }
@@ -39,8 +41,8 @@ button.primary:not(:disabled):not(.disabled):focus,
 button.primary:not(:disabled):not(.disabled):active:focus,
 button.primary:not(:disabled):not(.disabled):hover {
   color: #fff;
-  border: solid 2px $bright-orange;
-  background-color: $btn-orange;
+  border: solid 2px variables.$bright-orange;
+  background-color: variables.$btn-orange;
   box-shadow: none;
   min-width: 100px;
 
@@ -65,7 +67,7 @@ button.secondary:not(:disabled):not(.disabled):focus,
 button.secondary:not(:disabled):not(.disabled):active:focus,
 button.secondary:not(:disabled):not(.disabled):hover {
   color: var(--txt-orange);
-  border: solid 2px $bright-orange;
+  border: solid 2px variables.$bright-orange;
   background-color: var(--contrast-color);
   box-shadow: none;
   min-width: 100px;
@@ -119,7 +121,7 @@ button.close {
   }
 
   &.sm {
-    font-size: $txt-xs;
+    font-size: variables.$txt-xs;
   }
 }
 
@@ -166,7 +168,7 @@ button.link {
   }
 
   &.sm {
-    font-size: $txt-xs;
+    font-size: variables.$txt-xs;
   }
 
   &.normal-case {
@@ -213,7 +215,7 @@ button.icon {
   }
   span {
     text-align: left;
-    line-height: $line-height;
+    line-height: variables.$line-height;
   }
 }
 
@@ -243,16 +245,16 @@ button.icon {
     min-width: 100px;
   }
 
-  @media (min-width: $bp-xs) {
+  @media (min-width: variables.$bp-xs) {
     width: auto;
   }
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     justify-content: center;
     align-self: normal;
   }
 
-  @media (max-width: $bp-xs) {
+  @media (max-width: variables.$bp-xs) {
     flex-direction: column-reverse;
 
     button[type="submit"] {
@@ -292,9 +294,9 @@ button.icon-only {
   padding: 0;
 }
 
-@media (max-width: $bp-xs) {
+@media (max-width: variables.$bp-xs) {
   button:not(.sm) {
-    font-size: $txt-sm;
+    font-size: variables.$txt-sm;
   }
 
   button.primary,
@@ -329,7 +331,7 @@ button.scroll-to-top {
   height: 50px;
   padding: 0 !important;
 
-  @media (max-width: $bp-sm) {
+  @media (max-width: variables.$bp-sm) {
     width: 40px;
     height: 40px;
     right: 0.5rem;

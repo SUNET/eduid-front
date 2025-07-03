@@ -1,3 +1,5 @@
+@use "variables";
+
 header {
   background-color: var(--contrast-color);
   display: flex;
@@ -11,9 +13,9 @@ header {
     background-image: url(../../img/eduid-logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: $margin;
+    margin-right: variables.$margin;
 
-    @media (max-width: $bp-md) {
+    @media (max-width: variables.$bp-md) {
       height: 34px;
       width: 95px;
     }
@@ -32,7 +34,7 @@ header {
           padding: 0.5rem 0 0.5rem 3px;
           line-height: 1.2;
           a {
-            font-size: $txt-sm;
+            font-size: variables.$txt-sm;
             color: var(--txt-gray);
           }
         }
@@ -44,7 +46,7 @@ header {
     }
 
     button {
-      @media (max-width: $bp-sm) {
+      @media (max-width: variables.$bp-sm) {
         span {
           width: 40vw;
           overflow: hidden;
@@ -79,7 +81,7 @@ header {
       padding: 0 1rem;
       display: flex;
       align-items: center;
-      @extend .text-bold;
+      @extend .text-bold !optional;
 
       svg {
         padding-left: 0.75rem;
@@ -92,9 +94,9 @@ header {
       display: none;
       min-width: 250px;
 
-      @media (max-width: $bp-xs) {
-        min-width: calc(100% - #{2 * $margin});
-        left: $margin;
+      @media (max-width: variables.$bp-xs) {
+        min-width: calc(100% - #{2 * variables.$margin});
+        left: variables.$margin;
       }
 
       ul {
@@ -136,7 +138,7 @@ header {
         box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
         border-radius: 10px;
         padding: 0.75rem;
-        right: $margin;
+        right: variables.$margin;
         max-width: 20rem;
         overflow-y: auto;
         max-height: 90vh;

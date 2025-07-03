@@ -1,3 +1,5 @@
+@use "variables";
+
 /* Overall page structure */
 
 * {
@@ -7,7 +9,7 @@
 
 body {
   min-height: 100vh;
-  font-family: $inter-regular;
+  font-family: variables.$inter-regular;
   font-size: 16px;
   line-height: 1.5;
   color: var(--body-txt);
@@ -32,7 +34,7 @@ body {
     padding-top: 2rem;
     padding-bottom: 4rem;
 
-    @media (max-width: $bp-lg) {
+    @media (max-width: variables.$bp-lg) {
       padding-top: 1.5rem;
       padding-bottom: 3rem;
     }
@@ -55,7 +57,7 @@ body {
     margin-bottom: 0;
   }
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
   }
@@ -66,7 +68,7 @@ body {
     padding-bottom: 1.75rem;
     border-bottom: 1px dashed var(--border-gray);
 
-    @media (max-width: $bp-md) {
+    @media (max-width: variables.$bp-md) {
       margin-bottom: 1rem;
       padding-bottom: 1rem;
     }
@@ -119,31 +121,31 @@ hr.border-line {
 //   background-color: #ececec;
 // }
 
-@media (max-width: $bp-lg) {
+@media (max-width: variables.$bp-lg) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 2rem);
   }
 }
 
-@media (max-width: $bp-md) {
+@media (max-width: variables.$bp-md) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 1.25rem);
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (max-width: variables.$bp-sm) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(100% - 2rem);
   }
 }
 
-@media (max-width: $bp-xs) {
+@media (max-width: variables.$bp-xs) {
   .horizontal-content-margin,
   .vertical-content-margin {
-    width: calc(100% - #{2 * $margin});
+    width: calc(100% - #{2 * variables.$margin});
   }
 }
 

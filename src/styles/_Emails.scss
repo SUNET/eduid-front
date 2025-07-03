@@ -1,10 +1,12 @@
+@use "variables";
+
 #suggested-password {
   display: table;
   padding: 0.125rem 0.5rem;
   background: var(--bg-orange);
-  font-size: $txt-xxl;
+  font-size: variables.$txt-xxl;
   border: none;
-  color: $bright-orange;
+  color: variables.$bright-orange;
 }
 
 .form-content {

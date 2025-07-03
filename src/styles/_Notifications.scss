@@ -1,3 +1,5 @@
+@use "variables";
+
 /** Dynamic user communications **/
 
 // Top notification bar
@@ -25,7 +27,7 @@
   span {
     padding-right: 0.5rem;
 
-    @media (max-width: $bp-sm) {
+    @media (max-width: variables.$bp-sm) {
       margin: 0;
     }
   }
@@ -40,15 +42,15 @@
     border-radius: 50%;
 
     &:hover {
-      color: $bright-orange;
+      color: variables.$bright-orange;
     }
 
-    @media (max-width: $bp-sm) {
-      font-size: $txt-xs;
+    @media (max-width: variables.$bp-sm) {
+      font-size: variables.$txt-xs;
     }
   }
 
-  @media (max-width: $bp-sm) {
+  @media (max-width: variables.$bp-sm) {
     padding: 1rem;
   }
 }
@@ -58,7 +60,7 @@
   width: 12px;
   height: 12px;
   position: relative;
-  background-color: $bright-orange;
+  background-color: variables.$bright-orange;
   border-radius: 50%;
   margin-top: -1rem;
 }
@@ -81,14 +83,14 @@
   padding: 6px;
   color: var(--contrast-color);
   background: var(--body-txt);
-  font-size: $txt-sm;
-  font-family: $inter-regular;
+  font-size: variables.$txt-sm;
+  font-family: variables.$inter-regular;
   line-height: 1;
   z-index: 10;
   white-space: nowrap;
 
   & b {
-    @extend .text-bold;
+    @extend .text-bold !optional;
   }
 }
 
@@ -117,7 +119,7 @@
   left: 52%;
 }
 
-@media (max-width: $bp-md) {
+@media (max-width: variables.$bp-md) {
   .speech-bubbletip.settings.sv {
     left: -100px;
   }
