@@ -12,14 +12,14 @@ interface PasswordFormData {
   currentPassword?: string;
 }
 
-function PasswordSubmitButton(props: FormRenderProps<PasswordFormData>): JSX.Element {
+function PasswordSubmitButton(props: FormRenderProps<PasswordFormData>): React.JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _pwValues = Boolean(props.values["currentPassword"]);
+  const _pwValues = Boolean(props.values?.["currentPassword"]);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
   const hasErrors = props.hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
@@ -39,7 +39,7 @@ function PasswordSubmitButton(props: FormRenderProps<PasswordFormData>): JSX.Ele
   );
 }
 
-export function MultiFactorPassword(): JSX.Element {
+export function MultiFactorPassword(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
@@ -91,7 +91,6 @@ export function MultiFactorPassword(): JSX.Element {
       </div>
       <section className="username-pw">
         <FinalForm<PasswordFormData>
-          id="login-form"
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
           render={(formProps: FormRenderProps<PasswordFormData>) => {

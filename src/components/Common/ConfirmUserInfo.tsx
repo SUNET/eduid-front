@@ -10,7 +10,7 @@ interface ConfirmUserInfoProps {
   readonly new_password: string;
 }
 
-export const EmailFieldset = ({ email }: EmailProps): JSX.Element => {
+export const EmailFieldset = ({ email }: EmailProps): React.JSX.Element => {
   return (
     <fieldset>
       <label htmlFor={idUserEmail}>

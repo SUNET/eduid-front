@@ -5,6 +5,7 @@ import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { ActionStatus, securityApi } from "apis/eduidSecurity";
+import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
@@ -14,7 +15,6 @@ import LetterProofing from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useState } from "react";
-import { Accordion } from "react-accessible-accordion";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
@@ -23,7 +23,6 @@ import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
-import AccordionItemTemplate from "../Common/AccordionItemTemplate";
 import BankID from "./BankID";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import PersonalDataParent from "./PersonalDataParent";
@@ -32,7 +31,7 @@ import PersonalDataParent from "./PersonalDataParent";
 type accordionUUID = "swedish" | "eu" | "world";
 type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
-function Identity(): JSX.Element | null {
+function Identity(): React.JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
@@ -80,7 +79,7 @@ function Identity(): JSX.Element | null {
   );
 }
 
-function IdentityContent(): JSX.Element {
+function IdentityContent(): React.JSX.Element {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -153,7 +152,7 @@ function IdentityContent(): JSX.Element {
   );
 }
 
-function VerifiedIdentitiesTable(): JSX.Element {
+function VerifiedIdentitiesTable(): React.JSX.Element {
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
@@ -315,7 +314,7 @@ function VerifiedIdentitiesTable(): JSX.Element {
   );
 }
 
-function AccordionItemSwedish(): JSX.Element | null {
+function AccordionItemSwedish(): React.JSX.Element | null {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -402,7 +401,7 @@ function AccordionItemSwedish(): JSX.Element | null {
   );
 }
 
-function AccordionItemEu(): JSX.Element | null {
+function AccordionItemEu(): React.JSX.Element | null {
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   async function handleOnClick() {
@@ -447,7 +446,7 @@ function AccordionItemEu(): JSX.Element | null {
   );
 }
 
-function AccordionItemWorld(): JSX.Element | null {
+function AccordionItemWorld(): React.JSX.Element | null {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 

@@ -34,7 +34,7 @@ export const SECURITY_PATH = "/profile/security/";
 export const IDENTITY_PATH = "/profile/identity/";
 export const SIGNUP_BASE_PATH = "/register";
 
-export function IndexMain(): JSX.Element {
+export function IndexMain(): React.JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();

@@ -17,8 +17,8 @@ export function ResponseCodeButtons(props: ResponseCodeButtonsProps) {
   // 'convert' from FormRenderProps to a simple "disabled" boolean
   return (
     <ResponseCodeAbortButton
-      disabled={props.formProps.submitting}
-      invalid={props.formProps.invalid}
+      disabled={props.formProps.submitting ?? false}
+      invalid={props.formProps.invalid ?? false}
       submit={props.formProps.form.submit}
       handleAbortButtonOnClick={props.handleAbortButtonOnClick}
     />

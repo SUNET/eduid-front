@@ -21,7 +21,7 @@ const IconWithText = ({ icon, text }: any) => {
   );
 };
 
-export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): JSX.Element {
+export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.Element {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);

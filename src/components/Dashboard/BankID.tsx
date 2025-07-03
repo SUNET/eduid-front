@@ -3,7 +3,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
-function BankID(): JSX.Element {
+function BankID(): React.JSX.Element {
   const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery()
 
   async function useBankID() {

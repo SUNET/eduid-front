@@ -17,8 +17,13 @@
       background: var(--bg-orange);
     }
 
+    #{$a}__heading::marker,
+    #{$a}__heading::-webkil-details-marker {
+      display: none;
+    }
     // Clickable
     #{$a}__heading {
+      list-style: none;
       #{$a}__button {
         display: flex;
         cursor: pointer;

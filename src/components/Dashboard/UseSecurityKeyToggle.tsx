@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
 
-export default function UseSecurityKeyToggle(): JSX.Element | null {
+export default function UseSecurityKeyToggle(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
     (state: any) => state.personal_data?.response?.preferences?.always_use_security_key

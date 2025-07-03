@@ -2,7 +2,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
-export function AuthorizationFailure(props: FailureComponentProps): JSX.Element {
+export function AuthorizationFailure(props: FailureComponentProps): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>

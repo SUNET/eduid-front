@@ -38,7 +38,7 @@ export interface NinFormData {
   nin?: string;
 }
 
-function NinForm(): JSX.Element {
+function NinForm(): React.JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const [addNin] = securityApi.useLazyAddNinQuery()
 
@@ -59,7 +59,6 @@ function NinForm(): JSX.Element {
 
   return (
     <FinalForm<NinFormData>
-      id="nin-form"
       onSubmit={submitNinForm}
       initialValues={{
         nin: nin?.number || "",

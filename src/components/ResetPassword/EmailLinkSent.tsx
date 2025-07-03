@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function EmailLinkSent(): JSX.Element | null {
+export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);

@@ -7,7 +7,7 @@ import securityIcon from "../../../img/security-icon.svg";
 import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
-export function Security(): JSX.Element {
+export function Security(): React.JSX.Element {
   const intl = useIntl();
 
   useEffect(() => {

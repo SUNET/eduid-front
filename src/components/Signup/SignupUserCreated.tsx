@@ -127,7 +127,7 @@ export function SignupConfirmPassword() {
   );
 }
 
-export function SignupUserCreated(): JSX.Element {
+export function SignupUserCreated(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 

@@ -1,14 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import {
-  AccordionItem,
-  AccordionItemButton,
-  AccordionItemHeading,
-  AccordionItemPanel,
-  AccordionItemState,
-} from "react-accessible-accordion";
+import React, { useRef, useState } from "react";
 
 interface AccordionItemTemplateProps {
   readonly icon?: React.ReactNode;
@@ -19,34 +12,50 @@ interface AccordionItemTemplateProps {
   readonly disabled?: boolean;
 }
 
-function AccordionItemTemplate(props: AccordionItemTemplateProps) {
+interface  AccordionProps {
+  id?: string;
+  children: React.ReactNode;
+  className?: string;
+  allowMultipleExpanded?: boolean;
+  allowZeroExpanded?: boolean;
+  preExpanded?: string[];
+
+}
+export function Accordion(props: Readonly<AccordionProps>): React.JSX.Element {
   return (
-    <AccordionItem
-      uuid={props.uuid}
-      activeClassName={props.disabled ? "accordion__item expanded disabled" : "accordion__item expanded"}
-      className={props.disabled ? "accordion__item disabled" : "accordion__item"}
-    >
-      <AccordionItemHeading>
-        <AccordionItemButton>
+    <div id={props.id} className={props.className ?? "accordion"}>{props.children}</div>
+  )
+}
+
+interface AccordionItemTemplateProps {
+  readonly icon?: React.ReactNode;
+  readonly title: React.ReactNode;
+  readonly additionalInfo: React.ReactNode;
+  readonly uuid?: string;
+  readonly children?: React.ReactNode;
+  readonly disabled?: boolean;
+}
+
+export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps>): React.JSX.Element {
+  const detailsRef = useRef(null);
+  const [open, setOpen] = useState(false);
+//inert={props.disabled}  onToggle={() => setOpen(!open)}
+  return (
+    <details id={props.uuid} className="accordion__item" > 
+      <summary className="accordion__heading" role="heading">
+        <div className="accordion__button" role="button">
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
             <h3 className="accordion-title">{props.title}</h3>
             <span className="accordion-description">{props.additionalInfo}</span>
           </div>
-          <AccordionItemState>
-            {({ expanded }) =>
-              expanded ? (
-                <FontAwesomeIcon icon={faChevronUp as IconProp} />
-              ) : (
-                <FontAwesomeIcon icon={faChevronDown as IconProp} />
-              )
-            }
-          </AccordionItemState>
-        </AccordionItemButton>
-      </AccordionItemHeading>
-      <AccordionItemPanel>{props.children}</AccordionItemPanel>
-    </AccordionItem>
-  );
+          { open
+            ? <FontAwesomeIcon icon={faChevronUp as IconProp} />
+            : <FontAwesomeIcon icon={faChevronDown as IconProp} />
+          }
+        </div>
+      </summary>
+      <div className="accordion__panel">{props.children}</div>
+    </details>
+  )
 }
-
-export default AccordionItemTemplate;

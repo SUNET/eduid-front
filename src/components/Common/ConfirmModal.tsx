@@ -22,7 +22,7 @@ interface ConfirmModalProps {
   readonly submitButtonText?: React.ReactNode;
 }
 
-function ConfirmModal(props: ConfirmModalProps): JSX.Element {
+function ConfirmModal(props: ConfirmModalProps): React.JSX.Element {
   function validate(value: string) {
     if (!value?.trim()) {
       return "required";
