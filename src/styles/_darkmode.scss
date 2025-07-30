@@ -1,7 +1,5 @@
 /* System/browser set dark mode overrides */
 
-//[data-theme] {
-//@media (prefers-color-scheme: dark) {
 .dark {
   //variables
   //:root {
@@ -146,9 +144,4 @@
   .modal.show {
     background-color: rgba(46, 46, 46, 0.75);
   }
-
-  //accordion
-  // .accordion__item .accordion__heading .accordion__button {
-  //   background: #202020;
-  // }
 }
