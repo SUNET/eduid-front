@@ -29,11 +29,13 @@ const ThemeToggle: React.FC = () => {
       return intl.formatMessage({
         defaultMessage: "Change to light mode",
         description: "Color toggle aria label to light",
+        id: "color-mode-light",
       });
     } else {
       return intl.formatMessage({
         defaultMessage: "Change to dark mode",
         description: "Color toggle aria label to dark",
+        id: "color-mode-dark",
       });
     }
   }
