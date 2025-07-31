@@ -1,8 +1,6 @@
 /* System/browser set dark mode overrides */
 
-.dark {
-  //variables
-  //:root {
+html.dark {
   --contrast-color: #000;
   --body-txt: #f4f4f4;
   --body-gray: #2e2e2e;
@@ -13,7 +11,6 @@
   --error-red: #ff5965;
   --error-red-t: #ff596580; //with 50% transparency
   --bg-gray: #202020;
-  //}
 
   //header and footer
   header .eduid-logo {

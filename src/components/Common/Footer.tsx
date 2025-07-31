@@ -38,47 +38,6 @@ const Footer = (): JSX.Element => {
     }
   };
 
-  /* Dark/light mode toggle in footer, looks for previous cookie setting, system setting and defaults to light. */
-
-  // const localStorageTheme = localStorage.getItem("theme");
-  // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-  // function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
-  //   if (localStorageTheme !== null) {
-  //     return localStorageTheme;
-  //   }
-
-  //   if (systemSettingDark.matches) {
-  //     return "dark";
-  //   }
-
-  //   return "light";
-  // }
-
-  // let currentThemeSetting = calculateSettingAsThemeString({ localStorageTheme, systemSettingDark });
-
-  // const [switchChecked, setSwitchChecked] = useState(false);
-
-  // const handleSwitchChange = (): void => {
-  // setSwitchChecked(!switchChecked);
-  // document.getElementsByTagName("html")[0].toggleAttribute("data-theme");
-  // document.getElementsByTagName("html")[0].className = "dark";
-
-  // const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
-
-  // const newCta = newTheme === "dark" ? "Change to light theme" : "Change to dark theme";
-  // // use an aria-label if you are omitting text on the button
-  // (document.getElementById("color-mode") as HTMLInputElement).setAttribute("aria-label", newCta);
-  // // update theme attribute on HTML to switch theme in CSS
-  // document.getElementsByTagName("html")[0].setAttribute("data-theme", newTheme);
-
-  // // update in local storage
-  // localStorage.setItem("theme", newTheme);
-
-  // // update the currentThemeSetting in memory
-  // currentThemeSetting = newTheme;
-  // };
-
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
@@ -88,6 +47,7 @@ const Footer = (): JSX.Element => {
         <span>&copy;2013-2025</span>
       </div>
 
+      {/* Color mode toggle, cookie overrides system settings, default theme is light */}
       <ThemeToggle />
 
       <nav>
