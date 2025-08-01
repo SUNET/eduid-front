@@ -1856,6 +1856,14 @@
   "code.unknown-code": {
     "string": "Okänd kod"
   },
+  "color-mode-dark": {
+    "developer_comment": "Color toggle aria label to dark",
+    "string": "Använd mörkt läge"
+  },
+  "color-mode-light": {
+    "developer_comment": "Color toggle aria label to light",
+    "string": "Använd ljust läge"
+  },
   "common.locked_identity_not_matching": {
     "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
   },
@@ -3349,6 +3357,10 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
+  },
+  "wVBZwI": {
+    "developer_comment": "color mode toggle",
+    "string": "Utseende"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",
