@@ -1818,6 +1818,10 @@
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Skanna QR-koden som visas med enheten där du har din säkerhetsnyckel eller sparat lösenord."
   },
+  "c1eSag": {
+    "developer_comment": "how change appearance - heading",
+    "string": "Hur kan jag anpassa eduIDs utseende?"
+  },
   "c1nVKp": {
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
@@ -3267,6 +3271,10 @@
   "uigsKE": {
     "developer_comment": "help - content paragraph",
     "string": "Fäll ut avsnitten för att läsa mer."
+  },
+  "uklqrT": {
+    "developer_comment": "how change appearance - paragraph",
+    "string": "EduID finns tillgängligt i ljust och mörkt färgläge och anpassar sig automatiskt efter ditt systems inställningar, men kan alltid uppdateras med hjälp av kontrollen \"Utseende\" i sidfoten. Om ingen preferens angivits används ljust tema."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
