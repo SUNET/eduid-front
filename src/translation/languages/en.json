@@ -1856,6 +1856,14 @@
   "code.unknown-code": {
     "string": "Unknown code"
   },
+  "color-mode-dark": {
+    "developer_comment": "Color toggle aria label to dark",
+    "string": "Use dark mode"
+  },
+  "color-mode-light": {
+    "developer_comment": "Color toggle aria label to light",
+    "string": "Use light mode"
+  },
   "common.locked_identity_not_matching": {
     "string": "The identity does not match the one verified for this eduID"
   },
@@ -3349,6 +3357,10 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
+  },
+  "wVBZwI": {
+    "developer_comment": "color mode toggle",
+    "string": "Appearance"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",
