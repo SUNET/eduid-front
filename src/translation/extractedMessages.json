@@ -1818,6 +1818,10 @@
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Scan the presented QR-code with the other device where you have your login credentials, e.g. security key or saved password."
   },
+  "c1eSag": {
+    "developer_comment": "how change appearance - heading",
+    "string": "How can I change the appearance of eduID?"
+  },
   "c1nVKp": {
     "developer_comment": "Verified identity",
     "string": "Swedish national ID number"
@@ -3267,6 +3271,10 @@
   "uigsKE": {
     "developer_comment": "help - content paragraph",
     "string": "Expand sections to learn more."
+  },
+  "uklqrT": {
+    "developer_comment": "how change appearance - paragraph",
+    "string": "The color mode of eduID.se is available in light or dark mode to adapt to user preference and will display according to your system settings. This can be overridden at any time by using the \"Appearance\" toggle control in the page footer. If no preference is set it defaults to a light theme."
   },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
