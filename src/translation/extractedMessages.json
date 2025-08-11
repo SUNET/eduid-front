@@ -939,10 +939,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
   },
-  "K427ha": {
-    "developer_comment": "security second factor",
-    "string": "Add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. For example a token can be a security key or your device."
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
@@ -1010,6 +1006,10 @@
     "developer_comment": "identity eduid - list item 2-2",
     "string": "With eIDAS electronic identification for EU citizens."
   },
+  "LqPZcl": {
+    "developer_comment": "platform authn key help text",
+    "string": "E.g a USB Security Key you are using."
+  },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
     "string": "Identity"
@@ -1021,10 +1021,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
-  },
-  "MDEHdc": {
-    "developer_comment": "platform authn device help text",
-    "string": "The device you are currently using"
   },
   "MGhoaU": {
     "developer_comment": "Language",
@@ -1289,6 +1285,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
   },
+  "S64hBH": {
+    "developer_comment": "platform authn device help text",
+    "string": "The device you are currently using."
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
@@ -1341,10 +1341,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
-  },
-  "TZU5ir": {
-    "developer_comment": "platform authn key help text",
-    "string": "USB Security Key."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -2443,6 +2439,10 @@
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
+  },
+  "lBosp4": {
+    "developer_comment": "security second factor",
+    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are USB security keys, or your device such as mobile phone or laptop computer features."
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
