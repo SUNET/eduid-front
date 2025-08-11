@@ -939,10 +939,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
-  "K427ha": {
-    "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1010,6 +1006,10 @@
     "developer_comment": "identity eduid - list item 2-2",
     "string": "Med eIDAS elektronisk identifiering för EU-medborgare."
   },
+  "LqPZcl": {
+    "developer_comment": "platform authn key help text",
+    "string": "USB-säkerhetsnyckel som du använder."
+  },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
     "string": "Identitet"
@@ -1021,10 +1021,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "får inte ha någon annan status i metadata än några olika varianter av: "
-  },
-  "MDEHdc": {
-    "developer_comment": "platform authn device help text",
-    "string": "Enheten som du just nu använder"
   },
   "MGhoaU": {
     "developer_comment": "Language",
@@ -1289,6 +1285,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "För att byta visningsnamn, ta bort och välj igen"
   },
+  "S64hBH": {
+    "developer_comment": "platform authn device help text",
+    "string": "Enheten som du just nu använder."
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Lösenord"
@@ -1341,10 +1341,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Fortsätt"
-  },
-  "TZU5ir": {
-    "developer_comment": "platform authn key help text",
-    "string": "T.ex. USB-säkerhetsnyckel som du använder."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -1809,6 +1805,10 @@
   "bfdLRo": {
     "developer_comment": "login eduid - re-login list item 2",
     "string": "På- och avstängning av 2FA vid inloggning."
+  },
+  "bgGHTb": {
+    "developer_comment": "security second factor",
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar är en separat USB-säkerhetsnyckel, eller inbyggda funktioner i din enhet som mobiltelefon eller dator."
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
