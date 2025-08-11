@@ -1008,7 +1008,7 @@
   },
   "LqPZcl": {
     "developer_comment": "platform authn key help text",
-    "string": "E.g a USB Security Key you are using."
+    "string": "A USB Security Key you are using."
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
