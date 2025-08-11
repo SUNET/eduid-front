@@ -235,7 +235,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage
             description="security second factor"
             defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
-              to prove you are the owner of your eduID. Examples are USB security keys, or your device such as mobile phone or laptop computer features.`}
+              to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer.`}
           />
         </p>
         <p className="text-medium">

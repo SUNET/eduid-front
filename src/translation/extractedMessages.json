@@ -1806,6 +1806,10 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "Toggling 2FA login requirement setting."
   },
+  "bgGHTb": {
+    "developer_comment": "security second factor",
+    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -2439,10 +2443,6 @@
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
-  },
-  "lBosp4": {
-    "developer_comment": "security second factor",
-    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are USB security keys, or your device such as mobile phone or laptop computer features."
   },
   "lDT/13": {
     "developer_comment": "explanation text for letter proofing",
