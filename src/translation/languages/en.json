@@ -131,10 +131,6 @@
     "developer_comment": "choosing usb key - paragraph",
     "string": "Not all security keys meet the necessary specifications to be used as a security key for eduID."
   },
-  "0ui6m3": {
-    "developer_comment": "ToU first paragraph",
-    "string": "that SUNET's ethical rules regulate the “other” usage."
-  },
   "0xflkF": {
     "developer_comment": "security eduid - list item 3-1",
     "string": "the descriptive name given by you when created"
@@ -1650,6 +1646,10 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
+  },
+  "ZKCJyG": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that SUNET's ethical rules (listed below) regulate other permitted usage."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
