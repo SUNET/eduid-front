@@ -131,10 +131,6 @@
     "developer_comment": "choosing usb key - paragraph",
     "string": "Inte alla säkerhetsnycklar uppnår kraven för att kunna användas som säkerhetsnyckel för eduID."
   },
-  "0ui6m3": {
-    "developer_comment": "ToU first paragraph",
-    "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
-  },
   "0xflkF": {
     "developer_comment": "security eduid - list item 3-1",
     "string": "det beskrivande namnet du gav nyckeln då den lades till"
@@ -1650,6 +1646,10 @@
   "ZHgxHT": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
+  },
+  "ZKCJyG": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att SUNET:s etiska regler (enligt nedan) reglerar övrig tillåten användning."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
