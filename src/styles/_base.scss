@@ -13,6 +13,8 @@ body {
   color: var(--body-txt);
   scroll-behavior: smooth;
   display: flex;
+  padding: env(safe-area-inset-top, 1.25rem) env(safe-area-inset-right, 1.25rem) env(safe-area-inset-bottom, 1.25rem)
+    env(safe-area-inset-left, 1.25rem);
 }
 
 #root,
