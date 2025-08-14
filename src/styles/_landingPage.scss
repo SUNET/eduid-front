@@ -41,8 +41,9 @@
 }
 
 .landing-howTo {
+  filter: drop-shadow(0 -6px 0 var(--shadow-green));
+  transform: translateZ(0); //prevent weird Safari filter bug
   align-items: flex-end;
-  filter: drop-shadow(0 -6px 0 #c1e1cd);
   box-shadow: 0 10px 10px -10px rgb(89 89 89 / 50%);
   overflow: hidden;
   margin-top: 1rem;
