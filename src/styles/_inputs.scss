@@ -316,6 +316,15 @@ input:-webkit-autofill {
   input::placeholder {
     font-size: $txt-md;
   }
+
+  footer .toggle {
+    flex-direction: column;
+    align-self: end;
+
+    > span {
+      margin: 0 0 5px;
+    }
+  }
 }
 
 @media (max-width: $bp-md) {
