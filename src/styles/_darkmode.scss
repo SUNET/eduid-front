@@ -11,6 +11,7 @@ html.dark {
   --error-red: #ff5965;
   --error-red-t: #ff596580; //with 50% transparency
   --bg-gray: #202020;
+  --shadow-green: #177d4d; //success green
 
   //header and footer
   header .eduid-logo {
@@ -51,10 +52,6 @@ html.dark {
       var(--contrast-color) 75%
     );
     color: var(--body-txt);
-
-    .landing-howTo {
-      filter: drop-shadow(0 -6px 0 $success-green);
-    }
 
     .icon-holder {
       color: #fff;
