@@ -38,7 +38,7 @@ export function IndexMain(): JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const isUserDashboard = location.pathname.startsWith("/profile");
+  const showAuthenticateModal = location.pathname.startsWith("/profile");
   const isIndex = location.pathname === "/";
 
   if (location.pathname === "/profile") {
@@ -91,7 +91,7 @@ export function IndexMain(): JSX.Element {
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </section>
-              {isUserDashboard && <AuthenticateModal />}
+              {showAuthenticateModal && <AuthenticateModal />}
             </Splash>
           </ErrorBoundary>
         </main>
