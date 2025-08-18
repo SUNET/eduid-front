@@ -131,10 +131,6 @@
     "developer_comment": "choosing usb key - paragraph",
     "string": "Not all security keys meet the necessary specifications to be used as a security key for eduID."
   },
-  "0ui6m3": {
-    "developer_comment": "ToU first paragraph",
-    "string": "that SUNET's ethical rules regulate the “other” usage."
-  },
   "0xflkF": {
     "developer_comment": "security eduid - list item 3-1",
     "string": "the descriptive name given by you when created"
@@ -939,10 +935,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
   },
-  "K427ha": {
-    "developer_comment": "security second factor",
-    "string": "Add a token as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. For example a token can be a security key or your device."
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
@@ -1010,6 +1002,10 @@
     "developer_comment": "identity eduid - list item 2-2",
     "string": "With eIDAS electronic identification for EU citizens."
   },
+  "LqPZcl": {
+    "developer_comment": "platform authn key help text",
+    "string": "E.g a USB Security Key you are using."
+  },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
     "string": "Identity"
@@ -1021,10 +1017,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "it must not contain any other status in the metadata than a few variants of:"
-  },
-  "MDEHdc": {
-    "developer_comment": "platform authn device help text",
-    "string": "The device you are currently using"
   },
   "MGhoaU": {
     "developer_comment": "Language",
@@ -1289,6 +1281,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
   },
+  "S64hBH": {
+    "developer_comment": "platform authn device help text",
+    "string": "The device you are currently using."
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
@@ -1341,10 +1337,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Proceed"
-  },
-  "TZU5ir": {
-    "developer_comment": "platform authn key help text",
-    "string": "USB Security Key."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -1655,6 +1647,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
   },
+  "ZKCJyG": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that SUNET's ethical rules (listed below) regulate all other permitted usage."
+  },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "develops using open source code accessible at GitHub,"
@@ -1810,6 +1806,10 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "Toggling 2FA login requirement setting."
   },
+  "bgGHTb": {
+    "developer_comment": "security second factor",
+    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -1817,6 +1817,10 @@
   "bump4d": {
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Scan the presented QR-code with the other device where you have your login credentials, e.g. security key or saved password."
+  },
+  "c1eSag": {
+    "developer_comment": "how change appearance - heading",
+    "string": "How can I change the appearance of eduID?"
   },
   "c1nVKp": {
     "developer_comment": "Verified identity",
@@ -1855,6 +1859,14 @@
   },
   "code.unknown-code": {
     "string": "Unknown code"
+  },
+  "color-mode-dark": {
+    "developer_comment": "Color toggle aria label to dark",
+    "string": "Change to dark mode"
+  },
+  "color-mode-light": {
+    "developer_comment": "Color toggle aria label to light",
+    "string": "Change to light mode"
   },
   "common.locked_identity_not_matching": {
     "string": "Identity not matching"
@@ -3260,6 +3272,10 @@
     "developer_comment": "help - content paragraph",
     "string": "Expand sections to learn more."
   },
+  "uklqrT": {
+    "developer_comment": "how change appearance - paragraph",
+    "string": "The color mode of eduID.se is available in light or dark mode to adapt to user preference and will display according to your system settings. This can be overridden at any time by using the \"Appearance\" toggle control in the page footer. If no preference is set it defaults to a light theme."
+  },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
     "string": "Identity"
@@ -3349,6 +3365,10 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
+  },
+  "wVBZwI": {
+    "developer_comment": "color mode toggle",
+    "string": "Color theme"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",

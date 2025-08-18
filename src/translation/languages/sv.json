@@ -131,10 +131,6 @@
     "developer_comment": "choosing usb key - paragraph",
     "string": "Inte alla säkerhetsnycklar uppnår kraven för att kunna användas som säkerhetsnyckel för eduID."
   },
-  "0ui6m3": {
-    "developer_comment": "ToU first paragraph",
-    "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
-  },
   "0xflkF": {
     "developer_comment": "security eduid - list item 3-1",
     "string": "det beskrivande namnet du gav nyckeln då den lades till"
@@ -939,10 +935,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
-  "K427ha": {
-    "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar kan vara en USB-säkerhetsnyckel eller din enhet."
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1010,6 +1002,10 @@
     "developer_comment": "identity eduid - list item 2-2",
     "string": "Med eIDAS elektronisk identifiering för EU-medborgare."
   },
+  "LqPZcl": {
+    "developer_comment": "platform authn key help text",
+    "string": "USB-säkerhetsnyckel som du använder."
+  },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
     "string": "Identitet"
@@ -1021,10 +1017,6 @@
   "M63gc4": {
     "developer_comment": "usb key technical section - list item 2",
     "string": "får inte ha någon annan status i metadata än några olika varianter av: "
-  },
-  "MDEHdc": {
-    "developer_comment": "platform authn device help text",
-    "string": "Enheten som du just nu använder"
   },
   "MGhoaU": {
     "developer_comment": "Language",
@@ -1289,6 +1281,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "För att byta visningsnamn, ta bort och välj igen"
   },
+  "S64hBH": {
+    "developer_comment": "platform authn device help text",
+    "string": "Enheten som du just nu använder."
+  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Lösenord"
@@ -1341,10 +1337,6 @@
   "TRK0+N": {
     "developer_comment": "button proceed",
     "string": "Fortsätt"
-  },
-  "TZU5ir": {
-    "developer_comment": "platform authn key help text",
-    "string": "T.ex. USB-säkerhetsnyckel som du använder."
   },
   "TdlNku": {
     "developer_comment": "name",
@@ -1655,6 +1647,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
   },
+  "ZKCJyG": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att SUNET:s etiska regler (enligt nedan) reglerar övrig tillåten användning."
+  },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "utvecklar med öppen källkod som finns på GitHub,"
@@ -1810,6 +1806,10 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "På- och avstängning av 2FA vid inloggning."
   },
+  "bgGHTb": {
+    "developer_comment": "security second factor",
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, så att du är säker på att bara du har tillgång till ditt eduID. Exempel på säkerhetsnycklar är en separat USB-säkerhetsnyckel, eller inbyggda funktioner i din enhet som mobiltelefon eller dator."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -1817,6 +1817,10 @@
   "bump4d": {
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Skanna QR-koden som visas med enheten där du har din säkerhetsnyckel eller sparat lösenord."
+  },
+  "c1eSag": {
+    "developer_comment": "how change appearance - heading",
+    "string": "Hur kan jag anpassa eduIDs utseende?"
   },
   "c1nVKp": {
     "developer_comment": "Verified identity",
@@ -1855,6 +1859,14 @@
   },
   "code.unknown-code": {
     "string": "Okänd kod"
+  },
+  "color-mode-dark": {
+    "developer_comment": "Color toggle aria label to dark",
+    "string": "Använd mörkt läge"
+  },
+  "color-mode-light": {
+    "developer_comment": "Color toggle aria label to light",
+    "string": "Använd ljust läge"
   },
   "common.locked_identity_not_matching": {
     "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
@@ -3260,6 +3272,10 @@
     "developer_comment": "help - content paragraph",
     "string": "Fäll ut avsnitten för att läsa mer."
   },
+  "uklqrT": {
+    "developer_comment": "how change appearance - paragraph",
+    "string": "EduID finns tillgängligt i ljust och mörkt färgläge och anpassar sig automatiskt efter ditt systems inställningar, men kan alltid uppdateras med hjälp av kontrollen \"Utseende\" i sidfoten. Om ingen preferens angivits används ljust tema."
+  },
   "una38W": {
     "developer_comment": "settings eduid - identity handle",
     "string": "Identitet"
@@ -3349,6 +3365,10 @@
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
+  },
+  "wVBZwI": {
+    "developer_comment": "color mode toggle",
+    "string": "Utseende"
   },
   "wd5z3l": {
     "developer_comment": "about international - handle",
