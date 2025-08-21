@@ -45,7 +45,7 @@ export function IndexMain(): JSX.Element {
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
-
+  
   return (
     <React.StrictMode>
       <ThemeProvider>

@@ -1,4 +1,4 @@
-import { postSecurityKeyPreference } from "apis/eduidPersonalData";
+import personalDataApi from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -11,10 +11,17 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
   const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
+  const [postSecurityKeyPreference, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation()
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
   }, [always_use_security_key]);
+
+  useEffect(() => {
+    if (!preference.isLoading) {
+      setSwitchChecked(always_use_security_key);
+    }
+  }, [preference.isLoading]);
 
   useEffect(() => {
     // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
@@ -27,10 +34,7 @@ export default function UseSecurityKeyToggle(): JSX.Element | null {
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
-      const response = await dispatch(postSecurityKeyPreference({ always_use_security_key: !switchChecked }));
-      if (postSecurityKeyPreference.rejected.match(response)) {
-        setSwitchChecked(always_use_security_key);
-      }
+      postSecurityKeyPreference({ always_use_security_key: !switchChecked });
     }
   }
 

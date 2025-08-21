@@ -1,7 +1,7 @@
 import { Middleware } from "redux";
 import { clearNotifications, showNotification } from "slices/Notifications";
 
-showNotification;
+
 const notifyAndDispatch: Middleware = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {
     if (

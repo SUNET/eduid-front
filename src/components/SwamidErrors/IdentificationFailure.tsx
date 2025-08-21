@@ -1,17 +1,17 @@
-import { fetchErrorInfo } from "apis/eduidLogin";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { loginApi } from "apis/eduidLogin";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
 export function IdentificationFailure(props: FailureComponentProps): JSX.Element {
-  const dispatch = useAppDispatch();
   const is_configured = useAppSelector((state) => state.config.is_configured);
+  const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 
   useEffect(() => {
     if (is_configured) {
       // call fetchErrorInfo once state.config.error_info_url is initialised
-      dispatch(fetchErrorInfo());
+      fetchErrorInfo();
     }
   }, [is_configured]);
 

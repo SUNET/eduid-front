@@ -1,10 +1,4 @@
-/*
- * Code and data structures for talking to the eidas backend microservice.
- */
-
-import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { ApiResponse, eduIDApi } from "./common";
 
 export type WebauthnMethods = "eidas" | "freja" | "bankid";
 
@@ -18,37 +12,11 @@ interface EidasCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-type DispatchWithEidas = EduIDAppDispatch;
-type StateWithEidas = EduIDAppRootState;
-
-/*********************************************************************************************************************/
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface VerifyIdentityRequest extends EidasCommonRequest {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface VerifyIdentityResponse extends EidasCommonResponse {}
-
-/**
- * @public
- * @function verifyIdentity
- * @desc Redux async thunk to start a verify-identity operation.
- */
-export const eidasVerifyIdentity = createAsyncThunk<
-  VerifyIdentityResponse, // return type
-  VerifyIdentityRequest, // args type
-  { dispatch: DispatchWithEidas; state: StateWithEidas }
->("eidas/verifyIdentity", async (args, thunkAPI) => {
-  const body: KeyValues = args;
-  if (body.frontend_action === undefined) {
-    body.frontend_action = "verifyIdentity";
-  }
-  return makeEidasRequest<VerifyIdentityResponse>(thunkAPI, "verify-identity", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 
 export interface VerifyCredentialRequest extends EidasCommonRequest {
   credential_id: string;
@@ -57,53 +25,11 @@ export interface VerifyCredentialRequest extends EidasCommonRequest {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface VerifyCredentialResponse extends EidasCommonResponse {}
 
-/**
- * @public
- * @function verifyCredential
- * @desc Redux async thunk to start a verify-credential operation.
- */
-export const eidasVerifyCredential = createAsyncThunk<
-  VerifyCredentialResponse, // return type
-  VerifyCredentialRequest, // args type
-  { dispatch: DispatchWithEidas; state: StateWithEidas }
->("eidas/verifyCredential", async (args, thunkAPI) => {
-  const body: KeyValues = args;
-  if (body.frontend_action === undefined) {
-    body.frontend_action = "verifyCredential";
-  }
-  return makeEidasRequest<VerifyCredentialResponse>(thunkAPI, "verify-credential", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MfaAuthenticateRequest extends EidasCommonRequest {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MfaAuthenticateResponse extends EidasCommonResponse {}
-
-/**
- * @public
- * @function eidasMfaAuthenticate
- * @desc Redux async thunk to start an mfa-authenticate operation.
- */
-export const eidasMfaAuthenticate = createAsyncThunk<
-  MfaAuthenticateResponse, // return type
-  MfaAuthenticateRequest, // args type
-  { dispatch: DispatchWithEidas; state: StateWithEidas }
->("eidas/mfaAuthenticate", async (args, thunkAPI) => {
-  const body: KeyValues = args;
-  if (body.frontend_action === undefined) {
-    body.frontend_action = "loginMfaAuthn";
-  }
-  return makeEidasRequest<MfaAuthenticateResponse>(thunkAPI, "mfa-authenticate", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface GetStatusRequest {
@@ -118,34 +44,44 @@ export interface GetStatusResponse {
   status?: string;
 }
 
-/**
- * @public
- * @function eidasGetStatus
- * @desc Redux async thunk to fetch status for an earlier operation.
- */
-export const eidasGetStatus = createAsyncThunk<
-  GetStatusResponse, // return type
-  GetStatusRequest, // args type
-  { dispatch: DispatchWithEidas; state: StateWithEidas }
->("eidas/getStatus", async (args, thunkAPI) => {
-  const body: KeyValues = args;
-  return makeEidasRequest<GetStatusResponse>(thunkAPI, "get-status", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-async function makeEidasRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  endpoint: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  const state = thunkAPI.getState();
-
-  if (!state.config.eidas_service_url) {
-    throw new Error("Missing configuration eidas_service_url");
-  }
-
-  return makeGenericRequest<T>(thunkAPI, state.config.eidas_service_url, endpoint, body, data);
-}
+export const eidasApi = eduIDApi.injectEndpoints({
+  endpoints: (builder) => ({
+    eidasVerifyIdentity: builder.query<ApiResponse<VerifyIdentityResponse>, VerifyIdentityRequest>({
+      query: (body) => ({
+        url: "verify-identity",
+        body: {
+          ...body,
+          frontend_action: body.frontend_action ?? "verifyIdentity"
+        }
+      }),
+      extraOptions: { service: "eidas" }
+  }),
+    eidasVerifyCredential: builder.query<ApiResponse<VerifyCredentialResponse>, VerifyCredentialRequest>({
+      query: (body) => ({
+        url: "verify-credential",
+        body: {
+          ...body,
+          frontend_action: body.frontend_action ?? "verifyCredential"
+        }
+      }),
+      extraOptions: { service: "eidas" }
+    }),
+    eidasMfaAuthenticate: builder.query<ApiResponse<MfaAuthenticateResponse>, MfaAuthenticateRequest>({
+      query: (body) => ({
+        url: "mfa-authenticate",
+        body: {
+          ...body,
+          frontend_action: body.frontend_action ?? "loginMfaAuthn"
+        }
+      }),
+      extraOptions: { service: "eidas" }
+    }),
+    eidasGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
+      query: (body) => ({
+        url: "get-status",
+        body
+      }),
+      extraOptions: { service: "eidas" }
+    })
+  })
+})

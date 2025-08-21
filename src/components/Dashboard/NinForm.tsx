@@ -1,7 +1,7 @@
-import { addNin } from "apis/eduidSecurity";
+import securityApi from "apis/eduidSecurity";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -40,6 +40,7 @@ export interface NinFormData {
 
 function NinForm(): JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
+  const [addNin] = securityApi.useLazyAddNinQuery()
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -48,12 +49,11 @@ function NinForm(): JSX.Element {
     defaultMessage: "yyyymmddnnnn",
     description: "Swedish NIN template",
   });
-  const dispatch = useAppDispatch();
 
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;
     if (nin) {
-      dispatch(addNin(nin));
+      addNin({nin});
     }
   }
 
