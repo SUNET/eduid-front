@@ -23,6 +23,9 @@ export function SetNewPassword(): JSX.Element | null {
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [renderSuggested, setRenderSuggested] = useState(true);
+  const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
+  const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
+  const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
@@ -39,9 +42,6 @@ export function SetNewPassword(): JSX.Element | null {
 
   async function submitNewPassword(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
-    const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
-    const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
-    const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
 
     if (!newPassword || !email_code) {
       return;
