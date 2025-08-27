@@ -26,10 +26,7 @@ export interface UserNameRequest {
   chosen_given_name?: string;
 }
 
-export interface UserNameResponse {
-  given_name: string;
-  surname: string;
-  chosen_given_name?: string;
+export interface UserNameResponse extends UserNameRequest {
   legal_name?: string;
 }
 
