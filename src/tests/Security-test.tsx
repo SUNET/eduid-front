@@ -1,7 +1,7 @@
 import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse, mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -148,13 +148,13 @@ test("api call webauthn/remove", async () => {
   };
 
   mswServer.use(
-    rest.post("webauthn/remove", async (req, res, ctx) => {
-      const body = (await req.json()) as RemoveWebauthnTokensRequest;
+    http.post("webauthn/remove", async ({ request }) => {
+      const body = (await request.json()) as RemoveWebauthnTokensRequest;
       if (body.credential_key != credential_key) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
-      return res(ctx.json({ type: "test response", payload: response.credentials }));
+      return HttpResponse.json({ type: "test response", payload: response.credentials });
     })
   );
 
@@ -192,8 +192,9 @@ test("security reducer, request credentials", async () => {
   };
   const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "requestCredentials" } } };
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "requestCredentials" } },
+  };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
@@ -215,15 +216,15 @@ test("security reducer, registerWebauthn", async () => {
       },
     ],
   };
-  const action = { 
+  const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "registerWebauthn" }}
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "registerWebauthn" } },
   };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
-    credentials: action.payload.payload.credentials
+    credentials: action.payload.payload.credentials,
   });
 });
 

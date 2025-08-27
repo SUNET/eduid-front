@@ -1,7 +1,7 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse, mswServer } from "setupTests";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
@@ -13,18 +13,18 @@ test("renders frejaeID as expected", () => {
   const method = "frejaeIDVerifyIdentity";
 
   mswServer.use(
-    rest.post("verify-identity", async (req, res, ctx) => {
-      const body = (await req.json()) as VerifyIdentityRequest;
+    http.post("verify-identity", async ({ request }) => {
+      const body = (await request.json()) as VerifyIdentityRequest;
       if (body.method != method) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: VerifyIdentityResponse = {
         location: "https://dummy-svipe-id-url.se",
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
-  mswServer.printHandlers();
+  mswServer.listHandlers();
 
   render(<IndexMain />, {
     state: {

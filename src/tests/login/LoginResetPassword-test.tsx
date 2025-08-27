@@ -1,9 +1,16 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { NewPasswordRequest, NewPasswordResponse, RequestEmailLinkRequest, RequestEmailLinkResponse, VerifyCodeRequest, VerifyCodeResponse } from "apis/eduidResetPassword";
+import {
+  NewPasswordRequest,
+  NewPasswordResponse,
+  RequestEmailLinkRequest,
+  RequestEmailLinkResponse,
+  VerifyCodeRequest,
+  VerifyCodeResponse,
+} from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse, mswServer } from "setupTests";
 import { fireEvent, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 const TEST_PASSWORD = "password";
@@ -17,21 +24,21 @@ test("can click 'forgot password' with an e-mail address", async () => {
   const email = "test@example.org";
   const ref = "abc567";
   mswServer.use(
-    rest.post("/next", async (req, res, ctx) => {
-      const body = (await req.json()) as LoginNextRequest;
+    http.post("/next", async ({ request }) => {
+      const body = (await request.json()) as LoginNextRequest;
       if (body.ref != ref) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    rest.post("/reset-password-url", async (req, res, ctx) => {
-      const body = (await req.json()) as RequestEmailLinkRequest;
+    http.post("/reset-password-url", async ({ request }) => {
+      const body = (await request.json()) as RequestEmailLinkRequest;
       if (body.email != email) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
         email_code_timeout: 600,
@@ -39,11 +46,11 @@ test("can click 'forgot password' with an e-mail address", async () => {
         throttled_max: 60,
         throttled_seconds: 60,
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
-  mswServer.printHandlers();
+  mswServer.listHandlers();
 
   render(<IndexMain />, {
     routes: [`/login/${ref}`],
@@ -103,21 +110,21 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const ref = "abc567";
 
   mswServer.use(
-    rest.post("/next", async (req, res, ctx) => {
-      const body = (await req.json()) as LoginNextRequest;
+    http.post("/next", async ({ request }) => {
+      const body = (await request.json()) as LoginNextRequest;
       if (body.ref != ref) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    rest.post("/reset-password-url", async (req, res, ctx) => {
-      const body = (await req.json()) as RequestEmailLinkRequest;
+    http.post("/reset-password-url", async ({ request }) => {
+      const body = (await request.json()) as RequestEmailLinkRequest;
       if (body.email != email) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
         email_code_timeout: 600,
@@ -125,12 +132,12 @@ test("can click 'forgot password' without an e-mail address", async () => {
         throttled_max: 60,
         throttled_seconds: 60,
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    rest.post("/reset-password-url/verify-email", async (req, res, ctx) => {
-      const body = (await req.json()) as VerifyCodeRequest;
+    http.post("/reset-password-url/verify-email", async ({ request }) => {
+      const body = (await request.json()) as VerifyCodeRequest;
       if (body.email_code != code) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: VerifyCodeResponse = {
         suggested_password: TEST_PASSWORD,
@@ -140,27 +147,27 @@ test("can click 'forgot password' without an e-mail address", async () => {
         success: true,
         zxcvbn_terms: [],
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    rest.post("/reset-password-url/new-password-extra-security-token", async (req, res, ctx) => {
-      const body = (await req.json()) as NewPasswordRequest;
+    http.post("/reset-password-url/new-password-extra-security-token", async ({ request }) => {
+      const body = (await request.json()) as NewPasswordRequest;
       if (body.email_code != code || body.password != TEST_PASSWORD) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: NewPasswordResponse = {};
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    rest.post("/reset-password-url/new-password", async (req, res, ctx) => {
-      const body = (await req.json()) as NewPasswordRequest;
+    http.post("/reset-password-url/new-password", async ({ request }) => {
+      const body = (await request.json()) as NewPasswordRequest;
       if (body.email_code != code || body.password != TEST_PASSWORD) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: NewPasswordResponse = {};
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
-  mswServer.printHandlers();
+  mswServer.listHandlers();
 
   render(<IndexMain />, {
     routes: [`/login/${ref}`],
