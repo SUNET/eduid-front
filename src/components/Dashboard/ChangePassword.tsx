@@ -1,6 +1,6 @@
-import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -35,13 +35,13 @@ export interface ChangePasswordSuccessState {
 
 export function ChangePassword() {
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
-  const dispatch = useAppDispatch();
   const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
-  const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
   let isMounted = true;
+  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
+  const [changePassword] = securityApi.useLazyChangePasswordQuery();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -62,9 +62,9 @@ export function ChangePassword() {
 
   async function handleSuggestedPassword() {
     try {
-      const response = await dispatch(fetchSuggestedPassword());
+      const response = await fetchSuggestedPassword();
       if (isMounted) {
-        if (fetchSuggestedPassword.fulfilled.match(response)) {
+        if (response.isSuccess) {
           navigate("/profile/chpass");
         }
       }
@@ -76,8 +76,8 @@ export function ChangePassword() {
   async function handleSubmitNewPassword(values: ChangePasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
     if (newPassword) {
-      const response = await dispatch(changePassword({ new_password: newPassword }));
-      if (changePassword.fulfilled.match(response)) {
+      const response = await changePassword({ new_password: newPassword });
+      if (response.isSuccess) {
         navigate("/profile/chpass/success", {
           state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
         });

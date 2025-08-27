@@ -1,5 +1,5 @@
-import { CaptchaRequest, getCaptchaRequest, requestEmailLink, sendCaptchaResponse } from "apis/eduidResetPassword";
-import { GetCaptchaResponse } from "apis/eduidSignup";
+import { resetPasswordApi } from "apis/eduidResetPassword";
+import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useContext, useEffect } from "react";
@@ -8,18 +8,13 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export interface CaptchaProps {
-  readonly handleCaptchaCancel: () => void;
-  readonly handleCaptchaCompleted: (response: string) => void;
-  getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
-}
-
 export function ResetPasswordCaptcha(): JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
+  const [getCaptchaRequest] = resetPasswordApi.useLazyGetResetPasswordCaptchaRequestQuery();
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
@@ -28,9 +23,9 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
   }, [captcha_completed]);
 
   async function getCaptcha() {
-    const res = await dispatch(getCaptchaRequest());
-    if (getCaptchaRequest.fulfilled.match(res)) {
-      return res.payload;
+    const response = await getCaptchaRequest();
+    if (response.isSuccess) {
+      return response.data.payload;
     }
   }
 
@@ -72,7 +67,7 @@ export function ResetPasswordCaptcha(): JSX.Element | null {
         </p>
       </div>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
+      <InternalCaptcha {...args} getCaptcha={getCaptcha}/>
     </Fragment>
   );
 }
@@ -83,11 +78,13 @@ export function ProcessCaptcha(): null {
   const email = useAppSelector((state) => state.resetPassword.email_address);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
+  const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
+  const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
 
   async function sendEmailLink() {
     if (email) {
-      const response = await dispatch(requestEmailLink({ email }));
-      if (requestEmailLink.fulfilled.match(response)) {
+      const response = await requestEmailLink({ email });
+      if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       } else {
         resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
@@ -96,8 +93,8 @@ export function ProcessCaptcha(): null {
   }
 
   async function sendCaptcha(captcha: CaptchaRequest) {
-    const res = await dispatch(sendCaptchaResponse(captcha));
-    if (sendCaptchaResponse.fulfilled.match(res)) {
+    const response = await sendCaptchaResponse(captcha);
+    if (response.isSuccess) {
       dispatch(clearNotifications());
       sendEmailLink();
     } else {
@@ -112,10 +109,10 @@ export function ProcessCaptcha(): null {
   }, [captcha_completed]);
 
   useEffect(() => {
-    if (captcha) {
+    if (captcha && !captcha_completed) {
       sendCaptcha(captcha);
     }
-  }, []);
+  }, [captcha, captcha_completed]);
 
   // Show a blank screen while we wait for a captcha response from the backend
   return null;

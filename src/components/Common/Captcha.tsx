@@ -1,10 +1,10 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GetCaptchaResponse } from "apis/eduidSignup";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
+import { GetCaptchaResponse } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
@@ -83,7 +83,7 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
   );
 }
 
-interface CaptchaProps {
+export interface CaptchaProps {
   readonly handleCaptchaCancel: () => void;
   readonly handleCaptchaCompleted: (response: string) => void;
   readonly getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
@@ -101,6 +101,7 @@ export function InternalCaptcha(props: CaptchaProps) {
       });
     });
   }
+
 
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves

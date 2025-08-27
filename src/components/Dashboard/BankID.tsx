@@ -1,17 +1,16 @@
-import { bankIDVerifyIdentity } from "apis/eduidBankid";
+import { bankIDApi } from "apis/eduidBankid";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 function BankID(): JSX.Element {
-  const dispatch = useAppDispatch();
+  const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery()
 
   async function useBankID() {
-    const response = await dispatch(bankIDVerifyIdentity({ method: "bankid" }));
-    if (bankIDVerifyIdentity.fulfilled.match(response)) {
-      if (response.payload.location) {
-        window.location.assign(response.payload.location);
+    const response = await bankIDVerifyIdentity({ method: "bankid" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
       }
     }
   }

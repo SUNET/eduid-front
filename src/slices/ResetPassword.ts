@@ -1,16 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { eidasGetStatus } from "apis/eduidEidas";
-import {
-  CaptchaRequest,
-  ExtraSecurityAlternatives,
-  getCaptchaRequest,
-  requestEmailLink,
-  RequestEmailLinkResponse,
-  sendCaptchaResponse,
-  verifyEmailLink,
-} from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
-import { bankIDGetStatus } from "apis/eduidBankid";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi } from "apis/eduidEidas";
+import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/eduidResetPassword";
+import { CaptchaRequest } from "apis/eduidSignup";
 import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
 
 export type Phone = { index: string; number: string; phone_code: string };
@@ -45,10 +38,6 @@ export const resetPasswordSlice = createSlice({
   name: "resetPassword",
   initialState,
   reducers: {
-    // Store phone_code for API call /new-password-extra-security-phone endpoint.
-    savePhoneCode: (state, action: PayloadAction<string>) => {
-      state.phone.phone_code = action.payload;
-    },
     // Depending on selectedOption, this will call correct action of new password.
     selectExtraSecurity: (state, action: PayloadAction<string>) => {
       state.selected_option = action.payload;
@@ -61,9 +50,6 @@ export const resetPasswordSlice = createSlice({
     },
     resetEmailStatus: (state) => {
       state.email_status = undefined;
-    },
-    setPhone: (state, action) => {
-      state.phone = action.payload;
     },
     resetState: (state) => {
       state.webauthn_assertion = undefined;
@@ -82,49 +68,52 @@ export const resetPasswordSlice = createSlice({
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.webauthn_assertion = action.payload;
       })
-      .addCase(requestEmailLink.pending, (state) => {
+      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchPending, (state) => {
         state.email_status = "requested";
         // Make sure the ExpiresMeter props change when resending e-mails. Otherwise the timer doesn't
         // start after the resend request arrives.
         state.email_response = undefined;
       })
-      .addCase(requestEmailLink.fulfilled, (state, action) => {
+      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchFulfilled, (state, action) => {
         state.email_status = "success";
-        if (!action.payload.throttled_seconds || !action.payload.throttled_max) {
+        if (!action.payload.payload.throttled_seconds || !action.payload.payload.throttled_max) {
           // remove once new backend that always sends this is deployed to production
           state.email_response = { throttled_seconds: 300, throttled_max: 300, email: "", email_code_timeout: 7200 };
           return;
         }
-        state.email_response = action.payload;
+        state.email_response = action.payload.payload;
       })
-      .addCase(requestEmailLink.rejected, (state, action) => {
+      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state, action) => {
         state.email_status = "failed";
       })
-      .addCase(verifyEmailLink.fulfilled, (state, action) => {
-        state.email_address = action.payload.email_address;
-        state.extra_security = action.payload.extra_security;
-        state.suggested_password = action.payload.suggested_password;
-        state.email_code = action.payload.email_code;
+      .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchFulfilled, (state, action) => {
+        state.email_address = action.payload.payload.email_address;
+        state.extra_security = action.payload.payload.extra_security;
+        state.suggested_password = action.payload.payload.suggested_password;
+        state.email_code = action.payload.payload.email_code;
       })
-      .addCase(eidasGetStatus.fulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.status;
-      })
-      .addCase(bankIDGetStatus.fulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.status;
-      })
-      .addCase(sendCaptchaResponse.fulfilled, (state, action) => {
-        state.captcha = action.payload;
-      })
-      .addCase(sendCaptchaResponse.rejected, (state, action: PayloadAction<any>) => {
+      .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchFulfilled, (state, action) => {
         state.captcha_completed = action?.payload?.payload.captcha_completed;
         if (state.captcha) {
           state.captcha.internal_response = undefined;
         }
       })
-      .addCase(getCaptchaRequest.rejected, (state, action: PayloadAction<any>) => {
+      .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchRejected, (state, action: PayloadAction<any>) => {
+        state.captcha_completed = action?.payload?.payload.captcha_completed;
+        if (state.captcha) {
+          state.captcha.internal_response = undefined;
+        }
+      })
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordCaptchaRequest.matchRejected, (state, action: PayloadAction<any>) => {
         if (action.payload?.payload?.message === "resetpw.captcha-already-completed") {
           state.captcha_completed = true;
         }
+      })
+      .addMatcher(eidasApi.endpoints.eidasGetStatus.matchFulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.payload.status;
+      })
+      .addMatcher(bankIDApi.endpoints.bankIDGetStatus.matchFulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.payload.status;
       });
   },
 });

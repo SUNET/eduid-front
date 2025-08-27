@@ -1,4 +1,4 @@
-import { fetchMfaAuth } from "apis/eduidLogin";
+import { loginApi } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
@@ -90,6 +90,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
   //resetpw
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
+  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
 
   async function startTokenAssertion(webauthn_challenge?: string) {
     if (location.pathname.includes("login")) {
@@ -97,7 +98,7 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
         const res = await dispatch(performAuthentication(webauthn_challenge));
         if (performAuthentication.fulfilled.match(res)) {
           // Send response from security key to backend
-          dispatch(fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload }));
+          fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload });
         }
         if (props.setActive) props.setActive(false);
       }
@@ -116,9 +117,9 @@ function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
   async function fetchAuthnChallenge() {
     if (ref) {
       if (!mfa.webauthn_challenge) {
-        const response = await dispatch(fetchMfaAuth({ ref: ref }));
-        if (fetchMfaAuth.fulfilled.match(response)) {
-          startTokenAssertion(response?.payload?.webauthn_options);
+        const response = await fetchMfaAuth({ ref: ref });
+        if (response.isSuccess) {
+          startTokenAssertion(response.data.payload.webauthn_options);
         }
       } else startTokenAssertion(mfa.webauthn_challenge);
     }

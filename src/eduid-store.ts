@@ -1,3 +1,4 @@
+import { eduIDApi } from "apis/common";
 import { combineReducers } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -31,6 +32,7 @@ const eduIDApp = combineReducers({
   security: securitySlice.reducer,
   ladok: ladokSlice.reducer,
   authn: authnSlice.reducer,
+  [eduIDApi.reducerPath]: eduIDApi.reducer,
 });
 
 export default eduIDApp;
