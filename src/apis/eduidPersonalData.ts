@@ -24,6 +24,12 @@ export interface UserNameRequest {
   given_name: string;
   surname: string;
   chosen_given_name?: string;
+}
+
+export interface UserNameResponse {
+  given_name: string;
+  surname: string;
+  chosen_given_name?: string;
   legal_name?: string;
 }
 
@@ -73,7 +79,7 @@ export interface FetchIdentitiesResponse {
 
 export const personalDataApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    postUserName: builder.mutation<ApiResponse<UserNameRequest>, UserNameRequest>({
+    postUserName: builder.mutation<ApiResponse<UserNameResponse>, UserNameRequest>({
       query: (body) => ({
         url: "user/name",
         body
