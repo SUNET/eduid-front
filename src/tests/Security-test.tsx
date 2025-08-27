@@ -7,8 +7,9 @@ import {
   RequestCredentialsResponse,
 } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
+import { http, HttpResponse } from "msw";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
 
@@ -155,13 +156,13 @@ test("api call webauthn/remove", async () => {
   };
 
   mswServer.use(
-    rest.post("webauthn/remove", async (req, res, ctx) => {
-      const body = (await req.json()) as RemoveWebauthnTokensRequest;
+    http.post("webauthn/remove", async ({ request }) => {
+      const body = (await request.json()) as RemoveWebauthnTokensRequest;
       if (body.credential_key != credential_key) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
-      return res(ctx.json({ type: "test response", payload: response.credentials }));
+      return HttpResponse.json({ type: "test response", payload: response.credentials });
     })
   );
 

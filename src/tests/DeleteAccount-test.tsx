@@ -1,7 +1,7 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse, mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAccountSettings() {
@@ -31,13 +31,13 @@ test("can delete eduid account", async () => {
   let terminateCalled = false;
 
   mswServer.use(
-    rest.post("/security/terminate-account", (req, res, ctx) => {
+    http.post("/security/terminate-account", ({ request }) => {
       terminateCalled = true;
-      return res(ctx.json({ type: "test success", payload: {} }));
+      return HttpResponse.json({ type: "test success", payload: {} });
     })
   );
 
-  mswServer.printHandlers();
+  mswServer.listHandlers();
   render(<IndexMain />, {
     state: {
       config: { ...defaultDashboardTestState.config, security_service_url: "/security/" },
@@ -69,7 +69,6 @@ test("can delete eduid account", async () => {
   await waitFor(() => {
     expect(terminateCalled).toBe(true);
   });
-
 });
 
 test("render, enable navigation back to security settings", async () => {

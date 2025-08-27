@@ -1,6 +1,7 @@
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { IndexMain } from "components/IndexMain";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse } from "msw";
+import { mswServer } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 beforeEach(() => {
@@ -24,10 +25,10 @@ test("renders FINISHED as expected", async () => {
   const ref = "abc987";
 
   mswServer.use(
-    rest.post("/next", async (req, res, ctx) => {
-      const body = (await req.json()) as LoginNextRequest;
+    http.post("/next", async ({ request }) => {
+      const body = (await request.json()) as LoginNextRequest;
       if (body.ref != ref) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       const payload: LoginNextResponse = {
@@ -35,7 +36,7 @@ test("renders FINISHED as expected", async () => {
         target: "/foo",
         parameters: { SAMLResponse: "saml-response" },
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
@@ -52,17 +53,17 @@ test("renders UsernamePw as expected", async () => {
   const ref = "abc987";
 
   mswServer.use(
-    rest.post("/next", async (req, res, ctx) => {
-      const body = (await req.json()) as LoginNextRequest;
+    http.post("/next", async ({ request }) => {
+      const body = (await request.json()) as LoginNextRequest;
       if (body.ref != ref) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       const payload: LoginNextResponse = {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return new HttpResponse({ type: "test response", payload: payload });
     })
   );
 

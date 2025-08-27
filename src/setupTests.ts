@@ -27,7 +27,7 @@ export const mswServer = setupServer();
 
 beforeAll(() =>
   mswServer.listen({
-    onUnhandledRequest(req) {
+    onUnhandledRequest(req: any) {
       // having this here instead of just onUnhandledRequest: 'warn' allows you to set a breakpoint here :)
       console.error("%s: Found an unhandled %s request to %s", "color: red", req.method, req.url.href);
     },
@@ -36,7 +36,7 @@ beforeAll(() =>
 afterEach(() => mswServer.resetHandlers());
 afterAll(() => mswServer.close());
 
-global.TextEncoder = TextEncoder;
+(global as any).TextEncoder = TextEncoder;
 
 // re-export rest for convenience in imports to tests
-export { rest } from "msw";
+export { http, HttpResponse } from "msw";
