@@ -55,7 +55,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
         given_name: personal_data?.given_name,
         chosen_given_name: personal_data?.chosen_given_name,
         surname: personal_data?.surname,
-        legal_name: personal_data?.legal_name
       }}
       validate={validatePersonalData}
       onSubmit={formSubmit}
