@@ -77,7 +77,7 @@ export function Help(): React.JSX.Element {
         <FormattedMessage description="help - content paragraph" defaultMessage="Expand sections to learn more." />
       </p>
       <div className="help-content">
-        <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-help">
+        <Accordion id="eduid-help">
           <AccordionItemTemplate
             uuid="help-about-eduid"
             title={<FormattedMessage description="about eduid - handle" defaultMessage="About eduID" />}
@@ -202,7 +202,7 @@ export function Help(): React.JSX.Element {
             <h4>
               <FormattedMessage description="create eduid - heading" defaultMessage="How do I get an account?" />
             </h4>
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-create">
+            <Accordion id="eduid-create">
               <AccordionItemTemplate
                 uuid="help-create"
                 title={<FormattedMessage description="how create eduid - handle" defaultMessage="Create an eduID" />}
@@ -277,7 +277,7 @@ export function Help(): React.JSX.Element {
             <h4>
               <FormattedMessage description="login eduid - heading" defaultMessage="How do I log in with my account?" />
             </h4>
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-login">
+            <Accordion id="eduid-login">
               <AccordionItemTemplate
                 uuid="help-login"
                 title={<FormattedMessage description="login eduid - handle" defaultMessage="Log in with eduID" />}
@@ -510,7 +510,7 @@ export function Help(): React.JSX.Element {
                     accessible from the drop down menu in the header by clicking on your username. Read more about the possible actions of each page below.`}
                 />
               </p>
-              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-settings">
+              <Accordion id="eduid-settings">
                 <AccordionItemTemplate
                   uuid="help-start"
                   title={<FormattedMessage description="settings eduid - start handle" defaultMessage="Start" />}
@@ -1072,7 +1072,7 @@ export function Help(): React.JSX.Element {
               </section>
             </article>
 
-            <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-verification">
+            <Accordion id="eduid-verification">
               <AccordionItemTemplate
                 uuid="help-freja"
                 title={
@@ -1418,7 +1418,7 @@ export function Help(): React.JSX.Element {
                   defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below.`}
                 />
               </p>
-              <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security">
+              <Accordion id="eduid-security">
                 <AccordionItemTemplate
                   uuid="help-security-usb"
                   title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
@@ -1529,7 +1529,7 @@ export function Help(): React.JSX.Element {
               </Accordion>
               {/* security key list */}
               {approvedSecurityKeys?.entries ? (
-                <Accordion allowMultipleExpanded allowZeroExpanded id="eduid-security-keys-list">
+                <Accordion id="eduid-security-keys-list">
                   <AccordionItemTemplate
                     uuid="security-key-list"
                     title={

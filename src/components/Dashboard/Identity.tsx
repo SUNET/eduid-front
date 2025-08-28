@@ -139,7 +139,7 @@ function IdentityContent(): React.JSX.Element {
                 defaultMessage="Choose your principal identification method"
               />
             </h2>
-            <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={preExpanded}>
+            <Accordion preExpanded={preExpanded}>
               <AccordionItemSwedish />
               <AccordionItemEu />
               <AccordionItemWorld />
@@ -305,7 +305,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
               />
             </strong>
           </p>
-          <Accordion allowZeroExpanded>
+          <Accordion>
             <AccordionItemSwedish />
           </Accordion>
         </React.Fragment>
@@ -355,7 +355,7 @@ function AccordionItemSwedish(): React.JSX.Element | null {
         />
       </p>
 
-      <Accordion allowMultipleExpanded allowZeroExpanded className="accordion accordion-nested">
+      <Accordion className="accordion accordion-nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
           title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}

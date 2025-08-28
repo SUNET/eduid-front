@@ -16,8 +16,6 @@ interface  AccordionProps {
   id?: string;
   children: React.ReactNode;
   className?: string;
-  allowMultipleExpanded?: boolean;
-  allowZeroExpanded?: boolean;
   preExpanded?: string[];
 
 }
