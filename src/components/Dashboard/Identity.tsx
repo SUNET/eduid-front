@@ -139,8 +139,8 @@ function IdentityContent(): React.JSX.Element {
                 defaultMessage="Choose your principal identification method"
               />
             </h2>
-            <Accordion preExpanded={preExpanded}>
-              <AccordionItemSwedish />
+            <Accordion>
+              <AccordionItemSwedish open={preExpanded.includes("swedish")}/>
               <AccordionItemEu />
               <AccordionItemWorld />
             </Accordion>
@@ -314,7 +314,11 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   );
 }
 
-function AccordionItemSwedish(): React.JSX.Element | null {
+interface AccordionItemSwedishProps {
+  open?: boolean;
+}
+
+function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -341,6 +345,7 @@ function AccordionItemSwedish(): React.JSX.Element | null {
         />
       }
       uuid="swedish"
+      open={props.open}
     >
       {/* <h4>
         <FormattedMessage

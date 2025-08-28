@@ -1,45 +1,37 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 interface AccordionItemTemplateProps {
-  readonly icon?: React.ReactNode;
-  readonly title: React.ReactNode;
-  readonly additionalInfo: React.ReactNode;
-  readonly uuid?: string;
-  readonly children?: React.ReactNode;
-  readonly disabled?: boolean;
+  icon?: React.ReactNode;
+  title: React.ReactNode;
+  additionalInfo: React.ReactNode;
+  uuid?: string;
+  children?: React.ReactNode;
+  open?: boolean;
 }
 
 interface  AccordionProps {
   id?: string;
   children: React.ReactNode;
   className?: string;
-  preExpanded?: string[];
-
 }
+
 export function Accordion(props: Readonly<AccordionProps>): React.JSX.Element {
   return (
     <div id={props.id} className={props.className ?? "accordion"}>{props.children}</div>
   )
 }
 
-interface AccordionItemTemplateProps {
-  readonly icon?: React.ReactNode;
-  readonly title: React.ReactNode;
-  readonly additionalInfo: React.ReactNode;
-  readonly uuid?: string;
-  readonly children?: React.ReactNode;
-  readonly disabled?: boolean;
-}
-
 export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps>): React.JSX.Element {
-  const detailsRef = useRef(null);
-  const [open, setOpen] = useState(false);
-//inert={props.disabled}  onToggle={() => setOpen(!open)}
+  const [open, setOpen] = useState(props.open ?? false);
+  
   return (
-    <details id={props.uuid} className="accordion__item" > 
+    <details id={props.uuid} className="accordion__item"
+    onToggle={(event) => {setOpen(event.currentTarget.open)}}
+    open={open}
+     > 
       <summary className="accordion__heading" role="heading">
         <div className="accordion__button" role="button">
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
