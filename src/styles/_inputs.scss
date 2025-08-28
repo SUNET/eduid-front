@@ -245,6 +245,20 @@ input[type="checkbox"] {
   }
 }
 
+// orange moon bc default light bg
+#color-mode + .toggle-switch {
+  background-repeat: no-repeat;
+  background-image: url("../../img/moon-icon-orange.png");
+  background-position: 82%;
+  background-size: 17px;
+}
+// checked is dark mode
+#color-mode:checked + .toggle-switch {
+  background-image: url("../../img/sun-icon-white.png");
+  background-position: 10%;
+  background-size: 22px;
+}
+
 .toggle-checkbox {
   position: absolute;
   width: auto;
@@ -303,6 +317,15 @@ input:-webkit-autofill {
 
   input::placeholder {
     font-size: variables.$txt-md;
+  }
+
+  footer .toggle {
+    flex-direction: column;
+    align-self: end;
+
+    > span {
+      margin: 0 0 5px;
+    }
   }
 }
 

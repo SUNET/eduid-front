@@ -229,8 +229,8 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         <p>
           <FormattedMessage
             description="security second factor"
-            defaultMessage={`Add a token as a second factor of authentication, beyond username and password,
-                  to prove you are the owner of your eduID. For example a token can be a security key or your device.`}
+            defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
+              to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer.`}
           />
         </p>
         <p className="text-medium">
@@ -277,7 +277,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <p className="help-text">
                 <FormattedMessage
                   description="platform authn device help text"
-                  defaultMessage="The device you are currently using"
+                  defaultMessage="The device you are currently using."
                 />
               </p>
               {!isPlatformAuthenticatorAvailable && (
@@ -300,7 +300,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
               <p className="help-text">
-                <FormattedMessage description="platform authn key help text" defaultMessage="USB Security Key." />
+                <FormattedMessage
+                  description="platform authn key help text"
+                  defaultMessage="E.g a USB Security Key you are using."
+                />
               </p>
             </div>
           </div>

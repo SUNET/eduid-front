@@ -1996,6 +1996,20 @@ export function Help(): React.JSX.Element {
                 />
               </p>
             </article>
+            <article>
+              <h4>
+                <FormattedMessage
+                  description="how change appearance - heading"
+                  defaultMessage="How can I change the appearance of eduID?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  description="how change appearance - paragraph"
+                  defaultMessage={`The color mode of eduID.se is available in light or dark mode to adapt to user preference and will display according to your system settings. This can be overridden at any time by using the "Appearance" toggle control in the page footer. If no preference is set it defaults to a light theme.`}
+                />
+              </p>
+            </article>
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-about-sunet"

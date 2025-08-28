@@ -43,7 +43,7 @@ export const ToUs: { [key: string]: ReactElement } = {
             description="ToU first paragraph"
           />,
           <FormattedMessage
-            defaultMessage="that SUNET's ethical rules regulate the “other” usage."
+            defaultMessage="that SUNET's ethical rules (listed below) regulate all other permitted usage."
             description="ToU first paragraph"
           />,
         ].map((list, index) => {

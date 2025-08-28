@@ -1,3 +1,4 @@
+import ThemeToggle from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
@@ -46,6 +47,9 @@ const Footer = (): React.JSX.Element => {
         <span>&copy;2013-2025</span>
       </div>
 
+      {/* Color mode toggle, cookie overrides system settings, default theme is light */}
+      <ThemeToggle />
+
       <nav>
         <ul>
           <li>
@@ -53,6 +57,7 @@ const Footer = (): React.JSX.Element => {
               <FormattedMessage defaultMessage="Help" description="Footer help" />
             </Link>
           </li>
+
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
               <a className="link" href="#" onClick={changeLanguage}>

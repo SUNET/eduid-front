@@ -11,6 +11,7 @@ export function LanguagePreference() {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const locale = useAppSelector((state) => state.intl.locale);
+  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const messages = LOCALIZED_MESSAGES;
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
@@ -18,10 +19,10 @@ export function LanguagePreference() {
   const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation()
 
   useEffect(() => {
-    if (personal_data?.language === undefined) {
+    if (isLoaded && personal_data?.language === undefined) {
       postLanguage({ language: locale });
     }
-  }, []);
+  }, [isLoaded]);
 
   async function formSubmit(values: UserLanguageRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
