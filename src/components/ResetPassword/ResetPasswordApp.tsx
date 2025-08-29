@@ -20,7 +20,7 @@ export interface UrlParams {
   ref?: string;
 }
 
-export function ResetPasswordApp(): JSX.Element {
+export function ResetPasswordApp(): React.JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
@@ -89,7 +89,7 @@ function AskForEmailOrConfirmEmail(): null {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-export function ResetPasswordConfirmEmail(): JSX.Element {
+export function ResetPasswordConfirmEmail(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);

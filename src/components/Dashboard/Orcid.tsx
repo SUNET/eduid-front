@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
 
-export function Orcid(): JSX.Element {
+export function Orcid(): React.JSX.Element {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();

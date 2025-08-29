@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLInputTypeAttribute } from "react";
 import { FieldRenderProps } from "react-final-form";
 import { useIntl } from "react-intl";
 
@@ -7,6 +7,7 @@ interface TextInputProps extends FieldRenderProps<string> {
   helpBlock?: React.ReactNode;
   disabled?: boolean;
   autoComplete?: string;
+  type?: HTMLInputTypeAttribute;
 }
 
 export default function TextInput(props: TextInputProps) {

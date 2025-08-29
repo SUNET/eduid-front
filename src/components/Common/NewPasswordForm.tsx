@@ -24,11 +24,11 @@ interface NewPasswordFormProps {
   //   form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
   //   callback?: ((errors?: SubmissionErrors) => void) | undefined
   // ) => void | Promise<void>;
-  readonly submitButtonText: React.ReactChild;
+  readonly submitButtonText: React.ReactNode;
   readonly handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export function NewPasswordForm(props: NewPasswordFormProps): JSX.Element {
+export function NewPasswordForm(props: NewPasswordFormProps): React.JSX.Element {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
     const errors: NewPasswordFormData = {};

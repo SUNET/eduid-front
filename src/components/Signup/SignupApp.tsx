@@ -13,7 +13,7 @@ import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
-export function SignupApp(): JSX.Element {
+export function SignupApp(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const state = useSelector(signupContext.signupService, (s) => s);
   const intl = useIntl();

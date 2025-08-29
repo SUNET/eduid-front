@@ -1,3 +1,5 @@
+@use "variables";
+
 /** Content wrapping load spinner **/
 
 #eduid-splash-and-children {
@@ -9,8 +11,8 @@
 
 #eduid-splash-spinner {
   height: 100%;
-  width: calc(100% + 2 * ($border-width));
-  left: -$border-width;
+  width: calc(100% + 2 * (variables.$border-width));
+  left: -(variables.$border-width);
   background-color: var(--body-gray);
   position: absolute;
   z-index: 100;

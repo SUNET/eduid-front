@@ -3,7 +3,20 @@ import { InputWrapper } from "./InputWrapper";
 
 type InputType = "text" | "password" | "email";
 
-export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
+export interface CustomInputProps<T> extends FieldRenderProps<T> {
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+  autoFocus?: boolean;
+  autoComplete?: string;
+  label?: string;
+  helpBlock?: string;
+  passwordStrengthMeter?: string;
+  children?: React.ReactNode;
+
+}
+
+export default function CustomInput(props: FieldRenderProps<string>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -12,7 +25,15 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
   );
 }
 
-const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
+export interface CustomInputProps<T> extends FieldRenderProps<T> {
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+  autoFocus?: boolean;
+  autoComplete?: string;
+}
+
+const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
   let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
     if (props.meta.invalid) {
@@ -30,7 +51,7 @@ const InputElement = (props: FieldRenderProps<string>): JSX.Element => {
       type={props.input.type as InputType}
       className={`${className}`}
       placeholder={props.placeholder}
-      aria-required={props.input.required}
+      aria-required={props.required}
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
     />

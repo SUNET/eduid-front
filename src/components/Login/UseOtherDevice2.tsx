@@ -69,7 +69,7 @@ function UseOtherDevice2() {
   );
 }
 
-function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params: UseOtherParams }): JSX.Element | null {
+function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params: UseOtherParams }): React.JSX.Element | null {
   const { data } = props;
   const [timerIsZero, setTimerIsZero] = useState(false);
 
@@ -165,7 +165,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params:
   );
 }
 
-function InfoAboutKnownDevice(props: { data: LoginUseOtherDevice2Response }): JSX.Element | null {
+function InfoAboutKnownDevice(props: { data: LoginUseOtherDevice2Response }): React.JSX.Element | null {
   return (
     <li>
       <FormattedMessage
@@ -183,8 +183,8 @@ function InfoAboutKnownDevice(props: { data: LoginUseOtherDevice2Response }): JS
   );
 }
 
-function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JSX.Element | null {
-  const proximityMessages: { [key: string]: JSX.Element } = {
+function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): React.JSX.Element | null {
+  const proximityMessages: { [key: string]: React.JSX.Element } = {
     SAME: (
       <FormattedMessage
         defaultMessage="(The same as now)"
@@ -204,7 +204,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
       ></FormattedMessage>
     ),
   };
-  const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
+  const proximity: React.JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
     <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
@@ -246,7 +246,7 @@ interface Device2ButtonsProps {
   extra_className?: string;
 }
 
-function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
+function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -292,7 +292,7 @@ function Device2Buttons(props: Device2ButtonsProps): JSX.Element {
   );
 }
 
-function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): JSX.Element {
+function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
   function handleSubmit(): undefined {
     // No-op, have to provide it to the form but we don't expect submissions on device 2.
     return undefined;

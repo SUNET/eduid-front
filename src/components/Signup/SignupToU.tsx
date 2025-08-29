@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
-export function SignupToU(): JSX.Element {
+export function SignupToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const version = signupState?.tou.version;
@@ -46,7 +46,7 @@ export function SignupToU(): JSX.Element {
   );
 }
 
-export function ProcessToU(): JSX.Element {
+export function ProcessToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();

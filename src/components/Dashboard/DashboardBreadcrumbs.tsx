@@ -10,7 +10,7 @@ interface DashboardBreadcrumbsTypes {
   readonly icon?: string;
 }
 
-export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardBreadcrumbsTypes): JSX.Element {
+export function DashboardBreadcrumbs({ pageIcon, currentPage, icon }: DashboardBreadcrumbsTypes): React.JSX.Element {
   if (currentPage === "Start") {
     return (
       <nav className="breadcrumb" aria-label="breadcrumb">

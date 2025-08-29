@@ -8,7 +8,7 @@ import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
-export function MultiFactorAuth(): JSX.Element {
+export function MultiFactorAuth(): React.JSX.Element {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const mfa = useAppSelector((state) => state.login.mfa);
@@ -94,7 +94,7 @@ export function MultiFactorAuth(): JSX.Element {
   );
 }
 
-function ExtraSecurityNotAvailable(): JSX.Element {
+function ExtraSecurityNotAvailable(): React.JSX.Element {
   const toDashboard = useAppSelector((state) => state.config.dashboard_link);
 
   return (

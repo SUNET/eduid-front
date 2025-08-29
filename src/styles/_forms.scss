@@ -1,3 +1,5 @@
+@use "variables";
+
 /* Form layout elements */
 
 //top margin here assumes that text above has bottom margin of 1rem
@@ -65,7 +67,7 @@ form {
     margin: 0.5rem 0 0 1rem;
   }
 
-  @media (max-width: $bp-sm) {
+  @media (max-width: variables.$bp-sm) {
     flex-direction: column;
 
     button {
@@ -79,7 +81,7 @@ form {
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: $bp-sm) {
+  @media (max-width: variables.$bp-sm) {
     flex-direction: column;
     align-items: unset;
 
@@ -123,13 +125,13 @@ fieldset.change-password-custom-inputs {
 
 // in use?
 .input-error {
-  color: $bright-orange;
+  color: variables.$bright-orange;
   letter-spacing: 0.025rem;
-  @extend .text-bold;
+  @extend .text-bold !optional;
 }
 
 .input-validate-error {
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
   color: var(--error-red);
 
   fieldset & {
@@ -144,7 +146,7 @@ fieldset.change-password-custom-inputs {
 
   & label {
     letter-spacing: 0;
-    font-size: $txt-md;
+    font-size: variables.$txt-md;
   }
 
   //for orange asterisk after label
@@ -154,7 +156,7 @@ fieldset.change-password-custom-inputs {
   }
 
   & .help-block {
-    font-size: $txt-md;
+    font-size: variables.$txt-md;
     text-transform: lowercase;
   }
 }
@@ -163,18 +165,18 @@ fieldset.change-password-custom-inputs {
 .help-text {
   margin: 0.5rem 0 0;
   color: var(--txt-gray);
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
 
   &.black {
     color: var(--body-txt);
   }
 
   .btn + & {
-    @media (max-width: $bp-md) {
+    @media (max-width: variables.$bp-md) {
       text-align: center;
     }
 
-    @media (max-width: $bp-xs) {
+    @media (max-width: variables.$bp-xs) {
       margin: 0 0 0.75rem;
     }
   }
@@ -183,6 +185,6 @@ fieldset.change-password-custom-inputs {
 .legend-2fa {
   flex-direction: column;
   p {
-    font-family: $inter-regular;
+    font-family: variables.$inter-regular;
   }
 }

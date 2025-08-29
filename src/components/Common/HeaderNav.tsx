@@ -28,7 +28,7 @@ export interface RenderUserNameProps {
   openMenu: boolean;
 }
 
-function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
+function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
   const emails = useAppSelector((state) => state.emails.emails);
 
   if (!emails.length) {
@@ -49,7 +49,7 @@ function RenderUserName(props: RenderUserNameProps): JSX.Element | null {
   );
 }
 
-function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement>, handler: () => void) {
+function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement|null>, handler: () => void) {
   useEffect(() => {
     const listener = (event: TouchEvent | MouseEvent) => {
       if (!ref.current || ref.current.contains(event.target as Node)) {
@@ -68,7 +68,7 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement>, handler: ()
   }, [ref, handler]);
 }
 
-export function HeaderNav(props: HeaderNavProps): JSX.Element {
+export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<{ [key in ButtonKey]: boolean }>({
     start: false,
@@ -76,7 +76,7 @@ export function HeaderNav(props: HeaderNavProps): JSX.Element {
     security: false,
     account: false,
   });
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLElement|null>(null);
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => ({

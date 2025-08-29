@@ -9,7 +9,7 @@ interface ShowAfterDelayProps extends React.BaseHTMLAttributes<HTMLBaseElement> 
  *
  * @param props.delay number of milliseconds before showing the children
  */
-export default function ShowAfterDelay(props: ShowAfterDelayProps): JSX.Element | null {
+export default function ShowAfterDelay(props: ShowAfterDelayProps): React.JSX.Element | null {
   const [showChildren, setShowChildren] = useState(false);
 
   useEffect(() => {

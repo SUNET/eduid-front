@@ -1,9 +1,8 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
-import type { InitialEntry } from "history";
 import React from "react";
-import { MemoryRouter } from "react-router";
+import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as configInitialState } from "slices/IndexConfig";
 
 export const defaultDashboardTestState = {

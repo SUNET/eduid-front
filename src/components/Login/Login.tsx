@@ -23,7 +23,7 @@ interface LoginParams {
 /* keep all use through functions in this module */
 export const HAS_READ_ANNOUNCEMENT = "hasReadAnnouncement";
 
-function Login(): JSX.Element {
+function Login(): React.JSX.Element {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
@@ -93,7 +93,7 @@ function Login(): JSX.Element {
   );
 }
 
-function RenderFinished(): JSX.Element {
+function RenderFinished(): React.JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
 
   let ComponentToRender;
@@ -107,7 +107,7 @@ function RenderFinished(): JSX.Element {
 }
 export default Login;
 
-function UserTerminated(): JSX.Element {
+function UserTerminated(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error_state = useAppSelector((state) => state.login.error);

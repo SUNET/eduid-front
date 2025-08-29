@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
-export function SignupCredentials(): JSX.Element {
+export function SignupCredentials(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const state = useSelector(signupContext.signupService, (s) => s);
 
@@ -52,7 +52,7 @@ export function SignupCredentials(): JSX.Element {
   return <React.Fragment></React.Fragment>;
 }
 
-export function SignupCredentialPassword(): JSX.Element {
+export function SignupCredentialPassword(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useGetPasswordRequestQuery();

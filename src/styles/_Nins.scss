@@ -1,3 +1,5 @@
+@use "variables";
+
 /** Personal identity / co-ordination number form **/
 
 #connect-nin-number-container {
@@ -15,15 +17,15 @@
   grid-column-gap: 1rem;
   margin-top: 1rem;
 
-  @media (max-width: $bp-xs) {
+  @media (max-width: variables.$bp-xs) {
     grid-template-columns: 100%;
   }
 }
 
 .vetting-button {
   & .text {
-    font-size: $txt-xs;
-    font-family: $akkurat;
+    font-size: variables.$txt-xs;
+    font-family: variables.$akkurat;
     line-height: 1.2;
     text-transform: uppercase;
     align-self: flex-start;
@@ -54,7 +56,7 @@
 
   & .name {
     align-self: flex-end;
-    font-size: $txt-lg;
+    font-size: variables.$txt-lg;
     line-height: 1;
     letter-spacing: 0;
     text-transform: uppercase;
@@ -64,7 +66,7 @@
   & button {
     margin-left: 0;
     margin-bottom: 0.5rem;
-    font-family: $inter-bold;
+    font-family: variables.$inter-bold;
     line-height: 1;
     color: var(--body-txt);
     border: solid var(--body-txt) 2px;
@@ -83,12 +85,12 @@
 
     &:hover {
       transform: scale(0.99);
-      border: solid $bright-orange 2px;
+      border: solid variables.$bright-orange 2px;
       color: var(--txt-orange);
       transition: all 0.3s ease;
     }
 
-    @media (max-width: $bp-xs) {
+    @media (max-width: variables.$bp-xs) {
       min-height: 150px;
     }
   }
@@ -132,7 +134,7 @@
   color: var(--txt-gray);
 }
 
-@media (max-width: $bp-md) {
+@media (max-width: variables.$bp-md) {
   #connect-nin-number {
     margin-top: 3rem;
 
@@ -142,13 +144,13 @@
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (max-width: variables.$bp-sm) {
   #nin {
     & input {
-      font-size: $txt-md;
+      font-size: variables.$txt-md;
 
       &::placeholder {
-        font-size: $txt-md;
+        font-size: variables.$txt-md;
       }
     }
   }

@@ -2,9 +2,8 @@ import { RenderOptions, RenderResult, render as rtlRender } from "@testing-libra
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
-import type { InitialEntry } from "history";
 import React from "react";
-import { MemoryRouter } from "react-router";
+import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
 import { initialState as authnInitialState } from "slices/Authn";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";

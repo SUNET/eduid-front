@@ -12,7 +12,7 @@ const REMEMBER_ME_KEY = "login.remember_me";
 /**
  * Fetch the "new device" endpoint from the backend, and store it in local storage.
  */
-export function NewDevice(): JSX.Element | null {
+export function NewDevice(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const [fetchNewDevice] = loginApi.useLazyFetchNewDeviceQuery();
@@ -44,7 +44,7 @@ export function NewDevice(): JSX.Element | null {
 /**
  * Component rendering a checkbox allowing the user to decide if they want to be remembered on this device or not.
  */
-export function RememberMeCheckbox(): JSX.Element | null {
+export function RememberMeCheckbox(): React.JSX.Element | null {
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const has_session = useAppSelector((state) => state.login.authn_options.has_session);
   const previous_this_device = useAppSelector((state) => state.login.previous_this_device);

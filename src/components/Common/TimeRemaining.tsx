@@ -53,7 +53,7 @@ interface StoredData {
   id?: string;
   end: string;
 }
-export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Element {
+export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JSX.Element {
   const [secondsLeft, setSecondsLeft] = useState(props.value > 0 ? props.value : 0);
 
   const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({ minutes: "00", seconds: "00", total_seconds: 0 });
@@ -139,7 +139,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
   );
 }
 
-function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }): JSX.Element {
+function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }): React.JSX.Element {
   const end2 = loadEndDate(props.name, props.unique_id) || new Date();
   const now2 = new Date();
   const diff2 = Math.floor((end2.getTime() - now2.getTime()) / 1000);

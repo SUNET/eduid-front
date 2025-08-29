@@ -3,7 +3,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-export default function ScrollToTopButton(): JSX.Element {
+export default function ScrollToTopButton(): React.JSX.Element {
   const [showBtn, setShowBtn] = useState("display-none");
 
   // When the user scrolls down 20px from the top of the document, show the button

@@ -13,7 +13,7 @@ interface CommonToUProps {
  * Show a specified version of the Terms of Use, and two buttons to either accept or reject them.
  *
  */
-export function CommonToU(props: CommonToUProps): JSX.Element {
+export function CommonToU(props: CommonToUProps): React.JSX.Element {
   return (
     <React.Fragment>
       <p>

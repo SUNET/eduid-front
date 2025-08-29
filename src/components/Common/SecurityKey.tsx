@@ -13,7 +13,7 @@ interface SecurityKeyProps {
   setActive?(val: boolean): void;
 }
 
-export function SecurityKey(props: SecurityKeyProps): JSX.Element {
+export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -41,7 +41,7 @@ export function SecurityKey(props: SecurityKeyProps): JSX.Element {
   );
 }
 
-function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
+function SecurityKeyInactive(props: SecurityKeyProps): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
   let buttonDisabled = false;
 
@@ -81,7 +81,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): JSX.Element {
   );
 }
 
-function SecurityKeyActive(props: SecurityKeyProps): JSX.Element {
+function SecurityKeyActive(props: SecurityKeyProps): React.JSX.Element {
   const dispatch = useAppDispatch();
   //login
   const mfa = useAppSelector((state) => state.login.mfa);

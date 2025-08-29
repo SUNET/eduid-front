@@ -12,7 +12,7 @@ interface NinDisplayProps {
   name?: string;
 }
 
-function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
+function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const [removeNin] = securityApi.useLazyRemoveNinQuery()
 

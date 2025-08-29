@@ -4,7 +4,7 @@ import NotificationModal from "components/Common/NotificationModal";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export default function DeleteAccount(): JSX.Element | null {
+export default function DeleteAccount(): React.JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
   const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery()
 

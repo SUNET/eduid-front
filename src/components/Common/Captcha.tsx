@@ -18,7 +18,7 @@ interface SignupCaptchaFormData {
   value?: string;
 }
 
-function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
+function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
   function submitCaptchaForm(values: SignupCaptchaFormData, form: any) {
     const errors: SignupCaptchaFormData = {};
 
@@ -42,7 +42,7 @@ function CaptchaForm(props: SignupCaptchaFormProps): JSX.Element {
             _submitError ||
             formProps.pristine ||
             props.disabled ||
-            !formProps.values["value"]
+            !formProps.values?.["value"]
         );
 
         return (

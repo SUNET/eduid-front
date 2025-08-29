@@ -4,7 +4,7 @@ import NotificationModal from "components/Common/NotificationModal";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-function Eidas(): JSX.Element {
+function Eidas(): React.JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 

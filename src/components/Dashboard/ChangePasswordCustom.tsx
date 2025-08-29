@@ -31,7 +31,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     // on the current value in the form. We need to trigger validation of the field again at this
     // point, since validation uses this calculated value (and will already have executed when we
     // get here).
-    props.formProps.form.change("custom", props.formProps.values.custom);
+    props.formProps.form.change("custom", props.formProps.values?.custom);
   }
 
   function validateNewPassword(values: { custom?: string; repeat?: string }) {

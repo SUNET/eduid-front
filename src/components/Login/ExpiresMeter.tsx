@@ -9,7 +9,7 @@ interface ExpiresMeterProps {
   showMeter: boolean;
 }
 
-export function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
+export function ExpiresMeter(props: ExpiresMeterProps): React.JSX.Element | null {
   // convince TypeScript that TimeRemainingWrapper has added the time_remaining prop
   if (props.time_remaining === undefined) {
     return null;

@@ -5,7 +5,7 @@ import { clearNotifications, eduidNotification, notificationLevel } from "slices
 import { UNKNOWN_MESSAGE } from "translation";
 import EduIDButton from "./EduIDButton";
 
-export function Notifications(): JSX.Element | null {
+export function Notifications(): React.JSX.Element | null {
   const debug = useAppSelector((state) => state.config.debug);
   const info = useAppSelector((state) => state.notifications.info);
   const error = useAppSelector((state) => state.notifications.error);
@@ -65,7 +65,7 @@ export function Notifications(): JSX.Element | null {
   );
 }
 
-function isString(translated: JSX.Element | string): translated is string {
+function isString(translated: React.JSX.Element | string): translated is string {
   return (translated as string).indexOf !== undefined;
 }
 

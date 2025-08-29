@@ -1,3 +1,5 @@
+@use "variables";
+
 img {
   width: 100%;
 }
@@ -40,7 +42,7 @@ svg {
     background: #fff;
   }
 
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     width: 20px;
     height: 20px;
     margin-right: 0.5rem;

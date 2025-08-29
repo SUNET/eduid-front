@@ -1,3 +1,5 @@
+@use "variables";
+
 // username and password
 .username-pw {
   margin-bottom: 2rem;
@@ -6,7 +8,7 @@
     margin-top: 0;
 
     .form-group {
-      margin-bottom: $margin;
+      margin-bottom: variables.$margin;
     }
 
     .welcome-back-container {
@@ -15,7 +17,7 @@
       justify-content: space-between;
       align-items: flex-start;
 
-      @media (max-width: $bp-sm) {
+      @media (max-width: variables.$bp-sm) {
         flex-direction: column;
         align-items: flex-start;
 
@@ -38,7 +40,7 @@
         display: inline-block;
       }
 
-      @media (max-width: $bp-xl) {
+      @media (max-width: variables.$bp-xl) {
         margin-top: 1rem;
       }
     }
@@ -47,7 +49,7 @@
       flex-direction: row;
       text-align: right;
 
-      @media (max-width: $bp-xl) {
+      @media (max-width: variables.$bp-xl) {
         flex-direction: column;
         text-align: center;
       }
@@ -61,7 +63,7 @@
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  margin-top: #{2 * $margin};
+  margin-top: #{2 * variables.$margin};
 
   .option-wrapper {
     margin-bottom: 2rem;
@@ -78,7 +80,7 @@
       justify-content: space-between;
 
       h3 {
-        font-size: $txt-xl;
+        font-size: variables.$txt-xl;
       }
 
       h3,
@@ -110,7 +112,7 @@
       }
     }
 
-    @media (max-width: $bp-xs) {
+    @media (max-width: variables.$bp-xs) {
       width: 100%;
     }
   }
@@ -141,7 +143,7 @@
       }
     }
 
-    @media (max-width: $bp-md) {
+    @media (max-width: variables.$bp-md) {
       input {
         margin: 5px -1px 5px 0;
 
@@ -154,7 +156,7 @@
 
   &.device1 {
     .response-code-inputs {
-      @extend .figure;
+      @extend .figure !optional;
 
       margin-bottom: 0;
     }
@@ -190,7 +192,7 @@
   .expires-meter {
     margin-top: 1.5rem;
 
-    @media (min-width: $bp-md) {
+    @media (min-width: variables.$bp-md) {
       position: absolute;
       bottom: 0.5rem;
       right: 0;
@@ -220,9 +222,9 @@
       }
     }
 
-    @media (max-width: $bp-sm) {
+    @media (max-width: variables.$bp-sm) {
       .x-adjust {
-        margin-left: #{-1 * $list-indent};
+        margin-left: #{-1 * variables.$list-indent};
       }
     }
   }
@@ -230,7 +232,7 @@
   .developer {
     // show QR URL at the bottom for non-production environments
     height: 10rem;
-    font-size: $txt-xs;
+    font-size: variables.$txt-xs;
     overflow: hidden;
     word-break: break-all;
   }

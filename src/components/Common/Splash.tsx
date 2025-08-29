@@ -17,7 +17,7 @@ interface SplashProps {
 /**
  * Show a spinner as long as showChildren is false.
  */
-export default function Splash(props: SplashProps): JSX.Element {
+export default function Splash(props: SplashProps): React.JSX.Element {
   const { showChildren, children } = props;
   const eduidSplash = useRef<HTMLDivElement>(null);
   const [spinner, setSpinner] = useState<Spinner | undefined>(undefined);

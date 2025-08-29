@@ -1,16 +1,18 @@
+@use "variables";
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   padding: 1rem;
-  border-top: 6px solid $bright-orange;
+  border-top: 6px solid variables.$bright-orange;
   background-color: var(--body-gray);
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
 
   .logo-wrapper {
     display: flex;
     align-items: baseline;
-    font-size: $txt-xs;
+    font-size: variables.$txt-xs;
 
     .sunet-logo {
       width: 40px;
@@ -39,7 +41,7 @@ footer nav .lang-selected {
   margin: 0;
   cursor: pointer;
   color: var(--txt-orange);
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
 }
 
 #language-selector {
@@ -51,7 +53,7 @@ footer nav .lang-selected {
   display: none;
 }
 
-@media (max-width: $bp-xs) {
+@media (max-width: variables.$bp-xs) {
   footer {
     align-items: flex-end;
 

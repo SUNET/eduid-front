@@ -1,3 +1,5 @@
+@use "variables";
+
 // --- PROFILE STYLES --- //
 .profile-grid-cell {
   display: flex;
@@ -24,11 +26,11 @@
 }
 
 .display-data {
-  font-size: $txt-xl;
+  font-size: variables.$txt-xl;
   word-wrap: break-word;
 
   &:not(a) {
-    font-family: $inter-light;
+    font-family: variables.$inter-light;
   }
 
   &.no-data {
@@ -39,29 +41,29 @@
     color: var(--body-txt);
   }
 
-  @media (max-width: $bp-md) {
-    font-size: $txt-lg;
+  @media (max-width: variables.$bp-md) {
+    font-size: variables.$txt-lg;
 
     &:not(a) {
-      font-family: $inter-light;
+      font-family: variables.$inter-light;
     }
   }
 }
 
-@media (max-width: $bp-lg) {
+@media (max-width: variables.$bp-lg) {
   #profile-grid {
     width: calc(80% - 2rem);
   }
 }
 
-@media (max-width: $bp-md) {
+@media (max-width: variables.$bp-md) {
   #profile-grid {
     width: calc(100% - 1.25rem);
     grid-row-gap: 2rem;
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (max-width: variables.$bp-sm) {
   #profile-grid {
     grid-template-columns: 1fr;
   }
@@ -71,8 +73,8 @@
 .breadcrumb {
   align-items: center;
   color: var(--txt-gray);
-  font-family: $akkurat;
-  font-size: $txt-sm;
+  font-family: variables.$akkurat;
+  font-size: variables.$txt-sm;
   display: flex;
   padding-bottom: 1rem;
   a {
@@ -97,7 +99,7 @@
   margin: 1rem 0;
 }
 .status-box {
-  @extend .accordion;
+  @extend .accordion !optional;
   display: grid;
   grid-template-columns: 30px 1fr;
   grid-template-rows: auto;
@@ -106,7 +108,7 @@
   padding: 1rem;
   background-color: var(--contrast-color);
   margin-top: 0.5rem;
-  border: 1px $success-green solid !important;
+  border: 1px variables.$success-green solid !important;
 
   h3 {
     line-height: 1.4;
@@ -149,7 +151,7 @@
   }
 
   svg {
-    color: $success-green;
+    color: variables.$success-green;
     height: 1.5rem;
 
     &.disabled {

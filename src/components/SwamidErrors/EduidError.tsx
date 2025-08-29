@@ -3,14 +3,14 @@ import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 import { OtherError } from "./OtherError";
 
-export function EduidError(props: FailureComponentProps): JSX.Element {
+export function EduidError(props: FailureComponentProps): React.JSX.Element {
   if (props.errorURL.rp === "authn" && props.errorURL.ctx === "saml_response_fail") {
     return <NotLoggedIn />;
   }
   return <OtherError errorURL={props.errorURL} />;
 }
 
-function NotLoggedIn(): JSX.Element {
+function NotLoggedIn(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>

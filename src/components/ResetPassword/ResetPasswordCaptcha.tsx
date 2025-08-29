@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function ResetPasswordCaptcha(): JSX.Element | null {
+export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

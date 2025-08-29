@@ -1,13 +1,15 @@
+@use "variables";
+
 .ladok {
   &-university {
-    @media (max-width: $bp-md) {
+    @media (max-width: variables.$bp-md) {
       flex-direction: column;
 
       &.flex-between {
         align-items: flex-start;
       }
     }
-    @media (min-width: $bp-md) {
+    @media (min-width: variables.$bp-md) {
       label {
         margin-bottom: 0;
       }
@@ -22,7 +24,7 @@
 
   &-universities-status {
     color: var(--error-red);
-    font-size: $txt-md;
+    font-size: variables.$txt-md;
   }
 
   svg {

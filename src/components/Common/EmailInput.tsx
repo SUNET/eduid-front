@@ -16,7 +16,7 @@ interface EmailInputProps {
   defaultValue?: string;
 }
 
-export default function EmailInput(props: EmailInputProps): JSX.Element {
+export default function EmailInput(props: EmailInputProps): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

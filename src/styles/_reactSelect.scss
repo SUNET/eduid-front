@@ -1,3 +1,5 @@
+@use "variables";
+
 /** React-select style overrides, final-form element prefixed by "react-select" **/
 
 form .react-select,
@@ -18,7 +20,7 @@ form .react-select,
 
     &--is-disabled {
       background-color: var(--bg-gray);
-      font-size: $txt-xl;
+      font-size: variables.$txt-xl;
       * {
         color: var(--txt-gray);
       }
@@ -49,7 +51,7 @@ form .react-select,
   }
 
   &__placeholder {
-    font-family: $inter-regular;
+    font-family: variables.$inter-regular;
     color: var(--body-txt);
   }
 
@@ -62,12 +64,12 @@ form .react-select,
   &__option--is-selected {
     color: var(--txt-gray);
     background-color: inherit;
-    @extend .text-bold;
+    @extend .text-bold !optional;
   }
 }
 
 .select-group {
-  @extend .flex-between;
+  @extend .flex-between !optional;
 
   margin-top: 0.75rem;
   column-gap: 0.5rem;
@@ -91,12 +93,12 @@ form .react-select,
       box-shadow: none;
     }
   }
-  @media (max-width: $bp-md) {
+  @media (max-width: variables.$bp-md) {
     > div:nth-child(1) {
       flex: 1;
     }
   }
-  @media (max-width: $bp-sm) {
+  @media (max-width: variables.$bp-sm) {
     flex-direction: column;
     > div {
       width: 100%;
@@ -110,7 +112,7 @@ form .react-select,
     cursor: not-allowed;
     background-color: var(--bg-gray);
     color: var(--txt-gray);
-    font-size: $txt-xl;
+    font-size: variables.$txt-xl;
   }
 }
 //login react select
@@ -121,10 +123,10 @@ form .react-select,
 
   .react-select__placeholder {
     color: var(--txt-orange);
-    font-family: $akkurat;
+    font-family: variables.$akkurat;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: $txt-md;
+    font-size: variables.$txt-md;
   }
 
   .css-tj5bde-Svg {
@@ -138,7 +140,7 @@ form .react-select,
     background-color: var(--contrast-color);
     border-radius: 1.5rem;
     cursor: pointer;
-    border: solid 2px $bright-orange;
+    border: solid 2px variables.$bright-orange;
 
     &.react-select__control--is-disabled {
       cursor: not-allowed;
@@ -158,7 +160,7 @@ form .react-select,
   }
 
   .react-select__control:hover {
-    border: solid 2px $bright-orange;
+    border: solid 2px variables.$bright-orange;
   }
   .react-select__value-container {
     height: 3rem;
@@ -185,7 +187,7 @@ form .react-select,
 
   .select-option-text {
     color: var(--txt-orange);
-    font-family: $akkurat;
+    font-family: variables.$akkurat;
     font-weight: bold;
   }
 }

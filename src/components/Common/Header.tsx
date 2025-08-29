@@ -9,7 +9,7 @@ interface HeaderProps {
   readonly loginRef?: string;
 }
 
-export function Header(props: HeaderProps): JSX.Element {
+export function Header(props: HeaderProps): React.JSX.Element {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);

@@ -1,3 +1,5 @@
+@use "variables";
+
 .error-page {
   h1 {
     color: var(--error-red);
@@ -5,13 +7,13 @@
 
   & span {
     line-height: 1.5;
-    font-family: $inter-bold;
-    font-size: $txt-xxl;
+    font-family: variables.$inter-bold;
+    font-size: variables.$txt-xxl;
   }
 
   & ul {
     margin-bottom: 3.5rem;
-    font-size: $txt-xl;
+    font-size: variables.$txt-xl;
 
     div {
       margin-left: 2rem;
@@ -21,7 +23,7 @@
       li:nth-child(5) {
         list-style-type: disc;
         margin-top: 1rem;
-        font-family: $inter-bold;
+        font-family: variables.$inter-bold;
       }
 
       li:nth-child(even) {
@@ -32,12 +34,12 @@
 
   & li {
     line-height: 1.5;
-    font-family: $inter-regular;
+    font-family: variables.$inter-regular;
   }
 
   & .technical-info-heading span {
-    font-family: $inter-bold;
-    font-size: $txt-xl;
+    font-family: variables.$inter-bold;
+    font-size: variables.$txt-xl;
   }
 
   & .technical-info-box {
@@ -49,13 +51,13 @@
       justify-content: flex-start;
 
       p {
-        font-size: $txt-md;
+        font-size: variables.$txt-md;
         padding-bottom: 0;
       }
 
       p:first-child {
         text-transform: uppercase;
-        font-family: $inter-bold;
+        font-family: variables.$inter-bold;
         width: 8.125rem;
         padding-right: 1rem;
       }
@@ -78,14 +80,14 @@
 // small reddish alert with exclamation symbol
 .warning-text {
   color: var(--error-red);
-  font-size: $txt-sm;
+  font-size: variables.$txt-sm;
 
   .warning-symbol {
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (max-width: variables.$bp-sm) {
   .technical-info-text {
     flex-direction: column;
 
@@ -97,7 +99,7 @@
 
 .error-info {
   text-align: left;
-  font-size: $txt-md;
+  font-size: variables.$txt-md;
 
   tr {
     height: auto;

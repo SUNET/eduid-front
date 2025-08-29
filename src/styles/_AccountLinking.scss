@@ -1,3 +1,5 @@
+@use "variables";
+
 table.orcid {
   tr {
     height: auto;
@@ -31,7 +33,7 @@ span.orcid-logo {
 }
 
 .orcid-link {
-  font-size: $txt-md;
+  font-size: variables.$txt-md;
   line-height: 1.2;
   word-break: break-word;
 

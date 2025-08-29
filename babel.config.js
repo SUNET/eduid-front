@@ -21,7 +21,6 @@ module.exports = function (api) {
         ast: true,
       },
     ],
-    "@babel/plugin-transform-flow-strip-types",
   ];
 
   return {
