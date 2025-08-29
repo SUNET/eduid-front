@@ -4,7 +4,6 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
@@ -376,7 +375,7 @@ export const fetchNewDevice = createAsyncThunk<
 /*********************************************************************************************************************/
 export interface LoginMfaAuthRequest {
   ref: string;
-  webauthn_response?: webauthnAssertion;
+  webauthn_response?: PublicKeyCredentialJSON;
   this_device?: string;
 }
 
@@ -385,7 +384,7 @@ export interface LoginMfaAuthResponse {
   //   finished: true if backend thinks mfa_auth requirement is satisfied
   //   webauthn_options: base64-encoded webauthn challenge to pass to navigator.credentials.get()
   finished: boolean;
-  webauthn_options?: string;
+  webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
 }
 
 /**

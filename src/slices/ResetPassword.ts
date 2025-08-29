@@ -11,7 +11,7 @@ import {
 } from "apis/eduidResetPassword";
 // CreateSlice function will return an object with actions and reducer
 import { bankIDGetStatus } from "apis/eduidBankid";
-import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
+import { performAuthentication } from "../helperFunctions/navigatorCredential";
 
 export type Phone = { index: string; number: string; phone_code: string };
 
@@ -20,7 +20,7 @@ export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
   phone: { index?: number; number?: string; phone_code?: string };
-  webauthn_assertion?: webauthnAssertion;
+  webauthn_assertion?: PublicKeyCredentialJSON;
   selected_option?: string;
   new_password?: string;
   suggested_password?: string;

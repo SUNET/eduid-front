@@ -16,7 +16,7 @@ import {
   ServiceInfo,
 } from "apis/eduidLogin";
 import { ToUs } from "helperFunctions/ToUs";
-import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
+import { performAuthentication } from "../helperFunctions/navigatorCredential";
 
 // Define a type for the slice state
 interface LoginState {
@@ -29,8 +29,8 @@ interface LoginState {
   fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
-    webauthn_challenge?: string;
-    webauthn_assertion?: webauthnAssertion;
+    webauthn_challenge?: PublicKeyCredentialRequestOptionsJSON;
+    webauthn_assertion?: PublicKeyCredentialJSON;
     state?: "loading" | "loaded";
   };
   saml_parameters?: SAMLParameters;
@@ -42,7 +42,7 @@ interface LoginState {
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
   service_info?: ServiceInfo;
-  error?: string
+  error?: string;
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -57,8 +57,8 @@ interface ActionWithErrorMessage {
     error: string;
     payload: {
       message: string;
-    }
-  }
+    };
+  };
 }
 
 export const loginSlice = createSlice({
@@ -161,11 +161,12 @@ export const loginSlice = createSlice({
         state.error = undefined;
       })
       .addCase(fetchNext.rejected, (state, action) => {
-        if ((action as ActionWithErrorMessage).payload.error
-          && (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
+        if (
+          (action as ActionWithErrorMessage).payload.error &&
+          (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
         ) {
-            state.error = (action as ActionWithErrorMessage).payload.payload.message;
-          }
+          state.error = (action as ActionWithErrorMessage).payload.payload.message;
+        }
         state.fetching_next = false;
       })
       .addCase(fetchNewDevice.fulfilled, (state, action) => {

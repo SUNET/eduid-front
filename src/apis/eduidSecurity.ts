@@ -3,7 +3,6 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { FetchIdentitiesResponse } from "./eduidPersonalData";
@@ -109,7 +108,7 @@ export const requestCredentials = createAsyncThunk<
 
 /*********************************************************************************************************************/
 export interface RegisterWebauthnResponse {
-  webauthn_attestation: webauthnAttestation;
+  webauthn_attestation: PublicKeyCredentialJSON;
   credentials: CredentialType[];
 }
 
@@ -125,9 +124,7 @@ export const registerWebauthn = createAsyncThunk<
 >("security/registerWebauthn", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const body: KeyValues = {
-    attestationObject: state.security.webauthn_attestation?.attestationObject,
-    clientDataJSON: state.security.webauthn_attestation?.clientDataJSON,
-    credentialId: state.security.webauthn_attestation?.credentialId,
+    response: state.security.webauthn_attestation,
     description: args.descriptionValue,
   };
   return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/complete", body)
@@ -137,7 +134,7 @@ export const registerWebauthn = createAsyncThunk<
 
 /*********************************************************************************************************************/
 export interface BeginRegisterWebauthnResponse {
-  registration_data: string;
+  registration_data: PublicKeyCredentialCreationOptionsJSON;
 }
 
 /**
@@ -146,7 +143,7 @@ export interface BeginRegisterWebauthnResponse {
  * @desc Redux async thunk to prepare registering web auth.
  */
 export const beginRegisterWebauthn = createAsyncThunk<
-  string,
+  PublicKeyCredentialCreationOptionsJSON,
   undefined,
   { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
 >("security/beginRegisterWebauthn", async (args, thunkAPI) => {

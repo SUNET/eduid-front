@@ -207,11 +207,7 @@ test("security reducer, request credentials", async () => {
 
 test("security reducer, registerWebauthn", async () => {
   const payload: RegisterWebauthnResponse = {
-    webauthn_attestation: {
-      attestationObject: "dummy",
-      clientDataJSON: "dummy",
-      credentialId: "dummy",
-    },
+    webauthn_attestation: new AuthenticatorAttestationResponse(),
     credentials: [
       {
         created_ts: "2021-12-02",

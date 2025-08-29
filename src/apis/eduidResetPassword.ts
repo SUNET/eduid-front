@@ -4,7 +4,6 @@
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 import { GetCaptchaResponse } from "./eduidSignup";
 
@@ -79,7 +78,7 @@ export const postSetNewPasswordExternalMfa = createAsyncThunk<
 export interface NewPasswordExtraSecurityKeyRequest {
   email_code: string;
   password: string;
-  webauthn_assertion: webauthnAssertion;
+  webauthn_assertion: PublicKeyCredentialJSON;
 }
 
 /**

@@ -6,14 +6,14 @@ import {
   removeWebauthnToken,
   requestCredentials,
 } from "apis/eduidSecurity";
-import { createCredential, webauthnAttestation } from "helperFunctions/navigatorCredential";
+import { createCredential } from "helperFunctions/navigatorCredential";
 
 export interface SecurityState {
   credentials: CredentialType[];
   code?: string;
   location?: string;
   webauthn_token_description?: string;
-  webauthn_attestation?: webauthnAttestation;
+  webauthn_attestation?: PublicKeyCredentialJSON;
   webauthn_authenticator?: string;
 }
 
