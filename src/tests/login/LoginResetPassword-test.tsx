@@ -1,12 +1,14 @@
+import { userEvent } from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { NewPasswordRequest, NewPasswordResponse, RequestEmailLinkRequest, RequestEmailLinkResponse, VerifyCodeRequest, VerifyCodeResponse } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
 import { mswServer, rest } from "setupTests";
-import { fireEvent, loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 const TEST_PASSWORD = "password";
+const user = userEvent.setup();
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -65,12 +67,12 @@ test("can click 'forgot password' with an e-mail address", async () => {
   expect(emailInput).toHaveFocus();
   expect(emailInput).toHaveAccessibleName(/^Username/);
   expect(emailInput).toHaveProperty("placeholder", userNameInputPlaceHolder);
-  fireEvent.change(emailInput, { target: { value: email } });
+  await user.type(emailInput, email);
 
   const forgotButton = screen.getByRole("link", { name: /^forgot/i });
   expect(forgotButton).toBeEnabled();
 
-  fireEvent.click(forgotButton);
+  await user.click(forgotButton);
 
   // We should get to a page asking if we want to start the account recovery process
   await waitFor(() => {
@@ -84,7 +86,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
 
   const confirmButton = screen.getByRole("button", { name: /^send e-mail/i });
   expect(confirmButton).toBeEnabled();
-  fireEvent.click(confirmButton);
+  await user.click(confirmButton);
 
   // wait for page to change after clicking the confirm button
   await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
@@ -181,7 +183,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const forgotButton = screen.getByRole("link", { name: /^forgot/i });
   expect(forgotButton).toBeEnabled();
 
-  fireEvent.click(forgotButton);
+  await user.click(forgotButton);
 
   // Wait for the reset password "enter your email" screen to be displayed
   await waitFor(() => {
@@ -195,10 +197,10 @@ test("can click 'forgot password' without an e-mail address", async () => {
   expect(emailInput).toHaveFocus();
   expect(emailInput).toHaveAccessibleName(/^Email address/);
   expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
-  fireEvent.change(emailInput, { target: { value: email } });
+  await user.type(emailInput, email);
 
   expect(sendButton).toBeEnabled();
-  fireEvent.click(sendButton);
+  await user.click(sendButton);
 
   // wait for page to change after clicking the confirm button
   await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));

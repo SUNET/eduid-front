@@ -1,3 +1,4 @@
+import { userEvent } from "@testing-library/user-event";
 import {
   AcceptToURequest,
   CaptchaRequest,
@@ -47,6 +48,8 @@ const testEmailAddress = "test@example.org";
 const captchaTestValue = "captcha-test-value";
 const testPassword = "abcdefghij";
 const correctEmailCode = "123456";
+
+const user = userEvent.setup();
 
 let currentState = JSON.parse(JSON.stringify(emptyState)); // make a copy of the state
 let getCaptchaCalled = false;
@@ -277,12 +280,12 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   expect(button).toBeDisabled();
 
   if (email) {
-    fireEvent.change(firstNameInput, { target: { value: "test" } });
-    fireEvent.change(lastNameInput, { target: { value: "test" } });
-    fireEvent.change(emailInput, { target: { value: email } });
+    await user.type(firstNameInput, "test");
+    await user.type(lastNameInput, "test");
+    await user.type(emailInput, email);
     expect(button).toBeEnabled();
 
-    fireEvent.click(button);
+    user.click(button)
   }
 }
 
@@ -298,11 +301,11 @@ async function testInternalCaptcha() {
 
   const captchaInput = screen.getByRole("textbox", { name: "Enter the code from the image" });
   expect(captchaInput).toHaveFocus();
-  fireEvent.change(captchaInput, { target: { value: captchaTestValue } });
+  await user.type(captchaInput, captchaTestValue);
 
   const captchaButton = screen.getByRole("button", { name: "Continue" });
   expect(captchaButton).toBeEnabled();
-  fireEvent.click(captchaButton);
+  await user.click(captchaButton);
 }
 
 async function testTermsOfUse({
@@ -328,7 +331,7 @@ async function testTermsOfUse({
   if (clickAccept) {
     const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
     expect(acceptToUButton).toBeEnabled();
-    fireEvent.click(acceptToUButton);
+    await user.click(acceptToUButton);
 
     await waitFor(() => {
       expect(acceptToUCalled).toBe(true);
@@ -340,7 +343,7 @@ async function testTermsOfUse({
   } else if (clickCancel) {
     const cancelButton = screen.getByRole("button", { name: /Cancel/i });
     expect(cancelButton).toBeEnabled();
-    fireEvent.click(cancelButton);
+    await user.click(cancelButton);
   }
 }
 
@@ -381,7 +384,7 @@ async function enterEmailCode(code: string) {
   expect(inputs).toHaveLength(code.length);
 
   for (let i = 0; i < code.length; i++) {
-    fireEvent.change(inputs[i], { target: { value: code[i] } });
+    await user.type(inputs[i], code[i]);
   }
 
   // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
