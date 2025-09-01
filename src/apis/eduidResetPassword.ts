@@ -94,7 +94,7 @@ export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
   const body: KeyValues = {
     email_code: args.email_code,
     password: args.password,
-    ...args.webauthn_assertion,
+    webauthn_response: args.webauthn_assertion,
   };
   return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-token", body)
     .then((response) => response.payload)
