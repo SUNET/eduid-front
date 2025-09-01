@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { ladokApi } from "apis/eduidLadok";
+import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
-import { fetchLadokUniversities, linkUser, unlinkUser } from "../../apis/eduidLadok";
 
 interface SelectedUniProps {
   label: string;
@@ -13,7 +13,7 @@ interface SelectedUniProps {
 const LadokContainer = (): JSX.Element => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
-  const dispatch = useAppDispatch();
+  const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
 
   const handleSwitchChange = (): void => {
     // Easiest way to understand the logic in this function is to store the old switch status here.
@@ -21,7 +21,7 @@ const LadokContainer = (): JSX.Element => {
     setSwitchChecked(!switchChecked);
 
     if (wasChecked && isLinked) {
-      dispatch(unlinkUser());
+      unlinkUser();
     }
   };
 
@@ -77,8 +77,9 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useAppSelector((state) => state.ladok.unis);
   const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
   const ladokName = useAppSelector((state) => state.ladok.ladokName);
-  const dispatch = useAppDispatch();
   const intl = useIntl();
+  const [fetchLadokUniversities] = ladokApi.useLazyFetchLadokUniversitiesQuery();
+  const [linkUser] = ladokApi.useLazyLinkUserQuery();
 
   const placeholder = intl.formatMessage({
     id: "ladok.dropdown_placeholder",
@@ -92,14 +93,14 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     if (ladokUnis === undefined) {
       // initiate fetching of universities metadata when the user indicates they
       // are interested in linking their account
-      dispatch(fetchLadokUniversities());
+      fetchLadokUniversities();
     }
   }, [ladokUnis]);
 
   function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
     if (newValue?.value) {
       setSelected(newValue);
-      dispatch(linkUser({ ladok_name: newValue.value }));
+      linkUser({ ladok_name: newValue.value });
     }
   }
 

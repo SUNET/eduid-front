@@ -1,9 +1,9 @@
-import { confirmLetterCode, fetchLetterProofingState, postRequestLetter } from "apis/eduidLetterProofing";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { letterProofingApi } from "apis/eduidLetterProofing";
+import personalDataApi from "apis/eduidPersonalData";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
@@ -22,11 +22,14 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
   const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
   const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities?.nin?.number || letter_expired;
-  const dispatch = useAppDispatch();
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [letterProofingState] = letterProofingApi.useLazyLetterProfingStateQuery();
+  const [requestLetter] = letterProofingApi.useLazyRequestLetterQuery();
+  const [confirmLetterCode] = letterProofingApi.useLazyConfirmLetterCodeQuery();
 
   useEffect(() => {
-    dispatch(fetchLetterProofingState());
-  }, [dispatch]);
+    letterProofingState();
+  }, []);
 
   function handleModal() {
     const letterPending = letter_sent_date === undefined && !letter_expired;
@@ -44,29 +47,25 @@ export default function LetterProofing(props: LetterProofingProps): JSX.Element 
     }
   }
 
-  function sendConfirmationCode(values: { [key: string]: string }) {
-    (async () => {
-      try {
-        const confirmationCode = values["letter-confirm-modal"];
-        if (confirmationCode) {
-          const response = await dispatch(confirmLetterCode({ code: confirmationCode.trim() }));
-          if (confirmLetterCode.fulfilled.match(response)) {
-            dispatch(requestAllPersonalData());
-          }
-        }
-        setShowConfirmationModal(false);
-      } catch (err) {}
-    })();
+  async function sendConfirmationCode(values: { [key: string]: string }) {
+    const confirmationCode = values["letter-confirm-modal"];
+    if (confirmationCode) {
+      const response = await confirmLetterCode({ code: confirmationCode.trim() });
+      if (response.isSuccess) {
+        requestAllPersonalData();
+      }
+    }
+    setShowConfirmationModal(false);
   }
 
-  function confirmLetterProofing() {
-    (async () => {
-      const response = await dispatch(postRequestLetter());
-      if (postRequestLetter.fulfilled.match(response)) {
-        dispatch(requestAllPersonalData());
+  async function confirmLetterProofing() {
+    if (identities?.nin?.number) {
+      const response = await requestLetter({nin: identities.nin.number});
+      if (response.isSuccess) {
+        requestAllPersonalData();
       }
-      setShowNotificationModal(false);
-    })();
+    }
+    setShowNotificationModal(false);
   }
 
   function formatDateFromBackend(dateFromBackend: string) {

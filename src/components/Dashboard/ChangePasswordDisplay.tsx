@@ -1,16 +1,15 @@
-import { fetchSuggestedPassword } from "apis/eduidSecurity";
+import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery()
 
   async function handleSuggestedPassword() {
-    const response = await dispatch(fetchSuggestedPassword());
-    if (fetchSuggestedPassword.fulfilled.match(response)) {
+    const response = await fetchSuggestedPassword();
+    if (response.isSuccess) {
       navigate("/profile/chpass");
     }
   }

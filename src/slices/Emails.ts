@@ -1,13 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  EmailsResponse,
-  postNewEmail,
-  requestMakePrimaryEmail,
-  requestRemoveEmail,
-  requestResendEmailCode,
-  requestVerifyEmail,
-} from "apis/eduidEmail";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
+import { createSlice } from "@reduxjs/toolkit";
+import { emailApi, EmailsResponse } from "apis/eduidEmail";
+import personalDataApi from "apis/eduidPersonalData";
 
 export const initialState: EmailsResponse = {
   emails: [],
@@ -19,23 +12,23 @@ const emailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(emailApi.endpoints.makePrimaryEmail.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       })
-      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(emailApi.endpoints.verifyEmail.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       })
-      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(emailApi.endpoints.resendEmailCode.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       })
-      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(emailApi.endpoints.newEmail.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       })
-      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(emailApi.endpoints.removeEmail.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       })
-      .addCase(requestAllPersonalData.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
+      .addMatcher(personalDataApi.endpoints.requestAllPersonalData.matchFulfilled, (state, action) => {
+        state.emails = action.payload.payload.emails;
       });
   },
 });

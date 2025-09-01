@@ -1,6 +1,6 @@
-import { fetchMfaAuth } from "apis/eduidLogin";
+import { loginApi } from "apis/eduidLogin";
 import Splash from "components/Common/Splash";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { SecurityKey } from "../Common/SecurityKey";
@@ -9,13 +9,13 @@ import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 export function MultiFactorAuth(): JSX.Element {
-  const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
+  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
 
   let leadText;
   if (!has_session) {
@@ -53,7 +53,7 @@ export function MultiFactorAuth(): JSX.Element {
       //
       // If returning from external authentication with Sweden Connect, we need
       // to call the MFA endpoint for it to complete.
-      dispatch(fetchMfaAuth({ ref: ref, this_device: this_device }));
+      fetchMfaAuth({ ref: ref, this_device: this_device });
     }
   }, [authn_options, mfa]);
 

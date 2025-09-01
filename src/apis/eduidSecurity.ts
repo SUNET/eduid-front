@@ -1,82 +1,18 @@
-/*
- * Code and data structures for talking to the eduid-security backend microservice.
- */
+import { ApiResponse, eduIDApi } from "./common";
+import { FetchIdentitiesResponse, UserIdentities } from "./eduidPersonalData";
 
-import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { EduIDAppDispatch, EduIDAppRootState } from "../eduid-init-app";
-import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { FetchIdentitiesResponse } from "./eduidPersonalData";
-
-/*********************************************************************************************************************/
 export interface UpdateOfficialUserDataResponse {
   message: string;
 }
 
-/**
- * @public
- * @function updateOfficialUserData
- * @desc Redux async thunk to request updated name from the Swedish Tax Agency.
- */
-export const updateOfficialUserData = createAsyncThunk<
-  string,
-  undefined,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("personalData/updateOfficialUserData", async (args, thunkAPI) => {
-  const body: KeyValues = {};
-  return makeSecurityRequest<UpdateOfficialUserDataResponse>(thunkAPI, "refresh-official-user-data", body)
-    .then((response) => response.payload.message)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface PostDeleteAccountResponse {
   location: string;
 }
 
-/**
- * @public
- * @function postDeleteAccount
- * @desc Redux async thunk to postDeleteAccount.
- */
-export const postDeleteAccount = createAsyncThunk<
-  PostDeleteAccountResponse,
-  undefined,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/postDeleteAccount", async (args, thunkAPI) => {
-  const body: KeyValues = {};
-  return makeSecurityRequest<PostDeleteAccountResponse>(thunkAPI, "terminate-account", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface RemoveWebauthnTokensRequest {
   credential_key: string;
 }
 
-export interface RemoveWebauthnTokensResponse {
-  credentials: CredentialType[];
-}
-
-/**
- * @public
- * @function removeWebauthnTokens
- * @desc Redux async thunk to removeWebauthnToken.
- */
-export const removeWebauthnToken = createAsyncThunk<
-  RemoveWebauthnTokensResponse,
-  RemoveWebauthnTokensRequest,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/removeWebauthnToken", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    credential_key: args.credential_key,
-  };
-  return makeSecurityRequest<RemoveWebauthnTokensResponse>(thunkAPI, "webauthn/remove", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface CredentialType {
   created_ts: string;
   credential_type: string;
@@ -87,96 +23,27 @@ export interface CredentialType {
   verified: boolean;
 }
 
-export interface RequestCredentialsResponse {
+export interface SecurityResponse {
   credentials: CredentialType[];
 }
 
-/**
- * @public
- * @function requestCredentials
- * @desc Redux async thunk to requestCredentials.
- */
-export const requestCredentials = createAsyncThunk<
-  RequestCredentialsResponse,
-  undefined,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/requestCredentials", async (args, thunkAPI) => {
-  return makeSecurityRequest<RequestCredentialsResponse>(thunkAPI, "credentials")
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-export interface RegisterWebauthnResponse {
+export interface RegisterWebAuthnRequest {
   webauthn_attestation: PublicKeyCredentialJSON;
-  credentials: CredentialType[];
+  description: string;
 }
 
-/**
- * @public
- * @function registerWebauthn
- * @desc Redux async thunk to register web auth to the backend.
- */
-export const registerWebauthn = createAsyncThunk<
-  RegisterWebauthnResponse,
-  { descriptionValue: string },
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/registerWebauthn", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const body: KeyValues = {
-    response: state.security.webauthn_attestation,
-    description: args.descriptionValue,
-  };
-  return makeSecurityRequest<RegisterWebauthnResponse>(thunkAPI, "webauthn/register/complete", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
+export interface BeginRegisterWebauthnRequest {
+  authenticator: string;
+}
 
-/*********************************************************************************************************************/
 export interface BeginRegisterWebauthnResponse {
   registration_data: PublicKeyCredentialCreationOptionsJSON;
 }
 
-/**
- * @public
- * @function beginRegisterWebauthn
- * @desc Redux async thunk to prepare registering web auth.
- */
-export const beginRegisterWebauthn = createAsyncThunk<
-  PublicKeyCredentialCreationOptionsJSON,
-  undefined,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/beginRegisterWebauthn", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const body: KeyValues = {
-    authenticator: state.security.webauthn_authenticator,
-  };
-  return makeSecurityRequest<BeginRegisterWebauthnResponse>(thunkAPI, "webauthn/register/begin", body)
-    .then((response) => response.payload.registration_data)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface SuggestedPasswordResponse {
   suggested_password: string;
 }
 
-/**
- * @public
- * @function fetchSuggestedPassword
- * @desc Redux async thunk to get a suggested new password from the backend.
- */
-export const fetchSuggestedPassword = createAsyncThunk<
-  string,
-  undefined,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("chpass/fetchSuggestedPassword", async (args, thunkAPI) => {
-  return makeSecurityRequest<SuggestedPasswordResponse>(thunkAPI, "change-password/suggested-password")
-    .then((response) => response.payload.suggested_password)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface ChangePasswordPayload {
   new_password: string;
 }
@@ -185,103 +52,23 @@ export interface ChangePasswordResponse {
   message?: string;
 }
 
-/**
- * @public
- * @function changePassword
- * @desc Redux async thunk to attempt a password change.
- */
-export const changePassword = createAsyncThunk<
-  ChangePasswordResponse,
-  ChangePasswordPayload,
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("chpass/changePassword", async (args, thunkAPI) => {
-  return makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password/set-password", args)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 export interface NinPayload {
   nin: string;
 }
 
-/**
- * @public
- * @function addNin
- * @desc Redux async thunk to add a NIN.
- */
-export const addNin = createAsyncThunk<
-  FetchIdentitiesResponse, // return type
-  string, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/addNin", async (nin, thunkAPI) => {
-  const body: KeyValues = {
-    nin: nin,
-  };
+export interface SecurityKeysResponse {
+  next_update: string; // currently unused
+  entries: string[];
+}
 
-  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "add-nin", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
+interface IdentityRequest {
+  identity_type: string;
+}
 
-/*********************************************************************************************************************/
-
-/* Shares args and response type with addNin above */
-
-/**
- * @public
- * @function removeNin
- * @desc Redux async thunk to remove a NIN.
- */
-export const removeNin = createAsyncThunk<
-  FetchIdentitiesResponse, // return type
-  string, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/removeNin", async (nin, thunkAPI) => {
-  const body: KeyValues = {
-    nin: nin,
-  };
-
-  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "remove-nin", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function fetchApprovedSecurityKeys
- * @desc Redux async thunk to fetch approved security keys.
- */
-export const fetchApprovedSecurityKeys = createAsyncThunk<
-  any, // return type
-  undefined, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/approvedSecurityKeys", async (nin, thunkAPI) => {
-  return makeSecurityRequest<FetchIdentitiesResponse>(thunkAPI, "webauthn/approved-security-keys")
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function removeIdentity
- * @desc Redux async thunk to post remove identity.
- */
-export const removeIdentity = createAsyncThunk<
-  any, // return type
-  { identity_type: string }, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/removeIdentity", async (args, thunkAPI) => {
-  return makeSecurityRequest<any>(thunkAPI, "remove-identity", args)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
+interface IdentitiesResponse {
+  message: string;
+  identities: UserIdentities;
+}
 
 export enum ActionStatus {
   OK = "ok",
@@ -302,37 +89,100 @@ export interface AuthnActionStatusRequest {
   credential_id?: string;
 }
 
-/**
- * @public
- * @function getAuthnStatus
- * @desc Redux async thunk to post get authn status.
- */
-export const getAuthnStatus = createAsyncThunk<
-  AuthnActionStatusResponse, // return type
-  AuthnActionStatusRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("security/authn-status", async (args, thunkAPI) => {
-  const body: KeyValues = args;
-  return makeSecurityRequest<any>(thunkAPI, "authn-status", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
+export const securityApi = eduIDApi.injectEndpoints({
+  endpoints: (builder) => ({
+    updateOfficialUserData: builder.query<ApiResponse<UpdateOfficialUserDataResponse>, void>({
+      query: () => ({
+        url: "refresh-official-user-data",
+        body: {},
+      }),
+      extraOptions: { service: "security" },
+    }),
+    postDeleteAccount: builder.query<ApiResponse<PostDeleteAccountResponse>, void>({
+      query: () => ({
+        url: "terminate-account",
+        body: {},
+      }),
+      extraOptions: { service: "security" },
+    }),
+    removeWebauthnToken: builder.query<ApiResponse<SecurityResponse>, RemoveWebauthnTokensRequest>({
+      query: (body) => ({
+        url: "webauthn/remove",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    requestCredentials: builder.query<ApiResponse<SecurityResponse>, void>({
+      query: () => ({
+        url: "credentials",
+      }),
+      extraOptions: { service: "security" },
+    }),
+    registerWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
+      query: (body) => ({
+        url: "webauthn/register/complete",
+        body: {
+          ...body.webauthn_attestation,
+          description: body.description,
+        },
+      }),
+      extraOptions: { service: "security" },
+    }),
+    beginRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebauthnRequest>({
+      query: (body) => ({
+        url: "webauthn/register/begin",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    fetchSuggestedPassword: builder.query<ApiResponse<SuggestedPasswordResponse>, void>({
+      query: () => ({
+        url: "change-password/suggested-password",
+      }),
+      extraOptions: { service: "security" },
+    }),
+    changePassword: builder.query<ApiResponse<ChangePasswordResponse>, ChangePasswordPayload>({
+      query: (body) => ({
+        url: "change-password/set-password",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    addNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
+      query: (body) => ({
+        url: "add-nin",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    removeNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
+      query: (body) => ({
+        url: "remove-nin",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    fetchApprovedSecurityKeys: builder.query<ApiResponse<SecurityKeysResponse>, void>({
+      query: () => ({
+        url: "webauthn/approved-security-keys",
+      }),
+      extraOptions: { service: "security" },
+    }),
+    removeIdentity: builder.query<ApiResponse<IdentitiesResponse>, IdentityRequest>({
+      query: (body) => ({
+        url: "remove-identity",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>, AuthnActionStatusRequest>({
+      query: (body) => ({
+        url: "authn-status",
+        body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+  }),
 });
 
-/*********************************************************************************************************************/
-
-function makeSecurityRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  endpoint: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  const state = thunkAPI.getState();
-
-  if (!state.config.security_service_url) {
-    throw new Error("Missing configuration security_service_url");
-  }
-
-  return makeGenericRequest<T>(thunkAPI, state.config.security_service_url, endpoint, body, data);
-}
-
-/*********************************************************************************************************************/
+export default securityApi;

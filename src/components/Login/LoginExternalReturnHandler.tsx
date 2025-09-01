@@ -1,8 +1,8 @@
-import { authnGetStatus } from "apis/eduidAuthn";
-import { bankIDGetStatus } from "apis/eduidBankid";
-import { eidasGetStatus } from "apis/eduidEidas";
-import { requestAllPersonalData } from "apis/eduidPersonalData";
-import { verifyEmailLink } from "apis/eduidResetPassword";
+import authnApi from "apis/eduidAuthn";
+import { bankIDApi } from "apis/eduidBankid";
+import { eidasApi } from "apis/eduidEidas";
+import personalDataApi from "apis/eduidPersonalData";
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useEffect } from "react";
@@ -26,6 +26,11 @@ export function LoginExternalReturnHandler() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const is_configured = useAppSelector((state) => state.config.is_configured);
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
+  const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
+  const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
+  const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   async function fetchStatus(authn_id: string) {
     let getStatusAction;
@@ -37,9 +42,9 @@ export function LoginExternalReturnHandler() {
     } else {
       getStatusAction = authnGetStatus;
     }
-    const response = await dispatch(getStatusAction({ authn_id: authn_id }));
-    if (getStatusAction.fulfilled.match(response)) {
-      const status = response.payload;
+    const response = await getStatusAction({ authn_id: authn_id});
+    if (response.isSuccess) {
+      const status = response.data.payload;
 
       if (status.status) {
         dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
@@ -54,16 +59,16 @@ export function LoginExternalReturnHandler() {
           login: "/profile/",
         };
         if (!status.error && status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
-          dispatch(verifyEmailLink({ email_code: status.frontend_state }));
+          verifyEmailLink({ email_code: status.frontend_state });
         }
         if (!status.error && status.frontend_action === "login") {
-          const response = await dispatch(requestAllPersonalData());
-          if (requestAllPersonalData.fulfilled.match(response)) {
-            if (response.payload.language) {
+          const response = await requestAllPersonalData();
+          if (response.isSuccess) {
+            if (response.data.payload.language) {
               dispatch(
                 updateIntl({
-                  locale: response.payload.language,
-                  messages: LOCALIZED_MESSAGES[response.payload.language],
+                  locale: response.data.payload.language,
+                  messages: LOCALIZED_MESSAGES[response.data.payload.language],
                 })
               );
             }

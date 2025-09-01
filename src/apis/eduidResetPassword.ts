@@ -1,135 +1,16 @@
-/*
- * Code and data structures for talking to the eduid-reset-password backend microservice.
- */
+import { ApiResponse, eduIDApi } from "./common";
+import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
 
-import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { EduIDAppDispatch, EduIDAppRootState } from "eduid-init-app";
-import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { GetCaptchaResponse } from "./eduidSignup";
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function getCaptchaResponse
- * @desc Redux async thunk to fetch a captcha image from the backend.
- */
-export const getCaptchaRequest = createAsyncThunk<
-  GetCaptchaResponse, // return type
-  undefined, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/getCaptchaRequest", async (args, thunkAPI) => {
-  const body: KeyValues = {};
-
-  return makeResetPasswordRequest<GetCaptchaResponse>(thunkAPI, "get-captcha", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-export interface CaptchaRequest {
-  internal_response?: string;
-  recaptcha_response?: string;
+interface ResetPasswordCaptchaResponse {
+  captcha_completed: boolean;
 }
 
-/**
- * @public
- * @function sendCaptchaResponse
- * @desc Redux async thunk to post the result of a CAPTCHA operation.
- */
-export const sendCaptchaResponse = createAsyncThunk<
-  any, // return type
-  CaptchaRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/sendCaptchaResponse", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    internal_response: args.internal_response,
-    recaptcha_response: args.recaptcha_response,
-  };
-
-  return makeResetPasswordRequest<any>(thunkAPI, "captcha", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function postSetNewPasswordExternalMfa
- * @desc Redux async thunk to set new password with external MFA.
- */
-export const postSetNewPasswordExternalMfa = createAsyncThunk<
-  NewPasswordResponse, // return type
-  NewPasswordRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/postSetNewPasswordExternalMfa", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    email_code: args.email_code,
-    password: args.password,
-  };
-  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-external-mfa", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-export interface NewPasswordExtraSecurityKeyRequest {
-  email_code: string;
-  password: string;
-  webauthn_assertion: PublicKeyCredentialJSON;
-}
-
-/**
- * @public
- * @function postSetNewPasswordExtraSecurityToken
- * @desc Redux async thunk to set new password with extra security key token.
- */
-export const postSetNewPasswordExtraSecurityToken = createAsyncThunk<
-  NewPasswordResponse, // return type
-  NewPasswordExtraSecurityKeyRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/postSetNewPasswordExtraSecurityToken", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    email_code: args.email_code,
-    password: args.password,
-    webauthn_response: args.webauthn_assertion,
-  };
-  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-token", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
+/* phone is unused and kept for backwards compatibility */
 export interface NewPasswordExtraSecurityPhoneRequest {
   email_code: string;
   password: string;
   phone_code: string;
 }
-
-/**
- * @public
- * @function postSetNewPasswordExtraSecurityPhone
- * @desc Redux async thunk to set new password with extra security phone.
- */
-export const postSetNewPasswordExtraSecurityPhone = createAsyncThunk<
-  NewPasswordResponse, // return type
-  NewPasswordExtraSecurityPhoneRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/postSetNewPasswordExtraSecurityPhone", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    email_code: args.email_code,
-    phone_code: args.phone_code,
-    password: args.password,
-  };
-  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password-extra-security-phone", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 
 export interface RequestPhoneCodeRequest {
   email_code: string;
@@ -139,68 +20,7 @@ export interface RequestPhoneCodeRequest {
 export interface RequestPhoneCodeResponse {
   message: string;
 }
-
-/**
- * @public
- * @function requestPhoneCodeForNewPassword
- * @desc Redux async thunk to request phone code for new password.
- */
-export const requestPhoneCodeForNewPassword = createAsyncThunk<
-  RequestPhoneCodeResponse, // return type
-  RequestPhoneCodeRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/requestPhoneCodeForNewPassword", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    email_code: args.email_code,
-    phone_index: args.phone_index,
-  };
-  return makeResetPasswordRequest<RequestPhoneCodeResponse>(thunkAPI, "extra-security-phone", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function postSetNewPassword
- * @desc Redux async thunk to set new password.
- */
-export const postSetNewPassword = createAsyncThunk<
-  NewPasswordResponse, // return type
-  NewPasswordRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/postSetNewPassword", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    email_code: args.email_code,
-    password: args.password,
-  };
-  return makeResetPasswordRequest<NewPasswordResponse>(thunkAPI, "new-password", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
-
-/**
- * @public
- * @function verifyEmailLink
- * @desc Redux async thunk to verify a reset password link.
- */
-export const verifyEmailLink = createAsyncThunk<
-  VerifyCodeResponse, // return type
-  VerifyCodeRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/verifyEmailLink", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    email_code: args.email_code,
-  };
-  return makeResetPasswordRequest<VerifyCodeResponse>(thunkAPI, "verify-email", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
+/* phone is unused and kept for backwards compatibility */
 
 export interface RequestEmailLinkRequest {
   email: string;
@@ -212,26 +32,6 @@ export interface RequestEmailLinkResponse {
   throttled_seconds: number;
   throttled_max: number;
 }
-
-/**
- * @public
- * @function requestEmailLink
- * @desc Redux async thunk to request a reset password link to be sent to an email address.
- */
-export const requestEmailLink = createAsyncThunk<
-  RequestEmailLinkResponse, // return type
-  RequestEmailLinkRequest, // args type
-  { dispatch: EduIDAppDispatch; state: EduIDAppRootState }
->("resetPassword/requestEmailLink", async (args, thunkAPI) => {
-  const data: KeyValues = {
-    email: args.email,
-  };
-  return makeResetPasswordRequest<RequestEmailLinkResponse>(thunkAPI, "", data)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 
 export interface VerifyCodeRequest {
   email_code: string;
@@ -261,10 +61,6 @@ export interface ExtraSecurityTokens {
   webauthn_options?: string;
 }
 
-// interfaces used in tests, actual thunk not implemented yet
-
-/*********************************************************************************************************************/
-
 export interface NewPasswordRequest {
   email_code: string;
   password: string;
@@ -273,20 +69,73 @@ export interface NewPasswordRequest {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NewPasswordResponse {}
 
-// interfaces used in tests, actual thunk not implemented yet
-
-/*********************************************************************************************************************/
-async function makeResetPasswordRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  endpoint: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  const state = thunkAPI.getState();
-
-  if (!state.config.reset_password_service_url) {
-    throw new Error("Missing configuration reset_password_service_url");
-  }
-
-  return makeGenericRequest<T>(thunkAPI, state.config.reset_password_service_url, endpoint, body, data);
-}
+export const resetPasswordApi = eduIDApi.injectEndpoints({
+  endpoints: (builder) => ({
+    getResetPasswordCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>, void>({
+      query: () => ({
+        url: "get-captcha",
+        body: {},
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    sendResetPasswordCaptchaResponse: builder.query<ApiResponse<ResetPasswordCaptchaResponse>, CaptchaRequest>({
+      query: (body) => ({
+        url: "captcha",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    postSetNewPasswordExternalMfa: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
+      query: (body) => ({
+        url: "new-password-extra-security-external-mfa",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    postSetNewPasswordExtraSecurityToken: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
+      query: (body) => ({
+        url: "new-password-extra-security-token",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    postSetNewPasswordExtraSecurityPhone: builder.query<
+      ApiResponse<NewPasswordResponse>,
+      NewPasswordExtraSecurityPhoneRequest
+    >({
+      query: (body) => ({
+        url: "new-password-extra-security-phone",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    requestPhoneCodeForNewPassword: builder.query<ApiResponse<RequestPhoneCodeResponse>, RequestPhoneCodeRequest>({
+      query: (body) => ({
+        url: "extra-security-phone",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    postSetNewPassword: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
+      query: (body) => ({
+        url: "new-password",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    verifyEmailLink: builder.query<ApiResponse<VerifyCodeResponse>, VerifyCodeRequest>({
+      query: (body) => ({
+        url: "verify-email",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+    requestEmailLink: builder.query<ApiResponse<RequestEmailLinkResponse>, RequestEmailLinkRequest>({
+      query: (body) => ({
+        url: "",
+        body,
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
+  }),
+});

@@ -1,4 +1,4 @@
-import { authenticate } from "apis/eduidAuthn";
+import authnApi from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
@@ -15,6 +15,7 @@ export function AuthenticateModal() {
   const [securityKeyDescription, setSecurityKeyDescription] = useState(null);
   const [method, setMethod] = useState<string>("");
   const navigate = useNavigate();
+  const [call_authenticate, { data, isError, isLoading }] = authnApi.useLazyAuthenticateQuery()
 
   function isValidJson(jsonString: string) {
     try {
@@ -33,14 +34,16 @@ export function AuthenticateModal() {
     }
   }, [frontend_state]);
 
+  useEffect(() => {
+    if (data && !isLoading && !isError) {
+      window.location.href = data.payload.location
+    }
+  }, [data, isError, isLoading])
+
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
     dispatch(clearNotifications());
-    const response = await dispatch(authenticate({ frontend_action: frontend_action, frontend_state: frontend_state }));
-
-    if (authenticate.fulfilled.match(response)) {
-      window.location.href = response?.payload.location;
-    }
+    call_authenticate({ frontend_action: frontend_action, frontend_state: frontend_state });
   }
 
   function handleCloseModal() {

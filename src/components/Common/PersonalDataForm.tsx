@@ -1,18 +1,16 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PersonalDataRequest, postUserName, requestAllPersonalData, UserNameRequest } from "apis/eduidPersonalData";
-import { updateOfficialUserData } from "apis/eduidSecurity";
+import personalDataApi, { UserNameRequest } from "apis/eduidPersonalData";
+import securityApi from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { LOCALIZED_MESSAGES } from "globals";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import { updateIntl } from "slices/Internationalisation";
 import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
@@ -33,37 +31,31 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
-  const messages = LOCALIZED_MESSAGES;
-
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
   const defaultDisplayGivenName = chosenGivenName || personal_data?.chosen_given_name || personal_data?.given_name;
+  const [postUserName] = personalDataApi.usePostUserNameMutation();
 
-  async function formSubmit(values: PersonalDataRequest) {
+  async function formSubmit(values: UserNameRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
 
     let postData = values;
     if (is_verified) {
       postData = { ...values, chosen_given_name: defaultDisplayGivenName };
     }
-    const response = await dispatch(postUserName(postData));
-
-    if (postUserName.fulfilled.match(response)) {
+    const response = await postUserName(postData);
+    if ("data" in response) {
       dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
-      if (response.payload.language) {
-        dispatch(
-          updateIntl({
-            locale: response.payload.language,
-            messages: messages[response.payload.language],
-          })
-        );
-      }
     }
   }
 
   return (
     <FinalForm<UserNameRequest>
-      initialValues={personal_data}
+      initialValues={{
+        given_name: personal_data?.given_name,
+        chosen_given_name: personal_data?.chosen_given_name,
+        surname: personal_data?.surname,
+      }}
       validate={validatePersonalData}
       onSubmit={formSubmit}
       render={(formProps) => {
@@ -205,16 +197,18 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
 const RenderLockedNames = (props: { labels: NameLabels }) => {
-  const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
+  const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
+  const [updateOfficialUserData] = securityApi.useLazyUpdateOfficialUserDataQuery();
 
   async function handleUpdateName() {
-    const response = await dispatch(updateOfficialUserData());
-    if (updateOfficialUserData.fulfilled.match(response)) {
-      dispatch(requestAllPersonalData());
+    const response = await updateOfficialUserData();
+
+    if (response.isSuccess) {
+      requestAllPersonalData();
     }
   }
 

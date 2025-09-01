@@ -1,9 +1,4 @@
-import {
-  postSetNewPassword,
-  postSetNewPasswordExternalMfa,
-  postSetNewPasswordExtraSecurityPhone,
-  postSetNewPasswordExtraSecurityToken,
-} from "apis/eduidResetPassword";
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
@@ -24,11 +19,13 @@ export function SetNewPassword(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
-  const phone_code = useAppSelector((state) => state.resetPassword.phone.phone_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [renderSuggested, setRenderSuggested] = useState(true);
+  const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
+  const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
+  const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
@@ -52,36 +49,25 @@ export function SetNewPassword(): JSX.Element | null {
 
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
-      const response = await dispatch(postSetNewPassword({ email_code: email_code, password: newPassword }));
-      if (postSetNewPassword.fulfilled.match(response)) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
-      }
-    } else if (selected_option === "phoneCode" && phone_code) {
-      const response = await dispatch(
-        postSetNewPasswordExtraSecurityPhone({ phone_code: phone_code, email_code: email_code, password: newPassword })
-      );
-      if (postSetNewPasswordExtraSecurityPhone.fulfilled.match(response)) {
+      const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
+      if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
-      const response = await dispatch(
-        postSetNewPasswordExtraSecurityToken({
-          webauthn_assertion: webauthn_assertion,
-          email_code: email_code,
-          password: newPassword,
-        })
-      );
-      if (postSetNewPasswordExtraSecurityToken.fulfilled.match(response)) {
+      const response = await postSetNewPasswordExtraSecurityToken({
+        ...webauthn_assertion,
+        email_code: email_code,
+        password: newPassword,
+      });
+      if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "swedishEID") {
-      const response = await dispatch(
-        postSetNewPasswordExternalMfa({
-          email_code: email_code,
-          password: newPassword,
-        })
-      );
-      if (postSetNewPasswordExternalMfa.fulfilled.match(response)) {
+      const response = await postSetNewPasswordExternalMfa({
+        email_code: email_code,
+        password: newPassword,
+      });
+      if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     }

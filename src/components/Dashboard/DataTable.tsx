@@ -1,7 +1,7 @@
+import { EmailInfo } from "apis/eduidEmail";
 import EduIDButton from "components/Common/EduIDButton";
 import React, { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
-import { EmailInfo } from "../../apis/eduidEmail";
 
 interface DataTableProps {
   data?: EmailInfo[];
