@@ -26,7 +26,7 @@
   }
 
   section {
-    @extend .notice-box !optional;
+    @extend .notice-box;
   }
 
   ul.bullets,

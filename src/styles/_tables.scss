@@ -1,16 +1,14 @@
-@use "variables";
-
 /** Table styles **/
 
 table {
   width: 100%;
-  font-size: variables.$txt-lg;
-  font-family: variables.$inter-light;
+  font-size: $txt-lg;
+  font-family: $inter-light;
   table-layout: fixed;
   background-color: var(--contrast-color);
 
-  @media (max-width: variables.$bp-md) {
-    font-size: variables.$txt-md;
+  @media (max-width: $bp-md) {
+    font-size: $txt-md;
   }
 
   & tbody {
@@ -33,19 +31,19 @@ table {
         }
 
         & span {
-          font-family: variables.$akkurat;
+          font-family: $akkurat;
           letter-spacing: 1px;
           font-weight: bold;
           padding: 0;
-          font-size: variables.$txt-xs;
+          font-size: $txt-xs;
           text-transform: uppercase;
         }
       }
 
       .verified {
         text-transform: uppercase;
-        font-size: variables.$txt-xs;
-        @extend .text-bold !optional;
+        font-size: $txt-xs;
+        @extend .text-bold;
       }
 
       &.remove-data {
@@ -73,7 +71,7 @@ table {
       // height: 3rem;
 
       &.border-row {
-        font-size: variables.$txt-xs;
+        font-size: $txt-xs;
         border-bottom: 1px solid var(--border-gray);
         height: 2rem;
 
@@ -95,7 +93,7 @@ table {
         text-align: center;
 
         a {
-          font-size: variables.$txt-xs;
+          font-size: $txt-xs;
         }
       }
     }
@@ -141,7 +139,7 @@ caption {
   // Security keys in use
   .active-keys {
   table-layout: auto;
-  font-size: variables.$txt-sm;
+  font-size: $txt-sm;
 
   tr {
     height: auto;
@@ -175,7 +173,7 @@ caption {
 }
 
 .keys {
-  @extend code !optional;
+  @extend code;
   tr {
     &:nth-child(even) {
       background-color: var(--bg-gray);

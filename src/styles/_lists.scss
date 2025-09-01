@@ -1,40 +1,38 @@
-@use "variables";
-
 /* styles for ordered list with large number */
 
 .listed-steps {
-  margin-left: variables.$list-indent;
+  margin-left: $list-indent;
   list-style-type: decimal;
 
   li {
-    font-size: variables.$txt-lg;
+    font-size: $txt-lg;
     line-height: 1.25;
     margin-bottom: 2em;
 
     &::marker {
-      font-size: variables.$txt-md;
-      font-family: variables.$akkurat;
+      font-size: $txt-md;
+      font-family: $akkurat;
       font-weight: bold;
     }
     fieldset:last-of-type {
       margin-bottom: 0;
     }
   }
-  @media (max-width: variables.$bp-sm) {
+  @media (max-width: $bp-sm) {
     /* counteracts additional list left margin in mobile mode */
     .x-adjust {
-      margin-left: #{-1 * variables.$list-indent};
+      margin-left: #{-1 * $list-indent};
     }
   }
 }
 
 dl.terms {
   dt {
-    @extend .heading-4 !optional;
+    @extend .heading-4;
   }
   dd {
     margin-bottom: 0.5rem;
-    font-size: variables.$txt-md;
+    font-size: $txt-md;
     display: list-item;
     list-style-position: inside;
 

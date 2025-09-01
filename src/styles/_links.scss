@@ -1,11 +1,9 @@
-@use "variables";
-
 /* Textual non-button-styled links */
 
 a,
 .text-link {
   color: var(--txt-orange);
-  font-family: variables.$akkurat;
+  font-family: $akkurat;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -40,7 +38,7 @@ a.disabled,
   justify-content: space-between;
   padding-top: 2.5rem;
   gap: 20px;
-  font-size: variables.$txt-sm;
+  font-size: $txt-sm;
 
   a {
     display: grid;

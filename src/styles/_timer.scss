@@ -1,10 +1,8 @@
-@use "variables";
-
 /** Digital timer **/
 
 .expires-meter {
   color: var(--body-txt);
-  font-size: variables.$txt-xl;
+  font-size: $txt-xl;
   text-align: center;
 
   .expires-symbol {
@@ -19,6 +17,6 @@
 
   .timer {
     margin-top: 0;
-    font-family: variables.$akkurat;
+    font-family: $akkurat;
   }
 }

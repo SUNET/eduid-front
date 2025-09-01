@@ -1,5 +1,3 @@
-@use "variables";
-
 /* White plate to highlight content, use .figure if not semantically a "figure" */
 
 figure,
@@ -12,9 +10,9 @@ figure,
 
   figcaption,
   .figcaption {
-    font-size: variables.$txt-sm;
+    font-size: $txt-sm;
     font-weight: bold;
-    font-family: variables.$akkurat;
+    font-family: $akkurat;
     color: var(--body-txt);
   }
 
@@ -22,7 +20,7 @@ figure,
     padding: 1em 0.5em;
     align-items: center;
     margin: 0;
-    @media (max-width: variables.$bp-md) {
+    @media (max-width: $bp-md) {
       padding: 0.5em;
     }
     &:not(:last-of-type) {
@@ -47,7 +45,7 @@ figure,
       align-self: center;
 
       .display-data.verified {
-        font-size: variables.$txt-md;
+        font-size: $txt-md;
       }
     }
     .close {
@@ -66,7 +64,7 @@ figure,
     margin-right: auto;
   }
 
-  @media (max-width: variables.$bp-md) {
+  @media (max-width: $bp-md) {
     width: 100%;
   }
 }
@@ -75,7 +73,7 @@ figure,
 .notice-box {
   padding: 1.25rem 1rem 0.5rem;
   margin: 1rem 0;
-  border: 1px solid variables.$bright-orange;
+  border: 1px solid $bright-orange;
   border-radius: 10px;
   background: var(--contrast-color);
   .help-text {
@@ -119,17 +117,17 @@ figure.webauthn-token-holder {
   }
 
   span {
-    font-size: variables.$txt-sm;
+    font-size: $txt-sm;
     margin-bottom: 0.2rem;
     white-space: nowrap;
   }
   .verified {
     strong {
-      font-family: variables.$akkurat;
+      font-family: $akkurat;
       letter-spacing: 1px;
       font-weight: bold;
       padding: 0;
-      font-size: variables.$txt-xs;
+      font-size: $txt-xs;
       text-transform: uppercase;
     }
   }

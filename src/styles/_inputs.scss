@@ -1,11 +1,9 @@
-@use "variables";
-
 /* Inputs and form controls, mainly non button */
 
 input {
   box-sizing: border-box;
-  font-family: variables.$inter-regular;
-  font-size: variables.$txt-xl;
+  font-family: $inter-regular;
+  font-size: $txt-xl;
   color: var(--body-txt);
   box-shadow: none;
   border-radius: 0;
@@ -22,7 +20,7 @@ input,
 input.is-valid,
 input:focus,
 input.is-valid:focus {
-  outline: variables.$border-width solid var(--border-gray);
+  outline: $border-width solid var(--border-gray);
   background-image: none;
   background-color: var(--contrast-color);
   transition: none;
@@ -31,8 +29,8 @@ input.is-valid:focus {
 }
 
 input::placeholder {
-  font-family: variables.$inter-regular;
-  font-size: variables.$txt-xl;
+  font-family: $inter-regular;
+  font-size: $txt-xl;
 }
 
 :hover:not(:focus):not(:disabled) {
@@ -40,30 +38,30 @@ input::placeholder {
   &[type="password"],
   &[type="email"] {
     //border-top: $border-width solid var(--contrast-color);
-    padding-top: calc(1.25rem + variables.$border-width);
-    border-bottom: variables.$border-width solid var(--body-txt) !important;
+    padding-top: calc(1.25rem + $border-width);
+    border-bottom: $border-width solid var(--body-txt) !important;
   }
 }
 
 input.is-invalid,
 input.is-invalid:focus {
-  outline: variables.$border-width solid var(--error-red-t);
+  outline: $border-width solid var(--error-red-t);
   background-image: none;
 }
 
 //tab-focus
 :focus-visible,
 #mfa-security-key:focus {
-  outline: variables.$border-width dashed var(--body-txt) !important;
+  outline: $border-width dashed var(--body-txt) !important;
   transition: none !important;
 
   //has parents with overflow hidden
   &.accordion__button,
   table & {
-    outline-offset: -(variables.$border-width);
+    outline-offset: -$border-width;
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: variables.$border-width dashed var(--body-txt) !important;
+    outline: $border-width dashed var(--body-txt) !important;
     transition: none;
   }
 }
@@ -111,7 +109,7 @@ input[type="radio"] {
   //background-color only for content
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: variables.$border-width solid variables.$bright-orange;
+  border: $border-width solid $bright-orange;
   background-color: transparent;
   border-radius: 50%;
 
@@ -119,13 +117,13 @@ input[type="radio"] {
   padding: 0;
 
   &:hover {
-    background-color: variables.$bright-orange;
+    background-color: $bright-orange;
     cursor: pointer;
     border: none;
   }
 
   &:checked {
-    background-color: variables.$bright-orange;
+    background-color: $bright-orange;
     border: none;
 
     .error {
@@ -148,10 +146,10 @@ input[type="radio"] {
     }
   }
   span {
-    font-size: variables.$txt-xl;
+    font-size: $txt-xl;
     align-self: center;
     color: var(--body-txt);
-    font-family: variables.$inter-regular;
+    font-family: $inter-regular;
     font-weight: normal;
     margin: 0 2rem 0 0;
     margin-left: 8px;
@@ -237,7 +235,7 @@ input[type="checkbox"] {
   }
 
   .toggle-checkbox:checked + & {
-    background: variables.$bright-orange;
+    background: $bright-orange;
 
     &::before {
       left: 29px;
@@ -277,7 +275,7 @@ select {
 
 //react-select
 .select__multi-value__label {
-  font-size: variables.$txt-xl !important;
+  font-size: $txt-xl !important;
   align-self: center !important;
 }
 
@@ -305,10 +303,10 @@ input:-webkit-autofill {
 }
 
 /* Responsive */
-@media (max-width: variables.$bp-sm) {
+@media (max-width: $bp-sm) {
   input,
   .radio-input-container span {
-    font-size: variables.$txt-md;
+    font-size: $txt-md;
   }
 
   .input-container {
@@ -316,7 +314,7 @@ input:-webkit-autofill {
   }
 
   input::placeholder {
-    font-size: variables.$txt-md;
+    font-size: $txt-md;
   }
 
   footer .toggle {
@@ -329,7 +327,7 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: variables.$bp-md) {
+@media (max-width: $bp-md) {
   .radio-input-container {
     flex-direction: column;
   }
