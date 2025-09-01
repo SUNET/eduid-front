@@ -2,7 +2,7 @@ import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeI
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
 import { mswServer, rest } from "setupTests";
-import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -42,9 +42,10 @@ test("renders frejaeID as expected", () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const frejaeIDAccordion = screen.getByRole("button", { name: /Most countries With Freja eID/i });
+  const frejaeIDGroup = screen.getByRole("group", { name: /Most countries With Freja eID/i });
+  const frejaeIDAccordion = within(frejaeIDGroup).getByRole("button", { name: /Most countries With Freja eID/i });
   act(() => {
     frejaeIDAccordion.click();
   });
-  expect(screen.getByRole("button", { name: /Proceed/ })).toBeEnabled();
+  expect(within(frejaeIDGroup).getByRole("button", { name: /Proceed/ })).toBeEnabled();
 });

@@ -31,9 +31,10 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
     <details id={props.uuid} className="accordion__item"
     onToggle={(event) => {setOpen(event.currentTarget.open)}}
     open={open}
+    aria-labelledby={props.uuid  + "-button"}
      > 
-      <summary className="accordion__heading" role="heading">
-        <div className="accordion__button" role="button">
+      <summary className="accordion__heading">
+        <div className="accordion__button" role="button" id={props.uuid  + "-button"}>
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
             <h3 className="accordion-title">{props.title}</h3>
