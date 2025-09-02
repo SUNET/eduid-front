@@ -1,7 +1,8 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
+import { http, HttpResponse } from "msw";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAccountSettings() {
@@ -31,16 +32,18 @@ test("can delete eduid account", async () => {
   let terminateCalled = false;
 
   mswServer.use(
-    rest.post("/security/terminate-account", (req, res, ctx) => {
+    http.post("https://dashboard.eduid.docker/services/security/terminate-account", () => {
       terminateCalled = true;
-      return res(ctx.json({ type: "test success", payload: {} }));
+      return new HttpResponse(JSON.stringify({ type: "test success", payload: {} }));
+    }),
+    http.get("https://dashboard.eduid.docker/services/security/credentials", () => {
+      return new HttpResponse(JSON.stringify({ type: "stub", payload: {} }));
     })
   );
 
-  mswServer.printHandlers();
   render(<IndexMain />, {
     state: {
-      config: { ...defaultDashboardTestState.config, security_service_url: "/security/" },
+      config: { ...defaultDashboardTestState.config, security_service_url: "https://dashboard.eduid.docker/services/security/" },
       personal_data: { ...defaultDashboardTestState.personal_data },
     },
   });
