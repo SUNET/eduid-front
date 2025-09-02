@@ -9,5 +9,7 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
 
     // FIXME https://github.com/jsdom/jsdom/issues/3363
     this.global.structuredClone = structuredClone;
+    // FIXME https://github.com/jsdom/jsdom/issues/2524
+    this.global.TextEncoder = TextEncoder;
   }
 }
