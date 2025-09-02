@@ -1563,6 +1563,10 @@
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where by identifying yourself with Freja eID, you will verify your identity towards eduID."
   },
+  "XpbcnM": {
+    "developer_comment": "verify webauthn token modal body note text",
+    "string": "Note: your added security keys can also be verified later in the \"Manage your security keys\" settings."
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tip: Use the app to find your nearest agent"
@@ -1825,6 +1829,10 @@
   "c1nVKp": {
     "developer_comment": "Verified identity",
     "string": "Swedish national ID number"
+  },
+  "c5JVOm": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "If toggled off you only need to use your security key for services that require extra login verification."
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -2111,6 +2119,10 @@
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
+  },
+  "fr3/NL": {
+    "developer_comment": "verity later link",
+    "string": "Not now"
   },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID authentication request failed. Please try again."
@@ -3035,10 +3047,6 @@
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
   },
-  "rpjEOF": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
-  },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
@@ -3456,10 +3464,6 @@
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
     "string": "the user will be directed to the Freja eID website to use their service. If you don't have Freja+ you have to create it separately before you can complete verification of your eduID. Read more about Freja below."
-  },
-  "yI4/1E": {
-    "developer_comment": "verify webauthn token modal body note text",
-    "string": "Note: your added security keys can also be verified from the \"Manage your security keys\" table."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
