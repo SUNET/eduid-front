@@ -11,7 +11,7 @@ import { Recommendations } from "./Recommendations";
 /**
  * Renders the start page
  */
-export default function Start(): JSX.Element {
+export default function Start(): React.JSX.Element {
   const intl = useIntl();
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);

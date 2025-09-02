@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
 
-const Footer = (): JSX.Element => {
+const Footer = (): React.JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const dispatch = useAppDispatch();
 

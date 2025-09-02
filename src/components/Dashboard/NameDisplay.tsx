@@ -1,6 +1,6 @@
 interface NameDisplayProps {
-  label?: string | JSX.Element;
-  name?: string | JSX.Element;
+  label?: string | React.JSX.Element;
+  name?: string | React.JSX.Element;
   htmlFor: string;
 }
 

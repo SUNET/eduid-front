@@ -11,7 +11,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
-export function SignupEmailForm(): JSX.Element {
+export function SignupEmailForm(): React.JSX.Element {
   return (
     <Fragment>
       <section className="intro">

@@ -32,6 +32,6 @@ test("renders bankID as expected", async () => {
   });
 
   await waitFor(() => {
-    expect(screen.queryByRole("heading", { name: / with a BankID/i })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /with a BankID/i })).toBeInTheDocument();
   });
 });

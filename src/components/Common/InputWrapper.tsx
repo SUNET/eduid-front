@@ -1,10 +1,10 @@
-import { FieldRenderProps } from "react-final-form";
 import { useIntl } from "react-intl";
+import { CustomInputProps } from "./CustomInput";
 
 /**
  * Render an input with an optional label and help text, and an error message when validation fails.
  */
-export function InputWrapper(props: FieldRenderProps<string>): JSX.Element {
+export function InputWrapper(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
   return (
     <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
       <RenderLabelAndHelpText {...props} />
@@ -14,12 +14,12 @@ export function InputWrapper(props: FieldRenderProps<string>): JSX.Element {
   );
 }
 
-function RenderLabelAndHelpText(props: FieldRenderProps<string>): JSX.Element {
+function RenderLabelAndHelpText(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
   const { input, label, helpBlock, required } = props;
   return (
     <div className="input-label-help-text-container">
       {label && (
-        <label htmlFor={input.name} className={required && "required"}>
+        <label htmlFor={input.name} className={required ? "required" : ""}>
           {label}
         </label>
       )}
@@ -28,7 +28,7 @@ function RenderLabelAndHelpText(props: FieldRenderProps<string>): JSX.Element {
   );
 }
 
-function RenderErrorMessage(props: FieldRenderProps<string>): JSX.Element | null {
+function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JSX.Element | null {
   const intl = useIntl();
   const { meta } = props;
   if ((!meta.error && !meta.submitError && !props.passwordStrengthMeter) || (!meta.touched && !meta.dirty)) {

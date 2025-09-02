@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 
-function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element | null {
+function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
       <div className="checkbox-wrapper">
@@ -40,7 +40,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): JSX.Element
   );
 }
 
-function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): JSX.Element | null {
+function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): React.JSX.Element | null {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
@@ -87,7 +87,7 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   );
 }
 
-function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
+function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -134,7 +134,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   );
 }
 
-function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): JSX.Element | null {
+function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
   const manageSecurityKeyLink = (
     <Link
       key={`${SECURITY_PATH}#manage-security-keys`}
@@ -186,7 +186,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
   );
 }
 
-export function Recommendations(): JSX.Element | null {
+export function Recommendations(): React.JSX.Element | null {
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

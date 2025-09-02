@@ -21,7 +21,7 @@ import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 interface SecurityKeyTable {
-  readonly wrapperRef: React.RefObject<HTMLElement>;
+  readonly wrapperRef: React.RefObject<HTMLElement | null>;
   readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
 }
 
