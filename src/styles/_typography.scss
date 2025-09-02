@@ -1,4 +1,4 @@
-/** Site wide typography **/
+@use "variables" as *; /** Site wide typography **/
 
 h1,
 h2,
@@ -132,8 +132,8 @@ b,
 
 em {
   font-style: italic;
-
-  @extend i;
+  // TODO: Confirm that the page works correctly, then remove @extend i.
+  // @extend i;
 }
 
 .verbatim {

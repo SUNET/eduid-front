@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .ladok {
   &-university {
     @media (max-width: $bp-md) {

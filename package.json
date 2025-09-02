@@ -39,6 +39,7 @@
     "react-select": "^5.10.2",
     "redux": "^5.0.1",
     "redux-logger": "^4.0.0",
+    "sass-loader": "^16.0.5",
     "spin.js": "^4.1.2",
     "xstate": "^5.21.0"
   },
@@ -138,7 +139,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
     ],
-    "roots" : [
+    "roots": [
       "<rootDir>/src"
     ]
   },

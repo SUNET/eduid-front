@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .error-page {
   h1 {
     color: var(--error-red);

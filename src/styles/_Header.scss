@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "typography";
+
 header {
   background-color: var(--contrast-color);
   display: flex;
