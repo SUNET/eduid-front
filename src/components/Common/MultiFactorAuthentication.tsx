@@ -373,7 +373,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 <p className="help-text">
                   <FormattedMessage
                     description="verify webauthn token modal body note text"
-                    defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+                    defaultMessage={`Note: your added security keys can also be verified later from the "Manage your security keys" table.`}
                   />
                 </p>
               </div>
@@ -404,6 +404,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                     <span>eidas</span>
                   </EduIDButton>
                 </div>
+                <EduIDButton
+                  id={`verify-webauthn-token-modal-close-link`}
+                  buttonstyle="link verbatim"
+                  onClick={() => setShowVerifyWebauthnModal(false)}
+                >
+                  <FormattedMessage description="verity later link" defaultMessage={`Not now`} />
+                </EduIDButton>
               </div>
             </div>
           </div>
