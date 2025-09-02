@@ -14,7 +14,7 @@ const middlewares = [
   csrfTokenMiddleware,
   authnMiddleware.middleware,
   reAuthnMiddleware.middleware];
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test") {
   middlewares.push(logger);
 }
 
