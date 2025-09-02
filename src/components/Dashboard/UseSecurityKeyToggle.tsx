@@ -11,7 +11,7 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
   const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
-  const [postSecurityKeyPreference, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation()
+  const [postSecurityKeyPreference, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation();
 
   useEffect(() => {
     setSwitchChecked(always_use_security_key);
@@ -51,7 +51,7 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
             <p className="help-text">
               <FormattedMessage
                 description="help text toggle 2FA"
-                defaultMessage="If a service require extra login verification, you will then still need to use your security key even when this setting is toggled off."
+                defaultMessage="If toggled off you only need to use your security key for services that require extra login verification."
               />
             </p>
           </legend>
