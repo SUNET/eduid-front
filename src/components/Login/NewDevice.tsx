@@ -93,35 +93,38 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
 
   return (
     <React.Fragment>
-      <label className="toggle flex-between" htmlFor="remember-me">
-        <legend>
-          <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-        </legend>
-        <input
-          onChange={handleSwitchChange}
-          className="toggle-checkbox"
-          type="checkbox"
-          checked={switchChecked}
-          id="remember-me"
-        />
-        <div className="toggle-switch"></div>
-      </label>
-      {warnRedirectToLogin && (
-        <p className="help-text">
-          <FormattedMessage
-            defaultMessage="If you turn this off, you'll need to log in with your username and password."
-            description="MFA as the first step of login, toggle off"
+      <fieldset className="border-toggle-area">
+        <label className="toggle" htmlFor="remember-me">
+          <legend>
+            <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
+            {warnRedirectToLogin && (
+              <p className="help-text">
+                <FormattedMessage
+                  defaultMessage="If you turn this off, you'll need to log in with your username and password."
+                  description="MFA as the first step of login, toggle off"
+                />
+              </p>
+            )}
+            {infoRememberME && (
+              <p className="help-text">
+                <FormattedMessage
+                  defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
+                  description="Login remember user device"
+                />
+              </p>
+            )}
+          </legend>
+          <input
+            onChange={handleSwitchChange}
+            className="toggle-checkbox"
+            type="checkbox"
+            checked={switchChecked}
+            id="remember-me"
           />
-        </p>
-      )}
-      {infoRememberME && (
-        <p className="help-text">
-          <FormattedMessage
-            defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
-            description="Login remember user device"
-          />
-        </p>
-      )}
+
+          <div className="toggle-switch"></div>
+        </label>
+      </fieldset>
     </React.Fragment>
   );
 }
