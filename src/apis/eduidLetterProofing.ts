@@ -1,11 +1,11 @@
 import { ApiResponse, eduIDApi } from "./common";
 
 interface LetterProofingRequest {
-  nin: string
+  nin: string;
 }
 
 interface LetterProofingConfirmation {
-  code: string
+  code: string;
 }
 
 export interface LetterProofingResponse {
@@ -19,26 +19,25 @@ export interface LetterProofingResponse {
 
 export const letterProofingApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    letterProfingState: builder.query<ApiResponse<LetterProofingResponse>, void>({
+    letterProofingState: builder.query<ApiResponse<LetterProofingResponse>, void>({
       query: () => ({
-        url: "proofing"
+        url: "proofing",
       }),
-      extraOptions: { service: "letterProofing" }
+      extraOptions: { service: "letterProofing" },
     }),
     requestLetter: builder.query<ApiResponse<LetterProofingResponse>, LetterProofingRequest>({
       query: (body) => ({
         url: "proofing",
-        body
+        body,
       }),
-      extraOptions: { service: "letterProofing" }
+      extraOptions: { service: "letterProofing" },
     }),
     confirmLetterCode: builder.query<ApiResponse<LetterProofingRequest>, LetterProofingConfirmation>({
       query: (body) => ({
         url: "verify-code",
-        body
+        body,
       }),
-      extraOptions: { service: "letterProofing" }
-  })
-  })
-})
-
+      extraOptions: { service: "letterProofing" },
+    }),
+  }),
+});
