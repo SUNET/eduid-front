@@ -11,7 +11,7 @@ interface PasswordInputProps {
   helpBlock?: React.ReactNode; // help text shown above input
 }
 
-export default function PasswordInput(props: PasswordInputProps): JSX.Element {
+export default function PasswordInput(props: PasswordInputProps): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -35,7 +35,7 @@ export default function PasswordInput(props: PasswordInputProps): JSX.Element {
   );
 }
 
-export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Element {
+export function WrappedPasswordInput(props: FieldRenderProps<string>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -49,7 +49,7 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): JSX.Eleme
  * @param props
  * @returns
  */
-export function PasswordInputElement(props: any): JSX.Element {
+export function PasswordInputElement(props: any): React.JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const forced_username = useAppSelector((state) => state.login.authn_options.forced_username);

@@ -11,7 +11,7 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
-export default function EduIDButton(props: EduIDButtonProps): JSX.Element {
+export default function EduIDButton(props: EduIDButtonProps): React.JSX.Element {
   const intl = useIntl();
   const extra: ExtraProps = {};
 

@@ -10,7 +10,7 @@ interface BackToLoginButtonProps {
   onClickHandler?(): void; // optional callback for when the button is clicked
 }
 
-export function GoBackButton(props: BackToLoginButtonProps): JSX.Element | null {
+export function GoBackButton(props: BackToLoginButtonProps): React.JSX.Element | null {
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);

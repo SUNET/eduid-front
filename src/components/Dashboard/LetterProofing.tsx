@@ -13,7 +13,7 @@ export interface LetterProofingProps {
   disabled: boolean;
 }
 
-export default function LetterProofing(props: LetterProofingProps): JSX.Element {
+export default function LetterProofing(props: LetterProofingProps): React.JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

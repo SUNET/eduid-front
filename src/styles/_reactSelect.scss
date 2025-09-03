@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "typography";
+@use "base";
 /** React-select style overrides, final-form element prefixed by "react-select" **/
 
 form .react-select,

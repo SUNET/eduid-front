@@ -5,7 +5,7 @@ import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
-export default function TermsOfUse(): JSX.Element {
+export default function TermsOfUse(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
   // version is the version of the ToU the backend requests we ask the user to accept

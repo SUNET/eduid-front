@@ -16,7 +16,7 @@ interface UserNameInputProps {
   defaultValue?: string;
 }
 
-export default function UserNameInput(props: UserNameInputProps): JSX.Element {
+export default function UserNameInput(props: UserNameInputProps): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

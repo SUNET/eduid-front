@@ -1,3 +1,4 @@
+import { userEvent } from "@testing-library/user-event";
 import {
   AcceptToURequest,
   CaptchaRequest,
@@ -11,7 +12,8 @@ import {
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";
-import { mswServer, rest } from "setupTests";
+import { http, HttpResponse } from "msw";
+import { mswServer } from "setupTests";
 import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 const emptyState: SignupState = {
@@ -48,6 +50,8 @@ const captchaTestValue = "captcha-test-value";
 const testPassword = "abcdefghij";
 const correctEmailCode = "123456";
 
+const user = userEvent.setup();
+
 let currentState = JSON.parse(JSON.stringify(emptyState)); // make a copy of the state
 let getCaptchaCalled = false;
 let acceptToUCalled = false;
@@ -67,49 +71,49 @@ function happyCaseBackend(state: SignupState) {
 
   mswServer.use(
     // this request happens at render of SignupMain
-    rest.get("https://signup.eduid.docker/services/signup/state", (req, res, ctx) => {
+    http.get("https://signup.eduid.docker/services/signup/state", () => {
       const payload: SignupStatusResponse = { state: currentState };
       console.debug("[payload]", payload);
-      return res(ctx.json({ type: "_SIGNUP_ test response", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test response", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("https://signup.eduid.docker/services/signup/get-captcha", (req, res, ctx) => {
+    http.post("https://signup.eduid.docker/services/signup/get-captcha", () => {
       getCaptchaCalled = true;
       const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     }),
-    rest.post("https://signup.eduid.docker/services/signup/captcha", async (req, res, ctx) => {
-      const body = (await req.json()) as CaptchaRequest;
+    http.post("https://signup.eduid.docker/services/signup/captcha", async ({ request }) => {
+      const body = (await request.json()) as CaptchaRequest;
       if (body.internal_response != captchaTestValue) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       currentState.captcha.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("https://signup.eduid.docker/services/signup/accept-tou", async (req, res, ctx) => {
-      const body = (await req.json()) as AcceptToURequest;
+    http.post("https://signup.eduid.docker/services/signup/accept-tou", async ({ request }) => {
+      const body = (await request.json()) as AcceptToURequest;
       if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       acceptToUCalled = true;
       currentState.tou.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     }),
-    rest.post("https://signup.eduid.docker/services/signup/register-email", async (req, res, ctx) => {
-      const body = (await req.json()) as RegisterEmailRequest;
+    http.post("https://signup.eduid.docker/services/signup/register-email", async ({ request }) => {
+      const body = (await request.json()) as RegisterEmailRequest;
       if (body.email !== testEmailAddress) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       registerEmailCalled = true;
@@ -118,20 +122,20 @@ function happyCaseBackend(state: SignupState) {
       currentState.email.expires_time_total = 60;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("https://signup.eduid.docker/services/signup/verify-email", async (req, res, ctx) => {
-      const body = (await req.json()) as VerifyEmailRequest;
+    http.post("https://signup.eduid.docker/services/signup/verify-email", async ({ request }) => {
+      const body = (await request.json()) as VerifyEmailRequest;
       if (body.verification_code !== correctEmailCode) {
         const bad_attempts = currentState.email.bad_attempts || 0;
         currentState.email.bad_attempts = bad_attempts + 1;
         currentState.email.bad_attempts_max = 3;
         const payload: SignupStatusResponse = { state: currentState };
-        return res(
-          ctx.json({
+        return new HttpResponse(
+          JSON.stringify({
             type: "_SIGNUP_ test_FAIL",
             error: true,
             payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
@@ -143,36 +147,35 @@ function happyCaseBackend(state: SignupState) {
       currentState.email.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("https://signup.eduid.docker/services/signup/get-password", (req, res, ctx) => {
+    http.post("https://signup.eduid.docker/services/signup/get-password", () => {
       getPasswordCalled = true;
       currentState.credentials.generated_password = testPassword;
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     })
   );
 
   mswServer.use(
-    rest.post("https://signup.eduid.docker/services/signup/create-user", async (req, res, ctx) => {
-      const body = (await req.json()) as CreateUserRequest;
+    http.post("https://signup.eduid.docker/services/signup/create-user", async ({ request }) => {
+      const body = (await request.json()) as CreateUserRequest;
       if (body.use_webauthn && !body.use_suggested_password) {
         console.error("Missing password, or webauthn is not supported");
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
 
       createUserCalled = true;
       currentState.user_created = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return res(ctx.json({ type: "_SIGNUP_ test success", payload }));
+      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
     })
   );
-  mswServer.printHandlers();
 }
 
 beforeEach(() => {
@@ -277,12 +280,12 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   expect(button).toBeDisabled();
 
   if (email) {
-    fireEvent.change(firstNameInput, { target: { value: "test" } });
-    fireEvent.change(lastNameInput, { target: { value: "test" } });
-    fireEvent.change(emailInput, { target: { value: email } });
+    await user.type(firstNameInput, "test");
+    await user.type(lastNameInput, "test");
+    await user.type(emailInput, email);
     expect(button).toBeEnabled();
 
-    fireEvent.click(button);
+    user.click(button)
   }
 }
 
@@ -298,11 +301,11 @@ async function testInternalCaptcha() {
 
   const captchaInput = screen.getByRole("textbox", { name: "Enter the code from the image" });
   expect(captchaInput).toHaveFocus();
-  fireEvent.change(captchaInput, { target: { value: captchaTestValue } });
+  await user.type(captchaInput, captchaTestValue);
 
   const captchaButton = screen.getByRole("button", { name: "Continue" });
   expect(captchaButton).toBeEnabled();
-  fireEvent.click(captchaButton);
+  await user.click(captchaButton);
 }
 
 async function testTermsOfUse({
@@ -328,7 +331,7 @@ async function testTermsOfUse({
   if (clickAccept) {
     const acceptToUButton = screen.getByRole("button", { name: /Accept/i });
     expect(acceptToUButton).toBeEnabled();
-    fireEvent.click(acceptToUButton);
+    await user.click(acceptToUButton);
 
     await waitFor(() => {
       expect(acceptToUCalled).toBe(true);
@@ -340,7 +343,7 @@ async function testTermsOfUse({
   } else if (clickCancel) {
     const cancelButton = screen.getByRole("button", { name: /Cancel/i });
     expect(cancelButton).toBeEnabled();
-    fireEvent.click(cancelButton);
+    await user.click(cancelButton);
   }
 }
 
@@ -381,7 +384,7 @@ async function enterEmailCode(code: string) {
   expect(inputs).toHaveLength(code.length);
 
   for (let i = 0; i < code.length; i++) {
-    fireEvent.change(inputs[i], { target: { value: code[i] } });
+    await user.type(inputs[i], code[i]);
   }
 
   // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.

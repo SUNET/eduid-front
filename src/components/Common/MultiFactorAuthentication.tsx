@@ -1,3 +1,4 @@
+import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
@@ -21,18 +22,19 @@ import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 interface SecurityKeyTable {
-  readonly wrapperRef: React.RefObject<HTMLElement>;
+  readonly wrapperRef: React.RefObject<HTMLElement | null>;
   readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
 }
 
-export function filterTokensFromCredentials(state: EduIDAppRootState): Array<CredentialType> {
-  // get FIDO tokens from list of all user credentials
-  return state.security.credentials.filter(
+const selectCredentials = (state: EduIDAppRootState) => state.security.credentials;
+
+export const filterTokensFromCredentials = createSelector([selectCredentials], (credentials): CredentialType[] =>
+  credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
-  );
-}
+  )
+);
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
   const dispatch = useAppDispatch();
@@ -44,12 +46,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [tokenKey, setTokenKey] = useState<any>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
-  const [ requestCredentials ] = securityApi.useLazyRequestCredentialsQuery();
-  const [ beginRegisterWebauthn ] = securityApi.useLazyBeginRegisterWebauthnQuery();
-  const [ registerWebauthn ] = securityApi.useLazyRegisterWebauthnQuery();
-  const [ getAuthnStatus ] = securityApi.useLazyGetAuthnStatusQuery();
-  const [ bankIDVerifyCredential ] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
-  const [ eidasVerifyCredential ] = eidasApi.useLazyEidasVerifyCredentialQuery()
+  const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
+  const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
+  const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
+  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
+  const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
+  const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -140,11 +142,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   async function handleVerificationWebauthnToken(token: string, method: WebauthnMethods) {
     const verifyAction = tokenTypeMap[method];
-    const response = await 
-      verifyAction({
-        credential_id: token,
-        method,
-      });
+    const response = await verifyAction({
+      credential_id: token,
+      method,
+    });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
@@ -201,11 +202,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           const description_value = values["describe-webauthn-token-modal"];
           const description = description_value?.trim();
           setShowSecurityKeyNameModal(false);
-          const registration = await beginRegisterWebauthn({ authenticator: frontend_state })
+          const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
           if (registration.isSuccess) {
             const credential = await dispatch(createCredential(registration.data.payload.registration_data));
             if (createCredential.fulfilled.match(credential)) {
-              const response = await registerWebauthn({ webauthn_attestation: credential.payload, description})
+              const response = await registerWebauthn({ webauthn_attestation: credential.payload, description });
               wrapperRef?.current?.focus();
               if (response.isSuccess) {
                 setShowVerifyWebauthnModal(true);
@@ -372,7 +373,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 <p className="help-text">
                   <FormattedMessage
                     description="verify webauthn token modal body note text"
-                    defaultMessage={`Note: your added security keys can also be verified from the "Manage your security keys" table.`}
+                    defaultMessage={`Note: your added security keys can also be verified later in the "Manage your security keys" settings.`}
                   />
                 </p>
               </div>
@@ -403,6 +404,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                     <span>eidas</span>
                   </EduIDButton>
                 </div>
+                <EduIDButton
+                  id={`verify-webauthn-token-modal-close-link`}
+                  buttonstyle="link verbatim"
+                  onClick={() => setShowVerifyWebauthnModal(false)}
+                >
+                  <FormattedMessage description="verity later link" defaultMessage={`Not now`} />
+                </EduIDButton>
               </div>
             </div>
           </div>

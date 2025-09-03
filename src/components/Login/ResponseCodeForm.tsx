@@ -17,7 +17,7 @@ export interface ResponseCodeValues {
   v: string[];
 }
 
-export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): JSX.Element {
+export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
   // const valueChars = (props.code || "").split("");
   const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
   const initialValues: ResponseCodeValues = {
@@ -209,7 +209,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
       placeholder={value}
       autoFocus={autoFocus}
       validate={validateCodeForm}
-      ref={(input: HTMLInputElement) => input && inputsRef.current.push(input)}
+      ref={(input: HTMLInputElement) => { input && inputsRef.current.push(input); return undefined }}
       onFocus={selectIfNotEmpty}
       onInput={handleInput}
       onKeyUp={handleBackspace}

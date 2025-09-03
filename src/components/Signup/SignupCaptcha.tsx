@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
-export function SignupCaptcha(): JSX.Element | null {
+export function SignupCaptcha(): React.JSX.Element | null {
   const state = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();

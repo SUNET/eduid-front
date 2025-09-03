@@ -1,8 +1,9 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
+import { http, HttpResponse } from "msw";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
-import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { mswServer } from "setupTests";
+import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -13,18 +14,17 @@ test("renders frejaeID as expected", () => {
   const method = "frejaeIDVerifyIdentity";
 
   mswServer.use(
-    rest.post("verify-identity", async (req, res, ctx) => {
-      const body = (await req.json()) as VerifyIdentityRequest;
+    http.post("verify-identity", async ({ request }) => {
+      const body = (await request.json()) as VerifyIdentityRequest;
       if (body.method != method) {
-        return res(ctx.status(400));
+        return new HttpResponse(null, { status: 400 });
       }
       const payload: VerifyIdentityResponse = {
         location: "https://dummy-svipe-id-url.se",
       };
-      return res(ctx.json({ type: "test response", payload: payload }));
+      return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
     })
   );
-  mswServer.printHandlers();
 
   render(<IndexMain />, {
     state: {
@@ -42,9 +42,10 @@ test("renders frejaeID as expected", () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const frejaeIDAccordion = screen.getByRole("button", { name: /Most countries With Freja eID/i });
+  const frejaeIDGroup = screen.getByRole("group", { name: /Most countries With Freja eID/i });
+  const frejaeIDAccordion = within(frejaeIDGroup).getByRole("button", { name: /Most countries With Freja eID/i });
   act(() => {
     frejaeIDAccordion.click();
   });
-  expect(screen.getByRole("button", { name: /Proceed/ })).toBeEnabled();
+  expect(within(frejaeIDGroup).getByRole("button", { name: /Proceed/ })).toBeEnabled();
 });

@@ -67,7 +67,6 @@ export default function UsernamePw() {
       </section>
       <section className="username-pw">
         <FinalForm<UsernamePwFormData>
-          id="login-form"
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
           render={(formProps: FormRenderProps<UsernamePwFormData>) => {
@@ -96,7 +95,7 @@ export default function UsernamePw() {
   );
 }
 
-function UsernameInputPart(): JSX.Element {
+function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
@@ -138,7 +137,7 @@ function UsernameInputPart(): JSX.Element {
   return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
-function RenderRegisterLink(): JSX.Element {
+function RenderRegisterLink(): React.JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_link);
   return (
     <div className="text-small">
@@ -151,7 +150,7 @@ function RenderRegisterLink(): JSX.Element {
   );
 }
 
-function RenderResetPasswordLink(): JSX.Element {
+function RenderResetPasswordLink(): React.JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -181,14 +180,14 @@ function RenderResetPasswordLink(): JSX.Element {
   );
 }
 
-function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
+function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _inputValues = Boolean(props.values["username"]) && Boolean(props.values["currentPassword"]);
+  const _inputValues = Boolean(props.values?.["username"]) && Boolean(props.values?.["currentPassword"]);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
   const hasErrors = props.hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
@@ -208,7 +207,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
   );
 }
 
-function UsernamePwAnotherDeviceButton(): JSX.Element | null {
+function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 

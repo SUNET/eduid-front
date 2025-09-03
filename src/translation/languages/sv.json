@@ -1563,6 +1563,10 @@
     "developer_comment": "verify identity",
     "string": "Knappen nedan tar dig till en extern identifieringssida, där du genom att identifiera dig med Freja eID verifierar din identitet mot eduID."
   },
+  "XpbcnM": {
+    "developer_comment": "verify webauthn token modal body note text",
+    "string": "Obs: dina tillagda säkerhetsnycklar kan även verifieras senare i inställningarna under \"Hantera dina säkerhetsnycklar\"."
+  },
   "XrBwSu": {
     "developer_comment": "eidas freja instruction tip1",
     "string": "Tips: Du kan hitta närmsta ombud i appen"
@@ -1825,6 +1829,10 @@
   "c1nVKp": {
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
+  },
+  "c5JVOm": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "Om avslagen behöver du bara använda din säkerhetsnyckel när andra tjänster kräver extra verifiering vid inloggning."
   },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
@@ -2111,6 +2119,10 @@
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Återvänd till startsidan"
+  },
+  "fr3/NL": {
+    "developer_comment": "verity later link",
+    "string": "Inte nu"
   },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID autentiseringsbegäran misslyckades. Vänligen Försök igen."
@@ -3035,10 +3047,6 @@
     "developer_comment": "identity eduid - list item 2-1",
     "string": "Med svenskt digitalt ID (Freja+/BankID) eller via post."
   },
-  "rpjEOF": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "Om andra tjänster kräver extra verifiering vid inloggning så kommer du ändå behöva använda din säkerhetsnyckel då, även när denna inställning är avslagen."
-  },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", kan du använda {emphasis} med hjälp av ett europeiskt eID för att verifiera din identitet. Läs mer om eIDAS nedan."
@@ -3456,10 +3464,6 @@
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
     "string": "användaren blir hänvisad till Freja eIDs hemsida för att använda sig av deras tjänst. Om du inte redan har Freja+ behöver du skapa det innan du kan verifiera ditt eduID. Läs mer om Freja nedan."
-  },
-  "yI4/1E": {
-    "developer_comment": "verify webauthn token modal body note text",
-    "string": "Obs: dina tillagda säkerhetsnycklar kan även verifieras från tabellen \"Hantera dina säkerhetsnycklar\"."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

@@ -12,7 +12,7 @@ import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
-export function SignupEnterCode(): JSX.Element {
+export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();

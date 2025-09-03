@@ -4,7 +4,7 @@ import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function LoginAbortButton(): JSX.Element {
+export function LoginAbortButton(): React.JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
   const [fetchAbort] = loginApi.useLazyFetchAbortQuery();
 
