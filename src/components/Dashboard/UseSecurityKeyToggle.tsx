@@ -41,9 +41,9 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
   return (
     <form>
       {/* always_use_security_key toggle button */}
-      <fieldset>
-        <label className="toggle flex-between border-toggle-area" htmlFor="security-key-mfa">
-          <legend className="legend-2fa">
+      <fieldset className="border-toggle-area">
+        <label className="toggle" htmlFor="security-key-mfa">
+          <legend>
             <FormattedMessage
               defaultMessage={`Always use a security key to log in`}
               description="Security key toggle"
