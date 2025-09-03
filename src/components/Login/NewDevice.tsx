@@ -97,7 +97,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
         <label className="toggle" htmlFor="remember-me">
           <legend>
             <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-            {warnRedirectToLogin && (
+            {!infoRememberME && (
               <p className="help-text">
                 <FormattedMessage
                   defaultMessage="If you turn this off, you'll need to log in with your username and password."
