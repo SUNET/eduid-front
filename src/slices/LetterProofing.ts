@@ -18,7 +18,7 @@ const letterProofingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addMatcher(letterProofingApi.endpoints.letterProfingState.matchFulfilled, (state, action) => {
+    builder.addMatcher(letterProofingApi.endpoints.letterProofingState.matchFulfilled, (state, action) => {
       state.letter_expires_in_days = action.payload.payload.letter_expires_in_days;
       state.letter_sent_days_ago = action.payload.payload.letter_sent_days_ago;
       state.letter_sent = action.payload.payload.letter_sent;

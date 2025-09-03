@@ -18,7 +18,7 @@ export default function Start(): React.JSX.Element {
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const [letterProofingState] = letterProofingApi.useLazyLetterProfingStateQuery();
+  const [letterProofingState] = letterProofingApi.useLazyLetterProofingStateQuery();
   let username;
 
   if (!chosen_given_name && !given_name && emails.length > 0) {

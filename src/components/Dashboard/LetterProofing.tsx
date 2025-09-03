@@ -23,7 +23,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
   const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities?.nin?.number || letter_expired;
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [letterProofingState] = letterProofingApi.useLazyLetterProfingStateQuery();
+  const [letterProofingState] = letterProofingApi.useLazyLetterProofingStateQuery();
   const [requestLetter] = letterProofingApi.useLazyRequestLetterQuery();
   const [confirmLetterCode] = letterProofingApi.useLazyConfirmLetterCodeQuery();
 
@@ -60,7 +60,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
 
   async function confirmLetterProofing() {
     if (identities?.nin?.number) {
-      const response = await requestLetter({nin: identities.nin.number});
+      const response = await requestLetter({ nin: identities.nin.number });
       if (response.isSuccess) {
         requestAllPersonalData();
       }
