@@ -1,8 +1,9 @@
 import { OrcidInfo } from "apis/eduidOrcid";
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
+import { http } from "msw";
 import { act } from "react";
-import { mswServer, rest } from "setupTests";
+import { mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
@@ -84,19 +85,17 @@ test("can remove an ORCID iD", async () => {
   let removeCalled = false;
 
   mswServer.use(
-    rest.post("https://dashboard.eduid.docker/services/orcid/remove", (req, res, ctx) => {
+    http.post("https://dashboard.eduid.docker/services/orcid/remove", () => {
       removeCalled = true;
-      return res(ctx.json({ type: "test success", payload: {} }));
+      return new Response(JSON.stringify({ type: "test success", payload: {} }));
     }),
-    rest.get("https://dashboard.eduid.docker/services/orcid", (req, res, ctx) => {
+    http.get("https://dashboard.eduid.docker/services/orcid", () => {
       if (!removeCalled) {
-        return res(ctx.status(400));
+        return new Response("", { status: 400})
       }
-      return res(ctx.json({ type: "test success", payload: { orcid: undefined } }));
+      return new Response(JSON.stringify({ type: "test success", payload: { orcid: undefined } }));
     })
   );
-
-  mswServer.printHandlers();
 
   render(<IndexMain />, {
     state: {
