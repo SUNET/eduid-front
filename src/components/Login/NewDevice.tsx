@@ -100,7 +100,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
             {!infoRememberME && (
               <p className="help-text">
                 <FormattedMessage
-                  defaultMessage="If you turn this off, you'll need to log in with your username and password."
+                  defaultMessage="Turning this off will enable login with username and password instead."
                   description="MFA as the first step of login, toggle off"
                 />
               </p>
@@ -108,7 +108,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
             {infoRememberME && (
               <p className="help-text">
                 <FormattedMessage
-                  defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure"
+                  defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure."
                   description="Login remember user device"
                 />
               </p>

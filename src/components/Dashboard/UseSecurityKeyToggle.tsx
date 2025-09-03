@@ -51,7 +51,7 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
             <p className="help-text">
               <FormattedMessage
                 description="help text toggle 2FA"
-                defaultMessage="If toggled off you only need to use your security key for services that require extra login verification."
+                defaultMessage="If turned off you only need to use your security key for services that require extra login verification."
               />
             </p>
           </legend>
