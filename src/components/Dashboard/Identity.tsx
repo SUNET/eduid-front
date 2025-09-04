@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
@@ -24,7 +24,6 @@ import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import BankID from "./BankID";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
@@ -60,7 +59,6 @@ function Identity(): React.JSX.Element | null {
 
   return (
     <Fragment>
-      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}

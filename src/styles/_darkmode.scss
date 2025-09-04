@@ -72,20 +72,6 @@ html.dark {
     color: #fff;
   }
 
-  .breadcrumb a {
-    svg,
-    img {
-      //link-orange color
-      filter: brightness(0) saturate(100%) invert(50%) sepia(49%) saturate(1827%) hue-rotate(339deg) brightness(101%)
-        contrast(101%);
-    }
-    &.disabled {
-      //text gray color
-      filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
-        contrast(76%);
-    }
-  }
-
   .remove {
     //text gray color
     filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
