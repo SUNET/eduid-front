@@ -422,7 +422,7 @@
   },
   "7KSOXH": {
     "developer_comment": "help text toggle 2FA",
-    "string": "If turned off you only need to use your security key for services that require extra login verification."
+    "string": "Turning this off you only need to use your security key for services that require extra login verification."
   },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
