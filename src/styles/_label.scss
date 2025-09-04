@@ -12,12 +12,17 @@ label,
 }
 
 .border-toggle-area {
-  flex-basis: 100%;
   border-color: var(--border-gray);
-  border-width: 1px;
+  border-width: $border-width;
   border-style: solid;
   border-radius: 10px;
-  padding: 16px;
+  padding: $margin;
+  label {
+    margin: 0;
+  }
+  legend {
+    margin-right: 5px;
+  }
 }
 
 #uniqueId-container label {

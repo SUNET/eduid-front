@@ -420,6 +420,10 @@
     "developer_comment": "security eduid - list item 3",
     "string": "A table displaying all your added security keys with the following information:"
   },
+  "7KSOXH": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "If turned off you only need to use your security key for services that require extra login verification."
+  },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
@@ -459,6 +463,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
+  },
+  "8FSnax": {
+    "developer_comment": "MFA as the first step of login, toggle off",
+    "string": "Turning this off will enable login with username and password instead."
   },
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
@@ -1830,10 +1838,6 @@
     "developer_comment": "Verified identity",
     "string": "Swedish national ID number"
   },
-  "c5JVOm": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "If toggled off you only need to use your security key for services that require extra login verification."
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
@@ -2115,6 +2119,10 @@
   "fIdUh2": {
     "developer_comment": "how add security key - heading",
     "string": "How do I implement 2FA with eduID?"
+  },
+  "flBt7j": {
+    "developer_comment": "Login remember user device",
+    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -2400,10 +2408,6 @@
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "services requiring you to log in using multi factor authentication, often called {emphasis}."
-  },
-  "kXrfeE": {
-    "developer_comment": "Login remember user device",
-    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
   },
   "kaI61H": {
     "developer_comment": "when use eduID - paragraph",
@@ -3263,10 +3267,6 @@
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Help"
-  },
-  "uV2DBQ": {
-    "developer_comment": "MFA as the first step of login, toggle off",
-    "string": "If you turn this off, you'll need to log in with your username and password."
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",
