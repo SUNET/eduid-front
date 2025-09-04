@@ -49,18 +49,37 @@ header {
       padding: 0;
       li {
         float: left;
-        position: relative;
 
         &.submenu-collapse {
           max-height: 500px;
           overflow: hidden;
           transition: max-height 0.2s ease;
-          margin: 0 0.75rem 1rem 1.5rem;
+          position: absolute;
+          // margin: 0 0.75rem 1rem 1.5rem;
           display: block;
+          top: 60px;
+
+          a {
+            font-size: $txt-sm;
+            color: var(--txt-gray);
+          }
         }
         &.submenu-close {
           max-height: 0;
           margin-bottom: 0;
+          // display: none;
+        }
+        button {
+          background-color: transparent;
+          box-shadow: none;
+          padding: 0 0.75rem;
+
+          svg {
+            color: var(--txt-gray);
+          }
+          &:hover svg {
+            color: var(--txt-orange);
+          }
         }
       }
       // ul li {
@@ -92,15 +111,17 @@ header {
         overflow: hidden;
         transition: max-height 0.2s ease;
         margin: 0 0.75rem 1rem 1.5rem;
-        display: block;
+        // display: block;
+        position: static;
 
         ul {
           li {
             padding: 0.5rem 0 0.5rem 3px;
             line-height: 1.2;
-            a {
-              font-size: $txt-sm;
-              color: var(--txt-gray);
+            width: 100%;
+
+            &.submenu-collapse {
+              margin: 0 0.75rem 1rem 1.5rem;
             }
           }
         }
@@ -161,18 +182,18 @@ header {
               border-radius: 1.5rem;
             }
 
-            button {
-              background-color: transparent;
-              box-shadow: none;
-              padding: 0 0.75rem;
+            // button {
+            //   background-color: transparent;
+            //   box-shadow: none;
+            //   padding: 0 0.75rem;
 
-              svg {
-                color: var(--txt-gray);
-              }
-              &:hover svg {
-                color: var(--txt-orange);
-              }
-            }
+            //   svg {
+            //     color: var(--txt-gray);
+            //   }
+            //   &:hover svg {
+            //     color: var(--txt-orange);
+            //   }
+            // }
           }
         }
 
