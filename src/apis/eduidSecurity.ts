@@ -1,4 +1,3 @@
-import { webauthnAttestation } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./common";
 import { FetchIdentitiesResponse, UserIdentities } from "./eduidPersonalData";
 
@@ -29,7 +28,7 @@ export interface SecurityResponse {
 }
 
 export interface RegisterWebAuthnRequest {
-  webauthn_attestation: webauthnAttestation
+  webauthn_attestation: PublicKeyCredentialJSON;
   description: string;
 }
 
@@ -38,7 +37,7 @@ export interface BeginRegisterWebauthnRequest {
 }
 
 export interface BeginRegisterWebauthnResponse {
-  registration_data: string;
+  registration_data: PublicKeyCredentialCreationOptionsJSON;
 }
 
 export interface SuggestedPasswordResponse {
@@ -68,7 +67,7 @@ interface IdentityRequest {
 
 interface IdentitiesResponse {
   message: string;
-  identities: UserIdentities
+  identities: UserIdentities;
 }
 
 export enum ActionStatus {
@@ -90,101 +89,100 @@ export interface AuthnActionStatusRequest {
   credential_id?: string;
 }
 
-
 export const securityApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     updateOfficialUserData: builder.query<ApiResponse<UpdateOfficialUserDataResponse>, void>({
       query: () => ({
         url: "refresh-official-user-data",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     postDeleteAccount: builder.query<ApiResponse<PostDeleteAccountResponse>, void>({
       query: () => ({
         url: "terminate-account",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     removeWebauthnToken: builder.query<ApiResponse<SecurityResponse>, RemoveWebauthnTokensRequest>({
       query: (body) => ({
         url: "webauthn/remove",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     requestCredentials: builder.query<ApiResponse<SecurityResponse>, void>({
       query: () => ({
-        url: "credentials"
+        url: "credentials",
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     registerWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
       query: (body) => ({
         url: "webauthn/register/complete",
         body: {
           ...body.webauthn_attestation,
-          description: body.description
-        }
+          description: body.description,
+        },
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     beginRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebauthnRequest>({
       query: (body) => ({
         url: "webauthn/register/begin",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
-    fetchSuggestedPassword: builder.query<ApiResponse<SuggestedPasswordResponse>,void>({
+    fetchSuggestedPassword: builder.query<ApiResponse<SuggestedPasswordResponse>, void>({
       query: () => ({
-        url: "change-password/suggested-password"
+        url: "change-password/suggested-password",
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     changePassword: builder.query<ApiResponse<ChangePasswordResponse>, ChangePasswordPayload>({
       query: (body) => ({
         url: "change-password/set-password",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     addNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
       query: (body) => ({
         url: "add-nin",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     removeNin: builder.query<ApiResponse<FetchIdentitiesResponse>, NinPayload>({
       query: (body) => ({
         url: "remove-nin",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     fetchApprovedSecurityKeys: builder.query<ApiResponse<SecurityKeysResponse>, void>({
       query: () => ({
-        url: "webauthn/approved-security-keys"
+        url: "webauthn/approved-security-keys",
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     removeIdentity: builder.query<ApiResponse<IdentitiesResponse>, IdentityRequest>({
       query: (body) => ({
         url: "remove-identity",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
+      extraOptions: { service: "security" },
     }),
     getAuthnStatus: builder.query<ApiResponse<AuthnActionStatusResponse>, AuthnActionStatusRequest>({
       query: (body) => ({
         url: "authn-status",
-        body
+        body,
       }),
-      extraOptions: { service: "security" }
-    })
-  })
-})
+      extraOptions: { service: "security" },
+    }),
+  }),
+});
 
 export default securityApi;

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "apis/eduidLogin";
 import { ToUs } from "helperFunctions/ToUs";
-import { performAuthentication, webauthnAssertion } from "../helperFunctions/navigatorCredential";
+import { performAuthentication } from "../helperFunctions/navigatorCredential";
 
 // Define a type for the slice state
 interface LoginState {
@@ -14,8 +14,8 @@ interface LoginState {
   fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
-    webauthn_challenge?: string;
-    webauthn_assertion?: webauthnAssertion;
+    webauthn_challenge?: PublicKeyCredentialRequestOptionsJSON;
+    webauthn_assertion?: PublicKeyCredentialJSON;
     state?: "loading" | "loaded";
   };
   saml_parameters?: SAMLParameters;
