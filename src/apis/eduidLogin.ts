@@ -1,4 +1,3 @@
-import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./common";
 
 export interface LoginAbortRequest {
@@ -191,7 +190,7 @@ export interface LoginNewDeviceRequest {
 
 export interface LoginMfaAuthRequest {
   ref: string;
-  webauthn_response?: webauthnAssertion;
+  webauthn_response?: PublicKeyCredentialJSON;
   this_device?: string;
 }
 
@@ -200,7 +199,7 @@ export interface LoginMfaAuthResponse {
   //   finished: true if backend thinks mfa_auth requirement is satisfied
   //   webauthn_options: base64-encoded webauthn challenge to pass to navigator.credentials.get()
   finished: boolean;
-  webauthn_options?: string;
+  webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
 }
 
 export const loginApi = eduIDApi.injectEndpoints({
@@ -208,72 +207,72 @@ export const loginApi = eduIDApi.injectEndpoints({
     fetchAbort: builder.query<ApiResponse<LoginAbortResponse>, LoginAbortRequest>({
       query: (body) => ({
         url: "abort",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchUsernamePassword: builder.query<ApiResponse<LoginUsernamePasswordResponse>, LoginUsernamePasswordRequest>({
       query: (body) => ({
         url: "pw_auth",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchToU: builder.query<ApiResponse<LoginToUResponse>, LoginToURequest>({
       query: (body) => ({
         url: "tou",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchLogout: builder.query<ApiResponse<LoginLogoutResponse>, LoginLogoutRequest>({
       query: (body) => ({
         url: "logout",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchErrorInfo: builder.query<ApiResponse<LoginErrorInfoResponse>, void>({
       query: () => ({
         url: "error_info",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchUseOtherDevice1: builder.query<ApiResponse<LoginUseOtherDevice1Response>, LoginUseOtherDevice1Request>({
       query: (body) => ({
         url: "use_other_1",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchUseOtherDevice2: builder.query<ApiResponse<LoginUseOtherDevice2Response>, LoginUseOtherDevice2Request>({
       query: (body) => ({
         url: "use_other_2",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchNext: builder.query<ApiResponse<LoginNextResponse>, LoginNextRequest>({
       query: (body) => ({
         url: "next",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchNewDevice: builder.query<ApiResponse<LoginNewDeviceResponse>, LoginNewDeviceRequest>({
       query: (body) => ({
         url: "new_device",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
+      extraOptions: { service: "login" },
     }),
     fetchMfaAuth: builder.query<ApiResponse<LoginMfaAuthResponse>, LoginMfaAuthRequest>({
       query: (body) => ({
         url: "mfa_auth",
-        body
+        body,
       }),
-      extraOptions: { service: "login" }
-    })
-  })
-})
+      extraOptions: { service: "login" },
+    }),
+  }),
+});
