@@ -15,6 +15,9 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: $margin;
+    display: flex;
+    flex: 1;
+    text-align: left;
 
     @media (max-width: $bp-md) {
       height: 34px;
@@ -39,61 +42,72 @@ header {
   }
   // @media (min-width: $bp-md) {
   nav {
-    float: right;
+    flex: 1;
     button.header-user {
       display: none;
     }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      li {
-        float: left;
+    .nav-menu {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          float: left;
 
-        &.submenu-collapse {
-          max-height: 500px;
-          overflow: hidden;
-          // transition: max-height 0.2s ease;
-          position: absolute;
-          // margin: 0 0.75rem 1rem 1.5rem;
-          display: block;
-          top: 60px;
+          &.submenu-collapse {
+            position: relative;
+            // max-height: 500px;
+            display: block;
+            width: 300px;
+            // transition: max-height 0.2s ease;
+            // position: absolute;
+            // margin: 0 0.75rem 1rem 1.5rem;
+            // display: block;
+            // top: 60px;
 
-          a {
-            font-size: $txt-sm;
-            color: var(--txt-gray);
+            ul {
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              top: 61px;
+
+              a {
+                font-size: $txt-sm;
+                color: var(--txt-gray);
+              }
+            }
+          }
+          &.submenu-close {
+            max-height: 0;
+            margin-bottom: 0;
+            display: none;
+          }
+          button {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0 0.75rem;
+
+            svg {
+              color: var(--txt-gray);
+            }
+            &:hover svg {
+              color: var(--txt-orange);
+            }
           }
         }
-        &.submenu-close {
-          max-height: 0;
-          margin-bottom: 0;
-          // display: none;
-        }
-        button {
-          background-color: transparent;
-          box-shadow: none;
-          padding: 0 0.75rem;
+        // ul li {
+        a {
+          color: var(--body-txt);
 
-          svg {
-            color: var(--txt-gray);
-          }
-          &:hover svg {
+          // styling for when menu item is clicked
+          &.active {
             color: var(--txt-orange);
           }
-        }
-      }
-      // ul li {
-      a {
-        color: var(--body-txt);
 
-        // styling for when menu item is clicked
-        &.active {
-          color: var(--txt-orange);
-        }
-
-        //  styling for when hovering the menu item
-        &:hover {
-          color: var(--txt-orange);
+          //  styling for when hovering the menu item
+          &:hover {
+            color: var(--txt-orange);
+          }
         }
       }
     }
@@ -102,30 +116,37 @@ header {
 
   @media (max-width: $bp-md) {
     .header-nav {
+      flex: unset;
       button.header-user {
         display: block;
       }
-      // sub menu
-      .submenu-collapse {
-        max-height: 500px;
-        overflow: hidden;
-        // transition: max-height 0.2s ease;
-        margin: 0 0.75rem 1rem 1.5rem;
-        // display: block;
-        position: static;
+      .nav-menu ul {
+        padding-left: 0px;
+        li.submenu-collapse {
+          position: static;
+          overflow: visible;
+          max-height: none;
+          // transition: max-height 0.2s ease;
+          margin: 0 0.75rem 1rem 1.5rem;
+          // display: block;
 
-        ul {
-          li {
-            padding: 0.5rem 0 0.5rem 3px;
-            line-height: 1.2;
-            width: 100%;
+          ul {
+            position: static;
+            li {
+              padding: 0.5rem 0 0.5rem 3px;
+              line-height: 1.2;
+              width: 100%;
 
-            &.submenu-collapse {
-              margin: 0 0.75rem 1rem 1.5rem;
+              &.submenu-collapse {
+                margin: 0 0.75rem 1rem 1.5rem;
+              }
             }
           }
         }
       }
+
+      // sub menu
+
       .submenu-close {
         max-height: 0;
         margin-bottom: 0;
@@ -171,7 +192,7 @@ header {
 
         ul {
           text-align: left;
-
+          flex: 1;
           .flex-between {
             padding-left: 0.75rem;
             margin-top: 3px;
@@ -236,6 +257,7 @@ header {
           padding-top: 0.5rem;
           border-top: 1px solid var(--border-gray);
           width: calc(100% - 1.5rem);
+          flex: 1;
         }
       }
     }

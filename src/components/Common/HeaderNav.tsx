@@ -261,13 +261,19 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          <li className="logout-button-wrapper">
-            <EduIDButton buttonstyle="link sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
-              <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
-              <FormattedMessage defaultMessage="Log out" description="Header logout" />
-            </EduIDButton>
-          </li>
+          {/* <li className="logout-button-wrapper"> */}
+          {/* <EduIDButton buttonstyle="link sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+            <FormattedMessage defaultMessage="Log out" description="Header logout" />
+          </EduIDButton> */}
+          {/* </li> */}
         </ul>
+        <div className="logout-button-wrapper">
+          <EduIDButton buttonstyle="link sm " id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+            <FormattedMessage defaultMessage="Log out" description="Header logout" />
+          </EduIDButton>
+        </div>
       </div>
     </nav>
   );
