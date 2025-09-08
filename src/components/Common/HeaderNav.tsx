@@ -49,7 +49,7 @@ function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
   );
 }
 
-function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement|null>, handler: () => void) {
+function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
   useEffect(() => {
     const listener = (event: TouchEvent | MouseEvent) => {
       if (!ref.current || ref.current.contains(event.target as Node)) {
@@ -76,13 +76,20 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
     security: false,
     account: false,
   });
-  const wrapperRef = useRef<HTMLElement|null>(null);
+  const wrapperRef = useRef<HTMLElement | null>(null);
 
   const toggleOpen = (button: ButtonKey) => {
-    setIsOpen((prevState) => ({
-      ...prevState,
-      [button]: !prevState[button],
-    }));
+    setIsOpen((prevState) => {
+      const isCurrentlyOpen = prevState[button];
+      const newState = Object.keys(prevState).reduce((buttonState, key) => {
+        buttonState[key as ButtonKey] = false;
+        return buttonState;
+      }, {} as { [key in ButtonKey]: boolean });
+      if (!isCurrentlyOpen) {
+        newState[button] = true;
+      }
+      return newState;
+    });
   };
 
   useCloseMenuClickOutside(wrapperRef, () => setOpenMenu(false));
