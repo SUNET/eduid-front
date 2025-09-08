@@ -65,6 +65,9 @@ export interface NewPasswordRequest {
   email_code: string;
   password: string;
 }
+export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest {
+  webauthn_response: PublicKeyCredentialJSON;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NewPasswordResponse {}
@@ -92,7 +95,10 @@ export const resetPasswordApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "resetPassword" },
     }),
-    postSetNewPasswordExtraSecurityToken: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
+    postSetNewPasswordExtraSecurityToken: builder.query<
+      ApiResponse<NewPasswordResponse>,
+      NewPasswordExtraSecurityKeyRequest
+    >({
       query: (body) => ({
         url: "new-password-extra-security-token",
         body,
