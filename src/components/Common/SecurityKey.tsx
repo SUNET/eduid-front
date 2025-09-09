@@ -92,10 +92,10 @@ function SecurityKeyActive(props: SecurityKeyProps): React.JSX.Element {
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
 
-  async function startTokenAssertion(webauthn_challenge?: string) {
+  async function startTokenAssertion(webauthn_options?: PublicKeyCredentialRequestOptionsJSON) {
     if (location.pathname.includes("login")) {
-      if (webauthn_challenge && !mfa.webauthn_assertion && ref) {
-        const res = await dispatch(performAuthentication(webauthn_challenge));
+      if (webauthn_options && !mfa.webauthn_assertion && ref) {
+        const res = await dispatch(performAuthentication(webauthn_options));
         if (performAuthentication.fulfilled.match(res)) {
           // Send response from security key to backend
           fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload });
@@ -103,9 +103,9 @@ function SecurityKeyActive(props: SecurityKeyProps): React.JSX.Element {
         if (props.setActive) props.setActive(false);
       }
     } else {
-      const webauthn_challenge = props.webauthn.webauthn_options;
-      if (webauthn_challenge && !webauthn_assertion) {
-        const response = await dispatch(performAuthentication(webauthn_challenge));
+      const webauthn_options = props.webauthn.webauthn_options;
+      if (webauthn_options && !webauthn_assertion) {
+        const response = await dispatch(performAuthentication(webauthn_options));
         if (performAuthentication.fulfilled.match(response)) {
           resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
         }

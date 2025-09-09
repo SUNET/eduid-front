@@ -1,12 +1,9 @@
-import { webauthnAssertion } from "helperFunctions/navigatorCredential";
 import { ApiResponse, eduIDApi } from "./common";
 import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
 
 interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;
 }
-
-export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest, webauthnAssertion {}
 
 /* phone is unused and kept for backwards compatibility */
 export interface NewPasswordExtraSecurityPhoneRequest {
@@ -68,6 +65,9 @@ export interface NewPasswordRequest {
   email_code: string;
   password: string;
 }
+export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest {
+  webauthn_response: PublicKeyCredentialJSON;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NewPasswordResponse {}
@@ -77,65 +77,71 @@ export const resetPasswordApi = eduIDApi.injectEndpoints({
     getResetPasswordCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>, void>({
       query: () => ({
         url: "get-captcha",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     sendResetPasswordCaptchaResponse: builder.query<ApiResponse<ResetPasswordCaptchaResponse>, CaptchaRequest>({
       query: (body) => ({
         url: "captcha",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     postSetNewPasswordExternalMfa: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
       query: (body) => ({
         url: "new-password-extra-security-external-mfa",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
-    postSetNewPasswordExtraSecurityToken: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordExtraSecurityKeyRequest>({
+    postSetNewPasswordExtraSecurityToken: builder.query<
+      ApiResponse<NewPasswordResponse>,
+      NewPasswordExtraSecurityKeyRequest
+    >({
       query: (body) => ({
         url: "new-password-extra-security-token",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
-    postSetNewPasswordExtraSecurityPhone: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordExtraSecurityPhoneRequest>({
+    postSetNewPasswordExtraSecurityPhone: builder.query<
+      ApiResponse<NewPasswordResponse>,
+      NewPasswordExtraSecurityPhoneRequest
+    >({
       query: (body) => ({
         url: "new-password-extra-security-phone",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     requestPhoneCodeForNewPassword: builder.query<ApiResponse<RequestPhoneCodeResponse>, RequestPhoneCodeRequest>({
       query: (body) => ({
         url: "extra-security-phone",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     postSetNewPassword: builder.query<ApiResponse<NewPasswordResponse>, NewPasswordRequest>({
       query: (body) => ({
         url: "new-password",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     verifyEmailLink: builder.query<ApiResponse<VerifyCodeResponse>, VerifyCodeRequest>({
       query: (body) => ({
         url: "verify-email",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
+      extraOptions: { service: "resetPassword" },
     }),
     requestEmailLink: builder.query<ApiResponse<RequestEmailLinkResponse>, RequestEmailLinkRequest>({
       query: (body) => ({
         url: "",
-        body
+        body,
       }),
-      extraOptions: { service: "resetPassword" }
-    })
-  })
-})
+      extraOptions: { service: "resetPassword" },
+    }),
+  }),
+});

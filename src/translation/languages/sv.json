@@ -420,6 +420,10 @@
     "developer_comment": "security eduid - list item 3",
     "string": "En tabell som visar dina tillagda nycklar med följande information:"
   },
+  "7KSOXH": {
+    "developer_comment": "help text toggle 2FA",
+    "string": "Om denna stängs av behöver du bara använda din säkerhetsnyckel när andra tjänster kräver extra verifiering vid inloggning."
+  },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "Jag är redan inloggad, varför behöver jag logga in igen?"
@@ -459,6 +463,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "Du har uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning."
+  },
+  "8FSnax": {
+    "developer_comment": "MFA as the first step of login, toggle off",
+    "string": "Om denna stängs av kommer du till inloggning med användarnamn och lösenord istället. "
   },
   "8J/qPq": {
     "developer_comment": "about assurance levels - handle",
@@ -1830,10 +1838,6 @@
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
   },
-  "c5JVOm": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "Om avslagen behöver du bara använda din säkerhetsnyckel när andra tjänster kräver extra verifiering vid inloggning."
-  },
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "DÖLJ"
@@ -2115,6 +2119,10 @@
   "fIdUh2": {
     "developer_comment": "how add security key - heading",
     "string": "Hur kan jag lägga till 2FA för mitt eduID?"
+  },
+  "flBt7j": {
+    "developer_comment": "Login remember user device",
+    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -2400,10 +2408,6 @@
   "kWc6Ud": {
     "developer_comment": "Assurance levels with your eduID - paragraph4",
     "string": "tjänster som kräver att du loggar in med multifaktorautentisering, ofta kallad {emphasis}."
-  },
-  "kXrfeE": {
-    "developer_comment": "Login remember user device",
-    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare"
   },
   "kaI61H": {
     "developer_comment": "when use eduID - paragraph",
@@ -3263,10 +3267,6 @@
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Hjälp"
-  },
-  "uV2DBQ": {
-    "developer_comment": "MFA as the first step of login, toggle off",
-    "string": "Om denna stängs av kommer du till inloggning med användarnamn och lösenord istället. "
   },
   "uWVxmX": {
     "developer_comment": "ErrorURL authorization failure",

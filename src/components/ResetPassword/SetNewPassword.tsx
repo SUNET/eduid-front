@@ -55,9 +55,9 @@ export function SetNewPassword(): React.JSX.Element | null {
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await postSetNewPasswordExtraSecurityToken({
-        ...webauthn_assertion,
         email_code: email_code,
         password: newPassword,
+        webauthn_response: webauthn_assertion,
       });
       if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
