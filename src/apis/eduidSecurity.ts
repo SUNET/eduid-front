@@ -89,6 +89,18 @@ export interface AuthnActionStatusRequest {
   credential_id?: string;
 }
 
+export interface CheckAuthnStatusResponse {
+  asserted_authn_ctx: string;
+  authn_instant: string;
+  consumed: boolean;
+  created: string;
+  credential_id: string;
+  error: boolean;
+  frontend_action: string;
+  method: string;
+  req_authn_ctx: string[];
+}
+
 export const securityApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     updateOfficialUserData: builder.query<ApiResponse<UpdateOfficialUserDataResponse>, void>({
@@ -179,6 +191,12 @@ export const securityApi = eduIDApi.injectEndpoints({
       query: (body) => ({
         url: "authn-status",
         body,
+      }),
+      extraOptions: { service: "security" },
+    }),
+    checkAuthnStatus: builder.query<ApiResponse<CheckAuthnStatusResponse>, void>({
+      query: () => ({
+        url: "authn-status",
       }),
       extraOptions: { service: "security" },
     }),

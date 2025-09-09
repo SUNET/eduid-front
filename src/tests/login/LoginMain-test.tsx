@@ -37,18 +37,16 @@ test("renders FINISHED as expected", async () => {
         target: "/foo",
         parameters: { SAMLResponse: "saml-response" },
       };
-      return new Response(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
-  render(<IndexMain />, { 
+  render(<IndexMain />, {
     routes: [`/login/${ref}`],
     state: {
-      config: { ...defaultDashboardTestState.config,
-        login_service_url: "https://idp.eduid.docker/services/idp"
-      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://idp.eduid.docker/services/idp" },
     },
-   });
+  });
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -71,16 +69,14 @@ test("renders UsernamePw as expected", async () => {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return new Response(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
   render(<IndexMain />, {
     routes: [`/login/password/${ref}`],
     state: {
-      config: { ...defaultDashboardTestState.config,
-        login_service_url: "https://idp.eduid.docker/services/idp"
-      },
+      config: { ...defaultDashboardTestState.config, login_service_url: "https://idp.eduid.docker/services/idp" },
     },
   });
 
