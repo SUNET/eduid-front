@@ -7,7 +7,7 @@ import {
   RegisterEmailRequest,
   SignupState,
   SignupStatusResponse,
-  VerifyEmailRequest
+  VerifyEmailRequest,
 } from "apis/eduidSignup";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
@@ -74,7 +74,7 @@ function happyCaseBackend(state: SignupState) {
     http.get("https://signup.eduid.docker/services/signup/state", () => {
       const payload: SignupStatusResponse = { state: currentState };
       console.debug("[payload]", payload);
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test response", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test response", payload });
     })
   );
 
@@ -82,7 +82,7 @@ function happyCaseBackend(state: SignupState) {
     http.post("https://signup.eduid.docker/services/signup/get-captcha", () => {
       getCaptchaCalled = true;
       const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     }),
     http.post("https://signup.eduid.docker/services/signup/captcha", async ({ request }) => {
       const body = (await request.json()) as CaptchaRequest;
@@ -93,7 +93,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.captcha.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     })
   );
 
@@ -108,7 +108,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.tou.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     }),
     http.post("https://signup.eduid.docker/services/signup/register-email", async ({ request }) => {
       const body = (await request.json()) as RegisterEmailRequest;
@@ -122,7 +122,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.email.expires_time_total = 60;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     })
   );
 
@@ -134,20 +134,18 @@ function happyCaseBackend(state: SignupState) {
         currentState.email.bad_attempts = bad_attempts + 1;
         currentState.email.bad_attempts_max = 3;
         const payload: SignupStatusResponse = { state: currentState };
-        return new HttpResponse(
-          JSON.stringify({
-            type: "_SIGNUP_ test_FAIL",
-            error: true,
-            payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
-          })
-        );
+        return HttpResponse.json({
+          type: "_SIGNUP_ test_FAIL",
+          error: true,
+          payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
+        });
       }
 
       verifyEmailCalled = true;
       currentState.email.completed = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     })
   );
 
@@ -157,7 +155,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.credentials.generated_password = testPassword;
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     })
   );
 
@@ -173,7 +171,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.user_created = true;
 
       const payload: SignupStatusResponse = { state: currentState };
-      return new HttpResponse(JSON.stringify({ type: "_SIGNUP_ test success", payload }));
+      return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     })
   );
 }
@@ -285,7 +283,7 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
     await user.type(emailInput, email);
     expect(button).toBeEnabled();
 
-    user.click(button)
+    user.click(button);
   }
 }
 

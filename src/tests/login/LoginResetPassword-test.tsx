@@ -1,6 +1,13 @@
 import { userEvent } from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { NewPasswordRequest, NewPasswordResponse, RequestEmailLinkRequest, RequestEmailLinkResponse, VerifyCodeRequest, VerifyCodeResponse } from "apis/eduidResetPassword";
+import {
+  NewPasswordRequest,
+  NewPasswordResponse,
+  RequestEmailLinkRequest,
+  RequestEmailLinkResponse,
+  VerifyCodeRequest,
+  VerifyCodeResponse,
+} from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain } from "components/IndexMain";
@@ -29,7 +36,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return new Response(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
@@ -42,7 +49,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
         throttled_max: 60,
         throttled_seconds: 60,
       };
-      return new Response(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     })
   );
 
@@ -113,7 +120,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
         action: "USERNAMEPASSWORD",
         target: "/foo",
       };
-      return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
@@ -126,9 +133,9 @@ test("can click 'forgot password' without an e-mail address", async () => {
         throttled_max: 60,
         throttled_seconds: 60,
       };
-      return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
+      return HttpResponse.json({ type: "test response", payload: payload });
     }),
-    http.post("https://idp.eduid.docker/services/reset-password/verify-email", async ({request}) => {
+    http.post("https://idp.eduid.docker/services/reset-password/verify-email", async ({ request }) => {
       const body = (await request.json()) as VerifyCodeRequest;
       if (body.email_code != code) {
         return new HttpResponse(null, { status: 400 });
@@ -143,14 +150,17 @@ test("can click 'forgot password' without an e-mail address", async () => {
       };
       return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
     }),
-    http.post("https://idp.eduid.docker/services/reset-password/new-password-extra-security-token", async ({ request }) => {
-      const body = (await request.json()) as NewPasswordRequest;
-      if (body.email_code != code || body.password != TEST_PASSWORD) {
-        return new HttpResponse(null, { status: 400 });
+    http.post(
+      "https://idp.eduid.docker/services/reset-password/new-password-extra-security-token",
+      async ({ request }) => {
+        const body = (await request.json()) as NewPasswordRequest;
+        if (body.email_code != code || body.password != TEST_PASSWORD) {
+          return new HttpResponse(null, { status: 400 });
+        }
+        const payload: NewPasswordResponse = {};
+        return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
       }
-      const payload: NewPasswordResponse = {};
-      return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
-    }),
+    ),
     http.post("https://idp.eduid.docker/services/reset-password/new-password", async ({ request }) => {
       const body = (await request.json()) as NewPasswordRequest;
       if (body.email_code != code || body.password != TEST_PASSWORD) {
