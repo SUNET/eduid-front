@@ -34,16 +34,19 @@ test("can delete eduid account", async () => {
   mswServer.use(
     http.post("https://dashboard.eduid.docker/services/security/terminate-account", () => {
       terminateCalled = true;
-      return new HttpResponse(JSON.stringify({ type: "test success", payload: {} }));
+      return HttpResponse.json({ type: "test success", payload: { location: "dummy-next" } });
     }),
     http.get("https://dashboard.eduid.docker/services/security/credentials", () => {
-      return new HttpResponse(JSON.stringify({ type: "stub", payload: {} }));
+      return HttpResponse.json({ type: "stub", payload: { credentials: "dummy-credentials" } });
     })
   );
 
   render(<IndexMain />, {
     state: {
-      config: { ...defaultDashboardTestState.config, security_service_url: "https://dashboard.eduid.docker/services/security/" },
+      config: {
+        ...defaultDashboardTestState.config,
+        security_service_url: "https://dashboard.eduid.docker/services/security/",
+      },
       personal_data: { ...defaultDashboardTestState.personal_data },
     },
   });
@@ -72,7 +75,6 @@ test("can delete eduid account", async () => {
   await waitFor(() => {
     expect(terminateCalled).toBe(true);
   });
-
 });
 
 test("render, enable navigation back to security settings", async () => {
