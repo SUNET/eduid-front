@@ -1,5 +1,4 @@
-import Splash from "components/Common/Splash";
-import React, { PropsWithChildren, useRef, useState } from "react";
+import React, { PropsWithChildren, useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -23,7 +22,6 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
   };
-  const [showSpinner, setShowSpinner] = useState(false);
 
   return (
     <FinalForm<ResponseCodeValues>
@@ -35,17 +33,17 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
         // Add the formProps to all the children of this component. The children are typically buttons,
         // and they need to know some of the formProps to know if they should be disabled/readonly or not.
         const childrenWithProps = React.Children.map(props.children, (child) => {
-          if (React.isValidElement<{ formProps: any }>(child)) {
+          if (React.isValidElement<{ formProps: FormRenderProps<ResponseCodeValues> }>(child)) {
             return React.cloneElement(child, { formProps });
           }
           return child;
         });
 
         return (
-          <Splash showChildren={!showSpinner}>
+          <div className="response-code-form-container">
             <ShortCodeForm {...formProps} {...props} />
             {childrenWithProps}
-          </Splash>
+          </div>
         );
       }}
     />
@@ -88,7 +86,7 @@ interface CodeFieldProps {
 }
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
-function CodeField({ num, value, disabled = false, autoFocus = undefined, readonly }: CodeFieldProps) {
+function CodeField({ num, value, autoFocus = undefined, readonly }: CodeFieldProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
 
@@ -209,7 +207,10 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined, readon
       placeholder={value}
       autoFocus={autoFocus}
       validate={validateCodeForm}
-      ref={(input: HTMLInputElement) => { input && inputsRef.current.push(input); return undefined }}
+      ref={(input: HTMLInputElement) => {
+        if (input) inputsRef.current.push(input);
+        return undefined;
+      }}
       onFocus={selectIfNotEmpty}
       onInput={handleInput}
       onKeyUp={handleBackspace}
