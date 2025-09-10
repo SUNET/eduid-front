@@ -80,13 +80,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
 interface CodeFieldProps {
   num: number;
   value?: string;
-  disabled?: boolean;
   autoFocus?: boolean;
   readonly?: boolean;
 }
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
-function CodeField({ num, value, autoFocus = undefined, readonly }: CodeFieldProps) {
+function CodeField({ num, value, autoFocus = undefined, readonly }: Readonly<CodeFieldProps>) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
 

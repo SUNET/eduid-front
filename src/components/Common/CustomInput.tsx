@@ -15,7 +15,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   children?: React.ReactNode;
 }
 
-export default function CustomInput(props: CustomInputProps<string>): React.JSX.Element {
+export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>

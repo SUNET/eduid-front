@@ -23,7 +23,7 @@ export interface VerifyCredentialRequest extends BankIDCommonRequest {
   credential_id: string;
 }
 
-export type VerifyCredentialResponse = MfaAuthenticateResponse;
+export type VerifyCredentialResponse = BankIDCommonResponse;
 
 export const bankIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

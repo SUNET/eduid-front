@@ -9,15 +9,15 @@ import SecurityKeyGif from "../../../img/computer_animation.gif";
 import { ResetPasswordGlobalStateContext } from "../ResetPassword/ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
-  readonly webauthn?: boolean;
-  readonly webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
+  webauthn?: boolean;
+  webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
 }
 
 interface ActiveSecurityKeyProps extends SecurityKeyProps {
   setActive(val: boolean): void;
 }
 
-export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
+export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -28,7 +28,11 @@ export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
     <div className="option-wrapper">
       <div className="option">
         {active ? (
-          <SecurityKeyActive {...props} setActive={setActive} />
+          <SecurityKeyActive
+            webauthn={props.webauthn}
+            webauthn_options={props.webauthn_options}
+            setActive={setActive}
+          />
         ) : (
           <SecurityKeyInactive {...props} setActive={setActive} />
         )}
@@ -45,7 +49,7 @@ export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
   );
 }
 
-function SecurityKeyInactive(props: ActiveSecurityKeyProps): React.JSX.Element {
+function SecurityKeyInactive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
   let buttonDisabled = false;
 
@@ -85,7 +89,7 @@ function SecurityKeyInactive(props: ActiveSecurityKeyProps): React.JSX.Element {
   );
 }
 
-function SecurityKeyActive(props: ActiveSecurityKeyProps): React.JSX.Element {
+function SecurityKeyActive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.Element {
   const dispatch = useAppDispatch();
   //login
   const mfa = useAppSelector((state) => state.login.mfa);
@@ -106,14 +110,12 @@ function SecurityKeyActive(props: ActiveSecurityKeyProps): React.JSX.Element {
         }
         if (props.setActive) props.setActive(false);
       }
-    } else {
-      if (props.webauthn_options && !webauthn_assertion) {
-        const response = await dispatch(performAuthentication(props.webauthn_options));
-        if (performAuthentication.fulfilled.match(response)) {
-          resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-        }
-        if (props.setActive) props.setActive(false);
+    } else if (props.webauthn_options && !webauthn_assertion) {
+      const response = await dispatch(performAuthentication(props.webauthn_options));
+      if (performAuthentication.fulfilled.match(response)) {
+        resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
       }
+      if (props.setActive) props.setActive(false);
     }
   }
 
