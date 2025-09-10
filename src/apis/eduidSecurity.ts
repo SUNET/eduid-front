@@ -37,7 +37,9 @@ export interface BeginRegisterWebauthnRequest {
 }
 
 export interface BeginRegisterWebauthnResponse {
-  registration_data: PublicKeyCredentialCreationOptionsJSON;
+  registration_data: {
+    publicKey: PublicKeyCredentialCreationOptionsJSON;
+  };
 }
 
 export interface SuggestedPasswordResponse {
@@ -134,7 +136,7 @@ export const securityApi = eduIDApi.injectEndpoints({
       query: (body) => ({
         url: "webauthn/register/complete",
         body: {
-          ...body.webauthn_attestation,
+          response: body.webauthn_attestation,
           description: body.description,
         },
       }),

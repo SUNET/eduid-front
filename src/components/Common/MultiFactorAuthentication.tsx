@@ -204,7 +204,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           setShowSecurityKeyNameModal(false);
           const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
           if (registration.isSuccess) {
-            const credential = await dispatch(createCredential(registration.data.payload.registration_data));
+            const credential = await dispatch(createCredential(registration.data.payload.registration_data.publicKey));
             if (createCredential.fulfilled.match(credential)) {
               const response = await registerWebauthn({ webauthn_attestation: credential.payload, description });
               wrapperRef?.current?.focus();
