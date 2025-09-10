@@ -46,12 +46,10 @@ export function NewDevice(): React.JSX.Element | null {
  */
 export function RememberMeCheckbox(): React.JSX.Element | null {
   const remember_me = useAppSelector((state) => state.login.remember_me);
-  const has_session = useAppSelector((state) => state.login.authn_options.has_session);
   const previous_this_device = useAppSelector((state) => state.login.previous_this_device);
   const next_page = useAppSelector((state) => state.login.next_page);
   const [switchChecked, setSwitchChecked] = useState(remember_me);
   const dispatch = useAppDispatch();
-  const warnRedirectToLogin: boolean | undefined = !has_session && switchChecked && next_page !== "USERNAMEPASSWORD";
   const infoRememberME = !switchChecked;
 
   function handleSwitchChange(): void {
