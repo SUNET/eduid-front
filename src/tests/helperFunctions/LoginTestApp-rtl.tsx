@@ -36,7 +36,7 @@ export const loginTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
   },
   login: loginInitialState,
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
-  notifications: undefined as any,
+  notifications: {},
   intl: { locale: "en", messages: {} },
   resetPassword: resetPasswordState,
   chpass: changePasswordInitialState,

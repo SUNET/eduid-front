@@ -97,9 +97,9 @@ export function urlJoin(base_url: string, endpoint?: string) {
 }
 
 // type predicate to help identify rejected payloads from backend.
-export function isFSA(action: any): action is PayloadAction {
+export function isFSA(action: unknown): action is PayloadAction<unknown> {
   try {
-    return "type" in action && "payload" in action;
+    return typeof action === "object" && action !== null && "type" in action && "payload" in action;
   } catch {
     return false;
   }

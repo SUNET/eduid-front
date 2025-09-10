@@ -1,8 +1,9 @@
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
-import { FieldRenderProps, Field as FinalField } from "react-final-form";
+import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
+import { CustomInputProps } from "./CustomInput";
 import { InputWrapper } from "./InputWrapper";
 
 interface PasswordInputProps {
@@ -35,7 +36,7 @@ export default function PasswordInput(props: PasswordInputProps): React.JSX.Elem
   );
 }
 
-export function WrappedPasswordInput(props: FieldRenderProps<string>): React.JSX.Element {
+export function WrappedPasswordInput(props: CustomInputProps<string>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -49,7 +50,7 @@ export function WrappedPasswordInput(props: FieldRenderProps<string>): React.JSX
  * @param props
  * @returns
  */
-export function PasswordInputElement(props: any): React.JSX.Element {
+export function PasswordInputElement(props: CustomInputProps<string>): React.JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const forced_username = useAppSelector((state) => state.login.authn_options.forced_username);

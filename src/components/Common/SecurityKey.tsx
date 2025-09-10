@@ -9,8 +9,12 @@ import SecurityKeyGif from "../../../img/computer_animation.gif";
 import { ResetPasswordGlobalStateContext } from "../ResetPassword/ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
-  readonly webauthn?: any;
-  setActive?(val: boolean): void;
+  readonly webauthn?: boolean;
+  readonly webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
+}
+
+interface ActiveSecurityKeyProps extends SecurityKeyProps {
+  setActive(val: boolean): void;
 }
 
 export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
@@ -24,9 +28,9 @@ export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
     <div className="option-wrapper">
       <div className="option">
         {active ? (
-          <SecurityKeyActive webauthn={props.webauthn} setActive={setActive} />
+          <SecurityKeyActive {...props} setActive={setActive} />
         ) : (
-          <SecurityKeyInactive webauthn={props.webauthn} setActive={setActive} />
+          <SecurityKeyInactive {...props} setActive={setActive} />
         )}
         {active && (
           <p className="help-text">
@@ -41,7 +45,7 @@ export function SecurityKey(props: SecurityKeyProps): React.JSX.Element {
   );
 }
 
-function SecurityKeyInactive(props: SecurityKeyProps): React.JSX.Element {
+function SecurityKeyInactive(props: ActiveSecurityKeyProps): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
   let buttonDisabled = false;
 
@@ -81,7 +85,7 @@ function SecurityKeyInactive(props: SecurityKeyProps): React.JSX.Element {
   );
 }
 
-function SecurityKeyActive(props: SecurityKeyProps): React.JSX.Element {
+function SecurityKeyActive(props: ActiveSecurityKeyProps): React.JSX.Element {
   const dispatch = useAppDispatch();
   //login
   const mfa = useAppSelector((state) => state.login.mfa);
@@ -103,9 +107,8 @@ function SecurityKeyActive(props: SecurityKeyProps): React.JSX.Element {
         if (props.setActive) props.setActive(false);
       }
     } else {
-      const webauthn_options = props.webauthn.webauthn_options;
-      if (webauthn_options && !webauthn_assertion) {
-        const response = await dispatch(performAuthentication(webauthn_options));
+      if (props.webauthn_options && !webauthn_assertion) {
+        const response = await dispatch(performAuthentication(props.webauthn_options));
         if (performAuthentication.fulfilled.match(response)) {
           resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
         }

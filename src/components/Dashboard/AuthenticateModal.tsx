@@ -15,11 +15,12 @@ export function AuthenticateModal() {
   const [securityKeyDescription, setSecurityKeyDescription] = useState(null);
   const [method, setMethod] = useState<string>("");
   const navigate = useNavigate();
-  const [call_authenticate, { data, isError, isLoading }] = authnApi.useLazyAuthenticateQuery()
+  const [call_authenticate, { data, isError, isLoading }] = authnApi.useLazyAuthenticateQuery();
 
   function isValidJson(jsonString: string) {
     try {
       JSON.parse(jsonString);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return false;
     }
@@ -36,9 +37,9 @@ export function AuthenticateModal() {
 
   useEffect(() => {
     if (data && !isLoading && !isError) {
-      window.location.href = data.payload.location
+      window.location.href = data.payload.location;
     }
-  }, [data, isError, isLoading])
+  }, [data, isError, isLoading]);
 
   async function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));

@@ -1,6 +1,6 @@
 import { emptyStringPattern } from "./regexPatterns";
 
-const validatePersonalData = (values, props) => {
+const validatePersonalData = (values) => {
   const errors = {};
   if (values !== undefined) {
     ["given_name", "surname"].forEach((inputName) => {

@@ -5,17 +5,17 @@ import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-const orcidIcon = require("../../../img/vector_iD_icon-w.svg");
+import orcidIcon from "../../../img/vector_iD_icon-w.svg";
 
 export function Orcid(): React.JSX.Element {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();
-  const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery()
+  const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery();
 
   async function handleOrcidDelete() {
     const result = await removeOrcid();
-    if ( result.isError) {
+    if (result.isError) {
       console.error("Error removing orcid", result.error);
     }
   }

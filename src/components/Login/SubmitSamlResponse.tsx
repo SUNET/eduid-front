@@ -20,6 +20,7 @@ function SubmitSamlResponse() {
         try {
           // submit isn't available in the tests jsdom environment
           document.forms[0].submit();
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
           setError(true);
         }

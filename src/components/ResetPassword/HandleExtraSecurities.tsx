@@ -68,7 +68,9 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
         </p>
       </section>
       <div className="options">
-        {extra_security.tokens !== undefined && <SecurityKeyLogin webauthn={extra_security.tokens} />}
+        {extra_security.tokens !== undefined && (
+          <SecurityKeyLogin webauthn={true} webauthn_options={extra_security.tokens.webauthn_options} />
+        )}
         <SwedishEID recoveryAvailable={extra_security.external_mfa} />
       </div>
       <h3 className="description-without-security">

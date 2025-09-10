@@ -1,5 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IdPAction, loginApi, LoginAuthnOptions, LoginNextResponse, LoginUseOtherDevice1Response, LoginUseOtherDevice2Response, SAMLParameters, ServiceInfo } from "apis/eduidLogin";
+import {
+  IdPAction,
+  loginApi,
+  LoginAuthnOptions,
+  LoginNextResponse,
+  LoginUseOtherDevice1Response,
+  LoginUseOtherDevice2Response,
+  SAMLParameters,
+  ServiceInfo,
+} from "apis/eduidLogin";
 import { ToUs } from "helperFunctions/ToUs";
 import { performAuthentication } from "../helperFunctions/navigatorCredential";
 
@@ -27,7 +36,7 @@ interface LoginState {
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
   service_info?: ServiceInfo;
-  error?: string
+  error?: string;
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -42,8 +51,8 @@ interface ActionWithErrorMessage {
     error: string;
     payload: {
       message: string;
-    }
-  }
+    };
+  };
 }
 
 export const loginSlice = createSlice({
@@ -101,7 +110,7 @@ export const loginSlice = createSlice({
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.mfa.webauthn_assertion = action.payload;
       })
-      .addCase(performAuthentication.rejected, (state, action) => {
+      .addCase(performAuthentication.rejected, (state) => {
         state.mfa.webauthn_challenge = undefined;
         state.mfa.webauthn_assertion = undefined;
       })
@@ -136,7 +145,8 @@ export const loginSlice = createSlice({
       })
       .addMatcher(loginApi.endpoints.fetchNext.matchFulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next
-        const samlParameters = action.payload.payload.action === "FINISHED" ? action.payload.payload.parameters : undefined;
+        const samlParameters =
+          action.payload.payload.action === "FINISHED" ? action.payload.payload.parameters : undefined;
         state.next_page = action.payload.payload.action;
         state.post_to = action.payload.payload.target;
         state.saml_parameters = samlParameters;
@@ -146,17 +156,18 @@ export const loginSlice = createSlice({
         state.error = undefined;
       })
       .addMatcher(loginApi.endpoints.fetchNext.matchRejected, (state, action) => {
-        if ((action as ActionWithErrorMessage).payload.error
-          && (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
+        if (
+          (action as ActionWithErrorMessage).payload.error &&
+          (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
         ) {
-            state.error = (action as ActionWithErrorMessage).payload.payload.message;
-          }
+          state.error = (action as ActionWithErrorMessage).payload.payload.message;
+        }
         state.fetching_next = false;
       })
       .addMatcher(loginApi.endpoints.fetchNewDevice.matchFulfilled, (state, action) => {
         state.this_device = action.payload.payload.new_device;
-            })
-      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchPending, (state, action) => {
+      })
+      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchPending, (state) => {
         state.mfa = { state: "loading" };
       })
       .addMatcher(loginApi.endpoints.fetchMfaAuth.matchFulfilled, (state, action) => {

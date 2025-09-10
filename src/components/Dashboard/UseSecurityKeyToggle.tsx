@@ -1,5 +1,6 @@
 import personalDataApi from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { EduIDAppRootState } from "eduid-init-app";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
@@ -7,10 +8,10 @@ import authnSlice from "slices/Authn";
 export default function UseSecurityKeyToggle(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
-    (state: any) => state.personal_data?.response?.preferences?.always_use_security_key
+    (state: EduIDAppRootState) => state.personal_data?.response?.preferences?.always_use_security_key
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
-  const frontend_action = useAppSelector((state: any) => state.authn.response?.frontend_action);
+  const frontend_action = useAppSelector((state: EduIDAppRootState) => state.authn.response?.frontend_action);
   const [postSecurityKeyPreference, preference] = personalDataApi.usePostSecurityKeyPreferenceMutation();
 
   useEffect(() => {

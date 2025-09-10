@@ -13,24 +13,15 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   helpBlock?: string;
   passwordStrengthMeter?: string;
   children?: React.ReactNode;
-
 }
 
-export default function CustomInput(props: FieldRenderProps<string>): React.JSX.Element {
+export default function CustomInput(props: CustomInputProps<string>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
       <InputElement {...props} />
     </InputWrapper>
   );
-}
-
-export interface CustomInputProps<T> extends FieldRenderProps<T> {
-  placeholder?: string;
-  disabled?: boolean;
-  required?: boolean;
-  autoFocus?: boolean;
-  autoComplete?: string;
 }
 
 const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {

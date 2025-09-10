@@ -21,7 +21,7 @@ export const countFiveMin = (key: string) => {
   const elementTextIn = document.getElementById("timer-in");
   const elementCountDownTime = document.getElementById(`count-down-time-${key}`);
   // Resend link button will be disabled
-  elementResendLink !== null && elementResendLink.classList.remove("button-active");
+  if (elementResendLink !== null) elementResendLink.classList.remove("button-active");
   const countDownTime =
     getLocalStorage(
       key === "email" ? LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK : LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE
@@ -41,14 +41,14 @@ export const countFiveMin = (key: string) => {
     }
     // If the count down is over, resend-${key} will be active and timer will be display-none
     if (period < 0) {
-      elementCountDownTime && elementCountDownTime.classList.add("display-none");
-      elementTextIn && elementTextIn.classList.add("display-none");
-      elementResendLink && elementResendLink.classList.add("button-active");
+      if (elementCountDownTime) elementCountDownTime.classList.add("display-none");
+      if (elementTextIn) elementTextIn.classList.add("display-none");
+      if (elementResendLink) elementResendLink.classList.add("button-active");
       clearInterval(timer);
     } else {
-      elementResendLink && elementResendLink.classList.remove("button-active");
-      elementTextIn && elementTextIn.classList.remove("display-none");
-      elementCountDownTime && elementCountDownTime.classList.remove("display-none");
+      if (elementResendLink) elementResendLink.classList.remove("button-active");
+      if (elementTextIn) elementTextIn.classList.remove("display-none");
+      if (elementCountDownTime) elementCountDownTime.classList.remove("display-none");
     }
   }, 1000);
 };

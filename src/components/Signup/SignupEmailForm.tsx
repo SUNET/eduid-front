@@ -33,7 +33,7 @@ export function SignupEmailForm(): React.JSX.Element {
   );
 }
 
-interface EmailFormData {
+export interface SignupEmailFormData extends Record<string, string | undefined> {
   email?: string;
   given_name?: string;
   surname?: string;
@@ -58,8 +58,8 @@ function EmailForm() {
     description: "placeholder Last name",
   });
 
-  async function submitEmailForm(values: EmailFormData) {
-    const errors: EmailFormData = {};
+  async function submitEmailForm(values: SignupEmailFormData) {
+    const errors: SignupEmailFormData = {};
 
     if (values) {
       const signupUser = {
@@ -85,7 +85,7 @@ function EmailForm() {
     return errors;
   }
   return (
-    <FinalForm<EmailFormData>
+    <FinalForm<SignupEmailFormData>
       onSubmit={submitEmailForm}
       validate={validateSignupUserInForm}
       initialValues={{
@@ -93,7 +93,7 @@ function EmailForm() {
         given_name: "",
         surname: "",
       }}
-      render={(formProps: FormRenderProps<EmailFormData>) => {
+      render={(formProps: FormRenderProps<SignupEmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(formProps.hasValidationErrors || _submitError || formProps.pristine);
 
@@ -144,7 +144,7 @@ export function RegisterEmail() {
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
   const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
-  const { isSuccess, isError} = signupApi.useRegisterEmailRequestQuery(signupUser);
+  const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
 
   if (!signupUser) {
     signupContext.signupService.send({ type: "API_FAIL" });

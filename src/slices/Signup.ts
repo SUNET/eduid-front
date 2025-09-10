@@ -12,12 +12,12 @@ interface SignupState {
 }
 
 // type predicate to help identify payloads with the signup state.
-function isSignupStateResponse(action: any): action is PayloadAction<SignupStatusResponse> {
+function isSignupStateResponse(action: unknown): action is PayloadAction<SignupStatusResponse> {
   if (!isFSA(action)) {
     return false;
   }
   try {
-    const payload = action.payload as unknown as SignupStatusResponse;
+    const payload = action.payload as SignupStatusResponse;
     // if the payload has 'state', we consider it a SignupStatusResponse
     return Boolean(payload.state !== undefined);
   } catch {

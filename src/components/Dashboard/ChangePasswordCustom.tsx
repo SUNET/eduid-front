@@ -6,7 +6,6 @@ import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
   handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
 }
@@ -51,7 +50,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
   }
 
   return (
-    <FinalForm<any>
+    <FinalForm<ChangePasswordFormData>
       onSubmit={props.handleSubmit}
       validate={validateNewPassword}
       render={(formProps) => {
@@ -103,7 +102,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                   />
                 }
                 passwordStrengthMeter={
-                  <PasswordStrengthMeter password={formProps.values.custom} passStateUp={updatePasswordData} />
+                  <PasswordStrengthMeter password={formProps.values?.custom} passStateUp={updatePasswordData} />
                 }
                 id="custom-password-field"
                 autoComplete="new-password"

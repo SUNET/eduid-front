@@ -1,19 +1,13 @@
+import { SignupEmailFormData } from "components/Signup/SignupEmailForm";
 import { emailPattern, emptyStringPattern } from "./regexPatterns";
-
-interface EmailData {
-  email?: string;
-  given_name?: string;
-  surname?: string;
-  [key: string]: any;
-}
 
 /**
  * Validate that the value is a plausible e-mail address. The returned string should be a translate() lookup key.
  * @param values
  * @returns
  */
-export function validateSignupUserInForm(values: EmailData): EmailData {
-  const errors: EmailData = {};
+export function validateSignupUserInForm(values: SignupEmailFormData): SignupEmailFormData {
+  const errors: SignupEmailFormData = {};
   if (values !== undefined) {
     ["email", "given_name", "surname"].forEach((inputName) => {
       if (!values[inputName] || emptyStringPattern.test(values[inputName])) {

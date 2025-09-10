@@ -1,8 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { FailureComponentProps } from "./Errors";
 
-export function UnknownError(props: FailureComponentProps): React.JSX.Element {
+export function UnknownError(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>

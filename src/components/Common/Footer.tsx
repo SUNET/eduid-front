@@ -21,7 +21,7 @@ const Footer = (): React.JSX.Element => {
    */
   if (AVAILABLE_LANGUAGES !== undefined) {
     /* Filter out all the available languages _except_ the currently used one */
-    translateTo = Object.entries(AVAILABLE_LANGUAGES).filter(([_locale, _language]) => _locale !== currentLocale);
+    translateTo = Object.entries(AVAILABLE_LANGUAGES).filter(([_locale]) => _locale !== currentLocale);
     /* Offer the user the choice to switch to the other language below */
     locale = translateTo[0][0];
     language = translateTo[0][1];

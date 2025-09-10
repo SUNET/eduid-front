@@ -1,6 +1,7 @@
 /* This has to be a .js file because it is imported by webpack before transpiling
  * ... and it has to be CommonJS until we add "type": "module" to package.json.
  */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const en = require("./languages/en.json");
 const sv = require("./languages/sv.json");
 

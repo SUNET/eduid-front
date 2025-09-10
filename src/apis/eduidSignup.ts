@@ -70,60 +70,58 @@ export interface CreateUserRequest {
   custom_password?: string;
 }
 
-type EmptyObj = Record<PropertyKey, never>;
-
 export const signupApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchState: builder.query<ApiResponse<SignupStatusResponse>, void>({
       query: () => ({
-        url: "state"
+        url: "state",
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
-    getSignupCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>,void>({
+    getSignupCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>, void>({
       query: () => ({
         url: "get-captcha",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
     sendSignupCaptchaResponse: builder.query<ApiResponse<SignupStatusResponse>, CaptchaRequest>({
       query: (body) => ({
         url: "captcha",
-        body
+        body,
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
     acceptToURequest: builder.query<ApiResponse<SignupStatusResponse>, AcceptToUArgs>({
       query: (body) => ({
         url: "accept-tou",
         body: {
           tou_accepted: true,
-          tou_version: body.version
-      },
+          tou_version: body.version,
+        },
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
     registerEmailRequest: builder.query<ApiResponse<SignupStatusResponse>, RegisterEmailRequest>({
       query: (body) => ({
         url: "register-email",
-        body
+        body,
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
     verifyEmailRequest: builder.query<ApiResponse<SignupStatusResponse>, VerifyEmailRequest>({
       query: (body) => ({
         url: "verify-email",
-        body
+        body,
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
-    getPasswordRequest: builder.query<ApiResponse<SignupStatusResponse>,void>({
+    getPasswordRequest: builder.query<ApiResponse<SignupStatusResponse>, void>({
       query: () => ({
         url: "get-password",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "signup" }
+      extraOptions: { service: "signup" },
     }),
     createUserRequest: builder.query<ApiResponse<SignupStatusResponse>, CreateUserRequest>({
       query: (body) => ({
@@ -131,12 +129,12 @@ export const signupApi = eduIDApi.injectEndpoints({
         body: {
           custom_password: body.custom_password,
           use_suggested_password: Boolean(body.use_suggested_password),
-          use_webauthn: Boolean(body.use_webauthn)
-        }
+          use_webauthn: Boolean(body.use_webauthn),
+        },
       }),
-      extraOptions: { service: "signup" }
-    })
-  })
-})
+      extraOptions: { service: "signup" },
+    }),
+  }),
+});
 
 export default signupApi;
