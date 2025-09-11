@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useRef } from "react";
+import React, { Fragment, PropsWithChildren, useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -40,10 +40,10 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
         });
 
         return (
-          <div className="response-code-form-container">
+          <Fragment>
             <ShortCodeForm {...formProps} {...props} />
             {childrenWithProps}
-          </div>
+          </Fragment>
         );
       }}
     />
