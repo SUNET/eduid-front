@@ -219,7 +219,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           dispatch(authnSlice.actions.setAuthnFrontendReset());
           setIsRegisteringAuthenticator(false);
         }
-      } catch (_error) {}
+      } catch (error) {
+        console.error("Error creating credentials:", error);
+      }
     })();
   }
 
