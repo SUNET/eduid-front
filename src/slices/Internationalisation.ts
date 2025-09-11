@@ -7,11 +7,12 @@
  */
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CustomFormats } from "react-intl";
 
 export interface intlState {
   locale: string;
   messages: { [key: string]: string };
-  formats?: string;
+  formats?: CustomFormats;
 }
 
 const initialState: intlState = {
