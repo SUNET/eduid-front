@@ -8,8 +8,8 @@ export const clearCountdown = (key: string) => {
 export const getLocalStorage = (key: string) => {
   return window.localStorage ? window.localStorage.getItem(key) : "";
 };
-/* eslint-disable @typescript-eslint/no-explicit-any*/
-export const setLocalStorage = (key: string, val: any) => {
+
+export const setLocalStorage = (key: string, val: string) => {
   if (window.localStorage) {
     window.localStorage.setItem(key, val);
   }
@@ -33,11 +33,11 @@ export const countFiveMin = (key: string) => {
     // Find the period between now and the count down date
     const period = JSON.parse(countDownTime) - now;
     // Time calculations for minutes and seconds
-    const minutes: any = Math.floor((period % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds: any = Math.floor((period % (1000 * 60)) / 1000);
+    const minutes: number = Math.floor((period % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds: number = Math.floor((period % (1000 * 60)) / 1000);
     // Output the result in an element with id="count-down-time"
     if (elementCountDownTime !== null) {
-      elementCountDownTime.innerHTML = minutes.toString().padStart(2, 0) + ":" + seconds.toString().padStart(2, 0);
+      elementCountDownTime.innerHTML = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
     }
     // If the count down is over, resend-${key} will be active and timer will be display-none
     if (period < 0) {
