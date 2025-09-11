@@ -31,7 +31,7 @@
     "raven-js": "^3.27.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-error-boundary": "^6.0.0",
+    "react-error-boundary": "^5.0.0",
     "react-final-form": "^7.0.0",
     "react-intl": "^7.1.11",
     "react-redux": "^9.2.0",
