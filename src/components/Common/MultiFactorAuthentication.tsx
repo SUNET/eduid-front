@@ -219,8 +219,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           dispatch(authnSlice.actions.setAuthnFrontendReset());
           setIsRegisteringAuthenticator(false);
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (err) {}
+      } catch (_error) {}
     })();
   }
 

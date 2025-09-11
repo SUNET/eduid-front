@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ForwardedRef, forwardRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export const CopyToClipboard = forwardRef<HTMLInputElement>((props, ref: ForwardedRef<HTMLInputElement>) => {
+export const CopyToClipboard = forwardRef<HTMLInputElement>((_props, ref: ForwardedRef<HTMLInputElement>) => {
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
 
   function copyToClipboard() {

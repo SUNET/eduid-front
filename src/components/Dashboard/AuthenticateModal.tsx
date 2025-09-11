@@ -20,8 +20,7 @@ export function AuthenticateModal() {
   function isValidJson(jsonString: string) {
     try {
       JSON.parse(jsonString);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (e) {
+    } catch (_error) {
       return false;
     }
     return true;

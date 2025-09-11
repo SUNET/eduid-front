@@ -26,8 +26,7 @@ function loadEndDate(name: string, unique_id?: string): Date | undefined {
 
   try {
     return new Date(data.end);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
+  } catch (_error) {
     return undefined;
   }
 }
