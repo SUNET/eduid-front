@@ -7,7 +7,7 @@ export function EduidError(props: FailureComponentProps): React.JSX.Element {
   if (props.errorURL.rp === "authn" && props.errorURL.ctx === "saml_response_fail") {
     return <NotLoggedIn />;
   }
-  return <OtherError errorURL={props.errorURL} />;
+  return <OtherError />;
 }
 
 function NotLoggedIn(): React.JSX.Element {

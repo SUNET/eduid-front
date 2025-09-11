@@ -3,7 +3,6 @@ import { EmailInfo } from "./eduidEmail";
 import { LadokData } from "./eduidLadok";
 import { OrcidInfo } from "./eduidOrcid";
 
-
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
  */
@@ -60,8 +59,7 @@ export interface EidasIdentity {
   verified: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FrejaeIDIdentity extends EidasIdentity {}
+export type FrejaeIDIdentity = EidasIdentity;
 
 export interface UserIdentities {
   nin?: NinIdentity;
@@ -79,31 +77,31 @@ export const personalDataApi = eduIDApi.injectEndpoints({
     postUserName: builder.mutation<ApiResponse<UserNameResponse>, UserNameRequest>({
       query: (body) => ({
         url: "user/name",
-        body
+        body,
       }),
-      extraOptions: { service: 'personalData' },
+      extraOptions: { service: "personalData" },
     }),
     postUserLanguage: builder.mutation<ApiResponse<UserLanguageRequest>, UserLanguageRequest>({
       query: (body) => ({
         url: "user/language",
-        body
+        body,
       }),
-      extraOptions: { service: 'personalData' },
+      extraOptions: { service: "personalData" },
     }),
     requestAllPersonalData: builder.query<ApiResponse<AllUserData>, void>({
       query: () => ({
         url: "all-user-data",
       }),
-      extraOptions: { service: 'personalData' },
+      extraOptions: { service: "personalData" },
     }),
     postSecurityKeyPreference: builder.mutation<ApiResponse<PreferencesData>, PreferencesData>({
       query: (body) => ({
         url: "preferences",
-        body
+        body,
       }),
-      extraOptions: { service: 'personalData' },
-    })
-  })
-})
+      extraOptions: { service: "personalData" },
+    }),
+  }),
+});
 
-export default personalDataApi
+export default personalDataApi;

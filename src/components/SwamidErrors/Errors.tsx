@@ -19,7 +19,7 @@ export function Errors() {
   const query = new URLSearchParams(useLocation().search);
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  
+
   const [errorURL, setErrorURL] = useState<errorURLData>({});
 
   useEffect(() => {
@@ -42,11 +42,11 @@ export function Errors() {
   return (
     <div className="error-page">
       {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
-      {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
-      {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}
+      {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure />}
+      {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure />}
       {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
-      {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
-      {isUnknown && <UnknownError errorURL={errorURL} />}
+      {errorURL.code === "OTHER_ERROR" && <OtherError />}
+      {isUnknown && <UnknownError />}
       <p>
         <FormattedMessage
           defaultMessage="You can review your settings at the"

@@ -10,28 +10,23 @@ interface EidasCommonRequest {
 
 interface EidasCommonResponse {
   location: string; // where to redirect the user for the authn flow
+  credential_description: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityRequest extends EidasCommonRequest {}
+export type VerifyIdentityRequest = EidasCommonRequest;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityResponse extends EidasCommonResponse {}
+export type VerifyIdentityResponse = EidasCommonResponse;
 
 export interface VerifyCredentialRequest extends EidasCommonRequest {
   credential_id: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyCredentialResponse extends EidasCommonResponse {}
+export type VerifyCredentialResponse = EidasCommonResponse;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MfaAuthenticateRequest extends EidasCommonRequest {}
+export type MfaAuthenticateRequest = EidasCommonRequest;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MfaAuthenticateResponse extends EidasCommonResponse {}
+export type MfaAuthenticateResponse = EidasCommonResponse;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface GetStatusRequest {
   authn_id: string;
 }
@@ -51,37 +46,37 @@ export const eidasApi = eduIDApi.injectEndpoints({
         url: "verify-identity",
         body: {
           ...body,
-          frontend_action: body.frontend_action ?? "verifyIdentity"
-        }
+          frontend_action: body.frontend_action ?? "verifyIdentity",
+        },
       }),
-      extraOptions: { service: "eidas" }
-  }),
+      extraOptions: { service: "eidas" },
+    }),
     eidasVerifyCredential: builder.query<ApiResponse<VerifyCredentialResponse>, VerifyCredentialRequest>({
       query: (body) => ({
         url: "verify-credential",
         body: {
           ...body,
-          frontend_action: body.frontend_action ?? "verifyCredential"
-        }
+          frontend_action: body.frontend_action ?? "verifyCredential",
+        },
       }),
-      extraOptions: { service: "eidas" }
+      extraOptions: { service: "eidas" },
     }),
     eidasMfaAuthenticate: builder.query<ApiResponse<MfaAuthenticateResponse>, MfaAuthenticateRequest>({
       query: (body) => ({
         url: "mfa-authenticate",
         body: {
           ...body,
-          frontend_action: body.frontend_action ?? "loginMfaAuthn"
-        }
+          frontend_action: body.frontend_action ?? "loginMfaAuthn",
+        },
       }),
-      extraOptions: { service: "eidas" }
+      extraOptions: { service: "eidas" },
     }),
     eidasGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
       query: (body) => ({
         url: "get-status",
-        body
+        body,
       }),
-      extraOptions: { service: "eidas" }
-    })
-  })
-})
+      extraOptions: { service: "eidas" },
+    }),
+  }),
+});

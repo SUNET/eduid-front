@@ -6,7 +6,7 @@ import EduIDButton from "./EduIDButton";
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;
   //TODO: Type definition needed
-  handleAbortButtonOnClick: any;
+  handleAbortButtonOnClick: () => void;
 }
 
 export function ResponseCodeButtons(props: ResponseCodeButtonsProps) {

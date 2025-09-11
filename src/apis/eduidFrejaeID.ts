@@ -10,11 +10,9 @@ interface FrejaeIDCommonResponse {
   location: string; // where to redirect the user for the authn flow
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityRequest extends FrejaeIDCommonRequest {}
+export type VerifyIdentityRequest = FrejaeIDCommonRequest;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface VerifyIdentityResponse extends FrejaeIDCommonResponse {}
+export type VerifyIdentityResponse = FrejaeIDCommonResponse;
 
 export const frejaeIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -23,18 +21,17 @@ export const frejaeIDApi = eduIDApi.injectEndpoints({
         url: "verify-identity",
         body: {
           ...body,
-          frontend_action: body.frontend_action ?? "verifyIdentity"
-        }
+          frontend_action: body.frontend_action ?? "verifyIdentity",
+        },
       }),
-      extraOptions: { service: "frejaeID" }
+      extraOptions: { service: "frejaeID" },
     }),
     frejaeIDGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
       query: (body) => ({
         url: "get-status",
-        body
+        body,
       }),
-      extraOptions: { service: "frejaeID" }
-    })
-  })
-})
-
+      extraOptions: { service: "frejaeID" },
+    }),
+  }),
+});

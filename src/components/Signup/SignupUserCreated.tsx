@@ -26,7 +26,7 @@ export function SignupConfirmPassword() {
   const signupState = useAppSelector((state) => state.signup.state);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
-  const [createUser] = signupApi.useLazyCreateUserRequestQuery()
+  const [createUser] = signupApi.useLazyCreateUserRequestQuery();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
@@ -37,7 +37,6 @@ export function SignupConfirmPassword() {
         use_suggested_password: renderSuggested,
         custom_password: renderSuggested ? undefined : newPassword,
       });
-
 
       if (response.isSuccess) {
         dispatch(clearNotifications());
@@ -62,7 +61,7 @@ export function SignupConfirmPassword() {
   const initialValues = { suggested };
 
   return (
-    <FinalForm<any>
+    <FinalForm<NewPasswordFormData>
       onSubmit={submitNewPasswordForm}
       initialValues={initialValues}
       render={(formProps) => {

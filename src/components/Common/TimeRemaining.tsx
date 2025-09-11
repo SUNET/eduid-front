@@ -26,7 +26,7 @@ function loadEndDate(name: string, unique_id?: string): Date | undefined {
 
   try {
     return new Date(data.end);
-  } catch (error) {
+  } catch (_error) {
     return undefined;
   }
 }
@@ -125,7 +125,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement<{ time_remaining: any }>(child)) {
+    if (React.isValidElement<{ time_remaining: TimeRemaining }>(child)) {
       return React.cloneElement(child, { time_remaining: timeRemaining });
     }
     return child;

@@ -3,6 +3,7 @@ import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { GoBackButton } from "components/ResetPassword/GoBackButton";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
+import { FormEventHandler } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -18,12 +19,7 @@ interface NewPasswordFormProps {
   readonly goBack?: () => void;
   readonly extra_security?: ExtraSecurityAlternatives;
   readonly suggested_password: string | undefined;
-  readonly submitNewPasswordForm: any;
-  // submitNewPasswordForm: (
-  //   values: NewPasswordFormData,
-  //   form: FormApi<NewPasswordFormData, Partial<NewPasswordFormData>>,
-  //   callback?: ((errors?: SubmissionErrors) => void) | undefined
-  // ) => void | Promise<void>;
+  readonly submitNewPasswordForm: FormEventHandler<HTMLFormElement> | undefined;
   readonly submitButtonText: React.ReactNode;
   readonly handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
@@ -44,11 +40,11 @@ export function NewPasswordForm(props: NewPasswordFormProps): React.JSX.Element 
 
   return (
     <FinalForm<NewPasswordFormData>
-      onSubmit={props.submitNewPasswordForm}
+      onSubmit={validateNewPassword}
       validate={validateNewPassword}
       render={(formProps) => {
         return (
-          <form id={newPasswordFormId} onSubmit={formProps.handleSubmit}>
+          <form id={newPasswordFormId} onSubmit={props.submitNewPasswordForm}>
             <FinalField
               id="new-password"
               type="text"

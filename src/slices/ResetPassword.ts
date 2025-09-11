@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
+import { ApiResponse } from "apis/common";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/eduidResetPassword";
@@ -83,7 +84,7 @@ export const resetPasswordSlice = createSlice({
         }
         state.email_response = action.payload.payload;
       })
-      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state, action) => {
+      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
         state.email_status = "failed";
       })
       .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchFulfilled, (state, action) => {
@@ -98,14 +99,16 @@ export const resetPasswordSlice = createSlice({
           state.captcha.internal_response = undefined;
         }
       })
-      .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchRejected, (state, action: PayloadAction<any>) => {
-        state.captcha_completed = action?.payload?.payload.captcha_completed;
+      .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchRejected, (state) => {
+        state.captcha_completed = false;
         if (state.captcha) {
           state.captcha.internal_response = undefined;
         }
       })
-      .addMatcher(resetPasswordApi.endpoints.getResetPasswordCaptchaRequest.matchRejected, (state, action: PayloadAction<any>) => {
-        if (action.payload?.payload?.message === "resetpw.captcha-already-completed") {
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordCaptchaRequest.matchRejected, (state, action) => {
+        if (
+          (action.payload as ApiResponse<{ message: string }>).payload.message === "resetpw.captcha-already-completed"
+        ) {
           state.captcha_completed = true;
         }
       })

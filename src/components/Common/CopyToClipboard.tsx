@@ -1,16 +1,20 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { forwardRef, useState } from "react";
+import { ForwardedRef, forwardRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export const CopyToClipboard = forwardRef((props, ref: any) => {
+export const CopyToClipboard = forwardRef<HTMLInputElement>((_props, ref: ForwardedRef<HTMLInputElement>) => {
   const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
 
   function copyToClipboard() {
-    if (ref && ref.current) {
+    if (ref && typeof ref === "object" && ref.current) {
       ref.current.select();
-      document.execCommand("copy");
+      if (!navigator.clipboard) {
+        document.execCommand("copy");
+      } else {
+        navigator.clipboard.writeText(ref.current.value);
+      }
       setTooltipCopied(true);
       (document.getElementById("icon-copy") as HTMLInputElement).style.display = "none";
       (document.getElementById("icon-check") as HTMLInputElement).style.display = "inline";

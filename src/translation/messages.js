@@ -1,8 +1,5 @@
-/* This has to be a .js file because it is imported by webpack before transpiling
- * ... and it has to be CommonJS until we add "type": "module" to package.json.
- */
-const en = require("./languages/en.json");
-const sv = require("./languages/sv.json");
+import en from "./languages/en.json";
+import sv from "./languages/sv.json";
 
 /*
  * Transifex outputs
@@ -25,6 +22,4 @@ const format_for_react_intl = (data) => {
 };
 
 // the proper TypeScript type for messages would be { [key: string]: { [key: string]: string } }
-const messages = { en: format_for_react_intl(en), sv: format_for_react_intl(sv) };
-
-module.exports = { messages: messages };
+export const messages = { en: format_for_react_intl(en), sv: format_for_react_intl(sv) };

@@ -15,7 +15,6 @@ function defaultSelector(state: { intl: intlState }) {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mapStateToProps = (state: { intl: intlState }, { intlSelector = defaultSelector }: any) => intlSelector(state);
+const mapStateToProps = (state: { intl: intlState }, { intlSelector = defaultSelector }) => intlSelector(state);
 
 export default connect(mapStateToProps)(IntlProvider);

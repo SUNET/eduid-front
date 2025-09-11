@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Middleware } from "redux";
 import { clearNotifications, showNotification } from "slices/Notifications";
-
 
 const notifyAndDispatch: Middleware = () => (next: any) => (action: any) => {
   if (action.type.endsWith("FAIL")) {

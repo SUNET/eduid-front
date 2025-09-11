@@ -20,7 +20,7 @@ function SubmitSamlResponse() {
         try {
           // submit isn't available in the tests jsdom environment
           document.forms[0].submit();
-        } catch (error) {
+        } catch (_error) {
           setError(true);
         }
       }

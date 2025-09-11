@@ -8,6 +8,7 @@ import { GetCaptchaResponse } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
+import { FormApi } from "final-form";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
@@ -19,7 +20,7 @@ interface SignupCaptchaFormData {
 }
 
 function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
-  function submitCaptchaForm(values: SignupCaptchaFormData, form: any) {
+  function submitCaptchaForm(values: SignupCaptchaFormData, form: FormApi) {
     const errors: SignupCaptchaFormData = {};
 
     if (values.value) {
@@ -102,11 +103,10 @@ export function InternalCaptcha(props: CaptchaProps) {
     });
   }
 
-
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
     if (is_configured && !captchaResponse) {
-      props.getCaptcha().then((captchaResponse: any) => {
+      props.getCaptcha().then((captchaResponse: GetCaptchaResponse | undefined) => {
         if (!aborted && captchaResponse) {
           setCaptchaResponse({
             captcha_img: captchaResponse.captcha_img,

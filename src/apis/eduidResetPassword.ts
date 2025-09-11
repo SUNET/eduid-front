@@ -58,7 +58,7 @@ export interface ExtraSecurityPhoneWithIndex {
 }
 
 export interface ExtraSecurityTokens {
-  webauthn_options?: string;
+  webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
 }
 
 export interface NewPasswordRequest {
@@ -69,8 +69,7 @@ export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest {
   webauthn_response: PublicKeyCredentialJSON;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NewPasswordResponse {}
+export type NewPasswordResponse = object;
 
 export const resetPasswordApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

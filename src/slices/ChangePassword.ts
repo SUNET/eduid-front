@@ -18,7 +18,7 @@ const chpassSlice = createSlice({
       .addMatcher(securityApi.endpoints.fetchSuggestedPassword.matchFulfilled, (state, action) => {
         state.suggested_password = action.payload.payload.suggested_password;
       })
-      .addMatcher(securityApi.endpoints.changePassword.matchFulfilled, (state, action) => {
+      .addMatcher(securityApi.endpoints.changePassword.matchFulfilled, (state) => {
         // On successful password change, we remove the suggested_password from state to avoid it ending up
         // in sentry or something, but also to fetch a new suggested password should the user change password again.
         state.suggested_password = undefined;

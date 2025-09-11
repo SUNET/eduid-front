@@ -18,7 +18,7 @@ export function SignupEnterCode(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
   const state = useAppSelector((state) => state.signup.state);
-  const [ resendCode, { isSuccess } ] = signupApi.useLazyRegisterEmailRequestQuery()
+  const [resendCode, { isSuccess }] = signupApi.useLazyRegisterEmailRequestQuery();
 
   useEffect(() => {
     if (state?.credentials.completed) {
@@ -39,21 +39,20 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     setIsExpired(false);
-  }, [isSuccess])
+  }, [isSuccess]);
 
   async function registerEmail() {
-    console.log(signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname)
     if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
       resendCode({
         email: signupState?.email.address,
         given_name: signupState?.name?.given_name,
         surname: signupState?.name?.surname,
-      })
+      });
     }
   }
 
-  function handleAbortButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
+  function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
+    event?.preventDefault();
     signupContext.signupService.send({ type: "ABORT" });
   }
 
@@ -162,7 +161,9 @@ export function ProcessEmailCode() {
   const verification_code = useAppSelector((state) => state.signup.email_code);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-  const { isSuccess, isError } = signupApi.useVerifyEmailRequestQuery(verification_code?{verification_code}:skipToken)
+  const { isSuccess, isError } = signupApi.useVerifyEmailRequestQuery(
+    verification_code ? { verification_code } : skipToken
+  );
 
   useEffect(() => {
     if (isSuccess) {
@@ -171,7 +172,7 @@ export function ProcessEmailCode() {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess,isError]);
+  }, [isSuccess, isError]);
 
   return null;
 }

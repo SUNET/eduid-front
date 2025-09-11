@@ -109,12 +109,14 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
 
   useEffect(() => {
     if (is_verified) {
-      if (chosen_given_name) {
-        transformedChosenGivenNameOptions && setSelectedOptions(transformedChosenGivenNameOptions);
-      } else {
-        transformedOptions && setSelectedOptions(transformedOptions);
+      if (chosen_given_name && transformedChosenGivenNameOptions) {
+        setSelectedOptions(transformedChosenGivenNameOptions);
+      } else if (transformedOptions) {
+        setSelectedOptions(transformedOptions);
       }
-      transformedOptions && setDefaultValues(transformedOptions);
+      if (transformedOptions) {
+        setDefaultValues(transformedOptions);
+      }
     }
   }, [given_name, chosen_given_name, surname]);
 

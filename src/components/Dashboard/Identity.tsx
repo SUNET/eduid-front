@@ -29,7 +29,6 @@ import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
-type accordionSwedishUUID = "se-freja" | "se-letter" | "se-phone";
 
 function Identity(): React.JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
@@ -140,7 +139,7 @@ function IdentityContent(): React.JSX.Element {
               />
             </h2>
             <Accordion>
-              <AccordionItemSwedish open={preExpanded.includes("swedish")}/>
+              <AccordionItemSwedish open={preExpanded.includes("swedish")} />
               <AccordionItemEu />
               <AccordionItemWorld />
             </Accordion>

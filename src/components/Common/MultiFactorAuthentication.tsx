@@ -43,7 +43,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
-  const [tokenKey, setTokenKey] = useState<any>();
+  const [tokenKey, setTokenKey] = useState<string>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
@@ -140,8 +140,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     eidas: eidasVerifyCredential,
   };
 
-  async function handleVerificationWebauthnToken(token: string, method: WebauthnMethods) {
+  async function handleVerificationWebauthnToken(token: string | undefined, method: WebauthnMethods) {
     const verifyAction = tokenTypeMap[method];
+    if (!token) {
+      console.error("No token provided");
+      return;
+    }
     const response = await verifyAction({
       credential_id: token,
       method,
@@ -151,7 +155,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         window.location.assign(response.data.payload.location);
       }
     } else if (response.isError) {
-      const VerifyCredentialResponse: any = response;
       setShowVerifyWebauthnModal(false);
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
@@ -159,7 +162,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           frontend_state: JSON.stringify({
             method,
             credential: token,
-            description: VerifyCredentialResponse?.payload?.payload?.credential_description,
+            description: response.data?.payload.credential_description,
           }),
         })
       );
@@ -216,7 +219,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           dispatch(authnSlice.actions.setAuthnFrontendReset());
           setIsRegisteringAuthenticator(false);
         }
-      } catch (err) {}
+      } catch (error) {
+        console.error("Error creating credentials:", error);
+      }
     })();
   }
 
@@ -409,7 +414,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                   buttonstyle="link verbatim"
                   onClick={() => setShowVerifyWebauthnModal(false)}
                 >
-                  <FormattedMessage description="verity later link" defaultMessage={`Not now`} />
+                  <FormattedMessage description="verify later link" defaultMessage={`Not now`} />
                 </EduIDButton>
               </div>
             </div>

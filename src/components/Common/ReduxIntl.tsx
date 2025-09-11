@@ -2,11 +2,10 @@ import React from "react";
 import IntlProvider from "./IntlProvider";
 
 import { Provider as ReduxProvider } from "react-redux";
-import { AnyAction, Store } from "redux";
+import { Store, UnknownAction } from "redux";
 
 interface Props extends React.PropsWithChildren {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  store: Store<any, AnyAction>;
+  store: Store<unknown, UnknownAction>;
 }
 
 /* The ReduxIntlProvider combines the ReduxProvider (that makes the redux store available

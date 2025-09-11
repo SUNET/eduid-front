@@ -1,10 +1,10 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { ReactNode } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import Select from "react-select";
+import Select, { SingleValue } from "react-select";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
@@ -12,7 +12,7 @@ interface SwedishEIDProps {
   readonly recoveryAvailable?: boolean;
 }
 
-const IconWithText = ({ icon, text }: any) => {
+const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
   return (
     <React.Fragment>
       {icon}
@@ -36,7 +36,12 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
     description: "placeholder text for recovery option",
   });
 
-  const options = [
+  interface SelectOptions {
+    value: string;
+    label: React.JSX.Element;
+  }
+
+  const options: SelectOptions[] = [
     {
       value: "Bank ID",
       label: (
@@ -58,7 +63,11 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
   ];
 
   async function handleOnClickBankID() {
-    const response = await bankIDMfaAuthenticate({ method: "bankid", frontend_action: frontend_action, frontend_state: frontend_state });
+    const response = await bankIDMfaAuthenticate({
+      method: "bankid",
+      frontend_action: frontend_action,
+      frontend_state: frontend_state,
+    });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
@@ -67,7 +76,11 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
   }
 
   async function handleOnClickFrejaeID() {
-    const response = await eidasMfaAuthenticate({ method: "freja", frontend_action: frontend_action, frontend_state: frontend_state });
+    const response = await eidasMfaAuthenticate({
+      method: "freja",
+      frontend_action: frontend_action,
+      frontend_state: frontend_state,
+    });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
@@ -75,7 +88,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
     }
   }
 
-  function handleOnChange(newValue: any): void {
+  function handleOnChange(newValue: SingleValue<SelectOptions>): void {
     if (newValue?.value === "Bank ID") {
       handleOnClickBankID();
     } else if (newValue?.value === "Freja+") {

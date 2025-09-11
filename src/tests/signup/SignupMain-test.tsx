@@ -43,8 +43,6 @@ const emptyState: SignupState = {
   },
   user_created: false,
 };
-const testFirstName = "test";
-const testLastName = "test";
 const testEmailAddress = "test@example.org";
 const captchaTestValue = "captcha-test-value";
 const testPassword = "abcdefghij";
@@ -57,8 +55,6 @@ let getCaptchaCalled = false;
 let acceptToUCalled = false;
 let registerEmailCalled = false;
 let verifyEmailCalled = false;
-let getPasswordCalled = false;
-let createUserCalled = false;
 
 /* Set up fake backend endpoints to get us through a complete signup.
  * These all need to be registered before the testing begins since we want to have
@@ -151,7 +147,6 @@ function happyCaseBackend(state: SignupState) {
 
   mswServer.use(
     http.post("https://signup.eduid.docker/services/signup/get-password", () => {
-      getPasswordCalled = true;
       currentState.credentials.generated_password = testPassword;
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
@@ -167,7 +162,6 @@ function happyCaseBackend(state: SignupState) {
         return new HttpResponse(null, { status: 400 });
       }
 
-      createUserCalled = true;
       currentState.user_created = true;
 
       const payload: SignupStatusResponse = { state: currentState };

@@ -16,7 +16,7 @@ export function LanguagePreference() {
   // Make an ordered list of languages to be presented as radio buttons
   const _languages = (AVAILABLE_LANGUAGES as { [key: string]: string }) || {};
   const language_list = Object.entries(_languages);
-  const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation()
+  const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation();
 
   useEffect(() => {
     if (isLoaded && personal_data?.language === undefined) {
@@ -60,12 +60,9 @@ export function LanguagePreference() {
         />
       </p>
       <FinalForm<UserLanguageRequest>
-        initialValues={{language: personal_data?.language}}
+        initialValues={{ language: personal_data?.language }}
         onSubmit={formSubmit}
         render={(formProps) => {
-          const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
-          const _disabled = Boolean(formProps.hasValidationErrors || _submitError);
-
           return (
             <form id="personaldata-view-form" onChange={formProps.handleSubmit}>
               <fieldset>
