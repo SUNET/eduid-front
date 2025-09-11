@@ -68,7 +68,7 @@ header {
           // width: 300px;
           // transition: max-height 0.2s ease;
           // position: absolute;
-          margin: 0 0.75rem 1rem 1.5rem;
+          // margin: 0 0.75rem 1rem 1.5rem;
 
           @media (min-width: $bp-md) {
             position: absolute;
@@ -152,6 +152,7 @@ header {
       // display: block;
 
       ul.submenu-collapse {
+        margin: 0 0.75rem 1rem 1.5rem;
         //   position: static;
         li {
           padding: 0.5rem 0 0.5rem 3px;
