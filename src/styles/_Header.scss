@@ -64,21 +64,21 @@ header {
           // width: 300px;
           // transition: max-height 0.2s ease;
           // position: absolute;
-          // margin: 0 0.75rem 1rem 1.5rem;
+          margin: 0 0.75rem 1rem 1.5rem;
           // display: block;
           // top: 60px;
 
-          ul {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 61px;
+          // ul {
+          //   display: flex;
+          //   flex-direction: column;
+          //   position: absolute;
+          //   top: 61px;
 
-            a {
-              font-size: $txt-sm;
-              color: var(--txt-gray);
-            }
+          a {
+            font-size: $txt-sm;
+            color: var(--txt-gray);
           }
+          // }
         }
         &.submenu-close {
           max-height: 0;
@@ -142,18 +142,18 @@ header {
       // margin: 0 0.75rem 1rem 1.5rem;
       // display: block;
 
-      // ul {
-      //   position: static;
-      //   li {
-      //     padding: 0.5rem 0 0.5rem 3px;
-      //     line-height: 1.2;
-      //     width: 100%;
+      ul.submenu-collapse {
+        //   position: static;
+        li {
+          padding: 0.5rem 0 0.5rem 3px;
+          line-height: 1.2;
+          width: 100%;
 
-      // &.submenu-collapse {
-      //   margin: 0 0.75rem 1rem 1.5rem;
-      // }
-      //   }
-      // }
+          // &.submenu-collapse {
+          //   margin: 0 0.75rem 1rem 1.5rem;
+          // }
+        }
+      }
       // }
     }
 
@@ -170,30 +170,30 @@ header {
       }
     }
 
-    // ul li {
-    //   a {
-    //     color: var(--body-txt);
+    ul li {
+      a {
+        color: var(--body-txt);
 
-    //     // styling for when menu item is clicked
-    //     &.active {
-    //       color: var(--txt-orange);
-    //     }
+        // styling for when menu item is clicked
+        &.active {
+          color: var(--txt-orange);
+        }
 
-    //     //  styling for when hovering the menu item
-    //     &:hover {
-    //       color: var(--txt-orange);
-    //     }
-    //   }
-    // }
+        //  styling for when hovering the menu item
+        &:hover {
+          color: var(--txt-orange);
+        }
+      }
+    }
 
     .nav-menu {
       display: none;
       min-width: 250px;
 
-      // @media (max-width: $bp-xs) {
-      //   min-width: calc(100% - #{2 * $margin});
-      //   left: $margin;
-      //   }
+      @media (max-width: $bp-xs) {
+        min-width: calc(100% - #{2 * $margin});
+        left: $margin;
+      }
 
       ul {
         padding-left: 0px;
@@ -258,7 +258,8 @@ header {
         border-radius: 10px;
         padding: 0.75rem;
         right: $margin;
-        max-width: 20rem;
+        width: 20rem;
+        // max-width: 20rem;
         overflow-y: auto;
         max-height: 90vh;
 
