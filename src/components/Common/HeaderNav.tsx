@@ -98,29 +98,29 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
       <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <ul>
-          <li className="flex-between">
-            <NavLink
-              onClick={() => setOpenMenu(false)}
-              className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-              to={START_PATH}
-              end
-            >
-              <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
-            </NavLink>
-            <button
-              onClick={() => toggleOpen("start")}
-              type="button"
-              aria-label={isOpen.start ? "open start menu" : "start menu"}
-            >
-              {isOpen.start ? (
-                <FontAwesomeIcon icon={faChevronUp as IconProp} />
-              ) : (
-                <FontAwesomeIcon icon={faChevronDown as IconProp} />
-              )}
-            </button>
-          </li>
-          <li className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-            <ul>
+          <li>
+            <div className="flex-between">
+              <NavLink
+                onClick={() => setOpenMenu(false)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                to={START_PATH}
+                end
+              >
+                <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
+              </NavLink>
+              <button
+                onClick={() => toggleOpen("start")}
+                type="button"
+                aria-label={isOpen.start ? "open start menu" : "start menu"}
+              >
+                {isOpen.start ? (
+                  <FontAwesomeIcon icon={faChevronUp as IconProp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown as IconProp} />
+                )}
+              </button>
+            </div>
+            <ul className={isOpen.start ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
@@ -128,29 +128,32 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
+          {/* <li className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}> */}
 
-          <li className="flex-between">
-            <NavLink
-              onClick={() => setOpenMenu(false)}
-              className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-              to={IDENTITY_PATH}
-            >
-              <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
-            </NavLink>
-            <button
-              onClick={() => toggleOpen("identity")}
-              type="button"
-              aria-label={isOpen.identity ? "open identity menu" : "start menu"}
-            >
-              {isOpen.identity ? (
-                <FontAwesomeIcon icon={faChevronUp as IconProp} />
-              ) : (
-                <FontAwesomeIcon icon={faChevronDown as IconProp} />
-              )}
-            </button>
-          </li>
-          <li className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-            <ul>
+          {/* </li> */}
+
+          <li>
+            <div className="flex-between">
+              <NavLink
+                onClick={() => setOpenMenu(false)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                to={IDENTITY_PATH}
+              >
+                <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
+              </NavLink>
+              <button
+                onClick={() => toggleOpen("identity")}
+                type="button"
+                aria-label={isOpen.identity ? "open identity menu" : "start menu"}
+              >
+                {isOpen.identity ? (
+                  <FontAwesomeIcon icon={faChevronUp as IconProp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown as IconProp} />
+                )}
+              </button>
+            </div>
+            <ul className={isOpen.identity ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
@@ -167,29 +170,47 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          <li className="flex-between">
-            <NavLink
-              onClick={() => setOpenMenu(false)}
-              className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-              to={SECURITY_PATH}
-            >
-              <FormattedMessage defaultMessage="Security" description="security main title" />
-            </NavLink>
+          {/* <li > */}
+          {/* <ul className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+              <li>
+                <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
+                  <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => setOpenMenu(false)}
+                  to={`${IDENTITY_PATH}#personal-data`}
+                  aria-label="go to manage your security key section"
+                >
+                  <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+                </Link>
+              </li>
+            </ul> */}
+          {/* </li> */}
+          <li>
+            <div className="flex-between">
+              <NavLink
+                onClick={() => setOpenMenu(false)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                to={SECURITY_PATH}
+              >
+                <FormattedMessage defaultMessage="Security" description="security main title" />
+              </NavLink>
 
-            <button
-              onClick={() => toggleOpen("security")}
-              type="button"
-              aria-label={isOpen.security ? "open security menu" : "start menu"}
-            >
-              {isOpen.security ? (
-                <FontAwesomeIcon icon={faChevronUp as IconProp} />
-              ) : (
-                <FontAwesomeIcon icon={faChevronDown as IconProp} />
-              )}
-            </button>
-          </li>
-          <li className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-            <ul>
+              <button
+                onClick={() => toggleOpen("security")}
+                type="button"
+                aria-label={isOpen.security ? "open security menu" : "start menu"}
+              >
+                {isOpen.security ? (
+                  <FontAwesomeIcon icon={faChevronUp as IconProp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown as IconProp} />
+                )}
+              </button>
+            </div>
+            <ul className={isOpen.security ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
@@ -202,28 +223,42 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          <li className="flex-between">
-            <NavLink
-              onClick={() => setOpenMenu(false)}
-              className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
-              to={ACCOUNT_PATH}
-            >
-              <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
-            </NavLink>
-            <button
-              onClick={() => toggleOpen("account")}
-              type="button"
-              aria-label={isOpen.account ? "open account menu" : "start menu"}
-            >
-              {isOpen.account ? (
-                <FontAwesomeIcon icon={faChevronUp as IconProp} />
-              ) : (
-                <FontAwesomeIcon icon={faChevronDown as IconProp} />
-              )}
-            </button>
-          </li>
-          <li className={isOpen.account ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-            <ul>
+          {/* <li > */}
+          {/* <ul className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
+              <li>
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
+                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
+                  <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
+                </Link>
+              </li>
+            </ul> */}
+          {/* </li> */}
+          <li>
+            <div className="flex-between">
+              <NavLink
+                onClick={() => setOpenMenu(false)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                to={ACCOUNT_PATH}
+              >
+                <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
+              </NavLink>
+              <button
+                onClick={() => toggleOpen("account")}
+                type="button"
+                aria-label={isOpen.account ? "open account menu" : "start menu"}
+              >
+                {isOpen.account ? (
+                  <FontAwesomeIcon icon={faChevronUp as IconProp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown as IconProp} />
+                )}
+              </button>
+            </div>
+            <ul className={isOpen.account ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
@@ -261,6 +296,9 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
+          {/* <li > */}
+
+          {/* </li> */}
           {/* <li className="logout-button-wrapper"> */}
           {/* <EduIDButton buttonstyle="link sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
             <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
