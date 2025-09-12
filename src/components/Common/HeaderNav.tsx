@@ -128,10 +128,6 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          {/* <li className={isOpen.start ? "submenu-collapse" : "submenu-collapse submenu-close"}> */}
-
-          {/* </li> */}
-
           <li>
             <div className="flex-between">
               <NavLink
@@ -170,24 +166,6 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          {/* <li > */}
-          {/* <ul className={isOpen.identity ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-              <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
-                  <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => setOpenMenu(false)}
-                  to={`${IDENTITY_PATH}#personal-data`}
-                  aria-label="go to manage your security key section"
-                >
-                  <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
-                </Link>
-              </li>
-            </ul> */}
-          {/* </li> */}
           <li>
             <div className="flex-between">
               <NavLink
@@ -223,20 +201,6 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          {/* <li > */}
-          {/* <ul className={isOpen.security ? "submenu-collapse" : "submenu-collapse submenu-close"}>
-              <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
-                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
-                </Link>
-              </li>
-              <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
-                  <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
-                </Link>
-              </li>
-            </ul> */}
-          {/* </li> */}
           <li>
             <div className="flex-between">
               <NavLink
@@ -296,15 +260,6 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
               </li>
             </ul>
           </li>
-          {/* <li > */}
-
-          {/* </li> */}
-          {/* <li className="logout-button-wrapper"> */}
-          {/* <EduIDButton buttonstyle="link sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
-            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
-            <FormattedMessage defaultMessage="Log out" description="Header logout" />
-          </EduIDButton> */}
-          {/* </li> */}
         </ul>
         <div className="logout-button-wrapper">
           <EduIDButton buttonstyle="link sm " id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
