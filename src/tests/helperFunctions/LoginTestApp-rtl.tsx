@@ -20,7 +20,7 @@ import { Optional } from "./Optional";
 
 export const RESET_PASSWORD_SERVICE_URL = "https://idp.eduid.docker/services/reset-password/";
 
-export const loginTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
+export const loginTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigatorCredentialsApi"> = {
   config: {
     ...configInitialState,
     next_url: "https://localhost/next",

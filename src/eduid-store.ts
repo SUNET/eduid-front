@@ -1,4 +1,5 @@
 import { eduIDApi } from "apis/common";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { combineReducers } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -33,6 +34,7 @@ const eduIDApp = combineReducers({
   ladok: ladokSlice.reducer,
   authn: authnSlice.reducer,
   [eduIDApi.reducerPath]: eduIDApi.reducer,
+  [navigatorCredentialsApi.reducerPath]: navigatorCredentialsApi.reducer,
 });
 
 export default eduIDApp;

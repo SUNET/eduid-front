@@ -5,7 +5,7 @@ import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
-import { performAuthentication } from "../helperFunctions/navigatorCredential";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 
 export type Phone = { index: string; number: string; phone_code: string };
 
@@ -65,7 +65,7 @@ export const resetPasswordSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(performAuthentication.fulfilled, (state, action) => {
+      .addMatcher(navigatorCredentialsApi.endpoints.performAuthentication.matchFulfilled, (state, action) => {
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.webauthn_assertion = action.payload;
       })

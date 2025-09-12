@@ -20,7 +20,7 @@ import { initialState as signupInitialState } from "slices/Signup";
 import { RESET_PASSWORD_SERVICE_URL } from "./LoginTestApp-rtl";
 import { Optional } from "./Optional";
 
-export const signupTestState: Optional<EduIDAppRootState, "eduIDApi"> = {
+export const signupTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigatorCredentialsApi"> = {
   config: {
     ...configInitialState,
     recaptcha_public_key: "",

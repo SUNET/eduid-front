@@ -1,6 +1,6 @@
 import { loginApi } from "apis/eduidLogin";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { performAuthentication } from "helperFunctions/navigatorCredential";
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -99,20 +99,21 @@ function SecurityKeyActive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.E
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
   async function startTokenAssertion(webauthn_options?: PublicKeyCredentialRequestOptionsJSON) {
     if (location.pathname.includes("login")) {
       if (webauthn_options && !mfa.webauthn_assertion && ref) {
-        const res = await dispatch(performAuthentication(webauthn_options));
-        if (performAuthentication.fulfilled.match(res)) {
+        const response = await performAuthentication(webauthn_options);
+        if (response.isSuccess) {
           // Send response from security key to backend
-          fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: res.payload });
+          fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: response.data });
         }
         if (props.setActive) props.setActive(false);
       }
     } else if (props.webauthn_options && !webauthn_assertion) {
-      const response = await dispatch(performAuthentication(props.webauthn_options));
-      if (performAuthentication.fulfilled.match(response)) {
+      const response = await performAuthentication(props.webauthn_options);
+      if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
       }
       if (props.setActive) props.setActive(false);
@@ -126,7 +127,9 @@ function SecurityKeyActive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.E
         if (response.isSuccess) {
           startTokenAssertion(response.data.payload.webauthn_options);
         }
-      } else startTokenAssertion(mfa.webauthn_challenge);
+      } else {
+        startTokenAssertion(mfa.webauthn_challenge);
+      }
     }
   }
 
