@@ -1,6 +1,7 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
+import { genericApiFail } from "./common";
 
-const navigatorCredentialsBaseQuery: BaseQueryFn = async (args) => {
+const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
   let errorMessage: string = "";
   try {
     if (args.action === "performAuthentication") {
@@ -31,12 +32,10 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args) => {
       errorMessage = "Unknown error occurred.";
     }
   }
+  api.dispatch(genericApiFail(errorMessage));
   return {
     error: {
-      status: 400,
-      data: {
-        message: errorMessage,
-      },
+      message: errorMessage,
     },
   };
 };
