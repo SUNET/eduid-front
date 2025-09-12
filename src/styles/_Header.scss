@@ -54,8 +54,15 @@ header {
       ul {
         display: flex;
         list-style: none;
-        margin: 0;
-        padding: 0;
+        // margin: 0;
+        // padding: 0;
+        @media (min-width: $bp-md) {
+          padding-right: 3rem;
+          li {
+            margin: 0.3rem 0;
+          }
+        }
+
         // li {
         // float: left;
 
@@ -72,6 +79,14 @@ header {
 
           @media (min-width: $bp-md) {
             position: absolute;
+            z-index: 100;
+            background-color: var(--contrast-color);
+            box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
+            padding: 0.75rem;
+            top: 5.6rem;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-top: var(--txt-orange) solid;
           }
           flex-direction: column;
           // display: block;
