@@ -9,8 +9,8 @@ import {
   SAMLParameters,
   ServiceInfo,
 } from "apis/eduidLogin";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { ToUs } from "helperFunctions/ToUs";
-import { performAuthentication } from "../helperFunctions/navigatorCredential";
 
 // Define a type for the slice state
 interface LoginState {
@@ -106,11 +106,11 @@ export const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(performAuthentication.fulfilled, (state, action) => {
+      .addMatcher(navigatorCredentialsApi.endpoints.performAuthentication.matchFulfilled, (state, action) => {
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.mfa.webauthn_assertion = action.payload;
       })
-      .addCase(performAuthentication.rejected, (state) => {
+      .addMatcher(navigatorCredentialsApi.endpoints.performAuthentication.matchRejected, (state) => {
         state.mfa.webauthn_challenge = undefined;
         state.mfa.webauthn_assertion = undefined;
       })

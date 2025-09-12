@@ -2,11 +2,11 @@ import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import { createCredential } from "helperFunctions/navigatorCredential";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -52,6 +52,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
+  const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -207,11 +208,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           setShowSecurityKeyNameModal(false);
           const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
           if (registration.isSuccess) {
-            const credential = await dispatch(createCredential(registration.data.payload.registration_data.publicKey));
-            if (createCredential.fulfilled.match(credential)) {
-              const response = await registerWebauthn({ webauthn_attestation: credential.payload, description });
+            const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+            if (createResponse.isSuccess) {
+              const registerResponse = await registerWebauthn({
+                webauthn_attestation: createResponse.data,
+                description,
+              });
               wrapperRef?.current?.focus();
-              if (response.isSuccess) {
+              if (registerResponse.isSuccess) {
                 setShowVerifyWebauthnModal(true);
               }
             }
