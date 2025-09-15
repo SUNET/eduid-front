@@ -477,7 +477,7 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
     setShowConfirmRemoveSecurityKeyModal(false);
     const parsedFrontendState = credentialKey.current && JSON.parse(credentialKey.current);
     const response = await removeWebauthnToken({ credential_key: parsedFrontendState.credential as string });
-    if (response.isSuccess) {
+    if (response.isError) {
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
