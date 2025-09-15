@@ -27,7 +27,7 @@ export interface RenderUserNameProps {
   setOpenMenu(value: boolean): void;
   openMenu: boolean;
 }
-console.log("4456");
+console.log("hhh");
 function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
   const emails = useAppSelector((state) => state.emails.emails);
 
@@ -78,6 +78,22 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   });
   const wrapperRef = useRef<HTMLElement | null>(null);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsOpen((prev: any) => {
+        const anyOpen = Object.values(prev).some((val) => val === true);
+        if (!anyOpen) return prev;
+        return Object.fromEntries(Object.entries(prev).map(([k]) => [k, false]));
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
       const isCurrentlyOpen = prevState[button];
@@ -120,15 +136,9 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.start ? "submenu-collapse" : "submenu-close"}>
+            <ul className={`submenu ${isOpen.start ? "collapse" : "close"}`}>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, start: false }));
-                  }}
-                  to={`${START_PATH}#status-overview`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
                 </Link>
               </li>
@@ -155,24 +165,15 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.identity ? "submenu-collapse" : "submenu-close"}>
+            <ul className={`submenu ${isOpen.identity ? "collapse" : "close"}`}>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, identity: false }));
-                  }}
-                  to={`${IDENTITY_PATH}#verify-identity`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
                 </Link>
               </li>
               <li>
                 <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, identity: false }));
-                  }}
+                  onClick={() => setOpenMenu(false)}
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
@@ -203,26 +204,14 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.security ? "submenu-collapse" : "submenu-close"}>
+            <ul className={`submenu ${isOpen.security ? "collapse" : "close"}`}>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, security: false }));
-                  }}
-                  to={`${SECURITY_PATH}#add-two-factor`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, security: false }));
-                  }}
-                  to={`${SECURITY_PATH}#manage-security-keys`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
                   <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
                 </Link>
               </li>
@@ -249,81 +238,39 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.account ? "submenu-collapse" : "submenu-close"}>
+            <ul className={`submenu ${isOpen.account ? "collapse" : "close"}`}>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#unique-id`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#add-email-addresses`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
                   <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#language`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
                   <FormattedMessage defaultMessage="Language" description="Language" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#change-password`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
                   <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#orcid`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
                   <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#ladok`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
                   <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
                 </Link>
               </li>
               <li>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setIsOpen((prev) => ({ ...prev, account: false }));
-                  }}
-                  to={`${ACCOUNT_PATH}#delete-account`}
-                >
+                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
                   <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
                 </Link>
               </li>
