@@ -47,9 +47,20 @@ header {
       display: none;
     }
     .nav-menu {
-      @media (min-width: $bp-md) {
+      @media (min-width: $bp-xl) {
         display: flex;
         align-items: center;
+      }
+      .desktop-username {
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        text-overflow: ellipsis;
+        padding: 0 1rem 0 2rem;
+        font-family: "Inter-SemiBold";
+        @media (max-width: $bp-xl) {
+          display: none;
+        }
       }
 
       ul {
@@ -57,11 +68,14 @@ header {
         // list-style: none;
         // margin: 0;
         // padding: 0;
-        @media (min-width: $bp-md) {
+        @media (min-width: $bp-xl) {
           // padding-right: 3rem;
           li:has(> .flex-between) {
             align-self: center;
-            margin-right: 2rem;
+            margin-right: 1rem;
+          }
+          li:hover svg {
+            transform: rotate(180deg);
           }
         }
 
@@ -102,26 +116,27 @@ header {
 
         // }
         // }
-        &.submenu.close {
+        &.submenu-close {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
           // transition: all 0.3s ease;
-          @media (min-width: $bp-md) {
+          @media (min-width: $bp-xl) {
             // position: absolute;
             // top: 5rem;
             // display: flex;
             // flex-direction: column;
 
-            display: none;
+            // display: none;
             position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--contrast-color);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            // top: 100%;
+            // left: 0;
+            // background: var(--contrast-color);
+            // box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
             min-width: 180px;
             z-index: 100;
+            // border-radius: 10px;
 
             li {
               padding: 10px 15px;
@@ -133,10 +148,13 @@ header {
         button {
           background-color: transparent;
           box-shadow: none;
-          padding: 0 0.75rem;
-          @media (min-width: $bp-md) {
-            display: none;
+          @media (max-width: $bp-xl) {
+            padding: 0 0.75rem;
           }
+
+          // @media (min-width: $bp-md) {
+          //   display: none;
+          // }
 
           svg {
             color: var(--txt-gray);
@@ -163,23 +181,22 @@ header {
       }
     }
   }
-  @media (min-width: $bp-md) {
-    .nav-menu li:hover .submenu.close {
+  @media (min-width: $bp-xl) {
+    .nav-menu li:hover .submenu-close {
       opacity: 1;
       visibility: visible;
     }
     .nav-menu > ul > li {
-      position: relative;
       display: inline-block;
     }
-    .nav-menu ul > li:hover > .submenu.close {
+    .nav-menu ul > li:hover > .submenu-close {
       display: block;
     }
   }
 
   // }
 
-  @media (max-width: $bp-md) {
+  @media (max-width: $bp-xl) {
     .header-nav {
       flex: unset;
       button.header-user {
@@ -204,7 +221,7 @@ header {
       // margin: 0 0.75rem 1rem 1.5rem;
       // display: block;
 
-      ul.submenu.collapse {
+      ul.submenu-collapse {
         margin: 0 0.75rem 1rem 1.5rem;
         //   position: static;
         li {
@@ -304,10 +321,10 @@ header {
           //   z-index: 100;
           // }
 
-          .submenu.close {
+          .submenu-close {
             max-height: 0;
           }
-          .submenu.collapse {
+          .submenu-collapse {
             max-height: 500px;
           }
         }
@@ -328,8 +345,8 @@ header {
         right: $margin;
         width: 20rem;
         // max-width: 20rem;
-        overflow-y: auto;
-        max-height: 90vh;
+        // overflow-y: auto;
+        // max-height: 90vh;
 
         .link svg {
           padding-right: 5px;

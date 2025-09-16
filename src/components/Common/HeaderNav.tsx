@@ -27,7 +27,7 @@ export interface RenderUserNameProps {
   setOpenMenu(value: boolean): void;
   openMenu: boolean;
 }
-console.log("4567");
+
 // function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
 //   const emails = useAppSelector((state) => state.emails.emails);
 
@@ -99,7 +99,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
-      if (window.innerWidth > 823) {
+      if (window.innerWidth > 1200) {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];
