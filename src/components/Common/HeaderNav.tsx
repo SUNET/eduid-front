@@ -27,27 +27,27 @@ export interface RenderUserNameProps {
   setOpenMenu(value: boolean): void;
   openMenu: boolean;
 }
+console.log("4567");
+// function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
+//   const emails = useAppSelector((state) => state.emails.emails);
 
-function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
-  const emails = useAppSelector((state) => state.emails.emails);
+//   if (!emails.length) {
+//     return null;
+//   }
 
-  if (!emails.length) {
-    return null;
-  }
-
-  return (
-    <button
-      className="header-user"
-      aria-expanded={props.openMenu}
-      type="button"
-      onClick={() => props.setOpenMenu(!props.openMenu)}
-      data-name={emails.filter((mail) => mail.primary)[0].email}
-    >
-      <span>{emails.filter((mail) => mail.primary)[0].email}</span>
-      {props.openMenu ? <FontAwesomeIcon icon={faXmark as IconProp} /> : <FontAwesomeIcon icon={faBars as IconProp} />}
-    </button>
-  );
-}
+//   return (
+//     <button
+//       className="header-user"
+//       aria-expanded={props.openMenu}
+//       type="button"
+//       onClick={() => props.setOpenMenu(!props.openMenu)}
+//       data-name={emails.filter((mail) => mail.primary)[0].email}
+//     >
+//       <span>{emails.filter((mail) => mail.primary)[0].email}</span>
+//       {props.openMenu ? <FontAwesomeIcon icon={faXmark as IconProp} /> : <FontAwesomeIcon icon={faBars as IconProp} />}
+//     </button>
+//   );
+// }
 
 function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
   useEffect(() => {
@@ -69,6 +69,7 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
 }
 
 export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
+  const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<{ [key in ButtonKey]: boolean }>({
     start: false,
@@ -77,6 +78,8 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
     account: false,
   });
   const wrapperRef = useRef<HTMLElement | null>(null);
+
+  const userName = emails.filter((mail) => mail.primary)[0].email;
 
   useEffect(() => {
     const handleResize = () => {
@@ -96,7 +99,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 823) {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];
@@ -114,7 +117,16 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   useCloseMenuClickOutside(wrapperRef, () => setOpenMenu(false));
   return (
     <nav className="header-nav" ref={wrapperRef}>
-      <RenderUserName setOpenMenu={setOpenMenu} openMenu={openMenu} />
+      <button
+        className="header-user"
+        aria-expanded={openMenu}
+        type="button"
+        onClick={() => setOpenMenu(!openMenu)}
+        data-name={userName}
+      >
+        <span className="user-name">{userName}</span>
+        {openMenu ? <FontAwesomeIcon icon={faXmark as IconProp} /> : <FontAwesomeIcon icon={faBars as IconProp} />}
+      </button>
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <ul>
           <li>
@@ -280,6 +292,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </ul>
           </li>
         </ul>
+        <span className="desktop-username">{userName}</span>
         <div className="logout-button-wrapper">
           <EduIDButton buttonstyle="link sm " id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
             <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
