@@ -27,7 +27,7 @@ export interface RenderUserNameProps {
   setOpenMenu(value: boolean): void;
   openMenu: boolean;
 }
-console.log("hhh");
+
 function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
   const emails = useAppSelector((state) => state.emails.emails);
 
@@ -96,6 +96,9 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
+      if (window.innerWidth > 768) {
+        return prevState;
+      }
       const isCurrentlyOpen = prevState[button];
       const newState = Object.keys(prevState).reduce((buttonState, key) => {
         buttonState[key as ButtonKey] = false;
@@ -136,7 +139,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={`submenu ${isOpen.start ? "collapse" : "close"}`}>
+            <ul className={isOpen.start ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
@@ -165,7 +168,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={`submenu ${isOpen.identity ? "collapse" : "close"}`}>
+            <ul className={isOpen.identity ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
@@ -204,7 +207,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={`submenu ${isOpen.security ? "collapse" : "close"}`}>
+            <ul className={isOpen.security ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
@@ -238,7 +241,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={`submenu ${isOpen.account ? "collapse" : "close"}`}>
+            <ul className={isOpen.account ? "submenu-collapse" : "submenu-close"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
