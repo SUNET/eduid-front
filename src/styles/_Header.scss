@@ -56,7 +56,7 @@ header {
         display: inline-block;
         text-overflow: ellipsis;
         padding: 0 1rem 0 2rem;
-        font-family: "Inter-SemiBold";
+        font-family: $inter-bold;
 
         @media (max-width: $bp-xl) {
           display: none;
