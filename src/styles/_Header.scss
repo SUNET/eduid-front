@@ -5,8 +5,8 @@ header {
   background-color: var(--contrast-color);
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
   align-items: center;
+  padding: 1rem;
 
   .eduid-logo {
     width: 113px;
@@ -40,15 +40,16 @@ header {
       width: 24px;
     }
   }
+
   nav {
     button.header-user {
       display: none;
     }
+
     .nav-menu {
-      @media (min-width: $bp-xl) {
-        display: flex;
-        align-items: center;
-      }
+      display: flex;
+      align-items: center;
+
       .desktop-username {
         overflow: hidden;
         white-space: nowrap;
@@ -56,26 +57,45 @@ header {
         text-overflow: ellipsis;
         padding: 0 1rem 0 2rem;
         font-family: "Inter-SemiBold";
+
         @media (max-width: $bp-xl) {
           display: none;
         }
       }
 
       ul {
-        @media (min-width: $bp-xl) {
-          li:has(> .flex-between) {
-            align-self: center;
-            margin-right: 1rem;
+        button {
+          background-color: transparent;
+          box-shadow: none;
+
+          @media (max-width: $bp-xl) {
+            padding: 0 0.75rem;
           }
-          li:hover svg {
-            transform: rotate(180deg);
+
+          svg {
+            color: var(--txt-gray);
+          }
+
+          &:hover svg {
+            color: var(--txt-orange);
           }
         }
+
+        a {
+          color: var(--body-txt);
+
+          &.active,
+          &:hover {
+            color: var(--txt-orange);
+          }
+        }
+
         &.submenu-close {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
+
           @media (min-width: $bp-xl) {
             position: absolute;
             min-width: 180px;
@@ -88,57 +108,62 @@ header {
             }
           }
         }
-        button {
-          background-color: transparent;
-          box-shadow: none;
-          @media (max-width: $bp-xl) {
-            padding: 0 0.75rem;
-          }
-          svg {
-            color: var(--txt-gray);
-          }
-          &:hover svg {
-            color: var(--txt-orange);
-          }
-        }
-        a {
-          color: var(--body-txt);
 
-          // styling for when menu item is clicked
-          &.active {
-            color: var(--txt-orange);
+        @media (min-width: $bp-xl) {
+          li:has(> .flex-between) {
+            align-self: center;
+            margin-right: 1rem;
           }
 
-          //  styling for when hovering the menu item
-          &:hover {
-            color: var(--txt-orange);
+          li:hover {
+            svg {
+              transform: rotate(180deg);
+            }
+
+            .submenu-close {
+              opacity: 1;
+              visibility: visible;
+              display: flex;
+              flex-direction: column;
+            }
+          }
+
+          > li {
+            display: inline-block;
           }
         }
       }
-    }
-  }
-  @media (min-width: $bp-xl) {
-    .nav-menu li:hover .submenu-close {
-      opacity: 1;
-      visibility: visible;
-    }
-    .nav-menu > ul > li {
-      display: inline-block;
-    }
-    .nav-menu ul > li:hover > .submenu-close {
-      display: block;
+
+      &.submenu-close {
+        position: absolute;
+        min-width: 180px;
+        z-index: 100;
+
+        li {
+          padding: 10px 15px;
+          border-bottom: 1px solid var(--body-gray);
+          background: var(--contrast-color);
+        }
+      }
     }
   }
 
   @media (max-width: $bp-xl) {
     .header-nav {
       flex: unset;
+      .nav-menu {
+        display: block;
+        display: none;
+      }
+
       button.header-user {
         display: flex;
         align-items: center;
       }
+
       ul.submenu-collapse {
         margin: 0 0.75rem 1rem 1.5rem;
+
         li {
           padding: 0.5rem 0 0.5rem 3px;
           line-height: 1.2;
@@ -165,19 +190,12 @@ header {
       }
     }
 
-    ul li {
-      a {
-        color: var(--body-txt);
+    ul li a {
+      color: var(--body-txt);
 
-        // styling for when menu item is clicked
-        &.active {
-          color: var(--txt-orange);
-        }
-
-        //  styling for when hovering the menu item
-        &:hover {
-          color: var(--txt-orange);
-        }
+      &.active,
+      &:hover {
+        color: var(--txt-orange);
       }
     }
 
@@ -194,19 +212,22 @@ header {
         padding-left: 0px;
         text-align: left;
         flex-direction: column;
+
         .flex-between {
           padding-left: 0.75rem;
-          margin-top: 3px;
-          margin-bottom: 3px;
+          margin: 3px 0;
           width: 100%;
           position: relative;
+
           &:has(a.active) {
             background-color: var(--body-gray);
             border-radius: 1.5rem;
           }
+
           .submenu-close {
             max-height: 0;
           }
+
           .submenu-collapse {
             max-height: 500px;
           }
@@ -214,37 +235,37 @@ header {
       }
 
       &.active {
-        opacity: 1;
         display: flex;
         flex-direction: column;
-        transition: all 0.5s ease;
-        z-index: 200;
+        opacity: 1;
         position: absolute;
         top: 70px;
-        background-color: var(--contrast-color);
-        box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
-        border-radius: 10px;
-        padding: 0.75rem;
         right: $margin;
         width: 20rem;
+        background-color: var(--contrast-color);
+        box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
+        border-radius: 10px;
+        padding: 0.75rem;
+        z-index: 200;
+        transition: all 0.5s ease;
 
         .link svg {
           padding-right: 5px;
         }
       }
 
-      //menu item
       .menu {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         height: 2.7rem;
-        justify-content: left;
         line-height: 1.2;
 
         &:nth-child(4) {
           border-bottom: 1px solid var(--border-gray);
         }
       }
+
       .logout-button-wrapper {
         margin: 0.5rem 0.75rem;
         padding-top: 0.5rem;
