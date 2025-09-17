@@ -40,9 +40,7 @@ header {
       width: 24px;
     }
   }
-  // @media (min-width: $bp-md) {
   nav {
-    // flex: 1;
     button.header-user {
       display: none;
     }
@@ -64,12 +62,7 @@ header {
       }
 
       ul {
-        // display: flex;
-        // list-style: none;
-        // margin: 0;
-        // padding: 0;
         @media (min-width: $bp-xl) {
-          // padding-right: 3rem;
           li:has(> .flex-between) {
             align-self: center;
             margin-right: 1rem;
@@ -78,65 +71,15 @@ header {
             transform: rotate(180deg);
           }
         }
-
-        // li {
-        // float: left;
-
-        // &.submenu-collapse {
-        // position: absolute;
-        // top: 56px;
-        // position: relative;
-        // max-height: 500px;
-        // display: block;
-        // width: 300px;
-        // transition: max-height 0.2s ease;
-        // position: absolute;
-        // margin: 0 0.75rem 1rem 1.5rem;
-
-        // @media (min-width: $bp-md) {
-        // position: absolute;
-        // z-index: 100;
-        // background-color: var(--contrast-color);
-        // box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
-        // padding: 0.75rem;
-        // top: 5.6rem;
-        // border-bottom-left-radius: 10px;
-        // border-bottom-right-radius: 10px;
-        // border-top: var(--txt-orange) solid;
-        // }
-        // flex-direction: column;
-        // display: block;
-        // top: 60px;
-
-        // ul {
-        //   display: flex;
-        //   flex-direction: column;
-        //   position: absolute;
-        //   top: 61px;
-
-        // }
-        // }
         &.submenu-close {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
-          // transition: all 0.3s ease;
           @media (min-width: $bp-xl) {
-            // position: absolute;
-            // top: 5rem;
-            // display: flex;
-            // flex-direction: column;
-
-            // display: none;
             position: absolute;
-            // top: 100%;
-            // left: 0;
-            // background: var(--contrast-color);
-            // box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
             min-width: 180px;
             z-index: 100;
-            // border-radius: 10px;
 
             li {
               padding: 10px 15px;
@@ -151,11 +94,6 @@ header {
           @media (max-width: $bp-xl) {
             padding: 0 0.75rem;
           }
-
-          // @media (min-width: $bp-md) {
-          //   display: none;
-          // }
-
           svg {
             color: var(--txt-gray);
           }
@@ -163,8 +101,6 @@ header {
             color: var(--txt-orange);
           }
         }
-        // }
-        // ul li {
         a {
           color: var(--body-txt);
 
@@ -194,36 +130,14 @@ header {
     }
   }
 
-  // }
-
   @media (max-width: $bp-xl) {
     .header-nav {
       flex: unset;
       button.header-user {
         display: block;
       }
-      // .nav-menu ul {
-      //   padding-left: 0px;
-
-      // sub menu
-
-      // .submenu-close {
-      //   max-height: 0;
-      //   // margin-bottom: 0;
-      //   overflow: hidden;
-      // }
-
-      // .submenu-collapse {
-      //   position: static;
-      //   overflow: visible;
-      //   max-height: 300px;
-      // transition: max-height 0.2s ease;
-      // margin: 0 0.75rem 1rem 1.5rem;
-      // display: block;
-
       ul.submenu-collapse {
         margin: 0 0.75rem 1rem 1.5rem;
-        //   position: static;
         li {
           padding: 0.5rem 0 0.5rem 3px;
           line-height: 1.2;
@@ -233,13 +147,8 @@ header {
             font-size: $txt-sm;
             color: var(--txt-gray);
           }
-
-          // &.submenu-collapse {
-          //   margin: 0 0.75rem 1rem 1.5rem;
-          // }
         }
       }
-      // }
     }
 
     button {
@@ -284,7 +193,6 @@ header {
         padding-left: 0px;
         text-align: left;
         flex-direction: column;
-        // flex: 1;
         .flex-between {
           padding-left: 0.75rem;
           margin-top: 3px;
@@ -295,32 +203,6 @@ header {
             background-color: var(--body-gray);
             border-radius: 1.5rem;
           }
-
-          // button {
-          //   background-color: transparent;
-          //   box-shadow: none;
-          //   padding: 0 0.75rem;
-
-          //   svg {
-          //     color: var(--txt-gray);
-          //   }
-          //   &:hover svg {
-          //     color: var(--txt-orange);
-          //   }
-          // }
-
-          // .submenu-collapse,
-          // .submenu-close {
-          //   position: absolute;
-          //   top: 100%;
-          //   left: 0;
-          //   width: 100%;
-          //   overflow: hidden;
-          //   max-height: 0;
-          //   transition: max-height 0.3s ease;
-          //   z-index: 100;
-          // }
-
           .submenu-close {
             max-height: 0;
           }
@@ -344,9 +226,6 @@ header {
         padding: 0.75rem;
         right: $margin;
         width: 20rem;
-        // max-width: 20rem;
-        // overflow-y: auto;
-        // max-height: 90vh;
 
         .link svg {
           padding-right: 5px;
@@ -374,5 +253,4 @@ header {
       }
     }
   }
-  // }
 }

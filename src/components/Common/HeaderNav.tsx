@@ -28,27 +28,6 @@ export interface RenderUserNameProps {
   openMenu: boolean;
 }
 
-// function RenderUserName(props: RenderUserNameProps): React.JSX.Element | null {
-//   const emails = useAppSelector((state) => state.emails.emails);
-
-//   if (!emails.length) {
-//     return null;
-//   }
-
-//   return (
-//     <button
-//       className="header-user"
-//       aria-expanded={props.openMenu}
-//       type="button"
-//       onClick={() => props.setOpenMenu(!props.openMenu)}
-//       data-name={emails.filter((mail) => mail.primary)[0].email}
-//     >
-//       <span>{emails.filter((mail) => mail.primary)[0].email}</span>
-//       {props.openMenu ? <FontAwesomeIcon icon={faXmark as IconProp} /> : <FontAwesomeIcon icon={faBars as IconProp} />}
-//     </button>
-//   );
-// }
-
 function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
   useEffect(() => {
     const listener = (event: TouchEvent | MouseEvent) => {
