@@ -134,7 +134,8 @@ header {
     .header-nav {
       flex: unset;
       button.header-user {
-        display: block;
+        display: flex;
+        align-items: center;
       }
       ul.submenu-collapse {
         margin: 0 0.75rem 1rem 1.5rem;
