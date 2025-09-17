@@ -24,6 +24,7 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
   readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
+  readonly handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
 }
 
 const selectCredentials = (state: EduIDAppRootState) => state.security.credentials;
@@ -37,6 +38,7 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
 );
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
+  let return_handled = false;
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -53,6 +55,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
@@ -69,13 +72,27 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   // Runs after re-auth security zone
   useEffect(() => {
+    if (return_handled) {
+      return;
+    }
+
+    return_handled = true;
+
     (async () => {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
-        // call requestCredentials once app is loaded
         setShowSecurityKeyNameModal(true);
+      } else if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
+        handleRemoveWebauthnToken(authn.response.frontend_state);
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
+      } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
+        const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
+        await handleVerificationWebauthnToken(
+          parsedFrontendState.credential,
+          parsedFrontendState.method as WebauthnMethods
+        );
       }
     })();
-  }, [isLoaded, authn]);
+  }, [authn?.response?.frontend_action, authn?.response?.frontend_state]);
 
   useEffect(() => {
     (async () => {
@@ -167,6 +184,22 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           }),
         })
       );
+    }
+  }
+
+  async function handleRemoveWebauthnToken(credential_string?: string) {
+    const credential_key = credential_string && JSON.parse(credential_string).credential;
+    const response = await removeWebauthnToken({ credential_key: credential_key });
+    if (response.isError) {
+      // prepare authenticate() and AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "removeSecurityKeyAuthn",
+          frontend_state: credential_key,
+        })
+      );
+    } else {
+      wrapperRef?.current?.focus();
     }
   }
 
@@ -319,7 +352,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           </div>
         </section>
       </article>
-      <SecurityKeyTable wrapperRef={wrapperRef} handleVerificationWebauthnToken={handleVerificationWebauthnToken} />
+      <SecurityKeyTable
+        wrapperRef={wrapperRef}
+        handleVerificationWebauthnToken={handleVerificationWebauthnToken}
+        handleRemoveWebauthnToken={handleRemoveWebauthnToken}
+      />
 
       <ConfirmModal
         id="describe-webauthn-token-modal"
@@ -429,9 +466,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   );
 }
 
-function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: SecurityKeyTable) {
-  const credentialKey = useRef<string | null>(null);
-  const authn = useAppSelector((state) => state.authn);
+function SecurityKeyTable({
+  wrapperRef,
+  handleVerificationWebauthnToken,
+  handleRemoveWebauthnToken,
+}: SecurityKeyTable) {
+  const credentialKey = useRef<string>("");
   let btnVerify;
   let date_success;
   const dispatch = useAppDispatch();
@@ -439,26 +479,7 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
     return filterTokensFromCredentials(state);
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
-  const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
-
-  // Runs after re-auth security zone
-  useEffect(() => {
-    (async () => {
-      if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
-        // call requestCredentials once app is loaded
-        credentialKey.current = authn?.response?.frontend_state;
-        handleRemoveWebauthnToken();
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
-      } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
-        const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        await handleVerificationWebauthnToken(
-          parsedFrontendState.credential,
-          parsedFrontendState.method as WebauthnMethods
-        );
-      }
-    })();
-  }, [authn?.response?.frontend_action]);
 
   async function handleConfirmDeleteModal(cred: CredentialType) {
     credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
@@ -469,25 +490,21 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
     if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
       setShowConfirmRemoveSecurityKeyModal(true);
     } else {
-      handleRemoveWebauthnToken();
-    }
-  }
-
-  async function handleRemoveWebauthnToken() {
-    setShowConfirmRemoveSecurityKeyModal(false);
-    const parsedFrontendState = credentialKey.current && JSON.parse(credentialKey.current);
-    const response = await removeWebauthnToken({ credential_key: parsedFrontendState.credential as string });
-    if (response.isError) {
+      setShowConfirmRemoveSecurityKeyModal(false);
       // prepare authenticate() and AuthenticateModal
       dispatch(
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: JSON.stringify(parsedFrontendState),
+          frontend_state: credentialKey.current,
         })
       );
-    } else {
-      wrapperRef?.current?.focus();
+      dispatch(authnSlice.actions.setReAuthenticate(true));
     }
+  }
+
+  function handleRemoveSecurityKeyAccept() {
+    setShowConfirmRemoveSecurityKeyModal(false);
+    handleRemoveWebauthnToken(credentialKey.current);
   }
 
   // data that goes onto the table
@@ -610,7 +627,7 @@ function SecurityKeyTable({ wrapperRef, handleVerificationWebauthnToken }: Secur
         }
         showModal={showConfirmRemoveSecurityKeyModal}
         closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
-        acceptModal={handleRemoveWebauthnToken}
+        acceptModal={handleRemoveSecurityKeyAccept}
         acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
       />
     </article>
