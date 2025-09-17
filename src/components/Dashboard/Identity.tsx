@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faIdCard } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
@@ -24,7 +24,6 @@ import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import BankID from "./BankID";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
@@ -41,12 +40,6 @@ function Identity(): React.JSX.Element | null {
     });
   }, []);
 
-  const currentPage = intl.formatMessage({
-    id: "Identity",
-    defaultMessage: "Identity",
-    description: "Identity",
-  });
-
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
      * not on re-renders. Therefore, we _must_ have all data that we're going to use to set
@@ -60,7 +53,6 @@ function Identity(): React.JSX.Element | null {
 
   return (
     <Fragment>
-      <DashboardBreadcrumbs pageIcon={faIdCard} currentPage={currentPage} />
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}

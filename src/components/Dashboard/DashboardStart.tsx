@@ -1,11 +1,9 @@
-import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { letterProofingApi } from "apis/eduidLetterProofing";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountId } from "./AccountId";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 import { Recommendations } from "./Recommendations";
 
 /**
@@ -44,7 +42,6 @@ export default function Start(): React.JSX.Element {
 
   return (
     <Splash showChildren={isLoaded}>
-      <DashboardBreadcrumbs pageIcon={faHome} currentPage="Start" />
       <section className="intro">
         <h1>
           <FormattedMessage

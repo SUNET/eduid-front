@@ -70,31 +70,6 @@
   }
 }
 
-// --- BREADCRUMB STYLES--- //
-.breadcrumb {
-  align-items: center;
-  color: var(--txt-gray);
-  font-family: $akkurat;
-  font-size: $txt-sm;
-  display: flex;
-  padding-bottom: 1rem;
-  a {
-    padding-right: 5px;
-  }
-  a.disabled:has(> img) {
-    display: flex;
-  }
-
-  svg,
-  img {
-    padding-right: 5px;
-    padding-left: 5px;
-  }
-  img {
-    width: auto;
-  }
-}
-
 // --- STATUS OVERVIEW STYLES--- //
 .status-boxes {
   margin: 1rem 0;
