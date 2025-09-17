@@ -15,12 +15,6 @@ export function Security(): React.JSX.Element {
     });
   }, []);
 
-  const currentPage = intl.formatMessage({
-    id: "Security",
-    defaultMessage: "Security",
-    description: "Security",
-  });
-
   return (
     <React.Fragment>
       <section className="intro">
