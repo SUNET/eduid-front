@@ -60,17 +60,16 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
 
   const userName = emails.filter((mail) => mail.primary)[0]?.email;
 
+  const handleResize = () => {
+    setIsOpen((prev) => {
+      const anyOpen = Object.values(prev).some((val) => val === true);
+      if (!anyOpen) return prev;
+      return Object.fromEntries(Object.entries(prev).map(([k]) => [k, false])) as Record<ButtonKey, boolean>;
+    });
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsOpen((prev) => {
-        const anyOpen = Object.values(prev).some((val) => val === true);
-        if (!anyOpen) return prev;
-        return Object.fromEntries(Object.entries(prev).map(([k]) => [k, false])) as Record<ButtonKey, boolean>;
-      });
-    };
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
