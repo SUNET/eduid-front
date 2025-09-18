@@ -55,7 +55,22 @@ export function MultiFactorAuth(): React.JSX.Element {
       // to call the MFA endpoint for it to complete.
       fetchMfaAuth({ ref: ref, this_device: this_device });
     }
-  }, [authn_options, mfa]);
+  }, [mfa]);
+
+  async function getChallenge() {
+    if (ref) {
+      const response = await fetchMfaAuth({ ref: ref, this_device: this_device });
+      if (response.isSuccess) {
+        return response.data.payload.webauthn_options;
+      }
+    }
+  }
+
+  function useCredential(credential: PublicKeyCredentialJSON) {
+    if (ref) {
+      fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: credential });
+    }
+  }
 
   return (
     <Fragment>
@@ -82,7 +97,7 @@ export function MultiFactorAuth(): React.JSX.Element {
           <React.Fragment>
             <p>{leadText}</p>
             <div className="options">
-              <SecurityKey webauthn={authn_options?.webauthn} />
+              <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
               <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
             </div>
           </React.Fragment>

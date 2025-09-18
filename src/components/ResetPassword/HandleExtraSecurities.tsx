@@ -43,6 +43,17 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
     return null;
   }
 
+  async function setupSecurityKey() {
+    if (extra_security?.tokens?.webauthn_options) {
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
+      return extra_security.tokens.webauthn_options;
+    }
+  }
+
+  function continueWithSecurityKey() {
+    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+  }
+
   return (
     <React.Fragment>
       <section className="intro">
@@ -69,7 +80,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       </section>
       <div className="options">
         {extra_security.tokens !== undefined && (
-          <SecurityKeyLogin webauthn={true} webauthn_options={extra_security.tokens.webauthn_options} />
+          <SecurityKeyLogin setup={setupSecurityKey} onSuccess={continueWithSecurityKey} />
         )}
         <SwedishEID recoveryAvailable={extra_security.external_mfa} />
       </div>
