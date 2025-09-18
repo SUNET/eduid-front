@@ -9,7 +9,6 @@ import {
   SAMLParameters,
   ServiceInfo,
 } from "apis/eduidLogin";
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { ToUs } from "helperFunctions/ToUs";
 
 // Define a type for the slice state
@@ -23,8 +22,6 @@ interface LoginState {
   fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
-    webauthn_challenge?: PublicKeyCredentialRequestOptionsJSON;
-    webauthn_assertion?: PublicKeyCredentialJSON;
     state?: "loading" | "loaded";
   };
   saml_parameters?: SAMLParameters;
@@ -106,14 +103,6 @@ export const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(navigatorCredentialsApi.endpoints.performAuthentication.matchFulfilled, (state, action) => {
-        // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
-        state.mfa.webauthn_assertion = action.payload;
-      })
-      .addMatcher(navigatorCredentialsApi.endpoints.performAuthentication.matchRejected, (state) => {
-        state.mfa.webauthn_challenge = undefined;
-        state.mfa.webauthn_assertion = undefined;
-      })
       .addMatcher(loginApi.endpoints.fetchUseOtherDevice1.matchFulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
         if (action.payload.payload.state === "ABORTED" || action.payload.payload.state === "FINISHED") {
@@ -171,7 +160,6 @@ export const loginSlice = createSlice({
         state.mfa = { state: "loading" };
       })
       .addMatcher(loginApi.endpoints.fetchMfaAuth.matchFulfilled, (state, action) => {
-        state.mfa.webauthn_challenge = action.payload.payload.webauthn_options; // not always present
         if (action.payload.payload.finished) {
           // Trigger fetching of /next on successful MFA authentication
           state.next_page = undefined;

@@ -1,20 +1,19 @@
-import { loginApi } from "apis/eduidLogin";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useContext, useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "eduid-hooks";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import resetPasswordSlice from "slices/ResetPassword";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
-import { ResetPasswordGlobalStateContext } from "../ResetPassword/ResetPasswordGlobalState";
 
 interface SecurityKeyProps {
-  webauthn?: boolean;
-  webauthn_options?: PublicKeyCredentialRequestOptionsJSON;
+  disabled?: boolean;
+  setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
+  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
 }
 
-interface ActiveSecurityKeyProps extends SecurityKeyProps {
-  setActive(val: boolean): void;
+interface InactiveSecurityKeyProps {
+  disabled?: boolean;
+  useSecurityKey(): void;
 }
 
 export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
@@ -22,19 +21,30 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
+  const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
+  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+
+  async function useSecurityKey() {
+    setActive(true);
+    const webauth_options = await props.setup();
+    if (webauth_options) {
+      const response = await performAuthentication(webauth_options);
+      if (response.isSuccess) {
+        props.onSuccess(response.data);
+      }
+    }
+    setActive(false);
+    dispatch(clearNotifications());
+  }
 
   return (
     <div className="option-wrapper">
       <div className="option">
         {active ? (
-          <SecurityKeyActive
-            webauthn={props.webauthn}
-            webauthn_options={props.webauthn_options}
-            setActive={setActive}
-          />
+          <SecurityKeyActive />
         ) : (
-          <SecurityKeyInactive {...props} setActive={setActive} />
+          <SecurityKeyInactive disabled={!!props.disabled} useSecurityKey={useSecurityKey} />
         )}
         {active && (
           <p className="help-text">
@@ -49,13 +59,8 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   );
 }
 
-function SecurityKeyInactive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
-  let buttonDisabled = false;
-
-  if (props.webauthn !== undefined && !props.webauthn) {
-    buttonDisabled = true;
-  }
 
   useEffect(() => {
     if (ref.current) ref?.current?.focus();
@@ -78,10 +83,10 @@ function SecurityKeyInactive(props: Readonly<ActiveSecurityKeyProps>): React.JSX
         className="primary"
         type="submit"
         onClick={() => {
-          if (props.setActive) props.setActive(true);
+          props.useSecurityKey();
         }}
         id="mfa-security-key"
-        disabled={buttonDisabled}
+        disabled={props.disabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </button>
@@ -89,63 +94,7 @@ function SecurityKeyInactive(props: Readonly<ActiveSecurityKeyProps>): React.JSX
   );
 }
 
-function SecurityKeyActive(props: Readonly<ActiveSecurityKeyProps>): React.JSX.Element {
-  const dispatch = useAppDispatch();
-  //login
-  const mfa = useAppSelector((state) => state.login.mfa);
-  const ref = useAppSelector((state) => state.login.ref);
-  const this_device = useAppSelector((state) => state.login.this_device);
-  //resetpw
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
-
-  async function startTokenAssertion(webauthn_options?: PublicKeyCredentialRequestOptionsJSON) {
-    if (location.pathname.includes("login")) {
-      if (webauthn_options && !mfa.webauthn_assertion && ref) {
-        const response = await performAuthentication(webauthn_options);
-        if (response.isSuccess) {
-          // Send response from security key to backend
-          fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: response.data });
-        }
-        if (props.setActive) props.setActive(false);
-      }
-    } else if (props.webauthn_options && !webauthn_assertion) {
-      const response = await performAuthentication(props.webauthn_options);
-      if (response.isSuccess) {
-        resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-      }
-      if (props.setActive) props.setActive(false);
-    }
-  }
-
-  async function fetchAuthnChallenge() {
-    if (ref) {
-      if (!mfa.webauthn_challenge) {
-        const response = await fetchMfaAuth({ ref: ref });
-        if (response.isSuccess) {
-          startTokenAssertion(response.data.payload.webauthn_options);
-        }
-      } else {
-        startTokenAssertion(mfa.webauthn_challenge);
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (location.pathname.includes("login")) {
-      fetchAuthnChallenge();
-    } else handleResetPWSecurityKey();
-  }, []);
-
-  //Reset password
-  function handleResetPWSecurityKey() {
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
-    startTokenAssertion();
-    dispatch(clearNotifications());
-  }
-
+function SecurityKeyActive(): React.JSX.Element {
   return (
     <Fragment>
       <div className="button-pair selected">
