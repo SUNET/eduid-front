@@ -15,7 +15,7 @@
       border-top: 2px solid var(--border-gray);
     }
 
-    &.expanded > #{$a}__heading > #{$a}__button {
+    &[open] > #{$a}__heading > #{$a}__button {
       background: var(--bg-orange);
     }
 
