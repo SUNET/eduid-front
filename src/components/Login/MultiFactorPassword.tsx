@@ -82,13 +82,14 @@ export function MultiFactorPassword(): React.JSX.Element {
       </h1>
       <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
-        <p>
-          <FormattedMessage
-            defaultMessage="For security, please enter your password again to complete the login process."
-            description="lead text final step enter password"
-          />
-        </p>
       </div>
+      <p>
+        <FormattedMessage
+          defaultMessage="For security, please enter your password again to complete the login process."
+          description="lead text final step enter password"
+        />
+      </p>
+
       <section className="username-pw">
         <FinalForm<PasswordFormData>
           aria-label="login form"
