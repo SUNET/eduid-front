@@ -1,4 +1,5 @@
 import { loginApi } from "apis/eduidLogin";
+import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
@@ -16,7 +17,7 @@ export function MultiFactorAuth(): React.JSX.Element {
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const sessionKey = sessionStorage.getItem("frontend_action");
+  const isSecurityZone = sessionStorage.getItem(FRONTEND_ACTION);
 
   let leadText;
 
@@ -72,7 +73,7 @@ export function MultiFactorAuth(): React.JSX.Element {
       <section className="intro">
         <h1>
           {has_session ? (
-            sessionKey ? (
+            isSecurityZone ? (
               <FormattedMessage defaultMessage="Security Check" description="Security zone MFA heading" />
             ) : (
               <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
