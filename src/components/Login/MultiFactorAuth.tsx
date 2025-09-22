@@ -16,19 +16,14 @@ export function MultiFactorAuth(): React.JSX.Element {
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const sessionKey = sessionStorage.getItem("frontend_action");
 
   let leadText;
-  if (!has_session) {
+
+  if (authn_options.swedish_eid) {
     leadText = (
       <FormattedMessage
-        defaultMessage={`Choose a method to authenticate yourself, ensuring only you can access your eduID.`}
-        description="MFA paragraph with swedish option"
-      />
-    );
-  } else if (authn_options.swedish_eid) {
-    leadText = (
-      <FormattedMessage
-        defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+        defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
         description="MFA paragraph with swedish option"
       />
     );
@@ -77,7 +72,11 @@ export function MultiFactorAuth(): React.JSX.Element {
       <section className="intro">
         <h1>
           {has_session ? (
-            <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
+            sessionKey ? (
+              <FormattedMessage defaultMessage="Security Check" description="Security zone MFA heading" />
+            ) : (
+              <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
+            )
           ) : (
             <FormattedMessage
               defaultMessage="Welcome, {username}!"
@@ -95,7 +94,13 @@ export function MultiFactorAuth(): React.JSX.Element {
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
           <React.Fragment>
-            <p>{leadText}</p>
+            <p>
+              <FormattedMessage
+                defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
+                description="MFA paragraph"
+              />
+              {leadText}
+            </p>
             <div className="options">
               <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
               <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
