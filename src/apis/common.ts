@@ -2,7 +2,15 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { EduidJSAppCommonConfig } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
-import { ajaxHeaders } from "ts_common";
+
+const ajaxHeaders = {
+  "Content-Type": "application/json; charset=utf-8",
+  Accept: "application/json",
+  "Accept-Encoding": "gzip,deflate",
+  "Cache-Control": "no-store, no-cache, must-revalidate",
+  Pragma: "no-cache",
+  "X-Requested-With": "XMLHttpRequest",
+};
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
   const state = api.getState() as StateWithCommonConfig;
