@@ -16,6 +16,7 @@ import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
+import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 interface UsernamePwFormData {
   username?: string;
@@ -35,7 +36,11 @@ export default function UsernamePw() {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const response = await fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword });
+      const response = await fetchUsernamePassword({
+        ref,
+        username: values.username,
+        password: values.currentPassword,
+      });
       if (response.isSuccess) {
         if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
@@ -58,12 +63,20 @@ export default function UsernamePw() {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+          {securityZoneAction ? (
+            <FormattedMessage
+              defaultMessage="Security Check: Username & Password"
+              description="Security zone username and Password heading"
+            />
+          ) : (
+            <FormattedMessage defaultMessage="Log in" description="Login front page" />
+          )}
         </h1>
 
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
+        <SecurityZoneInfo />
       </section>
       <section className="username-pw">
         <FinalForm<UsernamePwFormData>
@@ -80,11 +93,12 @@ export default function UsernamePw() {
                     <UsernamePwSubmitButton {...formProps} />
                     <UsernamePwAnotherDeviceButton />
                   </div>
-
-                  <div className="links">
-                    <RenderResetPasswordLink />
-                    <RenderRegisterLink />
-                  </div>
+                  {!securityZoneAction && (
+                    <div className="links">
+                      <RenderResetPasswordLink />
+                      <RenderRegisterLink />
+                    </div>
+                  )}
                 </div>
               </form>
             );
@@ -104,7 +118,7 @@ function UsernameInputPart(): React.JSX.Element {
     // re-fetch '/next' now that the conditions for logging in has changed
     dispatch(loginSlice.actions.callLoginNext());
   }
-  if (authn_options.forced_username) {
+  if (authn_options.forced_username && !securityZoneAction) {
     return (
       <React.Fragment>
         <div className="welcome-back-container">

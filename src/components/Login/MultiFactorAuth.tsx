@@ -1,5 +1,4 @@
 import { loginApi } from "apis/eduidLogin";
-import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
@@ -8,6 +7,7 @@ import { SecurityKey } from "../Common/SecurityKey";
 import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 export function MultiFactorAuth(): React.JSX.Element {
   const service_info = useAppSelector((state) => state.login.service_info);
@@ -17,7 +17,6 @@ export function MultiFactorAuth(): React.JSX.Element {
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const isSecurityZone = sessionStorage.getItem(FRONTEND_ACTION);
 
   let leadText;
 
@@ -26,13 +25,6 @@ export function MultiFactorAuth(): React.JSX.Element {
       <FormattedMessage
         defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
         description="MFA paragraph with swedish option"
-      />
-    );
-  } else {
-    leadText = (
-      <FormattedMessage
-        defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
-        description="MFA paragraph"
       />
     );
   }
@@ -72,13 +64,9 @@ export function MultiFactorAuth(): React.JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          {has_session ? (
-            isSecurityZone ? (
-              <FormattedMessage defaultMessage="Security Check" description="Security zone MFA heading" />
-            ) : (
-              <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
-            )
-          ) : (
+          {securityZoneAction ? (
+            <FormattedMessage defaultMessage="Security Check: MFA" description="Security zone MFA heading" />
+          ) : has_session ? (
             <FormattedMessage
               defaultMessage="Welcome, {username}!"
               description="start main title"
@@ -86,12 +74,16 @@ export function MultiFactorAuth(): React.JSX.Element {
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
+          ) : (
+            <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
           )}
         </h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
+        <SecurityZoneInfo />
       </section>
+
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
           <React.Fragment>
@@ -100,6 +92,7 @@ export function MultiFactorAuth(): React.JSX.Element {
                 defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
                 description="MFA paragraph"
               />
+              &nbsp;
               {leadText}
             </p>
             <div className="options">

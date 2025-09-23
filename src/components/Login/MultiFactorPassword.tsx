@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 interface PasswordFormData {
   currentPassword?: string;
@@ -72,17 +73,22 @@ export function MultiFactorPassword(): React.JSX.Element {
   return (
     <section className="intro">
       <h1>
-        <FormattedMessage
-          defaultMessage="Welcome, {username}!"
-          description="start main title"
-          values={{
-            username: <strong>{authn_options.display_name}</strong>,
-          }}
-        />
+        {securityZoneAction ? (
+          <FormattedMessage defaultMessage="Security Check: Password" description="Security zone Password heading" />
+        ) : (
+          <FormattedMessage
+            defaultMessage="Welcome, {username}!"
+            description="start main title"
+            values={{
+              username: <strong>{authn_options.display_name}</strong>,
+            }}
+          />
+        )}
       </h1>
       <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
       </div>
+      <SecurityZoneInfo />
       <p>
         <FormattedMessage
           defaultMessage="For security, please enter your password again to complete the login process."

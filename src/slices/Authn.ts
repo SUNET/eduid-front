@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import authnApi from "apis/eduidAuthn";
 import securityApi from "apis/eduidSecurity";
+import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 
 interface FrontendActionAndState {
   frontend_action: string;
@@ -31,7 +32,7 @@ const authnSlice = createSlice({
     setFrontendActionAndState: (state, action: PayloadAction<FrontendActionAndState>) => {
       state.frontend_action = action.payload.frontend_action;
       state.frontend_state = action.payload.frontend_state;
-      sessionStorage.setItem("frontend_action", action.payload.frontend_action);
+      sessionStorage.setItem(FRONTEND_ACTION, action.payload.frontend_action);
     },
   },
   extraReducers: (builder) => {
