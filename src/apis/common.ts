@@ -1,6 +1,6 @@
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { EduidJSAppCommonConfig } from "commonConfig";
+import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
 
 const ajaxHeaders = {
@@ -54,7 +54,17 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
   } else {
     base_args = args;
   }
+
   const result = await rawBaseQuery(base_args, api, extraOptions);
+
+  if (isApiResponse(result.data) && hasCsrfToken(result.data)) {
+    // Successful response from backend, extract the csrf token from the response
+    if (result.data.payload.csrf_token && result.data.payload.csrf_token !== state.config.csrf_token) {
+      // If the csrf token has changed, update the store
+      api.dispatch(storeCsrfToken(result.data.payload.csrf_token));
+      delete result.data.payload.csrf_token;
+    }
+  }
 
   if (result.data && typeof result.data === "object" && "error" in result.data && result.data.error === true) {
     // dispatch the API error to the nofification middleware
@@ -111,6 +121,19 @@ export function isFSA(action: unknown): action is PayloadAction<unknown> {
   } catch {
     return false;
   }
+}
+
+function isApiResponse<T>(data: unknown): data is ApiResponse<T> {
+  return typeof data === "object" && data !== null && "payload" in data && "type" in data;
+}
+
+function hasCsrfToken<T>(data: ApiResponse<T>): data is ApiResponse<T & { csrf_token?: string }> {
+  return (
+    typeof data.payload === "object" &&
+    data.payload !== null &&
+    "csrf_token" in data.payload &&
+    typeof data.payload.csrf_token === "string"
+  );
 }
 
 export const eduIDApi = createApi({
