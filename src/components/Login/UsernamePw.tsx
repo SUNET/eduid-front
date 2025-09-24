@@ -118,7 +118,7 @@ function UsernameInputPart(): React.JSX.Element {
     // re-fetch '/next' now that the conditions for logging in has changed
     dispatch(loginSlice.actions.callLoginNext());
   }
-  if (authn_options.forced_username && !securityZoneAction) {
+  if (authn_options.forced_username) {
     return (
       <React.Fragment>
         <div className="welcome-back-container">
