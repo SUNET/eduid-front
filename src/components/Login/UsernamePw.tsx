@@ -121,20 +121,22 @@ function UsernameInputPart(): React.JSX.Element {
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
-        <div className="welcome-back-container">
-          <legend>
-            <FormattedMessage
-              defaultMessage="Welcome back, {username}!"
-              description="Login username input"
-              values={{
-                username: <strong>{authn_options.display_name}</strong>,
-              }}
-            />
-          </legend>
-          <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
-            <FormattedMessage defaultMessage="Different user?" description="Login username input" />
-          </a>
-        </div>
+        {!securityZoneAction && (
+          <div className="welcome-back-container">
+            <legend>
+              <FormattedMessage
+                defaultMessage="Welcome back, {username}!"
+                description="Login username input"
+                values={{
+                  username: <strong>{authn_options.display_name}</strong>,
+                }}
+              />
+            </legend>
+            <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+              <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+            </a>
+          </div>
+        )}
         <FinalField
           required={true}
           disabled={true}
