@@ -225,7 +225,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
-  if (!options.other_device) {
+  if (!options.other_device || securityZoneAction) {
     return null;
   }
 
