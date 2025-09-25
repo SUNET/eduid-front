@@ -74,7 +74,7 @@ export function SecurityZoneInfo(): React.JSX.Element {
 
   return (
     <Fragment>
-      {!securityZoneAction ? null : (
+      {securityZoneAction && (
         <div className="status-box">
           <div className="checkbox-wrapper">
             <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
