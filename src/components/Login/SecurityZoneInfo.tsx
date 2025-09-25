@@ -1,7 +1,7 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
-import { ACCOUNT_PATH, SECURITY_PATH } from "components/IndexMain";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import React, { Fragment, ReactElement } from "react";
 import { FormattedMessage } from "react-intl";
 export const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
@@ -21,62 +21,52 @@ interface ActionInfo {
 }
 
 export function SecurityZoneInfo(): React.JSX.Element {
+  const toSecurity = (
+    <a href={SECURITY_PATH} aria-label="return to security page">
+      <FormattedMessage description="security zone security link" defaultMessage="Security" />
+    </a>
+  );
+
+  const toAccount = (
+    <a href={ACCOUNT_PATH} aria-label="return to account page">
+      <FormattedMessage description="security zone account link" defaultMessage="Account" />
+    </a>
+  );
+
+  const toIdentity = (
+    <a href={IDENTITY_PATH} aria-label="return to identity page">
+      <FormattedMessage description="security zone identity link" defaultMessage="Identity" />
+    </a>
+  );
+
   const actionMap: Record<SecurityZoneAction, ActionInfo> = {
     changeSecurityPreferencesAuthn: {
       action: "change security key preferences",
-      redirectPath: (
-        <a href={SECURITY_PATH} aria-label="return to security page">
-          <FormattedMessage description="security zone link" defaultMessage="Security" />
-        </a>
-      ),
+      redirectPath: toSecurity,
     },
     addSecurityKeyAuthn: {
       action: "add security key",
-      redirectPath: (
-        <a href={SECURITY_PATH} aria-label="return to security page">
-          <FormattedMessage description="security zone link" defaultMessage="Security" />
-        </a>
-      ),
+      redirectPath: toSecurity,
     },
     removeSecurityKeyAuthn: {
       action: "remove security key",
-      redirectPath: (
-        <a href={SECURITY_PATH} aria-label="return to security page">
-          <FormattedMessage description="security zone link" defaultMessage="Security" />
-        </a>
-      ),
+      redirectPath: toSecurity,
     },
     verifyCredential: {
       action: "verify security key",
-      redirectPath: (
-        <a href={SECURITY_PATH} aria-label="return to security page">
-          <FormattedMessage description="security zone link" defaultMessage="Security" />
-        </a>
-      ),
+      redirectPath: toSecurity,
     },
     terminateAccountAuthn: {
       action: "delete account",
-      redirectPath: (
-        <a href={ACCOUNT_PATH} aria-label="return to account page">
-          <FormattedMessage description="account zone link" defaultMessage="Account" />
-        </a>
-      ),
+      redirectPath: toAccount,
     },
     changepwAuthn: {
       action: "change password",
-      redirectPath: (
-        <a href={ACCOUNT_PATH} aria-label="return to account page">
-          <FormattedMessage description="account zone link" defaultMessage="Account" />
-        </a>
-      ),
+      redirectPath: toAccount,
     },
     removeIdentity: {
       action: "remove identity",
-      redirectPath: (
-        <a href={ACCOUNT_PATH} aria-label="return to account page">
-          <FormattedMessage description="account zone link" defaultMessage="Account" />
-        </a>
-      ),
+      redirectPath: toIdentity,
     },
   };
 
