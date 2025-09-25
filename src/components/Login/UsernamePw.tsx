@@ -196,14 +196,18 @@ function RenderResetPasswordLink(): React.JSX.Element {
   );
 }
 
-function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
+export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _inputValues = Boolean(props.values?.["username"]) && Boolean(props.values?.["currentPassword"]);
+  const _hasUserNameValue = Boolean(props.values?.["username"]);
+  const _hasPasswordValue = Boolean(props.values?.["currentPassword"]);
+  const _inputValues = securityZoneAction
+    ? Boolean(_hasPasswordValue)
+    : Boolean(_hasUserNameValue && _hasPasswordValue);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
   const hasErrors = props.hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
@@ -218,7 +222,11 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): Rea
       id="login-form-button"
       onClick={props.handleSubmit}
     >
-      <FormattedMessage defaultMessage="Log in" description="Login front page" />
+      {securityZoneAction ? (
+        <FormattedMessage defaultMessage="Continue" description="Security zone continue" />
+      ) : (
+        <FormattedMessage defaultMessage="Log in" description="Login front page" />
+      )}
     </EduIDButton>
   );
 }

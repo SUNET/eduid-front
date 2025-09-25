@@ -1,5 +1,4 @@
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
 import PasswordInput from "components/Common/PasswordInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -8,36 +7,10 @@ import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
+import { UsernamePwSubmitButton } from "./UsernamePw";
 
 interface PasswordFormData {
   currentPassword?: string;
-}
-
-function PasswordSubmitButton(props: FormRenderProps<PasswordFormData>): React.JSX.Element {
-  const loading = useAppSelector((state) => state.app.loading_data);
-  /* Disable the button when:
-   *   - the app is loading data
-   *   - there is a form validation error
-   *   - the last submit resulted in a submitError, and no changes have been made since
-   */
-  const _pwValues = Boolean(props.values?.["currentPassword"]);
-  const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const hasErrors = props.hasValidationErrors ?? true;
-  const hasSubmitError = _submitError ?? true;
-  const isLoading = loading ?? true;
-  const _disabled = Boolean(hasErrors || !_pwValues || hasSubmitError || isLoading);
-
-  return (
-    <EduIDButton
-      buttonstyle="primary"
-      type="submit"
-      aria-disabled={_disabled}
-      id="login-form-button"
-      onClick={props.handleSubmit}
-    >
-      <FormattedMessage defaultMessage="Log in" description="Login front page" />
-    </EduIDButton>
-  );
 }
 
 export function MultiFactorPassword(): React.JSX.Element {
@@ -106,7 +79,7 @@ export function MultiFactorPassword(): React.JSX.Element {
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
                 <div className="flex-between">
                   <div className="buttons">
-                    <PasswordSubmitButton {...formProps} />
+                    <UsernamePwSubmitButton {...formProps} />
                   </div>
                 </div>
               </form>
