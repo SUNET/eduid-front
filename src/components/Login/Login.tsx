@@ -80,6 +80,7 @@ function Login(): React.JSX.Element {
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}
       {next_page === "MFA" && <MultiFactorAuth />}
+      {/* TODO: Remove when the backend no longer uses next_page === "PASSWORD" */}
       {next_page === "PASSWORD" && <UsernamePw />}
       {next_page === "FINISHED" && <RenderFinished />}
       {
