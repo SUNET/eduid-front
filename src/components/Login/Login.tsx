@@ -7,7 +7,6 @@ import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
-import { MultiFactorPassword } from "./MultiFactorPassword";
 import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
@@ -81,7 +80,7 @@ function Login(): React.JSX.Element {
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}
       {next_page === "MFA" && <MultiFactorAuth />}
-      {next_page === "PASSWORD" && <MultiFactorPassword />}
+      {next_page === "PASSWORD" && <UsernamePw />}
       {next_page === "FINISHED" && <RenderFinished />}
       {
         /* show remember me toggle only for login password and MFA page */ (next_page === "USERNAMEPASSWORD" ||
