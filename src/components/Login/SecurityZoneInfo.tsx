@@ -22,19 +22,19 @@ interface ActionInfo {
 
 export function SecurityZoneInfo(): React.JSX.Element {
   const toSecurity = (
-    <a href={SECURITY_PATH} aria-label="return to security page">
+    <a href={SECURITY_PATH} aria-label="return to security page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone security link" defaultMessage="Security" />
     </a>
   );
 
   const toAccount = (
-    <a href={ACCOUNT_PATH} aria-label="return to account page">
+    <a href={ACCOUNT_PATH} aria-label="return to account page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone account link" defaultMessage="Account" />
     </a>
   );
 
   const toIdentity = (
-    <a href={IDENTITY_PATH} aria-label="return to identity page">
+    <a href={IDENTITY_PATH} aria-label="return to identity page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone identity link" defaultMessage="Identity" />
     </a>
   );
