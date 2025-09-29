@@ -8,7 +8,7 @@ import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -255,7 +255,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <>
+    <Fragment>
       <article id="add-two-factor">
         <h2>
           <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
@@ -384,6 +384,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         handleVerificationWebauthnToken={() => handleVerificationWebauthnToken}
         tokenKey={tokenKey!}
       />
-    </>
+    </Fragment>
   );
 }
