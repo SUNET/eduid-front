@@ -79,14 +79,14 @@ header {
 
           @media (max-width: $bp-xl) {
             padding: 0 0.75rem;
+
+            &:hover svg {
+              color: var(--txt-orange);
+            }
           }
 
           svg {
             color: var(--txt-gray);
-          }
-
-          &:hover svg {
-            color: var(--txt-orange);
           }
         }
 
