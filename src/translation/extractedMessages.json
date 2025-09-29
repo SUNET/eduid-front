@@ -2128,10 +2128,6 @@
     "developer_comment": "generic error page",
     "string": "Return to home"
   },
-  "fr3/NL": {
-    "developer_comment": "verity later link",
-    "string": "Not now"
-  },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID authentication request failed.Please try again"
   },
@@ -2937,6 +2933,10 @@
   "qS5PLP": {
     "developer_comment": "Reset Password button",
     "string": "send email"
+  },
+  "qWNsqy": {
+    "developer_comment": "verify later link",
+    "string": "Not now"
   },
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
