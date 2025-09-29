@@ -104,6 +104,8 @@ header {
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
+          filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
+          padding-top: 1rem;
 
           @media (min-width: $bp-xl) {
             position: absolute;
@@ -114,6 +116,10 @@ header {
               padding: 10px 15px;
               border-bottom: 1px solid var(--body-gray);
               background: var(--contrast-color);
+
+              &:last-child {
+                border-radius: 0 0 10px 10px;
+              }
             }
           }
         }
