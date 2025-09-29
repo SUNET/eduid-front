@@ -42,6 +42,8 @@ header {
   }
 
   nav {
+    flex: 2;
+
     button.header-user {
       display: none;
     }
@@ -49,14 +51,21 @@ header {
     .nav-menu {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      .logout-button-wrapper {
+        display: flex;
+        align-items: center;
+      }
 
       .desktop-username {
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
         text-overflow: ellipsis;
-        padding: 0 1rem 0 2rem;
+        padding: 0 1rem 0 0;
         font-family: $inter-bold;
+        font-size: $txt-sm;
 
         @media (max-width: $bp-xl) {
           display: none;
@@ -95,6 +104,8 @@ header {
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
+          filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
+          padding-top: 1rem;
 
           @media (min-width: $bp-xl) {
             position: absolute;
@@ -102,9 +113,18 @@ header {
             z-index: 100;
 
             li {
-              padding: 10px 15px;
               border-bottom: 1px solid var(--body-gray);
               background: var(--contrast-color);
+              margin-left: -1rem;
+
+              a {
+                font-size: $txt-sm;
+                display: inline-block;
+                padding: 0.75rem 1rem;
+              }
+              &:last-child {
+                border-radius: 0 0 10px 10px;
+              }
             }
           }
         }
@@ -152,7 +172,6 @@ header {
     .header-nav {
       flex: unset;
       .nav-menu {
-        display: block;
         display: none;
       }
 
