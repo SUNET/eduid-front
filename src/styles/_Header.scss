@@ -42,6 +42,8 @@ header {
   }
 
   nav {
+    flex: 2;
+
     button.header-user {
       display: none;
     }
@@ -49,6 +51,12 @@ header {
     .nav-menu {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      .logout-button-wrapper {
+        display: flex;
+        align-items: center;
+      }
 
       .desktop-username {
         overflow: hidden;
@@ -152,7 +160,6 @@ header {
     .header-nav {
       flex: unset;
       .nav-menu {
-        display: block;
         display: none;
       }
 
