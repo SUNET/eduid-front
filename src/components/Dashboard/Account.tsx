@@ -1,14 +1,12 @@
 import { WizardLink } from "components/Common/WizardLink";
 import { AccountIdDisplay } from "components/Dashboard/AccountId";
 import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
-import { DashboardBreadcrumbs } from "components/Dashboard/DashboardBreadcrumbs";
 import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
 import { SECURITY_PATH } from "components/IndexMain";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import accountIcon from "../../../img/account-icon.svg";
 import { AccountLinking } from "./AccountLinking";
 import LadokContainer from "./Ladok";
 
@@ -23,15 +21,8 @@ export function Account(): React.JSX.Element {
     });
   }, []);
 
-  const currentPage = intl.formatMessage({
-    id: "Account",
-    defaultMessage: "Account",
-    description: "Account",
-  });
-
   return (
     <React.Fragment>
-      <DashboardBreadcrumbs icon={accountIcon} currentPage={currentPage} />
       <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Account" />

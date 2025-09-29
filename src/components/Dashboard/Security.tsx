@@ -3,8 +3,6 @@ import { WizardLink } from "components/Common/WizardLink";
 import { ACCOUNT_PATH, IDENTITY_PATH } from "components/IndexMain";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import securityIcon from "../../../img/security-icon.svg";
-import { DashboardBreadcrumbs } from "./DashboardBreadcrumbs";
 
 /* The Dashboard "Advanced Settings" tab */
 export function Security(): React.JSX.Element {
@@ -17,15 +15,8 @@ export function Security(): React.JSX.Element {
     });
   }, []);
 
-  const currentPage = intl.formatMessage({
-    id: "Security",
-    defaultMessage: "Security",
-    description: "Security",
-  });
-
   return (
     <React.Fragment>
-      <DashboardBreadcrumbs icon={securityIcon} currentPage={currentPage} />
       <section className="intro">
         <h1>
           <FormattedMessage description="security main title" defaultMessage="Security" />

@@ -5,8 +5,8 @@ header {
   background-color: var(--contrast-color);
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
   align-items: center;
+  padding: 1rem;
 
   .eduid-logo {
     width: 113px;
@@ -15,6 +15,9 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: $margin;
+    display: flex;
+    flex: 1;
+    text-align: left;
 
     @media (max-width: $bp-md) {
       height: 34px;
@@ -22,28 +25,175 @@ header {
     }
   }
 
-  .header-nav {
-    // sub menu
-    .submenu-collapse {
-      max-height: 500px;
-      overflow: hidden;
-      transition: max-height 0.2s ease;
-      margin: 0 0.75rem 1rem 1.5rem;
+  .header-user {
+    text-transform: lowercase;
+    background: none;
+    box-shadow: none;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    @extend .text-bold;
+
+    svg {
+      padding-left: 0.75rem;
+      font-size: 1.5rem;
+      width: 24px;
+    }
+  }
+
+  nav {
+    flex: 2;
+
+    button.header-user {
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .logout-button-wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      .desktop-username {
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        text-overflow: ellipsis;
+        padding: 0 1rem 0 0;
+        font-family: $inter-bold;
+        font-size: $txt-sm;
+
+        @media (max-width: $bp-xl) {
+          display: none;
+        }
+      }
 
       ul {
+        button {
+          background-color: transparent;
+          box-shadow: none;
+
+          @media (max-width: $bp-xl) {
+            padding: 0 0.75rem;
+
+            &:hover svg {
+              color: var(--txt-orange);
+            }
+          }
+
+          svg {
+            color: var(--txt-gray);
+          }
+        }
+
+        a {
+          color: var(--body-txt);
+
+          &.active,
+          &:hover {
+            color: var(--txt-orange);
+          }
+        }
+
+        &.submenu-close {
+          max-height: 0;
+          margin-bottom: 0;
+          opacity: 0;
+          visibility: hidden;
+          filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
+          padding-top: 1rem;
+
+          @media (min-width: $bp-xl) {
+            position: absolute;
+            min-width: 180px;
+            z-index: 100;
+
+            li {
+              border-bottom: 1px solid var(--body-gray);
+              background: var(--contrast-color);
+              margin-left: -1rem;
+
+              a {
+                font-size: $txt-sm;
+                display: inline-block;
+                padding: 0.75rem 1rem;
+              }
+              &:last-child {
+                border-radius: 0 0 10px 10px;
+              }
+            }
+          }
+        }
+
+        @media (min-width: $bp-xl) {
+          li:has(> .flex-between) {
+            align-self: center;
+            margin-right: 1rem;
+          }
+
+          li:hover {
+            svg {
+              transform: rotate(180deg);
+            }
+
+            .submenu-close {
+              opacity: 1;
+              visibility: visible;
+              display: flex;
+              flex-direction: column;
+            }
+          }
+
+          > li {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.submenu-close {
+        position: absolute;
+        min-width: 180px;
+        z-index: 100;
+
+        li {
+          padding: 10px 15px;
+          border-bottom: 1px solid var(--body-gray);
+          background: var(--contrast-color);
+        }
+      }
+    }
+  }
+
+  @media (max-width: $bp-xl) {
+    .header-nav {
+      flex: unset;
+      .nav-menu {
+        display: none;
+      }
+
+      button.header-user {
+        display: flex;
+        align-items: center;
+      }
+
+      ul.submenu-collapse {
+        margin: 0 0.75rem 1rem 1.5rem;
+
         li {
           padding: 0.5rem 0 0.5rem 3px;
           line-height: 1.2;
+          width: 100%;
+
           a {
             font-size: $txt-sm;
             color: var(--txt-gray);
           }
         }
       }
-    }
-    .submenu-close {
-      max-height: 0;
-      margin-bottom: 0;
     }
 
     button {
@@ -59,35 +209,12 @@ header {
       }
     }
 
-    ul li {
-      a {
-        color: var(--body-txt);
+    ul li a {
+      color: var(--body-txt);
 
-        // styling for when menu item is clicked
-        &.active {
-          color: var(--txt-orange);
-        }
-
-        // styling for when hovering the menu item
-        &:hover {
-          color: var(--txt-orange);
-        }
-      }
-    }
-
-    .header-user {
-      text-transform: lowercase;
-      background: none;
-      box-shadow: none;
-      padding: 0 1rem;
-      display: flex;
-      align-items: center;
-      @extend .text-bold;
-
-      svg {
-        padding-left: 0.75rem;
-        font-size: 1.5rem;
-        width: 24px;
+      &.active,
+      &:hover {
+        color: var(--txt-orange);
       }
     }
 
@@ -101,70 +228,69 @@ header {
       }
 
       ul {
+        padding-left: 0px;
         text-align: left;
+        flex-direction: column;
 
         .flex-between {
           padding-left: 0.75rem;
-          margin-top: 3px;
-          margin-bottom: 3px;
+          margin: 3px 0;
+          width: 100%;
+          position: relative;
+
           &:has(a.active) {
             background-color: var(--body-gray);
             border-radius: 1.5rem;
           }
 
-          button {
-            background-color: transparent;
-            box-shadow: none;
-            padding: 0 0.75rem;
+          .submenu-close {
+            max-height: 0;
+          }
 
-            svg {
-              color: var(--txt-gray);
-            }
-            &:hover svg {
-              color: var(--txt-orange);
-            }
+          .submenu-collapse {
+            max-height: 500px;
           }
         }
       }
 
       &.active {
-        opacity: 1;
         display: flex;
         flex-direction: column;
-        transition: all 0.5s ease;
-        z-index: 200;
+        opacity: 1;
         position: absolute;
         top: 70px;
+        right: $margin;
+        width: 20rem;
         background-color: var(--contrast-color);
-        box-shadow: 0 -6px 17px rgb(89 89 89 / 7%);
+        box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
         border-radius: 10px;
         padding: 0.75rem;
-        right: $margin;
-        max-width: 20rem;
-        overflow-y: auto;
-        max-height: 90vh;
+        z-index: 200;
+        transition: all 0.5s ease;
 
         .link svg {
           padding-right: 5px;
         }
       }
 
-      //menu item
       .menu {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         height: 2.7rem;
-        justify-content: left;
         line-height: 1.2;
 
         &:nth-child(4) {
           border-bottom: 1px solid var(--border-gray);
         }
       }
+
       .logout-button-wrapper {
         margin: 0.5rem 0.75rem;
         padding-top: 0.5rem;
         border-top: 1px solid var(--border-gray);
+        width: calc(100% - 1.5rem);
+        flex: 1;
       }
     }
   }
