@@ -63,8 +63,9 @@ header {
         white-space: nowrap;
         display: inline-block;
         text-overflow: ellipsis;
-        padding: 0 1rem 0 2rem;
+        padding: 0 1rem 0 0;
         font-family: $inter-bold;
+        font-size: $txt-sm;
 
         @media (max-width: $bp-xl) {
           display: none;
