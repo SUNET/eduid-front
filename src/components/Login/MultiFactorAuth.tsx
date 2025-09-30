@@ -150,7 +150,7 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
           </dd>
         </dl>
       </p>
-      <LoginAbortButton />
+      {!securityZoneAction && <LoginAbortButton />}
       {toDashboard && (
         <div className="links">
           <div className="text-small">
