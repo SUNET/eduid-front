@@ -1760,7 +1760,7 @@
   },
   "bB1SMk": {
     "developer_comment": "platform authn help text",
-    "string": "T.ex. USB-säkerhetsnyckel eller lösennyckel (passkey) med enheten som du just nu använder."
+    "string": "T.ex. USB-säkerhetsnyckel, eller lösennyckel (passkey) med enheten som du just nu använder."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
