@@ -90,7 +90,6 @@ export default function UsernamePw() {
                 <div className="flex-between">
                   <div className="buttons">
                     {!securityZoneAction && <LoginAbortButton />}
-                    <LoginAbortButton />
                     <UsernamePwSubmitButton {...formProps} />
                     <UsernamePwAnotherDeviceButton />
                   </div>
