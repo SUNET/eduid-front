@@ -65,11 +65,11 @@ export default function UsernamePw() {
         <h1>
           {securityZoneAction ? (
             <FormattedMessage
-              defaultMessage="Security Check: Username & Password"
+              defaultMessage="Re-authentication: with Password"
               description="Security zone username and Password heading"
             />
           ) : (
-            <FormattedMessage defaultMessage="Log in" description="Login front page" />
+            <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />
           )}
         </h1>
 

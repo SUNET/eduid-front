@@ -19,7 +19,6 @@ export function MultiFactorAuth(): React.JSX.Element {
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
 
   let leadText;
-
   let headingText;
 
   if (authn_options.swedish_eid) {
@@ -32,9 +31,11 @@ export function MultiFactorAuth(): React.JSX.Element {
   }
 
   if (securityZoneAction) {
-    headingText = <FormattedMessage defaultMessage="Security Check: MFA" description="Security zone MFA heading" />;
+    headingText = (
+      <FormattedMessage defaultMessage="Re-authentication: with MFA" description="Security zone MFA heading" />
+    );
   } else if (has_session) {
-    headingText = <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />;
+    headingText = <FormattedMessage defaultMessage="Log in: with MFA" description="Login MFA heading" />;
   } else {
     headingText = (
       <FormattedMessage
