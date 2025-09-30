@@ -1,9 +1,8 @@
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import React, { Fragment } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
-import { securityZoneAction } from "./SecurityZoneInfo";
 
 export function LoginAbortButton(): React.JSX.Element {
   const loginRef = useAppSelector((state) => state.login.ref);
@@ -15,10 +14,6 @@ export function LoginAbortButton(): React.JSX.Element {
     if (loginRef) {
       fetchAbort({ ref: loginRef });
     }
-  }
-
-  if (securityZoneAction) {
-    return <Fragment></Fragment>;
   }
 
   return (

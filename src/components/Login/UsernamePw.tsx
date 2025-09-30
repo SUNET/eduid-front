@@ -89,6 +89,7 @@ export default function UsernamePw() {
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
                 <div className="flex-between">
                   <div className="buttons">
+                    {!securityZoneAction && <LoginAbortButton />}
                     <LoginAbortButton />
                     <UsernamePwSubmitButton {...formProps} />
                     <UsernamePwAnotherDeviceButton />

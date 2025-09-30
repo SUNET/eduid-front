@@ -4,6 +4,7 @@ import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import React, { Fragment, ReactElement } from "react";
 import { FormattedMessage } from "react-intl";
+
 export const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
 
 type SecurityZoneAction =
