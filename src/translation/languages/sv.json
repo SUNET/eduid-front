@@ -51,6 +51,10 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Kod"
   },
+  "/Q+C63": {
+    "developer_comment": "Security zone continue",
+    "string": "Fortsätt"
+  },
   "/XduYi": {
     "developer_comment": "verify your security key description",
     "string": "Verifiera din säkerhetsnyckel under {security}"
@@ -79,6 +83,10 @@
     "developer_comment": "Signup",
     "string": "Återställ lösenord"
   },
+  "0Biez9": {
+    "developer_comment": "security zone redirect info",
+    "string": "Efteråt omdirigeras du till sidan för att {action}."
+  },
   "0Cwr7Z": {
     "developer_comment": "SAML login finished",
     "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
@@ -98,10 +106,6 @@
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "Ingen information har lagts till."
-  },
-  "0RpqP8": {
-    "developer_comment": "MFA paragraph with swedish option",
-    "string": "Välj din autentiseringsmetod för att vara säker på att bara du har tillgång till ditt eduID."
   },
   "0S7EtW": {
     "developer_comment": "not found paragraph",
@@ -305,6 +309,10 @@
   "4bJr5y": {
     "developer_comment": "what is international - heading",
     "string": "Vad är Freja?"
+  },
+  "4mmGML": {
+    "developer_comment": "security zone account link",
+    "string": "Konto"
   },
   "4o5/lu": {
     "developer_comment": "use freja protected id - link text",
@@ -779,6 +787,10 @@
     "developer_comment": "MFA paragraph",
     "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID."
   },
+  "FqWKK0": {
+    "developer_comment": "Security zone MFA heading",
+    "string": "Återautentisering: med MFA"
+  },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Återställ lösenord: Slutförd"
@@ -923,6 +935,10 @@
     "developer_comment": "login eduid - security key heading",
     "string": "Med säkerhetsnyckel"
   },
+  "Iw+RUO": {
+    "developer_comment": "security zone redirect info",
+    "string": "Autentisera dig för att fortsätta"
+  },
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
     "string": "Användning av eduID"
@@ -946,6 +962,10 @@
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
+  },
+  "KCuRyE": {
+    "developer_comment": "Login MFA heading",
+    "string": "Logga in: med MFA"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1073,10 +1093,6 @@
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
-  },
-  "NT4bZ4": {
-    "developer_comment": "platform authn help text",
-    "string": "T.ex. USB-säkerhetsnyckel eller enheten som du just nu använder."
   },
   "NYEFAp": {
     "developer_comment": "about assurance levels - info",
@@ -1280,6 +1296,10 @@
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "OK"
+  },
+  "Ri1+o4": {
+    "developer_comment": "Security zone username and Password heading",
+    "string": "Återautentisering: med lösenord"
   },
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
@@ -1507,6 +1527,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Är du säker på att du vill ta bort ditt eduID?"
   },
+  "WgV4La": {
+    "developer_comment": "security zone security link",
+    "string": "Säkerhet"
+  },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Klicka på knappen \"Använd min säkerhetsnyckel\" och följ instruktionerna för din säkerhetsnyckel."
@@ -1733,6 +1757,10 @@
   "b7rKTd": {
     "developer_comment": "security zone modal",
     "string": "Obs: Din verkliga identitet kommer att frånkopplas ditt eduID efter inloggningen."
+  },
+  "bB1SMk": {
+    "developer_comment": "platform authn help text",
+    "string": "T.ex. USB-säkerhetsnyckel, eller lösennyckel (passkey) med enheten som du just nu använder."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -2182,10 +2210,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
-  "gboI9u": {
-    "developer_comment": "Login MFA heading",
-    "string": "Logga in: Säkerhet"
-  },
   "ggGC2l": {
     "developer_comment": "login this device, security key button",
     "string": "Säkerhetsnyckel"
@@ -2393,9 +2417,9 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "en papperskorgs-ikon som raderar nyckeln vid klick."
   },
-  "kQTWeZ": {
-    "developer_comment": "lead text final step enter password",
-    "string": "Av säkerhetsskäl, ange ditt lösenord för att slutföra inloggningen."
+  "kPaWCf": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
   },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
@@ -2669,6 +2693,10 @@
   "ng2KA4": {
     "developer_comment": "security second factor individual",
     "string": "Obs: Tillagda säkerhetsnycklar är personliga och ska inte delas med andra. Det är för att säkerställa att endast du som kontohavare har tillgång till ditt konto."
+  },
+  "niKw7Q": {
+    "developer_comment": "Login front page",
+    "string": "Logga in: med lösenord"
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
@@ -3370,6 +3398,10 @@
     "developer_comment": "about eduid - handle",
     "string": "Om eduID"
   },
+  "wMii57": {
+    "developer_comment": "security zone identity link",
+    "string": "Identitet"
+  },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
@@ -3440,6 +3472,10 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
+  },
+  "xpf0XZ": {
+    "developer_comment": "security zone cancel info",
+    "string": "Om du vill avbryta utan att spara förändringen kan du återvända direkt till sidan {page}."
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
