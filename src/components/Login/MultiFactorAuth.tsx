@@ -20,11 +20,29 @@ export function MultiFactorAuth(): React.JSX.Element {
 
   let leadText;
 
+  let headingText;
+
   if (authn_options.swedish_eid) {
     leadText = (
       <FormattedMessage
         defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
         description="MFA paragraph with swedish option"
+      />
+    );
+  }
+
+  if (securityZoneAction) {
+    headingText = <FormattedMessage defaultMessage="Security Check: MFA" description="Security zone MFA heading" />;
+  } else if (has_session) {
+    headingText = <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />;
+  } else {
+    headingText = (
+      <FormattedMessage
+        defaultMessage="Welcome, {username}!"
+        description="start main title"
+        values={{
+          username: <strong>{authn_options.display_name}</strong>,
+        }}
       />
     );
   }
@@ -63,21 +81,7 @@ export function MultiFactorAuth(): React.JSX.Element {
   return (
     <Fragment>
       <section className="intro">
-        <h1>
-          {securityZoneAction ? (
-            <FormattedMessage defaultMessage="Security Check: MFA" description="Security zone MFA heading" />
-          ) : has_session ? (
-            <FormattedMessage
-              defaultMessage="Welcome, {username}!"
-              description="start main title"
-              values={{
-                username: <strong>{authn_options.display_name}</strong>,
-              }}
-            />
-          ) : (
-            <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
-          )}
-        </h1>
+        <h1>{headingText}</h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
