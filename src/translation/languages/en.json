@@ -1760,7 +1760,7 @@
   },
   "bB1SMk": {
     "developer_comment": "platform authn help text",
-    "string": "E.g. USB Security Key or passkey with the device you are currently using."
+    "string": "E.g. USB Security Key, or passkey with the device you are currently using."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
