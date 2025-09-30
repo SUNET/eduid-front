@@ -51,6 +51,10 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Code"
   },
+  "/Q+C63": {
+    "developer_comment": "Security zone continue",
+    "string": "Continue"
+  },
   "/XduYi": {
     "developer_comment": "verify your security key description",
     "string": "Verify your security key at {security}"
@@ -79,6 +83,10 @@
     "developer_comment": "Signup",
     "string": "Reset your password"
   },
+  "0Biez9": {
+    "developer_comment": "security zone redirect info",
+    "string": "Afterward, you will be redirected to the page to {action}."
+  },
   "0Cwr7Z": {
     "developer_comment": "SAML login finished",
     "string": "Missing SAML parameters to proceed with login. Please try again."
@@ -98,10 +106,6 @@
   "0RdYDw": {
     "developer_comment": "pd no data added",
     "string": "No information has been added."
-  },
-  "0RpqP8": {
-    "developer_comment": "MFA paragraph with swedish option",
-    "string": "Choose a method to authenticate yourself, ensuring only you can access your eduID."
   },
   "0S7EtW": {
     "developer_comment": "not found paragraph",
@@ -305,6 +309,10 @@
   "4bJr5y": {
     "developer_comment": "what is international - heading",
     "string": "What is Freja?"
+  },
+  "4mmGML": {
+    "developer_comment": "security zone account link",
+    "string": "Account"
   },
   "4o5/lu": {
     "developer_comment": "use freja protected id - link text",
@@ -779,6 +787,10 @@
     "developer_comment": "MFA paragraph",
     "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID."
   },
+  "FqWKK0": {
+    "developer_comment": "Security zone MFA heading",
+    "string": "Re-authentication: with MFA"
+  },
   "FsCTCK": {
     "developer_comment": "Reset Password set new password success heading",
     "string": "Reset Password: Completed"
@@ -923,6 +935,10 @@
     "developer_comment": "login eduid - security key heading",
     "string": "With security key"
   },
+  "Iw+RUO": {
+    "developer_comment": "security zone redirect info",
+    "string": "Authenticate to continue"
+  },
   "IzB08k": {
     "developer_comment": "about using eduid - handle",
     "string": "Using eduID"
@@ -946,6 +962,10 @@
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
+  },
+  "KCuRyE": {
+    "developer_comment": "Login MFA heading",
+    "string": "Log in: with MFA"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1073,10 +1093,6 @@
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Use upper- and lowercase characters, but not at the beginning or end"
-  },
-  "NT4bZ4": {
-    "developer_comment": "platform authn help text",
-    "string": "E.g. USB Security Key or the device you are currently using."
   },
   "NYEFAp": {
     "developer_comment": "about assurance levels - info",
@@ -1280,6 +1296,10 @@
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "ok"
+  },
+  "Ri1+o4": {
+    "developer_comment": "Security zone username and Password heading",
+    "string": "Re-authentication: with Password"
   },
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
@@ -1507,6 +1527,10 @@
     "developer_comment": "settings.modal_delete_title",
     "string": "Are you sure you want to delete your eduID?"
   },
+  "WgV4La": {
+    "developer_comment": "security zone security link",
+    "string": "Security"
+  },
   "WhD8Hj": {
     "developer_comment": "login eduid - security key list item 1",
     "string": "Press the \"Use my security key\" button and follow the instructions, which will vary depending on your key."
@@ -1733,6 +1757,10 @@
   "b7rKTd": {
     "developer_comment": "security zone modal",
     "string": "Note: continuing will disconnect your real identity from your eduID after you log in."
+  },
+  "bB1SMk": {
+    "developer_comment": "platform authn help text",
+    "string": "E.g. USB Security Key or passkey with the device you are currently using."
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -2182,10 +2210,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
-  "gboI9u": {
-    "developer_comment": "Login MFA heading",
-    "string": "Log in: Security"
-  },
   "ggGC2l": {
     "developer_comment": "login this device, security key button",
     "string": "Security key"
@@ -2393,9 +2417,9 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "a bin icon which deletes the key when clicked."
   },
-  "kQTWeZ": {
-    "developer_comment": "lead text final step enter password",
-    "string": "For security, please enter your password again to complete the login process."
+  "kPaWCf": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "If you are unable to use the security key, please select other options below, such as BankID or Freja+."
   },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
@@ -2669,6 +2693,10 @@
   "ng2KA4": {
     "developer_comment": "security second factor individual",
     "string": "Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder."
+  },
+  "niKw7Q": {
+    "developer_comment": "Login front page",
+    "string": "Log in: with Password"
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
@@ -3370,6 +3398,10 @@
     "developer_comment": "about eduid - handle",
     "string": "About eduID"
   },
+  "wMii57": {
+    "developer_comment": "security zone identity link",
+    "string": "Identity"
+  },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Start"
@@ -3440,6 +3472,10 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
+  },
+  "xpf0XZ": {
+    "developer_comment": "security zone cancel info",
+    "string": "If you wish to cancel this process without affecting a change you can return straight to {page} page."
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",

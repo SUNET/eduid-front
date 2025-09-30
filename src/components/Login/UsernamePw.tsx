@@ -16,6 +16,7 @@ import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { forgetThisDevice } from "./NewDevice";
+import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 interface UsernamePwFormData {
   username?: string;
@@ -35,7 +36,11 @@ export default function UsernamePw() {
       /* Send username and password to backend for authentication. If the response is successful,
        * trigger a call to the /next endpoint to get the next step in the login process.
        */
-      const response = await fetchUsernamePassword({ ref, username: values.username, password: values.currentPassword });
+      const response = await fetchUsernamePassword({
+        ref,
+        username: values.username,
+        password: values.currentPassword,
+      });
       if (response.isSuccess) {
         if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
@@ -58,12 +63,20 @@ export default function UsernamePw() {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+          {securityZoneAction ? (
+            <FormattedMessage
+              defaultMessage="Re-authentication: with Password"
+              description="Security zone username and Password heading"
+            />
+          ) : (
+            <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />
+          )}
         </h1>
 
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
+        <SecurityZoneInfo />
       </section>
       <section className="username-pw">
         <FinalForm<UsernamePwFormData>
@@ -76,15 +89,16 @@ export default function UsernamePw() {
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
                 <div className="flex-between">
                   <div className="buttons">
-                    <LoginAbortButton />
+                    {!securityZoneAction && <LoginAbortButton />}
                     <UsernamePwSubmitButton {...formProps} />
                     <UsernamePwAnotherDeviceButton />
                   </div>
-
-                  <div className="links">
-                    <RenderResetPasswordLink />
-                    <RenderRegisterLink />
-                  </div>
+                  {!securityZoneAction && (
+                    <div className="links">
+                      <RenderResetPasswordLink />
+                      <RenderRegisterLink />
+                    </div>
+                  )}
                 </div>
               </form>
             );
@@ -107,20 +121,22 @@ function UsernameInputPart(): React.JSX.Element {
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
-        <div className="welcome-back-container">
-          <legend>
-            <FormattedMessage
-              defaultMessage="Welcome back, {username}!"
-              description="Login username input"
-              values={{
-                username: <strong>{authn_options.display_name}</strong>,
-              }}
-            />
-          </legend>
-          <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
-            <FormattedMessage defaultMessage="Different user?" description="Login username input" />
-          </a>
-        </div>
+        {!securityZoneAction && (
+          <div className="welcome-back-container">
+            <legend>
+              <FormattedMessage
+                defaultMessage="Welcome back, {username}!"
+                description="Login username input"
+                values={{
+                  username: <strong>{authn_options.display_name}</strong>,
+                }}
+              />
+            </legend>
+            <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+              <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+            </a>
+          </div>
+        )}
         <FinalField
           required={true}
           disabled={true}
@@ -180,14 +196,18 @@ function RenderResetPasswordLink(): React.JSX.Element {
   );
 }
 
-function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
+export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   /* Disable the button when:
    *   - the app is loading data
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _inputValues = Boolean(props.values?.["username"]) && Boolean(props.values?.["currentPassword"]);
+  const _hasUserNameValue = Boolean(props.values?.["username"]);
+  const _hasPasswordValue = Boolean(props.values?.["currentPassword"]);
+  const _inputValues = securityZoneAction
+    ? Boolean(_hasPasswordValue)
+    : Boolean(_hasUserNameValue && _hasPasswordValue);
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
   const hasErrors = props.hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
@@ -202,7 +222,11 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): Rea
       id="login-form-button"
       onClick={props.handleSubmit}
     >
-      <FormattedMessage defaultMessage="Log in" description="Login front page" />
+      {securityZoneAction ? (
+        <FormattedMessage defaultMessage="Continue" description="Security zone continue" />
+      ) : (
+        <FormattedMessage defaultMessage="Log in" description="Login front page" />
+      )}
     </EduIDButton>
   );
 }
@@ -211,7 +235,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
-  if (!options.other_device) {
+  if (!options.other_device || securityZoneAction) {
     return null;
   }
 

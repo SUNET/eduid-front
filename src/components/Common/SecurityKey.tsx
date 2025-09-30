@@ -74,7 +74,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
       <p className="help-text">
         <FormattedMessage
           description="platform authn help text"
-          defaultMessage="E.g. USB Security Key or the device you are currently using."
+          defaultMessage="E.g. USB Security Key or passkey with the device you are currently using."
         />
       </p>
       {/* TODO: Use EduIDButton component after removing Reactstrap Button */}

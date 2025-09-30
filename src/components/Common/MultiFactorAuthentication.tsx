@@ -21,6 +21,8 @@ import ConfirmModal from "./ConfirmModal";
 import NotificationModal from "./NotificationModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
+export const FRONTEND_ACTION = "frontend_action";
+
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
   readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;

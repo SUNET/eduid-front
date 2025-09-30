@@ -26,6 +26,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
     if (response.isSuccess) {
       if (eduid_site_link) {
         window.location.assign(eduid_site_link);
+        sessionStorage.clear();
       }
     }
   }
