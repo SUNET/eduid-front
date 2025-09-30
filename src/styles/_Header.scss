@@ -92,6 +92,7 @@ header {
 
         a {
           color: var(--body-txt);
+          transition: none;
 
           &.active,
           &:hover {
