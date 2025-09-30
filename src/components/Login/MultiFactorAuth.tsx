@@ -65,7 +65,7 @@ export function MultiFactorAuth(): React.JSX.Element {
       <section className="intro">
         <h1>
           {securityZoneAction ? (
-            <FormattedMessage defaultMessage="Security Check: MFA" description="Security zone MFA heading" />
+            <FormattedMessage defaultMessage="Re-authentication: with MFA" description="Security zone MFA heading" />
           ) : has_session ? (
             <FormattedMessage
               defaultMessage="Welcome, {username}!"
@@ -75,7 +75,7 @@ export function MultiFactorAuth(): React.JSX.Element {
               }}
             />
           ) : (
-            <FormattedMessage defaultMessage="Log in: Security" description="Login MFA heading" />
+            <FormattedMessage defaultMessage="Log in: with MFA" description="Login MFA heading" />
           )}
         </h1>
         <div className="lead">

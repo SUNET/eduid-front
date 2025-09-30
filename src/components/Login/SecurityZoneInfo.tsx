@@ -83,12 +83,20 @@ export function SecurityZoneInfo(): React.JSX.Element {
             <h3>
               <FormattedMessage defaultMessage={`Authenticate to continue`} description="security zone redirect info" />
             </h3>
-            <span>
+            <p>
               <FormattedMessage
-                defaultMessage={`Afterward, you'll return to the page to {action} or you can cancel and return to {page}`}
+                defaultMessage={`Afterward, you will be redirected to the page to {action}.`}
                 description="security zone redirect info"
                 values={{
                   action: current?.action,
+                }}
+              />
+            </p>
+            <span className="help-text">
+              <FormattedMessage
+                defaultMessage={`If you wish to cancel this process without affecting a change you can return straight to {page} page.`}
+                description="security zone cancel info"
+                values={{
                   page: current?.redirectPath,
                 }}
               />
