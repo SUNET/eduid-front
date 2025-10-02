@@ -173,6 +173,14 @@ header {
     }
   }
 
+  ul.submenu-close,
+  ul.submenu-collapse {
+    li a {
+      font-size: $txt-sm;
+      color: var(--txt-gray);
+    }
+  }
+
   @media (max-width: $bp-xl) {
     .header-nav {
       flex: unset;
@@ -192,11 +200,6 @@ header {
           padding: 0.5rem 0 0.5rem 3px;
           line-height: 1.2;
           width: 100%;
-
-          a {
-            font-size: $txt-sm;
-            color: var(--txt-gray);
-          }
         }
       }
     }
