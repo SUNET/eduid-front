@@ -51,6 +51,7 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
 
   if (result.data && typeof result.data === "object" && "error" in result.data && result.data.error === true) {
     // Handle notification dispatching directly in the base query instead of in middleware
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const errorData = result.data as any;
     
     // Check for special messages that should clear notifications
@@ -81,7 +82,7 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
       setTimeout(() => {
         try {
           window.scroll(0, 0);
-        } catch (error) {
+        } catch (_error) {
           // window.scroll isn't available in the tests jsdom environment
         }
       }, 100);
@@ -92,7 +93,7 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
       setTimeout(() => {
         try {
           window.scroll(0, 0);
-        } catch (error) {
+        } catch (_error) {
           // window.scroll isn't available in the tests jsdom environment
         }
       }, 100);

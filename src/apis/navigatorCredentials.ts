@@ -36,7 +36,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
   setTimeout(() => {
     try {
       window.scroll(0, 0);
-    } catch (error) {
+    } catch (_error) {
       // window.scroll isn't available in the tests jsdom environment
     }
   }, 100);
