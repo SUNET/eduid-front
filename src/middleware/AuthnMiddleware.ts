@@ -6,8 +6,9 @@ import {
   UnknownAction,
 } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { ApiResponse, genericApiFail, StateWithCommonConfig } from "apis/common";
+import { ApiResponse, StateWithCommonConfig } from "apis/common";
 import authnApi, { AuthenticateResponse } from "apis/eduidAuthn";
+import { showNotification } from "slices/Notifications";
 
 interface ErrorPayload {
   error: boolean;
@@ -48,7 +49,17 @@ authnMiddleware.startListening({
         const url_base = state.config.authn_service_url;
         window.location.href = url_base + "/services/authn/login?next=" + encodeURIComponent(next);
       } else {
-        api.dispatch(genericApiFail(`HTTP ${response.status} ${"error" in response ? response.error : ""}`));
+        api.dispatch(showNotification({ 
+          message: `HTTP ${response.status} ${"error" in response ? response.error : ""}`, 
+          level: "error" 
+        }));
+        setTimeout(() => {
+          try {
+            window.scroll(0, 0);
+          } catch (error) {
+            // window.scroll isn't available in the tests jsdom environment
+          }
+        }, 100);
       }
     } else if (
       "error" in response &&

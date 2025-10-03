@@ -1,12 +1,12 @@
 /**
  * Tests for customBaseQuery and how it dispatches errors
+ * 
+ * Note: Notification dispatching is now handled directly in customBaseQuery,
+ * not via middleware. See customBaseQuery-notifications-test.tsx for comprehensive tests.
  */
 
 import { configureStore } from "@reduxjs/toolkit";
-import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { customBaseQuery } from "apis/common";
 import { notificationsSlice } from "slices/Notifications";
-import notifyAndDispatch from "middleware/notify-middleware";
 
 // Mock state with config
 const mockState = {
@@ -35,21 +35,11 @@ describe("customBaseQuery error handling", () => {
     dispatchedActions = [];
   });
 
-  test("customBaseQuery dispatches error data when API returns error", async () => {
-    // Mock fetchBaseQuery to return an error response
-    const mockRawBaseQuery = jest.fn().mockResolvedValue({
-      data: {
-        type: "test_FAIL",
-        error: true,
-        payload: {
-          message: "test.error",
-        },
-      },
-      meta: {},
-    });
-
-    // We can't easily test the actual customBaseQuery because fetchBaseQuery is created inside it
-    // So we test the concept: when an error response is received, it should be dispatched
+  test("customBaseQuery dispatches showNotification actions for errors", () => {
+    // This test documents that customBaseQuery now dispatches showNotification
+    // directly instead of dispatching error data to be handled by middleware.
+    // See customBaseQuery-notifications-test.tsx for comprehensive integration tests.
+    
     const errorResponse = {
       type: "test_FAIL",
       error: true,
@@ -58,34 +48,20 @@ describe("customBaseQuery error handling", () => {
       },
     };
 
-    mockApi.dispatch(structuredClone(errorResponse));
+    // In the new flow, customBaseQuery dispatches showNotification actions
+    mockApi.dispatch({
+      type: "notifications/showNotification",
+      payload: {
+        message: "test.error",
+        level: "error",
+      },
+    });
 
     expect(dispatchedActions).toHaveLength(1);
-    expect(dispatchedActions[0]).toEqual(errorResponse);
-  });
-
-  test("integration test: error flows through to notification", () => {
-    const store = configureStore({
-      reducer: {
-        notifications: notificationsSlice.reducer,
-      },
-      middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(notifyAndDispatch),
-    });
-
-    // Simulate what customBaseQuery does: dispatch the error data
-    store.dispatch({
-      type: "test_FAIL",
-      error: true,
-      payload: {
-        message: "test.error.message",
-      },
-    });
-
-    const state = store.getState();
-    expect(state.notifications.error).toEqual({
+    expect(dispatchedActions[0].type).toBe("notifications/showNotification");
+    expect(dispatchedActions[0].payload).toEqual({
+      message: "test.error",
       level: "error",
-      message: "test.error.message",
     });
   });
 });

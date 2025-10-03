@@ -108,8 +108,8 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
 };
 
 /*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
+// Legacy action creator for API errors. No longer used - notifications are now dispatched directly
+// from customBaseQuery above. Kept for backwards compatibility.
 export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
   return {
     error: true,
