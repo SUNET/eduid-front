@@ -2,6 +2,7 @@ import { createAction, PayloadAction } from "@reduxjs/toolkit";
 import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { EduidJSAppCommonConfig } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
+import { clearNotifications, showNotification } from "slices/Notifications";
 import { ajaxHeaders } from "ts_common";
 
 const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
@@ -49,9 +50,54 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
   const result = await rawBaseQuery(base_args, api, extraOptions);
 
   if (result.data && typeof result.data === "object" && "error" in result.data && result.data.error === true) {
-    // dispatch the API error to the nofification middleware
-    // but use a clone of the data as the current middleware modifies the data
-    api.dispatch(structuredClone(result.data));
+    // Handle notification dispatching directly in the base query instead of in middleware
+    const errorData = result.data as any;
+    
+    // Check for special messages that should clear notifications
+    if (
+      errorData.payload?.message === "authn_status.must-authenticate" ||
+      errorData.payload?.message === "resetpw.captcha-already-completed"
+    ) {
+      api.dispatch(clearNotifications());
+    } 
+    // Handle errors when error flag is true and payload exists
+    else if (errorData.error && errorData.payload) {
+      let msg: string;
+      
+      // Handle CSRF token errors
+      if (errorData.payload.error?.csrf_token !== undefined) {
+        msg = "csrf.try-again";
+      }
+      // Handle NIN errors
+      else if (errorData.payload.error?.nin) {
+        msg = errorData.payload.error.nin[0];
+      }
+      // Handle general errors
+      else {
+        msg = errorData.payload.errorMsg || errorData.payload.message || "error_in_form";
+      }
+      
+      api.dispatch(showNotification({ message: msg, level: "error" }));
+      setTimeout(() => {
+        try {
+          window.scroll(0, 0);
+        } catch (error) {
+          // window.scroll isn't available in the tests jsdom environment
+        }
+      }, 100);
+    }
+    // Handle info messages (when error flag is not true or payload exists without error flag)
+    else if (errorData.payload?.message) {
+      api.dispatch(showNotification({ message: errorData.payload.message, level: "info" }));
+      setTimeout(() => {
+        try {
+          window.scroll(0, 0);
+        } catch (error) {
+          // window.scroll isn't available in the tests jsdom environment
+        }
+      }, 100);
+    }
+
     // return as error for rtk query purposes
     return {
       error: result.data,
