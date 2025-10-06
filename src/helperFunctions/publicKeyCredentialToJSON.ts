@@ -57,7 +57,12 @@ function bufferToBase64url(buffer: ArrayBuffer | null): Base64urlString | undefi
 
   // Base64 to base64url
   // We assume that the base64url string is well-formed.
-  const base64urlString = base64String.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
+  function base64urlReplacer(c: string): string {
+    if (c === "+") return "-";
+    if (c === "/") return "_";
+    return "";
+  }
+  const base64urlString = base64String.replaceAll(/[+/=]/g, base64urlReplacer);
   return base64urlString;
 }
 
