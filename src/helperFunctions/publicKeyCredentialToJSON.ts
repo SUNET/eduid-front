@@ -7,6 +7,43 @@
 
 type Base64urlString = string;
 
+function isArrayBufferView(obj: unknown): obj is ArrayBufferView {
+  return (
+    obj !== null &&
+    typeof obj === "object" &&
+    "buffer" in obj &&
+    (obj as ArrayBufferView).buffer instanceof ArrayBuffer &&
+    typeof (obj as ArrayBufferView).byteLength === "number"
+  );
+}
+
+function encodeBuffersDeep(obj: unknown): unknown {
+  if (obj instanceof ArrayBuffer) {
+    return bufferToBase64url(obj);
+  }
+  if (isArrayBufferView(obj)) {
+    // Only encode the underlying buffer if the view covers the whole buffer, otherwise slice
+    const view = obj as ArrayBufferView;
+    if (view.byteOffset === 0 && view.byteLength === view.buffer.byteLength) {
+      return bufferToBase64url(view.buffer instanceof ArrayBuffer ? view.buffer : null);
+    } else {
+      const sliced = view.buffer.slice(view.byteOffset, view.byteOffset + view.byteLength);
+      return bufferToBase64url(sliced instanceof ArrayBuffer ? sliced : null);
+    }
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(encodeBuffersDeep);
+  }
+  if (obj && typeof obj === "object") {
+    const result: Record<string, unknown> = {};
+    for (const key of Object.keys(obj)) {
+      result[key] = encodeBuffersDeep((obj as Record<string, unknown>)[key]);
+    }
+    return result;
+  }
+  return obj;
+}
+
 function bufferToBase64url(buffer: ArrayBuffer | null): Base64urlString | undefined {
   if (!buffer) {
     return undefined;
@@ -37,7 +74,7 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
           id: credential.id,
           rawId: bufferToBase64url(credential.rawId),
           type: credential.type,
-          clientExtensionResults: credential.getClientExtensionResults(),
+          clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
           response: {
             clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
             authenticatorData: bufferToBase64url(credential.response.authenticatorData),
@@ -51,7 +88,7 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
           id: credential.id,
           rawId: bufferToBase64url(credential.rawId),
           type: credential.type,
-          clientExtensionResults: credential.getClientExtensionResults(),
+          clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
           response: {
             clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
             authenticatorData: bufferToBase64url(credential.response.getAuthenticatorData()),
