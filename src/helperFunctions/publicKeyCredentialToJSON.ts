@@ -15,6 +15,10 @@ function isArrayBufferView(obj: unknown): obj is ArrayBufferView {
   );
 }
 
+function getArrayBufferOrNull(obj: unknown): ArrayBuffer | null {
+  return obj instanceof ArrayBuffer ? obj : null;
+}
+
 function encodeBuffersDeep(obj: unknown): unknown {
   if (obj instanceof ArrayBuffer) {
     return bufferToBase64url(obj);
@@ -22,10 +26,10 @@ function encodeBuffersDeep(obj: unknown): unknown {
   if (isArrayBufferView(obj)) {
     // Only encode the underlying buffer if the view covers the whole buffer, otherwise slice
     if (obj.byteOffset === 0 && obj.byteLength === obj.buffer.byteLength) {
-      return bufferToBase64url(obj.buffer instanceof ArrayBuffer ? obj.buffer : null);
+      return bufferToBase64url(getArrayBufferOrNull(obj.buffer));
     } else {
       const sliced = obj.buffer.slice(obj.byteOffset, obj.byteOffset + obj.byteLength);
-      return bufferToBase64url(sliced instanceof ArrayBuffer ? sliced : null);
+      return bufferToBase64url(getArrayBufferOrNull(sliced));
     }
   }
   if (Array.isArray(obj)) {
