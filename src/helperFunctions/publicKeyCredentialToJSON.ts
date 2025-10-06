@@ -5,8 +5,6 @@
  * This can be removed when extensions start to behave.
  */
 
-type Base64urlString = string;
-
 function isArrayBufferView(obj: unknown): obj is ArrayBufferView {
   return (
     obj !== null &&
@@ -23,11 +21,10 @@ function encodeBuffersDeep(obj: unknown): unknown {
   }
   if (isArrayBufferView(obj)) {
     // Only encode the underlying buffer if the view covers the whole buffer, otherwise slice
-    const view = obj as ArrayBufferView;
-    if (view.byteOffset === 0 && view.byteLength === view.buffer.byteLength) {
-      return bufferToBase64url(view.buffer instanceof ArrayBuffer ? view.buffer : null);
+    if (obj.byteOffset === 0 && obj.byteLength === obj.buffer.byteLength) {
+      return bufferToBase64url(obj.buffer instanceof ArrayBuffer ? obj.buffer : null);
     } else {
-      const sliced = view.buffer.slice(view.byteOffset, view.byteOffset + view.byteLength);
+      const sliced = obj.buffer.slice(obj.byteOffset, obj.byteOffset + obj.byteLength);
       return bufferToBase64url(sliced instanceof ArrayBuffer ? sliced : null);
     }
   }
@@ -44,7 +41,15 @@ function encodeBuffersDeep(obj: unknown): unknown {
   return obj;
 }
 
-function bufferToBase64url(buffer: ArrayBuffer | null): Base64urlString | undefined {
+// Base64 to base64url
+// We assume that the base64url string is well-formed.
+function base64urlReplacer(c: string): string {
+  if (c === "+") return "-";
+  if (c === "/") return "_";
+  return "";
+}
+
+function bufferToBase64url(buffer: ArrayBuffer | null): string | undefined {
   if (!buffer) {
     return undefined;
   }
@@ -55,13 +60,6 @@ function bufferToBase64url(buffer: ArrayBuffer | null): Base64urlString | undefi
   // Binary string to base64
   const base64String = btoa(str);
 
-  // Base64 to base64url
-  // We assume that the base64url string is well-formed.
-  function base64urlReplacer(c: string): string {
-    if (c === "+") return "-";
-    if (c === "/") return "_";
-    return "";
-  }
   const base64urlString = base64String.replaceAll(/[+/=]/g, base64urlReplacer);
   return base64urlString;
 }
