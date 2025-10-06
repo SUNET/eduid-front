@@ -2,7 +2,7 @@
  * This file contains helper functions for converting PublicKeyCredential objects to JSON.
  * It only exists because some password extensions create PublicKeyCredential objects without
  * a toJSON method and (incomplete internal?) data for serialization.
- * This can be removed when extensions start to behave.*9*
+ * This can be removed when extensions start to behave.
  */
 
 type Base64urlString = string;
@@ -13,10 +13,7 @@ function bufferToBase64url(buffer: ArrayBuffer | null): Base64urlString | undefi
   }
   // Buffer to binary string
   const byteView = new Uint8Array(buffer);
-  let str = "";
-  for (const charCode of byteView) {
-    str += String.fromCharCode(charCode);
-  }
+  const str = Array.from(byteView, (byte) => String.fromCharCode(byte)).join("");
 
   // Binary string to base64
   const base64String = btoa(str);
