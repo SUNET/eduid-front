@@ -1,4 +1,4 @@
-import { emailPattern, eppnPattern, studentEppnPattern } from "./regexPatterns";
+import { emailPattern, eppnPattern, faultyEppnPattern, studentEppnPattern } from "./regexPatterns";
 
 interface UserNameData {
   username?: string;
@@ -30,6 +30,8 @@ export function validateUserNameField(value?: string): string | undefined {
   const stringWithoutSpaces = value?.replace(/\s/g, "");
   if (!stringWithoutSpaces) {
     return "required";
+  } else if (faultyEppnPattern.test(stringWithoutSpaces)) {
+    return "invalid username";
   } else if (eppnPattern.test(stringWithoutSpaces)) {
     return undefined;
   } else if (studentEppnPattern.test(stringWithoutSpaces)) {

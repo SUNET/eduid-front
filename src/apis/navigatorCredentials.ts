@@ -26,7 +26,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
       }
     }
   } catch (error) {
-    if (error instanceof DOMException) {
+    if (error instanceof Error) {
       errorMessage = error.message;
     } else {
       errorMessage = "Unknown error occurred.";

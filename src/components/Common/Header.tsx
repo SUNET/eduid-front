@@ -26,6 +26,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
     if (response.isSuccess) {
       if (eduid_site_link) {
         window.location.assign(eduid_site_link);
+        sessionStorage.clear();
       }
     }
   }
@@ -69,8 +70,13 @@ export function Header(props: HeaderProps): React.JSX.Element {
 
   return (
     <header id="header">
-      <a href={eppn ? dashboard_link : eduid_site_link} aria-label="eduID start" title="eduID start">
-        <div id="eduid-logo" className="eduid-logo" />
+      <a
+        href={eppn ? dashboard_link : eduid_site_link}
+        aria-label="eduID start"
+        title="eduID start"
+        className="eduid-logo"
+      >
+        <div id="eduid-logo" />
       </a>
       {button}
     </header>

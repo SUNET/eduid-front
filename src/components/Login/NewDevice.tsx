@@ -1,4 +1,5 @@
 import { loginApi } from "apis/eduidLogin";
+import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import React, { useEffect, useState } from "react";
@@ -51,6 +52,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
   const [switchChecked, setSwitchChecked] = useState(remember_me);
   const dispatch = useAppDispatch();
   const infoRememberME = !switchChecked;
+  const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
 
   function handleSwitchChange(): void {
     const newValue = !switchChecked;
@@ -84,7 +86,13 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
     return null;
   }
 
-  if (!next_page || next_page === "TOU" || next_page === "OTHER_DEVICE" || next_page === "FINISHED") {
+  if (
+    !next_page ||
+    next_page === "TOU" ||
+    next_page === "OTHER_DEVICE" ||
+    next_page === "FINISHED" ||
+    securityZoneAction
+  ) {
     // Don't show this component on some screens, or before next_page is initialised
     return null;
   }
