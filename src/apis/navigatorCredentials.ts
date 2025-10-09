@@ -1,5 +1,5 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
-import { genericApiFail } from "./common";
+import { showNotification } from "slices/Notifications";
 
 const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
   let errorMessage: string = "";
@@ -32,7 +32,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
       errorMessage = "Unknown error occurred.";
     }
   }
-  api.dispatch(genericApiFail(errorMessage));
+  api.dispatch(showNotification({ message: errorMessage, level: "error" }));
   return {
     error: {
       message: errorMessage,

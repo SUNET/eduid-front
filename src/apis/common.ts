@@ -1,4 +1,4 @@
-import { createAction, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import {
   BaseQueryApi,
   BaseQueryFn,
@@ -119,18 +119,6 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
   }
   return result;
 };
-
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
 
 export interface ApiResponse<T> {
   error?: boolean;
