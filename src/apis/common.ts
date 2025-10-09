@@ -115,6 +115,11 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         const msg = result.data.payload.message || "error_in_form";
         api.dispatch(showNotification({ message: msg, level: "error" }));
       }
+      // For RTK query purposes return the result as error
+      return {
+        error: result.data,
+        meta: result.meta,
+      };
     }
   }
   return result;
