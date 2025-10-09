@@ -1,18 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { eduIDApi } from "apis/common";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import notifyAndDispatch from "middleware/notify-middleware";
 import { reAuthnMiddleware } from "middleware/ReAuthnMiddleware";
 import logger from "redux-logger";
 import eduIDApp from "./eduid-store";
 
 /* setup middlewares */
-const middlewares = [
-  notifyAndDispatch,
-  eduIDApi.middleware,
-  navigatorCredentialsApi.middleware,
-  reAuthnMiddleware.middleware,
-];
+const middlewares = [eduIDApi.middleware, navigatorCredentialsApi.middleware, reAuthnMiddleware.middleware];
 if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "development") {
   middlewares.push(logger);
 }
