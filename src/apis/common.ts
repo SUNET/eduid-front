@@ -105,12 +105,16 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
         await re_authenticate(csrf_token, api);
       } else if (result.data.payload.error?.nin) {
         api.dispatch(showNotification({ message: result.data.payload.error.nin[0], level: "error" }));
-      } else if (
-        result.data.payload.message === "resetpw.captcha-already-completed" ||
-        result.data.payload.message === "authn_status.must-authenticate"
-      ) {
+      } else if (result.data.payload.message === "resetpw.captcha-already-completed") {
         // captcha already completed, no need to show error
-        // reauth is handled in ReAuthnMiddleware
+      } else if (result.data.payload.message === "authn_status.must-authenticate") {
+        // set frontend_action and trigger re-authentication modal
+        // use string types to avoid circular dependencies
+        const meta = (result.data as { meta?: { frontend_action?: string } }).meta;
+        if (meta?.frontend_action) {
+          api.dispatch({ type: "authn/setFrontendActionAndState", payload: { frontend_action: meta.frontend_action } });
+        }
+        api.dispatch({ type: "authn/setReAuthenticate", payload: true });
       } else {
         const msg = result.data.payload.message || "error_in_form";
         api.dispatch(showNotification({ message: msg, level: "error" }));
