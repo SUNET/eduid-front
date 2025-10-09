@@ -12,4 +12,5 @@ export const emptyStringPattern = /^\s+$/;
 export const emailPattern =
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 export const eppnPattern = /^[a-zA-Z]{5}-[a-zA-Z]{5}$/;
+export const faultyEppnPattern = /^[a-zA-Z]{5}-[a-zA-Z]{5}@[eE][dD][uU][iI][dD]\.[sS][eE]$/;
 export const studentEppnPattern = /^[mM][aA]-[a-zA-Z0-9]{8}$/;
