@@ -11,7 +11,7 @@ import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 /**
  * Render the extra security options, security key, Freja eID and phone verification
  */
-export function HandleExtraSecurities(): React.JSX.Element | null {
+export function HandleExtraSecurities(setCurrentPage: any): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);

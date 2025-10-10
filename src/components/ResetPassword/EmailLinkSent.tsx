@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function EmailLinkSent(): React.JSX.Element | null {
+export function EmailLinkSent(setCurrentPage: any): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
@@ -28,10 +28,15 @@ export function EmailLinkSent(): React.JSX.Element | null {
         if (response.isSuccess) {
           dispatch(clearNotifications());
           if (Object.values(response.data.payload.extra_security)) {
-            resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-          } else resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+            setCurrentPage("HandleExtraSecurities");
+            // resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+            setCurrentPage("HandleExtraSecurities");
+          }
+          // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+          else setCurrentPage("SetNewPassword");
         } else {
-          resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+          // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+          setCurrentPage(" HandleExtraSecurities");
         }
       }
     }

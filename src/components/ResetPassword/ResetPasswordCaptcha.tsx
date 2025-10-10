@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function ResetPasswordCaptcha(): React.JSX.Element | null {
+export function ResetPasswordCaptcha(setCurrentPage: any): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
@@ -67,12 +67,12 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
         </p>
       </div>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha}/>
+      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
     </Fragment>
   );
 }
 
-export function ProcessCaptcha(): null {
+export function ProcessCaptcha(setCurrentPage: any): null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const email = useAppSelector((state) => state.resetPassword.email_address);
@@ -87,7 +87,8 @@ export function ProcessCaptcha(): null {
       if (response.isSuccess) {
         resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       } else {
-        resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
+        setCurrentPage("AskForEmailOrConfirmEmail");
+        // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
       }
     }
   }
