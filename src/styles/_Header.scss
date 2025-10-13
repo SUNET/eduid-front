@@ -25,26 +25,10 @@ header {
     }
   }
 
-  .header-user {
-    text-transform: lowercase;
-    background: none;
-    box-shadow: none;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    @extend .text-bold;
-
-    svg {
-      padding-left: 0.75rem;
-      font-size: 1.5rem;
-      width: 24px;
-    }
-  }
-
   nav {
     flex: 2;
 
-    button.header-user {
+    .mobile-user {
       display: none;
     }
 
@@ -58,7 +42,7 @@ header {
         align-items: center;
       }
 
-      .desktop-username {
+      .desktop-user {
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
@@ -66,10 +50,6 @@ header {
         padding: 0 1rem 0 0;
         font-family: $inter-bold;
         font-size: $txt-sm;
-
-        @media (max-width: $bp-xl) {
-          display: none;
-        }
       }
 
       ul {
@@ -105,7 +85,7 @@ header {
           }
         }
 
-        &.submenu-close {
+        &.submenu-closed {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
@@ -150,7 +130,7 @@ header {
               transform: rotate(180deg);
             }
 
-            .submenu-close {
+            .submenu-closed {
               opacity: 1;
               visibility: visible;
               display: flex;
@@ -164,7 +144,7 @@ header {
         }
       }
 
-      &.submenu-close {
+      &.submenu-closed {
         position: absolute;
         min-width: 180px;
         z-index: 100;
@@ -178,27 +158,34 @@ header {
     }
   }
 
-  ul.submenu-close,
-  ul.submenu-collapse {
+  ul.submenu-closed,
+  ul.submenu-open {
     li a {
       font-size: $txt-sm;
       color: var(--txt-gray);
     }
   }
 
+  /* Single dropdown menu */
   @media (max-width: $bp-xl) {
-    .header-nav {
+    nav {
       flex: unset;
-      .nav-menu {
-        display: none;
-      }
 
-      button.header-user {
+      .mobile-user {
         display: flex;
+        text-transform: lowercase;
+        background: none;
+        box-shadow: none;
+        padding: 0 1rem;
         align-items: center;
-      }
 
-      ul.submenu-collapse {
+        svg {
+          padding-left: 0.75rem;
+          font-size: 1.5rem;
+          width: 24px;
+        }
+      }
+      ul.submenu-open {
         margin: 0 0.75rem 1rem 1.5rem;
 
         li {
@@ -207,103 +194,105 @@ header {
           width: 100%;
         }
       }
-    }
 
-    button {
-      @media (max-width: $bp-sm) {
-        span {
-          width: 40vw;
-          overflow: hidden;
-          white-space: nowrap;
-          display: inline-block;
-          text-overflow: ellipsis;
-          text-align: right;
-        }
-      }
-    }
-
-    ul li a {
-      color: var(--body-txt);
-
-      &.active,
-      &:hover {
-        color: var(--txt-orange);
-      }
-    }
-
-    .nav-menu {
-      display: none;
-      min-width: 250px;
-
-      @media (max-width: $bp-xs) {
-        min-width: calc(100% - #{2 * $margin});
-        left: $margin;
-      }
-
-      ul {
-        padding-left: 0px;
-        text-align: left;
-        flex-direction: column;
-
-        .flex-between {
-          padding-left: 0.75rem;
-          margin: 3px 0;
-          width: 100%;
-          position: relative;
-
-          &:has(a.active) {
-            background-color: var(--body-gray);
-            border-radius: 1.5rem;
-          }
-
-          .submenu-close {
-            max-height: 0;
-          }
-
-          .submenu-collapse {
-            max-height: 500px;
+      button {
+        @media (max-width: $bp-sm) {
+          span {
+            width: 40vw;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-overflow: ellipsis;
+            text-align: right;
           }
         }
       }
 
-      &.active {
-        display: flex;
-        flex-direction: column;
-        opacity: 1;
-        position: absolute;
-        top: 70px;
-        right: $margin;
-        width: 20rem;
-        background-color: var(--contrast-color);
-        box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
-        border-radius: 10px;
-        padding: 0.75rem;
-        z-index: 200;
-        transition: all 0.5s ease;
+      ul li a {
+        color: var(--body-txt);
 
-        .link svg {
-          padding-right: 5px;
+        &.active,
+        &:hover {
+          color: var(--txt-orange);
         }
       }
 
-      .menu {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: 2.7rem;
-        line-height: 1.2;
+      .nav-menu {
+        display: none;
+        min-width: 250px;
 
-        &:nth-child(4) {
-          border-bottom: 1px solid var(--border-gray);
+        @media (max-width: $bp-xs) {
+          min-width: calc(100% - #{2 * $margin});
+          left: $margin;
         }
-      }
 
-      .logout-button-wrapper {
-        margin: 0.5rem 0.75rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--border-gray);
-        width: calc(100% - 1.5rem);
-        flex: 1;
+        ul {
+          padding-left: 0px;
+          text-align: left;
+          flex-direction: column;
+
+          .flex-between {
+            padding-left: 0.75rem;
+            margin: 3px 0;
+            width: 100%;
+            position: relative;
+
+            &:has(a.active) {
+              background-color: var(--body-gray);
+              border-radius: 1.5rem;
+            }
+
+            .submenu-closed {
+              max-height: 0;
+            }
+
+            .submenu-open {
+              max-height: 500px;
+            }
+          }
+        }
+
+        &.active {
+          display: flex;
+          flex-direction: column;
+          opacity: 1;
+          position: absolute;
+          top: 70px;
+          right: $margin;
+          width: 20rem;
+          background-color: var(--contrast-color);
+          box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
+          border-radius: 10px;
+          padding: 0.75rem;
+          z-index: 200;
+          transition: all 0.5s ease;
+
+          .link svg {
+            padding-right: 5px;
+          }
+        }
+
+        .menu {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          height: 2.7rem;
+          line-height: 1.2;
+
+          &:nth-child(4) {
+            border-bottom: 1px solid var(--border-gray);
+          }
+        }
+        .desktop-user {
+          display: none;
+        }
+        .logout-button-wrapper {
+          margin: 0.5rem 0.75rem;
+          padding-top: 0.5rem;
+          border-top: 1px solid var(--border-gray);
+          width: calc(100% - 1.5rem);
+          flex: 1;
+        }
       }
     }
   }
