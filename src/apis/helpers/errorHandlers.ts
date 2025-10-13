@@ -1,3 +1,4 @@
+import type { QueryReturnValue } from "@reduxjs/toolkit/query";
 import type { BaseQueryApi, FetchBaseQueryError, FetchBaseQueryMeta } from "@reduxjs/toolkit/query/react";
 import { showNotification } from "slices/Notifications";
 import { customBaseQuery } from "../common";
@@ -21,7 +22,7 @@ export async function re_authenticate(csrf_token: string | undefined, api: BaseQ
 }
 
 export async function handleBaseQueryError(
-  result: { error: FetchBaseQueryError; data?: undefined; meta?: FetchBaseQueryMeta | undefined },
+  result: Extract<QueryReturnValue<unknown, FetchBaseQueryError, FetchBaseQueryMeta>, { error: FetchBaseQueryError }>,
   csrf_token: string | undefined,
   api: BaseQueryApi,
   state: StateWithCommonConfig
