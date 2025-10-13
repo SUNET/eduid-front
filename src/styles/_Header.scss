@@ -39,21 +39,6 @@ header {
       justify-content: space-between;
 
       ul {
-        .menu-item-wrapper button {
-          background-color: transparent;
-          box-shadow: none;
-          padding: 0 0.75rem;
-
-          svg {
-            color: var(--txt-gray);
-          }
-          @media (max-width: $bp-xl) {
-            &:hover svg {
-              color: var(--txt-orange);
-            }
-          }
-        }
-
         a {
           color: var(--body-txt);
           transition: none;
@@ -62,10 +47,40 @@ header {
           &:hover {
             color: var(--txt-orange);
           }
-          &.active {
+        }
+
+        .menu-item-wrapper {
+          @extend .flex-between;
+          padding-left: 0.75rem;
+          margin: 3px 0;
+          width: 100%;
+          position: relative;
+
+          &:has(a.active) {
             background-color: var(--body-gray);
             border-radius: 1.5rem;
-            padding: 0.75rem;
+          }
+          // chevron
+          button {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0 0.75rem;
+
+            svg {
+              color: var(--txt-gray);
+            }
+            @media (max-width: $bp-xl) {
+              &:hover svg {
+                color: var(--txt-orange);
+              }
+            }
+          }
+        }
+
+        .submenu,
+        .submenu-open {
+          li a {
+            font-size: $txt-sm;
           }
         }
 
@@ -104,11 +119,6 @@ header {
         }
 
         @media (min-width: $bp-xl) {
-          // li:has(> .menu-item-wrapper) {
-          //   align-self: center;
-          //   margin-right: 1rem;
-          // }
-
           li:hover {
             svg {
               transform: rotate(180deg);
@@ -156,25 +166,6 @@ header {
       }
     }
   }
-  .menu-item-wrapper {
-    @extend .flex-between;
-    padding-left: 0.75rem;
-    margin: 3px 0;
-    width: 100%;
-    position: relative;
-
-    &:has(a.active) {
-      background-color: var(--body-gray);
-      border-radius: 1.5rem;
-    }
-  }
-  ul.submenu,
-  ul.submenu-open {
-    li a {
-      font-size: $txt-sm;
-      color: var(--txt-gray);
-    }
-  }
 
   /* Single dropdown menu */
   @media (max-width: $bp-xl) {
@@ -215,6 +206,7 @@ header {
           padding-left: 0px;
           text-align: left;
           flex-direction: column;
+          width: 100%;
 
           li a {
             color: var(--body-txt);
@@ -271,7 +263,7 @@ header {
           background-color: var(--contrast-color);
           box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
           border-radius: 10px;
-          padding: 0.75rem;
+          padding: $margin;
           z-index: 200;
           transition: all 0.5s ease;
 
