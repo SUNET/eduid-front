@@ -1,5 +1,6 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
 import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
+import type { ApiResponse } from "./helpers/types";
 
 interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;

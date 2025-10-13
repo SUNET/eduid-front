@@ -1,5 +1,6 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
 import { FetchIdentitiesResponse, UserIdentities } from "./eduidPersonalData";
+import type { ApiResponse } from "./helpers/types";
 
 export interface UpdateOfficialUserDataResponse {
   message: string;

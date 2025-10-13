@@ -1,16 +1,17 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
+import type { ApiResponse } from "./helpers/types";
 
 export interface JsConfigGetConfigResponse {
   [key: string]: unknown;
 }
-  
+
 export const jsConfigApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    fetchJsConfig: builder.query<ApiResponse<JsConfigGetConfigResponse>,void>({
+    fetchJsConfig: builder.query<ApiResponse<JsConfigGetConfigResponse>, void>({
       query: () => ({
-        url: ""
+        url: "",
       }),
-      extraOptions: { service: "jsConfig"}
-    })
-  })
-})
+      extraOptions: { service: "jsConfig" },
+    }),
+  }),
+});

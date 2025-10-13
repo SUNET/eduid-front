@@ -1,5 +1,6 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
 import { GetStatusRequest, GetStatusResponse, WebauthnMethods } from "./eduidEidas";
+import type { ApiResponse } from "./helpers/types";
 
 interface BankIDCommonRequest {
   frontend_state?: string;

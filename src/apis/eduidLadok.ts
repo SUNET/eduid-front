@@ -1,4 +1,5 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
+import type { ApiResponse } from "./helpers/types";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;

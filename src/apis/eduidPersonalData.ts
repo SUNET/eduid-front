@@ -1,7 +1,8 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
 import { EmailInfo } from "./eduidEmail";
 import { LadokData } from "./eduidLadok";
 import { OrcidInfo } from "./eduidOrcid";
+import type { ApiResponse } from "./helpers/types";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
