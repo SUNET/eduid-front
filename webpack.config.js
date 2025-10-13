@@ -5,6 +5,9 @@ const autoprefixer = require("autoprefixer");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const transform = require("@formatjs/ts-transformer").transform;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// You can leverage your IDE's Intellisense (autocompletion, type check, etc.) with the helper function `defineReactCompilerLoaderOption`:
+const { defineReactCompilerLoaderOption, reactCompilerLoader } = require('react-compiler-webpack');
+
 
 module.exports = {
   mode: "development",
@@ -39,6 +42,22 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.[mc]?[jt]sx?$/i,
+        exclude: /node_modules/,
+        use: [
+          // babel-loader, swc-loader, esbuild-loader, or anything you like to transpile JSX should go here.
+          // If you are using rspack, the rspack's buiilt-in react transformation is sufficient.
+          // { loader: 'swc-loader' },
+          // Now add reactCompilerLoader
+          {
+            loader: reactCompilerLoader,
+            options: defineReactCompilerLoaderOption({
+              // React Compiler options goes here
+            })
+          }
+        ]
+      },
       {
         test: /\.js$/,
         loader: "babel-loader",
