@@ -1,7 +1,6 @@
-import { useSelector } from "@xstate/react";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -12,7 +11,7 @@ import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { ProcessCaptcha, ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail
@@ -37,23 +36,10 @@ export function ResetPasswordApp(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
+  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  // const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
-  const [currentPage, setCurrentPage] = useState<PageStatus>("resetPasswordApp");
-
-  const currentPages = {
-    AskForEmailOrConfirmEmail: <AskForEmailOrConfirmEmail />,
-    ResetPasswordConfirmEmail: <ResetPasswordConfirmEmail />,
-    ResetPasswordEnterEmail: <ResetPasswordEnterEmail />,
-
-    ResetPasswordCaptcha: <ResetPasswordCaptcha />,
-    ProcessCaptcha: <ProcessCaptcha />,
-    EmailLinkSent: <EmailLinkSent />,
-    HandleExtraSecurities: <HandleExtraSecurities />,
-    SetNewPassword: <SetNewPassword />,
-    ResetPasswordSuccess: <ResetPasswordSuccess />,
-  };
+  const [currentPage, setCurrentPage] = useState<PageStatus>();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -64,7 +50,8 @@ export function ResetPasswordApp(): React.JSX.Element {
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      setCurrentPage("SetNewPassword");
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
   }, [swedishEID_status]);
@@ -80,21 +67,21 @@ export function ResetPasswordApp(): React.JSX.Element {
 
   return (
     <React.Fragment>
-      {currentPages["AskForEmailOrConfirmEmail"] && <AskForEmailOrConfirmEmail setCurrentPage={setCurrentPage} />}
-      {currentPages["ResetPasswordConfirmEmail"] && <ResetPasswordConfirmEmail setCurrentPage={setCurrentPage} />}
-      {currentPages["ResetPasswordEnterEmail"] && <ResetPasswordEnterEmail setCurrentPage={setCurrentPage} />}
-      {currentPages["ResetPasswordCaptcha"] && <ResetPasswordCaptcha setCurrentPage={setCurrentPage} />}
-      {currentPages["ProcessCaptcha"] && <ProcessCaptcha setCurrentPage={setCurrentPage} />}
-      {currentPages["EmailLinkSent"] && <EmailLinkSent setCurrentPage={setCurrentPage} />}
-      {currentPages["HandleExtraSecurities"] && <HandleExtraSecurities setCurrentPage={setCurrentPage} />}
-      {currentPages["SetNewPassword"] && <SetNewPassword setCurrentPage={setCurrentPage} />}
-      {currentPages["ResetPasswordSuccess"] && <ResetPasswordSuccess setCurrentPage={setCurrentPage} />}
+      {currentPage === "AskForEmailOrConfirmEmail" && <AskForEmailOrConfirmEmail setCurrentPage={setCurrentPage} />}
+      {currentPage === "ResetPasswordConfirmEmail" && <ResetPasswordConfirmEmail setCurrentPage={setCurrentPage} />}
+      {currentPage === "ResetPasswordEnterEmail" && <ResetPasswordEnterEmail setCurrentPage={setCurrentPage} />}
+      {currentPage === "ResetPasswordCaptcha" && <ResetPasswordCaptcha setCurrentPage={setCurrentPage} />}
+      {currentPage === "ProcessCaptcha" && <ProcessCaptcha setCurrentPage={setCurrentPage} />}
+      {currentPage === "EmailLinkSent" && <EmailLinkSent setCurrentPage={setCurrentPage} />}
+      {currentPage === "HandleExtraSecurities" && <HandleExtraSecurities setCurrentPage={setCurrentPage} />}
+      {currentPage === "SetNewPassword" && <SetNewPassword setCurrentPage={setCurrentPage} />}
+      {currentPage === "ResetPasswordSuccess" && <ResetPasswordSuccess setCurrentPage={setCurrentPage} />}
     </React.Fragment>
   );
 }
 
-function AskForEmailOrConfirmEmail(setCurrentPage: any): null {
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
+  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
 
@@ -118,11 +105,11 @@ function AskForEmailOrConfirmEmail(setCurrentPage: any): null {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-export function ResetPasswordConfirmEmail(setCurrentPage: any): React.JSX.Element {
+export function ResetPasswordConfirmEmail({ setCurrentPage }: any): React.JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   useEffect(() => {
     if (captcha_completed) {

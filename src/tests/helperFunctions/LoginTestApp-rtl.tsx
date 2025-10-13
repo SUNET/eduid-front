@@ -1,6 +1,6 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
+// import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
@@ -60,11 +60,11 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const store = getTestEduIDStore(args.state || loginTestState);
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-      <ResetPasswordGlobalStateProvider>
-        <ReduxIntlProvider store={store}>
-          <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
-        </ReduxIntlProvider>
-      </ResetPasswordGlobalStateProvider>
+      // <ResetPasswordGlobalStateProvider>
+      <ReduxIntlProvider store={store}>
+        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
+      </ReduxIntlProvider>
+      // </ResetPasswordGlobalStateProvider>
     );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...args.options });

@@ -1,9 +1,9 @@
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface BackToLoginButtonProps {
   primary?: boolean;
@@ -13,7 +13,7 @@ interface BackToLoginButtonProps {
 export function GoBackButton(props: BackToLoginButtonProps): React.JSX.Element | null {
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   if (!props.onClickHandler && !loginRef) {
@@ -28,7 +28,8 @@ export function GoBackButton(props: BackToLoginButtonProps): React.JSX.Element |
     } else if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
+
+      // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }
   }
 

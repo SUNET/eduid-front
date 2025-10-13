@@ -2,16 +2,16 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function EmailLinkSent(setCurrentPage: any): React.JSX.Element | null {
+export function EmailLinkSent({ setCurrentPage }: any): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
@@ -36,7 +36,7 @@ export function EmailLinkSent(setCurrentPage: any): React.JSX.Element | null {
           else setCurrentPage("SetNewPassword");
         } else {
           // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-          setCurrentPage(" HandleExtraSecurities");
+          setCurrentPage("HandleExtraSecurities");
         }
       }
     }
@@ -46,7 +46,9 @@ export function EmailLinkSent(setCurrentPage: any): React.JSX.Element | null {
     if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
+      setCurrentPage("AskForEmailOrConfirmEmail");
+
+      // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }
   }
 
