@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "typography";
+@use "base";
 
 header {
   background-color: var(--contrast-color);
@@ -28,7 +29,7 @@ header {
   nav {
     flex: 2;
 
-    .mobile-user {
+    .mobile-user-btn {
       display: none;
     }
 
@@ -37,36 +38,19 @@ header {
       align-items: center;
       justify-content: space-between;
 
-      .logout-button-wrapper {
-        display: flex;
-        align-items: center;
-      }
-
-      .desktop-user {
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-overflow: ellipsis;
-        padding: 0 1rem 0 0;
-        font-family: $inter-bold;
-        font-size: $txt-sm;
-      }
-
       ul {
-        button {
+        .menu-item-wrapper button {
           background-color: transparent;
           box-shadow: none;
-
-          @media (max-width: $bp-xl) {
-            padding: 0 0.75rem;
-
-            &:hover svg {
-              color: var(--txt-orange);
-            }
-          }
+          padding: 0 0.75rem;
 
           svg {
             color: var(--txt-gray);
+          }
+          @media (max-width: $bp-xl) {
+            &:hover svg {
+              color: var(--txt-orange);
+            }
           }
         }
 
@@ -85,7 +69,7 @@ header {
           }
         }
 
-        &.submenu-closed {
+        &.submenu {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
@@ -120,17 +104,17 @@ header {
         }
 
         @media (min-width: $bp-xl) {
-          li:has(> .flex-between) {
-            align-self: center;
-            margin-right: 1rem;
-          }
+          // li:has(> .menu-item-wrapper) {
+          //   align-self: center;
+          //   margin-right: 1rem;
+          // }
 
           li:hover {
             svg {
               transform: rotate(180deg);
             }
 
-            .submenu-closed {
+            .submenu {
               opacity: 1;
               visibility: visible;
               display: flex;
@@ -144,7 +128,7 @@ header {
         }
       }
 
-      &.submenu-closed {
+      &.submenu {
         position: absolute;
         min-width: 180px;
         z-index: 100;
@@ -155,10 +139,36 @@ header {
           background: var(--contrast-color);
         }
       }
+
+      .logout-button-wrapper {
+        display: flex;
+        align-items: center;
+
+        .desktop-user {
+          overflow: hidden;
+          white-space: nowrap;
+          display: inline-block;
+          text-overflow: ellipsis;
+          padding: 0 1rem 0 0;
+          font-family: $inter-bold;
+          font-size: $txt-sm;
+        }
+      }
     }
   }
+  .menu-item-wrapper {
+    @extend .flex-between;
+    padding-left: 0.75rem;
+    margin: 3px 0;
+    width: 100%;
+    position: relative;
 
-  ul.submenu-closed,
+    &:has(a.active) {
+      background-color: var(--body-gray);
+      border-radius: 1.5rem;
+    }
+  }
+  ul.submenu,
   ul.submenu-open {
     li a {
       font-size: $txt-sm;
@@ -171,7 +181,7 @@ header {
     nav {
       flex: unset;
 
-      .mobile-user {
+      .mobile-user-btn {
         display: flex;
         text-transform: lowercase;
         background: none;
@@ -184,20 +194,9 @@ header {
           font-size: 1.5rem;
           width: 24px;
         }
-      }
-      ul.submenu-open {
-        margin: 0 0.75rem 1rem 1.5rem;
 
-        li {
-          padding: 0.5rem 0 0.5rem 3px;
-          line-height: 1.2;
-          width: 100%;
-        }
-      }
-
-      button {
         @media (max-width: $bp-sm) {
-          span {
+          .user-name {
             width: 40vw;
             overflow: hidden;
             white-space: nowrap;
@@ -208,46 +207,55 @@ header {
         }
       }
 
-      ul li a {
-        color: var(--body-txt);
-
-        &.active,
-        &:hover {
-          color: var(--txt-orange);
-        }
-      }
-
       .nav-menu {
         display: none;
         min-width: 250px;
-
-        @media (max-width: $bp-xs) {
-          min-width: calc(100% - #{2 * $margin});
-          left: $margin;
-        }
 
         ul {
           padding-left: 0px;
           text-align: left;
           flex-direction: column;
 
-          .flex-between {
+          li a {
+            color: var(--body-txt);
+
+            &.active,
+            &:hover {
+              color: var(--txt-orange);
+            }
+          }
+
+          .menu-item-wrapper {
             padding-left: 0.75rem;
             margin: 3px 0;
             width: 100%;
             position: relative;
 
-            &:has(a.active) {
-              background-color: var(--body-gray);
-              border-radius: 1.5rem;
+            .menu-item {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              height: 2.7rem;
+              line-height: 1.2;
+
+              &:nth-child(4) {
+                border-bottom: 1px solid var(--border-gray);
+              }
             }
 
-            .submenu-closed {
+            .submenu {
               max-height: 0;
             }
 
             .submenu-open {
               max-height: 500px;
+              margin: 0 0.75rem 1rem 1.5rem;
+
+              li {
+                padding: 0.5rem 0 0.5rem 3px;
+                line-height: 1.2;
+                width: 100%;
+              }
             }
           }
         }
@@ -272,26 +280,21 @@ header {
           }
         }
 
-        .menu {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          height: 2.7rem;
-          line-height: 1.2;
-
-          &:nth-child(4) {
-            border-bottom: 1px solid var(--border-gray);
-          }
-        }
-        .desktop-user {
-          display: none;
-        }
         .logout-button-wrapper {
           margin: 0.5rem 0.75rem;
           padding-top: 0.5rem;
           border-top: 1px solid var(--border-gray);
           width: calc(100% - 1.5rem);
           flex: 1;
+
+          .desktop-user {
+            display: none;
+          }
+        }
+
+        @media (max-width: $bp-xs) {
+          min-width: calc(100% - #{2 * $margin});
+          left: $margin;
         }
       }
     }
