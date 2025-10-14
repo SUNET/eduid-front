@@ -38,70 +38,70 @@ header {
       align-items: center;
       justify-content: space-between;
 
-      ul {
+      a {
+        transition: none;
+
+        &.active,
+        &:hover {
+          color: var(--txt-orange) !important;
+        }
+      }
+
+      // top level menu item
+      .menu-item-wrapper {
+        @extend .flex-between;
+        padding-left: 0.85rem;
+
         a {
-          transition: none;
-
-          &.active,
-          &:hover {
-            color: var(--txt-orange) !important;
-          }
+          color: var(--body-txt);
+          font-size: $txt-sm;
         }
 
-        // top level menu item
-        .menu-item-wrapper {
-          @extend .flex-between;
-          padding-left: 0.85rem;
-
-          a {
-            color: var(--body-txt);
-            font-size: $txt-sm;
-          }
-
-          &:has(a.active) {
-            background-color: var(--body-gray);
-            border-radius: 1.5rem;
-          }
-          // chevron
-          button {
-            background-color: transparent;
-            box-shadow: none;
-            padding: 0 0.75rem;
-
-            svg {
-              color: var(--txt-gray);
-            }
-            @media (max-width: $bp-xl) {
-              &:hover svg {
-                color: var(--txt-orange);
-              }
-            }
-          }
+        &:has(a.active) {
+          background-color: var(--body-gray);
+          border-radius: 1.5rem;
         }
+        // chevron
+        button {
+          background-color: transparent;
+          box-shadow: none;
+          padding: 0 0.75rem;
 
-        // submenu-open only activated for mobile
-        .submenu,
-        .submenu-open {
-          li a {
+          svg {
             color: var(--txt-gray);
-            font-size: $txt-xs;
-            display: inline-block;
-            padding: 0.5rem 0.85rem 0.75rem;
+          }
+          @media (max-width: $bp-xl) {
+            &:hover svg {
+              color: var(--txt-orange);
+            }
           }
         }
+      }
 
+      // note: submenu-open only activated for mobile
+      .submenu,
+      .submenu-open {
+        li a {
+          color: var(--txt-gray);
+          font-size: $txt-xs;
+          display: inline-block;
+          padding: 0.5rem 0.85rem 0.75rem;
+        }
+      }
+      ul {
         &.submenu {
           max-height: 0;
           margin-bottom: 0;
           opacity: 0;
           visibility: hidden;
-          filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
 
           // individual desktop submenus
           @media (min-width: $bp-xl) {
             position: absolute;
             min-width: 180px;
             z-index: 100;
+            padding-top: 10px;
+            filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
 
             li {
               border-bottom: 1px solid var(--body-gray);
@@ -140,21 +140,13 @@ header {
         }
       }
 
-      &.submenu {
-        position: absolute;
-        min-width: 180px;
-        z-index: 100;
-
-        li {
-          padding: 10px 15px;
-          border-bottom: 1px solid var(--body-gray);
-          background: var(--contrast-color);
-        }
-      }
-
       .logout-button-wrapper {
         display: flex;
         align-items: center;
+
+        svg {
+          padding-right: 5px;
+        }
       }
     }
 
@@ -197,44 +189,9 @@ header {
 
       .nav-menu {
         display: none;
-        min-width: 250px;
 
         ul {
-          padding-left: 0px;
-          text-align: left;
-          flex-direction: column;
           width: 100%;
-
-          .menu-item-wrapper {
-            margin: 3px 0;
-
-            .menu-item {
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
-              height: 2.7rem;
-              line-height: 1.2;
-
-              &:nth-child(4) {
-                border-bottom: 1px solid var(--border-gray);
-              }
-            }
-
-            .submenu {
-              max-height: 0;
-            }
-
-            .submenu-open {
-              max-height: 500px;
-              margin: 0 0.75rem 1rem 1.5rem;
-
-              li {
-                padding: 0.5rem 0 0.5rem 3px;
-                line-height: 1.2;
-                width: 100%;
-              }
-            }
-          }
         }
 
         &.active {
@@ -251,18 +208,13 @@ header {
           padding: $margin;
           z-index: 200;
           transition: all 0.5s ease;
-
-          .link svg {
-            padding-right: 5px;
-          }
         }
 
         .logout-button-wrapper {
-          margin: 0.5rem 0.75rem;
-          padding-top: 0.5rem;
+          margin: 0.5rem 0;
+          padding-top: 1rem;
           border-top: 1px solid var(--border-gray);
-          width: calc(100% - 1.5rem);
-          flex: 1;
+          width: calc(100% - 1.7rem);
 
           .user-name {
             display: none;
