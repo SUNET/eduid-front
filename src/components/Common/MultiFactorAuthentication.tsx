@@ -384,7 +384,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         showVerifyWebauthnModal={showVerifyWebauthnModal}
         setShowVerifyWebauthnModal={setShowVerifyWebauthnModal}
         handleVerificationWebauthnToken={() => handleVerificationWebauthnToken}
-        tokenKey={tokenKey!}
+        tokenKey={tokenKey ?? ""}
       />
     </Fragment>
   );
