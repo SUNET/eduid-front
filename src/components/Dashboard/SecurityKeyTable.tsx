@@ -57,100 +57,101 @@ export function SecurityKeyTable({
   }
 
   // data that goes onto the table
-  const securityKeyData = !tokens.length ? (
-    <figure>
-      <em className="help-text">
-        <FormattedMessage
-          description="no security key has been added"
-          defaultMessage="No security key has been added"
-        />
-      </em>
-    </figure>
-  ) : (
-    tokens.map((cred: CredentialType) => {
-      // date created
-      const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
-      // date last used
-      if (cred.success_ts) {
-        date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
-      } else {
-        date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
-      }
+  const securityKeyData =
+    tokens.length === 0 ? (
+      <figure>
+        <em className="help-text">
+          <FormattedMessage
+            description="no security key has been added"
+            defaultMessage="No security key has been added"
+          />
+        </em>
+      </figure>
+    ) : (
+      tokens.map((cred: CredentialType) => {
+        // date created
+        const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
+        // date last used
+        if (cred.success_ts) {
+          date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
+        } else {
+          date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
+        }
 
-      // verify button/ verified badge
-      if (cred.verified) {
-        btnVerify = (
-          <div aria-label="verification status" className="verified">
-            <span>
-              <FormattedMessage description="security key status" defaultMessage="Verification status:" />
-              &nbsp;
-              <strong>
-                <FormattedMessage description="security verified" defaultMessage="verified" />
-              </strong>
-            </span>
-          </div>
+        // verify button/ verified badge
+        if (cred.verified) {
+          btnVerify = (
+            <div aria-label="verification status" className="verified">
+              <span>
+                <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+                &nbsp;
+                <strong>
+                  <FormattedMessage description="security verified" defaultMessage="verified" />
+                </strong>
+              </span>
+            </div>
+          );
+        } else {
+          btnVerify = (
+            <div aria-label="verify with freja or bankID">
+              <span>
+                <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+                &nbsp;
+                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
+                  BankID
+                </EduIDButton>
+                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
+                  Freja+
+                </EduIDButton>
+                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
+                  Eidas
+                </EduIDButton>
+              </span>
+            </div>
+          );
+        }
+
+        return (
+          <figure
+            key={cred.key}
+            ref={wrapperRef}
+            tabIndex={0}
+            className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
+            data-token={cred.key}
+          >
+            <div>
+              <span aria-label="key name">
+                <FormattedMessage description="security description name" defaultMessage="Name:" />
+                &nbsp;
+                <strong>{cred.description}</strong>
+              </span>
+              <EduIDButton
+                aria-label="Remove"
+                id="remove-webauthn"
+                buttonstyle="remove sm"
+                onClick={() => handleConfirmDeleteModal(cred)}
+              ></EduIDButton>
+            </div>
+            <div>
+              <span aria-label="date created">
+                <FormattedMessage description="security creation date" defaultMessage="Created:" />
+                &nbsp;
+                <wbr />
+                {date_created}
+              </span>
+
+              <span aria-label="date used">
+                <FormattedMessage description="security last used" defaultMessage="Used:" />
+                &nbsp;
+                <wbr />
+                {date_success}
+              </span>
+            </div>
+            {btnVerify}
+          </figure>
         );
-      } else {
-        btnVerify = (
-          <div aria-label="verify with freja or bankID">
-            <span>
-              <FormattedMessage description="security key status" defaultMessage="Verify with: " />
-              &nbsp;
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
-                BankID
-              </EduIDButton>
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
-                Freja+
-              </EduIDButton>
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
-                Eidas
-              </EduIDButton>
-            </span>
-          </div>
-        );
-      }
-
-      return (
-        <figure
-          key={cred.key}
-          ref={wrapperRef}
-          tabIndex={0}
-          className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
-          data-token={cred.key}
-        >
-          <div>
-            <span aria-label="key name">
-              <FormattedMessage description="security description name" defaultMessage="Name:" />
-              &nbsp;
-              <strong>{cred.description}</strong>
-            </span>
-            <EduIDButton
-              aria-label="Remove"
-              id="remove-webauthn"
-              buttonstyle="remove sm"
-              onClick={() => handleConfirmDeleteModal(cred)}
-            ></EduIDButton>
-          </div>
-          <div>
-            <span aria-label="date created">
-              <FormattedMessage description="security creation date" defaultMessage="Created:" />
-              &nbsp;
-              <wbr />
-              {date_created}
-            </span>
-
-            <span aria-label="date used">
-              <FormattedMessage description="security last used" defaultMessage="Used:" />
-              &nbsp;
-              <wbr />
-              {date_success}
-            </span>
-          </div>
-          {btnVerify}
-        </figure>
-      );
-    })
-  );
+      })
+    );
 
   return (
     // unique ID to scroll to the correct section

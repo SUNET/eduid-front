@@ -12,7 +12,7 @@ interface VerifyCredentialModalProps {
   tokenKey: string;
 }
 
-export function VerifyCredentialModal(props: VerifyCredentialModalProps): React.JSX.Element {
+export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
   return (
     <dialog
       open={props.showVerifyWebauthnModal}
