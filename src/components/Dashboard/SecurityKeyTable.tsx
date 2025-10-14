@@ -115,7 +115,6 @@ export function SecurityKeyTable({
           <figure
             key={cred.key}
             ref={wrapperRef}
-            tabIndex={0}
             className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
             data-token={cred.key}
           >
