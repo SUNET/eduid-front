@@ -184,13 +184,14 @@ header {
         box-shadow: none;
         padding: 0;
         align-items: center;
+        color: var(--body-txt);
 
         svg {
           font-size: 1.5rem;
           width: 24px;
         }
         &:hover svg {
-          color: var(--txt-orange);
+          color: $bright-orange;
         }
       }
 
