@@ -176,7 +176,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </ul>
           </li>
           <li>
-            <div className="flex-between menu-item-wrapper">
+            <div className="menu-item-wrapper">
               <NavLink
                 onClick={() => setOpenMenu(false)}
                 className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
