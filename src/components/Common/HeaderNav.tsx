@@ -96,7 +96,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   return (
     <nav className="header-nav" ref={wrapperRef}>
       <button
-        className="mobile-user-btn text-bold"
+        className="mobile-user-btn"
         aria-expanded={openMenu}
         type="button"
         onClick={() => setOpenMenu(!openMenu)}
@@ -271,7 +271,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
           </li>
         </ul>
         <div className="logout-button-wrapper">
-          <span className="desktop-user">{userName}</span>
+          <span className="user-name">{userName}</span>
 
           <EduIDButton buttonstyle="secondary sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
             <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />

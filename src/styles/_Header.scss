@@ -153,17 +153,18 @@ header {
       .logout-button-wrapper {
         display: flex;
         align-items: center;
-
-        .desktop-user {
-          overflow: hidden;
-          white-space: nowrap;
-          display: inline-block;
-          text-overflow: ellipsis;
-          padding: 0 1rem 0 0;
-          font-family: $inter-bold;
-          font-size: $txt-sm;
-        }
       }
+    }
+
+    .user-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      padding: 0 1rem 0 0;
+      font-family: $inter-bold;
+      font-size: $txt-sm;
+      text-align: right;
     }
   }
 
@@ -181,20 +182,8 @@ header {
         align-items: center;
 
         svg {
-          padding-left: 0.75rem;
           font-size: 1.5rem;
           width: 24px;
-        }
-
-        @media (max-width: $bp-sm) {
-          .user-name {
-            width: 40vw;
-            overflow: hidden;
-            white-space: nowrap;
-            display: inline-block;
-            text-overflow: ellipsis;
-            text-align: right;
-          }
         }
       }
 
@@ -207,15 +196,6 @@ header {
           text-align: left;
           flex-direction: column;
           width: 100%;
-
-          li a {
-            color: var(--body-txt);
-
-            &.active,
-            &:hover {
-              color: var(--txt-orange);
-            }
-          }
 
           .menu-item-wrapper {
             padding-left: 0.75rem;
@@ -279,7 +259,7 @@ header {
           width: calc(100% - 1.5rem);
           flex: 1;
 
-          .desktop-user {
+          .user-name {
             display: none;
           }
         }
