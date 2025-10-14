@@ -1,4 +1,5 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
+import { credentialToJSON } from "../helperFunctions/publicKeyCredentialToJSON";
 import { genericApiFail } from "./common";
 
 const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
@@ -8,7 +9,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
       const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.payload);
       const credential = await navigator.credentials.get({ publicKey });
       if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAssertionResponse) {
-        return { data: credential.toJSON() };
+        return { data: credentialToJSON(credential) };
       } else {
         errorMessage = "Unable to obtain credential.";
       }
@@ -20,7 +21,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
         credential instanceof PublicKeyCredential &&
         credential.response instanceof AuthenticatorAttestationResponse
       ) {
-        return { data: credential.toJSON() };
+        return { data: credentialToJSON(credential) };
       } else {
         errorMessage = "Unable to create credential.";
       }
