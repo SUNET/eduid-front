@@ -1,5 +1,6 @@
 import { GetStatusRequest, GetStatusResponse } from "apis/eduidEidas";
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
+import type { ApiResponse } from "./helpers/types";
 
 export interface AuthenticateResponse {
   location: string;
@@ -15,18 +16,18 @@ export const authnApi = eduIDApi.injectEndpoints({
     authenticate: builder.query<ApiResponse<AuthenticateResponse>, AuthenticateRequest>({
       query: (body) => ({
         url: "authenticate",
-        body
+        body,
       }),
-      extraOptions: { service: "authn" }
+      extraOptions: { service: "authn" },
     }),
     authnGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
       query: (body) => ({
         url: "get-status",
-        body
+        body,
       }),
-      extraOptions: { service: "authn" }
-    })
-  })
-})
+      extraOptions: { service: "authn" },
+    }),
+  }),
+});
 
 export default authnApi;

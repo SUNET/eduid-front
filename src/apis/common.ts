@@ -1,11 +1,22 @@
-import { createAction, PayloadAction } from "@reduxjs/toolkit";
-import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { EduidJSAppCommonConfig } from "commonConfig";
+import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { storeCsrfToken } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
-import { ajaxHeaders } from "ts_common";
+import { handleApiError, handleBaseQueryError } from "./helpers/errorHandlers";
+import { hasCsrfToken, isApiError, isApiResponse, isErrorResult } from "./helpers/typeGuards";
+import type { StateWithCommonConfig } from "./helpers/types";
 
-const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
+const ajaxHeaders = {
+  "Content-Type": "application/json; charset=utf-8",
+  Accept: "application/json",
+  "Accept-Encoding": "gzip,deflate",
+  "Cache-Control": "no-store, no-cache, must-revalidate",
+  Pragma: "no-cache",
+  "X-Requested-With": "XMLHttpRequest",
+};
+
+export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?: string }) => {
   const state = api.getState() as StateWithCommonConfig;
+  let csrf_token = state.config.csrf_token;
   const service_urls: { [key: string]: string | undefined } = {
     jsConfig: EDUID_CONFIG_URL,
     signup: state.config.signup_service_url,
@@ -23,86 +34,76 @@ const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { service?:
     resetPassword: state.config.reset_password_service_url,
   };
   if (!extraOptions?.service) {
-    throw new Error("No service specified");
+    return customError("No service specified");
   }
   if (!(extraOptions.service in service_urls)) {
-    throw new Error(`Unknown service: ${extraOptions.service}`);
+    return customError("Unknown service: " + extraOptions.service);
   }
   const baseUrl = service_urls[extraOptions.service];
-
-  const rawBaseQuery = fetchBaseQuery({
-    baseUrl,
-    credentials: "include",
-    redirect: "manual",
-    method: args?.body === undefined ? "GET" : "POST",
-    headers: ajaxHeaders,
-    responseHandler: "content-type",
-  });
-
-  // Make sure we add the csrf token to the body
-  let base_args;
-  if (args?.body !== undefined && args.body.csrf_token === undefined) {
-    base_args = { ...args, body: { ...args.body, csrf_token: state.config.csrf_token } };
-  } else {
-    base_args = args;
+  if (baseUrl === undefined) {
+    return customError("No url for service: " + extraOptions.service);
   }
+  const rawBaseQuery = createBaseQuery(baseUrl, args?.body === undefined ? "GET" : "POST");
+
+  // Add CSRF token to body if needed
+  const base_args = addCsrfTokenToArgs(args, csrf_token);
+
+  // call backend api
   const result = await rawBaseQuery(base_args, api, extraOptions);
 
-  if (result.data && typeof result.data === "object" && "error" in result.data && result.data.error === true) {
-    // dispatch the API error to the nofification middleware
-    // but use a clone of the data as the current middleware modifies the data
-    api.dispatch(structuredClone(result.data));
-    // return as error for rtk query purposes
-    return {
-      error: result.data,
-      meta: result.meta,
-    };
+  // manage results of api call
+  if (isErrorResult(result)) {
+    await handleBaseQueryError(result, csrf_token, api, state);
+  } else {
+    // extract CSRF token from response
+    csrf_token = handleCsrfTokenFromResponse(result.data, csrf_token, api);
+    if (isApiError(result.data)) {
+      return await handleApiError(result.data, result.meta, csrf_token, api);
+    }
   }
   return result;
 };
 
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
+function addCsrfTokenToArgs(args: FetchArgs, csrf_token: string | undefined): FetchArgs {
+  if (args?.body !== undefined && args.body.csrf_token === undefined) {
+    return { ...args, body: { ...args.body, csrf_token } };
+  }
+  return args;
+}
+
+function handleCsrfTokenFromResponse(
+  data: unknown,
+  csrf_token: string | undefined,
+  api: BaseQueryApi
+): string | undefined {
+  if (isApiResponse(data) && hasCsrfToken(data)) {
+    if (data.payload.csrf_token && data.payload.csrf_token !== csrf_token) {
+      api.dispatch(storeCsrfToken(data.payload.csrf_token));
+      delete data.payload.csrf_token;
+      return data.payload.csrf_token;
+    }
+  }
+  return csrf_token;
+}
+
+function customError(error: string) {
   return {
-    error: true,
-    payload: {
-      message,
+    error: {
+      status: "CUSTOM_ERROR",
+      error: error,
     },
   };
-});
-
-export interface ApiResponse<T> {
-  payload: T;
-  type: string;
 }
 
-export interface StateWithCommonConfig {
-  config: EduidJSAppCommonConfig;
-}
-
-/*********************************************************************************************************************/
-/*
- * Make sure an URL has a trailing slash, optionally joining it with an endpoint.
- */
-export function urlJoin(base_url: string, endpoint?: string) {
-  if (!base_url.endsWith("/")) {
-    base_url = base_url.concat("/");
-  }
-  if (endpoint) {
-    return base_url + endpoint;
-  }
-  return base_url;
-}
-
-// type predicate to help identify rejected payloads from backend.
-export function isFSA(action: unknown): action is PayloadAction<unknown> {
-  try {
-    return typeof action === "object" && action !== null && "type" in action && "payload" in action;
-  } catch {
-    return false;
-  }
+function createBaseQuery(baseUrl: string, method: string) {
+  return fetchBaseQuery({
+    baseUrl,
+    credentials: "include",
+    redirect: "manual",
+    method,
+    headers: ajaxHeaders,
+    responseHandler: "content-type",
+  });
 }
 
 export const eduIDApi = createApi({

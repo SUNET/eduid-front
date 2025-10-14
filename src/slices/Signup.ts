@@ -1,6 +1,6 @@
 import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { isFSA } from "apis/common";
 import { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
+import { isFSA } from "apis/helpers/typeGuards";
 
 interface SignupState {
   state?: SignupBackendState;

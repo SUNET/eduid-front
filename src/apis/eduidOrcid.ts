@@ -1,4 +1,5 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
+import type { ApiResponse } from "./helpers/types";
 
 export interface OrcidInfo {
   id: string;
@@ -15,16 +16,16 @@ export const orcidApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
       query: () => ({
-        url: ""
+        url: "",
       }),
-      extraOptions: { service: "orcid" }
+      extraOptions: { service: "orcid" },
     }),
     removeOrcid: builder.query<ApiResponse<OrcidResponse>, void>({
       query: () => ({
         url: "remove",
-        body: {}
+        body: {},
       }),
-      extraOptions: { service: "orcid" }
-    })
-  })
-})
+      extraOptions: { service: "orcid" },
+    }),
+  }),
+});

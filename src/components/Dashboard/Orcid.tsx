@@ -1,4 +1,3 @@
-import { urlJoin } from "apis/common";
 import { orcidApi } from "apis/eduidOrcid";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
@@ -6,6 +5,20 @@ import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import orcidIcon from "../../../img/vector_iD_icon-w.svg";
+
+/*********************************************************************************************************************/
+/*
+ * Make sure an URL has a trailing slash, optionally joining it with an endpoint.
+ */
+export function urlJoin(base_url: string, endpoint?: string) {
+  if (!base_url.endsWith("/")) {
+    base_url = base_url.concat("/");
+  }
+  if (endpoint) {
+    return base_url + endpoint;
+  }
+  return base_url;
+}
 
 export function Orcid(): React.JSX.Element {
   const orcid = useAppSelector((state) => state.account_linking.orcid);

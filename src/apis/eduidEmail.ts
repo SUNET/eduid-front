@@ -1,4 +1,5 @@
-import { ApiResponse, eduIDApi } from "./common";
+import { eduIDApi } from "./common";
+import type { ApiResponse } from "./helpers/types";
 
 export interface EmailInfo {
   email: string;
@@ -15,7 +16,7 @@ interface EmailRequest {
 }
 
 interface VerifyEmailRequest extends EmailRequest {
-  code: string
+  code: string;
 }
 
 export const emailApi = eduIDApi.injectEndpoints({
@@ -23,23 +24,23 @@ export const emailApi = eduIDApi.injectEndpoints({
     makePrimaryEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
       query: (body) => ({
         url: "primary",
-        body
+        body,
       }),
-      extraOptions: { service: "email" }
+      extraOptions: { service: "email" },
     }),
     verifyEmail: builder.query<ApiResponse<EmailsResponse>, VerifyEmailRequest>({
       query: (body) => ({
         url: "verify",
-        body
+        body,
       }),
-      extraOptions: { service: "email" }
+      extraOptions: { service: "email" },
     }),
     resendEmailCode: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
       query: (body) => ({
         url: "resend-code",
-        body
+        body,
       }),
-      extraOptions: { service: "email" }
+      extraOptions: { service: "email" },
     }),
     newEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
       query: (body) => ({
@@ -47,17 +48,17 @@ export const emailApi = eduIDApi.injectEndpoints({
         body: {
           ...body,
           verified: false,
-          primary: false
-        }
+          primary: false,
+        },
       }),
-      extraOptions: { service: "email" }
+      extraOptions: { service: "email" },
     }),
     removeEmail: builder.query<ApiResponse<EmailsResponse>, EmailRequest>({
       query: (body) => ({
         url: "remove",
-        body
+        body,
       }),
-      extraOptions: { service: "email" }
-    })
-  })
-})
+      extraOptions: { service: "email" },
+    }),
+  }),
+});
