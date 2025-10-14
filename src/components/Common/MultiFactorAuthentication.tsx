@@ -4,30 +4,21 @@ import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
-import UseSecurityKeyToggle from "components/Dashboard/UseSecurityKeyToggle";
+import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
-import BankIdFlag from "../../../img/flags/BankID_logo.svg";
-import EuFlag from "../../../img/flags/EuFlag.svg";
-import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
-import NotificationModal from "./NotificationModal";
+import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 export const FRONTEND_ACTION = "frontend_action";
-
-interface SecurityKeyTable {
-  readonly wrapperRef: React.RefObject<HTMLElement | null>;
-  readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
-  readonly handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
-}
 
 const selectCredentials = (state: EduIDAppRootState) => state.security.credentials;
 
@@ -266,7 +257,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <>
+    <Fragment>
       <article id="add-two-factor">
         <h2>
           <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
@@ -389,249 +380,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
         }
       />
-      {/* Verify WebauthnToken Modal */}
-      <dialog
-        open={showVerifyWebauthnModal}
-        id="verify-webauthn-token-modal"
-        tabIndex={-1}
-        aria-hidden="true"
-        data-backdrop="true"
-      >
-        <div className={showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">
-                  <FormattedMessage
-                    defaultMessage="Verify your added security key"
-                    description="verify webauthn token modal title"
-                  />
-                </h4>
-                <EduIDButton
-                  id={`verify-webauthn-token-modal-close-button`}
-                  buttonstyle="close float-right"
-                  onClick={() => setShowVerifyWebauthnModal(false)}
-                ></EduIDButton>
-              </div>
-              <div className="modal-body">
-                <FormattedMessage
-                  description="verify webauthn token modal body text"
-                  defaultMessage="Please click either the BankID, Freja+ or eIDAS button to verify your security key"
-                />
-                <p className="help-text">
-                  <FormattedMessage
-                    description="verify webauthn token modal body note text"
-                    defaultMessage={`Note: your added security keys can also be verified later in the "Manage your security keys" settings.`}
-                  />
-                </p>
-              </div>
-              <div className="modal-footer">
-                <div className="buttons">
-                  <EduIDButton
-                    id={`verify-webauthn-token-modal-continue-bankID-button`}
-                    buttonstyle="primary icon"
-                    onClick={() => handleVerificationWebauthnToken(tokenKey, "bankid")}
-                  >
-                    <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
-                    <span>BankID</span>
-                  </EduIDButton>
-                  <EduIDButton
-                    buttonstyle="primary icon"
-                    id={`verify-webauthn-token-modal-continue-frejaID-button`}
-                    onClick={() => handleVerificationWebauthnToken(tokenKey, "freja")}
-                  >
-                    <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
-                    <span>Freja+</span>
-                  </EduIDButton>
-                  <EduIDButton
-                    buttonstyle="primary icon"
-                    id={`verify-webauthn-token-modal-continue-eidas-button`}
-                    onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
-                  >
-                    <img className="freja" height="20" alt="eIDAS" src={EuFlag} />
-                    <span>eidas</span>
-                  </EduIDButton>
-                </div>
-                <EduIDButton
-                  id={`verify-webauthn-token-modal-close-link`}
-                  buttonstyle="link verbatim"
-                  onClick={() => setShowVerifyWebauthnModal(false)}
-                >
-                  <FormattedMessage description="verify later link" defaultMessage={`Not now`} />
-                </EduIDButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </dialog>
-    </>
-  );
-}
-
-function SecurityKeyTable({
-  wrapperRef,
-  handleVerificationWebauthnToken,
-  handleRemoveWebauthnToken,
-}: SecurityKeyTable) {
-  const credentialKey = useRef<string>("");
-  let btnVerify;
-  let date_success;
-  const dispatch = useAppDispatch();
-  const tokens = useAppSelector((state) => {
-    return filterTokensFromCredentials(state);
-  });
-  const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
-
-  async function handleConfirmDeleteModal(cred: CredentialType) {
-    credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
-    // Test if the user can directly execute the action or a re-auth security zone will be required
-    // If no re-auth is required, then show the modal to confirm the removal
-    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
-    const response = await getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" });
-    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
-      setShowConfirmRemoveSecurityKeyModal(true);
-    } else {
-      setShowConfirmRemoveSecurityKeyModal(false);
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: credentialKey.current,
-        })
-      );
-      dispatch(authnSlice.actions.setReAuthenticate(true));
-    }
-  }
-
-  function handleRemoveSecurityKeyAccept() {
-    setShowConfirmRemoveSecurityKeyModal(false);
-    handleRemoveWebauthnToken(credentialKey.current);
-  }
-
-  // data that goes onto the table
-  const securityKeyData = !tokens.length ? (
-    <figure>
-      <em className="help-text">
-        <FormattedMessage
-          description="no security key has been added"
-          defaultMessage="No security key has been added"
-        />
-      </em>
-    </figure>
-  ) : (
-    tokens.map((cred: CredentialType) => {
-      // date created
-      const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
-      // date last used
-      if (cred.success_ts) {
-        date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
-      } else {
-        date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
-      }
-
-      // verify button/ verified badge
-      if (cred.verified) {
-        btnVerify = (
-          <div aria-label="verification status" className="verified">
-            <span>
-              <FormattedMessage description="security key status" defaultMessage="Verification status:" />
-              &nbsp;
-              <strong>
-                <FormattedMessage description="security verified" defaultMessage="verified" />
-              </strong>
-            </span>
-          </div>
-        );
-      } else {
-        btnVerify = (
-          <div aria-label="verify with freja or bankID">
-            <span>
-              <FormattedMessage description="security key status" defaultMessage="Verify with: " />
-              &nbsp;
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
-                BankID
-              </EduIDButton>
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
-                Freja+
-              </EduIDButton>
-              <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
-                Eidas
-              </EduIDButton>
-            </span>
-          </div>
-        );
-      }
-
-      return (
-        <figure
-          key={cred.key}
-          ref={wrapperRef}
-          tabIndex={0}
-          className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
-          data-token={cred.key}
-        >
-          <div>
-            <span aria-label="key name">
-              <FormattedMessage description="security description name" defaultMessage="Name:" />
-              &nbsp;
-              <strong>{cred.description}</strong>
-            </span>
-            <EduIDButton
-              aria-label="Remove"
-              id="remove-webauthn"
-              buttonstyle="remove sm"
-              onClick={() => handleConfirmDeleteModal(cred)}
-            ></EduIDButton>
-          </div>
-          <div>
-            <span aria-label="date created">
-              <FormattedMessage description="security creation date" defaultMessage="Created:" />
-              &nbsp;
-              <wbr />
-              {date_created}
-            </span>
-
-            <span aria-label="date used">
-              <FormattedMessage description="security last used" defaultMessage="Used:" />
-              &nbsp;
-              <wbr />
-              {date_success}
-            </span>
-          </div>
-          {btnVerify}
-        </figure>
-      );
-    })
-  );
-
-  return (
-    // unique ID to scroll to the correct section
-    <article id="manage-security-keys">
-      <h2>
-        <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
-      </h2>
-      {Boolean(tokens.length) && <UseSecurityKeyToggle />}
-      {securityKeyData}
-      <NotificationModal
-        id="remove-security-key"
-        title={
-          <FormattedMessage
-            defaultMessage="Remove security key"
-            description="settings.remove_security_key_modal_title"
-          />
-        }
-        mainText={
-          <FormattedMessage
-            defaultMessage={`Are you sure you want to remove your security key?`}
-            description="delete.remove_security_key_modal_text"
-          />
-        }
-        showModal={showConfirmRemoveSecurityKeyModal}
-        closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
-        acceptModal={handleRemoveSecurityKeyAccept}
-        acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+      <VerifyCredentialModal
+        showVerifyWebauthnModal={showVerifyWebauthnModal}
+        setShowVerifyWebauthnModal={setShowVerifyWebauthnModal}
+        handleVerificationWebauthnToken={() => handleVerificationWebauthnToken}
+        tokenKey={tokenKey!}
       />
-    </article>
+    </Fragment>
   );
 }
