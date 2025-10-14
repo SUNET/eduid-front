@@ -40,21 +40,23 @@ header {
 
       ul {
         a {
-          color: var(--body-txt);
           transition: none;
 
           &.active,
           &:hover {
-            color: var(--txt-orange);
+            color: var(--txt-orange) !important;
           }
         }
 
+        // top level menu item
         .menu-item-wrapper {
           @extend .flex-between;
-          padding-left: 0.75rem;
-          margin: 3px 0;
-          width: 100%;
-          position: relative;
+          padding-left: 0.85rem;
+
+          a {
+            color: var(--body-txt);
+            font-size: $txt-sm;
+          }
 
           &:has(a.active) {
             background-color: var(--body-gray);
@@ -77,10 +79,14 @@ header {
           }
         }
 
+        // submenu-open only activated for mobile
         .submenu,
         .submenu-open {
           li a {
-            font-size: $txt-sm;
+            color: var(--txt-gray);
+            font-size: $txt-xs;
+            display: inline-block;
+            padding: 0.5rem 0.85rem 0.75rem;
           }
         }
 
@@ -91,6 +97,7 @@ header {
           visibility: hidden;
           filter: drop-shadow(0 6px 17px rgba(89, 89, 89, 0.07));
 
+          // individual desktop submenus
           @media (min-width: $bp-xl) {
             position: absolute;
             min-width: 180px;
@@ -99,13 +106,8 @@ header {
             li {
               border-bottom: 1px solid var(--body-gray);
               background: var(--contrast-color);
-              margin-left: -1rem;
+              padding-top: 0.25rem;
 
-              a {
-                font-size: $txt-sm;
-                display: inline-block;
-                padding: 0.75rem 1rem;
-              }
               &:first-child {
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
@@ -156,19 +158,21 @@ header {
       }
     }
 
+    // in desktop header / mobile menu
     .user-name {
       overflow: hidden;
+      max-width: 40vw;
       text-overflow: ellipsis;
       white-space: nowrap;
       display: inline-block;
-      padding: 0 1rem 0 0;
+      padding: 3px 1rem;
       font-family: $inter-bold;
       font-size: $txt-sm;
       text-align: right;
     }
   }
 
-  /* Single dropdown menu */
+  /* combined mobile menu */
   @media (max-width: $bp-xl) {
     nav {
       flex: unset;
@@ -178,12 +182,15 @@ header {
         text-transform: lowercase;
         background: none;
         box-shadow: none;
-        padding: 0 1rem;
+        padding: 0;
         align-items: center;
 
         svg {
           font-size: 1.5rem;
           width: 24px;
+        }
+        &:hover svg {
+          color: var(--txt-orange);
         }
       }
 
@@ -198,10 +205,7 @@ header {
           width: 100%;
 
           .menu-item-wrapper {
-            padding-left: 0.75rem;
             margin: 3px 0;
-            width: 100%;
-            position: relative;
 
             .menu-item {
               display: flex;
@@ -264,6 +268,7 @@ header {
           }
         }
 
+        // small screen full width menu
         @media (max-width: $bp-xs) {
           min-width: calc(100% - #{2 * $margin});
           left: $margin;
