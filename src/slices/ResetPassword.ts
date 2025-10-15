@@ -26,6 +26,16 @@ export interface ResetPasswordState {
   swedishEID_status?: string;
   captcha?: CaptchaRequest;
   captcha_completed: boolean;
+  reset_pw_status?: {
+    captcha: {
+      completed: boolean;
+    };
+    email: {
+      address?: string;
+      completed: boolean;
+      sent_at: string;
+    };
+  };
 }
 
 // Define the initial state using that type
@@ -83,6 +93,9 @@ export const resetPasswordSlice = createSlice({
           return;
         }
         state.email_response = action.payload.payload;
+      })
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchFulfilled, (state, action) => {
+        state.reset_pw_status = action.payload.payload.state;
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
         state.email_status = "failed";

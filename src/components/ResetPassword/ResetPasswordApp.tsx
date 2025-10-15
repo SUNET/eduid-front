@@ -12,6 +12,7 @@ import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { ProcessCaptcha, ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 // import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail
@@ -40,6 +41,11 @@ export function ResetPasswordApp(): React.JSX.Element {
   // const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
   const [currentPage, setCurrentPage] = useState<PageStatus>();
+  const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
+
+  async function fetchResetPasswordState() {
+    const response = await getResetPasswordState();
+  }
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -62,6 +68,7 @@ export function ResetPasswordApp(): React.JSX.Element {
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
     setCurrentPage("AskForEmailOrConfirmEmail");
+    fetchResetPasswordState();
     // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
   }, [loginRef, params]);
 

@@ -74,6 +74,12 @@ export type NewPasswordResponse = object;
 
 export const resetPasswordApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
+    getResetPasswordState: builder.query<ApiResponse<any>, void>({
+      query: () => ({
+        url: "/",
+      }),
+      extraOptions: { service: "resetPassword" },
+    }),
     getResetPasswordCaptchaRequest: builder.query<ApiResponse<GetCaptchaResponse>, void>({
       query: () => ({
         url: "get-captcha",
