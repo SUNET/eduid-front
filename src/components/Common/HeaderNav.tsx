@@ -96,7 +96,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   return (
     <nav className="header-nav" ref={wrapperRef}>
       <button
-        className="header-user"
+        className="mobile-user-btn"
         aria-expanded={openMenu}
         type="button"
         onClick={() => setOpenMenu(!openMenu)}
@@ -108,7 +108,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
       <div className={openMenu ? "nav-menu active" : "nav-menu"}>
         <ul>
           <li>
-            <div className="flex-between">
+            <div className="menu-item-wrapper">
               <NavLink
                 onClick={() => setOpenMenu(false)}
                 className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
@@ -129,7 +129,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.start ? "submenu-collapse" : "submenu-close"}>
+            <ul className={isOpen.start ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
@@ -138,10 +138,10 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </ul>
           </li>
           <li>
-            <div className="flex-between">
+            <div className="menu-item-wrapper">
               <NavLink
                 onClick={() => setOpenMenu(false)}
-                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={IDENTITY_PATH}
               >
                 <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
@@ -158,7 +158,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.identity ? "submenu-collapse" : "submenu-close"}>
+            <ul className={isOpen.identity ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
@@ -176,10 +176,10 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </ul>
           </li>
           <li>
-            <div className="flex-between">
+            <div className="menu-item-wrapper">
               <NavLink
                 onClick={() => setOpenMenu(false)}
-                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={SECURITY_PATH}
               >
                 <FormattedMessage defaultMessage="Security" description="security main title" />
@@ -197,7 +197,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.security ? "submenu-collapse" : "submenu-close"}>
+            <ul className={isOpen.security ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
@@ -211,10 +211,10 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </ul>
           </li>
           <li>
-            <div className="flex-between">
+            <div className="menu-item-wrapper">
               <NavLink
                 onClick={() => setOpenMenu(false)}
-                className={({ isActive }) => (isActive ? `${activeClassName} menu` : `menu`)}
+                className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={ACCOUNT_PATH}
               >
                 <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
@@ -231,7 +231,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
                 )}
               </button>
             </div>
-            <ul className={isOpen.account ? "submenu-collapse" : "submenu-close"}>
+            <ul className={isOpen.account ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
@@ -271,7 +271,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
           </li>
         </ul>
         <div className="logout-button-wrapper">
-          <span className="desktop-username">{userName}</span>
+          <span className="user-name">{userName}</span>
 
           <EduIDButton buttonstyle="secondary sm" id="logout" onClick={props.handleLogout} disabled={!props.login_url}>
             <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
