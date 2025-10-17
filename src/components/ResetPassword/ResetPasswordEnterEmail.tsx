@@ -6,17 +6,17 @@ import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
 // import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function ResetPasswordEnterEmail({ setCurrentPage }: any): React.JSX.Element {
+export function ResetPasswordEnterEmail(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();
   // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-
   async function onEnteredEmailAddress(email: string) {
     dispatch(clearNotifications());
     if (email) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email));
-      setCurrentPage("ResetPasswordCaptcha");
+      dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
+      // setCurrentPage("ResetPasswordCaptcha");
       // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }

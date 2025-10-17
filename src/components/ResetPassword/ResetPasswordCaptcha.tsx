@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 // import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function ResetPasswordCaptcha({ setCurrentPage }: any): React.JSX.Element | null {
+export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
@@ -18,7 +18,8 @@ export function ResetPasswordCaptcha({ setCurrentPage }: any): React.JSX.Element
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
-      setCurrentPage("ProcessCaptcha");
+      dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
+      // setCurrentPage("ProcessCaptcha");
       // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }, [captcha_completed]);
@@ -39,7 +40,8 @@ export function ResetPasswordCaptcha({ setCurrentPage }: any): React.JSX.Element
   function handleCaptchaCompleted(response: string) {
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
-      setCurrentPage("ProcessCaptcha");
+      dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
+      // setCurrentPage("ProcessCaptcha");
       // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
@@ -74,7 +76,7 @@ export function ResetPasswordCaptcha({ setCurrentPage }: any): React.JSX.Element
   );
 }
 
-export function ProcessCaptcha({ setCurrentPage }: any): null {
+export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const email = useAppSelector((state) => state.resetPassword.email_address);
@@ -87,10 +89,12 @@ export function ProcessCaptcha({ setCurrentPage }: any): null {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
-        setCurrentPage("EmailLinkSent");
+        dispatch(resetPasswordSlice.actions.setNextPage("EmailLinkSent"));
+        // setCurrentPage("EmailLinkSent");
         // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       } else {
-        setCurrentPage("AskForEmailOrConfirmEmail");
+        dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
+        // setCurrentPage("AskForEmailOrConfirmEmail");
         // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
       }
     }
@@ -102,7 +106,8 @@ export function ProcessCaptcha({ setCurrentPage }: any): null {
       dispatch(clearNotifications());
       sendEmailLink();
     } else {
-      setCurrentPage("ResetPasswordCaptcha");
+      dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
+      // setCurrentPage("ResetPasswordCaptcha");
       // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
     }
   }

@@ -26,16 +26,8 @@ export interface ResetPasswordState {
   swedishEID_status?: string;
   captcha?: CaptchaRequest;
   captcha_completed: boolean;
-  reset_pw_status?: {
-    captcha: {
-      completed: boolean;
-    };
-    email: {
-      address?: string;
-      completed: boolean;
-      sent_at: string;
-    };
-  };
+  next_page?: string;
+  reset_pw_status?: { captcha?: { completed: boolean }; email?: { completed: boolean; address?: string } };
 }
 
 // Define the initial state using that type
@@ -72,6 +64,9 @@ export const resetPasswordSlice = createSlice({
     setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
       state.captcha = action.payload;
     },
+    setNextPage: (state, action: PayloadAction<string>) => {
+      state.next_page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -95,7 +90,21 @@ export const resetPasswordSlice = createSlice({
         state.email_response = action.payload.payload;
       })
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchFulfilled, (state, action) => {
-        state.reset_pw_status = action.payload.payload.state;
+        const backendState = action.payload.payload.state;
+        state.captcha_completed = backendState.captcha?.completed;
+        state.email_address = backendState.email?.address;
+        if (backendState.captcha?.completed) {
+          state.next_page = "ProcessCaptcha";
+        } else if (backendState.email?.completed) {
+          state.next_page = "HandleExtraSecurities";
+        } else if (backendState.email?.address) {
+          state.next_page = "ResetPasswordConfirmEmail";
+        } else {
+          state.next_page = "ResetPasswordEnterEmail";
+        }
+      })
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
+        state.next_page = "HandleExtraSecurities";
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
         state.email_status = "failed";
@@ -105,6 +114,9 @@ export const resetPasswordSlice = createSlice({
         state.extra_security = action.payload.payload.extra_security;
         state.suggested_password = action.payload.payload.suggested_password;
         state.email_code = action.payload.payload.email_code;
+        // if (Object.values(action.payload.payload.extra_security)) {
+        //   state.next_page = "HandleExtraSecurities";
+        // } else state.next_page = "SetNewPassword";
       })
       .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchFulfilled, (state, action) => {
         state.captcha_completed = action?.payload?.payload.captcha_completed;

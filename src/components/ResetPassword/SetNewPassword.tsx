@@ -14,7 +14,7 @@ import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
 // import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | null {
+export function SetNewPassword(): React.JSX.Element | null {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -26,16 +26,18 @@ export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | nul
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
   const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
-
+  console.log("[123 SetNewPassword]");
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
   }, [renderSuggested, suggested]);
 
   function goBack() {
     if (extra_security && Object.values(extra_security).length) {
-      setCurrentPage("HandleExtraSecurities");
+      dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
+      // setCurrentPage("HandleExtraSecurities");
       // resetPasswordContext.resetPasswordService.send({ type: "START_EXTRA_SECURITY" });
-    } else setCurrentPage("ResetPasswordEnterEmail");
+    } else dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordEnterEmail"));
+    // setCurrentPage("ResetPasswordEnterEmail");
     // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
 
     // initialization of state
@@ -53,7 +55,8 @@ export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | nul
     if (!selected_option || selected_option === "without") {
       const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
       if (response.isSuccess) {
-        setCurrentPage("ResetPasswordSuccess");
+        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        // setCurrentPage("ResetPasswordSuccess");
 
         // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
@@ -64,8 +67,9 @@ export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | nul
         webauthn_response: webauthn_assertion,
       });
       if (response.isSuccess) {
-        setCurrentPage("ResetPasswordSuccess");
-        // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        // setCurrentPage("ResetPasswordSuccess");
+        // // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "swedishEID") {
       const response = await postSetNewPasswordExternalMfa({
@@ -73,7 +77,8 @@ export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | nul
         password: newPassword,
       });
       if (response.isSuccess) {
-        setCurrentPage("ResetPasswordSuccess");
+        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        // setCurrentPage("ResetPasswordSuccess");
         // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     }
@@ -147,7 +152,7 @@ export function SetNewPassword({ setCurrentPage }: any): React.JSX.Element | nul
   );
 }
 
-export function ResetPasswordSuccess({ setCurrentPage }: any): React.JSX.Element {
+export function ResetPasswordSuccess(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const new_password = useAppSelector((state) => state.resetPassword.new_password);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

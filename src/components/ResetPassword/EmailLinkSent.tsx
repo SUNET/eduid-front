@@ -8,7 +8,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 // import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
-export function EmailLinkSent({ setCurrentPage }: any): React.JSX.Element | null {
+export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
   // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
@@ -27,16 +27,21 @@ export function EmailLinkSent({ setCurrentPage }: any): React.JSX.Element | null
         const response = await verifyEmailLink({ email_code: digits });
         if (response.isSuccess) {
           dispatch(clearNotifications());
-          if (Object.values(response.data.payload.extra_security)) {
-            setCurrentPage("HandleExtraSecurities");
+          if (Object.values(response.data.payload.extra_security).length > 0) {
+            dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
             // resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-            setCurrentPage("HandleExtraSecurities");
+            // setCurrentPage("HandleExtraSecurities");
           }
           // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
-          else setCurrentPage("SetNewPassword");
+          else {
+            dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+          }
+
+          // setCurrentPage("SetNewPassword");
         } else {
+          dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
           // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-          setCurrentPage("HandleExtraSecurities");
+          // setCurrentPage("HandleExtraSecurities");
         }
       }
     }
@@ -46,7 +51,8 @@ export function EmailLinkSent({ setCurrentPage }: any): React.JSX.Element | null
     if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      setCurrentPage("AskForEmailOrConfirmEmail");
+      dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
+      // setCurrentPage("AskForEmailOrConfirmEmail");
 
       // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }

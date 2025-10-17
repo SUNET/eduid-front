@@ -11,7 +11,7 @@ import resetPasswordSlice from "slices/ResetPassword";
 /**
  * Render the extra security options, security key, Freja eID and phone verification
  */
-export function HandleExtraSecurities({ setCurrentPage }: any): React.JSX.Element | null {
+export function HandleExtraSecurities(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
@@ -20,7 +20,8 @@ export function HandleExtraSecurities({ setCurrentPage }: any): React.JSX.Elemen
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
-      setCurrentPage("SetNewPassword");
+      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+      // setCurrentPage("SetNewPassword");
       // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
   }, [swedishEID_status]);
@@ -30,7 +31,8 @@ export function HandleExtraSecurities({ setCurrentPage }: any): React.JSX.Elemen
       (extra_security && !Object.values(extra_security).length) ||
       (extra_security?.tokens === undefined && !extra_security?.external_mfa)
     ) {
-      setCurrentPage("SetNewPassword");
+      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+      // setCurrentPage("SetNewPassword");
       // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
     }
   }, [extra_security]);
@@ -38,7 +40,8 @@ export function HandleExtraSecurities({ setCurrentPage }: any): React.JSX.Elemen
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
-    setCurrentPage("SetNewPassword");
+    dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+    // setCurrentPage("SetNewPassword");
     // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
   }
 
@@ -55,7 +58,8 @@ export function HandleExtraSecurities({ setCurrentPage }: any): React.JSX.Elemen
 
   function continueWithSecurityKey() {
     // resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-    setCurrentPage("SetNewPassword");
+    // setCurrentPage("SetNewPassword");
+    dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
   }
 
   return (

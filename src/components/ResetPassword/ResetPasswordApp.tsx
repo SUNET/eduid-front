@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -20,18 +20,6 @@ export interface UrlParams {
   ref?: string;
 }
 
-type PageStatus =
-  | "resetPasswordApp"
-  | "AskForEmailOrConfirmEmail"
-  | "ResetPasswordConfirmEmail"
-  | "ResetPasswordEnterEmail"
-  | "ResetPasswordCaptcha"
-  | "ProcessCaptcha"
-  | "EmailLinkSent"
-  | "HandleExtraSecurities"
-  | "SetNewPassword"
-  | "ResetPasswordSuccess";
-
 export function ResetPasswordApp(): React.JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
@@ -40,12 +28,8 @@ export function ResetPasswordApp(): React.JSX.Element {
   // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   // const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
-  const [currentPage, setCurrentPage] = useState<PageStatus>();
+  const next_page = useAppSelector((state) => state.resetPassword.next_page);
   const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
-
-  async function fetchResetPasswordState() {
-    const response = await getResetPasswordState();
-  }
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -57,7 +41,8 @@ export function ResetPasswordApp(): React.JSX.Element {
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
-      setCurrentPage("SetNewPassword");
+      // setCurrentPage("SetNewPassword");
+      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
   }, [swedishEID_status]);
@@ -67,22 +52,23 @@ export function ResetPasswordApp(): React.JSX.Element {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
-    setCurrentPage("AskForEmailOrConfirmEmail");
-    fetchResetPasswordState();
+    getResetPasswordState();
+    // setCurrentPage("AskForEmailOrConfirmEmail");
+
     // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
   }, [loginRef, params]);
 
   return (
     <React.Fragment>
-      {currentPage === "AskForEmailOrConfirmEmail" && <AskForEmailOrConfirmEmail setCurrentPage={setCurrentPage} />}
-      {currentPage === "ResetPasswordConfirmEmail" && <ResetPasswordConfirmEmail setCurrentPage={setCurrentPage} />}
-      {currentPage === "ResetPasswordEnterEmail" && <ResetPasswordEnterEmail setCurrentPage={setCurrentPage} />}
-      {currentPage === "ResetPasswordCaptcha" && <ResetPasswordCaptcha setCurrentPage={setCurrentPage} />}
-      {currentPage === "ProcessCaptcha" && <ProcessCaptcha setCurrentPage={setCurrentPage} />}
-      {currentPage === "EmailLinkSent" && <EmailLinkSent setCurrentPage={setCurrentPage} />}
-      {currentPage === "HandleExtraSecurities" && <HandleExtraSecurities setCurrentPage={setCurrentPage} />}
-      {currentPage === "SetNewPassword" && <SetNewPassword setCurrentPage={setCurrentPage} />}
-      {currentPage === "ResetPasswordSuccess" && <ResetPasswordSuccess setCurrentPage={setCurrentPage} />}
+      {next_page === "AskForEmailOrConfirmEmail" && <AskForEmailOrConfirmEmail />}
+      {next_page === "ResetPasswordConfirmEmail" && <ResetPasswordConfirmEmail />}
+      {next_page === "ResetPasswordEnterEmail" && <ResetPasswordEnterEmail />}
+      {next_page === "ResetPasswordCaptcha" && <ResetPasswordCaptcha />}
+      {next_page === "ProcessCaptcha" && <ProcessCaptcha />}
+      {next_page === "EmailLinkSent" && <EmailLinkSent />}
+      {next_page === "HandleExtraSecurities" && <HandleExtraSecurities />}
+      {next_page === "SetNewPassword" && <SetNewPassword />}
+      {next_page === "ResetPasswordSuccess" && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }
@@ -91,14 +77,17 @@ function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
   // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (email_status === undefined || !email_status) {
       if (email_address) {
-        setCurrentPage("ResetPasswordConfirmEmail");
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("ResetPasswordConfirmEmail"));
+        // setCurrentPage("ResetPasswordConfirmEmail");
         // resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
       } else {
-        setCurrentPage("ResetPasswordEnterEmail");
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("ResetPasswordEnterEmail"));
+        // setCurrentPage("ResetPasswordEnterEmail");
         // resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
       }
     }
@@ -112,7 +101,7 @@ function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-export function ResetPasswordConfirmEmail({ setCurrentPage }: any): React.JSX.Element {
+export function ResetPasswordConfirmEmail(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
@@ -129,7 +118,8 @@ export function ResetPasswordConfirmEmail({ setCurrentPage }: any): React.JSX.El
     if (email_address) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email_address));
       // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-      setCurrentPage("ResetPasswordCaptcha");
+      dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
+      // setCurrentPage("ResetPasswordCaptcha");
     }
   }
 
