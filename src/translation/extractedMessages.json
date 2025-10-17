@@ -584,10 +584,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ \\ + _ %"
   },
-  "Account": {
-    "developer_comment": "Account",
-    "string": "Account"
-  },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
@@ -918,10 +914,6 @@
   "IcXwl+": {
     "developer_comment": "privacy policy - list item 7",
     "string": "stores log files recording use for 6 months,"
-  },
-  "Identity": {
-    "developer_comment": "Identity",
-    "string": "Identity"
   },
   "Ifusv7": {
     "developer_comment": "Emails main title",
@@ -1327,10 +1319,6 @@
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in"
-  },
-  "Security": {
-    "developer_comment": "Security",
-    "string": "Security"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
@@ -2004,10 +1992,6 @@
   "e2YdEN": {
     "developer_comment": "start eduid - list item 3-1",
     "string": "confirmed account (confirmed email address and accepted terms of use)"
-  },
-  "eIAskC": {
-    "developer_comment": "Start",
-    "string": "Start"
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
@@ -2900,7 +2884,7 @@
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
-    "string": "email or username"
+    "string": "email or unique ID"
   },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
