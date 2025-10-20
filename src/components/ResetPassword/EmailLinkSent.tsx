@@ -39,7 +39,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
 
           // setCurrentPage("SetNewPassword");
         } else {
-          dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
+          // dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
           // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
           // setCurrentPage("HandleExtraSecurities");
         }
