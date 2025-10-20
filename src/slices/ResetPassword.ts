@@ -92,13 +92,13 @@ export const resetPasswordSlice = createSlice({
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchFulfilled, (state, action) => {
         const backendState = action.payload.payload.state;
         state.captcha_completed = backendState.captcha?.completed;
-        state.email_address = backendState.email?.address;
         if (backendState.captcha?.completed) {
           state.next_page = "ProcessCaptcha";
         } else if (backendState.email?.completed) {
           state.next_page = "HandleExtraSecurities";
         } else if (backendState.email?.address) {
           state.next_page = "ResetPasswordConfirmEmail";
+          state.email_address = backendState.email.address;
         } else {
           state.next_page = "ResetPasswordEnterEmail";
         }
