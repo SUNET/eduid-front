@@ -266,7 +266,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage
             description="security second factor"
             defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
-              to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer.`}
+              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins. It is recommended to add more than one security key.`}
           />
         </p>
         <p className="text-medium">
@@ -280,7 +280,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         <p className="help-text">
           <FormattedMessage
             description="security second factor help info"
-            defaultMessage={`You can read more about security keys in the Help section: {HelpSecurityKeys}.`}
+            defaultMessage={`You can read more about supported security keys in the Help section: {HelpSecurityKeys}.`}
             values={{
               HelpSecurityKeys: (
                 <Link className="text-link" to={`../../../help`} target="_blank">
@@ -313,7 +313,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <p className="help-text">
                 <FormattedMessage
                   description="platform authn device help text"
-                  defaultMessage="The device you are currently using."
+                  defaultMessage="Internal passkey on your phone or laptop."
                 />
               </p>
               {!isPlatformAuthenticatorAvailable && (
@@ -338,7 +338,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <p className="help-text">
                 <FormattedMessage
                   description="platform authn key help text"
-                  defaultMessage="E.g a USB Security Key you are using."
+                  defaultMessage="Your external USB security key."
                 />
               </p>
             </div>
