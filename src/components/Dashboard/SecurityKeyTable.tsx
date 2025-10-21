@@ -158,6 +158,14 @@ export function SecurityKeyTable({
       <h2>
         <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
       </h2>
+
+      <p>
+        <FormattedMessage
+          description="manage tokens paragraph"
+          defaultMessage={`Your added security keys can be verified or deleted from the list below and the toggle controls whether a security key should always be used with your eduID.`}
+        />
+      </p>
+
       {Boolean(tokens.length) && <UseSecurityKeyToggle />}
       {securityKeyData}
       <NotificationModal

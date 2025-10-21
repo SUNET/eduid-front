@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import React, { Fragment, ReactElement } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
 
@@ -22,6 +22,8 @@ interface ActionInfo {
 }
 
 export function SecurityZoneInfo(): React.JSX.Element {
+  const intl = useIntl();
+
   const toSecurity = (
     <a href={SECURITY_PATH} aria-label="return to security page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone security link" defaultMessage="Security" />
@@ -42,31 +44,52 @@ export function SecurityZoneInfo(): React.JSX.Element {
 
   const actionMap: Record<SecurityZoneAction, ActionInfo> = {
     changeSecurityPreferencesAuthn: {
-      action: "change security key preferences",
+      action: intl.formatMessage({
+        id: "security key prefs action",
+        defaultMessage: "change security key preferences",
+      }),
       redirectPath: toSecurity,
     },
     addSecurityKeyAuthn: {
-      action: "add security key",
+      action: intl.formatMessage({
+        id: "add security key action",
+        defaultMessage: "add security key",
+      }),
       redirectPath: toSecurity,
     },
     removeSecurityKeyAuthn: {
-      action: "remove security key",
+      action: intl.formatMessage({
+        id: "remove security key action",
+        defaultMessage: "remove security key",
+      }),
       redirectPath: toSecurity,
     },
     verifyCredential: {
-      action: "verify security key",
+      action: intl.formatMessage({
+        id: "verity security key action",
+        defaultMessage: "verify security key",
+      }),
       redirectPath: toSecurity,
     },
     terminateAccountAuthn: {
-      action: "delete account",
+      action: intl.formatMessage({
+        id: "delete account action",
+        defaultMessage: "delete account",
+      }),
       redirectPath: toAccount,
     },
     changepwAuthn: {
-      action: "change password",
+      action: intl.formatMessage({
+        id: "change pw action",
+        defaultMessage: "change password",
+      }),
       redirectPath: toAccount,
     },
     removeIdentity: {
-      action: "remove identity",
+      action: intl.formatMessage({
+        id: "remove ID action",
+        defaultMessage: "remove identity",
+      }),
       redirectPath: toIdentity,
     },
   };

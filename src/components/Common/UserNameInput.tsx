@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import CustomInput from "./CustomInput";
 
 // exported for use in tests
-export const userNameInputPlaceHolder = "email or username";
+export const userNameInputPlaceHolder = "email or unique ID";
 
 interface UserNameInputProps {
   required: boolean;
@@ -21,7 +21,7 @@ export default function UserNameInput(props: UserNameInputProps): React.JSX.Elem
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.username",
-    defaultMessage: "email or username",
+    defaultMessage: "email or unique ID",
     description: "placeholder text for user name input",
   });
 
