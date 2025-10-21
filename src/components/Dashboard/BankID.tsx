@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 function BankID(): React.JSX.Element {
-  const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery()
+  const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery();
 
   async function useBankID() {
     const response = await bankIDVerifyIdentity({ method: "bankid" });
@@ -39,7 +39,7 @@ function BankID(): React.JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary sm" onClick={useBankID}>
+      <EduIDButton buttonstyle="primary sm" onClick={useBankID} aria-label="Proceed with BankID">
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </Fragment>

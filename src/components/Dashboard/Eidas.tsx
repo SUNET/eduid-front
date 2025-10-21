@@ -79,7 +79,7 @@ function Eidas(): React.JSX.Element {
         />
       </p>
 
-      <EduIDButton buttonstyle="primary sm" onClick={() => setShowModal(true)}>
+      <EduIDButton buttonstyle="primary sm" onClick={() => setShowModal(true)} aria-label="Proceed with Freja eID">
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 

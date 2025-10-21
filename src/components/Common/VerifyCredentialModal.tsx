@@ -15,12 +15,18 @@ interface VerifyCredentialModalProps {
 
 export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
   return (
-    <dialog open={props.showVerifyWebauthnModal} id="verify-webauthn-token-modal" data-backdrop="true">
+    <dialog
+      open={props.showVerifyWebauthnModal}
+      id="verify-webauthn-token-modal"
+      data-backdrop="true"
+      aria-modal="true"
+      aria-labelledby="verify-webauthn-token-modal-title"
+    >
       <div className={props.showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">
+              <h4 className="modal-title" id="verify-webauthn-token-modal-title">
                 <FormattedMessage
                   defaultMessage="Verify your added security key"
                   description="verify webauthn token modal title"
