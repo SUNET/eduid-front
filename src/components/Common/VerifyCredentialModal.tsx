@@ -1,3 +1,4 @@
+import { WebauthnMethods } from "apis/eduidEidas";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -8,19 +9,13 @@ import EduIDButton from "./EduIDButton";
 interface VerifyCredentialModalProps {
   readonly showVerifyWebauthnModal: boolean;
   readonly setShowVerifyWebauthnModal: (value: boolean) => void;
-  readonly handleVerificationWebauthnToken: (token: string, type: string) => void;
+  readonly handleVerificationWebauthnToken: (token: string | undefined, type: WebauthnMethods) => Promise<void> | void;
   tokenKey: string;
 }
 
 export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
   return (
-    <dialog
-      open={props.showVerifyWebauthnModal}
-      id="verify-webauthn-token-modal"
-      tabIndex={-1}
-      aria-hidden="true"
-      data-backdrop="true"
-    >
+    <dialog open={props.showVerifyWebauthnModal} id="verify-webauthn-token-modal" data-backdrop="true">
       <div className={props.showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
