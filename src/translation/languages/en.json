@@ -303,6 +303,10 @@
     "developer_comment": "ErrorURL eduid error",
     "string": "Not logged in"
   },
+  "4O5rEi": {
+    "developer_comment": "platform authn key help text",
+    "string": "Your external USB security key"
+  },
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
@@ -584,10 +588,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ \\ + _ %"
   },
-  "Account": {
-    "developer_comment": "Account",
-    "string": "Account"
-  },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
@@ -684,6 +684,10 @@
     "developer_comment": "verify identity non swedish verified heading",
     "string": "If you have a Swedish identity you can verify that as well, to be able to access more services."
   },
+  "E/lGO9": {
+    "developer_comment": "manage tokens paragraph",
+    "string": "Your added security keys can be verified or deleted from the list below and the toggle controls whether a security key should always be used with your eduID."
+  },
   "E0OaFE": {
     "developer_comment": "create eduid - list definition",
     "string": "How to register your new eduID account at {eduidRegisterLink}:"
@@ -716,6 +720,10 @@
     "developer_comment": "what are eduIDs terms of use - heading",
     "string": "What are eduIDs terms of use?"
   },
+  "EHBCi9": {
+    "developer_comment": "security second factor help info",
+    "string": "You can read more about supported security keys in the Help section: {HelpSecurityKeys}."
+  },
   "ER07+b": {
     "developer_comment": "Verify Identity heading",
     "string": "Verify your identity"
@@ -743,6 +751,10 @@
   "EYO4YN": {
     "developer_comment": "privacy policy - list item 4",
     "string": "protects and stores the information securely,"
+  },
+  "EgEIWh": {
+    "developer_comment": "platform authn device help text",
+    "string": "Internal passkey on your phone or laptop"
   },
   "EgNSWv": {
     "developer_comment": "account eduid - list item 2-heading",
@@ -919,10 +931,6 @@
     "developer_comment": "privacy policy - list item 7",
     "string": "stores log files recording use for six months,"
   },
-  "Identity": {
-    "developer_comment": "Identity",
-    "string": "Identity"
-  },
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "Email addresses"
@@ -1029,10 +1037,6 @@
   "LmFLU4": {
     "developer_comment": "identity eduid - list item 2-2",
     "string": "With eIDAS electronic identification for EU citizens."
-  },
-  "LqPZcl": {
-    "developer_comment": "platform authn key help text",
-    "string": "A USB Security Key you are using."
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1309,10 +1313,6 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
   },
-  "S64hBH": {
-    "developer_comment": "platform authn device help text",
-    "string": "The device you are currently using."
-  },
   "SL6O2c": {
     "developer_comment": "Password label",
     "string": "Password"
@@ -1327,10 +1327,6 @@
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in"
-  },
-  "Security": {
-    "developer_comment": "Security",
-    "string": "Security"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
@@ -1379,10 +1375,6 @@
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your account safe."
-  },
-  "TpkLxO": {
-    "developer_comment": "security second factor help info",
-    "string": "You can read more about security keys in the Help section: {HelpSecurityKeys}."
   },
   "TtQt1m": {
     "developer_comment": "Registration complete",
@@ -1730,6 +1722,9 @@
   "actions.action-completed": {
     "string": "Success"
   },
+  "add security key action": {
+    "string": "add security key"
+  },
   "aisFdT": {
     "developer_comment": "orcid logo",
     "string": "orcid logo"
@@ -1846,10 +1841,6 @@
     "developer_comment": "login eduid - re-login list item 2",
     "string": "Toggling 2FA login requirement setting."
   },
-  "bgGHTb": {
-    "developer_comment": "security second factor",
-    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys, or built-in features on your device such as mobile phone or laptop computer."
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -1881,6 +1872,9 @@
   "cRNzAJ": {
     "developer_comment": "orcid remove",
     "string": "remove"
+  },
+  "change pw action": {
+    "string": "change password"
   },
   "chpass.different-repeat": {
     "string": "The new password and repeat password are different."
@@ -1960,6 +1954,9 @@
     "developer_comment": "about eduid - info",
     "string": "What it is and may be used for"
   },
+  "delete account action": {
+    "string": "delete account"
+  },
   "document title Account": {
     "string": "Account | eduID"
   },
@@ -2004,10 +2001,6 @@
   "e2YdEN": {
     "developer_comment": "start eduid - list item 3-1",
     "string": "confirmed account (confirmed email address and accepted terms of use)"
-  },
-  "eIAskC": {
-    "developer_comment": "Start",
-    "string": "Start"
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
@@ -2293,6 +2286,10 @@
   "iC8nbv": {
     "developer_comment": "use international - list item 2",
     "string": "login to eduID and scan the QR code produced by Freja from the 'Other countries' section in the Identity area of eduID by following the instructions."
+  },
+  "iFAVRB": {
+    "developer_comment": "security second factor",
+    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins. It is recommended to add more than one security key."
   },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
@@ -2900,7 +2897,7 @@
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
-    "string": "email or username"
+    "string": "email or unique ID"
   },
   "proofing.attribute_missing": {
     "string": "Information necessary for identification is missing. Please try again."
@@ -3009,6 +3006,12 @@
     "developer_comment": "what is international - paragraph 1",
     "string": "Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely."
   },
+  "remove ID action": {
+    "string": "remove identity"
+  },
+  "remove security key action": {
+    "string": "remove security key"
+  },
   "required": {
     "string": "*Field cannot be empty"
   },
@@ -3114,6 +3117,9 @@
   "sdnCTc": {
     "developer_comment": "need visit atg agent for freja - strong",
     "string": "or if you have a protected identity"
+  },
+  "security key prefs action": {
+    "string": "change security key preferences"
   },
   "security.description_invalid_format": {
     "developer_comment": "Error message for max length",
@@ -3377,6 +3383,9 @@
   },
   "verified identity delete button": {
     "string": "Delete this verified identity"
+  },
+  "verity security key action": {
+    "string": "verify security key"
   },
   "vh4acG": {
     "developer_comment": "identity eduid - list item 2",
