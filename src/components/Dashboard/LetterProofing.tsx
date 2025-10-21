@@ -159,7 +159,12 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
 
       {description}
 
-      <EduIDButton disabled={disabled} buttonstyle="primary sm" onClick={() => handleModal()}>
+      <EduIDButton
+        disabled={disabled}
+        buttonstyle="primary sm"
+        onClick={() => handleModal()}
+        aria-label="Proceed with letter proofing"
+      >
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 

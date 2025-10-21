@@ -1,3 +1,4 @@
+import { WebauthnMethods } from "apis/eduidEidas";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -8,7 +9,7 @@ import EduIDButton from "./EduIDButton";
 interface VerifyCredentialModalProps {
   readonly showVerifyWebauthnModal: boolean;
   readonly setShowVerifyWebauthnModal: (value: boolean) => void;
-  readonly handleVerificationWebauthnToken: (token: string, type: string) => void;
+  readonly handleVerificationWebauthnToken: (token: string | undefined, type: WebauthnMethods) => Promise<void> | void;
   tokenKey: string;
 }
 
@@ -17,15 +18,15 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
     <dialog
       open={props.showVerifyWebauthnModal}
       id="verify-webauthn-token-modal"
-      tabIndex={-1}
-      aria-hidden="true"
       data-backdrop="true"
+      aria-modal="true"
+      aria-labelledby="verify-webauthn-token-modal-title"
     >
       <div className={props.showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">
+              <h4 className="modal-title" id="verify-webauthn-token-modal-title">
                 <FormattedMessage
                   defaultMessage="Verify your added security key"
                   description="verify webauthn token modal title"

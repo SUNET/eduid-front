@@ -435,7 +435,7 @@ function AccordionItemEu(): React.JSX.Element | null {
                          electronic ID to connect your identity to eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with eIDAS">
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
@@ -491,7 +491,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
           identifying yourself with Freja eID, you will verify your identity towards eduID.`}
         />
       </p>
-      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick}>
+      <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with Freja eID">
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
