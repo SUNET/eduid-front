@@ -1,11 +1,12 @@
 import { loginApi } from "apis/eduidLogin";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React from "react";
+import React, { useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -28,6 +29,34 @@ export default function UsernamePw() {
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
+  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  const [abortPasskeyAuthentication] = navigatorCredentialsApi.useLazyAbortQuery();
+
+  useEffect(() => {
+    // start a conditional authentication for autofill passkey login
+    const authenticate = async () => {
+      if (ref) {
+        const result = await fetchMfaAuth({ ref });
+        if (result.isSuccess) {
+          const webauth_options = result.data.payload.webauthn_options;
+          if (webauth_options) {
+            const auth_result = await performAuthentication({
+              webauth_options: webauth_options,
+              mediation: "conditional",
+            });
+            if (auth_result.isSuccess) {
+              fetchMfaAuth({ ref, webauthn_response: auth_result.data });
+            }
+          }
+        }
+      }
+    };
+    authenticate();
+    return () => {
+      abortPasskeyAuthentication();
+    };
+  }, [ref, fetchMfaAuth, performAuthentication]);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -150,7 +179,7 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username webauthn" />;
 }
 
 function RenderRegisterLink(): React.JSX.Element {
