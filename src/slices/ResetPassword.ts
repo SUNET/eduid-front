@@ -93,11 +93,12 @@ export const resetPasswordSlice = createSlice({
         const backendState = action.payload.payload.state;
         state.captcha_completed = backendState.captcha?.completed;
         state.reset_pw_status = backendState;
-        if (backendState.email?.address) {
+        if (backendState.email?.address || state.email_address) {
           // state.email_address = backendState.email.address;
           if (backendState.captcha?.completed) {
             state.next_page = "ProcessCaptcha";
           } else if (!backendState.captcha?.completed) {
+            console.log("Setting next_page to ResetPasswordCaptcha");
             state.next_page = "ResetPasswordCaptcha";
           } else if (backendState.email?.completed) {
             state.next_page = "HandleExtraSecurities";

@@ -26,7 +26,7 @@ export function SetNewPassword(): React.JSX.Element | null {
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
   const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
-  console.log("[123 SetNewPassword]");
+
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
   }, [renderSuggested, suggested]);

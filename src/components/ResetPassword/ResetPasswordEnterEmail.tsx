@@ -18,7 +18,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
     if (email) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email));
       getResetPasswordState();
-      dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
+      // dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
       // setCurrentPage("ResetPasswordCaptcha");
       // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }

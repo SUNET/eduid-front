@@ -29,7 +29,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   // const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
-
+  console.log("hohoho");
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Reset Password",
