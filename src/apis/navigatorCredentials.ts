@@ -9,38 +9,47 @@ export interface AuthenticationRequest {
 
 let navigatorAbortController = new AbortController();
 
+async function handlePerformAuthentication(args: AuthenticationRequest) {
+  const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.webauth_options);
+  const credential = await navigator.credentials.get({
+    publicKey,
+    signal: navigatorAbortController?.signal,
+    mediation: args.mediation,
+  });
+  if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAssertionResponse) {
+    return { data: credentialToJSON(credential) };
+  }
+  throw new Error("Unable to obtain credential.");
+}
+
+async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON) {
+  const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(args);
+  const credential = await navigator.credentials.create({ publicKey });
+  if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAttestationResponse) {
+    return { data: credentialToJSON(credential) };
+  }
+  throw new Error("Unable to create credential.");
+}
+
+function handleAbort() {
+  navigatorAbortController.abort();
+  navigatorAbortController = new AbortController();
+  return { data: { message: "Request aborted" } };
+}
+
 const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
-  let errorMessage: string = "";
+  let errorMessage = "";
   try {
-    if (args.action === "performAuthentication") {
-      const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.payload.webauth_options);
-      const credential = await navigator.credentials.get({
-        publicKey,
-        signal: navigatorAbortController?.signal,
-        mediation: args.payload.mediation,
-      });
-      if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAssertionResponse) {
-        return { data: credentialToJSON(credential) };
-      } else {
-        errorMessage = "Unable to obtain credential.";
-      }
-    }
-    if (args.action === "createCredential") {
-      const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(args.payload);
-      const credential = await navigator.credentials.create({ publicKey });
-      if (
-        credential instanceof PublicKeyCredential &&
-        credential.response instanceof AuthenticatorAttestationResponse
-      ) {
-        return { data: credentialToJSON(credential) };
-      } else {
-        errorMessage = "Unable to create credential.";
-      }
-    }
-    if (args.action === "abort") {
-      navigatorAbortController.abort();
-      navigatorAbortController = new AbortController();
-      return { data: { message: "Request aborted" } };
+    switch (args.action) {
+      case "performAuthentication":
+        return await handlePerformAuthentication(args.payload);
+      case "createCredential":
+        return await handleCreateCredential(args.payload);
+      case "abort":
+        return handleAbort();
+      default:
+        errorMessage = `Unknown action: ${args.action}`;
+        break;
     }
   } catch (error) {
     if (error instanceof DOMException && error.name === "AbortError") {
