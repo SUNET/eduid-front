@@ -25,11 +25,9 @@ export function ResetPasswordApp(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
-  // const state = useSelector(resetPasswordContext.resetPasswordService, (s) => s);
   const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
-  console.log("hohoho");
+
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Reset Password",
@@ -39,8 +37,6 @@ export function ResetPasswordApp(): React.JSX.Element {
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
-      // setCurrentPage("SetNewPassword");
       dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
@@ -52,10 +48,6 @@ export function ResetPasswordApp(): React.JSX.Element {
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
     dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
-    // getResetPasswordState();
-    // setCurrentPage("AskForEmailOrConfirmEmail");
-
-    // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
   }, [loginRef, params]);
 
   return (
@@ -74,7 +66,6 @@ export function ResetPasswordApp(): React.JSX.Element {
 }
 
 function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();
@@ -83,12 +74,8 @@ function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
     if (email_status === undefined || !email_status) {
       if (email_address) {
         dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordConfirmEmail"));
-        // setCurrentPage("ResetPasswordConfirmEmail");
-        // resetPasswordContext.resetPasswordService.send({ type: "KNOWN_USER" });
       } else {
         dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordEnterEmail"));
-        // setCurrentPage("ResetPasswordEnterEmail");
-        // resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
       }
     }
   }, [email_status, email_address]);
@@ -105,9 +92,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
-  const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
 
   useEffect(() => {
     if (captcha_completed) {
@@ -119,10 +104,6 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
     dispatch(clearNotifications());
     if (email_address) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email_address));
-      // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
-      // dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
-      // setCurrentPage("ResetPasswordCaptcha");
-
       getResetPasswordState();
     }
   }

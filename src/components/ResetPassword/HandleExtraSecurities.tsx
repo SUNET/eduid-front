@@ -21,8 +21,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
       dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
-      // setCurrentPage("SetNewPassword");
-      // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
     }
   }, [swedishEID_status]);
 
@@ -32,8 +30,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       (extra_security?.tokens === undefined && !extra_security?.external_mfa)
     ) {
       dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
-      // setCurrentPage("SetNewPassword");
-      // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
     }
   }, [extra_security]);
 
@@ -41,8 +37,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
     dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
-    // setCurrentPage("SetNewPassword");
-    // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
   }
 
   if (!extra_security) {
@@ -57,8 +51,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   function continueWithSecurityKey() {
-    // resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-    // setCurrentPage("SetNewPassword");
     dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
   }
 

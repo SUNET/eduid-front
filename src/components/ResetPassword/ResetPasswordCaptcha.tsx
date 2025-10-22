@@ -12,15 +12,12 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = resetPasswordApi.useLazyGetResetPasswordCaptchaRequestQuery();
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
       dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
-      // setCurrentPage("ProcessCaptcha");
-      // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }, [captcha_completed]);
 
@@ -41,8 +38,6 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
       dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
-      // setCurrentPage("ProcessCaptcha");
-      // resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
     }
   }
 
@@ -90,12 +85,8 @@ export function ProcessCaptcha(): null {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("EmailLinkSent"));
-        // setCurrentPage("EmailLinkSent");
-        // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       } else {
         dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
-        // setCurrentPage("AskForEmailOrConfirmEmail");
-        // resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
       }
     }
   }
@@ -107,8 +98,6 @@ export function ProcessCaptcha(): null {
       sendEmailLink();
     } else {
       dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
-      // setCurrentPage("ResetPasswordCaptcha");
-      // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
     }
   }
 

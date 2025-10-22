@@ -6,7 +6,6 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
@@ -29,19 +28,9 @@ export function EmailLinkSent(): React.JSX.Element | null {
           dispatch(clearNotifications());
           if (Object.values(response.data.payload.extra_security).length > 0) {
             dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
-            // resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-            // setCurrentPage("HandleExtraSecurities");
-          }
-          // resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
-          else {
+          } else {
             dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
           }
-
-          // setCurrentPage("SetNewPassword");
-        } else {
-          // dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
-          // resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
-          // setCurrentPage("HandleExtraSecurities");
         }
       }
     }
@@ -52,9 +41,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
       dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
-      // setCurrentPage("AskForEmailOrConfirmEmail");
-
-      // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }
   }
 

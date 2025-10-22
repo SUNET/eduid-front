@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function SetNewPassword(): React.JSX.Element | null {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
@@ -21,7 +20,6 @@ export function SetNewPassword(): React.JSX.Element | null {
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
@@ -34,12 +32,7 @@ export function SetNewPassword(): React.JSX.Element | null {
   function goBack() {
     if (extra_security && Object.values(extra_security).length) {
       dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
-      // setCurrentPage("HandleExtraSecurities");
-      // resetPasswordContext.resetPasswordService.send({ type: "START_EXTRA_SECURITY" });
     } else dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordEnterEmail"));
-    // setCurrentPage("ResetPasswordEnterEmail");
-    // resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
-
     // initialization of state
     dispatch(resetPasswordSlice.actions.resetState());
   }
@@ -56,9 +49,6 @@ export function SetNewPassword(): React.JSX.Element | null {
       const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
-        // setCurrentPage("ResetPasswordSuccess");
-
-        // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await postSetNewPasswordExtraSecurityToken({
@@ -68,8 +58,6 @@ export function SetNewPassword(): React.JSX.Element | null {
       });
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
-        // setCurrentPage("ResetPasswordSuccess");
-        // // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     } else if (selected_option === "swedishEID") {
       const response = await postSetNewPasswordExternalMfa({
@@ -78,8 +66,6 @@ export function SetNewPassword(): React.JSX.Element | null {
       });
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
-        // setCurrentPage("ResetPasswordSuccess");
-        // resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
       }
     }
   }
