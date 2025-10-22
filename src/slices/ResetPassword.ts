@@ -94,7 +94,6 @@ export const resetPasswordSlice = createSlice({
         state.captcha_completed = backendState.captcha?.completed;
         state.reset_pw_status = backendState;
         if (backendState.email?.address || state.email_address) {
-          // state.email_address = backendState.email.address;
           if (backendState.captcha?.completed) {
             state.next_page = "ProcessCaptcha";
           } else if (!backendState.captcha?.completed) {
@@ -104,9 +103,6 @@ export const resetPasswordSlice = createSlice({
             state.next_page = "HandleExtraSecurities";
           }
         }
-        // else {
-        //   state.next_page = "ResetPasswordEnterEmail";
-        // }
       })
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
         state.next_page = "HandleExtraSecurities";
@@ -119,9 +115,6 @@ export const resetPasswordSlice = createSlice({
         state.extra_security = action.payload.payload.extra_security;
         state.suggested_password = action.payload.payload.suggested_password;
         state.email_code = action.payload.payload.email_code;
-        // if (Object.values(action.payload.payload.extra_security)) {
-        //   state.next_page = "HandleExtraSecurities";
-        // } else state.next_page = "SetNewPassword";
       })
       .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchFulfilled, (state, action) => {
         state.captcha_completed = action?.payload?.payload.captcha_completed;

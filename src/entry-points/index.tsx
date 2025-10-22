@@ -66,13 +66,11 @@ if (initDomTarget === null) {
 const root = ReactDOMClient.createRoot(initDomTarget);
 root.render(
   <SignupGlobalStateProvider>
-    {/* <ResetPasswordGlobalStateProvider> */}
     <ReduxIntlProvider store={eduidStore}>
       <BrowserRouter>
         <IndexMain />
       </BrowserRouter>
     </ReduxIntlProvider>
-    {/* </ResetPasswordGlobalStateProvider> */}
   </SignupGlobalStateProvider>
 );
 getConfig();
