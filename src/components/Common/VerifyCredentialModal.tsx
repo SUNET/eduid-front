@@ -55,25 +55,28 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 <EduIDButton
                   id={`verify-webauthn-token-modal-continue-bankID-button`}
                   buttonstyle="primary icon"
+                  aria-label="Proceed with BankID"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "bankid")}
                 >
-                  <img className="circle-icon bankid-icon" height="20" alt="BankID" src={BankIdFlag} />
+                  <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
                   <span>BankID</span>
                 </EduIDButton>
                 <EduIDButton
                   buttonstyle="primary icon"
                   id={`verify-webauthn-token-modal-continue-frejaID-button`}
+                  aria-label="Proceed with Freja eID"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja")}
                 >
-                  <img className="freja" height="20" alt="Freja+" src={FrejaFlag} />
+                  <img className="freja" height="24" alt="Freja+" src={FrejaFlag} />
                   <span>Freja+</span>
                 </EduIDButton>
                 <EduIDButton
                   buttonstyle="primary icon"
                   id={`verify-webauthn-token-modal-continue-eidas-button`}
+                  aria-label="Proceed with eIDAS"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "eidas")}
                 >
-                  <img className="freja" height="20" alt="eIDAS" src={EuFlag} />
+                  <img className="freja" height="24" alt="eIDAS" src={EuFlag} />
                   <span>eidas</span>
                 </EduIDButton>
               </div>
