@@ -24,17 +24,17 @@ export function SetNewPassword(): React.JSX.Element | null {
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
   const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
   }, [renderSuggested, suggested]);
 
-  function goBack() {
-    if (extra_security && Object.values(extra_security).length) {
-      dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
-    } else dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordEnterEmail"));
-    // initialization of state
-    dispatch(resetPasswordSlice.actions.resetState());
+  function handleCancel() {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+      dispatch(resetPasswordSlice.actions.resetState());
+    }
   }
 
   async function submitNewPassword(values: NewPasswordFormData) {
@@ -127,9 +127,9 @@ export function SetNewPassword(): React.JSX.Element | null {
             )}
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={goBack} suggestedPassword={suggested} />
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={goBack} handleSubmit={submitNewPassword} />
+              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} handleSubmit={submitNewPassword} />
             )}
           </Splash>
         );
