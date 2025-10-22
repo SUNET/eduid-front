@@ -28,35 +28,38 @@ export default function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
+  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
   const [abortPasskeyAuthentication] = navigatorCredentialsApi.useLazyAbortQuery();
 
   useEffect(() => {
-    // start a conditional authentication for autofill passkey login
-    const authenticate = async () => {
-      if (ref) {
-        const result = await fetchMfaAuth({ ref });
-        if (result.isSuccess) {
-          const webauth_options = result.data.payload.webauthn_options;
-          if (webauth_options) {
-            const auth_result = await performAuthentication({
-              webauth_options: webauth_options,
-              mediation: "conditional",
-            });
-            if (auth_result.isSuccess) {
-              fetchMfaAuth({ ref, webauthn_response: auth_result.data });
+    if (webauthn) {
+      // start a conditional authentication for autofill passkey login
+      const authenticate = async () => {
+        if (ref) {
+          const result = await fetchMfaAuth({ ref });
+          if (result.isSuccess) {
+            const webauth_options = result.data.payload.webauthn_options;
+            if (webauth_options) {
+              const auth_result = await performAuthentication({
+                webauth_options: webauth_options,
+                mediation: "conditional",
+              });
+              if (auth_result.isSuccess) {
+                fetchMfaAuth({ ref, webauthn_response: auth_result.data });
+              }
             }
           }
         }
-      }
-    };
-    authenticate();
-    return () => {
-      abortPasskeyAuthentication();
-    };
-  }, [ref, fetchMfaAuth, performAuthentication]);
+      };
+      authenticate();
+      return () => {
+        abortPasskeyAuthentication();
+      };
+    }
+  }, [webauthn, ref, fetchMfaAuth, performAuthentication]);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -140,6 +143,7 @@ export default function UsernamePw() {
 
 function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
+  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
 
   function handleClickWrongPerson() {
@@ -179,7 +183,14 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username webauthn" />;
+  return (
+    <UserNameInput
+      name="username"
+      autoFocus={true}
+      required={true}
+      autoComplete={webauthn ? "username webauthn" : "username"}
+    />
+  );
 }
 
 function RenderRegisterLink(): React.JSX.Element {
