@@ -2,6 +2,19 @@ import { eduIDApi } from "./common";
 import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
 import type { ApiResponse } from "./helpers/types";
 
+interface GetResetPasswordStateResponse {
+  state: {
+    captcha: {
+      completed: boolean;
+    };
+    email: {
+      address?: string;
+      completed: boolean;
+      sent_at?: string;
+    };
+  };
+}
+
 interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;
 }
@@ -74,7 +87,7 @@ export type NewPasswordResponse = object;
 
 export const resetPasswordApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    getResetPasswordState: builder.query<ApiResponse<any>, void>({
+    getResetPasswordState: builder.query<ApiResponse<GetResetPasswordStateResponse>, void>({
       query: () => ({
         url: "/",
       }),
