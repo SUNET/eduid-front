@@ -27,7 +27,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
-
+  console.log("ResetPasswordApp next_page:", next_page);
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Reset Password",
@@ -65,7 +65,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   );
 }
 
-function AskForEmailOrConfirmEmail({ setCurrentPage }: any): null {
+function AskForEmailOrConfirmEmail(): null {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();

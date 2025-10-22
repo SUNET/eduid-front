@@ -19,7 +19,6 @@ export function SetNewPassword(): React.JSX.Element | null {
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
