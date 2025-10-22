@@ -40,7 +40,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
     if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
     }
   }
 
