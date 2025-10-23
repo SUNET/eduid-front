@@ -528,7 +528,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 2"
-                        defaultMessage={`your unique user ID`}
+                        defaultMessage={`your unique user ID - part of what is sometimes referred to as EPPN.`}
                       />
                     </li>
                     <li>
@@ -738,6 +738,19 @@ export function Help(): React.JSX.Element {
                     />
                   </p>
                   <ul className="bullets">
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 0-heading"
+                          defaultMessage={`Unique ID: `}
+                        />
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 0"
+                        defaultMessage={` A unique username for your eduID that is generated for you when creating the account.`}
+                      />
+                    </li>
                     <li>
                       <strong>
                         <FormattedMessage
