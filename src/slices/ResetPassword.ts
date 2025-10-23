@@ -2,7 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
-import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/eduidResetPassword";
+import {
+  ExtraSecurityAlternatives,
+  GetResetPasswordState,
+  RequestEmailLinkResponse,
+  resetPasswordApi,
+} from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
@@ -27,7 +32,7 @@ export interface ResetPasswordState {
   captcha?: CaptchaRequest;
   captcha_completed: boolean;
   next_page?: string;
-  reset_pw_status?: { captcha?: { completed: boolean }; email?: { completed: boolean; address?: string } };
+  reset_pw_status?: GetResetPasswordState;
 }
 
 // Define the initial state using that type

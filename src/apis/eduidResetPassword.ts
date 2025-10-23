@@ -2,17 +2,21 @@ import { eduIDApi } from "./common";
 import { CaptchaRequest, GetCaptchaResponse } from "./eduidSignup";
 import type { ApiResponse } from "./helpers/types";
 
-interface GetResetPasswordStateResponse {
-  state: {
-    captcha: {
-      completed: boolean;
-    };
-    email: {
-      address?: string;
-      completed: boolean;
-      sent_at?: string;
-    };
+export interface GetResetPasswordState {
+  captcha: {
+    completed: boolean;
   };
+  email: {
+    address?: string;
+    completed: boolean;
+    expires_time_left?: number;
+    expires_time_max?: number;
+    sent_at?: string;
+  };
+}
+
+export interface GetResetPasswordStateResponse {
+  state: GetResetPasswordState;
 }
 
 interface ResetPasswordCaptchaResponse {
