@@ -97,7 +97,6 @@ export const resetPasswordSlice = createSlice({
           if (backendState.captcha?.completed) {
             state.next_page = "ProcessCaptcha";
           } else if (!backendState.captcha?.completed) {
-            console.log("Setting next_page to ResetPasswordCaptcha");
             state.next_page = "ResetPasswordCaptcha";
           } else if (backendState.email?.completed) {
             state.next_page = "HandleExtraSecurities";
@@ -130,7 +129,7 @@ export const resetPasswordSlice = createSlice({
       })
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordCaptchaRequest.matchRejected, (state, action) => {
         if (
-          (action.payload as ApiResponse<{ message: string }>).payload.message === "resetpw.captcha-already-completed"
+          (action.payload as ApiResponse<{ message: string }>).payload?.message === "resetpw.captcha-already-completed"
         ) {
           state.captcha_completed = true;
         }
