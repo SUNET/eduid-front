@@ -1,5 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import { AuthenticationFailure } from "./AuthenticationFailure";
@@ -20,11 +20,7 @@ export function Errors() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
-  const [errorURL, setErrorURL] = useState<errorURLData>({});
-
-  useEffect(() => {
-    setErrorURL(parseErrorURL(query));
-  }, []);
+  const errorURL = parseErrorURL(query);
 
   function handleDashboardOnClick() {
     if (is_configured && dashboard_link) {
