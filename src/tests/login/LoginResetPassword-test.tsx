@@ -1,6 +1,7 @@
 import { userEvent } from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import {
+  GetResetPasswordStateResponse,
   NewPasswordRequest,
   NewPasswordResponse,
   RequestEmailLinkRequest,
@@ -38,6 +39,23 @@ test("can click 'forgot password' with an e-mail address", async () => {
       };
       return HttpResponse.json({ type: "test response", payload: payload });
     }),
+    http.get("https://idp.eduid.docker/services/reset-password/", () => {
+      const payload: GetResetPasswordStateResponse = {
+        state: {
+          captcha: {
+            completed: true,
+          },
+          email: {
+            address: email,
+            completed: false,
+            expires_time_left: 368,
+            expires_time_max: 7200,
+            sent_at: "2025-10-23T09:45:21.179902+00:00",
+          },
+        },
+      };
+      return HttpResponse.json({ type: "test success", payload: payload });
+    }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
       if (body.email != email) {
@@ -59,7 +77,24 @@ test("can click 'forgot password' with an e-mail address", async () => {
       ...loginTestState,
       resetPassword: {
         ...loginTestState.resetPassword,
+        email_response: {
+          email: email,
+          email_code_timeout: 7200,
+          throttled_max: 300,
+          throttled_seconds: 299,
+        },
         captcha_completed: true,
+        next_page: "EmailLinkSent",
+        reset_pw_status: {
+          captcha: { completed: true },
+          email: {
+            address: email,
+            completed: false,
+            expires_time_left: 368,
+            expires_time_max: 7200,
+            sent_at: "2025-10-23T09:45:21.179902+00:00",
+          },
+        },
       },
     },
   });
@@ -121,6 +156,23 @@ test("can click 'forgot password' without an e-mail address", async () => {
         target: "/foo",
       };
       return HttpResponse.json({ type: "test response", payload: payload });
+    }),
+    http.get("https://idp.eduid.docker/services/reset-password/", () => {
+      const payload: GetResetPasswordStateResponse = {
+        state: {
+          captcha: {
+            completed: true,
+          },
+          email: {
+            address: email,
+            completed: false,
+            expires_time_left: 368,
+            expires_time_max: 7200,
+            sent_at: "2025-10-23T09:45:21.179902+00:00",
+          },
+        },
+      };
+      return HttpResponse.json({ type: "test success", payload: payload });
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
