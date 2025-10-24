@@ -267,10 +267,6 @@
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
-  "3xyel6": {
-    "developer_comment": "start eduid - list item 2",
-    "string": "your unique user ID"
-  },
   "4+MTla": {
     "developer_comment": "help - content headline",
     "string": "Content areas"
@@ -963,6 +959,10 @@
     "developer_comment": "about using eduid - info",
     "string": "Create, login, account settings and blocking/deleting account"
   },
+  "Jc80fN": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, accessible from the header with a horizontal menu for larger screens or drop down menu by clicking on your username on smaller screens. Read more about the possible actions of each page below."
+  },
   "JgFblM": {
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
@@ -1053,6 +1053,10 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Language"
+  },
+  "Mazoar": {
+    "developer_comment": "account eduid - list item 0",
+    "string": "A unique username for your eduID that is generated for you when creating the account."
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1165,6 +1169,10 @@
   "OuY4pQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph6",
     "string": "As an example, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
+  },
+  "OyR/Ey": {
+    "developer_comment": "account eduid - list item 0-heading",
+    "string": "Unique ID:"
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1611,10 +1619,6 @@
     "developer_comment": "Display name select legend",
     "string": "Display name"
   },
-  "Y/yF5+": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, accessible from the drop down menu in the header by clicking on your username. Read more about the possible actions of each page below."
-  },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
@@ -2009,6 +2013,10 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "If you do not longer want eduID to know your ORCID iD you can remove it by clicking the Remove button in your eduID."
+  },
+  "eQjAXk": {
+    "developer_comment": "start eduid - list item 2",
+    "string": "your unique user ID - part of what is sometimes referred to as EPPN."
   },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
