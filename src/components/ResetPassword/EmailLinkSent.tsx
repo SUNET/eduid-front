@@ -37,7 +37,8 @@ export function EmailLinkSent(): React.JSX.Element | null {
     }
   }
 
-  function handleAbortButtonOnClick() {
+  function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
+    event?.preventDefault();
     if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
