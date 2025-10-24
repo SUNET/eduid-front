@@ -21,11 +21,11 @@ function SubmitSamlResponse() {
           // submit isn't available in the tests jsdom environment
           document.forms[0].submit();
         } catch (_error) {
-          setError(true);
+          setTimeout(() => setError(true), 0);
         }
       }
     } else {
-      setError(true);
+      setTimeout(() => setError(true), 0);
     }
   }, []);
 
