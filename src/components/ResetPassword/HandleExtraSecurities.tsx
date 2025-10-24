@@ -20,7 +20,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
-      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
   }, [swedishEID_status]);
 
@@ -29,14 +29,14 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       (extra_security && !Object.values(extra_security).length) ||
       (extra_security?.tokens === undefined && !extra_security?.external_mfa)
     ) {
-      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
   }, [extra_security]);
 
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
-    dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+    dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
   }
 
   if (!extra_security) {
@@ -51,7 +51,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   function continueWithSecurityKey() {
-    dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+    dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
   }
 
   return (

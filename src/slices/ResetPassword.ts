@@ -100,16 +100,16 @@ export const resetPasswordSlice = createSlice({
         state.reset_pw_status = backendState;
         if (backendState.email?.address || state.email_address) {
           if (backendState.captcha?.completed) {
-            state.next_page = "ProcessCaptcha";
+            state.next_page = "PROCESS_CAPTCHA";
           } else if (!backendState.captcha?.completed) {
-            state.next_page = "ResetPasswordCaptcha";
+            state.next_page = "RESET_PW_CAPTCHA";
           } else if (backendState.email?.completed) {
-            state.next_page = "HandleExtraSecurities";
+            state.next_page = "HANDLE_EXTRA_SECURITIES";
           }
         }
       })
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
-        state.next_page = "HandleExtraSecurities";
+        state.next_page = "HANDLE_EXTRA_SECURITIES";
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
         state.email_status = "failed";

@@ -37,7 +37,7 @@ export function ResetPasswordApp(): React.JSX.Element {
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
   }, [swedishEID_status]);
@@ -47,20 +47,20 @@ export function ResetPasswordApp(): React.JSX.Element {
       // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
-    dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
+    dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
   }, [loginRef, params]);
 
   return (
     <React.Fragment>
-      {next_page === "AskForEmailOrConfirmEmail" && <AskForEmailOrConfirmEmail />}
-      {next_page === "ResetPasswordConfirmEmail" && <ResetPasswordConfirmEmail />}
-      {next_page === "ResetPasswordEnterEmail" && <ResetPasswordEnterEmail />}
-      {next_page === "ResetPasswordCaptcha" && <ResetPasswordCaptcha />}
-      {next_page === "ProcessCaptcha" && <ProcessCaptcha />}
-      {next_page === "EmailLinkSent" && <EmailLinkSent />}
-      {next_page === "HandleExtraSecurities" && <HandleExtraSecurities />}
-      {next_page === "SetNewPassword" && <SetNewPassword />}
-      {next_page === "ResetPasswordSuccess" && <ResetPasswordSuccess />}
+      {next_page === "ASK_FOR_EMAIL_OR_CONFIRM_EMAIL" && <AskForEmailOrConfirmEmail />}
+      {next_page === "RESET_PW_CONFIRM_EMAIL" && <ResetPasswordConfirmEmail />}
+      {next_page === "RESET_PW_ENTER_EMAIL" && <ResetPasswordEnterEmail />}
+      {next_page === "RESET_PW_CAPTCHA" && <ResetPasswordCaptcha />}
+      {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
+      {next_page === "EMAIL_LINK_SENT" && <EmailLinkSent />}
+      {next_page === "HANDLE_EXTRA_SECURITIES" && <HandleExtraSecurities />}
+      {next_page === "SET_NEW_PASSWORD" && <SetNewPassword />}
+      {next_page === "RESET_PW_SUCCESS" && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }
@@ -73,9 +73,9 @@ function AskForEmailOrConfirmEmail(): null {
   useEffect(() => {
     if (email_status === undefined || !email_status) {
       if (email_address) {
-        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordConfirmEmail"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CONFIRM_EMAIL"));
       } else {
-        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordEnterEmail"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
   }, [email_status, email_address]);

@@ -27,9 +27,9 @@ export function EmailLinkSent(): React.JSX.Element | null {
         if (response.isSuccess) {
           dispatch(clearNotifications());
           if (Object.values(response.data.payload.extra_security).length > 0) {
-            dispatch(resetPasswordSlice.actions.setNextPage("HandleExtraSecurities"));
+            dispatch(resetPasswordSlice.actions.setNextPage("HANDLE_EXTRA_SECURITIES"));
           } else {
-            dispatch(resetPasswordSlice.actions.setNextPage("SetNewPassword"));
+            dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
           }
         }
       }

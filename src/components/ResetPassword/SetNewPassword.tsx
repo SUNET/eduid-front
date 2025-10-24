@@ -47,7 +47,7 @@ export function SetNewPassword(): React.JSX.Element | null {
     if (!selected_option || selected_option === "without") {
       const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
       if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await postSetNewPasswordExtraSecurityToken({
@@ -56,7 +56,7 @@ export function SetNewPassword(): React.JSX.Element | null {
         webauthn_response: webauthn_assertion,
       });
       if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     } else if (selected_option === "swedishEID") {
       const response = await postSetNewPasswordExternalMfa({
@@ -64,7 +64,7 @@ export function SetNewPassword(): React.JSX.Element | null {
         password: newPassword,
       });
       if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordSuccess"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     }
   }

@@ -17,7 +17,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
-      dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
+      dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }, [captcha_completed]);
 
@@ -37,7 +37,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   function handleCaptchaCompleted(response: string) {
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
-      dispatch(resetPasswordSlice.actions.setNextPage("ProcessCaptcha"));
+      dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }
 
@@ -84,9 +84,9 @@ export function ProcessCaptcha(): null {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("EmailLinkSent"));
+        dispatch(resetPasswordSlice.actions.setNextPage("EMAIL_LINK_SENT"));
       } else {
-        dispatch(resetPasswordSlice.actions.setNextPage("AskForEmailOrConfirmEmail"));
+        dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
       }
     }
   }
@@ -97,7 +97,7 @@ export function ProcessCaptcha(): null {
       dispatch(clearNotifications());
       sendEmailLink();
     } else {
-      dispatch(resetPasswordSlice.actions.setNextPage("ResetPasswordCaptcha"));
+      dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
     }
   }
 
