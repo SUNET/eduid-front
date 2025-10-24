@@ -267,10 +267,6 @@
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
-  "3xyel6": {
-    "developer_comment": "start eduid - list item 2",
-    "string": "ditt unika användar-ID"
-  },
   "4+MTla": {
     "developer_comment": "help - content headline",
     "string": "Ämnesområden"
@@ -963,6 +959,10 @@
     "developer_comment": "about using eduid - info",
     "string": "Skapa, logga in, konto-inställningar och spärra/radera konto"
   },
+  "Jc80fN": {
+    "developer_comment": "settings eduid - intro definition",
+    "string": "När du loggar in i eduid.se finns olika inställningar uppdelade i 4 vyer; Start, Identitet, Säkerhet och Konto som nås med horisontella menyn i sidhuvudet för större skärmar eller en utfällbar meny i övre högra hörnet genom att klicka på användarnamnet. Läs mer om varje sida nedan."
+  },
   "JgFblM": {
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
@@ -1053,6 +1053,10 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Språk"
+  },
+  "Mazoar": {
+    "developer_comment": "account eduid - list item 0",
+    "string": "Ett unikt användarnamn för ditt eduID som genereras åt dig när kontot skapas."
   },
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
@@ -1165,6 +1169,10 @@
   "OuY4pQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph6",
     "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet SWAMID AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. Digitala Nationella Proven (DNP) och Nice."
+  },
+  "OyR/Ey": {
+    "developer_comment": "account eduid - list item 0-heading",
+    "string": "Unikt ID:"
   },
   "P//lKM": {
     "developer_comment": "need visit atg agent for freja - heading",
@@ -1611,10 +1619,6 @@
     "developer_comment": "Display name select legend",
     "string": "Visningsnamn"
   },
-  "Y/yF5+": {
-    "developer_comment": "settings eduid - intro definition",
-    "string": "När du loggar in i eduid.se finns olika inställningar uppdelade i 4 vyer; Start, Identitet, Säkerhet och Konto som nås med menyn i övre högra hörnet genom att klicka på användarnamnet. Läs mer om varje sida nedan."
-  },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "Vad är Freja+?"
@@ -2009,6 +2013,10 @@
   "eMsBRu": {
     "developer_comment": "how remove linked orcid - paragraph",
     "string": "Om du inte längre vill att eduID ska känna till ditt ORCID iD kan du enkelt ta bort det genom att klicka på krysset."
+  },
+  "eQjAXk": {
+    "developer_comment": "start eduid - list item 2",
+    "string": "ditt unika användar-ID - en del av vad som ibland kallas EPPN."
   },
   "eY0QYK": {
     "developer_comment": "how to contact support - list item 1",
