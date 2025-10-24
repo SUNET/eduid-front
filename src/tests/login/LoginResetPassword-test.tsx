@@ -18,6 +18,23 @@ import { loginTestState, render, screen, waitFor } from "../helperFunctions/Logi
 
 const TEST_PASSWORD = "password";
 const user = userEvent.setup();
+const email = "test@example.org";
+const ref = "abc567";
+
+function makeResetPasswordPayload(): GetResetPasswordStateResponse {
+  return {
+    state: {
+      captcha: { completed: true },
+      email: {
+        address: email,
+        completed: false,
+        expires_time_left: 368,
+        expires_time_max: 7200,
+        sent_at: "2025-10-23T09:45:21.179902+00:00",
+      },
+    },
+  };
+}
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -25,8 +42,6 @@ beforeEach(() => {
 });
 
 test("can click 'forgot password' with an e-mail address", async () => {
-  const email = "test@example.org";
-  const ref = "abc567";
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
       const body = (await request.json()) as LoginNextRequest;
@@ -40,20 +55,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
       return HttpResponse.json({ type: "test response", payload: payload });
     }),
     http.get("https://idp.eduid.docker/services/reset-password/", () => {
-      const payload: GetResetPasswordStateResponse = {
-        state: {
-          captcha: {
-            completed: true,
-          },
-          email: {
-            address: email,
-            completed: false,
-            expires_time_left: 368,
-            expires_time_max: 7200,
-            sent_at: "2025-10-23T09:45:21.179902+00:00",
-          },
-        },
-      };
+      const payload = makeResetPasswordPayload();
       return HttpResponse.json({ type: "test success", payload: payload });
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
@@ -77,24 +79,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
       ...loginTestState,
       resetPassword: {
         ...loginTestState.resetPassword,
-        email_response: {
-          email: email,
-          email_code_timeout: 7200,
-          throttled_max: 300,
-          throttled_seconds: 299,
-        },
         captcha_completed: true,
-        next_page: "EmailLinkSent",
-        reset_pw_status: {
-          captcha: { completed: true },
-          email: {
-            address: email,
-            completed: false,
-            expires_time_left: 368,
-            expires_time_max: 7200,
-            sent_at: "2025-10-23T09:45:21.179902+00:00",
-          },
-        },
       },
     },
   });
@@ -158,21 +143,8 @@ test("can click 'forgot password' without an e-mail address", async () => {
       return HttpResponse.json({ type: "test response", payload: payload });
     }),
     http.get("https://idp.eduid.docker/services/reset-password/", () => {
-      const payload: GetResetPasswordStateResponse = {
-        state: {
-          captcha: {
-            completed: true,
-          },
-          email: {
-            address: email,
-            completed: false,
-            expires_time_left: 368,
-            expires_time_max: 7200,
-            sent_at: "2025-10-23T09:45:21.179902+00:00",
-          },
-        },
-      };
-      return HttpResponse.json({ type: "test success", payload: payload });
+      const resetPasswordPayload = makeResetPasswordPayload();
+      return HttpResponse.json({ type: "success", payload: resetPasswordPayload });
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
