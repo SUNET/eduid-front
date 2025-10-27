@@ -18,12 +18,6 @@ export function LanguagePreference() {
   const language_list = Object.entries(_languages);
   const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation();
 
-  useEffect(() => {
-    if (isLoaded && personal_data?.language === undefined) {
-      postLanguage({ language: locale });
-    }
-  }, [isLoaded]);
-
   async function formSubmit(values: UserLanguageRequest) {
     // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
     let postData = values;
@@ -47,6 +41,12 @@ export function LanguagePreference() {
       }
     }
   }
+
+  useEffect(() => {
+    if (isLoaded && personal_data?.language === undefined) {
+      postLanguage({ language: locale });
+    }
+  }, [isLoaded]);
 
   return (
     <article id="language">
