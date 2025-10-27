@@ -126,7 +126,7 @@ const LadokUniversitiesDropdown = (): React.JSX.Element => {
     });
 
     return res;
-  }, [ladokUnis]);
+  }, [ladokUnis, ladokName, locale]);
 
   return (
     <React.Fragment>
