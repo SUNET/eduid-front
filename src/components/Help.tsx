@@ -6,13 +6,12 @@ import { Accordion, AccordionItemTemplate } from "./Common/AccordionItemTemplate
 import { CommonToU } from "./Common/CommonToU";
 import ScrollToTopButton from "./ScrollToTopButton";
 
-
 export function Help(): React.JSX.Element {
   const intl = useIntl();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const [fetchApprovedSecurityKeys] = securityApi.useLazyFetchApprovedSecurityKeysQuery()
+  const [fetchApprovedSecurityKeys] = securityApi.useLazyFetchApprovedSecurityKeysQuery();
 
   const locale = useAppSelector((state) => state.intl.locale);
 
@@ -42,16 +41,14 @@ export function Help(): React.JSX.Element {
 
   useEffect(() => {
     if (is_configured) {
-      handleApprovedSecurityKeys();
+      (async () => {
+        const response = await fetchApprovedSecurityKeys();
+        if (response.isSuccess) {
+          setApprovedSecurityKeys(response.data.payload);
+        }
+      })();
     }
   }, [is_configured]);
-
-  async function handleApprovedSecurityKeys() {
-    const response = await fetchApprovedSecurityKeys();
-    if (response.isSuccess) {
-      setApprovedSecurityKeys(response.data.payload);
-    }
-  }
 
   return (
     <React.Fragment>
