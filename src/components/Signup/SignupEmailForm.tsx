@@ -73,10 +73,12 @@ function EmailForm() {
       // terms of use, and solved a captcha. So we store it in the redux state here.
       if (state?.captcha.completed && state?.tou.completed) {
         // Go to RegisterEmail
-        signupContext.signupService.send({ type: "CAPTCHA_AND_TOU_DONE" });
+        // signupContext.signupService.send({ type: "CAPTCHA_AND_TOU_DONE" });
+        dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
       } else {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "COMPLETE" });
+        dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
+        //   signupContext.signupService.send({ type: "COMPLETE" });
       }
     } else {
       errors.email = "required";
@@ -143,7 +145,13 @@ export function RegisterEmail() {
   const email = useAppSelector((state) => state.signup.email);
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
+<<<<<<< HEAD
   const [registerEmail, { isSuccess, isError }] = signupApi.useLazyRegisterEmailRequestQuery();
+=======
+  const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
+  const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
+  const dispatch = useAppDispatch();
+>>>>>>> 851dd2d94 (WIP: remove state machine, use actions for next page navigation)
 
   useEffect(() => {
     if (!email || !given_name || !surname) {
@@ -156,9 +164,11 @@ export function RegisterEmail() {
 
   useEffect(() => {
     if (isSuccess) {
-      signupContext.signupService.send({ type: "API_SUCCESS" });
+      // signupContext.signupService.send({ type: "API_SUCCESS" });
+      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
     } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
+      dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+      // signupContext.signupService.send({ type: "API_FAIL" });
     }
   }, [isSuccess, isError, signupContext]);
 

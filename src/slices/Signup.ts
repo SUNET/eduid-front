@@ -9,6 +9,7 @@ interface SignupState {
   surname?: string;
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
+  next_page?: string;
 }
 
 // type predicate to help identify payloads with the signup state.
@@ -50,6 +51,9 @@ export const signupSlice = createSlice({
     },
     setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
       state.captcha = action.payload;
+    },
+    setNextPage: (state, action: PayloadAction<string>) => {
+      state.next_page = action.payload;
     },
   },
   extraReducers: (builder) => {

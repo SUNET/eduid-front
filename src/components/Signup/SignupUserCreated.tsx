@@ -13,6 +13,7 @@ import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { clearNotifications } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 // element ids used in tests
@@ -40,9 +41,11 @@ export function SignupConfirmPassword() {
 
       if (response.isSuccess) {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "API_SUCCESS" });
+        dispatch(signupSlice.actions.setNextPage("SignupConfirmPassword"));
+        // signupContext.signupService.send({ type: "API_SUCCESS" });
       } else {
-        signupContext.signupService.send({ type: "API_FAIL" });
+        dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+        // signupContext.signupService.send({ type: "API_FAIL" });
       }
     }
   }
@@ -53,7 +56,8 @@ export function SignupConfirmPassword() {
 
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    // signupContext.signupService.send({ type: "ABORT" });
     navigate("/register");
   }
 

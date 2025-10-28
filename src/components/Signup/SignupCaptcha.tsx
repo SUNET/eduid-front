@@ -16,7 +16,8 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
   useEffect(() => {
     if (state?.captcha.completed) {
-      signupContext.signupService.send({ type: "CAPTCHA_DONE" });
+      dispatch(signupSlice.actions.setNextPage("ProcessToU"));
+      // signupContext.signupService.send({ type: "CAPTCHA_DONE" });
     }
   }, [signupContext.signupService, state]);
 
@@ -28,13 +29,15 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCancel() {
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    // signupContext.signupService.send({ type: "ABORT" });
   }
 
   function handleCaptchaCompleted(response: string) {
     if (response) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-      signupContext.signupService.send({ type: "COMPLETE" });
+      // signupContext.signupService.send({ type: "COMPLETE" });
+      dispatch(signupSlice.actions.setNextPage("ProcessCaptcha"));
     }
   }
 
@@ -67,7 +70,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
 export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.signup.captcha);
-  const signupContext = useContext(SignupGlobalStateContext);
+  // const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useSendSignupCaptchaResponseQuery(captcha ?? skipToken);
 
@@ -75,9 +78,11 @@ export function ProcessCaptcha(): null {
     if (captcha) {
       if (isSuccess) {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "API_SUCCESS" });
+        // signupContext.signupService.send({ type: "API_SUCCESS" });
+        dispatch(signupSlice.actions.setNextPage("SignupToU"));
       } else if (isError) {
-        signupContext.signupService.send({ type: "API_FAIL" });
+        // signupContext.signupService.send({ type: "API_FAIL" });
+        dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
       }
     }
   }, [captcha, isSuccess, isError, dispatch, signupContext.signupService]);

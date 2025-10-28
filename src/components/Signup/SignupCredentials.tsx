@@ -5,16 +5,19 @@ import { useAppDispatch } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCredentials(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const state = useSelector(signupContext.signupService, (s) => s);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (state.context.event?.type != "API_FAIL") {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
-      signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
+      // signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
+      dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
     }
   }, [signupContext.signupService, state.context.event?.type]);
 
@@ -31,7 +34,8 @@ export function SignupCredentials(): React.JSX.Element {
           <EduIDButton
             type="submit"
             buttonstyle="secondary"
-            onClick={() => signupContext.signupService.send({ type: "ABORT" })}
+            onClick={() => dispatch(signupSlice.actions.setNextPage("SignupEmailForm "))}
+            // signupContext.signupService.send({ type: "ABORT" })}
             id="abort-button"
           >
             <FormattedMessage defaultMessage="Cancel" description="button cancel" />
@@ -39,7 +43,10 @@ export function SignupCredentials(): React.JSX.Element {
           <EduIDButton
             type="submit"
             buttonstyle="primary"
-            onClick={() => signupContext.signupService.send({ type: "CHOOSE_PASSWORD" })}
+            onClick={() => {
+              dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
+              // signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
+            }}
             id="retry-button"
           >
             <FormattedMessage defaultMessage="Retry" description="Signup credentials button" />
@@ -60,9 +67,11 @@ export function SignupCredentialPassword(): React.JSX.Element {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
+      // signupContext.signupService.send({ type: "API_SUCCESS" });
+      dispatch(signupSlice.actions.setNextPage("SignupConfirmPassword"));
     } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
+      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+      // signupContext.signupService.send({ type: "API_FAIL" });
     }
   }, [isSuccess, isError, dispatch, signupContext.signupService]);
 

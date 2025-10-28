@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useContext, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): React.JSX.Element {
@@ -12,19 +13,23 @@ export function SignupToU(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const version = signupState?.tou.version;
   const state = useAppSelector((state) => state.signup.state);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (state?.tou.completed) {
-      signupContext.signupService.send({ type: "TOU_DONE" });
+      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
+      // signupContext.signupService.send({ type: "TOU_DONE" });
     }
   }, [signupContext.signupService, state]);
 
   function handleAccept() {
-    signupContext.signupService.send({ type: "COMPLETE" });
+    dispatch(signupSlice.actions.setNextPage("ProcessToU"));
+    // signupContext.signupService.send({ type: "COMPLETE" });
   }
 
   function handleCancel() {
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    // signupContext.signupService.send({ type: "ABORT" });
   }
 
   return (
@@ -56,11 +61,17 @@ export function ProcessToU(): React.JSX.Element {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
+      dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
+      // signupContext.signupService.send({ type: "API_SUCCESS" });
     } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
+      dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+      // signupContext.signupService.send({ type: "API_FAIL" });
     }
+<<<<<<< HEAD
   }, [isSuccess, isError, dispatch, signupContext.signupService]);
+=======
+  }, [isSuccess, isError]);
+>>>>>>> 851dd2d94 (WIP: remove state machine, use actions for next page navigation)
 
   return <React.Fragment></React.Fragment>;
 }
