@@ -1,6 +1,5 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-// import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
