@@ -6,7 +6,6 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 /**
  * Render the extra security options, security key, Freja eID and phone verification
@@ -15,7 +14,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {

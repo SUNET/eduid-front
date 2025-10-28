@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 interface BackToLoginButtonProps {
   primary?: boolean;

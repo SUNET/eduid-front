@@ -6,7 +6,6 @@ import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
@@ -75,7 +74,6 @@ export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const email = useAppSelector((state) => state.resetPassword.email_address);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
   const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
   const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();

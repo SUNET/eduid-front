@@ -1,3 +1,4 @@
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
@@ -11,8 +12,6 @@ import { GoBackButton } from "./GoBackButton";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { ProcessCaptcha, ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
-import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
 
 // URL parameters passed to ResetPasswordRequestEmail

@@ -10,7 +10,6 @@ import resetPasswordSlice from "slices/ResetPassword";
 export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
-  // const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 

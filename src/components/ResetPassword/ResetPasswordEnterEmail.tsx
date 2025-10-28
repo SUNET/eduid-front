@@ -5,7 +5,6 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
-// import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function ResetPasswordEnterEmail(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
