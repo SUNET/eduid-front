@@ -34,6 +34,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
+    console.log("Captcha completed with response:", response);
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
       dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
@@ -84,7 +85,7 @@ export function ProcessCaptcha(): null {
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("EMAIL_LINK_SENT"));
       } else {
-        dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
   }
