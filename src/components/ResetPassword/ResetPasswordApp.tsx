@@ -26,7 +26,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
-  console.log("ResetPasswordApp next_page:", next_page);
+
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Reset Password",
