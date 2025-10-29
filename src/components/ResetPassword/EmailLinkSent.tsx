@@ -2,16 +2,14 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
@@ -27,11 +25,11 @@ export function EmailLinkSent(): React.JSX.Element | null {
         const response = await verifyEmailLink({ email_code: digits });
         if (response.isSuccess) {
           dispatch(clearNotifications());
-          if (Object.values(response.data.payload.extra_security)) {
-            resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
-          } else resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
-        } else {
-          resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+          if (Object.values(response.data.payload.extra_security).length > 0) {
+            dispatch(resetPasswordSlice.actions.setNextPage("HANDLE_EXTRA_SECURITIES"));
+          } else {
+            dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
+          }
         }
       }
     }
@@ -41,7 +39,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
     if (dashboard_link) {
       document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetEmailStatus());
-      resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
     }
   }
 

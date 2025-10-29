@@ -2,11 +2,10 @@ import EduIDButton from "components/Common/EduIDButton";
 import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
 import { SwedishEID } from "components/Common/SwedishEID";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 /**
  * Render the extra security options, security key, Freja eID and phone verification
@@ -15,12 +14,11 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
-      resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
   }, [swedishEID_status]);
 
@@ -29,14 +27,14 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       (extra_security && !Object.values(extra_security).length) ||
       (extra_security?.tokens === undefined && !extra_security?.external_mfa)
     ) {
-      resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
   }, [extra_security]);
 
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     dispatch(clearNotifications());
-    resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
+    dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
   }
 
   if (!extra_security) {
@@ -51,7 +49,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   function continueWithSecurityKey() {
-    resetPasswordContext.resetPasswordService.send({ type: "CHOOSE_SECURITY_KEY" });
+    dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
   }
 
   return (
