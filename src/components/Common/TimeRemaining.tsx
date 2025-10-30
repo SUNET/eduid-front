@@ -75,14 +75,14 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
     //   a) not have to have a synchronised clock with the backend and
     //   b) to handle time-warps, such as when someone suspends their computer and later resumes it
     //   c) to handle page reloads
-    const now = new Date().getTime();
+    const now = Date.now();
     const endTime = now + props.value * 1000;
     const data: StoredData = { id: props.unique_id, end: new Date(endTime).toISOString() };
     setLocalStorage(props.name, JSON.stringify(data));
 
     // Update the countdown based on the stored end time
     const updateCountdown = () => {
-      const currentTime = new Date();
+      const currentTime = Date.now();
       // Load and parse the end time from local storage
       const storedEndTime = loadEndDate(props.name, props.unique_id);
       if (!storedEndTime) {
@@ -91,7 +91,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
         return false;
       }
       // calculate remaining number of secondsLeft
-      let remaining = Math.ceil((storedEndTime.getTime() - currentTime.getTime()) / 1000);
+      let remaining = Math.ceil((storedEndTime.getTime() - currentTime) / 1000);
       if (remaining < 0) {
         // handle time-warp gracefully, never showing a value less than zero
         remaining = 0;
