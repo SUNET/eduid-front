@@ -18,7 +18,7 @@ export function SignupEnterCode(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
   const state = useAppSelector((state) => state.signup.state);
-  const [resendCode, { isSuccess }] = signupApi.useLazyRegisterEmailRequestQuery();
+  const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
 
   useEffect(() => {
     if (state?.credentials.completed) {
@@ -37,17 +37,16 @@ export function SignupEnterCode(): React.JSX.Element {
     setIsExpired(true);
   }
 
-  useEffect(() => {
-    setIsExpired(false);
-  }, [isSuccess]);
-
   async function registerEmail() {
     if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
-      resendCode({
+      const result = await resendCode({
         email: signupState?.email.address,
         given_name: signupState?.name?.given_name,
         surname: signupState?.name?.surname,
       });
+      if (result.isSuccess) {
+        setIsExpired(false);
+      }
     }
   }
 

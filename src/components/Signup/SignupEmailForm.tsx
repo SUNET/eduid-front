@@ -144,12 +144,15 @@ export function RegisterEmail() {
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
   const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
-  const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
+  const [registerEmail, { isSuccess, isError }] = signupApi.useLazyRegisterEmailRequestQuery();
 
-  if (!signupUser) {
-    signupContext.signupService.send({ type: "API_FAIL" });
-    return null;
-  }
+  useEffect(() => {
+    if (!email || !given_name || !surname) {
+      signupContext.signupService.send({ type: "API_FAIL" });
+      return;
+    }
+    registerEmail(signupUser);
+  }, [email, given_name, surname, signupContext, registerEmail, signupUser]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -157,7 +160,7 @@ export function RegisterEmail() {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, signupContext]);
 
   // Show a blank screen while we wait for the response from the backend
   return null;

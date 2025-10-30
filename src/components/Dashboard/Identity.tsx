@@ -157,13 +157,6 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [removeIdentity] = securityApi.useLazyRemoveIdentityQuery();
 
-  useEffect(() => {
-    if (frontend_action === "removeIdentity" && frontend_state) {
-      handleRemoveIdentity(frontend_state);
-      dispatch(authnSlice.actions.setAuthnFrontendReset());
-    }
-  }, [frontend_action, frontend_state]);
-
   async function handleRemoveIdentity(identityType: string) {
     setShowConfirmRemoveIdentityVerificationModal(false);
     if (identityType) {
@@ -199,6 +192,15 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
       dispatch(authnSlice.actions.setReAuthenticate(true));
     }
   }
+
+  useEffect(() => {
+    if (frontend_action === "removeIdentity" && frontend_state) {
+      queueMicrotask(() => {
+        handleRemoveIdentity(frontend_state);
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
+      });
+    }
+  }, [frontend_action, frontend_state]);
 
   return (
     <React.Fragment>

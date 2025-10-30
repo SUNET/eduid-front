@@ -24,13 +24,6 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
     }
   }, [preference.isLoading]);
 
-  useEffect(() => {
-    // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
-    if (frontend_action === "changeSecurityPreferencesAuthn") {
-      handleSwitchChange();
-    }
-  }, [frontend_action]);
-
   async function handleSwitchChange() {
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
@@ -38,6 +31,13 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
       postSecurityKeyPreference({ always_use_security_key: !switchChecked });
     }
   }
+
+  useEffect(() => {
+    // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
+    if (frontend_action === "changeSecurityPreferencesAuthn") {
+      handleSwitchChange();
+    }
+  }, [frontend_action]);
 
   return (
     <form>

@@ -1,7 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
@@ -39,31 +39,14 @@ export function ChangePassword() {
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
-  let isMounted = true;
+  const isMounted = useRef(true);
   const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
   const [changePassword] = securityApi.useLazyChangePasswordQuery();
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Change Password",
-      defaultMessage: "Change password | eduID",
-    });
-  }, []);
-
-  useEffect(() => {
-    //TODO: Too many conditions for getting the suggested password, need to refactor.
-    if (is_app_loaded && suggested === undefined && !window.location.pathname.includes("success")) {
-      handleSuggestedPassword();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [suggested, is_app_loaded]);
 
   async function handleSuggestedPassword() {
     try {
       const response = await fetchSuggestedPassword();
-      if (isMounted) {
+      if (isMounted.current) {
         if (response.isSuccess) {
           navigate("/profile/chpass");
         }
@@ -97,6 +80,23 @@ export function ChangePassword() {
   function handleSwitchChange() {
     setRenderSuggested(!renderSuggested);
   }
+
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      id: "document title Change Password",
+      defaultMessage: "Change password | eduID",
+    });
+  }, []);
+
+  useEffect(() => {
+    //TODO: Too many conditions for getting the suggested password, need to refactor.
+    if (is_app_loaded && suggested === undefined && !window.location.pathname.includes("success")) {
+      handleSuggestedPassword();
+    }
+    return () => {
+      isMounted.current = false;
+    };
+  }, [suggested, is_app_loaded]);
 
   return (
     <FinalForm<ChangePasswordFormData>

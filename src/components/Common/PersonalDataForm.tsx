@@ -93,43 +93,61 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
-  const [selectedOptions, setSelectedOptions] = useState<SelectedNameValues[]>([]);
-  const [defaultValues, setDefaultValues] = useState<SelectedNameValues[]>([]);
-  const splitGivenName = given_name?.split(/[\s-]+/);
-  const splitChosenGivenName = chosen_given_name?.split(/[\s-]+/);
-  const transformedChosenGivenNameOptions = splitChosenGivenName?.map((name) => ({
-    label: name,
-    value: name,
-  }));
 
-  const transformedOptions = splitGivenName?.map((name) => ({
-    label: name,
-    value: name,
-  }));
+  // Transform given names into select options format
+  const { transformedOptions, transformedChosenGivenNameOptions } = React.useMemo(() => {
+    const splitGivenName = given_name?.split(/[\s-]+/);
+    const splitChosenGivenName = chosen_given_name?.split(/[\s-]+/);
 
-  useEffect(() => {
-    if (is_verified) {
-      if (chosen_given_name && transformedChosenGivenNameOptions) {
-        setSelectedOptions(transformedChosenGivenNameOptions);
-      } else if (transformedOptions) {
-        setSelectedOptions(transformedOptions);
-      }
-      if (transformedOptions) {
-        setDefaultValues(transformedOptions);
-      }
+    const transformedChosenGivenNameOptions = splitChosenGivenName?.map((name) => ({
+      label: name,
+      value: name,
+    }));
+
+    const transformedOptions = splitGivenName?.map((name) => ({
+      label: name,
+      value: name,
+    }));
+
+    return {
+      transformedOptions,
+      transformedChosenGivenNameOptions,
+    };
+  }, [given_name, chosen_given_name]);
+
+  // Determine initial selection and available options
+  const { initialOptions, defaultValues } = React.useMemo(() => {
+    if (!is_verified) {
+      return { initialOptions: [], defaultValues: [] };
     }
-  }, [given_name, chosen_given_name, surname]);
+
+    const defaultValues = transformedOptions || [];
+    let initialOptions: SelectedNameValues[] = [];
+
+    if (chosen_given_name && transformedChosenGivenNameOptions) {
+      initialOptions = transformedChosenGivenNameOptions;
+    } else if (transformedOptions) {
+      initialOptions = transformedOptions;
+    }
+
+    return { initialOptions, defaultValues };
+  }, [is_verified, chosen_given_name, transformedOptions, transformedChosenGivenNameOptions]);
+
+  const [selectedOptions, setSelectedOptions] = useState<SelectedNameValues[]>(initialOptions);
+
+  // Sync selected options when initial data changes
+  useEffect(() => {
+    setSelectedOptions(initialOptions);
+  }, [initialOptions]);
 
   const handleSelectChange = (newValue: MultiValue<SelectedNameValues> | SingleValue<SelectedNameValues>) => {
     if (defaultValues.length > 1) {
       const updatedValue = Array.isArray(newValue) ? newValue : [newValue];
+
       if (updatedValue.length) {
-        setSelectedOptions(updatedValue);
         const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
-        if (selectedGivenName) {
-          props.setChosenGivenName(selectedGivenName);
-          setSelectedOptions(updatedValue);
-        }
+        setSelectedOptions(updatedValue);
+        props.setChosenGivenName(selectedGivenName);
       } else {
         setSelectedOptions([]);
         props.setChosenGivenName("");
