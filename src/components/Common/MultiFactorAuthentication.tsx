@@ -36,7 +36,8 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
-  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
+  // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
+  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !window.PublicKeyCredential);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
@@ -217,33 +218,29 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   useEffect(
     () => {
       // Check if platform authentication is available through the navigator.credentials API.
-      // Disable the spinner when we know the answer.
+      // Only runs if the API exists (otherwise isPlatformAuthLoaded starts as true)
+
+      if (!window.PublicKeyCredential) {
+        return; // Nothing to do, already initialized as loaded
+      }
 
       let aborted = false; // flag to avoid updating unmounted components after this promise resolves
-
       let platform = false;
-      if (window.PublicKeyCredential) {
-        window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-          .then((available) => {
-            platform = available;
-          })
-          .catch((err) => {
-            console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
-          })
-          .finally(() => {
-            if (!aborted) {
-              setIsPlatformAuthenticatorAvailable(platform);
-              // don´t show content until isPlatformAuthLoaded updates to true
-              setIsPlatformAuthLoaded(true);
-            }
-          });
-      } else {
-        if (!aborted) {
-          queueMicrotask(() => {
+
+      window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then((available) => {
+          platform = available;
+        })
+        .catch((err) => {
+          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
+        })
+        .finally(() => {
+          if (!aborted) {
+            setIsPlatformAuthenticatorAvailable(platform);
+            // don´t show content until isPlatformAuthLoaded updates to true
             setIsPlatformAuthLoaded(true);
-          });
-        }
-      }
+          }
+        });
 
       // create a cleanup function that will allow the async code above to realise it shouldn't
       // try to update state on an unmounted react component
