@@ -26,8 +26,12 @@ const LadokContainer = (): React.JSX.Element => {
   };
 
   // Update the switch to reflect changes in isLinked
-  useEffect(() => setSwitchChecked(isLinked), [isLinked]);
-
+  // Using queueMicrotask to defer the setState call and avoid cascading render warning
+  useEffect(() => {
+    if (isLinked !== switchChecked) {
+      queueMicrotask(() => setSwitchChecked(isLinked));
+    }
+  }, [isLinked]);
   return (
     <article className="ladok" id="ladok">
       <h2>
