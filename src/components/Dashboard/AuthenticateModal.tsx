@@ -1,7 +1,7 @@
 import authnApi from "apis/eduidAuthn";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import authnSlice from "slices/Authn";
@@ -12,8 +12,6 @@ export function AuthenticateModal() {
   const re_authenticate = useAppSelector((state) => state.authn.re_authenticate);
   const frontend_action = useAppSelector((state) => state.authn.frontend_action);
   const frontend_state = useAppSelector((state) => state.authn.frontend_state);
-  const [securityKeyDescription, setSecurityKeyDescription] = useState(null);
-  const [method, setMethod] = useState<string>("");
   const navigate = useNavigate();
   const [call_authenticate, { data, isError, isLoading }] = authnApi.useLazyAuthenticateQuery();
 
@@ -26,12 +24,16 @@ export function AuthenticateModal() {
     return true;
   }
 
-  useEffect(() => {
+  // Parse frontend_state to extract description and method
+  const { securityKeyDescription, method } = useMemo(() => {
     if (frontend_state && isValidJson(frontend_state)) {
       const parsedFrontendState = JSON.parse(frontend_state);
-      setSecurityKeyDescription(parsedFrontendState.description);
-      setMethod(parsedFrontendState.method);
+      return {
+        securityKeyDescription: parsedFrontendState.description || null,
+        method: parsedFrontendState.method || "",
+      };
     }
+    return { securityKeyDescription: null, method: "" };
   }, [frontend_state]);
 
   useEffect(() => {
