@@ -126,8 +126,8 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
 }
 
 interface KnownDeviceParams {
-  this_device?: string;
-  remember_me: boolean;
+  init_this_device?: string;
+  init_remember_me: boolean;
 }
 
 /**
@@ -141,7 +141,7 @@ export function initKnownDevice(
   if (!window.localStorage) {
     // Can't remember devices if there is no local storage
     dispatch(loginSlice.actions.setRememberMe(false));
-    return { this_device: undefined, remember_me: false };
+    return { init_this_device: undefined, init_remember_me: false };
   }
 
   if (!this_device) {
@@ -159,7 +159,7 @@ export function initKnownDevice(
     dispatch(loginSlice.actions.setRememberMe(remember_me));
   }
 
-  return { this_device, remember_me };
+  return { init_this_device: this_device, init_remember_me: remember_me };
 }
 
 /**
