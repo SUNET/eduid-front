@@ -31,14 +31,13 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
 );
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
-  let return_handled = false;
+  const return_handled = useRef(false);
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
-  const [tokenKey, setTokenKey] = useState<string>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
@@ -53,6 +52,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
+
+  // Derive tokenKey from the last token in the array
+  const tokenKey = tokens.length > 0 ? tokens[tokens.length - 1].key : "";
 
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
@@ -175,19 +177,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     })();
   }
 
-  useEffect(() => {
-    if (tokens.length > 0 && tokenKey !== tokens[tokens.length - 1].key) {
-      setTokenKey(tokens[tokens.length - 1].key);
-    }
-  }, [tokens]);
-
   // Runs after re-auth security zone
   useEffect(() => {
-    if (return_handled) {
+    if (return_handled.current) {
       return;
     }
 
-    return_handled = true;
+    return_handled.current = true;
 
     (async () => {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
@@ -242,7 +238,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           });
       } else {
         if (!aborted) {
-          setIsPlatformAuthLoaded(true);
+          queueMicrotask(() => {
+            setIsPlatformAuthLoaded(true);
+          });
         }
       }
 
