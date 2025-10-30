@@ -57,86 +57,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
-  useEffect(() => {
-    if (tokens.length > 0 && tokenKey !== tokens[tokens.length - 1].key) {
-      setTokenKey(tokens[tokens.length - 1].key);
-    }
-  }, [tokens]);
-
-  // Runs after re-auth security zone
-  useEffect(() => {
-    if (return_handled) {
-      return;
-    }
-
-    return_handled = true;
-
-    (async () => {
-      if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
-        setShowSecurityKeyNameModal(true);
-      } else if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
-        handleRemoveWebauthnToken(authn.response.frontend_state);
-        dispatch(authnSlice.actions.setAuthnFrontendReset());
-      } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
-        const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        await handleVerificationWebauthnToken(
-          parsedFrontendState.credential,
-          parsedFrontendState.method as WebauthnMethods
-        );
-      }
-    })();
-  }, [authn?.response?.frontend_action, authn?.response?.frontend_state]);
-
-  useEffect(() => {
-    (async () => {
-      if (isLoaded && !credentials.length) {
-        // call requestCredentials once app is loaded
-        const response = await requestCredentials();
-        if (response.isSuccess) {
-          wrapperRef?.current?.focus();
-        }
-      }
-    })();
-  }, [isLoaded]);
-
-  useEffect(
-    () => {
-      // Check if platform authentication is available through the navigator.credentials API.
-      // Disable the spinner when we know the answer.
-
-      let aborted = false; // flag to avoid updating unmounted components after this promise resolves
-
-      let platform = false;
-      if (window.PublicKeyCredential) {
-        window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-          .then((available) => {
-            platform = available;
-          })
-          .catch((err) => {
-            console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
-          })
-          .finally(() => {
-            if (!aborted) {
-              setIsPlatformAuthenticatorAvailable(platform);
-              // don´t show content until isPlatformAuthLoaded updates to true
-              setIsPlatformAuthLoaded(true);
-            }
-          });
-      } else {
-        if (!aborted) {
-          setIsPlatformAuthLoaded(true);
-        }
-      }
-
-      // create a cleanup function that will allow the async code above to realise it shouldn't
-      // try to update state on an unmounted react component
-      return () => {
-        aborted = true;
-      };
-    },
-    [] // run this only once
-  );
-
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -254,6 +174,86 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       }
     })();
   }
+
+  useEffect(() => {
+    if (tokens.length > 0 && tokenKey !== tokens[tokens.length - 1].key) {
+      setTokenKey(tokens[tokens.length - 1].key);
+    }
+  }, [tokens]);
+
+  // Runs after re-auth security zone
+  useEffect(() => {
+    if (return_handled) {
+      return;
+    }
+
+    return_handled = true;
+
+    (async () => {
+      if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
+        setShowSecurityKeyNameModal(true);
+      } else if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
+        handleRemoveWebauthnToken(authn.response.frontend_state);
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
+      } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
+        const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
+        await handleVerificationWebauthnToken(
+          parsedFrontendState.credential,
+          parsedFrontendState.method as WebauthnMethods
+        );
+      }
+    })();
+  }, [authn?.response?.frontend_action, authn?.response?.frontend_state]);
+
+  useEffect(() => {
+    (async () => {
+      if (isLoaded && !credentials.length) {
+        // call requestCredentials once app is loaded
+        const response = await requestCredentials();
+        if (response.isSuccess) {
+          wrapperRef?.current?.focus();
+        }
+      }
+    })();
+  }, [isLoaded]);
+
+  useEffect(
+    () => {
+      // Check if platform authentication is available through the navigator.credentials API.
+      // Disable the spinner when we know the answer.
+
+      let aborted = false; // flag to avoid updating unmounted components after this promise resolves
+
+      let platform = false;
+      if (window.PublicKeyCredential) {
+        window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+          .then((available) => {
+            platform = available;
+          })
+          .catch((err) => {
+            console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
+          })
+          .finally(() => {
+            if (!aborted) {
+              setIsPlatformAuthenticatorAvailable(platform);
+              // don´t show content until isPlatformAuthLoaded updates to true
+              setIsPlatformAuthLoaded(true);
+            }
+          });
+      } else {
+        if (!aborted) {
+          setIsPlatformAuthLoaded(true);
+        }
+      }
+
+      // create a cleanup function that will allow the async code above to realise it shouldn't
+      // try to update state on an unmounted react component
+      return () => {
+        aborted = true;
+      };
+    },
+    [] // run this only once
+  );
 
   if (!isPlatformAuthLoaded) return null;
   return (
