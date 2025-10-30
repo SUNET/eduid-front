@@ -1,5 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useIntl } from "react-intl";
 import zxcvbn from "zxcvbn";
 
@@ -18,11 +18,11 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   const minRequiredEntropy = useAppSelector((state) => state.config.password_entropy);
   const pdata = useAppSelector((state) => state.personal_data);
   const emails = useAppSelector((state) => state.emails.emails);
-  const [pwScore, setPwScore] = useState(0);
   const intl = useIntl();
   const pwStrengthMessages = ["pwfield.terrible", "pwfield.bad", "pwfield.weak", "pwfield.good", "pwfield.strong"];
 
-  useEffect(() => {
+  // Calculate password score directly during render
+  const { pwScore, data } = useMemo(() => {
     let userInput: string[] = [];
     if (pdata.response?.given_name) userInput.push(pdata.response?.given_name);
     if (pdata.response?.surname) userInput.push(pdata.response?.surname);
@@ -30,7 +30,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     userInput = userInput.concat(emails.map((x) => x.email));
 
     if (!minRequiredEntropy) {
-      return;
+      return { pwScore: 0, data: { score: 0, isTooWeak: false } };
     }
 
     let score = 0,
@@ -43,11 +43,15 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
       score = n;
       minEntropy += stepEntropy;
     }
-    setPwScore(score);
-    // Pass score up to the component above. We want it to reach the validate() function for the form.
+
     const data: PasswordStrengthData = { score: score, isTooWeak: entropy < minRequiredEntropy };
-    props.passStateUp(data);
+    return { pwScore: score, data };
   }, [pdata, emails, minRequiredEntropy, props.password]);
+
+  // Pass score up to parent component when it changes
+  useEffect(() => {
+    props.passStateUp(data);
+  }, [data]);
 
   return (
     <React.Fragment>
