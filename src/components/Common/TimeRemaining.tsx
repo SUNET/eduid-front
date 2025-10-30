@@ -53,10 +53,20 @@ interface StoredData {
   id?: string;
   end: string;
 }
+
 export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JSX.Element {
   const [secondsLeft, setSecondsLeft] = useState(props.value > 0 ? props.value : 0);
 
-  const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({ minutes: "00", seconds: "00", total_seconds: 0 });
+  // Calculate timeRemaining directly from secondsLeft
+  const timeRemaining = React.useMemo<TimeRemaining>(() => {
+    return {
+      seconds: (secondsLeft % 60).toString().padStart(2, "0"),
+      minutes: Math.floor(secondsLeft / 60)
+        .toString()
+        .padStart(2, "0"),
+      total_seconds: secondsLeft,
+    };
+  }, [secondsLeft]);
 
   useEffect(() => {
     // Record the end-time of this timer in local storage.
@@ -65,41 +75,23 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
     //   a) not have to have a synchronised clock with the backend and
     //   b) to handle time-warps, such as when someone suspends their computer and later resumes it
     //   c) to handle page reloads
-    let end = new Date().getTime();
-    // get rid of milliseconds to make debugging easier
-    end = end - (end % 1000);
-    end = end + secondsLeft * 1000;
-    const data: StoredData = { id: props.unique_id, end: new Date(end).toISOString() };
+    const now = new Date().getTime();
+    const endTime = now + props.value * 1000;
+    const data: StoredData = { id: props.unique_id, end: new Date(endTime).toISOString() };
     setLocalStorage(props.name, JSON.stringify(data));
-  }, []);
 
-  useEffect(() => {
-    // reflect any change in secondsLeft into timeRemaining, with minutes and seconds calculated
-    const tr: TimeRemaining = {
-      seconds: (secondsLeft % 60).toString().padStart(2, "0"),
-      minutes: Math.floor(secondsLeft / 60)
-        .toString()
-        .padStart(2, "0"),
-      total_seconds: secondsLeft,
-    };
-    setTimeRemaining(tr);
-  }, [secondsLeft]);
-
-  useEffect(() => {
-    // Set up a timer at the chosen interval
-    const interval = props.interval || 1000;
-    const timer = setInterval(() => {
-      const now = new Date();
+    // Update the countdown based on the stored end time
+    const updateCountdown = () => {
+      const currentTime = new Date();
       // Load and parse the end time from local storage
-      const end = loadEndDate(props.name, props.unique_id);
-      if (!end) {
+      const storedEndTime = loadEndDate(props.name, props.unique_id);
+      if (!storedEndTime) {
         // detect if the unique id changes, and cancel this timer if it does
         setSecondsLeft(0);
-        clearInterval(timer);
-        return undefined;
+        return false;
       }
       // calculate remaining number of secondsLeft
-      let remaining = Math.floor((end.getTime() - now.getTime()) / 1000);
+      let remaining = Math.ceil((storedEndTime.getTime() - currentTime.getTime()) / 1000);
       if (remaining < 0) {
         // handle time-warp gracefully, never showing a value less than zero
         remaining = 0;
@@ -108,12 +100,22 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
       setSecondsLeft(remaining);
 
       if (remaining <= 0) {
-        clearInterval(timer);
         removeLocalStorage(props.name);
         if (props.onReachZero) {
-          // call the callback provided
           props.onReachZero();
         }
+        return false; // stop the timer
+      }
+
+      return true; // continue the timer
+    };
+
+    // Set up recurring timer
+    const interval = props.interval || 1000;
+    const timer = setInterval(() => {
+      const shouldContinue = updateCountdown();
+      if (!shouldContinue) {
+        clearInterval(timer);
       }
     }, interval);
 
@@ -121,7 +123,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
       // remove timer on component unmount
       clearInterval(timer);
     };
-  }, [props]);
+  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value]);
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
