@@ -1,5 +1,5 @@
 import { eduIDApi } from "./common";
-import { GetStatusRequest, GetStatusResponse, WebauthnMethods } from "./eduidEidas";
+import { EidasCommonResponse, GetStatusRequest, GetStatusResponse, WebauthnMethods } from "./eduidEidas";
 import type { ApiResponse } from "./helpers/types";
 
 interface BankIDCommonRequest {
@@ -7,10 +7,8 @@ interface BankIDCommonRequest {
   frontend_action?: string;
   method: WebauthnMethods;
 }
-interface BankIDCommonResponse {
-  location: string; // where to redirect the user for the authn flow
-  credential_description: string;
-}
+
+export type BankIDCommonResponse = EidasCommonResponse;
 
 export type VerifyIdentityRequest = BankIDCommonRequest;
 

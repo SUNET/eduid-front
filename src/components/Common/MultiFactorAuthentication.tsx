@@ -1,7 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
+import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
+import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
@@ -95,7 +96,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           frontend_state: JSON.stringify({
             method,
             credential: token,
-            description: response.data?.payload.credential_description,
+            description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
           }),
         })
       );
