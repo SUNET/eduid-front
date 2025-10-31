@@ -51,7 +51,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
   // Pass score up to parent component when it changes
   useEffect(() => {
     props.passStateUp(data);
-  }, [data]);
+  }, [data, props]);
 
   return (
     <React.Fragment>

@@ -121,7 +121,7 @@ export function InternalCaptcha(props: CaptchaProps) {
     return () => {
       aborted = true;
     };
-  }, [is_configured]);
+  }, [captchaResponse, is_configured, props]);
 
   return (
     <React.Fragment>

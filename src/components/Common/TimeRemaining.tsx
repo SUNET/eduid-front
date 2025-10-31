@@ -123,7 +123,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JS
       // remove timer on component unmount
       clearInterval(timer);
     };
-  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value]);
+  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value, props]);
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {

@@ -34,7 +34,7 @@ export function NewDevice(): React.JSX.Element | null {
     }
 
     getKnownDevice();
-  }, []);
+  }, [dispatch, fetchNewDevice, ref]);
 
   /* For now, we don't render anything here but just prime local storage with a known_device.
    * In a later version, we will likely ask for a username here, and solve a captcha...

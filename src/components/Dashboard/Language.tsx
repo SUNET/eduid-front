@@ -1,7 +1,7 @@
 import { personalDataApi, UserLanguageRequest } from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { updateIntl } from "slices/Internationalisation";
@@ -18,35 +18,41 @@ export function LanguagePreference() {
   const language_list = Object.entries(_languages);
   const [postUserLanguage] = personalDataApi.usePostUserLanguageMutation();
 
-  async function formSubmit(values: UserLanguageRequest) {
-    // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
-    let postData = values;
-    postData = {
-      language: values.language,
-    };
-    postLanguage(postData);
-  }
-
-  async function postLanguage(postData: UserLanguageRequest) {
-    const response = await postUserLanguage(postData);
-    if ("data" in response) {
-      dispatch(clearNotifications());
-      if (response.data?.payload.language) {
-        dispatch(
-          updateIntl({
-            locale: response.data.payload.language,
-            messages: messages[response.data.payload.language],
-          })
-        );
+  const postLanguage = useCallback(
+    async (postData: UserLanguageRequest) => {
+      const response = await postUserLanguage(postData);
+      if ("data" in response) {
+        dispatch(clearNotifications());
+        if (response.data?.payload.language) {
+          dispatch(
+            updateIntl({
+              locale: response.data.payload.language,
+              messages: messages[response.data.payload.language],
+            })
+          );
+        }
       }
-    }
-  }
+    },
+    [postUserLanguage, dispatch, messages]
+  );
+
+  const formSubmit = useCallback(
+    async (values: UserLanguageRequest) => {
+      // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
+      let postData = values;
+      postData = {
+        language: values.language,
+      };
+      postLanguage(postData);
+    },
+    [postLanguage]
+  );
 
   useEffect(() => {
     if (isLoaded && personal_data?.language === undefined) {
       postLanguage({ language: locale });
     }
-  }, [isLoaded]);
+  }, [isLoaded, locale, personal_data?.language, postLanguage]);
 
   return (
     <article id="language">

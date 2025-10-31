@@ -16,7 +16,7 @@ export function SignupCredentials(): React.JSX.Element {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
       signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
     }
-  }, []);
+  }, [signupContext.signupService, state.context.event?.type]);
 
   if (state.context.event?.type == "API_FAIL") {
     return (
@@ -64,7 +64,7 @@ export function SignupCredentialPassword(): React.JSX.Element {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, dispatch, signupContext.signupService]);
 
   return <React.Fragment></React.Fragment>;
 }

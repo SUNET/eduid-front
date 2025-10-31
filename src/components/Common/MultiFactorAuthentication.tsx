@@ -9,7 +9,7 @@ import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -69,115 +69,130 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     description: "placeholder text for security key description input",
   });
 
-  const tokenTypeMap = {
-    freja: eidasVerifyCredential,
-    bankid: bankIDVerifyCredential,
-    eidas: eidasVerifyCredential,
-  };
+  const tokenTypeMap = useMemo(
+    () => ({
+      freja: eidasVerifyCredential,
+      bankid: bankIDVerifyCredential,
+      eidas: eidasVerifyCredential,
+    }),
+    [eidasVerifyCredential, bankIDVerifyCredential]
+  );
 
-  async function handleVerificationWebauthnToken(token: string | undefined, method: WebauthnMethods) {
-    const verifyAction = tokenTypeMap[method];
-    if (!token) {
-      console.error("No token provided");
-      return;
-    }
-    const response = await verifyAction({
-      credential_id: token,
-      method,
-    });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+  const handleVerificationWebauthnToken = useCallback(
+    async (token: string | undefined, method: WebauthnMethods) => {
+      const verifyAction = tokenTypeMap[method];
+      if (!token) {
+        console.error("No token provided");
+        return;
       }
-    } else if (response.isError) {
-      setShowVerifyWebauthnModal(false);
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({
-            method,
-            credential: token,
-            description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
-          }),
-        })
-      );
-    }
-  }
+      const response = await verifyAction({
+        credential_id: token,
+        method,
+      });
+      if (response.isSuccess) {
+        if (response.data.payload.location) {
+          window.location.assign(response.data.payload.location);
+        }
+      } else if (response.isError) {
+        setShowVerifyWebauthnModal(false);
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "verifyCredential",
+            frontend_state: JSON.stringify({
+              method,
+              credential: token,
+              description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
+            }),
+          })
+        );
+      }
+    },
+    [tokenTypeMap, dispatch]
+  );
 
-  async function handleRemoveWebauthnToken(credential_string?: string) {
-    const credential_key = credential_string && JSON.parse(credential_string).credential;
-    const response = await removeWebauthnToken({ credential_key: credential_key });
-    if (response.isError) {
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: credential_key,
-        })
-      );
-    } else {
-      wrapperRef?.current?.focus();
-    }
-  }
+  const handleRemoveWebauthnToken = useCallback(
+    async (credential_string?: string) => {
+      const credential_key = credential_string && JSON.parse(credential_string).credential;
+      const response = await removeWebauthnToken({ credential_key: credential_key });
+      if (response.isError) {
+        // prepare authenticate() and AuthenticateModal
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "removeSecurityKeyAuthn",
+            frontend_state: credential_key,
+          })
+        );
+      } else {
+        wrapperRef?.current?.focus();
+      }
+    },
+    [removeWebauthnToken, dispatch, wrapperRef]
+  );
 
-  function handleStopAskingWebauthnDescription() {
+  const handleStopAskingWebauthnDescription = useCallback(() => {
     setIsRegisteringAuthenticator(false);
     setShowSecurityKeyNameModal(false);
-  }
+  }, []);
 
   // buttons "My Device" or "My security key"
-  async function handleRegisterWebauthn(authType: string) {
-    setIsRegisteringAuthenticator(true);
-
-    // prepare for authenticate() / AuthenticateModal
-    dispatch(
-      authnSlice.actions.setFrontendActionAndState({
-        frontend_action: "addSecurityKeyAuthn",
-        frontend_state: authType,
-      })
-    );
-
-    const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
-    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+  const handleRegisterWebauthn = useCallback(
+    async (authType: string) => {
       setIsRegisteringAuthenticator(true);
-      setShowSecurityKeyNameModal(true);
-    } else {
-      setIsRegisteringAuthenticator(false);
-      dispatch(authnSlice.actions.setReAuthenticate(true));
-    }
-  }
+
+      // prepare for authenticate() / AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "addSecurityKeyAuthn",
+          frontend_state: authType,
+        })
+      );
+
+      const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
+      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+        setIsRegisteringAuthenticator(true);
+        setShowSecurityKeyNameModal(true);
+      } else {
+        setIsRegisteringAuthenticator(false);
+        dispatch(authnSlice.actions.setReAuthenticate(true));
+      }
+    },
+    [dispatch, getAuthnStatus]
+  );
 
   // function that is called when the user clicks OK in the "security key name" modal
-  function handleStartWebauthnRegistration(values: { [key: string]: string }) {
-    const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
-    (async () => {
-      try {
-        if (frontend_state) {
-          const description_value = values["describe-webauthn-token-modal"];
-          const description = description_value?.trim();
-          setShowSecurityKeyNameModal(false);
-          const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-          if (registration.isSuccess) {
-            const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
-            if (createResponse.isSuccess) {
-              const registerResponse = await registerWebauthn({
-                webauthn_attestation: createResponse.data,
-                description,
-              });
-              wrapperRef?.current?.focus();
-              if (registerResponse.isSuccess) {
-                setShowVerifyWebauthnModal(true);
+  const handleStartWebauthnRegistration = useCallback(
+    (values: { [key: string]: string }) => {
+      const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
+      (async () => {
+        try {
+          if (frontend_state) {
+            const description_value = values["describe-webauthn-token-modal"];
+            const description = description_value?.trim();
+            setShowSecurityKeyNameModal(false);
+            const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
+            if (registration.isSuccess) {
+              const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+              if (createResponse.isSuccess) {
+                const registerResponse = await registerWebauthn({
+                  webauthn_attestation: createResponse.data,
+                  description,
+                });
+                wrapperRef?.current?.focus();
+                if (registerResponse.isSuccess) {
+                  setShowVerifyWebauthnModal(true);
+                }
               }
             }
+            dispatch(authnSlice.actions.setAuthnFrontendReset());
+            setIsRegisteringAuthenticator(false);
           }
-          dispatch(authnSlice.actions.setAuthnFrontendReset());
-          setIsRegisteringAuthenticator(false);
+        } catch (error) {
+          console.error("Error creating credentials:", error);
         }
-      } catch (error) {
-        console.error("Error creating credentials:", error);
-      }
-    })();
-  }
+      })();
+    },
+    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch]
+  );
 
   // Runs after re-auth security zone
   useEffect(() => {
@@ -201,7 +216,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         );
       }
     })();
-  }, [authn?.response?.frontend_action, authn?.response?.frontend_state]);
+  }, [
+    authn.response?.frontend_action,
+    authn.response?.frontend_state,
+    dispatch,
+    handleRemoveWebauthnToken,
+    handleVerificationWebauthnToken,
+  ]);
 
   useEffect(() => {
     (async () => {
@@ -213,7 +234,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       }
     })();
-  }, [isLoaded]);
+  }, [credentials.length, isLoaded, requestCredentials]);
 
   useEffect(
     () => {

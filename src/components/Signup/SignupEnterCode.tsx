@@ -24,14 +24,14 @@ export function SignupEnterCode(): React.JSX.Element {
     if (state?.credentials.completed) {
       signupContext.signupService.send({ type: "CREDENTIALS_DONE" });
     }
-  }, [state]);
+  }, [signupContext.signupService, state]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
       signupContext.signupService.send({ type: "ABORT" });
     }
-  }, [signupState]);
+  }, [signupContext.signupService, signupState]);
 
   function handleTimerReachZero() {
     setIsExpired(true);
@@ -171,7 +171,7 @@ export function ProcessEmailCode() {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, dispatch, signupContext.signupService]);
 
   return null;
 }

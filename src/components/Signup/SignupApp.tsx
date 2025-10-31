@@ -23,23 +23,23 @@ export function SignupApp(): React.JSX.Element {
       id: "document title Register",
       defaultMessage: "Register | eduID",
     });
-  }, []);
+  }, [intl]);
 
   return (
     <React.Fragment>
       {state.matches("SignupStart") && <SignupStart />}
-      {state.matches({AskForEmailAddress: "SignupEmailForm"}) && <SignupEmailForm />}
-      {state.matches({HandleCaptchaAndToU: "ProcessCaptcha"}) && <ProcessCaptcha />}
-      {state.matches({HandleCaptchaAndToU: "SignupCaptcha"}) && <SignupCaptcha />}
-      {state.matches({HandleCaptchaAndToU: "SignupToU"}) && <SignupToU />}
-      {state.matches({HandleCaptchaAndToU: "ProcessToU"}) && <ProcessToU />}
-      {state.matches({HandleCaptchaAndToU: "RegisterEmail"}) && <RegisterEmail />}
-      {state.matches({HandleEmail: "SignupEnterCode"}) && <SignupEnterCode />}
-      {state.matches({HandleEmail: "ProcessEmailCode"}) && <ProcessEmailCode />}
-      {state.matches({HandleCredentials: "SignupCredentials"}) && <SignupCredentials />}
-      {state.matches({HandleCredentials: "SignupCredentialPassword"}) && <SignupCredentialPassword />}
-      {state.matches({FinaliseUser: "SignupConfirmPassword"}) && <SignupConfirmPassword />}
-      {state.matches({FinaliseUser: "SignupUserCreated"}) && <SignupUserCreated />}
+      {state.matches({ AskForEmailAddress: "SignupEmailForm" }) && <SignupEmailForm />}
+      {state.matches({ HandleCaptchaAndToU: "ProcessCaptcha" }) && <ProcessCaptcha />}
+      {state.matches({ HandleCaptchaAndToU: "SignupCaptcha" }) && <SignupCaptcha />}
+      {state.matches({ HandleCaptchaAndToU: "SignupToU" }) && <SignupToU />}
+      {state.matches({ HandleCaptchaAndToU: "ProcessToU" }) && <ProcessToU />}
+      {state.matches({ HandleCaptchaAndToU: "RegisterEmail" }) && <RegisterEmail />}
+      {state.matches({ HandleEmail: "SignupEnterCode" }) && <SignupEnterCode />}
+      {state.matches({ HandleEmail: "ProcessEmailCode" }) && <ProcessEmailCode />}
+      {state.matches({ HandleCredentials: "SignupCredentials" }) && <SignupCredentials />}
+      {state.matches({ HandleCredentials: "SignupCredentialPassword" }) && <SignupCredentialPassword />}
+      {state.matches({ FinaliseUser: "SignupConfirmPassword" }) && <SignupConfirmPassword />}
+      {state.matches({ FinaliseUser: "SignupUserCreated" }) && <SignupUserCreated />}
     </React.Fragment>
   );
 }
@@ -51,19 +51,19 @@ function SignupStart() {
   const signupContext = useContext(SignupGlobalStateContext);
   const is_configured = useAppSelector((state) => state.config.is_configured);
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
-  const { data } = signupApi.useFetchStateQuery(is_configured?undefined:skipToken);
+  const { data } = signupApi.useFetchStateQuery(is_configured ? undefined : skipToken);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-  
+
   useEffect(() => {
     if (data != undefined) {
       if (data.payload.state.already_signed_up) {
         fetchLogout({});
       }
-      if(data.payload.state.email?.address) {
+      if (data.payload.state.email?.address) {
         signupContext.signupService.send({ type: "EMAIL_DONE" });
       } else signupContext.signupService.send({ type: "COMPLETE" });
     }
-  }, [data]);
+  }, [data, fetchLogout, signupContext.signupService]);
 
   return null;
 }

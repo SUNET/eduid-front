@@ -17,7 +17,7 @@ export function SignupToU(): React.JSX.Element {
     if (state?.tou.completed) {
       signupContext.signupService.send({ type: "TOU_DONE" });
     }
-  }, [state]);
+  }, [signupContext.signupService, state]);
 
   function handleAccept() {
     signupContext.signupService.send({ type: "COMPLETE" });
@@ -51,7 +51,7 @@ export function ProcessToU(): React.JSX.Element {
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const version = signupState?.tou.version;
-  const {isSuccess,isError} = signupApi.useAcceptToURequestQuery(version?{version}:skipToken)
+  const { isSuccess, isError } = signupApi.useAcceptToURequestQuery(version ? { version } : skipToken);
 
   useEffect(() => {
     if (isSuccess) {
@@ -60,7 +60,7 @@ export function ProcessToU(): React.JSX.Element {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess,isError]);
+  }, [isSuccess, isError, dispatch, signupContext.signupService]);
 
   return <React.Fragment></React.Fragment>;
 }

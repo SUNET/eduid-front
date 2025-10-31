@@ -1,7 +1,7 @@
 import personalDataApi from "apis/eduidPersonalData";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
 
@@ -22,22 +22,22 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
     if (!preference.isLoading) {
       setSwitchChecked(always_use_security_key);
     }
-  }, [preference.isLoading]);
+  }, [always_use_security_key, preference.isLoading]);
 
-  async function handleSwitchChange() {
+  const handleSwitchChange = useCallback(async () => {
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     setSwitchChecked(!switchChecked);
     if (switchChecked !== undefined) {
       postSecurityKeyPreference({ always_use_security_key: !switchChecked });
     }
-  }
+  }, [dispatch, switchChecked, postSecurityKeyPreference]);
 
   useEffect(() => {
     // without checking for re_authenticate it will loop because makeGenericRequest() sets frontend_action
     if (frontend_action === "changeSecurityPreferencesAuthn") {
       handleSwitchChange();
     }
-  }, [frontend_action]);
+  }, [frontend_action, handleSwitchChange]);
 
   return (
     <form>

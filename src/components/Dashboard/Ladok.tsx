@@ -31,7 +31,7 @@ const LadokContainer = (): React.JSX.Element => {
     if (isLinked !== switchChecked) {
       queueMicrotask(() => setSwitchChecked(isLinked));
     }
-  }, [isLinked]);
+  }, [isLinked, switchChecked]);
   return (
     <article className="ladok" id="ladok">
       <h2>
@@ -99,7 +99,7 @@ const LadokUniversitiesDropdown = (): React.JSX.Element => {
       // are interested in linking their account
       fetchLadokUniversities();
     }
-  }, [ladokUnis]);
+  }, [fetchLadokUniversities, ladokUnis]);
 
   function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
     if (newValue?.value) {

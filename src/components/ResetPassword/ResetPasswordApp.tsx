@@ -34,14 +34,14 @@ export function ResetPasswordApp(): React.JSX.Element {
       id: "document title Reset Password",
       defaultMessage: "Reset password | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       resetPasswordContext.resetPasswordService.send({ type: "WITHOUT_EXTRA_SECURITY" });
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
-  }, [swedishEID_status]);
+  }, [dispatch, resetPasswordContext.resetPasswordService, swedishEID_status]);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
@@ -49,19 +49,19 @@ export function ResetPasswordApp(): React.JSX.Element {
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
     resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
-  }, [loginRef, params]);
+  }, [dispatch, loginRef, params, resetPasswordContext.resetPasswordService]);
 
   return (
     <React.Fragment>
       {state.matches("AskForEmailOrConfirmEmail") && <AskForEmailOrConfirmEmail />}
-      {state.matches({AskForEmailOrConfirmEmail: "ResetPasswordConfirmEmail"}) && <ResetPasswordConfirmEmail />}
-      {state.matches({AskForEmailOrConfirmEmail: "ResetPasswordEnterEmail"}) && <ResetPasswordEnterEmail />}
-      {state.matches({HandleCaptcha: "ResetPasswordCaptcha"}) && <ResetPasswordCaptcha />}
-      {state.matches({HandleCaptcha: "ProcessCaptcha"}) && <ProcessCaptcha />}
-      {state.matches({HandleCaptcha: "EmailLinkSent"}) && <EmailLinkSent />}
-      {state.matches({HandleExtraSecurities: "HandleExtraSecurities"}) && <HandleExtraSecurities />}
-      {state.matches({FinaliseResetPassword: "SetNewPassword"}) && <SetNewPassword />}
-      {state.matches({FinaliseResetPassword: "ResetPasswordSuccess"}) && <ResetPasswordSuccess />}
+      {state.matches({ AskForEmailOrConfirmEmail: "ResetPasswordConfirmEmail" }) && <ResetPasswordConfirmEmail />}
+      {state.matches({ AskForEmailOrConfirmEmail: "ResetPasswordEnterEmail" }) && <ResetPasswordEnterEmail />}
+      {state.matches({ HandleCaptcha: "ResetPasswordCaptcha" }) && <ResetPasswordCaptcha />}
+      {state.matches({ HandleCaptcha: "ProcessCaptcha" }) && <ProcessCaptcha />}
+      {state.matches({ HandleCaptcha: "EmailLinkSent" }) && <EmailLinkSent />}
+      {state.matches({ HandleExtraSecurities: "HandleExtraSecurities" }) && <HandleExtraSecurities />}
+      {state.matches({ FinaliseResetPassword: "SetNewPassword" }) && <SetNewPassword />}
+      {state.matches({ FinaliseResetPassword: "ResetPasswordSuccess" }) && <ResetPasswordSuccess />}
     </React.Fragment>
   );
 }
@@ -79,7 +79,7 @@ function AskForEmailOrConfirmEmail(): null {
         resetPasswordContext.resetPasswordService.send({ type: "UNKNOWN_USER" });
       }
     }
-  }, [email_status, email_address]);
+  }, [email_status, email_address, resetPasswordContext.resetPasswordService]);
 
   return null;
 }
@@ -99,7 +99,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
     if (captcha_completed) {
       dispatch(clearNotifications());
     }
-  }, [captcha_completed]);
+  }, [captcha_completed, dispatch]);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());

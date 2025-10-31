@@ -13,7 +13,7 @@ export function IdentificationFailure(props: FailureComponentProps): React.JSX.E
       // call fetchErrorInfo once state.config.error_info_url is initialised
       fetchErrorInfo();
     }
-  }, [is_configured]);
+  }, [fetchErrorInfo, is_configured]);
 
   return (
     <React.Fragment>

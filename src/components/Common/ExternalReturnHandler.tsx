@@ -4,7 +4,7 @@ import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { showNotification } from "slices/Notifications";
 
@@ -24,62 +24,77 @@ export function ExternalReturnHandler() {
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
 
-  function processStatus(response: GetStatusResponse) {
-    const status = response;
-    // Status has been fetched
-    if (status.status) {
-      dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
-    }
-    if (status.frontend_action) {
-      // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
-      // the user should be returned to
-      const actionToRoute: { [key: string]: string } = {
-        verifyIdentity: IDENTITY_PATH,
-        verifyCredential: SECURITY_PATH,
-        changepwAuthn: "/profile/chpass",
-        terminateAccountAuthn: "/",
-        addSecurityKeyAuthn: SECURITY_PATH,
-        removeSecurityKeyAuthn: SECURITY_PATH,
-        changeSecurityPreferencesAuthn: SECURITY_PATH,
-        removeIdentity: IDENTITY_PATH,
-      };
-      const _path = actionToRoute[status.frontend_action];
-      if (_path) {
-        navigate(_path);
-        return;
+  const processStatus = useCallback(
+    (response: GetStatusResponse) => {
+      const status = response;
+      // Status has been fetched
+      if (status.status) {
+        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
       }
-    }
+      if (status.frontend_action) {
+        // actionToRoute is a mapping from frontend_action values to where in the Dashboard application
+        // the user should be returned to
+        const actionToRoute: { [key: string]: string } = {
+          verifyIdentity: IDENTITY_PATH,
+          verifyCredential: SECURITY_PATH,
+          changepwAuthn: "/profile/chpass",
+          terminateAccountAuthn: "/",
+          addSecurityKeyAuthn: SECURITY_PATH,
+          removeSecurityKeyAuthn: SECURITY_PATH,
+          changeSecurityPreferencesAuthn: SECURITY_PATH,
+          removeIdentity: IDENTITY_PATH,
+        };
+        const _path = actionToRoute[status.frontend_action];
+        if (_path) {
+          navigate(_path);
+          return;
+        }
+      }
 
-    navigate("/profile/"); // GOTO start
-  }
+      navigate("/profile/"); // GOTO start
+    },
+    [dispatch, navigate]
+  );
 
-  async function fetchEidasStatus(authn_id: string) {
-    const response = await eidasGetStatus({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload);
-    }
-  }
+  const fetchEidasStatus = useCallback(
+    async (authn_id: string) => {
+      const response = await eidasGetStatus({ authn_id: authn_id });
+      if (response.isSuccess) {
+        processStatus(response.data.payload);
+      }
+    },
+    [eidasGetStatus, processStatus]
+  );
 
-  async function fetchFrejaeIDStatus(authn_id: string) {
-    const response = await frejaeIDGetStatus({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload);
-    }
-  }
+  const fetchFrejaeIDStatus = useCallback(
+    async (authn_id: string) => {
+      const response = await frejaeIDGetStatus({ authn_id: authn_id });
+      if (response.isSuccess) {
+        processStatus(response.data.payload);
+      }
+    },
+    [frejaeIDGetStatus, processStatus]
+  );
 
-  async function fetchBankIDStatus(authn_id: string) {
-    const response = await bankIDGetStatus({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload);
-    }
-  }
+  const fetchBankIDStatus = useCallback(
+    async (authn_id: string) => {
+      const response = await bankIDGetStatus({ authn_id: authn_id });
+      if (response.isSuccess) {
+        processStatus(response.data.payload);
+      }
+    },
+    [bankIDGetStatus, processStatus]
+  );
 
-  async function fetchAuthStatus(authn_id: string) {
-    const response = await authnGetStatus({ authn_id: authn_id });
-    if (response.isSuccess) {
-      processStatus(response.data.payload);
-    }
-  }
+  const fetchAuthStatus = useCallback(
+    async (authn_id: string) => {
+      const response = await authnGetStatus({ authn_id: authn_id });
+      if (response.isSuccess) {
+        processStatus(response.data.payload);
+      }
+    },
+    [authnGetStatus, processStatus]
+  );
 
   useEffect(() => {
     if (params.authn_id && params.app_name === "eidas" && app_loaded) {
@@ -94,7 +109,7 @@ export function ExternalReturnHandler() {
     if (params.authn_id && params.app_name === "authn" && app_loaded) {
       fetchAuthStatus(params.authn_id);
     }
-  }, [params, app_loaded]);
+  }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus]);
 
   return null;
 }

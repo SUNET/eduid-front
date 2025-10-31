@@ -37,7 +37,7 @@ export function Help(): React.JSX.Element {
       id: "document title Help",
       defaultMessage: "Help | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     if (is_configured) {
@@ -48,7 +48,7 @@ export function Help(): React.JSX.Element {
         }
       })();
     }
-  }, [is_configured]);
+  }, [fetchApprovedSecurityKeys, is_configured]);
 
   return (
     <React.Fragment>

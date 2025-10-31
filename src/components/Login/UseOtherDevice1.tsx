@@ -32,7 +32,7 @@ function UseOtherDevice1() {
       const _name = username ? username : undefined; // backend is picky and won't allow null
       fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me });
     }
-  }, []);
+  }, [fetchUseOtherDevice1, loginRef, other_device, remember_me, this_device, username]);
 
   const hasQrCode =
     other_device &&

@@ -33,7 +33,7 @@ function UseOtherDevice2() {
       id: "document title Log in using another device",
       defaultMessage: "Log in using another device | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     async function initialFetch() {
@@ -56,7 +56,7 @@ function UseOtherDevice2() {
       // after login, this page is rendered with a loginRef present in the state
       fetchUseOtherDevice2({ ref: loginRef });
     }
-  }, [base_url]);
+  }, [base_url, fetchUseOtherDevice2, fetching, loginRef, params.state_id]);
 
   return (
     <div className="use-another-device device2">
@@ -69,7 +69,10 @@ function UseOtherDevice2() {
   );
 }
 
-function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params: UseOtherParams }): React.JSX.Element | null {
+function RenderOtherDevice2(props: {
+  data: LoginUseOtherDevice2Response;
+  params: UseOtherParams;
+}): React.JSX.Element | null {
   const { data } = props;
   const [timerIsZero, setTimerIsZero] = useState(false);
 
@@ -250,7 +253,7 @@ function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [fetchUseOtherDevice2] =loginApi.useLazyFetchUseOtherDevice2Query();
+  const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
   function handleLoginOnClick() {
     if (data && data.login_ref) {

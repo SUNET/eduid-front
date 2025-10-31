@@ -57,7 +57,7 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
 
   useEffect(() => {
     if (inputRef.current && forced_username) inputRef?.current?.focus();
-  }, []);
+  }, [forced_username]);
 
   let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {

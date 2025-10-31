@@ -27,7 +27,7 @@ function SubmitSamlResponse() {
     } else {
       queueMicrotask(() => setError(true));
     }
-  }, []);
+  }, [SAMLParameters, backDetected]);
 
   useEffect(() => {
     /* Listen for a window onPageShow event, indicating the user has pressed the 'back' button.

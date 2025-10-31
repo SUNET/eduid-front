@@ -29,7 +29,7 @@ export function SetNewPassword(): React.JSX.Element | null {
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
-  }, [renderSuggested, suggested]);
+  }, [dispatch, renderSuggested, suggested]);
 
   function goBack() {
     if (extra_security && Object.values(extra_security).length) {

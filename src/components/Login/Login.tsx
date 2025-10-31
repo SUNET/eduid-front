@@ -41,7 +41,7 @@ function Login(): React.JSX.Element {
       id: "document title Log in",
       defaultMessage: "Log in | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     // if this_device and remember_me haven't been set in redux state yet, initialise them from local storage
@@ -58,7 +58,7 @@ function Login(): React.JSX.Element {
     if (base_url && !next_page && init_ref && !fetching_next && init_remember_me !== undefined && !error_state) {
       fetchNext({ ref: init_ref, this_device: init_this_device, remember_me: init_remember_me });
     }
-  }, [base_url, ref, this_device, remember_me, next_page, params]);
+  }, [base_url, ref, this_device, remember_me, next_page, params, dispatch, fetching_next, error_state, fetchNext]);
 
   useEffect(() => {
     if (ref !== undefined) {
@@ -73,7 +73,7 @@ function Login(): React.JSX.Element {
         navigate(`/login/${ref}`);
       }
     }
-  }, [next_page, ref]);
+  }, [navigate, next_page, ref]);
 
   return (
     <React.Fragment>
@@ -123,7 +123,7 @@ function UserTerminated(): React.JSX.Element {
       // clear localStorage so that the same user is not used again
       window.localStorage.clear();
     }
-  }, [error_state]);
+  }, [error_state, fetchLogout]);
 
   function reset_password() {
     dispatch(clearNotifications());

@@ -18,7 +18,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
     if (state?.captcha.completed) {
       signupContext.signupService.send({ type: "CAPTCHA_DONE" });
     }
-  }, [state]);
+  }, [signupContext.signupService, state]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -26,7 +26,6 @@ export function SignupCaptcha(): React.JSX.Element | null {
       return response.data.payload;
     }
   }
-
 
   function handleCaptchaCancel() {
     signupContext.signupService.send({ type: "ABORT" });
@@ -61,7 +60,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
         </p>
       </div>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha}/>
+      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
     </Fragment>
   );
 }
@@ -70,7 +69,7 @@ export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.signup.captcha);
   const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
-  const {isSuccess, isError } = signupApi.useSendSignupCaptchaResponseQuery(captcha??skipToken)
+  const { isSuccess, isError } = signupApi.useSendSignupCaptchaResponseQuery(captcha ?? skipToken);
 
   useEffect(() => {
     if (captcha) {
@@ -81,7 +80,7 @@ export function ProcessCaptcha(): null {
         signupContext.signupService.send({ type: "API_FAIL" });
       }
     }
-  }, [captcha, isSuccess, isError]);
+  }, [captcha, isSuccess, isError, dispatch, signupContext.signupService]);
 
   // Show a blank screen while we wait for a captcha response from the backend
   return null;

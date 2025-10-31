@@ -19,7 +19,7 @@ export default function TermsOfUse(): React.JSX.Element {
       // Tell the backend what ToU versions are available in this bundle
       fetchToU({ ref: loginRef, versions: availableTouVersions });
     }
-  }, []);
+  }, [availableTouVersions, fetchToU, loginRef, version]);
 
   async function handleAccept() {
     if (version && loginRef) {

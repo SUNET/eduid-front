@@ -1,7 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
@@ -43,7 +43,7 @@ export function ChangePassword() {
   const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
   const [changePassword] = securityApi.useLazyChangePasswordQuery();
 
-  async function handleSuggestedPassword() {
+  const handleSuggestedPassword = useCallback(async () => {
     try {
       const response = await fetchSuggestedPassword();
       if (isMounted.current) {
@@ -54,39 +54,45 @@ export function ChangePassword() {
     } catch (error) {
       console.error("Error handleSuggestedPassword:", error);
     }
-  }
+  }, [fetchSuggestedPassword, navigate]);
 
-  async function handleSubmitNewPassword(values: ChangePasswordFormData) {
-    const newPassword = renderSuggested ? values.suggested : values.custom;
-    if (newPassword) {
-      const response = await changePassword({ new_password: newPassword });
-      if (response.isSuccess) {
-        navigate("/profile/chpass/success", {
-          state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
-        });
+  const handleSubmitNewPassword = useCallback(
+    async (values: ChangePasswordFormData) => {
+      const newPassword = renderSuggested ? values.suggested : values.custom;
+      if (newPassword) {
+        const response = await changePassword({ new_password: newPassword });
+        if (response.isSuccess) {
+          navigate("/profile/chpass/success", {
+            state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
+          });
+        }
       }
-    }
-  }
+    },
+    [renderSuggested, changePassword, navigate]
+  );
 
-  function handleCancel(event: React.MouseEvent<HTMLElement>) {
-    // Callback from sub-component when the user clicks on the button to abort changing password
-    event.preventDefault();
+  const handleCancel = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      // Callback from sub-component when the user clicks on the button to abort changing password
+      event.preventDefault();
 
-    navigate(finish_url);
-  }
+      navigate(finish_url);
+    },
+    [navigate]
+  );
 
   const initialValues = { suggested };
 
-  function handleSwitchChange() {
+  const handleSwitchChange = useCallback(() => {
     setRenderSuggested(!renderSuggested);
-  }
+  }, [renderSuggested]);
 
   useEffect(() => {
     document.title = intl.formatMessage({
       id: "document title Change Password",
       defaultMessage: "Change password | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     //TODO: Too many conditions for getting the suggested password, need to refactor.
@@ -96,7 +102,7 @@ export function ChangePassword() {
     return () => {
       isMounted.current = false;
     };
-  }, [suggested, is_app_loaded]);
+  }, [suggested, is_app_loaded, handleSuggestedPassword]);
 
   return (
     <FinalForm<ChangePasswordFormData>

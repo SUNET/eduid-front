@@ -62,7 +62,7 @@ export function MultiFactorAuth(): React.JSX.Element {
       // to call the MFA endpoint for it to complete.
       fetchMfaAuth({ ref: ref, this_device: this_device });
     }
-  }, [mfa]);
+  }, [fetchMfaAuth, mfa, ref, this_device]);
 
   async function getChallenge() {
     if (ref) {

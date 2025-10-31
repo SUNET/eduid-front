@@ -143,7 +143,6 @@ export function RegisterEmail() {
   const email = useAppSelector((state) => state.signup.email);
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
-  const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
   const [registerEmail, { isSuccess, isError }] = signupApi.useLazyRegisterEmailRequestQuery();
 
   useEffect(() => {
@@ -151,8 +150,9 @@ export function RegisterEmail() {
       signupContext.signupService.send({ type: "API_FAIL" });
       return;
     }
+    const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
     registerEmail(signupUser);
-  }, [email, given_name, surname, signupContext, registerEmail, signupUser]);
+  }, [email, given_name, surname, signupContext, registerEmail]);
 
   useEffect(() => {
     if (isSuccess) {

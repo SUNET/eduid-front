@@ -29,7 +29,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
 
   useEffect(() => {
     letterProofingState();
-  }, []);
+  }, [letterProofingState]);
 
   function handleModal() {
     const letterPending = letter_sent_date === undefined && !letter_expired;
