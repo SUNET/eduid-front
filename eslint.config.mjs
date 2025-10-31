@@ -65,7 +65,6 @@ export default defineConfig([
           "ignoreRestSiblings": true
         }
       ],
-      "react-hooks/exhaustive-deps": "off",
     },
 
     settings: {
