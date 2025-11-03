@@ -29,7 +29,7 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
     setActive(true);
     const webauth_options = await props.setup();
     if (webauth_options) {
-      const response = await performAuthentication(webauth_options);
+      const response = await performAuthentication({ webauth_options });
       if (response.isSuccess) {
         props.onSuccess(response.data);
         dispatch(clearNotifications());

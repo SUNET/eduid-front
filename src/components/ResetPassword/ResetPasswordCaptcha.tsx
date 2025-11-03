@@ -2,23 +2,21 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useCallback, useContext, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = resetPasswordApi.useLazyGetResetPasswordCaptchaRequestQuery();
 
   useEffect(() => {
     if (captcha?.internal_response || captcha_completed) {
-      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }, [captcha?.internal_response, captcha_completed, resetPasswordContext.resetPasswordService]);
 
@@ -36,9 +34,10 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
+    console.log("Captcha completed with response:", response);
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
-      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }
 
@@ -76,7 +75,6 @@ export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const email = useAppSelector((state) => state.resetPassword.email_address);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const dispatch = useAppDispatch();
   const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
   const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
@@ -85,12 +83,12 @@ export function ProcessCaptcha(): null {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        dispatch(resetPasswordSlice.actions.setNextPage("EMAIL_LINK_SENT"));
       } else {
-        resetPasswordContext.resetPasswordService.send({ type: "START_RESET_PW" });
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [email, requestEmailLink, resetPasswordContext.resetPasswordService]);
+  }, [email, requestEmailLink]);
 
   const sendCaptcha = useCallback(
     async (captcha: CaptchaRequest) => {
@@ -99,10 +97,10 @@ export function ProcessCaptcha(): null {
         dispatch(clearNotifications());
         sendEmailLink();
       } else {
-        resetPasswordContext.resetPasswordService.send({ type: "API_FAIL" });
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
       }
     },
-    [sendCaptchaResponse, dispatch, sendEmailLink, resetPasswordContext.resetPasswordService]
+    [sendCaptchaResponse, dispatch, sendEmailLink]
   );
 
   useEffect(() => {

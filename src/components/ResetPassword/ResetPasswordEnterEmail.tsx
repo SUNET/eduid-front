@@ -1,22 +1,22 @@
+import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function ResetPasswordEnterEmail(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
+  const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
 
   async function onEnteredEmailAddress(email: string) {
     dispatch(clearNotifications());
     if (email) {
       dispatch(resetPasswordSlice.actions.setEmailAddress(email));
-      resetPasswordContext.resetPasswordService.send({ type: "COMPLETE" });
+      getResetPasswordState();
     }
   }
 

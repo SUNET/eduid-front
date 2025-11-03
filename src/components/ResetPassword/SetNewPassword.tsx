@@ -8,11 +8,10 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordGlobalStateContext } from "./ResetPasswordGlobalState";
 
 export function SetNewPassword(): React.JSX.Element | null {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
@@ -20,24 +19,21 @@ export function SetNewPassword(): React.JSX.Element | null {
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const resetPasswordContext = useContext(ResetPasswordGlobalStateContext);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const [postSetNewPasswordExternalMfa] = resetPasswordApi.useLazyPostSetNewPasswordExternalMfaQuery();
   const [postSetNewPasswordExtraSecurityToken] = resetPasswordApi.useLazyPostSetNewPasswordExtraSecurityTokenQuery();
   const [postSetNewPassword] = resetPasswordApi.useLazyPostSetNewPasswordQuery();
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.useSuggestedPassword(renderSuggested));
   }, [dispatch, renderSuggested, suggested]);
 
-  function goBack() {
-    if (extra_security && Object.values(extra_security).length) {
-      resetPasswordContext.resetPasswordService.send({ type: "START_EXTRA_SECURITY" });
-    } else resetPasswordContext.resetPasswordService.send({ type: "GO_BACK" });
-
-    // initialization of state
-    dispatch(resetPasswordSlice.actions.resetState());
+  function handleCancel() {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+      dispatch(resetPasswordSlice.actions.resetState());
+    }
   }
 
   async function submitNewPassword(values: NewPasswordFormData) {
@@ -51,7 +47,7 @@ export function SetNewPassword(): React.JSX.Element | null {
     if (!selected_option || selected_option === "without") {
       const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
       if (response.isSuccess) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     } else if (selected_option === "securityKey" && webauthn_assertion) {
       const response = await postSetNewPasswordExtraSecurityToken({
@@ -60,7 +56,7 @@ export function SetNewPassword(): React.JSX.Element | null {
         webauthn_response: webauthn_assertion,
       });
       if (response.isSuccess) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     } else if (selected_option === "swedishEID") {
       const response = await postSetNewPasswordExternalMfa({
@@ -68,7 +64,7 @@ export function SetNewPassword(): React.JSX.Element | null {
         password: newPassword,
       });
       if (response.isSuccess) {
-        resetPasswordContext.resetPasswordService.send({ type: "API_SUCCESS" });
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
     }
   }
@@ -130,9 +126,9 @@ export function SetNewPassword(): React.JSX.Element | null {
             )}
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={goBack} suggestedPassword={suggested} />
+              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
             ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={goBack} handleSubmit={submitNewPassword} />
+              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} handleSubmit={submitNewPassword} />
             )}
           </Splash>
         );

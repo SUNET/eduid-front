@@ -2,7 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
-import { ExtraSecurityAlternatives, RequestEmailLinkResponse, resetPasswordApi } from "apis/eduidResetPassword";
+import {
+  ExtraSecurityAlternatives,
+  GetResetPasswordState,
+  RequestEmailLinkResponse,
+  resetPasswordApi,
+} from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
@@ -26,6 +31,8 @@ export interface ResetPasswordState {
   swedishEID_status?: string;
   captcha?: CaptchaRequest;
   captcha_completed: boolean;
+  next_page?: string;
+  reset_pw_status?: GetResetPasswordState;
 }
 
 // Define the initial state using that type
@@ -62,6 +69,9 @@ export const resetPasswordSlice = createSlice({
     setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
       state.captcha = action.payload;
     },
+    setNextPage: (state, action: PayloadAction<string>) => {
+      state.next_page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -83,6 +93,23 @@ export const resetPasswordSlice = createSlice({
           return;
         }
         state.email_response = action.payload.payload;
+      })
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchFulfilled, (state, action) => {
+        const backendState = action.payload.payload.state;
+        state.captcha_completed = backendState.captcha?.completed;
+        state.reset_pw_status = backendState;
+        if (backendState.email?.address || state.email_address) {
+          if (backendState.captcha?.completed) {
+            state.next_page = "PROCESS_CAPTCHA";
+          } else if (!backendState.captcha?.completed) {
+            state.next_page = "RESET_PW_CAPTCHA";
+          } else if (backendState.email?.completed) {
+            state.next_page = "HANDLE_EXTRA_SECURITIES";
+          }
+        }
+      })
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
+        state.next_page = "HANDLE_EXTRA_SECURITIES";
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
         state.email_status = "failed";
@@ -107,7 +134,7 @@ export const resetPasswordSlice = createSlice({
       })
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordCaptchaRequest.matchRejected, (state, action) => {
         if (
-          (action.payload as ApiResponse<{ message: string }>).payload.message === "resetpw.captcha-already-completed"
+          (action.payload as ApiResponse<{ message: string }>).payload?.message === "resetpw.captcha-already-completed"
         ) {
           state.captcha_completed = true;
         }

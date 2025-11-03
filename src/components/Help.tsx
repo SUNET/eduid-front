@@ -504,7 +504,7 @@ export function Help(): React.JSX.Element {
                 <FormattedMessage
                   description="settings eduid - intro definition"
                   defaultMessage={`When you log in to eduid.se the various settings are grouped into 4 views; Start, Identity, Security and Account, 
-                    accessible from the drop down menu in the header by clicking on your username. Read more about the possible actions of each page below.`}
+                    accessible from the header with a horizontal menu for larger screens or drop down menu by clicking on your username on smaller screens. Read more about the possible actions of each page below.`}
                 />
               </p>
               <Accordion id="eduid-settings">
@@ -526,7 +526,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="start eduid - list item 2"
-                        defaultMessage={`your unique user ID`}
+                        defaultMessage={`your unique user ID - part of what is sometimes referred to as EPPN.`}
                       />
                     </li>
                     <li>
@@ -736,6 +736,19 @@ export function Help(): React.JSX.Element {
                     />
                   </p>
                   <ul className="bullets">
+                    <li>
+                      <strong>
+                        <FormattedMessage
+                          description="account eduid - list item 0-heading"
+                          defaultMessage={`Unique ID: `}
+                        />
+                      </strong>
+                      &nbsp;
+                      <FormattedMessage
+                        description="account eduid - list item 0"
+                        defaultMessage={` A unique username for your eduID that is generated for you when creating the account.`}
+                      />
+                    </li>
                     <li>
                       <strong>
                         <FormattedMessage

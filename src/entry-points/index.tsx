@@ -2,7 +2,6 @@ import { jsConfigApi } from "apis/eduidJsConfig";
 import personalDataApi from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
-import { ResetPasswordGlobalStateProvider } from "components/ResetPassword/ResetPasswordGlobalState";
 import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
 import { LOCALIZED_MESSAGES } from "globals";
@@ -30,8 +29,7 @@ function showErrorMsg() {
   }
 }
 
-
-const getConfig = async function() {
+const getConfig = async function () {
   const jsConfig_promise = eduidStore.dispatch(jsConfigApi.endpoints.fetchJsConfig.initiate());
   const jsConfig = await jsConfig_promise;
   if (jsConfig.isSuccess) {
@@ -46,17 +44,16 @@ const getConfig = async function() {
           eduidStore.dispatch(
             updateIntl({
               locale: personalData.data.payload.language,
-              messages: LOCALIZED_MESSAGES[personalData.data.payload.language]
+              messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
             })
-          )
+          );
         }
         eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
       }
     }
     showErrorMsg();
   }
-}
-
+};
 
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(eduidStore.dispatch);
@@ -69,13 +66,11 @@ if (initDomTarget === null) {
 const root = ReactDOMClient.createRoot(initDomTarget);
 root.render(
   <SignupGlobalStateProvider>
-    <ResetPasswordGlobalStateProvider>
-      <ReduxIntlProvider store={eduidStore}>
-        <BrowserRouter>
-          <IndexMain />
-        </BrowserRouter>
-      </ReduxIntlProvider>
-    </ResetPasswordGlobalStateProvider>
+    <ReduxIntlProvider store={eduidStore}>
+      <BrowserRouter>
+        <IndexMain />
+      </BrowserRouter>
+    </ReduxIntlProvider>
   </SignupGlobalStateProvider>
 );
-getConfig()
+getConfig();
