@@ -2,10 +2,9 @@ import { signupApi } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
-import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { validateSignupUserInForm } from "helperFunctions/validation/validateEmail";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -43,7 +42,6 @@ export interface SignupEmailFormData extends Record<string, string | undefined> 
 function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const intl = useIntl();
 
   const firstNamePlaceholder = intl.formatMessage({
@@ -141,36 +139,25 @@ function EmailForm() {
  * Send the user-provided email address to the backend.
  */
 export function RegisterEmail() {
-  const signupContext = useContext(SignupGlobalStateContext);
   const email = useAppSelector((state) => state.signup.email);
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
-<<<<<<< HEAD
-  const [registerEmail, { isSuccess, isError }] = signupApi.useLazyRegisterEmailRequestQuery();
-=======
   const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
   const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
   const dispatch = useAppDispatch();
->>>>>>> 851dd2d94 (WIP: remove state machine, use actions for next page navigation)
 
-  useEffect(() => {
-    if (!email || !given_name || !surname) {
-      signupContext.signupService.send({ type: "API_FAIL" });
-      return;
-    }
-    const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
-    registerEmail(signupUser);
-  }, [email, given_name, surname, signupContext, registerEmail]);
+  if (!signupUser) {
+    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    return null;
+  }
 
   useEffect(() => {
     if (isSuccess) {
-      // signupContext.signupService.send({ type: "API_SUCCESS" });
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-      // signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess, isError, signupContext]);
+  }, [isSuccess, isError]);
 
   // Show a blank screen while we wait for the response from the backend
   return null;

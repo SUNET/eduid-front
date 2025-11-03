@@ -1,27 +1,25 @@
-import { useSelector } from "@xstate/react";
 import { signupApi } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCredentials(): React.JSX.Element {
-  const signupContext = useContext(SignupGlobalStateContext);
-  const state = useSelector(signupContext.signupService, (s) => s);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (state.context.event?.type != "API_FAIL") {
+    // if (state.context.event?.type != "API_FAIL")
+    {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
       // signupContext.signupService.send({ type: "CHOOSE_PASSWORD" });
       dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
     }
   }, [signupContext.signupService, state.context.event?.type]);
 
-  if (state.context.event?.type == "API_FAIL") {
+  // if (state.context.event?.type == "API_FAIL")
+  {
     return (
       <React.Fragment>
         <p>
@@ -60,7 +58,7 @@ export function SignupCredentials(): React.JSX.Element {
 }
 
 export function SignupCredentialPassword(): React.JSX.Element {
-  const signupContext = useContext(SignupGlobalStateContext);
+  // const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useGetPasswordRequestQuery();
 

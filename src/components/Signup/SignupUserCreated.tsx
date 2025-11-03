@@ -8,13 +8,12 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -23,7 +22,6 @@ export const idFinishedButton = "finished-button";
 
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
-  const signupContext = useContext(SignupGlobalStateContext);
   const signupState = useAppSelector((state) => state.signup.state);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();

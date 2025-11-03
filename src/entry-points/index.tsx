@@ -2,7 +2,6 @@ import { jsConfigApi } from "apis/eduidJsConfig";
 import personalDataApi from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain } from "components/IndexMain";
-import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { eduidStore } from "eduid-init-app";
 import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
@@ -65,12 +64,10 @@ if (initDomTarget === null) {
 }
 const root = ReactDOMClient.createRoot(initDomTarget);
 root.render(
-  <SignupGlobalStateProvider>
-    <ReduxIntlProvider store={eduidStore}>
-      <BrowserRouter>
-        <IndexMain />
-      </BrowserRouter>
-    </ReduxIntlProvider>
-  </SignupGlobalStateProvider>
+  <ReduxIntlProvider store={eduidStore}>
+    <BrowserRouter>
+      <IndexMain />
+    </BrowserRouter>
+  </ReduxIntlProvider>
 );
 getConfig();

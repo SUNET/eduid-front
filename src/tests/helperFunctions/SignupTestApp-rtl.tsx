@@ -1,6 +1,5 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { SignupGlobalStateProvider } from "components/Signup/SignupGlobalState";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
@@ -68,11 +67,9 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
 
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-      <SignupGlobalStateProvider>
-        <ReduxIntlProvider store={store}>
-          <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
-        </ReduxIntlProvider>
-      </SignupGlobalStateProvider>
+      <ReduxIntlProvider store={store}>
+        <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>
+      </ReduxIntlProvider>
     );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...args.options });

@@ -2,15 +2,13 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCaptcha(): React.JSX.Element | null {
   const state = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = signupApi.useLazyGetSignupCaptchaRequestQuery();
 

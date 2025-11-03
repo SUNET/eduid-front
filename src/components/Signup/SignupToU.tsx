@@ -2,15 +2,13 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const version = signupState?.tou.version;
   const state = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
@@ -53,7 +51,6 @@ export function SignupToU(): React.JSX.Element {
 
 export function ProcessToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const version = signupState?.tou.version;
   const { isSuccess, isError } = signupApi.useAcceptToURequestQuery(version ? { version } : skipToken);
