@@ -18,7 +18,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
     if (captcha?.internal_response || captcha_completed) {
       dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
-  }, [captcha?.internal_response, captcha_completed, resetPasswordContext.resetPasswordService]);
+  }, [captcha?.internal_response, captcha_completed, dispatch]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -88,7 +88,7 @@ export function ProcessCaptcha(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [email, requestEmailLink]);
+  }, [dispatch, email, requestEmailLink]);
 
   const sendCaptcha = useCallback(
     async (captcha: CaptchaRequest) => {

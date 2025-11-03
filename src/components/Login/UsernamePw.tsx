@@ -59,7 +59,7 @@ export default function UsernamePw() {
         abortPasskeyAuthentication();
       };
     }
-  }, [webauthn, ref, fetchMfaAuth, performAuthentication]);
+  }, [webauthn, ref, fetchMfaAuth, performAuthentication, abortPasskeyAuthentication]);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};

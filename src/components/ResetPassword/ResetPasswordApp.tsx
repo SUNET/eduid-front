@@ -47,7 +47,7 @@ export function ResetPasswordApp(): React.JSX.Element {
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
     dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
-  }, [loginRef, params]);
+  }, [dispatch, loginRef, params]);
 
   return (
     <React.Fragment>
@@ -77,7 +77,7 @@ function AskForEmailOrConfirmEmail(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [email_status, email_address]);
+  }, [email_status, email_address, dispatch]);
 
   return null;
 }
