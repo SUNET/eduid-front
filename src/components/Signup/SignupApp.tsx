@@ -1,11 +1,9 @@
 import { skipToken } from "@reduxjs/toolkit/query";
-import { useSelector } from "@xstate/react";
 import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
-import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
@@ -15,8 +13,6 @@ import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): React.JSX.Element {
-  const signupContext = useContext(SignupGlobalStateContext);
-  const state = useSelector(signupContext.signupService, (s) => s);
   const next_page = useAppSelector((state) => state.signup.next_page);
   const intl = useIntl();
 
