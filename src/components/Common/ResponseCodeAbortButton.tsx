@@ -5,8 +5,7 @@ import EduIDButton from "./EduIDButton";
 
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;
-  //TODO: Type definition needed
-  handleAbortButtonOnClick: () => void;
+  handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function ResponseCodeButtons(props: ResponseCodeButtonsProps) {
@@ -29,7 +28,7 @@ export function ResponseCodeAbortButton(props: {
   disabled: boolean;
   invalid: boolean;
   submit: () => void;
-  handleAbortButtonOnClick: () => void;
+  handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   // abort button usable from both ResponseCodeButtons and when isExpired below
   return (

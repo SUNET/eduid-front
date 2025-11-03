@@ -1,9 +1,9 @@
 import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
+import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
-import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
@@ -32,7 +32,7 @@ function UseOtherDevice1() {
       const _name = username ? username : undefined; // backend is picky and won't allow null
       fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me });
     }
-  }, []);
+  }, [fetchUseOtherDevice1, loginRef, other_device, remember_me, this_device, username]);
 
   const hasQrCode =
     other_device &&
@@ -112,8 +112,8 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): Rea
     setIsExpired(true);
   }
 
-  function handleAbortButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
+  function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
+    event?.preventDefault();
     if (login_ref) {
       // Tell backend we're abandoning the request to login using another device
       fetchUseOtherDevice1({ ref: login_ref, action: "ABORT" });
@@ -151,7 +151,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): Rea
 
   function handleContinueWithoutCode() {
     // If the user is known on device #1, the correct response code is not required by the backend
-  if (login_ref) {
+    if (login_ref) {
       fetchUseOtherDevice1({
         ref: login_ref,
         action: "SUBMIT_CODE",
@@ -162,40 +162,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): Rea
     }
 
     return undefined;
-  }
-
-  interface ResponseCodeButtonsProps {
-    formProps?: FormRenderProps<ResponseCodeValues>;
-  }
-
-  function ResponseCodeButtons(props: ResponseCodeButtonsProps) {
-    if (!props.formProps) {
-      return null;
-    }
-
-    return (
-      <div className={`buttons device1`}>
-        <EduIDButton
-          type="submit"
-          buttonstyle="secondary"
-          onClick={handleAbortButtonOnClick}
-          id="response-code-abort-button"
-          disabled={props.formProps.submitting}
-        >
-          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-        </EduIDButton>
-
-        <EduIDButton
-          type="submit"
-          onClick={props.formProps.handleSubmit}
-          id="response-code-submit-button"
-          buttonstyle="primary"
-          disabled={props.formProps.submitting || props.formProps.invalid || props.formProps.pristine}
-        >
-          <FormattedMessage defaultMessage="Continue" description="Short code form" />
-        </EduIDButton>
-      </div>
-    );
   }
 
   const expiredMessage = (
@@ -254,7 +220,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): Rea
                     inputsDisabled={false}
                     handleSubmitCode={handleSubmitCode}
                   >
-                    <ResponseCodeButtons />
+                    <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
                   </ResponseCodeForm>
 
                   <TimeRemainingWrapper

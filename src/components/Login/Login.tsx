@@ -29,9 +29,9 @@ function Login(): React.JSX.Element {
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const fetching_next = useAppSelector((state) => state.login.fetching_next);
-  let this_device = useAppSelector((state) => state.login.this_device);
-  let remember_me = useAppSelector((state) => state.login.remember_me);
-  let ref = useAppSelector((state) => state.login.ref);
+  const this_device = useAppSelector((state) => state.login.this_device);
+  const remember_me = useAppSelector((state) => state.login.remember_me);
+  const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
   const [fetchNext] = loginApi.useLazyFetchNextQuery();
@@ -41,22 +41,24 @@ function Login(): React.JSX.Element {
       id: "document title Log in",
       defaultMessage: "Log in | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     // if this_device and remember_me haven't been set in redux state yet, initialise them from local storage
-    ({ this_device, remember_me } = initKnownDevice(this_device, remember_me, dispatch));
+    const { init_this_device, init_remember_me } = initKnownDevice(this_device, remember_me, dispatch);
 
+    let init_ref = ref;
     if (ref === undefined && params.ref !== undefined) {
-      ref = params.ref; // need ref below too
-      dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
+      const url_ref = params.ref;
+      init_ref = url_ref;
+      dispatch(loginSlice.actions.addLoginRef({ ref: url_ref, start_url: window.location.href }));
     }
 
     // Ask the backend what to do
-    if (base_url && !next_page && ref && !fetching_next && remember_me !== undefined && !error_state) {
-      fetchNext({ ref, this_device, remember_me });
+    if (base_url && !next_page && init_ref && !fetching_next && init_remember_me !== undefined && !error_state) {
+      fetchNext({ ref: init_ref, this_device: init_this_device, remember_me: init_remember_me });
     }
-  }, [base_url, ref, this_device, remember_me, next_page, params]);
+  }, [base_url, ref, this_device, remember_me, next_page, params, dispatch, fetching_next, error_state, fetchNext]);
 
   useEffect(() => {
     if (ref !== undefined) {
@@ -71,7 +73,7 @@ function Login(): React.JSX.Element {
         navigate(`/login/${ref}`);
       }
     }
-  }, [next_page, ref]);
+  }, [navigate, next_page, ref]);
 
   return (
     <React.Fragment>
@@ -121,7 +123,7 @@ function UserTerminated(): React.JSX.Element {
       // clear localStorage so that the same user is not used again
       window.localStorage.clear();
     }
-  }, [error_state]);
+  }, [error_state, fetchLogout]);
 
   function reset_password() {
     dispatch(clearNotifications());

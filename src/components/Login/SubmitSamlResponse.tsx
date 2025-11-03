@@ -21,13 +21,13 @@ function SubmitSamlResponse() {
           // submit isn't available in the tests jsdom environment
           document.forms[0].submit();
         } catch (_error) {
-          setError(true);
+          queueMicrotask(() => setError(true));
         }
       }
     } else {
-      setError(true);
+      queueMicrotask(() => setError(true));
     }
-  }, []);
+  }, [SAMLParameters, backDetected]);
 
   useEffect(() => {
     /* Listen for a window onPageShow event, indicating the user has pressed the 'back' button.

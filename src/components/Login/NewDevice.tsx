@@ -2,7 +2,7 @@ import { loginApi } from "apis/eduidLogin";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
@@ -34,7 +34,7 @@ export function NewDevice(): React.JSX.Element | null {
     }
 
     getKnownDevice();
-  }, []);
+  }, [dispatch, fetchNewDevice, ref]);
 
   /* For now, we don't render anything here but just prime local storage with a known_device.
    * In a later version, we will likely ask for a username here, and solve a captcha...
@@ -49,14 +49,11 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const previous_this_device = useAppSelector((state) => state.login.previous_this_device);
   const next_page = useAppSelector((state) => state.login.next_page);
-  const [switchChecked, setSwitchChecked] = useState(remember_me);
   const dispatch = useAppDispatch();
-  const infoRememberME = !switchChecked;
   const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
 
   function handleSwitchChange(): void {
-    const newValue = !switchChecked;
-    setSwitchChecked(newValue);
+    const newValue = !remember_me;
     if (window.localStorage) {
       window.localStorage.setItem(REMEMBER_ME_KEY, JSON.stringify(newValue));
     }
@@ -72,13 +69,6 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
     // re-fetch '/next' now that the conditions for logging in has changed
     dispatch(loginSlice.actions.callLoginNext());
   }
-
-  // Update the switch to reflect changes in remember_me
-  useEffect(() => {
-    if (remember_me !== undefined) {
-      setSwitchChecked(remember_me);
-    }
-  }, [remember_me]);
 
   if (!window.localStorage || remember_me === undefined) {
     // Might as well not even show the 'remember me' checkbox if there is no local storage.
@@ -103,7 +93,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
         <label className="toggle" htmlFor="remember-me">
           <legend>
             <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-            {!infoRememberME && (
+            {remember_me && (
               <p className="help-text">
                 <FormattedMessage
                   defaultMessage="Turning this off will enable login with username and password instead."
@@ -111,7 +101,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
                 />
               </p>
             )}
-            {infoRememberME && (
+            {!remember_me && (
               <p className="help-text">
                 <FormattedMessage
                   defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure."
@@ -124,7 +114,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
             onChange={handleSwitchChange}
             className="toggle-checkbox"
             type="checkbox"
-            checked={switchChecked}
+            checked={remember_me}
             id="remember-me"
           />
 
@@ -136,8 +126,8 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
 }
 
 interface KnownDeviceParams {
-  this_device?: string;
-  remember_me: boolean;
+  init_this_device?: string;
+  init_remember_me: boolean;
 }
 
 /**
@@ -151,7 +141,7 @@ export function initKnownDevice(
   if (!window.localStorage) {
     // Can't remember devices if there is no local storage
     dispatch(loginSlice.actions.setRememberMe(false));
-    return { this_device: undefined, remember_me: false };
+    return { init_this_device: undefined, init_remember_me: false };
   }
 
   if (!this_device) {
@@ -169,7 +159,7 @@ export function initKnownDevice(
     dispatch(loginSlice.actions.setRememberMe(remember_me));
   }
 
-  return { this_device, remember_me };
+  return { init_this_device: this_device, init_remember_me: remember_me };
 }
 
 /**

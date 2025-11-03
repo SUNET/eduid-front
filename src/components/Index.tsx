@@ -3,7 +3,7 @@ import { faIdCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import securityApi from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { appLoadingSlice } from "slices/AppLoading";
@@ -20,25 +20,25 @@ export function Index() {
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery();
 
-  async function redirectToLogin() {
+  const redirectToLogin = useCallback(async () => {
     dispatch(appLoadingSlice.actions.appLoaded());
     if (dashboard_link) {
       document.location.href = dashboard_link;
     }
-  }
+  }, [dispatch, dashboard_link]);
 
-  async function deleteAccount() {
+  const deleteAccount = useCallback(async () => {
     const response = await postDeleteAcccount();
     if (response.isSuccess) {
       window.location.assign(response.data.payload.location);
     }
-  }
+  }, [postDeleteAcccount]);
 
   useEffect(() => {
     if (frontend_action === "terminateAccountAuthn") {
       deleteAccount();
     }
-  }, [frontend_action]);
+  }, [deleteAccount, frontend_action]);
 
   return (
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>

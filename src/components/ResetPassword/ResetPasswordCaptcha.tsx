@@ -2,7 +2,7 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -18,7 +18,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
     if (captcha?.internal_response || captcha_completed) {
       dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
-  }, [captcha_completed]);
+  }, [captcha?.internal_response, captcha_completed, dispatch]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -79,7 +79,7 @@ export function ProcessCaptcha(): null {
   const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
   const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
 
-  async function sendEmailLink() {
+  const sendEmailLink = useCallback(async () => {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
@@ -88,29 +88,32 @@ export function ProcessCaptcha(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }
+  }, [dispatch, email, requestEmailLink]);
 
-  async function sendCaptcha(captcha: CaptchaRequest) {
-    const response = await sendCaptchaResponse(captcha);
-    if (response.isSuccess) {
-      dispatch(clearNotifications());
-      sendEmailLink();
-    } else {
-      dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
-    }
-  }
+  const sendCaptcha = useCallback(
+    async (captcha: CaptchaRequest) => {
+      const response = await sendCaptchaResponse(captcha);
+      if (response.isSuccess) {
+        dispatch(clearNotifications());
+        sendEmailLink();
+      } else {
+        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
+      }
+    },
+    [sendCaptchaResponse, dispatch, sendEmailLink]
+  );
 
   useEffect(() => {
     if (captcha_completed) {
       sendEmailLink();
     }
-  }, [captcha_completed]);
+  }, [captcha_completed, sendEmailLink]);
 
   useEffect(() => {
     if (captcha && !captcha_completed) {
       sendCaptcha(captcha);
     }
-  }, [captcha, captcha_completed]);
+  }, [captcha, captcha_completed, sendCaptcha]);
 
   // Show a blank screen while we wait for a captcha response from the backend
   return null;

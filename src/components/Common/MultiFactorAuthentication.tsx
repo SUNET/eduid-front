@@ -1,14 +1,15 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
+import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
+import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -31,14 +32,14 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
 );
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
-  let return_handled = false;
+  const return_handled = useRef(false);
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
-  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
+  // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
+  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !window.PublicKeyCredential);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
-  const [tokenKey, setTokenKey] = useState<string>();
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
@@ -54,22 +55,152 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     return filterTokensFromCredentials(state);
   });
 
+  // Derive tokenKey from the last token in the array
+  const tokenKey = tokens.length > 0 ? tokens[tokens.length - 1].key : "";
+
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
-  useEffect(() => {
-    if (tokens.length > 0 && tokenKey !== tokens[tokens.length - 1].key) {
-      setTokenKey(tokens[tokens.length - 1].key);
-    }
-  }, [tokens]);
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "security.placeholder",
+    defaultMessage: "describe your security key",
+    description: "placeholder text for security key description input",
+  });
+
+  const tokenTypeMap = useMemo(
+    () => ({
+      freja: eidasVerifyCredential,
+      bankid: bankIDVerifyCredential,
+      eidas: eidasVerifyCredential,
+    }),
+    [eidasVerifyCredential, bankIDVerifyCredential]
+  );
+
+  const handleVerificationWebauthnToken = useCallback(
+    async (token: string | undefined, method: WebauthnMethods) => {
+      const verifyAction = tokenTypeMap[method];
+      if (!token) {
+        console.error("No token provided");
+        return;
+      }
+      const response = await verifyAction({
+        credential_id: token,
+        method,
+      });
+      if (response.isSuccess) {
+        if (response.data.payload.location) {
+          window.location.assign(response.data.payload.location);
+        }
+      } else if (response.isError) {
+        setShowVerifyWebauthnModal(false);
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "verifyCredential",
+            frontend_state: JSON.stringify({
+              method,
+              credential: token,
+              description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
+            }),
+          })
+        );
+      }
+    },
+    [tokenTypeMap, dispatch]
+  );
+
+  const handleRemoveWebauthnToken = useCallback(
+    async (credential_string?: string) => {
+      const credential_key = credential_string && JSON.parse(credential_string).credential;
+      const response = await removeWebauthnToken({ credential_key: credential_key });
+      if (response.isError) {
+        // prepare authenticate() and AuthenticateModal
+        dispatch(
+          authnSlice.actions.setFrontendActionAndState({
+            frontend_action: "removeSecurityKeyAuthn",
+            frontend_state: credential_key,
+          })
+        );
+      } else {
+        wrapperRef?.current?.focus();
+      }
+    },
+    [removeWebauthnToken, dispatch, wrapperRef]
+  );
+
+  const handleStopAskingWebauthnDescription = useCallback(() => {
+    setIsRegisteringAuthenticator(false);
+    setShowSecurityKeyNameModal(false);
+  }, []);
+
+  // buttons "My Device" or "My security key"
+  const handleRegisterWebauthn = useCallback(
+    async (authType: string) => {
+      setIsRegisteringAuthenticator(true);
+
+      // prepare for authenticate() / AuthenticateModal
+      dispatch(
+        authnSlice.actions.setFrontendActionAndState({
+          frontend_action: "addSecurityKeyAuthn",
+          frontend_state: authType,
+        })
+      );
+
+      const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
+      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+        setIsRegisteringAuthenticator(true);
+        setShowSecurityKeyNameModal(true);
+      } else {
+        setIsRegisteringAuthenticator(false);
+        dispatch(authnSlice.actions.setReAuthenticate(true));
+      }
+    },
+    [dispatch, getAuthnStatus]
+  );
+
+  // function that is called when the user clicks OK in the "security key name" modal
+  const handleStartWebauthnRegistration = useCallback(
+    (values: { [key: string]: string }) => {
+      const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
+      (async () => {
+        try {
+          if (frontend_state) {
+            const description_value = values["describe-webauthn-token-modal"];
+            const description = description_value?.trim();
+            setShowSecurityKeyNameModal(false);
+            const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
+            if (registration.isSuccess) {
+              const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+              if (createResponse.isSuccess) {
+                const registerResponse = await registerWebauthn({
+                  webauthn_attestation: createResponse.data,
+                  description,
+                });
+                wrapperRef?.current?.focus();
+                if (registerResponse.isSuccess) {
+                  setShowVerifyWebauthnModal(true);
+                }
+              }
+            }
+            dispatch(authnSlice.actions.setAuthnFrontendReset());
+            setIsRegisteringAuthenticator(false);
+          }
+        } catch (error) {
+          console.error("Error creating credentials:", error);
+        }
+      })();
+    },
+    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch]
+  );
 
   // Runs after re-auth security zone
   useEffect(() => {
-    if (return_handled) {
+    if (return_handled.current) {
       return;
     }
 
-    return_handled = true;
+    return_handled.current = true;
 
     (async () => {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
@@ -85,7 +216,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         );
       }
     })();
-  }, [authn?.response?.frontend_action, authn?.response?.frontend_state]);
+  }, [
+    authn.response?.frontend_action,
+    authn.response?.frontend_state,
+    dispatch,
+    handleRemoveWebauthnToken,
+    handleVerificationWebauthnToken,
+  ]);
 
   useEffect(() => {
     (async () => {
@@ -97,36 +234,34 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       }
     })();
-  }, [isLoaded]);
+  }, [credentials.length, isLoaded, requestCredentials]);
 
   useEffect(
     () => {
       // Check if platform authentication is available through the navigator.credentials API.
-      // Disable the spinner when we know the answer.
+      // Only runs if the API exists (otherwise isPlatformAuthLoaded starts as true)
+
+      if (!window.PublicKeyCredential) {
+        return; // Nothing to do, already initialized as loaded
+      }
 
       let aborted = false; // flag to avoid updating unmounted components after this promise resolves
-
       let platform = false;
-      if (window.PublicKeyCredential) {
-        window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-          .then((available) => {
-            platform = available;
-          })
-          .catch((err) => {
-            console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
-          })
-          .finally(() => {
-            if (!aborted) {
-              setIsPlatformAuthenticatorAvailable(platform);
-              // don´t show content until isPlatformAuthLoaded updates to true
-              setIsPlatformAuthLoaded(true);
-            }
-          });
-      } else {
-        if (!aborted) {
-          setIsPlatformAuthLoaded(true);
-        }
-      }
+
+      window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then((available) => {
+          platform = available;
+        })
+        .catch((err) => {
+          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
+        })
+        .finally(() => {
+          if (!aborted) {
+            setIsPlatformAuthenticatorAvailable(platform);
+            // don´t show content until isPlatformAuthLoaded updates to true
+            setIsPlatformAuthLoaded(true);
+          }
+        });
 
       // create a cleanup function that will allow the async code above to realise it shouldn't
       // try to update state on an unmounted react component
@@ -136,124 +271,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     },
     [] // run this only once
   );
-
-  const intl = useIntl();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "security.placeholder",
-    defaultMessage: "describe your security key",
-    description: "placeholder text for security key description input",
-  });
-
-  const tokenTypeMap = {
-    freja: eidasVerifyCredential,
-    bankid: bankIDVerifyCredential,
-    eidas: eidasVerifyCredential,
-  };
-
-  async function handleVerificationWebauthnToken(token: string | undefined, method: WebauthnMethods) {
-    const verifyAction = tokenTypeMap[method];
-    if (!token) {
-      console.error("No token provided");
-      return;
-    }
-    const response = await verifyAction({
-      credential_id: token,
-      method,
-    });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
-      }
-    } else if (response.isError) {
-      setShowVerifyWebauthnModal(false);
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "verifyCredential",
-          frontend_state: JSON.stringify({
-            method,
-            credential: token,
-            description: response.data?.payload.credential_description,
-          }),
-        })
-      );
-    }
-  }
-
-  async function handleRemoveWebauthnToken(credential_string?: string) {
-    const credential_key = credential_string && JSON.parse(credential_string).credential;
-    const response = await removeWebauthnToken({ credential_key: credential_key });
-    if (response.isError) {
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: credential_key,
-        })
-      );
-    } else {
-      wrapperRef?.current?.focus();
-    }
-  }
-
-  function handleStopAskingWebauthnDescription() {
-    setIsRegisteringAuthenticator(false);
-    setShowSecurityKeyNameModal(false);
-  }
-
-  // buttons "My Device" or "My security key"
-  async function handleRegisterWebauthn(authType: string) {
-    setIsRegisteringAuthenticator(true);
-
-    // prepare for authenticate() / AuthenticateModal
-    dispatch(
-      authnSlice.actions.setFrontendActionAndState({
-        frontend_action: "addSecurityKeyAuthn",
-        frontend_state: authType,
-      })
-    );
-
-    const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
-    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
-      setIsRegisteringAuthenticator(true);
-      setShowSecurityKeyNameModal(true);
-    } else {
-      setIsRegisteringAuthenticator(false);
-      dispatch(authnSlice.actions.setReAuthenticate(true));
-    }
-  }
-
-  // function that is called when the user clicks OK in the "security key name" modal
-  function handleStartWebauthnRegistration(values: { [key: string]: string }) {
-    const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
-    (async () => {
-      try {
-        if (frontend_state) {
-          const description_value = values["describe-webauthn-token-modal"];
-          const description = description_value?.trim();
-          setShowSecurityKeyNameModal(false);
-          const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-          if (registration.isSuccess) {
-            const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
-            if (createResponse.isSuccess) {
-              const registerResponse = await registerWebauthn({
-                webauthn_attestation: createResponse.data,
-                description,
-              });
-              wrapperRef?.current?.focus();
-              if (registerResponse.isSuccess) {
-                setShowVerifyWebauthnModal(true);
-              }
-            }
-          }
-          dispatch(authnSlice.actions.setAuthnFrontendReset());
-          setIsRegisteringAuthenticator(false);
-        }
-      } catch (error) {
-        console.error("Error creating credentials:", error);
-      }
-    })();
-  }
 
   if (!isPlatformAuthLoaded) return null;
   return (

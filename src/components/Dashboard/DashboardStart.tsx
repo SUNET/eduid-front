@@ -32,13 +32,13 @@ export default function Start(): React.JSX.Element {
       id: "document title Start",
       defaultMessage: "Start | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     if (isLoaded) {
       letterProofingState();
     }
-  }, [isLoaded]);
+  }, [isLoaded, letterProofingState]);
 
   return (
     <Splash showChildren={isLoaded}>

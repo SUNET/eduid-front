@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Spinner } from "spin.js";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
@@ -20,23 +20,23 @@ interface SplashProps {
 export default function Splash(props: SplashProps): React.JSX.Element {
   const { showChildren, children } = props;
   const eduidSplash = useRef<HTMLDivElement>(null);
-  const [spinner, setSpinner] = useState<Spinner | undefined>(undefined);
+  const spinnerRef = useRef<Spinner | null>(null);
 
   useEffect(() => {
-    if (!spinner) {
-      setSpinner(new Spinner(spinnerOpts));
+    // Initialize spinner once
+    if (!spinnerRef.current) {
+      spinnerRef.current = new Spinner(spinnerOpts);
     }
-    if (spinner) {
-      // assure typescript that spinner was initialised above
-      if (!showChildren && eduidSplash.current !== null) {
-        // TODO: wait for 200ms before starting the spinner, rather than having it flash by super-quick?
-        spinner.spin(eduidSplash.current);
-      }
-      if (showChildren && spinner) {
-        spinner.stop();
-      }
+
+    const spinner = spinnerRef.current;
+
+    if (!showChildren && eduidSplash.current !== null) {
+      // TODO: wait for 200ms before starting the spinner, rather than having it flash by super-quick?
+      spinner.spin(eduidSplash.current);
+    } else {
+      spinner.stop();
     }
-  }, [showChildren, eduidSplash, spinner]);
+  }, [showChildren]);
 
   /* The "eduid-splash-and-children" div has position: relative, which the surrounding element must have
    * in order for the spin.js spinner to be positioned properly.

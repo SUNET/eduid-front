@@ -19,7 +19,7 @@ export function Account(): React.JSX.Element {
       id: "document title Account",
       defaultMessage: "Account | eduID",
     });
-  }, []);
+  }, [intl]);
 
   return (
     <React.Fragment>

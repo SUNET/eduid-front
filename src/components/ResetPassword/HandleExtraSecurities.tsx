@@ -20,7 +20,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
       dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
-  }, [swedishEID_status]);
+  }, [dispatch, swedishEID_status]);
 
   useEffect(() => {
     if (
@@ -29,7 +29,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
     ) {
       dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
-  }, [extra_security]);
+  }, [dispatch, extra_security]);
 
   function continueSetPassword() {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));

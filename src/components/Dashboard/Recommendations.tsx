@@ -203,7 +203,7 @@ export function Recommendations(): React.JSX.Element | null {
       // call requestCredentials once app is loaded
       requestCredentials();
     }
-  }, [isLoaded]);
+  }, [isLoaded, requestCredentials]);
 
   if (!emails.length) {
     return null;

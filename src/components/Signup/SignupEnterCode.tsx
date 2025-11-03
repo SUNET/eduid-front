@@ -18,36 +18,35 @@ export function SignupEnterCode(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
   const state = useAppSelector((state) => state.signup.state);
-  const [resendCode, { isSuccess }] = signupApi.useLazyRegisterEmailRequestQuery();
+  const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
 
   useEffect(() => {
     if (state?.credentials.completed) {
       signupContext.signupService.send({ type: "CREDENTIALS_DONE" });
     }
-  }, [state]);
+  }, [signupContext.signupService, state]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
       signupContext.signupService.send({ type: "ABORT" });
     }
-  }, [signupState]);
+  }, [signupContext.signupService, signupState]);
 
   function handleTimerReachZero() {
     setIsExpired(true);
   }
 
-  useEffect(() => {
-    setIsExpired(false);
-  }, [isSuccess]);
-
   async function registerEmail() {
     if (signupState?.email.address && signupState?.name?.given_name && signupState?.name?.surname) {
-      resendCode({
+      const result = await resendCode({
         email: signupState?.email.address,
         given_name: signupState?.name?.given_name,
         surname: signupState?.name?.surname,
       });
+      if (result.isSuccess) {
+        setIsExpired(false);
+      }
     }
   }
 
@@ -172,7 +171,7 @@ export function ProcessEmailCode() {
     } else if (isError) {
       signupContext.signupService.send({ type: "API_FAIL" });
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, dispatch, signupContext.signupService]);
 
   return null;
 }

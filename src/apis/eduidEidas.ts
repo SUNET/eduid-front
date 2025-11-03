@@ -9,7 +9,7 @@ interface EidasCommonRequest {
   method: WebauthnMethods;
 }
 
-interface EidasCommonResponse {
+export interface EidasCommonResponse {
   location: string; // where to redirect the user for the authn flow
   credential_description: string;
 }

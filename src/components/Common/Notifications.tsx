@@ -17,7 +17,7 @@ export function Notifications(): React.JSX.Element | null {
     if (info && info?.message.endsWith("_success")) {
       dispatch(clearNotifications());
     }
-  }, [info]);
+  }, [dispatch, info]);
 
   function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();

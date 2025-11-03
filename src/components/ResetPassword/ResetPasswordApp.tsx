@@ -32,14 +32,14 @@ export function ResetPasswordApp(): React.JSX.Element {
       id: "document title Reset Password",
       defaultMessage: "Reset password | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
       dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
     }
-  }, [swedishEID_status]);
+  }, [dispatch, swedishEID_status]);
 
   useEffect(() => {
     if (loginRef === undefined && params.ref !== undefined) {
@@ -47,7 +47,7 @@ export function ResetPasswordApp(): React.JSX.Element {
       dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
     }
     dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
-  }, [loginRef, params]);
+  }, [dispatch, loginRef, params]);
 
   return (
     <React.Fragment>
@@ -77,7 +77,7 @@ function AskForEmailOrConfirmEmail(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [email_status, email_address]);
+  }, [email_status, email_address, dispatch]);
 
   return null;
 }
@@ -97,7 +97,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
     if (captcha_completed) {
       dispatch(clearNotifications());
     }
-  }, [captcha_completed]);
+  }, [captcha_completed, dispatch]);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());

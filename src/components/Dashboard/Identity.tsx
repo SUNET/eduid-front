@@ -14,7 +14,7 @@ import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
@@ -38,7 +38,7 @@ function Identity(): React.JSX.Element | null {
       id: "document title Identity",
       defaultMessage: "Identity | eduID",
     });
-  }, []);
+  }, [intl]);
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
@@ -157,19 +157,35 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [removeIdentity] = securityApi.useLazyRemoveIdentityQuery();
 
-  useEffect(() => {
-    if (frontend_action === "removeIdentity" && frontend_state) {
-      handleRemoveIdentity(frontend_state);
-      dispatch(authnSlice.actions.setAuthnFrontendReset());
-    }
-  }, [frontend_action, frontend_state]);
+  const handleRemoveIdentity = useCallback(
+    async (identityType: string) => {
+      setShowConfirmRemoveIdentityVerificationModal(false);
+      if (identityType) {
+        const response = await removeIdentity({ identity_type: identityType });
+        if (response.isSuccess) {
+          requestAllPersonalData();
+        } else {
+          dispatch(
+            authnSlice.actions.setFrontendActionAndState({
+              frontend_action: "removeIdentity",
+              frontend_state: identityType,
+            })
+          );
+        }
+      }
+    },
+    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal]
+  );
 
-  async function handleRemoveIdentity(identityType: string) {
-    setShowConfirmRemoveIdentityVerificationModal(false);
-    if (identityType) {
-      const response = await removeIdentity({ identity_type: identityType });
-      if (response.isSuccess) {
-        requestAllPersonalData();
+  const handleConfirmDeleteModal = useCallback(
+    async (identityType: string) => {
+      setIdentityType(identityType);
+      // Test if the user can directly execute the action or a re-auth security zone will be required
+      // If no re-auth is required, then show the modal to confirm the removal
+      // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
+      const response = await getAuthnStatus({ frontend_action: "removeIdentity" });
+      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+        setShowConfirmRemoveIdentityVerificationModal(true);
       } else {
         dispatch(
           authnSlice.actions.setFrontendActionAndState({
@@ -177,28 +193,20 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
             frontend_state: identityType,
           })
         );
+        dispatch(authnSlice.actions.setReAuthenticate(true));
       }
-    }
-  }
+    },
+    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal]
+  );
 
-  async function handleConfirmDeleteModal(identityType: string) {
-    setIdentityType(identityType);
-    // Test if the user can directly execute the action or a re-auth security zone will be required
-    // If no re-auth is required, then show the modal to confirm the removal
-    // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
-    const response = await getAuthnStatus({ frontend_action: "removeIdentity" });
-    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
-      setShowConfirmRemoveIdentityVerificationModal(true);
-    } else {
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "removeIdentity",
-          frontend_state: identityType,
-        })
-      );
-      dispatch(authnSlice.actions.setReAuthenticate(true));
+  useEffect(() => {
+    if (frontend_action === "removeIdentity" && frontend_state) {
+      queueMicrotask(() => {
+        handleRemoveIdentity(frontend_state);
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
+      });
     }
-  }
+  }, [dispatch, frontend_action, frontend_state, handleRemoveIdentity]);
 
   return (
     <React.Fragment>
@@ -400,14 +408,14 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
 function AccordionItemEu(): React.JSX.Element | null {
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
-  async function handleOnClick() {
+  const handleOnClick = useCallback(async () => {
     const response = await eidasVerifyIdentity({ method: "eidas" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
       }
     }
-  }
+  }, [eidasVerifyIdentity]);
 
   return (
     <AccordionItemTemplate
@@ -446,14 +454,14 @@ function AccordionItemWorld(): React.JSX.Element | null {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 
-  async function handleOnClick() {
+  const handleOnClick = useCallback(async () => {
     const response = await frejaeIDVerifyIdentity({ method: "freja_eid" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
       }
     }
-  }
+  }, [frejaeIDVerifyIdentity]);
 
   if (!freja_eid_service_url) {
     return null;

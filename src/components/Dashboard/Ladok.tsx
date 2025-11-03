@@ -26,8 +26,12 @@ const LadokContainer = (): React.JSX.Element => {
   };
 
   // Update the switch to reflect changes in isLinked
-  useEffect(() => setSwitchChecked(isLinked), [isLinked]);
-
+  // Using queueMicrotask to defer the setState call and avoid cascading render warning
+  useEffect(() => {
+    if (isLinked !== switchChecked) {
+      queueMicrotask(() => setSwitchChecked(isLinked));
+    }
+  }, [isLinked, switchChecked]);
   return (
     <article className="ladok" id="ladok">
       <h2>
@@ -95,7 +99,7 @@ const LadokUniversitiesDropdown = (): React.JSX.Element => {
       // are interested in linking their account
       fetchLadokUniversities();
     }
-  }, [ladokUnis]);
+  }, [fetchLadokUniversities, ladokUnis]);
 
   function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
     if (newValue?.value) {
@@ -126,7 +130,7 @@ const LadokUniversitiesDropdown = (): React.JSX.Element => {
     });
 
     return res;
-  }, [ladokUnis]);
+  }, [ladokUnis, ladokName, locale]);
 
   return (
     <React.Fragment>

@@ -17,7 +17,7 @@ export default function ShowAfterDelay(props: ShowAfterDelayProps): React.JSX.El
       setShowChildren(true);
     }, props.delay);
     return () => clearTimeout(timer);
-  }, []);
+  }, [props.delay]);
 
   if (!showChildren) {
     return null;

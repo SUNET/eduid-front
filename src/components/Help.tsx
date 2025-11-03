@@ -37,20 +37,18 @@ export function Help(): React.JSX.Element {
       id: "document title Help",
       defaultMessage: "Help | eduID",
     });
-  }, []);
+  }, [intl]);
 
   useEffect(() => {
     if (is_configured) {
-      handleApprovedSecurityKeys();
+      (async () => {
+        const response = await fetchApprovedSecurityKeys();
+        if (response.isSuccess) {
+          setApprovedSecurityKeys(response.data.payload);
+        }
+      })();
     }
-  }, [is_configured]);
-
-  async function handleApprovedSecurityKeys() {
-    const response = await fetchApprovedSecurityKeys();
-    if (response.isSuccess) {
-      setApprovedSecurityKeys(response.data.payload);
-    }
-  }
+  }, [fetchApprovedSecurityKeys, is_configured]);
 
   return (
     <React.Fragment>

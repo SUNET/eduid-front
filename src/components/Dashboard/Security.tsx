@@ -13,7 +13,7 @@ export function Security(): React.JSX.Element {
       id: "document title Security",
       defaultMessage: "Security | eduID",
     });
-  }, []);
+  }, [intl]);
 
   return (
     <React.Fragment>
