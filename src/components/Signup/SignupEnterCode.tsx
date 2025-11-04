@@ -20,8 +20,9 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
+      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
     }
-  }, [state]);
+  }, [state, dispatch]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
