@@ -31,3 +31,5 @@ export const CopyToClipboardButton = forwardRef<HTMLInputElement>((_props, ref: 
     </EduIDButton>
   );
 });
+
+CopyToClipboardButton.displayName = "CopyToClipboardButton";
