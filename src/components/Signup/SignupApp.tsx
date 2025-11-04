@@ -26,7 +26,7 @@ export function SignupApp(): React.JSX.Element {
 
   useEffect(() => {
     dispatch(signupSlice.actions.setNextPage("SignupStart"));
-  }, []);
+  }, [dispatch]);
 
   return (
     <React.Fragment>

@@ -17,7 +17,7 @@ export function SignupToU(): React.JSX.Element {
     if (state?.tou.completed) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
     }
-  }, [state]);
+  }, [state, dispatch]);
 
   function handleAccept() {
     dispatch(signupSlice.actions.setNextPage("ProcessToU"));

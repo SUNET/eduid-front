@@ -15,7 +15,7 @@ export function SignupCredentials(): React.JSX.Element {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
       dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
     }
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   if (error) {
     return (

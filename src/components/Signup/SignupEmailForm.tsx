@@ -144,11 +144,6 @@ export function RegisterEmail() {
   const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
   const dispatch = useAppDispatch();
 
-  if (!signupUser) {
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-    return null;
-  }
-
   useEffect(() => {
     if (isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
@@ -156,6 +151,11 @@ export function RegisterEmail() {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
   }, [isSuccess, isError, dispatch]);
+
+  if (!signupUser) {
+    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    return null;
+  }
 
   // Show a blank screen while we wait for the response from the backend
   return null;
