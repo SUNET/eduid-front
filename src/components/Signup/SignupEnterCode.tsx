@@ -20,7 +20,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      // signupContext.signupService.send({ type: "CREDENTIALS_DONE" });
+      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
     }
   }, [signupContext.signupService, state]);
 
@@ -28,9 +28,14 @@ export function SignupEnterCode(): React.JSX.Element {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-      // signupContext.signupService.send({ type: "ABORT" });
     }
   }, [signupContext.signupService, signupState]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
+    }
+  }, [isSuccess, dispatch]);
 
   function handleTimerReachZero() {
     setIsExpired(true);
@@ -52,7 +57,6 @@ export function SignupEnterCode(): React.JSX.Element {
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
     dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-    // signupContext.signupService.send({ type: "ABORT" });
   }
 
   function handleSubmitCode(values: ResponseCodeValues) {
@@ -67,7 +71,6 @@ export function SignupEnterCode(): React.JSX.Element {
         // remember the code in redux store between states
         dispatch(signupSlice.actions.setEmailCode(digits));
         dispatch(signupSlice.actions.setNextPage("ProcessEmailCode"));
-        // signupContext.signupService.send({ type: "COMPLETE" });
       }
     }
   }
@@ -167,10 +170,8 @@ export function ProcessEmailCode() {
     if (isSuccess) {
       dispatch(clearNotifications());
       dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
-      // signupContext.signupService.send({ type: "API_SUCCESS" });
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
-      // signupContext.signupService.send({ type: "API_FAIL" });
     }
   }, [isSuccess, isError, dispatch, signupContext.signupService]);
 

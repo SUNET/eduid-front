@@ -14,7 +14,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
   useEffect(() => {
     if (state?.captcha.completed) {
-      dispatch(signupSlice.actions.setNextPage("ProcessToU"));
+      dispatch(signupSlice.actions.setNextPage("SignupToU"));
       // signupContext.signupService.send({ type: "CAPTCHA_DONE" });
     }
   }, [signupContext.signupService, state]);
