@@ -1,12 +1,12 @@
 import { loginApi } from "apis/eduidLogin";
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordInput from "components/Common/PasswordInput";
+import { SecurityKey } from "components/Common/SecurityKey";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect } from "react";
+import React, { Fragment } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -31,35 +31,6 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
-  const [abortPasskeyAuthentication] = navigatorCredentialsApi.useLazyAbortQuery();
-
-  useEffect(() => {
-    if (webauthn) {
-      // start a conditional authentication for autofill passkey login
-      const authenticate = async () => {
-        if (ref) {
-          const result = await fetchMfaAuth({ ref });
-          if (result.isSuccess) {
-            const webauth_options = result.data.payload.webauthn_options;
-            if (webauth_options) {
-              const auth_result = await performAuthentication({
-                webauth_options: webauth_options,
-                mediation: "conditional",
-              });
-              if (auth_result.isSuccess) {
-                fetchMfaAuth({ ref, webauthn_response: auth_result.data });
-              }
-            }
-          }
-        }
-      };
-      authenticate();
-      return () => {
-        abortPasskeyAuthentication();
-      };
-    }
-  }, [webauthn, ref, fetchMfaAuth, performAuthentication, abortPasskeyAuthentication]);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -91,6 +62,20 @@ export default function UsernamePw() {
     return errors;
   }
 
+  async function getChallenge() {
+    if (ref) {
+      const response = await fetchMfaAuth({ ref: ref });
+      if (response.isSuccess) {
+        return response.data.payload.webauthn_options;
+      }
+    }
+  }
+
+  function useCredential(credential: PublicKeyCredentialJSON) {
+    if (ref) {
+      fetchMfaAuth({ ref: ref, webauthn_response: credential });
+    }
+  }
   return (
     <React.Fragment>
       <section className="intro">
@@ -99,6 +84,11 @@ export default function UsernamePw() {
             <FormattedMessage
               defaultMessage="Re-authentication: with Password"
               description="Security zone username and Password heading"
+            />
+          ) : webauthn ? (
+            <FormattedMessage
+              defaultMessage="Log in: with Passkey or Password"
+              description="Login front page with passkey"
             />
           ) : (
             <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />
@@ -110,6 +100,20 @@ export default function UsernamePw() {
         </div>
         <SecurityZoneInfo />
       </section>
+      {webauthn && (
+        <Fragment>
+          <div className="options">
+            <SecurityKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
+          </div>
+          <div className="or-container">
+            <div className="line" />
+            <span>
+              <FormattedMessage defaultMessage="Having issues using a security key?" />
+            </span>
+            <div className="line" />
+          </div>
+        </Fragment>
+      )}
       <section className="username-pw">
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
@@ -143,7 +147,6 @@ export default function UsernamePw() {
 
 function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
-  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
 
   function handleClickWrongPerson() {
@@ -183,14 +186,7 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return (
-    <UserNameInput
-      name="username"
-      autoFocus={true}
-      required={true}
-      autoComplete={webauthn ? "username webauthn" : "username"}
-    />
-  );
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderRegisterLink(): React.JSX.Element {

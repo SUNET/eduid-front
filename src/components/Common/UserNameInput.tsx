@@ -11,7 +11,7 @@ interface UserNameInputProps {
   required: boolean;
   autoFocus: boolean;
   name: string;
-  autoComplete?: "username" | "username webauthn";
+  autoComplete?: "username";
   helpBlock?: React.ReactNode; // help text shown above input
   defaultValue?: string;
 }
