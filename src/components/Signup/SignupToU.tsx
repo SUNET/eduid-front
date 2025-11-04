@@ -16,18 +16,15 @@ export function SignupToU(): React.JSX.Element {
   useEffect(() => {
     if (state?.tou.completed) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
-      // signupContext.signupService.send({ type: "TOU_DONE" });
     }
   }, [signupContext.signupService, state]);
 
   function handleAccept() {
     dispatch(signupSlice.actions.setNextPage("ProcessToU"));
-    // signupContext.signupService.send({ type: "COMPLETE" });
   }
 
   function handleCancel() {
     dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-    // signupContext.signupService.send({ type: "ABORT" });
   }
 
   return (
@@ -59,10 +56,8 @@ export function ProcessToU(): React.JSX.Element {
     if (isSuccess) {
       dispatch(clearNotifications());
       dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
-      // signupContext.signupService.send({ type: "API_SUCCESS" });
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-      // signupContext.signupService.send({ type: "API_FAIL" });
     }
 <<<<<<< HEAD
   }, [isSuccess, isError, dispatch, signupContext.signupService]);

@@ -40,10 +40,8 @@ export function SignupConfirmPassword() {
       if (response.isSuccess) {
         dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SignupUserCreated"));
-        // signupContext.signupService.send({ type: "API_SUCCESS" });
       } else {
         dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
-        // signupContext.signupService.send({ type: "API_FAIL" });
       }
     }
   }
@@ -55,7 +53,6 @@ export function SignupConfirmPassword() {
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
     dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-    // signupContext.signupService.send({ type: "ABORT" });
     navigate("/register");
   }
 

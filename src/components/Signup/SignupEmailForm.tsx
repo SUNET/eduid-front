@@ -71,12 +71,10 @@ function EmailForm() {
       // terms of use, and solved a captcha. So we store it in the redux state here.
       if (state?.captcha.completed && state?.tou.completed) {
         // Go to RegisterEmail
-        // signupContext.signupService.send({ type: "CAPTCHA_AND_TOU_DONE" });
         dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
       } else {
         dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
-        //   signupContext.signupService.send({ type: "COMPLETE" });
       }
     } else {
       errors.email = "required";
