@@ -38,7 +38,6 @@ export default defineConfig([
     },
 
     rules: {
-      "no-useless-escape": "off",
       "react/jsx-key": "off",
       "react/jsx-no-duplicate-props": "off",
       "react/no-deprecated": "off",
