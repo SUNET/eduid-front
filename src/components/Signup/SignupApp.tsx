@@ -15,6 +15,7 @@ import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
   const intl = useIntl();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -22,6 +23,10 @@ export function SignupApp(): React.JSX.Element {
       defaultMessage: "Register | eduID",
     });
   }, [intl]);
+
+  useEffect(() => {
+    dispatch(signupSlice.actions.setNextPage("SignupStart"));
+  }, []);
 
   return (
     <React.Fragment>
