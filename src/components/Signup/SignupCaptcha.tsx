@@ -16,7 +16,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
     if (state?.captcha.completed) {
       dispatch(signupSlice.actions.setNextPage("SignupToU"));
     }
-  }, [signupContext.signupService, state]);
+  }, [state]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -77,7 +77,7 @@ export function ProcessCaptcha(): null {
         dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
       }
     }
-  }, [captcha, isSuccess, isError, dispatch, signupContext.signupService]);
+  }, [captcha, isSuccess, isError, dispatch]);
 
   // Show a blank screen while we wait for a captcha response from the backend
   return null;

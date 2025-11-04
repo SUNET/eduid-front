@@ -17,7 +17,7 @@ export function SignupToU(): React.JSX.Element {
     if (state?.tou.completed) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
     }
-  }, [signupContext.signupService, state]);
+  }, [state]);
 
   function handleAccept() {
     dispatch(signupSlice.actions.setNextPage("ProcessToU"));
@@ -59,11 +59,7 @@ export function ProcessToU(): React.JSX.Element {
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-<<<<<<< HEAD
-  }, [isSuccess, isError, dispatch, signupContext.signupService]);
-=======
   }, [isSuccess, isError]);
->>>>>>> 851dd2d94 (WIP: remove state machine, use actions for next page navigation)
 
   return <React.Fragment></React.Fragment>;
 }

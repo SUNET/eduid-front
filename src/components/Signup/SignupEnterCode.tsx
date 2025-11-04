@@ -20,22 +20,15 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
     }
-  }, [signupContext.signupService, state]);
+  }, [state]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-  }, [signupContext.signupService, signupState]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
-    }
-  }, [isSuccess, dispatch]);
+  }, [signupState]);
 
   function handleTimerReachZero() {
     setIsExpired(true);
@@ -173,7 +166,7 @@ export function ProcessEmailCode() {
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
     }
-  }, [isSuccess, isError, dispatch, signupContext.signupService]);
+  }, [isSuccess, isError, dispatch]);
 
   return null;
 }
