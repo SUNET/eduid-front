@@ -30,7 +30,7 @@ export function SignupCredentials(): React.JSX.Element {
           <EduIDButton
             type="submit"
             buttonstyle="secondary"
-            onClick={() => dispatch(signupSlice.actions.setNextPage("SignupEmailForm "))}
+            onClick={() => dispatch(signupSlice.actions.setNextPage("SignupEmailForm"))}
             id="abort-button"
           >
             <FormattedMessage defaultMessage="Cancel" description="button cancel" />
