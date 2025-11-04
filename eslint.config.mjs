@@ -38,7 +38,6 @@ export default defineConfig([
     },
 
     rules: {
-      "react/jsx-key": "off",
       "react/jsx-no-duplicate-props": "off",
       "react/no-deprecated": "off",
       "react/jsx-no-target-blank": "off",
