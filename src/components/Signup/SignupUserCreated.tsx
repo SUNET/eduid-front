@@ -39,7 +39,7 @@ export function SignupConfirmPassword() {
 
       if (response.isSuccess) {
         dispatch(clearNotifications());
-        dispatch(signupSlice.actions.setNextPage("SignupConfirmPassword"));
+        dispatch(signupSlice.actions.setNextPage("SignupUserCreated"));
         // signupContext.signupService.send({ type: "API_SUCCESS" });
       } else {
         dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
