@@ -38,7 +38,6 @@ export default defineConfig([
     },
 
     rules: {
-      "react/jsx-no-target-blank": "off",
       // Replace no-unused-vars with @typescript-eslint/no-unused-vars
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [

@@ -68,14 +68,14 @@ export function Index() {
             description="read more at Sunet"
             values={{
               Sunet: (
-                <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank">
+                <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank" rel="noreferrer">
                   Sunet
                 </a>
               ),
             }}
           />
           &nbsp;
-          <a className="text-link" href={`${eduid_site_link}/help`} target="_blank">
+          <a className="text-link" href={`${eduid_site_link}/help`} target="_blank" rel="noreferrer">
             <FormattedMessage description="help link" defaultMessage="Help" />
           </a>
           &nbsp;
