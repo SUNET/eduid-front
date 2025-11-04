@@ -28,7 +28,7 @@ export function SignupEnterCode(): React.JSX.Element {
       // user has used up all allowed attempts to enter the code
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-  }, [signupState]);
+  }, [signupState, dispatch]);
 
   function handleTimerReachZero() {
     setIsExpired(true);

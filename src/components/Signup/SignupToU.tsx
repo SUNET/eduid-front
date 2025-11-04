@@ -59,7 +59,7 @@ export function ProcessToU(): React.JSX.Element {
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, dispatch]);
 
   return <React.Fragment></React.Fragment>;
 }

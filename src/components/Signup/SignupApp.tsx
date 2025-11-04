@@ -66,7 +66,7 @@ function SignupStart() {
         dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
       } else dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-  }, [data, fetchLogout]);
+  }, [data, fetchLogout, dispatch]);
 
   return null;
 }

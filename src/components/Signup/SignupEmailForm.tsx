@@ -155,7 +155,7 @@ export function RegisterEmail() {
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, dispatch]);
 
   // Show a blank screen while we wait for the response from the backend
   return null;

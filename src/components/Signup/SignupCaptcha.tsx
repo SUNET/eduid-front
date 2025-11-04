@@ -16,7 +16,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
     if (state?.captcha.completed) {
       dispatch(signupSlice.actions.setNextPage("SignupToU"));
     }
-  }, [state]);
+  }, [state, dispatch]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
