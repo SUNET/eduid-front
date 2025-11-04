@@ -38,18 +38,8 @@ export default defineConfig([
     },
 
     rules: {
-      "react/jsx-no-duplicate-props": "off",
-      "react/no-deprecated": "off",
       "react/jsx-no-target-blank": "off",
-      "react/prop-types": "off",
-      "react/no-string-refs": "off",
-      "no-class-assign": "off",
-      "no-prototype-builtins": "off",
       "react/display-name": "off",
-      "no-empty": "off",
-      "@typescript-eslint/no-var-requires": "off",
-      "@typescript-eslint/no-empty-function": "off",
-      "@typescript-eslint/no-this-alias": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
