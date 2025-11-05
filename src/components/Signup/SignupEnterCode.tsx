@@ -20,7 +20,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     }
   }, [state, dispatch]);
 
