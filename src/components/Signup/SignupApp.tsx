@@ -25,7 +25,9 @@ export function SignupApp(): React.JSX.Element {
   }, [intl]);
 
   useEffect(() => {
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_START"));
+    if (!next_page) {
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_START"));
+    }
   }, [dispatch]);
 
   return (
