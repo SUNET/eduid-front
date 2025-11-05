@@ -28,7 +28,7 @@ export function SignupApp(): React.JSX.Element {
     if (!next_page) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_START"));
     }
-  }, [dispatch]);
+  }, [dispatch, next_page]);
 
   return (
     <React.Fragment>
