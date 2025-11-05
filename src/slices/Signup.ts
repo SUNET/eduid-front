@@ -2,6 +2,21 @@ import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
 import { isFSA } from "apis/helpers/typeGuards";
 
+type NextPageTypes =
+  | "SIGNUP_START"
+  | "SIGNUP_EMAIL_FORM"
+  | "PROCESS_CAPTCHA"
+  | "SIGNUP_CAPTCHA"
+  | "SIGNUP_TOU"
+  | "PROCESS_TOU"
+  | "REGISTER_EMAIL"
+  | "SIGNUP_ENTER_CODE"
+  | "PROCESS_EMAIL_CODE"
+  | "SIGNUP_CREDENTIALS_ERROR"
+  | "SIGNUP_CREDENTIAL_PASSWORD"
+  | "SIGNUP_USER_CREATED"
+  | "SIGNUP_CONFIRM_PASSWORD";
+
 interface SignupState {
   state?: SignupBackendState;
   email?: string; // pass email address from one state to another
@@ -9,6 +24,7 @@ interface SignupState {
   surname?: string;
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
+  next_page?: string;
 }
 
 // type predicate to help identify payloads with the signup state.
@@ -50,6 +66,9 @@ export const signupSlice = createSlice({
     },
     setCaptchaResponse: (state, action: PayloadAction<CaptchaRequest>) => {
       state.captcha = action.payload;
+    },
+    setNextPage: (state, action: PayloadAction<NextPageTypes>) => {
+      state.next_page = action.payload;
     },
   },
   extraReducers: (builder) => {

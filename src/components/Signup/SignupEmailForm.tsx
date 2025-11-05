@@ -2,10 +2,9 @@ import { signupApi } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
-import { SignupGlobalStateContext } from "components/Signup/SignupGlobalState";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { validateSignupUserInForm } from "helperFunctions/validation/validateEmail";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -43,7 +42,6 @@ export interface SignupEmailFormData extends Record<string, string | undefined> 
 function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const intl = useIntl();
 
   const firstNamePlaceholder = intl.formatMessage({
@@ -73,10 +71,10 @@ function EmailForm() {
       // terms of use, and solved a captcha. So we store it in the redux state here.
       if (state?.captcha.completed && state?.tou.completed) {
         // Go to RegisterEmail
-        signupContext.signupService.send({ type: "CAPTCHA_AND_TOU_DONE" });
+        dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
       } else {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "COMPLETE" });
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
       }
     } else {
       errors.email = "required";
@@ -139,28 +137,24 @@ function EmailForm() {
  * Send the user-provided email address to the backend.
  */
 export function RegisterEmail() {
-  const signupContext = useContext(SignupGlobalStateContext);
   const email = useAppSelector((state) => state.signup.email);
   const given_name = useAppSelector((state) => state.signup.given_name);
   const surname = useAppSelector((state) => state.signup.surname);
-  const [registerEmail, { isSuccess, isError }] = signupApi.useLazyRegisterEmailRequestQuery();
-
-  useEffect(() => {
-    if (!email || !given_name || !surname) {
-      signupContext.signupService.send({ type: "API_FAIL" });
-      return;
-    }
-    const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
-    registerEmail(signupUser);
-  }, [email, given_name, surname, signupContext, registerEmail]);
+  const signupUser = { email: email ?? "", given_name: given_name ?? "", surname: surname ?? "" };
+  const { isSuccess, isError } = signupApi.useRegisterEmailRequestQuery(signupUser);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isSuccess) {
-      signupContext.signupService.send({ type: "API_SUCCESS" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
-  }, [isSuccess, isError, signupContext]);
+  }, [isSuccess, isError, dispatch]);
+
+  if (!email || !given_name || !surname) {
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+  }
 
   // Show a blank screen while we wait for the response from the backend
   return null;

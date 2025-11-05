@@ -2,23 +2,21 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupCaptcha(): React.JSX.Element | null {
   const state = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = signupApi.useLazyGetSignupCaptchaRequestQuery();
 
   useEffect(() => {
     if (state?.captcha.completed) {
-      signupContext.signupService.send({ type: "CAPTCHA_DONE" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
     }
-  }, [signupContext.signupService, state]);
+  }, [state, dispatch]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -28,13 +26,13 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCancel() {
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   function handleCaptchaCompleted(response: string) {
     if (response) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-      signupContext.signupService.send({ type: "COMPLETE" });
+      dispatch(signupSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }
 
@@ -67,7 +65,6 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
 export function ProcessCaptcha(): null {
   const captcha = useAppSelector((state) => state.signup.captcha);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useSendSignupCaptchaResponseQuery(captcha ?? skipToken);
 
@@ -75,12 +72,12 @@ export function ProcessCaptcha(): null {
     if (captcha) {
       if (isSuccess) {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "API_SUCCESS" });
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
       } else if (isError) {
-        signupContext.signupService.send({ type: "API_FAIL" });
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
       }
     }
-  }, [captcha, isSuccess, isError, dispatch, signupContext.signupService]);
+  }, [captcha, isSuccess, isError, dispatch]);
 
   // Show a blank screen while we wait for a captcha response from the backend
   return null;

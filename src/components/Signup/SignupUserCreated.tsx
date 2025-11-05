@@ -8,12 +8,12 @@ import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom"
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { clearNotifications } from "slices/Notifications";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
+import { signupSlice } from "slices/Signup";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -22,7 +22,6 @@ export const idFinishedButton = "finished-button";
 
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
-  const signupContext = useContext(SignupGlobalStateContext);
   const signupState = useAppSelector((state) => state.signup.state);
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
@@ -40,9 +39,9 @@ export function SignupConfirmPassword() {
 
       if (response.isSuccess) {
         dispatch(clearNotifications());
-        signupContext.signupService.send({ type: "API_SUCCESS" });
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
       } else {
-        signupContext.signupService.send({ type: "API_FAIL" });
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
       }
     }
   }
@@ -53,7 +52,7 @@ export function SignupConfirmPassword() {
 
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     navigate("/register");
   }
 

@@ -6,15 +6,13 @@ import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { SignupGlobalStateContext } from "./SignupGlobalState";
 
 export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const [isExpired, setIsExpired] = useState(false);
   const state = useAppSelector((state) => state.signup.state);
@@ -22,16 +20,16 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      signupContext.signupService.send({ type: "CREDENTIALS_DONE" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
     }
-  }, [signupContext.signupService, state]);
+  }, [state, dispatch]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
-      signupContext.signupService.send({ type: "ABORT" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
-  }, [signupContext.signupService, signupState]);
+  }, [signupState, dispatch]);
 
   function handleTimerReachZero() {
     setIsExpired(true);
@@ -52,7 +50,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
-    signupContext.signupService.send({ type: "ABORT" });
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   function handleSubmitCode(values: ResponseCodeValues) {
@@ -66,8 +64,7 @@ export function SignupEnterCode(): React.JSX.Element {
       if (digits) {
         // remember the code in redux store between states
         dispatch(signupSlice.actions.setEmailCode(digits));
-
-        signupContext.signupService.send({ type: "COMPLETE" });
+        dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
       }
     }
   }
@@ -158,7 +155,6 @@ export function SignupEnterCode(): React.JSX.Element {
 
 export function ProcessEmailCode() {
   const verification_code = useAppSelector((state) => state.signup.email_code);
-  const signupContext = useContext(SignupGlobalStateContext);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useVerifyEmailRequestQuery(
     verification_code ? { verification_code } : skipToken
@@ -167,11 +163,11 @@ export function ProcessEmailCode() {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      signupContext.signupService.send({ type: "API_SUCCESS" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     } else if (isError) {
-      signupContext.signupService.send({ type: "API_FAIL" });
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
-  }, [isSuccess, isError, dispatch, signupContext.signupService]);
+  }, [isSuccess, isError, dispatch]);
 
   return null;
 }
