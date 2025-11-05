@@ -163,9 +163,9 @@ export function ProcessEmailCode() {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
   }, [isSuccess, isError, dispatch]);
 
