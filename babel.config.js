@@ -12,6 +12,7 @@ module.exports = function (api) {
         regenerator: true,
       },
     ],
+    // formatjs plugin for extraction and tests
     [
       "formatjs",
       {

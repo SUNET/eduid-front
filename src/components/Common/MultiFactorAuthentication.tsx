@@ -13,11 +13,11 @@ import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } fr
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
+import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
-import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 export const FRONTEND_ACTION = "frontend_action";
 
