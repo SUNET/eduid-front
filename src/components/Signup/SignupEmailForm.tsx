@@ -152,7 +152,7 @@ export function RegisterEmail() {
     }
   }, [isSuccess, isError, dispatch]);
 
-  if (!signupUser) {
+  if (!email || !given_name || !surname) {
     dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
