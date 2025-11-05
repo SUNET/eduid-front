@@ -4,7 +4,8 @@
   "description": "",
   "browser": "src/entry-points/index.js",
   "scripts": {
-    "start": "vite",
+    "serve": "vite",
+    "start": "vite build --watch",
     "test": "jest",
     "build-development": "vite build",
     "build-staging": "vite build --config vite.config.staging.ts",
