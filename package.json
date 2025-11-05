@@ -5,9 +5,9 @@
   "browser": "src/entry-points/index.js",
   "scripts": {
     "serve": "vite",
-    "start": "vite build --watch",
+    "start": "vite build --watch --mode development",
     "test": "jest",
-    "build-development": "vite build",
+    "build-development": "vite build --mode development",
     "build-staging": "vite build --config vite.config.staging.ts",
     "build-production": "vite build --config vite.config.prod.ts",
     "preview": "vite preview",
