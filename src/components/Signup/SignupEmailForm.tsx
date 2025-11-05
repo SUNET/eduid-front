@@ -71,10 +71,10 @@ function EmailForm() {
       // terms of use, and solved a captcha. So we store it in the redux state here.
       if (state?.captcha.completed && state?.tou.completed) {
         // Go to RegisterEmail
-        dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
+        dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
       } else {
         dispatch(clearNotifications());
-        dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
       }
     } else {
       errors.email = "required";
@@ -146,15 +146,14 @@ export function RegisterEmail() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [isSuccess, isError, dispatch]);
 
   if (!signupUser) {
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
-    return null;
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   // Show a blank screen while we wait for the response from the backend

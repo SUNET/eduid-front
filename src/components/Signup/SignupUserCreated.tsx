@@ -39,9 +39,9 @@ export function SignupConfirmPassword() {
 
       if (response.isSuccess) {
         dispatch(clearNotifications());
-        dispatch(signupSlice.actions.setNextPage("SignupUserCreated"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
       } else {
-        dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
       }
     }
   }
@@ -52,7 +52,7 @@ export function SignupConfirmPassword() {
 
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     navigate("/register");
   }
 

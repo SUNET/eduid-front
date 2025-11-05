@@ -14,7 +14,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
   useEffect(() => {
     if (state?.captcha.completed) {
-      dispatch(signupSlice.actions.setNextPage("SignupToU"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
     }
   }, [state, dispatch]);
 
@@ -26,13 +26,13 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCancel() {
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   function handleCaptchaCompleted(response: string) {
     if (response) {
       dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-      dispatch(signupSlice.actions.setNextPage("ProcessCaptcha"));
+      dispatch(signupSlice.actions.setNextPage("PROCESS_CAPTCHA"));
     }
   }
 
@@ -72,9 +72,9 @@ export function ProcessCaptcha(): null {
     if (captcha) {
       if (isSuccess) {
         dispatch(clearNotifications());
-        dispatch(signupSlice.actions.setNextPage("SignupToU"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
       } else if (isError) {
-        dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
       }
     }
   }, [captcha, isSuccess, isError, dispatch]);

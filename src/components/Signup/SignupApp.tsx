@@ -25,24 +25,24 @@ export function SignupApp(): React.JSX.Element {
   }, [intl]);
 
   useEffect(() => {
-    dispatch(signupSlice.actions.setNextPage("SignupStart"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_START"));
   }, [dispatch]);
 
   return (
     <React.Fragment>
-      {next_page === "SignupStart" && <SignupStart />}
-      {next_page === "SignupEmailForm" && <SignupEmailForm />}
-      {next_page === "ProcessCaptcha" && <ProcessCaptcha />}
-      {next_page === "SignupCaptcha" && <SignupCaptcha />}
-      {next_page === "SignupToU" && <SignupToU />}
-      {next_page === "ProcessToU" && <ProcessToU />}
-      {next_page === "RegisterEmail" && <RegisterEmail />}
-      {next_page === "SignupEnterCode" && <SignupEnterCode />}
-      {next_page === "ProcessEmailCode" && <ProcessEmailCode />}
-      {next_page === "SignupCredentials" && <SignupCredentials />}
-      {next_page === "SignupCredentialPassword" && <SignupCredentialPassword />}
-      {next_page === "SignupConfirmPassword" && <SignupConfirmPassword />}
-      {next_page === "SignupUserCreated" && <SignupUserCreated />}
+      {next_page === "SIGNUP_START" && <SignupStart />}
+      {next_page === "SIGNUP_EMAIL_FORM" && <SignupEmailForm />}
+      {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
+      {next_page === "SIGNUP_CAPTCHA" && <SignupCaptcha />}
+      {next_page === "SIGNUP_TOU" && <SignupToU />}
+      {next_page === "PROCESS_TOU" && <ProcessToU />}
+      {next_page === "REGISTER_EMAIL" && <RegisterEmail />}
+      {next_page === "SIGNUP_ENTER_CODE" && <SignupEnterCode />}
+      {next_page === "PROCESS_EMAIL_CODE" && <ProcessEmailCode />}
+      {next_page === "SIGNUP_CREDENTIALS" && <SignupCredentials />}
+      {next_page === "SIGNUP_CREDENTIAL_PASSWORD" && <SignupCredentialPassword />}
+      {next_page === "SIGNUP_CONFIRM_PASSWORD" && <SignupConfirmPassword />}
+      {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
     </React.Fragment>
   );
 }
@@ -63,8 +63,8 @@ function SignupStart() {
         fetchLogout({});
       }
       if (data.payload.state.email?.address) {
-        dispatch(signupSlice.actions.setNextPage("SignupCaptcha"));
-      } else dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
+      } else dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [data, fetchLogout, dispatch]);
 

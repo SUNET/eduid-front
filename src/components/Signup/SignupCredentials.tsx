@@ -13,7 +13,7 @@ export function SignupCredentials(): React.JSX.Element {
   useEffect(() => {
     if (error === undefined) {
       // unless we got back here from CreateUser after a backend API error, go straight to using a password for now
-      dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     }
   }, [dispatch, error]);
 
@@ -30,7 +30,7 @@ export function SignupCredentials(): React.JSX.Element {
           <EduIDButton
             type="submit"
             buttonstyle="secondary"
-            onClick={() => dispatch(signupSlice.actions.setNextPage("SignupEmailForm"))}
+            onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
             id="abort-button"
           >
             <FormattedMessage defaultMessage="Cancel" description="button cancel" />
@@ -39,7 +39,7 @@ export function SignupCredentials(): React.JSX.Element {
             type="submit"
             buttonstyle="primary"
             onClick={() => {
-              dispatch(signupSlice.actions.setNextPage("SignupCredentialPassword"));
+              dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
             }}
             id="retry-button"
           >
@@ -60,9 +60,9 @@ export function SignupCredentialPassword(): React.JSX.Element {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      dispatch(signupSlice.actions.setNextPage("SignupConfirmPassword"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CONFIRM_PASSWORD"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
     }
   }, [isSuccess, isError, dispatch]);
 

@@ -15,16 +15,16 @@ export function SignupToU(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.tou.completed) {
-      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
   }, [state, dispatch]);
 
   function handleAccept() {
-    dispatch(signupSlice.actions.setNextPage("ProcessToU"));
+    dispatch(signupSlice.actions.setNextPage("PROCESS_TOU"));
   }
 
   function handleCancel() {
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   return (
@@ -55,9 +55,9 @@ export function ProcessToU(): React.JSX.Element {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      dispatch(signupSlice.actions.setNextPage("RegisterEmail"));
+      dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [isSuccess, isError, dispatch]);
 

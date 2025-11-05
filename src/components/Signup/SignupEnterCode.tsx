@@ -20,14 +20,14 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (state?.credentials.completed) {
-      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
     }
   }, [state, dispatch]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
-      dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [signupState, dispatch]);
 
@@ -50,7 +50,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
-    dispatch(signupSlice.actions.setNextPage("SignupEmailForm"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
   }
 
   function handleSubmitCode(values: ResponseCodeValues) {
@@ -64,7 +64,7 @@ export function SignupEnterCode(): React.JSX.Element {
       if (digits) {
         // remember the code in redux store between states
         dispatch(signupSlice.actions.setEmailCode(digits));
-        dispatch(signupSlice.actions.setNextPage("ProcessEmailCode"));
+        dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
       }
     }
   }
@@ -163,9 +163,9 @@ export function ProcessEmailCode() {
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearNotifications());
-      dispatch(signupSlice.actions.setNextPage("SignupCredentials"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SignupEnterCode"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
   }, [isSuccess, isError, dispatch]);
 
