@@ -41,7 +41,7 @@ export function SignupConfirmPassword() {
         dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
       } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
       }
     }
   }
