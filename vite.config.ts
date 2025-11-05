@@ -57,6 +57,9 @@ function renameHtmlPlugin(newName: string): Plugin {
   };
 }
 
+// Export helper functions for other configs
+export { formatjsPlugin, renameHtmlPlugin };
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
