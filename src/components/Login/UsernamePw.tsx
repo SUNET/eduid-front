@@ -129,12 +129,7 @@ export default function UsernamePw() {
                     <UsernamePwSubmitButton {...formProps} />
                     <UsernamePwAnotherDeviceButton />
                   </div>
-                  {!securityZoneAction && (
-                    <div className="links">
-                      <RenderResetPasswordLink />
-                      <RenderRegisterLink />
-                    </div>
-                  )}
+                  {!securityZoneAction && <RenderResetPasswordLink />}
                 </div>
               </form>
             );
