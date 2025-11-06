@@ -19,6 +19,20 @@ import { setupServer } from "msw/node";
 //   );
 export const mswServer = setupServer();
 
+// Mock HTMLFormElement.submit() to suppress "Not implemented" warnings
+HTMLFormElement.prototype.submit = vi.fn();
+
+// Mock window.location methods to suppress "Not implemented: navigation to another Document" warnings
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: {
+    ...window.location,
+    assign: vi.fn(),
+    replace: vi.fn(),
+    reload: vi.fn(),
+  },
+});
+
 beforeAll(() =>
   mswServer.listen({
     onUnhandledRequest(req) {
