@@ -1,5 +1,6 @@
 import { transform as formatjsTransform } from "@formatjs/ts-transformer";
 import react from "@vitejs/plugin-react";
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 import ts from "typescript";
@@ -57,8 +58,30 @@ function renameHtmlPlugin(newName: string): Plugin {
   };
 }
 
+// Plugin to add hash query parameters to script and link tags (like webpack's hash: true)
+function htmlHashPlugin(): Plugin {
+  let hash: string;
+
+  return {
+    name: "html-hash-plugin",
+    configResolved() {
+      // Generate hash once per build
+      hash = crypto.randomBytes(12).toString("hex");
+    },
+    transformIndexHtml(html) {
+      // Add hash query parameter to script tags
+      html = html.replace(/(<script[^>]+src="[^"?]+)(")/g, `$1?${hash}$2`);
+
+      // Add hash query parameter to link tags (CSS)
+      html = html.replace(/(<link[^>]+href="[^"?]+\.css)(")/g, `$1?${hash}$2`);
+
+      return html;
+    },
+  };
+}
+
 // Export helper functions for other configs
-export { formatjsPlugin, renameHtmlPlugin };
+export { formatjsPlugin, htmlHashPlugin, renameHtmlPlugin };
 
 // https://vitejs.dev/config/
 export default defineConfig({
