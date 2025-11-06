@@ -3,7 +3,14 @@ import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { http } from "msw";
 import { mswServer } from "setupTests";
-import { act, defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import {
+  act,
+  defaultDashboardTestState,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -83,6 +90,9 @@ test("can remove an ORCID iD", async () => {
   const orcid: OrcidInfo = { id: "test-orcid-id", name: "Test Testson", family_name: "Testson", given_name: "Test" };
   let removeCalled = false;
 
+  // Mock console.error to avoid test output noise
+  const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
   mswServer.use(
     http.post("https://dashboard.eduid.docker/services/orcid/remove", () => {
       removeCalled = true;
@@ -99,6 +109,10 @@ test("can remove an ORCID iD", async () => {
   render(<IndexMain />, {
     state: {
       ...defaultDashboardTestState,
+      config: {
+        ...defaultDashboardTestState.config,
+        orcid_service_url: "https://dashboard.eduid.docker/services/orcid/",
+      },
       account_linking: { orcid },
     },
   });
@@ -121,6 +135,12 @@ test("can remove an ORCID iD", async () => {
   act(() => {
     fireEvent.click(button);
   });
+
+  // Wait for the async remove operation to complete
+  await waitFor(() => {
+    expect(removeCalled).toBe(true);
+  });
+
   //TODO: check why this is still present
   // The ORCID iD shouldn't be visible anymore
   // await waitFor(() => {
@@ -132,4 +152,7 @@ test("can remove an ORCID iD", async () => {
 
   // // async tests need to await the last expect (to not get console warnings about logging after test finishes)
   // await expect(removeCalled).toBe(true);
+
+  // Restore console.error after test completes
+  consoleErrorSpy.mockRestore();
 });

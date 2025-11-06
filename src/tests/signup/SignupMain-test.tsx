@@ -69,7 +69,6 @@ function happyCaseBackend(state: SignupState) {
     // this request happens at render of SignupMain
     http.get("https://signup.eduid.docker/services/signup/state", () => {
       const payload: SignupStatusResponse = { state: currentState };
-      console.debug("[payload]", payload);
       return HttpResponse.json({ type: "_SIGNUP_ test response", payload });
     })
   );
@@ -158,7 +157,7 @@ function happyCaseBackend(state: SignupState) {
     http.post("https://signup.eduid.docker/services/signup/create-user", async ({ request }) => {
       const body = (await request.json()) as CreateUserRequest;
       if (body.use_webauthn && !body.use_suggested_password) {
-        console.error("Missing password, or webauthn is not supported");
+        // Missing password, or webauthn is not supported
         return new HttpResponse(null, { status: 400 });
       }
 
@@ -353,7 +352,7 @@ async function testEnterEmailCode({
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
   for (const code of tryCodes) {
-    console.log(`Trying code ${code}`);
+    // When debugging: code being tried is ${code}
     await enterEmailCode(code);
   }
 
