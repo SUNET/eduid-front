@@ -14,7 +14,7 @@ import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
-import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
+import { act, fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
 
 const emptyState: SignupState = {
   already_signed_up: false,
@@ -262,7 +262,9 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   const button = screen.getByRole("button", { name: "Create eduID" });
   expect(button).toBeDisabled();
 
-  fireEvent.change(emailInput, { target: { value: "not-an-email" } });
+  act(() => {
+    fireEvent.change(emailInput, { target: { value: "not-an-email" } });
+  });
   expect(button).toBeDisabled();
 
   if (email) {
@@ -374,7 +376,9 @@ async function enterEmailCode(code: string) {
   }
 
   // Submit the form. This is usually done by Javascript in the browser, but we need to help it along.
-  fireEvent.submit(form);
+  act(() => {
+    fireEvent.submit(form);
+  });
 
   // wait until the form disappears
   await waitFor(() => {

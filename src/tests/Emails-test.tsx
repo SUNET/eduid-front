@@ -1,6 +1,5 @@
 import Emails from "components/Dashboard/Emails";
-import { act } from "react";
-import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { act, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 test("renders Emails component as expected", () => {
   render(<Emails />);
@@ -19,7 +18,9 @@ test("renders Emails component as expected", () => {
   const addButton = screen.getByRole("button", { name: /add/i });
   expect(addButton).toBeDisabled();
 
-  fireEvent.change(input, { target: { value: "test@email.com" } });
+  act(() => {
+    fireEvent.change(input, { target: { value: "test@email.com" } });
+  });
   expect(input).toHaveValue("test@email.com");
 
   expect(addButton).toBeEnabled();

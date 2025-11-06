@@ -1,10 +1,9 @@
 import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
-import { act } from "react";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+import { act, defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings

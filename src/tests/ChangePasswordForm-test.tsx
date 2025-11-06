@@ -1,7 +1,7 @@
 import { ChangePassword } from "components/Dashboard/ChangePassword";
 import { initialState as configInitialState } from "slices/IndexConfig";
 
-import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { act, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 const suggestPassword = "test-password";
 
@@ -31,7 +31,9 @@ test("renders custom password form after clicking do not want a suggested passwo
   const customPasswordButton = screen.getByLabelText(/Set Your Own Password/i);
   expect(customPasswordButton).toBeInTheDocument();
 
-  fireEvent.click(customPasswordButton);
+  act(() => {
+    fireEvent.click(customPasswordButton);
+  });
   expect(customPasswordButton).toBeChecked();
 
   const newPasswordInput = screen.getByLabelText(/Enter new password/i) as HTMLInputElement;

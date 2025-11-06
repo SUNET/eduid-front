@@ -1,9 +1,8 @@
 import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
-import { act } from "react";
 import { mswServer } from "setupTests";
-import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
+import { act, defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
