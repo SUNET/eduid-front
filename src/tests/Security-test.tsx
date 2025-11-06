@@ -27,7 +27,7 @@ async function linkToAdvancedSettings() {
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("renders security key as expected, not security key added", async () => {

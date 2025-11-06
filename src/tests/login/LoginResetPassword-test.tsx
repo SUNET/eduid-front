@@ -38,7 +38,7 @@ function makeResetPasswordPayload(): GetResetPasswordStateResponse {
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("can click 'forgot password' with an e-mail address", async () => {
@@ -110,12 +110,12 @@ test("can click 'forgot password' with an e-mail address", async () => {
   // Verify the e-mail address is shown
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
-  const confirmButton = screen.getByRole("button", { name: /^send e-mail/i });
+  const confirmButton = screen.getByRole("button", { name: /^Send email/i });
   expect(confirmButton).toBeEnabled();
   await user.click(confirmButton);
 
   // wait for page to change after clicking the confirm button
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset password: Verify email address/));
 
   // verify e-mail address is shown after response is received from backend
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
@@ -234,7 +234,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   await user.click(sendButton);
 
   // wait for page to change after clicking the confirm button
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset password: Verify email address/));
 
   // verify e-mail address is shown after response is received from backend
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);

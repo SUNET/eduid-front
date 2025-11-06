@@ -8,7 +8,7 @@ import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFu
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("renders AccountLinking as expected", async () => {
@@ -91,7 +91,7 @@ test("can remove an ORCID iD", async () => {
     }),
     http.get("https://dashboard.eduid.docker/services/orcid", () => {
       if (!removeCalled) {
-        return new Response("", { status: 400})
+        return new Response("", { status: 400 });
       }
       return new Response(JSON.stringify({ type: "test success", payload: { orcid: undefined } }));
     })

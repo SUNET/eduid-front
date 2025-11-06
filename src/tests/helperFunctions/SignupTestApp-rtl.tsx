@@ -1,6 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
+import { LOCALIZED_MESSAGES } from "globals";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
@@ -31,7 +32,7 @@ export const signupTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigato
     signup_service_url: "https://signup.eduid.docker/services/signup",
   },
   signup: signupInitialState,
-  intl: { locale: "en", messages: {} },
+  intl: { locale: "en", messages: LOCALIZED_MESSAGES.en },
   notifications: {},
   login: loginInitialState,
   app: initialState,

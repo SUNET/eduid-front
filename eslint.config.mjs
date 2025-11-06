@@ -1,7 +1,6 @@
 import { defineConfig } from "eslint/config";
 import globals from "globals";
 import react from "eslint-plugin-react";
-import jestDom from "eslint-plugin-jest-dom";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks"
@@ -11,7 +10,6 @@ export default defineConfig([
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
   tseslint.configs.recommended,
-  jestDom.configs["flat/recommended"],
   reactHooks.configs.flat.recommended,
   {
     languageOptions: {

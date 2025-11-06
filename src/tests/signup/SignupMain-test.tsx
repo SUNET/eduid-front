@@ -133,7 +133,7 @@ function happyCaseBackend(state: SignupState) {
         return HttpResponse.json({
           type: "_SIGNUP_ test_FAIL",
           error: true,
-          payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
+          payload: { ...payload, message: "signup.email-verification-to-many-tries" },
         });
       }
 
@@ -172,7 +172,7 @@ function happyCaseBackend(state: SignupState) {
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
   happyCaseBackend(emptyState);
 });
 
@@ -183,9 +183,7 @@ afterEach(async () => {
 
 test("e-mail form works as expected", async () => {
   render(<IndexMain />, {
-    state: {
-      config: { ...signupTestState.config },
-    },
+    state: signupTestState,
     routes: [`${SIGNUP_BASE_PATH}`],
   });
   await testEnterEmail({ email: testEmailAddress });
@@ -193,9 +191,7 @@ test("e-mail form works as expected", async () => {
 
 test("handles rejected ToU", async () => {
   render(<IndexMain />, {
-    state: {
-      config: { ...signupTestState.config },
-    },
+    state: signupTestState,
     routes: [`${SIGNUP_BASE_PATH}`],
   });
 
@@ -215,9 +211,7 @@ test("handles rejected ToU", async () => {
 
 test("handles wrong email code", async () => {
   render(<IndexMain />, {
-    state: {
-      config: { ...signupTestState.config },
-    },
+    state: signupTestState,
     routes: [`${SIGNUP_BASE_PATH}`],
   });
 
@@ -241,7 +235,7 @@ test("handles wrong email code", async () => {
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter the email address/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter your details/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -313,7 +307,7 @@ async function testTermsOfUse({
   registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
-  await screen.findByText(/^Register: Terms of use/);
+  await screen.findByText(/^Register: Approve terms of use/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
   if (state.tou.version === "2016-v1") {

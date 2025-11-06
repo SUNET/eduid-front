@@ -17,7 +17,7 @@ test("renders Confirmation Modal, enabled to click proceed button", async () => 
     button.click();
   });
   await waitFor(() => {
-    expect(screen.getByText(/Create a Freja eID Plus account/i)).toBeInTheDocument();
+    expect(screen.getByText(/Create a Freja\+ account/i)).toBeInTheDocument();
   });
 
   const modalConfirmButton = screen.getByRole("button", { name: /Use my Freja+/i });
