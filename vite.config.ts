@@ -1,8 +1,8 @@
 import { transform as formatjsTransform } from "@formatjs/ts-transformer";
 import react from "@vitejs/plugin-react";
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
+import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 import ts from "typescript";
 import { defineConfig, Plugin } from "vite";
 
@@ -70,10 +70,10 @@ function htmlHashPlugin(): Plugin {
     },
     transformIndexHtml(html) {
       // Add hash query parameter to script tags
-      html = html.replace(/(<script[^>]+src="[^"?]+)(")/g, `$1?${hash}$2`);
+      html = html.replaceAll(/(<script[^>]+src="[^"?]+)(")/g, `$1?${hash}$2`);
 
       // Add hash query parameter to link tags (CSS)
-      html = html.replace(/(<link[^>]+href="[^"?]+\.css)(")/g, `$1?${hash}$2`);
+      html = html.replaceAll(/(<link[^>]+href="[^"?]+\.css)(")/g, `$1?${hash}$2`);
 
       return html;
     },
