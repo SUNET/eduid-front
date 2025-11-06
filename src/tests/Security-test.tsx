@@ -8,12 +8,21 @@ import { defaultDashboardTestState, render, screen, waitFor, within } from "./he
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Security" });
-  act(() => {
-    nav.click();
+  await waitFor(() => {
+    const nav = screen.getByRole("link", { name: "Security" });
+    act(() => {
+      nav.click();
+    });
   });
-  expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
-  expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
+  });
+  // Check for the specific security key button (external USB key, not "this device")
+  await waitFor(() => {
+    const securityKeyButton = screen.getByRole("button", { name: /security key/i });
+    expect(securityKeyButton).toBeEnabled();
+    expect(securityKeyButton).toHaveAttribute("id", "security-webauthn-button");
+  });
 }
 
 beforeEach(() => {
@@ -149,7 +158,7 @@ test("api call webauthn/remove", async () => {
   };
 
   mswServer.use(
-    http.post("webauthn/remove", async ({ request}) => {
+    http.post("webauthn/remove", async ({ request }) => {
       const body = (await request.json()) as RemoveWebauthnTokensRequest;
       if (body.credential_key != credential_key) {
         return new HttpResponse(null, { status: 400 });
@@ -193,8 +202,9 @@ test("security reducer, request credentials", async () => {
   };
   const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "requestCredentials" } } };
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "requestCredentials" } },
+  };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
@@ -216,15 +226,15 @@ test("security reducer, registerWebauthn", async () => {
       },
     ],
   };
-  const action = { 
+  const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "registerWebauthn" }}
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "registerWebauthn" } },
   };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
-    credentials: action.payload.payload.credentials
+    credentials: action.payload.payload.credentials,
   });
 });
 
