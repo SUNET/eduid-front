@@ -27,28 +27,32 @@ export const ToUs: { [key: string]: ReactElement } = {
         <dt>
           <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
         </dt>
-        {[
+        <dd key="law-compliance">
           <FormattedMessage
             defaultMessage="that all usage of user accounts follow the laws and by-laws of Sweden,"
             description="ToU first paragraph"
-          />,
+          />
+        </dd>
+        <dd key="truthful-info">
           <FormattedMessage
             defaultMessage={`that all personal information that you provide,
                                  such as name and contact information shall be truthful,`}
             description="ToU first paragraph"
-          />,
+          />
+        </dd>
+        <dd key="individual-accounts">
           <FormattedMessage
             defaultMessage={`that user accounts, password, security keys and codes are individual and
                                  shall only be used by the intended individual,`}
             description="ToU first paragraph"
-          />,
+          />
+        </dd>
+        <dd key="ethical-rules">
           <FormattedMessage
             defaultMessage="that SUNET's ethical rules (listed below) regulate all other permitted usage."
             description="ToU first paragraph"
-          />,
-        ].map((list, index) => {
-          return <dd key={index}>{list}</dd>;
-        })}
+          />
+        </dd>
 
         <dt>
           <FormattedMessage
@@ -56,32 +60,42 @@ export const ToUs: { [key: string]: ReactElement } = {
             description="ToU 2016-v1 paragraph 2 heading"
           />
         </dt>
-        {[
+        <dd key="gain-access">
           <FormattedMessage
             defaultMessage="attempts to gain access to network resources that they do not have the right"
             description="ToU second paragraph"
-          />,
+          />
+        </dd>
+        <dd key="conceal-identity">
           <FormattedMessage
             defaultMessage="attempts to conceal their user identity"
             description="ToU second paragraph"
-          />,
+          />
+        </dd>
+        <dd key="disrupt-usage">
           <FormattedMessage
             defaultMessage="attempts to interfere or disrupt the intended usage of the network"
             description="ToU second paragraph"
-          />,
+          />
+        </dd>
+        <dd key="waste-resources">
           <FormattedMessage
             defaultMessage="clearly wastes available resources (personnel, hardware or software)"
             description="ToU second paragraph"
-          />,
+          />
+        </dd>
+        <dd key="destroy-info">
           <FormattedMessage
             defaultMessage="attempts to disrupt or destroy computer-based information"
             description="ToU second paragraph"
-          />,
-          <FormattedMessage defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />,
-          <FormattedMessage defaultMessage="attempts to insult or offend others" description="ToU second paragraph" />,
-        ].map((list, index) => {
-          return <dd key={index}>{list}</dd>;
-        })}
+          />
+        </dd>
+        <dd key="infringe-privacy">
+          <FormattedMessage defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />
+        </dd>
+        <dd key="insult-others">
+          <FormattedMessage defaultMessage="attempts to insult or offend others" description="ToU second paragraph" />
+        </dd>
       </dl>
     </React.Fragment>
   ),

@@ -3,7 +3,9 @@ import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: (key: boolean) => void }): React.JSX.Element {
+export default function TemporaryInfo(props: {
+  readonly setHasReadAnnouncement: (key: boolean) => void;
+}): React.JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {
@@ -62,7 +64,7 @@ export default function TemporaryInfo(props: { readonly setHasReadAnnouncement: 
             description="Temp info - message5"
             values={{
               help: (
-                <a className="text-link" href="https://www.eduid.se/help" target="_blank">
+                <a className="text-link" href="https://www.eduid.se/help" target="_blank" rel="noreferrer">
                   eduid.se/help
                 </a>
               ),

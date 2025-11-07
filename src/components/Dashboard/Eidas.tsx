@@ -47,7 +47,7 @@ function Eidas(): React.JSX.Element {
           />
         </li>
       </ol>
-      <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+      <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
         <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
       </a>
     </div>
@@ -71,7 +71,7 @@ function Eidas(): React.JSX.Element {
             {freja_eid_link} app.`}
           values={{
             freja_eid_link: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
                 Freja
               </a>
             ),
