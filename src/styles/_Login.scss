@@ -259,3 +259,7 @@
 section.intro .status-box {
   margin-bottom: 2rem;
 }
+
+section[class*="-option"]:not(:last-of-type) {
+  border-bottom: 1px solid var(--border-gray);
+}
