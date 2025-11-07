@@ -15,23 +15,24 @@ const LadokContainer = (): React.JSX.Element => {
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
 
-  const handleSwitchChange = (): void => {
-    // Easiest way to understand the logic in this function is to store the old switch status here.
-    const wasChecked = switchChecked;
-    setSwitchChecked(!switchChecked);
+  const handleSwitchChange = async (): Promise<void> => {
+    const newChecked = !switchChecked;
+    setSwitchChecked(newChecked);
 
-    if (wasChecked && isLinked) {
-      unlinkUser();
+    if (!newChecked && isLinked) {
+      // User is turning switch off while linked - unlink
+      const result = await unlinkUser();
+      if (result.isSuccess) {
+        setSwitchChecked(false);
+      }
     }
   };
 
-  // Update the switch to reflect changes in isLinked
-  // Using queueMicrotask to defer the setState call and avoid cascading render warning
+  // Sync switch state with isLinked on mount/reload when Redux state is hydrated
   useEffect(() => {
-    if (isLinked !== switchChecked) {
-      queueMicrotask(() => setSwitchChecked(isLinked));
-    }
-  }, [isLinked, switchChecked]);
+    setSwitchChecked(isLinked);
+  }, [isLinked]);
+
   return (
     <article className="ladok" id="ladok">
       <h2>
@@ -63,8 +64,8 @@ const LadokContainer = (): React.JSX.Element => {
           </label>
         </fieldset>
       </form>
-      {switchChecked ? <LadokLinkStatus /> : undefined}
-      {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
+      {isLinked ? <LadokLinkStatus /> : undefined}
+      {switchChecked ? <LadokUniversitiesDropdown onLinkSuccess={() => setSwitchChecked(true)} /> : undefined}
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
@@ -76,7 +77,7 @@ const LadokContainer = (): React.JSX.Element => {
   );
 };
 
-const LadokUniversitiesDropdown = (): React.JSX.Element => {
+const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => void }): React.JSX.Element => {
   const locale = useAppSelector((state) => state.intl.locale);
   const ladokUnis = useAppSelector((state) => state.ladok.unis);
   const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
@@ -101,10 +102,13 @@ const LadokUniversitiesDropdown = (): React.JSX.Element => {
     }
   }, [fetchLadokUniversities, ladokUnis]);
 
-  function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
+  async function handleOnChange(newValue: SingleValue<SelectedUniProps>): Promise<void> {
     if (newValue?.value) {
       setSelected(newValue);
-      linkUser({ ladok_name: newValue.value });
+      const result = await linkUser({ ladok_name: newValue.value });
+      if (result.isSuccess) {
+        onLinkSuccess();
+      }
     }
   }
 
