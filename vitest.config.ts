@@ -34,7 +34,6 @@ export default defineConfig({
     globals: true, // Use global test APIs (describe, it, expect, etc.)
     environment: "jsdom", // Simulate browser environment
     setupFiles: "./src/setupTests.ts", // Setup file (MSW, jest-dom)
-    // css: false, // Disable CSS processing to avoid jsdom CSS parsing issues
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
