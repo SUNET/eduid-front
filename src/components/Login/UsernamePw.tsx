@@ -1,12 +1,12 @@
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
+import { PassKey } from "components/Common/Passkey";
 import PasswordInput from "components/Common/PasswordInput";
-import { SecurityKey } from "components/Common/SecurityKey";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment } from "react";
+import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -101,20 +101,21 @@ export default function UsernamePw() {
         <SecurityZoneInfo />
       </section>
       {webauthn && (
-        <Fragment>
-          <div className="options">
-            <SecurityKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
-          </div>
-          <div className="or-container">
-            <div className="line" />
-            <span>
-              <FormattedMessage defaultMessage="Having issues using a security key?" />
-            </span>
-            <div className="line" />
-          </div>
-        </Fragment>
+        <section className="passkey-option">
+          <span>
+            <strong>
+              <FormattedMessage defaultMessage="Continue with Passkey" description="Login with passkey heading" />
+            </strong>
+          </span>
+          <PassKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
+        </section>
       )}
-      <section className="username-pw">
+      <section className="username-pw-option">
+        <span>
+          <strong>
+            <FormattedMessage defaultMessage="Continue with password" description="Login with password heading" />
+          </strong>
+        </span>
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
@@ -123,18 +124,30 @@ export default function UsernamePw() {
               <form onSubmit={formProps.handleSubmit}>
                 <UsernameInputPart />
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
+                {!securityZoneAction && <RenderResetPasswordLink />}
                 <div className="flex-between">
                   <div className="buttons">
-                    {!securityZoneAction && <LoginAbortButton />}
                     <UsernamePwSubmitButton {...formProps} />
-                    <UsernamePwAnotherDeviceButton />
                   </div>
-                  {!securityZoneAction && <RenderResetPasswordLink />}
                 </div>
               </form>
             );
           }}
         ></FinalForm>
+      </section>
+      <section className="other-device-option">
+        <span>
+          <strong>
+            <FormattedMessage
+              defaultMessage="Continue with other device"
+              description="Login with other device heading"
+            />
+          </strong>
+        </span>
+        <div className="buttons">
+          {!securityZoneAction && <LoginAbortButton />}
+          <UsernamePwAnotherDeviceButton />
+        </div>
       </section>
     </React.Fragment>
   );

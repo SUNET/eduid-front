@@ -3,7 +3,6 @@ import { useAppDispatch } from "eduid-hooks";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import SecurityKeyGif from "../../../img/computer_animation.gif";
 
 interface SecurityKeyProps {
   disabled?: boolean;
@@ -18,8 +17,8 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
-  // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
+export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
+  // The PassKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
@@ -43,19 +42,11 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   return (
     <div className="option-wrapper">
       <div className="option">
-        {active ? (
-          <SecurityKeyActive />
-        ) : (
-          <SecurityKeyInactive disabled={!!props.disabled} useSecurityKey={useSecurityKey} />
-        )}
-        {active && (
-          <p className="help-text">
-            <FormattedMessage
-              description="login mfa primary option hint"
-              defaultMessage="If your Security Key has a button, don't forget to tap it."
-            />
-          </p>
-        )}
+        <SecurityKeyInactive
+          disabled={!!props.disabled}
+          useSecurityKey={useSecurityKey}
+          discoverable={props.discoverable}
+        />
       </div>
     </div>
   );
@@ -70,21 +61,39 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
 
   return (
     <Fragment>
+      <div className="status-box">
+        {/* <div className="checkbox-wrapper">
+            <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+          </div> */}
+        <div className="text-wrapper">
+          <h3>
+            <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
+          </h3>
+          <p>
+            <FormattedMessage
+              defaultMessage="You can log in securely with your passkey 
+using your fingerprint, face recognition or other screen-lock methods. {howPasskeyWork}"
+              description="security zone redirect info"
+              values={{
+                howPasskeyWork: (
+                  <a className="text-link" href="https://www.eduid.se/help" target="_blank">
+                    <FormattedMessage description="passkey help text link" defaultMessage="How passkeys work" />
+                  </a>
+                ),
+              }}
+            />
+          </p>
+        </div>
+      </div>
+
       <h3>
-        <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
+        <FormattedMessage description="login this device, passkey button" defaultMessage="Passkey" />
       </h3>
       <p className="help-text">
-        {props.discoverable ? (
-          <FormattedMessage
-            description="passkey authn help text"
-            defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
-          />
-        ) : (
-          <FormattedMessage
-            description="platform authn help text"
-            defaultMessage="E.g. USB Security Key or passkey with the device you are currently using."
-          />
-        )}
+        <FormattedMessage
+          description="passkey authn help text"
+          defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
+        />
       </p>
       {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
       <button
@@ -97,26 +106,8 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         id="mfa-security-key"
         disabled={props.disabled}
       >
-        <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
+        <FormattedMessage description="login passkey primary option button" defaultMessage="Use my passkey" />
       </button>
-    </Fragment>
-  );
-}
-
-function SecurityKeyActive(): React.JSX.Element {
-  return (
-    <Fragment>
-      <div className="button-pair selected">
-        <h3>
-          <FormattedMessage
-            description="login this device, security key button"
-            defaultMessage="This Device / Security key"
-          />
-        </h3>
-      </div>
-      <div className="button-pair bottom">
-        <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
-      </div>
     </Fragment>
   );
 }
