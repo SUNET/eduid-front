@@ -40,3 +40,5 @@ export const CopyToClipboard = forwardRef<HTMLInputElement>((_props, ref: Forwar
     </button>
   );
 });
+
+CopyToClipboard.displayName = "CopyToClipboard";

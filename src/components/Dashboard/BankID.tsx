@@ -24,7 +24,7 @@ function BankID(): React.JSX.Element {
             {bankID_link} app.`}
           values={{
             bankID_link: (
-              <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank">
+              <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank" rel="noreferrer">
                 BankID
               </a>
             ),
