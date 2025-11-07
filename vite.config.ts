@@ -59,15 +59,12 @@ function renameHtmlPlugin(newName: string): Plugin {
 }
 
 // Plugin to add hash query parameters to script and link tags (like webpack's hash: true)
+// Generates a random hash per build - sufficient since builds are packaged in Docker containers
 function htmlHashPlugin(): Plugin {
-  let hash: string;
+  const hash = crypto.randomBytes(12).toString("hex");
 
   return {
     name: "html-hash-plugin",
-    configResolved() {
-      // Generate hash once per build
-      hash = crypto.randomBytes(12).toString("hex");
-    },
     transformIndexHtml(html) {
       // Add hash query parameter to script tags
       html = html.replaceAll(/(<script[^>]+src="[^"?]+)(")/g, `$1?${hash}$2`);
