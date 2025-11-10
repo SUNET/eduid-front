@@ -197,19 +197,6 @@ function UsernameInputPart(): React.JSX.Element {
   return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
-function RenderRegisterLink(): React.JSX.Element {
-  const toSignup = useAppSelector((state) => state.config.signup_link);
-  return (
-    <div className="text-small">
-      <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
-      &nbsp;&nbsp;
-      <a href={toSignup} id="register-link">
-        <FormattedMessage defaultMessage="Register" description="Login front page" />
-      </a>
-    </div>
-  );
-}
-
 function RenderResetPasswordLink(): React.JSX.Element {
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
@@ -269,7 +256,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       {securityZoneAction ? (
         <FormattedMessage defaultMessage="Continue" description="Security zone continue" />
       ) : (
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
+        <FormattedMessage defaultMessage="Continue with password" description="Login front page" />
       )}
     </EduIDButton>
   );
