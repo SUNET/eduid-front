@@ -6,7 +6,7 @@ import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React from "react";
+import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -32,6 +32,7 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const [showPasswordInput, setShowPasswordInput] = useState<boolean>(false);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -76,6 +77,10 @@ export default function UsernamePw() {
     if (ref) {
       fetchMfaAuth({ ref: ref, webauthn_response: credential });
     }
+  }
+
+  function handleShowPasswordInput() {
+    setShowPasswordInput(true);
   }
   return (
     <React.Fragment>
@@ -123,8 +128,8 @@ export default function UsernamePw() {
           render={(formProps: FormRenderProps<UsernamePwFormData>) => {
             return (
               <form onSubmit={formProps.handleSubmit}>
-                <UsernameInputPart />
-                <PasswordInput name="currentPassword" autoComplete="current-password" />
+                <UsernameInputPart onFocus={handleShowPasswordInput} />
+                {showPasswordInput && <PasswordInput name="currentPassword" autoComplete="current-password" />}
                 <div className="buttons">
                   <UsernamePwSubmitButton {...formProps} />
                 </div>
@@ -156,7 +161,7 @@ export default function UsernamePw() {
   );
 }
 
-function UsernameInputPart(): React.JSX.Element {
+function UsernameInputPart({ onFocus }: { onFocus: () => void }): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
@@ -197,7 +202,7 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
+  return <UserNameInput name="username" autoFocus={false} required={true} autoComplete="username" onFocus={onFocus} />;
 }
 
 function RenderResetPasswordLink(): React.JSX.Element {

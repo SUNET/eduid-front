@@ -84,19 +84,24 @@ using your fingerprint, face recognition or other screen-lock methods. {howPassk
             <img src={passkeyImage} alt="Passkey icon" className="passkey-image" />
           </div>
         </div>
-        <EduIDButton
-          ref={ref}
-          buttonstyle="primary icon"
-          type="submit"
-          onClick={() => {
-            props.useSecurityKey();
-          }}
-          id="pass-key"
-          disabled={props.disabled}
-        >
-          <img className="qr-icon" height="20" alt="qr icon" src={passkeyIcon} />
-          <FormattedMessage description="login passkey primary option button" defaultMessage="Continue with passkey" />
-        </EduIDButton>
+        <div className="buttons">
+          <EduIDButton
+            ref={ref}
+            buttonstyle="primary icon"
+            type="submit"
+            onClick={() => {
+              props.useSecurityKey();
+            }}
+            id="pass-key"
+            disabled={props.disabled}
+          >
+            <img className="qr-icon" height="20" alt="qr icon" src={passkeyIcon} />
+            <FormattedMessage
+              description="login passkey primary option button"
+              defaultMessage="Continue with passkey"
+            />
+          </EduIDButton>
+        </div>
       </div>
     </Fragment>
   );
