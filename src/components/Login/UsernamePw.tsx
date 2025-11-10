@@ -103,20 +103,20 @@ export default function UsernamePw() {
       </section>
       {webauthn && (
         <section className="passkey-option">
-          <span>
+          {/* <span>
             <strong>
               <FormattedMessage defaultMessage="Continue with Passkey" description="Login with passkey heading" />
             </strong>
-          </span>
+          </span> */}
           <PassKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
         </section>
       )}
       <section className="username-pw-option">
-        <span>
+        {/* <span>
           <strong>
             <FormattedMessage defaultMessage="Continue with password" description="Login with password heading" />
           </strong>
-        </span>
+        </span> */}
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
@@ -137,14 +137,14 @@ export default function UsernamePw() {
         ></FinalForm>
       </section>
       <section className="other-device-option">
-        <span>
+        {/* <span>
           <strong>
             <FormattedMessage
               defaultMessage="Continue with other device"
               description="Login with other device heading"
             />
           </strong>
-        </span>
+        </span> */}
         <div className="buttons">
           {!securityZoneAction && <LoginAbortButton />}
           <UsernamePwAnotherDeviceButton />
@@ -278,7 +278,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="continue with other device" description="Login UsernamePw" />
     </EduIDButton>
   );
 }
