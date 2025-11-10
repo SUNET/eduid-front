@@ -64,7 +64,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
               defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
               description="security zone redirect info"
             />
-            {/* TODO: Activate passkey help link when related help content is available */}
+            {/* Activate passkey help link when related help content is available */}
             {/* <FormattedMessage
                 defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or 
                 other screen-lock methods. {howPasskeyWork}"
