@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import passwordIcon from "../../../img/password-icon.svg";
 import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
@@ -247,17 +248,14 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
 
   return (
     <EduIDButton
-      buttonstyle="primary"
+      buttonstyle="primary icon"
       type="submit"
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}
     >
-      {securityZoneAction ? (
-        <FormattedMessage defaultMessage="Continue" description="Security zone continue" />
-      ) : (
-        <FormattedMessage defaultMessage="Continue with password" description="Login front page" />
-      )}
+      <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
+      <FormattedMessage defaultMessage="Continue with password" description="Login front page" />
     </EduIDButton>
   );
 }
