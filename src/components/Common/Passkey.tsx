@@ -3,6 +3,8 @@ import { useAppDispatch } from "eduid-hooks";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
+import passkeyIcon from "../../../img/passkey-icon.svg";
+import EduIDButton from "./EduIDButton";
 
 interface SecurityKeyProps {
   disabled?: boolean;
@@ -40,15 +42,11 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
   }
 
   return (
-    <div className="option-wrapper">
-      <div className="option">
-        <SecurityKeyInactive
-          disabled={!!props.disabled}
-          useSecurityKey={useSecurityKey}
-          discoverable={props.discoverable}
-        />
-      </div>
-    </div>
+    <SecurityKeyInactive
+      disabled={!!props.disabled}
+      useSecurityKey={useSecurityKey}
+      discoverable={props.discoverable}
+    />
   );
 }
 
@@ -62,52 +60,42 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   return (
     <Fragment>
       <div className="status-box">
-        {/* <div className="checkbox-wrapper">
-            <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
-          </div> */}
         <div className="text-wrapper">
           <h3>
             <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
           </h3>
-          <p>
-            <FormattedMessage
-              defaultMessage="You can log in securely with your passkey 
+          <div className="flex-between">
+            <p>
+              <FormattedMessage
+                defaultMessage="You can log in securely with your passkey 
 using your fingerprint, face recognition or other screen-lock methods. {howPasskeyWork}"
-              description="security zone redirect info"
-              values={{
-                howPasskeyWork: (
-                  <a className="text-link" href="https://www.eduid.se/help" target="_blank">
-                    <FormattedMessage description="passkey help text link" defaultMessage="How passkeys work" />
-                  </a>
-                ),
-              }}
-            />
-          </p>
-        </div>
-      </div>
+                description="security zone redirect info"
+                values={{
+                  howPasskeyWork: (
+                    <a className="text-link" href="https://www.eduid.se/help" target="_blank">
+                      <FormattedMessage description="passkey help text link" defaultMessage="How passkeys work" />
+                    </a>
+                  ),
+                }}
+              />
+            </p>
 
-      <h3>
-        <FormattedMessage description="login this device, passkey button" defaultMessage="Passkey" />
-      </h3>
-      <p className="help-text">
-        <FormattedMessage
-          description="passkey authn help text"
-          defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
-        />
-      </p>
-      {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
-      <button
-        ref={ref}
-        className="primary"
-        type="submit"
-        onClick={() => {
-          props.useSecurityKey();
-        }}
-        id="mfa-security-key"
-        disabled={props.disabled}
-      >
-        <FormattedMessage description="login passkey primary option button" defaultMessage="Use my passkey" />
-      </button>
+            <img src={passkeyIcon} alt="Passkey icon" className="passkey-image" />
+          </div>
+        </div>
+        <EduIDButton
+          ref={ref}
+          buttonstyle="primary"
+          type="submit"
+          onClick={() => {
+            props.useSecurityKey();
+          }}
+          id="mfa-security-key"
+          disabled={props.disabled}
+        >
+          <FormattedMessage description="login passkey primary option button" defaultMessage="Use my passkey" />
+        </EduIDButton>
+      </div>
     </Fragment>
   );
 }
