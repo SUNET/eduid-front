@@ -125,12 +125,14 @@ export default function UsernamePw() {
               <form onSubmit={formProps.handleSubmit}>
                 <UsernameInputPart />
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
-                {!securityZoneAction && <RenderResetPasswordLink />}
-                <div className="flex-between">
-                  <div className="buttons">
-                    <UsernamePwSubmitButton {...formProps} />
-                  </div>
+                <div className="buttons">
+                  <UsernamePwSubmitButton {...formProps} />
                 </div>
+                {!securityZoneAction && (
+                  <div className="buttons">
+                    <RenderResetPasswordLink />
+                  </div>
+                )}
               </form>
             );
           }}
