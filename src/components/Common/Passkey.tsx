@@ -3,7 +3,8 @@ import { useAppDispatch } from "eduid-hooks";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
-import passkeyIcon from "../../../img/passkey-icon.svg";
+import passkeyImage from "../../../img/multiple-passkey-options.svg";
+import passkeyIcon from "../../../img/passkey.svg";
 import EduIDButton from "./EduIDButton";
 
 interface SecurityKeyProps {
@@ -80,20 +81,21 @@ using your fingerprint, face recognition or other screen-lock methods. {howPassk
               />
             </p>
 
-            <img src={passkeyIcon} alt="Passkey icon" className="passkey-image" />
+            <img src={passkeyImage} alt="Passkey icon" className="passkey-image" />
           </div>
         </div>
         <EduIDButton
           ref={ref}
-          buttonstyle="primary"
+          buttonstyle="primary icon"
           type="submit"
           onClick={() => {
             props.useSecurityKey();
           }}
-          id="mfa-security-key"
+          id="pass-key"
           disabled={props.disabled}
         >
-          <FormattedMessage description="login passkey primary option button" defaultMessage="Use my passkey" />
+          <img className="qr-icon" height="20" alt="qr icon" src={passkeyIcon} />
+          <FormattedMessage description="login passkey primary option button" defaultMessage="Continue with passkey" />
         </EduIDButton>
       </div>
     </Fragment>
