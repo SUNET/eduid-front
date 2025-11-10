@@ -161,7 +161,7 @@ export default function UsernamePw() {
   );
 }
 
-function UsernameInputPart({ onFocus }: Readonly<{ onFocus: () => void }>): React.JSX.Element {
+function UsernameInputPart({ onFocus }: { onFocus: () => void }): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
