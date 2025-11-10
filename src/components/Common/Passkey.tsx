@@ -1,6 +1,6 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { useAppDispatch } from "eduid-hooks";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import passkeyImage from "../../../img/multiple-passkey-options.svg";
@@ -53,20 +53,19 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   }, []);
 
   return (
-    <Fragment>
-      <div className="status-box">
-        <div className="text-wrapper">
-          <h3>
-            <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
-          </h3>
-          <div className="flex-between">
-            <p>
-              <FormattedMessage
-                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
-                description="security zone redirect info"
-              />
-              {/* TODO: Activate passkey help link when related help content is available */}
-              {/* <FormattedMessage
+    <div className="status-box">
+      <div className="text-wrapper">
+        <h3>
+          <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
+        </h3>
+        <div className="flex-between">
+          <p>
+            <FormattedMessage
+              defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
+              description="security zone redirect info"
+            />
+            {/* TODO: Activate passkey help link when related help content is available */}
+            {/* <FormattedMessage
                 defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or 
                 other screen-lock methods. {howPasskeyWork}"
                 description="security zone redirect info"
@@ -78,30 +77,26 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
                   ),
                 }}
               /> */}
-            </p>
+          </p>
 
-            <img src={passkeyImage} alt="Passkey icon" className="passkey-image" />
-          </div>
-        </div>
-        <div className="buttons">
-          <EduIDButton
-            ref={ref}
-            buttonstyle="primary icon"
-            type="submit"
-            onClick={() => {
-              props.useSecurityKey();
-            }}
-            id="pass-key"
-            disabled={props.disabled}
-          >
-            <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
-            <FormattedMessage
-              description="login passkey primary option button"
-              defaultMessage="Continue with passkey"
-            />
-          </EduIDButton>
+          <img src={passkeyImage} alt="Passkey icon" className="passkey-image" />
         </div>
       </div>
-    </Fragment>
+      <div className="buttons">
+        <EduIDButton
+          ref={ref}
+          buttonstyle="primary icon"
+          type="submit"
+          onClick={() => {
+            props.useSecurityKey();
+          }}
+          id="pass-key"
+          disabled={props.disabled}
+        >
+          <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
+          <FormattedMessage description="login passkey primary option button" defaultMessage="Continue with passkey" />
+        </EduIDButton>
+      </div>
+    </div>
   );
 }
