@@ -90,7 +90,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
   });
 
   const emailInput = screen.getByRole("textbox");
-  expect(emailInput).toHaveFocus();
+  expect(emailInput).not.toHaveFocus();
   expect(emailInput).toHaveAccessibleName(/^Username/);
   expect(emailInput).toHaveProperty("placeholder", userNameInputPlaceHolder);
   await user.type(emailInput, email);
