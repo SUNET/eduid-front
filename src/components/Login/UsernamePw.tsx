@@ -260,6 +260,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}
+      disabled={_disabled}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
       <FormattedMessage defaultMessage="Continue with password" description="Login front page" />
