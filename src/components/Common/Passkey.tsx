@@ -42,13 +42,7 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
     setActive(false);
   }
 
-  return (
-    <SecurityKeyInactive
-      disabled={!!props.disabled}
-      useSecurityKey={useSecurityKey}
-      discoverable={props.discoverable}
-    />
-  );
+  return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={props.discoverable} />;
 }
 
 function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
@@ -68,14 +62,13 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           <div className="flex-between">
             <p>
               <FormattedMessage
-                defaultMessage="You can log in securely with your passkey 
-using your fingerprint, face recognition or other screen-lock methods."
+                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
                 description="security zone redirect info"
               />
               {/* TODO: Activate passkey help link when related help content is available */}
               {/* <FormattedMessage
-                defaultMessage="You can log in securely with your passkey 
-using your fingerprint, face recognition or other screen-lock methods. {howPasskeyWork}"
+                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or 
+                other screen-lock methods. {howPasskeyWork}"
                 description="security zone redirect info"
                 values={{
                   howPasskeyWork: (
@@ -101,7 +94,7 @@ using your fingerprint, face recognition or other screen-lock methods. {howPassk
             id="pass-key"
             disabled={props.disabled}
           >
-            <img className="qr-icon" height="20" alt="qr icon" src={passkeyIcon} />
+            <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
             <FormattedMessage
               description="login passkey primary option button"
               defaultMessage="Continue with passkey"
