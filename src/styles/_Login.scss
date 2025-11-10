@@ -258,8 +258,34 @@
 //security zone info
 section.intro .status-box {
   margin-bottom: 2rem;
+  &.passkey {
+    display: block;
+  }
 }
 
 section[class*="-option"]:not(:last-of-type) {
   border-bottom: 1px solid var(--border-gray);
+}
+section.username-pw-option,
+section.other-device-option {
+  padding-top: 2rem;
+}
+// Remove margin-bottom from password field to eliminate extra space above forgot password link
+section.username-pw-option form .form-group:nth-of-type(2) {
+  margin-bottom: 0;
+}
+section[class*="-option"] {
+  padding-bottom: 2rem;
+}
+
+.passkey-option .status-box {
+  display: block;
+  margin-bottom: 1.125rem;
+  .text-wrapper {
+    margin-bottom: 1rem;
+    img {
+      width: 6rem;
+      padding-left: 0.5rem;
+    }
+  }
 }
