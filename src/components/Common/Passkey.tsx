@@ -3,9 +3,11 @@ import { useAppDispatch } from "eduid-hooks";
 import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
+import passkeyDarkImage from "../../../img/multiple-passkey-options-dark.svg";
 import passkeyImage from "../../../img/multiple-passkey-options.svg";
 import passkeyIcon from "../../../img/passkey.svg";
 import EduIDButton from "./EduIDButton";
+import { useTheme } from "./ThemeContext";
 
 interface SecurityKeyProps {
   disabled?: boolean;
@@ -47,6 +49,7 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
 
 function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (ref.current) ref?.current?.focus();
@@ -79,7 +82,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
               /> */}
           </p>
 
-          <img src={passkeyImage} alt="Passkey icon" className="passkey-image" />
+          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="Passkey icon" className="passkey-image" />
         </div>
       </div>
       <div className="buttons">
