@@ -94,7 +94,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           disabled={props.disabled}
         >
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
-          <FormattedMessage description="login passkey primary option button" defaultMessage="Continue with passkey" />
+          <FormattedMessage description="login passkey primary option button" defaultMessage="log in with passkey" />
         </EduIDButton>
       </div>
     </div>

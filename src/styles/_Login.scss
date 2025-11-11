@@ -263,24 +263,26 @@ section.intro .status-box {
   }
 }
 
-section[class*="-option"]:not(:last-of-type) {
-  border-bottom: 1px solid var(--border-gray);
+section.username-pw-option {
+  margin-bottom: 1.5rem;
+  a {
+    text-align: right;
+  }
 }
-section.username-pw-option,
-section.other-device-option {
-  padding-top: 1rem;
+
+section.other-device-option .buttons {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
 }
+
 // Remove margin-bottom from password field to eliminate extra space above forgot password link
 section.username-pw-option form .form-group:nth-of-type(2) {
   margin-bottom: 0;
 }
-section[class*="-option"] {
-  padding-bottom: 1rem;
-}
 
 .passkey-option .status-box {
   display: block;
-  margin-bottom: 1.125rem;
+  margin-bottom: 1.5rem;
   .text-wrapper {
     margin-bottom: 1rem;
     img {

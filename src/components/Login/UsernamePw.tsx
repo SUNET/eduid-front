@@ -6,7 +6,7 @@ import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useState } from "react";
+import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -32,7 +32,6 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const [showPasswordInput, setShowPasswordInput] = useState<boolean>(false);
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -79,9 +78,6 @@ export default function UsernamePw() {
     }
   }
 
-  function handleShowPasswordInput() {
-    setShowPasswordInput(true);
-  }
   return (
     <React.Fragment>
       <section className="intro">
@@ -108,50 +104,48 @@ export default function UsernamePw() {
       </section>
       {webauthn && (
         <section className="passkey-option">
-          {/* <span>
-            <strong>
-              <FormattedMessage defaultMessage="Continue with Passkey" description="Login with passkey heading" />
-            </strong>
-          </span> */}
           <PassKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
         </section>
       )}
       <section className="username-pw-option">
-        {/* <span>
-          <strong>
-            <FormattedMessage defaultMessage="Continue with password" description="Login with password heading" />
-          </strong>
-        </span> */}
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
+            <FormattedMessage
+              defaultMessage="or log in with password?"
+              description="Alternative login password option"
+            />
+          </span>
+          <div className="line"></div>
+        </div>
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
           render={(formProps: FormRenderProps<UsernamePwFormData>) => {
             return (
               <form onSubmit={formProps.handleSubmit}>
-                <UsernameInputPart onFocus={handleShowPasswordInput} />
-                {showPasswordInput && <PasswordInput name="currentPassword" autoComplete="current-password" />}
+                <UsernameInputPart />
+                <PasswordInput name="currentPassword" autoComplete="current-password" />
+                {!securityZoneAction && <RenderResetPasswordLink />}
                 <div className="buttons">
                   <UsernamePwSubmitButton {...formProps} />
                 </div>
-                {!securityZoneAction && (
-                  <div className="buttons">
-                    <RenderResetPasswordLink />
-                  </div>
-                )}
               </form>
             );
           }}
         ></FinalForm>
       </section>
       <section className="other-device-option">
-        {/* <span>
-          <strong>
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
             <FormattedMessage
-              defaultMessage="Continue with other device"
-              description="Login with other device heading"
+              defaultMessage="or log in with other device?"
+              description="Alternative login other device option"
             />
-          </strong>
-        </span> */}
+          </span>
+          <div className="line"></div>
+        </div>
         <div className="buttons">
           {!securityZoneAction && <LoginAbortButton />}
           <UsernamePwAnotherDeviceButton />
@@ -161,7 +155,7 @@ export default function UsernamePw() {
   );
 }
 
-function UsernameInputPart({ onFocus }: Readonly<{ onFocus: () => void }>): React.JSX.Element {
+function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
 
@@ -202,7 +196,7 @@ function UsernameInputPart({ onFocus }: Readonly<{ onFocus: () => void }>): Reac
       </React.Fragment>
     );
   }
-  return <UserNameInput name="username" autoFocus={false} required={true} autoComplete="username" onFocus={onFocus} />;
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderResetPasswordLink(): React.JSX.Element {
@@ -260,10 +254,9 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}
-      disabled={_disabled}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
-      <FormattedMessage defaultMessage="Continue with password" description="Login front page" />
+      <FormattedMessage defaultMessage="log in with password" description="Login front page" />
     </EduIDButton>
   );
 }
@@ -286,7 +279,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="continue with other device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="log in with other device" description="Login UsernamePw" />
     </EduIDButton>
   );
 }
