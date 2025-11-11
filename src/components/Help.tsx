@@ -650,7 +650,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="security eduid - list item 1"
-                        defaultMessage={`Buttons to add Two-factor authentication to increase the security of your eduID by adding a layer 
+                        defaultMessage={`Buttons to add multi-factor authentication to increase the security of your eduID by adding a layer 
                             called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account.
                             You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:`}
                       />
