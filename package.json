@@ -44,12 +44,6 @@
     "spin.js": "^4.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/plugin-transform-runtime": "^7.28.3",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-react": "^7.27.1",
-    "@babel/preset-typescript": "^7.27.1",
-    "@esbuild-plugins/tsconfig-paths": "^0.1.2",
     "@eslint/js": "^9.35.0",
     "@formatjs/cli": "^6.7.2",
     "@formatjs/ts-transformer": "^3.14.2",
@@ -64,7 +58,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^4.0.7",
     "autoprefixer": "^10.4.21",
-    "babel-plugin-formatjs": "^10.5.39",
     "babel-plugin-react-compiler": "^0.0.0-experimental-ce57cc1-20241218",
     "eslint": "^9.35.0",
     "eslint-plugin-react": "^7.37.5",
@@ -76,7 +69,6 @@
     "msw": "^2.11.2",
     "postcss": "^8.4.49",
     "react-country-flag": "^3.1.0",
-    "rollup-plugin-typescript2": "^0.36.0",
     "sass": "^1.92.1",
     "stylelint": "^16.24.0",
     "stylelint-config-standard-scss": "^15.0.1",
