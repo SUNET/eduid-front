@@ -200,7 +200,10 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             <ul className={isOpen.security ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
-                  <FormattedMessage defaultMessage="Two-factor Authentication (2FA)" description="security key title" />
+                  <FormattedMessage
+                    defaultMessage="Add multi-factor Authentication (MFA)"
+                    description="security key title"
+                  />
                 </Link>
               </li>
               <li>
