@@ -140,7 +140,7 @@ export function Help(): React.JSX.Element {
                  `}
                   values={{
                     link: (
-                      <EduIDLink to={UniversityAdmissionURL} external={true}>
+                      <EduIDLink to={UniversityAdmissionURL}>
                         <FormattedMessage
                           description="universityadmissions - link text"
                           defaultMessage="universityadmissions.se"
@@ -211,11 +211,7 @@ export function Help(): React.JSX.Element {
                     description="create eduid - list definition"
                     defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
                     values={{
-                      eduidRegisterLink: (
-                        <EduIDLink to={signup_link} external={true}>
-                          eduid.se/register
-                        </EduIDLink>
-                      ),
+                      eduidRegisterLink: <EduIDLink to={signup_link}>eduid.se/register</EduIDLink>,
                     }}
                   />
                 </p>
@@ -293,11 +289,7 @@ export function Help(): React.JSX.Element {
                       description="login eduid - username list definition"
                       defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be`}
                       values={{
-                        eduidLoginLink: (
-                          <EduIDLink to={dashboard_link} external={true}>
-                            eduid.se
-                          </EduIDLink>
-                        ),
+                        eduidLoginLink: <EduIDLink to={dashboard_link}>eduid.se</EduIDLink>,
                       }}
                     />
                   </p>
@@ -1120,7 +1112,7 @@ export function Help(): React.JSX.Element {
                         Freja+ account according to the instructions,`}
                         values={{
                           Freja: (
-                            <EduIDLink to={FrejaAppURL} external={true}>
+                            <EduIDLink to={FrejaAppURL}>
                               <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </EduIDLink>
                           ),
@@ -1217,11 +1209,7 @@ export function Help(): React.JSX.Element {
                         description="use bankid - list item 1"
                         defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},`}
                         values={{
-                          bankid: (
-                            <EduIDLink to={BankIdURL} external={true}>
-                              BankID.com
-                            </EduIDLink>
-                          ),
+                          bankid: <EduIDLink to={BankIdURL}>BankID.com</EduIDLink>,
                         }}
                       />
                     </li>
@@ -1310,11 +1298,7 @@ export function Help(): React.JSX.Element {
                       description="what is international - paragraph 2"
                       defaultMessage={`Current information on included nationalities can be found at: {FrejaList}`}
                       values={{
-                        FrejaList: (
-                          <EduIDLink to={FrejaeIdURL} external={true}>
-                            Freja eID
-                          </EduIDLink>
-                        ),
+                        FrejaList: <EduIDLink to={FrejaeIdURL}>Freja eID</EduIDLink>,
                       }}
                     />
                   </p>
@@ -1333,7 +1317,7 @@ export function Help(): React.JSX.Element {
                          profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,`}
                         values={{
                           FrejaApp: (
-                            <EduIDLink to={FrejaAppURL} external={true}>
+                            <EduIDLink to={FrejaAppURL}>
                               <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                             </EduIDLink>
                           ),
@@ -1458,11 +1442,7 @@ export function Help(): React.JSX.Element {
                           description="usb key - list item 1"
                           defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
                           values={{
-                            Fido: (
-                              <EduIDLink to="https://fidoalliance.org/" external={true}>
-                                fidoalliance.org
-                              </EduIDLink>
-                            ),
+                            Fido: <EduIDLink to="https://fidoalliance.org/">fidoalliance.org</EduIDLink>,
                           }}
                         />
                       </li>
@@ -1772,11 +1752,7 @@ export function Help(): React.JSX.Element {
                     description="use orcid - list item 1"
                     defaultMessage="read more and register for an ORCID at {orcid},"
                     values={{
-                      orcid: (
-                        <EduIDLink to="https://orcid.org" external={true}>
-                          orcid.org
-                        </EduIDLink>
-                      ),
+                      orcid: <EduIDLink to="https://orcid.org">orcid.org</EduIDLink>,
                     }}
                   />
                 </li>
@@ -1892,7 +1868,7 @@ export function Help(): React.JSX.Element {
                   find contact information to our Dataskyddsombud and Integritetsskyddsmyndigheten (in Swedish).`}
                   values={{
                     privacy: (
-                      <EduIDLink to="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid" external={true}>
+                      <EduIDLink to="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid">
                         <FormattedMessage description="privacy policy - link" defaultMessage="Privacy policy" />
                       </EduIDLink>
                     ),
@@ -1978,7 +1954,7 @@ export function Help(): React.JSX.Element {
                   issues of the site (in Swedish).`}
                   values={{
                     accessibility: (
-                      <EduIDLink to="https://sunet.se/om-sunet/tillganglighet-for-eduid-se" external={true}>
+                      <EduIDLink to="https://sunet.se/om-sunet/tillganglighet-for-eduid-se">
                         <FormattedMessage
                           description="accessibility report - link"
                           defaultMessage="Accessibility report"
@@ -2036,11 +2012,7 @@ export function Help(): React.JSX.Element {
                   higher education community, with adequate authorization levels of confirmed accounts. 
                   More information about SUNET is available at {sunet} (in Swedish).`}
                   values={{
-                    sunet: (
-                      <EduIDLink to="https://www.sunet.se" external={true}>
-                        www.sunet.se
-                      </EduIDLink>
-                    ),
+                    sunet: <EduIDLink to="https://www.sunet.se">www.sunet.se</EduIDLink>,
                   }}
                 />
               </p>

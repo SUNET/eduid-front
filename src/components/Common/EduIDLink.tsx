@@ -3,13 +3,12 @@ import { Link } from "react-router";
 
 interface EduIDLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   to: string;
-  external?: boolean;
   children: React.ReactNode;
   className?: string;
 }
 
-const EduIDLink: React.FC<EduIDLinkProps> = ({ to, external, className, children, ...rest }) => {
-  if (external || to.startsWith("http")) {
+const EduIDLink: React.FC<EduIDLinkProps> = ({ to, className, children, ...rest }) => {
+  if (to.startsWith("http")) {
     return (
       <a className={className} href={to} {...rest} target={rest.target || "_blank"} rel="noopener noreferrer">
         {children}
