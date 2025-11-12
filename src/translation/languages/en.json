@@ -235,9 +235,9 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
   },
-  "3PejIL": {
-    "developer_comment": "about security key - info",
-    "string": "Adding an MFA/2FA Security Key"
+  "3DXNIw": {
+    "developer_comment": "read more about your multi-factor authentication description",
+    "string": "Read more about your added multi-factor authentication at {security}"
   },
   "3QAHfi": {
     "developer_comment": "settings eduid - heading",
@@ -420,6 +420,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "73ZMfJ": {
+    "developer_comment": "security eduid - list item 2",
+    "string": "Under \"Manage your security keys\" is a toggle control marked \"Always use a security key to log in\" which can let you log in with your eduID account without using your added security key when allowed. Default setting is on."
+  },
   "75yL3y": {
     "developer_comment": "use ladok - list item 1",
     "string": "in the Account area of eduID, toggle the ESI control,"
@@ -427,10 +431,6 @@
   "7Fw0mr": {
     "developer_comment": "security eduid - list item 3",
     "string": "A table displaying all your added security keys with the following information:"
-  },
-  "7KSOXH": {
-    "developer_comment": "help text toggle 2FA",
-    "string": "Turning this off you only need to use your security key for services that require extra login verification."
   },
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
@@ -516,10 +516,6 @@
     "developer_comment": "Login remember user device",
     "string": "Remember me on this device"
   },
-  "99mrPD": {
-    "developer_comment": "without extra security heading",
-    "string": "Continue without security option"
-  },
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
@@ -543,6 +539,10 @@
   "9djX63": {
     "developer_comment": "what is bankid - heading",
     "string": "What is BankID?"
+  },
+  "9eBgi7": {
+    "developer_comment": "security eduid - list item 1",
+    "string": "Buttons to add multi-factor authentication to increase the security of your eduID by adding a layer called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account. You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:"
   },
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
@@ -632,6 +632,10 @@
     "developer_comment": "Change password set new password success heading",
     "string": "Change password: Completed"
   },
+  "CUid67": {
+    "developer_comment": "without extra security heading",
+    "string": "Continue without additional authentication"
+  },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
     "string": "Username"
@@ -647,6 +651,10 @@
   "D2FJI3": {
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
+  },
+  "D6zoIk": {
+    "developer_comment": "how add security key - paragraph 2",
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Manage your security keys in Security. You might still need to use your security key if other connecting services require MFA."
   },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
@@ -708,10 +716,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right to"
   },
-  "E9wj6b": {
-    "developer_comment": "security eduid - list item 2",
-    "string": "Under \"Manage your security keys\" is a toggle control marked \"Always use a second factor (2FA) to log in to eduID\" which can let you log in with your eduID account without using your added security key when allowed. Default setting is on."
-  },
   "EDXXCi": {
     "developer_comment": "what are eduIDs terms of use - heading",
     "string": "What are eduIDs terms of use?"
@@ -731,10 +735,6 @@
   "ES63c/": {
     "developer_comment": "universityadmissions - link text",
     "string": "universityadmissions.se"
-  },
-  "EVSSGm": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Security. You might still need to use your security key if other connecting services require 2FA."
   },
   "EW3NC1": {
     "developer_comment": "Email label",
@@ -806,10 +806,6 @@
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
-  },
-  "G0xkV6": {
-    "developer_comment": "Short code form",
-    "string": "Continue"
   },
   "G1b2Mj": {
     "developer_comment": "device info",
@@ -890,14 +886,6 @@
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
-  },
-  "HoJqhO": {
-    "developer_comment": "verified security key description",
-    "string": "Read more details about your verified two-factor authentication at {security}"
-  },
-  "Hz8c/G": {
-    "developer_comment": "read more about your two-factor authentication description",
-    "string": "Read more about your added two-factor authentication at {security}"
   },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
@@ -1021,10 +1009,6 @@
   "LNBvhT": {
     "developer_comment": "Errors button",
     "string": "eduID Dashboard"
-  },
-  "LNk6xM": {
-    "developer_comment": "security lead title",
-    "string": "Enhanced security of your eduID."
   },
   "LiU6wZ": {
     "developer_comment": "verify identity",
@@ -1305,6 +1289,10 @@
     "developer_comment": "status overview paragraph2",
     "string": "Suggestions on what might be required depending on the organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}."
   },
+  "RbJ8hE": {
+    "developer_comment": "add multi-factor authentication description",
+    "string": "Add multi-factor authentication at {security}"
+  },
   "Rf84nl": {
     "developer_comment": "ok button",
     "string": "ok"
@@ -1380,6 +1368,10 @@
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "This security key has been already registered. Please try with another one."
   },
+  "Tji+/6": {
+    "developer_comment": "help text toggle MFA",
+    "string": "Turning this off you only need to use your security key for services that require extra login verification."
+  },
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your account safe."
@@ -1392,13 +1384,13 @@
     "developer_comment": "create eduid - list item 8",
     "string": "You can now log in with your eduID."
   },
-  "U0DSGi": {
-    "developer_comment": "add two-factor authentication description",
-    "string": "Add two-factor authentication at {security}"
-  },
   "U3Ez+R": {
     "developer_comment": "usb key technical section - list item 3",
     "string": "it must support any of the following user verification methods:"
+  },
+  "U5DiRm": {
+    "developer_comment": "login eduid - re-login list item 2",
+    "string": "Toggling MFA login requirement setting."
   },
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
@@ -1414,6 +1406,10 @@
   "UI0vOY": {
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
+  },
+  "URSU0W": {
+    "developer_comment": "security lead title",
+    "string": "Enhance and manage the security of your eduID."
   },
   "UV+SMM": {
     "developer_comment": "SAML login finished",
@@ -1543,6 +1539,10 @@
     "developer_comment": "status overview paragraph1",
     "string": "The strength and usage of your eduID can be improved by following the steps listed below."
   },
+  "WwRwTR": {
+    "developer_comment": "how more secure description 1",
+    "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case usually two-factor authentication (2FA)."
+  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
@@ -1619,6 +1619,10 @@
     "developer_comment": "Display name select legend",
     "string": "Display name"
   },
+  "Y/GtN8": {
+    "developer_comment": "about security key - info",
+    "string": "Adding an MFA Security Key"
+  },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
     "string": "What is Freja+?"
@@ -1658,10 +1662,6 @@
   "YhOtY3": {
     "developer_comment": "copied button label",
     "string": "COPIED"
-  },
-  "YssJWJ": {
-    "developer_comment": "login eduid - security key list item 3",
-    "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a second factor (2FA) to log in to eduID\" toggle control under Security to off."
   },
   "YuWePR": {
     "developer_comment": "recommendations account link",
@@ -1736,6 +1736,10 @@
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
+  },
+  "asJ3Cp": {
+    "developer_comment": "how add security key - heading",
+    "string": "How do I implement MFA with eduID?"
   },
   "axK04o": {
     "developer_comment": "eduID index lead text",
@@ -1841,10 +1845,6 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
-  "bfdLRo": {
-    "developer_comment": "login eduid - re-login list item 2",
-    "string": "Toggling 2FA login requirement setting."
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -1922,6 +1922,10 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
+  },
+  "d+6A8b": {
+    "developer_comment": "login eduid - security key list item 3",
+    "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a security key to log in\" toggle control under Security to off."
   },
   "d/bTw0": {
     "developer_comment": "login eduid - security key list item 2",
@@ -2129,6 +2133,10 @@
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet} (in Swedish)."
   },
+  "ezUeEW": {
+    "developer_comment": "verified security key description",
+    "string": "Read more details about your verified multi-factor authentication at {security}"
+  },
   "f05TNT": {
     "developer_comment": "Security key toggle",
     "string": "Always use a security key to log in"
@@ -2144,10 +2152,6 @@
   "fEsIEZ": {
     "developer_comment": "Signup",
     "string": "If this is your eduID, you can reset your password to log back in."
-  },
-  "fIdUh2": {
-    "developer_comment": "how add security key - heading",
-    "string": "How can I add 2FA to eduID?"
   },
   "flBt7j": {
     "developer_comment": "Login remember user device",
@@ -2366,10 +2370,6 @@
     "developer_comment": "when use eduID - list item 4",
     "string": "lose a student account password and need to regain access,"
   },
-  "jc2mpm": {
-    "developer_comment": "how more secure description 1",
-    "string": "Depending on the service you are trying to access it might require that the account used to log in has reached a certain level of security. When you create your account you are required to have knowledge of your username (confirmed email address) and its associated password. The password is considered the first factor of authentication. For an additional layer of authentication to log in you may add a security key. The security key is called a two-factor authentication (2FA) or in some cases multi-factor (MFA), depending on the specifics of the layers of authentication."
-  },
   "jdtrs0": {
     "developer_comment": "Temp info - title",
     "string": "Important information"
@@ -2389,6 +2389,10 @@
   "jhAmOa": {
     "developer_comment": "account eduid - list item 3-2",
     "string": "A randomly created suggested password is generally considered safest and you can use a third party or browser built in Password Manager tool to help you keep track of your password."
+  },
+  "jkIzDN": {
+    "developer_comment": "security key title",
+    "string": "Add multi-factor Authentication (MFA)"
   },
   "jqbSR+": {
     "developer_comment": "account eduid - list item 1",
@@ -3458,10 +3462,6 @@
     "developer_comment": "Register - headline",
     "string": "Register: Set your own password"
   },
-  "x46y5H": {
-    "developer_comment": "security key title",
-    "string": "Two-factor Authentication (2FA)"
-  },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
@@ -3540,10 +3540,6 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
-  },
-  "z0oVIf": {
-    "developer_comment": "security eduid - list item 1",
-    "string": "Buttons to add Two-factor authentication to increase the security of your eduID by adding a layer called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account. You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:"
   },
   "zTHT2m": {
     "developer_comment": "verify identity vetting BankID tagline",
