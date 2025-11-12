@@ -147,9 +147,18 @@ export default function UsernamePw() {
           <div className="line"></div>
         </div>
         <div className="buttons">
-          {!securityZoneAction && <LoginAbortButton />}
           <UsernamePwAnotherDeviceButton />
         </div>
+      </section>
+      <section className="other-device-option">
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
+            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel" />
+          </span>
+          <div className="line"></div>
+        </div>
+        <div className="buttons">{!securityZoneAction && <LoginAbortButton />}</div>
       </section>
     </React.Fragment>
   );
