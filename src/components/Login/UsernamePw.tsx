@@ -150,11 +150,11 @@ export default function UsernamePw() {
           <UsernamePwAnotherDeviceButton />
         </div>
       </section>
-      <section className="other-device-option">
+      <section className="cancel-option">
         <div className="or-container">
           <div className="line"></div>
           <span>
-            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel" />
+            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel option hint" />
           </span>
           <div className="line"></div>
         </div>
