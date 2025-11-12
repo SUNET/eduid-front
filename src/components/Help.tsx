@@ -396,7 +396,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - security key list item 3"
-                        defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (2FA) to log in to eduID" toggle control under Security to off.`}
+                        defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (MFA) to log in to eduID" toggle control under Security to off.`}
                       />
                     </li>
                   </ul>
@@ -471,7 +471,7 @@ export function Help(): React.JSX.Element {
                   <li>
                     <FormattedMessage
                       description="login eduid - re-login list item 2"
-                      defaultMessage="Toggling 2FA login requirement setting."
+                      defaultMessage="Toggling MFA login requirement setting."
                     />
                   </li>
                   <li>
@@ -650,7 +650,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="security eduid - list item 1"
-                        defaultMessage={`Buttons to add Two-factor authentication to increase the security of your eduID by adding a layer 
+                        defaultMessage={`Buttons to add multi-factor authentication to increase the security of your eduID by adding a layer 
                             called a security key to your login process besides password. By also verifying the security key it is bound to your identity, increasing the assurance level of your account.
                             You can add as many as you wish and depending on your device (computer, mobile, operating system etc.), the options to add a security key include:`}
                       />
@@ -674,7 +674,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="security eduid - list item 2"
-                        defaultMessage={`Under "Manage your security keys" is a toggle control marked "Always use a second factor (2FA) to log in to eduID"
+                        defaultMessage={`Under "Manage your security keys" is a toggle control marked "Always use a second factor (MFA) to log in to eduID"
                            which can let you log in with your eduID account without using your added security key when allowed. Default setting is on.
                           `}
                       />
@@ -1367,10 +1367,7 @@ export function Help(): React.JSX.Element {
               />
             }
             additionalInfo={
-              <FormattedMessage
-                description="about security key - info"
-                defaultMessage="Adding an MFA/2FA Security Key"
-              />
+              <FormattedMessage description="about security key - info" defaultMessage="Adding an MFA Security Key" />
             }
           >
             <article>
@@ -1384,9 +1381,9 @@ export function Help(): React.JSX.Element {
                 <FormattedMessage
                   description="how more secure description 1"
                   defaultMessage={`Some services will require a higher security level and to improve the security of 
-                  your eduID, in addition to knowledge of your username (confirmed email address) and password 
+                  your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password 
                   combination, you can use another layer of authentication to log in. This is called multi-Factor 
-                  authentication (MFA); and in eduID's case two-factor authentication (2FA).`}
+                  authentication (MFA); and in eduID's case usually two-factor authentication (2FA).`}
                 />
               </p>
               <p>
@@ -1400,7 +1397,7 @@ export function Help(): React.JSX.Element {
               <h4>
                 <FormattedMessage
                   description="how add security key - heading"
-                  defaultMessage="How do I implement 2FA with eduID?"
+                  defaultMessage="How do I implement MFA with eduID?"
                 />
               </h4>
               <p>
@@ -1413,7 +1410,7 @@ export function Help(): React.JSX.Element {
               <p>
                 <FormattedMessage
                   description="how add security key - paragraph 2"
-                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Two-factor Authentication (2FA) in Security. You might still need to use your security key if other connecting services require 2FA."
+                  defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Manage your security keys in Security. You might still need to use your security key if other connecting services require MFA."
                 />
               </p>
               <h4>

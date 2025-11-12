@@ -13,7 +13,7 @@ async function linkToAdvancedSettings() {
     nav.click();
   });
   expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
-  expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
 }
 
 beforeEach(() => {
@@ -149,7 +149,7 @@ test("api call webauthn/remove", async () => {
   };
 
   mswServer.use(
-    http.post("webauthn/remove", async ({ request}) => {
+    http.post("webauthn/remove", async ({ request }) => {
       const body = (await request.json()) as RemoveWebauthnTokensRequest;
       if (body.credential_key != credential_key) {
         return new HttpResponse(null, { status: 400 });
@@ -193,8 +193,9 @@ test("security reducer, request credentials", async () => {
   };
   const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "requestCredentials" } } };
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "requestCredentials" } },
+  };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
@@ -216,15 +217,15 @@ test("security reducer, registerWebauthn", async () => {
       },
     ],
   };
-  const action = { 
+  const action = {
     type: "eduIDApi/executeQuery/fulfilled",
-    payload: {payload: payload},
-    meta: { arg: { endpointName: "registerWebauthn" }}
+    payload: { payload: payload },
+    meta: { arg: { endpointName: "registerWebauthn" } },
   };
   const state = securitySlice.reducer(initialState, action);
   expect(state).toEqual({
     ...initialState,
-    credentials: action.payload.payload.credentials
+    credentials: action.payload.payload.credentials,
   });
 });
 

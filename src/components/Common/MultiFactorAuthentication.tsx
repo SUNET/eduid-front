@@ -277,7 +277,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     <Fragment>
       <article id="add-two-factor">
         <h2>
-          <FormattedMessage description="security key title" defaultMessage="Two-factor Authentication (2FA)" />
+          <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
         </h2>
         <p>
           <FormattedMessage

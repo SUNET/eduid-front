@@ -85,7 +85,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       <h3 className="description-without-security">
         <FormattedMessage
           description="without extra security heading"
-          defaultMessage="Continue without security option"
+          defaultMessage="Continue without MFA authentication"
         />
       </h3>
       <p>
