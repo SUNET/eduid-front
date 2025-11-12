@@ -62,7 +62,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
         </h3>
         <div className="flex-between">
-          <p>
+          <p className="text-medium">
             <FormattedMessage
               defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
               description="security zone redirect info"
