@@ -11,7 +11,7 @@ export function Help(): React.JSX.Element {
   const intl = useIntl();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const signup_link = useAppSelector((state) => state.config.signup_link) || "https://eduid.se/register";
-  const dashboard_link = useAppSelector((state) => state.config.dashboard_link) || "https://eduid.se";
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link) || "https://eduid.se/profile/";
   const [fetchApprovedSecurityKeys] = securityApi.useLazyFetchApprovedSecurityKeysQuery();
 
   const locale = useAppSelector((state) => state.intl.locale);

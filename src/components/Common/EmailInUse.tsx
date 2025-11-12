@@ -29,7 +29,7 @@ export default function EmailInUse(): React.JSX.Element {
         </p>
       </div>
 
-      <EduIDLink to={reset_password_link ?? "/reset-password"}>
+      <EduIDLink to={reset_password_link ?? "/"}>
         <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
           <FormattedMessage defaultMessage="Reset your password" description="Signup" />
         </EduIDButton>
