@@ -2135,7 +2135,7 @@
   },
   "ezUeEW": {
     "developer_comment": "verified security key description",
-    "string": "Läs mer om din verifierade multifaktorsautentisering under {security}"
+    "string": "Läs mer om din verifierade multifaktorautentisering under {security}"
   },
   "f05TNT": {
     "developer_comment": "Security key toggle",
