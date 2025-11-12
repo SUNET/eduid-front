@@ -18,7 +18,6 @@ export interface FailureComponentProps {
 export function Errors() {
   /* Parse the URL from query parameters */
   const query = new URLSearchParams(useLocation().search);
-  const is_configured = useAppSelector((state) => state.config.is_configured);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   const errorURL = parseErrorURL(query);
