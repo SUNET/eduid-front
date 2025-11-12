@@ -1,3 +1,4 @@
+import EduIDLink from "components/Common/EduIDLink";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
@@ -22,12 +23,6 @@ export function Errors() {
 
   const errorURL = parseErrorURL(query);
 
-  function handleDashboardOnClick() {
-    if (is_configured && dashboard_link) {
-      window.location.href = dashboard_link;
-    }
-  }
-
   const isUnknown =
     errorURL.code !== "IDENTIFICATION_FAILURE" &&
     errorURL.code !== "AUTHENTICATION_FAILURE" &&
@@ -49,9 +44,9 @@ export function Errors() {
           description="Errors go to dashboard instruction"
         />
         &nbsp;
-        <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
+        <EduIDLink id="dashboard-button" to={dashboard_link ?? "/"}>
           <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
-        </a>
+        </EduIDLink>
       </p>
       <ErrorTechnicalInfo errorURL={errorURL} />
     </div>

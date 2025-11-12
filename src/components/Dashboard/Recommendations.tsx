@@ -2,11 +2,11 @@ import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, securityApi } from "apis/eduidSecurity";
+import EduIDLink from "components/Common/EduIDLink";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router";
 
 function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.Element | null {
   return (
@@ -28,9 +28,9 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.E
             defaultMessage="Read more details about your confirmed account at {account}"
             values={{
               account: (
-                <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+                <EduIDLink key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
                   <FormattedMessage description="recommendations account link" defaultMessage="Account" />
-                </Link>
+                </EduIDLink>
               ),
             }}
           />
@@ -42,9 +42,9 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.E
 
 function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): React.JSX.Element | null {
   const identityLink = (
-    <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
+    <EduIDLink key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
-    </Link>
+    </EduIDLink>
   );
   return (
     <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
@@ -89,9 +89,9 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
 
 function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
   const securityLink = (
-    <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
+    <EduIDLink key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
-    </Link>
+    </EduIDLink>
   );
   return (
     <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
@@ -136,13 +136,13 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
 
 function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
   const manageSecurityKeyLink = (
-    <Link
+    <EduIDLink
       key={`${SECURITY_PATH}#manage-security-keys`}
       to={`${SECURITY_PATH}#manage-security-keys`}
       aria-label="go to manage your security key section"
     >
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
-    </Link>
+    </EduIDLink>
   );
   const verifiedToken = props.tokens?.find((token) => token.verified);
   return (
@@ -233,9 +233,9 @@ export function Recommendations(): React.JSX.Element | null {
               organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
-              <Link key="/help" to="/help" aria-label="go to help page" target="_blank">
+              <EduIDLink key="/help" to="/help" aria-label="go to help page">
                 <FormattedMessage description="recommendations help link" defaultMessage="Help" />
-              </Link>
+              </EduIDLink>
             ),
           }}
         />
@@ -259,9 +259,9 @@ export function Recommendations(): React.JSX.Element | null {
       can be edited at  {account}."
           values={{
             account: (
-              <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
+              <EduIDLink key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
                 <FormattedMessage description="recommendations account link" defaultMessage="Account" />
-              </Link>
+              </EduIDLink>
             ),
           }}
         />

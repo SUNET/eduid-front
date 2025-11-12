@@ -1,5 +1,6 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EduIDLink from "components/Common/EduIDLink";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import React, { Fragment, ReactElement } from "react";
@@ -25,21 +26,21 @@ export function SecurityZoneInfo(): React.JSX.Element {
   const intl = useIntl();
 
   const toSecurity = (
-    <a href={SECURITY_PATH} aria-label="return to security page" onClick={() => sessionStorage.clear()}>
+    <EduIDLink to={SECURITY_PATH} aria-label="return to security page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone security link" defaultMessage="Security" />
-    </a>
+    </EduIDLink>
   );
 
   const toAccount = (
-    <a href={ACCOUNT_PATH} aria-label="return to account page" onClick={() => sessionStorage.clear()}>
+    <EduIDLink to={ACCOUNT_PATH} aria-label="return to account page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone account link" defaultMessage="Account" />
-    </a>
+    </EduIDLink>
   );
 
   const toIdentity = (
-    <a href={IDENTITY_PATH} aria-label="return to identity page" onClick={() => sessionStorage.clear()}>
+    <EduIDLink to={IDENTITY_PATH} aria-label="return to identity page" onClick={() => sessionStorage.clear()}>
       <FormattedMessage description="security zone identity link" defaultMessage="Identity" />
-    </a>
+    </EduIDLink>
   );
 
   const actionMap: Record<SecurityZoneAction, ActionInfo> = {

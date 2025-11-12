@@ -7,6 +7,7 @@ import personalDataApi from "apis/eduidPersonalData";
 import { ActionStatus, securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
 import { WizardLink } from "components/Common/WizardLink";
@@ -485,9 +486,9 @@ function AccordionItemWorld(): React.JSX.Element | null {
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
             Freja_eID: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+              <EduIDLink to="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
                 Freja eID
-              </a>
+              </EduIDLink>
             ),
           }}
         />

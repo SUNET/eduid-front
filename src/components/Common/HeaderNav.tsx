@@ -12,7 +12,8 @@ import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "componen
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
+import EduIDLink from "./EduIDLink";
 
 // export for use in tests
 export const activeClassName = "active";
@@ -131,9 +132,9 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </div>
             <ul className={isOpen.start ? "submenu-open" : "submenu"}>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
                   <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
-                </Link>
+                </EduIDLink>
               </li>
             </ul>
           </li>
@@ -160,18 +161,18 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </div>
             <ul className={isOpen.identity ? "submenu-open" : "submenu"}>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
                   <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link
+                <EduIDLink
                   onClick={() => setOpenMenu(false)}
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
                   <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
-                </Link>
+                </EduIDLink>
               </li>
             </ul>
           </li>
@@ -199,17 +200,17 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </div>
             <ul className={isOpen.security ? "submenu-open" : "submenu"}>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage
                     defaultMessage="Add multi-factor Authentication (MFA)"
                     description="security key title"
                   />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
                   <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
-                </Link>
+                </EduIDLink>
               </li>
             </ul>
           </li>
@@ -236,39 +237,39 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
             </div>
             <ul className={isOpen.account ? "submenu-open" : "submenu"}>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
                   <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
                   <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
                   <FormattedMessage defaultMessage="Language" description="Language" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
                   <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
                   <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
                   <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
-                </Link>
+                </EduIDLink>
               </li>
               <li>
-                <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
+                <EduIDLink onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
                   <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
-                </Link>
+                </EduIDLink>
               </li>
             </ul>
           </li>

@@ -2,8 +2,8 @@ import ThemeToggle from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
+import EduIDLink from "./EduIDLink";
 
 const Footer = (): React.JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
@@ -41,9 +41,9 @@ const Footer = (): React.JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
+        <EduIDLink to="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
           <div className="sunet-logo" />
-        </a>
+        </EduIDLink>
         <span>&copy;2013-2025</span>
       </div>
 
@@ -53,16 +53,16 @@ const Footer = (): React.JSX.Element => {
       <nav>
         <ul>
           <li>
-            <Link className="help-link" to="/help" target="_blank">
+            <EduIDLink className="help-link" to="/help">
               <FormattedMessage defaultMessage="Help" description="Footer help" />
-            </Link>
+            </EduIDLink>
           </li>
 
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
-              <a className="link" href="#" onClick={changeLanguage}>
+              <EduIDLink to="#" onClick={changeLanguage}>
                 {language}
-              </a>
+              </EduIDLink>
             </span>
           </li>
         </ul>

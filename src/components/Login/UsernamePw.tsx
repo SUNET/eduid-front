@@ -1,6 +1,7 @@
 import { loginApi } from "apis/eduidLogin";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import TextInput from "components/Common/EduIDTextInput";
 import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
@@ -9,7 +10,7 @@ import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -165,9 +166,9 @@ function UsernameInputPart(): React.JSX.Element {
                 }}
               />
             </legend>
-            <a href="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <EduIDLink to="#" className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
               <FormattedMessage defaultMessage="Different user?" description="Login username input" />
-            </a>
+            </EduIDLink>
           </div>
         )}
         <FinalField
@@ -199,9 +200,9 @@ function RenderRegisterLink(): React.JSX.Element {
     <div className="text-small">
       <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
       &nbsp;&nbsp;
-      <a href={toSignup} id="register-link">
+      <EduIDLink to={toSignup ?? "/"} id="register-link">
         <FormattedMessage defaultMessage="Register" description="Login front page" />
-      </a>
+      </EduIDLink>
     </div>
   );
 }
@@ -225,14 +226,14 @@ function RenderResetPasswordLink(): React.JSX.Element {
   };
 
   return (
-    <Link
+    <EduIDLink
       id="link-forgot-password"
-      className={`text-small ${request_in_progress ? "disabled" : ""}`}
+      className={`${request_in_progress ? "disabled" : ""} text-small`}
       to={"/"}
       onClick={sendLink}
     >
       <FormattedMessage defaultMessage="Forgot your password?" description="Reset password link" />
-    </Link>
+    </EduIDLink>
   );
 }
 

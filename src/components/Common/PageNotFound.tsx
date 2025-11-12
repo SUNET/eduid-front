@@ -1,8 +1,9 @@
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import EduIDLink from "./EduIDLink";
 
 export function PageNotFound(): React.JSX.Element {
-  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
+  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link) || "/";
 
   return (
     <section className="intro">
@@ -19,9 +20,9 @@ export function PageNotFound(): React.JSX.Element {
         </p>
       </div>
       <div>
-        <a href={eduid_site_link} id="not-found-link">
+        <EduIDLink to={eduid_site_link} id="not-found-link">
           <FormattedMessage description="not found link" defaultMessage="Go to eduID" />
-        </a>
+        </EduIDLink>
       </div>
     </section>
   );

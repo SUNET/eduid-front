@@ -1,6 +1,7 @@
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import EduIDButton from "./EduIDButton";
+import EduIDLink from "./EduIDLink";
 
 // identifiers used in tests
 export const registerHeaderClass = "register-header";
@@ -28,11 +29,11 @@ export default function EmailInUse(): React.JSX.Element {
         </p>
       </div>
 
-      <a href={reset_password_link}>
+      <EduIDLink to={reset_password_link ?? "/reset-password"}>
         <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
           <FormattedMessage defaultMessage="Reset your password" description="Signup" />
         </EduIDButton>
-      </a>
+      </EduIDLink>
     </div>
   );
 }

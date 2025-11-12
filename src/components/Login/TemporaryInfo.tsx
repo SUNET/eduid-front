@@ -1,4 +1,5 @@
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
@@ -63,11 +64,7 @@ export default function TemporaryInfo(props: {
             defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section.`}
             description="Temp info - message5"
             values={{
-              help: (
-                <a className="text-link" href="https://www.eduid.se/help" target="_blank" rel="noreferrer">
-                  eduid.se/help
-                </a>
-              ),
+              help: <EduIDLink to="https://www.eduid.se/help">eduid.se/help</EduIDLink>,
             }}
           />
         </span>

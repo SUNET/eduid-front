@@ -1,5 +1,6 @@
 import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -256,7 +257,7 @@ function DeveloperInfo(props: { qr_url?: string }) {
         <FormattedMessage defaultMessage="Developer info, not shown in production:" />
       </span>
       <span id="qr_url">
-        <a href={props.qr_url}>{props.qr_url}</a>
+        <EduIDLink to={props.qr_url}>{props.qr_url}</EduIDLink>
       </span>
     </div>
   );

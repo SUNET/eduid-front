@@ -1,5 +1,6 @@
 import { bankIDApi } from "apis/eduidBankid";
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -23,11 +24,7 @@ function BankID(): React.JSX.Element {
           defaultMessage={`To use this option you will need to first create a digital ID in the 
             {bankID_link} app.`}
           values={{
-            bankID_link: (
-              <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank" rel="noreferrer">
-                BankID
-              </a>
-            ),
+            bankID_link: <EduIDLink to="https://www.bankid.com/privat/skaffa-bankid">BankID</EduIDLink>,
           }}
         />
       </p>

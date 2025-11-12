@@ -11,11 +11,11 @@ import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router";
 import authnSlice from "slices/Authn";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
+import EduIDLink from "./EduIDLink";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
@@ -300,12 +300,12 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             defaultMessage={`You can read more about supported security keys in the Help section: {HelpSecurityKeys}.`}
             values={{
               HelpSecurityKeys: (
-                <Link className="text-link" to={`../../../help`} target="_blank">
+                <EduIDLink className="text-link" to={`../../../help`} target="_blank">
                   <FormattedMessage
                     description="about security key - handle"
                     defaultMessage="Improving the security level of eduID"
                   />
-                </Link>
+                </EduIDLink>
               ),
             }}
           />

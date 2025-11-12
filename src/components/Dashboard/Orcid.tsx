@@ -4,6 +4,7 @@ import { useAppSelector } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
+import EduIDLink from "components/Common/EduIDLink";
 import orcidIcon from "../../../img/vector_iD_icon-w.svg";
 
 /*********************************************************************************************************************/
@@ -89,7 +90,7 @@ export function Orcid(): React.JSX.Element {
               <span className="orcid-logo" />
             </td>
             <td className="orcid-link">
-              <a href={orcid.id}>{orcid.id}</a>
+              <EduIDLink to={orcid.id}>{orcid.id}</EduIDLink>
             </td>
             <td>
               <EduIDButton

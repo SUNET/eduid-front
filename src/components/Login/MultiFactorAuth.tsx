@@ -1,4 +1,5 @@
 import { loginApi } from "apis/eduidLogin";
+import EduIDLink from "components/Common/EduIDLink";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect } from "react";
@@ -154,9 +155,9 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
       {toDashboard && (
         <div className="links">
           <div className="text-small">
-            <a href={toDashboard}>
+            <EduIDLink to={toDashboard}>
               <FormattedMessage defaultMessage="go to eduID Dashboard" description="Login MFA link" />
-            </a>
+            </EduIDLink>
           </div>
         </div>
       )}

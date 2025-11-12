@@ -10,6 +10,7 @@ import { appLoadingSlice } from "slices/AppLoading";
 import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
 import EduIDButton from "./Common/EduIDButton";
+import EduIDLink from "./Common/EduIDLink";
 import Splash from "./Common/Splash";
 
 export function Index() {
@@ -67,17 +68,13 @@ export function Index() {
             defaultMessage="You can read more about eduID at {Sunet} website or in the"
             description="read more at Sunet"
             values={{
-              Sunet: (
-                <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank" rel="noreferrer">
-                  Sunet
-                </a>
-              ),
+              Sunet: <EduIDLink to="https://www.sunet.se/services/identifiering/eduid">Sunet</EduIDLink>,
             }}
           />
           &nbsp;
-          <a className="text-link" href={`${eduid_site_link}/help`} target="_blank" rel="noreferrer">
+          <EduIDLink to={`${eduid_site_link}/help`} target="_blank" rel="noreferrer">
             <FormattedMessage description="help link" defaultMessage="Help" />
-          </a>
+          </EduIDLink>
           &nbsp;
           <FormattedMessage
             defaultMessage="link in the footer. You can also register or log in using the buttons below!"

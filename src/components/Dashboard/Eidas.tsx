@@ -1,5 +1,6 @@
 import { eidasApi } from "apis/eduidEidas";
 import EduIDButton from "components/Common/EduIDButton";
+import EduIDLink from "components/Common/EduIDLink";
 import NotificationModal from "components/Common/NotificationModal";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -47,9 +48,9 @@ function Eidas(): React.JSX.Element {
           />
         </li>
       </ol>
-      <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+      <EduIDLink to="https://frejaeid.com/skaffa-freja-eid/">
         <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
-      </a>
+      </EduIDLink>
     </div>
   );
 
@@ -70,11 +71,7 @@ function Eidas(): React.JSX.Element {
           defaultMessage={`To use this option you will need to first create a digital ID in the 
             {freja_eid_link} app.`}
           values={{
-            freja_eid_link: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
-                Freja
-              </a>
-            ),
+            freja_eid_link: <EduIDLink to="https://frejaeid.com/skaffa-freja-eid/">Freja</EduIDLink>,
           }}
         />
       </p>

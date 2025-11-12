@@ -1,5 +1,6 @@
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+import EduIDLink from "./EduIDLink";
 
 export function GenericError() {
   return (
@@ -26,10 +27,10 @@ export function GenericError() {
 }
 
 function ToHomeOption() {
-  const toHome = useAppSelector((state) => state.config.eduid_site_link);
+  const toHome = useAppSelector((state) => state.config.eduid_site_link) || "/";
   return (
-    <a className="text-link" href={toHome}>
+    <EduIDLink to={toHome}>
       <FormattedMessage defaultMessage="Return to home" description="generic error page" />
-    </a>
+    </EduIDLink>
   );
 }

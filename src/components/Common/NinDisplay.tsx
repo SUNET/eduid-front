@@ -4,7 +4,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router";
+import EduIDLink from "./EduIDLink";
 
 interface NinDisplayProps {
   nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
@@ -14,7 +14,7 @@ interface NinDisplayProps {
 
 function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
-  const [removeNin] = securityApi.useLazyRemoveNinQuery()
+  const [removeNin] = securityApi.useLazyRemoveNinQuery();
 
   if (!props.nin) {
     // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that
@@ -23,7 +23,7 @@ function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
 
   const handleDelete = function (): void {
     if (props.allowDelete && props.nin) {
-      removeNin({nin: props.nin.number});
+      removeNin({ nin: props.nin.number });
     }
   };
 
@@ -58,9 +58,9 @@ export function NinDisplay(props: NinDisplayProps) {
     <div className="profile-grid-cell">
       {!props.nin ? (
         // if there is no NIN, render a link to verify-identity
-        <Link to={IDENTITY_PATH} className="display-data unverified">
+        <EduIDLink to={IDENTITY_PATH} className="display-data unverified">
           <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
-        </Link>
+        </EduIDLink>
       ) : (
         <RenderShowHideNin {...props} />
       )}
