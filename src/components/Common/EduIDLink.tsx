@@ -7,7 +7,7 @@ interface EduIDLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   className?: string;
 }
 
-const EduIDLink: React.FC<EduIDLinkProps> = ({ to, className, children, ...rest }) => {
+function EduIDLink({ to, className, children, ...rest }: EduIDLinkProps) {
   if (to.startsWith("http")) {
     return (
       <a className={className} href={to} {...rest} target={rest.target || "_blank"} rel="noopener noreferrer">
@@ -20,6 +20,6 @@ const EduIDLink: React.FC<EduIDLinkProps> = ({ to, className, children, ...rest 
       {children}
     </Link>
   );
-};
+}
 
 export default EduIDLink;
