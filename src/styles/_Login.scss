@@ -271,8 +271,8 @@ section.username-pw-option {
 }
 
 section.other-device-option .buttons {
-  margin-top: 1.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 // Remove margin-bottom from password field to eliminate extra space above forgot password link
@@ -284,7 +284,6 @@ section.username-pw-option form .form-group:nth-of-type(2) {
   display: block;
   margin-bottom: 1.5rem;
   .text-wrapper {
-    margin-bottom: 1rem;
     img {
       width: 6rem;
       padding-left: 0.5rem;
