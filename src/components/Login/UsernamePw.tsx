@@ -1,22 +1,23 @@
 import { loginApi } from "apis/eduidLogin";
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
+import { PassKey } from "components/Common/Passkey";
 import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect } from "react";
+import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
 import loginSlice from "slices/Login";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import passwordIcon from "../../../img/password-icon.svg";
 import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
-import { forgetThisDevice } from "./NewDevice";
+import { forgetThisDevice, RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 interface UsernamePwFormData {
@@ -31,35 +32,22 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
-  const [abortPasskeyAuthentication] = navigatorCredentialsApi.useLazyAbortQuery();
+  let loginHeading;
 
-  useEffect(() => {
-    if (webauthn) {
-      // start a conditional authentication for autofill passkey login
-      const authenticate = async () => {
-        if (ref) {
-          const result = await fetchMfaAuth({ ref });
-          if (result.isSuccess) {
-            const webauth_options = result.data.payload.webauthn_options;
-            if (webauth_options) {
-              const auth_result = await performAuthentication({
-                webauth_options: webauth_options,
-                mediation: "conditional",
-              });
-              if (auth_result.isSuccess) {
-                fetchMfaAuth({ ref, webauthn_response: auth_result.data });
-              }
-            }
-          }
-        }
-      };
-      authenticate();
-      return () => {
-        abortPasskeyAuthentication();
-      };
-    }
-  }, [webauthn, ref, fetchMfaAuth, performAuthentication, abortPasskeyAuthentication]);
+  if (securityZoneAction) {
+    loginHeading = (
+      <FormattedMessage
+        defaultMessage="Re-authentication: with Password"
+        description="Security zone username and Password heading"
+      />
+    );
+  } else if (webauthn) {
+    loginHeading = (
+      <FormattedMessage defaultMessage="Log in: with Passkey or Password" description="Login front page with passkey" />
+    );
+  } else {
+    loginHeading = <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />;
+  }
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -91,26 +79,46 @@ export default function UsernamePw() {
     return errors;
   }
 
+  async function getChallenge() {
+    if (ref) {
+      const response = await fetchMfaAuth({ ref: ref });
+      if (response.isSuccess) {
+        return response.data.payload.webauthn_options;
+      }
+    }
+  }
+
+  function useCredential(credential: PublicKeyCredentialJSON) {
+    if (ref) {
+      fetchMfaAuth({ ref: ref, webauthn_response: credential });
+    }
+  }
+
   return (
     <React.Fragment>
       <section className="intro">
-        <h1>
-          {securityZoneAction ? (
-            <FormattedMessage
-              defaultMessage="Re-authentication: with Password"
-              description="Security zone username and Password heading"
-            />
-          ) : (
-            <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />
-          )}
-        </h1>
-
+        <h1>{loginHeading}</h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
         <SecurityZoneInfo />
       </section>
-      <section className="username-pw">
+      {webauthn && (
+        <section className="passkey-option">
+          <PassKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
+        </section>
+      )}
+      <section className="username-pw-option">
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
+            <FormattedMessage
+              defaultMessage="or log in with password?"
+              description="Alternative login password option"
+            />
+          </span>
+          <div className="line"></div>
+        </div>
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
@@ -119,23 +127,40 @@ export default function UsernamePw() {
               <form onSubmit={formProps.handleSubmit}>
                 <UsernameInputPart />
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
-                <div className="flex-between">
-                  <div className="buttons">
-                    {!securityZoneAction && <LoginAbortButton />}
-                    <UsernamePwSubmitButton {...formProps} />
-                    <UsernamePwAnotherDeviceButton />
-                  </div>
-                  {!securityZoneAction && (
-                    <div className="links">
-                      <RenderResetPasswordLink />
-                      <RenderRegisterLink />
-                    </div>
-                  )}
+                {!securityZoneAction && <RenderResetPasswordLink />}
+                <div className="buttons">
+                  <UsernamePwSubmitButton {...formProps} />
                 </div>
               </form>
             );
           }}
         ></FinalForm>
+        <RememberMeCheckbox />
+      </section>
+      <section className="other-device-option">
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
+            <FormattedMessage
+              defaultMessage="or log in with other device?"
+              description="Alternative login other device option"
+            />
+          </span>
+          <div className="line"></div>
+        </div>
+        <div className="buttons">
+          <UsernamePwAnotherDeviceButton />
+        </div>
+      </section>
+      <section className="cancel-option">
+        <div className="or-container">
+          <div className="line"></div>
+          <span>
+            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel option hint" />
+          </span>
+          <div className="line"></div>
+        </div>
+        <div className="buttons">{!securityZoneAction && <LoginAbortButton />}</div>
       </section>
     </React.Fragment>
   );
@@ -143,7 +168,6 @@ export default function UsernamePw() {
 
 function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
-  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
 
   function handleClickWrongPerson() {
@@ -183,27 +207,7 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return (
-    <UserNameInput
-      name="username"
-      autoFocus={true}
-      required={true}
-      autoComplete={webauthn ? "username webauthn" : "username"}
-    />
-  );
-}
-
-function RenderRegisterLink(): React.JSX.Element {
-  const toSignup = useAppSelector((state) => state.config.signup_link);
-  return (
-    <div className="text-small">
-      <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
-      &nbsp;&nbsp;
-      <a href={toSignup} id="register-link">
-        <FormattedMessage defaultMessage="Register" description="Login front page" />
-      </a>
-    </div>
-  );
+  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
 }
 
 function RenderResetPasswordLink(): React.JSX.Element {
@@ -256,17 +260,14 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
 
   return (
     <EduIDButton
-      buttonstyle="primary"
+      buttonstyle="primary icon"
       type="submit"
       aria-disabled={_disabled}
       id="login-form-button"
       onClick={props.handleSubmit}
     >
-      {securityZoneAction ? (
-        <FormattedMessage defaultMessage="Continue" description="Security zone continue" />
-      ) : (
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      )}
+      <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
+      <FormattedMessage defaultMessage="log in with password" description="Login front page" />
     </EduIDButton>
   );
 }
@@ -289,7 +290,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="log in with other device" description="Login UsernamePw" />
     </EduIDButton>
   );
 }

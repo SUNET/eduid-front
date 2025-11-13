@@ -8,6 +8,7 @@ interface TextInputProps extends FieldRenderProps<string> {
   disabled?: boolean;
   autoComplete?: string;
   type?: HTMLInputTypeAttribute;
+  onFocus?: () => void;
 }
 
 export default function TextInput(props: TextInputProps) {

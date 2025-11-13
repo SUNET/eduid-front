@@ -59,6 +59,10 @@
     "developer_comment": "verify your security key description",
     "string": "Verify your security key at {security}"
   },
+  "/ZBgjJ": {
+    "developer_comment": "passkey authn help text",
+    "string": "E.g. Passkey on your USB Security Key or with the device you are currently using."
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -519,6 +523,10 @@
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
+  },
+  "9DLA8F": {
+    "developer_comment": "login this device, passkey button",
+    "string": "Passkey"
   },
   "9K6DoI": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
@@ -1630,6 +1638,10 @@
   "YCepbk": {
     "developer_comment": "security eduid - list item 1-1",
     "string": "This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics."
+  },
+  "YDSaaV": {
+    "developer_comment": "login passkey primary option button",
+    "string": "Use my passkey"
   },
   "YDtIOb": {
     "developer_comment": "account eduid - list item 3-1",
