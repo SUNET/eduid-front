@@ -2,6 +2,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
+import { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
@@ -12,6 +13,7 @@ interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
   const intl = useIntl();
+  const [pwScore, setPwScore] = useState(0);
 
   const new_password_placeholder = intl.formatMessage({
     id: "placeholder.new_password_placeholder",
@@ -25,11 +27,12 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     description: "placeholder text for repeat new password",
   });
 
-  function updatePasswordData() {
+  function updatePasswordData(data: { score?: number }) {
     // This function is called when the password strength meter has calculated password strength
     // on the current value in the form. We need to trigger validation of the field again at this
     // point, since validation uses this calculated value (and will already have executed when we
     // get here).
+    setPwScore(data.score ?? 0);
     props.formProps.form.change("custom", props.formProps.values?.custom);
   }
 
@@ -134,7 +137,8 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 type="submit"
                 id="chpass-button"
                 buttonstyle="primary"
-                disabled={formProps.submitting || formProps.invalid}
+                // prevent weak password submission by disabling save button if score is too low
+                disabled={formProps.submitting || formProps.invalid || Boolean(pwScore <= 2)}
                 onClick={formProps.handleSubmit}
               >
                 <FormattedMessage defaultMessage="Save" description="button save" />
