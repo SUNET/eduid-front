@@ -68,6 +68,28 @@ function bufferToBase64url(buffer: ArrayBuffer | null): string | undefined {
   return base64urlString;
 }
 
+/**
+ * Type guard to check if a credential has an assertion response (login/authentication)
+ */
+function hasAssertionResponse(
+  credential: PublicKeyCredential
+): credential is PublicKeyCredential & { response: AuthenticatorAssertionResponse } {
+  return typeof credential.response === "object" && credential.response !== null && "signature" in credential.response;
+}
+
+/**
+ * Type guard to check if a credential has an attestation response (registration)
+ */
+function hasAttestationResponse(
+  credential: PublicKeyCredential
+): credential is PublicKeyCredential & { response: AuthenticatorAttestationResponse } {
+  return (
+    typeof credential.response === "object" &&
+    credential.response !== null &&
+    "attestationObject" in credential.response
+  );
+}
+
 export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCredentialJSON {
   try {
     return credential.toJSON();
@@ -75,8 +97,10 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
     if (error instanceof TypeError) {
       // An extension has created an incomplete PublicKeyCredential missing a toJSON method
       // We need to serialize it manually
-      if (credential.response instanceof AuthenticatorAssertionResponse) {
-        // for using credential
+
+      // Let us assume we have a plain object and build from there
+      if (hasAssertionResponse(credential)) {
+        // Include the data expected by backend and only that
         return {
           id: credential.id,
           rawId: bufferToBase64url(credential.rawId),
@@ -89,8 +113,8 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
             userHandle: bufferToBase64url(credential.response.userHandle),
           },
         };
-      } else if (credential.response instanceof AuthenticatorAttestationResponse) {
-        // for registering credential
+      } else if (hasAttestationResponse(credential)) {
+        // Include the data expected by backend and only that
         return {
           id: credential.id,
           rawId: bufferToBase64url(credential.rawId),
@@ -98,10 +122,6 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
           clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
           response: {
             clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
-            authenticatorData: bufferToBase64url(credential.response.getAuthenticatorData()),
-            transports: credential.response.getTransports(),
-            publicKey: bufferToBase64url(credential.response.getPublicKey()),
-            publicKeyAlgorithm: credential.response.getPublicKeyAlgorithm(),
             attestationObject: bufferToBase64url(credential.response.attestationObject),
           },
         };
