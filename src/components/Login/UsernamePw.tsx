@@ -17,7 +17,7 @@ import passwordIcon from "../../../img/password-icon.svg";
 import qrCode from "../../../img/qr-code.svg";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
-import { forgetThisDevice } from "./NewDevice";
+import { forgetThisDevice, RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 interface UsernamePwFormData {
@@ -134,6 +134,7 @@ export default function UsernamePw() {
             );
           }}
         ></FinalForm>
+        <RememberMeCheckbox />
       </section>
       <section className="other-device-option">
         <div className="or-container">
