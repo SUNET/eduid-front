@@ -51,13 +51,13 @@
     "developer_comment": "letter proofing modal form label",
     "string": "Kod"
   },
-  "/Q+C63": {
-    "developer_comment": "Security zone continue",
-    "string": "Fortsätt"
-  },
   "/XduYi": {
     "developer_comment": "verify your security key description",
     "string": "Verifiera din säkerhetsnyckel under {security}"
+  },
+  "/ZBgjJ": {
+    "developer_comment": "passkey authn help text",
+    "string": "T.ex. passkey på din USB-säkerhetsnyckel eller med enheten som du just nu använder."
   },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
@@ -74,6 +74,10 @@
   "/ueJt0": {
     "developer_comment": "DeleteAccount",
     "string": "Spärra och radera eduID"
+  },
+  "/xDoS2": {
+    "developer_comment": "Login front page with passkey",
+    "string": "Logga in: med passkey eller lösenord"
   },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
@@ -341,10 +345,6 @@
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
   },
-  "5lHsOL": {
-    "developer_comment": "Login front page",
-    "string": "Registrera"
-  },
   "5m/KL7": {
     "developer_comment": "start eduid - list item 3-4",
     "string": "en verifierad säkerhetsnyckel (kopplat din verifierade identitet till din multifaktor-inloggning)."
@@ -464,10 +464,6 @@
     "developer_comment": "ErrorURL eduid error",
     "string": "Du är ej inloggad, eller så avslutades sessionen."
   },
-  "891gyK": {
-    "developer_comment": "Login UsernamePw",
-    "string": "Annan enhet"
-  },
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "Du har uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning."
@@ -515,10 +511,6 @@
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Kom ihåg mig på den här enheten"
-  },
-  "9CnPOD": {
-    "developer_comment": "Login front page",
-    "string": "Har du inte eduID?"
   },
   "9K6DoI": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
@@ -623,6 +615,10 @@
   "CE87Ss": {
     "developer_comment": "help - lead",
     "string": "Nedan ser du allmän information om tjänsten, svar på vanliga frågor om användandet av eduID och kontaktinformation till supporten."
+  },
+  "CF8nQa": {
+    "developer_comment": "passkey heading",
+    "string": "Snabbare och enklare autentisering"
   },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
@@ -955,6 +951,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
+  "Jhe1Dz": {
+    "developer_comment": "Login front page",
+    "string": "logga in med lösenord"
+  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1101,6 +1101,10 @@
   "NgScX1": {
     "developer_comment": "Emails button add",
     "string": "Lägg till"
+  },
+  "Ni52Zp": {
+    "developer_comment": "Login UsernamePw",
+    "string": "logga in med annan enhet"
   },
   "NmCGzv": {
     "developer_comment": "delete.confirm_button",
@@ -1364,6 +1368,10 @@
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
+  },
+  "Tg4Cxq": {
+    "developer_comment": "security zone redirect info",
+    "string": "Du kan logga in säkert med din passkey mha fingeravtryck, ansiktsigenkänning eller andra skärmlåsmetoder."
   },
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Denna säkerhetsnyckel har redan registrerats. Vänligen försök med en annan."
@@ -1711,6 +1719,10 @@
     "developer_comment": "Signup credentials button",
     "string": "Försök igen"
   },
+  "ZxBAyg": {
+    "developer_comment": "Alternative login other device option",
+    "string": "eller logga in med annan enhet?"
+  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "tar bort inaktiva konton efter två år,"
@@ -1845,6 +1857,10 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
+  "bg6iD8": {
+    "developer_comment": "Alternative login password option",
+    "string": "eller logga in med lösenord?"
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -1876,6 +1892,10 @@
   "cRNzAJ": {
     "developer_comment": "orcid remove",
     "string": "ta bort"
+  },
+  "ch+1oB": {
+    "developer_comment": "Cancel option hint",
+    "string": "eller återvända till föregående sida?"
   },
   "change pw action": {
     "string": "byt lösenord"
@@ -3357,10 +3377,6 @@
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
-  "uzoZmv": {
-    "developer_comment": "Login front page",
-    "string": "Logga in"
-  },
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "Följande identiteter är nu kopplade till ditt eduID"
@@ -3422,6 +3438,10 @@
   "wMii57": {
     "developer_comment": "security zone identity link",
     "string": "Identitet"
+  },
+  "wN5FNR": {
+    "developer_comment": "login passkey primary option button",
+    "string": "logga in med passkey"
   },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
