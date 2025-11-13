@@ -46,11 +46,7 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
         {active ? (
           <SecurityKeyActive />
         ) : (
-          <SecurityKeyInactive
-            disabled={!!props.disabled}
-            useSecurityKey={useSecurityKey}
-            discoverable={props.discoverable}
-          />
+          <SecurityKeyInactive disabled={!!props.disabled} useSecurityKey={useSecurityKey} />
         )}
         {active && (
           <p className="help-text">
@@ -75,11 +71,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   return (
     <Fragment>
       <h3>
-        {props.discoverable ? (
-          <FormattedMessage description="login this device, passkey button" defaultMessage="Passkey" />
-        ) : (
-          <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
-        )}
+        <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
         {props.discoverable ? (
@@ -105,11 +97,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         id="mfa-security-key"
         disabled={props.disabled}
       >
-        {props.discoverable ? (
-          <FormattedMessage description="login passkey primary option button" defaultMessage="Use my passkey" />
-        ) : (
-          <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
-        )}
+        <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </button>
     </Fragment>
   );

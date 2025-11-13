@@ -14,6 +14,7 @@ interface UserNameInputProps {
   autoComplete?: "username";
   helpBlock?: React.ReactNode; // help text shown above input
   defaultValue?: string;
+  onFocus?: () => void;
 }
 
 export default function UserNameInput(props: UserNameInputProps): React.JSX.Element {
@@ -56,6 +57,7 @@ export default function UserNameInput(props: UserNameInputProps): React.JSX.Elem
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
       label={<FormattedMessage defaultMessage="Username" description="profile username display title" />}
+      onFocus={props.onFocus}
     />
   );
 }
