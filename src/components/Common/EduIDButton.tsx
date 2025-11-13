@@ -37,4 +37,5 @@ const EduIDButton = forwardRef<HTMLButtonElement, EduIDButtonProps>((props, ref)
   );
 });
 
+EduIDButton.displayName = "EduIDButton";
 export default EduIDButton;
