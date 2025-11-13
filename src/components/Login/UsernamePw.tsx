@@ -32,6 +32,22 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  let loginHeading;
+
+  if (securityZoneAction) {
+    loginHeading = (
+      <FormattedMessage
+        defaultMessage="Re-authentication: with Password"
+        description="Security zone username and Password heading"
+      />
+    );
+  } else if (webauthn) {
+    loginHeading = (
+      <FormattedMessage defaultMessage="Log in: with Passkey or Password" description="Login front page with passkey" />
+    );
+  } else {
+    loginHeading = <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />;
+  }
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
     const errors: UsernamePwFormData = {};
@@ -81,22 +97,7 @@ export default function UsernamePw() {
   return (
     <React.Fragment>
       <section className="intro">
-        <h1>
-          {securityZoneAction ? (
-            <FormattedMessage
-              defaultMessage="Re-authentication: with Password"
-              description="Security zone username and Password heading"
-            />
-          ) : webauthn ? (
-            <FormattedMessage
-              defaultMessage="Log in: with Passkey or Password"
-              description="Login front page with passkey"
-            />
-          ) : (
-            <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />
-          )}
-        </h1>
-
+        <h1>{loginHeading}</h1>
         <div className="lead">
           <LoginAtServiceInfo service_info={service_info} />
         </div>
