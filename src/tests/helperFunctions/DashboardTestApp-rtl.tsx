@@ -1,6 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
+import { LOCALIZED_MESSAGES } from "globals";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as configInitialState } from "slices/IndexConfig";
@@ -16,6 +17,10 @@ export const defaultDashboardTestState = {
   },
   personal_data: {
     eppn: "test-eppn",
+  },
+  intl: {
+    locale: "en",
+    messages: LOCALIZED_MESSAGES.en,
   },
 };
 

@@ -12,7 +12,6 @@ import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
 import "../../src/styles/index.scss";
-import "./public-path";
 
 function showErrorMsg() {
   const params = new URLSearchParams(document.location.search);

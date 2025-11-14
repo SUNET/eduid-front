@@ -1,5 +1,6 @@
 {
-  "jest.jestCommandLine": "node_modules/.bin/jest",
+  "vitest.enable": true,
+  "vitest.commandLine": "npm test --",
   "cSpell.words": [
     "Akkurat",
     "bubbletip",

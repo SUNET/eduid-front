@@ -1,24 +1,41 @@
 import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
-import { act } from "react";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+import {
+  act,
+  defaultDashboardTestState,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Security" });
-  act(() => {
-    nav.click();
+  await waitFor(() => {
+    const nav = screen.getByRole("link", { name: "Security" });
+    act(() => {
+      nav.click();
+    });
   });
-  expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
-  expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
+  await waitFor(() => {
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })
+    ).toBeInTheDocument();
+  });
+  // Check for the specific security key button (external USB key, not "this device")
+  await waitFor(() => {
+    const securityKeyButton = screen.getByRole("button", { name: /security key/i });
+    expect(securityKeyButton).toBeEnabled();
+    expect(securityKeyButton).toHaveAttribute("id", "security-webauthn-button");
+  });
 }
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("renders security key as expected, not security key added", async () => {

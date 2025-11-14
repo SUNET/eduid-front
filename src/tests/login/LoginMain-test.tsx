@@ -7,7 +7,7 @@ import { loginTestState, render, screen, waitFor } from "../helperFunctions/Logi
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("show splash screen when not configured", () => {

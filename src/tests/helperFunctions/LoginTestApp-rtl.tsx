@@ -1,6 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
+import { LOCALIZED_MESSAGES } from "globals";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
@@ -36,7 +37,7 @@ export const loginTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigator
   login: loginInitialState,
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: {},
-  intl: { locale: "en", messages: {} },
+  intl: { locale: "en", messages: LOCALIZED_MESSAGES.en },
   resetPassword: resetPasswordState,
   chpass: changePasswordInitialState,
   emails: emailsInitialState,

@@ -5,7 +5,7 @@ import { defaultDashboardTestState, render, screen } from "./helperFunctions/Das
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("shows splash screen when not configured", () => {

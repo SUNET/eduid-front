@@ -1,11 +1,10 @@
 import { IndexMain } from "components/IndexMain";
-import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { act, defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("renders bankID as expected", async () => {

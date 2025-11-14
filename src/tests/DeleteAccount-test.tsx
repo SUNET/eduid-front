@@ -1,9 +1,15 @@
 import { activeClassName } from "components/Common/HeaderNav";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
-import { act } from "react";
 import { mswServer } from "setupTests";
-import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import {
+  act,
+  defaultDashboardTestState,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAccountSettings() {
   // Navigate to Identity
@@ -18,7 +24,7 @@ async function linkToAccountSettings() {
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  window.scroll = vi.fn();
 });
 
 test("renders DeleteAccount as expected", async () => {
@@ -59,13 +65,17 @@ test("can delete eduid account", async () => {
   expect(button).toBeEnabled();
 
   // Click the 'delete eduid' button
-  fireEvent.click(button);
+  act(() => {
+    fireEvent.click(button);
+  });
   expect(screen.getByRole("heading", { name: /Are you sure/i })).toBeInTheDocument();
 
   const deleteButton = screen.getByRole("button", { name: /delete my eduid/i });
   expect(deleteButton).toBeEnabled();
 
-  fireEvent.click(deleteButton);
+  act(() => {
+    fireEvent.click(deleteButton);
+  });
 
   // wait for the modal to disappear
   await waitFor(() => {
@@ -83,6 +93,8 @@ test("render, enable navigation back to security settings", async () => {
   await linkToAccountSettings();
   const backToSecuritySettings = screen.getByLabelText(/To Security settings/i);
   expect(backToSecuritySettings).toBeInTheDocument();
-  fireEvent.click(backToSecuritySettings);
+  act(() => {
+    fireEvent.click(backToSecuritySettings);
+  });
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Security/);
 });
