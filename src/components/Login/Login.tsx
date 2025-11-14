@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
-import { NewDevice, RememberMeCheckbox, initKnownDevice } from "./NewDevice";
+import { NewDevice, initKnownDevice } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
@@ -85,11 +85,6 @@ function Login(): React.JSX.Element {
       {/* TODO: Remove when the backend no longer uses next_page === "PASSWORD" */}
       {next_page === "PASSWORD" && <UsernamePw />}
       {next_page === "FINISHED" && <RenderFinished />}
-      {
-        /* show remember me toggle only for login password and MFA page */ (next_page === "USERNAMEPASSWORD" ||
-          next_page === "MFA" ||
-          next_page === "PASSWORD") && <RememberMeCheckbox />
-      }
       {error_state === "login.user_terminated" && <UserTerminated />}
     </React.Fragment>
   );

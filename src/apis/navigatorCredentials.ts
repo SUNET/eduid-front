@@ -16,8 +16,8 @@ async function handlePerformAuthentication(args: AuthenticationRequest) {
     signal: navigatorAbortController?.signal,
     mediation: args.mediation,
   });
-  if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAssertionResponse) {
-    return { data: credentialToJSON(credential) };
+  if (credential) {
+    return { data: credentialToJSON(credential as PublicKeyCredential) };
   }
   throw new Error("Unable to obtain credential.");
 }
@@ -25,8 +25,8 @@ async function handlePerformAuthentication(args: AuthenticationRequest) {
 async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON) {
   const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(args);
   const credential = await navigator.credentials.create({ publicKey });
-  if (credential instanceof PublicKeyCredential && credential.response instanceof AuthenticatorAttestationResponse) {
-    return { data: credentialToJSON(credential) };
+  if (credential) {
+    return { data: credentialToJSON(credential as PublicKeyCredential) };
   }
   throw new Error("Unable to create credential.");
 }

@@ -9,11 +9,13 @@ interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
   onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
+  discoverable?: boolean;
 }
 
 interface InactiveSecurityKeyProps {
   disabled?: boolean;
   useSecurityKey(): void;
+  discoverable?: boolean;
 }
 
 export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
@@ -72,10 +74,17 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
-        <FormattedMessage
-          description="platform authn help text"
-          defaultMessage="E.g. USB Security Key or passkey with the device you are currently using."
-        />
+        {props.discoverable ? (
+          <FormattedMessage
+            description="passkey authn help text"
+            defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
+          />
+        ) : (
+          <FormattedMessage
+            description="platform authn help text"
+            defaultMessage="E.g. USB Security Key or passkey with the device you are currently using."
+          />
+        )}
       </p>
       {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
       <button

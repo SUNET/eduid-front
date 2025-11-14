@@ -95,7 +95,7 @@ test("recommendations for new users, add your security key", async () => {
     routes: ["/profile/"],
   });
 
-  expect(screen.getByText(/Add two-factor authentication at/i)).toBeInTheDocument();
+  expect(screen.getByText(/Add multi-factor authentication at/i)).toBeInTheDocument();
   const securityPath = screen.getAllByRole("link", { name: /Security/i })[0];
   expect(securityPath).toHaveAttribute("href", SECURITY_PATH);
 

@@ -3,7 +3,14 @@ import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { act, defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+import {
+  act,
+  defaultDashboardTestState,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "./helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
@@ -14,7 +21,9 @@ async function linkToAdvancedSettings() {
     });
   });
   await waitFor(() => {
-    expect(screen.getByRole("heading", { level: 2, name: "Two-factor Authentication (2FA)" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })
+    ).toBeInTheDocument();
   });
   // Check for the specific security key button (external USB key, not "this device")
   await waitFor(() => {

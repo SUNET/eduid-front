@@ -113,16 +113,16 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
         <span>
           {props.tokens?.length ? (
             <FormattedMessage
-              description="read more about your two-factor authentication description"
-              defaultMessage="Read more about your two-factor authentication at {security}"
+              description="read more about your multi-factor authentication description"
+              defaultMessage="Read more about your multi-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
             />
           ) : (
             <FormattedMessage
-              description="add two-factor authentication description"
-              defaultMessage="Add two-factor authentication at {security}"
+              description="add multi-factor authentication description"
+              defaultMessage="Add multi-factor authentication at {security}"
               values={{
                 security: securityLink,
               }}
@@ -166,7 +166,7 @@ function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
           {verifiedToken ? (
             <FormattedMessage
               description="verified security key description"
-              defaultMessage="Read more details about your verified two-factor authentication at {security}"
+              defaultMessage="Read more details about your verified multi-factor authentication at {security}"
               values={{
                 security: manageSecurityKeyLink,
               }}

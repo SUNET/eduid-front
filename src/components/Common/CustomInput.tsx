@@ -13,6 +13,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   helpBlock?: string;
   passwordStrengthMeter?: string;
   children?: React.ReactNode;
+  onFocus?: () => void;
 }
 
 export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
@@ -45,6 +46,7 @@ const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
       aria-required={props.required}
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
+      onFocus={props.onFocus}
     />
   );
 };

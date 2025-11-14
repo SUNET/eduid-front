@@ -23,7 +23,10 @@ export function Security(): React.JSX.Element {
         </h1>
         <div className="lead">
           <p>
-            <FormattedMessage description="security lead title" defaultMessage="Enhanced security of your eduID." />
+            <FormattedMessage
+              description="security lead title"
+              defaultMessage="Enhance and manage the security of your eduID."
+            />
           </p>
         </div>
       </section>
