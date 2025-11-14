@@ -42,12 +42,13 @@ export function ResetPasswordApp(): React.JSX.Element {
   }, [dispatch, swedishEID_status]);
 
   useEffect(() => {
-    if (loginRef === undefined && params.ref !== undefined) {
-      // If the user reloads the page, we restore state.login.ref with the login ref we still have as a URL parameter
-      dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
+    if (next_page === undefined) {
+      if (loginRef === undefined && params.ref !== undefined) {
+        dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
+      }
+      dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
     }
-    dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
-  }, [dispatch, loginRef, params]);
+  }, [dispatch, loginRef, params, next_page]);
 
   return (
     <React.Fragment>
