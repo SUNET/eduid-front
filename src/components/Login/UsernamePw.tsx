@@ -109,16 +109,18 @@ export default function UsernamePw() {
         </section>
       )}
       <section className="username-pw-option">
-        <div className="or-container">
-          <div className="line"></div>
-          <span>
-            <FormattedMessage
-              defaultMessage="or log in with password?"
-              description="Alternative login password option"
-            />
-          </span>
-          <div className="line"></div>
-        </div>
+        {webauthn && (
+          <div className="or-container">
+            <div className="line"></div>
+            <span>
+              <FormattedMessage
+                defaultMessage="or log in with password?"
+                description="Alternative login password option"
+              />
+            </span>
+            <div className="line"></div>
+          </div>
+        )}
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
