@@ -61,7 +61,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
   } else if (window.location.pathname.includes("login")) {
     button = (
       <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
-        <FormattedMessage defaultMessage="Register" description="Header register" />
+        <FormattedMessage defaultMessage="get eduid" description="Header register" />
       </EduIDButton>
     );
   } else if (eppn) {
