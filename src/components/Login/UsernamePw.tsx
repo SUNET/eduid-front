@@ -114,7 +114,7 @@ export default function UsernamePw() {
             <div className="line"></div>
             <span>
               <FormattedMessage
-                defaultMessage="or log in with password?"
+                defaultMessage="or other log in options?"
                 description="Alternative login password option"
               />
             </span>
