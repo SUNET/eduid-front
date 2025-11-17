@@ -101,14 +101,6 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
                 />
               </p>
             )}
-            {!remember_me && (
-              <p className="help-text">
-                <FormattedMessage
-                  defaultMessage="Allowing eduID to remember you on this device makes logging in easier and more secure."
-                  description="Login remember user device"
-                />
-              </p>
-            )}
           </legend>
           <input
             onChange={handleSwitchChange}

@@ -58,17 +58,18 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   return (
     <div className="status-box">
       <div className="text-wrapper">
-        <h3>
-          <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
-        </h3>
         <div className="flex-between">
-          <p className="text-medium">
-            <FormattedMessage
-              defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
-              description="security zone redirect info"
-            />
-            {/* Activate passkey help link when related help content is available */}
-            {/* <FormattedMessage
+          <div>
+            <h3>
+              <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
+            </h3>
+            <p className="text-medium">
+              <FormattedMessage
+                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
+                description="security zone redirect info"
+              />
+              {/* Activate passkey help link when related help content is available */}
+              {/* <FormattedMessage
                 defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or 
                 other screen-lock methods. {howPasskeyWork}"
                 description="security zone redirect info"
@@ -80,8 +81,8 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
                   ),
                 }}
               /> */}
-          </p>
-
+            </p>
+          </div>
           <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="Passkey icon" className="passkey-image" />
         </div>
       </div>
