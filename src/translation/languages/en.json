@@ -31,10 +31,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
-  "/ANjhk": {
-    "developer_comment": "Header register",
-    "string": "Register"
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
@@ -596,6 +592,10 @@
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code."
   },
+  "BtF+SP": {
+    "developer_comment": "Header register",
+    "string": "get eduid"
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Change password: Suggested password"
@@ -960,10 +960,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
   },
-  "Jhe1Dz": {
-    "developer_comment": "Login front page",
-    "string": "log in with password"
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
@@ -1047,6 +1043,10 @@
     "developer_comment": "Language",
     "string": "Language"
   },
+  "MTA9aj": {
+    "developer_comment": "Alternative login password option",
+    "string": "or other log in options?"
+  },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
     "string": "A unique username for your eduID that is generated for you when creating the account."
@@ -1110,10 +1110,6 @@
   "NgScX1": {
     "developer_comment": "Emails button add",
     "string": "Add"
-  },
-  "Ni52Zp": {
-    "developer_comment": "Login UsernamePw",
-    "string": "log in with other device"
   },
   "NmCGzv": {
     "developer_comment": "delete.confirm_button",
@@ -1728,10 +1724,6 @@
     "developer_comment": "Signup credentials button",
     "string": "Retry"
   },
-  "ZxBAyg": {
-    "developer_comment": "Alternative login other device option",
-    "string": "or log in with other device?"
-  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "retains inactive accounts for a maximum of two years,"
@@ -1743,6 +1735,10 @@
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
     "string": "Names & Display Name"
+  },
+  "aXiept": {
+    "developer_comment": "Login UsernamePw other device",
+    "string": "other device"
   },
   "actions.action-completed": {
     "string": "Success"
@@ -1866,10 +1862,6 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
-  "bg6iD8": {
-    "developer_comment": "Alternative login password option",
-    "string": "or log in with password?"
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -1901,10 +1893,6 @@
   "cRNzAJ": {
     "developer_comment": "orcid remove",
     "string": "remove"
-  },
-  "ch+1oB": {
-    "developer_comment": "Cancel option hint",
-    "string": "or return to previous page?"
   },
   "change pw action": {
     "string": "change password"
@@ -2181,10 +2169,6 @@
   "fEsIEZ": {
     "developer_comment": "Signup",
     "string": "If this is your eduID, you can reset your password to log back in."
-  },
-  "flBt7j": {
-    "developer_comment": "Login remember user device",
-    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -2787,6 +2771,10 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "A button connecting your eduID with your existing ORCID iD."
+  },
+  "o+wdGq": {
+    "developer_comment": "Login front page pw",
+    "string": "Log in"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
