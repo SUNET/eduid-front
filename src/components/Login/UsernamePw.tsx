@@ -111,10 +111,7 @@ export default function UsernamePw() {
         <div className="or-container">
           <div className="line"></div>
           <span>
-            <FormattedMessage
-              defaultMessage="or log in with password?"
-              description="Alternative login password option"
-            />
+            <FormattedMessage defaultMessage="Other login options" description="Alternative login option" />
           </span>
           <div className="line"></div>
         </div>
@@ -128,37 +125,14 @@ export default function UsernamePw() {
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
                 {!securityZoneAction && <RenderResetPasswordLink />}
                 <div className="buttons">
+                  {!securityZoneAction && <LoginAbortButton />}
                   <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
                 </div>
               </form>
             );
           }}
         ></FinalForm>
-      </section>
-      <section className="other-device-option">
-        <div className="or-container">
-          <div className="line"></div>
-          <span>
-            <FormattedMessage
-              defaultMessage="or log in with other device?"
-              description="Alternative login other device option"
-            />
-          </span>
-          <div className="line"></div>
-        </div>
-        <div className="buttons">
-          <UsernamePwAnotherDeviceButton />
-        </div>
-      </section>
-      <section className="cancel-option">
-        <div className="or-container">
-          <div className="line"></div>
-          <span>
-            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel option hint" />
-          </span>
-          <div className="line"></div>
-        </div>
-        <div className="buttons">{!securityZoneAction && <LoginAbortButton />}</div>
       </section>
     </React.Fragment>
   );
@@ -265,7 +239,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       onClick={props.handleSubmit}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
-      <FormattedMessage defaultMessage="log in with password" description="Login front page" />
+      <FormattedMessage defaultMessage="log in" description="Login front page with pw" />
     </EduIDButton>
   );
 }
@@ -288,7 +262,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="log in with other device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="other device" description="Login UsernamePw other device" />
     </EduIDButton>
   );
 }
