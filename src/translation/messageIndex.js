@@ -11,6 +11,7 @@ import * as email from "./defaultMessages/email";
 import * as orcid from "./defaultMessages/orcid";
 import * as bankid from "./defaultMessages/bankid";
 import * as frejaeid from "./defaultMessages/frejaeid";
+import * as navigatorCredentials from "./defaultMessages/navigatorCredentials";
 
 export const formattedMessages = {
   ...common.proofing,
@@ -28,4 +29,5 @@ export const formattedMessages = {
   ...resetPassword.apiResponses,
   ...bankid.apiResponses,
   ...frejaeid.apiResponses,
+  ...navigatorCredentials.credentialErrors,
 };

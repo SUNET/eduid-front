@@ -763,6 +763,15 @@
     "developer_comment": "Errors go to dashboard instruction",
     "string": "You can review your settings at the"
   },
+  "Error: dom_error.not_allowed": {
+    "string": "Access was not allowed."
+  },
+  "Error: dom_error.unable_to_create_credential": {
+    "string": "Unable to create credential."
+  },
+  "Error: dom_error.unable_to_obtain_credential": {
+    "string": "Unable to obtain credential."
+  },
   "F6k/XP": {
     "developer_comment": "about security key - handle",
     "string": "Enhancing the security level of eduID"
