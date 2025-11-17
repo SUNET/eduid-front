@@ -246,7 +246,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       onClick={props.handleSubmit}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
-      <FormattedMessage defaultMessage="log in with password" description="Login front page" />
+      <FormattedMessage defaultMessage="log in" description="Login front page pw" />
     </EduIDButton>
   );
 }
@@ -269,7 +269,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="log in with other device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="other device" description="Login UsernamePw other device" />
     </EduIDButton>
   );
 }
