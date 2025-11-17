@@ -763,6 +763,15 @@
     "developer_comment": "Errors go to dashboard instruction",
     "string": "Du har åtkomst till dina inställningar i"
   },
+  "Error: dom_error.not_allowed": {
+    "string": "Åtgärden avbröts"
+  },
+  "Error: dom_error.unable_to_create_credential": {
+    "string": "Kunde inte lägga till säkerhetsnyckel."
+  },
+  "Error: dom_error.unable_to_obtain_credential": {
+    "string": "Kunde inte använda säkerhetsnyckel."
+  },
   "F6k/XP": {
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
