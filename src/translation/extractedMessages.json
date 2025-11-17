@@ -31,10 +31,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
-  "/ANjhk": {
-    "developer_comment": "Header register",
-    "string": "Register"
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
@@ -50,10 +46,6 @@
   "/O9rcw": {
     "developer_comment": "letter proofing modal form label",
     "string": "Code"
-  },
-  "/Q+C63": {
-    "developer_comment": "Security zone continue",
-    "string": "Continue"
   },
   "/XduYi": {
     "developer_comment": "verify your security key description",
@@ -78,6 +70,10 @@
   "/ueJt0": {
     "developer_comment": "DeleteAccount",
     "string": "Block and delete eduID"
+  },
+  "/xDoS2": {
+    "developer_comment": "Login front page with passkey",
+    "string": "Log in: with Passkey or Password"
   },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
@@ -134,6 +130,10 @@
   "0nQOwn": {
     "developer_comment": "Change password radio group legend",
     "string": "Choose an option"
+  },
+  "0t7raO": {
+    "developer_comment": "Header register",
+    "string": "Get eduID"
   },
   "0u1oEd": {
     "developer_comment": "choosing usb key - paragraph",
@@ -283,6 +283,10 @@
     "developer_comment": "eidas vetting button freja",
     "string": "with a Freja+"
   },
+  "435XBS": {
+    "developer_comment": "Login front page with pw",
+    "string": "log in"
+  },
   "43bN4Q": {
     "developer_comment": "opening hours - list item 1",
     "string": "Monday - Friday 09:00 - 16:00"
@@ -344,10 +348,6 @@
   },
   "5l4hxp": {
     "string": "Log in on another device"
-  },
-  "5lHsOL": {
-    "developer_comment": "Login front page",
-    "string": "Register"
   },
   "5m/KL7": {
     "developer_comment": "start eduid - list item 3-4",
@@ -468,10 +468,6 @@
     "developer_comment": "ErrorURL eduid error",
     "string": "You are not logged in, or the session expired."
   },
-  "891gyK": {
-    "developer_comment": "Login UsernamePw",
-    "string": "Other device"
-  },
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
@@ -516,6 +512,10 @@
     "developer_comment": "settings eduid - start handle",
     "string": "Start"
   },
+  "98/vHa": {
+    "developer_comment": "Alternative login option",
+    "string": "Other login options"
+  },
   "99NK5u": {
     "developer_comment": "Login remember user device",
     "string": "Remember me on this device"
@@ -523,14 +523,6 @@
   "99mrPD": {
     "developer_comment": "without extra security heading",
     "string": "Continue without security option"
-  },
-  "9CnPOD": {
-    "developer_comment": "Login front page",
-    "string": "Don't have eduID?"
-  },
-  "9DLA8F": {
-    "developer_comment": "login this device, passkey button",
-    "string": "Passkey"
   },
   "9K6DoI": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
@@ -631,6 +623,10 @@
   "CE87Ss": {
     "developer_comment": "help - lead",
     "string": "Listed below is general information about the service, answers to common questions about using eduID and Support contact information."
+  },
+  "CF8nQa": {
+    "developer_comment": "passkey heading",
+    "string": "Faster and safer way to authenticate"
   },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
@@ -1381,6 +1377,10 @@
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
   },
+  "Tg4Cxq": {
+    "developer_comment": "security zone redirect info",
+    "string": "You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
+  },
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
   },
@@ -1631,10 +1631,6 @@
     "developer_comment": "security eduid - list item 1-1",
     "string": "This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics."
   },
-  "YDSaaV": {
-    "developer_comment": "login passkey primary option button",
-    "string": "Use my passkey"
-  },
   "YDtIOb": {
     "developer_comment": "account eduid - list item 3-1",
     "string": "Clicking on the link \"Change password\" will take you through the steps for changing your password. As when you created your eduID, there is a choice between a suggested (automatically generated) password or one you create."
@@ -1730,6 +1726,10 @@
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
     "string": "Names & Display Name"
+  },
+  "aXiept": {
+    "developer_comment": "Login UsernamePw other device",
+    "string": "other device"
   },
   "actions.action-completed": {
     "string": "Success"
@@ -2156,10 +2156,6 @@
   "fIdUh2": {
     "developer_comment": "how add security key - heading",
     "string": "How do I implement 2FA with eduID?"
-  },
-  "flBt7j": {
-    "developer_comment": "Login remember user device",
-    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -3361,10 +3357,6 @@
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
-  "uzoZmv": {
-    "developer_comment": "Login front page",
-    "string": "Log in"
-  },
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "The identities below are now connected to your eduID"
@@ -3426,6 +3418,10 @@
   "wMii57": {
     "developer_comment": "security zone identity link",
     "string": "Identity"
+  },
+  "wN5FNR": {
+    "developer_comment": "login passkey primary option button",
+    "string": "log in with passkey"
   },
   "wRVDl5": {
     "developer_comment": "Dashboard nav tab name",
