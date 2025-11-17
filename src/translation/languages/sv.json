@@ -31,10 +31,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
   },
-  "/ANjhk": {
-    "developer_comment": "Header register",
-    "string": "Registrera"
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Säkerhetsnyckel"
@@ -596,6 +592,10 @@
     "developer_comment": "Signup",
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till din identitet. Se till att ange en epostadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit."
   },
+  "BtF+SP": {
+    "developer_comment": "Header register",
+    "string": "skaffa eduID"
+  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Ändra lösenord: Rekommenderat lösenord"
@@ -960,10 +960,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
-  "Jhe1Dz": {
-    "developer_comment": "Login front page",
-    "string": "logga in med lösenord"
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1047,6 +1043,10 @@
     "developer_comment": "Language",
     "string": "Språk"
   },
+  "MTA9aj": {
+    "developer_comment": "Alternative login password option",
+    "string": "eller andra inloggnings-alternativ?"
+  },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
     "string": "Ett unikt användarnamn för ditt eduID som genereras åt dig när kontot skapas."
@@ -1110,10 +1110,6 @@
   "NgScX1": {
     "developer_comment": "Emails button add",
     "string": "Lägg till"
-  },
-  "Ni52Zp": {
-    "developer_comment": "Login UsernamePw",
-    "string": "logga in med annan enhet"
   },
   "NmCGzv": {
     "developer_comment": "delete.confirm_button",
@@ -1728,10 +1724,6 @@
     "developer_comment": "Signup credentials button",
     "string": "Försök igen"
   },
-  "ZxBAyg": {
-    "developer_comment": "Alternative login other device option",
-    "string": "eller logga in med annan enhet?"
-  },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
     "string": "tar bort inaktiva konton efter två år,"
@@ -1743,6 +1735,10 @@
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
     "string": "Namn & visningsnamn"
+  },
+  "aXiept": {
+    "developer_comment": "Login UsernamePw other device",
+    "string": "Annan enhet"
   },
   "actions.action-completed": {
     "string": "Klart"
@@ -1866,10 +1862,6 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
-  "bg6iD8": {
-    "developer_comment": "Alternative login password option",
-    "string": "eller logga in med lösenord?"
-  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -1901,10 +1893,6 @@
   "cRNzAJ": {
     "developer_comment": "orcid remove",
     "string": "ta bort"
-  },
-  "ch+1oB": {
-    "developer_comment": "Cancel option hint",
-    "string": "eller återvända till föregående sida?"
   },
   "change pw action": {
     "string": "byt lösenord"
@@ -2181,10 +2169,6 @@
   "fEsIEZ": {
     "developer_comment": "Signup",
     "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
-  },
-  "flBt7j": {
-    "developer_comment": "Login remember user device",
-    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
@@ -2787,6 +2771,10 @@
   "nvCSyo": {
     "developer_comment": "account eduid - list item 4",
     "string": "En knapp för att ansluta ditt eduID med befintligt ORCID iD."
+  },
+  "o+wdGq": {
+    "developer_comment": "Login front page pw",
+    "string": "Logga in"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
