@@ -131,38 +131,15 @@ export default function UsernamePw() {
                 <PasswordInput name="currentPassword" autoComplete="current-password" />
                 {!securityZoneAction && <RenderResetPasswordLink />}
                 <div className="buttons">
+                  {!securityZoneAction && <LoginAbortButton />}
                   <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
                 </div>
               </form>
             );
           }}
         ></FinalForm>
         <RememberMeCheckbox />
-      </section>
-      <section className="other-device-option">
-        <div className="or-container">
-          <div className="line"></div>
-          <span>
-            <FormattedMessage
-              defaultMessage="or log in with other device?"
-              description="Alternative login other device option"
-            />
-          </span>
-          <div className="line"></div>
-        </div>
-        <div className="buttons">
-          <UsernamePwAnotherDeviceButton />
-        </div>
-      </section>
-      <section className="cancel-option">
-        <div className="or-container">
-          <div className="line"></div>
-          <span>
-            <FormattedMessage defaultMessage="or return to previous page?" description="Cancel option hint" />
-          </span>
-          <div className="line"></div>
-        </div>
-        <div className="buttons">{!securityZoneAction && <LoginAbortButton />}</div>
       </section>
     </React.Fragment>
   );
