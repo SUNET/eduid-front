@@ -11,24 +11,41 @@ let navigatorAbortController = new AbortController();
 
 async function handlePerformAuthentication(args: AuthenticationRequest) {
   const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.webauth_options);
-  const credential = await navigator.credentials.get({
-    publicKey,
-    signal: navigatorAbortController?.signal,
-    mediation: args.mediation,
-  });
-  if (credential) {
-    return { data: credentialToJSON(credential as PublicKeyCredential) };
+  try {
+    const credential = await navigator.credentials.get({
+      publicKey,
+      signal: navigatorAbortController?.signal,
+      mediation: args.mediation,
+    });
+    if (credential) {
+      return { data: credentialToJSON(credential as PublicKeyCredential) };
+    } else {
+      throw new Error("dom_error.unable_to_obtain_credential");
+    }
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "NotAllowedError") {
+      throw new Error("dom_error.not_allowed");
+    } else {
+      throw error;
+    }
   }
-  throw new Error("Unable to obtain credential.");
 }
 
 async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON) {
   const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(args);
-  const credential = await navigator.credentials.create({ publicKey });
-  if (credential) {
-    return { data: credentialToJSON(credential as PublicKeyCredential) };
+  try {
+    const credential = await navigator.credentials.create({ publicKey });
+    if (credential) {
+      return { data: credentialToJSON(credential as PublicKeyCredential) };
+    }
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "NotAllowedError") {
+      throw new Error("dom_error.not_allowed");
+    } else {
+      throw error;
+    }
   }
-  throw new Error("Unable to create credential.");
+  throw new Error("dom_error.unable_to_create_credential");
 }
 
 function handleAbort() {
