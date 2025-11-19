@@ -71,7 +71,7 @@ export function SignupConfirmPassword() {
               <section className="intro">
                 <h1>
                   <FormattedMessage
-                    defaultMessage="Register: Suggested password"
+                    defaultMessage="Create eduID: Suggested password"
                     description="Registration confirm password"
                   />
                 </h1>
@@ -90,7 +90,7 @@ export function SignupConfirmPassword() {
                 <h1>
                   <FormattedMessage
                     description="Register - headline"
-                    defaultMessage="Register: Set your own password"
+                    defaultMessage="Create eduID: Set your own password"
                   />
                 </h1>
                 <div className="lead">
@@ -132,7 +132,7 @@ export function SignupUserCreated(): React.JSX.Element {
   return (
     <form method="GET" action={dashboard_link}>
       <h1>
-        <FormattedMessage defaultMessage="Register: Completed" description="Registration complete" />
+        <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
       </h1>
       <div className="lead">
         <p>

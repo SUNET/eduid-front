@@ -15,7 +15,7 @@ export function SignupEmailForm(): React.JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Register: Enter the email address" description="Signup" />
+          <FormattedMessage defaultMessage="Create eduID: Enter your email address" description="Signup" />
         </h1>
         <div className="lead">
           <p>
