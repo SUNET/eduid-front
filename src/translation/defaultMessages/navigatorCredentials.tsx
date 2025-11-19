@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 
 export const credentialErrors = {
   "Error: dom_error.not_allowed": (
-    <FormattedMessage id="Error: dom_error.not_allowed" defaultMessage={`Access was not allowed.`} />
+    <FormattedMessage id="Error: dom_error.not_allowed" defaultMessage={`Action was interrupted.`} />
   ),
   "Error: dom_error.unable_to_obtain_credential": (
     <FormattedMessage
