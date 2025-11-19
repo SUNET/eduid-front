@@ -55,9 +55,9 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
   if (isErrorResult(result)) {
     await handleBaseQueryError(result, csrf_token, api, state);
   } else {
-    // Check if response has type field and it's not a GET request
+    // Clear error notifications only on successful non-GET requests
+    // e.g., "POST_SIGNUP_GET_CAPTCHA_SUCCESS" not clears errors
     if (isApiResponse(result.data) && !result.data.type.includes("GET")) {
-      // Clear error messages on success
       api.dispatch(clearNotifications());
     }
     // extract CSRF token from response
