@@ -150,7 +150,7 @@ function UserTerminated(): React.JSX.Element {
 
         <p className="text-small">
           <FormattedMessage
-            defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
+            defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduID button."
             description="Account terminated - help text"
           />
         </p>
