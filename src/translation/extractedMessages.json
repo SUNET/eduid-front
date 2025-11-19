@@ -203,10 +203,6 @@
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
   },
-  "2EeZgg": {
-    "developer_comment": "Signup button",
-    "string": "Create eduID"
-  },
   "2QWlvD": {
     "developer_comment": "what is sunet - paragraph 1",
     "string": "eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions."
@@ -242,6 +238,10 @@
   "3QAHfi": {
     "developer_comment": "settings eduid - heading",
     "string": "How do I update my account?"
+  },
+  "3RGZeG": {
+    "developer_comment": "Header register",
+    "string": "create eduid"
   },
   "3TIt/I": {
     "developer_comment": "what is ladok - paragraph",
@@ -432,6 +432,10 @@
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
   },
+  "7S/TWJ": {
+    "developer_comment": "Register - headline",
+    "string": "Create eduID: Set your own password"
+  },
   "7UpsOK": {
     "developer_comment": "settings eduid - account handle",
     "string": "Account"
@@ -536,10 +540,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
-  "9hkMET": {
-    "developer_comment": "Registration confirm password",
-    "string": "Register: Suggested password"
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -591,10 +591,6 @@
   "BhlUhw": {
     "developer_comment": "Signup",
     "string": "Once you have created an eduID you will be able to log in and connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code."
-  },
-  "BtF+SP": {
-    "developer_comment": "Header register",
-    "string": "get eduid"
   },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
@@ -764,7 +760,7 @@
     "string": "You can review your settings at the"
   },
   "Error: dom_error.not_allowed": {
-    "string": "Access was not allowed."
+    "string": "Action was interrupted."
   },
   "Error: dom_error.unable_to_create_credential": {
     "string": "Unable to create credential."
@@ -791,6 +787,10 @@
   "Fcqru6": {
     "developer_comment": "use international - list item 1",
     "string": "to verify your eduID using Freja you first need to get a Freja account with a verified profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,"
+  },
+  "FcrB2n": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduID button."
   },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
@@ -928,6 +928,10 @@
     "developer_comment": "confirm button",
     "string": "confirm"
   },
+  "ItxE7V": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Code expired"
+  },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
     "string": "With security key"
@@ -972,6 +976,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
   },
+  "KW/VIF": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Verification of email address"
+  },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
   },
@@ -1010,6 +1018,10 @@
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "What should I do if my identity verification for Freja+ fails?"
+  },
+  "LBmbm1": {
+    "developer_comment": "Signup button",
+    "string": "Continue"
   },
   "LNBvhT": {
     "developer_comment": "Errors button",
@@ -1388,10 +1400,6 @@
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
-  },
-  "TtQt1m": {
-    "developer_comment": "Registration complete",
-    "string": "Register: Completed"
   },
   "Ttf9Tr": {
     "developer_comment": "create eduid - list item 8",
@@ -1952,10 +1960,6 @@
     "developer_comment": "letter initialize proofing help text",
     "string": "You will receive a letter which contains a code that for security reasons expires in two weeks."
   },
-  "dEXuhK": {
-    "developer_comment": "Signup",
-    "string": "Register: Verification of email address"
-  },
   "dHoc4Y": {
     "developer_comment": "eidas modal title",
     "string": "Use Freja eID+ and pass a local authorised agent"
@@ -2200,6 +2204,10 @@
     "developer_comment": "Title for email code input",
     "string": "Enter the code sent to {email}"
   },
+  "g2ia31": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Confirm that you are a human."
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -2324,10 +2332,6 @@
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
   },
-  "iSg5BA": {
-    "developer_comment": "Signup",
-    "string": "Register: Code expired"
-  },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
@@ -2335,10 +2339,6 @@
   "ibG0qO": {
     "developer_comment": "accessibility report - link",
     "string": "Accessibility report"
-  },
-  "ikmIz4": {
-    "developer_comment": "Signup",
-    "string": "Register: Confirm that you are a human."
   },
   "invalid username": {
     "string": "Invalid username"
@@ -2494,10 +2494,6 @@
     "developer_comment": "security description name",
     "string": "Name:"
   },
-  "l9zYOT": {
-    "developer_comment": "Account terminated - help text",
-    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
-  },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
@@ -2509,10 +2505,6 @@
   "lMUS8G": {
     "developer_comment": "SAML login finished",
     "string": "Retry"
-  },
-  "lNjmQc": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Register: Terms of use"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2892,10 +2884,6 @@
     "developer_comment": "privacy policy - list item 2",
     "string": "transfers information according to the data minimisation principle - never more than required,"
   },
-  "piqcwF": {
-    "developer_comment": "Signup",
-    "string": "Register: Enter the email address"
-  },
   "placeholder.email": {
     "developer_comment": "placeholder text for email input",
     "string": "name@example.com"
@@ -3003,6 +2991,10 @@
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Change password"
+  },
+  "qm97Sh": {
+    "developer_comment": "Registration confirm password",
+    "string": "Create eduID: Suggested password"
   },
   "qn24rz": {
     "developer_comment": "Reset Password email link sent",
@@ -3452,6 +3444,10 @@
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
   },
+  "wdxA7F": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Enter your email address"
+  },
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
@@ -3474,10 +3470,6 @@
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
     "string": "services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
-  },
-  "wnJXsu": {
-    "developer_comment": "Register - headline",
-    "string": "Register: Set your own password"
   },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
@@ -3511,6 +3503,10 @@
     "developer_comment": "security zone cancel info",
     "string": "If you wish to cancel this process without affecting a change you can return straight to {page} page."
   },
+  "xps3tb": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Create eduID: Terms of use"
+  },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "What are the methods of verification for eduID?"
@@ -3541,6 +3537,10 @@
   },
   "yM0mAW": {
     "string": "Having issues using a security key?"
+  },
+  "yVFjro": {
+    "developer_comment": "Registration complete",
+    "string": "Create eduID: Completed"
   },
   "yktrEi": {
     "developer_comment": "Dashboard AccountId",
