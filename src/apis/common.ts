@@ -1,6 +1,7 @@
 import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { storeCsrfToken } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
+import { clearNotifications } from "slices/Notifications";
 import { handleApiError, handleBaseQueryError } from "./helpers/errorHandlers";
 import { hasCsrfToken, isApiError, isApiResponse, isErrorResult } from "./helpers/typeGuards";
 import type { StateWithCommonConfig } from "./helpers/types";
@@ -50,11 +51,15 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
 
   // call backend api
   const result = await rawBaseQuery(base_args, api, extraOptions);
-
   // manage results of api call
   if (isErrorResult(result)) {
     await handleBaseQueryError(result, csrf_token, api, state);
   } else {
+    // Check if response has type field and it's not a GET request
+    if (isApiResponse(result.data) && !result.data.type.includes("GET")) {
+      // Clear error messages on success
+      api.dispatch(clearNotifications());
+    }
     // extract CSRF token from response
     csrf_token = handleCsrfTokenFromResponse(result.data, csrf_token, api);
     if (isApiError(result.data)) {
