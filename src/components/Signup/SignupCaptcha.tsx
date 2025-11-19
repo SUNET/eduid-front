@@ -4,7 +4,6 @@ import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
 export function SignupCaptcha(): React.JSX.Element | null {
@@ -71,7 +70,6 @@ export function ProcessCaptcha(): null {
   useEffect(() => {
     if (captcha) {
       if (isSuccess) {
-        dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
       } else if (isError) {
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));

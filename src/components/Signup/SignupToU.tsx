@@ -4,7 +4,6 @@ import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
 export function SignupToU(): React.JSX.Element {
@@ -46,7 +45,7 @@ export function SignupToU(): React.JSX.Element {
   );
 }
 
-export function ProcessToU(): React.JSX.Element {
+export function ProcessToU(): React.JSX.Element | null {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
   const version = signupState?.tou.version;
@@ -54,12 +53,11 @@ export function ProcessToU(): React.JSX.Element {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(clearNotifications());
       dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [isSuccess, isError, dispatch]);
 
-  return <React.Fragment></React.Fragment>;
+  return null;
 }

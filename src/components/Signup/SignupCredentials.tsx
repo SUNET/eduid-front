@@ -3,7 +3,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
 export function SignupCredentialsError(): React.JSX.Element | null {
@@ -46,18 +45,17 @@ export function SignupCredentialsError(): React.JSX.Element | null {
   );
 }
 
-export function SignupCredentialPassword(): React.JSX.Element {
+export function SignupCredentialPassword(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useGetPasswordRequestQuery();
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(clearNotifications());
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CONFIRM_PASSWORD"));
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
     }
   }, [isSuccess, isError, dispatch]);
 
-  return <React.Fragment></React.Fragment>;
+  return null;
 }

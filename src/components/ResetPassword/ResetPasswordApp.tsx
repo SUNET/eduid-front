@@ -91,14 +91,7 @@ function AskForEmailOrConfirmEmail(): null {
 export function ResetPasswordConfirmEmail(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
-  const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
-
-  useEffect(() => {
-    if (captcha_completed) {
-      dispatch(clearNotifications());
-    }
-  }, [captcha_completed, dispatch]);
 
   async function sendEmailOnClick() {
     dispatch(clearNotifications());

@@ -5,7 +5,6 @@ import { useCallback, useEffect } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { updateIntl } from "slices/Internationalisation";
-import { clearNotifications } from "slices/Notifications";
 
 export function LanguagePreference() {
   const dispatch = useAppDispatch();
@@ -22,7 +21,6 @@ export function LanguagePreference() {
     async (postData: UserLanguageRequest) => {
       const response = await postUserLanguage(postData);
       if ("data" in response) {
-        dispatch(clearNotifications());
         if (response.data?.payload.language) {
           dispatch(
             updateIntl({

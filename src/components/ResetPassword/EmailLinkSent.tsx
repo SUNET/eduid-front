@@ -4,7 +4,6 @@ import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseC
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 
 export function EmailLinkSent(): React.JSX.Element | null {
@@ -24,7 +23,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
       if (digits) {
         const response = await verifyEmailLink({ email_code: digits });
         if (response.isSuccess) {
-          dispatch(clearNotifications());
           if (Object.values(response.data.payload.extra_security).length > 0) {
             dispatch(resetPasswordSlice.actions.setNextPage("HANDLE_EXTRA_SECURITIES"));
           } else {

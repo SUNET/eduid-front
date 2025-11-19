@@ -5,13 +5,12 @@ import personalDataApi, { UserNameRequest } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
 import NameDisplay from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
 import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import { clearNotifications } from "slices/Notifications";
 import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
@@ -28,7 +27,6 @@ interface SelectedNameValues {
 
 export default function PersonalDataForm(props: PersonalDataFormProps) {
   const { labels } = props;
-  const dispatch = useAppDispatch();
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
@@ -44,7 +42,6 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
     }
     const response = await postUserName(postData);
     if ("data" in response) {
-      dispatch(clearNotifications());
       props.setEditMode(false); // tell parent component we're done editing
     }
   }
