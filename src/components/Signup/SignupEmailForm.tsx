@@ -15,7 +15,7 @@ export function SignupEmailForm(): React.JSX.Element {
     <Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Register: Enter the email address" description="Signup" />
+          <FormattedMessage defaultMessage="Create eduID: Enter your email address" description="Signup" />
         </h1>
         <div className="lead">
           <p>
@@ -123,7 +123,7 @@ function EmailForm() {
                 type="submit"
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
+                <FormattedMessage defaultMessage="Continue" description="Signup button" />
               </EduIDButton>
             </div>
           </form>

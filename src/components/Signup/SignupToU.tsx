@@ -30,7 +30,7 @@ export function SignupToU(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Register: Terms of use" description="Terms of use (heading)" />
+        <FormattedMessage defaultMessage="Create eduID: Terms of use" description="Terms of use (heading)" />
       </h1>
       <div className="lead">
         <p>

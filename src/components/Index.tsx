@@ -98,7 +98,7 @@ export function Index() {
           <FormattedMessage defaultMessage="Create a basic account with your email address." description="how-to 1" />
 
           <span className="icon-holder">
-            <img height="24" src={registerIcon} alt="Register" />
+            <img height="24" src={registerIcon} alt="Create account" />
           </span>
         </div>
         <div>

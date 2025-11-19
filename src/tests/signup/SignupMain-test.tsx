@@ -241,7 +241,7 @@ test("handles wrong email code", async () => {
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Register: Enter the email address/));
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your email address/));
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -265,7 +265,7 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   expect(emailInput).toHaveAccessibleName(/^Email address/);
   expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
 
-  const button = screen.getByRole("button", { name: "Create eduID" });
+  const button = screen.getByRole("button", { name: "Continue" });
   expect(button).toBeDisabled();
 
   fireEvent.change(emailInput, { target: { value: "not-an-email" } });
@@ -313,7 +313,7 @@ async function testTermsOfUse({
   registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
-  await screen.findByText(/^Register: Terms of use/);
+  await screen.findByText(/^Create eduID: Terms of use/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
   if (state.tou.version === "2016-v1") {

@@ -73,7 +73,7 @@ export function SignupEnterCode(): React.JSX.Element {
     return (
       <div>
         <h1>
-          <FormattedMessage defaultMessage="Register: Code expired" description="Signup" />
+          <FormattedMessage defaultMessage="Create eduID: Code expired" description="Signup" />
         </h1>
         <div className="lead">
           <p>
@@ -110,7 +110,7 @@ export function SignupEnterCode(): React.JSX.Element {
   return (
     <Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Register: Verification of email address" description="Signup" />
+        <FormattedMessage defaultMessage="Create eduID: Verification of email address" description="Signup" />
       </h1>
       <div className="lead">
         <p>
