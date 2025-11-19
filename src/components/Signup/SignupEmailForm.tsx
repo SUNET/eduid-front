@@ -123,7 +123,7 @@ function EmailForm() {
                 type="submit"
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
+                <FormattedMessage defaultMessage="Continue" description="Signup button" />
               </EduIDButton>
             </div>
           </form>

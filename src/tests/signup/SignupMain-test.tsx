@@ -265,7 +265,7 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   expect(emailInput).toHaveAccessibleName(/^Email address/);
   expect(emailInput).toHaveProperty("placeholder", emailPlaceHolder);
 
-  const button = screen.getByRole("button", { name: "Create eduID" });
+  const button = screen.getByRole("button", { name: "Continue" });
   expect(button).toBeDisabled();
 
   fireEvent.change(emailInput, { target: { value: "not-an-email" } });
