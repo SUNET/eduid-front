@@ -126,35 +126,33 @@ function UserTerminated(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
-      <section>
-        <h1>
-          <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
-        </h1>
+    <section>
+      <h1>
+        <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
+      </h1>
 
-        <p>
+      <p>
+        <FormattedMessage
+          defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
+          description="Account terminated - paragraph"
+        />
+      </p>
+
+      <div>
+        <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
           <FormattedMessage
-            defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
-            description="Account terminated - paragraph"
+            defaultMessage="Go to reset password page"
+            description="Account terminated - reset password link"
           />
-        </p>
+        </EduIDButton>
+      </div>
 
-        <div>
-          <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
-            <FormattedMessage
-              defaultMessage="Go to reset password page"
-              description="Account terminated - reset password link"
-            />
-          </EduIDButton>
-        </div>
-
-        <p className="text-small">
-          <FormattedMessage
-            defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduID button."
-            description="Account terminated - help text"
-          />
-        </p>
-      </section>
-    </React.Fragment>
+      <p className="text-small">
+        <FormattedMessage
+          defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
+          description="Account terminated - help text"
+        />
+      </p>
+    </section>
   );
 }

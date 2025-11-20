@@ -4,7 +4,6 @@ import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 
 export function ResetPasswordCaptcha(): React.JSX.Element | null {
@@ -94,7 +93,6 @@ export function ProcessCaptcha(): null {
     async (captcha: CaptchaRequest) => {
       const response = await sendCaptchaResponse(captcha);
       if (response.isSuccess) {
-        dispatch(clearNotifications());
         sendEmailLink();
       } else {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));

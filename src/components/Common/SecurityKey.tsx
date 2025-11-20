@@ -1,8 +1,6 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { useAppDispatch } from "eduid-hooks";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
 
 interface SecurityKeyProps {
@@ -23,7 +21,6 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
-  const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
@@ -34,7 +31,6 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
       const response = await performAuthentication({ webauth_options });
       if (response.isSuccess) {
         props.onSuccess(response.data);
-        dispatch(clearNotifications());
       }
     }
     setActive(false);

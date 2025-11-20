@@ -1,8 +1,6 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { useAppDispatch } from "eduid-hooks";
 import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passkeyIcon from "../../../img/passkey.svg";
@@ -27,7 +25,6 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
-  const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
@@ -38,7 +35,6 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
       const response = await performAuthentication({ webauth_options });
       if (response.isSuccess) {
         props.onSuccess(response.data);
-        dispatch(clearNotifications());
       }
     }
     setActive(false);

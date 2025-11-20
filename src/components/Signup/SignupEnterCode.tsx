@@ -8,7 +8,6 @@ import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseC
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
 export function SignupEnterCode(): React.JSX.Element {
@@ -162,7 +161,6 @@ export function ProcessEmailCode() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(clearNotifications());
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
