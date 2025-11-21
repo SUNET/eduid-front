@@ -991,6 +991,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
   },
+  "Kl6xZW": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduiD button."
+  },
   "KlKDP2": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Use a code sent by post to your address"
@@ -2497,10 +2501,6 @@
   "l1XkUC": {
     "developer_comment": "security description name",
     "string": "Name:"
-  },
-  "l9zYOT": {
-    "developer_comment": "Account terminated - help text",
-    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
   },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
