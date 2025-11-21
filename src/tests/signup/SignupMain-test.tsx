@@ -241,7 +241,9 @@ test("handles wrong email code", async () => {
 });
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
-  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your details/));
+  await waitFor(() =>
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/)
+  );
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
