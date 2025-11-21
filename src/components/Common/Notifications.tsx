@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, eduidNotification, notificationLevel } from "slices/Notifications";
 import { UNKNOWN_MESSAGE } from "translation";
@@ -11,6 +11,12 @@ export function Notifications(): React.JSX.Element | null {
   const error = useAppSelector((state) => state.notifications.error);
   const dispatch = useAppDispatch();
   const intl = useIntl();
+
+  useEffect(() => {
+    if (info?.message.endsWith("_success")) {
+      dispatch(clearNotifications());
+    }
+  }, [dispatch, info]);
 
   function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
