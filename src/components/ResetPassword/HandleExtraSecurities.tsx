@@ -13,20 +13,9 @@ import resetPasswordSlice from "slices/ResetPassword";
 export function HandleExtraSecurities(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
-  const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
 
   useEffect(() => {
-    if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
-      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
-    }
-  }, [dispatch, swedishEID_status]);
-
-  useEffect(() => {
-    if (
-      (extra_security && !Object.values(extra_security).length) ||
-      (extra_security?.tokens === undefined && !extra_security?.external_mfa)
-    ) {
+    if (extra_security && !Object.values(extra_security).length) {
       dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
     }
   }, [dispatch, extra_security]);

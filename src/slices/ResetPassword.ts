@@ -141,9 +141,13 @@ export const resetPasswordSlice = createSlice({
       })
       .addMatcher(eidasApi.endpoints.eidasGetStatus.matchFulfilled, (state, action) => {
         state.swedishEID_status = action.payload.payload.status;
+        state.next_page = "SET_NEW_PASSWORD";
+        state.selected_option = "swedishEID";
       })
       .addMatcher(bankIDApi.endpoints.bankIDGetStatus.matchFulfilled, (state, action) => {
         state.swedishEID_status = action.payload.payload.status;
+        state.next_page = "SET_NEW_PASSWORD";
+        state.selected_option = "swedishEID";
       });
   },
 });
