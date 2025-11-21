@@ -318,6 +318,10 @@
     "developer_comment": "use freja protected id - link text",
     "string": "freja-for-swedes-with-protected-identities"
   },
+  "4svtTn": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Create eduID: Accept Terms of Use"
+  },
   "54jpQ0": {
     "developer_comment": "security zone modal",
     "string": "Note: Your security key {securityKeyDescription} will be removed after you log in."
@@ -788,10 +792,6 @@
     "developer_comment": "use international - list item 1",
     "string": "to verify your eduID using Freja you first need to get a Freja account with a verified profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,"
   },
-  "FcrB2n": {
-    "developer_comment": "Account terminated - help text",
-    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduID button."
-  },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
     "string": "Logging you in"
@@ -991,6 +991,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
   },
+  "Kl6xZW": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduiD button."
+  },
   "KlKDP2": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Use a code sent by post to your address"
@@ -1006,6 +1010,10 @@
   "KpgroI": {
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},"
+  },
+  "Kq8Tcz": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Enter your personal information"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -3444,10 +3452,6 @@
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
   },
-  "wdxA7F": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Enter your email address"
-  },
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate to:"
@@ -3502,10 +3506,6 @@
   "xpf0XZ": {
     "developer_comment": "security zone cancel info",
     "string": "If you wish to cancel this process without affecting a change you can return straight to {page} page."
-  },
-  "xps3tb": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Create eduID: Terms of use"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
