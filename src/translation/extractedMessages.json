@@ -1011,6 +1011,10 @@
     "developer_comment": "use bankid - list item 1",
     "string": "the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},"
   },
+  "Kq8Tcz": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Enter your personal information"
+  },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
@@ -1358,10 +1362,6 @@
   "Skhd4q": {
     "developer_comment": "Use other device 2",
     "string": "Request completed."
-  },
-  "SlFmil": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Enter your details"
   },
   "Sud192": {
     "developer_comment": "what is eduID - heading",
