@@ -318,6 +318,10 @@
     "developer_comment": "use freja protected id - link text",
     "string": "freja-for-swedes-with-protected-identities"
   },
+  "4svtTn": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Create eduID: Accept Terms of Use"
+  },
   "54jpQ0": {
     "developer_comment": "security zone modal",
     "string": "Note: Your security key {securityKeyDescription} will be removed after you log in."
@@ -787,10 +791,6 @@
   "Fcqru6": {
     "developer_comment": "use international - list item 1",
     "string": "to verify your eduID using Freja you first need to get a Freja account with a verified profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,"
-  },
-  "FcrB2n": {
-    "developer_comment": "Account terminated - help text",
-    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduID button."
   },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
@@ -1354,6 +1354,10 @@
   "Skhd4q": {
     "developer_comment": "Use other device 2",
     "string": "Request completed."
+  },
+  "SlFmil": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Enter your details"
   },
   "Sud192": {
     "developer_comment": "what is eduID - heading",
@@ -2494,6 +2498,10 @@
     "developer_comment": "security description name",
     "string": "Name:"
   },
+  "l9zYOT": {
+    "developer_comment": "Account terminated - help text",
+    "string": "To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Register button."
+  },
   "lAabXZ": {
     "developer_comment": "identity eduid - list item 3",
     "string": "A form for updating name and display name by clicking on the link \"edit\", where available settings are dependant on wether your identity is verified."
@@ -3444,10 +3452,6 @@
     "developer_comment": "about international - handle",
     "string": "About Freja (outside EU and without Swedish ID/COORD number)"
   },
-  "wdxA7F": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Enter your email address"
-  },
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
@@ -3502,10 +3506,6 @@
   "xpf0XZ": {
     "developer_comment": "security zone cancel info",
     "string": "If you wish to cancel this process without affecting a change you can return straight to {page} page."
-  },
-  "xps3tb": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Create eduID: Terms of use"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
