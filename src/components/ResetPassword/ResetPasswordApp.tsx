@@ -23,7 +23,6 @@ export function ResetPasswordApp(): React.JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
-  const swedishEID_status = useAppSelector((state) => state.resetPassword.swedishEID_status);
   const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
 
@@ -33,24 +32,15 @@ export function ResetPasswordApp(): React.JSX.Element {
       defaultMessage: "Reset password | eduID",
     });
   }, [intl]);
-  useEffect(() => {
-    if (swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success") {
-      dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
-      dispatch(resetPasswordSlice.actions.selectExtraSecurity("swedishEID"));
-    }
-  }, [dispatch, swedishEID_status]);
 
   useEffect(() => {
-    if (
-      next_page === undefined &&
-      !(swedishEID_status === "eidas.mfa_authn_success" || swedishEID_status === "bankid.mfa_authn_success")
-    ) {
+    if (next_page === undefined) {
       if (loginRef === undefined && params.ref !== undefined) {
         dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
       }
       dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
     }
-  }, [dispatch, loginRef, params, next_page, swedishEID_status]);
+  }, [dispatch, loginRef, params]);
 
   return (
     <React.Fragment>
