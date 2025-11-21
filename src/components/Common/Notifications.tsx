@@ -13,7 +13,7 @@ export function Notifications(): React.JSX.Element | null {
   const intl = useIntl();
 
   useEffect(() => {
-    if (info && info?.message.endsWith("_success")) {
+    if (info?.message.endsWith("_success")) {
       dispatch(clearNotifications());
     }
   }, [dispatch, info]);
