@@ -318,6 +318,10 @@
     "developer_comment": "use freja protected id - link text",
     "string": "freja-for-svenskar-med-skyddad-identitet"
   },
+  "4svtTn": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Skapa eduID: Godkänn användarvillkor"
+  },
   "54jpQ0": {
     "developer_comment": "security zone modal",
     "string": "Obs: Din säkerhetsnyckel {securityKeyDescription} kommer att tas bort efter inloggningen."
@@ -788,10 +792,6 @@
     "developer_comment": "use international - list item 1",
     "string": "för att bekräfta ditt eduID med Freja behöver du först ett Freja-konto med en profil som är bekräftad med ditt pass, genom att installera {FrejaApp} på din mobila enhet (iOS eller Android) och följa instruktionerna,"
   },
-  "FcrB2n": {
-    "developer_comment": "Account terminated - help text",
-    "string": "Gå till startsidan genom att klicka eduIDs logo i sidhuvudet för att logga in med ett annat konto, eller skapa ett nytt konto med knappen Skapa eduID."
-  },
   "FfxTGR": {
     "developer_comment": "SAML login finished",
     "string": "Du loggas nu in"
@@ -991,6 +991,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
   },
+  "Kl6xZW": {
+    "developer_comment": "Account terminated - help text",
+    "string": "Gå till startsidan genom att klicka eduIDs logo i sidhuvudet för att logga in med ett annat konto, eller skapa ett nytt konto med knappen Skapa eduID."
+  },
   "KlKDP2": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Skriv in koden du fått hemskickad"
@@ -1006,6 +1010,10 @@
   "KpgroI": {
     "developer_comment": "use bankid - list item 1",
     "string": "BankID erhålls från din personliga bank och installeras på din enhet som en app eller fil. Tillvägagångssättet varierar, så besök din banks hemsida och följ instruktionerna. Du kan läsa mer om att skaffa BankID på {bankid}."
+  },
+  "Kq8Tcz": {
+    "developer_comment": "Signup",
+    "string": "Skapa eduID: Ange dina personuppgifter"
   },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
@@ -3444,10 +3452,6 @@
     "developer_comment": "about international - handle",
     "string": "Om Freja (utanför EU och utan Svenskt person/samordnings-nummer)"
   },
-  "wdxA7F": {
-    "developer_comment": "Signup",
-    "string": "Skapa eduID: Ange dina uppgifter"
-  },
   "wgc4Lk": {
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "Under inloggade startsidan presenteras en statusöversikt av ditt eduID. Det här är vad den vanligtvis innebär för din tillitsnivå och tjänsterna som du kan autentisera dig för:"
@@ -3502,10 +3506,6 @@
   "xpf0XZ": {
     "developer_comment": "security zone cancel info",
     "string": "Om du vill avbryta utan att spara förändringen kan du återvända direkt till sidan {page}."
-  },
-  "xps3tb": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Skapa eduID: Godkänn användarvillkor"
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
