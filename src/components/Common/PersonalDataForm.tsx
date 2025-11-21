@@ -261,24 +261,26 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
 function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
     <article>
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="given_name"
-        label={props.labels.first}
-        placeholder={props.labels.first}
-      />
-      <Field
-        component={CustomInput}
-        required={true}
-        componentClass="input"
-        type="text"
-        name="surname"
-        label={props.labels.last}
-        placeholder={props.labels.last}
-      />
+      <div className="input-pair">
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="given_name"
+          label={props.labels.first}
+          placeholder={props.labels.first}
+        />
+        <Field
+          component={CustomInput}
+          required={true}
+          componentClass="input"
+          type="text"
+          name="surname"
+          label={props.labels.last}
+          placeholder={props.labels.last}
+        />
+      </div>
       <p className="help-text">
         <FormattedMessage
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
