@@ -33,8 +33,8 @@ form {
   margin-top: 1.25rem;
 
   .form-wrapper {
-    min-height: 5.5rem;
-    margin-bottom: 1rem;
+    min-height: 6rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -131,7 +131,7 @@ fieldset.change-password-custom-inputs {
 }
 
 .input-validate-error {
-  font-size: $txt-sm;
+  font-size: $txt-xs;
   color: var(--error-red);
 
   fieldset & {
