@@ -18,7 +18,7 @@
   "license": "BSD-2-Clause",
   "engines": {
     "npm": ">=10.9.2",
-    "node": ">=22.13.1"
+    "node": ">=24.11.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
