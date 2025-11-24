@@ -46,22 +46,6 @@
 
 // styles for input on white bg
 .edit-data {
-  .form-group {
-    flex: 1;
-
-    @media (max-width: $bp-sm) {
-      margin-top: 1rem;
-    }
-
-    &:last-child {
-      margin-left: 1rem;
-
-      @media (max-width: $bp-sm) {
-        margin-left: 0;
-      }
-    }
-  }
-
   p.verified {
     padding-bottom: 0;
   }

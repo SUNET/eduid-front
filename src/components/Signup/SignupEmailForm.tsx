@@ -97,23 +97,25 @@ function EmailForm() {
 
         return (
           <form id="register-form" onSubmit={formProps.handleSubmit}>
-            <FinalField
-              component={CustomInput}
-              type="text"
-              name="given_name"
-              autoFocus={true}
-              required={true}
-              placeholder={firstNamePlaceholder}
-              label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
-            />
-            <FinalField
-              component={CustomInput}
-              type="text"
-              name="surname"
-              required={true}
-              placeholder={lastNamePlaceholder}
-              label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
-            />
+            <div className="input-pair">
+              <FinalField
+                component={CustomInput}
+                type="text"
+                name="given_name"
+                autoFocus={true}
+                required={true}
+                placeholder={firstNamePlaceholder}
+                label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
+              />
+              <FinalField
+                component={CustomInput}
+                type="text"
+                name="surname"
+                required={true}
+                placeholder={lastNamePlaceholder}
+                label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
+              />
+            </div>
             <EmailInput name="email" required={true} autoComplete="username" />
             <div className="buttons">
               <EduIDButton
