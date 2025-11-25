@@ -33,6 +33,8 @@ test("renders security key as expected, with added security key", async () => {
       security: {
         credentials: [
           {
+            mfa_approved: false,
+            authenticator: "cross-platform",
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "touchID",
@@ -42,6 +44,8 @@ test("renders security key as expected, with added security key", async () => {
             verified: false,
           },
           {
+            mfa_approved: null,
+            authenticator: null,
             created_ts: "2022-10-14",
             credential_type: "security.password_credential_type",
             description: null,
@@ -87,6 +91,8 @@ test("can remove a security key", async () => {
       security: {
         credentials: [
           {
+            mfa_approved: false,
+            authenticator: "cross-platform",
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "touchID",
@@ -96,6 +102,8 @@ test("can remove a security key", async () => {
             verified: false,
           },
           {
+            mfa_approved: false,
+            authenticator: "cross-platform",
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "extra touchID",
@@ -105,6 +113,8 @@ test("can remove a security key", async () => {
             verified: false,
           },
           {
+            mfa_approved: false,
+            authenticator: "platform",
             created_ts: "2022-10-14",
             credential_type: "security.password_credential_type",
             description: null,
@@ -128,6 +138,8 @@ test("api call webauthn/remove", async () => {
   const response: SecurityResponse = {
     credentials: [
       {
+        mfa_approved: null,
+        authenticator: null,
         created_ts: "2022-10-14",
         credential_type: "security.password_credential_type",
         description: null,
@@ -137,6 +149,8 @@ test("api call webauthn/remove", async () => {
         verified: false,
       },
       {
+        mfa_approved: false,
+        authenticator: "cross-platform",
         created_ts: "2021-12-02",
         credential_type: "security.webauthn_credential_type",
         description: "touchID",
@@ -172,6 +186,8 @@ test("security reducer, request credentials", async () => {
   const payload: SecurityResponse = {
     credentials: [
       {
+        mfa_approved: false,
+        authenticator: "platform",
         created_ts: "2022-10-14",
         credential_type: "security.password_credential_type",
         description: null,
@@ -181,6 +197,8 @@ test("security reducer, request credentials", async () => {
         verified: false,
       },
       {
+        mfa_approved: false,
+        authenticator: "cross-platform",
         created_ts: "2021-12-02",
         credential_type: "security.webauthn_credential_type",
         description: "touchID",
@@ -207,6 +225,8 @@ test("security reducer, registerWebauthn", async () => {
   const payload: SecurityResponse = {
     credentials: [
       {
+        mfa_approved: false,
+        authenticator: "cross-platform",
         created_ts: "2021-12-02",
         credential_type: "security.webauthn_credential_type",
         description: "touchID",
