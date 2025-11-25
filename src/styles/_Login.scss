@@ -287,6 +287,10 @@ section.username-pw-option form .form-group:nth-of-type(2) {
 .passkey-option .status-box {
   display: block;
   margin-bottom: 1.5rem;
+  background-color: transparent;
+  border: $border-width var(--border-gray) solid !important;
+  box-shadow: none;
+
   .text-wrapper {
     img {
       width: 6rem;
