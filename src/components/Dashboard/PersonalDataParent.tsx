@@ -83,7 +83,7 @@ function PersonalDataParent() {
             <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
           )}
         </h2>
-        <EduIDButton buttonstyle="link lowercase" onClick={() => setEditMode(!isEditMode)}>
+        <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
           {isEditMode ? (
             <FormattedMessage description="close button" defaultMessage="close" />
           ) : (
