@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
@@ -55,6 +58,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
   } else if (authn_options.has_session) {
     button = (
       <EduIDButton buttonstyle="secondary sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
