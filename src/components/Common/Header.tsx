@@ -57,7 +57,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
     );
   } else if (authn_options.has_session) {
     button = (
-      <EduIDButton buttonstyle="secondary sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+      <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
         <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
