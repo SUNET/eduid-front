@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
+import passKey from "../../../img/pass-key.svg";
+import securityKey from "../../../img/security-key.svg";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
 
 interface SecurityKeyTable {
@@ -71,6 +73,7 @@ export function SecurityKeyTable({
       tokens.map((cred: CredentialType) => {
         // date created
         const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
+        const authenticatorIcon = cred.authenticator === "cross-platform" ? passKey : securityKey;
         // date last used
         if (cred.success_ts) {
           date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
@@ -119,6 +122,14 @@ export function SecurityKeyTable({
             data-token={cred.key}
           >
             <div>
+              <span className="security-key-icon" aria-hidden="true">
+                <img
+                  className={`${authenticatorIcon} icon`}
+                  height="25"
+                  alt={`${authenticatorIcon} icon`}
+                  src={authenticatorIcon}
+                />
+              </span>
               <span aria-label="key name">
                 <FormattedMessage description="security description name" defaultMessage="Name:" />
                 &nbsp;
