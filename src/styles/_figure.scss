@@ -91,11 +91,20 @@ figure,
 // SECURITY TABLE
 figure.webauthn-token-holder {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: 7% 93%;
   padding: 0.5rem 1rem;
   text-align: left;
   margin: 0;
   border-bottom: 1px solid var(--bg-gray);
+
+  > div span[aria-label="date used"] {
+    margin-left: 1.5em;
+  }
+
+  img {
+    margin-top: 0.3rem;
+    width: 80%;
+  }
 
   &:last-of-type {
     border-bottom: none;
@@ -108,10 +117,6 @@ figure.webauthn-token-holder {
   }
 
   & div:nth-child(2) {
-    display: flex;
-    align-items: flex-end;
-    column-gap: 1em;
-
     & p:last-child {
       margin-left: 1rem;
     }
