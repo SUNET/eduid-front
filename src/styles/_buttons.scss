@@ -349,10 +349,12 @@ button.scroll-to-top {
   cursor: pointer;
   box-shadow: none !important;
   background-color: transparent;
+  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(1679%) hue-rotate(357deg) brightness(94%)
+    contrast(111%);
   &:hover {
     //background-image: url("../../img/remove-icon-black.svg");
-    filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(657%) hue-rotate(340deg) brightness(96%)
-      contrast(83%);
+    //filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(657%) hue-rotate(340deg) brightness(96%) contrast(83%);
+    transform: scale(0.9);
   }
 }
 
