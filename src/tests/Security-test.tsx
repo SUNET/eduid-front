@@ -1,10 +1,58 @@
-import { RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
+import { CredentialType, RemoveWebauthnTokensRequest, SecurityResponse } from "apis/eduidSecurity";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
 import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+
+const securityKeyCredential: CredentialType = {
+  mfa_approved: false,
+  authenticator: "cross-platform",
+  created_ts: "2021-12-02",
+  credential_type: "security.webauthn_credential_type",
+  description: "touchID",
+  key: "dummy dummy",
+  success_ts: "2022-10-17",
+  used_for_login: false,
+  verified: false,
+};
+
+const passwordCredential: CredentialType = {
+  mfa_approved: null,
+  authenticator: null,
+  created_ts: "2021-12-02",
+  credential_type: "security.password_credential_type",
+  description: null,
+  key: "dummy key1",
+  success_ts: "2022-10-17",
+  used_for_login: false,
+  verified: false,
+};
+
+const passKeyCredential: CredentialType = {
+  mfa_approved: false,
+  authenticator: "platform",
+  created_ts: "2022-10-14",
+  credential_type: "security.webauthn_credential_type",
+  description: null,
+  key: "dummy key1",
+  success_ts: "2022-10-17",
+  used_for_login: false,
+  verified: false,
+};
+
+const passKeyCredentialExtra: CredentialType = {
+  mfa_approved: false,
+  authenticator: "platform",
+  created_ts: "2022-10-14",
+  credential_type: "security.webauthn_credential_type",
+  description: null,
+  key: "dummy key2",
+  success_ts: "2022-10-17",
+  used_for_login: false,
+  verified: false,
+};
 
 async function linkToAdvancedSettings() {
   // Navigate to Advanced settings
@@ -31,26 +79,7 @@ test("renders security key as expected, with added security key", async () => {
     state: {
       ...defaultDashboardTestState,
       security: {
-        credentials: [
-          {
-            created_ts: "2021-12-02",
-            credential_type: "security.webauthn_credential_type",
-            description: "touchID",
-            key: "dummy dummy",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-          {
-            created_ts: "2022-10-14",
-            credential_type: "security.password_credential_type",
-            description: null,
-            key: "dummy key1",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-        ],
+        credentials: [securityKeyCredential, passwordCredential],
       },
     },
   });
@@ -85,35 +114,7 @@ test("can remove a security key", async () => {
     state: {
       ...defaultDashboardTestState,
       security: {
-        credentials: [
-          {
-            created_ts: "2021-12-02",
-            credential_type: "security.webauthn_credential_type",
-            description: "touchID",
-            key: "dummy dummy",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-          {
-            created_ts: "2021-12-02",
-            credential_type: "security.webauthn_credential_type",
-            description: "extra touchID",
-            key: "dummy dummy2",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-          {
-            created_ts: "2022-10-14",
-            credential_type: "security.password_credential_type",
-            description: null,
-            key: "dummy key1",
-            success_ts: "2022-10-17",
-            used_for_login: false,
-            verified: false,
-          },
-        ],
+        credentials: [passKeyCredential, passKeyCredentialExtra, securityKeyCredential],
       },
     },
   });
@@ -126,26 +127,7 @@ test("can remove a security key", async () => {
 test("api call webauthn/remove", async () => {
   const credential_key = "dummy_dummy";
   const response: SecurityResponse = {
-    credentials: [
-      {
-        created_ts: "2022-10-14",
-        credential_type: "security.password_credential_type",
-        description: null,
-        key: "dummy key1",
-        success_ts: "2022-10-17",
-        used_for_login: false,
-        verified: false,
-      },
-      {
-        created_ts: "2021-12-02",
-        credential_type: "security.webauthn_credential_type",
-        description: "touchID",
-        key: "dummy_dummy3",
-        success_ts: "2022-10-17",
-        used_for_login: false,
-        verified: false,
-      },
-    ],
+    credentials: [passwordCredential, securityKeyCredential],
   };
 
   mswServer.use(
@@ -170,26 +152,7 @@ test("api call webauthn/remove", async () => {
 
 test("security reducer, request credentials", async () => {
   const payload: SecurityResponse = {
-    credentials: [
-      {
-        created_ts: "2022-10-14",
-        credential_type: "security.password_credential_type",
-        description: null,
-        key: "dummy key1",
-        success_ts: "2022-10-17",
-        used_for_login: false,
-        verified: false,
-      },
-      {
-        created_ts: "2021-12-02",
-        credential_type: "security.webauthn_credential_type",
-        description: "touchID",
-        key: "dummy_dummy3",
-        success_ts: "2022-10-17",
-        used_for_login: false,
-        verified: false,
-      },
-    ],
+    credentials: [passwordCredential, passKeyCredential],
   };
   const action = {
     type: "eduIDApi/executeQuery/fulfilled",
@@ -205,17 +168,7 @@ test("security reducer, request credentials", async () => {
 
 test("security reducer, registerWebauthn", async () => {
   const payload: SecurityResponse = {
-    credentials: [
-      {
-        created_ts: "2021-12-02",
-        credential_type: "security.webauthn_credential_type",
-        description: "touchID",
-        key: "dummy_dummy3",
-        success_ts: "2022-10-17",
-        used_for_login: false,
-        verified: false,
-      },
-    ],
+    credentials: [passKeyCredential],
   };
   const action = {
     type: "eduIDApi/executeQuery/fulfilled",

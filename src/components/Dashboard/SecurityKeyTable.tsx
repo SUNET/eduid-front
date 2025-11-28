@@ -7,8 +7,9 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
+import passKeyGray from "../../../img/pass-key-gray.svg";
+import securityKeyGray from "../../../img/security-key-gray.svg";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
-
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
   readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
@@ -71,6 +72,7 @@ export function SecurityKeyTable({
       tokens.map((cred: CredentialType) => {
         // date created
         const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
+        const authenticatorIcon = cred.authenticator === "cross-platform" ? securityKeyGray : passKeyGray;
         // date last used
         if (cred.success_ts) {
           date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
@@ -118,35 +120,46 @@ export function SecurityKeyTable({
             className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
             data-token={cred.key}
           >
+            <span className="security-key-icon" aria-hidden="true">
+              <img
+                className={`${authenticatorIcon} icon`}
+                height="20"
+                alt={`${authenticatorIcon} icon`}
+                src={authenticatorIcon}
+              />
+            </span>
             <div>
-              <span aria-label="key name">
-                <FormattedMessage description="security description name" defaultMessage="Name:" />
-                &nbsp;
-                <strong>{cred.description}</strong>
-              </span>
-              <EduIDButton
-                aria-label="Remove"
-                id="remove-webauthn"
-                buttonstyle="remove sm"
-                onClick={() => handleConfirmDeleteModal(cred)}
-              ></EduIDButton>
-            </div>
-            <div>
-              <span aria-label="date created">
-                <FormattedMessage description="security creation date" defaultMessage="Created:" />
-                &nbsp;
-                <wbr />
-                {date_created}
-              </span>
+              <div className="flex-between">
+                <span aria-label="key name" className="key-name">
+                  <FormattedMessage description="security description name" defaultMessage="Name:" />
+                  &nbsp;
+                  <strong>{cred.description}</strong>
+                </span>
+                <EduIDButton
+                  aria-label="Remove"
+                  id="remove-webauthn"
+                  buttonstyle="remove sm"
+                  onClick={() => handleConfirmDeleteModal(cred)}
+                ></EduIDButton>
+              </div>
 
-              <span aria-label="date used">
-                <FormattedMessage description="security last used" defaultMessage="Used:" />
-                &nbsp;
-                <wbr />
-                {date_success}
-              </span>
+              <div>
+                <span aria-label="date created">
+                  <FormattedMessage description="security creation date" defaultMessage="Created:" />
+                  &nbsp;
+                  <wbr />
+                  {date_created}
+                </span>
+
+                <span aria-label="date used">
+                  <FormattedMessage description="security last used" defaultMessage="Used:" />
+                  &nbsp;
+                  <wbr />
+                  {date_success}
+                </span>
+              </div>
+              {btnVerify}
             </div>
-            {btnVerify}
           </figure>
         );
       })

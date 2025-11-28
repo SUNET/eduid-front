@@ -15,6 +15,7 @@ export interface RemoveWebauthnTokensRequest {
 }
 
 export interface CredentialType {
+  authenticator: "cross-platform" | "platform" | null;
   created_ts: string;
   credential_type: string;
   description: string | null;
@@ -22,6 +23,7 @@ export interface CredentialType {
   success_ts: string;
   used_for_login: boolean;
   verified: boolean;
+  mfa_approved: boolean | null;
 }
 
 export interface SecurityResponse {

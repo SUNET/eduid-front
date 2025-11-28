@@ -82,6 +82,8 @@ test("recommendations for new users, add your security key", async () => {
       security: {
         credentials: [
           {
+            mfa_approved: null,
+            authenticator: null,
             created_ts: "2022-10-14",
             credential_type: "security.password_credential_type",
             description: null,
@@ -118,6 +120,8 @@ test("recommendations for new user, verify security key", async () => {
       security: {
         credentials: [
           {
+            mfa_approved: false,
+            authenticator: "cross-platform",
             created_ts: "2021-12-02",
             credential_type: "security.webauthn_credential_type",
             description: "touchID",
@@ -127,6 +131,8 @@ test("recommendations for new user, verify security key", async () => {
             verified: false,
           },
           {
+            mfa_approved: null,
+            authenticator: null,
             created_ts: "2022-10-14",
             credential_type: "security.password_credential_type",
             description: null,
