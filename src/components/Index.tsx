@@ -18,7 +18,7 @@ export function Index() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
-  const [postDeleteAcccount] = securityApi.useLazyPostDeleteAccountQuery();
+  const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
   const redirectToLogin = useCallback(async () => {
     dispatch(appLoadingSlice.actions.appLoaded());
@@ -28,11 +28,11 @@ export function Index() {
   }, [dispatch, dashboard_link]);
 
   const deleteAccount = useCallback(async () => {
-    const response = await postDeleteAcccount();
+    const response = await postDeleteAccount();
     if (response.isSuccess) {
       window.location.assign(response.data.payload.location);
     }
-  }, [postDeleteAcccount]);
+  }, [postDeleteAccount]);
 
   useEffect(() => {
     if (frontend_action === "terminateAccountAuthn") {
