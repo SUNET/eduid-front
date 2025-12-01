@@ -71,7 +71,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
     } else if (eppn) {
       return <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
     }
-  }, [authn_options, eppn, login_url, location.pathname]);
+  }, [authn_options, eppn, login_url, location.pathname, handleLogin, handleLogout, handleRegister]);
 
   return (
     <header id="header">
