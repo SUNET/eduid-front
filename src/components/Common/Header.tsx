@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
+import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
@@ -19,9 +20,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-
-  let button = null;
-
+  const location = useLocation();
   const navigate = useNavigate();
 
   async function handleLogout() {
@@ -44,33 +43,35 @@ export function Header(props: HeaderProps): React.JSX.Element {
     }
   }
 
-  if (
-    window.location.pathname.includes("register") ||
-    window.location.pathname.includes("error") ||
-    window.location.pathname.includes("errors") ||
-    window.location.pathname.includes("reset-password")
-  ) {
-    button = (
-      <EduIDButton buttonstyle="secondary sm" id="login" onClick={handleLogin}>
-        <FormattedMessage defaultMessage="Log in" description="Header login" />
-      </EduIDButton>
-    );
-  } else if (authn_options.has_session) {
-    button = (
-      <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
-        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
-        <FormattedMessage defaultMessage="Log out" description="Header logout" />
-      </EduIDButton>
-    );
-  } else if (window.location.pathname.includes("login")) {
-    button = (
-      <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
-        <FormattedMessage defaultMessage="create eduid" description="Header register" />
-      </EduIDButton>
-    );
-  } else if (eppn) {
-    button = <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
-  }
+  const button = useMemo(() => {
+    if (
+      location.pathname.includes("register") ||
+      location.pathname.includes("error") ||
+      location.pathname.includes("errors") ||
+      location.pathname.includes("reset-password")
+    ) {
+      return (
+        <EduIDButton buttonstyle="secondary sm" id="login" onClick={handleLogin}>
+          <FormattedMessage defaultMessage="Log in" description="Header login" />
+        </EduIDButton>
+      );
+    } else if (authn_options.has_session) {
+      return (
+        <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+          <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+          <FormattedMessage defaultMessage="Log out" description="Header logout" />
+        </EduIDButton>
+      );
+    } else if (location.pathname.includes("login") && Object.keys(authn_options).length > 0) {
+      return (
+        <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
+          <FormattedMessage defaultMessage="create eduid" description="Header register" />
+        </EduIDButton>
+      );
+    } else if (eppn) {
+      return <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
+    }
+  }, [authn_options, eppn, login_url, location.pathname]);
 
   return (
     <header id="header">
