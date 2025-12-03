@@ -75,7 +75,7 @@ export function Index() {
             }}
           />
           &nbsp;
-          <a className="text-link" href={`${eduid_site_link}/help`} target="_blank" rel="noreferrer">
+          <a className="text-link" href={`${eduid_site_link}help`} target="_blank" rel="noreferrer">
             <FormattedMessage description="help link" defaultMessage="Help" />
           </a>
           &nbsp;
