@@ -283,7 +283,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage
             description="security second factor"
             defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
-              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins. It is recommended to add more than one security key.`}
+              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins.`}
           />
         </p>
         <p className="text-medium">
@@ -360,6 +360,22 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               </p>
             </div>
           </div>
+          <span className="suggestion-txt">
+            <FormattedMessage
+              description="multiple key suggestion"
+              defaultMessage=" It is strongly recommended to  {strong}  to make sure you can sign in to your account even if one is lost!"
+              values={{
+                strong: (
+                  <strong>
+                    <FormattedMessage
+                      description="multiple key - strong"
+                      defaultMessage={`add more than one security key or passkey`}
+                    />
+                  </strong>
+                ),
+              }}
+            />
+          </span>
         </section>
       </article>
       <SecurityKeyTable
