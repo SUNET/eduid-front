@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggle from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
@@ -61,6 +64,7 @@ const Footer = (): React.JSX.Element => {
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
               <a className="link" href="#" onClick={changeLanguage}>
+                <FontAwesomeIcon icon={faGlobe as IconProp} />
                 {language}
               </a>
             </span>
