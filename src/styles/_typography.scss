@@ -151,12 +151,12 @@ code {
 .suggestion-txt {
   font-style: italic;
   color: var(--txt-green);
-  font-size: $txt-md;
-  margin: 0.5rem auto 0;
+  font-size: $txt-sm;
   display: block;
   line-height: normal;
+  flex: 1;
 }
 .options .suggestion-txt {
-  margin-bottom: 2rem;
+  margin: 0.5rem auto 2rem;
   width: 75%;
 }
