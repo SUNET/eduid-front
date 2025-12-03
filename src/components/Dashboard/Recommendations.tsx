@@ -211,7 +211,7 @@ export function Recommendations(): React.JSX.Element | null {
 
   const email = emails?.filter((mail) => mail.primary)[0].email;
 
-  if (!isLoaded) {
+  if (!isLoaded || identities === undefined || tokens.length === 0) {
     return null;
   }
 
