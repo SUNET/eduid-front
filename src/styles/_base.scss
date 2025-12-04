@@ -157,6 +157,22 @@ hr.border-line {
   align-items: center;
 }
 
+.wide-flex {
+  @media (min-width: $bp-xl) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 1rem;
+    .buttons {
+      flex: 2;
+    }
+    .suggestion-txt {
+      margin-top: 0.5rem;
+      flex-basis: 5%;
+    }
+  }
+}
+
 // hides object from view but still accessible to screen readers
 .visuallyhidden {
   border: 0;

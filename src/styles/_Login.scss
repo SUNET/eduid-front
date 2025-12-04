@@ -63,11 +63,14 @@
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  margin-top: #{2 * $margin};
+  margin-top: $margin;
 
   .option-wrapper {
     margin-bottom: 2rem;
     width: 330px;
+    &:has(+ .suggestion-txt) {
+      margin-bottom: 0.5rem;
+    }
 
     .option {
       border-radius: 20px;

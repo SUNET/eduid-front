@@ -127,7 +127,7 @@
   }
 
   svg {
-    color: $success-green;
+    color: var(--txt-green);
     height: 1.5rem;
 
     &.disabled {

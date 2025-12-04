@@ -103,6 +103,22 @@ export function MultiFactorAuth(): React.JSX.Element {
             </p>
             <div className="options">
               <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
+              <span className="suggestion-txt">
+                <FormattedMessage
+                  description="multiple key suggestion"
+                  defaultMessage=" It is strongly recommended to  {strong}  to make sure you can sign in to your account even if one is lost!"
+                  values={{
+                    strong: (
+                      <strong>
+                        <FormattedMessage
+                          description="multiple key - strong"
+                          defaultMessage={`add more than one security key or passkey`}
+                        />
+                      </strong>
+                    ),
+                  }}
+                />
+              </span>
               <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
             </div>
           </React.Fragment>

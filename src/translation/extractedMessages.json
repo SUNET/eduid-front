@@ -1696,6 +1696,10 @@
     "developer_comment": "recommendations account link",
     "string": "Account"
   },
+  "Z01GqN": {
+    "developer_comment": "multiple key - strong",
+    "string": "add more than one security key or passkey"
+  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
@@ -2328,10 +2332,6 @@
     "developer_comment": "use international - list item 2",
     "string": "login to eduID and scan the QR code produced by Freja from the 'Other countries' section in the Identity area of eduID by following the instructions."
   },
-  "iFAVRB": {
-    "developer_comment": "security second factor",
-    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins. It is recommended to add more than one security key."
-  },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
@@ -2850,6 +2850,10 @@
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
   },
+  "pMBYS3": {
+    "developer_comment": "multiple key suggestion",
+    "string": "It is strongly recommended to {strong} to make sure you can sign in to your account even if one is lost!"
+  },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
     "string": "Save"
@@ -3126,6 +3130,10 @@
   "sDOXFj": {
     "developer_comment": "freja - protected strong",
     "string": "If you have a protected identity"
+  },
+  "sKSg8x": {
+    "developer_comment": "security second factor",
+    "string": "If possible add a security key as a second factor of authentication, beyond username and password, to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins."
   },
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
