@@ -27,8 +27,8 @@ export default function DeleteAccount(): React.JSX.Element | null {
           description="DeleteAccount"
         />
       </p>
-      <EduIDButton buttonstyle="link lowercase" id="delete-button" onClick={() => setShowModal(true)}>
-        <FormattedMessage defaultMessage="Delete eduID" description="DeleteAccount" />
+      <EduIDButton buttonstyle="link normal-case" id="delete-button" onClick={() => setShowModal(true)}>
+        <FormattedMessage defaultMessage="delete eduID" description="DeleteAccount" />
       </EduIDButton>
       <NotificationModal
         id="delete-account-modal"
