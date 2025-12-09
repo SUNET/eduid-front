@@ -23,6 +23,16 @@ html.dark {
   .header-user {
     color: #fff;
   }
+  @media (max-width: 1200px) {
+    header nav .nav-menu.active {
+      box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.3);
+    }
+  }
+  @media (min-width: 1200px) {
+    header nav .nav-menu .submenu {
+      filter: drop-shadow(0 -6px 17px rgba(89, 89, 89, 0.3));
+    }
+  }
 
   //landing and start page
   .status-box.success,
