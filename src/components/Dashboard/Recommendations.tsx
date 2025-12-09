@@ -120,7 +120,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
                   security: securityLink,
                 }}
               />
-              <em className="start-suggestion">
+              <span className="suggestion-txt">
                 <FormattedMessage
                   description="multiple key suggestion"
                   defaultMessage="It is strongly recommended to {strong} to ensure you can still sign in to your account in case one is lost."
@@ -135,7 +135,7 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
                     ),
                   }}
                 />
-              </em>
+              </span>
             </>
           ) : (
             <FormattedMessage
