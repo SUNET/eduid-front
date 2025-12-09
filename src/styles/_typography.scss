@@ -148,6 +148,7 @@ code {
   color: var(--error-red);
   font-size: $txt-sm !important;
 }
+
 .suggestion-txt {
   font-style: italic;
   color: var(--txt-green);
@@ -155,6 +156,13 @@ code {
   display: block;
   line-height: normal;
   flex: 1;
+
+  @media (min-width: $bp-xl) {
+    position: absolute;
+    right: 0;
+    max-width: 25%;
+    top: 0;
+  }
 }
 .options .suggestion-txt {
   margin: 0.5rem auto 2rem;

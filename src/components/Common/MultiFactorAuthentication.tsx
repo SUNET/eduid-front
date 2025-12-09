@@ -316,68 +316,67 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
             </strong>
           </span>
-          <div className="wide-flex">
-            <div className="buttons">
-              <div>
-                <EduIDButton
-                  id="security-webauthn-platform-button"
-                  buttonstyle="primary icon"
-                  onClick={() => handleRegisterWebauthn("platform")}
-                  disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
-                >
-                  <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                  <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-                </EduIDButton>
-                <p className="help-text">
+
+          <div className="buttons">
+            <div>
+              <EduIDButton
+                id="security-webauthn-platform-button"
+                buttonstyle="primary icon"
+                onClick={() => handleRegisterWebauthn("platform")}
+                disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
+              >
+                <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
+                <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+              </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage
+                  description="platform authn device help text"
+                  defaultMessage="Internal passkey on your phone or laptop."
+                />
+              </p>
+              {!isPlatformAuthenticatorAvailable && (
+                <p className="help-text black">
                   <FormattedMessage
-                    description="platform authn device help text"
-                    defaultMessage="Internal passkey on your phone or laptop."
+                    description="platform authn device error text"
+                    defaultMessage="*Your device is not compatible."
                   />
                 </p>
-                {!isPlatformAuthenticatorAvailable && (
-                  <p className="help-text black">
-                    <FormattedMessage
-                      description="platform authn device error text"
-                      defaultMessage="*Your device is not compatible."
-                    />
-                  </p>
-                )}
-              </div>
-              <div>
-                <EduIDButton
-                  id="security-webauthn-button"
-                  buttonstyle="primary icon"
-                  onClick={() => handleRegisterWebauthn("cross-platform")}
-                  disabled={isRegisteringAuthenticator}
-                >
-                  <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                  <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
-                </EduIDButton>
-                <p className="help-text">
-                  <FormattedMessage
-                    description="platform authn key help text"
-                    defaultMessage="Your external USB security key."
-                  />
-                </p>
-              </div>
+              )}
             </div>
-            <span className="suggestion-txt">
-              <FormattedMessage
-                description="multiple key suggestion"
-                defaultMessage=" It is strongly recommended to  {strong}  to make sure you can sign in to your account even if one is lost!"
-                values={{
-                  strong: (
-                    <strong>
-                      <FormattedMessage
-                        description="multiple key - strong"
-                        defaultMessage={`add more than one security key or passkey`}
-                      />
-                    </strong>
-                  ),
-                }}
-              />
-            </span>
+            <div>
+              <EduIDButton
+                id="security-webauthn-button"
+                buttonstyle="primary icon"
+                onClick={() => handleRegisterWebauthn("cross-platform")}
+                disabled={isRegisteringAuthenticator}
+              >
+                <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+              </EduIDButton>
+              <p className="help-text">
+                <FormattedMessage
+                  description="platform authn key help text"
+                  defaultMessage="Your external USB security key."
+                />
+              </p>
+            </div>
           </div>
+          <span className="suggestion-txt">
+            <FormattedMessage
+              description="multiple key suggestion"
+              defaultMessage=" It is strongly recommended to  {strong}  to make sure you can sign in to your account even if one is lost!"
+              values={{
+                strong: (
+                  <strong>
+                    <FormattedMessage
+                      description="multiple key - strong"
+                      defaultMessage={`add more than one security key or passkey`}
+                    />
+                  </strong>
+                ),
+              }}
+            />
+          </span>
         </section>
       </article>
       <SecurityKeyTable
