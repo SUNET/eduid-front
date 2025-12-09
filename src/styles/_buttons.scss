@@ -106,7 +106,6 @@ button.close {
   box-shadow: none;
   height: 1rem;
   width: 1rem;
-
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -115,9 +114,9 @@ button.close {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: var(--txt-gray);
     background-color: transparent;
     box-shadow: none;
+    transform: scale(0.8);
   }
 
   &.sm {
@@ -133,10 +132,10 @@ button.close {
   left: 50%;
   width: 20px;
   height: 2px;
-  background-color: var(--txt-gray);
+  background-color: var(--body-txt);
   transform-origin: center;
   :hover > & {
-    background-color: var(--body-txt);
+    background-color: $bright-orange;
   }
 }
 
@@ -349,12 +348,11 @@ button.scroll-to-top {
   cursor: pointer;
   box-shadow: none !important;
   background-color: transparent;
-  filter: brightness(0) saturate(100%) invert(25%) sepia(80%) saturate(1679%) hue-rotate(357deg) brightness(94%)
-    contrast(111%);
+  filter: brightness(0) saturate(100%);
+
   &:hover {
-    //background-image: url("../../img/remove-icon-black.svg");
-    //filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(657%) hue-rotate(340deg) brightness(96%) contrast(83%);
-    transform: scale(0.9);
+    filter: var(--bright-orange-filter);
+    transform: scale(0.8);
   }
 }
 

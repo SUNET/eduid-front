@@ -71,11 +71,11 @@ header {
           padding: 0 0.75rem;
 
           svg {
-            color: var(--txt-gray);
+            color: var(--body-txt);
           }
           @media (max-width: $bp-xl) {
             &:hover svg {
-              color: var(--txt-orange);
+              color: $bright-orange;
             }
           }
         }
