@@ -112,13 +112,31 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
         </h3>
         <span>
           {props.tokens?.length ? (
-            <FormattedMessage
-              description="read more about your multi-factor authentication description"
-              defaultMessage="Read more about your multi-factor authentication at {security}"
-              values={{
-                security: securityLink,
-              }}
-            />
+            <>
+              <FormattedMessage
+                description="read more about your multi-factor authentication description"
+                defaultMessage="Read more about your multi-factor authentication at {security}"
+                values={{
+                  security: securityLink,
+                }}
+              />
+              <em className="start-suggestion">
+                <FormattedMessage
+                  description="multiple key suggestion"
+                  defaultMessage="It is strongly recommended to {strong} to ensure you can still sign in to your account in case one is lost."
+                  values={{
+                    strong: (
+                      <strong>
+                        <FormattedMessage
+                          description="multiple key - strong"
+                          defaultMessage={`add more than one security key or passkey`}
+                        />
+                      </strong>
+                    ),
+                  }}
+                />
+              </em>
+            </>
           ) : (
             <FormattedMessage
               description="add multi-factor authentication description"
