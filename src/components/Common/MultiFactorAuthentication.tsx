@@ -364,7 +364,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <span className="suggestion-txt">
             <FormattedMessage
               description="multiple key suggestion"
-              defaultMessage="It is strongly recommended to {strong} to ensure you can still sign in to your account in case one is lost."
+              defaultMessage="It is strongly recommended to {strong} to ensure you can still sign in to your account if one is lost."
               values={{
                 strong: (
                   <strong>
