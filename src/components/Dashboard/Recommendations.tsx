@@ -120,17 +120,15 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
                   security: securityLink,
                 }}
               />
+              {/* needs conditional if props length == 1 */}
               <span className="suggestion-txt">
                 <FormattedMessage
                   description="multiple key suggestion"
-                  defaultMessage="It is strongly recommended to {strong} to ensure you can still sign in to your account if one is lost."
+                  defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
                   values={{
                     strong: (
                       <strong>
-                        <FormattedMessage
-                          description="multiple key - strong"
-                          defaultMessage={`add more than one security key or passkey`}
-                        />
+                        <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
                       </strong>
                     ),
                   }}

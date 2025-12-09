@@ -1696,10 +1696,6 @@
     "developer_comment": "recommendations account link",
     "string": "Account"
   },
-  "Z01GqN": {
-    "developer_comment": "multiple key - strong",
-    "string": "add more than one security key or passkey"
-  },
   "Z4yZ3N": {
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
@@ -2212,6 +2208,10 @@
     "developer_comment": "button cancel",
     "string": "Cancel"
   },
+  "fxzuLK": {
+    "developer_comment": "multiple key suggestion",
+    "string": "It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+  },
   "g0Q/Ki": {
     "developer_comment": "Title for email code input",
     "string": "Enter the code sent to {email}"
@@ -2422,6 +2422,10 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "About eIDAS"
+  },
+  "kCdhvM": {
+    "developer_comment": "multiple key - strong",
+    "string": "add more than one"
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
@@ -2849,10 +2853,6 @@
   "pIstaO": {
     "developer_comment": "verify identity",
     "string": "The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
-  },
-  "pMBYS3": {
-    "developer_comment": "multiple key suggestion",
-    "string": "It is strongly recommended to {strong} to make sure you can sign in to your account even if one is lost!"
   },
   "pZ5I5t": {
     "developer_comment": "Set new password (Save button)",
