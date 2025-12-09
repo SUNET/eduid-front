@@ -310,7 +310,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             }}
           />
         </p>
-        <section className="top-spacing">
+        <section className="add-key-section">
           <span aria-label="select extra webauthn">
             <strong>
               <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
