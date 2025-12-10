@@ -175,3 +175,26 @@
     left: 30%;
   }
 }
+
+/* Green italic recommendation, see typography */
+.suggestion-txt {
+  @media (min-width: $bp-xl) {
+    position: absolute;
+    right: 0;
+    max-width: 25%;
+    top: 1rem;
+  }
+
+  .status-box & {
+    border-top: 1px dashed var(--txt-gray);
+    margin: 0.5rem 1rem 0 0;
+    padding: 0.5rem 1rem 0.25rem 0;
+    position: static;
+    max-width: 100%;
+  }
+
+  .options & {
+    margin: 0.5rem auto 0;
+    width: 75%;
+  }
+}

@@ -42,6 +42,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
   const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
@@ -283,7 +284,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <FormattedMessage
             description="security second factor"
             defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
-              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins. It is recommended to add more than one security key.`}
+              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins.`}
           />
         </p>
         <p className="text-medium">
@@ -310,12 +311,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             }}
           />
         </p>
-        <section className="top-spacing">
+        <section className="add-key-section">
           <span aria-label="select extra webauthn">
             <strong>
               <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
             </strong>
           </span>
+
           <div className="buttons">
             <div>
               <EduIDButton
@@ -360,6 +362,21 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               </p>
             </div>
           </div>
+          {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
+            <span className="suggestion-txt">
+              <FormattedMessage
+                description="multiple key suggestion"
+                defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+                values={{
+                  strong: (
+                    <strong>
+                      <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                    </strong>
+                  ),
+                }}
+              />
+            </span>
+          )}
         </section>
       </article>
       <SecurityKeyTable

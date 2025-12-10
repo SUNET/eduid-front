@@ -148,3 +148,11 @@ code {
   color: var(--error-red);
   font-size: $txt-sm !important;
 }
+
+.suggestion-txt {
+  font-style: italic;
+  color: var(--txt-green);
+  font-size: $txt-sm;
+  display: block;
+  line-height: normal;
+}

@@ -63,11 +63,15 @@
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  margin-top: #{2 * $margin};
+  margin-top: $margin;
+  position: relative;
 
   .option-wrapper {
     margin-bottom: 2rem;
     width: 330px;
+    &:has(+ .suggestion-txt) {
+      margin-bottom: 0.5rem;
+    }
 
     .option {
       border-radius: 20px;
@@ -245,7 +249,7 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   color: var(--txt-gray);
 
   .line {
@@ -286,7 +290,6 @@ section.username-pw-option form .form-group:nth-of-type(2) {
 
 .passkey-option .status-box {
   display: block;
-  margin-bottom: 1.5rem;
   background-color: transparent;
   border: $border-width var(--border-gray) solid !important;
   box-shadow: none;
@@ -297,4 +300,9 @@ section.username-pw-option form .form-group:nth-of-type(2) {
       margin-left: 1rem;
     }
   }
+}
+
+section.add-key-section {
+  margin-top: 1rem;
+  position: relative;
 }
