@@ -118,10 +118,15 @@ export function SecurityZoneInfo(): React.JSX.Element {
             </p>
             <span className="help-text">
               <FormattedMessage
-                defaultMessage={`If you wish to cancel this process without affecting a change you can return straight to {page} page.`}
+                defaultMessage={`If you wish to {strong} this process without affecting a change you can return straight to {page} page.`}
                 description="security zone cancel info"
                 values={{
                   page: current?.redirectPath,
+                  strong: (
+                    <strong>
+                      <FormattedMessage description="mfa cancel - strong" defaultMessage={`cancel`} />
+                    </strong>
+                  ),
                 }}
               />
             </span>
