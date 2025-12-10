@@ -1,7 +1,7 @@
 import { loginApi } from "apis/eduidLogin";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { SecurityKey } from "../Common/SecurityKey";
 import { SwedishEID } from "../Common/SwedishEID";
@@ -17,7 +17,16 @@ export function MultiFactorAuth(): React.JSX.Element {
   const ref = useAppSelector((state) => state.login.ref);
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
-  const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const [fetchMfaAuth, data] = loginApi.useLazyFetchMfaAuthQuery();
+
+  const show_suggestion = useMemo(() => {
+    if (data.isSuccess) {
+      const options = data.data.payload.webauthn_options;
+      const keys = options?.allowCredentials || [];
+      return keys.length == 1 && !authn_options.swedish_eid;
+    }
+    return false;
+  }, [authn_options.swedish_eid, data?.data?.payload.webauthn_options, data.isSuccess]);
 
   let leadText;
   let headingText;
@@ -103,19 +112,21 @@ export function MultiFactorAuth(): React.JSX.Element {
             </p>
             <div className="options">
               <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
-              <span className="suggestion-txt">
-                <FormattedMessage
-                  description="multiple key suggestion"
-                  defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
-                  values={{
-                    strong: (
-                      <strong>
-                        <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
-                      </strong>
-                    ),
-                  }}
-                />
-              </span>
+              {show_suggestion && (
+                <span className="suggestion-txt">
+                  <FormattedMessage
+                    description="multiple key suggestion"
+                    defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+                    values={{
+                      strong: (
+                        <strong>
+                          <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                        </strong>
+                      ),
+                    }}
+                  />
+                </span>
+              )}
               <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
             </div>
           </React.Fragment>

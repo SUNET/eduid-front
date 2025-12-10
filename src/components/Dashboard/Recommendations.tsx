@@ -87,7 +87,10 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   );
 }
 
-function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
+function ImprovedSecurityStatus(props: {
+  readonly tokens?: CredentialType[];
+  readonly identities?: UserIdentities;
+}): React.JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -120,20 +123,21 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
                   security: securityLink,
                 }}
               />
-              {/* needs conditional if props length == 1 */}
-              <span className="suggestion-txt">
-                <FormattedMessage
-                  description="multiple key suggestion"
-                  defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
-                  values={{
-                    strong: (
-                      <strong>
-                        <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
-                      </strong>
-                    ),
-                  }}
-                />
-              </span>
+              {props.tokens.length == 1 && !(props.identities?.nin && props.identities?.is_verified) && (
+                <span className="suggestion-txt">
+                  <FormattedMessage
+                    description="multiple key suggestion"
+                    defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+                    values={{
+                      strong: (
+                        <strong>
+                          <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                        </strong>
+                      ),
+                    }}
+                  />
+                </span>
+              )}
             </>
           ) : (
             <FormattedMessage
@@ -265,7 +269,7 @@ export function Recommendations(): React.JSX.Element | null {
       <section className="status-boxes">
         <ConfirmedAccountStatus email={email} />
         <VerifiedIdentityStatus identities={identities} />
-        <ImprovedSecurityStatus tokens={tokens} />
+        <ImprovedSecurityStatus tokens={tokens} identities={identities} />
         <VerifiedSecurityStatus tokens={tokens} />
       </section>
       <p className="help-text">
