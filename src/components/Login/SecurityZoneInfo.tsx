@@ -116,7 +116,7 @@ export function SecurityZoneInfo(): React.JSX.Element {
                 }}
               />
             </p>
-            <span className="help-text">
+            <span className="top-divider help-text">
               <FormattedMessage
                 defaultMessage={`If you wish to {strong} this process without affecting a change you can return straight to {page} page.`}
                 description="security zone cancel info"
