@@ -2208,6 +2208,10 @@
     "developer_comment": "button cancel",
     "string": "Avbryt"
   },
+  "fxzuLK": {
+    "developer_comment": "multiple key suggestion",
+    "string": "Det rekommenderas starkt att {strong} säkerhetsnyckel eller passkey/lösennyckel för att försäkra dig om att du kan logga in även om en förloras."
+  },
   "g0Q/Ki": {
     "developer_comment": "Title for email code input",
     "string": "Skriv in koden som skickats till {email}"
@@ -2328,10 +2332,6 @@
     "developer_comment": "use international - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'Andra länder' och scanna QR-koden som genereras av Freja genom att följa instruktionerna."
   },
-  "iFAVRB": {
-    "developer_comment": "security second factor",
-    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, för att vara säker på att bara du har tillgång till ditt eduID. Exempelvis en separat USB-säkerhetsnyckel som du kan skaffa, eller inbyggda passkey/lösennyckel-funktioner i din enhet som använder biometri eller pinkod. Lägg gärna till flera säkerhetsnycklar."
-  },
   "iHIkuG": {
     "developer_comment": "login mfa primary option hint",
     "string": "Om din säkerhetsnyckel har en knapp, tryck på den."
@@ -2422,6 +2422,10 @@
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
     "string": "Om eIDAS"
+  },
+  "kCdhvM": {
+    "developer_comment": "multiple key - strong",
+    "string": "lägga till mer än en"
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
@@ -3126,6 +3130,10 @@
   "sDOXFj": {
     "developer_comment": "freja - protected strong",
     "string": "Om du har skyddad identitet"
+  },
+  "sKSg8x": {
+    "developer_comment": "security second factor",
+    "string": "Om möjligt lägg till ett ytterligare sätt att identifiera dig i form av en säkerhetsnyckel, utöver användarnamn och lösenord, för att vara säker på att bara du har tillgång till ditt eduID. Exempelvis en separat USB-säkerhetsnyckel som du kan skaffa, eller inbyggda passkey/lösennyckel-funktioner i din enhet som använder biometri eller pinkod."
   },
   "sNx8Ua": {
     "developer_comment": "security eduid - list item 1-2",
