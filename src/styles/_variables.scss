@@ -17,6 +17,8 @@
   --error-red-t: #d2143a80; //with 50% transparency
   --bg-gray: #ebebeb;
   --shadow-green: #c1e1cd;
+  --bright-orange-filter: brightness(0) saturate(100%) invert(25%) sepia(28%) saturate(6161%) hue-rotate(4deg)
+    brightness(93%) contrast(101%);
 }
 $bright-orange: #ff4500; //eduID, highlights
 $btn-orange: #db3a00; //white on orange

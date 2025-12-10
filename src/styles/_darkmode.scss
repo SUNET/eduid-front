@@ -23,6 +23,16 @@ html.dark {
   .header-user {
     color: #fff;
   }
+  @media (max-width: 1200px) {
+    header nav .nav-menu.active {
+      box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.3);
+    }
+  }
+  @media (min-width: 1200px) {
+    header nav .nav-menu .submenu {
+      filter: drop-shadow(0 -6px 17px rgba(89, 89, 89, 0.3));
+    }
+  }
 
   //landing and start page
   .status-box.success,
@@ -73,13 +83,9 @@ html.dark {
   }
 
   .remove {
-    //text gray color
-    filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(26%) hue-rotate(316deg) brightness(100%)
-      contrast(76%);
-    //body-text white color
+    filter: invert(97%) sepia(0%) saturate(7500%) hue-rotate(295deg) brightness(105%) contrast(102%);
     &:hover {
-      filter: brightness(0) saturate(100%) invert(99%) sepia(3%) saturate(363%) hue-rotate(209deg) brightness(115%)
-        contrast(91%);
+      filter: var(--bright-orange-filter);
     }
   }
 
