@@ -42,6 +42,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const wrapperRef = useRef<HTMLElement | null>(null);
+  const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
   const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
@@ -361,19 +362,21 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               </p>
             </div>
           </div>
-          <span className="suggestion-txt">
-            <FormattedMessage
-              description="multiple key suggestion"
-              defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
-              values={{
-                strong: (
-                  <strong>
-                    <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
-                  </strong>
-                ),
-              }}
-            />
-          </span>
+          {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
+            <span className="suggestion-txt">
+              <FormattedMessage
+                description="multiple key suggestion"
+                defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+                values={{
+                  strong: (
+                    <strong>
+                      <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                    </strong>
+                  ),
+                }}
+              />
+            </span>
+          )}
         </section>
       </article>
       <SecurityKeyTable
