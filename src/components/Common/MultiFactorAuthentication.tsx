@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
@@ -272,14 +275,46 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     },
     [] // run this only once
   );
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    popoverRef.current?.showPopover();
+  };
+
+  const handleMouseOut = () => {
+    popoverRef.current?.hidePopover();
+  };
+
+  useEffect(() => {
+    // Set anchor attribute for popover positioning
+    if (popoverRef.current) {
+      popoverRef.current.setAttribute("anchor", "hint-trigger");
+    }
+  }, []);
 
   if (!isPlatformAuthLoaded) return null;
   return (
     <Fragment>
       <article id="add-two-factor">
-        <h2>
-          <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
-        </h2>
+        <div className="flex-between baseline">
+          <h2>
+            <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
+          </h2>
+          <button id="hint-trigger" onMouseEnter={handleMouseEnter} onMouseOut={handleMouseOut} className="trigger">
+            <FontAwesomeIcon icon={faLock as IconProp} />
+          </button>
+        </div>
+        <div ref={popoverRef} popover="auto" className="popover-below">
+          <p>
+            <FormattedMessage description="popover info heading" defaultMessage="Security zone" />
+          </p>
+          <p className="help-text">
+            <FormattedMessage
+              description="popover info"
+              defaultMessage="To continue this process, you may need to re-authenticate."
+            />
+          </p>
+        </div>
         <p>
           <FormattedMessage
             description="security second factor"

@@ -163,6 +163,9 @@ hr.border-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &.baseline {
+    align-items: baseline;
+  }
 }
 
 // hides object from view but still accessible to screen readers
