@@ -186,15 +186,12 @@
   }
 
   .status-box & {
-    border-top: 1px dashed var(--txt-gray);
-    margin: 0.5rem 1rem 0 0;
-    padding: 0.5rem 1rem 0.25rem 0;
     position: static;
     max-width: 100%;
   }
 
   .options & {
-    margin: 0.5rem auto 0;
+    margin: 1rem auto 0;
     width: 75%;
   }
 }

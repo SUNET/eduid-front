@@ -2300,6 +2300,10 @@
     "developer_comment": "Dashboard AccountLinking",
     "string": "ORCID account"
   },
+  "hjmQl7": {
+    "developer_comment": "security zone cancel info",
+    "string": "If you wish to {strong} this process without affecting a change you can return straight to {page} page."
+  },
   "hk4i0h": {
     "developer_comment": "Use other device 2",
     "string": "Request cancelled."
@@ -2679,10 +2683,6 @@
   "mwt1Dw": {
     "developer_comment": "Account terminated - reset password link",
     "string": "Go to reset password page"
-  },
-  "n0mqo6": {
-    "developer_comment": "DeleteAccount",
-    "string": "Delete eduID"
   },
   "n6sj+f": {
     "developer_comment": "connect your identity to eduID description",
@@ -3331,6 +3331,10 @@
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
   },
+  "u8ud2A": {
+    "developer_comment": "DeleteAccount",
+    "string": "delete eduID"
+  },
   "uMFspJ": {
     "developer_comment": "Temp info - continue button",
     "string": "Continue"
@@ -3495,6 +3499,10 @@
     "developer_comment": "manage your tokens",
     "string": "Manage your security keys"
   },
+  "xP+tAc": {
+    "developer_comment": "mfa cancel - strong",
+    "string": "cancel"
+  },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
     "string": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
@@ -3510,10 +3518,6 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
-  },
-  "xpf0XZ": {
-    "developer_comment": "security zone cancel info",
-    "string": "If you wish to cancel this process without affecting a change you can return straight to {page} page."
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
