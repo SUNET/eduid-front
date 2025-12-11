@@ -2300,6 +2300,10 @@
     "developer_comment": "Dashboard AccountLinking",
     "string": "Länka till ditt ORCID konto"
   },
+  "hjmQl7": {
+    "developer_comment": "security zone cancel info",
+    "string": "Om du vill {strong} utan att spara förändringen kan du återvända direkt till sidan {page}."
+  },
   "hk4i0h": {
     "developer_comment": "Use other device 2",
     "string": "Avbrutet."
@@ -2679,10 +2683,6 @@
   "mwt1Dw": {
     "developer_comment": "Account terminated - reset password link",
     "string": "Till återställ lösenord"
-  },
-  "n0mqo6": {
-    "developer_comment": "DeleteAccount",
-    "string": "Radera eduID"
   },
   "n6sj+f": {
     "developer_comment": "connect your identity to eduID description",
@@ -3331,6 +3331,10 @@
     "developer_comment": "use eidas - list item 2",
     "string": "logga in i eduID, navigera till Identitet och välj verifieringsmetoden för 'EU-medborgare' och följ instruktionerna."
   },
+  "u8ud2A": {
+    "developer_comment": "DeleteAccount",
+    "string": "radera eduID"
+  },
   "uMFspJ": {
     "developer_comment": "Temp info - continue button",
     "string": "Fortsätt"
@@ -3495,6 +3499,10 @@
     "developer_comment": "manage your tokens",
     "string": "Hantera dina säkerhetsnycklar"
   },
+  "xP+tAc": {
+    "developer_comment": "mfa cancel - strong",
+    "string": "Avbryt"
+  },
   "xaK37t": {
     "developer_comment": "Personal data hint names locked when verified",
     "string": "För- och efternamn kommer att ersättas med de från folkbokföringen om du verifierar ditt eduID med ditt personummer."
@@ -3510,10 +3518,6 @@
   "xmn/yX": {
     "developer_comment": "verification methods - list item 1",
     "string": "användaren får ett brev med en kod skickat till den folkbokföringsadress som är registrerad hos Skatteverket och instruktioner om att slutföra verifieringen i eduid.se,"
-  },
-  "xpf0XZ": {
-    "developer_comment": "security zone cancel info",
-    "string": "Om du vill avbryta utan att spara förändringen kan du återvända direkt till sidan {page}."
   },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
