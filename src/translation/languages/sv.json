@@ -396,10 +396,6 @@
     "developer_comment": "Copied tooltip",
     "string": "Kopierat!"
   },
-  "6dEYlZ": {
-    "developer_comment": "help link",
-    "string": "Hjälp"
-  },
   "6i0Tfo": {
     "developer_comment": "nin label",
     "string": "Personnummer"
@@ -591,6 +587,10 @@
   "B9GqT0": {
     "developer_comment": "create eduid - list item 5",
     "string": "Välj med hjälp av radioknapparna mellan ett föreslaget (automatiskt genererat) lösenord eller ett du skapar själv."
+  },
+  "BQv3Ph": {
+    "developer_comment": "read more in the help link",
+    "string": ", alltid tillgängligt i sidfoten. Registrera dig eller logga in med knapparna nedan!"
   },
   "BhlUhw": {
     "developer_comment": "Signup",
@@ -908,6 +908,10 @@
     "developer_comment": "login eduid - username list item 2",
     "string": "ditt unika ID som visas på inloggade startsidan och under Konto."
   },
+  "IHYHB7": {
+    "developer_comment": "help link",
+    "string": "hjälpinnehåll"
+  },
   "IRnUgl": {
     "developer_comment": "account eduid - list item 3",
     "string": "Byt alltid ditt lösenord om du tror att någon annan har tillgång till det."
@@ -1046,6 +1050,10 @@
   "LmFLU4": {
     "developer_comment": "identity eduid - list item 2-2",
     "string": "Med eIDAS elektronisk identifiering för EU-medborgare."
+  },
+  "Lppidn": {
+    "developer_comment": "read more at Sunet",
+    "string": "Du kan läsa mer om eduID på {Sunet} och i vårt"
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1413,6 +1421,10 @@
     "developer_comment": "create eduid - list item 8",
     "string": "Du kan nu logga in med ditt eduID."
   },
+  "U1WDSO": {
+    "developer_comment": "sunet link",
+    "string": "Sunets webbplats"
+  },
   "U3Ez+R": {
     "developer_comment": "usb key technical section - list item 3",
     "string": "måste stödja någon av följande \"user verification methods\": "
@@ -1576,10 +1588,6 @@
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Epostadresser:"
   },
-  "X+6FEh": {
-    "developer_comment": "read more at Sunet",
-    "string": "Du kan läsa mer om eduID på {Sunet} hemsida eller i"
-  },
   "X+EKkF": {
     "developer_comment": "need visit atg agent for freja - paragraph",
     "string": "Bara om du använder en annan ID-handling än svenskt pass, {protectedId}. ATG-ombudet kan påbörja en kontroll av din legitimation genom att scanna den QR-kod som Freja-appen genererat och följa instruktionerna på sin skärm. Du kommer bli informerad när legitimationskontrollen är slutförd och ditt Freja+ är klart att användas, det kan ta upp till 3 timmar."
@@ -1671,10 +1679,6 @@
   "YLzAJF": {
     "developer_comment": "security key status",
     "string": "Verifieringsstatus:"
-  },
-  "YOCct5": {
-    "developer_comment": "read more in the help link",
-    "string": "länken i sidfoten. Du kan också registrera dig eller logga in med knapparna nedan!"
   },
   "YStEhP": {
     "developer_comment": "Assurance levels with your eduID - paragraph2",
