@@ -69,7 +69,7 @@ export function Index() {
             values={{
               Sunet: (
                 <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank" rel="noreferrer">
-                  Sunet&apos;s website
+                  <FormattedMessage description="sunet link" defaultMessage="Sunet's website" />
                 </a>
               ),
             }}

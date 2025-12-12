@@ -1421,6 +1421,10 @@
     "developer_comment": "create eduid - list item 8",
     "string": "You can now log in with your eduID."
   },
+  "U1WDSO": {
+    "developer_comment": "sunet link",
+    "string": "Sunet's website"
+  },
   "U3Ez+R": {
     "developer_comment": "usb key technical section - list item 3",
     "string": "it must support any of the following user verification methods:"
