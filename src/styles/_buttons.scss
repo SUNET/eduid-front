@@ -366,43 +366,49 @@ button.flex {
   }
 }
 
-//popover hint button and box
-.trigger {
-  anchor-name: --hint-trigger;
-  width: 2.5rem;
-  height: 2.5rem;
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px var(--border-gray) solid;
-  background: var(--contrast-color);
-  box-shadow: none;
-  border-radius: 50%;
-  &:hover {
-    background-color: var(--border-gray);
-  }
+.custom-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
 
-  svg {
-    pointer-events: none;
-    height: 0.75em;
+  .trigger {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px var(--border-gray) solid;
+    background: var(--contrast-color);
+    box-shadow: none;
+    border-radius: 50%;
+
+    svg {
+      pointer-events: none;
+      height: 0.75em;
+    }
   }
 }
 
-.popover-below {
-  position-anchor: --hint-trigger;
-  top: anchor(bottom);
-  left: anchor(center);
-  translate: -90% 5%;
+.custom-tooltip-popover {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 260px;
   box-shadow: 0 6px 12px rgba(89, 89, 89, 0.18);
   border-radius: 10px;
-  width: 15rem;
+  background: white;
   padding: 1rem;
-  background-color: var(--contrast-color);
   color: black;
+}
 
-  .help-text {
-    margin-top: 0;
-  }
+.custom-tooltip-title {
+  margin: 0;
+}
+
+.custom-tooltip-help {
+  margin-top: 0;
 }

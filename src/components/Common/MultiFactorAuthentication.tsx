@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
@@ -19,6 +16,7 @@ import authnSlice from "slices/Authn";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import ConfirmModal from "./ConfirmModal";
+import { ToolTip } from "./ToolTip";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
@@ -275,22 +273,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     },
     [] // run this only once
   );
-  const popoverRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseEnter = () => {
-    popoverRef.current?.showPopover();
-  };
-
-  const handleMouseOut = () => {
-    popoverRef.current?.hidePopover();
-  };
-
-  useEffect(() => {
-    // Set anchor attribute for popover positioning
-    if (popoverRef.current) {
-      popoverRef.current.setAttribute("anchor", "hint-trigger");
-    }
-  }, []);
 
   if (!isPlatformAuthLoaded) return null;
   return (
@@ -300,20 +282,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <h2>
             <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>
-          <button id="hint-trigger" onMouseEnter={handleMouseEnter} onMouseOut={handleMouseOut} className="trigger">
-            <FontAwesomeIcon icon={faLock as IconProp} />
-          </button>
-        </div>
-        <div ref={popoverRef} popover="auto" className="popover-below">
-          <p>
-            <FormattedMessage description="popover info heading" defaultMessage="Security zone" />
-          </p>
-          <p className="help-text">
-            <FormattedMessage
-              description="popover info"
-              defaultMessage="To continue this process, you may need to re-authenticate."
-            />
-          </p>
+          <ToolTip />
         </div>
         <p>
           <FormattedMessage

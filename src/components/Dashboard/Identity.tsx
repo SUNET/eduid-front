@@ -9,6 +9,7 @@ import { Accordion, AccordionItemTemplate } from "components/Common/AccordionIte
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
+import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
 import FrejaeID from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
@@ -114,12 +115,15 @@ function IdentityContent(): React.JSX.Element {
       <article id="verify-identity">
         {identities?.is_verified ? (
           <React.Fragment>
-            <h2>
-              <FormattedMessage
-                description="verify identity verified description"
-                defaultMessage="The identities below are now connected to your eduID"
-              />
-            </h2>
+            <div className="flex-between baseline">
+              <h2>
+                <FormattedMessage
+                  description="verify identity verified description"
+                  defaultMessage="The identities below are now connected to your eduID"
+                />
+              </h2>
+              <ToolTip />
+            </div>
             <VerifiedIdentitiesTable />
           </React.Fragment>
         ) : (
