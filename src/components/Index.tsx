@@ -64,23 +64,22 @@ export function Index() {
         </p>
         <p className="med-txt">
           <FormattedMessage
-            defaultMessage="You can read more about eduID at {Sunet} website or in the"
+            defaultMessage={`You can read more about eduID at {Sunet} and in our `}
             description="read more at Sunet"
             values={{
               Sunet: (
                 <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank" rel="noreferrer">
-                  Sunet
+                  Sunet&apos;s website
                 </a>
               ),
             }}
           />
           &nbsp;
           <a className="text-link" href={`${eduid_site_link}help`} target="_blank" rel="noreferrer">
-            <FormattedMessage description="help link" defaultMessage="Help" />
+            <FormattedMessage description="help link" defaultMessage="help content" />
           </a>
-          &nbsp;
           <FormattedMessage
-            defaultMessage="link in the footer. You can also register or log in using the buttons below!"
+            defaultMessage=", always accessible from the footer. Register or log in using the buttons below!"
             description="read more in the help link"
           />
         </p>
