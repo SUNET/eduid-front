@@ -180,7 +180,13 @@ export function Help(): React.JSX.Element {
                 <li>
                   <FormattedMessage
                     description="when use eduID - list item 5"
-                    defaultMessage="administrate students taking the Digital national exam."
+                    defaultMessage="administrate students taking the Digital national exam,"
+                  />
+                </li>
+                <li>
+                  <FormattedMessage
+                    description="when use eduID - list item 6"
+                    defaultMessage="electronically sign documents with eduSign."
                   />
                 </li>
               </ul>
@@ -190,10 +196,7 @@ export function Help(): React.JSX.Element {
             uuid="help-using-eduid"
             title={<FormattedMessage description="about using eduid - handle" defaultMessage="Using eduID" />}
             additionalInfo={
-              <FormattedMessage
-                description="about using eduid - info"
-                defaultMessage="Create, login, account settings and blocking/deleting account"
-              />
+              <FormattedMessage description="about using eduid - info" defaultMessage="Create and login with account" />
             }
           >
             <h4>
@@ -495,7 +498,19 @@ export function Help(): React.JSX.Element {
                 </ul>
               </AccordionItemTemplate>
             </Accordion>
-
+          </AccordionItemTemplate>
+          <AccordionItemTemplate
+            uuid="help-using-eduid"
+            title={
+              <FormattedMessage description="about eduid settings - handle" defaultMessage="Managing eduID settings" />
+            }
+            additionalInfo={
+              <FormattedMessage
+                description="about eduid settings - info"
+                defaultMessage="editing, enhancing and blocking/deleting your account"
+              />
+            }
+          >
             <article>
               <h4>
                 <FormattedMessage description="settings eduid - heading" defaultMessage="How do I update my account?" />
