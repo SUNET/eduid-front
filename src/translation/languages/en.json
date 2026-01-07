@@ -231,6 +231,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
   },
+  "3AenLb": {
+    "developer_comment": "about eduid settings - handle",
+    "string": "Managing eduID settings"
+  },
   "3DXNIw": {
     "developer_comment": "read more about your multi-factor authentication description",
     "string": "Read more about your added multi-factor authentication at {security}"
@@ -844,10 +848,6 @@
     "developer_comment": "password input field label",
     "string": "Password"
   },
-  "GXtHky": {
-    "developer_comment": "when use eduID - list item 5",
-    "string": "administrate students taking the Digital national exam."
-  },
   "GcpVPo": {
     "developer_comment": "security last used",
     "string": "Used:"
@@ -955,10 +955,6 @@
   "J5Vh6s": {
     "developer_comment": "Temp info - message4",
     "string": "To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
-  },
-  "JYinGg": {
-    "developer_comment": "about using eduid - info",
-    "string": "Create, login, account settings and blocking/deleting account"
   },
   "Jc80fN": {
     "developer_comment": "settings eduid - intro definition",
@@ -1456,6 +1452,10 @@
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
   },
+  "UfFm3k": {
+    "developer_comment": "about eduid settings - info",
+    "string": "editing, enhancing and blocking/deleting your account"
+  },
   "Uq6Cvr": {
     "developer_comment": "opening hours - list definition",
     "string": "Opening hours:"
@@ -1579,6 +1579,10 @@
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "The strength and usage of your eduID can be improved by following the steps listed below."
+  },
+  "WtfZA3": {
+    "developer_comment": "when use eduID - list item 5",
+    "string": "administrate students taking the Digital national exam,"
   },
   "WwRwTR": {
     "developer_comment": "how more secure description 1",
@@ -2704,6 +2708,10 @@
     "developer_comment": "BankID vetting button",
     "string": "with a BankID"
   },
+  "nJZCTi": {
+    "developer_comment": "when use eduID - list item 6",
+    "string": "electronically sign documents with eduSign."
+  },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
     "string": "Certified FIDO 2.0, you can read more at {Fido}."
@@ -3134,6 +3142,10 @@
   "sDOXFj": {
     "developer_comment": "freja - protected strong",
     "string": "If you have a protected identity"
+  },
+  "sF+S3i": {
+    "developer_comment": "about using eduid - info",
+    "string": "Create and login with account"
   },
   "sKSg8x": {
     "developer_comment": "security second factor",
