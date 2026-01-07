@@ -231,6 +231,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
+  "3AenLb": {
+    "developer_comment": "about eduid settings - handle",
+    "string": "Hantering av eduIDs inställningar"
+  },
   "3DXNIw": {
     "developer_comment": "read more about your multi-factor authentication description",
     "string": "Läs mer om din tillagda multifaktorautentisering under {security}"
@@ -844,10 +848,6 @@
     "developer_comment": "password input field label",
     "string": "Lösenord"
   },
-  "GXtHky": {
-    "developer_comment": "when use eduID - list item 5",
-    "string": "administrera studenter som ska utföra Digitala Nationella Provet."
-  },
   "GcpVPo": {
     "developer_comment": "security last used",
     "string": "Använd:"
@@ -955,10 +955,6 @@
   "J5Vh6s": {
     "developer_comment": "Temp info - message4",
     "string": "För att säkerställa fortsatt säker åtkomst och användning av eduID rekommenderar vi att du väljer en annan metod för återställning av lösenord, t.ex. med hjälp av en säkerhetsnyckel."
-  },
-  "JYinGg": {
-    "developer_comment": "about using eduid - info",
-    "string": "Skapa, logga in, konto-inställningar och spärra/radera konto"
   },
   "Jc80fN": {
     "developer_comment": "settings eduid - intro definition",
@@ -1189,7 +1185,7 @@
   },
   "OuY4pQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph6",
-    "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet SWAMID AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. Digitala Nationella Proven (DNP) och Nice."
+    "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet SWAMID AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. digitala nationella proven (DNP) och Nice."
   },
   "OyR/Ey": {
     "developer_comment": "account eduid - list item 0-heading",
@@ -1456,6 +1452,10 @@
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
   },
+  "UfFm3k": {
+    "developer_comment": "about eduid settings - info",
+    "string": "redigera konto-inställningar eller spärra/radera konto"
+  },
   "Uq6Cvr": {
     "developer_comment": "opening hours - list definition",
     "string": "Öppettider:"
@@ -1579,6 +1579,10 @@
   "WtORfS": {
     "developer_comment": "status overview paragraph1",
     "string": "Säkerheten och användbarheten av ditt eduID kan förbättras genom nedanstående åtgärder."
+  },
+  "WtfZA3": {
+    "developer_comment": "when use eduID - list item 5",
+    "string": "administrera studenter som ska utföra digitala nationella prov,"
   },
   "WwRwTR": {
     "developer_comment": "how more secure description 1",
@@ -2704,6 +2708,10 @@
     "developer_comment": "BankID vetting button",
     "string": "med BankID"
   },
+  "nJZCTi": {
+    "developer_comment": "when use eduID - list item 6",
+    "string": "elektroniskt signera dokument med eduSign."
+  },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
     "string": "Certifierad FIDO 2.0, läs mer på {Fido}."
@@ -3134,6 +3142,10 @@
   "sDOXFj": {
     "developer_comment": "freja - protected strong",
     "string": "Om du har skyddad identitet"
+  },
+  "sF+S3i": {
+    "developer_comment": "about using eduid - info",
+    "string": "Skapa och logga in med konto"
   },
   "sKSg8x": {
     "developer_comment": "security second factor",
