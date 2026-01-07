@@ -53,73 +53,26 @@ export function Help(): React.JSX.Element {
   return (
     <React.Fragment>
       <section className="intro">
-        <h1>This is a H1 heading inside an intro section</h1>
+        <h1>
+          <FormattedMessage description="help - general headline" defaultMessage="Help and contact" />
+        </h1>
         <div className="lead">
           <p>
-            A H1 heading, distinct, suitably descriptive but fairly short, must be present on all pages... for SEO
-            reasons and because we are not brutes. Ideally followed by a lead paragraph like this; summarising the whole
-            page content, with a thicker divider below.
+            <FormattedMessage
+              description="help - lead"
+              defaultMessage={`Listed below is general information about the service, answers to common questions about 
+              using eduID 
+               and Support contact information.`}
+            />
           </p>
         </div>
       </section>
-
-      <h2>Here we go - H2 heading to group relevant content</h2>
-      <p>Try not to skip a step on any page.</p>
-      <h3>H3 heading</h3>
-      <p>Still pretty common.</p>
-      <h4>H4 heading</h4>
-      <p>Not many pages contain such diverse content as to require a fourth level, but if they do, use it.</p>
-      <h5>H5 heading</h5>
-      <p>If we end up here, maybe see if the content should be split up instead.</p>
+      <h2>
+        <FormattedMessage description="help - content headline" defaultMessage="Content areas" />
+      </h2>
       <p>
-        <strong>Note:</strong> texts that are not semantically headings but should appear as such can use the
-        appropriate .heading-(x) class etc. to mimic the respective behaviour.
+        <FormattedMessage description="help - content paragraph" defaultMessage="Expand sections to learn more." />
       </p>
-      <p>
-        Above Note acts as an attention seeker inside <strong>strong</strong> tags, which adds semantic meaning (for
-        screen readers e.g.) as well as boldens text, unlike the just bold (b) tag. <br />
-        Another useful semantic attention-grabber is the <em>emphasis (em)</em> tags, in comparison to just italic tags
-        (i). Since we only use them for pertinent reasons, employ the former in both cases.
-        <br />
-        To present the information about em on its own line still within the same paragraph, the br tag was used -
-        though not misused as a spacing tool!
-      </p>
-      <p style={{ padding: "1rem", marginBottom: "2rem" }}>
-        To create spacing on a page and between elements we tend to favour adding space to the bottom of an element,
-        rather than at the top as it makes it easier to predict how they will interact. Padding inside the allotted
-        space of an element and margin on the outside. Two stacked margins or paddings will cancel each other out so
-        play around to see if you require one or the other to keep it tidy.
-      </p>
-
-      <p>
-        Though black magic inline styling was used above to illustrate the preferred spacing power of css - we use
-        cascading style sheets ALWAYS. Though there are inherent reasons for using id (just the one) or classes (any
-        number) use classes for styling purposes - just make it work as ids are reserved for functionality such as js
-        and testing.
-      </p>
-      <p>
-        To further separate content vertically when moving on in the page a hr border can come in handy, here using the
-        .border-line-lesser class for a discrete dashed divider.
-      </p>
-      <hr className="border-line border-line-lesser" />
-
-      <p>
-        This is just a plain old paragraph (p), with inherent bottom spacing. Use for text as you would in any written
-        document, not for styling purposes.
-      </p>
-      <div>
-        Whereas a div on the other hand does not contain any styling, uses base font size and can be used to organise
-        any type of content.
-      </div>
-      <span>
-        The hard working span tag can also be employed to group nested elements, though it is not a block-level element
-        as div so will not appear on its own line.{" "}
-        <span className="help-text">
-          Here with the helpful .help-text class that makes it smaller and gray to indicate additional non intrusive
-          information regarding something you might not know. Often, but not exclusively, used with form elements.
-        </span>
-      </span>
-
       <div className="help-content">
         <Accordion id="eduid-help">
           <AccordionItemTemplate
