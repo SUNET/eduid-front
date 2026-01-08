@@ -52,6 +52,11 @@ export function Help(): React.JSX.Element {
 
   return (
     <React.Fragment>
+      <code>
+        This is a select overview of the components used in eduid.se for the purpose of easing communication among
+        developers.
+      </code>
+      <code>Headings 1 - 5</code>
       <section className="intro">
         <h1>This is a H1 heading inside an intro section</h1>
         <div className="lead">
@@ -62,7 +67,6 @@ export function Help(): React.JSX.Element {
           </p>
         </div>
       </section>
-
       <h2>Here we go - H2 heading to group relevant content</h2>
       <p>Try not to skip a step on any page.</p>
       <h3>H3 heading</h3>
@@ -75,6 +79,7 @@ export function Help(): React.JSX.Element {
         <strong>Note:</strong> texts that are not semantically headings but should appear as such can use the
         appropriate .heading-(x) class etc. to mimic the respective behaviour.
       </p>
+      <code>Enhancing text</code>
       <p>
         Above Note acts as an attention seeker inside <strong>strong</strong> tags, which adds semantic meaning (for
         screen readers e.g.) as well as boldens text, unlike the just bold (b) tag. <br />
@@ -83,26 +88,30 @@ export function Help(): React.JSX.Element {
         <br />
         To present the information about em on its own line still within the same paragraph, the br tag was used -
         though not misused as a spacing tool!
+        <br />
+        Actual codes can be presented using code tags <code>for a very digitally legible text</code> to stand out.
       </p>
+      <code>Spacing</code>
       <p style={{ padding: "1rem", marginBottom: "2rem" }}>
         To create spacing on a page and between elements we tend to favour adding space to the bottom of an element,
         rather than at the top as it makes it easier to predict how they will interact. Padding inside the allotted
         space of an element and margin on the outside. Two stacked margins or paddings will cancel each other out so
         play around to see if you require one or the other to keep it tidy.
       </p>
-
+      <code>How to style</code>
       <p>
         Though black magic inline styling was used above to illustrate the preferred spacing power of css - we use
         cascading style sheets ALWAYS. Though there are inherent reasons for using id (just the one) or classes (any
         number) use classes for styling purposes - just make it work as ids are reserved for functionality such as js
         and testing.
       </p>
+      <code>Divider</code>
       <p>
         To further separate content vertically when moving on in the page a hr border can come in handy, here using the
         .border-line-lesser class for a discrete dashed divider.
       </p>
       <hr className="border-line border-line-lesser" />
-
+      <code>Bread and butter elements</code>
       <p>
         This is just a plain old paragraph (p), with inherent bottom spacing. Use for text as you would in any written
         document, not for styling purposes.
@@ -119,7 +128,21 @@ export function Help(): React.JSX.Element {
           information regarding something you might not know. Often, but not exclusively, used with form elements.
         </span>
       </span>
-
+      To further organise extensive pages the html5 tags section and article can be employed,{" "}
+      <section id="content">
+        <article>where section has no applied styling</article>
+        <article>
+          and all but the last article inside a content section adds spacing and a bottom divider, like so.
+        </article>
+      </section>
+      <code>Units</code>
+      Most sizes are extressed in rem format, as it scales gracefully based on the body font size. Try to keep size
+      variants to full quarters (.25, 1.5, 2.75 etc) to achieve as much reusable code as possible and a pleasing white
+      space ratio. Before any interface coding, its is advisable to look thru the variables style sheet.
+      <code>Variables</code>
+      Before any interface coding, its is advisable to look thru the variables style sheet, its not a lot to get
+      familiar with and still greatly helps with uniformity and reuse of the site. There are variables for colors, font
+      sizes, borders, spacing etc.
       <div className="help-content">
         <Accordion id="eduid-help">
           <AccordionItemTemplate
