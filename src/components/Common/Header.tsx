@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation, useNavigate } from "react-router";
 import { HeaderNav } from "./HeaderNav";
@@ -23,7 +23,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
 
-  async function handleLogout() {
+  const handleLogout = useCallback(async () => {
     const response = await fetchLogout({ ref: props.loginRef });
     if (response.isSuccess) {
       if (eduid_site_link) {
@@ -31,17 +31,17 @@ export function Header(props: HeaderProps): React.JSX.Element {
         sessionStorage.clear();
       }
     }
-  }
+  }, [fetchLogout, props.loginRef, eduid_site_link]);
 
-  function handleRegister() {
+  const handleRegister = useCallback(() => {
     navigate("/register");
-  }
+  }, [navigate]);
 
-  function handleLogin() {
+  const handleLogin = useCallback(() => {
     if (dashboard_link) {
       document.location.href = dashboard_link;
     }
-  }
+  }, [dashboard_link]);
 
   const button = useMemo(() => {
     if (
