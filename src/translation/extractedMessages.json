@@ -1183,6 +1183,10 @@
     "developer_comment": "security webauthn describe title",
     "string": "Add a name for your security key"
   },
+  "Or7GGT": {
+    "developer_comment": "when use eduID - list item 6",
+    "string": "electronically sign documents with eduSign, read more at {edusignLink}."
+  },
   "OuY4pQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph6",
     "string": "As an example, with a verified Swedish identity and a verified security key the account is at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice."
@@ -2707,10 +2711,6 @@
   "nCc6tZ": {
     "developer_comment": "BankID vetting button",
     "string": "with a BankID"
-  },
-  "nJZCTi": {
-    "developer_comment": "when use eduID - list item 6",
-    "string": "electronically sign documents with eduSign."
   },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
