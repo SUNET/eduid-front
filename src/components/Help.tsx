@@ -186,7 +186,14 @@ export function Help(): React.JSX.Element {
                 <li>
                   <FormattedMessage
                     description="when use eduID - list item 6"
-                    defaultMessage="electronically sign documents with eduSign."
+                    defaultMessage="electronically sign documents with eduSign, read more at {edusignLink}."
+                    values={{
+                      edusignLink: (
+                        <a className="text-link" href={"https://edusign.sunet.se/"} target="_blank" rel="noreferrer">
+                          edusign.sunet.se
+                        </a>
+                      ),
+                    }}
                   />
                 </li>
               </ul>
