@@ -1183,6 +1183,10 @@
     "developer_comment": "security webauthn describe title",
     "string": "Ge ett namn till din säkerhetsnyckel"
   },
+  "Or7GGT": {
+    "developer_comment": "when use eduID - list item 6",
+    "string": "elektroniskt signera dokument med eduSign, läs mer på {edusignLink}."
+  },
   "OuY4pQ": {
     "developer_comment": "Assurance levels with your eduID - paragraph6",
     "string": "Exempelvis med en verifierad svensk identitet och verified säkerhetsnyckel, uppnår kontot i allmänhet SWAMID AL3/ DIGG LoA2 och är på en tillräcklig nivå för t.ex. digitala nationella proven (DNP) och Nice."
@@ -2707,10 +2711,6 @@
   "nCc6tZ": {
     "developer_comment": "BankID vetting button",
     "string": "med BankID"
-  },
-  "nJZCTi": {
-    "developer_comment": "when use eduID - list item 6",
-    "string": "elektroniskt signera dokument med eduSign."
   },
   "nR0u/W": {
     "developer_comment": "usb key - list item 1",
