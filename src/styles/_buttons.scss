@@ -147,7 +147,7 @@ button.close {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* buttons styled as links */
+/* styles for links that are also buttons */
 button.link {
   background-color: transparent;
   color: var(--txt-orange);
@@ -393,7 +393,7 @@ button.flex {
 .custom-tooltip-popover {
   position: absolute;
   top: 110%;
-  left: 50%;
+  left: -150%;
   transform: translateX(-50%);
   z-index: 1000;
   min-width: 200px;
