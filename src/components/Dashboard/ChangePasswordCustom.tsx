@@ -66,7 +66,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                   description="help text for custom password label"
                 />
               </legend>
-              <ul id="password-custom-help">
+              <ul className="password-custom-help">
                 {[
                   <FormattedMessage
                     key={1}
@@ -107,7 +107,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 passwordStrengthMeter={
                   <PasswordStrengthMeter password={formProps.values?.custom} passStateUp={updatePasswordData} />
                 }
-                id="custom-password-field"
                 autoComplete="new-password"
                 required={true}
                 placeHolder={new_password_placeholder}
@@ -118,7 +117,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 component={NewPasswordInput}
                 componentClass="input"
                 type="password"
-                id="repeat-password-field"
                 label={
                   <FormattedMessage
                     defaultMessage="Repeat new password"
@@ -129,7 +127,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 placeHolder={repeat_new_password_placeholder}
               />
             </fieldset>
-            <div id="chpass-form" className="tab-pane buttons">
+            <div className="buttons">
               <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
                 <FormattedMessage defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
