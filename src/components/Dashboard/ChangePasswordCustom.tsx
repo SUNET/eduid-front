@@ -61,10 +61,12 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           <form id="passwords-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset>
               <legend>
-                <FormattedMessage
-                  defaultMessage="Tip: Choose a strong password"
-                  description="help text for custom password label"
-                />
+                <strong>
+                  <FormattedMessage
+                    defaultMessage="Tip: Choose a strong password"
+                    description="help text for custom password label"
+                  />
+                </strong>
               </legend>
               <ul className="password-custom-help">
                 {[
