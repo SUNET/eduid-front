@@ -10,7 +10,7 @@ export function AccountId(): React.JSX.Element {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="profile-grid-cell figure tight" id="uniqueId-container">
+    <div className="figure tight uniqueId-container">
       <label htmlFor={idUserEppn}>
         <strong>
           <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
