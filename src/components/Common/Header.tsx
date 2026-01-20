@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
+import { eduidStore } from "eduid-init-app";
 import { useCallback, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation, useNavigate } from "react-router";
@@ -26,9 +27,11 @@ export function Header(props: HeaderProps): React.JSX.Element {
   const handleLogout = useCallback(async () => {
     const response = await fetchLogout({ ref: props.loginRef });
     if (response.isSuccess) {
+      // Make sure to reset the store
+      eduidStore.dispatch({ type: "RESET_STORE" });
       if (eduid_site_link) {
-        window.location.assign(eduid_site_link);
         sessionStorage.clear();
+        window.location.assign(eduid_site_link);
       }
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);
