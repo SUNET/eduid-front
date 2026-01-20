@@ -393,10 +393,10 @@ button.flex {
 .custom-tooltip-popover {
   position: absolute;
   top: 110%;
-  left: -150%;
+  left: -200%;
   transform: translateX(-50%);
   z-index: 1000;
-  min-width: 200px;
+  min-width: 250px;
   max-width: 260px;
   box-shadow: 0 6px 12px rgba(89, 89, 89, 0.18);
   border-radius: 10px;
