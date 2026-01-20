@@ -23,7 +23,14 @@ export default function DeleteAccount(): React.JSX.Element | null {
         <h2>
           <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
         </h2>
-        <ToolTip />
+        <ToolTip
+        // action={
+        //   <FormattedMessage
+        //     description="security zone action delete account"
+        //     defaultMessage="to delete your account."
+        //   />
+        // }
+        />
       </div>
       <p>
         <FormattedMessage

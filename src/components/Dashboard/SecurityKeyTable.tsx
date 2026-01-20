@@ -47,7 +47,7 @@ export function SecurityKeyTable({
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "removeSecurityKeyAuthn",
           frontend_state: credentialKey.current,
-        })
+        }),
       );
       dispatch(authnSlice.actions.setReAuthenticate(true));
     }
@@ -173,7 +173,14 @@ export function SecurityKeyTable({
         <h2>
           <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
         </h2>
-        <ToolTip />
+        <ToolTip
+        // action={
+        //   <FormattedMessage
+        //     description="security zone action security key"
+        //     defaultMessage="to manage your security keys."
+        //   />
+        // }
+        />
       </div>
 
       <p>

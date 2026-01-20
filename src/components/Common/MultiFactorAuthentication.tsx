@@ -283,7 +283,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>
           <ToolTip
-            action={<FormattedMessage description="security zone action" defaultMessage="to add a security key." />}
+          // action={<FormattedMessage description="security zone action" defaultMessage="to add a security key." />}
           />
         </div>
         <p>

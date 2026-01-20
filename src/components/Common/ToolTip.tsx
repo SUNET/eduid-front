@@ -40,9 +40,8 @@ export function ToolTip({ action }: { readonly action?: React.ReactNode }) {
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
               description="popover info"
-              defaultMessage="You may be asked to log in again if some time has passed since your last login. 
-              For example, {action}"
-              values={{ action }}
+              defaultMessage="You may be asked to log in again if some time has passed since your last login."
+              // values={{ action }}
             />
           </p>
         </div>

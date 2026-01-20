@@ -122,7 +122,14 @@ function IdentityContent(): React.JSX.Element {
                   defaultMessage="The identities below are now connected to your eduID"
                 />
               </h2>
-              <ToolTip />
+              <ToolTip
+              // action={
+              //   <FormattedMessage
+              //     description="security zone action delete your identity"
+              //     defaultMessage="to delete your identity."
+              //   />
+              // }
+              />
             </div>
             <VerifiedIdentitiesTable />
           </React.Fragment>
@@ -173,12 +180,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
             authnSlice.actions.setFrontendActionAndState({
               frontend_action: "removeIdentity",
               frontend_state: identityType,
-            })
+            }),
           );
         }
       }
     },
-    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal]
+    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   const handleConfirmDeleteModal = useCallback(
@@ -195,12 +202,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           authnSlice.actions.setFrontendActionAndState({
             frontend_action: "removeIdentity",
             frontend_state: identityType,
-          })
+          }),
         );
         dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal]
+    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   useEffect(() => {
