@@ -28,8 +28,8 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
   credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
-  )
+      cred.credential_type == "security.webauthn_credential_type",
+  ),
 );
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
@@ -77,7 +77,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       bankid: bankIDVerifyCredential,
       eidas: eidasVerifyCredential,
     }),
-    [eidasVerifyCredential, bankIDVerifyCredential]
+    [eidasVerifyCredential, bankIDVerifyCredential],
   );
 
   const handleVerificationWebauthnToken = useCallback(
@@ -105,11 +105,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               credential: token,
               description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
             }),
-          })
+          }),
         );
       }
     },
-    [tokenTypeMap, dispatch]
+    [tokenTypeMap, dispatch],
   );
 
   const handleRemoveWebauthnToken = useCallback(
@@ -122,13 +122,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           authnSlice.actions.setFrontendActionAndState({
             frontend_action: "removeSecurityKeyAuthn",
             frontend_state: credential_key,
-          })
+          }),
         );
       } else {
         wrapperRef?.current?.focus();
       }
     },
-    [removeWebauthnToken, dispatch, wrapperRef]
+    [removeWebauthnToken, dispatch, wrapperRef],
   );
 
   const handleStopAskingWebauthnDescription = useCallback(() => {
@@ -146,7 +146,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "addSecurityKeyAuthn",
           frontend_state: authType,
-        })
+        }),
       );
 
       const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
@@ -158,7 +158,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [dispatch, getAuthnStatus]
+    [dispatch, getAuthnStatus],
   );
 
   // function that is called when the user clicks OK in the "security key name" modal
@@ -193,7 +193,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       })();
     },
-    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch]
+    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch],
   );
 
   // Runs after re-auth security zone
@@ -214,7 +214,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
         await handleVerificationWebauthnToken(
           parsedFrontendState.credential,
-          parsedFrontendState.method as WebauthnMethods
+          parsedFrontendState.method as WebauthnMethods,
         );
       }
     })();
@@ -271,7 +271,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         aborted = true;
       };
     },
-    [] // run this only once
+    [], // run this only once
   );
 
   if (!isPlatformAuthLoaded) return null;
@@ -282,7 +282,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <h2>
             <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>
-          <ToolTip />
+          <ToolTip
+            action={<FormattedMessage description="security zone action" defaultMessage="to add a security key." />}
+          />
         </div>
         <p>
           <FormattedMessage

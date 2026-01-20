@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function ToolTip() {
+export function ToolTip({ action }: { readonly action?: React.ReactNode }) {
   const [show, setShow] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -27,14 +27,22 @@ export function ToolTip() {
         <FontAwesomeIcon icon={faLock as IconProp} />
       </button>
       {show && (
-        <div className="custom-tooltip-popover" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div
+          role="tooltip"
+          tabIndex={-1}
+          className="custom-tooltip-popover"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <p className="custom-tooltip-title">
-            <FormattedMessage description="popover info heading" defaultMessage="Security zone" />
+            <FormattedMessage description="popover info heading" defaultMessage="For security" />
           </p>
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
               description="popover info"
-              defaultMessage="To continue this process, you may need to re-authenticate."
+              defaultMessage="You may be asked to log in again if some time has passed since your last login. 
+              For example, {action}"
+              values={{ action }}
             />
           </p>
         </div>
