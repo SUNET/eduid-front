@@ -57,6 +57,22 @@ const getConfig = async function () {
 /* Get the language from the browser and initialise locale with the best match */
 setupLanguage(eduidStore.dispatch);
 
+/**
+ * Handle Back/Forward Cache (bfcache).
+ * If the page is restored from the cache (e.g. user navigated back after logout),
+ * this forces a reload. Since the session is cleared, the app will re-init
+ * in an unauthenticated state.
+ */
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    const state = eduidStore.getState();
+    if (state.config.is_configured === false) {
+      // The app was restored from bfcache and is not configured, reload to init properly
+      window.location.reload();
+    }
+  }
+});
+
 /* render app */
 const initDomTarget = document.getElementById("root");
 if (initDomTarget === null) {

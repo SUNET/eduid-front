@@ -1,6 +1,6 @@
 import { eduIDApi } from "apis/common";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { combineReducers } from "redux";
+import { combineReducers, UnknownAction } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
 import { appLoadingSlice } from "slices/AppLoading";
 import authnSlice from "slices/Authn";
@@ -17,7 +17,7 @@ import resetPasswordSlice from "slices/ResetPassword";
 import securitySlice from "slices/Security";
 import { signupSlice } from "slices/Signup";
 
-const eduIDApp = combineReducers({
+const eduIDReducers = combineReducers({
   config: configSlice.reducer,
   intl: intlReducer,
   notifications: notificationsSlice.reducer,
@@ -36,5 +36,17 @@ const eduIDApp = combineReducers({
   [eduIDApi.reducerPath]: eduIDApi.reducer,
   [navigatorCredentialsApi.reducerPath]: navigatorCredentialsApi.reducer,
 });
+
+const eduIDApp = (
+  state: ReturnType<typeof eduIDReducers> | Partial<ReturnType<typeof eduIDReducers>> | undefined,
+  action: UnknownAction
+): ReturnType<typeof eduIDReducers> => {
+  // This action type is dispatched to reset the store on logout
+  if (action.type === "RESET_STORE") {
+    // setting an empty object will cause all reducers to re-initialize their state
+    state = {};
+  }
+  return eduIDReducers(state, action);
+};
 
 export default eduIDApp;
