@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function ToolTip({ action }: { readonly action?: React.ReactNode }) {
+export function ToolTip() {
   const [show, setShow] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
 
