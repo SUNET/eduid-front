@@ -21,9 +21,9 @@ function ChangePasswordDisplay() {
           <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
         </h2>
         <ToolTip
-          action={
-            <FormattedMessage description="security zone action change pw" defaultMessage="to change your password." />
-          }
+        // action={
+        //   <FormattedMessage description="security zone action change pw" defaultMessage="to change your password." />
+        // }
         />
       </div>
       <p>
