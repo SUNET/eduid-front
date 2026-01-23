@@ -31,6 +31,7 @@ export const loginTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigator
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,
+    is_app_loaded: true,
     debug: true,
   },
   login: loginInitialState,

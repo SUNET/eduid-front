@@ -2,8 +2,9 @@ import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
+import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState } from "tests/helperFunctions/DashboardTestApp-rtl";
-import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import { render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 beforeEach(() => {
   // mock window.scroll for the notification middleware that scrolls to the top of the screen
@@ -13,7 +14,7 @@ beforeEach(() => {
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
     state: {
-      config: { ...loginTestState.config, is_configured: false },
+      config: configInitialState,
     },
     routes: ["/login/abc123"],
   });
