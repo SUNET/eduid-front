@@ -189,7 +189,6 @@ function UsernameInputPart(): React.JSX.Element {
 }
 
 function RenderResetPasswordLink(): React.JSX.Element {
-  const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const usernameField = useField("username");
@@ -209,7 +208,7 @@ function RenderResetPasswordLink(): React.JSX.Element {
   return (
     <Link
       id="link-forgot-password"
-      className={`text-small ${request_in_progress ? "disabled" : ""}`}
+      className="text-small"
       to={"/"}
       onClick={sendLink}
     >
@@ -219,9 +218,7 @@ function RenderResetPasswordLink(): React.JSX.Element {
 }
 
 export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
-  const loading = useAppSelector((state) => state.app.loading_data);
   /* Disable the button when:
-   *   - the app is loading data
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
@@ -233,8 +230,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
   const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
   const hasErrors = props.hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
-  const isLoading = loading ?? true;
-  const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError || isLoading);
+  const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError);
 
   return (
     <EduIDButton
