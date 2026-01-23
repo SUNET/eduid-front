@@ -1,6 +1,6 @@
 import EduIDButton from "components/Common/EduIDButton";
+import { RecoveryOptions } from "components/Common/RecoveryOptions";
 import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
-import { SwedishEID } from "components/Common/SwedishEID";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -69,7 +69,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
         {extra_security.tokens !== undefined && (
           <SecurityKeyLogin setup={setupSecurityKey} onSuccess={continueWithSecurityKey} />
         )}
-        <SwedishEID recoveryAvailable={extra_security.external_mfa} />
+        <RecoveryOptions recoveryAvailable={extra_security} />
       </div>
       <h3 className="description-without-security">
         <FormattedMessage

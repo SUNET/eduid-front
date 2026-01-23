@@ -6,10 +6,14 @@ import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 
-interface SwedishEIDProps {
-  readonly recoveryAvailable?: boolean;
+interface RecoveryOptions {
+  swedish_eid?: boolean;
+  freja_eid?: boolean;
+  eidas?: boolean;
+  external_mfa?: boolean;
 }
 
 const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
@@ -20,8 +24,12 @@ const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
     </React.Fragment>
   );
 };
-
-export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.Element {
+console.log("hhhh");
+export function RecoveryOptions({
+  recoveryAvailable,
+}: {
+  readonly recoveryAvailable: RecoveryOptions;
+}): React.JSX.Element {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);
@@ -39,9 +47,10 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
   interface SelectOptions {
     value: string;
     label: React.JSX.Element;
+    available?: boolean;
   }
 
-  const options: SelectOptions[] = [
+  const allOptions: SelectOptions[] = [
     {
       value: "Bank ID",
       label: (
@@ -50,6 +59,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
           text={<FormattedMessage defaultMessage={`BankID`} />}
         />
       ),
+      available: recoveryAvailable.swedish_eid,
     },
     {
       value: "Freja+",
@@ -59,8 +69,31 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
           text={<FormattedMessage defaultMessage={`Freja+`} />}
         />
       ),
+      available: recoveryAvailable.swedish_eid,
+    },
+    {
+      value: "eIDAS",
+      label: (
+        <IconWithText
+          icon={<img className="circle-icon" height="35" alt="eIDAS" src={EuFlag} />}
+          text={<FormattedMessage defaultMessage={`eIDAS`} />}
+        />
+      ),
+      available: recoveryAvailable.eidas,
+    },
+    {
+      value: "Freja",
+      label: (
+        <IconWithText
+          icon={<img className="circle-icon" height="35" alt="Freja" src={FrejaFlag} />}
+          text={<FormattedMessage defaultMessage={`Freja`} />}
+        />
+      ),
+      available: recoveryAvailable.freja_eid,
     },
   ];
+
+  const options = allOptions.filter((option) => option.available);
 
   async function handleOnClickBankID() {
     const response = await bankIDMfaAuthenticate({
@@ -88,11 +121,29 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
     }
   }
 
+  async function handleOnClickEidas() {
+    console.log("frontend_action", frontend_action);
+    console.log("frontend_state", frontend_state);
+    const response = await eidasMfaAuthenticate({
+      method: "eidas",
+      frontend_action: frontend_action,
+      frontend_state: frontend_state,
+    });
+    if (response.isSuccess) {
+      console.log("EIDAS response:", response);
+      if (response.data.payload.location) {
+        window.location.assign(response.data.payload.location);
+      }
+    }
+  }
+
   function handleOnChange(newValue: SingleValue<SelectOptions>): void {
     if (newValue?.value === "Bank ID") {
       handleOnClickBankID();
     } else if (newValue?.value === "Freja+") {
       handleOnClickFrejaeID();
+    } else if (newValue?.value === "eIDAS") {
+      handleOnClickEidas();
     }
   }
 
@@ -117,16 +168,16 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
                 isSearchable={false}
                 className="mfa-select"
                 classNamePrefix="react-select"
-                isDisabled={!recoveryAvailable}
+                isDisabled={!recoveryAvailable.swedish_eid && !recoveryAvailable.freja_eid && !recoveryAvailable.eidas}
               />
             </form>
           )}
         />
-        {!recoveryAvailable && (
+        {!recoveryAvailable.swedish_eid && !recoveryAvailable.freja_eid && !recoveryAvailable.eidas && (
           <p className="help-text">
             <FormattedMessage
-              description="MFA Freja help text"
-              defaultMessage="Requires a confirmed Swedish national identity or coordination number."
+              description="MFA recovery help text"
+              defaultMessage="Requires a confirmed Swedish national identity, coordination number, confirmed European identity."
             />
           </p>
         )}

@@ -3,8 +3,8 @@ import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
+import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
-import { SwedishEID } from "../Common/SwedishEID";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { RememberMeCheckbox } from "./NewDevice";
@@ -18,7 +18,11 @@ export function MultiFactorAuth(): React.JSX.Element {
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
   const [fetchMfaAuth, data] = loginApi.useLazyFetchMfaAuthQuery();
-
+  const recoveryOptions = {
+    swedish_eid: authn_options.swedish_eid,
+    freja_eid: authn_options.freja_eid,
+    eidas: authn_options.eidas,
+  };
   const show_suggestion = useMemo(() => {
     if (data.isSuccess) {
       const options = data.data.payload.webauthn_options;
@@ -127,7 +131,7 @@ export function MultiFactorAuth(): React.JSX.Element {
                   />
                 </span>
               )}
-              <SwedishEID recoveryAvailable={authn_options.swedish_eid} />
+              <RecoveryOptions recoveryAvailable={recoveryOptions} />
             </div>
           </React.Fragment>
         ) : (
