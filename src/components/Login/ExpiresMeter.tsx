@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TimeRemaining } from "components/Common/TimeRemaining";
 
