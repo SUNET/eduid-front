@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faRedo } from "@fortawesome/free-solid-svg-icons";
+import { faRedo } from "@fortawesome/free-solid-svg-icons/faRedo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -40,10 +40,10 @@ function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(
           formProps.hasValidationErrors ||
-            _submitError ||
-            formProps.pristine ||
-            props.disabled ||
-            !formProps.values?.["value"]
+          _submitError ||
+          formProps.pristine ||
+          props.disabled ||
+          !formProps.values?.["value"],
         );
 
         return (

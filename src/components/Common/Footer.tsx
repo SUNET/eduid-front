@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggle from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -36,7 +36,7 @@ const Footer = (): React.JSX.Element => {
         updateIntl({
           locale: locale,
           messages: messages[locale],
-        })
+        }),
       );
     }
   };
