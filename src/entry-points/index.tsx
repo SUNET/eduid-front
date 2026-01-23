@@ -7,7 +7,7 @@ import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
 import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router";
-import { appLoadingSlice } from "slices/AppLoading";
+import indexSlice from "slices/IndexConfig";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
@@ -47,7 +47,7 @@ const getConfig = async function () {
             })
           );
         }
-        eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
+        eduidStore.dispatch(indexSlice.actions.appLoaded());
       }
     }
     showErrorMsg();

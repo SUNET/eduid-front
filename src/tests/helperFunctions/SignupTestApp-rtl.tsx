@@ -4,7 +4,6 @@ import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as accountLinkingInitialState } from "slices/AccountLinking";
-import { initialState } from "slices/AppLoading";
 import { initialState as authnInitialState } from "slices/Authn";
 import { initialState as changePasswordInitialState } from "slices/ChangePassword";
 import { initialState as emailsInitialState } from "slices/Emails";
@@ -34,7 +33,6 @@ export const signupTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigato
   intl: { locale: "en", messages: {} },
   notifications: {},
   login: loginInitialState,
-  app: initialState,
   resetPassword: resetPasswordState,
   chpass: changePasswordInitialState,
   emails: emailsInitialState,

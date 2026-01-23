@@ -2,7 +2,6 @@ import { eduIDApi } from "apis/common";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { combineReducers, UnknownAction } from "redux";
 import accountLinkingSlice from "slices/AccountLinking";
-import { appLoadingSlice } from "slices/AppLoading";
 import authnSlice from "slices/Authn";
 import chpassSlice from "slices/ChangePassword";
 import emailsSlice from "slices/Emails";
@@ -23,7 +22,6 @@ const eduIDReducers = combineReducers({
   notifications: notificationsSlice.reducer,
   login: loginSlice.reducer,
   resetPassword: resetPasswordSlice.reducer,
-  app: appLoadingSlice.reducer,
   signup: signupSlice.reducer,
   chpass: chpassSlice.reducer,
   emails: emailsSlice.reducer,

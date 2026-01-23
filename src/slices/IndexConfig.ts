@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { jsConfigApi } from "apis/eduidJsConfig";
 import { loginApi, LoginErrorInfoResponse } from "apis/eduidLogin";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
-import { appLoadingSlice } from "slices/AppLoading";
 
 export interface IndexConfig extends EduidJSAppCommonConfig {
   recaptcha_public_key?: string;
@@ -31,14 +30,15 @@ export const initialState: IndexConfig = {
 const indexSlice = createSlice({
   name: "config",
   initialState,
-  reducers: {},
+  reducers: {
+    appLoaded: (state) => {
+      state.is_app_loaded = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(storeCsrfToken, (state, action) => {
         state.csrf_token = action.payload;
-      })
-      .addCase(appLoadingSlice.actions.appLoaded, (state) => {
-        state.is_app_loaded = true;
       })
       .addMatcher(jsConfigApi.endpoints.fetchJsConfig.matchFulfilled, (state, action) => {
         return { ...state, ...action.payload.payload, is_configured: true };

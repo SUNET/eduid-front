@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import { appLoadingSlice } from "slices/AppLoading";
+import indexSlice from "slices/IndexConfig";
 import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
 import EduIDButton from "./Common/EduIDButton";
@@ -21,7 +21,7 @@ export function Index() {
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
   const redirectToLogin = useCallback(async () => {
-    dispatch(appLoadingSlice.actions.appLoaded());
+    dispatch(indexSlice.actions.appLoaded());
     if (dashboard_link) {
       document.location.href = dashboard_link;
     }
