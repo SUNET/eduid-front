@@ -37,7 +37,7 @@ const eduIDReducers = combineReducers({
 
 const eduIDApp = (
   state: ReturnType<typeof eduIDReducers> | Partial<ReturnType<typeof eduIDReducers>> | undefined,
-  action: UnknownAction
+  action: UnknownAction,
 ): ReturnType<typeof eduIDReducers> => {
   // This action type is dispatched to reset the store on logout
   if (action.type === "RESET_STORE") {

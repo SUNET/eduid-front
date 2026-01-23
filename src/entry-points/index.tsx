@@ -44,7 +44,7 @@ const getConfig = async function () {
             updateIntl({
               locale: personalData.data.payload.language,
               messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
-            })
+            }),
           );
         }
         eduidStore.dispatch(indexSlice.actions.appLoaded());
@@ -84,6 +84,6 @@ root.render(
     <BrowserRouter>
       <IndexMain />
     </BrowserRouter>
-  </ReduxIntlProvider>
+  </ReduxIntlProvider>,
 );
 getConfig();

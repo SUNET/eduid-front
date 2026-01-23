@@ -206,12 +206,7 @@ function RenderResetPasswordLink(): React.JSX.Element {
   };
 
   return (
-    <Link
-      id="link-forgot-password"
-      className="text-small"
-      to={"/"}
-      onClick={sendLink}
-    >
+    <Link id="link-forgot-password" className="text-small" to={"/"} onClick={sendLink}>
       <FormattedMessage defaultMessage="Forgot your password?" description="Reset password link" />
     </Link>
   );

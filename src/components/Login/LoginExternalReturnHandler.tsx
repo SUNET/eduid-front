@@ -70,7 +70,7 @@ export function LoginExternalReturnHandler() {
                   updateIntl({
                     locale: response.data.payload.language,
                     messages: LOCALIZED_MESSAGES[response.data.payload.language],
-                  })
+                  }),
                 );
               }
             }
@@ -96,7 +96,7 @@ export function LoginExternalReturnHandler() {
       verifyEmailLink,
       requestAllPersonalData,
       navigate,
-    ]
+    ],
   );
 
   useEffect(() => {

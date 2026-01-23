@@ -38,7 +38,7 @@ test("renders FINISHED as expected", async () => {
         parameters: { SAMLResponse: "saml-response" },
       };
       return HttpResponse.json({ type: "test response", payload: payload });
-    })
+    }),
   );
 
   render(<IndexMain />, {
@@ -70,7 +70,7 @@ test("renders UsernamePw as expected", async () => {
         target: "/foo",
       };
       return HttpResponse.json({ type: "test response", payload: payload });
-    })
+    }),
   );
 
   render(<IndexMain />, {
