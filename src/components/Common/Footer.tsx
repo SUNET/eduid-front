@@ -36,7 +36,7 @@ const Footer = (): React.JSX.Element => {
         updateIntl({
           locale: locale,
           messages: messages[locale],
-        })
+        }),
       );
     }
   };

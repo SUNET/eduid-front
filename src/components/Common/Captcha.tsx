@@ -40,10 +40,10 @@ function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(
           formProps.hasValidationErrors ||
-            _submitError ||
-            formProps.pristine ||
-            props.disabled ||
-            !formProps.values?.["value"]
+          _submitError ||
+          formProps.pristine ||
+          props.disabled ||
+          !formProps.values?.["value"],
         );
 
         return (

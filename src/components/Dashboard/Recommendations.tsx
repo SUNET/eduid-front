@@ -215,7 +215,7 @@ export function Recommendations(): React.JSX.Element | null {
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
+      cred.credential_type == "security.webauthn_credential_type",
   );
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
 
