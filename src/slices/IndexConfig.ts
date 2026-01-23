@@ -14,7 +14,6 @@ export interface IndexConfig extends EduidJSAppCommonConfig {
   password_entropy?: number;
   default_country_code: string;
   token_verify_idp?: string;
-  loading_data: boolean;
   next_url?: string;
   mfa_auth_idp?: string;
 }
@@ -27,7 +26,6 @@ export const initialState: IndexConfig = {
   preferred_captcha: "internal",
   is_app_loaded: false,
   default_country_code: "46",
-  loading_data: false,
 };
 
 const indexSlice = createSlice({

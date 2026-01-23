@@ -13,7 +13,7 @@ beforeEach(() => {
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
     state: {
-      app: { ...loginTestState.app, is_loaded: false },
+      config: { ...loginTestState.config, is_configured: false },
     },
     routes: ["/login/abc123"],
   });

@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // export for use in tests
 export const initialState = {
-  is_loaded: false,
   loading_data: false,
   request_in_progress: false,
 };
@@ -11,8 +10,8 @@ export const appLoadingSlice = createSlice({
   name: "appReducer",
   initialState,
   reducers: {
-    appLoaded: (state) => {
-      state.is_loaded = true;
+    appLoaded: () => {
+      // This action is handled by IndexConfig.ts to set is_app_loaded
     },
     loadingData: (state) => {
       state.loading_data = true;
