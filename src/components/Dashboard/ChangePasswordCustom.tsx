@@ -129,7 +129,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 placeHolder={repeat_new_password_placeholder}
               />
             </fieldset>
-            <div className="buttons">
+            <div id="chpass-form" className="buttons">
               <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
                 <FormattedMessage defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
