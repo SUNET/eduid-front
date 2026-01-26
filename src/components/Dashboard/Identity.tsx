@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
@@ -169,12 +169,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
             authnSlice.actions.setFrontendActionAndState({
               frontend_action: "removeIdentity",
               frontend_state: identityType,
-            })
+            }),
           );
         }
       }
     },
-    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal]
+    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   const handleConfirmDeleteModal = useCallback(
@@ -191,12 +191,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           authnSlice.actions.setFrontendActionAndState({
             frontend_action: "removeIdentity",
             frontend_state: identityType,
-          })
+          }),
         );
         dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal]
+    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   useEffect(() => {

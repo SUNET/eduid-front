@@ -40,7 +40,7 @@ export function ResetPasswordApp(): React.JSX.Element {
       }
       dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
     }
-  }, [dispatch, loginRef, params]);
+  }, [dispatch, loginRef, next_page, params]);
 
   return (
     <React.Fragment>
