@@ -174,7 +174,7 @@ export function RecoveryOptions({
           <p className="help-text">
             <FormattedMessage
               description="MFA recovery help text"
-              defaultMessage="Requires a confirmed Swedish national identity, coordination number, confirmed European identity."
+              defaultMessage="Requires a confirmed Swedish national identity, coordination number, European identity, or Freja eID."
             />
           </p>
         )}
