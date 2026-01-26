@@ -8,12 +8,12 @@ import Select, { SingleValue } from "react-select";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 
 interface RecoveryOptions {
   swedish_eid?: boolean;
   freja_eid?: boolean;
   eidas?: boolean;
-  external_mfa?: boolean;
 }
 
 const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
@@ -24,7 +24,7 @@ const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
     </React.Fragment>
   );
 };
-console.log("hhhh");
+
 export function RecoveryOptions({
   recoveryAvailable,
 }: {
@@ -82,11 +82,11 @@ export function RecoveryOptions({
       available: recoveryAvailable.eidas,
     },
     {
-      value: "Freja",
+      value: "Freja eID",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="Freja" src={FrejaFlag} />}
-          text={<FormattedMessage defaultMessage={`Freja`} />}
+          icon={<img className="circle-icon" height="35" alt="Freja eID" src={GlobalFlag} />}
+          text={<FormattedMessage defaultMessage={`Freja eID`} />}
         />
       ),
       available: recoveryAvailable.freja_eid,
@@ -122,15 +122,12 @@ export function RecoveryOptions({
   }
 
   async function handleOnClickEidas() {
-    console.log("frontend_action", frontend_action);
-    console.log("frontend_state", frontend_state);
     const response = await eidasMfaAuthenticate({
       method: "eidas",
       frontend_action: frontend_action,
       frontend_state: frontend_state,
     });
     if (response.isSuccess) {
-      console.log("EIDAS response:", response);
       if (response.data.payload.location) {
         window.location.assign(response.data.payload.location);
       }

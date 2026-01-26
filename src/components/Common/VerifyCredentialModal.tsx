@@ -76,7 +76,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   aria-label="Proceed with eIDAS"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "eidas")}
                 >
-                  <img className="freja" height="24" alt="eIDAS" src={EuFlag} />
+                  <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                   <span>eidas</span>
                 </EduIDButton>
               </div>
