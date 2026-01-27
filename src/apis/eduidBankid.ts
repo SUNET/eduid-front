@@ -1,32 +1,14 @@
 import { eduIDApi } from "./common";
-import { EidasCommonResponse, GetStatusRequest, GetStatusResponse, WebauthnMethods } from "./eduidEidas";
-import type { ApiResponse } from "./helpers/types";
+import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
+import type { ApiResponse, AuthCommonRequest, AuthCommonResponse } from "./helpers/types";
 
-interface BankIDCommonRequest {
-  frontend_state?: string;
-  frontend_action?: string;
-  method: WebauthnMethods;
-}
-
-export type BankIDCommonResponse = EidasCommonResponse;
-
-export type VerifyIdentityRequest = BankIDCommonRequest;
-
-export type VerifyIdentityResponse = BankIDCommonResponse;
-
-export type MfaAuthenticateRequest = BankIDCommonRequest;
-
-export type MfaAuthenticateResponse = BankIDCommonResponse;
-
-export interface VerifyCredentialRequest extends BankIDCommonRequest {
+export interface VerifyCredentialRequest extends AuthCommonRequest {
   credential_id: string;
 }
 
-export type VerifyCredentialResponse = BankIDCommonResponse;
-
 export const bankIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    bankIDVerifyIdentity: builder.query<ApiResponse<VerifyIdentityResponse>, VerifyIdentityRequest>({
+    bankIDVerifyIdentity: builder.query<ApiResponse<AuthCommonResponse>, AuthCommonRequest>({
       query: (body) => ({
         url: "verify-identity",
         body: {
@@ -36,7 +18,7 @@ export const bankIDApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "bankid" },
     }),
-    bankIDMfaAuthenticate: builder.query<ApiResponse<MfaAuthenticateResponse>, MfaAuthenticateRequest>({
+    bankIDMfaAuthenticate: builder.query<ApiResponse<AuthCommonResponse>, AuthCommonRequest>({
       query: (body) => ({
         url: "mfa-authenticate",
         body: {
@@ -46,7 +28,7 @@ export const bankIDApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "bankid" },
     }),
-    bankIDVerifyCredential: builder.query<ApiResponse<VerifyCredentialResponse>, VerifyCredentialRequest>({
+    bankIDVerifyCredential: builder.query<ApiResponse<AuthCommonResponse>, VerifyCredentialRequest>({
       query: (body) => ({
         url: "verify-credential",
         body: {

@@ -1,4 +1,4 @@
-import { WebauthnMethods } from "apis/eduidEidas";
+import { AuthMethod } from "apis/helpers/types";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -9,7 +9,7 @@ import EduIDButton from "./EduIDButton";
 interface VerifyCredentialModalProps {
   readonly showVerifyWebauthnModal: boolean;
   readonly setShowVerifyWebauthnModal: (value: boolean) => void;
-  readonly handleVerificationWebauthnToken: (token: string | undefined, type: WebauthnMethods) => Promise<void> | void;
+  readonly handleVerificationWebauthnToken: (token: string | undefined, type: AuthMethod) => Promise<void> | void;
   tokenKey: string;
 }
 

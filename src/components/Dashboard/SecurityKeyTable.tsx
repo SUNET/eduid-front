@@ -1,5 +1,5 @@
-import { WebauthnMethods } from "apis/eduidEidas";
 import securityApi, { ActionStatus, CredentialType } from "apis/eduidSecurity";
+import { AuthMethod } from "apis/helpers/types";
 import EduIDButton from "components/Common/EduIDButton";
 import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthentication";
 import NotificationModal from "components/Common/NotificationModal";
@@ -12,7 +12,7 @@ import securityKeyGray from "../../../img/security-key-gray.svg";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
-  readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
+  readonly handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
   readonly handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
 }
 
@@ -46,7 +46,7 @@ export function SecurityKeyTable({
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "removeSecurityKeyAuthn",
           frontend_state: credentialKey.current,
-        })
+        }),
       );
       dispatch(authnSlice.actions.setReAuthenticate(true));
     }

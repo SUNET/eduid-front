@@ -1,5 +1,5 @@
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
+import { eidasApi } from "apis/eduidEidas";
 import { useAppSelector } from "eduid-hooks";
 import React, { ReactNode } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -9,6 +9,7 @@ import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import type { AuthMethod } from "./../../apis/helpers/types";
 
 interface RecoveryOptions {
   swedish_eid?: boolean;
@@ -95,7 +96,7 @@ export function RecoveryOptions({
 
   const options = allOptions.filter((option) => option.available);
 
-  async function handleAuthenticate(method: WebauthnMethods) {
+  async function handleAuthenticate(method: AuthMethod) {
     const authenticate = method === "bankid" ? bankIDMfaAuthenticate : eidasMfaAuthenticate;
     const response = await authenticate({
       method: method,
