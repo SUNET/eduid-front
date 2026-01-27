@@ -35,10 +35,10 @@ export function MultiFactorAuth(): React.JSX.Element {
   let leadText;
   let headingText;
 
-  if (authn_options.swedish_eid) {
+  if (authn_options.swedish_eid || authn_options.eidas || authn_options.freja_eid) {
     leadText = (
       <FormattedMessage
-        defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+        defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID, Freja+, eIDAS or freja eID.`}
         description="MFA paragraph with swedish option"
       />
     );

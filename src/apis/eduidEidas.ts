@@ -1,7 +1,7 @@
 import { eduIDApi } from "./common";
 import type { ApiResponse } from "./helpers/types";
 
-export type WebauthnMethods = "eidas" | "freja" | "bankid";
+export type WebauthnMethods = "eidas" | "freja" | "bankid" | "freja_eid";
 
 interface EidasCommonRequest {
   frontend_state?: string; // frontend can pass something here (like a ref) and get it back after the authn flow

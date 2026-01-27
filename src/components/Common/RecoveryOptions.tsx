@@ -1,5 +1,5 @@
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi } from "apis/eduidEidas";
+import { eidasApi, WebauthnMethods } from "apis/eduidEidas";
 import { useAppSelector } from "eduid-hooks";
 import React, { ReactNode } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -95,9 +95,10 @@ export function RecoveryOptions({
 
   const options = allOptions.filter((option) => option.available);
 
-  async function handleOnClickBankID() {
-    const response = await bankIDMfaAuthenticate({
-      method: "bankid",
+  async function handleAuthenticate(method: WebauthnMethods) {
+    const authenticate = method === "bankid" ? bankIDMfaAuthenticate : eidasMfaAuthenticate;
+    const response = await authenticate({
+      method: method,
       frontend_action: frontend_action,
       frontend_state: frontend_state,
     });
@@ -136,11 +137,13 @@ export function RecoveryOptions({
 
   function handleOnChange(newValue: SingleValue<SelectOptions>): void {
     if (newValue?.value === "Bank ID") {
-      handleOnClickBankID();
+      handleAuthenticate("bankid");
     } else if (newValue?.value === "Freja+") {
-      handleOnClickFrejaeID();
+      handleAuthenticate("freja");
     } else if (newValue?.value === "eIDAS") {
-      handleOnClickEidas();
+      handleAuthenticate("eidas");
+    } else if (newValue?.value === "Freja eID") {
+      handleAuthenticate("freja_eid");
     }
   }
 
