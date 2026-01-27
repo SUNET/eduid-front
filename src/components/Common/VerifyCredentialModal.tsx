@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import EduIDButton from "./EduIDButton";
 
 interface VerifyCredentialModalProps {
@@ -41,7 +42,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
             <div className="modal-body">
               <FormattedMessage
                 description="verify webauthn token modal body text"
-                defaultMessage="Please click either the BankID, Freja+ or eIDAS button to verify your security key"
+                defaultMessage="Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
               />
               <p className="help-text">
                 <FormattedMessage
@@ -78,6 +79,15 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 >
                   <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                   <span>eidas</span>
+                </EduIDButton>
+                <EduIDButton
+                  buttonstyle="primary icon"
+                  id={`verify-webauthn-token-modal-continue-frejaeid-button`}
+                  aria-label="Proceed with Freja eID"
+                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja_eid")}
+                >
+                  <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
+                  <span>FrejaeID</span>
                 </EduIDButton>
               </div>
               <EduIDButton
