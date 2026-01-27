@@ -1,10 +1,6 @@
 import { eduIDApi } from "./common";
 import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
-import type { ApiResponse, AuthCommonRequest, AuthCommonResponse } from "./helpers/types";
-
-export interface VerifyCredentialRequest extends AuthCommonRequest {
-  credential_id: string;
-}
+import type { ApiResponse, AuthCommonRequest, AuthCommonResponse, VerifyCredentialRequest } from "./helpers/types";
 
 export const bankIDApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({

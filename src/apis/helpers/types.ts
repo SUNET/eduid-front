@@ -27,3 +27,7 @@ export interface AuthCommonResponse {
   location: string;
   credential_description?: string;
 }
+
+export interface VerifyCredentialRequest extends AuthCommonRequest {
+  credential_id: string;
+}

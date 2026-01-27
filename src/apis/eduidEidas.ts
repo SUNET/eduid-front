@@ -1,9 +1,11 @@
 import { eduIDApi } from "./common";
-import type { ApiResponse, AuthCommonRequest, AuthCommonResponse, AuthMethod } from "./helpers/types";
-
-export interface VerifyCredentialRequest extends AuthCommonRequest {
-  credential_id: string;
-}
+import type {
+  ApiResponse,
+  AuthCommonRequest,
+  AuthCommonResponse,
+  AuthMethod,
+  VerifyCredentialRequest,
+} from "./helpers/types";
 
 export interface GetStatusRequest {
   authn_id: string;

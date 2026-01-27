@@ -1,5 +1,6 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { useAppSelector } from "eduid-hooks";
 import React, { ReactNode } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -38,6 +39,7 @@ export function RecoveryOptions({
   const frontend_state = location.pathname.includes("login") ? ref : email_code;
   const [bankIDMfaAuthenticate] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
   const [eidasMfaAuthenticate] = eidasApi.useLazyEidasMfaAuthenticateQuery();
+  const [frejaMfaAuthenticate] = frejaeIDApi.useLazyFrejaeIDMfaAuthenticateQuery();
 
   const placeholder = intl.formatMessage({
     id: "placeholder.recovery_option",
@@ -97,7 +99,14 @@ export function RecoveryOptions({
   const options = allOptions.filter((option) => option.available);
 
   async function handleAuthenticate(method: AuthMethod) {
-    const authenticate = method === "bankid" ? bankIDMfaAuthenticate : eidasMfaAuthenticate;
+    const authenticateMap = {
+      bankid: bankIDMfaAuthenticate,
+      freja: eidasMfaAuthenticate,
+      eidas: eidasMfaAuthenticate,
+      freja_eid: frejaMfaAuthenticate,
+    };
+
+    const authenticate = authenticateMap[method];
     const response = await authenticate({
       method: method,
       frontend_action: frontend_action,

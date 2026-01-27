@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
@@ -50,6 +51,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
   const tokens = useAppSelector((state) => {
@@ -75,8 +77,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       freja: eidasVerifyCredential,
       bankid: bankIDVerifyCredential,
       eidas: eidasVerifyCredential,
+      freja_eid: frejaeidVerifyCredential,
     }),
-    [eidasVerifyCredential, bankIDVerifyCredential],
+    [eidasVerifyCredential, bankIDVerifyCredential, frejaeidVerifyCredential],
   );
 
   const handleVerificationWebauthnToken = useCallback(
