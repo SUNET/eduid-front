@@ -6,11 +6,6 @@ import { act } from "react";
 import { mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
-beforeEach(() => {
-  // mock globalThis.scroll for the notification middleware that scrolls to the top of the screen
-  globalThis.scroll = jest.fn();
-});
-
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {
     routes: ["/profile"],

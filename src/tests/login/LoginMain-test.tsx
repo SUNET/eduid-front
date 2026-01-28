@@ -6,11 +6,6 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState } from "tests/helperFunctions/DashboardTestApp-rtl";
 import { render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
-beforeEach(() => {
-  // mock globalThis.scroll for the notification middleware that scrolls to the top of the screen
-  globalThis.scroll = jest.fn();
-});
-
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
     state: {

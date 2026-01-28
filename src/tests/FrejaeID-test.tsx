@@ -5,11 +5,6 @@ import { act } from "react";
 import { mswServer } from "setupTests";
 import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
 
-beforeEach(() => {
-  // mock globalThis.scroll for the notification middleware that scrolls to the top of the screen
-  globalThis.scroll = jest.fn();
-});
-
 test("renders frejaeID as expected", () => {
   const method = "frejaeIDVerifyIdentity";
 
