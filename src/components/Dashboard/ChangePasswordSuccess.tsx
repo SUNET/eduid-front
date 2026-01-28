@@ -11,7 +11,7 @@ export function ChangePasswordSuccess(): React.JSX.Element {
   const location = useLocation();
   const password = location.state.password;
   const isSuggested = location.state.isSuggested;
-  const is_loaded = useAppSelector((state) => state.app.is_loaded);
+  const is_loaded = useAppSelector((state) => state.config.is_app_loaded);
   let email = "";
   if (emails.length) {
     email = emails?.filter((mail) => mail.primary)[0].email || "";

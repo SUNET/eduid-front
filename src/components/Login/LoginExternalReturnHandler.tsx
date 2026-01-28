@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { appLoadingSlice } from "slices/AppLoading";
+import indexSlice from "slices/IndexConfig";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 
@@ -70,11 +70,11 @@ export function LoginExternalReturnHandler() {
                   updateIntl({
                     locale: response.data.payload.language,
                     messages: LOCALIZED_MESSAGES[response.data.payload.language],
-                  })
+                  }),
                 );
               }
             }
-            dispatch(appLoadingSlice.actions.appLoaded());
+            dispatch(indexSlice.actions.appLoaded());
           }
           const _path = actionToRoute[status.frontend_action];
           if (_path) {
@@ -96,7 +96,7 @@ export function LoginExternalReturnHandler() {
       verifyEmailLink,
       requestAllPersonalData,
       navigate,
-    ]
+    ],
   );
 
   useEffect(() => {

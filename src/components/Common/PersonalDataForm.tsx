@@ -214,7 +214,6 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
 const RenderLockedNames = (props: { labels: NameLabels }) => {
-  const loading = useAppSelector((state) => state.config.loading_data);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
@@ -241,7 +240,6 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
         <button
           type="button"
           className="link lowercase sm icon refresh"
-          disabled={loading}
           aria-label="name-check"
           onClick={() => handleUpdateName()}
         >
