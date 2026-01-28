@@ -35,7 +35,7 @@ function SubmitSamlResponse() {
      * re-renders the page, in which case the SAMLParameters.used should enable us to inform the
      * user that re-posting the SAML response is unlikely to work.
      */
-    window.onpageshow = function (event) {
+    globalThis.onpageshow = function (event) {
       if (event.persisted) {
         setBackDetected(true);
       }

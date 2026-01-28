@@ -37,8 +37,8 @@ function makeResetPasswordPayload(): GetResetPasswordStateResponse {
 }
 
 beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  // mock globalThis.scroll for the notification middleware that scrolls to the top of the screen
+  globalThis.scroll = jest.fn();
 });
 
 test("can click 'forgot password' with an e-mail address", async () => {

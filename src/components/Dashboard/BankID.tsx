@@ -10,7 +10,7 @@ function BankID(): React.JSX.Element {
     const response = await bankIDVerifyIdentity({ method: "bankid" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }

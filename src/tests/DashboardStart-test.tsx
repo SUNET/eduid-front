@@ -4,8 +4,8 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  // mock global.scroll for the notification middleware that scrolls to the top of the screen
+  globalThis.scroll = jest.fn();
 });
 
 test("start page heading text for new user", async () => {

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 function removeLocalStorage(key: string) {
-  if (window.localStorage) {
-    return window.localStorage.removeItem(key);
+  if (globalThis.localStorage) {
+    return globalThis.localStorage.removeItem(key);
   }
 }
 
 function getLocalStorage(key: string) {
-  return window.localStorage ? window.localStorage.getItem(key) : "";
+  return globalThis.localStorage ? globalThis.localStorage.getItem(key) : "";
 }
 
 function setLocalStorage(key: string, val: string) {
-  if (window.localStorage) {
-    window.localStorage.setItem(key, val);
+  if (globalThis.localStorage) {
+    globalThis.localStorage.setItem(key, val);
   }
   return val;
 }
@@ -147,14 +147,12 @@ function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: numbe
   const diff2 = Math.floor((end2.getTime() - now2.getTime()) / 1000);
 
   return (
-    <React.Fragment>
-      <div className="time-remaining-wrapper-debug">
-        Debug info:
-        <div>{getLocalStorage(props.name)}</div>
-        <div>{`${props.name} ends at ${end2.toISOString()}`}</div>
-        <div>{`now ${now2.toISOString()}, diff ${diff2}`}</div>
-        <div>{`secondsLeft ${props.secondsLeft}`}</div>
-      </div>
-    </React.Fragment>
+    <div className="time-remaining-wrapper-debug">
+      Debug info:
+      <div>{getLocalStorage(props.name)}</div>
+      <div>{`${props.name} ends at ${end2.toISOString()}`}</div>
+      <div>{`now ${now2.toISOString()}, diff ${diff2}`}</div>
+      <div>{`secondsLeft ${props.secondsLeft}`}</div>
+    </div>
   );
 }

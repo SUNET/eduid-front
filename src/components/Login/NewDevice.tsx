@@ -24,8 +24,8 @@ export function NewDevice(): React.JSX.Element | null {
         const response = await fetchNewDevice({ ref });
         if (response.isSuccess) {
           const thisDevice = response.data.payload.new_device;
-          if (window.localStorage) {
-            window.localStorage.setItem(THIS_DEVICE_KEY, thisDevice);
+          if (globalThis.localStorage) {
+            globalThis.localStorage.setItem(THIS_DEVICE_KEY, thisDevice);
           }
           // trigger another request to /next
           dispatch(loginSlice.actions.callLoginNext());
@@ -54,8 +54,8 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
 
   function handleSwitchChange(): void {
     const newValue = !remember_me;
-    if (window.localStorage) {
-      window.localStorage.setItem(REMEMBER_ME_KEY, JSON.stringify(newValue));
+    if (globalThis.localStorage) {
+      globalThis.localStorage.setItem(REMEMBER_ME_KEY, JSON.stringify(newValue));
     }
     dispatch(loginSlice.actions.setRememberMe(newValue));
     if (newValue === true && previous_this_device) {
@@ -70,7 +70,7 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
     dispatch(loginSlice.actions.callLoginNext());
   }
 
-  if (!window.localStorage || remember_me === undefined) {
+  if (!globalThis.localStorage || remember_me === undefined) {
     // Might as well not even show the 'remember me' checkbox if there is no local storage.
     // If remember_me is undefined it means the login app hasn't been initialised yet.
     return null;
@@ -88,32 +88,30 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
   }
 
   return (
-    <React.Fragment>
-      <fieldset className="border-toggle-area">
-        <label className="toggle" htmlFor="remember-me">
-          <legend>
-            <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
-            {remember_me && (
-              <p className="help-text">
-                <FormattedMessage
-                  defaultMessage="Turning this off will enable login with username and password instead."
-                  description="MFA as the first step of login, toggle off"
-                />
-              </p>
-            )}
-          </legend>
-          <input
-            onChange={handleSwitchChange}
-            className="toggle-checkbox"
-            type="checkbox"
-            checked={remember_me}
-            id="remember-me"
-          />
+    <fieldset className="border-toggle-area">
+      <label className="toggle" htmlFor="remember-me">
+        <legend>
+          <FormattedMessage defaultMessage="Remember me on this device" description="Login remember user device" />
+          {remember_me && (
+            <p className="help-text">
+              <FormattedMessage
+                defaultMessage="Turning this off will enable login with username and password instead."
+                description="MFA as the first step of login, toggle off"
+              />
+            </p>
+          )}
+        </legend>
+        <input
+          onChange={handleSwitchChange}
+          className="toggle-checkbox"
+          type="checkbox"
+          checked={remember_me}
+          id="remember-me"
+        />
 
-          <div className="toggle-switch"></div>
-        </label>
-      </fieldset>
-    </React.Fragment>
+        <div className="toggle-switch"></div>
+      </label>
+    </fieldset>
   );
 }
 
@@ -130,7 +128,7 @@ export function initKnownDevice(
   remember_me: boolean | undefined,
   dispatch: EduIDAppDispatch
 ): KnownDeviceParams {
-  if (!window.localStorage) {
+  if (!globalThis.localStorage) {
     // Can't remember devices if there is no local storage
     dispatch(loginSlice.actions.setRememberMe(false));
     return { init_this_device: undefined, init_remember_me: false };
@@ -138,7 +136,7 @@ export function initKnownDevice(
 
   if (!this_device) {
     // try to initialise this_device from local storage
-    this_device = window.localStorage.getItem(THIS_DEVICE_KEY) || undefined;
+    this_device = globalThis.localStorage.getItem(THIS_DEVICE_KEY) || undefined;
     if (this_device) {
       dispatch(loginSlice.actions.addThisDevice(this_device));
     }
@@ -146,7 +144,7 @@ export function initKnownDevice(
 
   if (remember_me === undefined) {
     // try to initialise remember_me from local storage
-    const _remember_me = window.localStorage.getItem(REMEMBER_ME_KEY) || "true";
+    const _remember_me = globalThis.localStorage.getItem(REMEMBER_ME_KEY) || "true";
     remember_me = !!JSON.parse(_remember_me);
     dispatch(loginSlice.actions.setRememberMe(remember_me));
   }
@@ -160,8 +158,8 @@ export function initKnownDevice(
  *
  */
 export function forgetThisDevice(dispatch: EduIDAppDispatch) {
-  if (window.localStorage) {
-    window.localStorage.removeItem(THIS_DEVICE_KEY);
+  if (globalThis.localStorage) {
+    globalThis.localStorage.removeItem(THIS_DEVICE_KEY);
   }
   dispatch(loginSlice.actions.clearThisDevice());
 }

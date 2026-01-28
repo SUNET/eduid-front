@@ -67,25 +67,22 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    globalThis.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      globalThis.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
-      if (window.innerWidth > 1200) {
+      if (globalThis.innerWidth > 1200) {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];
-      const newState = Object.keys(prevState).reduce(
-        (buttonState, key) => {
-          buttonState[key as ButtonKey] = false;
-          return buttonState;
-        },
-        {} as { [key in ButtonKey]: boolean },
-      );
+      const newState = Object.keys(prevState).reduce((buttonState, key) => {
+        buttonState[key as ButtonKey] = false;
+        return buttonState;
+      }, {} as { [key in ButtonKey]: boolean });
       if (!isCurrentlyOpen) {
         newState[button] = true;
       }

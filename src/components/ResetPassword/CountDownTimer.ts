@@ -2,16 +2,16 @@ export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK = "COUNT_EMAIL_LINK";
 export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE = "COUNT_PHONE_CODE";
 
 export const clearCountdown = (key: string) => {
-  return window.localStorage.removeItem(key);
+  return globalThis.localStorage.removeItem(key);
 };
 
 export const getLocalStorage = (key: string) => {
-  return window.localStorage ? window.localStorage.getItem(key) : "";
+  return globalThis.localStorage ? globalThis.localStorage.getItem(key) : "";
 };
 
 export const setLocalStorage = (key: string, val: string) => {
-  if (window.localStorage) {
-    window.localStorage.setItem(key, val);
+  if (globalThis.localStorage) {
+    globalThis.localStorage.setItem(key, val);
   }
   return val;
 };

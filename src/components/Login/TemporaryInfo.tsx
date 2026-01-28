@@ -9,10 +9,10 @@ export default function TemporaryInfo(props: {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {
-    window.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");
-    props.setHasReadAnnouncement(Boolean(window.localStorage.getItem(HAS_READ_ANNOUNCEMENT)));
+    globalThis.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");
+    props.setHasReadAnnouncement(Boolean(globalThis.localStorage.getItem(HAS_READ_ANNOUNCEMENT)));
     if (!activeButton) {
-      window.localStorage.removeItem(HAS_READ_ANNOUNCEMENT);
+      globalThis.localStorage.removeItem(HAS_READ_ANNOUNCEMENT);
     }
   }
 

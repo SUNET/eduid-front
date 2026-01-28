@@ -38,7 +38,7 @@ export function AuthenticateModal() {
 
   useEffect(() => {
     if (data && !isLoading && !isError) {
-      window.location.href = data.payload.location;
+      globalThis.location.href = data.payload.location;
     }
   }, [data, isError, isLoading]);
 

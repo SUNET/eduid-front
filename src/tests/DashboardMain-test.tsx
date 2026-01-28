@@ -4,8 +4,8 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
 beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
+  // mock globalThis.scroll for the notification middleware that scrolls to the top of the screen
+  globalThis.scroll = jest.fn();
 });
 
 test("shows splash screen when not configured", () => {
