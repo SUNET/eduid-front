@@ -112,7 +112,7 @@ fieldset {
   width: 100%;
   position: relative;
 
-  &:not(:empty) {
+  &:not(:empty):not(:last-of-type) {
     margin-bottom: 1.25em;
   }
 
