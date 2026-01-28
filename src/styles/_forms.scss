@@ -146,6 +146,7 @@ fieldset.change-password-custom-inputs {
 }
 
 .input-validate-error {
+  font-family: monospace;
   font-size: $txt-xs;
   color: var(--error-red);
 
