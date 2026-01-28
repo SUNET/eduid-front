@@ -140,7 +140,8 @@ em {
   text-transform: none;
 }
 
-code {
+code,
+.code {
   font-family: monospace;
   color: var(--txt-gray);
 }
