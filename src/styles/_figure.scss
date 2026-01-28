@@ -105,7 +105,9 @@ figure.webauthn-token-holder {
     margin-top: 0.3rem;
     width: 80%;
   }
-
+  &:first-of-type {
+    margin-top: 1rem;
+  }
   &:last-of-type {
     border-bottom: none;
     margin-bottom: 1rem;
