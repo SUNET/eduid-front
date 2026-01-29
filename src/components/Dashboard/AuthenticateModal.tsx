@@ -83,7 +83,7 @@ export function AuthenticateModal() {
                 defaultMessage=" After logging in, you will be redirected to {externalPage} page to verify your security key."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
-                  externalPage: <strong>{method.toUpperCase()}</strong>,
+                  externalPage: <strong>{method.replace("_eid", "").toUpperCase()}</strong>,
                 }}
               />
             </p>
