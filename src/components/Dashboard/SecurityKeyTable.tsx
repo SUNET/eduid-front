@@ -95,7 +95,7 @@ export function SecurityKeyTable({
           );
         } else {
           btnVerify = (
-            <div aria-label="verify with freja or bankID">
+            <div aria-label="verify with freja, bankID, eidas or freja eid">
               <span>
                 <FormattedMessage description="security key status" defaultMessage="Verify with: " />
                 &nbsp;
@@ -112,7 +112,7 @@ export function SecurityKeyTable({
                   buttonstyle="link sm"
                   onClick={() => handleVerificationWebauthnToken(cred.key, "freja_eid")}
                 >
-                  FrejaeID
+                  Freja eID
                 </EduIDButton>
               </span>
             </div>

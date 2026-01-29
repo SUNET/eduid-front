@@ -52,7 +52,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
               </p>
             </div>
             <div className="modal-footer">
-              <div className="buttons">
+              <div className="buttons flex-direction-column">
                 <EduIDButton
                   id="verify-webauthn-token-modal-continue-bankID-button"
                   buttonstyle="primary icon"
@@ -87,7 +87,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja_eid")}
                 >
                   <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
-                  <span>FrejaeID</span>
+                  <span>Freja eID</span>
                 </EduIDButton>
               </div>
               <EduIDButton
