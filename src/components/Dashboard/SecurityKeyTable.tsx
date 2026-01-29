@@ -30,7 +30,7 @@ export function SecurityKeyTable({
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
-  console.log("j222");
+
   async function handleConfirmDeleteModal(cred: CredentialType) {
     credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
     // Test if the user can directly execute the action or a re-auth security zone will be required
