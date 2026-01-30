@@ -2,7 +2,7 @@ import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { useAppSelector } from "eduid-hooks";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useCallback } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
@@ -98,64 +98,44 @@ export function RecoveryOptions({
 
   const options = allOptions.filter((option) => option.available);
 
-  async function handleAuthenticate(method: AuthMethod) {
-    const authenticateMap = {
-      bankid: bankIDMfaAuthenticate,
-      freja: eidasMfaAuthenticate,
-      eidas: eidasMfaAuthenticate,
-      freja_eid: frejaMfaAuthenticate,
-    };
+  const handleAuthenticate = useCallback(
+    async (method: AuthMethod) => {
+      const authenticateMap = {
+        bankid: bankIDMfaAuthenticate,
+        freja: eidasMfaAuthenticate,
+        eidas: eidasMfaAuthenticate,
+        freja_eid: frejaMfaAuthenticate,
+      };
 
-    const authenticate = authenticateMap[method];
-    const response = await authenticate({
-      method: method,
-      frontend_action: frontend_action,
-      frontend_state: frontend_state,
-    });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        globalThis.location.assign(response.data.payload.location);
+      const authenticate = authenticateMap[method];
+      const response = await authenticate({
+        method: method,
+        frontend_action: frontend_action,
+        frontend_state: frontend_state,
+      });
+      if (response.isSuccess) {
+        if (response.data.payload.location) {
+          globalThis.location.assign(response.data.payload.location);
+        }
       }
-    }
-  }
+    },
+    [bankIDMfaAuthenticate, eidasMfaAuthenticate, frejaMfaAuthenticate, frontend_action, frontend_state],
+  );
 
-  async function handleOnClickFrejaeID() {
-    const response = await eidasMfaAuthenticate({
-      method: "freja",
-      frontend_action: frontend_action,
-      frontend_state: frontend_state,
-    });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        globalThis.location.assign(response.data.payload.location);
+  const handleOnChange = useCallback(
+    (newValue: SingleValue<SelectOptions>) => {
+      if (newValue?.value === "Bank ID") {
+        handleAuthenticate("bankid");
+      } else if (newValue?.value === "Freja+") {
+        handleAuthenticate("freja");
+      } else if (newValue?.value === "eIDAS") {
+        handleAuthenticate("eidas");
+      } else if (newValue?.value === "Freja eID") {
+        handleAuthenticate("freja_eid");
       }
-    }
-  }
-
-  async function handleOnClickEidas() {
-    const response = await eidasMfaAuthenticate({
-      method: "eidas",
-      frontend_action: frontend_action,
-      frontend_state: frontend_state,
-    });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
-      }
-    }
-  }
-
-  function handleOnChange(newValue: SingleValue<SelectOptions>): void {
-    if (newValue?.value === "Bank ID") {
-      handleAuthenticate("bankid");
-    } else if (newValue?.value === "Freja+") {
-      handleAuthenticate("freja");
-    } else if (newValue?.value === "eIDAS") {
-      handleAuthenticate("eidas");
-    } else if (newValue?.value === "Freja eID") {
-      handleAuthenticate("freja_eid");
-    }
-  }
+    },
+    [handleAuthenticate],
+  );
 
   return (
     <React.Fragment>
