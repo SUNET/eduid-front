@@ -33,7 +33,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 />
               </h4>
               <EduIDButton
-                id={`verify-webauthn-token-modal-close-button`}
+                id="verify-webauthn-token-modal-close-button"
                 buttonstyle="close float-right"
                 onClick={() => props.setShowVerifyWebauthnModal(false)}
               ></EduIDButton>
@@ -53,7 +53,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
             <div className="modal-footer">
               <div className="buttons">
                 <EduIDButton
-                  id={`verify-webauthn-token-modal-continue-bankID-button`}
+                  id="verify-webauthn-token-modal-continue-bankID-button"
                   buttonstyle="primary icon"
                   aria-label="Proceed with BankID"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "bankid")}
@@ -63,7 +63,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 </EduIDButton>
                 <EduIDButton
                   buttonstyle="primary icon"
-                  id={`verify-webauthn-token-modal-continue-frejaID-button`}
+                  id="verify-webauthn-token-modal-continue-frejaID-button"
                   aria-label="Proceed with Freja eID"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja")}
                 >
@@ -72,7 +72,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 </EduIDButton>
                 <EduIDButton
                   buttonstyle="primary icon"
-                  id={`verify-webauthn-token-modal-continue-eidas-button`}
+                  id="verify-webauthn-token-modal-continue-eidas-button"
                   aria-label="Proceed with eIDAS"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "eidas")}
                 >
@@ -81,7 +81,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 </EduIDButton>
               </div>
               <EduIDButton
-                id={`verify-webauthn-token-modal-close-link`}
+                id="verify-webauthn-token-modal-close-link"
                 buttonstyle="link verbatim"
                 onClick={() => props.setShowVerifyWebauthnModal(false)}
               >

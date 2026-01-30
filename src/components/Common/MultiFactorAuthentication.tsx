@@ -37,7 +37,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
-  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !window.PublicKeyCredential);
+  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !globalThis.PublicKeyCredential);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
@@ -57,7 +57,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   });
 
   // Derive tokenKey from the last token in the array
-  const tokenKey = tokens.length > 0 ? tokens[tokens.length - 1].key : "";
+  const tokenKey = tokens.at(-1)?.key ?? "";
 
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
@@ -92,7 +92,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       });
       if (response.isSuccess) {
         if (response.data.payload.location) {
-          window.location.assign(response.data.payload.location);
+          globalThis.location.assign(response.data.payload.location);
         }
       } else if (response.isError) {
         setShowVerifyWebauthnModal(false);
@@ -242,14 +242,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       // Check if platform authentication is available through the navigator.credentials API.
       // Only runs if the API exists (otherwise isPlatformAuthLoaded starts as true)
 
-      if (!window.PublicKeyCredential) {
+      if (!globalThis.PublicKeyCredential) {
         return; // Nothing to do, already initialized as loaded
       }
 
       let aborted = false; // flag to avoid updating unmounted components after this promise resolves
       let platform = false;
 
-      window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+      globalThis.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
         .then((available) => {
           platform = available;
         })

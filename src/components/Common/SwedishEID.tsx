@@ -70,7 +70,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
     });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }
@@ -83,7 +83,7 @@ export function SwedishEID({ recoveryAvailable }: SwedishEIDProps): React.JSX.El
     });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }

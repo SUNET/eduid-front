@@ -6,6 +6,19 @@ import "@testing-library/jest-dom";
 
 import { setupServer } from "msw/node";
 
+// Global mocks for jsdom environment
+globalThis.scroll = jest.fn();
+globalThis.matchMedia = jest.fn().mockImplementation((query) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn(),
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
+}));
+
 // Setup MSW to act as a mock backend in tests. In a test that accesses a backend endpoint,
 // do something like this:
 //

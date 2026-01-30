@@ -6,11 +6,6 @@ import { act } from "react";
 import { mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
 
-beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
-});
-
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {
     routes: ["/profile"],
@@ -49,9 +44,9 @@ test("can add an ORCID iD", () => {
   const button = screen.getByRole("button", { name: /add orcid/i });
   expect(button).toBeEnabled();
 
-  // TODO: clicking the button assigns a new URL to window.location.href in requestConnectOrcid(),
+  // TODO: clicking the button assigns a new URL to globalThis.location.href in requestConnectOrcid(),
   //       and that doesn't work in JSDOM. I can't manage to get any of the Internet's suggestions
-  //       of how to mock window.location.assign() to work right now, so for now we only test that
+  //       of how to mock globalThis.location.assign() to work right now, so for now we only test that
   //       the button is enabled above.
   //button.click();
 });
@@ -91,7 +86,7 @@ test("can remove an ORCID iD", async () => {
     }),
     http.get("https://dashboard.eduid.docker/services/orcid", () => {
       if (!removeCalled) {
-        return new Response("", { status: 400})
+        return new Response("", { status: 400 });
       }
       return new Response(JSON.stringify({ type: "test success", payload: { orcid: undefined } }));
     })

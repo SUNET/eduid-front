@@ -96,7 +96,7 @@ export function ChangePassword() {
 
   useEffect(() => {
     //TODO: Too many conditions for getting the suggested password, need to refactor.
-    if (is_app_loaded && suggested === undefined && !window.location.pathname.includes("success")) {
+    if (is_app_loaded && suggested === undefined && !globalThis.location.pathname.includes("success")) {
       handleSuggestedPassword();
     }
     return () => {

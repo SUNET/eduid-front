@@ -31,7 +31,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
       eduidStore.dispatch({ type: "RESET_STORE" });
       if (eduid_site_link) {
         sessionStorage.clear();
-        window.location.assign(eduid_site_link);
+        globalThis.location.assign(eduid_site_link);
       }
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);
