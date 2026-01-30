@@ -1,15 +1,16 @@
-import { WebauthnMethods } from "apis/eduidEidas";
+import { AuthMethod } from "apis/helpers/types";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import EduIDButton from "./EduIDButton";
 
 interface VerifyCredentialModalProps {
   readonly showVerifyWebauthnModal: boolean;
   readonly setShowVerifyWebauthnModal: (value: boolean) => void;
-  readonly handleVerificationWebauthnToken: (token: string | undefined, type: WebauthnMethods) => Promise<void> | void;
+  readonly handleVerificationWebauthnToken: (token: string | undefined, type: AuthMethod) => Promise<void> | void;
   tokenKey: string;
 }
 
@@ -41,7 +42,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
             <div className="modal-body">
               <FormattedMessage
                 description="verify webauthn token modal body text"
-                defaultMessage="Please click either the BankID, Freja+ or eIDAS button to verify your security key"
+                defaultMessage="Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
               />
               <p className="help-text">
                 <FormattedMessage
@@ -51,7 +52,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
               </p>
             </div>
             <div className="modal-footer">
-              <div className="buttons">
+              <div className="buttons flex-direction-column">
                 <EduIDButton
                   id="verify-webauthn-token-modal-continue-bankID-button"
                   buttonstyle="primary icon"
@@ -76,8 +77,17 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   aria-label="Proceed with eIDAS"
                   onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "eidas")}
                 >
-                  <img className="freja" height="24" alt="eIDAS" src={EuFlag} />
+                  <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                   <span>eidas</span>
+                </EduIDButton>
+                <EduIDButton
+                  buttonstyle="primary icon"
+                  id={`verify-webauthn-token-modal-continue-frejaeid-button`}
+                  aria-label="Proceed with Freja eID"
+                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja_eid")}
+                >
+                  <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
+                  <span>Freja eID</span>
                 </EduIDButton>
               </div>
               <EduIDButton

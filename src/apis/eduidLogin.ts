@@ -177,6 +177,8 @@ export interface LoginAuthnOptions {
   usernamepassword?: boolean;
   webauthn?: boolean;
   verified_phone_number?: boolean;
+  freja_eid?: boolean;
+  eidas?: boolean;
 }
 
 export interface LoginNewDeviceResponse {

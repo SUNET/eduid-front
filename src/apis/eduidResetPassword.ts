@@ -65,7 +65,9 @@ export interface VerifyCodeResponse {
 }
 
 export interface ExtraSecurityAlternatives {
-  external_mfa?: boolean;
+  swedish_eid?: boolean;
+  freja_eid?: boolean;
+  eidas?: boolean;
   phone_numbers?: ExtraSecurityPhoneWithIndex[];
   tokens?: ExtraSecurityTokens;
 }

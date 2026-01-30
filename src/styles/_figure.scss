@@ -127,7 +127,6 @@ figure.webauthn-token-holder {
   span {
     font-size: $txt-sm;
     margin-bottom: 0.2rem;
-    white-space: nowrap;
   }
   .verified {
     strong {
@@ -141,7 +140,7 @@ figure.webauthn-token-holder {
   }
   .link {
     height: auto;
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
   button.close {
     justify-self: flex-end;

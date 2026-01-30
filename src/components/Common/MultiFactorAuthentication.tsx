@@ -1,8 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
+import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
-import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
@@ -15,6 +15,7 @@ import { Link } from "react-router";
 import authnSlice from "slices/Authn";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
+import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";
 import ConfirmModal from "./ConfirmModal";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -27,8 +28,8 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
   credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
-  )
+      cred.credential_type == "security.webauthn_credential_type",
+  ),
 );
 
 export function MultiFactorAuthentication(): React.ReactElement | null {
@@ -50,6 +51,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
   const tokens = useAppSelector((state) => {
@@ -75,12 +77,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       freja: eidasVerifyCredential,
       bankid: bankIDVerifyCredential,
       eidas: eidasVerifyCredential,
+      freja_eid: frejaeidVerifyCredential,
     }),
-    [eidasVerifyCredential, bankIDVerifyCredential]
+    [eidasVerifyCredential, bankIDVerifyCredential, frejaeidVerifyCredential],
   );
 
   const handleVerificationWebauthnToken = useCallback(
-    async (token: string | undefined, method: WebauthnMethods) => {
+    async (token: string | undefined, method: AuthMethod) => {
       const verifyAction = tokenTypeMap[method];
       if (!token) {
         console.error("No token provided");
@@ -102,13 +105,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             frontend_state: JSON.stringify({
               method,
               credential: token,
-              description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
+              description: (response.error as ApiResponse<AuthCommonResponse>).payload.credential_description,
             }),
-          })
+          }),
         );
       }
     },
-    [tokenTypeMap, dispatch]
+    [tokenTypeMap, dispatch],
   );
 
   const handleRemoveWebauthnToken = useCallback(
@@ -121,13 +124,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           authnSlice.actions.setFrontendActionAndState({
             frontend_action: "removeSecurityKeyAuthn",
             frontend_state: credential_key,
-          })
+          }),
         );
       } else {
         wrapperRef?.current?.focus();
       }
     },
-    [removeWebauthnToken, dispatch, wrapperRef]
+    [removeWebauthnToken, dispatch, wrapperRef],
   );
 
   const handleStopAskingWebauthnDescription = useCallback(() => {
@@ -145,7 +148,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         authnSlice.actions.setFrontendActionAndState({
           frontend_action: "addSecurityKeyAuthn",
           frontend_state: authType,
-        })
+        }),
       );
 
       const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
@@ -157,7 +160,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [dispatch, getAuthnStatus]
+    [dispatch, getAuthnStatus],
   );
 
   // function that is called when the user clicks OK in the "security key name" modal
@@ -192,7 +195,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         }
       })();
     },
-    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch]
+    [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch],
   );
 
   // Runs after re-auth security zone
@@ -211,10 +214,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        await handleVerificationWebauthnToken(
-          parsedFrontendState.credential,
-          parsedFrontendState.method as WebauthnMethods
-        );
+        await handleVerificationWebauthnToken(parsedFrontendState.credential, parsedFrontendState.method as AuthMethod);
       }
     })();
   }, [
@@ -270,7 +270,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         aborted = true;
       };
     },
-    [] // run this only once
+    [], // run this only once
   );
 
   if (!isPlatformAuthLoaded) return null;

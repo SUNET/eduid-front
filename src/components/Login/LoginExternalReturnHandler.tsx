@@ -1,6 +1,7 @@
 import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -30,6 +31,7 @@ export function LoginExternalReturnHandler() {
   const [authnGetStatus] = authnApi.useLazyAuthnGetStatusQuery();
   const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
+  const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   const fetchStatus = useCallback(
@@ -40,6 +42,8 @@ export function LoginExternalReturnHandler() {
         getStatusAction = eidasGetStatus;
       } else if (params.app_name === "bankid") {
         getStatusAction = bankIDGetStatus;
+      } else if (params.app_name === "freja_eid") {
+        getStatusAction = frejaeIDGetStatus;
       } else {
         getStatusAction = authnGetStatus;
       }
@@ -91,6 +95,7 @@ export function LoginExternalReturnHandler() {
       params.app_name,
       eidasGetStatus,
       bankIDGetStatus,
+      frejaeIDGetStatus,
       authnGetStatus,
       dispatch,
       verifyEmailLink,
