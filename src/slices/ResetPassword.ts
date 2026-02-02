@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import {
   ExtraSecurityAlternatives,
   GetResetPasswordState,
@@ -148,6 +149,11 @@ export const resetPasswordSlice = createSlice({
         state.swedishEID_status = action.payload.payload.status;
         state.next_page = "SET_NEW_PASSWORD";
         state.selected_option = "swedishEID";
+      })
+      .addMatcher(frejaeIDApi.endpoints.frejaeIDGetStatus.matchFulfilled, (state, action) => {
+        state.swedishEID_status = action.payload.payload.status;
+        state.next_page = "SET_NEW_PASSWORD";
+        state.selected_option = "frejaeID";
       });
   },
 });
