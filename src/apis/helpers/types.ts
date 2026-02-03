@@ -14,3 +14,20 @@ export type ApiError<T> = ApiResponse<T> & {
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
 }
+
+export type AuthMethod = "eidas" | "freja" | "bankid" | "freja_eid";
+
+export interface AuthCommonRequest {
+  frontend_state?: string;
+  frontend_action?: string;
+  method: AuthMethod;
+}
+
+export interface AuthCommonResponse {
+  location: string;
+  credential_description?: string;
+}
+
+export interface VerifyCredentialRequest extends AuthCommonRequest {
+  credential_id: string;
+}
