@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -24,7 +24,7 @@ export function ToolTip() {
         type="button"
         tabIndex={0}
       >
-        <FontAwesomeIcon icon={faLock as IconProp} />
+        <FontAwesomeIcon icon={faBan as IconProp} />
       </button>
       {show && (
         <div
@@ -34,13 +34,13 @@ export function ToolTip() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <p className="custom-tooltip-title">
+          <h5 className="custom-tooltip-title">
             <FormattedMessage description="popover info heading" defaultMessage="For security" />
-          </p>
+          </h5>
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
               description="popover info"
-              defaultMessage="You may be asked to log in again if some time has passed since your last login."
+              defaultMessage="You may be asked to log in again to make changes if some time has passed since your last login."
               // values={{ action }}
             />
           </p>
