@@ -2352,7 +2352,7 @@
   },
   "hygeyl": {
     "developer_comment": "help text for custom password tips",
-    "string": "Add special characters, such as @ $ \\\\ + _ %"
+    "string": "Add special characters, such as @ $ \\ + _ %"
   },
   "i3E2/S": {
     "developer_comment": "about usb key - handle",
