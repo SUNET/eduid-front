@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faBan } from "@fortawesome/free-solid-svg-icons";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -24,7 +24,7 @@ export function ToolTip() {
         type="button"
         tabIndex={0}
       >
-        <FontAwesomeIcon icon={faBan as IconProp} />
+        <FontAwesomeIcon icon={faInfo as IconProp} />
       </button>
       {show && (
         <div

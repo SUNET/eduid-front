@@ -81,19 +81,20 @@
   display: inline-block;
 
   .trigger {
-    width: 2.5rem;
-    height: 2.5rem;
-    min-width: 2.5rem;
-    min-height: 2.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px var(--border-gray) solid;
+    //border: 2px $bright-orange solid;
     background: var(--contrast-color);
     box-shadow: none;
     border-radius: 50%;
+    color: var(--txt-orange);
     &:hover {
-      color: $bright-orange;
+      transform: scale(0.8);
     }
 
     svg {
@@ -119,15 +120,14 @@
   max-width: 260px;
   box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
   border-radius: 10px;
-  border: 1px solid var(--border-gray);
-  background: white;
+  //border: 1px solid var(--border-gray);
+  background: var(--contrast-color);
   padding: 1rem 1rem 1.125rem;
-  color: black;
 }
 
-// .custom-tooltip-title {
-//   margin: 0;
-// }
+//.custom-tooltip-title {
+//margin: 0;
+//}
 
 // .custom-tooltip-help {
 //   margin-top: 0;
