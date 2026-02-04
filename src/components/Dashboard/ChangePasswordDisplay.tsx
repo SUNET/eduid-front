@@ -1,11 +1,12 @@
 import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
+import { ToolTip } from "components/Common/ToolTip";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
 function ChangePasswordDisplay() {
   const navigate = useNavigate();
-  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery()
+  const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
 
   async function handleSuggestedPassword() {
     const response = await fetchSuggestedPassword();
@@ -15,9 +16,12 @@ function ChangePasswordDisplay() {
   }
   return (
     <article id="change-password">
-      <h2>
-        <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
-      </h2>
+      <div className="flex-between baseline">
+        <h2>
+          <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
+        </h2>
+        <ToolTip />
+      </div>
       <p>
         <FormattedMessage
           defaultMessage="Click the link to change your eduID password."

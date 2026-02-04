@@ -5,6 +5,7 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
+import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
@@ -277,9 +278,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   return (
     <Fragment>
       <article id="add-two-factor">
-        <h2>
-          <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
-        </h2>
+        <div className="flex-between">
+          <h2>
+            <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
+          </h2>
+          <ToolTip />
+        </div>
+
         <p>
           <FormattedMessage
             description="security second factor"

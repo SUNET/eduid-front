@@ -3,6 +3,7 @@ import { AuthMethod } from "apis/helpers/types";
 import EduIDButton from "components/Common/EduIDButton";
 import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthentication";
 import NotificationModal from "components/Common/NotificationModal";
+import { ToolTip } from "components/Common/ToolTip";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -174,9 +175,12 @@ export function SecurityKeyTable({
   return (
     // unique ID to scroll to the correct section
     <article id="manage-security-keys">
-      <h2>
-        <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
-      </h2>
+      <div className="flex-between baseline">
+        <h2>
+          <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
+        </h2>
+        <ToolTip />
+      </div>
 
       <p>
         <FormattedMessage
