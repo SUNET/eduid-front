@@ -58,7 +58,7 @@ export function SetNewPassword(): React.JSX.Element | null {
       if (response.isSuccess) {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
       }
-    } else if (selected_option === "swedishEID") {
+    } else if (selected_option === "recoveryOption") {
       const response = await postSetNewPasswordExternalMfa({
         email_code: email_code,
         password: newPassword,

@@ -30,7 +30,7 @@ export function Index() {
   const deleteAccount = useCallback(async () => {
     const response = await postDeleteAccount();
     if (response.isSuccess) {
-      window.location.assign(response.data.payload.location);
+      globalThis.location.assign(response.data.payload.location);
     }
   }, [postDeleteAccount]);
 

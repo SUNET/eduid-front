@@ -1,4 +1,5 @@
 import authnApi from "apis/eduidAuthn";
+import { AuthMethod } from "apis/helpers/types";
 import NotificationModal from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useMemo } from "react";
@@ -6,6 +7,15 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
+
+function isValidJson(jsonString: string): boolean {
+  try {
+    JSON.parse(jsonString);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export function AuthenticateModal() {
   const dispatch = useAppDispatch();
@@ -15,17 +25,11 @@ export function AuthenticateModal() {
   const navigate = useNavigate();
   const [call_authenticate, { data, isError, isLoading }] = authnApi.useLazyAuthenticateQuery();
 
-  function isValidJson(jsonString: string) {
-    try {
-      JSON.parse(jsonString);
-    } catch (_error) {
-      return false;
-    }
-    return true;
-  }
-
   // Parse frontend_state to extract description and method
-  const { securityKeyDescription, method } = useMemo(() => {
+  const { securityKeyDescription, method } = useMemo<{
+    securityKeyDescription: string | null;
+    method: AuthMethod | "";
+  }>(() => {
     if (frontend_state && isValidJson(frontend_state)) {
       const parsedFrontendState = JSON.parse(frontend_state);
       return {
@@ -37,12 +41,12 @@ export function AuthenticateModal() {
   }, [frontend_state]);
 
   useEffect(() => {
-    if (data && !isLoading && !isError) {
-      window.location.href = data.payload.location;
+    if (data?.payload?.location && !isLoading && !isError) {
+      globalThis.location.href = data.payload.location;
     }
   }, [data, isError, isLoading]);
 
-  async function handleAuthenticate() {
+  function handleAuthenticate() {
     dispatch(authnSlice.actions.setReAuthenticate(false));
     dispatch(clearNotifications());
     call_authenticate({ frontend_action: frontend_action, frontend_state: frontend_state });
@@ -83,7 +87,7 @@ export function AuthenticateModal() {
                 defaultMessage=" After logging in, you will be redirected to {externalPage} page to verify your security key."
                 values={{
                   securityKeyDescription: <strong>{securityKeyDescription}</strong>,
-                  externalPage: <strong>{method.toUpperCase()}</strong>,
+                  externalPage: <strong>{method ? method.replace("_eid", "").toUpperCase() : "External"}</strong>,
                 }}
               />
             </p>

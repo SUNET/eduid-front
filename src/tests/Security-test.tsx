@@ -64,11 +64,6 @@ async function linkToAdvancedSettings() {
   expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
 }
 
-beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
-});
-
 test("renders security key as expected, not security key added", async () => {
   render(<IndexMain />);
   await linkToAdvancedSettings();

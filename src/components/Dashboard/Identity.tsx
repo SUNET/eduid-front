@@ -169,12 +169,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
             authnSlice.actions.setFrontendActionAndState({
               frontend_action: "removeIdentity",
               frontend_state: identityType,
-            }),
+            })
           );
         }
       }
     },
-    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal],
+    [removeIdentity, requestAllPersonalData, dispatch, setShowConfirmRemoveIdentityVerificationModal]
   );
 
   const handleConfirmDeleteModal = useCallback(
@@ -191,12 +191,12 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           authnSlice.actions.setFrontendActionAndState({
             frontend_action: "removeIdentity",
             frontend_state: identityType,
-          }),
+          })
         );
         dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
+    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal]
   );
 
   useEffect(() => {
@@ -412,7 +412,7 @@ function AccordionItemEu(): React.JSX.Element | null {
     const response = await eidasVerifyIdentity({ method: "eidas" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }, [eidasVerifyIdentity]);
@@ -458,7 +458,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
     const response = await frejaeIDVerifyIdentity({ method: "freja_eid" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }, [frejaeIDVerifyIdentity]);

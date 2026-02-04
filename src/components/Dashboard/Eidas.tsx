@@ -57,7 +57,7 @@ function Eidas(): React.JSX.Element {
     const response = await eidasVerifyIdentity({ method: "freja" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }

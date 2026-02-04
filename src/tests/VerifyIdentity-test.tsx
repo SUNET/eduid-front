@@ -16,11 +16,6 @@ async function linkToIdentitySettings() {
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 }
 
-beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
-});
-
 test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);
   expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();

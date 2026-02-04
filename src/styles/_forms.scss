@@ -126,13 +126,6 @@ fieldset {
   }
 }
 
-//help/error
-fieldset.change-password-custom-inputs {
-  span.input-validate-error {
-    position: relative !important;
-  }
-}
-
 .transparent-input-error {
   background-color: transparent;
   color: transparent;
@@ -146,12 +139,9 @@ fieldset.change-password-custom-inputs {
 }
 
 .input-validate-error {
+  font-family: monospace;
   font-size: $txt-xs;
   color: var(--error-red);
-
-  fieldset & {
-    position: absolute;
-  }
 }
 
 .input-label-help-text-container {

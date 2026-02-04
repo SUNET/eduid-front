@@ -37,7 +37,7 @@ export function Orcid(): React.JSX.Element {
     try {
       if (orcid_service_url) {
         const auth_url = urlJoin(orcid_service_url, "authorize");
-        window.location.assign(auth_url);
+        globalThis.location.assign(auth_url);
       }
     } catch (error) {
       console.error("Error connecting to orcid", error);
