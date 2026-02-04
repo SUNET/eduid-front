@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
@@ -8,6 +5,7 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
+import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
@@ -275,22 +273,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     },
     [], // run this only once
   );
-  const popoverRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseEnter = () => {
-    popoverRef.current?.showPopover();
-  };
-
-  const handleMouseOut = () => {
-    popoverRef.current?.hidePopover();
-  };
-
-  useEffect(() => {
-    // Set anchor attribute for popover positioning
-    if (popoverRef.current) {
-      popoverRef.current.setAttribute("anchor", "hint-trigger");
-    }
-  }, []);
 
   if (!isPlatformAuthLoaded) return null;
   return (
@@ -300,18 +282,9 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           <h2>
             <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>
-          <button id="hint-trigger" onMouseEnter={handleMouseEnter} onMouseOut={handleMouseOut} className="trigger">
-            <FontAwesomeIcon icon={faLock as IconProp} />
-          </button>
+          <ToolTip />
         </div>
-        <div ref={popoverRef} popover="auto" className="popover-below">
-          <span>
-            <FormattedMessage
-              description="popover info"
-              defaultMessage={`This is a security zone. If some time has passed since your last login, you may need to authenticate again.`}
-            />
-          </span>
-        </div>
+
         <p>
           <FormattedMessage
             description="security second factor"
