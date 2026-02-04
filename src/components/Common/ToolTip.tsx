@@ -40,7 +40,7 @@ export function ToolTip() {
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
               description="popover info"
-              defaultMessage="You may be asked to log in again to make changes if some time has passed since your last login."
+              defaultMessage="You may be asked to log in again to make changes in this area if some time has passed since your last login."
               // values={{ action }}
             />
           </p>
