@@ -35,12 +35,12 @@ export function ToolTip() {
           onMouseLeave={handleMouseLeave}
         >
           <h5 className="custom-tooltip-title">
-            <FormattedMessage description="popover info heading" defaultMessage="For security" />
+            <FormattedMessage description="popover info heading" defaultMessage="For your security" />
           </h5>
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
               description="popover info"
-              defaultMessage="You may be asked to log in again to make changes in this area if some time has passed since your last login."
+              defaultMessage="To edit these settings you might be asked to re-login."
               // values={{ action }}
             />
           </p>
