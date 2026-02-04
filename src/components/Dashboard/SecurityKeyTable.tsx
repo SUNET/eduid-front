@@ -179,14 +179,7 @@ export function SecurityKeyTable({
         <h2>
           <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
         </h2>
-        <ToolTip
-        // action={
-        //   <FormattedMessage
-        //     description="security zone action security key"
-        //     defaultMessage="to manage your security keys."
-        //   />
-        // }
-        />
+        <ToolTip />
       </div>
 
       <p>

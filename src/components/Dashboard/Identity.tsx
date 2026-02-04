@@ -122,14 +122,7 @@ function IdentityContent(): React.JSX.Element {
                   defaultMessage="The identities below are now connected to your eduID"
                 />
               </h2>
-              <ToolTip
-              // action={
-              //   <FormattedMessage
-              //     description="security zone action delete your identity"
-              //     defaultMessage="to delete your identity."
-              //   />
-              // }
-              />
+              <ToolTip />
             </div>
             <VerifiedIdentitiesTable />
           </React.Fragment>
