@@ -88,7 +88,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    //border: 2px $bright-orange solid;
     background: var(--contrast-color);
     box-shadow: none;
     border-radius: 50%;
@@ -120,15 +119,6 @@
   max-width: 260px;
   box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
   border-radius: 10px;
-  //border: 1px solid var(--border-gray);
   background: var(--contrast-color);
   padding: 1rem 1rem 1.125rem;
 }
-
-//.custom-tooltip-title {
-//margin: 0;
-//}
-
-// .custom-tooltip-help {
-//   margin-top: 0;
-// }
