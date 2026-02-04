@@ -36,7 +36,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   useEffect(() => {
     if (next_page === undefined) {
       if (loginRef === undefined && params.ref !== undefined) {
-        dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: window.location.href }));
+        dispatch(loginSlice.actions.addLoginRef({ ref: params.ref, start_url: globalThis.location.href }));
       }
       dispatch(resetPasswordSlice.actions.setNextPage("ASK_FOR_EMAIL_OR_CONFIRM_EMAIL"));
     }

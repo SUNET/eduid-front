@@ -310,6 +310,10 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
+  "4XHZwN": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "If you are unable to use the security key, please select other options below, such as BankID, Freja+, eIDAS or freja eID."
+  },
   "4bJr5y": {
     "developer_comment": "what is international - heading",
     "string": "What is Freja?"
@@ -572,10 +576,6 @@
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
-  "AaQdgT": {
-    "developer_comment": "help text for custom password tips",
-    "string": "Add special characters, such as @ $ \\ + _ %"
-  },
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
@@ -643,6 +643,10 @@
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
     "string": "Unique ID:"
+  },
+  "Cvxx2s": {
+    "developer_comment": "MFA recovery help text",
+    "string": "Requires a confirmed Swedish national identity, coordination number, European identity, or Freja eID."
   },
   "CzJ8yc": {
     "developer_comment": "Security keys list - paragraph",
@@ -896,6 +900,9 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "I+l/vU": {
+    "string": "Freja eID"
+  },
   "I10FOL": {
     "developer_comment": "what is freja - paragraph",
     "string": "Freja+ is a digital ID (a verified Freja eID) free of charge, available to holders of a Swedish personal identification number or coordination number."
@@ -1022,6 +1029,10 @@
   "Kte85G": {
     "developer_comment": "verify identity unverified main title",
     "string": "Identity"
+  },
+  "L23A5m": {
+    "developer_comment": "verify webauthn token modal body text",
+    "string": "Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
   },
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
@@ -1345,6 +1356,9 @@
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
+  },
+  "SF58xZ": {
+    "string": "eIDAS"
   },
   "SL6O2c": {
     "developer_comment": "Password label",
@@ -2336,6 +2350,10 @@
     "developer_comment": "Login MFA",
     "string": "Add a Security Key to your account. This can be a physical USB key or a device such as a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in fingerprint readers that can be used as a Security Key."
   },
+  "hygeyl": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Add special characters, such as @ $ \\\\ + _ %"
+  },
   "i3E2/S": {
     "developer_comment": "about usb key - handle",
     "string": "About Security Keys"
@@ -2466,10 +2484,6 @@
   "kPVuAC": {
     "developer_comment": "security eduid - list item 3-4",
     "string": "a bin icon which deletes the key when clicked."
-  },
-  "kPaWCf": {
-    "developer_comment": "MFA paragraph with swedish option",
-    "string": "If you are unable to use the security key, please select other options below, such as BankID or Freja+."
   },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
@@ -3159,10 +3173,6 @@
     "developer_comment": "eidas if personal number - paragraph",
     "string": "If you have a Swedish personal identity number, use that method instead e.g. to simplify communication with Swedish authorities. Note: if you initially verify your identity with eIDAS and later receive a Swedish personal identity number you can add it in eduID and verify yourself again using it in the Identity area."
   },
-  "sat8ZW": {
-    "developer_comment": "verify webauthn token modal body text",
-    "string": "Please click either the BankID, Freja+ or eIDAS button to verify your security key"
-  },
   "sbCA3x": {
     "developer_comment": "swedish nin - heading",
     "string": "If you have a Swedish personal identity number or coordination number"
@@ -3310,10 +3320,6 @@
   },
   "tAcT/R": {
     "string": "BankID"
-  },
-  "tD/37U": {
-    "developer_comment": "MFA Freja help text",
-    "string": "Requires a confirmed Swedish national identity or coordination number."
   },
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",

@@ -8,7 +8,23 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
-  handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
+  readonly handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
+}
+
+function validateNewPassword(values: { custom?: string; repeat?: string }) {
+  const errors: { custom?: string; repeat?: string } = {};
+  if (values !== undefined) {
+    (["custom", "repeat"] as Array<keyof typeof values>).forEach((inputName) => {
+      if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
+        errors[inputName] = "required";
+      } else if (values["custom"]?.replaceAll(/\s/g, "") !== values["repeat"]?.replaceAll(/\s/g, "")) {
+        // Remove whitespace from both passwords before comparing
+        errors["repeat"] = "chpass.different-repeat";
+      }
+    });
+  }
+
+  return errors;
 }
 
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
@@ -36,22 +52,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     props.formProps.form.change("custom", props.formProps.values?.custom);
   }
 
-  function validateNewPassword(values: { custom?: string; repeat?: string }) {
-    const errors: { custom?: string; repeat?: string } = {};
-    if (values !== undefined) {
-      (["custom", "repeat"] as Array<keyof typeof values>).forEach((inputName) => {
-        if (!values[inputName] || emptyStringPattern.test(values[inputName] as string)) {
-          errors[inputName] = "required";
-        } else if (values["custom"]?.replace(/\s/g, "") !== values["repeat"]?.replace(/\s/g, "")) {
-          // Remove whitespace from both passwords before comparing
-          errors["repeat"] = "chpass.different-repeat";
-        }
-      });
-    }
-
-    return errors;
-  }
-
   return (
     <FinalForm<ChangePasswordFormData>
       onSubmit={props.handleSubmit}
@@ -61,31 +61,33 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           <form id="passwords-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset>
               <legend>
-                <FormattedMessage
-                  defaultMessage="Tip: Choose a strong password"
-                  description="help text for custom password label"
-                />
+                <strong>
+                  <FormattedMessage
+                    defaultMessage="Tip: Choose a strong password"
+                    description="help text for custom password label"
+                  />
+                </strong>
               </legend>
-              <ul id="password-custom-help">
+              <ul className="password-custom-help">
                 {[
                   <FormattedMessage
                     key={1}
-                    defaultMessage={`Use upper- and lowercase characters, but not at the beginning or end`}
+                    defaultMessage="Use upper- and lowercase characters, but not at the beginning or end"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
                     key={2}
-                    defaultMessage={`Add digits somewhere, but not at the beginning or end`}
+                    defaultMessage="Add digits somewhere, but not at the beginning or end"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
                     key={3}
-                    defaultMessage={`Add special characters, such as  @ $ \\ + _ %`}
+                    defaultMessage="Add special characters, such as  @ $ \\ + _ %"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
                     key={4}
-                    defaultMessage={`Spaces are ignored`}
+                    defaultMessage="Spaces are ignored"
                     description="help text for custom password tips"
                   />,
                 ].map((list) => {
@@ -107,7 +109,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 passwordStrengthMeter={
                   <PasswordStrengthMeter password={formProps.values?.custom} passStateUp={updatePasswordData} />
                 }
-                id="custom-password-field"
                 autoComplete="new-password"
                 required={true}
                 placeHolder={new_password_placeholder}
@@ -118,7 +119,6 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 component={NewPasswordInput}
                 componentClass="input"
                 type="password"
-                id="repeat-password-field"
                 label={
                   <FormattedMessage
                     defaultMessage="Repeat new password"
@@ -129,7 +129,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 placeHolder={repeat_new_password_placeholder}
               />
             </fieldset>
-            <div id="chpass-form" className="tab-pane buttons">
+            <div id="chpass-form" className="buttons">
               <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
                 <FormattedMessage defaultMessage="cancel" description="button cancel" />
               </EduIDButton>

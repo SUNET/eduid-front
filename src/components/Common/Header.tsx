@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
@@ -31,7 +31,7 @@ export function Header(props: HeaderProps): React.JSX.Element {
       eduidStore.dispatch({ type: "RESET_STORE" });
       if (eduid_site_link) {
         sessionStorage.clear();
-        window.location.assign(eduid_site_link);
+        globalThis.location.assign(eduid_site_link);
       }
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);

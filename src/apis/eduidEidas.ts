@@ -1,32 +1,11 @@
 import { eduIDApi } from "./common";
-import type { ApiResponse } from "./helpers/types";
-
-export type WebauthnMethods = "eidas" | "freja" | "bankid";
-
-interface EidasCommonRequest {
-  frontend_state?: string; // frontend can pass something here (like a ref) and get it back after the authn flow
-  frontend_action?: string; // this maps to config in the backend telling it where to return to after completion
-  method: WebauthnMethods;
-}
-
-export interface EidasCommonResponse {
-  location: string; // where to redirect the user for the authn flow
-  credential_description: string;
-}
-
-export type VerifyIdentityRequest = EidasCommonRequest;
-
-export type VerifyIdentityResponse = EidasCommonResponse;
-
-export interface VerifyCredentialRequest extends EidasCommonRequest {
-  credential_id: string;
-}
-
-export type VerifyCredentialResponse = EidasCommonResponse;
-
-export type MfaAuthenticateRequest = EidasCommonRequest;
-
-export type MfaAuthenticateResponse = EidasCommonResponse;
+import type {
+  ApiResponse,
+  AuthCommonRequest,
+  AuthCommonResponse,
+  AuthMethod,
+  VerifyCredentialRequest,
+} from "./helpers/types";
 
 export interface GetStatusRequest {
   authn_id: string;
@@ -35,14 +14,14 @@ export interface GetStatusRequest {
 export interface GetStatusResponse {
   frontend_action: string;
   frontend_state?: string;
-  method: WebauthnMethods;
+  method: AuthMethod;
   error?: boolean;
   status?: string;
 }
 
 export const eidasApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
-    eidasVerifyIdentity: builder.query<ApiResponse<VerifyIdentityResponse>, VerifyIdentityRequest>({
+    eidasVerifyIdentity: builder.query<ApiResponse<AuthCommonResponse>, AuthCommonRequest>({
       query: (body) => ({
         url: "verify-identity",
         body: {
@@ -52,7 +31,7 @@ export const eidasApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "eidas" },
     }),
-    eidasVerifyCredential: builder.query<ApiResponse<VerifyCredentialResponse>, VerifyCredentialRequest>({
+    eidasVerifyCredential: builder.query<ApiResponse<AuthCommonResponse>, VerifyCredentialRequest>({
       query: (body) => ({
         url: "verify-credential",
         body: {
@@ -62,7 +41,7 @@ export const eidasApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "eidas" },
     }),
-    eidasMfaAuthenticate: builder.query<ApiResponse<MfaAuthenticateResponse>, MfaAuthenticateRequest>({
+    eidasMfaAuthenticate: builder.query<ApiResponse<AuthCommonResponse>, AuthCommonRequest>({
       query: (body) => ({
         url: "mfa-authenticate",
         body: {

@@ -7,7 +7,7 @@ import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
 import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router";
-import { appLoadingSlice } from "slices/AppLoading";
+import indexSlice from "slices/IndexConfig";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
@@ -35,7 +35,7 @@ const getConfig = async function () {
     if (jsConfig.data.payload.sentry_dsn) {
       Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
     }
-    if (window.location.href.includes("/profile/")) {
+    if (globalThis.location.href.includes("/profile/")) {
       const personalData_promise = eduidStore.dispatch(personalDataApi.endpoints.requestAllPersonalData.initiate());
       const personalData = await personalData_promise;
       if (personalData.isSuccess) {
@@ -47,7 +47,7 @@ const getConfig = async function () {
             })
           );
         }
-        eduidStore.dispatch(appLoadingSlice.actions.appLoaded());
+        eduidStore.dispatch(indexSlice.actions.appLoaded());
       }
     }
     showErrorMsg();
@@ -63,12 +63,12 @@ setupLanguage(eduidStore.dispatch);
  * this forces a reload. Since the session is cleared, the app will re-init
  * in an unauthenticated state.
  */
-window.addEventListener("pageshow", (event) => {
+globalThis.addEventListener("pageshow", (event) => {
   if (event.persisted) {
     const state = eduidStore.getState();
     if (state.config.is_configured === false) {
       // The app was restored from bfcache and is not configured, reload to init properly
-      window.location.reload();
+      globalThis.location.reload();
     }
   }
 });

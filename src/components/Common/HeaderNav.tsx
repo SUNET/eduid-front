@@ -1,11 +1,9 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  faArrowRightFromBracket,
-  faBars,
-  faChevronDown,
-  faChevronUp,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EduIDButton from "components/Common/EduIDButton";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
@@ -69,15 +67,15 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    globalThis.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      globalThis.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
-      if (window.innerWidth > 1200) {
+      if (globalThis.innerWidth > 1200) {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];

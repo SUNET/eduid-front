@@ -13,7 +13,7 @@ export default function DeleteAccount(): React.JSX.Element | null {
     setShowModal(false);
     const response = await postDeleteAccount();
     if (response.isSuccess) {
-      window.location.assign(response.data.payload.location);
+      globalThis.location.assign(response.data.payload.location);
     }
   }
 

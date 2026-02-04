@@ -112,7 +112,7 @@ fieldset {
   width: 100%;
   position: relative;
 
-  &:not(:empty) {
+  &:not(:empty):not(:last-of-type) {
     margin-bottom: 1.25em;
   }
 
@@ -123,13 +123,6 @@ fieldset {
   legend.required::after {
     content: " *";
     color: var(--txt-orange);
-  }
-}
-
-//help/error
-fieldset.change-password-custom-inputs {
-  span.input-validate-error {
-    position: relative !important;
   }
 }
 
@@ -146,12 +139,9 @@ fieldset.change-password-custom-inputs {
 }
 
 .input-validate-error {
+  font-family: monospace;
   font-size: $txt-xs;
   color: var(--error-red);
-
-  fieldset & {
-    position: absolute;
-  }
 }
 
 .input-label-help-text-container {

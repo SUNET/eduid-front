@@ -1,5 +1,5 @@
-import { WebauthnMethods } from "apis/eduidEidas";
 import securityApi, { ActionStatus, CredentialType } from "apis/eduidSecurity";
+import { AuthMethod } from "apis/helpers/types";
 import EduIDButton from "components/Common/EduIDButton";
 import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthentication";
 import NotificationModal from "components/Common/NotificationModal";
@@ -13,7 +13,7 @@ import securityKeyGray from "../../../img/security-key-gray.svg";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
-  readonly handleVerificationWebauthnToken: (token: string, method: WebauthnMethods) => Promise<void>;
+  readonly handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
   readonly handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
 }
 
@@ -96,7 +96,7 @@ export function SecurityKeyTable({
           );
         } else {
           btnVerify = (
-            <div aria-label="verify with freja or bankID">
+            <div aria-label="verify with freja, bankID, eidas or freja eid">
               <span>
                 <FormattedMessage description="security key status" defaultMessage="Verify with: " />
                 &nbsp;
@@ -108,6 +108,12 @@ export function SecurityKeyTable({
                 </EduIDButton>
                 <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
                   Eidas
+                </EduIDButton>
+                <EduIDButton
+                  buttonstyle="link sm"
+                  onClick={() => handleVerificationWebauthnToken(cred.key, "freja_eid")}
+                >
+                  Freja eID
                 </EduIDButton>
               </span>
             </div>

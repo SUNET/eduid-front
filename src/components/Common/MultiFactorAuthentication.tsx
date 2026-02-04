@@ -3,9 +3,9 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi, EidasCommonResponse, WebauthnMethods } from "apis/eduidEidas";
+import { eidasApi } from "apis/eduidEidas";
+import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
-import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
@@ -18,6 +18,7 @@ import { Link } from "react-router";
 import authnSlice from "slices/Authn";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
+import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";
 import ConfirmModal from "./ConfirmModal";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -40,7 +41,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
-  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !window.PublicKeyCredential);
+  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !globalThis.PublicKeyCredential);
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
   const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
@@ -53,6 +54,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
   const tokens = useAppSelector((state) => {
@@ -60,7 +62,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   });
 
   // Derive tokenKey from the last token in the array
-  const tokenKey = tokens.length > 0 ? tokens[tokens.length - 1].key : "";
+  const tokenKey = tokens.at(-1)?.key ?? "";
 
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
@@ -78,12 +80,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       freja: eidasVerifyCredential,
       bankid: bankIDVerifyCredential,
       eidas: eidasVerifyCredential,
+      freja_eid: frejaeidVerifyCredential,
     }),
-    [eidasVerifyCredential, bankIDVerifyCredential],
+    [eidasVerifyCredential, bankIDVerifyCredential, frejaeidVerifyCredential],
   );
 
   const handleVerificationWebauthnToken = useCallback(
-    async (token: string | undefined, method: WebauthnMethods) => {
+    async (token: string | undefined, method: AuthMethod) => {
       const verifyAction = tokenTypeMap[method];
       if (!token) {
         console.error("No token provided");
@@ -95,7 +98,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       });
       if (response.isSuccess) {
         if (response.data.payload.location) {
-          window.location.assign(response.data.payload.location);
+          globalThis.location.assign(response.data.payload.location);
         }
       } else if (response.isError) {
         setShowVerifyWebauthnModal(false);
@@ -105,7 +108,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             frontend_state: JSON.stringify({
               method,
               credential: token,
-              description: (response.error as ApiResponse<EidasCommonResponse>).payload.credential_description,
+              description: (response.error as ApiResponse<AuthCommonResponse>).payload.credential_description,
             }),
           }),
         );
@@ -214,10 +217,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        await handleVerificationWebauthnToken(
-          parsedFrontendState.credential,
-          parsedFrontendState.method as WebauthnMethods,
-        );
+        await handleVerificationWebauthnToken(parsedFrontendState.credential, parsedFrontendState.method as AuthMethod);
       }
     })();
   }, [
@@ -245,14 +245,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       // Check if platform authentication is available through the navigator.credentials API.
       // Only runs if the API exists (otherwise isPlatformAuthLoaded starts as true)
 
-      if (!window.PublicKeyCredential) {
+      if (!globalThis.PublicKeyCredential) {
         return; // Nothing to do, already initialized as loaded
       }
 
       let aborted = false; // flag to avoid updating unmounted components after this promise resolves
       let platform = false;
 
-      window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+      globalThis.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
         .then((available) => {
           platform = available;
         })

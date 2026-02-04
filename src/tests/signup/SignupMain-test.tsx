@@ -171,8 +171,6 @@ function happyCaseBackend(state: SignupState) {
 }
 
 beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
   happyCaseBackend(emptyState);
 });
 

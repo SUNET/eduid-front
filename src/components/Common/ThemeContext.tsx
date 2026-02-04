@@ -9,7 +9,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") {
+  if (typeof globalThis === "undefined") {
     return "light";
   }
 
@@ -18,7 +18,7 @@ function getInitialTheme(): Theme {
     return savedTheme;
   }
 
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  if (globalThis?.matchMedia("(prefers-color-scheme: dark)").matches) {
     return "dark";
   }
 

@@ -8,7 +8,9 @@ export function ChangePasswordRadioOption(props: {
   return (
     <fieldset className="toggle-change-password-options">
       <legend className="require">
-        <FormattedMessage defaultMessage="Choose an option" description="Change password radio group legend" />
+        <strong>
+          <FormattedMessage defaultMessage="Choose an option" description="Change password radio group legend" />
+        </strong>
       </legend>
       <div className="radio-input-container">
         <label htmlFor="suggested-pw">

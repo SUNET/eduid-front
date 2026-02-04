@@ -1,7 +1,13 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons/faArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 export default function ScrollToTopButton(): React.JSX.Element {
   const [showBtn, setShowBtn] = useState("display-none");
@@ -16,17 +22,11 @@ export default function ScrollToTopButton(): React.JSX.Element {
       }
     }
 
-    window.addEventListener("scroll", scrollFunction);
+    globalThis.addEventListener("scroll", scrollFunction);
     return () => {
-      window.removeEventListener("scroll", scrollFunction);
+      globalThis.removeEventListener("scroll", scrollFunction);
     };
   }, []);
-
-  // When the user clicks on the button, scroll to the top of the document
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
 
   return (
     <button onClick={topFunction} id="scroll-top-button" className={`${showBtn} primary`} title="Go to top">

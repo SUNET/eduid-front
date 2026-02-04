@@ -1,29 +1,24 @@
-import { VerifyIdentityRequest, VerifyIdentityResponse } from "apis/eduidFrejaeID";
+import type { AuthCommonRequest, AuthCommonResponse } from "apis/helpers/types";
 import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
 import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
 
-beforeEach(() => {
-  // mock window.scroll for the notification middleware that scrolls to the top of the screen
-  window.scroll = jest.fn();
-});
-
 test("renders frejaeID as expected", () => {
-  const method = "frejaeIDVerifyIdentity";
+  const method = "freja_eid";
 
   mswServer.use(
     http.post("verify-identity", async ({ request }) => {
-      const body = (await request.json()) as VerifyIdentityRequest;
+      const body = (await request.json()) as AuthCommonRequest;
       if (body.method != method) {
         return new HttpResponse(null, { status: 400 });
       }
-      const payload: VerifyIdentityResponse = {
+      const payload: AuthCommonResponse = {
         location: "https://dummy-svipe-id-url.se",
       };
       return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
-    })
+    }),
   );
 
   render(<IndexMain />, {

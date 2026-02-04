@@ -1,5 +1,5 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
@@ -423,7 +423,7 @@ function AccordionItemEu(): React.JSX.Element | null {
     const response = await eidasVerifyIdentity({ method: "eidas" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }, [eidasVerifyIdentity]);
@@ -469,7 +469,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
     const response = await frejaeIDVerifyIdentity({ method: "freja_eid" });
     if (response.isSuccess) {
       if (response.data.payload.location) {
-        window.location.assign(response.data.payload.location);
+        globalThis.location.assign(response.data.payload.location);
       }
     }
   }, [frejaeIDVerifyIdentity]);

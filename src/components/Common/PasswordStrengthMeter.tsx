@@ -1,7 +1,10 @@
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
-import zxcvbn from "zxcvbn";
+import type { ZXCVBNResult } from "zxcvbn";
+
+// Lazy-loaded zxcvbn module type
+type ZxcvbnFn = (password: string, userInputs?: string[]) => ZXCVBNResult;
 
 interface PasswordStrengthMeterProps {
   password?: string;
@@ -15,11 +18,26 @@ export interface PasswordStrengthData {
 }
 
 function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
+  const [zxcvbnFn, setZxcvbnFn] = useState<ZxcvbnFn | null>(null);
   const minRequiredEntropy = useAppSelector((state) => state.config.password_entropy);
   const pdata = useAppSelector((state) => state.personal_data);
   const emails = useAppSelector((state) => state.emails.emails);
   const intl = useIntl();
   const pwStrengthMessages = ["pwfield.terrible", "pwfield.bad", "pwfield.weak", "pwfield.good", "pwfield.strong"];
+
+  // Lazy load zxcvbn when component mounts
+  useEffect(() => {
+    let mounted = true;
+    import("zxcvbn").then((module) => {
+      if (mounted) {
+        // Wrap in function to avoid React treating it as a state updater function
+        setZxcvbnFn(() => module.default);
+      }
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   // Calculate password score directly during render
   const { pwScore, data } = useMemo(() => {
@@ -29,15 +47,15 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     if (pdata.response?.chosen_given_name) userInput.push(pdata.response?.chosen_given_name);
     userInput = userInput.concat(emails.map((x) => x.email));
 
-    if (!minRequiredEntropy) {
-      return { pwScore: 0, data: { score: 0, isTooWeak: false } };
+    if (!minRequiredEntropy || !zxcvbnFn) {
+      return { pwScore: 0, data: { score: 0, isTooWeak: !zxcvbnFn } };
     }
 
     let score = 0,
       minEntropy = minRequiredEntropy / 5,
       entropy = 0;
     const stepEntropy = minEntropy;
-    const result = zxcvbn(props.password || "", userInput);
+    const result = zxcvbnFn(props.password || "", userInput);
     entropy = Math.log(result.guesses);
     for (let n = 0; n < 5 && entropy > minEntropy; n++) {
       score = n;
@@ -46,7 +64,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
     const data: PasswordStrengthData = { score: score, isTooWeak: entropy < minRequiredEntropy };
     return { pwScore: score, data };
-  }, [pdata, emails, minRequiredEntropy, props.password]);
+  }, [pdata, emails, minRequiredEntropy, props.password, zxcvbnFn]);
 
   // Pass score up to parent component when it changes
   useEffect(() => {
@@ -55,11 +73,11 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
 
   return (
     <React.Fragment>
-      <div className={`form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
+      <span className={`code form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
         {props.password !== undefined && (
           <div className="form-group">{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</div>
         )}
-      </div>
+      </span>
       <div className="meter-wrapper">
         <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       </div>

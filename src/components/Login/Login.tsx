@@ -51,7 +51,7 @@ function Login(): React.JSX.Element {
     if (ref === undefined && params.ref !== undefined) {
       const url_ref = params.ref;
       init_ref = url_ref;
-      dispatch(loginSlice.actions.addLoginRef({ ref: url_ref, start_url: window.location.href }));
+      dispatch(loginSlice.actions.addLoginRef({ ref: url_ref, start_url: globalThis.location.href }));
     }
 
     // Ask the backend what to do
@@ -112,11 +112,11 @@ function UserTerminated(): React.JSX.Element {
 
   useEffect(() => {
     // If we have an error and localStorage is not empty, we need to logout the user from the session
-    if (error_state && window.localStorage.length > 0) {
+    if (error_state && globalThis.localStorage.length > 0) {
       // make sure the backend idp logs out the user from the session to get out of a stuck state
       fetchLogout({});
       // clear localStorage so that the same user is not used again
-      window.localStorage.clear();
+      globalThis.localStorage.clear();
     }
   }, [error_state, fetchLogout]);
 

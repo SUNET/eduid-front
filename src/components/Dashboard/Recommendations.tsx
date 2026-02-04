@@ -1,4 +1,5 @@
-import { faCircleCheck, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons/faCircleCheck";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, securityApi } from "apis/eduidSecurity";
@@ -214,7 +215,7 @@ export function Recommendations(): React.JSX.Element | null {
   const tokens = credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type"
+      cred.credential_type == "security.webauthn_credential_type",
   );
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
 

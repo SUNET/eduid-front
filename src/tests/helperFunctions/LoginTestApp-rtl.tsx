@@ -31,10 +31,10 @@ export const loginTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigator
     // default to being in 'configured' state, since only the test of
     // the splash screen is ever interested in the opposite
     is_configured: true,
+    is_app_loaded: true,
     debug: true,
   },
   login: loginInitialState,
-  app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: {},
   intl: { locale: "en", messages: {} },
   resetPassword: resetPasswordState,

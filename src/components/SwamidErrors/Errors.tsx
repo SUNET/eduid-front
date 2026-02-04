@@ -24,7 +24,7 @@ export function Errors() {
 
   function handleDashboardOnClick() {
     if (is_configured && dashboard_link) {
-      window.location.href = dashboard_link;
+      globalThis.location.href = dashboard_link;
     }
   }
 
@@ -62,72 +62,67 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): React.JSX
   const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
-    <React.Fragment>
-      <div className="figure">
-        <table className="error-info">
-          {!props.errorURL.code ? (
-            <tbody>
+    <div className="figure">
+      <table className="error-info">
+        {!props.errorURL.code ? (
+          <tbody>
+            <tr>
+              <td className="plain-cell">
+                <strong>
+                  <FormattedMessage
+                    defaultMessage="There is no technical information available"
+                    description="no error information message"
+                  />
+                </strong>
+              </td>
+            </tr>
+          </tbody>
+        ) : (
+          <React.Fragment>
+            <caption>
+              <h3>
+                <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
+              </h3>
+            </caption>
+            <thead>
               <tr>
-                <td className="plain-cell">
-                  <strong>
-                    <FormattedMessage
-                      defaultMessage="There is no technical information available"
-                      description="no error information message"
-                    />
-                  </strong>
-                </td>
+                <th className="figcaption">
+                  <FormattedMessage defaultMessage="Name" description="column name label" />
+                </th>
+                <th className="figcaption">
+                  <FormattedMessage defaultMessage="Value" description="column value label" />
+                </th>
               </tr>
-            </tbody>
-          ) : (
-            <React.Fragment>
-              <caption>
-                <h3>
-                  <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
-                </h3>
-              </caption>
-              <thead>
-                <tr>
-                  <th className="figcaption">
-                    <FormattedMessage defaultMessage="Name" description="column name label" />
-                  </th>
-                  <th className="figcaption">
-                    <FormattedMessage defaultMessage="Value" description="column value label" />
-                  </th>
-                </tr>
-              </thead>
+            </thead>
 
-              <tbody>
-                {error_info?.logged_in && (
-                  <tr key="eppn">
+            <tbody>
+              {error_info?.logged_in && (
+                <tr key="eppn">
+                  <td>
+                    <strong>
+                      <FormattedMessage defaultMessage="eduID identifier" description="column eduID identifier label" />
+                    </strong>
+                  </td>
+                  <td>{error_info.eppn}</td>
+                </tr>
+              )}
+              {Object.entries(props.errorURL).map(([key, value]) => {
+                if (!value) {
+                  return null;
+                }
+                return (
+                  <tr key={key}>
                     <td>
-                      <strong>
-                        <FormattedMessage
-                          defaultMessage="eduID identifier"
-                          description="column eduID identifier label"
-                        />
-                      </strong>
+                      <strong>{key}</strong>
                     </td>
-                    <td>{error_info.eppn}</td>
+                    <td>{key === "date" && value ? value.toISOString() : value}</td>
                   </tr>
-                )}
-                {Object.entries(props.errorURL).map(([key, value]) => {
-                  if (!value) {
-                    return null;
-                  }
-                  return (
-                    <tr key={key}>
-                      <td>
-                        <strong>{key}</strong>
-                      </td>
-                      <td>{key === "date" && value ? value.toISOString() : value}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </React.Fragment>
-          )}
-        </table>
-      </div>
-    </React.Fragment>
+                );
+              })}
+            </tbody>
+          </React.Fragment>
+        )}
+      </table>
+    </div>
   );
 }

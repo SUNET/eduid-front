@@ -16,7 +16,7 @@ export async function re_authenticate(csrf_token: string | undefined, api: BaseQ
 
   if (reauth_result.data && isApiResponse<AuthenticateResponse>(reauth_result.data)) {
     if (reauth_result.data.payload.location) {
-      window.location.href = reauth_result.data.payload.location;
+      globalThis.location.href = reauth_result.data.payload.location;
     }
   }
 }
@@ -35,8 +35,8 @@ export async function handleBaseQueryError(
     } else if (result.error.status === 0 && state.config.authn_service_url) {
       // re-implementing handling of status 0 errors
       // redirect to login with return to where we are now
-      const current_page = window.location.href;
-      window.location.href =
+      const current_page = globalThis.location.href;
+      globalThis.location.href =
         state.config.authn_service_url + "/services/authn/login?next=" + encodeURIComponent(current_page);
     } else {
       // should be errors only, i.e. 400 and 500 series
