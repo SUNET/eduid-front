@@ -105,6 +105,14 @@ hr.border-line {
   }
 }
 
+/* eg for help-texts */
+.top-divider {
+  border-top: 1px dashed var(--txt-gray);
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 1rem 0.25rem 0;
+  display: block;
+}
+
 // TODO: Remove after checking scrollbar in tables
 // ::-webkit-scrollbar {
 //   margin-top: -1rem;
@@ -155,6 +163,9 @@ hr.border-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &.baseline {
+    align-items: baseline;
+  }
 }
 
 // hides object from view but still accessible to screen readers
@@ -171,10 +182,6 @@ hr.border-line {
 
 .display-none {
   display: none;
-}
-
-section.top-spacing {
-  margin-top: 1rem;
 }
 
 *,

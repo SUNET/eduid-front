@@ -55,123 +55,70 @@
   }
 }
 
-// On Dashboard menu
-.notification-dot {
-  width: 12px;
-  height: 12px;
-  position: relative;
-  background-color: $bright-orange;
-  border-radius: 50%;
-  margin-top: -1rem;
+/* Green italic recommendation, see typography */
+.suggestion-txt {
+  @media (min-width: $bp-xl) {
+    position: absolute;
+    right: 0;
+    max-width: 25%;
+    top: 1rem;
+  }
+
+  .status-box & {
+    position: static;
+    max-width: 100%;
+  }
+
+  .options & {
+    margin: 1rem auto 0;
+    width: 75%;
+  }
 }
 
-// Speach-bubbletip
-
-/* Wrapping */
-.speech-bubbletip-wrapper {
-  display: inline-block;
+// Hover info bubble
+.custom-tooltip-wrapper {
   position: relative;
+  display: inline-block;
+
+  .trigger {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--contrast-color);
+    box-shadow: none;
+    border-radius: 50%;
+    color: var(--txt-orange);
+    &:hover {
+      transform: scale(0.8);
+    }
+
+    svg {
+      pointer-events: none;
+      height: 1em;
+    }
+    @media (max-width: $bp-xs) {
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+  }
 }
 
-/* Absolute positioning */
-.speech-bubbletip {
-  display: inline-block;
+.custom-tooltip-popover {
   position: absolute;
-  border-radius: 4px;
-  left: calc(50%);
+  top: 110%;
+  left: -200%;
   transform: translateX(-50%);
-  padding: 6px;
-  color: var(--contrast-color);
-  background: var(--body-txt);
-  font-size: $txt-sm;
-  font-family: $inter-regular;
-  line-height: 1;
-  z-index: 10;
-  white-space: nowrap;
-
-  & b {
-    @extend .text-bold;
-  }
-}
-
-/* CSS border triangles */
-.speech-bubbletip::before {
-  content: " ";
-  border: solid transparent;
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-width: 6px;
-  top: 100%;
-  border-top-color: var(--body-txt);
-}
-
-/* Absolute positioning */
-.speech-bubbletip {
-  top: calc(50px * -1);
-  left: calc(50% * -1);
-}
-
-.speech-bubbletip::before,
-.speech-bubbletip.settings.en::before,
-.speech-bubbletip.settings.sv::before {
-  left: 52%;
-}
-
-@media (max-width: $bp-md) {
-  .speech-bubbletip.settings.sv {
-    left: -100px;
-  }
-
-  .speech-bubbletip.settings.sv::before {
-    left: 74%;
-  }
-}
-
-@media (max-width: 432px) {
-  .speech-bubbletip.settings,
-  .speech-bubbletip.identity {
-    width: 270px;
-    white-space: normal;
-    top: -65px;
-  }
-
-  .speech-bubbletip.identity.short {
-    top: -52px;
-  }
-
-  .speech-bubbletip.settings.en {
-    left: -80px;
-  }
-
-  .speech-bubbletip.settings.sv {
-    left: 5px;
-  }
-
-  .speech-bubbletip.identity {
-    left: -56px;
-  }
-
-  .speech-bubbletip.identity::before {
-    left: 70%;
-  }
-
-  .speech-bubbletip.settings.en::before {
-    left: 80%;
-  }
-
-  .speech-bubbletip.settings.sv::before {
-    left: 48%;
-  }
-}
-
-@media (max-width: 384px) {
-  .speech-bubbletip.settings.en {
-    left: 55px;
-  }
-
-  .speech-bubbletip.settings.en::before {
-    left: 30%;
-  }
+  z-index: 1000;
+  min-width: 250px;
+  max-width: 260px;
+  box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
+  border-radius: 10px;
+  background: var(--contrast-color);
+  padding: 1rem 1rem 1.125rem;
 }

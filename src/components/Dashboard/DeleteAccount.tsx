@@ -1,6 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
+import { ToolTip } from "components/Common/ToolTip";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -18,9 +19,19 @@ export default function DeleteAccount(): React.JSX.Element | null {
 
   return (
     <article id="delete-account">
-      <h2>
-        <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
-      </h2>
+      <div className="flex-between baseline">
+        <h2>
+          <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
+        </h2>
+        <ToolTip
+        // action={
+        //   <FormattedMessage
+        //     description="security zone action delete account"
+        //     defaultMessage="to delete your account."
+        //   />
+        // }
+        />
+      </div>
       <p>
         <FormattedMessage
           defaultMessage="Click the link to delete your eduID. It will block any access to the account unless you change your password within one week, after which it will be removed permanently."

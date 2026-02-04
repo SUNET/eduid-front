@@ -87,7 +87,10 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   );
 }
 
-function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
+function ImprovedSecurityStatus(props: {
+  readonly tokens?: CredentialType[];
+  readonly identities?: UserIdentities;
+}): React.JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -112,13 +115,30 @@ function ImprovedSecurityStatus(props: { readonly tokens?: CredentialType[] }): 
         </h3>
         <span>
           {props.tokens?.length ? (
-            <FormattedMessage
-              description="read more about your multi-factor authentication description"
-              defaultMessage="Read more about your multi-factor authentication at {security}"
-              values={{
-                security: securityLink,
-              }}
-            />
+            <>
+              <FormattedMessage
+                description="read more about your multi-factor authentication description"
+                defaultMessage="Read more about your multi-factor authentication at {security}"
+                values={{
+                  security: securityLink,
+                }}
+              />
+              {props.tokens.length == 1 && !(props.identities?.nin && props.identities?.is_verified) && (
+                <span className="top-divider suggestion-txt">
+                  <FormattedMessage
+                    description="multiple key suggestion"
+                    defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+                    values={{
+                      strong: (
+                        <strong>
+                          <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                        </strong>
+                      ),
+                    }}
+                  />
+                </span>
+              )}
+            </>
           ) : (
             <FormattedMessage
               description="add multi-factor authentication description"
@@ -249,7 +269,7 @@ export function Recommendations(): React.JSX.Element | null {
       <section className="status-boxes">
         <ConfirmedAccountStatus email={email} />
         <VerifiedIdentityStatus identities={identities} />
-        <ImprovedSecurityStatus tokens={tokens} />
+        <ImprovedSecurityStatus tokens={tokens} identities={identities} />
         <VerifiedSecurityStatus tokens={tokens} />
       </section>
       <p className="help-text">

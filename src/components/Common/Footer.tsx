@@ -47,7 +47,7 @@ const Footer = (): React.JSX.Element => {
         <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
           <div className="sunet-logo" />
         </a>
-        <span>&copy;2013-2025</span>
+        <span>&copy;2013-2026</span>
       </div>
 
       {/* Color mode toggle, cookie overrides system settings, default theme is light */}
