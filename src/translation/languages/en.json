@@ -676,6 +676,10 @@
     "developer_comment": "no security key has been added",
     "string": "No security key has been added"
   },
+  "DmmgDx": {
+    "developer_comment": "popover info",
+    "string": "To edit these settings you might be asked to re-login."
+  },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
@@ -970,6 +974,10 @@
   "JgFblM": {
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
+  },
+  "K+f0rT": {
+    "developer_comment": "popover info",
+    "string": "If some time has passed since your last login, you may need to re-authenticate to make changes to this information."
   },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
@@ -1737,6 +1745,10 @@
   "ZKCJyG": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules (listed below) regulate other permitted usage."
+  },
+  "ZOGtpx": {
+    "developer_comment": "popover info heading",
+    "string": "For your security"
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
