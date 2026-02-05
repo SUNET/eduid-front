@@ -676,6 +676,10 @@
     "developer_comment": "no security key has been added",
     "string": "Ingen säkerhetsnyckel har lagts till"
   },
+  "DmmgDx": {
+    "developer_comment": "popover info",
+    "string": "För att ändra dessa inställningar kan du bli ombedd att logga in på nytt."
+  },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
     "string": "För att använda vissa tjänster behöver din identitet verifieras. Koppla din identitet till ditt eduID för att få mest användning av det."
@@ -970,6 +974,10 @@
   "JgFblM": {
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
+  },
+  "K+f0rT": {
+    "developer_comment": "popover info",
+    "string": "Här krävs extra säkerhet, om det har gått viss tid sedan din senaste inloggning kan du behöva logga in igen."
   },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
@@ -1737,6 +1745,10 @@
   "ZKCJyG": {
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler (enligt nedan) reglerar övrig tillåten användning."
+  },
+  "ZOGtpx": {
+    "developer_comment": "popover info heading",
+    "string": "Av säkerhetsskäl"
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
