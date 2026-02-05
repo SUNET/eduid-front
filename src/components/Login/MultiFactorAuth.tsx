@@ -63,7 +63,8 @@ export function MultiFactorAuth(): React.JSX.Element {
   }
 
   const isLoaded = mfa?.state === "loaded";
-  const hasMfaOptions = authn_options.swedish_eid || authn_options.webauthn;
+  const hasMfaOptions =
+    authn_options.swedish_eid || authn_options.webauthn || authn_options.eidas || authn_options.freja_eid;
 
   useEffect(() => {
     if (ref && mfa?.state === undefined) {
