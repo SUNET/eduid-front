@@ -181,16 +181,14 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
           </dd>
         </dl>
       </p>
-      {!securityZoneAction && <LoginAbortButton />}
-      {toDashboard && (
-        <div className="links">
-          <div className="text-small">
-            <a href={toDashboard}>
-              <FormattedMessage defaultMessage="go to eduID Dashboard" description="Login MFA link" />
-            </a>
-          </div>
-        </div>
-      )}
+      <div className="buttons">
+        {!securityZoneAction && <LoginAbortButton />}
+        {toDashboard && (
+          <a href={toDashboard} className="text-link">
+            <FormattedMessage defaultMessage="go to eduID Dashboard" description="Login MFA link" />
+          </a>
+        )}
+      </div>
     </article>
   );
 }
