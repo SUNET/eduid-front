@@ -977,7 +977,7 @@
   },
   "K+f0rT": {
     "developer_comment": "popover info",
-    "string": "This is a security zone. If some time has passed since your last login, you may need to authenticate again."
+    "string": "If some time has passed since your last login, you may need to re-authenticate to make changes to this information."
   },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
