@@ -1,7 +1,6 @@
 import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { storeCsrfToken } from "commonConfig";
 import { EDUID_CONFIG_URL } from "globals";
-import { clearNotifications } from "slices/Notifications";
 import { handleApiError, handleBaseQueryError } from "./helpers/errorHandlers";
 import { hasCsrfToken, isApiError, isApiResponse, isErrorResult } from "./helpers/typeGuards";
 import type { StateWithCommonConfig } from "./helpers/types";
@@ -55,11 +54,6 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
   if (isErrorResult(result)) {
     await handleBaseQueryError(result, csrf_token, api, state);
   } else {
-    // Clear error notifications only on successful non-GET requests
-    // e.g., "POST_SIGNUP_GET_CAPTCHA_SUCCESS" not clears errors
-    if (isApiResponse(result.data) && !result.data.type.includes("GET")) {
-      api.dispatch(clearNotifications());
-    }
     // extract CSRF token from response
     csrf_token = handleCsrfTokenFromResponse(result.data, csrf_token, api);
     if (isApiError(result.data)) {
@@ -79,7 +73,7 @@ function addCsrfTokenToArgs(args: FetchArgs, csrf_token: string | undefined): Fe
 function handleCsrfTokenFromResponse(
   data: unknown,
   csrf_token: string | undefined,
-  api: BaseQueryApi
+  api: BaseQueryApi,
 ): string | undefined {
   if (isApiResponse(data) && hasCsrfToken(data)) {
     if (data.payload.csrf_token && data.payload.csrf_token !== csrf_token) {
