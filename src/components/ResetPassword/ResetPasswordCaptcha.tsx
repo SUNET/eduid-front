@@ -33,7 +33,6 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
-    console.log("Captcha completed with response:", response);
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
       dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
@@ -98,7 +97,7 @@ export function ProcessCaptcha(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
       }
     },
-    [sendCaptchaResponse, dispatch, sendEmailLink]
+    [sendCaptchaResponse, dispatch, sendEmailLink],
   );
 
   useEffect(() => {
