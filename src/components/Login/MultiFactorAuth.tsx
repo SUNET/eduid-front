@@ -156,29 +156,29 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
           description="Login MFA"
         />
       </p>
-      <p>
-        <dl className="terms">
-          <dt>
-            <FormattedMessage defaultMessage="Options available in the eduID Dashboard:" description="Login MFA" />
-          </dt>
-          <dd>
-            <FormattedMessage
-              defaultMessage={`Add a Security Key to your account. This can be a physical USB key or a device such as
+
+      <dl className="terms">
+        <dt>
+          <FormattedMessage defaultMessage="Options available in the eduID Dashboard:" description="Login MFA" />
+        </dt>
+        <dd>
+          <FormattedMessage
+            defaultMessage={`Add a Security Key to your account. This can be a physical USB key or a device such as
                  a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in
                  fingerprint readers that can be used as a Security Key.`}
-              description="Login MFA"
-            />
-          </dd>
+            description="Login MFA"
+          />
+        </dd>
 
-          <dd>
-            <FormattedMessage
-              defaultMessage={`If you have a Swedish national identity number and Freja eID+,
+        <dd>
+          <FormattedMessage
+            defaultMessage={`If you have a Swedish national identity number and Freja eID+,
                                              confirm your identity and you'll be able to use Freja eID+ to log in.`}
-              description="Login MFA"
-            />
-          </dd>
-        </dl>
-      </p>
+            description="Login MFA"
+          />
+        </dd>
+      </dl>
+
       <div className="buttons">
         {!securityZoneAction && <LoginAbortButton />}
         {toDashboard && (
