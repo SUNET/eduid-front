@@ -644,10 +644,6 @@
     "developer_comment": "Dashboard AccountId",
     "string": "Unikt ID:"
   },
-  "Cvxx2s": {
-    "developer_comment": "MFA recovery help text",
-    "string": "Kräver ett bekräftat svenskt person- eller samordningsnummer, eIDAS eller Freja eID."
-  },
   "CzJ8yc": {
     "developer_comment": "Security keys list - paragraph",
     "string": "Här listas, från Fido Alliance, märke och modellnamn av fysiska säkerhetsnycklar som bör möta de tekniska förutsättningarna för att kunna användas för eduID, det kan även finnas andra som fungerar. Listan är sorterad alfabetiskt och uppdateras regelbundet."
@@ -975,10 +971,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
-  "K+f0rT": {
-    "developer_comment": "popover info",
-    "string": "Här krävs extra säkerhet, om det har gått viss tid sedan din senaste inloggning kan du behöva logga in igen."
-  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1097,6 +1089,10 @@
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "Det är av stor vikt för oss att så många som möjligt kan använda tjänsten på ett bra och säkert sätt och är ett av områdena eduID alltid försöker att utvecklas."
+  },
+  "Mf786q": {
+    "developer_comment": "MFA recovery help text",
+    "string": "Kräver att du har verifierat din identitet i eduID med svenskt person- eller samordningsnummer, eIDAS eller Freja eID."
   },
   "MkJVFg": {
     "developer_comment": "use freja - list item 3",
@@ -2229,6 +2225,9 @@
   },
   "freja_eid.authorization_fail": {
     "string": "Freja eID autentisering misslyckades."
+  },
+  "freja_eid.credential_verification_not_allowed": {
+    "string": "Verifiering av Freja eID-legitimation är inte tillåten."
   },
   "freja_eid.frontend_action_not_supported": {
     "string": "Freja eID frontend action stöds inte. "
