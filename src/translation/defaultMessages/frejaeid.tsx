@@ -40,4 +40,11 @@ export const apiResponses = {
       defaultMessage="Freja eID registration level not satisfied."
     />
   ),
+
+  "freja_eid.credential_verification_not_allowed": (
+    <FormattedMessage
+      id="freja_eid.credential_verification_not_allowed"
+      defaultMessage="Freja eID credential verification not allowed."
+    />
+  ),
 };

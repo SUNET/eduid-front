@@ -4,6 +4,7 @@ import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 
 export function ResetPasswordCaptcha(): React.JSX.Element | null {
@@ -33,7 +34,6 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
-    console.log("Captcha completed with response:", response);
     if (response) {
       dispatch(resetPasswordSlice.actions.setCaptchaResponse({ internal_response: response }));
       dispatch(resetPasswordSlice.actions.setNextPage("PROCESS_CAPTCHA"));
@@ -93,12 +93,13 @@ export function ProcessCaptcha(): null {
     async (captcha: CaptchaRequest) => {
       const response = await sendCaptchaResponse(captcha);
       if (response.isSuccess) {
+        dispatch(clearNotifications());
         sendEmailLink();
       } else {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_CAPTCHA"));
       }
     },
-    [sendCaptchaResponse, dispatch, sendEmailLink]
+    [sendCaptchaResponse, dispatch, sendEmailLink],
   );
 
   useEffect(() => {
