@@ -29,7 +29,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
 
   function handleCaptchaCancel() {
     if (dashboard_link) {
-      document.location.href = dashboard_link;
+      globalThis.location.href = dashboard_link;
     }
   }
 
