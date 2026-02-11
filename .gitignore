@@ -15,6 +15,3 @@ src/translation/languages/
 i18n/
 sshfs_mount/
 .vscode/*.log
-
-# Snyk Security Extension - AI Rules (auto-generated)
-.github/instructions/snyk_rules.instructions.md
