@@ -6,9 +6,9 @@ import EmailInput from "components/Common/EmailInput";
 import { GoBackButton } from "./GoBackButton";
 
 export interface EmailFormProps {
-  passEmailUp: (email: string) => void;
-  disabled?: boolean; // disable the submit button if true
-  defaultEmail?: string; // pre-fill the email field with this value
+  readonly passEmailUp: (email: string) => void;
+  readonly disabled?: boolean; // disable the submit button if true
+  readonly defaultEmail?: string; // pre-fill the email field with this value
 }
 export interface EmailFormData {
   email?: string;
@@ -37,10 +37,10 @@ export function EmailForm(props: EmailFormProps): React.JSX.Element {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
         const _disabled = Boolean(
           formProps.hasValidationErrors ||
-            _submitError ||
-            formProps.pristine ||
-            props.disabled ||
-            !formProps.values?.["email"]
+          _submitError ||
+          formProps.pristine ||
+          props.disabled ||
+          !formProps.values?.["email"],
         );
 
         return (
