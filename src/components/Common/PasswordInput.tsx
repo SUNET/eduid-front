@@ -1,10 +1,10 @@
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { CustomInputProps } from "./CustomInput";
 import { InputWrapper } from "./InputWrapper";
+import { ShowAndHideButton } from "./ShowAndHideButton";
 
 interface PasswordInputProps {
   name: string;
@@ -69,14 +69,10 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
     className = "disabled";
   }
 
-  function toggleShowPassword(event: React.MouseEvent<HTMLElement>) {
-    event.preventDefault();
-    setShowPassword(!showPassword);
-  }
-
   return (
     <div className="password-input">
-      <EduIDButton
+      <ShowAndHideButton isShown={showPassword} onClick={() => setShowPassword(!showPassword)} />
+      {/* <EduIDButton
         type="button"
         buttonstyle="txt-toggle-btn link sm"
         aria-label={showPassword ? "hide password" : "show password"}
@@ -87,7 +83,7 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
         ) : (
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
-      </EduIDButton>
+      </EduIDButton> */}
       <input
         {...props.input}
         id={props.input.name}
