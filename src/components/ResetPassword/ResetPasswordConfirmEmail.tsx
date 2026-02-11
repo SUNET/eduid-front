@@ -19,7 +19,6 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
   function sendEmailOnClick() {
     dispatch(clearNotifications());
     if (email_address) {
-      // dispatch(resetPasswordSlice.actions.setEmailAddress(email_address));
       getResetPasswordState();
     }
   }
