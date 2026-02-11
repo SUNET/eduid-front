@@ -8,9 +8,8 @@ import { Link } from "react-router";
 import { ShowAndHideButton } from "./ShowAndHideButton";
 
 interface NinDisplayProps {
-  nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
-  allowDelete?: boolean; // show delete option, if applicable to this NIN
-  name?: string;
+  readonly nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
+  readonly allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 
 function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
@@ -29,7 +28,7 @@ function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
   };
 
   return (
-    <div data-ninnumber={props.nin.number} className="display-nin-show-hide">
+    <div className="display-nin-show-hide">
       <div className={`display-data ${props.nin.verified ? "verified" : "unverified"}`}>
         {showFullNin ? props.nin.number : props.nin.number.replace(/.{4}$/, "****")}
       </div>
@@ -45,13 +44,13 @@ function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
 export function NinDisplay(props: NinDisplayProps) {
   return (
     <div className="profile-grid-cell">
-      {!props.nin ? (
+      {props.nin ? (
+        <RenderShowHideNin {...props} />
+      ) : (
         // if there is no NIN, render a link to verify-identity
         <Link to={IDENTITY_PATH} className="display-data unverified">
           <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
         </Link>
-      ) : (
-        <RenderShowHideNin {...props} />
       )}
     </div>
   );
