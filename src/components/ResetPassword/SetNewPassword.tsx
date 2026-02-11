@@ -31,7 +31,7 @@ export function SetNewPassword(): React.JSX.Element | null {
 
   function handleCancel() {
     if (dashboard_link) {
-      document.location.href = dashboard_link;
+      globalThis.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetState());
     }
   }
@@ -44,28 +44,25 @@ export function SetNewPassword(): React.JSX.Element | null {
     }
 
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
+    let response;
+
     if (!selected_option || selected_option === "without") {
-      const response = await postSetNewPassword({ email_code: email_code, password: newPassword });
-      if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
-      }
+      response = await postSetNewPassword({ email_code, password: newPassword });
     } else if (selected_option === "securityKey" && webauthn_assertion) {
-      const response = await postSetNewPasswordExtraSecurityToken({
-        email_code: email_code,
+      response = await postSetNewPasswordExtraSecurityToken({
+        email_code,
         password: newPassword,
         webauthn_response: webauthn_assertion,
       });
-      if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
-      }
     } else if (selected_option === "recoveryOption") {
-      const response = await postSetNewPasswordExternalMfa({
-        email_code: email_code,
+      response = await postSetNewPasswordExternalMfa({
+        email_code,
         password: newPassword,
       });
-      if (response.isSuccess) {
-        dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
-      }
+    }
+
+    if (response?.isSuccess) {
+      dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_SUCCESS"));
     }
   }
 
