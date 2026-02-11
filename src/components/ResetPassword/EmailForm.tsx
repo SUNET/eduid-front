@@ -14,9 +14,6 @@ export interface EmailFormData {
   email?: string;
 }
 
-// **************************************************************************************
-// * TODO: Can this be shared with a new username-only login form, and the Signup form? *
-// **************************************************************************************
 export function EmailForm(props: EmailFormProps): React.JSX.Element {
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
