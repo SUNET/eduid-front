@@ -159,12 +159,12 @@ export function ResetPasswordSuccess(): React.JSX.Element {
           </p>
         </div>
       </section>
-      {!suggested ? (
+      {suggested ? (
+        <ConfirmUserInfo email_address={email_address ?? ""} new_password={new_password ?? ""} />
+      ) : (
         <div className="email-display">
           <EmailFieldset email={email_address} />
         </div>
-      ) : (
-        <ConfirmUserInfo email_address={email_address as string} new_password={new_password as string} />
       )}
 
       <div className="buttons">
