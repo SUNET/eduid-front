@@ -72,18 +72,6 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
   return (
     <div className="password-input">
       <ShowAndHideButton isShown={showPassword} onClick={() => setShowPassword(!showPassword)} />
-      {/* <EduIDButton
-        type="button"
-        buttonstyle="txt-toggle-btn link sm"
-        aria-label={showPassword ? "hide password" : "show password"}
-        onClick={toggleShowPassword}
-      >
-        {showPassword ? (
-          <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />
-        ) : (
-          <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
-        )}
-      </EduIDButton> */}
       <input
         {...props.input}
         id={props.input.name}

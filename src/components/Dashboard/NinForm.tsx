@@ -1,7 +1,9 @@
 import securityApi from "apis/eduidSecurity";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+import { ShowAndHideButton } from "components/Common/ShowAndHideButton";
 import { useAppSelector } from "eduid-hooks";
+import { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -40,7 +42,8 @@ export interface NinFormData {
 
 function NinForm(): React.JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
-  const [addNin] = securityApi.useLazyAddNinQuery()
+  const [addNin] = securityApi.useLazyAddNinQuery();
+  const [showNin, setShowNin] = useState(false);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -53,7 +56,7 @@ function NinForm(): React.JSX.Element {
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;
     if (nin) {
-      addNin({nin});
+      addNin({ nin });
     }
   }
 
@@ -69,13 +72,15 @@ function NinForm(): React.JSX.Element {
             <FinalField
               component={CustomInput}
               componentClass="input"
-              type="text"
+              type={showNin ? "text" : "password"}
+              inputMode="numeric"
               name="nin"
               label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
               placeholder={placeholder}
               helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
               validate={validateNin}
             />
+            <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
             <div className="buttons">
               <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
                 <FormattedMessage description="button_add" defaultMessage="Add" />
