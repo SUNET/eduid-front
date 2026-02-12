@@ -1,3 +1,5 @@
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
@@ -146,19 +148,26 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
   const toDashboard = useAppSelector((state) => state.config.dashboard_link);
 
   return (
-    <article>
-      <p>
-        <FormattedMessage
-          defaultMessage={`The service you are trying to log in to requires an extra level of security.
+    <section>
+      <div className="status-box m-b-md">
+        <div className="checkbox-wrapper">
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        </div>
+        <div className="text-wrapper">
+          <p>
+            <FormattedMessage
+              defaultMessage={`The service you are trying to log in to requires an extra level of security.
                            Unfortunately, your eduID account isn't set up with any of the options available
                            for that.
                      `}
-          description="Login MFA"
-        />
-      </p>
+              description="Login MFA"
+            />
+          </p>
+        </div>
+      </div>
 
       <h2>
-        <FormattedMessage defaultMessage="Options available in the eduID Dashboard:" description="Login MFA" />
+        <FormattedMessage defaultMessage="Options available in the eduID settings:" description="Login MFA" />
       </h2>
 
       <ul className="bullets">
@@ -173,21 +182,20 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
 
         <li>
           <FormattedMessage
-            defaultMessage={`If you have a Swedish national identity number and Freja eID+,
-                                             confirm your identity and you'll be able to use Freja eID+ to log in.`}
+            defaultMessage={`Verify your identity using the options applicable to you.`}
             description="Login MFA"
           />
         </li>
       </ul>
-
-      <div className="buttons">
+      <div className="buttons-center">
         {!securityZoneAction && <LoginAbortButton />}
+
         {toDashboard && (
           <a href={toDashboard} className="text-link">
-            <FormattedMessage defaultMessage="go to eduID Dashboard" description="Login MFA link" />
+            <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
           </a>
         )}
       </div>
-    </article>
+    </section>
   );
 }
