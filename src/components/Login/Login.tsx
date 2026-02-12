@@ -1,9 +1,8 @@
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
@@ -135,33 +134,29 @@ function UserTerminated(): React.JSX.Element {
     }
   }, [error_state, fetchLogout]);
 
-  function reset_password() {
+  const goToResetPassword = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     dispatch(clearNotifications());
-    navigate("/reset-password");
-  }
+    navigate("/reset-password/");
+  };
 
   return (
     <section>
       <h1>
         <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
       </h1>
-
       <p>
         <FormattedMessage
           defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
           description="Account terminated - paragraph"
         />
       </p>
-
-      <div>
-        <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
-          <FormattedMessage
-            defaultMessage="Go to reset password page"
-            description="Account terminated - reset password link"
-          />
-        </EduIDButton>
-      </div>
-
+      <Link id="link-forgot-password" className="text-small" to="/" onClick={goToResetPassword}>
+        <FormattedMessage
+          defaultMessage="Go to reset password page"
+          description="Account terminated - reset password link"
+        />
+      </Link>
       <p className="text-small">
         <FormattedMessage
           defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduiD button."
