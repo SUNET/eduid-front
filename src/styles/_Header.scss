@@ -51,12 +51,15 @@ header {
 
       // top level menu item
       .menu-item-wrapper {
+        display: flex;
+        width: 100%;
         @extend .flex-between;
         padding-left: 0.85rem;
 
         a {
           color: var(--body-txt);
           font-size: $txt-sm;
+          flex: 1;
         }
 
         &:has(a.active) {

@@ -644,10 +644,6 @@
     "developer_comment": "Dashboard AccountId",
     "string": "Unique ID:"
   },
-  "Cvxx2s": {
-    "developer_comment": "MFA recovery help text",
-    "string": "Requires a confirmed Swedish national identity, coordination number, eIDAS or Freja eID."
-  },
   "CzJ8yc": {
     "developer_comment": "Security keys list - paragraph",
     "string": "This is a list, derived from Fido Alliance, of names of maker and models of external security keys that can be used for eduID, though there might be other keys that could work for this purpose. They are listed in alphabetical order and updated regularly."
@@ -675,6 +671,10 @@
   "DRBzcL": {
     "developer_comment": "no security key has been added",
     "string": "No security key has been added"
+  },
+  "DmmgDx": {
+    "developer_comment": "popover info",
+    "string": "To edit these settings you might be asked to re-login."
   },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
@@ -1089,6 +1089,10 @@
   "Mcx0Ut": {
     "developer_comment": "what is accessibility report - paragraph 2",
     "string": "It is of outmost importance to us that as many as possible are able to use the service in a convenient and safe manner and one of the many ways eduID is always striving to improve."
+  },
+  "Mf786q": {
+    "developer_comment": "MFA recovery help text",
+    "string": "Requires that you have verified your identity in eduID with a Swedish personal identity number or coordination number, eIDAS or Freja eID."
   },
   "MkJVFg": {
     "developer_comment": "use freja - list item 3",
@@ -1738,6 +1742,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules (listed below) regulate other permitted usage."
   },
+  "ZOGtpx": {
+    "developer_comment": "popover info heading",
+    "string": "For your security"
+  },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "develops using open source code accessible at GitHub,"
@@ -2217,6 +2225,9 @@
   },
   "freja_eid.authorization_fail": {
     "string": "Freja eID authorization failed."
+  },
+  "freja_eid.credential_verification_not_allowed": {
+    "string": "Freja eID credential verification not allowed."
   },
   "freja_eid.frontend_action_not_supported": {
     "string": "Freja eID frontend action not supported."

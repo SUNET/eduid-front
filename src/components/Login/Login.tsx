@@ -34,7 +34,7 @@ function Login(): React.JSX.Element {
   const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
   const intl = useIntl();
-  const [fetchNext] = loginApi.useLazyFetchNextQuery();
+  const [fetchNext, { isError }] = loginApi.useLazyFetchNextQuery();
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -44,6 +44,9 @@ function Login(): React.JSX.Element {
   }, [intl]);
 
   useEffect(() => {
+    if (isError) {
+      return;
+    }
     // if this_device and remember_me haven't been set in redux state yet, initialise them from local storage
     const { init_this_device, init_remember_me } = initKnownDevice(this_device, remember_me, dispatch);
 
@@ -58,7 +61,19 @@ function Login(): React.JSX.Element {
     if (base_url && !next_page && init_ref && !fetching_next && init_remember_me !== undefined && !error_state) {
       fetchNext({ ref: init_ref, this_device: init_this_device, remember_me: init_remember_me });
     }
-  }, [base_url, ref, this_device, remember_me, next_page, params, dispatch, fetching_next, error_state, fetchNext]);
+  }, [
+    base_url,
+    ref,
+    this_device,
+    remember_me,
+    next_page,
+    params.ref,
+    dispatch,
+    fetching_next,
+    error_state,
+    fetchNext,
+    isError,
+  ]);
 
   useEffect(() => {
     if (ref !== undefined) {
