@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
+import resetPasswordSlice from "slices/ResetPassword";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, initKnownDevice } from "./NewDevice";
@@ -137,6 +138,8 @@ function UserTerminated(): React.JSX.Element {
 
   function reset_password() {
     dispatch(clearNotifications());
+    // TODO: Move resetState() to ResetPasswordApp mount and remove this line
+    dispatch(resetPasswordSlice.actions.resetState());
     navigate("/reset-password");
   }
 
