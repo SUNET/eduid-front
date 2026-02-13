@@ -1,4 +1,7 @@
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useMemo } from "react";
@@ -7,7 +10,6 @@ import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
-import { RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 export function MultiFactorAuth(): React.JSX.Element {
@@ -139,7 +141,6 @@ export function MultiFactorAuth(): React.JSX.Element {
           <ExtraSecurityNotAvailable />
         )}
       </Splash>
-      <RememberMeCheckbox />
     </Fragment>
   );
 }
@@ -148,49 +149,54 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
   const toDashboard = useAppSelector((state) => state.config.dashboard_link);
 
   return (
-    <article>
-      <p>
-        <FormattedMessage
-          defaultMessage={`The service you are trying to log in to requires an extra level of security.
+    <section>
+      <div className="status-box m-b-md">
+        <div className="checkbox-wrapper">
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        </div>
+        <div className="text-wrapper">
+          <p>
+            <FormattedMessage
+              defaultMessage={`The service you are trying to log in to requires an extra level of security.
                            Unfortunately, your eduID account isn't set up with any of the options available
                            for that.
                      `}
-          description="Login MFA"
-        />
-      </p>
-      <p>
-        <dl className="terms">
-          <dt>
-            <FormattedMessage defaultMessage="Options available in the eduID Dashboard:" description="Login MFA" />
-          </dt>
-          <dd>
-            <FormattedMessage
-              defaultMessage={`Add a Security Key to your account. This can be a physical USB key or a device such as
+              description="Login MFA"
+            />
+          </p>
+        </div>
+      </div>
+
+      <h2>
+        <FormattedMessage defaultMessage="Options available in the eduID settings:" description="Login MFA" />
+      </h2>
+
+      <ul className="bullets">
+        <li>
+          <FormattedMessage
+            defaultMessage={`Add a Security Key to your account. This can be a physical USB key or a device such as
                  a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in
                  fingerprint readers that can be used as a Security Key.`}
-              description="Login MFA"
-            />
-          </dd>
+            description="Login MFA"
+          />
+        </li>
 
-          <dd>
-            <FormattedMessage
-              defaultMessage={`If you have a Swedish national identity number and Freja eID+,
-                                             confirm your identity and you'll be able to use Freja eID+ to log in.`}
-              description="Login MFA"
-            />
-          </dd>
-        </dl>
-      </p>
-      {!securityZoneAction && <LoginAbortButton />}
-      {toDashboard && (
-        <div className="links">
-          <div className="text-small">
-            <a href={toDashboard}>
-              <FormattedMessage defaultMessage="go to eduID Dashboard" description="Login MFA link" />
-            </a>
-          </div>
-        </div>
-      )}
-    </article>
+        <li>
+          <FormattedMessage
+            defaultMessage={`Verify your identity using the options applicable to you.`}
+            description="Login MFA"
+          />
+        </li>
+      </ul>
+      <div className="buttons-center">
+        {!securityZoneAction && <LoginAbortButton />}
+
+        {toDashboard && (
+          <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={() => toDashboard}>
+            <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
+          </EduIDButton>
+        )}
+      </div>
+    </section>
   );
 }

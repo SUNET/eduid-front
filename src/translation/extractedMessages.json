@@ -408,10 +408,6 @@
     "developer_comment": "nin label",
     "string": "ID number"
   },
-  "6k2J31": {
-    "developer_comment": "Login MFA",
-    "string": "Options available in the eduID Dashboard:"
-  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -671,6 +667,10 @@
   "DRBzcL": {
     "developer_comment": "no security key has been added",
     "string": "No security key has been added"
+  },
+  "DZ4nXV": {
+    "developer_comment": "Login MFA",
+    "string": "Options available in the eduID settings:"
   },
   "DmmgDx": {
     "developer_comment": "popover info",
@@ -2677,6 +2677,10 @@
     "developer_comment": "use orcid - list item 2",
     "string": "click the 'Add ORCID account' button in the Account area of eduID,"
   },
+  "m8Rpre": {
+    "developer_comment": "Login MFA",
+    "string": "Verify your identity using the options applicable to you."
+  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
@@ -2748,10 +2752,6 @@
   "naczj1": {
     "developer_comment": "start eduid - list item 3-2",
     "string": "real identity verified"
-  },
-  "ncGA4y": {
-    "developer_comment": "Login MFA link",
-    "string": "go to eduID Dashboard"
   },
   "ng2KA4": {
     "developer_comment": "security second factor individual",
@@ -2997,6 +2997,10 @@
     "developer_comment": "how to contact support - heading",
     "string": "How to contact eduID support?"
   },
+  "q3Dp8f": {
+    "developer_comment": "Login MFA link",
+    "string": "go to eduID"
+  },
   "q61RBe": {
     "developer_comment": "Verify your Security key",
     "string": "Verify your security key"
@@ -3032,10 +3036,6 @@
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Are you sure you want to remove your security key?"
-  },
-  "qkwsql": {
-    "developer_comment": "Login MFA",
-    "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
   },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
