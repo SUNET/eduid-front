@@ -1,8 +1,9 @@
 import { loginApi } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
@@ -151,12 +152,12 @@ function UserTerminated(): React.JSX.Element {
           description="Account terminated - paragraph"
         />
       </p>
-      <Link id="link-forgot-password" className="text-small" to="/" onClick={goToResetPassword}>
+      <EduIDButton id="link-forgot-password" buttonstyle="link normal-case" onClick={goToResetPassword}>
         <FormattedMessage
           defaultMessage="Go to reset password page"
           description="Account terminated - reset password link"
         />
-      </Link>
+      </EduIDButton>
       <p className="text-small">
         <FormattedMessage
           defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduiD button."
