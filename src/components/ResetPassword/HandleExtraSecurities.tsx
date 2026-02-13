@@ -31,10 +31,9 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   async function setupSecurityKey() {
-    if (extra_security?.tokens?.webauthn_options) {
-      dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
-      return extra_security.tokens.webauthn_options;
-    }
+    if (!extra_security?.tokens?.webauthn_options) return;
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
+    return extra_security.tokens.webauthn_options;
   }
 
   function continueWithSecurityKey() {
