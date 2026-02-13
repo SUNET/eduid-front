@@ -19,5 +19,19 @@
   .timer {
     margin-top: 0;
     font-family: $akkurat;
+
+    a {
+      margin-right: 0.5rem;
+    }
+
+    .display-none {
+      display: none;
+    }
+
+    span#timer-in {
+      font-family: $akkurat;
+      color: var(--txt-gray);
+      font-size: $txt-md;
+    }
   }
 }
