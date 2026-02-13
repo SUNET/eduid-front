@@ -1,6 +1,7 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
+import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useMemo } from "react";
@@ -191,9 +192,9 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
         {!securityZoneAction && <LoginAbortButton />}
 
         {toDashboard && (
-          <a href={toDashboard} className="text-link">
+          <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={() => toDashboard}>
             <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
-          </a>
+          </EduIDButton>
         )}
       </div>
     </section>
