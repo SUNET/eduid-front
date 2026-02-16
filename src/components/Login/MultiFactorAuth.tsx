@@ -10,6 +10,7 @@ import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
 import { LoginAbortButton } from "./LoginAbortButton";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
 export function MultiFactorAuth(): React.JSX.Element {
@@ -136,6 +137,7 @@ export function MultiFactorAuth(): React.JSX.Element {
               )}
               <RecoveryOptions recoveryAvailable={recoveryOptions} />
             </div>
+            <RememberMeCheckbox />
           </React.Fragment>
         ) : (
           <ExtraSecurityNotAvailable />
