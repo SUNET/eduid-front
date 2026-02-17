@@ -1,6 +1,7 @@
 import securityApi from "apis/eduidSecurity";
-import CustomInput from "components/Common/CustomInput";
+import { CustomInputProps } from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+import { InputWrapper } from "components/Common/InputWrapper";
 import { ShowAndHideButton } from "components/Common/ShowAndHideButton";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
@@ -36,6 +37,32 @@ function validateNin(value: string): string | undefined {
   return undefined;
 }
 
+function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+  const [showNin, setShowNin] = useState(false);
+
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+
+  return (
+    <InputWrapper {...props}>
+      <div className="password-input">
+        <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
+        <input
+          {...props.input}
+          id={props.input.name}
+          type={showNin ? "text" : "password"}
+          className={className}
+          placeholder={props.placeholder}
+        />
+      </div>
+    </InputWrapper>
+  );
+}
+
 export interface NinFormData {
   nin?: string;
 }
@@ -43,7 +70,6 @@ export interface NinFormData {
 function NinForm(): React.JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const [addNin] = securityApi.useLazyAddNinQuery();
-  const [showNin, setShowNin] = useState(false);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -70,17 +96,15 @@ function NinForm(): React.JSX.Element {
         return (
           <form onSubmit={handleSubmit} className="single-input-form x-adjust">
             <FinalField
-              component={CustomInput}
+              component={NinInput}
               componentClass="input"
-              type={showNin ? "text" : "password"}
-              inputMode="numeric"
+              type="text"
               name="nin"
               label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
               placeholder={placeholder}
               helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
               validate={validateNin}
             />
-            <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
             <div className="buttons">
               <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
                 <FormattedMessage description="button_add" defaultMessage="Add" />
