@@ -710,6 +710,13 @@ export function Help(): React.JSX.Element {
                       <ul className="nested">
                         <li>
                           <FormattedMessage
+                            description="security eduid - list item 3-0"
+                            defaultMessage={`corresponding icon for built in or separate security key
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
                             description="security eduid - list item 3-1"
                             defaultMessage={`the descriptive name given by you when created
                           `}
@@ -725,7 +732,7 @@ export function Help(): React.JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-3"
-                            defaultMessage={`verification status / verification options (Freja+/BankID)
+                            defaultMessage={`verification status / verification options (Freja+/BankID/eIDAS/Freja eID)
                           `}
                           />
                         </li>
