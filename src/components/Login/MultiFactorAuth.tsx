@@ -27,10 +27,16 @@ export function MultiFactorAuth(): React.JSX.Element {
     if (data.isSuccess) {
       const options = data.data.payload.webauthn_options;
       const keys = options?.allowCredentials || [];
-      return keys.length == 1 && !authn_options.swedish_eid;
+      return keys.length == 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
     }
     return false;
-  }, [authn_options.swedish_eid, data?.data?.payload.webauthn_options, data.isSuccess]);
+  }, [
+    authn_options.swedish_eid,
+    authn_options.eidas,
+    authn_options.freja_eid,
+    data?.data?.payload.webauthn_options,
+    data.isSuccess,
+  ]);
 
   let leadText;
   let headingText;
