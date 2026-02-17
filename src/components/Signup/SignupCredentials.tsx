@@ -24,7 +24,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
       </p>
       <div className="buttons">
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="secondary"
           onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
           id="abort-button"
@@ -32,7 +32,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
           <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="primary"
           onClick={() => {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
