@@ -506,7 +506,7 @@ export function Help(): React.JSX.Element {
                 <p>
                   <FormattedMessage
                     description="login eduID - re-login paragraph 2"
-                    defaultMessage='These settings are also marked with a "i" icon.'
+                    defaultMessage='These settings are also marked with a "i" icon, with additional information on hover.'
                   />
                 </p>
               </AccordionItemTemplate>
