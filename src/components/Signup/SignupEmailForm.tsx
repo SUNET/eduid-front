@@ -78,6 +78,7 @@ function EmailForm() {
       }
     } else {
       errors.email = "required";
+      console.log("[[errors.email", errors.email);
     }
 
     return errors;
