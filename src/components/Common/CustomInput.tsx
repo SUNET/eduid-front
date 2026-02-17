@@ -9,8 +9,8 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   required?: boolean;
   autoFocus?: boolean;
   autoComplete?: string;
-  label?: string;
-  helpBlock?: string;
+  label?: React.ReactNode;
+  helpBlock?: React.ReactNode;
   passwordStrengthMeter?: string;
   children?: React.ReactNode;
   onFocus?: () => void;
