@@ -123,30 +123,13 @@
   }
 }
 
-// .proofing-btn-help {
-//   margin: 0 0.5rem 2rem;
-//   line-height: 1.2;
-//   color: var(--body-txt);
-//   font-size: 0.875rem;
-// }
-
 .proofing-btn-help.disabled {
   color: var(--txt-gray);
-}
-
-#nin-wrapper ~ .txt-toggle-btn {
-  color: black;
 }
 
 .password-input:has(#nin-wrapper) {
   display: flex;
   flex-direction: column;
-}
-
-#nin-wrapper ~ .txt-toggle-btn {
-  align-self: flex-end;
-  margin-top: -2.5rem;
-  margin-right: 0.5rem;
 }
 
 @media (max-width: $bp-md) {
