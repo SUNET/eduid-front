@@ -400,7 +400,7 @@ export function Help(): React.JSX.Element {
                     <li>
                       <FormattedMessage
                         description="login eduid - security key list item 2"
-                        defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID and Freja+. `}
+                        defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity. `}
                       />
                     </li>
                     <li>
