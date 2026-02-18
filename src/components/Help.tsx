@@ -343,42 +343,6 @@ export function Help(): React.JSX.Element {
                 <article>
                   <h5>
                     <FormattedMessage
-                      description="login eduid - other device heading"
-                      defaultMessage={`With another device`}
-                    />
-                  </h5>
-                  <p>
-                    <FormattedMessage
-                      description="login eduid - other device list definition"
-                      defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
-                    />
-                  </p>
-                  <ol className="numbers">
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - other devices list item 1"
-                        defaultMessage={`Press the "Other device" button in the login form.`}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - other devices list item 2"
-                        defaultMessage={`Scan the presented QR-code with the other device where you have your login credentials, 
-                    e.g. security key or saved password.`}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - other devices list item 3"
-                        defaultMessage={`On that second device, review the device requesting to be logged in and use the 
-                    presented code to login by entering it within the time shown, in the first device.`}
-                      />
-                    </li>
-                  </ol>
-                </article>
-                <article>
-                  <h5>
-                    <FormattedMessage
                       description="login eduid - security key heading"
                       defaultMessage={`With security key`}
                     />
@@ -416,6 +380,79 @@ export function Help(): React.JSX.Element {
                       defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
                     />
                   </p>
+                </article>
+                <article>
+                  <h5>
+                    <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - passkey list definition"
+                      defaultMessage={`Using a passkey credential added to your device:`}
+                    />
+                  </p>
+                  <ol className="numbers">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 1"
+                        defaultMessage={`Press the "Log in with passkey" button in the login form (if you set the "Remember me.." toggle below you will go straight to using your key next time you log in).`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 2"
+                        defaultMessage={`If any registered passkeys exist, select the key you wish to use from the list presented.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 3"
+                        defaultMessage={`Follow the instructions, e.g. scan your face, fingerprint or enter pin code.`}
+                      />
+                    </li>
+                  </ol>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - passkey paragraph"
+                      defaultMessage={`Note: the presentation and required steps will vary depending on your device and type of passkey. You can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
+                    />
+                  </p>
+                </article>
+                <article>
+                  <h5>
+                    <FormattedMessage
+                      description="login eduid - other device heading"
+                      defaultMessage={`With another device`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - other device list definition"
+                      defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
+                    />
+                  </p>
+                  <ol className="numbers">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 1"
+                        defaultMessage={`Press the "Other device" button in the login form.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 2"
+                        defaultMessage={`Scan the presented QR-code with the other device where you have your login credentials, 
+                    e.g. security key or saved password.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - other devices list item 3"
+                        defaultMessage={`On that second device, review the device requesting to be logged in and use the 
+                    presented code to login by entering it within the time shown, in the first device.`}
+                      />
+                    </li>
+                  </ol>
                 </article>
               </AccordionItemTemplate>
               <AccordionItemTemplate
