@@ -4,18 +4,18 @@ import React, { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 
 interface DataTableProps {
-  data?: EmailInfo[];
-  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
-  handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly data?: EmailInfo[];
+  readonly handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface DataStatusProps {
-  name?: string;
-  verified: boolean;
-  primary: boolean;
-  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly name?: string;
+  readonly verified: boolean;
+  readonly primary: boolean;
+  readonly handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 function DataStatus(props: DataStatusProps) {
@@ -92,7 +92,7 @@ function DataTableRows(props: DataTableProps) {
 function DataTable(props: DataTableProps) {
   return (
     <div className="table-responsive">
-      <table className="table-form" role="presentation">
+      <table className="table-form">
         <tbody>
           <tr className="display-none">
             <th>
