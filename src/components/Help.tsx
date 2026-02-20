@@ -381,7 +381,7 @@ export function Help(): React.JSX.Element {
                     />
                   </p>
                 </article>
-                <article>
+                {/* <article>
                   <h5>
                     <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
                   </h5>
@@ -417,7 +417,7 @@ export function Help(): React.JSX.Element {
                       defaultMessage={`Note: the presentation and required steps will vary depending on your device and type of passkey. You can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
                     />
                   </p>
-                </article>
+                </article> */}
                 <article>
                   <h5>
                     <FormattedMessage
