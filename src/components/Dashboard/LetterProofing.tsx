@@ -10,7 +10,18 @@ import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns
 import AddNin from "./AddNin";
 
 export interface LetterProofingProps {
-  disabled: boolean;
+  readonly disabled: boolean;
+}
+
+function formatDateFromBackend(dateFromBackend: string) {
+  const newDate: Date = new Date(dateFromBackend);
+  return (
+    newDate.getFullYear() +
+    "-" +
+    (newDate.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
+    newDate.getDate().toString().padStart(2, "0")
+  );
 }
 
 export default function LetterProofing(props: LetterProofingProps): React.JSX.Element {
@@ -66,17 +77,6 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
       }
     }
     setShowNotificationModal(false);
-  }
-
-  function formatDateFromBackend(dateFromBackend: string) {
-    const newDate: Date = new Date(dateFromBackend);
-    return (
-      newDate.getFullYear() +
-      "-" +
-      (newDate.getMonth() + 1).toString().padStart(2, "0") +
-      "-" +
-      newDate.getDate().toString().padStart(2, "0")
-    );
   }
 
   let description = null;
