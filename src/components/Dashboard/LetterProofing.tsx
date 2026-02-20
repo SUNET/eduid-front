@@ -149,7 +149,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
       <p className="proofing-btn-help">
         <FormattedMessage
           description="letter initialize proofing help text"
-          defaultMessage={`You will receive a letter which contains a code that for security reasons expires in two weeks.`}
+          defaultMessage="You will receive a letter which contains a code that for security reasons expires in two weeks."
         />
       </p>
 
@@ -178,8 +178,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
         }
         mainText={
           <FormattedMessage
-            defaultMessage="The letter will contain a code that you enter here to verify your identity.
-                            The code sent to you will expire in 2 weeks starting from now"
+            defaultMessage="The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
             description="explanation text for letter proofing"
           />
         }
@@ -201,7 +200,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
         modalFormLabel={<FormattedMessage defaultMessage="Code" description="letter proofing modal form label" />}
-        validationError={"confirmation.code_invalid_format"}
+        validationError="confirmation.code_invalid_format"
         validationPattern={shortCodePattern}
       />
     </Fragment>
