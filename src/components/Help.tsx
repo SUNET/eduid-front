@@ -343,6 +343,84 @@ export function Help(): React.JSX.Element {
                 <article>
                   <h5>
                     <FormattedMessage
+                      description="login eduid - security key heading"
+                      defaultMessage={`With security key`}
+                    />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - security key list definition"
+                      defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
+                    `}
+                    />
+                  </p>
+                  <ul className="bullets">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 1"
+                        defaultMessage={`Press the "Use my security key" button and follow the instructions, which will vary depending on your key.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 2"
+                        defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity. `}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - security key list item 3"
+                        defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (MFA) to log in to eduID" toggle control under Security to off.`}
+                      />
+                    </li>
+                  </ul>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - security key paragraph"
+                      defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
+                    />
+                  </p>
+                </article>
+                {/* <article>
+                  <h5>
+                    <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - passkey list definition"
+                      defaultMessage={`Using a passkey credential added to your device:`}
+                    />
+                  </p>
+                  <ol className="numbers">
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 1"
+                        defaultMessage={`Press the "Log in with passkey" button in the login form (if you set the "Remember me.." toggle below you will go straight to using your key next time you log in).`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 2"
+                        defaultMessage={`If any registered passkeys exist, select the key you wish to use from the list presented.`}
+                      />
+                    </li>
+                    <li>
+                      <FormattedMessage
+                        description="login eduid - passkey list item 3"
+                        defaultMessage={`Follow the instructions, e.g. scan your face, fingerprint or enter pin code.`}
+                      />
+                    </li>
+                  </ol>
+                  <p>
+                    <FormattedMessage
+                      description="login eduid - passkey paragraph"
+                      defaultMessage={`Note: the presentation and required steps will vary depending on your device and type of passkey. You can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
+                    />
+                  </p>
+                </article> */}
+                <article>
+                  <h5>
+                    <FormattedMessage
                       description="login eduid - other device heading"
                       defaultMessage={`With another device`}
                     />
@@ -375,47 +453,6 @@ export function Help(): React.JSX.Element {
                       />
                     </li>
                   </ol>
-                </article>
-                <article>
-                  <h5>
-                    <FormattedMessage
-                      description="login eduid - security key heading"
-                      defaultMessage={`With security key`}
-                    />
-                  </h5>
-                  <p>
-                    <FormattedMessage
-                      description="login eduid - security key list definition"
-                      defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
-                    `}
-                    />
-                  </p>
-                  <ul className="bullets">
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - security key list item 1"
-                        defaultMessage={`Press the "Use my security key" button and follow the instructions, which will vary depending on your key.`}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - security key list item 2"
-                        defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID and Freja+. `}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - security key list item 3"
-                        defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (MFA) to log in to eduID" toggle control under Security to off.`}
-                      />
-                    </li>
-                  </ul>
-                  <p>
-                    <FormattedMessage
-                      description="login eduid - security key paragraph"
-                      defaultMessage={`Note: you can read more about security keys in the "Enhancing the security level of eduID" help section."`}
-                    />
-                  </p>
                 </article>
               </AccordionItemTemplate>
               <AccordionItemTemplate
@@ -503,6 +540,12 @@ export function Help(): React.JSX.Element {
                     />
                   </li>
                 </ul>
+                <p>
+                  <FormattedMessage
+                    description="login eduID - re-login paragraph 2"
+                    defaultMessage='These settings are also marked with a "i" icon, with additional information on hover.'
+                  />
+                </p>
               </AccordionItemTemplate>
             </Accordion>
           </AccordionItemTemplate>
@@ -710,6 +753,13 @@ export function Help(): React.JSX.Element {
                       <ul className="nested">
                         <li>
                           <FormattedMessage
+                            description="security eduid - list item 3-0"
+                            defaultMessage={`corresponding icon for built in or separate security key
+                          `}
+                          />
+                        </li>
+                        <li>
+                          <FormattedMessage
                             description="security eduid - list item 3-1"
                             defaultMessage={`the descriptive name given by you when created
                           `}
@@ -725,7 +775,7 @@ export function Help(): React.JSX.Element {
                         <li>
                           <FormattedMessage
                             description="security eduid - list item 3-3"
-                            defaultMessage={`verification status / verification options (Freja+/BankID)
+                            defaultMessage={`verification status / verification options (Freja+/BankID/eIDAS/Freja eID)
                           `}
                           />
                         </li>

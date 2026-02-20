@@ -640,6 +640,10 @@
     "developer_comment": "profile username display title",
     "string": "Username"
   },
+  "CnqsLO": {
+    "developer_comment": "security eduid - list item 3-3",
+    "string": "verification status / verification options (Freja+/BankID/eIDAS/Freja eID)"
+  },
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
     "string": "Unique ID:"
@@ -763,6 +767,10 @@
   "Ek2FGc": {
     "string": "Log in on the other device"
   },
+  "EmB9O2": {
+    "developer_comment": "security eduid - list item 3-0",
+    "string": "corresponding icon for built in or separate security key"
+  },
   "EmE1Az": {
     "developer_comment": "eduID index",
     "string": "Safer and easier login with eduID"
@@ -847,6 +855,10 @@
   "GH385e": {
     "developer_comment": "start eduid - list item 3",
     "string": "an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:"
+  },
+  "GIcmTL": {
+    "developer_comment": "login eduid - security key list item 2",
+    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity."
   },
   "GMXbvp": {
     "developer_comment": "password input field label",
@@ -1994,10 +2006,6 @@
     "developer_comment": "login eduid - security key list item 3",
     "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a second factor (MFA) to log in to eduID\" toggle control under Security to off."
   },
-  "d/bTw0": {
-    "developer_comment": "login eduid - security key list item 2",
-    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID and Freja+."
-  },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
     "string": "You will receive a letter which contains a code that for security reasons expires in two weeks."
@@ -2512,6 +2520,10 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
   },
+  "kh3bkV": {
+    "developer_comment": "login eduID - re-login paragraph 2",
+    "string": "These settings are also marked with a \"i\" icon, with additional information on hover."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Adding/removing a security key."
@@ -2874,10 +2886,6 @@
   },
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
-  },
-  "ovE/IG": {
-    "developer_comment": "security eduid - list item 3-3",
-    "string": "verification status / verification options (Freja+/BankID)"
   },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
