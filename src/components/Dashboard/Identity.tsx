@@ -24,7 +24,7 @@ import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
-import BankID from "./BankID";
+import { BankID } from "./BankID";
 import PersonalDataParent from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
@@ -104,8 +104,7 @@ function IdentityContent(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="verify identity unverified description"
-                defaultMessage={`Some services need to know your real life identity. Connect your identity to your eduID
-            to get the most benefit from it.`}
+                defaultMessage="Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
               />
             </p>
           )}
@@ -288,7 +287,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
         }
         mainText={
           <FormattedMessage
-            defaultMessage={`Are you sure you want to disconnect your identity from your eduID account?`}
+            defaultMessage="Are you sure you want to disconnect your identity from your eduID account?"
             description="delete.remove_identity_verification_modal_text"
           />
         }
@@ -359,18 +358,18 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
       <p>
         <FormattedMessage
           description="verify-identity.connect-nin_description"
-          defaultMessage={`Verify that you have access to your ID- or coordination number.`}
+          defaultMessage="Verify that you have access to your ID- or coordination number."
         />
       </p>
 
       <Accordion className="accordion accordion-nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
-          title={<FormattedMessage description="BankID vetting button" defaultMessage={`with a BankID`} />}
+          title={<FormattedMessage description="BankID vetting button" defaultMessage="with a BankID" />}
           additionalInfo={
             <FormattedMessage
               description="verify identity vetting BankID tagline"
-              defaultMessage={`If you are able to use BankID`}
+              defaultMessage="If you are able to use BankID"
             />
           }
           uuid="se-bankID"
@@ -383,7 +382,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
           additionalInfo={
             <FormattedMessage
               description="verify identity vetting freja tagline"
-              defaultMessage={`If you are able to create a Freja+ by using the app or visiting one of the authorised agents`}
+              defaultMessage="If you are able to create a Freja+ by using the app or visiting one of the authorised agents"
             />
           }
           uuid="se-freja"
@@ -436,15 +435,13 @@ function AccordionItemEu(): React.JSX.Element | null {
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage={`If you have an electronic ID from a country connected to eIDAS,
-                           you can connect it to your eduID.`}
+          defaultMessage="If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
         />
       </p>
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage={`The button below will take you to an external site where you log in with your
-                         electronic ID to connect your identity to eduID.`}
+          defaultMessage="The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
         />
       </p>
       <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with eIDAS">
@@ -499,8 +496,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage={`The button below will take you to an external identification site, where you by
-          identifying yourself with Freja eID, you will verify your identity towards eduID.`}
+          defaultMessage="The button below will take you to an external identification site, where you by identifying yourself with Freja eID, you will verify your identity towards eduID."
         />
       </p>
       <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with Freja eID">

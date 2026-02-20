@@ -1,27 +1,27 @@
-import { EmailInfo } from "apis/eduidEmail";
+import { emailApi, EmailInfo } from "apis/eduidEmail";
 import EduIDButton from "components/Common/EduIDButton";
-import React, { Fragment } from "react";
+import { useAppDispatch } from "eduid-hooks";
+import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
+import { clearNotifications } from "slices/Notifications";
 
 interface DataTableProps {
-  data?: EmailInfo[];
-  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
-  handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly data?: EmailInfo[];
+  readonly setSelectedEmail: (email: string | undefined) => void;
 }
 
 interface DataStatusProps {
-  name?: string;
-  verified: boolean;
-  primary: boolean;
-  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
-  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
+  readonly name: string;
+  readonly verified: boolean;
+  readonly primary: boolean;
+  readonly handleStartConfirmation: (email: string) => void;
+  readonly handleMakePrimary: (email: string) => void;
 }
 
 function DataStatus(props: DataStatusProps) {
   if (!props.verified) {
     return (
-      <EduIDButton buttonstyle="link sm" onClick={props.handleStartConfirmation}>
+      <EduIDButton buttonstyle="link sm" onClick={() => props.handleStartConfirmation(props.name)}>
         {props.name === "number" ? (
           <FormattedMessage defaultMessage="unverified" description="unverified" />
         ) : (
@@ -38,13 +38,32 @@ function DataStatus(props: DataStatusProps) {
     );
   }
   return (
-    <EduIDButton buttonstyle="link sm" onClick={props.handleMakePrimary}>
+    <EduIDButton buttonstyle="link sm" onClick={() => props.handleMakePrimary(props.name)}>
       <FormattedMessage defaultMessage="make primary" description="Make primary button" />
     </EduIDButton>
   );
 }
 
 function DataTableRows(props: DataTableProps) {
+  const [makePrimaryEmail] = emailApi.useLazyMakePrimaryEmailQuery();
+  const [removeEmail] = emailApi.useLazyRemoveEmailQuery();
+  const dispatch = useAppDispatch();
+
+  function handleMakePrimary(email: string) {
+    if (email) makePrimaryEmail({ email });
+  }
+
+  function handleRemove(email: string) {
+    if (email) {
+      removeEmail({ email });
+    }
+  }
+
+  function handleStartConfirmation(email: string) {
+    dispatch(clearNotifications());
+    if (email) props.setSelectedEmail(email);
+  }
+
   if (!props.data) {
     return null;
   }
@@ -56,6 +75,7 @@ function DataTableRows(props: DataTableProps) {
         const valueArray = Object.values(datum);
         const valueName = keysArray[0];
         const value = valueArray[0];
+        const email = datum.email ?? "";
 
         let valueStatus;
         if (!datum.verified) {
@@ -72,14 +92,14 @@ function DataTableRows(props: DataTableProps) {
                 name={valueName}
                 verified={datum.verified}
                 primary={datum.primary}
-                handleStartConfirmation={props.handleStartConfirmation}
-                handleMakePrimary={props.handleMakePrimary}
+                handleStartConfirmation={() => handleStartConfirmation(email)}
+                handleMakePrimary={() => handleMakePrimary(email)}
               />
             </td>
             {/* not render the close button when there is only one email */}
             <td className="remove-data">
               {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
-                <EduIDButton buttonstyle="remove sm" onClick={props.handleRemove} />
+                <EduIDButton buttonstyle="remove sm" onClick={() => handleRemove(email)} />
               ) : null}
             </td>
           </tr>
@@ -92,7 +112,7 @@ function DataTableRows(props: DataTableProps) {
 function DataTable(props: DataTableProps) {
   return (
     <div className="table-responsive">
-      <table className="table-form" role="presentation">
+      <table className="table-form">
         <tbody>
           <tr className="display-none">
             <th>

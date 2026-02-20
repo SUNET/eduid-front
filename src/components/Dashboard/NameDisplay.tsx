@@ -1,7 +1,7 @@
 interface NameDisplayProps {
-  label?: string | React.JSX.Element;
-  name?: string | React.JSX.Element;
-  htmlFor: string;
+  readonly label?: string | React.JSX.Element;
+  readonly name?: string | React.JSX.Element;
+  readonly htmlFor: string;
 }
 
 export default function NameDisplay({ label, name, htmlFor }: NameDisplayProps) {

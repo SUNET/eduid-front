@@ -68,7 +68,7 @@ export function ChangePassword() {
         }
       }
     },
-    [renderSuggested, changePassword, navigate]
+    [renderSuggested, changePassword, navigate],
   );
 
   const handleCancel = useCallback(
@@ -78,14 +78,14 @@ export function ChangePassword() {
 
       navigate(finish_url);
     },
-    [navigate]
+    [navigate],
   );
 
   const initialValues = { suggested };
 
   const handleSwitchChange = useCallback(() => {
-    setRenderSuggested(!renderSuggested);
-  }, [renderSuggested]);
+    setRenderSuggested((prev) => !prev);
+  }, []);
 
   useEffect(() => {
     document.title = intl.formatMessage({
@@ -95,13 +95,15 @@ export function ChangePassword() {
   }, [intl]);
 
   useEffect(() => {
-    //TODO: Too many conditions for getting the suggested password, need to refactor.
-    if (is_app_loaded && suggested === undefined && !globalThis.location.pathname.includes("success")) {
-      handleSuggestedPassword();
-    }
     return () => {
       isMounted.current = false;
     };
+  }, []);
+
+  useEffect(() => {
+    if (is_app_loaded && suggested === undefined && !location.pathname.includes("success")) {
+      handleSuggestedPassword();
+    }
   }, [suggested, is_app_loaded, handleSuggestedPassword]);
 
   return (
@@ -124,9 +126,7 @@ export function ChangePassword() {
                   <p>
                     <FormattedMessage
                       description="Generated password - lead"
-                      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
-                    the password in to the Repeat new password field and click the Save button to store it for 
-                    future use.`}
+                      defaultMessage="A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
                     />
                   </p>
                 </div>
@@ -143,8 +143,7 @@ export function ChangePassword() {
                   <p>
                     <FormattedMessage
                       description="Strong password - lead"
-                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
-                        accounts safe.`}
+                      defaultMessage="When creating your own password, make sure it's strong enough to keep your accounts safe."
                     />
                   </p>
                 </div>

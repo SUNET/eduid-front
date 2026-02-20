@@ -26,12 +26,12 @@ export function LanguagePreference() {
             updateIntl({
               locale: response.data.payload.language,
               messages: messages[response.data.payload.language],
-            })
+            }),
           );
         }
       }
     },
-    [postUserLanguage, dispatch, messages]
+    [postUserLanguage, dispatch, messages],
   );
 
   const formSubmit = useCallback(
@@ -43,7 +43,7 @@ export function LanguagePreference() {
       };
       postLanguage(postData);
     },
-    [postLanguage]
+    [postLanguage],
   );
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function LanguagePreference() {
   return (
     <article id="language">
       <h2>
-        <FormattedMessage description="pd main title" defaultMessage={`Language`} />
+        <FormattedMessage description="pd main title" defaultMessage="Language" />
       </h2>
       <p>
         <FormattedMessage
