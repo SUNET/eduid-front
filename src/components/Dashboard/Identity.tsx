@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
@@ -23,6 +20,7 @@ import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import LetterIcon from "../../../img/flags/LetterIcon.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import BankID from "./BankID";
 import PersonalDataParent from "./PersonalDataParent";
@@ -391,7 +389,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
           <FrejaeID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<FontAwesomeIcon icon={faEnvelope as IconProp} className="circle-icon" />}
+          icon={<img height="35" className="circle-icon" alt="by post" src={LetterIcon} />}
           title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
           additionalInfo={
             <FormattedMessage
