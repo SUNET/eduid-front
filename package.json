@@ -95,5 +95,8 @@
   "moduleDirectories": [
     "node_modules",
     "src"
-  ]
+  ],
+  "overrides": {
+    "minimatch": "^10.2.1"
+  }
 }
