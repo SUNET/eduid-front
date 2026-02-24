@@ -60,9 +60,8 @@ export const resetPasswordSlice = createSlice({
     resetEmailStatus: (state) => {
       state.email_status = undefined;
     },
-    resetState: (state) => {
-      state.webauthn_assertion = undefined;
-      state.selected_option = undefined;
+    resetState: () => {
+      return initialState;
     },
     useSuggestedPassword: (state, action: PayloadAction<boolean>) => {
       state.suggested = action.payload;

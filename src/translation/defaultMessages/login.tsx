@@ -64,6 +64,20 @@ export const apiResponses = {
     <FormattedMessage id="login.general_failure" defaultMessage={`An error occurred. Please try again later.`} />
   ),
 
+  "login.mfa_auth_failed": (
+    <FormattedMessage
+      id="login.mfa_auth_failed"
+      defaultMessage={`Authentication with the security key failed. Please try again.`}
+    />
+  ),
+
+  "login.credential_not_found": (
+    <FormattedMessage
+      id="login.credential_not_found"
+      defaultMessage={`The passkey or security key was not recognized. Please try logging in with your password instead.`}
+    />
+  ),
+
   "login.not_available": (
     <FormattedMessage id="login.not_available" defaultMessage={`An error occurred. Please try again later.`} />
   ),
