@@ -2628,6 +2628,9 @@
   "login.credential_expired": {
     "string": "The credential has expired because it was not used in 18 months. Perform a password reset or log in using some other credential."
   },
+  "login.credential_not_found": {
+    "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
+  },
   "login.general_failure": {
     "string": "An error occurred. Please try again later."
   },
@@ -2639,6 +2642,9 @@
   },
   "login.mfa.paragraph": {
     "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+  },
+  "login.mfa_auth_failed": {
+    "string": "Authentication with the security key failed. Please try again."
   },
   "login.mfa_proofing_method_not_allowed": {
     "string": "This multi-factor authentication (MFA) method is not allowed. Please choose a valid authentication method."
