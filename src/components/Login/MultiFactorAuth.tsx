@@ -148,7 +148,13 @@ export function MultiFactorAuth(): React.JSX.Element {
 }
 
 function ExtraSecurityNotAvailable(): React.JSX.Element {
-  const toDashboard = useAppSelector((state) => state.config.dashboard_link);
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+
+  const goToDashboard = () => {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+    }
+  };
 
   return (
     <section>
@@ -192,12 +198,9 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
       </ul>
       <div className="buttons-center">
         {!securityZoneAction && <LoginAbortButton />}
-
-        {toDashboard && (
-          <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={() => toDashboard}>
-            <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
-          </EduIDButton>
-        )}
+        <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={goToDashboard}>
+          <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
+        </EduIDButton>
       </div>
     </section>
   );
