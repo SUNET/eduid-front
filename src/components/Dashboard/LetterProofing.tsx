@@ -153,7 +153,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
         />
       </p>
 
-      <AddNin name="letter-proofing" />
+      <AddNin />
 
       <hr className="border-line border-line-lesser" />
 

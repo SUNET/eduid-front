@@ -278,7 +278,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   return (
     <Fragment>
       <article id="add-two-factor">
-        <div className="flex-between">
+        <div className="flex-between baseline">
           <h2>
             <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>

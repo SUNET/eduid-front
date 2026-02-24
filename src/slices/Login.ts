@@ -166,6 +166,10 @@ export const loginSlice = createSlice({
         }
         state.mfa.state = "loaded";
       })
+      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchRejected, (state) => {
+        // Handle error state, i.e. unknown credentials etc.
+        state.mfa.state = undefined;
+      })
       .addMatcher(loginApi.endpoints.fetchToU.matchFulfilled, (state, action) => {
         if (action.payload.payload.version) {
           state.tou.version = action.payload.payload.version;

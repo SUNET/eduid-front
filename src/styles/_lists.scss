@@ -44,7 +44,35 @@ dl.terms {
   }
   margin-bottom: 1rem;
 }
+
 .nested {
   margin: 0.5rem 0 0 0.5rem;
   list-style: circle;
+
+  li {
+    margin: 0 0 0.75rem 1.75rem;
+  }
+}
+
+ul.bullets,
+ol.numbers {
+  list-style-position: inside;
+  margin-bottom: 1.5rem;
+  > li {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+  }
+}
+ul.bullets {
+  list-style-type: disc;
+}
+ol.numbers {
+  list-style: numeric;
+}
+ul.bullets ol {
+  list-style: numeric;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
 }

@@ -408,10 +408,6 @@
     "developer_comment": "nin label",
     "string": "ID number"
   },
-  "6k2J31": {
-    "developer_comment": "Login MFA",
-    "string": "Options available in the eduID Dashboard:"
-  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -640,6 +636,10 @@
     "developer_comment": "profile username display title",
     "string": "Username"
   },
+  "CnqsLO": {
+    "developer_comment": "security eduid - list item 3-3",
+    "string": "verification status / verification options (Freja+/BankID/eIDAS/Freja eID)"
+  },
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
     "string": "Unique ID:"
@@ -671,6 +671,10 @@
   "DRBzcL": {
     "developer_comment": "no security key has been added",
     "string": "No security key has been added"
+  },
+  "DZ4nXV": {
+    "developer_comment": "Login MFA",
+    "string": "Options available in the eduID settings:"
   },
   "DmmgDx": {
     "developer_comment": "popover info",
@@ -763,6 +767,10 @@
   "Ek2FGc": {
     "string": "Log in on the other device"
   },
+  "EmB9O2": {
+    "developer_comment": "security eduid - list item 3-0",
+    "string": "corresponding icon for built in or separate security key"
+  },
   "EmE1Az": {
     "developer_comment": "eduID index",
     "string": "Safer and easier login with eduID"
@@ -847,6 +855,10 @@
   "GH385e": {
     "developer_comment": "start eduid - list item 3",
     "string": "an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:"
+  },
+  "GIcmTL": {
+    "developer_comment": "login eduid - security key list item 2",
+    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity."
   },
   "GMXbvp": {
     "developer_comment": "password input field label",
@@ -1994,10 +2006,6 @@
     "developer_comment": "login eduid - security key list item 3",
     "string": "If you don't wish to use a security key to log in unless required, set the \"Always use a second factor (MFA) to log in to eduID\" toggle control under Security to off."
   },
-  "d/bTw0": {
-    "developer_comment": "login eduid - security key list item 2",
-    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID and Freja+."
-  },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
     "string": "You will receive a letter which contains a code that for security reasons expires in two weeks."
@@ -2512,6 +2520,10 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
   },
+  "kh3bkV": {
+    "developer_comment": "login eduID - re-login paragraph 2",
+    "string": "These settings are also marked with a \"i\" icon, with additional information on hover."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Adding/removing a security key."
@@ -2683,6 +2695,10 @@
     "developer_comment": "use orcid - list item 2",
     "string": "click the 'Add ORCID account' button in the Account area of eduID,"
   },
+  "m8Rpre": {
+    "developer_comment": "Login MFA",
+    "string": "Verify your identity using the options applicable to you."
+  },
   "mO/ijL": {
     "developer_comment": "Signup",
     "string": "An eduID is already using {email}"
@@ -2754,10 +2770,6 @@
   "naczj1": {
     "developer_comment": "start eduid - list item 3-2",
     "string": "real identity verified"
-  },
-  "ncGA4y": {
-    "developer_comment": "Login MFA link",
-    "string": "go to eduID Dashboard"
   },
   "ng2KA4": {
     "developer_comment": "security second factor individual",
@@ -2881,10 +2893,6 @@
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
-  "ovE/IG": {
-    "developer_comment": "security eduid - list item 3-3",
-    "string": "verification status / verification options (Freja+/BankID)"
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identity"
@@ -3003,6 +3011,10 @@
     "developer_comment": "how to contact support - heading",
     "string": "How to contact eduID support?"
   },
+  "q3Dp8f": {
+    "developer_comment": "Login MFA link",
+    "string": "go to eduID"
+  },
   "q61RBe": {
     "developer_comment": "Verify your Security key",
     "string": "Verify your security key"
@@ -3038,10 +3050,6 @@
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Are you sure you want to remove your security key?"
-  },
-  "qkwsql": {
-    "developer_comment": "Login MFA",
-    "string": "If you have a Swedish national identity number and Freja eID+, confirm your identity and you'll be able to use Freja eID+ to log in."
   },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
