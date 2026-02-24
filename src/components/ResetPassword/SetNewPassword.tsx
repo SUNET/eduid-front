@@ -31,8 +31,8 @@ export function SetNewPassword(): React.JSX.Element | null {
 
   function handleCancel() {
     if (dashboard_link) {
-      document.location.href = dashboard_link;
       dispatch(resetPasswordSlice.actions.resetState());
+      document.location.href = dashboard_link;
     }
   }
 

@@ -133,13 +133,12 @@ function UserTerminated(): React.JSX.Element {
       fetchLogout({});
       // clear localStorage so that the same user is not used again
       globalThis.localStorage.clear();
+      dispatch(resetPasswordSlice.actions.resetState());
     }
-  }, [error_state, fetchLogout]);
+  }, [error_state, fetchLogout, dispatch]);
 
   function reset_password() {
     dispatch(clearNotifications());
-    // TODO: Move resetState() to ResetPasswordApp mount and remove this line
-    dispatch(resetPasswordSlice.actions.resetState());
     navigate("/reset-password");
   }
 
