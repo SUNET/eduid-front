@@ -62,6 +62,7 @@ export default function UsernamePw() {
         password: values.currentPassword,
       });
       if (response.isSuccess) {
+        dispatch(clearNotifications());
         if (response.data.payload.finished) {
           dispatch(loginSlice.actions.callLoginNext());
         }
