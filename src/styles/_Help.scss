@@ -31,32 +31,6 @@
     @extend .notice-box;
   }
 
-  ul.bullets,
-  ol.numbers {
-    list-style-position: inside;
-    margin-bottom: 1.5rem;
-    > li {
-      list-style-position: inside;
-      margin-bottom: 1rem;
-    }
-  }
-  ul.bullets {
-    list-style-type: disc;
-  }
-  ol.numbers {
-    list-style: numeric;
-  }
-  ul.bullets ol {
-    list-style: numeric;
-    list-style-position: inside;
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-  }
-  ul.nested li {
-    margin: 0 0 0.75rem 1.75rem;
-  }
-
   .accordion:not(:last-child) {
     margin-bottom: 1rem;
   }
