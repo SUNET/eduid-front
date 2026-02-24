@@ -1,7 +1,10 @@
 import securityApi from "apis/eduidSecurity";
-import CustomInput from "components/Common/CustomInput";
+import { CustomInputProps } from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
+import { InputWrapper } from "components/Common/InputWrapper";
+import { ShowAndHideButton } from "components/Common/ShowAndHideButton";
 import { useAppSelector } from "eduid-hooks";
+import { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -34,13 +37,39 @@ function validateNin(value: string): string | undefined {
   return undefined;
 }
 
+function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+  const [showNin, setShowNin] = useState(false);
+
+  let className = "is-valid";
+  if (props.meta.touched || props.meta.submitFailed) {
+    if (props.meta.invalid) {
+      className = "is-invalid";
+    }
+  }
+
+  return (
+    <InputWrapper {...props}>
+      <div className="password-input">
+        <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
+        <input
+          {...props.input}
+          id={props.input.name}
+          type={showNin ? "text" : "password"}
+          className={className}
+          placeholder={props.placeholder}
+        />
+      </div>
+    </InputWrapper>
+  );
+}
+
 export interface NinFormData {
   nin?: string;
 }
 
 function NinForm(): React.JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
-  const [addNin] = securityApi.useLazyAddNinQuery()
+  const [addNin] = securityApi.useLazyAddNinQuery();
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -53,7 +82,7 @@ function NinForm(): React.JSX.Element {
   function submitNinForm(values: NinFormData) {
     const nin = values.nin;
     if (nin) {
-      addNin({nin});
+      addNin({ nin });
     }
   }
 
@@ -67,7 +96,7 @@ function NinForm(): React.JSX.Element {
         return (
           <form onSubmit={handleSubmit} className="single-input-form x-adjust">
             <FinalField
-              component={CustomInput}
+              component={NinInput}
               componentClass="input"
               type="text"
               name="nin"
