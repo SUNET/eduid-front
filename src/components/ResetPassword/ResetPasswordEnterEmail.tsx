@@ -14,10 +14,9 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
 
   async function onEnteredEmailAddress(email: string) {
     dispatch(clearNotifications());
-    if (email) {
-      dispatch(resetPasswordSlice.actions.setEmailAddress(email));
-      getResetPasswordState();
-    }
+    if (!email) return;
+    dispatch(resetPasswordSlice.actions.setEmailAddress(email));
+    getResetPasswordState();
   }
 
   return (
