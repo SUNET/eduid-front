@@ -2,11 +2,10 @@ import { emailApi } from "apis/eduidEmail";
 import ConfirmModal from "components/Common/ConfirmModal";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
 import DataTable from "./DataTable";
@@ -18,13 +17,10 @@ interface EmailFormData {
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [selectedEmail, setSelectedEmail] = useState<string | undefined>();
-  const dispatch = useAppDispatch();
   const emails = useAppSelector((state) => state.emails);
-  const [makePrimaryEmail] = emailApi.useLazyMakePrimaryEmailQuery();
   const [verifyEmail] = emailApi.useLazyVerifyEmailQuery();
   const [resendEmailCode] = emailApi.useLazyResendEmailCodeQuery();
   const [newEmail] = emailApi.useLazyNewEmailQuery();
-  const [removeEmail] = emailApi.useLazyRemoveEmailQuery();
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -54,14 +50,6 @@ function Emails() {
     setShowEmailForm(false);
   }
 
-  function handleRemove(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
-    const email = dataNode?.getAttribute("data-object");
-    if (email) {
-      removeEmail({ email: email });
-    }
-  }
-
   function handleEmailForm() {
     setShowEmailForm(true);
   }
@@ -71,28 +59,14 @@ function Emails() {
     if (selectedEmail) resendEmailCode({ email: selectedEmail });
   }
 
-  function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
-    dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
-    const email = dataNode?.getAttribute("data-object");
-    if (email) setSelectedEmail(email);
-  }
-
   function handleStopConfirmation() {
     setSelectedEmail(undefined);
   }
 
   function handleConfirm(values: { [key: string]: string }) {
     const confirmationCode = values["email-confirm-modal"];
-    if (confirmationCode && selectedEmail)
-      verifyEmail({ code: confirmationCode.trim(), email: selectedEmail });
+    if (confirmationCode && selectedEmail) verifyEmail({ code: confirmationCode.trim(), email: selectedEmail });
     setSelectedEmail(undefined);
-  }
-
-  function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
-    const email = dataNode?.getAttribute("data-object");
-    if (email) makePrimaryEmail({ email: email });
   }
 
   function validateEmailsInForm(value: string): string | undefined {
@@ -120,12 +94,7 @@ function Emails() {
         />
       </p>
       <div className="email-display">
-        <DataTable
-          data={emails.emails}
-          handleStartConfirmation={handleStartConfirmation}
-          handleRemove={handleRemove}
-          handleMakePrimary={handleMakePrimary}
-        />
+        <DataTable data={emails.emails} setSelectedEmail={setSelectedEmail} />
         {showEmailForm ? (
           <FinalForm<EmailFormData>
             onSubmit={handleAdd}

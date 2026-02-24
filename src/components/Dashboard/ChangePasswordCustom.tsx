@@ -2,7 +2,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
 import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
@@ -13,15 +13,21 @@ interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
 
 function validateNewPassword(values: { custom?: string; repeat?: string }) {
   const errors: { custom?: string; repeat?: string } = {};
-  if (values !== undefined) {
-    (["custom", "repeat"] as Array<keyof typeof values>).forEach((inputName) => {
-      if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
-        errors[inputName] = "required";
-      } else if (values["custom"]?.replaceAll(/\s/g, "") !== values["repeat"]?.replaceAll(/\s/g, "")) {
-        // Remove whitespace from both passwords before comparing
-        errors["repeat"] = "chpass.different-repeat";
-      }
-    });
+  const { custom, repeat } = values;
+
+  if (!values) return errors;
+  if (!custom || emptyStringPattern.test(custom)) {
+    errors.custom = "required";
+  }
+  if (!repeat || emptyStringPattern.test(repeat)) {
+    errors.repeat = "required";
+  }
+  if (custom && repeat) {
+    const normalizedCustom = custom.replaceAll(/\s/g, "");
+    const normalizedRepeat = repeat.replaceAll(/\s/g, "");
+    if (normalizedCustom !== normalizedRepeat) {
+      errors.repeat = "chpass.different-repeat";
+    }
   }
 
   return errors;
@@ -43,14 +49,13 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
     description: "placeholder text for repeat new password",
   });
 
-  function updatePasswordData(data: { score?: number }) {
-    // This function is called when the password strength meter has calculated password strength
-    // on the current value in the form. We need to trigger validation of the field again at this
-    // point, since validation uses this calculated value (and will already have executed when we
-    // get here).
-    setPwScore(data.score ?? 0);
-    props.formProps.form.change("custom", props.formProps.values?.custom);
-  }
+  const updatePasswordData = useCallback(
+    (data: { score?: number }) => {
+      setPwScore(data.score ?? 0);
+      props.formProps.form.change("custom", props.formProps.values?.custom);
+    },
+    [props.formProps.form, props.formProps.values?.custom],
+  );
 
   return (
     <FinalForm<ChangePasswordFormData>
@@ -138,7 +143,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
                 id="chpass-button"
                 buttonstyle="primary"
                 // prevent weak password submission by disabling save button if score is too low
-                disabled={formProps.submitting || formProps.invalid || Boolean(pwScore <= 2)}
+                disabled={formProps.submitting || formProps.invalid || pwScore <= 2}
                 onClick={formProps.handleSubmit}
               >
                 <FormattedMessage defaultMessage="Save" description="button save" />

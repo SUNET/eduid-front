@@ -1,6 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import EduIDButton from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
+import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
@@ -8,12 +9,13 @@ function ChangePasswordDisplay() {
   const navigate = useNavigate();
   const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
 
-  async function handleSuggestedPassword() {
+  const handleSuggestedPassword = useCallback(async () => {
     const response = await fetchSuggestedPassword();
     if (response.isSuccess) {
       navigate("/profile/chpass");
     }
-  }
+  }, [fetchSuggestedPassword, navigate]);
+
   return (
     <article id="change-password">
       <div className="flex-between baseline">

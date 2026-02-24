@@ -1,7 +1,7 @@
 import { letterProofingApi } from "apis/eduidLetterProofing";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountId } from "./AccountId";
 import { Recommendations } from "./Recommendations";
@@ -17,15 +17,19 @@ export default function Start(): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const [letterProofingState] = letterProofingApi.useLazyLetterProofingStateQuery();
-  let username;
 
-  if (!chosen_given_name && !given_name && emails.length > 0) {
-    username = emails.filter((mail) => mail.primary)[0].email;
-  } else if (chosen_given_name) {
-    username = `${chosen_given_name} ${surname}`;
-  } else if (given_name) {
-    username = `${given_name} ${surname}`;
-  }
+  const username = useMemo(() => {
+    if (chosen_given_name) {
+      return `${chosen_given_name} ${surname}`;
+    }
+    if (given_name) {
+      return `${given_name} ${surname}`;
+    }
+    if (emails.length > 0) {
+      return emails.find((mail) => mail.primary)?.email ?? "";
+    }
+    return "";
+  }, [chosen_given_name, given_name, surname, emails]);
 
   useEffect(() => {
     document.title = intl.formatMessage({

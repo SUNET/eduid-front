@@ -7,9 +7,9 @@ import NameDisplay from "./NameDisplay";
 
 export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields
-  first: string;
-  last: string;
-  display_name: string;
+  readonly first: string;
+  readonly last: string;
+  readonly display_name: string;
 }
 
 interface RenderAddPersonalDataPromptProps {

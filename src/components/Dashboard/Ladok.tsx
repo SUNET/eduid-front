@@ -41,8 +41,7 @@ const LadokContainer = (): React.JSX.Element => {
 
       <p>
         <FormattedMessage
-          defaultMessage={`Data from Ladok might give you access to more services.
-                           Some higher education institutions allow eduID to fetch data from Ladok.`}
+          defaultMessage="Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
           description="Ladok account linking"
         />
       </p>
@@ -51,7 +50,7 @@ const LadokContainer = (): React.JSX.Element => {
         <fieldset>
           <label className="toggle flex-between" htmlFor="ladok-connection">
             <legend>
-              <FormattedMessage defaultMessage={`Link your account to Ladok`} description="Ladok account linking" />
+              <FormattedMessage defaultMessage="Link your account to Ladok" description="Ladok account linking" />
             </legend>
             <input
               onChange={handleSwitchChange}
@@ -68,8 +67,7 @@ const LadokContainer = (): React.JSX.Element => {
       {switchChecked ? <LadokUniversitiesDropdown onLinkSuccess={() => setSwitchChecked(true)} /> : undefined}
       <p className="help-text">
         <FormattedMessage
-          defaultMessage={`Linking your eduID account with data from Ladok is necessary
-                           if you want to access a service requiring a European Student Identifier.`}
+          defaultMessage="Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
           description="Ladok account linking"
         />
       </p>
@@ -195,7 +193,7 @@ const LadokLinkStatus = (): React.JSX.Element => {
 
   return (
     <React.Fragment>
-      {isLinked === true ? (
+      {isLinked === true && (
         <fieldset>
           <div className="ladok-university flex-between">
             <label>
@@ -207,8 +205,6 @@ const LadokLinkStatus = (): React.JSX.Element => {
             <div className="text-large ladok-university-name">{university_name}</div>
           </div>
         </fieldset>
-      ) : (
-        <React.Fragment />
       )}
     </React.Fragment>
   );

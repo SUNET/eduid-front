@@ -1,27 +1,24 @@
 import { bankIDApi } from "apis/eduidBankid";
 import EduIDButton from "components/Common/EduIDButton";
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
-function BankID(): React.JSX.Element {
+export function BankID(): React.JSX.Element {
   const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery();
 
-  async function useBankID() {
+  const useBankID = useCallback(async () => {
     const response = await bankIDVerifyIdentity({ method: "bankid" });
-    if (response.isSuccess) {
-      if (response.data.payload.location) {
-        globalThis.location.assign(response.data.payload.location);
-      }
+    if (response.isSuccess && response.data.payload.location) {
+      globalThis.location.assign(response.data.payload.location);
     }
-  }
+  }, [bankIDVerifyIdentity]);
 
   return (
     <Fragment>
       <p className="proofing-btn-help">
         <FormattedMessage
           description="bankID proofing help text"
-          defaultMessage={`To use this option you will need to first create a digital ID in the 
-            {bankID_link} app.`}
+          defaultMessage="To use this option you will need to first create a digital ID in the {bankID_link} app."
           values={{
             bankID_link: (
               <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank" rel="noreferrer">
@@ -34,8 +31,7 @@ function BankID(): React.JSX.Element {
       <p>
         <FormattedMessage
           description="verify identity"
-          defaultMessage={`The button below will take you to an external identification site, where you by
-          identifying yourself with BankID will verify your identity towards eduID.`}
+          defaultMessage="The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
         />
       </p>
 
@@ -45,5 +41,3 @@ function BankID(): React.JSX.Element {
     </Fragment>
   );
 }
-
-export default BankID;

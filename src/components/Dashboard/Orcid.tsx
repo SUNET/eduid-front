@@ -51,27 +51,9 @@ export function Orcid(): React.JSX.Element {
     description: "Remove orcid aria label",
   });
 
-  if (!orcid?.id) {
+  if (orcid?.id) {
     return (
-      <Fragment>
-        <div className="buttons">
-          <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
-            <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
-            <FormattedMessage description="orcid connect button" defaultMessage={`Add ORCID account`} />
-          </EduIDButton>
-        </div>
-        <p className="help-text">
-          <FormattedMessage
-            description="orcid description"
-            defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research
-            outputs and activities to your identity, regardless of the organisation you are working with.`}
-          />
-        </p>
-      </Fragment>
-    );
-  } else {
-    return (
-      <table className="table-form orcid" role="presentation">
+      <table className="table-form orcid">
         <tbody>
           <tr className="display-none">
             <th>
@@ -102,6 +84,23 @@ export function Orcid(): React.JSX.Element {
           </tr>
         </tbody>
       </table>
+    );
+  } else {
+    return (
+      <Fragment>
+        <div className="buttons">
+          <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
+            <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
+            <FormattedMessage description="orcid connect button" defaultMessage="Add ORCID account" />
+          </EduIDButton>
+        </div>
+        <p className="help-text">
+          <FormattedMessage
+            description="orcid description"
+            defaultMessage="ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
+          />
+        </p>
+      </Fragment>
     );
   }
 }
