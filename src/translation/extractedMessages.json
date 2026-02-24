@@ -904,10 +904,6 @@
     "developer_comment": "Account terminated - heading",
     "string": "Account terminated"
   },
-  "Hn7D2R": {
-    "developer_comment": "nin/password button label",
-    "string": "SHOW"
-  },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
@@ -1233,6 +1229,10 @@
   "P/NqW7": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "If you are able to create a Freja+ by using the app or visiting one of the authorised agents"
+  },
+  "P0b6qM": {
+    "developer_comment": "hide button",
+    "string": "HIDE"
   },
   "P7d2zq": {
     "developer_comment": "button save",
@@ -1940,10 +1940,6 @@
     "developer_comment": "Verified identity",
     "string": "Swedish national ID number"
   },
-  "cBe8pC": {
-    "developer_comment": "nin/password button label",
-    "string": "HIDE"
-  },
   "cFlMrU": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Verify that you have access to your ID- or coordination number."
@@ -2256,6 +2252,10 @@
   "fxzuLK": {
     "developer_comment": "multiple key suggestion",
     "string": "It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+  },
+  "g+EqxL": {
+    "developer_comment": "show button",
+    "string": "SHOW"
   },
   "g0Q/Ki": {
     "developer_comment": "Title for email code input",
