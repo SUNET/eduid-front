@@ -408,10 +408,6 @@
     "developer_comment": "nin label",
     "string": "Personnummer"
   },
-  "6k2J31": {
-    "developer_comment": "Login MFA",
-    "string": "Tillgängliga alternativ i eduID Dashboard:"
-  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -640,6 +636,10 @@
     "developer_comment": "profile username display title",
     "string": "Användarnamn"
   },
+  "CnqsLO": {
+    "developer_comment": "security eduid - list item 3-3",
+    "string": "verifierings-status / alternativ (Freja+/BankID/eIDAS/Freja eID)"
+  },
   "CuFdZp": {
     "developer_comment": "Dashboard AccountId",
     "string": "Unikt ID:"
@@ -671,6 +671,10 @@
   "DRBzcL": {
     "developer_comment": "no security key has been added",
     "string": "Ingen säkerhetsnyckel har lagts till"
+  },
+  "DZ4nXV": {
+    "developer_comment": "Login MFA",
+    "string": "Tillgängliga alternativ i eduID inställningar:"
   },
   "DmmgDx": {
     "developer_comment": "popover info",
@@ -763,6 +767,10 @@
   "Ek2FGc": {
     "string": "Logga in på den andra enheten"
   },
+  "EmB9O2": {
+    "developer_comment": "security eduid - list item 3-0",
+    "string": "motsvarande ikon för inbyggd eller separat säkerhetsnyckel"
+  },
   "EmE1Az": {
     "developer_comment": "eduID index",
     "string": "Säkrare och enklare inloggning med eduID"
@@ -848,6 +856,10 @@
     "developer_comment": "start eduid - list item 3",
     "string": "en statusöversikt av ditt eduID som länkar till föreslagna inställningar i siten. Dessa uppgifter förstärker och utökar användbarheten av ditt eduID:"
   },
+  "GIcmTL": {
+    "developer_comment": "login eduid - security key list item 2",
+    "string": "Tillagda säkerhetsalternativ listas i rullgardinsmenyn \"Andra alternativ\" nedanför säkerhetsnyckelsknappen, till exempel BankID, Freja+, eIDAS eller Freja eID, beroende på vad som gäller för din verifierade identitet."
+  },
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Lösenord"
@@ -891,10 +903,6 @@
   "Hi6qxM": {
     "developer_comment": "Account terminated - heading",
     "string": "Raderat konto"
-  },
-  "Hn7D2R": {
-    "developer_comment": "nin/password button label",
-    "string": "VISA"
   },
   "I+NQu2": {
     "developer_comment": "Use another device #1",
@@ -1221,6 +1229,10 @@
   "P/NqW7": {
     "developer_comment": "verify identity vetting freja tagline",
     "string": "För dig som har eller kan skapa Freja+ genom att använda appen eller besöka ett ombud"
+  },
+  "P0b6qM": {
+    "developer_comment": "hide button",
+    "string": "DÖLJ"
   },
   "P7d2zq": {
     "developer_comment": "button save",
@@ -1928,10 +1940,6 @@
     "developer_comment": "Verified identity",
     "string": "Svenskt personnummer"
   },
-  "cBe8pC": {
-    "developer_comment": "nin/password button label",
-    "string": "DÖLJ"
-  },
   "cFlMrU": {
     "developer_comment": "verify-identity.connect-nin_description",
     "string": "Verifiera att du har tillgång till ditt person- eller samordningsnummer."
@@ -1993,10 +2001,6 @@
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
     "string": "Om du bara vill använda säkerhetsnyckel för att logga in när det efterfrågas, stäng av kontrollen märkt \"Använd alltid säkerhetsnyckel för att logga in\" under Säkerhet."
-  },
-  "d/bTw0": {
-    "developer_comment": "login eduid - security key list item 2",
-    "string": "Ytterligare tillagd säkerhet finns listad i menyn \"Visa andra alternativ\", t.ex. BankID och Freja+."
   },
   "d60/IP": {
     "developer_comment": "letter initialize proofing help text",
@@ -2248,6 +2252,10 @@
   "fxzuLK": {
     "developer_comment": "multiple key suggestion",
     "string": "Det rekommenderas starkt att {strong} säkerhetsnyckel eller passkey/lösennyckel för att försäkra dig om att du kan logga in även om en förloras."
+  },
+  "g+EqxL": {
+    "developer_comment": "show button",
+    "string": "VISA"
   },
   "g0Q/Ki": {
     "developer_comment": "Title for email code input",
@@ -2512,6 +2520,10 @@
     "developer_comment": "ResetPasswordEnterEmail lead text",
     "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner från no-reply@eduid.se."
   },
+  "kh3bkV": {
+    "developer_comment": "login eduID - re-login paragraph 2",
+    "string": "Dessa inställningar är även markerade med en \"i\"-ikon, med ytterligare information vid hovring."
+  },
   "knCe00": {
     "developer_comment": "login eduid - re-login list item 4",
     "string": "Lägga till/ta bort säkerhetsnyckel."
@@ -2616,6 +2628,9 @@
   "login.credential_expired": {
     "string": "Lösenordet är avaktiverat eftersom det inte har använts på över 18 månader. Gör en lösenordsåterställning för att göra det möjligt att logga in igen."
   },
+  "login.credential_not_found": {
+    "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
+  },
   "login.general_failure": {
     "string": "Tillfälligt fel, var god försök igen senare."
   },
@@ -2627,6 +2642,9 @@
   },
   "login.mfa.paragraph": {
     "string": "Du måste välja en ytterligare metod att autentisera dig själv med. Detta säkerställer att bara du kan komma åt ditt eduID."
+  },
+  "login.mfa_auth_failed": {
+    "string": "Autentisering med säkerhetsnyckeln misslyckades. Vänligen försök igen."
   },
   "login.mfa_proofing_method_not_allowed": {
     "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autentiseringen (MFA). Välj en giltig autentiseringsmetod."
@@ -2676,6 +2694,10 @@
   "lxJwll": {
     "developer_comment": "use orcid - list item 2",
     "string": "klicka på knappen 'Länka ORCID konto' under Konto i eduID,"
+  },
+  "m8Rpre": {
+    "developer_comment": "Login MFA",
+    "string": "Verifiera din identitet med de alternativ som gäller för dig."
   },
   "mO/ijL": {
     "developer_comment": "Signup",
@@ -2748,10 +2770,6 @@
   "naczj1": {
     "developer_comment": "start eduid - list item 3-2",
     "string": "verifierad verklig identitet"
-  },
-  "ncGA4y": {
-    "developer_comment": "Login MFA link",
-    "string": "gå till eduID Dashboard"
   },
   "ng2KA4": {
     "developer_comment": "security second factor individual",
@@ -2875,10 +2893,6 @@
   "out_of_sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
-  "ovE/IG": {
-    "developer_comment": "security eduid - list item 3-3",
-    "string": "verifierings-status / alternativ (Freja+/BankID)"
-  },
   "pC+Kit": {
     "developer_comment": "Dashboard nav tab name",
     "string": "Identitet"
@@ -2997,6 +3011,10 @@
     "developer_comment": "how to contact support - heading",
     "string": "Hur kan jag kontakta eduIDs support?"
   },
+  "q3Dp8f": {
+    "developer_comment": "Login MFA link",
+    "string": "Gå till eduID"
+  },
   "q61RBe": {
     "developer_comment": "Verify your Security key",
     "string": "Verifiera din säkerhetsnyckel"
@@ -3032,10 +3050,6 @@
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
     "string": "Är du säker på att du vill ta bort din säkerhetsnyckel?"
-  },
-  "qkwsql": {
-    "developer_comment": "Login MFA",
-    "string": "Om du har ett svenskt personnummer och Freja+ så kan du använda Freja+ för att logga in efter att du har bekräfta din identitet."
   },
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
