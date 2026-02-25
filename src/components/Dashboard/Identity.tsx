@@ -20,8 +20,8 @@ import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
-import LetterIcon from "../../../img/flags/LetterIcon.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
+import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
 import PersonalDataParent from "./PersonalDataParent";
 
