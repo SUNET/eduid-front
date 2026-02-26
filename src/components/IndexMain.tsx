@@ -18,7 +18,7 @@ import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
 import Identity from "./Dashboard/Identity";
 import { Security } from "./Dashboard/Security";
-import { Help } from "./Help";
+import { Help } from "./Help/Help";
 import { Index } from "./Index";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
@@ -45,7 +45,7 @@ export function IndexMain(): React.JSX.Element {
   if (location.pathname === "/profile") {
     return <Navigate to={`${location.pathname}/`} />;
   }
-  
+
   return (
     <React.StrictMode>
       <ThemeProvider>

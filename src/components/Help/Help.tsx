@@ -2,9 +2,9 @@ import securityApi, { SecurityKeysResponse } from "apis/eduidSecurity";
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Accordion, AccordionItemTemplate } from "./Common/AccordionItemTemplate";
-import { CommonToU } from "./Common/CommonToU";
-import ScrollToTopButton from "./ScrollToTopButton";
+import { Accordion, AccordionItemTemplate } from "../Common/AccordionItemTemplate";
+import { CommonToU } from "../Common/CommonToU";
+import ScrollToTopButton from "../ScrollToTopButton";
 
 export function Help(): React.JSX.Element {
   const intl = useIntl();
