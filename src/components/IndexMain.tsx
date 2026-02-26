@@ -18,7 +18,7 @@ import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
 import Start from "./Dashboard/DashboardStart";
 import Identity from "./Dashboard/Identity";
 import { Security } from "./Dashboard/Security";
-import { Help } from "./Help/Help";
+import { Help } from "./Help/HelpIntro";
 import { Index } from "./Index";
 import Login from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
