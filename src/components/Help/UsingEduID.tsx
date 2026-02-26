@@ -26,7 +26,7 @@ export function UsingEduID(): React.JSX.Element {
           <p>
             <FormattedMessage
               description="create eduid - list definition"
-              defaultMessage={"How to register your new eduID account at {eduidRegisterLink}:"}
+              defaultMessage="How to register your new eduID account at {eduidRegisterLink}:"
               values={{
                 eduidRegisterLink: (
                   <a className="text-link" href={signup_link} target="_blank" rel="noreferrer">
@@ -70,19 +70,19 @@ export function UsingEduID(): React.JSX.Element {
             <li>
               <FormattedMessage
                 description="create eduid - list item 6"
-                defaultMessage={`When validated for strength, repeat the password in the corresponding field and press the ”Save” button.`}
+                defaultMessage="When validated for strength, repeat the password in the corresponding field and press the ”Save” button."
               />
             </li>
             <li>
               <FormattedMessage
                 description="create eduid - list item 7"
-                defaultMessage={`Take careful note of your login details (used email address and password)! `}
+                defaultMessage="Take careful note of your login details (used email address and password)!"
               />
             </li>
             <li>
               <FormattedMessage
                 description="create eduid - list item 8"
-                defaultMessage={`You can now log in with your eduID. `}
+                defaultMessage="You can now log in with your eduID."
               />
             </li>
           </ol>
@@ -102,13 +102,14 @@ export function UsingEduID(): React.JSX.Element {
             <h5>
               <FormattedMessage
                 description="login eduid - username heading"
-                defaultMessage={`With username and password`}
+                defaultMessage="With username and password"
               />
             </h5>
             <p>
               <FormattedMessage
                 description="login eduid - username list definition"
-                defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} and press the button "Log in". Your username can be`}
+                defaultMessage={`If you have an eduID account, enter your credentials in the form at {eduidLoginLink} 
+                  and press the button "Log in". Your username can be`}
                 values={{
                   eduidLoginLink: (
                     <a className="text-link" href={dashboard_link} target="_blank" rel="noreferrer">
@@ -122,7 +123,7 @@ export function UsingEduID(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="login eduid - username list item 1"
-                  defaultMessage={`any email address you have entered and confirmed in eduID under Account`}
+                  defaultMessage="any email address you have entered and confirmed in eduID under Account"
                 />
               </li>
               <li>
@@ -137,7 +138,7 @@ export function UsingEduID(): React.JSX.Element {
             <h5>
               <FormattedMessage
                 description="login eduid - remember me heading"
-                defaultMessage={`With saved credentials`}
+                defaultMessage="With saved credentials"
               />
             </h5>
             <p>
@@ -155,8 +156,8 @@ export function UsingEduID(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="login eduid - security key list definition"
-                defaultMessage={`If you have added a security key for authentication under Security, it will be requested after the initial login form in an additional Security step:
-                    `}
+                defaultMessage={`If you have added a security key for authentication under Security, it will be requested 
+                  after the initial login form in an additional Security step:`}
               />
             </p>
             <ul className="bullets">
@@ -169,13 +170,15 @@ export function UsingEduID(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="login eduid - security key list item 2"
-                  defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity. `}
+                  defaultMessage={`Added security alternatives are listed in the "Other options" dropdown below the 
+                    security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity. `}
                 />
               </li>
               <li>
                 <FormattedMessage
                   description="login eduid - security key list item 3"
-                  defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use a second factor (MFA) to log in to eduID" toggle control under Security to off.`}
+                  defaultMessage={`If you don't wish to use a security key to log in unless required, set the "Always use 
+                    a second factor (MFA) to log in to eduID" toggle control under Security to off.`}
                 />
               </li>
             </ul>
@@ -225,15 +228,12 @@ export function UsingEduID(): React.JSX.Element {
                 </article> */}
           <article>
             <h5>
-              <FormattedMessage
-                description="login eduid - other device heading"
-                defaultMessage={`With another device`}
-              />
+              <FormattedMessage description="login eduid - other device heading" defaultMessage="With another device" />
             </h5>
             <p>
               <FormattedMessage
                 description="login eduid - other device list definition"
-                defaultMessage={`Use your credentials from another device than you wish to access eduID with:`}
+                defaultMessage="Use your credentials from another device than you wish to access eduID with:"
               />
             </p>
             <ol className="numbers">
@@ -286,14 +286,15 @@ export function UsingEduID(): React.JSX.Element {
             <li>
               <FormattedMessage
                 description="login eduid - forgot pw list item 3"
-                defaultMessage={`Follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID.`}
+                defaultMessage={`Follow the instructions in the email within 2 hours. The steps to verify your email address 
+                  and selecting a new password are the same as when you created your eduID.`}
               />
             </li>
           </ol>
           <p>
             <FormattedMessage
               description="login eduid - forgot pw paragraph"
-              defaultMessage={`Note: depending on your previous settings you might need to re-verify your identity in eduID.`}
+              defaultMessage="Note: depending on your previous settings you might need to re-verify your identity in eduID."
             />
           </p>
         </AccordionItemTemplate>

@@ -51,7 +51,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="which verification methods - paragraph2"
-            defaultMessage={`Note: you can remove a verified identity connected to your eduID in the Identity area.`}
+            defaultMessage="Note: you can remove a verified identity connected to your eduID in the Identity area."
           />
         </p>
         <section>
@@ -59,7 +59,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <strong>
               <FormattedMessage
                 description="swedish nin - heading"
-                defaultMessage={`If you have a Swedish personal identity number or coordination number`}
+                defaultMessage="If you have a Swedish personal identity number or coordination number"
               />
             </strong>
             <FormattedMessage
@@ -108,21 +108,23 @@ export function VerificationOfIdentity(): React.JSX.Element {
               &nbsp;
               <FormattedMessage
                 description="verification methods - list item 3"
-                defaultMessage={` the user will be asked to verify themself using their BankID service. If you don't have BankID you have to create it separately before you can
-                      complete verification of your eduID. Read more about BankID below.`}
+                defaultMessage={` the user will be asked to verify themself using their BankID service. If you don't 
+                  have BankID you have to create it separately before you can complete verification of your eduID. 
+                  Read more about BankID below.`}
               />
             </li>
           </ul>
           <p>
             <FormattedMessage
               description="freja - protected I paragraph 1"
-              defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your Swedish passport visiting an authorised ATG agent.`}
+              defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your 
+                Swedish passport visiting an authorised ATG agent.`}
               values={{
                 strong: (
                   <strong>
                     <FormattedMessage
                       description="freja - protected strong"
-                      defaultMessage={`If you have a protected identity `}
+                      defaultMessage="If you have a protected identity "
                     />
                   </strong>
                 ),
@@ -132,13 +134,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <br />
             <FormattedMessage
               description="freja - protected ID paragraph 2"
-              defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
+              defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja 
+                (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
               values={{
                 FrejaProtectedId: (
                   <a className="text-link" href={FrejaProtectedIdURL} target="_blank" rel="noreferrer">
                     <FormattedMessage
                       description="use freja protected id - link text"
-                      defaultMessage={`freja-for-swedes-with-protected-identities`}
+                      defaultMessage="freja-for-swedes-with-protected-identities"
                     />
                   </a>
                 ),
@@ -151,13 +154,12 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <strong>
               <FormattedMessage
                 description="method eidas - heading"
-                defaultMessage={`If you are an EU citizen and without a Swedish personal identity number`}
+                defaultMessage="If you are an EU citizen and without a Swedish personal identity number"
               />
             </strong>
             <FormattedMessage
               description="method eidas - paragraph"
-              defaultMessage={`, you could use 
-                    {emphasis} to verify your identity. Read more about eIDAS below.`}
+              defaultMessage=", you could use {emphasis} to verify your identity. Read more about eIDAS below."
               values={{
                 emphasis: <em>eIDAS</em>,
               }}
@@ -169,7 +171,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <strong>
               <FormattedMessage
                 description="method international - heading"
-                defaultMessage={`If you are not an EU citizen and without a Swedish personal identity number`}
+                defaultMessage="If you are not an EU citizen and without a Swedish personal identity number"
               />
             </strong>
             <FormattedMessage
@@ -184,7 +186,8 @@ export function VerificationOfIdentity(): React.JSX.Element {
           <p className="error-txt">
             <FormattedMessage
               description="freja - error"
-              defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to substantially increase the range is in progress.`}
+              defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to substantially 
+                increase the range is in progress.`}
             />
           </p>
         </section>
@@ -408,7 +411,8 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="what is international - paragraph 1"
-                defaultMessage={`Freja is an eID based on an identity verification platform using biometric passports, combined with the users mobile device to create a verified digital identity than can be used remotely.`}
+                defaultMessage={`Freja is an eID based on an identity verification platform using biometric passports, 
+                  combined with the users mobile device to create a verified digital identity than can be used remotely.`}
               />
             </p>
 
@@ -429,7 +433,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="use international - list definition"
-                defaultMessage={`How to use Freja with eduID:`}
+                defaultMessage="How to use Freja with eduID:"
               />
             </p>
             <ul className="bullets">
@@ -437,7 +441,8 @@ export function VerificationOfIdentity(): React.JSX.Element {
                 <FormattedMessage
                   description="use international - list item 1"
                   defaultMessage={`to verify your eduID using Freja you first need to get a Freja account with a verified
-                         profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) and following the instructions,`}
+                         profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) 
+                         and following the instructions,`}
                   values={{
                     FrejaApp: (
                       <a className="text-link" href={FrejaAppURL} target="_blank" rel="noreferrer">
@@ -458,7 +463,8 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="international if personal number - paragraph"
-                defaultMessage={`Note: holders of Swedish personal identity numbers or EU citizens are advised to use those supported methods instead.`}
+                defaultMessage={`Note: holders of Swedish personal identity numbers or EU citizens are advised to use 
+                  those supported methods instead.`}
               />
             </p>
           </article>

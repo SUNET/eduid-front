@@ -19,7 +19,8 @@ export function AboutTermsOfUse(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="what are eduIDs terms of use - paragraph"
-            defaultMessage={`These terms are accepted by the user upon creating an eduID account. It is a legal agreement between eduID and its users to abide by the terms.`}
+            defaultMessage={`These terms are accepted by the user upon creating an eduID account. 
+              It is a legal agreement between eduID and its users to abide by the terms.`}
           />
         </p>
         <CommonToU version="2016-v1" />

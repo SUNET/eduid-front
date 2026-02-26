@@ -10,7 +10,7 @@ import { ConnectingAccountOrcid } from "./ConnectingAccountOrcid";
 import { ContactSupport } from "./ContactSupport";
 import { EnhancingSecurityLevel } from "./EnhancingSecurityLevel";
 import { ManageEduIDSettings } from "./ManageEduIDSettings";
-import { PrivacyPolicyAndWebAccessibility } from "./PrivacyPolicyAndWebAccessibilit";
+import { PrivacyPolicyAndWebAccessibility } from "./PrivacyPolicyAndWebAccessibility";
 import { UsingEduID } from "./UsingEduID";
 import { VerificationOfIdentity } from "./VerificationOfIdentity";
 

@@ -53,9 +53,9 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
           <li>
             <FormattedMessage
               description="use orcid - list item 3"
-              defaultMessage="sign in to your ORCID account and grant 
+              defaultMessage={`sign in to your ORCID account and grant 
                     eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is 
-                    connected to the correct eduID."
+                    connected to the correct eduID.`}
             />
           </li>
         </ul>
@@ -82,8 +82,7 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
           <FormattedMessage
             description="what is ladok - paragraph"
             defaultMessage={`Ladok is a student administration system used in all Swedish higher education 
-                  institutions for registration and grading. A couple of schools have chosen to let eduID release the
-                  
+                  institutions for registration and grading. A couple of schools have chosen to let eduID release the        
                   ESI attribute, used for instance when applying to a Erasmus exchange student program.`}
           />
         </p>

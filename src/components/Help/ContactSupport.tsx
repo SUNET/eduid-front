@@ -35,7 +35,8 @@ export function ContactSupport(): React.JSX.Element {
           <li>
             <FormattedMessage
               description="how to contact support - list item 1"
-              defaultMessage="Always let us know the email address you used when you logged in to eduID, and if you are logged in include your ‘eppn’ unique ID as presented in the logged in start page."
+              defaultMessage={`Always let us know the email address you used when you logged in to eduID, and if you are 
+                logged in include your ‘eppn’ unique ID as presented in the logged in start page.`}
             />
           </li>
           <li>
@@ -57,12 +58,12 @@ export function ContactSupport(): React.JSX.Element {
           <strong>
             <FormattedMessage
               description="how to contact support email - strong"
-              defaultMessage={`In order to get best possible support, we recommend that you send e-mail`}
+              defaultMessage="In order to get best possible support, we recommend that you send e-mail"
             />
           </strong>
           <FormattedMessage
             description="how to contact support phone"
-            defaultMessage={`, but for simple matters you can also reach us on phone number `}
+            defaultMessage=", but for simple matters you can also reach us on phone number"
           />
           &nbsp;
           <a className="text-link" href="tel:+468-55521362">

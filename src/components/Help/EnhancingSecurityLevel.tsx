@@ -73,7 +73,9 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="how add security key - paragraph 2"
-            defaultMessage="Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Manage your security keys in Security. You might still need to use your security key if other connecting services require MFA."
+            defaultMessage={`Note: if you have added a security key to your eduID it must be used to log in to eduID, 
+              unless you turn off this feature under Manage your security keys in Security. You might still need to use 
+              your security key if other connecting services require MFA.`}
           />
         </p>
         <h4>
@@ -85,7 +87,9 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="which type of security key - paragraph"
-            defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below.`}
+            defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be 
+              used with the service. More information on the standard as well as an updated list of valid keys can 
+              be found below.`}
           />
         </p>
         <Accordion id="eduid-security">
@@ -101,7 +105,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
               <p>
                 <FormattedMessage
                   description="choosing usb key - paragraph"
-                  defaultMessage={`Not all security keys meet the necessary specifications to be used as a security key for eduID.`}
+                  defaultMessage="Not all security keys meet the necessary specifications to be used as a security key for eduID."
                 />
               </p>
               <p>
@@ -115,7 +119,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
                 <li>
                   <FormattedMessage
                     description="usb key - list item 1"
-                    defaultMessage={`Certified FIDO 2.0, you can read more at {Fido}.`}
+                    defaultMessage="Certified FIDO 2.0, you can read more at {Fido}."
                     values={{
                       Fido: (
                         <a className="text-link" href="https://fidoalliance.org/" target="_blank" rel="noreferrer">
@@ -128,7 +132,8 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
                 <li>
                   <FormattedMessage
                     description="usb key - list item 2"
-                    defaultMessage={`Releases a certificate issued by the manufacturer providing information about the device where used, as well as requiring the user physically present for the key to be used.`}
+                    defaultMessage={`Releases a certificate issued by the manufacturer providing information about the 
+                      device where used, as well as requiring the user physically present for the key to be used.`}
                   />
                 </li>
               </ul>
@@ -210,7 +215,9 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
               <article>
                 <p>
                   <FormattedMessage
-                    defaultMessage={`This is a list, derived from Fido Alliance, of names of maker and models of external security keys that can be used for eduID, though there might be other keys that could work for this purpose. They are listed in alphabetical order and updated regularly.`}
+                    defaultMessage={`This is a list, derived from Fido Alliance, of names of maker and models of external 
+                      security keys that can be used for eduID, though there might be other keys that could work for this 
+                      purpose. They are listed in alphabetical order and updated regularly.`}
                     description="Security keys list - paragraph"
                   />
                 </p>
@@ -224,7 +231,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
                     </thead>
                     <tbody>
                       {approvedSecurityKeys?.entries.map((item, index) => (
-                        <tr key={index}>
+                        <tr key={item}>
                           <td>{index + 1}</td>
                           <td>{item}</td>
                         </tr>

@@ -31,54 +31,47 @@ export function ManageEduIDSettings(): React.JSX.Element {
             additionalInfo={null}
           >
             <p>
-              <FormattedMessage
-                description="start eduid - list definition"
-                defaultMessage={`The Start page contains:`}
-              />
+              <FormattedMessage description="start eduid - list definition" defaultMessage="The Start page contains:" />
             </p>
             <ul className="bullets">
               <li>
-                <FormattedMessage description="start eduid - list item 1" defaultMessage={`your name`} />
+                <FormattedMessage description="start eduid - list item 1" defaultMessage="your name" />
               </li>
               <li>
                 <FormattedMessage
                   description="start eduid - list item 2"
-                  defaultMessage={`your unique user ID - part of what is sometimes referred to as EPPN.`}
+                  defaultMessage="your unique user ID - part of what is sometimes referred to as EPPN."
                 />
               </li>
               <li>
                 <FormattedMessage
                   description="start eduid - list item 3"
-                  defaultMessage={`an overview of the status of your eduID with links to where it can be addressed in the site. These tasks strengthen and increase the use of your eduID:
-                          `}
+                  defaultMessage={`an overview of the status of your eduID with links to where it can be addressed in 
+                    the site. These tasks strengthen and increase the use of your eduID:`}
                 />
                 <ul className="nested">
                   <li>
                     <FormattedMessage
                       description="start eduid - list item 3-1"
-                      defaultMessage={`confirmed account (confirmed email address and accepted terms of use)
-                          `}
+                      defaultMessage="confirmed account (confirmed email address and accepted terms of use)"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="start eduid - list item 3-2"
-                      defaultMessage={`real identity verified
-                          `}
+                      defaultMessage="real identity verified"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="start eduid - list item 3-3"
-                      defaultMessage={`enhanced security (added a method used for multi factor login)
-                          `}
+                      defaultMessage="enhanced security (added a method used for multi factor login)"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="start eduid - list item 3-4"
-                      defaultMessage={`a verified security key (bound your verified identity to your multi factor login).
-                          `}
+                      defaultMessage="a verified security key (bound your verified identity to your multi factor login)."
                     />
                   </li>
                 </ul>
@@ -87,7 +80,8 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="start eduid - paragraph"
-                defaultMessage={`Note: You can read about how the status correlates to connecting services in the help section "Assurance levels".`}
+                defaultMessage={`Note: You can read about how the status correlates to connecting services in the help 
+                  section "Assurance levels".`}
               />
             </p>
           </AccordionItemTemplate>
@@ -99,41 +93,39 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="identity eduid - list definition"
-                defaultMessage={`The Identity page contains:`}
+                defaultMessage="The Identity page contains:"
               />
             </p>
             <ul className="bullets">
               <li>
                 <FormattedMessage
                   description="identity eduid - list item 1"
-                  defaultMessage={`A table presenting your verified identities if you have any.`}
+                  defaultMessage="A table presenting your verified identities if you have any."
                 />
               </li>
               <li>
                 <FormattedMessage
                   description="identity eduid - list item 2"
-                  defaultMessage={`Options for identity verification if your real identity is not verified, or if your existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
+                  defaultMessage={`Options for identity verification if your real identity is not verified, or if your 
+                    existing verification is not with a Swedish ID- or coordination number, depending on your situation:`}
                 />
                 <ul className="nested">
                   <li>
                     <FormattedMessage
                       description="identity eduid - list item 2-1"
-                      defaultMessage={`With Swedish digital ID (Freja+/BankID) or by post.
-                          `}
+                      defaultMessage="With Swedish digital ID (Freja+/BankID) or by post."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="identity eduid - list item 2-2"
-                      defaultMessage={`With eIDAS electronic identification for EU citizens.
-                          `}
+                      defaultMessage="With eIDAS electronic identification for EU citizens."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="identity eduid - list item 2-3"
-                      defaultMessage={`With Freja eID for most nationalities.
-                          `}
+                      defaultMessage="With Freja eID for most nationalities."
                     />
                   </li>
                 </ul>
@@ -160,7 +152,7 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="security eduid - list definition"
-                defaultMessage={`The Security page contains:`}
+                defaultMessage="The Security page contains:"
               />
             </p>
             <ul className="bullets">
@@ -175,15 +167,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 1-1"
-                      defaultMessage={`This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics.
-                          `}
+                      defaultMessage="This device: built in security key in mobile or laptop, e.g. a passkey, including your biometrics."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 1-2"
-                      defaultMessage={`Security key: external device such as your USB security key.
-                          `}
+                      defaultMessage="Security key: external device such as your USB security key."
                     />
                   </li>
                 </ul>
@@ -199,43 +189,37 @@ export function ManageEduIDSettings(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="security eduid - list item 3"
-                  defaultMessage={`A table displaying all your added security keys with the following information: 
-                          `}
+                  defaultMessage="A table displaying all your added security keys with the following information: "
                 />
                 <ul className="nested">
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 3-0"
-                      defaultMessage={`corresponding icon for built in or separate security key
-                          `}
+                      defaultMessage="corresponding icon for built in or separate security key"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 3-1"
-                      defaultMessage={`the descriptive name given by you when created
-                          `}
+                      defaultMessage="the descriptive name given by you when created"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 3-2"
-                      defaultMessage={`dates of creation and latest use
-                          `}
+                      defaultMessage="dates of creation and latest use"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 3-3"
-                      defaultMessage={`verification status / verification options (Freja+/BankID/eIDAS/Freja eID)
-                          `}
+                      defaultMessage="verification status / verification options (Freja+/BankID/eIDAS/Freja eID)"
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="security eduid - list item 3-4"
-                      defaultMessage={`a bin icon which deletes the key when clicked.
-                          `}
+                      defaultMessage="a bin icon which deletes the key when clicked."
                     />
                   </li>
                 </ul>
@@ -244,7 +228,7 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="security eduid - paragraph"
-                defaultMessage={`Note: You can read more about security keys in the help section "Enhancing the security level of eduID".`}
+                defaultMessage="Note: You can read more about security keys in the help section 'Enhancing the security level of eduID'."
               />
             </p>
           </AccordionItemTemplate>
@@ -256,43 +240,46 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="account eduid - list definition"
-                defaultMessage={`The Account page contains:`}
+                defaultMessage="The Account page contains:"
               />
             </p>
             <ul className="bullets">
               <li>
                 <strong>
-                  <FormattedMessage description="account eduid - list item 0-heading" defaultMessage={`Unique ID: `} />
+                  <FormattedMessage description="account eduid - list item 0-heading" defaultMessage="Unique ID: " />
                 </strong>
                 &nbsp;
                 <FormattedMessage
                   description="account eduid - list item 0"
-                  defaultMessage={` A unique username for your eduID that is generated for you when creating the account.`}
+                  defaultMessage="A unique username for your eduID that is generated for you when creating the account."
                 />
               </li>
               <li>
                 <strong>
                   <FormattedMessage
                     description="account eduid - list item 1-heading"
-                    defaultMessage={`Email addresses: `}
+                    defaultMessage="Email addresses: "
                   />
                 </strong>
                 &nbsp;
                 <FormattedMessage
                   description="account eduid - list item 1"
-                  defaultMessage={` You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:`}
+                  defaultMessage={` You can add as many as you wish, but need to have at least one email address that 
+                    you have confirmed access to. You can log in with all confirmed addresses but the primary one will 
+                    be used for communication with you. They are listed in a table with the following options:`}
                 />
                 <ul className="nested">
                   <li>
                     <FormattedMessage
                       description="account eduid - list item 1-1"
-                      defaultMessage={`Add by clicking on the "+ add more" link and remove by clicking on the bin icon.`}
+                      defaultMessage="Add by clicking on the '+ add more' link and remove by clicking on the bin icon."
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="account eduid - list item 1-2"
-                      defaultMessage={`Confirm an address by clicking on the link "Confirm" and enter the code that is emailed to that address into the website form.`}
+                      defaultMessage={`Confirm an address by clicking on the link "Confirm" and enter the code that is 
+                        emailed to that address into the website form.`}
                     />
                   </li>
                   <li>
@@ -305,7 +292,7 @@ export function ManageEduIDSettings(): React.JSX.Element {
               </li>
               <li>
                 <strong>
-                  <FormattedMessage description="account eduid - list item 2-heading" defaultMessage={`Language:  `} />
+                  <FormattedMessage description="account eduid - list item 2-heading" defaultMessage="Language:  " />
                 </strong>
                 &nbsp;
                 <FormattedMessage
@@ -317,15 +304,14 @@ export function ManageEduIDSettings(): React.JSX.Element {
                   <li>
                     <FormattedMessage
                       description="settings eduid - list item 2-1"
-                      defaultMessage="To change the default language for eduID you can log in to eduID and select your 
-                  preference using the Language radio buttons under Account. "
+                      defaultMessage={` To change the default language for eduID you can log in to eduID and select your 
+                  preference using the Language radio buttons under Account. `}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="settings eduid - list item 2-2"
-                      defaultMessage="You can also change the language for the displayed page in the footer of the 
-                  webpage."
+                      defaultMessage="You can also change the language for the displayed page in the footer of the webpage."
                     />
                   </li>
                 </ul>
@@ -334,13 +320,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
                 <strong>
                   <FormattedMessage
                     description="account eduid - list item 3-heading"
-                    defaultMessage={`Change password: `}
+                    defaultMessage="Change password: "
                   />
                 </strong>
                 &nbsp;
                 <FormattedMessage
                   description="account eduid - list item 3"
-                  defaultMessage={`Always change your password if you believe someone else has access to it. `}
+                  defaultMessage="Always change your password if you believe someone else has access to it."
                 />
                 <ul className="nested">
                   <li>
@@ -354,13 +340,14 @@ export function ManageEduIDSettings(): React.JSX.Element {
                   <li>
                     <FormattedMessage
                       description="account eduid - list item 3-2"
-                      defaultMessage={`A randomly created suggested password is generally considered safest and you can use a third party or browser built in Password Manager tool to help you keep track of your password.`}
+                      defaultMessage={`A randomly created suggested password is generally considered safest and you can 
+                        use a third party or browser built in Password Manager tool to help you keep track of your password.`}
                     />
                   </li>
                   <li>
                     <FormattedMessage
                       description="account eduid - list item 3-3"
-                      defaultMessage={`If you are using a passkey for your login, don't save it on the same key chain as your password.`}
+                      defaultMessage="If you are using a passkey for your login, don't save it on the same key chain as your password."
                     />
                   </li>
                 </ul>
@@ -369,33 +356,33 @@ export function ManageEduIDSettings(): React.JSX.Element {
                 <strong>
                   <FormattedMessage
                     description="account eduid - list item 4-heading"
-                    defaultMessage={`ORCID account: `}
+                    defaultMessage="ORCID account: "
                   />
                 </strong>
                 &nbsp;
                 <FormattedMessage
                   description="account eduid - list item 4"
-                  defaultMessage={`A button connecting your eduID with your existing ORCID iD.`}
+                  defaultMessage="A button connecting your eduID with your existing ORCID iD."
                 />
               </li>
               <li>
                 <strong>
                   <FormattedMessage
                     description="account eduid - list item 5-heading"
-                    defaultMessage={`ESI information: `}
+                    defaultMessage="ESI information: "
                   />
                 </strong>
                 &nbsp;
                 <FormattedMessage
                   description="account eduid - list item 5"
-                  defaultMessage={`A toggle control and select box connecting your eduID to ESI, if enabled by your institution.`}
+                  defaultMessage="A toggle control and select box connecting your eduID to ESI, if enabled by your institution."
                 />
               </li>
               <li>
                 <strong>
                   <FormattedMessage
                     description="account eduid - list item 6-heading"
-                    defaultMessage={`Blocking and deleting eduID: `}
+                    defaultMessage="Blocking and deleting eduID: "
                   />
                 </strong>
                 &nbsp;
@@ -422,7 +409,8 @@ export function ManageEduIDSettings(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="delete eduid - paragraph"
-            defaultMessage={`If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
+            defaultMessage={`If you wish to block access to your account you have the option to remove it under 
+              Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
           />
         </p>
       </article>
