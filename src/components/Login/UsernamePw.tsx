@@ -35,7 +35,7 @@ export default function UsernamePw() {
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
   const [conditionalAuthTrigger, setConditionalAuthTrigger] = useState(0);
-  const conditionalAbortRef = useRef(new AbortController());
+  const conditionalQueryRef = useRef<ReturnType<typeof performAuthentication> | null>(null);
   let loginHeading;
 
   if (securityZoneAction) {
@@ -86,7 +86,7 @@ export default function UsernamePw() {
   async function getChallenge() {
     // Abort any in-flight conditional auth before starting staged auth,
     // since the browser only allows one pending navigator.credentials.get() at a time.
-    conditionalAbortRef.current.abort();
+    conditionalQueryRef.current?.abort();
     if (ref) {
       const response = await fetchMfaAuth({ ref: ref });
       if (response.isSuccess) {
@@ -109,8 +109,7 @@ export default function UsernamePw() {
     if (!webauthn) {
       return;
     }
-    const abortController = new AbortController();
-    conditionalAbortRef.current = abortController;
+    let cancelled = false;
 
     const conditionalAuthentication = async () => {
       if (!ref) {
@@ -118,19 +117,19 @@ export default function UsernamePw() {
       }
       const response = await fetchMfaAuth({ ref: ref });
       // After the await, check if this effect invocation was already cleaned up
-      // (e.g. React StrictMode unmount-remount cycle). If so, bail out so the
-      // second mount's fresh AbortController gets a clean cache entry.
-      if (abortController.signal.aborted) {
+      // (e.g. React StrictMode unmount-remount cycle). If so, bail out.
+      if (cancelled) {
         return;
       }
       if (response.isSuccess) {
         const webauth_options = response.data.payload.webauthn_options;
         if (webauth_options) {
-          const result = await performAuthentication({
+          const queryPromise = performAuthentication({
             webauth_options,
             mediation: "conditional",
-            signal: abortController.signal,
           });
+          conditionalQueryRef.current = queryPromise;
+          const result = await queryPromise;
           if (result.isSuccess) {
             fetchMfaAuth({ ref: ref!, webauthn_response: result.data });
           }
@@ -139,7 +138,8 @@ export default function UsernamePw() {
     };
     conditionalAuthentication();
     return () => {
-      abortController.abort();
+      cancelled = true;
+      conditionalQueryRef.current?.abort();
     };
   }, [fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
 
