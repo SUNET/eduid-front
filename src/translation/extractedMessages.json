@@ -342,10 +342,6 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
-  "5DJYxR": {
-    "developer_comment": "security eduid - paragraph",
-    "string": "Note: You can read more about security keys in the help section \"Enhancing the security level of eduID\"."
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
@@ -676,6 +672,10 @@
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID settings:"
   },
+  "DjWrG5": {
+    "developer_comment": "account eduid - list item 1-1",
+    "string": "Add by clicking on the '+ add more' link and remove by clicking on the bin icon."
+  },
   "DmmgDx": {
     "developer_comment": "popover info",
     "string": "To edit these settings you might be asked to re-login."
@@ -703,10 +703,6 @@
   "E0OaFE": {
     "developer_comment": "create eduid - list definition",
     "string": "How to register your new eduID account at {eduidRegisterLink}:"
-  },
-  "E4ZifZ": {
-    "developer_comment": "account eduid - list item 1-1",
-    "string": "Add by clicking on the \"+ add more\" link and remove by clicking on the bin icon."
   },
   "E7bB/9": {
     "developer_comment": "status overview title",
@@ -1793,6 +1789,10 @@
   "aRUmm4": {
     "developer_comment": "what is bankid - paragraph",
     "string": "BankID is a widely used electronic verification system, available to holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden."
+  },
+  "aTLYz6": {
+    "developer_comment": "security eduid - paragraph",
+    "string": "Note: You can read more about security keys in the help section 'Enhancing the security level of eduID'."
   },
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
