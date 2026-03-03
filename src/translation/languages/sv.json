@@ -342,10 +342,6 @@
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
   },
-  "5DJYxR": {
-    "developer_comment": "security eduid - paragraph",
-    "string": "Obs: du kan läsa mer om säkerhetsnycklar i hjälpavsnittet \"Utökad säkerhet med ditt eduID\"."
-  },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
     "string": "Med eIDAS elektronisk identifiering"
@@ -676,6 +672,10 @@
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID inställningar:"
   },
+  "DjWrG5": {
+    "developer_comment": "account eduid - list item 1-1",
+    "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
+  },
   "DmmgDx": {
     "developer_comment": "popover info",
     "string": "För att ändra dessa inställningar kan du bli ombedd att logga in på nytt."
@@ -703,10 +703,6 @@
   "E0OaFE": {
     "developer_comment": "create eduid - list definition",
     "string": "Hur du registrerar ditt nya eduID-konto på {eduidRegisterLink}:"
-  },
-  "E4ZifZ": {
-    "developer_comment": "account eduid - list item 1-1",
-    "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
   },
   "E7bB/9": {
     "developer_comment": "status overview title",
@@ -1793,6 +1789,10 @@
   "aRUmm4": {
     "developer_comment": "what is bankid - paragraph",
     "string": "BankID är en e-legitimation som är tillgänglig för innehavare av ett svenskt personnummer, svensk godkänd ID-handling (inkl. pass, körkort och ID-kort) och kund hos en av de anslutna bankerna."
+  },
+  "aTLYz6": {
+    "developer_comment": "security eduid - paragraph",
+    "string": "Obs: du kan läsa mer om säkerhetsnycklar i hjälpavsnittet \"Utökad säkerhet med ditt eduID\". "
   },
   "aXZyf1": {
     "developer_comment": "Names & Display Name",
