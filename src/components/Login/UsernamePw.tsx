@@ -117,6 +117,12 @@ export default function UsernamePw() {
         return;
       }
       const response = await fetchMfaAuth({ ref: ref });
+      // After the await, check if this effect invocation was already cleaned up
+      // (e.g. React StrictMode unmount-remount cycle). If so, bail out so the
+      // second mount's fresh AbortController gets a clean cache entry.
+      if (abortController.signal.aborted) {
+        return;
+      }
       if (response.isSuccess) {
         const webauth_options = response.data.payload.webauthn_options;
         if (webauth_options) {
