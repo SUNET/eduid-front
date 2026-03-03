@@ -11,6 +11,7 @@ interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
   onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
+  onComplete?(): void;
   discoverable?: boolean;
 }
 
@@ -30,14 +31,18 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
 
   async function useSecurityKey() {
     setActive(true);
-    const webauth_options = await props.setup();
-    if (webauth_options) {
-      const response = await performAuthentication({ webauth_options });
-      if (response.isSuccess) {
-        props.onSuccess(response.data);
+    try {
+      const webauth_options = await props.setup();
+      if (webauth_options) {
+        const response = await performAuthentication({ webauth_options });
+        if (response.isSuccess) {
+          props.onSuccess(response.data);
+        }
       }
+    } finally {
+      setActive(false);
+      props.onComplete?.();
     }
-    setActive(false);
   }
 
   return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={props.discoverable} />;

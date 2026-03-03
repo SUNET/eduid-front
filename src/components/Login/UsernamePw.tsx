@@ -1,4 +1,5 @@
 import { loginApi } from "apis/eduidLogin";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import { PassKey } from "components/Common/Passkey";
@@ -6,7 +7,7 @@ import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -32,6 +33,9 @@ export default function UsernamePw() {
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
+  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  const [conditionalAuthTrigger, setConditionalAuthTrigger] = useState(0);
+  const conditionalAbortRef = useRef(new AbortController());
   let loginHeading;
 
   if (securityZoneAction) {
@@ -80,6 +84,9 @@ export default function UsernamePw() {
   }
 
   async function getChallenge() {
+    // Abort any in-flight conditional auth before starting staged auth,
+    // since the browser only allows one pending navigator.credentials.get() at a time.
+    conditionalAbortRef.current.abort();
     if (ref) {
       const response = await fetchMfaAuth({ ref: ref });
       if (response.isSuccess) {
@@ -94,6 +101,42 @@ export default function UsernamePw() {
     }
   }
 
+  function restartConditionalAuth() {
+    setConditionalAuthTrigger((n) => n + 1);
+  }
+
+  useEffect(() => {
+    if (!webauthn) {
+      return;
+    }
+    const abortController = new AbortController();
+    conditionalAbortRef.current = abortController;
+
+    const conditionalAuthentication = async () => {
+      if (!ref) {
+        return;
+      }
+      const response = await fetchMfaAuth({ ref: ref });
+      if (response.isSuccess) {
+        const webauth_options = response.data.payload.webauthn_options;
+        if (webauth_options) {
+          const result = await performAuthentication({
+            webauth_options,
+            mediation: "conditional",
+            signal: abortController.signal,
+          });
+          if (result.isSuccess) {
+            fetchMfaAuth({ ref: ref!, webauthn_response: result.data });
+          }
+        }
+      }
+    };
+    conditionalAuthentication();
+    return () => {
+      abortController.abort();
+    };
+  }, [fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
+
   return (
     <React.Fragment>
       <section className="intro">
@@ -105,7 +148,12 @@ export default function UsernamePw() {
       </section>
       {webauthn && (
         <section className="passkey-option">
-          <PassKey setup={getChallenge} onSuccess={useCredential} discoverable={webauthn} />
+          <PassKey
+            setup={getChallenge}
+            onSuccess={useCredential}
+            onComplete={restartConditionalAuth}
+            discoverable={webauthn}
+          />
         </section>
       )}
       <section className="username-pw-option">
@@ -147,6 +195,7 @@ export default function UsernamePw() {
 
 function UsernameInputPart(): React.JSX.Element {
   const authn_options = useAppSelector((state) => state.login.authn_options);
+  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
 
   function handleClickWrongPerson() {
@@ -186,7 +235,14 @@ function UsernameInputPart(): React.JSX.Element {
       </React.Fragment>
     );
   }
-  return <UserNameInput name="username" autoFocus={true} required={true} autoComplete="username" />;
+  return (
+    <UserNameInput
+      name="username"
+      autoFocus={true}
+      required={true}
+      autoComplete={webauthn ? "username webauthn" : "username"}
+    />
+  );
 }
 
 function RenderResetPasswordLink(): React.JSX.Element {
