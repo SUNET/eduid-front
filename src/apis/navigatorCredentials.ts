@@ -5,14 +5,13 @@ import { credentialToJSON } from "../helperFunctions/publicKeyCredentialToJSON";
 export interface AuthenticationRequest {
   webauth_options: PublicKeyCredentialRequestOptionsJSON;
   mediation?: "conditional";
-  signal?: AbortSignal;
 }
 
-async function handlePerformAuthentication(args: AuthenticationRequest) {
+async function handlePerformAuthentication(args: AuthenticationRequest, signal?: AbortSignal) {
   const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.webauth_options);
   const credential = await navigator.credentials.get({
     publicKey,
-    ...(args.signal && { signal: args.signal }),
+    ...(signal && { signal }),
     mediation: args.mediation,
   });
   if (credential) {
@@ -36,7 +35,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
   try {
     switch (args.action) {
       case "performAuthentication":
-        return await handlePerformAuthentication(args.payload);
+        return await handlePerformAuthentication(args.payload, api.signal);
       case "createCredential":
         return await handleCreateCredential(args.payload);
       default:
