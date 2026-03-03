@@ -57,9 +57,6 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
           type={showNin ? "text" : "password"}
           className={className}
           placeholder={props.placeholder}
-          autoComplete="one-time-code"
-          data-lpignore="true"
-          data-1p-ignore="true"
         />
       </div>
     </InputWrapper>
