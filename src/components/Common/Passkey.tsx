@@ -101,6 +101,9 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
           <FormattedMessage description="login passkey primary option button" defaultMessage="log in with passkey" />
         </EduIDButton>
+        <a className="text-small" href="#">
+          <FormattedMessage defaultMessage="Read more about using passkeys" description="passkey link" />
+        </a>
       </div>
     </div>
   );
