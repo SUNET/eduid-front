@@ -71,10 +71,6 @@
     "developer_comment": "DeleteAccount",
     "string": "Block and delete eduID"
   },
-  "/xDoS2": {
-    "developer_comment": "Login front page with passkey",
-    "string": "Log in: with Passkey or Password"
-  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "What is SUNET?"
@@ -888,6 +884,10 @@
     "developer_comment": "how-to 1",
     "string": "Create a basic account with your email address."
   },
+  "HUHfL8": {
+    "developer_comment": "Login front page with passkey",
+    "string": "Log in: with Password or Passkey"
+  },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Note: this is only for your own use to be able to distinguish between your added keys."
@@ -1081,10 +1081,6 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Language"
-  },
-  "MTA9aj": {
-    "developer_comment": "Alternative login password option",
-    "string": "or other log in options?"
   },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
@@ -1428,10 +1424,6 @@
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
   },
-  "Tg4Cxq": {
-    "developer_comment": "security zone redirect info",
-    "string": "You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
-  },
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
   },
@@ -1481,6 +1473,10 @@
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
+  },
+  "UavV1+": {
+    "developer_comment": "security zone redirect info",
+    "string": "If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
   },
   "UfFm3k": {
     "developer_comment": "about eduid settings - info",
@@ -2324,6 +2320,10 @@
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
     "string": ", verifying it can be done via:"
+  },
+  "hPlxfD": {
+    "developer_comment": "Alternative login passkey option",
+    "string": "or log in with passkey?"
   },
   "hRXpVn": {
     "developer_comment": "Header logout",
