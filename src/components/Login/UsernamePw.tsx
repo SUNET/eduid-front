@@ -7,7 +7,7 @@ import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -47,7 +47,7 @@ export default function UsernamePw() {
     );
   } else if (webauthn) {
     loginHeading = (
-      <FormattedMessage defaultMessage="Log in: with Passkey or Password" description="Login front page with passkey" />
+      <FormattedMessage defaultMessage="Log in: with Password or Passkey" description="Login front page with passkey" />
     );
   } else {
     loginHeading = <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />;
@@ -152,29 +152,7 @@ export default function UsernamePw() {
         </div>
         <SecurityZoneInfo />
       </section>
-      {webauthn && (
-        <section className="passkey-option">
-          <PassKey
-            setup={getChallenge}
-            onSuccess={useCredential}
-            onComplete={restartConditionalAuth}
-            discoverable={webauthn}
-          />
-        </section>
-      )}
       <section className="username-pw-option">
-        {webauthn && (
-          <div className="or-container">
-            <div className="line"></div>
-            <span>
-              <FormattedMessage
-                defaultMessage="or other log in options?"
-                description="Alternative login password option"
-              />
-            </span>
-            <div className="line"></div>
-          </div>
-        )}
         <FinalForm<UsernamePwFormData>
           aria-label="login form"
           onSubmit={handleSubmitUsernamePw}
@@ -193,8 +171,34 @@ export default function UsernamePw() {
             );
           }}
         ></FinalForm>
-        <RememberMeCheckbox />
+
+        {webauthn && (
+          <div className="or-container">
+            <div className="line"></div>
+            <span>
+              <FormattedMessage
+                defaultMessage="or log in with passkey?"
+                description="Alternative login passkey option"
+              />
+            </span>
+            <div className="line"></div>
+          </div>
+        )}
       </section>
+      {webauthn && (
+        <Fragment>
+          <section className="passkey-option">
+            <PassKey
+              setup={getChallenge}
+              onSuccess={useCredential}
+              onComplete={restartConditionalAuth}
+              discoverable={webauthn}
+            />
+          </section>
+          <hr className="border-line" />
+        </Fragment>
+      )}
+      <RememberMeCheckbox />
     </React.Fragment>
   );
 }
