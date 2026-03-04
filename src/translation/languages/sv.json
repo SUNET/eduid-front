@@ -71,10 +71,6 @@
     "developer_comment": "DeleteAccount",
     "string": "Spärra och radera eduID"
   },
-  "/xDoS2": {
-    "developer_comment": "Login front page with passkey",
-    "string": "Logga in: med passkey eller lösenord"
-  },
   "/yREZo": {
     "developer_comment": "what is sunet - heading",
     "string": "Vad är SUNET?"
@@ -888,6 +884,10 @@
     "developer_comment": "how-to 1",
     "string": "Skapa ett grundläggande konto med din e-postadress."
   },
+  "HUHfL8": {
+    "developer_comment": "Login front page with passkey",
+    "string": "Logga in: med lösenord eller passkey"
+  },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Obs: beskrivningen är endast för att hjälpa dig skilja på dina tillagda nycklar."
@@ -1081,10 +1081,6 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Språk"
-  },
-  "MTA9aj": {
-    "developer_comment": "Alternative login password option",
-    "string": "eller andra inloggnings-alternativ?"
   },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
@@ -1428,10 +1424,6 @@
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
   },
-  "Tg4Cxq": {
-    "developer_comment": "security zone redirect info",
-    "string": "Du kan logga in säkert med din passkey mha fingeravtryck, ansiktsigenkänning eller andra skärmlåsmetoder."
-  },
   "The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Denna säkerhetsnyckel har redan registrerats. Vänligen försök med en annan."
   },
@@ -1481,6 +1473,10 @@
   "UV+SMM": {
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
+  },
+  "UavV1+": {
+    "developer_comment": "security zone redirect info",
+    "string": "Om du har lagt till en passkey för eduid.se kan du logga in säkert mha fingeravtryck, ansiktsigenkänning, PIN-kod eller andra skärmlåsmetoder."
   },
   "UfFm3k": {
     "developer_comment": "about eduid settings - info",
@@ -2324,6 +2320,10 @@
   "hNaNOA": {
     "developer_comment": "verification methods - list definition",
     "string": ", kan det verifieras med:"
+  },
+  "hPlxfD": {
+    "developer_comment": "Alternative login passkey option",
+    "string": "eller logga in med passkey?"
   },
   "hRXpVn": {
     "developer_comment": "Header logout",
