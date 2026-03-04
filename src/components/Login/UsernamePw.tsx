@@ -152,16 +152,25 @@ export default function UsernamePw() {
         </div>
         <SecurityZoneInfo />
       </section>
-      {webauthn && (
-        <section className="passkey-option">
-          <PassKey
-            setup={getChallenge}
-            onSuccess={useCredential}
-            onComplete={restartConditionalAuth}
-            discoverable={webauthn}
-          />
-        </section>
-      )}
+      <FinalForm<UsernamePwFormData>
+        aria-label="login form"
+        onSubmit={handleSubmitUsernamePw}
+        render={(formProps: FormRenderProps<UsernamePwFormData>) => {
+          return (
+            <form onSubmit={formProps.handleSubmit}>
+              <UsernameInputPart />
+              <PasswordInput name="currentPassword" autoComplete="current-password" />
+              {!securityZoneAction && <RenderResetPasswordLink />}
+              <div className="buttons">
+                {!securityZoneAction && <LoginAbortButton />}
+                <UsernamePwSubmitButton {...formProps} />
+                <UsernamePwAnotherDeviceButton />
+              </div>
+            </form>
+          );
+        }}
+      ></FinalForm>
+
       <section className="username-pw-option">
         {webauthn && (
           <div className="or-container">
@@ -175,26 +184,18 @@ export default function UsernamePw() {
             <div className="line"></div>
           </div>
         )}
-        <FinalForm<UsernamePwFormData>
-          aria-label="login form"
-          onSubmit={handleSubmitUsernamePw}
-          render={(formProps: FormRenderProps<UsernamePwFormData>) => {
-            return (
-              <form onSubmit={formProps.handleSubmit}>
-                <UsernameInputPart />
-                <PasswordInput name="currentPassword" autoComplete="current-password" />
-                {!securityZoneAction && <RenderResetPasswordLink />}
-                <div className="buttons">
-                  {!securityZoneAction && <LoginAbortButton />}
-                  <UsernamePwSubmitButton {...formProps} />
-                  <UsernamePwAnotherDeviceButton />
-                </div>
-              </form>
-            );
-          }}
-        ></FinalForm>
-        <RememberMeCheckbox />
       </section>
+      {webauthn && (
+        <section className="passkey-option">
+          <PassKey
+            setup={getChallenge}
+            onSuccess={useCredential}
+            onComplete={restartConditionalAuth}
+            discoverable={webauthn}
+          />
+        </section>
+      )}
+      <RememberMeCheckbox />
     </React.Fragment>
   );
 }
