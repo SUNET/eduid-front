@@ -66,7 +66,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
             </h3>
             <p className="text-medium">
               <FormattedMessage
-                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or other screen-lock methods."
+                defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
                 description="security zone redirect info"
               />
               {/* Activate passkey help link when related help content is available */}
