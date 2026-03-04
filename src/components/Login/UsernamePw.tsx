@@ -47,7 +47,7 @@ export default function UsernamePw() {
     );
   } else if (webauthn) {
     loginHeading = (
-      <FormattedMessage defaultMessage="Log in: with Passkey or Password" description="Login front page with passkey" />
+      <FormattedMessage defaultMessage="Log in: with Password or Passkey" description="Login front page with passkey" />
     );
   } else {
     loginHeading = <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />;
