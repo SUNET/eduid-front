@@ -152,26 +152,26 @@ export default function UsernamePw() {
         </div>
         <SecurityZoneInfo />
       </section>
-      <FinalForm<UsernamePwFormData>
-        aria-label="login form"
-        onSubmit={handleSubmitUsernamePw}
-        render={(formProps: FormRenderProps<UsernamePwFormData>) => {
-          return (
-            <form onSubmit={formProps.handleSubmit}>
-              <UsernameInputPart />
-              <PasswordInput name="currentPassword" autoComplete="current-password" />
-              {!securityZoneAction && <RenderResetPasswordLink />}
-              <div className="buttons">
-                {!securityZoneAction && <LoginAbortButton />}
-                <UsernamePwSubmitButton {...formProps} />
-                <UsernamePwAnotherDeviceButton />
-              </div>
-            </form>
-          );
-        }}
-      ></FinalForm>
-
       <section className="username-pw-option">
+        <FinalForm<UsernamePwFormData>
+          aria-label="login form"
+          onSubmit={handleSubmitUsernamePw}
+          render={(formProps: FormRenderProps<UsernamePwFormData>) => {
+            return (
+              <form onSubmit={formProps.handleSubmit}>
+                <UsernameInputPart />
+                <PasswordInput name="currentPassword" autoComplete="current-password" />
+                {!securityZoneAction && <RenderResetPasswordLink />}
+                <div className="buttons">
+                  {!securityZoneAction && <LoginAbortButton />}
+                  <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
+                </div>
+              </form>
+            );
+          }}
+        ></FinalForm>
+
         {webauthn && (
           <div className="or-container">
             <div className="line"></div>
