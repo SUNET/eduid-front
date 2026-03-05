@@ -189,43 +189,57 @@ export function UsingEduID(): React.JSX.Element {
               />
             </p>
           </article>
-          {/* <article>
-                  <h5>
-                    <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
-                  </h5>
-                  <p>
-                    <FormattedMessage
-                      description="login eduid - passkey list definition"
-                      defaultMessage={`Using a passkey credential added to your device:`}
-                    />
-                  </p>
-                  <ol className="numbers">
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - passkey list item 1"
-                        defaultMessage={`Press the "Log in with passkey" button in the login form (if you set the "Remember me.." toggle below you will go straight to using your key next time you log in).`}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - passkey list item 2"
-                        defaultMessage={`If any registered passkeys exist, select the key you wish to use from the list presented.`}
-                      />
-                    </li>
-                    <li>
-                      <FormattedMessage
-                        description="login eduid - passkey list item 3"
-                        defaultMessage={`Follow the instructions, e.g. scan your face, fingerprint or enter pin code.`}
-                      />
-                    </li>
-                  </ol>
-                  <p>
-                    <FormattedMessage
-                      description="login eduid - passkey paragraph"
-                      defaultMessage={`Note: the presentation and required steps will vary depending on your device and type of passkey. You can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
-                    />
-                  </p>
-                </article> */}
+          <article>
+            <h5>
+              <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+            </h5>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph"
+                defaultMessage={`When using a device passkey credential added to eduid.se the access, presentation and required steps will vary depending on your device, browser and type of passkey:`}
+              />
+            </p>
+
+            <ol className="numbers">
+              <li>
+                <FormattedMessage
+                  description="login eduid - passkey list item 1"
+                  defaultMessage={`Focus the username field or you may need to press the "Log in with passkey" button in the login form (if you set the "Remember me.." toggle below you will go straight to using your key next time you log in).`}
+                />
+              </li>
+              <li>
+                <FormattedMessage
+                  description="login eduid - passkey list item 2"
+                  defaultMessage={`If any registered passkeys exist, select the key you wish to use from the list presented.`}
+                />
+              </li>
+              <li>
+                <FormattedMessage
+                  description="login eduid - passkey list item 3"
+                  defaultMessage={`Follow the instructions, e.g. scan your face, fingerprint or enter PIN code (eduID does not retain this information, passkeys are stored locally on your own device).`}
+                />
+              </li>
+            </ol>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph"
+                defaultMessage={`Note: you can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph"
+                defaultMessage={`Note: general definition and support for passkeys is continually updated, if you are unable to use a security key 
+                  previously added to eduID for your direct passkey login, it might need to be removed and added again in the Security section of eduID.se"`}
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph"
+                defaultMessage={`You can read more about passkeys in the "Enhancing the security level of eduID" help section."`}
+              />
+            </p>
+          </article>
           <article>
             <h5>
               <FormattedMessage description="login eduid - other device heading" defaultMessage="With another device" />
