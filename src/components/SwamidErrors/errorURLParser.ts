@@ -4,13 +4,13 @@ export type errorURLCode =
   | "IDENTIFICATION_FAILURE"
   | "OTHER_ERROR";
 
-export interface errorURLData {
-  code?: errorURLCode | "EDUID_ERROR";
-  ts?: string;
-  rp?: string;
-  tid?: string;
-  ctx?: string;
-  date?: Date;
+export interface ErrorURLData {
+  readonly code?: errorURLCode | "EDUID_ERROR";
+  readonly ts?: string;
+  readonly rp?: string;
+  readonly tid?: string;
+  readonly ctx?: string;
+  readonly date?: Date;
 }
 
 /**
@@ -18,7 +18,7 @@ export interface errorURLData {
  * @param query The query parameters
  * @returns errorURL data
  */
-export function parseErrorURL(query: URLSearchParams): errorURLData {
+export function parseErrorURL(query: URLSearchParams): ErrorURLData {
   const code = query.get("code");
   const ts = query.get("ts");
   const rp = query.get("rp");

@@ -1,3 +1,4 @@
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
@@ -8,10 +9,10 @@ import { EduidError } from "./EduidError";
 import { IdentificationFailure } from "./IdentificationFailure";
 import { OtherError } from "./OtherError";
 import { UnknownError } from "./UnknownError";
-import { errorURLData, parseErrorURL } from "./errorURLParser";
+import { ErrorURLData, parseErrorURL } from "./errorURLParser";
 
 export interface FailureComponentProps {
-  errorURL: errorURLData;
+  errorURL: ErrorURLData;
 }
 
 export function Errors() {
@@ -49,35 +50,22 @@ export function Errors() {
           description="Errors go to dashboard instruction"
         />
         &nbsp;
-        <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
+        <EduIDButton buttonstyle="link" id="dashboard-button" onClick={handleDashboardOnClick}>
           <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
-        </a>
+        </EduIDButton>
       </p>
       <ErrorTechnicalInfo errorURL={errorURL} />
     </div>
   );
 }
 
-export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): React.JSX.Element {
+export function ErrorTechnicalInfo(props: { errorURL: ErrorURLData }): React.JSX.Element {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
     <div className="figure">
       <table className="error-info">
-        {!props.errorURL.code ? (
-          <tbody>
-            <tr>
-              <td className="plain-cell">
-                <strong>
-                  <FormattedMessage
-                    defaultMessage="There is no technical information available"
-                    description="no error information message"
-                  />
-                </strong>
-              </td>
-            </tr>
-          </tbody>
-        ) : (
+        {props.errorURL.code ? (
           <React.Fragment>
             <caption>
               <h3>
@@ -121,6 +109,19 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): React.JSX
               })}
             </tbody>
           </React.Fragment>
+        ) : (
+          <tbody>
+            <tr>
+              <td className="plain-cell">
+                <strong>
+                  <FormattedMessage
+                    defaultMessage="There is no technical information available"
+                    description="no error information message"
+                  />
+                </strong>
+              </td>
+            </tr>
+          </tbody>
         )}
       </table>
     </div>
