@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface AccordionItemTemplateProps {
   icon?: React.ReactNode;
@@ -28,10 +28,34 @@ export function Accordion(props: Readonly<AccordionProps>): React.JSX.Element {
 }
 
 export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps>): React.JSX.Element {
+  const detailsRef = useRef<HTMLDetailsElement>(null);
   const [open, setOpen] = useState(props.open ?? false);
+
+  useEffect(() => {
+    // Check if the URL hash targets this accordion directly, or an element inside it.
+    // With <details>, children are always in the DOM even when closed, so getElementById works.
+    const hash = window.location.hash;
+    if (!hash || !props.uuid || !detailsRef.current) return;
+    const targetId = hash.slice(1);
+
+    const isDirectMatch = targetId === props.uuid;
+    const targetElement = document.getElementById(targetId);
+    const isChildMatch = targetElement !== null && detailsRef.current.contains(targetElement);
+
+    if (isDirectMatch || isChildMatch) {
+      // Open the <details> element directly via the DOM to avoid a cascading React re-render.
+      // This triggers a native 'toggle' event, which the onToggle handler catches to sync React state.
+      detailsRef.current.open = true;
+      requestAnimationFrame(() => {
+        const scrollTarget = isDirectMatch ? detailsRef.current : targetElement;
+        scrollTarget?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [props.uuid]);
 
   return (
     <details
+      ref={detailsRef}
       id={props.uuid}
       className="accordion__item"
       onToggle={(event) => {
