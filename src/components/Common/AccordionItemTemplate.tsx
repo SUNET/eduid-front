@@ -41,7 +41,7 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
       aria-labelledby={props.uuid + "-button"}
     >
       <summary className="accordion__heading">
-        <div className="accordion__button" role="button" id={props.uuid + "-button"}>
+        <div className="accordion__button" id={props.uuid + "-button"}>
           {props.icon && <span className="accordion-icon">{props.icon}</span>}
           <div>
             <h3 className="accordion-title">{props.title}</h3>
