@@ -47,14 +47,41 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
     }
   }
 
+  const maskValue = (v: string) => {
+    return "*".repeat(v.length);
+  };
+
+  const value = props.input.value || "";
+  const displayValue = showNin ? value : maskValue(value);
+
   return (
     <InputWrapper {...props}>
       <div className="password-input">
         <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
         <input
-          {...props.input}
+          type={showNin ? "number" : "text"}
+          value={displayValue}
+          onChange={(e) => {
+            const inputVal = e.target.value;
+
+            if (showNin) {
+              props.input.onChange(inputVal);
+            } else {
+              if (inputVal.length < displayValue.length) {
+                props.input.onChange(value.slice(0, -1));
+                return;
+              }
+              const lastChar = inputVal.slice(-1);
+              if (lastChar && !/\d/.test(lastChar)) {
+                return;
+              }
+              if (inputVal.length > displayValue.length) {
+                props.input.onChange(value + lastChar);
+              }
+            }
+          }}
+          onBlur={props.input.onBlur}
           id={props.input.name}
-          type={showNin ? "text" : "password"}
           className={className}
           placeholder={props.placeholder}
         />
