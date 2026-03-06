@@ -65,23 +65,21 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
               <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
             </h3>
             <p className="text-medium">
+              <FormattedMessage defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods." />
+            </p>
+            <p className="help-text">
               <FormattedMessage
-                defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
-                description="security zone redirect info"
-              />
-              {/* Activate passkey help link when related help content is available */}
-              {/* <FormattedMessage
-                defaultMessage="You can log in securely with your passkey using your fingerprint, face recognition or 
-                other screen-lock methods. {howPasskeyWork}"
+                defaultMessage='
+                Read more about logging in using passkeys in the "Using eduID" section in {howPasskeyWork}. '
                 description="security zone redirect info"
                 values={{
                   howPasskeyWork: (
-                    <a className="text-link" href="https://www.eduid.se/help" target="_blank">
-                      <FormattedMessage description="passkey help text link" defaultMessage="How passkeys work" />
+                    <a className="text-link" href="/help" target="_blank" rel="noreferrer">
+                      <FormattedMessage description="passkey help text link" defaultMessage="eduID Help" />
                     </a>
                   ),
                 }}
-              /> */}
+              />
             </p>
           </div>
           <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="Passkey icon" className="passkey-image" />
@@ -101,10 +99,6 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
           <FormattedMessage description="login passkey primary option button" defaultMessage="log in with passkey" />
         </EduIDButton>
-        {/* TODO: Activate passkey help link when related help content is available */}
-        {/* <a className="text-small" href="#">
-          <FormattedMessage defaultMessage="Read more about using passkeys" description="passkey link" />
-        </a> */}
       </div>
     </div>
   );
