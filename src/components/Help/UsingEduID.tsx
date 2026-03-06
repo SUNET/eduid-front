@@ -98,8 +98,54 @@ export function UsingEduID(): React.JSX.Element {
           title={<FormattedMessage description="login eduid - handle" defaultMessage="Log in with eduID" />}
           additionalInfo={null}
         >
+          <dl className="link-list">
+            <dt className="text-bold">
+              <FormattedMessage
+                description="login eduid - login list definition"
+                defaultMessage="Login alternatives:"
+              />
+            </dt>
+            <dd>
+              <a className="text-link" href="#loginUsernameHeading">
+                &nbsp;
+                <FormattedMessage
+                  description="login eduid - username heading"
+                  defaultMessage="With username and password"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a className="text-link" href="#loginSavedHeading">
+                <FormattedMessage
+                  description="login eduid - remember me heading"
+                  defaultMessage="With saved credentials"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a className="text-link" href="#loginSecurityKeyHeading">
+                <FormattedMessage
+                  description="login eduid - security key heading"
+                  defaultMessage={`With security key`}
+                />
+              </a>
+            </dd>
+            <dd>
+              <a className="text-link" href="#loginPasskeyHeading">
+                <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+              </a>
+            </dd>
+            <dd>
+              <a className="text-link" href="#loginOtherDeviceHeading">
+                <FormattedMessage
+                  description="login eduid - other device heading"
+                  defaultMessage="With another device"
+                />
+              </a>
+            </dd>
+          </dl>
           <article>
-            <h5>
+            <h5 id="loginUsernameHeading">
               <FormattedMessage
                 description="login eduid - username heading"
                 defaultMessage="With username and password"
@@ -135,7 +181,7 @@ export function UsingEduID(): React.JSX.Element {
             </ul>
           </article>
           <article>
-            <h5>
+            <h5 id="loginSavedHeading">
               <FormattedMessage
                 description="login eduid - remember me heading"
                 defaultMessage="With saved credentials"
@@ -150,7 +196,7 @@ export function UsingEduID(): React.JSX.Element {
             </p>
           </article>
           <article>
-            <h5>
+            <h5 id="loginSecurityKeyHeading">
               <FormattedMessage description="login eduid - security key heading" defaultMessage={`With security key`} />
             </h5>
             <p>
@@ -190,7 +236,7 @@ export function UsingEduID(): React.JSX.Element {
             </p>
           </article>
           <article>
-            <h5>
+            <h5 id="loginPasskeyHeading">
               <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
             </h5>
             <p>
@@ -230,14 +276,14 @@ export function UsingEduID(): React.JSX.Element {
               <p className="error-txt">
                 <FormattedMessage
                   description="login eduid - passkey paragraph"
-                  defaultMessage={`General definition and support of passkeys is continually reformed, if you are unable to use a security key 
+                  defaultMessage={`Definition and support of passkeys continually evolve, if you are unable to use a security key 
                   previously added to eduID for your direct passkey login, it might need to be removed and readded in the Security section of eduID.se after logging in using another method.`}
                 />
               </p>
             </section>
           </article>
           <article>
-            <h5>
+            <h5 id="loginOtherDeviceHeading">
               <FormattedMessage description="login eduid - other device heading" defaultMessage="With another device" />
             </h5>
             <p>

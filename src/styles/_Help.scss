@@ -12,6 +12,11 @@
 .help-content {
   article {
     padding-bottom: 1em !important;
+
+    > h5 {
+      margin-top: -2rem;
+      padding-top: 2rem;
+    }
   }
 
   h3 {
@@ -33,5 +38,15 @@
 
   .accordion:not(:last-child) {
     margin-bottom: 1rem;
+  }
+
+  dl.link-list {
+    margin-bottom: 2rem;
+    dt {
+      margin-bottom: 0.5rem;
+    }
+    dd a:before {
+      content: "➔ ";
+    }
   }
 }
