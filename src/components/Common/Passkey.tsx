@@ -74,7 +74,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
                 description="security zone redirect info"
                 values={{
                   howPasskeyWork: (
-                    <a className="text-link" href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
+                    <a className="text-link" href="/help" target="_blank" rel="noreferrer">
                       <FormattedMessage description="passkey help text link" defaultMessage="eduID Help" />
                     </a>
                   ),
@@ -99,10 +99,6 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
           <FormattedMessage description="login passkey primary option button" defaultMessage="log in with passkey" />
         </EduIDButton>
-        {/* TODO: Activate passkey help link when related help content is available */}
-        {/* <a className="text-small" href="#">
-          <FormattedMessage defaultMessage="Read more about using passkeys" description="passkey link" />
-        </a> */}
       </div>
     </div>
   );
