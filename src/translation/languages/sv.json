@@ -225,7 +225,7 @@
   },
   "31khG0": {
     "developer_comment": "login eduid - passkey paragraph",
-    "string": "När en passkey lagts till som inloggningsuppgift i eduID.se så varierar presentation och användningsflöde beroende av din enhet, webbläsare och typ av passkey:"
+    "string": "När en passkey lagts till som inloggningsuppgift i eduID.se varierar presentation och användningsflöde beroende av din enhet, webbläsare och typ av passkey:"
   },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
