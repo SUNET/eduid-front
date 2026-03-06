@@ -21,7 +21,7 @@ test("renders bankID as expected", async () => {
     nav.click();
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
-  const swedishMethodAccordion = screen.getByRole("button", { name: /Swedish personal ID or coordination number/i });
+  const swedishMethodAccordion = screen.getByText("Swedish personal ID or coordination number");
   act(() => {
     swedishMethodAccordion.click();
   });
