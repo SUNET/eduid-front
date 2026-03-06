@@ -107,7 +107,6 @@ export function UsingEduID(): React.JSX.Element {
             </dt>
             <dd>
               <a className="text-link" href="#loginUsernameHeading">
-                &nbsp;
                 <FormattedMessage
                   description="login eduid - username heading"
                   defaultMessage="With username and password"
