@@ -1962,7 +1962,7 @@
   },
   "cPJsE0": {
     "developer_comment": "login eduid - passkey list item 1",
-    "string": "Fokusera användarnamnsfältet, eller så kan du behöva klicka på knappen \"Logga in med passkey\" i inloggningsformuläret. (Om \"Kom ihåg mig..\" kontrollen nedanför aktiveras kommer du direkt till inloggning med passkey vid nästa inloggning.)"
+    "string": "Fokusera användarnamnsfältet, eller så kan du behöva klicka på knappen \"Logga in med passkey\" i inloggningsformuläret. (Om kontrollen \"Kom ihåg mig..\" nedanför aktiveras kommer du direkt till inloggning med passkey vid nästa inloggning.)"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
