@@ -223,6 +223,10 @@
     "developer_comment": "why have eduID - heading",
     "string": "Why have eduID?"
   },
+  "31khG0": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "When using a device passkey credential added to eduid.se the access, presentation and required steps will vary depending on your device, browser and type of passkey:"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
@@ -266,6 +270,10 @@
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
+  },
+  "3rv5mk": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "Note: you can read more about passkeys and how to add them in the \"Enhancing the security level of eduID\" help section."
   },
   "4+MTla": {
     "developer_comment": "help - content headline",
@@ -672,6 +680,10 @@
     "developer_comment": "account eduid - list item 1-1",
     "string": "Add by clicking on the '+ add more' link and remove by clicking on the bin icon."
   },
+  "DjsdhX": {
+    "developer_comment": "login eduid - passkey list item 3",
+    "string": "Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or managed location.)"
+  },
   "DmmgDx": {
     "developer_comment": "popover info",
     "string": "To edit these settings you might be asked to re-login."
@@ -699,6 +711,10 @@
   "E0OaFE": {
     "developer_comment": "create eduid - list definition",
     "string": "How to register your new eduID account at {eduidRegisterLink}:"
+  },
+  "E529Le": {
+    "developer_comment": "security zone redirect info",
+    "string": "Read more about logging in using passkeys in the \"Using eduID\" section in {howPasskeyWork}."
   },
   "E7bB/9": {
     "developer_comment": "status overview title",
@@ -1474,10 +1490,6 @@
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
   },
-  "UavV1+": {
-    "developer_comment": "security zone redirect info",
-    "string": "If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
-  },
   "UfFm3k": {
     "developer_comment": "about eduid settings - info",
     "string": "edit, enhance or block/delete your account"
@@ -1722,6 +1734,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "services requiring a strong binding between your identity and your login, often called {emphasis}."
   },
+  "Yegdv4": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "Definition and support of passkeys continually evolve, if you are unable to use a security key previously added to eduID for your direct passkey login, it might need to be removed and readded in the Security section of eduID.se after logging in using another method."
+  },
   "YhOtY3": {
     "developer_comment": "copied button label",
     "string": "COPIED"
@@ -1943,6 +1959,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
+  },
+  "cPJsE0": {
+    "developer_comment": "login eduid - passkey list item 1",
+    "string": "Focus the username field, or you may need to press the \"Log in with passkey\" button in the login form. (If first setting the \"Remember me..\" toggle below you will directly use your key at your next login.)"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2216,9 +2236,16 @@
     "developer_comment": "Signup",
     "string": "If this is your eduID, you can reset your password to log back in."
   },
+  "fLW0A5": {
+    "string": "If you have registered a passkey for eduID.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
+  },
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Return to home"
+  },
+  "frMB3f": {
+    "developer_comment": "login eduid - login list definition",
+    "string": "Login alternatives:"
   },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID authentication request failed. Please try again."
@@ -2452,6 +2479,10 @@
     "developer_comment": "login eduid - forgot pw list item 3",
     "string": "Follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID."
   },
+  "jfBwcl": {
+    "developer_comment": "login eduid - passkey heading",
+    "string": "With passkey"
+  },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
     "string": "Privacy policy and Web accessibility"
@@ -2479,6 +2510,10 @@
   "kCdhvM": {
     "developer_comment": "multiple key - strong",
     "string": "add more than one"
+  },
+  "kJiqE2": {
+    "developer_comment": "login eduid - passkey list item 2",
+    "string": "If any applicable passkeys exist, select the key you wish to use from the list presented."
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
@@ -3397,6 +3432,10 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "What is eIDAS?"
+  },
+  "ucwszU": {
+    "developer_comment": "passkey help text link",
+    "string": "eduID Help"
   },
   "uigsKE": {
     "developer_comment": "help - content paragraph",
