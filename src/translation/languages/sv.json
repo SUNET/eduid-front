@@ -223,6 +223,10 @@
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
   },
+  "31khG0": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "När en passkey lagts till som inloggningsuppgift i eduID.se så varierar presentation och användningsflöde beroende av din enhet, webbläsare och typ av passkey:"
+  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
@@ -266,6 +270,10 @@
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
+  },
+  "3rv5mk": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "Obs: du kan läsa mer om passkeys och hur man lägger till dem i hjälpavsnittet \"Utökad säkerhet med ditt eduID\"."
   },
   "4+MTla": {
     "developer_comment": "help - content headline",
@@ -672,6 +680,10 @@
     "developer_comment": "account eduid - list item 1-1",
     "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
   },
+  "DjsdhX": {
+    "developer_comment": "login eduid - passkey list item 3",
+    "string": "Följ instruktionerna; t.ex. för ansiktsigenkänning, fingeravtryck eller ange PIN-kod. (eduID har inte tillgång till dessa uppgifter då passkeys sparas lokalt på din egen enhet eller externa lösning.)"
+  },
   "DmmgDx": {
     "developer_comment": "popover info",
     "string": "För att ändra dessa inställningar kan du bli ombedd att logga in på nytt."
@@ -699,6 +711,10 @@
   "E0OaFE": {
     "developer_comment": "create eduid - list definition",
     "string": "Hur du registrerar ditt nya eduID-konto på {eduidRegisterLink}:"
+  },
+  "E529Le": {
+    "developer_comment": "security zone redirect info",
+    "string": "Läs mer om att logga in m.h.a. passkeys i avsnittet \"Användning av eduID\" i {howPasskeyWork}."
   },
   "E7bB/9": {
     "developer_comment": "status overview title",
@@ -1474,10 +1490,6 @@
     "developer_comment": "SAML login finished",
     "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
   },
-  "UavV1+": {
-    "developer_comment": "security zone redirect info",
-    "string": "Om du har lagt till en passkey för eduid.se kan du logga in säkert mha fingeravtryck, ansiktsigenkänning, PIN-kod eller andra skärmlåsmetoder."
-  },
   "UfFm3k": {
     "developer_comment": "about eduid settings - info",
     "string": "redigera konto-inställningar eller spärra/radera konto"
@@ -1722,6 +1734,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "tjänster som kräver en stark koppling mellan din identitet och din inloggning, ofta kallad {emphasis}."
   },
+  "Yegdv4": {
+    "developer_comment": "login eduid - passkey paragraph",
+    "string": "Definition och stöd för passkeys utvecklas löpande, om du inte kan använda en säkerhetsnyckel som tidigare lagts till eduID för direkt passkey-inloggning, kan du behöva ta bort och lägga till den igen i eduID.se under Säkerhet, efter att ha loggat in med en annan metod."
+  },
   "YhOtY3": {
     "developer_comment": "copied button label",
     "string": "KOPIERAD"
@@ -1943,6 +1959,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Framåt"
+  },
+  "cPJsE0": {
+    "developer_comment": "login eduid - passkey list item 1",
+    "string": "Fokusera användarnamnsfältet, eller så kan du behöva klicka på knappen \"Logga in med passkey\" i inloggningsformuläret. (Om \"Kom ihåg mig..\" kontrollen nedanför aktiveras kommer du direkt till inloggning med passkey vid nästa inloggning.)"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2216,9 +2236,16 @@
     "developer_comment": "Signup",
     "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
   },
+  "fLW0A5": {
+    "string": "Om du har lagt till en passkey för eduid.se kan du logga in säkert mha fingeravtryck, ansiktsigenkänning, PIN-kod eller andra skärmlåsmetoder."
+  },
   "fpAB2E": {
     "developer_comment": "generic error page",
     "string": "Återvänd till startsidan"
+  },
+  "frMB3f": {
+    "developer_comment": "login eduid - login list definition",
+    "string": "Inloggningsalternativ:"
   },
   "freja_eid.authn_request_failed": {
     "string": "Freja eID autentiseringsbegäran misslyckades. Vänligen Försök igen."
@@ -2452,6 +2479,10 @@
     "developer_comment": "login eduid - forgot pw list item 3",
     "string": "Följ instruktionerna i mejlet inom 2 timmar. Stegen för att bekräfta din epostadress och välja nytt lösenord är samma som när du skapar ditt eduID."
   },
+  "jfBwcl": {
+    "developer_comment": "login eduid - passkey heading",
+    "string": "Med passkey"
+  },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
     "string": "Personuppgiftsbehandling och Webbtillgänglighet"
@@ -2479,6 +2510,10 @@
   "kCdhvM": {
     "developer_comment": "multiple key - strong",
     "string": "lägga till mer än en"
+  },
+  "kJiqE2": {
+    "developer_comment": "login eduid - passkey list item 2",
+    "string": "Om några tillämpliga nycklar finns, välj den du vill använda i listan som visas."
   },
   "kK+mFS": {
     "developer_comment": "login eduid - forgot pw handle",
@@ -3397,6 +3432,10 @@
   "ua67rk": {
     "developer_comment": "what is eidas - heading",
     "string": "Vad är eIDAS?"
+  },
+  "ucwszU": {
+    "developer_comment": "passkey help text link",
+    "string": "Hjälp"
   },
   "uigsKE": {
     "developer_comment": "help - content paragraph",
