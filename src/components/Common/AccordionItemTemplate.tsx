@@ -34,7 +34,7 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
   useEffect(() => {
     // Check if the URL hash targets this accordion directly, or an element inside it.
     // With <details>, children are always in the DOM even when closed, so getElementById works.
-    const hash = window.location.hash;
+    const hash = globalThis.location.hash;
     if (!hash || !props.uuid || !detailsRef.current) return;
     const targetId = hash.slice(1);
 
