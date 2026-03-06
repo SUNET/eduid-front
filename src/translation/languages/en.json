@@ -2237,7 +2237,7 @@
     "string": "If this is your eduID, you can reset your password to log back in."
   },
   "fLW0A5": {
-    "string": "If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
+    "string": "If you have registered a passkey for eduID.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
   },
   "fpAB2E": {
     "developer_comment": "generic error page",
