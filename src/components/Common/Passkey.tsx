@@ -61,9 +61,9 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
       <div className="text-wrapper">
         <div className="flex-between">
           <div>
-            <h3>
+            <h2>
               <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
-            </h3>
+            </h2>
             <p className="text-medium">
               <FormattedMessage
                 defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
@@ -84,7 +84,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
               /> */}
             </p>
           </div>
-          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="Passkey icon" className="passkey-image" />
+          <img
+            src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+            alt="Passkey images"
+            className="passkey-image"
+          />
         </div>
       </div>
       <div className="buttons">
