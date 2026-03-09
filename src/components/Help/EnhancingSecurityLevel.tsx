@@ -30,7 +30,10 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         />
       }
       additionalInfo={
-        <FormattedMessage description="about security key - info" defaultMessage="Adding an MFA Security Key" />
+        <FormattedMessage
+          description="about security key - info"
+          defaultMessage="Adding an MFA Security Key and Passkey"
+        />
       }
     >
       <article>
@@ -52,9 +55,10 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="how more secure description 2"
-            defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
-                  or biometric information such as fingerprint or face-recognition supported on the device you are 
-                  using, and we refer to these techniques as a 'Security key'.`}
+            defaultMessage={`An example of a security key would be a physical device in your possession, 
+              such as a specific type of USB token for this purpose, that requires you to be present by the device. 
+              You may also add biometric information such as fingerprint or face-recognition supported on the device you are using, usually called passkeys, 
+              to be able to log in or unlock your security key if needed.`}
           />
         </p>
         <h4>
