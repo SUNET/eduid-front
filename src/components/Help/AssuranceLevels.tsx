@@ -119,12 +119,10 @@ export function AssuranceLevels(): React.JSX.Element {
               values={{
                 emphasis: (
                   <em>
-                    <em>
-                      <FormattedMessage
-                        description="Assurance levels with your eduID - paragraph5em"
-                        defaultMessage={`AL3 (verified user) / RAF High / LoA2`}
-                      />
-                    </em>
+                    <FormattedMessage
+                      description="Assurance levels with your eduID - paragraph5em"
+                      defaultMessage={`AL3 (verified user) / RAF High / LoA2`}
+                    />
                   </em>
                 ),
               }}
