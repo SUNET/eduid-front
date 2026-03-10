@@ -6,19 +6,38 @@ import type { AuthenticateResponse } from "../eduidAuthn";
 import { isApiResponse } from "./typeGuards";
 import type { ApiError, StateWithCommonConfig } from "./types";
 
+// Module-level guard: when an /authenticate request is already in flight,
+// subsequent callers share the same promise instead of firing concurrent requests.
+// This prevents SessionOutOfSync errors caused by multiple 401 responses
+// (e.g. from parallel dashboard API calls) each independently triggering /authenticate.
+let inFlightReauth: Promise<void> | null = null;
+
 // Moved from common.ts
 export async function re_authenticate(csrf_token: string | undefined, api: BaseQueryApi) {
-  const reauth_result = await customBaseQuery(
-    { url: "authenticate", body: { frontend_action: "login", csrf_token: csrf_token } },
-    api,
-    { service: "authn" }
-  );
-
-  if (reauth_result.data && isApiResponse<AuthenticateResponse>(reauth_result.data)) {
-    if (reauth_result.data.payload.location) {
-      globalThis.location.href = reauth_result.data.payload.location;
-    }
+  if (inFlightReauth) {
+    // Another re_authenticate call is already in progress — wait for it
+    return inFlightReauth;
   }
+
+  inFlightReauth = (async () => {
+    try {
+      const reauth_result = await customBaseQuery(
+        { url: "authenticate", body: { frontend_action: "login", csrf_token: csrf_token } },
+        api,
+        { service: "authn" }
+      );
+
+      if (reauth_result.data && isApiResponse<AuthenticateResponse>(reauth_result.data)) {
+        if (reauth_result.data.payload.location) {
+          globalThis.location.href = reauth_result.data.payload.location;
+        }
+      }
+    } finally {
+      inFlightReauth = null;
+    }
+  })();
+
+  return inFlightReauth;
 }
 
 export async function handleBaseQueryError(
