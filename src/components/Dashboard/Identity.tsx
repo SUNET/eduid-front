@@ -397,7 +397,6 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
             />
           }
           uuid="se-letter"
-          //
         >
           <LetterProofing disabled={letterProofingDisabled} />
         </AccordionItemTemplate>
