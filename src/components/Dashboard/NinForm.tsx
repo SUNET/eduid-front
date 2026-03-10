@@ -48,7 +48,7 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
   }
 
   const maskValue = (v: string) => {
-    return "*".repeat(v.length);
+    return "\u2022".repeat(v.length);
   };
 
   const value = props.input.value || "";
