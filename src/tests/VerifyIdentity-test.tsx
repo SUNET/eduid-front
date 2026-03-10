@@ -20,19 +20,15 @@ test("renders verifyIdentity, non verified user", async () => {
   render(<VerifyIdentity />);
   expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();
   // show two options for verification, swedish id and eu id
-  const swedishAccordion = screen.getByRole("button", {
-    name: /swedish personal ID or coordination number With a digital ID/i,
-  });
+  const swedishAccordion = screen.getByText("Swedish personal ID or coordination number");
   expect(swedishAccordion).toBeEnabled();
-  const eidasAccordion = screen.getByRole("button", { name: /EU citizen/i });
+  const eidasAccordion = screen.getByText("EU citizen");
   expect(eidasAccordion).toBeEnabled();
   // click swedish id option, expanded accordion
   act(() => {
     swedishAccordion.click();
   });
-  const byPostAccordion = screen.getAllByRole("button", {
-    name: /by post/i,
-  })[0];
+  const byPostAccordion = screen.getByText("by post");
   act(() => {
     byPostAccordion.click();
   });
@@ -60,7 +56,7 @@ test("renders verifyIdentity as expected, verified user with swedish person numb
     },
   });
   expect(
-    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i })
+    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i }),
   ).toBeInTheDocument();
   expect(screen.getByText(/19010203/i)).toBeInTheDocument();
 });
@@ -87,13 +83,11 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
     },
   });
   expect(
-    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i })
+    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i }),
   ).toBeInTheDocument();
   expect(screen.getByText(/19850101/i)).toBeInTheDocument();
   // after eidas verification, still showing swedish identification options
-  expect(
-    screen.getByRole("button", { name: /swedish personal ID or coordination number With a digital ID/i })
-  ).toBeInTheDocument();
+  expect(screen.getByText("Swedish personal ID or coordination number")).toBeInTheDocument();
 });
 
 test("renders the identity page title", async () => {
