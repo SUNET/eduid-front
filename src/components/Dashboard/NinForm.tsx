@@ -59,7 +59,7 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
       <div className="password-input">
         <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
         <input
-          type={showNin ? "number" : "text"}
+          type={"text"}
           value={displayValue}
           onChange={(e) => {
             const inputVal = e.target.value;
@@ -72,9 +72,7 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
                 return;
               }
               const lastChar = inputVal.slice(-1);
-              if (lastChar && !/\d/.test(lastChar)) {
-                return;
-              }
+
               if (inputVal.length > displayValue.length) {
                 props.input.onChange(value + lastChar);
               }
