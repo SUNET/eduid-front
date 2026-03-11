@@ -10,7 +10,7 @@ import { useTheme } from "./ThemeContext";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
+  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): Promise<void> | void;
   onComplete?(): void;
   discoverable?: boolean;
 }
@@ -36,7 +36,10 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
       if (webauth_options) {
         const response = await performAuthentication({ webauth_options });
         if (response.isSuccess) {
-          props.onSuccess(response.data);
+          // Wait for credential submission to finish before calling onComplete,
+          // so that restartConditionalAuth doesn't fire a new challenge fetch
+          // while the backend is still processing this credential.
+          await props.onSuccess(response.data);
         }
       }
     } finally {

@@ -7,7 +7,7 @@ import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -36,6 +36,10 @@ export default function UsernamePw() {
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
   const [conditionalAuthTrigger, setConditionalAuthTrigger] = useState(0);
   const conditionalQueryRef = useRef<ReturnType<typeof performAuthentication> | null>(null);
+  // Cached challenge promise: both the conditional auth effect and the passkey button
+  // share a single fetchMfaAuth call to avoid concurrent backend requests that race
+  // on session.mfa_action and cause SessionOutOfSync.
+  const challengePromiseRef = useRef<Promise<PublicKeyCredentialRequestOptionsJSON | undefined> | null>(null);
   let loginHeading;
 
   if (securityZoneAction) {
@@ -83,21 +87,44 @@ export default function UsernamePw() {
     return errors;
   }
 
+  // Fetch a challenge once and cache the promise. Both the conditional auth effect
+  // and the passkey button reuse the same promise, so only one POST /mfa_auth is
+  // in-flight at a time for challenge creation.
+  const fetchChallengeOnce = useCallback((): Promise<PublicKeyCredentialRequestOptionsJSON | undefined> => {
+    if (!challengePromiseRef.current) {
+      if (!ref) return Promise.resolve(undefined);
+      challengePromiseRef.current = fetchMfaAuth({ ref })
+        .then((response) => {
+          if (response.isSuccess) {
+            return response.data.payload.webauthn_options;
+          }
+          return undefined;
+        })
+        .catch(() => {
+          // Clear the cache on failure so the next attempt can retry
+          challengePromiseRef.current = null;
+          return undefined;
+        });
+    }
+    return challengePromiseRef.current;
+  }, [fetchMfaAuth, ref]);
+
   async function getChallenge() {
     // Abort any in-flight conditional auth before starting staged auth,
     // since the browser only allows one pending navigator.credentials.get() at a time.
     conditionalQueryRef.current?.abort();
-    if (ref) {
-      const response = await fetchMfaAuth({ ref: ref });
-      if (response.isSuccess) {
-        return response.data.payload.webauthn_options;
-      }
-    }
+    return fetchChallengeOnce();
   }
 
-  function useCredential(credential: PublicKeyCredentialJSON) {
+  // Track the last credential submission so that restartConditionalAuth
+  // (and the effect) can wait for it before fetching a new challenge.
+  const credentialSubmissionRef = useRef<Promise<unknown> | null>(null);
+
+  async function useCredential(credential: PublicKeyCredentialJSON) {
     if (ref) {
-      fetchMfaAuth({ ref: ref, webauthn_response: credential });
+      const promise = fetchMfaAuth({ ref: ref, webauthn_response: credential });
+      credentialSubmissionRef.current = promise;
+      await promise;
     }
   }
 
@@ -110,29 +137,43 @@ export default function UsernamePw() {
       return;
     }
     let cancelled = false;
+    // Clear cached challenge so a fresh one is fetched on each trigger
+    challengePromiseRef.current = null;
 
     const conditionalAuthentication = async () => {
       if (!ref) {
         return;
       }
-      const response = await fetchMfaAuth({ ref: ref });
+      // Wait for any in-flight credential submission to finish before fetching
+      // a new challenge, otherwise the new challenge fetch and the old submission
+      // will race on session.mfa_action in the backend.
+      if (credentialSubmissionRef.current) {
+        await credentialSubmissionRef.current.catch(() => {});
+        credentialSubmissionRef.current = null;
+      }
+      if (cancelled) {
+        return;
+      }
+      const webauthn_options = await fetchChallengeOnce();
       // After the await, check if this effect invocation was already cleaned up
       // (e.g. React StrictMode unmount-remount cycle). If so, bail out.
       if (cancelled) {
         return;
       }
-      if (response.isSuccess) {
-        const webauth_options = response.data.payload.webauthn_options;
-        if (webauth_options) {
-          const queryPromise = performAuthentication({
-            webauth_options,
-            mediation: "conditional",
-          });
-          conditionalQueryRef.current = queryPromise;
-          const result = await queryPromise;
-          if (result.isSuccess) {
-            fetchMfaAuth({ ref: ref!, webauthn_response: result.data });
-          }
+      if (webauthn_options) {
+        const queryPromise = performAuthentication({
+          webauth_options: webauthn_options,
+          mediation: "conditional",
+        });
+        conditionalQueryRef.current = queryPromise;
+        const result = await queryPromise;
+        if (cancelled) {
+          return;
+        }
+        if (result.isSuccess) {
+          const promise = fetchMfaAuth({ ref: ref!, webauthn_response: result.data });
+          credentialSubmissionRef.current = promise;
+          await promise;
         }
       }
     };
@@ -141,7 +182,7 @@ export default function UsernamePw() {
       cancelled = true;
       conditionalQueryRef.current?.abort();
     };
-  }, [fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
+  }, [fetchChallengeOnce, fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
 
   return (
     <React.Fragment>
