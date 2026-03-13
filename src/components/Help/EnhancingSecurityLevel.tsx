@@ -75,11 +75,11 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="what are keys description 2"
-            defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The Passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the Passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
+            defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage description="passkey term" defaultMessage="Passkey" />
+                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
                 </em>
               ),
             }}

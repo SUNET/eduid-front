@@ -241,13 +241,13 @@ export function UsingEduID(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="login eduid - passkey paragraph 1"
-                defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. To log in using only your Passkey you need to have registered a supported Passkey (sometimes called a "discoverable Passkey") after October 2025, when eduID included this functionality.`}
+                defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. To log in using only your passkey you need to have registered a supported passkey (sometimes called a "discoverable passkey") after October 2025, when eduID included this functionality.`}
               />
             </p>
             <p>
               <FormattedMessage
                 description="login eduid - passkey paragraph 2"
-                defaultMessage={`When using a Passkey credential, the access, presentation and required steps will vary depending on your device, browser and type of key:`}
+                defaultMessage={`When using a passkey credential, the access, presentation and required steps will vary depending on your device, browser and type of key:`}
               />
             </p>
 
@@ -277,13 +277,13 @@ export function UsingEduID(): React.JSX.Element {
                 <FormattedMessage
                   description="login eduid - passkey paragraph - error 1"
                   defaultMessage={`Definition and support of passkeys continually evolve. If login fails with your selected key it could be because of the key not supporting {discoverable}, 
-                    which you can check with your Passkey provider.`}
+                    which you can check with your passkey provider.`}
                   values={{
                     discoverable: (
                       <strong>
                         <FormattedMessage
                           description="error strong - discoverable"
-                          defaultMessage={`discoverable Passkeys`}
+                          defaultMessage={`discoverable passkeys`}
                         />
                       </strong>
                     ),
