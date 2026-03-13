@@ -133,7 +133,7 @@ test("api call webauthn/remove", async () => {
       }
 
       return new HttpResponse(JSON.stringify({ type: "test response", payload: response.credentials }));
-    })
+    }),
   );
 
   render(<IndexMain />, {
@@ -184,4 +184,20 @@ test("render the security key table without any security keys", async () => {
   expect(screen.getByRole("heading", { level: 2, name: "Manage your security keys" })).toBeInTheDocument();
   const figure = screen.getByRole("figure");
   expect(within(figure).getByText("No security key has been added")).toBeInTheDocument();
+});
+
+test("renders the security key table with freja eid and eidas verification", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      security: {
+        credentials: [securityKeyCredential, passwordCredential],
+      },
+    },
+  });
+  await linkToAdvancedSettings();
+
+  const figure = screen.getByRole("figure");
+  expect(within(figure).getByText("Freja eID")).toBeInTheDocument();
+  expect(within(figure).getByText("Eidas")).toBeInTheDocument();
 });
