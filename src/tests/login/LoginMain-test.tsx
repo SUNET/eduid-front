@@ -7,11 +7,50 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState } from "tests/helperFunctions/DashboardTestApp-rtl";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
+const TEST_REF = "abc987";
+const LOGIN_SERVICE_URL = "https://idp.eduid.docker/services/idp";
+
+const baseState = {
+  config: { ...defaultDashboardTestState.config, login_service_url: LOGIN_SERVICE_URL },
+  login: loginTestState.login,
+};
+interface StateOptions {
+  webauthn?: boolean;
+}
+
+function createState(options: StateOptions = {}) {
+  return {
+    ...baseState,
+    login: {
+      ...baseState.login,
+      authn_options: {
+        ...baseState.login.authn_options,
+        webauthn: options.webauthn ?? false,
+      },
+    },
+  };
+}
+
+function createLoginNextHandler(ref: string, payload: LoginNextResponse) {
+  return http.post(`${LOGIN_SERVICE_URL}/next`, async ({ request }) => {
+    const body = (await request.json()) as LoginNextRequest;
+    if (body.ref !== ref) {
+      return new HttpResponse(null, { status: 400 });
+    }
+    return HttpResponse.json({ type: "test response", payload });
+  });
+}
+
+function renderLoginPage(route: string, options: StateOptions = {}) {
+  return render(<IndexMain />, {
+    routes: [route],
+    state: createState(options),
+  });
+}
+
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
-    state: {
-      config: configInitialState,
-    },
+    state: { config: configInitialState },
     routes: ["/login/abc123"],
   });
 
@@ -20,30 +59,15 @@ test("show splash screen when not configured", () => {
 });
 
 test("renders FINISHED as expected", async () => {
-  const ref = "abc987";
-
   mswServer.use(
-    http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
-      const body = (await request.json()) as LoginNextRequest;
-      if (body.ref != ref) {
-        return new HttpResponse(null, { status: 400 });
-      }
-
-      const payload: LoginNextResponse = {
-        action: "FINISHED",
-        target: "/foo",
-        parameters: { SAMLResponse: "saml-response" },
-      };
-      return HttpResponse.json({ type: "test response", payload: payload });
+    createLoginNextHandler(TEST_REF, {
+      action: "FINISHED",
+      target: "/foo",
+      parameters: { SAMLResponse: "saml-response" },
     }),
   );
 
-  render(<IndexMain />, {
-    routes: [`/login/${ref}`],
-    state: {
-      config: { ...defaultDashboardTestState.config, login_service_url: "https://idp.eduid.docker/services/idp" },
-    },
-  });
+  renderLoginPage(`/login/${TEST_REF}`);
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -53,29 +77,14 @@ test("renders FINISHED as expected", async () => {
 });
 
 test("renders UsernamePw as expected", async () => {
-  const ref = "abc987";
-
   mswServer.use(
-    http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
-      const body = (await request.json()) as LoginNextRequest;
-      if (body.ref != ref) {
-        return new Response("", { status: 400 });
-      }
-
-      const payload: LoginNextResponse = {
-        action: "USERNAMEPASSWORD",
-        target: "/foo",
-      };
-      return HttpResponse.json({ type: "test response", payload: payload });
+    createLoginNextHandler(TEST_REF, {
+      action: "USERNAMEPASSWORD",
+      target: "/foo",
     }),
   );
 
-  render(<IndexMain />, {
-    routes: [`/login/password/${ref}`],
-    state: {
-      config: { ...defaultDashboardTestState.config, login_service_url: "https://idp.eduid.docker/services/idp" },
-    },
-  });
+  renderLoginPage(`/login/password/${TEST_REF}`);
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -92,35 +101,14 @@ test("renders the login page title", () => {
 });
 
 test("renders passkey button as expected", async () => {
-  const ref = "abc987";
-
   mswServer.use(
-    http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
-      const body = (await request.json()) as LoginNextRequest;
-      if (body.ref != ref) {
-        return new Response("", { status: 400 });
-      }
-
-      const payload: LoginNextResponse = {
-        action: "USERNAMEPASSWORD",
-        target: "/foo",
-      };
-      return HttpResponse.json({ type: "test response", payload: payload });
+    createLoginNextHandler(TEST_REF, {
+      action: "USERNAMEPASSWORD",
+      target: "/foo",
     }),
   );
 
-  render(<IndexMain />, {
-    routes: [`/login/password/${ref}`],
-    state: {
-      config: { ...defaultDashboardTestState.config, login_service_url: "https://idp.eduid.docker/services/idp" },
-      login: {
-        ...loginTestState.login,
-        authn_options: {
-          webauthn: true,
-        },
-      },
-    },
-  });
+  renderLoginPage(`/login/password/${TEST_REF}`, { webauthn: true });
 
   await waitFor(() => screen.getByRole("heading", { level: 1 }));
 
@@ -135,10 +123,10 @@ test("renders passkey button as expected", async () => {
   const passwordInput = document.querySelector('input[type="password"]') as HTMLInputElement;
 
   await userEvent.type(usernameInput, "test@example.com");
-  await userEvent.type(passwordInput, "mypassword123");
+  await userEvent.type(passwordInput, "password123");
 
   expect(usernameInput).toHaveValue("test@example.com");
-  expect(passwordInput).toHaveValue("mypassword123");
+  expect(passwordInput).toHaveValue("password123");
 
   expect(loginButton).not.toBeDisabled();
 });
