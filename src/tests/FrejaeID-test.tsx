@@ -38,7 +38,7 @@ test("renders frejaeID as expected", () => {
   });
   expect(screen.getByRole("heading", { name: "Choose your principal identification method" })).toBeInTheDocument();
   const frejaeIDGroup = screen.getByRole("group", { name: /Most countries With Freja eID/i });
-  const frejaeIDAccordion = within(frejaeIDGroup).getByRole("button", { name: /Most countries With Freja eID/i });
+  const frejaeIDAccordion = within(frejaeIDGroup).getByText("Most countries");
   act(() => {
     frejaeIDAccordion.click();
   });

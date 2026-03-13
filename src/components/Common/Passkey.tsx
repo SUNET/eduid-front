@@ -10,7 +10,7 @@ import { useTheme } from "./ThemeContext";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
+  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): Promise<void> | void;
   onComplete?(): void;
   discoverable?: boolean;
 }
@@ -36,7 +36,10 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
       if (webauth_options) {
         const response = await performAuthentication({ webauth_options });
         if (response.isSuccess) {
-          props.onSuccess(response.data);
+          // Wait for credential submission to finish before calling onComplete,
+          // so that restartConditionalAuth doesn't fire a new challenge fetch
+          // while the backend is still processing this credential.
+          await props.onSuccess(response.data);
         }
       }
     } finally {
@@ -61,9 +64,9 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
       <div className="text-wrapper">
         <div className="flex-between">
           <div>
-            <h3>
+            <h2>
               <FormattedMessage defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
-            </h3>
+            </h2>
             <p className="text-medium">
               <FormattedMessage defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods." />
             </p>
@@ -82,7 +85,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
               />
             </p>
           </div>
-          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="Passkey icon" className="passkey-image" />
+          <img
+            src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+            alt="Passkey images"
+            className="passkey-image"
+          />
         </div>
       </div>
       <div className="buttons">

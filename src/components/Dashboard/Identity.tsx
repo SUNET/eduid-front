@@ -388,7 +388,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
           <FrejaeID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon" alt="by post" src={LetterIcon} />}
+          icon={<img height="35" className="circle-icon" alt="post icon" src={LetterIcon} />}
           title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
           additionalInfo={
             <FormattedMessage
@@ -397,7 +397,6 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
             />
           }
           uuid="se-letter"
-          //
         >
           <LetterProofing disabled={letterProofingDisabled} />
         </AccordionItemTemplate>

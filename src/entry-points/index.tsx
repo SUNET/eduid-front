@@ -59,17 +59,17 @@ setupLanguage(eduidStore.dispatch);
 
 /**
  * Handle Back/Forward Cache (bfcache).
- * If the page is restored from the cache (e.g. user navigated back after logout),
- * this forces a reload. Since the session is cleared, the app will re-init
- * in an unauthenticated state.
+ * Always reload when the page is restored from bfcache. The previous check
+ * (is_configured === false) was insufficient because after a successful login,
+ * is_configured is true in the cached state — so bfcache restores would keep
+ * stale Redux state (including is_app_loaded: true) even when the session has
+ * expired. This caused the dashboard to render without a spinner and fire
+ * parallel API calls (credentials, letter-proofing) that all got 401s,
+ * each independently triggering re_authenticate() and causing SessionOutOfSync.
  */
 globalThis.addEventListener("pageshow", (event) => {
   if (event.persisted) {
-    const state = eduidStore.getState();
-    if (state.config.is_configured === false) {
-      // The app was restored from bfcache and is not configured, reload to init properly
-      globalThis.location.reload();
-    }
+    globalThis.location.reload();
   }
 });
 

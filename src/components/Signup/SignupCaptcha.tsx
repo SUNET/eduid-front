@@ -8,15 +8,15 @@ import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
 export function SignupCaptcha(): React.JSX.Element | null {
-  const state = useAppSelector((state) => state.signup.state);
+  const captchaCompleted = useAppSelector((state) => state.signup.state?.captcha.completed);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = signupApi.useLazyGetSignupCaptchaRequestQuery();
 
   useEffect(() => {
-    if (state?.captcha.completed) {
+    if (captchaCompleted) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
     }
-  }, [state, dispatch]);
+  }, [captchaCompleted, dispatch]);
 
   async function getCaptcha() {
     const response = await getCaptchaRequest();
@@ -30,16 +30,15 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCompleted(response: string) {
-    if (response) {
-      dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
-      dispatch(signupSlice.actions.setNextPage("PROCESS_CAPTCHA"));
-    }
+    if (!response) return;
+    dispatch(signupSlice.actions.setCaptchaResponse({ internal_response: response }));
+    dispatch(signupSlice.actions.setNextPage("PROCESS_CAPTCHA"));
   }
 
   const args = { handleCaptchaCancel, handleCaptchaCompleted };
 
   // If the user has already completed the captcha, don't show it again
-  if (state?.captcha.completed) {
+  if (captchaCompleted) {
     return null;
   }
 
