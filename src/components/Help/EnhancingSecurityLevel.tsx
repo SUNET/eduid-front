@@ -115,14 +115,14 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
           <p>
             <FormattedMessage
               description="add several keys - paragraph"
-              defaultMessage={`It is absolutely recommended to add more than one key to make sure you always have supported access to your account.`}
+              defaultMessage={`It is recommended to add more than one key to make sure you always have supported access to your account.`}
             />
           </p>
         </section>
         <p>
           <FormattedMessage
             description="how add security key - verify"
-            defaultMessage={`When adding or afterwards you have the option of verifying your key with any method presented to you and by doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
+            defaultMessage={`When adding or afterwards from the key table you have the option of verifying your key with any method presented to you and by doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
           />
         </p>
         <p>
