@@ -186,7 +186,7 @@ test("render the security key table without any security keys", async () => {
   expect(within(figure).getByText("No security key has been added")).toBeInTheDocument();
 });
 
-test("renders the security key table with freja eid and eidas verification", async () => {
+test("renders the security key table with verification methods", async () => {
   render(<IndexMain />, {
     state: {
       ...defaultDashboardTestState,
@@ -198,6 +198,8 @@ test("renders the security key table with freja eid and eidas verification", asy
   await linkToAdvancedSettings();
 
   const figure = screen.getByRole("figure");
+  expect(within(figure).getByText("BankID")).toBeInTheDocument();
+  expect(within(figure).getByText("Freja+")).toBeInTheDocument();
   expect(within(figure).getByText("Freja eID")).toBeInTheDocument();
   expect(within(figure).getByText("Eidas")).toBeInTheDocument();
 });
