@@ -128,7 +128,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
           <FormattedMessage
             description="how add security key - must be used"
             defaultMessage={`Note: if you have added a security key to your eduID it must be used to log in to eduID, 
-              unless you turn off this feature under Manage your security keys in Security. You might still need to use 
+              unless you turn off this feature under "Manage your security keys" in the Security section. You might still need to use 
               your security key if other connecting services require MFA.`}
           />
         </p>
