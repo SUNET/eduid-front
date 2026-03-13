@@ -75,12 +75,11 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="what are keys description 2"
-            defaultMessage={`You may also add biometric information such as fingerprint, face-recognition or a PIN supported on the device you are using, usually called a {passkey}, 
-              to log in with or to unlock your security key if needed. Passkeys are often synced between your devices, providing ease of use.`}
+            defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The Passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the Passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                  <FormattedMessage description="passkey term" defaultMessage="Passkey" />
                 </em>
               ),
             }}
@@ -122,7 +121,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         <p>
           <FormattedMessage
             description="how add security key - verify"
-            defaultMessage={`When adding or afterwards from the key table you have the option of verifying your key with any method presented to you and by doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
+            defaultMessage={`When adding a key or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
           />
         </p>
         <p>
