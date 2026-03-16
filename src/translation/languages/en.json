@@ -21,7 +21,7 @@
   },
   "+I0Nrj": {
     "developer_comment": "login eduid - passkey paragraph - error 2",
-    "string": "It could also be due to it being registered {implementation} of this feature, so will need to be readded in the Security section of eduID.se after logging in using another method, to get the full advantage of using your passkey."
+    "string": "It could also be due to it being registered {implementation} of this feature, so will need to be readded in the Security section of eduID.se after logging in using another method, to get the full advantage of using your passkey for direct login."
   },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
