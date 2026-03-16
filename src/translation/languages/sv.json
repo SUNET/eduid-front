@@ -1312,7 +1312,7 @@
   },
   "Q/+yAJ": {
     "developer_comment": "add several keys - paragraph",
-    "string": "Det rekommenderas att lägga till mer än en nyckel för att säkerställa tillgång till ditt konto."
+    "string": "Det rekommenderas att lägga till mer än en nyckel för att säkerställa avsedd tillgång till ditt konto."
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
